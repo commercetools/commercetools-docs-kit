@@ -11,12 +11,10 @@
   "scripts": {
     "lint": "jest --projects jest.eslint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
-    "format": "yarn format:js && yarn format:css && yarn format:md && yarn format:yaml && yarn format:graphql",
+    "format": "yarn format:js && yarn format:css && yarn format:md && yarn format:yaml",
     "format:js": "prettier --write '**/*.{js,ts,tsx}'",
-    "format:css": "prettier --write --parser css '**/*.css'",
     "format:md": "prettier --write --parser markdown '**/*.{md,mdx}'",
-    "format:yaml": "prettier --write --parser yaml '**/*.yaml'",
-    "format:graphql": "prettier --write --parser graphql '**/*.graphql'"
+    "format:yaml": "prettier --write --parser yaml '**/*.yaml'"
   },
   "devDependencies": {
     "@babel/core": "7.7.0",
