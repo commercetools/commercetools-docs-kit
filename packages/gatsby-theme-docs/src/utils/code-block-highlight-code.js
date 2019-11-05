@@ -54,7 +54,7 @@ export default (
     //   ? split.code
     //   : `${split.code}${idx == lastIdx ? `` : `\n`}`;
     /* Patched version for line highlighting */
-    finalCode += `${split.code}${idx == lastIdx ? `` : `\n`}`;
+    finalCode += `${split.code}${idx === lastIdx ? `` : `\n`}`;
   });
   return finalCode;
 };

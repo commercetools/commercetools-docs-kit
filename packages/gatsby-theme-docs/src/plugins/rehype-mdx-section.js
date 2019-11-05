@@ -24,6 +24,7 @@ module.exports = ({ leadSectionClassSuffix = 'lead' } = {}) => ast => {
     },
     children: [],
   };
+  // eslint-disable-next-line no-restricted-syntax
   for (const node of ast.children) {
     if (isHeading(node)) {
       if (sectionNode.children.length > 0) {
@@ -38,7 +39,7 @@ module.exports = ({ leadSectionClassSuffix = 'lead' } = {}) => ast => {
         },
         children: [node],
       };
-    } else if (node.type === 'import' || node.type == 'export') {
+    } else if (['import', 'export'].includes(node.type)) {
       newNodes.push(node);
     } else {
       sectionNode.children.push(node);
@@ -47,6 +48,7 @@ module.exports = ({ leadSectionClassSuffix = 'lead' } = {}) => ast => {
   if (sectionNode.children.length > 0) {
     newNodes.push(sectionNode);
   }
+  // eslint-disable-next-line no-param-reassign
   ast.children = newNodes;
   return ast;
 };

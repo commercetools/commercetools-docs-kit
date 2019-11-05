@@ -12,9 +12,8 @@ const getBaseLanguageName = (nameOrAlias, components = prismComponents) => {
     if (!alias) return false;
     if (Array.isArray(alias)) {
       return alias.includes(nameOrAlias);
-    } else {
-      return alias === nameOrAlias;
     }
+    return alias === nameOrAlias;
   });
 };
 
@@ -46,5 +45,6 @@ export default function loadPrismLanguage(language) {
     }
   }
 
+  // eslint-disable-next-line global-require,import/no-dynamic-require
   require(`prismjs/components/prism-${baseLanguage}.js`);
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // This code is from https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-prismjs
 import rangeParser from 'parse-numeric-range';
 
@@ -7,12 +8,12 @@ export default function parseCodeBlockOptions(language) {
   }
   if (language.split(`{`).length > 1) {
     const [splitLanguage, ...options] = language.split(`{`);
-    let highlightLines = [],
-      outputLines = [],
-      showLineNumbersLocal = false,
-      numberLinesStartAt,
-      promptUserLocal,
-      promptHostLocal;
+    let highlightLines = [];
+    let outputLines = [];
+    let showLineNumbersLocal = false;
+    let numberLinesStartAt;
+    let promptUserLocal;
+    let promptHostLocal;
     // Options can be given in any order and are optional
 
     options.forEach(option => {
@@ -40,10 +41,10 @@ export default function parseCodeBlockOptions(language) {
             : parseInt(splitOption[1].trim(), 10);
       }
       if (splitOption.length === 2 && splitOption[0] === `promptHost`) {
-        promptHostLocal = splitOption[1];
+        [, promptHostLocal] = splitOption;
       }
       if (splitOption.length === 2 && splitOption[0] === `promptUser`) {
-        promptUserLocal = splitOption[1];
+        [, promptUserLocal] = splitOption;
       }
       if (splitOption.length === 2 && splitOption[0] === `outputLines`) {
         outputLines = rangeParser

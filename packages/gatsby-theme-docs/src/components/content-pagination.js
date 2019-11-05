@@ -5,8 +5,10 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import AngleThinLeftIcon from '../icons/angle-thin-left-icon.svg';
 import AngleThinRightIcon from '../icons/angle-thin-right-icon.svg';
-import { Card, Spacings, TextSmall } from '../components';
 import { colors, dimensions, typography } from '../design-system';
+import Card from './card';
+import Spacings from './spacings';
+import TextSmall from './text-small';
 
 const PaginationButtonLink = styled(Link)`
   text-align: ${props => props.align};
