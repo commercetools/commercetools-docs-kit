@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // Inspired from https://github.com/trevorblades/gatsby-remark-rewrite-relative-links
 const path = require('path');
 const visit = require('unist-util-visit');

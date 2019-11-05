@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // This code is from https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-prismjs
 
 import rangeParser from 'parse-numeric-range';
@@ -71,7 +72,7 @@ const parseLine = (line, code, index, actions) => {
     case `start`: {
       // find the next `${feature}-end` directive, starting from next line
       const endIndex = code.findIndex(
-        (line, idx) => idx > index && END_DIRECTIVE[feature].test(line)
+        (codeLine, idx) => idx > index && END_DIRECTIVE[feature].test(codeLine)
       );
 
       const end = endIndex === -1 ? code.length : endIndex;
@@ -79,7 +80,7 @@ const parseLine = (line, code, index, actions) => {
       actions.hide(index);
       actions.hide(end);
 
-      for (let i = index + 1; i < end; i++) {
+      for (let i = index + 1; i < end; i += 1) {
         actions.flag(feature, i, flagSource);
       }
       break;
@@ -101,8 +102,9 @@ const parseLine = (line, code, index, actions) => {
           break;
         }
       }
-
       console.warn(`Invalid match specified: "${line.trim()}"`);
+      break;
+    default:
       break;
   }
 };
@@ -117,8 +119,8 @@ export default function highlightLineRange(code, highlights = []) {
   }
 
   const split = code.split(`\n`);
-  const lines = split.map(code => {
-    return { code, highlight: false, hide: false, flagSources: [] };
+  const lines = split.map(codeLine => {
+    return { code: codeLine, highlight: false, hide: false, flagSources: [] };
   });
 
   const actions = {
@@ -136,9 +138,9 @@ export default function highlightLineRange(code, highlights = []) {
     },
   };
 
-  const transform = lines =>
-    lines
-      .filter(({ hide, highlight, flagSources }, index) => {
+  const transform = data =>
+    data
+      .filter(({ hide, highlight, flagSources }, idx) => {
         if (hide && highlight) {
           const formattedSources = flagSources
             .map(
@@ -147,7 +149,7 @@ export default function highlightLineRange(code, highlights = []) {
             )
             .join(`\n`);
           throw Error(
-            `Line ${index +
+            `Line ${idx +
               1} has been marked as both hidden and highlighted.\n${formattedSources}`
           );
         }
@@ -171,7 +173,7 @@ export default function highlightLineRange(code, highlights = []) {
     return transform(lines);
   }
 
-  for (let i = 0; i < split.length; i++) {
+  for (let i = 0; i < split.length; i += 1) {
     const line = split[i];
     if (DIRECTIVE.test(line)) {
       parseLine(line, split, i, actions);
