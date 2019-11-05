@@ -4,6 +4,12 @@ parserOptions:
     jsx: true
   ecmaVersion: 8
   sourceType: module
+env:
+  browser: true
+  es6: true
+  jest: true
+  node: true
+  mocha: false
 extends:
   - airbnb-base
   - plugin:import/errors
