@@ -44,6 +44,7 @@
     "react-router-dom": "5.1.2",
     "rehype-slug": "2.0.3",
     "remark-emoji": "2.0.2",
+    "remark-react": "^6.0.0",
     "unist-util-visit": "2.0.0"
   },
   "peerDependencies": {
