@@ -1,0 +1,12 @@
+{
+  "lerna": "3.13.4",
+  "useWorkspaces": true,
+  "version": "0.0.0",
+  "npmClient": "yarn",
+  "command": {
+    "publish": {
+      "npmClient": "yarn",
+      "message": "chore(release): publish %s"
+    }
+  }
+}

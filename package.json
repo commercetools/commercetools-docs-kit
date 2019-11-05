@@ -8,6 +8,9 @@
     "packages/*",
     "playground"
   ],
+  "devDependencies": {
+    "lerna": "3.18.3"
+  },
   "engines": {
     "node": ">=10",
     "npm": ">=5"
