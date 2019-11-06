@@ -16,7 +16,7 @@ exports.onPreBootstrap = ({ reporter }) => {
     'src/data',
     'src/images',
     'src/content',
-    'src/pages/files',
+    'src/content/files',
   ];
   requiredDirectories.forEach(dir => {
     if (!fs.existsSync(dir)) {
@@ -94,7 +94,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   const pages = allMdxPagesResult.data.allMdx.edges;
   const navigationPages = navigationYamlResult.data.allNavigationYaml.nodes.reduce(
-    (pageLinks, node) => [...pageLinks, ...node.pages],
+    (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
   );
   // you'll call `createPage` for each result

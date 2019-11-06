@@ -6,9 +6,11 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "playground"
+    "test-websites/*"
   ],
   "scripts": {
+    "start": "yarn --cwd test-websites/docs-smoke-test start",
+    "build": "yarn --cwd test-websites/docs-smoke-test build",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",
@@ -16,7 +18,9 @@
     "format:js": "prettier --write '**/*.{js,ts,tsx}'",
     "format:md": "prettier --write --parser markdown '**/*.{md,mdx}'",
     "format:yaml": "prettier --write --parser yaml '**/*.yaml'",
-    "labels:sync": "github-labels sync"
+    "labels:sync": "github-labels sync",
+    "test": "jest --config jest.test.config.js",
+    "test:watch": "yarn test --watch"
   },
   "devDependencies": {
     "@babel/core": "7.7.0",
@@ -25,6 +29,8 @@
     "@commitlint/config-conventional": "8.2.0",
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
+    "@testing-library/jest-dom": "4.2.3",
+    "@testing-library/react": "9.3.2",
     "babel-eslint": "10.0.3",
     "core-js": "3.3.6",
     "eslint": "6.5.1",
@@ -41,10 +47,9 @@
     "eslint-plugin-react": "7.16.0",
     "eslint-plugin-react-hooks": "2.2.0",
     "eslint-plugin-testing-library": "1.2.0",
-    "gatsby": "2.17.8",
-    "gatsby-cli": "2.8.3",
     "husky": "3.0.9",
     "jest": "24.9.0",
+    "jest-preset-gatsby": "1.0.13",
     "jest-runner-eslint": "0.7.5",
     "jest-runner-prettier": "0.3.1",
     "jest-runner-stylelint": "2.2.0",
