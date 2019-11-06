@@ -33,10 +33,10 @@ Build the packages
 $ yarn build
 ```
 
-Start the [playground website](./playground):
+Start the [docs-smoke-test website](./test-websites/docs-smoke-test):
 
 ```bash
-$ yarn playground:start
+$ yarn start
 ```
 
 ## Documentation
