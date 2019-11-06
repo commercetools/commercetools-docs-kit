@@ -1,6 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "version": "1.0.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "yarn develop",
