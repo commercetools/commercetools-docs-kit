@@ -26,6 +26,12 @@ executors:
     working_directory: *working_directory
     docker:
       - image: circleci/node:10.17
+  cypress:
+    working_directory: *working_directory
+    docker:
+      - image: 'cypress/base:10.16.0'
+        environment:
+          TERM: xterm
 
 commands:
   setup_dependencies:
