@@ -76,7 +76,7 @@ commands:
             ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget --fix-missing
       - run:
           name: Running Percy snapshots for docs-smoke-test
-          command: PERCY_TOKEN="$PERCY_TOKEN_SMOKE_TESTS_DOCS" yarn run percy snapshot public --base-url /docs-smoke-test/
+          command: PERCY_TOKEN="$PERCY_TOKEN_SMOKE_TESTS" yarn run percy snapshot public
 
 jobs:
   build_lint_and_test:
