@@ -18,7 +18,7 @@ describe('Homepage', () => {
   });
 });
 
-describe('/smoke-tests', () => {
+describe('Pagination', () => {
   const baseUrl = `/smoke-tests`;
   const links = [
     `${baseUrl}/text/`,
@@ -44,7 +44,7 @@ describe('/smoke-tests', () => {
         cy.findByText('Next:').click();
         cy.url().should('include', nextUrl);
       }
-      cy.percySnapshot(`page ${url}`);
+      cy.percySnapshot();
     });
   });
 });
