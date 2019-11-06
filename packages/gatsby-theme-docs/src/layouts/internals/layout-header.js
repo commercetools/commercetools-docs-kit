@@ -82,6 +82,9 @@ const LayoutHeader = props => (
         id="sidebar-menu-toggle"
         css={css`
           display: flex;
+          @media screen and (${dimensions.viewports.desktop}) {
+            display: none;
+          }
         `}
       />
       <LogoLink href="/">
