@@ -153,7 +153,7 @@ jobs:
           steps:
             - run:
                 name: Waiting on <<parameters.wait-on>>
-                command: npx wait-on <<parameters.wait-on>>
+                command: yarn run wait-on <<parameters.wait-on>>
       - run:
           name: Run Cypress tests
           command: |
@@ -183,7 +183,7 @@ workflows:
           name: e2e_smoke_tests
           requires:
             - build_lint_and_test
-          start: npx serve -l 8000 public
+          start: yarn run serve -l 8000 public
           wait-on: 'http://localhost:8000'
           run-command: PERCY_TOKEN="$PERCY_TOKEN_SMOKE_TESTS_E2E" yarn run percy exec -- yarn test:e2e
           store_artifacts: true
