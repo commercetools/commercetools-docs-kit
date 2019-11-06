@@ -11,53 +11,6 @@ export const markdown2React = markdownString => {
   return result;
 };
 
-export const reorderFields = (obj, fields) => {
-  const returnedObject = { ...obj };
-
-  fields.forEach(field => {
-    const fieldToOrder = returnedObject[field];
-    if (fieldToOrder) {
-      delete returnedObject[field];
-      returnedObject[field] = fieldToOrder;
-    }
-  });
-
-  return returnedObject;
-};
-
-export const extractAdditionalInfo = property => {
-  let additionalInfo = JSON.parse(JSON.stringify(property));
-  const mainInfo = [
-    'name',
-    'key',
-    'description',
-    'type',
-    'originalType',
-    'enum',
-    'constant',
-    'items',
-    'library',
-  ];
-
-  mainInfo.forEach(field => {
-    delete additionalInfo[field];
-  });
-
-  Object.keys(additionalInfo).forEach(key => {
-    if (
-      (!additionalInfo[key] &&
-        typeof additionalInfo[key] !== 'number' &&
-        typeof additionalInfo[key] !== 'boolean') ||
-      typeof additionalInfo[key] === 'object'
-    )
-      delete additionalInfo[key];
-  });
-
-  additionalInfo = reorderFields(additionalInfo, ['default', 'required']);
-
-  return additionalInfo;
-};
-
 export const computeType = value => {
   const regex = /^\[object (\S+?)\]$/;
   const matches = Object.prototype.toString.call(value).match(regex) || [];
@@ -80,13 +33,8 @@ export const generateAnchorString = str => {
   return '';
 };
 
-export const pixelsToRems = pixels => {
-  if (computeType(pixels) !== 'number') {
-    throw new Error(`"${pixels}" must be of type number.`);
-  }
-
-  // Assume base is 16px (which is default for most browsers)
-  const base = 16;
-
-  return pixels / base;
+export const capitalizeFirstCharacter = str => {
+  const firstChar = str.charAt(0).toUpperCase();
+  const lastChars = str.substr(1, str.length);
+  return `${firstChar}${lastChars}`;
 };
