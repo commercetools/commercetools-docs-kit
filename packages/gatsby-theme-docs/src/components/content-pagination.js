@@ -84,25 +84,10 @@ PaginationLink.propTypes = {
   direction: PropTypes.oneOf(['left', 'right']).isRequired,
 };
 
-const Pagination = props => {
-  const data = useStaticQuery(graphql`
-    query GetNavbarLinks {
-      allNavigationYaml {
-        nodes {
-          chapterTitle
-          pagination
-          pages {
-            title
-            path
-            beta
-          }
-        }
-      }
-    }
-  `);
+export const PurePagination = props => {
   const [, chapterPath] = props.slug.split('/');
   const chapterSlug = `/${chapterPath}`;
-  const chapterPageLinks = data.allNavigationYaml.nodes.reduce(
+  const chapterPageLinks = props.data.allNavigationYaml.nodes.reduce(
     (links, node) => {
       const isPaginationEnabledForChapter =
         typeof node.pagination === 'boolean' ? node.pagination : true;
@@ -166,9 +151,47 @@ const Pagination = props => {
     </div>
   );
 };
-Pagination.displayName = 'Pagination';
-Pagination.propTypes = {
-  slug: PropTypes.string,
+
+PurePagination.propTypes = {
+  slug: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    allNavigationYaml: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          chapterTitle: PropTypes.string.isRequired,
+          pagination: PropTypes.bool,
+          pages: PropTypes.arrayOf(
+            PropTypes.shape({
+              title: PropTypes.string.isRequired,
+              path: PropTypes.string.isRequired,
+              beta: PropTypes.bool,
+            })
+          ),
+        })
+      ).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+PurePagination.displayName = 'Pagination';
+
+const Pagination = props => {
+  const data = useStaticQuery(graphql`
+    query GetNavbarLinks {
+      allNavigationYaml {
+        nodes {
+          chapterTitle
+          pagination
+          pages {
+            title
+            path
+            beta
+          }
+        }
+      }
+    }
+  `);
+
+  return <PurePagination {...props} data={data} />;
 };
 
 export default Pagination;
