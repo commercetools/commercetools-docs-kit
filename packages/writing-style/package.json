@@ -1,0 +1,9 @@
+{
+  "name": "@commercetools-docs/writing-style",
+  "version": "1.0.0",
+  "private": true,
+  "bin": {
+    "commercetools-vale": "commercetools-vale.js"
+  },
+  "dependencies": {}
+}

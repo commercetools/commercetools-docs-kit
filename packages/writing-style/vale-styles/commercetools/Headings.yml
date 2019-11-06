@@ -1,0 +1,26 @@
+extends: capitalization
+message: "'%s' should use sentence-style capitalization."
+level: warning
+scope: heading
+match: $sentence
+exceptions:
+  - Windows
+  - GraphQL
+  - OAuth
+  - Elasticsearch
+  - Google Cloud Platform
+  - AWS
+  - Amazon Web Services
+  - SaaS
+  - FaaS
+  - Azure
+  - CLI
+  - Code
+  - Docker
+  - I
+  - Kubernetes
+  - Linux
+  - macOS
+  - MongoDB
+  - TypeScript
+  - URLs

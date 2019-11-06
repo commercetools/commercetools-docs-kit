@@ -1,0 +1,17 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: error
+ignorecase: false
+action:
+  name: replace
+swap:
+  Commerce Tools: commercetools
+  Commercetools: commercetools
+  commerceTools: commercetools
+  CommerceTools: commercetools
+  CTP: the commercetools platform
+  CT: commercetools
+  ct: commercetools
+  SPHERE: the commercetools platform
+  SPHERE.IO: the commercetools platform
+  sphere.io: the commercetools platform
