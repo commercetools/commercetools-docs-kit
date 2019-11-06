@@ -36,6 +36,48 @@ Once it's done, you can run `yarn start` or `yarn test` (`yarn test:watch`) to d
 
 To develop locally, you can use the `playground` application to test the changes in some of the packages.
 
+## Rebasing and merging Pull Requests
+
+We only allow the **Squash and merge** mode when merging a Pull Request. There are a couple of reason for that:
+
+- we have a cleaner commit history on `master` branch
+- we can have automatic releases, like `canary`, that will publish a new version on each new commit in `master`
+
+Furthermore, we also prefer to use `rebase` when keeping branches up-to-date. This is again to have a cleaner history.
+
+## Development tools
+
+We use a bunch of tools to help the development process and to ease maintenance.
+
+### Linters
+
+We use `eslint` and `stylelint` to check both the JS code and the CSS-in-JS. Linters run as a `jest-runner`, which provides a nice developer experience like jest watch mode.
+
+To run them, execute `yarn lint`. You can also run individual linters (check the available `scripts` in the `package.json`).
+
+### Prettier
+
+To ensure a consistent code formatting, we use `prettier` for all different types of supported file extensions. The formatting is also checked by the eslint plugin for prettier.
+
+### Git hooks
+
+We use some git hooks to enforce some conventions, powered by the `husky` package:
+
+- `commit-msg`: it checks that the commit message adheres to the [conventional commit](https://conventionalcommits.org/)
+- `pre-commit`: we use this to run `lint-staged`, which runs linters and prettier on the staged files
+
+### GitHub labels
+
+To help maintaining GitHub labels, we use the `@commercetools/github-labels` package that allows to manage the labels using a config file. See the package for more information about its usage.
+
+## Dependencies
+
+We use `yarn` to manage the dependencies in the monorepo, using the `workspace` feature of `yarn`. Furthermore, to ensure that every contributor uses the same version of `yarn`, we include the `yarn` binary in the repository and point `yarn-path` to it (see `.yarnrc`). This helps ensuring that things like `yarn.lock` is consistent.
+
+## Dependency updates
+
+We use the `Renovate App` to manage dependency updates. The app/bot will create Pull Requests whenever there are new versions of the dependencies used in the repository. To avoid too many Pull Requests, we have scheduled updates on Mondays only.
+
 ## Cutting a Release
 
 By default, all releases go to the `next` distribution channel and should be considered **prereleases**. This gives us a chance to test out a release before marking it **stable** in the `latest` distribution channel.
