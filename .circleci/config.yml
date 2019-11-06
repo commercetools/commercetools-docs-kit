@@ -180,11 +180,10 @@ workflows:
           requires:
             - build_lint_and_test
       - e2e_test:
-          name: e2e_docs_smoke_test
+          name: e2e_smoke_tests
           requires:
             - build_lint_and_test
-          spec: 'cypress/integration/docs-smoke-test/**/*.js'
           start: npx serve -l 8000 public
           wait-on: 'http://localhost:8000'
-          run-command: PERCY_TOKEN="$PERCY_TOKEN_E2E_SMOKE_TESTS_DOCS" yarn vrt:e2e
+          run-command: PERCY_TOKEN="$PERCY_TOKEN_SMOKE_TESTS_E2E" yarn run percy exec -- yarn test:e2e
           store_artifacts: true
