@@ -19,7 +19,7 @@ describe('Homepage', () => {
 });
 
 describe('Pagination', () => {
-  const baseUrl = `/smoke-tests`;
+  const baseUrl = `${URL_DOCS_SMOKE_TEST}/smoke-tests`;
   const links = [
     `${baseUrl}/text/`,
     `${baseUrl}/right-nav-submenu/`,
