@@ -1,8 +1,17 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
+  "description": "Gatsby theme for commercetools documentation",
   "version": "1.0.0",
   "license": "MIT",
-  "private": true,
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git"
+  },
   "scripts": {
     "start": "yarn develop",
     "develop": "npx gatsby develop",
