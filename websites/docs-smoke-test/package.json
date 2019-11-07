@@ -10,8 +10,7 @@
     "clean:develop": "yarn clean && yarn develop",
     "build": "npx gatsby build --prefix-paths",
     "prebuild": "yarn clean",
-    "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-docs": "1.0.0",

@@ -54,6 +54,29 @@ commands:
     steps:
       - attach_workspace:
           at: *working_directory
+  vrt_tests:
+    description: Running Visual Regression Tests
+    steps:
+      - run:
+          name: Updating (apt-get update)
+          working_directory: *working_directory
+          command: sudo apt-get update -y
+      - run:
+          name: Upgrading (apt-get upgrade)
+          working_directory: *working_directory
+          command: sudo apt-get upgrade -y
+      - run:
+          name: Installing Chrome headless dependencies
+          working_directory: *working_directory
+          command: |
+            sudo apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
+            libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
+            libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+            libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
+            ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget --fix-missing
+      - run:
+          name: Running Percy snapshots for docs-smoke-test
+          command: PERCY_TOKEN="$PERCY_TOKEN_SMOKE_TESTS" yarn run percy snapshot public
 
 jobs:
   build_lint_and_test:
@@ -64,9 +87,18 @@ jobs:
       - lint_and_test
       - build_websites
       - save_websites_bundle
+  vrt_test:
+    executor: node_10
+    steps:
+      - setup_dependencies
+      - restore_websites_bundle
+      - vrt_tests
 
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build_lint_and_test
+      - vrt_test:
+          requires:
+            - build_lint_and_test
