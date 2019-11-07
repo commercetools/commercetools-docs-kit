@@ -2,10 +2,11 @@ import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import LogoSvg from '../../icons/logo.svg';
-import { ExternalLink, Spacings } from '../../components';
+import { Spacings } from '../../components';
+import { ExternalSiteLink } from '../../components/link';
 import { colors, dimensions, typography } from '../../design-system';
 
-const FooterExternalLink = styled(ExternalLink)`
+const FooterExternalLink = styled(ExternalSiteLink)`
   font-size: ${typography.fontSizes.small};
   color: ${colors.light.textPrimary} !important;
   text-decoration: none;

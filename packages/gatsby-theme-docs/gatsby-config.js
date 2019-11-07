@@ -99,7 +99,7 @@ module.exports = {
               destinationDir: 'files',
             },
           },
-          require.resolve('./src/plugins/remark-rewrite-relative-links'),
+          // require.resolve('./src/plugins/remark-rewrite-relative-links'),
         ],
         // workaround https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-510153237
         plugins: ['gatsby-remark-images', 'gatsby-remark-copy-linked-files'],
@@ -135,6 +135,21 @@ module.exports = {
         ],
       },
     },
+    // TODO: make it configurable?
+    // {
+    //   resolve: 'gatsby-plugin-google-analytics',
+    //   options: {
+    //     trackingId: 'UA-38285631-3',
+    //     head: false,
+    //     anonymize: true,
+    //     respectDNT: false,
+    //     exclude: []
+    //     // optimizeId: 'YOUR_GOOGLE_OPTIMIZE_TRACKING_ID',
+    //     // experimentId: 'YOUR_GOOGLE_EXPERIMENT_ID',
+    //     // variationId: 'YOUR_GOOGLE_OPTIMIZE_VARIATION_ID',
+    //     // cookieDomain: 'docs.commercetools.com'
+    //   }
+    // },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
