@@ -199,7 +199,7 @@ workflows:
       - publish:
           requires:
             - vrt_test
-            - e2e_test
+            - e2e_smoke_tests
           filters: 
             branches:
               only:
