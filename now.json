@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "commercetools-docs-kit",
+  "alias": "commercetools-docs-kit",
+  "routes": [
+    { "src": "/", "status": 302, "dest": "/docs-smoke-test/" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "status": 404, "dest": "/docs-smoke-test/404" }
+  ]
+}

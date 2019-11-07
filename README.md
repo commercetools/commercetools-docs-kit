@@ -3,7 +3,7 @@
   <i>✨ Monorepository with tools and components for developing Documentation websites 🛠</i>
 </p>
 <p align="center">
-  <a href="https://circleci.com/gh/commercetools/commercetools-docs-kit"><img src="https://circleci.com/gh/commercetools/commercetools-docs-kit.svg?style=shield&circle-token=2c30a67460ed10ad965404b648940c774b3b34a3" alt="CI status" /></a> <a href="https://github.com/commercetools/commercetools-docs-kit/releases"><img src="https://badgen.net/github/release/commercetools/commercetools-docs-kit" alt="Latest release" /></a> <a href="https://github.com/commercetools/commercetools-docs-kit/blob/master/LICENSE"><img src="https://badgen.net/github/license/commercetools/commercetools-docs-kit" alt="GitHub license" /></a>
+  <a href="https://circleci.com/gh/commercetools/commercetools-docs-kit"><img src="https://circleci.com/gh/commercetools/commercetools-docs-kit.svg?style=shield" alt="CI status" /></a> <a href="https://github.com/commercetools/commercetools-docs-kit/releases"><img src="https://badgen.net/github/release/commercetools/commercetools-docs-kit" alt="Latest release" /></a> <a href="https://github.com/commercetools/commercetools-docs-kit/blob/master/LICENSE"><img src="https://badgen.net/github/license/commercetools/commercetools-docs-kit" alt="GitHub license" /></a>
 </p>
 
 ## Getting started
@@ -33,10 +33,10 @@ Build the packages
 $ yarn build
 ```
 
-Start the [playground website](./playground):
+Start the [docs-smoke-test website](./test-websites/docs-smoke-test):
 
 ```bash
-$ yarn playground:start
+$ yarn start
 ```
 
 ## Documentation
@@ -46,3 +46,11 @@ Please look at the single packages in [`packages` folder](./packages) for docume
 ## Contributing
 
 Contributions are welcomed. Please have a read at our [contribution guidelines](CONTRIBUTING.md).
+
+## Licenses
+
+Source code is under the MIT License (see the [LICENSE](LICENSE) file)
+
+All icons, images and the implemented visual design are **UNLICENSED** outside commercetools and its subsidiaries.
+
+Individual packages in this repository can have deviating licensing in their respective `LICENSE`, `README.md` and `package.json` files.
