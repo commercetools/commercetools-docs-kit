@@ -26,6 +26,12 @@ executors:
     working_directory: *working_directory
     docker:
       - image: circleci/node:10.17
+  cypress:
+    working_directory: *working_directory
+    docker:
+      - image: 'cypress/base:10.16.0'
+        environment:
+          TERM: xterm
 
 commands:
   setup_dependencies:
@@ -93,6 +99,77 @@ jobs:
       - setup_dependencies
       - restore_websites_bundle
       - vrt_tests
+  e2e_test:
+    executor: cypress
+    parameters:
+      record:
+        type: boolean
+        default: false
+      parallel:
+        type: boolean
+        default: false
+      parallelism:
+        type: integer
+        default: 1
+      start:
+        type: string
+        default: ''
+      build:
+        type: string
+        default: ''
+      wait-on:
+        type: string
+        default: ''
+      run-command:
+        type: string
+        default: ''
+      spec:
+        type: string
+        default: ''
+      group:
+        type: string
+        default: ''
+      store_artifacts:
+        type: boolean
+        default: false
+    steps:
+      - setup_dependencies
+      - restore_websites_bundle
+      - when:
+          condition: <<parameters.build>>
+          steps:
+            - run:
+                name: Building
+                command: <<parameters.build>>
+      - when:
+          condition: <<parameters.start>>
+          steps:
+            - run:
+                name: Starting
+                command: <<parameters.start>>
+                background: true
+      - when:
+          condition: <<parameters.wait-on>>
+          steps:
+            - run:
+                name: Waiting on <<parameters.wait-on>>
+                command: yarn run wait-on <<parameters.wait-on>>
+      - run:
+          name: Run Cypress tests
+          command: |
+            <<parameters.run-command>> \
+              <<# parameters.spec>> --spec '<<parameters.spec>>' <</ parameters.spec>> \
+              <<# parameters.record >> --record \
+                <<# parameters.group>> --group '<<parameters.group>>' <</ parameters.group>> \
+                <<# parameters.parallel>> --parallel <</ parameters.parallel>> \
+              <</ parameters.record>>
+      - when:
+          condition: << parameters.store_artifacts >>
+          steps:
+            - store_artifacts:
+                path: cypress/videos
+            - store_artifacts:
+                path: cypress/screenshots
 
 workflows:
   version: 2
@@ -102,3 +179,11 @@ workflows:
       - vrt_test:
           requires:
             - build_lint_and_test
+      - e2e_test:
+          name: e2e_smoke_tests
+          requires:
+            - build_lint_and_test
+          start: yarn run serve -l 8000 -n public
+          wait-on: 'http://localhost:8000'
+          run-command: PERCY_TOKEN="$PERCY_TOKEN_SMOKE_TESTS_E2E" yarn run percy exec -- yarn test:e2e --env CI=true
+          store_artifacts: true
