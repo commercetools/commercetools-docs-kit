@@ -6,11 +6,11 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "test-websites/*"
+    "websites/*"
   ],
   "scripts": {
-    "start": "yarn --cwd test-websites/docs-smoke-test start",
-    "build": "yarn --cwd test-websites/docs-smoke-test build",
+    "start": "yarn --cwd websites/docs-smoke-test start",
+    "build": "NODE_ENV=production lerna run build --scope '@commercetools-local/*'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",

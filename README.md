@@ -33,7 +33,7 @@ Build the packages
 $ yarn build
 ```
 
-Start the [docs-smoke-test website](./test-websites/docs-smoke-test):
+Start the [docs-smoke-test website](./websites/docs-smoke-test):
 
 ```bash
 $ yarn start
