@@ -22,6 +22,7 @@ const withoutPrefix = (value, pathPrefix) =>
   value.replace(new RegExp(`^${pathPrefix}`), '');
 
 const linkStyles = css`
+  text-decoration: underline;
   &,
   > code {
     color: ${colors.light.link};
@@ -106,7 +107,6 @@ const InlineLink = styled.span`
  * tracking Google Analytics.
  */
 const PureLink = extendedProps => {
-  console.log(extendedProps);
   const siteData = useSiteData();
   const { location, ...props } = extendedProps;
 
@@ -123,8 +123,8 @@ const PureLink = extendedProps => {
   const hrefWithoutPrefix = withoutPrefix(props.href, siteData.pathPrefix);
 
   // Construct an URL object for the given `href` and provide a "dummy" base origin
-  // from the current website location url with sole purpose of resolving the correct
-  // pathname in case the `href` is a filesystem-relative path.
+  // from the current website location url with the sole purpose of resolving
+  // the correct pathname in case the `href` is a filesystem-relative path.
   const hrefObject = new URL(
     hrefWithoutPrefix,
     `https://${dummyHostname}${pathnameWithoutPrefix}${location.hash}`
@@ -164,7 +164,7 @@ const PureLink = extendedProps => {
 
   // Case 2: the link points to the exact same page. We use only the `hash` parameter
   // to avoids Gatsby to add the `pathPrefix`.
-  const isAnchorLink = /^\/?#/.test(hrefWithoutPrefix);
+  const isAnchorLink = hrefWithoutPrefix.startsWith('#');
   const isLinkToSamePage = hrefObject.pathname === pathnameWithoutPrefix;
   if (isAnchorLink || isLinkToSamePage) {
     return (
