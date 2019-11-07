@@ -22,7 +22,8 @@
     "test": "jest --config jest.test.config.js",
     "test:watch": "yarn test --watch",
     "test:e2e": "cypress run",
-    "release": "lerna publish --exact"
+    "release": "lerna publish --exact",
+    "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes"
   },
   "devDependencies": {
     "@babel/core": "7.7.0",
