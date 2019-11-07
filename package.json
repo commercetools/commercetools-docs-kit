@@ -21,7 +21,8 @@
     "labels:sync": "github-labels sync",
     "test": "jest --config jest.test.config.js",
     "test:watch": "yarn test --watch",
-    "test:e2e": "cypress run"
+    "test:e2e": "cypress run",
+    "release": "lerna publish --exact"
   },
   "devDependencies": {
     "@babel/core": "7.7.0",
