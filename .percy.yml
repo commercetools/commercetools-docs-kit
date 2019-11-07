@@ -3,7 +3,7 @@ snapshot:
   widths: [512, 1200, 1634]
   min-height: 1024
 static-snapshots:
-  base-url: / # this is overriden in CI
+  base-url: /
   snapshot-files: '**/*.html,**/*.htm'
   ignore-files: '404.html,404/index.html'
 agent:
