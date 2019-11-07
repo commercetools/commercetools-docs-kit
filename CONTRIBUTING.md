@@ -34,7 +34,7 @@ Once it's done, you can run `yarn start` or `yarn test` (`yarn test:watch`) to d
 
 ## Developing locally
 
-To develop locally, you can use the `test-websites/docs-smoke-test` application to test the changes in some of the packages.
+To develop locally, you can use the `websites/docs-smoke-test` application to test the changes in some of the packages.
 
 ## Cutting a Release
 

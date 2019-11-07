@@ -40,6 +40,20 @@ commands:
       - run:
           name: Running linters and tests
           command: yarn run jest --projects jest.{eslint,stylelint,test}.config.js --maxWorkers=3 --reporters jest-silent-reporter
+  build_websites:
+    description: Building websites for production
+    steps:
+      - run: yarn build
+  save_websites_bundle:
+    steps:
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - public/
+  restore_websites_bundle:
+    steps:
+      - attach_workspace:
+          at: *working_directory
 
 jobs:
   build_lint_and_test:
@@ -48,6 +62,8 @@ jobs:
       - setup_dependencies
       - *save_yarn_cache
       - lint_and_test
+      - build_websites
+      - save_websites_bundle
 
 workflows:
   version: 2

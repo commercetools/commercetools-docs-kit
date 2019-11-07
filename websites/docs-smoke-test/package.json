@@ -1,5 +1,5 @@
 {
-  "name": "@commercetools-docs/docs-smoke-test",
+  "name": "@commercetools-local/docs-smoke-test",
   "version": "0.0.0",
   "private": true,
   "scripts": {
