@@ -1,0 +1,22 @@
+{
+  "name": "@commercetools-docs/api-docs-smoke-test",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "yarn develop",
+    "develop": "npx gatsby develop",
+    "serve": "npx gatsby serve --prefix-paths -o",
+    "clean": "npx gatsby clean",
+    "clean:develop": "yarn clean && yarn develop",
+    "build": "npx gatsby build --prefix-paths",
+    "prebuild": "yarn clean",
+    "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@commercetools-docs/gatsby-theme-docs": "1.0.0",
+    "@commercetools-docs/gatsby-transformer-webapi": "1.0.0",
+    "gatsby": "2.17.8",
+    "gatsby-cli": "2.8.3"
+  }
+}

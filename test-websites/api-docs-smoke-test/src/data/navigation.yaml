@@ -1,0 +1,5 @@
+- chapter-title: Home
+  pages:
+    - title: Home
+      path: /
+      beta: true
