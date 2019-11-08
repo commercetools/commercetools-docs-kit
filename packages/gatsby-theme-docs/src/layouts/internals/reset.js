@@ -106,8 +106,9 @@ const Reset = () => (
           border: 0;
           font-size: 100%;
           vertical-align: baseline;
-          min-width: 0; /* flexbox defaults to auto causing confusion*/
+          min-width: 0; /* flexbox defaults to auto causing confusion */
         }
+
         /* HTML5 display-role reset for older browsers */
         article,
         aside,
@@ -130,12 +131,11 @@ const Reset = () => (
         q {
           quotes: none;
         }
-        blockquote:before,
-        blockquote:after,
-        q:before,
-        q:after {
+        blockquote::before,
+        blockquote::after,
+        q::before,
+        q::after {
           content: '';
-          content: none;
         }
         table {
           border-collapse: collapse;
@@ -157,7 +157,7 @@ const Reset = () => (
           font-variant: normal;
           font-stretch: normal;
           font-family: 'Roboto', -apple-system, system-ui, BlinkMacSystemFont,
-            'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
           font-weight: ${typography.fontWeights.regular};
           font-size: ${typography.fontSizes.body};
           line-height: ${typography.lineHeights.body};
@@ -167,11 +167,12 @@ const Reset = () => (
 
           /* Allow Browsers to invest more CPU into text rendering.
           We do NOT apply '-moz-osx-font-smoothing: grayscale' and '-webkit-font-smoothing: antialiased'.
-          They worsen the experience on non-retina screens.*/
+          They worsen the experience on non-retina screens. */
           text-rendering: optimizelegibility;
 
-          /* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.*/
+          /* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS. */
           -webkit-text-size-adjust: 100%;
+
           /* Change the default tap highlight to be completely transparent in iOS. */
           -webkit-tap-highlight-color: rgba(black, 0);
         }
@@ -188,8 +189,8 @@ const Reset = () => (
         kbd,
         samp,
         pre {
-          font-family: 'Roboto Mono', Menlo, Monaco, Consolas, 'Liberation Mono',
-            'Courier New', monospace;
+          font-family: 'Roboto Mono', 'Menlo', 'Monaco', 'Consolas',
+            'Liberation Mono', 'Courier New', monospace;
           font-size: ${typography.fontSizes.small};
         }
 
@@ -208,6 +209,7 @@ const Reset = () => (
         a {
           color: ${colors.light.link};
           text-decoration: none;
+
           /* Remove the gray background on active links in IE 10. */
           background-color: transparent;
         }
@@ -233,7 +235,6 @@ const Reset = () => (
 
         abbr[title] {
           border-bottom: none;
-          text-decoration: underline;
           text-decoration: underline dotted;
         }
 
@@ -275,7 +276,6 @@ const Reset = () => (
           Credit: https://github.com/suitcss/base/ */
         button:focus {
           outline: 1px dotted;
-          outline: 5px auto -webkit-focus-ring-color;
         }
 
         /* Remove the inheritance of text transform in Firefox */
