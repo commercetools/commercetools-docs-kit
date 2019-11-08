@@ -147,6 +147,12 @@ module.exports = {
         icon: require.resolve('./src/icons/logo.svg'),
       },
     },
+    {
+      resolve: 'gatsby-plugin-extract-schema',
+      options: {
+        dest: `${__dirname}/generated/schema.json`,
+      },
+    },
     // This needs to be last
     // 'gatsby-plugin-offline', // TODO: decide if we want to use it or not
     'gatsby-plugin-meta-redirect',
