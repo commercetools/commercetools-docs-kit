@@ -152,4 +152,8 @@ export const typography = {
     medium: '500',
     bold: '700',
   },
+
+  lineHeights: {
+    body: pxToRem('23px'),
+  },
 };
