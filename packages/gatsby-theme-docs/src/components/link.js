@@ -109,10 +109,9 @@ const InlineLink = styled.span`
 const PureLink = extendedProps => {
   const siteData = useSiteData();
   const { location, ...props } = extendedProps;
-
   // For image links, return the link as-is.
   if (props.href.startsWith(withPrefix('/static'))) {
-    return <a {...props} />;
+    return <a {...props} role="image-link" />;
   }
 
   // Remove possible `pathPrefix` from both the `location.pathname` and the provided `href`.
@@ -121,13 +120,12 @@ const PureLink = extendedProps => {
     siteData.pathPrefix
   );
   const hrefWithoutPrefix = withoutPrefix(props.href, siteData.pathPrefix);
-
   // Construct an URL object for the given `href` and provide a "dummy" base origin
   // from the current website location url with the sole purpose of resolving
   // the correct pathname in case the `href` is a filesystem-relative path.
   const hrefObject = new URL(
     hrefWithoutPrefix,
-    `https://${dummyHostname}${pathnameWithoutPrefix}${location.hash}`
+    `https://${dummyHostname}${pathnameWithoutPrefix}${location.hash || ''}`
   );
 
   // Case 1: the link points to an external website.
@@ -223,7 +221,7 @@ PureLink.propTypes = {
   href: PropTypes.string.isRequired,
   target: PropTypes.string,
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   // from @react/router
   location: PropTypes.object.isRequired,
 };
