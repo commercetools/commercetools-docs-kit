@@ -1,8 +1,6 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
 
-import { colors, typography } from '../../design-system';
-
 /**
  * This component provides our global CSS Reset.
  * It builds on Eric Meyer's v2 reset plus our own reset here
@@ -156,14 +154,8 @@ const Reset = () => (
           font-style: normal;
           font-variant: normal;
           font-stretch: normal;
-          font-family: 'Roboto', -apple-system, system-ui, BlinkMacSystemFont,
-            'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
-          font-weight: ${typography.fontWeights.regular};
-          font-size: ${typography.fontSizes.body};
-          line-height: ${typography.lineHeights.body};
           text-align: left;
           vertical-align: baseline;
-          color: ${colors.light.primary};
 
           /* Allow Browsers to invest more CPU into text rendering.
           We do NOT apply '-moz-osx-font-smoothing: grayscale' and '-webkit-font-smoothing: antialiased'.
@@ -184,40 +176,6 @@ const Reset = () => (
           outline: 0 !important;
         }
 
-        /* Default typography for typical  monospace elements */
-        code,
-        kbd,
-        samp,
-        pre {
-          font-family: 'Roboto Mono', 'Menlo', 'Monaco', 'Consolas',
-            'Liberation Mono', 'Courier New', monospace;
-          font-size: ${typography.fontSizes.small};
-        }
-
-        /* default typography to bold (Roboto 700) weight for typically bold formatted elements */
-        b,
-        strong {
-          font-weight: ${typography.fontWeights.bold};
-        }
-
-        /* make small small */
-        small {
-          font-size: ${typography.fontSizes.small};
-        }
-
-        /* default to non-underlined, commercetools colored links. */
-        a {
-          color: ${colors.light.link};
-          text-decoration: none;
-
-          /* Remove the gray background on active links in IE 10. */
-          background-color: transparent;
-        }
-        a:hover,
-        a:active {
-          text-decoration: underline;
-        }
-
         svg {
           overflow: hidden;
           vertical-align: middle;
@@ -236,13 +194,6 @@ const Reset = () => (
         abbr[title] {
           border-bottom: none;
           text-decoration: underline dotted;
-        }
-
-        sub,
-        sup {
-          font-size: ${typography.fontSizes.extraSmall};
-          line-height: 0;
-          position: relative;
         }
         sub {
           bottom: -0.25em;

@@ -14,6 +14,8 @@ const Globals = () => (
         color: ${colors.light.textPrimary};
         font-family: ${typography.fontFamilies.primary};
         font-size: ${typography.rootFontSize};
+        font-weight: ${typography.fontWeights.regular};
+        line-height: ${typography.lineHeights.body};
       }
 
       iframe {
@@ -21,6 +23,34 @@ const Globals = () => (
         outline: 0;
         padding: 0;
         margin: 0;
+      }
+
+      /* Default typography for typical  monospace elements */
+      code,
+      kbd,
+      samp,
+      pre {
+        font-family: 'Roboto Mono', 'Menlo', 'Monaco', 'Consolas',
+          'Liberation Mono', 'Courier New', monospace;
+        font-size: ${typography.fontSizes.small};
+      }
+
+      /* default typography to bold (Roboto 700) weight for typically bold formatted elements */
+      b,
+      strong {
+        font-weight: ${typography.fontWeights.bold};
+      }
+
+      /* make small small */
+      small {
+        font-size: ${typography.fontSizes.small};
+      }
+
+      sub,
+      sup {
+        font-size: ${typography.fontSizes.extraSmall};
+        line-height: 0;
+        position: relative;
       }
 
       .section-h4 {
