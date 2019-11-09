@@ -1,6 +1,7 @@
 const webapi = require('webapi-parser');
 const firstline = require('firstline');
 const path = require('path');
+const fs = require('fs');
 
 async function onCreateNode({ node }) {
   if (!['File', 'RamlApi'].includes(node.internal.type)) return;
@@ -22,20 +23,21 @@ async function onCreateNode({ node }) {
   )
     return;
 
-  // const dumpsDir = path.join(path.resolve(`./api-spec-dumps/`), node.relativeDirectory);
-  // if (!fs.existsSync(dumpsDir)) fs.mkdirSync(dumpsDir);
+  const dumpsDir = path.join(
+    path.resolve(`./api-spec-dumps/`),
+    node.relativeDirectory
+  );
+  if (!fs.existsSync(dumpsDir)) fs.mkdirSync(dumpsDir);
 
   const parser = webapi.WebApiParser;
   const model = await parser.raml10.parse(`file://${node.absolutePath}`);
 
-  // Validate parser model and get validation results
-
-  // TODO validating creates inhumane output and even out of memory errors.
-  // const validationReport = await parser.raml10.validate(model)
-  // console.log('Validation errors:\n', validationReport.results)
-
-  // const errorDumpPath = path.join(path.resolve(`./api-spec-dumps/`), node.relativePath + '.validation.txt');
-  // fs.writeFileSync(errorDumpPath, util.inspect(validationReport, {depth: 20, colors: false }));
+  const validationReport = await parser.raml10.validate(model);
+  const errorDumpPath = path.join(
+    path.resolve(`./api-spec-dumps/`),
+    `${node.relativePath}.validation.txt`
+  );
+  fs.writeFileSync(errorDumpPath, validationReport.toString());
 
   const dumpsPath = path.join(
     path.resolve(`./api-spec-dumps/`),
@@ -44,7 +46,7 @@ async function onCreateNode({ node }) {
   await webapi.WebApiParser.raml10.generateFile(model, `file://${dumpsPath}`);
 
   const resolver = webapi.Resolver('RAML 1.0');
-  const resolved = resolver.resolve(model, 'editing'); // Note the 'editing' argument
+  const resolved = resolver.resolve(model, 'editing'); // Note the 'editing' argument, inoffical flag to retain the types
   const resolvedDumpsPath = path.join(
     path.resolve(`./api-spec-dumps/`),
     `${node.relativePath}.resolved.raml`
