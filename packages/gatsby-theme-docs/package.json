@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
