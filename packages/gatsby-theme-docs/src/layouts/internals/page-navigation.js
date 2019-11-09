@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Spacings } from '../../components';
 import { colors, dimensions, typography } from '../../design-system';
+import useActiveSection from '../../hooks/use-active-section';
 
 const itemType = {
   url: PropTypes.string.isRequired,
@@ -16,16 +16,8 @@ const itemsType = PropTypes.arrayOf(
   })
 );
 
-const isActiveLink = url =>
-  url === (typeof window !== 'undefined' && window.location.hash);
-
-const getActiveLinkStyles = props =>
-  isActiveLink(props.href)
-    ? css`
-        border-left: 1px solid ${colors.light.linkNavigation};
-        color: ${colors.light.linkNavigation};
-      `
-    : '';
+const isSelected = href =>
+  href === (typeof window !== 'undefined' && window.location.hash);
 
 const Link = styled.a`
   font-size: ${props => {
@@ -37,6 +29,9 @@ const Link = styled.a`
     }
   }};
   color: ${props => {
+    if (props.isActive) {
+      return colors.light.linkNavigation;
+    }
     switch (props.level) {
       case 1:
         return colors.light.textPrimary;
@@ -45,7 +40,12 @@ const Link = styled.a`
     }
   }};
   text-decoration: none;
-  border-left: 1px solid transparent;
+  border-left: ${props => {
+    if (props.isActive && isSelected(props.href)) {
+      return `1px solid ${colors.light.linkNavigation}`;
+    }
+    return '1px solid transparent';
+  }};
   :hover {
     color: ${colors.light.linkNavigation};
   }
@@ -53,8 +53,6 @@ const Link = styled.a`
   :active {
     outline-width: 0;
   }
-
-  ${getActiveLinkStyles}
 `;
 const Group = styled.ul`
   margin: 0;
@@ -94,6 +92,11 @@ const LevelGroup = props => {
             href={item.url}
             level={props.level}
             role={`level-${props.level}`}
+            isActive={
+              props.activeSection &&
+              props.activeSection.id.replace('section-', '') ===
+                item.url.substring(1)
+            }
           >
             <Indented level={props.level}>{item.title}</Indented>
           </Link>
@@ -101,6 +104,7 @@ const LevelGroup = props => {
             React.cloneElement(props.children, {
               items: item.items,
               level: props.level + 1,
+              activeSection: props.activeSection,
             })}
         </ListItem>
       ))}
@@ -109,20 +113,31 @@ const LevelGroup = props => {
 };
 LevelGroup.displayName = 'LevelGroup';
 LevelGroup.propTypes = {
-  level: PropTypes.oneOf([2, 3]).isRequired,
+  level: PropTypes.oneOf([2, 3]),
   items: itemsType,
+  activeSection: PropTypes.instanceOf(Element),
   children: PropTypes.node,
 };
 const Container = props => (
   <Spacings.Stack scale="s">
     {props.items.map((item, index) => (
       <Spacings.Stack scale="s" key={index}>
-        <Link href={item.url} level={1} role="level-1">
+        <Link
+          href={item.url}
+          level={1}
+          role="level-1"
+          isActive={
+            props.activeSection &&
+            props.activeSection.id.replace('section-', '') ===
+              item.url.substring(1)
+          }
+        >
           <Indented level={1}>{item.title}</Indented>
         </Link>
         {props.children &&
           React.cloneElement(props.children, {
             items: item.items,
+            activeSection: props.activeSection,
             level: 2,
           })}
       </Spacings.Stack>
@@ -132,16 +147,23 @@ const Container = props => (
 Container.displayName = 'Container';
 Container.propTypes = {
   items: itemsType.isRequired,
+  activeSection: PropTypes.instanceOf(Element),
   children: PropTypes.node,
 };
 
-const PageNavigation = props => (
-  <Container items={props.tableOfContents.items}>
-    <LevelGroup>
-      <LevelGroup />
-    </LevelGroup>
-  </Container>
-);
+const PageNavigation = props => {
+  const activeSection = useActiveSection();
+  return (
+    <Container
+      items={props.tableOfContents.items}
+      activeSection={activeSection}
+    >
+      <LevelGroup>
+        <LevelGroup />
+      </LevelGroup>
+    </Container>
+  );
+};
 PageNavigation.displayName = 'PageNavigation';
 PageNavigation.propTypes = {
   tableOfContents: PropTypes.shape({
