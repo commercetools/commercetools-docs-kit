@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Spacings } from '../../components';
-import { colors, dimensions, typography } from '../../design-system';
+import SafeHTMLElement from '../../utils/safe-html-element';
 import useActiveSection from '../../hooks/use-active-section';
+import { colors, dimensions, typography } from '../../design-system';
 
 const itemType = {
   url: PropTypes.string.isRequired,
@@ -115,7 +116,7 @@ LevelGroup.displayName = 'LevelGroup';
 LevelGroup.propTypes = {
   level: PropTypes.oneOf([2, 3]),
   items: itemsType,
-  activeSection: PropTypes.instanceOf(Element),
+  activeSection: PropTypes.instanceOf(SafeHTMLElement),
   children: PropTypes.node,
 };
 const Container = props => (
@@ -147,7 +148,7 @@ const Container = props => (
 Container.displayName = 'Container';
 Container.propTypes = {
   items: itemsType.isRequired,
-  activeSection: PropTypes.instanceOf(Element),
+  activeSection: PropTypes.instanceOf(SafeHTMLElement),
   children: PropTypes.node,
 };
 
