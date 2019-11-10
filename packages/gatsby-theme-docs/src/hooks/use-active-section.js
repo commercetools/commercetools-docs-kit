@@ -1,41 +1,41 @@
 import React from 'react';
 import throttle from 'lodash.throttle';
+import { dimensions } from '../design-system';
+
+const calculateOffset = () => {
+  const pxNumber = dimensions.heights.header.replace(/([0-9]+)px$/, '$1');
+  return parseInt(pxNumber, 10) + 1; // 1px makes it aligned with the browser "anchor position"
+};
+
+const getSectionElements = () =>
+  document.querySelectorAll('section[class^="section-h"]');
+const getScrollContainer = () => document.querySelector('[role="main"]');
 
 const throttleMs = 100;
-const offset = 49;
+const offset = calculateOffset();
 
 const useScrollSpy = () => {
   const [activeSection, setActiveSection] = React.useState();
 
   const onScroll = React.useCallback(
     throttle(() => {
-      const sectionElements = document.querySelectorAll(
-        "section[class^='section-h']"
-      );
+      const sectionElements = getSectionElements();
       let nextActiveSection;
-      for (let i = 0; i < sectionElements.length; i += 1) {
-        const section = sectionElements[i];
+      sectionElements.forEach(section => {
         if (section.getBoundingClientRect().top - offset < 0) {
           nextActiveSection = section;
-          // eslint-disable-next-line no-continue
-          continue;
         }
-        // No need to continue loop, if last element has been detected
-        break;
-      }
+      });
       setActiveSection(nextActiveSection);
     }, throttleMs),
     [setActiveSection]
   );
 
   React.useEffect(() => {
-    document
-      .querySelector('[role="main"]')
-      .addEventListener('scroll', onScroll);
+    const container = getScrollContainer();
+    container.addEventListener('scroll', onScroll);
     return () => {
-      document
-        .querySelector('[role="main"]')
-        .removeEventListener('scroll', onScroll);
+      container.removeEventListener('scroll', onScroll);
     };
   }, [onScroll]);
 
