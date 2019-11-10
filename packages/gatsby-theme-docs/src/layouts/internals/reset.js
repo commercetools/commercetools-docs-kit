@@ -104,7 +104,6 @@ const Reset = () => (
           border: 0;
           font-size: 100%;
           vertical-align: baseline;
-          min-width: 0; /* flexbox defaults to auto causing confusion */
         }
 
         /* HTML5 display-role reset for older browsers */
@@ -138,13 +137,6 @@ const Reset = () => (
         table {
           border-collapse: collapse;
           border-spacing: 0;
-        }
-
-        /* Change from 'box-sizing: content-box' so that 'width' is not affected by 'padding' or 'border'. */
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
         }
 
         body {
