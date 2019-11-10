@@ -17,8 +17,11 @@ const itemsType = PropTypes.arrayOf(
   })
 );
 
-const isSelected = href =>
+const getIsSelected = href =>
   href === (typeof window !== 'undefined' && window.location.hash);
+const getIsActive = (activeSection, urlHash) =>
+  activeSection &&
+  activeSection.id.replace('section-', '') === urlHash.substring(1);
 
 const Link = styled.a`
   font-size: ${props => {
@@ -42,7 +45,7 @@ const Link = styled.a`
   }};
   text-decoration: none;
   border-left: ${props => {
-    if (props.isActive && isSelected(props.href)) {
+    if (props.isActive && props.isSelected) {
       return `1px solid ${colors.light.linkNavigation}`;
     }
     return '1px solid transparent';
@@ -87,28 +90,30 @@ const LevelGroup = props => {
   }
   return (
     <Group level={props.level}>
-      {props.items.map((item, subItemIndex) => (
-        <ListItem key={subItemIndex}>
-          <Link
-            href={item.url}
-            level={props.level}
-            role={`level-${props.level}`}
-            isActive={
-              props.activeSection &&
-              props.activeSection.id.replace('section-', '') ===
-                item.url.substring(1)
-            }
-          >
-            <Indented level={props.level}>{item.title}</Indented>
-          </Link>
-          {props.children &&
-            React.cloneElement(props.children, {
-              items: item.items,
-              level: props.level + 1,
-              activeSection: props.activeSection,
-            })}
-        </ListItem>
-      ))}
+      {props.items.map((item, subItemIndex) => {
+        const isSelected = getIsSelected(item.url);
+        const isActive = getIsActive(props.activeSection, item.url);
+        return (
+          <ListItem key={subItemIndex}>
+            <Link
+              href={item.url}
+              level={props.level}
+              role={`level-${props.level}`}
+              isSelected={isSelected}
+              isActive={isActive}
+              aria-current={isActive}
+            >
+              <Indented level={props.level}>{item.title}</Indented>
+            </Link>
+            {props.children &&
+              React.cloneElement(props.children, {
+                items: item.items,
+                level: props.level + 1,
+                activeSection: props.activeSection,
+              })}
+          </ListItem>
+        );
+      })}
     </Group>
   );
 };
@@ -121,28 +126,31 @@ LevelGroup.propTypes = {
 };
 const Container = props => (
   <Spacings.Stack scale="s">
-    {props.items.map((item, index) => (
-      <Spacings.Stack scale="s" key={index}>
-        <Link
-          href={item.url}
-          level={1}
-          role="level-1"
-          isActive={
-            props.activeSection &&
-            props.activeSection.id.replace('section-', '') ===
-              item.url.substring(1)
-          }
-        >
-          <Indented level={1}>{item.title}</Indented>
-        </Link>
-        {props.children &&
-          React.cloneElement(props.children, {
-            items: item.items,
-            activeSection: props.activeSection,
-            level: 2,
-          })}
-      </Spacings.Stack>
-    ))}
+    {props.items.map((item, index) => {
+      const level = 1;
+      const isSelected = getIsSelected(item.url);
+      const isActive = getIsActive(props.activeSection, item.url);
+      return (
+        <Spacings.Stack scale="s" key={index}>
+          <Link
+            href={item.url}
+            level={level}
+            role={`level-${level}`}
+            isSelected={isSelected}
+            isActive={isActive}
+            aria-current={isActive}
+          >
+            <Indented level={1}>{item.title}</Indented>
+          </Link>
+          {props.children &&
+            React.cloneElement(props.children, {
+              items: item.items,
+              activeSection: props.activeSection,
+              level: 2,
+            })}
+        </Spacings.Stack>
+      );
+    })}
   </Spacings.Stack>
 );
 Container.displayName = 'Container';
