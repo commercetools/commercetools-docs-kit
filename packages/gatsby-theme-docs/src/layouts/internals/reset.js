@@ -120,10 +120,6 @@ const Reset = () => (
         section {
           display: block;
         }
-        ol,
-        ul {
-          list-style: none;
-        }
         blockquote,
         q {
           quotes: none;
