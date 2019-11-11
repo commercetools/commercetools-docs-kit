@@ -22,7 +22,7 @@ const TypographyPage = styled.div`
   word-spacing: 2px;
 
   section > * + * {
-    margin: ${dimensions.spacings.m} 0 0;
+    margin-top: ${dimensions.spacings.m};
   }
 `;
 const headerStyles = () => css`
