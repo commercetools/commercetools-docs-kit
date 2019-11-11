@@ -13,7 +13,6 @@ import copyToClipboard from '../utils/copy-to-clipboard';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
 import codeBlockHighlightCode from '../utils/code-block-highlight-code';
 import ExternalLink from './external-link';
-import Spacings from './spacings';
 
 const TypographyPage = styled.div`
   font-family: ${typography.fontFamilies.primary};
@@ -422,7 +421,16 @@ Link.propTypes = {
   children: PropTypes.node.isRequired,
 };
 const Img = props => (
-  <Spacings.Stack scale="s" alignItems="center">
+  <span
+    css={css`
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      > * + * {
+        margin: ${dimensions.spacings.s} 0 0;
+      }
+    `}
+  >
     <img
       {...props}
       css={css`
@@ -431,18 +439,17 @@ const Img = props => (
     />
     {/* eslint-disable-next-line react/prop-types */}
     {props.title ? (
-      <div
+      <span
         css={css`
           color: ${colors.light.textSecondary};
           font-size: ${typography.fontSizes.small};
-          margin: 0;
         `}
       >
         {/* eslint-disable-next-line react/prop-types */}
         {props.title}
-      </div>
+      </span>
     ) : null}
-  </Spacings.Stack>
+  </span>
 );
 
 /* eslint-disable react/display-name,react/prop-types */
