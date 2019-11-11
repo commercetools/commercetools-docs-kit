@@ -78,6 +78,7 @@
     "wait-on": "3.3.0"
   },
   "resolutions": {
+    "**/cypress": "3.6.1",
     "**/sharp": "0.22.1"
   },
   "engines": {
