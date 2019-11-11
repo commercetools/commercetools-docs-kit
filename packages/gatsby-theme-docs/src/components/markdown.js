@@ -421,7 +421,12 @@ Link.propTypes = {
 };
 const Img = props => (
   <>
-    <img {...props} />
+    <img
+      {...props}
+      css={css`
+        background-color: ${colors.light.surfacePrimary};
+      `}
+    />
     {/* eslint-disable-next-line react/prop-types */}
     {props.title ? (
       <div
