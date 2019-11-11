@@ -1,24 +1,3 @@
-- chapter-title: Home
-  pages:
-    - title: Home
-      path: /
-      beta: true
-- chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
-  pages:
-    - title: Page with some very long title too much for our innocent API to handle
-      path: /#foobar
-    - title: Beta Page with some very long title too much for our innocent API to handle
-      path: /#baz
-      beta: true
-- chapter-title: ChapterWithLongNameThatOverflowsBecauseItsOneWord
-  pages:
-    - title: PageWithLongNameThatOverflowsBecauseItsOneWord
-      path: /#foo
-    - title: BetaPageWithLongNameThatOverflowsBecauseItsOneWord
-      path: /#bar
-      beta: true
-- chapter-title: Empty Beta Chapter
-  pages:
 - chapter-title: Basic Content
   pages:
     - title: Text
@@ -75,65 +54,17 @@
       path: /code-samples/code-with-title/
     - title: Multi-Language Code
       path: /code-samples/multi-language-code/
-- chapter-title: API Types
+- chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
   pages:
-    - title: OutOfOrderPropertiesTestType
-      path: /api-types/out-of-order-properties-test-type/
-    - title: ConstantLikeType
-      path: /api-types/constant-like-type/
-    - title: NumberTestType
-      path: /api-types/number-test-type/
-    - title: IntegerTestType
-      path: /api-types/integer-test-type/
-    - title: FloatTestType
-      path: /api-types/float-test-type/
-    - title: StringTestType
-      path: /api-types/string-test-type/
-    - title: BooleanTestType
-      path: /api-types/boolean-test-type/
-    - title: DateTestType
-      path: /api-types/date-test-type/
-    - title: ObjectTestType
-      path: /api-types/object-test-type/
-    - title: ObjectTestTypeDraft
-      path: /api-types/object-test-type-draft/
-    - title: AnyTestType
-      path: /api-types/any-test-type/
-    - title: EnumTest
-      path: /api-types/enum-test/
-    - title: EnumPropertiesType
-      path: /api-types/enum-properties-type/
-    - title: ArrayTestType
-      path: /api-types/array-test-type/
-    - title: UnionLikeType
-      path: /api-types/union-like-type/
-    - title: OptionalPropertyTestType
-      path: /api-types/optional-property-test-type/
-    - title: AnnotationsTestType
-      path: /api-types/annotations-test-type/
-    - title: ExamplesTestType
-      path: /api-types/examples-test-type/
-    - title: SingleExampleTestType
-      path: /api-types/single-example-test-type/
-    - title: SingleFullExampleTestType
-      path: /api-types/single-full-example-test-type/
-- chapter-title: API Endpoints
+    - title: Page with some very long title too much for our innocent API to handle
+      path: /#foobar
+    - title: Beta Page with some very long title too much for our innocent API to handle
+      path: /#baz
+      beta: true
+- chapter-title: ChapterWithLongNameThatOverflowsBecauseItsOneWord
   pages:
-    - title: GET Resource
-      path: /api-endpoints/simple-resource-get/
-    - title: GET Resource by ID
-      path: /api-endpoints/simple-resource-get-by-id/
-    - title: GET Resource by key
-      path: /api-endpoints/simple-resource-get-by-key/
-    - title: GET Search Resource
-      path: /api-endpoints/simple-resource-search/
-    - title: POST Resource
-      path: /api-endpoints/simple-resource-post/
-    - title: POST with all options
-      path: /api-endpoints/complexity-smoketest-post/
-    - title: POST Resource by ID
-      path: /api-endpoints/simple-resource-post-by-id/
-    - title: DELETE resource by ID
-      path: /api-endpoints/simple-resource-delete-by-id/
-    - title: All Endpoints of Resource
-      path: /api-endpoints/endpoints-for-resource/
+    - title: PageWithLongNameThatOverflowsBecauseItsOneWord
+      path: /#foo
+    - title: BetaPageWithLongNameThatOverflowsBecauseItsOneWord
+      path: /#bar
+      beta: true
