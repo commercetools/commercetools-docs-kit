@@ -118,6 +118,7 @@ const LayoutSidebar = props => {
         {portalNode &&
           ReactDOM.createPortal(
             <MenuButton
+              aria-label="Open main navigation"
               onClick={() => {
                 props.setMenuOpen(!props.isMenuOpen);
               }}

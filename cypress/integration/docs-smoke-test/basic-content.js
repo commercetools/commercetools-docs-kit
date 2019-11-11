@@ -1,23 +1,5 @@
 import { URL_DOCS_SMOKE_TEST } from '../../support/urls';
 
-describe('Homepage', () => {
-  it('should render mobile viewport', () => {
-    cy.setMobileViewport();
-    cy.visit(URL_DOCS_SMOKE_TEST);
-    cy.percySnapshot();
-  });
-  it('should render tablet viewport', () => {
-    cy.setTabletViewport();
-    cy.visit(URL_DOCS_SMOKE_TEST);
-    cy.percySnapshot();
-  });
-  it('should render desktop viewport', () => {
-    cy.setDesktopViewport();
-    cy.visit(URL_DOCS_SMOKE_TEST);
-    cy.percySnapshot();
-  });
-});
-
 describe('Pagination', () => {
   const baseUrl = `${URL_DOCS_SMOKE_TEST}/smoke-tests`;
   const links = [
@@ -44,7 +26,6 @@ describe('Pagination', () => {
         cy.findByText('Next:').click();
         cy.url().should('include', nextUrl);
       }
-      cy.percySnapshot();
     });
   });
 });
