@@ -105,6 +105,7 @@ const Ol = styled.ol`
 const Li = styled.li``;
 const Table = styled.table`
   border: 1px solid ${colors.light.borderPrimary};
+  border-top: 2px solid ${colors.light.borderPrimary};
   border-collapse: collapse;
   font-size: ${typography.fontSizes.body};
   margin: 0;
