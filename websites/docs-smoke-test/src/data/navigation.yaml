@@ -25,6 +25,7 @@
     - title: Page with little content
       path: /smoke-tests/page-with-little-content/
 - chapter-title: Custom Elements
+  beta: true
   pages:
     - title: Info Boxes
       path: /custom-elements/info-boxes/
