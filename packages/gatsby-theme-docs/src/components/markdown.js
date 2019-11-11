@@ -61,10 +61,12 @@ const H4 = styled.h4`
 const H5 = styled.h5`
   ${headerStyles};
   font-size: ${typography.fontSizes.h5};
+  font-weight: ${typography.fontWeights.regular};
 `;
 const H6 = styled.h6`
   ${headerStyles};
   font-size: ${typography.fontSizes.h6};
+  font-weight: ${typography.fontWeights.regular};
   line-height: 1.4;
 `;
 const ThematicBreak = styled.hr`
