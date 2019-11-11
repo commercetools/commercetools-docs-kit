@@ -22,7 +22,7 @@ const TypographyPage = styled.div`
   word-spacing: 2px;
 
   section > * + * {
-    margin: ${dimensions.spacings.m} 0 0;
+    margin-top: ${dimensions.spacings.m};
   }
 `;
 const headerStyles = () => css`
@@ -61,10 +61,12 @@ const H4 = styled.h4`
 const H5 = styled.h5`
   ${headerStyles};
   font-size: ${typography.fontSizes.h5};
+  font-weight: ${typography.fontWeights.regular};
 `;
 const H6 = styled.h6`
   ${headerStyles};
   font-size: ${typography.fontSizes.h6};
+  font-weight: ${typography.fontWeights.regular};
   line-height: 1.4;
 `;
 const ThematicBreak = styled.hr`
@@ -103,6 +105,7 @@ const Ol = styled.ol`
 const Li = styled.li``;
 const Table = styled.table`
   border: 1px solid ${colors.light.borderPrimary};
+  border-top: 2px solid ${colors.light.borderPrimary};
   border-collapse: collapse;
   font-size: ${typography.fontSizes.body};
   margin: 0;
@@ -418,22 +421,35 @@ Link.propTypes = {
   children: PropTypes.node.isRequired,
 };
 const Img = props => (
-  <>
-    <img {...props} />
+  <span
+    css={css`
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      > * + * {
+        margin: ${dimensions.spacings.s} 0 0;
+      }
+    `}
+  >
+    <img
+      {...props}
+      css={css`
+        background-color: ${colors.light.surfacePrimary};
+      `}
+    />
     {/* eslint-disable-next-line react/prop-types */}
     {props.title ? (
       <span
         css={css`
           color: ${colors.light.textSecondary};
           font-size: ${typography.fontSizes.small};
-          margin: 0;
         `}
       >
         {/* eslint-disable-next-line react/prop-types */}
         {props.title}
       </span>
     ) : null}
-  </>
+  </span>
 );
 
 /* eslint-disable react/display-name,react/prop-types */

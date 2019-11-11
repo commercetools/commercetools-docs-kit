@@ -137,7 +137,7 @@ export const typography = {
     h2: pxToRem('26px'),
     h3: pxToRem('24px'),
     h4: pxToRem('20px'),
-    h5: pxToRem('18px'),
+    h5: pxToRem('16px'),
     h6: pxToRem('16px'),
     body: pxToRem('16px'),
     small: pxToRem('14px'),
