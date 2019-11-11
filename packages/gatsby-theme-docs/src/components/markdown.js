@@ -422,7 +422,7 @@ const Img = props => (
     <img {...props} />
     {/* eslint-disable-next-line react/prop-types */}
     {props.title ? (
-      <span
+      <div
         css={css`
           color: ${colors.light.textSecondary};
           font-size: ${typography.fontSizes.small};
@@ -431,7 +431,7 @@ const Img = props => (
       >
         {/* eslint-disable-next-line react/prop-types */}
         {props.title}
-      </span>
+      </div>
     ) : null}
   </>
 );
