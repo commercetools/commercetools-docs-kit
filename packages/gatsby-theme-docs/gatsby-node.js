@@ -31,6 +31,7 @@ exports.sourceNodes = ({ actions }) => {
     type NavigationYaml implements Node @dontInfer {
       id: ID!
       chapterTitle: String! @proxy(from: "chapter-title")
+      beta: Boolean
       pagination: Boolean
       pages: [Entry!]
     }
