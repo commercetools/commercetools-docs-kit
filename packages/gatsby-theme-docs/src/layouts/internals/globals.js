@@ -14,6 +14,7 @@ const Globals = () => (
         color: ${colors.light.textPrimary};
         font-family: ${typography.fontFamilies.primary};
         font-size: ${typography.rootFontSize};
+        font-weight: ${typography.fontWeights.regular};
       }
 
       iframe {
@@ -77,6 +78,29 @@ const Globals = () => (
         background-color: ${colors.light.surfaceCodeHighlight};
         width: 100%;
         display: inline-block;
+      }
+
+      /* Resets */
+      code,
+      kbd,
+      samp,
+      pre {
+        font-family: ${typography.fontFamilies.code}, 'Menlo', 'Monaco',
+          'Consolas', 'Liberation Mono', 'Courier New', monospace;
+        font-size: ${typography.fontSizes.small};
+      }
+      b,
+      strong {
+        font-weight: ${typography.fontWeights.bold};
+      }
+      small {
+        font-size: ${typography.fontSizes.small};
+      }
+      sub,
+      sup {
+        font-size: ${typography.fontSizes.extraSmall};
+        line-height: 0;
+        position: relative;
       }
     `}
   />
