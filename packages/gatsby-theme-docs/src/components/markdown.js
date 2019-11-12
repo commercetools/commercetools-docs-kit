@@ -12,6 +12,7 @@ import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
 import codeBlockHighlightCode from '../utils/code-block-highlight-code';
+import codeBlockCommandLines from '../utils/code-block-command-lines';
 import ExternalLink from './external-link';
 
 const TypographyPage = styled.div`
@@ -211,7 +212,7 @@ const TooltipBodyComponent = styled.div`
 `;
 const CodeBlock = props => {
   const className = props.children.props ? props.children.props.className : '';
-  const languageToken = className || 'text';
+  const languageToken = className || 'language-text';
   const [languageTag] = languageToken.split(':');
   const languageAliases = { sh: 'bash', zsh: 'bash', js: 'javascript' };
   const parsedLanguage = languageTag.split('language-').pop();
@@ -221,14 +222,15 @@ const CodeBlock = props => {
     props.children.props && props.children.props.children
       ? props.children.props.children
       : props.children;
-  const { splitLanguage, highlightLines } = codeBlockParseOptions(language);
+  const { highlightLines, outputLines } = codeBlockParseOptions(
+    languageToken + props.children.props.metastring
+  );
   const formattedContent = codeBlockHighlightCode(
-    splitLanguage,
+    language,
     content,
     highlightLines
   ).replace(/\n$/, '');
-  const numberOfLines =
-    formattedContent.length === 0 ? 0 : formattedContent.split(`\n`).length;
+  const useCommandLine = [`console`].includes(language);
 
   // Copy to clipboard logic
   const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
@@ -313,29 +315,18 @@ const CodeBlock = props => {
         ]
           .filter(Boolean)
           .join(' ')}
-        data-language={splitLanguage}
+        data-language={language}
       >
-        <pre
-          className={`language-${splitLanguage} line-numbers`}
-          css={css`
-            counter-reset: linenumber;
-          `}
-        >
-          <span
-            aria-hidden="true"
-            className="line-numbers-rows"
-            css={css`
-              white-space: normal !important;
-              width: auto !important;
-              left: 0 !important;
-            `}
-          >
-            {Array.from({ length: numberOfLines }).map((_, index) => (
-              <span key={index} />
-            ))}
-          </span>
+        <pre className={`language-${language}`}>
+          {useCommandLine && (
+            <span
+              dangerouslySetInnerHTML={{
+                __html: codeBlockCommandLines(content, outputLines),
+              }}
+            />
+          )}
           <code
-            className={`language-${splitLanguage}`}
+            className={`language-${language}`}
             dangerouslySetInnerHTML={{
               __html: formattedContent,
             }}

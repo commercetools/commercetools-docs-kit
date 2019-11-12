@@ -15,7 +15,6 @@ export default function parseCodeBlockOptions(language) {
     let promptUserLocal;
     let promptHostLocal;
     // Options can be given in any order and are optional
-
     options.forEach(option => {
       option = option.slice(0, -1);
       const splitOption = option.replace(/ /g, ``).split(`:`);
