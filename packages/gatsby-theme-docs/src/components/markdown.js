@@ -12,7 +12,6 @@ import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
 import codeBlockHighlightCode from '../utils/code-block-highlight-code';
-import codeBlockCommandLines from '../utils/code-block-command-lines';
 import ExternalLink from './external-link';
 
 const TypographyPage = styled.div`
@@ -294,22 +293,29 @@ const TooltipBodyComponent = styled.div`
 const CodeBlock = props => {
   const className = props.children.props ? props.children.props.className : '';
   const languageToken = className || 'language-text';
-  const languageAliases = { sh: 'bash', zsh: 'bash', js: 'javascript' };
+  const languageAliases = {
+    sh: 'bash',
+    zsh: 'bash',
+    console: 'bash',
+    js: 'javascript',
+  };
   const [, languageCode] = languageToken.split('language-');
   const language = languageAliases[languageCode] || languageCode;
   const { highlightLines, noPromptLines } = codeBlockParseOptions(
     props.children.props
   );
+  const useCommandLine = [`console`].includes(languageCode);
   const content =
     props.children.props && props.children.props.children
       ? props.children.props.children
       : props.children;
-  const formattedContent = codeBlockHighlightCode(
+  const formattedContent = codeBlockHighlightCode({
     language,
-    content,
-    highlightLines
-  ).replace(/\n$/, '');
-  const useCommandLine = [`console`].includes(language);
+    code: content,
+    highlightLines,
+    noPromptLines,
+    useCommandLine,
+  }).replace(/\n$/, '');
 
   // Copy to clipboard logic
   const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
@@ -397,13 +403,6 @@ const CodeBlock = props => {
         data-language={language}
       >
         <pre className={`language-${language}`}>
-          {useCommandLine && (
-            <span
-              dangerouslySetInnerHTML={{
-                __html: codeBlockCommandLines(content, noPromptLines),
-              }}
-            />
-          )}
           <code
             className={`language-${language}`}
             dangerouslySetInnerHTML={{

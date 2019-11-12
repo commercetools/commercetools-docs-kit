@@ -85,12 +85,13 @@ const Globals = () => (
         width: 100%;
         display: inline-block;
       }
-      .gatsby-highlight .command-line-prompt > span[data-prompt]::before {
+      .gatsby-highlight .gatsby-highlight-code-prompt::before {
         content: '$';
+        margin-right: 8px;
       }
-      .gatsby-highlight .command-line-prompt {
-        border: none;
-        margin: 0;
+      .gatsby-highlight .gatsby-highlight-code-prompt.no-prompt::before {
+        content: ' ';
+        margin-right: 8px;
       }
 
       /* Resets */
