@@ -20,6 +20,8 @@ const dummyHostname = 'dummy.com';
 const withoutPrefix = (value, pathPrefix) =>
   value.replace(new RegExp(`^${pathPrefix}`), '');
 
+const withTrailingSlash = value => `${value.replace(/\/?$/, '')}/`;
+
 const linkStyles = css`
   text-decoration: underline;
   &,
@@ -187,7 +189,7 @@ const PureLink = extendedProps => {
     return (
       <GatsbyRouterLink
         role="gatsby-link"
-        to={hrefObject.pathname + hrefObject.hash}
+        to={withTrailingSlash(hrefObject.pathname) + hrefObject.hash}
         className={props.className}
       >
         {props.children}
@@ -202,8 +204,10 @@ const PureLink = extendedProps => {
     isLinkToAnotherDocsSite &&
     !isProduction &&
     !isUsingUndocumentedNotationToLinkToAnotherDocsSite
-      ? hrefObject.origin + hrefObject.pathname + hrefObject.hash
-      : hrefObject.pathname + hrefObject.hash;
+      ? hrefObject.origin +
+        withTrailingSlash(hrefObject.pathname) +
+        hrefObject.hash
+      : withTrailingSlash(hrefObject.pathname) + hrefObject.hash;
   return (
     <InternalSiteLink
       role="internal-link"

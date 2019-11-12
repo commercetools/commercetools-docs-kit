@@ -12,19 +12,9 @@ title: Page that Tests Links
 [Link]()
 ```
 
-| Link      | Type           | Expected outcome                                |
-| --------- | -------------- | ----------------------------------------------- |
-|  [Link]() |  `anchor-link` |  It should render as a link that does not work. |
-
-### Link pointing to just whitespace-like
-
-```md
-[Link]()
-```
-
-| Link      | Type           | Expected outcome                                |
-| --------- | -------------- | ----------------------------------------------- |
-|  [Link]() |  `anchor-link` |  It should render as a link that does not work. |
+| Link      | Type           | Expected outcome                       |
+| --------- | -------------- | -------------------------------------- |
+|  [Link]() |  `gatsby-link` |  It renders a link to the parent page. |
 
 ### Link pointing to a different website
 
@@ -59,22 +49,22 @@ title: Page that Tests Links
 ### Link to another page on this site, but using an absolute URL
 
 ```md
-[Link](https://docs.commercetools.com/docs-smoke-test/api/types/)
+[Link](https://docs.commercetools.com/docs-smoke-test/code-block/)
 ```
 
-| Link                                                               | Type             | Expected outcome                                          |
-| ------------------------------------------------------------------ | ---------------- | --------------------------------------------------------- |
-|  [Link](https://docs.commercetools.com/docs-smoke-test/api/types/) |  `external-link` |  It should render an outbound link, no "smart" detection. |
+| Link                                                                | Type             | Expected outcome                                                               |
+| ------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------ |
+|  [Link](https://docs.commercetools.com/docs-smoke-test/code-block/) |  `internal-link` | It should render an absolute URL in dev mode and a relative path in prod mode. |
 
 ### Link to another page on this site using a full path
 
 ```md
-[Link](/api/types/)
+[Link](/code-samples/code-block/)
 ```
 
-| Link                 | Type            | Expected outcome                                 |
-| -------------------- | --------------- | ------------------------------------------------ |
-|  [Link](/api/types/) |  `history-link` |  It should be a Gatsby link, history navigation. |
+| Link                               | Type           | Expected outcome                                 |
+| ---------------------------------- | -------------- | ------------------------------------------------ |
+|  [Link](/code-samples/code-block/) |  `gatsby-link` |  It should be a Gatsby link, history navigation. |
 
 ### Link to another page on this site with a specific anchor a page on this site
 
@@ -82,9 +72,9 @@ title: Page that Tests Links
 [Link](/#linked-from-links)
 ```
 
-| Link                         | Type            | Expected outcome                                                                                   |
-| ---------------------------- | --------------- | -------------------------------------------------------------------------------------------------- |
-|  [Link](/#linked-from-links) |  `history-link` |  It should be a Gatsby link, history navigation, and directly jump to the anchor element position. |
+| Link                         | Type           | Expected outcome                                                                                   |
+| ---------------------------- | -------------- | -------------------------------------------------------------------------------------------------- |
+|  [Link](/#linked-from-links) |  `gatsby-link` |  It should be a Gatsby link, history navigation, and directly jump to the anchor element position. |
 
 ### Link to another page on this site using a relative upwards traversal path
 
@@ -92,9 +82,9 @@ title: Page that Tests Links
 [Link](../)
 ```
 
-| Link         | Type            | Expected outcome                                                     |
-| ------------ | --------------- | -------------------------------------------------------------------- |
-|  [Link](../) |  `history-link` |  It should be a Gatsby link, history navigation, to a parent folder. |
+| Link         | Type           | Expected outcome                                                     |
+| ------------ | -------------- | -------------------------------------------------------------------- |
+|  [Link](../) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a parent folder. |
 
 ### Link to a sub-page of this one (omitting the trailing slash)
 
@@ -102,9 +92,9 @@ title: Page that Tests Links
 [Link](link-target)
 ```
 
-| Link                 | Type            | Expected outcome                                                  |
-| -------------------- | --------------- | ----------------------------------------------------------------- |
-|  [Link](link-target) |  `history-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
+| Link                 | Type           | Expected outcome                                                  |
+| -------------------- | -------------- | ----------------------------------------------------------------- |
+|  [Link](link-target) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
 
 ### Link to a sub-page of this one (including the trailing slash)
 
@@ -112,9 +102,9 @@ title: Page that Tests Links
 [Link](link-target/)
 ```
 
-| Link                  | Type            | Expected outcome                                                  |
-| --------------------- | --------------- | ----------------------------------------------------------------- |
-|  [Link](link-target/) |  `history-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
+| Link                  | Type           | Expected outcome                                                  |
+| --------------------- | -------------- | ----------------------------------------------------------------- |
+|  [Link](link-target/) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
 
 ### Link to a page of another internal site using a full url (recommended)
 

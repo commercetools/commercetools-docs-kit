@@ -55,22 +55,22 @@ describe('rendering', () => {
       expected: { role: 'anchor-link', href: '' },
     },
     {
-      title: 'anchor link empty',
-      props: { href: '' },
-      location: { pathname: '/page-1/' },
-      expected: { role: 'anchor-link' },
-    },
-    {
       title: 'history link to another page',
       props: { href: '/page-2' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'gatsby-link' },
+      expected: { role: 'gatsby-link', href: '/page-2/' },
     },
     {
       title: 'history link to a sub-page',
       props: { href: 'getting-started' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'gatsby-link', href: '/page-1/getting-started' },
+      expected: { role: 'gatsby-link', href: '/page-1/getting-started/' },
+    },
+    {
+      title: 'history link from a sub-page to a parent page',
+      props: { href: '/page-1/' },
+      location: { pathname: '/page-1/getting-started/' },
+      expected: { role: 'gatsby-link' },
     },
     {
       title: 'history link to a sub-page using a trailing slash',
@@ -82,13 +82,13 @@ describe('rendering', () => {
       title: 'history link to a parent page',
       props: { href: '../page-2' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'gatsby-link', href: '/page-2' },
+      expected: { role: 'gatsby-link', href: '/page-2/' },
     },
     {
       title: 'history link to another page with hash',
       props: { href: '/page-2#title' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'gatsby-link', href: '/page-2#title' },
+      expected: { role: 'gatsby-link', href: '/page-2/#title' },
     },
     {
       title: 'internal link',
@@ -96,21 +96,21 @@ describe('rendering', () => {
       location: { pathname: '/page-1/' },
       expected: {
         role: 'internal-link',
-        href: 'https://docs.commercetools.com/site-key/page-1',
+        href: 'https://docs.commercetools.com/site-key/page-1/',
       },
     },
     {
       title: 'internal link',
       props: { href: 'https://docs.commercetools.com/site-key/page-1' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'internal-link', href: '/site-key/page-1' },
+      expected: { role: 'internal-link', href: '/site-key/page-1/' },
       isProd: true,
     },
     {
       title: 'internal link using "/../" notation',
       props: { href: '/../site-key/page-1' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'internal-link', href: '/site-key/page-1' },
+      expected: { role: 'internal-link', href: '/site-key/page-1/' },
     },
     {
       title: 'internal link with hash',
@@ -118,7 +118,7 @@ describe('rendering', () => {
       location: { pathname: '/page-1/' },
       expected: {
         role: 'internal-link',
-        href: 'https://docs.commercetools.com/site-key/page-1#title',
+        href: 'https://docs.commercetools.com/site-key/page-1/#title',
       },
     },
     {
@@ -127,7 +127,7 @@ describe('rendering', () => {
       location: { pathname: '/page-1/' },
       expected: {
         role: 'internal-link',
-        href: '/site-key/page-1#title',
+        href: '/site-key/page-1/#title',
       },
       isProd: true,
     },
