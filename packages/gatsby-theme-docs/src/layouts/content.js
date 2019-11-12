@@ -1,23 +1,23 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
-import { css } from "@emotion/core";
-import styled from "@emotion/styled";
-import { ContentPagination, NotificationInfo, Markdown } from "../components";
-import { dimensions, tokens } from "../design-system";
-import PlaceholderPageHeaderSide from "../overrides/page-header-side";
-import { SiteDataContext } from "../hooks/use-site-data";
-import LayoutApplication from "./internals/layout-application";
-import LayoutHeader from "./internals/layout-header";
-import LayoutSidebar from "./internals/layout-sidebar";
-import LayoutMain from "./internals/layout-main";
-import LayoutFooter from "./internals/layout-footer";
-import Reset from "./internals/reset";
-import Globals from "./internals/globals";
-import LayoutPageHeader from "./internals/layout-page-header";
-import LayoutPageHeaderSide from "./internals/layout-page-header-side";
-import LayoutPageNavigation from "./internals/layout-page-navigation";
-import LayoutPageContent from "./internals/layout-page-content";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import { ContentPagination, NotificationInfo, Markdown } from '../components';
+import { dimensions, tokens } from '../design-system';
+import PlaceholderPageHeaderSide from '../overrides/page-header-side';
+import { SiteDataContext } from '../hooks/use-site-data';
+import LayoutApplication from './internals/layout-application';
+import LayoutHeader from './internals/layout-header';
+import LayoutSidebar from './internals/layout-sidebar';
+import LayoutMain from './internals/layout-main';
+import LayoutFooter from './internals/layout-footer';
+import Reset from './internals/reset';
+import Globals from './internals/globals';
+import LayoutPageHeader from './internals/layout-page-header';
+import LayoutPageHeaderSide from './internals/layout-page-header-side';
+import LayoutPageNavigation from './internals/layout-page-navigation';
+import LayoutPageContent from './internals/layout-page-content';
 
 const GridArea = styled.div`
   grid-area: ${props => props.name};
@@ -31,7 +31,7 @@ const ResizableGrid = styled.div`
   @media screen and (${dimensions.viewports.desktop}) {
     display: grid;
     grid:
-      [row1-start] "left center right" auto [row1-end]
+      [row1-start] 'left center right' auto [row1-end]
       / minmax(0, 100%) 1fr minmax(0, 100%);
     width: auto;
   }
@@ -74,7 +74,7 @@ const LayoutContent = props => {
 
             @media screen and (${dimensions.viewports.mobile}) {
               grid-column: 1/3;
-              grid-row: ${isMenuOpen ? "3" : "2"};
+              grid-row: ${isMenuOpen ? '3' : '2'};
             }
           `}
         >
@@ -135,20 +135,20 @@ const LayoutContent = props => {
     </SiteDataContext.Provider>
   );
 };
-LayoutContent.displayName = "LayoutContent";
+LayoutContent.displayName = 'LayoutContent';
 LayoutContent.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    shortTitle: PropTypes.string
+    shortTitle: PropTypes.string,
   }).isRequired,
   pageData: PropTypes.shape({
     frontmatter: PropTypes.shape({
       title: PropTypes.string.isRequired,
-      beta: PropTypes.bool
+      beta: PropTypes.bool,
     }).isRequired,
-    tableOfContents: PropTypes.object.isRequired
+    tableOfContents: PropTypes.object.isRequired,
   }).isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default LayoutContent;
