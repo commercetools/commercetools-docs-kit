@@ -14,8 +14,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "1.0.0",
-    "@commercetools-docs/gatsby-transformer-webapi": "1.0.0",
+    "@commercetools-docs/gatsby-theme-docs": "1.0.0-alpha.0",
+    "@commercetools-docs/gatsby-transformer-webapi": "1.0.0-alpha.0",
     "gatsby": "2.17.8",
     "gatsby-cli": "2.8.3"
   }
