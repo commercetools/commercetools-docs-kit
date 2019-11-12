@@ -5,11 +5,10 @@ import { Link as GatsbyLink, withPrefix } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import getEnv from '../utils/get-env';
 import ExternalLinkIcon from '../icons/external-link-icon.svg';
 import { colors, dimensions } from '../design-system';
 import { useSiteData } from '../hooks/use-site-data';
-
-const isProduction = process.env.NODE_ENV === 'production';
 
 const productionHostname = 'docs.commercetools.com';
 const dummyHostname = 'dummy.com';
@@ -46,7 +45,7 @@ const AnchorLink = styled.a`
   ${linkStyles}
 `;
 const InternalSiteLink = styled(AnchorLink)``;
-const HistoryLink = styled(GatsbyLink)`
+const GatsbyRouterLink = styled(GatsbyLink)`
   ${linkStyles}
 `;
 const InlineLink = styled.span`
@@ -186,32 +185,30 @@ const PureLink = extendedProps => {
     isUsingUndocumentedNotationToLinkToAnotherDocsSite || isSameDocsHostname;
   if (!isLinkToAnotherDocsSite) {
     return (
-      <HistoryLink
-        role="history-link"
+      <GatsbyRouterLink
+        role="gatsby-link"
         to={hrefObject.pathname + hrefObject.hash}
         className={props.className}
       >
         {props.children}
-      </HistoryLink>
+      </GatsbyRouterLink>
     );
   }
 
   // All other links (e.g. to another documentation micro site) should be rendered as normal
   // HTML links.
+  const isProduction = getEnv('production');
+  const internalHref =
+    isLinkToAnotherDocsSite &&
+    !isProduction &&
+    !isUsingUndocumentedNotationToLinkToAnotherDocsSite
+      ? hrefObject.origin + hrefObject.pathname + hrefObject.hash
+      : hrefObject.pathname + hrefObject.hash;
   return (
     <InternalSiteLink
       role="internal-link"
-      href={hrefObject.pathname + hrefObject.hash}
+      href={internalHref}
       className={props.className}
-      onClick={event => {
-        if (!isProduction && isLinkToAnotherDocsSite) {
-          event.stopPropagation();
-          // eslint-disable-next-line no-alert
-          alert(
-            `Attempting to navigate to ${hrefWithoutPrefix}.\nThis link leads to another documentation site and is disabled in development mode. In production (live domain or deploy previews) the link will work as normal.`
-          );
-        }
-      }}
     >
       {props.children}
     </InternalSiteLink>

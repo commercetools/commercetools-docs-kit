@@ -6,9 +6,11 @@ import {
   LocationProvider,
 } from '@reach/router';
 import { useSiteData } from '../hooks/use-site-data';
+import getEnv from '../utils/get-env';
 import Link from './link';
 
 jest.mock('../hooks/use-site-data');
+jest.mock('../utils/get-env');
 
 // for some types of tests you want a memory source
 const renderLink = (ui, initialPath) => {
@@ -62,37 +64,47 @@ describe('rendering', () => {
       title: 'history link to another page',
       props: { href: '/page-2' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'history-link' },
+      expected: { role: 'gatsby-link' },
     },
     {
       title: 'history link to a sub-page',
       props: { href: 'getting-started' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'history-link', href: '/page-1/getting-started' },
+      expected: { role: 'gatsby-link', href: '/page-1/getting-started' },
     },
     {
       title: 'history link to a sub-page using a trailing slash',
       props: { href: 'getting-started/' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'history-link', href: '/page-1/getting-started/' },
+      expected: { role: 'gatsby-link', href: '/page-1/getting-started/' },
     },
     {
       title: 'history link to a parent page',
       props: { href: '../page-2' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'history-link', href: '/page-2' },
+      expected: { role: 'gatsby-link', href: '/page-2' },
     },
     {
       title: 'history link to another page with hash',
       props: { href: '/page-2#title' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'history-link', href: '/page-2#title' },
+      expected: { role: 'gatsby-link', href: '/page-2#title' },
+    },
+    {
+      title: 'internal link',
+      props: { href: 'https://docs.commercetools.com/site-key/page-1' },
+      location: { pathname: '/page-1/' },
+      expected: {
+        role: 'internal-link',
+        href: 'https://docs.commercetools.com/site-key/page-1',
+      },
     },
     {
       title: 'internal link',
       props: { href: 'https://docs.commercetools.com/site-key/page-1' },
       location: { pathname: '/page-1/' },
       expected: { role: 'internal-link', href: '/site-key/page-1' },
+      isProd: true,
     },
     {
       title: 'internal link using "/../" notation',
@@ -104,20 +116,41 @@ describe('rendering', () => {
       title: 'internal link with hash',
       props: { href: 'https://docs.commercetools.com/site-key/page-1#title' },
       location: { pathname: '/page-1/' },
-      expected: { role: 'internal-link', href: '/site-key/page-1#title' },
+      expected: {
+        role: 'internal-link',
+        href: 'https://docs.commercetools.com/site-key/page-1#title',
+      },
+    },
+    {
+      title: 'internal link with hash',
+      props: { href: 'https://docs.commercetools.com/site-key/page-1#title' },
+      location: { pathname: '/page-1/' },
+      expected: {
+        role: 'internal-link',
+        href: '/site-key/page-1#title',
+      },
+      isProd: true,
     },
   ];
 
-  const scenariosInProdMode = scenarios.map(scenario => ({
+  const scenariosWithPathPrefix = scenarios.map(scenario => ({
     ...scenario,
     location: { pathname: withPrefix(scenario.location.pathname) },
-    isProd: true,
+    withPathPrefix: true,
   }));
 
-  scenarios.concat(scenariosInProdMode).forEach(scenario => {
-    it(`${scenario.isProd ? `[pathPrefix: ${pathPrefix}] ` : ''}${
-      scenario.title
-    }: ${scenario.props.href}`, () => {
+  scenarios.concat(scenariosWithPathPrefix).forEach(scenario => {
+    const title = [
+      scenario.withPathPrefix && `[pathPrefix: ${pathPrefix}]`,
+      scenario.title,
+      scenario.isProd === true && '(prod)',
+      scenario.props.href,
+    ]
+      .filter(Boolean)
+      .join(' ');
+    it(title, () => {
+      getEnv.mockReturnValue(scenario.isProd === true);
+
       const rendered = renderLink(
         <Link {...scenario.props}>{scenario.title}</Link>,
         scenario.location.pathname
