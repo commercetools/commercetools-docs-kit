@@ -11,16 +11,18 @@ The following block-level code samples must be
 
 ### Terminal/Console
 
-```console{outputLines: 2-4}
-ls \
-  -l \
-  -a \
-  -h
+```console noPromptLines=3-4
+cd project
+cp -R \
+  dist \
+  public/
+rm -rf dist
+yarn start
 ```
 
 ### Javascript
 
-```javascript
+```javascript highlightLines=2,5-6
 // Constructor
 var anObject = new Object();
 
