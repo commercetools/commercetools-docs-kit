@@ -72,6 +72,7 @@ const Globals = () => (
           margin: 0 0 0 ${dimensions.spacings.m};
         }
       }
+      .gatsby-highlight pre[class*='language-'],
       .gatsby-highlight code[class*='language-'] {
         white-space: pre-wrap;
       }
