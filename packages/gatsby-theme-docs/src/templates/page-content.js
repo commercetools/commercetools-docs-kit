@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
-import LayoutContent from '../layouts/content';
-import { SEO, Markdown, Subtitle } from '../components';
-import PlaceholderMarkdownComponents from '../overrides/markdown-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { MDXProvider } from "@mdx-js/react";
+import LayoutContent from "../layouts/content";
+import { SEO, Markdown, Subtitle, Info, Warning, Error } from "../components";
+import PlaceholderMarkdownComponents from "../overrides/markdown-components";
 
 // See https://mdxjs.com/getting-started#table-of-components
 const components = {
@@ -39,10 +39,14 @@ const components = {
   // eslint-disable-next-line react/display-name
   pre: Markdown.CodeBlock,
 
+  // Official react components to be used in MDX files
   Subtitle,
+  Info,
+  Warning,
+  Error,
 
-  // Custom React components to be used in MDX files
-  ...PlaceholderMarkdownComponents,
+  // Custom React components to be overriden in microsites.
+  ...PlaceholderMarkdownComponents
 };
 
 const PageContentTemplate = props => (
@@ -63,21 +67,21 @@ const PageContentTemplate = props => (
   </LayoutContent>
 );
 
-PageContentTemplate.displayName = 'PageContentTemplate';
+PageContentTemplate.displayName = "PageContentTemplate";
 PageContentTemplate.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    shortTitle: PropTypes.string,
+    shortTitle: PropTypes.string
   }).isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({
-        title: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
       }).isRequired,
       body: PropTypes.string.isRequired,
-      tableOfContents: PropTypes.object.isRequired,
-    }).isRequired,
-  }).isRequired,
+      tableOfContents: PropTypes.object.isRequired
+    }).isRequired
+  }).isRequired
 };
 export default PageContentTemplate;
 

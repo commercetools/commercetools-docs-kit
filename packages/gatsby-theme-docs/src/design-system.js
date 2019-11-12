@@ -39,6 +39,9 @@ export const colors = {
     surfaceCodeHighlight: uikitColors.colorAccent40,
     surfaceInfo: uikitColors.colorInfo95,
     surfaceQuote: uikitColors.colorAccent98,
+    surfaceInfo2: '#eef4f7',
+    surfaceWarning: '#fef0e7',
+    surfaceError: '#ffe5ee',
     // Different tones of text
     textPrimary: uikitColors.colorSolid,
     textSecondary: '#666666',
@@ -55,6 +58,10 @@ export const colors = {
     link: uikitColors.colorPrimary25,
     linkHover: uikitColors.colorPrimary,
     linkNavigation: uikitColors.colorInfo,
+    // icons
+    iconInfo: uikitColors.colorInfo,
+    iconWarning: '#f16d0e',
+    iconError: uikitColors.colorError,
   },
 };
 
