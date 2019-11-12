@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Spacings } from '../../components';
+import SafeHTMLElement from '../../utils/safe-html-element';
+import useActiveSection from '../../hooks/use-active-section';
 import { colors, dimensions, typography } from '../../design-system';
 
 const itemType = {
@@ -16,16 +17,9 @@ const itemsType = PropTypes.arrayOf(
   })
 );
 
-const isActiveLink = url =>
-  url === (typeof window !== 'undefined' && window.location.hash);
-
-const getActiveLinkStyles = props =>
-  isActiveLink(props.href)
-    ? css`
-        border-left: 1px solid ${colors.light.linkNavigation};
-        color: ${colors.light.linkNavigation};
-      `
-    : '';
+const getIsActive = (activeSection, urlHash) =>
+  activeSection &&
+  activeSection.id.replace('section-', '') === urlHash.substring(1);
 
 const Link = styled.a`
   font-size: ${props => {
@@ -37,6 +31,9 @@ const Link = styled.a`
     }
   }};
   color: ${props => {
+    if (props.isActive) {
+      return colors.light.linkNavigation;
+    }
     switch (props.level) {
       case 1:
         return colors.light.textPrimary;
@@ -45,7 +42,12 @@ const Link = styled.a`
     }
   }};
   text-decoration: none;
-  border-left: 1px solid transparent;
+  border-left: ${props => {
+    if (props.isActive) {
+      return `1px solid ${colors.light.linkNavigation}`;
+    }
+    return '1px solid transparent';
+  }};
   :hover {
     color: ${colors.light.linkNavigation};
   }
@@ -53,8 +55,6 @@ const Link = styled.a`
   :active {
     outline-width: 0;
   }
-
-  ${getActiveLinkStyles}
 `;
 const Group = styled.ul`
   margin: 0;
@@ -88,60 +88,85 @@ const LevelGroup = props => {
   }
   return (
     <Group level={props.level}>
-      {props.items.map((item, subItemIndex) => (
-        <ListItem key={subItemIndex}>
-          <Link
-            href={item.url}
-            level={props.level}
-            role={`level-${props.level}`}
-          >
-            <Indented level={props.level}>{item.title}</Indented>
-          </Link>
-          {props.children &&
-            React.cloneElement(props.children, {
-              items: item.items,
-              level: props.level + 1,
-            })}
-        </ListItem>
-      ))}
+      {props.items.map((item, subItemIndex) => {
+        const isActive = getIsActive(props.activeSection, item.url);
+        return (
+          <ListItem key={subItemIndex}>
+            <Link
+              href={item.url}
+              level={props.level}
+              role={`level-${props.level}`}
+              isActive={isActive}
+              aria-current={isActive}
+            >
+              <Indented level={props.level}>{item.title}</Indented>
+            </Link>
+            {props.children &&
+              React.cloneElement(props.children, {
+                items: item.items,
+                level: props.level + 1,
+                activeSection: props.activeSection,
+              })}
+          </ListItem>
+        );
+      })}
     </Group>
   );
 };
 LevelGroup.displayName = 'LevelGroup';
 LevelGroup.propTypes = {
-  level: PropTypes.oneOf([2, 3]).isRequired,
+  level: PropTypes.oneOf([2, 3]),
   items: itemsType,
+  activeSection: PropTypes.instanceOf(SafeHTMLElement),
   children: PropTypes.node,
 };
 const Container = props => (
   <Spacings.Stack scale="s">
-    {props.items.map((item, index) => (
-      <Spacings.Stack scale="s" key={index}>
-        <Link href={item.url} level={1} role="level-1">
-          <Indented level={1}>{item.title}</Indented>
-        </Link>
-        {props.children &&
-          React.cloneElement(props.children, {
-            items: item.items,
-            level: 2,
-          })}
-      </Spacings.Stack>
-    ))}
+    {props.items.map((item, index) => {
+      const level = 1;
+      const isActive = getIsActive(props.activeSection, item.url);
+      return (
+        <Spacings.Stack scale="s" key={index}>
+          <Link
+            href={item.url}
+            level={level}
+            role={`level-${level}`}
+            isActive={isActive}
+            aria-current={isActive}
+          >
+            <Indented level={1}>{item.title}</Indented>
+          </Link>
+          {props.children &&
+            React.cloneElement(props.children, {
+              items: item.items,
+              activeSection: props.activeSection,
+              level: 2,
+            })}
+        </Spacings.Stack>
+      );
+    })}
   </Spacings.Stack>
 );
 Container.displayName = 'Container';
 Container.propTypes = {
   items: itemsType.isRequired,
+  activeSection: PropTypes.instanceOf(SafeHTMLElement),
   children: PropTypes.node,
 };
 
-const PageNavigation = props => (
-  <Container items={props.tableOfContents.items}>
-    <LevelGroup>
-      <LevelGroup />
-    </LevelGroup>
-  </Container>
-);
+const PageNavigation = props => {
+  const activeSection = useActiveSection();
+  return (
+    <Container
+      items={props.tableOfContents.items}
+      activeSection={activeSection}
+    >
+      <LevelGroup>
+        <LevelGroup />
+      </LevelGroup>
+    </Container>
+  );
+};
 PageNavigation.displayName = 'PageNavigation';
 PageNavigation.propTypes = {
   tableOfContents: PropTypes.shape({
