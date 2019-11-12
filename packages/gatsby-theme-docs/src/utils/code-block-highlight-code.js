@@ -6,12 +6,14 @@ import handleDirectives from './code-block-directives';
 
 const unsupportedLanguages = new Set();
 
-export default (
+export default ({
   language,
   code,
-  lineNumbersHighlight = [],
-  noInlineHighlight = false
-) => {
+  highlightLines = [],
+  noInlineHighlight = false,
+  noPromptLines,
+  useCommandLine,
+}) => {
   // (Try to) load languages on demand.
   if (!Prism.languages[language]) {
     try {
@@ -42,7 +44,12 @@ export default (
 
   const grammar = Prism.languages[language];
   const highlighted = Prism.highlight(code, grammar, language);
-  const codeSplits = handleDirectives(highlighted, lineNumbersHighlight);
+  const codeSplits = handleDirectives({
+    code: highlighted,
+    highlightLines,
+    noPromptLines,
+    useCommandLine,
+  });
 
   let finalCode = ``;
   const lastIdx = codeSplits.length - 1; // Don't add back the new line character after highlighted lines

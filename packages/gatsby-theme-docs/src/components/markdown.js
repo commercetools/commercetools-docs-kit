@@ -209,26 +209,111 @@ const TooltipBodyComponent = styled.div`
   font-size: ${typography.fontSizes.extraSmall};
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
+
+/**
+ * This components implements most of the logic from `gatsby-remark-prismjs`.
+ * https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-remark-prismjs
+ *
+ * We need to implement this logic on our own (at least for now) because of the
+ * copy-to-clipboard functionality, as we need access to the raw content.
+ * If we were to use the gatsby plugin, we would get the formatted content from props.
+ *
+ * ## Description
+ * The CodeBlock component is used to provide syntax highlighting to the markdown
+ * code block syntax ```.
+ * It supports all the "common languages" as well as some extra features.
+ *
+ * ## Usage
+ * The normal way to use it is by adding the appropriate language of your choice next
+ * to the code block syntax:
+ *
+ * ```javascript
+ * // This is a js comment
+ * ```
+ *
+ * ## Additional features
+ * The CodeBlock component also supports optional features to enhance the final output.
+ * Those features are controlled by using the "infostring" syntax supported by MDX.
+ * https://github.com/mdx-js/mdx/pull/257
+ *
+ * ```javascript foo=bar
+ * // This is a js comment
+ * ```
+ *
+ * Given the above syntax, the CodeBlock component will receive the following props:
+ *
+ * {
+ *   children: {
+ *    props: {
+ *      children: '// This is a js comment',
+ *      className: 'language-javascript',
+ *      foo: 'bar',
+ *      mdxType: 'code',
+ *      metastring: 'foo=bar',
+ *      originalType: 'code',
+ *      parentName: 'pre',
+ *    }
+ *   }
+ * }
+ *
+ * ### Highlighted lines
+ * This feature allows to select lines to be visually highlighted in the final output.
+ * To use this, you need to pass `highlightLines=<range>`. The range can be a single line
+ * number or a range of line numbers separated by `-`. Multiple highlighted lines can be
+ * provided as comma-separated values.
+ *
+ * ```javascript highlightLines=1,5
+ * const sum = (x, y) => {
+ *   if (typeof x !== 'number' || typeof y !== 'number') {
+ *     throw new Error('Both arguments need to be numbers.');
+ *   }
+ *   return x + y;
+ * }
+ * ```
+ *
+ * ### Prompt lines
+ * This feature allows to mark a line with a prompt `$` in front of it.
+ * To use this, you need to pass `promptLines=<range>`. The range can be a single line
+ * number or a range of line numbers separated by `-`. Multiple highlighted lines can be
+ * provided as comma-separated values.
+ * This feature only works for the `console` or `terminal` language syntax.
+ *
+ * ```console promptLines=1-2,5-6
+ * cd project
+ * cp -R \
+ *   dist \
+ *   public/
+ * rm -rf dist
+ * yarn start
+ * ```
+ */
 const CodeBlock = props => {
   const className = props.children.props ? props.children.props.className : '';
-  const languageToken = className || 'text';
-  const [languageTag] = languageToken.split(':');
-  const languageAliases = { sh: 'bash', zsh: 'bash', js: 'javascript' };
-  const parsedLanguage = languageTag.split('language-').pop();
-  const [languageCode] = parsedLanguage.split('{');
+  const languageToken = className || 'language-text';
+  const languageAliases = {
+    sh: 'bash',
+    zsh: 'bash',
+    console: 'bash',
+    terminal: 'bash',
+    js: 'javascript',
+  };
+  const [, languageCode] = languageToken.split('language-');
   const language = languageAliases[languageCode] || languageCode;
+  const { highlightLines, noPromptLines } = codeBlockParseOptions(
+    props.children.props
+  );
+  const useCommandLine = ['terminal', 'console'].includes(languageCode);
   const content =
     props.children.props && props.children.props.children
       ? props.children.props.children
       : props.children;
-  const { splitLanguage, highlightLines } = codeBlockParseOptions(language);
-  const formattedContent = codeBlockHighlightCode(
-    splitLanguage,
-    content,
-    highlightLines
-  ).replace(/\n$/, '');
-  const numberOfLines =
-    formattedContent.length === 0 ? 0 : formattedContent.split(`\n`).length;
+  const formattedContent = codeBlockHighlightCode({
+    language,
+    code: content,
+    highlightLines,
+    noPromptLines,
+    useCommandLine,
+  }).replace(/\n$/, '');
 
   // Copy to clipboard logic
   const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
@@ -263,13 +348,13 @@ const CodeBlock = props => {
           }
         `}
       >
-        {language === 'text' ? null : (
+        {languageCode === 'text' ? null : (
           <span
             css={css`
               color: ${colors.light.textFaded};
             `}
           >
-            {language}
+            {languageCode}
           </span>
         )}
         <Tooltip
@@ -313,29 +398,11 @@ const CodeBlock = props => {
         ]
           .filter(Boolean)
           .join(' ')}
-        data-language={splitLanguage}
+        data-language={language}
       >
-        <pre
-          className={`language-${splitLanguage} line-numbers`}
-          css={css`
-            counter-reset: linenumber;
-          `}
-        >
-          <span
-            aria-hidden="true"
-            className="line-numbers-rows"
-            css={css`
-              white-space: normal !important;
-              width: auto !important;
-              left: 0 !important;
-            `}
-          >
-            {Array.from({ length: numberOfLines }).map((_, index) => (
-              <span key={index} />
-            ))}
-          </span>
+        <pre className={`language-${language}`}>
           <code
-            className={`language-${splitLanguage}`}
+            className={`language-${language}`}
             dangerouslySetInnerHTML={{
               __html: formattedContent,
             }}

@@ -9,9 +9,36 @@ The following block-level code samples must be
 - have a copy button
 - do not have a header bar because they don't have a title and are single-language
 
+### Terminal/Console
+
+"terminal" or "console" samples should
+
+- have a command prompt
+- wrap lines but indent the second line so it's visually clearer that it's the same line
+- syntax highlight as bash / sh.
+- if not prompt lines are explicitly configured, all lines are prompt lines (i.e. no output included)
+
+```console noPromptLines=3-4
+cd project
+cp -R \
+  dist \
+  public/
+rm -rf dist
+yarn start
+```
+
+Typical tutorial like two-step sequence:
+
+```console
+# fetch a token:
+curl https://auth.sphere.io/oauth/token --basic --user "{client_id}:{client_secret}" -X POST -d "grant_type=client_credentials&scope=manage_project:{project_key}"
+# now access the API:
+curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/products
+```
+
 ### Javascript
 
-```javascript
+```javascript highlightLines=2,5-6
 // Constructor
 var anObject = new Object();
 
@@ -96,17 +123,26 @@ echo 'I am currently ' . myAge(1995) . ' old.';
 
 ```sh
 #!/bin/bash
-for jpg; do                                  # use $jpg in place of each filename given, in turn
-    png="${jpg%.jpg}.png"                    # construct the PNG version of the filename by replacing .jpg with .png
-    echo converting "$jpg" ...               # output status info to the user running the script
-    if convert "$jpg" jpg.to.png ; then      # use the convert program (common in Linux) to create the PNG in a temp file
-        mv jpg.to.png "$png"                 # if it worked, rename the temporary PNG image to the correct name
-    else                                     # ...otherwise complain and exit from the script
-        echo 'jpg2png: error: failed output saved in "jpg.to.png".' >&2
+# use $jpg in place of each filename given, in turn
+for jpg; do
+    # construct the PNG version of the filename by replacing .jpg with .png
+    png="${jpg%.jpg}.png"
+    # output status info to the user running the script
+    echo converting "$jpg" ...
+    # use the convert program (common in Linux) to create the PNG in a temp file
+    if convert "$jpg" jpg.to.png ; then
+        # if it worked, rename the temporary PNG image to the correct name
+        mv jpg.to.png "$png"
+    # ...otherwise complain and exit from the script
+    else
+        echo 'jpg2png: error: failed output saved in "jpg.to.png". adksjflkasd fkljasd lfkja lksdjf lkasdjf lkasdjf lkajsd fkljas dlkfj asdflk' >&2
         exit 1
-    fi                                       # the end of the "if" test construct
-done                                         # the end of the "for" loop
-echo all conversions successful              # tell the user the good news
+    # the end of the "if" test construct
+    fi
+# the end of the "for" loop
+done
+# tell the user the good news
+echo all conversions successful
 exit 0
 ```
 

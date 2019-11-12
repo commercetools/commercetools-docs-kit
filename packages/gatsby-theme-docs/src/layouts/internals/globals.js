@@ -61,6 +61,7 @@ const Globals = () => (
       .gatsby-highlight pre[class*='language-'] {
         background-color: ${colors.light.surfaceCode};
         margin: 0;
+        padding: 0;
       }
       .gatsby-highlight pre[class*='language-'].line-numbers {
         display: flex;
@@ -71,6 +72,10 @@ const Globals = () => (
           margin: 0 0 0 ${dimensions.spacings.m};
         }
       }
+      .gatsby-highlight pre[class*='language-'],
+      .gatsby-highlight code[class*='language-'] {
+        white-space: pre-wrap;
+      }
       .gatsby-highlight .line-numbers,
       .gatsby-highlight .line-numbers-rows {
         position: relative;
@@ -79,6 +84,16 @@ const Globals = () => (
         background-color: ${colors.light.surfaceCodeHighlight};
         width: 100%;
         display: inline-block;
+      }
+      .gatsby-highlight .gatsby-highlight-code-prompt {
+        display: inline-block;
+        margin: 0 0 0 ${dimensions.spacings.m};
+      }
+      .gatsby-highlight .gatsby-highlight-code-prompt::before {
+        content: attr(data-prompt);
+        margin: 0 0 0 -${dimensions.spacings.m};
+        padding: 0 ${dimensions.spacings.s} 0 0;
+        color: ${colors.light.surfaceSecondary3};
       }
 
       /* Resets */
