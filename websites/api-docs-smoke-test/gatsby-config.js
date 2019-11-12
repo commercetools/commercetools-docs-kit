@@ -12,7 +12,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
+        name: 'api-specs',
         path: path.resolve(`./src/api-specs`),
       },
     },
@@ -22,20 +22,6 @@ module.exports = {
       options: {
         validate: true,
         includeApis: ['test'],
-        annotateConstantLikeEnums: true,
-        annotateUnionLikeInheritance: true,
-        customNumberScalars: true,
-        flattenLibraryNamespaces: true,
-        movePropertiesToTop: [
-          'id',
-          'version',
-          'key',
-          'createdAt',
-          'createdBy',
-          'lastModifiedAt',
-          'lastModifiedBy',
-        ],
-        movePropertiesToBottom: ['custom'],
       },
     },
   ],
