@@ -40,14 +40,15 @@ async function onCreateNode(
   );
 
   const apiNode = {
-    id: createNodeId(`${node.id}.${apiKey} >>> RESOLVED_RAML_API`),
+    id: createNodeId(`${node.id}.${apiKey} >>> RESOLVED_WEBAPI_RAML`),
+    apiKey,
     children: [],
     parent: node.id,
     internal: {
       content: resolvedRamlString,
       contentDigest: createContentDigest(resolvedRamlString),
       mediaType: node.internal.mediaType,
-      type: 'ResolvedRamlApi',
+      type: 'ResolvedWebapiRaml',
     },
   };
   createNode(apiNode);
