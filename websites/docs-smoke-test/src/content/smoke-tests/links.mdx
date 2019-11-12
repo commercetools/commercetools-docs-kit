@@ -136,16 +136,6 @@ title: Page that Tests Links
 | ------------------------ | ---------------- | ------------------------------------------------------------- |
 |  [Link](/../import-api/) |  `internal-link` |  It should be a normal html link (only in `production` mode). |
 
-## Link use cases that detect logically addressed API elements
-
-These would typically appear in RAML description texts, but using this addressing in MD(X) content can also be helpful when refactoring a site's structure.
-
-**NOT YET TO BE SUPPORTED:** Here's a [Link pointing a URN style location of a type definition that is actually on this site](ctp:test:type:UnionLikeType) - `ctp:test:type:UnionLikeType`. It should transition to the definition of that type and be rendered as the type name "UnionLikeType".
-
-**NOT YET TO BE SUPPORTED:** Here's a [Link pointing a URN style location of a type definition that isn't actually on this site](ctp:test:type:UnionLikeType) - `ctp:test:type:UnionLikeType`. It should render no link but just the type name as a text span. (TODO better as a code span?)
-
-**NOT YET TO BE SUPPORTED:** Here's a [Link pointing a URN style location of an endpoint definition that is actually on this site](ctp:test:endpoint:/{projectKey}/resource/{id}:GET) - `ctp:test:endpoint:/{projectKey}/resource/{id}:GET`. It should transition to the definition of that endpoint and be rendered as "GET /{projectKey}/resource/{id}" (TODO a code formatting or plain text?).
-
 ## Last Heading
 
 This paragraph just serves as a link target. The Anchor ID should be `#last-heading`
