@@ -33,7 +33,7 @@ Build the packages
 $ yarn build
 ```
 
-Start the [docs-smoke-test website](./test-websites/docs-smoke-test):
+Start the [docs-smoke-test website](./websites/docs-smoke-test):
 
 ```bash
 $ yarn start
@@ -46,3 +46,11 @@ Please look at the single packages in [`packages` folder](./packages) for docume
 ## Contributing
 
 Contributions are welcomed. Please have a read at our [contribution guidelines](CONTRIBUTING.md).
+
+## Licenses
+
+Source code is under the MIT License (see the [LICENSE](LICENSE) file)
+
+All icons, images and the implemented visual design are **UNLICENSED** outside commercetools and its subsidiaries.
+
+Individual packages in this repository can have deviating licensing in their respective `LICENSE`, `README.md` and `package.json` files.

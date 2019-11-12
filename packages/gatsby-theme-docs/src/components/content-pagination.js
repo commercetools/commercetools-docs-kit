@@ -10,6 +10,8 @@ import Card from './card';
 import Spacings from './spacings';
 import TextSmall from './text-small';
 
+const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
+
 const PaginationButtonLink = styled(Link)`
   text-align: ${props => props.align};
   text-decoration: none;
@@ -101,8 +103,8 @@ export const PurePagination = props => {
     },
     []
   );
-  const currentPageLinkIndex = chapterPageLinks.findIndex(page =>
-    props.slug.startsWith(page.path)
+  const currentPageLinkIndex = chapterPageLinks.findIndex(
+    page => trimTrailingSlash(props.slug) === trimTrailingSlash(page.path)
   );
   const hasPagination = currentPageLinkIndex > -1;
   const previousPage = chapterPageLinks[currentPageLinkIndex - 1];

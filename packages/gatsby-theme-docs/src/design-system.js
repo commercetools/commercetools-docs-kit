@@ -73,37 +73,37 @@ export const tokens = {
 const breakpoints = {
   // content page + padding left/right
   content: `calc(
-    ${pxToRem(pageWidth)} +
-    ${pxToRem('32px')} * 2
+    ${pageWidth} +
+    32px * 2
   )`,
   // content page + padding left/right + page navigation
   contentAndPageNavigation: `calc(
-    ${pxToRem(pageWidth)} +
-    ${pxToRem('32px')} * 2 +
-    ${pxToRem(navbarWidth)}
+    ${pageWidth} +
+    32px * 2 +
+    ${navbarWidth}
   )`,
   // content page + padding left/right + page navigation + main navigation
   contentAndBothNavigations: `calc(
-    ${pxToRem(pageWidth)} +
-    ${pxToRem('32px')} * 2 +
-    ${pxToRem(navbarWidth)} * 2
+    ${pageWidth} +
+    32px * 2 +
+    ${navbarWidth} * 2
   )`,
   // double content page + padding left/center/right + page navigation + main navigation
   doubleContentAndBothNavigations: `calc(
-    ${pxToRem(pageWidth)} * 2 +
-    ${pxToRem('32px')} * 3 +
-    ${pxToRem(navbarWidth)} * 2
+    ${pageWidth} * 2 +
+    32px * 3 +
+    ${navbarWidth} * 2
   )`,
 };
 
 export const dimensions = {
   heights: {
-    header: pxToRem('48px'),
+    header: '48px',
   },
   widths: {
-    pageContent: pxToRem(pageWidth),
-    pageNavigation: pxToRem(navbarWidth),
-    marketingContent: pxToRem('1168px'),
+    pageContent: pageWidth,
+    pageNavigation: navbarWidth,
+    marketingContent: '1168px',
   },
   viewports: {
     mobile: `max-width: ${breakpoints.content}`,
@@ -137,7 +137,7 @@ export const typography = {
     h2: pxToRem('26px'),
     h3: pxToRem('24px'),
     h4: pxToRem('20px'),
-    h5: pxToRem('18px'),
+    h5: pxToRem('16px'),
     h6: pxToRem('16px'),
     body: pxToRem('16px'),
     small: pxToRem('14px'),
@@ -151,5 +151,9 @@ export const typography = {
     regular: '400',
     medium: '500',
     bold: '700',
+  },
+
+  lineHeights: {
+    body: pxToRem('23px'),
   },
 };

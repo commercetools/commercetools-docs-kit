@@ -18,6 +18,7 @@ const SidebarLinkTitle = styled.div`
   font-size: ${typography.fontSizes.body};
   text-overflow: ellipsis;
   overflow-x: hidden;
+  width: 100%;
 `;
 const SidebarLinkSubtitle = styled.div`
   font-size: ${typography.fontSizes.small};
@@ -26,7 +27,10 @@ const SidebarLinkSubtitle = styled.div`
   width: 100%;
 `;
 const SidebarLinkItem = styled.div`
-  padding: 0 ${dimensions.spacings.m};
+  padding: 0 0 0 ${dimensions.spacings.m};
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 `;
 
 const SidebarLink = props => (
@@ -83,6 +87,7 @@ const Sidebar = props => {
       allNavigationYaml {
         nodes {
           chapterTitle
+          beta
           pages {
             title
             path
@@ -120,6 +125,19 @@ const Sidebar = props => {
         <Spacings.Stack scale="s" key={index}>
           <SidebarLinkItem>
             <SidebarLinkTitle>{node.chapterTitle}</SidebarLinkTitle>
+            {node.beta && (
+              <span
+                css={css`
+                  border: 1px solid ${colors.light.borderInfo};
+                  border-radius: ${tokens.borderRadius4};
+                  color: ${colors.light.textInfo};
+                  font-size: ${typography.fontSizes.ultraSmall};
+                  padding: 1px ${dimensions.spacings.xs};
+                `}
+              >
+                {'BETA'}
+              </span>
+            )}
           </SidebarLinkItem>
           <Spacings.Stack scale="s">
             {node.pages &&

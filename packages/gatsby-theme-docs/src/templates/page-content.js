@@ -29,6 +29,7 @@ const components = {
   tr: Markdown.TableRow,
   td: Markdown.TableCell,
   th: Markdown.TableHeader,
+  code: Markdown.InlineCode,
   inlineCode: Markdown.InlineCode,
   em: Markdown.Em,
   strong: Markdown.Strong,

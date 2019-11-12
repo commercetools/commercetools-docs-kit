@@ -136,15 +136,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        // FIXME: move outside of theme
-        short_name: 'AppKit | commercetools docs',
-        name: 'AppKit | commercetools docs',
-        description: 'Develop applications for the Merchant Center',
-        start_url: '/app-kit/',
-        background_color: '#FFFFFF', // surfacePrimary
-        theme_color: '#078CDF', // primary
-        display: 'standalone',
         icon: require.resolve('./src/icons/logo.svg'),
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-extract-schema',
+      options: {
+        dest: `${__dirname}/generated/schema.json`,
       },
     },
     // This needs to be last
