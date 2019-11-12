@@ -209,9 +209,6 @@ const TooltipBodyComponent = styled.div`
   font-size: ${typography.fontSizes.extraSmall};
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
-// This components implements most of the logic from `gatsby-remark-prismjs`.
-// https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-remark-prismjs
-//
 
 /**
  * This components implements most of the logic from `gatsby-remark-prismjs`.
@@ -279,7 +276,7 @@ const TooltipBodyComponent = styled.div`
  * To use this, you need to pass `promptLines=<range>`. The range can be a single line
  * number or a range of line numbers separated by `-`. Multiple highlighted lines can be
  * provided as comma-separated values.
- * This feature only works for the `console` language syntax.
+ * This feature only works for the `console` or `terminal` language syntax.
  *
  * ```console promptLines=1-2,5-6
  * cd project
@@ -297,6 +294,7 @@ const CodeBlock = props => {
     sh: 'bash',
     zsh: 'bash',
     console: 'bash',
+    terminal: 'bash',
     js: 'javascript',
   };
   const [, languageCode] = languageToken.split('language-');
@@ -304,7 +302,7 @@ const CodeBlock = props => {
   const { highlightLines, noPromptLines } = codeBlockParseOptions(
     props.children.props
   );
-  const useCommandLine = [`console`].includes(languageCode);
+  const useCommandLine = ['terminal', 'console'].includes(languageCode);
   const content =
     props.children.props && props.children.props.children
       ? props.children.props.children
@@ -350,13 +348,13 @@ const CodeBlock = props => {
           }
         `}
       >
-        {language === 'text' ? null : (
+        {languageCode === 'text' ? null : (
           <span
             css={css`
               color: ${colors.light.textFaded};
             `}
           >
-            {language}
+            {languageCode}
           </span>
         )}
         <Tooltip

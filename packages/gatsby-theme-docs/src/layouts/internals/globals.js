@@ -85,9 +85,14 @@ const Globals = () => (
         width: 100%;
         display: inline-block;
       }
+      .gatsby-highlight .gatsby-highlight-code-prompt {
+        display: inline-block;
+        margin: 0 0 0 ${dimensions.spacings.m};
+      }
       .gatsby-highlight .gatsby-highlight-code-prompt::before {
         content: attr(data-prompt);
-        margin-right: ${dimensions.spacings.s};
+        margin: 0 0 0 -${dimensions.spacings.m};
+        padding: 0 ${dimensions.spacings.s} 0 0;
         color: ${colors.light.surfaceSecondary3};
       }
 
