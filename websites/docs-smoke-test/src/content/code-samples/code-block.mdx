@@ -16,12 +16,15 @@ The following block-level code samples must be
 - have a command prompt
 - wrap lines but indent the second line so it's visually clearer that it's the same line
 - syntax highlight as bash / sh.
+- if not prompt lines are explicitly configured, all lines are prompt lines (i.e. no output included)
 
-```console{outputLines: 2-4}
-ls \
-  -l \
-  -a \
-  -h
+```console noPromptLines=3-4
+cd project
+cp -R \
+  dist \
+  public/
+rm -rf dist
+yarn start
 ```
 
 Typical tutorial like two-step sequence:
@@ -35,7 +38,7 @@ curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/
 
 ### Javascript
 
-```javascript
+```javascript highlightLines=2,5-6
 // Constructor
 var anObject = new Object();
 
