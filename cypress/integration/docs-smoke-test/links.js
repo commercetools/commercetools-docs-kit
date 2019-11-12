@@ -6,9 +6,9 @@ const linksPageUrl = `${URL_DOCS_SMOKE_TEST}smoke-tests/links/`;
 const scenarios = [
   {
     title: 'Link pointing to an empty string',
-    expectationMessage: 'It renders a link to the parent page',
+    expectationMessage: 'It renders a link to the same page',
     expected: {
-      url: `${Cypress.config().baseUrl}/smoke-tests/`,
+      url: `${Cypress.config().baseUrl}${linksPageUrl}`,
     },
   },
   {

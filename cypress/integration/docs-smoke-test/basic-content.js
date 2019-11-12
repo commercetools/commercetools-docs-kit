@@ -1,7 +1,7 @@
 import { URL_DOCS_SMOKE_TEST } from '../../support/urls';
 
 describe('Pagination', () => {
-  const baseUrl = `${URL_DOCS_SMOKE_TEST}/smoke-tests`;
+  const baseUrl = `${URL_DOCS_SMOKE_TEST}smoke-tests`;
   const links = [
     `${baseUrl}/text/`,
     `${baseUrl}/right-nav-submenu/`,

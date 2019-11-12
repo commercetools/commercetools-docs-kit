@@ -12,9 +12,9 @@ title: Page that Tests Links
 [Link]()
 ```
 
-| Link      | Type           | Expected outcome                       |
-| --------- | -------------- | -------------------------------------- |
-|  [Link]() |  `gatsby-link` |  It renders a link to the parent page. |
+| Link      | Type           | Expected outcome                     |
+| --------- | -------------- | ------------------------------------ |
+|  [Link]() |  `gatsby-link` |  It renders a link to the same page. |
 
 ### Link pointing to a different website
 
@@ -49,12 +49,12 @@ title: Page that Tests Links
 ### Link to another page on this site, but using an absolute URL
 
 ```md
-[Link](https://docs.commercetools.com/docs-smoke-test/code-block/)
+[Link](https://docs.commercetools.com/docs-smoke-test/code-samples/code-block/)
 ```
 
-| Link                                                                | Type             | Expected outcome                                                               |
-| ------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------ |
-|  [Link](https://docs.commercetools.com/docs-smoke-test/code-block/) |  `internal-link` | It should render an absolute URL in dev mode and a relative path in prod mode. |
+| Link                                                                             | Type             | Expected outcome                                                               |
+| -------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------ |
+|  [Link](https://docs.commercetools.com/docs-smoke-test/code-samples/code-block/) |  `internal-link` | It should render an absolute URL in dev mode and a relative path in prod mode. |
 
 ### Link to another page on this site using a full path
 
