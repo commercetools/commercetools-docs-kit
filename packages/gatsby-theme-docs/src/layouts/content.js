@@ -11,6 +11,7 @@ import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
+import Reset from './internals/reset';
 import Globals from './internals/globals';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
@@ -48,6 +49,7 @@ const LayoutContent = props => {
   `);
   return (
     <React.Fragment>
+      <Reset />
       <Globals />
       <LayoutApplication isMenuOpen={isMenuOpen}>
         <LayoutHeader siteTitle={data.site.siteMetadata.title} />
@@ -61,6 +63,10 @@ const LayoutContent = props => {
           css={css`
             grid-column: 2;
             grid-row: 2;
+
+            div {
+              min-width: unset;
+            }
 
             @media screen and (${dimensions.viewports.mobile}) {
               grid-column: 1/3;

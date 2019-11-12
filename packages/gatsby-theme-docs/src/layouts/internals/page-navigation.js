@@ -19,10 +19,18 @@ const itemsType = PropTypes.arrayOf(
 const isActiveLink = url =>
   url === (typeof window !== 'undefined' && window.location.hash);
 
+const getActiveLinkStyles = props =>
+  isActiveLink(props.href)
+    ? css`
+        border-left: 1px solid ${colors.light.linkNavigation};
+        color: ${colors.light.linkNavigation};
+      `
+    : '';
+
 const Link = styled.a`
   font-size: ${props => {
     switch (props.level) {
-      case '1':
+      case 1:
         return typography.fontSizes.small;
       default:
         return typography.fontSizes.extraSmall;
@@ -30,7 +38,7 @@ const Link = styled.a`
   }};
   color: ${props => {
     switch (props.level) {
-      case '1':
+      case 1:
         return colors.light.textPrimary;
       default:
         return colors.light.textSecondary;
@@ -38,15 +46,6 @@ const Link = styled.a`
   }};
   text-decoration: none;
   border-left: 1px solid transparent;
-  padding: ${props => {
-    switch (props.level) {
-      case '1':
-        return `0 ${dimensions.spacings.m}`;
-      default:
-        return `0`;
-    }
-  }};
-
   :hover {
     color: ${colors.light.linkNavigation};
   }
@@ -55,90 +54,93 @@ const Link = styled.a`
     outline-width: 0;
   }
 
-  ${props =>
-    isActiveLink(props.href)
-      ? css`
-          border-left: 1px solid ${colors.light.linkNavigation};
-          color: ${colors.light.linkNavigation};
-        `
-      : ''}
+  ${getActiveLinkStyles}
 `;
-const ListItemLevel = styled.ul`
+const Group = styled.ul`
   margin: 0;
-  padding: 0 ${dimensions.spacings.m};
+  padding: 0;
   list-style: none;
-
-  > li {
-    padding: ${props => {
-      switch (props.level) {
-        case '3':
-          return `0 0 0 ${dimensions.spacings.l}`;
-        default:
-          return `0`;
-      }
-    }};
-  }
+  display: grid;
+  grid-gap: ${dimensions.spacings.s};
 
   /* Nested ul should get no padding */
   ul {
     padding: 0;
   }
 `;
-
-const ListItemGroup = props => (
+const ListItem = styled.li`
+  display: grid;
+  grid-gap: ${dimensions.spacings.s};
+`;
+const Indented = styled.div`
+  padding: ${props => {
+    switch (props.level) {
+      case 3:
+        return `0 0 0 ${dimensions.spacings.xl}`;
+      default:
+        return `0 0 0 ${dimensions.spacings.m}`;
+    }
+  }};
+`;
+const LevelGroup = props => {
+  if (!props.items) {
+    return null;
+  }
+  return (
+    <Group level={props.level}>
+      {props.items.map((item, subItemIndex) => (
+        <ListItem key={subItemIndex}>
+          <Link
+            href={item.url}
+            level={props.level}
+            role={`level-${props.level}`}
+          >
+            <Indented level={props.level}>{item.title}</Indented>
+          </Link>
+          {props.children &&
+            React.cloneElement(props.children, {
+              items: item.items,
+              level: props.level + 1,
+            })}
+        </ListItem>
+      ))}
+    </Group>
+  );
+};
+LevelGroup.displayName = 'LevelGroup';
+LevelGroup.propTypes = {
+  level: PropTypes.oneOf([2, 3]).isRequired,
+  items: itemsType,
+  children: PropTypes.node,
+};
+const Container = props => (
   <Spacings.Stack scale="s">
     {props.items.map((item, index) => (
       <Spacings.Stack scale="s" key={index}>
-        <Link href={item.url} level={props.level}>
-          {item.title}
+        <Link href={item.url} level={1} role="level-1">
+          <Indented level={1}>{item.title}</Indented>
         </Link>
         {props.children &&
           React.cloneElement(props.children, {
             items: item.items,
+            level: 2,
           })}
       </Spacings.Stack>
     ))}
   </Spacings.Stack>
 );
-ListItemGroup.displayName = 'ListItemGroup';
-ListItemGroup.propTypes = {
-  level: PropTypes.oneOf(['1']).isRequired,
+Container.displayName = 'Container';
+Container.propTypes = {
   items: itemsType.isRequired,
-  children: PropTypes.node,
-};
-const ListItems = props => {
-  if (!props.items) {
-    return null;
-  }
-  return (
-    <ListItemLevel level={props.level}>
-      {props.items.map((item, subItemIndex) => (
-        <li key={subItemIndex}>
-          <Link href={item.url} level={props.level}>
-            {item.title}
-          </Link>
-          {props.children &&
-            React.cloneElement(props.children, {
-              items: item.items,
-            })}
-        </li>
-      ))}
-    </ListItemLevel>
-  );
-};
-ListItems.displayName = 'ListItems';
-ListItems.propTypes = {
-  level: PropTypes.oneOf(['2', '3']).isRequired,
-  items: itemsType,
   children: PropTypes.node,
 };
 
 const PageNavigation = props => (
-  <ListItemGroup level="1" items={props.tableOfContents.items}>
-    <ListItems level="2">
-      <ListItems level="3" />
-    </ListItems>
-  </ListItemGroup>
+  <Container items={props.tableOfContents.items}>
+    <LevelGroup>
+      <LevelGroup />
+    </LevelGroup>
+  </Container>
 );
 PageNavigation.displayName = 'PageNavigation';
 PageNavigation.propTypes = {

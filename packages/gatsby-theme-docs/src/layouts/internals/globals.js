@@ -14,6 +14,7 @@ const Globals = () => (
         color: ${colors.light.textPrimary};
         font-family: ${typography.fontFamilies.primary};
         font-size: ${typography.rootFontSize};
+        font-weight: ${typography.fontWeights.regular};
       }
 
       iframe {
@@ -23,7 +24,8 @@ const Globals = () => (
         margin: 0;
       }
 
-      .section-h4 {
+      .section-h4,
+      .section-h5 {
         padding: 0 0 0 ${dimensions.spacings.l};
       }
 
@@ -59,6 +61,7 @@ const Globals = () => (
       .gatsby-highlight pre[class*='language-'] {
         background-color: ${colors.light.surfaceCode};
         margin: 0;
+        padding: 0;
       }
       .gatsby-highlight pre[class*='language-'].line-numbers {
         display: flex;
@@ -69,6 +72,10 @@ const Globals = () => (
           margin: 0 0 0 ${dimensions.spacings.m};
         }
       }
+      .gatsby-highlight pre[class*='language-'],
+      .gatsby-highlight code[class*='language-'] {
+        white-space: pre-wrap;
+      }
       .gatsby-highlight .line-numbers,
       .gatsby-highlight .line-numbers-rows {
         position: relative;
@@ -77,6 +84,39 @@ const Globals = () => (
         background-color: ${colors.light.surfaceCodeHighlight};
         width: 100%;
         display: inline-block;
+      }
+      .gatsby-highlight .gatsby-highlight-code-prompt {
+        display: inline-block;
+        margin: 0 0 0 ${dimensions.spacings.m};
+      }
+      .gatsby-highlight .gatsby-highlight-code-prompt::before {
+        content: attr(data-prompt);
+        margin: 0 0 0 -${dimensions.spacings.m};
+        padding: 0 ${dimensions.spacings.s} 0 0;
+        color: ${colors.light.surfaceSecondary3};
+      }
+
+      /* Resets */
+      code,
+      kbd,
+      samp,
+      pre {
+        font-family: ${typography.fontFamilies.code}, 'Menlo', 'Monaco',
+          'Consolas', 'Liberation Mono', 'Courier New', monospace;
+        font-size: ${typography.fontSizes.small};
+      }
+      b,
+      strong {
+        font-weight: ${typography.fontWeights.bold};
+      }
+      small {
+        font-size: ${typography.fontSizes.small};
+      }
+      sub,
+      sup {
+        font-size: ${typography.fontSizes.extraSmall};
+        line-height: 0;
+        position: relative;
       }
     `}
   />

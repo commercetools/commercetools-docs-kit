@@ -55,6 +55,14 @@ const stripComment = line =>
 
 const highlightWrap = line =>
   [`<span class="gatsby-highlight-code-line">`, line, `</span>`].join(``);
+const promptWrap = (line, noPrompt) =>
+  [
+    `<span class="gatsby-highlight-code-prompt" data-prompt="${
+      noPrompt ? ' ' : '$'
+    }">`,
+    line,
+    `</span>`,
+  ].join(``);
 // const wrapAndStripComment = line => wrap(stripComment(line))
 
 const parseLine = (line, code, index, actions) => {
@@ -109,8 +117,13 @@ const parseLine = (line, code, index, actions) => {
   }
 };
 
-export default function highlightLineRange(code, highlights = []) {
-  if (highlights.length > 0 || HIGHLIGHT_DIRECTIVE.test(code)) {
+export default function highlightLineRange({
+  code,
+  highlightLines = [],
+  noPromptLines,
+  useCommandLine,
+}) {
+  if (highlightLines.length > 0 || HIGHLIGHT_DIRECTIVE.test(code)) {
     // HACK split plain-text spans with line separators inside into multiple plain-text spans
     // separated by line separator - this fixes line highlighting behaviour for jsx
     code = code.replace(PLAIN_TEXT_WITH_LF_TEST, match =>
@@ -156,9 +169,15 @@ export default function highlightLineRange(code, highlights = []) {
 
         return !hide;
       })
-      .map(line => {
+      .map((line, index) => {
         if (line.highlight) {
           line.code = highlightWrap(line.code);
+        }
+        // In case the prompt is active, we wrap the lines so that we can apply
+        // some styles to them using `::before { content: '' }`.
+        const isLastLineEmpty = data.length - 1 === index && !line.code;
+        if (!isLastLineEmpty && useCommandLine) {
+          line.code = promptWrap(line.code, noPromptLines.includes(index + 1));
         }
         return line;
       });
@@ -166,8 +185,8 @@ export default function highlightLineRange(code, highlights = []) {
   // If a highlight range is passed with the language declaration, e.g.
   // ``jsx{1, 3-4}
   // we only use that and do not try to parse highlight directives
-  if (highlights.length > 0) {
-    highlights.forEach(lineNumber => {
+  if (highlightLines.length > 0) {
+    highlightLines.forEach(lineNumber => {
       actions.highlight(lineNumber - 1);
     });
     return transform(lines);
