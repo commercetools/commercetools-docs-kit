@@ -44,6 +44,7 @@
     "gatsby-transformer-yaml": "2.2.16",
     "hast-util-heading": "1.0.3",
     "lodash.escape": "4.0.1",
+    "lodash.throttle": "4.1.1",
     "moment": "2.24.0",
     "moment-timezone": "0.5.27",
     "parse-numeric-range": "0.0.2",
