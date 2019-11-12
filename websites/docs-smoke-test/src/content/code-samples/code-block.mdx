@@ -11,11 +11,26 @@ The following block-level code samples must be
 
 ### Terminal/Console
 
+"terminal" or "console" samples should
+
+- have a command prompt
+- wrap lines but indent the second line so it's visually clearer that it's the same line
+- syntax highlight as bash / sh.
+
 ```console{outputLines: 2-4}
 ls \
   -l \
   -a \
   -h
+```
+
+Typical tutorial like two-step sequence:
+
+```console
+# fetch a token:
+curl https://auth.sphere.io/oauth/token --basic --user "{client_id}:{client_secret}" -X POST -d "grant_type=client_credentials&scope=manage_project:{project_key}"
+# now access the API:
+curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/products
 ```
 
 ### Javascript
