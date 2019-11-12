@@ -1,6 +1,6 @@
 import { URL_DOCS_SMOKE_TEST } from '../../support/urls';
 
-describe('Navigation', () => {
+describe('Menu navigation', () => {
   describe('when viewport is smaller than desktop', () => {
     it('should toggle main left side navigation', () => {
       cy.setTabletViewport();
