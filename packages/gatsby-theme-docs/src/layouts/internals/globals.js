@@ -86,12 +86,9 @@ const Globals = () => (
         display: inline-block;
       }
       .gatsby-highlight .gatsby-highlight-code-prompt::before {
-        content: '$';
-        margin-right: 8px;
-      }
-      .gatsby-highlight .gatsby-highlight-code-prompt.no-prompt::before {
-        content: ' ';
-        margin-right: 8px;
+        content: attr(data-prompt);
+        margin-right: ${dimensions.spacings.s};
+        color: ${colors.light.surfaceSecondary3};
       }
 
       /* Resets */

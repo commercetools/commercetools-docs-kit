@@ -57,8 +57,8 @@ const highlightWrap = line =>
   [`<span class="gatsby-highlight-code-line">`, line, `</span>`].join(``);
 const promptWrap = (line, noPrompt) =>
   [
-    `<span class="gatsby-highlight-code-prompt ${
-      noPrompt ? 'no-prompt' : ''
+    `<span class="gatsby-highlight-code-prompt" data-prompt="${
+      noPrompt ? ' ' : '$'
     }">`,
     line,
     `</span>`,
