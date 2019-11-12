@@ -17,8 +17,6 @@ const itemsType = PropTypes.arrayOf(
   })
 );
 
-const getIsSelected = href =>
-  href === (typeof window !== 'undefined' && window.location.hash);
 const getIsActive = (activeSection, urlHash) =>
   activeSection &&
   activeSection.id.replace('section-', '') === urlHash.substring(1);
@@ -45,7 +43,7 @@ const Link = styled.a`
   }};
   text-decoration: none;
   border-left: ${props => {
-    if (props.isActive && props.isSelected) {
+    if (props.isActive) {
       return `1px solid ${colors.light.linkNavigation}`;
     }
     return '1px solid transparent';
@@ -91,7 +89,6 @@ const LevelGroup = props => {
   return (
     <Group level={props.level}>
       {props.items.map((item, subItemIndex) => {
-        const isSelected = getIsSelected(item.url);
         const isActive = getIsActive(props.activeSection, item.url);
         return (
           <ListItem key={subItemIndex}>
@@ -99,7 +96,6 @@ const LevelGroup = props => {
               href={item.url}
               level={props.level}
               role={`level-${props.level}`}
-              isSelected={isSelected}
               isActive={isActive}
               aria-current={isActive}
             >
@@ -128,7 +124,6 @@ const Container = props => (
   <Spacings.Stack scale="s">
     {props.items.map((item, index) => {
       const level = 1;
-      const isSelected = getIsSelected(item.url);
       const isActive = getIsActive(props.activeSection, item.url);
       return (
         <Spacings.Stack scale="s" key={index}>
@@ -136,7 +131,6 @@ const Container = props => (
             href={item.url}
             level={level}
             role={`level-${level}`}
-            isSelected={isSelected}
             isActive={isActive}
             aria-current={isActive}
           >
