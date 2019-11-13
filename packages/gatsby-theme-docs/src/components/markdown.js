@@ -487,37 +487,6 @@ Link.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
-const Img = props => (
-  <span
-    css={css`
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      > * + * {
-        margin: ${dimensions.spacings.s} 0 0;
-      }
-    `}
-  >
-    <img
-      {...props}
-      css={css`
-        background-color: ${colors.light.surfacePrimary};
-      `}
-    />
-    {/* eslint-disable-next-line react/prop-types */}
-    {props.title ? (
-      <span
-        css={css`
-          color: ${colors.light.textSecondary};
-          font-size: ${typography.fontSizes.small};
-        `}
-      >
-        {/* eslint-disable-next-line react/prop-types */}
-        {props.title}
-      </span>
-    ) : null}
-  </span>
-);
 
 /* eslint-disable react/display-name,react/prop-types */
 const withAnchorLink = Component => props => {
@@ -575,6 +544,5 @@ export {
   Delete,
   Hr,
   Link,
-  Img,
   withAnchorLink,
 };
