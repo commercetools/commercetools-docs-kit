@@ -10,3 +10,4 @@ export { default as SEO } from './seo';
 export { default as Spacings } from './spacings';
 export { default as TextSmall } from './text-small';
 export { Markdown };
+export { default as Subtitle } from './subtitle';
