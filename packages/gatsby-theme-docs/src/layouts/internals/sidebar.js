@@ -63,6 +63,8 @@ const SidebarLink = props => (
       return (
         <Link
           {...props}
+          // eslint-disable-next-line react/prop-types
+          to={trimTrailingSlash(props.to)}
           getProps={({ href, location }) => {
             // Manually check that the link is the active one, even with trailing slashes.
             // The gatsby link is by default configured to match the exact path, therefore we
