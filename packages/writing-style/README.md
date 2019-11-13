@@ -13,7 +13,7 @@ The configuration defaults to checking `.md`, `.mdx`, `.txt`, and `.html` files,
 
 ## Linter Usage: Standalone command-line
 
-1.  Install the command globally via `npm install -g @commercetools-docs/writing-style`
+1.  Install the command globally via `yarn global add @commercetools-docs/writing-style` or `npm install -g @commercetools-docs/writing-style`
 1.  Use it by calling `commercetools-vale ./path/to/your/content`
 
 Please don't forget to frequently update the package to get the latest styles.

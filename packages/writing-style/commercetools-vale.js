@@ -2,7 +2,8 @@
 const { spawnSync } = require('child_process');
 const path = require('path');
 
-const valeBinary = path.join(__dirname, `/bin/vale-1.7.1.${process.platform}`);
+const version = `1.7.1`;
+const valeBinary = path.join(__dirname, `/bin/vale-${version}.${process.platform}`);
 const valeConfig = path.join(__dirname, `/.vale.ini`);
 const result = spawnSync(
   valeBinary,
