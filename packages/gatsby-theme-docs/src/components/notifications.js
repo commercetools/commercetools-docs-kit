@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { ClassNames } from '@emotion/core';
 
 import UnstyledInformationIcon from '../icons/information-icon.svg';
 import UnstyledWarningIcon from '../icons/warning.svg';
 import UnstyledErrorIcon from '../icons/error.svg';
 import createStyledIcon from '../utils/create-styled-icon';
 import markdown2React from '../utils/markdown-2-react';
-import { pxToRem, colors, tokens, dimensions } from '../design-system';
+import { colors, tokens, dimensions } from '../design-system';
 
 const Container = styled.div`
   display: flex;
   width: 100%;
   padding: ${dimensions.spacings.m};
   margin: ${dimensions.spacings.s} 0;
-  border: ${pxToRem('1px')} solid ${colors.light.borderInfo};
+  border: 1px solid;
   border-radius: ${tokens.borderRadius6};
 `;
 
@@ -24,8 +24,8 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${pxToRem('24px')};
-  height: ${pxToRem('24px')};
+  width: ${dimensions.widths.icon};
+  height: ${dimensions.heights.icon};
 `;
 
 const InfoTextWrapper = styled.div`
@@ -34,7 +34,7 @@ const InfoTextWrapper = styled.div`
 
 function Box(props) {
   return (
-    <Container css={props.containerCustomStyle}>
+    <Container className={props.className}>
       <IconWrapper>{renderIcon(props.icon)}</IconWrapper>
       <InfoTextWrapper>{markdown2React(props.children)}</InfoTextWrapper>
     </Container>
@@ -57,21 +57,25 @@ function Box(props) {
 }
 
 Box.propTypes = {
-  containerCustomStyle: PropTypes.object.isRequired,
+  className: PropTypes.string,
   icon: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
 export function Info(props) {
-  const containerCustomStyle = css`
-    border-color: ${colors.light.iconInfo};
-    background-color: ${colors.light.surfaceInfo2};
-  `;
-
   return (
-    <Box containerCustomStyle={containerCustomStyle} icon="default">
-      {props.children}
-    </Box>
+    <ClassNames>
+      {({ css }) => (
+        <Box
+          className={css`
+            border-color: ${colors.light.borderInfo};
+            background-color: ${colors.light.surfaceInfo2};
+          `}
+        >
+          {props.children}
+        </Box>
+      )}
+    </ClassNames>
   );
 }
 
@@ -80,15 +84,20 @@ Info.propTypes = {
 };
 
 export function Warning(props) {
-  const containerCustomStyle = css`
-    border-color: ${colors.light.iconWarning};
-    background-color: ${colors.light.surfaceWarning};
-  `;
-
   return (
-    <Box containerCustomStyle={containerCustomStyle} icon="warning">
-      {props.children}
-    </Box>
+    <ClassNames>
+      {({ css }) => (
+        <Box
+          className={css`
+            border-color: ${colors.light.iconWarning};
+            background-color: ${colors.light.surfaceWarning};
+          `}
+          icon="warning"
+        >
+          {props.children}
+        </Box>
+      )}
+    </ClassNames>
   );
 }
 
@@ -97,15 +106,20 @@ Warning.propTypes = {
 };
 
 export function Error(props) {
-  const containerCustomStyle = css`
-    border-color: ${colors.light.iconError};
-    background-color: ${colors.light.surfaceError};
-  `;
-
   return (
-    <Box containerCustomStyle={containerCustomStyle} icon="error">
-      {props.children}
-    </Box>
+    <ClassNames>
+      {({ css }) => (
+        <Box
+          className={css`
+            border-color: ${colors.light.iconError};
+            background-color: ${colors.light.surfaceError};
+          `}
+          icon="error"
+        >
+          {props.children}
+        </Box>
+      )}
+    </ClassNames>
   );
 }
 

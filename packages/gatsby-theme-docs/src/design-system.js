@@ -106,11 +106,13 @@ const breakpoints = {
 export const dimensions = {
   heights: {
     header: '48px',
+    icon: pxToRem('24px'),
   },
   widths: {
     pageContent: pageWidth,
     pageNavigation: navbarWidth,
     marketingContent: '1168px',
+    icon: pxToRem('24px'),
   },
   viewports: {
     mobile: `max-width: ${breakpoints.content}`,
