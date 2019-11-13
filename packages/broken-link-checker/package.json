@@ -15,8 +15,9 @@
   "bin": {
     "commercetools-broken-link-checker": "broken-link-checker.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "broken-link-checker": "^0.7.8",
+    "express": "^4.17.1",
     "get-port": "^5.0.0"
   }
 }
