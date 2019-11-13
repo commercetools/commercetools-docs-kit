@@ -47,6 +47,7 @@ const LayoutContent = props => {
           title
           description
           author
+          productionHostname
         }
       }
     }

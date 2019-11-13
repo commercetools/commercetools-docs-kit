@@ -5,6 +5,7 @@ const path = require('path');
 module.exports = {
   siteMetadata: {
     author: 'commercetools',
+    productionHostname: 'docs.commercetools.com',
   },
   plugins: [
     /**

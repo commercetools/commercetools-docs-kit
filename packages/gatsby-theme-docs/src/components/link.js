@@ -10,7 +10,6 @@ import ExternalLinkIcon from '../icons/external-link-icon.svg';
 import { colors, dimensions } from '../design-system';
 import { useSiteData } from '../hooks/use-site-data';
 
-const productionHostname = 'docs.commercetools.com';
 const dummyHostname = 'dummy.com';
 
 // Gatsby links should be written with the full url path starting with `/` (so no
@@ -134,7 +133,9 @@ const PureLink = extendedProps => {
     /^https?/.test(props.href) || (props.target && props.target === '_blank');
   if (
     isExternalLink &&
-    ![productionHostname, dummyHostname].includes(hrefObject.host)
+    ![siteData.siteMetadata.productionHostname, dummyHostname].includes(
+      hrefObject.host
+    )
   ) {
     const linkWithIcon = React.isValidElement(props.children) ? (
       // In case the children are a React element (e.g. <code>) we need to inject
@@ -182,7 +183,8 @@ const PureLink = extendedProps => {
   const isUsingUndocumentedNotationToLinkToAnotherDocsSite = hrefWithoutPrefix.startsWith(
     '/../'
   );
-  const isSameDocsHostname = hrefObject.hostname === productionHostname;
+  const isSameDocsHostname =
+    hrefObject.hostname === siteData.siteMetadata.productionHostname;
   const isLinkToAnotherDocsSite =
     isUsingUndocumentedNotationToLinkToAnotherDocsSite || isSameDocsHostname;
   if (!isLinkToAnotherDocsSite) {
