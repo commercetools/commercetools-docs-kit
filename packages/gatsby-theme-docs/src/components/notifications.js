@@ -58,7 +58,7 @@ function Box(props) {
 
 Box.propTypes = {
   className: PropTypes.string,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
