@@ -1,18 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Link as HistoryLink, withPrefix } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Tooltip } from '@commercetools-frontend/ui-kit';
 import ClipboardIcon from '../icons/clipboard-icon.svg';
-import ExternalLinkIcon from '../icons/external-link-icon.svg';
 import RibbonIcon from '../icons/ribbon-icon.svg';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
 import codeBlockHighlightCode from '../utils/code-block-highlight-code';
-import ExternalLink from './external-link';
+import Link from './link';
 
 const TypographyPage = styled.div`
   font-family: ${typography.fontFamilies.primary};
@@ -421,72 +419,6 @@ const Delete = styled.span`
   text-decoration: line-through;
 `;
 const Hr = styled(ThematicBreak)``;
-const InlineLink = styled.span`
-  display: inline-flex;
-  align-items: center;
-  > * + * {
-    margin: 0 0 0 ${dimensions.spacings.xs};
-  }
-  svg {
-    * {
-      fill: ${colors.light.link};
-    }
-  }
-  :hover {
-    svg {
-      * {
-        fill: ${colors.light.linkHover};
-      }
-    }
-  }
-`;
-// eslint-disable-next-line react/display-name
-const Link = props => {
-  if (props.href.startsWith(withPrefix('/static'))) {
-    return <a {...props} />;
-  }
-
-  const isExternalLink =
-    /^https?/.test(props.href) || (props.target && props.target === '_blank');
-
-  if (isExternalLink) {
-    const linkWithIcon = React.isValidElement(props.children) ? (
-      // In case the children are a React element (e.g. <code>) we need to inject
-      // the external link icon next to the actual text.
-      // For this we assume that the React element's own child is plain text.
-      React.cloneElement(props.children, {
-        children: (
-          <InlineLink>
-            <span>{props.children.props.children}</span>
-            <ExternalLinkIcon height={12} width={12} />
-          </InlineLink>
-        ),
-      })
-    ) : (
-      <InlineLink>
-        <span>{props.children}</span>
-        <ExternalLinkIcon height={12} width={12} />
-      </InlineLink>
-    );
-    return <ExternalLink {...props}>{linkWithIcon}</ExternalLink>;
-  }
-
-  return (
-    <HistoryLink
-      to={props.href}
-      css={ExternalLink.linkStyles}
-      className={props.className}
-    >
-      {props.children}
-    </HistoryLink>
-  );
-};
-Link.propTypes = {
-  href: PropTypes.string.isRequired,
-  target: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-};
 
 /* eslint-disable react/display-name,react/prop-types */
 const withAnchorLink = Component => props => {

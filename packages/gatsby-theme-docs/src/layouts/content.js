@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import { ContentPagination, NotificationInfo, Markdown } from '../components';
 import { dimensions, tokens } from '../design-system';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
+import { SiteDataContext } from '../hooks/use-site-data';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -39,16 +40,20 @@ const ResizableGrid = styled.div`
 const LayoutContent = props => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const data = useStaticQuery(graphql`
-    query GetTitle {
+    query GetSiteData {
       site {
+        pathPrefix
         siteMetadata {
           title
+          description
+          author
+          productionHostname
         }
       }
     }
   `);
   return (
-    <React.Fragment>
+    <SiteDataContext.Provider value={data.site}>
       <Reset />
       <Globals />
       <LayoutApplication isMenuOpen={isMenuOpen}>
@@ -128,7 +133,7 @@ const LayoutContent = props => {
           <LayoutFooter />
         </LayoutMain>
       </LayoutApplication>
-    </React.Fragment>
+    </SiteDataContext.Provider>
   );
 };
 LayoutContent.displayName = 'LayoutContent';
