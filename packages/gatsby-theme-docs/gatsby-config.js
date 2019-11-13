@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-module.exports = {
+module.exports = (themeOptions = {}) => ({
   siteMetadata: {
     author: 'commercetools',
     productionHostname: 'docs.commercetools.com',
@@ -113,12 +113,6 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
-    // {
-    //   resolve: 'gatsby-plugin-favicon',
-    //   options: {
-    //     logo: `${__dirname}/src/icons/logo.svg`,
-    //   },
-    // },
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
@@ -136,25 +130,20 @@ module.exports = {
         ],
       },
     },
-    // TODO: make it configurable?
-    // {
-    //   resolve: 'gatsby-plugin-google-analytics',
-    //   options: {
-    //     trackingId: 'UA-38285631-3',
-    //     head: false,
-    //     anonymize: true,
-    //     respectDNT: false,
-    //     exclude: []
-    //     // optimizeId: 'YOUR_GOOGLE_OPTIMIZE_TRACKING_ID',
-    //     // experimentId: 'YOUR_GOOGLE_EXPERIMENT_ID',
-    //     // variationId: 'YOUR_GOOGLE_OPTIMIZE_VARIATION_ID',
-    //     // cookieDomain: 'docs.commercetools.com'
-    //   }
-    // },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: require.resolve('./src/icons/logo.svg'),
+      },
+    },
+    themeOptions.gaTrackingId && {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: themeOptions.gaTrackingId,
+        head: false,
+        anonymize: true,
+        respectDNT: false,
+        exclude: [],
       },
     },
     // This needs to be last
@@ -162,5 +151,5 @@ module.exports = {
     'gatsby-plugin-remove-trailing-slashes',
     'gatsby-plugin-meta-redirect',
     'gatsby-plugin-netlify-cache',
-  ],
-};
+  ].filter(Boolean),
+});
