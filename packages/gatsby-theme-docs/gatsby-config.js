@@ -159,6 +159,7 @@ module.exports = {
     },
     // This needs to be last
     // 'gatsby-plugin-offline', // TODO: decide if we want to use it or not
+    'gatsby-plugin-remove-trailing-slashes',
     'gatsby-plugin-meta-redirect',
     'gatsby-plugin-netlify-cache',
   ],
