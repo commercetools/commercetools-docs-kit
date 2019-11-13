@@ -21,6 +21,7 @@
     "labels:sync": "github-labels sync",
     "test": "jest --config jest.test.config.js",
     "test:watch": "yarn test --watch",
+    "test:brokenlinks": "yarn --cwd websites/docs-smoke-test build && npx commercetools-broken-link-checker ./public docs-smoke-test/",
     "test:e2e": "cypress run",
     "release": "lerna publish --exact",
     "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes"

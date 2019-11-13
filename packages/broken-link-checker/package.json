@@ -1,0 +1,22 @@
+{
+  "name": "@commercetools-docs/broken-link-checker",
+  "description": "Broken Link Checker for static websites on the file system",
+  "version": "1.0.0-alpha.0",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git"
+  },
+  "bin": {
+    "commercetools-broken-link-checker": "broken-link-checker.js"
+  },
+  "devDependencies": {
+    "broken-link-checker": "^0.7.8",
+    "get-port": "^5.0.0"
+  }
+}
