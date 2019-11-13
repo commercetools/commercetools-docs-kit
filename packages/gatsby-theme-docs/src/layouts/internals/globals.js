@@ -80,8 +80,7 @@ const Globals = () => (
       }
       .gatsby-highlight > code,
       .gatsby-highlight code[class*='language-'],
-      .gatsby-highlight pre[class*='language-'],
-      .gatsby-highlight .line-numbers-rows {
+      .gatsby-highlight pre[class*='language-'] {
         font-family: ${typography.fontFamilies.code};
         font-size: ${typography.fontSizes.small};
       }
@@ -90,22 +89,9 @@ const Globals = () => (
         margin: 0;
         padding: 0;
       }
-      .gatsby-highlight pre[class*='language-'].line-numbers {
-        display: flex;
-        flex-direction: row;
-        padding: 0;
-        overflow-x: scroll;
-        > * + * {
-          margin: 0 0 0 ${dimensions.spacings.m};
-        }
-      }
       .gatsby-highlight pre[class*='language-'],
       .gatsby-highlight code[class*='language-'] {
         white-space: pre-wrap;
-      }
-      .gatsby-highlight .line-numbers,
-      .gatsby-highlight .line-numbers-rows {
-        position: relative;
       }
       .gatsby-highlight .gatsby-highlight-code-line {
         background-color: ${colors.light.surfaceCodeHighlight};
