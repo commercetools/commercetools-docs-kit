@@ -6,9 +6,9 @@ const linksPageUrl = `${URL_DOCS_SMOKE_TEST}smoke-tests/links/`;
 const scenarios = [
   {
     title: 'Link pointing to an empty string',
-    expectationMessage: 'It renders a link to the same page',
+    expectationMessage: 'It renders a link to the parent page',
     expected: {
-      url: `${Cypress.config().baseUrl}${linksPageUrl}`,
+      url: `${Cypress.config().baseUrl}${URL_DOCS_SMOKE_TEST}smoke-tests/`,
     },
   },
   {
@@ -66,7 +66,7 @@ const scenarios = [
               .should(
                 'have.prop',
                 'href',
-                'https://docs.commercetools.com/docs-smoke-test/code-block/'
+                'https://docs.commercetools.com/docs-smoke-test/code-samples/code-block/'
               );
           },
           expected: {},
@@ -98,7 +98,7 @@ const scenarios = [
     expectationMessage:
       'It should be a Gatsby link, history navigation, to a parent folder',
     expected: {
-      url: `${Cypress.config().baseUrl}${URL_DOCS_SMOKE_TEST}smoke-tests/`,
+      url: `${Cypress.config().baseUrl}${URL_DOCS_SMOKE_TEST}images/image/`,
     },
   },
   {

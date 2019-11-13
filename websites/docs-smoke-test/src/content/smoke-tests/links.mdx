@@ -12,9 +12,9 @@ title: Page that Tests Links
 [Link]()
 ```
 
-| Link      | Type           | Expected outcome                     |
-| --------- | -------------- | ------------------------------------ |
-|  [Link]() |  `gatsby-link` |  It renders a link to the same page. |
+| Link      | Type           | Expected outcome                       |
+| --------- | -------------- | -------------------------------------- |
+|  [Link]() |  `gatsby-link` |  It renders a link to the parent page. |
 
 ### Link pointing to a different website
 
@@ -79,32 +79,32 @@ title: Page that Tests Links
 ### Link to another page on this site using a relative upwards traversal path
 
 ```md
-[Link](../)
+[Link](../images/image)
 ```
 
-| Link         | Type           | Expected outcome                                                     |
-| ------------ | -------------- | -------------------------------------------------------------------- |
-|  [Link](../) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a parent folder. |
+| Link                     | Type           | Expected outcome                                                     |
+| ------------------------ | -------------- | -------------------------------------------------------------------- |
+|  [Link](../images/image) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a parent folder. |
 
 ### Link to a sub-page of this one (omitting the trailing slash)
 
 ```md
-[Link](link-target)
+[Link](links/link-target)
 ```
 
-| Link                 | Type           | Expected outcome                                                  |
-| -------------------- | -------------- | ----------------------------------------------------------------- |
-|  [Link](link-target) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
+| Link                       | Type           | Expected outcome                                                  |
+| -------------------------- | -------------- | ----------------------------------------------------------------- |
+|  [Link](links/link-target) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
 
 ### Link to a sub-page of this one (including the trailing slash)
 
 ```md
-[Link](link-target/)
+[Link](links/link-target/)
 ```
 
-| Link                  | Type           | Expected outcome                                                  |
-| --------------------- | -------------- | ----------------------------------------------------------------- |
-|  [Link](link-target/) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
+| Link                        | Type           | Expected outcome                                                  |
+| --------------------------- | -------------- | ----------------------------------------------------------------- |
+|  [Link](links/link-target/) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
 
 ### Link to a page of another internal site using a full url (recommended)
 
