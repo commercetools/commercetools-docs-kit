@@ -36,7 +36,6 @@ const components = {
   delete: Markdown.Delete,
   hr: Markdown.Hr,
   a: Markdown.Link,
-  img: Markdown.Img,
   // eslint-disable-next-line react/display-name
   pre: Markdown.CodeBlock,
 
