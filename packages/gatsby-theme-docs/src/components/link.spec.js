@@ -25,7 +25,10 @@ const withPrefix = path => [pathPrefix, path].join('/').replace(/\/\/+/g, '/');
 describe('rendering', () => {
   beforeEach(() => {
     useSiteData.mockClear();
-    useSiteData.mockReturnValue({ pathPrefix });
+    useSiteData.mockReturnValue({
+      pathPrefix,
+      siteMetadata: { productionHostname: 'docs.commercetools.com' },
+    });
   });
   const scenarios = [
     {
