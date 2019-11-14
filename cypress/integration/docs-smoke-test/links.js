@@ -149,7 +149,7 @@ const scenarios = [
         .should(
           'have.prop',
           'href',
-          `${Cypress.config().baseUrl}/site-template/`
+          `${Cypress.config().baseUrl}/site-template`
         );
     },
     expected: {},
