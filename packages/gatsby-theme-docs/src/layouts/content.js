@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import {
   ContentPagination,
-  NotificationInfo,
+  ContentNotifications,
   Markdown,
   ErrorBoundary,
 } from '../components';
@@ -122,7 +122,7 @@ const LayoutContent = props => {
                 </LayoutPageHeaderSide>
                 <LayoutPageContent>
                   {props.pageData.frontmatter.beta && (
-                    <NotificationInfo flag="beta" />
+                    <ContentNotifications.BetaInfo />
                   )}
                   {props.children}
                   <ContentPagination slug={props.pageContext.slug} />

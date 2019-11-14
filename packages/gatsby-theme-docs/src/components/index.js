@@ -5,7 +5,6 @@ export { default as Card } from './card';
 export { default as ContentPagination } from './content-pagination';
 export { default as ErrorBoundary } from './error-boundary';
 export { default as IconButton } from './icon-button';
-export { default as NotificationInfo } from './notification-info';
 export { default as ContentNotifications } from './content-notifications';
 export { default as SEO } from './seo';
 export { default as Spacings } from './spacings';

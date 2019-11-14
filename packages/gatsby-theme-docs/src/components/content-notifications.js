@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import UnstyledInformationIcon from '../icons/information-icon.svg';
 import UnstyledWarningIcon from '../icons/warning.svg';
 import UnstyledErrorIcon from '../icons/error.svg';
 import createStyledIcon from '../utils/create-styled-icon';
-import { colors, tokens, dimensions } from '../design-system';
+import { colors, tokens, typography, dimensions } from '../design-system';
 import Spacings from './spacings';
 
 const InformationIcon = createStyledIcon(UnstyledInformationIcon);
@@ -22,7 +23,6 @@ const getIconByType = type => {
       return InformationIcon;
   }
 };
-
 const getIconColorByType = type => {
   switch (type) {
     case 'warning':
@@ -33,7 +33,6 @@ const getIconColorByType = type => {
       return 'textInfo';
   }
 };
-
 const Container = styled.div`
   background-color: ${props => {
     switch (props.type) {
@@ -60,6 +59,23 @@ const Container = styled.div`
   padding: ${dimensions.spacings.m};
   min-width: 100%;
 `;
+const Flag = props => (
+  <span
+    css={css`
+      background-color: ${colors.light.surfaceInfo};
+      border: 1px solid ${colors.light.borderInfo};
+      border-radius: ${tokens.borderRadius4};
+      color: ${colors.light.textInfo};
+      font-size: ${typography.fontSizes.extraSmall};
+      padding: 0 ${dimensions.spacings.xs};
+    `}
+  >
+    {props.children}
+  </span>
+);
+Flag.propTypes = {
+  children: PropTypes.string.isRequired,
+};
 
 const ContentNotification = props => {
   const Icon = getIconByType(props.type);
@@ -87,21 +103,37 @@ const ContentNotification = props => {
 
           </Info>
         */}
-        <div>{props.children}</div>
+        <Spacings.Stack>
+          {props.showBeta ? (
+            <Spacings.Inline>
+              <Flag>{'BETA'}</Flag>
+            </Spacings.Inline>
+          ) : null}
+          <div>{props.children}</div>
+        </Spacings.Stack>
       </Spacings.Inline>
     </Container>
   );
 };
 ContentNotification.propTypes = {
   type: PropTypes.oneOf(['error', 'warning', 'info']).isRequired,
+  showBeta: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 ContentNotification.defaultProps = {
   type: 'info',
+  showBeta: false,
 };
 
 const Info = props => <ContentNotification {...props} type="info" />;
 const Error = props => <ContentNotification {...props} type="error" />;
 const Warning = props => <ContentNotification {...props} type="warning" />;
+const BetaInfo = () => (
+  <ContentNotification type="info" showBeta={true}>
+    {
+      'This feature is in a pre-release state and might change or have limited support. Use with caution for production.'
+    }
+  </ContentNotification>
+);
 
-export default { Info, Error, Warning };
+export default { Info, Error, Warning, BetaInfo };
