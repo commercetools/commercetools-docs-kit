@@ -1,0 +1,6 @@
+# orginates from the "proselint" rule set
+extends: existence
+message: "Incorrect use of symbols in '%s'."
+ignorecase: true
+raw:
+  - \$[\d]* ?(?:dollars|usd|us dollars)

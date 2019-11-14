@@ -1,0 +1,19 @@
+{
+  "name": "@commercetools-docs/writing-style",
+  "description": "Wrapped and preconfigured vale linter for the commercetools writing style rules",
+  "version": "1.0.0-alpha.0",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git"
+  },
+  "bin": {
+    "commercetools-vale": "commercetools-vale.js"
+  },
+  "dependencies": {}
+}
