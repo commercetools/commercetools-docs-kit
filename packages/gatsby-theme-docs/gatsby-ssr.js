@@ -5,10 +5,9 @@
  */
 import React from 'react';
 
-const isProduction = process.env.NODE_ENV === 'production';
-const isNowBuild = Boolean(process.env.NOW_GITHUB_DEPLOYMENT);
-const isMasterBranch = process.env.NOW_GITHUB_COMMIT_REF === 'master';
-console.log('[DEBUG] Environment variables', process.env);
+const isProduction = process.env.GATSBY_NODE_ENV === 'production';
+const isNowBuild = Boolean(process.env.GATSBY_NOW_GITHUB_DEPLOYMENT);
+const isMasterBranch = process.env.GATSBY_NOW_GITHUB_COMMIT_REF === 'master';
 
 // eslint-disable-next-line import/prefer-default-export
 export const onRenderBody = ({ setPostBodyComponents }) => {

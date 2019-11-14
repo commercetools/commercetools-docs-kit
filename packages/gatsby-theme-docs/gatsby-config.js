@@ -2,6 +2,17 @@
 
 const path = require('path');
 
+// Proxy env variables needed for `gatsby-browser.js` and `gatsby-ssr.js`.
+// https://www.gatsbyjs.org/docs/environment-variables/#client-side-javascript
+const proxyEnvironmentVariables = [
+  'NODE_ENV',
+  'NOW_GITHUB_DEPLOYMENT',
+  'NOW_GITHUB_COMMIT_REF',
+];
+proxyEnvironmentVariables.forEach(envName => {
+  process.env[`GATSBY_${envName}`] = process.env[envName];
+});
+
 module.exports = (themeOptions = {}) => ({
   siteMetadata: {
     author: 'commercetools',
