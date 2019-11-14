@@ -9,6 +9,7 @@ import React from 'react';
 export const onRenderBody = ({ setPostBodyComponents }) => {
   // Activate the cookie consent banner only on the live website environment.
   // We can narrow it down to the build step of Zeit Now for the master branch.
+  console.log('[DEBUG] Environment variables', process.env);
   if (
     process.env.NODE_ENV === 'production' &&
     Boolean(process.env.NOW_GITHUB_DEPLOYMENT) &&
