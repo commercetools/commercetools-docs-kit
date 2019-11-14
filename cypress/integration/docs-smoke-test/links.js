@@ -66,7 +66,7 @@ const scenarios = [
               .should(
                 'have.prop',
                 'href',
-                'https://docs.commercetools.com/docs-smoke-test/components/code-block/'
+                'https://docs.commercetools.com/docs-smoke-test/components/code-block'
               );
           },
           expected: {},
