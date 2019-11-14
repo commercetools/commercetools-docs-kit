@@ -1,7 +1,7 @@
 import { URL_DOCS_SMOKE_TEST } from '../../support/urls';
 import { isCI } from '../../support/env';
 
-const linksPageUrl = `${URL_DOCS_SMOKE_TEST}smoke-tests/links`;
+const linksPageUrl = `${URL_DOCS_SMOKE_TEST}components/links`;
 
 const scenarios = [
   {
@@ -56,7 +56,7 @@ const scenarios = [
           expected: {
             url: `${
               Cypress.config().baseUrl
-            }${URL_DOCS_SMOKE_TEST}code-samples/code-block`,
+            }${URL_DOCS_SMOKE_TEST}components/code-block`,
           },
         }
       : {
@@ -66,7 +66,7 @@ const scenarios = [
               .should(
                 'have.prop',
                 'href',
-                'https://docs.commercetools.com/docs-smoke-test/code-samples/code-block/'
+                'https://docs.commercetools.com/docs-smoke-test/components/code-block/'
               );
           },
           expected: {},
@@ -78,7 +78,7 @@ const scenarios = [
     expected: {
       url: `${
         Cypress.config().baseUrl
-      }${URL_DOCS_SMOKE_TEST}code-samples/code-block`,
+      }${URL_DOCS_SMOKE_TEST}components/code-block`,
     },
   },
   {
@@ -87,7 +87,7 @@ const scenarios = [
     expectationMessage:
       'It should be a Gatsby link, history navigation, and directly jump to the anchor element position',
     expected: {
-      hash: '#linked-from-links',
+      hash: '#links',
       url: Cypress.config().baseUrl,
       urlMatcher: 'include',
     },
@@ -98,7 +98,7 @@ const scenarios = [
     expectationMessage:
       'It should be a Gatsby link, history navigation, to a parent folder',
     expected: {
-      url: `${Cypress.config().baseUrl}${URL_DOCS_SMOKE_TEST}images/image`,
+      url: `${Cypress.config().baseUrl}${URL_DOCS_SMOKE_TEST}views/empty`,
     },
   },
   {
@@ -106,7 +106,9 @@ const scenarios = [
     expectationMessage:
       'It should be a Gatsby link, history navigation, to a sub folder',
     expected: {
-      url: `${Cypress.config().baseUrl}${linksPageUrl}/link-target`,
+      url: `${
+        Cypress.config().baseUrl
+      }${URL_DOCS_SMOKE_TEST}components/nested/link-target`,
     },
   },
   {
@@ -114,7 +116,9 @@ const scenarios = [
     expectationMessage:
       'It should be a Gatsby link, history navigation, to a sub folder',
     expected: {
-      url: `${Cypress.config().baseUrl}${linksPageUrl}/link-target`,
+      url: `${
+        Cypress.config().baseUrl
+      }${URL_DOCS_SMOKE_TEST}components/nested/link-target`,
     },
   },
   {

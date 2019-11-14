@@ -1,7 +1,5 @@
 - chapter-title: Views
   pages:
-    - title: All markdown elements
-      path: /
     - title: Empty
       path: /views/empty
     - title: Nested headings
