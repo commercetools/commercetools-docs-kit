@@ -4,8 +4,8 @@ snapshot:
   min-height: 1024
 static-snapshots:
   base-url: /
-  snapshot-files: '**/docs-smoke-test/**/*.html'
-  ignore-files: '404.html,404/index.html,**/site-template/**/*.html'
+  snapshot-files: 'components/*'
+  ignore-files: '**/nested/*,**/site-template/**/*.html'
 agent:
   asset-discovery:
     network-idle-timeout: 1000 # ms (https://docs.percy.io/docs/command-line-client#section--network-idle-timeout-t)
