@@ -8,4 +8,4 @@ static-snapshots:
   ignore-files: '**/nested/**/*.html,**/site-template/**/*.html'
 agent:
   asset-discovery:
-    network-idle-timeout: 1000 # ms (https://docs.percy.io/docs/command-line-client#section--network-idle-timeout-t)
+    network-idle-timeout: 5000 # ms (https://docs.percy.io/docs/command-line-client#section--network-idle-timeout-t)
