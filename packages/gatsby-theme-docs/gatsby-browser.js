@@ -7,10 +7,12 @@
 require('prism-themes/themes/prism-dracula.css');
 require('prismjs/plugins/command-line/prism-command-line.css');
 
-const isProduction = process.env.NODE_ENV === 'production';
-const commitSha = process.env.NOW_GITHUB_COMMIT_SHA;
+const isProduction = process.env.GATSBY_NODE_ENV === 'production';
+const commitSha = process.env.GATSBY_NOW_GITHUB_COMMIT_SHA;
 const environment =
-  process.env.NOW_GITHUB_COMMIT_REF === 'master' ? 'production' : 'preview';
+  process.env.GATSBY_NOW_GITHUB_COMMIT_REF === 'master'
+    ? 'production'
+    : 'preview';
 
 exports.onClientEntry = (
   _, // eslint-disable-line
