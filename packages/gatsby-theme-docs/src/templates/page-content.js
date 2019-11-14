@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import LayoutContent from '../layouts/content';
-import { SEO, Markdown } from '../components';
+import { SEO, Markdown, Subtitle } from '../components';
 import PlaceholderMarkdownComponents from '../overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
@@ -36,9 +36,10 @@ const components = {
   delete: Markdown.Delete,
   hr: Markdown.Hr,
   a: Markdown.Link,
-  img: Markdown.Img,
   // eslint-disable-next-line react/display-name
   pre: Markdown.CodeBlock,
+
+  Subtitle,
 
   // Custom React components to be used in MDX files
   ...PlaceholderMarkdownComponents,

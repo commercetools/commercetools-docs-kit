@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 const Content = styled.div`
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 const Section = styled.section`
   height: 100px;

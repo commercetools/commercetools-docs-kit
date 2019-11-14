@@ -50,7 +50,7 @@ const PaginationButton = styled(Card)`
 
 const PaginationLink = props => (
   <PaginationButtonLink
-    to={props.linkTo}
+    to={trimTrailingSlash(props.linkTo)}
     align={props.direction === 'left' ? 'right' : 'left'}
   >
     <PaginationButton>

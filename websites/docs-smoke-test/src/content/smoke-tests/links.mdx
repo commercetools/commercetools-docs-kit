@@ -6,94 +6,125 @@ title: Page that Tests Links
 
 ## Common use cases
 
-Here's a
+### Link pointing to an empty string
 
-- [Link pointing to an empty string]()
-- href: ``
-- It should render as a link that does not work.
+```md
+[Link]()
+```
 
-Here's a
+| Link      | Type           | Expected outcome                            |
+| --------- | -------------- | ------------------------------------------- |
+|  [Link]() |  `gatsby-link` |  It renders an empty link to the same page. |
 
-- [Link pointing to just whitespace-like]()
-- href: ``
-- It should render as a link that does not work.
+### Link pointing to a different website
 
-Here's a
+```md
+[Link](https://commercetools.com)
+```
 
-- [Link pointing to a different website](https://commercetools.com)
-- href: `https://commercetools.com`
-- It should work and be an OutboundLink that tracks via google analytics
+| Link                               | Type             | Expected outcome                                                         |
+| ---------------------------------- | ---------------- | ------------------------------------------------------------------------ |
+|  [Link](https://commercetools.com) |  `external-link` |  It should work and be an OutboundLink that tracks via google analytics. |
 
-Here's a
+### Link to a heading anchor on this page
 
-- [Link to a heading anchor on this page](#last-heading)
-- href: `#last-heading`.
-- jump to that position without visible scrolling or reload.
+```md
+[Link](#last-heading)
+```
 
-Here's a
+| Link                   | Type           | Expected outcome                                                      |
+| ---------------------- | -------------- | --------------------------------------------------------------------- |
+|  [Link](#last-heading) |  `anchor-link` |  It should jump to that position without visible scrolling or reload. |
 
-- [Link to a heading anchor on this same page, but using the full path](/smoke-tests/links/#last-heading)
-- href: `/smoke-tests/links/#last-heading`.
-- jump to that position without visible scrolling or reload
+### Link to a heading anchor on this same page, but using the full path
 
-Here's a
+```md
+[Link](/smoke-tests/links/#last-heading)
+```
 
-- [Link to a heading anchor on this same page, but using an absolute URL](https://docs.commercetools.com/test/smoke-tests/links/#last-heading)
-- href: `https://docs.commercetools.com/test/smoke-tests/links/#last-heading`.
-- will render as an outbound link, no "smart" detection
+| Link                                      | Type           | Expected outcome                                                      |
+| ----------------------------------------- | -------------- | --------------------------------------------------------------------- |
+|  [Link](/smoke-tests/links/#last-heading) |  `anchor-link` |  It should jump to that position without visible scrolling or reload. |
 
-Here's a
+### Link to another page on this site, but using an absolute URL
 
-- [Link to another page on this site, but using an absolute URL](https://docs.commercetools.com/test/api/types/)
-- href: `https://docs.commercetools.com/test/api/types/`.
-- will render as an outbound link, no "smart" detection
+```md
+[Link](https://docs.commercetools.com/docs-smoke-test/code-samples/code-block/)
+```
 
-Here's a
+| Link                                                                             | Type             | Expected outcome                                                               |
+| -------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------ |
+|  [Link](https://docs.commercetools.com/docs-smoke-test/code-samples/code-block/) |  `internal-link` | It should render an absolute URL in dev mode and a relative path in prod mode. |
 
-- [Link to another page on this site using a full path](/api/types/)
-- href: `/api/types/`.
-- should be a GatsbyLink -> in-app transition
+### Link to another page on this site using a full path
 
-Here's a
+```md
+[Link](/code-samples/code-block/)
+```
 
-- [Link to another page on this site with a specific anchor a page on this site](/#linked-from-links)
-- href: `/#linked-from-links`.
-- should be a GatsbyLink -> in-app transition and direct jump to that position.
+| Link                               | Type           | Expected outcome                                 |
+| ---------------------------------- | -------------- | ------------------------------------------------ |
+|  [Link](/code-samples/code-block/) |  `gatsby-link` |  It should be a Gatsby link, history navigation. |
 
-Here's a
+### Link to another page on this site with a specific anchor a page on this site
 
-- [Link to another page on this site using a relative upwards traversal path](../)
-- href: `../`.
-- should be a GatsbyLink to `/smoke-tests/` -> in-app transition
+```md
+[Link](/#linked-from-links)
+```
 
-Here's a
+| Link                         | Type           | Expected outcome                                                                                   |
+| ---------------------------- | -------------- | -------------------------------------------------------------------------------------------------- |
+|  [Link](/#linked-from-links) |  `gatsby-link` |  It should be a Gatsby link, history navigation, and directly jump to the anchor element position. |
 
-- [Link to a page path-wise "below" to this one, in a relative fashion (omitting the trailing slash)](link-target)
-- href: `link-target`.
-- should be a GatsbyLink to `/smoke-tests/links/link-target`-> in-app transition
+### Link to another page on this site using a relative upwards traversal path
 
-Here's a
+```md
+[Link](../images/image)
+```
 
-- [Link to a page path-wise "below" to this one, in a relative fashion (including the trailing slash)](link-target/)
-- href:`link-target/`.
-- should be a GatsbyLink to `/smoke-tests/links/link-target/` -> in-app transition
+| Link                     | Type           | Expected outcome                                                     |
+| ------------------------ | -------------- | -------------------------------------------------------------------- |
+|  [Link](../images/image) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a parent folder. |
 
-Here's a
+### Link to a sub-page of this one (omitting the trailing slash)
 
-- [Link to a path in a different sub-site of our multi-site deployment](/../import-api/)
-- href: `/../import-api/`
-- should be a plain `<a>`tag / html-link
-- You get a 404 in development but it should work in full site builds with path prefix.
+```md
+[Link](links/link-target)
+```
 
-## Link use cases that detect logically addressed API elements
+| Link                       | Type           | Expected outcome                                                  |
+| -------------------------- | -------------- | ----------------------------------------------------------------- |
+|  [Link](links/link-target) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
 
-These would typically appear in RAML description texts, but using this addressing in MD(X) content can also be helpful when refactoring a site's structure.
+### Link to a sub-page of this one (including the trailing slash)
 
-**NOT YET TO BE SUPPORTED:** Here's a [Link pointing a URN style location of a type definition that is actually on this site](ctp:test:type:UnionLikeType) - `ctp:test:type:UnionLikeType`. It should transition to the definition of that type and be rendered as the type name "UnionLikeType".
+```md
+[Link](links/link-target/)
+```
 
-**NOT YET TO BE SUPPORTED:** Here's a [Link pointing a URN style location of a type definition that isn't actually on this site](ctp:test:type:UnionLikeType) - `ctp:test:type:UnionLikeType`. It should render no link but just the type name as a text span. (TODO better as a code span?)
+| Link                        | Type           | Expected outcome                                                  |
+| --------------------------- | -------------- | ----------------------------------------------------------------- |
+|  [Link](links/link-target/) |  `gatsby-link` |  It should be a Gatsby link, history navigation, to a sub folder. |
 
-**NOT YET TO BE SUPPORTED:** Here's a [Link pointing a URN style location of an endpoint definition that is actually on this site](ctp:test:endpoint:/{projectKey}/resource/{id}:GET) - `ctp:test:endpoint:/{projectKey}/resource/{id}:GET`. It should transition to the definition of that endpoint and be rendered as "GET /{projectKey}/resource/{id}" (TODO a code formatting or plain text?).
+### Link to a page of another internal site using a full url (recommended)
+
+```md
+[Link](https://docs.commercetools.com/another-site/welcome)
+```
+
+| Link                                                         | Type             | Expected outcome                                              |
+| ------------------------------------------------------------ | ---------------- | ------------------------------------------------------------- |
+|  [Link](https://docs.commercetools.com/another-site/welcome) |  `internal-link` |  It should be a normal html link (only in `production` mode). |
+
+### Link to a page of another internal site
+
+```md
+[Link](/../import-api/)
+```
+
+| Link                     | Type             | Expected outcome                                              |
+| ------------------------ | ---------------- | ------------------------------------------------------------- |
+|  [Link](/../import-api/) |  `internal-link` |  It should be a normal html link (only in `production` mode). |
 
 ## Last Heading
 
