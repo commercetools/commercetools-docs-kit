@@ -129,8 +129,8 @@ const scenarios = [
           'have.prop',
           'href',
           isCI
-            ? `${Cypress.config().baseUrl}/site-template/`
-            : 'https://docs.commercetools.com/site-template/'
+            ? `${Cypress.config().baseUrl}/site-template`
+            : 'https://docs.commercetools.com/site-template'
         );
     },
     expected: {},
