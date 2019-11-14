@@ -27,8 +27,8 @@
 - chapter-title: Custom Elements
   beta: true
   pages:
-    - title: Info Boxes
-      path: /custom-elements/info-boxes/
+    - title: Notifications
+      path: /custom-elements/notifications/
 - chapter-title: Images
   pages:
     - title: Image
