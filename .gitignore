@@ -73,8 +73,6 @@ public
 
 # Editor/IDE
 .idea
-.vscode
-!.vscode/settings.json
 
 # Cypress
 cypress/screenshots
