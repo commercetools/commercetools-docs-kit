@@ -4,7 +4,13 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import LayoutContent from '../layouts/content';
-import { SEO, Markdown, Subtitle, ContentNotifications } from '../components';
+import {
+  SEO,
+  Markdown,
+  Subtitle,
+  ContentNotifications,
+  ThemeProvider,
+} from '../components';
 import PlaceholderMarkdownComponents from '../overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
@@ -50,21 +56,23 @@ const components = {
 };
 
 const PageContentTemplate = props => (
-  <LayoutContent pageContext={props.pageContext} pageData={props.data.mdx}>
-    <MDXProvider components={components}>
-      <Markdown.TypographyPage>
-        <SEO
-          title={
-            props.pageContext.shortTitle || props.data.mdx.frontmatter.title
-          }
-        />
-        {/* This wrapper div is important to ensure the vertical space */}
-        <div>
-          <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
-        </div>
-      </Markdown.TypographyPage>
-    </MDXProvider>
-  </LayoutContent>
+  <ThemeProvider>
+    <LayoutContent pageContext={props.pageContext} pageData={props.data.mdx}>
+      <MDXProvider components={components}>
+        <Markdown.TypographyPage>
+          <SEO
+            title={
+              props.pageContext.shortTitle || props.data.mdx.frontmatter.title
+            }
+          />
+          {/* This wrapper div is important to ensure the vertical space */}
+          <div>
+            <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
+          </div>
+        </Markdown.TypographyPage>
+      </MDXProvider>
+    </LayoutContent>
+  </ThemeProvider>
 );
 
 PageContentTemplate.displayName = 'PageContentTemplate';
