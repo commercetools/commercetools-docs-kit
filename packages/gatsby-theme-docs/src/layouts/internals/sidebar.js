@@ -143,10 +143,10 @@ const Sidebar = props => {
           </SidebarLinkItem>
           <Spacings.Stack scale="s">
             {node.pages &&
-              node.pages.map(pageLink => (
+              node.pages.map((pageLink, pageIndex) => (
                 <SidebarLink
                   to={pageLink.path}
-                  key={pageLink.path}
+                  key={`${index}-${pageIndex}-${pageLink.path}`}
                   onClick={props.onLinkClick}
                 >
                   <SidebarLinkSubtitle>{pageLink.title}</SidebarLinkSubtitle>
