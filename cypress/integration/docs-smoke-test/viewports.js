@@ -1,12 +1,14 @@
 import { URL_DOCS_SMOKE_TEST } from '../../support/urls';
 
 describe('Viewports', () => {
-  it('should take snapshots for mobile, tablet and desktop sizes', () => {
+  it('should take snapshots for mobile and tablet viewports', () => {
     cy.setDesktopViewport();
-    cy.visit(`${URL_DOCS_SMOKE_TEST}/views/empty`);
+    cy.visit(URL_DOCS_SMOKE_TEST);
     cy.findAllByText('Docs Smoke Test');
+    // wait for menu button to appear
+    cy.findByLabelText('Open main navigation');
     cy.percySnapshot(cy.state('runnable').fullTitle(), {
-      widths: [512, 1200, 1634],
+      widths: [512, 1200],
     });
   });
 });

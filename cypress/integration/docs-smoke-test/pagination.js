@@ -11,7 +11,6 @@ describe('Pagination', () => {
   links.forEach((url, index) => {
     const nextUrl = links[index + 1];
     it(`should render page ${url}, then go to next page`, () => {
-      cy.setDesktopViewport();
       cy.visit(url);
       if (nextUrl) {
         cy.findByText('Next:').should('exist');
