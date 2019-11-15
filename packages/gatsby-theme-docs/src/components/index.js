@@ -10,4 +10,5 @@ export { default as SEO } from './seo';
 export { default as Spacings } from './spacings';
 export { default as Subtitle } from './subtitle';
 export { default as TextSmall } from './text-small';
+export { default as ThemeProvider } from './theme-provider';
 export { Markdown };
