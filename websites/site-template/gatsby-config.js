@@ -10,7 +10,7 @@ module.exports = {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
         websiteName: 'CHANGE ME',
-        gaTrackingId: 'CHANGE OR REMOVE ME',
+        /* gaTrackingId: 'CHANGE OR REMOVE ME' */ // to enable trackign with Google Analytics, enter the site ID here
       },
     },
   ],
