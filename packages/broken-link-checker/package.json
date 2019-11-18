@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-docs/broken-link-checker",
-  "description": "Broken Link Checker for static websites on the file system",
+  "description": "Broken Link Checker for commercetools documentation websites",
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "private": false,
