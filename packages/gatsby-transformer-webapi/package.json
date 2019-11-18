@@ -13,9 +13,6 @@
     "amf"
   ],
   "scripts": {
-    "clean": ": Nothing to clean in gatsby-transformer-webapi",
-    "test": "jest",
-    "build": ": No standalone build of the WebAPI transformer plugin in production."
   },
   "dependencies": {
     "firstline": "^2.0.2",

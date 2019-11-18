@@ -1,0 +1,4 @@
+*.amfgraph.raml
+*.parsed.raml
+*.resolved.raml
+*.validation.raml

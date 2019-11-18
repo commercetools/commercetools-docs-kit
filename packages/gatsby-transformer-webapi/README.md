@@ -1,5 +1,7 @@
 # GatsbyJS WebApi transformer
 
+> Status: Technology Evaluation of different RAML parsers
+
 The Plugin exposes Web API specfications defined in .raml files on graphQL as a node that contains the fully parsed, validated and resolved RAML string for further processing by more specific plugins that e.g. provide the RAML spec as more granular and queryable data nodes.
 
 It is based on the AMF-based [raml.org webapi-parser](https://github.com/raml-org/webapi-parser).
