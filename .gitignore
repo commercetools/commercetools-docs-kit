@@ -83,3 +83,4 @@ cypress/videos
 # Gatsby
 .cache
 public
+.vscode/launch.json
