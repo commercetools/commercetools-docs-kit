@@ -22,8 +22,11 @@ const uikitColors = {
   colorAccent98: 'hsl(195, 35.2941176471%, 98%)',
   colorSolid: '#1a1a1a',
   colorError: '#e60050',
+  colorError95: 'hsl(339.1304347826087, 100%, 95%)',
   colorPrimary: '#00b39e',
   colorPrimary25: 'hsl(172.9608938547486, 100%, 25%)',
+  colorWarning: '#f16d0e',
+  colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
 };
 
 export const colors = {
@@ -39,12 +42,16 @@ export const colors = {
     surfaceCodeHighlight: uikitColors.colorAccent40,
     surfaceInfo: uikitColors.colorInfo95,
     surfaceQuote: uikitColors.colorAccent98,
+    surfaceWarning: uikitColors.colorWarning95,
+    surfaceError: uikitColors.colorError95,
     // Different tones of text
     textPrimary: uikitColors.colorSolid,
     textSecondary: '#666666',
     textFaded: uikitColors.colorNeutral60,
     textCode: uikitColors.colorError,
     textInfo: uikitColors.colorInfo,
+    textError: uikitColors.colorError,
+    textWarning: uikitColors.colorWarning,
     textInverted: uikitColors.colorSurface,
     // Different tones of border colors
     borderPrimary: uikitColors.colorNeutral90,

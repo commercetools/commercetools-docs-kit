@@ -29,21 +29,48 @@ const Globals = () => (
         padding: 0 0 0 ${dimensions.spacings.l};
       }
 
+      /* Images */
+
       .gatsby-resp-image-wrapper {
         background-color: ${colors.light.surfaceSecondary1};
         border-radius: ${tokens.borderRadius6};
         margin: ${dimensions.spacings.m} 0;
         padding: ${dimensions.spacings.s};
       }
+      .gatsby-resp-image-figure {
+        background-color: ${colors.light.surfaceSecondary1};
+        border-radius: ${tokens.borderRadius6};
+        margin: 0;
+        padding: ${dimensions.spacings.s};
+      }
       .gatsby-resp-image-link {
         text-decoration: none;
       }
       .gatsby-resp-image-image {
+        background-color: ${colors.light.surfacePrimary};
         box-shadow: none !important;
         width: calc(100% - ${dimensions.spacings.s} * 2);
         height: auto;
         margin: ${dimensions.spacings.s};
       }
+      .gatsby-resp-image-figure .gatsby-resp-image-wrapper {
+        background-color: unset;
+        border-radius: unset;
+        margin: unset;
+        padding: unset;
+      }
+      .gatsby-resp-image-figure .gatsby-resp-image-image {
+        width: 100%;
+        height: unset;
+        margin: unset;
+      }
+      .gatsby-resp-image-figcaption {
+        color: ${colors.light.textSecondary};
+        font-size: ${typography.fontSizes.small};
+        margin: ${dimensions.spacings.xs} 0 0;
+      }
+
+      /* Code blocks syntax highlighting */
 
       .gatsby-highlight {
         background-color: ${colors.light.surfaceCode};
@@ -53,8 +80,7 @@ const Globals = () => (
       }
       .gatsby-highlight > code,
       .gatsby-highlight code[class*='language-'],
-      .gatsby-highlight pre[class*='language-'],
-      .gatsby-highlight .line-numbers-rows {
+      .gatsby-highlight pre[class*='language-'] {
         font-family: ${typography.fontFamilies.code};
         font-size: ${typography.fontSizes.small};
       }
@@ -63,22 +89,9 @@ const Globals = () => (
         margin: 0;
         padding: 0;
       }
-      .gatsby-highlight pre[class*='language-'].line-numbers {
-        display: flex;
-        flex-direction: row;
-        padding: 0;
-        overflow-x: scroll;
-        > * + * {
-          margin: 0 0 0 ${dimensions.spacings.m};
-        }
-      }
       .gatsby-highlight pre[class*='language-'],
       .gatsby-highlight code[class*='language-'] {
         white-space: pre-wrap;
-      }
-      .gatsby-highlight .line-numbers,
-      .gatsby-highlight .line-numbers-rows {
-        position: relative;
       }
       .gatsby-highlight .gatsby-highlight-code-line {
         background-color: ${colors.light.surfaceCodeHighlight};

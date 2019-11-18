@@ -1,0 +1,52 @@
+extends: conditional
+message: "Spell out '%s',it was not previously defined in the form 'my special term (MST)'."
+level: warning
+ignorecase: false
+# Ensures that the existence of 'first' implies the existence of 'second'.
+first: '\b([A-Z]{3,5})\b'
+second: '(?:\b[A-Z][a-z]+ )+\(([A-Z]{3,5})\)'
+# ... with the exception of these:
+exceptions:
+  - API
+  - CLI
+  - CPU
+  - CSS
+  - CSV
+  - DEBUG
+  - DOM
+  - FAQ
+  - GET
+  - HTML
+  - HTTP
+  - HTTPS
+  - IDE
+  - JAR
+  - JSON
+  - JSX
+  - PATH
+  - PDF
+  - PHP
+  - POST
+  - RAM
+  - RSA
+  - SDK
+  - SQL
+  - SSH
+  - SSL
+  - SVG
+  - TCP
+  - URI
+  - URL
+  - USB
+  - UTF
+  - XML
+  - XSS
+  - YAML
+  - ZIP
+  # the following exceptions are allowed because they are caught as errors by the ToDo rule.
+  - XXX
+  - FIXME
+  - TODO
+  - TBD
+  - NOTE
+  - MIT

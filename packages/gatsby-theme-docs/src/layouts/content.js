@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { ContentPagination, NotificationInfo, Markdown } from '../components';
+import {
+  ContentPagination,
+  ContentNotifications,
+  Markdown,
+} from '../components';
 import { dimensions, tokens } from '../design-system';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import LayoutApplication from './internals/layout-application';
@@ -11,12 +14,11 @@ import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
-import Reset from './internals/reset';
-import Globals from './internals/globals';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
+import { useSiteData } from '../hooks/use-site-data';
 
 const GridArea = styled.div`
   grid-area: ${props => props.name};
@@ -38,97 +40,84 @@ const ResizableGrid = styled.div`
 
 const LayoutContent = props => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
-  const data = useStaticQuery(graphql`
-    query GetTitle {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+  const siteData = useSiteData();
   return (
-    <React.Fragment>
-      <Reset />
-      <Globals />
-      <LayoutApplication isMenuOpen={isMenuOpen}>
-        <LayoutHeader siteTitle={data.site.siteMetadata.title} />
-        <LayoutSidebar
-          isMenuOpen={isMenuOpen}
-          setMenuOpen={setMenuOpen}
-          slug={props.pageContext.slug}
-          siteTitle={data.site.siteMetadata.title}
-        />
-        <LayoutMain
-          css={css`
-            grid-column: 2;
-            grid-row: 2;
+    <LayoutApplication isMenuOpen={isMenuOpen}>
+      <LayoutHeader siteTitle={siteData.siteMetadata.title} />
+      <LayoutSidebar
+        isMenuOpen={isMenuOpen}
+        setMenuOpen={setMenuOpen}
+        slug={props.pageContext.slug}
+        siteTitle={siteData.siteMetadata.title}
+      />
+      <LayoutMain
+        css={css`
+          grid-column: 2;
+          grid-row: 2;
 
-            div {
-              min-width: unset;
-            }
+          div {
+            min-width: unset;
+          }
 
-            @media screen and (${dimensions.viewports.mobile}) {
-              grid-column: 1/3;
-              grid-row: ${isMenuOpen ? '3' : '2'};
-            }
-          `}
-        >
-          <ResizableGrid>
-            <GridArea name="left" />
-            <GridArea name="right" />
-            <GridArea
-              id="anchor-page-top"
-              name="center"
-              css={css`
-                display: block;
+          @media screen and (${dimensions.viewports.mobile}) {
+            grid-column: 1/3;
+            grid-row: ${isMenuOpen ? '3' : '2'};
+          }
+        `}
+      >
+        <ResizableGrid>
+          <GridArea name="left" />
+          <GridArea name="right" />
+          <GridArea
+            id="anchor-page-top"
+            name="center"
+            css={css`
+              display: block;
 
-                @media screen and (${dimensions.viewports.tablet}) {
-                  display: grid;
-                  grid-template-columns:
-                    calc(
-                      ${dimensions.widths.pageContent} +
-                        ${dimensions.spacings.xl} * 2
-                    )
-                    0;
-                  grid-template-rows: auto 1fr;
-                }
-                @media screen and (${dimensions.viewports.largeTablet}) {
-                  grid-template-columns:
-                    calc(
-                      ${dimensions.widths.pageContent} +
-                        ${dimensions.spacings.xl} * 2
-                    )
-                    ${dimensions.widths.pageNavigation};
-                }
-              `}
-            >
-              <LayoutPageHeader>
-                <Markdown.H1>{props.pageData.frontmatter.title}</Markdown.H1>
-              </LayoutPageHeader>
-              <LayoutPageHeaderSide>
-                <PlaceholderPageHeaderSide />
-              </LayoutPageHeaderSide>
-              <LayoutPageContent>
-                {props.pageData.frontmatter.beta && (
-                  <NotificationInfo flag="beta" />
-                )}
-                {props.children}
-                <ContentPagination slug={props.pageContext.slug} />
-              </LayoutPageContent>
-              <LayoutPageNavigation
-                pageTitle={
-                  props.pageContext.shortTitle ||
-                  props.pageData.frontmatter.title
-                }
-                tableOfContents={props.pageData.tableOfContents}
-              />
-            </GridArea>
-          </ResizableGrid>
-          <LayoutFooter />
-        </LayoutMain>
-      </LayoutApplication>
-    </React.Fragment>
+              @media screen and (${dimensions.viewports.tablet}) {
+                display: grid;
+                grid-template-columns:
+                  calc(
+                    ${dimensions.widths.pageContent} + ${dimensions.spacings.xl} *
+                      2
+                  )
+                  0;
+                grid-template-rows: auto 1fr;
+              }
+              @media screen and (${dimensions.viewports.largeTablet}) {
+                grid-template-columns:
+                  calc(
+                    ${dimensions.widths.pageContent} + ${dimensions.spacings.xl} *
+                      2
+                  )
+                  ${dimensions.widths.pageNavigation};
+              }
+            `}
+          >
+            <LayoutPageHeader>
+              <Markdown.H1>{props.pageData.frontmatter.title}</Markdown.H1>
+            </LayoutPageHeader>
+            <LayoutPageHeaderSide>
+              <PlaceholderPageHeaderSide />
+            </LayoutPageHeaderSide>
+            <LayoutPageContent>
+              {props.pageData.frontmatter.beta && (
+                <ContentNotifications.BetaInfo />
+              )}
+              {props.children}
+              <ContentPagination slug={props.pageContext.slug} />
+            </LayoutPageContent>
+            <LayoutPageNavigation
+              pageTitle={
+                props.pageContext.shortTitle || props.pageData.frontmatter.title
+              }
+              tableOfContents={props.pageData.tableOfContents}
+            />
+          </GridArea>
+        </ResizableGrid>
+        <LayoutFooter />
+      </LayoutMain>
+    </LayoutApplication>
   );
 };
 LayoutContent.displayName = 'LayoutContent';

@@ -53,7 +53,7 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     actions.createNodeField({
       node,
       name: 'slug',
-      value: slug,
+      value: trimTrailingSlash(slug) || '/',
     });
   }
 };

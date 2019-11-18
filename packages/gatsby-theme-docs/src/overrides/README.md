@@ -4,3 +4,4 @@ Overrides files using theme shadowing, in order to inject specific functionaliti
 
 - `markdown-components`: allows to pass React components to be injected in the MDX context
 - `page-header-side`: allows to render something in the top-right corner of a content page
+- `use-additional-site-data`: allows to return custom site metadata using React hooks

@@ -4,7 +4,13 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import LayoutContent from '../layouts/content';
-import { SEO, Markdown } from '../components';
+import {
+  SEO,
+  Markdown,
+  Subtitle,
+  ContentNotifications,
+  ThemeProvider,
+} from '../components';
 import PlaceholderMarkdownComponents from '../overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
@@ -36,30 +42,37 @@ const components = {
   delete: Markdown.Delete,
   hr: Markdown.Hr,
   a: Markdown.Link,
-  img: Markdown.Img,
   // eslint-disable-next-line react/display-name
   pre: Markdown.CodeBlock,
 
-  // Custom React components to be used in MDX files
+  // Official react components to be used in MDX files
+  Subtitle,
+  Info: ContentNotifications.Info,
+  Warning: ContentNotifications.Warning,
+  Error: ContentNotifications.Error,
+
+  // Custom React components to be overriden in microsites.
   ...PlaceholderMarkdownComponents,
 };
 
 const PageContentTemplate = props => (
-  <LayoutContent pageContext={props.pageContext} pageData={props.data.mdx}>
-    <MDXProvider components={components}>
-      <Markdown.TypographyPage>
-        <SEO
-          title={
-            props.pageContext.shortTitle || props.data.mdx.frontmatter.title
-          }
-        />
-        {/* This wrapper div is important to ensure the vertical space */}
-        <div>
-          <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
-        </div>
-      </Markdown.TypographyPage>
-    </MDXProvider>
-  </LayoutContent>
+  <ThemeProvider>
+    <LayoutContent pageContext={props.pageContext} pageData={props.data.mdx}>
+      <MDXProvider components={components}>
+        <Markdown.TypographyPage>
+          <SEO
+            title={
+              props.pageContext.shortTitle || props.data.mdx.frontmatter.title
+            }
+          />
+          {/* This wrapper div is important to ensure the vertical space */}
+          <div>
+            <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
+          </div>
+        </Markdown.TypographyPage>
+      </MDXProvider>
+    </LayoutContent>
+  </ThemeProvider>
 );
 
 PageContentTemplate.displayName = 'PageContentTemplate';

@@ -63,6 +63,8 @@ const SidebarLink = props => (
       return (
         <Link
           {...props}
+          // eslint-disable-next-line react/prop-types
+          to={trimTrailingSlash(props.to)}
           getProps={({ href, location }) => {
             // Manually check that the link is the active one, even with trailing slashes.
             // The gatsby link is by default configured to match the exact path, therefore we
@@ -141,10 +143,10 @@ const Sidebar = props => {
           </SidebarLinkItem>
           <Spacings.Stack scale="s">
             {node.pages &&
-              node.pages.map(pageLink => (
+              node.pages.map((pageLink, pageIndex) => (
                 <SidebarLink
                   to={pageLink.path}
-                  key={pageLink.path}
+                  key={`${index}-${pageIndex}-${pageLink.path}`}
                   onClick={props.onLinkClick}
                 >
                   <SidebarLinkSubtitle>{pageLink.title}</SidebarLinkSubtitle>

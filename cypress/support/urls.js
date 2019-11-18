@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export const isCI = Cypress.env('CI') === true;
+import { isCI } from './env';
 
-export const URL_DOCS_SMOKE_TEST = isCI ? `/docs-smoke-test` : `/`;
+// eslint-disable-next-line import/prefer-default-export
+export const URL_DOCS_SMOKE_TEST = isCI ? `/docs-smoke-test/` : `/`;
