@@ -41,7 +41,7 @@ function processMethods(methods) {
     });
   }
 
-  return null;
+  return undefined;
 }
 
 function processMethodResponses(responses) {
@@ -59,7 +59,7 @@ function processMethodResponses(responses) {
     });
   }
 
-  return null;
+  return undefined;
 }
 
 function processBody(body) {
@@ -79,7 +79,7 @@ function processBody(body) {
     }
   }
 
-  return null;
+  return undefined;
 }
 
 function isValidBody(body) {
