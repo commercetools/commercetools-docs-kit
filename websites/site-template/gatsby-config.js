@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: '/CHANGE-ME',
+  pathPrefix: '/site-template',
   siteMetadata: {
     title: 'CHANGE-ME',
     description: 'CHANGE-ME',
