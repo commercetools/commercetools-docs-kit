@@ -1,0 +1,4 @@
+Model: file:///Users/nkuehn/GitHub/commercetools-docs-kit/websites/api-docs-smoke-test/src/api-specs/test/api.raml
+Profile: RAML 1.0
+Conforms? true
+Number of results: 0
