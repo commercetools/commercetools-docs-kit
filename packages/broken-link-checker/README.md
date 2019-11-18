@@ -22,4 +22,4 @@ The _first_ entrypoint (i.e. the second parameter) is also considered the root U
 
 The crawler follows all links from the entrypoint, so if you accidentally provide multiple entrypoints that indirectly link to each other many pages will be tested multiple times. Entrypoints are tested independently as separate runs.
 
-You can provide the command globally too via `npm install -g @commercetools-docs-kit/broken-link-checker`
+You can provide the command globally too via `npm install -g @commercetools-docs/broken-link-checker`
