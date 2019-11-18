@@ -10,7 +10,7 @@ The exit code is 1 if a broken link was found, otherwise zero. This way the comm
 
 Typical usage in a static generator based website project is to include it as a development dependency
 
-`yarn add --dev @commercetools-docs-kit/broken-link-checker`
+`yarn add --dev @commercetools-docs/broken-link-checker`
 
 and then run it inside the project directory
 
