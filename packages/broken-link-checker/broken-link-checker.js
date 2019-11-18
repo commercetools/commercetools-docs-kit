@@ -61,7 +61,8 @@ getPort().then(port => {
           `--- Link Check Finished With ${errorCount} Broken Links ---`
         );
         server.close(() => {
-          process.exit(errorCount);
+          if (errorCount > 0) process.exit(1);
+          process.exit(0);
         });
       },
     });

@@ -4,7 +4,7 @@ This package provides an executable script that checks a statically built websit
 
 It's based on the excellent [`broken-link-checker`](https://github.com/stevenvachon/broken-link-checker#readme) library and is fully preconfigured.
 
-The return code is the number of errors found, so it can be used directly in build scripts to have the build fail or pass.
+The exit code is 1 if a broken link was found, otherwise zero. This way the command can be used directly in build scripts to have the build fail or pass.
 
 # Usage
 
