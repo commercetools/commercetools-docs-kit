@@ -4,6 +4,10 @@
       path: /views/empty
     - title: Nested headings
       path: /views/nested-headings
+    - title: Links
+      path: /views/links
+    - title: Code blocks
+      path: /views/code-blocks
 - chapter-title: Components
   beta: true
   pages:
@@ -13,8 +17,6 @@
       path: /components/content-notifications
     - title: Images
       path: /components/images
-    - title: Links
-      path: /components/links
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
   pages:
     - title: Page with some very long title too much for our innocent API to handle

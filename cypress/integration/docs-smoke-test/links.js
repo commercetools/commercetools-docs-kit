@@ -1,7 +1,7 @@
 import { URL_DOCS_SMOKE_TEST } from '../../support/urls';
 import { isCI } from '../../support/env';
 
-const linksPageUrl = `${URL_DOCS_SMOKE_TEST}components/links`;
+const linksPageUrl = `${URL_DOCS_SMOKE_TEST}views/links`;
 
 const scenarios = [
   {
@@ -56,7 +56,7 @@ const scenarios = [
           expected: {
             url: `${
               Cypress.config().baseUrl
-            }${URL_DOCS_SMOKE_TEST}components/code-blocks`,
+            }${URL_DOCS_SMOKE_TEST}views/code-blocks`,
           },
         }
       : {
@@ -66,7 +66,7 @@ const scenarios = [
               .should(
                 'have.prop',
                 'href',
-                'https://docs.commercetools.com/docs-smoke-test/components/code-blocks'
+                'https://docs.commercetools.com/docs-smoke-test/views/code-blocks'
               );
           },
           expected: {},
@@ -76,9 +76,7 @@ const scenarios = [
     title: 'Link to another page on this site using a full path',
     expectationMessage: 'It should be a Gatsby link, history navigation',
     expected: {
-      url: `${
-        Cypress.config().baseUrl
-      }${URL_DOCS_SMOKE_TEST}components/code-blocks`,
+      url: `${Cypress.config().baseUrl}${URL_DOCS_SMOKE_TEST}views/code-blocks`,
     },
   },
   {
@@ -108,7 +106,7 @@ const scenarios = [
     expected: {
       url: `${
         Cypress.config().baseUrl
-      }${URL_DOCS_SMOKE_TEST}components/nested/link-target`,
+      }${URL_DOCS_SMOKE_TEST}views/nested/link-target`,
     },
   },
   {
@@ -118,7 +116,7 @@ const scenarios = [
     expected: {
       url: `${
         Cypress.config().baseUrl
-      }${URL_DOCS_SMOKE_TEST}components/nested/link-target`,
+      }${URL_DOCS_SMOKE_TEST}views/nested/link-target`,
     },
   },
   {
