@@ -28,7 +28,7 @@
   beta: true
   pages:
     - title: Notifications
-      path: /custom-elements/notifications/
+      path: /custom-elements/content-notifications/
 - chapter-title: Images
   pages:
     - title: Image

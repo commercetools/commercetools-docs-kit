@@ -129,8 +129,8 @@ const scenarios = [
           'have.prop',
           'href',
           isCI
-            ? `${Cypress.config().baseUrl}/another-site/welcome`
-            : 'https://docs.commercetools.com/another-site/welcome'
+            ? `${Cypress.config().baseUrl}/site-template`
+            : 'https://docs.commercetools.com/site-template'
         );
     },
     expected: {},
@@ -142,7 +142,11 @@ const scenarios = [
     linkSelector: () => {
       cy.get('a')
         .contains('Link')
-        .should('have.prop', 'href', `${Cypress.config().baseUrl}/import-api/`);
+        .should(
+          'have.prop',
+          'href',
+          `${Cypress.config().baseUrl}/site-template/`
+        );
     },
     expected: {},
   },
