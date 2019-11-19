@@ -164,6 +164,10 @@ const Reset = () => (
           outline: 0 !important;
         }
 
+        img {
+          max-width: 100%;
+        }
+
         svg {
           overflow: hidden;
           vertical-align: middle;

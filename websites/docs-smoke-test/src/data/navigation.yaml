@@ -1,71 +1,33 @@
-- chapter-title: Basic Content
+- chapter-title: Views
   pages:
-    - title: Text
-      path: /smoke-tests/text/
-    - title: Headings and Index Nav
-      path: /smoke-tests/right-nav-submenu/
+    - title: Empty
+      path: /views/empty
+    - title: Nested headings
+      path: /views/nested-headings
     - title: Links
-      path: /smoke-tests/links/
-    - title: Link Target Page
-      path: /smoke-tests/links/link-target
-    - title: Subtitle and Lead
-      path: /smoke-tests/lead-section/
-    - title: Tables
-      path: /smoke-tests/table/
-    - title: Blockquotes
-      path: /smoke-tests/blockquotes/
-    - title: Horizontal Rule
-      path: /smoke-tests/horizontal-rule/
-    - title: Lists
-      path: /smoke-tests/lists/
-    - title: Definition Lists
-      path: /smoke-tests/definition-lists/
-    - title: Empty Page
-      path: /smoke-tests/empty-page/
-    - title: Page with little content
-      path: /smoke-tests/page-with-little-content/
-- chapter-title: Custom Elements
+      path: /views/links
+    - title: Code blocks
+      path: /views/code-blocks
+- chapter-title: Components
   beta: true
   pages:
-    - title: Notifications
-      path: /custom-elements/content-notifications/
-- chapter-title: Images
-  pages:
-    - title: Image
-      path: /images/image/
-    - title: Image with Caption
-      path: /images/image-with-caption/
-    - title: Transparent Image
-      path: /images/transparent-image/
-    - title: Tall Image
-      path: /images/tall-image/
-    - title: SVG Image
-      path: /images/svg-image/
-    - title: Inline Image
-      path: /images/inline-image/
-- chapter-title: Code Samples
-  pages:
-    - title: Inline Code
-      path: /code-samples/inline-code/
-    - title: Code Block
-      path: /code-samples/code-block/
-    - title: Code With Line Highlight
-      path: /code-samples/code-with-line-highlight/
-    - title: Code with Title
-      path: /code-samples/code-with-title/
-    - title: Multi-Language Code
-      path: /code-samples/multi-language-code/
+    - title: Code blocks
+      path: /components/code-blocks
+    - title: Content notifications
+      path: /components/content-notifications
+    - title: Images
+      path: /components/images
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
   pages:
     - title: Page with some very long title too much for our innocent API to handle
-      path: /#foobar
+      path: /#last-section
     - title: Beta Page with some very long title too much for our innocent API to handle
-      path: /#baz
+      path: /#last-section
       beta: true
 - chapter-title: ChapterWithLongNameThatOverflowsBecauseItsOneWord
   pages:
     - title: PageWithLongNameThatOverflowsBecauseItsOneWord
-      path: /#foo
+      path: /#last-section
     - title: BetaPageWithLongNameThatOverflowsBecauseItsOneWord
-      path: /#bar
+      path: /#last-section
       beta: true
