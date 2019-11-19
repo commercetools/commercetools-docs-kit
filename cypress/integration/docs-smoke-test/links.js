@@ -56,7 +56,7 @@ const scenarios = [
           expected: {
             url: `${
               Cypress.config().baseUrl
-            }${URL_DOCS_SMOKE_TEST}components/code-block`,
+            }${URL_DOCS_SMOKE_TEST}components/code-blocks`,
           },
         }
       : {
@@ -66,7 +66,7 @@ const scenarios = [
               .should(
                 'have.prop',
                 'href',
-                'https://docs.commercetools.com/docs-smoke-test/components/code-block'
+                'https://docs.commercetools.com/docs-smoke-test/components/code-blocks'
               );
           },
           expected: {},
@@ -78,7 +78,7 @@ const scenarios = [
     expected: {
       url: `${
         Cypress.config().baseUrl
-      }${URL_DOCS_SMOKE_TEST}components/code-block`,
+      }${URL_DOCS_SMOKE_TEST}components/code-blocks`,
     },
   },
   {
