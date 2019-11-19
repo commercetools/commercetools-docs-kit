@@ -134,7 +134,7 @@ const LayoutPageNavigation = props => {
         <SlidingContainer>{navigationContainer}</SlidingContainer>
       </ContainerOverlay>
 
-      <GridContainer role="page-navigation">
+      <GridContainer role="navigation" aria-label="Page navigation">
         <StickyContainer>{navigationContainer}</StickyContainer>
       </GridContainer>
     </>
