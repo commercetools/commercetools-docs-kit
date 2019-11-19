@@ -6,7 +6,6 @@ describe('Pagination', () => {
     `${baseUrl}/code-blocks`,
     `${baseUrl}/content-notifications`,
     `${baseUrl}/images`,
-    `${baseUrl}/links`,
   ];
   links.forEach((url, index) => {
     const nextUrl = links[index + 1];
