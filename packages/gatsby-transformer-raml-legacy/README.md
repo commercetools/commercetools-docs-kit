@@ -34,7 +34,7 @@ module.exports = {
       },
     },
     {
-      resolve: `@commercetools-docs-kit/gatsby-transformer-raml-legacy`,
+      resolve: `@commercetools-docs/gatsby-transformer-raml-legacy`,
       options: {
         validate: true,
       },
