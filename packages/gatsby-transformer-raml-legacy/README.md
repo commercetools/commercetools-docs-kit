@@ -1,4 +1,4 @@
-# GatsbyJS RAML API transformer
+# GatsbyJS RAML API transformer (legacy parser based)
 
 ## Notice
 
@@ -22,7 +22,7 @@ As a prerequisite configure one or many `gatsby-source-filesystem` plugins to fo
 
 Example `gatsby-config.js` content:
 
-```
+```js
 // In your gatsby-config.js
 module.exports = {
   plugins: [
@@ -30,17 +30,17 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `apis`,
-        path: `${__dirname}/src/api-specs`
+        path: `${__dirname}/src/api-specs`,
       },
     },
     {
-      resolve: `@commercetools-docs/gatsby-transformer-raml`,
+      resolve: `@commercetools-docs-kit/gatsby-transformer-raml-legacy`,
       options: {
-        validate: true
+        validate: true,
       },
     },
   ],
-}
+};
 ```
 
 ### Configuration Opions
@@ -57,7 +57,7 @@ The RAML transformer accepts the following configuration options:
 
 Example for reading all types:
 
-```
+```graphql
 {
   allRamlType {
     nodes {
@@ -72,11 +72,11 @@ Example for reading all types:
         name
         type
         originalType
-        anyOf{
+        anyOf {
           type
           name
         }
-        items{
+        items {
           type
           name
         }
@@ -87,7 +87,7 @@ Example for reading all types:
         minimum
         maximum
         pattern
-        annotations{
+        annotations {
           beta
         }
       }
