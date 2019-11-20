@@ -207,7 +207,7 @@ const PureLink = extendedProps => {
     !isProduction &&
     !isUsingUndocumentedNotationToLinkToAnotherDocsSite
       ? hrefObject.origin + hrefObject.pathname + hrefObject.hash
-      : hrefObject.pathname + hrefObject.hash;
+      : trimTrailingSlash(hrefObject.pathname) + hrefObject.hash;
   return (
     <InternalSiteLink
       role="internal-link"

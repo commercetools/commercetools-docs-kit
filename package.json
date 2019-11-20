@@ -11,6 +11,7 @@
   "scripts": {
     "start": "yarn --cwd websites/docs-smoke-test start",
     "build": "NODE_ENV=production lerna run build --scope '@commercetools-local/*'",
+    "postbuild" : "npx commercetools-broken-link-checker ./public docs-smoke-test/",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",
