@@ -4,7 +4,9 @@ title: Code Blocks
 
 # Terminal/Console
 
-```console noPromptLines=3-4
+Passing the option `noPromptLines="3-4"`.
+
+```console noPromptLines="3-4"
 cd project
 cp -R \
   dist \
@@ -13,7 +15,18 @@ rm -rf dist
 yarn start
 ```
 
+No options, but you can check that the indentation in regards to the left prompt is aligned when the line wraps.
+
 ```console
+# fetch a token:
+curl https://auth.sphere.io/oauth/token --basic --user "{client_id}:{client_secret}" -X POST -d "grant_type=client_credentials&scope=manage_project:{project_key}"
+# now access the API:
+curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/products
+```
+
+Passing the option `title="Fetching an access token"`
+
+```console title="Fetching an access token"
 # fetch a token:
 curl https://auth.sphere.io/oauth/token --basic --user "{client_id}:{client_secret}" -X POST -d "grant_type=client_credentials&scope=manage_project:{project_key}"
 # now access the API:
@@ -22,7 +35,7 @@ curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/
 
 # Javascript
 
-```javascript highlightLines=2,5-6
+```javascript highlightLines="2,5-6"
 // Constructor
 var anObject = new Object();
 

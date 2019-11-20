@@ -10,6 +10,7 @@ import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
 import codeBlockHighlightCode from '../utils/code-block-highlight-code';
+import Spacings from './spacings';
 import Link from './link';
 
 const TypographyPage = styled.div`
@@ -254,13 +255,29 @@ const TooltipBodyComponent = styled.div`
  *   }
  * }
  *
+ * However, to support values with whitespaces between words (e.g. `title="This is a title"`)
+ * we need to add a **restriction to always wrap the value in quotes**!
+ *
+ * ### Title
+ * This feature allows to pass a title to the code block header.
+ * To use this, you need to pass `title="<title>"`.
+ *
+ * ```javascript title="Sum function implementation"
+ * const sum = (x, y) => {
+ *   if (typeof x !== 'number' || typeof y !== 'number') {
+ *     throw new Error('Both arguments need to be numbers.');
+ *   }
+ *   return x + y;
+ * }
+ * ```
+ *
  * ### Highlighted lines
  * This feature allows to select lines to be visually highlighted in the final output.
- * To use this, you need to pass `highlightLines=<range>`. The range can be a single line
+ * To use this, you need to pass `highlightLines="<range>"`. The range can be a single line
  * number or a range of line numbers separated by `-`. Multiple highlighted lines can be
  * provided as comma-separated values.
  *
- * ```javascript highlightLines=1,5
+ * ```javascript highlightLines="1,5"
  * const sum = (x, y) => {
  *   if (typeof x !== 'number' || typeof y !== 'number') {
  *     throw new Error('Both arguments need to be numbers.');
@@ -271,12 +288,12 @@ const TooltipBodyComponent = styled.div`
  *
  * ### Prompt lines
  * This feature allows to mark a line with a prompt `$` in front of it.
- * To use this, you need to pass `promptLines=<range>`. The range can be a single line
+ * To use this, you need to pass `promptLines="<range>"`. The range can be a single line
  * number or a range of line numbers separated by `-`. Multiple highlighted lines can be
  * provided as comma-separated values.
  * This feature only works for the `console` or `terminal` language syntax.
  *
- * ```console promptLines=1-2,5-6
+ * ```console promptLines="1-2,5-6"
  * cd project
  * cp -R \
  *   dist \
@@ -297,7 +314,7 @@ const CodeBlock = props => {
   };
   const [, languageCode] = languageToken.split('language-');
   const language = languageAliases[languageCode] || languageCode;
-  const { highlightLines, noPromptLines } = codeBlockParseOptions(
+  const { title, highlightLines, noPromptLines } = codeBlockParseOptions(
     props.children.props
   );
   const useCommandLine = ['terminal', 'console'].includes(languageCode);
@@ -338,54 +355,69 @@ const CodeBlock = props => {
           background-color: ${colors.light.textPrimary};
           border-bottom: 1px solid ${colors.light.surfaceCodeHighlight};
           padding: ${dimensions.spacings.s} ${dimensions.spacings.m};
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          > * + * {
-            margin: 0 0 0 ${dimensions.spacings.m};
-          }
         `}
       >
-        {languageCode === 'text' ? null : (
+        <div
+          css={css`
+            display: grid;
+            grid-gap: ${dimensions.spacings.m};
+            grid-template-columns: 1fr 1fr;
+          `}
+        >
           <span
             css={css`
               color: ${colors.light.textFaded};
             `}
           >
-            {languageCode}
+            {title}
           </span>
-        )}
-        <Tooltip
-          placement="left"
-          title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
-          components={{
-            TooltipWrapperComponent,
-            BodyComponent: TooltipBodyComponent,
-          }}
-        >
-          <div
-            css={css`
-              cursor: pointer;
-              height: ${dimensions.spacings.l};
-              svg {
-                * {
-                  fill: ${colors.light.surfacePrimary};
-                }
-              }
-              :hover {
-                svg {
-                  * {
-                    fill: ${colors.light.surfaceCodeHighlight};
-                  }
-                }
-              }
-            `}
-            onClick={handleCopyToClipboardClick}
-            title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
+          <Spacings.Inline
+            scale="m"
+            alignItems="center"
+            justifyContent="flex-end"
           >
-            <ClipboardIcon />
-          </div>
-        </Tooltip>
+            {languageCode === 'text' ? null : (
+              <span
+                css={css`
+                  color: ${colors.light.textFaded};
+                `}
+              >
+                {languageCode}
+              </span>
+            )}
+            <Tooltip
+              placement="left"
+              title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
+              components={{
+                TooltipWrapperComponent,
+                BodyComponent: TooltipBodyComponent,
+              }}
+            >
+              <div
+                css={css`
+                  cursor: pointer;
+                  height: ${dimensions.spacings.l};
+                  svg {
+                    * {
+                      fill: ${colors.light.surfacePrimary};
+                    }
+                  }
+                  :hover {
+                    svg {
+                      * {
+                        fill: ${colors.light.surfaceCodeHighlight};
+                      }
+                    }
+                  }
+                `}
+                onClick={handleCopyToClipboardClick}
+                title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
+              >
+                <ClipboardIcon />
+              </div>
+            </Tooltip>
+          </Spacings.Inline>
+        </div>
       </div>
       <div
         className={[
