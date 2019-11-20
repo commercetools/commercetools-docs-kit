@@ -1,5 +1,5 @@
 {
-  "name": "@commercetools-docs-kit/gatsby-transformer-raml-legacy",
+  "name": "@commercetools-docs/gatsby-transformer-raml-legacy",
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "private": false,
