@@ -2,7 +2,7 @@
 
 ## Notice
 
-This plugin is based of the [raml-1-parser](https://github.com/raml-org/raml-js-parser-2) which is deprecated. So the plugin currently serves as a placeholder until it is replaced.
+This plugin is based of the [raml-1-parser](https://github.com/raml-org/raml-js-parser-2) which is deprecated. The plugin currently serves as a placeholder until it is replaced.
 
 ## Overview
 
@@ -18,7 +18,7 @@ It provides
 
 ## Usage
 
-As a prerequisite configure one or many `gatsby-source-filesystem` plugins to e.g. point at `src/api-specs` and place your RAML files there. The APIs `key` on GraphQL is derived from the file name or, if the name is `api.raml` from the folder name.
+As a prerequisite configure one or many `gatsby-source-filesystem` plugins to for example point at `src/api-specs` and place your RAML files there. The APIs `key` on GraphQL is derived from the filename or, if the name is `api.raml` from the folder name.
 
 Example `gatsby-config.js` content:
 
