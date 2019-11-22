@@ -64,6 +64,7 @@ const PageContentTemplate = props => (
             title={
               props.pageContext.shortTitle || props.data.mdx.frontmatter.title
             }
+            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
           />
           {/* This wrapper div is important to ensure the vertical space */}
           <div>
@@ -80,6 +81,7 @@ PageContentTemplate.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
+    excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({

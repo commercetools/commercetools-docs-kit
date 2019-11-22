@@ -33,13 +33,14 @@ exports.sourceNodes = ({ actions }) => {
       chapterTitle: String! @proxy(from: "chapter-title")
       beta: Boolean
       pagination: Boolean
-      pages: [Entry!]
+      pages: [ChapterPage!]
     }
 
-    type Entry {
+    type ChapterPage {
       title: String!
       path: String!
       beta: Boolean
+      excludeFromSearchIndex: Boolean
     }
   `);
 };
@@ -59,7 +60,7 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
 };
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
   const allMdxPagesResult = await graphql(`
     query QueryAllMdxPages {
       allMdx(limit: 1000) {
@@ -98,11 +99,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
   );
-  // you'll call `createPage` for each result
   pages.forEach(({ node }) => {
     const matchingNavigationPage = navigationPages.find(
       page =>
         trimTrailingSlash(page.path) === trimTrailingSlash(node.fields.slug)
+    );
+    const excludeFromSearchIndexFromPluginOptions = Boolean(
+      pluginOptions.excludeFromSearchIndex
+    );
+    const excludeFromSearchIndexFromChapterPage = Boolean(
+      matchingNavigationPage && matchingNavigationPage.excludeFromSearchIndex
     );
     actions.createPage({
       // This is the slug you created before
@@ -117,6 +123,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         shortTitle: matchingNavigationPage
           ? matchingNavigationPage.title
           : undefined,
+        excludeFromSearchIndex:
+          excludeFromSearchIndexFromChapterPage ||
+          excludeFromSearchIndexFromPluginOptions,
       },
     });
   });

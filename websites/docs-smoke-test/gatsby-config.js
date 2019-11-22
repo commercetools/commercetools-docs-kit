@@ -9,6 +9,7 @@ module.exports = {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
         websiteKey: 'docs-smoke-test',
+        excludeFromSearchIndex: true,
       },
     },
   ],

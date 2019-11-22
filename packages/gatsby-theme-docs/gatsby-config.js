@@ -17,6 +17,7 @@ proxyEnvironmentVariables.forEach(envName => {
 const defaultOptions = {
   websiteKey: '',
   gaTrackingId: undefined,
+  excludeFromSearchIndex: true,
   createNodeSlug: undefined,
 };
 const requiredOptions = ['websiteKey'];
