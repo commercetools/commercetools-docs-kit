@@ -15,11 +15,11 @@ proxyEnvironmentVariables.forEach(envName => {
 });
 
 const defaultOptions = {
-  websiteName: '',
+  websiteKey: '',
   gaTrackingId: undefined,
   createNodeSlug: undefined,
 };
-const requiredOptions = ['websiteName'];
+const requiredOptions = ['websiteKey'];
 
 const validateThemeOptions = options => {
   requiredOptions.forEach(option => {
