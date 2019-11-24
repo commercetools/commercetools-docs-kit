@@ -1,6 +1,6 @@
 # Core Gatsby theme
 
-This is the ore Gatsby theme for building commercetools documentation websites.
+This is the core Gatsby theme for building commercetools documentation websites.
 
 ## Getting started
 
@@ -15,6 +15,8 @@ npx install-peerdeps --dev @commercetools-docs/gatsby-theme-docs
 All commercetools documentation websites are served under `docs.commercetools.com`. In order to make this work, all documentation websites must be bundled for production using a `pathPrefix`. This value determines the URL path where the website is served from.
 
 For example, for the "Custom Applications" website, the path prefix is `/custom-applications`.
+
+The `pathPrefix` is configured in the `gatsby-config.js` file.
 
 ### Folder structure
 
@@ -35,7 +37,7 @@ The project structure should contain at least the following files and folders:
 
 - `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`
 
-- `gatsby-config.js`: this is required for a Gatsby website and should contains the website specific configuration. At the very least, the core theme should be defined as plugin. You are free to provide more plugins as you need for your specific website.
+- `gatsby-config.js`: this is required for a Gatsby website and should contain the website specific configuration. At the very least, the core Gatsby theme must be listed in the plugins section. You are free to provide more plugins as you need for your specific website.
 
   ```js
   module.exports = {
@@ -59,11 +61,11 @@ The project structure should contain at least the following files and folders:
 
   - `websiteKey` (**required**): the identifier of the website, without whitespaces. Usually this value would be the same as the `pathPrefix` without the leading slash.
 
-  - `gaTrackingId` (**required**): this is the Google Analytics tracking ID.
+  - `gaTrackingId` (**required**): this is the Google Analytics tracking ID. The recommended ID to be used is: `UA-38285631-3`.
 
     > For test websites the field should not be set.
 
-  - `createNodeSlug` (_optional_): in case you need to have more control over the creation of the page slugs, you can implement this function.
+  - `createNodeSlug` (_optional_): in case you need to have more control over the creation of the page slugs, you can implement this function. This is useful if for example your website has content files in other file system locations and you want to provide a more meaningful URL path.
 
     ```ts
     type Options = { node: Node }; // A Gatsby Node
@@ -77,17 +79,20 @@ The project structure should contain at least the following files and folders:
   ```yaml
   - chapter-title: This is the title
     beta: false # (optional): will show the beta flag next to the chapter title
-    pagination: false # (optional) will remove this page from the content pagination
+    pagination: false # (optional) will remove this page from the prev/next content pagination
     pages:
       - title: The first page
         path: '/chapter-1/first-page'
         beta: false # (optional): will show the beta flag next to the page title
+      - title: Another page
+        path: '/chapter-1/another-page'
+      # another page, and so on...
   - chapter-title: {} # another chapter, and so on...
   ```
 
 - `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.
 
-- `src/images`: this folder should contain images that are used within the `*.mdx` content files. Images are processed and optimized by Gatsby for lazy loading.
+- `src/images`: this folder should contain images that are used within the `*.mdx` content files. Images in this folder are processed and optimized by Gatsby for lazy loading. Supported image formats are `JPEG` and `PNG`.
 
 ## Writing content pages
 
@@ -107,14 +112,16 @@ beta: false
 This is the actual page content.
 ```
 
+Supported frontmatter options are:
+
 - `title`: the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
 - `beta`: to indicate if the _beta_ info message should be displayed or not.
 
-### Available components within markdown files
+### Available elements within markdown files
 
-Besides the standard markdown syntax, the theme provides some extra elements to be directly used within the `*.mdx` files.
+Besides the standard markdown syntax, the theme provides some extra elements that can be used within the `*.mdx` files.
 
-The elements should be rendered as XML tags, like HTML elements. For example
+The elements should be rendered as XML tags, like HTML elements. For example:
 
 ```mdx
 <MyComponent>
@@ -131,9 +138,11 @@ The elements are:
 - `<Warning>`: a notification message with warning colors
 - `<Error>`: a notification message with error colors
 
+> When using elements, it's recommended to leave a blank line between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom element tags.
+
 ## Theme overrides
 
-The theme allows to inject functionalities to specific parts of it. [Read here](./overrides) for more information.
+The theme allows to inject functionalities to specific parts of it. [Read here](./src/overrides) for more information.
 
 ## API usage
 
