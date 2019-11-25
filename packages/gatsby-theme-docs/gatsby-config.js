@@ -163,7 +163,7 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: 'gatsby-plugin-manifest',
         options: {
-          icon: require.resolve('./src/icons/logo.svg'),
+          icon: require.resolve('./src/icons/logo.png'),
         },
       },
       pluginOptions.gaTrackingId && {
