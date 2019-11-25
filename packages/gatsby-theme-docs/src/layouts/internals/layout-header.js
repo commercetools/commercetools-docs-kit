@@ -6,10 +6,39 @@ import { Spacings } from '../../components';
 import { colors, dimensions, typography, tokens } from '../../design-system';
 import LogoSvg from '../../icons/logo.svg';
 
+const Container = styled.header`
+  display: block;
+  grid-row: 1;
+  grid-column: 1/4;
+  height: ${dimensions.heights.header};
+  width: 100%;
+  box-shadow: ${tokens.shadow1};
+  z-index: 10;
+  overflow: auto;
+`;
+const Constraint = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 0;
+  margin: 0 auto;
+  height: 100%;
+
+  > * + * {
+    margin: 0 0 0 ${dimensions.spacings.m};
+  }
+
+  @media screen and (${dimensions.viewports.desktop}) {
+    > * + * {
+      margin: 0 0 0 ${dimensions.spacings.xl};
+    }
+  }
+`;
 const MenuLogoContainer = styled.div`
   width: auto;
   height: 100%;
   display: flex;
+  justify-content: flex-end;
 
   @media screen and (${dimensions.viewports.laptop}) {
     width: ${dimensions.widths.pageNavigationSmall};
@@ -57,55 +86,33 @@ const DocumentationSwitcherContainer = styled.div`
 `;
 
 const LayoutHeader = props => (
-  <header
-    css={css`
-      display: flex;
-      align-items: center;
-      flex: 1;
-      grid-row: 1;
-      grid-column: 1/4;
-      height: ${dimensions.heights.header};
-      width: 100%;
-      padding: 0;
-      margin: 0 auto;
-      box-shadow: ${tokens.shadow1};
-      z-index: 10;
-
-      > * + * {
-        margin: 0 0 0 ${dimensions.spacings.m};
-      }
-
-      @media screen and (${dimensions.viewports.desktop}) {
-        > * + * {
-          margin: 0 0 0 ${dimensions.spacings.xl};
-        }
-      }
-    `}
-  >
-    <MenuLogoContainer>
-      {/* Injected by React portal */}
-      <div
-        id="sidebar-menu-toggle"
-        css={css`
-          display: flex;
-          @media screen and (${dimensions.viewports.laptop}) {
-            display: none;
-          }
-        `}
-      />
-      <LogoLink href="/">
-        <LogoContainer>
-          <Spacings.Inline scale="m" alignItems="center">
-            <LogoSvg height={34} />
-            <LogoTitle>{'Documentation'}</LogoTitle>
-          </Spacings.Inline>
-        </LogoContainer>
-      </LogoLink>
-    </MenuLogoContainer>
-    <DocumentationSwitcherContainer>
-      {props.siteTitle}
-    </DocumentationSwitcherContainer>
-  </header>
+  <Container>
+    <Constraint>
+      <MenuLogoContainer>
+        {/* Injected by React portal */}
+        <div
+          id="sidebar-menu-toggle"
+          css={css`
+            display: flex;
+            @media screen and (${dimensions.viewports.laptop}) {
+              display: none;
+            }
+          `}
+        />
+        <LogoLink href="/">
+          <LogoContainer>
+            <Spacings.Inline scale="m" alignItems="center">
+              <LogoSvg height={32} />
+              <LogoTitle>{'Documentation'}</LogoTitle>
+            </Spacings.Inline>
+          </LogoContainer>
+        </LogoLink>
+      </MenuLogoContainer>
+      <DocumentationSwitcherContainer>
+        {props.siteTitle}
+      </DocumentationSwitcherContainer>
+    </Constraint>
+  </Container>
 );
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,

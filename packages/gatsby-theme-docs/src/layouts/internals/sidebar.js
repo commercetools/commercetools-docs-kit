@@ -9,7 +9,6 @@ import { colors, dimensions, typography, tokens } from '../../design-system';
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 
 const SidebarWebsiteTitle = styled.div`
-  background-color: ${colors.light.surfaceSecondary2};
   color: ${colors.light.primary};
   padding: ${dimensions.spacings.l} ${dimensions.spacings.m};
   font-size: ${typography.fontSizes.h4};
