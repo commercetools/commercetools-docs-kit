@@ -8,7 +8,7 @@ module.exports = {
     {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
-        websiteName: 'docs-smoke-test',
+        websiteKey: 'docs-smoke-test',
       },
     },
   ],

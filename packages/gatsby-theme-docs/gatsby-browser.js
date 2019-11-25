@@ -24,7 +24,7 @@ exports.onClientEntry = (
       Sentry.init({
         dsn: 'https://e43538aae75e412eb16b27d8011f5a8b@sentry.io/1819068',
         release: commitSha,
-        environment: `${environment}-${pluginOptions.websiteName}`,
+        environment: `${environment}-${pluginOptions.websiteKey}`,
         whitelistUrls: ['docs.commercetools.com', 'now.sh'],
       });
     });
