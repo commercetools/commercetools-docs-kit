@@ -45,7 +45,7 @@ commands:
     steps:
       - run:
           name: Running linters and tests
-          command: yarn run jest --projects jest.{eslint,stylelint,test}.config.js --maxWorkers=3 --reporters jest-silent-reporter
+          command: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
   build_websites:
     description: Building websites for production
     steps:
@@ -200,8 +200,8 @@ workflows:
           requires:
             - vrt_test
             - e2e_smoke_tests
-          filters: 
+          filters:
             branches:
               only:
                 - master
-                
+

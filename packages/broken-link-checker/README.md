@@ -18,8 +18,8 @@ and then run it inside the project directory
 
 The first parameter is the path to the site folder, all following parameters are entrypoints to be crawled.
 
-The _first_ entrypoint (i.e. the second parameter) is also considered the root URL of the complete site, i.e. in the example above links to `/` are redirected to `/entrypoint1/`.
+The _first_ entrypoint (for example the second parameter) is also considered the root URL of the complete site. For instance, in the preceeding example links to `/` are redirected to `/entrypoint1/`.
 
-The crawler follows all links from the entrypoint, so if you accidentally provide multiple entrypoints that indirectly link to each other many pages will be tested multiple times. Entrypoints are tested independently as separate runs.
+The crawler follows all links from the entrypoint, so if you accidentally provide multiple entrypoints that indirectly link to each other, pages are tested multiple times. Entrypoints are tested independently as separate runs.
 
 You can provide the command globally too via `npm install -g @commercetools-docs/broken-link-checker`

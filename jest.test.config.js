@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'Test',
+  displayName: 'test',
   preset: 'jest-preset-gatsby',
   setupFilesAfterEnv: ['./setup-test-framework.js'],
   moduleNameMapper: {
