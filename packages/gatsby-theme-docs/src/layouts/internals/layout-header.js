@@ -90,7 +90,7 @@ const LayoutHeader = props => (
       <LogoLink href="/">
         <LogoContainer>
           <Spacings.Inline scale="m" alignItems="center">
-            <LogoSvg height={32} />
+            <LogoSvg height={34} />
             <LogoTitle>{'Documentation'}</LogoTitle>
           </Spacings.Inline>
         </LogoContainer>
