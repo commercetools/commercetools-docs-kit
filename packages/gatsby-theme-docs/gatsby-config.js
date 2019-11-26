@@ -83,6 +83,14 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/content`),
         },
       },
+      // Internal content pages (.mdx)
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'internalContent',
+          path: path.join(__dirname, `./src/content`),
+        },
+      },
 
       /**
        * Transformers for making content available in graphql queries
