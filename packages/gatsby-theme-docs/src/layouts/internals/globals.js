@@ -108,6 +108,11 @@ const Globals = () => (
         padding: 0 ${dimensions.spacings.s} 0 0;
         color: ${colors.light.surfaceSecondary3};
       }
+      .gatsby-highlight
+        .gatsby-highlight-code-prompt
+        .gatsby-highlight-code-line {
+        display: unset;
+      }
 
       /* Resets */
       code,

@@ -1,3 +1,3 @@
 {
-  "vscode-vale.path": "node_modules/.bin/commercetools-vale"
+  "vscode-vale.path": "${workspaceFolder}/node_modules/.bin/commercetools-vale"
 }

@@ -15,11 +15,11 @@ proxyEnvironmentVariables.forEach(envName => {
 });
 
 const defaultOptions = {
-  websiteName: '',
+  websiteKey: '',
   gaTrackingId: undefined,
   createNodeSlug: undefined,
 };
-const requiredOptions = ['websiteName'];
+const requiredOptions = ['websiteKey'];
 
 const validateThemeOptions = options => {
   requiredOptions.forEach(option => {
@@ -120,8 +120,7 @@ module.exports = (themeOptions = {}) => {
                 // It's important to specify the maxWidth (in pixels) of
                 // the content container as this plugin uses this as the
                 // base for generating different widths of each image.
-                // maxWidth: 770 - 8 - 8, // content width - padding left/right
-                maxWidth: 770, // content width - padding left/right
+                maxWidth: 770,
                 showCaptions: ['title'],
               },
             },
@@ -164,7 +163,7 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: 'gatsby-plugin-manifest',
         options: {
-          icon: require.resolve('./src/icons/logo.svg'),
+          icon: require.resolve('./src/icons/logo.png'),
         },
       },
       pluginOptions.gaTrackingId && {

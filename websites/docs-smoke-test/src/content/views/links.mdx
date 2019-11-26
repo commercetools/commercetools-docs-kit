@@ -1,0 +1,131 @@
+---
+title: Links
+---
+
+# Links
+
+## Common use cases
+
+### Link pointing to an empty string
+
+```md
+[Link]()
+```
+
+| Link     | Type          | Expected outcome                           |
+| -------- | ------------- | ------------------------------------------ |
+| [Link]() | `gatsby-link` | It renders an empty link to the same page. |
+
+### Link pointing to a different website
+
+```md
+[Link](https://commercetools.com)
+```
+
+| Link                              | Type            | Expected outcome                                                        |
+| --------------------------------- | --------------- | ----------------------------------------------------------------------- |
+| [Link](https://commercetools.com) | `external-link` | It should work and be an OutboundLink that tracks via google analytics. |
+
+### Link to a heading anchor on this page
+
+```md
+[Link](#last-heading)
+```
+
+| Link                  | Type          | Expected outcome                                                     |
+| --------------------- | ------------- | -------------------------------------------------------------------- |
+| [Link](#last-heading) | `anchor-link` | It should jump to that position without visible scrolling or reload. |
+
+### Link to a heading anchor on this same page, but using the full path
+
+```md
+[Link](/views/links/#last-heading)
+```
+
+| Link                               | Type          | Expected outcome                                                     |
+| ---------------------------------- | ------------- | -------------------------------------------------------------------- |
+| [Link](/views/links/#last-heading) | `anchor-link` | It should jump to that position without visible scrolling or reload. |
+
+### Link to another page on this site, but using an absolute URL
+
+```md
+[Link](https://docs.commercetools.com/docs-smoke-test/views/code-blocks/)
+```
+
+| Link                                                                      | Type            | Expected outcome                                                               |
+| ------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------ |
+| [Link](https://docs.commercetools.com/docs-smoke-test/views/code-blocks/) | `internal-link` | It should render an absolute URL in dev mode and a relative path in prod mode. |
+
+### Link to another page on this site using a full path
+
+```md
+[Link](/views/code-blocks/)
+```
+
+| Link                        | Type          | Expected outcome                                |
+| --------------------------- | ------------- | ----------------------------------------------- |
+| [Link](/views/code-blocks/) | `gatsby-link` | It should be a Gatsby link, history navigation. |
+
+### Link to another page on this site with a specific anchor a page on this site
+
+```md
+[Link](/#links)
+```
+
+| Link            | Type          | Expected outcome                                                                                  |
+| --------------- | ------------- | ------------------------------------------------------------------------------------------------- |
+| [Link](/#links) | `gatsby-link` | It should be a Gatsby link, history navigation, and directly jump to the anchor element position. |
+
+### Link to another page on this site using a relative upwards traversal path
+
+```md
+[Link](../views/empty)
+```
+
+| Link                   | Type          | Expected outcome                                                    |
+| ---------------------- | ------------- | ------------------------------------------------------------------- |
+| [Link](../views/empty) | `gatsby-link` | It should be a Gatsby link, history navigation, to a parent folder. |
+
+### Link to a sub-page of this one (omitting the trailing slash)
+
+```md
+[Link](nested/link-target)
+```
+
+| Link                       | Type          | Expected outcome                                                 |
+| -------------------------- | ------------- | ---------------------------------------------------------------- |
+| [Link](nested/link-target) | `gatsby-link` | It should be a Gatsby link, history navigation, to a sub folder. |
+
+### Link to a sub-page of this one (including the trailing slash)
+
+```md
+[Link](nested/link-target/)
+```
+
+| Link                        | Type          | Expected outcome                                                 |
+| --------------------------- | ------------- | ---------------------------------------------------------------- |
+| [Link](nested/link-target/) | `gatsby-link` | It should be a Gatsby link, history navigation, to a sub folder. |
+
+### Link to a page of another internal site using a full url (recommended)
+
+```md
+[Link](https://docs.commercetools.com/site-template)
+```
+
+| Link                                                 | Type            | Expected outcome                                             |
+| ---------------------------------------------------- | --------------- | ------------------------------------------------------------ |
+| [Link](https://docs.commercetools.com/site-template) | `internal-link` | It should be a normal html link (only in `production` mode). |
+
+### Link to a page of another internal site
+
+```md
+[Link](/../site-template/)
+```
+
+| Link                       | Type            | Expected outcome                                             |
+| -------------------------- | --------------- | ------------------------------------------------------------ |
+| [Link](/../site-template/) | `internal-link` | It should be a normal html link (only in `production` mode). |
+
+## Last Heading
+
+This paragraph just serves as a link target. The Anchor ID should be `#last-heading`
