@@ -5,7 +5,6 @@ const LayoutPageContent = styled.div`
   grid-row: 2;
   grid-column: 1/3;
   padding: 0 ${dimensions.spacings.m} ${dimensions.spacings.xl};
-  max-width: ${dimensions.widths.pageContent};
 
   > * + * {
     margin: ${dimensions.spacings.xl} 0 0;
@@ -13,6 +12,8 @@ const LayoutPageContent = styled.div`
 
   @media screen and (${dimensions.viewports.largeTablet}) {
     grid-column: 1;
+  }
+  @media screen and (${dimensions.viewports.desktop}) {
     padding: 0 ${dimensions.spacings.xl} ${dimensions.spacings.xl};
   }
 `;

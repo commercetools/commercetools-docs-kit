@@ -114,13 +114,13 @@ export const PurePagination = props => {
     <div
       css={css`
         display: grid;
-        grid-gap: ${dimensions.spacings.l};
+        grid-gap: ${dimensions.spacings.m};
         grid-auto-columns: 1fr;
         grid-template-columns: repeat(
           auto-fill,
           minmax(
             calc(
-              ${dimensions.widths.pageContent} / 2 - ${dimensions.spacings.xl} *
+              ${dimensions.widths.pageContent} / 2 - ${dimensions.spacings.m} *
                 2
             ),
             1fr

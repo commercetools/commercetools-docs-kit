@@ -11,6 +11,9 @@ const MenuLogoContainer = styled.div`
   height: 100%;
   display: flex;
 
+  @media screen and (${dimensions.viewports.laptop}) {
+    width: ${dimensions.widths.pageNavigationSmall};
+  }
   @media screen and (${dimensions.viewports.desktop}) {
     width: ${dimensions.widths.pageNavigation};
   }
@@ -33,10 +36,13 @@ const LogoLink = styled.a`
 `;
 const LogoTitle = styled.div`
   display: none;
-  font-size: ${typography.fontSizes.h4};
+  font-size: ${typography.fontSizes.body};
 
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${dimensions.viewports.laptop}) {
     display: block;
+  }
+  @media screen and (${dimensions.viewports.desktop}) {
+    font-size: ${typography.fontSizes.h4};
   }
 `;
 const DocumentationSwitcherContainer = styled.div`
@@ -45,7 +51,7 @@ const DocumentationSwitcherContainer = styled.div`
   font-size: ${typography.fontSizes.body};
   padding: 0 0 0 1rem;
   margin: 0;
-  height: calc(100% - 16px);
+  height: calc(100% - ${dimensions.spacings.m});
   display: flex;
   align-items: center;
 `;
@@ -82,7 +88,7 @@ const LayoutHeader = props => (
         id="sidebar-menu-toggle"
         css={css`
           display: flex;
-          @media screen and (${dimensions.viewports.desktop}) {
+          @media screen and (${dimensions.viewports.laptop}) {
             display: none;
           }
         `}

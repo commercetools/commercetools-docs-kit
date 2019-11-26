@@ -34,7 +34,7 @@ const ContainerOverlay = styled.div`
   display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
   overflow: auto;
 
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${dimensions.viewports.laptop}) {
     display: flex;
     grid-column: 1;
 
@@ -52,13 +52,16 @@ const Container = styled.aside`
   overflow: auto;
   background-color: ${colors.light.surfaceSecondary1};
   border-right: 1px solid ${colors.light.borderPrimary};
-  width: ${dimensions.widths.pageNavigation};
+  width: ${dimensions.widths.pageNavigationSmall};
   height: 100%;
   z-index: 2;
 
   animation: ${slideInAnimation} 0.5s ease-out alternate;
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${dimensions.viewports.laptop}) {
     animation: unset;
+  }
+  @media screen and (${dimensions.viewports.desktop}) {
+    width: ${dimensions.widths.pageNavigation};
   }
 `;
 const MenuButton = styled.button`

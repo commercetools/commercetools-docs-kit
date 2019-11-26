@@ -53,21 +53,42 @@ const LayoutContent = props => {
 
             @media screen and (${dimensions.viewports.tablet}) {
               display: grid;
-              grid-template-columns:
-                calc(
-                  ${dimensions.widths.pageContent} + ${dimensions.spacings.xl} *
-                    2
-                )
-                0;
               grid-template-rows: auto 1fr;
+              grid-template-columns: ${dimensions.widths.pageContent} 0;
             }
             @media screen and (${dimensions.viewports.largeTablet}) {
+              display: grid;
+              grid-template-rows: auto 1fr;
               grid-template-columns:
-                calc(
-                  ${dimensions.widths.pageContent} + ${dimensions.spacings.xl} *
-                    2
+                minmax(
+                  calc(
+                    ${dimensions.widths.pageContentSmall} +
+                      ${dimensions.spacings.m} * 2
+                  ),
+                  calc(
+                    ${dimensions.widths.pageContent} + ${dimensions.spacings.xl}
+                  )
                 )
                 ${dimensions.widths.pageNavigation};
+            }
+            @media screen and (${dimensions.viewports.laptop}) {
+              grid-template-columns:
+                minmax(
+                  calc(
+                    ${dimensions.widths.pageContentSmall} +
+                      ${dimensions.spacings.m} * 2
+                  ),
+                  calc(
+                    ${dimensions.widths.pageContent} + ${dimensions.spacings.xl}
+                  )
+                )
+                ${dimensions.widths.pageNavigationSmall};
+            }
+            @media screen and (${dimensions.viewports.desktop}) {
+              display: grid;
+              grid-template-rows: auto 1fr;
+              grid-template-columns: ${dimensions.widths.pageContent} ${dimensions
+                  .widths.pageNavigation};
             }
           `}
         >
