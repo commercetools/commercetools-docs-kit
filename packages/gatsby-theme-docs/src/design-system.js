@@ -107,8 +107,8 @@ export const dimensions = {
     l: pxToRem('24px'),
     xl: pxToRem('32px'),
     xxl: pxToRem('40px'),
-    xxxl: pxToRem('48px'),
-    xxxxl: pxToRem('56px'),
+    big: pxToRem('48px'),
+    huge: pxToRem('80px'),
   },
 };
 

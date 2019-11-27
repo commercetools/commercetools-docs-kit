@@ -113,8 +113,10 @@ const LayoutPageNavigation = props => {
     <Spacings.Stack scale="m">
       <PageTitleLink href="#anchor-page-top">
         <Spacings.Inline scale="s" alignItems="center">
+          <div>
+            <StackedLinesIndentedIcon color="textSecondary" />
+          </div>
           <div>{props.pageTitle}</div>
-          <UnstyledStackedLinesIndentedIcon />
         </Spacings.Inline>
       </PageTitleLink>
       <PageNavigation tableOfContents={props.tableOfContents} />

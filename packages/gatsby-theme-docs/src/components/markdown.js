@@ -46,16 +46,18 @@ const H2 = styled.h2`
   border-bottom: 1px solid ${colors.light.borderPrimary};
   font-size: ${typography.fontSizes.h2};
   font-weight: ${typography.fontWeights.bold};
-  margin: ${dimensions.spacings.xxxxl} 0 ${dimensions.spacings.xl};
+  margin: ${dimensions.spacings.huge} 0 ${dimensions.spacings.xl};
   padding-bottom: ${dimensions.spacings.s};
 `;
 const H3 = styled.h3`
   ${headerStyles};
   font-size: ${typography.fontSizes.h3};
+  margin: ${dimensions.spacings.big} 0 0;
 `;
 const H4 = styled.h4`
   ${headerStyles};
   font-size: ${typography.fontSizes.h4};
+  margin: ${dimensions.spacings.xl} 0 0;
 `;
 const H5 = styled.h5`
   ${headerStyles};
