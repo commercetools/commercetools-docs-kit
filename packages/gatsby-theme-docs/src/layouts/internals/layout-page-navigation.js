@@ -48,14 +48,20 @@ const SlidingContainer = styled.div`
   overflow: auto;
 `;
 const GridContainer = styled.div`
-  border-left: 1px solid ${colors.light.borderPrimary};
-  width: ${dimensions.widths.pageNavigation};
   display: none;
+  border-left: 1px solid ${colors.light.borderPrimary};
 
   @media screen and (${dimensions.viewports.largeTablet}) {
     display: block;
     grid-row: 2;
     grid-column: 2;
+    width: ${dimensions.widths.pageNavigation};
+  }
+  @media screen and (${dimensions.viewports.laptop}) {
+    width: ${dimensions.widths.pageNavigationSmall};
+  }
+  @media screen and (${dimensions.viewports.desktop}) {
+    width: ${dimensions.widths.pageNavigation};
   }
 `;
 const StickyContainer = styled.div`

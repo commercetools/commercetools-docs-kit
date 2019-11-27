@@ -1,6 +1,8 @@
 const rootFontSizeNumber = 16;
 const pageWidth = '770px';
+const pageWidthSmall = '592px';
 const navbarWidth = '224px';
+const navbarWidthSmall = '200px';
 
 export const pxToRem = px => {
   const pxNumber = px.replace(/([0-9]+)px$/, '$1');
@@ -77,47 +79,26 @@ export const tokens = {
     'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
 };
 
-const breakpoints = {
-  // content page + padding left/right
-  content: `calc(
-    ${pageWidth} +
-    32px * 2
-  )`,
-  // content page + padding left/right + page navigation
-  contentAndPageNavigation: `calc(
-    ${pageWidth} +
-    32px * 2 +
-    ${navbarWidth}
-  )`,
-  // content page + padding left/right + page navigation + main navigation
-  contentAndBothNavigations: `calc(
-    ${pageWidth} +
-    32px * 2 +
-    ${navbarWidth} * 2
-  )`,
-  // double content page + padding left/center/right + page navigation + main navigation
-  doubleContentAndBothNavigations: `calc(
-    ${pageWidth} * 2 +
-    32px * 3 +
-    ${navbarWidth} * 2
-  )`,
-};
-
 export const dimensions = {
   heights: {
     header: '48px',
   },
   widths: {
     pageContent: pageWidth,
+    pageContentSmall: pageWidthSmall,
+    pageContentWithMargings: `calc(${pageWidth} + 32px * 2)`,
+    pageContentSmallWithMargings: `calc(${pageWidthSmall} + 16px * 2)`,
     pageNavigation: navbarWidth,
+    pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
   },
   viewports: {
-    mobile: `max-width: ${breakpoints.content}`,
-    tablet: `min-width: ${breakpoints.content}`,
-    largeTablet: `min-width: ${breakpoints.contentAndPageNavigation}`,
-    desktop: `min-width: ${breakpoints.contentAndBothNavigations}`,
-    largeDesktop: `min-width: ${breakpoints.doubleContentAndBothNavigations}`,
+    mobile: `max-width: ${pageWidth}`,
+    tablet: `min-width: calc(${pageWidth} - 0.01px)`,
+    largeTablet: `min-width: calc(848px - 0.01px)`,
+    laptop: `min-width: calc(1024px - 0.01px)`,
+    desktop: `min-width: calc(1280px - 0.01px)`,
+    largeDesktop: `min-width: calc(1866px - 0.01px)`,
   },
   spacings: {
     xs: pxToRem('4px'),

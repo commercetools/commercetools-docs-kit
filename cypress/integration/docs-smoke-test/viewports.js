@@ -7,7 +7,7 @@ describe('Viewports', () => {
     // wait for menu button to appear
     cy.findByLabelText('Open main navigation');
     cy.percySnapshot(cy.state('runnable').fullTitle(), {
-      widths: [512, 1200],
+      widths: [512, 956],
     });
   });
 });

@@ -53,20 +53,33 @@ const LayoutContent = props => {
 
             @media screen and (${dimensions.viewports.tablet}) {
               display: grid;
-              grid-template-columns:
-                calc(
-                  ${dimensions.widths.pageContent} + ${dimensions.spacings.xl} *
-                    2
-                )
-                0;
               grid-template-rows: auto 1fr;
+              grid-template-columns: ${dimensions.widths
+                  .pageContentSmallWithMargings} 0;
             }
             @media screen and (${dimensions.viewports.largeTablet}) {
+              display: grid;
+              grid-template-rows: auto 1fr;
               grid-template-columns:
-                calc(
-                  ${dimensions.widths.pageContent} + ${dimensions.spacings.xl} *
-                    2
+                minmax(
+                  ${dimensions.widths.pageContentSmallWithMargings},
+                  ${dimensions.widths.pageContentWithMargings}
                 )
+                ${dimensions.widths.pageNavigation};
+            }
+            @media screen and (${dimensions.viewports.laptop}) {
+              grid-template-columns:
+                minmax(
+                  ${dimensions.widths.pageContentSmallWithMargings},
+                  ${dimensions.widths.pageContentWithMargings}
+                )
+                ${dimensions.widths.pageNavigationSmall};
+            }
+            @media screen and (${dimensions.viewports.desktop}) {
+              display: grid;
+              grid-template-rows: auto 1fr;
+              grid-template-columns:
+                ${dimensions.widths.pageContentWithMargings}
                 ${dimensions.widths.pageNavigation};
             }
           `}
