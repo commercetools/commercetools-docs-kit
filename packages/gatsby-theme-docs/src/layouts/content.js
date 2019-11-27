@@ -54,41 +54,33 @@ const LayoutContent = props => {
             @media screen and (${dimensions.viewports.tablet}) {
               display: grid;
               grid-template-rows: auto 1fr;
-              grid-template-columns: ${dimensions.widths.pageContent} 0;
+              grid-template-columns: ${dimensions.widths
+                  .pageContentSmallWithMargings} 0;
             }
             @media screen and (${dimensions.viewports.largeTablet}) {
               display: grid;
               grid-template-rows: auto 1fr;
               grid-template-columns:
                 minmax(
-                  calc(
-                    ${dimensions.widths.pageContentSmall} +
-                      ${dimensions.spacings.m} * 2
-                  ),
-                  calc(
-                    ${dimensions.widths.pageContent} + ${dimensions.spacings.xl}
-                  )
+                  ${dimensions.widths.pageContentSmallWithMargings},
+                  ${dimensions.widths.pageContentWithMargings}
                 )
                 ${dimensions.widths.pageNavigation};
             }
             @media screen and (${dimensions.viewports.laptop}) {
               grid-template-columns:
                 minmax(
-                  calc(
-                    ${dimensions.widths.pageContentSmall} +
-                      ${dimensions.spacings.m} * 2
-                  ),
-                  calc(
-                    ${dimensions.widths.pageContent} + ${dimensions.spacings.xl}
-                  )
+                  ${dimensions.widths.pageContentSmallWithMargings},
+                  ${dimensions.widths.pageContentWithMargings}
                 )
                 ${dimensions.widths.pageNavigationSmall};
             }
             @media screen and (${dimensions.viewports.desktop}) {
               display: grid;
               grid-template-rows: auto 1fr;
-              grid-template-columns: ${dimensions.widths.pageContent} ${dimensions
-                  .widths.pageNavigation};
+              grid-template-columns:
+                ${dimensions.widths.pageContentWithMargings}
+                ${dimensions.widths.pageNavigation};
             }
           `}
         >
