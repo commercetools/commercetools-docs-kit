@@ -8,8 +8,7 @@ import LogoSvg from '../../icons/logo.svg';
 
 const Container = styled.header`
   display: block;
-  grid-row: 1;
-  grid-column: 1/4;
+  grid-area: header;
   height: ${dimensions.heights.header};
   width: 100%;
   box-shadow: ${tokens.shadow1};
@@ -22,16 +21,14 @@ const Constraint = styled.div`
   flex: 1;
   padding: 0;
   margin: 0 auto;
+  width: 100%;
   height: 100%;
 
-  > * + * {
-    margin: 0 0 0 ${dimensions.spacings.m};
-  }
-
   @media screen and (${dimensions.viewports.desktop}) {
-    > * + * {
-      margin: 0 0 0 ${dimensions.spacings.xl};
-    }
+    width: calc(
+      ${dimensions.widths.pageContentWithMargings} +
+        ${dimensions.widths.pageNavigation} * 2
+    );
   }
 `;
 const MenuLogoContainer = styled.div`
@@ -50,7 +47,6 @@ const MenuLogoContainer = styled.div`
 const LogoContainer = styled.div`
   padding: 0 ${dimensions.spacings.m};
   height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,6 +58,7 @@ const LogoLink = styled.a`
   white-space: nowrap;
   cursor: pointer;
   display: block;
+  width: 100%;
 `;
 const LogoTitle = styled.div`
   display: none;

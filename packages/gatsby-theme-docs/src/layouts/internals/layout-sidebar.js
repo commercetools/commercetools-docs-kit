@@ -26,8 +26,7 @@ const ContainerOverlay = styled.div`
     }
     return css`
       position: relative;
-      grid-row: 2;
-      grid-column: 1/3;
+      grid-area: sidebar;
     `;
   }}
 

@@ -72,6 +72,7 @@ export const tokens = {
   borderRadius4: '4px',
   borderRadius6: '6px',
   shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+  shadow6: ' 0 -1px 2px 0 rgba(0, 0, 0, 0.2)',
   shadow7:
     '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
   shadow8: '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',

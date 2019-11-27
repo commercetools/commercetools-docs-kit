@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import LogoSvg from '../../icons/logo.svg';
 import { Spacings } from '../../components';
 import { ExternalSiteLink } from '../../components/link';
-import { colors, dimensions, typography } from '../../design-system';
+import { colors, dimensions, tokens, typography } from '../../design-system';
 
 const FooterExternalLink = styled(ExternalSiteLink)`
   font-size: ${typography.fontSizes.small};
@@ -20,6 +20,7 @@ const LayoutFooter = () => (
     css={css`
       grid-row: 3;
       grid-column: 1/3;
+      box-shadow: ${tokens.shadow6};
       background-color: ${colors.light.surfaceSecondary2};
       padding: ${dimensions.spacings.m};
 

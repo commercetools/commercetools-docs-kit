@@ -1,40 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { dimensions } from '../../design-system';
 
-const LayoutMain = props => (
-  <div
-    role="main"
-    className={props.className}
-    css={css`
-      grid-row: 2;
-      min-width: 0;
-      overflow-x: hidden;
-      overflow-y: auto; /* to show the scrollbar only when necessary */
-      -webkit-overflow-scrolling: touch; /* enables "momentum" style scrolling */
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    `}
-  >
-    <div
-      css={css`
-        min-height: calc(100vh - ${dimensions.heights.header});
-        display: grid;
-        grid-auto-rows: auto;
-        grid-template-rows: 1fr auto;
-        grid-template-columns: 1fr;
-      `}
-    >
-      {props.children}
-    </div>
-  </div>
-);
-LayoutMain.displayName = 'LayoutMain';
-LayoutMain.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-};
+const LayoutMain = styled.div`
+  display: grid;
+  grid:
+    [row1-start] 'sidebar page' 1fr [row1-end]
+    / auto 1fr;
+  overflow: hidden auto;
+
+  @media screen and (${dimensions.viewports.desktop}) {
+    width: calc(
+      ${dimensions.widths.pageContentWithMargings} +
+        ${dimensions.widths.pageNavigation} * 2
+    );
+  }
+`;
 
 export default LayoutMain;
