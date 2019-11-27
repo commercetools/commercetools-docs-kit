@@ -35,9 +35,9 @@ The project structure should contain at least the following files and folders:
     └── images
 ```
 
-- `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`
+- `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`, otherwise provide a valid ESLint configuration. 
 
-- `gatsby-config.js`: this is required for a Gatsby website and should contain the website specific configuration. At the very least, the core Gatsby theme must be listed in the plugins section. You are free to provide more plugins as you need for your specific website.
+- `gatsby-config.js`: this is required for a Gatsby website and should contain the website specific configuration. At the very least, the commercetools Gatsby theme must be listed in the plugins section. You are free to provide more plugins as you need for your specific website.
 
   ```js
   module.exports = {
@@ -59,9 +59,9 @@ The project structure should contain at least the following files and folders:
 
   Available options for the theme plugin are:
 
-  - `websiteKey` (**required**): the identifier of the website, without whitespaces. Usually this value would be the same as the `pathPrefix` without the leading slash.
+  - `websiteKey` (**required**): the identifier of the website, used for error reporting and similar concerns. Usually this value would be the same as the `pathPrefix` without the leading slash and without whitespaces.
 
-  - `gaTrackingId` (**required**): this is the Google Analytics tracking ID. The recommended ID to be used is: `UA-38285631-3`.
+  - `gaTrackingId` (_optional_): this is the Google Analytics tracking ID. For all sites hosted on the `docs.commercetools.com` domain the ID must be: `UA-38285631-3`.
 
     > For test websites the field should not be set.
 
@@ -79,7 +79,7 @@ The project structure should contain at least the following files and folders:
   ```yaml
   - chapter-title: This is the title
     beta: false # (optional): will show the beta flag next to the chapter title
-    pagination: false # (optional) will remove this page from the prev/next content pagination
+    pagination: false # (optional) hides the prev/next content pagination at the bottom of the pages in this chapter. Use for non-linear content like reference documentation. 
     pages:
       - title: The first page
         path: '/chapter-1/first-page'
@@ -124,11 +124,11 @@ Besides the standard markdown syntax, the theme provides some extra elements tha
 The elements should be rendered as XML tags, like HTML elements. For example:
 
 ```mdx
-<MyComponent>
+<Subtitle>
 
 Content inside the element.
 
-</MyComponent>
+</Subtitle>
 ```
 
 The elements are:

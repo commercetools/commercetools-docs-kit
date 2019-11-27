@@ -2,7 +2,7 @@ Overrides files using [Gatsby theme shadowing](https://www.gatsbyjs.org/docs/the
 
 ## Usage
 
-To use this feature, the website should mimic the folder structure of the Gatsby theme and list the files in the `overrides` folder that should be overridden.
+To use this feature, the website must mimic the folder structure of the Gatsby theme and list the files in the `overrides` folder that should be overridden.
 
 ```
 src
@@ -14,7 +14,7 @@ src
             └── use-additional-site-data.js
 ```
 
-> Note that Gatsby shadowing works with any file in the theme. However, we want to provide an explicit extension point that consumers of the theme should use, instead of relying on internal file system paths that can potentially change any time.
+> Note that Gatsby shadowing works with any file in the theme. However, the theme provides an explicit stable extension point that is the `overrides` folder. Users of the theme should use this extension point only instead of relying on theme-internal file system paths that can potentially change any time.
 
 ## Available overrides
 
