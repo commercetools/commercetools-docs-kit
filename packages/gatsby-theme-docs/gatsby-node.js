@@ -33,14 +33,13 @@ exports.sourceNodes = ({ actions }) => {
       chapterTitle: String! @proxy(from: "chapter-title")
       beta: Boolean
       pagination: Boolean
-      pages: [ChapterPage!]
+      pages: [NavigationPage!]
     }
 
-    type ChapterPage {
+    type NavigationPage {
       title: String!
       path: String!
       beta: Boolean
-      excludeFromSearchIndex: Boolean
     }
   `);
 };
@@ -56,11 +55,33 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
       name: 'slug',
       value: trimTrailingSlash(slug) || '/',
     });
+
+    // Create other node fields from the frontmatter values.
+    // This is necessary to ensure that we always have those fields in the schema
+    // instead of relying on GraphQL inferring the schema from the MDX pages.
+    // See https://github.com/gatsbyjs/gatsby/pull/5495#issuecomment-392882900
+    actions.createNodeField({
+      node,
+      name: 'title',
+      value: node.frontmatter.title,
+    });
+    actions.createNodeField({
+      node,
+      name: 'beta',
+      value: Boolean(node.frontmatter.beta),
+    });
+    actions.createNodeField({
+      node,
+      name: 'excludeFromSearchIndex',
+      value:
+        Boolean(node.frontmatter.excludeFromSearchIndex) ||
+        Boolean(pluginOptions.excludeFromSearchIndex),
+    });
   }
 };
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
-exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const allMdxPagesResult = await graphql(`
     query QueryAllMdxPages {
       allMdx(limit: 1000) {
@@ -69,6 +90,9 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
             id
             fields {
               slug
+              title
+              beta
+              excludeFromSearchIndex
             }
           }
         }
@@ -104,12 +128,6 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
       page =>
         trimTrailingSlash(page.path) === trimTrailingSlash(node.fields.slug)
     );
-    const excludeFromSearchIndexFromPluginOptions = Boolean(
-      pluginOptions.excludeFromSearchIndex
-    );
-    const excludeFromSearchIndexFromChapterPage = Boolean(
-      matchingNavigationPage && matchingNavigationPage.excludeFromSearchIndex
-    );
     actions.createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
@@ -119,13 +137,10 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
       // You can use the values in this context in
       // our page layout component
       context: {
-        slug: node.fields.slug,
+        ...node.fields,
         shortTitle: matchingNavigationPage
           ? matchingNavigationPage.title
           : undefined,
-        excludeFromSearchIndex:
-          excludeFromSearchIndexFromChapterPage ||
-          excludeFromSearchIndexFromPluginOptions,
       },
     });
   });

@@ -85,22 +85,18 @@ const LayoutContent = props => {
           `}
         >
           <LayoutPageHeader>
-            <Markdown.H1>{props.pageData.frontmatter.title}</Markdown.H1>
+            <Markdown.H1>{props.pageContext.title}</Markdown.H1>
           </LayoutPageHeader>
           <LayoutPageHeaderSide>
             <PlaceholderPageHeaderSide />
           </LayoutPageHeaderSide>
           <LayoutPageContent>
-            {props.pageData.frontmatter.beta && (
-              <ContentNotifications.BetaInfo />
-            )}
+            {props.pageContext.beta && <ContentNotifications.BetaInfo />}
             {props.children}
             <ContentPagination slug={props.pageContext.slug} />
           </LayoutPageContent>
           <LayoutPageNavigation
-            pageTitle={
-              props.pageContext.shortTitle || props.pageData.frontmatter.title
-            }
+            pageTitle={props.pageContext.shortTitle || props.pageContext.title}
             tableOfContents={props.pageData.tableOfContents}
           />
         </div>
@@ -114,12 +110,10 @@ LayoutContent.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    beta: PropTypes.bool,
   }).isRequired,
   pageData: PropTypes.shape({
-    frontmatter: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      beta: PropTypes.bool,
-    }).isRequired,
     tableOfContents: PropTypes.object.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
