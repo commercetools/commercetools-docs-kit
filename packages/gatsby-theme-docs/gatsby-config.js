@@ -163,7 +163,11 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: 'gatsby-plugin-manifest',
         options: {
-          icon: require.resolve('./src/icons/logo.png'),
+          // We want to generate legacy "apple-touch" icons for the dark color icon.
+          icon: require.resolve('./static/favicon-dark.png'),
+          // Do not add the favicon, we do that on our own in `gatsby-ssr.js` in
+          // order to support light/dark media queries.
+          include_favicon: false,
         },
       },
       pluginOptions.gaTrackingId && {
@@ -176,8 +180,10 @@ module.exports = (themeOptions = {}) => {
           exclude: [],
         },
       },
-      // This needs to be last
-      // 'gatsby-plugin-offline', // TODO: decide if we want to use it or not
+
+      /**
+       * The following plugins need to be last
+       */
       'gatsby-plugin-remove-trailing-slashes',
       'gatsby-plugin-meta-redirect',
       'gatsby-plugin-netlify-cache',
