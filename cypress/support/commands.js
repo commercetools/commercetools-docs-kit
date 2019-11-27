@@ -31,8 +31,8 @@ Cypress.Commands.add('setMobileViewport', () => {
   cy.viewport(512, 1024);
 });
 Cypress.Commands.add('setTabletViewport', () => {
-  cy.viewport(1200, 1024);
+  cy.viewport(956, 1024);
 });
 Cypress.Commands.add('setDesktopViewport', () => {
-  cy.viewport(1600, 1024);
+  cy.viewport(1280, 1024);
 });
