@@ -130,6 +130,9 @@ export const PurePagination = props => {
         @media screen and (${dimensions.viewports.tablet}) {
           grid-template-columns: 1fr 1fr;
         }
+        @media screen and (${dimensions.viewports.desktop}) {
+          grid-gap: ${dimensions.spacings.xl};
+        }
       `}
     >
       {hasPagination && previousPage ? (
