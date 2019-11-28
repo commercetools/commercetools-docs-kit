@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import {
-  ContentPagination,
-  ContentNotifications,
-  Markdown,
-} from '../components';
+import { BetaFlag, ContentPagination, Markdown } from '../components';
 import { dimensions } from '../design-system';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import { useSiteData } from '../hooks/use-site-data';
@@ -37,7 +33,7 @@ const LayoutContent = props => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const siteData = useSiteData();
   return (
-    <LayoutApplication isMenuOpen={isMenuOpen}>
+    <LayoutApplication>
       <LayoutHeader siteTitle={siteData.siteMetadata.title} />
       <LayoutCentered>
         <LayoutMain>
@@ -46,9 +42,11 @@ const LayoutContent = props => {
             setMenuOpen={setMenuOpen}
             slug={props.pageContext.slug}
             siteTitle={siteData.siteMetadata.title}
+            isGlobalBeta={props.pageContext.isGlobalBeta}
           />
           <LayoutPage>
             <LayoutPageHeader>
+              {props.pageContext.beta && <BetaFlag href="/beta" />}
               <Markdown.H1>{props.pageContext.title}</Markdown.H1>
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
@@ -56,7 +54,6 @@ const LayoutContent = props => {
             </LayoutPageHeaderSide>
             <LayoutPageContent>
               <PageContentInset>
-                {props.pageContext.beta && <ContentNotifications.BetaInfo />}
                 {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
               </PageContentInset>
@@ -80,7 +77,9 @@ LayoutContent.propTypes = {
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
     title: PropTypes.string.isRequired,
-    beta: PropTypes.bool,
+    beta: PropTypes.bool.isRequired,
+    isGlobalBeta: PropTypes.bool.isRequired,
+    excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   pageData: PropTypes.shape({
     tableOfContents: PropTypes.object.isRequired,

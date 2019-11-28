@@ -80,6 +80,7 @@ PageContentTemplate.propTypes = {
     shortTitle: PropTypes.string,
     title: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
+    isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   data: PropTypes.shape({

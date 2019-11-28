@@ -10,6 +10,7 @@ module.exports = {
       options: {
         websiteKey: 'docs-smoke-test',
         excludeFromSearchIndex: true,
+        beta: true,
       },
     },
   ],

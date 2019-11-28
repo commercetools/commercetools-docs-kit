@@ -1,5 +1,6 @@
 import * as Markdown from './markdown';
 
+export { default as BetaFlag } from './beta-flag';
 export { default as BurgerIcon } from './burger-icon';
 export { default as Card } from './card';
 export { default as ContentPagination } from './content-pagination';

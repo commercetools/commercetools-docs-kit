@@ -12,6 +12,7 @@ export const pxToRem = px => {
 
 const uikitColors = {
   colorInfo: '#078cdf',
+  colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
   colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
   colorSurface: '#fff',
   colorNeutral: '#ccc',
@@ -43,6 +44,7 @@ export const colors = {
     surfaceCode: uikitColors.colorAccent,
     surfaceCodeHighlight: uikitColors.colorAccent40,
     surfaceInfo: uikitColors.colorInfo95,
+    surfaceBeta: uikitColors.colorInfo85,
     surfaceQuote: uikitColors.colorAccent98,
     surfaceWarning: uikitColors.colorWarning95,
     surfaceError: uikitColors.colorError95,
