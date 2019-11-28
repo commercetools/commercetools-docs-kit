@@ -10,69 +10,70 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useSiteData } from '../hooks/use-site-data';
 
-const SEO = ({ description, lang, meta, keywords, title }) => {
+const SEO = props => {
   const siteData = useSiteData();
-  const metaDescription = description || siteData.siteMetadata.description;
+  const metaDescription =
+    props.description || siteData.siteMetadata.description;
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: props.lang,
       }}
-      title={title}
+      title={props.title}
       titleTemplate={`%s | ${siteData.siteMetadata.title} | commercetools`}
       meta={[
         {
-          name: `description`,
+          name: 'description',
+          content: metaDescription,
+        },
+        props.keywords.length > 0 && {
+          name: 'keywords',
+          content: props.keywords.join(', '),
+        },
+        {
+          property: 'og:title',
+          content: props.title,
+        },
+        {
+          property: 'og:description',
           content: metaDescription,
         },
         {
-          property: `og:title`,
-          content: title,
+          property: 'og:type',
+          content: 'website',
         },
         {
-          property: `og:description`,
-          content: metaDescription,
+          name: 'twitter:card',
+          content: 'summary',
         },
         {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
+          name: 'twitter:creator',
           content: siteData.siteMetadata.author,
         },
         {
-          name: `twitter:title`,
-          content: title,
+          name: 'twitter:title',
+          content: props.title,
         },
         {
-          name: `twitter:description`,
+          name: 'twitter:description',
           content: metaDescription,
         },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : []
-        )
-        .concat(meta)}
+        props.excludeFromSearchIndex && {
+          name: 'robots',
+          content: 'noindex',
+        },
+        ...props.meta,
+      ].filter(Boolean)}
     />
   );
 };
 SEO.displayName = 'SEO';
 SEO.defaultProps = {
-  lang: `en`,
+  lang: 'en',
   meta: [],
   keywords: [],
-  description: ``,
+  description: '',
 };
 SEO.propTypes = {
   description: PropTypes.string,
@@ -80,6 +81,7 @@ SEO.propTypes = {
   meta: PropTypes.arrayOf(PropTypes.object),
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
+  excludeFromSearchIndex: PropTypes.bool.isRequired,
 };
 
 export default SEO;

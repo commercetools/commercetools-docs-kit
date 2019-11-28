@@ -33,10 +33,10 @@ exports.sourceNodes = ({ actions }) => {
       chapterTitle: String! @proxy(from: "chapter-title")
       beta: Boolean
       pagination: Boolean
-      pages: [Entry!]
+      pages: [NavigationPage!]
     }
 
-    type Entry {
+    type NavigationPage {
       title: String!
       path: String!
       beta: Boolean
@@ -55,6 +55,28 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
       name: 'slug',
       value: trimTrailingSlash(slug) || '/',
     });
+
+    // Create other node fields from the frontmatter values.
+    // This is necessary to ensure that we always have those fields in the schema
+    // instead of relying on GraphQL inferring the schema from the MDX pages.
+    // See https://github.com/gatsbyjs/gatsby/pull/5495#issuecomment-392882900
+    actions.createNodeField({
+      node,
+      name: 'title',
+      value: node.frontmatter.title,
+    });
+    actions.createNodeField({
+      node,
+      name: 'beta',
+      value: Boolean(node.frontmatter.beta),
+    });
+    actions.createNodeField({
+      node,
+      name: 'excludeFromSearchIndex',
+      value:
+        Boolean(node.frontmatter.excludeFromSearchIndex) ||
+        Boolean(pluginOptions.excludeFromSearchIndex),
+    });
   }
 };
 
@@ -68,6 +90,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
+              title
+              beta
+              excludeFromSearchIndex
             }
           }
         }
@@ -98,7 +123,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
   );
-  // you'll call `createPage` for each result
   pages.forEach(({ node }) => {
     const matchingNavigationPage = navigationPages.find(
       page =>
@@ -113,7 +137,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // You can use the values in this context in
       // our page layout component
       context: {
-        slug: node.fields.slug,
+        ...node.fields,
         shortTitle: matchingNavigationPage
           ? matchingNavigationPage.title
           : undefined,

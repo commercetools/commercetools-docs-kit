@@ -18,8 +18,7 @@ const components = {
   p: Markdown.Paragraph,
   // NOTE: we want to ensure that only one h1 exists on each page.
   // Therefore, we map the markdown header elements starting from h2.
-  // The h1 header will be automatically rendered based on the frontmatter
-  // page values.
+  // The h1 header will be automatically rendered based on the page title.
   h1: Markdown.withAnchorLink(Markdown.H2),
   h2: Markdown.withAnchorLink(Markdown.H3),
   h3: Markdown.withAnchorLink(Markdown.H4),
@@ -61,9 +60,8 @@ const PageContentTemplate = props => (
       <MDXProvider components={components}>
         <Markdown.TypographyPage>
           <SEO
-            title={
-              props.pageContext.shortTitle || props.data.mdx.frontmatter.title
-            }
+            title={props.pageContext.shortTitle || props.pageContext.title}
+            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
           />
           {/* This wrapper div is important to ensure the vertical space */}
           <div>
@@ -80,12 +78,12 @@ PageContentTemplate.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    beta: PropTypes.bool.isRequired,
+    excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
-      frontmatter: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }).isRequired,
       body: PropTypes.string.isRequired,
       tableOfContents: PropTypes.object.isRequired,
     }).isRequired,
@@ -96,10 +94,6 @@ export default PageContentTemplate;
 export const query = graphql`
   query QueryMarkdownPage($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
-        beta
-      }
       body
       tableOfContents(maxDepth: 4)
     }
