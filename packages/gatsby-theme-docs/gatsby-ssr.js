@@ -13,10 +13,10 @@ const isNowBuild = Boolean(process.env.GATSBY_NOW_GITHUB_DEPLOYMENT);
 const isMasterBranch = process.env.GATSBY_NOW_GITHUB_COMMIT_REF === 'master';
 
 const iconDarkDigest = createContentDigest(
-  fs.readFileSync(require.resolve('./static/favicon-dark.png'))
+  fs.readFileSync(require.resolve('./static/favicon-dark-32x32.png'))
 );
 const iconLightDigest = createContentDigest(
-  fs.readFileSync(require.resolve('./static/favicon-light.png'))
+  fs.readFileSync(require.resolve('./static/favicon-light-32x32.png'))
 );
 
 // eslint-disable-next-line import/prefer-default-export
@@ -37,13 +37,13 @@ export const onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
     <link
       key="favicon-dark"
       rel="icon"
-      href={withPrefix(`favicon-dark.png?v=${iconDarkDigest}`)}
+      href={withPrefix(`favicon-dark-32x32.png?v=${iconDarkDigest}`)}
       media="(prefers-color-scheme:light)"
     />,
     <link
       key="favicon-light"
       rel="icon"
-      href={withPrefix(`favicon-light.png?v=${iconLightDigest}`)}
+      href={withPrefix(`favicon-light-32x32.png?v=${iconLightDigest}`)}
       media="(prefers-color-scheme:dark)"
     />,
   ]);
