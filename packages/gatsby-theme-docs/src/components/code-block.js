@@ -1,6 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { Tooltip } from '@commercetools-frontend/ui-kit';
+import ClipboardIcon from '../icons/clipboard-icon.svg';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
@@ -25,20 +28,29 @@ const HeaderInner = styled.div`
 const HeaderText = styled.span`
   color: ${colors.light.textFaded};
 `;
-const CopyButton = styled.button`
+const CopyArea = styled.div`
   cursor: pointer;
-  background-color: ${colors.light.surfaceCodeCopy};
-  border: none;
-  border-radius: ${tokens.borderRadius6};
-  padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
-  color: ${colors.light.textInverted};
-  font-size: ${typography.fontSizes.small};
-  :hover,
-  :focus,
-  :active {
-    background-color: ${colors.light.surfaceCodeHighlight};
-    outline: none;
+  svg {
+    * {
+      fill: ${colors.light.surfacePrimary};
+    }
   }
+  :hover {
+    svg {
+      * {
+        fill: ${colors.light.surfaceCodeHighlight};
+      }
+    }
+  }
+`;
+const TooltipWrapperComponent = props =>
+  ReactDOM.createPortal(props.children, document.body);
+const TooltipBodyComponent = styled.div`
+  background-color: ${colors.light.surfaceCodeHighlight};
+  border-radius: ${tokens.borderRadius4};
+  color: ${colors.light.textInverted};
+  font-size: ${typography.fontSizes.extraSmall};
+  padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
 
 /**
@@ -203,22 +215,28 @@ const CodeBlock = props => {
           .join(' ')}
         data-language={language}
       >
-        <Spacings.Inline justifyContent="flex-end">
-          <CopyButton
-            onClick={handleCopyToClipboardClick}
-            title={isCopiedToClipboard ? 'Copied!' : 'Copy'}
-          >
-            {isCopiedToClipboard ? 'Copied!' : 'Copy'}
-          </CopyButton>
-        </Spacings.Inline>
-        <pre className={`language-${language}`}>
-          <code
-            className={`language-${language}`}
-            dangerouslySetInnerHTML={{
-              __html: formattedContent,
+        <Spacings.Inline scale="xs" alignItems="flex-start">
+          <pre className={`language-${language}`}>
+            <code
+              className={`language-${language}`}
+              dangerouslySetInnerHTML={{
+                __html: formattedContent,
+              }}
+            />
+          </pre>
+          <Tooltip
+            placement="left"
+            title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
+            components={{
+              TooltipWrapperComponent,
+              BodyComponent: TooltipBodyComponent,
             }}
-          />
-        </pre>
+          >
+            <CopyArea onClick={handleCopyToClipboardClick}>
+              <ClipboardIcon />
+            </CopyArea>
+          </Tooltip>
+        </Spacings.Inline>
       </div>
     </Container>
   );
