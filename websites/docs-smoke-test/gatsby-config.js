@@ -3,6 +3,7 @@ module.exports = {
   siteMetadata: {
     title: 'Docs Smoke Test',
     description: 'Documentation website for smoke tests',
+    betaLink: '/beta',
   },
   plugins: [
     {
@@ -10,7 +11,6 @@ module.exports = {
       options: {
         websiteKey: 'docs-smoke-test',
         excludeFromSearchIndex: true,
-        beta: true,
       },
     },
   ],

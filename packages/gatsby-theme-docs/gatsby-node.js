@@ -97,6 +97,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
               title
               beta
+              isGlobalBeta
               excludeFromSearchIndex
             }
           }

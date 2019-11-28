@@ -46,7 +46,9 @@ const LayoutContent = props => {
           />
           <LayoutPage>
             <LayoutPageHeader>
-              {props.pageContext.beta && <BetaFlag href="/beta" />}
+              {props.pageContext.beta && (
+                <BetaFlag href={siteData.siteMetadata.betaLink} />
+              )}
               <Markdown.H1>{props.pageContext.title}</Markdown.H1>
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
