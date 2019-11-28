@@ -68,7 +68,12 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     actions.createNodeField({
       node,
       name: 'beta',
-      value: Boolean(node.frontmatter.beta),
+      value: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
+    });
+    actions.createNodeField({
+      node,
+      name: 'isGlobalBeta',
+      value: Boolean(pluginOptions.beta),
     });
     actions.createNodeField({
       node,
@@ -92,6 +97,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
               title
               beta
+              isGlobalBeta
               excludeFromSearchIndex
             }
           }

@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 import { dimensions } from '../../design-system';
 
 const LayoutPageHeaderSide = styled.div`
-  grid-row: 1;
-  grid-column: 2;
+  grid-area: page-header-side;
   display: none;
 
   @media screen and (${dimensions.viewports.largeTablet}) {

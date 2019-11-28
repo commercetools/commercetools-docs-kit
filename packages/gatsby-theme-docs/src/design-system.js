@@ -12,6 +12,7 @@ export const pxToRem = px => {
 
 const uikitColors = {
   colorInfo: '#078cdf',
+  colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
   colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
   colorSurface: '#fff',
   colorNeutral: '#ccc',
@@ -19,6 +20,7 @@ const uikitColors = {
   colorNeutral90: 'hsl(0, 0%, 90%)',
   colorNeutral95: 'hsl(0, 0%, 95%)',
   colorAccent: '#213c45',
+  colorAccent30: 'hsl(195, 35.2941176471%, 30%)',
   colorAccent40: 'hsl(195, 35.2941176471%, 40%)',
   colorAccent95: 'hsl(195, 35.2941176471%, 95%)',
   colorAccent98: 'hsl(195, 35.2941176471%, 98%)',
@@ -41,8 +43,10 @@ export const colors = {
     surfaceSecondary2: uikitColors.colorNeutral90,
     surfaceSecondary3: uikitColors.colorNeutral60,
     surfaceCode: uikitColors.colorAccent,
+    surfaceCodeCopy: uikitColors.colorAccent30,
     surfaceCodeHighlight: uikitColors.colorAccent40,
     surfaceInfo: uikitColors.colorInfo95,
+    surfaceBeta: uikitColors.colorInfo85,
     surfaceQuote: uikitColors.colorAccent98,
     surfaceWarning: uikitColors.colorWarning95,
     surfaceError: uikitColors.colorError95,
@@ -72,6 +76,7 @@ export const tokens = {
   borderRadius4: '4px',
   borderRadius6: '6px',
   shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+  shadow6: ' 0 -1px 2px 0 rgba(0, 0, 0, 0.2)',
   shadow7:
     '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
   shadow8: '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',

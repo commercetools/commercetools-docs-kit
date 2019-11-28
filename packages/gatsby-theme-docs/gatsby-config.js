@@ -16,6 +16,8 @@ proxyEnvironmentVariables.forEach(envName => {
 
 const defaultOptions = {
   websiteKey: '',
+  beta: false,
+  betaLink: undefined,
   gaTrackingId: undefined,
   excludeFromSearchIndex: true,
   createNodeSlug: undefined,
@@ -38,6 +40,7 @@ module.exports = (themeOptions = {}) => {
     siteMetadata: {
       author: 'commercetools',
       productionHostname: 'docs.commercetools.com',
+      betaLink: null,
     },
     plugins: [
       /**

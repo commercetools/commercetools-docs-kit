@@ -17,6 +17,7 @@ const ThemeProvider = props => {
           description
           author
           productionHostname
+          betaLink
         }
       }
     }

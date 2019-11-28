@@ -1,107 +1,75 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
-import {
-  ContentPagination,
-  ContentNotifications,
-  Markdown,
-} from '../components';
+import styled from '@emotion/styled';
+import { BetaFlag, ContentPagination, Markdown } from '../components';
 import { dimensions } from '../design-system';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
+import { useSiteData } from '../hooks/use-site-data';
 import LayoutApplication from './internals/layout-application';
+import LayoutCentered from './internals/layout-centered';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
+import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
-import { useSiteData } from '../hooks/use-site-data';
+
+const PageContentInset = styled.div`
+  padding: 0 ${dimensions.spacings.m} ${dimensions.spacings.xl};
+
+  > * + * {
+    margin: ${dimensions.spacings.xl} 0 0;
+  }
+
+  @media screen and (${dimensions.viewports.desktop}) {
+    padding: 0 ${dimensions.spacings.xl} ${dimensions.spacings.xl};
+  }
+`;
 
 const LayoutContent = props => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const siteData = useSiteData();
   return (
-    <LayoutApplication isMenuOpen={isMenuOpen}>
+    <LayoutApplication>
       <LayoutHeader siteTitle={siteData.siteMetadata.title} />
-      <LayoutSidebar
-        isMenuOpen={isMenuOpen}
-        setMenuOpen={setMenuOpen}
-        slug={props.pageContext.slug}
-        siteTitle={siteData.siteMetadata.title}
-      />
-      <LayoutMain
-        css={css`
-          grid-column: 2;
-          grid-row: 2;
-
-          div {
-            min-width: unset;
-          }
-
-          @media screen and (${dimensions.viewports.mobile}) {
-            grid-column: 1/3;
-            grid-row: ${isMenuOpen ? '3' : '2'};
-          }
-        `}
-      >
-        <div
-          id="anchor-page-top"
-          css={css`
-            display: block;
-
-            @media screen and (${dimensions.viewports.tablet}) {
-              display: grid;
-              grid-template-rows: auto 1fr;
-              grid-template-columns: ${dimensions.widths
-                  .pageContentSmallWithMargings} 0;
-            }
-            @media screen and (${dimensions.viewports.largeTablet}) {
-              display: grid;
-              grid-template-rows: auto 1fr;
-              grid-template-columns:
-                minmax(
-                  ${dimensions.widths.pageContentSmallWithMargings},
-                  ${dimensions.widths.pageContentWithMargings}
-                )
-                ${dimensions.widths.pageNavigation};
-            }
-            @media screen and (${dimensions.viewports.laptop}) {
-              grid-template-columns:
-                minmax(
-                  ${dimensions.widths.pageContentSmallWithMargings},
-                  ${dimensions.widths.pageContentWithMargings}
-                )
-                ${dimensions.widths.pageNavigationSmall};
-            }
-            @media screen and (${dimensions.viewports.desktop}) {
-              display: grid;
-              grid-template-rows: auto 1fr;
-              grid-template-columns:
-                ${dimensions.widths.pageContentWithMargings}
-                ${dimensions.widths.pageNavigation};
-            }
-          `}
-        >
-          <LayoutPageHeader>
-            <Markdown.H1>{props.pageContext.title}</Markdown.H1>
-          </LayoutPageHeader>
-          <LayoutPageHeaderSide>
-            <PlaceholderPageHeaderSide />
-          </LayoutPageHeaderSide>
-          <LayoutPageContent>
-            {props.pageContext.beta && <ContentNotifications.BetaInfo />}
-            {props.children}
-            <ContentPagination slug={props.pageContext.slug} />
-          </LayoutPageContent>
-          <LayoutPageNavigation
-            pageTitle={props.pageContext.shortTitle || props.pageContext.title}
-            tableOfContents={props.pageData.tableOfContents}
+      <LayoutCentered>
+        <LayoutMain>
+          <LayoutSidebar
+            isMenuOpen={isMenuOpen}
+            setMenuOpen={setMenuOpen}
+            slug={props.pageContext.slug}
+            siteTitle={siteData.siteMetadata.title}
+            isGlobalBeta={props.pageContext.isGlobalBeta}
           />
-        </div>
-        <LayoutFooter />
-      </LayoutMain>
+          <LayoutPage>
+            <LayoutPageHeader>
+              {props.pageContext.beta && (
+                <BetaFlag href={siteData.siteMetadata.betaLink} />
+              )}
+              <Markdown.H1>{props.pageContext.title}</Markdown.H1>
+            </LayoutPageHeader>
+            <LayoutPageHeaderSide>
+              <PlaceholderPageHeaderSide />
+            </LayoutPageHeaderSide>
+            <LayoutPageContent>
+              <PageContentInset>
+                {props.children}
+                <ContentPagination slug={props.pageContext.slug} />
+              </PageContentInset>
+              <LayoutFooter />
+            </LayoutPageContent>
+            <LayoutPageNavigation
+              pageTitle={
+                props.pageContext.shortTitle || props.pageContext.title
+              }
+              tableOfContents={props.pageData.tableOfContents}
+            />
+          </LayoutPage>
+        </LayoutMain>
+      </LayoutCentered>
     </LayoutApplication>
   );
 };
@@ -111,7 +79,9 @@ LayoutContent.propTypes = {
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
     title: PropTypes.string.isRequired,
-    beta: PropTypes.bool,
+    beta: PropTypes.bool.isRequired,
+    isGlobalBeta: PropTypes.bool.isRequired,
+    excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   pageData: PropTypes.shape({
     tableOfContents: PropTypes.object.isRequired,

@@ -75,7 +75,8 @@ const Globals = () => (
       .gatsby-highlight {
         background-color: ${colors.light.surfaceCode};
         margin: 0;
-        padding: ${dimensions.spacings.s} ${dimensions.spacings.m};
+        padding: ${dimensions.spacings.s} ${dimensions.spacings.xs}
+          ${dimensions.spacings.s} ${dimensions.spacings.m};
         overflow: auto;
       }
       .gatsby-highlight > code,
@@ -88,6 +89,7 @@ const Globals = () => (
         background-color: ${colors.light.surfaceCode};
         margin: 0;
         padding: 0;
+        width: 100%;
       }
       .gatsby-highlight pre[class*='language-'],
       .gatsby-highlight code[class*='language-'] {

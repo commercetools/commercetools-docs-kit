@@ -67,6 +67,8 @@ The project structure should contain at least the following files and folders:
 
   - `excludeFromSearchIndex` (_optional_): indicates that the website should not be indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
 
+  - `beta` (_optional_): indicates that the website should be marked as **beta**. Each page gets a beta flag, no matter if the page frontmatter has it defined or not. Furthermore, in the main navigation, the beta flag is shown near the website title and not next to each link.
+
   - `createNodeSlug` (_optional_): in case you need to have more control over the creation of the page slugs, you can implement this function. This is useful if for example your website has content files in other file system locations and you want to provide a more meaningful URL path.
 
     ```ts

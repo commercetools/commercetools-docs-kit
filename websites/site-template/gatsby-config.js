@@ -3,6 +3,7 @@ module.exports = {
   siteMetadata: {
     title: 'CHANGE-ME',
     description: 'CHANGE-ME',
+    betaLink: '',
   },
   plugins: [
     {

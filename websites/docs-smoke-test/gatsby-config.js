@@ -3,6 +3,7 @@ module.exports = {
   siteMetadata: {
     title: 'Docs Smoke Test',
     description: 'Documentation website for smoke tests',
+    betaLink: '/beta',
   },
   plugins: [
     {

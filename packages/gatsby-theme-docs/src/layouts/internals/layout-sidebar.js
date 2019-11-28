@@ -26,8 +26,7 @@ const ContainerOverlay = styled.div`
     }
     return css`
       position: relative;
-      grid-row: 2;
-      grid-column: 1/3;
+      grid-area: sidebar;
     `;
   }}
 
@@ -117,6 +116,7 @@ const LayoutSidebar = props => {
           }}
           slug={props.slug}
           siteTitle={props.siteTitle}
+          isGlobalBeta={props.isGlobalBeta}
         />
         {portalNode &&
           ReactDOM.createPortal(
@@ -140,6 +140,7 @@ LayoutSidebar.propTypes = {
   setMenuOpen: PropTypes.func.isRequired,
   slug: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
+  isGlobalBeta: PropTypes.bool.isRequired,
 };
 
 export default LayoutSidebar;

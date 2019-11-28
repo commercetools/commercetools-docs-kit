@@ -53,8 +53,7 @@ const GridContainer = styled.div`
 
   @media screen and (${dimensions.viewports.largeTablet}) {
     display: block;
-    grid-row: 2;
-    grid-column: 2;
+    grid-area: page-navigation;
     width: ${dimensions.widths.pageNavigation};
   }
   @media screen and (${dimensions.viewports.laptop}) {

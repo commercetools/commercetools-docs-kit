@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { css, ClassNames } from '@emotion/core';
 import styled from '@emotion/styled';
-import { Spacings } from '../../components';
-import { colors, dimensions, typography, tokens } from '../../design-system';
+import { Spacings, BetaFlag } from '../../components';
+import { colors, dimensions, typography } from '../../design-system';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 
 const SidebarWebsiteTitle = styled.div`
-  background-color: ${colors.light.surfaceSecondary2};
   color: ${colors.light.primary};
   padding: ${dimensions.spacings.l} ${dimensions.spacings.m};
   font-size: ${typography.fontSizes.h4};
@@ -110,36 +109,27 @@ const Sidebar = props => {
       `}
     >
       <SidebarWebsiteTitle>
-        <Link
-          to="/"
-          css={css`
-            text-decoration: none;
-            color: ${colors.light.primary};
-            :hover {
-              text-decoration: underline;
-            }
-          `}
-        >
-          {props.siteTitle}
-        </Link>
+        <Spacings.Stack scale="xs">
+          <div>{props.isGlobalBeta && <BetaFlag />}</div>
+          <Link
+            to="/"
+            css={css`
+              text-decoration: none;
+              color: ${colors.light.primary};
+              :hover {
+                text-decoration: underline;
+              }
+            `}
+          >
+            {props.siteTitle}
+          </Link>
+        </Spacings.Stack>
       </SidebarWebsiteTitle>
       {data.allNavigationYaml.nodes.map((node, index) => (
         <Spacings.Stack scale="s" key={index}>
           <SidebarLinkItem>
             <SidebarLinkTitle>{node.chapterTitle}</SidebarLinkTitle>
-            {node.beta && (
-              <span
-                css={css`
-                  border: 1px solid ${colors.light.borderInfo};
-                  border-radius: ${tokens.borderRadius4};
-                  color: ${colors.light.textInfo};
-                  font-size: ${typography.fontSizes.ultraSmall};
-                  padding: 1px ${dimensions.spacings.xs};
-                `}
-              >
-                {'BETA'}
-              </span>
-            )}
+            {node.beta && !props.isGlobalBeta && <BetaFlag />}
           </SidebarLinkItem>
           <Spacings.Stack scale="s">
             {node.pages &&
@@ -150,19 +140,7 @@ const Sidebar = props => {
                   onClick={props.onLinkClick}
                 >
                   <SidebarLinkSubtitle>{pageLink.title}</SidebarLinkSubtitle>
-                  {pageLink.beta && (
-                    <span
-                      css={css`
-                        border: 1px solid ${colors.light.borderInfo};
-                        border-radius: ${tokens.borderRadius4};
-                        color: ${colors.light.textInfo};
-                        font-size: ${typography.fontSizes.ultraSmall};
-                        padding: 1px ${dimensions.spacings.xs};
-                      `}
-                    >
-                      {'BETA'}
-                    </span>
-                  )}
+                  {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
                 </SidebarLink>
               ))}
           </Spacings.Stack>
@@ -176,6 +154,7 @@ Sidebar.propTypes = {
   onLinkClick: PropTypes.func.isRequired,
   slug: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
+  isGlobalBeta: PropTypes.bool.isRequired,
 };
 
 export default Sidebar;
