@@ -13,14 +13,19 @@ const getStyles = props => {
   if (props.href) {
     return css`
       ${baseStyles}
+      background-color: ${colors.light.surfacePrimary};
       border: 1px solid ${colors.light.borderInfo};
       box-shadow: ${tokens.shadow7};
+      color: ${colors.light.textInfo} !important;
       font-size: ${typography.fontSizes.small};
       text-decoration: none;
+
+      :active,
+      :focus,
       :hover {
         background-color: ${colors.light.textInfo};
         box-shadow: none;
-        color: ${colors.light.textInverted};
+        color: ${colors.light.textInverted} !important;
       }
     `;
   }
