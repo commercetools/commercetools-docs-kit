@@ -35,7 +35,7 @@ The project structure should contain at least the following files and folders:
     └── images
 ```
 
-- `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`, otherwise provide a valid ESLint configuration. 
+- `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`, otherwise provide a valid ESLint configuration.
 
 - `gatsby-config.js`: this is required for a Gatsby website and should contain the website specific configuration. At the very least, the commercetools Gatsby theme must be listed in the plugins section. You are free to provide more plugins as you need for your specific website.
 
@@ -79,7 +79,7 @@ The project structure should contain at least the following files and folders:
   ```yaml
   - chapter-title: This is the title
     beta: false # (optional): will show the beta flag next to the chapter title
-    pagination: false # (optional) hides the prev/next content pagination at the bottom of the pages in this chapter. Use for non-linear content like reference documentation. 
+    pagination: false # (optional) hides the prev/next content pagination at the bottom of the pages in this chapter. Use for non-linear content like reference documentation.
     pages:
       - title: The first page
         path: '/chapter-1/first-page'
@@ -117,28 +117,28 @@ Supported frontmatter options are:
 - `title`: the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
 - `beta`: to indicate if the _beta_ info message should be displayed or not.
 
-### Available elements within markdown files
+### Available JSX components within markdown files
 
-Besides the standard markdown syntax, the theme provides some extra elements that can be used within the `*.mdx` files.
+Besides the standard markdown syntax, the theme provides some extra JSX components that can be used within the `*.mdx` files.
 
-The elements should be rendered as XML tags, like HTML elements. For example:
+The components should be rendered as XML tags, like HTML elements. For example:
 
 ```mdx
 <Subtitle>
 
-Content inside the element.
+Content inside the component.
 
 </Subtitle>
 ```
 
-The elements are:
+The available JSX components are:
 
-- `<Subtitle>`: used to provide more detailed information about the page, besides the title. The element should be places before the other content, so that it's rendered after the page title.
+- `<Subtitle>`: used to provide more detailed information about the page, besides the title. The component should be placed before the other content, so that it's rendered after the page title.
 - `<Info>`: a notification message with info colors
 - `<Warning>`: a notification message with warning colors
 - `<Error>`: a notification message with error colors
 
-> When using elements, it's recommended to leave a blank line between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom element tags.
+> When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
 ## Theme overrides
 
