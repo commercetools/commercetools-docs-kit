@@ -65,6 +65,8 @@ The project structure should contain at least the following files and folders:
 
     > For test websites the field should not be set.
 
+  - `excludeFromSearchIndex` (_optional_): indicates that the website should not be indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
+
   - `createNodeSlug` (_optional_): in case you need to have more control over the creation of the page slugs, you can implement this function. This is useful if for example your website has content files in other file system locations and you want to provide a more meaningful URL path.
 
     ```ts
@@ -116,6 +118,7 @@ Supported frontmatter options are:
 
 - `title`: the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
 - `beta`: to indicate if the _beta_ info message should be displayed or not.
+- `excludeFromSearchIndex`: to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
 
 ### Available JSX components within markdown files
 
