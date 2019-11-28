@@ -109,7 +109,7 @@ const Sidebar = props => {
       `}
     >
       <SidebarWebsiteTitle>
-        <Spacings.Stack scale="s">
+        <Spacings.Stack scale="xs">
           <div>{props.isGlobalBeta && <BetaFlag />}</div>
           <Link
             to="/"
