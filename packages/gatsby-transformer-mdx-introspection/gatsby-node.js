@@ -41,9 +41,7 @@ async function introspectMdx({
   await remark()
     .use(mdx)
     .use(() => tree => {
-      const { children } = tree;
-      let jsxId = 0; // the exact same JSX could be on one page twice, use a counter to differentiate
-      children.forEach(child => {
+      tree.children.forEach((child, index) => {
         if (child.type === 'jsx') {
           createComponentInMdxNode({
             node,
@@ -51,9 +49,8 @@ async function introspectMdx({
             createContentDigest,
             actions,
             jsxString: child.value,
-            jsxId,
+            index, // the exact same JSX could be on one page twice, use a counter to differentiate
           });
-          jsxId += 1;
         }
       });
     })
