@@ -22,7 +22,8 @@ swap:
   Ajax: AJAX
   Android device: Android-powered device
   android: Android
-  application: app
+  app: application
+  apps: applications
   approx\.: approximately
   authN: authentication
   authZ: authorization

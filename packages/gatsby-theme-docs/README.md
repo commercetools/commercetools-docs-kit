@@ -14,7 +14,7 @@ npx install-peerdeps --dev @commercetools-docs/gatsby-theme-docs
 
 All commercetools documentation websites are served under `docs.commercetools.com`. In order to make this work, all documentation websites must be bundled for production using a `pathPrefix`. This value determines the URL path where the website is served from.
 
-For example, for the "Custom Applications" website, the path prefix is `/custom-applications`.
+For example, for the "custom applications" website, the path prefix is `/custom-applications`.
 
 The `pathPrefix` is configured in the `gatsby-config.js` file.
 
