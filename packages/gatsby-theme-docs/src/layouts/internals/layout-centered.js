@@ -5,13 +5,12 @@ import { colors, dimensions } from '../../design-system';
 
 const Container = styled.div`
   position: relative;
-  display: block;
+  display: grid;
   width: 100vw;
   overflow: hidden auto;
   grid-area: main;
 
   @media screen and (${dimensions.viewports.desktop}) {
-    display: grid;
     grid:
       [row1-start] 'left center right' auto [row1-end]
       / minmax(0, 100%) 1fr minmax(0, 100%);
@@ -23,13 +22,23 @@ const LayoutCentered = props => (
   <Container>
     <div
       css={css`
-        grid-area: left;
-        background-color: ${colors.light.surfaceSecondary1};
+        display: none;
+
+        @media screen and (${dimensions.viewports.desktop}) {
+          grid-area: left;
+          display: block;
+          background-color: ${colors.light.surfaceSecondary1};
+        }
       `}
     />
     <div
       css={css`
-        grid-area: right;
+        display: none;
+
+        @media screen and (${dimensions.viewports.desktop}) {
+          grid-area: right;
+          display: block;
+        }
       `}
     />
     {// eslint-disable-next-line react/prop-types
