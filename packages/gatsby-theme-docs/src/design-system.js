@@ -129,3 +129,8 @@ export const typography = {
     body: pxToRem('23px'),
   },
 };
+
+export const uikitTheme = {
+  fontFamilyDefault: typography.fontFamilies.primary,
+  fontFamilyBody: typography.fontFamilies.primary,
+};

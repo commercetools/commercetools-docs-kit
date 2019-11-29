@@ -1,7 +1,9 @@
+import React from 'react';
 import styled from '@emotion/styled';
-import { dimensions } from '../../design-system';
+import { ThemeProvider as UiKitThemeProvider } from 'emotion-theming';
+import { dimensions, uikitTheme } from '../../design-system';
 
-const LayoutApplication = styled.div`
+const Container = styled.div`
   height: 100vh;
   display: grid;
   grid:
@@ -14,6 +16,12 @@ const LayoutApplication = styled.div`
     height: auto;
   }
 `;
+
+const LayoutApplication = props => (
+  <UiKitThemeProvider theme={uikitTheme}>
+    <Container {...props} />
+  </UiKitThemeProvider>
+);
 
 // eslint-disable-next-line react/display-name
 export default LayoutApplication;
