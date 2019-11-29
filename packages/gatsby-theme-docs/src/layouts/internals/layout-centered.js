@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { colors, dimensions } from '../../design-system';
 
@@ -10,6 +9,12 @@ const Container = styled.div`
   overflow: hidden auto;
   grid-area: main;
 
+  @media screen and (${dimensions.viewports.tablet}) {
+    grid:
+      [row1-start] 'center' auto [row1-end]
+      / 100%;
+    width: auto;
+  }
   @media screen and (${dimensions.viewports.desktop}) {
     grid:
       [row1-start] 'left center right' auto [row1-end]
@@ -17,30 +22,28 @@ const Container = styled.div`
     width: auto;
   }
 `;
+const EmptyLeft = styled.div`
+  display: none;
+
+  @media screen and (${dimensions.viewports.desktop}) {
+    grid-area: left;
+    display: block;
+    background-color: ${colors.light.surfaceSecondary1};
+  }
+`;
+const EmptyRight = styled.div`
+  display: none;
+
+  @media screen and (${dimensions.viewports.desktop}) {
+    grid-area: right;
+    display: block;
+  }
+`;
 
 const LayoutCentered = props => (
   <Container>
-    <div
-      css={css`
-        display: none;
-
-        @media screen and (${dimensions.viewports.desktop}) {
-          grid-area: left;
-          display: block;
-          background-color: ${colors.light.surfaceSecondary1};
-        }
-      `}
-    />
-    <div
-      css={css`
-        display: none;
-
-        @media screen and (${dimensions.viewports.desktop}) {
-          grid-area: right;
-          display: block;
-        }
-      `}
-    />
+    <EmptyLeft />
+    <EmptyRight />
     {// eslint-disable-next-line react/prop-types
     React.cloneElement(props.children, {
       style: { gridArea: 'center' },
