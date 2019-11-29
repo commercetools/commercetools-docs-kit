@@ -25,10 +25,12 @@ const Constraint = styled.div`
   height: 100%;
 
   @media screen and (${dimensions.viewports.desktop}) {
-    width: calc(
-      ${dimensions.widths.pageContentWithMargings} +
-        ${dimensions.widths.pageNavigation} * 2
-    );
+    width: ${props =>
+      props.constraintWidth ||
+      `calc(
+        ${dimensions.widths.pageContentWithMargings} +
+        ${dimensions.widths.pageNavigation} * 2 )
+      `};
   }
 `;
 const MenuLogoContainer = styled.div`
@@ -84,7 +86,7 @@ const DocumentationSwitcherContainer = styled.div`
 
 const LayoutHeader = props => (
   <Container>
-    <Constraint>
+    <Constraint constraintWidth={props.constraintWidth}>
       <MenuLogoContainer>
         {/* Injected by React portal */}
         <div
@@ -113,6 +115,7 @@ const LayoutHeader = props => (
 );
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
+  constraintWidth: PropTypes.string,
 };
 
 export default LayoutHeader;
