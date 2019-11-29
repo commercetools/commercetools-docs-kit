@@ -1,0 +1,18 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: error
+ignorecase: false
+action:
+  name: replace
+swap:
+  MC: Merchant Center
+  merchant center: Merchant Center
+  Merchant center: Merchant Center
+  merchant Center: Merchant Center
+  Custom Applications: custom applications
+  Custom applications: custom applications
+  custom Applications: custom applications
+  custom apps: custom applications
+  Custom Apps: custom applications
+  MC apps: custom applications
+  MC Apps: custom applications
