@@ -16,13 +16,13 @@ swap:
   '3\-D': 3D
   "tap (?:&|and) hold": touch & hold
   "un(?:check|select)": clear
+  "(?:WiFi|wifi) apps": Wi-Fi
   above: preceding
   account name: username
   admin: administrator
   Ajax: AJAX
   Android device: Android-powered device
   android: Android
-  application: app
   approx\.: approximately
   authN: authentication
   authZ: authorization
