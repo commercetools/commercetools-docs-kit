@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { css, ClassNames } from '@emotion/core';
 import styled from '@emotion/styled';
-import { Spacings, BetaFlag } from '../../components';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { BetaFlag } from '../../components';
 import { colors, dimensions, typography } from '../../design-system';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
@@ -109,7 +110,7 @@ const Sidebar = props => {
       `}
     >
       <SidebarWebsiteTitle>
-        <Spacings.Stack scale="xs">
+        <SpacingsStack scale="xs">
           <div>{props.isGlobalBeta && <BetaFlag />}</div>
           <Link
             to="/"
@@ -123,15 +124,15 @@ const Sidebar = props => {
           >
             {props.siteTitle}
           </Link>
-        </Spacings.Stack>
+        </SpacingsStack>
       </SidebarWebsiteTitle>
       {data.allNavigationYaml.nodes.map((node, index) => (
-        <Spacings.Stack scale="s" key={index}>
+        <SpacingsStack scale="s" key={index}>
           <SidebarLinkItem>
             <SidebarLinkTitle>{node.chapterTitle}</SidebarLinkTitle>
             {node.beta && !props.isGlobalBeta && <BetaFlag />}
           </SidebarLinkItem>
-          <Spacings.Stack scale="s">
+          <SpacingsStack scale="s">
             {node.pages &&
               node.pages.map((pageLink, pageIndex) => (
                 <SidebarLink
@@ -143,8 +144,8 @@ const Sidebar = props => {
                   {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
                 </SidebarLink>
               ))}
-          </Spacings.Stack>
-        </Spacings.Stack>
+          </SpacingsStack>
+        </SpacingsStack>
       ))}
     </div>
   );

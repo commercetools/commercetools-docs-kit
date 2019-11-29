@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import { BetaFlag, ContentPagination, Markdown } from '../components';
-import { dimensions } from '../design-system';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import { useSiteData } from '../hooks/use-site-data';
 import LayoutApplication from './internals/layout-application';
@@ -16,20 +14,7 @@ import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
-
-const PageContentInset = styled.div`
-  padding: ${dimensions.spacings.m} ${dimensions.spacings.m}
-    ${dimensions.spacings.xl};
-
-  > * + * {
-    margin: ${dimensions.spacings.xl} 0 0;
-  }
-
-  @media screen and (${dimensions.viewports.desktop}) {
-    padding: ${dimensions.spacings.m} ${dimensions.spacings.xl}
-      ${dimensions.spacings.xl};
-  }
-`;
+import PageContentInset from './internals/page-content-inset';
 
 const LayoutContent = props => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);

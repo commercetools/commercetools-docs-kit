@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { Spacings } from '../../components';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { colors, dimensions, typography, tokens } from '../../design-system';
 import LogoSvg from '../../icons/logo.svg';
 
@@ -100,10 +100,10 @@ const LayoutHeader = props => (
         />
         <LogoLink href="/">
           <LogoContainer>
-            <Spacings.Inline scale="m" alignItems="center">
+            <SpacingsInline scale="m" alignItems="center">
               <LogoSvg height={32} />
               <LogoTitle>{'Documentation'}</LogoTitle>
-            </Spacings.Inline>
+            </SpacingsInline>
           </LogoContainer>
         </LogoLink>
       </MenuLogoContainer>

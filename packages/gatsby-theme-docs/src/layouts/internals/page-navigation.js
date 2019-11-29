@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { Spacings } from '../../components';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SafeHTMLElement from '../../utils/safe-html-element';
 import useActiveSection from '../../hooks/use-active-section';
 import { colors, dimensions, typography } from '../../design-system';
@@ -121,12 +121,12 @@ LevelGroup.propTypes = {
   children: PropTypes.node,
 };
 const Container = props => (
-  <Spacings.Stack scale="s">
+  <SpacingsStack scale="s">
     {props.items.map((item, index) => {
       const level = 1;
       const isActive = getIsActive(props.activeSection, item.url);
       return (
-        <Spacings.Stack scale="s" key={index}>
+        <SpacingsStack scale="s" key={index}>
           <Link
             href={item.url}
             level={level}
@@ -142,10 +142,10 @@ const Container = props => (
               activeSection: props.activeSection,
               level: 2,
             })}
-        </Spacings.Stack>
+        </SpacingsStack>
       );
     })}
-  </Spacings.Stack>
+  </SpacingsStack>
 );
 Container.displayName = 'Container';
 Container.propTypes = {

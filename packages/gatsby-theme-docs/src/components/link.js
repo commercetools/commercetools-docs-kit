@@ -5,8 +5,8 @@ import { Link as GatsbyLink, withPrefix } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import { ExternalLinkIcon } from '@commercetools-uikit/icons';
 import getEnv from '../utils/get-env';
-import ExternalLinkIcon from '../icons/external-link-icon.svg';
 import { colors, dimensions } from '../design-system';
 import { useSiteData } from '../hooks/use-site-data';
 
@@ -145,14 +145,14 @@ const PureLink = extendedProps => {
         children: (
           <InlineLink>
             <span>{props.children.props.children}</span>
-            <ExternalLinkIcon height={12} width={12} />
+            <ExternalLinkIcon size="small" />
           </InlineLink>
         ),
       })
     ) : (
       <InlineLink>
         <span>{props.children}</span>
-        <ExternalLinkIcon height={12} width={12} />
+        <ExternalLinkIcon size="small" />
       </InlineLink>
     );
     return (
