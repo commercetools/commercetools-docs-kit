@@ -33,7 +33,11 @@ const LayoutPage = props => (
           grid:
             [row1-start] 'page-header page-header-side' auto [row1-end]
             [row2-start] 'page-content page-navigation' 1fr [row2-end]
-            / ${dimensions.widths.pageContentSmallWithMargings} 0;
+            / minmax(
+              ${dimensions.widths.pageContentSmallWithMargings},
+              ${dimensions.widths.pageContentWithMargings}
+            )
+            0;
         }
         @media screen and (${dimensions.viewports.largeTablet}) {
           grid:

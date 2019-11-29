@@ -18,8 +18,6 @@ const FooterExternalLink = styled(ExternalSiteLink)`
 const LayoutFooter = () => (
   <div
     css={css`
-      grid-row: 3;
-      grid-column: 1/3;
       box-shadow: ${tokens.shadow6};
       background-color: ${colors.light.surfaceSecondary2};
       padding: ${dimensions.spacings.m};
