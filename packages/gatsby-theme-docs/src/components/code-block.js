@@ -131,13 +131,13 @@ const TooltipBodyComponent = styled.div`
  * ```
  *
  * ### Prompt lines
- * This feature allows to mark a line with a prompt `$` in front of it.
- * To use this, you need to pass `promptLines="<range>"`. The range can be a single line
- * number or a range of line numbers separated by `-`. Multiple highlighted lines can be
+ * This feature allows to remove the prompt `$` from the specified lines.
+ * To use this, you need to pass `noPromptLines="<range>"`. The range can be a single line
+ * number or a range of line numbers separated by `-`. Multiple lines can be
  * provided as comma-separated values.
  * This feature only works for the `console` or `terminal` language syntax.
  *
- * ```console promptLines="1-2,5-6"
+ * ```console noPromptLines="1-2,5-6"
  * cd project
  * cp -R \
  *   dist \

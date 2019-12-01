@@ -12,6 +12,10 @@ const intialOptions = {
   noPromptLines: [],
 };
 
+const getOptionName = name =>
+  // NOTE: parsed attribute names are all lowercase
+  Object.keys(intialOptions).find(key => key.toLowerCase() === name) || name;
+
 export default function parseCodeBlockOptions(props = {}) {
   if (!props.metastring) return intialOptions;
 
@@ -25,7 +29,7 @@ export default function parseCodeBlockOptions(props = {}) {
   const normalizedOptions = parsedOptions.childNodes[0].attrs.reduce(
     (normalizedAttributes, attribute) => ({
       ...normalizedAttributes,
-      [attribute.name]: attribute.value,
+      [getOptionName(attribute.name)]: attribute.value,
     }),
     {}
   );
