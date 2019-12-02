@@ -18,6 +18,10 @@ const ThemeProvider = props => {
           author
           productionHostname
           betaLink
+          search {
+            apiKey
+            indexName
+          }
         }
       }
     }

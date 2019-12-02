@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>Slash_icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="App-KIT-FInal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Search-03-/-Text-Copy" transform="translate(-1237.000000, -16.000000)">
+            <g id="Search" transform="translate(964.000000, 11.000000)">
+                <g id="Slash_icon" transform="translate(273.000000, 5.000000)">
+                    <rect id="Rectangle" stroke="#CCCCCC" x="0.5" y="0.5" width="15" height="15" rx="2"></rect>
+                    <text id="/" font-family="OpenSans-Semibold, Open Sans" font-size="10" font-weight="500" fill="#999999">
+                        <tspan x="6.04931641" y="12">/</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
