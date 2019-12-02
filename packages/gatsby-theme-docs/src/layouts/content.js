@@ -18,14 +18,16 @@ import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 
 const PageContentInset = styled.div`
-  padding: 0 ${dimensions.spacings.m} ${dimensions.spacings.xl};
+  padding: ${dimensions.spacings.m} ${dimensions.spacings.m}
+    ${dimensions.spacings.xl};
 
   > * + * {
     margin: ${dimensions.spacings.xl} 0 0;
   }
 
   @media screen and (${dimensions.viewports.desktop}) {
-    padding: 0 ${dimensions.spacings.xl} ${dimensions.spacings.xl};
+    padding: ${dimensions.spacings.m} ${dimensions.spacings.xl}
+      ${dimensions.spacings.xl};
   }
 `;
 
