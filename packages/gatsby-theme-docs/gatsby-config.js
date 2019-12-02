@@ -40,10 +40,6 @@ module.exports = (themeOptions = {}) => {
       author: 'commercetools',
       productionHostname: 'docs.commercetools.com',
       betaLink: null,
-      search: {
-        apiKey: '6643ae30b54ef6784e4baaf9c8dbde07',
-        indexName: 'commercetools',
-      },
     },
     plugins: [
       /**

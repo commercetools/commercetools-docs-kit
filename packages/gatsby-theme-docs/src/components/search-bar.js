@@ -3,7 +3,6 @@ import { css, Global } from '@emotion/core';
 import styled from '@emotion/styled';
 import UnstyledSearchIcon from '../icons/search.svg';
 import UnstyledSlashIcon from '../icons/slash.svg';
-import { useSiteData } from '../hooks/use-site-data';
 import { dimensions, colors, tokens, typography } from '../design-system';
 import createStyledIcon from '../utils/create-styled-icon';
 
@@ -284,7 +283,6 @@ const SearchBar = () => {
   const [isEnabled, setIsEnabled] = React.useState(true);
   const [isActive, setIsActive] = React.useState(false);
   const searchBarRef = React.useRef(null);
-  const siteData = useSiteData();
 
   React.useEffect(() => {
     // https://github.com/algolia/docsearch/issues/352
@@ -292,8 +290,8 @@ const SearchBar = () => {
     if (isClient) {
       import('docsearch.js').then(({ default: docsearch }) => {
         docsearch({
-          apiKey: siteData.siteMetadata.search.apiKey,
-          indexName: siteData.siteMetadata.search.indexName,
+          apiKey: '6643ae30b54ef6784e4baaf9c8dbde07',
+          indexName: 'commercetools',
           inputSelector: '#search-bar',
           debug: process.env.NODE_ENV !== 'production',
           algoliaOptions: {
@@ -305,10 +303,7 @@ const SearchBar = () => {
       console.warn('Search has failed to load and now is being disabled');
       setIsEnabled(false);
     }
-  }, [
-    siteData.siteMetadata.search.apiKey,
-    siteData.siteMetadata.search.indexName,
-  ]);
+  }, []);
 
   const handleFocus = event => {
     if (!searchBarRef.current.contains(event.target)) {
