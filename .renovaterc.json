@@ -19,9 +19,8 @@
   "lockFileMaintenance": {
     "enabled": true
   },
-  "labels": ["🤖 Type: Dependencies"],
-  "ignoreDeps": [
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp"
-  ]
+  "labels": [
+    "🤖 Type: Dependencies"
+  ],
+  "ignoreDeps": []
 }
