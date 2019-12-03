@@ -22,11 +22,11 @@ const getIconByType = type => {
 const getIconColorByType = type => {
   switch (type) {
     case 'warning':
-      return 'textWarning';
+      return 'warning';
     case 'error':
-      return 'textError';
+      return 'error';
     default:
-      return 'textInfo';
+      return 'info';
   }
 };
 const Container = styled.div`

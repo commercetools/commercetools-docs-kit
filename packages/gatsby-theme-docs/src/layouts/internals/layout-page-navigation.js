@@ -127,7 +127,7 @@ const LayoutPageNavigation = props => {
     <>
       <ToggleMenuButton>
         <IconButton
-          icon={<StackedLinesIndentedIcon color="textSecondary" />}
+          icon={<StackedLinesIndentedIcon theme="textSecondary" />}
           label="Open page navigation"
           onClick={() => {
             setMenuOpen(true);
