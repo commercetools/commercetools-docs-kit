@@ -1,8 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import LogoSvg from '../../icons/logo.svg';
-import { Spacings } from '../../components';
 import { ExternalSiteLink } from '../../components/link';
 import { colors, dimensions, typography } from '../../design-system';
 
@@ -26,8 +26,8 @@ const LayoutFooter = () => (
       }
     `}
   >
-    <Spacings.Inline alignItems="center" justifyContent="space-between">
-      <Spacings.Inline scale="m" alignItems="center">
+    <SpacingsInline alignItems="center" justifyContent="space-between">
+      <SpacingsInline scale="m" alignItems="center">
         <LogoSvg height={32} />
         <div
           css={css`
@@ -36,7 +36,7 @@ const LayoutFooter = () => (
         >
           &copy;{` ${new Date().getFullYear()} commercetools`}
         </div>
-      </Spacings.Inline>
+      </SpacingsInline>
       <div>
         <FooterExternalLink href="https://commercetools.com/privacy">
           {'Privacy Policy'}
@@ -46,7 +46,7 @@ const LayoutFooter = () => (
           {'Imprint'}
         </FooterExternalLink>
       </div>
-    </Spacings.Inline>
+    </SpacingsInline>
   </div>
 );
 

@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { dimensions } from '../../design-system';
 
 const PageContentInset = styled.div`
-padding: ${dimensions.spacings.m} ${dimensions.spacings.m}
-${dimensions.spacings.xl};
+  padding: ${dimensions.spacings.m} ${dimensions.spacings.m}
+    ${dimensions.spacings.xl};
 
   > * + * {
     margin: ${dimensions.spacings.xl} 0 0;
