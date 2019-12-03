@@ -8,9 +8,7 @@
             <g id="Search" transform="translate(964.000000, 11.000000)">
                 <g id="Slash_icon" transform="translate(273.000000, 5.000000)">
                     <rect id="Rectangle" stroke="#CCCCCC" x="0.5" y="0.5" width="15" height="15" rx="2"></rect>
-                    <text id="/" font-family="OpenSans-Semibold, Open Sans" font-size="10" font-weight="500" fill="#999999">
-                        <tspan x="6.04931641" y="12">/</tspan>
-                    </text>
+                    <polygon id="/" fill="#999999" fill-rule="nonzero" points="7.21142578 12 9.86767578 4.86132812 8.78857422 4.86132812 6.12744141 12"></polygon>
                 </g>
             </g>
         </g>

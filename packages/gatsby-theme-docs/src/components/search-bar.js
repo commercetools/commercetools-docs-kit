@@ -7,7 +7,6 @@ import { dimensions, colors, tokens, typography } from '../design-system';
 import createStyledIcon from '../utils/create-styled-icon';
 
 const SearchIcon = createStyledIcon(UnstyledSearchIcon);
-const SlashIcon = createStyledIcon(UnstyledSlashIcon);
 
 const algoliaStyles = css`
   .algolia-docsearch-suggestion--highlight {
@@ -330,7 +329,7 @@ const SearchBar = () => {
           <SearchIcon size="medium" />
         </SearchInputIcon>
         <SearchInputIcon position="right" hidden={isActive}>
-          <SlashIcon size="medium" />
+          <UnstyledSlashIcon height={16} />
         </SearchInputIcon>
         <SearchInput
           id="search-bar"
