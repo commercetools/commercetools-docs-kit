@@ -1,0 +1,22 @@
+{
+  "name": "@commercetools-docs/gatsby-transformer-webapi",
+  "private": true,
+  "license": "MIT",
+  "version": "1.0.0-alpha.0",
+  "description": "Exposes fully resolved and validated RAML API Specifications on the gatsbyJS GraphQL",
+  "author": "commercetools GmbH <support@commercetools.com>",
+  "homepage": "https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-transformer-webapi#readme",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "raml",
+    "amf"
+  ],
+  "scripts": {
+  },
+  "dependencies": {
+    "firstline": "^2.0.2",
+    "webapi-parser": "^0.3.2"
+  },
+  "devDependencies": {}
+}
