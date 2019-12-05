@@ -81,6 +81,8 @@ export const dimensions = {
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
+    searchBar: '300px',
+    searchBarSmall: '150px',
   },
   viewports: {
     mobile: `max-width: ${pageWidth}`,

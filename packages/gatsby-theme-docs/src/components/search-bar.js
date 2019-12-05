@@ -254,8 +254,8 @@ const SearchInput = styled.input`
   min-height: ${dimensions.heights.inputSearch};
   outline: none;
   overflow: hidden;
-  padding: 0 ${dimensions.spacings.l};
-  width: 300px;
+  padding: 0 calc(${dimensions.spacings.l} + ${dimensions.spacings.xs});
+  width: ${dimensions.widths.searchBar};
   &::placeholder {
     color: ${colors.light.textFaded};
   }
@@ -263,6 +263,10 @@ const SearchInput = styled.input`
   &:focus {
     border-color: ${colors.light.borderHighlight};
     padding-right: ${dimensions.spacings.xs};
+  }
+
+  @media screen and (${dimensions.viewports.mobile}) {
+    width: ${dimensions.widths.searchBarSmall};
   }
 `;
 const SearchInputIcon = styled.span`
@@ -275,7 +279,7 @@ const SearchInputIcon = styled.span`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${props => `${props.position}: 0;`}
+  ${props => `${props.position}: ${dimensions.spacings.xs};`}
 `;
 
 const SearchBar = () => {
