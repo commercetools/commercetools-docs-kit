@@ -2,9 +2,9 @@
 
 > Status: Technology Evaluation of different RAML parsers
 
-The Plugin exposes Web API specfications defined in .raml files on graphQL as a node that contains the fully parsed, validated and resolved RAML string for further processing by more specific plugins that e.g. provide the RAML spec as more granular and queryable data nodes.
+The Plugin exposes Web API specfications defined in .raml files on graphQL as a node that contains the fully parsed, validated, and resolved RAML string for further processing by more specific plugins that, for example, provides the RAML spec as more granular and queryable data nodes.
 
-It is based on the AMF-based [raml.org webapi-parser](https://github.com/raml-org/webapi-parser).
+It is based on the [AMF-based](https://github.com/aml-org/amf) [raml.org webapi-parser](https://github.com/raml-org/webapi-parser).
 OpenAPI (swagger) support should be easy to add, feel invited to contribute.
 
 The GraphQL nodes it provides are of type `ResolvedWebapiRaml`.
@@ -14,8 +14,8 @@ Providing this minimalistic feature set allows to exchange this parsing step wit
 
 ## Usage
 
-As a prerequisite configure one or many `gatsby-source-filesystem` plugins to e.g. point at `src/api-specs` and place your RAML files there.
-The APIs `key` on GraphQL is derived from the file name or, if the name is `api.raml`, from the folder name.
+As a prerequisite configure one or many `gatsby-source-filesystem` plugins to, for example, point at `src/api-specs` and place your RAML files there.
+The APIs `key` on GraphQL is derived from the filename or, if the name is `api.raml`, from the folder name.
 
 The APIs to be loaded have to be explicitly configured by that key.
 
