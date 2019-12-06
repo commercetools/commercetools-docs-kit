@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-docs/gatsby-transformer-raml-legacy",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -15,12 +15,10 @@
     "raml",
     "deprecated"
   ],
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "firstline": "^2.0.2",
     "raml-1-parser": "^1.1.52",
     "raml2obj": "github:nkuehn/raml2obj#standalone-canonicalizer"
-  },
-  "devDependencies": {}
+  }
 }
