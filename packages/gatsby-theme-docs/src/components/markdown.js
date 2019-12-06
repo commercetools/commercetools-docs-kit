@@ -186,7 +186,7 @@ const TableHeader = styled.th`
   }
 `;
 const InlineCode = styled.code`
-  background-color: ${colors.light.borderPrimary};
+  background-color: ${colors.light.surfaceInlineCode};
   border: 1px solid ${colors.light.surfaceInfo};
   border-radius: ${dimensions.spacings.xs};
   color: ${colors.light.textCode};

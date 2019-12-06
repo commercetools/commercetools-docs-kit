@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { SearchBar } from '../../components';
 import { colors, dimensions, typography, tokens } from '../../design-system';
 import LogoSvg from '../../icons/logo.svg';
 
@@ -13,11 +14,11 @@ const Container = styled.header`
   width: 100%;
   box-shadow: ${tokens.shadow1};
   z-index: 10;
-  overflow: auto;
 `;
 const Constraint = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex: 1;
   padding: 0;
   margin: 0 auto;
@@ -32,6 +33,11 @@ const Constraint = styled.div`
         ${dimensions.widths.pageNavigation} * 2 )
       `};
   }
+`;
+const Inline = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
 `;
 const MenuLogoContainer = styled.div`
   width: auto;
@@ -83,33 +89,41 @@ const DocumentationSwitcherContainer = styled.div`
   display: flex;
   align-items: center;
 `;
+const SearchContainer = styled.div`
+  padding: 0 ${dimensions.spacings.m};
+`;
 
 const LayoutHeader = props => (
   <Container>
     <Constraint constraintWidth={props.constraintWidth}>
-      <MenuLogoContainer>
-        {/* Injected by React portal */}
-        <div
-          id="sidebar-menu-toggle"
-          css={css`
-            display: flex;
-            @media screen and (${dimensions.viewports.laptop}) {
-              display: none;
-            }
-          `}
-        />
-        <LogoLink href="/">
-          <LogoContainer>
-            <SpacingsInline scale="m" alignItems="center">
-              <LogoSvg height={32} />
-              <LogoTitle>{'Documentation'}</LogoTitle>
-            </SpacingsInline>
-          </LogoContainer>
-        </LogoLink>
-      </MenuLogoContainer>
-      <DocumentationSwitcherContainer>
-        {props.siteTitle}
-      </DocumentationSwitcherContainer>
+      <Inline alignItems="center">
+        <MenuLogoContainer>
+          {/* Injected by React portal */}
+          <div
+            id="sidebar-menu-toggle"
+            css={css`
+              display: flex;
+              @media screen and (${dimensions.viewports.laptop}) {
+                display: none;
+              }
+            `}
+          />
+          <LogoLink href="/">
+            <LogoContainer>
+              <SpacingsInline scale="m" alignItems="center">
+                <LogoSvg height={32} />
+                <LogoTitle>{'Documentation'}</LogoTitle>
+              </SpacingsInline>
+            </LogoContainer>
+          </LogoLink>
+        </MenuLogoContainer>
+        <DocumentationSwitcherContainer>
+          {props.siteTitle}
+        </DocumentationSwitcherContainer>
+      </Inline>
+      <SearchContainer>
+        <SearchBar />
+      </SearchContainer>
     </Constraint>
   </Container>
 );

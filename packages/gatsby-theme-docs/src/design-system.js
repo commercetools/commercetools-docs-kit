@@ -21,6 +21,7 @@ export const colors = {
     surfaceSecondary1: customProperties.colorNeutral95,
     surfaceSecondary2: customProperties.colorNeutral90,
     surfaceSecondary3: customProperties.colorNeutral60,
+    surfaceInlineCode: customProperties.colorNeutral90,
     surfaceCode: customProperties.colorAccent,
     surfaceCodeCopy: customProperties.colorAccent30,
     surfaceCodeHighlight: customProperties.colorAccent40,
@@ -29,6 +30,7 @@ export const colors = {
     surfaceQuote: customProperties.colorAccent98,
     surfaceWarning: customProperties.colorWarning95,
     surfaceError: customProperties.colorError95,
+    surfaceSearchHighlight: customProperties.colorAccent95,
     // Different tones of text
     textPrimary: customProperties.colorSolid,
     textSecondary: '#666666',
@@ -38,9 +40,11 @@ export const colors = {
     textError: customProperties.colorError,
     textWarning: customProperties.colorWarning,
     textInverted: customProperties.colorSurface,
+    textSearchHeading: customProperties.colorPrimary25,
     // Different tones of border colors
     borderPrimary: customProperties.colorNeutral90,
     borderSecondary: customProperties.colorNeutral,
+    borderInput: customProperties.colorNeutral60,
     borderHighlight: customProperties.colorPrimary,
     borderInfo: customProperties.colorInfo,
     // Links
@@ -55,6 +59,7 @@ export const tokens = {
   borderRadius4: '4px',
   borderRadius6: '6px',
   shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+  shadow4: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
   shadow6: ' 0 -1px 2px 0 rgba(0, 0, 0, 0.2)',
   shadow7:
     '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
@@ -66,6 +71,7 @@ export const tokens = {
 export const dimensions = {
   heights: {
     header: '48px',
+    inputSearch: '32px',
   },
   widths: {
     pageContent: pageWidth,
@@ -75,6 +81,8 @@ export const dimensions = {
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
+    searchBar: '300px',
+    searchBarSmall: '150px',
   },
   viewports: {
     mobile: `max-width: ${pageWidth}`,
