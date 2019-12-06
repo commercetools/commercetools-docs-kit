@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { Tooltip } from '@commercetools-frontend/ui-kit';
-import ClipboardIcon from '../icons/clipboard-icon.svg';
+import Tooltip from '@commercetools-uikit/tooltip';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { ClipboardIcon } from '@commercetools-uikit/icons';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
 import codeBlockHighlightCode from '../utils/code-block-highlight-code';
-import Spacings from './spacings';
 
 const Container = styled.div`
   border: 1px solid ${colors.light.surfaceCodeHighlight};
@@ -192,7 +192,7 @@ const CodeBlock = props => {
         <Header>
           <HeaderInner>
             <HeaderText>{title}</HeaderText>
-            <Spacings.Inline
+            <SpacingsInline
               scale="m"
               alignItems="center"
               justifyContent="flex-end"
@@ -200,7 +200,7 @@ const CodeBlock = props => {
               {languageCode === 'text' ? null : (
                 <HeaderText>{languageCode}</HeaderText>
               )}
-            </Spacings.Inline>
+            </SpacingsInline>
           </HeaderInner>
         </Header>
       )}
@@ -215,7 +215,7 @@ const CodeBlock = props => {
           .join(' ')}
         data-language={language}
       >
-        <Spacings.Inline scale="xs" alignItems="flex-start">
+        <SpacingsInline scale="xs" alignItems="flex-start">
           <pre className={`language-${language}`}>
             <code
               className={`language-${language}`}
@@ -236,7 +236,7 @@ const CodeBlock = props => {
               <ClipboardIcon />
             </CopyArea>
           </Tooltip>
-        </Spacings.Inline>
+        </SpacingsInline>
       </div>
     </Container>
   );

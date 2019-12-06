@@ -1,3 +1,5 @@
+import { customProperties } from '@commercetools-uikit/design-system';
+
 const rootFontSizeNumber = 16;
 const pageWidth = '770px';
 const pageWidthSmall = '592px';
@@ -10,64 +12,41 @@ export const pxToRem = px => {
   return `${remNumber}rem`;
 };
 
-const uikitColors = {
-  colorInfo: '#078cdf',
-  colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
-  colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
-  colorSurface: '#fff',
-  colorNeutral: '#ccc',
-  colorNeutral60: 'hsl(0, 0%, 60%)',
-  colorNeutral90: 'hsl(0, 0%, 90%)',
-  colorNeutral95: 'hsl(0, 0%, 95%)',
-  colorAccent: '#213c45',
-  colorAccent30: 'hsl(195, 35.2941176471%, 30%)',
-  colorAccent40: 'hsl(195, 35.2941176471%, 40%)',
-  colorAccent95: 'hsl(195, 35.2941176471%, 95%)',
-  colorAccent98: 'hsl(195, 35.2941176471%, 98%)',
-  colorSolid: '#1a1a1a',
-  colorError: '#e60050',
-  colorError95: 'hsl(339.1304347826087, 100%, 95%)',
-  colorPrimary: '#00b39e',
-  colorPrimary25: 'hsl(172.9608938547486, 100%, 25%)',
-  colorWarning: '#f16d0e',
-  colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
-};
-
 export const colors = {
   light: {
     // Used to give the website a unique tone (e.g. page titles, navigation links)
-    primary: uikitColors.colorAccent40,
+    primary: customProperties.colorAccent40,
     // Surfaces are used for backgrounds
-    surfacePrimary: uikitColors.colorSurface,
-    surfaceSecondary1: uikitColors.colorNeutral95,
-    surfaceSecondary2: uikitColors.colorNeutral90,
-    surfaceSecondary3: uikitColors.colorNeutral60,
-    surfaceCode: uikitColors.colorAccent,
-    surfaceCodeCopy: uikitColors.colorAccent30,
-    surfaceCodeHighlight: uikitColors.colorAccent40,
-    surfaceInfo: uikitColors.colorInfo95,
-    surfaceBeta: uikitColors.colorInfo85,
-    surfaceQuote: uikitColors.colorAccent98,
-    surfaceWarning: uikitColors.colorWarning95,
-    surfaceError: uikitColors.colorError95,
+    surfacePrimary: customProperties.colorSurface,
+    surfaceSecondary1: customProperties.colorNeutral95,
+    surfaceSecondary2: customProperties.colorNeutral90,
+    surfaceSecondary3: customProperties.colorNeutral60,
+    surfaceCode: customProperties.colorAccent,
+    surfaceCodeCopy: customProperties.colorAccent30,
+    surfaceCodeHighlight: customProperties.colorAccent40,
+    surfaceInfo: customProperties.colorInfo95,
+    surfaceBeta: customProperties.colorInfo85,
+    surfaceQuote: customProperties.colorAccent98,
+    surfaceWarning: customProperties.colorWarning95,
+    surfaceError: customProperties.colorError95,
     // Different tones of text
-    textPrimary: uikitColors.colorSolid,
+    textPrimary: customProperties.colorSolid,
     textSecondary: '#666666',
-    textFaded: uikitColors.colorNeutral60,
-    textCode: uikitColors.colorError,
-    textInfo: uikitColors.colorInfo,
-    textError: uikitColors.colorError,
-    textWarning: uikitColors.colorWarning,
-    textInverted: uikitColors.colorSurface,
+    textFaded: customProperties.colorNeutral60,
+    textCode: customProperties.colorError,
+    textInfo: customProperties.colorInfo,
+    textError: customProperties.colorError,
+    textWarning: customProperties.colorWarning,
+    textInverted: customProperties.colorSurface,
     // Different tones of border colors
-    borderPrimary: uikitColors.colorNeutral90,
-    borderSecondary: uikitColors.colorNeutral,
-    borderHighlight: uikitColors.colorPrimary,
-    borderInfo: uikitColors.colorInfo,
+    borderPrimary: customProperties.colorNeutral90,
+    borderSecondary: customProperties.colorNeutral,
+    borderHighlight: customProperties.colorPrimary,
+    borderInfo: customProperties.colorInfo,
     // Links
-    link: uikitColors.colorPrimary25,
-    linkHover: uikitColors.colorPrimary,
-    linkNavigation: uikitColors.colorInfo,
+    link: customProperties.colorPrimary25,
+    linkHover: customProperties.colorPrimary,
+    linkNavigation: customProperties.colorInfo,
   },
 };
 
@@ -149,4 +128,9 @@ export const typography = {
   lineHeights: {
     body: pxToRem('23px'),
   },
+};
+
+export const uikitTheme = {
+  fontFamilyDefault: typography.fontFamilies.primary,
+  fontFamilyBody: typography.fontFamilies.primary,
 };

@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import UnstyledInformationIcon from '../icons/information-icon.svg';
-import UnstyledWarningIcon from '../icons/warning.svg';
-import UnstyledErrorIcon from '../icons/error.svg';
-import createStyledIcon from '../utils/create-styled-icon';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import {
+  InformationIcon,
+  WarningIcon,
+  ErrorIcon,
+} from '@commercetools-uikit/icons';
 import { colors, tokens, dimensions } from '../design-system';
-import Spacings from './spacings';
-
-const InformationIcon = createStyledIcon(UnstyledInformationIcon);
-const WarningIcon = createStyledIcon(UnstyledWarningIcon);
-const ErrorIcon = createStyledIcon(UnstyledErrorIcon);
 
 const getIconByType = type => {
   switch (type) {
@@ -25,11 +22,11 @@ const getIconByType = type => {
 const getIconColorByType = type => {
   switch (type) {
     case 'warning':
-      return 'textWarning';
+      return 'warning';
     case 'error':
-      return 'textError';
+      return 'error';
     default:
-      return 'textInfo';
+      return 'info';
   }
 };
 const Container = styled.div`
@@ -64,7 +61,7 @@ const ContentNotification = props => {
   const iconColor = getIconColorByType(props.type);
   return (
     <Container type={props.type}>
-      <Spacings.Inline scale="s" alignItems="flex-start">
+      <SpacingsInline scale="s" alignItems="flex-start">
         <div>
           <Icon color={iconColor} />
         </div>
@@ -86,7 +83,7 @@ const ContentNotification = props => {
           </Info>
         */}
         <div>{props.children}</div>
-      </Spacings.Inline>
+      </SpacingsInline>
     </Container>
   );
 };

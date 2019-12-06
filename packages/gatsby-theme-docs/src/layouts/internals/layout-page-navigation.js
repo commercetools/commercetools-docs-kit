@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css, keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
-import { IconButton, Spacings } from '../../components';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import IconButton from '@commercetools-uikit/icon-button';
+import createStyledIcon from '../../utils/create-styled-icon';
 import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
 import { colors, dimensions, typography } from '../../design-system';
-import createStyledIcon from '../../utils/create-styled-icon';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
@@ -109,23 +111,23 @@ const LayoutPageNavigation = props => {
     return null;
 
   const navigationContainer = (
-    <Spacings.Stack scale="m">
+    <SpacingsStack scale="m">
       <PageTitleLink href="#anchor-page-top">
-        <Spacings.Inline scale="s" alignItems="center">
+        <SpacingsInline scale="s" alignItems="center">
           <div>
             <StackedLinesIndentedIcon color="textSecondary" />
           </div>
           <div>{props.pageTitle}</div>
-        </Spacings.Inline>
+        </SpacingsInline>
       </PageTitleLink>
       <PageNavigation tableOfContents={props.tableOfContents} />
-    </Spacings.Stack>
+    </SpacingsStack>
   );
   return (
     <>
       <ToggleMenuButton>
         <IconButton
-          icon={<StackedLinesIndentedIcon color="textSecondary" />}
+          icon={<StackedLinesIndentedIcon theme="textSecondary" />}
           label="Open page navigation"
           onClick={() => {
             setMenuOpen(true);

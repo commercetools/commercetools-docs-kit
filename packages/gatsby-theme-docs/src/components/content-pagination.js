@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import AngleThinLeftIcon from '../icons/angle-thin-left-icon.svg';
-import AngleThinRightIcon from '../icons/angle-thin-right-icon.svg';
+import Card from '@commercetools-uikit/card';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import {
+  AngleThinLeftIcon,
+  AngleThinRightIcon,
+} from '@commercetools-uikit/icons';
 import { colors, dimensions, typography } from '../design-system';
-import Card from './card';
-import Spacings from './spacings';
 import TextSmall from './text-small';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
@@ -54,7 +57,7 @@ const PaginationLink = props => (
     align={props.direction === 'left' ? 'right' : 'left'}
   >
     <PaginationButton>
-      <Spacings.Inline
+      <SpacingsInline
         scale="m"
         alignItems="center"
         justifyContent="space-between"
@@ -62,21 +65,21 @@ const PaginationLink = props => (
         {props.direction === 'left' ? (
           <>
             <AngleThinLeftIcon />
-            <Spacings.Stack scale="s">
+            <SpacingsStack scale="s">
               <TextSmall>{'Previous:'}</TextSmall>
               <div>{props.label}</div>
-            </Spacings.Stack>
+            </SpacingsStack>
           </>
         ) : (
           <>
-            <Spacings.Stack scale="s">
+            <SpacingsStack scale="s">
               <TextSmall>{'Next:'}</TextSmall>
               <div>{props.label}</div>
-            </Spacings.Stack>
+            </SpacingsStack>
             <AngleThinRightIcon />
           </>
         )}
-      </Spacings.Inline>
+      </SpacingsInline>
     </PaginationButton>
   </PaginationButtonLink>
 );
