@@ -296,6 +296,7 @@ const SearchBar = () => {
           apiKey: '6643ae30b54ef6784e4baaf9c8dbde07',
           indexName: 'commercetools',
           inputSelector: '#search-bar',
+          bindKeyboardShortcuts: false,
           debug: process.env.NODE_ENV !== 'production',
           algoliaOptions: {
             hitsPerPage: 20,
@@ -307,6 +308,20 @@ const SearchBar = () => {
       setIsEnabled(false);
     }
   }, []);
+
+  React.useEffect(() => {
+    const onKeyPress = event => {
+      // Listen to "slash" key events to focus the search input
+      if (event.key === '/') {
+        searchBarRef.current.focus();
+        setIsActive(true);
+      }
+    };
+    window.addEventListener('keyup', onKeyPress);
+    return () => {
+      window.removeEventListener('keyup', onKeyPress);
+    };
+  });
 
   const handleFocus = event => {
     if (!searchBarRef.current.contains(event.target)) {
