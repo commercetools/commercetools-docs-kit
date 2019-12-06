@@ -76,9 +76,9 @@ const Indented = styled.div`
   padding: ${props => {
     switch (props.level) {
       case 3:
-        return `0 0 0 ${dimensions.spacings.xl}`;
+        return `0 ${dimensions.spacings.xl}`;
       default:
-        return `0 0 0 ${dimensions.spacings.m}`;
+        return `0 ${dimensions.spacings.m}`;
     }
   }};
 `;
