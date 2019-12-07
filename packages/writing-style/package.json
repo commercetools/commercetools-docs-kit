@@ -14,5 +14,11 @@
   },
   "bin": {
     "commercetools-vale": "commercetools-vale.js"
+  },
+  "scripts": {
+    "download:google": "node scripts/download-google-styles.js"
+  },
+  "dependencies": {
+    "shelljs": "0.8.3"
   }
 }

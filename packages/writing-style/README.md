@@ -11,6 +11,10 @@ The configuration defaults to checking `.md`, `.mdx`, `.txt`, and `.html` files,
 
 > As of Nov 2019, basing off Google's styles was a pragmatic choice. Other styles like Microsoft's are attractive starting points, too.
 
+## Downloading Google styles
+
+The [Google styles for vale](https://github.com/errata-ai/Google) should not be changed manually, as they are maintained by the Errata-AI team and pulled directly from their repository. To get the latest changes, run the `yarn download:google` command.
+
 ## Linter Usage: Standalone command-line
 
 1.  Install the command globally via `yarn global add @commercetools-docs/writing-style` or `npm install -g @commercetools-docs/writing-style`
