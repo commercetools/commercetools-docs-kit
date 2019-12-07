@@ -1,12 +1,17 @@
+/* eslint-disable import/prefer-default-export */
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 import fs from 'fs';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
 import { withPrefix } from 'gatsby';
 import { createContentDigest } from 'gatsby-core-utils';
-import React from 'react';
+import createEmotionServer from 'create-emotion-server';
+import { CacheProvider } from '@emotion/core';
+import { createDocsCache } from './create-emotion-cache';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const isNowBuild = Boolean(process.env.GATSBY_NOW_GITHUB_DEPLOYMENT);
@@ -19,8 +24,21 @@ const iconLightDigest = createContentDigest(
   fs.readFileSync(require.resolve('./static/favicon-light-32x32.png'))
 );
 
-// eslint-disable-next-line import/prefer-default-export
-export const onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
+export const replaceRenderer = ({
+  bodyComponent,
+  replaceBodyHTMLString,
+  setHeadComponents,
+  setPostBodyComponents,
+}) => {
+  // https://emotion.sh/docs/ssr#on-server
+  // https://emotion.sh/docs/ssr#gatsby
+  const cache = createDocsCache();
+  const { extractCritical } = createEmotionServer(cache);
+  const { html, css, ids } = extractCritical(
+    renderToString(<CacheProvider value={cache}>{bodyComponent}</CacheProvider>)
+  );
+  replaceBodyHTMLString(html);
+
   // Activate the cookie consent banner only on the live website environment.
   // We can narrow it down to the build step of Zeit Now for the master branch.
   if (isProduction && isNowBuild && isMasterBranch)
@@ -45,6 +63,13 @@ export const onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
       rel="icon"
       href={withPrefix(`favicon-light-32x32.png?v=${iconLightDigest}`)}
       media="(prefers-color-scheme:dark)"
+    />,
+    <style
+      key="emotion-ssr"
+      data-emotion-css={ids.join(' ')}
+      dangerouslySetInnerHTML={{
+        __html: css,
+      }}
     />,
   ]);
 };
