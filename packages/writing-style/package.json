@@ -17,8 +17,5 @@
   },
   "scripts": {
     "download:google": "node scripts/download-google-styles.js"
-  },
-  "dependencies": {
-    "shelljs": "0.8.3"
   }
 }
