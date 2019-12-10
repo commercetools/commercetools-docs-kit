@@ -1,11 +1,15 @@
+/* eslint-disable react/prop-types */
 /**
  * Implement Gatsby's Browser APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-require('prism-themes/themes/prism-dracula.css');
-require('prismjs/plugins/command-line/prism-command-line.css');
+import 'prism-themes/themes/prism-dracula.css';
+import 'prismjs/plugins/command-line/prism-command-line.css';
+import React from 'react';
+import { CacheProvider } from '@emotion/core';
+import { docsCache } from './create-emotion-cache';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_NOW_GITHUB_COMMIT_SHA;
@@ -14,7 +18,7 @@ const environment =
     ? 'production'
     : 'preview';
 
-exports.onClientEntry = (
+export const onClientEntry = (
   _, // eslint-disable-line
   pluginOptions
 ) => {
@@ -30,3 +34,7 @@ exports.onClientEntry = (
     });
   }
 };
+
+export const wrapRootElement = ({ element }) => (
+  <CacheProvider value={docsCache}>{element}</CacheProvider>
+);
