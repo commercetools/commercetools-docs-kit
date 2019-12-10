@@ -97,6 +97,16 @@ const Ol = styled.ol`
   }
 `;
 const Li = styled.li``;
+const Dl = styled.dl`
+  > dd + * {
+    margin: ${dimensions.spacings.xl} 0 0;
+  }
+`;
+const Dt = styled.dt``;
+const Dd = styled.dd`
+  padding: ${dimensions.spacings.s} 0 0;
+  margin: 0 0 0 ${dimensions.spacings.l};
+`;
 const Table = styled.table`
   border: 1px solid ${colors.light.borderPrimary};
   border-top: 2px solid ${colors.light.borderPrimary};
@@ -247,6 +257,9 @@ export {
   Ul,
   Ol,
   Li,
+  Dl,
+  Dt,
+  Dd,
   Table,
   TableRow,
   TableCell,
