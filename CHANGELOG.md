@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/commercetools/commercetools-docs-kit/compare/v1.0.3...v1.0.4) (2019-12-10)
+
+#### ⛑ Type: Refactoring
+
+- `broken-link-checker`
+  - [#135](https://github.com/commercetools/commercetools-docs-kit/pull/135) refactor(broken-link-checker): allow to pass excluded-keywords option ([@emmenko](https://github.com/emmenko))
+
 ## [1.0.3](https://github.com/commercetools/commercetools-docs-kit/compare/v1.0.2...v1.0.3) (2019-12-10)
 
 #### 🐛 Type: Bug
