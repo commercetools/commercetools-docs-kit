@@ -106,6 +106,10 @@ const Dt = styled.dt``;
 const Dd = styled.dd`
   margin: ${dimensions.spacings.s} 0 0;
   padding: 0 0 0 ${dimensions.spacings.l};
+
+  > * + * {
+    margin: ${dimensions.spacings.m} 0 0;
+  }
 `;
 const Table = styled.table`
   border: 1px solid ${colors.light.borderPrimary};
