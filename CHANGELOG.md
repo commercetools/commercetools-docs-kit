@@ -1,3 +1,17 @@
+## [1.0.3](https://github.com/commercetools/commercetools-docs-kit/compare/v1.0.2...v1.0.3) (2019-12-10)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`
+  - [#129](https://github.com/commercetools/commercetools-docs-kit/pull/129) fix(theme): SSR style tags messing with nth selectors ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`
+  - [#133](https://github.com/commercetools/commercetools-docs-kit/pull/133) refactor(theme): to support absolute imports ([@emmenko](https://github.com/emmenko))
+- `writing-style`
+  - [#131](https://github.com/commercetools/commercetools-docs-kit/pull/131) refactor(writing-styles): add postinstall script to download vale binary based on OS platform ([@emmenko](https://github.com/emmenko))
+
 ## [1.0.2](https://github.com/commercetools/commercetools-docs-kit/compare/v1.0.1...v1.0.2) (2019-12-09)
 
 #### 🔮 Type: Chore
