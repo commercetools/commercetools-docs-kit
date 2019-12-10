@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/commercetools/commercetools-docs-kit/compare/v1.0.4...v1.0.5) (2019-12-10)
+
+#### 🐛 Type: Bug
+
+- `broken-link-checker`
+  - [#137](https://github.com/commercetools/commercetools-docs-kit/pull/137) fix(broken-link-checker): typo ([@emmenko](https://github.com/emmenko))
+
 ## [1.0.4](https://github.com/commercetools/commercetools-docs-kit/compare/v1.0.3...v1.0.4) (2019-12-10)
 
 #### ⛑ Type: Refactoring
