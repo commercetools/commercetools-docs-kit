@@ -36,7 +36,7 @@ const checkerOptions = {
   // https://github.com/stevenvachon/broken-link-checker/tree/v0.7.x#blcsitecheckeroptions-handlers
   // https://github.com/stevenvachon/broken-link-checker/tree/v0.7.x#options
   excludedSchemes: ['data', 'geo', 'mailto', 'sms', 'tel'], // default: ["data","geo","javascript","mailto","sms","tel"]
-  excludedkeywords: flags['excluded-keywords']
+  excludedKeywords: flags['excluded-keywords']
     ? flags['excluded-keywords'].split(',').map(keyword => keyword.trim())
     : [],
   filterLevel: 3, // as strict as possible
