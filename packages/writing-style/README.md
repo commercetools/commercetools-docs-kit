@@ -11,6 +11,10 @@ The configuration defaults to checking `.md`, `.mdx`, `.txt`, and `.html` files,
 
 > As of Nov 2019, basing off Google's styles was a pragmatic choice. Other styles like Microsoft's are attractive starting points, too.
 
+## Downloading vale binary
+
+This package automatically downloads the appropriate `vale` binary upon installation (running as `postinstall` script). This ensures that the package is kept as small as possible, as the `vale` binary takes up a few megabytes, and the appropriate binary is downloaded according to the operating system (`macOS`, `linux`, `windows`).
+
 ## Downloading Google styles
 
 The [Google styles for vale](https://github.com/errata-ai/Google) should not be changed manually, as they are maintained by the Errata-AI team and pulled directly from their repository. To get the latest changes, run the `yarn download:google` command.
