@@ -30,9 +30,6 @@ const components = {
   ul: Markdown.Ul,
   ol: Markdown.Ol,
   li: Markdown.Li,
-  dl: Markdown.Dl,
-  dt: Markdown.Dt,
-  dd: Markdown.Dd,
   table: Markdown.Table,
   tr: Markdown.TableRow,
   td: Markdown.TableCell,
@@ -44,6 +41,7 @@ const components = {
   delete: Markdown.Delete,
   hr: Markdown.Hr,
   a: Markdown.Link,
+  // eslint-disable-next-line react/display-name
   pre: Markdown.CodeBlock,
 
   // Official react components to be used in MDX files
