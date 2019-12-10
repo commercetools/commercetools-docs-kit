@@ -1,26 +1,44 @@
 #!/usr/bin/env node
-/* eslint-disable no-console */
+
+const url = require('url');
+const path = require('path');
 const express = require('express');
 const blc = require('broken-link-checker');
 const getPort = require('get-port');
-const path = require('path');
-const url = require('url');
+const mri = require('mri');
 
-if (process.argv.length < 4) {
-  console.error(
-    'Insufficient arguments: Pass the site path and at least one entrypoint inside the site path'
-  );
-  process.exit(1);
+const flags = mri(process.argv.slice(2), { alias: { help: ['h'] } });
+const commands = flags._;
+const [siteFolder, ...entryPoints] = commands;
+
+if (flags.help || !(siteFolder && entryPoints.length > 0)) {
+  console.log(`
+  Usage: commercetools-broken-link-checker [siteFolder] [entryPoint entryPoint2 ...] [flags]
+
+  Displays help information.
+
+  [siteFolder]
+    The path to the folder containing the static site.
+
+  [entryPoints]
+    A URL path to the entry points to be tested.
+
+  Options:
+    --excluded-keywords <name>   (optional) A comma-separated list of matching keywords to be excluded.
+                                 See https://github.com/stevenvachon/broken-link-checker#excludedkeywords
+  `);
+  process.exit(0);
 }
 
 // configuration:
-const relativeSitePath = process.argv[2];
-const sitePath = path.join(process.cwd(), relativeSitePath);
-const entrypoints = process.argv.slice(3);
+const sitePath = path.join(process.cwd(), siteFolder);
 const checkerOptions = {
   // https://github.com/stevenvachon/broken-link-checker/tree/v0.7.x#blcsitecheckeroptions-handlers
   // https://github.com/stevenvachon/broken-link-checker/tree/v0.7.x#options
   excludedSchemes: ['data', 'geo', 'mailto', 'sms', 'tel'], // default: ["data","geo","javascript","mailto","sms","tel"]
+  excludedkeywords: flags['excluded-keywords']
+    ? flags['excluded-keywords'].split(',').map(keyword => keyword.trim())
+    : [],
   filterLevel: 3, // as strict as possible
   honorRobotExclusions: false, // as strict as possible
 };
@@ -28,7 +46,7 @@ const checkerOptions = {
 getPort().then(port => {
   const app = express();
   app.get('/', (req, res) => {
-    res.redirect(url.resolve('/', entrypoints[0]));
+    res.redirect(url.resolve('/', entryPoints[0]));
   });
   app.use('/', express.static(sitePath));
   const server = app.listen(port);
@@ -69,13 +87,10 @@ getPort().then(port => {
 
     console.log('--- Starting Link Check Of Complete Site ---');
 
-    entrypoints.forEach(entrypoint => {
+    entryPoints.forEach(entrypoint => {
       const localUrl = url.resolve(`http://localhost:${port}`, entrypoint);
       console.log(
-        `- Link Checking ${path.join(
-          relativeSitePath,
-          entrypoint
-        )} {${localUrl}} -`
+        `- Link Checking ${path.join(siteFolder, entrypoint)} {${localUrl}} -`
       );
       siteChecker.enqueue(localUrl);
     });
