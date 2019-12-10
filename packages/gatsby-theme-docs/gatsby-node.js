@@ -5,6 +5,7 @@
  */
 
 const fs = require('fs');
+const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
@@ -163,6 +164,11 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
       type: 'javascript/auto',
     },
   ];
+  config.resolve = {
+    ...config.resolve,
+    // Add support for absolute imports
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+  };
   // This will completely replace the webpack config with the modified object.
   actions.replaceWebpackConfig(config);
 };
