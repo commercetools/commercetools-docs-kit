@@ -99,12 +99,13 @@ const Ol = styled.ol`
 const Li = styled.li``;
 const Dl = styled.dl`
   > dd + * {
-    margin: ${dimensions.spacings.xl} 0 0;
+    margin: ${dimensions.spacings.m} 0 0;
   }
 `;
-const Dt = styled.dt``;
+const Dt = styled.dt`
+  color: ${colors.light.textSecondary};
+`;
 const Dd = styled.dd`
-  margin: ${dimensions.spacings.s} 0 0;
   padding: 0 0 0 ${dimensions.spacings.l};
 
   > * + * {
