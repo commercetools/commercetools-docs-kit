@@ -32,13 +32,8 @@ exports.onCreateNode = ({
   }
 };
 
-async function introspectMdx({
-  node,
-  createNodeId,
-  createContentDigest,
-  actions,
-}) {
-  await remark()
+function introspectMdx({ node, createNodeId, createContentDigest, actions }) {
+  remark()
     .use(mdx)
     .use(() => tree => {
       tree.children.forEach((child, index) => {
@@ -54,7 +49,12 @@ async function introspectMdx({
         }
       });
     })
-    .process(node.rawBody);
+    .process(node.rawBody, (error, file) => {
+      if (error) {
+        console.log(String(file));
+        throw error;
+      }
+    });
 }
 
 function createComponentInMdxNode({
@@ -68,6 +68,10 @@ function createComponentInMdxNode({
   const { createNode, createParentChildLink } = actions;
 
   const componentInMdxObj = generateComponentNodeObject(jsxString);
+
+  if (!componentInMdxObj) {
+    return;
+  }
 
   const componentInMdxNode = {
     ...componentInMdxObj,

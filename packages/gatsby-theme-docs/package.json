@@ -12,11 +12,6 @@
     "type": "git",
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
-  "scripts": {
-    "start": "yarn develop",
-    "develop": "npx gatsby develop",
-    "serve": "npx gatsby serve"
-  },
   "main": "index.js",
   "dependencies": {
     "@commercetools-uikit/card": "10.13.0",

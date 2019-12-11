@@ -3,11 +3,11 @@ module.exports = {
   siteMetadata: {
     title: 'API Docs Smoke Test',
     description: 'Documentation website for API smoke tests',
-    betaLink: '/beta',
+    betaLink: '',
   },
   plugins: [
     {
-      resolve: '@commercetools-docs/gatsby-theme-docs',
+      resolve: '@commercetools-docs/gatsby-theme-api-docs',
       options: {
         websiteKey: 'api-docs-smoke-test',
         excludeFromSearchIndex: true,

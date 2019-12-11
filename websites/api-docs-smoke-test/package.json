@@ -13,7 +13,7 @@
     "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "1.1.0",
+    "@commercetools-docs/gatsby-theme-api-docs": "1.1.0",
     "gatsby": "2.18.6",
     "gatsby-cli": "2.8.15"
   }
