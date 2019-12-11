@@ -146,39 +146,29 @@ const TooltipBodyComponent = styled.div`
  * yarn start
  * ```
  */
+const languageAliases = {
+  sh: 'bash',
+  zsh: 'bash',
+  console: 'bash',
+  terminal: 'bash',
+  js: 'javascript',
+};
 const CodeBlock = props => {
-  const className = props.children.props ? props.children.props.className : '';
-  const languageToken = className || 'language-text';
-  const languageAliases = {
-    sh: 'bash',
-    zsh: 'bash',
-    console: 'bash',
-    terminal: 'bash',
-    js: 'javascript',
-  };
-  const [, languageCode] = languageToken.split('language-');
+  const languageCode = props.language || 'text';
   const language = languageAliases[languageCode] || languageCode;
-
-  const { title, highlightLines, noPromptLines } = codeBlockParseOptions(
-    props.children.props
-  );
   const useCommandLine = ['terminal', 'console'].includes(languageCode);
-  const content =
-    props.children.props && props.children.props.children
-      ? props.children.props.children
-      : props.children;
   const formattedContent = codeBlockHighlightCode({
     language,
-    code: content,
-    highlightLines,
-    noPromptLines,
+    code: props.content,
+    highlightLines: props.highlightLines,
+    noPromptLines: props.noPromptLines,
     useCommandLine,
   }).replace(/\n$/, '');
 
   // Copy to clipboard logic
   const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
   const handleCopyToClipboardClick = () => {
-    copyToClipboard(content);
+    copyToClipboard(props.content);
 
     setIsCopiedToClipboard(true);
     setTimeout(() => {
@@ -188,10 +178,10 @@ const CodeBlock = props => {
 
   return (
     <Container>
-      {title && (
+      {props.title && (
         <Header>
           <HeaderInner>
-            <HeaderText>{title}</HeaderText>
+            <HeaderText>{props.title}</HeaderText>
             <SpacingsInline
               scale="m"
               alignItems="center"
@@ -207,8 +197,8 @@ const CodeBlock = props => {
       <div
         className={[
           'gatsby-highlight',
-          highlightLines &&
-            highlightLines.length > 0 &&
+          props.highlightLines &&
+            props.highlightLines.length > 0 &&
             'has-highlighted-lines',
         ]
           .filter(Boolean)
@@ -242,7 +232,35 @@ const CodeBlock = props => {
   );
 };
 CodeBlock.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  language: PropTypes.string,
+  title: PropTypes.string,
+  highlightLines: PropTypes.arrayOf(PropTypes.number),
+  noPromptLines: PropTypes.arrayOf(PropTypes.number),
+  content: PropTypes.string.isRequired,
 };
 
 export default CodeBlock;
+
+/* eslint-disable react/display-name,react/prop-types */
+// Maps the props coming from MDX to the underlying <CodeBlock> component.
+export const CodeBlockMarkdownWrapper = props => {
+  const className = props.children.props ? props.children.props.className : '';
+  const languageToken = className || 'language-text';
+  const [, languageCode] = languageToken.split('language-');
+  const { title, highlightLines, noPromptLines } = codeBlockParseOptions(
+    props.children.props
+  );
+  const content =
+    props.children.props && props.children.props.children
+      ? props.children.props.children
+      : props.children;
+  return (
+    <CodeBlock
+      language={languageCode}
+      title={title}
+      highlightLines={highlightLines}
+      noPromptLines={noPromptLines}
+      content={content}
+    />
+  );
+};
