@@ -1,3 +1,15 @@
+## [1.2.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.1.0...v1.2.0) (2019-12-12)
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`, `gatsby-transformer-mdx-introspection`
+  - [#145](https://github.com/commercetools/commercetools-docs-kit/pull/145) feat: migrate base theme for api docs ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `broken-link-checker`
+  - [#147](https://github.com/commercetools/commercetools-docs-kit/pull/147) refactor(broken-link-checker): read checker options from a config file ([@emmenko](https://github.com/emmenko))
+
 ## [1.1.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.0.5...v1.1.0) (2019-12-11)
 
 #### 🐛 Type: Bug
