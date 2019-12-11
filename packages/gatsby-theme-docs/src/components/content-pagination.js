@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Card from '@commercetools-uikit/card';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -14,6 +13,28 @@ import { colors, dimensions, typography } from '../design-system';
 import TextSmall from './text-small';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
+
+const isMatching = (a, b) => trimTrailingSlash(a) === trimTrailingSlash(b);
+
+const Container = styled.div`
+  display: grid;
+  grid-gap: ${dimensions.spacings.m};
+  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(
+      calc(${dimensions.widths.pageContent} / 2 - ${dimensions.spacings.m} * 2),
+      1fr
+    )
+  );
+
+  @media screen and (${dimensions.viewports.tablet}) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (${dimensions.viewports.desktop}) {
+    grid-gap: ${dimensions.spacings.xl};
+  }
+`;
 
 const PaginationButtonLink = styled(Link)`
   text-align: ${props => props.align};
@@ -90,54 +111,27 @@ PaginationLink.propTypes = {
 };
 
 export const PurePagination = props => {
-  const [, chapterPath] = props.slug.split('/');
-  const chapterSlug = `/${chapterPath}`;
-  const chapterPageLinks = props.data.allNavigationYaml.nodes.reduce(
-    (links, node) => {
-      const isPaginationEnabledForChapter =
-        typeof node.pagination === 'boolean' ? node.pagination : true;
-      if (isPaginationEnabledForChapter && node.pages) {
-        return [
-          ...links,
-          ...node.pages.filter(page => page.path.startsWith(chapterSlug)),
-        ];
-      }
-      return links;
-    },
-    []
-  );
-  const currentPageLinkIndex = chapterPageLinks.findIndex(
-    page => trimTrailingSlash(props.slug) === trimTrailingSlash(page.path)
+  const activeChapter = props.data.allNavigationYaml.nodes.find(node => {
+    const isPaginationEnabledForChapter =
+      typeof node.pagination === 'boolean' ? node.pagination : true;
+    if (!isPaginationEnabledForChapter) return false;
+    if (!node.pages) return false;
+    return node.pages.some(page => isMatching(props.slug, page.path));
+  });
+
+  if (!activeChapter) {
+    return <Container />;
+  }
+
+  const currentPageLinkIndex = activeChapter.pages.findIndex(page =>
+    isMatching(props.slug, page.path)
   );
   const hasPagination = currentPageLinkIndex > -1;
-  const previousPage = chapterPageLinks[currentPageLinkIndex - 1];
-  const nextPage = chapterPageLinks[currentPageLinkIndex + 1];
+  const previousPage = activeChapter.pages[currentPageLinkIndex - 1];
+  const nextPage = activeChapter.pages[currentPageLinkIndex + 1];
 
   return (
-    <div
-      css={css`
-        display: grid;
-        grid-gap: ${dimensions.spacings.m};
-        grid-auto-columns: 1fr;
-        grid-template-columns: repeat(
-          auto-fill,
-          minmax(
-            calc(
-              ${dimensions.widths.pageContent} / 2 - ${dimensions.spacings.m} *
-                2
-            ),
-            1fr
-          )
-        );
-
-        @media screen and (${dimensions.viewports.tablet}) {
-          grid-template-columns: 1fr 1fr;
-        }
-        @media screen and (${dimensions.viewports.desktop}) {
-          grid-gap: ${dimensions.spacings.xl};
-        }
-      `}
-    >
+    <Container>
       {hasPagination && previousPage ? (
         <PaginationLink
           linkTo={previousPage.path}
@@ -156,7 +150,7 @@ export const PurePagination = props => {
       ) : (
         <span />
       )}
-    </div>
+    </Container>
   );
 };
 
