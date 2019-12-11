@@ -23,3 +23,24 @@ The _first_ entrypoint (for example the second parameter) is also considered the
 The crawler follows all links from the entrypoint, so if you accidentally provide multiple entrypoints that indirectly link to each other, pages are tested multiple times. Entrypoints are tested independently as separate runs.
 
 You can provide the command globally too via `npm install -g @commercetools-docs/broken-link-checker`
+
+## Options
+
+The package uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) to load configuration options. The supported options are then passed to the underlying broken-link-checker. See [here](https://github.com/stevenvachon/broken-link-checker#options) for a complete list of options.
+
+THe configuration options can be expressed in different ways, for example:
+
+- a `broken-link-checker` property in your `package.json`
+- a `broken-link-checker.config.js` JS file
+- a `.broken-link-checkerrc.json` JSON file
+
+In `package.json`
+
+```json
+{
+  "broken-link-checker": {
+    "excludedKeywords": []
+    // ...other options
+  }
+}
+```
