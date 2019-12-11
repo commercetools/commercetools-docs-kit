@@ -1,3 +1,20 @@
+## [1.1.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.0.5...v1.1.0) (2019-12-11)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`
+  - [#139](https://github.com/commercetools/commercetools-docs-kit/pull/139) fix(theme): match chapter links also for flat page structure ([@emmenko](https://github.com/emmenko))
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-docs`
+  - [#132](https://github.com/commercetools/commercetools-docs-kit/pull/132) feat(theme): style definition list elements ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`
+  - [#140](https://github.com/commercetools/commercetools-docs-kit/pull/140) refactor(theme): to expose CodeBlock component with generic props (no mdx specific) ([@emmenko](https://github.com/emmenko))
+
 ## [1.0.5](https://github.com/commercetools/commercetools-docs-kit/compare/v1.0.4...v1.0.5) (2019-12-10)
 
 #### 🐛 Type: Bug
