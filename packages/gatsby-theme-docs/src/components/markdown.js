@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import RibbonIcon from '../icons/ribbon-icon.svg';
 import { colors, dimensions, typography, tokens } from '../design-system';
-import CodeBlock from './code-block';
+import { CodeBlockMarkdownWrapper as CodeBlock } from './code-block';
 import Link from './link';
 
 const TypographyPage = styled.div`
