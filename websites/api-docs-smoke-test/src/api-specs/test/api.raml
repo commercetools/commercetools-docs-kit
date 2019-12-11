@@ -650,8 +650,8 @@ annotationTypes:
       displayName: Create a Resource
       description: Create (POST) operation to a resource.
       securedBy:
-        oauth_2_0:
-          scopes: ["manage_test:{projectKey}"]
+        - oauth_2_0:
+            scopes: ["manage_test:{projectKey}"]
       body:
         type: ObjectTestTypeDraft
       responses:
@@ -679,7 +679,7 @@ annotationTypes:
           type: number
           required: false
       securedBy:
-        oauth_2_0:
+      - oauth_2_0:
           scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]
       responses:
           200:
@@ -696,8 +696,8 @@ annotationTypes:
         displayName: Get a Resource by its ID
         description: Query by ID
         securedBy:
-          oauth_2_0:
-            scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]
+          - oauth_2_0:
+              scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]
         queryParameters:
           optionalQueryParameter:
             required: false
@@ -717,8 +717,8 @@ annotationTypes:
         displayName: Delete a Resource by its ID
         description: Deletes a resource.
         securedBy:
-          oauth_2_0:
-            scopes: ["manage_test:{projectKey}"]
+          - oauth_2_0:
+              scopes: ["manage_test:{projectKey}"]
         responses:
           200:
             description: Deletion was successful.
@@ -779,8 +779,8 @@ annotationTypes:
         displayName: Search Resources
         description: Search all resources by specific parameters.
         securedBy:
-          oauth_2_0:
-            scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]
+          - oauth_2_0:
+              scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]
         queryParameters:
           fuzzy?:
             type: boolean
