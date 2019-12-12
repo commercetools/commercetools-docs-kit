@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.2.0...v1.2.1) (2019-12-12)
+
+#### 🐛 Type: Bug
+
+- `broken-link-checker`
+  - [#151](https://github.com/commercetools/commercetools-docs-kit/pull/151) fix(broken-link-checker): merging options ([@emmenko](https://github.com/emmenko))
+
 ## [1.2.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.1.0...v1.2.0) (2019-12-12)
 
 #### 🚀 Type: New Feature
