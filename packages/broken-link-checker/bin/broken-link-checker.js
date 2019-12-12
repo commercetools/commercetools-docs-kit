@@ -28,7 +28,7 @@ if (flags.help || !(siteFolder && entryPoints.length > 0)) {
     --excluded-keywords <name>    (optional) A comma-separated list of matching keywords to be excluded.
                                   See https://github.com/stevenvachon/broken-link-checker#excludedkeywords
 
-  Alternatively options can be defined in a config file which are then passed to the underlying broken-link-checker.
+  Alternatively, configuration options can be defined in a config file which are then passed to the underlying broken-link-checker.
   See https://www.npmjs.com/package/@commercetools-docs/broken-link-checker for the available config file formats.
   See https://github.com/stevenvachon/broken-link-checker#options for a complete list of options.
   `);
