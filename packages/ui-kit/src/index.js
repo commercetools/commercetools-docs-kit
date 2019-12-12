@@ -17,7 +17,7 @@ export { ExternalSiteLink } from './components/link';
 
 // hooks
 export { default as useActiveSection } from './hooks/use-active-section';
-export { useSiteData } from './hooks/use-site-data';
+export { useSiteData, SiteDataContext } from './hooks/use-site-data';
 
 // utils
 export { default as createStyledIcon } from './utils/create-styled-icon';
