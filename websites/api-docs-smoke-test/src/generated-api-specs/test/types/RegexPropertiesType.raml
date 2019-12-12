@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+displayName: RegexPropertiesType
+type: object
+(builtinType): object
+description: |-
+  This is a type that can have arbitrary properties as long as they match a certain expression
+properties:
+  /^[a-z]{2}(-[A-Z]{2})?$/:
+    type: string
+    (builtinType): string
+    required: true

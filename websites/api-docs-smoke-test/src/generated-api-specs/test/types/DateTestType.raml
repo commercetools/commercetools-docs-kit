@@ -1,0 +1,46 @@
+#%RAML 1.0 DataType
+displayName: DateTestType
+type: object
+(builtinType): object
+description: |-
+  Test data for the RAML date formats.
+properties:
+  dateOnlyExample:
+    type: date-only
+    (builtinType): date-only
+    description: |-
+      to be shown as "Date"
+    required: true
+  timeOnlyExample:
+    type: time-only
+    (builtinType): time-only
+    description: |-
+      to be shown as "Time"
+    required: true
+  dateTimeOnlyExample:
+    type: datetime-only
+    (builtinType): datetime-only
+    description: |-
+      To be shown as "DateTimeOnly". We do not recommend this format.
+    required: true
+  dateTimeExample:
+    format: rfc3339
+    type: datetime
+    (builtinType): datetime
+    description: |-
+      rfc3339 format explicitly set. To be shown as "DateTime"
+    required: true
+  dateTimeExampleDefaultFormat:
+    format: rfc3339
+    type: datetime
+    (builtinType): datetime
+    description: |-
+      format not set, rfc3339 is default, so this is also shown as "DateTime"
+    required: true
+  dateTimeExampleRfc:
+    format: rfc2616
+    type: datetime
+    (builtinType): datetime
+    description: |-
+      To be shown as "DateTimeRfc2616". Not a recommended format.
+    required: true

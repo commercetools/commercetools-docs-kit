@@ -1,0 +1,73 @@
+#%RAML 1.0 DataType
+displayName: ArrayTestType
+type: object
+(builtinType): object
+description: |-
+  A type containing arrays of different kinds.
+properties:
+  arrayOfIntExample:
+    uniqueItems: false
+    minItems: 1
+    type: array
+    items:
+      type: integer
+    (builtinType): array
+    description: |-
+      A property with an array of ints. JSON primitive is `array`, display type is "Array of Int".
+    required: true
+  arrayOfUniqueIntExample:
+    uniqueItems: true
+    minItems: 1
+    type: array
+    items:
+      type: integer
+    (builtinType): array
+    description: |-
+      A property with an array of ints in which items must be unique. JSON primitive is `array`, display type is "Array of Int"
+    required: true
+  arrayOfTwonumbersExample:
+    minItems: 2
+    maxItems: 2
+    type: array
+    items:
+      type: integer
+    (builtinType): array
+    required: true
+  arrayOfFloatExample:
+    uniqueItems: false
+    minItems: 1
+    maxItems: 1
+    type: array
+    items:
+      format: float
+      type: number
+    (builtinType): array
+    description: |-
+      An array of float. JSON primitive is `array`, display type is "Array of Float". !!! Until underlying libraries are fixed, this displays "Array of Number" because the pattern information is lost.
+    required: true
+  arrayOfNumberNoDefaultsExample:
+    type: array
+    items:
+      type: number
+    (builtinType): array
+    description: |-
+      An array of float. JSON primitive is `array`, display type is "Array of Number"
+    required: true
+  arrayOfStringExample:
+    uniqueItems: false
+    type: array
+    items:
+      type: string
+    (builtinType): array
+    description: |-
+      An array of strings. JSON primitive is `array`, display type is "Array of String"
+    required: true
+  arrayOfObjectType:
+    uniqueItems: false
+    type: array
+    items:
+      type: IntegerTestType
+    (builtinType): array
+    description: |-
+      An array of IntegerTestType. JSON primitive is `array`, display type is "Array of IntegerTestType"
+    required: true

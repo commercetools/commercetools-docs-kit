@@ -1,0 +1,58 @@
+#ByProjectKeyResourceSearchApiPattern
+(resourcePathUri): /{projectKey}/resource/searchApiPattern
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The CTP project key.
+get:
+  securedBy:
+  - oauth_2_0:
+      scopes:
+      - "manage_test:{projectKey}"
+      - "view_test:{projectKey}"
+  description: |-
+    Search all resources by specific parameters.
+  queryParameters:
+    fuzzy:
+      required: false
+      type: boolean
+      (builtinType): boolean
+      description: |-
+        Whether to apply fuzzy search on the text to analyze.
+    fuzzyLevel:
+      required: false
+      format: int16
+      type: number
+      (builtinType): number
+      description: |-
+        Provide explicitly the fuzzy level desired if fuzzy is enabled. This value can not be higher than the one
+        chosen by the platform by default.
+    staged:
+      required: false
+      type: boolean
+      (builtinType): boolean
+      description: |-
+        Whether to query for the current or staged projections.
+    filter:
+      required: false
+      type: string
+      (builtinType): string
+    filter.facets:
+      required: false
+      type: string
+      (builtinType): string
+    filter.query:
+      required: false
+      type: string
+      (builtinType): string
+    facet:
+      required: false
+      type: string
+      (builtinType): string
+    /text.[a-z]{2}(-[A-Z]{2})?/:
+      required: false
+      type: string
+      (builtinType): string
