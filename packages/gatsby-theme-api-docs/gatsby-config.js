@@ -12,24 +12,7 @@ module.exports = (themeOptions = {}) => ({
     '@commercetools-docs/gatsby-transformer-mdx-introspection',
     {
       resolve: '@commercetools-docs/gatsby-transformer-raml-legacy',
-      options: {
-        validate: true,
-        includeApis: ['import', 'import-storage-api', 'test'],
-        annotateConstantLikeEnums: true,
-        annotateUnionLikeInheritance: true,
-        customNumberScalars: true,
-        flattenLibraryNamespaces: true,
-        movePropertiesToTop: [
-          'id',
-          'version',
-          'key',
-          'createdAt',
-          'createdBy',
-          'lastModifiedAt',
-          'lastModifiedBy',
-        ],
-        movePropertiesToBottom: ['custom'],
-      },
+      options: themeOptions.transformerRaml,
     },
     {
       resolve: '@commercetools-docs/gatsby-theme-docs',
