@@ -84,19 +84,21 @@ const Blockquote = styled.blockquote`
 `;
 const Ul = styled.ul`
   margin: 0;
-  padding-left: 2em;
+  padding-left: ${dimensions.spacings.xl};
   > * + * {
-    margin-top: 0.25em;
+    margin-top: ${dimensions.spacings.m};
   }
 `;
 const Ol = styled.ol`
   margin: 0;
-  padding-left: 2em;
+  padding-left: ${dimensions.spacings.xl};
   > * + * {
-    margin-top: 0.25em;
+    margin-top: ${dimensions.spacings.m};
   }
 `;
-const Li = styled.li``;
+const Li = styled.li`
+  line-height: 1.46;
+`;
 const Dl = styled.dl`
   > dd + * {
     margin: ${dimensions.spacings.m} 0 0;
