@@ -15,9 +15,13 @@ const run = ({ server, port, config, checkerOptions }) => {
     html: (/* tree, robots, response, pageUrl, customData */) => {},
     junk: (/* link, customData */) => {},
     link: (link /* , customData */) => {
+      if (!link.internal && link.url.parsed.protocol === 'http:') {
+        console.warn(`Insecure external link : ${link.url.original}`);
+        console.warn(`   | used on: ${link.base.parsed.pathname}`);
+      }
       if (link.broken) {
         errorCount += 1;
-        console.log(`${blc[link.brokenReason]} :  ${link.url.original}`);
+        console.log(`${blc[link.brokenReason]} : ${link.url.original}`);
         console.log(`   | used on: ${link.base.parsed.pathname}`);
       } else if (link.excluded) {
         console.log(`${blc[link.excludedReason]} : ${link.url.original}`);
