@@ -47,9 +47,13 @@ const defaultCheckerOptions = {
   honorRobotExclusions: false, // as strict as possible
 };
 const checkerOptionsFromCli = {
-  excludedKeywords: flags['excluded-keywords']
-    ? flags['excluded-keywords'].split(',').map(keyword => keyword.trim())
-    : [],
+  ...(flags['excluded-keywords']
+    ? {
+        excludedKeywords: flags['excluded-keywords']
+          .split(',')
+          .map(keyword => keyword.trim()),
+      }
+    : {}),
 };
 const config = {
   entryPoints,
