@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+displayName: StringTestType
+type: object
+(builtinType): object
+description: |-
+  This is a type which contains test data for string properties.
+properties:
+  stringExample:
+    pattern: "[0-9|-]+"
+    minLength: 1
+    maxLength: 70909
+    type: string
+    (builtinType): string
+    description: |-
+      Description Text including rendered *markdown*.
+    default: "0"
+    required: true

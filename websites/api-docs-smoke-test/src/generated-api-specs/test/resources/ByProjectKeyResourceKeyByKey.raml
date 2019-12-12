@@ -1,0 +1,28 @@
+#ByProjectKeyResourceKeyByKey
+(resourcePathUri): /{projectKey}/resource/key={key}
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The CTP project key.
+  key:
+    type: string
+    (builtinType): string
+get:
+  securedBy:
+  - oauth_2_0:
+      scopes:
+      - "manage_test:{projectKey}"
+      - "view_test:{projectKey}"
+  description: |-
+    Query by key. Has three responses to see the difference between modeling patterns in RAML
+  responses:
+    200:
+      body:
+        application/json:
+          type: ObjectTestType
+          (builtinType): object
+          description: |-
+            A typical Object type with a non-scalar property.

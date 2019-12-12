@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+displayName: IntegerTestType
+type: object
+(builtinType): object
+description: |-
+  This is a type which contains test data for Integer properties.
+properties:
+  integerExample:
+    format: int16
+    minimum: 0
+    maximum: 64650
+    type: integer
+    (builtinType): integer
+    description: |-
+      Description Text of that [integer value](http://google.com) including rendered **markdown**.
+    default: 1
+    required: true
+  integerExampleInt32:
+    format: int32
+    type: number
+    (builtinType): number
+    description: |-
+      Tests an int32.
+    required: true

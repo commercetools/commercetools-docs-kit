@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+displayName: FloatTestType
+type: object
+(builtinType): object
+description: |-
+  This is a type which contains test data for Float properties.
+properties:
+  floatExample:
+    format: float
+    minimum: 0.1
+    maximum: 2.23
+    type: number
+    (builtinType): number
+    description: |-
+      _Description Text_ including rendered markdown.
+    default: 1.5
+    required: true
