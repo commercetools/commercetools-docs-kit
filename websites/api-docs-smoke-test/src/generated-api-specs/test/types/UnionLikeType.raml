@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+displayName: UnionLikeType
+type: object
+(builtinType): object
+discriminator: kind
+(oneOf):
+- UnionLikeSubType1
+- UnionLikeSubType2
+description: |-
+  A pattern of inheritance that is to be represented like a union, i.e. this parent type would not be shown with a property list on its own.
+properties:
+  kind:
+    type: string
+    (builtinType): string
+    required: true

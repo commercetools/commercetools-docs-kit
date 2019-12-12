@@ -1,0 +1,67 @@
+#ByProjectKeyResource
+(resourcePathUri): /{projectKey}/resource
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The CTP project key.
+post:
+  securedBy:
+  - oauth_2_0:
+      scopes:
+      - "manage_test:{projectKey}"
+  description: |-
+    Create (POST) operation to a resource.
+  body:
+    application/json:
+      type: ObjectTestTypeDraft
+      (builtinType): object
+      description: |-
+        A type to create an ObjectTestType. Used for testing the endpoint layout.
+  responses:
+    201:
+      body:
+        application/json:
+          type: ObjectTestType
+          (builtinType): object
+          description: |-
+            A typical Object type with a non-scalar property.
+get:
+  securedBy:
+  - oauth_2_0:
+      scopes:
+      - "manage_test:{projectKey}"
+      - "view_test:{projectKey}"
+  description: |-
+    Query/retrieve (GET) a specific resource or resource(s). This should return a paged query result of _blah_.
+  queryParameters:
+    where:
+      required: false
+      type: string
+      (builtinType): string
+    sort:
+      required: false
+      type: string
+      (builtinType): string
+    expand:
+      required: false
+      type: string
+      (builtinType): string
+    limit:
+      required: false
+      type: number
+      (builtinType): number
+    offset:
+      required: false
+      type: number
+      (builtinType): number
+  responses:
+    200:
+      body:
+        application/json:
+          type: ArrayTestType
+          (builtinType): object
+          description: |-
+            A type containing arrays of different kinds.

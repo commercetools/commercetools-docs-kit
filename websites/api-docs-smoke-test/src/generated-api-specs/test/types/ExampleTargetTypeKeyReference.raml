@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+displayName: KeyReference
+type: KeyReference
+(builtinType): object
+discriminatorValue: example-target
+properties:
+  typeId:
+    type: ReferenceTypeId
+    (builtinType): string
+    description: |-
+      The allowed typeIds of the referenced resource.
+    enum:
+    - example-target
+    required: true

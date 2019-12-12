@@ -1,0 +1,28 @@
+#%RAML 1.0 DataType
+displayName: EnumPropertiesType
+type: object
+(builtinType): object
+description: |-
+  Test data for properties with enums that are of differing primitive types
+properties:
+  intWithEnumExample:
+    format: int16
+    type: number
+    (builtinType): number
+    description: |-
+      An int with enum values
+    required: true
+  floatWithEnumExample:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      A float with enum values
+    default: 1.0
+    required: true
+  enumOfStringExample:
+    type: string
+    (builtinType): string
+    description: |-
+      A string with enum values (undescribed)
+    required: true

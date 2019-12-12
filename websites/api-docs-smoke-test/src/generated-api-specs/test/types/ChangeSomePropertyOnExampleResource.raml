@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+displayName: Change SomeProperty
+type: ExampleResourceUpdateAction
+(builtinType): object
+discriminatorValue: changeSomeProperty
+properties:
+  action:
+    type: string
+    (builtinType): string
+    enum:
+    - changeSomeProperty
+    required: true
+  someProperty:
+    type: string
+    (builtinType): string
+    required: true

@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: ObjectTestTypeDraft
+type: object
+(builtinType): object
+description: |-
+  A type to create an ObjectTestType. Used for testing the endpoint layout.
+properties:
+  objectTypeProperty:
+    type: ArrayTestType
+    (builtinType): object
+    description: |-
+      A type containing arrays of different kinds.
+    required: true

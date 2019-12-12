@@ -1,0 +1,66 @@
+#%RAML 1.0 DataType
+displayName: ReferencesTestType
+type: object
+(builtinType): object
+description: |-
+  Example for various sorts of References
+properties:
+  exampleTargetId:
+    type: ExampleTargetTypePointer
+    (builtinType): string
+    description: |-
+      A kind of reference that is not an object but directly the ID.
+      To be rendered as "String, refers to ExampleTargetType"
+      with "ExampleTargetType" being a link.
+    required: true
+  exampleTarget:
+    discriminatorValue: "example-target"
+    type: ExampleTargetTypeReference
+    (builtinType): object
+    description: |-
+      Type should be rendered as "Reference, refers to ExampleTargetType"
+      with "Reference" and the "ExampleTargetType" being links.
+    required: true
+  exampleTargets:
+    type: array
+    items:
+      type: ExampleTargetTypeReference
+    (builtinType): array
+    description: |-
+      Type should be rendered as "Array of References, refers to ExampleTargetType"
+      with "References" and "ExampleTargetType" being links.
+    required: true
+  exampleTargetIdentifier:
+    discriminatorValue: "example-target"
+    type: ExampleTargetTypeResourceIdentifier
+    (builtinType): object
+    description: |-
+      Type should be rendered as "ResourceIdentifier, refers to ExampleTargetType"
+      with "ResourceIdentifier" and "ExampleTargetType" being links.
+    required: true
+  exampleTargetIdentifiers:
+    type: array
+    items:
+      type: ExampleTargetTypeResourceIdentifier
+    (builtinType): array
+    description: |-
+      Type should be rendered as "Array of ResourceIdentifiers, refers to ExampleTargetType"
+      with "ResourceIdentifiers" and "ExampleTargetType" being links.
+    required: true
+  exampleTargetByKey:
+    discriminatorValue: "example-target"
+    type: ExampleTargetTypeKeyReference
+    (builtinType): object
+    description: |-
+      Type should be rendered as "KeyReference, refers to ExampleTargetType"
+      with "KeyReference" and "ExampleTargetType" being links.
+    required: true
+  exampleTargetsByKey:
+    type: array
+    items:
+      type: ExampleTargetTypeKeyReference
+    (builtinType): array
+    description: |-
+      Type should be rendered as "Array of KeyReferences, refers to ExampleTargetType"
+      with "KeyReferences" and "ExampleTargetType" being links.
+    required: true

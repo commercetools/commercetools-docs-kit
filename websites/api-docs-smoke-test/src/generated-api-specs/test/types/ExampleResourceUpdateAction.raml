@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+displayName: ExampleResourceUpdateAction
+type: object
+(builtinType): object
+discriminator: action
+(oneOf):
+- ChangeSomePropertyOnExampleResource
+- DoSomeThingOnExampleResource
+- ImportFooForSecondPropertyToUpdateOnExampleResource
+properties:
+  action:
+    type: string
+    (builtinType): string
+    required: true
