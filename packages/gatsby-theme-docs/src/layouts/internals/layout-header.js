@@ -121,14 +121,17 @@ const LayoutHeader = props => (
           {props.siteTitle}
         </DocumentationSwitcherContainer>
       </Inline>
-      <SearchContainer>
-        <SearchBar />
-      </SearchContainer>
+      {props.excludeFromSearchIndex ? null : (
+        <SearchContainer>
+          <SearchBar />
+        </SearchContainer>
+      )}
     </Constraint>
   </Container>
 );
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
+  excludeFromSearchIndex: PropTypes.bool.isRequired,
   constraintWidth: PropTypes.string,
 };
 
