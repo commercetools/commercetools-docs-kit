@@ -1,5 +1,5 @@
 import ContentNotifications from './content-notifications';
-import Markdown from './markdown';
+import * as Markdown from './markdown';
 import Subtitle from './subtitle';
 
 // See https://mdxjs.com/getting-started#table-of-components
