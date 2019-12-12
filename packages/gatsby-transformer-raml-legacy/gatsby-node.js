@@ -11,7 +11,6 @@ const defineSchema = require('./src/schema/define-schema');
 
 async function onCreateNode(
   { node, actions, createNodeId, createContentDigest },
-  // Plugin options passed through `{ transformerRaml: {} }`
   {
     validate = false,
     canonicalTypeImpl = 'datatype-expansion',
