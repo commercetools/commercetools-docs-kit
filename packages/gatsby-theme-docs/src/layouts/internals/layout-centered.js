@@ -2,11 +2,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, dimensions } from '../../design-system';
 
+/* NOTE: `overflow` shorthand is only supported is Chrome and FF */
 const Container = styled.div`
   position: relative;
   display: grid;
   width: 100vw;
-  overflow: hidden auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   grid-area: main;
 
   @media screen and (${dimensions.viewports.tablet}) {
