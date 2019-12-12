@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { Markdown } from '@commercetools-docs/gatsby-theme-docs';
+import { Markdown } from '@commercetools-docs/ui-kit';
 import markdownToReact from '../../../utils/markdown-to-react';
 
 const Description = ({ description, title }) => {

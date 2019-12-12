@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Markdown } from '@commercetools-docs/gatsby-theme-docs';
+import { Markdown } from '@commercetools-docs/ui-kit';
 import { useTypeLocations } from '../../../../hooks/use-type-locations';
 import originalTypeDisplayText from '../../../../utils/original-type-display-text';
 

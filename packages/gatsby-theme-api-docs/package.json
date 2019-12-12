@@ -16,6 +16,7 @@
     "@commercetools-docs/gatsby-theme-docs": "1.2.0",
     "@commercetools-docs/gatsby-transformer-mdx-introspection": "1.2.0",
     "@commercetools-docs/gatsby-transformer-raml-legacy": "1.0.1",
+    "@commercetools-docs/ui-kit": "1.1.0",
     "@commercetools-uikit/card": "10.13.0",
     "remark-parse": "7.0.2",
     "remark-react": "6.0.0",

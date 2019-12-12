@@ -2,13 +2,21 @@ import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { designSystem, ExternalSiteLink } from '@commercetools-docs/ui-kit';
 import LogoSvg from '../../icons/logo.svg';
-import { ExternalSiteLink } from '../../components/link';
-import { colors, dimensions, typography } from '../../design-system';
+
+const Container = styled.div`
+  background-color: ${designSystem.colors.light.surfaceSecondary2};
+  padding: ${designSystem.dimensions.spacings.m};
+
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    padding: ${designSystem.dimensions.spacings.xl};
+  }
+`;
 
 const FooterExternalLink = styled(ExternalSiteLink)`
-  font-size: ${typography.fontSizes.small};
-  color: ${colors.light.textPrimary} !important;
+  font-size: ${designSystem.typography.fontSizes.small};
+  color: ${designSystem.colors.light.textPrimary} !important;
   text-decoration: none;
   :hover {
     text-decoration: underline;
@@ -16,22 +24,13 @@ const FooterExternalLink = styled(ExternalSiteLink)`
 `;
 
 const LayoutFooter = () => (
-  <div
-    css={css`
-      background-color: ${colors.light.surfaceSecondary2};
-      padding: ${dimensions.spacings.m};
-
-      @media screen and (${dimensions.viewports.tablet}) {
-        padding: ${dimensions.spacings.xl};
-      }
-    `}
-  >
+  <Container>
     <SpacingsInline alignItems="center" justifyContent="space-between">
       <SpacingsInline scale="m" alignItems="center">
         <LogoSvg height={32} />
         <div
           css={css`
-            font-size: ${typography.fontSizes.small};
+            font-size: ${designSystem.typography.fontSizes.small};
           `}
         >
           &copy;{` ${new Date().getFullYear()} commercetools`}
@@ -47,7 +46,7 @@ const LayoutFooter = () => (
         </FooterExternalLink>
       </div>
     </SpacingsInline>
-  </div>
+  </Container>
 );
 
 export default LayoutFooter;

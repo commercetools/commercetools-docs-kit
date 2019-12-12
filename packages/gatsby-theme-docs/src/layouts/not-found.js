@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSiteData } from '../hooks/use-site-data';
+import { useSiteData } from '@commercetools-docs/ui-kit';
 import LayoutApplication from './internals/layout-application';
 import LayoutCentered from './internals/layout-centered';
 import LayoutHeader from './internals/layout-header';

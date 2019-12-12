@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { useSiteData } from '../hooks/use-site-data';
+import { useSiteData } from '@commercetools-docs/ui-kit';
 
 const SEO = props => {
   const siteData = useSiteData();

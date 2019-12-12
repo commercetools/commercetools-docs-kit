@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Markdown } from '@commercetools-docs/gatsby-theme-docs';
+import { Markdown } from '@commercetools-docs/ui-kit';
 import { Td } from '../../../../elements';
 import Type from '../type';
 import Description from './description';

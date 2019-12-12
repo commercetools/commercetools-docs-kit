@@ -1,16 +1,18 @@
 import styled from '@emotion/styled';
-import { dimensions } from '../../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
 const LayoutPageHeader = styled.div`
   grid-area: page-header;
-  padding: ${dimensions.spacings.m} ${dimensions.spacings.m} 0;
+  padding: ${designSystem.dimensions.spacings.m}
+    ${designSystem.dimensions.spacings.m} 0;
 
   > * + * {
-    margin: ${dimensions.spacings.m} 0 0 !important;
+    margin: ${designSystem.dimensions.spacings.m} 0 0 !important;
   }
 
-  @media screen and (${dimensions.viewports.desktop}) {
-    padding: ${dimensions.spacings.m} ${dimensions.spacings.xl} 0;
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    padding: ${designSystem.dimensions.spacings.m}
+      ${designSystem.dimensions.spacings.xl} 0;
   }
 `;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, dimensions } from '../../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
 /* NOTE: `overflow` shorthand is only supported is Chrome and FF */
 const Container = styled.div`
@@ -11,13 +11,13 @@ const Container = styled.div`
   overflow-y: auto;
   grid-area: main;
 
-  @media screen and (${dimensions.viewports.tablet}) {
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
     grid:
       [row1-start] 'center' auto [row1-end]
       / 100%;
     width: auto;
   }
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
       [row1-start] 'left center right' auto [row1-end]
       / minmax(0, 100%) 1fr minmax(0, 100%);
@@ -27,16 +27,16 @@ const Container = styled.div`
 const EmptyLeft = styled.div`
   display: none;
 
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid-area: left;
     display: block;
-    background-color: ${colors.light.surfaceSecondary1};
+    background-color: ${designSystem.colors.light.surfaceSecondary1};
   }
 `;
 const EmptyRight = styled.div`
   display: none;
 
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid-area: right;
     display: block;
   }

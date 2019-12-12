@@ -3,56 +3,18 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import { mdxComponents, Markdown } from '@commercetools-docs/ui-kit';
 import LayoutContent from '../layouts/content';
-import {
-  SEO,
-  Markdown,
-  Subtitle,
-  ContentNotifications,
-  ThemeProvider,
-} from '../components';
+import { SEO, ThemeProvider } from '../components';
 import PlaceholderMarkdownComponents from '../overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
 const components = {
-  p: Markdown.Paragraph,
-  // NOTE: we want to ensure that only one h1 exists on each page.
-  // Therefore, we map the markdown header elements starting from h2.
-  // The h1 header will be automatically rendered based on the page title.
-  h1: Markdown.withAnchorLink(Markdown.H2),
-  h2: Markdown.withAnchorLink(Markdown.H3),
-  h3: Markdown.withAnchorLink(Markdown.H4),
-  h4: Markdown.withAnchorLink(Markdown.H5),
-  h5: Markdown.withAnchorLink(Markdown.H6),
-  h6: Markdown.withAnchorLink(Markdown.H6),
-  thematicBreak: Markdown.ThematicBreak,
-  blockquote: Markdown.Blockquote,
-  ul: Markdown.Ul,
-  ol: Markdown.Ol,
-  li: Markdown.Li,
-  dl: Markdown.Dl,
-  dt: Markdown.Dt,
-  dd: Markdown.Dd,
-  table: Markdown.Table,
-  tr: Markdown.TableRow,
-  td: Markdown.TableCell,
-  th: Markdown.TableHeader,
-  code: Markdown.InlineCode,
-  inlineCode: Markdown.InlineCode,
-  em: Markdown.Em,
-  strong: Markdown.Strong,
-  delete: Markdown.Delete,
-  hr: Markdown.Hr,
-  a: Markdown.Link,
-  pre: Markdown.CodeBlock,
+  // Core components
+  ...mdxComponents,
 
-  // Official react components to be used in MDX files
-  Subtitle,
-  Info: ContentNotifications.Info,
-  Warning: ContentNotifications.Warning,
-  Error: ContentNotifications.Error,
-
-  // Custom React components to be overriden in microsites.
+  // Custom React components that can be injected from each website
+  // See ../overrides/README.md
   ...PlaceholderMarkdownComponents,
 };
 

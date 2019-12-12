@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { ThemeProvider as UiKitThemeProvider } from 'emotion-theming';
-import { dimensions, uikitTheme } from '../../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
 const Container = styled.div`
   height: 100vh;
   display: grid;
   grid:
-    [row1-start] 'header' ${dimensions.heights.header} [row1-end]
+    [row1-start] 'header' ${designSystem.dimensions.heights.header} [row1-end]
     [row2-start] 'main' 1fr [row2-end]
     / 1fr;
 
@@ -18,7 +18,7 @@ const Container = styled.div`
 `;
 
 const LayoutApplication = props => (
-  <UiKitThemeProvider theme={uikitTheme}>
+  <UiKitThemeProvider theme={designSystem.uikitTheme}>
     <Container {...props} />
   </UiKitThemeProvider>
 );

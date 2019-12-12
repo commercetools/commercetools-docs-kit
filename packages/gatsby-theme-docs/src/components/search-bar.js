@@ -1,31 +1,31 @@
 import React from 'react';
 import { css, Global } from '@emotion/core';
 import styled from '@emotion/styled';
+import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
 import UnstyledSearchIcon from '../icons/search.svg';
 import UnstyledSlashIcon from '../icons/slash.svg';
-import { dimensions, colors, tokens, typography } from '../design-system';
-import createStyledIcon from '../utils/create-styled-icon';
 
 const SearchIcon = createStyledIcon(UnstyledSearchIcon);
 
 const algoliaStyles = css`
   .algolia-docsearch-suggestion--highlight {
-    color: ${colors.light.textInfo};
+    color: ${designSystem.colors.light.textInfo};
   }
 
   .algolia-autocomplete .ds-dropdown-menu {
-    font-size: ${typography.fontSizes.body};
-    box-shadow: ${tokens.shadow4};
-    border-radius: ${tokens.borderRadius6};
-    background: ${colors.light.surfacePrimary};
+    font-size: ${designSystem.typography.fontSizes.body};
+    box-shadow: ${designSystem.tokens.shadow4};
+    border-radius: ${designSystem.tokens.borderRadius6};
+    background: ${designSystem.colors.light.surfacePrimary};
     text-align: left;
-    padding: 0 ${dimensions.spacings.m};
-    margin: ${dimensions.spacings.xs} 0 0;
+    padding: 0 ${designSystem.dimensions.spacings.m};
+    margin: ${designSystem.dimensions.spacings.xs} 0 0;
     position: relative;
     right: 0 !important;
     left: inherit !important;
     overflow: auto;
-    border: ${dimensions.spacings.m} solid ${colors.light.surfacePrimary};
+    border: ${designSystem.dimensions.spacings.m} solid
+      ${designSystem.colors.light.surfacePrimary};
     border-left: none;
     border-right: none;
     z-index: 999;
@@ -35,16 +35,16 @@ const algoliaStyles = css`
 
     /* viewport height, border top/bottom, margin top */
     max-height: calc(
-      100vh - ${dimensions.heights.header} - ${dimensions.spacings.xs} - 1rem *
-        2
+      100vh - ${designSystem.dimensions.heights.header} -
+        ${designSystem.dimensions.spacings.xs} - 1rem * 2
     );
   }
 
-  @media (${dimensions.viewports.tablet}) {
+  @media (${designSystem.dimensions.viewports.tablet}) {
     .algolia-autocomplete .ds-dropdown-menu {
       max-height: 80vh;
-      max-width: ${dimensions.widths.pageContent};
-      min-width: ${dimensions.widths.pageContentSmall};
+      max-width: ${designSystem.dimensions.widths.pageContent};
+      min-width: ${designSystem.dimensions.widths.pageContentSmall};
     }
   }
 
@@ -75,12 +75,12 @@ const algoliaStyles = css`
   }
 
   .algolia-autocomplete .ds-cursor .algolia-docsearch-suggestion--wrapper {
-    background: ${colors.light.surfaceSearchHighlight};
+    background: ${designSystem.colors.light.surfaceSearchHighlight};
   }
 
   .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
-    background: ${colors.light.surfaceInlineCode};
-    border: 1px solid ${colors.light.surfaceInfo};
+    background: ${designSystem.colors.light.surfaceInlineCode};
+    border: 1px solid ${designSystem.colors.light.surfaceInfo};
     padding: 2px 0;
   }
 
@@ -100,25 +100,26 @@ const algoliaStyles = css`
   .algolia-autocomplete .algolia-docsearch-suggestion--content {
     display: block;
     position: relative;
-    padding: ${dimensions.spacings.s} 0 ${dimensions.spacings.s}
-      ${dimensions.spacings.m};
+    padding: ${designSystem.dimensions.spacings.s} 0
+      ${designSystem.dimensions.spacings.s}
+      ${designSystem.dimensions.spacings.m};
     cursor: pointer;
-    border-left: 1px solid ${colors.light.borderPrimary};
+    border-left: 1px solid ${designSystem.colors.light.borderPrimary};
   }
 
   .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
     position: relative;
     display: none;
-    border-bottom: 1px solid ${colors.light.borderPrimary};
-    color: ${colors.light.textSearchHeading};
+    border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
+    color: ${designSystem.colors.light.textSearchHeading};
     margin: 0;
-    padding: ${dimensions.spacings.xs} 0;
+    padding: ${designSystem.dimensions.spacings.xs} 0;
   }
 
   .algolia-autocomplete .algolia-docsearch-suggestion--wrapper {
-    background-color: ${colors.light.surfacePrimary};
+    background-color: ${designSystem.colors.light.surfacePrimary};
     width: 100%;
-    margin: 0 0 ${dimensions.spacings.s};
+    margin: 0 0 ${designSystem.dimensions.spacings.s};
     display: flex;
     align-items: flex-start;
   }
@@ -128,10 +129,11 @@ const algoliaStyles = css`
     min-width: 30%;
     text-align: right;
     position: relative;
-    padding: ${dimensions.spacings.s} ${dimensions.spacings.m}
-      ${dimensions.spacings.s} 0;
+    padding: ${designSystem.dimensions.spacings.s}
+      ${designSystem.dimensions.spacings.m}
+      ${designSystem.dimensions.spacings.s} 0;
     color: transparent;
-    font-size: ${typography.fontSizes.small};
+    font-size: ${designSystem.typography.fontSizes.small};
     word-wrap: break-word;
   }
 
@@ -156,24 +158,24 @@ const algoliaStyles = css`
   }
 
   .algolia-autocomplete .algolia-docsearch-suggestion--title {
-    color: ${colors.light.textPrimary};
-    font-size: ${typography.fontSizes.small};
-    font-weight: ${typography.fontWeights.regular};
+    color: ${designSystem.colors.light.textPrimary};
+    font-size: ${designSystem.typography.fontSizes.small};
+    font-weight: ${designSystem.typography.fontWeights.regular};
   }
 
   .algolia-autocomplete .algolia-docsearch-suggestion--text {
     display: block;
     line-height: 1.2em;
-    font-size: ${typography.fontSizes.extraSmall};
-    color: ${colors.light.textSecondary};
-    padding: ${dimensions.spacings.xs} 0 0;
+    font-size: ${designSystem.typography.fontSizes.extraSmall};
+    color: ${designSystem.colors.light.textSecondary};
+    padding: ${designSystem.dimensions.spacings.xs} 0 0;
   }
 
   .algolia-autocomplete .algolia-docsearch-suggestion--no-results {
     width: 100%;
-    padding: ${dimensions.spacings.s} 0;
+    padding: ${designSystem.dimensions.spacings.s} 0;
     text-align: center;
-    font-size: ${typography.fontSizes.body};
+    font-size: ${designSystem.typography.fontSizes.body};
     border: none;
     cursor: default;
   }
@@ -181,7 +183,7 @@ const algoliaStyles = css`
   .algolia-autocomplete
     .algolia-docsearch-suggestion--no-results
     .algolia-docsearch-suggestion--text {
-    color: ${colors.light.textPrimary};
+    color: ${designSystem.colors.light.textPrimary};
     margin: 0;
   }
 
@@ -190,13 +192,13 @@ const algoliaStyles = css`
   }
 
   .algolia-autocomplete .algolia-docsearch-suggestion code {
-    background-color: ${colors.light.surfaceInlineCode};
-    border: 1px solid ${colors.light.surfaceInfo};
-    border-radius: ${dimensions.spacings.xs};
-    color: ${colors.light.textCode};
-    font-family: ${typography.fontFamilies.code};
-    font-size: ${typography.fontSizes.small};
-    padding: 0 ${dimensions.spacings.xs};
+    background-color: ${designSystem.colors.light.surfaceInlineCode};
+    border: 1px solid ${designSystem.colors.light.surfaceInfo};
+    border-radius: ${designSystem.dimensions.spacings.xs};
+    color: ${designSystem.colors.light.textCode};
+    font-family: ${designSystem.typography.fontFamilies.code};
+    font-size: ${designSystem.typography.fontSizes.small};
+    padding: 0 ${designSystem.dimensions.spacings.xs};
   }
 
   .algolia-autocomplete
@@ -210,11 +212,11 @@ const algoliaStyles = css`
     .algolia-docsearch-suggestion.algolia-docsearch-suggestion__secondary
     .algolia-docsearch-suggestion--subcategory-column {
     display: block;
-    color: ${colors.light.textSecondary};
+    color: ${designSystem.colors.light.textSecondary};
   }
 
   .algolia-autocomplete .algolia-docsearch-footer {
-    background-color: ${colors.light.surfacePrimary};
+    background-color: ${designSystem.colors.light.surfacePrimary};
     width: 100%;
     height: 30px;
     z-index: 2000;
@@ -240,33 +242,37 @@ const algoliaStyles = css`
 
 const SearchInput = styled.input`
   appearance: none;
-  background-color: ${colors.light.surfacePrimary};
-  border: 1px solid ${colors.light.borderInput};
-  border-radius: ${tokens.borderRadius6};
+  background-color: ${designSystem.colors.light.surfacePrimary};
+  border: 1px solid ${designSystem.colors.light.borderInput};
+  border-radius: ${designSystem.tokens.borderRadius6};
   box-shadow: none;
   box-sizing: border-box;
-  color: ${colors.light.textPrimary};
+  color: ${designSystem.colors.light.textPrimary};
   display: flex;
   flex: 1;
   font-family: inherit;
-  font-size: ${typography.fontSizes.small};
-  height: ${dimensions.heights.inputSearch};
-  min-height: ${dimensions.heights.inputSearch};
+  font-size: ${designSystem.typography.fontSizes.small};
+  height: ${designSystem.dimensions.heights.inputSearch};
+  min-height: ${designSystem.dimensions.heights.inputSearch};
   outline: none;
   overflow: hidden;
-  padding: 0 calc(${dimensions.spacings.l} + ${dimensions.spacings.xs});
-  width: ${dimensions.widths.searchBar};
+  padding: 0
+    calc(
+      ${designSystem.dimensions.spacings.l} +
+        ${designSystem.dimensions.spacings.xs}
+    );
+  width: ${designSystem.dimensions.widths.searchBar};
   &::placeholder {
-    color: ${colors.light.textFaded};
+    color: ${designSystem.colors.light.textFaded};
   }
   &:active,
   &:focus {
-    border-color: ${colors.light.borderHighlight};
-    padding-right: ${dimensions.spacings.xs};
+    border-color: ${designSystem.colors.light.borderHighlight};
+    padding-right: ${designSystem.dimensions.spacings.xs};
   }
 
-  @media screen and (${dimensions.viewports.mobile}) {
-    width: ${dimensions.widths.searchBarSmall};
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    width: ${designSystem.dimensions.widths.searchBarSmall};
   }
 `;
 const SearchInputIcon = styled.span`
@@ -279,7 +285,7 @@ const SearchInputIcon = styled.span`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${props => `${props.position}: ${dimensions.spacings.xs};`}
+  ${props => `${props.position}: ${designSystem.dimensions.spacings.xs};`}
 `;
 
 const SearchBar = () => {
