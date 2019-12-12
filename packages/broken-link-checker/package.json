@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/broken-link-checker",
   "description": "Broken Link Checker for commercetools documentation websites",
-  "version": "1.0.5",
+  "version": "1.2.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
