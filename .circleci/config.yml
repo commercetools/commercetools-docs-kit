@@ -55,6 +55,7 @@ commands:
       - persist_to_workspace:
           root: *working_directory
           paths:
+            - packages/*/dist/
             - public/
   restore_websites_bundle:
     steps:
