@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "start": "yarn --cwd websites/docs-smoke-test start",
-    "build": "NODE_ENV=production lerna run build --scope '@commercetools-local/*'",
+    "build": "NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
+    "prebuild": "NODE_ENV=production lerna run build --scope '@commercetools-docs/*'",
     "postbuild": "npx commercetools-broken-link-checker ./public docs-smoke-test/",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
