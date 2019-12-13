@@ -12,7 +12,19 @@
     "type": "git",
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
-  "main": "src/index.js",
+  "main": "./dist/ui-kit.cjs.js",
+  "module": "./dist/ui-kit.es.js",
+  "files": [
+    "dist",
+    "package.json",
+    "code-block-themes.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
+  },
   "dependencies": {
     "@commercetools-uikit/tooltip": "10.13.0",
     "lodash.escape": "4.0.1",
