@@ -10,8 +10,8 @@
   ],
   "scripts": {
     "start": "yarn --cwd websites/docs-smoke-test start",
-    "build": "NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
-    "prebuild": "NODE_ENV=production lerna run build --scope '@commercetools-docs/*'",
+    "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
+    "prebuild": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-docs/*'",
     "postbuild": "npx commercetools-broken-link-checker ./public docs-smoke-test/",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
@@ -24,7 +24,7 @@
     "labels:sync": "github-labels sync",
     "test": "jest --config jest.test.config.js",
     "test:watch": "yarn test --watch",
-    "test:e2e": "cypress run",
+    "test:e2e": "cross-env NODE_ENV=test cypress run",
     "changelog": "node scripts/changelog.js",
     "release": "lerna publish --exact",
     "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes"
