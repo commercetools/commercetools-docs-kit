@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
   pathPrefix: '/site-template',
   siteMetadata: {
@@ -10,7 +12,7 @@ module.exports = {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
         websiteKey: 'CHANGE-ME',
-        excludeFromSearchIndex: true,
+        excludeFromSearchIndex: isProd,
 
         // To enable tracking with Google Analytics, enter the site ID here
         // gaTrackingId: 'CHANGE-ME',

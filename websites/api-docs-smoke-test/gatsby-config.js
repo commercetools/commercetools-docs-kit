@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
   pathPrefix: '/api-docs-smoke-test',
   siteMetadata: {
@@ -10,7 +12,7 @@ module.exports = {
       resolve: '@commercetools-docs/gatsby-theme-api-docs',
       options: {
         websiteKey: 'api-docs-smoke-test',
-        excludeFromSearchIndex: true,
+        excludeFromSearchIndex: isProd,
         transformerRaml: {
           validate: true,
           includeApis: ['import', 'import-storage-api', 'test'],

@@ -22,7 +22,10 @@ const LayoutContent = props => {
   const siteData = useSiteData();
   return (
     <LayoutApplication>
-      <LayoutHeader siteTitle={siteData.siteMetadata.title} />
+      <LayoutHeader
+        siteTitle={siteData.siteMetadata.title}
+        excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+      />
       <LayoutCentered>
         <LayoutMain>
           <LayoutSidebar

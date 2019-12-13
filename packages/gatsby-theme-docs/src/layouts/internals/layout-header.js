@@ -91,6 +91,11 @@ const DocumentationSwitcherContainer = styled.div`
 `;
 const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
+  display: ${props => (props.excludeFromSearchIndex ? 'none' : 'block')};
+
+  @media only percy {
+    display: block !important;
+  }
 `;
 
 const LayoutHeader = props => (
@@ -121,7 +126,7 @@ const LayoutHeader = props => (
           {props.siteTitle}
         </DocumentationSwitcherContainer>
       </Inline>
-      <SearchContainer>
+      <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
         <SearchBar />
       </SearchContainer>
     </Constraint>
@@ -129,6 +134,7 @@ const LayoutHeader = props => (
 );
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
+  excludeFromSearchIndex: PropTypes.bool.isRequired,
   constraintWidth: PropTypes.string,
 };
 
