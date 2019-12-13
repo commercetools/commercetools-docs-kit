@@ -1,7 +1,14 @@
 const firstline = require('firstline');
 const jsYaml = require('js-yaml');
 
-async function onCreateNode({ node, loadNodeContent, reporter }) {
+async function onCreateNode({
+  node,
+  actions,
+  createNodeId,
+  createContentDigest,
+  loadNodeContent,
+  reporter,
+}) {
   if (!['File'].includes(node.internal.type)) return;
   if (node.internal.mediaType !== 'application/raml+yaml') return;
 
@@ -13,12 +20,16 @@ async function onCreateNode({ node, loadNodeContent, reporter }) {
 
     try {
       const parsedContent = jsYaml.load(content, { schema: JSYAML_SCHEMA });
-      const apiKey = apiKeyForFileNode(node);
 
-      createTypeNodes({
-        apiKey,
-        nodeAbsolutePath: node.absolutePath,
-        types: parsedContent.types,
+      const { createNode, createParentChildLink } = actions;
+
+      createApiNode({
+        fileNode: node,
+        api: parsedContent,
+        createNode,
+        createNodeId,
+        createParentChildLink,
+        createContentDigest,
       });
     } catch (e) {
       reporter.error(e);
@@ -60,14 +71,31 @@ function apiKeyForFileNode(node) {
   return apiKey.toLowerCase();
 }
 
-function createTypeNodes({ apiKey, nodeAbsolutePath, types }) {
-  const typePathsArray = Object.values(types);
-  typePathsArray.forEach(path => {
-    const last = nodeAbsolutePath.lastIndexOf('/');
-    const prefix = nodeAbsolutePath.substring(0, last + 1);
-    const typeAbsolutePath = `${prefix}${path}`;
-    console.log(apiKey, typeAbsolutePath);
-  });
+function createApiNode({
+  fileNode,
+  api,
+  createNode,
+  createNodeId,
+  createParentChildLink,
+  createContentDigest,
+}) {
+  const apiKey = apiKeyForFileNode(fileNode);
+  const apiObj = { ...api, apiKey };
+
+  const apiNode = {
+    ...apiObj,
+    id: createNodeId(`${fileNode.id}.${apiKey} >>> RAML_API`),
+    children: [],
+    parent: fileNode.id,
+    internal: {
+      contentDigest: createContentDigest(apiObj),
+      mediaType: fileNode.internal.mediaType,
+      type: 'RamlApi',
+    },
+  };
+
+  createNode(apiNode);
+  createParentChildLink({ parent: fileNode, child: apiNode });
 }
 
 exports.onCreateNode = onCreateNode;
