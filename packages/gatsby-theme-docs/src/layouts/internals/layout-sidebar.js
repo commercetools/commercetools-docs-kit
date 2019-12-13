@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { css, keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
-import { colors, dimensions } from '../../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import { BurgerIcon } from '../../components';
 import Sidebar from './sidebar';
 
@@ -33,7 +33,7 @@ const ContainerOverlay = styled.div`
   display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
   overflow: auto;
 
-  @media screen and (${dimensions.viewports.laptop}) {
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
     display: flex;
     grid-column: 1;
 
@@ -49,18 +49,18 @@ const ContainerOverlay = styled.div`
 const Container = styled.aside`
   position: relative;
   overflow: auto;
-  background-color: ${colors.light.surfaceSecondary1};
-  border-right: 1px solid ${colors.light.borderPrimary};
-  width: ${dimensions.widths.pageNavigationSmall};
+  background-color: ${designSystem.colors.light.surfaceSecondary1};
+  border-right: 1px solid ${designSystem.colors.light.borderPrimary};
+  width: ${designSystem.dimensions.widths.pageNavigationSmall};
   height: 100%;
   z-index: 2;
 
   animation: ${slideInAnimation} 0.5s ease-out alternate;
-  @media screen and (${dimensions.viewports.laptop}) {
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
     animation: unset;
   }
-  @media screen and (${dimensions.viewports.desktop}) {
-    width: ${dimensions.widths.pageNavigation};
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
 const MenuButton = styled.button`
@@ -68,26 +68,27 @@ const MenuButton = styled.button`
   border: 0;
   color: inherit;
   cursor: pointer;
-  padding: ${dimensions.spacings.s} ${dimensions.spacings.m};
-  background-color: ${colors.light.surfaceSecondary1};
+  padding: ${designSystem.dimensions.spacings.s}
+    ${designSystem.dimensions.spacings.m};
+  background-color: ${designSystem.colors.light.surfaceSecondary1};
   transition: background-color 0.5s;
 
   > svg {
-    stroke: ${colors.light.surfaceSecondary3};
+    stroke: ${designSystem.colors.light.surfaceSecondary3};
     transition: stroke 0.5s;
   }
 
   :focus {
-    outline: 1px solid ${colors.light.surfaceSecondary3};
+    outline: 1px solid ${designSystem.colors.light.surfaceSecondary3};
   }
   :hover {
-    background-color: ${colors.light.surfaceSecondary3};
+    background-color: ${designSystem.colors.light.surfaceSecondary3};
     > svg {
-      stroke: ${colors.light.surfaceSecondary1};
+      stroke: ${designSystem.colors.light.surfaceSecondary1};
     }
   }
 
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
     display: none;
   }
 `;

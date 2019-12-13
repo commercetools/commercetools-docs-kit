@@ -9,8 +9,7 @@ import {
   AngleThinLeftIcon,
   AngleThinRightIcon,
 } from '@commercetools-uikit/icons';
-import { colors, dimensions, typography } from '../design-system';
-import TextSmall from './text-small';
+import { designSystem, TextSmall } from '@commercetools-docs/ui-kit';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 
@@ -18,32 +17,35 @@ const isMatching = (a, b) => trimTrailingSlash(a) === trimTrailingSlash(b);
 
 const Container = styled.div`
   display: grid;
-  grid-gap: ${dimensions.spacings.m};
+  grid-gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
   grid-template-columns: repeat(
     auto-fill,
     minmax(
-      calc(${dimensions.widths.pageContent} / 2 - ${dimensions.spacings.m} * 2),
+      calc(
+        ${designSystem.dimensions.widths.pageContent} / 2 -
+          ${designSystem.dimensions.spacings.m} * 2
+      ),
       1fr
     )
   );
 
-  @media screen and (${dimensions.viewports.tablet}) {
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
     grid-template-columns: 1fr 1fr;
   }
-  @media screen and (${dimensions.viewports.desktop}) {
-    grid-gap: ${dimensions.spacings.xl};
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    grid-gap: ${designSystem.dimensions.spacings.xl};
   }
 `;
 
 const PaginationButtonLink = styled(Link)`
   text-align: ${props => props.align};
   text-decoration: none;
-  font-size: ${typography.fontSizes.h5};
-  color: ${colors.light.textPrimary};
+  font-size: ${designSystem.typography.fontSizes.h5};
+  color: ${designSystem.colors.light.textPrimary};
 
   :hover {
-    background-color: ${colors.light.surfaceQuote};
+    background-color: ${designSystem.colors.light.surfaceQuote};
   }
 `;
 PaginationButtonLink.defaultProps = {
@@ -55,18 +57,18 @@ PaginationButtonLink.propTypes = {
 
 const PaginationButton = styled(Card)`
   > div {
-    padding: ${dimensions.spacings.s};
+    padding: ${designSystem.dimensions.spacings.s};
   }
   svg {
     * {
-      fill: ${colors.light.textPrimary};
+      fill: ${designSystem.colors.light.textPrimary};
     }
   }
   :hover {
-    background-color: ${colors.light.surfaceQuote};
+    background-color: ${designSystem.colors.light.surfaceQuote};
     svg {
       * {
-        fill: ${colors.light.textInfo};
+        fill: ${designSystem.colors.light.textInfo};
       }
     }
   }

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import ResourceMethod from './resource-method';
 
 const Endpoint = ({ apiKey, resource, method }) => (

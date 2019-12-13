@@ -1,17 +1,18 @@
 import styled from '@emotion/styled';
-import { dimensions } from '../../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
 const PageContentInset = styled.div`
-  padding: ${dimensions.spacings.m} ${dimensions.spacings.m}
-    ${dimensions.spacings.xl};
+  padding: ${designSystem.dimensions.spacings.m}
+    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
 
   > * + * {
-    margin: ${dimensions.spacings.xl} 0 0;
+    margin: ${designSystem.dimensions.spacings.xl} 0 0;
   }
 
-  @media screen and (${dimensions.viewports.desktop}) {
-    padding: ${dimensions.spacings.m} ${dimensions.spacings.xl}
-      ${dimensions.spacings.xl};
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    padding: ${designSystem.dimensions.spacings.m}
+      ${designSystem.dimensions.spacings.xl}
+      ${designSystem.dimensions.spacings.xl};
   }
 `;
 

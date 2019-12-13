@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Card from '@commercetools-uikit/card';
-import { Markdown } from '@commercetools-docs/gatsby-theme-docs';
+import { Markdown } from '@commercetools-docs/ui-kit';
 import Children from './children';
 
 const ChildrenUnionLike = ({ apiType, apiTypeSubTypes, strings }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, Global } from '@emotion/core';
-import { colors, dimensions, typography, tokens } from '../../design-system';
+import { colors, dimensions, typography, tokens } from '../design-system';
 
 // eslint-disable-next-line react/display-name
 const Globals = () => (

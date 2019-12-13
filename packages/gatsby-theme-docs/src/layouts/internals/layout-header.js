@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import { SearchBar } from '../../components';
-import { colors, dimensions, typography, tokens } from '../../design-system';
 import LogoSvg from '../../icons/logo.svg';
 
 const Container = styled.header`
   display: block;
   grid-area: header;
-  height: ${dimensions.heights.header};
+  height: ${designSystem.dimensions.heights.header};
   width: 100%;
-  box-shadow: ${tokens.shadow1};
+  box-shadow: ${designSystem.tokens.shadow1};
   z-index: 10;
 `;
 const Constraint = styled.div`
@@ -25,12 +25,12 @@ const Constraint = styled.div`
   width: 100%;
   height: 100%;
 
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
     width: ${props =>
       props.constraintWidth ||
       `calc(
-        ${dimensions.widths.pageContentWithMargings} +
-        ${dimensions.widths.pageNavigation} * 2 )
+        ${designSystem.dimensions.widths.pageContentWithMargings} +
+        ${designSystem.dimensions.widths.pageNavigation} * 2 )
       `};
   }
 `;
@@ -45,15 +45,15 @@ const MenuLogoContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  @media screen and (${dimensions.viewports.laptop}) {
-    width: ${dimensions.widths.pageNavigationSmall};
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    width: ${designSystem.dimensions.widths.pageNavigationSmall};
   }
-  @media screen and (${dimensions.viewports.desktop}) {
-    width: ${dimensions.widths.pageNavigation};
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
 const LogoContainer = styled.div`
-  padding: 0 ${dimensions.spacings.m};
+  padding: 0 ${designSystem.dimensions.spacings.m};
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -61,7 +61,7 @@ const LogoContainer = styled.div`
 `;
 // This is a normal HTML link as we need to force a redirect to the root domain
 const LogoLink = styled.a`
-  color: ${colors.light.textPrimary};
+  color: ${designSystem.colors.light.textPrimary};
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
@@ -70,27 +70,27 @@ const LogoLink = styled.a`
 `;
 const LogoTitle = styled.div`
   display: none;
-  font-size: ${typography.fontSizes.body};
+  font-size: ${designSystem.typography.fontSizes.body};
 
-  @media screen and (${dimensions.viewports.laptop}) {
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
     display: block;
   }
-  @media screen and (${dimensions.viewports.desktop}) {
-    font-size: ${typography.fontSizes.h4};
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    font-size: ${designSystem.typography.fontSizes.h4};
   }
 `;
 const DocumentationSwitcherContainer = styled.div`
-  border-left: 1px solid ${colors.light.borderPrimary};
-  color: ${colors.light.textSecondary};
-  font-size: ${typography.fontSizes.body};
+  border-left: 1px solid ${designSystem.colors.light.borderPrimary};
+  color: ${designSystem.colors.light.textSecondary};
+  font-size: ${designSystem.typography.fontSizes.body};
   padding: 0 0 0 1rem;
   margin: 0;
-  height: calc(100% - ${dimensions.spacings.m});
+  height: calc(100% - ${designSystem.dimensions.spacings.m});
   display: flex;
   align-items: center;
 `;
 const SearchContainer = styled.div`
-  padding: 0 ${dimensions.spacings.m};
+  padding: 0 ${designSystem.dimensions.spacings.m};
 `;
 
 const LayoutHeader = props => (
@@ -103,7 +103,7 @@ const LayoutHeader = props => (
             id="sidebar-menu-toggle"
             css={css`
               display: flex;
-              @media screen and (${dimensions.viewports.laptop}) {
+              @media screen and (${designSystem.dimensions.viewports.laptop}) {
                 display: none;
               }
             `}

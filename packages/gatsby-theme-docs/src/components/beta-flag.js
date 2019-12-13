@@ -1,38 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { colors, tokens, typography, dimensions } from '../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import Link from './link';
 
 const getStyles = props => {
   const baseStyles = css`
-    border-radius: ${tokens.borderRadius4};
-    color: ${colors.light.textInfo};
-    padding: 2px ${dimensions.spacings.xs};
+    border-radius: ${designSystem.tokens.borderRadius4};
+    color: ${designSystem.colors.light.textInfo};
+    padding: 2px ${designSystem.dimensions.spacings.xs};
   `;
   if (props.href) {
     return css`
       ${baseStyles}
-      background-color: ${colors.light.surfacePrimary};
-      border: 1px solid ${colors.light.borderInfo};
-      box-shadow: ${tokens.shadow7};
-      color: ${colors.light.textInfo} !important;
-      font-size: ${typography.fontSizes.small};
+      background-color: ${designSystem.colors.light.surfacePrimary};
+      border: 1px solid ${designSystem.colors.light.borderInfo};
+      box-shadow: ${designSystem.tokens.shadow7};
+      color: ${designSystem.colors.light.textInfo} !important;
+      font-size: ${designSystem.typography.fontSizes.small};
       text-decoration: none;
 
       :active,
       :focus,
       :hover {
-        background-color: ${colors.light.textInfo};
+        background-color: ${designSystem.colors.light.textInfo};
         box-shadow: none;
-        color: ${colors.light.textInverted} !important;
+        color: ${designSystem.colors.light.textInverted} !important;
       }
     `;
   }
   return css`
     ${baseStyles}
-    background-color: ${colors.light.surfaceBeta};
-    font-size: ${typography.fontSizes.ultraSmall};
+    background-color: ${designSystem.colors.light.surfaceBeta};
+    font-size: ${designSystem.typography.fontSizes.ultraSmall};
   `;
 };
 

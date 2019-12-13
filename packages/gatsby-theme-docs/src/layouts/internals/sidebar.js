@@ -4,30 +4,31 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import { css, ClassNames } from '@emotion/core';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import { BetaFlag } from '../../components';
-import { colors, dimensions, typography } from '../../design-system';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 
 const SidebarWebsiteTitle = styled.div`
-  color: ${colors.light.primary};
-  padding: ${dimensions.spacings.l} ${dimensions.spacings.m};
-  font-size: ${typography.fontSizes.h4};
+  color: ${designSystem.colors.light.primary};
+  padding: ${designSystem.dimensions.spacings.l}
+    ${designSystem.dimensions.spacings.m};
+  font-size: ${designSystem.typography.fontSizes.h4};
 `;
 const SidebarLinkTitle = styled.div`
-  font-size: ${typography.fontSizes.body};
+  font-size: ${designSystem.typography.fontSizes.body};
   text-overflow: ellipsis;
   overflow-x: hidden;
   width: 100%;
 `;
 const SidebarLinkSubtitle = styled.div`
-  font-size: ${typography.fontSizes.small};
+  font-size: ${designSystem.typography.fontSizes.small};
   text-overflow: ellipsis;
   overflow-x: hidden;
   width: 100%;
 `;
 const SidebarLinkItem = styled.div`
-  padding: 0 0 0 ${dimensions.spacings.m};
+  padding: 0 0 0 ${designSystem.dimensions.spacings.m};
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -37,28 +38,28 @@ const SidebarLink = props => (
   <ClassNames>
     {({ css: makeClassName }) => {
       const linkClassName = makeClassName`
-        border-left: ${dimensions.spacings.xs} solid
-          ${colors.light.surfaceSecondary1};
+        border-left: ${designSystem.dimensions.spacings.xs} solid
+          ${designSystem.colors.light.surfaceSecondary1};
         padding-left: calc(
-          ${dimensions.spacings.m} - ${dimensions.spacings.xs}
+          ${designSystem.dimensions.spacings.m} - ${designSystem.dimensions.spacings.xs}
         );
         text-decoration: none;
-        color: ${colors.light.textSecondary};
+        color: ${designSystem.colors.light.textSecondary};
         display: flex;
         flex-direction: row;
         align-items: flex-end;
 
         :hover {
-          color: ${colors.light.linkNavigation} !important;
+          color: ${designSystem.colors.light.linkNavigation} !important;
         }
 
         > * + * {
-          margin: 0 0 0 ${dimensions.spacings.s};
+          margin: 0 0 0 ${designSystem.dimensions.spacings.s};
         }
       `;
       const activeClassName = makeClassName`
-        border-left: ${dimensions.spacings.xs} solid ${colors.light.linkNavigation} !important;
-        color: ${colors.light.linkNavigation} !important;
+        border-left: ${designSystem.dimensions.spacings.xs} solid ${designSystem.colors.light.linkNavigation} !important;
+        color: ${designSystem.colors.light.linkNavigation} !important;
       `;
       return (
         <Link
@@ -103,9 +104,9 @@ const Sidebar = props => {
     <div
       css={css`
         > * + * {
-          border-top: 1px solid ${colors.light.borderPrimary};
-          margin-right: ${dimensions.spacings.m};
-          padding: ${dimensions.spacings.l} 0;
+          border-top: 1px solid ${designSystem.colors.light.borderPrimary};
+          margin-right: ${designSystem.dimensions.spacings.m};
+          padding: ${designSystem.dimensions.spacings.l} 0;
         }
       `}
     >
@@ -116,7 +117,7 @@ const Sidebar = props => {
             to="/"
             css={css`
               text-decoration: none;
-              color: ${colors.light.primary};
+              color: ${designSystem.colors.light.primary};
               :hover {
                 text-decoration: underline;
               }

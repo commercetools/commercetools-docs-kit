@@ -5,9 +5,8 @@ import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import IconButton from '@commercetools-uikit/icon-button';
-import createStyledIcon from '../../utils/create-styled-icon';
+import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
-import { colors, dimensions, typography } from '../../design-system';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
@@ -38,49 +37,50 @@ const ContainerOverlay = styled.div`
   display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
   overflow: auto;
 
-  @media screen and (${dimensions.viewports.largeTablet}) {
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: none;
   }
 `;
 const SlidingContainer = styled.div`
-  background-color: ${colors.light.surfacePrimary};
+  background-color: ${designSystem.colors.light.surfacePrimary};
   animation: ${slideInAnimation} 0.5s ease-out alternate;
-  width: ${dimensions.widths.pageNavigation};
+  width: ${designSystem.dimensions.widths.pageNavigation};
   height: 100%;
   overflow: auto;
 `;
 const GridContainer = styled.div`
   display: none;
-  border-left: 1px solid ${colors.light.borderPrimary};
+  border-left: 1px solid ${designSystem.colors.light.borderPrimary};
 
-  @media screen and (${dimensions.viewports.largeTablet}) {
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
     grid-area: page-navigation;
-    width: ${dimensions.widths.pageNavigation};
+    width: ${designSystem.dimensions.widths.pageNavigation};
   }
-  @media screen and (${dimensions.viewports.laptop}) {
-    width: ${dimensions.widths.pageNavigationSmall};
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    width: ${designSystem.dimensions.widths.pageNavigationSmall};
   }
-  @media screen and (${dimensions.viewports.desktop}) {
-    width: ${dimensions.widths.pageNavigation};
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
 const StickyContainer = styled.div`
   position: sticky;
-  top: ${dimensions.spacings.xxl};
-  margin: 0 0 ${dimensions.spacings.s};
+  top: ${designSystem.dimensions.spacings.xxl};
+  margin: 0 0 ${designSystem.dimensions.spacings.s};
 `;
 const PageTitleLink = styled.a`
-  color: ${colors.light.textSecondary};
-  font-size: ${typography.fontSizes.extraSmall};
-  padding: ${dimensions.spacings.s} ${dimensions.spacings.m} 0;
+  color: ${designSystem.colors.light.textSecondary};
+  font-size: ${designSystem.typography.fontSizes.extraSmall};
+  padding: ${designSystem.dimensions.spacings.s}
+    ${designSystem.dimensions.spacings.m} 0;
   border-left: 1px solid transparent;
   text-decoration: none;
   :hover {
-    color: ${colors.light.linkNavigation};
+    color: ${designSystem.colors.light.linkNavigation};
     svg {
       * {
-        fill: ${colors.light.linkNavigation};
+        fill: ${designSystem.colors.light.linkNavigation};
       }
     }
   }
@@ -91,11 +91,14 @@ const PageTitleLink = styled.a`
 `;
 const ToggleMenuButton = styled.div`
   position: fixed;
-  top: calc(${dimensions.heights.header} + ${dimensions.spacings.m});
-  right: ${dimensions.spacings.m};
+  top: calc(
+    ${designSystem.dimensions.heights.header} +
+      ${designSystem.dimensions.spacings.m}
+  );
+  right: ${designSystem.dimensions.spacings.m};
   cursor: pointer;
 
-  @media screen and (${dimensions.viewports.largeTablet}) {
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: none;
   }
 `;
