@@ -17,6 +17,7 @@
   ],
   "scripts": {},
   "dependencies": {
+    "firstline": "^2.0.2",
     "webapi-parser": "^0.4.0"
   }
 }
