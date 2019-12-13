@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import {
-  SiteDataContext,
-  Reset,
-  Globals,
-  ErrorBoundary,
-} from '@commercetools-docs/ui-kit';
+import { Reset, Globals } from '@commercetools-docs/ui-kit';
+import { SiteDataContext } from '../hooks/use-site-data';
 import useAdditionalSiteData from '../overrides/use-additional-site-data';
+import ErrorBoundary from './error-boundary';
 
 const ThemeProvider = props => {
   const data = useStaticQuery(graphql`

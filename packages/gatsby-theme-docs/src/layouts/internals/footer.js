@@ -2,7 +2,8 @@ import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import { designSystem, ExternalSiteLink } from '@commercetools-docs/ui-kit';
+import { designSystem } from '@commercetools-docs/ui-kit';
+import { ExternalSiteLink } from '../../components';
 import LogoSvg from '../../icons/logo.svg';
 
 const Container = styled.div`

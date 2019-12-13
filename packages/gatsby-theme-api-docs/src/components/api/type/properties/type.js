@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from '@commercetools-docs/gatsby-theme-docs';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import { useTypeLocations } from '../../../../hooks/use-type-locations';
 import originalTypeDisplayText from '../../../../utils/original-type-display-text';
@@ -20,9 +21,9 @@ const Type = ({ apiKey, property, dataTestId }) => {
     <div data-testid={dataTestId ? `${dataTestId}` : null}>
       <div>
         {originalTypeLocation ? (
-          <Markdown.Link href={originalTypeLocation}>
+          <Link href={originalTypeLocation}>
             {originalTypeDisplayText(property)}
-          </Markdown.Link>
+          </Link>
         ) : (
           <span>{originalTypeDisplayText(property)}</span>
         )}

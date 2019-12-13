@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
+import { designSystem } from '@commercetools-docs/ui-kit';
+import Link from './link';
 
 const getStyles = props => {
   const baseStyles = css`
@@ -38,9 +39,9 @@ const getStyles = props => {
 const BetaFlag = props => {
   if (props.href) {
     return (
-      <Markdown.Link href={props.href} css={getStyles(props)}>
+      <Link href={props.href} css={getStyles(props)}>
         {'BETA'}
-      </Markdown.Link>
+      </Link>
     );
   }
   return <span css={getStyles(props)}>{'BETA'}</span>;

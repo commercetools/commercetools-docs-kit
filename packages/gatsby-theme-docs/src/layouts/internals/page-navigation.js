@@ -2,11 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import {
-  SafeHTMLElement,
-  useActiveSection,
-  designSystem,
-} from '@commercetools-docs/ui-kit';
+import { SafeHTMLElement, designSystem } from '@commercetools-docs/ui-kit';
+import useActiveSection from '../../hooks/use-active-section';
 
 const itemType = {
   url: PropTypes.string.isRequired,

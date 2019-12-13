@@ -1,9 +1,12 @@
 import React from 'react';
 import throttle from 'lodash.throttle';
-import { dimensions } from '../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
 const calculateOffset = () => {
-  const pxNumber = dimensions.heights.header.replace(/([0-9]+)px$/, '$1');
+  const pxNumber = designSystem.dimensions.heights.header.replace(
+    /([0-9]+)px$/,
+    '$1'
+  );
   return parseInt(pxNumber, 10) + 1; // 1px makes it aligned with the browser "anchor position"
 };
 

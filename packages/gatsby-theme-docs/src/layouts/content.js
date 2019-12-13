@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSiteData, Markdown } from '@commercetools-docs/ui-kit';
+import { Markdown } from '@commercetools-docs/ui-kit';
+import { useSiteData } from '../hooks/use-site-data';
 import { BetaFlag, ContentPagination } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import LayoutApplication from './internals/layout-application';

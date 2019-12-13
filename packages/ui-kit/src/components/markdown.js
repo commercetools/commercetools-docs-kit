@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import RibbonIcon from '../icons/ribbon-icon.svg';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import { CodeBlockMarkdownWrapper as CodeBlock } from './code-block';
-import Link from './link';
 
 const TypographyPage = styled.div`
   font-family: ${typography.fontFamilies.primary};
@@ -277,6 +276,5 @@ export {
   Strong,
   Delete,
   Hr,
-  Link,
   withAnchorLink,
 };
