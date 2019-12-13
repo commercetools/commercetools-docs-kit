@@ -4,6 +4,7 @@ export { default as LayoutMain } from './src/layouts/internals/layout-main';
 export { default as Footer } from './src/layouts/internals/footer';
 
 export {
+  BetaFlag,
   ErrorBoundary,
   Link,
   ExternalSiteLink,
