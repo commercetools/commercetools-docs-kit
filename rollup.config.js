@@ -10,7 +10,7 @@ const json = require('@rollup/plugin-json');
 const commonjs = require('rollup-plugin-commonjs');
 const peerDeps = require('rollup-plugin-peer-deps-external');
 const builtins = require('rollup-plugin-node-builtins');
-const svg = require('rollup-plugin-svg');
+const svgr = require('@svgr/rollup').default;
 
 const { packageJson: pkg } = readPkgUp.sync({
   cwd: fs.realpathSync(process.cwd()),
@@ -39,7 +39,7 @@ const plugins = [
   }),
   json({ namedExports: false }),
   builtins(),
-  svg(),
+  svgr(),
 ];
 
 const createConfig = cliArgs => [
