@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/commercetools/commercetools-docs-kit/compare/v1.3.1...v1.3.2) (2019-12-13)
+
+#### 🐛 Type: Bug
+
+- `ui-kit`
+  - [#162](https://github.com/commercetools/commercetools-docs-kit/pull/162) fix(ui-kit): bundle package using rollup ([@emmenko](https://github.com/emmenko))
+
 ## [1.3.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.3.0...v1.3.1) (2019-12-13)
 
 #### 🐛 Type: Bug
