@@ -5,18 +5,14 @@ module.exports = (themeOptions = {}) => ({
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'api-specs',
-        path: path.resolve('./src/api-specs'),
+        name: 'generated-api-specs',
+        path: path.resolve('./src/generated-api-specs'),
       },
     },
     '@commercetools-docs/gatsby-transformer-mdx-introspection',
     {
       resolve: '@commercetools-docs/gatsby-transformer-raml',
       options: {},
-    },
-    {
-      resolve: '@commercetools-docs/gatsby-transformer-raml-legacy',
-      options: themeOptions.transformerRaml,
     },
     {
       resolve: '@commercetools-docs/gatsby-theme-docs',
