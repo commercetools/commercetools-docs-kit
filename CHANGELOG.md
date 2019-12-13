@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.3.0...v1.3.1) (2019-12-13)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`, `ui-kit`
+  - [#160](https://github.com/commercetools/commercetools-docs-kit/pull/160) fix(theme): missing exports, add README to uikit ([@emmenko](https://github.com/emmenko))
+
 ## [1.3.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.2.1...v1.3.0) (2019-12-13)
 
 We added a new package `@commercetools-docs/ui-kit` that contains the low-level UI components used to build the documentation website.
