@@ -1,0 +1,60 @@
+#ByProjectKeyResourceArtificiallyComplexPathUriParameterOneByUriParameterOneByUriParameterTwo
+(resourcePathUri): /{projectKey}/resource/artificially-complex/path/uri-parameter-one={uriParameterOne}/{uriParameterTwo}
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The CTP project key.
+  uriParameterOne:
+    type: string
+    (builtinType): string
+    description: |-
+      A Path parameter in the equal-sign-pseudo-query notation
+  uriParameterTwo:
+    type: string
+    (builtinType): string
+    description: |-
+      A Path parameter as a plain variable path element
+post:
+  description: |-
+    Updates the resource. OutOfOrderPropertiesTestType is used because it is big and long.
+  queryParameters:
+    queryParameterOne:
+      required: false
+      format: int16
+      type: number
+      (builtinType): number
+      description: |-
+        some parameter to construct a combination of URI and query params
+    queryParameterTwo:
+      required: false
+      type: string
+      (builtinType): string
+  body:
+    application/json:
+      type: OutOfOrderPropertiesTestType
+      (builtinType): object
+      description: |-
+        Tests out of order properties. By convention, `id`, `key`, `version`, `createdAt`,
+        `createdBy`, `lastModifiedAt` and `lastModifiedBy` should display at the top (in that order).
+        `custom` should display at the bottom. All other properties should render in the order they
+        appear.
+        Some types will not have all of the 'conventional' properties – i.e. cart doesn't have a key field.
+        In this case, ordering would go `id`, `version`... etc.
+  responses:
+    200:
+      body:
+        application/json:
+          type: ArrayTestType
+          (builtinType): object
+          description: |-
+            A type containing arrays of different kinds.
+    202:
+      body:
+        application/json:
+          type: DateTestType
+          (builtinType): object
+          description: |-
+            Test data for the RAML date formats.

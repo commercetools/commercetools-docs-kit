@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+displayName: Reference
+type: object
+(builtinType): object
+discriminator: typeId
+(oneOf):
+- ExampleTargetTypeReference
+properties:
+  typeId:
+    type: ReferenceTypeId
+    (builtinType): string
+    description: |-
+      The allowed typeIds of the referenced resource.
+    required: true
+  id:
+    type: string
+    (builtinType): string
+    required: true
+  obj:
+    type: any
+    (builtinType): any
+    required: false

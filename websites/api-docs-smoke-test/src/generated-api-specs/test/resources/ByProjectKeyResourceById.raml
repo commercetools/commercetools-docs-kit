@@ -1,0 +1,63 @@
+#ByProjectKeyResourceById
+(resourcePathUri): /{projectKey}/resource/{id}
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The CTP project key.
+  id:
+    type: string
+    (builtinType): string
+post:
+  description: |-
+    Update a resource by ID
+  body:
+    application/json:
+      type: ExampleResourceUpdate
+      (builtinType): object
+get:
+  securedBy:
+  - oauth_2_0:
+      scopes:
+      - "manage_test:{projectKey}"
+      - "view_test:{projectKey}"
+  description: |-
+    Query by ID
+  queryParameters:
+    optionalQueryParameter:
+      required: false
+      type: string
+      (builtinType): string
+      description: |-
+        This is a query parameter.
+    secondOptionalQueryParameter:
+      required: false
+      type: string
+      (builtinType): string
+      description: |-
+        This is another query parameter.
+  responses:
+    200:
+      body:
+        application/json:
+          type: ObjectTestType
+          (builtinType): object
+          description: |-
+            A typical Object type with a non-scalar property.
+delete:
+  securedBy:
+  - oauth_2_0:
+      scopes:
+      - "manage_test:{projectKey}"
+  description: |-
+    Deletes a resource.
+  responses:
+    200:
+      body:
+        application/json:
+          type: ObjectTestType
+          (builtinType): object
+          description: |-
+            A typical Object type with a non-scalar property.

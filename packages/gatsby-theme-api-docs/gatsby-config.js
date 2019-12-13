@@ -16,24 +16,7 @@ module.exports = (themeOptions = {}) => ({
     },
     {
       resolve: '@commercetools-docs/gatsby-transformer-raml-legacy',
-      options: {
-        validate: true,
-        includeApis: ['test'],
-        annotateConstantLikeEnums: true,
-        annotateUnionLikeInheritance: true,
-        customNumberScalars: true,
-        flattenLibraryNamespaces: true,
-        movePropertiesToTop: [
-          'id',
-          'version',
-          'key',
-          'createdAt',
-          'createdBy',
-          'lastModifiedAt',
-          'lastModifiedBy',
-        ],
-        movePropertiesToBottom: ['custom'],
-      },
+      options: themeOptions.transformerRaml,
     },
     {
       resolve: '@commercetools-docs/gatsby-theme-docs',

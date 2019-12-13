@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+displayName: UnionLikeSubType1
+type: UnionLikeType
+(builtinType): object
+discriminatorValue: subtype1
+description: |-
+  This specific instance of the union is rendered like a regular type with a property table
+properties:
+  kind:
+    type: string
+    (builtinType): string
+    enum:
+    - subtype1
+    required: true
+  foo:
+    type: string
+    (builtinType): string
+    required: true
+  name:
+    type: string
+    (builtinType): string
+    required: true
