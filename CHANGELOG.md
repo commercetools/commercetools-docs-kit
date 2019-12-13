@@ -1,3 +1,29 @@
+## [1.3.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.2.1...v1.3.0) (2019-12-13)
+
+We added a new package `@commercetools-docs/ui-kit` that contains the low-level UI components used to build the documentation website.
+
+If you need to use some of these components, you can use do that directly using the package. Previously some of those components were exposed from the `@commercetools-docs/gatsby-theme-docs`. For backwards compatibility, all exports of `@commercetools-docs/ui-kit` are exposed on the `@commercetools-docs/gatsby-theme-docs` package as well.
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`
+  - [#158](https://github.com/commercetools/commercetools-docs-kit/pull/158) fix(theme): overflow shorthand ([@emmenko](https://github.com/emmenko))
+  - [#153](https://github.com/commercetools/commercetools-docs-kit/pull/153) fix(theme): list items spacing ([@emmenko](https://github.com/emmenko))
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`, `ui-kit`
+  - [#150](https://github.com/commercetools/commercetools-docs-kit/pull/150) feat: extract ui components into a uikit package ([@emmenko](https://github.com/emmenko))
+- `broken-link-checker`
+  - [#156](https://github.com/commercetools/commercetools-docs-kit/pull/156) feat(broken-link-checker): warn on insecure links ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`
+  - [#154](https://github.com/commercetools/commercetools-docs-kit/pull/154) refactor(theme): do not render search bar when excludeFromSearchIndex is true ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-api-docs`
+  - [#155](https://github.com/commercetools/commercetools-docs-kit/pull/155) refactor(theme-api): no hardcoded transformer raml options, instead forward options ([@emmenko](https://github.com/emmenko))
+
 ## [1.2.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.2.0...v1.2.1) (2019-12-12)
 
 #### 🐛 Type: Bug
