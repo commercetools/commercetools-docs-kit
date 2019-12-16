@@ -63,13 +63,15 @@ function createTypeNode({
   createParentChildLink,
   createContentDigest,
 }) {
+  const postProcessedType = postProcessType(type, fileNode.relativeDirectory);
+
   const typeNode = {
-    ...type,
+    ...postProcessedType,
     id: createNodeId(`${fileNode.id} >>> RAML_TYPE`),
     children: [],
     parent: fileNode.id,
     internal: {
-      contentDigest: createContentDigest(type),
+      contentDigest: createContentDigest(postProcessedType),
       mediaType: fileNode.internal.mediaType,
       type: 'RamlType',
     },
@@ -77,6 +79,68 @@ function createTypeNode({
 
   createNode(typeNode);
   createParentChildLink({ parent: fileNode, child: typeNode });
+}
+
+function postProcessType(type, fileNodeRelativeDirectory) {
+  const postProcessedType = extractParenthesisFromAnnotationIdentifier(type);
+
+  postProcessedType.apiKey = fileNodeRelativeDirectory.replace(`/types`, '');
+  postProcessedType.properties = propertiesToArrays(
+    postProcessedType.properties
+  );
+  postProcessedType.examples = examplesToArrays(postProcessedType.examples);
+
+  return postProcessedType;
+}
+
+function extractParenthesisFromAnnotationIdentifier(type) {
+  const returnedType = {};
+
+  Object.keys(type).forEach(key => {
+    const keyWithoutParenthesis = key.replace(`(`, '').replace(`)`, '');
+
+    if (computeType(type[key]) === 'object') {
+      returnedType[
+        keyWithoutParenthesis
+      ] = extractParenthesisFromAnnotationIdentifier(type[key]);
+      return;
+    }
+
+    returnedType[keyWithoutParenthesis] = type[key];
+  });
+
+  return returnedType;
+}
+
+function computeType(value) {
+  /**
+   * More info about why we need this better type checker here:
+   * https://blog.logrocket.com/javascript-typeof-2511d53a1a62/
+   */
+  const regex = /^\[object (\S+?)\]$/;
+  const matches = Object.prototype.toString.call(value).match(regex) || [];
+
+  return (matches[1] || 'undefined').toLowerCase();
+}
+
+function propertiesToArrays(properties) {
+  if (properties) {
+    return Object.entries(properties).map(([key, value]) => {
+      return { name: key, definition: value };
+    });
+  }
+
+  return undefined;
+}
+
+function examplesToArrays(examples) {
+  if (examples) {
+    return Object.entries(examples).map(([key, value]) => {
+      return { name: key, path: value };
+    });
+  }
+
+  return undefined;
 }
 
 exports.onCreateNode = onCreateNode;
