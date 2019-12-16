@@ -89,6 +89,9 @@ function postProcessType(type, fileNodeRelativeDirectory) {
     postProcessedType.properties
   );
   postProcessedType.examples = examplesToArrays(postProcessedType.examples);
+  postProcessedType.enumDescriptions = enumDescriptionsToArray(
+    postProcessedType.enumDescriptions
+  );
 
   return postProcessedType;
 }
@@ -126,7 +129,7 @@ function computeType(value) {
 function propertiesToArrays(properties) {
   if (properties) {
     return Object.entries(properties).map(([key, value]) => {
-      return { name: key, definition: value };
+      return { ...value, displayName: key };
     });
   }
 
@@ -137,6 +140,16 @@ function examplesToArrays(examples) {
   if (examples) {
     return Object.entries(examples).map(([key, value]) => {
       return { name: key, path: value };
+    });
+  }
+
+  return undefined;
+}
+
+function enumDescriptionsToArray(enumDescriptions) {
+  if (enumDescriptions) {
+    return Object.entries(enumDescriptions).map(([key, value]) => {
+      return { name: key, description: value };
     });
   }
 
