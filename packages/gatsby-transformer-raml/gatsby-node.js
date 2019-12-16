@@ -14,19 +14,18 @@ async function onCreateNode({
 
   const ramlIndicator = await firstline(node.absolutePath);
 
-  if (ramlIndicator.trim() === '#%RAML 1.0') {
+  if (ramlIndicator.trim() === '#%RAML 1.0 DataType') {
     const content = await loadNodeContent(node);
     const JSYAML_SCHEMA = createJsYamlSchema();
 
     try {
       const parsedContent = jsYaml.load(content, { schema: JSYAML_SCHEMA });
-      const transformedParsedContent = transformParsedContent(parsedContent);
 
       const { createNode, createParentChildLink } = actions;
 
-      createApiNode({
+      createTypeNode({
+        type: parsedContent,
         fileNode: node,
-        api: transformedParsedContent,
         createNode,
         createNodeId,
         createParentChildLink,
@@ -56,77 +55,28 @@ function createJsYamlSchema() {
   return jsYaml.Schema.create([IncludeYamlType]);
 }
 
-function createApiNode({
+function createTypeNode({
+  type,
   fileNode,
-  api,
   createNode,
   createNodeId,
   createParentChildLink,
   createContentDigest,
 }) {
-  const apiKey = apiKeyForFileNode(fileNode);
-  const apiObj = { ...api, apiKey };
-
-  const apiNode = {
-    ...apiObj,
-    id: createNodeId(`${fileNode.id}.${apiKey} >>> RAML_API`),
+  const typeNode = {
+    ...type,
+    id: createNodeId(`${fileNode.id} >>> RAML_TYPE`),
     children: [],
     parent: fileNode.id,
     internal: {
-      contentDigest: createContentDigest(apiObj),
+      contentDigest: createContentDigest(type),
       mediaType: fileNode.internal.mediaType,
-      type: 'RamlApi',
+      type: 'RamlType',
     },
   };
 
-  createNode(apiNode);
-  createParentChildLink({ parent: fileNode, child: apiNode });
-}
-
-function apiKeyForFileNode(node) {
-  // Build a conventional unique key for the api from the file system structure.
-  // This convention is needed because RAML does not allow to specify a unique own ID of an API.
-  // Consider well whether to change this, many links in content will rely on it.
-  const directoryKey = node.relativeDirectory.replace('/', '-');
-  let apiKey;
-  if (node.name === 'api') {
-    apiKey = directoryKey;
-  } else if (node.name.startsWith(directoryKey)) {
-    apiKey = node.name;
-  } else {
-    apiKey = `${directoryKey}-${node.name}`;
-  }
-  return apiKey.toLowerCase();
-}
-
-function transformParsedContent(doc) {
-  const newDoc = {};
-  const endpoints = [];
-
-  Object.keys(doc).forEach(key => {
-    if (key === 'types') {
-      newDoc.types = typesObjectToArray(doc[key]);
-      return;
-    }
-
-    if (key.startsWith('/')) {
-      endpoints.push({ endpoint: key, path: doc[key] });
-      return;
-    }
-
-    newDoc[key] = doc[key];
-  });
-
-  newDoc.endpoints = endpoints;
-
-  return newDoc;
-}
-
-function typesObjectToArray(types) {
-  const typesKeyValue = Object.entries(types);
-  return typesKeyValue.map(([key, value]) => {
-    return { name: key, path: value };
-  });
+  createNode(typeNode);
+  createParentChildLink({ parent: fileNode, child: typeNode });
 }
 
 exports.onCreateNode = onCreateNode;
