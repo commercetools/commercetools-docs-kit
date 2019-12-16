@@ -10,7 +10,6 @@ const LayoutPage = props => (
     css={css`
       grid-area: page;
       min-width: 0;
-      min-height: calc(100vh - ${designSystem.dimensions.heights.header});
       overflow-x: hidden;
       overflow-y: auto; /* to show the scrollbar only when necessary */
       -webkit-overflow-scrolling: touch; /* enables "momentum" style scrolling */

@@ -8,7 +8,8 @@ const Container = styled.div`
   display: grid;
   grid:
     [row1-start] 'header' ${designSystem.dimensions.heights.header} [row1-end]
-    [row2-start] 'main' 1fr [row2-end]
+    [row2-start] 'breadcrumbs' auto [row2-end]
+    [row3-start] 'main' 1fr [row3-end]
     / 1fr;
 
   @media only percy {

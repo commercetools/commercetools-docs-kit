@@ -5,11 +5,11 @@ import { useSiteData } from '../hooks/use-site-data';
 import { BetaFlag, ContentPagination } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import LayoutApplication from './internals/layout-application';
-import LayoutCentered from './internals/layout-centered';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
+import LayoutBreadcrumbs from './internals/layout-breadcrumbs';
 import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
@@ -26,41 +26,41 @@ const LayoutContent = props => {
         siteTitle={siteData.siteMetadata.title}
         excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
       />
-      <LayoutCentered>
-        <LayoutMain>
-          <LayoutSidebar
-            isMenuOpen={isMenuOpen}
-            setMenuOpen={setMenuOpen}
-            slug={props.pageContext.slug}
-            siteTitle={siteData.siteMetadata.title}
-            isGlobalBeta={props.pageContext.isGlobalBeta}
+      <LayoutBreadcrumbs
+        slug={props.pageContext.slug}
+        siteTitle={siteData.siteMetadata.title}
+      />
+      <LayoutMain>
+        <LayoutSidebar
+          isMenuOpen={isMenuOpen}
+          setMenuOpen={setMenuOpen}
+          slug={props.pageContext.slug}
+          siteTitle={siteData.siteMetadata.title}
+          isGlobalBeta={props.pageContext.isGlobalBeta}
+        />
+        <LayoutPage>
+          <LayoutPageHeader>
+            {props.pageContext.beta && (
+              <BetaFlag href={siteData.siteMetadata.betaLink} />
+            )}
+            <Markdown.H1>{props.pageContext.title}</Markdown.H1>
+          </LayoutPageHeader>
+          <LayoutPageHeaderSide>
+            <PlaceholderPageHeaderSide />
+          </LayoutPageHeaderSide>
+          <LayoutPageContent>
+            <PageContentInset>
+              {props.children}
+              <ContentPagination slug={props.pageContext.slug} />
+            </PageContentInset>
+            <LayoutFooter />
+          </LayoutPageContent>
+          <LayoutPageNavigation
+            pageTitle={props.pageContext.shortTitle || props.pageContext.title}
+            tableOfContents={props.pageData.tableOfContents}
           />
-          <LayoutPage>
-            <LayoutPageHeader>
-              {props.pageContext.beta && (
-                <BetaFlag href={siteData.siteMetadata.betaLink} />
-              )}
-              <Markdown.H1>{props.pageContext.title}</Markdown.H1>
-            </LayoutPageHeader>
-            <LayoutPageHeaderSide>
-              <PlaceholderPageHeaderSide />
-            </LayoutPageHeaderSide>
-            <LayoutPageContent>
-              <PageContentInset>
-                {props.children}
-                <ContentPagination slug={props.pageContext.slug} />
-              </PageContentInset>
-              <LayoutFooter />
-            </LayoutPageContent>
-            <LayoutPageNavigation
-              pageTitle={
-                props.pageContext.shortTitle || props.pageContext.title
-              }
-              tableOfContents={props.pageData.tableOfContents}
-            />
-          </LayoutPage>
-        </LayoutMain>
-      </LayoutCentered>
+        </LayoutPage>
+      </LayoutMain>
     </LayoutApplication>
   );
 };
