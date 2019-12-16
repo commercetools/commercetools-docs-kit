@@ -20,12 +20,13 @@ async function onCreateNode({
 
     try {
       const parsedContent = jsYaml.load(content, { schema: JSYAML_SCHEMA });
+      const transformedParsedContent = transformParsedContent(parsedContent);
 
       const { createNode, createParentChildLink } = actions;
 
       createApiNode({
         fileNode: node,
-        api: parsedContent,
+        api: transformedParsedContent,
         createNode,
         createNodeId,
         createParentChildLink,
@@ -55,22 +56,6 @@ function createJsYamlSchema() {
   return jsYaml.Schema.create([IncludeYamlType]);
 }
 
-function apiKeyForFileNode(node) {
-  // Build a conventional unique key for the api from the file system structure.
-  // This convention is needed because RAML does not allow to specify a unique own ID of an API.
-  // Consider well whether to change this, many links in content will rely on it.
-  const directoryKey = node.relativeDirectory.replace('/', '-');
-  let apiKey;
-  if (node.name === 'api') {
-    apiKey = directoryKey;
-  } else if (node.name.startsWith(directoryKey)) {
-    apiKey = node.name;
-  } else {
-    apiKey = `${directoryKey}-${node.name}`;
-  }
-  return apiKey.toLowerCase();
-}
-
 function createApiNode({
   fileNode,
   api,
@@ -96,6 +81,52 @@ function createApiNode({
 
   createNode(apiNode);
   createParentChildLink({ parent: fileNode, child: apiNode });
+}
+
+function apiKeyForFileNode(node) {
+  // Build a conventional unique key for the api from the file system structure.
+  // This convention is needed because RAML does not allow to specify a unique own ID of an API.
+  // Consider well whether to change this, many links in content will rely on it.
+  const directoryKey = node.relativeDirectory.replace('/', '-');
+  let apiKey;
+  if (node.name === 'api') {
+    apiKey = directoryKey;
+  } else if (node.name.startsWith(directoryKey)) {
+    apiKey = node.name;
+  } else {
+    apiKey = `${directoryKey}-${node.name}`;
+  }
+  return apiKey.toLowerCase();
+}
+
+function transformParsedContent(doc) {
+  const newDoc = {};
+  const endpoints = [];
+
+  Object.keys(doc).forEach(key => {
+    if (key === 'types') {
+      newDoc.types = typesObjectToArray(doc[key]);
+      return;
+    }
+
+    if (key.startsWith('/')) {
+      endpoints.push({ endpoint: key, path: doc[key] });
+      return;
+    }
+
+    newDoc[key] = doc[key];
+  });
+
+  newDoc.endpoints = endpoints;
+
+  return newDoc;
+}
+
+function typesObjectToArray(types) {
+  const typesKeyValue = Object.entries(types);
+  return typesKeyValue.map(([key, value]) => {
+    return { name: key, path: value };
+  });
 }
 
 exports.onCreateNode = onCreateNode;
