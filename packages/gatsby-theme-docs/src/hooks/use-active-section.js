@@ -1,21 +1,14 @@
 import React from 'react';
 import throttle from 'lodash.throttle';
-import { designSystem } from '@commercetools-docs/ui-kit';
-
-const calculateOffset = () => {
-  const pxNumber = designSystem.dimensions.heights.header.replace(
-    /([0-9]+)px$/,
-    '$1'
-  );
-  return parseInt(pxNumber, 10) + 1; // 1px makes it aligned with the browser "anchor position"
-};
 
 const getSectionElements = () =>
   document.querySelectorAll('section[class^="section-h"]');
 const getScrollContainer = () => document.querySelector('[role="main"]');
+const getHeaderContainer = () => document.querySelector('header');
+const getBreadcrumbsContainer = () =>
+  document.querySelector('nav[aria-label="Breadcrumbs"]');
 
 const throttleMs = 100;
-const offset = calculateOffset();
 
 const useScrollSpy = () => {
   const [activeSection, setActiveSection] = React.useState();
@@ -25,6 +18,13 @@ const useScrollSpy = () => {
       const sectionElements = getSectionElements();
       let nextActiveSection;
       sectionElements.forEach(section => {
+        const headerContainer = getHeaderContainer();
+        const breadcrumbsContainer = getBreadcrumbsContainer();
+        const offset =
+          headerContainer.clientHeight +
+          breadcrumbsContainer.clientHeight +
+          // "+ 2" makes it aligned with the browser "anchor position"
+          2;
         if (section.getBoundingClientRect().top - offset < 0) {
           nextActiveSection = section;
         }

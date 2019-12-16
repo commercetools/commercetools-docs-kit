@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useStaticQuery, graphql } from 'gatsby';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem, Link as StyledLink } from '@commercetools-docs/ui-kit';
 import Link from '../../components/link';
 
@@ -59,13 +58,17 @@ const Container = styled.div`
     );
   }
 `;
-const Inner = styled.div`
+const Navigation = styled.nav`
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   padding: ${designSystem.dimensions.spacings.xs}
     ${designSystem.dimensions.spacings.m};
-`;
-const Divider = styled.span`
-  color: ${designSystem.colors.light.textFaded};
+
+  a + a::before,
+  a + span::before {
+    color: ${designSystem.colors.light.textFaded};
+    margin: 0 ${designSystem.dimensions.spacings.s};
+    content: '/';
+  }
 `;
 const RootBreadcrumbLink = styled(StyledLink)`
   text-decoration: none;
@@ -124,25 +127,26 @@ const LayoutBreadcrumbs = props => {
       <EmptyLeft />
       <EmptyRight />
       <Container>
-        <Inner>
-          <SpacingsInline scale="s">
-            {breadcrumbs.map(({ label, href, Component }, index) => {
-              const isLast = breadcrumbs.length - (index + 1) === 0;
-              const Breadcrumb = (() => {
-                if (Component) return Component;
-                if (isLast) return ActiveBreadcrumbLink;
-                if (href) return BreadcrumbLink;
-                return ActiveBreadcrumbLink;
-              })();
-              return (
-                <React.Fragment key={index}>
-                  <Breadcrumb href={href}>{label}</Breadcrumb>
-                  {isLast ? null : <Divider>{'/'}</Divider>}
-                </React.Fragment>
-              );
-            })}
-          </SpacingsInline>
-        </Inner>
+        <Navigation aria-label="Breadcrumbs">
+          {breadcrumbs.map(({ label, href, Component }, index) => {
+            const isLast = breadcrumbs.length - (index + 1) === 0;
+            const Breadcrumb = (() => {
+              if (Component) return Component;
+              if (isLast) return ActiveBreadcrumbLink;
+              if (href) return BreadcrumbLink;
+              return ActiveBreadcrumbLink;
+            })();
+            return (
+              <Breadcrumb
+                key={index}
+                href={href}
+                {...(isLast ? { ariaCurrent: 'page' } : {})}
+              >
+                {label}
+              </Breadcrumb>
+            );
+          })}
+        </Navigation>
       </Container>
     </Wrapper>
   );
