@@ -26,7 +26,8 @@
     "test:watch": "yarn test --watch",
     "test:e2e": "cross-env NODE_ENV=test cypress run",
     "changelog": "node scripts/changelog.js",
-    "prerelease": "yarn prebuild",
+    "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
+    "prerelease": "yarn check-npm-login && yarn prebuild",
     "release": "lerna publish --exact",
     "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes"
   },
