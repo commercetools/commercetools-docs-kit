@@ -49,9 +49,9 @@ const Globals = () => (
       .gatsby-resp-image-image {
         background-color: ${colors.light.surfacePrimary};
         box-shadow: none !important;
-        width: calc(100% - ${dimensions.spacings.s} * 2);
-        height: auto;
-        margin: ${dimensions.spacings.s};
+        width: calc(100% - ${dimensions.spacings.s} * 2) !important;
+        height: auto !important;
+        margin: ${dimensions.spacings.s} !important;
       }
       .gatsby-resp-image-figure .gatsby-resp-image-wrapper {
         background-color: unset;
@@ -60,9 +60,9 @@ const Globals = () => (
         padding: unset;
       }
       .gatsby-resp-image-figure .gatsby-resp-image-image {
-        width: 100%;
-        height: unset;
-        margin: unset;
+        width: 100% !important;
+        height: unset !important;
+        margin: unset !important;
       }
       .gatsby-resp-image-figcaption {
         color: ${colors.light.textSecondary};

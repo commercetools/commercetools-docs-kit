@@ -23,8 +23,8 @@
     "unified": "8.4.2"
   },
   "devDependencies": {
-    "gatsby": "2.18.6",
-    "gatsby-cli": "2.8.15"
+    "gatsby": "2.18.12",
+    "gatsby-cli": "2.8.19"
   },
   "peerDependencies": {
     "@emotion/core": "10.x",
