@@ -7,6 +7,7 @@ import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
+import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
 import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
@@ -26,32 +27,34 @@ const LayoutContent = props => {
         siteTitle={siteData.siteMetadata.title}
         isGlobalBeta={props.pageContext.isGlobalBeta}
       />
-      <LayoutPage>
-        <LayoutHeader
-          siteTitle={siteData.siteMetadata.title}
-          excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
-        />
-        <LayoutPageHeader>
-          {props.pageContext.beta && (
-            <BetaFlag href={siteData.siteMetadata.betaLink} />
-          )}
-          <Markdown.H1>{props.pageContext.title}</Markdown.H1>
-        </LayoutPageHeader>
-        <LayoutPageHeaderSide>
-          <PlaceholderPageHeaderSide />
-        </LayoutPageHeaderSide>
-        <LayoutPageContent>
-          <PageContentInset>
-            {props.children}
-            <ContentPagination slug={props.pageContext.slug} />
-          </PageContentInset>
-        </LayoutPageContent>
-        <LayoutPageNavigation
-          pageTitle={props.pageContext.shortTitle || props.pageContext.title}
-          tableOfContents={props.pageData.tableOfContents}
-        />
+      <LayoutMain>
+        <LayoutPage id="top">
+          <LayoutHeader
+            siteTitle={siteData.siteMetadata.title}
+            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+          />
+          <LayoutPageHeader>
+            {props.pageContext.beta && (
+              <BetaFlag href={siteData.siteMetadata.betaLink} />
+            )}
+            <Markdown.H1>{props.pageContext.title}</Markdown.H1>
+          </LayoutPageHeader>
+          <LayoutPageHeaderSide>
+            <PlaceholderPageHeaderSide />
+          </LayoutPageHeaderSide>
+          <LayoutPageContent>
+            <PageContentInset>
+              {props.children}
+              <ContentPagination slug={props.pageContext.slug} />
+            </PageContentInset>
+          </LayoutPageContent>
+          <LayoutPageNavigation
+            pageTitle={props.pageContext.shortTitle || props.pageContext.title}
+            tableOfContents={props.pageData.tableOfContents}
+          />
+        </LayoutPage>
         <LayoutFooter />
-      </LayoutPage>
+      </LayoutMain>
     </LayoutApplication>
   );
 };

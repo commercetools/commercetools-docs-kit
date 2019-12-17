@@ -97,7 +97,7 @@ const LayoutPageNavigation = props => {
 
   const navigationContainer = (
     <SpacingsStack scale="m">
-      <PageTitleLink href="#anchor-page-top">
+      <PageTitleLink href="#top">
         <SpacingsInline scale="s" alignItems="center">
           <div>
             <StackedLinesIndentedIcon color="textSecondary" />
