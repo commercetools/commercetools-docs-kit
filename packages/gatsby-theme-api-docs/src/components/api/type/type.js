@@ -16,7 +16,9 @@ const ApiType = props => {
   });
 
   if (!matchedApiType) {
-    throw new Error(`Type with name '${props.type}' not found in API`);
+    return (
+      <div>{`Type with name '${props.type}' not found in '${props.apiKey}' API`}</div>
+    );
   }
 
   const apiTypeSubTypes = filterOutApiTypeSubtypes(matchedApiType, apiTypes);
