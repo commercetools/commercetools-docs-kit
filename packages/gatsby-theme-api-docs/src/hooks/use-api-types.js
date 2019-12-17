@@ -15,6 +15,7 @@ export const useApiTypes = () => {
           nodes {
             apiKey
             builtinType
+            constant
             description
             discriminator
             discriminatorValue
@@ -34,6 +35,7 @@ export const useApiTypes = () => {
             properties {
               beta
               builtinType
+              constant
               default
               deprecated
               description

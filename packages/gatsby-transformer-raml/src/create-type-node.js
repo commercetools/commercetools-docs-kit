@@ -42,7 +42,7 @@ function postProcessType(type, fileNodeRelativeDirectory) {
 }
 
 function doRecursion(type) {
-  const returnedType = {};
+  let returnedType = {};
 
   Object.keys(type).forEach(key => {
     // remove parenthesis from annotation identifier
@@ -58,6 +58,15 @@ function doRecursion(type) {
     }
 
     returnedType[keyWithoutParenthesis] = type[key];
+
+    // generate constant field for constant-like
+    if (keyWithoutParenthesis === 'enumeration') {
+      const { enumeration } = returnedType;
+
+      if (enumeration.length === 1) {
+        returnedType = { ...returnedType, constant: enumeration[0] };
+      }
+    }
   });
 
   return returnedType;
