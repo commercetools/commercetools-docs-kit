@@ -20,6 +20,7 @@ const Container = styled.div`
 const LayoutApplication = props => (
   <UiKitThemeProvider theme={designSystem.uikitTheme}>
     <Container {...props} />
+    <div id="modal-portal" />
   </UiKitThemeProvider>
 );
 

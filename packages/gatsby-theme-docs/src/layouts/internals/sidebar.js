@@ -101,8 +101,10 @@ const Sidebar = props => {
     }
   `);
   return (
-    <div
+    <nav
+      aria-label="Main navigation"
       css={css`
+        width: 100%;
         > * + * {
           border-top: 1px solid ${designSystem.colors.light.borderPrimary};
           margin-right: ${designSystem.dimensions.spacings.m};
@@ -148,7 +150,7 @@ const Sidebar = props => {
           </SpacingsStack>
         </SpacingsStack>
       ))}
-    </div>
+    </nav>
   );
 };
 Sidebar.displayName = 'Sidebar';
