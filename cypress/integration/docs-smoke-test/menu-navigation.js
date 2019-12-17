@@ -9,7 +9,9 @@ describe('Menu navigation', () => {
       cy.get('aside').should('be.visible');
       cy.get('aside').within(() => {
         cy.findByText('Docs Smoke Test');
-        cy.percySnapshot();
+        cy.percySnapshot(cy.state('runnable').fullTitle(), {
+          widths: [956],
+        });
       });
     });
   });
