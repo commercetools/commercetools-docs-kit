@@ -13,56 +13,49 @@ export const useApiTypes = () => {
       {
         allRamlType {
           nodes {
-            name
-            key
+            apiKey
+            builtinType
             description
-            additionalProperties
             discriminator
             discriminatorValue
-            apiKey
-            type
-            originalType
-            library
-            constant
-            unionLike
-            enumeration
-            properties {
-              beta
-              deprecated
-              enumDescriptions {
-                name
-                description
-              }
-              constant
-              library
+            displayName
+            enumDescriptions {
               name
               description
-              type
-              originalType
-              default
-              minLength
-              maxLength
-              uniqueItems
-              enumeration
-              minimum
-              maximum
-              pattern
-              items {
-                type
-                originalType
-              }
-              minItems
-              maxItems
-              anyOf {
-                type
-                name
-              }
-              required
             }
+            enumeration
             examples {
               name
-              value
+              file {
+                absolutePath
+              }
             }
+            oneOf
+            properties {
+              beta
+              builtinType
+              default
+              deprecated
+              description
+              discriminatorValue
+              enumeration
+              items {
+                type
+              }
+              maxItems
+              maxLength
+              maximum
+              minItems
+              minLength
+              minimum
+              name
+              pattern
+              required
+              type
+              uniqueItems
+            }
+            refersTo
+            type
           }
         }
       }

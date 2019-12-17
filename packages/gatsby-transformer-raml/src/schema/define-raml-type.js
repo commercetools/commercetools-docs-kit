@@ -4,8 +4,8 @@ const defineRamlType = ({ schema, createTypes }) => {
       name: 'RamlType',
       fields: {
         apiKey: 'String!',
-        builtinType: 'String!',
-        description: 'String!',
+        builtinType: 'String',
+        description: 'String',
         discriminator: 'String',
         discriminatorValue: 'String',
         displayName: 'String',
@@ -39,7 +39,7 @@ const defineRamlType = ({ schema, createTypes }) => {
       name: 'RamlTypeProperty',
       fields: {
         beta: 'Boolean',
-        builtinType: 'String!',
+        builtinType: 'String',
         default: 'String',
         deprecated: 'Boolean',
         description: 'String',
