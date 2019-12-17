@@ -38,7 +38,7 @@ const MenuButton = styled.button`
   cursor: pointer;
   padding: ${designSystem.dimensions.spacings.s}
     ${designSystem.dimensions.spacings.m};
-  background-color: ${designSystem.colors.light.surfacePrimary};
+  background-color: ${designSystem.colors.light.surfaceSecondary1};
   transition: background-color 0.5s;
 
   > svg {
@@ -50,9 +50,9 @@ const MenuButton = styled.button`
     outline: 1px solid ${designSystem.colors.light.surfaceSecondary3};
   }
   :hover {
-    background-color: ${designSystem.colors.light.surfacePrimary};
+    background-color: ${designSystem.colors.light.surfaceSecondary3};
     > svg {
-      stroke: ${designSystem.colors.light.surfacePrimary};
+      stroke: ${designSystem.colors.light.surfaceSecondary1};
     }
   }
 
