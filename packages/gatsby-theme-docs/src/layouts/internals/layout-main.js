@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const Container = styled.div`
+const Container = styled.main`
   grid-area: main;
   min-width: 0;
   position: relative;

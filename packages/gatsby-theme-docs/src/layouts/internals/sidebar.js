@@ -11,7 +11,7 @@ import { BetaFlag } from '../../components';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 
-const NavContainer = styled.div`
+const NavContainer = styled.nav`
   box-shadow: ${designSystem.tokens.shadow9};
   flex: 1;
 `;
@@ -171,7 +171,7 @@ const Sidebar = props => {
           </LogoContainer>
         </LogoLink>
       </MenuLogoContainer>
-      <NavContainer>
+      <NavContainer aria-label="Main navigation">
         <WebsiteTitle>
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaFlag />}</div>

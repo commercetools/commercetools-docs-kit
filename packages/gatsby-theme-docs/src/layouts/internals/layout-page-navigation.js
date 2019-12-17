@@ -96,17 +96,19 @@ const LayoutPageNavigation = props => {
     return null;
 
   const navigationContainer = (
-    <SpacingsStack scale="m">
-      <PageTitleLink href="#top">
-        <SpacingsInline scale="s" alignItems="center">
-          <div>
-            <StackedLinesIndentedIcon color="textSecondary" />
-          </div>
-          <div>{props.pageTitle}</div>
-        </SpacingsInline>
-      </PageTitleLink>
-      <PageNavigation tableOfContents={props.tableOfContents} />
-    </SpacingsStack>
+    <nav aria-label="Page index navigation">
+      <SpacingsStack scale="m">
+        <PageTitleLink href="#top">
+          <SpacingsInline scale="s" alignItems="center">
+            <div>
+              <StackedLinesIndentedIcon color="textSecondary" />
+            </div>
+            <div>{props.pageTitle}</div>
+          </SpacingsInline>
+        </PageTitleLink>
+        <PageNavigation tableOfContents={props.tableOfContents} />
+      </SpacingsStack>
+    </nav>
   );
 
   if (isMenuOpen) {
@@ -136,7 +138,7 @@ const LayoutPageNavigation = props => {
           }}
         />
       </ToggleMenuButton>
-      <GridContainer role="navigation" aria-label="Page navigation">
+      <GridContainer>
         <StickyContainer>{navigationContainer}</StickyContainer>
       </GridContainer>
     </>
