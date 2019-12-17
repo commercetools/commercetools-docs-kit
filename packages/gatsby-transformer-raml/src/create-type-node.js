@@ -30,7 +30,7 @@ function postProcessType(type, fileNodeRelativeDirectory) {
   const postProcessedType = doRecursion(type);
 
   postProcessedType.apiKey = fileNodeRelativeDirectory.replace(`/types`, '');
-  postProcessedType.properties = propertiesToArrays(
+  postProcessedType.properties = processProperties(
     postProcessedType.properties
   );
   postProcessedType.examples = examplesToArrays(postProcessedType.examples);
@@ -63,6 +63,13 @@ function doRecursion(type) {
   return returnedType;
 }
 
+function processProperties(properties) {
+  let propertiesArray = propertiesToArrays(properties);
+
+  propertiesArray = resolveConflictingFieldTypes(propertiesArray);
+  return propertiesArray;
+}
+
 function propertiesToArrays(properties) {
   if (properties) {
     return Object.entries(properties).map(([key, value]) => {
@@ -71,6 +78,41 @@ function propertiesToArrays(properties) {
   }
 
   return undefined;
+}
+
+function resolveConflictingFieldTypes(properties) {
+  if (properties) {
+    const propsToStringify = ['default', 'enumeration'];
+
+    return properties.map(property => {
+      const returnedProperty = JSON.parse(JSON.stringify(property));
+
+      propsToStringify.forEach(prop => {
+        if (returnedProperty[prop]) {
+          returnedProperty[prop] = stringifyField(returnedProperty[prop]);
+        }
+      });
+
+      return returnedProperty;
+    });
+  }
+
+  return null;
+}
+
+function stringifyField(prop) {
+  const propType = computeType(prop);
+
+  switch (propType) {
+    case 'array':
+      return prop.map(val => {
+        return `${val}`;
+      });
+    case 'object':
+      return JSON.stringify(prop);
+    default:
+      return `${prop}`;
+  }
 }
 
 function examplesToArrays(examples) {
