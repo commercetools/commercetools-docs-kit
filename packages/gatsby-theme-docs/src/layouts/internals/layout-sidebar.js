@@ -13,14 +13,14 @@ const slideInAnimation = keyframes`
 `;
 const Container = styled.div`
   grid-area: sidebar;
-  position: relative;
-  overflow: auto;
+  position: fixed;
+  z-index: 2;
+  height: 100vh;
+  width: ${designSystem.dimensions.widths.pageNavigationSmall};
+  display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
+  flex-direction: column;
   background-color: ${designSystem.colors.light.surfaceSecondary1};
   border-right: 1px solid ${designSystem.colors.light.borderPrimary};
-  width: ${designSystem.dimensions.widths.pageNavigationSmall};
-  height: 100%;
-  z-index: 2;
-  display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
 
   animation: ${slideInAnimation} 0.5s ease-out alternate;
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
@@ -38,7 +38,7 @@ const MenuButton = styled.button`
   cursor: pointer;
   padding: ${designSystem.dimensions.spacings.s}
     ${designSystem.dimensions.spacings.m};
-  background-color: ${designSystem.colors.light.surfaceSecondary1};
+  background-color: ${designSystem.colors.light.surfacePrimary};
   transition: background-color 0.5s;
 
   > svg {
@@ -50,9 +50,9 @@ const MenuButton = styled.button`
     outline: 1px solid ${designSystem.colors.light.surfaceSecondary3};
   }
   :hover {
-    background-color: ${designSystem.colors.light.surfaceSecondary3};
+    background-color: ${designSystem.colors.light.surfacePrimary};
     > svg {
-      stroke: ${designSystem.colors.light.surfaceSecondary1};
+      stroke: ${designSystem.colors.light.surfacePrimary};
     }
   }
 
