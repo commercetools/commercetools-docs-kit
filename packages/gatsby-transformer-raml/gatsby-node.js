@@ -129,7 +129,7 @@ function computeType(value) {
 function propertiesToArrays(properties) {
   if (properties) {
     return Object.entries(properties).map(([key, value]) => {
-      return { ...value, displayName: key };
+      return { ...value, name: key };
     });
   }
 
@@ -139,7 +139,7 @@ function propertiesToArrays(properties) {
 function examplesToArrays(examples) {
   if (examples) {
     return Object.entries(examples).map(([key, value]) => {
-      return { name: key, path: value };
+      return { name: key, file: value };
     });
   }
 
