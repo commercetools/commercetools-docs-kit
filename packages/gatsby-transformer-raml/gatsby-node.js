@@ -2,6 +2,14 @@ const firstline = require('firstline');
 const jsYaml = require('js-yaml');
 const createTypeNode = require('./src/create-type-node');
 const createJsYamlSchema = require('./src/create-js-yaml-schema');
+const defineSchema = require('./src/schema/define-schema');
+
+const sourceNodes = ({ actions, schema }) => {
+  // Add type definitions to the GraphQL schema.
+  const { createTypes } = actions;
+
+  defineSchema({ schema, createTypes });
+};
 
 async function onCreateNode({
   node,
@@ -39,4 +47,5 @@ async function onCreateNode({
   }
 }
 
+exports.sourceNodes = sourceNodes;
 exports.onCreateNode = onCreateNode;
