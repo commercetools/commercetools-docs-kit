@@ -101,7 +101,6 @@ const LayoutSidebar = props => {
                   onLinkClick={() => {
                     props.setMenuOpen(false);
                   }}
-                  slug={props.slug}
                   siteTitle={props.siteTitle}
                   isGlobalBeta={props.isGlobalBeta}
                 />
@@ -118,7 +117,6 @@ const LayoutSidebar = props => {
       {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
       <Container isMenuOpen={false}>
         <Sidebar
-          slug={props.slug}
           siteTitle={props.siteTitle}
           isGlobalBeta={props.isGlobalBeta}
         />
@@ -130,7 +128,6 @@ LayoutSidebar.displayName = 'LayoutSidebar';
 LayoutSidebar.propTypes = {
   isMenuOpen: PropTypes.bool.isRequired,
   setMenuOpen: PropTypes.func.isRequired,
-  slug: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
 };

@@ -23,7 +23,6 @@ const LayoutContent = props => {
       <LayoutSidebar
         isMenuOpen={isMenuOpen}
         setMenuOpen={setMenuOpen}
-        slug={props.pageContext.slug}
         siteTitle={siteData.siteMetadata.title}
         isGlobalBeta={props.pageContext.isGlobalBeta}
       />
