@@ -14,6 +14,7 @@ const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 const NavContainer = styled.nav`
   box-shadow: ${designSystem.tokens.shadow9};
   flex: 1;
+  height: 100%;
 `;
 const ScrollContainer = styled.div`
   overflow: auto;
