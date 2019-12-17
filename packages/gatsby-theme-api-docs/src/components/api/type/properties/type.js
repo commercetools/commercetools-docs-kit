@@ -8,8 +8,8 @@ const Type = ({ apiKey, property, dataTestId }) => {
   const typeLocations = useTypeLocations();
   const originalTypeToLinkTo =
     property.type === 'array' && property.items
-      ? property.items.originalType
-      : property.originalType;
+      ? property.items.type
+      : property.type;
 
   const typeLocation = typeLocations
     ? typeLocations[`${apiKey}__${originalTypeToLinkTo}`]
