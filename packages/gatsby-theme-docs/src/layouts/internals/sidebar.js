@@ -11,11 +11,6 @@ import { BetaFlag } from '../../components';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 
-const NavContainer = styled.nav`
-  box-shadow: ${designSystem.tokens.shadow9};
-  flex: 1;
-  height: 100%;
-`;
 const ScrollContainer = styled.div`
   overflow: auto;
   height: 100%;
@@ -172,48 +167,46 @@ const Sidebar = props => {
           </LogoContainer>
         </LogoLink>
       </MenuLogoContainer>
-      <NavContainer aria-label="Main navigation">
-        <WebsiteTitle>
-          <SpacingsStack scale="xs">
-            <div>{props.isGlobalBeta && <BetaFlag />}</div>
-            <Link
-              to="/"
-              css={css`
-                text-decoration: none;
-                color: ${designSystem.colors.light.primary};
-                :hover {
-                  text-decoration: underline;
-                }
-              `}
-            >
-              {props.siteTitle}
-            </Link>
-          </SpacingsStack>
-        </WebsiteTitle>
-        <ScrollContainer>
-          {data.allNavigationYaml.nodes.map((node, index) => (
-            <SpacingsStack scale="s" key={index}>
-              <LinkItem>
-                <LinkTitle>{node.chapterTitle}</LinkTitle>
-                {node.beta && !props.isGlobalBeta && <BetaFlag />}
-              </LinkItem>
-              <SpacingsStack scale="s">
-                {node.pages &&
-                  node.pages.map((pageLink, pageIndex) => (
-                    <SidebarLink
-                      to={pageLink.path}
-                      key={`${index}-${pageIndex}-${pageLink.path}`}
-                      onClick={props.onLinkClick}
-                    >
-                      <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-                      {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
-                    </SidebarLink>
-                  ))}
-              </SpacingsStack>
+      <WebsiteTitle>
+        <SpacingsStack scale="xs">
+          <div>{props.isGlobalBeta && <BetaFlag />}</div>
+          <Link
+            to="/"
+            css={css`
+              text-decoration: none;
+              color: ${designSystem.colors.light.primary};
+              :hover {
+                text-decoration: underline;
+              }
+            `}
+          >
+            {props.siteTitle}
+          </Link>
+        </SpacingsStack>
+      </WebsiteTitle>
+      <ScrollContainer>
+        {data.allNavigationYaml.nodes.map((node, index) => (
+          <SpacingsStack scale="s" key={index}>
+            <LinkItem>
+              <LinkTitle>{node.chapterTitle}</LinkTitle>
+              {node.beta && !props.isGlobalBeta && <BetaFlag />}
+            </LinkItem>
+            <SpacingsStack scale="s">
+              {node.pages &&
+                node.pages.map((pageLink, pageIndex) => (
+                  <SidebarLink
+                    to={pageLink.path}
+                    key={`${index}-${pageIndex}-${pageLink.path}`}
+                    onClick={props.onLinkClick}
+                  >
+                    <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+                    {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
+                  </SidebarLink>
+                ))}
             </SpacingsStack>
-          ))}
-        </ScrollContainer>
-      </NavContainer>
+          </SpacingsStack>
+        ))}
+      </ScrollContainer>
     </>
   );
 };

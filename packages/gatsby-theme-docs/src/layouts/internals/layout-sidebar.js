@@ -92,6 +92,8 @@ const LayoutSidebar = props => {
               }}
             >
               <Container
+                role="nav"
+                aria-label="Main navigation"
                 isMenuOpen={true}
                 onClick={event => {
                   event.stopPropagation();
@@ -115,7 +117,7 @@ const LayoutSidebar = props => {
   return (
     <>
       {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
-      <Container isMenuOpen={false}>
+      <Container role="nav" aria-label="Main navigation" isMenuOpen={false}>
         <Sidebar
           siteTitle={props.siteTitle}
           isGlobalBeta={props.isGlobalBeta}
