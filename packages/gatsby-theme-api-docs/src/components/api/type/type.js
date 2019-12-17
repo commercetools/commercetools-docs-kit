@@ -10,7 +10,9 @@ const ApiType = props => {
   const apiTypes = useApiTypes();
 
   const matchedApiType = apiTypes.find(apiType => {
-    return apiType.apiKey === props.apiKey && apiType.name === props.type;
+    return (
+      apiType.apiKey === props.apiKey && apiType.displayName === props.type
+    );
   });
 
   if (!matchedApiType) {
@@ -18,13 +20,14 @@ const ApiType = props => {
   }
 
   const apiTypeSubTypes = filterOutApiTypeSubtypes(matchedApiType, apiTypes);
+  const urn = generateTypeURN(matchedApiType);
 
   return (
     <div
       css={css`
         margin: 1rem 0;
       `}
-      id={generateTypeURN(matchedApiType)}
+      id={urn}
     >
       <Container apiType={matchedApiType} apiTypeSubTypes={apiTypeSubTypes} />
     </div>

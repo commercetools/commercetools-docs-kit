@@ -25,9 +25,9 @@ const URNComponents = urn => {
   return urn.split(':').map(decodeURNComponent);
 };
 
-export const generateTypeURN = ({ apiKey = '', name = '' }) => {
+export const generateTypeURN = ({ apiKey = '', displayName = '' }) => {
   return `${prefix}:${encodeURNComponent(apiKey)}:type:${encodeURNComponent(
-    name
+    displayName
   )}`;
 };
 
