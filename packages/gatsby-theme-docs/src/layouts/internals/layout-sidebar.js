@@ -1,52 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { css, keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { BurgerIcon } from '../../components';
+import { BurgerIcon, Overlay } from '../../components';
 import Sidebar from './sidebar';
 
 const slideInAnimation = keyframes`
   from { margin-left: -100%; }
   to { margin-left: 0; }
 `;
-const ContainerOverlay = styled.div`
-  ${props => {
-    if (props.isMenuOpen) {
-      return css`
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 20;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-      `;
-    }
-    return css`
-      position: relative;
-      grid-area: sidebar;
-    `;
-  }}
-
-  display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
-  overflow: auto;
-
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    display: flex;
-    grid-column: 1;
-
-    background: unset;
-    z-index: unset;
-    position: unset;
-    top: unset;
-    left: unset;
-    right: unset;
-    bottom: unset;
-  }
-`;
-const Container = styled.aside`
+const Container = styled.div`
+  grid-area: sidebar;
   position: relative;
   overflow: auto;
   background-color: ${designSystem.colors.light.surfaceSecondary1};
@@ -54,10 +20,12 @@ const Container = styled.aside`
   width: ${designSystem.dimensions.widths.pageNavigationSmall};
   height: 100%;
   z-index: 2;
+  display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
 
   animation: ${slideInAnimation} 0.5s ease-out alternate;
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     animation: unset;
+    display: flex;
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     width: ${designSystem.dimensions.widths.pageNavigation};
@@ -94,45 +62,68 @@ const MenuButton = styled.button`
 `;
 
 const LayoutSidebar = props => {
-  const [portalNode, setPortalNode] = React.useState();
+  const [menuButtonNode, setMenuButtonNode] = React.useState();
+  const [modalPortalNode, setModalPortalNode] = React.useState();
   React.useEffect(() => {
-    setPortalNode(document.getElementById('sidebar-menu-toggle'));
+    setMenuButtonNode(document.getElementById('sidebar-menu-toggle'));
+    setModalPortalNode(document.getElementById('modal-portal'));
   }, []);
-  return (
-    <ContainerOverlay
-      isMenuOpen={props.isMenuOpen}
+
+  const menuButton = (
+    <MenuButton
+      aria-label="Open main navigation"
       onClick={() => {
-        props.setMenuOpen(false);
+        props.setMenuOpen(!props.isMenuOpen);
       }}
     >
-      <Container
-        isMenuOpen={props.isMenuOpen}
-        onClick={event => {
-          event.stopPropagation();
-        }}
-      >
+      <BurgerIcon isActive={props.isMenuOpen} />
+    </MenuButton>
+  );
+
+  if (props.isMenuOpen) {
+    return (
+      <>
+        {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
+        {modalPortalNode &&
+          ReactDOM.createPortal(
+            <Overlay
+              onClick={() => {
+                props.setMenuOpen(false);
+              }}
+            >
+              <Container
+                isMenuOpen={true}
+                onClick={event => {
+                  event.stopPropagation();
+                }}
+              >
+                <Sidebar
+                  onLinkClick={() => {
+                    props.setMenuOpen(false);
+                  }}
+                  slug={props.slug}
+                  siteTitle={props.siteTitle}
+                  isGlobalBeta={props.isGlobalBeta}
+                />
+              </Container>
+            </Overlay>,
+            modalPortalNode
+          )}
+      </>
+    );
+  }
+
+  return (
+    <>
+      {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
+      <Container isMenuOpen={false}>
         <Sidebar
-          onLinkClick={() => {
-            props.setMenuOpen(false);
-          }}
           slug={props.slug}
           siteTitle={props.siteTitle}
           isGlobalBeta={props.isGlobalBeta}
         />
-        {portalNode &&
-          ReactDOM.createPortal(
-            <MenuButton
-              aria-label="Open main navigation"
-              onClick={() => {
-                props.setMenuOpen(!props.isMenuOpen);
-              }}
-            >
-              <BurgerIcon isActive={props.isMenuOpen} />
-            </MenuButton>,
-            portalNode
-          )}
       </Container>
-    </ContainerOverlay>
+    </>
   );
 };
 LayoutSidebar.displayName = 'LayoutSidebar';

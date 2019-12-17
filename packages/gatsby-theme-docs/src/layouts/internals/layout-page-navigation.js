@@ -1,12 +1,14 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { css, keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import IconButton from '@commercetools-uikit/icon-button';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
+import { Overlay } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
@@ -16,30 +18,6 @@ const StackedLinesIndentedIcon = createStyledIcon(
 const slideInAnimation = keyframes`
   from { margin-right: -100%; }
   to { margin-right: 0; }
-`;
-const ContainerOverlay = styled.div`
-  ${props => {
-    if (props.isMenuOpen) {
-      return css`
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 20;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        justify-content: flex-end;
-      `;
-    }
-    return css``;
-  }}
-
-  display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
-  overflow: auto;
-
-  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    display: none;
-  }
 `;
 const SlidingContainer = styled.div`
   background-color: ${designSystem.colors.light.surfacePrimary};
@@ -105,6 +83,10 @@ const ToggleMenuButton = styled.div`
 
 const LayoutPageNavigation = props => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
+  const [modalPortalNode, setModalPortalNode] = React.useState();
+  React.useEffect(() => {
+    setModalPortalNode(document.getElementById('modal-portal'));
+  }, []);
 
   if (!props.tableOfContents) return null;
   if (
@@ -126,6 +108,23 @@ const LayoutPageNavigation = props => {
       <PageNavigation tableOfContents={props.tableOfContents} />
     </SpacingsStack>
   );
+
+  if (isMenuOpen) {
+    return modalPortalNode
+      ? ReactDOM.createPortal(
+          <Overlay
+            justifyContent="flex-end"
+            onClick={() => {
+              setMenuOpen(false);
+            }}
+          >
+            <SlidingContainer>{navigationContainer}</SlidingContainer>
+          </Overlay>,
+          modalPortalNode
+        )
+      : null;
+  }
+
   return (
     <>
       <ToggleMenuButton>
@@ -137,15 +136,6 @@ const LayoutPageNavigation = props => {
           }}
         />
       </ToggleMenuButton>
-      <ContainerOverlay
-        isMenuOpen={isMenuOpen}
-        onClick={() => {
-          setMenuOpen(false);
-        }}
-      >
-        <SlidingContainer>{navigationContainer}</SlidingContainer>
-      </ContainerOverlay>
-
       <GridContainer role="navigation" aria-label="Page navigation">
         <StickyContainer>{navigationContainer}</StickyContainer>
       </GridContainer>
