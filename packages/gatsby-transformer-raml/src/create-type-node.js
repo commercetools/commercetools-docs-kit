@@ -27,7 +27,7 @@ function createTypeNode({
 }
 
 function postProcessType(type, fileNodeRelativeDirectory) {
-  const postProcessedType = extractParenthesisFromAnnotationIdentifier(type);
+  const postProcessedType = doRecursion(type);
 
   postProcessedType.apiKey = fileNodeRelativeDirectory.replace(`/types`, '');
   postProcessedType.properties = propertiesToArrays(
@@ -41,16 +41,19 @@ function postProcessType(type, fileNodeRelativeDirectory) {
   return postProcessedType;
 }
 
-function extractParenthesisFromAnnotationIdentifier(type) {
+function doRecursion(type) {
   const returnedType = {};
 
   Object.keys(type).forEach(key => {
-    const keyWithoutParenthesis = key.replace(`(`, '').replace(`)`, '');
+    // remove parenthesis from annotation identifier
+    let keyWithoutParenthesis = key.replace(`(`, '').replace(`)`, '');
+
+    // use enumeration as enum is a reserved JavaScript keyword
+    keyWithoutParenthesis =
+      keyWithoutParenthesis === 'enum' ? 'enumeration' : keyWithoutParenthesis;
 
     if (computeType(type[key]) === 'object') {
-      returnedType[
-        keyWithoutParenthesis
-      ] = extractParenthesisFromAnnotationIdentifier(type[key]);
+      returnedType[keyWithoutParenthesis] = doRecursion(type[key]);
       return;
     }
 
