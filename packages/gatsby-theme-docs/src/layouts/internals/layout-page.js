@@ -32,6 +32,7 @@ const LayoutPage = props => (
               .header} [row1-end]
             [row2-start] 'page-header page-header-side' auto [row2-end]
             [row3-start] 'page-content page-navigation' 1fr [row3-end]
+            [row4-start] 'footer footer' auto [row4-end]
             / minmax(
               ${designSystem.dimensions.widths.pageContentSmallWithMargings},
               ${designSystem.dimensions.widths.pageContentWithMargings}
@@ -44,6 +45,7 @@ const LayoutPage = props => (
               .header} [row1-end]
             [row2-start] 'page-header page-header-side' auto [row2-end]
             [row3-start] 'page-content page-navigation' 1fr [row3-end]
+            [row4-start] 'footer footer' auto [row4-end]
             / minmax(
               ${designSystem.dimensions.widths.pageContentSmallWithMargings},
               ${designSystem.dimensions.widths.pageContentWithMargings}
@@ -56,6 +58,7 @@ const LayoutPage = props => (
               .header} [row1-end]
             [row2-start] 'page-header page-header-side' auto [row2-end]
             [row3-start] 'page-content page-navigation' 1fr [row3-end]
+            [row4-start] 'footer footer' auto [row4-end]
             / minmax(
               ${designSystem.dimensions.widths.pageContentSmallWithMargings},
               ${designSystem.dimensions.widths.pageContentWithMargings}
@@ -68,6 +71,7 @@ const LayoutPage = props => (
               .header} [row1-end]
             [row2-start] 'page-header page-header-side' auto [row2-end]
             [row3-start] 'page-content page-navigation' 1fr [row3-end]
+            [row4-start] 'footer footer' auto [row4-end]
             / ${designSystem.dimensions.widths.pageContentWithMargings}
             ${designSystem.dimensions.widths.pageNavigation};
         }

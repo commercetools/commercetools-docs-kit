@@ -28,8 +28,8 @@ const LayoutPageNotFound = props => {
               props.children
             }
           </PageContentInset>
-          <LayoutFooter />
         </LayoutPageContent>
+        <LayoutFooter />
       </LayoutPage>
     </LayoutApplication>
   );

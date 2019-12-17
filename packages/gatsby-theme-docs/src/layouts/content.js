@@ -45,12 +45,12 @@ const LayoutContent = props => {
             {props.children}
             <ContentPagination slug={props.pageContext.slug} />
           </PageContentInset>
-          <LayoutFooter />
         </LayoutPageContent>
         <LayoutPageNavigation
           pageTitle={props.pageContext.shortTitle || props.pageContext.title}
           tableOfContents={props.pageData.tableOfContents}
         />
+        <LayoutFooter />
       </LayoutPage>
     </LayoutApplication>
   );
