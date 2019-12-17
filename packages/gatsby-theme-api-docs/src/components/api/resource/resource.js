@@ -17,6 +17,10 @@ const MethodContainer = styled.div`
 const Resource = ({ apiKey, resource }) => {
   const resourceObj = useReadResourceByResourcePath(apiKey, resource);
 
+  if (!resourceObj) {
+    return <div>{`Resource '${resource}' not found in API`}</div>;
+  }
+
   return (
     <ResourceContainer>
       {resourceObj.methods.map(method => {

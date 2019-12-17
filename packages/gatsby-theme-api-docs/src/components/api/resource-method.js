@@ -16,6 +16,12 @@ const ResourceMethod = ({ apiKey, resource, method }) => {
     method
   );
 
+  if (!urlMethod) {
+    return (
+      <div>{`Method '${method}' of resource '${resource}' not found in API`}</div>
+    );
+  }
+
   return (
     <Container>
       <Method apiKey={apiKey} {...urlMethod} />
