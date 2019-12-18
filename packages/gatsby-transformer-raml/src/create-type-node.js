@@ -80,10 +80,10 @@ function processProperties(properties) {
     propertiesArray = sortProperties(propertiesArray);
 
     propertiesArray = propertiesArray.map(property => {
-      return property;
+      let returnedProperty = JSON.parse(JSON.stringify(property));
+      returnedProperty = resolveConflictingFieldTypes(property);
+      return returnedProperty;
     });
-
-    propertiesArray = resolveConflictingFieldTypes(propertiesArray);
 
     return propertiesArray;
   }
@@ -150,20 +150,18 @@ function sortProperties(properties) {
   });
 }
 
-function resolveConflictingFieldTypes(properties) {
+function resolveConflictingFieldTypes(property) {
   const propsToStringify = ['default', 'enumeration'];
 
-  return properties.map(property => {
-    const returnedProperty = JSON.parse(JSON.stringify(property));
+  const returnedProperty = JSON.parse(JSON.stringify(property));
 
-    propsToStringify.forEach(prop => {
-      if (returnedProperty[prop]) {
-        returnedProperty[prop] = stringifyField(returnedProperty[prop]);
-      }
-    });
-
-    return returnedProperty;
+  propsToStringify.forEach(prop => {
+    if (returnedProperty[prop]) {
+      returnedProperty[prop] = stringifyField(returnedProperty[prop]);
+    }
   });
+
+  return returnedProperty;
 }
 
 function stringifyField(prop) {
