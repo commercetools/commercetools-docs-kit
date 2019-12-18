@@ -5,7 +5,6 @@ import { useSiteData } from '../hooks/use-site-data';
 import { BetaFlag, ContentPagination } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import LayoutApplication from './internals/layout-application';
-import LayoutCentered from './internals/layout-centered';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
@@ -22,45 +21,40 @@ const LayoutContent = props => {
   const siteData = useSiteData();
   return (
     <LayoutApplication>
-      <LayoutHeader
+      <LayoutSidebar
+        isMenuOpen={isMenuOpen}
+        setMenuOpen={setMenuOpen}
         siteTitle={siteData.siteMetadata.title}
-        excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+        isGlobalBeta={props.pageContext.isGlobalBeta}
       />
-      <LayoutCentered>
-        <LayoutMain>
-          <LayoutSidebar
-            isMenuOpen={isMenuOpen}
-            setMenuOpen={setMenuOpen}
-            slug={props.pageContext.slug}
+      <LayoutMain>
+        <LayoutPage id="top">
+          <LayoutHeader
             siteTitle={siteData.siteMetadata.title}
-            isGlobalBeta={props.pageContext.isGlobalBeta}
+            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
           />
-          <LayoutPage>
-            <LayoutPageHeader>
-              {props.pageContext.beta && (
-                <BetaFlag href={siteData.siteMetadata.betaLink} />
-              )}
-              <Markdown.H1>{props.pageContext.title}</Markdown.H1>
-            </LayoutPageHeader>
-            <LayoutPageHeaderSide>
-              <PlaceholderPageHeaderSide />
-            </LayoutPageHeaderSide>
-            <LayoutPageContent>
-              <PageContentInset>
-                {props.children}
-                <ContentPagination slug={props.pageContext.slug} />
-              </PageContentInset>
-              <LayoutFooter />
-            </LayoutPageContent>
-            <LayoutPageNavigation
-              pageTitle={
-                props.pageContext.shortTitle || props.pageContext.title
-              }
-              tableOfContents={props.pageData.tableOfContents}
-            />
-          </LayoutPage>
-        </LayoutMain>
-      </LayoutCentered>
+          <LayoutPageHeader>
+            {props.pageContext.beta && (
+              <BetaFlag href={siteData.siteMetadata.betaLink} />
+            )}
+            <Markdown.H1>{props.pageContext.title}</Markdown.H1>
+          </LayoutPageHeader>
+          <LayoutPageHeaderSide>
+            <PlaceholderPageHeaderSide />
+          </LayoutPageHeaderSide>
+          <LayoutPageContent>
+            <PageContentInset>
+              {props.children}
+              <ContentPagination slug={props.pageContext.slug} />
+            </PageContentInset>
+          </LayoutPageContent>
+          <LayoutPageNavigation
+            pageTitle={props.pageContext.shortTitle || props.pageContext.title}
+            tableOfContents={props.pageData.tableOfContents}
+          />
+        </LayoutPage>
+        <LayoutFooter />
+      </LayoutMain>
     </LayoutApplication>
   );
 };

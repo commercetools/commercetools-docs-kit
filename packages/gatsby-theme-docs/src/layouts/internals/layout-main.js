@@ -1,26 +1,19 @@
+import React from 'react';
 import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
 
-/* NOTE: `overflow` shorthand is only supported is Chrome and FF */
-const LayoutMain = styled.div`
+const Container = styled.main`
+  grid-area: main;
+  min-width: 0;
+  position: relative;
   display: grid;
   grid:
     [row1-start] 'page' 1fr [row1-end]
+    [row2-start] 'footer' auto [row2-end]
     / 1fr;
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    grid:
-      [row1-start] 'sidebar page' 1fr [row1-end]
-      / auto 1fr;
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: calc(
-      ${designSystem.dimensions.widths.pageContentWithMargings} +
-        ${designSystem.dimensions.widths.pageNavigation} * 2
-    );
-  }
 `;
+
+const LayoutMain = props => (
+  <Container role="main" aria-label="Page content" {...props} />
+);
 
 export default LayoutMain;

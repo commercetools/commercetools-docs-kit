@@ -47,7 +47,7 @@ const createTestProps = custom => ({
 const renderApp = ui =>
   render(
     <Container>
-      <Content role="main">
+      <Content role="application">
         <Section id="section-link-1" className="section-h2">
           <h2 id="link-1">{'Title for link 1'}</h2>
         </Section>
@@ -73,11 +73,11 @@ const applySectionElementsMocks = (elements, selectElement) => {
     const isElementSelected = selectElement(el);
     // eslint-disable-next-line no-param-reassign
     el.getBoundingClientRect = jest.fn(() => ({
-      // - `48` is the min value so that the difference with the offset
+      // - `48 - 1` is the min value so that the difference with the offset
       // results in a value < 0.
       // - `9999` is just a random high value to indicate that the element
       // should be ignored from the calculation.
-      top: isElementSelected ? 48 : 9999,
+      top: isElementSelected ? 48 - 1 : 9999,
     }));
   });
 };
@@ -103,7 +103,7 @@ describe('rendering', () => {
         rendered.container.querySelectorAll('section[class^="section-h"]'),
         el => el.id === `section-${hrefId}`
       );
-      fireEvent.scroll(document.querySelector('[role="main"]'), {
+      fireEvent.scroll(document.querySelector('[role="application"]'), {
         // It does not matter how much we scroll since we control the `getBoundingClientRect`
         target: { scrollY: 1 },
       });
