@@ -56,7 +56,7 @@ const Container = styled.div`
   min-width: 100%;
 `;
 
-const ContentNotification = props => {
+export const ContentNotification = props => {
   const Icon = getIconByType(props.type);
   const iconColor = getIconColorByType(props.type);
   return (
