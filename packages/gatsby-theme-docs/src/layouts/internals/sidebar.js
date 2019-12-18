@@ -28,6 +28,7 @@ const WebsiteTitle = styled.div`
   color: ${designSystem.colors.light.primary};
   padding: ${designSystem.dimensions.spacings.m};
   font-size: ${designSystem.typography.fontSizes.h4};
+  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 const LinkTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.body};
@@ -54,6 +55,7 @@ const MenuLogoContainer = styled.div`
     height: ${designSystem.dimensions.heights.header};
     width: ${designSystem.dimensions.widths.pageNavigationSmall};
     background-color: ${designSystem.colors.light.surfacePrimary};
+    border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
     display: flex;
     justify-content: flex-end;
   }
