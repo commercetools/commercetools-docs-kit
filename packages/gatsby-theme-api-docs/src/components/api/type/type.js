@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import filterOutApiTypeSubtypes from '../../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../../utils/ctp-urn';
 import { useApiTypes } from '../../../hooks/use-api-types';
@@ -17,7 +18,7 @@ const ApiType = props => {
 
   if (!matchedApiType) {
     return (
-      <div>{`Type with name '${props.type}' not found in '${props.apiKey}' API`}</div>
+      <ContentNotifications.Error>{`Type with name '${props.type}' not found in '${props.apiKey}' API`}</ContentNotifications.Error>
     );
   }
 

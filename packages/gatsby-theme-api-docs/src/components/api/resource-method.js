@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import { useReadMethodOfResourceByResourcePath } from '../../hooks/use-api-resources';
 import Method from './resource/method';
 
@@ -17,7 +18,7 @@ const ResourceMethod = ({ apiKey, resource, method }) => {
 
   if (!urlMethod) {
     return (
-      <div>{`Method '${method}' of resource '${resource}' not found in API`}</div>
+      <ContentNotifications.Error>{`Method '${method}' of resource '${resource}' not found in API`}</ContentNotifications.Error>
     );
   }
 
