@@ -3,8 +3,10 @@ import * as Markdown from './components/markdown';
 
 // components
 export { designSystem, Markdown };
-export { ContentNotification } from './components/content-notifications';
-export { default as ContentNotifications } from './components/content-notifications';
+export {
+  default as ContentNotifications,
+  ContentNotification,
+} from './components/content-notifications';
 export { default as Globals } from './components/globals';
 export { default as Link } from './components/link';
 export { default as Reset } from './components/reset';
