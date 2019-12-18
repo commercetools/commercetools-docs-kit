@@ -73,42 +73,97 @@ function doRecursion(type) {
 }
 
 function processProperties(properties) {
-  let propertiesArray = propertiesToArrays(properties);
+  let propertiesArray;
 
-  propertiesArray = resolveConflictingFieldTypes(propertiesArray);
-  propertiesArray = sortProperties(propertiesArray);
-
-  return propertiesArray;
-}
-
-function propertiesToArrays(properties) {
   if (properties) {
-    return Object.entries(properties).map(([key, value]) => {
-      return { ...value, name: key };
+    propertiesArray = propertiesToArrays(properties);
+    propertiesArray = sortProperties(propertiesArray);
+
+    propertiesArray = propertiesArray.map(property => {
+      return property;
     });
+
+    propertiesArray = resolveConflictingFieldTypes(propertiesArray);
+
+    return propertiesArray;
   }
 
   return undefined;
 }
 
+function propertiesToArrays(properties) {
+  return Object.entries(properties).map(([key, value]) => {
+    return { ...value, name: key };
+  });
+}
+
+function sortProperties(properties) {
+  const moveToTop = [
+    'id',
+    'version',
+    'key',
+    'createdAt',
+    'createdBy',
+    'lastModifiedAt',
+    'lastModifiedBy',
+  ];
+  const moveToBottom = ['custom'];
+  const copy = JSON.parse(JSON.stringify(properties));
+
+  return copy.sort((a, b) => {
+    const indexInMoveToTopA = moveToTop.indexOf(a.name);
+    const indexInMoveToTopB = moveToTop.indexOf(b.name);
+    const indexInMoveToBottomA = moveToBottom.indexOf(a.name);
+    const indexInMoveToBottomB = moveToBottom.indexOf(b.name);
+
+    // 1. Sort properties in moveToTop
+    // a. if a.name and b.name occurs in moveToTop, compare their indexes in moveToTop
+    if (indexInMoveToTopA > -1 && indexInMoveToTopB > -1) {
+      return indexInMoveToTopA - indexInMoveToTopB;
+    }
+
+    // b. if only a.name occurs in moveToTop, return -1, a.name comes fist
+    if (indexInMoveToTopA > -1) {
+      return -1;
+    }
+
+    // c. if only b.name occurs in moveToTop, return 1, b.name comes fist
+    if (indexInMoveToTopB > -1) {
+      return 1;
+    }
+
+    // 2. Sort properteis in moveToBottom - just do opposite of sorting to first
+    if (indexInMoveToBottomA > -1 && indexInMoveToBottomB > -1) {
+      return indexInMoveToTopB - indexInMoveToTopA;
+    }
+
+    if (indexInMoveToBottomA > -1) {
+      return 1;
+    }
+
+    if (indexInMoveToBottomB > -1) {
+      return -1;
+    }
+
+    // if neither is in moveToTop or moveToBottom, return 0, position remains unchanged
+    return 0;
+  });
+}
+
 function resolveConflictingFieldTypes(properties) {
-  if (properties) {
-    const propsToStringify = ['default', 'enumeration'];
+  const propsToStringify = ['default', 'enumeration'];
 
-    return properties.map(property => {
-      const returnedProperty = JSON.parse(JSON.stringify(property));
+  return properties.map(property => {
+    const returnedProperty = JSON.parse(JSON.stringify(property));
 
-      propsToStringify.forEach(prop => {
-        if (returnedProperty[prop]) {
-          returnedProperty[prop] = stringifyField(returnedProperty[prop]);
-        }
-      });
-
-      return returnedProperty;
+    propsToStringify.forEach(prop => {
+      if (returnedProperty[prop]) {
+        returnedProperty[prop] = stringifyField(returnedProperty[prop]);
+      }
     });
-  }
 
-  return null;
+    return returnedProperty;
+  });
 }
 
 function stringifyField(prop) {
@@ -124,63 +179,6 @@ function stringifyField(prop) {
     default:
       return `${prop}`;
   }
-}
-
-function sortProperties(properties) {
-  if (properties) {
-    const moveToTop = [
-      'id',
-      'version',
-      'key',
-      'createdAt',
-      'createdBy',
-      'lastModifiedAt',
-      'lastModifiedBy',
-    ];
-    const moveToBottom = ['custom'];
-    const copy = JSON.parse(JSON.stringify(properties));
-
-    return copy.sort((a, b) => {
-      const indexInMoveToTopA = moveToTop.indexOf(a.name);
-      const indexInMoveToTopB = moveToTop.indexOf(b.name);
-      const indexInMoveToBottomA = moveToBottom.indexOf(a.name);
-      const indexInMoveToBottomB = moveToBottom.indexOf(b.name);
-
-      // 1. Sort properties in moveToTop
-      // a. if a.name and b.name occurs in moveToTop, compare their indexes in moveToTop
-      if (indexInMoveToTopA > -1 && indexInMoveToTopB > -1) {
-        return indexInMoveToTopA - indexInMoveToTopB;
-      }
-
-      // b. if only a.name occurs in moveToTop, return -1, a.name comes fist
-      if (indexInMoveToTopA > -1) {
-        return -1;
-      }
-
-      // c. if only b.name occurs in moveToTop, return 1, b.name comes fist
-      if (indexInMoveToTopB > -1) {
-        return 1;
-      }
-
-      // 2. Sort properteis in moveToBottom - just do opposite of sorting to first
-      if (indexInMoveToBottomA > -1 && indexInMoveToBottomB > -1) {
-        return indexInMoveToTopB - indexInMoveToTopA;
-      }
-
-      if (indexInMoveToBottomA > -1) {
-        return 1;
-      }
-
-      if (indexInMoveToBottomB > -1) {
-        return -1;
-      }
-
-      // if neither is in moveToTop or moveToBottom, return 0, position remains unchanged
-      return 0;
-    });
-  }
-
-  return properties;
 }
 
 function examplesToArrays(examples) {
