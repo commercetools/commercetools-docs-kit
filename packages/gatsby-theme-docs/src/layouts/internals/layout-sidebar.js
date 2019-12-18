@@ -11,7 +11,7 @@ const slideInAnimation = keyframes`
   from { margin-left: -100%; }
   to { margin-left: 0; }
 `;
-const Container = styled.div`
+const Container = styled.nav`
   grid-area: sidebar;
   position: fixed;
   z-index: 2;
