@@ -84,6 +84,7 @@ function processProperties(properties) {
       returnedProperty = {
         ...returnedProperty,
         type: generateType(returnedProperty),
+        builtinType: generateBuiltinType(returnedProperty),
       };
       return returnedProperty;
     });
@@ -197,6 +198,18 @@ function generateType(property) {
       return 'DateTime';
     default:
       return property.type;
+  }
+}
+
+function generateBuiltinType(property) {
+  switch (property.builtinType) {
+    case 'date-only':
+    case 'time-only':
+    case 'datetime-only':
+    case 'datetime':
+      return 'string';
+    default:
+      return property.builtinType;
   }
 }
 
