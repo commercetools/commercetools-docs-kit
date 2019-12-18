@@ -11,6 +11,11 @@ const Root = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; /* enables "momentum" style scrolling */
+
+  @media only percy {
+    /* Unset the 100vh to make view scrollable in order to take full page snapshots */
+    height: auto;
+  }
 `;
 const Container = styled.div`
   position: relative;
