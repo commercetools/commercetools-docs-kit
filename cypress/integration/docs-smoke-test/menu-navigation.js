@@ -6,10 +6,12 @@ describe('Menu navigation', () => {
       cy.setTabletViewport();
       cy.visit(URL_DOCS_SMOKE_TEST);
       cy.findByLabelText('Open main navigation').click();
-      cy.get('aside').should('be.visible');
-      cy.get('aside').within(() => {
+      cy.findByLabelText('Main navigation').should('be.visible');
+      cy.get('#modal-portal').within(() => {
         cy.findByText('Docs Smoke Test');
-        cy.percySnapshot();
+        cy.percySnapshot(cy.state('runnable').fullTitle(), {
+          widths: [956],
+        });
       });
     });
   });

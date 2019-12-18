@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { CodeBlock, Markdown } from '@commercetools-docs/gatsby-theme-docs';
+import { CodeBlock, Markdown } from '@commercetools-docs/ui-kit';
 
 const Examples = ({ examples, title }) => {
   if (!examples) {

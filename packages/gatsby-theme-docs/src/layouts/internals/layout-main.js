@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { dimensions } from '../../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
 /* NOTE: `overflow` shorthand is only supported is Chrome and FF */
 const LayoutMain = styled.div`
@@ -10,15 +10,15 @@ const LayoutMain = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
 
-  @media screen and (${dimensions.viewports.laptop}) {
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
       [row1-start] 'sidebar page' 1fr [row1-end]
       / auto 1fr;
   }
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
     width: calc(
-      ${dimensions.widths.pageContentWithMargings} +
-        ${dimensions.widths.pageNavigation} * 2
+      ${designSystem.dimensions.widths.pageContentWithMargings} +
+        ${designSystem.dimensions.widths.pageNavigation} * 2
     );
   }
 `;

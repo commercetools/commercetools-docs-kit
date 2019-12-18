@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import LayoutContent from '../layouts/content';
 import {
-  SEO,
   Markdown,
   Subtitle,
   ContentNotifications,
-  ThemeProvider,
-} from '../components';
+} from '@commercetools-docs/ui-kit';
+import LayoutContent from '../layouts/content';
+import { SEO, Link, ThemeProvider } from '../components';
 import PlaceholderMarkdownComponents from '../overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
 const components = {
+  // UI components
   p: Markdown.Paragraph,
   // NOTE: we want to ensure that only one h1 exists on each page.
   // Therefore, we map the markdown header elements starting from h2.
@@ -43,8 +43,9 @@ const components = {
   strong: Markdown.Strong,
   delete: Markdown.Delete,
   hr: Markdown.Hr,
-  a: Markdown.Link,
   pre: Markdown.CodeBlock,
+  // Custom component specific to the Gatsby theme
+  a: Link,
 
   // Official react components to be used in MDX files
   Subtitle,
@@ -52,7 +53,8 @@ const components = {
   Warning: ContentNotifications.Warning,
   Error: ContentNotifications.Error,
 
-  // Custom React components to be overriden in microsites.
+  // Custom React components that can be injected from each website
+  // See ../overrides/README.md
   ...PlaceholderMarkdownComponents,
 };
 

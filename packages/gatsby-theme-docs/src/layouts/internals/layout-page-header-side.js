@@ -1,19 +1,19 @@
 import styled from '@emotion/styled';
-import { dimensions } from '../../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
 const LayoutPageHeaderSide = styled.div`
   grid-area: page-header-side;
   display: none;
 
-  @media screen and (${dimensions.viewports.largeTablet}) {
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
-    width: ${dimensions.widths.pageNavigation};
+    width: ${designSystem.dimensions.widths.pageNavigation};
   }
-  @media screen and (${dimensions.viewports.laptop}) {
-    width: ${dimensions.widths.pageNavigationSmall};
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    width: ${designSystem.dimensions.widths.pageNavigationSmall};
   }
-  @media screen and (${dimensions.viewports.desktop}) {
-    width: ${dimensions.widths.pageNavigation};
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
 

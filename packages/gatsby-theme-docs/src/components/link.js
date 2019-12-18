@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { Link as GatsbyLink, withPrefix } from 'gatsby';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
+import { Link as StyledLink, designSystem } from '@commercetools-docs/ui-kit';
 import getEnv from '../utils/get-env';
-import { colors, dimensions } from '../design-system';
 import { useSiteData } from '../hooks/use-site-data';
 
 const dummyHostname = 'dummy.com';
@@ -21,53 +20,37 @@ const withoutPrefix = (value, pathPrefix) =>
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 
-const linkStyles = css`
-  text-decoration: underline;
-  &,
-  > code {
-    color: ${colors.light.link};
-    :active,
-    :focus,
-    :hover {
-      color: ${colors.light.linkHover};
-    }
-  }
-`;
-
-export const ExternalSiteLink = props => (
-  <OutboundLink
-    {...props}
-    css={linkStyles}
-    target="_blank"
-    rel="noopener noreferrer"
-  />
-);
-const AnchorLink = styled.a`
-  ${linkStyles}
-`;
-const InternalSiteLink = styled(AnchorLink)``;
-const GatsbyRouterLink = styled(GatsbyLink)`
-  ${linkStyles}
-`;
+const AnchorLink = styled(StyledLink)``;
+const InternalSiteLink = styled(StyledLink)``;
+const GatsbyRouterLink = StyledLink.withComponent(GatsbyLink);
+const StyledExternalSiteLink = StyledLink.withComponent(OutboundLink);
 const InlineLink = styled.span`
   display: inline-flex;
   align-items: center;
   > * + * {
-    margin: 0 0 0 ${dimensions.spacings.xs};
+    margin: 0 0 0 ${designSystem.dimensions.spacings.xs};
   }
   svg {
     * {
-      fill: ${colors.light.link};
+      fill: ${designSystem.colors.light.link};
     }
   }
   :hover {
     svg {
       * {
-        fill: ${colors.light.linkHover};
+        fill: ${designSystem.colors.light.linkHover};
       }
     }
   }
 `;
+
+export const ExternalSiteLink = props => (
+  <StyledExternalSiteLink
+    {...props}
+    target="_blank"
+    rel="noopener noreferrer"
+  />
+);
 
 /**
  * The <Link> component handles different scenarios of how links are written in the website.

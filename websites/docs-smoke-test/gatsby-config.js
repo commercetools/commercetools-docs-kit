@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
   pathPrefix: '/docs-smoke-test',
   siteMetadata: {
@@ -10,7 +12,7 @@ module.exports = {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
         websiteKey: 'docs-smoke-test',
-        excludeFromSearchIndex: true,
+        excludeFromSearchIndex: isProd,
       },
     },
   ],

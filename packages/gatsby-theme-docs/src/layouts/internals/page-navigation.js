@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import SafeHTMLElement from '../../utils/safe-html-element';
+import { SafeHTMLElement, designSystem } from '@commercetools-docs/ui-kit';
 import useActiveSection from '../../hooks/use-active-section';
-import { colors, dimensions, typography } from '../../design-system';
 
 const itemType = {
   url: PropTypes.string.isRequired,
@@ -25,31 +24,31 @@ const Link = styled.a`
   font-size: ${props => {
     switch (props.level) {
       case 1:
-        return typography.fontSizes.small;
+        return designSystem.typography.fontSizes.small;
       default:
-        return typography.fontSizes.extraSmall;
+        return designSystem.typography.fontSizes.extraSmall;
     }
   }};
   color: ${props => {
     if (props.isActive) {
-      return colors.light.linkNavigation;
+      return designSystem.colors.light.linkNavigation;
     }
     switch (props.level) {
       case 1:
-        return colors.light.textPrimary;
+        return designSystem.colors.light.textPrimary;
       default:
-        return colors.light.textSecondary;
+        return designSystem.colors.light.textSecondary;
     }
   }};
   text-decoration: none;
   border-left: ${props => {
     if (props.isActive) {
-      return `1px solid ${colors.light.linkNavigation}`;
+      return `1px solid ${designSystem.colors.light.linkNavigation}`;
     }
     return '1px solid transparent';
   }};
   :hover {
-    color: ${colors.light.linkNavigation};
+    color: ${designSystem.colors.light.linkNavigation};
   }
   :hover,
   :active {
@@ -61,7 +60,7 @@ const Group = styled.ul`
   padding: 0;
   list-style: none;
   display: grid;
-  grid-gap: ${dimensions.spacings.s};
+  grid-gap: ${designSystem.dimensions.spacings.s};
 
   /* Nested ul should get no padding */
   ul {
@@ -70,15 +69,15 @@ const Group = styled.ul`
 `;
 const ListItem = styled.li`
   display: grid;
-  grid-gap: ${dimensions.spacings.s};
+  grid-gap: ${designSystem.dimensions.spacings.s};
 `;
 const Indented = styled.div`
   padding: ${props => {
     switch (props.level) {
       case 3:
-        return `0 ${dimensions.spacings.xl}`;
+        return `0 ${designSystem.dimensions.spacings.xl}`;
       default:
-        return `0 ${dimensions.spacings.m}`;
+        return `0 ${designSystem.dimensions.spacings.m}`;
     }
   }};
 `;
