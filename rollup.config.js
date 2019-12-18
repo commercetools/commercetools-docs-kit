@@ -39,7 +39,14 @@ const plugins = [
   }),
   json({ namedExports: false }),
   builtins(),
-  svgr(),
+  svgr({
+    // NOTE: disable this and manually add `removeViewBox: false` in the SVGO plugins list
+    // See related PR: https://github.com/smooth-code/svgr/pull/137
+    icon: false,
+    svgoConfig: {
+      plugins: [{ removeViewBox: false }, { cleanupIDs: true }],
+    },
+  }),
 ];
 
 const createConfig = cliArgs => [
