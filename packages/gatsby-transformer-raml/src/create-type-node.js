@@ -80,8 +80,11 @@ function processProperties(properties) {
     propertiesArray = sortProperties(propertiesArray);
 
     propertiesArray = propertiesArray.map(property => {
-      let returnedProperty = JSON.parse(JSON.stringify(property));
-      returnedProperty = resolveConflictingFieldTypes(property);
+      let returnedProperty = resolveConflictingFieldTypes(property);
+      returnedProperty = {
+        ...returnedProperty,
+        type: generateType(returnedProperty),
+      };
       return returnedProperty;
     });
 
@@ -176,6 +179,24 @@ function stringifyField(prop) {
       return JSON.stringify(prop);
     default:
       return `${prop}`;
+  }
+}
+
+function generateType(property) {
+  switch (property.type) {
+    case 'date-only':
+      return 'Date';
+    case 'time-only':
+      return 'Time';
+    case 'datetime-only':
+      return 'DateTimeOnly';
+    case 'datetime':
+      if (property.format) {
+        return property.format === 'rfc2616' ? 'DateTimeRfc2616' : 'DateTime';
+      }
+      return 'DateTime';
+    default:
+      return property.type;
   }
 }
 
