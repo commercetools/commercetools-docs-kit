@@ -19,16 +19,7 @@ const Container = styled.div`
   display: grid;
   grid-gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(
-      calc(
-        ${designSystem.dimensions.widths.pageContent} / 2 -
-          ${designSystem.dimensions.spacings.m} * 2
-      ),
-      1fr
-    )
-  );
+  grid-template-columns: 1fr;
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     grid-template-columns: 1fr 1fr;

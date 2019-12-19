@@ -53,7 +53,6 @@ const Container = styled.div`
     }};
   border-radius: ${tokens.borderRadius6};
   padding: ${dimensions.spacings.m};
-  min-width: 100%;
 `;
 
 const ContentNotification = props => {

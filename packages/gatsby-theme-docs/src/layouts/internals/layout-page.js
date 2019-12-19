@@ -3,8 +3,10 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 
 const LayoutPage = styled.div`
   display: block;
+  max-width: 100vw;
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    max-width: unset;
     display: grid;
     grid:
       [row1-start] 'header header' ${designSystem
