@@ -1,4 +1,4 @@
-#ByProjectKeyResourceById
+(resourceName): ByProjectKeyResourceById
 (resourcePathUri): /{projectKey}/resource/{id}
 
 uriParameters:
@@ -11,6 +11,7 @@ uriParameters:
     type: string
     (builtinType): string
 post:
+  displayName: Update a Resource by ID
   description: |-
     Update a resource by ID
   body:
@@ -23,6 +24,7 @@ get:
       scopes:
       - "manage_test:{projectKey}"
       - "view_test:{projectKey}"
+  displayName: Get a Resource by its ID
   description: |-
     Query by ID
   queryParameters:
@@ -44,20 +46,19 @@ get:
         application/json:
           type: ObjectTestType
           (builtinType): object
-          description: |-
-            A typical Object type with a non-scalar property.
 delete:
   securedBy:
   - oauth_2_0:
       scopes:
       - "manage_test:{projectKey}"
+  displayName: Delete a Resource by its ID
   description: |-
     Deletes a resource.
   responses:
     200:
+      description: |-
+        Deletion was successful.
       body:
         application/json:
           type: ObjectTestType
           (builtinType): object
-          description: |-
-            A typical Object type with a non-scalar property.

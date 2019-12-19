@@ -3,10 +3,31 @@ displayName: ExamplesTestType
 type: object
 (builtinType): object
 examples:
-  fullExample: !include ../examples/ExamplesTestType-fullExample.json
-  fullExampleInRamlNotation: !include ../examples/ExamplesTestType-fullExampleInRamlNotation.json
-  fullExampleWithLoosenedStrict: !include ../examples/ExamplesTestType-fullExampleWithLoosenedStrict.json
-  simpleExample: !include ../examples/ExamplesTestType-simpleExample.json
+  fullExample:
+    displayName: Full Example
+    description: |-
+      This **markdown** formatted description of the code example is to be shown with it.
+      The title of this example must be "Full Example" (displayName overrides the name).
+      The JSON contained must be code highlighted because the mime type is set.
+    strict: true
+    value: !include ../examples/ExamplesTestType-fullExample.json
+  fullExampleInRamlNotation:
+    displayName: Example in RAML notation
+    description: |-
+      We're not typically doing this but it should not fail. It places an object in RAML/YAML notation
+      in the tree. The parser's default output serializes it to JSON, which is another pointer that JSON _is_ the
+      default assumption.
+    strict: true
+    value: !include ../examples/ExamplesTestType-fullExampleInRamlNotation.json
+  fullExampleWithLoosenedStrict:
+    displayName: Full Example with default strict setting
+    description: |-
+      "strict" defaults to true, this is set to false and the example is wrong so it should parse
+    strict: false
+    value: !include ../examples/ExamplesTestType-fullExampleWithLoosenedStrict.json
+  simpleExample:
+    strict: true
+    value: !include ../examples/ExamplesTestType-simpleExample.json
 properties:
   foo:
     type: string

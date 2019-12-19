@@ -1,4 +1,4 @@
-#ByProjectKeyResource
+(resourceName): ByProjectKeyResource
 (resourcePathUri): /{projectKey}/resource
 
 uriParameters:
@@ -12,28 +12,28 @@ post:
   - oauth_2_0:
       scopes:
       - "manage_test:{projectKey}"
+  displayName: Create a Resource
   description: |-
     Create (POST) operation to a resource.
   body:
     application/json:
       type: ObjectTestTypeDraft
       (builtinType): object
-      description: |-
-        A type to create an ObjectTestType. Used for testing the endpoint layout.
   responses:
     201:
+      description: |-
+        201 Created response. This is the success response when creating something.
       body:
         application/json:
           type: ObjectTestType
           (builtinType): object
-          description: |-
-            A typical Object type with a non-scalar property.
 get:
   securedBy:
   - oauth_2_0:
       scopes:
       - "manage_test:{projectKey}"
       - "view_test:{projectKey}"
+  displayName: Get all resources
   description: |-
     Query/retrieve (GET) a specific resource or resource(s). This should return a paged query result of _blah_.
   queryParameters:
@@ -59,9 +59,9 @@ get:
       (builtinType): number
   responses:
     200:
+      description: |-
+        A 200 response.  This is the case when reading or modifying something.
       body:
         application/json:
           type: ArrayTestType
           (builtinType): object
-          description: |-
-            A type containing arrays of different kinds.

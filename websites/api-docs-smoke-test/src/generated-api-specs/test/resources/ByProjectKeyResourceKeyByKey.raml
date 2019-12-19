@@ -1,4 +1,4 @@
-#ByProjectKeyResourceKeyByKey
+(resourceName): ByProjectKeyResourceKeyByKey
 (resourcePathUri): /{projectKey}/resource/key={key}
 
 uriParameters:
@@ -16,13 +16,14 @@ get:
       scopes:
       - "manage_test:{projectKey}"
       - "view_test:{projectKey}"
+  displayName: Get a Resource by its Key
   description: |-
     Query by key. Has three responses to see the difference between modeling patterns in RAML
   responses:
     200:
+      description: |-
+        this is directly using a named type without messing with it, thats how we want to use RAML
       body:
         application/json:
           type: ObjectTestType
           (builtinType): object
-          description: |-
-            A typical Object type with a non-scalar property.

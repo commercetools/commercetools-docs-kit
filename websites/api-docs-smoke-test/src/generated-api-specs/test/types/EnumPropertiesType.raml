@@ -6,11 +6,15 @@ description: |-
   Test data for properties with enums that are of differing primitive types
 properties:
   intWithEnumExample:
-    format: int16
+    format: float
     type: number
     (builtinType): number
     description: |-
       An int with enum values
+    enum:
+    - 1
+    - 2
+    - 3
     required: true
   floatWithEnumExample:
     format: float
@@ -18,6 +22,10 @@ properties:
     (builtinType): number
     description: |-
       A float with enum values
+    enum:
+    - 1.0
+    - 2.0
+    - 3.0
     default: 1.0
     required: true
   enumOfStringExample:
@@ -25,4 +33,8 @@ properties:
     (builtinType): string
     description: |-
       A string with enum values (undescribed)
+    enum:
+    - dog
+    - cat
+    - elephant
     required: true
