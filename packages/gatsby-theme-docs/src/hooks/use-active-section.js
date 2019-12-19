@@ -1,6 +1,6 @@
 import React from 'react';
-import throttle from 'lodash.throttle';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import useScrollSpy from './use-scroll-spy';
 
 const calculateOffset = () => {
   const pxNumber = designSystem.dimensions.heights.header.replace(
@@ -12,37 +12,24 @@ const calculateOffset = () => {
 
 const getSectionElements = () =>
   document.querySelectorAll('section[class^="section-h"]');
-const getScrollContainer = () => document.querySelector('[role="application"]');
 
-const throttleMs = 100;
 const offset = calculateOffset();
 
-const useScrollSpy = () => {
+const useActiveSelection = () => {
   const [activeSection, setActiveSection] = React.useState();
-
-  const onScroll = React.useCallback(
-    throttle(() => {
-      const sectionElements = getSectionElements();
-      let nextActiveSection;
-      sectionElements.forEach(section => {
-        if (section.getBoundingClientRect().top - offset < 0) {
-          nextActiveSection = section;
-        }
-      });
-      setActiveSection(nextActiveSection);
-    }, throttleMs),
-    [setActiveSection]
-  );
-
-  React.useEffect(() => {
-    const container = getScrollContainer();
-    container.addEventListener('scroll', onScroll);
-    return () => {
-      container.removeEventListener('scroll', onScroll);
-    };
-  }, [onScroll]);
+  const onScroll = React.useCallback(() => {
+    const sectionElements = getSectionElements();
+    let nextActiveSection;
+    sectionElements.forEach(section => {
+      if (section.getBoundingClientRect().top - offset < 0) {
+        nextActiveSection = section;
+      }
+    });
+    setActiveSection(nextActiveSection);
+  }, []);
+  useScrollSpy('[role="application"]', onScroll);
 
   return activeSection;
 };
 
-export default useScrollSpy;
+export default useActiveSelection;
