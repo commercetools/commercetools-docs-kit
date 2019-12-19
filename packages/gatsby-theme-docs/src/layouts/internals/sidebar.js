@@ -3,35 +3,92 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { css, ClassNames } from '@emotion/core';
 import styled from '@emotion/styled';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import LogoSvg from '../../icons/logo.svg';
 import { BetaFlag } from '../../components';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 
-const SidebarWebsiteTitle = styled.div`
-  color: ${designSystem.colors.light.primary};
-  padding: ${designSystem.dimensions.spacings.l}
-    ${designSystem.dimensions.spacings.m};
-  font-size: ${designSystem.typography.fontSizes.h4};
+const ScrollContainer = styled.div`
+  overflow: auto;
+  height: 100%;
+  flex: 1;
+
+  > div {
+    margin-right: ${designSystem.dimensions.spacings.m};
+    padding: ${designSystem.dimensions.spacings.l} 0;
+  }
+  > * + * {
+    border-top: 1px solid ${designSystem.colors.light.borderPrimary};
+  }
 `;
-const SidebarLinkTitle = styled.div`
+const WebsiteTitle = styled.div`
+  color: ${designSystem.colors.light.primary};
+  padding: ${designSystem.dimensions.spacings.m};
+  font-size: ${designSystem.typography.fontSizes.h4};
+  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.1);
+`;
+const LinkTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.body};
   text-overflow: ellipsis;
   overflow-x: hidden;
   width: 100%;
 `;
-const SidebarLinkSubtitle = styled.div`
+const LinkSubtitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
   text-overflow: ellipsis;
   overflow-x: hidden;
   width: 100%;
 `;
-const SidebarLinkItem = styled.div`
+const LinkItem = styled.div`
   padding: 0 0 0 ${designSystem.dimensions.spacings.m};
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+`;
+const MenuLogoContainer = styled.div`
+  display: none;
+
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    height: ${designSystem.dimensions.heights.header};
+    width: ${designSystem.dimensions.widths.pageNavigationSmall};
+    background-color: ${designSystem.colors.light.surfacePrimary};
+    border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    width: ${designSystem.dimensions.widths.pageNavigation};
+  }
+`;
+const LogoContainer = styled.div`
+  padding: 0 ${designSystem.dimensions.spacings.m};
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+// This is a normal HTML link as we need to force a redirect to the root domain
+const LogoLink = styled.a`
+  color: ${designSystem.colors.light.textPrimary};
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+`;
+const LogoTitle = styled.div`
+  display: none;
+  font-size: ${designSystem.typography.fontSizes.body};
+
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    display: block;
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    font-size: ${designSystem.typography.fontSizes.h4};
+  }
 `;
 
 const SidebarLink = props => (
@@ -39,7 +96,7 @@ const SidebarLink = props => (
     {({ css: makeClassName }) => {
       const linkClassName = makeClassName`
         border-left: ${designSystem.dimensions.spacings.xs} solid
-          ${designSystem.colors.light.surfaceSecondary1};
+          ${designSystem.colors.light.surfacePrimary};
         padding-left: calc(
           ${designSystem.dimensions.spacings.m} - ${designSystem.dimensions.spacings.xs}
         );
@@ -101,18 +158,18 @@ const Sidebar = props => {
     }
   `);
   return (
-    <nav
-      aria-label="Main navigation"
-      css={css`
-        width: 100%;
-        > * + * {
-          border-top: 1px solid ${designSystem.colors.light.borderPrimary};
-          margin-right: ${designSystem.dimensions.spacings.m};
-          padding: ${designSystem.dimensions.spacings.l} 0;
-        }
-      `}
-    >
-      <SidebarWebsiteTitle>
+    <>
+      <MenuLogoContainer>
+        <LogoLink href="/">
+          <LogoContainer>
+            <SpacingsInline scale="m" alignItems="center">
+              <LogoSvg height={32} />
+              <LogoTitle>{'Documentation'}</LogoTitle>
+            </SpacingsInline>
+          </LogoContainer>
+        </LogoLink>
+      </MenuLogoContainer>
+      <WebsiteTitle>
         <SpacingsStack scale="xs">
           <div>{props.isGlobalBeta && <BetaFlag />}</div>
           <Link
@@ -128,35 +185,36 @@ const Sidebar = props => {
             {props.siteTitle}
           </Link>
         </SpacingsStack>
-      </SidebarWebsiteTitle>
-      {data.allNavigationYaml.nodes.map((node, index) => (
-        <SpacingsStack scale="s" key={index}>
-          <SidebarLinkItem>
-            <SidebarLinkTitle>{node.chapterTitle}</SidebarLinkTitle>
-            {node.beta && !props.isGlobalBeta && <BetaFlag />}
-          </SidebarLinkItem>
-          <SpacingsStack scale="s">
-            {node.pages &&
-              node.pages.map((pageLink, pageIndex) => (
-                <SidebarLink
-                  to={pageLink.path}
-                  key={`${index}-${pageIndex}-${pageLink.path}`}
-                  onClick={props.onLinkClick}
-                >
-                  <SidebarLinkSubtitle>{pageLink.title}</SidebarLinkSubtitle>
-                  {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
-                </SidebarLink>
-              ))}
+      </WebsiteTitle>
+      <ScrollContainer>
+        {data.allNavigationYaml.nodes.map((node, index) => (
+          <SpacingsStack scale="s" key={index}>
+            <LinkItem>
+              <LinkTitle>{node.chapterTitle}</LinkTitle>
+              {node.beta && !props.isGlobalBeta && <BetaFlag />}
+            </LinkItem>
+            <SpacingsStack scale="s">
+              {node.pages &&
+                node.pages.map((pageLink, pageIndex) => (
+                  <SidebarLink
+                    to={pageLink.path}
+                    key={`${index}-${pageIndex}-${pageLink.path}`}
+                    onClick={props.onLinkClick}
+                  >
+                    <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+                    {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
+                  </SidebarLink>
+                ))}
+            </SpacingsStack>
           </SpacingsStack>
-        </SpacingsStack>
-      ))}
-    </nav>
+        ))}
+      </ScrollContainer>
+    </>
   );
 };
 Sidebar.displayName = 'Sidebar';
 Sidebar.propTypes = {
-  onLinkClick: PropTypes.func.isRequired,
-  slug: PropTypes.string.isRequired,
+  onLinkClick: PropTypes.func,
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
 };

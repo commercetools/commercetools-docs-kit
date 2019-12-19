@@ -12,7 +12,7 @@ const Container = styled.header`
   grid-area: header;
   height: ${designSystem.dimensions.heights.header};
   width: 100%;
-  box-shadow: ${designSystem.tokens.shadow1};
+  border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
   z-index: 10;
 `;
 const Constraint = styled.div`
@@ -30,7 +30,7 @@ const Constraint = styled.div`
       props.constraintWidth ||
       `calc(
         ${designSystem.dimensions.widths.pageContentWithMargings} +
-        ${designSystem.dimensions.widths.pageNavigation} * 2 )
+        ${designSystem.dimensions.widths.pageNavigation})
       `};
   }
 `;
@@ -46,10 +46,7 @@ const MenuLogoContainer = styled.div`
   justify-content: flex-end;
 
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    width: ${designSystem.dimensions.widths.pageNavigationSmall};
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: ${designSystem.dimensions.widths.pageNavigation};
+    display: none;
   }
 `;
 const LogoContainer = styled.div`
@@ -68,17 +65,6 @@ const LogoLink = styled.a`
   display: block;
   width: 100%;
 `;
-const LogoTitle = styled.div`
-  display: none;
-  font-size: ${designSystem.typography.fontSizes.body};
-
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    display: block;
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    font-size: ${designSystem.typography.fontSizes.h4};
-  }
-`;
 const DocumentationSwitcherContainer = styled.div`
   border-left: 1px solid ${designSystem.colors.light.borderPrimary};
   color: ${designSystem.colors.light.textSecondary};
@@ -88,6 +74,8 @@ const DocumentationSwitcherContainer = styled.div`
   height: calc(100% - ${designSystem.dimensions.spacings.m});
   display: flex;
   align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
@@ -117,7 +105,6 @@ const LayoutHeader = props => (
             <LogoContainer>
               <SpacingsInline scale="m" alignItems="center">
                 <LogoSvg height={32} />
-                <LogoTitle>{'Documentation'}</LogoTitle>
               </SpacingsInline>
             </LogoContainer>
           </LogoLink>

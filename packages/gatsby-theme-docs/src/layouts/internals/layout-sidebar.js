@@ -11,16 +11,16 @@ const slideInAnimation = keyframes`
   from { margin-left: -100%; }
   to { margin-left: 0; }
 `;
-const Container = styled.div`
+const Container = styled.nav`
   grid-area: sidebar;
-  position: relative;
-  overflow: auto;
+  position: fixed;
+  z-index: 2;
+  height: 100vh;
+  width: ${designSystem.dimensions.widths.pageNavigationSmall};
+  display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
+  flex-direction: column;
   background-color: ${designSystem.colors.light.surfaceSecondary1};
   border-right: 1px solid ${designSystem.colors.light.borderPrimary};
-  width: ${designSystem.dimensions.widths.pageNavigationSmall};
-  height: 100%;
-  z-index: 2;
-  display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
 
   animation: ${slideInAnimation} 0.5s ease-out alternate;
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
@@ -92,6 +92,8 @@ const LayoutSidebar = props => {
               }}
             >
               <Container
+                role="nav"
+                aria-label="Main navigation"
                 isMenuOpen={true}
                 onClick={event => {
                   event.stopPropagation();
@@ -101,7 +103,6 @@ const LayoutSidebar = props => {
                   onLinkClick={() => {
                     props.setMenuOpen(false);
                   }}
-                  slug={props.slug}
                   siteTitle={props.siteTitle}
                   isGlobalBeta={props.isGlobalBeta}
                 />
@@ -116,9 +117,8 @@ const LayoutSidebar = props => {
   return (
     <>
       {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
-      <Container isMenuOpen={false}>
+      <Container role="nav" aria-label="Main navigation" isMenuOpen={false}>
         <Sidebar
-          slug={props.slug}
           siteTitle={props.siteTitle}
           isGlobalBeta={props.isGlobalBeta}
         />
@@ -130,7 +130,6 @@ LayoutSidebar.displayName = 'LayoutSidebar';
 LayoutSidebar.propTypes = {
   isMenuOpen: PropTypes.bool.isRequired,
   setMenuOpen: PropTypes.func.isRequired,
-  slug: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
 };

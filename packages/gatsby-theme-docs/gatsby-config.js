@@ -147,14 +147,6 @@ module.exports = (themeOptions = {}) => {
       'gatsby-plugin-react-helmet',
       'gatsby-plugin-emotion',
       {
-        resolve: 'gatsby-plugin-react-svg',
-        options: {
-          rule: {
-            include: /icons/,
-          },
-        },
-      },
-      {
         resolve: 'gatsby-plugin-prefetch-google-fonts',
         options: {
           fonts: [

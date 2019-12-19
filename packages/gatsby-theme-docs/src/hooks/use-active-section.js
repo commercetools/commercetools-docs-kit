@@ -7,12 +7,12 @@ const calculateOffset = () => {
     /([0-9]+)px$/,
     '$1'
   );
-  return parseInt(pxNumber, 10) + 1; // 1px makes it aligned with the browser "anchor position"
+  return parseInt(pxNumber, 10);
 };
 
 const getSectionElements = () =>
   document.querySelectorAll('section[class^="section-h"]');
-const getScrollContainer = () => document.querySelector('[role="main"]');
+const getScrollContainer = () => document.querySelector('[role="application"]');
 
 const throttleMs = 100;
 const offset = calculateOffset();
