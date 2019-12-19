@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { css, ClassNames } from '@emotion/core';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
+import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
+
+const scrollContainerId = 'navigation-scroll-container';
 
 const ScrollContainer = styled.div`
   overflow: auto;
@@ -63,55 +67,148 @@ const LinkItem = styled.div`
   align-items: flex-end;
 `;
 
-const SidebarLink = props => (
-  <ClassNames>
-    {({ css: makeClassName }) => {
-      const linkClassName = makeClassName`
-        border-left: ${designSystem.dimensions.spacings.xs} solid
-          ${designSystem.colors.light.surfaceSecondary1};
-        padding-left: calc(
-          ${designSystem.dimensions.spacings.m} - ${designSystem.dimensions.spacings.xs}
-        );
-        text-decoration: none;
-        color: ${designSystem.colors.light.textSecondary};
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
+const SidebarLink = React.forwardRef((props, ref) => {
+  // Filter out props that we don't want to forward to the Link component
+  const { location, nextScrollPosition, ...forwardProps } = props;
 
-        :hover {
+  const cachedScrollPosition = (location.state || {}).scrollPosition;
+  const locationPath = trimTrailingSlash(location.pathname);
+
+  const linkRef = React.useRef();
+  const scrollIntoView = React.useCallback(() => {
+    ref.current.scrollIntoView({ block: 'center' });
+  }, [ref]);
+  const restoreScrollPosition = React.useCallback(() => {
+    document
+      .getElementById(scrollContainerId)
+      .scrollBy(0, cachedScrollPosition);
+  }, [cachedScrollPosition]);
+  React.useEffect(() => {
+    const isActive = linkRef.current.getAttribute('aria-current') === 'page';
+    // In case there was no scroll position saved in the location, and the link
+    // is the active one, make sure that the chapter is "visible".
+    if (isActive && !cachedScrollPosition) {
+      scrollIntoView();
+    }
+    // In case there was a scroll position saved in the location make sure that
+    // the scroll position is restored.
+    // We check for the active link to ensure that we scroll to the position only once.
+    else if (isActive && cachedScrollPosition >= 0) {
+      restoreScrollPosition();
+    }
+  }, [linkRef, cachedScrollPosition, scrollIntoView, restoreScrollPosition]);
+
+  return (
+    <ClassNames>
+      {({ css: makeClassName }) => {
+        const linkClassName = makeClassName`
+          border-left: ${designSystem.dimensions.spacings.xs} solid ${designSystem.colors.light.surfaceSecondary1};
+          padding-left: calc(${designSystem.dimensions.spacings.m} - ${designSystem.dimensions.spacings.xs});
+          text-decoration: none;
+          color: ${designSystem.colors.light.textSecondary};
+          display: flex;
+          flex-direction: row;
+          align-items: flex-end;
+
+          :hover {
+            color: ${designSystem.colors.light.linkNavigation} !important;
+          }
+
+          > * + * {
+            margin: 0 0 0 ${designSystem.dimensions.spacings.s};
+          }
+        `;
+        const activeClassName = makeClassName`
+          border-left: ${designSystem.dimensions.spacings.xs} solid ${designSystem.colors.light.linkNavigation} !important;
           color: ${designSystem.colors.light.linkNavigation} !important;
-        }
-
-        > * + * {
-          margin: 0 0 0 ${designSystem.dimensions.spacings.s};
-        }
-      `;
-      const activeClassName = makeClassName`
-        border-left: ${designSystem.dimensions.spacings.xs} solid ${designSystem.colors.light.linkNavigation} !important;
-        color: ${designSystem.colors.light.linkNavigation} !important;
-      `;
-      return (
-        <Link
-          {...props}
-          // eslint-disable-next-line react/prop-types
-          to={trimTrailingSlash(props.to)}
-          getProps={({ href, location }) => {
-            // Manually check that the link is the active one, even with trailing slashes.
-            // The gatsby link is by default configured to match the exact path, therefore we
-            // need to check this manually.
-            const linkPath = trimTrailingSlash(href);
-            const locationPath = trimTrailingSlash(location.pathname);
-            if (linkPath === locationPath) {
-              return { className: [linkClassName, activeClassName].join(' ') };
-            }
-            return { className: linkClassName };
-          }}
-        />
-      );
-    }}
-  </ClassNames>
-);
+        `;
+        return (
+          <Link
+            {...forwardProps}
+            innerRef={linkRef}
+            to={trimTrailingSlash(props.to)}
+            state={{
+              scrollPosition: nextScrollPosition,
+            }}
+            getProps={({ href }) => {
+              // Manually check that the link is the active one, even with trailing slashes.
+              // The gatsby link is by default configured to match the exact path, therefore we
+              // need to check this manually.
+              const linkPath = trimTrailingSlash(href);
+              if (linkPath === locationPath) {
+                return {
+                  className: [linkClassName, activeClassName].join(' '),
+                  'aria-current': 'page',
+                };
+              }
+              return { className: linkClassName };
+            }}
+          />
+        );
+      }}
+    </ClassNames>
+  );
+});
 SidebarLink.displayName = 'SidebarLink';
+SidebarLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  nextScrollPosition: PropTypes.number.isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      scrollPosition: PropTypes.number,
+    }),
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+const SidebarChapter = props => {
+  const ref = React.useRef();
+  return (
+    <div ref={ref}>
+      <SpacingsStack scale="s">
+        <LinkItem>
+          <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          {props.chapter.beta && !props.isGlobalBeta && <BetaFlag />}
+        </LinkItem>
+        <SpacingsStack scale="s">
+          {props.chapter.pages &&
+            props.chapter.pages.map((pageLink, pageIndex) => (
+              <Location key={`${props.index}-${pageIndex}-${pageLink.path}`}>
+                {({ location }) => (
+                  <SidebarLink
+                    ref={ref}
+                    to={pageLink.path}
+                    onClick={props.onLinkClick}
+                    location={location}
+                    nextScrollPosition={props.nextScrollPosition}
+                  >
+                    <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+                    {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
+                  </SidebarLink>
+                )}
+              </Location>
+            ))}
+        </SpacingsStack>
+      </SpacingsStack>
+    </div>
+  );
+};
+SidebarChapter.propTypes = {
+  index: PropTypes.number.isRequired,
+  chapter: PropTypes.shape({
+    chapterTitle: PropTypes.string.isRequired,
+    beta: PropTypes.bool,
+    pages: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        path: PropTypes.string.isRequired,
+      })
+    ),
+  }).isRequired,
+  isGlobalBeta: PropTypes.bool.isRequired,
+  onLinkClick: PropTypes.func,
+  nextScrollPosition: PropTypes.number.isRequired,
+};
 
 const Sidebar = props => {
   const data = useStaticQuery(graphql`
@@ -129,6 +226,12 @@ const Sidebar = props => {
       }
     }
   `);
+  // Restore scroll position
+  // - read the position from the location state, in case it was set
+  // - clear the location state
+  // - initialize the new scroll position
+  // - scroll to the previous position in case it was defined
+  const nextScrollPosition = useScrollPosition(scrollContainerId);
   return (
     <>
       <LogoContainer>
@@ -152,27 +255,16 @@ const Sidebar = props => {
           </Link>
         </SpacingsStack>
       </WebsiteTitle>
-      <ScrollContainer>
+      <ScrollContainer id={scrollContainerId}>
         {data.allNavigationYaml.nodes.map((node, index) => (
-          <SpacingsStack scale="s" key={index}>
-            <LinkItem>
-              <LinkTitle>{node.chapterTitle}</LinkTitle>
-              {node.beta && !props.isGlobalBeta && <BetaFlag />}
-            </LinkItem>
-            <SpacingsStack scale="s">
-              {node.pages &&
-                node.pages.map((pageLink, pageIndex) => (
-                  <SidebarLink
-                    to={pageLink.path}
-                    key={`${index}-${pageIndex}-${pageLink.path}`}
-                    onClick={props.onLinkClick}
-                  >
-                    <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-                    {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
-                  </SidebarLink>
-                ))}
-            </SpacingsStack>
-          </SpacingsStack>
+          <SidebarChapter
+            key={index}
+            index={index}
+            chapter={node}
+            isGlobalBeta={props.isGlobalBeta}
+            onLinkClick={props.onLinkClick}
+            nextScrollPosition={nextScrollPosition}
+          />
         ))}
       </ScrollContainer>
     </>
