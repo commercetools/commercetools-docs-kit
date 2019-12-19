@@ -27,9 +27,7 @@ export const useApiTypes = () => {
             enumeration
             examples {
               name
-              file {
-                absolutePath
-              }
+              value
             }
             oneOf
             properties {

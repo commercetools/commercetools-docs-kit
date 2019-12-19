@@ -1,3 +1,5 @@
+const path = require('path');
+const fs = require('fs');
 const computeType = require('./compute-type');
 
 function createTypeNode({
@@ -8,7 +10,7 @@ function createTypeNode({
   createParentChildLink,
   createContentDigest,
 }) {
-  const postProcessedType = postProcessType(type, fileNode.relativeDirectory);
+  const postProcessedType = postProcessType(type, fileNode);
 
   const typeNode = {
     ...postProcessedType,
@@ -26,14 +28,17 @@ function createTypeNode({
   createParentChildLink({ parent: fileNode, child: typeNode });
 }
 
-function postProcessType(type, fileNodeRelativeDirectory) {
+function postProcessType(type, fileNode) {
   const postProcessedType = doRecursion(type);
 
-  postProcessedType.apiKey = fileNodeRelativeDirectory.replace(`/types`, '');
+  postProcessedType.apiKey = fileNode.relativeDirectory.replace(`/types`, '');
   postProcessedType.properties = processProperties(
     postProcessedType.properties
   );
-  postProcessedType.examples = examplesToArrays(postProcessedType.examples);
+  postProcessedType.examples = examplesToArrays(
+    postProcessedType.examples,
+    fileNode.dir
+  );
   postProcessedType.enumDescriptions = enumDescriptionsToArray(
     postProcessedType.enumDescriptions
   );
@@ -213,10 +218,12 @@ function generateBuiltinType(property) {
   }
 }
 
-function examplesToArrays(examples) {
+function examplesToArrays(examples, fileNodeDir) {
   if (examples) {
     return Object.entries(examples).map(([key, value]) => {
-      return { name: key, file: value };
+      const exampleAbsolutePath = path.resolve(fileNodeDir, value);
+      const jsonString = fs.readFileSync(exampleAbsolutePath, 'utf8');
+      return { name: key, value: jsonString };
     });
   }
 
