@@ -214,7 +214,7 @@ const Sidebar = props => {
 };
 Sidebar.displayName = 'Sidebar';
 Sidebar.propTypes = {
-  onLinkClick: PropTypes.func.isRequired,
+  onLinkClick: PropTypes.func,
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
 };

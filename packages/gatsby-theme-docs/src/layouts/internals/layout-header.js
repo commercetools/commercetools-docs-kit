@@ -74,6 +74,8 @@ const DocumentationSwitcherContainer = styled.div`
   height: calc(100% - ${designSystem.dimensions.spacings.m});
   display: flex;
   align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
