@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const doRecursion = require('./utils/type/do-recursion');
 const sortProperties = require('./utils/type/sort-properties');
-const computeType = require('./compute-type');
+const resolveConflictingFieldTypes = require('./utils/type/resolve-conflicting-field-types');
 
 function createTypeNode({
   type,
@@ -75,35 +75,6 @@ function propertiesToArrays(properties) {
   return Object.entries(properties).map(([key, value]) => {
     return { ...value, name: key };
   });
-}
-
-function resolveConflictingFieldTypes(property) {
-  const propsToStringify = ['default', 'enumeration'];
-
-  const returnedProperty = JSON.parse(JSON.stringify(property));
-
-  propsToStringify.forEach(prop => {
-    if (returnedProperty[prop]) {
-      returnedProperty[prop] = stringifyField(returnedProperty[prop]);
-    }
-  });
-
-  return returnedProperty;
-}
-
-function stringifyField(prop) {
-  const propType = computeType(prop);
-
-  switch (propType) {
-    case 'array':
-      return prop.map(val => {
-        return `${val}`;
-      });
-    case 'object':
-      return JSON.stringify(prop);
-    default:
-      return `${prop}`;
-  }
 }
 
 function generateType(property) {
