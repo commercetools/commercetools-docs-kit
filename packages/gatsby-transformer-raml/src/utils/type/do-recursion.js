@@ -1,4 +1,4 @@
-const computeType = require('./compute-type');
+const computeType = require('../compute-type');
 
 /**
  * This does a deep post processing needed on all fields on a type

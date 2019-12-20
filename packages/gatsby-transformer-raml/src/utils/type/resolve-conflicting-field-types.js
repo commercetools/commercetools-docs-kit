@@ -1,4 +1,4 @@
-const computeType = require('./compute-type');
+const computeType = require('../compute-type');
 
 function resolveConflictingFieldTypes(property) {
   const propsToStringify = ['default', 'enumeration'];
