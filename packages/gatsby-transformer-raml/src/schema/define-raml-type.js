@@ -5,6 +5,7 @@ const defineRamlType = ({ schema, createTypes }) => {
       fields: {
         apiKey: 'String!',
         builtinType: 'String',
+        constant: 'String',
         description: 'String',
         discriminator: 'String',
         discriminatorValue: 'String',
@@ -19,7 +20,7 @@ const defineRamlType = ({ schema, createTypes }) => {
       },
       interfaces: ['Node'],
       extensions: {
-        infer: true,
+        infer: false,
       },
     }),
     schema.buildObjectType({
@@ -33,6 +34,7 @@ const defineRamlType = ({ schema, createTypes }) => {
       name: 'RamlExample',
       fields: {
         name: 'String',
+        value: 'String!',
       },
     }),
     schema.buildObjectType({
@@ -40,6 +42,7 @@ const defineRamlType = ({ schema, createTypes }) => {
       fields: {
         beta: 'Boolean',
         builtinType: 'String',
+        constant: 'String',
         default: 'String',
         deprecated: 'Boolean',
         description: 'String',
