@@ -3,6 +3,8 @@ const fs = require('fs');
 const doRecursion = require('./utils/type/do-recursion');
 const sortProperties = require('./utils/type/sort-properties');
 const resolveConflictingFieldTypes = require('./utils/type/resolve-conflicting-field-types');
+const generateType = require('./utils/type/generate-type');
+const generateBuiltinType = require('./utils/type/generate-built-in-type');
 
 function createTypeNode({
   type,
@@ -75,36 +77,6 @@ function propertiesToArrays(properties) {
   return Object.entries(properties).map(([key, value]) => {
     return { ...value, name: key };
   });
-}
-
-function generateType(property) {
-  switch (property.type) {
-    case 'date-only':
-      return 'Date';
-    case 'time-only':
-      return 'Time';
-    case 'datetime-only':
-      return 'DateTimeOnly';
-    case 'datetime':
-      if (property.format) {
-        return property.format === 'rfc2616' ? 'DateTimeRfc2616' : 'DateTime';
-      }
-      return 'DateTime';
-    default:
-      return property.type;
-  }
-}
-
-function generateBuiltinType(property) {
-  switch (property.builtinType) {
-    case 'date-only':
-    case 'time-only':
-    case 'datetime-only':
-    case 'datetime':
-      return 'string';
-    default:
-      return property.builtinType;
-  }
 }
 
 function examplesToArrays(examples, fileNodeDir) {
