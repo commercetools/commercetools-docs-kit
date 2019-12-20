@@ -14,7 +14,6 @@ properties:
       with "ExampleTargetType" being a link.
     required: true
   exampleTarget:
-    discriminatorValue: "example-target"
     type: ExampleTargetTypeReference
     (builtinType): object
     description: |-
@@ -31,7 +30,6 @@ properties:
       with "References" and "ExampleTargetType" being links.
     required: true
   exampleTargetIdentifier:
-    discriminatorValue: "example-target"
     type: ExampleTargetTypeResourceIdentifier
     (builtinType): object
     description: |-
@@ -48,7 +46,6 @@ properties:
       with "ResourceIdentifiers" and "ExampleTargetType" being links.
     required: true
   exampleTargetByKey:
-    discriminatorValue: "example-target"
     type: ExampleTargetTypeKeyReference
     (builtinType): object
     description: |-

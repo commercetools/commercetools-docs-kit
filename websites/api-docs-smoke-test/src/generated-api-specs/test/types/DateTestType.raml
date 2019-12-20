@@ -10,18 +10,27 @@ properties:
     (builtinType): date-only
     description: |-
       to be shown as "Date"
+    examples:
+      default: 
+        value: "2015-05-23"
     required: true
   timeOnlyExample:
     type: time-only
     (builtinType): time-only
     description: |-
       to be shown as "Time"
+    examples:
+      default: 
+        value: "12:30:00"
     required: true
   dateTimeOnlyExample:
     type: datetime-only
     (builtinType): datetime-only
     description: |-
       To be shown as "DateTimeOnly". We do not recommend this format.
+    examples:
+      default: 
+        value: "2015-07-04T21:00:00"
     required: true
   dateTimeExample:
     format: rfc3339
@@ -29,6 +38,9 @@ properties:
     (builtinType): datetime
     description: |-
       rfc3339 format explicitly set. To be shown as "DateTime"
+    examples:
+      default: 
+        value: "2016-02-28T16:41:41.090Z"
     required: true
   dateTimeExampleDefaultFormat:
     format: rfc3339
@@ -36,6 +48,9 @@ properties:
     (builtinType): datetime
     description: |-
       format not set, rfc3339 is default, so this is also shown as "DateTime"
+    examples:
+      default: 
+        value: "2016-02-28T16:41:41.090Z"
     required: true
   dateTimeExampleRfc:
     format: rfc2616
@@ -43,4 +58,7 @@ properties:
     (builtinType): datetime
     description: |-
       To be shown as "DateTimeRfc2616". Not a recommended format.
+    examples:
+      default: 
+        value: "Sun, 28 Feb 2016 16:41:41 GMT"
     required: true
