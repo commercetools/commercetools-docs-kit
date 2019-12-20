@@ -1,5 +1,7 @@
 const path = require('path');
 const fs = require('fs');
+const doRecursion = require('./utils/type/do-recursion');
+const sortProperties = require('./utils/type/sort-properties');
 const computeType = require('./compute-type');
 
 function createTypeNode({
@@ -46,37 +48,6 @@ function postProcessType(type, fileNode) {
   return postProcessedType;
 }
 
-function doRecursion(type) {
-  let returnedType = {};
-
-  Object.keys(type).forEach(key => {
-    // remove parenthesis from annotation identifier
-    let keyWithoutParenthesis = key.replace(`(`, '').replace(`)`, '');
-
-    // use enumeration as enum is a reserved JavaScript keyword
-    keyWithoutParenthesis =
-      keyWithoutParenthesis === 'enum' ? 'enumeration' : keyWithoutParenthesis;
-
-    if (computeType(type[key]) === 'object') {
-      returnedType[keyWithoutParenthesis] = doRecursion(type[key]);
-      return;
-    }
-
-    returnedType[keyWithoutParenthesis] = type[key];
-
-    // generate constant field for constant-like
-    if (keyWithoutParenthesis === 'enumeration') {
-      const { enumeration } = returnedType;
-
-      if (enumeration.length === 1) {
-        returnedType = { ...returnedType, constant: enumeration[0] };
-      }
-    }
-  });
-
-  return returnedType;
-}
-
 function processProperties(properties) {
   let propertiesArray;
 
@@ -103,59 +74,6 @@ function processProperties(properties) {
 function propertiesToArrays(properties) {
   return Object.entries(properties).map(([key, value]) => {
     return { ...value, name: key };
-  });
-}
-
-function sortProperties(properties) {
-  const moveToTop = [
-    'id',
-    'version',
-    'key',
-    'createdAt',
-    'createdBy',
-    'lastModifiedAt',
-    'lastModifiedBy',
-  ];
-  const moveToBottom = ['custom'];
-  const copy = JSON.parse(JSON.stringify(properties));
-
-  return copy.sort((a, b) => {
-    const indexInMoveToTopA = moveToTop.indexOf(a.name);
-    const indexInMoveToTopB = moveToTop.indexOf(b.name);
-    const indexInMoveToBottomA = moveToBottom.indexOf(a.name);
-    const indexInMoveToBottomB = moveToBottom.indexOf(b.name);
-
-    // 1. Sort properties in moveToTop
-    // a. if a.name and b.name occurs in moveToTop, compare their indexes in moveToTop
-    if (indexInMoveToTopA > -1 && indexInMoveToTopB > -1) {
-      return indexInMoveToTopA - indexInMoveToTopB;
-    }
-
-    // b. if only a.name occurs in moveToTop, return -1, a.name comes fist
-    if (indexInMoveToTopA > -1) {
-      return -1;
-    }
-
-    // c. if only b.name occurs in moveToTop, return 1, b.name comes fist
-    if (indexInMoveToTopB > -1) {
-      return 1;
-    }
-
-    // 2. Sort properteis in moveToBottom - just do opposite of sorting to first
-    if (indexInMoveToBottomA > -1 && indexInMoveToBottomB > -1) {
-      return indexInMoveToTopB - indexInMoveToTopA;
-    }
-
-    if (indexInMoveToBottomA > -1) {
-      return 1;
-    }
-
-    if (indexInMoveToBottomB > -1) {
-      return -1;
-    }
-
-    // if neither is in moveToTop or moveToBottom, return 0, position remains unchanged
-    return 0;
   });
 }
 
