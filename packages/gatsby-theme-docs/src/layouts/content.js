@@ -28,11 +28,11 @@ const LayoutContent = props => {
         isGlobalBeta={props.pageContext.isGlobalBeta}
       />
       <LayoutMain>
+        <LayoutHeader
+          siteTitle={siteData.siteMetadata.title}
+          excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+        />
         <LayoutPage id="top">
-          <LayoutHeader
-            siteTitle={siteData.siteMetadata.title}
-            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
-          />
           <LayoutPageHeader>
             {props.pageContext.beta && (
               <BetaFlag href={siteData.siteMetadata.betaLink} />

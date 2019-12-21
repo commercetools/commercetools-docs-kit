@@ -1,51 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css, Global } from '@emotion/core';
 import styled from '@emotion/styled';
-import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
-import UnstyledSearchIcon from '../icons/search.svg';
-import UnstyledSlashIcon from '../icons/slash.svg';
-
-const SearchIcon = createStyledIcon(UnstyledSearchIcon);
+import { designSystem } from '@commercetools-docs/ui-kit';
+import reportErrorToSentry from '../utils/report-error-to-sentry';
+import SearchInput from './search-input';
 
 const algoliaStyles = css`
   .algolia-docsearch-suggestion--highlight {
     color: ${designSystem.colors.light.textInfo};
   }
 
-  .algolia-autocomplete .ds-dropdown-menu {
-    font-size: ${designSystem.typography.fontSizes.body};
-    box-shadow: ${designSystem.tokens.shadow4};
-    border-radius: ${designSystem.tokens.borderRadius6};
-    background: ${designSystem.colors.light.surfacePrimary};
-    text-align: left;
-    padding: 0 ${designSystem.dimensions.spacings.m};
-    margin: ${designSystem.dimensions.spacings.xs} 0 0;
-    position: relative;
-    right: 0 !important;
-    left: inherit !important;
-    overflow: auto;
-    border: ${designSystem.dimensions.spacings.m} solid
-      ${designSystem.colors.light.surfacePrimary};
-    border-left: none;
-    border-right: none;
-    z-index: 999;
-
-    /* viewport width, padding left/right, space left/right */
-    width: calc(100vw - 1rem * 2 - 1rem * 2);
-
-    /* viewport height, border top/bottom, margin top */
-    max-height: calc(
-      100vh - ${designSystem.dimensions.heights.header} -
-        ${designSystem.dimensions.spacings.xs} - 1rem * 2
-    );
+  .algolia-autocomplete {
+    margin-bottom: ${designSystem.dimensions.spacings.l};
+    height: calc(100vh - ${designSystem.dimensions.spacings.l});
+    width: 100%;
+    overflow: hidden;
   }
 
-  @media (${designSystem.dimensions.viewports.tablet}) {
-    .algolia-autocomplete .ds-dropdown-menu {
-      max-height: 80vh;
-      max-width: ${designSystem.dimensions.widths.pageContent};
-      min-width: ${designSystem.dimensions.widths.pageContentSmall};
-    }
+  .algolia-autocomplete .ds-dropdown-menu {
+    font-size: ${designSystem.typography.fontSizes.body};
+    background: ${designSystem.colors.light.surfacePrimary};
+    text-align: left;
+    padding: 0;
+    margin: ${designSystem.dimensions.spacings.xs} 0 0;
+    position: relative !important;
+    top: inherit !important;
+    bottom: inherit !important;
+    right: inherit !important;
+    left: inherit !important;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
   }
 
   .algolia-autocomplete .ds-dropdown-menu .ds-suggestions {
@@ -240,135 +226,170 @@ const algoliaStyles = css`
   }
 `;
 
-const SearchInput = styled.input`
-  appearance: none;
+const searchInputId = 'search-bar';
+
+const Container = styled.div`
+  width: 100%;
+  max-width: 100vw;
+  display: block;
+
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    display: grid;
+    grid:
+      [row1-start] 'left-blank search-dialog-content right-blank' auto [row1-end]
+      / 0
+      minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentWithMargings}
+      )
+      1fr;
+  }
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    grid:
+      [row1-start] 'left-blank search-dialog-content right-blank' auto [row1-end]
+      / 0 minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentWithMargings}
+      )
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+  }
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    grid:
+      [row1-start] 'left-blank search-dialog-content right-blank' auto [row1-end]
+      /
+      ${designSystem.dimensions.widths.pageNavigationSmall}
+      minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentWithMargings}
+      )
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    grid:
+      [row1-start] 'left-blank search-dialog-content right-blank' auto [row1-end]
+      /
+      ${designSystem.dimensions.widths.pageNavigation}
+      ${designSystem.dimensions.widths.pageContentWithMargings}
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+  }
+`;
+const Content = styled.div`
+  grid-area: search-dialog-content;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   background-color: ${designSystem.colors.light.surfacePrimary};
-  border: 1px solid ${designSystem.colors.light.borderInput};
-  border-radius: ${designSystem.tokens.borderRadius6};
-  box-shadow: none;
-  box-sizing: border-box;
-  color: ${designSystem.colors.light.textPrimary};
-  display: flex;
-  flex: 1;
-  font-family: inherit;
-  font-size: ${designSystem.typography.fontSizes.small};
-  height: ${designSystem.dimensions.heights.inputSearch};
-  min-height: ${designSystem.dimensions.heights.inputSearch};
-  outline: none;
-  overflow: hidden;
-  padding: 0
-    calc(
-      ${designSystem.dimensions.spacings.l} +
-        ${designSystem.dimensions.spacings.xs}
-    );
-  width: ${designSystem.dimensions.widths.searchBar};
-  &::placeholder {
-    color: ${designSystem.colors.light.textFaded};
-  }
-  &:active,
-  &:focus {
-    border-color: ${designSystem.colors.light.borderHighlight};
-    padding-right: ${designSystem.dimensions.spacings.xs};
-  }
+  height: 100%;
+  margin: 0;
 
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    width: ${designSystem.dimensions.widths.searchBarSmall};
+  padding: ${designSystem.dimensions.spacings.s}
+    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
+
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    padding: ${designSystem.dimensions.spacings.s}
+      ${designSystem.dimensions.spacings.xl}
+      ${designSystem.dimensions.spacings.xl};
   }
 `;
-const SearchInputIcon = styled.span`
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  bottom: 0;
-  width: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  ${props => `${props.position}: ${designSystem.dimensions.spacings.xs};`}
+const LeftBlank = styled.div`
+  grid-area: left-blank;
+  display: none;
+
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    display: block;
+  }
+`;
+const RightBlank = styled.div`
+  grid-area: right-blank;
+  display: none;
+
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    display: block;
+  }
 `;
 
-const SearchBar = () => {
-  const [isEnabled, setIsEnabled] = React.useState(true);
-  const [isActive, setIsActive] = React.useState(false);
-  const searchBarRef = React.useRef(null);
+const SearchDialog = props => {
+  const ref = React.useRef();
+  const [isSearchEnabled, setIsSearchEnabled] = React.useState(true);
+  const [hasErrorLoadingAlgolia, setHasErrorLoadingAlgolia] = React.useState(
+    false
+  );
 
   React.useEffect(() => {
     // https://github.com/algolia/docsearch/issues/352
     const isClient = typeof window !== 'undefined';
     if (isClient) {
-      import('docsearch.js').then(({ default: docsearch }) => {
-        docsearch({
-          apiKey: '6643ae30b54ef6784e4baaf9c8dbde07',
-          indexName: 'commercetools',
-          inputSelector: '#search-bar',
-          bindKeyboardShortcuts: false,
-          debug: process.env.NODE_ENV !== 'production',
-          algoliaOptions: {
-            hitsPerPage: 20,
-          },
-        });
-      });
-    } else {
-      console.warn('Search has failed to load and now is being disabled');
-      setIsEnabled(false);
-    }
-  }, []);
+      import('docsearch.js')
+        .then(({ default: docsearch }) => {
+          docsearch({
+            apiKey: '6643ae30b54ef6784e4baaf9c8dbde07',
+            indexName: 'commercetools',
+            inputSelector: `#${searchInputId}`,
+            bindKeyboardShortcuts: false,
+            debug: process.env.NODE_ENV !== 'production',
+            algoliaOptions: {
+              hitsPerPage: 20,
+            },
+          });
 
+          // Focus the input field so that the user can start typing directly
+          ref.current.focus();
+        })
+        .catch(error => {
+          reportErrorToSentry(error);
+          setHasErrorLoadingAlgolia(true);
+        });
+    } else {
+      setIsSearchEnabled(false);
+    }
+  }, [ref, setIsSearchEnabled, setHasErrorLoadingAlgolia]);
+
+  const { onClose } = props;
   React.useEffect(() => {
     const onKeyPress = event => {
-      // Listen to "slash" key events to focus the search input
-      if (event.key === '/') {
-        searchBarRef.current.focus();
-        setIsActive(true);
+      // Listen to "escape" key events to close the dialog
+      if (event.key.toLowerCase() === 'escape') {
+        onClose();
       }
     };
     window.addEventListener('keyup', onKeyPress);
     return () => {
       window.removeEventListener('keyup', onKeyPress);
     };
-  });
+  }, [onClose]);
 
-  const handleFocus = event => {
-    if (!searchBarRef.current.contains(event.target)) {
-      searchBarRef.current.focus();
-    }
-    setIsActive(true);
-  };
-  const handleBlur = () => {
-    setIsActive(false);
-  };
-
-  if (!isEnabled) {
-    return null;
-  }
   return (
-    <div>
-      <Global styles={algoliaStyles} />
-      <div
-        css={css`
-          position: relative;
-        `}
-      >
-        <SearchInputIcon position="left">
-          <SearchIcon size="medium" />
-        </SearchInputIcon>
-        <SearchInputIcon position="right" hidden={isActive}>
-          <UnstyledSlashIcon height={16} />
-        </SearchInputIcon>
-        <SearchInput
-          id="search-bar"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          disabled={!isEnabled}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          ref={searchBarRef}
-        />
-      </div>
-    </div>
+    <>
+      {isSearchEnabled && !hasErrorLoadingAlgolia && (
+        <Global styles={algoliaStyles} />
+      )}
+      <Container>
+        <LeftBlank />
+        <RightBlank />
+        <Content
+          onClick={event => {
+            // Prevent overlay to close when clicking on the content area.
+            event.stopPropagation();
+          }}
+        >
+          <SearchInput ref={ref} id={searchInputId} size="scale" />
+          {!isSearchEnabled && (
+            <div>{'The search is not available in this environment'}</div>
+          )}
+          {hasErrorLoadingAlgolia && (
+            <div>
+              {
+                'Could not load search engine. Please try again or contact support if the problem persists.'
+              }
+            </div>
+          )}
+        </Content>
+      </Container>
+    </>
   );
 };
+SearchDialog.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
-export default SearchBar;
+export default SearchDialog;
