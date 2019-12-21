@@ -98,7 +98,10 @@ const DocumentationSwitcherContainer = styled.div`
 `;
 const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
-  display: ${props => (props.excludeFromSearchIndex ? 'none' : 'block')};
+  display: ${(/* props */) =>
+    // FIXME: revert this before merging the PR!
+    // (props.excludeFromSearchIndex ? 'none' : 'block')
+    'block'};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     padding: 0;
