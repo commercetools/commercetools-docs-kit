@@ -1,5 +1,6 @@
 const mdx = require('@mdx-js/mdx');
 const babelParser = require('@babel/parser');
+const graymatter = require('gray-matter');
 const jsxAstUtils = require('./src/jsx-ast-utils');
 const reduceJsxAst = require('./src/reduce-jsx-ast');
 const getAllComponentNodes = require('./src/get-all-component-nodes');
@@ -157,7 +158,9 @@ async function getReducedForest(cache, node, options) {
     return cachedForest;
   }
 
-  const jsx = await mdx(node.rawBody);
+  // Remove frontmatter before parsing
+  const { content: mdxBody } = graymatter(node.rawBody);
+  const jsx = await mdx(mdxBody);
   const ast = babelParser.parse(jsx, {
     sourceType: 'module',
     plugins: ['jsx'],

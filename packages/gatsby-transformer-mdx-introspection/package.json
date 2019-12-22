@@ -16,7 +16,13 @@
   ],
   "scripts": {},
   "dependencies": {
+<<<<<<< HEAD
     "@babel/parser": "7.7.7",
     "@mdx-js/mdx": "1.5.3"
+=======
+    "@babel/parser": "^7.7.7",
+    "@mdx-js/mdx": "^1.5.3",
+    "gray-matter": "^4.0.2"
+>>>>>>> fix(introspection): remove frontmatter before parsing
   }
 }
