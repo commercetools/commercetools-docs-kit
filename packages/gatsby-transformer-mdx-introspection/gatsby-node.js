@@ -149,7 +149,6 @@ function introspectMdx({
       );
 
       componentNodes.forEach((componentNode, index) => {
-        if (!componentNode.hasGatsbyNode) return;
         createComponentInMdxNode({
           node,
           createNodeId,
