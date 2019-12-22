@@ -4,9 +4,6 @@ const jsxAstUtils = require('./src/jsx-ast-utils');
 const reduceJsxAst = require('./src/reduce-jsx-ast');
 const getAllComponentNodes = require('./src/get-all-component-nodes');
 
-// Cache key for getJsxAst (dependent only on file digest)
-const astCacheKey = node =>
-  `transformer-mdx-introspection-ast-${node.internal.contentDigest}`;
 // Cache key for getReducedForest (dependent on file digest & options)
 const reducedCacheKey = (node, options) =>
   `transformer-mdx-introspection-forest-${
@@ -129,38 +126,13 @@ exports.onCreateNode = (
 };
 
 /**
- * Evaluates the JSX AST of the given MDX node, attempting to pull from the
- * cache before performing any computations
- * @param {object} cache Gatsby Cache object
- * @param {object} node MDX Gatsby node
- */
-async function getJsxAst(cache, node) {
-  const cacheKey = astCacheKey(node);
-  const cachedResult = await cache.get(cacheKey);
-  if (cachedResult) {
-    return cachedResult;
-  }
-
-  const jsx = await mdx(node.rawBody);
-  const ast = babelParser.parse(jsx, {
-    sourceType: 'module',
-    plugins: ['jsx'],
-  });
-  const result = { jsx, ast };
-  await cache.set(cacheKey, result);
-  return result;
-}
-
-/**
- * Evaluates the reduced component forest of the given JSX/AST, attempting
+ * Evaluates the reduced component forest of the given MDX file, attempting
  * to pull from the cache before performing any computations
  * @param {object} cache Gatsby Cache object
  * @param {object} node MDX Gatsby node
- * @param {object} ast Babel JSX AST root
- * @param {string} jsx Original compiled JSX file from mdx-js
  * @param {object} options User-specified plugin options
  */
-async function getReducedForest(cache, node, ast, jsx, options) {
+async function getReducedForest(cache, node, options) {
   const withDefaults = addDefaults(options);
 
   // Resolve applied options
@@ -185,8 +157,13 @@ async function getReducedForest(cache, node, ast, jsx, options) {
     return cachedForest;
   }
 
+  const jsx = await mdx(node.rawBody);
+  const ast = babelParser.parse(jsx, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
   const contentRoot = jsxAstUtils.findContentRoot(ast);
-  const reducedForest = reduceJsxAst(contentRoot, jsx, options);
+  const reducedForest = reduceJsxAst(contentRoot, jsx, withDefaults);
   await cache.set(cacheKey, reducedForest);
   return reducedForest;
 }
@@ -203,8 +180,7 @@ function introspectMdx({
   options,
   cache,
 }) {
-  getJsxAst(cache, node)
-    .then(({ jsx, ast }) => getReducedForest(cache, node, ast, jsx, options))
+  getReducedForest(cache, node, options)
     .then(reducedForest => {
       // Coalesce all simple component trees into a list of their non-ignored nodes
       const componentNodes = reducedForest.reduce(
