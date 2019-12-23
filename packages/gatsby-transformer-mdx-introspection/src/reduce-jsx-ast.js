@@ -1,59 +1,29 @@
-const jsxAstUtils = require('./jsx-ast-utils');
+const {
+  convertToString,
+  collapseSpace,
+  isJsxElement,
+  getJsxChildren,
+} = require('./jsx-ast-utils');
 
 /**
- * Whether the node is a JSX element or fragment node
- * @param {object} node Babel JSX AST node
- */
-function isJsxElement(node) {
-  return (
-    jsxAstUtils.isAstNode(node) &&
-    (node.type === 'JSXElement' || node.type === 'JSXFragment')
-  );
-}
-
-/**
- * Cleans up a JSX snippet string, removing leading/trailing space and a
- * trailing semicolon, if applicable
- * @param {string} raw Raw JSX snippet string
- */
-function cleanJsxSnippet(raw) {
-  const trimmed = raw.trim();
-  if (trimmed.charAt(trimmed.length - 1) === ';') return trimmed.slice(0, -1);
-  return trimmed;
-}
-
-/**
- * Converts a JSX AST node (and its subtree) to a string, using a different
- * method depending on the type:
- *  - If the node is a string literal/template, then it simply takes the inner
- *    value
- *  - Else, the node takes on the value of the direct JSX it came from in the
- *    original file
+ * Serializes a node to string and searches for any embedded lingering JSX
+ * tags contained within, adding them to the detachedHeads array for further
+ * processing as a separate component tree
  * @param {object} node Babel JSX AST
  * @param {boolean} collapse Whether to collapse whitespace in JSX snippets
+ * @param {array} detachedHeads Mutable array of detached head Babel JSX AST
+ * nodes
  * @param {object} context Context object
  */
-function convertToString(node, collapse, context) {
-  const { jsx, collapseWhitespace } = context;
-  if (node == null) return '';
-  if (node.type === 'StringLiteral') return node.value;
-
-  const str = cleanJsxSnippet(jsx.substring(node.start, node.end));
-  if (node.type === 'TemplateLiteral') return str.slice(1, -1);
-
-  const shouldCollapse = collapse && collapseWhitespace;
-  return shouldCollapse ? collapseSpace(str) : str;
-}
-
-/**
- * Removes consecutive whitespace (both horizontal and vertical, separately),
- * leaving only one space/newline in their positions
- * @param {string} string Original string to transform
- */
-function collapseSpace(string) {
-  const horizontal = string.replace(/[^\S\r\n]{2,}/g, ' ');
-  const vertical = horizontal.replace(/[\r\n]{2,}/g, '\n');
-  return vertical;
+function serializeAndSearch(node, collapse, detachedHeads, context) {
+  const { collapseWhitespace, jsx } = context;
+  const value = convertToString(node, collapseWhitespace && collapse, jsx);
+  const subJsx = getJsxChildren(node);
+  if (subJsx.length > 0) {
+    // The value is (or contains) one or more JSX tree heads; add to list
+    detachedHeads.push(...subJsx);
+  }
+  return value;
 }
 
 /**
@@ -86,31 +56,67 @@ function reduceChildren(children, context) {
 }
 
 /**
- * Finds all JSX element children of the current node
- * @param {object} node Babel JSX AST
- */
-function getJsxChildren(node) {
-  return jsxAstUtils.findNode(node, isJsxElement, false);
-}
-
-/**
- * Serializes a node to string and searches for any embedded lingering JSX
- * tags contained within, adding them to the detachedHeads array for further
- * processing as a separate component tree
- * @param {object} node Babel JSX AST
- * @param {boolean} collapse Whether to collapse whitespace in JSX snippets
- * @param {array} detachedHeads Mutable array of detached head Babel JSX AST
- * nodes
+ * Transforms a spread JSX attribute into an array of simple attributes that can be
+ * parsed from the object expression contained within. Only works for object literals
+ * like <img {...{src: "", "alt": ""}} />
+ * @param {object} attribute Babel JSX AST attribute node
  * @param {object} context Context object
  */
-function serializeAndSearch(node, collapse, detachedHeads, context) {
-  const value = convertToString(node, collapse, context);
-  const subJsx = getJsxChildren(node);
-  if (subJsx.length > 0) {
-    // The value is (or contains) one or more JSX tree heads; add to list
-    detachedHeads.push(...subJsx);
+function transformSpreadAttribute(attribute, context) {
+  // Keep track of any JSX elements seen outside of direct children to parse
+  // and index (but not tag as children of the current element)
+  const detachedHeads = [];
+  const reducedAttributes = [];
+  const reduceExpression = (node, collapse = false) =>
+    serializeAndSearch(node, collapse, detachedHeads, context);
+
+  if (attribute.argument.type === 'ObjectExpression') {
+    attribute.argument.properties.forEach(propertyNode => {
+      if (propertyNode.type === 'ObjectProperty') {
+        // Try to parse property: only use if not computed like { [a]: "b" }
+        if (!propertyNode.computed) {
+          // Determine if property was declared with string or identifier
+          let name;
+          if (propertyNode.key.type === 'Identifier') {
+            name = propertyNode.key.name;
+          } else {
+            // Declared with string literal
+            name = propertyNode.key.value;
+          }
+
+          // Parse shorthand property like const a = "boo"; { a }
+          if (propertyNode.shorthand) {
+            reducedAttributes.push({
+              name,
+              value: name,
+            });
+          } else {
+            // Parse standard key: value property
+            const value = reduceExpression(propertyNode.value, true);
+            reducedAttributes.push({
+              name,
+              value,
+            });
+          }
+        }
+      } else if (propertyNode.type === 'ObjectMethod') {
+        // Parse the method like { method(arg) { return null; } }
+        const asString = reduceExpression(propertyNode, true);
+        const methodName = propertyNode.key.name;
+        // string like (arg) { return null; }
+        const withoutName = asString.substring(
+          asString.indexOf(methodName) + methodName.length
+        );
+        // set the value to be like function(arg) { return null; }
+        reducedAttributes.push({
+          name: methodName,
+          value: `function${withoutName}`,
+        });
+      }
+    });
   }
-  return value;
+
+  return [reducedAttributes, detachedHeads];
 }
 
 /**
@@ -153,51 +159,9 @@ function transformAttributes(attributes, context) {
       });
     } else if (attribute.type === 'JSXSpreadAttribute') {
       // Parse rest attibute like in <tag {...{ key: "value" }} />
-      if (attribute.argument.type === 'ObjectExpression') {
-        attribute.argument.properties.forEach(propertyNode => {
-          if (propertyNode.type === 'ObjectProperty') {
-            // Try to parse property: only use if not computed like { [a]: "b" }
-            if (!propertyNode.computed) {
-              // Determine if property was declared with string or identifier
-              let name;
-              if (propertyNode.key.type === 'Identifier') {
-                name = propertyNode.key.name;
-              } else {
-                // Declared with string literal
-                name = propertyNode.key.value;
-              }
-
-              // Parse shorthand property like const a = "boo"; { a }
-              if (propertyNode.shorthand) {
-                reducedAttributes.push({
-                  name,
-                  value: name,
-                });
-              } else {
-                // Parse standard key: value property
-                const value = reduceExpression(propertyNode.value, true);
-                reducedAttributes.push({
-                  name,
-                  value,
-                });
-              }
-            }
-          } else if (propertyNode.type === 'ObjectMethod') {
-            // Parse the method like { method(arg) { return null; } }
-            const asString = reduceExpression(propertyNode, true);
-            const methodName = propertyNode.key.name;
-            // string like (arg) { return null; }
-            const withoutName = asString.substring(
-              asString.indexOf(methodName) + methodName.length
-            );
-            // set the value to be like function(arg) { return null; }
-            reducedAttributes.push({
-              name: methodName,
-              value: `function${withoutName}`,
-            });
-          }
-        });
-      }
+      const [reduced, foundHeads] = transformSpreadAttribute(attribute);
+      reducedAttributes.push(...reduced);
+      detachedHeads.push(...foundHeads);
     }
   });
   return [reducedAttributes, detachedHeads];
@@ -211,7 +175,7 @@ function transformAttributes(attributes, context) {
  * @param {object} context Context object
  */
 function transformJsxElement(jsxElement, context) {
-  const { excludeTagSet, lowercaseTags, attachAST } = context;
+  const { excludeTagSet, lowercaseTags, attachAST, jsx } = context;
 
   // Keep track of any JSX elements seen outside of direct children to parse
   // and index (but not tag as children of the current element)
@@ -256,7 +220,7 @@ function transformJsxElement(jsxElement, context) {
     children,
     hasGatsbyNode: !excludeTagSet.has(component),
     ast: attachAST ? jsxElement : undefined,
-    jsx: convertToString(jsxElement, false, context),
+    jsx: convertToString(jsxElement, false, jsx),
   };
   return [reducedNode, detachedHeads];
 }
@@ -313,13 +277,18 @@ function transformNode(node, context) {
  * @param {object} options Options object from gatsby config
  * @see the readme for information on the options object
  */
-function reduceJsxAst(jsxAst, jsx, options) {
-  const { excludeTags, lowercaseTags, trimWhitespace } = options;
+function reduceJsxAst(
+  jsxAst,
+  jsx,
+  { excludeTags, lowercaseTags, trimWhitespace, collapseWhitespace, attachAST }
+) {
   const context = {
     excludeTagSet: new Set(excludeTags),
     lowercaseTags,
     jsx,
     trimWhitespace,
+    collapseWhitespace,
+    attachAST,
   };
 
   // Transform the tree via queue, adding detached heads to the queue as they
@@ -338,3 +307,6 @@ function reduceJsxAst(jsxAst, jsx, options) {
 }
 
 module.exports = reduceJsxAst;
+
+// Export for unit testing
+module.exports.reduceChildren = reduceChildren;
