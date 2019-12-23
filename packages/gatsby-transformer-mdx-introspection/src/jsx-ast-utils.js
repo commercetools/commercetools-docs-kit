@@ -133,6 +133,49 @@ function getJsxChildren(node) {
 }
 
 /**
+ * Reduces an object literal AST node to its literal representation
+ * @param {object} node Babel JSX AST
+ */
+function reduceObjectLiteral(node, jsx) {
+  const parsed = {};
+  node.properties.forEach(propertyNode => {
+    if (propertyNode.type === 'ObjectProperty') {
+      // Try to parse property: only use if not computed like { [a]: "b" }
+      if (!propertyNode.computed) {
+        // Determine if property was declared with string or identifier
+        let name;
+        if (propertyNode.key.type === 'Identifier') {
+          name = propertyNode.key.name;
+        } else {
+          // Declared with string literal
+          name = propertyNode.key.value;
+        }
+
+        // Parse shorthand property like const a = "boo"; { a }
+        if (propertyNode.shorthand) {
+          parsed[name] = name;
+        } else {
+          // Parse standard key: value property
+          const value = reduceNode(propertyNode.value, true, jsx);
+          parsed[name] = value;
+        }
+      }
+    } else if (propertyNode.type === 'ObjectMethod') {
+      // Parse the method like { method(arg) { return null; } }
+      const asString = reduceNode(propertyNode, true, jsx);
+      const methodName = propertyNode.key.name;
+      // string like (arg) { return null; }
+      const withoutName = asString.substring(
+        asString.indexOf(methodName) + methodName.length
+      );
+      // set the value to be like function(arg) { return null; }
+      parsed[methodName] = `function ${withoutName}`;
+    }
+  });
+  return parsed;
+}
+
+/**
  * Converts a JSX AST node (and its subtree) to a value, using a different
  * method depending on the type:
  *  - If the node is a literal/template, then it simply takes the inner value
@@ -153,6 +196,9 @@ function reduceNode(node, collapse, jsx) {
     case 'NullLiteral':
       return null;
 
+    case 'ObjectExpression':
+      return reduceObjectLiteral(node, jsx);
+
     case 'JSXExpressionContainer': {
       const { expression } = node;
       const { type } = expression;
@@ -167,6 +213,7 @@ function reduceNode(node, collapse, jsx) {
         case 'NumericLiteral':
         case 'BooleanLiteral':
         case 'NullLiteral':
+        case 'ObjectExpression':
           // Unwrap inner node
           return reduceNode(expression, collapse, jsx);
 

@@ -78,53 +78,19 @@ function transformSpreadAttribute(attribute, context) {
   const detachedHeads = [];
   const reducedAttributes = [];
 
-  const reduceExpression = (node, collapse = false) =>
-    serializeAndSearch(node, collapse, detachedHeads, context);
-
   if (attribute.argument.type === 'ObjectExpression') {
-    attribute.argument.properties.forEach(propertyNode => {
-      if (propertyNode.type === 'ObjectProperty') {
-        // Try to parse property: only use if not computed like { [a]: "b" }
-        if (!propertyNode.computed) {
-          // Determine if property was declared with string or identifier
-          let name;
-          if (propertyNode.key.type === 'Identifier') {
-            name = propertyNode.key.name;
-          } else {
-            // Declared with string literal
-            name = propertyNode.key.value;
-          }
+    const parsed = serializeAndSearch(
+      attribute.argument,
+      true,
+      detachedHeads,
+      context
+    );
 
-          // Parse shorthand property like const a = "boo"; { a }
-          if (propertyNode.shorthand) {
-            reducedAttributes.push({
-              name,
-              value: name,
-            });
-          } else {
-            // Parse standard key: value property
-            const value = reduceExpression(propertyNode.value, true);
-            reducedAttributes.push({
-              name,
-              value,
-            });
-          }
-        }
-      } else if (propertyNode.type === 'ObjectMethod') {
-        // Parse the method like { method(arg) { return null; } }
-        const asString = reduceExpression(propertyNode, true);
-        const methodName = propertyNode.key.name;
-        // string like (arg) { return null; }
-        const withoutName = asString.substring(
-          asString.indexOf(methodName) + methodName.length
-        );
-        // set the value to be like function(arg) { return null; }
-        reducedAttributes.push({
-          name: methodName,
-          value: `function ${withoutName}`,
-        });
-      }
-    });
+    if (typeof parsed === 'object') {
+      Object.entries(parsed).forEach(([key, value]) => {
+        reducedAttributes.push({ name: key, value });
+      });
+    }
   }
 
   return [reducedAttributes, detachedHeads];

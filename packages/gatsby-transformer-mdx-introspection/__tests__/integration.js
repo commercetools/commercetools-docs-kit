@@ -171,7 +171,7 @@ ${mdx1}
 
   it('properly parses complex mdx documents to component trees', async () => {
     const mdx = await fs.promises.readFile(
-      path.resolve(__dirname, './complex.mdx')
+      path.resolve(__dirname, './complex.mdx.test')
     );
     const result = await introspectMdx(mdx, mockOptions());
     expect(result.children).toMatchObject([
@@ -221,6 +221,7 @@ ${mdx1}
               // eslint-disable-next-line no-template-curly-in-string
               { name: 'complexTemplate', value: ' ${substitution} here' },
               { name: 'number', value: 0.7 },
+              { name: 'object', value: { a: '7', b: true, c: 0.31 } },
               { name: 'spread', value: true },
               { name: 'json', value: 0 },
               { name: 'nullObj', value: null },
@@ -231,9 +232,10 @@ ${mdx1}
                 value: 'function (a) {\n return a.toString();\n }',
               },
               { name: 'func3', value: 'function (arg) {\n return [];\n }' },
-              { name: 'func4', value: '(_, a) => a + 3' },
+              { name: 'func4', value: '(a, b) => a + 3' },
               // eslint-disable-next-line no-template-curly-in-string
               { name: 'template2', value: ' ${substitution} here' },
+              { name: 'object2', value: { a: '7', b: true, c: 0.31 } },
             ],
             children: [
               'indirect text child',
