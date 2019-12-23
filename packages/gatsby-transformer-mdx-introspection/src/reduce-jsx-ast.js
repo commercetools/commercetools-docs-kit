@@ -1,9 +1,13 @@
 const {
-  convertToString,
+  reduceNode,
   collapseSpace,
   isJsxElement,
   getJsxChildren,
 } = require('./jsx-ast-utils');
+
+// Contains methods that form a transformation pipeline converting the JSX
+// AST outputted by Babel's parser to a simpler, reduced component tree that
+// is used as the data model for the plugin
 
 /**
  * Serializes a node to string and searches for any embedded lingering JSX
@@ -17,7 +21,7 @@ const {
  */
 function serializeAndSearch(node, collapse, detachedHeads, context) {
   const { collapseWhitespace, jsx } = context;
-  const value = convertToString(node, collapseWhitespace && collapse, jsx);
+  const value = reduceNode(node, collapseWhitespace && collapse, jsx);
   const subJsx = getJsxChildren(node);
   if (subJsx.length > 0) {
     // The value is (or contains) one or more JSX tree heads; add to list
@@ -36,9 +40,15 @@ function serializeAndSearch(node, collapse, detachedHeads, context) {
 function reduceChildren(children, context) {
   const { trimWhitespace, collapseWhitespace } = context;
   const reduced = [];
-  children.forEach(child => {
+  children.forEach((child, i) => {
     if (typeof child === 'string') {
-      const trimmed = trimWhitespace ? child.trim() : child;
+      // Left trim first child, right trim last child (if configured to)
+      const isFirst = i === 0;
+      const isLast = i === children.length - 1;
+      let trimmed = child;
+      if (isFirst && trimWhitespace) trimmed = trimmed.trimLeft();
+      if (isLast && trimWhitespace) trimmed = trimmed.trimRight();
+
       const whitespaceCollapsed = collapseWhitespace
         ? collapseSpace(trimmed)
         : trimmed;
@@ -67,6 +77,7 @@ function transformSpreadAttribute(attribute, context) {
   // and index (but not tag as children of the current element)
   const detachedHeads = [];
   const reducedAttributes = [];
+
   const reduceExpression = (node, collapse = false) =>
     serializeAndSearch(node, collapse, detachedHeads, context);
 
@@ -110,7 +121,7 @@ function transformSpreadAttribute(attribute, context) {
         // set the value to be like function(arg) { return null; }
         reducedAttributes.push({
           name: methodName,
-          value: `function${withoutName}`,
+          value: `function ${withoutName}`,
         });
       }
     });
@@ -127,13 +138,15 @@ function transformSpreadAttribute(attribute, context) {
  * @param {object} context Context object
  */
 function transformAttributes(attributes, context) {
+  const { lowercaseIdentifiers, removeMdxCompilationArtifacts } = context;
+
   // Keep track of any JSX elements seen outside of direct children to parse
   // and index (but not tag as children of the current element)
   const detachedHeads = [];
   const reduceExpression = (node, collapse = false) =>
     serializeAndSearch(node, collapse, detachedHeads, context);
 
-  const reducedAttributes = [];
+  let reducedAttributes = [];
   attributes.forEach(attribute => {
     if (attribute.type === 'JSXAttribute') {
       // Parse simple attribute
@@ -145,7 +158,7 @@ function transformAttributes(attributes, context) {
       let value;
       if (valueNode === null) {
         // value wasn't specified, so treat as truthy boolean
-        value = 'true';
+        value = true;
       } else {
         // value was specified, parse
         const shouldCollapse =
@@ -159,11 +172,30 @@ function transformAttributes(attributes, context) {
       });
     } else if (attribute.type === 'JSXSpreadAttribute') {
       // Parse rest attibute like in <tag {...{ key: "value" }} />
-      const [reduced, foundHeads] = transformSpreadAttribute(attribute);
+      const [reduced, foundHeads] = transformSpreadAttribute(
+        attribute,
+        context
+      );
       reducedAttributes.push(...reduced);
       detachedHeads.push(...foundHeads);
     }
   });
+
+  // Remove attributes with name of "mdxType" or "parentName" if configured to
+  if (removeMdxCompilationArtifacts) {
+    reducedAttributes = reducedAttributes.filter(
+      ({ name }) => name !== 'mdxType' && name !== 'parentName'
+    );
+  }
+
+  // Transform attribute names to lowercase if configured to
+  if (lowercaseIdentifiers) {
+    reducedAttributes = reducedAttributes.map(({ name, value }) => ({
+      name: name.toLowerCase(),
+      value,
+    }));
+  }
+
   return [reducedAttributes, detachedHeads];
 }
 
@@ -175,7 +207,7 @@ function transformAttributes(attributes, context) {
  * @param {object} context Context object
  */
 function transformJsxElement(jsxElement, context) {
-  const { excludeTagSet, lowercaseTags, attachAST, jsx } = context;
+  const { excludeTagSet, lowercaseIdentifiers, attachAST, jsx } = context;
 
   // Keep track of any JSX elements seen outside of direct children to parse
   // and index (but not tag as children of the current element)
@@ -215,12 +247,12 @@ function transformJsxElement(jsxElement, context) {
   children = reduceChildren(children, context);
 
   const reducedNode = {
-    component: lowercaseTags ? component.toLowerCase() : component,
+    component: lowercaseIdentifiers ? component.toLowerCase() : component,
     attributes,
     children,
     hasGatsbyNode: !excludeTagSet.has(component),
     ast: attachAST ? jsxElement : undefined,
-    jsx: convertToString(jsxElement, false, jsx),
+    jsx: reduceNode(jsxElement, false, jsx),
   };
   return [reducedNode, detachedHeads];
 }
@@ -280,15 +312,23 @@ function transformNode(node, context) {
 function reduceJsxAst(
   jsxAst,
   jsx,
-  { excludeTags, lowercaseTags, trimWhitespace, collapseWhitespace, attachAST }
+  {
+    excludeTags,
+    lowercaseIdentifiers,
+    trimWhitespace,
+    collapseWhitespace,
+    removeMdxCompilationArtifacts,
+    attachAST,
+  }
 ) {
   const context = {
     excludeTagSet: new Set(excludeTags),
-    lowercaseTags,
-    jsx,
+    lowercaseIdentifiers,
     trimWhitespace,
     collapseWhitespace,
+    removeMdxCompilationArtifacts,
     attachAST,
+    jsx,
   };
 
   // Transform the tree via queue, adding detached heads to the queue as they

@@ -1,3 +1,6 @@
+// Contains utility methods that deal directly with the JSX AST that is
+// outputted by Babel's parser
+
 /**
  * Determines whether the object passed in has a type (which lets it )
  * @param {object} value The object to examine
@@ -130,24 +133,63 @@ function getJsxChildren(node) {
 }
 
 /**
- * Converts a JSX AST node (and its subtree) to a string, using a different
+ * Converts a JSX AST node (and its subtree) to a value, using a different
  * method depending on the type:
- *  - If the node is a string literal/template, then it simply takes the inner
- *    value
+ *  - If the node is a literal/template, then it simply takes the inner value
  *  - Else, the node takes on the value of the direct JSX it came from in the
  *    original file
  * @param {object} node Babel JSX AST
  * @param {boolean} collapse Whether to collapse whitespace in JSX snippets
  * @param {string} jsx Original JSX text
  */
-function convertToString(node, collapse, jsx) {
+function reduceNode(node, collapse, jsx) {
   if (node == null) return '';
-  if (node.type === 'StringLiteral') return node.value;
+  switch (node.type) {
+    case 'StringLiteral':
+    case 'NumericLiteral':
+    case 'BooleanLiteral':
+      return node.value;
 
-  const str = cleanJsxSnippet(jsx.substring(node.start, node.end));
-  if (node.type === 'TemplateLiteral') return str.slice(1, -1);
+    case 'NullLiteral':
+      return null;
 
-  return collapse ? collapseSpace(str) : str;
+    case 'JSXExpressionContainer': {
+      const { expression } = node;
+      const { type } = expression;
+
+      // Handle undefined
+      if (type === 'Identifier' && expression.name === 'undefined')
+        return undefined;
+
+      switch (type) {
+        case 'StringLiteral':
+        case 'TemplateLiteral':
+        case 'NumericLiteral':
+        case 'BooleanLiteral':
+        case 'NullLiteral':
+          // Unwrap inner node
+          return reduceNode(expression, collapse, jsx);
+
+        default:
+          return `{${reduceNode(expression, collapse, jsx)}}`;
+      }
+    }
+
+    default: {
+      // Handle undefined
+      if (node.type === 'Identifier' && node.name === 'undefined')
+        return undefined;
+
+      const str = cleanJsxSnippet(jsx.substring(node.start, node.end));
+      switch (node.type) {
+        case 'TemplateLiteral':
+          return str.slice(1, -1);
+
+        default:
+          return collapse ? collapseSpace(str) : str;
+      }
+    }
+  }
 }
 
 module.exports = {
@@ -160,5 +202,5 @@ module.exports = {
   collapseSpace,
   getJsxChildren,
   isJsxElement,
-  convertToString,
+  reduceNode,
 };

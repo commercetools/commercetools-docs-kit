@@ -12,7 +12,7 @@ module.exports = (themeOptions = {}) => ({
     {
       resolve: '@commercetools-docs/gatsby-transformer-mdx-introspection',
       options: {
-        lowercaseTags: true,
+        lowercaseIdentifiers: true,
       },
     },
     {

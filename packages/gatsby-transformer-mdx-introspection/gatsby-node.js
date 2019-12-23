@@ -1,8 +1,4 @@
-const mdx = require('@mdx-js/mdx');
-const babelParser = require('@babel/parser');
-const graymatter = require('gray-matter');
-const jsxAstUtils = require('./src/jsx-ast-utils');
-const reduceJsxAst = require('./src/reduce-jsx-ast');
+const transformMdx = require('./src/transform-mdx');
 const getAllComponentNodes = require('./src/get-all-component-nodes');
 
 // Cache key for getReducedForest (dependent on file digest & options)
@@ -13,7 +9,7 @@ const reducedCacheKey = (node, options) =>
 
 const defaultOptions = {
   // Whether to have the `component` field be all lower case (legacy)
-  lowercaseTags: false,
+  lowercaseIdentifiers: false,
   // Whether to trim leading/trailing whitespace in JSX snippets and string literals
   trimWhitespace: true,
   // Whether to collapse consecutive whitespace in JSX snippets and string literals
@@ -21,6 +17,9 @@ const defaultOptions = {
   // Whether to attach the original JSX AST nodes to the generated node output
   // Needed to query `ComponentInMdx.ast` successfully
   attachAST: false,
+  // Whether to remove attributes that are (usually) artifacts of MDX compilation:
+  // parentName and mdxType
+  removeMdxCompilationArtifacts: true,
   // Predicate function used as a performance escape hatch to filter MDX files that
   // get parsed/indexed
   shouldIndexNode: () => true,
@@ -49,64 +48,59 @@ function addDefaults(options) {
   return { ...defaultOptions, ...options };
 }
 
-exports.createSchemaCustomization = ({ actions, schema }, options) => {
-  const { attachAST } = addDefaults(options);
-  actions.createTypes([
-    `# JSX element attribute with left-hand identifier and right-hand value
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(
+    `"""
+     JSX element attribute with left-hand identifier and right-hand value
+     """
      type Attribute {
-        # Attribute left-hand identifier (or shorthand identifier)
-        name: String!
-        # Attribute right-hand value (or JSX expression snippet)
-        value: String
-      }`,
-    // Build schema using schema creation API to support resolvers
-    schema.buildObjectType({
-      name: 'ComponentInMdx',
-      interfaces: ['Node'],
-      extensions: { infer: false },
-      description:
-        "Single JSX element that was contained in a compiled MDX file's output",
-      fields: {
-        component: {
-          type: 'String!',
-          description: 'JSX component/tag/element name',
-        },
-        jsx: {
-          type: 'String!',
-          description: 'Original JSX snippet from compiled MDX',
-        },
-        attributes: {
-          type: '[Attribute!]!',
-          description:
-            'Array of attribute objects describing each parseable attribute specified',
-        },
-        // Lazily resolve complex tree values via internal property to
-        // avoid node tracking/type issues
-        jsxChildren: {
-          type: '[JSON!]!',
-          description:
-            'Array of component nodes that are children of the current node',
-          resolve: source => source.internal.original.children,
-        },
-        ast: {
-          type: 'JSON',
-          description:
-            'Original JSX AST subtree from Babel; only attached if `attachAST` is set' +
-            ' to `true` in the plugin config',
-          resolve: source => {
-            // Don't attach ASTs by default to prevent heap bloat
-            if (!attachAST) {
-              console.warn(
-                'Original JSX ASTs were not attached to nodes. Enable `attachAST` ' +
-                  'in the config to support querying the `ast` field'
-              );
-            }
-            return source.internal.original.ast || null;
-          },
+       "Attribute left-hand identifier (or shorthand identifier)"
+       name: String!
+       "Attribute right-hand value (or JSX expression snippet)"
+       value: JSON
+     }
+
+     """
+     Single JSX element that was contained in a compiled MDX file's output
+     """
+     type ComponentInMdx implements Node @dontInfer {
+       "JSX component/tag/element name"
+       component: String!
+       "Original JSX snippet from compiled MDX"
+       jsx: String!
+       "Array of attribute objects describing each parseable attribute specified"
+       attributes: [Attribute!]!
+       "Array of component nodes that are children of the current node"
+       jsxChildren: [JSON!]!
+       "Original JSX AST subtree from Babel; only attached if \`attachAST\` is set to \`true\` in the plugin config"
+       ast: JSON
+     }`
+  );
+};
+
+exports.createResolvers = ({ createResolvers }, options) => {
+  const { attachAST } = addDefaults(options);
+  createResolvers({
+    ComponentInMdx: {
+      // Lazily resolve complex tree values via internal property to
+      // avoid node tracking/type issues
+      jsxChildren: {
+        resolve: source => source.internal.original.children,
+      },
+      ast: {
+        resolve: source => {
+          // Don't attach ASTs by default to prevent heap bloat
+          if (!attachAST) {
+            console.warn(
+              'Original JSX ASTs were not attached to nodes. Enable `attachAST` ' +
+                'in the config to support querying the `ast` field'
+            );
+          }
+          return source.internal.original.ast || null;
         },
       },
-    }),
-  ]);
+    },
+  });
 };
 
 exports.onCreateNode = (
@@ -138,14 +132,16 @@ async function getReducedForest(cache, node, options) {
 
   // Resolve applied options
   const {
-    lowercaseTags,
+    lowercaseIdentifiers,
+    removeMdxCompilationArtifacts,
     trimWhitespace,
     collapseWhitespace,
     attachAST,
     excludeTags,
   } = withDefaults;
   const appliedOptions = {
-    lowercaseTags,
+    lowercaseIdentifiers,
+    removeMdxCompilationArtifacts,
     trimWhitespace,
     collapseWhitespace,
     attachAST,
@@ -158,15 +154,7 @@ async function getReducedForest(cache, node, options) {
     return cachedForest;
   }
 
-  // Remove frontmatter before parsing
-  const { content: mdxBody } = graymatter(node.rawBody);
-  const jsx = await mdx(mdxBody);
-  const ast = babelParser.parse(jsx, {
-    sourceType: 'module',
-    plugins: ['jsx'],
-  });
-  const contentRoot = jsxAstUtils.findContentRoot(ast);
-  const reducedForest = reduceJsxAst(contentRoot, jsx, withDefaults);
+  const reducedForest = await transformMdx(node.rawBody, withDefaults);
   await cache.set(cacheKey, reducedForest);
   return reducedForest;
 }
@@ -183,6 +171,25 @@ function introspectMdx({
   options,
   cache,
 }) {
+  const { removeMdxCompilationArtifacts } = addDefaults(options);
+  if (removeMdxCompilationArtifacts) {
+    // Make sure there aren't any of the existing attributes in the raw MDX
+    // If there are, then warn
+    const performCheck = attribute => {
+      if (
+        node.rawBody.includes(`${attribute}:`) ||
+        node.rawBody.includes(`${attribute}=`)
+      ) {
+        console.warn(
+          `An MDX file includes '${attribute}' as a string. The plugin is currently configured to remove this if it appears as an attribute`
+        );
+      }
+    };
+
+    performCheck('mdxType');
+    performCheck('parentName');
+  }
+
   getReducedForest(cache, node, options)
     .then(reducedForest => {
       // Coalesce all simple component trees into a list of their non-ignored nodes
@@ -202,7 +209,9 @@ function introspectMdx({
         });
       });
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.warn(error);
+    });
 }
 
 /**

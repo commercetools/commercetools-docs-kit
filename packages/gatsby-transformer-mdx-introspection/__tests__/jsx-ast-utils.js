@@ -1,5 +1,7 @@
 const jsxAstUtils = require('../src/jsx-ast-utils');
 
+// Tests utility methods in jsx-ast-utils.js
+
 // Simple JSX text element like <span>content</span>
 //                                     ^
 const mockText = (content = 'text') => ({
@@ -203,9 +205,9 @@ describe('getJsxChildren', () => {
   });
 });
 
-describe('convertToString', () => {
+describe('reduceNode', () => {
   it('returns empty string for invalid input', () => {
-    expect(jsxAstUtils.convertToString(null)).toBe('');
+    expect(jsxAstUtils.reduceNode(null)).toBe('');
   });
 
   it('directly converts string literals without collapsing ever', () => {
@@ -222,8 +224,8 @@ describe('convertToString', () => {
       },
       value: text,
     };
-    expect(jsxAstUtils.convertToString(node, false, jsx)).toBe(text);
-    expect(jsxAstUtils.convertToString(node, true, jsx)).toBe(text);
+    expect(jsxAstUtils.reduceNode(node, false, jsx)).toBe(text);
+    expect(jsxAstUtils.reduceNode(node, true, jsx)).toBe(text);
   });
 
   it('directly converts template strings from JSX without delimiters', () => {
@@ -248,7 +250,7 @@ describe('convertToString', () => {
         },
       ],
     };
-    expect(jsxAstUtils.convertToString(node, false, jsx)).toBe(text);
+    expect(jsxAstUtils.reduceNode(node, false, jsx)).toBe(text);
   });
 
   it('converts all other expressions from their direct JSX', () => {
@@ -257,7 +259,7 @@ describe('convertToString', () => {
     const jsx = `<${tag}> mdxType="${tag}" />`;
     node.start = 0;
     node.end = jsx.length;
-    expect(jsxAstUtils.convertToString(node, false, jsx)).toBe(jsx);
+    expect(jsxAstUtils.reduceNode(node, false, jsx)).toBe(jsx);
   });
 
   it('does not collapse text when collapse is unset', () => {
@@ -266,7 +268,7 @@ describe('convertToString', () => {
     const jsx = `<span>${text}</span>`;
     node.start = 6;
     node.end = text.length + 6;
-    expect(jsxAstUtils.convertToString(node, false, jsx)).toBe(text);
+    expect(jsxAstUtils.reduceNode(node, false, jsx)).toBe(text);
   });
 
   it('does collapse text when collapse is set', () => {
@@ -275,6 +277,6 @@ describe('convertToString', () => {
     const jsx = `<span>${text}</span>`;
     node.start = 6;
     node.end = text.length + 6;
-    expect(jsxAstUtils.convertToString(node, true, jsx)).toBe('start text');
+    expect(jsxAstUtils.reduceNode(node, true, jsx)).toBe('start text');
   });
 });

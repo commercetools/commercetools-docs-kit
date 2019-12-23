@@ -1,5 +1,7 @@
 /**
- * Gets all component nodes from a tree, recursively traversing all children
+ * Gets all component nodes from a tree, recursively traversing all children.
+ * Note: ignores any nodes marked as "hasGatsbyNode: false", but still traverses
+ * their children
  * @param {object} reducedTree Reduced component tree output from reduceJsxAst
  */
 function getAllComponentNodes(reducedTree) {

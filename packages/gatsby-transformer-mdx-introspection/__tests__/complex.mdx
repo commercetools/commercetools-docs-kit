@@ -1,0 +1,55 @@
+---
+frontmatterValue:
+  - a
+  - n
+otherValue: 1
+---
+
+# 🚀 Getting _Started_
+
+<Alert type="primary" mode={"normal"}>
+
+_Text content_ `here`
+
+</Alert>
+
+### Complex jsx tag
+
+<>
+<Gadget
+doSomething={() => true}
+truthy
+falsey={false}
+indirect={"value"}
+single={'value'}
+template={`text`}
+null={null}
+undef={undefined}
+complexTemplate={`${substitution} here`}
+number={0.7}
+{...{
+spread: true,
+"json": 0,
+nullObj: null,
+undefObj: undefined,
+func1: function () {
+return null;
+},
+func2: function (a) {
+return a.toString()
+},
+func3 (arg) {
+return [];
+},
+func4: (\_, a) => a + 3,
+template2: `${substitution} here`
+}}
+
+>
+
+    {`indirect text child`}
+    direct text child
+    <span>jsx child</span>
+
+  </Gadget>
+</>
