@@ -33,10 +33,12 @@ query GetAllApiTypes {
         name
         value
       }
-      page: parent {
+      mdx: parent {
         ... on Mdx {
-          fields {
-            slug
+          file: parent {
+            ... on File {
+              relativePath
+            }
           }
         }
       }
@@ -64,9 +66,9 @@ query GetAllApiTypes {
               "value": "OutOfOrderPropertiesTestType"
             }
           ],
-          "page": {
-            "fields": {
-              "slug": "/api/types/"
+          "mdx": {
+            "file": {
+              "relativePath": "api/types/index.md"
             }
           }
         },

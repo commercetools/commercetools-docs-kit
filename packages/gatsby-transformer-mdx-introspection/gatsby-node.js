@@ -36,6 +36,7 @@ const defaultOptions = {
     'strong',
     'del',
     'code',
+    'MDXLayout',
   ],
 };
 
