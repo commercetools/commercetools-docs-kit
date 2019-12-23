@@ -109,6 +109,22 @@ Predicate function used as a performance escape hatch to filter MDX files that g
 
 JSX components that do not generate Gatsby nodes in the final output (they still appear as other components' children and their children can generate nodes)
 
+##### Default value
+
+By default, the following tags are exlcuded from node generation (generally due to being common or especially numerous):
+
+- `p`
+- `tr`
+- `th`
+- `td`
+- `li`
+- `span`
+- `em`
+- `strong`
+- `del`
+- `code`
+- `MDXLayout`
+
 ## Known issues
 
 - The plugin has to parse the MDX separately (and therefore twice in the site build) because `gatsby-plugin-mdx` does lazyly evaluate the AST property on the Mdx GraphQL provided, which means it's available to components using GraphQL but not to other plugins that read from the GatsbyJS Node Objects in earlier build phases.
