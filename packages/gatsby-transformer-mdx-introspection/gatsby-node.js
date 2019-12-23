@@ -82,11 +82,6 @@ exports.createResolvers = ({ createResolvers }, options) => {
   const { attachAST } = addDefaults(options);
   createResolvers({
     ComponentInMdx: {
-      // Lazily resolve complex tree values via internal property to
-      // avoid node tracking/type issues
-      jsxChildren: {
-        resolve: source => source.internal.original.children,
-      },
       ast: {
         resolve: source => {
           // Don't attach ASTs by default to prevent heap bloat
@@ -96,7 +91,7 @@ exports.createResolvers = ({ createResolvers }, options) => {
                 'in the config to support querying the `ast` field'
             );
           }
-          return source.internal.original.ast || null;
+          return source.original.ast || null;
         },
       },
     },
@@ -231,6 +226,10 @@ function createComponentInMdxNode({
   const { ast, children, ...rest } = componentNode;
   const componentInMdxNode = {
     ...rest,
+    jsxChildren: children,
+    original: {
+      ast,
+    },
     id: createNodeId(
       `${node.id}.${componentNode.component}.${index} >>> COMPONENT_IN_MDX`
     ),
@@ -239,10 +238,6 @@ function createComponentInMdxNode({
     internal: {
       contentDigest: createContentDigest(componentNode),
       type: 'ComponentInMdx',
-      original: {
-        ast,
-        children,
-      },
     },
   };
 
