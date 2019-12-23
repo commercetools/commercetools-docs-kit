@@ -8,7 +8,7 @@ const reducedCacheKey = (node, options) =>
   }.${JSON.stringify(options)}`;
 
 const defaultOptions = {
-  // Whether to have the `component` field be all lower case (legacy)
+  // Whether to have the `component` field (and `attribute.name`) be all lower case (legacy)
   lowercaseIdentifiers: false,
   // Whether to trim leading/trailing whitespace in JSX snippets and string literals
   trimWhitespace: true,
