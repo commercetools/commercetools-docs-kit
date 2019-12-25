@@ -1,5 +1,6 @@
+const merge = require('deepmerge');
 const transformMdx = require('./src/transform-mdx');
-const getAllComponentNodes = require('./src/get-all-component-nodes');
+const { collapseWhitespace: collapseSpace } = require('./src/jsx-ast-utils');
 
 // Cache key for getReducedForest (dependent on file digest & options)
 const reducedCacheKey = (node, options) =>
@@ -40,6 +41,9 @@ const defaultOptions = {
   ],
 };
 
+// Generated node name
+const nodeName = 'ComponentInMdx';
+
 /**
  * Adds default plugin options to the user options, letting user options
  * override default options
@@ -47,6 +51,53 @@ const defaultOptions = {
  */
 function addDefaults(options) {
   return { ...defaultOptions, ...options };
+}
+
+/**
+ * Calls a function for each node in a generic subtree where each element has "children"
+ * @param {object} node Generic tree node
+ * @param {function} effect Side effect to call on each node
+ */
+function visit(node, effect) {
+  effect(node);
+  if (typeof node === 'object' && 'children' in node) {
+    node.children.forEach(child => visit(child, effect));
+  }
+}
+
+/**
+ * Utility method to implement common query functionality between
+ * childrenComponentInMdx and childComponentInMdx
+ * @param {object} node Gatsby ComponentInMdx node
+ * @param {object} context Gatsby API helpers context
+ */
+async function queryChildren(node, context, { filter, sort, deep, first }) {
+  let baseFilter = {};
+
+  if (deep) {
+    // Traverse data model to find all children IDs
+    const allDeepChildrenIds = [];
+    node.tree.forEach(n =>
+      visit(n, child => {
+        if (typeof child === 'object') {
+          allDeepChildrenIds.push(child.id);
+        }
+      })
+    );
+    baseFilter = { id: { in: allDeepChildrenIds } };
+  } else {
+    // Directly query children
+    baseFilter = { parent: { id: { eq: node.id } } };
+  }
+
+  // Perform query
+  const derivedFilter = merge(filter, baseFilter);
+  const result = await context.nodeModel.runQuery({
+    query: { filter: derivedFilter, sort },
+    type: nodeName,
+    firstOnly: first,
+  });
+  return result;
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
@@ -64,35 +115,125 @@ exports.createSchemaCustomization = ({ actions }) => {
      """
      Single JSX element that was contained in a compiled MDX file's output
      """
-     type ComponentInMdx implements Node @dontInfer {
+     type ${nodeName} implements Node @childOf(types: ["${nodeName}", "Mdx"], many: true) @dontInfer {
        "JSX component/tag/element name"
        component: String!
        "Original JSX snippet from compiled MDX"
        jsx: String!
        "Array of attribute objects describing each parseable attribute specified"
        attributes: [Attribute!]!
+       "Whether the component is a root node of the MDX document (or of its own detached subtree)"
+       isRoot: Boolean
        "Array of component nodes that are children of the current node"
-       jsxChildren: [JSON!]!
+       tree: [JSON!]!
        "Original JSX AST subtree from Babel; only attached if \`attachAST\` is set to \`true\` in the plugin config"
        ast: JSON
+       "Original MDX file parent node"
+       mdx: Mdx! @link
      }`
   );
 };
 
-exports.createResolvers = ({ createResolvers }, options) => {
+exports.createResolvers = (
+  { createResolvers, intermediateSchema, reporter },
+  options
+) => {
   const { attachAST } = addDefaults(options);
+  const typeMap = intermediateSchema.getTypeMap();
+  const filterType = typeMap[`${nodeName}FilterInput`];
+  const sortType = typeMap[`${nodeName}SortInput`];
+
+  // Closure: whether the user has been warned about AST resolution
+  let hasWarned = false;
+
   createResolvers({
-    ComponentInMdx: {
+    [nodeName]: {
+      [`children${nodeName}`]: {
+        type: `[${nodeName}!]!`,
+        description:
+          'All child JSX/HTML nodes (excluding text children). If deep is set, ' +
+          'then the field will return all children of children of this node at any level',
+        args: {
+          filter: filterType,
+          sort: sortType,
+          limit: 'Int',
+          skip: 'Int',
+          deep: 'Boolean',
+        },
+        resolve: async (source, args, context) => {
+          const { filter, sort, limit, skip, deep } = args;
+          const result = await queryChildren(source, context, {
+            filter,
+            sort,
+            deep,
+            first: false,
+          });
+
+          // Apply limit/skip
+          if (result == null) return [];
+          if (limit != null) {
+            const resolvedSkip = skip == null ? 0 : skip;
+            return result.slice(resolvedSkip, resolvedSkip + limit);
+          }
+          return result;
+        },
+      },
+      [`child${nodeName}`]: {
+        type: nodeName,
+        description:
+          'A single child JSX/HTML node (excluding text children). If deep is set, ' +
+          'then the field could take the value of any child of children of this node at any level',
+        args: {
+          filter: filterType,
+          sort: sortType,
+          deep: 'Boolean',
+        },
+        resolve: async (source, args, context) => {
+          const { filter, sort, deep } = args;
+          const result = await queryChildren(source, context, {
+            filter,
+            sort,
+            deep,
+            first: true,
+          });
+          return result;
+        },
+      },
       ast: {
         resolve: source => {
           // Don't attach ASTs by default to prevent heap bloat
           if (!attachAST) {
-            console.warn(
-              'Original JSX ASTs were not attached to nodes. Enable `attachAST` ' +
-                'in the config to support querying the `ast` field'
-            );
+            if (!hasWarned) {
+              reporter.warn(
+                'Original JSX ASTs were not attached to nodes. Enable `attachAST` ' +
+                  'in the config to support querying the `ast` field'
+              );
+              hasWarned = true;
+            }
           }
-          return source.original.ast || null;
+          return source.ast || null;
+        },
+      },
+      content: {
+        type: 'String!',
+        description:
+          'Text content of the current node. To configure text processing rules, use collapse/trim',
+        args: { collapse: 'Boolean', trim: 'Boolean' },
+        resolve: (source, args) => {
+          const { trim, collapse } = args;
+          let text = '';
+
+          source.tree.forEach(node =>
+            visit(node, child => {
+              if (typeof child === 'string') {
+                text += child;
+              }
+            })
+          );
+
+          const trimmed = trim ? text.trim() : text;
+          const collapsed = collapse ? collapseSpace(trimmed) : trimmed;
+          return collapsed;
         },
       },
     },
@@ -100,7 +241,7 @@ exports.createResolvers = ({ createResolvers }, options) => {
 };
 
 exports.onCreateNode = (
-  { node, actions, createNodeId, createContentDigest, cache },
+  { node, actions, createNodeId, createContentDigest, cache, reporter },
   options
 ) => {
   const { shouldIndexNode } = addDefaults(options);
@@ -112,6 +253,7 @@ exports.onCreateNode = (
       actions,
       options,
       cache,
+      reporter,
     });
   }
 };
@@ -166,6 +308,7 @@ function introspectMdx({
   actions,
   options,
   cache,
+  reporter,
 }) {
   const { removeMdxCompilationArtifacts } = addDefaults(options);
   if (removeMdxCompilationArtifacts) {
@@ -176,8 +319,9 @@ function introspectMdx({
         node.rawBody.includes(`${attribute}:`) ||
         node.rawBody.includes(`${attribute}=`)
       ) {
-        console.warn(
-          `An MDX file includes '${attribute}' as a string. The plugin is currently configured to remove this if it appears as an attribute`
+        reporter.warn(
+          `An MDX file at ${node.fileAbsolutePath} includes '${attribute}' as a string.
+          The mdx introspection plugin is currently configured to remove this if it appears as an attribute`
         );
       }
     };
@@ -188,60 +332,63 @@ function introspectMdx({
 
   getReducedForest(cache, node, options)
     .then(reducedForest => {
-      // Coalesce all simple component trees into a list of their non-ignored nodes
-      const componentNodes = reducedForest.reduce(
-        (accum, tree) => [...accum, ...getAllComponentNodes(tree)],
-        []
-      );
+      const { createNode, createParentChildLink } = actions;
 
-      componentNodes.forEach((componentNode, index) => {
-        createComponentInMdxNode({
-          node,
-          createNodeId,
-          createContentDigest,
-          actions,
-          componentNode,
-          index, // the exact same JSX could be on one page twice, use a counter to differentiate
+      // the exact same JSX could be on one page twice, use a counter to differentiate
+      let index = 0;
+
+      // Traverse tree and create nodes, starting with the root
+      function createComponentInMdxNode(
+        componentNode,
+        isRoot,
+        parentGatsbyNode
+      ) {
+        if (typeof componentNode === 'string') return;
+        let newParent = parentGatsbyNode;
+
+        if (componentNode.hasGatsbyNode) {
+          const { children, mdxAST, ...rest } = componentNode;
+          const idBase = `${node.id}.${componentNode.component}.${index} >>> COMPONENT_IN_MDX`;
+          const id = createNodeId(idBase);
+          const newNode = {
+            id: createNodeId(idBase),
+            parent: parentGatsbyNode.id,
+            children: [],
+            internal: {
+              contentDigest: createContentDigest(componentNode),
+              type: 'ComponentInMdx',
+            },
+            // Link MDX file tree root
+            mdx: node.id,
+            // data
+            tree: children,
+            ast: mdxAST,
+            isRoot,
+            ...rest,
+          };
+
+          // Link data model to Gatsby for custom resolver
+          // eslint-disable-next-line no-param-reassign
+          componentNode.id = id;
+          createNode(newNode);
+          createParentChildLink({
+            parent: parentGatsbyNode,
+            child: componentNode,
+          });
+          newParent = newNode;
+          index += 1;
+        }
+
+        // Create nodes for all children
+        componentNode.children.forEach(childNode => {
+          createComponentInMdxNode(childNode, false, newParent);
         });
-      });
+      }
+
+      // Create nodes for all trees
+      reducedForest.forEach(tree => createComponentInMdxNode(tree, true, node));
     })
     .catch(error => {
-      console.warn(error);
+      reporter.error(String(error));
     });
-}
-
-/**
- * Creates the final ComponentInMdx node from the reduced component node objec,
- * attaching its ast/children to an internal property of the gatsby as to avoid
- * potential tracking/type issues
- */
-function createComponentInMdxNode({
-  node,
-  createNodeId,
-  createContentDigest,
-  actions,
-  componentNode,
-  index,
-}) {
-  const { createNode, createParentChildLink } = actions;
-  const { ast, children, ...rest } = componentNode;
-  const componentInMdxNode = {
-    ...rest,
-    jsxChildren: children,
-    original: {
-      ast,
-    },
-    id: createNodeId(
-      `${node.id}.${componentNode.component}.${index} >>> COMPONENT_IN_MDX`
-    ),
-    parent: node.id,
-    children: [],
-    internal: {
-      contentDigest: createContentDigest(componentNode),
-      type: 'ComponentInMdx',
-    },
-  };
-
-  createNode(componentInMdxNode);
-  createParentChildLink({ parent: node, child: componentInMdxNode });
 }

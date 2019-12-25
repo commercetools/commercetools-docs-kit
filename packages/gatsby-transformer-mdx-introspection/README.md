@@ -125,6 +125,34 @@ By default, the following tags are exlcuded from node generation (generally due 
 - `code`
 - `MDXLayout`
 
+## Advanced Queries
+
+Each node exposes two fields, `childrenComponentInMdx` and `childComponentInMdx`, that both support filtering and sorting in addition to querying for `deep` children (children of children of any level). These fields allow for some advanced use cases:
+
+```graphql
+query GetAllLinksInHeaders {
+  allComponentInMdx(
+    filter: { component: { in: ["h1", "h2", "h3", "h4", "h5", "h6"] } }
+  ) {
+    nodes {
+      childrenComponentInMdx(
+        filter: { component: { in: ["Link", "a"] } }
+        deep: true
+      ) {
+        component
+        content
+        attributes {
+          name
+          value
+        }
+      }
+    }
+  }
+}
+```
+
+This query gets all link elements (both Gatsby links and normal anchor HTML elements) that are descendents of headers. If `deep` were `false`, then the query would only get link elements that are **direct** children of headers.
+
 ## Known issues
 
 - The plugin has to parse the MDX separately (and therefore twice in the site build) because `gatsby-plugin-mdx` does lazyly evaluate the AST property on the Mdx GraphQL provided, which means it's available to components using GraphQL but not to other plugins that read from the GatsbyJS Node Objects in earlier build phases.
