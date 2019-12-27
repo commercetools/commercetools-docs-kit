@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -14,7 +14,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "@commercetools-docs/ui-kit": "1.3.2",
+    "@commercetools-docs/ui-kit": "1.4.0",
     "@commercetools-uikit/card": "10.13.0",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icon-button": "10.13.0",
