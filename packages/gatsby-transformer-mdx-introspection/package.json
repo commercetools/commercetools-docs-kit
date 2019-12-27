@@ -18,6 +18,6 @@
   "dependencies": {
     "parse5": "5.1.1",
     "remark": "11.0.2",
-    "remark-mdx": "1.5.1"
+    "remark-mdx": "1.5.3"
   }
 }
