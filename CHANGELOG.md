@@ -1,3 +1,14 @@
+## [1.4.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.4.0...v1.4.1) (2020-01-02)
+
+Happy New Year! 🎉
+
+#### 🤖 Type: Dependencies
+
+- `gatsby-theme-docs`
+  - [#185](https://github.com/commercetools/commercetools-docs-kit/pull/185) chore(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+- Other
+  - [#186](https://github.com/commercetools/commercetools-docs-kit/pull/186) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.4.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.3.2...v1.4.0) (2019-12-27)
 
 #### 🐛 Type: Bug
