@@ -4,32 +4,28 @@ import { Global } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { useDeck } from 'mdx-deck';
 
-import {
-  Reset,
-  Globals,
-  designSystem,
-  Markdown,
-} from '@commercetools-docs/ui-kit';
+import { Reset, Globals, Markdown } from '@commercetools-docs/ui-kit';
+
+import designSystem from './design-system';
 
 const slideGlobalStyles = {
   overflow: 'hidden',
   html: {
     background: 'black',
     overflow: 'hidden',
-    fontSize: '1.668vw', // 2* 0,834 -> 960px "design"
-    /* OLD: at 1920*1080 0.834vw equals 16px. This way the design can be done in pixels
-although the actual font size will scale with the window because the html attribute has a vw (% of viewport width) based root font size set.
-_all_ sizing in the implementation has to be implemented in rem units then, so that the complete design fluidly scales with window / projector size
-To translate the pixel based design input, a pixel-to-rem helper can be used in the implementation. */
+    fontSize: designSystem.slideLayout.baseFontSize,
   },
 };
 
 const Canvas = styled.div({
   width: '100vw',
-  height: '56.25vw' /* 16:9 Aspect Ratio */,
+  height: designSystem.slideLayout.contentAreaHeight,
   display: 'grid',
-  gridTemplateColumns: '1fr 15fr' /* 16 of the 16:9 aspect ratio */,
-  gridTemplateRows: '8fr 1fr' /* 9 of the 16:9 aspect ratio */,
+  gridTemplateColumns: `${
+    designSystem.slideLayout.sideBarElements
+  }fr ${designSystem.slideLayout.horizontalElements -
+    designSystem.slideLayout.sideBarElements}fr`,
+  gridTemplateRows: `${designSystem.slideLayout.verticalElements - 1}fr 1fr`,
   gridGap: 0,
   fontFamily: `${designSystem.typography.fontFamilies.primary}`,
   fontSize: `${designSystem.typography.fontSizes.body}`,
