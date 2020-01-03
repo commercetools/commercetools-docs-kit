@@ -4,10 +4,10 @@
   "version": "1.0.0-alpha1",
   "license": "MIT",
   "scripts": {
-    "develop": "npx gatsby clean && npx gatsby develop",
+    "develop": "npx gatsby clean && npx gatsby develop -o",
     "clean": "npx gatsby clean",
     "build": "npx gatsby clean && npx gatsby build --prefix-paths",
-    "serve": "npx gatsby serve --prefix-paths "
+    "serve": "npx gatsby serve --prefix-paths -o"
   },
   "dependencies": {
     "gatsby-theme-mdx-deck": "3.0.13",

@@ -1,18 +1,29 @@
-import Provider from './provider';
-import components from './components/markdown';
+import { Appear, Notes, Image, Split, Horizontal } from 'mdx-deck';
 
-// This is a ThemeUI declaration https://theme-ui.com/getting-started
+import Provider from './provider';
+import MarkdownComponents from './components/markdown';
+import CustomComponents from './components/custom';
+
+// This is a ThemeUI declaration https://theme-ui.com/getting-started but we are not using the features, rather explicitly disabling them.
 
 export default {
   Provider,
-  components,
+  components: {
+    ...MarkdownComponents,
+    ...CustomComponents,
+    Appear,
+    Notes,
+    Image,
+    Split,
+    Horizontal,
+  },
   aspectRatio: 16 / 9, // this is the "official" way to fix the aspect ratio, but it's JS based and flickers more - here for explaining it and for exploration / testing
   googleFont:
     'https://fonts.googleapis.com/css?family=Roboto+Mono:400,500|Roboto:400,400i,500,700&display=swap&subset=latin-ext',
   fonts: {
-    body: 'Roboto, sans-serif',
-    heading: 'Roboto, sans-serif',
-    monospace: 'Roboto Mono, monospace',
+    body: 'unset',
+    heading: 'unset',
+    monospace: 'unset',
   },
   styles: {
     Slide: {
