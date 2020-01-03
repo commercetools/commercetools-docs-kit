@@ -32,7 +32,7 @@ export default {
       height: designSystem.slideLayout.contentAreaHeight,
       width: designSystem.slideLayout.contentAreaWidth,
       fontFamily:
-        'unset' /* disable mdx-deck's built-in themeUI logic with responsive breakpoints etc */,
+        'unset' /* disable mdx-deck's built-in themeUI logic which is breakpoint based and not fluid */,
       fontSize: 'unset',
       lineHeight: 'unset',
       padding: '1rem',
