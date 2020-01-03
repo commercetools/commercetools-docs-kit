@@ -123,7 +123,9 @@ exports.createSchemaCustomization = ({ actions }) => {
        "Array of attribute objects describing each parseable attribute specified"
        attributes: [Attribute!]!
        "Whether the component is a root node of the MDX document (or of its own detached subtree)"
-       isRoot: Boolean
+       isRoot: Boolean!
+       "Whether the component is from a component tree that wasn't in the direct document tree"
+       isDetached: Boolean!
        "Array of component nodes that are children of the current node"
        tree: [JSON!]!
        "Original JSX AST subtree from Babel; only attached if \`attachAST\` is set to \`true\` in the plugin config"
@@ -335,7 +337,8 @@ function introspectMdx({
       function createComponentInMdxNode(
         componentNode,
         isRoot,
-        parentGatsbyNode
+        parentGatsbyNode,
+        isDetached
       ) {
         if (typeof componentNode === 'string') return;
         let newParent = parentGatsbyNode;
@@ -358,6 +361,7 @@ function introspectMdx({
             tree: children,
             ast: mdxAST,
             isRoot,
+            isDetached,
             ...rest,
           };
 
@@ -373,14 +377,26 @@ function introspectMdx({
           index += 1;
         }
 
+        // If the current node was skipped because hasGatsbyNode is false and was supposed to be
+        // root, then the children should count as root nodes
+        const areChildrenRoot = !componentNode.hasGatsbyNode && isRoot;
+
         // Create nodes for all children
         componentNode.children.forEach(childNode => {
-          createComponentInMdxNode(childNode, false, newParent);
+          createComponentInMdxNode(
+            childNode,
+            areChildrenRoot,
+            newParent,
+            isDetached
+          );
         });
       }
 
       // Create nodes for all trees
-      reducedForest.forEach(tree => createComponentInMdxNode(tree, true, node));
+      reducedForest.forEach((tree, i) =>
+        // All non-first trees are detached
+        createComponentInMdxNode(tree, true, node, i !== 0)
+      );
     })
     .catch(error => {
       reporter.error(String(error));
