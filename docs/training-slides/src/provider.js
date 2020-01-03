@@ -4,14 +4,18 @@ import { Global } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { useDeck } from 'mdx-deck';
 
-import { Reset, Globals, designSystem } from '@commercetools-docs/ui-kit';
+import {
+  Reset,
+  Globals,
+  designSystem,
+  Markdown,
+} from '@commercetools-docs/ui-kit';
 
 const slideGlobalStyles = {
-  '*': {
-    overflow: 'hidden',
-  },
+  overflow: 'hidden',
   html: {
     background: 'black',
+    overflow: 'hidden',
     fontSize: '1.668vw', // 2* 0,834 -> 960px "design"
     /* OLD: at 1920*1080 0.834vw equals 16px. This way the design can be done in pixels
 although the actual font size will scale with the window because the html attribute has a vw (% of viewport width) based root font size set.
@@ -84,7 +88,9 @@ const Provider = ({ children }) => {
           <CornerContent>{state.index + 1}</CornerContent>
         </Corner>
         <Sidebar>Learning to Write</Sidebar>
-        <Content>{children}</Content>
+        <Content>
+          <Markdown.TypographyPage>{children}</Markdown.TypographyPage>
+        </Content>
       </Canvas>
     </>
   );

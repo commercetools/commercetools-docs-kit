@@ -1,4 +1,4 @@
-import { Appear, Notes, Image, Split, Horizontal } from 'mdx-deck';
+import { Appear, Notes, Image, Split } from 'mdx-deck';
 
 import Provider from './provider';
 import MarkdownComponents from './components/markdown';
@@ -15,7 +15,6 @@ export default {
     Notes,
     Image,
     Split,
-    Horizontal,
   },
   aspectRatio: 16 / 9, // this is the "official" way to fix the aspect ratio, but it's JS based and flickers more - here for explaining it and for exploration / testing
   googleFont:
@@ -27,8 +26,10 @@ export default {
   },
   styles: {
     Slide: {
-      height:
-        '56.25vw' /* fixing the aspect ratio has to be repeated here to override the hardwired flex height of mdx-deck */,
+      /* fixing the aspect ratio and size of the slide a reahas to be repeated here
+      to override the hardwired flex height of mdx-deck */
+      height: `${(9 / 16) * 100}vw`,
+      width: `${100 - 100 / 16}vw`,
       fontFamily:
         'unset' /* disable mdx-deck's built-in themeUI logic with responsive breakpoints etc */,
       fontSize: 'unset',
