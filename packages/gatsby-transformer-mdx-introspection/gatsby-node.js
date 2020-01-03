@@ -130,6 +130,12 @@ exports.createSchemaCustomization = ({ actions }) => {
        ast: JSON
        "Original MDX file parent node"
        mdx: Mdx! @link
+       "Text content of the current node. To configure text processing rules, use collapse/trim"
+       content(collapse: Boolean, trim: Boolean): String!
+       "A single child JSX/HTML node (excluding text children). If deep is set, then the field could take the value of any child of children of this node at any level"
+       child${nodeName}: ${nodeName}
+       "All child JSX/HTML nodes (excluding text children). If deep is set, then the field will return all children of children of this node at any level"
+       children${nodeName}: [${nodeName}]
      }`
   );
 };
@@ -149,10 +155,6 @@ exports.createResolvers = (
   createResolvers({
     [nodeName]: {
       [`children${nodeName}`]: {
-        type: `[${nodeName}!]!`,
-        description:
-          'All child JSX/HTML nodes (excluding text children). If deep is set, ' +
-          'then the field will return all children of children of this node at any level',
         args: {
           filter: filterType,
           sort: sortType,
@@ -179,10 +181,6 @@ exports.createResolvers = (
         },
       },
       [`child${nodeName}`]: {
-        type: nodeName,
-        description:
-          'A single child JSX/HTML node (excluding text children). If deep is set, ' +
-          'then the field could take the value of any child of children of this node at any level',
         args: {
           filter: filterType,
           sort: sortType,
@@ -215,10 +213,6 @@ exports.createResolvers = (
         },
       },
       content: {
-        type: 'String!',
-        description:
-          'Text content of the current node. To configure text processing rules, use collapse/trim',
-        args: { collapse: 'Boolean', trim: 'Boolean' },
         resolve: (source, args) => {
           const { trim, collapse } = args;
           let text = '';
