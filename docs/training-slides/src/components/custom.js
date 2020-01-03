@@ -38,7 +38,6 @@ const Card = styled.div({
 const Horizontal = styled.div({
   display: 'flex',
   flex: 1,
-  height: '100%',
 });
 
 export default {
