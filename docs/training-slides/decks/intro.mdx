@@ -2,38 +2,68 @@ import ctTheme from "../src/theme.js";
 
 export const theme = ctTheme;
 
-# One hash in mdx (H1)
+# Documentation Types
 
-<Info>Hello!</Info>
+1. **Reference**:
 
-Paragraph text paragraph text paragraph text paragraph text paragraph text paragraph text paragraph text paragraph text paragraph text.
+- Conceptual definitions
+- Behavior definitions - what math does the cart exactly do? How does the search exactly rank?
+- Data field semantics - what's the domain intent of that property?
+- Interface surfaces (HTTP API surface, GraphQL schema, Java / PHP / etc)
 
-- People love slides
-- with bullets!
-  - and lots of nested
-  - bullets bullets bullets that the presenter simply reads off as if the audience couldn't read.
-- Slides are not a teleprompter but it works
+2. **Guides / Tutorials / The Book / HowTos**
 
----
+- Step-By Step reproducible
+- Can take side paths and alternative ways (Guide & HowTo) or not (Tutorial)
 
-## Two hashes in mdx (H2)
+3. **Product Marketing / Tech Evangelism**
 
-here you see a console:
-
-```console
-shell-commands-are-nice-and-special
-ls -la
-```
-
-This is a paragraph `with inline code` that is followed by a [link to slide three](/2)
+- not documentation in the strict sense but important
+- short-lived, not updated or maintained
+- can be sales-y, can make temporal references (for example "our recently launched feature FooBar")
 
 ---
 
-### Three hashes (H3)
+## Some Terminology
 
-> Mr. Bean says: this is a citation of an important person
+---
 
-| proudly | presenting | a table |
-| ------- | ---------- | ------- |
-| long    | short      | fast    |
-| quick   | slow       |         |
+### The Content Hierarchy
+
+1. "the Documentation"
+   - everything under https://docs.commercetools.com
+2. "a site" // "a microsite"
+
+- one part of the documentation
+- own left navigation structure
+- (a top menu entry or not if prerelease)
+- technical: one separately built GatsbyJS site (some even separately deployed)
+
+3. "Chapter"
+
+- Grouping of Pages in the left nav
+- No content, just a structure
+
+4. "Page"
+
+- A page, with an entry in a chapter (or not for hidden / standalone special pages)
+- Has a Title and URL
+- One Markdown File, Title in Frontmatter
+
+5. "Section"
+
+- First Heading structure in the page
+- `#` in Markdown, can be multiple
+- Has an entry in the index (on-page) Navigation
+
+6. "Subsection"
+
+- `##` in Markdown
+- Has an entry in the index (on-page) Navigation
+
+7. "Sub-Subsection"
+
+- `###` in Markdown
+- Not listed in the index Navigation TODO ???
+
+8. (not supported and not good practice)
