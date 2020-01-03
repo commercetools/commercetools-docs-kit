@@ -3,8 +3,8 @@ import {
   Subtitle,
   ContentNotifications,
   TextSmall,
-  designSystem,
 } from '@commercetools-docs/ui-kit';
+import designSystem from '../design-system';
 
 const { pxToRem } = designSystem;
 
