@@ -1,11 +1,4 @@
-import styled from '@emotion/styled';
-import {
-  Markdown,
-  Link,
-  Subtitle,
-  ContentNotifications,
-  TextSmall,
-} from '@commercetools-docs/ui-kit';
+import { Markdown, Link } from '@commercetools-docs/ui-kit';
 
 const components = {
   p: Markdown.Paragraph,
@@ -31,23 +24,8 @@ const components = {
   a: Link,
   // eslint-disable-next-line react/display-name
   pre: Markdown.CodeBlock,
-
-  // Official react components to be used in MDX files
-  Subtitle,
-  TextSmall,
-  Info: ContentNotifications.Info,
-  Warning: ContentNotifications.Warning,
-  Error: ContentNotifications.Error,
 };
 
-const Aside = styled.aside({
-  position: 'absolute',
-  right: '1rem',
-  top: '1rem',
-  background: 'yellow',
-  padding: '0.5em',
-});
 export default {
   ...components,
-  Aside,
 };
