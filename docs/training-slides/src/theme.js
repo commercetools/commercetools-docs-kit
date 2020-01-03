@@ -1,5 +1,6 @@
 import { Appear, Notes, Image, Split } from 'mdx-deck';
 
+import { designSystem } from '@commercetools-docs/ui-kit';
 import Provider from './provider';
 import MarkdownComponents from './components/markdown';
 import CustomComponents from './components/custom';
@@ -37,6 +38,9 @@ export default {
       padding: '1rem',
       justifyContent: 'left',
       alignItems: 'left',
+      '> * + *': {
+        marginTop: `${designSystem.dimensions.spacings.m} !important`,
+      },
     },
   },
 };

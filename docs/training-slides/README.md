@@ -61,11 +61,13 @@ Puts a "sticky note" to the top right corner of the slide
 
 ### `Info`, `Warning`, `Error`
 
-TODO
+```md
+<Warning>Do not publish without approval</Warning>
+```
 
 ### `Split`: Two parts Side-By-Side (top level markdown elements are put next to each other)
 
-````md
+```md
 <Split>
 
 > First
@@ -76,7 +78,7 @@ TODO
   - subtopics
 
 </Split>
-´´´
+```
 
 ### `Horizontal`: Any number of parts distributed horizontally:
 
@@ -91,18 +93,22 @@ TODO
 
 </Horizontal>
 ```
-````
 
 ### `Appear`: Let content appear piece by piece
 
 ```md
+Content outside the `<Appear>` tag is immediately visible
+
 <Appear>
 
-- bullet one
-- bullet two should appear only after click
+Content inside the `<Appear>` tag is appearing after click or keyboard navigation
+
+## A test heading!
 
 </Appear>
 ```
+
+(not working with bullet points yet)
 
 https://github.com/jxnblk/mdx-deck/blob/master/docs/components.md#appear
 
@@ -117,8 +123,18 @@ https://github.com/jxnblk/mdx-deck/blob/master/docs/components.md#appear
 </Notes>
 ```
 
-### `Image`: Full Screen images
+### `Image`: Images taking the full available space
+
+To use a local image, place it into the `static` folder.
 
 ```md
-<Image src="kitten.png" />
+<Image src="https://example.com/kitten.png" />
+
+<Image src="/commercetools-docs-repo-on-github.png" />
+```
+
+Alternatively use the standard markdown syntax for images (not stretching to full size then):
+
+```md
+![test image](/commercetools-docs-repo-on-github.png)
 ```
