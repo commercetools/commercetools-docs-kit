@@ -2,23 +2,21 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Global } from '@emotion/core';
 import PropTypes from 'prop-types';
-// import { useDeck } from 'mdx-deck';
+import { useDeck } from 'mdx-deck';
 
-const globalStyle = {
+import { Reset, Globals, designSystem } from '@commercetools-docs/ui-kit';
+
+const slideGlobalStyles = {
   '*': {
-    boxSizing: 'border-box',
-    border: 0,
-    padding: 0,
-    margin: 0,
     overflow: 'hidden',
   },
   html: {
     background: 'black',
-    fontSize:
-      '0.834vw' /* at 1920*1080 0.834vw equals 16px. This way the design can be done in pixels
+    fontSize: '1.668vw', // 2* 0,834 -> 960px "design"
+    /* OLD: at 1920*1080 0.834vw equals 16px. This way the design can be done in pixels
 although the actual font size will scale with the window because the html attribute has a vw (% of viewport width) based root font size set.
 _all_ sizing in the implementation has to be implemented in rem units then, so that the complete design fluidly scales with window / projector size
-To translate the pixel based design input, a pixel-to-rem helper can be used in the implementation. */,
+To translate the pixel based design input, a pixel-to-rem helper can be used in the implementation. */
   },
 };
 
@@ -29,8 +27,10 @@ const Canvas = styled.div({
   gridTemplateColumns: '1fr 15fr' /* 16 of the 16:9 aspect ratio */,
   gridTemplateRows: '8fr 1fr' /* 9 of the 16:9 aspect ratio */,
   gridGap: 0,
-  fontSize: '4rem',
-  fontFamily: 'Roboto, sans-serif',
+  fontFamily: `${designSystem.typography.fontFamilies.primary}`,
+  fontSize: `${designSystem.typography.fontSizes.body}`,
+  fontWeight: `${designSystem.typography.fontWeights.regular}`,
+  lineHeight: 1.5,
 });
 
 const Corner = styled.div({
@@ -41,6 +41,7 @@ const Corner = styled.div({
   background: 'darkgray',
   color: 'white',
   display: 'grid',
+  fontSize: '1.5rem',
 });
 
 const CornerContent = styled.div({
@@ -55,7 +56,7 @@ const Sidebar = styled.div({
   writingMode: 'vertical-lr',
   transform: 'rotate(180deg)',
   padding: '0.5em',
-  fontSize: '0.8em',
+  fontSize: '1.5em',
   background: 'lightgray',
 });
 
@@ -72,16 +73,17 @@ const Content = styled.main`
 `;
 
 const Provider = ({ children }) => {
-  // const state = useDeck(); // https://github.com/jxnblk/mdx-deck/blob/master/docs/api.md#usedeck
-  //  {state.index + 1}
+  const state = useDeck(); // https://github.com/jxnblk/mdx-deck/blob/master/docs/api.md#usedeck
   return (
     <>
-      <Global styles={globalStyle} />
+      <Reset />
+      <Globals />
+      <Global styles={slideGlobalStyles} />
       <Canvas>
         <Corner>
-          <CornerContent></CornerContent>
+          <CornerContent>{state.index + 1}</CornerContent>
         </Corner>
-        <Sidebar>Brand Name or Presentation Topic</Sidebar>
+        <Sidebar>Learning to Write</Sidebar>
         <Content>{children}</Content>
       </Canvas>
     </>
