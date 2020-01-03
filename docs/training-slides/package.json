@@ -10,11 +10,20 @@
     "serve": "npx gatsby serve --prefix-paths "
   },
   "dependencies": {
-    "gatsby": "^2.13.25",
-    "gatsby-theme-mdx-deck": "^3.0.13",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.23"
+    "gatsby-theme-mdx-deck": "3.0.13",
+    "mdx-deck": "3.0.13",
+    "@commercetools-docs/ui-kit": "1.4.0"
+  },
+  "devDependencies": {
+    "gatsby": "2.18.17",
+    "gatsby-cli": "2.8.22"
+  },
+  "peerDependencies": {
+    "@emotion/core": "10.x",
+    "@emotion/styled": "10.x",
+    "gatsby": "2.x",
+    "gatsby-cli": "2.x",
+    "react": "16.x",
+    "react-dom": "16.x"
   }
 }

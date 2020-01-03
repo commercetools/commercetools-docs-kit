@@ -18,10 +18,11 @@ export default {
     Slide: {
       height:
         '56.25vw' /* fixing the aspect ratio has to be repeated here to override the hardwired flex height of mdx-deck */,
-      fontFamily: 'Roboto, sans-serif',
-      fontSize: '3rem',
-      lineHeight: 1.5,
-      padding: '2rem',
+      fontFamily:
+        'unset' /* disable mdx-deck's built-in themeUI logic with responsive breakpoints etc */,
+      fontSize: 'unset',
+      lineHeight: 'unset',
+      padding: '1rem',
       justifyContent: 'left',
       alignItems: 'left',
     },
