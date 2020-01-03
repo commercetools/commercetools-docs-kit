@@ -26,7 +26,6 @@ const TitleSlide = styled.div({
 const Card = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  margin: designSystem.dimensions.spacings.m,
   boxShadow: designSystem.tokens.shadow8,
   borderRadius: pxToRem(designSystem.tokens.borderRadius4),
   padding: designSystem.dimensions.spacings.m,
@@ -37,7 +36,17 @@ const Card = styled.div({
 
 const Horizontal = styled.div({
   display: 'flex',
-  flex: 1,
+  alignSelf: 'flex-end',
+  '& > *': {
+    marginLeft: '0.5rem !important',
+    marginRight: '0.5rem !important',
+  },
+  '& > first-child': {
+    marginLeft: '0 !important',
+  },
+  '& > last-child': {
+    marginRight: '0 !important',
+  },
 });
 
 export default {
