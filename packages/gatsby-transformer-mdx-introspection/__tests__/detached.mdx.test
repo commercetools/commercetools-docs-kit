@@ -1,0 +1,18 @@
+---
+frontmatterValue:
+  - a
+  - n
+otherValue: 1
+---
+
+# Detached head **example**
+
+<a href="https://google.com/" children={(function iife() { return (<><span>link <em>content</em></span></>); })()} />
+
+<div children={[1,2,3].map(i => (<span key={i}>child no. {i}</span>))} />
+
+<span>
+  {<div className="not_detached">This doesn't get detached</div>}
+  {(<h3>Neither does this</h3>)}
+  {/* iife 2 */ (() => { return (<h1>This does</h1>); })()}
+</span>

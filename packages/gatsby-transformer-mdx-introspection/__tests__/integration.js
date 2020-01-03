@@ -29,7 +29,7 @@ const mockOptions = () => ({
 async function introspectMdx(
   mdx,
   options,
-  getFirstChild = false,
+  getFirstTree = true,
   desiredProperties = ['children', 'attributes', 'component']
 ) {
   const result = await transformMdx(mdx, options);
@@ -47,10 +47,12 @@ async function introspectMdx(
     });
     return newNode;
   }
-  const picked = pickProperties(result[0]);
 
-  if (getFirstChild) return picked.children[0];
-  return picked;
+  if (getFirstTree) {
+    return pickProperties(result[0]);
+  }
+
+  return result.map(pickProperties);
 }
 
 // Legacy tests from previous version of plugin (no regression)
@@ -62,7 +64,8 @@ describe('legacy test behavior', () => {
   it('still passes test 1', async () => {
     // This string was slightly changed, but the previous test wasn't valid JSX
     const mdx = '<ApiType apiKey="test" type="OutOfOrderPropertiesTestType" />';
-    expect(await introspectMdx(mdx, legacyOptions, true)).toMatchObject({
+    const result = await introspectMdx(mdx, legacyOptions);
+    expect(result.children[0]).toMatchObject({
       attributes: [
         {
           name: 'apikey',
@@ -81,7 +84,8 @@ describe('legacy test behavior', () => {
     // a full example from the react JS homepage, should not throw parse errors
     const mdx =
       '<div><h3>TODO</h3><TodoList items={this.state.items} /><form onSubmit={this.handleSubmit}><label htmlFor="new-todo">What needs to be done?</label><input id="new-todo" onChange={this.handleChange} value={this.state.text} /> <button>Add #{this.state.items.length + 1}</button></form></div>';
-    expect(await introspectMdx(mdx, legacyOptions, true)).toMatchObject({
+    const result = await introspectMdx(mdx, legacyOptions);
+    expect(result.children[0]).toMatchObject({
       component: 'div',
       attributes: [],
     });
@@ -91,7 +95,8 @@ describe('legacy test behavior', () => {
     // a full example from the react JS homepage, should not throw parse errors
     const mdx =
       '<ul>{this.props.items.map(item => (<li key={item.id}>{item.text}</li>))}</ul>';
-    expect(await introspectMdx(mdx, legacyOptions, true)).toMatchObject({
+    const result = await introspectMdx(mdx, legacyOptions);
+    expect(result.children[0]).toMatchObject({
       attributes: [],
       component: 'ul',
     });
@@ -101,7 +106,8 @@ describe('legacy test behavior', () => {
     // a full example from the react JS homepage, should not throw parse errors
     const mdx =
       '<div className="content" dangerouslySetInnerHTML={this.getRawMarkup()} />';
-    expect(await introspectMdx(mdx, legacyOptions, true)).toMatchObject({
+    const result = await introspectMdx(mdx, legacyOptions);
+    expect(result.children[0]).toMatchObject({
       attributes: [
         {
           name: 'classname',
@@ -249,6 +255,141 @@ ${mdx1}
             ],
           },
         ],
+      },
+    ]);
+  });
+
+  it('includes simple detached trees as additional nodes in the output', async () => {
+    const mdx = `
+<div>
+  {/* IIFE example */}
+  {(function (){
+      return <h1 id="internal">I'm inside an IIFE!</h1>;
+  })()}
+</div>`;
+
+    const result = await introspectMdx(mdx, mockOptions(), false);
+    expect(result).toMatchObject([
+      // Root document node
+      {
+        component: 'MDXLayout',
+        attributes: expect.any(Array),
+        children: [
+          {
+            component: 'div',
+            attributes: [],
+            children: [
+              // MDX -> JSX simplifies JSX
+              `function () {\n return <h1 id="internal">I'm inside an IIFE!</h1>;\n }()`,
+            ],
+          },
+        ],
+      },
+      // Detached head node
+      {
+        component: 'h1',
+        attributes: [{ name: 'id', value: 'internal' }],
+        children: ["I'm inside an IIFE!"],
+      },
+    ]);
+  });
+
+  it('includes all found detached heads as additional nodes in the output', async () => {
+    const mdx = await fs.promises.readFile(
+      path.resolve(__dirname, './detached.mdx.test')
+    );
+    const result = await introspectMdx(mdx, mockOptions(), false);
+    expect(result).toMatchObject([
+      // Root document node
+      {
+        component: 'MDXLayout',
+        attributes: expect.any(Array),
+        children: [
+          {
+            component: 'h1',
+            attributes: [],
+            children: [
+              `Detached head `,
+              {
+                component: 'strong',
+                attributes: [],
+                children: [`example`],
+              },
+            ],
+          },
+          {
+            component: 'a',
+            attributes: [
+              { name: 'href', value: 'https://google.com/' },
+              {
+                name: 'children',
+                // MDX -> JSX adds newlines and simplifies JSX
+                value:
+                  '{function iife() {\n return <><span>link <em>content</em></span></>;\n }()}',
+              },
+            ],
+            children: [],
+          },
+          {
+            component: 'div',
+            attributes: [
+              {
+                name: 'children',
+                // MDX -> JSX simplifies and formats JSX
+                value:
+                  '{[1, 2, 3].map(i => <span key={i}>child no. {i}</span>)}',
+              },
+            ],
+            children: [],
+          },
+          {
+            component: 'span',
+            attributes: [],
+            children: [
+              {
+                component: 'div',
+                attributes: [{ name: 'className', value: 'not_detached' }],
+                children: [`This doesn't get detached`],
+              },
+              {
+                component: 'h3',
+                attributes: [],
+                children: [`Neither does this`],
+              },
+              // MDX -> JSX adds newlines and simplifies JSX
+              `(() => {\n return <h1>This does</h1>;\n })()`,
+            ],
+          },
+        ],
+      },
+      // Detached head nodes
+      {
+        component: 'React.Fragment',
+        attributes: [],
+        children: [
+          {
+            component: 'span',
+            attributes: [],
+            children: [
+              'link ',
+              {
+                component: 'em',
+                attributes: [],
+                children: ['content'],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        component: 'span',
+        attributes: [{ name: 'key', value: '{i}' }],
+        children: [`child no. `, `i`],
+      },
+      {
+        component: 'h1',
+        attributes: [],
+        children: [`This does`],
       },
     ]);
   });
