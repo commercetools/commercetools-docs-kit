@@ -1,3 +1,41 @@
+## [1.4.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.4.0...v1.4.1) (2020-01-02)
+
+Happy New Year! 🎉
+
+#### 🤖 Type: Dependencies
+
+- `gatsby-theme-docs`
+  - [#185](https://github.com/commercetools/commercetools-docs-kit/pull/185) chore(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+- Other
+  - [#186](https://github.com/commercetools/commercetools-docs-kit/pull/186) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+
+## [1.4.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.3.2...v1.4.0) (2019-12-27)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`, `ui-kit`
+  - [#176](https://github.com/commercetools/commercetools-docs-kit/pull/176) fix(theme): small layout responsive issues ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`
+  - [#170](https://github.com/commercetools/commercetools-docs-kit/pull/170) refactor(theme): to change layout to a full (content) page scroll ([@emmenko](https://github.com/emmenko))
+  - [#173](https://github.com/commercetools/commercetools-docs-kit/pull/173) refactor(theme): to configure svgr plugin for optimized svg files ([@emmenko](https://github.com/emmenko))
+  - [#172](https://github.com/commercetools/commercetools-docs-kit/pull/172) refactor(theme): to render navigation overlays into a portal ([@emmenko](https://github.com/emmenko))
+
+#### 🤖 Type: Dependencies
+
+- `gatsby-theme-docs`
+  - [#181](https://github.com/commercetools/commercetools-docs-kit/pull/181) chore(deps): update all dependencies (major) ([@renovate[bot]](https://github.com/apps/renovate))
+- `broken-link-checker`, `gatsby-theme-api-docs`, `gatsby-theme-docs`, `gatsby-transformer-mdx-introspection`
+  - [#180](https://github.com/commercetools/commercetools-docs-kit/pull/180) chore(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+- Other
+  - [#182](https://github.com/commercetools/commercetools-docs-kit/pull/182) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+  - [#166](https://github.com/commercetools/commercetools-docs-kit/pull/166) chore(deps): update dependency stylelint-config-prettier to v8 ([@renovate[bot]](https://github.com/apps/renovate))
+  - [#167](https://github.com/commercetools/commercetools-docs-kit/pull/167) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`, `ui-kit`
+  - [#165](https://github.com/commercetools/commercetools-docs-kit/pull/165) chore(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.3.2](https://github.com/commercetools/commercetools-docs-kit/compare/v1.3.1...v1.3.2) (2019-12-13)
 
 #### 🐛 Type: Bug

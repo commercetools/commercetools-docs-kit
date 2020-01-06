@@ -2,9 +2,12 @@
 ---
 title: Commercetools Test API Spec
 annotationTypes:
+  resourceName:
+    type: string
+    allowedTargets: [Resource, Method]
   resourcePathUri:
     type: string
-    allowedTargets: Method
+    allowedTargets: [Resource, Method]
   builtinType:
     type: string
     allowedTargets: TypeDeclaration

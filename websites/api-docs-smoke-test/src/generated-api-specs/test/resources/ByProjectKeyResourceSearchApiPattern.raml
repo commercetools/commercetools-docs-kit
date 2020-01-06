@@ -1,4 +1,5 @@
-#ByProjectKeyResourceSearchApiPattern
+# Resource
+(resourceName): ByProjectKeyResourceSearchApiPattern
 (resourcePathUri): /{projectKey}/resource/searchApiPattern
 
 uriParameters:
@@ -13,6 +14,7 @@ get:
       scopes:
       - "manage_test:{projectKey}"
       - "view_test:{projectKey}"
+  displayName: Search Resources
   description: |-
     Search all resources by specific parameters.
   queryParameters:
@@ -24,7 +26,7 @@ get:
         Whether to apply fuzzy search on the text to analyze.
     fuzzyLevel:
       required: false
-      format: int16
+      format: float
       type: number
       (builtinType): number
       description: |-
