@@ -21,7 +21,7 @@ const Examples = ({ examples, title }) => {
           return (
             <div
               data-testid={`properties-example-${example.name}`}
-              key={example.key}
+              key={example.name}
               css={css`
                 display: flex;
                 flex-direction: column;

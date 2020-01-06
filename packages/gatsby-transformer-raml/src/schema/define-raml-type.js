@@ -33,7 +33,7 @@ const defineRamlType = ({ schema, createTypes }) => {
     schema.buildObjectType({
       name: 'RamlExample',
       fields: {
-        key: 'String!',
+        name: 'String!',
         value: 'String!',
         displayName: 'String',
         description: 'String',

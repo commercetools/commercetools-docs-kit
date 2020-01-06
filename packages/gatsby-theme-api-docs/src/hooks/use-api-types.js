@@ -26,7 +26,7 @@ export const useApiTypes = () => {
             }
             enumeration
             examples {
-              key
+              name
               displayName
               description
               value
