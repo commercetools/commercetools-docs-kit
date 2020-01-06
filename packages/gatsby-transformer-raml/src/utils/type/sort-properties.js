@@ -1,14 +1,4 @@
-function sortProperties(properties) {
-  const moveToTop = [
-    'id',
-    'version',
-    'key',
-    'createdAt',
-    'createdBy',
-    'lastModifiedAt',
-    'lastModifiedBy',
-  ];
-  const moveToBottom = ['custom'];
+function sortProperties({ properties, moveToTop = [], moveToBottom = [] }) {
   const copy = JSON.parse(JSON.stringify(properties));
 
   return copy.sort((a, b) => {

@@ -6,6 +6,18 @@ const resolveConflictingFieldTypes = require('./utils/type/resolve-conflicting-f
 const generateType = require('./utils/type/generate-type');
 const generateBuiltinType = require('./utils/type/generate-built-in-type');
 
+// Properties to sort to top and bottom
+const moveToTop = [
+  'id',
+  'version',
+  'key',
+  'createdAt',
+  'createdBy',
+  'lastModifiedAt',
+  'lastModifiedBy',
+];
+const moveToBottom = ['custom'];
+
 function createTypeNode({
   type,
   fileNode,
@@ -55,7 +67,11 @@ function processProperties(properties) {
 
   if (properties) {
     propertiesArray = propertiesToArrays(properties);
-    propertiesArray = sortProperties(propertiesArray);
+    propertiesArray = sortProperties({
+      properties: propertiesArray,
+      moveToTop,
+      moveToBottom,
+    });
 
     propertiesArray = propertiesArray.map(property => {
       let returnedProperty = resolveConflictingFieldTypes(property);
