@@ -7,8 +7,8 @@ function doRecursion(resource) {
   const returnedResource = {};
 
   Object.keys(resource).forEach(key => {
-    // remove parenthesis from annotation identifier
-    const keyWithoutParenthesis = key.replace(`(`, '').replace(`)`, '');
+    // remove all non alphanumeric characters except underscores
+    const keyWithoutParenthesis = key.replace(/\W/g, '');
 
     if (computeType(resource[key]) === 'object') {
       returnedResource[keyWithoutParenthesis] = doRecursion(resource[key]);

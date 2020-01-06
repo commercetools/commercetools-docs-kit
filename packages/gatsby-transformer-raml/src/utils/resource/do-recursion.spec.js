@@ -13,6 +13,23 @@ describe('transforms built in types for custom use case', () => {
           description: 'The CTP project key.',
         },
       },
+
+      post: {
+        securedBy: [
+          {
+            oauth_2_0: {
+              scopes: ['manage_test:{projectKey}'],
+            },
+          },
+        ],
+        displayName: 'Update a Resource by ID',
+        body: {
+          'application/json': {
+            type: 'ExampleResourceUpdate',
+            builtinType: 'object',
+          },
+        },
+      },
     };
 
     const resourceAfter = {
@@ -24,6 +41,23 @@ describe('transforms built in types for custom use case', () => {
           type: 'string',
           builtinType: 'string',
           description: 'The CTP project key.',
+        },
+      },
+
+      post: {
+        securedBy: [
+          {
+            oauth_2_0: {
+              scopes: ['manage_test:{projectKey}'],
+            },
+          },
+        ],
+        displayName: 'Update a Resource by ID',
+        body: {
+          applicationjson: {
+            type: 'ExampleResourceUpdate',
+            builtinType: 'object',
+          },
         },
       },
     };
