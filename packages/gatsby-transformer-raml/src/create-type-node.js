@@ -82,9 +82,9 @@ function propertiesToArrays(properties) {
 function examplesToArrays(examples, fileNodeDir) {
   if (examples) {
     return Object.entries(examples).map(([key, value]) => {
-      const exampleAbsolutePath = path.resolve(fileNodeDir, value);
+      const exampleAbsolutePath = path.resolve(fileNodeDir, value.value);
       const jsonString = fs.readFileSync(exampleAbsolutePath, 'utf8');
-      return { name: key, value: jsonString };
+      return { key, ...value, value: jsonString };
     });
   }
 

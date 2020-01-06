@@ -26,7 +26,9 @@ export const useApiTypes = () => {
             }
             enumeration
             examples {
-              name
+              key
+              displayName
+              description
               value
             }
             oneOf
