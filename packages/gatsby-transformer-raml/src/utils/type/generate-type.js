@@ -1,5 +1,9 @@
 function generateType(property) {
   switch (property.type) {
+    case 'integer':
+      return 'Int';
+    case 'number':
+      return 'Float';
     case 'date-only':
       return 'Date';
     case 'time-only':
