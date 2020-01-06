@@ -54,8 +54,8 @@
     "remark-emoji": "2.0.2"
   },
   "devDependencies": {
-    "gatsby": "2.18.17",
-    "gatsby-cli": "2.8.22"
+    "gatsby": "2.18.18",
+    "gatsby-cli": "2.8.23"
   },
   "peerDependencies": {
     "@emotion/core": "10.x",
