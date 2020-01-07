@@ -3,6 +3,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
     schema.buildObjectType({
       name: 'RamlResource',
       fields: {
+        apiKey: 'String!',
         resourceName: 'String!',
         resourcePathUri: 'String!',
         description: 'String',
