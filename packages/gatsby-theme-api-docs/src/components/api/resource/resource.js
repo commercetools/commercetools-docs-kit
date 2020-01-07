@@ -37,6 +37,18 @@ const Resource = ({ apiKey, resource }) => {
           />
         </MethodContainer>
       ) : null}
+
+      {resourceObj.get ? (
+        <MethodContainer>
+          <Method
+            apiKey={apiKey}
+            url={resourceObj.resourcePathUri}
+            resourceUriParameters={resourceObj.uriParameters}
+            method={resourceObj.get}
+            methodType="get"
+          />
+        </MethodContainer>
+      ) : null}
     </ResourceContainer>
   );
 };
