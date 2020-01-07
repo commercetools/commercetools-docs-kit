@@ -1,6 +1,6 @@
 const uriParametersToArray = require('./uri-parameters-to-array');
 
-it('should return number for integer built in type', () => {
+it('should transform objects of uriParameters to array', () => {
   const uriParametersBefore = {
     projectKey: {
       type: 'string',

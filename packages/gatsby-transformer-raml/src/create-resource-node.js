@@ -1,5 +1,6 @@
 const doRecursion = require('./utils/resource/do-recursion');
 const uriParametersToArray = require('./utils/resource/uri-parameters-to-array');
+const responsesToArray = require('./utils/resource/responses-to-array');
 
 function createResourceNode({
   resource,
@@ -38,6 +39,12 @@ function postProcessResource(resource, fileNode) {
   postProcessedResource.uriParameters = uriParametersToArray(
     postProcessedResource.uriParameters
   );
+
+  if (postProcessedResource.post) {
+    postProcessedResource.post.responses = responsesToArray(
+      postProcessedResource.post.responses
+    );
+  }
 
   return postProcessedResource;
 }
