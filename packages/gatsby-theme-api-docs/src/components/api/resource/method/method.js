@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { generateEndpointURN } from '../../../../utils/ctp-urn';
+// import { generateEndpointURN } from '../../../../utils/ctp-urn';
 import {
   oauth2Scopes,
   queryParametersTitle,
@@ -55,21 +55,31 @@ const UrlScopesResponseContainer = styled.div`
   padding: 1rem;
 `;
 
-const Method = ({ apiKey, url, method }) => {
-  return (
+const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
+  let allUriParameters = [];
+  if (resourceUriParameters) {
+    allUriParameters = allUriParameters.concat(resourceUriParameters);
+  }
+
+  if (method.uriParameters) {
+    allUriParameters = allUriParameters.concat(method.uriParameters);
+  }
+
+  /*
+    // first html
     <div
       key={method.method}
       id={generateEndpointURN({
         apiKey,
         path: new URL(url).pathname,
-        method: method.method,
+        method: methodType,
       })}
-    >
+  */
+  return (
+    <div>
       <Header>
-        <MethodNameContainer
-          css={computeMethodNameBackgroundColor(method.method)}
-        >
-          <MethodName>{method.method}</MethodName>
+        <MethodNameContainer css={computeMethodNameBackgroundColor(methodType)}>
+          <MethodName>{methodType}</MethodName>
         </MethodNameContainer>
 
         <Title>
@@ -85,18 +95,15 @@ const Method = ({ apiKey, url, method }) => {
               url,
               scopes: {
                 title: oauth2Scopes,
-                scopes: method.securedBy[0].scopes,
+                scopes: method.securedBy[0].oauth_2_0.scopes,
               },
               responses: method.responses,
             }}
           />
         </UrlScopesResponseContainer>
       </UrlScopesResponseOverallContainer>
-      {method.allUriParameters ? (
-        <Parameters
-          title={pathParametersTitle}
-          parameters={method.allUriParameters}
-        />
+      {allUriParameters.length > 0 ? (
+        <Parameters title={pathParametersTitle} parameters={allUriParameters} />
       ) : null}
       {method.queryParameters ? (
         <Parameters
@@ -108,7 +115,7 @@ const Method = ({ apiKey, url, method }) => {
         <RequestRepresentation
           titleSuffix={requestRepresentation}
           apiKey={apiKey}
-          apiType={method.body[0].name}
+          apiType={method.body.applicationjson.type}
         />
       ) : null}
     </div>
@@ -135,7 +142,9 @@ function computeMethodNameBackgroundColor(methodName) {
 Method.propTypes = {
   apiKey: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  resourceUriParameters: PropTypes.arrayOf(PropTypes.object.isRequired),
   method: PropTypes.object.isRequired,
+  methodType: PropTypes.string.isRequired,
 };
 
 export default Method;

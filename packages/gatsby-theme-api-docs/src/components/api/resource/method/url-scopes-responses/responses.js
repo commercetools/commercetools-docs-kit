@@ -47,7 +47,7 @@ const Responses = ({ responses, title }) => {
         <ResponseCodeType>
           {responses.map(response => {
             return (
-              <p key={response.key}>
+              <p key={response.code}>
                 <ResposeCode
                   css={computeStatusCodeBackgroundColor(response.code)}
                 >
@@ -55,7 +55,7 @@ const Responses = ({ responses, title }) => {
                 </ResposeCode>
                 <Markdown.InlineCode css={responseTypeStyle}>
                   {response.body ? (
-                    <a href="#">{response.body[0].name}</a>
+                    <a href="#">{response.body.applicationjson.type}</a>
                   ) : null}
                 </Markdown.InlineCode>
               </p>
@@ -90,8 +90,8 @@ function computeStatusCodeBackgroundColor(code) {
 Responses.propTypes = {
   responses: PropTypes.arrayOf(
     PropTypes.shape({
-      code: PropTypes.string.isRequired,
-      body: PropTypes.arrayOf(PropTypes.object),
+      code: PropTypes.number.isRequired,
+      body: PropTypes.object,
     })
   ).isRequired,
   title: PropTypes.string,

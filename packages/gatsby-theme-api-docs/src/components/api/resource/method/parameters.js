@@ -74,19 +74,13 @@ const Parameters = ({ title, parameters }) => {
         <tbody css={tbodyStyle}>
           {parameters.map(parameter => {
             return (
-              <tr key={parameter.key}>
+              <tr key={parameter.name}>
                 <Td css={nameColStyle}>
                   <p>
-                    <Markdown.InlineCode>{parameter.key}</Markdown.InlineCode>
+                    <Markdown.InlineCode>{parameter.name}</Markdown.InlineCode>
                     {parameter.required ? <Required>*</Required> : null}
                   </p>
-                  <p>
-                    {capitalizeFirst(
-                      parameter.key === parameter.name
-                        ? parameter.type
-                        : parameter.name
-                    )}
-                  </p>
+                  <p>{capitalizeFirst(parameter.type)}</p>
                 </Td>
                 <Td css={separatorColStyle}>-</Td>
                 <Td css={tdStyle}>

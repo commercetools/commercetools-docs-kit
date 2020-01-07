@@ -26,17 +26,17 @@ const Resource = ({ apiKey, resource }) => {
 
   return (
     <ResourceContainer>
-      {resourceObj.methods.map(method => {
-        return (
-          <MethodContainer key={method.method}>
-            <Method
-              apiKey={apiKey}
-              url={resourceObj.absoluteUri}
-              method={method}
-            />
-          </MethodContainer>
-        );
-      })}
+      {resourceObj.post ? (
+        <MethodContainer>
+          <Method
+            apiKey={apiKey}
+            url={resourceObj.resourcePathUri}
+            resourceUriParameters={resourceObj.uriParameters}
+            method={resourceObj.post}
+            methodType="post"
+          />
+        </MethodContainer>
+      ) : null}
     </ResourceContainer>
   );
 };
