@@ -1,111 +1,121 @@
-// import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 export const useApiResources = () => {
-  return [];
-  // const queryResult = useStaticQuery(
-  //   graphql`
-  //     {
-  //       allRamlResource {
-  //         nodes {
-  //           apiKey
-  //           displayName
-  //           absoluteUri
-  //           relativeUri
-  //           parentUrl
-  //           relativeUriPathSegments
-  //           allUriParameters {
-  //             description
-  //             displayName
-  //             key
-  //             name
-  //             required
-  //             type
-  //           }
-  //           uriParameters {
-  //             description
-  //             displayName
-  //             key
-  //             name
-  //             required
-  //             type
-  //           }
-  //           securedBy {
-  //             schemeName
-  //             scopes
-  //           }
-  //           methods {
-  //             displayName
-  //             method
-  //             description
-  //             protocols
-  //             queryParameters {
-  //               key
-  //               name
-  //               displayName
-  //               type
-  //               description
-  //               required
-  //             }
-  //             allUriParameters {
-  //               key
-  //               name
-  //               displayName
-  //               type
-  //               description
-  //               required
-  //             }
-  //             body {
-  //               mimeType
-  //               name
-  //               displayName
-  //               type
-  //               description
-  //               examples {
-  //                 name
-  //                 displayName
-  //                 description
-  //                 value
-  //               }
-  //             }
-  //             responses {
-  //               key
-  //               code
-  //               description
-  //               body {
-  //                 mimeType
-  //                 name
-  //                 displayName
-  //                 type
-  //                 description
-  //                 examples {
-  //                   name
-  //                   displayName
-  //                   description
-  //                   value
-  //                 }
-  //               }
-  //             }
-  //             securedBy {
-  //               schemeName
-  //               scopes
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
-  // );
+  const queryResult = useStaticQuery(
+    graphql`
+      {
+        allRamlResource {
+          nodes {
+            apiKey
+            resourceName
+            resourcePathUri
+            description
+            uriParameters {
+              name
+              type
+              builtinType
+              description
+            }
+            post {
+              securedBy {
+                oauth_2_0 {
+                  scopes
+                }
+              }
+              displayName
+              description
+              queryParameters {
+                name
+                required
+                type
+                builtinType
+                description
+              }
+              body {
+                applicationjson {
+                  type
+                  builtinType
+                }
+              }
+              responses {
+                code
+                description
+                body {
+                  applicationjson {
+                    type
+                    builtinType
+                  }
+                }
+              }
+            }
+            get {
+              securedBy {
+                oauth_2_0 {
+                  scopes
+                }
+              }
+              displayName
+              description
+              queryParameters {
+                name
+                required
+                type
+                builtinType
+                description
+              }
+              responses {
+                code
+                description
+                body {
+                  applicationjson {
+                    type
+                    builtinType
+                  }
+                }
+              }
+            }
+            delete {
+              securedBy {
+                oauth_2_0 {
+                  scopes
+                }
+              }
+              displayName
+              description
+              queryParameters {
+                name
+                required
+                type
+                builtinType
+                description
+              }
+              responses {
+                code
+                description
+                body {
+                  applicationjson {
+                    type
+                    builtinType
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  );
 
-  // return queryResult.allRamlResource.nodes;
+  return queryResult.allRamlResource.nodes;
 };
 
 export const useReadResourceByResourcePath = (apiKey, resourcePath) => {
   const resources = useApiResources();
 
   const matchedResource = resources.find(resource => {
-    const actualRelativeUri = `${resource.parentUrl}${resource.relativeUri}`;
-
-    return resource.apiKey === apiKey && actualRelativeUri === resourcePath;
+    return (
+      resource.apiKey === apiKey && resource.resourcePathUri === resourcePath
+    );
   });
 
   return matchedResource;
