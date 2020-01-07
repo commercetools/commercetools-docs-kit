@@ -1,5 +1,12 @@
 const computeType = require('../compute-type');
 
+const fieldsToClean = {
+  '(resourceName)': true,
+  '(resourcePathUri)': true,
+  '(builtinType)': true,
+  'application/json': true,
+};
+
 /**
  * This does a deep post processing needed on all fields on a resource
  */
@@ -8,14 +15,14 @@ function doRecursion(resource) {
 
   Object.keys(resource).forEach(key => {
     // remove all non alphanumeric characters except underscores
-    const keyWithoutParenthesis = key.replace(/\W/g, '');
+    const alphanumericKey = fieldsToClean[key] ? key.replace(/\W/g, '') : key;
 
     if (computeType(resource[key]) === 'object') {
-      returnedResource[keyWithoutParenthesis] = doRecursion(resource[key]);
+      returnedResource[alphanumericKey] = doRecursion(resource[key]);
       return;
     }
 
-    returnedResource[keyWithoutParenthesis] = resource[key];
+    returnedResource[alphanumericKey] = resource[key];
   });
 
   return returnedResource;
