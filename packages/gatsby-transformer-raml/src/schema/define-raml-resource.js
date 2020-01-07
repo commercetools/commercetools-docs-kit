@@ -5,6 +5,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
       fields: {
         resourceName: 'String!',
         resourcePathUri: 'String!',
+        description: 'String',
         uriParameters: '[RamlResourceUriParameter!]',
         post: 'RamlResourcePost',
         get: 'RamlResourceGet',
@@ -31,6 +32,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         securedBy: '[RamlResourceSecuredByOAuth!]',
         displayName: 'String',
         description: 'String',
+        queryParameters: '[RamlResourceQueryParameter]',
         body: 'RamlResourcePostBody',
         responses: '[RamlResourceResponse!]',
       },
@@ -42,7 +44,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         securedBy: '[RamlResourceSecuredByOAuth!]',
         displayName: 'String',
         description: 'String',
-        queryParameters: '[RamlResourceGetQueryParameter]',
+        queryParameters: '[RamlResourceQueryParameter]',
         responses: '[RamlResourceResponse!]',
       },
     }),
@@ -62,19 +64,20 @@ const defineRamlResource = ({ schema, createTypes }) => {
     }),
 
     schema.buildObjectType({
-      name: 'RamlResourceGetQueryParameter',
+      name: 'RamlResourceQueryParameter',
       fields: {
-        name: 'String',
+        name: 'String!',
         required: 'Boolean',
         type: 'String!',
         builtinType: 'String!',
+        description: 'String',
       },
     }),
 
     schema.buildObjectType({
       name: 'RamlResourceResponse',
       fields: {
-        code: 'Int',
+        code: 'Int!',
         description: 'String',
         body: 'RamlResourcePostBody!',
       },

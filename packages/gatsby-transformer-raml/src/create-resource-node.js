@@ -42,6 +42,10 @@ function postProcessResource(resource, fileNode) {
   );
 
   if (postProcessedResource.post) {
+    postProcessedResource.post.queryParameters = queryParametersToArray(
+      postProcessedResource.post.queryParameters
+    );
+
     postProcessedResource.post.responses = responsesToArray(
       postProcessedResource.post.responses
     );
