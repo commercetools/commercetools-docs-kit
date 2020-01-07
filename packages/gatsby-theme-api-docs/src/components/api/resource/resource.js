@@ -49,6 +49,18 @@ const Resource = ({ apiKey, resource }) => {
           />
         </MethodContainer>
       ) : null}
+
+      {resourceObj.delete ? (
+        <MethodContainer>
+          <Method
+            apiKey={apiKey}
+            url={resourceObj.resourcePathUri}
+            resourceUriParameters={resourceObj.uriParameters}
+            method={resourceObj.delete}
+            methodType="delete"
+          />
+        </MethodContainer>
+      ) : null}
     </ResourceContainer>
   );
 };
