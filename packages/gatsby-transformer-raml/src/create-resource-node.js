@@ -61,6 +61,16 @@ function postProcessResource(resource, fileNode) {
     );
   }
 
+  if (postProcessedResource.delete) {
+    postProcessedResource.delete.queryParameters = queryParametersToArray(
+      postProcessedResource.delete.queryParameters
+    );
+
+    postProcessedResource.delete.responses = responsesToArray(
+      postProcessedResource.delete.responses
+    );
+  }
+
   return postProcessedResource;
 }
 

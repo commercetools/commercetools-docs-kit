@@ -9,6 +9,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         uriParameters: '[RamlResourceUriParameter!]',
         post: 'RamlResourcePost',
         get: 'RamlResourceGet',
+        delete: 'RamlResourceDelete',
       },
       interfaces: ['Node'],
       extensions: {
@@ -40,6 +41,17 @@ const defineRamlResource = ({ schema, createTypes }) => {
 
     schema.buildObjectType({
       name: 'RamlResourceGet',
+      fields: {
+        securedBy: '[RamlResourceSecuredByOAuth!]',
+        displayName: 'String',
+        description: 'String',
+        queryParameters: '[RamlResourceQueryParameter]',
+        responses: '[RamlResourceResponse!]',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceDelete',
       fields: {
         securedBy: '[RamlResourceSecuredByOAuth!]',
         displayName: 'String',
