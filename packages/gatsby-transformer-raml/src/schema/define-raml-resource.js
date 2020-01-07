@@ -32,7 +32,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         displayName: 'String',
         description: 'String',
         body: 'RamlResourcePostBody',
-        responses: '[RamlResourcePostResponses!]',
+        responses: '[RamlResourceResponse!]',
       },
     }),
 
@@ -43,6 +43,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         displayName: 'String',
         description: 'String',
         queryParameters: '[RamlResourceGetQueryParameter]',
+        responses: '[RamlResourceResponse!]',
       },
     }),
 
@@ -71,7 +72,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
     }),
 
     schema.buildObjectType({
-      name: 'RamlResourcePostResponses',
+      name: 'RamlResourceResponse',
       fields: {
         code: 'Int',
         description: 'String',
