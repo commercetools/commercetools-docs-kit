@@ -7,6 +7,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         resourcePathUri: 'String!',
         uriParameters: '[RamlResourceUriParameter!]',
         post: 'RamlResourcePost',
+        get: 'RamlResourceGet',
       },
       interfaces: ['Node'],
       extensions: {
@@ -27,11 +28,21 @@ const defineRamlResource = ({ schema, createTypes }) => {
     schema.buildObjectType({
       name: 'RamlResourcePost',
       fields: {
-        securedBy: '[RamlResourceSecuredByOAuth]',
+        securedBy: '[RamlResourceSecuredByOAuth!]',
         displayName: 'String',
         description: 'String',
         body: 'RamlResourcePostBody',
         responses: '[RamlResourcePostResponses!]',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceGet',
+      fields: {
+        securedBy: '[RamlResourceSecuredByOAuth!]',
+        displayName: 'String',
+        description: 'String',
+        queryParameters: '[RamlResourceGetQueryParameter]',
       },
     }),
 
@@ -46,6 +57,16 @@ const defineRamlResource = ({ schema, createTypes }) => {
       name: 'RamlResourceSecuredByOAuthScopes',
       fields: {
         scopes: '[String!]',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceGetQueryParameter',
+      fields: {
+        name: 'String',
+        required: 'Boolean',
+        type: 'String!',
+        builtinType: 'String!',
       },
     }),
 
