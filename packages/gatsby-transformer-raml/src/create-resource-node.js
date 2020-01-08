@@ -1,7 +1,6 @@
 const doRecursion = require('./utils/resource/do-recursion');
-const uriParametersToArray = require('./utils/resource/uri-parameters-to-array');
-const responsesToArray = require('./utils/resource/responses-to-array');
-const queryParametersToArray = require('./utils/resource/query-parameters-to-array');
+const parametersToArray = require('./utils/resource/parameters-to-array');
+const processMethods = require('./utils/resource/process-methods');
 
 function createResourceNode({
   resource,
@@ -30,46 +29,18 @@ function createResourceNode({
 }
 
 function postProcessResource(resource, fileNode) {
-  const postProcessedResource = doRecursion(resource);
+  let postProcessedResource = doRecursion(resource);
 
   postProcessedResource.apiKey = fileNode.relativeDirectory.replace(
     `/resources`,
     ''
   );
 
-  postProcessedResource.uriParameters = uriParametersToArray(
+  postProcessedResource.uriParameters = parametersToArray(
     postProcessedResource.uriParameters
   );
 
-  if (postProcessedResource.post) {
-    postProcessedResource.post.queryParameters = queryParametersToArray(
-      postProcessedResource.post.queryParameters
-    );
-
-    postProcessedResource.post.responses = responsesToArray(
-      postProcessedResource.post.responses
-    );
-  }
-
-  if (postProcessedResource.get) {
-    postProcessedResource.get.queryParameters = queryParametersToArray(
-      postProcessedResource.get.queryParameters
-    );
-
-    postProcessedResource.get.responses = responsesToArray(
-      postProcessedResource.get.responses
-    );
-  }
-
-  if (postProcessedResource.delete) {
-    postProcessedResource.delete.queryParameters = queryParametersToArray(
-      postProcessedResource.delete.queryParameters
-    );
-
-    postProcessedResource.delete.responses = responsesToArray(
-      postProcessedResource.delete.responses
-    );
-  }
+  postProcessedResource = processMethods(postProcessedResource);
 
   return postProcessedResource;
 }
