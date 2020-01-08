@@ -18,10 +18,29 @@ function processMethods(resource) {
       returnedMethod[
         method
       ].absoluteUri = `${resource.baseUri}${resource.resourcePathUri}`;
+
+      returnedMethod[method].allUriParameters = mergeParameters(
+        resource.baseUriParameters,
+        resource.uriParameters
+      );
     }
   });
 
   return returnedMethod;
+}
+
+function mergeParameters(baseUriParameters, uriParameters) {
+  let allUriParameters = [];
+
+  if (baseUriParameters) {
+    allUriParameters = allUriParameters.concat(baseUriParameters);
+  }
+
+  if (uriParameters) {
+    allUriParameters = allUriParameters.concat(uriParameters);
+  }
+
+  return allUriParameters.length > 0 ? allUriParameters : undefined;
 }
 
 module.exports = processMethods;
