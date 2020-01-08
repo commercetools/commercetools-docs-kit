@@ -14,6 +14,10 @@ function processMethods(resource) {
       returnedMethod[method].responses = responsesToArray(
         returnedMethod[method].responses
       );
+
+      returnedMethod[
+        method
+      ].absoluteUri = `${resource.baseUri}${resource.resourcePathUri}`;
     }
   });
 
