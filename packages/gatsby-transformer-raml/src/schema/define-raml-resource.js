@@ -37,6 +37,8 @@ const defineRamlResource = ({ schema, createTypes }) => {
         queryParameters: '[RamlResourceQueryParameter]',
         body: 'RamlResourcePostBody',
         responses: '[RamlResourceResponse!]',
+        absoluteUri: 'String!',
+        allUriParameters: '[RamlResourceQueryParameter!]',
       },
     }),
 
@@ -48,6 +50,8 @@ const defineRamlResource = ({ schema, createTypes }) => {
         description: 'String',
         queryParameters: '[RamlResourceQueryParameter]',
         responses: '[RamlResourceResponse!]',
+        absoluteUri: 'String!',
+        allUriParameters: '[RamlResourceQueryParameter!]',
       },
     }),
 
@@ -57,8 +61,10 @@ const defineRamlResource = ({ schema, createTypes }) => {
         securedBy: '[RamlResourceSecuredByOAuth!]',
         displayName: 'String',
         description: 'String',
-        queryParameters: '[RamlResourceQueryParameter]',
+        queryParameters: '[RamlResourceQueryParameter!]',
         responses: '[RamlResourceResponse!]',
+        absoluteUri: 'String!',
+        allUriParameters: '[RamlResourceQueryParameter!]',
       },
     }),
 
