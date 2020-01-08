@@ -47,7 +47,6 @@ export const useApiResources = () => {
                   }
                 }
               }
-              absoluteUri
             }
             get {
               securedBy {
@@ -74,7 +73,6 @@ export const useApiResources = () => {
                   }
                 }
               }
-              absoluteUri
             }
             delete {
               securedBy {
@@ -101,7 +99,6 @@ export const useApiResources = () => {
                   }
                 }
               }
-              absoluteUri
             }
           }
         }
