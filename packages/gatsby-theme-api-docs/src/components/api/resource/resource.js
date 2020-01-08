@@ -30,7 +30,6 @@ const Resource = ({ apiKey, resource }) => {
         <MethodContainer>
           <Method
             apiKey={apiKey}
-            url={resourceObj.resourcePathUri}
             resourceUriParameters={resourceObj.uriParameters}
             method={resourceObj.post}
             methodType="post"

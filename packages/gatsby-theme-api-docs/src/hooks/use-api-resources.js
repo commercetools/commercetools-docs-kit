@@ -47,6 +47,7 @@ export const useApiResources = () => {
                   }
                 }
               }
+              absoluteUri
             }
             get {
               securedBy {
@@ -73,6 +74,7 @@ export const useApiResources = () => {
                   }
                 }
               }
+              absoluteUri
             }
             delete {
               securedBy {
@@ -99,6 +101,7 @@ export const useApiResources = () => {
                   }
                 }
               }
+              absoluteUri
             }
           }
         }
@@ -128,17 +131,9 @@ export const useReadMethodOfResourceByResourcePath = (
 ) => {
   const resource = useReadResourceByResourcePath(apiKey, resourcePath);
 
-  let matchedMethod;
-
   if (resource) {
-    matchedMethod = resource.methods.find(resourceMethod => {
-      return resourceMethod.method === method.toLowerCase();
-    });
+    return resource[method.toLowerCase()];
   }
 
-  if (!matchedMethod) {
-    return null;
-  }
-
-  return { method: matchedMethod, url: resource.absoluteUri };
+  return undefined;
 };

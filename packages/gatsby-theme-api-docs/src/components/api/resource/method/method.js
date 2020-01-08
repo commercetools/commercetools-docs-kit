@@ -55,7 +55,7 @@ const UrlScopesResponseContainer = styled.div`
   padding: 1rem;
 `;
 
-const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
+const Method = ({ apiKey, resourceUriParameters, method, methodType }) => {
   let allUriParameters = [];
   if (resourceUriParameters) {
     allUriParameters = allUriParameters.concat(resourceUriParameters);
@@ -92,7 +92,7 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
         <UrlScopesResponseContainer>
           <UrlScopesResponses
             data={{
-              url,
+              url: method.absoluteUri,
               scopes: {
                 title: oauth2Scopes,
                 scopes: method.securedBy[0].oauth_2_0.scopes,
@@ -141,7 +141,6 @@ function computeMethodNameBackgroundColor(methodName) {
 
 Method.propTypes = {
   apiKey: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
   resourceUriParameters: PropTypes.arrayOf(PropTypes.object.isRequired),
   method: PropTypes.object.isRequired,
   methodType: PropTypes.string.isRequired,
