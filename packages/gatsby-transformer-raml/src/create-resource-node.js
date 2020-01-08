@@ -40,6 +40,10 @@ function postProcessResource(resource, fileNode) {
     postProcessedResource.uriParameters
   );
 
+  postProcessedResource.baseUriParameters = parametersToArray(
+    postProcessedResource.baseUriParameters
+  );
+
   postProcessedResource = processMethods(postProcessedResource);
 
   return postProcessedResource;
