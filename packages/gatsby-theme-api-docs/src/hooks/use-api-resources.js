@@ -120,17 +120,3 @@ export const useReadResourceByResourcePath = (apiKey, resourcePath) => {
 
   return matchedResource;
 };
-
-export const useReadMethodOfResourceByResourcePath = (
-  apiKey,
-  resourcePath,
-  method
-) => {
-  const resource = useReadResourceByResourcePath(apiKey, resourcePath);
-
-  if (resource) {
-    return resource[method.toLowerCase()];
-  }
-
-  return undefined;
-};

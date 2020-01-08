@@ -95,7 +95,9 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
               url,
               scopes: {
                 title: oauth2Scopes,
-                scopes: method.securedBy[0].oauth_2_0.scopes,
+                scopes: method.securedBy
+                  ? method.securedBy[0].oauth_2_0.scopes
+                  : null,
               },
               responses: method.responses,
             }}

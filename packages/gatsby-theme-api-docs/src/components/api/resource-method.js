@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
-import { useReadMethodOfResourceByResourcePath } from '../../hooks/use-api-resources';
+import { useReadResourceByResourcePath } from '../../hooks/use-api-resources';
 import Method from './resource/method';
 
 const Container = styled.div`
@@ -10,13 +10,17 @@ const Container = styled.div`
 `;
 
 const ResourceMethod = ({ apiKey, resource, method }) => {
-  const urlMethod = useReadMethodOfResourceByResourcePath(
-    apiKey,
-    resource,
-    method
-  );
+  const resourceObject = useReadResourceByResourcePath(apiKey, resource);
 
-  if (!urlMethod) {
+  if (!resourceObject) {
+    return (
+      <ContentNotifications.Error>{`Resource '${resource}' not found in API`}</ContentNotifications.Error>
+    );
+  }
+
+  const methodObject = resourceObject[method.toLowerCase()];
+
+  if (!methodObject) {
     return (
       <ContentNotifications.Error>{`Method '${method}' of resource '${resource}' not found in API`}</ContentNotifications.Error>
     );
@@ -24,7 +28,13 @@ const ResourceMethod = ({ apiKey, resource, method }) => {
 
   return (
     <Container>
-      <Method apiKey={apiKey} {...urlMethod} />
+      <Method
+        apiKey={apiKey}
+        url={resourceObject.resourcePathUri}
+        resourceUriParameters={resourceObject.uriParameters}
+        method={methodObject}
+        methodType={method}
+      />
     </Container>
   );
 };
