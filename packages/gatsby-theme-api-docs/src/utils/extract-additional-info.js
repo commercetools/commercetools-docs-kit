@@ -16,11 +16,11 @@ const extractAdditionalInfo = property => {
   let additionalInfo = JSON.parse(JSON.stringify(property));
   const mainInfo = [
     'name',
-    'key',
     'description',
     'type',
+    'builtinType',
     'originalType',
-    'enum',
+    'enumeration',
     'constant',
     'items',
     'library',

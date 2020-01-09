@@ -7,86 +7,97 @@ export const useApiResources = () => {
         allRamlResource {
           nodes {
             apiKey
-            displayName
-            absoluteUri
-            relativeUri
-            parentUrl
-            relativeUriPathSegments
-            allUriParameters {
-              description
-              displayName
-              key
-              name
-              required
-              type
-            }
+            resourceName
+            resourcePathUri
+            description
             uriParameters {
-              description
-              displayName
-              key
               name
-              required
               type
-            }
-            securedBy {
-              schemeName
-              scopes
-            }
-            methods {
-              displayName
-              method
+              builtinType
               description
-              protocols
-              queryParameters {
-                key
-                name
-                displayName
-                type
-                description
-                required
+            }
+            post {
+              securedBy {
+                oauth_2_0 {
+                  scopes
+                }
               }
-              allUriParameters {
-                key
+              displayName
+              description
+              queryParameters {
                 name
-                displayName
-                type
-                description
                 required
+                type
+                builtinType
+                description
               }
               body {
-                mimeType
-                name
-                displayName
-                type
-                description
-                examples {
-                  name
-                  displayName
-                  description
-                  value
+                applicationjson {
+                  type
+                  builtinType
                 }
               }
               responses {
-                key
                 code
                 description
                 body {
-                  mimeType
-                  name
-                  displayName
-                  type
-                  description
-                  examples {
-                    name
-                    displayName
-                    description
-                    value
+                  applicationjson {
+                    type
+                    builtinType
                   }
                 }
               }
+            }
+            get {
               securedBy {
-                schemeName
-                scopes
+                oauth_2_0 {
+                  scopes
+                }
+              }
+              displayName
+              description
+              queryParameters {
+                name
+                required
+                type
+                builtinType
+                description
+              }
+              responses {
+                code
+                description
+                body {
+                  applicationjson {
+                    type
+                    builtinType
+                  }
+                }
+              }
+            }
+            delete {
+              securedBy {
+                oauth_2_0 {
+                  scopes
+                }
+              }
+              displayName
+              description
+              queryParameters {
+                name
+                required
+                type
+                builtinType
+                description
+              }
+              responses {
+                code
+                description
+                body {
+                  applicationjson {
+                    type
+                    builtinType
+                  }
+                }
               }
             }
           }
@@ -102,34 +113,10 @@ export const useReadResourceByResourcePath = (apiKey, resourcePath) => {
   const resources = useApiResources();
 
   const matchedResource = resources.find(resource => {
-    const actualRelativeUri = `${resource.parentUrl}${resource.relativeUri}`;
-
-    return resource.apiKey === apiKey && actualRelativeUri === resourcePath;
+    return (
+      resource.apiKey === apiKey && resource.resourcePathUri === resourcePath
+    );
   });
-
-  if (!matchedResource) {
-    throw new Error(`Resource '${matchedResource}' not found in API`);
-  }
 
   return matchedResource;
-};
-
-export const useReadMethodOfResourceByResourcePath = (
-  apiKey,
-  resourcePath,
-  method
-) => {
-  const resource = useReadResourceByResourcePath(apiKey, resourcePath);
-
-  const matchedMethod = resource.methods.find(resourceMethod => {
-    return resourceMethod.method === method.toLowerCase();
-  });
-
-  if (!matchedMethod) {
-    throw new Error(
-      `Method '${method}' of resource '${resource}' not found in API`
-    );
-  }
-
-  return { method: matchedMethod, url: resource.absoluteUri };
 };

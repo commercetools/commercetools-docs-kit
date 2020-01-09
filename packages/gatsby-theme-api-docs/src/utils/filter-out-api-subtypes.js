@@ -1,13 +1,11 @@
 const filterOutApiTypeSubtypes = (apiType, apiTypes) => {
   let apiTypeSubTypes;
 
-  if (apiType.unionLike) {
-    apiTypeSubTypes = apiTypes.filter(subType => {
-      if (subType.type === 'object') {
-        return subType.originalType === apiType.name;
-      }
-
-      return false;
+  if (apiType.oneOf) {
+    apiTypeSubTypes = apiType.oneOf.map(subTypeDisplayName => {
+      return apiTypes.find(type => {
+        return type.displayName === subTypeDisplayName;
+      });
     });
   }
 

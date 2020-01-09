@@ -5,7 +5,7 @@ import Children from './children';
 import ChildrenUnionLike from './children-union-like';
 
 const Container = ({ apiType, apiTypeSubTypes }) => {
-  return apiType.unionLike ? (
+  return apiType.oneOf ? (
     <ChildrenUnionLike
       apiType={apiType}
       apiTypeSubTypes={apiTypeSubTypes}

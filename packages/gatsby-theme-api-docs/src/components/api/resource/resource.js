@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import { useReadResourceByResourcePath } from '../../../hooks/use-api-resources';
 import Method from './method';
 
@@ -17,19 +18,49 @@ const MethodContainer = styled.div`
 const Resource = ({ apiKey, resource }) => {
   const resourceObj = useReadResourceByResourcePath(apiKey, resource);
 
+  if (!resourceObj) {
+    return (
+      <ContentNotifications.Error>{`Resource '${resource}' not found in API`}</ContentNotifications.Error>
+    );
+  }
+
   return (
     <ResourceContainer>
-      {resourceObj.methods.map(method => {
-        return (
-          <MethodContainer key={method.method}>
-            <Method
-              apiKey={apiKey}
-              url={resourceObj.absoluteUri}
-              method={method}
-            />
-          </MethodContainer>
-        );
-      })}
+      {resourceObj.post ? (
+        <MethodContainer>
+          <Method
+            apiKey={apiKey}
+            url={resourceObj.resourcePathUri}
+            resourceUriParameters={resourceObj.uriParameters}
+            method={resourceObj.post}
+            methodType="post"
+          />
+        </MethodContainer>
+      ) : null}
+
+      {resourceObj.get ? (
+        <MethodContainer>
+          <Method
+            apiKey={apiKey}
+            url={resourceObj.resourcePathUri}
+            resourceUriParameters={resourceObj.uriParameters}
+            method={resourceObj.get}
+            methodType="get"
+          />
+        </MethodContainer>
+      ) : null}
+
+      {resourceObj.delete ? (
+        <MethodContainer>
+          <Method
+            apiKey={apiKey}
+            url={resourceObj.resourcePathUri}
+            resourceUriParameters={resourceObj.uriParameters}
+            method={resourceObj.delete}
+            methodType="delete"
+          />
+        </MethodContainer>
+      ) : null}
     </ResourceContainer>
   );
 };

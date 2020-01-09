@@ -38,8 +38,8 @@ UrlScopesResponses.propTypes = {
     }).isRequired,
     responses: PropTypes.arrayOf(
       PropTypes.shape({
-        code: PropTypes.string.isRequired,
-        body: PropTypes.arrayOf(PropTypes.object),
+        code: PropTypes.number.isRequired,
+        body: PropTypes.object,
       })
     ),
   }),
