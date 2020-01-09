@@ -48,6 +48,18 @@ securitySchemes:
   oauth_2_0: !include oauth2.raml
 securedBy:
 - oauth_2_0
+baseUri: https://subdomain-{exampleUriParameter}.example.com
+baseUriParameters:
+  exampleUriParameter:
+    enum:
+    - subdomainOne
+    - subdomainTwo
+    - subdomainThree
+    type: string
+    (builtinType): string
+    description: |-
+      Free text description of the uri parameter.
+    required: true
 types:
   AnnotationsTestType: !include types/AnnotationsTestType.raml
   AnyPropertiesType: !include types/AnyPropertiesType.raml
