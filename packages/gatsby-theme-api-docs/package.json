@@ -19,9 +19,6 @@
     "@commercetools-docs/ui-kit": "1.4.0",
     "@commercetools-uikit/card": "10.13.0",
     "gatsby-source-filesystem": "2.1.40",
-    "react-redux": "^7.1.0",
-    "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
     "remark-parse": "7.0.2",
     "remark-react": "6.0.0",
     "unified": "8.4.2"
