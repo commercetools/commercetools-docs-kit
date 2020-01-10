@@ -25,6 +25,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         type: 'String!',
         builtinType: 'String!',
         description: 'String',
+        required: 'Boolean!',
       },
     }),
 

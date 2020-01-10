@@ -15,6 +15,7 @@ export default () => {
               type
               builtinType
               description
+              required
             }
             post {
               securedBy {
