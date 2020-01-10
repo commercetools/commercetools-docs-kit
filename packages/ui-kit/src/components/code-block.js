@@ -12,7 +12,7 @@ import codeBlockHighlightCode from '../utils/code-block-highlight-code';
 
 const Container = styled.div`
   border: 1px solid ${colors.light.surfaceCodeHighlight};
-  border-radius: ${tokens.borderRadius6};
+  border-radius: ${tokens.borderRadiusForCodeBlock};
   margin: 0;
 `;
 const Header = styled.div`
@@ -47,7 +47,7 @@ const TooltipWrapperComponent = props =>
   ReactDOM.createPortal(props.children, document.body);
 const TooltipBodyComponent = styled.div`
   background-color: ${colors.light.surfaceCodeHighlight};
-  border-radius: ${tokens.borderRadius4};
+  border-radius: ${tokens.borderRadiusForTooltip};
   color: ${colors.light.textInverted};
   font-size: ${typography.fontSizes.extraSmall};
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};

@@ -62,4 +62,22 @@ describe('Rendering', () => {
       expect(props.onClose).toHaveBeenCalled();
     });
   });
+  it('should dismiss dialog when clicking on "close" icon', async () => {
+    const props = createTestProps();
+    const rendered = render(<SearchDialog {...props} />);
+
+    const input = rendered.queryByLabelText('Search');
+    await wait(() => {
+      expect(input).toHaveAttribute(
+        'aria-owns',
+        expect.stringContaining('algolia-autocomplete-listbox')
+      );
+    });
+
+    // Dismiss
+    fireEvent.click(rendered.getByLabelText('Close search dialog'));
+    await wait(() => {
+      expect(props.onClose).toHaveBeenCalled();
+    });
+  });
 });

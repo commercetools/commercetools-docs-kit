@@ -13,9 +13,10 @@ const algoliaStyles = css`
 
   .algolia-autocomplete {
     margin-bottom: ${designSystem.dimensions.spacings.l};
-    height: calc(100vh - ${designSystem.dimensions.spacings.l});
     width: 100%;
-    overflow: hidden;
+    /* height: calc(100vh - ${designSystem.dimensions.spacings.l}); */
+    /* overflow: hidden; */
+    overflow: visible;
   }
 
   .algolia-autocomplete .ds-dropdown-menu {
@@ -236,8 +237,8 @@ const Container = styled.div`
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     display: grid;
     grid:
-      [row1-start] 'left-blank search-dialog-content right-blank' auto [row1-end]
-      / 0
+      [row1-start] 'search-dialog-content right-blank' auto [row1-end]
+      /
       minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargings},
         ${designSystem.dimensions.widths.pageContentWithMargings}
@@ -246,8 +247,8 @@ const Container = styled.div`
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
-      [row1-start] 'left-blank search-dialog-content right-blank' auto [row1-end]
-      / 0 minmax(
+      [row1-start] 'search-dialog-content right-blank' auto [row1-end]
+      / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargings},
         ${designSystem.dimensions.widths.pageContentWithMargings}
       )
@@ -255,9 +256,8 @@ const Container = styled.div`
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
-      [row1-start] 'left-blank search-dialog-content right-blank' auto [row1-end]
+      [row1-start] 'search-dialog-content right-blank' auto [row1-end]
       /
-      ${designSystem.dimensions.widths.pageNavigationSmall}
       minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargings},
         ${designSystem.dimensions.widths.pageContentWithMargings}
@@ -266,9 +266,8 @@ const Container = styled.div`
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
-      [row1-start] 'left-blank search-dialog-content right-blank' auto [row1-end]
+      [row1-start] 'search-dialog-content right-blank' auto [row1-end]
       /
-      ${designSystem.dimensions.widths.pageNavigation}
       ${designSystem.dimensions.widths.pageContentWithMargings}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
@@ -279,24 +278,20 @@ const Content = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   background-color: ${designSystem.colors.light.surfacePrimary};
-  height: 100%;
-  margin: 0;
-
+  border-radius: 0 0 ${designSystem.tokens.borderRadiusForSearchDialog}
+    ${designSystem.tokens.borderRadiusForSearchDialog};
+  box-shadow: ${designSystem.tokens.shadowForSearchDialog};
+  height: 100%; /* For browsers that do not support this property yet */
+  height: fit-content;
+  margin: 0 ${designSystem.dimensions.spacings.m};
   padding: ${designSystem.dimensions.spacings.s}
     ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
 
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    margin: 0 ${designSystem.dimensions.spacings.xl};
     padding: ${designSystem.dimensions.spacings.s}
       ${designSystem.dimensions.spacings.xl}
       ${designSystem.dimensions.spacings.xl};
-  }
-`;
-const LeftBlank = styled.div`
-  grid-area: left-blank;
-  display: none;
-
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    display: block;
   }
 `;
 const RightBlank = styled.div`
@@ -364,7 +359,6 @@ const SearchDialog = props => {
         <Global styles={algoliaStyles} />
       )}
       <Container>
-        <LeftBlank />
         <RightBlank />
         <Content
           onClick={event => {
@@ -372,7 +366,12 @@ const SearchDialog = props => {
             event.stopPropagation();
           }}
         >
-          <SearchInput ref={ref} id={searchInputId} size="scale" />
+          <SearchInput
+            ref={ref}
+            id={searchInputId}
+            size="scale"
+            onClose={props.onClose}
+          />
           {!isSearchEnabled && (
             <div>{'The search is not available in this environment'}</div>
           )}

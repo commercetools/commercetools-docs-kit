@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
@@ -98,10 +97,7 @@ const DocumentationSwitcherContainer = styled.div`
 `;
 const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
-  display: ${(/* props */) =>
-    // FIXME: revert this before merging the PR!
-    // (props.excludeFromSearchIndex ? 'none' : 'block')
-    'block'};
+  display: ${props => (props.excludeFromSearchIndex ? 'none' : 'block')};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     padding: 0;
@@ -112,66 +108,56 @@ const SearchContainer = styled.div`
   }
 `;
 
-const LayoutHeader = props => {
-  const [isSearchDialogOpen, setIsSearchDialogOpen] = React.useState(false);
-  const openSearchDialog = React.useCallback(() => {
-    setIsSearchDialogOpen(true);
-  }, [setIsSearchDialogOpen]);
-  const closeSearchDialog = () => {
-    setIsSearchDialogOpen(false);
-  };
-  const [modalPortalNode, setModalPortalNode] = React.useState();
-  React.useEffect(() => {
-    setModalPortalNode(document.getElementById('modal-portal'));
-  }, []);
-  return (
-    <Container>
-      <Content>
-        <Inline alignItems="center">
-          <LogoContainer>
-            {/* Injected by React portal */}
-            <div
-              id="sidebar-menu-toggle"
-              css={css`
-                display: flex;
-                @media screen and (${designSystem.dimensions.viewports
-                    .laptop}) {
-                  display: none;
-                }
-              `}
-            />
-            <LogoButton />
-          </LogoContainer>
-          <DocumentationSwitcherContainer>
-            {props.siteTitle}
-          </DocumentationSwitcherContainer>
-        </Inline>
-        <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
-          {isSearchDialogOpen ? (
-            modalPortalNode &&
-            ReactDOM.createPortal(
-              <Overlay onClick={closeSearchDialog}>
-                <SearchDialog onClose={closeSearchDialog} />
-              </Overlay>,
-              modalPortalNode
-            )
-          ) : (
-            <SearchInput
-              id="search-input-placeholder"
-              onFocus={openSearchDialog}
-              size="small"
-            />
-          )}
-        </SearchContainer>
-      </Content>
-      <Blank />
-    </Container>
-  );
-};
+const LayoutHeader = props => (
+  <Container>
+    <Content>
+      <Inline alignItems="center">
+        <LogoContainer>
+          {/* Injected by React portal */}
+          <div
+            id="sidebar-menu-toggle"
+            css={css`
+              display: flex;
+              @media screen and (${designSystem.dimensions.viewports.laptop}) {
+                display: none;
+              }
+            `}
+          />
+          <LogoButton />
+        </LogoContainer>
+        <DocumentationSwitcherContainer>
+          {props.siteTitle}
+        </DocumentationSwitcherContainer>
+      </Inline>
+      <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
+        {props.isSearchDialogOpen ? (
+          <Overlay
+            onClick={props.closeSearchDialog}
+            css={css`
+              position: absolute;
+            `}
+          >
+            <SearchDialog onClose={props.closeSearchDialog} />
+          </Overlay>
+        ) : (
+          <SearchInput
+            id="search-input-placeholder"
+            onFocus={props.openSearchDialog}
+            size="small"
+          />
+        )}
+      </SearchContainer>
+    </Content>
+    <Blank />
+  </Container>
+);
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
   constraintWidth: PropTypes.string,
+  isSearchDialogOpen: PropTypes.bool.isRequired,
+  openSearchDialog: PropTypes.func.isRequired,
+  closeSearchDialog: PropTypes.func.isRequired,
 };
 
 export default LayoutHeader;

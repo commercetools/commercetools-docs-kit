@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import { CloseIcon } from '@commercetools-uikit/icons';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
 import UnstyledSearchIcon from '../icons/search.svg';
 import UnstyledSlashIcon from '../icons/slash.svg';
@@ -15,7 +17,7 @@ const Input = styled.input`
   appearance: none;
   background-color: ${designSystem.colors.light.surfacePrimary};
   border: 1px solid ${designSystem.colors.light.borderInput};
-  border-radius: ${designSystem.tokens.borderRadius6};
+  border-radius: ${designSystem.tokens.borderRadiusForSearchInput};
   box-shadow: none;
   box-sizing: border-box;
   color: ${designSystem.colors.light.textPrimary};
@@ -88,11 +90,20 @@ const SearchInput = React.forwardRef((props, ref) => {
       <SearchInputIcon position="right" hidden={isActive}>
         <UnstyledSlashIcon height={16} />
       </SearchInputIcon>
+      {props.onClose && (
+        <SearchInputIcon position="right">
+          <SecondaryIconButton
+            label="Close search dialog"
+            onClick={props.onClose}
+            icon={<CloseIcon size="medium" />}
+          />
+        </SearchInputIcon>
+      )}
       <Input
         ref={ref}
         key={props.id}
         id={props.id}
-        type="search"
+        type="text"
         placeholder="Search"
         aria-label="Search"
         onFocus={handleFocus}
@@ -106,6 +117,7 @@ SearchInput.propTypes = {
   id: PropTypes.string,
   size: PropTypes.oneOf(['small', 'scale']).isRequired,
   onFocus: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
 export default SearchInput;
