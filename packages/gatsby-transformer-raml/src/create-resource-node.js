@@ -1,5 +1,5 @@
 const doRecursion = require('./utils/resource/do-recursion');
-const parametersToArray = require('./utils/resource/parameters-to-array');
+const parametersToArray = require('./utils/parameters-to-array');
 const processMethods = require('./utils/resource/process-methods');
 
 function createResourceNode({

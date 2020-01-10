@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
-import { useReadResourceByResourcePath } from '../../hooks/use-api-resources';
+import useReadResourceByResourcePath from '../../hooks/use-read-resource-by-resource-path';
 import Method from './resource/method';
 
 const Container = styled.div`
@@ -30,8 +30,8 @@ const ResourceMethod = ({ apiKey, resource, method }) => {
     <Container>
       <Method
         apiKey={apiKey}
-        url={resourceObject.resourcePathUri}
-        resourceUriParameters={resourceObject.uriParameters}
+        url={resourceObject.absoluteUri}
+        resourceUriParameters={resourceObject.allUriParameters}
         method={methodObject}
         methodType={method}
       />

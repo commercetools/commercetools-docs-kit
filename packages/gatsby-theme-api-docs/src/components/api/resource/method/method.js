@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-// import { generateEndpointURN } from '../../../../utils/ctp-urn';
+import { generateEndpointURN } from '../../../../utils/ctp-urn';
 import {
   oauth2Scopes,
   queryParametersTitle,
@@ -65,18 +65,14 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
     allUriParameters = allUriParameters.concat(method.uriParameters);
   }
 
-  /*
-    // first html
+  return (
     <div
-      key={method.method}
       id={generateEndpointURN({
         apiKey,
         path: new URL(url).pathname,
         method: methodType,
       })}
-  */
-  return (
-    <div>
+    >
       <Header>
         <MethodNameContainer css={computeMethodNameBackgroundColor(methodType)}>
           <MethodName>{methodType}</MethodName>

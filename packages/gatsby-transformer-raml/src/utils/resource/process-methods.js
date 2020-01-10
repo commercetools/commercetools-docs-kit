@@ -1,4 +1,4 @@
-const parametersToArray = require('./parameters-to-array');
+const parametersToArray = require('../parameters-to-array');
 const responsesToArray = require('./responses-to-array');
 
 function processMethods(resource) {
