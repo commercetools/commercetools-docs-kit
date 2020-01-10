@@ -271,7 +271,6 @@ const Container = styled.div`
   }
 `;
 const Content = styled.div`
-  grid-area: search-dialog-content;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -303,6 +302,9 @@ const RightBlank = styled.div`
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
   }
+`;
+const Center = styled.div`
+  grid-area: search-dialog-content;
 `;
 
 const SearchDialog = props => {
@@ -362,29 +364,31 @@ const SearchDialog = props => {
       )}
       <Container>
         <RightBlank />
-        <Content
-          onClick={event => {
-            // Prevent overlay to close when clicking on the content area.
-            event.stopPropagation();
-          }}
-        >
-          <SearchInput
-            ref={ref}
-            id={searchInputId}
-            size="scale"
-            onClose={props.onClose}
-          />
-          {!isSearchEnabled && (
-            <div>{'The search is not available in this environment'}</div>
-          )}
-          {hasErrorLoadingAlgolia && (
-            <div>
-              {
-                'Could not load search engine. Please try again or contact support if the problem persists.'
-              }
-            </div>
-          )}
-        </Content>
+        <Center>
+          <Content
+            onClick={event => {
+              // Prevent overlay to close when clicking on the content area.
+              event.stopPropagation();
+            }}
+          >
+            <SearchInput
+              ref={ref}
+              id={searchInputId}
+              size="scale"
+              onClose={props.onClose}
+            />
+            {!isSearchEnabled && (
+              <div>{'The search is not available in this environment'}</div>
+            )}
+            {hasErrorLoadingAlgolia && (
+              <div>
+                {
+                  'Could not load search engine. Please try again or contact support if the problem persists.'
+                }
+              </div>
+            )}
+          </Content>
+        </Center>
       </Container>
     </>
   );
