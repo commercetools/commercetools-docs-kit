@@ -14,8 +14,6 @@ const algoliaStyles = css`
   .algolia-autocomplete {
     margin-bottom: ${designSystem.dimensions.spacings.l};
     width: 100%;
-    /* height: calc(100vh - ${designSystem.dimensions.spacings.l}); */
-    /* overflow: hidden; */
     overflow: visible;
   }
 
@@ -281,8 +279,12 @@ const Content = styled.div`
   border-radius: 0 0 ${designSystem.tokens.borderRadiusForSearchDialog}
     ${designSystem.tokens.borderRadiusForSearchDialog};
   box-shadow: ${designSystem.tokens.shadowForSearchDialog};
+
+  /* stylelint-disable declaration-block-no-duplicate-properties */
   height: 100%; /* For browsers that do not support this property yet */
   height: fit-content;
+  /* stylelint-enable */
+
   margin: 0 ${designSystem.dimensions.spacings.m};
   padding: ${designSystem.dimensions.spacings.s}
     ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
