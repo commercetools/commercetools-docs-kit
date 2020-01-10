@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-export const useApiResources = () => {
+export default () => {
   const queryResult = useStaticQuery(
     graphql`
       {
@@ -107,16 +107,4 @@ export const useApiResources = () => {
   );
 
   return queryResult.allRamlResource.nodes;
-};
-
-export const useReadResourceByResourcePath = (apiKey, resourcePath) => {
-  const resources = useApiResources();
-
-  const matchedResource = resources.find(resource => {
-    return (
-      resource.apiKey === apiKey && resource.resourcePathUri === resourcePath
-    );
-  });
-
-  return matchedResource;
 };

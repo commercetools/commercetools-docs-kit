@@ -1,7 +1,6 @@
-/* eslint-disable import/prefer-default-export */
 import { useStaticQuery, graphql } from 'gatsby';
 
-export const useApiTypes = () => {
+export default () => {
   const queryResult = useStaticQuery(
     graphql`
       {
@@ -25,12 +24,4 @@ export const useApiTypes = () => {
   );
 
   return queryResult.allRamlApi.nodes;
-};
-
-export const useApiByApiKey = apiKey => {
-  const apis = useApiTypes();
-
-  return apis.find(api => {
-    return api.apiKey === apiKey;
-  });
 };
