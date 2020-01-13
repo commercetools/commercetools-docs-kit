@@ -18,6 +18,7 @@
     "@commercetools-docs/gatsby-transformer-raml": "",
     "@commercetools-docs/ui-kit": "1.4.0",
     "@commercetools-uikit/card": "10.13.0",
+    "@commercetools-uikit/spacings-stack": "10.13.0",
     "gatsby-source-filesystem": "2.1.40",
     "remark-parse": "7.0.2",
     "remark-react": "6.0.0",
