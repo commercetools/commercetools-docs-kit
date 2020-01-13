@@ -18,14 +18,14 @@
     "@commercetools-docs/gatsby-transformer-raml": "",
     "@commercetools-docs/ui-kit": "1.4.0",
     "@commercetools-uikit/card": "10.13.0",
-    "gatsby-source-filesystem": "2.1.40",
+    "gatsby-source-filesystem": "2.1.46",
     "remark-parse": "7.0.2",
     "remark-react": "6.0.0",
     "unified": "8.4.2"
   },
   "devDependencies": {
-    "gatsby": "2.18.18",
-    "gatsby-cli": "2.8.23"
+    "gatsby": "2.18.21",
+    "gatsby-cli": "2.8.26"
   },
   "peerDependencies": {
     "@emotion/core": "10.x",
