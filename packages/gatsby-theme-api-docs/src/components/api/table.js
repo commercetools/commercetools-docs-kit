@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem as uiKitDesignSystem } from '@commercetools-docs/ui-kit';
 import { tokens, dimensions, colors, typography } from '../../design-system';
 
 const Table = styled.table`
@@ -7,32 +7,32 @@ const Table = styled.table`
   max-width: 100%;
   background-color: transparent;
   border: ${tokens.borderRadius1} solid ${colors.light.borderTable};
-  border-radius: ${designSystem.tokens.borderRadius6};
-  background-color: ${designSystem.colors.light.textInverted};
+  border-radius: ${uiKitDesignSystem.tokens.borderRadius6};
+  background-color: ${uiKitDesignSystem.colors.light.textInverted};
   box-shadow: ${tokens.shadow1};
   border-collapse: separate;
   border-spacing: 0;
 
   thead {
     display: block;
-    padding: ${designSystem.dimensions.spacings.s};
+    padding: ${uiKitDesignSystem.dimensions.spacings.s};
     background-color: ${colors.light.surfaceTableHead};
-    border-radius: ${designSystem.tokens.borderRadius6}
-      ${designSystem.tokens.borderRadius6} 0 0;
+    border-radius: ${uiKitDesignSystem.tokens.borderRadius6}
+      ${uiKitDesignSystem.tokens.borderRadius6} 0 0;
   }
 
   th {
     vertical-align: bottom;
     text-align: left;
     border: none;
-    font-weight: ${designSystem.typography.fontWeights.bold};
+    font-weight: ${uiKitDesignSystem.typography.fontWeights.bold};
     line-height: ${typography.lineHeights.th};
   }
 
   tbody {
     tr {
       display: block;
-      padding: 0 ${designSystem.dimensions.spacings.s};
+      padding: 0 ${uiKitDesignSystem.dimensions.spacings.s};
 
       :not(:first-of-type) {
         border-top: ${tokens.borderRadius1} solid ${colors.light.borderTable};
@@ -40,7 +40,7 @@ const Table = styled.table`
     }
 
     td {
-      padding: ${designSystem.dimensions.spacings.s};
+      padding: ${uiKitDesignSystem.dimensions.spacings.s};
       vertical-align: top;
       border-top: none;
 
@@ -49,7 +49,7 @@ const Table = styled.table`
       }
 
       :last-of-type {
-        padding-left: ${designSystem.dimensions.spacings.m};
+        padding-left: ${uiKitDesignSystem.dimensions.spacings.m};
       }
     }
   }
