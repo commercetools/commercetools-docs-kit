@@ -48,7 +48,6 @@ const UrlScopesResponseContainerStart = styled.div`
   width: ${dimensions.widths.methodBorderLeft};
   border-radius: ${uiKitDesignSystem.tokens.borderRadius6} 0 0
     ${uiKitDesignSystem.tokens.borderRadius6};
-  background-color: ${colors.light.methods.get};
 `;
 
 const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
@@ -85,7 +84,9 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
         <SpacingsStack scale="m">
           <UrlScopesResponseOverallContainer>
             <SpacingsInline alignItems="stretch">
-              <UrlScopesResponseContainerStart />
+              <UrlScopesResponseContainerStart
+                css={computeMethodNameBackgroundColor(methodType.toLowerCase())}
+              />
               <UrlScopesResponses
                 data={{
                   url,
