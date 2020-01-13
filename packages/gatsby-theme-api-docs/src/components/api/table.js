@@ -1,52 +1,55 @@
 import styled from '@emotion/styled';
+import { designSystem } from '@commercetools-docs/ui-kit';
+import { tokens, dimensions, colors, typography } from '../../design-system';
 
 const Table = styled.table`
   width: 100%;
   max-width: 100%;
   background-color: transparent;
-  border: 1px solid #e6e6e6;
-  border-radius: 6px;
-  background-color: #fff;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+  border: ${tokens.borderRadius1} solid ${colors.light.borderTable};
+  border-radius: ${designSystem.tokens.borderRadius6};
+  background-color: ${designSystem.colors.light.textInverted};
+  box-shadow: ${tokens.shadow1};
   border-collapse: separate;
   border-spacing: 0;
 
   thead {
     display: block;
-    padding: 8px;
-    background-color: #f2f2f2;
-    border-radius: 6px 6px 0 0;
+    padding: ${designSystem.dimensions.spacings.s};
+    background-color: ${colors.light.surfaceTableHead};
+    border-radius: ${designSystem.tokens.borderRadius6}
+      ${designSystem.tokens.borderRadius6} 0 0;
   }
 
   th {
     vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
     text-align: left;
     border: none;
-    font-weight: 700;
-    line-height: 21px;
+    font-weight: ${designSystem.typography.fontWeights.bold};
+    line-height: ${typography.lineHeights.th};
   }
 
   tbody {
     tr {
       display: block;
-      padding: 8px 16px;
+      padding: 0 ${designSystem.dimensions.spacings.s};
 
       :not(:first-of-type) {
-        border-top: 1px solid #e6e6e6;
+        border-top: ${tokens.borderRadius1} solid ${colors.light.borderTable};
       }
     }
 
     td {
+      padding: ${designSystem.dimensions.spacings.s};
       vertical-align: top;
       border-top: none;
 
       :first-of-type {
-        width: 200px;
+        width: ${dimensions.widths.tableColumn};
       }
 
       :last-of-type {
-        padding-left: 16px;
+        padding-left: ${designSystem.dimensions.spacings.m};
       }
     }
   }
