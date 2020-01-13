@@ -6,7 +6,7 @@ const Table = styled.table`
   width: 100%;
   max-width: 100%;
   background-color: transparent;
-  border: ${tokens.borderRadius1} solid ${colors.light.borderTable};
+  border: ${tokens.borderRadius1} solid ${colors.light.border};
   border-radius: ${uiKitDesignSystem.tokens.borderRadius6};
   background-color: ${uiKitDesignSystem.colors.light.textInverted};
   box-shadow: ${tokens.shadow1};
@@ -35,7 +35,7 @@ const Table = styled.table`
       padding: 0 ${uiKitDesignSystem.dimensions.spacings.s};
 
       :not(:first-of-type) {
-        border-top: ${tokens.borderRadius1} solid ${colors.light.borderTable};
+        border-top: ${tokens.borderRadius1} solid ${colors.light.border};
       }
     }
 
