@@ -6,14 +6,22 @@ import { responseRepresentation } from '../../../../../utils/constants';
 import Scopes from './scopes';
 import Responses from './responses';
 
+const Container = styled.div`
+  padding: 1rem;
+`;
+
 const ScopeContainer = styled.div`
-  margin: 1rem 0;
+  margin-top: 1rem;
+`;
+
+const ResponsesContainer = styled.div`
+  margin-top: 1rem;
 `;
 
 const UrlScopesResponses = ({ data }) => {
   const { url, scopes, responses } = data;
   return (
-    <div>
+    <Container>
       <p>{url}</p>
 
       {scopes.scopes ? (
@@ -23,9 +31,11 @@ const UrlScopesResponses = ({ data }) => {
       ) : null}
 
       {responses ? (
-        <Responses responses={responses} title={responseRepresentation} />
+        <ResponsesContainer>
+          <Responses responses={responses} title={responseRepresentation} />
+        </ResponsesContainer>
       ) : null}
-    </div>
+    </Container>
   );
 };
 

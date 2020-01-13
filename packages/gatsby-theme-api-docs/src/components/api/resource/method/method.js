@@ -39,6 +39,7 @@ const Title = styled.span`
 `;
 
 const UrlScopesResponseOverallContainer = styled.div`
+  background-color: ${uiKitDesignSystem.colors.light.surfacePrimary};
   border: ${tokens.borderRadius1} solid ${colors.light.border};
   border-radius: ${uiKitDesignSystem.tokens.borderRadius6};
   box-shadow: ${tokens.shadow2};
@@ -48,6 +49,10 @@ const UrlScopesResponseContainerStart = styled.div`
   width: ${dimensions.widths.methodBorderLeft};
   border-radius: ${uiKitDesignSystem.tokens.borderRadius6} 0 0
     ${uiKitDesignSystem.tokens.borderRadius6};
+`;
+
+const Description = styled.p`
+  line-height: ${uiKitDesignSystem.typography.lineHeights.body};
 `;
 
 const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
@@ -79,7 +84,7 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
           <Title>{method.displayName}</Title>
         </SpacingsInline>
 
-        <p>{method.description}</p>
+        <Description>{method.description}</Description>
 
         <SpacingsStack scale="m">
           <UrlScopesResponseOverallContainer>
