@@ -5,7 +5,6 @@ import { tokens, dimensions, colors, typography } from '../../design-system';
 const Table = styled.table`
   width: 100%;
   max-width: 100%;
-  background-color: transparent;
   border: ${tokens.borderRadius1} solid ${colors.light.border};
   border-radius: ${uiKitDesignSystem.tokens.borderRadius6};
   background-color: ${uiKitDesignSystem.colors.light.textInverted};
