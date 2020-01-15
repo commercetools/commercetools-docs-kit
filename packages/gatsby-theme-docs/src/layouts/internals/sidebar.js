@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { css, ClassNames } from '@emotion/core';
 import styled from '@emotion/styled';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { designSystem } from '@commercetools-docs/ui-kit';
-import LogoSvg from '../../icons/logo.svg';
+import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
 import { BetaFlag } from '../../components';
 
 const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
@@ -22,6 +20,20 @@ const ScrollContainer = styled.div`
   }
   > * + * {
     border-top: 1px solid ${designSystem.colors.light.borderPrimary};
+  }
+`;
+const LogoContainer = styled.div`
+  display: none;
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    height: ${designSystem.dimensions.heights.header};
+    width: ${designSystem.dimensions.widths.pageNavigationSmall};
+    background-color: ${designSystem.colors.light.surfacePrimary};
+    border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
 const WebsiteTitle = styled.div`
@@ -47,48 +59,6 @@ const LinkItem = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-`;
-const MenuLogoContainer = styled.div`
-  display: none;
-
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    height: ${designSystem.dimensions.heights.header};
-    width: ${designSystem.dimensions.widths.pageNavigationSmall};
-    background-color: ${designSystem.colors.light.surfacePrimary};
-    border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
-    display: flex;
-    justify-content: flex-end;
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: ${designSystem.dimensions.widths.pageNavigation};
-  }
-`;
-const LogoContainer = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.m};
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-// This is a normal HTML link as we need to force a redirect to the root domain
-const LogoLink = styled.a`
-  color: ${designSystem.colors.light.textPrimary};
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-`;
-const LogoTitle = styled.div`
-  display: none;
-  font-size: ${designSystem.typography.fontSizes.body};
-
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    display: block;
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    font-size: ${designSystem.typography.fontSizes.h4};
-  }
 `;
 
 const SidebarLink = props => (
@@ -159,16 +129,9 @@ const Sidebar = props => {
   `);
   return (
     <>
-      <MenuLogoContainer>
-        <LogoLink href="/">
-          <LogoContainer>
-            <SpacingsInline scale="m" alignItems="center">
-              <LogoSvg height={32} />
-              <LogoTitle>{'Documentation'}</LogoTitle>
-            </SpacingsInline>
-          </LogoContainer>
-        </LogoLink>
-      </MenuLogoContainer>
+      <LogoContainer>
+        <LogoButton />
+      </LogoContainer>
       <WebsiteTitle>
         <SpacingsStack scale="xs">
           <div>{props.isGlobalBeta && <BetaFlag />}</div>
