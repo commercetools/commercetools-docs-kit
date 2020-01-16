@@ -51,10 +51,10 @@ jobs:
           headless: true
           start: 'yarn run serve -l 8000 -n public'
           wait-on: 'http://localhost:8000/docs-smoke-test'
-          command: 'yarn run percy exec -- yarn test:e2e --env CI=true'
+          env: 'CI=true'
+          command-prefix: 'yarn run percy exec --'
         env:
           NODE_ENV: test
-          TERM: xterm
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
 
       - name: Uploading Cypress artifacts
