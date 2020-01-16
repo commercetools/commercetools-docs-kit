@@ -54,6 +54,7 @@ jobs:
           command: yarn run percy exec -- yarn test:e2e --env CI=true
         env:
           NODE_ENV: test
+          TERM: xterm
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
 
       - name: Uploading Cypress artifacts
