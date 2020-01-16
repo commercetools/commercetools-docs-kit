@@ -51,7 +51,8 @@ jobs:
           headless: true
           start: 'yarn run serve -l 8000 -n public'
           wait-on: 'http://localhost:8000/docs-smoke-test'
-          command: yarn run percy exec -- yarn test:e2e --env CI=true
+          command: 'yarn run percy exec -- yarn test:e2e --env CI=true'
+          env: 'CI=true'
         env:
           NODE_ENV: test
           TERM: xterm
