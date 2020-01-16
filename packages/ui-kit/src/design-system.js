@@ -55,17 +55,17 @@ export const colors = {
 };
 
 export const tokens = {
-  borderRadius2: '2px',
-  borderRadius4: '4px',
-  borderRadius6: '6px',
-  shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
-  shadow4: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
-  shadow6: ' 0 -1px 2px 0 rgba(0, 0, 0, 0.2)',
-  shadow7:
-    '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
-  shadow8: '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
-  shadow9:
-    'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+  borderRadiusForBetaFlag: customProperties.borderRadius4,
+  borderRadiusForSearchDialog: customProperties.borderRadius6,
+  borderRadiusForSearchInput: customProperties.borderRadius6,
+  borderRadiusForCodeBlock: customProperties.borderRadius6,
+  borderRadiusForTooltip: customProperties.borderRadius4,
+  borderRadiusForContentNotification: customProperties.borderRadius6,
+  borderRadiusForImageFrame: customProperties.borderRadius6,
+  borderRadiusForBlockquote: customProperties.borderRadius6,
+  shadowForBetaFlag: customProperties.shadow7,
+  shadowForSearchDialog: customProperties.shadow2,
+  shadowForFooter: customProperties.shadow6,
 };
 
 export const dimensions = {

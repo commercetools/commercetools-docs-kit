@@ -7,7 +7,7 @@ const LayoutFooter = () => (
   <div
     css={css`
       grid-area: footer;
-      box-shadow: ${designSystem.tokens.shadow6};
+      box-shadow: ${designSystem.tokens.shadowForFooter};
     `}
   >
     <Footer />

@@ -1018,6 +1018,23 @@
     prop-types "15.7.2"
     tiny-invariant "1.0.6"
 
+"@commercetools-uikit/secondary-icon-button@10.13.0":
+  version "10.13.0"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/secondary-icon-button/-/secondary-icon-button-10.13.0.tgz#f90bcca3b9da1fe3adb68b34d9ee0dfb9001f011"
+  integrity sha512-u2W6TYCcMqVklh51mRhU6PZ2dPXpA5EhDoaCrOEFUsWmZwMyWsNq3pyDnIaxwwDNbCfA6IucuMenQCkATARAkQ==
+  dependencies:
+    "@commercetools-uikit/accessible-button" "10.13.0"
+    "@commercetools-uikit/design-system" "10.13.0"
+    "@commercetools-uikit/spacings" "10.13.0"
+    "@commercetools-uikit/text" "10.13.0"
+    "@commercetools-uikit/utils" "10.13.0"
+    "@emotion/core" "10.0.22"
+    "@emotion/styled" "10.0.23"
+    common-tags "1.8.0"
+    lodash "4.17.15"
+    prop-types "15.7.2"
+    react-required-if "1.0.3"
+
 "@commercetools-uikit/spacings-inline@10.13.0":
   version "10.13.0"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-inline/-/spacings-inline-10.13.0.tgz#fc87f068074f221d03fa1cfa04455ecd0976e399"

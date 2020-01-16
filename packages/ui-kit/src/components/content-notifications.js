@@ -51,7 +51,7 @@ const Container = styled.div`
           return colors.light.textInfo;
       }
     }};
-  border-radius: ${tokens.borderRadius6};
+  border-radius: ${tokens.borderRadiusForContentNotification};
   padding: ${dimensions.spacings.m};
 `;
 

@@ -18,6 +18,13 @@ import PageContentInset from './internals/page-content-inset';
 
 const LayoutContent = props => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
+  const [isSearchDialogOpen, setIsSearchDialogOpen] = React.useState(false);
+  const openSearchDialog = React.useCallback(() => {
+    setIsSearchDialogOpen(true);
+  }, [setIsSearchDialogOpen]);
+  const closeSearchDialog = () => {
+    setIsSearchDialogOpen(false);
+  };
   const siteData = useSiteData();
   return (
     <LayoutApplication>
@@ -26,13 +33,18 @@ const LayoutContent = props => {
         setMenuOpen={setMenuOpen}
         siteTitle={siteData.siteMetadata.title}
         isGlobalBeta={props.pageContext.isGlobalBeta}
+        isSearchDialogOpen={isSearchDialogOpen}
+        closeSearchDialog={closeSearchDialog}
       />
       <LayoutMain>
+        <LayoutHeader
+          siteTitle={siteData.siteMetadata.title}
+          excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+          isSearchDialogOpen={isSearchDialogOpen}
+          openSearchDialog={openSearchDialog}
+          closeSearchDialog={closeSearchDialog}
+        />
         <LayoutPage id="top">
-          <LayoutHeader
-            siteTitle={siteData.siteMetadata.title}
-            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
-          />
           <LayoutPageHeader>
             {props.pageContext.beta && (
               <BetaFlag href={siteData.siteMetadata.betaLink} />

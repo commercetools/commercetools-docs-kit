@@ -3,33 +3,69 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
-import { SearchBar } from '../../components';
+import { SearchDialog, SearchInput, Overlay } from '../../components';
 
 const Container = styled.header`
-  display: block;
   grid-area: header;
-  height: ${designSystem.dimensions.heights.header};
-  width: 100%;
   border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
   z-index: 10;
+  max-width: 100vw;
+  display: block;
+
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    display: grid;
+    grid:
+      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+        .heights.header} [row1-end]
+      / minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentWithMargings}
+      )
+      1fr;
+  }
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    grid:
+      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+        .heights.header} [row1-end]
+      / minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentWithMargings}
+      )
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+  }
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    grid:
+      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+        .heights.header} [row1-end]
+      / minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentWithMargings}
+      )
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    grid:
+      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+        .heights.header} [row1-end]
+      / ${designSystem.dimensions.widths.pageContentWithMargings}
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+  }
 `;
-const Constraint = styled.div`
+const Content = styled.div`
+  grid-area: header-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex: 1;
   padding: 0;
-  margin: 0 auto;
-  width: 100%;
+  margin: 0;
   height: 100%;
+`;
+const Blank = styled.div`
+  grid-area: header-blank;
+  display: none;
 
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: ${props =>
-      props.constraintWidth ||
-      `calc(
-        ${designSystem.dimensions.widths.pageContentWithMargings} +
-        ${designSystem.dimensions.widths.pageNavigation})
-      `};
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    display: block;
   }
 `;
 const Inline = styled.div`
@@ -63,6 +99,10 @@ const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
   display: ${props => (props.excludeFromSearchIndex ? 'none' : 'block')};
 
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    padding: 0;
+  }
+
   @media only percy {
     display: block !important;
   }
@@ -70,9 +110,10 @@ const SearchContainer = styled.div`
 
 const LayoutHeader = props => (
   <Container>
-    <Constraint constraintWidth={props.constraintWidth}>
+    <Content>
       <Inline alignItems="center">
         <LogoContainer>
+          {/* Injected by React portal */}
           <div
             id="sidebar-menu-toggle"
             css={css`
@@ -89,15 +130,34 @@ const LayoutHeader = props => (
         </DocumentationSwitcherContainer>
       </Inline>
       <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
-        <SearchBar />
+        {props.isSearchDialogOpen ? (
+          <Overlay
+            onClick={props.closeSearchDialog}
+            css={css`
+              position: absolute;
+            `}
+          >
+            <SearchDialog onClose={props.closeSearchDialog} />
+          </Overlay>
+        ) : (
+          <SearchInput
+            id="search-input-placeholder"
+            onFocus={props.openSearchDialog}
+            size="small"
+          />
+        )}
       </SearchContainer>
-    </Constraint>
+    </Content>
+    <Blank />
   </Container>
 );
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
   constraintWidth: PropTypes.string,
+  isSearchDialogOpen: PropTypes.bool.isRequired,
+  openSearchDialog: PropTypes.func.isRequired,
+  closeSearchDialog: PropTypes.func.isRequired,
 };
 
 export default LayoutHeader;
