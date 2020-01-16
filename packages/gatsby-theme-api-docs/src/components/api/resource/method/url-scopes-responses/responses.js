@@ -4,9 +4,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Markdown } from '@commercetools-docs/ui-kit';
 
-const Title = styled.div`
-  color: #999;
-`;
+import Title from './title';
 
 const Body = styled.div`
   display: flex;
@@ -33,11 +31,26 @@ const responseTypeStyle = css`
 const Responses = ({ responses, title }) => {
   return (
     <div>
-      {title ? (
-        <Title>
-          <strong>{title}</strong>
-        </Title>
-      ) : null}
+      {title ? <Title>{title}</Title> : null}
+
+      {responses.map(response => {
+        if (response.body) {
+          return (
+            <p key={response.code}>{response.body.applicationjson.type}</p>
+          );
+        }
+
+        // return (
+        //   <div key={response.code}>
+        //     <p>No body is returned.</p>
+        //     <p>{response.description}</p>
+        //     <p>Status Code:</p>
+
+        //   </div>
+        // );
+
+        return null;
+      })}
 
       <Body>
         <div>
