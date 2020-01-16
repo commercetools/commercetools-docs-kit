@@ -28,6 +28,7 @@
     "changelog": "node scripts/changelog.js",
     "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "prerelease": "yarn check-npm-login && yarn prebuild",
+    "prerelease:canary": "yarn check-npm-login && yarn prebuild",
     "release": "lerna publish --exact",
     "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes"
   },
