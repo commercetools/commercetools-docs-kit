@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { designSystem as uiKitDesignSystem } from '@commercetools-docs/ui-kit';
+import {
+  designSystem as uiKitDesignSystem,
+  Markdown,
+} from '@commercetools-docs/ui-kit';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { generateEndpointURN } from '../../../../utils/ctp-urn';
@@ -55,6 +58,8 @@ const Description = styled.p`
   line-height: ${uiKitDesignSystem.typography.lineHeights.body};
 `;
 
+const TitleWithAnchor = Markdown.withAnchorLink(Title);
+
 const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
   let allUriParameters = [];
   if (resourceUriParameters) {
@@ -65,72 +70,68 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
     allUriParameters = allUriParameters.concat(method.uriParameters);
   }
 
+  const id = generateEndpointURN({
+    apiKey,
+    path: new URL(url).pathname,
+    method: methodType,
+  });
+
   return (
-    <div
-      id={generateEndpointURN({
-        apiKey,
-        path: new URL(url).pathname,
-        method: methodType,
-      })}
-    >
-      <SpacingsStack scale="s">
-        <SpacingsInline alignItems="center" scale="m">
-          <Type
-            css={computeMethodNameBackgroundColor(methodType.toLowerCase())}
-          >
-            {methodType}
-          </Type>
+    <SpacingsStack scale="s">
+      <SpacingsInline alignItems="center" scale="s">
+        <Type css={computeMethodNameBackgroundColor(methodType.toLowerCase())}>
+          {methodType}
+        </Type>
 
-          <Title>{method.displayName}</Title>
-        </SpacingsInline>
+        <TitleWithAnchor id={id}>{method.displayName}</TitleWithAnchor>
+      </SpacingsInline>
 
-        <Description>{method.description}</Description>
+      <Description>{method.description}</Description>
 
-        <SpacingsStack scale="m">
-          <UrlScopesResponseOverallContainer>
-            <SpacingsInline alignItems="stretch">
-              <UrlScopesResponseContainerStart
-                css={computeMethodNameBackgroundColor(methodType.toLowerCase())}
-              />
-              <UrlScopesResponses
-                data={{
-                  url,
-                  scopes: {
-                    title: oauth2Scopes,
-                    scopes: method.securedBy
-                      ? method.securedBy[0].oauth_2_0.scopes
-                      : null,
-                  },
-                  responses: method.responses,
-                }}
-              />
-            </SpacingsInline>
-          </UrlScopesResponseOverallContainer>
-
-          {allUriParameters.length > 0 ? (
-            <Parameters
-              title={pathParametersTitle}
-              parameters={allUriParameters}
+      <SpacingsStack scale="m">
+        <UrlScopesResponseOverallContainer>
+          <SpacingsInline alignItems="stretch">
+            <UrlScopesResponseContainerStart
+              css={computeMethodNameBackgroundColor(methodType.toLowerCase())}
             />
-          ) : null}
-
-          {method.queryParameters ? (
-            <Parameters
-              title={queryParametersTitle}
-              parameters={method.queryParameters}
+            <UrlScopesResponses
+              data={{
+                url,
+                scopes: {
+                  title: oauth2Scopes,
+                  scopes: method.securedBy
+                    ? method.securedBy[0].oauth_2_0.scopes
+                    : null,
+                },
+                responses: method.responses,
+              }}
             />
-          ) : null}
+          </SpacingsInline>
+        </UrlScopesResponseOverallContainer>
 
-          {method.body ? (
-            <RequestRepresentation
-              titleSuffix={requestRepresentation}
-              apiKey={apiKey}
-              apiType={method.body.applicationjson.type}
-            />
-          ) : null}
-        </SpacingsStack>
+        {allUriParameters.length > 0 ? (
+          <Parameters
+            title={pathParametersTitle}
+            parameters={allUriParameters}
+          />
+        ) : null}
+
+        {method.queryParameters ? (
+          <Parameters
+            title={queryParametersTitle}
+            parameters={method.queryParameters}
+          />
+        ) : null}
+
+        {method.body ? (
+          <RequestRepresentation
+            titleSuffix={requestRepresentation}
+            apiKey={apiKey}
+            apiType={method.body.applicationjson.type}
+          />
+        ) : null}
       </SpacingsStack>
-    </div>
+    </SpacingsStack>
   );
 };
 
