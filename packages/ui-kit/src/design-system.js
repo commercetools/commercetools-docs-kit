@@ -56,7 +56,6 @@ export const colors = {
 
 export const tokens = {
   borderRadiusForBetaFlag: customProperties.borderRadius4,
-  borderRadiusForBetaFlagLink: customProperties.borderRadius7,
   borderRadiusForSearchDialog: customProperties.borderRadius6,
   borderRadiusForSearchInput: customProperties.borderRadius6,
   borderRadiusForCodeBlock: customProperties.borderRadius6,
@@ -64,6 +63,7 @@ export const tokens = {
   borderRadiusForContentNotification: customProperties.borderRadius6,
   borderRadiusForImageFrame: customProperties.borderRadius6,
   borderRadiusForBlockquote: customProperties.borderRadius6,
+  shadowForBetaFlag: customProperties.shadow7,
   shadowForSearchDialog: customProperties.shadow2,
   shadowForFooter: customProperties.shadow6,
 };

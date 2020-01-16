@@ -15,7 +15,7 @@ const getStyles = props => {
       ${baseStyles}
       background-color: ${designSystem.colors.light.surfacePrimary};
       border: 1px solid ${designSystem.colors.light.borderInfo};
-      box-shadow: ${designSystem.tokens.borderRadiusForBetaFlagLink};
+      box-shadow: ${designSystem.tokens.shadowForBetaFlag};
       color: ${designSystem.colors.light.textInfo} !important;
       font-size: ${designSystem.typography.fontSizes.small};
       text-decoration: none;
