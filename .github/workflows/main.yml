@@ -50,7 +50,7 @@ jobs:
         with:
           browser: chrome
           headless: true
-          start: pwd && ls -lah public && yarn run serve -l 8000 -n public
+          start: ls -lah public && yarn run serve -l 8000 -n public
           wait-on: 'http://localhost:8000'
           command: yarn run percy exec -- yarn test:e2e --env CI=true
         env:
