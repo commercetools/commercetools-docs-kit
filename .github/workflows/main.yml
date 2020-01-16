@@ -47,3 +47,22 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+
+  publish_to_canary:
+    needs: build_lint_and_test
+
+    if: github.ref == 'refs/heads/master'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Publishing to npm registry
+        run: ./scripts/release_canary.sh
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
