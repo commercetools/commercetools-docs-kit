@@ -50,8 +50,8 @@ jobs:
         with:
           browser: chrome
           headless: true
-          start: ls -lah public && yarn run serve -l 8000 -n public
-          wait-on: 'http://localhost:8000'
+          start: 'yarn run serve -l 8000 -n public'
+          wait-on: 'http://localhost:8000/docs-smoke-test'
           command: yarn run percy exec -- yarn test:e2e --env CI=true
         env:
           NODE_ENV: test
