@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 import { responseRepresentation } from '../../../../../utils/constants';
 import Scopes from './scopes';
 import Responses from './responses';
 
 const Container = styled.div`
-  padding: 1rem;
+  padding: ${customProperties.spacingM};
 `;
 
 const ScopeContainer = styled.div`
-  margin-top: 1rem;
+  margin-top: ${customProperties.spacingM};
 `;
 
 const ResponsesContainer = styled.div`
-  margin-top: 1rem;
+  margin-top: ${customProperties.spacingM};
 `;
 
 const UrlScopesResponses = ({ data }) => {
