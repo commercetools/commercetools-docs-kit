@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SearchInput from './search-input';
 
@@ -92,12 +93,19 @@ const RightBlank = styled.div`
 const Center = styled.div`
   grid-area: search-dialog-content;
 `;
-const Loading = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-`;
+const InputPlaceholder = () => (
+  <div
+    css={css`
+      background-color: ${designSystem.colors.light.surfaceSecondary1};
+      border: 1px solid ${designSystem.colors.light.borderInput};
+      border-radius: ${designSystem.tokens.borderRadiusForSearchInput};
+      display: flex;
+      flex: 1;
+      height: ${designSystem.dimensions.heights.inputSearch};
+      min-height: ${designSystem.dimensions.heights.inputSearch};
+    `}
+  />
+);
 
 const SearchDialog = props => {
   const ref = React.useRef();
@@ -126,9 +134,7 @@ const SearchDialog = props => {
               event.stopPropagation();
             }}
           >
-            <React.Suspense
-              fallback={<Loading>{'Initializing search...'}</Loading>}
-            >
+            <React.Suspense fallback={<InputPlaceholder />}>
               <AlgoliaSearch searchInputId={searchInputId} ref={ref}>
                 <SearchInput
                   ref={ref}

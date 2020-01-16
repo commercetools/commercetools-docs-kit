@@ -12,7 +12,7 @@ describe('Rendering', () => {
     const props = createTestProps();
     const rendered = render(<SearchDialog {...props} />);
 
-    const input = rendered.queryByLabelText('Search');
+    const input = await rendered.findByLabelText('Search');
     await wait(() => {
       expect(input).toHaveAttribute(
         'aria-owns',
@@ -30,7 +30,7 @@ describe('Rendering', () => {
     const props = createTestProps();
     const rendered = render(<SearchDialog {...props} />);
 
-    const input = rendered.queryByLabelText('Search');
+    const input = await rendered.findByLabelText('Search');
     await wait(() => {
       expect(input).toHaveAttribute(
         'aria-owns',
@@ -48,7 +48,7 @@ describe('Rendering', () => {
     const props = createTestProps();
     const rendered = render(<SearchDialog {...props} />);
 
-    const input = rendered.queryByLabelText('Search');
+    const input = await rendered.findByLabelText('Search');
     await wait(() => {
       expect(input).toHaveAttribute(
         'aria-owns',
@@ -66,7 +66,7 @@ describe('Rendering', () => {
     const props = createTestProps();
     const rendered = render(<SearchDialog {...props} />);
 
-    const input = rendered.queryByLabelText('Search');
+    const input = await rendered.findByLabelText('Search');
     await wait(() => {
       expect(input).toHaveAttribute(
         'aria-owns',
