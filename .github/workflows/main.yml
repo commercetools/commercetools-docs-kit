@@ -1,0 +1,49 @@
+name: Main workflow
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+
+jobs:
+  build_lint_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Lint text files
+        run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
+
+      - name: Building websites for production
+        run: yarn build
+
+      - name: Running Visual Regression Tests
+        uses: percy/snapshot-action@v0.1.1
+        with:
+          build-directory: public
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS }}
+
+      - name: Running End-to-End tests
+        uses: cypress-io/github-action@v1.16.1
+        with:
+          start: yarn run serve -l 8000 -n public
+          wait-on: 'http://localhost:8000'
+          command: yarn run percy exec -- yarn test:e2e --env CI=true
+        env:
+          NODE_ENV: test
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
+
+      - name: Uploading Cypress artifacts
+        # Test run video was always captured, so this action uses "always()" condition
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos

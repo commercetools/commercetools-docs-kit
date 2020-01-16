@@ -189,17 +189,17 @@ workflows:
   build_and_test:
     jobs:
       - build_lint_and_test
-      - vrt_test:
-          requires:
-            - build_lint_and_test
-      - e2e_test:
-          name: e2e_smoke_tests
-          requires:
-            - build_lint_and_test
-          start: yarn run serve -l 8000 -n public
-          wait-on: 'http://localhost:8000'
-          run-command: PERCY_TOKEN="$PERCY_TOKEN_SMOKE_TESTS_E2E" yarn run percy exec -- yarn test:e2e --env CI=true
-          store_artifacts: true
+      # - vrt_test:
+      #     requires:
+      #       - build_lint_and_test
+      # - e2e_test:
+      #     name: e2e_smoke_tests
+      #     requires:
+      #       - build_lint_and_test
+      #     start: yarn run serve -l 8000 -n public
+      #     wait-on: 'http://localhost:8000'
+      #     run-command: PERCY_TOKEN="$PERCY_TOKEN_SMOKE_TESTS_E2E" yarn run percy exec -- yarn test:e2e --env CI=true
+      #     store_artifacts: true
       - publish:
           requires:
             - vrt_test
