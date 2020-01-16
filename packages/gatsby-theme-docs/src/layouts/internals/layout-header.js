@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
 import { SearchBar } from '../../components';
-import LogoSvg from '../../icons/logo.svg';
 
 const Container = styled.header`
   display: block;
@@ -39,7 +37,7 @@ const Inline = styled.div`
   align-items: center;
   height: 100%;
 `;
-const MenuLogoContainer = styled.div`
+const LogoContainer = styled.div`
   width: auto;
   height: 100%;
   display: flex;
@@ -48,22 +46,6 @@ const MenuLogoContainer = styled.div`
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     display: none;
   }
-`;
-const LogoContainer = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.m};
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-// This is a normal HTML link as we need to force a redirect to the root domain
-const LogoLink = styled.a`
-  color: ${designSystem.colors.light.textPrimary};
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  display: block;
-  width: 100%;
 `;
 const DocumentationSwitcherContainer = styled.div`
   border-left: 1px solid ${designSystem.colors.light.borderPrimary};
@@ -90,8 +72,7 @@ const LayoutHeader = props => (
   <Container>
     <Constraint constraintWidth={props.constraintWidth}>
       <Inline alignItems="center">
-        <MenuLogoContainer>
-          {/* Injected by React portal */}
+        <LogoContainer>
           <div
             id="sidebar-menu-toggle"
             css={css`
@@ -101,14 +82,8 @@ const LayoutHeader = props => (
               }
             `}
           />
-          <LogoLink href="/">
-            <LogoContainer>
-              <SpacingsInline scale="m" alignItems="center">
-                <LogoSvg height={32} />
-              </SpacingsInline>
-            </LogoContainer>
-          </LogoLink>
-        </MenuLogoContainer>
+          <LogoButton />
+        </LogoContainer>
         <DocumentationSwitcherContainer>
           {props.siteTitle}
         </DocumentationSwitcherContainer>
