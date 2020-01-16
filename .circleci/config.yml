@@ -200,12 +200,12 @@ workflows:
       #     wait-on: 'http://localhost:8000'
       #     run-command: PERCY_TOKEN="$PERCY_TOKEN_SMOKE_TESTS_E2E" yarn run percy exec -- yarn test:e2e --env CI=true
       #     store_artifacts: true
-      - publish:
-          requires:
-            - vrt_test
-            - e2e_smoke_tests
-          filters:
-            branches:
-              only:
-                - master
+      # - publish:
+      #     requires:
+      #       - vrt_test
+      #       - e2e_smoke_tests
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
 
