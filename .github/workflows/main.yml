@@ -48,7 +48,6 @@ jobs:
       - name: Running End-to-End tests
         uses: cypress-io/github-action@v1.16.1
         with:
-          browser: chrome
           headless: true
           start: 'yarn run serve -l 8000 -n public'
           wait-on: 'http://localhost:8000/docs-smoke-test'
