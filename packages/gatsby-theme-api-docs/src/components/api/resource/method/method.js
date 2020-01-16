@@ -41,17 +41,12 @@ const Title = styled.span`
   line-height: ${typography.lineHeights.methodTitle};
 `;
 
-const UrlScopesResponseOverallContainer = styled.div`
+const UrlScopesResponseContainer = styled.div`
   background-color: ${uiKitDesignSystem.colors.light.surfacePrimary};
   border: ${tokens.borderRadius1} solid ${colors.light.border};
   border-radius: ${uiKitDesignSystem.tokens.borderRadius6};
   box-shadow: ${tokens.shadow2};
-`;
-
-const UrlScopesResponseContainerStart = styled.div`
-  width: ${dimensions.widths.methodBorderLeft};
-  border-radius: ${uiKitDesignSystem.tokens.borderRadius6} 0 0
-    ${uiKitDesignSystem.tokens.borderRadius6};
+  border-left-width: ${dimensions.widths.methodBorderLeft};
 `;
 
 const Description = styled.p`
@@ -70,6 +65,8 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
     allUriParameters = allUriParameters.concat(method.uriParameters);
   }
 
+  const methodColor = computeMethodColor(methodType.toLowerCase());
+
   const id = generateEndpointURN({
     apiKey,
     path: new URL(url).pathname,
@@ -79,7 +76,11 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
   return (
     <SpacingsStack scale="s">
       <SpacingsInline alignItems="center" scale="s">
-        <Type css={computeMethodNameBackgroundColor(methodType.toLowerCase())}>
+        <Type
+          css={css`
+            background-color: ${methodColor};
+          `}
+        >
           {methodType}
         </Type>
 
@@ -89,25 +90,24 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
       <Description>{method.description}</Description>
 
       <SpacingsStack scale="m">
-        <UrlScopesResponseOverallContainer>
-          <SpacingsInline alignItems="stretch">
-            <UrlScopesResponseContainerStart
-              css={computeMethodNameBackgroundColor(methodType.toLowerCase())}
-            />
-            <UrlScopesResponses
-              data={{
-                url,
-                scopes: {
-                  title: oauth2Scopes,
-                  scopes: method.securedBy
-                    ? method.securedBy[0].oauth_2_0.scopes
-                    : null,
-                },
-                responses: method.responses,
-              }}
-            />
-          </SpacingsInline>
-        </UrlScopesResponseOverallContainer>
+        <UrlScopesResponseContainer
+          css={css`
+            border-left-color: ${methodColor};
+          `}
+        >
+          <UrlScopesResponses
+            data={{
+              url,
+              scopes: {
+                title: oauth2Scopes,
+                scopes: method.securedBy
+                  ? method.securedBy[0].oauth_2_0.scopes
+                  : null,
+              },
+              responses: method.responses,
+            }}
+          />
+        </UrlScopesResponseContainer>
 
         {allUriParameters.length > 0 ? (
           <Parameters
@@ -135,20 +135,14 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
   );
 };
 
-function computeMethodNameBackgroundColor(methodName) {
+function computeMethodColor(methodName) {
   switch (methodName) {
     case 'post':
-      return css`
-        background-color: ${colors.light.methods.post};
-      `;
+      return colors.light.methods.post;
     case 'delete':
-      return css`
-        background-color: ${colors.light.methods.delete};
-      `;
+      return colors.light.methods.delete;
     default:
-      return css`
-        background-color: ${colors.light.methods.get};
-      `;
+      return colors.light.methods.get;
   }
 }
 
