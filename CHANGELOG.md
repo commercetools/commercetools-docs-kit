@@ -1,3 +1,29 @@
+## [1.5.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.4.1...v1.5.0) (2020-01-16)
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`, `ui-kit`
+  - [#179](https://github.com/commercetools/commercetools-docs-kit/pull/179) refactor(theme): to render search results in an overlay, aligned with the page content ([@emmenko](https://github.com/emmenko))
+  - [#207](https://github.com/commercetools/commercetools-docs-kit/pull/207) refactor(theme): extract logo button component into uikit ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-api-docs`
+  - [#206](https://github.com/commercetools/commercetools-docs-kit/pull/206) Parameters design implementation ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-api-docs`, `gatsby-transformer-raml`
+  - [#202](https://github.com/commercetools/commercetools-docs-kit/pull/202) Rendering resources based on RMF codegen ([@davifantasia](https://github.com/davifantasia))
+  - [#194](https://github.com/commercetools/commercetools-docs-kit/pull/194) gatsby-transformer-raml based on Rmf codegen ([@davifantasia](https://github.com/davifantasia))
+
+#### 🤖 Type: Dependencies
+
+- Other
+  - [#204](https://github.com/commercetools/commercetools-docs-kit/pull/204) chore(deps): update all dependencies (major) ([@renovate[bot]](https://github.com/apps/renovate))
+  - [#205](https://github.com/commercetools/commercetools-docs-kit/pull/205) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+  - [#193](https://github.com/commercetools/commercetools-docs-kit/pull/193) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+  - [#192](https://github.com/commercetools/commercetools-docs-kit/pull/192) chore(deps): update dependency stylelint-order to v4 ([@renovate[bot]](https://github.com/apps/renovate))
+  - [#191](https://github.com/commercetools/commercetools-docs-kit/pull/191) chore(deps): update cypress/base docker tag to v12.14.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`
+  - [#203](https://github.com/commercetools/commercetools-docs-kit/pull/203) chore(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`, `ui-kit`
+  - [#190](https://github.com/commercetools/commercetools-docs-kit/pull/190) chore(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.4.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.4.0...v1.4.1) (2020-01-02)
 
 Happy New Year! 🎉
