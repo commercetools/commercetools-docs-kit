@@ -2,15 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { customProperties } from '@commercetools-uikit/design-system';
-import {
-  designSystem as docsUiKitDesignSystem,
-  Markdown,
-} from '@commercetools-docs/ui-kit';
+import { Markdown } from '@commercetools-docs/ui-kit';
 
-const Title = styled.div`
-  color: ${customProperties.colorNeutral60};
-  font-size: ${docsUiKitDesignSystem.typography.fontSizes.h5};
-`;
+import Title from './title';
 
 const ListContainer = styled.p`
   margin-top: ${customProperties.spacingXs};
