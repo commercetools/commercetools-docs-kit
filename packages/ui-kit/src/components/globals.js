@@ -33,13 +33,13 @@ const Globals = () => (
 
       .gatsby-resp-image-wrapper {
         background-color: ${colors.light.surfaceSecondary1};
-        border-radius: ${tokens.borderRadius6};
+        border-radius: ${tokens.borderRadiusForImageFrame};
         margin: ${dimensions.spacings.m} 0;
         padding: ${dimensions.spacings.s};
       }
       .gatsby-resp-image-figure {
         background-color: ${colors.light.surfaceSecondary1};
-        border-radius: ${tokens.borderRadius6};
+        border-radius: ${tokens.borderRadiusForImageFrame};
         margin: 0;
         padding: ${dimensions.spacings.s};
       }

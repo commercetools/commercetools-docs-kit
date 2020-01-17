@@ -68,7 +68,8 @@ const ThematicBreak = styled.hr`
 const Blockquote = styled.blockquote`
   background-color: ${colors.light.surfaceQuote};
   border-left: 1px solid ${colors.light.borderHighlight};
-  border-radius: 0 ${tokens.borderRadius6} ${tokens.borderRadius6} 0;
+  border-radius: 0 ${tokens.borderRadiusForBlockquote}
+    ${tokens.borderRadiusForBlockquote} 0;
   color: ${colors.light.textFaded};
   font-size: ${typography.fontSizes.small};
   margin: ${dimensions.spacings.l} ${dimensions.spacings.xxl};

@@ -6,7 +6,7 @@ import Link from './link';
 
 const getStyles = props => {
   const baseStyles = css`
-    border-radius: ${designSystem.tokens.borderRadius4};
+    border-radius: ${designSystem.tokens.borderRadiusForBetaFlag};
     color: ${designSystem.colors.light.textInfo};
     padding: 2px ${designSystem.dimensions.spacings.xs};
   `;
@@ -15,7 +15,7 @@ const getStyles = props => {
       ${baseStyles}
       background-color: ${designSystem.colors.light.surfacePrimary};
       border: 1px solid ${designSystem.colors.light.borderInfo};
-      box-shadow: ${designSystem.tokens.shadow7};
+      box-shadow: ${designSystem.tokens.shadowForBetaFlag};
       color: ${designSystem.colors.light.textInfo} !important;
       font-size: ${designSystem.typography.fontSizes.small};
       text-decoration: none;

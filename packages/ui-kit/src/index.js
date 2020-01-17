@@ -6,6 +6,7 @@ export { designSystem, Markdown };
 export { default as ContentNotifications } from './components/content-notifications';
 export { default as Globals } from './components/globals';
 export { default as Link } from './components/link';
+export { default as LogoButton } from './components/logo-button';
 export { default as Reset } from './components/reset';
 export { default as Subtitle } from './components/subtitle';
 export { default as TextSmall } from './components/text-small';

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
 const Container = styled.main`
   grid-area: main;
@@ -7,8 +8,9 @@ const Container = styled.main`
   position: relative;
   display: grid;
   grid:
-    [row1-start] 'page' 1fr [row1-end]
-    [row2-start] 'footer' auto [row2-end]
+    [row1-start] 'header' ${designSystem.dimensions.heights.header} [row1-end]
+    [row2-start] 'page' 1fr [row2-end]
+    [row3-start] 'footer' auto [row3-end]
     / 1fr;
 `;
 

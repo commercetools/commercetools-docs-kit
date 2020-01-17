@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { keyframes } from '@emotion/core';
+import { css, keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { BurgerIcon, Overlay } from '../../components';
@@ -122,6 +122,19 @@ const LayoutSidebar = props => {
           siteTitle={props.siteTitle}
           isGlobalBeta={props.isGlobalBeta}
         />
+        {props.isSearchDialogOpen && (
+          <Overlay
+            css={css`
+              position: absolute;
+              display: none;
+
+              @media screen and (${designSystem.dimensions.viewports
+                  .largeTablet}) {
+                display: block;
+              }
+            `}
+          />
+        )}
       </Container>
     </>
   );
@@ -132,6 +145,8 @@ LayoutSidebar.propTypes = {
   setMenuOpen: PropTypes.func.isRequired,
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
+  isSearchDialogOpen: PropTypes.bool.isRequired,
+  closeSearchDialog: PropTypes.func.isRequired,
 };
 
 export default LayoutSidebar;
