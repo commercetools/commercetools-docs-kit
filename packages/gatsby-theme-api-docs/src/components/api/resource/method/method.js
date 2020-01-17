@@ -97,6 +97,7 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
         >
           <UrlScopesResponses
             data={{
+              apiKey,
               url,
               scopes: {
                 title: oauth2Scopes,

@@ -3,16 +3,11 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Markdown } from '@commercetools-docs/ui-kit';
+import { Link } from '@commercetools-docs/gatsby-theme-docs';
+
+import { useTypeLocations } from '../../../../../hooks/use-type-locations';
 
 import Title from './title';
-
-const Body = styled.div`
-  display: flex;
-`;
-
-const ResponseCodeType = styled.div`
-  margin-left: 0.5rem;
-`;
 
 const ResposeCode = styled.span`
   font-size: 14px;
@@ -23,59 +18,33 @@ const ResposeCode = styled.span`
 
 const responseTypeStyle = css`
   margin-left: 0.5rem;
-  a {
-    color: inherit;
-  }
 `;
 
-const Responses = ({ responses, title }) => {
+const Responses = ({ apiKey, responses, title }) => {
+  const typeLocations = useTypeLocations();
+
   return (
     <div>
       {title ? <Title>{title}</Title> : null}
 
       {responses.map(response => {
-        if (response.body) {
-          return (
-            <p key={response.code}>{response.body.applicationjson.type}</p>
-          );
-        }
-
-        // return (
-        //   <div key={response.code}>
-        //     <p>No body is returned.</p>
-        //     <p>{response.description}</p>
-        //     <p>Status Code:</p>
-
-        //   </div>
-        // );
-
-        return null;
+        return (
+          <p key={response.code}>
+            <ResposeCode css={computeStatusCodeBackgroundColor(response.code)}>
+              {response.code}
+            </ResposeCode>
+            <Markdown.InlineCode css={responseTypeStyle}>
+              {response.body
+                ? renderTypeAsLink(
+                    apiKey,
+                    response.body.applicationjson.type,
+                    typeLocations
+                  )
+                : 'No body is returned.'}
+            </Markdown.InlineCode>
+          </p>
+        );
       })}
-
-      <Body>
-        <div>
-          <p>Status Code:</p>
-        </div>
-
-        <ResponseCodeType>
-          {responses.map(response => {
-            return (
-              <p key={response.code}>
-                <ResposeCode
-                  css={computeStatusCodeBackgroundColor(response.code)}
-                >
-                  {response.code}
-                </ResposeCode>
-                <Markdown.InlineCode css={responseTypeStyle}>
-                  {response.body ? (
-                    <a href="#">{response.body.applicationjson.type}</a>
-                  ) : null}
-                </Markdown.InlineCode>
-              </p>
-            );
-          })}
-        </ResponseCodeType>
-      </Body>
     </div>
   );
 };
@@ -100,7 +69,22 @@ function computeStatusCodeBackgroundColor(code) {
   `;
 }
 
+function renderTypeAsLink(apiKey, type, typeLocations) {
+  const typeLocation = typeLocations
+    ? typeLocations[`${apiKey}__${type}`]
+    : undefined;
+
+  const originalTypeLocation = typeLocation ? typeLocation.urlAnchorTag : '';
+
+  return originalTypeLocation ? (
+    <Link href={originalTypeLocation}>{type}</Link>
+  ) : (
+    type
+  );
+}
+
 Responses.propTypes = {
+  apiKey: PropTypes.string.isRequired,
   responses: PropTypes.arrayOf(
     PropTypes.shape({
       code: PropTypes.number.isRequired,

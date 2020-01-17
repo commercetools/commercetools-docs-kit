@@ -20,7 +20,7 @@ const ResponsesContainer = styled.div`
 `;
 
 const UrlScopesResponses = ({ data }) => {
-  const { url, scopes, responses } = data;
+  const { apiKey, url, scopes, responses } = data;
   return (
     <Container>
       <p>{url}</p>
@@ -33,7 +33,11 @@ const UrlScopesResponses = ({ data }) => {
 
       {responses ? (
         <ResponsesContainer>
-          <Responses responses={responses} title={responseRepresentation} />
+          <Responses
+            apiKey={apiKey}
+            responses={responses}
+            title={responseRepresentation}
+          />
         </ResponsesContainer>
       ) : null}
     </Container>
@@ -42,6 +46,7 @@ const UrlScopesResponses = ({ data }) => {
 
 UrlScopesResponses.propTypes = {
   data: PropTypes.shape({
+    apiKey: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     scopes: PropTypes.shape({
       title: PropTypes.string,
