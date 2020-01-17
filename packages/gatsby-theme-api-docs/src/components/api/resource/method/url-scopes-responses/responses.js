@@ -3,23 +3,25 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Link } from '@commercetools-docs/gatsby-theme-docs';
+import { designSystem } from '@commercetools-docs/ui-kit';
+import { tokens, dimensions, typography } from '../../../../../design-system';
 
 import { useTypeLocations } from '../../../../../hooks/use-type-locations';
 
 import Title from './title';
 
 const ResposeCode = styled.span`
-  font-size: 12px;
-  color: #fff;
-  padding: 2px 8px;
-  border-radius: 10px;
-  line-height: 16px;
+  font-size: ${designSystem.typography.fontSizes.extraSmall};
+  color: ${designSystem.colors.light.surfacePrimary};
+  padding: ${dimensions.spacings.xxs} ${designSystem.dimensions.spacings.s};
+  border-radius: ${tokens.borderRadiusForResponseCode};
+  line-height: ${typography.lineHeights.responseCode};
 `;
 
 const LinkContainer = styled.span`
-  margin-left: 8px;
-  font-size: 14px;
-  line-height: 19px;
+  margin-left: ${designSystem.dimensions.spacings.s};
+  font-size: ${designSystem.typography.fontSizes.small};
+  line-height: ${typography.lineHeights.responseBodyType};
 `;
 
 const Responses = ({ apiKey, responses, title }) => {
