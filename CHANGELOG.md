@@ -1,3 +1,15 @@
+## [1.6.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.5.0...v1.6.0) (2020-01-17)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`
+  - [#213](https://github.com/commercetools/commercetools-docs-kit/pull/213) fix(theme): header layout for small screens ([@emmenko](https://github.com/emmenko))
+
+#### 🚀 Type: New Feature
+
+- `ui-kit`
+  - [#212](https://github.com/commercetools/commercetools-docs-kit/pull/212) feat(theme): add missing spacing for large sizes ([@emmenko](https://github.com/emmenko))
+
 ## [1.5.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.4.1...v1.5.0) (2020-01-16)
 
 #### ⛑ Type: Refactoring
