@@ -31,7 +31,7 @@ const Type = styled.span`
   color: ${uiKitDesignSystem.colors.light.surfacePrimary};
   padding: ${uiKitDesignSystem.dimensions.spacings.xs}
     ${uiKitDesignSystem.dimensions.spacings.m};
-  border-radius: ${tokens.borderRadius16};
+  border-radius: ${tokens.borderRadiusForMethodType};
   text-transform: uppercase;
 `;
 
@@ -43,9 +43,9 @@ const Title = styled.span`
 
 const UrlScopesResponseContainer = styled.div`
   background-color: ${uiKitDesignSystem.colors.light.surfacePrimary};
-  border: ${tokens.borderRadius1} solid ${colors.light.border};
-  border-radius: ${uiKitDesignSystem.tokens.borderRadius6};
-  box-shadow: ${tokens.shadow2};
+  border: ${dimensions.widths.tableBorder} solid ${colors.light.border};
+  border-radius: ${tokens.borderRadiusForTable};
+  box-shadow: ${tokens.shadowForUrlScopesResponse};
   border-left-width: ${dimensions.widths.methodBorderLeft};
 `;
 
