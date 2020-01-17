@@ -10,7 +10,12 @@ const Container = styled.header`
   border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
   z-index: 10;
   max-width: 100vw;
-  display: block;
+  width: 100%;
+  display: grid;
+  grid:
+    [row1-start] 'header-content' ${designSystem
+      .dimensions.heights.header} [row1-end]
+    / 1fr;
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     display: grid;
