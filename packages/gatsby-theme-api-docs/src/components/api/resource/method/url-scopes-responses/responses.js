@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Markdown } from '@commercetools-docs/ui-kit';
 import { Link } from '@commercetools-docs/gatsby-theme-docs';
 
 import { useTypeLocations } from '../../../../../hooks/use-type-locations';
@@ -16,7 +15,7 @@ const ResposeCode = styled.span`
   border-radius: 1rem;
 `;
 
-const responseTypeStyle = css`
+const LinkContainer = styled.span`
   margin-left: 0.5rem;
 `;
 
@@ -33,7 +32,7 @@ const Responses = ({ apiKey, responses, title }) => {
             <ResposeCode css={computeStatusCodeBackgroundColor(response.code)}>
               {response.code}
             </ResposeCode>
-            <Markdown.InlineCode css={responseTypeStyle}>
+            <LinkContainer>
               {response.body
                 ? renderTypeAsLink(
                     apiKey,
@@ -41,7 +40,7 @@ const Responses = ({ apiKey, responses, title }) => {
                     typeLocations
                   )
                 : 'No body is returned.'}
-            </Markdown.InlineCode>
+            </LinkContainer>
           </p>
         );
       })}
