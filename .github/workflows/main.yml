@@ -52,7 +52,7 @@ jobs:
           start: 'yarn run serve -l 8000 -n public'
           wait-on: 'http://localhost:8000/docs-smoke-test'
           env: 'CI=true'
-          command-prefix: 'yarn run percy exec --'
+          command-prefix: 'percy exec --'
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
