@@ -46,7 +46,7 @@ jobs:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS }}
 
       - name: Running End-to-End tests
-        uses: cypress-io/github-action@v1.16.1
+        uses: cypress-io/github-action@v1
         with:
           headless: true
           start: 'yarn run serve -l 8000 -n public'
