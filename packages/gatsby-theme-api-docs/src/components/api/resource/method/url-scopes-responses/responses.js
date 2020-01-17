@@ -9,14 +9,17 @@ import { useTypeLocations } from '../../../../../hooks/use-type-locations';
 import Title from './title';
 
 const ResposeCode = styled.span`
-  font-size: 14px;
+  font-size: 12px;
   color: #fff;
-  padding: 0.2rem 0.7rem;
-  border-radius: 1rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  line-height: 16px;
 `;
 
 const LinkContainer = styled.span`
-  margin-left: 0.5rem;
+  margin-left: 8px;
+  font-size: 14px;
+  line-height: 19px;
 `;
 
 const Responses = ({ apiKey, responses, title }) => {
