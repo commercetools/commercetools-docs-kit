@@ -55,7 +55,13 @@ const Description = styled.p`
 
 const TitleWithAnchor = Markdown.withAnchorLink(Title);
 
-const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
+const Method = ({
+  apiKey,
+  uris,
+  resourceUriParameters,
+  method,
+  methodType,
+}) => {
   let allUriParameters = [];
   if (resourceUriParameters) {
     allUriParameters = allUriParameters.concat(resourceUriParameters);
@@ -69,7 +75,7 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
 
   const id = generateEndpointURN({
     apiKey,
-    path: new URL(url).pathname,
+    path: new URL(`${uris.baseUri}${uris.resourcePathUri}`).pathname,
     method: methodType,
   });
 
@@ -98,7 +104,7 @@ const Method = ({ apiKey, url, resourceUriParameters, method, methodType }) => {
           <UrlScopesResponses
             data={{
               apiKey,
-              url,
+              uris,
               scopes: {
                 title: oauth2Scopes,
                 scopes: method.securedBy
@@ -149,7 +155,7 @@ function computeMethodColor(methodName) {
 
 Method.propTypes = {
   apiKey: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  uris: PropTypes.object.isRequired,
   resourceUriParameters: PropTypes.arrayOf(PropTypes.object.isRequired),
   method: PropTypes.object.isRequired,
   methodType: PropTypes.string.isRequired,

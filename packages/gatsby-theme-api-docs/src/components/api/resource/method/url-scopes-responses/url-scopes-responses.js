@@ -20,10 +20,13 @@ const ResponsesContainer = styled.div`
 `;
 
 const UrlScopesResponses = ({ data }) => {
-  const { apiKey, url, scopes, responses } = data;
+  const { apiKey, uris, scopes, responses } = data;
   return (
     <Container>
-      <p>{url}</p>
+      <p>
+        {uris.baseUri}
+        <strong>{uris.resourcePathUri}</strong>
+      </p>
 
       {scopes.scopes ? (
         <ScopeContainer>
@@ -47,7 +50,10 @@ const UrlScopesResponses = ({ data }) => {
 UrlScopesResponses.propTypes = {
   data: PropTypes.shape({
     apiKey: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    uris: PropTypes.shape({
+      baseUri: PropTypes.string.isRequired,
+      resourcePathUri: PropTypes.string.isRequired,
+    }).isRequired,
     scopes: PropTypes.shape({
       title: PropTypes.string,
       scopes: PropTypes.arrayOf(PropTypes.string.isRequired),

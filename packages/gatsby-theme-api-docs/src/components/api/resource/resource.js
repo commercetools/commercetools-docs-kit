@@ -37,7 +37,7 @@ function renderMethods(resource) {
           <MethodContainer key={method}>
             <Method
               apiKey={resource.apiKey}
-              url={resource.absoluteUri}
+              uris={resource.uris}
               resourceUriParameters={resource.allUriParameters}
               method={resource[method]}
               methodType={method}
