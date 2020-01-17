@@ -100,6 +100,9 @@ export const dimensions = {
     xl: pxToRem('32px'),
     xxl: pxToRem('40px'),
     big: pxToRem('48px'),
+    large: pxToRem('56px'),
+    wide: pxToRem('64px'),
+    enormous: pxToRem('72px'),
     huge: pxToRem('80px'),
   },
 };
