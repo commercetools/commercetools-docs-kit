@@ -31,9 +31,9 @@ function createResourceNode({
 function postProcessResource(resource, fileNode) {
   let postProcessedResource = doRecursion(resource);
 
-  postProcessedResource.apiKey = fileNode.relativeDirectory.replace(
-    `/resources`,
-    ''
+  postProcessedResource.apiKey = fileNode.relativeDirectory.substring(
+    0,
+    fileNode.relativeDirectory.indexOf('/')
   );
 
   postProcessedResource.uriParameters = parametersToArray(

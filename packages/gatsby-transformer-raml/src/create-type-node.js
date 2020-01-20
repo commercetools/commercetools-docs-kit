@@ -47,7 +47,10 @@ function createTypeNode({
 function postProcessType(type, fileNode) {
   const postProcessedType = doRecursion(type);
 
-  postProcessedType.apiKey = fileNode.relativeDirectory.replace(`/types`, '');
+  postProcessedType.apiKey = fileNode.relativeDirectory.substring(
+    0,
+    fileNode.relativeDirectory.indexOf('/')
+  );
   postProcessedType.properties = processProperties(
     postProcessedType.properties
   );
