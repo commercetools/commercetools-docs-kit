@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+displayName: DateSetAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: date-set
+description: |-
+  This type represents an attribute which value is a set of dates.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - date-set
+    required: true
+  value:
+    type: array
+    items:
+      type: date-only
+    (builtinType): array
+    required: true

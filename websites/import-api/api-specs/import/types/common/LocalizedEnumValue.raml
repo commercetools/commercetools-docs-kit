@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: LocalizedEnumValue
+type: object
+(builtinType): object
+properties:
+  key:
+    type: string
+    (builtinType): string
+    required: true
+  label:
+    type: LocalizedString
+    (builtinType): object
+    required: true

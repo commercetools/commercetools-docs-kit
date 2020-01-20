@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+displayName: ResourceUpdateError
+type: ErrorObject
+(builtinType): object
+discriminatorValue: ResourceUpdate
+properties:
+  code:
+    type: string
+    (builtinType): string
+    enum:
+    - ResourceUpdate
+    required: true
+  resource:
+    type: any
+    (builtinType): any
+    required: false

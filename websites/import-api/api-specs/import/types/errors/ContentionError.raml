@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+displayName: ContentionError
+type: ErrorObject
+(builtinType): object
+discriminatorValue: Contention
+properties:
+  code:
+    type: string
+    (builtinType): string
+    enum:
+    - Contention
+    required: true

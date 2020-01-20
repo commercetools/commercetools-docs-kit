@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+displayName: ItemShippingDetailsDraft
+type: object
+(builtinType): object
+properties:
+  targets:
+    type: array
+    items:
+      type: ItemShippingTarget
+    (builtinType): array
+    description: |-
+      Used to capture one or more (custom) line item specific shipping addresses. By specifying 
+      sub-quantities, it is possible to set multiple shipping addresses for one line item.
+    required: true

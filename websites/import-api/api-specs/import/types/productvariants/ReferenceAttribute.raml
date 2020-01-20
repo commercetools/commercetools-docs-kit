@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+displayName: ReferenceAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: reference
+description: |-
+  This type represents an attribute which value is a key reference.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - reference
+    required: true
+  value:
+    type: KeyReference
+    (builtinType): object
+    description: |-
+      References a resource by its key.
+    required: true

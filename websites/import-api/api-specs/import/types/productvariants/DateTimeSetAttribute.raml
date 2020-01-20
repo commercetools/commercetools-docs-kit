@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+displayName: DateTimeSetAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: datetime-set
+description: |-
+  This type represents an attribute which value is a set of dates with time.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - datetime-set
+    required: true
+  value:
+    type: array
+    items:
+      type: datetime
+    (builtinType): array
+    required: true

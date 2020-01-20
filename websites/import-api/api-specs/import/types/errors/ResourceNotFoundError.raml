@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+displayName: ResourceNotFoundError
+type: ErrorObject
+(builtinType): object
+discriminatorValue: ResourceNotFound
+properties:
+  code:
+    type: string
+    (builtinType): string
+    enum:
+    - ResourceNotFound
+    required: true
+  resource:
+    type: any
+    (builtinType): any
+    required: false

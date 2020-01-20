@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+displayName: ShippingRateDraft
+type: object
+(builtinType): object
+properties:
+  price:
+    type: Money
+    (builtinType): object
+    required: true
+  freeAbove:
+    type: Money
+    (builtinType): object
+    required: false
+  tiers:
+    type: array
+    items:
+      type: ShippingRatePriceTier
+    (builtinType): array
+    required: false

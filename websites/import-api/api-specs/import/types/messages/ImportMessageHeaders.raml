@@ -1,0 +1,31 @@
+#%RAML 1.0 DataType
+displayName: ImportMessageHeaders
+type: object
+(builtinType): object
+description: |-
+  The required headers received by each message
+properties:
+  importSinkKey:
+    type: string
+    (builtinType): string
+    description: |-
+      the import sink where the message is handled
+    required: true
+  operationId:
+    type: string
+    (builtinType): string
+    description: |-
+      this is the operation id, used to identifiy the operation, currently in the form of a uuid
+    required: true
+  type:
+    type: ImportResourceType
+    (builtinType): string
+    description: |-
+      the import resource type
+    required: true
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      the project key to which this import belongs.
+    required: true

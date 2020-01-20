@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+displayName: AccessDeniedError
+type: ErrorObject
+(builtinType): object
+discriminatorValue: access_denied
+properties:
+  code:
+    type: string
+    (builtinType): string
+    enum:
+    - access_denied
+    required: true

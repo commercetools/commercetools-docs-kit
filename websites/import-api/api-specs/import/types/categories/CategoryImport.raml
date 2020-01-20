@@ -1,0 +1,75 @@
+#%RAML 1.0 DataType
+displayName: CategoryImport
+type: ImportResource
+(builtinType): object
+description: |-
+  Import representation for a category.
+properties:
+  key:
+    type: string
+    (builtinType): string
+    required: true
+  name:
+    type: LocalizedString
+    (builtinType): object
+    description: |-
+      Maps to `Category.name`.
+    required: true
+  slug:
+    type: LocalizedString
+    (builtinType): object
+    description: |-
+      Maps to `Category.slug`. 
+      Must match the pattern `[-a-zA-Z0-9_]{2,256}`.
+    required: true
+  description:
+    type: LocalizedString
+    (builtinType): object
+    description: |-
+      Maps to `Category.description`.
+    required: false
+  parent:
+    type: CategoryKeyReference
+    (builtinType): object
+    description: |-
+      Maps to `Category.parent`. 
+      The parent category referenced must already exist 
+      in the commercetools project, or the import operation
+      will have an `Unresolved` state.
+    required: false
+  orderHint:
+    type: string
+    (builtinType): string
+    description: |-
+      Maps to `Category.orderHint`.
+    required: false
+  externalId:
+    type: string
+    (builtinType): string
+    description: |-
+      Maps to `Category.externalId`.
+    required: false
+  metaTitle:
+    type: LocalizedString
+    (builtinType): object
+    description: |-
+      Maps to `Category.metaTitle`.
+    required: false
+  metaDescription:
+    type: LocalizedString
+    (builtinType): object
+    description: |-
+      Maps to `Category.metaDescription`.
+    required: false
+  metaKeywords:
+    type: LocalizedString
+    (builtinType): object
+    description: |-
+      Maps to `Category.metaKeywords`.
+    required: false
+  assets:
+    type: array
+    items:
+      type: Asset
+    (builtinType): array
+    required: false

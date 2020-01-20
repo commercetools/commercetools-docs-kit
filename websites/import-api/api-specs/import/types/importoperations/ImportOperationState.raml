@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+displayName: ImportOperationState
+description: |-
+  This enumeration describes the operation state of a newly created import operation.
+type: string
+enum:
+- Accepted
+- ValidationFailed
+(enumDescriptions):
+  Accepted: "The import resource was accepted."
+  ValidationFailed: "The validation of the import resource failed."
