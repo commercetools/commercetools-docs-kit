@@ -18,7 +18,7 @@ const ChildrenUnionLike = ({ apiType, apiTypeSubTypes, strings }) => {
 
       {apiTypeSubTypes.map(subType => (
         <div
-          key={subType.key}
+          key={subType.displayName}
           css={css`
             margin-top: 1em;
           `}
