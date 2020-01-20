@@ -5,8 +5,8 @@ module.exports = (themeOptions = {}) => ({
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'generated-api-specs',
-        path: path.resolve('./src/generated-api-specs'),
+        name: 'api-specs',
+        path: path.resolve('./src/api-specs'),
       },
     },
     '@commercetools-docs/gatsby-transformer-mdx-introspection',
