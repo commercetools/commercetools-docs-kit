@@ -1,0 +1,62 @@
+#%RAML 1.0 DataType
+displayName: ProductVariantImport
+type: ImportResource
+(builtinType): object
+description: |-
+  Import representation for a product variant. Use this type for importing new product variants 
+  into a commercetools project.
+properties:
+  key:
+    type: string
+    (builtinType): string
+    required: true
+  sku:
+    type: string
+    (builtinType): string
+    description: |-
+      Maps to `ProductVariant.sku`.
+    required: false
+  isMasterVariant:
+    type: boolean
+    (builtinType): boolean
+    description: |-
+      Maps to `ProductVariant.isMasterVariant`.
+    required: true
+  attributes:
+    type: array
+    items:
+      type: Attribute
+    (builtinType): array
+    description: |-
+      Maps to `ProductVariant.attributes`. 
+      
+      Each attribute referenced must be defined 
+      in an already existing product type in the commercetools project, or the import
+      operation state is set to `Unresolved`.
+    required: false
+  images:
+    type: array
+    items:
+      type: Image
+    (builtinType): array
+    description: |-
+      Maps to `ProductVariant.images`.
+    required: false
+  assets:
+    type: array
+    items:
+      type: Asset
+    (builtinType): array
+    description: |-
+      Maps to `ProductVariant.assets`.
+    required: false
+  product:
+    type: ProductKeyReference
+    (builtinType): object
+    description: |-
+      The product in which this product variant is contained. Maps to `ProductVariant.product`.
+      
+      The product referenced
+      must already exist in the commercetools project, or the 
+      import operation state is set to `Unresolved`.
+    required: true

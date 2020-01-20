@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: SearchKeyword
+type: object
+(builtinType): object
+properties:
+  text:
+    type: string
+    (builtinType): string
+    required: true
+  suggestTokenizer:
+    type: SuggestTokenizer
+    (builtinType): object
+    required: false

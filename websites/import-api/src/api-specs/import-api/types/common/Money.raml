@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+displayName: Money
+type: object
+(builtinType): object
+properties:
+  centAmount:
+    format: int64
+    type: integer
+    (builtinType): integer
+    required: true
+  currencyCode:
+    type: CurrencyCode
+    (builtinType): string
+    description: |-
+      The currency code compliant to [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217).
+    required: true

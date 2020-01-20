@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+displayName: InsufficientScopeError
+type: ErrorObject
+(builtinType): object
+discriminatorValue: insufficient_scope
+properties:
+  code:
+    type: string
+    (builtinType): string
+    enum:
+    - insufficient_scope
+    required: true

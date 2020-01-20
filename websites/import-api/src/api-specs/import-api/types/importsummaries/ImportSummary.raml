@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+displayName: ImportSummary
+type: object
+(builtinType): object
+description: |-
+  An import summary describes the states of import resources of a given import sink.
+  
+  It is used to track the overall progress of of import resources.
+properties:
+  states:
+    type: OperationStates
+    (builtinType): object
+    description: |-
+      The states summary for this import summary.
+    required: true
+  total:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The total number of import operations received for this import group.
+    required: true

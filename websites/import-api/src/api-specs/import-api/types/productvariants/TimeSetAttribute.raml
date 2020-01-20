@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+displayName: TimeSetAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: time-set
+description: |-
+  This type represents an attribute which value is a set of times.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - time-set
+    required: true
+  value:
+    type: array
+    items:
+      type: time-only
+    (builtinType): array
+    required: true

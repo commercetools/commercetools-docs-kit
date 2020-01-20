@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+displayName: VariantValues
+type: object
+(builtinType): object
+properties:
+  sku:
+    type: string
+    (builtinType): string
+    required: false
+  prices:
+    type: array
+    items:
+      type: PriceImport
+    (builtinType): array
+    required: true
+  attributes:
+    type: array
+    items:
+      type: Attribute
+    (builtinType): array
+    required: true

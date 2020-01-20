@@ -1,0 +1,31 @@
+#%RAML 1.0 DataType
+displayName: KeyReference
+type: object
+(builtinType): object
+discriminator: typeId
+(oneOf):
+- CartDiscountKeyReference
+- CategoryKeyReference
+- ChannelKeyReference
+- CustomerGroupKeyReference
+- CustomerKeyReference
+- PriceKeyReference
+- ProductKeyReference
+- ProductTypeKeyReference
+- ProductVariantKeyReference
+- ShippingMethodKeyReference
+- StateKeyReference
+- TaxCategoryKeyReference
+description: |-
+  References a resource by its key.
+properties:
+  key:
+    type: string
+    (builtinType): string
+    required: true
+  typeId:
+    type: ReferenceType
+    (builtinType): string
+    description: |-
+      The type of the referenced resource.
+    required: true

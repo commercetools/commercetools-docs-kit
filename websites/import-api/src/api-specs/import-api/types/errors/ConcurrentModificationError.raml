@@ -1,0 +1,36 @@
+#%RAML 1.0 DataType
+displayName: ConcurrentModificationError
+type: ErrorObject
+(builtinType): object
+discriminatorValue: ConcurrentModification
+description: |-
+  The request conflicts with the current state of the involved resource(s). Typically, the request attempts to modify a resource
+  that is out of date, i.e. that has been modified by another client since the last time it was retrieved.
+  The client application should resolve the conflict (with or without involving the end-user) before retrying the request
+properties:
+  code:
+    type: string
+    (builtinType): string
+    enum:
+    - ConcurrentModification
+    required: true
+  specifiedVersion:
+    format: long
+    type: integer
+    (builtinType): integer
+    description: |-
+      The version specified in the failed request.
+    required: true
+  currentVersion:
+    format: long
+    type: integer
+    (builtinType): integer
+    description: |-
+      The current version of the resource.
+    required: true
+  conflictedResource:
+    type: any
+    (builtinType): any
+    description: |-
+      The conflicted resource.
+    required: true

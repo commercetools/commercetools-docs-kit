@@ -1,0 +1,32 @@
+# Resource
+(resourceName): ByProjectKeyProductTypesImportSinkKeyByImportSinkKeyImportOperationsById
+(resourcePathUri): /{projectKey}/product-types/importSinkKey={importSinkKey}/import-operations/{id}
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The commercetools project key.
+    required: true
+  importSinkKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The import sink used to create the new resource
+    required: true
+  id:
+    type: string
+    (builtinType): string
+    description: |-
+      The operation identifier
+    required: true
+get:
+  description: |-
+    Retrieves the import operation with the given id.
+  responses:
+    200:
+      body:
+        application/json:
+          type: ImportOperation
+          (builtinType): object

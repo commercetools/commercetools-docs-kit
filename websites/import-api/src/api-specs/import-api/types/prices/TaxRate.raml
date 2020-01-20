@@ -1,0 +1,40 @@
+#%RAML 1.0 DataType
+displayName: TaxRate
+type: object
+(builtinType): object
+properties:
+  id:
+    type: string
+    (builtinType): string
+    required: false
+  name:
+    type: string
+    (builtinType): string
+    required: true
+  amount:
+    format: float
+    minimum: 0
+    maximum: 1
+    type: number
+    (builtinType): number
+    required: true
+  includedInPrice:
+    type: boolean
+    (builtinType): boolean
+    required: true
+  country:
+    type: CountryCode
+    (builtinType): string
+    description: |-
+      A two-digit country code as per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    required: true
+  state:
+    type: string
+    (builtinType): string
+    required: false
+  subRates:
+    type: array
+    items:
+      type: SubRate
+    (builtinType): array
+    required: false

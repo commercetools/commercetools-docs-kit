@@ -1,0 +1,26 @@
+{
+  "type" : "product",
+  "resources" : [ {
+    "typeId" : "product",
+    "key" : "t-shirt",
+    "name" : {
+      "en" : "t-shirt"
+    },
+    "productType" : {
+      "typeId" : "product-type",
+      "key" : "sample"
+    },
+    "slug" : {
+      "en" : "t-shirt-slug"
+    },
+    "metaTitle" : {
+      "en" : "title"
+    },
+    "metaDescription" : {
+      "en" : "description"
+    },
+    "metaKeywords" : {
+      "en" : "Keywords"
+    }
+  } ]
+}
