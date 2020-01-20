@@ -1,5 +1,9 @@
 name: Main workflow
 
+# The event triggers are configured as following:
+# - on branch master, trigger the workflow on every push
+# - on any pull request, trigger the workflow
+# This is to avoid running the workflow twice on pull requests.
 on:
   push:
     branches:
@@ -14,21 +18,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      # - name: Install dependencies
-      #   uses: bahmutov/npm-install@v1
-      - name: Setup Node 12.x
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+
+      - name: Setup Node (uses version in .nvmrc)
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v1
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 

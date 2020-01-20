@@ -184,11 +184,17 @@ jobs:
       - setup_dependencies
       - publish_to_canary
 
+  noop:
+    executor: node_12
+    steps:
+      - run: echo 'Skipping build'
+
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build_lint_and_test
+      - noop
+      # - build_lint_and_test
       # - vrt_test:
       #     requires:
       #       - build_lint_and_test
