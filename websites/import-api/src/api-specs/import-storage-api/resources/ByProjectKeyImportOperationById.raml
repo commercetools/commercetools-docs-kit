@@ -1,0 +1,33 @@
+# Resource
+(resourceName): ByProjectKeyImportOperationById
+(resourcePathUri): /{projectKey}/import-operation/{id}
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    required: true
+  id:
+    type: string
+    (builtinType): string
+    description: |-
+      The operation identifier
+    required: true
+get:
+  description: |-
+    Retrieves the import operation with the given id.
+  responses:
+    200:
+      body:
+        application/json:
+          type: ImportOperation
+          (builtinType): object
+delete:
+  description: |-
+    Deletes the import operation with the given key.
+  responses:
+    200:
+      body:
+        application/json:
+          type: ImportOperation
+          (builtinType): object

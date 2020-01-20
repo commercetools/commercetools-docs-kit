@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+displayName: LocalizableEnumSetAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: lenum-set
+description: |-
+  This type represents an attribute which value is a localized enum.
+  The attribute value refers to the key of the enum value.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - lenum-set
+    required: true
+  value:
+    type: array
+    items:
+      type: string
+    (builtinType): array
+    required: true

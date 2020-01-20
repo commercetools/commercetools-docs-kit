@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+displayName: Predicate
+type: object
+(builtinType): object
+discriminator: type
+(oneOf):
+- JavascriptPredicate
+description: |-
+  A predicate allows to check the current state of a CTP resource. And can be used to detect if an import should
+  be performed or should be skipped. And this abstract type allows us to support different syntaxes for our predicates
+  without any breaking changes to our api.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    required: true

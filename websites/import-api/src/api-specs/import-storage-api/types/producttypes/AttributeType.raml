@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+displayName: AttributeType
+type: object
+(builtinType): object
+discriminator: name
+(oneOf):
+- AttributeBooleanType
+- AttributeDateTimeType
+- AttributeDateType
+- AttributeEnumType
+- AttributeLocalizableTextType
+- AttributeLocalizedEnumType
+- AttributeMoneyType
+- AttributeNestedType
+- AttributeNumberType
+- AttributeReferenceType
+- AttributeSetType
+- AttributeTextType
+- AttributeTimeType
+properties:
+  name:
+    type: string
+    (builtinType): string
+    required: true

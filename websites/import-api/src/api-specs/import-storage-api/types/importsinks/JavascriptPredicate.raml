@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+displayName: JavascriptPredicate
+type: Predicate
+(builtinType): object
+discriminatorValue: javascript
+description: |-
+  A Javascript predicate uses a javascript boolean expression. For now we should just support any javascript
+  expression that evaluates to a truthy value. Later we have to add a strict validation of the expression to
+  prevent malicious javascript.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - javascript
+    required: true
+  expression:
+    type: string
+    (builtinType): string
+    description: |-
+      A javscript boolean expression.
+    required: true

@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+displayName: DateTimeAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: datetime
+description: |-
+  This type represents an attribute which value is a date with time.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - datetime
+    required: true
+  value:
+    type: datetime
+    (builtinType): datetime
+    required: true

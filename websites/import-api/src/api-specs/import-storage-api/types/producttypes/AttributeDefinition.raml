@@ -1,0 +1,37 @@
+#%RAML 1.0 DataType
+displayName: AttributeDefinition
+type: object
+(builtinType): object
+properties:
+  type:
+    type: AttributeType
+    (builtinType): object
+    required: true
+  name:
+    type: string
+    (builtinType): string
+    required: true
+  label:
+    type: LocalizedString
+    (builtinType): object
+    required: true
+  isRequired:
+    type: boolean
+    (builtinType): boolean
+    required: true
+  attributeConstraint:
+    type: AttributeConstraintEnum
+    (builtinType): string
+    required: false
+  inputTip:
+    type: LocalizedString
+    (builtinType): object
+    required: false
+  inputHint:
+    type: TextInputHint
+    (builtinType): string
+    required: false
+  isSearchable:
+    type: boolean
+    (builtinType): boolean
+    required: false

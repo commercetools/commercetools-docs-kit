@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+displayName: InvalidJsonInput
+type: ErrorObject
+(builtinType): object
+discriminatorValue: InvalidJsonInput
+description: |-
+  Invalid JSON input has been sent to the service. Either the JSON is syntactically not correct, or the JSON does not
+  conform to the expected shape (e.g. is missing a required field). The client application should validate the input
+  according to the constraints described in the error message before sending the request.
+properties:
+  code:
+    type: string
+    (builtinType): string
+    enum:
+    - InvalidJsonInput
+    required: true

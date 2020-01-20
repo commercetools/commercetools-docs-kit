@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+displayName: StateKeyReference
+type: KeyReference
+(builtinType): object
+discriminatorValue: state
+description: |-
+  References a state by its key.
+properties:
+  typeId:
+    type: ReferenceType
+    (builtinType): string
+    description: |-
+      The type of the referenced resource.
+    enum:
+    - state
+    required: true

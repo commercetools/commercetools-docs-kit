@@ -1,0 +1,165 @@
+#%RAML 1.0 DataType
+displayName: OrderImport
+type: ImportResource
+(builtinType): object
+description: |-
+  Import representation for an order. 
+  
+  In commercetools, the only way to create an order is using the 
+  [Create Order from Cart](https://docs.commercetools.com/http-api-projects-orders#create-order-from-cart) endpoint.
+  method. Unlike the Create Order from Cart endpoint, when importing an order
+  using the Import API, you must provide all non-optional fields required for creating
+  an order, rather than just a cart ID. 
+  
+  The OrderImport type also contains draft subtypes. These types are normally populated 
+  by the Cart the order is created from, but in this case must be populated as a part of the import request.
+properties:
+  key:
+    type: string
+    (builtinType): string
+    required: true
+  orderNumber:
+    type: string
+    (builtinType): string
+    description: |-
+      Maps to `Order.orderNumber`.
+      **Note:** The `orderNumber` must be the same as the `key`.
+    required: false
+  customer:
+    type: CustomerKeyReference
+    (builtinType): object
+    description: |-
+      Takes the `id` and `email` fields from the referenced customer and maps them to 
+      `Order.customerId` and `Order.customerEmail`.
+      
+      The customer referenced must already exist in the commercetools project, or the 
+      import operation state is set to `Unresolved`.
+    required: true
+  lineItems:
+    type: array
+    items:
+      type: LineItemImportDraft
+    (builtinType): array
+    description: |-
+      Maps to `Order.lineItems`. 
+      If empty, `customLineItems` **must not** be empty, or the import operation state is set toTODO.
+    required: false
+  customLineItems:
+    type: array
+    items:
+      type: CustomLineItemDraft
+    (builtinType): array
+    description: |-
+      Maps to `Order.customLineItems`
+      If empty, `lineItems` **must not** be empty, or the import operation state is set to TODO.
+    required: false
+  totalPrice:
+    type: Money
+    (builtinType): object
+    description: |-
+      Maps to `Order.totalPrice`.
+      **Note:** At this time, you cannot import tiered or high-precision prices.
+    required: true
+  taxedPrice:
+    type: TaxedPrice
+    (builtinType): object
+    description: |-
+      TODO – so is this required or not? 
+      Order Import does not support calculation of taxes. When setting the 
+      draft the `taxedPrice` is to be provided.
+    required: false
+  shippingAddress:
+    type: Address
+    (builtinType): object
+    description: |-
+      Maps to `Order.shippingAddress`.
+    required: false
+  billingAddress:
+    type: Address
+    (builtinType): object
+    description: |-
+      Maps to `Order.billingAddress`.
+    required: false
+  customerGroup:
+    type: CustomerGroupKeyReference
+    (builtinType): object
+    description: |-
+      TODO – Is this information extrapolated via the referenced Customer too?
+      Set when the customer is set and the customer is a member of a customer group. 
+      Used for product variant price selection.
+    required: false
+  country:
+    type: string
+    (builtinType): string
+    description: |-
+      A two-digit [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. 
+      Maps to `Order.country`.
+    required: false
+  orderState:
+    type: OrderState
+    (builtinType): string
+    description: |-
+      Maps to `Order.orderState`. If not provided, the `Open` state is assigned.
+    required: false
+  shipmentState:
+    type: ShipmentState
+    (builtinType): string
+    description: |-
+      Maps to `Order.shipmentState`.
+    required: false
+  paymentState:
+    type: PaymentState
+    (builtinType): string
+    description: |-
+      Maps to `Order.paymentState`.
+    required: false
+  shippingInfo:
+    type: ShippingInfoImportDraft
+    (builtinType): object
+    description: |-
+      Contains fields which map to the order's shipment information. 
+      The fields map to each field in `Order.shipmentInfo`.
+    required: false
+  completedAt:
+    format: rfc3339
+    type: datetime
+    (builtinType): datetime
+    description: |-
+      TODO: what does this field do? The current API desc doesn't say much.
+    required: false
+  inventoryMode:
+    type: InventoryMode
+    (builtinType): string
+    description: |-
+      Maps to `Order.inventoryMode`.
+      If not given, assigns `None` by default.
+    required: false
+  taxRoundingMode:
+    type: RoundingMode
+    (builtinType): string
+    description: |-
+      Maps to `Order.taxRoundingMode`.
+      If not given the tax rounding mode HalfEven will be assigned by default.
+    required: false
+  taxCalculationMode:
+    type: TaxCalculationMode
+    (builtinType): string
+    description: |-
+      Maps to `Order.taxCalculationMode`.
+      The default tax calculation mode is LineItemLevel.
+    required: false
+  origin:
+    type: CartOrigin
+    (builtinType): string
+    description: |-
+      Maps to `Order.origin`.
+      The default origin is `Customer`.
+    required: false
+  itemShippingAddresses:
+    type: array
+    items:
+      type: Address
+    (builtinType): array
+    description: |-
+      Maps to `Order.itemShippingAddresses`.
+    required: false

@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+displayName: InvalidScopeError
+type: ErrorObject
+(builtinType): object
+discriminatorValue: invalid_scope
+description: |-
+  The requested scope is invalid, unknown, malformed, or exceeds the scope granted by the resource owner.
+properties:
+  code:
+    type: string
+    (builtinType): string
+    enum:
+    - invalid_scope
+    required: true

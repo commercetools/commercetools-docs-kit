@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+displayName: EnumSetAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: enum-set
+description: |-
+  This type represents an attribute which value is an enum.
+  The attribute value refers to the key of the enum value.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - enum-set
+    required: true
+  value:
+    type: array
+    items:
+      type: string
+    (builtinType): array
+    required: true

@@ -1,0 +1,65 @@
+# Resource
+(resourceName): ByProjectKeyUnresolvedImportResource
+(resourcePathUri): /{projectKey}/unresolved-import-resource
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    required: true
+post:
+  description: |-
+    Creates or updates the unresolved import resource given in the body.
+  body:
+    application/json:
+      type: UnresolvedImportResource
+      (builtinType): object
+  responses:
+    200:
+      body:
+        application/json:
+          type: UnresolvedImportResource
+          (builtinType): object
+get:
+  description: |-
+    Retrieves all unresolved import resources that with the given `resourceType` and `resourceKey` or that
+    have unresolved references of the given `referenceType` and `referenceKey`.
+  queryParameters:
+    referenceType:
+      required: false
+      type: ReferenceType
+      (builtinType): string
+      description: |-
+        The reference type.
+    referenceKey:
+      required: false
+      type: string
+      (builtinType): string
+      description: |-
+        The reference key.
+    resourceType:
+      required: false
+      type: ImportResourceType
+      (builtinType): string
+      description: |-
+        The resource type.
+    resourceKey:
+      required: false
+      type: string
+      (builtinType): string
+      description: |-
+        The resource key.
+    limit:
+      required: false
+      type: number
+      (builtinType): number
+    offset:
+      required: false
+      type: number
+      (builtinType): number
+  responses:
+    200:
+      body:
+        application/json:
+          type: UnresolvedImportResourcePagedResponse
+          (builtinType): object

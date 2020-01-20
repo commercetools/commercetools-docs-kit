@@ -1,0 +1,107 @@
+#%RAML 1.0 DataType
+displayName: Address
+type: object
+(builtinType): object
+properties:
+  id:
+    type: string
+    (builtinType): string
+    required: false
+  key:
+    type: string
+    (builtinType): string
+    required: false
+  title:
+    type: string
+    (builtinType): string
+    required: false
+  salutation:
+    type: string
+    (builtinType): string
+    required: false
+  firstName:
+    type: string
+    (builtinType): string
+    required: false
+  lastName:
+    type: string
+    (builtinType): string
+    required: false
+  streetName:
+    type: string
+    (builtinType): string
+    required: false
+  streetNumber:
+    type: string
+    (builtinType): string
+    required: false
+  additionalStreetInfo:
+    type: string
+    (builtinType): string
+    required: false
+  postalCode:
+    type: string
+    (builtinType): string
+    required: false
+  city:
+    type: string
+    (builtinType): string
+    required: false
+  region:
+    type: string
+    (builtinType): string
+    required: false
+  state:
+    type: string
+    (builtinType): string
+    required: false
+  country:
+    type: CountryCode
+    (builtinType): string
+    description: |-
+      A two-digit country code as per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    required: true
+  company:
+    type: string
+    (builtinType): string
+    required: false
+  department:
+    type: string
+    (builtinType): string
+    required: false
+  building:
+    type: string
+    (builtinType): string
+    required: false
+  apartment:
+    type: string
+    (builtinType): string
+    required: false
+  pOBox:
+    type: string
+    (builtinType): string
+    required: false
+  phone:
+    type: string
+    (builtinType): string
+    required: false
+  mobile:
+    type: string
+    (builtinType): string
+    required: false
+  email:
+    type: string
+    (builtinType): string
+    required: false
+  fax:
+    type: string
+    (builtinType): string
+    required: false
+  additionalAddressInfo:
+    type: string
+    (builtinType): string
+    required: false
+  externalId:
+    type: string
+    (builtinType): string
+    required: false
