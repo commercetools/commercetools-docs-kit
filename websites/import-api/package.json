@@ -13,7 +13,7 @@
     "postbuild": "rm -rf ../../public/import-api && mkdir -p ../../public && mv public ../../public/import-api"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-api-docs": "",
+    "@commercetools-docs/gatsby-theme-api-docs": "1.6.0",
     "gatsby": "2.18.23",
     "gatsby-cli": "2.8.27",
     "react": "16.12.0",
