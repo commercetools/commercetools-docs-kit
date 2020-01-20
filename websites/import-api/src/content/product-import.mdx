@@ -1,0 +1,59 @@
+---
+title: ProductImport
+---
+
+# Representations
+
+## ProductImport
+
+<ApiType apiKey="import" type="ProductImport" />
+
+## ProductTypeKeyReference
+
+<ApiType apiKey="import" type="ProductTypeKeyReference" />
+
+## CategoryKeyReference
+
+<ApiType apiKey="import" type="CategoryKeyReference" />
+
+## TaxCategoryKeyReference
+
+<ApiType apiKey="import" type="TaxCategoryKeyReference" />
+
+## StateKeyReference
+
+<ApiType apiKey="import" type="StateKeyReference" />
+
+# Endpoints
+
+## Request new Product Data to be Imported
+
+<ApiEndpoint
+  apiKey="import"
+  resource="/{projectKey}/products/importSinkKey={importSinkKey}"
+  method="POST"
+/>
+
+## Request Products to be Deleted
+
+<ApiEndpoint
+  apiKey="import"
+  resource="/{projectKey}/products/importSinkKey={importSinkKey}/resourceKey={resourceKey}"
+  method="DELETE"
+/>
+
+## Get Product Import Operations of a Sink
+
+<ApiEndpoint
+  apiKey="import"
+  resource="/{projectKey}/products/importSinkKey={importSinkKey}/import-operations"
+  method="GET"
+/>
+
+## Get Product Import Operation of a Sink
+
+<ApiEndpoint
+  apiKey="import"
+  resource="/{projectKey}/products/importSinkKey={importSinkKey}/import-operations/{id}"
+  method="GET"
+/>

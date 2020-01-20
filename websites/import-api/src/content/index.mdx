@@ -1,0 +1,80 @@
+---
+title: The commercetools Import API
+---
+
+The Import API uploads data to commercetools asynchronously. An `ImportRequest` adds operations to an import sink, which are then processed and validated. If all validations succeed, the import operations update or create new operations. The Import API is useful when syncing large amounts of data from external systems into commercetools.
+
+# Hosts
+
+Access the Import API at the following URLs:
+
+- Europe: `https://import-eu.europe-west1.gcp.commercetools.com`
+- North America: TODO
+
+# Authorization
+
+The Import API uses tokens and scopes from any of the commercetools HTTP API [Authorization flows](https://docs.commercetools.com/http-api-authorization).
+
+- To create an import sink, an API Client must have at least the `manage_import_sinks:{projectKey}` scope.
+- To view an import sink, an API Client must have at least the `view_import_sinks:{projectKey}` scope.
+
+The required scope for sending requests to an import sink is derived from its `resourceType` property as follows:
+
+- To create import requests, an API Client must have at last the scope required to create a resource of the import sink's `resourceType`.
+
+  For example if `resourceType` is `category`, the API Client must have, at a minimum, the `manage_products:{projectKey}` scope.
+
+- To view import operations or import summaries, an API Client must have at last the scope required to view a resource of the import sink's `resourceType`.
+
+  For example if `resourceType` is `product`, the API Client must have at least the `view_products:{projectKey}` scope.
+
+# Import API Workflow
+
+The Import API uses a particular workflow.
+
+1. `POST` an `ImportSinkDraft` to `/{projectKey}/import-sinks`. When creating an import sink draft, keep in mind that an import sink can only import **one** resource type. If you want to import more than one type of data, you need to create an import sink for each data type. The `ImportResourceType` enum lists all supported import types.
+2. Next, `POST` an `ImportRequest` to the import sink at `/{projectKey}/{typePlural}/importSinkKey={importSinkKey}`. The `ImportRequest` must have a `type` which corresponds to the type the import sink accepts. For example, `CategoryImportRequest` imports categories and the url for category import requests is `/{projectKey}/categories/importSinkKey={importSinkKey}`.
+3. After sending an `ImportRequest`, the Import API returns a list of import operation statuses. You can then poll the import sink to check the status of each `ImportOperation`.
+4. The import sink processes each operation. It validates the structure of the operation and any references in the operation, and updates the operation's state. For more information, see [Import States](#import-states).
+5. If successful, the import operation's state is `Imported` and changes are imported to commercetools.
+6. During the import process it is possible to get an aggregated summary of all the import operations states by fetching an `ImportSummary`. More info [here](/import-summary).
+
+You only need to set up an `ImportSink` for a data type once. If you already have an Import sink for a data type, you can send it `ImportRequests` at any time.
+
+# Import States
+
+When you send an `ImportRequest` to an `ImportSink`, the `ImportSink` returns a list of `operations`. Each operation has a state, which indicates where in the import process the operation is.
+
+Imports can have any state listed in the `ProcessingState` enumeration. Those states change as described in the following flow diagram:
+
+![import operation state flow diagram](files/importoperation-states.svg 'All possible state transitions of `ProcessingState`')
+
+In general, a successful import operation goes through the following states:
+
+- `Accepted`: The operation contains data valid for import. Referenced resources are not yet resolved.
+- `Resolved`: All referenced resources in the import exist in the commercetools project.
+- `Imported`: The operation is imported into the commercetools project.
+
+In addition, you can check the overall progress of the import process by fetching an `ImportSummary`.
+This will aggregate all the operations' various states into a report for easy monitoring.
+
+More info about how to fetch the `ImportSummary` is available [here](/import-summary).
+
+## Validation
+
+When an import operation changes states from `Accepted` to `Resolved`, commercetools evaluates its:
+
+- JSON structure and fields, ensuring the format of the data is valid.
+- References, ensuring that all resources referenced by the import operation exist. If a `Customer` references a `CustomerGroup`, the `CustomerGroup` must exist in the commercetools project.
+
+If the validation fails, the Import operation has one of the following failure states.
+
+- `ValidationFailed`: the import operation contains invalid data.
+- `Unresolved`: the import operation references resources which do not exist in the commercetools project. The `timeToLive` indicates how long you have to create the referenced resources.
+
+Even if validation succeeds, the import can still fail. Each import operation is re-evaluated at regular intervals and the import can be retried. Once the operation's `retryCount` has been reached, the Import operation's state is changed to `Rejected`.
+
+## Other states
+
+- `Expired`: If an import operation in the state `Unresolved` has exceeded its `timeToLive`, it changes to the `Expired` state and it is not processed further. If an import operation is in the `Expired` state, another import request can start a new import process and the import operation then changes to the `Accepted` state again.
+- `Deleted`: If an import operation deletes something from the project, the import operation moves to the `Deleted` state.
