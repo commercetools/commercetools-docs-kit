@@ -1,48 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
 import { responseRepresentation } from '../../../../../utils/constants';
 import Scopes from './scopes';
 import Responses from './responses';
 
 const Container = styled.div`
-  padding: ${customProperties.spacingM};
-`;
-
-const ScopeContainer = styled.div`
-  margin-top: ${customProperties.spacingM};
-`;
-
-const ResponsesContainer = styled.div`
-  margin-top: ${customProperties.spacingM};
+  padding: ${designSystem.dimensions.spacings.m};
 `;
 
 const UrlScopesResponses = ({ data }) => {
   const { apiKey, uris, scopes, responses } = data;
   return (
     <Container>
-      <p>
-        {uris.baseUri}
-        <strong>{uris.resourcePathUri}</strong>
-      </p>
+      <SpacingsStack scale="m">
+        <p>
+          {uris.baseUri}
+          <strong>{uris.resourcePathUri}</strong>
+        </p>
 
-      {scopes.scopes ? (
-        <ScopeContainer>
+        {scopes.scopes ? (
           <Scopes scopes={scopes.scopes} title={scopes.title} />
-        </ScopeContainer>
-      ) : null}
+        ) : null}
 
-      {responses ? (
-        <ResponsesContainer>
+        {responses ? (
           <Responses
             apiKey={apiKey}
             responses={responses}
             title={responseRepresentation}
           />
-        </ResponsesContainer>
-      ) : null}
+        ) : null}
+      </SpacingsStack>
     </Container>
   );
 };
