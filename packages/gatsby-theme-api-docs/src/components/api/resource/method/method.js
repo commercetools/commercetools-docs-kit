@@ -155,7 +155,10 @@ function computeMethodColor(methodName) {
 
 Method.propTypes = {
   apiKey: PropTypes.string.isRequired,
-  uris: PropTypes.object.isRequired,
+  uris: PropTypes.shape({
+    baseUri: PropTypes.string.isRequired,
+    resourcePathUri: PropTypes.string,
+  }).isRequired,
   resourceUriParameters: PropTypes.arrayOf(PropTypes.object.isRequired),
   method: PropTypes.object.isRequired,
   methodType: PropTypes.string.isRequired,

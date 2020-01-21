@@ -9,16 +9,12 @@ const Scopes = ({ scopes, title }) => {
     <div>
       {title ? <Title>{title}</Title> : null}
 
-      {scopes.map((scope, index) =>
-        index === scopes.length - 1 ? (
-          <Markdown.InlineCode key={scope}>{scope}</Markdown.InlineCode>
-        ) : (
-          <span key={scope}>
-            <Markdown.InlineCode>{scope}</Markdown.InlineCode>
-            {', '}
-          </span>
-        )
-      )}
+      {scopes.map((scope, index) => (
+        <span key={scope}>
+          <Markdown.InlineCode>{scope}</Markdown.InlineCode>
+          {index < scopes.length - 1 ? ', ' : null}
+        </span>
+      ))}
     </div>
   );
 };
