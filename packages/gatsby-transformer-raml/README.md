@@ -75,6 +75,8 @@ Example for reading all types:
       enumeration
       examples {
         name
+        displayName
+        description
         value
       }
       oneOf
