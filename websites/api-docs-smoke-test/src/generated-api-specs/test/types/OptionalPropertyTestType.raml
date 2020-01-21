@@ -1,0 +1,23 @@
+#%RAML 1.0 DataType
+displayName: OptionalPropertyTestType
+type: object
+(builtinType): object
+description: |-
+  Example of optional/non-optional properties.
+properties:
+  requiredTrueExample:
+    type: string
+    (builtinType): string
+    description: |-
+      this should be required.
+    required: true
+  requiredNotSetExample:
+    type: string
+    (builtinType): string
+    description: |-
+      this should default to required = true.
+    required: true
+  requiredFalseExample:
+    type: string
+    (builtinType): string
+    required: false

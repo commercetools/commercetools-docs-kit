@@ -1,0 +1,69 @@
+# Resource
+(resourceName): ByProjectKeyResource
+(resourcePathUri): /{projectKey}/resource
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The CTP project key.
+    required: true
+post:
+  securedBy:
+  - oauth_2_0:
+      scopes:
+      - "manage_test:{projectKey}"
+  displayName: Create a Resource
+  description: |-
+    Create (POST) operation to a resource.
+  body:
+    application/json:
+      type: ObjectTestTypeDraft
+      (builtinType): object
+  responses:
+    201:
+      description: |-
+        201 Created response. This is the success response when creating something.
+      body:
+        application/json:
+          type: ObjectTestType
+          (builtinType): object
+get:
+  securedBy:
+  - oauth_2_0:
+      scopes:
+      - "manage_test:{projectKey}"
+      - "view_test:{projectKey}"
+  displayName: Get all resources
+  description: |-
+    Query/retrieve (GET) a specific resource or resource(s). This should return a paged query result of _blah_.
+  queryParameters:
+    where:
+      required: false
+      type: string
+      (builtinType): string
+    sort:
+      required: false
+      type: string
+      (builtinType): string
+    expand:
+      required: false
+      type: string
+      (builtinType): string
+    limit:
+      required: false
+      type: number
+      (builtinType): number
+    offset:
+      required: false
+      type: number
+      (builtinType): number
+  responses:
+    200:
+      description: |-
+        A 200 response.  This is the case when reading or modifying something.
+      body:
+        application/json:
+          type: ArrayTestType
+          (builtinType): object

@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+displayName: ObjectTestType
+type: object
+(builtinType): object
+description: |-
+  A typical Object type with a non-scalar property.
+properties:
+  version:
+    type: integer
+    (builtinType): integer
+    required: true
+  objectTypeProperty:
+    type: ArrayTestType
+    (builtinType): object
+    description: |-
+      A type containing arrays of different kinds.
+    required: true

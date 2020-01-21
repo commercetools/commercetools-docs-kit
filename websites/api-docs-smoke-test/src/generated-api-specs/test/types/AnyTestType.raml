@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: AnyTestType
+type: object
+(builtinType): object
+description: |-
+  Tests acceptance of JSON blobs.
+properties:
+  anyTypeExample:
+    type: any
+    (builtinType): any
+    description: |-
+      A test of type "any", i.e. any JSON allowed here. To be displayed as "any JSON".
+    required: true

@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+displayName: SetOfEnumTestType
+type: object
+(builtinType): object
+description: |-
+  A type containing a property with a set of Enums
+properties:
+  setofEnumExample:
+    uniqueItems: true
+    type: array
+    items:
+      type: EnumTest
+    (builtinType): array
+    description: |-
+      Contains a Set of `EnumTest`. If `uniqueItems` is `true` for an Array,
+      the then instead of "Array of ______", it needs to read "Set of _______".
+    required: true
