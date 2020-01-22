@@ -17,7 +17,10 @@ export default (apiKey, resourcePath) => {
 
   return {
     ...matchedResource,
-    absoluteUri: `${api.baseUri}${matchedResource.resourcePathUri}`,
+    uris: {
+      baseUri: api.baseUri,
+      resourcePathUri: matchedResource.resourcePathUri,
+    },
     allUriParameters: mergeUriParameters(
       api.baseUriParameters,
       matchedResource.uriParameters

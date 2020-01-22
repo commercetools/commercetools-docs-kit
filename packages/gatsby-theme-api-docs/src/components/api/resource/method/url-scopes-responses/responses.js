@@ -2,67 +2,53 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { Link } from '@commercetools-docs/gatsby-theme-docs';
+import { designSystem } from '@commercetools-docs/ui-kit';
+import { tokens, dimensions, typography } from '../../../../../design-system';
 
-const Title = styled.div`
-  color: #999;
-`;
+import { useTypeLocations } from '../../../../../hooks/use-type-locations';
 
-const Body = styled.div`
-  display: flex;
-`;
-
-const ResponseCodeType = styled.div`
-  margin-left: 0.5rem;
-`;
+import Title from './title';
 
 const ResposeCode = styled.span`
-  font-size: 14px;
-  color: #fff;
-  padding: 0.2rem 0.7rem;
-  border-radius: 1rem;
+  font-size: ${designSystem.typography.fontSizes.extraSmall};
+  color: ${designSystem.colors.light.surfacePrimary};
+  padding: ${dimensions.spacings.xxs} ${designSystem.dimensions.spacings.s};
+  border-radius: ${tokens.borderRadiusForResponseCode};
+  line-height: ${typography.lineHeights.responseCode};
 `;
 
-const responseTypeStyle = css`
-  margin-left: 0.5rem;
-  a {
-    color: inherit;
-  }
+const LinkContainer = styled.span`
+  margin-left: ${designSystem.dimensions.spacings.s};
+  font-size: ${designSystem.typography.fontSizes.small};
+  line-height: ${typography.lineHeights.responseBodyType};
 `;
 
-const Responses = ({ responses, title }) => {
+const Responses = ({ apiKey, responses, title }) => {
+  const typeLocations = useTypeLocations();
+
   return (
     <div>
-      {title ? (
-        <Title>
-          <strong>{title}</strong>
-        </Title>
-      ) : null}
+      {title ? <Title>{title}</Title> : null}
 
-      <Body>
-        <div>
-          <p>Status Code:</p>
-        </div>
-
-        <ResponseCodeType>
-          {responses.map(response => {
-            return (
-              <p key={response.code}>
-                <ResposeCode
-                  css={computeStatusCodeBackgroundColor(response.code)}
-                >
-                  {response.code}
-                </ResposeCode>
-                <Markdown.InlineCode css={responseTypeStyle}>
-                  {response.body ? (
-                    <a href="#">{response.body.applicationjson.type}</a>
-                  ) : null}
-                </Markdown.InlineCode>
-              </p>
-            );
-          })}
-        </ResponseCodeType>
-      </Body>
+      {responses.map(response => {
+        return (
+          <p key={response.code}>
+            <ResposeCode css={computeStatusCodeBackgroundColor(response.code)}>
+              {response.code}
+            </ResposeCode>
+            <LinkContainer>
+              {response.body
+                ? renderTypeAsLink(
+                    apiKey,
+                    response.body.applicationjson.type,
+                    typeLocations
+                  )
+                : 'No body is returned.'}
+            </LinkContainer>
+          </p>
+        );
+      })}
     </div>
   );
 };
@@ -87,7 +73,22 @@ function computeStatusCodeBackgroundColor(code) {
   `;
 }
 
+function renderTypeAsLink(apiKey, type, typeLocations) {
+  const typeLocation = typeLocations
+    ? typeLocations[`${apiKey}__${type}`]
+    : undefined;
+
+  const originalTypeLocation = typeLocation ? typeLocation.urlAnchorTag : '';
+
+  return originalTypeLocation ? (
+    <Link href={originalTypeLocation}>{type}</Link>
+  ) : (
+    type
+  );
+}
+
 Responses.propTypes = {
+  apiKey: PropTypes.string.isRequired,
   responses: PropTypes.arrayOf(
     PropTypes.shape({
       code: PropTypes.number.isRequired,
