@@ -1,4 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production';
+const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
 
 module.exports = {
   pathPrefix: '/docs-smoke-test',
@@ -12,7 +13,7 @@ module.exports = {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
         websiteKey: 'docs-smoke-test',
-        excludeFromSearchIndex: isProd,
+        excludeFromSearchIndex: isProd && !shouldEnableSearch,
       },
     },
   ],
