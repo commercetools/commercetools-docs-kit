@@ -39,7 +39,6 @@ const Children = ({ apiType, parentDiscriminator, strings }) => (
           <Properties
             apiType={apiType}
             parentDiscriminator={parentDiscriminator}
-            strings={strings}
           />
         </div>
       ) : null}

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { Table, Th } from '../../../elements';
+import { Table } from '../../../elements';
 import Rows from './rows/rows';
 
-const Properties = ({ apiType, parentDiscriminator, strings, dataTestId }) => {
+const Properties = ({ apiType, parentDiscriminator, dataTestId }) => {
   if (!apiType.properties) {
     throw new Error('Must pass properties props to Properties component.');
   }
@@ -24,18 +24,13 @@ const Properties = ({ apiType, parentDiscriminator, strings, dataTestId }) => {
           word-break: normal;
         `}
       >
-        <thead>
-          <tr>
-            <Th>{strings.name}</Th>
-            <Th>{strings.type}</Th>
-            <Th>{strings.description}</Th>
-          </tr>
+        <tbody>
           <Rows
             apiType={apiType}
             parentDiscriminator={parentDiscriminator}
             discriminatorValue={apiType.discriminatorValue}
           />
-        </thead>
+        </tbody>
       </Table>
     </div>
   );
@@ -44,7 +39,6 @@ const Properties = ({ apiType, parentDiscriminator, strings, dataTestId }) => {
 Properties.propTypes = {
   apiType: PropTypes.object.isRequired,
   parentDiscriminator: PropTypes.string,
-  strings: PropTypes.object,
   dataTestId: PropTypes.string,
 };
 

@@ -5,7 +5,7 @@ import Card from '@commercetools-uikit/card';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import Children from './children';
 
-const ChildrenUnionLike = ({ apiType, apiTypeSubTypes, strings }) => {
+const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
   return (
     <Card>
       <p
@@ -27,7 +27,6 @@ const ChildrenUnionLike = ({ apiType, apiTypeSubTypes, strings }) => {
           <Children
             apiType={subType}
             parentDiscriminator={apiType.discriminator}
-            strings={strings}
           />
         </div>
       ))}
