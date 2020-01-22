@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import { useTypeLocations } from '../../../../../hooks/use-type-locations';
+import capitalizeFirst from '../../../../../utils/capitalize-first';
 import renderTypeAsLink from '../../../../../utils/render-type-as-link';
 
 const NameType = ({
@@ -30,7 +31,11 @@ const NameType = ({
       </p>
       <p>
         {dataForTypeToLinkTo.displayPrefix}
-        {renderTypeAsLink(apiKey, dataForTypeToLinkTo.type, typeLocations)}
+        {renderTypeAsLink(
+          apiKey,
+          capitalizeFirst(dataForTypeToLinkTo.type),
+          typeLocations
+        )}
       </p>
     </SpacingsStack>
   );
