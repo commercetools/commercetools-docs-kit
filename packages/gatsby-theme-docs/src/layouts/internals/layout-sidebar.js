@@ -72,9 +72,7 @@ const LayoutSidebar = props => {
   const menuButton = (
     <MenuButton
       aria-label="Open main navigation"
-      onClick={() => {
-        props.setMenuOpen(!props.isMenuOpen);
-      }}
+      onClick={props.toggleSidebarMenu}
     >
       <BurgerIcon isActive={props.isMenuOpen} />
     </MenuButton>
@@ -86,11 +84,7 @@ const LayoutSidebar = props => {
         {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
         {modalPortalNode &&
           ReactDOM.createPortal(
-            <Overlay
-              onClick={() => {
-                props.setMenuOpen(false);
-              }}
-            >
+            <Overlay onClick={props.closeSidebarMenu}>
               <Container
                 role="nav"
                 aria-label="Main navigation"
@@ -100,9 +94,7 @@ const LayoutSidebar = props => {
                 }}
               >
                 <Sidebar
-                  onLinkClick={() => {
-                    props.setMenuOpen(false);
-                  }}
+                  onLinkClick={props.closeSidebarMenu}
                   siteTitle={props.siteTitle}
                   isGlobalBeta={props.isGlobalBeta}
                 />
@@ -142,7 +134,8 @@ const LayoutSidebar = props => {
 LayoutSidebar.displayName = 'LayoutSidebar';
 LayoutSidebar.propTypes = {
   isMenuOpen: PropTypes.bool.isRequired,
-  setMenuOpen: PropTypes.func.isRequired,
+  toggleSidebarMenu: PropTypes.func.isRequired,
+  closeSidebarMenu: PropTypes.func.isRequired,
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,

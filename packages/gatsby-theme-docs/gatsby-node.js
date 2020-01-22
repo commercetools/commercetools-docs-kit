@@ -36,11 +36,26 @@ exports.sourceNodes = ({ actions }) => {
       pagination: Boolean
       pages: [NavigationPage!]
     }
-
     type NavigationPage {
       title: String!
       path: String!
       beta: Boolean
+    }
+
+    type TopMenuYaml implements Node @dontInfer {
+      id: ID!
+      menuTitle: String! @proxy(from: "menu-title")
+      items: [TopMenuItem!]
+    }
+    type TopMenuItem {
+      label: String!
+      href: String!
+      beta: Boolean
+    }
+    type TopSideMenuYaml implements Node @dontInfer {
+      id: ID!
+      label: String!
+      href: String!
     }
   `);
 };
