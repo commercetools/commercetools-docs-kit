@@ -4,19 +4,11 @@ import extractAdditionalInfo from '../../../../../utils/extract-additional-info'
 import markdownToReact from '../../../../../utils/markdown-to-react';
 import Enum from '../../enum';
 
-const Description = ({
-  property,
-  discriminatorValue,
-  rowDescriptionDataTestId,
-}) => {
+const Description = ({ property, discriminatorValue }) => {
   const additionalInfo = extractAdditionalInfo(property);
   const additionalInfoKeysArray = Object.keys(additionalInfo);
   return (
-    <div
-      data-testid={
-        rowDescriptionDataTestId ? `${rowDescriptionDataTestId}` : null
-      }
-    >
+    <div>
       {property.enumeration && !discriminatorValue ? (
         <Enum
           description={{
@@ -25,22 +17,14 @@ const Description = ({
           values={property.enumeration}
         />
       ) : (
-        markdownToReact(property.description)
+        <p>{markdownToReact(property.description)}</p>
       )}
 
-      <p
-        data-testid={
-          rowDescriptionDataTestId
-            ? `${rowDescriptionDataTestId}__additional-info`
-            : null
-        }
-      >
+      <p>
         {additionalInfoKeysArray.map((key, index) => {
-          if (index === additionalInfoKeysArray.length - 1) {
-            return `${key}: ${additionalInfo[key]}`;
-          }
-
-          return `${key}: ${additionalInfo[key]}, `;
+          return `${key}: ${additionalInfo[key]}${
+            index < additionalInfoKeysArray.length - 1 ? ', ' : ''
+          }`;
         })}
       </p>
     </div>
@@ -50,7 +34,6 @@ const Description = ({
 Description.propTypes = {
   property: PropTypes.object.isRequired,
   discriminatorValue: PropTypes.string,
-  rowDescriptionDataTestId: PropTypes.string,
 };
 
 export default Description;
