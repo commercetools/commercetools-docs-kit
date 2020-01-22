@@ -7,9 +7,10 @@ import Enum from '../../enum';
 const Description = ({ property, discriminatorValue }) => {
   const additionalInfo = extractAdditionalInfo(property);
   const additionalInfoKeysArray = Object.keys(additionalInfo);
+  const renderEnums = property.enumeration && !discriminatorValue;
   return (
     <div>
-      {property.enumeration && !discriminatorValue ? (
+      {renderEnums ? (
         <Enum
           description={{
             text: property.description,
@@ -27,6 +28,12 @@ const Description = ({ property, discriminatorValue }) => {
           }`;
         })}
       </p>
+
+      {!renderEnums &&
+      !property.description &&
+      !additionalInfoKeysArray.length ? (
+        <p>{'-'}</p>
+      ) : null}
     </div>
   );
 };
