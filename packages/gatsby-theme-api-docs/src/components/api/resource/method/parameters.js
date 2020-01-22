@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import capitalizeFirst from '../../../../utils/capitalize-first';
+import { dimensions } from '../../../../design-system';
 import Table from '../../table';
 
 const Required = styled.span`
   color: #f16d0e;
   font-size: 1rem;
+  margin-left: ${dimensions.spacings.xxs};
 `;
 
 const Parameters = ({ title, parameters }) => {
