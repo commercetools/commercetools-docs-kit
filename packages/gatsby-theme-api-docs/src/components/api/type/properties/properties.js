@@ -1,38 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { Table } from '../../../elements';
+import Table from '../../table';
 import Rows from './rows/rows';
 
-const Properties = ({ apiType, parentDiscriminator, dataTestId }) => {
+const Properties = ({ apiType, parentDiscriminator }) => {
   if (!apiType.properties) {
     throw new Error('Must pass properties props to Properties component.');
   }
 
   return (
-    <div
+    <Table
       css={css`
-        display: flex;
-        flex-direction: column;
-        overflow-x: scroll;
+        margin: 0.5rem 0 0;
+        word-break: normal;
       `}
-      data-testid={dataTestId || null}
     >
-      <Table
-        css={css`
-          margin: 0.5rem 0 0;
-          word-break: normal;
-        `}
-      >
-        <tbody>
-          <Rows
-            apiType={apiType}
-            parentDiscriminator={parentDiscriminator}
-            discriminatorValue={apiType.discriminatorValue}
-          />
-        </tbody>
-      </Table>
-    </div>
+      <tbody>
+        <Rows
+          apiType={apiType}
+          parentDiscriminator={parentDiscriminator}
+          discriminatorValue={apiType.discriminatorValue}
+        />
+      </tbody>
+    </Table>
   );
 };
 
