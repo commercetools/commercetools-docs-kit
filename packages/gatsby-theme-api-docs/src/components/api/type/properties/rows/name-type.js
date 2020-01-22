@@ -19,7 +19,7 @@ const NameType = ({
       : { type: property.type, displayPrefix: '' };
 
   return (
-    <SpacingsStack spacing="xs">
+    <SpacingsStack scale="xs">
       <p>
         <Markdown.InlineCode>{property.name}</Markdown.InlineCode>
 

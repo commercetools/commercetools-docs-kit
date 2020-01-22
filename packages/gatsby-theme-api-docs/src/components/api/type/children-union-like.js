@@ -1,35 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import Children from './children';
 
 const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
   return (
-    <div>
-      <p
-        css={css`
-          margin-top: 1em;
-        `}
-      >
-        {apiType.description}
-      </p>
+    <SpacingsStack scale="m">
+      <p>{apiType.description}</p>
 
-      {apiTypeSubTypes.map(subType => (
-        <div
-          key={subType.displayName}
-          css={css`
-            margin-top: 1em;
-          `}
-        >
-          <Markdown.H3>{subType.name}</Markdown.H3>
-          <Children
-            apiType={subType}
-            parentDiscriminator={apiType.discriminator}
-          />
-        </div>
-      ))}
-    </div>
+      <SpacingsStack scale="m">
+        {apiTypeSubTypes.map(subType => (
+          <SpacingsStack key={subType.displayName} scale="s">
+            <p>
+              <strong>{subType.displayName}</strong>
+            </p>
+            <Children
+              apiType={subType}
+              parentDiscriminator={apiType.discriminator}
+            />
+          </SpacingsStack>
+        ))}
+      </SpacingsStack>
+    </SpacingsStack>
   );
 };
 

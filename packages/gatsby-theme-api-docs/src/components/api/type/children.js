@@ -1,61 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import Enum from './enum';
 import Properties from './properties/properties';
 import Examples from './examples';
 
 const Children = ({ apiType, parentDiscriminator, strings }) => (
-  <div
-    css={css`
-      display: flex;
-      flex-direction: column;
-    `}
-  >
+  <SpacingsStack scale="m">
     {apiType.enumeration || apiType.description ? (
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-        `}
-      >
-        <Enum
-          description={{
-            text: apiType.description,
-          }}
-          values={apiType.enumeration}
-        />
-      </div>
+      <Enum
+        description={{
+          text: apiType.description,
+        }}
+        values={apiType.enumeration}
+      />
     ) : null}
 
     {apiType.properties ? (
-      <div
-        css={css`
-          margin: 1rem 0;
-        `}
-      >
-        <Properties
-          apiType={apiType}
-          parentDiscriminator={parentDiscriminator}
-        />
-      </div>
+      <Properties apiType={apiType} parentDiscriminator={parentDiscriminator} />
     ) : null}
 
     {apiType.examples ? (
-      <div
-        css={css`
-          margin: 1rem 0;
-        `}
-      >
-        <Examples
-          examples={apiType.examples}
-          title={
-            apiType.examples.length > 1 ? strings.examples : strings.example
-          }
-        />
-      </div>
+      <Examples
+        examples={apiType.examples}
+        title={apiType.examples.length > 1 ? strings.examples : strings.example}
+      />
     ) : null}
-  </div>
+  </SpacingsStack>
 );
 
 Children.propTypes = {
