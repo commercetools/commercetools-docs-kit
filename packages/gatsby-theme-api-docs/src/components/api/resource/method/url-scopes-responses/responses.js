@@ -34,9 +34,9 @@ const Responses = ({ apiKey, responses, title }) => {
       {responses.map(response => {
         return (
           <p key={response.code}>
-            <ResposeCode css={computeStatusCodeBackgroundColor(response.code)}>
+            <ResponseCode css={computeStatusCodeBackgroundColor(response.code)}>
               {response.code}
-            </ResposeCode>
+            </ResponseCode>
             <LinkContainer>
               {response.body
                 ? renderTypeAsLink(
