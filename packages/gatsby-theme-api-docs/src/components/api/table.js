@@ -43,6 +43,7 @@ const Table = styled.table`
       padding: ${uiKitDesignSystem.dimensions.spacings.s};
       vertical-align: top;
       border-top: none;
+      word-break: break-word;
 
       :first-of-type {
         width: ${dimensions.widths.tableColumn};
