@@ -1,33 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import { Markdown } from '@commercetools-docs/ui-kit';
 
-const Title = styled.div`
-  color: #999;
-`;
+import Title from './title';
 
 const Scopes = ({ scopes, title }) => {
   return (
     <div>
-      {title ? (
-        <Title>
-          <strong>{title}</strong>
-        </Title>
-      ) : null}
+      {title ? <Title>{title}</Title> : null}
 
-      <p>
-        {scopes.map((scope, index) =>
-          index === scopes.length - 1 ? (
-            <Markdown.InlineCode key={scope}>{scope}</Markdown.InlineCode>
-          ) : (
-            <span key={scope}>
-              <Markdown.InlineCode>{scope}</Markdown.InlineCode>
-              {', '}
-            </span>
-          )
-        )}
-      </p>
+      {scopes.map((scope, index) => (
+        <span key={scope}>
+          <Markdown.InlineCode>{scope}</Markdown.InlineCode>
+          {index < scopes.length - 1 ? ', ' : null}
+        </span>
+      ))}
     </div>
   );
 };

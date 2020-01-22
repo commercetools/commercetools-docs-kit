@@ -1,20 +1,26 @@
+import { customProperties } from '@commercetools-uikit/design-system';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
 export const tokens = {
-  borderRadius1: designSystem.pxToRem(`1px`),
-  borderRadius16: designSystem.pxToRem(`16px`),
-  shadow1: `0 ${designSystem.pxToRem(`1px`)} ${designSystem.pxToRem(
+  borderRadiusForTable: customProperties.borderRadius6,
+  borderRadiusForMethodType: designSystem.pxToRem(`16px`),
+  borderRadiusForResponseCode: designSystem.pxToRem(`10px`),
+  shadowForTable: `0 ${designSystem.pxToRem(`1px`)} ${designSystem.pxToRem(
     `1px`
   )} 0 rgba(0, 0, 0, 0.25)`,
-  shadow2: `0 ${designSystem.pxToRem(`1px`)} ${designSystem.pxToRem(
-    `2px`
-  )} 0 rgba(0, 0, 0, 0.25)`,
+  shadowForUrlScopesResponse: `0 ${designSystem.pxToRem(
+    `1px`
+  )} ${designSystem.pxToRem(`2px`)} 0 rgba(0, 0, 0, 0.25)`,
 };
 
 export const dimensions = {
   widths: {
     tableColumn: designSystem.pxToRem('200px'),
+    tableBorder: designSystem.pxToRem(`1px`),
     methodBorderLeft: designSystem.pxToRem('8px'),
+  },
+  spacings: {
+    xxs: designSystem.pxToRem('2px'),
   },
 };
 
@@ -32,8 +38,10 @@ export const colors = {
 
 export const typography = {
   lineHeights: {
-    th: designSystem.pxToRem('21px'),
+    th: designSystem.pxToRem('24px'),
     methodType: designSystem.pxToRem('26px'),
     methodTitle: designSystem.pxToRem('32px'),
+    responseCode: designSystem.pxToRem('16px'),
+    responseBodyType: designSystem.pxToRem('24px'),
   },
 };
