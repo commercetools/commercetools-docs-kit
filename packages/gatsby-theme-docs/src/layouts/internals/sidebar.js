@@ -74,7 +74,8 @@ const SidebarLink = React.forwardRef((props, ref) => {
 
   const linkRef = React.useRef();
   const scrollIntoView = React.useCallback(() => {
-    ref.current.scrollIntoView({ block: 'center' });
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#Parameters
+    ref.current.scrollIntoView({ block: 'start' });
   }, [ref]);
   const restoreScrollPosition = React.useCallback(() => {
     document
