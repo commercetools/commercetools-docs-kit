@@ -10,7 +10,7 @@ import { useTypeLocations } from '../../../../../hooks/use-type-locations';
 
 import Title from './title';
 
-const ResposeCode = styled.span`
+const ResponseCode = styled.span`
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   color: ${designSystem.colors.light.surfacePrimary};
   padding: ${dimensions.spacings.xxs} ${designSystem.dimensions.spacings.s};
