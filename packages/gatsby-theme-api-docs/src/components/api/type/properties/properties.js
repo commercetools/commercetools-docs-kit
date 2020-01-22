@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import Table from '../../table';
 import Rows from './rows/rows';
 
@@ -10,12 +9,7 @@ const Properties = ({ apiType, parentDiscriminator }) => {
   }
 
   return (
-    <Table
-      css={css`
-        margin: 0.5rem 0 0;
-        word-break: normal;
-      `}
-    >
+    <Table>
       <tbody>
         <Rows
           apiType={apiType}
@@ -30,7 +24,6 @@ const Properties = ({ apiType, parentDiscriminator }) => {
 Properties.propTypes = {
   apiType: PropTypes.object.isRequired,
   parentDiscriminator: PropTypes.string,
-  dataTestId: PropTypes.string,
 };
 
 export default Properties;
