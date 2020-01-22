@@ -17,7 +17,7 @@ const Description = ({ property, discriminatorValue }) => {
           values={property.enumeration}
         />
       ) : (
-        <p>{markdownToReact(property.description)}</p>
+        markdownToReact(property.description)
       )}
 
       <p>
