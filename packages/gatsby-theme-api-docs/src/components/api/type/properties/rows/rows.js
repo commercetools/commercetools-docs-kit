@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Markdown } from '@commercetools-docs/ui-kit';
-import Type from '../type';
+import NameType from './name-type';
 import Description from './description';
 
 const Rows = ({ apiType, parentDiscriminator, discriminatorValue }) => {
@@ -9,15 +8,12 @@ const Rows = ({ apiType, parentDiscriminator, discriminatorValue }) => {
     return (
       <tr key={property.name}>
         <td>
-          {property.name}
-          {parentDiscriminator && property.name === parentDiscriminator ? (
-            <>
-              : <Markdown.InlineCode>{discriminatorValue}</Markdown.InlineCode>
-            </>
-          ) : null}
-        </td>
-        <td>
-          <Type apiKey={apiType.apiKey} property={property} />
+          <NameType
+            apiKey={apiType.apiKey}
+            property={property}
+            parentDiscriminator={parentDiscriminator}
+            discriminatorValue={discriminatorValue}
+          />
         </td>
         <td>
           <Description
