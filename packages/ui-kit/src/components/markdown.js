@@ -38,7 +38,7 @@ const H2 = styled.h2`
   border-bottom: 1px solid ${colors.light.borderPrimary};
   font-size: ${typography.fontSizes.h2};
   font-weight: ${typography.fontWeights.bold};
-  margin: ${dimensions.spacings.huge} 0 ${dimensions.spacings.xl};
+  margin: ${dimensions.spacings.huge} 0 ${dimensions.spacings.m};
   padding-bottom: ${dimensions.spacings.s};
 `;
 const H3 = styled.h3`
@@ -83,21 +83,26 @@ const Blockquote = styled.blockquote`
   }
 `;
 const Ul = styled.ul`
-  margin: 0;
+  margin: 0 0 ${dimensions.spacings.xxl};
   padding-left: ${dimensions.spacings.xl};
   > * + * {
-    margin-top: ${dimensions.spacings.m};
+    margin-top: ${dimensions.spacings.s};
   }
 `;
 const Ol = styled.ol`
-  margin: 0;
+  margin: 0 0 ${dimensions.spacings.xxl};
   padding-left: ${dimensions.spacings.xl};
   > * + * {
-    margin-top: ${dimensions.spacings.m};
+    margin-top: ${dimensions.spacings.s};
   }
 `;
 const Li = styled.li`
   line-height: 1.46;
+
+  > ul,
+  > ol {
+    margin: 0 0 ${dimensions.spacings.m};
+  }
 `;
 const Dl = styled.dl`
   > dd + * {

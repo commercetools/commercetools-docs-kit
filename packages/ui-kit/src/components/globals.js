@@ -34,7 +34,7 @@ const Globals = () => (
       .gatsby-resp-image-wrapper {
         background-color: ${colors.light.surfaceSecondary1};
         border-radius: ${tokens.borderRadiusForImageFrame};
-        margin: ${dimensions.spacings.m} 0;
+        margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.xxl};
         padding: ${dimensions.spacings.s};
       }
       .gatsby-resp-image-figure {
