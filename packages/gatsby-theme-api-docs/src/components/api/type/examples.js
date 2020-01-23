@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
-import { CodeBlock, Markdown } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { CodeBlock } from '@commercetools-docs/ui-kit';
 
 const Examples = ({ examples, title }) => {
   if (!examples) {
@@ -9,32 +9,23 @@ const Examples = ({ examples, title }) => {
   }
 
   return (
-    <div>
-      <Markdown.H4 data-testid="properties-examples-title">{title}</Markdown.H4>
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-        `}
-      >
+    <SpacingsStack scale="m">
+      <p>
+        <strong>{title}</strong>
+      </p>
+      <SpacingsStack scale="m">
         {examples.map(example => {
           return (
-            <div
-              data-testid={`properties-example-${example.name}`}
+            <CodeBlock
               key={example.name}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                margin-top: 1.5rem;
-              `}
-            >
-              <p>{example.name ? `${example.name}:` : null}</p>
-              <CodeBlock language="json" content={example.value} />
-            </div>
+              title={example.name ? `${example.name}` : undefined}
+              language="json"
+              content={example.value}
+            />
           );
         })}
-      </div>
-    </div>
+      </SpacingsStack>
+    </SpacingsStack>
   );
 };
 

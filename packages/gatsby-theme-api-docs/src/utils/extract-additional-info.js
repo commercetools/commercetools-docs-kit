@@ -24,6 +24,7 @@ const extractAdditionalInfo = property => {
     'constant',
     'items',
     'library',
+    'required',
   ];
 
   mainInfo.forEach(field => {
@@ -40,7 +41,7 @@ const extractAdditionalInfo = property => {
       delete additionalInfo[key];
   });
 
-  additionalInfo = reorderFields(additionalInfo, ['default', 'required']);
+  additionalInfo = reorderFields(additionalInfo, ['default']);
 
   return additionalInfo;
 };

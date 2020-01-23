@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { values as valuesStr } from '../../../utils/constants';
-import Description from './description';
+import markdownToReact from '../../../utils/markdown-to-react';
 
-const Enum = ({ description, values, dataTestId }) => {
-  if (!(description && description.text) && !values) {
+const Enum = ({ description, values }) => {
+  if (!description && !values) {
     throw new Error('Must pass description or values props to Enum component.');
   }
 
   return (
-    <div data-testid={dataTestId || null}>
-      {description && description.text ? (
-        <Description description={description.text} title={description.title} />
-      ) : null}
+    <div>
+      {description ? markdownToReact(description) : null}
 
       {values ? (
         <p>
@@ -24,15 +22,11 @@ const Enum = ({ description, values, dataTestId }) => {
 };
 
 Enum.propTypes = {
-  description: PropTypes.shape({
-    text: PropTypes.string,
-    title: PropTypes.string,
-  }),
+  description: PropTypes.string,
   values: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.string,
   ]),
-  dataTestId: PropTypes.string,
 };
 
 export default Enum;

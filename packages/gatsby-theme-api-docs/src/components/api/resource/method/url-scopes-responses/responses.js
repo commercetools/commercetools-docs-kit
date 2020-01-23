@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Link } from '@commercetools-docs/gatsby-theme-docs';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { tokens, dimensions, typography } from '../../../../../design-system';
 
 import { useTypeLocations } from '../../../../../hooks/use-type-locations';
-
+import renderTypeAsLink from '../../../../../utils/render-type-as-link';
 import Title from './title';
 
 const ResponseCode = styled.span`
@@ -71,20 +70,6 @@ function computeStatusCodeBackgroundColor(code) {
   return css`
     background-color: #00ccb4;
   `;
-}
-
-function renderTypeAsLink(apiKey, type, typeLocations) {
-  const typeLocation = typeLocations
-    ? typeLocations[`${apiKey}__${type}`]
-    : undefined;
-
-  const originalTypeLocation = typeLocation ? typeLocation.urlAnchorTag : '';
-
-  return originalTypeLocation ? (
-    <Link href={originalTypeLocation}>{type}</Link>
-  ) : (
-    type
-  );
 }
 
 Responses.propTypes = {
