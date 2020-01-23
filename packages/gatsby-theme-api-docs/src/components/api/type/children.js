@@ -8,12 +8,7 @@ import Examples from './examples';
 const Children = ({ apiType, parentDiscriminator, strings }) => (
   <SpacingsStack scale="m">
     {apiType.enumeration || apiType.description ? (
-      <Enum
-        description={{
-          text: apiType.description,
-        }}
-        values={apiType.enumeration}
-      />
+      <Enum description={apiType.description} values={apiType.enumeration} />
     ) : null}
 
     {apiType.properties ? (

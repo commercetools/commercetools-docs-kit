@@ -16,10 +16,12 @@ const Examples = ({ examples, title }) => {
       <SpacingsStack scale="m">
         {examples.map(example => {
           return (
-            <SpacingsStack key={example.name} scale="xs">
-              <p>{example.name ? `${example.name}:` : null}</p>
-              <CodeBlock language="json" content={example.value} />
-            </SpacingsStack>
+            <CodeBlock
+              key={example.name}
+              title={example.name ? `${example.name}` : undefined}
+              language="json"
+              content={example.value}
+            />
           );
         })}
       </SpacingsStack>
