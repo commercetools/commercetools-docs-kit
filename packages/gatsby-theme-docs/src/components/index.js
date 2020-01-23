@@ -8,3 +8,4 @@ export { default as SEO } from './seo';
 export { default as SearchDialog } from './search-dialog';
 export { default as SearchInput } from './search-input';
 export { default as ThemeProvider } from './theme-provider';
+export { default as TopMenu } from './top-menu';

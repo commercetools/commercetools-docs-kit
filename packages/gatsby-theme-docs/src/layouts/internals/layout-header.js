@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
-import { SearchDialog, SearchInput, Overlay } from '../../components';
+import { SearchDialog, SearchInput, Overlay, TopMenu } from '../../components';
 
 const Container = styled.header`
   grid-area: header;
@@ -83,22 +85,38 @@ const LogoContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: flex-end;
+  border-right: 1px solid ${designSystem.colors.light.borderPrimary};
 
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     display: none;
   }
 `;
 const DocumentationSwitcherContainer = styled.div`
-  border-left: 1px solid ${designSystem.colors.light.borderPrimary};
   color: ${designSystem.colors.light.textSecondary};
   font-size: ${designSystem.typography.fontSizes.body};
-  padding: 0 0 0 1rem;
-  margin: 0;
-  height: calc(100% - ${designSystem.dimensions.spacings.m});
+  padding: 0;
+  margin: 0 0 0 ${designSystem.dimensions.spacings.m};
   display: flex;
   align-items: center;
   text-overflow: ellipsis;
   white-space: nowrap;
+  height: calc(100% - 2px);
+  border-bottom: 2px solid
+    ${props =>
+      props.isActive
+        ? designSystem.colors.light.linkNavigation
+        : 'transparent'};
+
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    margin: 0 0 0 ${designSystem.dimensions.spacings.xl};
+  }
+`;
+const SwitcherButton = styled.a`
+  cursor: pointer;
+  color: ${props =>
+    props.isActive
+      ? designSystem.colors.light.linkNavigation
+      : designSystem.colors.light.textPrimary};
 `;
 const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
@@ -130,8 +148,34 @@ const LayoutHeader = props => (
           />
           <LogoButton />
         </LogoContainer>
-        <DocumentationSwitcherContainer>
-          {props.siteTitle}
+        <DocumentationSwitcherContainer isActive={props.isTopMenuOpen}>
+          <SwitcherButton
+            role="button"
+            aria-label={
+              props.isTopMenuOpen ? 'Close top menu' : 'Open top menu'
+            }
+            isActive={props.isTopMenuOpen}
+            onClick={props.toggleTopMenu}
+          >
+            <SpacingsInline alignItems="center">
+              <span>{props.siteTitle}</span>
+              {props.isTopMenuOpen ? (
+                <AngleUpIcon size="medium" color="info" />
+              ) : (
+                <AngleDownIcon size="medium" />
+              )}
+            </SpacingsInline>
+          </SwitcherButton>
+          {props.isTopMenuOpen ? (
+            <Overlay
+              onClick={props.closeTopMenu}
+              css={css`
+                top: ${designSystem.dimensions.heights.header};
+              `}
+            >
+              <TopMenu />
+            </Overlay>
+          ) : null}
         </DocumentationSwitcherContainer>
       </Inline>
       <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
@@ -163,6 +207,9 @@ LayoutHeader.propTypes = {
   isSearchDialogOpen: PropTypes.bool.isRequired,
   openSearchDialog: PropTypes.func.isRequired,
   closeSearchDialog: PropTypes.func.isRequired,
+  isTopMenuOpen: PropTypes.bool.isRequired,
+  toggleTopMenu: PropTypes.func.isRequired,
+  closeTopMenu: PropTypes.func.isRequired,
 };
 
 export default LayoutHeader;

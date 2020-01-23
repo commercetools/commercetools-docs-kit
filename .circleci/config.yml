@@ -49,7 +49,10 @@ commands:
   build_websites:
     description: Building websites for production
     steps:
-      - run: yarn build
+      - run:
+          command: yarn build
+          environment:
+            ENABLE_SEARCH: 'true'
   save_websites_bundle:
     steps:
       - persist_to_workspace:
