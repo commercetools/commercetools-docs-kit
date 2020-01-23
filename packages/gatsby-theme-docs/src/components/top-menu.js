@@ -39,26 +39,40 @@ const ContentGrid = styled.div`
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     grid:
-      [row1-start] 'menu-left-blank menu-main' 1fr [row1-end]
-      / 123px 1fr;
+      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
+      / ${designSystem.dimensions.spacings.xl}
+      minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentWithMargings}
+      )
+      1fr;
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
-      [row1-start] 'menu-left-blank menu-main' 1fr [row1-end]
-      / 123px minmax(
+      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
+      / ${designSystem.dimensions.spacings.xl}
+      minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargings},
         ${designSystem.dimensions.widths.pageContentWithMargings}
-      );
+      )
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
-      [row1-start] 'menu-left-blank menu-main' 1fr [row1-end]
-      / ${designSystem.dimensions.widths.pageNavigationSmall} minmax(${designSystem.dimensions.widths.pageContentSmallWithMargings}, ${designSystem.dimensions.widths.pageContentWithMargings});
+      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
+      / ${designSystem.dimensions.widths.pageNavigationSmall}
+      minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentWithMargings}
+      )
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
-      [row1-start] 'menu-left-blank menu-main' 1fr [row1-end]
-      / ${designSystem.dimensions.widths.pageNavigation} ${designSystem.dimensions.widths.pageContentWithMargings};
+      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
+      / ${designSystem.dimensions.widths.pageNavigation}
+      ${designSystem.dimensions.widths.pageContentWithMargings}
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
 `;
 const LeftBlank = styled.div`
@@ -66,15 +80,30 @@ const LeftBlank = styled.div`
 `;
 const Center = styled.div`
   grid-area: menu-main;
+  width: calc(100% - ${designSystem.dimensions.spacings.m});
+  margin-left: ${designSystem.dimensions.spacings.m};
+
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    width: 100%;
+    margin: 0;
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    width: calc(100% - ${designSystem.dimensions.spacings.xl});
+    margin: 0 0 0 ${designSystem.dimensions.spacings.xl};
+  }
 `;
 const Columns = styled.div`
   display: grid;
   grid-gap: ${designSystem.dimensions.spacings.xl};
   grid-auto-columns: 1fr;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(
+    ${props => React.Children.count(props.children)},
+    1fr
+  );
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    display: block;
+    grid-gap: ${designSystem.dimensions.spacings.m};
+    grid-template-columns: 1fr;
 
     > * + * {
       border-top: 1px solid ${designSystem.colors.light.borderSecondary};
@@ -114,7 +143,7 @@ const MenuLink = styled(Link)`
 
   svg {
     * {
-      fill: ${designSystem.colors.light.textPrimary};
+      fill: ${designSystem.colors.light.textPrimary} !important;
     }
   }
 
@@ -123,7 +152,7 @@ const MenuLink = styled(Link)`
 
     svg {
       * {
-        fill: ${designSystem.colors.light.linkNavigation};
+        fill: ${designSystem.colors.light.linkNavigation} !important;
       }
     }
   }
