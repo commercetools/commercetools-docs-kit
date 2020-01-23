@@ -70,6 +70,14 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/data`),
         },
       },
+      // Data files for internal use (.yaml)
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'configurationData',
+          path: path.join(__dirname, `./src/data`),
+        },
+      },
       // Assets (e.g. images) used from the markdown pages
       {
         resolve: 'gatsby-source-filesystem',

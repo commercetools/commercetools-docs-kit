@@ -17,32 +17,58 @@ import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
 const LayoutContent = props => {
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
+  // State for the sidebar menu
+  const [isSidebarMenuOpen, setSidebarMenuOpen] = React.useState(false);
+  const toggleSidebarMenu = React.useCallback(() => {
+    setSidebarMenuOpen(prev => !prev);
+  }, [setSidebarMenuOpen]);
+  const closeSidebarMenu = React.useCallback(() => {
+    setSidebarMenuOpen(false);
+  }, [setSidebarMenuOpen]);
+
+  // State for the top menu
+  const [isTopMenuOpen, setIsTopMenuOpen] = React.useState(false);
+  const toggleTopMenu = React.useCallback(() => {
+    setIsTopMenuOpen(prev => !prev);
+  }, [setIsTopMenuOpen]);
+  const closeTopMenu = React.useCallback(() => {
+    setIsTopMenuOpen(false);
+  }, [setIsTopMenuOpen]);
+
+  // State for the search dialog
   const [isSearchDialogOpen, setIsSearchDialogOpen] = React.useState(false);
   const openSearchDialog = React.useCallback(() => {
     setIsSearchDialogOpen(true);
-  }, [setIsSearchDialogOpen]);
-  const closeSearchDialog = () => {
+    // Additionally make sure to close the top menu
+    closeTopMenu();
+  }, [setIsSearchDialogOpen, closeTopMenu]);
+  const closeSearchDialog = React.useCallback(() => {
     setIsSearchDialogOpen(false);
-  };
+  }, [setIsSearchDialogOpen]);
+
   const siteData = useSiteData();
+
   return (
     <LayoutApplication>
       <LayoutSidebar
-        isMenuOpen={isMenuOpen}
-        setMenuOpen={setMenuOpen}
+        isMenuOpen={isSidebarMenuOpen}
+        toggleSidebarMenu={toggleSidebarMenu}
+        closeSidebarMenu={closeSidebarMenu}
         siteTitle={siteData.siteMetadata.title}
         isGlobalBeta={props.pageContext.isGlobalBeta}
         isSearchDialogOpen={isSearchDialogOpen}
         closeSearchDialog={closeSearchDialog}
       />
-      <LayoutMain>
+      <LayoutMain isTopMenuOpen={isTopMenuOpen}>
         <LayoutHeader
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
           isSearchDialogOpen={isSearchDialogOpen}
           openSearchDialog={openSearchDialog}
           closeSearchDialog={closeSearchDialog}
+          isTopMenuOpen={isTopMenuOpen}
+          toggleTopMenu={toggleTopMenu}
+          closeTopMenu={closeTopMenu}
         />
         <LayoutPage id="top">
           <LayoutPageHeader>

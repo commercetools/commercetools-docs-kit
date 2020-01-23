@@ -25,7 +25,9 @@ const ScrollContainer = styled.div`
 const LogoContainer = styled.div`
   display: none;
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    height: ${designSystem.dimensions.heights.header};
+    height: calc(
+      ${designSystem.dimensions.heights.header} - 1px
+    ); /* TODO: investigate why we need 1px less here */
     width: ${designSystem.dimensions.widths.pageNavigationSmall};
     background-color: ${designSystem.colors.light.surfacePrimary};
     border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
