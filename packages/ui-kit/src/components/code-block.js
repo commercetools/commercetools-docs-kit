@@ -13,7 +13,7 @@ import codeBlockHighlightCode from '../utils/code-block-highlight-code';
 const Container = styled.div`
   border: 1px solid ${colors.light.surfaceCodeHighlight};
   border-radius: ${tokens.borderRadiusForCodeBlock};
-  margin: 0;
+  margin: 0 0 ${dimensions.spacings.xxl};
 `;
 const Header = styled.div`
   background-color: ${colors.light.textPrimary};
