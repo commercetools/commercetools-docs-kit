@@ -128,15 +128,6 @@ const MenuLink = styled(Link)`
     }
   }
 `;
-const SideMenuLink = styled(MenuLink)`
-  color: ${designSystem.colors.light.textFaded} !important;
-
-  svg {
-    * {
-      fill: ${designSystem.colors.light.textFaded};
-    }
-  }
-`;
 
 const TopMenu = () => {
   const data = useStaticQuery(graphql`
@@ -193,9 +184,9 @@ const TopMenu = () => {
               <SideColumn>
                 <SpacingsStack scale="s">
                   {data.allTopSideMenuYaml.nodes.map(node => (
-                    <SideMenuLink href={node.href} key={node.id}>
+                    <MenuLink href={node.href} key={node.id}>
                       {node.label}
-                    </SideMenuLink>
+                    </MenuLink>
                   ))}
                 </SpacingsStack>
               </SideColumn>
