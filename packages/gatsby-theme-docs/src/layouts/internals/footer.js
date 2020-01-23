@@ -6,7 +6,7 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import LogoHorizontalSvg from '../../icons/logo-horizontal.svg';
-import { Link, BetaFlag } from '../../components';
+import { GlobalNavigationLink, BetaFlag } from '../../components';
 
 const Center = styled.div`
   grid-area: footer-main;
@@ -58,11 +58,7 @@ const Columns = styled.div`
     }
   }
 `;
-const Column = styled.div`
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    display: ${props => (props.hideOnMobile === true ? 'none' : 'block')};
-  }
-`;
+const Column = styled.div``;
 const SideColumn = styled(Column)`
   border-left: 1px solid ${designSystem.colors.light.borderSecondary};
   padding-left: ${designSystem.dimensions.spacings.xl};
@@ -80,28 +76,6 @@ const ColumnTitle = styled.div`
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     border-bottom: unset;
-  }
-`;
-const MenuLink = styled(Link)`
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  line-height: 1.75;
-  color: ${designSystem.colors.light.textPrimary} !important;
-  text-decoration: none;
-
-  svg {
-    * {
-      fill: ${designSystem.colors.light.textPrimary} !important;
-    }
-  }
-
-  :hover {
-    color: ${designSystem.colors.light.linkNavigation} !important;
-
-    svg {
-      * {
-        fill: ${designSystem.colors.light.linkNavigation} !important;
-      }
-    }
   }
 `;
 const Row = styled.div`
@@ -212,7 +186,9 @@ const LayoutFooter = () => {
               <ColumnTitle>{node.menuTitle}</ColumnTitle>
               {node.items.map((item, index) => (
                 <SpacingsInline alignItems="center" key={`${node.id}-${index}`}>
-                  <MenuLink href={item.href}>{item.label}</MenuLink>
+                  <GlobalNavigationLink href={item.href}>
+                    {item.label}
+                  </GlobalNavigationLink>
                   {item.beta === true ? <BetaFlag /> : null}
                 </SpacingsInline>
               ))}
@@ -222,9 +198,9 @@ const LayoutFooter = () => {
         <SideColumn>
           <SpacingsStack scale="s">
             {data.allTopSideMenuYaml.nodes.map(node => (
-              <MenuLink href={node.href} key={node.id}>
+              <GlobalNavigationLink href={node.href} key={node.id}>
                 {node.label}
-              </MenuLink>
+              </GlobalNavigationLink>
             ))}
           </SpacingsStack>
         </SideColumn>
@@ -246,9 +222,9 @@ const LayoutFooter = () => {
         <RowItem gridArea="footer-links">
           <AlignedRight>
             {data.allFooterYaml.nodes.map(node => (
-              <MenuLink href={node.href} key={node.id}>
+              <GlobalNavigationLink href={node.href} key={node.id}>
                 {node.label}
-              </MenuLink>
+              </GlobalNavigationLink>
             ))}
           </AlignedRight>
         </RowItem>
