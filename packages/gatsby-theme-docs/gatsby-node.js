@@ -57,6 +57,11 @@ exports.sourceNodes = ({ actions }) => {
       label: String!
       href: String!
     }
+    type FooterYaml implements Node @dontInfer {
+      id: ID!
+      label: String!
+      href: String!
+    }
   `);
 };
 

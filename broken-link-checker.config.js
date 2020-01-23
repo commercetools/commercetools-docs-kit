@@ -13,5 +13,7 @@ module.exports = {
     '/faqs',
     '/merchant-center',
     '/merchant-center-releases',
+    '/privacy',
+    '/imprint',
   ],
 };

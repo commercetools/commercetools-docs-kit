@@ -187,6 +187,13 @@ const LayoutFooter = () => {
           href
         }
       }
+      allFooterYaml {
+        nodes {
+          id
+          label
+          href
+        }
+      }
     }
   `);
   return (
@@ -231,13 +238,12 @@ const LayoutFooter = () => {
               </CopyText>
             </SpacingsInline>
             <AlignedRight>
-              <MenuLink href="https://commercetools.com/privacy">
-                {'Privacy Policy'}
-              </MenuLink>
-              {` | `}
-              <MenuLink href="https://commercetools.com/imprint">
-                {'Imprint'}
-              </MenuLink>
+              {data.allFooterYaml.nodes.map((node, index) => (
+                <React.Fragment key={node.id}>
+                  <MenuLink href={node.href}>{node.label}</MenuLink>
+                  {index < data.allFooterYaml.nodes.length - 1 ? ` | ` : null}
+                </React.Fragment>
+              ))}
             </AlignedRight>
           </Row>
         </Center>
