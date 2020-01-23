@@ -17,7 +17,7 @@ const Resource = ({ apiKey, resource }) => {
   const methods = ['post', 'get', 'delete'];
 
   return (
-    <SpacingsStack scale="m">
+    <SpacingsStack scale="xl">
       {methods.map(method => {
         return resourceObj[method] ? (
           <Method
