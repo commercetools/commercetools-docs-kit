@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import ApiType from '../../type';
 
 const RequestRepresentation = ({ titleSuffix, apiKey, apiType }) => {
   return (
-    <div>
+    <SpacingsStack scale="s">
       <p>
-        <strong>
-          {titleSuffix ? `${titleSuffix} -` : null} {apiType}
-        </strong>
+        {titleSuffix ? `${titleSuffix}: ` : null}
+        <strong>{apiType}</strong>
       </p>
 
       <ApiType apiKey={apiKey} type={apiType} />
-    </div>
+    </SpacingsStack>
   );
 };
 

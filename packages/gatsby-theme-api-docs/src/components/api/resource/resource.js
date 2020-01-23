@@ -1,19 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import useReadResourceByResourcePath from '../../../hooks/use-read-resource-by-resource-path';
 import Method from './method';
-
-const ResourceContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-`;
-
-const MethodContainer = styled.div`
-  margin: 1rem 0;
-`;
 
 const Resource = ({ apiKey, resource }) => {
   const resourceObj = useReadResourceByResourcePath(apiKey, resource);
@@ -24,30 +14,25 @@ const Resource = ({ apiKey, resource }) => {
     );
   }
 
-  return <ResourceContainer>{renderMethods(resourceObj)}</ResourceContainer>;
-};
-
-function renderMethods(resource) {
   const methods = ['post', 'get', 'delete'];
 
   return (
-    <>
+    <SpacingsStack scale="xl">
       {methods.map(method => {
-        return resource[method] ? (
-          <MethodContainer key={method}>
-            <Method
-              apiKey={resource.apiKey}
-              uris={resource.uris}
-              resourceUriParameters={resource.allUriParameters}
-              method={resource[method]}
-              methodType={method}
-            />
-          </MethodContainer>
+        return resourceObj[method] ? (
+          <Method
+            key={method}
+            apiKey={resourceObj.apiKey}
+            uris={resourceObj.uris}
+            resourceUriParameters={resourceObj.allUriParameters}
+            method={resourceObj[method]}
+            methodType={method}
+          />
         ) : null;
       })}
-    </>
+    </SpacingsStack>
   );
-}
+};
 
 Resource.propTypes = {
   apiKey: PropTypes.string.isRequired,
