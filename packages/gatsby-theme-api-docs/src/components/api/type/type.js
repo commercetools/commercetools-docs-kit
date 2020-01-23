@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import filterOutApiTypeSubtypes from '../../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../../utils/ctp-urn';
@@ -26,12 +25,7 @@ const ApiType = props => {
   const urn = generateTypeURN(matchedApiType);
 
   return (
-    <div
-      css={css`
-        margin: 1rem 0;
-      `}
-      id={urn}
-    >
+    <div id={urn}>
       <Container apiType={matchedApiType} apiTypeSubTypes={apiTypeSubTypes} />
     </div>
   );
