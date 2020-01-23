@@ -185,6 +185,7 @@ const TopMenu = () => {
   return (
     <Container>
       <Content
+        role="top-menu"
         onClick={event => {
           // Prevent overlay to close when clicking on the content area.
           event.stopPropagation();
