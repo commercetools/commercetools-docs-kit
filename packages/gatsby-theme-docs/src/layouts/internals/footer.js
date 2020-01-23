@@ -200,7 +200,7 @@ const AlignedRight = styled.div`
 `;
 const MediaQuery = styled.div`
   ${props => {
-    switch (props.for) {
+    switch (props.forViewport) {
       case 'mobile':
         return css`
           display: none;
@@ -257,7 +257,7 @@ const LayoutFooter = () => {
         <Center>
           <Columns>
             <Column>
-              <MediaQuery for="tablet">
+              <MediaQuery forViewport="tablet">
                 <LogoHorizontalSvg />
               </MediaQuery>
             </Column>
@@ -290,7 +290,7 @@ const LayoutFooter = () => {
           <Row>
             <RowItem gridArea="footer-copy">
               <SpacingsStack>
-                <MediaQuery for="mobile">
+                <MediaQuery forViewport="mobile">
                   <LogoHorizontalSvg height={64} />
                 </MediaQuery>
                 <SpacingsInline scale="m" alignItems="center">
