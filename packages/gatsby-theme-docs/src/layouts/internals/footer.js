@@ -8,59 +8,6 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import LogoHorizontalSvg from '../../icons/logo-horizontal.svg';
 import { Link, BetaFlag } from '../../components';
 
-const Container = styled.footer`
-  background-color: ${designSystem.colors.light.surfaceSecondary2};
-`;
-const ContentGrid = styled.div`
-  width: 100%;
-  position: relative;
-  display: grid;
-  grid:
-    [row1-start] 'footer-main' 1fr [row1-end]
-    / 1fr;
-
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    grid:
-      [row1-start] 'footer-main footer-right-blank' 1fr [row1-end]
-      / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
-      )
-      1fr;
-  }
-  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    grid:
-      [row1-start] 'footer-main footer-right-blank' 1fr [row1-end]
-      / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
-      )
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
-  }
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    grid:
-      [row1-start] 'footer-main footer-right-blank' 1fr [row1-end]
-      / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
-      )
-      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    grid:
-      [row1-start] 'footer-main footer-right-blank' 1fr [row1-end]
-      / ${designSystem.dimensions.widths.pageContentWithMargings}
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
-  }
-`;
-const RightBlank = styled.div`
-  grid-area: right-blank;
-  display: none;
-
-  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    display: block;
-  }
-`;
 const Center = styled.div`
   grid-area: footer-main;
   width: 100%;
@@ -252,69 +199,61 @@ const LayoutFooter = () => {
     }
   `);
   return (
-    <Container>
-      <ContentGrid>
-        <Center>
-          <Columns>
-            <Column>
-              <MediaQuery forViewport="tablet">
-                <LogoHorizontalSvg />
-              </MediaQuery>
-            </Column>
-            {data.allTopMenuYaml.nodes.map(node => (
-              <Column key={node.id}>
-                <SpacingsStack scale="s">
-                  <ColumnTitle>{node.menuTitle}</ColumnTitle>
-                  {node.items.map((item, index) => (
-                    <SpacingsInline
-                      alignItems="center"
-                      key={`${node.id}-${index}`}
-                    >
-                      <MenuLink href={item.href}>{item.label}</MenuLink>
-                      {item.beta === true ? <BetaFlag /> : null}
-                    </SpacingsInline>
-                  ))}
-                </SpacingsStack>
-              </Column>
-            ))}
-            <SideColumn>
-              <SpacingsStack scale="s">
-                {data.allTopSideMenuYaml.nodes.map(node => (
-                  <MenuLink href={node.href} key={node.id}>
-                    {node.label}
-                  </MenuLink>
-                ))}
-              </SpacingsStack>
-            </SideColumn>
-          </Columns>
-          <Row>
-            <RowItem gridArea="footer-copy">
-              <SpacingsStack>
-                <MediaQuery forViewport="mobile">
-                  <LogoHorizontalSvg height={64} />
-                </MediaQuery>
-                <SpacingsInline scale="m" alignItems="center">
-                  <CopyText>
-                    {'Copyright '}&copy;
-                    {` ${new Date().getFullYear()} commercetools`}
-                  </CopyText>
+    <Center>
+      <Columns>
+        <Column>
+          <MediaQuery forViewport="tablet">
+            <LogoHorizontalSvg />
+          </MediaQuery>
+        </Column>
+        {data.allTopMenuYaml.nodes.map(node => (
+          <Column key={node.id}>
+            <SpacingsStack scale="s">
+              <ColumnTitle>{node.menuTitle}</ColumnTitle>
+              {node.items.map((item, index) => (
+                <SpacingsInline alignItems="center" key={`${node.id}-${index}`}>
+                  <MenuLink href={item.href}>{item.label}</MenuLink>
+                  {item.beta === true ? <BetaFlag /> : null}
                 </SpacingsInline>
-              </SpacingsStack>
-            </RowItem>
-            <RowItem gridArea="footer-links">
-              <AlignedRight>
-                {data.allFooterYaml.nodes.map(node => (
-                  <MenuLink href={node.href} key={node.id}>
-                    {node.label}
-                  </MenuLink>
-                ))}
-              </AlignedRight>
-            </RowItem>
-          </Row>
-        </Center>
-        <RightBlank />
-      </ContentGrid>
-    </Container>
+              ))}
+            </SpacingsStack>
+          </Column>
+        ))}
+        <SideColumn>
+          <SpacingsStack scale="s">
+            {data.allTopSideMenuYaml.nodes.map(node => (
+              <MenuLink href={node.href} key={node.id}>
+                {node.label}
+              </MenuLink>
+            ))}
+          </SpacingsStack>
+        </SideColumn>
+      </Columns>
+      <Row>
+        <RowItem gridArea="footer-copy">
+          <SpacingsStack>
+            <MediaQuery forViewport="mobile">
+              <LogoHorizontalSvg height={64} />
+            </MediaQuery>
+            <SpacingsInline scale="m" alignItems="center">
+              <CopyText>
+                {'Copyright '}&copy;
+                {` ${new Date().getFullYear()} commercetools`}
+              </CopyText>
+            </SpacingsInline>
+          </SpacingsStack>
+        </RowItem>
+        <RowItem gridArea="footer-links">
+          <AlignedRight>
+            {data.allFooterYaml.nodes.map(node => (
+              <MenuLink href={node.href} key={node.id}>
+                {node.label}
+              </MenuLink>
+            ))}
+          </AlignedRight>
+        </RowItem>
+      </Row>
+    </Center>
   );
 };
 
