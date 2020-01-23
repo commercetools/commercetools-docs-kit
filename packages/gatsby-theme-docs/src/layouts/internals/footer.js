@@ -1,10 +1,9 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem, MediaQuery } from '@commercetools-docs/ui-kit';
 import LogoHorizontalSvg from '../../icons/logo-horizontal.svg';
 import { GlobalNavigationLink, BetaFlag } from '../../components';
 
@@ -118,28 +117,6 @@ const AlignedRight = styled.div`
       }
     }
   }
-`;
-const MediaQuery = styled.div`
-  ${props => {
-    switch (props.forViewport) {
-      case 'mobile':
-        return css`
-          display: none;
-          @media screen and (${designSystem.dimensions.viewports.mobile}) {
-            display: block;
-          }
-        `;
-      case 'tablet':
-        return css`
-          display: none;
-          @media screen and (${designSystem.dimensions.viewports.tablet}) {
-            display: block;
-          }
-        `;
-      default:
-        return css``;
-    }
-  }}
 `;
 
 const LayoutFooter = () => {
