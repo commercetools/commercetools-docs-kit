@@ -4,7 +4,9 @@ import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import filterOutApiTypeSubtypes from '../../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../../utils/ctp-urn';
 import { useApiTypes } from '../../../hooks/use-api-types';
-import Container from './container';
+import { apiTypeStrings } from '../../../utils/constants';
+import Children from './children';
+import ChildrenUnionLike from './children-union-like';
 
 const ApiType = props => {
   const apiTypes = useApiTypes();
@@ -26,7 +28,15 @@ const ApiType = props => {
 
   return (
     <div id={urn}>
-      <Container apiType={matchedApiType} apiTypeSubTypes={apiTypeSubTypes} />
+      {matchedApiType.oneOf ? (
+        <ChildrenUnionLike
+          apiType={matchedApiType}
+          apiTypeSubTypes={apiTypeSubTypes}
+          strings={apiTypeStrings}
+        />
+      ) : (
+        <Children apiType={matchedApiType} strings={apiTypeStrings} />
+      )}
     </div>
   );
 };
