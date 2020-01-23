@@ -65,7 +65,7 @@ export const tokens = {
   borderRadiusForBlockquote: customProperties.borderRadius6,
   shadowForBetaFlag: customProperties.shadow7,
   shadowForSearchDialog: customProperties.shadow2,
-  shadowForFooter: customProperties.shadow6,
+  shadowForPageContent: customProperties.shadow11,
 };
 
 export const dimensions = {
