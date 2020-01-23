@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
@@ -62,9 +63,8 @@ const RightBlank = styled.div`
 `;
 const Center = styled.div`
   grid-area: footer-main;
-  width: calc(100% - ${designSystem.dimensions.spacings.m} * 2);
-  margin: ${designSystem.dimensions.spacings.l}
-    ${designSystem.dimensions.spacings.m};
+  width: 100%;
+  margin: 0;
 
   > * + * {
     margin: ${designSystem.dimensions.spacings.l} 0 0;
@@ -72,6 +72,18 @@ const Center = styled.div`
     border-top: 1px solid ${designSystem.colors.light.borderSecondary};
   }
 
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    > * + * {
+      margin: 0;
+      padding: 0;
+      border-top: none;
+    }
+  }
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    width: calc(100% - ${designSystem.dimensions.spacings.m} * 2);
+    margin: ${designSystem.dimensions.spacings.l}
+      ${designSystem.dimensions.spacings.m};
+  }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     width: calc(100% - ${designSystem.dimensions.spacings.m});
     margin-right: 0;
@@ -94,19 +106,23 @@ const Columns = styled.div`
     display: block;
 
     > * + * {
-      border-top: 1px solid ${designSystem.colors.light.borderSecondary};
-      padding: ${designSystem.dimensions.spacings.m} 0;
+      border-bottom: 1px solid ${designSystem.colors.light.borderSecondary};
+      padding: ${designSystem.dimensions.spacings.m};
     }
   }
 `;
-const Column = styled.div``;
+const Column = styled.div`
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    display: ${props => (props.hideOnMobile === true ? 'none' : 'block')};
+  }
+`;
 const SideColumn = styled(Column)`
   border-left: 1px solid ${designSystem.colors.light.borderSecondary};
   padding-left: ${designSystem.dimensions.spacings.xl};
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     border-left: unset;
-    padding-left: unset;
+    padding: ${designSystem.dimensions.spacings.m};
   }
 `;
 const ColumnTitle = styled.div`
@@ -143,16 +159,21 @@ const MenuLink = styled(Link)`
 `;
 const Row = styled.div`
   display: grid;
-  grid-gap: ${designSystem.dimensions.spacings.xl};
-  grid-auto-columns: 1fr;
-  grid-template-columns: repeat(
-    ${props => React.Children.count(props.children)},
-    1fr
-  );
+  grid:
+    [row1-start] 'footer-copy footer-links' auto [row1-end]
+    / 1fr 1fr;
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    grid-gap: ${designSystem.dimensions.spacings.m};
-    grid-template-columns: 1fr;
+    grid:
+      [row1-start] 'footer-links' auto [row1-end]
+      [row2-start] 'footer-copy' auto [row2-end]
+      / 1fr;
+  }
+`;
+const RowItem = styled.div`
+  grid-area: ${props => props.gridArea};
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    padding: ${designSystem.dimensions.spacings.m};
   }
 `;
 const CopyText = styled.div`
@@ -163,7 +184,41 @@ const AlignedRight = styled.div`
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     text-align: unset;
+    > * + * {
+      display: block;
+      margin: ${designSystem.dimensions.spacings.s} 0 0;
+    }
   }
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    > * + * {
+      ::before {
+        content: '|';
+        margin: 0 ${designSystem.dimensions.spacings.s};
+      }
+    }
+  }
+`;
+const MediaQuery = styled.div`
+  ${props => {
+    switch (props.for) {
+      case 'mobile':
+        return css`
+          display: none;
+          @media screen and (${designSystem.dimensions.viewports.mobile}) {
+            display: block;
+          }
+        `;
+      case 'tablet':
+        return css`
+          display: none;
+          @media screen and (${designSystem.dimensions.viewports.tablet}) {
+            display: block;
+          }
+        `;
+      default:
+        return css``;
+    }
+  }}
 `;
 
 const LayoutFooter = () => {
@@ -202,7 +257,9 @@ const LayoutFooter = () => {
         <Center>
           <Columns>
             <Column>
-              <LogoHorizontalSvg />
+              <MediaQuery for="tablet">
+                <LogoHorizontalSvg />
+              </MediaQuery>
             </Column>
             {data.allTopMenuYaml.nodes.map(node => (
               <Column key={node.id}>
@@ -231,20 +288,28 @@ const LayoutFooter = () => {
             </SideColumn>
           </Columns>
           <Row>
-            <SpacingsInline scale="m" alignItems="center">
-              <CopyText>
-                {'Copyright '}&copy;
-                {` ${new Date().getFullYear()} commercetools`}
-              </CopyText>
-            </SpacingsInline>
-            <AlignedRight>
-              {data.allFooterYaml.nodes.map((node, index) => (
-                <React.Fragment key={node.id}>
-                  <MenuLink href={node.href}>{node.label}</MenuLink>
-                  {index < data.allFooterYaml.nodes.length - 1 ? ` | ` : null}
-                </React.Fragment>
-              ))}
-            </AlignedRight>
+            <RowItem gridArea="footer-copy">
+              <SpacingsStack>
+                <MediaQuery for="mobile">
+                  <LogoHorizontalSvg height={64} />
+                </MediaQuery>
+                <SpacingsInline scale="m" alignItems="center">
+                  <CopyText>
+                    {'Copyright '}&copy;
+                    {` ${new Date().getFullYear()} commercetools`}
+                  </CopyText>
+                </SpacingsInline>
+              </SpacingsStack>
+            </RowItem>
+            <RowItem gridArea="footer-links">
+              <AlignedRight>
+                {data.allFooterYaml.nodes.map(node => (
+                  <MenuLink href={node.href} key={node.id}>
+                    {node.label}
+                  </MenuLink>
+                ))}
+              </AlignedRight>
+            </RowItem>
           </Row>
         </Center>
         <RightBlank />
