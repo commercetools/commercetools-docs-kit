@@ -3,9 +3,18 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
+import IconButton from '@commercetools-uikit/icon-button';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
+import {
+  designSystem,
+  createStyledIcon,
+  LogoButton,
+  MediaQuery,
+} from '@commercetools-docs/ui-kit';
 import { SearchDialog, SearchInput, Overlay, TopMenu } from '../../components';
+import UnstyledSearchIcon from '../../icons/search.svg';
+
+const SearchIcon = createStyledIcon(UnstyledSearchIcon);
 
 const Container = styled.header`
   grid-area: header;
@@ -189,11 +198,23 @@ const LayoutHeader = props => (
             <SearchDialog onClose={props.closeSearchDialog} />
           </Overlay>
         ) : (
-          <SearchInput
-            id="search-input-placeholder"
-            onFocus={props.openSearchDialog}
-            size="small"
-          />
+          <>
+            <MediaQuery forViewport="mobile">
+              <IconButton
+                size="big"
+                label="Open search dialog"
+                onClick={props.openSearchDialog}
+                icon={<SearchIcon />}
+              />
+            </MediaQuery>
+            <MediaQuery forViewport="tablet">
+              <SearchInput
+                id="search-input-placeholder"
+                onFocus={props.openSearchDialog}
+                size="small"
+              />
+            </MediaQuery>
+          </>
         )}
       </SearchContainer>
     </Content>

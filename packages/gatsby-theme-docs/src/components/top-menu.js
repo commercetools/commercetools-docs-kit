@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import Link from './link';
+import GlobalNavigationLink from './global-navigation-link';
 import BetaFlag from './beta-flag';
 
 const Container = styled.div`
@@ -135,28 +135,6 @@ const ColumnTitle = styled.div`
     border-bottom: unset;
   }
 `;
-const MenuLink = styled(Link)`
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  line-height: 1.75;
-  color: ${designSystem.colors.light.textPrimary} !important;
-  text-decoration: none;
-
-  svg {
-    * {
-      fill: ${designSystem.colors.light.textPrimary} !important;
-    }
-  }
-
-  :hover {
-    color: ${designSystem.colors.light.linkNavigation} !important;
-
-    svg {
-      * {
-        fill: ${designSystem.colors.light.linkNavigation} !important;
-      }
-    }
-  }
-`;
 
 const TopMenu = () => {
   const data = useStaticQuery(graphql`
@@ -204,7 +182,9 @@ const TopMenu = () => {
                         alignItems="center"
                         key={`${node.id}-${index}`}
                       >
-                        <MenuLink href={item.href}>{item.label}</MenuLink>
+                        <GlobalNavigationLink href={item.href}>
+                          {item.label}
+                        </GlobalNavigationLink>
                         {item.beta === true ? <BetaFlag /> : null}
                       </SpacingsInline>
                     ))}
@@ -214,9 +194,9 @@ const TopMenu = () => {
               <SideColumn>
                 <SpacingsStack scale="s">
                   {data.allTopSideMenuYaml.nodes.map(node => (
-                    <MenuLink href={node.href} key={node.id}>
+                    <GlobalNavigationLink href={node.href} key={node.id}>
                       {node.label}
-                    </MenuLink>
+                    </GlobalNavigationLink>
                   ))}
                 </SpacingsStack>
               </SideColumn>
