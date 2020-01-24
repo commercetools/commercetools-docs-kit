@@ -18,7 +18,7 @@ const getStyles = props => {
       box-shadow: ${designSystem.tokens.shadowForBetaFlag};
       color: ${designSystem.colors.light.textInfo} !important;
       font-size: ${designSystem.typography.fontSizes.small};
-      text-decoration: none;
+      text-decoration: none !important;
 
       :active,
       :focus,
