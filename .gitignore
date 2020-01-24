@@ -74,6 +74,7 @@ public
 # Editor/IDE
 .idea
 .vscode/*
+!.vscode/spellright.dict
 
 # Cypress
 cypress/screenshots
