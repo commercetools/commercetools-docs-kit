@@ -149,6 +149,17 @@ const LayoutFooter = () => {
       }
     }
   `);
+
+  /**
+   * The footer changes a bit the layout on mobile screens, as the position
+   * of some elements is different. This includes for example the logo, the
+   * copyright and the privacy/imprint links.
+   * To make this work, we need to do a couple of things:
+   * - use the `<MediaQuery>` component to show/hide certain elements based
+   *   on the viewport
+   * - render some elements using css grid with area names, so we can place
+   *   the elements in the grid layout as we like
+   */
   return (
     <Center>
       <Columns>

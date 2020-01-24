@@ -24,11 +24,13 @@ exceptions:
   - JAR
   - JSON
   - JSX
+  - MDX
   - PATH
   - PDF
   - PHP
   - POST
   - RAM
+  - RAML
   - RSA
   - SDK
   - SQL

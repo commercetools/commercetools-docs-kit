@@ -1,10 +1,10 @@
 # Contributing
 
-Please _read_ before contributing to commercetools Documentation Kit in order to get familiar with the guidelines for contributing to the project.
+Please _read_ before contributing to commercetools Documentation Kit to get familiar with the guidelines for contributing to the project.
 
 ## Core Ideas
 
-We want to create documentation websites that are visually and functional consistent. To do so, we provide a set of tools and components that should be used across the different websites, for example a Gatsby documentation theme.
+At commercetools we want to create documentation websites that are visually and functional consistent. To do so, commercetools provide a set of tools and components that should be used across the different websites, for example a Gatsby documentation theme.
 
 This repository contains all the necessary packages to build a documentation website. Some of them do not need to be used directly but are instead required by other packages. Let's have a deeper look.
 
@@ -14,16 +14,42 @@ This repository is managed as a monorepo, meaning it contains multiple (sub)pack
 
 ```
 packages/
+  broken-link-checker/
+  gatsby-theme-api-docs/
   gatsby-theme-docs/
+  gatsby-transformer-mdx-introspection/
+  gatsby-transformer-raml/
+  ui-kit/
+  writing-style/
 ```
 
 ### Overview of main packages
 
 Below a short description of the most import packages:
 
+#### [broken-link-checker](./packages/broken-link-checker)
+
+This package exposes a binary script to run a link checker against a given built website folder.
+
+#### [gatsby-theme-api-docs](./packages/gatsby-theme-api-docs)
+
+This package implements a Gatsby theme on top of the core theme [gatsby-theme-docs](./packages/gatsby-theme-docs) and is used to document an HTTP API that implements the RAML spec.
+
 #### [gatsby-theme-docs](./packages/gatsby-theme-docs)
 
-This package is the most **important** one and contains the core logic of a Gatsby theme. To develop a website, you need to use the `@commercetools-docs/gatsby-theme-docs` package.
+This package is most **important** one and contains the core logic of a Gatsby theme. To develop a website, you need to use the `@commercetools-docs/gatsby-theme-docs` package.
+
+#### [gatsby-transformer-mdx-introspection](./packages/gatsby-transformer-mdx-introspection)
+
+This package analyzes MDX pages to find out which React components have been used there, and exposes them GraphQL Nodes.
+
+#### [gatsby-transformer-raml](./packages/gatsby-transformer-raml)
+
+This package exposes RAML documents into GraphQL Nodes.
+
+#### [ui-kit](./packages/ui-kit)
+
+This package implements the core design system used across the Gatsby themes. It also provides basic React components to be used as building blocks.
 
 ## Getting started
 
@@ -57,7 +83,7 @@ To run them, execute `yarn lint`. You can also run individual linters (check the
 
 ### Prettier
 
-To ensure a consistent code formatting, we use `prettier` for all different types of supported file extensions. The formatting is also checked by the eslint plugin for prettier.
+To ensure a consistent code formatting, we use `prettier` for all different types of supported file extensions. The formatting is also checked by the ESlint plugin for prettier.
 
 ### Git hooks
 
@@ -101,14 +127,14 @@ By default, all releases go to the `next` distribution channel and should be con
 #### Release the packages
 
 1. Make sure the `CHANGELOG.md` has been updated.
-2. Check that your npm account has access to the `@commercetools-docs` organization and that you are logged in with the `npm` CLI.
+2. Check that your npm account has access to the `@commercetools-docs` organization and that you are logged in with the `npm` command-line tool.
 3. Run `yarn release`: the packages will be bundled with Rollup first, then Lerna will prompt you to select the version that you would like to release (minor, major, pre-release, etc.).
 4. Wait a bit until Lerna bumps the versions, creates a commit and a tag and finally publishes the packages to npm (to the `next` distribution channel).
 5. After publishing, create a GitHub Release with the same text as the `CHANGELOG.md` entry. See previous Releases for inspiration.
 
 #### Moving the `latest` dist-tag to a release:
 
-After testing the `next` release on a production project, if the version is **stable** it can be finally movede to the `latest` distribution channel.
+After testing the `next` release on a production project, if the version is **stable** it can be finally moved to the `latest` distribution channel.
 
 ```bash
 $ yarn release:from-next-to-latest
