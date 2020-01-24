@@ -1,3 +1,41 @@
+## [1.7.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.6.0...v1.7.0) (2020-01-24)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`
+  - [#232](https://github.com/commercetools/commercetools-docs-kit/pull/232) fix(theme): beta style link ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-api-docs`, `gatsby-transformer-raml`
+  - [#220](https://github.com/commercetools/commercetools-docs-kit/pull/220) fix: missing `gatsby-transformer-raml` dependency version ([@davifantasia](https://github.com/davifantasia))
+  - [#219](https://github.com/commercetools/commercetools-docs-kit/pull/219) fix: path to RAML spec ([@davifantasia](https://github.com/davifantasia))
+
+> NOTE that the `gatsby-theme-api-docs` had some unexpected breaking changes in `v1.5.0` ([#194](https://github.com/commercetools/commercetools-docs-kit/pull/194)), which are now fixed. We recommend to look at the `websites/api-docs-smoke-test` folder to check and compare the new setup.
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-api-docs`
+  - [#224](https://github.com/commercetools/commercetools-docs-kit/pull/224) Type design implementation ([@davifantasia](https://github.com/davifantasia))
+  - [#222](https://github.com/commercetools/commercetools-docs-kit/pull/222) Method design implementation ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-docs`
+  - [#223](https://github.com/commercetools/commercetools-docs-kit/pull/223) feat(theme): implement top menu for global links ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`, `ui-kit`
+  - [#231](https://github.com/commercetools/commercetools-docs-kit/pull/231) refactor(theme): footer improvements ([@emmenko](https://github.com/emmenko))
+  - [#227](https://github.com/commercetools/commercetools-docs-kit/pull/227) refactor(theme): footer to contain global links as well ([@emmenko](https://github.com/emmenko))
+- `ui-kit`
+  - [#225](https://github.com/commercetools/commercetools-docs-kit/pull/225) refactor(theme): adjust spacings of some elements to improve visual grouping ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-api-docs`
+  - [#228](https://github.com/commercetools/commercetools-docs-kit/pull/228) Resource design implementation ([@davifantasia](https://github.com/davifantasia))
+
+#### 🤖 Type: Dependencies
+
+- `broken-link-checker`, `gatsby-theme-api-docs`, `gatsby-theme-docs`, `gatsby-transformer-mdx-introspection`, `ui-kit`
+  - [#215](https://github.com/commercetools/commercetools-docs-kit/pull/215) chore(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+- Other
+  - [#216](https://github.com/commercetools/commercetools-docs-kit/pull/216) chore(deps): update all dependencies (major) ([@renovate[bot]](https://github.com/apps/renovate))
+  - [#217](https://github.com/commercetools/commercetools-docs-kit/pull/217) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.6.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.5.0...v1.6.0) (2020-01-17)
 
 #### 🐛 Type: Bug
