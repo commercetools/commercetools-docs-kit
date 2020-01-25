@@ -37,7 +37,7 @@ export const useTypeLocations = () => {
               name
               value
             }
-            mdx: page {
+            page: mdx {
               fields {
                 slug
               }
