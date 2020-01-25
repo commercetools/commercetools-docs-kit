@@ -6,24 +6,10 @@ const transformMdx = require('../src/transform-mdx');
 
 // Utility function to mock default options
 const mockOptions = () => ({
-  lowercaseIdentifiers: false,
-  trimWhitespace: true,
-  collapseWhitespace: true,
-  attachAST: false,
+  cleanWhitespace: true,
   removeMdxCompilationArtifacts: true,
   shouldIndexNode: () => true,
-  excludeTags: [
-    'p',
-    'tr',
-    'th',
-    'td',
-    'li',
-    'span',
-    'em',
-    'strong',
-    'del',
-    'code',
-  ],
+  tagWhitelist: [/^(?!(?:MDXLayout)|(?:p)|(?:span)|(?:tr)|(?:th)|(?:td)).*$/],
 });
 
 async function introspectMdx(
@@ -57,10 +43,7 @@ async function introspectMdx(
 
 // Legacy tests from previous version of plugin (no regression)
 describe('legacy test behavior', () => {
-  // Set tags to be lowercase for legacy tests (previous behavior)
   const legacyOptions = mockOptions();
-  legacyOptions.lowercaseIdentifiers = true;
-
   it('still passes test 1', async () => {
     // This string was slightly changed, but the previous test wasn't valid JSX
     const mdx = '<ApiType apiKey="test" type="OutOfOrderPropertiesTestType" />';
@@ -68,7 +51,7 @@ describe('legacy test behavior', () => {
     expect(result.children[0]).toMatchObject({
       attributes: [
         {
-          name: 'apikey',
+          name: 'apiKey',
           value: 'test',
         },
         {
@@ -76,7 +59,7 @@ describe('legacy test behavior', () => {
           value: 'OutOfOrderPropertiesTestType',
         },
       ],
-      component: 'apitype',
+      component: 'ApiType',
     });
   });
 
@@ -110,11 +93,11 @@ describe('legacy test behavior', () => {
     expect(result.children[0]).toMatchObject({
       attributes: [
         {
-          name: 'classname',
+          name: 'className',
           value: 'content',
         },
         {
-          name: 'dangerouslysetinnerhtml',
+          name: 'dangerouslySetInnerHTML',
           value: '{this.getRawMarkup()}',
         },
       ],

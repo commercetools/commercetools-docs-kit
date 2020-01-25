@@ -9,36 +9,18 @@ const reducedCacheKey = (node, options) =>
   }.${JSON.stringify(options)}`;
 
 const defaultOptions = {
-  // Whether to have the `component` field (and `attribute.name`) be all lower case (legacy)
-  lowercaseIdentifiers: false,
-  // Whether to trim leading/trailing whitespace in JSX snippets and string literals
-  trimWhitespace: true,
-  // Whether to collapse consecutive whitespace in JSX snippets and string literals
-  collapseWhitespace: true,
-  // Whether to attach the original JSX AST nodes to the generated node output
-  // Needed to query `ComponentInMdx.ast` successfully
-  attachAST: false,
+  // Whether to collapse/trim whitespace in JSX snippets and string literals
+  cleanWhitespace: true,
   // Whether to remove attributes that are (usually) artifacts of MDX compilation:
   // parentName and mdxType
   removeMdxCompilationArtifacts: true,
   // Predicate function used as a performance escape hatch to filter MDX files that
   // get parsed/indexed
   shouldIndexNode: () => true,
-  // JSX components that do not generate Gatsby nodes in the final output (they still
-  // appear as other components' children and their children can generate nodes)
-  excludeTags: [
-    'p',
-    'tr',
-    'th',
-    'td',
-    'li',
-    'span',
-    'em',
-    'strong',
-    'del',
-    'code',
-    'MDXLayout',
-  ],
+
+  // JSX components that will generate Gatsby data nodes in the final output (other nodes
+  // will still appear as other components' children and their children can generate nodes)
+  tagWhitelist: ['a', /h[1-6]/],
 };
 
 // Generated node name
@@ -128,8 +110,6 @@ exports.createSchemaCustomization = ({ actions }) => {
        isDetached: Boolean!
        "Array of component nodes that are children of the current node"
        tree: [JSON!]!
-       "Original JSX AST subtree from Babel; only attached if \`attachAST\` is set to \`true\` in the plugin config"
-       ast: JSON
        "Original MDX file parent node"
        mdx: Mdx! @link
        "Text content of the current node. To configure text processing rules, use collapse/trim"
@@ -142,17 +122,10 @@ exports.createSchemaCustomization = ({ actions }) => {
   );
 };
 
-exports.createResolvers = (
-  { createResolvers, intermediateSchema, reporter },
-  options
-) => {
-  const { attachAST } = addDefaults(options);
+exports.createResolvers = ({ createResolvers, intermediateSchema }) => {
   const typeMap = intermediateSchema.getTypeMap();
   const filterType = typeMap[`${nodeName}FilterInput`];
   const sortType = typeMap[`${nodeName}SortInput`];
-
-  // Closure: whether the user has been warned about AST resolution
-  let hasWarned = false;
 
   createResolvers({
     [nodeName]: {
@@ -197,21 +170,6 @@ exports.createResolvers = (
             first: true,
           });
           return result;
-        },
-      },
-      ast: {
-        resolve: source => {
-          // Don't attach ASTs by default to prevent heap bloat
-          if (!attachAST) {
-            if (!hasWarned) {
-              reporter.warn(
-                'Original JSX ASTs were not attached to nodes. Enable `attachAST` ' +
-                  'in the config to support querying the `ast` field'
-              );
-              hasWarned = true;
-            }
-          }
-          return source.ast || null;
         },
       },
       content: {
@@ -266,20 +224,14 @@ async function getReducedForest(cache, node, options) {
 
   // Resolve applied options
   const {
-    lowercaseIdentifiers,
     removeMdxCompilationArtifacts,
-    trimWhitespace,
-    collapseWhitespace,
-    attachAST,
-    excludeTags,
+    cleanWhitespace,
+    tagWhitelist,
   } = withDefaults;
   const appliedOptions = {
-    lowercaseIdentifiers,
     removeMdxCompilationArtifacts,
-    trimWhitespace,
-    collapseWhitespace,
-    attachAST,
-    excludeTags,
+    cleanWhitespace,
+    tagWhitelist,
   };
 
   const cacheKey = reducedCacheKey(node, appliedOptions);
@@ -344,7 +296,7 @@ function introspectMdx({
         let newParent = parentGatsbyNode;
 
         if (componentNode.hasGatsbyNode) {
-          const { children, mdxAST, ...rest } = componentNode;
+          const { children, ...rest } = componentNode;
           const idBase = `${node.id}.${componentNode.component}.${index} >>> COMPONENT_IN_MDX`;
           const id = createNodeId(idBase);
           const newNode = {
@@ -359,7 +311,6 @@ function introspectMdx({
             mdx: node.id,
             // data
             tree: children,
-            ast: mdxAST,
             isRoot,
             isDetached,
             ...rest,

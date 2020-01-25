@@ -81,21 +81,9 @@ query GetAllApiTypes {
 
 ## Options
 
-**`lowercaseIdentifiers`** [boolean] (optional, defaults to false)
+**`cleanWhitespace`** [boolean] (optional, defaults to true)
 
-Whether to have the `component` field (and `attribute.name`) be all lower case (legacy)
-
-**`trimWhitespace`** [boolean] (optional, defaults to true)
-
-Whether to trim leading/trailing whitespace in JSX snippets and string literals
-
-**`collapseWhitespace`** [boolean] (optional, defaults to true)
-
-Whether to collapse consecutive whitespace in JSX snippets and string literals
-
-**`attachAST`** [boolean] (optional, defaults to false)
-
-Whether to attach the original JSX AST nodes to the generated node output. Needed to query `ComponentInMdx.ast` successfully
+Whether to collapse/trim whitespace in JSX snippets and string literals
 
 **`removeMdxCompilationArtifacts`** [boolean] (optional, defaults to true)
 
@@ -105,25 +93,22 @@ Whether to remove attributes that are (usually) artifacts of MDX compilation (`m
 
 Predicate function used as a performance escape hatch to filter MDX files that get parsed/indexed. Use if not all MDX files need to be indexed and build times are prohibitive
 
-**`excludeTags`** [array\<string>] (optional, defaults to [...])
+**`tagWhitelist`** [array\<string | RegExp>] (optional, defaults to [...])
 
-JSX components that do not generate Gatsby nodes in the final output (they still appear as other components' children and their children can generate nodes)
+JSX components that will generate Gatsby data nodes in the final output (other nodes will still appear as other components' children and their children can generate nodes)
 
 ##### Default value
 
-By default, the following tags are exlcuded from node generation (generally due to being common or especially numerous):
+By default, the plugin will generate tags for all nodes, except the following (generally due to being common or especially numerous):
 
 - `p`
 - `tr`
 - `th`
 - `td`
-- `li`
-- `span`
-- `em`
-- `strong`
-- `del`
-- `code`
 - `MDXLayout`
+- `span`
+
+> **Note**: generally, most target use cases will opt to whitelist only specific tags to inspect. This is the reccommended approach (to improve performance), but the whitelist can be used as a blacklist by specifying a single regular expression with a [negative look-around](https://www.regular-expressions.info/lookaround.html).
 
 ## Advanced Queries
 

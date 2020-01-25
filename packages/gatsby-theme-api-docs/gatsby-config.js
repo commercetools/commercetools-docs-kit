@@ -11,9 +11,7 @@ module.exports = (themeOptions = {}) => ({
     },
     {
       resolve: '@commercetools-docs/gatsby-transformer-mdx-introspection',
-      options: {
-        lowercaseIdentifiers: true,
-      },
+      options: {},
     },
     {
       resolve: '@commercetools-docs/gatsby-transformer-raml',

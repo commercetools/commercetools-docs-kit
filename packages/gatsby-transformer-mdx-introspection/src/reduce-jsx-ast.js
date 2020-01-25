@@ -20,8 +20,8 @@ const {
  * @param {object} context Context object
  */
 function serializeAndSearch(node, collapse, detachedHeads, context) {
-  const { collapseWhitespace, jsx } = context;
-  const value = reduceNode(node, collapseWhitespace && collapse, jsx);
+  const { cleanWhitespace, jsx } = context;
+  const value = reduceNode(node, cleanWhitespace && collapse, jsx);
   const subJsx = getJsxChildren(node);
   if (subJsx.length > 0) {
     // The value is (or contains) one or more JSX tree heads; add to list
@@ -38,7 +38,7 @@ function serializeAndSearch(node, collapse, detachedHeads, context) {
  * @param {object} context Context object
  */
 function reduceChildren(children, context) {
-  const { trimWhitespace, collapseWhitespace } = context;
+  const { cleanWhitespace } = context;
   const reduced = [];
   children.forEach((child, i) => {
     if (typeof child === 'string') {
@@ -46,10 +46,10 @@ function reduceChildren(children, context) {
       const isFirst = i === 0;
       const isLast = i === children.length - 1;
       let trimmed = child;
-      if (isFirst && trimWhitespace) trimmed = trimmed.trimLeft();
-      if (isLast && trimWhitespace) trimmed = trimmed.trimRight();
+      if (isFirst && cleanWhitespace) trimmed = trimmed.trimLeft();
+      if (isLast && cleanWhitespace) trimmed = trimmed.trimRight();
 
-      const whitespaceCollapsed = collapseWhitespace
+      const whitespaceCollapsed = cleanWhitespace
         ? collapseSpace(trimmed)
         : trimmed;
       // Only add if the string is not just whitespace
@@ -104,7 +104,7 @@ function transformSpreadAttribute(attribute, context) {
  * @param {object} context Context object
  */
 function transformAttributes(attributes, context) {
-  const { lowercaseIdentifiers, removeMdxCompilationArtifacts } = context;
+  const { removeMdxCompilationArtifacts } = context;
 
   // Keep track of any JSX elements seen outside of direct children to parse
   // and index (but not tag as children of the current element)
@@ -154,14 +154,6 @@ function transformAttributes(attributes, context) {
     );
   }
 
-  // Transform attribute names to lowercase if configured to
-  if (lowercaseIdentifiers) {
-    reducedAttributes = reducedAttributes.map(({ name, value }) => ({
-      name: name.toLowerCase(),
-      value,
-    }));
-  }
-
   return [reducedAttributes, detachedHeads];
 }
 
@@ -173,7 +165,7 @@ function transformAttributes(attributes, context) {
  * @param {object} context Context object
  */
 function transformJsxElement(jsxElement, context) {
-  const { excludeTagSet, lowercaseIdentifiers, attachAST, jsx } = context;
+  const { tagWhitelistLiteralSet, tagWhitelistRegex, jsx } = context;
 
   // Keep track of any JSX elements seen outside of direct children to parse
   // and index (but not tag as children of the current element)
@@ -212,12 +204,14 @@ function transformJsxElement(jsxElement, context) {
   //    as needed
   children = reduceChildren(children, context);
 
+  const hasGatsbyNode =
+    tagWhitelistLiteralSet.has(component) ||
+    tagWhitelistRegex.some(r => component.match(r));
   const reducedNode = {
-    component: lowercaseIdentifiers ? component.toLowerCase() : component,
+    component,
     attributes,
     children,
-    hasGatsbyNode: !excludeTagSet.has(component),
-    ast: attachAST ? jsxElement : undefined,
+    hasGatsbyNode,
     jsx: reduceNode(jsxElement, false, jsx),
   };
   return [reducedNode, detachedHeads];
@@ -278,22 +272,17 @@ function transformNode(node, context) {
 function reduceJsxAst(
   jsxAst,
   jsx,
-  {
-    excludeTags,
-    lowercaseIdentifiers,
-    trimWhitespace,
-    collapseWhitespace,
-    removeMdxCompilationArtifacts,
-    attachAST,
-  }
+  { tagWhitelist, cleanWhitespace, removeMdxCompilationArtifacts }
 ) {
   const context = {
-    excludeTagSet: new Set(excludeTags),
-    lowercaseIdentifiers,
-    trimWhitespace,
-    collapseWhitespace,
+    tagWhitelistLiteralSet: new Set(
+      tagWhitelist.filter(entry => typeof entry === 'string')
+    ),
+    tagWhitelistRegex: tagWhitelist.filter(
+      entry => typeof entry === 'object' && entry instanceof RegExp
+    ),
+    cleanWhitespace,
     removeMdxCompilationArtifacts,
-    attachAST,
     jsx,
   };
 
