@@ -93,20 +93,21 @@ Whether to remove attributes that are (usually) artifacts of MDX compilation (`m
 
 Predicate function used as a performance escape hatch to filter MDX files that get parsed/indexed. Use if not all MDX files need to be indexed and build times are prohibitive
 
-**`tagWhitelist`** [array\<string | RegExp>] (optional, defaults to [...])
+**`tagWhitelist`** [array\<string | RegExp>] (optional, defaults to ['a', /^h[1-6]\$/)
 
 JSX components that will generate Gatsby data nodes in the final output (other nodes will still appear as other components' children and their children can generate nodes)
 
 ##### Default value
 
-By default, the plugin will generate tags for all nodes, except the following (generally due to being common or especially numerous):
+By default, the plugin will only generate Gatsby data nodes for the following elements:
 
-- `p`
-- `tr`
-- `th`
-- `td`
-- `MDXLayout`
-- `span`
+- `a`
+- `h1`
+- `h2`
+- `h3`
+- `h4`
+- `h5`
+- `h6`
 
 > **Note**: generally, most target use cases will opt to whitelist only specific tags to inspect. This is the reccommended approach (to improve performance), but the whitelist can be used as a blacklist by specifying a single regular expression with a [negative look-around](https://www.regular-expressions.info/lookaround.html).
 

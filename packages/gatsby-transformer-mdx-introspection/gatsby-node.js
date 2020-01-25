@@ -20,7 +20,7 @@ const defaultOptions = {
 
   // JSX components that will generate Gatsby data nodes in the final output (other nodes
   // will still appear as other components' children and their children can generate nodes)
-  tagWhitelist: ['a', /h[1-6]/],
+  tagWhitelist: ['a', /^h[1-6]$/],
 };
 
 // Generated node name
