@@ -9,14 +9,14 @@ module.exports = (themeOptions = {}) => ({
         path: path.resolve('./src/api-specs'),
       },
     },
-    {
-      resolve: '@commercetools-docs/gatsby-transformer-mdx-introspection',
-      options: {},
-    },
+    '@commercetools-docs/gatsby-transformer-mdx-introspection',
     {
       resolve: '@commercetools-docs/gatsby-transformer-raml',
       options: themeOptions.transformerRaml,
     },
-    '@commercetools-docs/gatsby-theme-docs',
+    {
+      resolve: '@commercetools-docs/gatsby-theme-docs',
+      options: themeOptions,
+    },
   ],
 });
