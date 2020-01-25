@@ -6,7 +6,7 @@ const convertComponentInMdxToTypeLocations = data => {
   const typeLocations = {};
 
   data.allComponentInMdx.nodes.forEach(node => {
-    const apiKeyAttribute = node.attributes.find(att => att.name === 'apikey');
+    const apiKeyAttribute = node.attributes.find(att => att.name === 'apiKey');
     const typeAttribute = node.attributes.find(att => att.name === 'type');
 
     const apiKey = apiKeyAttribute ? apiKeyAttribute.value : null;
@@ -31,17 +31,15 @@ export const useTypeLocations = () => {
   const queryResult = useStaticQuery(
     graphql`
       {
-        allComponentInMdx(filter: { component: { eq: "apitype" } }) {
+        allComponentInMdx(filter: { component: { eq: "ApiType" } }) {
           nodes {
             attributes {
               name
               value
             }
-            page: parent {
-              ... on Mdx {
-                fields {
-                  slug
-                }
+            mdx {
+              fields {
+                slug
               }
             }
           }
