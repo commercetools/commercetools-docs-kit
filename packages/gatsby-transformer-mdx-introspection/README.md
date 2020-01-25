@@ -33,12 +33,10 @@ query GetAllApiTypes {
         name
         value
       }
-      mdx: parent {
-        ... on Mdx {
-          file: parent {
-            ... on File {
-              relativePath
-            }
+      mdx {
+        file: parent {
+          ... on File {
+            relativePath
           }
         }
       }
