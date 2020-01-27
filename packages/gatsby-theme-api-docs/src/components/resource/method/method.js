@@ -8,19 +8,14 @@ import {
 } from '@commercetools-docs/ui-kit';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { generateEndpointURN } from '../../../../utils/ctp-urn';
+import { generateEndpointURN } from '../../../utils/ctp-urn';
 import {
   oauth2Scopes,
   queryParametersTitle,
   pathParametersTitle,
   requestRepresentation,
-} from '../../../../utils/constants';
-import {
-  tokens,
-  dimensions,
-  colors,
-  typography,
-} from '../../../../design-system';
+} from '../../../utils/constants';
+import { tokens, dimensions, colors, typography } from '../../../design-system';
 import UrlScopesResponses from './url-scopes-responses';
 import Parameters from './parameters';
 import RequestRepresentation from './request-representation';

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
-import filterOutApiTypeSubtypes from '../../../utils/filter-out-api-subtypes';
-import { generateTypeURN } from '../../../utils/ctp-urn';
-import { useApiTypes } from '../../../hooks/use-api-types';
-import { apiTypeStrings } from '../../../utils/constants';
+import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
+import { generateTypeURN } from '../../utils/ctp-urn';
+import { useApiTypes } from '../../hooks/use-api-types';
+import { apiTypeStrings } from '../../utils/constants';
 import Children from './children';
 import ChildrenUnionLike from './children-union-like';
 

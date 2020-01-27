@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
-import capitalizeFirst from '../../../../utils/capitalize-first';
+import capitalizeFirst from '../../../utils/capitalize-first';
 import Required from '../../required';
 import Table from '../../table';
 

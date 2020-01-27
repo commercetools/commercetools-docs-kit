@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
-import { useTypeLocations } from '../../../../../hooks/use-type-locations';
-import capitalizeFirst from '../../../../../utils/capitalize-first';
-import renderTypeAsLink from '../../../../../utils/render-type-as-link';
+import { useTypeLocations } from '../../../../hooks/use-type-locations';
+import capitalizeFirst from '../../../../utils/capitalize-first';
+import renderTypeAsLink from '../../../../utils/render-type-as-link';
 import Required from '../../../required';
 
 const NameType = ({

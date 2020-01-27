@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import extractAdditionalInfo from '../../../../../utils/extract-additional-info';
-import markdownToReact from '../../../../../utils/markdown-to-react';
+import extractAdditionalInfo from '../../../../utils/extract-additional-info';
+import markdownToReact from '../../../../utils/markdown-to-react';
 import Enum from '../../enum';
 
 const Description = ({ property, discriminatorValue }) => {

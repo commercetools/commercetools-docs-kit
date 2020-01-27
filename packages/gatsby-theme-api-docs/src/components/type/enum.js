@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { values as valuesStr } from '../../../utils/constants';
-import markdownToReact from '../../../utils/markdown-to-react';
+import { values as valuesStr } from '../../utils/constants';
+import markdownToReact from '../../utils/markdown-to-react';
 
 const Enum = ({ description, values }) => {
   if (!description && !values) {
