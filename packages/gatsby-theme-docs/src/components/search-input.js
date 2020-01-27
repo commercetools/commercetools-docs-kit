@@ -42,9 +42,13 @@ const Input = styled.input`
     color: ${designSystem.colors.light.textFaded};
   }
   &:active,
-  &:focus {
+  &:focus:not(:disabled) {
     border-color: ${designSystem.colors.light.borderHighlight};
     padding-right: ${designSystem.dimensions.spacings.xs};
+  }
+  &:disabled {
+    background-color: ${designSystem.colors.light
+      .surfaceForSearchInputWhenDisabled};
   }
 `;
 const SearchInputIcon = styled.span`
@@ -63,10 +67,12 @@ const SearchInput = React.forwardRef((props, ref) => {
   const { onFocus } = props;
   const [isActive, setIsActive] = React.useState(false);
   const handleFocus = event => {
+    if (props.isDisabled) return;
     if (onFocus) onFocus(event);
     setIsActive(true);
   };
   const handleBlur = () => {
+    if (props.isDisabled) return;
     setIsActive(false);
   };
   React.useEffect(() => {
@@ -77,11 +83,15 @@ const SearchInput = React.forwardRef((props, ref) => {
         else setIsActive(true);
       }
     };
-    window.addEventListener('keyup', onKeyPress);
+    if (!props.isDisabled) {
+      window.addEventListener('keyup', onKeyPress);
+    }
     return () => {
-      window.removeEventListener('keyup', onKeyPress);
+      if (!props.isDisabled) {
+        window.removeEventListener('keyup', onKeyPress);
+      }
     };
-  }, [onFocus]);
+  }, [onFocus, props.isDisabled]);
   return (
     <Container>
       <SearchInputIcon position="left">
@@ -108,6 +118,7 @@ const SearchInput = React.forwardRef((props, ref) => {
         aria-label="Search"
         onFocus={handleFocus}
         onBlur={handleBlur}
+        disabled={props.isDisabled}
       />
     </Container>
   );
@@ -118,6 +129,7 @@ SearchInput.propTypes = {
   size: PropTypes.oneOf(['small', 'scale']).isRequired,
   onFocus: PropTypes.func,
   onClose: PropTypes.func,
+  isDisabled: PropTypes.bool.isRequired,
 };
 
 export default SearchInput;
