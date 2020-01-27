@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { tokens, dimensions, typography } from '../../../../../design-system';
+import { tokens, dimensions, typography } from '../../../../design-system';
 
-import { useTypeLocations } from '../../../../../hooks/use-type-locations';
-import renderTypeAsLink from '../../../../../utils/render-type-as-link';
+import { useTypeLocations } from '../../../../hooks/use-type-locations';
+import renderTypeAsLink from '../../../../utils/render-type-as-link';
 import Title from './title';
 
 const ResponseCode = styled.span`

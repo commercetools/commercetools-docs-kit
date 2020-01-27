@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
-import useReadResourceByResourcePath from '../../hooks/use-read-resource-by-resource-path';
+import useReadResourceByResourcePath from '../hooks/use-read-resource-by-resource-path';
 import Method from './resource/method';
 
 const Container = styled.div`

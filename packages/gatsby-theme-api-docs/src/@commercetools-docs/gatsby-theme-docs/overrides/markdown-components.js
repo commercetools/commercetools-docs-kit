@@ -1,6 +1,6 @@
-import ApiType from '../../../components/api/type';
-import ApiEndpoint from '../../../components/api/endpoint';
-import ApiEndpointsForResource from '../../../components/api/endpoints-for-resource';
+import ApiType from '../../../components/type';
+import ApiEndpoint from '../../../components/endpoint';
+import ApiEndpointsForResource from '../../../components/endpoints-for-resource';
 
 const markdownComponents = {
   ApiType,

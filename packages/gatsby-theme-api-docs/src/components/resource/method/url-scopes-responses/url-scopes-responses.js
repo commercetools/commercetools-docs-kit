@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-import { responseRepresentation } from '../../../../../utils/constants';
+import { responseRepresentation } from '../../../../utils/constants';
 import Scopes from './scopes';
 import Responses from './responses';
 

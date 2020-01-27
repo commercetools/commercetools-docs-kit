@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { designSystem as uiKitDesignSystem } from '@commercetools-docs/ui-kit';
-import { tokens, dimensions, colors, typography } from '../../design-system';
+import { tokens, dimensions, colors, typography } from '../design-system';
 
 const Table = styled.table`
   width: 100%;
