@@ -21,11 +21,13 @@ const Parameters = ({ title, parameters }) => {
           return (
             <tr key={parameter.name}>
               <td>
-                <p>
+                <p className="name-type">
                   <Markdown.InlineCode>{parameter.name}</Markdown.InlineCode>
                   {parameter.required ? <Required>*</Required> : null}
                 </p>
-                <p>{capitalizeFirst(parameter.type)}</p>
+                <p className="name name-type">
+                  {capitalizeFirst(parameter.type)}
+                </p>
               </td>
               <td>{parameter.description ? parameter.description : '-'}</td>
             </tr>
