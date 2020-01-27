@@ -19,9 +19,15 @@ const NameType = ({
       ? { type: property.items.type, displayPrefix: 'Array of ' }
       : { type: property.type, displayPrefix: '' };
 
+  const type = renderTypeAsLink(
+    apiKey,
+    capitalizeFirst(dataForTypeToLinkTo.type),
+    typeLocations
+  );
+
   return (
     <SpacingsStack scale="xs">
-      <p>
+      <p className="name-type">
         <Markdown.InlineCode>{property.name}</Markdown.InlineCode>
         {property.required ? <Required>*</Required> : null}
 
@@ -32,13 +38,9 @@ const NameType = ({
           </>
         ) : null}
       </p>
-      <p>
-        {dataForTypeToLinkTo.displayPrefix}
-        {renderTypeAsLink(
-          apiKey,
-          capitalizeFirst(dataForTypeToLinkTo.type),
-          typeLocations
-        )}
+      <p className="name-type">
+        <span className="name">{dataForTypeToLinkTo.displayPrefix}</span>
+        {typeof type === 'string' ? <span className="name">{type}</span> : type}
       </p>
     </SpacingsStack>
   );

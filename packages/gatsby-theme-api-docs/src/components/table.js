@@ -52,6 +52,15 @@ const Table = styled.table`
       :last-of-type {
         padding-left: ${uiKitDesignSystem.dimensions.spacings.m};
       }
+
+      .name {
+        color: ${uiKitDesignSystem.colors.light.textFaded};
+      }
+
+      .name-type {
+        font-size: ${uiKitDesignSystem.typography.fontSizes.small};
+        line-height: ${typography.lineHeights.propertyType};
+      }
     }
   }
 `;

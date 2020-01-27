@@ -43,5 +43,6 @@ export const typography = {
     methodTitle: designSystem.pxToRem('32px'),
     responseCode: designSystem.pxToRem('16px'),
     responseBodyType: designSystem.pxToRem('24px'),
+    propertyType: designSystem.pxToRem('20px'),
   },
 };

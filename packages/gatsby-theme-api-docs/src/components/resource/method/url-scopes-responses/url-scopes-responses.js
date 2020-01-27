@@ -11,14 +11,20 @@ import Responses from './responses';
 const Container = styled.div`
   padding: ${designSystem.dimensions.spacings.m};
 `;
+const BasePath = styled.span`
+  color: ${designSystem.colors.light.textFaded};
+`;
+const ResourceUriPath = styled.span`
+  font-weight: ${designSystem.typography.fontWeights.bold};
+`;
 
 const UrlScopesResponses = ({ apiKey, uris, scopes, responses }) => {
   return (
     <Container>
       <SpacingsStack scale="m">
         <p>
-          {uris.baseUri}
-          <strong>{uris.resourcePathUri}</strong>
+          <BasePath>{uris.baseUri}</BasePath>
+          <ResourceUriPath>{uris.resourcePathUri}</ResourceUriPath>
         </p>
 
         {scopes.scopes ? (
