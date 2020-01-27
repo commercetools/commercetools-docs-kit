@@ -151,7 +151,7 @@ const LayoutFooter = () => {
   `);
 
   /**
-   * The footer changes a bit the layout on mobile screens, as the position
+   * The footer changes the layout a bit on mobile screens, as the position
    * of some elements is different. This includes for example the logo, the
    * copyright and the privacy/imprint links.
    * To make this work, we need to do a couple of things:

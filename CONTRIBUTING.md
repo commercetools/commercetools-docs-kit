@@ -4,7 +4,7 @@ Please _read_ before contributing to commercetools Documentation Kit to get fami
 
 ## Core Ideas
 
-At commercetools we want to create documentation websites that are visually and functional consistent. To do so, commercetools provide a set of tools and components that should be used across the different websites, for example a Gatsby documentation theme.
+At commercetools we want to create documentation websites that are visually and functional consistent. To do so, commercetools provides this set of tools and components that should be used across the different websites, for example a Gatsby documentation theme.
 
 This repository contains all the necessary packages to build a documentation website. Some of them do not need to be used directly but are instead required by other packages. Let's have a deeper look.
 
@@ -33,7 +33,7 @@ This package exposes a binary script to run a link checker against a given built
 
 #### [gatsby-theme-api-docs](./packages/gatsby-theme-api-docs)
 
-This package implements a Gatsby theme on top of the core theme [gatsby-theme-docs](./packages/gatsby-theme-docs) and is used to document an HTTP API that implements the RAML spec.
+This package implements a Gatsby theme on top of the core theme [gatsby-theme-docs](./packages/gatsby-theme-docs) and is used to document an HTTP API that is defined using a RAML API specification.
 
 #### [gatsby-theme-docs](./packages/gatsby-theme-docs)
 
@@ -41,11 +41,11 @@ This package is most **important** one and contains the core logic of a Gatsby t
 
 #### [gatsby-transformer-mdx-introspection](./packages/gatsby-transformer-mdx-introspection)
 
-This package analyzes MDX pages to find out which React components have been used there, and exposes them GraphQL Nodes.
+This package analyzes MDX pages to find out which React components have been used on which page, and exposes that information as GatsbyJS GraphQL nodes.
 
 #### [gatsby-transformer-raml](./packages/gatsby-transformer-raml)
 
-This package exposes RAML documents into GraphQL Nodes.
+This package exposes RAML documents into GraphQL nodes.
 
 #### [ui-kit](./packages/ui-kit)
 
