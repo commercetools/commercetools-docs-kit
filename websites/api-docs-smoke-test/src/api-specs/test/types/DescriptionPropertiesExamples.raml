@@ -1,0 +1,31 @@
+#%RAML 1.0 DataType
+displayName: DescriptionPropertiesExamples
+type: object
+(builtinType): object
+examples:
+  fullExample:
+    displayName: Full Example
+    description: |-
+      This **markdown** formatted description of the code example is to be shown with it.
+      The title of this example must be "Full Example" (displayName overrides the name).
+      The JSON contained must be code highlighted because the mime type is set.
+    strict: true
+    value: !include ../examples/DescriptionPropertiesExamples-fullExample.json
+  simpleExample:
+    strict: true
+    value: !include ../examples/DescriptionPropertiesExamples-simpleExample.json
+description: |-
+  A type with description, properties and examples. Just to make it a little longer - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus interdum libero, a ultrices metus malesuada non. Etiam scelerisque libero a arcu dictum consectetur.
+properties:
+  foo:
+    type: string
+    (builtinType): string
+    required: true
+  baz:
+    type: integer
+    (builtinType): integer
+    required: true
+  boo:
+    type: boolean
+    (builtinType): boolean
+    required: true

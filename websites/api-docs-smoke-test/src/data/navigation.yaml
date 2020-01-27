@@ -40,6 +40,8 @@
       path: /types/single-example-test-type/
     - title: SingleFullExampleTestType
       path: /types/single-full-example-test-type/
+    - title: DescriptionPropertiesExamples
+      path: /types/description-properties-examples/
 - chapter-title: Endpoints
   pages:
     - title: GET Resource
