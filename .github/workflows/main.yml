@@ -46,6 +46,8 @@ jobs:
 
       - name: Building websites for production
         run: yarn build
+        env:
+          ENABLE_SEARCH: 'true'
 
       - name: Running Visual Regression Tests
         uses: percy/snapshot-action@v0.1.1
