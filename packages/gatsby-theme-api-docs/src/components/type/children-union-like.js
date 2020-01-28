@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { apiTypeStrings } from '../../utils/constants';
 import Children from './children';
 
 const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
@@ -17,6 +18,7 @@ const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
             <Children
               apiType={subType}
               parentDiscriminator={apiType.discriminator}
+              strings={apiTypeStrings}
             />
           </SpacingsStack>
         ))}
@@ -28,7 +30,6 @@ const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
 ChildrenUnionLike.propTypes = {
   apiType: PropTypes.object.isRequired,
   apiTypeSubTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  strings: PropTypes.object,
 };
 
 export default ChildrenUnionLike;
