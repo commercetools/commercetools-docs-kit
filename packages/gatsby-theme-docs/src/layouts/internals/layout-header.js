@@ -201,17 +201,19 @@ const LayoutHeader = props => (
           <>
             <MediaQuery forViewport="mobile">
               <IconButton
+                icon={<SearchIcon />}
                 size="big"
                 label="Open search dialog"
                 onClick={props.openSearchDialog}
-                icon={<SearchIcon />}
+                isDisabled={props.excludeFromSearchIndex}
               />
             </MediaQuery>
             <MediaQuery forViewport="tablet">
               <SearchInput
                 id="search-input-placeholder"
-                onFocus={props.openSearchDialog}
                 size="small"
+                onFocus={props.openSearchDialog}
+                isDisabled={props.excludeFromSearchIndex}
               />
             </MediaQuery>
           </>

@@ -31,6 +31,7 @@ export const colors = {
     surfaceWarning: customProperties.colorWarning95,
     surfaceError: customProperties.colorError95,
     surfaceSearchHighlight: customProperties.colorAccent95,
+    surfaceForSearchInputWhenDisabled: customProperties.colorNeutral90,
     // Different tones of text
     textPrimary: customProperties.colorSolid,
     textSecondary: '#666666',
