@@ -35,7 +35,14 @@ const ApiType = props => {
           strings={apiTypeStrings}
         />
       ) : (
-        <Children apiType={matchedApiType} strings={apiTypeStrings} />
+        <Children
+          apiType={matchedApiType}
+          strings={apiTypeStrings}
+          renderDescriptionBelowProperties={
+            props.renderDescriptionBelowProperties
+          }
+          propertiesTableTitle={props.propertiesTableTitle}
+        />
       )}
     </div>
   );
@@ -44,6 +51,11 @@ const ApiType = props => {
 ApiType.propTypes = {
   apiKey: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  renderDescriptionBelowProperties: PropTypes.bool,
+  propertiesTableTitle: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
 };
 
 export default ApiType;
