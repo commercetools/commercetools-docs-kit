@@ -32,7 +32,6 @@ const ApiType = props => {
         <ChildrenUnionLike
           apiType={matchedApiType}
           apiTypeSubTypes={apiTypeSubTypes}
-          strings={apiTypeStrings}
         />
       ) : (
         <Children
