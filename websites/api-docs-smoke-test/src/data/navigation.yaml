@@ -40,6 +40,8 @@
       path: /types/single-example-test-type/
     - title: SingleFullExampleTestType
       path: /types/single-full-example-test-type/
+    - title: Page with missing type
+      path: /types/page-with-missing-type/
 - chapter-title: Endpoints
   pages:
     - title: GET Resource

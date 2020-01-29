@@ -45,3 +45,5 @@ overrides:
   - files: ['*.spec.js']
     rules:
       'react/display-name': 0
+globals:
+  __DEVELOPMENT__: readonly

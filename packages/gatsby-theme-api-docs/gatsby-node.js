@@ -17,3 +17,14 @@ exports.onPreBootstrap = ({ reporter }) => {
     }
   });
 };
+
+exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
+  actions.setWebpackConfig({
+    plugins: [
+      plugins.define({
+        // Provide development enviroment identifier to client side.
+        __DEVELOPMENT__: stage === 'develop' || stage === 'develop-html',
+      }),
+    ],
+  });
+};

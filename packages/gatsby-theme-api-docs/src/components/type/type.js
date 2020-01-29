@@ -18,9 +18,7 @@ const ApiType = props => {
   });
 
   if (!matchedApiType) {
-    return (
-      <ContentNotifications.Error>{`Type with name '${props.type}' not found in '${props.apiKey}' API`}</ContentNotifications.Error>
-    );
+    return doIfMissingType(props.type, props.apiKey);
   }
 
   const apiTypeSubTypes = filterOutApiTypeSubtypes(matchedApiType, apiTypes);
@@ -46,6 +44,16 @@ const ApiType = props => {
     </div>
   );
 };
+
+function doIfMissingType(type, apiKey) {
+  const errorMsg = `Type with name '${type}' not found in '${apiKey}' API`;
+
+  if (__DEVELOPMENT__) {
+    return <ContentNotifications.Error>{errorMsg}</ContentNotifications.Error>;
+  }
+
+  throw new Error(errorMsg);
+}
 
 ApiType.propTypes = {
   apiKey: PropTypes.string.isRequired,
