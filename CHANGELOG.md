@@ -1,3 +1,36 @@
+## [1.7.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.0...v1.7.1) (2020-01-29)
+
+#### 🐛 Type: Bug
+
+- `writing-style`
+  - [#244](https://github.com/commercetools/commercetools-docs-kit/pull/244) fix(writing-style): make custom apps capitalized ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-api-docs`
+  - [#245](https://github.com/commercetools/commercetools-docs-kit/pull/245) fix: union type failed to render since it has examples ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-docs`, `ui-kit`
+  - [#243](https://github.com/commercetools/commercetools-docs-kit/pull/243) fix(theme): disable search input when website has search index disabled ([@emmenko](https://github.com/emmenko))
+
+#### 🔮 Type: Chore
+
+- [#234](https://github.com/commercetools/commercetools-docs-kit/pull/234) chore: ignore .vscode/settings.json, add recommended.code-workspace ([@emmenko](https://github.com/emmenko))
+
+#### ✍️ Type: Documentation
+
+- `gatsby-theme-docs`, `writing-style`
+  - [#233](https://github.com/commercetools/commercetools-docs-kit/pull/233) docs: improve wording and document some missing things ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-api-docs`
+  - [#239](https://github.com/commercetools/commercetools-docs-kit/pull/239) refactor: move components one level up ([@davifantasia](https://github.com/davifantasia))
+
+#### 🤖 Type: Dependencies
+
+- Other
+  - [#238](https://github.com/commercetools/commercetools-docs-kit/pull/238) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+  - [#237](https://github.com/commercetools/commercetools-docs-kit/pull/237) chore(deps): update all dependencies (major) ([@renovate[bot]](https://github.com/apps/renovate))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`
+  - [#236](https://github.com/commercetools/commercetools-docs-kit/pull/236) chore(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.7.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.6.0...v1.7.0) (2020-01-24)
 
 #### 🐛 Type: Bug
