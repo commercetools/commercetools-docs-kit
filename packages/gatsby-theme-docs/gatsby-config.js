@@ -38,7 +38,12 @@ module.exports = (themeOptions = {}) => {
   return {
     siteMetadata: {
       author: 'commercetools',
-      productionHostname: 'docs.commercetools.com',
+      // NOTE: for the time being, until all or most of the legacy docs are migrated
+      // to the new docs, we need to keep this functionality "disabled" to keep
+      // absolute links as external. This is important for the broken link checker,
+      // otherwise we need to whitelist all links to the legacy docs.
+      productionHostname: 'unknown',
+      // productionHostname: 'docs.commercetools.com',
       betaLink: null,
     },
     plugins: [
