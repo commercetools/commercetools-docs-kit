@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.1...v1.7.2) (2020-01-29)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`, `writing-style`
+  - [#247](https://github.com/commercetools/commercetools-docs-kit/pull/247) fix(writing-style): mapping of custom apps casing ([@emmenko](https://github.com/emmenko))
+
 ## [1.7.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.0...v1.7.1) (2020-01-29)
 
 #### 🐛 Type: Bug
