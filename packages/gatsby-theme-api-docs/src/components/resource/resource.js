@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import useReadResourceByResourcePath from '../../hooks/use-read-resource-by-resource-path';
+import doIfMissingResource from '../../utils/do-if-missing-resource';
 import Method from './method';
 
 const Resource = ({ apiKey, resource }) => {
   const resourceObj = useReadResourceByResourcePath(apiKey, resource);
 
   if (!resourceObj) {
-    return (
-      <ContentNotifications.Error>{`Resource '${resource}' not found in API`}</ContentNotifications.Error>
-    );
+    return doIfMissingResource(apiKey, resource);
   }
 
   const methods = ['post', 'get', 'delete'];

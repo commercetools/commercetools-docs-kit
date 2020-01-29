@@ -60,3 +60,7 @@
       path: /endpoints/simple-resource-delete-by-id/
     - title: All Endpoints of Resource
       path: /endpoints/endpoints-for-resource/
+    - title: Missing Method
+      path: /endpoints/missing-method/
+    - title: Missing Resource
+      path: /endpoints/missing-resource/
