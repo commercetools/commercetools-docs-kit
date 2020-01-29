@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../utils/ctp-urn';
 import { useApiTypes } from '../../hooks/use-api-types';
+import doIfMissingInApi from '../../utils/do-if-missing-in-api';
 import { apiTypeStrings } from '../../utils/constants';
 import Children from './children';
 import ChildrenUnionLike from './children-union-like';
@@ -18,7 +18,9 @@ const ApiType = props => {
   });
 
   if (!matchedApiType) {
-    return doIfMissingType(props.type, props.apiKey);
+    return doIfMissingInApi(
+      `Type with name '${props.type}' not found in '${props.apiKey}' API`
+    );
   }
 
   const apiTypeSubTypes = filterOutApiTypeSubtypes(matchedApiType, apiTypes);
@@ -44,16 +46,6 @@ const ApiType = props => {
     </div>
   );
 };
-
-function doIfMissingType(type, apiKey) {
-  const errorMsg = `Type with name '${type}' not found in '${apiKey}' API`;
-
-  if (__DEVELOPMENT__) {
-    return <ContentNotifications.Error>{errorMsg}</ContentNotifications.Error>;
-  }
-
-  throw new Error(errorMsg);
-}
 
 ApiType.propTypes = {
   apiKey: PropTypes.string.isRequired,
