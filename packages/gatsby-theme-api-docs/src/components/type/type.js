@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../utils/ctp-urn';
 import { useApiTypes } from '../../hooks/use-api-types';
-import doIfMissingInApi from '../../utils/do-if-missing-in-api';
+import reportError from '../../utils/report-error';
 import { apiTypeStrings } from '../../utils/constants';
 import Children from './children';
 import ChildrenUnionLike from './children-union-like';
@@ -18,7 +18,7 @@ const ApiType = props => {
   });
 
   if (!matchedApiType) {
-    return doIfMissingInApi(
+    return reportError(
       `Type with name '${props.type}' not found in '${props.apiKey}' API`
     );
   }

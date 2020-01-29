@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
 
-function doIfMissingInApi(errorMsg) {
+function reportError(errorMsg) {
   if (process.env.NODE_ENV !== 'production') {
     return <ContentNotifications.Error>{errorMsg}</ContentNotifications.Error>;
   }
@@ -9,4 +9,4 @@ function doIfMissingInApi(errorMsg) {
   throw new Error(errorMsg);
 }
 
-export default doIfMissingInApi;
+export default reportError;
