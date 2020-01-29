@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import useReadResourceByResourcePath from '../hooks/use-read-resource-by-resource-path';
-import doIfMissingResource from '../utils/do-if-missing-resource';
+import doIfMissingInApi from '../utils/do-if-missing-in-api';
 import Method from './resource/method';
 
 const Container = styled.div`
@@ -14,7 +14,9 @@ const ResourceMethod = ({ apiKey, resource, method }) => {
   const resourceObject = useReadResourceByResourcePath(apiKey, resource);
 
   if (!resourceObject) {
-    return doIfMissingResource(apiKey, resource);
+    return doIfMissingInApi(
+      `Resource '${resource}' not found in '${apiKey}' API`
+    );
   }
 
   const methodObject = resourceObject[method.toLowerCase()];

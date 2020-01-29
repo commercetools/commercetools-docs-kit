@@ -1,14 +1,12 @@
 import React from 'react';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
 
-function doIfMissingResource(apiKey, resource) {
-  const errorMsg = `Resource '${resource}' not found in '${apiKey}' API`;
-
-  if (__DEVELOPMENT__) {
+function doIfMissingInApi(errorMsg) {
+  if (process.env.NODE_ENV !== 'production') {
     return <ContentNotifications.Error>{errorMsg}</ContentNotifications.Error>;
   }
 
   throw new Error(errorMsg);
 }
 
-export default doIfMissingResource;
+export default doIfMissingInApi;

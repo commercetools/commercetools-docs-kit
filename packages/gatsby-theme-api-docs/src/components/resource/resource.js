@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import useReadResourceByResourcePath from '../../hooks/use-read-resource-by-resource-path';
-import doIfMissingResource from '../../utils/do-if-missing-resource';
+import doIfMissingInApi from '../../utils/do-if-missing-in-api';
 import Method from './method';
 
 const Resource = ({ apiKey, resource }) => {
   const resourceObj = useReadResourceByResourcePath(apiKey, resource);
 
   if (!resourceObj) {
-    return doIfMissingResource(apiKey, resource);
+    return doIfMissingInApi(
+      `Resource '${resource}' not found in '${apiKey}' API`
+    );
   }
 
   const methods = ['post', 'get', 'delete'];
