@@ -6,13 +6,27 @@ action:
   name: replace
 swap:
   MC: Merchant Center
+  mc: Merchant Center
   merchant center: Merchant Center
   Merchant center: Merchant Center
   merchant Center: Merchant Center
-  Custom Applications: custom applications
-  Custom applications: custom applications
-  custom Applications: custom applications
-  custom apps: custom applications
-  Custom Apps: custom applications
-  MC apps: custom applications
-  MC Apps: custom applications
+  custom applications: Custom Applications
+  Custom applications: Custom Applications
+  custom Applications: Custom Applications
+  custom apps: Custom Applications
+  custom Apps: Custom Applications
+  Custom apps: Custom Applications
+  custom application: Custom Application
+  Custom application: Custom Application
+  custom Application: Custom Application
+  custom app: Custom Application
+  custom App: Custom Application
+  Custom app: Custom Application
+  MC apps: Custom Applications
+  MC Apps: Custom Applications
+  mc apps: Custom Applications
+  mc Apps: Custom Applications
+  MC app: Custom Application
+  MC App: Custom Application
+  mc app: Custom Application
+  mc App: Custom Application

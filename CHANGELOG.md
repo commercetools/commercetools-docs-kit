@@ -3,7 +3,7 @@
 #### 🐛 Type: Bug
 
 - `writing-style`
-  - [#244](https://github.com/commercetools/commercetools-docs-kit/pull/244) fix(writing-style): make custom apps capitalized ([@emmenko](https://github.com/emmenko))
+  - [#244](https://github.com/commercetools/commercetools-docs-kit/pull/244) fix(writing-style): make Custom Applications capitalized ([@emmenko](https://github.com/emmenko))
 - `gatsby-theme-api-docs`
   - [#245](https://github.com/commercetools/commercetools-docs-kit/pull/245) fix: union type failed to render since it has examples ([@davifantasia](https://github.com/davifantasia))
 - `gatsby-theme-docs`, `ui-kit`
