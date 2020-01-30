@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+displayName: BooleanAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: boolean
+description: |-
+  This type represents an attribute which value is either "true" or "false".
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - boolean
+    required: true
+  value:
+    type: boolean
+    (builtinType): boolean
+    required: true

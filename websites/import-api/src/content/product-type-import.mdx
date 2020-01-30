@@ -1,0 +1,47 @@
+---
+title: ProductTypeImport
+---
+
+# Representations
+
+## ProductTypeImport
+
+<ApiType apiKey="import" type="ProductTypeImport" />
+
+## ProductVariantKeyReference
+
+<ApiType apiKey="import" type="ProductVariantKeyReference" />
+
+# Endpoints
+
+## Request Product Type Data to be Imported
+
+<ApiEndpoint
+  apiKey="import"
+  resource="/{projectKey}/product-types/importSinkKey={importSinkKey}"
+  method="POST"
+/>
+
+## Request Product Types to be Deleted
+
+<ApiEndpoint
+  apiKey="import"
+  resource="/{projectKey}/product-types/importSinkKey={importSinkKey}/resourceKey={resourceKey}"
+  method="DELETE"
+/>
+
+## Get Product Type Import Operations of a Sink
+
+<ApiEndpoint
+  apiKey="import"
+  resource="/{projectKey}/product-types/importSinkKey={importSinkKey}/import-operations"
+  method="GET"
+/>
+
+## Get Product Type Import Operation of a Sink
+
+<ApiEndpoint
+  apiKey="import"
+  resource="/{projectKey}/product-types/importSinkKey={importSinkKey}/import-operations/{id}"
+  method="GET"
+/>

@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: SuggestTokenizer
+type: object
+(builtinType): object
+discriminator: type
+(oneOf):
+- CustomTokenizer
+- WhitespaceTokenizer
+properties:
+  type:
+    type: string
+    (builtinType): string
+    required: true

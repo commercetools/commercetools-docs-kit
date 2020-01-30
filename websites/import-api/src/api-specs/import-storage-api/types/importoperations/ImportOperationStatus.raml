@@ -1,0 +1,27 @@
+#%RAML 1.0 DataType
+displayName: ImportOperationStatus
+type: object
+(builtinType): object
+description: |-
+  The validation status of a created operation.
+properties:
+  operationId:
+    type: string
+    (builtinType): string
+    description: |-
+      Id of the import operation.
+    required: false
+  state:
+    type: ImportOperationState
+    (builtinType): string
+    description: |-
+      Validation state of the import operation.
+    required: true
+  errors:
+    type: array
+    items:
+      type: ErrorObject
+    (builtinType): array
+    description: |-
+      Validation errors for the import operation.
+    required: false

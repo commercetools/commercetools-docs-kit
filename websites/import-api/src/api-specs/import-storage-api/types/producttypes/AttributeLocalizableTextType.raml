@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+displayName: AttributeLocalizableTextType
+type: AttributeType
+(builtinType): object
+discriminatorValue: ltext
+properties:
+  name:
+    type: string
+    (builtinType): string
+    enum:
+    - ltext
+    required: true

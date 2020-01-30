@@ -1,0 +1,36 @@
+#%RAML 1.0 DataType
+displayName: ImportOperationPagedResponse
+type: object
+(builtinType): object
+description: |-
+  This type represents a paged import operation result.
+properties:
+  limit:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The maximum number of import operations returned for a page.
+    required: true
+  offset:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The offset supplied by the client or the server default. It is the number of elements skipped.
+    required: true
+  count:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The actual number of results returned by this response.
+    required: true
+  results:
+    type: array
+    items:
+      type: ImportOperation
+    (builtinType): array
+    description: |-
+      The results for this paged response.
+    required: true

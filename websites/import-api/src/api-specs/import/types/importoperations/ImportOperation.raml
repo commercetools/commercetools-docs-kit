@@ -1,0 +1,92 @@
+#%RAML 1.0 DataType
+displayName: ImportOperation
+type: object
+(builtinType): object
+examples:
+  accepted:
+    strict: true
+    value: !include ../../examples/importoperations/ImportOperation-accepted.json
+  unresolved:
+    strict: true
+    value: !include ../../examples/importoperations/ImportOperation-unresolved.json
+  validationFailed:
+    strict: true
+    value: !include ../../examples/importoperations/ImportOperation-validationFailed.json
+description: |-
+  Tracks the status of a single import resource as it is imported into the commercetools project.
+properties:
+  version:
+    format: long
+    type: integer
+    (builtinType): integer
+    description: |-
+      The import operation version.
+    required: true
+  importSinkKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The key of the import sink.
+    required: true
+  resourceKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The key of the import resource.
+    required: true
+  id:
+    type: string
+    (builtinType): string
+    description: |-
+      The identifier of the operaton that is to be commited
+    required: true
+  state:
+    type: ProcessingState
+    (builtinType): string
+    description: |-
+      The status of the import resource.
+    required: true
+  resourceVersion:
+    format: long
+    type: integer
+    (builtinType): integer
+    description: |-
+      When the resource is successfully imported, this represents the imported resource version
+    required: false
+  retryCount:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of request retries for processing the import resource.
+    required: true
+  errors:
+    type: array
+    items:
+      type: ErrorObject
+    (builtinType): array
+    description: |-
+      If an import resource does not import correctly, the state is set to `Rejected` or `ValidationFailed`
+      and this property contains the errors.
+    required: false
+  createdAt:
+    format: rfc3339
+    type: datetime
+    (builtinType): datetime
+    description: |-
+      When the import operation was created.
+    required: true
+  lastModifiedAt:
+    format: rfc3339
+    type: datetime
+    (builtinType): datetime
+    description: |-
+      When the import operation was modified.
+    required: true
+  expiresAt:
+    format: rfc3339
+    type: datetime
+    (builtinType): datetime
+    description: |-
+      When the import operation expires.
+    required: false

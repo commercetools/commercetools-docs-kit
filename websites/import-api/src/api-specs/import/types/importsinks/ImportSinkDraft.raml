@@ -1,0 +1,30 @@
+#%RAML 1.0 DataType
+displayName: ImportSinkDraft
+type: object
+(builtinType): object
+examples:
+  minimal:
+    strict: true
+    value: !include ../../examples/importsinks/ImportSinkDraft-minimal.json
+description: |-
+  The representation sent to the server when creating or updating an import sink.
+properties:
+  version:
+    format: int64
+    type: integer
+    (builtinType): integer
+    description: |-
+      The version of this resource.
+    required: false
+  key:
+    type: string
+    (builtinType): string
+    description: |-
+      The unique key of the import sink.
+    required: true
+  resourceType:
+    type: ImportResourceType
+    (builtinType): string
+    description: |-
+      The type of import resource sent to this import sink.
+    required: true

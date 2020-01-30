@@ -1,0 +1,28 @@
+# Resource
+(resourceName): ByProjectKeyImportSummariesImportSinkKeyByImportSinkKey
+(resourcePathUri): /{projectKey}/import-summaries/importSinkKey={importSinkKey}
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The commercetools project key.
+    required: true
+  importSinkKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The key of the import sink.
+    required: true
+get:
+  description: |-
+    Retrieves an import summary for the given import sink.
+    
+    The import summary is calculated on demand.
+  responses:
+    200:
+      body:
+        application/json:
+          type: ImportSummary
+          (builtinType): object

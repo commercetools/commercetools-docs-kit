@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+displayName: ReferenceSetAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: reference-set
+description: |-
+  This type represents an attribute which value is a set of references.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - reference-set
+    required: true
+  value:
+    type: array
+    items:
+      type: KeyReference
+    (builtinType): array
+    required: true

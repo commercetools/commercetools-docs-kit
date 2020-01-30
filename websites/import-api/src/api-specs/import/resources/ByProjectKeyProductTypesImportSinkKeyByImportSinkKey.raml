@@ -1,0 +1,30 @@
+# Resource
+(resourceName): ByProjectKeyProductTypesImportSinkKeyByImportSinkKey
+(resourcePathUri): /{projectKey}/product-types/importSinkKey={importSinkKey}
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The commercetools project key.
+    required: true
+  importSinkKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The import sink used to create the new resource
+    required: true
+post:
+  description: |-
+    Creates a new import request for product types
+  body:
+    application/json:
+      type: ProductTypeImportRequest
+      (builtinType): object
+  responses:
+    201:
+      body:
+        application/json:
+          type: ImportResponse
+          (builtinType): object

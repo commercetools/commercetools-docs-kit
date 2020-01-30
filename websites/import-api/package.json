@@ -1,0 +1,22 @@
+{
+  "name": "@commercetools-website/import-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "yarn develop",
+    "develop": "npx gatsby develop -o",
+    "serve": "npx gatsby serve --prefix-paths -o",
+    "clean": "npx gatsby clean",
+    "clean:develop": "yarn clean && yarn develop",
+    "build": "npx gatsby build --prefix-paths",
+    "prebuild": "yarn clean",
+    "postbuild": "rm -rf ../../public/import-api && mkdir -p ../../public && mv public ../../public/import-api"
+  },
+  "dependencies": {
+    "@commercetools-docs/gatsby-theme-api-docs": "1.7.2",
+    "gatsby": "2.18.23",
+    "gatsby-cli": "2.8.27",
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
+  }
+}

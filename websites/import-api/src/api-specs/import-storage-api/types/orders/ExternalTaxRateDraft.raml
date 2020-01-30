@@ -1,0 +1,31 @@
+#%RAML 1.0 DataType
+displayName: ExternalTaxRateDraft
+type: object
+(builtinType): object
+properties:
+  name:
+    type: string
+    (builtinType): string
+    required: true
+  amount:
+    type: number
+    (builtinType): number
+    required: false
+  country:
+    type: string
+    (builtinType): string
+    required: true
+  state:
+    type: string
+    (builtinType): string
+    required: false
+  subRates:
+    type: array
+    items:
+      type: SubRate
+    (builtinType): array
+    required: false
+  includedInPrice:
+    type: boolean
+    (builtinType): boolean
+    required: false

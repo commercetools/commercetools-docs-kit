@@ -1,0 +1,44 @@
+#%RAML 1.0 DataType
+displayName: UnresolvedImportResource
+type: object
+(builtinType): object
+description: |-
+  This type represents a resource with on or more unresolved references.
+properties:
+  resourceKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The key of the imported resource.
+    required: true
+  resourceType:
+    type: ImportResourceType
+    (builtinType): string
+    description: |-
+      The type of the imported resource.
+    required: true
+  resourceAsString:
+    type: string
+    (builtinType): string
+    description: |-
+      the resource which could not successfull imported
+    required: true
+  importSinkKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The key of the import sink
+    required: true
+  operationId:
+    type: string
+    (builtinType): string
+    description: |-
+      the identifier of the operaton that is to be commited
+    required: true
+  createdAt:
+    format: rfc3339
+    type: datetime
+    (builtinType): datetime
+    description: |-
+      The creation time of this import operation.
+    required: true

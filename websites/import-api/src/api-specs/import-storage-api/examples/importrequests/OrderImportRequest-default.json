@@ -1,0 +1,15 @@
+{
+  "type" : "order",
+  "resources" : [ {
+    "key" : "test-order-number",
+    "customer" : {
+      "typeId" : "customer",
+      "key" : "myKey"
+    },
+    "orderNumber" : "test-order-number",
+    "totalPrice" : {
+      "currencyCode" : "EUR",
+      "centAmount" : 4200
+    }
+  } ]
+}

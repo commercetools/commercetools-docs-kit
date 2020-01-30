@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+displayName: ImportResponse
+type: object
+(builtinType): object
+description: |-
+  The import response contains an import operation for each import resource sent with an import request. Use it for tracking the progress of imports to a commercetools project.
+  
+  This is a generic parent type. In practice, send a specific import request type (`CategoryImportRequest`, `OrderImportRequest`, etc.) to an import sink with a matching import type.
+properties:
+  operationStatus:
+    maxItems: 20
+    type: array
+    items:
+      type: ImportOperationStatus
+    (builtinType): array
+    required: true

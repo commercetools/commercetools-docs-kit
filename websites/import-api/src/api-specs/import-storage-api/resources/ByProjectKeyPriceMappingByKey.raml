@@ -1,0 +1,33 @@
+# Resource
+(resourceName): ByProjectKeyPriceMappingByKey
+(resourcePathUri): /{projectKey}/price-mapping/{key}
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    required: true
+  key:
+    type: string
+    (builtinType): string
+    description: |-
+      The key of the import price to retrieve.
+    required: true
+get:
+  description: |-
+    Retrieves the price mapping with the given key.
+  responses:
+    200:
+      body:
+        application/json:
+          type: PriceMapping
+          (builtinType): object
+delete:
+  description: |-
+    Deletes the price mapping with the given key.
+  responses:
+    200:
+      body:
+        application/json:
+          type: PriceMapping
+          (builtinType): object

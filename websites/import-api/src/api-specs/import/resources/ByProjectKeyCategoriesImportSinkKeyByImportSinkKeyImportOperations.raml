@@ -1,0 +1,47 @@
+# Resource
+(resourceName): ByProjectKeyCategoriesImportSinkKeyByImportSinkKeyImportOperations
+(resourcePathUri): /{projectKey}/categories/importSinkKey={importSinkKey}/import-operations
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The commercetools project key.
+    required: true
+  importSinkKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The import sink used to create the new resource
+    required: true
+get:
+  description: |-
+    Retrieves all category import operations of an import sink key.
+  queryParameters:
+    limit:
+      required: false
+      type: number
+      (builtinType): number
+    offset:
+      required: false
+      type: number
+      (builtinType): number
+    resourceKey:
+      required: false
+      type: string
+      (builtinType): string
+      description: |-
+        The key of the import operation to retrieve.
+    state:
+      required: false
+      type: ProcessingState
+      (builtinType): string
+      description: |-
+        The state of the import operations to retrieve.
+  responses:
+    200:
+      body:
+        application/json:
+          type: ImportOperationPagedResponse
+          (builtinType): object

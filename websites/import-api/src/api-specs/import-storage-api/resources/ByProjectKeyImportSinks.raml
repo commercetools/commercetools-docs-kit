@@ -1,0 +1,40 @@
+# Resource
+(resourceName): ByProjectKeyImportSinks
+(resourcePathUri): /{projectKey}/import-sinks
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    required: true
+post:
+  description: |-
+    Creates a new import sink.
+  body:
+    application/json:
+      type: ImportSinkDraft
+      (builtinType): object
+  responses:
+    201:
+      body:
+        application/json:
+          type: ImportSink
+          (builtinType): object
+get:
+  description: |-
+    Retrieves all import sinks for the given import sink.
+  queryParameters:
+    limit:
+      required: false
+      type: number
+      (builtinType): number
+    offset:
+      required: false
+      type: number
+      (builtinType): number
+  responses:
+    200:
+      body:
+        application/json:
+          type: ImportSinkPagedResponse
+          (builtinType): object

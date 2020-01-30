@@ -1,0 +1,30 @@
+# Resource
+(resourceName): ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKey
+(resourcePathUri): /{projectKey}/product-variant-patches/importSinkKey={importSinkKey}
+
+uriParameters:
+  projectKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The commercetools project key.
+    required: true
+  importSinkKey:
+    type: string
+    (builtinType): string
+    description: |-
+      The import sink used to create the new resource
+    required: true
+post:
+  description: |-
+    Creates a new import request for product variant patches
+  body:
+    application/json:
+      type: ProductVariantPatchRequest
+      (builtinType): object
+  responses:
+    201:
+      body:
+        application/json:
+          type: ImportResponse
+          (builtinType): object

@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+displayName: ImportResource
+type: object
+(builtinType): object
+(oneOf):
+- OrderImport
+- ProductImport
+description: |-
+  An import resource is identified by a key. This type is the base type of all import resources.
+properties:
+  key:
+    type: string
+    (builtinType): string
+    required: true

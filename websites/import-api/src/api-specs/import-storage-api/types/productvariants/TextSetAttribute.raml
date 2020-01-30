@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+displayName: TextSetAttribute
+type: Attribute
+(builtinType): object
+discriminatorValue: text-set
+description: |-
+  This type represents an attribute which value is a set of strings.
+properties:
+  type:
+    type: string
+    (builtinType): string
+    enum:
+    - text-set
+    required: true
+  value:
+    type: array
+    items:
+      type: string
+    (builtinType): array
+    required: true

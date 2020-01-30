@@ -1,0 +1,75 @@
+#%RAML 1.0 DataType
+displayName: OperationStates
+type: object
+(builtinType): object
+properties:
+  Accepted:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `Accepted`.
+    required: true
+  ValidationFailed:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `ValidationFailed`.
+    required: true
+  Unresolved:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `Unresolved`.
+    required: true
+  Resolved:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `Resolved`.
+    required: true
+  WaitForMasterVariant:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `WaitForMasterVariant`.
+    required: true
+  Imported:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `Imported`.
+    required: true
+  Deleted:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `Deleted`.
+    required: true
+  Rejected:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `Rejected`.
+    required: true
+  Skipped:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `Skipped`.
+    required: true
+  Expired:
+    format: float
+    type: number
+    (builtinType): number
+    description: |-
+      The number of import operations that are in the state `Expired`.
+    required: true
