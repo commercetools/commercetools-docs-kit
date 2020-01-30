@@ -52,11 +52,26 @@ const scenarios = [
     expectationMessage:
       'It should render an absolute URL in dev mode and a relative path in prod mode',
     ...(isCI
-      ? {
-          expected: {
-            url: `${
-              Cypress.config().baseUrl
-            }${URL_DOCS_SMOKE_TEST}views/code-blocks`,
+      ? // TODO: revert once productionHostname is back to normal
+        // ? {
+        //     expected: {
+        //       url: `${
+        //         Cypress.config().baseUrl
+        //       }${URL_DOCS_SMOKE_TEST}views/code-blocks`,
+        //     },
+        //   }
+        {
+          expected: {},
+          linkSelector: () => {
+            cy.get('a')
+              .contains('Link')
+              .parent()
+              .parent()
+              .should(
+                'have.prop',
+                'href',
+                'https://docs.commercetools.com/docs-smoke-test/views/code-blocks/'
+              );
           },
         }
       : {
@@ -125,14 +140,18 @@ const scenarios = [
     expectationMessage:
       'It should be a normal html link (only in `production` mode)',
     linkSelector: () => {
+      // Revert once productionHostname is back to normal
       cy.get('a')
         .contains('Link')
+        .parent()
+        .parent()
         .should(
           'have.prop',
           'href',
-          isCI
-            ? `${Cypress.config().baseUrl}/site-template`
-            : 'https://docs.commercetools.com/site-template'
+          // isCI
+          //   ? `${Cypress.config().baseUrl}/site-template`
+          //   : 'https://docs.commercetools.com/site-template'
+          'https://docs.commercetools.com/site-template'
         );
     },
     expected: {},

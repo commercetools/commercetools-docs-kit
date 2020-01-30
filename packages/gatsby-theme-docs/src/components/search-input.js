@@ -129,7 +129,7 @@ SearchInput.propTypes = {
   size: PropTypes.oneOf(['small', 'scale']).isRequired,
   onFocus: PropTypes.func,
   onClose: PropTypes.func,
-  isDisabled: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool,
 };
 
 export default SearchInput;
