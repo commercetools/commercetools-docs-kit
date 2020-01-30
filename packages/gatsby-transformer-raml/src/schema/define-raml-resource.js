@@ -9,6 +9,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         description: 'String',
         uriParameters: '[RamlResourceUriParameter!]',
         post: 'RamlResourcePost',
+        put: 'RamlResourcePost',
         get: 'RamlResourceGet',
         delete: 'RamlResourceDelete',
       },

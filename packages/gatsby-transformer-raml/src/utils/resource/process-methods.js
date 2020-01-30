@@ -3,7 +3,7 @@ const responsesToArray = require('./responses-to-array');
 
 function processMethods(resource) {
   const returnedMethod = JSON.parse(JSON.stringify(resource));
-  const methods = ['post', 'get', 'delete'];
+  const methods = ['post', 'put', 'get', 'delete'];
 
   methods.forEach(method => {
     if (returnedMethod[method]) {

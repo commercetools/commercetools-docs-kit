@@ -12,7 +12,7 @@ const Resource = ({ apiKey, resource }) => {
     return reportError(`Resource '${resource}' not found in '${apiKey}' API`);
   }
 
-  const methods = ['post', 'get', 'delete'];
+  const methods = ['post', 'put', 'get', 'delete'];
 
   return (
     <SpacingsStack scale="xl">

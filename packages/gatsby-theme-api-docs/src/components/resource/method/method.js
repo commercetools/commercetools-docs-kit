@@ -138,6 +138,7 @@ const Method = ({
 function computeMethodColor(methodName) {
   switch (methodName) {
     case 'post':
+    case 'put':
       return colors.light.methods.post;
     case 'delete':
       return colors.light.methods.delete;

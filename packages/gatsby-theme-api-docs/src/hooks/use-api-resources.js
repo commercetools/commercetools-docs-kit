@@ -49,6 +49,38 @@ export default () => {
                 }
               }
             }
+            put {
+              securedBy {
+                oauth_2_0 {
+                  scopes
+                }
+              }
+              displayName
+              description
+              queryParameters {
+                name
+                required
+                type
+                builtinType
+                description
+              }
+              body {
+                applicationjson {
+                  type
+                  builtinType
+                }
+              }
+              responses {
+                code
+                description
+                body {
+                  applicationjson {
+                    type
+                    builtinType
+                  }
+                }
+              }
+            }
             get {
               securedBy {
                 oauth_2_0 {
