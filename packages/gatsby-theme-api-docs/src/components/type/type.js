@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../utils/ctp-urn';
 import { useApiTypes } from '../../hooks/use-api-types';
+import reportError from '../../utils/report-error';
 import { apiTypeStrings } from '../../utils/constants';
 import Children from './children';
 import ChildrenUnionLike from './children-union-like';
@@ -18,8 +18,8 @@ const ApiType = props => {
   });
 
   if (!matchedApiType) {
-    return (
-      <ContentNotifications.Error>{`Type with name '${props.type}' not found in '${props.apiKey}' API`}</ContentNotifications.Error>
+    return reportError(
+      `Type with name '${props.type}' not found in '${props.apiKey}' API`
     );
   }
 
