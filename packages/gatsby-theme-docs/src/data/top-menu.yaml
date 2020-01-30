@@ -11,12 +11,14 @@
       href: https://docs.commercetools.com/software-development-kits
     # - label: Import and Export Tools
     #   href: https://docs.commercetools.com/import-api
+    #   beta: true
     - label: SUNRISE Starter Frontend
       href: https://docs.commercetools.com/sunrise
     - label: Tutorials
       href: https://docs.commercetools.com/tutorials-overview
-    # - label: Custom Applications
-    #   href: https://docs.commercetools.com/custom-applications
+    - label: Custom Applications
+      href: https://docs.commercetools.com/custom-applications
+      beta: true
     - label: FAQ
       href: https://docs.commercetools.com/faqs
 
