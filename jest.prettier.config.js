@@ -6,7 +6,7 @@ module.exports = {
     'ts',
     'tsx',
     'md',
-    'mdx',
+    // 'mdx',
     'css',
     'yaml',
     'yml',
@@ -18,7 +18,7 @@ module.exports = {
     '<rootDir>/**/*.tsx',
     '<rootDir>/**/*.css',
     '<rootDir>/**/*.md',
-    '<rootDir>/**/*.mdx',
+    // '<rootDir>/**/*.mdx',
     '<rootDir>/**/*.graphql',
   ],
 };

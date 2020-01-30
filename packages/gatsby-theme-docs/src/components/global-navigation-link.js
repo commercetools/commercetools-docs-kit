@@ -1,12 +1,12 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import { css } from '@emotion/core';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import Link from './link';
 
-const GlobalNavigationLink = styled(Link)`
+const linkStyles = css`
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   line-height: 1.75;
   color: ${designSystem.colors.light.textPrimary} !important;
-  text-decoration: none !important;
 
   svg {
     * {
@@ -24,5 +24,9 @@ const GlobalNavigationLink = styled(Link)`
     }
   }
 `;
+
+const GlobalNavigationLink = props => (
+  <Link {...props} css={linkStyles} noUnderline={true} />
+);
 
 export default GlobalNavigationLink;
