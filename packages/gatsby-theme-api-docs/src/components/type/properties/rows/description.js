@@ -12,9 +12,7 @@ const Description = ({ property, discriminatorValue }) => {
     <div>
       {renderEnums ? (
         <Enum
-          description={{
-            text: property.description,
-          }}
+          description={property.description}
           values={property.enumeration}
         />
       ) : (
