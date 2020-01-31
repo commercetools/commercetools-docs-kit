@@ -3,7 +3,40 @@ import { useStaticQuery, graphql } from 'gatsby';
 export default () => {
   const queryResult = useStaticQuery(
     graphql`
-      {
+      fragment portOrPutMethod on RamlResourcePost {
+        securedBy {
+          oauth_2_0 {
+            scopes
+          }
+        }
+        displayName
+        description
+        queryParameters {
+          name
+          required
+          type
+          builtinType
+          description
+        }
+        body {
+          applicationjson {
+            type
+            builtinType
+          }
+        }
+        responses {
+          code
+          description
+          body {
+            applicationjson {
+              type
+              builtinType
+            }
+          }
+        }
+      }
+
+      query GetAllRamlResources {
         allRamlResource {
           nodes {
             apiKey
@@ -18,68 +51,10 @@ export default () => {
               required
             }
             post {
-              securedBy {
-                oauth_2_0 {
-                  scopes
-                }
-              }
-              displayName
-              description
-              queryParameters {
-                name
-                required
-                type
-                builtinType
-                description
-              }
-              body {
-                applicationjson {
-                  type
-                  builtinType
-                }
-              }
-              responses {
-                code
-                description
-                body {
-                  applicationjson {
-                    type
-                    builtinType
-                  }
-                }
-              }
+              ...portOrPutMethod
             }
             put {
-              securedBy {
-                oauth_2_0 {
-                  scopes
-                }
-              }
-              displayName
-              description
-              queryParameters {
-                name
-                required
-                type
-                builtinType
-                description
-              }
-              body {
-                applicationjson {
-                  type
-                  builtinType
-                }
-              }
-              responses {
-                code
-                description
-                body {
-                  applicationjson {
-                    type
-                    builtinType
-                  }
-                }
-              }
+              ...portOrPutMethod
             }
             get {
               securedBy {
