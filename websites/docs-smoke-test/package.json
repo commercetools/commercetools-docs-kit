@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/docs-smoke-test",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "private": true,
   "scripts": {
     "start": "yarn develop",
@@ -13,7 +13,7 @@
     "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "1.7.2",
+    "@commercetools-docs/gatsby-theme-docs": "1.7.3",
     "gatsby": "2.19.6",
     "gatsby-cli": "2.8.27"
   }
