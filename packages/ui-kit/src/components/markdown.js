@@ -233,7 +233,7 @@ const withAnchorLink = Component => props => {
         display: flex;
         align-items: baseline;
         :hover {
-          [role='anchor-link'] {
+          [data-link-type='anchor-link'] {
             svg {
               * {
                 fill: ${colors.light.linkNavigation};
@@ -247,7 +247,7 @@ const withAnchorLink = Component => props => {
       `}
     >
       <span>{props.children}</span>
-      <a href={`#${props.id}`} role="anchor-link">
+      <a href={`#${props.id}`} data-link-type="anchor-link">
         <RibbonIcon />
       </a>
     </Component>

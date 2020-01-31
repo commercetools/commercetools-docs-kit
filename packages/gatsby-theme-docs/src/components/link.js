@@ -99,7 +99,7 @@ const PureLink = extendedProps => {
   const { location, noUnderline, ...props } = extendedProps;
   // For image links, return the link as-is.
   if (props.href.startsWith(withPrefix('/static'))) {
-    return <a {...props} role="image-link" />;
+    return <a {...props} data-link-type="image-link" />;
   }
 
   // Remove possible `pathPrefix` from both the `location.pathname` and the provided `href`.
@@ -148,7 +148,7 @@ const PureLink = extendedProps => {
     return (
       <ExternalSiteLink
         {...props}
-        role="external-link"
+        data-link-type="external-link"
         css={getStylesFromProps({ noUnderline })}
       >
         {linkWithIcon}
@@ -163,7 +163,7 @@ const PureLink = extendedProps => {
   if (isAnchorLink || isLinkToSamePage) {
     return (
       <AnchorLink
-        role="anchor-link"
+        data-link-type="anchor-link"
         href={trimTrailingSlash(hrefObject.hash)}
         className={props.className}
         css={getStylesFromProps({ noUnderline })}
@@ -185,7 +185,7 @@ const PureLink = extendedProps => {
   if (!isLinkToAnotherDocsSite) {
     return (
       <GatsbyRouterLink
-        role="gatsby-link"
+        data-link-type="gatsby-link"
         to={trimTrailingSlash(hrefObject.pathname) + hrefObject.hash}
         className={props.className}
         css={getStylesFromProps({ noUnderline })}
@@ -206,7 +206,7 @@ const PureLink = extendedProps => {
       : trimTrailingSlash(hrefObject.pathname) + hrefObject.hash;
   return (
     <InternalSiteLink
-      role="internal-link"
+      data-link-type="internal-link"
       href={internalHref}
       className={props.className}
       css={getStylesFromProps({ noUnderline })}
