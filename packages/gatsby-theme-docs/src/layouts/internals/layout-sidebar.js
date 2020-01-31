@@ -19,7 +19,7 @@ const Container = styled.nav`
   width: ${designSystem.dimensions.widths.pageNavigationSmall};
   display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
   flex-direction: column;
-  background-color: ${designSystem.colors.light.surfaceSecondary1};
+  background-color: blue;
   border-right: 1px solid ${designSystem.colors.light.borderPrimary};
 
   animation: ${slideInAnimation} 0.5s ease-out alternate;
