@@ -137,12 +137,17 @@ const Method = ({
 
 function computeMethodColor(methodName) {
   switch (methodName) {
+    case 'get':
+      return colors.light.methods.get;
     case 'post':
+    case 'put':
       return colors.light.methods.post;
     case 'delete':
       return colors.light.methods.delete;
     default:
-      return colors.light.methods.get;
+      throw new Error(
+        `Must explicitly define color code for "${methodName}" method.`
+      );
   }
 }
 

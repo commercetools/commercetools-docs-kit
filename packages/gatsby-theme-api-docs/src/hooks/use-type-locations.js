@@ -12,7 +12,7 @@ const convertComponentInMdxToTypeLocations = data => {
     const apiKey = apiKeyAttribute ? apiKeyAttribute.value : null;
     const name = typeAttribute ? typeAttribute.value : null;
     const { slug } = node.page.fields;
-    const urn = generateTypeURN({ apiKey, name });
+    const urn = generateTypeURN({ apiKey, displayName: name });
     const urlAnchorTag = slug && urn ? `${slug}#${urn}` : '';
 
     typeLocations[`${apiKey}__${name}`] = {
