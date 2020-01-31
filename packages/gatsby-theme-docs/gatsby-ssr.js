@@ -37,7 +37,16 @@ export const replaceRenderer = ({
   const { html, css, ids } = extractCritical(
     renderToString(<CacheProvider value={cache}>{bodyComponent}</CacheProvider>)
   );
-  replaceBodyHTMLString(html);
+  const patchedHtml = html
+    // The FOUC still seems to appear, even though we are following the
+    // documentation about this issue from Emotion.
+    // The <style> elements are still placed next to the HTML elements, causing
+    // the lobotomized owl selector to target the "wrong" children.
+    // To amend that, we patch all the lobotomized owl selector to ignore the
+    // style tags.
+    // https://github.com/emotion-js/emotion/issues/1178
+    .replace(/> \* \+ \*/g, '> *:not(style) + *');
+  replaceBodyHTMLString(patchedHtml);
 
   // Activate the cookie consent banner only on the live website environment.
   // We can narrow it down to the build step of Zeit Now for the master branch.
