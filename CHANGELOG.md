@@ -1,3 +1,15 @@
+## [1.7.3](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.2...v1.7.3) (2020-01-31)
+
+#### 🔮 Type: Chore
+
+- `gatsby-theme-docs`
+  - [#258](https://github.com/commercetools/commercetools-docs-kit/pull/258) chore(theme): enable custom apps link in top menu ([@emmenko](https://github.com/emmenko))
+
+#### 💅 Type: Enhancement
+
+- `gatsby-theme-docs`, `ui-kit`
+  - [#253](https://github.com/commercetools/commercetools-docs-kit/pull/253) refactor(theme): to make the link underline style configurable via a prop ([@emmenko](https://github.com/emmenko))
+
 ## [1.7.2](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.1...v1.7.2) (2020-01-29)
 
 #### 🐛 Type: Bug
