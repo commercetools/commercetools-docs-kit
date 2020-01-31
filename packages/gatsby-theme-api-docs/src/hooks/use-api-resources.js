@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 export default () => {
   const queryResult = useStaticQuery(
     graphql`
-      fragment portOrPutMethod on RamlResourcePost {
+      fragment postOrPutMethod on RamlResourcePost {
         securedBy {
           oauth_2_0 {
             scopes
@@ -51,10 +51,10 @@ export default () => {
               required
             }
             post {
-              ...portOrPutMethod
+              ...postOrPutMethod
             }
             put {
-              ...portOrPutMethod
+              ...postOrPutMethod
             }
             get {
               securedBy {
