@@ -68,7 +68,7 @@ const SidebarLink = props => (
     {({ css: makeClassName }) => {
       const linkClassName = makeClassName`
         border-left: ${designSystem.dimensions.spacings.xs} solid
-          ${designSystem.colors.light.surfacePrimary};
+          ${designSystem.colors.light.surfaceSecondary1};
         padding-left: calc(
           ${designSystem.dimensions.spacings.m} - ${designSystem.dimensions.spacings.xs}
         );
