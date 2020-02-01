@@ -38,14 +38,20 @@ export const replaceRenderer = ({
     renderToString(<CacheProvider value={cache}>{bodyComponent}</CacheProvider>)
   );
   const patchedHtml = html
-    // The FOUC still seems to appear, even though we are following the
-    // documentation about this issue from Emotion.
-    // The <style> elements are still placed next to the HTML elements, causing
-    // the lobotomized owl selector to target the "wrong" children.
-    // To amend that, we patch all the lobotomized owl selector to ignore the
-    // style tags.
+    // There is a known issue with Emotion and SSR in case elements use
+    // nth child selectors, like the Lobotomized Owl (`* + *`).
+    // This causes a FOUC effect (Flash Of Unstyled Content), where the injected
+    // inline <style> element disrupts the CSS selector until it gets removed
+    // upon hydration on the client side.
     // https://github.com/emotion-js/emotion/issues/1178
-    .replace(/> \* \+ \*/g, '> *:not(style) + *');
+    // Until this issue is solved, we need to find a way to exclude the <style>
+    // element to affect the styles of the CSS selector.
+    // I found the following modified Lobotomized Owl selector to work.
+    // It uses the "general sibling selector (~)" instead of the "adjacent sibling
+    // selector (+)" together with the `:not` psuedo-class to exclude the `style` elements.
+    // The "hack" is to replace all the normal Lobotomized Owl selector with
+    // the new one.
+    .replace(/> \* \+ \*/g, '> *:not(style) ~ *:not(style)');
   replaceBodyHTMLString(patchedHtml);
 
   // Activate the cookie consent banner only on the live website environment.
