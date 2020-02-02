@@ -1,3 +1,16 @@
+## [1.7.4](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.3...v1.7.4) (2020-02-02)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`
+  - [#266](https://github.com/commercetools/commercetools-docs-kit/pull/266) fix(theme): to use correct selector to exclude style elements ([@emmenko](https://github.com/emmenko))
+  - [#265](https://github.com/commercetools/commercetools-docs-kit/pull/265) fix(theme): to patch lobotomized owl selector to ignore style children ([@emmenko](https://github.com/emmenko))
+  - [#260](https://github.com/commercetools/commercetools-docs-kit/pull/260) fix(theme): sidebar link border color ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-api-docs`, `gatsby-transformer-raml`
+  - [#257](https://github.com/commercetools/commercetools-docs-kit/pull/257) fix: import api bugs ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-docs`, `ui-kit`
+  - [#261](https://github.com/commercetools/commercetools-docs-kit/pull/261) fix(theme): use data-link-type instead of aria role attribute ([@emmenko](https://github.com/emmenko))
+
 ## [1.7.3](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.2...v1.7.3) (2020-01-31)
 
 #### 🔮 Type: Chore
