@@ -10,8 +10,8 @@
     "serve": "npx gatsby serve --prefix-paths -o"
   },
   "dependencies": {
-    "gatsby-theme-mdx-deck": "3.0.13",
-    "mdx-deck": "3.0.13",
+    "gatsby-theme-mdx-deck": "3.1.0",
+    "mdx-deck": "3.1.0",
     "@commercetools-docs/ui-kit": "1.4.0"
   },
   "devDependencies": {
