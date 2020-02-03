@@ -1,5 +1,14 @@
 const defineRamlResource = ({ schema, createTypes }) => {
   const typeDefs = [
+    `
+    interface Method {
+      securedBy: [RamlResourceSecuredByOAuth!]
+      displayName: String
+      description: String
+      queryParameters: [RamlResourceQueryParameter!]
+      responses: [RamlResourceResponse!]
+    }
+    `,
     schema.buildObjectType({
       name: 'RamlResource',
       fields: {
@@ -8,10 +17,10 @@ const defineRamlResource = ({ schema, createTypes }) => {
         resourcePathUri: 'String!',
         description: 'String',
         uriParameters: '[RamlResourceUriParameter!]',
-        post: 'RamlResourceMethod',
-        put: 'RamlResourceMethod',
-        get: 'RamlResourceMethod',
-        delete: 'RamlResourceMethod',
+        post: 'RamlResourceMethodWithBody',
+        put: 'RamlResourceMethodWithBody',
+        get: 'RamlResourceMethodWithoutBody',
+        delete: 'RamlResourceMethodWithoutBody',
       },
       interfaces: ['Node'],
       extensions: {
@@ -31,15 +40,28 @@ const defineRamlResource = ({ schema, createTypes }) => {
     }),
 
     schema.buildObjectType({
-      name: 'RamlResourceMethod',
+      name: 'RamlResourceMethodWithBody',
       fields: {
         securedBy: '[RamlResourceSecuredByOAuth!]',
         displayName: 'String',
         description: 'String',
-        queryParameters: '[RamlResourceQueryParameter]',
+        queryParameters: '[RamlResourceQueryParameter!]',
         body: 'RamlResourceMethodBody',
         responses: '[RamlResourceResponse!]',
       },
+      interfaces: ['Method'],
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceMethodWithoutBody',
+      fields: {
+        securedBy: '[RamlResourceSecuredByOAuth!]',
+        displayName: 'String',
+        description: 'String',
+        queryParameters: '[RamlResourceQueryParameter!]',
+        responses: '[RamlResourceResponse!]',
+      },
+      interfaces: ['Method'],
     }),
 
     schema.buildObjectType({
