@@ -8,10 +8,10 @@ const defineRamlResource = ({ schema, createTypes }) => {
         resourcePathUri: 'String!',
         description: 'String',
         uriParameters: '[RamlResourceUriParameter!]',
-        post: 'RamlResourcePost',
-        put: 'RamlResourcePost',
-        get: 'RamlResourceGet',
-        delete: 'RamlResourceDelete',
+        post: 'RamlResourceMethod',
+        put: 'RamlResourceMethod',
+        get: 'RamlResourceMethod',
+        delete: 'RamlResourceMethod',
       },
       interfaces: ['Node'],
       extensions: {
@@ -31,35 +31,13 @@ const defineRamlResource = ({ schema, createTypes }) => {
     }),
 
     schema.buildObjectType({
-      name: 'RamlResourcePost',
+      name: 'RamlResourceMethod',
       fields: {
         securedBy: '[RamlResourceSecuredByOAuth!]',
         displayName: 'String',
         description: 'String',
         queryParameters: '[RamlResourceQueryParameter]',
-        body: 'RamlResourcePostBody',
-        responses: '[RamlResourceResponse!]',
-      },
-    }),
-
-    schema.buildObjectType({
-      name: 'RamlResourceGet',
-      fields: {
-        securedBy: '[RamlResourceSecuredByOAuth!]',
-        displayName: 'String',
-        description: 'String',
-        queryParameters: '[RamlResourceQueryParameter]',
-        responses: '[RamlResourceResponse!]',
-      },
-    }),
-
-    schema.buildObjectType({
-      name: 'RamlResourceDelete',
-      fields: {
-        securedBy: '[RamlResourceSecuredByOAuth!]',
-        displayName: 'String',
-        description: 'String',
-        queryParameters: '[RamlResourceQueryParameter!]',
+        body: 'RamlResourceMethodBody',
         responses: '[RamlResourceResponse!]',
       },
     }),
@@ -94,19 +72,19 @@ const defineRamlResource = ({ schema, createTypes }) => {
       fields: {
         code: 'Int!',
         description: 'String',
-        body: 'RamlResourcePostBody!',
+        body: 'RamlResourceMethodBody!',
       },
     }),
 
     schema.buildObjectType({
-      name: 'RamlResourcePostBody',
+      name: 'RamlResourceMethodBody',
       fields: {
-        applicationjson: 'RamlResourcePostBodyApplicationJson',
+        applicationjson: 'RamlResourceMethodBodyApplicationJson',
       },
     }),
 
     schema.buildObjectType({
-      name: 'RamlResourcePostBodyApplicationJson',
+      name: 'RamlResourceMethodBodyApplicationJson',
       fields: {
         type: 'String!',
         builtinType: 'String!',
