@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 export default () => {
   const queryResult = useStaticQuery(
     graphql`
-      fragment postOrPutMethod on RamlResourcePost {
+      fragment methods on Method {
         securedBy {
           oauth_2_0 {
             scopes
@@ -18,12 +18,6 @@ export default () => {
           builtinType
           description
         }
-        body {
-          applicationjson {
-            type
-            builtinType
-          }
-        }
         responses {
           code
           description
@@ -33,6 +27,20 @@ export default () => {
               builtinType
             }
           }
+        }
+      }
+
+      fragment methodBodies on RamlResourceMethodBody {
+        applicationjson {
+          type
+          builtinType
+        }
+      }
+
+      fragment methodsWithBodies on RamlResourceMethodWithBody {
+        ...methods
+        body {
+          ...methodBodies
         }
       }
 
@@ -51,62 +59,16 @@ export default () => {
               required
             }
             post {
-              ...postOrPutMethod
+              ...methodsWithBodies
             }
             put {
-              ...postOrPutMethod
+              ...methodsWithBodies
             }
             get {
-              securedBy {
-                oauth_2_0 {
-                  scopes
-                }
-              }
-              displayName
-              description
-              queryParameters {
-                name
-                required
-                type
-                builtinType
-                description
-              }
-              responses {
-                code
-                description
-                body {
-                  applicationjson {
-                    type
-                    builtinType
-                  }
-                }
-              }
+              ...methods
             }
             delete {
-              securedBy {
-                oauth_2_0 {
-                  scopes
-                }
-              }
-              displayName
-              description
-              queryParameters {
-                name
-                required
-                type
-                builtinType
-                description
-              }
-              responses {
-                code
-                description
-                body {
-                  applicationjson {
-                    type
-                    builtinType
-                  }
-                }
-              }
+              ...methods
             }
           }
         }

@@ -10,8 +10,7 @@ const RAML_TYPE_FILE = '#%RAML 1.0 DataType';
 const RAML_RESOURCE_FILE = '# Resource';
 const RAML_API_FILE = '#%RAML 1.0';
 
-const sourceNodes = ({ actions, schema }) => {
-  // Add type definitions to the GraphQL schema.
+const createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
 
   defineSchema({ schema, createTypes });
@@ -105,5 +104,5 @@ async function onCreateNode(
   }
 }
 
-exports.sourceNodes = sourceNodes;
+exports.createSchemaCustomization = createSchemaCustomization;
 exports.onCreateNode = onCreateNode;
