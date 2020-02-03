@@ -179,7 +179,7 @@ const LayoutHeader = props => (
             <Overlay
               onClick={props.closeTopMenu}
               css={css`
-                top: ${designSystem.dimensions.heights.header};
+                top: ${designSystem.dimensions.heights.header} !important;
               `}
             >
               <TopMenu />

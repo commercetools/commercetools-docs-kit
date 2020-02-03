@@ -7,18 +7,17 @@
       beta: true
     - label: Platform Release Notes
       href: https://docs.commercetools.com/release-notes
-    - label: SDKs and Tools
-      href: https://docs.commercetools.com/software-development-kits
-    # - label: Import and Export Tools
-    #   href: https://docs.commercetools.com/import-api
-    #   beta: true
-    - label: SUNRISE Starter Frontend
-      href: https://docs.commercetools.com/sunrise
-    - label: Tutorials
-      href: https://docs.commercetools.com/tutorials-overview
     - label: Custom Applications
       href: https://docs.commercetools.com/custom-applications
       beta: true
+    - label: SDKs & Client Libraries
+      href: https://docs.commercetools.com/software-development-kits
+    - label: Import & Export Tools
+      href: https://docs.commercetools.com/cli-overview
+    - label: SUNRISE Starter Frontends
+      href: https://docs.commercetools.com/sunrise
+    - label: Tutorials
+      href: https://docs.commercetools.com/tutorials-overview
     - label: FAQ
       href: https://docs.commercetools.com/faqs
 

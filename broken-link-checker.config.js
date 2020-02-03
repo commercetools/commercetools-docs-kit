@@ -6,6 +6,7 @@ module.exports = {
     '/graphql-api',
     '/release-notes',
     '/software-development-kits',
+    '/cli-overview',
     '/import-api',
     '/sunrise',
     '/tutorials-overview',
