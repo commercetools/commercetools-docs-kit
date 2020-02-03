@@ -2,6 +2,7 @@ const doRecursion = require('./utils/api/do-recursion');
 const parametersToArray = require('./utils/parameters-to-array');
 
 function createApiNode({
+  apiKey,
   api,
   fileNode,
   createNode,
@@ -9,7 +10,7 @@ function createApiNode({
   createParentChildLink,
   createContentDigest,
 }) {
-  const postProcessedApi = postProcessApi(api, fileNode);
+  const postProcessedApi = postProcessApi({ apiKey, api });
 
   const apiNode = {
     ...postProcessedApi,
@@ -27,10 +28,10 @@ function createApiNode({
   createParentChildLink({ parent: fileNode, child: apiNode });
 }
 
-function postProcessApi(api, fileNode) {
+function postProcessApi({ apiKey, api }) {
   const postProcessedApi = doRecursion(api);
 
-  postProcessedApi.apiKey = fileNode.relativeDirectory;
+  postProcessedApi.apiKey = apiKey;
 
   postProcessedApi.baseUriParameters = parametersToArray(
     postProcessedApi.baseUriParameters

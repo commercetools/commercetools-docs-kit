@@ -14,12 +14,7 @@ module.exports = {
         websiteKey: 'api-docs-smoke-test',
         excludeFromSearchIndex: isProd,
         transformerRaml: {
-          validate: true,
-          includeApis: ['import', 'import-storage-api', 'test'],
-          annotateConstantLikeEnums: true,
-          annotateUnionLikeInheritance: true,
-          customNumberScalars: true,
-          flattenLibraryNamespaces: true,
+          includeApis: ['test'],
           movePropertiesToTop: [
             'id',
             'version',
