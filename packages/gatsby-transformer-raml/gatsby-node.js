@@ -17,14 +17,21 @@ const sourceNodes = ({ actions, schema }) => {
   defineSchema({ schema, createTypes });
 };
 
-async function onCreateNode({
-  node,
-  actions,
-  createNodeId,
-  createContentDigest,
-  loadNodeContent,
-  reporter,
-}) {
+async function onCreateNode(
+  {
+    node,
+    actions,
+    createNodeId,
+    createContentDigest,
+    loadNodeContent,
+    reporter,
+  },
+  {
+    includeApis = [],
+    movePropertiesToTop = [],
+    movePropertiesToBottom = [],
+  } = {}
+) {
   if (!['File'].includes(node.internal.type)) return;
   if (node.internal.mediaType !== 'application/raml+yaml') return;
 
@@ -33,6 +40,24 @@ async function onCreateNode({
   const filesToParse = [RAML_TYPE_FILE, RAML_RESOURCE_FILE, RAML_API_FILE];
 
   if (filesToParse.includes(ramlIndicator.trim())) {
+    // generate apiKey here to determine if api should be parsed at all or not
+    let apiKey;
+
+    if (
+      ramlIndicator === RAML_TYPE_FILE ||
+      ramlIndicator === RAML_RESOURCE_FILE
+    ) {
+      apiKey = node.relativeDirectory.substring(
+        0,
+        node.relativeDirectory.indexOf('/')
+      );
+    } else {
+      apiKey = node.relativeDirectory;
+    }
+
+    if (!includeApis.includes(apiKey)) return;
+
+    // continue parsing document
     const content = await loadNodeContent(node);
     const JSYAML_SCHEMA = createJsYamlSchema();
 
@@ -43,15 +68,19 @@ async function onCreateNode({
 
       if (ramlIndicator === RAML_TYPE_FILE) {
         createTypeNode({
+          apiKey,
           type: parsedContent,
           fileNode: node,
           createNode,
           createNodeId,
           createParentChildLink,
           createContentDigest,
+          movePropertiesToTop,
+          movePropertiesToBottom,
         });
       } else if (ramlIndicator === RAML_RESOURCE_FILE) {
         createResourceNode({
+          apiKey,
           resource: parsedContent,
           fileNode: node,
           createNode,
@@ -61,6 +90,7 @@ async function onCreateNode({
         });
       } else {
         createApiNode({
+          apiKey,
           api: parsedContent,
           fileNode: node,
           createNode,

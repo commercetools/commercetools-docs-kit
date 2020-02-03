@@ -3,6 +3,7 @@ const parametersToArray = require('./utils/parameters-to-array');
 const processMethods = require('./utils/resource/process-methods');
 
 function createResourceNode({
+  apiKey,
   resource,
   fileNode,
   createNode,
@@ -10,7 +11,7 @@ function createResourceNode({
   createParentChildLink,
   createContentDigest,
 }) {
-  const postProcessedResource = postProcessResource(resource, fileNode);
+  const postProcessedResource = postProcessResource({ apiKey, resource });
 
   const resourceNode = {
     ...postProcessedResource,
@@ -28,13 +29,10 @@ function createResourceNode({
   createParentChildLink({ parent: fileNode, child: resourceNode });
 }
 
-function postProcessResource(resource, fileNode) {
+function postProcessResource({ apiKey, resource }) {
   let postProcessedResource = doRecursion(resource);
 
-  postProcessedResource.apiKey = fileNode.relativeDirectory.substring(
-    0,
-    fileNode.relativeDirectory.indexOf('/')
-  );
+  postProcessedResource.apiKey = apiKey;
 
   postProcessedResource.uriParameters = parametersToArray(
     postProcessedResource.uriParameters

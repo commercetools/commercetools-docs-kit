@@ -6,27 +6,24 @@ const resolveConflictingFieldTypes = require('./utils/type/resolve-conflicting-f
 const generateType = require('./utils/type/generate-type');
 const generateBuiltinType = require('./utils/type/generate-built-in-type');
 
-// Properties to sort to top and bottom
-const moveToTop = [
-  'id',
-  'version',
-  'key',
-  'createdAt',
-  'createdBy',
-  'lastModifiedAt',
-  'lastModifiedBy',
-];
-const moveToBottom = ['custom'];
-
 function createTypeNode({
+  apiKey,
   type,
   fileNode,
   createNode,
   createNodeId,
   createParentChildLink,
   createContentDigest,
+  movePropertiesToTop,
+  movePropertiesToBottom,
 }) {
-  const postProcessedType = postProcessType(type, fileNode);
+  const postProcessedType = postProcessType({
+    apiKey,
+    type,
+    fileNode,
+    movePropertiesToTop,
+    movePropertiesToBottom,
+  });
 
   const typeNode = {
     ...postProcessedType,
@@ -44,16 +41,21 @@ function createTypeNode({
   createParentChildLink({ parent: fileNode, child: typeNode });
 }
 
-function postProcessType(type, fileNode) {
+function postProcessType({
+  apiKey,
+  type,
+  fileNode,
+  movePropertiesToTop,
+  movePropertiesToBottom,
+}) {
   const postProcessedType = doRecursion(type);
 
-  postProcessedType.apiKey = fileNode.relativeDirectory.substring(
-    0,
-    fileNode.relativeDirectory.indexOf('/')
-  );
-  postProcessedType.properties = processProperties(
-    postProcessedType.properties
-  );
+  postProcessedType.apiKey = apiKey;
+  postProcessedType.properties = processProperties({
+    properties: postProcessedType.properties,
+    movePropertiesToTop,
+    movePropertiesToBottom,
+  });
   postProcessedType.examples = examplesToArrays(
     postProcessedType.examples,
     fileNode.dir
@@ -65,15 +67,19 @@ function postProcessType(type, fileNode) {
   return postProcessedType;
 }
 
-function processProperties(properties) {
+function processProperties({
+  properties,
+  movePropertiesToTop,
+  movePropertiesToBottom,
+}) {
   let propertiesArray;
 
   if (properties) {
     propertiesArray = propertiesToArrays(properties);
     propertiesArray = sortProperties({
       properties: propertiesArray,
-      moveToTop,
-      moveToBottom,
+      moveToTop: movePropertiesToTop,
+      moveToBottom: movePropertiesToBottom,
     });
 
     propertiesArray = propertiesArray.map(property => {
