@@ -21,14 +21,14 @@
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/spacings-inline": "10.13.0",
     "@commercetools-uikit/spacings-stack": "10.13.0",
-    "gatsby-source-filesystem": "2.1.46",
+    "gatsby-source-filesystem": "2.1.48",
     "remark-parse": "7.0.2",
     "remark-react": "6.0.0",
     "unified": "8.4.2"
   },
   "devDependencies": {
-    "gatsby": "2.19.6",
-    "gatsby-cli": "2.8.27"
+    "gatsby": "2.19.12",
+    "gatsby-cli": "2.8.29"
   },
   "peerDependencies": {
     "@emotion/core": "10.x",
