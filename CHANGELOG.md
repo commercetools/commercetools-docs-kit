@@ -1,3 +1,15 @@
+## [1.7.5](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.4...v1.7.5) (2020-02-03)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`
+  - [c7dd89f](https://github.com/commercetools/commercetools-docs-kit/commit/c7dd89f7b27cfbaf1213c328ae3bf1872209faf0) fix(theme): ensure css overwrites default one for top menu position ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`
+  - [#273](https://github.com/commercetools/commercetools-docs-kit/pull/273) refactor(theme): sync top menu links ([@emmenko](https://github.com/emmenko))
+
 ## [1.7.4](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.3...v1.7.4) (2020-02-02)
 
 #### 🐛 Type: Bug
