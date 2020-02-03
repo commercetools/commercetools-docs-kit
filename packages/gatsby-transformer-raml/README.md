@@ -53,6 +53,52 @@ module.exports = {
 };
 ```
 
+### API Specs Directory Structure
+
+One of the benefits of the gatsby-transformer-raml tool is that it supports multiple api specs parsing. For this to work properly, we recommend setting up the the specs root directory such that all the specs directory are flattened. See example below:
+
+├── src
+│ ├── api-specs
+│ │ ├── first-api-spec
+│ │ | ├── api.raml
+│ │ ├── second-api-spec
+│ │ | ├── api.raml
+│ │ ├── third-api-spec
+│ │ | ├── api.raml
+│ ├── pages
+├── node_modules
+├── README.md
+├── package.json
+└── .gitignore
+
+The example above assumes the RAML specs are sourced from the `api-specs` directory.
+
+### Options
+
+The following options are available:
+
+- `includeApis`: A list of apis that should be parsed. Note that no api is parsed if nothing is included in this list.
+- `movePropertiesToTop`: A list of API type properties required to be sorted to the top.
+- `movePropertiesToBottom`: Sorts API type properties like `movePropertiesToTop`, but to the bottom.
+
+Example `gatsby-config.js` content:
+
+```js
+// In your gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: `@commercetools-docs/gatsby-transformer-raml`,
+      options: {
+        includeApis: ['test'],
+        movePropertiesToTop: ['id', 'name', 'surname'],
+        movePropertiesToBottom: ['last-property'],
+      },
+    },
+  ],
+};
+```
+
 ## A typical GraphQL query
 
 Example for reading all types:
