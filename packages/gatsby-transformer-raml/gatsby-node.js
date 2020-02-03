@@ -26,7 +26,11 @@ async function onCreateNode(
     loadNodeContent,
     reporter,
   },
-  { includeApis = [], movePropertiesToTop = [], movePropertiesToBottom = [] }
+  {
+    includeApis = [],
+    movePropertiesToTop = [],
+    movePropertiesToBottom = [],
+  } = {}
 ) {
   if (!['File'].includes(node.internal.type)) return;
   if (node.internal.mediaType !== 'application/raml+yaml') return;

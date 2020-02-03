@@ -12,7 +12,7 @@ module.exports = (themeOptions = {}) => ({
     '@commercetools-docs/gatsby-transformer-mdx-introspection',
     {
       resolve: '@commercetools-docs/gatsby-transformer-raml',
-      options: { ...themeOptions.transformerRaml },
+      options: themeOptions.transformerRaml,
     },
     {
       resolve: '@commercetools-docs/gatsby-theme-docs',

@@ -55,8 +55,9 @@ module.exports = {
 
 ### API Specs Directory Structure
 
-One of the benefits of the gatsby-transformer-raml tool is that it supports multiple api specs parsing. For this to work properly, we recommend setting up the the specs root directory such that all the specs directory are flattened. See example below:
+One of the benefits of the gatsby-transformer-raml tool is that it supports multiple api specs parsing. For this to work properly, we recommend setting up the specs root directory such that all the specs directory are flattened. See example below:
 
+```
 ├── src
 │ ├── api-specs
 │ │ ├── first-api-spec
@@ -70,6 +71,7 @@ One of the benefits of the gatsby-transformer-raml tool is that it supports mult
 ├── README.md
 ├── package.json
 └── .gitignore
+```
 
 The example above assumes the RAML specs are sourced from the `api-specs` directory.
 
