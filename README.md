@@ -3,7 +3,7 @@
   <i>✨ Monorepository with tools and components for developing Documentation websites 🛠</i>
 </p>
 <p align="center">
-  <a href="https://circleci.com/gh/commercetools/commercetools-docs-kit"><img src="https://circleci.com/gh/commercetools/commercetools-docs-kit.svg?style=shield" alt="CI status" /></a> <a href="https://github.com/commercetools/commercetools-docs-kit/releases"><img src="https://badgen.net/github/release/commercetools/commercetools-docs-kit" alt="Latest release" /></a> <a href="https://github.com/commercetools/commercetools-docs-kit/blob/master/LICENSE"><img src="https://badgen.net/github/license/commercetools/commercetools-docs-kit" alt="GitHub license" /></a>
+  <a href="https://github.com/commercetools/commercetools-docs-kit/releases"><img src="https://badgen.net/github/release/commercetools/commercetools-docs-kit" alt="Latest release" /></a> <a href="https://github.com/commercetools/commercetools-docs-kit/blob/master/LICENSE"><img src="https://badgen.net/github/license/commercetools/commercetools-docs-kit" alt="GitHub license" /></a>
 </p>
 
 ## Getting started
