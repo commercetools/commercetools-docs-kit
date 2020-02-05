@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-const PageContentInset = styled.article`
+const PageContentInset = styled.div`
   padding: ${designSystem.dimensions.spacings.m}
     ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
 
