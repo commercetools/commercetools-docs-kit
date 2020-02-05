@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-const Container = styled.div`
+const Container = styled.main`
   grid-area: main;
   min-width: 0;
   position: relative;

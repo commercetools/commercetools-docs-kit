@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-const LayoutPage = styled.main`
+const LayoutPage = styled.div`
   display: block;
   max-width: 100vw;
   box-shadow: ${designSystem.tokens.shadowForPageContent};
