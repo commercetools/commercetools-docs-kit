@@ -30,7 +30,7 @@
     "prerelease": "yarn check-npm-login && yarn prebuild",
     "prerelease:canary": "yarn prerelease",
     "release": "lerna publish --exact",
-    "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes"
+    "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes --force-publish \"*\""
   },
   "devDependencies": {
     "@babel/core": "7.8.4",
