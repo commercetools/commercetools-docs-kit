@@ -23,8 +23,6 @@ const Container = styled.div`
     `}
 `;
 
-const LayoutMain = props => (
-  <Container role="main" aria-label="Page content" {...props} />
-);
+const LayoutMain = props => <Container {...props} />;
 
 export default LayoutMain;
