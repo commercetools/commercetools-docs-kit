@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-const LayoutPageHeaderSide = styled.div`
+const LayoutPageHeaderSide = styled.aside`
   grid-area: page-header-side;
   display: none;
 
