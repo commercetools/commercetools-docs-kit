@@ -15,7 +15,7 @@ const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
 
 const isMatching = (a, b) => trimTrailingSlash(a) === trimTrailingSlash(b);
 
-const Container = styled.div`
+const Container = styled.nav`
   display: grid;
   grid-gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
@@ -124,7 +124,7 @@ export const PurePagination = props => {
   const nextPage = activeChapter.pages[currentPageLinkIndex + 1];
 
   return (
-    <Container>
+    <Container aria-label="Next / Previous in Chapter Navigation">
       {hasPagination && previousPage ? (
         <PaginationLink
           linkTo={previousPage.path}

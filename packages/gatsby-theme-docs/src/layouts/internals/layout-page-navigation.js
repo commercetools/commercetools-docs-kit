@@ -96,7 +96,7 @@ const LayoutPageNavigation = props => {
     return null;
 
   const navigationContainer = (
-    <nav aria-label="Page index navigation">
+    <nav aria-label="Page Table of Contents Navigation">
       <SpacingsStack scale="m">
         <PageTitleLink href="#top">
           <SpacingsInline scale="s" alignItems="center">

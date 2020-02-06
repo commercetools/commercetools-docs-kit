@@ -1,9 +1,8 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-const Container = styled.main`
+const LayoutMain = styled.main`
   grid-area: main;
   min-width: 0;
   position: relative;
@@ -22,9 +21,5 @@ const Container = styled.main`
       overflow-y: hidden;
     `}
 `;
-
-const LayoutMain = props => (
-  <Container role="main" aria-label="Page content" {...props} />
-);
 
 export default LayoutMain;

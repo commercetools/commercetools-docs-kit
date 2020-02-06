@@ -138,6 +138,7 @@ const Sidebar = props => {
         <SpacingsStack scale="xs">
           <div>{props.isGlobalBeta && <BetaFlag />}</div>
           <Link
+            id="site-title"
             to="/"
             css={css`
               text-decoration: none;
