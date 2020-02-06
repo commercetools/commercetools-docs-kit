@@ -5,7 +5,7 @@ describe('Top menu', () => {
     cy.visit(URL_DOCS_SMOKE_TEST);
     cy.findByLabelText('Open Top Menu').click();
     cy.findByRole('top-menu').should('be.visible');
-    cy.findByLabelText('Close top menu').should('exist');
+    cy.findByLabelText('Close Top Menu').should('exist');
     cy.percySnapshot();
   });
   it('should close top menu when clicking on the search input', () => {
