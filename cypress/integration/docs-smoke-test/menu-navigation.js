@@ -5,8 +5,8 @@ describe('Menu navigation', () => {
     it('should toggle main left side navigation', () => {
       cy.setTabletViewport();
       cy.visit(URL_DOCS_SMOKE_TEST);
-      cy.findByLabelText('Open main navigation').click();
-      cy.findByLabelText('Main navigation').should('be.visible');
+      cy.findByLabelText('Open Main Navigation').click();
+      cy.findByLabelText('Main Navigation').should('be.visible');
       cy.get('#modal-portal').within(() => {
         cy.findByText('Docs Smoke Test');
         cy.percySnapshot(cy.state('runnable').fullTitle(), {

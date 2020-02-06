@@ -5,7 +5,7 @@ describe('Viewports', () => {
     cy.visit(URL_DOCS_SMOKE_TEST);
     cy.findAllByText('Docs Smoke Test');
     // wait for menu button to appear
-    cy.findByLabelText('Open main navigation');
+    cy.findByLabelText('Open Main Navigation');
     cy.percySnapshot(cy.state('runnable').fullTitle(), {
       widths: [512, 956],
     });
