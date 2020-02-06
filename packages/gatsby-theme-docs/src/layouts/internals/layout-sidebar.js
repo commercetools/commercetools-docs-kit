@@ -71,7 +71,7 @@ const LayoutSidebar = props => {
 
   const menuButton = (
     <MenuButton
-      aria-label="Open main navigation"
+      aria-label="Open Main Navigation"
       onClick={props.toggleSidebarMenu}
     >
       <BurgerIcon isActive={props.isMenuOpen} />
@@ -86,8 +86,7 @@ const LayoutSidebar = props => {
           ReactDOM.createPortal(
             <Overlay onClick={props.closeSidebarMenu}>
               <Container
-                role="nav"
-                aria-label="Main navigation"
+                aria-label="Main Navigation"
                 isMenuOpen={true}
                 onClick={event => {
                   event.stopPropagation();
@@ -109,7 +108,7 @@ const LayoutSidebar = props => {
   return (
     <>
       {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
-      <Container role="nav" aria-label="Main navigation" isMenuOpen={false}>
+      <Container role="nav" aria-label="Main Navigation" isMenuOpen={false}>
         <Sidebar
           siteTitle={props.siteTitle}
           isGlobalBeta={props.isGlobalBeta}

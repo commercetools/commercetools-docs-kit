@@ -124,7 +124,7 @@ export const PurePagination = props => {
   const nextPage = activeChapter.pages[currentPageLinkIndex + 1];
 
   return (
-    <Container>
+    <Container aria-label="Next / Previous in Chapter Navigation">
       {hasPagination && previousPage ? (
         <PaginationLink
           linkTo={previousPage.path}

@@ -161,7 +161,7 @@ const LayoutHeader = props => (
           <SwitcherButton
             role="button"
             aria-label={
-              props.isTopMenuOpen ? 'Close top menu' : 'Open top menu'
+              props.isTopMenuOpen ? 'Close Top Menu' : 'Open Top Menu'
             }
             isActive={props.isTopMenuOpen}
             onClick={props.toggleTopMenu}
