@@ -1,3 +1,21 @@
+## [1.7.6](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.5...v1.7.6) (2020-02-07)
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`
+  - [#277](https://github.com/commercetools/commercetools-docs-kit/pull/277) refactor: use more semantic HTML elements for the search crawler ([@nkuehn](https://github.com/nkuehn))
+- `gatsby-theme-api-docs`, `gatsby-transformer-raml`
+  - [#272](https://github.com/commercetools/commercetools-docs-kit/pull/272) refactor: enhanced graphql for resources ([@davifantasia](https://github.com/davifantasia))
+  - [#271](https://github.com/commercetools/commercetools-docs-kit/pull/271) refactor: expose gatsby-transformer-raml options ([@davifantasia](https://github.com/davifantasia))
+
+#### 🤖 Type: Dependencies
+
+- Other
+  - [#270](https://github.com/commercetools/commercetools-docs-kit/pull/270) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+  - [#269](https://github.com/commercetools/commercetools-docs-kit/pull/269) chore(deps): update dependency eslint-plugin-testing-library to v2 ([@renovate[bot]](https://github.com/apps/renovate))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`, `ui-kit`
+  - [#268](https://github.com/commercetools/commercetools-docs-kit/pull/268) chore(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.7.5](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.4...v1.7.5) (2020-02-03)
 
 #### 🐛 Type: Bug
