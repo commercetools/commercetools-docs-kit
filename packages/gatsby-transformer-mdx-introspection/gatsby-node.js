@@ -1,6 +1,6 @@
 const merge = require('deepmerge');
 const transformMdx = require('./src/transform-mdx');
-const { collapseWhitespace: collapseSpace } = require('./src/jsx-ast-utils');
+const { collapseSpace } = require('./src/jsx-ast-utils');
 
 // Cache key for getReducedForest (dependent on file digest & options)
 const reducedCacheKey = (node, options) =>
@@ -113,7 +113,7 @@ exports.createSchemaCustomization = ({ actions }) => {
        "Original MDX file parent node"
        mdx: Mdx! @link
        "Text content of the current node. To configure text processing rules, use collapse/trim"
-       content(collapse: Boolean = false, trim: Boolean = false): String!
+       content(collapse: Boolean = true, trim: Boolean = true): String!
        "A single child JSX/HTML node (excluding text children). If deep is set, then the field could take the value of any child of children of this node at any level"
        child${nodeName}: ${nodeName}
        "All child JSX/HTML nodes (excluding text children). If deep is set, then the field will return all children of children of this node at any level"
