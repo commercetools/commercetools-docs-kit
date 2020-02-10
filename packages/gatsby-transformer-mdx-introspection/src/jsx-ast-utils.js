@@ -105,8 +105,7 @@ function isJsxElement(node) {
  */
 function cleanJsxSnippet(raw) {
   const trimmed = raw.trim();
-  if (trimmed.charAt(trimmed.length - 1) === ';') return trimmed.slice(0, -1);
-  return trimmed;
+  return trimmed.replace(/(.*);$/, '$1');
 }
 
 /**
@@ -127,7 +126,7 @@ function collapseSpace(string) {
 function getJsxChildren(node) {
   // Start searching at each child
   return getChildren(node).reduce(
-    (accum, child) => [...accum, ...findNode(child, isJsxElement, false)],
+    (children, child) => [...children, ...findNode(child, isJsxElement, false)],
     []
   );
 }

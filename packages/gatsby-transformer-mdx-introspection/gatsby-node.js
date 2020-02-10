@@ -31,7 +31,7 @@ const nodeName = 'ComponentInMdx';
  * override default options
  * @param {object} options User-set options object
  */
-function addDefaults(options) {
+function mergeDefaults(options) {
   return { ...defaultOptions, ...options };
 }
 
@@ -113,11 +113,11 @@ exports.createSchemaCustomization = ({ actions }) => {
        "Original MDX file parent node"
        mdx: Mdx! @link
        "Text content of the current node. To configure text processing rules, use collapse/trim"
-       content(collapse: Boolean, trim: Boolean): String!
+       content(collapse: Boolean = false, trim: Boolean = false): String!
        "A single child JSX/HTML node (excluding text children). If deep is set, then the field could take the value of any child of children of this node at any level"
        child${nodeName}: ${nodeName}
        "All child JSX/HTML nodes (excluding text children). If deep is set, then the field will return all children of children of this node at any level"
-       children${nodeName}: [${nodeName}]
+       children${nodeName}: [${nodeName}!]!
      }`
   );
 };
@@ -198,7 +198,7 @@ exports.onCreateNode = (
   { node, actions, createNodeId, createContentDigest, cache, reporter },
   options
 ) => {
-  const { shouldIndexNode } = addDefaults(options);
+  const { shouldIndexNode } = mergeDefaults(options);
   if (node.internal.type === 'Mdx' && shouldIndexNode(node)) {
     introspectMdx({
       node,
@@ -220,21 +220,13 @@ exports.onCreateNode = (
  * @param {object} options User-specified plugin options
  */
 async function getReducedForest(cache, node, options) {
-  const withDefaults = addDefaults(options);
+  const withDefaults = mergeDefaults(options);
 
-  // Resolve applied options
-  const {
-    removeMdxCompilationArtifacts,
-    cleanWhitespace,
-    tagWhitelist,
-  } = withDefaults;
-  const appliedOptions = {
-    removeMdxCompilationArtifacts,
-    cleanWhitespace,
-    tagWhitelist,
-  };
-
-  const cacheKey = reducedCacheKey(node, appliedOptions);
+  const cacheKey = reducedCacheKey(node, {
+    removeMdxCompilationArtifacts: withDefaults.removeMdxCompilationArtifacts,
+    cleanWhitespace: withDefaults.cleanWhitespace,
+    tagWhitelist: withDefaults.tagWhitelist,
+  });
   const cachedForest = await cache.get(cacheKey);
   if (cachedForest) {
     return cachedForest;
@@ -258,7 +250,7 @@ function introspectMdx({
   cache,
   reporter,
 }) {
-  const { removeMdxCompilationArtifacts } = addDefaults(options);
+  const { removeMdxCompilationArtifacts } = mergeDefaults(options);
   if (removeMdxCompilationArtifacts) {
     // Make sure there aren't any of the existing attributes in the raw MDX
     // If there are, then warn
@@ -305,7 +297,7 @@ function introspectMdx({
             children: [],
             internal: {
               contentDigest: createContentDigest(componentNode),
-              type: 'ComponentInMdx',
+              type: nodeName,
             },
             // Link MDX file tree root
             mdx: node.id,

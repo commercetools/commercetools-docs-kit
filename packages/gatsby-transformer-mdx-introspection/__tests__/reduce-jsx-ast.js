@@ -1,7 +1,7 @@
 const reduceJsxAst = require('../src/reduce-jsx-ast');
 
 // Tests reduceChildren from reduce-jsx-ast.js
-// Note: most methods are too intertwined to effectifely unit test (or require
+// Note: most methods are too intertwined to effectively unit test (or require
 // complex Babel AST mocking). As such, integration tests covering the rest of
 // reduce-jsx-ast are available in ./integration.js
 

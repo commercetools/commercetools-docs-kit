@@ -27,9 +27,7 @@ async function transformMdx(rawMdx, options) {
 
   // Find content root and reduce AST into component forest
   const contentRoot = jsxAstUtils.findContentRoot(ast);
-
-  const reducedForest = reduceJsxAst(contentRoot, jsx, options);
-  return reducedForest;
+  return reduceJsxAst(contentRoot, jsx, options);
 }
 
 module.exports = transformMdx;

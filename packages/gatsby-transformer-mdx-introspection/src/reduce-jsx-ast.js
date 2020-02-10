@@ -39,8 +39,7 @@ function serializeAndSearch(node, collapse, detachedHeads, context) {
  */
 function reduceChildren(children, context) {
   const { cleanWhitespace } = context;
-  const reduced = [];
-  children.forEach((child, i) => {
+  return children.reduce((reduced, child, i) => {
     if (typeof child === 'string') {
       // Left trim first child, right trim last child (if configured to)
       const isFirst = i === 0;
@@ -55,14 +54,15 @@ function reduceChildren(children, context) {
       // Only add if the string is not just whitespace
       const whitespaceRemoved = child.replace(/\s/g, '');
       if (whitespaceRemoved.length > 0) {
-        reduced.push(whitespaceCollapsed);
+        return [...reduced, whitespaceCollapsed];
       }
-    } else {
-      // Don't touch node children
-      reduced.push(child);
+
+      return reduced;
     }
-  });
-  return reduced;
+
+    // Don't touch node children
+    return [...reduced, child];
+  }, []);
 }
 
 /**

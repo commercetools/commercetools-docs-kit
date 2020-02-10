@@ -91,7 +91,7 @@ Whether to remove attributes that are (usually) artifacts of MDX compilation (`m
 
 Predicate function used as a performance escape hatch to filter MDX files that get parsed/indexed. Use if not all MDX files need to be indexed and build times are prohibitive
 
-**`tagWhitelist`** [array\<string | RegExp>] (optional, defaults to ['a', /^h[1-6]\$/)
+**`tagWhitelist`** [array\<string | RegExp>] (optional, defaults to `['a', /^h[1-6]\$/]`)
 
 JSX components that will generate Gatsby data nodes in the final output (other nodes will still appear as other components' children and their children can generate nodes)
 
@@ -139,7 +139,7 @@ This query gets all link elements (both Gatsby links and normal anchor HTML elem
 
 ## Known issues
 
-- The plugin has to parse the MDX separately (and therefore twice in the site build) because `gatsby-plugin-mdx` does lazyly evaluate the AST property on the Mdx GraphQL provided, which means it's available to components using GraphQL but not to other plugins that read from the GatsbyJS Node Objects in earlier build phases.
+- The plugin has to parse the MDX separately (and therefore twice in the site build) because `gatsby-plugin-mdx` does lazyly evaluate the AST property on the MDX GraphQL provided, which means it's available to components using GraphQL but not to other plugins that read from the GatsbyJS Node Objects in earlier build phases.
   - In addition, the plugin has to parse **all** of the MDX upon transforming because it generates Gatsby data nodes from the components, so it can't lazily parse the code like `gatsby-plugin-mdx`. Caching helps alleviate this problem, however.
 
 ### Differences between MDX and output
@@ -148,5 +148,5 @@ The plugin relies on the compiled JSX created by `@mdx-js/mdx` from the MDX sour
 
 - Inline code blocks like \``code`\` turn into `inlineCode` elements in the final component tree due to [the MDX library](https://mdxjs.com/getting-started#working-with-components)
 - The MDX library adds certain attributes to each HTML or React element it parses, namely, `mdxType` and `parentName`. By default, the plugin automatically removes all attributes that match these names. However, since there is no easy way to determine if these attributes were present in the original MDX file, the plugin will remove them too. This behavior can be disabled by setting `removeMdxCompilationArtifacts` to `false` in the plugin options
-- Whitespace may end up different in text nodes than it was in the original MDX. The plugin attempts to clean up the text nodes it finds, but this can sometimes produce undesired output. Both trimming and collapsing can be disabled by setting `trimWhitespace` and `collapseWhitespace` to false in the plugin options, respectively
+- Whitespace may end up different in text nodes than it was in the original MDX. The plugin attempts to clean up the text nodes it finds, but this can sometimes produce undesired output. Both trimming and collapsing can be disabled by setting `cleanWhitespace` to `false` in the plugin options
 - Most complex javascript expressions are string-serialized in the final output, while simple literals (`boolean`/`number`/`null`/`undefined`/`string`) get parsed to their values

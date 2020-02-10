@@ -3,7 +3,7 @@ const jsxAstUtils = require('../src/jsx-ast-utils');
 // Tests utility methods in jsx-ast-utils.js
 
 // Simple JSX text element like <span>content</span>
-//                                     ^
+//                                    ^
 const mockText = (content = 'text') => ({
   type: 'JSXText',
   extra: {
@@ -48,7 +48,7 @@ const mockElement = (tag = 'hr') => ({
 
 // Alternating array of text/jsx elements
 const mockNodes = n =>
-  [...new Array(n)].map((_, i) =>
+  Array.from({ length: n }).map((_, i) =>
     i % 2 ? mockText(`text.${i}`) : mockElement()
   );
 
@@ -121,24 +121,27 @@ describe('findTag', () => {
 });
 
 describe('findNode', () => {
-  const match = tag => node =>
+  const createMatcherFor = tag => node =>
     node.type === 'JSXElement' && node.openingElement.name.name === tag;
 
   it('produces expected outputs on input set', () => {
     const parent = mockElement('p');
+    const pMatcher = createMatcherFor('p');
+    const hrMatcher = createMatcherFor('hr');
     expect(jsxAstUtils.findNode(parent, () => false, false)).toEqual([]);
     expect(jsxAstUtils.findNode(parent, () => true, false)).toEqual([parent]);
-    expect(jsxAstUtils.findNode(parent, match('hr'), false)).toEqual([]);
-    expect(jsxAstUtils.findNode(parent, match('p'), false)).toEqual([parent]);
+    expect(jsxAstUtils.findNode(parent, hrMatcher, false)).toEqual([]);
+    expect(jsxAstUtils.findNode(parent, pMatcher, false)).toEqual([parent]);
   });
 
   it('navigates children if searchMatchChildren is set', () => {
     const parent = mockElement('p');
     const p = mockElement('p');
     parent.children = [mockElement('h1'), p, mockElement('React.Fragment')];
+    const pMatcher = createMatcherFor('p');
 
-    expect(jsxAstUtils.findNode(parent, match('p'), true).length).toBe(2);
-    expect(new Set(jsxAstUtils.findNode(parent, match('p'), true))).toEqual(
+    expect(jsxAstUtils.findNode(parent, pMatcher, true).length).toBe(2);
+    expect(new Set(jsxAstUtils.findNode(parent, pMatcher, true))).toEqual(
       new Set([parent, p])
     );
   });
@@ -147,9 +150,10 @@ describe('findNode', () => {
     const parent = mockElement('p');
     const p = mockElement('p');
     parent.children = [mockElement('h1'), p, mockElement('React.Fragment')];
+    const pMatcher = createMatcherFor('p');
 
-    expect(jsxAstUtils.findNode(parent, match('p'), false).length).toBe(1);
-    expect(jsxAstUtils.findNode(parent, match('p'), false)[0]).toEqual(parent);
+    expect(jsxAstUtils.findNode(parent, pMatcher, false).length).toBe(1);
+    expect(jsxAstUtils.findNode(parent, pMatcher, false)[0]).toEqual(parent);
   });
 });
 
@@ -158,7 +162,7 @@ describe('isJsxElement', () => {
     expect(jsxAstUtils.isJsxElement(mockText())).toBe(false);
   });
 
-  it('returns true for non-jsx elements', () => {
+  it('returns true for jsx elements', () => {
     expect(jsxAstUtils.isJsxElement(mockElement())).toBe(true);
   });
 
@@ -170,7 +174,7 @@ describe('isJsxElement', () => {
 });
 
 describe('cleanJsxSnippet', () => {
-  it('returns a trimmed and semicolon removed string', () => {
+  it('returns a string without white spaces and trailing semicolons', () => {
     const original = '    return <span>text</span>;      ';
     expect(jsxAstUtils.cleanJsxSnippet(original)).toBe(
       'return <span>text</span>'
@@ -216,11 +220,12 @@ describe('reduceNode', () => {
     // String literal AST node taken from example AST
     const node = {
       type: 'StringLiteral',
-      start: 1,
+      start: 0,
+      // Exclusive end is length plus both quotations
       end: text.length + 2,
       extra: {
         rawValue: text,
-        raw: `"${text}"`,
+        raw: jsx,
       },
       value: text,
     };
@@ -229,19 +234,24 @@ describe('reduceNode', () => {
   });
 
   it('directly converts template strings from JSX without delimiters', () => {
+    const tag = 'span';
     const text = 'template string';
-    const jsx = `<span>{\`${text}\`}</span>`;
+    const jsx = `<${tag}>{\`${text}\`}</${tag}>`;
     // Template literal AST node taken from example AST
+    // start of template literal (+3 for <, >, and {)
+    const start = tag.length + 3;
     const node = {
       type: 'TemplateLiteral',
-      start: 7,
-      end: text.length + 9,
+      start,
+      // end of template literal (+2 for both backticks)
+      end: start + text.length + 2,
       expressions: [],
       quasis: [
         {
           type: 'TemplateElement',
-          start: 8,
-          end: text.length + 8,
+          // Start of inner value of template literal
+          start: start + 1,
+          end: start + text.length + 1,
           value: {
             raw: text,
             cooked: text,
@@ -263,20 +273,24 @@ describe('reduceNode', () => {
   });
 
   it('does not collapse text when collapse is unset', () => {
+    const tag = 'span';
     const text = 'start     text';
     const node = mockText(text);
-    const jsx = `<span>${text}</span>`;
-    node.start = 6;
-    node.end = text.length + 6;
+    const jsx = `<${tag}>${text}</${tag}>`;
+    // + 2 from < and >
+    node.start = tag.length + 2;
+    node.end = text.length + tag.length + 2;
     expect(jsxAstUtils.reduceNode(node, false, jsx)).toBe(text);
   });
 
   it('does collapse text when collapse is set', () => {
+    const tag = 'span';
     const text = 'start     text';
     const node = mockText(text);
-    const jsx = `<span>${text}</span>`;
-    node.start = 6;
-    node.end = text.length + 6;
+    const jsx = `<${tag}>${text}</${tag}>`;
+    // + 2 from < and >
+    node.start = tag.length + 2;
+    node.end = text.length + tag.length + 2;
     expect(jsxAstUtils.reduceNode(node, true, jsx)).toBe('start text');
   });
 });

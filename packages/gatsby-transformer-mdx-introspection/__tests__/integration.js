@@ -5,11 +5,15 @@ const transformMdx = require('../src/transform-mdx');
 // Contains overall integration tests to test plugin functionality
 
 // Utility function to mock default options
-const mockOptions = () => ({
+const createTestPluginOptions = () => ({
   cleanWhitespace: true,
   removeMdxCompilationArtifacts: true,
   shouldIndexNode: () => true,
-  tagWhitelist: [/^(?!(?:MDXLayout)|(?:p)|(?:span)|(?:tr)|(?:th)|(?:td)).*$/],
+  // This whitelist is an example of a blacklist that can be used for
+  // thorough parsing of a component tree. `p` and `span` are excluded
+  // due to being generally insignificant, and `MDXLayout` is excluded
+  // because it is always the root of the primary component tree
+  tagWhitelist: [/^(?!(?:MDXLayout)|(?:p)|(?:span)).*$/],
 });
 
 async function introspectMdx(
@@ -43,7 +47,7 @@ async function introspectMdx(
 
 // Legacy tests from previous version of plugin (no regression)
 describe('legacy test behavior', () => {
-  const legacyOptions = mockOptions();
+  const legacyOptions = createTestPluginOptions();
   it('still passes test 1', async () => {
     // This string was slightly changed, but the previous test wasn't valid JSX
     const mdx = '<ApiType apiKey="test" type="OutOfOrderPropertiesTestType" />';
@@ -114,7 +118,7 @@ Lorem ipsum
 
 ---`;
 
-  const tree1 = [
+  const expectedTree1 = [
     {
       component: 'h2',
       attributes: [],
@@ -140,8 +144,8 @@ Lorem ipsum
   ];
 
   it('parses basic MDX files to expected component tree', async () => {
-    const result = await introspectMdx(mdx1, mockOptions());
-    expect(result.children).toMatchObject(tree1);
+    const result = await introspectMdx(mdx1, createTestPluginOptions());
+    expect(result.children).toMatchObject(expectedTree1);
   });
 
   it('removes frontmatter from document before parsing', async () => {
@@ -154,15 +158,13 @@ otherValue: 1
 ${mdx1}
 `.trim();
 
-    const result = await introspectMdx(mdx, mockOptions());
-    expect(result.children).toMatchObject(tree1);
+    const result = await introspectMdx(mdx, createTestPluginOptions());
+    expect(result.children).toMatchObject(expectedTree1);
   });
 
   it('properly parses complex mdx documents to component trees', async () => {
-    const mdx = await fs.promises.readFile(
-      path.resolve(__dirname, './complex.mdx.test')
-    );
-    const result = await introspectMdx(mdx, mockOptions());
+    const mdx = fs.readFileSync(path.resolve(__dirname, './complex.mdx.test'));
+    const result = await introspectMdx(mdx, createTestPluginOptions());
     expect(result.children).toMatchObject([
       {
         component: 'h1',
@@ -251,7 +253,7 @@ ${mdx1}
   })()}
 </div>`;
 
-    const result = await introspectMdx(mdx, mockOptions(), false);
+    const result = await introspectMdx(mdx, createTestPluginOptions(), false);
     expect(result).toMatchObject([
       // Root document node
       {
@@ -278,10 +280,8 @@ ${mdx1}
   });
 
   it('includes all found detached heads as additional nodes in the output', async () => {
-    const mdx = await fs.promises.readFile(
-      path.resolve(__dirname, './detached.mdx.test')
-    );
-    const result = await introspectMdx(mdx, mockOptions(), false);
+    const mdx = fs.readFileSync(path.resolve(__dirname, './detached.mdx.test'));
+    const result = await introspectMdx(mdx, createTestPluginOptions(), false);
     expect(result).toMatchObject([
       // Root document node
       {
