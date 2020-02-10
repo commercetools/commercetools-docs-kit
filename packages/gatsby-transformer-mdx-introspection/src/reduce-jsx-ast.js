@@ -11,21 +11,21 @@ const {
 
 /**
  * Serializes a node to string and searches for any embedded lingering JSX
- * tags contained within, adding them to the detachedHeads array for further
- * processing as a separate component tree
+ * tags contained within, invoking the given callback whenever detached
+ * head(s) are identified
  * @param {object} node Babel JSX AST
  * @param {boolean} collapse Whether to collapse whitespace in JSX snippets
- * @param {array} detachedHeads Mutable array of detached head Babel JSX AST
- * nodes
+ * @param {function} handleDetachedHeads Callback once detached head(s) are found,
+ * called with an array of Babel JSX AST nodes
  * @param {object} context Context object
  */
-function serializeAndSearch(node, collapse, detachedHeads, context) {
+function serializeAndSearch(node, collapse, handleDetachedHeads, context) {
   const { cleanWhitespace, jsx } = context;
   const value = reduceNode(node, cleanWhitespace && collapse, jsx);
   const subJsx = getJsxChildren(node);
   if (subJsx.length > 0) {
-    // The value is (or contains) one or more JSX tree heads; add to list
-    detachedHeads.push(...subJsx);
+    // The value is (or contains) one or more JSX tree heads
+    handleDetachedHeads(subJsx);
   }
   return value;
 }
@@ -76,13 +76,14 @@ function transformSpreadAttribute(attribute, context) {
   // Keep track of any JSX elements seen outside of direct children to parse
   // and index (but not tag as children of the current element)
   const detachedHeads = [];
+  const handleDetachedHeads = heads => detachedHeads.push(...heads);
   const reducedAttributes = [];
 
   if (attribute.argument.type === 'ObjectExpression') {
     const parsed = serializeAndSearch(
       attribute.argument,
       true,
-      detachedHeads,
+      handleDetachedHeads,
       context
     );
 
@@ -110,7 +111,12 @@ function transformAttributes(attributes, context) {
   // and index (but not tag as children of the current element)
   const detachedHeads = [];
   const reduceExpression = (node, collapse = false) =>
-    serializeAndSearch(node, collapse, detachedHeads, context);
+    serializeAndSearch(
+      node,
+      collapse,
+      heads => detachedHeads.push(...heads),
+      context
+    );
 
   let reducedAttributes = [];
   attributes.forEach(attribute => {
@@ -225,9 +231,14 @@ function transformJsxElement(jsxElement, context) {
 function transformNode(node, context) {
   // Keep track of any JSX elements seen outside of direct children to parse
   // and index (but not tag as children of the current element)
-  let detachedHeads = [];
+  const detachedHeads = [];
   const reduceExpression = (jsxNode, collapse = false) =>
-    serializeAndSearch(jsxNode, collapse, detachedHeads, context);
+    serializeAndSearch(
+      jsxNode,
+      collapse,
+      heads => detachedHeads.push(...heads),
+      context
+    );
 
   let reducedNode = null;
   if (node.type === 'JSXText') {
@@ -247,7 +258,7 @@ function transformNode(node, context) {
       // <span>{<em>embedded jsx</em>}</span>
       const [element, foundHeads] = transformJsxElement(expression, context);
       reducedNode = element;
-      detachedHeads = detachedHeads.concat(foundHeads);
+      detachedHeads.push(...foundHeads);
     } else if (expression.type !== 'JSXEmptyExpression') {
       // anything but <span>{}</span>
       reducedNode = reduceExpression(expression, true);
@@ -256,7 +267,7 @@ function transformNode(node, context) {
     // Normal JSX element like <span><img /></span>
     const [element, foundHeads] = transformJsxElement(node, context);
     reducedNode = element;
-    detachedHeads = detachedHeads.concat(foundHeads);
+    detachedHeads.push(...foundHeads);
   }
 
   return [reducedNode, detachedHeads];
@@ -288,7 +299,9 @@ function reduceJsxAst(
 
   // Transform the tree via queue, adding detached heads to the queue as they
   // are discovered to eventually traverse each JSX element node and produce a
-  // final reduced forest
+  // final reduced forest.
+  // Note: In this plugin, the word "forest" refers to a data structure that
+  // consists of multiple independent trees, stored as a list of their heads.
   let queue = [jsxAst];
   const forest = [];
   while (queue.length > 0) {

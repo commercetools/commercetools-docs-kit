@@ -18,7 +18,7 @@ function isAstNode(value) {
  * @param {object} node Babel JSX AST node
  */
 function getChildren(node) {
-  let children = [];
+  const children = [];
   if (node != null) {
     // Examine each attribute of the object
     Object.values(node).forEach(value => {
@@ -26,7 +26,7 @@ function getChildren(node) {
         if (Array.isArray(value)) {
           // Check if it is a node array
           if (value.every(isAstNode)) {
-            children = children.concat(value);
+            children.push(...value);
           }
           // check if it is a single node
         } else if (isAstNode(value)) {
