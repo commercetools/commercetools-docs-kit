@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`converting an HTML string to JSX should render React component for <div class="red">
+      <span>Hello</span>
+      <span class="bold">World</span>
+    </div> 1`] = `
+<div
+  class="red"
+>
+  
+      
+  <span>
+    Hello
+  </span>
+  
+      
+  <span
+    class="bold"
+  >
+    World
+  </span>
+  
+    
+</div>
+`;
+
+exports[`converting an HTML string to JSX should render React component for <div data-testid="foo">
+      <span>Hello</span>
+      <span> </span>
+      <span>World</span>
+    </div> 1`] = `
+<div
+  data-testid="foo"
+>
+  
+      
+  <span>
+    Hello
+  </span>
+  
+      
+  <span>
+     
+  </span>
+  
+      
+  <span>
+    World
+  </span>
+  
+    
+</div>
+`;
+
+exports[`converting an HTML string to JSX should render React component for <span class="red">Hello</span> 1`] = `
+<span
+  class="red"
+>
+  Hello
+</span>
+`;
