@@ -9,7 +9,7 @@ import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
 import codeBlockHighlightCode from '../utils/code-block-highlight-code';
-import createReactComponent from '../utils/html-to-jsx';
+import HtmlToJsx from './html-to-jsx';
 
 const Container = styled.div`
   border: 1px solid ${colors.light.surfaceCodeHighlight};
@@ -166,11 +166,6 @@ const CodeBlock = props => {
     useCommandLine,
   }).replace(/\n$/, '');
 
-  // Convert the formatted content into a React component in order to render it.
-  // Previously we were using `dangerouslySetInnerHTML` but somehow the HTML markup
-  // gets lost when the application is re-hydrated after SSR.
-  const CodeElement = createReactComponent(formattedContent);
-
   // Copy to clipboard logic
   const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
   const handleCopyToClipboardClick = () => {
@@ -213,8 +208,10 @@ const CodeBlock = props => {
       >
         <SpacingsInline scale="xs" alignItems="flex-start">
           <pre className={`language-${language}`}>
+            {/* Previously we were using `dangerouslySetInnerHTML` but somehow the
+            HTML markup gets lost when the application is re-hydrated after SSR. */}
             <code className={`language-${language}`}>
-              <CodeElement />
+              <HtmlToJsx value={formattedContent} />
             </code>
           </pre>
           <Tooltip

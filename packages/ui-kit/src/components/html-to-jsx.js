@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import parse5 from 'parse5';
 
 // Maps DOM attribute names to React DOM attribute names
+// https://reactjs.org/docs/dom-elements.html
 const domToJsx = name => {
   switch (name) {
     case 'class':
@@ -37,16 +39,18 @@ const nodeToJsx = (node, index) => {
   }
 };
 
-const createJsxElement = code => {
-  const htmlFragment = parse5.parseFragment(code);
+// Render a string containing HTML markup as a React component. The string is
+// parsed into an AST and converted into React elements.
+const HtmlToJsx = props => {
+  const htmlFragment = parse5.parseFragment(props.value);
   return React.createElement(
     React.Fragment,
     null,
     htmlFragment.childNodes.map(nodeToJsx)
   );
 };
+HtmlToJsx.propTypes = {
+  value: PropTypes.string.isRequired,
+};
 
-// This factory function returns a new React functional component.
-const createReactComponent = code => () => createJsxElement(code);
-
-export default createReactComponent;
+export default HtmlToJsx;
