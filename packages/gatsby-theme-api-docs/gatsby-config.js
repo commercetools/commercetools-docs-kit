@@ -19,7 +19,7 @@ module.exports = (themeOptions = {}) => {
         resolve: '@commercetools-docs/gatsby-transformer-mdx-introspection',
         options: {
           ...themeOptions.transformerMdx,
-          tagWhitelist: ['ApiType', ...additionalTags],
+          tagWhitelist: ['ApiType', 'ApiEndpoint', ...additionalTags],
         },
       },
       {
