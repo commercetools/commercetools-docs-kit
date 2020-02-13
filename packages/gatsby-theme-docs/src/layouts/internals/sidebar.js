@@ -83,7 +83,7 @@ const SidebarLink = React.forwardRef((props, ref) => {
   const restoreScrollPosition = React.useCallback(() => {
     document
       .getElementById(scrollContainerId)
-      .scrollBy(0, cachedScrollPosition);
+      .scrollTo(0, cachedScrollPosition);
   }, [cachedScrollPosition]);
   React.useEffect(() => {
     const isActive = linkRef.current.getAttribute('aria-current') === 'page';
