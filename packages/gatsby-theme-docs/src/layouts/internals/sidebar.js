@@ -74,8 +74,11 @@ const SidebarLink = React.forwardRef((props, ref) => {
 
   const linkRef = React.useRef();
   const scrollIntoView = React.useCallback(() => {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#Parameters
-    ref.current.scrollIntoView({ block: 'start' });
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#Parameters defaulting to block=start, defaults are most compatible
+    const chapterContainer = ref.current.closest
+      ? ref.current.closest('.sidebar-chapter')
+      : ref.current;
+    chapterContainer.scrollIntoView();
   }, [ref]);
   const restoreScrollPosition = React.useCallback(() => {
     document
@@ -166,7 +169,7 @@ SidebarLink.propTypes = {
 const SidebarChapter = props => {
   const ref = React.useRef();
   return (
-    <div ref={ref}>
+    <div ref={ref} className="sidebar-chapter">
       <SpacingsStack scale="s">
         <LinkItem>
           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
