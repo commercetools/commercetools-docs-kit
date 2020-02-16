@@ -183,6 +183,12 @@ module.exports = (themeOptions = {}) => {
           exclude: [],
         },
       },
+      {
+        resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+        options: {
+          disable: process.env.ANALYZE_BUNDLE !== 'true',
+        },
+      },
 
       /**
        * The following plugins need to be last
