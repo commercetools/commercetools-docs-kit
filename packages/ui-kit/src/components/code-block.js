@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
+import theme from 'prism-react-renderer/themes/nightOwl';
+import Highlight, { defaultProps } from 'prism-react-renderer';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
-import codeBlockHighlightCode from '../utils/code-block-highlight-code';
 
 const Container = styled.div`
   border: 1px solid ${colors.light.surfaceCodeHighlight};
@@ -27,6 +29,22 @@ const HeaderInner = styled.div`
 `;
 const HeaderText = styled.span`
   color: ${colors.light.textFaded};
+`;
+const HighlightedContainer = styled.div`
+  background-color: ${colors.light.surfaceCode};
+  margin: 0;
+  padding: ${dimensions.spacings.s} ${dimensions.spacings.xs}
+    ${dimensions.spacings.s} ${dimensions.spacings.m};
+  overflow: auto;
+`;
+const Preformatted = styled.pre`
+  font-family: ${typography.fontFamilies.code};
+  font-size: ${typography.fontSizes.small};
+  background-color: ${colors.light.surfaceCode} !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  white-space: pre-wrap;
 `;
 const CopyArea = styled.div`
   cursor: pointer;
@@ -52,6 +70,34 @@ const TooltipBodyComponent = styled.div`
   font-size: ${typography.fontSizes.extraSmall};
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
+
+const getLineStyles = options => {
+  let promptLineStyles;
+  let highlightLineStyles;
+  if (options.isCommandLine) {
+    promptLineStyles = css`
+      margin: 0 0 0 ${dimensions.spacings.m};
+
+      ::before {
+        content: attr(data-prompt);
+        margin: 0 0 0 -${dimensions.spacings.m};
+        padding: 0 ${dimensions.spacings.s} 0 0;
+        color: ${options.shouldShowPrompt
+          ? colors.light.surfaceSecondary3
+          : colors.light.surfaceCode};
+      }
+    `;
+  }
+  if (options.shouldHighlightLine) {
+    highlightLineStyles = css`
+      background-color: ${colors.light.surfaceCodeHighlight};
+      width: ${options.shouldShowPrompt
+        ? `calc(100% - ${dimensions.spacings.m})`
+        : '100%'};
+    `;
+  }
+  return [promptLineStyles, highlightLineStyles];
+};
 
 /**
  * This components implements most of the logic from `gatsby-remark-prismjs`.
@@ -156,14 +202,7 @@ const languageAliases = {
 const CodeBlock = props => {
   const languageCode = props.language || 'text';
   const language = languageAliases[languageCode] || languageCode;
-  const useCommandLine = ['terminal', 'console'].includes(languageCode);
-  const formattedContent = codeBlockHighlightCode({
-    language,
-    code: props.content,
-    highlightLines: props.highlightLines,
-    noPromptLines: props.noPromptLines,
-    useCommandLine,
-  }).replace(/\n$/, '');
+  const isCommandLine = ['terminal', 'console'].includes(languageCode);
 
   // Copy to clipboard logic
   const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
@@ -194,40 +233,77 @@ const CodeBlock = props => {
           </HeaderInner>
         </Header>
       )}
-      <div
-        className={[
-          'gatsby-highlight',
-          props.highlightLines &&
-            props.highlightLines.length > 0 &&
-            'has-highlighted-lines',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        data-language={language}
+      <Highlight
+        {...defaultProps}
+        code={props.content}
+        language={language}
+        theme={theme}
       >
-        <SpacingsInline scale="xs" alignItems="flex-start">
-          <pre className={`language-${language}`}>
-            <code
-              className={`language-${language}`}
-              dangerouslySetInnerHTML={{
-                __html: formattedContent,
-              }}
-            />
-          </pre>
-          <Tooltip
-            placement="left"
-            title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
-            components={{
-              TooltipWrapperComponent,
-              BodyComponent: TooltipBodyComponent,
-            }}
-          >
-            <CopyArea onClick={handleCopyToClipboardClick}>
-              <ClipboardIcon />
-            </CopyArea>
-          </Tooltip>
-        </SpacingsInline>
-      </div>
+        {({
+          className,
+          style,
+          tokens: syntaxTokens,
+          getLineProps,
+          getTokenProps,
+        }) => (
+          <HighlightedContainer>
+            <SpacingsInline scale="xs" alignItems="flex-start">
+              <Preformatted className={className} style={style}>
+                {syntaxTokens.map((line, index) => {
+                  const isLastLine = syntaxTokens.length - 1 === index;
+                  if (isLastLine) {
+                    if (line.length === 1 && line[0].empty) {
+                      return null;
+                    }
+                  }
+
+                  const shouldShowPrompt = isCommandLine
+                    ? !props.noPromptLines.includes(index + 1)
+                    : false;
+                  const shouldHighlightLine =
+                    props.highlightLines && props.highlightLines.length > 0
+                      ? props.highlightLines.some(
+                          highlightine => highlightine === index + 1
+                        )
+                      : false;
+
+                  return (
+                    <div
+                      key={index}
+                      {...getLineProps({
+                        line,
+                        key: index,
+                        ...(isCommandLine ? { 'data-prompt': '$' } : {}),
+                      })}
+                      css={getLineStyles({
+                        isCommandLine,
+                        shouldShowPrompt,
+                        shouldHighlightLine,
+                      })}
+                    >
+                      {line.map((token, key) => (
+                        <span key={key} {...getTokenProps({ token, key })} />
+                      ))}
+                    </div>
+                  );
+                })}
+              </Preformatted>
+              <Tooltip
+                placement="left"
+                title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
+                components={{
+                  TooltipWrapperComponent,
+                  BodyComponent: TooltipBodyComponent,
+                }}
+              >
+                <CopyArea onClick={handleCopyToClipboardClick}>
+                  <ClipboardIcon />
+                </CopyArea>
+              </Tooltip>
+            </SpacingsInline>
+          </HighlightedContainer>
+        )}
+      </Highlight>
     </Container>
   );
 };

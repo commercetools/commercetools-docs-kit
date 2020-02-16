@@ -70,52 +70,6 @@ const Globals = () => (
         margin: ${dimensions.spacings.xs} 0 0;
       }
 
-      /* Code blocks syntax highlighting */
-
-      .gatsby-highlight {
-        background-color: ${colors.light.surfaceCode};
-        margin: 0;
-        padding: ${dimensions.spacings.s} ${dimensions.spacings.xs}
-          ${dimensions.spacings.s} ${dimensions.spacings.m};
-        overflow: auto;
-      }
-      .gatsby-highlight > code,
-      .gatsby-highlight code[class*='language-'],
-      .gatsby-highlight pre[class*='language-'] {
-        font-family: ${typography.fontFamilies.code};
-        font-size: ${typography.fontSizes.small};
-      }
-      .gatsby-highlight pre[class*='language-'] {
-        background-color: ${colors.light.surfaceCode};
-        margin: 0;
-        padding: 0;
-        width: 100%;
-      }
-      .gatsby-highlight pre[class*='language-'],
-      .gatsby-highlight code[class*='language-'] {
-        white-space: pre-wrap;
-      }
-      .gatsby-highlight .gatsby-highlight-code-line {
-        background-color: ${colors.light.surfaceCodeHighlight};
-        width: 100%;
-        display: inline-block;
-      }
-      .gatsby-highlight .gatsby-highlight-code-prompt {
-        display: inline-block;
-        margin: 0 0 0 ${dimensions.spacings.m};
-      }
-      .gatsby-highlight .gatsby-highlight-code-prompt::before {
-        content: attr(data-prompt);
-        margin: 0 0 0 -${dimensions.spacings.m};
-        padding: 0 ${dimensions.spacings.s} 0 0;
-        color: ${colors.light.surfaceSecondary3};
-      }
-      .gatsby-highlight
-        .gatsby-highlight-code-prompt
-        .gatsby-highlight-code-line {
-        display: unset;
-      }
-
       /* Resets */
       code,
       kbd,
