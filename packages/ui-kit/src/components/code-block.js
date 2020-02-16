@@ -91,9 +91,11 @@ const getLineStyles = options => {
   if (options.shouldHighlightLine) {
     highlightLineStyles = css`
       background-color: ${colors.light.surfaceCodeHighlight};
-      width: ${options.shouldShowPrompt
-        ? `calc(100% - ${dimensions.spacings.m})`
-        : '100%'};
+
+      /* stylelint-disable function-calc-no-invalid */
+      width: calc(
+        100% - ${options.shouldShowPrompt ? dimensions.spacings.m : '0px'}
+      );
     `;
   }
   return [promptLineStyles, highlightLineStyles];
