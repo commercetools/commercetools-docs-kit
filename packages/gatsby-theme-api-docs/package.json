@@ -27,7 +27,7 @@
     "unified": "8.4.2"
   },
   "devDependencies": {
-    "gatsby": "2.19.12",
+    "gatsby": "2.19.17",
     "gatsby-cli": "2.8.29"
   },
   "peerDependencies": {
