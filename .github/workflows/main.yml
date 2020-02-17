@@ -7,8 +7,12 @@ name: Main workflow
 on:
   push:
     branches:
-    - master
+      - master
+    paths-ignore:
+      - "CHANGELOG.md"
   pull_request:
+    paths-ignore:
+      - "CHANGELOG.md"
 
 jobs:
   build_lint_and_test:

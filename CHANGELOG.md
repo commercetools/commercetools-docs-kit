@@ -1,3 +1,15 @@
+## [1.7.7](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.6...v1.7.7) (2020-02-17)
+
+#### 🔮 Type: Chore
+
+- [#281](https://github.com/commercetools/commercetools-docs-kit/pull/281) fix(actions): check out with depth 50 to allow proper canary versions on master branch ([@emmenko](https://github.com/emmenko))
+- [#280](https://github.com/commercetools/commercetools-docs-kit/pull/280) fix: publish canary only if lerna detects that packages changed ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`, `ui-kit`
+  - [#288](https://github.com/commercetools/commercetools-docs-kit/pull/288) refactor: rendering of code block for syntax highlighting ([@emmenko](https://github.com/emmenko))
+
 ## [1.7.6](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.5...v1.7.6) (2020-02-07)
 
 #### ⛑ Type: Refactoring
