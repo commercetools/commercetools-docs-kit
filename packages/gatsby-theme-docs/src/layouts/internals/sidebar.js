@@ -65,7 +65,7 @@ const LinkItem = styled.div`
   align-items: flex-end;
 `;
 
-const SidebarLink = React.forwardRef((props, ref) => {
+const SidebarLink = React.forwardRef(props => {
   // Filter out props that we don't want to forward to the Link component
   const { location, nextScrollPosition, ...forwardProps } = props;
 
@@ -73,32 +73,25 @@ const SidebarLink = React.forwardRef((props, ref) => {
   const locationPath = trimTrailingSlash(location.pathname);
 
   const linkRef = React.useRef();
-  const scrollIntoView = React.useCallback(() => {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#Parameters defaulting to block=start, defaults are most compatible
-    const chapterContainer = ref.current.closest
-      ? ref.current.closest('.sidebar-chapter')
-      : ref.current;
-    chapterContainer.scrollIntoView();
-  }, [ref]);
-  const restoreScrollPosition = React.useCallback(() => {
-    document
-      .getElementById(scrollContainerId)
-      .scrollTo(0, cachedScrollPosition);
-  }, [cachedScrollPosition]);
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     const isActive = linkRef.current.getAttribute('aria-current') === 'page';
     // In case there was no scroll position saved in the location, and the link
     // is the active one, make sure that the chapter is "visible".
     if (isActive && !cachedScrollPosition) {
-      scrollIntoView();
+      const chapterContainer = linkRef.current.closest
+        ? linkRef.current.closest('.sidebar-chapter')
+        : linkRef.current;
+      chapterContainer.scrollIntoView();
     }
     // In case there was a scroll position saved in the location make sure that
     // the scroll position is restored.
     // We check for the active link to ensure that we scroll to the position only once.
     else if (isActive && cachedScrollPosition >= 0) {
-      restoreScrollPosition();
+      document
+        .getElementById(scrollContainerId)
+        .scrollTo(0, cachedScrollPosition);
     }
-  }, [linkRef, cachedScrollPosition, scrollIntoView, restoreScrollPosition]);
+  }, [linkRef, cachedScrollPosition]);
 
   return (
     <ClassNames>
