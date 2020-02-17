@@ -5,7 +5,6 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import '@commercetools-docs/ui-kit/code-block-themes';
 import React from 'react';
 import { CacheProvider } from '@emotion/core';
 import { docsCache } from './create-emotion-cache';
