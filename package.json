@@ -70,7 +70,7 @@
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "core-js": "3.6.4",
     "cross-env": "7.0.0",
-    "cypress": "3.8.3",
+    "cypress": "4.0.2",
     "dotenv": "8.2.0",
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.0.0",
@@ -114,12 +114,12 @@
     "shelljs": "0.8.3",
     "stylelint": "13.2.0",
     "stylelint-config-prettier": "8.0.1",
-    "stylelint-config-standard": "19.0.0",
+    "stylelint-config-standard": "20.0.0",
     "stylelint-order": "4.0.0",
     "wait-on": "4.0.0"
   },
   "resolutions": {
-    "**/cypress": "3.8.3",
+    "**/cypress": "4.0.2",
     "**/sharp": "0.23.3"
   },
   "engines": {
