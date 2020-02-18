@@ -84,7 +84,10 @@ const SidebarLink = React.forwardRef((props, ref) => {
       .getElementById(scrollContainerId)
       .scrollBy(0, cachedScrollPosition);
   }, [cachedScrollPosition]);
-  React.useEffect(() => {
+  // We need to restore the scroll position as soon as possible, therefore we
+  // use `useLayoutEffect` instead of `useEffect` as it fires synchronously after
+  // all DOM mutations.
+  React.useLayoutEffect(() => {
     const isActive = linkRef.current.getAttribute('aria-current') === 'page';
     // In case there was no scroll position saved in the location, and the link
     // is the active one, make sure that the chapter is "visible".
