@@ -67,23 +67,26 @@ const LinkItem = styled.div`
   align-items: flex-end;
 `;
 
-const SidebarLink = React.forwardRef((props, ref) => {
+const SidebarLink = props => {
   // Filter out props that we don't want to forward to the Link component
-  const { location, nextScrollPosition, ...forwardProps } = props;
+  const {
+    location,
+    nextScrollPosition,
+    getChapterDOMElement,
+    ...forwardProps
+  } = props;
 
   const cachedScrollPosition = (location.state || {}).scrollPosition;
   const locationPath = trimTrailingSlash(location.pathname);
 
   const linkRef = React.useRef();
-  const scrollIntoView = React.useCallback(() => {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#Parameters
-    ref.current.scrollIntoView({ block: 'start' });
-  }, [ref]);
+
   const restoreScrollPosition = React.useCallback(() => {
     document
       .getElementById(scrollContainerId)
       .scrollBy(0, cachedScrollPosition);
   }, [cachedScrollPosition]);
+
   // We need to restore the scroll position as soon as possible, therefore we
   // use `useLayoutEffect` instead of `useEffect` as it fires synchronously after
   // all DOM mutations.
@@ -92,7 +95,8 @@ const SidebarLink = React.forwardRef((props, ref) => {
     // In case there was no scroll position saved in the location, and the link
     // is the active one, make sure that the chapter is "visible".
     if (isActive && !cachedScrollPosition) {
-      scrollIntoView();
+      // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#Parameters
+      getChapterDOMElement().scrollIntoView({ block: 'start' });
     }
     // In case there was a scroll position saved in the location make sure that
     // the scroll position is restored.
@@ -100,7 +104,12 @@ const SidebarLink = React.forwardRef((props, ref) => {
     else if (isActive && cachedScrollPosition >= 0) {
       restoreScrollPosition();
     }
-  }, [linkRef, cachedScrollPosition, scrollIntoView, restoreScrollPosition]);
+  }, [
+    linkRef,
+    cachedScrollPosition,
+    getChapterDOMElement,
+    restoreScrollPosition,
+  ]);
 
   return (
     <ClassNames>
@@ -152,7 +161,7 @@ const SidebarLink = React.forwardRef((props, ref) => {
       }}
     </ClassNames>
   );
-});
+};
 SidebarLink.displayName = 'SidebarLink';
 SidebarLink.propTypes = {
   to: PropTypes.string.isRequired,
@@ -163,12 +172,17 @@ SidebarLink.propTypes = {
     }),
     pathname: PropTypes.string.isRequired,
   }).isRequired,
+  getChapterDOMElement: PropTypes.func.isRequired,
 };
 
 const SidebarChapter = props => {
-  const ref = React.useRef();
+  const elemId = `sidebar-chapter-${props.index}`;
+  const getChapterDOMElement = React.useCallback(
+    () => document.getElementById(elemId),
+    [elemId]
+  );
   return (
-    <div ref={ref}>
+    <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack scale="s">
         <LinkItem>
           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
@@ -180,11 +194,11 @@ const SidebarChapter = props => {
               <Location key={`${props.index}-${pageIndex}-${pageLink.path}`}>
                 {({ location }) => (
                   <SidebarLink
-                    ref={ref}
                     to={pageLink.path}
                     onClick={props.onLinkClick}
                     location={location}
                     nextScrollPosition={props.nextScrollPosition}
+                    getChapterDOMElement={getChapterDOMElement}
                   >
                     <LinkSubtitle>{pageLink.title}</LinkSubtitle>
                     {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
