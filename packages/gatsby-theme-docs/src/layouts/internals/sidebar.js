@@ -76,7 +76,7 @@ const SidebarLink = props => {
     ...forwardProps
   } = props;
 
-  const cachedScrollPosition = (location.state || {}).scrollPosition;
+  const cachedScrollPosition = (location.state || {}).sidebarScrollPosition;
   const locationPath = trimTrailingSlash(location.pathname);
 
   const linkRef = React.useRef();
@@ -141,7 +141,7 @@ const SidebarLink = props => {
             innerRef={linkRef}
             to={trimTrailingSlash(props.to)}
             state={{
-              scrollPosition: nextScrollPosition,
+              sidebarScrollPosition: nextScrollPosition,
             }}
             getProps={({ href }) => {
               // Manually check that the link is the active one, even with trailing slashes.
@@ -168,7 +168,7 @@ SidebarLink.propTypes = {
   nextScrollPosition: PropTypes.number.isRequired,
   location: PropTypes.shape({
     state: PropTypes.shape({
-      scrollPosition: PropTypes.number,
+      sidebarScrollPosition: PropTypes.number,
     }),
     pathname: PropTypes.string.isRequired,
   }).isRequired,
