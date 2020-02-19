@@ -1,3 +1,17 @@
+## [1.8.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.7...v1.8.0) (2020-02-19)
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-docs`
+  - [#175](https://github.com/commercetools/commercetools-docs-kit/pull/175) feat(theme): restore scroll position of main navigation links, when navigating to a new page ([@emmenko](https://github.com/emmenko))
+
+#### 🤖 Type: Dependencies
+
+- Other
+  - [#282](https://github.com/commercetools/commercetools-docs-kit/pull/282) chore(deps): update all dependencies (major) ([@renovate[bot]](https://github.com/apps/renovate))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`
+  - [#283](https://github.com/commercetools/commercetools-docs-kit/pull/283) chore(deps): lock file maintenance all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.7.7](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.6...v1.7.7) (2020-02-17)
 
 #### 🔮 Type: Chore
