@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-api-docs",
   "description": "Gatsby theme for commercetools documentation API",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -13,7 +13,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "1.8.0",
+    "@commercetools-docs/gatsby-theme-docs": "1.8.1",
     "@commercetools-docs/gatsby-transformer-mdx-introspection": "1.7.0",
     "@commercetools-docs/gatsby-transformer-raml": "1.7.6",
     "@commercetools-docs/ui-kit": "1.7.7",
