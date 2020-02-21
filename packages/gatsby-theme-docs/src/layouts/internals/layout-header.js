@@ -177,10 +177,8 @@ const LayoutHeader = props => (
           </SwitcherButton>
           {props.isTopMenuOpen ? (
             <Overlay
+              top={designSystem.dimensions.heights.header}
               onClick={props.closeTopMenu}
-              css={css`
-                top: ${designSystem.dimensions.heights.header} !important;
-              `}
             >
               <TopMenu />
             </Overlay>
@@ -189,12 +187,7 @@ const LayoutHeader = props => (
       </Inline>
       <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
         {props.isSearchDialogOpen ? (
-          <Overlay
-            onClick={props.closeSearchDialog}
-            css={css`
-              position: absolute;
-            `}
-          >
+          <Overlay position="absolute" onClick={props.closeSearchDialog}>
             <SearchDialog onClose={props.closeSearchDialog} />
           </Overlay>
         ) : (

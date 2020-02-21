@@ -115,13 +115,12 @@ const LayoutSidebar = props => {
         />
         {props.isSearchDialogOpen && (
           <Overlay
+            position="absolute"
+            display="none"
             css={css`
-              position: absolute;
-              display: none;
-
               @media screen and (${designSystem.dimensions.viewports
                   .largeTablet}) {
-                display: block;
+                display: block !important;
               }
             `}
           />
