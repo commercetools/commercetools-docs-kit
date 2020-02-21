@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.8.0...v1.8.1) (2020-02-21)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`
+  - [#293](https://github.com/commercetools/commercetools-docs-kit/pull/293) fix(theme): css overrides for search overlay ([@emmenko](https://github.com/emmenko))
+
 ## [1.8.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.7.7...v1.8.0) (2020-02-19)
 
 #### 🚀 Type: New Feature
