@@ -17,18 +17,18 @@
     "@commercetools-docs/gatsby-transformer-mdx-introspection": "1.7.0",
     "@commercetools-docs/gatsby-transformer-raml": "1.7.6",
     "@commercetools-docs/ui-kit": "1.7.7",
-    "@commercetools-uikit/card": "10.13.0",
-    "@commercetools-uikit/design-system": "10.13.0",
-    "@commercetools-uikit/spacings-inline": "10.13.0",
-    "@commercetools-uikit/spacings-stack": "10.13.0",
+    "@commercetools-uikit/card": "10.16.0",
+    "@commercetools-uikit/design-system": "10.15.1",
+    "@commercetools-uikit/spacings-inline": "10.15.1",
+    "@commercetools-uikit/spacings-stack": "10.15.1",
     "gatsby-source-filesystem": "2.1.48",
     "remark-parse": "7.0.2",
     "remark-react": "6.0.0",
     "unified": "8.4.2"
   },
   "devDependencies": {
-    "gatsby": "2.19.17",
-    "gatsby-cli": "2.8.29"
+    "gatsby": "2.19.20",
+    "gatsby-cli": "2.8.30"
   },
   "peerDependencies": {
     "@emotion/core": "10.x",
