@@ -17,14 +17,14 @@ const defaultOptions = {
   // Predicate function used as a performance escape hatch to filter MDX files that
   // get parsed/indexed
   shouldIndexNode: () => true,
-
-  // JSX components that will generate Gatsby data nodes in the final output (other nodes
-  // will still appear as other components' children and their children can generate nodes)
-  tagWhitelist: ['a', /^h[1-6]$/],
 };
 
 // Generated node name
 const nodeName = 'ComponentInMdx';
+
+// Whether the plugin should introspect Mdx nodes. Set to false if tagWhitelist
+// is unset
+let pluginEnabled = true;
 
 /**
  * Adds default plugin options to the user options, letting user options
@@ -82,7 +82,20 @@ async function queryChildren(node, context, { filter, sort, deep, first }) {
   return result;
 }
 
+exports.onPreInit = ({ reporter }, options) => {
+  const { tagWhitelist } = mergeDefaults(options);
+  if (tagWhitelist == null) {
+    pluginEnabled = false;
+    reporter.error(
+      `The required option 'tagWhitelist' in gatsby-transformer-mdx-introspection is unset.
+The plugin has been disabled and Mdx nodes will not be introspected.`
+    );
+  }
+};
+
 exports.createSchemaCustomization = ({ actions }) => {
+  // Skip schema generation if disabled
+  if (!pluginEnabled) return;
   actions.createTypes(
     `"""
      JSX element attribute with left-hand identifier and right-hand value
@@ -123,6 +136,9 @@ exports.createSchemaCustomization = ({ actions }) => {
 };
 
 exports.createResolvers = ({ createResolvers, intermediateSchema }) => {
+  // Skip schema generation if disabled
+  if (!pluginEnabled) return;
+
   const typeMap = intermediateSchema.getTypeMap();
   const filterType = typeMap[`${nodeName}FilterInput`];
   const sortType = typeMap[`${nodeName}SortInput`];
@@ -199,16 +215,18 @@ exports.onCreateNode = (
   options
 ) => {
   const { shouldIndexNode } = mergeDefaults(options);
-  if (node.internal.type === 'Mdx' && shouldIndexNode(node)) {
-    introspectMdx({
-      node,
-      createNodeId,
-      createContentDigest,
-      actions,
-      options,
-      cache,
-      reporter,
-    });
+  if (pluginEnabled) {
+    if (node.internal.type === 'Mdx' && shouldIndexNode(node)) {
+      introspectMdx({
+        node,
+        createNodeId,
+        createContentDigest,
+        actions,
+        options,
+        cache,
+        reporter,
+      });
+    }
   }
 };
 

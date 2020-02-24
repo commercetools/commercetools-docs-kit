@@ -79,6 +79,12 @@ query GetAllApiTypes {
 
 ## Options
 
+**`tagWhitelist`** [array\<string | RegExp>](**required**)
+
+JSX components that generate Gatsby data nodes in the final output (other nodes still appear as children in `tree` and their children can generate nodes)
+
+> **Note**: most target use cases need to whitelist specific tags to inspect. This is the recommended approach to improve performance, but the whitelist configuration can be used as a blacklist, too by specifying a single regular expression with a [negative look-around](https://www.regular-expressions.info/lookaround.html).
+
 **`cleanWhitespace`** [boolean] (optional, defaults to true)
 
 Whether to collapse/trim whitespace in JSX snippets and string literals
@@ -90,24 +96,6 @@ Whether to remove attributes that are (usually) artifacts of MDX compilation (`m
 **`shouldIndexNode`** [(node) ⇒ boolean] (optional, defaults to () ⇒ true)
 
 Predicate function used as a performance escape hatch to filter MDX files that get parsed/indexed. Use if not all MDX files need to be indexed.
-
-**`tagWhitelist`** [array\<string | RegExp>] (optional, defaults to `['a', /^h[1-6]\$/]`)
-
-JSX components that generate Gatsby data nodes in the final output (other nodes still appear as children in `tree` and their children can generate nodes)
-
-##### Default value
-
-By default, the plugin only generates Gatsby data nodes for the following elements:
-
-- `a`
-- `h1`
-- `h2`
-- `h3`
-- `h4`
-- `h5`
-- `h6`
-
-> **Note**: most target use cases need to whitelist specific tags to inspect. This is the recommended approach to improve performance, but the whitelist configuration can be used as a blacklist, too by specifying a single regular expression with a [negative look-around](https://www.regular-expressions.info/lookaround.html).
 
 ## Advanced Queries
 
