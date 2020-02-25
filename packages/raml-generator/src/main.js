@@ -4,17 +4,16 @@ const shell = require('shelljs');
 const chalk = require('chalk');
 
 function generateRaml(options) {
+  const resolvedPath = path.resolve(options.apiSpecPath);
+
   // Check if the spec file exists.
-  fs.access(options.apiSpecPath, fs.constants.F_OK, err => {
+  fs.access(resolvedPath, fs.constants.F_OK, err => {
     if (err) {
-      console.error(
-        `${options.apiSpecPath} does not exist`,
-        chalk.red.bold('ERROR')
-      );
+      console.error(`${resolvedPath} does not exist`, chalk.red.bold('ERROR'));
       process.exit(1);
     }
 
-    generateRamlIfSpecPath(options);
+    generateRamlIfSpecPath({ ...options, apiSpecPath: resolvedPath });
   });
 }
 
