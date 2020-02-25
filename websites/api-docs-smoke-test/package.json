@@ -11,7 +11,6 @@
     "build": "npx gatsby build --prefix-paths",
     "prebuild": "yarn clean",
     "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
-    "generate-ramldoc-from-jar": "java -jar ./cli-application-1.0.0-20200221085820-all.jar generate ./source-raml/test/api.raml -o ./src/api-specs/test/ -t ramldoc",
     "generate-ramldoc": "npx commercetools-docs-raml-generator"
   },
   "dependencies": {
