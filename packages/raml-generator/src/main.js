@@ -20,7 +20,7 @@ function generateRaml(options) {
 function generateRamlIfSpecPath(options) {
   const jarFile = path.resolve(
     __dirname,
-    '../download/cli-application-1.0.0-20200221085820-all.jar'
+    '../jar/cli-application-1.0.0-20200221085820-all.jar'
   );
 
   // check if jar file was successfully downloaded.
