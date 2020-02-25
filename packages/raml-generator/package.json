@@ -1,0 +1,13 @@
+{
+  "name": "@commercetools-docs/raml-generator",
+  "version": "1.0.0",
+  "description": "Generates RAML docs compatible with @commercetools-docs/gatsby-transformer-raml",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "bin": {
+    "commercetools-docs-raml-generator": "bin/raml-generator.js"
+  }
+}

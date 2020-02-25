@@ -11,11 +11,16 @@
     "build": "npx gatsby build --prefix-paths",
     "prebuild": "yarn clean",
     "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
-    "generate-ramldoc": "java -jar ./cli-application-1.0.0-20200221085820-all.jar generate ./source-raml/test/api.raml -o ./src/api-specs/test/ -t ramldoc"
+    "generate-ramldoc-from-jar": "java -jar ./cli-application-1.0.0-20200221085820-all.jar generate ./source-raml/test/api.raml -o ./src/api-specs/test/ -t ramldoc",
+    "generate-ramldoc": "npx commercetools-docs-raml-generator"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-api-docs": "1.8.1",
     "gatsby": "2.19.17",
     "gatsby-cli": "2.8.29"
+  },
+
+  "devDependencies": {
+    "@commercetools-docs/raml-generator": "1.0.0"
   }
 }
