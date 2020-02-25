@@ -18,5 +18,7 @@
     "commercetools-docs-raml-generator": "bin/raml-generator.js"
   },
   "dependencies": {
+    "inquirer": "7.0.4",
+    "arg": "4.1.3"
   }
 }
