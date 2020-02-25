@@ -1,11 +1,12 @@
 /** Based on this blog - https://www.twilio.com/blog/how-to-build-a-cli-with-node-js */
 const arg = require('arg');
 const inquirer = require('inquirer');
+const { generateRaml } = require('./main');
 
 async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
   options = await promptForMissingOptions(options);
-  console.log(options);
+  generateRaml(options);
 }
 
 function parseArgumentsIntoOptions(rawArgs) {
