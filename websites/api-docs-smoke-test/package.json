@@ -11,7 +11,7 @@
     "build": "npx gatsby build --prefix-paths",
     "prebuild": "yarn clean",
     "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
-    "generate-ramldoc": "npx commercetools-docs-raml-generator test ./source-raml/test/api.raml"
+    "generate-ramldoc": "npx commercetools-docs-raml-generator"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-api-docs": "1.8.1",

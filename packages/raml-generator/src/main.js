@@ -4,27 +4,35 @@ const shell = require('shelljs');
 const chalk = require('chalk');
 
 function generateRaml(options) {
-  const resolvedPath = path.resolve(options.apiSpecPath);
+  const resolvedSourcePath = path.resolve(options.apiSpecSourcePath);
 
   // Check if the spec file exists.
-  fs.access(resolvedPath, fs.constants.F_OK, err => {
+  fs.access(resolvedSourcePath, fs.constants.F_OK, err => {
     if (err) {
-      console.error(`${resolvedPath} does not exist`, chalk.red.bold('ERROR'));
+      console.error(
+        `${resolvedSourcePath} does not exist`,
+        chalk.red.bold('ERROR')
+      );
       process.exit(1);
     }
 
-    generateRamlIfSpecPath({ ...options, apiSpecPath: resolvedPath });
+    generateRamlIfSpecPath({
+      ...options,
+      apiSpecSourcePath: resolvedSourcePath,
+    });
   });
 }
 
 function generateRamlIfSpecPath(options) {
+  const resolvedDestinationPath = path.resolve(options.apiSpecDestinationPath);
+
   const jarFile = path.resolve(
     __dirname,
     '../jar/cli-application-1.0.0-20200221085820-all.jar'
   );
 
   shell.exec(
-    `java -jar ${jarFile} generate ${options.apiSpecPath} -o ./src/api-specs/${options.apiSpecName} -t ramldoc`
+    `java -jar ${jarFile} generate ${options.apiSpecSourcePath} -o ${resolvedDestinationPath}${options.apiSpecName} -t ramldoc`
   );
 }
 

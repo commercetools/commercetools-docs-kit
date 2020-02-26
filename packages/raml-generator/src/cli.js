@@ -19,7 +19,8 @@ function parseArgumentsIntoOptions(rawArgs) {
 
   return {
     apiSpecName: args._[0],
-    apiSpecPath: args._[1],
+    apiSpecSourcePath: args._[1],
+    apiSpecDestinationPath: args._[2] || './src/api-specs/',
   };
 }
 
@@ -34,10 +35,10 @@ async function promptForMissingOptions(options) {
     });
   }
 
-  if (!options.apiSpecPath) {
+  if (!options.apiSpecSourcePath) {
     questions.push({
       type: 'input',
-      name: 'apiSpecPath',
+      name: 'apiSpecSourcePath',
       message: 'What is the path to the spec?',
     });
   }
@@ -47,7 +48,7 @@ async function promptForMissingOptions(options) {
   return {
     ...options,
     apiSpecName: options.apiSpecName || answers.apiSpecName,
-    apiSpecPath: options.apiSpecPath || answers.apiSpecPath,
+    apiSpecSourcePath: options.apiSpecSourcePath || answers.apiSpecSourcePath,
   };
 }
 
