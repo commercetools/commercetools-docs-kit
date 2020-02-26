@@ -26,13 +26,19 @@ function generateRaml(options) {
 function generateRamlIfSpecPath(options) {
   const resolvedDestinationPath = path.resolve(options.apiSpecDestinationPath);
 
+  console.log(
+    `RAML docs will be generated in this directory: ${chalk.blue(
+      resolvedDestinationPath
+    )}`
+  );
+
   const jarFile = path.resolve(
     __dirname,
     '../jar/cli-application-1.0.0-20200221085820-all.jar'
   );
 
   shell.exec(
-    `java -jar ${jarFile} generate ${options.apiSpecSourcePath} -o ${resolvedDestinationPath}${options.apiSpecName} -t ramldoc`
+    `java -jar ${jarFile} generate ${options.apiSpecSourcePath} -o ${resolvedDestinationPath}/${options.apiSpecName} -t ramldoc`
   );
 }
 
