@@ -30,10 +30,7 @@ function generateRamlIfSpecPath(options) {
     )}`
   );
 
-  const jarFile = path.resolve(
-    __dirname,
-    '../jar/cli-application-1.0.0-20200221085820-all.jar'
-  );
+  const jarFile = path.resolve(__dirname, '../jar/rmf-codegen.jar');
 
   shell.exec(
     `java -jar ${jarFile} generate ${options.apiSpecSourcePath} -o ${resolvedDestinationPath}/${options.apiSpecName} -t ramldoc`
