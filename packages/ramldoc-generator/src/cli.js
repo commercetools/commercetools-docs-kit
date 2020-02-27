@@ -1,14 +1,12 @@
-/** Based on this blog - https://www.twilio.com/blog/how-to-build-a-cli-with-node-js */
 const mri = require('mri');
-const inquirer = require('inquirer');
 const { generateRaml } = require('./main');
 
 async function cli(args) {
-  let options = parseArgumentsIntoOptions(args);
-  options = await promptForMissingOptions(options);
+  const options = parseArgumentsIntoOptions(args);
+  promptForMissingOptions(options);
 
   try {
-    generateRaml(options);
+    await generateRaml(options);
   } catch (e) {
     console.error(e);
     process.exit(1);
@@ -18,41 +16,31 @@ async function cli(args) {
 function parseArgumentsIntoOptions(rawArgs) {
   const argv = rawArgs.slice(2);
 
-  const args = mri(argv);
+  const args = mri(argv, {
+    alias: { help: ['h'] },
+    default: { help: false, name: '', src: '', dest: './src/api-specs/' },
+  });
 
   return {
-    apiSpecName: args._[0],
-    apiSpecSourcePath: args._[1],
-    apiSpecDestinationPath: args._[2] || './src/api-specs/',
+    name: args.name,
+    src: args.src,
+    dest: args.dest,
   };
 }
 
 async function promptForMissingOptions(options) {
-  const questions = [];
+  if (options.help || !(options.name && options.src)) {
+    console.log(`
+    Usage: commercetools-ramldoc-generator --name <api-spec-name> --src <api-spec-source-path>
 
-  if (!options.apiSpecName) {
-    questions.push({
-      type: 'input',
-      name: 'apiSpecName',
-      message: 'What is the name of the spec?',
-    });
+    Displays help information.
+
+    Options:
+      --dest <api-spec-destination-path>               (optional) the path for the generated RAML documents."
+    `);
+
+    process.exit(0);
   }
-
-  if (!options.apiSpecSourcePath) {
-    questions.push({
-      type: 'input',
-      name: 'apiSpecSourcePath',
-      message: 'What is the path to the spec?',
-    });
-  }
-
-  const answers = await inquirer.prompt(questions);
-
-  return {
-    ...options,
-    apiSpecName: options.apiSpecName || answers.apiSpecName,
-    apiSpecSourcePath: options.apiSpecSourcePath || answers.apiSpecSourcePath,
-  };
 }
 
 module.exports = { cli };

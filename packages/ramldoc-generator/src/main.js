@@ -4,7 +4,7 @@ const shell = require('shelljs');
 const chalk = require('chalk');
 
 function generateRaml(options) {
-  const resolvedSourcePath = path.resolve(options.apiSpecSourcePath);
+  const resolvedSourcePath = path.resolve(options.src);
 
   // Check if the spec file exists.
   if (!fs.existsSync(resolvedSourcePath)) {
@@ -13,12 +13,12 @@ function generateRaml(options) {
 
   generateRamlIfSpecPath({
     ...options,
-    apiSpecSourcePath: resolvedSourcePath,
+    src: resolvedSourcePath,
   });
 }
 
 function generateRamlIfSpecPath(options) {
-  const resolvedDestinationPath = path.resolve(options.apiSpecDestinationPath);
+  const resolvedDestinationPath = path.resolve(options.dest);
 
   console.log(
     `RAML docs will be generated in this directory: ${chalk.blue(
@@ -29,7 +29,7 @@ function generateRamlIfSpecPath(options) {
   const jarFile = path.resolve(__dirname, '../jar/rmf-codegen.jar');
 
   shell.exec(
-    `java -jar ${jarFile} generate ${options.apiSpecSourcePath} -o ${resolvedDestinationPath}/${options.apiSpecName} -t ramldoc`
+    `java -jar ${jarFile} generate ${options.src} -o ${resolvedDestinationPath}/${options.name} -t ramldoc`
   );
 }
 

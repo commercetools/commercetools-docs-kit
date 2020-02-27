@@ -16,7 +16,7 @@ Typical usage in a static generator based website project is to include it as a 
 
 and then run it inside the project directory
 
-`npx commercetools-docs-ramldoc-generator <api-spec-name> <api-spec-source-path>`
+`npx commercetools-ramldoc-generator --name <api-spec-name> --src <api-spec-source-path>`
 
 The first parameter is the name of the API spec - this will be the directory name of the generated RAML docs so we recommend snake case or camel case naming convention, for example:
 
@@ -33,4 +33,4 @@ If the module is locally installed in the project, the generated raml documents 
 
 For globally installation, there is an optional third parameter that should be passed to specify the location for the generated RAML like so:
 
-`npx commercetools-docs-ramldoc-generator <api-spec-name> <api-spec-source-path> <api-spec-destination-path>`
+`npx commercetools-ramldoc-generator --name <api-spec-name> --src <api-spec-source-path> --dest <api-spec-destination-path>`
