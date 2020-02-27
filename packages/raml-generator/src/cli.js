@@ -1,5 +1,5 @@
 /** Based on this blog - https://www.twilio.com/blog/how-to-build-a-cli-with-node-js */
-const arg = require('arg');
+const mri = require('mri');
 const inquirer = require('inquirer');
 const { generateRaml } = require('./main');
 
@@ -10,12 +10,9 @@ async function cli(args) {
 }
 
 function parseArgumentsIntoOptions(rawArgs) {
-  const args = arg(
-    {},
-    {
-      argv: rawArgs.slice(2),
-    }
-  );
+  const argv = rawArgs.slice(2);
+
+  const args = mri(argv);
 
   return {
     apiSpecName: args._[0],
