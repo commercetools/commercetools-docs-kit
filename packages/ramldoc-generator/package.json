@@ -14,7 +14,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "commercetools-docs-ramldoc-generator": "bin/ramldoc-generator.js"
+    "commercetools-ramldoc-generator": "bin/ramldoc-generator.js"
   },
   "dependencies": {
     "inquirer": "7.0.4",
