@@ -6,7 +6,13 @@ const { generateRaml } = require('./main');
 async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
   options = await promptForMissingOptions(options);
-  generateRaml(options);
+
+  try {
+    generateRaml(options);
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
 }
 
 function parseArgumentsIntoOptions(rawArgs) {
