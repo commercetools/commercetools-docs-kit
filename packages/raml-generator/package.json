@@ -6,7 +6,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/index.js",
   "keywords": [
     "cli",
     "raml-generator"
