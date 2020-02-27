@@ -7,19 +7,17 @@ function generateRaml(options) {
   const resolvedSourcePath = path.resolve(options.apiSpecSourcePath);
 
   // Check if the spec file exists.
-  fs.access(resolvedSourcePath, fs.constants.F_OK, err => {
-    if (err) {
-      console.error(
-        `${resolvedSourcePath} does not exist`,
-        chalk.red.bold('ERROR')
-      );
-      process.exit(1);
-    }
+  if (!fs.existsSync(resolvedSourcePath)) {
+    console.error(
+      `"${resolvedSourcePath}" does not exist`,
+      chalk.red.bold('ERROR')
+    );
+    process.exit(1);
+  }
 
-    generateRamlIfSpecPath({
-      ...options,
-      apiSpecSourcePath: resolvedSourcePath,
-    });
+  generateRamlIfSpecPath({
+    ...options,
+    apiSpecSourcePath: resolvedSourcePath,
   });
 }
 
