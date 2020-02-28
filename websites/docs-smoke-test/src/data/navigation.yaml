@@ -13,6 +13,8 @@
   pages:
     - title: Code blocks
       path: /components/code-blocks
+    - title: Code sample from file
+      path: /components/code-sample-from-file
     - title: Content notifications
       path: /components/content-notifications
     - title: Images
