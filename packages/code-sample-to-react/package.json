@@ -1,0 +1,21 @@
+{
+  "name": "code-sample-to-react",
+  "version": "1.0.0",
+  "description": "A webpack loader that trasnforms code samples in a file, for example files with extensions .java, .css, .js, to react elements",
+  "main": "index.js",
+  "keywords": ["code", "sample", "react"],
+  "author": "",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
