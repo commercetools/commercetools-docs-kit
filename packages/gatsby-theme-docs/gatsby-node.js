@@ -209,6 +209,18 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
         },
       ],
     },
+    {
+      test: /\.java$/,
+      include: /code-samples/,
+      use: [
+        {
+          loader: path.resolve('./src/loaders/code-sample.js'),
+          options: {
+            /* ... */
+          },
+        },
+      ],
+    },
   ];
   config.resolve = {
     ...config.resolve,

@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// import Java from '../code-samples/test.java';
+
 function CodeSampleFromFile(props) {
-  return <p> Render code for {props.name}</p>;
+  // console.log(process.cwd())
+  // import(props.path).then(Component => {
+  //   console.log(Component);
+  // });
+
+  return <p> Render code for {props.path}</p>;
 }
 
 CodeSampleFromFile.propTypes = {
-  name: PropTypes.string,
+  path: PropTypes.string,
 };
 
 export default CodeSampleFromFile;
