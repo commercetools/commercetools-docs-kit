@@ -1,5 +1,5 @@
 {
-  "name": "code-sample-to-react",
+  "name": "@commercetools-docs/code-sample-to-react",
   "version": "1.0.0",
   "description": "A webpack loader that trasnforms code samples in a file, for example files with extensions .java, .css, .js, to react elements",
   "main": "src/index.js",
