@@ -1,6 +1,4 @@
-function codeSample() {
-  console.log('calling preloader');
-  return 'text from svr loader';
-}
-
-export default codeSample;
+module.exports = function codeSample(source) {
+  console.log(source);
+  return 'source';
+};

@@ -175,6 +175,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   const config = getConfig();
+
   config.module.rules = [
     ...config.module.rules.map(rule => ({
       ...rule,
@@ -214,7 +215,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
       include: /code-samples/,
       use: [
         {
-          loader: path.resolve('./src/loaders/code-sample.js'),
+          loader: path.resolve(__dirname, './src/loaders/code-sample.js'),
           options: {
             /* ... */
           },
