@@ -211,7 +211,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
       ],
     },
     {
-      test: /\.java$/,
+      test: /\.js$/,
       include: /code-samples/,
       use: [
         {

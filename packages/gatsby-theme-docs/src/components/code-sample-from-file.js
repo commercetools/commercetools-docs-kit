@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // import Java from '../code-samples/test.java';
 
-function CodeSampleFromFile() {
-  // console.log(process.cwd())
-  // import(props.path).then(Component => {
-  //   console.log(Component);
-  // });
+function CodeSampleFromFile(props) {
+  const [sample, setSample] = useState('');
 
-  return <p> Render code from code sample</p>;
+  import(`../code-samples/${props.name}`).then(result => {
+    setSample(result.default);
+  });
+
+  return (
+    <div>
+      <code>{sample}</code>;
+    </div>
+  );
 }
 
 CodeSampleFromFile.propTypes = {
-  path: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default CodeSampleFromFile;

@@ -1,5 +1,4 @@
 function codeSample(content) {
-  console.log(content);
   this.cacheable();
 
   this.value = content;
