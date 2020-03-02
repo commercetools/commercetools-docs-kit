@@ -34,3 +34,11 @@ If the module is locally installed in the project, the generated raml documents 
 For globally installation, there is an optional third parameter that should be passed to specify the location for the generated RAML like so:
 
 `npx commercetools-ramldoc-generator --name <api-spec-name> --src <api-spec-source-path> --dest <api-spec-destination-path>`
+
+## RMF-Codegen Jar File
+
+The [rmf-codegen](https://github.com/vrapio/rmf-codegen) jar file is deployed on [Bintray](https://bintray.com/vrapio/vrapio/rmf-codegen#files/io%2Fvrap%2Frmf%2Fcodegen%2Fcli-application%2F1.0.0-20200221085820). A direct download link of the cli application, that includes necessary dependencies, is found here:
+
+https://dl.bintray.com/vrapio/vrapio/io/vrap/rmf/codegen/cli-application/1.0.0-20200221085820/
+
+Note: To update the jar file in this tool (found in `<root>/jar/rmf-codegen.jar`), you must rename the downloaded jar file to `rmf-codegen.jar`.
