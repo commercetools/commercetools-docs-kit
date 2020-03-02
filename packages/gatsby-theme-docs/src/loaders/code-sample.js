@@ -1,4 +1,9 @@
-module.exports = function codeSample(source) {
-  console.log(source);
-  return 'source';
-};
+function codeSample(content) {
+  console.log(content);
+  this.cacheable();
+
+  this.value = content;
+  return `module.exports = ${JSON.stringify(content)}`;
+}
+
+module.exports = codeSample;
