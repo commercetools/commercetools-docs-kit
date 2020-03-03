@@ -13,11 +13,12 @@ function CodeSampleFromFile(props) {
     setSample(result.default);
   });
 
-  return <CodeBlock content={sample} language="js" />;
+  return <CodeBlock content={sample} language={props.language} />;
 }
 
 CodeSampleFromFile.propTypes = {
   name: PropTypes.string,
+  language: PropTypes.string,
 };
 
 export default CodeSampleFromFile;
