@@ -1,4 +1,4 @@
-code-samples/
+code-examples/
 dist/
 node_modules/*
 **/node_modules/*

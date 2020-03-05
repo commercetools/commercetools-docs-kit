@@ -98,8 +98,8 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'code-samples',
-          path: path.resolve(`./src/code-samples`),
+          name: 'code-examples',
+          path: path.resolve(`./src/code-examples`),
         },
       },
 
@@ -117,7 +117,7 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: '@commercetools-docs/gatsby-transformer-raw',
         options: {
-          name: `code-samples`,
+          name: `code-examples`,
         },
       },
 

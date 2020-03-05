@@ -10,6 +10,12 @@ function CodeExample(props) {
     return example.absolutePath.includes(props.import);
   });
 
+  // TODO return notification warning if code example does not exist
+  // throw error in production
+  if (!codeExample) {
+    return <p>Code does not exist</p>;
+  }
+
   const language = props.import.split('.').pop();
 
   return <CodeBlock content={codeExample.content} language={language} />;
