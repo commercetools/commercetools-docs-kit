@@ -1,0 +1,10 @@
+{
+  "name": "@commercetools-docs/gatsby-transformer-raw",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": ""
+}

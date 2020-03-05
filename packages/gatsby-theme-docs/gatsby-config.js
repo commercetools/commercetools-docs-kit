@@ -94,6 +94,14 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/content`),
         },
       },
+      // Code samples
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'code-samples',
+          path: path.resolve(`./src/code-samples`),
+        },
+      },
 
       /**
        * Transformers for making content available in graphql queries
@@ -104,6 +112,14 @@ module.exports = (themeOptions = {}) => {
 
       // For querying configuration data
       'gatsby-transformer-yaml',
+
+      // For querying code samples
+      {
+        resolve: '@commercetools-docs/gatsby-transformer-raw',
+        options: {
+          name: `code-samples`,
+        },
+      },
 
       // For querying MDX
       {
