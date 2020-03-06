@@ -9,9 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
     "mri": "1.1.4",
     "ncp": "2.0.0",
