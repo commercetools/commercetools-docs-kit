@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CodeBlock } from '@commercetools-docs/ui-kit';
+import { CodeBlock, ContentNotifications } from '@commercetools-docs/ui-kit';
 import useCodeExamples from '../hooks/use-code-examples';
 
 function CodeExample(props) {
@@ -10,10 +10,8 @@ function CodeExample(props) {
     return example.absolutePath.includes(props.import);
   });
 
-  // TODO return notification warning if code example does not exist
-  // throw error in production
   if (!codeExample) {
-    return <p>Code does not exist</p>;
+    return reportError('Code example does not exist');
   }
 
   const language = props.import.split('.').pop();
@@ -27,6 +25,14 @@ function CodeExample(props) {
       noPromptLines={props.noPromptLines}
     />
   );
+}
+
+function reportError(errorMsg) {
+  if (process.env.NODE_ENV !== 'production') {
+    return <ContentNotifications.Error>{errorMsg}</ContentNotifications.Error>;
+  }
+
+  throw new Error(errorMsg);
 }
 
 CodeExample.propTypes = {
