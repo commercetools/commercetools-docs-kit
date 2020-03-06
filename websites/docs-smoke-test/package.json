@@ -11,7 +11,7 @@
     "build": "npx gatsby build --prefix-paths",
     "prebuild": "yarn clean",
     "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test",
-    "generate-code-examples": "npx commercetools-code-examples-generator --packagename @commercetools-docs/code-examples"
+    "generate-code-examples": "npx commercetools-code-examples-generator --packagename @commercetools-docs/code-examples --sourcedir code-examples"
   },
   "dependencies": {
     "@commercetools-docs/code-examples": "1.0.0",

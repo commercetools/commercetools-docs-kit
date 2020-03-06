@@ -5,8 +5,13 @@ const chalk = require('chalk');
 async function generateExamples(options) {
   const pathToModule = require.resolve(options.packageName);
 
-  const sourcePath = pathToModule.substring(0, pathToModule.lastIndexOf('/'));
-  const destPath = `${process.cwd()}/src/code-examples/${options.packageName}`;
+  let sourcePath = pathToModule.substring(0, pathToModule.lastIndexOf('/'));
+  let destPath = `${process.cwd()}/src/code-examples/${options.packageName}`;
+
+  if (options.sourceDir) {
+    sourcePath = `${sourcePath}/${options.sourceDir}`;
+    destPath = `${destPath}/${options.sourceDir}`;
+  }
 
   shell.exec(`mkdir -p ${destPath}`);
 

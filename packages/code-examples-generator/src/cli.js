@@ -24,6 +24,7 @@ function parseArgumentsIntoOptions(rawArgs) {
 
   return {
     packageName: args.packagename,
+    sourceDir: args.sourcedir,
   };
 }
 
@@ -35,7 +36,7 @@ async function promptForMissingOptions(options) {
     Displays help information.
 
     Options:
-      --dir <code-examples-directory>               (optional) the directory from which examples should be generated."
+      --sourcedir <code-examples-directory>               (optional) the directory from which examples should be generated."
       `);
 
     process.exit(0);
