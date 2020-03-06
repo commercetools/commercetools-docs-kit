@@ -115,7 +115,7 @@ module.exports = (themeOptions = {}) => {
 
       // For querying code samples
       {
-        resolve: '@commercetools-docs/gatsby-transformer-raw',
+        resolve: '@commercetools-docs/gatsby-transformer-code-examples',
         options: {
           name: `code-examples`,
         },
