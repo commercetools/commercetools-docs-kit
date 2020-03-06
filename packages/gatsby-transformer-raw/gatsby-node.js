@@ -1,3 +1,25 @@
+const createSchemaCustomization = ({ actions, schema }) => {
+  const { createTypes } = actions;
+
+  const typeDefs = [
+    schema.buildObjectType({
+      name: 'CodeExample',
+      fields: {
+        name: 'String!',
+        extension: 'String!',
+        absolutePath: 'String!',
+        content: 'String!',
+      },
+      interfaces: ['Node'],
+      extensions: {
+        infer: false,
+      },
+    }),
+  ];
+
+  createTypes(typeDefs);
+};
+
 async function onCreateNode({
   node,
   actions,
@@ -39,4 +61,5 @@ async function onCreateNode({
   );
 }
 
+exports.createSchemaCustomization = createSchemaCustomization;
 exports.onCreateNode = onCreateNode;
