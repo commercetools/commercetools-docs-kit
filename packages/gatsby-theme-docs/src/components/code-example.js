@@ -18,11 +18,22 @@ function CodeExample(props) {
 
   const language = props.import.split('.').pop();
 
-  return <CodeBlock content={codeExample.content} language={language} />;
+  return (
+    <CodeBlock
+      content={codeExample.content}
+      language={language}
+      title={props.title}
+      highlightLines={props.highlightLines}
+      noPromptLines={props.noPromptLines}
+    />
+  );
 }
 
 CodeExample.propTypes = {
-  import: PropTypes.string,
+  import: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  highlightLines: PropTypes.arrayOf(PropTypes.number),
+  noPromptLines: PropTypes.arrayOf(PropTypes.number),
 };
 
 export default CodeExample;

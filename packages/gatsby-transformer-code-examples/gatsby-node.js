@@ -27,7 +27,16 @@ async function onCreateNode({
   createNodeId,
   createContentDigest,
 }) {
-  const validExtensions = ['application/javascript', 'text/x-java-source'];
+  const validExtensions = [
+    'application/javascript',
+    'text/x-java-source',
+    'application/octet-stream',
+    'application/json',
+    'application/x-httpd-php',
+    'application/x-sh',
+    'video/mp2t',
+    'text/yaml',
+  ];
   if (!validExtensions.includes(node.internal.mediaType)) return;
 
   const { createNode, createParentChildLink } = actions;
