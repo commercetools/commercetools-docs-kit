@@ -3,10 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "commercetools-code-examples-generator": "bin/code-examples-generator.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mri": "1.1.4",
+    "ncp": "2.0.0",
+    "shelljs": "0.8.3",
+    "chalk": "3.0.0"
+  }
 }
