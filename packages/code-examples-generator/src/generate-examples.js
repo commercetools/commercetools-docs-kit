@@ -13,6 +13,8 @@ async function generateExamples(options) {
     destPath = `${destPath}/${options.sourceDir}`;
   }
 
+  shell.exec(`rm -rf ${destPath}`);
+
   shell.exec(`mkdir -p ${destPath}`);
 
   ncp.limit = 16;
