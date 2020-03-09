@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "gatsby": "2.19.17",
-    "gatsby-cli": "2.8.29"
+    "gatsby-cli": "2.8.29",
+    "@commercetools-docs/ramldoc-generator": "1.0.0"
   },
   "peerDependencies": {
     "@emotion/core": "10.x",
