@@ -13,12 +13,12 @@
   pages:
     - title: Code blocks
       path: /components/code-blocks
-    - title: Code Examples
-      path: /components/code-examples
     - title: Content notifications
       path: /components/content-notifications
     - title: Images
       path: /components/images
+    - title: Code Examples
+      path: /components/code-examples
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
   pages:
     - title: Page with some very long title too much for our innocent API to handle
