@@ -1,12 +1,18 @@
-# Docs Kit RAML Doc Generator
+# commercetools Docs Kit "RAMLdoc" Generator
 
-This package provides an executable script that generates RAML documents compatible with the [RAML transformer ](https://www.npmjs.com/package/@commercetools-docs/gatsby-transformer-raml) plugin.
+This package provides an executable that transform any spec-compliant RAML API definition into the (also RAML-compliant) RAML document structure and layout required by the [@commercetools-docs/gatsby-transformer-raml](https://www.npmjs.com/package/@commercetools-docs/gatsby-transformer-raml) plugin.
 
-It's based on the [rmf-codegen](https://github.com/vrapio/rmf-codegen) tool.
+The conversion step is applying a number normalizations and resolutions so that the RAML spec exposed to the site generator can be published exactly as-is without further semantic understanding of the API definition.
 
-## Pre-Installation
+Among others, it flattens most type inheritance into the effectively visible API surface and distributes the information into separate fragments for API Endpoints and API Types that match the way they are exposed in web documentation.
 
-At least Java 8 is required to be installed before using this tool.
+It's based on the REST Modeling Framework's [rmf-codegen](https://github.com/vrapio/rmf-codegen) CLI.
+
+## Prerequisites
+
+A Java 8 or newer `java` runtime is required to be installed and available on the path. `rmf-codegen` is downloaded automatically at install time.
+
+`rmf-codegen` was chosen over other (native JS and/or official) RAML parsers because it proved to be the only implementation that can correctly and reliably load even extremely large API definitions in very short time where others fail to load the same API definition at all.
 
 ## Usage
 
@@ -35,10 +41,6 @@ For globally installation, there is an optional third parameter that should be p
 
 `npx commercetools-ramldoc-generator --name <api-spec-name> --src <api-spec-source-path> --dest <api-spec-destination-path>`
 
-## RMF-Codegen Jar File
+## Maintenance
 
-The [rmf-codegen](https://github.com/vrapio/rmf-codegen) jar file is deployed on [Bintray](https://bintray.com/vrapio/vrapio/rmf-codegen#files/io%2Fvrap%2Frmf%2Fcodegen%2Fcli-application%2F1.0.0-20200221085820). A direct download link of the cli application, that includes necessary dependencies, is found here:
-
-https://dl.bintray.com/vrapio/vrapio/io/vrap/rmf/codegen/cli-application/1.0.0-20200221085820/
-
-Note: To update the jar file in this tool (found in `<root>/jar/rmf-codegen.jar`), you must rename the downloaded jar file to `rmf-codegen.jar`.
+To update the `rmf-codegen` version, update the custom `rmfCodegenVersion` property in `package.json`

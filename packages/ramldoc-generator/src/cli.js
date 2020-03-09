@@ -33,10 +33,8 @@ async function promptForMissingOptions(options) {
     console.log(`
     Usage: commercetools-ramldoc-generator --name <api-spec-name> --src <api-spec-source-path>
 
-    Displays help information.
-
     Options:
-      --dest <api-spec-destination-path>               (optional) the path for the generated RAML documents."
+      --dest <api-spec-destination-path>               (optional) alternative path for the generated RAML documents."
     `);
 
     process.exit(0);
