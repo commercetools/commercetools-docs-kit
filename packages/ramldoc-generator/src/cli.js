@@ -1,4 +1,5 @@
 const mri = require('mri');
+const chalk = require('chalk');
 const { generateRaml } = require('./main');
 
 async function cli(args) {
@@ -8,7 +9,7 @@ async function cli(args) {
   try {
     await generateRaml(options);
   } catch (e) {
-    console.error(e);
+    console.error(chalk.red.bold(e));
     process.exit(1);
   }
 }
@@ -18,7 +19,7 @@ function parseArgumentsIntoOptions(rawArgs) {
 
   const args = mri(argv, {
     alias: { help: ['h'] },
-    default: { help: false, name: '', src: '', dest: './src/api-specs/' },
+    default: { help: false, dest: './src/api-specs/' },
   });
 
   return {
@@ -34,7 +35,11 @@ async function promptForMissingOptions(options) {
     Usage: commercetools-ramldoc-generator --name <api-spec-name> --src <api-spec-source-path>
 
     Options:
-      --dest <api-spec-destination-path>               (optional) alternative path for the generated RAML documents."
+      --name <api-spec-name>                      The name of the generated spec file.
+
+      --src <api-spec-source-path>                The path to the RAML file spec.
+
+      --dest <api-spec-destination-path>          (optional) Alternative path for the generated RAML documents."
     `);
 
     process.exit(0);

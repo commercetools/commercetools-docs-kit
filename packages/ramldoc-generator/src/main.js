@@ -9,7 +9,7 @@ function generateRaml(options) {
 
   // Check if the spec file exists.
   if (!fs.existsSync(resolvedSourcePath)) {
-    throw new Error(chalk.red.bold(`"${resolvedSourcePath}" does not exist`));
+    throw new Error(`"${resolvedSourcePath}" does not exist`);
   }
 
   generateRamlIfSpecPath({
