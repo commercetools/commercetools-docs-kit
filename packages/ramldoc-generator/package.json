@@ -21,6 +21,7 @@
   "dependencies": {
     "mri": "1.1.4",
     "shelljs": "0.8.3",
-    "chalk": "3.0.0"
+    "chalk": "3.0.0",
+    "hasbin": "1.2.3"
   }
 }

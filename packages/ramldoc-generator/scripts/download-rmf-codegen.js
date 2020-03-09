@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const shelljs = require('shelljs');
+const hasbin = require('hasbin');
 const { rmfCodegenVersion } = require('../package.json');
 
 const binPath = path.join(__dirname, '../bin');
@@ -30,8 +31,12 @@ const downloadArchive = async url => {
   abortIfError(shelljs.chmod(755, jarPath));
 };
 
+if (!hasbin.sync('java')) {
+  console.warn(
+    '[ramldoc-generator] Warning: no java runtime detected in path. Using existing RAMLdocs is possible but not regeneration from master RAML definitions.'
+  );
+}
 console.log('[ramldoc-generator] Verifying rmf-codegen installation...');
-// TODO test for java being installed and warn (but do not abort)
 if (fs.existsSync(jarPath)) {
   console.log(
     '[ramldoc-generator] rmf-codegen jar already installed, skipping installation...'
