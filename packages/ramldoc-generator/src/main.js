@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const shell = require('shelljs');
 const chalk = require('chalk');
+const { rmfCodegenVersion } = require('../package.json');
 
 function generateRaml(options) {
   const resolvedSourcePath = path.resolve(options.src);
@@ -26,7 +27,10 @@ function generateRamlIfSpecPath(options) {
     )}`
   );
 
-  const jarFile = path.resolve(__dirname, '../jar/rmf-codegen.jar');
+  const jarFile = path.resolve(
+    __dirname,
+    `../bin/rmf-codegen-${rmfCodegenVersion}.jar`
+  );
 
   shell.exec(
     `java -jar ${jarFile} generate ${options.src} -o ${resolvedDestinationPath}/${options.name} -t ramldoc`

@@ -1,6 +1,7 @@
 {
   "name": "@commercetools-docs/ramldoc-generator",
   "version": "1.0.0",
+  "rmfCodegenVersion": "1.0.0-20200304142749",
   "description": "Generates RAML docs compatible with @commercetools-docs/gatsby-transformer-raml",
   "license": "MIT",
   "publishConfig": {
@@ -11,6 +12,7 @@
     "ramldoc-generator"
   ],
   "scripts": {
+    "postinstall": "node scripts/download-rmf-codegen.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
