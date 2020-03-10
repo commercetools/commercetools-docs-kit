@@ -43,4 +43,8 @@ For globally installation, there is an optional third parameter that should be p
 
 ## Maintenance
 
-To update the `rmf-codegen` version, update the custom `rmfCodegenVersion` property in `package.json`
+To update the `rmf-codegen` version, update the custom `rmfCodegenVersion` property in `package.json`.
+
+Versions can be found on Bintray here - https://bintray.com/vrapio/vrapio/rmf-codegen#.
+
+For more help on getting an appropriate version, create an issue here - https://github.com/vrapio/rmf-codegen/issues.

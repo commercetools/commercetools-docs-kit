@@ -2,12 +2,12 @@ const mri = require('mri');
 const chalk = require('chalk');
 const { generateRaml } = require('./main');
 
-async function cli(args) {
+function cli(args) {
   const options = parseArgumentsIntoOptions(args);
   promptForMissingOptions(options);
 
   try {
-    await generateRaml(options);
+    generateRaml(options);
   } catch (e) {
     console.error(chalk.red.bold(e));
     process.exit(1);
@@ -29,7 +29,7 @@ function parseArgumentsIntoOptions(rawArgs) {
   };
 }
 
-async function promptForMissingOptions(options) {
+function promptForMissingOptions(options) {
   if (options.help || !(options.name && options.src)) {
     console.log(`
     Usage: commercetools-ramldoc-generator --name <api-spec-name> --src <api-spec-source-path>
