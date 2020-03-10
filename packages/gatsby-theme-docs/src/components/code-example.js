@@ -11,7 +11,7 @@ function CodeExample(props) {
   });
 
   if (!codeExample) {
-    return reportError('Code example does not exist');
+    return reportError(`Code example does not exist for ${props.file}`);
   }
 
   const language = props.file.split('.').pop();

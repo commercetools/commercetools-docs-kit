@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContentNotifications } from '@commercetools-docs/ui-kit';
+import {
+  ContentNotifications /* , CodeBlock */,
+} from '@commercetools-docs/ui-kit';
+// import useCodeExamples from '../hooks/use-code-examples';
 
 function MultiLanguageCodeExamples(props) {
+  // const codeExamples = useCodeExamples();
   const propsArray = extractProps(props.children);
 
   if (!propsArray.length) {
@@ -10,6 +14,8 @@ function MultiLanguageCodeExamples(props) {
       'All children of MultiLanguageCodeExamples must be CodeExample component'
     );
   }
+
+  // const codeBlockMulti = <CodeBlock multiLanguage={}/>
 
   console.log(propsArray);
 
@@ -36,6 +42,8 @@ function extractProps(children) {
 
   return props;
 }
+
+// function findContents() {}
 
 function reportError(errorMsg) {
   if (process.env.NODE_ENV !== 'production') {

@@ -202,6 +202,10 @@ const languageAliases = {
   js: 'javascript',
 };
 const CodeBlock = props => {
+  if (props.multiLanguage) {
+    console.log('render as mulilanguage code block');
+  }
+
   const languageCode = props.language || 'text';
   const language = languageAliases[languageCode] || languageCode;
   const isCommandLine = ['terminal', 'console'].includes(languageCode);
@@ -310,6 +314,15 @@ const CodeBlock = props => {
   );
 };
 CodeBlock.propTypes = {
+  multiLanguage: PropTypes.arrayOf(
+    PropTypes.shape({
+      language: PropTypes.string,
+      title: PropTypes.string,
+      highlightLines: PropTypes.arrayOf(PropTypes.number),
+      noPromptLines: PropTypes.arrayOf(PropTypes.number),
+      content: PropTypes.string.isRequired,
+    })
+  ),
   language: PropTypes.string,
   title: PropTypes.string,
   highlightLines: PropTypes.arrayOf(PropTypes.number),
