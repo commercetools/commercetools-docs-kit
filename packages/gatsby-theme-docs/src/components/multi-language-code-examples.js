@@ -1,56 +1,94 @@
-import React from 'react';
+import React, { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import {
-  ContentNotifications /* , CodeBlock */,
-} from '@commercetools-docs/ui-kit';
-// import useCodeExamples from '../hooks/use-code-examples';
+import { ContentNotifications, CodeBlock } from '@commercetools-docs/ui-kit';
+import useCodeExamples from '../hooks/use-code-examples';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'set_props':
+      return { props: action.props, ...state };
+    case 'set_errors':
+      return { errors: action.errors, ...state };
+    default:
+      throw new Error(`"${action.type}" is invalid.`);
+  }
+}
 
 function MultiLanguageCodeExamples(props) {
-  // const codeExamples = useCodeExamples();
-  const propsArray = extractProps(props.children);
+  const codeExamples = useCodeExamples();
+  const [state, dispatch] = useReducer(reducer, {});
 
-  if (!propsArray.length) {
-    return reportError(
-      'All children of MultiLanguageCodeExamples must be CodeExample component'
-    );
-  }
+  useEffect(() => {
+    extractProps({
+      children: props.children,
+      codeExamples,
+      callback: (result, err) => {
+        if (result) {
+          dispatch({ type: 'set_props', props: result });
+        } else {
+          dispatch({ type: 'set_errors', errors: err });
+        }
+      },
+    });
+  }, [codeExamples, props.children]);
 
-  // const codeBlockMulti = <CodeBlock multiLanguage={}/>
-
-  console.log(propsArray);
-
-  return props.children;
-}
-
-function extractProps(children) {
-  let props = [];
-
-  children.every(child => {
-    if (
-      !child.props ||
-      !child.props.mdxType ||
-      !(child.props.mdxType === 'CodeExample')
-    ) {
-      props = [];
-      return false;
+  if (state.errors) {
+    if (process.env.NODE_ENV !== 'production') {
+      return state.errors.map((err, index) => (
+        <ContentNotifications.Error key={index}>
+          {err}
+        </ContentNotifications.Error>
+      ));
     }
 
-    props.push({ ...child.props });
-
-    return true;
-  });
-
-  return props;
-}
-
-// function findContents() {}
-
-function reportError(errorMsg) {
-  if (process.env.NODE_ENV !== 'production') {
-    return <ContentNotifications.Error>{errorMsg}</ContentNotifications.Error>;
+    throw new Error(state.errors);
   }
 
-  throw new Error(errorMsg);
+  return state.props ? (
+    <CodeBlock multiLanguage={state.props} content="test" />
+  ) : null;
+}
+
+function extractProps({ children, codeExamples, callback }) {
+  const errors = [];
+  const props = [];
+
+  children.forEach(child => {
+    if (!child.props) {
+      errors.push(
+        `Content of MultiLanguageCodeExamples must be a CodeExample and not ${JSON.stringify(
+          child
+        )}`
+      );
+    } else if (!(child.props.mdxType === 'CodeExample')) {
+      errors.push(
+        `Content of MultiLanguageCodeExamples must be a CodeExample and not "${child.props.mdxType}"`
+      );
+    } else {
+      const codeExample = codeExamples.find(example => {
+        return example.absolutePath.includes(child.props.file);
+      });
+
+      if (!codeExample) {
+        errors.push(`Code example does not exist for ${child.props.file}`);
+      } else {
+        const language = child.props.file.split('.').pop();
+
+        props.push({
+          content: codeExample.content,
+          language,
+          highlightLines: child.props.highlightLines,
+          noPromptLines: child.props.noPromptLines,
+        });
+      }
+    }
+  });
+
+  if (errors.length) {
+    callback(undefined, errors.length ? errors : '');
+  } else {
+    callback(props);
+  }
 }
 
 MultiLanguageCodeExamples.propTypes = {

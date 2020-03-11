@@ -314,6 +314,11 @@ const CodeBlock = props => {
   );
 };
 CodeBlock.propTypes = {
+  language: PropTypes.string,
+  title: PropTypes.string,
+  highlightLines: PropTypes.arrayOf(PropTypes.number),
+  noPromptLines: PropTypes.arrayOf(PropTypes.number),
+  content: PropTypes.string,
   multiLanguage: PropTypes.arrayOf(
     PropTypes.shape({
       language: PropTypes.string,
@@ -323,11 +328,15 @@ CodeBlock.propTypes = {
       content: PropTypes.string.isRequired,
     })
   ),
-  language: PropTypes.string,
-  title: PropTypes.string,
-  highlightLines: PropTypes.arrayOf(PropTypes.number),
-  noPromptLines: PropTypes.arrayOf(PropTypes.number),
-  content: PropTypes.string.isRequired,
+  oneOfContentOrMultiLanguage: (props, propName, componentName) => {
+    if (!props.content && !props.multiLanguage) {
+      return new Error(
+        `One of props 'content' or 'multiLanguage' was not specified in '${componentName}'.`
+      );
+    }
+
+    return null;
+  },
 };
 
 export default CodeBlock;
