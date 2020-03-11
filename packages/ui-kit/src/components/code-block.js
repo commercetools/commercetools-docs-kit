@@ -202,18 +202,34 @@ const languageAliases = {
   js: 'javascript',
 };
 const CodeBlock = props => {
-  if (props.multiLanguage) {
-    console.log('render as mulilanguage code block');
-  }
+  const [content, setContent] = React.useState(
+    props.multiLanguage ? props.multiLanguage.props[0].content : props.content
+  );
+  const [languageCode, setLanguageCode] = React.useState(
+    props.multiLanguage
+      ? props.multiLanguage.props[0].language
+      : props.language || 'text'
+  );
+  const [highlightLines, setHighlightLines] = React.useState(
+    props.multiLanguage
+      ? props.multiLanguage.props[0].highlightLines || []
+      : props.highlightLines || []
+  );
+  const [noPromptLines, setNoPromptLines] = React.useState(
+    props.multiLanguage
+      ? props.multiLanguage.props[0].noPromptLines || []
+      : props.noPromptLines || []
+  );
 
-  const languageCode = props.language || 'text';
+  // TODO: use parsing functionality of building array of highlightLines and noPromptLines
+
   const language = languageAliases[languageCode] || languageCode;
   const isCommandLine = ['terminal', 'console'].includes(languageCode);
 
   // Copy to clipboard logic
   const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
   const handleCopyToClipboardClick = () => {
-    copyToClipboard(props.content);
+    copyToClipboard(content);
 
     setIsCopiedToClipboard(true);
     setTimeout(() => {
@@ -223,25 +239,15 @@ const CodeBlock = props => {
 
   return (
     <Container>
-      {props.title && (
-        <Header>
-          <HeaderInner>
-            <HeaderText>{props.title}</HeaderText>
-            <SpacingsInline
-              scale="m"
-              alignItems="center"
-              justifyContent="flex-end"
-            >
-              {languageCode === 'text' ? null : (
-                <HeaderText>{languageCode}</HeaderText>
-              )}
-            </SpacingsInline>
-          </HeaderInner>
-        </Header>
-      )}
+      {props.multiLanguage
+        ? renderMultiLanguageHeader(
+            props.multiLanguage.title,
+            props.multiLanguage.props.map(prop => prop.language)
+          )
+        : renderTitle(props.title, languageCode)}
       <Highlight
         {...defaultProps}
-        code={props.content}
+        code={content}
         language={language}
         theme={theme}
       >
@@ -264,11 +270,11 @@ const CodeBlock = props => {
                   }
 
                   const shouldShowPrompt = isCommandLine
-                    ? !props.noPromptLines.includes(index + 1)
+                    ? !noPromptLines.includes(index + 1)
                     : false;
                   const shouldHighlightLine =
-                    props.highlightLines && props.highlightLines.length > 0
-                      ? props.highlightLines.some(
+                    highlightLines && highlightLines.length > 0
+                      ? highlightLines.some(
                           highlightine => highlightine === index + 1
                         )
                       : false;
@@ -312,6 +318,63 @@ const CodeBlock = props => {
       </Highlight>
     </Container>
   );
+
+  function renderTitle(title, langCode) {
+    if (title) {
+      return (
+        <Header>
+          <HeaderInner>
+            <HeaderText>{title}</HeaderText>
+            <SpacingsInline
+              scale="m"
+              alignItems="center"
+              justifyContent="flex-end"
+            >
+              {langCode === 'text' ? null : <HeaderText>{langCode}</HeaderText>}
+            </SpacingsInline>
+          </HeaderInner>
+        </Header>
+      );
+    }
+
+    return null;
+  }
+  function renderMultiLanguageHeader(title, languages = []) {
+    if (title || languages.length) {
+      return (
+        <Header>
+          <HeaderInner>
+            <HeaderText>{title}</HeaderText>
+            <SpacingsInline
+              scale="m"
+              alignItems="center"
+              justifyContent="flex-end"
+            >
+              <select onChange={handleOnLanguageChange}>
+                {languages.map(lang => (
+                  <option key={lang} value={lang}>
+                    {lang}
+                  </option>
+                ))}
+              </select>
+            </SpacingsInline>
+          </HeaderInner>
+        </Header>
+      );
+    }
+
+    return null;
+  }
+
+  function handleOnLanguageChange(e) {
+    const code = props.multiLanguage.props.find(
+      prop => prop.language === e.target.value
+    );
+    setLanguageCode(code.language);
+    setContent(code.content);
+    setHighlightLines(code.highlightLines || []);
+    setNoPromptLines(code.noPromptLines || []);
+  }
 };
 CodeBlock.propTypes = {
   language: PropTypes.string,
@@ -319,15 +382,18 @@ CodeBlock.propTypes = {
   highlightLines: PropTypes.arrayOf(PropTypes.number),
   noPromptLines: PropTypes.arrayOf(PropTypes.number),
   content: PropTypes.string,
-  multiLanguage: PropTypes.arrayOf(
-    PropTypes.shape({
-      language: PropTypes.string,
-      title: PropTypes.string,
-      highlightLines: PropTypes.arrayOf(PropTypes.number),
-      noPromptLines: PropTypes.arrayOf(PropTypes.number),
-      content: PropTypes.string.isRequired,
-    })
-  ),
+  multiLanguage: PropTypes.shape({
+    title: PropTypes.string,
+    props: PropTypes.arrayOf(
+      PropTypes.shape({
+        language: PropTypes.string,
+        title: PropTypes.string,
+        highlightLines: PropTypes.arrayOf(PropTypes.number),
+        noPromptLines: PropTypes.arrayOf(PropTypes.number),
+        content: PropTypes.string.isRequired,
+      })
+    ),
+  }),
   oneOfContentOrMultiLanguage: (props, propName, componentName) => {
     if (!props.content && !props.multiLanguage) {
       return new Error(

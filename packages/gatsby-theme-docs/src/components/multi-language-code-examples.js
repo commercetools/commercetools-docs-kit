@@ -45,7 +45,7 @@ function MultiLanguageCodeExamples(props) {
   }
 
   return state.props ? (
-    <CodeBlock multiLanguage={state.props} content="test" />
+    <CodeBlock multiLanguage={{ title: props.title, props: state.props }} />
   ) : null;
 }
 
@@ -92,6 +92,7 @@ function extractProps({ children, codeExamples, callback }) {
 }
 
 MultiLanguageCodeExamples.propTypes = {
+  title: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element),
 };
 
