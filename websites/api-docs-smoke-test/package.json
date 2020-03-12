@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/api-docs-smoke-test",
-  "version": "1.8.1",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "start": "yarn develop",
@@ -14,7 +14,7 @@
     "generate-ramldoc": "npx commercetools-ramldoc-generator --name test --src ./source-raml/test/api.raml"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-api-docs": "1.8.1",
+    "@commercetools-docs/gatsby-theme-api-docs": "2.0.0",
     "gatsby": "2.19.17",
     "gatsby-cli": "2.8.29"
   }
