@@ -1,3 +1,27 @@
+## [2.0.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.8.1...v2.0.0) (2020-03-12)
+
+This release introduces some **breaking changes**, as documented below.
+
+### Changes in `gatsby-transformer-mdx-introspection`
+
+The plugin got an internal re-write and the API changed a bit.
+
+One key area in which it is different is the **casing of JSX attributes/tags**. This is due to dropping the HTML parsing engine, which automatically converted the case. Now, all components/attributes will use the source casing from the compiled MDX, which is usually Pascal/camelCase.
+
+More detailed information can be found in the package README, as well as the list of supported options.
+
+#### 💥 Type: Breaking Change
+
+- `gatsby-theme-api-docs`, `gatsby-transformer-mdx-introspection`
+  - [#183](https://github.com/commercetools/commercetools-docs-kit/pull/183) feat(introspection): utilize Babel parser to better parse MDX into component nodes ([@jazevedo620](https://github.com/jazevedo620))
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-api-docs`, `ramldoc-generator`
+  - [#296](https://github.com/commercetools/commercetools-docs-kit/pull/296) feat: add ramldoc-generator package ([@davifantasia](https://github.com/davifantasia))
+
+The new package `@commercetools-docs/ramldoc-generator` provides an executable to transform any spec-compliant RAML API definition into the (also RAML-compliant) RAML document structure and layout required by the [@commercetools-docs/gatsby-transformer-raml](https://www.npmjs.com/package/@commercetools-docs/gatsby-transformer-raml) plugin.
+
 ## [1.8.1](https://github.com/commercetools/commercetools-docs-kit/compare/v1.8.0...v1.8.1) (2020-02-21)
 
 #### 🐛 Type: Bug

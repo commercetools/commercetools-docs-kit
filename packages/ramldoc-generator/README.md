@@ -1,6 +1,6 @@
 # commercetools Docs Kit "RAMLdoc" Generator
 
-This package provides an executable that transform any spec-compliant RAML API definition into the (also RAML-compliant) RAML document structure and layout required by the [@commercetools-docs/gatsby-transformer-raml](https://www.npmjs.com/package/@commercetools-docs/gatsby-transformer-raml) plugin.
+This package provides an executable to transform any spec-compliant RAML API definition into the (also RAML-compliant) RAML document structure and layout required by the [@commercetools-docs/gatsby-transformer-raml](https://www.npmjs.com/package/@commercetools-docs/gatsby-transformer-raml) plugin.
 
 The conversion step is applying a number normalizations and resolutions so that the RAML spec exposed to the site generator can be published exactly as-is without further semantic understanding of the API definition.
 
