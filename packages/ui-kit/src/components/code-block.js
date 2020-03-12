@@ -212,13 +212,13 @@ const CodeBlock = props => {
   );
   const [highlightLines, setHighlightLines] = React.useState(
     props.multiLanguage
-      ? props.multiLanguage.props[0].highlightLines || []
-      : props.highlightLines || []
+      ? props.multiLanguage.props[0].highlightLines
+      : props.highlightLines
   );
   const [noPromptLines, setNoPromptLines] = React.useState(
     props.multiLanguage
-      ? props.multiLanguage.props[0].noPromptLines || []
-      : props.noPromptLines || []
+      ? props.multiLanguage.props[0].noPromptLines
+      : props.noPromptLines
   );
 
   // TODO: use parsing functionality of building array of highlightLines and noPromptLines

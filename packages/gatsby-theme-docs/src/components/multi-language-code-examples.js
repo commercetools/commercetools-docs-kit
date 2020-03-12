@@ -77,8 +77,8 @@ function extractProps({ children, codeExamples, callback }) {
         props.push({
           content: codeExample.content,
           language,
-          highlightLines: child.props.highlightLines,
-          noPromptLines: child.props.noPromptLines,
+          highlightLines: child.props.highlightLines || [],
+          noPromptLines: child.props.noPromptLines || [],
         });
       }
     }
