@@ -75,9 +75,9 @@ const languagesBackgroundImageUrl = color => {
 };
 const LanguagesDropDown = styled.select`
   display: block;
-  font-size: 16px;
-  line-height: 23px;
-  color: #fff;
+  font-size: ${typography.fontSizes.body};
+  line-height: ${typography.lineHeights.body};
+  color: ${colors.light.surfacePrimary};
   background: none;
   border: none;
   cursor: pointer;
@@ -85,18 +85,18 @@ const LanguagesDropDown = styled.select`
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  padding-right: 16px;
+  padding-right: ${dimensions.spacings.m};
   background-image: ${languagesBackgroundImageUrl('ffffff')};
   background-repeat: no-repeat, repeat;
   background-position: right 0 top 50%, 0 0;
-  background-size: 12px auto, 100%;
+  background-size: ${dimensions.widths.selectDropDownArrowWith} auto, 100%;
 
   ::-ms-expand {
     display: none;
   }
 
   :hover {
-    color: #e6e6e6;
+    color: ${colors.light.surfaceInlineCode};
     background-image: ${languagesBackgroundImageUrl('e6e6e6')};
   }
 
@@ -105,7 +105,7 @@ const LanguagesDropDown = styled.select`
   }
 
   option {
-    margin-right: 1em;
+    margin-right: ${dimensions.spacings.m};
   }
 `;
 
