@@ -10,17 +10,28 @@ To create a new documentation website you need to install this theme and its pee
 npx install-peerdeps --dev @commercetools-docs/gatsby-theme-api-docs
 ```
 
-### API spec theme
+### Autogenerating RAML Specs
 
-Besides the normal folder structure of the `@commercetools-docs/gatsby-theme-docs`, the API spec theme contains additional folders:
+This theme includes the [commercetools docs kit "RAMLdoc" generator](https://www.npmjs.com/package/@commercetools-docs/ramldoc-generator) and [Gatsby Transformer RAML](https://www.npmjs.com/package/@commercetools-docs/gatsby-transformer-raml) - the former generates RAML docs compatible with the later.
 
-- `src/api-specs` for your RAML API specifications. Individual files work, files in folders work, includes are also hot-reloaded. Do not include from locations outside the `api-specs` folder. The file location determines the `apiKey` through which it can be addressed:
-  - `src/api-specs/foo.raml` -> apiKey `foo`
-  - `src/api-specs/bar/api.raml` -> apiKey `bar`
-  - `src/api-specs/baz/baz.raml` -> apiKey `baz`
+To generate raml docs, simply run
+
+`npx commercetools-ramldoc-generator --name <api-spec-name> --src <api-spec-source-path>`
+
+Docs will be generated in `<root>/src/api-specs/`.
+
+### Exposed Specs Components
 
 The following components are always available in MDX pages without explicitly importing them:
 
-- `<ApiType>` (TODO explain parameters)
+- `<ApiType>` (TODO)
 - `<ApiEndpoint>` (TODO explain parameters)
 - `<ApiEndpointsForResource>` (TODO explain)
+
+## Example
+
+See [API Docs Smoke Test](https://github.com/commercetools/commercetools-docs-kit/tree/master/websites/api-docs-smoke-test).
+
+Here is the deployed application:
+
+https://commercetools-docs-kit.now.sh/api-docs-smoke-test/
