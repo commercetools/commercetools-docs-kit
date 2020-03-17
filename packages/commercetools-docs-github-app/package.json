@@ -1,0 +1,42 @@
+{
+  "name": "commercetools-docs-github-app",
+  "version": "2.0.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "commercetools docs GitHub App",
+  "author": "commercetools GmbH <support@commercetools.com>",
+  "license": "MIT",
+  "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git"
+  },
+  "keywords": [
+    "probot",
+    "github",
+    "probot-app"
+  ],
+  "scripts": {
+    "dev": "nodemon",
+    "start": "probot run ./index.js",
+    "build": "mkdir public && echo 'Hello World' > public/index.html"
+  },
+  "dependencies": { 
+    "probot": "^9.5.3",
+    "probot-serverless-now": ""
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0",
+    "smee-client": "^1.1.0",
+    "standard": "^14.3.1"
+  },
+  "nodemonConfig": {
+    "exec": "npm start",
+    "watch": [
+      ".env",
+      "."
+    ]
+  }
+}
