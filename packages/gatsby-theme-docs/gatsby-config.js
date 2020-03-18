@@ -92,7 +92,7 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'code-examples',
+          name: 'codeExamples',
           path: path.resolve(`./src/code-examples`),
         },
       },

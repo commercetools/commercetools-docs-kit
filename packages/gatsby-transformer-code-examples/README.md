@@ -8,7 +8,7 @@ This plugin transforms file contents into CodeExample types in available in grap
 
 ## Usage
 
-As a prerequisite configure a source plugin, e.g. `gatsby-source-filesystem` to point the directory of the code examples, for example `src/code-examples`.  Other source plugins can be used, too. 
+As a prerequisite configure a source plugin, e.g. `gatsby-source-filesystem` to point the directory of the code examples, for example `src/code-examples`. Other source plugins can be used, too.
 
 Example `gatsby-config.js` content:
 
@@ -19,7 +19,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `code-examples`,
+        name: `codeExamples`,
         path: `${__dirname}/src/code-examples`,
       },
     },
@@ -31,7 +31,7 @@ module.exports = {
 ## GraphQl Query Example
 
 ```graphql
-query GetCodeExamplesQuery {
+query GetAllCodeExamplesQuery {
   allCodeExample {
     nodes {
       name
@@ -43,14 +43,13 @@ query GetCodeExamplesQuery {
 }
 ```
 
-## Supported File Formats
+## Supported MIME Types
 
-- cs
-- graphql
-- java
-- js
-- json
-- php
-- sh
-- ts
-- yaml
+- application/javascript
+- text/x-java-source
+- application/octet-stream
+- application/json
+- application/x-httpd-php
+- application/x-sh
+- video/mp2t
+- text/yaml
