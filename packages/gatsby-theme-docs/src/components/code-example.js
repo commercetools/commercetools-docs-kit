@@ -16,12 +16,10 @@ function CodeExample(props) {
     );
   }
 
-  const language = props.file.split('.').pop();
-
   return (
     <CodeBlock
       content={codeExample.content}
-      language={language}
+      language={codeExample.extension}
       title={props.title}
       highlightLines={props.highlightLines}
       noPromptLines={props.noPromptLines}
