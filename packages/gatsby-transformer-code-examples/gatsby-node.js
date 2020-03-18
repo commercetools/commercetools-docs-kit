@@ -1,3 +1,15 @@
+// some files have no unique media type, see comments below
+const validMediaTypes = [
+  'application/javascript',
+  'text/x-java-source',
+  'application/octet-stream', // csharp, graphql
+  'application/json',
+  'application/x-httpd-php',
+  'application/x-sh',
+  'video/mp2t', // typescript
+  'text/yaml',
+];
+
 const createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
 
@@ -62,25 +74,9 @@ async function onCreateNode({
 
 function isValidNode(node) {
   return (
-    isValidMediaType(node.internal.mediaType) &&
+    validMediaTypes.includes(node.internal.mediaType) &&
     isValidSourceDirectory(node.dir)
   );
-}
-
-function isValidMediaType(mediaType) {
-  // some files have no unique media type, see comments below
-  const validMediaTypes = [
-    'application/javascript',
-    'text/x-java-source',
-    'application/octet-stream', // csharp, graphql
-    'application/json',
-    'application/x-httpd-php',
-    'application/x-sh',
-    'video/mp2t', // typescript
-    'text/yaml',
-  ];
-
-  return validMediaTypes.includes(mediaType);
 }
 
 function isValidSourceDirectory(dir) {
