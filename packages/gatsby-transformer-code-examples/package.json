@@ -6,7 +6,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "Provides file contents as CodeExample GraphQl types.",
+  "description": "Provides contents of nodes with source code mime types as CodeExample GraphQl types.",
   "homepage": "https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-transformer-code-examples#readme",
   "keywords": [
     "gatsby",
