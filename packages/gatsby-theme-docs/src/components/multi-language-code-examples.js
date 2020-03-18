@@ -6,9 +6,9 @@ import useCodeExamples from '../hooks/use-code-examples';
 function reducer(state, action) {
   switch (action.type) {
     case 'set_props':
-      return { props: action.props, ...state };
+      return { ...state, props: action.props };
     case 'set_errors':
-      return { errors: action.errors, ...state };
+      return { ...state, errors: action.errors };
     default:
       throw new Error(`"${action.type}" is invalid.`);
   }
@@ -32,21 +32,25 @@ function MultiLanguageCodeExamples(props) {
     });
   }, [codeExamples, props.children]);
 
-  if (state.errors) {
-    if (process.env.NODE_ENV !== 'production') {
-      return state.errors.map((err, index) => (
-        <ContentNotifications.Error key={index}>
-          {err}
-        </ContentNotifications.Error>
-      ));
+  try {
+    if (state.errors) {
+      if (process.env.NODE_ENV !== 'production') {
+        return state.errors.map((err, index) => (
+          <ContentNotifications.Error key={index}>
+            {err}
+          </ContentNotifications.Error>
+        ));
+      }
+
+      throw new Error(state.errors);
     }
 
-    throw new Error(state.errors);
+    return state.props ? (
+      <CodeBlock multiLanguage={{ title: props.title, props: state.props }} />
+    ) : null;
+  } catch (e) {
+    return null;
   }
-
-  return state.props ? (
-    <CodeBlock multiLanguage={{ title: props.title, props: state.props }} />
-  ) : null;
 }
 
 function extractProps({ children, codeExamples, callback }) {
