@@ -1,5 +1,9 @@
-public class MyClass {
-  public static void main(String[] args) {
-    System.out.println("Hello World");
-  }
-}
+using System; 
+
+namespace HelloWorld { 
+  class Starter { 
+    static void Main(string[] args) { 
+      Console.WriteLine("Hello World!"); 
+    } 
+  } 
+} 
