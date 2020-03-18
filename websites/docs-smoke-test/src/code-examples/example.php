@@ -1,12 +1,7 @@
-public class MyClass {
-  public static void main(String[] args) {
-    System.out.println("Hello World");
-  }
-}
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello Example</title>
+    <title>Hello World Example</title>
   </head>
   <body>
     <?php

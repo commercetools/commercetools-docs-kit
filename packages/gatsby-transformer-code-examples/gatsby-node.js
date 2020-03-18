@@ -8,6 +8,7 @@ const validMediaTypes = [
   'application/x-sh',
   'video/mp2t', // typescript
   'text/yaml',
+  'text/vnd.curl',
 ];
 
 const createSchemaCustomization = ({ actions, schema }) => {
