@@ -27,17 +27,7 @@ async function onCreateNode({
   createNodeId,
   createContentDigest,
 }) {
-  const validExtensions = [
-    'application/javascript',
-    'text/x-java-source',
-    'application/octet-stream',
-    'application/json',
-    'application/x-httpd-php',
-    'application/x-sh',
-    'video/mp2t',
-    'text/yaml',
-  ];
-  if (!validExtensions.includes(node.internal.mediaType)) return;
+  if (!isValidMediaType(node.internal.mediaType)) return;
 
   const { createNode, createParentChildLink } = actions;
 
@@ -68,6 +58,22 @@ async function onCreateNode({
     createNodeId(`${node.id} >>> CodeExample`),
     'CodeExample'
   );
+}
+
+function isValidMediaType(mediaType) {
+  // some files have no unique media type, see comments below
+  const validMediaTypes = [
+    'application/javascript',
+    'text/x-java-source',
+    'application/octet-stream', // csharp, graphql
+    'application/json',
+    'application/x-httpd-php',
+    'application/x-sh',
+    'video/mp2t', // typescript
+    'text/yaml',
+  ];
+
+  return validMediaTypes.includes(mediaType);
 }
 
 exports.createSchemaCustomization = createSchemaCustomization;
