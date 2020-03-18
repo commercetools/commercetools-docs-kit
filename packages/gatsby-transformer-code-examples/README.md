@@ -8,7 +8,7 @@ This plugin transforms file contents into CodeExample types in available in grap
 
 ## Usage
 
-As a prerequisite configure `gatsby-source-filesystem` plugin to point the directory of the code examples, for example `src/code-examples`.
+As a prerequisite configure a source plugin, e.g. `gatsby-source-filesystem` to point the directory of the code examples, for example `src/code-examples`.  Other source plugins can be used, too. 
 
 Example `gatsby-config.js` content:
 
