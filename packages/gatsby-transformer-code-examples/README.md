@@ -53,3 +53,4 @@ query GetAllCodeExamplesQuery {
 - application/x-sh
 - video/mp2t
 - text/yaml
+- text/vnd.curl
