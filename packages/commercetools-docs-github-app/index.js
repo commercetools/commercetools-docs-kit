@@ -9,6 +9,7 @@ module.exports = app => {
       'pull_request.edited',
       'pull_request.labeled',
       'pull_request.unlabeled',
+      'pull_request.synchronize',
     ],
     requireLiveLabel
   );
