@@ -30,9 +30,10 @@ The project structure should contain at least the following files and folders:
     ├── content
     │   ├── files
     │   └── index.mdx
-    ├── data
-    │   └── navigation.yaml
-    └── images
+    ├── images
+    ├── code-examples
+    └── data
+        └── navigation.yaml
 ```
 
 - `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`, otherwise provide a valid ESLint configuration.
@@ -78,6 +79,12 @@ The project structure should contain at least the following files and folders:
 
 - `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](#writing-content-pages)_).
 
+- `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.
+
+- `src/images`: this folder should contain images that are used within the `*.mdx` content files. Images in this folder are processed and optimized by Gatsby for lazy loading. Supported image formats are `JPEG` and `PNG`.
+
+- `src/code-examples`: instead of placing them into markdown fenced code blocks, code examples can be put into this folder and be loaded into the documentation using the `<CodeExample>` component.
+
 - `src/data/navigation.yaml`: this contains the website main navigation links. The structure of the file is a _list of chapters_ as following:
 
   ```yaml
@@ -94,9 +101,6 @@ The project structure should contain at least the following files and folders:
   - chapter-title: {} # another chapter, and so on...
   ```
 
-- `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.
-
-- `src/images`: this folder should contain images that are used within the `*.mdx` content files. Images in this folder are processed and optimized by Gatsby for lazy loading. Supported image formats are `JPEG` and `PNG`.
 
 ## Writing content pages
 
@@ -142,6 +146,7 @@ The available JSX components are:
 - `<Info>`: a notification message with info colors
 - `<Warning>`: a notification message with warning colors
 - `<Error>`: a notification message with error colors
+- `<CodeExample file="/code-examples/example.js" title="JavaScript Code Sample" />`: loading a code block from a file, supports all parameters of the fenced code block.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
