@@ -11,7 +11,7 @@ function CodeExample(props) {
   });
 
   if (!codeExample) {
-    return reportError('Code example does not exist');
+    return reportError(`Unable to find file "${props.file}" within the "code-examples" folder. Make sure that the file exists and matches the value passed to the "file" property.`);
   }
 
   const language = props.file.split('.').pop();
