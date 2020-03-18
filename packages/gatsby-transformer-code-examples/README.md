@@ -1,6 +1,6 @@
 # Gatsby Transformer Code Examples
 
-This plugin transforms file contents into CodeExample types in available in graphql.
+This plugin transforms file contents into `CodeExample` types and makes them available in Gatsby GraphQL schema.
 
 ## Installation
 
