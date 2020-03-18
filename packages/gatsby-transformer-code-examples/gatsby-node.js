@@ -27,7 +27,7 @@ async function onCreateNode({
   createNodeId,
   createContentDigest,
 }) {
-  if (!isValidMediaType(node.internal.mediaType)) return;
+  if (!isValidNode(node)) return;
 
   const { createNode, createParentChildLink } = actions;
 
@@ -60,6 +60,13 @@ async function onCreateNode({
   );
 }
 
+function isValidNode(node) {
+  return (
+    isValidMediaType(node.internal.mediaType) &&
+    isValidSourceDirectory(node.dir)
+  );
+}
+
 function isValidMediaType(mediaType) {
   // some files have no unique media type, see comments below
   const validMediaTypes = [
@@ -74,6 +81,16 @@ function isValidMediaType(mediaType) {
   ];
 
   return validMediaTypes.includes(mediaType);
+}
+
+function isValidSourceDirectory(dir) {
+  const validDirectory = `${process.cwd()}/src/code-examples`;
+
+  if (dir.startsWith(validDirectory)) {
+    return true;
+  }
+
+  return false;
 }
 
 exports.createSchemaCustomization = createSchemaCustomization;
