@@ -11,15 +11,15 @@ function CodeExample(props) {
   });
 
   if (!codeExample) {
-    return reportError(`Unable to find file "${props.file}" within the "code-examples" folder. Make sure that the file exists and matches the value passed to the "file" property.`);
+    return reportError(
+      `Unable to find file "${props.file}" within the "code-examples" folder. Make sure that the file exists and matches the value passed to the "file" property.`
+    );
   }
-
-  const language = props.file.split('.').pop();
 
   return (
     <CodeBlock
       content={codeExample.content}
-      language={language}
+      language={codeExample.extension}
       title={props.title}
       highlightLines={props.highlightLines}
       noPromptLines={props.noPromptLines}
