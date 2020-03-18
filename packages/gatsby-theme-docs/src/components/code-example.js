@@ -7,7 +7,7 @@ function CodeExample(props) {
   const codeExamples = useCodeExamples();
 
   const codeExample = codeExamples.find(example => {
-    return example.absolutePath.includes(props.file);
+    return example.absolutePath.endsWith(props.file);
   });
 
   if (!codeExample) {
