@@ -87,7 +87,6 @@ const LanguagesDropDown = styled.select`
   line-height: ${typography.lineHeights.body};
   color: ${colors.light.surfacePrimary};
   padding-right: ${dimensions.spacings.m};
-  text-transform: uppercase;
   box-sizing: border-box;
   cursor: pointer;
   border: none;
@@ -241,6 +240,23 @@ const languageAliases = {
   terminal: 'bash',
   js: 'javascript',
 };
+const languageDisplayNames = {
+  sh: 'Terminal',
+  zsh: 'Terminal',
+  console: 'Terminal',
+  bash: 'Terminal',
+  js: 'JavaScript',
+  javascript: 'JavaScript',
+  java: 'Java',
+  php: 'PHP',
+  cs: 'C#',
+  ts: 'TypeScript',
+  python: 'Python',
+  go: 'Go',
+  swift: 'Swift',
+  ruby: 'Ruby',
+  objectivec: 'Objective-C',
+};
 const CodeBlock = props => {
   const [content, setContent] = React.useState(
     props.multiLanguage ? props.multiLanguage.props[0].content : props.content
@@ -262,6 +278,7 @@ const CodeBlock = props => {
   );
 
   const language = languageAliases[languageCode] || languageCode;
+  const languageName = languageDisplayNames[languageCode] || languageCode;
   const isCommandLine = ['terminal', 'console'].includes(languageCode);
 
   // Copy to clipboard logic
@@ -282,7 +299,7 @@ const CodeBlock = props => {
             props.multiLanguage.title,
             props.multiLanguage.props.map(prop => prop.language)
           )
-        : renderHeaderForSingleLanguage(props.title, languageCode)}
+        : renderHeaderForSingleLanguage(props.title, languageName)}
       <Highlight
         {...defaultProps}
         code={content}
@@ -357,11 +374,11 @@ const CodeBlock = props => {
     </Container>
   );
 
-  function renderHeaderForSingleLanguage(title, langCode) {
+  function renderHeaderForSingleLanguage(title, langName) {
     if (title) {
       return renderHeader(
         title,
-        langCode === 'text' ? null : <HeaderText>{langCode}</HeaderText>
+        langName === 'text' ? null : <HeaderText>{langName}</HeaderText>
       );
     }
 
@@ -375,7 +392,7 @@ const CodeBlock = props => {
           <LanguagesDropDown onChange={handleOnLanguageChange}>
             {languages.map(lang => (
               <option key={lang} value={lang}>
-                {lang}
+                {languageDisplayNames[lang] || lang}
               </option>
             ))}
           </LanguagesDropDown>
