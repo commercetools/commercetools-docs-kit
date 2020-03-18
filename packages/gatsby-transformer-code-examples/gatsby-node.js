@@ -86,11 +86,7 @@ function isValidMediaType(mediaType) {
 function isValidSourceDirectory(dir) {
   const validDirectory = `${process.cwd()}/src/code-examples`;
 
-  if (dir.startsWith(validDirectory)) {
-    return true;
-  }
-
-  return false;
+  return dir.startsWith(validDirectory);
 }
 
 exports.createSchemaCustomization = createSchemaCustomization;
