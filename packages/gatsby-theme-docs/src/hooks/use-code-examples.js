@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 export default () => {
   const queryResult = useStaticQuery(
     graphql`
-      query GetCodeExamplesQuery {
+      query GetAllCodeExamplesQuery {
         allCodeExample {
           nodes {
             name
