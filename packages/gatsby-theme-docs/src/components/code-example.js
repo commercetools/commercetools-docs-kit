@@ -7,7 +7,7 @@ function CodeExample(props) {
   const codeExamples = useCodeExamples();
 
   const codeExample = codeExamples.find(example => {
-    return example.path.endsWith(props.path);
+    return example.path === props.path;
   });
 
   if (!codeExample) {
