@@ -258,25 +258,7 @@ const languageDisplayNames = {
   objectivec: 'Objective-C',
 };
 const CodeBlock = props => {
-  const [content, setContent] = React.useState(
-    props.multiLanguage ? props.multiLanguage.props[0].content : props.content
-  );
-  const [languageCode, setLanguageCode] = React.useState(
-    props.multiLanguage
-      ? props.multiLanguage.props[0].language
-      : props.language || 'text'
-  );
-  const [highlightLines, setHighlightLines] = React.useState(
-    props.multiLanguage
-      ? props.multiLanguage.props[0].highlightLines
-      : props.highlightLines
-  );
-  const [noPromptLines, setNoPromptLines] = React.useState(
-    props.multiLanguage
-      ? props.multiLanguage.props[0].noPromptLines
-      : props.noPromptLines
-  );
-
+  const languageCode = props.language || 'text';
   const language = languageAliases[languageCode] || languageCode;
   const languageName = languageDisplayNames[languageCode] || languageCode;
   const isCommandLine = ['terminal', 'console'].includes(languageCode);
@@ -284,7 +266,7 @@ const CodeBlock = props => {
   // Copy to clipboard logic
   const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
   const handleCopyToClipboardClick = () => {
-    copyToClipboard(content);
+    copyToClipboard(props.content);
 
     setIsCopiedToClipboard(true);
     setTimeout(() => {
@@ -297,12 +279,12 @@ const CodeBlock = props => {
       {props.multiLanguage
         ? renderHeaderForMultiLanguage(
             props.multiLanguage.title,
-            props.multiLanguage.props.map(prop => prop.language)
+            props.multiLanguage.languages
           )
         : renderHeaderForSingleLanguage(props.title, languageName)}
       <Highlight
         {...defaultProps}
-        code={content}
+        code={props.content}
         language={language}
         theme={theme}
       >
@@ -325,11 +307,11 @@ const CodeBlock = props => {
                   }
 
                   const shouldShowPrompt = isCommandLine
-                    ? !noPromptLines.includes(index + 1)
+                    ? !props.noPromptLines.includes(index + 1)
                     : false;
                   const shouldHighlightLine =
-                    highlightLines && highlightLines.length > 0
-                      ? highlightLines.some(
+                    props.highlightLines && props.highlightLines.length > 0
+                      ? props.highlightLines.some(
                           highlightine => highlightine === index + 1
                         )
                       : false;
@@ -389,7 +371,9 @@ const CodeBlock = props => {
       return renderHeader(
         title,
         <LanguagesDropDownWrapper>
-          <LanguagesDropDown onChange={handleOnLanguageChange}>
+          <LanguagesDropDown
+            onChange={props.multiLanguage.handleOnLanguageChange}
+          >
             {languages.map(lang => (
               <option key={lang} value={lang}>
                 {languageDisplayNames[lang] || lang}
@@ -418,15 +402,6 @@ const CodeBlock = props => {
       </Header>
     );
   }
-  function handleOnLanguageChange(e) {
-    const code = props.multiLanguage.props.find(
-      prop => prop.language === e.target.value
-    );
-    setLanguageCode(code.language);
-    setContent(code.content);
-    setHighlightLines(code.highlightLines);
-    setNoPromptLines(code.noPromptLines);
-  }
 };
 CodeBlock.propTypes = {
   language: PropTypes.string,
@@ -436,25 +411,9 @@ CodeBlock.propTypes = {
   content: PropTypes.string,
   multiLanguage: PropTypes.shape({
     title: PropTypes.string,
-    props: PropTypes.arrayOf(
-      PropTypes.shape({
-        language: PropTypes.string,
-        title: PropTypes.string,
-        highlightLines: PropTypes.arrayOf(PropTypes.number),
-        noPromptLines: PropTypes.arrayOf(PropTypes.number),
-        content: PropTypes.string.isRequired,
-      })
-    ).isRequired,
+    languages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    handleOnLanguageChange: PropTypes.func.isRequired,
   }),
-  oneOfContentOrMultiLanguage: (props, propName, componentName) => {
-    if (!props.content && !props.multiLanguage) {
-      return new Error(
-        `One of props 'content' or 'multiLanguage' was not specified in '${componentName}'.`
-      );
-    }
-
-    return null;
-  },
 };
 
 export default CodeBlock;

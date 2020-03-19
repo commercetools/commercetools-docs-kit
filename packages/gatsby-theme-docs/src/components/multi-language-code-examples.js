@@ -1,101 +1,83 @@
-import React, { useEffect, useReducer } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ContentNotifications, CodeBlock } from '@commercetools-docs/ui-kit';
 import useCodeExamples from '../hooks/use-code-examples';
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'set_props':
-      return { ...state, props: action.props };
-    case 'set_errors':
-      return { ...state, errors: action.errors };
-    default:
-      throw new Error(`"${action.type}" is invalid.`);
-  }
-}
-
 function MultiLanguageCodeExamples(props) {
-  const codeExamples = useCodeExamples();
-  const [state, dispatch] = useReducer(reducer, {});
-
-  useEffect(() => {
-    extractProps({
-      children: props.children,
-      codeExamples,
-      callback: (result, err) => {
-        if (result) {
-          dispatch({ type: 'set_props', props: result });
-        } else {
-          dispatch({ type: 'set_errors', errors: err });
-        }
-      },
-    });
-  }, [codeExamples, props.children]);
-
   try {
-    if (state.errors) {
-      if (process.env.NODE_ENV !== 'production') {
-        return state.errors.map((err, index) => (
-          <ContentNotifications.Error key={index}>
-            {err}
-          </ContentNotifications.Error>
-        ));
-      }
+    const codeExamples = useCodeExamples();
+    const { languages, codeBlockProps } = extractProps(
+      props.children,
+      codeExamples
+    );
 
-      throw new Error(state.errors);
+    return (
+      <CodeBlock
+        content={codeBlockProps[languages[0]].content}
+        language={languages[0]}
+        highlightLines={codeBlockProps[languages[0]].highlightLines}
+        noPromptLines={codeBlockProps[languages[0]].noPromptLines}
+        multiLanguage={{
+          title: props.title,
+          languages,
+          handleOnLanguageChange,
+        }}
+      />
+    );
+  } catch (e) {
+    if (process.env.NODE_ENV !== 'production') {
+      return (
+        <ContentNotifications.Error>{e.message}</ContentNotifications.Error>
+      );
     }
 
-    return state.props ? (
-      <CodeBlock multiLanguage={{ title: props.title, props: state.props }} />
-    ) : null;
-  } catch (e) {
-    return null;
+    throw new Error(e.message);
+  }
+
+  function handleOnLanguageChange(e) {
+    console.log(e.target.value);
   }
 }
 
-function extractProps({ children, codeExamples, callback }) {
-  const errors = [];
-  const props = [];
+function extractProps(children, codeExamples) {
+  const languages = [];
+  const codeBlockProps = {};
 
   children.forEach(child => {
     if (!child.props) {
-      errors.push(
+      throw new Error(
         `Content of MultiLanguageCodeExamples must be a CodeExample and not ${JSON.stringify(
           child
         )}`
       );
-    } else if (!(child.props.mdxType === 'CodeExample')) {
-      errors.push(
+    } else if (child.props.mdxType !== 'CodeExample') {
+      throw new Error(
         `Content of MultiLanguageCodeExamples must be a CodeExample and not "${child.props.mdxType}"`
       );
     } else {
       const codeExample = codeExamples.find(example => {
         return example.path === child.props.path;
       });
-
       if (!codeExample) {
-        errors.push(`Code example does not exist for ${child.props.file}`);
+        throw new Error(`Code example does not exist for ${child.props.path}`);
       } else {
-        props.push({
+        languages.push(codeExample.language);
+        codeBlockProps[codeExample.language] = {
           content: codeExample.content,
           language: codeExample.language,
           highlightLines: child.props.highlightLines || [],
           noPromptLines: child.props.noPromptLines || [],
-        });
+        };
       }
     }
   });
 
-  if (errors.length) {
-    callback(undefined, errors.length ? errors : '');
-  } else {
-    callback(props);
-  }
+  return { languages, codeBlockProps };
 }
 
 MultiLanguageCodeExamples.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
 };
 
 export default MultiLanguageCodeExamples;
