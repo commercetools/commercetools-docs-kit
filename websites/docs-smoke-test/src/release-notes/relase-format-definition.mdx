@@ -24,13 +24,12 @@ Metadata is defined in YAML frontmatter.
 
 <!--more-->
 
-The `<!--more-->` syntax for separating out the long form from the part shown in the list is to be taken over from the jekyll convention. Unprepared new users have understood it intuitively because it's explicit. And the company knows it already.
-
+The `<!--more-->` syntax for separating out the long form from the part shown in the list is to be taken over from the Jekyll convention. Unprepared new users have understood it intuitively because it's explicit. And the company knows it already.
 
 ## Frontmatter:
  * `title`: The title as it appears
- * `date`: A YYYY-MM-DD date format (NOT a text, it's parsed as an ISO date)
- * `type`: A text, must be either "New Feature", "Resolved Issue" or "Enhancement"
+ * `date`: A `YYYY-MM-DD` date format (not a text, it's parsed as an ISO date)
+ * `type`: A text; must be either "New Feature" or "Resolved Issue" or "Enhancement"
  * `topics`: YAML array of text entries
- * `description`: Max 256 characters plain text containing the change and its advantage ("tweetable" and for RSS).
+ * `description`: Max 256 characters plain text containing the change and its advantage ("tweet-able" and for RSS).
     256 = 280 twitter minus 23 for a link. Do not imply the title, this text is used stand-alone in Merchant Center and other feed recipients.
