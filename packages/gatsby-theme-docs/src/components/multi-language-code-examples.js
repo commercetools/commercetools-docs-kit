@@ -70,17 +70,15 @@ function extractProps({ children, codeExamples, callback }) {
       );
     } else {
       const codeExample = codeExamples.find(example => {
-        return example.absolutePath.includes(child.props.file);
+        return example.path === child.props.path;
       });
 
       if (!codeExample) {
         errors.push(`Code example does not exist for ${child.props.file}`);
       } else {
-        const language = child.props.file.split('.').pop();
-
         props.push({
           content: codeExample.content,
-          language,
+          language: codeExample.language,
           highlightLines: child.props.highlightLines || [],
           noPromptLines: child.props.noPromptLines || [],
         });
