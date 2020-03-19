@@ -8,7 +8,7 @@ This plugin transforms file contents into `CodeExample` types and makes them ava
 
 ## Usage
 
-As a prerequisite configure a source plugin, e.g. `gatsby-source-filesystem` to point the directory of the code examples, for example `src/code-examples`. Other source plugins can be used, too.
+As a prerequisite configure a source plugin, for example, `gatsby-source-filesystem` to point the directory of the code examples, for example `src/code-examples`. Other source plugins can be used, too.
 
 Example `gatsby-config.js` content:
 

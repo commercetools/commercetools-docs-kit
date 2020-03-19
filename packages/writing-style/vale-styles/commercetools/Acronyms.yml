@@ -25,6 +25,7 @@ exceptions:
   - JSON
   - JSX
   - MDX
+  - MIME
   - PATH
   - PDF
   - PHP
