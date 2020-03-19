@@ -1,4 +1,4 @@
-import { Appear, Notes, Image, Split } from 'mdx-deck';
+import { Steps, Notes, Image, Split } from 'mdx-deck';
 
 import designSystem from './design-system';
 import Provider from './provider';
@@ -8,16 +8,16 @@ import CustomComponents from './components/custom';
 // This is a ThemeUI declaration https://theme-ui.com/getting-started but we are not using the features, rather explicitly disabling them.
 
 export default {
-  Provider,
+  Provider, // deprecated 4.x?
   components: {
     ...MarkdownComponents,
     ...CustomComponents,
-    Appear,
+    Steps,
     Notes,
     Image,
     Split,
   },
-  aspectRatio: designSystem.slideLayout.widthToHeight,
+  aspectRatio: designSystem.slideLayout.widthToHeight, // deprecated 4.x?
   googleFont:
     'https://fonts.googleapis.com/css?family=Roboto+Mono:400,500|Roboto:400,400i,500,700&display=swap&subset=latin-ext',
   fonts: {
