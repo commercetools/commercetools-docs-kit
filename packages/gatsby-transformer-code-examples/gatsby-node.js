@@ -10,6 +10,7 @@ const validMediaTypes = [
   'text/yaml',
   'text/vnd.curl',
 ];
+const validDirectory = `${process.cwd()}/src/code-examples`;
 
 const createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
@@ -19,8 +20,8 @@ const createSchemaCustomization = ({ actions, schema }) => {
       name: 'CodeExample',
       fields: {
         name: 'String!',
-        extension: 'String!',
-        absolutePath: 'String!',
+        language: 'String!',
+        path: 'String!',
         content: 'String!',
       },
       interfaces: ['Node'],
@@ -64,8 +65,8 @@ async function onCreateNode({
   transformObject(
     {
       name: node.name,
-      extension: node.extension,
-      absolutePath: node.absolutePath,
+      language: node.extension,
+      path: node.relativePath,
       content,
     },
     createNodeId(`${node.id} >>> CodeExample`),
@@ -76,14 +77,8 @@ async function onCreateNode({
 function isValidNode(node) {
   return (
     validMediaTypes.includes(node.internal.mediaType) &&
-    isValidSourceDirectory(node.dir)
+    node.dir.startsWith(validDirectory)
   );
-}
-
-function isValidSourceDirectory(dir) {
-  const validDirectory = `${process.cwd()}/src/code-examples`;
-
-  return dir.startsWith(validDirectory);
 }
 
 exports.createSchemaCustomization = createSchemaCustomization;

@@ -7,19 +7,19 @@ function CodeExample(props) {
   const codeExamples = useCodeExamples();
 
   const codeExample = codeExamples.find(example => {
-    return example.absolutePath.endsWith(props.file);
+    return example.path.endsWith(props.path);
   });
 
   if (!codeExample) {
     return reportError(
-      `Unable to find file "${props.file}" within the "code-examples" folder. Make sure that the file exists and matches the value passed to the "file" property.`
+      `Unable to find file "${props.path}" within the "code-examples" folder. Make sure that the file exists and matches the value passed to the "file" property.`
     );
   }
 
   return (
     <CodeBlock
       content={codeExample.content}
-      language={codeExample.extension}
+      language={codeExample.language}
       title={props.title}
       highlightLines={props.highlightLines}
       noPromptLines={props.noPromptLines}
@@ -36,7 +36,7 @@ function reportError(errorMsg) {
 }
 
 CodeExample.propTypes = {
-  file: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
   title: PropTypes.string,
   highlightLines: PropTypes.arrayOf(PropTypes.number),
   noPromptLines: PropTypes.arrayOf(PropTypes.number),

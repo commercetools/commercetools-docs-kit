@@ -7,8 +7,8 @@ export default () => {
         allCodeExample {
           nodes {
             name
-            extension
-            absolutePath
+            language
+            path
             content
           }
         }
