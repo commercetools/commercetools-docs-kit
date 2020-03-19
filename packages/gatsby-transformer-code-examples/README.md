@@ -56,7 +56,7 @@ query GetAllCodeExamplesQuery {
 - `text/yaml` (YAML)
 - `text/vnd.curl` (cURL)
 
-In addition the following are included to cover languages with no explicit mime type (e.g. C#)
+In addition the following are included to cover languages with no explicit mime type (for example C#)
 
 - `application/octet-stream`
 - `text/plain`
