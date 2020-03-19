@@ -1,0 +1,36 @@
+---
+title: Release Note Format Example
+date: 2020-02-28
+type: New Feature
+topics:
+  - Products
+  - Product List
+#  - Categories
+#  - Uncomment-unused
+#  - Products
+#  - Product List
+#  - Products
+#  - Product List
+description: |
+  Write Release Notes in the new structured format and see them immediately published in RSS feeds,
+  the Merchant Center and on twitter.com.
+---
+
+The File name can be chosen arbitrarily and subfolders. Only the content of the file has a meaning.
+
+The File can use any allowed MDX expressiveness allowed in documentation but it's strongly advised to only use basic markdown and no headings before the "read more" separator.
+
+Metadata is defined in YAML frontmatter.
+
+<!--more-->
+
+The `<!--more-->` syntax for separating out the long form from the part shown in the list is to be taken over from the jekyll convention. Unprepared new users have understood it intuitively because it's explicit. And the company knows it already.
+
+
+## Frontmatter:
+ * `title`: The title as it appears
+ * `date`: A YYYY-MM-DD date format (NOT a text, it's parsed as an ISO date)
+ * `type`: A text, must be either "New Feature", "Resolved Issue" or "Enhancement"
+ * `topics`: YAML array of text entries
+ * `description`: Max 256 characters plain text containing the change and its advantage ("tweetable" and for RSS).
+    256 = 280 twitter minus 23 for a link. Do not imply the title, this text is used stand-alone in Merchant Center and other feed recipients.
