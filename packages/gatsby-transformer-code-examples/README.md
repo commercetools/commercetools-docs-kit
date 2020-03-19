@@ -14,13 +14,15 @@ Example `gatsby-config.js` content:
 
 ```js
 // In your gatsby-config.js
+const path = require('path');
+
 module.exports = {
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `codeExamples`,
-        path: `${__dirname}/src/code-examples`,
+        path: path.resolve('./src/code-examples'),
       },
     },
     `@commercetools-docs/gatsby-transformer-code-examples`,
@@ -35,8 +37,8 @@ query GetAllCodeExamplesQuery {
   allCodeExample {
     nodes {
       name
-      extension
-      absolutePath
+      language
+      path
       content
     }
   }
