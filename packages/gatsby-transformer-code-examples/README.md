@@ -47,12 +47,16 @@ query GetAllCodeExamplesQuery {
 
 ## Supported MIME Types
 
-- application/javascript
-- text/x-java-source
-- application/octet-stream
-- application/json
-- application/x-httpd-php
-- application/x-sh
-- video/mp2t
-- text/yaml
-- text/vnd.curl
+- `application/javascript` (JavaScript)
+- `text/x-java-source` (Java)
+- `application/json` (JSON)
+- `application/x-httpd-php` (PHP)
+- `application/x-sh` (Shell / Bash)
+- `video/mp2t` (not actually TypeScript, but gatsbyJS represents .ts files as this mime type)
+- `text/yaml` (YAML)
+- `text/vnd.curl` (cURL)
+
+In addition the following are included to cover languages with no explicit mime type (e.g. C#)
+
+- `application/octet-stream`
+- `text/plain`
