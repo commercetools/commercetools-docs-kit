@@ -59,7 +59,7 @@ const components = {
   Warning: ContentNotifications.Warning,
   Error: ContentNotifications.Error,
   CodeExample,
-  MultiLanguageCodeExamples,
+  MultiCode: MultiLanguageCodeExamples,
 
   // Custom React components that can be injected from each website
   // See ../overrides/README.md
