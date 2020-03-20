@@ -15,6 +15,7 @@
   "main": "index.js",
   "dependencies": {
     "@commercetools-docs/ui-kit": "2.0.0",
+    "@commercetools-docs/gatsby-transformer-code-examples": "1.0.0",
     "@commercetools-uikit/card": "10.13.0",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icon-button": "10.13.0",

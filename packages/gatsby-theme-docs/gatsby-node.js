@@ -18,6 +18,7 @@ exports.onPreBootstrap = ({ reporter }) => {
     'src/images',
     'src/content',
     'src/content/files',
+    'src/code-examples',
   ];
   requiredDirectories.forEach(dir => {
     if (!fs.existsSync(dir)) {
