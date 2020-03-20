@@ -4,19 +4,29 @@ import { ContentNotifications, CodeBlock } from '@commercetools-docs/ui-kit';
 import useCodeExamples from '../hooks/use-code-examples';
 
 function MultiLanguageCodeExamples(props) {
+  const codeExamples = useCodeExamples();
+  let languages;
+  let codeBlockProps;
+  let currentCodeBlockProp;
+
   try {
-    const codeExamples = useCodeExamples();
-    const { languages, codeBlockProps } = extractProps(
-      props.children,
-      codeExamples
-    );
+    const result = extractProps(props.children, codeExamples);
+
+    languages = result.languages;
+    codeBlockProps = result.codeBlockProps;
+    currentCodeBlockProp = {
+      content: codeBlockProps[languages[0]].content,
+      language: languages[0],
+      highlightLines: codeBlockProps[languages[0]].highlightLines,
+      noPromptLines: codeBlockProps[languages[0]].noPromptLines,
+    };
 
     return (
       <CodeBlock
-        content={codeBlockProps[languages[0]].content}
-        language={languages[0]}
-        highlightLines={codeBlockProps[languages[0]].highlightLines}
-        noPromptLines={codeBlockProps[languages[0]].noPromptLines}
+        content={currentCodeBlockProp.content}
+        language={currentCodeBlockProp.language}
+        highlightLines={currentCodeBlockProp.highlightLines}
+        noPromptLines={currentCodeBlockProp.noPromptLines}
         multiLanguage={{
           title: props.title,
           languages,
@@ -35,7 +45,15 @@ function MultiLanguageCodeExamples(props) {
   }
 
   function handleOnLanguageChange(e) {
-    console.log(e.target.value);
+    const newProps = codeBlockProps[e.target.value];
+    console.log(newProps);
+
+    currentCodeBlockProp = {
+      content: newProps.content,
+      language: e.target.value,
+      highlightLines: newProps.highlightLines,
+      noPromptLines: newProps.noPromptLines,
+    };
   }
 }
 
