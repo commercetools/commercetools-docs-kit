@@ -8,7 +8,7 @@ You can mostly use the same components as you can in when writing documentation 
 
 ```sh
 yarn
-cd docs/training-slides
+cd websites/training-slides
 yarn develop
 ```
 

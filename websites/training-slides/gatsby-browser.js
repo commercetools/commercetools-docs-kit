@@ -4,5 +4,3 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
-
-import '@commercetools-docs/ui-kit/code-block-themes';
