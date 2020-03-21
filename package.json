@@ -6,8 +6,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "websites/*",
-    "docs/training-slides"
+    "websites/*"
   ],
   "scripts": {
     "start": "yarn --cwd websites/docs-smoke-test start",
