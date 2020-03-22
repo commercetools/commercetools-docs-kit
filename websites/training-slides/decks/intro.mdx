@@ -1,0 +1,88 @@
+
+<TitleSlide>
+
+# Module 1: Introduction
+
+</TitleSlide>
+
+---
+
+# Documentation Types
+
+<Horizontal>
+<Card>
+
+**Reference**:
+
+- Conceptual definitions
+- Behavior definitions - what math does the cart exactly do? How does the search exactly rank?
+- Data field semantics - what's the domain intent of that property?
+- Interface surfaces (HTTP API surface, GraphQL schema, Java / PHP / etc)
+
+</Card>
+<Card>
+
+**Guides / Tutorials / The Book / HowTos**
+
+- Step-By Step reproducible
+- Can take side paths and alternative ways (Guide & HowTo) or not (Tutorial)
+
+</Card>
+<Card>
+
+**Product Marketing / Tech Evangelism**
+
+- not documentation in the strict sense but important
+- short-lived, not updated or maintained
+- can be sales-y, can make temporal references (for example "our recently launched feature FooBar")
+
+</Card>
+</Horizontal>
+
+---
+
+# Some Terminology
+
+---
+
+# The Content Hierarchy
+
+1. "the Documentation"
+
+   - everything under https://docs.commercetools.com
+
+2. "a site" // "a microsite"
+
+   - one part of the documentation
+   - own left navigation structure
+   - (a top menu entry or not if prerelease)
+   - technical: one separately built GatsbyJS site (some even separately deployed)
+
+3. "Chapter"
+
+   - Grouping of Pages in the left nav
+   - No content, just a structure
+
+4. "Page"
+
+   - A page, with an entry in a chapter (or not for hidden / standalone special pages)
+   - Has a Title and URL
+   - One Markdown File, Title in Frontmatter
+
+5. "Section"
+
+   - First Heading structure in the page
+   - `#` in Markdown, can be multiple
+   - Has an entry in the index (on-page) Navigation
+
+6. "Subsection"
+
+   - `##` in Markdown
+   - Has an entry in the index (on-page) Navigation
+
+7. "Sub-Subsection"
+
+- `###` in Markdown
+- Not listed in the index Navigation TODO ???
+
+8. (not supported and not good practice)
