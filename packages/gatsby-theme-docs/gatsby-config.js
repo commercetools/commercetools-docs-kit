@@ -47,21 +47,15 @@ module.exports = (themeOptions = {}) => {
        */
 
       /*
-      gatsby-source-filesystem notes:
-      https://www.gatsbyjs.org/packages/gatsby-source-filesystem/?=file#how-to-query
-      Most of these files get queried through other transformers,
-      but the `name` property here allows filtering allFile queries:
-      allFile(filter: { sourceInstanceName: { eq: "blog" } }) {
-        edges {
-          node { etc...
-    */
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'srcImages',
-          path: path.resolve(`./src/images`),
-        },
-      },
+        gatsby-source-filesystem notes:
+        https://www.gatsbyjs.org/packages/gatsby-source-filesystem/?=file#how-to-query
+        Most of these files get queried through other transformers,
+        but the `name` property here allows filtering allFile queries:
+        allFile(filter: { sourceInstanceName: { eq: "blog" } }) {
+          edges {
+            node { etc...
+      */
+
       // Data files (.yaml)
       {
         resolve: 'gatsby-source-filesystem',
@@ -74,7 +68,7 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'configurationData',
+          name: 'internalConfigurationData',
           path: path.join(__dirname, `./src/data`),
         },
       },

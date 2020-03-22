@@ -2,15 +2,16 @@
 const validMediaTypes = [
   'application/javascript',
   'text/x-java-source',
-  'application/octet-stream', // csharp, graphql
   'application/json',
   'application/x-httpd-php',
   'application/x-sh',
-  'video/mp2t', // typescript
+  'video/mp2t', // typescript represented as this because the .ts extension collides
   'text/yaml',
   'text/vnd.curl',
+  'application/octet-stream', // languages without registered media type
+  'text/plain', // more languages without registered media type
 ];
-const validDirectory = `${process.cwd()}/src/code-examples`;
+const examplesDirectory = `${process.cwd()}/src/code-examples`;
 
 const createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
@@ -77,7 +78,7 @@ async function onCreateNode({
 function isValidNode(node) {
   return (
     validMediaTypes.includes(node.internal.mediaType) &&
-    node.dir.startsWith(validDirectory)
+    node.dir.startsWith(examplesDirectory)
   );
 }
 

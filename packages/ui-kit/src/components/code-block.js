@@ -238,7 +238,9 @@ const languageAliases = {
   zsh: 'bash',
   console: 'bash',
   terminal: 'bash',
+  curl: 'bash',
   js: 'javascript',
+  yml: 'yaml',
 };
 const languageDisplayNames = {
   sh: 'Terminal',

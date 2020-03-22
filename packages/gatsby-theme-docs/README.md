@@ -101,7 +101,6 @@ The project structure should contain at least the following files and folders:
   - chapter-title: {} # another chapter, and so on...
   ```
 
-
 ## Writing content pages
 
 Content pages are located in the `src/content` folder and should be `*.mdx` files.
@@ -146,7 +145,7 @@ The available JSX components are:
 - `<Info>`: a notification message with info colors
 - `<Warning>`: a notification message with warning colors
 - `<Error>`: a notification message with error colors
-- `<CodeExample file="/code-examples/example.js" title="JavaScript Code Sample" />`: loading a code block from a file, supports all parameters of the fenced code block.
+- `<CodeExample file="example.js" title="JavaScript Code Sample" />`: loading a code block from a file in `src/code-examples/`, supports all parameters of the fenced code block.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
