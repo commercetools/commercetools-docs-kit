@@ -1,23 +1,19 @@
-import { Steps, Notes, Image, Split } from 'mdx-deck';
+import { Appear, Notes, Image, Split } from 'gatsby-theme-mdx-deck';
 
 import designSystem from './design-system';
-import Provider from './provider';
 import MarkdownComponents from './components/markdown';
 import CustomComponents from './components/custom';
 
 // This is a ThemeUI declaration https://theme-ui.com/getting-started but we are not using the features, rather explicitly disabling them.
-
 export default {
-  Provider, // deprecated 4.x?
   components: {
     ...MarkdownComponents,
     ...CustomComponents,
-    Steps,
+    Appear,
     Notes,
     Image,
     Split,
   },
-  aspectRatio: designSystem.slideLayout.widthToHeight, // deprecated 4.x?
   googleFont:
     'https://fonts.googleapis.com/css?family=Roboto+Mono:400,500|Roboto:400,400i,500,700&display=swap&subset=latin-ext',
   fonts: {
@@ -27,10 +23,6 @@ export default {
   },
   styles: {
     Slide: {
-      /* fixing the aspect ratio and size of the slide a reahas to be repeated here
-      to override the hardwired flex height of mdx-deck */
-      height: designSystem.slideLayout.contentAreaHeight,
-      width: designSystem.slideLayout.contentAreaWidth,
       fontFamily:
         'unset' /* disable mdx-deck's built-in themeUI logic which is breakpoint based and not fluid */,
       fontSize: 'unset',
