@@ -47,21 +47,15 @@ module.exports = (themeOptions = {}) => {
        */
 
       /*
-      gatsby-source-filesystem notes:
-      https://www.gatsbyjs.org/packages/gatsby-source-filesystem/?=file#how-to-query
-      Most of these files get queried through other transformers,
-      but the `name` property here allows filtering allFile queries:
-      allFile(filter: { sourceInstanceName: { eq: "blog" } }) {
-        edges {
-          node { etc...
-    */
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'srcImages',
-          path: path.resolve(`./src/images`),
-        },
-      },
+        gatsby-source-filesystem notes:
+        https://www.gatsbyjs.org/packages/gatsby-source-filesystem/?=file#how-to-query
+        Most of these files get queried through other transformers,
+        but the `name` property here allows filtering allFile queries:
+        allFile(filter: { sourceInstanceName: { eq: "blog" } }) {
+          edges {
+            node { etc...
+      */
+
       // Data files (.yaml)
       {
         resolve: 'gatsby-source-filesystem',
@@ -74,7 +68,7 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'configurationData',
+          name: 'internalConfigurationData',
           path: path.join(__dirname, `./src/data`),
         },
       },
@@ -94,6 +88,14 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/content`),
         },
       },
+      // Code examples
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'codeExamples',
+          path: path.resolve(`./src/code-examples`),
+        },
+      },
 
       /**
        * Transformers for making content available in graphql queries
@@ -104,6 +106,9 @@ module.exports = (themeOptions = {}) => {
 
       // For querying configuration data
       'gatsby-transformer-yaml',
+
+      // For querying code examples
+      `@commercetools-docs/gatsby-transformer-code-examples`,
 
       // For querying MDX
       {

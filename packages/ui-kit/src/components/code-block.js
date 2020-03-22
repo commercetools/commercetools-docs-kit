@@ -199,7 +199,9 @@ const languageAliases = {
   zsh: 'bash',
   console: 'bash',
   terminal: 'bash',
+  curl: 'bash',
   js: 'javascript',
+  yml: 'yaml',
 };
 const CodeBlock = props => {
   const languageCode = props.language || 'text';
