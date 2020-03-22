@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Global } from '@emotion/core';
 import PropTypes from 'prop-types';
-import { useDeck } from 'mdx-deck';
+import { useDeck } from 'gatsby-theme-mdx-deck';
 
 import { Reset, Globals, Markdown } from '@commercetools-docs/ui-kit';
 
