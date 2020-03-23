@@ -1,37 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContentNotifications, CodeBlock } from '@commercetools-docs/ui-kit';
+import {
+  ContentNotifications,
+  MultiCodeBlock,
+} from '@commercetools-docs/ui-kit';
 import useCodeExamples from '../hooks/use-code-examples';
 
 function MultiLanguageCodeExamples(props) {
   const codeExamples = useCodeExamples();
-  let languages;
-  let codeBlockProps;
-  let currentCodeBlockProp;
 
   try {
     const result = extractProps(props.children, codeExamples);
 
-    languages = result.languages;
-    codeBlockProps = result.codeBlockProps;
-    currentCodeBlockProp = {
-      content: codeBlockProps[languages[0]].content,
-      language: languages[0],
-      highlightLines: codeBlockProps[languages[0]].highlightLines,
-      noPromptLines: codeBlockProps[languages[0]].noPromptLines,
-    };
-
     return (
-      <CodeBlock
-        content={currentCodeBlockProp.content}
-        language={currentCodeBlockProp.language}
-        highlightLines={currentCodeBlockProp.highlightLines}
-        noPromptLines={currentCodeBlockProp.noPromptLines}
-        multiLanguage={{
-          title: props.title,
-          languages,
-          handleOnLanguageChange,
-        }}
+      <MultiCodeBlock
+        title={props.title}
+        languages={result.languages}
+        codeBlockProps={result.codeBlockProps}
       />
     );
   } catch (e) {
@@ -43,23 +28,11 @@ function MultiLanguageCodeExamples(props) {
 
     throw new Error(e.message);
   }
-
-  function handleOnLanguageChange(e) {
-    const newProps = codeBlockProps[e.target.value];
-    console.log(newProps);
-
-    currentCodeBlockProp = {
-      content: newProps.content,
-      language: e.target.value,
-      highlightLines: newProps.highlightLines,
-      noPromptLines: newProps.noPromptLines,
-    };
-  }
 }
 
 function extractProps(children, codeExamples) {
   const languages = [];
-  const codeBlockProps = {};
+  const codeBlockProps = [];
 
   children.forEach(child => {
     if (!child.props) {
@@ -80,12 +53,12 @@ function extractProps(children, codeExamples) {
         throw new Error(`Code example does not exist for ${child.props.path}`);
       } else {
         languages.push(codeExample.language);
-        codeBlockProps[codeExample.language] = {
+        codeBlockProps.push({
           content: codeExample.content,
           language: codeExample.language,
           highlightLines: child.props.highlightLines || [],
           noPromptLines: child.props.noPromptLines || [],
-        };
+        });
       }
     }
   });

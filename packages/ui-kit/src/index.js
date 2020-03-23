@@ -8,6 +8,7 @@ export { default as Globals } from './components/globals';
 export { default as Link } from './components/link';
 export { default as LogoButton } from './components/logo-button';
 export { default as MediaQuery } from './components/media-query';
+export { default as MultiCodeBlock } from './components/multi-code-block';
 export { default as Reset } from './components/reset';
 export { default as Subtitle } from './components/subtitle';
 export { default as TextSmall } from './components/text-small';
