@@ -5,7 +5,7 @@ function processMethods(resource) {
   const returnedMethod = JSON.parse(JSON.stringify(resource));
   const methods = ['post', 'put', 'get', 'delete'];
 
-  methods.forEach(method => {
+  methods.forEach((method) => {
     if (returnedMethod[method]) {
       returnedMethod[method].queryParameters = parametersToArray(
         returnedMethod[method].queryParameters

@@ -40,7 +40,7 @@ const reloadApisForInclude = (
   includedPath
 ) => {
   const apiPathsArray = includeGraph.includedByApis(includedPath);
-  apiPathsArray.forEach(apiPath => {
+  apiPathsArray.forEach((apiPath) => {
     if (apiNodes[apiPath]) {
       const apiNode = JSON.parse(JSON.stringify(apiNodes[apiPath]));
       delete apiNode.internal.owner;

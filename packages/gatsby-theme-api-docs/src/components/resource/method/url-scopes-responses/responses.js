@@ -30,7 +30,7 @@ const Responses = ({ apiKey, responses, title }) => {
     <div>
       {title ? <Title>{title}</Title> : null}
 
-      {responses.map(response => {
+      {responses.map((response) => {
         return (
           <p key={response.code}>
             <ResponseCode css={computeStatusCodeBackgroundColor(response.code)}>

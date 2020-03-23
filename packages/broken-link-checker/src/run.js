@@ -5,7 +5,7 @@ const blc = require('broken-link-checker');
 const run = ({ server, port, config, checkerOptions }) => {
   let errorCount = 0;
   const siteChecker = new blc.SiteChecker(checkerOptions, {
-    error: error => {
+    error: (error) => {
       console.log('An error occurred while link checking:');
       console.log(error);
       server.close(() => {
@@ -43,7 +43,7 @@ const run = ({ server, port, config, checkerOptions }) => {
 
   console.log('--- Starting Link Check Of Complete Site ---');
 
-  config.entryPoints.forEach(entrypoint => {
+  config.entryPoints.forEach((entrypoint) => {
     const localUrl = url.resolve(`http://localhost:${port}`, entrypoint);
     console.log(
       `- Link Checking ${path.join(

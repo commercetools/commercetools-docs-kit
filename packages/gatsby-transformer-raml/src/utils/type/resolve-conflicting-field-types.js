@@ -5,7 +5,7 @@ function resolveConflictingFieldTypes(property) {
 
   const returnedProperty = JSON.parse(JSON.stringify(property));
 
-  propsToStringify.forEach(prop => {
+  propsToStringify.forEach((prop) => {
     if (returnedProperty[prop]) {
       returnedProperty[prop] = stringifyField(returnedProperty[prop]);
     }
@@ -19,7 +19,7 @@ function stringifyField(prop) {
 
   switch (propType) {
     case 'array':
-      return prop.map(val => {
+      return prop.map((val) => {
         return `${val}`;
       });
     case 'object':

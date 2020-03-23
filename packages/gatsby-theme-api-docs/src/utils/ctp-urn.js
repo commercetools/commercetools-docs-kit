@@ -11,17 +11,17 @@ const hashRegExp = new RegExp(encodedHash, 'g');
 
 // encode the minimum required only, but add the hash so the result is compatible
 // being a URL fragment identifier a.k.a. hash.
-const encodeURNComponent = input => {
+const encodeURNComponent = (input) => {
   return encodeURI(input)
     .replace(/:/g, encodedColon)
     .replace(/#/g, encodedHash);
 };
 
-const decodeURNComponent = input => {
+const decodeURNComponent = (input) => {
   return decodeURI(input.replace(colonRegExp, ':').replace(hashRegExp, '#'));
 };
 
-const URNComponents = urn => {
+const URNComponents = (urn) => {
   return urn.split(':').map(decodeURNComponent);
 };
 
@@ -31,7 +31,7 @@ export const generateTypeURN = ({ apiKey = '', displayName = '' }) => {
   )}`;
 };
 
-export const parseTypeURN = urn => {
+export const parseTypeURN = (urn) => {
   const components = URNComponents(urn);
   if (
     components.length === 4 &&
@@ -56,7 +56,7 @@ export const generateEndpointURN = ({
   )}:${encodeURNComponent(method.toUpperCase())}`;
 };
 
-export const parseEndpointURN = urn => {
+export const parseEndpointURN = (urn) => {
   const components = URNComponents(urn);
   if (
     components.length === 5 &&

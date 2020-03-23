@@ -47,7 +47,7 @@ const mockElement = (tag = 'hr') => ({
 });
 
 // Alternating array of text/jsx elements
-const mockNodes = n =>
+const mockNodes = (n) =>
   Array.from({ length: n }).map((_, i) =>
     i % 2 ? mockText(`text.${i}`) : mockElement()
   );
@@ -121,7 +121,7 @@ describe('findTag', () => {
 });
 
 describe('findNode', () => {
-  const createMatcherFor = tag => node =>
+  const createMatcherFor = (tag) => (node) =>
     node.type === 'JSXElement' && node.openingElement.name.name === tag;
 
   it('produces expected outputs on input set', () => {
@@ -202,7 +202,7 @@ describe('getJsxChildren', () => {
     const parent = mockElement();
     parent.children = children;
 
-    const get = n => new Set(jsxAstUtils.getJsxChildren(n));
+    const get = (n) => new Set(jsxAstUtils.getJsxChildren(n));
     const expected = new Set(parent.children.filter(jsxAstUtils.isJsxElement));
     expect(get(parent)).toEqual(new Set(expected));
     expect(get(parent)).not.toEqual(new Set(children));

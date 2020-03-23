@@ -13,7 +13,7 @@ const LayoutMain = styled.main`
     [row3-start] 'footer' auto [row3-end]
     / 1fr;
 
-  ${props =>
+  ${(props) =>
     // Prevents scroll when top menu is open
     props.isTopMenuOpen &&
     css`

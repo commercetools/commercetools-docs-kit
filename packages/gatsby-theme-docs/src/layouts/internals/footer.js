@@ -44,7 +44,7 @@ const Columns = styled.div`
   grid-gap: ${designSystem.dimensions.spacings.xl};
   grid-auto-columns: 1fr;
   grid-template-columns: repeat(
-    ${props => React.Children.count(props.children)},
+    ${(props) => React.Children.count(props.children)},
     1fr
   );
 
@@ -91,7 +91,7 @@ const Row = styled.div`
   }
 `;
 const RowItem = styled.div`
-  grid-area: ${props => props.gridArea};
+  grid-area: ${(props) => props.gridArea};
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     padding: ${designSystem.dimensions.spacings.m};
   }
@@ -168,7 +168,7 @@ const LayoutFooter = () => {
             <LogoHorizontalSvg />
           </MediaQuery>
         </Column>
-        {data.allTopMenuYaml.nodes.map(node => (
+        {data.allTopMenuYaml.nodes.map((node) => (
           <Column key={node.id}>
             <SpacingsStack scale="s">
               <ColumnTitle>{node.menuTitle}</ColumnTitle>
@@ -185,7 +185,7 @@ const LayoutFooter = () => {
         ))}
         <SideColumn>
           <SpacingsStack scale="s">
-            {data.allTopSideMenuYaml.nodes.map(node => (
+            {data.allTopSideMenuYaml.nodes.map((node) => (
               <GlobalNavigationLink href={node.href} key={node.id}>
                 {node.label}
               </GlobalNavigationLink>
@@ -209,7 +209,7 @@ const LayoutFooter = () => {
         </RowItem>
         <RowItem gridArea="footer-links">
           <AlignedRight>
-            {data.allFooterYaml.nodes.map(node => (
+            {data.allFooterYaml.nodes.map((node) => (
               <GlobalNavigationLink href={node.href} key={node.id}>
                 {node.label}
               </GlobalNavigationLink>

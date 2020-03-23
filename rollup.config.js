@@ -49,7 +49,7 @@ const plugins = [
   }),
 ];
 
-const createConfig = cliArgs => [
+const createConfig = (cliArgs) => [
   // Bundle for cjs format
   {
     input: cliArgs.input,

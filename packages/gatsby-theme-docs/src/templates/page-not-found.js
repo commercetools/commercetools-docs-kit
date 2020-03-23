@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from '../components';
 import LayoutNotFound from '../layouts/not-found';
 
-const PageNotFoundTemplate = props => (
+const PageNotFoundTemplate = (props) => (
   <ThemeProvider>
     <LayoutNotFound>
       {

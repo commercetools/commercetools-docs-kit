@@ -10,7 +10,7 @@ const proxyEnvironmentVariables = [
   'NOW_GITHUB_COMMIT_SHA',
   'NOW_GITHUB_COMMIT_REF',
 ];
-proxyEnvironmentVariables.forEach(envName => {
+proxyEnvironmentVariables.forEach((envName) => {
   process.env[`GATSBY_${envName}`] = process.env[envName];
 });
 
@@ -23,8 +23,8 @@ const defaultOptions = {
 };
 const requiredOptions = ['websiteKey'];
 
-const validateThemeOptions = options => {
-  requiredOptions.forEach(option => {
+const validateThemeOptions = (options) => {
+  requiredOptions.forEach((option) => {
     if (!options[option]) {
       throw new Error(`Missing required value for option ${option}.`);
     }

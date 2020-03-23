@@ -1,6 +1,6 @@
 // unless we find a more explicit way to detect the phase (initial vs. incremental build),
 // we rely on the last modification date to assume hot reload vs. initial load:
-const wasNodeJustChanged = node => {
+const wasNodeJustChanged = (node) => {
   if (node.ctimeMs && node.absolutePath) {
     const sinceLastChanged = Date.now() - node.ctimeMs;
     return sinceLastChanged < 1000; // times vary significantly, sometimes up to 600ms
@@ -8,7 +8,7 @@ const wasNodeJustChanged = node => {
   return false;
 };
 
-const apiKeyForFileNode = node => {
+const apiKeyForFileNode = (node) => {
   // Build a conventional unique key for the api from the file system structure.
   // This convention is needed because RAML does not allow to specify a unique own ID of an API.
   // Consider well whether to change this, many links in content will rely on it.

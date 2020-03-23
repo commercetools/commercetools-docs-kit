@@ -2,7 +2,7 @@ import * as Sentry from '@sentry/browser';
 
 const reportErrorToSentry = (error, extraInfo) => {
   // logs error to sentry
-  Sentry.withScope(scope => {
+  Sentry.withScope((scope) => {
     if (extraInfo && extraInfo.extra) {
       if (typeof extraInfo.extra === 'object') {
         // See https://docs.sentry.io/platforms/javascript/react/

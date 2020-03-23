@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import Link from './link';
 
-const getStyles = props => {
+const getStyles = (props) => {
   const baseStyles = css`
     border-radius: ${designSystem.tokens.borderRadiusForBetaFlag};
     color: ${designSystem.colors.light.textInfo};
@@ -35,7 +35,7 @@ const getStyles = props => {
   `;
 };
 
-const BetaFlag = props => {
+const BetaFlag = (props) => {
   if (props.href) {
     return (
       <Link href={props.href} noUnderline={true} css={getStyles(props)}>

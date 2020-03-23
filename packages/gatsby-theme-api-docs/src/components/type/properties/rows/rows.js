@@ -4,7 +4,7 @@ import NameType from './name-type';
 import Description from './description';
 
 const Rows = ({ apiType, parentDiscriminator, discriminatorValue }) => {
-  return apiType.properties.map(property => {
+  return apiType.properties.map((property) => {
     return (
       <tr key={property.name}>
         <td>

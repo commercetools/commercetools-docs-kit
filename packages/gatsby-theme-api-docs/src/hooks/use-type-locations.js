@@ -2,12 +2,14 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { generateTypeURN } from '../utils/ctp-urn';
 
-const convertComponentInMdxToTypeLocations = data => {
+const convertComponentInMdxToTypeLocations = (data) => {
   const typeLocations = {};
 
-  data.allComponentInMdx.nodes.forEach(node => {
-    const apiKeyAttribute = node.attributes.find(att => att.name === 'apiKey');
-    const typeAttribute = node.attributes.find(att => att.name === 'type');
+  data.allComponentInMdx.nodes.forEach((node) => {
+    const apiKeyAttribute = node.attributes.find(
+      (att) => att.name === 'apiKey'
+    );
+    const typeAttribute = node.attributes.find((att) => att.name === 'type');
 
     const apiKey = apiKeyAttribute ? apiKeyAttribute.value : null;
     const name = typeAttribute ? typeAttribute.value : null;

@@ -158,7 +158,7 @@ describe('Links', () => {
   beforeEach(() => {
     cy.visit(linksPageUrl);
   });
-  scenarios.forEach(scenario => {
+  scenarios.forEach((scenario) => {
     describe(scenario.title, () => {
       it(scenario.expectationMessage, () => {
         cy.findAllByText(scenario.title)
@@ -169,9 +169,7 @@ describe('Links', () => {
             if (scenario.linkSelector) {
               scenario.linkSelector();
             } else {
-              cy.get('a')
-                .contains('Link')
-                .click();
+              cy.get('a').contains('Link').click();
             }
           });
         if (scenario.expected.url) {

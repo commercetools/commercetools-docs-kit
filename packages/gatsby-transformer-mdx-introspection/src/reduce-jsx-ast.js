@@ -76,7 +76,7 @@ function transformSpreadAttribute(attribute, context) {
   // Keep track of any JSX elements seen outside of direct children to parse
   // and index (but not tag as children of the current element)
   const detachedHeads = [];
-  const handleDetachedHeads = heads => detachedHeads.push(...heads);
+  const handleDetachedHeads = (heads) => detachedHeads.push(...heads);
   const reducedAttributes = [];
 
   if (attribute.argument.type === 'ObjectExpression') {
@@ -114,12 +114,12 @@ function transformAttributes(attributes, context) {
     serializeAndSearch(
       node,
       collapse,
-      heads => detachedHeads.push(...heads),
+      (heads) => detachedHeads.push(...heads),
       context
     );
 
   let reducedAttributes = [];
-  attributes.forEach(attribute => {
+  attributes.forEach((attribute) => {
     if (attribute.type === 'JSXAttribute') {
       // Parse simple attribute
       // ex. <tag name="value" />
@@ -197,7 +197,7 @@ function transformJsxElement(jsxElement, context) {
   const hasChildren =
     jsxElement.type === 'JSXFragment' || !jsxElement.openingElement.selfClosing;
   if (hasChildren) {
-    jsxElement.children.forEach(child => {
+    jsxElement.children.forEach((child) => {
       const [node, foundHeads] = transformNode(child, context);
       if (node !== null) {
         children.push(node);
@@ -212,7 +212,7 @@ function transformJsxElement(jsxElement, context) {
 
   const hasGatsbyNode =
     tagWhitelistLiteralSet.has(component) ||
-    tagWhitelistRegex.some(r => component.match(r));
+    tagWhitelistRegex.some((r) => component.match(r));
   const reducedNode = {
     component,
     attributes,
@@ -236,7 +236,7 @@ function transformNode(node, context) {
     serializeAndSearch(
       jsxNode,
       collapse,
-      heads => detachedHeads.push(...heads),
+      (heads) => detachedHeads.push(...heads),
       context
     );
 
@@ -287,10 +287,10 @@ function reduceJsxAst(
 ) {
   const context = {
     tagWhitelistLiteralSet: new Set(
-      tagWhitelist.filter(entry => typeof entry === 'string')
+      tagWhitelist.filter((entry) => typeof entry === 'string')
     ),
     tagWhitelistRegex: tagWhitelist.filter(
-      entry => typeof entry === 'object' && entry instanceof RegExp
+      (entry) => typeof entry === 'object' && entry instanceof RegExp
     ),
     cleanWhitespace,
     removeMdxCompilationArtifacts,

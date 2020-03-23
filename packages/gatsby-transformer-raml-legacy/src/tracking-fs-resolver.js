@@ -25,7 +25,7 @@ class TrackingFSResolver {
       }
       return this.fs.readFileSync(pathString).toString();
     } catch (e) {
-      this.filesLoaded = this.filesLoaded.filter(p => p !== pathString);
+      this.filesLoaded = this.filesLoaded.filter((p) => p !== pathString);
       return null;
     }
   }
@@ -39,7 +39,7 @@ class TrackingFSResolver {
       // eslint-disable-next-line consistent-return
       this.fs.readFile(path, (err, data) => {
         if (err != null) {
-          this.filesLoaded = this.filesLoaded.filter(p => p !== path);
+          this.filesLoaded = this.filesLoaded.filter((p) => p !== path);
           return reject(err);
         }
         if (!this.filesLoaded.includes(path)) {

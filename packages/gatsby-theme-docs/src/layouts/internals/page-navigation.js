@@ -21,7 +21,7 @@ const getIsActive = (activeSection, urlHash) =>
   activeSection.id.replace('section-', '') === urlHash.substring(1);
 
 const Link = styled.a`
-  font-size: ${props => {
+  font-size: ${(props) => {
     switch (props.level) {
       case 1:
         return designSystem.typography.fontSizes.small;
@@ -29,7 +29,7 @@ const Link = styled.a`
         return designSystem.typography.fontSizes.extraSmall;
     }
   }};
-  color: ${props => {
+  color: ${(props) => {
     if (props.isActive) {
       return designSystem.colors.light.linkNavigation;
     }
@@ -41,7 +41,7 @@ const Link = styled.a`
     }
   }};
   text-decoration: none;
-  border-left: ${props => {
+  border-left: ${(props) => {
     if (props.isActive) {
       return `1px solid ${designSystem.colors.light.linkNavigation}`;
     }
@@ -72,7 +72,7 @@ const ListItem = styled.li`
   grid-gap: ${designSystem.dimensions.spacings.s};
 `;
 const Indented = styled.div`
-  padding: ${props => {
+  padding: ${(props) => {
     switch (props.level) {
       case 3:
         return `0 ${designSystem.dimensions.spacings.xl}`;
@@ -81,7 +81,7 @@ const Indented = styled.div`
     }
   }};
 `;
-const LevelGroup = props => {
+const LevelGroup = (props) => {
   if (!props.items) {
     return null;
   }
@@ -119,7 +119,7 @@ LevelGroup.propTypes = {
   activeSection: PropTypes.instanceOf(SafeHTMLElement),
   children: PropTypes.node,
 };
-const Container = props => (
+const Container = (props) => (
   <SpacingsStack scale="s">
     {props.items.map((item, index) => {
       const level = 1;
@@ -153,7 +153,7 @@ Container.propTypes = {
   children: PropTypes.node,
 };
 
-const PageNavigation = props => {
+const PageNavigation = (props) => {
   const activeSection = useActiveSection();
   return (
     <Container

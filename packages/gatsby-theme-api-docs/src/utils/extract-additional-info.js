@@ -1,7 +1,7 @@
 const reorderFields = (obj, fields) => {
   const returnedObject = { ...obj };
 
-  fields.forEach(field => {
+  fields.forEach((field) => {
     const fieldToOrder = returnedObject[field];
     if (fieldToOrder) {
       delete returnedObject[field];
@@ -12,7 +12,7 @@ const reorderFields = (obj, fields) => {
   return returnedObject;
 };
 
-const extractAdditionalInfo = property => {
+const extractAdditionalInfo = (property) => {
   let additionalInfo = JSON.parse(JSON.stringify(property));
   const mainInfo = [
     'name',
@@ -27,11 +27,11 @@ const extractAdditionalInfo = property => {
     'required',
   ];
 
-  mainInfo.forEach(field => {
+  mainInfo.forEach((field) => {
     delete additionalInfo[field];
   });
 
-  Object.keys(additionalInfo).forEach(key => {
+  Object.keys(additionalInfo).forEach((key) => {
     if (
       (!additionalInfo[key] &&
         typeof additionalInfo[key] !== 'number' &&

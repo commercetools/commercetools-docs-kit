@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useSiteData } from '../hooks/use-site-data';
 
-const SEO = props => {
+const SEO = (props) => {
   const siteData = useSiteData();
   const metaDescription =
     props.description || siteData.siteMetadata.description;

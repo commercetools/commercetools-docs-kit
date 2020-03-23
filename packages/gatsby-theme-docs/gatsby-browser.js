@@ -21,7 +21,7 @@ export const onClientEntry = (
   pluginOptions
 ) => {
   if (isProduction) {
-    require.ensure(['@sentry/browser'], require => {
+    require.ensure(['@sentry/browser'], (require) => {
       const Sentry = require('@sentry/browser');
       Sentry.init({
         dsn: 'https://e43538aae75e412eb16b27d8011f5a8b@sentry.io/1819068',

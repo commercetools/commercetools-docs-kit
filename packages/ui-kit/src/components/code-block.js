@@ -61,7 +61,7 @@ const CopyArea = styled.div`
     }
   }
 `;
-const TooltipWrapperComponent = props =>
+const TooltipWrapperComponent = (props) =>
   ReactDOM.createPortal(props.children, document.body);
 const TooltipBodyComponent = styled.div`
   background-color: ${colors.light.surfaceCodeHighlight};
@@ -71,7 +71,7 @@ const TooltipBodyComponent = styled.div`
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
 
-const getLineStyles = options => {
+const getLineStyles = (options) => {
   let promptLineStyles;
   let highlightLineStyles;
   if (options.isCommandLine) {
@@ -203,7 +203,7 @@ const languageAliases = {
   js: 'javascript',
   yml: 'yaml',
 };
-const CodeBlock = props => {
+const CodeBlock = (props) => {
   const languageCode = props.language || 'text';
   const language = languageAliases[languageCode] || languageCode;
   const isCommandLine = ['terminal', 'console'].includes(languageCode);
@@ -267,7 +267,7 @@ const CodeBlock = props => {
                   const shouldHighlightLine =
                     props.highlightLines && props.highlightLines.length > 0
                       ? props.highlightLines.some(
-                          highlightine => highlightine === index + 1
+                          (highlightine) => highlightine === index + 1
                         )
                       : false;
 
@@ -323,7 +323,7 @@ export default CodeBlock;
 
 /* eslint-disable react/display-name,react/prop-types */
 // Maps the props coming from MDX to the underlying <CodeBlock> component.
-export const CodeBlockMarkdownWrapper = props => {
+export const CodeBlockMarkdownWrapper = (props) => {
   const className = props.children.props ? props.children.props.className : '';
   const languageToken = className || 'language-text';
   const [, languageCode] = languageToken.split('language-');

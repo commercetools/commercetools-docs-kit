@@ -81,7 +81,7 @@ const ToggleMenuButton = styled.div`
   }
 `;
 
-const LayoutPageNavigation = props => {
+const LayoutPageNavigation = (props) => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const [modalPortalNode, setModalPortalNode] = React.useState();
   React.useEffect(() => {

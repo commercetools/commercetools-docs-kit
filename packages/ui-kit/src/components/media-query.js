@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import { dimensions } from '../design-system';
 
 const MediaQuery = styled.div`
-  ${props => {
+  ${(props) => {
     switch (props.forViewport) {
       case 'mobile':
         return css`

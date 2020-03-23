@@ -16,7 +16,7 @@ const Resource = ({ apiKey, resource }) => {
 
   return (
     <SpacingsStack scale="xl">
-      {methods.map(method => {
+      {methods.map((method) => {
         return resourceObj[method] ? (
           <Method
             key={method}

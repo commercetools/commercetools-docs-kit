@@ -30,18 +30,18 @@ const archivePath = path.join(__dirname, `../${archiveName}`);
 const binPath = path.join(__dirname, '../bin');
 const destBinaryPath = path.join(binPath, binaryFileName);
 
-const abortIfError = result => {
+const abortIfError = (result) => {
   if (result.code > 0) {
     throw new Error(result.stderr);
   }
 };
-const downloadAndExtractArchive = async url => {
+const downloadAndExtractArchive = async (url) => {
   // Download the archive
   const res = await fetch(url);
   const fileStream = fs.createWriteStream(archivePath);
   await new Promise((resolve, reject) => {
     res.body.pipe(fileStream);
-    res.body.on('error', error => {
+    res.body.on('error', (error) => {
       reject(error);
     });
     fileStream.on('finish', resolve);
@@ -81,7 +81,7 @@ if (fs.existsSync(destBinaryPath)) {
     () => {
       console.log('[writing-styles] Vale binary installed.');
     },
-    error => {
+    (error) => {
       console.error('[writing-styles] Error installing vale binary', error);
       process.exit(1);
     }

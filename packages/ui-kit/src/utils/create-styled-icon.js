@@ -10,7 +10,7 @@ const iconSizes = {
   big: 24,
 };
 
-const getSizeStyle = size => {
+const getSizeStyle = (size) => {
   switch (size) {
     case 'scale':
       return `
@@ -34,7 +34,7 @@ const getSizeStyle = size => {
   }
 };
 
-const getColor = color => {
+const getColor = (color) => {
   if (!color) return 'inherit';
 
   const iconColor = colors.light[color];
@@ -52,7 +52,7 @@ const getColor = color => {
 
 export default function createStyledIcon(Component) {
   const StyledComponent = styled(Component)(
-    props => css`
+    (props) => css`
       * {
         fill: ${getColor(props.color)};
       }

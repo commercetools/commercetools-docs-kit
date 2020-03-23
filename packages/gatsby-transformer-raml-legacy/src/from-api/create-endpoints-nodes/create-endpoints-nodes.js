@@ -7,7 +7,7 @@ const createEndpointsNodes = (
 ) => {
   if (resources) {
     const postProcessedResources = postProcessEndpoints(apiNode.key, resources);
-    postProcessedResources.forEach(resource => {
+    postProcessedResources.forEach((resource) => {
       const resourceNode = {
         ...resource,
         id: createNodeId(

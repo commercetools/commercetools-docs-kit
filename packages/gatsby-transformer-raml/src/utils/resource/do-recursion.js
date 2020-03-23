@@ -13,7 +13,7 @@ const fieldsToClean = {
 function doRecursion(resource) {
   const returnedResource = {};
 
-  Object.keys(resource).forEach(key => {
+  Object.keys(resource).forEach((key) => {
     // remove all non alphanumeric characters except underscores
     const alphanumericKey = fieldsToClean[key] ? key.replace(/\W/g, '') : key;
 

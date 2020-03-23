@@ -37,10 +37,10 @@ function resolveConflictingFieldTypes(properties) {
   if (properties) {
     const propsToStringify = ['default', 'enum'];
 
-    return properties.map(property => {
+    return properties.map((property) => {
       const returnedProperty = JSON.parse(JSON.stringify(property));
 
-      propsToStringify.forEach(prop => {
+      propsToStringify.forEach((prop) => {
         if (returnedProperty[prop]) {
           returnedProperty[prop] = stringifyField(returnedProperty[prop]);
         }
@@ -61,8 +61,8 @@ function sortBasedOnMovePropertiesTo(
   if (properties) {
     const sortedProperties = [];
 
-    movePropertiesToTop.forEach(item => {
-      const propertyOnTop = properties.find(property => {
+    movePropertiesToTop.forEach((item) => {
+      const propertyOnTop = properties.find((property) => {
         return property.name === item;
       });
 
@@ -71,7 +71,7 @@ function sortBasedOnMovePropertiesTo(
       }
     });
 
-    properties.forEach(property => {
+    properties.forEach((property) => {
       if (
         !movePropertiesToTop.includes(property.name) &&
         !movePropertiesToBottom.includes(property.name)
@@ -80,8 +80,8 @@ function sortBasedOnMovePropertiesTo(
       }
     });
 
-    movePropertiesToBottom.forEach(item => {
-      const propertyAtBottom = properties.find(property => {
+    movePropertiesToBottom.forEach((item) => {
+      const propertyAtBottom = properties.find((property) => {
         return property.name === item;
       });
 
@@ -101,7 +101,7 @@ function stringifyField(prop) {
 
   switch (propType) {
     case 'array':
-      return prop.map(val => {
+      return prop.map((val) => {
         return `${val}`;
       });
     case 'object':
@@ -140,7 +140,7 @@ function doRecursion(
 
   const keys = Object.keys(objC);
 
-  keys.forEach(key => {
+  keys.forEach((key) => {
     if (objC[key] !== null) {
       if (key === 'annotations') {
         objC = Object.assign(objC, annotationsToObject(objC[key]));
@@ -317,7 +317,7 @@ function annotationsToObject(annotations) {
   if (Array.isArray(annotations)) {
     const annotationsObj = {};
 
-    annotations.forEach(annotation => {
+    annotations.forEach((annotation) => {
       if (type(annotation.structuredValue) === 'object')
         annotationsObj[annotation.key] = structuredValueObjectToArray(
           annotation.structuredValue
@@ -331,7 +331,7 @@ function annotationsToObject(annotations) {
 }
 
 function structuredValueObjectToArray(structuredValue) {
-  return Object.keys(structuredValue).map(key => {
+  return Object.keys(structuredValue).map((key) => {
     return {
       name: key,
       description: structuredValue[key],

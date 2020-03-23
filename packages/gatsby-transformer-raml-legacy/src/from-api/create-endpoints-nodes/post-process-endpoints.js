@@ -5,7 +5,7 @@ const postProcessEndpoints = (apiKey, resources) => {
 function flattenResources(apiKey, resources) {
   let flattenedResources = [];
 
-  resources.forEach(resource => {
+  resources.forEach((resource) => {
     const {
       resources: nestedResources,
       ...resourceWithoutNestedResources
@@ -32,7 +32,7 @@ function processMethods(methods) {
   if (methods && methods.length) {
     const methodsC = JSON.parse(JSON.stringify(methods));
 
-    return methodsC.map(method => {
+    return methodsC.map((method) => {
       return {
         ...method,
         body: processBody(method.body),
@@ -48,7 +48,7 @@ function processMethodResponses(responses) {
   if (responses && responses.length) {
     const responsesC = JSON.parse(JSON.stringify(responses));
 
-    return responsesC.map(response => {
+    return responsesC.map((response) => {
       let { body } = response;
       if (body) {
         body = processBody(body);

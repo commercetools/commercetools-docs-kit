@@ -6,7 +6,7 @@ const svgPaths = {
   cross: `M2 2 L14 14 M2 14 L14 2`,
 };
 
-const BurgerIcon = props => (
+const BurgerIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 16 16"

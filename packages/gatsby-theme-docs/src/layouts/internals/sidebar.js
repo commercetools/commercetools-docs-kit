@@ -9,7 +9,7 @@ import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
 
-const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
+const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const scrollContainerId = 'navigation-scroll-container';
 
@@ -67,7 +67,7 @@ const LinkItem = styled.div`
   align-items: flex-end;
 `;
 
-const SidebarLink = props => {
+const SidebarLink = (props) => {
   // Filter out props that we don't want to forward to the Link component
   const {
     location,
@@ -175,7 +175,7 @@ SidebarLink.propTypes = {
   getChapterDOMElement: PropTypes.func.isRequired,
 };
 
-const SidebarChapter = props => {
+const SidebarChapter = (props) => {
   const elemId = `sidebar-chapter-${props.index}`;
   const getChapterDOMElement = React.useCallback(
     () => document.getElementById(elemId),
@@ -228,7 +228,7 @@ SidebarChapter.propTypes = {
   nextScrollPosition: PropTypes.number.isRequired,
 };
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   const data = useStaticQuery(graphql`
     query SidebarQuery {
       allNavigationYaml {

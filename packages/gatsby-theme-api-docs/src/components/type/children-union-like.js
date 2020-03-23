@@ -10,7 +10,7 @@ const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
       <p>{apiType.description}</p>
 
       <SpacingsStack scale="m">
-        {apiTypeSubTypes.map(subType => (
+        {apiTypeSubTypes.map((subType) => (
           <SpacingsStack key={subType.displayName} scale="s">
             <p>
               <strong>{subType.displayName}</strong>
