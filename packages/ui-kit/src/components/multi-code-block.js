@@ -92,7 +92,7 @@ function MultiCodeBlock(props) {
   const langs =
     props.languages && props.languages.length
       ? props.languages
-      : props.codeBlockProps[0].language;
+      : [props.codeBlockProps[0].language];
 
   return (
     <Container>
@@ -107,7 +107,7 @@ function MultiCodeBlock(props) {
   );
 
   function renderHeader(title, languages = []) {
-    if (title || languages) {
+    if (title || languages.length > 1) {
       return (
         <Header>
           <HeaderInner>
@@ -143,7 +143,9 @@ function MultiCodeBlock(props) {
     }
 
     return languages[0] === 'text' ? null : (
-      <HeaderText>{languages[0]}</HeaderText>
+      <HeaderText>
+        {languageDisplayNames[languages[0]] || languages[0]}
+      </HeaderText>
     );
   }
 
@@ -185,14 +187,17 @@ export const CodeBlockMarkdownWrapper = props => {
       ? props.children.props.children
       : props.children;
 
-  // rendeer multicode with single codeblock as child
   return (
-    <CodeBlock
-      language={languageCode}
+    <MultiCodeBlock
       title={title}
-      highlightLines={highlightLines}
-      noPromptLines={noPromptLines}
-      content={content}
+      codeBlockProps={[
+        {
+          language: languageCode,
+          highlightLines,
+          noPromptLines,
+          content,
+        },
+      ]}
     />
   );
 };
