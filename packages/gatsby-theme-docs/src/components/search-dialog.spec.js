@@ -2,7 +2,7 @@ import React from 'react';
 import { render, wait, fireEvent } from '@testing-library/react';
 import SearchDialog from './search-dialog';
 
-const createTestProps = custom => ({
+const createTestProps = (custom) => ({
   onClose: jest.fn(),
   ...custom,
 });

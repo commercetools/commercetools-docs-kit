@@ -1,4 +1,4 @@
-const getSelection = document =>
+const getSelection = (document) =>
   document.getSelection().rangeCount > 0
     ? document.getSelection().getRangeAt(0)
     : false;
@@ -12,7 +12,7 @@ const createTextArea = (document, text) => {
   return el;
 };
 
-const copyToClipboard = text => {
+const copyToClipboard = (text) => {
   const el = createTextArea(document, text);
   const selected = getSelection(document);
   document.body.appendChild(el);

@@ -8,7 +8,7 @@ import LayoutFooter from './internals/layout-footer';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
-const LayoutPageNotFound = props => {
+const LayoutPageNotFound = (props) => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const siteData = useSiteData();
   return (

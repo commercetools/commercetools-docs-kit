@@ -11,7 +11,7 @@ import {
 } from '@commercetools-uikit/icons';
 import { designSystem, TextSmall } from '@commercetools-docs/ui-kit';
 
-const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
+const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const isMatching = (a, b) => trimTrailingSlash(a) === trimTrailingSlash(b);
 
@@ -30,7 +30,7 @@ const Container = styled.nav`
 `;
 
 const PaginationButtonLink = styled(Link)`
-  text-align: ${props => props.align};
+  text-align: ${(props) => props.align};
   text-decoration: none;
   font-size: ${designSystem.typography.fontSizes.h5};
   color: ${designSystem.colors.light.textPrimary};
@@ -65,7 +65,7 @@ const PaginationButton = styled(Card)`
   }
 `;
 
-const PaginationLink = props => (
+const PaginationLink = (props) => (
   <PaginationButtonLink
     to={trimTrailingSlash(props.linkTo)}
     align={props.direction === 'left' ? 'right' : 'left'}
@@ -103,20 +103,20 @@ PaginationLink.propTypes = {
   direction: PropTypes.oneOf(['left', 'right']).isRequired,
 };
 
-export const PurePagination = props => {
-  const activeChapter = props.data.allNavigationYaml.nodes.find(node => {
+export const PurePagination = (props) => {
+  const activeChapter = props.data.allNavigationYaml.nodes.find((node) => {
     const isPaginationEnabledForChapter =
       typeof node.pagination === 'boolean' ? node.pagination : true;
     if (!isPaginationEnabledForChapter) return false;
     if (!node.pages) return false;
-    return node.pages.some(page => isMatching(props.slug, page.path));
+    return node.pages.some((page) => isMatching(props.slug, page.path));
   });
 
   if (!activeChapter) {
     return <Container />;
   }
 
-  const currentPageLinkIndex = activeChapter.pages.findIndex(page =>
+  const currentPageLinkIndex = activeChapter.pages.findIndex((page) =>
     isMatching(props.slug, page.path)
   );
   const hasPagination = currentPageLinkIndex > -1;
@@ -169,7 +169,7 @@ PurePagination.propTypes = {
 };
 PurePagination.displayName = 'Pagination';
 
-const Pagination = props => {
+const Pagination = (props) => {
   const data = useStaticQuery(graphql`
     query GetNavbarLinks {
       allNavigationYaml {

@@ -249,7 +249,7 @@ const AlgoliaSearch = React.forwardRef((props, ref) => {
           // Focus the input field so that the user can start typing directly
           ref.current.focus();
         })
-        .catch(error => {
+        .catch((error) => {
           reportErrorToSentry(error);
           setHasErrorLoadingAlgolia(true);
         });

@@ -16,11 +16,11 @@ import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
-const LayoutContent = props => {
+const LayoutContent = (props) => {
   // State for the sidebar menu
   const [isSidebarMenuOpen, setSidebarMenuOpen] = React.useState(false);
   const toggleSidebarMenu = React.useCallback(() => {
-    setSidebarMenuOpen(prev => !prev);
+    setSidebarMenuOpen((prev) => !prev);
   }, [setSidebarMenuOpen]);
   const closeSidebarMenu = React.useCallback(() => {
     setSidebarMenuOpen(false);
@@ -29,7 +29,7 @@ const LayoutContent = props => {
   // State for the top menu
   const [isTopMenuOpen, setIsTopMenuOpen] = React.useState(false);
   const toggleTopMenu = React.useCallback(() => {
-    setIsTopMenuOpen(prev => !prev);
+    setIsTopMenuOpen((prev) => !prev);
   }, [setIsTopMenuOpen]);
   const closeTopMenu = React.useCallback(() => {
     setIsTopMenuOpen(false);

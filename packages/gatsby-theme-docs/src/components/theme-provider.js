@@ -6,7 +6,7 @@ import { SiteDataContext } from '../hooks/use-site-data';
 import useAdditionalSiteData from '../overrides/use-additional-site-data';
 import ErrorBoundary from './error-boundary';
 
-const ThemeProvider = props => {
+const ThemeProvider = (props) => {
   const data = useStaticQuery(graphql`
     query GetSiteData {
       site {

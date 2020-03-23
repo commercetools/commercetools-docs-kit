@@ -59,7 +59,7 @@ const components = {
   ...PlaceholderMarkdownComponents,
 };
 
-const PageContentTemplate = props => (
+const PageContentTemplate = (props) => (
   <ThemeProvider>
     <LayoutContent pageContext={props.pageContext} pageData={props.data.mdx}>
       <MDXProvider components={components}>

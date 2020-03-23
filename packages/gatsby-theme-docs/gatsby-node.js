@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
-const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
+const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
@@ -20,7 +20,7 @@ exports.onPreBootstrap = ({ reporter }) => {
     'src/content/files',
     'src/code-examples',
   ];
-  requiredDirectories.forEach(dir => {
+  requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
       reporter.info(`creating the ${dir} directory`);
       fs.mkdirSync(dir);
@@ -153,7 +153,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   );
   pages.forEach(({ node }) => {
     const matchingNavigationPage = navigationPages.find(
-      page =>
+      (page) =>
         trimTrailingSlash(page.path) === trimTrailingSlash(node.fields.slug)
     );
     actions.createPage({
@@ -177,7 +177,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   const config = getConfig();
   config.module.rules = [
-    ...config.module.rules.map(rule => ({
+    ...config.module.rules.map((rule) => ({
       ...rule,
       test:
         // Strip out the svg files from the following built-in rule

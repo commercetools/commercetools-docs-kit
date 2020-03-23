@@ -107,11 +107,11 @@ const InputPlaceholder = () => (
   />
 );
 
-const SearchDialog = props => {
+const SearchDialog = (props) => {
   const ref = React.useRef();
   const { onClose } = props;
   React.useEffect(() => {
-    const onKeyPress = event => {
+    const onKeyPress = (event) => {
       // Listen to "escape" key events to close the dialog
       if (event.key.toLowerCase() === 'escape') {
         onClose();
@@ -129,7 +129,7 @@ const SearchDialog = props => {
         <RightBlank />
         <Center>
           <Content
-            onClick={event => {
+            onClick={(event) => {
               // Prevent overlay to close when clicking on the content area.
               event.stopPropagation();
             }}

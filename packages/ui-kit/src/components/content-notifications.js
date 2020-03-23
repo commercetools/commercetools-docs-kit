@@ -9,7 +9,7 @@ import {
 } from '@commercetools-uikit/icons';
 import { colors, tokens, dimensions } from '../design-system';
 
-const getIconByType = type => {
+const getIconByType = (type) => {
   switch (type) {
     case 'warning':
       return WarningIcon;
@@ -19,7 +19,7 @@ const getIconByType = type => {
       return InformationIcon;
   }
 };
-const getIconColorByType = type => {
+const getIconColorByType = (type) => {
   switch (type) {
     case 'warning':
       return 'warning';
@@ -30,7 +30,7 @@ const getIconColorByType = type => {
   }
 };
 const Container = styled.div`
-  background-color: ${props => {
+  background-color: ${(props) => {
     switch (props.type) {
       case 'warning':
         return colors.light.surfaceWarning;
@@ -41,7 +41,7 @@ const Container = styled.div`
     }
   }};
   border: 1px solid
-    ${props => {
+    ${(props) => {
       switch (props.type) {
         case 'warning':
           return colors.light.textWarning;
@@ -55,7 +55,7 @@ const Container = styled.div`
   padding: ${dimensions.spacings.m};
 `;
 
-const ContentNotification = props => {
+const ContentNotification = (props) => {
   const Icon = getIconByType(props.type);
   const iconColor = getIconColorByType(props.type);
   return (
@@ -96,8 +96,8 @@ ContentNotification.defaultProps = {
   showBeta: false,
 };
 
-const Info = props => <ContentNotification {...props} type="info" />;
-const Error = props => <ContentNotification {...props} type="error" />;
-const Warning = props => <ContentNotification {...props} type="warning" />;
+const Info = (props) => <ContentNotification {...props} type="info" />;
+const Error = (props) => <ContentNotification {...props} type="error" />;
+const Warning = (props) => <ContentNotification {...props} type="warning" />;
 
 export default { Info, Error, Warning };

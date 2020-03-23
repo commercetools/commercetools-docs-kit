@@ -1,9 +1,9 @@
 import { parseFragment } from 'parse5';
 import rangeParser from 'parse-numeric-range';
 
-const getLinesForRange = value => {
+const getLinesForRange = (value) => {
   if (!value) return [];
-  return rangeParser.parse(value.trim()).filter(n => n > 0);
+  return rangeParser.parse(value.trim()).filter((n) => n > 0);
 };
 
 const intialOptions = {
@@ -12,9 +12,9 @@ const intialOptions = {
   noPromptLines: [],
 };
 
-const getOptionName = name =>
+const getOptionName = (name) =>
   // NOTE: parsed attribute names are all lowercase
-  Object.keys(intialOptions).find(key => key.toLowerCase() === name) || name;
+  Object.keys(intialOptions).find((key) => key.toLowerCase() === name) || name;
 
 export default function parseCodeBlockOptions(props = {}) {
   if (!props.metastring) return intialOptions;

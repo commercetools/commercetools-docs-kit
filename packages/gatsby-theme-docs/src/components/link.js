@@ -19,7 +19,7 @@ const dummyHostname = 'dummy.com';
 const withoutPrefix = (value, pathPrefix) =>
   value.replace(new RegExp(`^${pathPrefix}`), '');
 
-const trimTrailingSlash = url => url.replace(/(\/?)$/, '');
+const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const getStylesFromProps = ({ noUnderline }) => css`
   text-decoration: ${noUnderline ? 'none' : 'underline'};
@@ -49,7 +49,7 @@ const InlineLink = styled.span`
   }
 `;
 
-export const ExternalSiteLink = props => (
+export const ExternalSiteLink = (props) => (
   <StyledExternalSiteLink
     {...props}
     target="_blank"
@@ -94,7 +94,7 @@ export const ExternalSiteLink = props => (
  * For outboud links to external websites, we use the <OutboudLink> component for
  * tracking Google Analytics.
  */
-const PureLink = extendedProps => {
+const PureLink = (extendedProps) => {
   const siteData = useSiteData();
   const { location, noUnderline, ...props } = extendedProps;
   // For image links, return the link as-is.
@@ -225,7 +225,7 @@ PureLink.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-const Link = props => (
+const Link = (props) => (
   <Location>
     {({ location }) => <PureLink location={location} {...props} />}
   </Location>

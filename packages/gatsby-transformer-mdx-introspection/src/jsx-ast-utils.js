@@ -21,7 +21,7 @@ function getChildren(node) {
   const children = [];
   if (node != null) {
     // Examine each attribute of the object
-    Object.values(node).forEach(value => {
+    Object.values(node).forEach((value) => {
       if (value != null && typeof value === 'object') {
         if (Array.isArray(value)) {
           // Check if it is a node array
@@ -58,7 +58,8 @@ function findContentRoot(jsxAst) {
 function findTag(ast, tag, searchMatchChildren) {
   return findNode(
     ast,
-    node => node.type === 'JSXElement' && node.openingElement.name.name === tag,
+    (node) =>
+      node.type === 'JSXElement' && node.openingElement.name.name === tag,
     searchMatchChildren
   );
 }
@@ -137,7 +138,7 @@ function getJsxChildren(node) {
  */
 function reduceObjectLiteral(node, jsx) {
   const parsed = {};
-  node.properties.forEach(propertyNode => {
+  node.properties.forEach((propertyNode) => {
     if (propertyNode.type === 'ObjectProperty') {
       // Try to parse property: only use if not computed like { [a]: "b" }
       if (!propertyNode.computed) {

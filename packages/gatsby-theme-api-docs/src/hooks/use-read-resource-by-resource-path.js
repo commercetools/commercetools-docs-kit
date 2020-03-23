@@ -7,7 +7,7 @@ export default (apiKey, resourcePath) => {
 
   const resources = useApiResources();
 
-  const matchedResource = resources.find(resource => {
+  const matchedResource = resources.find((resource) => {
     return (
       resource.apiKey === apiKey && resource.resourcePathUri === resourcePath
     );

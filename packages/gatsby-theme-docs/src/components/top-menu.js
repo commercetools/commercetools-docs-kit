@@ -97,7 +97,7 @@ const Columns = styled.div`
   grid-gap: ${designSystem.dimensions.spacings.xl};
   grid-auto-columns: 1fr;
   grid-template-columns: repeat(
-    ${props => React.Children.count(props.children)},
+    ${(props) => React.Children.count(props.children)},
     1fr
   );
 
@@ -164,7 +164,7 @@ const TopMenu = () => {
     <Container>
       <Content
         role="top-menu"
-        onClick={event => {
+        onClick={(event) => {
           // Prevent overlay to close when clicking on the content area.
           event.stopPropagation();
         }}
@@ -173,7 +173,7 @@ const TopMenu = () => {
           <LeftBlank />
           <Center>
             <Columns>
-              {data.allTopMenuYaml.nodes.map(node => (
+              {data.allTopMenuYaml.nodes.map((node) => (
                 <Column key={node.id}>
                   <SpacingsStack scale="s">
                     <ColumnTitle>{node.menuTitle}</ColumnTitle>
@@ -193,7 +193,7 @@ const TopMenu = () => {
               ))}
               <SideColumn>
                 <SpacingsStack scale="s">
-                  {data.allTopSideMenuYaml.nodes.map(node => (
+                  {data.allTopSideMenuYaml.nodes.map((node) => (
                     <GlobalNavigationLink href={node.href} key={node.id}>
                       {node.label}
                     </GlobalNavigationLink>

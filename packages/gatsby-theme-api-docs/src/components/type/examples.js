@@ -14,7 +14,7 @@ const Examples = ({ examples, title }) => {
         <strong>{title}</strong>
       </p>
       <SpacingsStack scale="m">
-        {examples.map(example => {
+        {examples.map((example) => {
           return (
             <CodeBlock
               key={example.name}

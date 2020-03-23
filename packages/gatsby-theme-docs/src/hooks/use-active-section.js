@@ -20,7 +20,7 @@ const useActiveSelection = () => {
   const onScroll = React.useCallback(() => {
     const sectionElements = getSectionElements();
     let nextActiveSection;
-    sectionElements.forEach(section => {
+    sectionElements.forEach((section) => {
       if (section.getBoundingClientRect().top - offset < 0) {
         nextActiveSection = section;
       }

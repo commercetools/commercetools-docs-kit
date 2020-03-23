@@ -7,7 +7,7 @@ const fieldsToClean = {
 function doRecursion(api) {
   const returnedApi = {};
 
-  Object.keys(api).forEach(key => {
+  Object.keys(api).forEach((key) => {
     // remove all non alphanumeric characters except underscores
     const alphanumericKey = fieldsToClean[key] ? key.replace(/\W/g, '') : key;
 

@@ -34,7 +34,7 @@ const Input = styled.input`
       ${designSystem.dimensions.spacings.l} +
         ${designSystem.dimensions.spacings.xs}
     );
-  width: ${props =>
+  width: ${(props) =>
     props.size === 'small'
       ? designSystem.dimensions.widths.searchBarSmall
       : '100%'};
@@ -60,13 +60,13 @@ const SearchInputIcon = styled.span`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${props => `${props.position}: ${designSystem.dimensions.spacings.xs};`}
+  ${(props) => `${props.position}: ${designSystem.dimensions.spacings.xs};`}
 `;
 
 const SearchInput = React.forwardRef((props, ref) => {
   const { onFocus } = props;
   const [isActive, setIsActive] = React.useState(false);
-  const handleFocus = event => {
+  const handleFocus = (event) => {
     if (props.isDisabled) return;
     if (onFocus) onFocus(event);
     setIsActive(true);
@@ -76,7 +76,7 @@ const SearchInput = React.forwardRef((props, ref) => {
     setIsActive(false);
   };
   React.useEffect(() => {
-    const onKeyPress = event => {
+    const onKeyPress = (event) => {
       // Listen to "slash" key events to focus the search input
       if (event.key === '/') {
         if (onFocus) onFocus(event);

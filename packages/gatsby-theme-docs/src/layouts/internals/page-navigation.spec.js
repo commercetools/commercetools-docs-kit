@@ -16,7 +16,7 @@ const Section = styled.section`
   width: 100%;
 `;
 
-const createTestProps = custom => ({
+const createTestProps = (custom) => ({
   tableOfContents: {
     items: [
       {
@@ -44,7 +44,7 @@ const createTestProps = custom => ({
   ...custom,
 });
 
-const renderApp = ui =>
+const renderApp = (ui) =>
   render(
     <Container>
       <Content role="application">
@@ -69,7 +69,7 @@ const renderApp = ui =>
 // since the normal HTML calculations do not apply in a test environment.
 // For example, calculating the `getBoundingClientRect`.
 const applySectionElementsMocks = (elements, selectElement) => {
-  elements.forEach(el => {
+  elements.forEach((el) => {
     const isElementSelected = selectElement(el);
     // eslint-disable-next-line no-param-reassign
     el.getBoundingClientRect = jest.fn(() => ({
@@ -98,10 +98,10 @@ describe('rendering', () => {
 
     const hrefIds = ['link-1', 'link-2', 'link-2-1', 'link-2-1-1'];
 
-    hrefIds.forEach(hrefId => {
+    hrefIds.forEach((hrefId) => {
       applySectionElementsMocks(
         rendered.container.querySelectorAll('section[class^="section-h"]'),
-        el => el.id === `section-${hrefId}`
+        (el) => el.id === `section-${hrefId}`
       );
       fireEvent.scroll(document.querySelector('[role="application"]'), {
         // It does not matter how much we scroll since we control the `getBoundingClientRect`

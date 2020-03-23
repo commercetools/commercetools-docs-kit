@@ -6,7 +6,7 @@ const computeType = require('../compute-type');
 function doRecursion(type) {
   let returnedType = {};
 
-  Object.keys(type).forEach(key => {
+  Object.keys(type).forEach((key) => {
     // remove parenthesis from annotation identifier
     let keyWithoutParenthesis = key.replace(`(`, '').replace(`)`, '');
 

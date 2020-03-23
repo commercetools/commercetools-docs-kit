@@ -51,7 +51,7 @@ const checkerOptionsFromCli = {
     ? {
         excludedKeywords: flags['excluded-keywords']
           .split(',')
-          .map(keyword => keyword.trim()),
+          .map((keyword) => keyword.trim()),
       }
     : {}),
 };
@@ -60,7 +60,7 @@ const config = {
   siteFolder,
 };
 
-getPort().then(port => {
+getPort().then((port) => {
   const app = express();
   app.get('/', (req, res) => {
     res.redirect(url.resolve('/', entryPoints[0]));

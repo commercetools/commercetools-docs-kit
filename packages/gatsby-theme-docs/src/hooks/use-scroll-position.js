@@ -1,9 +1,9 @@
 import React from 'react';
 import useScrollSpy from './use-scroll-spy';
 
-const useScrollPosition = containerId => {
+const useScrollPosition = (containerId) => {
   const [position, setPosition] = React.useState(0);
-  const onScroll = React.useCallback(element => {
+  const onScroll = React.useCallback((element) => {
     setPosition(element.scrollTop);
   }, []);
   useScrollSpy(`#${containerId}`, onScroll);
