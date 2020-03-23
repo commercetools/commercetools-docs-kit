@@ -10,7 +10,6 @@ import theme from 'prism-react-renderer/themes/nightOwl';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
-import codeBlockParseOptions from '../utils/code-block-parse-options';
 
 const HighlightedContainer = styled.div`
   background-color: ${colors.light.surfaceCode};
@@ -289,29 +288,3 @@ CodeBlock.propTypes = {
 };
 
 export default CodeBlock;
-
-/* eslint-disable react/display-name,react/prop-types */
-// Maps the props coming from MDX to the underlying <CodeBlock> component.
-export const CodeBlockMarkdownWrapper = props => {
-  const className = props.children.props ? props.children.props.className : '';
-  const languageToken = className || 'language-text';
-  const [, languageCode] = languageToken.split('language-');
-  const { title, highlightLines, noPromptLines } = codeBlockParseOptions(
-    props.children.props
-  );
-  const content =
-    props.children.props && props.children.props.children
-      ? props.children.props.children
-      : props.children;
-
-  // rendeer multicode with single codeblock as child
-  return (
-    <CodeBlock
-      language={languageCode}
-      title={title}
-      highlightLines={highlightLines}
-      noPromptLines={noPromptLines}
-      content={content}
-    />
-  );
-};

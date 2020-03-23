@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { colors, dimensions, typography, tokens } from '../design-system';
+import codeBlockParseOptions from '../utils/code-block-parse-options';
 import CodeBlock from './code-block';
 
 const Container = styled.div`
@@ -169,3 +170,29 @@ MultiCodeBlock.propTypes = {
 };
 
 export default MultiCodeBlock;
+
+/* eslint-disable react/display-name,react/prop-types */
+// Maps the props coming from MDX to the underlying <CodeBlock> component.
+export const CodeBlockMarkdownWrapper = props => {
+  const className = props.children.props ? props.children.props.className : '';
+  const languageToken = className || 'language-text';
+  const [, languageCode] = languageToken.split('language-');
+  const { title, highlightLines, noPromptLines } = codeBlockParseOptions(
+    props.children.props
+  );
+  const content =
+    props.children.props && props.children.props.children
+      ? props.children.props.children
+      : props.children;
+
+  // rendeer multicode with single codeblock as child
+  return (
+    <CodeBlock
+      language={languageCode}
+      title={title}
+      highlightLines={highlightLines}
+      noPromptLines={noPromptLines}
+      content={content}
+    />
+  );
+};
