@@ -1,3 +1,25 @@
+## [2.1.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.0.0...v2.1.0) (2020-03-23)
+
+#### 🔮 Type: Chore
+
+- `gatsby-theme-docs`
+  - [#311](https://github.com/commercetools/commercetools-docs-kit/pull/311) fix(theme): remove duplicated source filesystem config ([@emmenko](https://github.com/emmenko))
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-docs`, `gatsby-transformer-code-examples`, `ui-kit`, `writing-style`
+  - [#304](https://github.com/commercetools/commercetools-docs-kit/pull/304) feat: code examples provided on graphQL by a transformer plugin ([@davifantasia](https://github.com/davifantasia))
+
+#### 🤖 Type: Dependencies
+
+- `broken-link-checker`, `gatsby-theme-api-docs`, `gatsby-theme-docs`, `gatsby-transformer-mdx-introspection`, `gatsby-transformer-raml-legacy`, `gatsby-transformer-raml`, `ramldoc-generator`, `ui-kit`, `writing-style`
+  - [#316](https://github.com/commercetools/commercetools-docs-kit/pull/316) chore(deps): update dependency prettier to v2 and babel to v7.9 ([@renovate[bot]](https://github.com/apps/renovate))
+- `gatsby-theme-docs`
+  - [#307](https://github.com/commercetools/commercetools-docs-kit/pull/307) fix(deps): update dependency rehype-slug to v3 ([@renovate[bot]](https://github.com/apps/renovate))
+- Other
+  - [#306](https://github.com/commercetools/commercetools-docs-kit/pull/306) chore(deps): bump acorn from 6.4.0 to 6.4.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  - [#301](https://github.com/commercetools/commercetools-docs-kit/pull/301) chore(deps): update all dependencies (major) ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [2.0.0](https://github.com/commercetools/commercetools-docs-kit/compare/v1.8.1...v2.0.0) (2020-03-12)
 
 This release introduces some **breaking changes**, as documented below.
