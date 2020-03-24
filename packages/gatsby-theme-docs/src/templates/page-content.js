@@ -14,7 +14,7 @@ import {
   Link,
   ThemeProvider,
   CodeExample,
-  MultiLanguageCodeExamples,
+  MultiCodeExample,
 } from '../components';
 import PlaceholderMarkdownComponents from '../overrides/markdown-components';
 
@@ -59,7 +59,7 @@ const components = {
   Warning: ContentNotifications.Warning,
   Error: ContentNotifications.Error,
   CodeExample,
-  MultiCode: MultiLanguageCodeExamples,
+  MultiCode: MultiCodeExample,
 
   // Custom React components that can be injected from each website
   // See ../overrides/README.md
