@@ -20,7 +20,8 @@ const renderLink = (ui, initialPath) => {
 };
 
 const pathPrefix = '/prefix';
-const withPrefix = path => [pathPrefix, path].join('/').replace(/\/\/+/g, '/');
+const withPrefix = (path) =>
+  [pathPrefix, path].join('/').replace(/\/\/+/g, '/');
 
 describe('rendering', () => {
   beforeEach(() => {
@@ -154,13 +155,13 @@ describe('rendering', () => {
     },
   ];
 
-  const scenariosWithPathPrefix = scenarios.map(scenario => ({
+  const scenariosWithPathPrefix = scenarios.map((scenario) => ({
     ...scenario,
     location: { pathname: withPrefix(scenario.location.pathname) },
     withPathPrefix: true,
   }));
 
-  scenarios.concat(scenariosWithPathPrefix).forEach(scenario => {
+  scenarios.concat(scenariosWithPathPrefix).forEach((scenario) => {
     const title = [
       scenario.withPathPrefix && `[pathPrefix: ${pathPrefix}]`,
       scenario.title,

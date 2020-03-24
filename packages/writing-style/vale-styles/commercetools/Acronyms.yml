@@ -47,6 +47,8 @@ exceptions:
   - XSS
   - YAML
   - ZIP
+  - ISO
+  - RSS
   # the following exceptions are allowed because they are caught as errors by the ToDo rule.
   - XXX
   - FIXME

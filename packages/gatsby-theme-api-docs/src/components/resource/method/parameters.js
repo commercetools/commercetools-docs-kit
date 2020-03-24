@@ -18,7 +18,7 @@ const Parameters = ({ title, parameters }) => {
       ) : null}
 
       <tbody>
-        {parameters.map(parameter => {
+        {parameters.map((parameter) => {
           return (
             <tr key={parameter.name}>
               <td>

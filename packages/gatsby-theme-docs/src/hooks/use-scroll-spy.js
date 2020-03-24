@@ -1,7 +1,7 @@
 import React from 'react';
 import throttle from 'lodash.throttle';
 
-const getElement = selector => document.querySelector(selector);
+const getElement = (selector) => document.querySelector(selector);
 
 const throttleMs = 100;
 

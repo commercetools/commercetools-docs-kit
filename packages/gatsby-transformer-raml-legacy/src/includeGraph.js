@@ -7,7 +7,7 @@
 const includedFilesForApiFiles = {};
 
 const addIncludedFilesForApi = (filePathsIncluded, apiFilePath) => {
-  filePathsIncluded.forEach(filePath => {
+  filePathsIncluded.forEach((filePath) => {
     if (filePath !== apiFilePath) {
       const hasFilePathProperty = Object.prototype.hasOwnProperty.call(
         includedFilesForApiFiles,
@@ -24,7 +24,7 @@ const addIncludedFilesForApi = (filePathsIncluded, apiFilePath) => {
   });
 };
 
-const isIncluded = includedPath => {
+const isIncluded = (includedPath) => {
   const hasIncludedPathProperty = Object.prototype.hasOwnProperty.call(
     includedFilesForApiFiles,
     includedPath
@@ -32,7 +32,7 @@ const isIncluded = includedPath => {
   return hasIncludedPathProperty;
 };
 
-const includedByApis = includedPath => {
+const includedByApis = (includedPath) => {
   if (isIncluded(includedPath)) {
     return includedFilesForApiFiles[includedPath];
   }

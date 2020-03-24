@@ -1,6 +1,6 @@
 const isHastHeading = require('hast-util-heading');
 
-const isHeading = node => {
+const isHeading = (node) => {
   if (node.type === 'jsx') {
     // will will later want to introspect here and consider certain of our Api generation JSX
     // as section delimiting "headings" that cause a new section to be started.
@@ -11,10 +11,10 @@ const isHeading = node => {
 
 // Since we are mapping the headings shifted to one in the markdown provider
 // (e.g. h1 -> h2, h2 -> h3), we return the shifted tagName here as well.
-const mapNodeTagName = tagName =>
-  tagName.replace(/([0-9])$/, match => parseInt(match, 10) + 1);
+const mapNodeTagName = (tagName) =>
+  tagName.replace(/([0-9])$/, (match) => parseInt(match, 10) + 1);
 
-module.exports = ({ leadSectionClassSuffix = 'lead' } = {}) => ast => {
+module.exports = ({ leadSectionClassSuffix = 'lead' } = {}) => (ast) => {
   const newNodes = [];
   let sectionNode = {
     type: 'element',

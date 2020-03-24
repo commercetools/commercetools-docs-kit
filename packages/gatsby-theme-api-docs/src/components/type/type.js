@@ -8,10 +8,10 @@ import { apiTypeStrings } from '../../utils/constants';
 import Children from './children';
 import ChildrenUnionLike from './children-union-like';
 
-const ApiType = props => {
+const ApiType = (props) => {
   const apiTypes = useApiTypes();
 
-  const matchedApiType = apiTypes.find(apiType => {
+  const matchedApiType = apiTypes.find((apiType) => {
     return (
       apiType.apiKey === props.apiKey && apiType.displayName === props.type
     );

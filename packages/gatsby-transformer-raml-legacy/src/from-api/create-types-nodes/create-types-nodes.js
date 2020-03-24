@@ -13,7 +13,7 @@ const createTypesNodes = (
   },
   { createNodeId, createContentDigest, createNode, createParentChildLink }
 ) => {
-  types.forEach(type => {
+  types.forEach((type) => {
     let typeObj = { ...type, apiKey: apiNode.key };
     typeObj = postProcessTypes(typeObj, {
       annotateConstantLikeEnums,

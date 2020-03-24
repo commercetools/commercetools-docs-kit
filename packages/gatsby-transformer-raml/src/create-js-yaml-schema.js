@@ -10,7 +10,7 @@ function createJsYamlSchema() {
    */
   const IncludeYamlType = new jsYaml.Type('!include', {
     kind: 'scalar',
-    construct: data => {
+    construct: (data) => {
       return data !== null ? data : '';
     },
   });

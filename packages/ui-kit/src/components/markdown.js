@@ -145,9 +145,9 @@ const Table = styled.table`
       top: -9999px;
       left: -9999px;
     }
-    ${props => {
+    ${(props) => {
       const tableHeaders = React.Children.toArray(props.children).find(
-        elem => elem.props.mdxType === 'thead'
+        (elem) => elem.props.mdxType === 'thead'
       );
       const rowHeaders = tableHeaders.props.children;
       return React.Children.toArray(rowHeaders.props.children).reduce(
@@ -185,7 +185,7 @@ const TableCell = styled.td`
   padding: ${dimensions.spacings.s};
   white-space: pre-wrap;
   vertical-align: top;
-  text-align: ${props => props.align || 'left'};
+  text-align: ${(props) => props.align || 'left'};
 
   @media screen and (${dimensions.viewports.mobile}) {
     display: block;
@@ -225,7 +225,7 @@ const Delete = styled.span`
 const Hr = styled(ThematicBreak)``;
 
 /* eslint-disable react/display-name,react/prop-types */
-const withAnchorLink = Component => props => {
+const withAnchorLink = (Component) => (props) => {
   return (
     <Component
       {...props}

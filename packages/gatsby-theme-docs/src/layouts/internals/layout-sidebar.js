@@ -17,7 +17,7 @@ const Container = styled.nav`
   z-index: 2;
   height: 100vh;
   width: ${designSystem.dimensions.widths.pageNavigationSmall};
-  display: ${props => (props.isMenuOpen ? 'flex' : 'none')};
+  display: ${(props) => (props.isMenuOpen ? 'flex' : 'none')};
   flex-direction: column;
   background-color: ${designSystem.colors.light.surfaceSecondary1};
   border-right: 1px solid ${designSystem.colors.light.borderPrimary};
@@ -61,7 +61,7 @@ const MenuButton = styled.button`
   }
 `;
 
-const LayoutSidebar = props => {
+const LayoutSidebar = (props) => {
   const [menuButtonNode, setMenuButtonNode] = React.useState();
   const [modalPortalNode, setModalPortalNode] = React.useState();
   React.useEffect(() => {
@@ -88,7 +88,7 @@ const LayoutSidebar = props => {
               <Container
                 aria-label="Main Navigation"
                 isMenuOpen={true}
-                onClick={event => {
+                onClick={(event) => {
                   event.stopPropagation();
                 }}
               >

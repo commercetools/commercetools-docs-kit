@@ -43,7 +43,7 @@ function mergeDefaults(options) {
 function visit(node, effect) {
   effect(node);
   if (typeof node === 'object' && 'children' in node) {
-    node.children.forEach(child => visit(child, effect));
+    node.children.forEach((child) => visit(child, effect));
   }
 }
 
@@ -59,8 +59,8 @@ async function queryChildren(node, context, { filter, sort, deep, first }) {
   if (deep) {
     // Traverse data model to find all children IDs
     const allDeepChildrenIds = [];
-    node.tree.forEach(n =>
-      visit(n, child => {
+    node.tree.forEach((n) =>
+      visit(n, (child) => {
         if (typeof child === 'object') {
           allDeepChildrenIds.push(child.id);
         }
@@ -193,8 +193,8 @@ exports.createResolvers = ({ createResolvers, intermediateSchema }) => {
           const { trim, collapse } = args;
           let text = '';
 
-          source.tree.forEach(node =>
-            visit(node, child => {
+          source.tree.forEach((node) =>
+            visit(node, (child) => {
               if (typeof child === 'string') {
                 text += child;
               }
@@ -272,7 +272,7 @@ function introspectMdx({
   if (removeMdxCompilationArtifacts) {
     // Make sure there aren't any of the existing attributes in the raw MDX
     // If there are, then warn
-    const performCheck = attribute => {
+    const performCheck = (attribute) => {
       if (
         node.rawBody.includes(`${attribute}:`) ||
         node.rawBody.includes(`${attribute}=`)
@@ -289,7 +289,7 @@ function introspectMdx({
   }
 
   getReducedForest(cache, node, options)
-    .then(reducedForest => {
+    .then((reducedForest) => {
       const { createNode, createParentChildLink } = actions;
 
       // the exact same JSX could be on one page twice, use a counter to differentiate
@@ -343,7 +343,7 @@ function introspectMdx({
         const areChildrenRoot = !componentNode.hasGatsbyNode && isRoot;
 
         // Create nodes for all children
-        componentNode.children.forEach(childNode => {
+        componentNode.children.forEach((childNode) => {
           createComponentInMdxNode(
             childNode,
             areChildrenRoot,
@@ -359,7 +359,7 @@ function introspectMdx({
         createComponentInMdxNode(tree, true, node, i !== 0)
       );
     })
-    .catch(error => {
+    .catch((error) => {
       reporter.error(String(error));
     });
 }

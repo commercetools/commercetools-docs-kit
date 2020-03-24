@@ -6,7 +6,7 @@ const pageWidthSmall = '592px';
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
 
-export const pxToRem = px => {
+export const pxToRem = (px) => {
   const pxNumber = px.replace(/([0-9]+)px$/, '$1');
   const remNumber = parseInt(pxNumber, 10) / rootFontSizeNumber;
   return `${remNumber}rem`;

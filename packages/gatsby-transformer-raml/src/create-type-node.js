@@ -82,7 +82,7 @@ function processProperties({
       moveToBottom: movePropertiesToBottom,
     });
 
-    propertiesArray = propertiesArray.map(property => {
+    propertiesArray = propertiesArray.map((property) => {
       let returnedProperty = resolveConflictingFieldTypes(property);
       returnedProperty = {
         ...returnedProperty,

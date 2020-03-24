@@ -111,7 +111,7 @@ const DocumentationSwitcherContainer = styled.div`
   white-space: nowrap;
   height: calc(100% - 2px);
   border-bottom: 2px solid
-    ${props =>
+    ${(props) =>
       props.isActive
         ? designSystem.colors.light.linkNavigation
         : 'transparent'};
@@ -122,14 +122,14 @@ const DocumentationSwitcherContainer = styled.div`
 `;
 const SwitcherButton = styled.a`
   cursor: pointer;
-  color: ${props =>
+  color: ${(props) =>
     props.isActive
       ? designSystem.colors.light.linkNavigation
       : designSystem.colors.light.textPrimary};
 `;
 const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
-  display: ${props => (props.excludeFromSearchIndex ? 'none' : 'block')};
+  display: ${(props) => (props.excludeFromSearchIndex ? 'none' : 'block')};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     padding: 0;
@@ -140,7 +140,7 @@ const SearchContainer = styled.div`
   }
 `;
 
-const LayoutHeader = props => (
+const LayoutHeader = (props) => (
   <Container>
     <Content>
       <Inline alignItems="center">

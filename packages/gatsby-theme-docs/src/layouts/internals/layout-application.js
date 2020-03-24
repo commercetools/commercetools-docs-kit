@@ -36,7 +36,7 @@ const Container = styled.div`
   }
 `;
 
-const LayoutApplication = props => (
+const LayoutApplication = (props) => (
   <UiKitThemeProvider theme={designSystem.uikitTheme}>
     <Root role="application">
       <Container {...props} />

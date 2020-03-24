@@ -9,7 +9,7 @@ const jarName = `rmf-codegen-${rmfCodegenVersion}.jar`;
 const jarPath = path.join(binPath, jarName);
 const downloadURI = `https://dl.bintray.com/vrapio/vrapio/io/vrap/rmf/codegen/cli-application/${rmfCodegenVersion}/cli-application-${rmfCodegenVersion}-all.jar`;
 
-const abortIfError = result => {
+const abortIfError = (result) => {
   if (result.code > 0) {
     throw new Error(result.stderr);
   }
@@ -24,13 +24,13 @@ const isJavaInstalled = () => {
   }
 };
 
-const downloadArchive = async url => {
+const downloadArchive = async (url) => {
   // Download the archive
   const res = await fetch(url);
   const fileStream = fs.createWriteStream(jarPath);
   await new Promise((resolve, reject) => {
     res.body.pipe(fileStream);
-    res.body.on('error', error => {
+    res.body.on('error', (error) => {
       reject(error);
     });
     fileStream.on('finish', resolve);
@@ -56,7 +56,7 @@ if (fs.existsSync(jarPath)) {
     () => {
       console.log('[ramldoc-generator] rmf-codegen jar installed.');
     },
-    error => {
+    (error) => {
       console.error(
         '[ramldoc-generator] Error installing rmf-codegen jar',
         error

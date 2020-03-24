@@ -28,7 +28,7 @@ async function introspectMdx(
   function pickProperties(node) {
     if (typeof node === 'string') return node;
     const newNode = {};
-    desiredProperties.forEach(prop => {
+    desiredProperties.forEach((prop) => {
       if (prop === 'children') {
         newNode.children = node.children.map(pickProperties);
       } else {

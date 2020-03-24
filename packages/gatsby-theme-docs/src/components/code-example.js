@@ -10,7 +10,7 @@ import useCodeExamples from '../hooks/use-code-examples';
 function CodeExample(props) {
   const codeExamples = useCodeExamples();
 
-  const codeExample = codeExamples.find(example => {
+  const codeExample = codeExamples.find((example) => {
     return example.path === props.path;
   });
 

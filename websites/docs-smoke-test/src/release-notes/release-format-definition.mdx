@@ -1,0 +1,34 @@
+---
+date: 2000-03-03
+title: Release Note Format Definition
+description: |
+  The description must be a stand-alone text conveying the key change and its advantages for external feed consumers, 
+  redistribution, notifications and others. 
+type: feature # feature | fix | enhancement
+topics:
+  - Bar
+  - FooBar
+#  - Baz
+#  - Foo
+---
+
+The file can have any name as long as it resides in `src/release-notes`. Only the content of the file controls the website content. 
+
+The file can live in folders to better organize large numbers of past release notes. 
+
+The file can use any MDX allowed in documentation, but it's strongly advised to only use basic markdown and no headings before the "read more" separator.
+
+Metadata is defined in YAML frontmatter. 
+
+<!--more-->
+
+The `<!--more-->` syntax for separating out the long form from the part shown in the list is to be taken over from the Jekyll convention. Unprepared new users have understood it intuitively because it's explicit and the company knows it already.
+
+## Frontmatter:
+ * `date` (date, required): A `YYYY-MM-DD` date format (not a text, it's parsed as an ISO date)
+ * `title` (string, required): The title for the website
+ * `description` (string, required): Max 256 characters plain text containing the change and its advantage ("tweet-able" and for RSS).
+    256 = 280 twitter minus 23 for a link. Do not imply the title, this text is used stand-alone in Merchant Center and other feed recipients. It must convey the value proposition and key change topic.
+ * `type` (string, optional): Must be either `feature` (for "New Feature"), `fix` (for "Resolved Issue") or `enhancement` (for "Enhancement")
+ * `topics` (array of string, optional): YAML array of free to choose text entries. The Filter UI may be constrained to pre-defined topics. 
+ * `published` (boolean, optional, defaults to `true`): `false` prevents rendering of the release in the site. **Should not be used in the main documentation**, reserved for atypical situations. Not included in the template. 
