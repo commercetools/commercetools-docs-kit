@@ -84,6 +84,7 @@ export const dimensions = {
     marketingContent: '1168px',
     searchBar: '300px',
     searchBarSmall: '150px',
+    selectDropDownArrowWith: '12px',
   },
   viewports: {
     mobile: `max-width: ${pageWidth}`,

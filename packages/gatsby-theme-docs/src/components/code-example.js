@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CodeBlock, ContentNotifications } from '@commercetools-docs/ui-kit';
+import {
+  MultiCodeBlock,
+  CodeBlock,
+  ContentNotifications,
+} from '@commercetools-docs/ui-kit';
 import useCodeExamples from '../hooks/use-code-examples';
 
 function CodeExample(props) {
@@ -17,13 +21,14 @@ function CodeExample(props) {
   }
 
   return (
-    <CodeBlock
-      content={codeExample.content}
-      language={codeExample.language}
-      title={props.title}
-      highlightLines={props.highlightLines}
-      noPromptLines={props.noPromptLines}
-    />
+    <MultiCodeBlock title={props.title}>
+      <CodeBlock
+        content={codeExample.content}
+        language={codeExample.language}
+        highlightLines={props.highlightLines || []}
+        noPromptLines={props.noPromptLines || []}
+      />
+    </MultiCodeBlock>
   );
 }
 
