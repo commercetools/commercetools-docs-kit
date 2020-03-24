@@ -94,18 +94,18 @@ Puts a "sticky note" to the top right corner of the slide
 </Horizontal>
 ```
 
-### `Steps`: Let content appear piece by piece
+### `Appear`: Let content appear piece by piece
 
 ```md
-Content outside the `<Steps>` tag is immediately visible
+Content outside the `<Appear>` tag is immediately visible
 
-<Steps>
+<Appear>
 
-Content inside the `<Steps>` tag is appearing after click or keyboard navigation
+Content inside the `<Appear>` tag is appearing after click or keyboard navigation
 
 ## A test heading!
 
-</Steps>
+</Appear>
 ```
 
 (not working with bullet points yet)
