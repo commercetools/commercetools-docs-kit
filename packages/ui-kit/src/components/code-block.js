@@ -276,15 +276,9 @@ const CodeBlock = props => {
 };
 CodeBlock.propTypes = {
   language: PropTypes.string,
-  title: PropTypes.string,
   highlightLines: PropTypes.arrayOf(PropTypes.number),
   noPromptLines: PropTypes.arrayOf(PropTypes.number),
   content: PropTypes.string,
-  multiLanguage: PropTypes.shape({
-    title: PropTypes.string,
-    languages: PropTypes.arrayOf(PropTypes.string).isRequired,
-    handleOnLanguageChange: PropTypes.func.isRequired,
-  }),
 };
 
 export default CodeBlock;

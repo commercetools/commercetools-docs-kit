@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   ContentNotifications,
   MultiCodeBlock,
+  CodeBlock,
 } from '@commercetools-docs/ui-kit';
 import useCodeExamples from '../hooks/use-code-examples';
 
@@ -13,11 +14,17 @@ function MultiLanguageCodeExamples(props) {
     const result = extractProps(props.children, codeExamples);
 
     return (
-      <MultiCodeBlock
-        title={props.title}
-        languages={result.languages}
-        codeBlockProps={result.codeBlockProps}
-      />
+      <MultiCodeBlock title={props.title} languages={result.languages}>
+        {result.codeBlockProps.map(cbProps => (
+          <CodeBlock
+            key={cbProps.language}
+            content={cbProps.content}
+            language={cbProps.language}
+            highlightLines={cbProps.highlightLines || []}
+            noPromptLines={cbProps.noPromptLines || []}
+          />
+        ))}
+      </MultiCodeBlock>
     );
   } catch (e) {
     if (process.env.NODE_ENV !== 'production') {
@@ -56,8 +63,8 @@ function extractProps(children, codeExamples) {
         codeBlockProps.push({
           content: codeExample.content,
           language: codeExample.language,
-          highlightLines: child.props.highlightLines || [],
-          noPromptLines: child.props.noPromptLines || [],
+          highlightLines: child.props.highlightLines,
+          noPromptLines: child.props.noPromptLines,
         });
       }
     }

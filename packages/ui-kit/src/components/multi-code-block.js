@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -82,27 +82,10 @@ const languageDisplayNames = {
   objectivec: 'Objective-C',
 };
 function MultiCodeBlock(props) {
-  const [currentCodeBlockProps, setCurrentCodeBlockProps] = useState({
-    language: props.codeBlockProps[0].language || 'text',
-    highlightLines: props.codeBlockProps[0].highlightLines,
-    noPromptLines: props.codeBlockProps[0].noPromptLines,
-    content: props.codeBlockProps[0].content,
-  });
-
-  const langs =
-    props.languages && props.languages.length
-      ? props.languages
-      : [props.codeBlockProps[0].language];
-
   return (
     <Container>
-      {renderHeader(props.title, langs)}
-      <CodeBlock
-        content={currentCodeBlockProps.content}
-        language={currentCodeBlockProps.language}
-        highlightLines={currentCodeBlockProps.highlightLines}
-        noPromptLines={currentCodeBlockProps.noPromptLines}
-      />
+      {renderHeader(props.title, props.languages)}
+      {Array.isArray(props.children) ? props.children[0] : props.children}
     </Container>
   );
 
@@ -150,25 +133,34 @@ function MultiCodeBlock(props) {
   }
 
   function handleOnLanguageChange(e) {
-    const newProps = props.codeBlockProps.find(
-      codeBlockProp => codeBlockProp.language === e.target.value
-    );
+    console.log(e.target.value);
+    // const newProps = props.codeBlockProps.find(
+    //   codeBlockProp => codeBlockProp.language === e.target.value
+    // );
 
-    setCurrentCodeBlockProps(newProps);
+    // console.log(props);
+
+    // React.Children.map(props.children, (child, index) => {
+    //   console.log(props.children);
+    //   console.log(child);
+    //   // React.cloneElement(child, {
+    //   //   isActive: activeLanguageIndex === index,
+    //   // })
+    // });
+
+    // console.log(newProps);
+
+    // setCurrentCodeBlockProps(newProps);
   }
 }
 
 MultiCodeBlock.propTypes = {
   title: PropTypes.string,
-  languages: PropTypes.arrayOf(PropTypes.string.isRequired),
-  codeBlockProps: PropTypes.arrayOf(
-    PropTypes.shape({
-      language: PropTypes.string,
-      highlightLines: PropTypes.arrayOf(PropTypes.number),
-      noPromptLines: PropTypes.arrayOf(PropTypes.number),
-      content: PropTypes.string,
-    }).isRequired
-  ).isRequired,
+  languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element.isRequired),
+  ]).isRequired,
 };
 
 export default MultiCodeBlock;
@@ -188,16 +180,13 @@ export const CodeBlockMarkdownWrapper = props => {
       : props.children;
 
   return (
-    <MultiCodeBlock
-      title={title}
-      codeBlockProps={[
-        {
-          language: languageCode,
-          highlightLines,
-          noPromptLines,
-          content,
-        },
-      ]}
-    />
+    <MultiCodeBlock title={title} languages={[languageCode]}>
+      <CodeBlock
+        content={content}
+        language={languageCode}
+        highlightLines={highlightLines}
+        noPromptLines={noPromptLines}
+      />
+    </MultiCodeBlock>
   );
 };
