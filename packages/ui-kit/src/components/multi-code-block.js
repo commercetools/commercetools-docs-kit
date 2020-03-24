@@ -77,7 +77,7 @@ const languageDisplayNames = {
   php: 'PHP',
   cs: 'C#',
   ts: 'TypeScript',
-  tsx 'TypeScript React',
+  tsx: 'TypeScript React',
   python: 'Python',
   go: 'Go',
   swift: 'Swift',
