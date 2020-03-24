@@ -11,11 +11,11 @@ function MultiLanguageCodeExamples(props) {
   const codeExamples = useCodeExamples();
 
   try {
-    const result = extractProps(props.children, codeExamples);
+    const codeBlockProps = extractProps(props.children, codeExamples);
 
     return (
-      <MultiCodeBlock title={props.title} languages={result.languages}>
-        {result.codeBlockProps.map(cbProps => (
+      <MultiCodeBlock title={props.title}>
+        {codeBlockProps.map(cbProps => (
           <CodeBlock
             key={cbProps.language}
             content={cbProps.content}
@@ -38,7 +38,6 @@ function MultiLanguageCodeExamples(props) {
 }
 
 function extractProps(children, codeExamples) {
-  const languages = [];
   const codeBlockProps = [];
 
   children.forEach(child => {
@@ -59,7 +58,6 @@ function extractProps(children, codeExamples) {
       if (!codeExample) {
         throw new Error(`Code example does not exist for ${child.props.path}`);
       } else {
-        languages.push(codeExample.language);
         codeBlockProps.push({
           content: codeExample.content,
           language: codeExample.language,
@@ -70,7 +68,7 @@ function extractProps(children, codeExamples) {
     }
   });
 
-  return { languages, codeBlockProps };
+  return codeBlockProps;
 }
 
 MultiLanguageCodeExamples.propTypes = {

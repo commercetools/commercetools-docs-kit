@@ -82,12 +82,24 @@ const languageDisplayNames = {
   objectivec: 'Objective-C',
 };
 function MultiCodeBlock(props) {
+  const langs = extractLanguages(props.children);
+
+  const [selected, setSelected] = React.useState(langs[0]);
+
   return (
     <Container>
-      {renderHeader(props.title, props.languages)}
-      {Array.isArray(props.children) ? props.children[0] : props.children}
+      {renderHeader(props.title, langs)}
+      {renderChildren(props.children, selected)}
     </Container>
   );
+
+  function extractLanguages(children) {
+    if (Array.isArray(children)) {
+      return children.map(child => child.props.language);
+    }
+
+    return [children.props.language];
+  }
 
   function renderHeader(title, languages = []) {
     if (title || languages.length > 1) {
@@ -133,30 +145,20 @@ function MultiCodeBlock(props) {
   }
 
   function handleOnLanguageChange(e) {
-    console.log(e.target.value);
-    // const newProps = props.codeBlockProps.find(
-    //   codeBlockProp => codeBlockProp.language === e.target.value
-    // );
+    setSelected(e.target.value);
+  }
 
-    // console.log(props);
+  function renderChildren(children, selectedChild) {
+    if (Array.isArray(children)) {
+      return children.find(child => child.props.language === selectedChild);
+    }
 
-    // React.Children.map(props.children, (child, index) => {
-    //   console.log(props.children);
-    //   console.log(child);
-    //   // React.cloneElement(child, {
-    //   //   isActive: activeLanguageIndex === index,
-    //   // })
-    // });
-
-    // console.log(newProps);
-
-    // setCurrentCodeBlockProps(newProps);
+    return children;
   }
 }
 
 MultiCodeBlock.propTypes = {
   title: PropTypes.string,
-  languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element.isRequired),
@@ -180,7 +182,7 @@ export const CodeBlockMarkdownWrapper = props => {
       : props.children;
 
   return (
-    <MultiCodeBlock title={title} languages={[languageCode]}>
+    <MultiCodeBlock title={title}>
       <CodeBlock
         content={content}
         language={languageCode}

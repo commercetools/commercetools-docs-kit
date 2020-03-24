@@ -21,7 +21,7 @@ function CodeExample(props) {
   }
 
   return (
-    <MultiCodeBlock title={props.title} languages={[codeExample.language]}>
+    <MultiCodeBlock title={props.title}>
       <CodeBlock
         content={codeExample.content}
         language={codeExample.language}
