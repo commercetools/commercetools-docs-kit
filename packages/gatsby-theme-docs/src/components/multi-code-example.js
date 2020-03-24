@@ -26,7 +26,7 @@ function MultiCodeExample(props) {
               `The component <CodeExample> is missing the required property "path".`
             );
           }
-          const codeExample = codeExamples.find(example => {
+          const codeExample = codeExamples.find((example) => {
             return example.path === child.props.path;
           });
           if (!codeExample) {
