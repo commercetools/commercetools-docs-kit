@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@commercetools-local/docs-kit-training-slides",
+  "name": "@commercetools-website/training-slides",
   "version": "2.2.0",
   "license": "MIT",
   "scripts": {
