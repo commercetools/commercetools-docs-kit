@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/writing-style",
   "description": "Wrapped and preconfigured vale linter for the commercetools writing style rules",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
