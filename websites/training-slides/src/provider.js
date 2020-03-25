@@ -21,10 +21,10 @@ const Canvas = styled.div({
   width: '100vw',
   height: designSystem.slideLayout.contentAreaHeight,
   display: 'grid',
-  gridTemplateColumns: `${
+  gridTemplateColumns: `${designSystem.slideLayout.sideBarElements}fr ${
+    designSystem.slideLayout.horizontalElements -
     designSystem.slideLayout.sideBarElements
-  }fr ${designSystem.slideLayout.horizontalElements -
-    designSystem.slideLayout.sideBarElements}fr`,
+  }fr`,
   gridTemplateRows: `${designSystem.slideLayout.verticalElements - 1}fr 1fr`,
   gridGap: 0,
   fontFamily: `${designSystem.typography.fontFamilies.primary}`,
