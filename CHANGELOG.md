@@ -5,7 +5,7 @@
 - `gatsby-theme-docs`, `ui-kit`
   - [#305](https://github.com/commercetools/commercetools-docs-kit/pull/305) feat(theme): implement <MultiCodeExample> and <MultiCodeBlock> components ([@davifantasia](https://github.com/davifantasia))
 
-Documentation writers can now reference multiple code examples together in the MDX files. The code examples are grouped together are users can switched between them via a dropdown. This is useful when there is a need to provide examples for achieving the same thing, in different programming languages.
+Documentation writers can now reference multiple code examples together in the MDX files. The code examples are grouped together and enables users to switch between them via a dropdown. This is useful when there is a need to provide examples that achieve the same thing in different programming languages.
 
 ```
 <MultiCodeExample title="Multilanguage Code Samples">
