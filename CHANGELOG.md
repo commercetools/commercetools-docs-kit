@@ -1,3 +1,22 @@
+## [2.2.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.1.0...v2.2.0) (2020-03-25)
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-docs`, `ui-kit`
+  - [#305](https://github.com/commercetools/commercetools-docs-kit/pull/305) feat(theme): implement <MultiCodeExample> and <MultiCodeBlock> components ([@davifantasia](https://github.com/davifantasia))
+
+Documentation writers can now reference multiple code examples together in the MDX files. The code examples are grouped together are users can switched between them via a dropdown. This is useful when there is a need to provide examples for achieving the same thing, in different programming languages.
+
+```
+<MultiCodeExample title="Multilanguage Code Samples">
+  <CodeExample path="example.js" highlightLines={[3]} />
+  <CodeExample path="example.java"/>
+  <CodeExample path="example.console" noPromptLines={[3, 4]} />
+</MultiCodeExample>
+```
+
+The code example files are expected to be saved in `src/code-examples`.
+
 ## [2.1.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.0.0...v2.1.0) (2020-03-23)
 
 #### 🔮 Type: Chore
