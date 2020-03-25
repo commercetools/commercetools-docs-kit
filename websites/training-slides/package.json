@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@commercetools-local/docs-kit-training-slides",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "license": "MIT",
   "scripts": {
     "start": "yarn develop",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "gatsby-theme-mdx-deck": "4.1.0",
-    "@commercetools-docs/ui-kit": "2.1.0",
+    "@commercetools-docs/ui-kit": "2.2.0",
     "gatsby-plugin-mdx": "1.0.73",
     "gatsby": "2.19.17",
     "gatsby-cli": "2.8.29"
