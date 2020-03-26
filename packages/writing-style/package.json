@@ -18,6 +18,7 @@
   "scripts": {
     "postinstall": "node scripts/download-vale.js",
     "download:google": "node scripts/download-google-styles.js"
+    "download:writegood": "node scripts/download-writegood-styles.js"
   },
   "dependencies": {
     "7zip-bin": "5.0.3",
