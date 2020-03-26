@@ -4,19 +4,18 @@ const path = require('path');
 const fetch = require('node-fetch');
 const shelljs = require('shelljs');
 const { path7za } = require('7zip-bin');
-
-const version = '1.7.1';
+const { valeVersion } = require('../package.json');
 
 const platform = os.platform();
 
 const archiveName = (() => {
   switch (platform) {
     case 'darwin':
-      return `vale_${version}_macOS_64-bit.tar.gz`;
+      return `vale_${valeVersion}_macOS_64-bit.tar.gz`;
     case 'linux':
-      return `vale_${version}_Linux_64-bit.tar.gz`;
+      return `vale_${valeVersion}_Linux_64-bit.tar.gz`;
     case 'win32':
-      return `vale_${version}_Windows_64-bit.zip`;
+      return `vale_${valeVersion}_Windows_64-bit.zip`;
     default:
       throw new Error(
         `Cannot download vale binary, unsupported platform: ${platform}.`
@@ -25,10 +24,14 @@ const archiveName = (() => {
 })();
 
 const isWin = platform === 'win32';
-const binaryFileName = isWin ? 'vale.exe' : 'vale';
+const binaryFileName = isWin ? `vale.exe` : `vale`;
+const localBinaryFileName = isWin
+  ? `vale-${valeVersion}.exe`
+  : `vale-${valeVersion}`;
 const archivePath = path.join(__dirname, `../${archiveName}`);
 const binPath = path.join(__dirname, '../bin');
-const destBinaryPath = path.join(binPath, binaryFileName);
+const downloadBinaryPath = path.join(binPath, binaryFileName);
+const destBinaryPath = path.join(binPath, localBinaryFileName);
 
 const abortIfError = (result) => {
   if (result.code > 0) {
@@ -49,17 +52,13 @@ const downloadAndExtractArchive = async (url) => {
 
   // Extract the vale binary from the downloaded archive into the "bin" folder
   const extractCommand = isWin
-    ? // For zip files we can run the extraction directly
+    ? // on windows we use the 7za library, on unices the OS tar works better since v2.x
       `${path7za} e ${archivePath} -o${binPath} ${binaryFileName}`
-    : // For tar.gz files we need to run the extraction in 2 steps
-      // e     = Extract files from archive
-      // -so   = write to stdout switch
-      // -si   = read from stdin switch
-      // -aoa  = Overwrite all existing files without prompt.
-      // -ttar = Treat the stdin byte stream as a TAR file
-      // -o    = output directory
-      `${path7za} e ${archivePath} -so | ${path7za} e -aoa -si -ttar -o${binPath} ${binaryFileName}`;
+    : `tar -xzvf ${archivePath} -C ${binPath}`;
   abortIfError(shelljs.exec(extractCommand, { silent: true }));
+
+  // Rename to a file name with version to make sure version upgrades happen if an older version is present
+  abortIfError(shelljs.mv(downloadBinaryPath, destBinaryPath));
 
   // Assign proper write permissions to the file
   abortIfError(shelljs.chmod(755, destBinaryPath));
@@ -74,9 +73,9 @@ if (fs.existsSync(destBinaryPath)) {
     '[writing-styles] Vale binary already installed, skipping installation...'
   );
 } else {
-  console.log('[writing-styles] Installing vale...');
+  console.log(`[writing-styles] Installing vale ${valeVersion} ...`);
   downloadAndExtractArchive(
-    `https://github.com/errata-ai/vale/releases/download/v${version}/${archiveName}`
+    `https://github.com/errata-ai/vale/releases/download/v${valeVersion}/${archiveName}`
   ).then(
     () => {
       console.log('[writing-styles] Vale binary installed.');

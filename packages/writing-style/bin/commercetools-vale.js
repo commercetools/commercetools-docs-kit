@@ -3,8 +3,10 @@
 const os = require('os');
 const path = require('path');
 const shelljs = require('shelljs');
+const { valeVersion } = require('../package.json');
 
-const binaryFileName = os.platform() === 'win32' ? 'vale.exe' : 'vale';
+const binaryFileName =
+  os.platform() === 'win32' ? `vale-${valeVersion}.exe` : `vale-${valeVersion}`;
 
 const valeBinary = path.join(__dirname, `./${binaryFileName}`);
 const valeConfig = path.join(__dirname, `../.vale.ini`);
