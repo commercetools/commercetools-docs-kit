@@ -1,3 +1,7 @@
+<!-- vale Google.We = NO -->
+<!-- vale Google.Will = NO -->
+<!-- vale Google.FirstPerson = NO -->
+
 # Contributing
 
 Please _read_ before contributing to commercetools Documentation Kit to get familiar with the guidelines for contributing to the project.
@@ -64,7 +68,7 @@ To develop locally, you can use the `websites/docs-smoke-test` application to te
 
 ## Rebasing and merging Pull Requests
 
-We only allow the **Squash and merge** mode when merging a Pull Request. There are a couple of reason for that:
+We only allow the **Squash and merge** mode when merging a Pull Request so that:
 
 - we have a cleaner commit history on `master` branch
 - we can have automatic releases, like `canary`, that will publish a new version on each new commit in `master`
@@ -121,7 +125,7 @@ By default, all releases go to the `next` distribution channel and should be con
 - Add a four-space indented paragraph after each non-trivial list item, explaining what changed and why. For each breaking change also write who it affects and instructions for migrating existing code.
 - Maybe add some newlines here and there. Preview the result on GitHub to get a feel for it. Changelog generator output is a bit too terse for my taste, so try to make it visually pleasing and well grouped.
 
-3. (_Optional_) Include "_Migrating from ..._" instructions for the previous release in case you deem it necessary.
+3. (_Optional_) Include "_Migrating from .._" instructions for the previous release in case you deem it necessary.
 4. Commit the changelog (usually by opening a new Pull Request).
 
 #### Release the packages
