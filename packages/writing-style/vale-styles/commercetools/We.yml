@@ -1,0 +1,17 @@
+# a case sensitive variant of the google rule to be able to refer the the USA as "US"
+extends: existence
+message: "Try to avoid using first-person plural like '%s'."
+link: 'https://developers.google.com/style/pronouns#personal-pronouns'
+level: suggestion
+ignorecase: false
+tokens:
+  - we
+  - We
+  - we'(?:ve|re)
+  - We'(?:ve|re)
+  - ours?
+  - Ours?
+  - us
+  - Us
+  - let's
+  - Let's
