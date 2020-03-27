@@ -74,6 +74,7 @@ const languageDisplayNames = {
   javascript: 'JavaScript',
   jsx: 'JavaScript React',
   java: 'Java',
+  scala: 'Scala',
   php: 'PHP',
   cs: 'C#',
   ts: 'TypeScript',
