@@ -7,6 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
+const { ContextReplacementPlugin } = require('webpack');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -174,7 +175,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   const config = getConfig();
   config.module.rules = [
     ...config.module.rules.map((rule) => ({
@@ -216,6 +217,19 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
     // Add support for absolute imports
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   };
+
+  // Restricting importing from `prismjs` to only the whitelisted languages,
+  // to not blow up the bundle.
+  // Inspired by https://github.com/facebook/docusaurus/pull/2250
+  const prismLanguages = (pluginOptions.additionalPrismLanguages || [])
+    .map((lang) => `prism-${lang}`)
+    .join('|');
+  config.plugins.push(
+    new ContextReplacementPlugin(
+      /prismjs[\\/]components$/,
+      new RegExp(`^./(${prismLanguages})$`)
+    )
+  );
   // This will completely replace the webpack config with the modified object.
   actions.replaceWebpackConfig(config);
 };

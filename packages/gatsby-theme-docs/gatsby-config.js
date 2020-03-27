@@ -20,6 +20,7 @@ const defaultOptions = {
   gaTrackingId: undefined,
   excludeFromSearchIndex: true,
   createNodeSlug: undefined,
+  additionalPrismLanguages: [],
 };
 const requiredOptions = ['websiteKey'];
 

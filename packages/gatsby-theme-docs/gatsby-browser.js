@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import Prism from 'prism-react-renderer/prism';
 import { CacheProvider } from '@emotion/core';
 import { docsCache } from './create-emotion-cache';
 
@@ -31,6 +32,14 @@ export const onClientEntry = (
       });
     });
   }
+
+  // Require additional Prism languages.
+  // Inspired by https://github.com/facebook/docusaurus/pull/2250.
+  window.Prism = Prism;
+  (pluginOptions.additionalPrismLanguages || []).forEach((lang) => {
+    require(`prismjs/components/prism-${lang}`); // eslint-disable-line
+  });
+  delete window.Prism;
 };
 
 export const wrapRootElement = ({ element }) => (
