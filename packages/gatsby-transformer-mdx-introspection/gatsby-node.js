@@ -210,14 +210,15 @@ exports.createResolvers = ({ createResolvers, intermediateSchema }) => {
   });
 };
 
-exports.onCreateNode = (
+exports.onCreateNode = async (
   { node, actions, createNodeId, createContentDigest, cache, reporter },
   options
 ) => {
   const { shouldIndexNode } = mergeDefaults(options);
+
   if (pluginEnabled) {
     if (node.internal.type === 'Mdx' && shouldIndexNode(node)) {
-      introspectMdx({
+      await introspectMdx({
         node,
         createNodeId,
         createContentDigest,
@@ -259,7 +260,7 @@ async function getReducedForest(cache, node, options) {
  * Introspects the given Mdx gatsby node to find all valid JSX component
  * nodes and creates them as gatsby ComponentInMdx nodes
  */
-function introspectMdx({
+async function introspectMdx({
   node,
   createNodeId,
   createContentDigest,
@@ -288,78 +289,77 @@ function introspectMdx({
     performCheck('parentName');
   }
 
-  getReducedForest(cache, node, options)
-    .then((reducedForest) => {
-      const { createNode, createParentChildLink } = actions;
+  // the exact same JSX could be on one page twice, use a counter to differentiate
+  let index = 0;
+  const { createNode, createParentChildLink } = actions;
 
-      // the exact same JSX could be on one page twice, use a counter to differentiate
-      let index = 0;
+  // Traverse tree and create nodes, starting with the root
+  function createComponentInMdxNode(
+    componentNode,
+    isRoot,
+    parentGatsbyNode,
+    isDetached
+  ) {
+    if (typeof componentNode === 'string') return;
+    let newParent = parentGatsbyNode;
 
-      // Traverse tree and create nodes, starting with the root
-      function createComponentInMdxNode(
-        componentNode,
+    if (componentNode.hasGatsbyNode) {
+      const { children, ...rest } = componentNode;
+      const idBase = `${node.id}.${componentNode.component}.${index} >>> COMPONENT_IN_MDX`;
+      const id = createNodeId(idBase);
+      const newNode = {
+        id: createNodeId(idBase),
+        parent: parentGatsbyNode.id,
+        children: [],
+        internal: {
+          contentDigest: createContentDigest(componentNode),
+          type: nodeName,
+        },
+        // Link MDX file tree root
+        mdx: node.id,
+        // data
+        tree: children,
         isRoot,
-        parentGatsbyNode,
+        isDetached,
+        ...rest,
+      };
+
+      // Link data model to Gatsby for custom resolver
+      // eslint-disable-next-line no-param-reassign
+      componentNode.id = id;
+      createNode(newNode);
+      createParentChildLink({
+        parent: parentGatsbyNode,
+        child: componentNode,
+      });
+      newParent = newNode;
+      index += 1;
+    }
+
+    // If the current node was skipped because hasGatsbyNode is false and was supposed to be
+    // root, then the children should count as root nodes
+    const areChildrenRoot = !componentNode.hasGatsbyNode && isRoot;
+
+    // Create nodes for all children
+    componentNode.children.forEach((childNode) => {
+      createComponentInMdxNode(
+        childNode,
+        areChildrenRoot,
+        newParent,
         isDetached
-      ) {
-        if (typeof componentNode === 'string') return;
-        let newParent = parentGatsbyNode;
-
-        if (componentNode.hasGatsbyNode) {
-          const { children, ...rest } = componentNode;
-          const idBase = `${node.id}.${componentNode.component}.${index} >>> COMPONENT_IN_MDX`;
-          const id = createNodeId(idBase);
-          const newNode = {
-            id: createNodeId(idBase),
-            parent: parentGatsbyNode.id,
-            children: [],
-            internal: {
-              contentDigest: createContentDigest(componentNode),
-              type: nodeName,
-            },
-            // Link MDX file tree root
-            mdx: node.id,
-            // data
-            tree: children,
-            isRoot,
-            isDetached,
-            ...rest,
-          };
-
-          // Link data model to Gatsby for custom resolver
-          // eslint-disable-next-line no-param-reassign
-          componentNode.id = id;
-          createNode(newNode);
-          createParentChildLink({
-            parent: parentGatsbyNode,
-            child: componentNode,
-          });
-          newParent = newNode;
-          index += 1;
-        }
-
-        // If the current node was skipped because hasGatsbyNode is false and was supposed to be
-        // root, then the children should count as root nodes
-        const areChildrenRoot = !componentNode.hasGatsbyNode && isRoot;
-
-        // Create nodes for all children
-        componentNode.children.forEach((childNode) => {
-          createComponentInMdxNode(
-            childNode,
-            areChildrenRoot,
-            newParent,
-            isDetached
-          );
-        });
-      }
-
-      // Create nodes for all trees
-      reducedForest.forEach((tree, i) =>
-        // All non-first trees are detached
-        createComponentInMdxNode(tree, true, node, i !== 0)
       );
-    })
-    .catch((error) => {
-      reporter.error(String(error));
     });
+  }
+
+  try {
+    const reducedForest = await getReducedForest(cache, node, options);
+
+    // Create nodes for all trees
+    reducedForest.forEach((tree, i) =>
+      // All non-first trees are detached
+      createComponentInMdxNode(tree, true, node, i !== 0)
+    );
+  } catch (error) {
+    reporter.error(String(error));
+  }
 }
