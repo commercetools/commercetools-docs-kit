@@ -1,0 +1,22 @@
+extends: substitution
+message: "Use '%s' instead of '%s' (case sensitive)."
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  "(?:API Console|dev|developer) key": API key
+  "(?:OAuth\s?2[^.]|Oauth)": OAuth 2.0
+  "(?:ok|Okay)": OK|okay
+  "(?:WiFi|wifi)": Wi-Fi
+  '3\-D': 3D
+  "(?:WiFi|wifi) apps": Wi-Fi
+  Ajax: AJAX
+  Android device: Android-powered device
+  android: Android
+  HTTPs: HTTPS
+  k8s: Kubernetes
+  SHA1: SHA-1|HAS-SHA1
+  url: URL
+  admin: administrator # technically case insensitive, but we have a lot of "Admin Center" in old release notes etc (a deprecated product)
+

@@ -5,47 +5,73 @@ ignorecase: false
 # Ensures that the existence of 'first' implies the existence of 'second'.
 first: '\b([A-Z]{3,5})\b'
 second: '(?:\b[A-Z][a-z]+ )+\(([A-Z]{3,5})\)'
+# - standardization bodies are generally allowed (IEEE, IETF, DIN, RFC, ... )
+# - things that if googled are understandable to a nontechnical person are OK too
+# - generally expect rather a developer audience
+# - be careful with eCommerce slang (SKU etc), many developers have no domain experience
 # ... with the exception of these:
 exceptions:
   - API
+  - ASCII # will only get worse when spelled out
   - AWS
   - CLI
   - CPU
   - CSS
   - CSV
   - DEBUG
+  - DHL
   - DOM
+  - EUR
   - FAQ
   - GET
+  - GIF
+  - GDPR
   - HTML
   - HTTP
   - HTTPS
   - IDE
+  - IETF
+  - IEEE
+  - IMPEX
   - JAR
+  - JPEG # Do not use JPG, use JPEG
   - JSON
   - JSX
+  - JVM
   - MDX
   - MIME
+  - MIT
+  - NET # otherwise ".NET" is complaining but it's generally known among developers
   - PATH
   - PDF
   - PHP
+  - PNG
   - POST
   - RAM
   - RAML
+  - REST
+  - RFC # "Request For Comment" would confuse readers even more.
   - RSA
   - SDK
+  - SNS # AWS SNS, appears in many pages in a single place and amazon uses the short name themselves, too
+  - SQS # see above
   - SQL
   - SSH
   - SSL
+  - TLS # does not make sense to allow SSL but not TLS
   - SVG
   - TCP
+  - UPS
   - URI
   - URL
   - USB
+  - USD
+  - UTC
   - UTF
+  - UUID
   - XML
   - XSS
-  - YAML
+  - YAML # Do not use YML
   - ZIP
   - ISO
   - RSS
@@ -55,4 +81,3 @@ exceptions:
   - TODO
   - TBD
   - NOTE
-  - MIT

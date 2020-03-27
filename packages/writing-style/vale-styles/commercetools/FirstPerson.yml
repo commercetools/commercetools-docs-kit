@@ -1,0 +1,19 @@
+# Adjusted to tolerate uppercased "My" because of our "My Carts", "My Orders" etc. APIs. which are referenced throughout the documentation.
+extends: existence
+message: "Avoid first-person pronouns such as '%s' (and uppercase it in 'My ...' APIs)."
+link: 'https://developers.google.com/style/pronouns#personal-pronouns'
+ignorecase: false
+level: warning
+nonword: true
+tokens:
+  - (?:^|\s)I\s
+  - (?:^|\s)i\s # it's a misspelling but this way we catch this too
+  - (?:^|\s)I,\s
+  - (?:^|\s)i,\s # see above
+  - \bI'm\b
+  - \bi'm\b # see above
+  - \bme\b
+  - \bMe\b
+  - \bmy\b # this one NOT checked in uppercase (see first line)
+  - \bmine\b
+  - \bMine\b

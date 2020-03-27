@@ -1,0 +1,11 @@
+# modification of the Google Rule to recommend "2016 July 31" instead of the Anglo Saxon "July 31, 2016"
+# ISO dates "2016-07-31" are allowed too
+extends: existence
+message: "Use '2016 July 31' or `2016-07-31` format, not '%s'."
+link: 'https://developers.google.com/style/dates-times'
+ignorecase: true
+level: error
+nonword: true
+tokens:
+  - '\d{1,2}(?:\.|/)\d{1,2}(?:\.|/)\d{4}'
+  - '\d{1,2} (?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)|May|Jun(?:e)|Jul(?:y)|Aug(?:ust)|Sep(?:tember)?|Oct(?:ober)|Nov(?:ember)?|Dec(?:ember)?) \d{4}'
