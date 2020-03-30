@@ -1,3 +1,25 @@
+## [2.3.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.2.0...v2.3.0) (2020-03-30)
+
+#### 🐛 Type: Bug
+
+- `writing-style`
+  - [#323](https://github.com/commercetools/commercetools-docs-kit/pull/323) feat(writing-style): upgrade to vale 2.1.0, don't let vale fail when called from the VSCode plugin ([@nkuehn](https://github.com/nkuehn))
+- `gatsby-transformer-mdx-introspection`
+  - [#324](https://github.com/commercetools/commercetools-docs-kit/pull/324) fix: appropriate async implementation for gatsby ([@davifantasia](https://github.com/davifantasia))
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-docs`, `ui-kit`
+
+  - [#325](https://github.com/commercetools/commercetools-docs-kit/pull/325) feat(theme): add support for specifying new languages for Prism ([@emmenko](https://github.com/emmenko))
+
+  You can now pass a new option `availablePrismLanguages` to the theme config, which is a list of strings. This is useful in case you need to include **Prism languages** that are [not included by default by `prism-react-renderer`](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js).
+
+#### ⛑ Type: Refactoring
+
+- `writing-style`
+  - [#323](https://github.com/commercetools/commercetools-docs-kit/pull/323) feat(writing-style): upgrade to vale 2.1.0, don't let vale fail when called from the VSCode plugin ([@nkuehn](https://github.com/nkuehn))
+
 ## [2.2.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.1.0...v2.2.0) (2020-03-25)
 
 #### 🚀 Type: New Feature
