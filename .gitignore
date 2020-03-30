@@ -84,3 +84,6 @@ cypress/videos
 .cache
 public
 .vscode/launch.json
+
+# Metals
+.metals
