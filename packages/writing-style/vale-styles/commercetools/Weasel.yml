@@ -56,7 +56,7 @@ tokens:
   - enormously
   - enthusiastically
   - equally
-  - especially
+#  - especially
 #  - eventually # "eventually consistent" is an important technical term in our product
 #  - exactly
   - exceedingly

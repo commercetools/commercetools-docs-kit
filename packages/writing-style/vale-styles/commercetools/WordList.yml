@@ -6,7 +6,7 @@ action:
   name: replace
 swap:
   "(?:e-mail)": email
-  "(?:cell ?phone|smart ?phone)": phone|mobile phone
+  "(?:cell ?phone)": smartphone|phone|mobile phone
   "tap (?:&|and) hold": touch & hold
   "(?:file ?path|path ?name)": path
   "(?:kill|terminate|abort)": stop|exit|cancel|end|deactivate|turn off

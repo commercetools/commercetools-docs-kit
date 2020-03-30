@@ -14,6 +14,7 @@ exceptions:
   - API
   - ASCII # will only get worse when spelled out
   - AWS
+  - CDN # "content delivery network" does not make it more understandable
   - CLI
   - CPU
   - CSS
@@ -53,6 +54,7 @@ exceptions:
   - RFC # "Request For Comment" would confuse readers even more.
   - RSA
   - SDK
+  - SKU # generally we try to explain domain terminology but this one is so prevalent across the documentation that we allow it
   - SNS # AWS SNS, appears in many pages in a single place and amazon uses the short name themselves, too
   - SQS # see above
   - SQL
