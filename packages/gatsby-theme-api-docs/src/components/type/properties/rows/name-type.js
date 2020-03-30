@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import { useTypeLocations } from '../../../../hooks/use-type-locations';
-import capitalizeFirst from '../../../../utils/capitalize-first';
-import renderTypeAsLink from '../../../../utils/render-type-as-link';
+import generateTypeToRender from '../../../../utils/generate-type-to-render';
 import Required from '../../../required';
 
 const NameType = ({
@@ -13,17 +12,11 @@ const NameType = ({
   parentDiscriminator,
   discriminatorValue,
 }) => {
-  const typeLocations = useTypeLocations();
-  const dataForTypeToLinkTo =
-    property.type === 'array' && property.items
-      ? { type: property.items.type, displayPrefix: 'Array of ' }
-      : { type: property.type, displayPrefix: '' };
-
-  const type = renderTypeAsLink(
+  const typeToRender = generateTypeToRender({
+    typeLocations: useTypeLocations(),
+    property,
     apiKey,
-    capitalizeFirst(dataForTypeToLinkTo.type),
-    typeLocations
-  );
+  });
 
   return (
     <SpacingsStack scale="xs">
@@ -39,8 +32,15 @@ const NameType = ({
         ) : null}
       </p>
       <p className="name-type">
-        <span className="name">{dataForTypeToLinkTo.displayPrefix}</span>
-        {typeof type === 'string' ? <span className="name">{type}</span> : type}
+        {typeToRender.displayPrefix && (
+          <span className="name">{typeToRender.displayPrefix}</span>
+        )}
+
+        {typeof typeToRender.type === 'string' ? (
+          <span className="name">{typeToRender.type}</span>
+        ) : (
+          typeToRender.type
+        )}
       </p>
     </SpacingsStack>
   );
