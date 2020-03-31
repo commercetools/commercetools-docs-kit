@@ -109,11 +109,9 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     actions.createNodeField({
       node,
       name: 'isReleaseNote',
-      value: node.fileAbsolutePath.startsWith(
-        path.resolve(`./src/release-notes`)
-      )
-        ? Boolean(true)
-        : Boolean(false),
+      value: Boolean(
+        node.fileAbsolutePath.startsWith(path.resolve(`./src/release-notes`))
+      ),
     });
   }
 };
@@ -182,6 +180,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           : undefined,
       },
     });
+  });
+
+  // create release notes page
+  actions.createPage({
+    path: '/release-notes',
+    component: require.resolve('./src/templates/release-notes.js'),
   });
 };
 
