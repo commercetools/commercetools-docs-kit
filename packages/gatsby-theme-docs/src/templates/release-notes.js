@@ -114,19 +114,3 @@ export const query = graphql`
     }
   }
 `;
-
-// export const query = graphql`
-//   query QueryReleaseNotes($slug: String!) {
-//     allMdx(
-//       filter: { fields: { isReleaseNote: { eq: true }, slug: { eq: $slug } } }
-//     ) {
-//       nodes {
-//         fields {
-//           title
-//         }
-//         body
-//       }
-//     }
-//   }
-// `;
-// mdx(fields: { slug: { eq: $slug } }) {
