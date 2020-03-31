@@ -1,0 +1,11 @@
+# this is a modified version of the Google.Units rule
+# "B" for Bytes was removed, it interfered with industry terms like "B2B" and single Bytes
+# aren't relevant in our documentation
+extends: existence
+message: "Put a nonbreaking space between the number and the unit in '%s'."
+link: 'https://developers.google.com/style/units-of-measure'
+nonword: true
+level: error
+tokens:
+  - \d+(?:kB|MB|GB|TB)
+  - \d+(?:ns|ms|s|min|h|d)
