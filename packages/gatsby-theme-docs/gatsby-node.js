@@ -105,6 +105,16 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
         Boolean(node.frontmatter.excludeFromSearchIndex) ||
         Boolean(pluginOptions.excludeFromSearchIndex),
     });
+    // Release note flag, used for filter in release notes query
+    actions.createNodeField({
+      node,
+      name: 'isReleaseNote',
+      value: node.fileAbsolutePath.startsWith(
+        path.resolve(`./src/release-notes`)
+      )
+        ? Boolean(true)
+        : Boolean(false),
+    });
   }
 };
 
