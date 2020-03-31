@@ -105,19 +105,31 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
         Boolean(node.frontmatter.excludeFromSearchIndex) ||
         Boolean(pluginOptions.excludeFromSearchIndex),
     });
-    // Release note flag, used for filter in release notes query
+
+    /**
+     * This creates a field of the name of the folder
+     * an MDX file is located. This is useful for filtering
+     * purposes as graphQL does not allow filtering using
+     * `sourceInstanceName` feild of the parent of this MDX node.
+     */
+    let directoryName = String('');
+    const srcPath = path.resolve('./src');
+    if (node.fileAbsolutePath.startsWith(srcPath)) {
+      const srcSubDirPath = node.fileAbsolutePath.replace(srcPath, '');
+      directoryName = String(srcSubDirPath.split('/').slice(1, 2).join());
+    }
     actions.createNodeField({
       node,
-      name: 'isReleaseNote',
-      value: Boolean(
-        node.fileAbsolutePath.startsWith(path.resolve(`./src/release-notes`))
-      ),
+      name: 'directoryNamInSrc',
+      value: directoryName,
     });
   }
 };
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async ({ graphql, actions, reporter }) => {
+  // 1. fetch only content
+  // 2. fetch on release notes
   const allMdxPagesResult = await graphql(`
     query QueryAllMdxPages {
       allMdx(limit: 1000) {

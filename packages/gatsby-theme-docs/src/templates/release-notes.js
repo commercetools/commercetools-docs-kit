@@ -104,7 +104,7 @@ export default ReleaseNote;
 
 export const query = graphql`
   query {
-    allMdx(filter: { fields: { isReleaseNote: { eq: true } } }) {
+    allMdx(filter: { fields: { directoryNamInSrc: { eq: "release-notes" } } }) {
       nodes {
         fields {
           title
