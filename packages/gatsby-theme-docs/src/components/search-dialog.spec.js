@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, wait, fireEvent } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import SearchDialog from './search-dialog';
 
 const createTestProps = (custom) => ({
@@ -13,7 +13,7 @@ describe('Rendering', () => {
     const rendered = render(<SearchDialog {...props} />);
 
     const input = await rendered.findByLabelText('Search');
-    await wait(() => {
+    await waitFor(() => {
       expect(input).toHaveAttribute(
         'aria-owns',
         expect.stringContaining('algolia-autocomplete-listbox')
@@ -22,7 +22,7 @@ describe('Rendering', () => {
 
     // Focus
     input.focus();
-    await wait(() => {
+    await waitFor(() => {
       expect(document.activeElement).toEqual(input);
     });
   });
@@ -31,7 +31,7 @@ describe('Rendering', () => {
     const rendered = render(<SearchDialog {...props} />);
 
     const input = await rendered.findByLabelText('Search');
-    await wait(() => {
+    await waitFor(() => {
       expect(input).toHaveAttribute(
         'aria-owns',
         expect.stringContaining('algolia-autocomplete-listbox')
@@ -40,7 +40,7 @@ describe('Rendering', () => {
 
     // Focus
     fireEvent.keyUp(document.body, { key: '/' });
-    await wait(() => {
+    await waitFor(() => {
       expect(document.activeElement).toEqual(input);
     });
   });
@@ -49,7 +49,7 @@ describe('Rendering', () => {
     const rendered = render(<SearchDialog {...props} />);
 
     const input = await rendered.findByLabelText('Search');
-    await wait(() => {
+    await waitFor(() => {
       expect(input).toHaveAttribute(
         'aria-owns',
         expect.stringContaining('algolia-autocomplete-listbox')
@@ -58,7 +58,7 @@ describe('Rendering', () => {
 
     // Dismiss
     fireEvent.keyUp(document.body, { key: 'escape' });
-    await wait(() => {
+    await waitFor(() => {
       expect(props.onClose).toHaveBeenCalled();
     });
   });
@@ -67,7 +67,7 @@ describe('Rendering', () => {
     const rendered = render(<SearchDialog {...props} />);
 
     const input = await rendered.findByLabelText('Search');
-    await wait(() => {
+    await waitFor(() => {
       expect(input).toHaveAttribute(
         'aria-owns',
         expect.stringContaining('algolia-autocomplete-listbox')
@@ -76,7 +76,7 @@ describe('Rendering', () => {
 
     // Dismiss
     fireEvent.click(rendered.getByLabelText('Close search dialog'));
-    await wait(() => {
+    await waitFor(() => {
       expect(props.onClose).toHaveBeenCalled();
     });
   });

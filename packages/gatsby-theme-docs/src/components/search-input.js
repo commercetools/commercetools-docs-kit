@@ -131,5 +131,8 @@ SearchInput.propTypes = {
   onClose: PropTypes.func,
   isDisabled: PropTypes.bool.isRequired,
 };
+SearchInput.defaultProps = {
+  isDisabled: false,
+};
 
 export default SearchInput;
