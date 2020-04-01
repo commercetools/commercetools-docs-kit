@@ -191,6 +191,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   });
 
+  createAllReleaseNotesPages(
+    actions,
+    allMdxPagesResult.data.releaseNotes.nodes
+  );
+};
+
+function createAllReleaseNotesPages(actions, nodes) {
   // create release notes overview page
   actions.createPage({
     path: '/release-notes',
@@ -198,7 +205,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 
   // create details pages for each release note
-  allMdxPagesResult.data.releaseNotes.nodes.forEach(({ childMdx }) => {
+  nodes.forEach(({ childMdx }) => {
     if (childMdx) {
       actions.createPage({
         // This is the slug you created before
@@ -214,7 +221,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     }
   });
-};
+}
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   const config = getConfig();
