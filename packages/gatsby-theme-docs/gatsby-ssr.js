@@ -58,20 +58,20 @@ export const replaceRenderer = ({
   // We can narrow it down to the build step of Zeit Now for the master branch.
   if (isProduction && isNowBuild && isMasterBranch)
     setPostBodyComponents([
-      <>
-        <script
-          key="cookie-consent-part1"
-          type="text/javascript"
-          src="https://cdn.cookielaw.org/consent/b104027d-4d10-4b75-9675-9ffef11562a8/OtAutoBlock.js"
-        />
-        <script
-          key="cookie-consent-part2"
-          type="text/javascript"
-          src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
-          data-domain-script="b104027d-4d10-4b75-9675-9ffef11562a8"
-          onLoad="function OptanonWrapper() {};"
-        />
-      </>,
+      <script
+        key="cookie-consent-part1"
+        type="text/javascript"
+        defer
+        src="https://cdn.cookielaw.org/consent/b104027d-4d10-4b75-9675-9ffef11562a8/OtAutoBlock.js"
+      />,
+      <script
+        key="cookie-consent-part2"
+        type="text/javascript"
+        defer
+        src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+        data-domain-script="b104027d-4d10-4b75-9675-9ffef11562a8"
+        onLoad="function OptanonWrapper() {};"
+      />,
     ]);
 
   setHeadComponents([
