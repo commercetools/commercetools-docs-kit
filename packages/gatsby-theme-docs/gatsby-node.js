@@ -166,23 +166,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
   );
-  pages.forEach((node) => {
-    if (node.childMdx) {
+  pages.forEach(({ childMdx }) => {
+    if (childMdx) {
       const matchingNavigationPage = navigationPages.find(
         (page) =>
           trimTrailingSlash(page.path) ===
-          trimTrailingSlash(node.childMdx.fields.slug)
+          trimTrailingSlash(childMdx.fields.slug)
       );
       actions.createPage({
         // This is the slug you created before
         // (or `node.frontmatter.slug`)
-        path: node.childMdx.fields.slug,
+        path: childMdx.fields.slug,
         // This component will wrap our MDX content
         component: require.resolve('./src/templates/page-content.js'),
         // You can use the values in this context in
         // our page layout component
         context: {
-          ...node.childMdx.fields,
+          ...childMdx.fields,
           shortTitle: matchingNavigationPage
             ? matchingNavigationPage.title
             : undefined,
@@ -191,10 +191,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   });
 
-  // create release notes page
+  // create release notes overview page
   actions.createPage({
     path: '/release-notes',
     component: require.resolve('./src/templates/release-notes.js'),
+  });
+
+  // create details pages for each release note
+  allMdxPagesResult.data.releaseNotes.nodes.forEach(({ childMdx }) => {
+    if (childMdx) {
+      actions.createPage({
+        // This is the slug you created before
+        // (or `node.frontmatter.slug`)
+        path: childMdx.fields.slug,
+        // This component will wrap our MDX content
+        component: require.resolve('./src/templates/release-note.js'),
+        // You can use the values in this context in
+        // our page layout component
+        context: {
+          slug: childMdx.fields.slug,
+        },
+      });
+    }
   });
 };
 
