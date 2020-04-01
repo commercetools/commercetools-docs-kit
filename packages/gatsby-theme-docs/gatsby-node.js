@@ -73,10 +73,14 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     const slug = pluginOptions.createNodeSlug
       ? pluginOptions.createNodeSlug(originalSlug, { node })
       : originalSlug;
+    const releasesDirPath = path.resolve('src/releases');
+    const releasePrefix = node.fileAbsolutePath.startsWith(releasesDirPath)
+      ? '/releases'
+      : '';
     actions.createNodeField({
       node,
       name: 'slug',
-      value: trimTrailingSlash(slug) || '/',
+      value: trimTrailingSlash(`${releasePrefix}${slug}`) || '/',
     });
 
     // Create other node fields from the frontmatter values.
@@ -124,12 +128,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     query QueryAllMdxPages {
       releaseNotes: allFile(
-        filter: { sourceInstanceName: { eq: "releases" } }
+        filter: {
+          sourceInstanceName: { eq: "releases" }
+          internal: { mediaType: { eq: "text/mdx" } }
+        }
       ) {
         nodes {
           childMdx {
             ...fieldsFragment
           }
+          name
         }
       }
 
@@ -200,28 +208,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 };
 
 function createAllReleaseNotesPages(actions, nodes) {
-  // create release notes overview page
-  actions.createPage({
-    path: '/releases',
-    component: require.resolve('./src/templates/releases.js'),
-  });
+  nodes.forEach(({ childMdx, name }) => {
+    const template =
+      name === 'index'
+        ? './src/templates/releases.js'
+        : './src/templates/page-content.js';
 
-  // create details pages for each release note
-  nodes.forEach(({ childMdx }) => {
-    if (childMdx) {
-      actions.createPage({
-        // This is the slug you created before
-        // (or `node.frontmatter.slug`)
-        path: childMdx.fields.slug,
-        // This component will wrap our MDX content
-        component: require.resolve('./src/templates/release-note.js'),
-        // You can use the values in this context in
-        // our page layout component
-        context: {
-          slug: childMdx.fields.slug,
-        },
-      });
-    }
+    actions.createPage({
+      path: childMdx.fields.slug,
+      component: require.resolve(template),
+      context: {
+        ...childMdx.fields,
+      },
+    });
   });
 }
 

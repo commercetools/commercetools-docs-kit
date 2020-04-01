@@ -8,6 +8,7 @@ import {
   Subtitle,
   ContentNotifications,
 } from '@commercetools-docs/ui-kit';
+import LayoutContent from '../layouts/content';
 import {
   SEO,
   Link,
@@ -65,31 +66,53 @@ const components = {
   ...PlaceholderMarkdownComponents,
 };
 
-const ReleaseNote = (props) => {
-  return (
-    <ThemeProvider>
+const ReleaseNote = (props) => (
+  <ThemeProvider>
+    <LayoutContent
+      pageContext={props.pageContext}
+      pageData={props.data.releasesIndex}
+    >
       <MDXProvider components={components}>
         <Markdown.TypographyPage>
-          <SEO title={'Release Notes'} excludeFromSearchIndex={false} />
-          {props.data.releaseNotes.nodes.map((node, index) => {
-            return (
-              <div key={index}>
-                <Markdown.H2>{node.childMdx.fields.title}</Markdown.H2>
-                <div>
-                  <MDXRenderer>{node.childMdx.body}</MDXRenderer>
+          <SEO
+            title={props.pageContext.shortTitle || props.pageContext.title}
+            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+          />
+          <div>
+            <MDXRenderer>{props.data.releasesIndex.body}</MDXRenderer>
+          </div>
+          <div>
+            {props.data.releaseNotes.nodes.map((node, index) => {
+              return (
+                <div key={index}>
+                  <Markdown.H2>{node.childMdx.fields.title}</Markdown.H2>
+                  <div>
+                    <MDXRenderer>{node.childMdx.body}</MDXRenderer>
+                  </div>
+                  <hr />
                 </div>
-                <hr />
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </Markdown.TypographyPage>
       </MDXProvider>
-    </ThemeProvider>
-  );
-};
+    </LayoutContent>
+  </ThemeProvider>
+);
 
 ReleaseNote.propTypes = {
+  pageContext: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+    shortTitle: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    beta: PropTypes.bool.isRequired,
+    isGlobalBeta: PropTypes.bool.isRequired,
+    excludeFromSearchIndex: PropTypes.bool.isRequired,
+  }).isRequired,
   data: PropTypes.shape({
+    releasesIndex: PropTypes.shape({
+      body: PropTypes.string.isRequired,
+    }).isRequired,
     releaseNotes: PropTypes.shape({
       nodes: PropTypes.arrayOf(
         PropTypes.shape({
@@ -108,7 +131,11 @@ ReleaseNote.propTypes = {
 export default ReleaseNote;
 
 export const query = graphql`
-  query {
+  query QueryReleasesPage($slug: String!) {
+    releasesIndex: mdx(fields: { slug: { eq: $slug } }) {
+      body
+    }
+
     releaseNotes: allFile(filter: { sourceInstanceName: { eq: "releases" } }) {
       nodes {
         childMdx {
