@@ -128,21 +128,33 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  // 1. fetch only content
-  // 2. fetch on release notes
   const allMdxPagesResult = await graphql(`
+    fragment fieldsFragment on Mdx {
+      id
+      fields {
+        slug
+        title
+        beta
+        isGlobalBeta
+        excludeFromSearchIndex
+      }
+    }
+
     query QueryAllMdxPages {
-      allMdx(limit: 1000) {
-        edges {
-          node {
-            id
-            fields {
-              slug
-              title
-              beta
-              isGlobalBeta
-              excludeFromSearchIndex
-            }
+      releaseNotes: allFile(
+        filter: { sourceInstanceName: { eq: "releaseNotes" } }
+      ) {
+        nodes {
+          childMdx {
+            ...fieldsFragment
+          }
+        }
+      }
+
+      contents: allFile(filter: { sourceInstanceName: { eq: "content" } }) {
+        nodes {
+          childMdx {
+            ...fieldsFragment
           }
         }
       }
@@ -167,37 +179,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (navigationYamlResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "allNavigationYaml" query');
   }
-  const pages = allMdxPagesResult.data.allMdx.edges;
+  const pages = allMdxPagesResult.data.contents.nodes;
   const navigationPages = navigationYamlResult.data.allNavigationYaml.nodes.reduce(
     (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
   );
-  pages.forEach(({ node }) => {
-    const matchingNavigationPage = navigationPages.find(
-      (page) =>
-        trimTrailingSlash(page.path) === trimTrailingSlash(node.fields.slug)
-    );
-    actions.createPage({
-      // This is the slug you created before
-      // (or `node.frontmatter.slug`)
-      path: node.fields.slug,
-      // This component will wrap our MDX content
-      component: require.resolve('./src/templates/page-content.js'),
-      // You can use the values in this context in
-      // our page layout component
-      context: {
-        ...node.fields,
-        shortTitle: matchingNavigationPage
-          ? matchingNavigationPage.title
-          : undefined,
-      },
-    });
-  });
-
-  // create release notes page
-  actions.createPage({
-    path: '/release-notes',
-    component: require.resolve('./src/templates/release-notes.js'),
+  pages.forEach((node) => {
+    if (node.childMdx) {
+      const matchingNavigationPage = navigationPages.find(
+        (page) =>
+          trimTrailingSlash(page.path) ===
+          trimTrailingSlash(node.childMdx.fields.slug)
+      );
+      actions.createPage({
+        // This is the slug you created before
+        // (or `node.frontmatter.slug`)
+        path: node.childMdx.fields.slug,
+        // This component will wrap our MDX content
+        component: require.resolve('./src/templates/page-content.js'),
+        // You can use the values in this context in
+        // our page layout component
+        context: {
+          ...node.childMdx.fields,
+          shortTitle: matchingNavigationPage
+            ? matchingNavigationPage.title
+            : undefined,
+        },
+      });
+    }
   });
 };
 
