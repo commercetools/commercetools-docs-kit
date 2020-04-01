@@ -151,6 +151,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           childMdx {
             ...fieldsFragment
           }
+          name
         }
       }
     }
@@ -179,7 +180,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
   );
-  pages.forEach(({ childMdx }) => {
+  pages.forEach(({ childMdx, name }) => {
+    if (name === 'releases') {
+      reporter.panicOnBuild(
+        '🚨  ERROR: file named "releases" not allowed in src/content directory'
+      );
+
+      return;
+    }
+
     const matchingNavigationPage = navigationPages.find(
       (page) =>
         trimTrailingSlash(page.path) === trimTrailingSlash(childMdx.fields.slug)
