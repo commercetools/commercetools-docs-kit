@@ -109,9 +109,7 @@ export default ReleaseNote;
 
 export const query = graphql`
   query {
-    releaseNotes: allFile(
-      filter: { sourceInstanceName: { eq: "releaseNotes" } }
-    ) {
+    releaseNotes: allFile(filter: { sourceInstanceName: { eq: "releases" } }) {
       nodes {
         childMdx {
           fields {

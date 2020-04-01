@@ -124,7 +124,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     query QueryAllMdxPages {
       releaseNotes: allFile(
-        filter: { sourceInstanceName: { eq: "releaseNotes" } }
+        filter: { sourceInstanceName: { eq: "releases" } }
       ) {
         nodes {
           childMdx {
@@ -133,7 +133,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
 
-      contents: allFile(filter: { sourceInstanceName: { eq: "content" } }) {
+      contents: allFile(
+        filter: {
+          sourceInstanceName: { eq: "content" }
+          internal: { mediaType: { eq: "text/mdx" } }
+        }
+      ) {
         nodes {
           childMdx {
             ...fieldsFragment
@@ -167,28 +172,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     []
   );
   pages.forEach(({ childMdx }) => {
-    if (childMdx) {
-      const matchingNavigationPage = navigationPages.find(
-        (page) =>
-          trimTrailingSlash(page.path) ===
-          trimTrailingSlash(childMdx.fields.slug)
-      );
-      actions.createPage({
-        // This is the slug you created before
-        // (or `node.frontmatter.slug`)
-        path: childMdx.fields.slug,
-        // This component will wrap our MDX content
-        component: require.resolve('./src/templates/page-content.js'),
-        // You can use the values in this context in
-        // our page layout component
-        context: {
-          ...childMdx.fields,
-          shortTitle: matchingNavigationPage
-            ? matchingNavigationPage.title
-            : undefined,
-        },
-      });
-    }
+    const matchingNavigationPage = navigationPages.find(
+      (page) =>
+        trimTrailingSlash(page.path) === trimTrailingSlash(childMdx.fields.slug)
+    );
+    actions.createPage({
+      // This is the slug you created before
+      // (or `node.frontmatter.slug`)
+      path: childMdx.fields.slug,
+      // This component will wrap our MDX content
+      component: require.resolve('./src/templates/page-content.js'),
+      // You can use the values in this context in
+      // our page layout component
+      context: {
+        ...childMdx.fields,
+        shortTitle: matchingNavigationPage
+          ? matchingNavigationPage.title
+          : undefined,
+      },
+    });
   });
 
   createAllReleaseNotesPages(
@@ -200,8 +202,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 function createAllReleaseNotesPages(actions, nodes) {
   // create release notes overview page
   actions.createPage({
-    path: '/release-notes',
-    component: require.resolve('./src/templates/release-notes.js'),
+    path: '/releases',
+    component: require.resolve('./src/templates/releases.js'),
   });
 
   // create details pages for each release note
