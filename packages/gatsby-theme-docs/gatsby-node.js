@@ -105,24 +105,6 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
         Boolean(node.frontmatter.excludeFromSearchIndex) ||
         Boolean(pluginOptions.excludeFromSearchIndex),
     });
-
-    /**
-     * This creates a field of the name of the folder
-     * an MDX file is located. This is useful for filtering
-     * purposes as graphQL does not allow filtering using
-     * `sourceInstanceName` feild of the parent of this MDX node.
-     */
-    let directoryName = String('');
-    const srcPath = path.resolve('./src');
-    if (node.fileAbsolutePath.startsWith(srcPath)) {
-      const srcSubDirPath = node.fileAbsolutePath.replace(srcPath, '');
-      directoryName = String(srcSubDirPath.split('/').slice(1, 2).join());
-    }
-    actions.createNodeField({
-      node,
-      name: 'directoryNamInSrc',
-      value: directoryName,
-    });
   }
 };
 
@@ -207,6 +189,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
     }
+  });
+
+  // create release notes page
+  actions.createPage({
+    path: '/release-notes',
+    component: require.resolve('./src/templates/release-notes.js'),
   });
 };
 

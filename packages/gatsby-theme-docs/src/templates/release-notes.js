@@ -71,12 +71,12 @@ const ReleaseNote = (props) => {
       <MDXProvider components={components}>
         <Markdown.TypographyPage>
           <SEO title={'Release Notes'} excludeFromSearchIndex={false} />
-          {props.data.allMdx.nodes.map((node, index) => {
+          {props.data.releaseNotes.nodes.map((node, index) => {
             return (
               <div key={index}>
-                <Markdown.H2>{node.fields.title}</Markdown.H2>
+                <Markdown.H2>{node.childMdx.fields.title}</Markdown.H2>
                 <div>
-                  <MDXRenderer>{node.body}</MDXRenderer>
+                  <MDXRenderer>{node.childMdx.body}</MDXRenderer>
                 </div>
                 <hr />
               </div>
@@ -90,10 +90,15 @@ const ReleaseNote = (props) => {
 
 ReleaseNote.propTypes = {
   data: PropTypes.shape({
-    allMdx: PropTypes.shape({
+    releaseNotes: PropTypes.shape({
       nodes: PropTypes.arrayOf(
         PropTypes.shape({
-          body: PropTypes.string.isRequired,
+          childMdx: PropTypes.shape({
+            fields: PropTypes.shape({
+              title: PropTypes.string,
+            }),
+            body: PropTypes.string.isRequired,
+          }),
         })
       ),
     }).isRequired,
@@ -104,12 +109,16 @@ export default ReleaseNote;
 
 export const query = graphql`
   query {
-    allMdx(filter: { fields: { directoryNamInSrc: { eq: "release-notes" } } }) {
+    releaseNotes: allFile(
+      filter: { sourceInstanceName: { eq: "releaseNotes" } }
+    ) {
       nodes {
-        fields {
-          title
+        childMdx {
+          fields {
+            title
+          }
+          body
         }
-        body
       }
     }
   }
