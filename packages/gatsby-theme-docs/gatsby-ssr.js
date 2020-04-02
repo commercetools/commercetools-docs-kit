@@ -59,9 +59,17 @@ export const replaceRenderer = ({
   if (isProduction && isNowBuild && isMasterBranch)
     setPostBodyComponents([
       <script
-        key="cookie-consent"
+        key="cookie-consent-part1"
         type="text/javascript"
-        src="https://cdn.cookielaw.org/langswitch/99bb6fae-765a-4fc5-9b6e-8c89a353335d.js"
+        defer
+        src="https://cdn.cookielaw.org/consent/b104027d-4d10-4b75-9675-9ffef11562a8/OtAutoBlock.js"
+      />,
+      <script
+        key="cookie-consent-part2"
+        type="text/javascript"
+        defer
+        src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+        data-domain-script="b104027d-4d10-4b75-9675-9ffef11562a8"
         onLoad="function OptanonWrapper() {};"
       />,
     ]);
