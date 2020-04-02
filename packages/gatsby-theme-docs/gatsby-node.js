@@ -169,7 +169,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               title
               excludeFromSearchIndex
             }
-            body
           }
           name
         }
@@ -203,9 +202,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   pages.forEach(({ childMdx, name }) => {
     if (name === 'releases') {
       reporter.panicOnBuild(
-        '🚨  ERROR: file named "releases" not allowed in src/content directory'
+        '🚨  ERROR: file named "releases" is not allowed in src/content directory'
       );
-
       return;
     }
 
@@ -230,21 +228,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  const isOverviewPage = (name) => name === 'index';
-  const releaseNotePages = allMdxPagesResult.data.releaseNotes.nodes;
-  const releaseNotePagesWithoutIndex = allMdxPagesResult.data.releaseNotes.nodes.filter(
-    (node) => !isOverviewPage(node.name)
-  );
-  releaseNotePages.forEach(({ childMdx, name }) => {
+  allMdxPagesResult.data.releaseNotes.nodes.forEach(({ childMdx, name }) => {
+    const isOverviewPage = name === 'index';
     actions.createPage({
       // TODO: how should the path be named exactly?
       path: childMdx.fields.slug,
       component: require.resolve('./src/templates/releases.js'),
       context: {
         ...childMdx.fields,
-        ...(isOverviewPage(name)
-          ? { releaseNotes: releaseNotePagesWithoutIndex }
-          : {}),
+        isOverviewPage,
       },
     });
   });

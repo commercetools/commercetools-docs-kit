@@ -25,8 +25,9 @@ const ReleaseNotesTemplate = (props) => (
             <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
           </div>
           <div>
-            {props.pageContext.releaseNotes &&
-              props.pageContext.releaseNotes.map(({ childMdx }, index) => (
+            {props.data.allReleaseNotes &&
+              props.data.allReleaseNotes.nodes &&
+              props.data.allReleaseNotes.nodes.map(({ childMdx }, index) => (
                 <div key={index}>
                   <Markdown.H2>{childMdx.fields.title}</Markdown.H2>
                   <div>
@@ -46,28 +47,49 @@ ReleaseNotesTemplate.propTypes = {
     slug: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
-    releaseNotes: PropTypes.arrayOf(
-      PropTypes.shape({
-        childMdx: PropTypes.shape({
-          title: PropTypes.string.isRequired,
-          body: PropTypes.string.isRequired,
-        }),
-      })
-    ).isRequired,
   }).isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       body: PropTypes.string.isRequired,
     }).isRequired,
+    allReleaseNotes: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          childMdx: PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            body: PropTypes.string.isRequired,
+          }),
+        })
+      ).isRequired,
+    }),
   }).isRequired,
 };
 
 export default ReleaseNotesTemplate;
 
 export const query = graphql`
-  query QueryReleasesPage($slug: String!) {
+  query QueryReleasesPage($slug: String!, $isOverviewPage: Boolean!) {
     mdx(fields: { slug: { eq: $slug } }) {
       body
+    }
+    allReleaseNotes: allFile(
+      filter: {
+        sourceInstanceName: { eq: "releases" }
+        internal: { mediaType: { eq: "text/mdx" } }
+        name: { ne: "index" }
+      }
+    ) @include(if: $isOverviewPage) {
+      nodes {
+        childMdx {
+          id
+          fields {
+            slug
+            title
+          }
+          body
+        }
+        name
+      }
     }
   }
 `;
