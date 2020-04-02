@@ -122,14 +122,47 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     path.resolve('src/releases')
   );
   if (isReleaseNotesPage) {
-    const releaseNoteSlug = trimTrailingSlash(slug) || '/';
+    let releaseNoteSlug = generateReleaseNoteSlug(
+      node.frontmatter.date,
+      node.frontmatter.title
+    );
+    releaseNoteSlug = trimTrailingSlash(releaseNoteSlug) || '/';
     actions.createNodeField({
       node,
       name: 'slug',
-      value: `/releases${releaseNoteSlug}`,
+      value: releaseNoteSlug,
+    });
+    actions.createNodeField({
+      node,
+      name: 'date',
+      value: node.frontmatter.date,
+    });
+    actions.createNodeField({
+      node,
+      name: 'description',
+      value: node.frontmatter.description,
+    });
+    actions.createNodeField({
+      node,
+      name: 'type',
+      value: node.frontmatter.type,
+    });
+    actions.createNodeField({
+      node,
+      name: 'topics',
+      value: node.frontmatter.topics,
     });
   }
 };
+
+function generateReleaseNoteSlug(date = '', title = '') {
+  const basePath = '/releases';
+  const slug = `${date} ${title}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-') // replace non alphanumeric with hyphen
+    .replace(/(^-|-$)+/g, ''); // remove pre or post string hyphens
+  return `${basePath}/${slug}`.replace(/\/\/+/g, '/'); // replace two or more slashes with single slash
+}
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -168,6 +201,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
               title
               excludeFromSearchIndex
+              date
+              description
+              type
+              topics
             }
           }
           name
