@@ -14,7 +14,7 @@ const components = {
 
 const ReleaseNotesTemplate = (props) => (
   <ThemeProvider>
-    <LayoutReleaseNotes>
+    <LayoutReleaseNotes pageContext={props.pageContext}>
       <MDXProvider components={components}>
         <Markdown.TypographyPage>
           <SEO

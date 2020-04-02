@@ -5,9 +5,10 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import { css, ClassNames } from '@emotion/core';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
+import LayoutHeaderLogo from './layout-header-logo';
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -24,22 +25,6 @@ const ScrollContainer = styled.div`
   }
   > * + * {
     border-top: 1px solid ${designSystem.colors.light.borderPrimary};
-  }
-`;
-const LogoContainer = styled.div`
-  display: none;
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    height: calc(
-      ${designSystem.dimensions.heights.header} - 1px
-    ); /* TODO: investigate why we need 1px less here */
-    width: ${designSystem.dimensions.widths.pageNavigationSmall};
-    background-color: ${designSystem.colors.light.surfacePrimary};
-    border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
-    display: flex;
-    justify-content: flex-end;
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
 const WebsiteTitle = styled.div`
@@ -252,9 +237,7 @@ const Sidebar = (props) => {
   const nextScrollPosition = useScrollPosition(scrollContainerId);
   return (
     <>
-      <LogoContainer>
-        <LogoButton />
-      </LogoContainer>
+      <LayoutHeaderLogo />
       <WebsiteTitle>
         <SpacingsStack scale="xs">
           <div>{props.isGlobalBeta && <BetaFlag />}</div>
