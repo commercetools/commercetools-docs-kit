@@ -20,6 +20,7 @@ exports.onPreBootstrap = ({ reporter }) => {
     'src/content',
     'src/content/files',
     'src/code-examples',
+    'src/releases',
   ];
   requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
@@ -68,30 +69,43 @@ exports.sourceNodes = ({ actions }) => {
 };
 
 exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
-  if (node.internal.type === 'Mdx') {
-    const originalSlug = createFilePath({ node, getNode, basePath: 'pages' });
-    const slug = pluginOptions.createNodeSlug
-      ? pluginOptions.createNodeSlug(originalSlug, { node })
-      : originalSlug;
-    const releasesDirPath = path.resolve('src/releases');
-    const releasePrefix = node.fileAbsolutePath.startsWith(releasesDirPath)
-      ? '/releases'
-      : '';
+  if (node.internal.type !== 'Mdx') {
+    return;
+  }
+
+  const originalSlug = createFilePath({ node, getNode, basePath: 'pages' });
+  const slug = pluginOptions.createNodeSlug
+    ? pluginOptions.createNodeSlug(originalSlug, { node })
+    : originalSlug;
+
+  // Common fields from frontmatter values
+  // This is necessary to ensure that we always have those fields in the schema
+  // instead of relying on GraphQL inferring the schema from the MDX pages.
+  // See https://github.com/gatsbyjs/gatsby/pull/5495#issuecomment-392882900
+  actions.createNodeField({
+    node,
+    name: 'title',
+    value: node.frontmatter.title,
+  });
+  actions.createNodeField({
+    node,
+    name: 'excludeFromSearchIndex',
+    value:
+      Boolean(node.frontmatter.excludeFromSearchIndex) ||
+      Boolean(pluginOptions.excludeFromSearchIndex),
+  });
+
+  const isContentPage = node.fileAbsolutePath.startsWith(
+    path.resolve('src/content')
+  );
+  if (isContentPage) {
     actions.createNodeField({
       node,
       name: 'slug',
-      value: trimTrailingSlash(`${releasePrefix}${slug}`) || '/',
+      value: trimTrailingSlash(slug) || '/',
     });
 
     // Create other node fields from the frontmatter values.
-    // This is necessary to ensure that we always have those fields in the schema
-    // instead of relying on GraphQL inferring the schema from the MDX pages.
-    // See https://github.com/gatsbyjs/gatsby/pull/5495#issuecomment-392882900
-    actions.createNodeField({
-      node,
-      name: 'title',
-      value: node.frontmatter.title,
-    });
     actions.createNodeField({
       node,
       name: 'beta',
@@ -102,12 +116,17 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
       name: 'isGlobalBeta',
       value: Boolean(pluginOptions.beta),
     });
+  }
+
+  const isReleaseNotesPage = node.fileAbsolutePath.startsWith(
+    path.resolve('src/releases')
+  );
+  if (isReleaseNotesPage) {
+    const releaseNoteSlug = trimTrailingSlash(slug) || '/';
     actions.createNodeField({
       node,
-      name: 'excludeFromSearchIndex',
-      value:
-        Boolean(node.frontmatter.excludeFromSearchIndex) ||
-        Boolean(pluginOptions.excludeFromSearchIndex),
+      name: 'slug',
+      value: `/releases${releaseNoteSlug}`,
     });
   }
 };
@@ -115,32 +134,7 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const allMdxPagesResult = await graphql(`
-    fragment fieldsFragment on Mdx {
-      id
-      fields {
-        slug
-        title
-        beta
-        isGlobalBeta
-        excludeFromSearchIndex
-      }
-    }
-
     query QueryAllMdxPages {
-      releaseNotes: allFile(
-        filter: {
-          sourceInstanceName: { eq: "releases" }
-          internal: { mediaType: { eq: "text/mdx" } }
-        }
-      ) {
-        nodes {
-          childMdx {
-            ...fieldsFragment
-          }
-          name
-        }
-      }
-
       contents: allFile(
         filter: {
           sourceInstanceName: { eq: "content" }
@@ -149,7 +143,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       ) {
         nodes {
           childMdx {
-            ...fieldsFragment
+            id
+            fields {
+              slug
+              title
+              beta
+              isGlobalBeta
+              excludeFromSearchIndex
+            }
+          }
+          name
+        }
+      }
+      releaseNotes: allFile(
+        filter: {
+          sourceInstanceName: { eq: "releases" }
+          internal: { mediaType: { eq: "text/mdx" } }
+        }
+      ) {
+        nodes {
+          childMdx {
+            id
+            fields {
+              slug
+              title
+              excludeFromSearchIndex
+            }
           }
           name
         }
@@ -183,9 +202,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   pages.forEach(({ childMdx, name }) => {
     if (name === 'releases') {
       reporter.panicOnBuild(
-        '🚨  ERROR: file named "releases" not allowed in src/content directory'
+        '🚨  ERROR: file named "releases" is not allowed in src/content directory'
       );
-
       return;
     }
 
@@ -210,28 +228,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  createAllReleaseNotesPages(
-    actions,
-    allMdxPagesResult.data.releaseNotes.nodes
-  );
-};
-
-function createAllReleaseNotesPages(actions, nodes) {
-  nodes.forEach(({ childMdx, name }) => {
-    const template =
-      name === 'index'
-        ? './src/templates/releases.js'
-        : './src/templates/page-content.js';
-
+  allMdxPagesResult.data.releaseNotes.nodes.forEach(({ childMdx, name }) => {
+    const isOverviewPage = name === 'index';
     actions.createPage({
+      // TODO: how should the path be named exactly?
       path: childMdx.fields.slug,
-      component: require.resolve(template),
+      component: require.resolve('./src/templates/releases.js'),
       context: {
         ...childMdx.fields,
+        isOverviewPage,
       },
     });
   });
-}
+};
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   const config = getConfig();
