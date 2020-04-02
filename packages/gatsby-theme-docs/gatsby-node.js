@@ -69,30 +69,43 @@ exports.sourceNodes = ({ actions }) => {
 };
 
 exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
-  if (node.internal.type === 'Mdx') {
-    const originalSlug = createFilePath({ node, getNode, basePath: 'pages' });
-    const slug = pluginOptions.createNodeSlug
-      ? pluginOptions.createNodeSlug(originalSlug, { node })
-      : originalSlug;
-    const releasesDirPath = path.resolve('src/releases');
-    const releasePrefix = node.fileAbsolutePath.startsWith(releasesDirPath)
-      ? '/releases'
-      : '';
+  if (node.internal.type !== 'Mdx') {
+    return;
+  }
+
+  const originalSlug = createFilePath({ node, getNode, basePath: 'pages' });
+  const slug = pluginOptions.createNodeSlug
+    ? pluginOptions.createNodeSlug(originalSlug, { node })
+    : originalSlug;
+
+  // Common fields from frontmatter values
+  // This is necessary to ensure that we always have those fields in the schema
+  // instead of relying on GraphQL inferring the schema from the MDX pages.
+  // See https://github.com/gatsbyjs/gatsby/pull/5495#issuecomment-392882900
+  actions.createNodeField({
+    node,
+    name: 'title',
+    value: node.frontmatter.title,
+  });
+  actions.createNodeField({
+    node,
+    name: 'excludeFromSearchIndex',
+    value:
+      Boolean(node.frontmatter.excludeFromSearchIndex) ||
+      Boolean(pluginOptions.excludeFromSearchIndex),
+  });
+
+  const isContentPage = node.fileAbsolutePath.startsWith(
+    path.resolve('src/content')
+  );
+  if (isContentPage) {
     actions.createNodeField({
       node,
       name: 'slug',
-      value: trimTrailingSlash(`${releasePrefix}${slug}`) || '/',
+      value: trimTrailingSlash(slug) || '/',
     });
 
     // Create other node fields from the frontmatter values.
-    // This is necessary to ensure that we always have those fields in the schema
-    // instead of relying on GraphQL inferring the schema from the MDX pages.
-    // See https://github.com/gatsbyjs/gatsby/pull/5495#issuecomment-392882900
-    actions.createNodeField({
-      node,
-      name: 'title',
-      value: node.frontmatter.title,
-    });
     actions.createNodeField({
       node,
       name: 'beta',
@@ -103,12 +116,17 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
       name: 'isGlobalBeta',
       value: Boolean(pluginOptions.beta),
     });
+  }
+
+  const isReleaseNotesPage = node.fileAbsolutePath.startsWith(
+    path.resolve('src/releases')
+  );
+  if (isReleaseNotesPage) {
+    const releaseNoteSlug = trimTrailingSlash(slug) || '/';
     actions.createNodeField({
       node,
-      name: 'excludeFromSearchIndex',
-      value:
-        Boolean(node.frontmatter.excludeFromSearchIndex) ||
-        Boolean(pluginOptions.excludeFromSearchIndex),
+      name: 'slug',
+      value: `/releases${releaseNoteSlug}`,
     });
   }
 };
