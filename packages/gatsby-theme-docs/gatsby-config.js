@@ -97,6 +97,14 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/code-examples`),
         },
       },
+      // Release notes
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'releases',
+          path: path.resolve(`./src/releases`),
+        },
+      },
 
       /**
        * Transformers for making content available in graphql queries

@@ -77,6 +77,7 @@ exceptions:
   - ZIP
   - ISO
   - RSS
+  - YYYY # to be able to describe date formats like YYYY-MM-DD
   # the following exceptions are allowed because they are caught as errors by the ToDo rule.
   - XXX
   - FIXME

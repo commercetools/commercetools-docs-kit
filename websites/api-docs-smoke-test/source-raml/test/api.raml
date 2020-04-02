@@ -681,6 +681,9 @@ annotationTypes:
         offset:
           type: number
           required: false
+        collection:
+          type: ObjectTestType
+          required: false
       securedBy:
       - oauth_2_0:
           scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]

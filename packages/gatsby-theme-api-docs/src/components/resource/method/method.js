@@ -118,6 +118,7 @@ const Method = ({
 
         {method.queryParameters ? (
           <Parameters
+            apiKey={apiKey}
             title={queryParametersTitle}
             parameters={method.queryParameters}
           />
