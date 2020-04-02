@@ -115,32 +115,7 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const allMdxPagesResult = await graphql(`
-    fragment fieldsFragment on Mdx {
-      id
-      fields {
-        slug
-        title
-        beta
-        isGlobalBeta
-        excludeFromSearchIndex
-      }
-    }
-
     query QueryAllMdxPages {
-      releaseNotes: allFile(
-        filter: {
-          sourceInstanceName: { eq: "releases" }
-          internal: { mediaType: { eq: "text/mdx" } }
-        }
-      ) {
-        nodes {
-          childMdx {
-            ...fieldsFragment
-          }
-          name
-        }
-      }
-
       contents: allFile(
         filter: {
           sourceInstanceName: { eq: "content" }
@@ -149,7 +124,33 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       ) {
         nodes {
           childMdx {
-            ...fieldsFragment
+            id
+            fields {
+              slug
+              title
+              beta
+              isGlobalBeta
+              excludeFromSearchIndex
+            }
+          }
+          name
+        }
+      }
+      releaseNotes: allFile(
+        filter: {
+          sourceInstanceName: { eq: "releases" }
+          internal: { mediaType: { eq: "text/mdx" } }
+        }
+      ) {
+        nodes {
+          childMdx {
+            id
+            fields {
+              slug
+              title
+              excludeFromSearchIndex
+            }
+            body
           }
           name
         }
@@ -210,28 +211,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  createAllReleaseNotesPages(
-    actions,
-    allMdxPagesResult.data.releaseNotes.nodes
-  );
-};
-
-function createAllReleaseNotesPages(actions, nodes) {
-  nodes.forEach(({ childMdx, name }) => {
-    const template =
-      name === 'index'
-        ? './src/templates/releases.js'
-        : './src/templates/page-content.js';
-
+  const releaseNotePages = allMdxPagesResult.data.releaseNotes.nodes;
+  releaseNotePages.forEach(({ childMdx, name }) => {
     actions.createPage({
+      // TODO: how should the path be named exactly?
       path: childMdx.fields.slug,
-      component: require.resolve(template),
+      component: require.resolve('./src/templates/releases.js'),
       context: {
         ...childMdx.fields,
+        isOverviewPage: name === 'index',
+        releaseNotePages,
       },
     });
   });
-}
+};
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   const config = getConfig();
