@@ -211,7 +211,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
+  const isOverviewPage = (name) => name === 'index';
   const releaseNotePages = allMdxPagesResult.data.releaseNotes.nodes;
+  const releaseNotePagesWithoutIndex = allMdxPagesResult.data.releaseNotes.nodes.filter(
+    (node) => !isOverviewPage(node.name)
+  );
   releaseNotePages.forEach(({ childMdx, name }) => {
     actions.createPage({
       // TODO: how should the path be named exactly?
@@ -219,8 +223,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: require.resolve('./src/templates/releases.js'),
       context: {
         ...childMdx.fields,
-        isOverviewPage: name === 'index',
-        releaseNotePages,
+        ...(isOverviewPage(name)
+          ? { releaseNotes: releaseNotePagesWithoutIndex }
+          : {}),
       },
     });
   });

@@ -25,8 +25,8 @@ const ReleaseNotesTemplate = (props) => (
             <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
           </div>
           <div>
-            {props.pageContext.isOverviewPage &&
-              props.pageContext.releaseNotePages.map(({ childMdx }, index) => (
+            {props.pageContext.releaseNotes &&
+              props.pageContext.releaseNotes.map(({ childMdx }, index) => (
                 <div key={index}>
                   <Markdown.H2>{childMdx.fields.title}</Markdown.H2>
                   <div>
@@ -46,8 +46,7 @@ ReleaseNotesTemplate.propTypes = {
     slug: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
-    isOverviewPage: PropTypes.bool.isRequired,
-    releaseNotePages: PropTypes.arrayOf(
+    releaseNotes: PropTypes.arrayOf(
       PropTypes.shape({
         childMdx: PropTypes.shape({
           title: PropTypes.string.isRequired,
