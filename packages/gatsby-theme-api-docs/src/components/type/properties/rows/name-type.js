@@ -12,8 +12,9 @@ const NameType = ({
   parentDiscriminator,
   discriminatorValue,
 }) => {
+  const typeLocations = useTypeLocations();
   const typeToRender = generateTypeToRender({
-    typeLocations: useTypeLocations(),
+    typeLocations,
     property,
     apiKey,
   });
