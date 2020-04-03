@@ -124,7 +124,8 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
   if (isReleaseNotesPage) {
     let releaseNoteSlug = generateReleaseNoteSlug(
       node.frontmatter.date,
-      node.frontmatter.title
+      node.frontmatter.title,
+      node.fileAbsolutePath
     );
     releaseNoteSlug = trimTrailingSlash(releaseNoteSlug) || '/';
     actions.createNodeField({
@@ -155,8 +156,13 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
   }
 };
 
-function generateReleaseNoteSlug(date = '', title = '') {
+function generateReleaseNoteSlug(date = '', title = '', fileAbsolutePath) {
   const basePath = '/releases';
+
+  if (fileAbsolutePath.endsWith('index.mdx')) {
+    return basePath;
+  }
+
   const slug = `${date} ${title}`
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-') // replace non alphanumeric with hyphen
