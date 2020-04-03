@@ -163,7 +163,7 @@ function generateReleaseNoteSlug(date = '', title = '', fileAbsolutePath) {
     return basePath;
   }
 
-  const slug = `${date} ${title}`
+  const slug = `${date.split('T')[0]} ${title}`
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-') // replace non alphanumeric with hyphen
     .replace(/(^-|-$)+/g, ''); // remove pre or post string hyphens
