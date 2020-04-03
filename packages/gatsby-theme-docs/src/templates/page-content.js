@@ -94,6 +94,7 @@ PageContentTemplate.propTypes = {
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
+    hasReleaseNotes: PropTypes.bool.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({

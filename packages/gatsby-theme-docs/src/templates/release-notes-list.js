@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
-import LayoutReleaseNotes from '../layouts/release-notes';
+import LayoutReleaseNotesList from '../layouts/release-notes-list';
 import { SEO, ThemeProvider } from '../components';
 
 // See https://mdxjs.com/getting-started#table-of-components
@@ -12,9 +12,9 @@ const components = {
   // TODO: decide how to map the components to markdown elements.
 };
 
-const ReleaseNotesTemplate = (props) => (
+const ReleaseNotesListTemplate = (props) => (
   <ThemeProvider>
-    <LayoutReleaseNotes pageContext={props.pageContext}>
+    <LayoutReleaseNotesList pageContext={props.pageContext}>
       <MDXProvider components={components}>
         <Markdown.TypographyPage>
           <SEO
@@ -38,15 +38,18 @@ const ReleaseNotesTemplate = (props) => (
           </div>
         </Markdown.TypographyPage>
       </MDXProvider>
-    </LayoutReleaseNotes>
+    </LayoutReleaseNotesList>
   </ThemeProvider>
 );
 
-ReleaseNotesTemplate.propTypes = {
+ReleaseNotesListTemplate.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    beta: PropTypes.bool.isRequired,
+    isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
+    hasReleaseNotes: PropTypes.bool.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
@@ -65,10 +68,10 @@ ReleaseNotesTemplate.propTypes = {
   }).isRequired,
 };
 
-export default ReleaseNotesTemplate;
+export default ReleaseNotesListTemplate;
 
 export const query = graphql`
-  query QueryReleasesPage($slug: String!, $isOverviewPage: Boolean!) {
+  query QueryReleaseOverviewPage($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       body
     }
@@ -78,7 +81,7 @@ export const query = graphql`
         internal: { mediaType: { eq: "text/mdx" } }
         name: { ne: "index" }
       }
-    ) @include(if: $isOverviewPage) {
+    ) {
       nodes {
         childMdx {
           id

@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { css } from '@emotion/core';
+import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
+import { AngleLeftIcon } from '@commercetools-uikit/icons';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { BetaFlag, ContentPagination } from '../components';
-import PlaceholderPageHeaderSide from '../overrides/page-header-side';
+import { ReleaseNotesSubscribeLinks, Link } from '../components';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -13,11 +15,11 @@ import LayoutFooter from './internals/layout-footer';
 import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
-import LayoutPageNavigation from './internals/layout-page-navigation';
+import LayoutPageReleaseNotesFilters from './internals/layout-page-release-notes-filters';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
-const LayoutContent = (props) => {
+const LayoutReleaseNotesDetail = (props) => {
   const layoutState = useLayoutState();
   const siteData = useSiteData();
 
@@ -39,45 +41,46 @@ const LayoutContent = (props) => {
         />
         <LayoutPage id="top">
           <LayoutPageHeader>
-            {props.pageContext.beta && (
-              <BetaFlag href={siteData.siteMetadata.betaLink} />
-            )}
-            <Markdown.H1>{props.pageContext.title}</Markdown.H1>
+            <SpacingsInline alignItems="center">
+              <AngleLeftIcon size="medium" color="primary" />
+              <Link href="/releases" noUnderline={true}>
+                <span
+                  css={css`
+                    font-size: ${designSystem.typography.fontSizes.small};
+                  `}
+                >
+                  {'Back to all releases'}
+                </span>
+              </Link>
+            </SpacingsInline>
+            <Markdown.H3>{props.pageContext.title}</Markdown.H3>
           </LayoutPageHeader>
           <LayoutPageHeaderSide>
-            <PlaceholderPageHeaderSide />
+            <ReleaseNotesSubscribeLinks />
           </LayoutPageHeaderSide>
           <LayoutPageContent>
             <PageContentInset id="body-content">
               {props.children}
-              <ContentPagination slug={props.pageContext.slug} />
             </PageContentInset>
           </LayoutPageContent>
-          <LayoutPageNavigation
-            pageTitle={props.pageContext.shortTitle || props.pageContext.title}
-            tableOfContents={props.pageData.tableOfContents}
-          />
+          <LayoutPageReleaseNotesFilters />
         </LayoutPage>
         <LayoutFooter />
       </LayoutMain>
     </LayoutApplication>
   );
 };
-LayoutContent.displayName = 'LayoutContent';
-LayoutContent.propTypes = {
+LayoutReleaseNotesDetail.displayName = 'LayoutReleaseNotesDetail';
+LayoutReleaseNotesDetail.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    shortTitle: PropTypes.string,
     title: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
     hasReleaseNotes: PropTypes.bool.isRequired,
   }).isRequired,
-  pageData: PropTypes.shape({
-    tableOfContents: PropTypes.object.isRequired,
-  }).isRequired,
   children: PropTypes.node.isRequired,
 };
 
-export default LayoutContent;
+export default LayoutReleaseNotesDetail;

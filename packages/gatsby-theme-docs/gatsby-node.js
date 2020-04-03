@@ -90,10 +90,25 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
   });
   actions.createNodeField({
     node,
+    name: 'beta',
+    value: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
+  });
+  actions.createNodeField({
+    node,
+    name: 'isGlobalBeta',
+    value: Boolean(pluginOptions.beta),
+  });
+  actions.createNodeField({
+    node,
     name: 'excludeFromSearchIndex',
     value:
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
       Boolean(pluginOptions.excludeFromSearchIndex),
+  });
+  actions.createNodeField({
+    node,
+    name: 'hasReleaseNotes',
+    value: Boolean(pluginOptions.hasReleaseNotes),
   });
 
   const isContentPage = node.fileAbsolutePath.startsWith(
@@ -104,18 +119,6 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
       node,
       name: 'slug',
       value: trimTrailingSlash(slug) || '/',
-    });
-
-    // Create other node fields from the frontmatter values.
-    actions.createNodeField({
-      node,
-      name: 'beta',
-      value: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
-    });
-    actions.createNodeField({
-      node,
-      name: 'isGlobalBeta',
-      value: Boolean(pluginOptions.beta),
     });
   }
 
@@ -174,32 +177,63 @@ function generateReleaseNoteSlug(node) {
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
-  const allContentPagesResult = await graphql(`
-    query QueryAllContentPages {
-      contents: allFile(
-        filter: {
-          sourceInstanceName: { eq: "content" }
-          internal: { mediaType: { eq: "text/mdx" } }
-        }
-      ) {
-        nodes {
-          childMdx {
-            id
-            fields {
-              slug
-              title
-              beta
-              isGlobalBeta
-              excludeFromSearchIndex
-            }
+  const allMdxPagesResult = await graphql(
+    `
+      query QueryAllContentPages($hasReleaseNotes: Boolean!) {
+        contents: allFile(
+          filter: {
+            sourceInstanceName: { eq: "content" }
+            internal: { mediaType: { eq: "text/mdx" } }
           }
-          name
+        ) {
+          nodes {
+            childMdx {
+              id
+              fields {
+                ...MdxPageFields
+              }
+            }
+            name
+          }
+        }
+        releaseNotes: allFile(
+          filter: {
+            sourceInstanceName: { eq: "releases" }
+            internal: { mediaType: { eq: "text/mdx" } }
+          }
+        ) @include(if: $hasReleaseNotes) {
+          nodes {
+            childMdx {
+              id
+              fields {
+                ...MdxPageFields
+                date
+                description
+                type
+                topics
+              }
+            }
+            name
+          }
         }
       }
+      fragment MdxPageFields on MdxFields {
+        slug
+        title
+        beta
+        isGlobalBeta
+        excludeFromSearchIndex
+        hasReleaseNotes
+      }
+    `,
+    {
+      variables: {
+        hasReleaseNotes: pluginOptions.hasReleaseNotes,
+      },
     }
-  `);
-  if (allContentPagesResult.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "allMdx" query');
+  );
+  if (allMdxPagesResult.errors) {
+    reporter.panicOnBuild('🚨  ERROR: Loading all MDX files');
   }
   const navigationYamlResult = await graphql(`
     query QueryNavigationYaml {
@@ -217,7 +251,7 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
   if (navigationYamlResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "allNavigationYaml" query');
   }
-  const pages = allContentPagesResult.data.contents.nodes;
+  const pages = allMdxPagesResult.data.contents.nodes;
   const navigationPages = navigationYamlResult.data.allNavigationYaml.nodes.reduce(
     (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
@@ -251,49 +285,19 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
     });
   });
 
-  if (pluginOptions.hasReleaseNotes) {
-    const allReleaseNotePagesResult = await graphql(`
-      query QueryAllReleaseNotePages {
-        releaseNotes: allFile(
-          filter: {
-            sourceInstanceName: { eq: "releases" }
-            internal: { mediaType: { eq: "text/mdx" } }
-          }
-        ) {
-          nodes {
-            childMdx {
-              id
-              fields {
-                slug
-                title
-                excludeFromSearchIndex
-                date
-                description
-                type
-                topics
-              }
-            }
-            name
-          }
-        }
-      }
-    `);
-
-    allReleaseNotePagesResult.data.releaseNotes.nodes.forEach(
-      ({ childMdx, name }) => {
-        const isOverviewPage = name === 'index';
-        actions.createPage({
-          // TODO: how should the path be named exactly?
-          path: childMdx.fields.slug,
-          component: require.resolve('./src/templates/releases.js'),
-          context: {
-            ...childMdx.fields,
-            isOverviewPage,
-          },
-        });
-      }
-    );
-  }
+  allMdxPagesResult.data.releaseNotes.nodes.forEach(({ childMdx, name }) => {
+    const isOverviewPage = name === 'index';
+    actions.createPage({
+      // TODO: how should the path be named exactly?
+      path: childMdx.fields.slug,
+      component: isOverviewPage
+        ? require.resolve('./src/templates/release-notes-list.js')
+        : require.resolve('./src/templates/release-notes-detail.js'),
+      context: {
+        ...childMdx.fields,
+      },
+    });
+  });
 };
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {

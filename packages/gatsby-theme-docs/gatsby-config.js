@@ -19,6 +19,7 @@ const defaultOptions = {
   beta: false,
   gaTrackingId: undefined,
   excludeFromSearchIndex: true,
+  hasReleaseNotes: false,
   createNodeSlug: undefined,
   additionalPrismLanguages: [],
 };

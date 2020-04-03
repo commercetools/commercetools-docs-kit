@@ -17,7 +17,7 @@ const Container = styled.nav`
   z-index: 2;
   height: 100vh;
   width: ${designSystem.dimensions.widths.pageNavigationSmall};
-  display: ${(props) => (props.isMenuOpen ? 'flex' : 'none')};
+  display: ${(props) => (props.isSidebarMenuOpen ? 'flex' : 'none')};
   flex-direction: column;
   background-color: ${designSystem.colors.light.surfaceSecondary1};
   border-right: 1px solid ${designSystem.colors.light.borderPrimary};
@@ -74,11 +74,11 @@ const LayoutSidebar = (props) => {
       aria-label="Open Main Navigation"
       onClick={props.toggleSidebarMenu}
     >
-      <BurgerIcon isActive={props.isMenuOpen} />
+      <BurgerIcon isActive={props.isSidebarMenuOpen} />
     </MenuButton>
   );
 
-  if (props.isMenuOpen) {
+  if (props.isSidebarMenuOpen) {
     return (
       <>
         {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
@@ -87,7 +87,7 @@ const LayoutSidebar = (props) => {
             <Overlay onClick={props.closeSidebarMenu}>
               <Container
                 aria-label="Main Navigation"
-                isMenuOpen={true}
+                isSidebarMenuOpen={true}
                 onClick={(event) => {
                   event.stopPropagation();
                 }}
@@ -96,6 +96,7 @@ const LayoutSidebar = (props) => {
                   onLinkClick={props.closeSidebarMenu}
                   siteTitle={props.siteTitle}
                   isGlobalBeta={props.isGlobalBeta}
+                  hasReleaseNotes={props.hasReleaseNotes}
                 />
               </Container>
             </Overlay>,
@@ -108,10 +109,15 @@ const LayoutSidebar = (props) => {
   return (
     <>
       {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
-      <Container role="nav" aria-label="Main Navigation" isMenuOpen={false}>
+      <Container
+        role="nav"
+        aria-label="Main Navigation"
+        isSidebarMenuOpen={false}
+      >
         <Sidebar
           siteTitle={props.siteTitle}
           isGlobalBeta={props.isGlobalBeta}
+          hasReleaseNotes={props.hasReleaseNotes}
         />
         {props.isSearchDialogOpen && (
           <Overlay
@@ -131,11 +137,12 @@ const LayoutSidebar = (props) => {
 };
 LayoutSidebar.displayName = 'LayoutSidebar';
 LayoutSidebar.propTypes = {
-  isMenuOpen: PropTypes.bool.isRequired,
+  isSidebarMenuOpen: PropTypes.bool.isRequired,
   toggleSidebarMenu: PropTypes.func.isRequired,
   closeSidebarMenu: PropTypes.func.isRequired,
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
+  hasReleaseNotes: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,
   closeSearchDialog: PropTypes.func.isRequired,
 };
