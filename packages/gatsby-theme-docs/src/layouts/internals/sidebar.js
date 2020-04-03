@@ -308,7 +308,7 @@ SidebarNavigationLinks.propTypes = {
 };
 
 const Sidebar = (props) => {
-  // If this is a relase page, we need to render the "back" link instead of
+  // If this is a release page, we need to render the "back" link instead of
   // the normal navigation links.
   const isReleasePage = props.location.pathname.startsWith('/releases');
   return (
@@ -355,7 +355,7 @@ const Sidebar = (props) => {
             `}
           >
             <SpacingsInline alignItems="center">
-              <LinkSubtitle>{'Relase notes'}</LinkSubtitle>
+              <LinkSubtitle>{'Release notes'}</LinkSubtitle>
               <ReleaseNotesIcon
                 size="medium"
                 color={isReleasePage ? 'linkNavigation' : 'link'}
