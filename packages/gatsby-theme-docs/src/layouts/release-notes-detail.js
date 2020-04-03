@@ -15,7 +15,6 @@ import LayoutFooter from './internals/layout-footer';
 import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
-import LayoutPageReleaseNotesFilters from './internals/layout-page-release-notes-filters';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
@@ -53,7 +52,16 @@ const LayoutReleaseNotesDetail = (props) => {
                 </span>
               </Link>
             </SpacingsInline>
-            <Markdown.H3>{props.pageContext.title}</Markdown.H3>
+            <Markdown.H1
+              // Use h1 for the page title but style it as an h3.
+              css={css`
+                font-size: ${designSystem.typography.fontSizes.h3};
+                margin: ${designSystem.dimensions.spacings.big} 0 0;
+                color: unset;
+              `}
+            >
+              {props.pageContext.title}
+            </Markdown.H1>
           </LayoutPageHeader>
           <LayoutPageHeaderSide>
             <ReleaseNotesSubscribeLinks />
@@ -63,7 +71,6 @@ const LayoutReleaseNotesDetail = (props) => {
               {props.children}
             </PageContentInset>
           </LayoutPageContent>
-          <LayoutPageReleaseNotesFilters />
         </LayoutPage>
         <LayoutFooter />
       </LayoutMain>
