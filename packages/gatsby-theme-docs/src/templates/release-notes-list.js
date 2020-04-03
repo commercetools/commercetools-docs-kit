@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
+import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
@@ -32,16 +34,17 @@ const ReleaseNotesListTemplate = (props) => (
         </MDXProvider>
         <div>
           <MDXProvider components={releaseNoteMarkdownComponents}>
-            {props.data.allReleaseNotes &&
-              props.data.allReleaseNotes.nodes &&
-              props.data.allReleaseNotes.nodes.map(({ childMdx }, index) => (
-                <div key={index}>
-                  <Markdown.H3>{childMdx.fields.title}</Markdown.H3>
-                  <div>
-                    <MDXRenderer>{childMdx.body}</MDXRenderer>
-                  </div>
-                </div>
-              ))}
+            <SpacingsStack>
+              {props.data.allReleaseNotes &&
+                props.data.allReleaseNotes.nodes &&
+                props.data.allReleaseNotes.nodes.map(({ childMdx }) => (
+                  <LayoutReleaseNote
+                    key={childMdx.slug}
+                    title={childMdx.fields.title}
+                    body={childMdx.body}
+                  />
+                ))}
+            </SpacingsStack>
           </MDXProvider>
         </div>
       </Markdown.TypographyPage>
@@ -66,7 +69,10 @@ ReleaseNotesListTemplate.propTypes = {
       nodes: PropTypes.arrayOf(
         PropTypes.shape({
           childMdx: PropTypes.shape({
-            title: PropTypes.string.isRequired,
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+              title: PropTypes.string.isRequired,
+            }),
             body: PropTypes.string.isRequired,
           }),
         })
