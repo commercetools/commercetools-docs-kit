@@ -160,7 +160,7 @@ function generateReleaseNoteSlug(node) {
   }
 
   if (node.frontmatter.slug) {
-    return `${basePath}/${node.frontmatter.slug}`;
+    return trimTrailingSlash(`${basePath}/${node.frontmatter.slug}`);
   }
 
   const date = node.frontmatter.date ? node.frontmatter.date.split('T')[0] : '';
