@@ -1,3 +1,30 @@
+## [2.4.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.3.0...v2.4.0) (2020-04-03)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-api-docs`
+  - [#330](https://github.com/commercetools/commercetools-docs-kit/pull/330) fix: query parameters types that are objects now render as links ([@davifantasia](https://github.com/davifantasia))
+- `writing-style`
+  - [#333](https://github.com/commercetools/commercetools-docs-kit/pull/333) fix(writing-style): cover the last few cases from the existing docs ([@nkuehn](https://github.com/nkuehn))
+
+#### 🔮 Type: Chore
+
+- `gatsby-theme-docs`
+  - [#334](https://github.com/commercetools/commercetools-docs-kit/pull/334) chore: update cookie consent banner script ([@nkuehn](https://github.com/nkuehn))
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-docs`
+
+  - [#332](https://github.com/commercetools/commercetools-docs-kit/pull/332) feat(theme): set up release notes template ([@davifantasia](https://github.com/davifantasia))
+
+  > This feature is still under development.
+
+#### 🤖 Type: Dependencies
+
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`
+  - [#326](https://github.com/commercetools/commercetools-docs-kit/pull/326) chore(deps): update all dependencies (major) ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [2.3.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.2.0...v2.3.0) (2020-03-30)
 
 #### 🐛 Type: Bug
