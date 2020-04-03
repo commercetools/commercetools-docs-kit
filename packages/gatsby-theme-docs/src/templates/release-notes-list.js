@@ -6,38 +6,45 @@ import { MDXProvider } from '@mdx-js/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
 import { SEO, ThemeProvider } from '../components';
+import markdownComponents from '../markdown-components';
 
-// See https://mdxjs.com/getting-started#table-of-components
-const components = {
-  // TODO: decide how to map the components to markdown elements.
+const releaseNoteMarkdownComponents = {
+  ...markdownComponents,
+  // NOTE: release notes content can only have headings starting from h4.
+  h1: Markdown.withAnchorLink(Markdown.H4),
+  h2: Markdown.withAnchorLink(Markdown.H5),
+  h3: Markdown.withAnchorLink(Markdown.H6),
+  h4: Markdown.withAnchorLink(Markdown.H6),
 };
 
 const ReleaseNotesListTemplate = (props) => (
   <ThemeProvider>
     <LayoutReleaseNotesList pageContext={props.pageContext}>
-      <MDXProvider components={components}>
-        <Markdown.TypographyPage>
-          <SEO
-            title={props.pageContext.title}
-            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
-          />
+      <Markdown.TypographyPage>
+        <SEO
+          title={props.pageContext.title}
+          excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+        />
+        <MDXProvider components={markdownComponents}>
           <div>
             <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
           </div>
-          <div>
+        </MDXProvider>
+        <div>
+          <MDXProvider components={releaseNoteMarkdownComponents}>
             {props.data.allReleaseNotes &&
               props.data.allReleaseNotes.nodes &&
               props.data.allReleaseNotes.nodes.map(({ childMdx }, index) => (
                 <div key={index}>
-                  <Markdown.H2>{childMdx.fields.title}</Markdown.H2>
+                  <Markdown.H3>{childMdx.fields.title}</Markdown.H3>
                   <div>
                     <MDXRenderer>{childMdx.body}</MDXRenderer>
                   </div>
                 </div>
               ))}
-          </div>
-        </Markdown.TypographyPage>
-      </MDXProvider>
+          </MDXProvider>
+        </div>
+      </Markdown.TypographyPage>
     </LayoutReleaseNotesList>
   </ThemeProvider>
 );

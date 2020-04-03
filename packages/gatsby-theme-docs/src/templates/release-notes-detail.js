@@ -6,16 +6,21 @@ import { MDXProvider } from '@mdx-js/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNotesDetail from '../layouts/release-notes-detail';
 import { SEO, ThemeProvider } from '../components';
+import markdownComponents from '../markdown-components';
 
-// See https://mdxjs.com/getting-started#table-of-components
-const components = {
-  // TODO: decide how to map the components to markdown elements.
+const releaseNoteMarkdownComponents = {
+  ...markdownComponents,
+  // NOTE: release notes content can only have headings starting from h4.
+  h1: Markdown.withAnchorLink(Markdown.H4),
+  h2: Markdown.withAnchorLink(Markdown.H5),
+  h3: Markdown.withAnchorLink(Markdown.H6),
+  h4: Markdown.withAnchorLink(Markdown.H6),
 };
 
 const ReleaseNotesDetailTemplate = (props) => (
   <ThemeProvider>
     <LayoutReleaseNotesDetail pageContext={props.pageContext}>
-      <MDXProvider components={components}>
+      <MDXProvider components={releaseNoteMarkdownComponents}>
         <Markdown.TypographyPage>
           <SEO
             title={props.pageContext.title}
