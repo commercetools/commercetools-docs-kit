@@ -55,7 +55,8 @@
     "prop-types": "15.7.2",
     "react-helmet": "5.2.1",
     "rehype-slug": "3.0.0",
-    "remark-emoji": "2.0.2"
+    "remark-emoji": "2.0.2",
+    "slugify": "1.4.0"
   },
   "devDependencies": {
     "gatsby": "2.19.17",

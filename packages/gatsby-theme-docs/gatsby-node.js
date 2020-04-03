@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
+const slugify = require('slugify');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -122,12 +123,7 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     path.resolve('src/releases')
   );
   if (isReleaseNotesPage) {
-    let releaseNoteSlug = generateReleaseNoteSlug(
-      node.frontmatter.date,
-      node.frontmatter.title,
-      node.fileAbsolutePath
-    );
-    releaseNoteSlug = trimTrailingSlash(releaseNoteSlug) || '/';
+    const releaseNoteSlug = generateReleaseNoteSlug(node);
     actions.createNodeField({
       node,
       name: 'slug',
@@ -156,18 +152,22 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
   }
 };
 
-function generateReleaseNoteSlug(date = '', title = '', fileAbsolutePath) {
+function generateReleaseNoteSlug(node) {
   const basePath = '/releases';
 
-  if (fileAbsolutePath.endsWith('index.mdx')) {
+  if (node.fileAbsolutePath.endsWith('index.mdx')) {
     return basePath;
   }
 
-  const slug = `${date.split('T')[0]} ${title}`
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-') // replace non alphanumeric with hyphen
-    .replace(/(^-|-$)+/g, ''); // remove pre or post string hyphens
-  return `${basePath}/${slug}`.replace(/\/\/+/g, '/'); // replace two or more slashes with single slash
+  if (node.frontmatter.slug) {
+    return `${basePath}/${node.frontmatter.slug}`;
+  }
+
+  const date = node.frontmatter.date ? node.frontmatter.date.split('T')[0] : '';
+  const title = node.frontmatter.title ? node.frontmatter.title : '';
+
+  const slug = slugify(`${date} ${title}`, { lower: true });
+  return trimTrailingSlash(`${basePath}/${slug}`);
 }
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
