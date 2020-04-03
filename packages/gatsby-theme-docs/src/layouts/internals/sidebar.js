@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
 import { css, ClassNames } from '@emotion/core';
 import styled from '@emotion/styled';
 import { BackIcon } from '@commercetools-uikit/icons';
@@ -310,7 +310,9 @@ SidebarNavigationLinks.propTypes = {
 const Sidebar = (props) => {
   // If this is a release page, we need to render the "back" link instead of
   // the normal navigation links.
-  const isReleasePage = props.location.pathname.startsWith('/releases');
+  const isReleasePage = props.location.pathname.startsWith(
+    withPrefix('/releases')
+  );
   return (
     <>
       <LayoutHeaderLogo />
@@ -337,7 +339,9 @@ const Sidebar = (props) => {
           <SidebarLink
             to="/releases"
             onClick={props.onLinkClick}
-            locationPath={isReleasePage ? '/releases' : props.location.pathname}
+            locationPath={
+              isReleasePage ? withPrefix('/releases') : props.location.pathname
+            }
             customStyles={css`
               color: ${designSystem.colors.light.link} !important;
               text-decoration: underline;
