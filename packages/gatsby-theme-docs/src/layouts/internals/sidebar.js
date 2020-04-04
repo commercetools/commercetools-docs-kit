@@ -33,6 +33,9 @@ const ScrollContainer = styled.div`
     border-top: 1px solid ${designSystem.colors.light.borderPrimary};
   }
 `;
+const SidebarHeader = styled.div`
+  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.1);
+`;
 const WebsiteTitle = styled.div`
   color: ${designSystem.colors.light.primary};
   padding: ${designSystem.dimensions.spacings.m};
@@ -315,59 +318,63 @@ const Sidebar = (props) => {
   );
   return (
     <>
-      <LayoutHeaderLogo />
-      <WebsiteTitle>
-        <SpacingsStack scale="xs">
-          <div>{props.isGlobalBeta && <BetaFlag />}</div>
-          <Link
-            id="site-title"
-            to="/"
-            css={css`
-              text-decoration: none;
-              color: ${designSystem.colors.light.primary};
-              :hover {
-                text-decoration: underline;
-              }
-            `}
-          >
-            {props.siteTitle}
-          </Link>
-        </SpacingsStack>
-      </WebsiteTitle>
-      {props.hasReleaseNotes && (
-        <ReleaseNotesTitle>
-          <SidebarLink
-            to="/releases"
-            onClick={props.onLinkClick}
-            locationPath={
-              isReleasePage ? withPrefix('/releases') : props.location.pathname
-            }
-            customStyles={css`
-              color: ${designSystem.colors.light.link} !important;
-              text-decoration: underline;
-              :hover {
-                color: ${designSystem.colors.light.linkHover} !important;
+      <SidebarHeader>
+        <LayoutHeaderLogo />
+        <WebsiteTitle>
+          <SpacingsStack scale="xs">
+            <div>{props.isGlobalBeta && <BetaFlag />}</div>
+            <Link
+              id="site-title"
+              to="/"
+              css={css`
                 text-decoration: none;
+                color: ${designSystem.colors.light.primary};
+                :hover {
+                  text-decoration: underline;
+                }
+              `}
+            >
+              {props.siteTitle}
+            </Link>
+          </SpacingsStack>
+        </WebsiteTitle>
+        {props.hasReleaseNotes && (
+          <ReleaseNotesTitle>
+            <SidebarLink
+              to="/releases"
+              onClick={props.onLinkClick}
+              locationPath={
+                isReleasePage
+                  ? withPrefix('/releases')
+                  : props.location.pathname
               }
-            `}
-            customActiveStyles={css`
-              color: ${designSystem.colors.light.linkNavigation} !important;
-              text-decoration: none;
-              :hover {
+              customStyles={css`
+                color: ${designSystem.colors.light.link} !important;
+                text-decoration: underline;
+                :hover {
+                  color: ${designSystem.colors.light.linkHover} !important;
+                  text-decoration: none;
+                }
+              `}
+              customActiveStyles={css`
                 color: ${designSystem.colors.light.linkNavigation} !important;
-              }
-            `}
-          >
-            <SpacingsInline alignItems="center">
-              <LinkSubtitle>{'Release notes'}</LinkSubtitle>
-              <ReleaseNotesIcon
-                size="medium"
-                color={isReleasePage ? 'linkNavigation' : 'link'}
-              />
-            </SpacingsInline>
-          </SidebarLink>
-        </ReleaseNotesTitle>
-      )}
+                text-decoration: none;
+                :hover {
+                  color: ${designSystem.colors.light.linkNavigation} !important;
+                }
+              `}
+            >
+              <SpacingsInline alignItems="center">
+                <LinkSubtitle>{'Release notes'}</LinkSubtitle>
+                <ReleaseNotesIcon
+                  size="medium"
+                  color={isReleasePage ? 'linkNavigation' : 'link'}
+                />
+              </SpacingsInline>
+            </SidebarLink>
+          </ReleaseNotesTitle>
+        )}
+      </SidebarHeader>
       {props.hasReleaseNotes && isReleasePage ? (
         <ScrollContainer id={scrollContainerId}>
           <div
