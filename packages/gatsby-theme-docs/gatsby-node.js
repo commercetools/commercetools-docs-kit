@@ -176,62 +176,46 @@ function generateReleaseNoteSlug(node) {
 }
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
-exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
-  const allMdxPagesResult = await graphql(
-    `
-      query QueryAllContentPages($hasReleaseNotes: Boolean!) {
-        contents: allFile(
-          filter: {
-            sourceInstanceName: { eq: "content" }
-            internal: { mediaType: { eq: "text/mdx" } }
-          }
-        ) {
-          nodes {
-            childMdx {
-              id
-              fields {
-                ...MdxPageFields
-              }
-            }
-            name
-          }
+exports.createPages = async (...args) => {
+  await createContentPages(...args);
+  await createReleaseNotePages(...args);
+};
+
+async function createContentPages(
+  { graphql, actions, reporter },
+  pluginOptions
+) {
+  const result = await graphql(`
+    query QueryAllContentPages {
+      allFile(
+        filter: {
+          sourceInstanceName: { eq: "content" }
+          internal: { mediaType: { eq: "text/mdx" } }
         }
-        releaseNotes: allFile(
-          filter: {
-            sourceInstanceName: { eq: "releases" }
-            internal: { mediaType: { eq: "text/mdx" } }
-          }
-        ) @include(if: $hasReleaseNotes) {
-          nodes {
-            childMdx {
-              id
-              fields {
-                ...MdxPageFields
-                date
-                description
-                type
-                topics
-              }
+      ) {
+        nodes {
+          childMdx {
+            id
+            fields {
+              slug
+              title
+              beta
+              isGlobalBeta
+              excludeFromSearchIndex
+              hasReleaseNotes
             }
-            name
           }
+          name
         }
       }
-      fragment MdxPageFields on MdxFields {
-        slug
-        title
-        beta
-        isGlobalBeta
-        excludeFromSearchIndex
-        hasReleaseNotes
-      }
-    `,
-    {
-      hasReleaseNotes: pluginOptions.hasReleaseNotes,
     }
-  );
-  if (allMdxPagesResult.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading all MDX files');
+  `);
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `🚨  ERROR: Loading all MDX files.\nPlugin options: ${JSON.stringify(
+        pluginOptions
+      )}`
+    );
   }
   const navigationYamlResult = await graphql(`
     query QueryNavigationYaml {
@@ -249,7 +233,7 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
   if (navigationYamlResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "allNavigationYaml" query');
   }
-  const pages = allMdxPagesResult.data.contents.nodes;
+  const pages = result.data.allFile.nodes;
   const navigationPages = navigationYamlResult.data.allNavigationYaml.nodes.reduce(
     (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
@@ -282,23 +266,64 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
       },
     });
   });
+}
 
-  if (pluginOptions.hasReleaseNotes) {
-    allMdxPagesResult.data.releaseNotes.nodes.forEach(({ childMdx, name }) => {
-      const isOverviewPage = name === 'index';
-      actions.createPage({
-        // TODO: how should the path be named exactly?
-        path: childMdx.fields.slug,
-        component: isOverviewPage
-          ? require.resolve('./src/templates/release-notes-list.js')
-          : require.resolve('./src/templates/release-notes-detail.js'),
-        context: {
-          ...childMdx.fields,
-        },
-      });
-    });
+async function createReleaseNotePages(
+  { graphql, actions, reporter },
+  pluginOptions
+) {
+  if (!pluginOptions.hasReleaseNotes) return;
+
+  const result = await graphql(`
+    query QueryAllReleaseNotePages {
+      allFile(
+        filter: {
+          sourceInstanceName: { eq: "releases" }
+          internal: { mediaType: { eq: "text/mdx" } }
+        }
+      ) {
+        nodes {
+          childMdx {
+            id
+            fields {
+              slug
+              title
+              beta
+              isGlobalBeta
+              excludeFromSearchIndex
+              hasReleaseNotes
+              date
+              description
+              type
+              topics
+            }
+          }
+          name
+        }
+      }
+    }
+  `);
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `🚨  ERROR: Loading all MDX files.\nPlugin options: ${JSON.stringify(
+        pluginOptions
+      )}`
+    );
   }
-};
+  result.data.allFile.nodes.forEach(({ childMdx, name }) => {
+    const isOverviewPage = name === 'index';
+    actions.createPage({
+      // TODO: how should the path be named exactly?
+      path: childMdx.fields.slug,
+      component: isOverviewPage
+        ? require.resolve('./src/templates/release-notes-list.js')
+        : require.resolve('./src/templates/release-notes-detail.js'),
+      context: {
+        ...childMdx.fields,
+      },
+    });
+  });
+}
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   const config = getConfig();
