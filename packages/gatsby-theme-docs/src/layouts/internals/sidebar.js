@@ -43,7 +43,7 @@ const WebsiteTitle = styled.div`
 `;
 const ReleaseNotesTitle = styled.div`
   border-top: 1px solid ${designSystem.colors.light.borderPrimary};
-  padding: ${designSystem.dimensions.spacings.m} 0;
+  padding: ${designSystem.dimensions.spacings.m} 0 !important;
 `;
 const LinkTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.body};
@@ -281,7 +281,7 @@ const SidebarNavigationLinks = (props) => {
   // - scroll to the previous position in case it was defined
   const nextScrollPosition = useScrollPosition(scrollContainerId);
   return (
-    <ScrollContainer id={scrollContainerId}>
+    <>
       {data.allNavigationYaml.nodes.map((node, index) => (
         <SidebarChapter
           key={index}
@@ -293,7 +293,7 @@ const SidebarNavigationLinks = (props) => {
           location={props.location}
         />
       ))}
-    </ScrollContainer>
+    </>
   );
 };
 SidebarNavigationLinks.propTypes = {
@@ -316,6 +316,8 @@ const Sidebar = (props) => {
   const isReleasePage = props.location.pathname.startsWith(
     withPrefix('/releases')
   );
+  const shouldRenderLinkToReleaseNotes = props.hasReleaseNotes;
+  const shouldRenderBackToDocsLink = props.hasReleaseNotes && isReleasePage;
   return (
     <>
       <SidebarHeader>
@@ -338,7 +340,9 @@ const Sidebar = (props) => {
             </Link>
           </SpacingsStack>
         </WebsiteTitle>
-        {props.hasReleaseNotes && (
+      </SidebarHeader>
+      <ScrollContainer id={scrollContainerId}>
+        {shouldRenderLinkToReleaseNotes && (
           <ReleaseNotesTitle>
             <SidebarLink
               to="/releases"
@@ -374,14 +378,8 @@ const Sidebar = (props) => {
             </SidebarLink>
           </ReleaseNotesTitle>
         )}
-      </SidebarHeader>
-      {props.hasReleaseNotes && isReleasePage ? (
-        <ScrollContainer id={scrollContainerId}>
-          <div
-            css={css`
-              padding: ${designSystem.dimensions.spacings.l} 0;
-            `}
-          >
+        {shouldRenderBackToDocsLink && (
+          <div>
             <SidebarLink to="/" onClick={props.onLinkClick}>
               <SpacingsInline alignItems="center">
                 <BackIcon size="medium" />
@@ -389,10 +387,9 @@ const Sidebar = (props) => {
               </SpacingsInline>
             </SidebarLink>
           </div>
-        </ScrollContainer>
-      ) : (
-        <SidebarNavigationLinks {...props} />
-      )}
+        )}
+        {!shouldRenderBackToDocsLink && <SidebarNavigationLinks {...props} />}
+      </ScrollContainer>
     </>
   );
 };
