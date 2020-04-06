@@ -29,43 +29,7 @@ exports.onPreBootstrap = ({ reporter }) => {
       fs.mkdirSync(dir);
     }
   });
-
-  createReleaseNoteIndex(reporter);
 };
-
-function createReleaseNoteIndex(reporter) {
-  const releaseNoteIndex = 'src/releases/index.mdx';
-  if (!fs.existsSync(releaseNoteIndex)) {
-    fs.writeFile(
-      releaseNoteIndex,
-      `---
-date: 1970-01-01 # necessary in this format
-title: (title goes here)
-description: |
-  (description for the template)
-type: enhancement # feature | fix | enhancement
-topics:
-  - foo
-  - barr
-  # Topics is an array, here are some examples:
-  #  - Products
-  #  - Product List
-  #  - Categories
-  #  - Carts
-  #  - API Clients
-  #  - Settings
----
-      `,
-      (error) => {
-        if (error) {
-          throw error;
-        }
-
-        reporter.info(`Successfully created "${releaseNoteIndex}"`);
-      }
-    );
-  }
-}
 
 exports.sourceNodes = ({ actions }) => {
   actions.createTypes(`
@@ -155,36 +119,38 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     });
   }
 
-  const isReleaseNotesPage = node.fileAbsolutePath.startsWith(
-    path.resolve('src/releases')
-  );
-  if (isReleaseNotesPage) {
-    const releaseNoteSlug = generateReleaseNoteSlug(node);
-    actions.createNodeField({
-      node,
-      name: 'slug',
-      value: releaseNoteSlug,
-    });
-    actions.createNodeField({
-      node,
-      name: 'date',
-      value: node.frontmatter.date,
-    });
-    actions.createNodeField({
-      node,
-      name: 'description',
-      value: node.frontmatter.description,
-    });
-    actions.createNodeField({
-      node,
-      name: 'type',
-      value: node.frontmatter.type,
-    });
-    actions.createNodeField({
-      node,
-      name: 'topics',
-      value: node.frontmatter.topics,
-    });
+  if (pluginOptions.hasReleaseNotes) {
+    const isReleaseNotesPage = node.fileAbsolutePath.startsWith(
+      path.resolve('src/releases')
+    );
+    if (isReleaseNotesPage) {
+      const releaseNoteSlug = generateReleaseNoteSlug(node);
+      actions.createNodeField({
+        node,
+        name: 'slug',
+        value: releaseNoteSlug,
+      });
+      actions.createNodeField({
+        node,
+        name: 'date',
+        value: node.frontmatter.date,
+      });
+      actions.createNodeField({
+        node,
+        name: 'description',
+        value: node.frontmatter.description,
+      });
+      actions.createNodeField({
+        node,
+        name: 'type',
+        value: node.frontmatter.type,
+      });
+      actions.createNodeField({
+        node,
+        name: 'topics',
+        value: node.frontmatter.topics,
+      });
+    }
   }
 };
 
@@ -207,9 +173,9 @@ function generateReleaseNoteSlug(node) {
 }
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const allMdxPagesResult = await graphql(`
-    query QueryAllMdxPages {
+exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
+  const allContentPagesResult = await graphql(`
+    query QueryAllContentPages {
       contents: allFile(
         filter: {
           sourceInstanceName: { eq: "content" }
@@ -230,31 +196,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           name
         }
       }
-      releaseNotes: allFile(
-        filter: {
-          sourceInstanceName: { eq: "releases" }
-          internal: { mediaType: { eq: "text/mdx" } }
-        }
-      ) {
-        nodes {
-          childMdx {
-            id
-            fields {
-              slug
-              title
-              excludeFromSearchIndex
-              date
-              description
-              type
-              topics
-            }
-          }
-          name
-        }
-      }
     }
   `);
-  if (allMdxPagesResult.errors) {
+  if (allContentPagesResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "allMdx" query');
   }
   const navigationYamlResult = await graphql(`
@@ -273,7 +217,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (navigationYamlResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "allNavigationYaml" query');
   }
-  const pages = allMdxPagesResult.data.contents.nodes;
+  const pages = allContentPagesResult.data.contents.nodes;
   const navigationPages = navigationYamlResult.data.allNavigationYaml.nodes.reduce(
     (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
@@ -307,18 +251,49 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  allMdxPagesResult.data.releaseNotes.nodes.forEach(({ childMdx, name }) => {
-    const isOverviewPage = name === 'index';
-    actions.createPage({
-      // TODO: how should the path be named exactly?
-      path: childMdx.fields.slug,
-      component: require.resolve('./src/templates/releases.js'),
-      context: {
-        ...childMdx.fields,
-        isOverviewPage,
-      },
-    });
-  });
+  if (pluginOptions.hasReleaseNotes) {
+    const allReleaseNotePagesResult = await graphql(`
+      query QueryAllReleaseNotePages {
+        releaseNotes: allFile(
+          filter: {
+            sourceInstanceName: { eq: "releases" }
+            internal: { mediaType: { eq: "text/mdx" } }
+          }
+        ) {
+          nodes {
+            childMdx {
+              id
+              fields {
+                slug
+                title
+                excludeFromSearchIndex
+                date
+                description
+                type
+                topics
+              }
+            }
+            name
+          }
+        }
+      }
+    `);
+
+    allReleaseNotePagesResult.data.releaseNotes.nodes.forEach(
+      ({ childMdx, name }) => {
+        const isOverviewPage = name === 'index';
+        actions.createPage({
+          // TODO: how should the path be named exactly?
+          path: childMdx.fields.slug,
+          component: require.resolve('./src/templates/releases.js'),
+          context: {
+            ...childMdx.fields,
+            isOverviewPage,
+          },
+        });
+      }
+    );
+  }
 };
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
