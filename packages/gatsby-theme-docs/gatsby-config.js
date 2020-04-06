@@ -99,7 +99,7 @@ module.exports = (themeOptions = {}) => {
         },
       },
       // Release notes
-      {
+      pluginOptions.hasReleaseNotes && {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'releases',
