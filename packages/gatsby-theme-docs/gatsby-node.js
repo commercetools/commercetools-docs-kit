@@ -39,10 +39,10 @@ function createReleaseNoteIndex(reporter) {
     fs.writeFile(
       releaseNoteIndex,
       `---
-date: 1970-01-01 (necessary in this format)
-title: <title goes here>
+date: 1970-01-01 # necessary in this format
+title: (title goes here)
 description: |
-  <Description for the template>
+  (description for the template)
 type: enhancement # feature | fix | enhancement
 topics:
   - foo
