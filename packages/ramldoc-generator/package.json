@@ -19,7 +19,7 @@
     "commercetools-ramldoc-generator": "bin/ramldoc-generator.js"
   },
   "dependencies": {
-    "chalk": "3.0.0",
+    "chalk": "4.0.0",
     "mri": "1.1.4",
     "shelljs": "0.8.3"
   }
