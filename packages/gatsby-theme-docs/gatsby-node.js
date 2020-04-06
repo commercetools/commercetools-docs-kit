@@ -29,7 +29,43 @@ exports.onPreBootstrap = ({ reporter }) => {
       fs.mkdirSync(dir);
     }
   });
+
+  createReleaseNoteIndex(reporter);
 };
+
+function createReleaseNoteIndex(reporter) {
+  const releaseNoteIndex = 'src/releases/index.mdx';
+  if (!fs.existsSync(releaseNoteIndex)) {
+    fs.writeFile(
+      releaseNoteIndex,
+      `---
+date: 1970-01-01 (necessary in this format)
+title: <title goes here>
+description: |
+  <Description for the template>
+type: enhancement # feature | fix | enhancement
+topics:
+  - foo
+  - barr
+  # Topics is an array, here are some examples:
+  #  - Products
+  #  - Product List
+  #  - Categories
+  #  - Carts
+  #  - API Clients
+  #  - Settings
+---
+      `,
+      (error) => {
+        if (error) {
+          throw error;
+        }
+
+        reporter.info(`Successfully created "${releaseNoteIndex}"`);
+      }
+    );
+  }
+}
 
 exports.sourceNodes = ({ actions }) => {
   actions.createTypes(`
