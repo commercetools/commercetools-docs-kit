@@ -14,15 +14,15 @@ const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
-exports.onPreBootstrap = ({ reporter }) => {
+exports.onPreBootstrap = ({ reporter }, pluginOptions) => {
   const requiredDirectories = [
     'src/data',
     'src/images',
     'src/content',
     'src/content/files',
     'src/code-examples',
-    'src/releases',
-  ];
+    pluginOptions.hasReleaseNotes && 'src/releases',
+  ].filter(Boolean);
   requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
       reporter.info(`creating the ${dir} directory`);
@@ -227,9 +227,7 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
       }
     `,
     {
-      variables: {
-        hasReleaseNotes: pluginOptions.hasReleaseNotes,
-      },
+      hasReleaseNotes: pluginOptions.hasReleaseNotes,
     }
   );
   if (allMdxPagesResult.errors) {
@@ -285,19 +283,21 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
     });
   });
 
-  allMdxPagesResult.data.releaseNotes.nodes.forEach(({ childMdx, name }) => {
-    const isOverviewPage = name === 'index';
-    actions.createPage({
-      // TODO: how should the path be named exactly?
-      path: childMdx.fields.slug,
-      component: isOverviewPage
-        ? require.resolve('./src/templates/release-notes-list.js')
-        : require.resolve('./src/templates/release-notes-detail.js'),
-      context: {
-        ...childMdx.fields,
-      },
+  if (pluginOptions.hasReleaseNotes) {
+    allMdxPagesResult.data.releaseNotes.nodes.forEach(({ childMdx, name }) => {
+      const isOverviewPage = name === 'index';
+      actions.createPage({
+        // TODO: how should the path be named exactly?
+        path: childMdx.fields.slug,
+        component: isOverviewPage
+          ? require.resolve('./src/templates/release-notes-list.js')
+          : require.resolve('./src/templates/release-notes-detail.js'),
+        context: {
+          ...childMdx.fields,
+        },
+      });
     });
-  });
+  }
 };
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
