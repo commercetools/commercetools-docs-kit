@@ -16,7 +16,6 @@ module.exports = {
         excludeFromSearchIndex: isProd && !shouldEnableSearch,
         hasReleaseNotes: true,
         additionalPrismLanguages: ['scala', 'csharp'],
-        hasReleaseNotes: true,
       },
     },
   ],
