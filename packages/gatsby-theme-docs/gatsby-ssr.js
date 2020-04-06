@@ -17,6 +17,16 @@ const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const isNowBuild = Boolean(process.env.GATSBY_NOW_GITHUB_DEPLOYMENT);
 const isMasterBranch = process.env.GATSBY_NOW_GITHUB_COMMIT_REF === 'master';
 
+console.log(
+  `[DEBUG GATSBY-SSR] Checking NODE_ENV: ${process.env.GATSBY_NODE_ENV}`
+);
+console.log(
+  `[DEBUG GATSBY-SSR] Checking NOW_GITHUB_DEPLOYMENT: ${process.env.GATSBY_NOW_GITHUB_DEPLOYMENT}`
+);
+console.log(
+  `[DEBUG GATSBY-SSR] Checking NOW_GITHUB_COMMIT_REF: ${process.env.GATSBY_NOW_GITHUB_COMMIT_REF}`
+);
+
 const iconDarkDigest = createContentDigest(
   fs.readFileSync(require.resolve('./static/favicon-dark-32x32.png'))
 );

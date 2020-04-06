@@ -17,6 +17,16 @@ const environment =
     ? 'production'
     : 'preview';
 
+console.log(
+  `[DEBUG GATSBY-SSR] Checking NODE_ENV: ${process.env.GATSBY_NODE_ENV}`
+);
+console.log(
+  `[DEBUG GATSBY-SSR] Checking NOW_GITHUB_COMMIT_SHA: ${process.env.GATSBY_NOW_GITHUB_COMMIT_SHA}`
+);
+console.log(
+  `[DEBUG GATSBY-SSR] Checking NOW_GITHUB_COMMIT_REF: ${process.env.GATSBY_NOW_GITHUB_COMMIT_REF}`
+);
+
 export const onClientEntry = (
   _, // eslint-disable-line
   pluginOptions

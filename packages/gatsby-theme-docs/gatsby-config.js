@@ -12,6 +12,11 @@ const proxyEnvironmentVariables = [
 ];
 proxyEnvironmentVariables.forEach((envName) => {
   process.env[`GATSBY_${envName}`] = process.env[envName];
+  console.log(
+    `[DEBUG GATSBY-CONFIG] Setting environment variable ${envName}: ${
+      process.env[`GATSBY_${envName}`]
+    }`
+  );
 });
 
 const defaultOptions = {
