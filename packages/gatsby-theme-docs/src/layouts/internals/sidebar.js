@@ -40,23 +40,19 @@ const SidebarHeader = styled.div`
 const SidebarScrollFader = styled.div`
   content: '';
   width: 100%;
-  height: ${scrollFaderHeight}px;
   background: linear-gradient(
     180deg,
-    ${designSystem.colors.light.surfaceSecondary2},
+    ${designSystem.colors.light.surfaceSecondary1},
     transparent
   );
   position: absolute;
-  bottom: -calc(${scrollFaderHeight}px + 2px);
 `;
 const WebsiteTitle = styled.div`
   color: ${designSystem.colors.light.primary};
   padding: ${designSystem.dimensions.spacings.m};
   font-size: ${designSystem.typography.fontSizes.h4};
 `;
-const ReleaseNotesTitle = styled.div`
-  padding: ${designSystem.dimensions.spacings.m} 0 !important;
-`;
+const ReleaseNotesTitle = styled.div``;
 const LinkTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.body};
   text-overflow: ellipsis;
@@ -359,6 +355,14 @@ const Sidebar = (props) => {
               nextScrollPosition > scrollFaderHeight
                 ? 1
                 : nextScrollPosition / scrollFaderHeight,
+            height:
+              nextScrollPosition > scrollFaderHeight / 2
+                ? scrollFaderHeight
+                : nextScrollPosition / scrollFaderHeight,
+            bottom:
+              nextScrollPosition > scrollFaderHeight / 2
+                ? 0 - scrollFaderHeight - 1
+                : 0 - nextScrollPosition / scrollFaderHeight,
           }}
         />
       </SidebarHeader>
