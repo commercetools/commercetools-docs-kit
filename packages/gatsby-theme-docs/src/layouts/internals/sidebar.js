@@ -23,7 +23,6 @@ const ScrollContainer = styled.div`
   overflow: auto;
   height: 100%;
   flex: 1;
-  border-top: 1px solid ${designSystem.colors.light.borderPrimary};
 
   > div {
     margin-right: ${designSystem.dimensions.spacings.m};
@@ -34,7 +33,21 @@ const ScrollContainer = styled.div`
   }
 `;
 const SidebarHeader = styled.div`
-  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
+
+  :after {
+    content: '';
+    width: 100%;
+    height: ${designSystem.dimensions.spacings.m};
+    background: linear-gradient(
+      180deg,
+      ${designSystem.colors.light.surfaceSecondary2},
+      transparent
+    );
+    position: absolute;
+    bottom: -calc(${designSystem.dimensions.spacings.m} + 2px);
+  }
 `;
 const WebsiteTitle = styled.div`
   color: ${designSystem.colors.light.primary};
