@@ -31,6 +31,8 @@ export const onClientEntry = (
         whitelistUrls: ['docs.commercetools.com', 'now.sh'],
       });
     });
+    if (window && !window.location.host.includes('.commercetools.com'))
+      document.body.classList.add('not-on-cookie-domain');
   }
 
   // Require additional Prism languages.

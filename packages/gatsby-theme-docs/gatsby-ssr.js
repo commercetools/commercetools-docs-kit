@@ -56,6 +56,7 @@ export const replaceRenderer = ({
 
   // Activate the cookie consent banner only on the live website environment.
   // We can narrow it down to the build step of Zeit Now for the master branch.
+  // That still not catches all cases, it's hidden client-side if not on a .commercetools.com domain
   if (isProduction && isNowBuild && isMasterBranch)
     setPostBodyComponents([
       <script
@@ -92,6 +93,17 @@ export const replaceRenderer = ({
       data-emotion-css={ids.join(' ')}
       dangerouslySetInnerHTML={{
         __html: css,
+      }}
+    />,
+    <style
+      key="optanon-killer"
+      data-emotion-css={ids.join(' ')}
+      dangerouslySetInnerHTML={{
+        __html: `
+          body.not-on-cookie-domain #onetrust-consent-sdk,
+          body.not-on-cookie-domain #onetrust-consent-sdk .onetrust-pc-dark-filter {
+            display: none !important;
+          }`,
       }}
     />,
   ]);
