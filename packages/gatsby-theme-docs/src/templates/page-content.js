@@ -10,16 +10,21 @@ import markdownComponents from '../markdown-components';
 
 const PageContentTemplate = (props) => (
   <ThemeProvider>
-    <LayoutContent pageContext={props.pageContext} pageData={props.data.mdx}>
+    <LayoutContent
+      pageContext={props.pageContext}
+      pageData={props.data.contentPage}
+    >
       <MDXProvider components={markdownComponents}>
         <Markdown.TypographyPage>
           <SEO
-            title={props.pageContext.shortTitle || props.pageContext.title}
-            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+            title={props.pageContext.shortTitle || props.data.contentPage.title}
+            excludeFromSearchIndex={
+              props.data.contentPage.excludeFromSearchIndex
+            }
           />
           {/* This wrapper div is important to ensure the vertical space */}
           <div>
-            <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
+            <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
           </div>
         </Markdown.TypographyPage>
       </MDXProvider>
@@ -32,14 +37,14 @@ PageContentTemplate.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    beta: PropTypes.bool.isRequired,
-    isGlobalBeta: PropTypes.bool.isRequired,
-    excludeFromSearchIndex: PropTypes.bool.isRequired,
     hasReleaseNotes: PropTypes.bool.isRequired,
   }).isRequired,
   data: PropTypes.shape({
-    mdx: PropTypes.shape({
+    contentPage: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      beta: PropTypes.bool.isRequired,
+      isGlobalBeta: PropTypes.bool.isRequired,
+      excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
       tableOfContents: PropTypes.object.isRequired,
     }).isRequired,
@@ -49,7 +54,11 @@ export default PageContentTemplate;
 
 export const query = graphql`
   query QueryMarkdownPage($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
+    contentPage(slug: { eq: $slug }) {
+      title
+      beta
+      isGlobalBeta
+      excludeFromSearchIndex
       body
       tableOfContents(maxDepth: 4)
     }

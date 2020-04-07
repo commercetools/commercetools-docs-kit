@@ -19,7 +19,6 @@ const defaultOptions = {
   beta: false,
   gaTrackingId: undefined,
   excludeFromSearchIndex: true,
-  hasReleaseNotes: false,
   createNodeSlug: undefined,
   additionalPrismLanguages: [],
 };
@@ -99,10 +98,10 @@ module.exports = (themeOptions = {}) => {
         },
       },
       // Release notes
-      pluginOptions.hasReleaseNotes && {
+      {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'releases',
+          name: 'releaseNotes',
           path: path.resolve(`./src/releases`),
         },
       },

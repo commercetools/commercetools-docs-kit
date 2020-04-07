@@ -11,6 +11,7 @@ const ReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
       <ReleaseNoteTitle>{props.title}</ReleaseNoteTitle>
+      <div>{props.date}</div>
       <div>
         <MDXRenderer>{props.body}</MDXRenderer>
       </div>
@@ -19,6 +20,7 @@ const ReleaseNote = (props) => {
 };
 ReleaseNote.propTypes = {
   title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
 };
 

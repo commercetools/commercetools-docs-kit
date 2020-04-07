@@ -28,15 +28,17 @@ const LayoutReleaseNotesDetail = (props) => {
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
         siteTitle={siteData.siteMetadata.title}
-        isGlobalBeta={props.pageContext.isGlobalBeta}
-        hasReleaseNotes={props.pageContext.hasReleaseNotes}
+        isGlobalBeta={props.pageData.isGlobalBeta}
+        // Rendering a release note details page implicitly implies
+        // that there are release notes.
+        hasReleaseNotes={true}
       />
       <LayoutMain isTopMenuOpen={layoutState.topMenu.isTopMenuOpen}>
         <LayoutHeader
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
           siteTitle={siteData.siteMetadata.title}
-          excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+          excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
         <LayoutPage id="top">
           <LayoutPageHeader>
@@ -60,7 +62,7 @@ const LayoutReleaseNotesDetail = (props) => {
                 color: unset;
               `}
             >
-              {props.pageContext.title}
+              {props.pageData.title}
             </Markdown.H1>
           </LayoutPageHeader>
           <LayoutPageHeaderSide>
@@ -79,13 +81,10 @@ const LayoutReleaseNotesDetail = (props) => {
 };
 LayoutReleaseNotesDetail.displayName = 'LayoutReleaseNotesDetail';
 LayoutReleaseNotesDetail.propTypes = {
-  pageContext: PropTypes.shape({
-    slug: PropTypes.string.isRequired,
+  pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
-    hasReleaseNotes: PropTypes.bool.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
 };

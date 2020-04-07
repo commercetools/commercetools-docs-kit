@@ -21,27 +21,31 @@ const releaseNoteMarkdownComponents = {
 
 const ReleaseNotesListTemplate = (props) => (
   <ThemeProvider>
-    <LayoutReleaseNotesList pageContext={props.pageContext}>
+    <LayoutReleaseNotesList
+      pageContext={props.pageContext}
+      pageData={props.data.contentPage}
+    >
       <Markdown.TypographyPage>
         <SEO
-          title={props.pageContext.title}
-          excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+          title={props.data.contentPage.title}
+          excludeFromSearchIndex={props.data.contentPage.excludeFromSearchIndex}
         />
         <MDXProvider components={markdownComponents}>
           <div>
-            <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
+            <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
           </div>
         </MDXProvider>
         <div>
           <MDXProvider components={releaseNoteMarkdownComponents}>
             <SpacingsStack>
-              {props.data.allReleaseNotes &&
-                props.data.allReleaseNotes.nodes &&
-                props.data.allReleaseNotes.nodes.map(({ childMdx }) => (
+              {props.data.allReleaseNotePage &&
+                props.data.allReleaseNotePage.nodes &&
+                props.data.allReleaseNotePage.nodes.map((releaseNote) => (
                   <LayoutReleaseNote
-                    key={childMdx.slug}
-                    title={childMdx.fields.title}
-                    body={childMdx.body}
+                    key={releaseNote.slug}
+                    title={releaseNote.title}
+                    date={releaseNote.date}
+                    body={releaseNote.body}
                   />
                 ))}
             </SpacingsStack>
@@ -55,26 +59,26 @@ const ReleaseNotesListTemplate = (props) => (
 ReleaseNotesListTemplate.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    beta: PropTypes.bool.isRequired,
-    isGlobalBeta: PropTypes.bool.isRequired,
-    excludeFromSearchIndex: PropTypes.bool.isRequired,
     hasReleaseNotes: PropTypes.bool.isRequired,
   }).isRequired,
   data: PropTypes.shape({
-    mdx: PropTypes.shape({
+    contentPage: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      beta: PropTypes.bool.isRequired,
+      isGlobalBeta: PropTypes.bool.isRequired,
+      excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
     }).isRequired,
-    allReleaseNotes: PropTypes.shape({
+    allReleaseNotePage: PropTypes.shape({
       nodes: PropTypes.arrayOf(
         PropTypes.shape({
-          childMdx: PropTypes.shape({
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-              title: PropTypes.string.isRequired,
-            }),
-            body: PropTypes.string.isRequired,
-          }),
+          slug: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired,
+          description: PropTypes.string.isRequired,
+          type: PropTypes.string.isRequired,
+          topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+          body: PropTypes.string.isRequired,
         })
       ).isRequired,
     }),
@@ -85,26 +89,22 @@ export default ReleaseNotesListTemplate;
 
 export const query = graphql`
   query QueryReleaseOverviewPage($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
+    contentPage(slug: { eq: $slug }) {
+      title
+      beta
+      isGlobalBeta
+      excludeFromSearchIndex
       body
     }
-    allReleaseNotes: allFile(
-      filter: {
-        sourceInstanceName: { eq: "releases" }
-        internal: { mediaType: { eq: "text/mdx" } }
-        name: { ne: "index" }
-      }
-    ) {
+    allReleaseNotePage(sort: { order: DESC, fields: date }) {
       nodes {
-        childMdx {
-          id
-          fields {
-            slug
-            title
-          }
-          body
-        }
-        name
+        slug
+        title
+        date(formatString: "YYYY-MM-DD")
+        description
+        type
+        topics
+        body
       }
     }
   }

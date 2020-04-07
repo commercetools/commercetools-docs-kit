@@ -19,15 +19,17 @@ const releaseNoteMarkdownComponents = {
 
 const ReleaseNotesDetailTemplate = (props) => (
   <ThemeProvider>
-    <LayoutReleaseNotesDetail pageContext={props.pageContext}>
+    <LayoutReleaseNotesDetail pageData={props.data.releaseNotePage}>
       <MDXProvider components={releaseNoteMarkdownComponents}>
         <Markdown.TypographyPage>
           <SEO
-            title={props.pageContext.title}
-            excludeFromSearchIndex={props.pageContext.excludeFromSearchIndex}
+            title={props.data.releaseNotePage.title}
+            excludeFromSearchIndex={
+              props.data.releaseNotePage.excludeFromSearchIndex
+            }
           />
           <div>
-            <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
+            <MDXRenderer>{props.data.releaseNotePage.body}</MDXRenderer>
           </div>
         </Markdown.TypographyPage>
       </MDXProvider>
@@ -38,14 +40,12 @@ const ReleaseNotesDetailTemplate = (props) => (
 ReleaseNotesDetailTemplate.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    beta: PropTypes.bool.isRequired,
-    isGlobalBeta: PropTypes.bool.isRequired,
-    excludeFromSearchIndex: PropTypes.bool.isRequired,
-    hasReleaseNotes: PropTypes.bool.isRequired,
   }).isRequired,
   data: PropTypes.shape({
-    mdx: PropTypes.shape({
+    releaseNotePage: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      isGlobalBeta: PropTypes.bool.isRequired,
+      excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
@@ -55,7 +55,14 @@ export default ReleaseNotesDetailTemplate;
 
 export const query = graphql`
   query QueryReleaseDetailPage($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
+    releaseNotePage(slug: { eq: $slug }) {
+      title
+      isGlobalBeta
+      excludeFromSearchIndex
+      date(formatString: "YYYY-MM-DD")
+      description
+      type
+      topics
       body
     }
   }
