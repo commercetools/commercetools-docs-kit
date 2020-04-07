@@ -18,6 +18,7 @@ const ReleaseNotesIcon = createStyledIcon(UnstyledReleaseNotesIcon);
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const scrollContainerId = 'navigation-scroll-container';
+const scrollFaderHeight = 32;
 
 const ScrollContainer = styled.div`
   overflow: auto;
@@ -35,19 +36,18 @@ const ScrollContainer = styled.div`
 const SidebarHeader = styled.div`
   position: relative;
   border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
-
-  :after {
-    content: '';
-    width: 100%;
-    height: ${designSystem.dimensions.spacings.m};
-    background: linear-gradient(
-      180deg,
-      ${designSystem.colors.light.surfaceSecondary2},
-      transparent
-    );
-    position: absolute;
-    bottom: -calc(${designSystem.dimensions.spacings.m} + 2px);
-  }
+`;
+const SidebarScrollFader = styled.div`
+  content: '';
+  width: 100%;
+  height: ${scrollFaderHeight}px;
+  background: linear-gradient(
+    180deg,
+    ${designSystem.colors.light.surfaceSecondary2},
+    transparent
+  );
+  position: absolute;
+  bottom: -calc(${scrollFaderHeight}px + 2px);
 `;
 const WebsiteTitle = styled.div`
   color: ${designSystem.colors.light.primary};
@@ -55,7 +55,6 @@ const WebsiteTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.h4};
 `;
 const ReleaseNotesTitle = styled.div`
-  border-top: 1px solid ${designSystem.colors.light.borderPrimary};
   padding: ${designSystem.dimensions.spacings.m} 0 !important;
 `;
 const LinkTitle = styled.div`
@@ -287,12 +286,6 @@ const SidebarNavigationLinks = (props) => {
       }
     }
   `);
-  // Restore scroll position
-  // - read the position from the location state, in case it was set
-  // - clear the location state
-  // - initialize the new scroll position
-  // - scroll to the previous position in case it was defined
-  const nextScrollPosition = useScrollPosition(scrollContainerId);
   return (
     <>
       {data.allNavigationYaml.nodes.map((node, index) => (
@@ -302,7 +295,7 @@ const SidebarNavigationLinks = (props) => {
           chapter={node}
           isGlobalBeta={props.isGlobalBeta}
           onLinkClick={props.onLinkClick}
-          nextScrollPosition={nextScrollPosition}
+          nextScrollPosition={props.nextScrollPosition}
           location={props.location}
         />
       ))}
@@ -314,6 +307,7 @@ SidebarNavigationLinks.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
   hasReleaseNotes: PropTypes.bool.isRequired,
+  nextScrollPosition: PropTypes.number.isRequired,
   // from @react/router
   location: PropTypes.shape({
     state: PropTypes.shape({
@@ -331,6 +325,12 @@ const Sidebar = (props) => {
   );
   const shouldRenderLinkToReleaseNotes = props.hasReleaseNotes;
   const shouldRenderBackToDocsLink = props.hasReleaseNotes && isReleasePage;
+  // Restore scroll position
+  // - read the position from the location state, in case it was set
+  // - clear the location state
+  // - initialize the new scroll position
+  // - scroll to the previous position in case it was defined
+  const nextScrollPosition = useScrollPosition(scrollContainerId);
   return (
     <>
       <SidebarHeader>
@@ -353,6 +353,14 @@ const Sidebar = (props) => {
             </Link>
           </SpacingsStack>
         </WebsiteTitle>
+        <SidebarScrollFader
+          style={{
+            opacity:
+              nextScrollPosition > scrollFaderHeight
+                ? 1
+                : nextScrollPosition / scrollFaderHeight,
+          }}
+        />
       </SidebarHeader>
       <ScrollContainer id={scrollContainerId}>
         {shouldRenderLinkToReleaseNotes && (
@@ -401,7 +409,12 @@ const Sidebar = (props) => {
             </SidebarLink>
           </div>
         )}
-        {!shouldRenderBackToDocsLink && <SidebarNavigationLinks {...props} />}
+        {!shouldRenderBackToDocsLink && (
+          <SidebarNavigationLinks
+            {...props}
+            nextScrollPosition={nextScrollPosition}
+          />
+        )}
       </ScrollContainer>
     </>
   );
