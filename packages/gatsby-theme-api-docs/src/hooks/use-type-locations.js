@@ -2,10 +2,13 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { generateTypeURN } from '../utils/ctp-urn';
 
-const convertComponentInMdxToTypeLocations = (data) => {
-  const typeLocations = {};
+const buildPageSlug = (page) => {
+  const [pathWithoutExt] = page.parent.relativePath.split(page.parent.ext);
+  return `/${pathWithoutExt}`;
+};
 
-  data.allComponentInMdx.nodes.forEach((node) => {
+const convertComponentInMdxToTypeLocations = (data) =>
+  data.allComponentInMdx.nodes.reduce((typeLocations, node) => {
     const apiKeyAttribute = node.attributes.find(
       (att) => att.name === 'apiKey'
     );
@@ -13,21 +16,21 @@ const convertComponentInMdxToTypeLocations = (data) => {
 
     const apiKey = apiKeyAttribute ? apiKeyAttribute.value : null;
     const name = typeAttribute ? typeAttribute.value : null;
-    const { slug } = node.page.fields;
+    const slug = buildPageSlug(node.page);
     const urn = generateTypeURN({ apiKey, displayName: name });
     const urlAnchorTag = slug && urn ? `${slug}#${urn}` : '';
 
-    typeLocations[`${apiKey}__${name}`] = {
-      apiKey,
-      name,
-      slug,
-      urn,
-      urlAnchorTag,
+    return {
+      ...typeLocations,
+      [`${apiKey}__${name}`]: {
+        apiKey,
+        name,
+        slug,
+        urn,
+        urlAnchorTag,
+      },
     };
-  });
-
-  return typeLocations;
-};
+  }, {});
 
 export const useTypeLocations = () => {
   const queryResult = useStaticQuery(
@@ -40,8 +43,12 @@ export const useTypeLocations = () => {
               value
             }
             page: mdx {
-              fields {
-                slug
+              parent {
+                id
+                ... on File {
+                  relativePath
+                  ext
+                }
               }
             }
           }
