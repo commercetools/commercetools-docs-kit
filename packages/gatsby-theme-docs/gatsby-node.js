@@ -143,9 +143,12 @@ exports.sourceNodes = ({ actions, schema }) => {
               id: source.parent,
             });
             const mdxField = type.getFields().date;
-            return mdxField.resolve(mdxNode, args, context, {
-              fieldName: 'date',
-            });
+            if (mdxField) {
+              return mdxField.resolve(mdxNode, args, context, {
+                fieldName: 'date',
+              });
+            }
+            return '';
           },
         },
         description: { type: 'String!' },
