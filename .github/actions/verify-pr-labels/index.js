@@ -32,7 +32,7 @@ const getPullRequestNumber = (ref) => {
         repo,
       });
       if (data.length === 0) {
-        throw new Error(`No Pull Requests found for associated commit ${sha}.`);
+        throw new Error(`No Pull Requests found for ref ${ref}.`);
       }
       return data.labels.map((label) => label.name);
     };
@@ -48,60 +48,50 @@ const getPullRequestNumber = (ref) => {
       return checks;
     };
 
-    const updateCheck = async (id, { conclusion }) => {
-      const summary =
-        conclusion === 'failure'
-          ? `Missing labels for Pull Request. Valid labels are ${validLabels.toString()}. (${checkUrl})`
-          : `All good. (${checkUrl})`;
+    const updateCheck = async (id) => {
       const updatedCheck = {
         owner,
         repo,
         check_run_id: id,
         name: checkName,
         status: 'completed',
-        conclusion,
+        conclusion: 'success',
         output: {
-          title: conclusion,
-          summary,
+          title: 'success',
+          summary: 'All good',
         },
       };
-      core.info(`Updating check ${id}: ${JSON.stringify(updatedCheck)}`);
+      core.debug(`Updating check ${id}: ${JSON.stringify(updatedCheck)}`);
       const response = await octokit.checks.update(updatedCheck);
       return response;
     };
 
-    const createCheck = async ({ conclusion }) => {
-      const summary =
-        conclusion === 'failure'
-          ? `Missing labels for Pull Request. Valid labels are ${validLabels.toString()}.`
-          : 'All good.';
+    const createCheck = async () => {
       const newCheck = {
         owner,
         repo,
         head_sha: sha,
         name: checkName,
         status: 'completed',
-        conclusion,
+        conclusion: 'success',
         output: {
-          title: conclusion,
-          summary,
+          title: 'success',
+          summary: 'All good',
         },
       };
-      core.info(`Creating a new check ${JSON.stringify(newCheck)}`);
+      core.debug(`Creating a new check ${JSON.stringify(newCheck)}`);
       const response = await octokit.checks.create(newCheck);
       return response;
     };
 
-    const runCheck = async (conclusion) => {
+    const markAsSuccess = async () => {
       const activeChecks = await getChecks();
       if (activeChecks.total_count > 0) {
         await Promise.all(
-          activeChecks.check_runs.map((check) =>
-            updateCheck(check.id, { conclusion })
-          )
+          activeChecks.check_runs.map((check) => updateCheck(check.id))
         );
       } else {
-        createCheck({ conclusion });
+        createCheck();
       }
     };
 
@@ -113,11 +103,13 @@ const getPullRequestNumber = (ref) => {
       );
       core.info(`Valid labels: ${hasValidLabels}`);
       if (hasValidLabels) {
-        await runCheck('success');
+        await markAsSuccess();
         return;
       }
     }
-    await runCheck('failure');
+    await core.setFailed(
+      `Missing labels for Pull Request. Valid labels are ${validLabels.toString()}. (${checkUrl})`
+    );
   } catch (error) {
     await core.setFailed(error.message);
   }
