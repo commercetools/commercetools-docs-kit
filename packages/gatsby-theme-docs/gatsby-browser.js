@@ -12,10 +12,6 @@ import { docsCache } from './create-emotion-cache';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_NOW_GITHUB_COMMIT_SHA;
-const environment =
-  process.env.GATSBY_NOW_GITHUB_COMMIT_REF === 'master'
-    ? 'production'
-    : 'preview';
 
 const injectScript = (url, attributes = {}, onLoad) => {
   const script = document.createElement('script');
@@ -38,7 +34,7 @@ export const onClientEntry = (
       Sentry.init({
         dsn: 'https://e43538aae75e412eb16b27d8011f5a8b@sentry.io/1819068',
         release: commitSha,
-        environment: `${environment}-${pluginOptions.websiteKey}`,
+        environment: pluginOptions.websiteKey,
         whitelistUrls: ['docs.commercetools.com', 'now.sh'],
       });
     });
