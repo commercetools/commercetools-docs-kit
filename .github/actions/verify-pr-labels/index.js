@@ -15,7 +15,6 @@ const getPullRequestNumber = (ref) => {
     const ref = github.context.ref;
     const sha = github.context.sha;
     const prNumber = getPullRequestNumber(ref);
-    const checkUrl = `https://github.com/${owner}/${repo}/commit/${sha}/checks`;
     const gitHubToken = core.getInput('github-token', { required: true });
     const useLernaJson = Boolean(core.getInput('use-lerna-json'));
 
@@ -50,7 +49,16 @@ const getPullRequestNumber = (ref) => {
     };
 
     const prLabels = await getPrLabels(prNumber);
-    core.info(`Found PR labels ${prLabels}`);
+    core.debug(`Found PR labels: ${prLabels}`);
+
+    const reviews = await octokit.pulls.listReviews({
+      owner,
+      repo,
+      pull_number: prNumber,
+    });
+    const allReviewsFromActionsBot = reviews.data.filter(
+      (review) => review.user.login === 'github-actions[bot]'
+    );
 
     if (prLabels.length > 0) {
       const hasValidLabels = prLabels.some((label) =>
@@ -58,12 +66,51 @@ const getPullRequestNumber = (ref) => {
       );
       if (hasValidLabels) {
         core.info(`Valid labels have been assigned. All good!`);
+        await Promise.all(
+          allReviewsFromActionsBot.map((review) =>
+            githubClient.pulls.dismissReview({
+              owner,
+              repo,
+              pull_number: prNumber,
+              review_id: review.id,
+              message: 'All good!',
+            })
+          )
+        );
         return;
       }
     }
-    await core.setFailed(
-      `Missing labels for Pull Request ${prNumber}. Valid labels are ${validLabels.toString()}. (${checkUrl})`
-    );
+
+    const hasActionBotRequestedChanges =
+      allReviewsFromActionsBot.filter(
+        (review) => review.state === 'REQUEST_CHANGES'
+      ).length > 0;
+    if (hasActionBotRequestedChanges) {
+      core.info(`Skipping REQUEST_CHANGES review`);
+      return;
+    }
+
+    const labelsAsMdList = validLabels
+      .map((label) => `- ${label}`)
+      .join('<br/>');
+    const reviewMessage = ```Hi,
+this is a reminder message for maintainers to assign a proper label to this Pull Requests.
+This is important to be able to properly generate a changelog.
+
+Valid labels are:
+${labelsAsMdList}
+
+The bot will dismiss the review as soon as a valid label has been assigned to the Pull Request.
+
+Thanks.
+      ```;
+    await octokit.pulls.createReview({
+      owner,
+      repo,
+      pull_number: prNumber,
+      body: reviewMessage,
+      event: 'REQUEST_CHANGES',
+    });
   } catch (error) {
     await core.setFailed(error.message);
   }
