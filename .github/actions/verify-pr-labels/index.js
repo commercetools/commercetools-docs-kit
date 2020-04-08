@@ -20,6 +20,7 @@ const getPullRequestNumber = (ref) => {
       .getInput('valid-labels', { required: true })
       .split(',')
       .map((label) => label.trim());
+    core.info(`Configured labels: ${validLabels.toString()}`);
 
     const octokit = new github.GitHub(gitHubToken);
 
@@ -43,9 +44,7 @@ const getPullRequestNumber = (ref) => {
         ref: sha,
         check_name: checkName,
       });
-      core.debug(
-        `fetched current checks for ${owner}/${repo}/${sha} "${checkName}"`
-      );
+      core.info(`Found checks: ${JSON.stringify(checks)}`);
       return checks;
     };
 
@@ -54,7 +53,7 @@ const getPullRequestNumber = (ref) => {
         conclusion === 'failure'
           ? `Missing labels for Pull Request. Valid labels are ${validLabels.toString()}. (${checkUrl})`
           : `All good. (${checkUrl})`;
-      const response = await octokit.checks.update({
+      const updatedCheck = {
         owner,
         repo,
         check_run_id: id,
@@ -65,8 +64,9 @@ const getPullRequestNumber = (ref) => {
           title: conclusion,
           summary,
         },
-      });
-      core.debug('updated current check ' + id);
+      };
+      core.info(`Updating check ${id}: ${JSON.stringify(updatedCheck)}`);
+      const response = await octokit.checks.update(updatedCheck);
       return response;
     };
 
@@ -75,8 +75,7 @@ const getPullRequestNumber = (ref) => {
         conclusion === 'failure'
           ? `Missing labels for Pull Request. Valid labels are ${validLabels.toString()}.`
           : 'All good.';
-      core.debug('creating a new check');
-      const response = await octokit.checks.create({
+      const newCheck = {
         owner,
         repo,
         head_sha: sha,
@@ -87,7 +86,9 @@ const getPullRequestNumber = (ref) => {
           title: conclusion,
           summary,
         },
-      });
+      };
+      core.info(`Creating a new check ${JSON.stringify(newCheck)}`);
+      const response = await octokit.checks.create(newCheck);
       return response;
     };
 
@@ -111,12 +112,14 @@ const getPullRequestNumber = (ref) => {
     };
 
     const prLabels = await getPrLabels();
+    core.info(`Found PR labels ${prLabels}`);
     if (prLabels.length === 0) {
       await runCheck(false);
     }
     const hasValidLabels = prLabels.some((label) =>
       validLabels.includes(label)
     );
+    core.info(`Valid labels: ${hasValidLabels}`);
     if (hasValidLabels) {
       await runCheck(true);
     } else {
