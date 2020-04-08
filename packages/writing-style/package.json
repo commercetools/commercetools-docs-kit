@@ -14,7 +14,8 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
   "bin": {
-    "commercetools-vale": "./bin/commercetools-vale.js"
+    "commercetools-vale": "./bin/commercetools-vale.js",
+    "commercetools-vale-bin": "./bin/vale-2.1.0"
   },
   "scripts": {
     "postinstall": "node scripts/download-vale.js",

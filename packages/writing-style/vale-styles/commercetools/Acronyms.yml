@@ -16,6 +16,7 @@ exceptions:
   - AWS
   - CDN # "content delivery network" does not make it more understandable
   - CLI
+  - CORS
   - CPU
   - CSS
   - CSV
@@ -54,12 +55,14 @@ exceptions:
   - RFC # "Request For Comment" would confuse readers even more.
   - RSA
   - SDK
+  - SHA
   - SKU # generally we try to explain domain terminology but this one is so prevalent across the documentation that we allow it
   - SNS # AWS SNS, appears in many pages in a single place and amazon uses the short name themselves, too
   - SQS # see above
   - SQL
   - SSH
   - SSL
+  - SSO
   - TLS # does not make sense to allow SSL but not TLS
   - SVG
   - TCP
@@ -78,6 +81,7 @@ exceptions:
   - ISO
   - RSS
   - YYYY # to be able to describe date formats like YYYY-MM-DD
+  - ZEIT # the zeit.co service is trademarked in uppercased letters.
   # the following exceptions are allowed because they are caught as errors by the ToDo rule.
   - XXX
   - FIXME
