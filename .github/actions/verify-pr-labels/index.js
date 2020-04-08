@@ -1,7 +1,9 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-const checkName = 'Verify Pull Request Labels'(async () => {
+const checkName = 'Verify Pull Request Labels';
+
+(async () => {
   try {
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
