@@ -5,7 +5,8 @@ const github = require('@actions/github');
 const getPullRequestNumber = (ref) => {
   core.debug(`Parsing ref: ${ref}`);
   // This assumes that the ref is in the form of `refs/pull/:prNumber/merge`
-  return ref.replace(/refs\/pull\/(\d+)\/merge/, '$1');
+  const prNumber = ref.replace(/refs\/pull\/(\d+)\/merge/, '$1');
+  return parseInt(prNumber, 10);
 };
 
 (async () => {
@@ -13,8 +14,7 @@ const getPullRequestNumber = (ref) => {
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
     const ref = github.context.ref;
-    const sha = github.context.sha;
-    const prNumber = getPullRequestNumber(ref);
+    const prNumber = github.context.issue.number || getPullRequestNumber(ref);
     const gitHubToken = core.getInput('github-token', { required: true });
     const useLernaJson = Boolean(core.getInput('use-lerna-json'));
 
@@ -71,7 +71,7 @@ const getPullRequestNumber = (ref) => {
         core.info(`Valid labels have been assigned. All good!`);
         await Promise.all(
           allReviewsFromActionsBot.map((review) =>
-            githubClient.pulls.dismissReview({
+            octokit.pulls.dismissReview({
               owner,
               repo,
               pull_number: prNumber,
