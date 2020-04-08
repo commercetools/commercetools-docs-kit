@@ -71,9 +71,13 @@ const LinkItem = styled.div`
   flex-direction: row;
   align-items: flex-end;
 `;
-const linkStyles = `
-  border-left: ${designSystem.dimensions.spacings.xs} solid ${designSystem.colors.light.surfaceSecondary1};
-  padding-left: calc(${designSystem.dimensions.spacings.m} - ${designSystem.dimensions.spacings.xs});
+const linkStyles = css`
+  border-left: ${designSystem.dimensions.spacings.xs} solid
+    ${designSystem.colors.light.surfaceSecondary1};
+  padding-left: calc(
+    ${designSystem.dimensions.spacings.m} -
+      ${designSystem.dimensions.spacings.xs}
+  );
   text-decoration: none;
   color: ${designSystem.colors.light.textSecondary};
   display: flex;
@@ -84,8 +88,9 @@ const linkStyles = `
     color: ${designSystem.colors.light.linkNavigation} !important;
   }
 `;
-const activeLinkStyles = `
-  border-left: ${designSystem.dimensions.spacings.xs} solid ${designSystem.colors.light.linkNavigation} !important;
+const activeLinkStyles = css`
+  border-left: ${designSystem.dimensions.spacings.xs} solid
+    ${designSystem.colors.light.linkNavigation} !important;
   color: ${designSystem.colors.light.linkNavigation} !important;
 `;
 
@@ -133,8 +138,8 @@ const SidebarLink = (props) => {
 SidebarLink.propTypes = {
   to: PropTypes.string.isRequired,
   locationPath: PropTypes.string,
-  customStyles: PropTypes.string,
-  customActiveStyles: PropTypes.string,
+  customStyles: PropTypes.object, // emotion css object
+  customActiveStyles: PropTypes.object, // emotion css object
 };
 
 const SidebarLinkWrapper = (props) => {
