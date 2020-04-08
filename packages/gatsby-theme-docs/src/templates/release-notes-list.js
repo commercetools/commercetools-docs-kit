@@ -41,10 +41,7 @@ const ReleaseNotesListTemplate = (props) => (
               {props.data.allReleaseNotePage &&
                 props.data.allReleaseNotePage.nodes &&
                 props.data.allReleaseNotePage.nodes.map((releaseNote) => (
-                  <LayoutReleaseNote
-                    key={releaseNote.slug}
-                    releaseNote={releaseNote}
-                  />
+                  <LayoutReleaseNote key={releaseNote.slug} {...releaseNote} />
                 ))}
             </SpacingsStack>
           </MDXProvider>
