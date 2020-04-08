@@ -2,11 +2,17 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 const checkName = 'Verify Pull Request Labels';
+const getPullRequestNumber = (ref) => {
+  core.info(`Parsing ref ${ref}`);
+  // This assumes that the ref is in the form of `refs/pull/:prNumber/merge`
+  return ref.replace(/refs\/pull\/(\d+)\/merge/, '$1');
+};
 
 (async () => {
   try {
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
+    const ref = github.context.head_ref;
     const sha = github.context.sha;
     const checkUrl = `https://github.com/${owner}/${repo}/commit/${sha}/checks`;
     const gitHubToken = core.getInput('github-token', { required: true });
@@ -18,20 +24,16 @@ const checkName = 'Verify Pull Request Labels';
     const octokit = new github.GitHub(gitHubToken);
 
     const getPrLabels = async () => {
-      const {
-        data: allPrsForCommit,
-      } = await octokit.repos.listPullRequestsAssociatedWithCommit({
-        commit_sha: sha,
+      const prNumber = getPullRequestNumber(ref);
+      const { data } = await octokit.pulls.get({
+        pull_number: prNumber,
         owner,
         repo,
-        mediaType: {
-          previews: ['groot-preview'],
-        },
       });
-      if (allPrsForCommit.length === 0) {
+      if (data.length === 0) {
         throw new Error(`No Pull Requests found for associated commit ${sha}.`);
       }
-      return allPrsForCommit[0].labels.map((label) => label.name);
+      return data.labels.map((label) => label.name);
     };
 
     const getChecks = async () => {
