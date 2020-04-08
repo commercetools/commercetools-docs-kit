@@ -98,7 +98,7 @@ export const query = graphql`
       nodes {
         slug
         title
-        date(formatString: "YYYY-MM-DD")
+        date(formatString: "D. MMMM YYYY")
         description
         type
         topics

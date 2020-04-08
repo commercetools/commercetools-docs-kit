@@ -13,7 +13,7 @@ const Type = styled.p`
   display: inline-block;
   padding: ${designSystem.dimensions.spacings.xs}
     ${designSystem.dimensions.spacings.s};
-  font-family: 'Open Sans';
+  font-size: 12px;
   line-height: 16px;
   border: 1px solid #00ccb4;
   border-radius: 2px;
@@ -21,22 +21,42 @@ const Type = styled.p`
   text-transform: capitalize;
 `;
 
+const Topics = styled.tr`
+  color: #078cdf;
+  font-size: 14px;
+  td {
+    padding: 4px;
+  }
+  td:first-of-type {
+    padding-left: 0;
+  }
+  td:not(:first-of-type) {
+    border-left: 1px solid #999;
+  }
+`;
+
 const ReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
       <ReleaseNoteTitle>{props.releaseNote.title}</ReleaseNoteTitle>
-      <DateElement>2. February 2020</DateElement>
-      {/* TODO: render date properly */}
-      {/* <div>{props.releaseNote.date}</div> */}
+      <DateElement>{props.releaseNote.date}</DateElement>
       <div>
         <Type>{props.releaseNote.type.toLowerCase()}</Type>
       </div>
-      {/* TODO: topics should be rendered in a grid/table */}
-      <div>
-        {props.releaseNote.topics.map((topic, index) =>
-          index === props.releaseNote.topics.length - 1 ? topic : `${topic} | `
-        )}
-      </div>
+      {props.releaseNote.topics.length > 0 && (
+        <div>
+          <table>
+            <tbody>
+              <Topics>
+                {props.releaseNote.topics.map((topic) => (
+                  <td key={topic}>{topic}</td>
+                ))}
+              </Topics>
+            </tbody>
+          </table>
+        </div>
+      )}
+
       <div>
         <MDXRenderer>{props.releaseNote.body}</MDXRenderer>
       </div>
