@@ -37,7 +37,8 @@
         ]
       }
     },
-    "vscode-vale.path": "${workspaceFolder}/node_modules/.bin/commercetools-vale",
+    "vscode-vale.path": "${workspaceFolder}/node_modules/.bin/commercetools-vale-bin",
+    "vscode-vale.configPath": "${workspaceFolder}/packages/writing-style/.vale.ini",
     "vscode-vale.fileExtensions": [
       "md",
       "markdown",
