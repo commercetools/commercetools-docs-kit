@@ -43,9 +43,7 @@ const ReleaseNotesListTemplate = (props) => (
                 props.data.allReleaseNotePage.nodes.map((releaseNote) => (
                   <LayoutReleaseNote
                     key={releaseNote.slug}
-                    title={releaseNote.title}
-                    date={releaseNote.date}
-                    body={releaseNote.body}
+                    releaseNote={releaseNote}
                   />
                 ))}
             </SpacingsStack>
