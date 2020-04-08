@@ -58,8 +58,13 @@ const getPullRequestNumber = (ref) => {
     const allReviewsFromActionsBot = reviews.data.filter(
       (review) => review.user.login === 'github-actions[bot]'
     );
+    const lastReviewFromActionsBot =
+      allReviewsFromActionsBot.length > 0 &&
+      allReviewsFromActionsBot[allReviewsFromActionsBot.length - 1];
     core.debug(
-      `Reviews from actions bot: ${JSON.stringify(allReviewsFromActionsBot)}`
+      `Last review from actions bot: ${JSON.stringify(
+        lastReviewFromActionsBot
+      )}`
     );
 
     if (prLabels.length > 0) {
@@ -68,25 +73,26 @@ const getPullRequestNumber = (ref) => {
       );
       if (hasValidLabels) {
         core.info(`Valid labels have been assigned. All good!`);
-        await Promise.all(
-          allReviewsFromActionsBot.map((review) =>
-            octokit.pulls.dismissReview({
-              owner,
-              repo,
-              pull_number: prNumber,
-              review_id: review.id,
-              message: 'All good!',
-            })
-          )
-        );
+        if (
+          lastReviewFromActionsBot &&
+          lastReviewFromActionsBot.state !== 'DISMISSED'
+        ) {
+          await octokit.pulls.dismissReview({
+            owner,
+            repo,
+            pull_number: prNumber,
+            review_id: lastReviewFromActionsBot.id,
+            message: 'All good!',
+          });
+        }
         return;
       }
     }
 
-    const hasActionBotRequestedChanges = allReviewsFromActionsBot.some(
-      (review) => review.state === 'CHANGES_REQUESTED'
-    );
-    if (hasActionBotRequestedChanges) {
+    if (
+      lastReviewFromActionsBot &&
+      lastReviewFromActionsBot.state === 'CHANGES_REQUESTED'
+    ) {
       core.info(`Skipping REQUEST_CHANGES review`);
       return;
     }
