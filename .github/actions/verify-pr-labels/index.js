@@ -17,25 +17,23 @@ const getPullRequestNumber = (ref) => {
     const prNumber = github.context.issue.number || getPullRequestNumber(ref);
     const gitHubToken = core.getInput('github-token', { required: true });
     const useLernaJson = Boolean(core.getInput('use-lerna-json'));
+    const octokit = new github.GitHub(gitHubToken);
 
     const parseValidLabels = () => {
       if (useLernaJson) {
         const lernaJson = JSON.parse(
           fs.readFileSync('./lerna.json', { encoding: 'utf8' })
         );
+        core.info(`Using labels from lerna.json`);
         return Object.keys(lernaJson.changelog.labels);
       }
-      return core
+      const labels = core
         .getInput('valid-labels', { required: true })
         .split(',')
         .map((label) => label.trim());
+      core.info(`Configured labels: ${labels.toString()}`);
+      return labels;
     };
-
-    const validLabels = parseValidLabels();
-    core.info(`Configured labels: ${validLabels.toString()}`);
-
-    const octokit = new github.GitHub(gitHubToken);
-
     const getPrLabels = async (prNumber) => {
       const { data } = await octokit.pulls.get({
         pull_number: prNumber,
@@ -48,6 +46,7 @@ const getPullRequestNumber = (ref) => {
       return data.labels.map((label) => label.name);
     };
 
+    const validLabels = parseValidLabels();
     const prLabels = await getPrLabels(prNumber);
     core.debug(`Found PR labels: ${prLabels.toString()}`);
 
@@ -84,10 +83,12 @@ const getPullRequestNumber = (ref) => {
       }
     }
 
-    const hasActionBotRequestedChanges =
-      allReviewsFromActionsBot.filter(
-        (review) => review.state === 'REQUEST_CHANGES'
-      ).length > 0;
+    const hasActionBotRequestedChanges = allReviewsFromActionsBot.some(
+      (review) => review.state === 'REQUEST_CHANGES'
+    );
+    core.info(
+      `Reviews from actions bot: ${JSON.stringify(allReviewsFromActionsBot)}`
+    );
     if (hasActionBotRequestedChanges) {
       core.info(`Skipping REQUEST_CHANGES review`);
       return;
