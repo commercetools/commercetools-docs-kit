@@ -1,3 +1,4 @@
+const fs = require('fs');
 const core = require('@actions/core');
 const github = require('@actions/github');
 
@@ -15,11 +16,26 @@ const getPullRequestNumber = (ref) => {
     const sha = github.context.sha;
     const prNumber = getPullRequestNumber(ref);
     const checkUrl = `https://github.com/${owner}/${repo}/commit/${sha}/checks`;
-    const validLabels = core
-      .getInput('valid-labels', { required: true })
-      .split(',')
-      .map((label) => label.trim());
+    const gitHubToken = core.getInput('github-token', { required: true });
+    const useLernaJson = Boolean(core.getInput('use-lerna-json'));
+
+    const parseValidLabels = () => {
+      if (useLernaJson) {
+        const lernaJson = JSON.parse(
+          fs.readFileSync('./lerna.json', { encoding: 'utf8' })
+        );
+        return Object.keys(lernaJson.changelog.labels);
+      }
+      return core
+        .getInput('valid-labels', { required: true })
+        .split(',')
+        .map((label) => label.trim());
+    };
+
+    const validLabels = parseValidLabels();
     core.info(`Configured labels: ${validLabels.toString()}`);
+
+    const octokit = new github.GitHub(gitHubToken);
 
     const getPrLabels = async (prNumber) => {
       const { data } = await octokit.pulls.get({

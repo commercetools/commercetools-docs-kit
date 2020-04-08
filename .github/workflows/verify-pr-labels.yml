@@ -25,5 +25,5 @@ jobs:
       - name: Verify Pull Request Labels
         uses: ./.github/actions/verify-pr-labels
         with:
-          # For the list of labels, see `lerna.json`
-          valid-labels: '🐛 Type: Bug,💥 Type: Breaking Change,🔮 Type: Chore,✍️ Type: Documentation,💅 Type: Enhancement,🚀 Type: New Feature,⛑ Type: Refactoring,🖥 Type: Website,🚨 Type: Security,🤖 Type: Dependencies'
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          use-lerna-json: true
