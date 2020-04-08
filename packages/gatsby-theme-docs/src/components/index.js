@@ -7,6 +7,7 @@ export { default as ErrorBoundary } from './error-boundary';
 export { default as Link, ExternalSiteLink } from './link';
 export { default as MultiCodeExample } from './multi-code-example';
 export { default as Overlay } from './overlay';
+export { default as ReleaseNotesSubscribeLinks } from './release-notes-subscribe-links';
 export { default as SEO } from './seo';
 export { default as SearchDialog } from './search-dialog';
 export { default as SearchInput } from './search-input';

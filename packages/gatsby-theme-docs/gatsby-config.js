@@ -101,7 +101,7 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'releases',
+          name: 'releaseNotes',
           path: path.resolve(`./src/releases`),
         },
       },

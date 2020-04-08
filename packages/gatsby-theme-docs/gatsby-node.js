@@ -6,6 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
@@ -31,7 +32,7 @@ exports.onPreBootstrap = ({ reporter }) => {
   });
 };
 
-exports.sourceNodes = ({ actions }) => {
+exports.sourceNodes = ({ actions, schema }) => {
   actions.createTypes(`
     type NavigationYaml implements Node @dontInfer {
       id: ID!
@@ -66,91 +67,200 @@ exports.sourceNodes = ({ actions }) => {
       label: String!
       href: String!
     }
+
+    enum ReleaseNoteType {
+      feature
+      fix
+      enhancement
+    }
   `);
+
+  // Create a new type representing a Content Page
+  // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
+  actions.createTypes(
+    schema.buildObjectType({
+      name: 'ContentPage',
+      fields: {
+        id: { type: 'ID!' },
+        slug: { type: 'String!' },
+        title: { type: 'String!' },
+        excludeFromSearchIndex: { type: 'Boolean!' },
+        isGlobalBeta: { type: 'Boolean!' },
+        beta: { type: 'Boolean!' },
+        body: {
+          type: 'String!',
+          resolve(source, args, context, info) {
+            const type = info.schema.getType('Mdx');
+            const mdxNode = context.nodeModel.getNodeById({
+              id: source.parent,
+            });
+            const mdxField = type.getFields().body;
+            return mdxField.resolve(mdxNode, {}, context, {
+              fieldName: 'body',
+            });
+          },
+        },
+        tableOfContents: {
+          type: 'JSON',
+          args: {
+            maxDepth: { type: 'Int' },
+          },
+          resolve(source, args, context, info) {
+            const type = info.schema.getType('Mdx');
+            const mdxNode = context.nodeModel.getNodeById({
+              id: source.parent,
+            });
+            const mdxField = type.getFields().tableOfContents;
+            return mdxField.resolve(mdxNode, args, context, {
+              fieldName: 'tableOfContents',
+            });
+          },
+        },
+      },
+      interfaces: ['Node'],
+    })
+  );
+
+  // Create a new type representing a Release Note Page.
+  // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
+  actions.createTypes(
+    schema.buildObjectType({
+      name: 'ReleaseNotePage',
+      fields: {
+        id: { type: 'ID!' },
+        slug: { type: 'String!' },
+        title: { type: 'String!' },
+        excludeFromSearchIndex: { type: 'Boolean!' },
+        isGlobalBeta: { type: 'Boolean!' },
+        date: {
+          type: 'Date!',
+          args: {
+            formatString: { type: 'String' },
+          },
+          resolve(source, args, context, info) {
+            const type = info.schema.getType('Mdx');
+            const mdxNode = context.nodeModel.getNodeById({
+              id: source.parent,
+            });
+            const mdxField = type.getFields().date;
+            if (mdxField) {
+              return mdxField.resolve(mdxNode, args, context, {
+                fieldName: 'date',
+              });
+            }
+            return '';
+          },
+        },
+        description: { type: 'String!' },
+        type: { type: 'ReleaseNoteType!' },
+        topics: { type: '[String!]!' },
+        published: { type: 'Boolean!' },
+        body: {
+          type: 'String!',
+          resolve(source, args, context, info) {
+            const type = info.schema.getType('Mdx');
+            const mdxNode = context.nodeModel.getNodeById({
+              id: source.parent,
+            });
+            const mdxField = type.getFields().body;
+            return mdxField.resolve(mdxNode, {}, context, {
+              fieldName: 'body',
+            });
+          },
+        },
+      },
+      interfaces: ['Node'],
+    })
+  );
 };
 
-exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
+exports.onCreateNode = (
+  { node, getNode, actions, createNodeId },
+  pluginOptions
+) => {
   if (node.internal.type !== 'Mdx') {
     return;
   }
+
+  const parent = getNode(node.parent);
 
   const originalSlug = createFilePath({ node, getNode, basePath: 'pages' });
   const slug = pluginOptions.createNodeSlug
     ? pluginOptions.createNodeSlug(originalSlug, { node })
     : originalSlug;
 
-  // Common fields from frontmatter values
-  // This is necessary to ensure that we always have those fields in the schema
-  // instead of relying on GraphQL inferring the schema from the MDX pages.
-  // See https://github.com/gatsbyjs/gatsby/pull/5495#issuecomment-392882900
-  actions.createNodeField({
-    node,
-    name: 'title',
-    value: node.frontmatter.title,
-  });
-  actions.createNodeField({
-    node,
-    name: 'excludeFromSearchIndex',
-    value:
-      Boolean(node.frontmatter.excludeFromSearchIndex) ||
-      Boolean(pluginOptions.excludeFromSearchIndex),
-  });
-
-  const isContentPage = node.fileAbsolutePath.startsWith(
-    path.resolve('src/content')
-  );
+  const isContentPage =
+    parent.internal.mediaType === 'text/mdx' &&
+    parent.sourceInstanceName === 'content';
   if (isContentPage) {
-    actions.createNodeField({
-      node,
-      name: 'slug',
-      value: trimTrailingSlash(slug) || '/',
+    const fieldData = {
+      slug: trimTrailingSlash(slug) || '/',
+      title: node.frontmatter.title,
+      isGlobalBeta: Boolean(pluginOptions.beta),
+      excludeFromSearchIndex:
+        Boolean(node.frontmatter.excludeFromSearchIndex) ||
+        Boolean(pluginOptions.excludeFromSearchIndex),
+      beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
+    };
+    actions.createNode({
+      ...fieldData,
+      // Required fields
+      id: createNodeId(`${node.id} >>> ContentPage`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: 'ContentPage',
+        contentDigest: crypto
+          .createHash(`md5`)
+          .update(JSON.stringify(fieldData))
+          .digest(`hex`),
+        content: JSON.stringify(fieldData),
+        description: 'Content Pages',
+      },
     });
-
-    // Create other node fields from the frontmatter values.
-    actions.createNodeField({
-      node,
-      name: 'beta',
-      value: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
-    });
-    actions.createNodeField({
-      node,
-      name: 'isGlobalBeta',
-      value: Boolean(pluginOptions.beta),
+    actions.createParentChildLink({
+      parent,
+      child: node,
     });
   }
 
-  if (pluginOptions.hasReleaseNotes) {
-    const isReleaseNotesPage = node.fileAbsolutePath.startsWith(
-      path.resolve('src/releases')
-    );
-    if (isReleaseNotesPage) {
-      const releaseNoteSlug = generateReleaseNoteSlug(node);
-      actions.createNodeField({
-        node,
-        name: 'slug',
-        value: releaseNoteSlug,
-      });
-      actions.createNodeField({
-        node,
-        name: 'date',
-        value: node.frontmatter.date,
-      });
-      actions.createNodeField({
-        node,
-        name: 'description',
-        value: node.frontmatter.description,
-      });
-      actions.createNodeField({
-        node,
-        name: 'type',
-        value: node.frontmatter.type,
-      });
-      actions.createNodeField({
-        node,
-        name: 'topics',
-        value: node.frontmatter.topics,
-      });
-    }
+  const isReleaseNotesPage =
+    parent.internal.mediaType === 'text/mdx' &&
+    parent.sourceInstanceName === 'releaseNotes';
+  if (isReleaseNotesPage) {
+    const fieldData = {
+      slug: generateReleaseNoteSlug(node),
+      title: node.frontmatter.title,
+      isGlobalBeta: Boolean(pluginOptions.beta),
+      excludeFromSearchIndex:
+        Boolean(node.frontmatter.excludeFromSearchIndex) ||
+        Boolean(pluginOptions.excludeFromSearchIndex),
+      date: node.frontmatter.date,
+      description: node.frontmatter.description,
+      type: node.frontmatter.type,
+      topics: node.frontmatter.topics || [],
+      published: Boolean(node.frontmatter.published),
+    };
+    actions.createNode({
+      ...fieldData,
+      // Required fields
+      id: createNodeId(`${node.id} >>> ReleaseNotePage`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: 'ReleaseNotePage',
+        contentDigest: crypto
+          .createHash(`md5`)
+          .update(JSON.stringify(fieldData))
+          .digest(`hex`),
+        content: JSON.stringify(fieldData),
+        description: 'Release Note Pages',
+      },
+    });
+    actions.createParentChildLink({
+      parent,
+      child: node,
+    });
   }
 };
 
@@ -173,33 +283,33 @@ function generateReleaseNoteSlug(node) {
 }
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
-exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
-  const allContentPagesResult = await graphql(`
+exports.createPages = async (...args) => {
+  await createContentPages(...args);
+  await createReleaseNotePages(...args);
+};
+
+async function createContentPages(
+  { graphql, actions, reporter },
+  pluginOptions
+) {
+  const result = await graphql(`
     query QueryAllContentPages {
-      contents: allFile(
-        filter: {
-          sourceInstanceName: { eq: "content" }
-          internal: { mediaType: { eq: "text/mdx" } }
-        }
-      ) {
+      allContentPage {
         nodes {
-          childMdx {
-            id
-            fields {
-              slug
-              title
-              beta
-              isGlobalBeta
-              excludeFromSearchIndex
-            }
-          }
-          name
+          slug
         }
+      }
+      allReleaseNotePage {
+        totalCount
       }
     }
   `);
-  if (allContentPagesResult.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "allMdx" query');
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `🚨  ERROR: Loading all MDX files.\nPlugin options: ${JSON.stringify(
+        pluginOptions
+      )}`
+    );
   }
   const navigationYamlResult = await graphql(`
     query QueryNavigationYaml {
@@ -217,84 +327,66 @@ exports.createPages = async ({ graphql, actions, reporter }, pluginOptions) => {
   if (navigationYamlResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "allNavigationYaml" query');
   }
-  const pages = allContentPagesResult.data.contents.nodes;
+  const pages = result.data.allContentPage.nodes;
   const navigationPages = navigationYamlResult.data.allNavigationYaml.nodes.reduce(
     (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
     []
   );
-  pages.forEach(({ childMdx, name }) => {
-    if (name === 'releases') {
-      reporter.panicOnBuild(
-        '🚨  ERROR: file named "releases" is not allowed in src/content directory'
-      );
-      return;
-    }
-
+  pages.forEach(({ slug }) => {
+    const isOverviewPage = slug === '/releases';
     const matchingNavigationPage = navigationPages.find(
-      (page) =>
-        trimTrailingSlash(page.path) === trimTrailingSlash(childMdx.fields.slug)
+      (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
     actions.createPage({
-      // This is the slug you created before
-      // (or `node.frontmatter.slug`)
-      path: childMdx.fields.slug,
+      path: slug,
       // This component will wrap our MDX content
-      component: require.resolve('./src/templates/page-content.js'),
-      // You can use the values in this context in
-      // our page layout component
+      component: isOverviewPage
+        ? require.resolve('./src/templates/release-notes-list.js')
+        : require.resolve('./src/templates/page-content.js'),
+      // You can use the values in this context in our page layout component
       context: {
-        ...childMdx.fields,
+        slug,
         shortTitle: matchingNavigationPage
           ? matchingNavigationPage.title
           : undefined,
+        hasReleaseNotes: result.data.allReleaseNotePage.totalCount > 0,
       },
     });
   });
+}
 
-  if (pluginOptions.hasReleaseNotes) {
-    const allReleaseNotePagesResult = await graphql(`
-      query QueryAllReleaseNotePages {
-        releaseNotes: allFile(
-          filter: {
-            sourceInstanceName: { eq: "releases" }
-            internal: { mediaType: { eq: "text/mdx" } }
-          }
-        ) {
-          nodes {
-            childMdx {
-              id
-              fields {
-                slug
-                title
-                excludeFromSearchIndex
-                date
-                description
-                type
-                topics
-              }
-            }
-            name
-          }
+async function createReleaseNotePages(
+  { graphql, actions, reporter },
+  pluginOptions
+) {
+  const result = await graphql(`
+    query QueryAllReleaseNotePages {
+      allReleaseNotePage {
+        nodes {
+          slug
         }
       }
-    `);
-
-    allReleaseNotePagesResult.data.releaseNotes.nodes.forEach(
-      ({ childMdx, name }) => {
-        const isOverviewPage = name === 'index';
-        actions.createPage({
-          // TODO: how should the path be named exactly?
-          path: childMdx.fields.slug,
-          component: require.resolve('./src/templates/releases.js'),
-          context: {
-            ...childMdx.fields,
-            isOverviewPage,
-          },
-        });
-      }
+    }
+  `);
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `🚨  ERROR: Loading all MDX files.\nPlugin options: ${JSON.stringify(
+        pluginOptions
+      )}`
     );
   }
-};
+  result.data.allReleaseNotePage.nodes.forEach(({ slug }) => {
+    actions.createPage({
+      path: slug,
+      // This component will wrap our MDX content
+      component: require.resolve('./src/templates/release-notes-detail.js'),
+      // You can use the values in this context in our page layout component
+      context: {
+        slug,
+      },
+    });
+  });
+}
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   const config = getConfig();
