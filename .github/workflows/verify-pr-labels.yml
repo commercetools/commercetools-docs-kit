@@ -2,12 +2,14 @@ name: Verify Pull Request Labels
 
 on:
   pull_request:
-    types: [opened, labeled, unlabeled, synchronize]
+    types: [ready_for_review, labeled, unlabeled]
     paths-ignore:
       - "CHANGELOG.md"
 
 jobs:
   verify_pr_labels:
+    if: github.event.pull_request.draft == false
+
     # https://github.com/cypress-io/github-action/blob/263091cab1962eea06e293a19146e9d0241a1c32/README.md#important
     runs-on: ubuntu-16.04
 
