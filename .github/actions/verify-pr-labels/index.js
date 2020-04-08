@@ -1,9 +1,8 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-const checkName = 'Verify Pull Request Labels';
 const getPullRequestNumber = (ref) => {
-  core.info(`Parsing ref ${ref}`);
+  core.debug(`Parsing ref: ${ref}`);
   // This assumes that the ref is in the form of `refs/pull/:prNumber/merge`
   return ref.replace(/refs\/pull\/(\d+)\/merge/, '$1');
 };
@@ -14,101 +13,40 @@ const getPullRequestNumber = (ref) => {
     const repo = github.context.repo.repo;
     const ref = github.context.ref;
     const sha = github.context.sha;
+    const prNumber = getPullRequestNumber(ref);
     const checkUrl = `https://github.com/${owner}/${repo}/commit/${sha}/checks`;
-    const gitHubToken = core.getInput('github-token', { required: true });
     const validLabels = core
       .getInput('valid-labels', { required: true })
       .split(',')
       .map((label) => label.trim());
     core.info(`Configured labels: ${validLabels.toString()}`);
 
-    const octokit = new github.GitHub(gitHubToken);
-
-    const getPrLabels = async () => {
-      const prNumber = getPullRequestNumber(ref);
+    const getPrLabels = async (prNumber) => {
       const { data } = await octokit.pulls.get({
         pull_number: prNumber,
         owner,
         repo,
       });
       if (data.length === 0) {
-        throw new Error(`No Pull Requests found for ref ${ref}.`);
+        throw new Error(`No Pull Requests found for ${prNumber} (${ref}).`);
       }
       return data.labels.map((label) => label.name);
     };
 
-    const getChecks = async () => {
-      const { data: checks } = await octokit.checks.listForRef({
-        owner,
-        repo,
-        ref: sha,
-        check_name: checkName,
-      });
-      core.info(`Found checks: ${JSON.stringify(checks)}`);
-      return checks;
-    };
-
-    const updateCheck = async (id) => {
-      const updatedCheck = {
-        owner,
-        repo,
-        check_run_id: id,
-        name: checkName,
-        status: 'completed',
-        conclusion: 'success',
-        output: {
-          title: 'success',
-          summary: 'All good',
-        },
-      };
-      core.debug(`Updating check ${id}: ${JSON.stringify(updatedCheck)}`);
-      const response = await octokit.checks.update(updatedCheck);
-      return response;
-    };
-
-    const createCheck = async () => {
-      const newCheck = {
-        owner,
-        repo,
-        head_sha: sha,
-        name: checkName,
-        status: 'completed',
-        conclusion: 'success',
-        output: {
-          title: 'success',
-          summary: 'All good',
-        },
-      };
-      core.debug(`Creating a new check ${JSON.stringify(newCheck)}`);
-      const response = await octokit.checks.create(newCheck);
-      return response;
-    };
-
-    const markAsSuccess = async () => {
-      const activeChecks = await getChecks();
-      if (activeChecks.total_count > 0) {
-        await Promise.all(
-          activeChecks.check_runs.map((check) => updateCheck(check.id))
-        );
-      } else {
-        createCheck();
-      }
-    };
-
-    const prLabels = await getPrLabels();
+    const prLabels = await getPrLabels(prNumber);
     core.info(`Found PR labels ${prLabels}`);
+
     if (prLabels.length > 0) {
       const hasValidLabels = prLabels.some((label) =>
         validLabels.includes(label)
       );
-      core.info(`Valid labels: ${hasValidLabels}`);
       if (hasValidLabels) {
-        await markAsSuccess();
+        core.info(`Valid labels have been assigned. All good!`);
         return;
       }
     }
     await core.setFailed(
-      `Missing labels for Pull Request. Valid labels are ${validLabels.toString()}. (${checkUrl})`
+      `Missing labels for Pull Request ${prNumber}. Valid labels are ${validLabels.toString()}. (${checkUrl})`
     );
   } catch (error) {
     await core.setFailed(error.message);

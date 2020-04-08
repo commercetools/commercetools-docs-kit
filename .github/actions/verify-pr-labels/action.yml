@@ -1,9 +1,6 @@
 name: 'Verify Pull Request Labels'
 description: 'Verify that the Pull Request has at least one valid label'
 inputs:
-  github-token:
-    description: 'Token provided by GitHub'
-    required: true
   valid-labels:
     description: 'A comma-separated list of required GitHub Labels that should be assigned to the Pull Request'
     required: true
