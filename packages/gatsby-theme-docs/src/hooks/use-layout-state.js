@@ -39,6 +39,7 @@ const useLayoutState = () => {
     topMenu: {
       isTopMenuOpen,
       toggleTopMenu,
+      closeTopMenu,
     },
     searchDialog: {
       isSearchDialogOpen,

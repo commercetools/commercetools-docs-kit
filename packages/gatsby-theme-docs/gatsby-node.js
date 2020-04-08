@@ -32,6 +32,24 @@ exports.onPreBootstrap = ({ reporter }) => {
   });
 };
 
+// Inspired by https://github.com/gatsbyjs/gatsby/blob/ead08cc1fd9fa30a46fa8b6b7411141a5c9ba4f8/packages/gatsby-theme-blog-core/gatsby-node.js#L29
+const identity = (node) => node;
+const resolverPassthrough = ({
+  typeName = 'Mdx',
+  fieldName,
+  resolveNode = identity,
+}) => async (source, args, context, info) => {
+  const type = info.schema.getType(typeName);
+  const mdxNode = context.nodeModel.getNodeById({
+    id: source.parent,
+  });
+  const field = type.getFields()[fieldName];
+  const result = await field.resolve(resolveNode(mdxNode), args, context, {
+    fieldName,
+  });
+  return result;
+};
+
 exports.sourceNodes = ({ actions, schema }) => {
   actions.createTypes(`
     type NavigationYaml implements Node @dontInfer {
@@ -89,32 +107,17 @@ exports.sourceNodes = ({ actions, schema }) => {
         beta: { type: 'Boolean!' },
         body: {
           type: 'String!',
-          resolve(source, args, context, info) {
-            const type = info.schema.getType('Mdx');
-            const mdxNode = context.nodeModel.getNodeById({
-              id: source.parent,
-            });
-            const mdxField = type.getFields().body;
-            return mdxField.resolve(mdxNode, {}, context, {
-              fieldName: 'body',
-            });
-          },
+          resolve: resolverPassthrough({ fieldName: 'body' }),
         },
         tableOfContents: {
           type: 'JSON',
           args: {
-            maxDepth: { type: 'Int' },
+            maxDepth: {
+              type: `Int`,
+              default: 6,
+            },
           },
-          resolve(source, args, context, info) {
-            const type = info.schema.getType('Mdx');
-            const mdxNode = context.nodeModel.getNodeById({
-              id: source.parent,
-            });
-            const mdxField = type.getFields().tableOfContents;
-            return mdxField.resolve(mdxNode, args, context, {
-              fieldName: 'tableOfContents',
-            });
-          },
+          resolve: resolverPassthrough({ fieldName: 'tableOfContents' }),
         },
       },
       interfaces: ['Node'],
@@ -136,20 +139,15 @@ exports.sourceNodes = ({ actions, schema }) => {
           type: 'Date!',
           args: {
             formatString: { type: 'String' },
+            fromNow: { type: 'Boolean' },
+            difference: { type: 'String' },
+            locale: { type: 'String' },
           },
-          resolve(source, args, context, info) {
-            const type = info.schema.getType('Mdx');
-            const mdxNode = context.nodeModel.getNodeById({
-              id: source.parent,
-            });
-            const mdxField = type.getFields().date;
-            if (mdxField) {
-              return mdxField.resolve(mdxNode, args, context, {
-                fieldName: 'date',
-              });
-            }
-            return '';
-          },
+          resolve: resolverPassthrough({
+            typeName: 'MdxFrontmatter',
+            fieldName: 'date',
+            resolveNode: (node) => node.frontmatter,
+          }),
         },
         description: { type: 'String!' },
         type: { type: 'ReleaseNoteType!' },
@@ -157,16 +155,7 @@ exports.sourceNodes = ({ actions, schema }) => {
         published: { type: 'Boolean!' },
         body: {
           type: 'String!',
-          resolve(source, args, context, info) {
-            const type = info.schema.getType('Mdx');
-            const mdxNode = context.nodeModel.getNodeById({
-              id: source.parent,
-            });
-            const mdxField = type.getFields().body;
-            return mdxField.resolve(mdxNode, {}, context, {
-              fieldName: 'body',
-            });
-          },
+          resolve: resolverPassthrough({ fieldName: 'body' }),
         },
       },
       interfaces: ['Node'],
