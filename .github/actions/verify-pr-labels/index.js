@@ -93,11 +93,9 @@ const getPullRequestNumber = (ref) => {
       return;
     }
 
-    const labelsAsMdList = validLabels
-      .map((label) => `- ${label}`)
-      .join('<br/>');
-    const reviewMessage = `👋Hi,
-this is a reminder message for maintainers to assign a proper label to this Pull Requests.
+    const labelsAsMdList = validLabels.map((label) => `- ${label}`).join('\n');
+    const reviewMessage = `👋 Hi,
+this is a reminder message for maintainers to assign a proper label to this Pull Request.
 This is important to be able to properly generate a changelog.
 
 Valid labels are:
