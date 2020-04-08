@@ -84,10 +84,7 @@ const getPullRequestNumber = (ref) => {
     }
 
     const hasActionBotRequestedChanges = allReviewsFromActionsBot.some(
-      (review) => review.state === 'REQUEST_CHANGES'
-    );
-    core.info(
-      `Reviews from actions bot: ${JSON.stringify(allReviewsFromActionsBot)}`
+      (review) => review.state === 'CHANGES_REQUESTED'
     );
     if (hasActionBotRequestedChanges) {
       core.info(`Skipping REQUEST_CHANGES review`);
