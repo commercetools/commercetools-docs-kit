@@ -49,7 +49,7 @@ const getPullRequestNumber = (ref) => {
     };
 
     const prLabels = await getPrLabels(prNumber);
-    core.debug(`Found PR labels: ${prLabels}`);
+    core.info(`Found PR labels: ${prLabels.toString()}`);
 
     const reviews = await octokit.pulls.listReviews({
       owner,
@@ -58,6 +58,9 @@ const getPullRequestNumber = (ref) => {
     });
     const allReviewsFromActionsBot = reviews.data.filter(
       (review) => review.user.login === 'github-actions[bot]'
+    );
+    core.info(
+      `Reviews from actions bot: ${JSON.stringify(allReviewsFromActionsBot)}`
     );
 
     if (prLabels.length > 0) {
@@ -93,17 +96,18 @@ const getPullRequestNumber = (ref) => {
     const labelsAsMdList = validLabels
       .map((label) => `- ${label}`)
       .join('<br/>');
+    core.info(`MD labels ${labelsAsMdList}`);
     const reviewMessage = ```Hi,
-this is a reminder message for maintainers to assign a proper label to this Pull Requests.
-This is important to be able to properly generate a changelog.
+    this is a reminder message for maintainers to assign a proper label to this Pull Requests.
+    This is important to be able to properly generate a changelog.
 
-Valid labels are:
-${labelsAsMdList}
+    Valid labels are:
+    ${labelsAsMdList}
 
-The bot will dismiss the review as soon as a valid label has been assigned to the Pull Request.
+    The bot will dismiss the review as soon as a valid label has been assigned to the Pull Request.
 
-Thanks.
-      ```;
+    Thanks.```;
+    core.info(`Review message ${reviewMessage}`);
     await octokit.pulls.createReview({
       owner,
       repo,
@@ -112,6 +116,7 @@ Thanks.
       event: 'REQUEST_CHANGES',
     });
   } catch (error) {
-    await core.setFailed(error.message);
+    core.info(error);
+    await core.setFailed(error.stack || error.message);
   }
 })();
