@@ -12,8 +12,16 @@ jobs:
     runs-on: ubuntu-16.04
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install github actions dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: './.github/actions/verify-pr-label'
+
       - name: Verify Pull Request Labels
-        uses: jesusvasquez333/verify-pr-label-action@v1.1.0
+        uses: ./.github/actions/verify-pr-label
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
           # For the list of labels, see `lerna.json`
