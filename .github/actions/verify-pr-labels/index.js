@@ -48,7 +48,7 @@ const getPullRequestNumber = (ref) => {
       return checks;
     };
 
-    const updateCheck = async (id, { status, conclusion }) => {
+    const updateCheck = async (id, { conclusion }) => {
       const summary =
         conclusion === 'failure'
           ? `Missing labels for Pull Request. Valid labels are ${validLabels.toString()}. (${checkUrl})`
@@ -58,7 +58,7 @@ const getPullRequestNumber = (ref) => {
         repo,
         check_run_id: id,
         name: checkName,
-        status,
+        status: 'completed',
         conclusion,
         output: {
           title: conclusion,
@@ -70,7 +70,7 @@ const getPullRequestNumber = (ref) => {
       return response;
     };
 
-    const createCheck = async ({ status, conclusion }) => {
+    const createCheck = async ({ conclusion }) => {
       const summary =
         conclusion === 'failure'
           ? `Missing labels for Pull Request. Valid labels are ${validLabels.toString()}.`
@@ -80,7 +80,7 @@ const getPullRequestNumber = (ref) => {
         repo,
         head_sha: sha,
         name: checkName,
-        status,
+        status: 'completed',
         conclusion,
         output: {
           title: conclusion,
@@ -92,39 +92,32 @@ const getPullRequestNumber = (ref) => {
       return response;
     };
 
-    const runCheck = async (ok) => {
+    const runCheck = async (conclusion) => {
       const activeChecks = await getChecks();
       if (activeChecks.total_count > 0) {
         await Promise.all(
           activeChecks.check_runs.map((check) =>
-            updateCheck(check.id, {
-              status: 'completed',
-              conclusion: ok ? 'success' : 'failure',
-            })
+            updateCheck(check.id, { conclusion })
           )
         );
       } else {
-        createCheck({
-          status: 'completed',
-          conclusion: ok ? 'success' : 'failure',
-        });
+        createCheck({ conclusion });
       }
     };
 
     const prLabels = await getPrLabels();
     core.info(`Found PR labels ${prLabels}`);
-    if (prLabels.length === 0) {
-      await runCheck(false);
+    if (prLabels.length > 0) {
+      const hasValidLabels = prLabels.some((label) =>
+        validLabels.includes(label)
+      );
+      core.info(`Valid labels: ${hasValidLabels}`);
+      if (hasValidLabels) {
+        await runCheck('success');
+        return;
+      }
     }
-    const hasValidLabels = prLabels.some((label) =>
-      validLabels.includes(label)
-    );
-    core.info(`Valid labels: ${hasValidLabels}`);
-    if (hasValidLabels) {
-      await runCheck(true);
-    } else {
-      await runCheck(false);
-    }
+    await runCheck('failure');
   } catch (error) {
     await core.setFailed(error.message);
   }
