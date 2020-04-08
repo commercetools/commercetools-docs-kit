@@ -10,10 +10,9 @@ const getPullRequestNumber = (ref) => {
 
 (async () => {
   try {
-    console.log('debug', JSON.stringify(github.context));
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
-    const ref = github.context.head_ref;
+    const ref = github.context.ref;
     const sha = github.context.sha;
     const checkUrl = `https://github.com/${owner}/${repo}/commit/${sha}/checks`;
     const gitHubToken = core.getInput('github-token', { required: true });
