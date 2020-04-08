@@ -20,10 +20,10 @@ jobs:
       - name: Install github actions dependencies
         uses: bahmutov/npm-install@v1.1.0
         with:
-          working-directory: './.github/actions/verify-pr-label'
+          working-directory: './.github/actions/verify-pr-labels'
 
       - name: Verify Pull Request Labels
-        uses: ./.github/actions/verify-pr-label
+        uses: ./.github/actions/verify-pr-labels
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
           # For the list of labels, see `lerna.json`
