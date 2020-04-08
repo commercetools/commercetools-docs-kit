@@ -44,7 +44,7 @@ const getPullRequestNumber = (ref) => {
         check_name: checkName,
       });
       core.debug(
-        `fetched current checks for ${owner}/${repo}/${sha} "${name}"`
+        `fetched current checks for ${owner}/${repo}/${sha} "${checkName}"`
       );
       return checks;
     };
