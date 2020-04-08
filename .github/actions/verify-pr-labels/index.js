@@ -10,6 +10,7 @@ const getPullRequestNumber = (ref) => {
 
 (async () => {
   try {
+    console.log('debug', JSON.stringify(github.context));
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
     const ref = github.context.head_ref;
