@@ -1,0 +1,20 @@
+name: Verify Pull Request Labels
+
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize]
+    paths-ignore:
+      - "CHANGELOG.md"
+
+jobs:
+  verify_pr_labels:
+    # https://github.com/cypress-io/github-action/blob/263091cab1962eea06e293a19146e9d0241a1c32/README.md#important
+    runs-on: ubuntu-16.04
+
+    steps:
+      - name: Verify Pull Request Labels
+        uses: jesusvasquez333/verify-pr-label-action@v1.1.0
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          # For the list of labels, see `lerna.json`
+          valid-labels: '🐛 Type: Bug,💥 Type: Breaking Change,🔮 Type: Chore,✍️ Type: Documentation,💅 Type: Enhancement,🚀 Type: New Feature,⛑ Type: Refactoring,🖥 Type: Website,🚨 Type: Security,🤖 Type: Dependencies'
