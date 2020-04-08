@@ -83,10 +83,6 @@ const linkStyles = `
   :hover {
     color: ${designSystem.colors.light.linkNavigation} !important;
   }
-
-  > * + * {
-    margin: 0 0 0 ${designSystem.dimensions.spacings.s};
-  }
 `;
 const activeLinkStyles = `
   border-left: ${designSystem.dimensions.spacings.xs} solid ${designSystem.colors.light.linkNavigation} !important;
