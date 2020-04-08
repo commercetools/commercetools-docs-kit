@@ -17,6 +17,17 @@ const environment =
     ? 'production'
     : 'preview';
 
+const injectScript = (url, attributes = {}, onLoad) => {
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = url;
+  Object.keys(attributes).forEach((key) => {
+    script.setAttribute(key, attributes[key]);
+  });
+  if (onLoad) script.onload = onLoad;
+  document.body.appendChild(script);
+};
+
 export const onClientEntry = (
   _, // eslint-disable-line
   pluginOptions
@@ -31,6 +42,17 @@ export const onClientEntry = (
         whitelistUrls: ['docs.commercetools.com', 'now.sh'],
       });
     });
+  }
+  // Inject the cookie consent scripts only if the page is served on the domain `*.commercetools.com`.
+  if (window && window.location.host.includes('.commercetools.com')) {
+    injectScript(
+      'https://cdn.cookielaw.org/consent/b104027d-4d10-4b75-9675-9ffef11562a8/OtAutoBlock.js'
+    );
+    injectScript(
+      'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js',
+      { 'data-domain-script': 'b104027d-4d10-4b75-9675-9ffef11562a8' },
+      'function OptanonWrapper() {};'
+    );
   }
 
   // Require additional Prism languages.

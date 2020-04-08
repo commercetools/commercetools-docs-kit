@@ -13,10 +13,6 @@ import createEmotionServer from 'create-emotion-server';
 import { CacheProvider } from '@emotion/core';
 import { createDocsCache } from './create-emotion-cache';
 
-const isProduction = process.env.GATSBY_NODE_ENV === 'production';
-const isNowBuild = Boolean(process.env.GATSBY_NOW_GITHUB_DEPLOYMENT);
-const isMasterBranch = process.env.GATSBY_NOW_GITHUB_COMMIT_REF === 'master';
-
 const iconDarkDigest = createContentDigest(
   fs.readFileSync(require.resolve('./static/favicon-dark-32x32.png'))
 );
@@ -28,7 +24,6 @@ export const replaceRenderer = ({
   bodyComponent,
   replaceBodyHTMLString,
   setHeadComponents,
-  setPostBodyComponents,
 }) => {
   // https://emotion.sh/docs/ssr#on-server
   // https://emotion.sh/docs/ssr#gatsby
@@ -53,26 +48,6 @@ export const replaceRenderer = ({
     // the new one.
     .replace(/> \* \+ \*/g, '> *:not(style) ~ *:not(style)');
   replaceBodyHTMLString(patchedHtml);
-
-  // Activate the cookie consent banner only on the live website environment.
-  // We can narrow it down to the build step of Zeit Now for the master branch.
-  if (isProduction && isNowBuild && isMasterBranch)
-    setPostBodyComponents([
-      <script
-        key="cookie-consent-part1"
-        type="text/javascript"
-        defer
-        src="https://cdn.cookielaw.org/consent/b104027d-4d10-4b75-9675-9ffef11562a8/OtAutoBlock.js"
-      />,
-      <script
-        key="cookie-consent-part2"
-        type="text/javascript"
-        defer
-        src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
-        data-domain-script="b104027d-4d10-4b75-9675-9ffef11562a8"
-        onLoad="function OptanonWrapper() {};"
-      />,
-    ]);
 
   setHeadComponents([
     <link
