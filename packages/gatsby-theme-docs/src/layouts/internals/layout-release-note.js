@@ -4,6 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 
 const ReleaseNoteTitle = Markdown.withAnchorLink(Markdown.H3);
@@ -30,9 +31,9 @@ const ReleaseNote = (props) => {
     <SpacingsStack scale="m">
       <ReleaseNoteTitle>{props.title}</ReleaseNoteTitle>
       <DateElement>{props.date}</DateElement>
-      <div>
+      <SpacingsInline>
         <ReleaseNoteType type={props.type} />
-      </div>
+      </SpacingsInline>
       {props.topics.length > 0 && (
         <Topics>
           {props.topics.map((topic) => (
@@ -52,7 +53,7 @@ ReleaseNote.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['feature', 'enhancement', 'fix']).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   body: PropTypes.string.isRequired,
 };
@@ -74,12 +75,11 @@ const fixStyle = css`
   border-color: ${designSystem.colors.light.borderReleaseNoteFixType};
 `;
 const baseTypeStyle = css`
-  display: inline-block;
   padding: ${designSystem.dimensions.spacings.xs}
     ${designSystem.dimensions.spacings.s};
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   line-height: ${designSystem.typography.lineHeights.releaseNoteDate};
-  border: 1px solid;
+  border: 1px solid transparent;
   border-radius: ${designSystem.tokens.borderRadiusForReleaseNoteType};
   text-transform: capitalize;
 `;
@@ -87,16 +87,18 @@ const baseTypeStyle = css`
 function ReleaseNoteType(props) {
   const typeToLowerCase = props.type.toLowerCase();
   const customStyle = getTypeStyle(typeToLowerCase);
-  return <p css={[baseTypeStyle, customStyle]}>{typeToLowerCase}</p>;
+  return <div css={[baseTypeStyle, customStyle]}>{typeToLowerCase}</div>;
 
   function getTypeStyle(type) {
     switch (type) {
+      case 'feature':
+        return featureStyle;
       case 'enhancement':
         return enhancementStyle;
       case 'fix':
         return fixStyle;
       default:
-        return featureStyle;
+        return css``;
     }
   }
 }

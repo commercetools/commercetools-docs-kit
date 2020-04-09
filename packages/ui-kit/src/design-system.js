@@ -33,7 +33,7 @@ export const colors = {
     surfaceSearchHighlight: customProperties.colorAccent95,
     surfaceForSearchInputWhenDisabled: customProperties.colorNeutral90,
     surfaceReleaseNoteNewFeatureType: customProperties.colorPrimary85,
-    surfaceReleaseNoteEnhancementType: '#e7f5fe',
+    surfaceReleaseNoteEnhancementType: customProperties.colorInfo95,
     surfaceReleaseNoteFixType: '#e4c5ff',
     // Different tones of text
     textPrimary: customProperties.colorSolid,
