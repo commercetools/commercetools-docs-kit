@@ -41,12 +41,7 @@ const ReleaseNotesListTemplate = (props) => (
               {props.data.allReleaseNotePage &&
                 props.data.allReleaseNotePage.nodes &&
                 props.data.allReleaseNotePage.nodes.map((releaseNote) => (
-                  <LayoutReleaseNote
-                    key={releaseNote.slug}
-                    title={releaseNote.title}
-                    date={releaseNote.date}
-                    body={releaseNote.body}
-                  />
+                  <LayoutReleaseNote key={releaseNote.slug} {...releaseNote} />
                 ))}
             </SpacingsStack>
           </MDXProvider>
@@ -100,7 +95,7 @@ export const query = graphql`
       nodes {
         slug
         title
-        date(formatString: "YYYY-MM-DD")
+        date(formatString: "D MMMM YYYY")
         description
         type
         topics
