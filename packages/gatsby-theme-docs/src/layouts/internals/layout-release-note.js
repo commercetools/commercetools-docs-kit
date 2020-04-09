@@ -21,7 +21,7 @@ const Topics = styled.div`
   span:first-of-type {
     padding-left: 0;
   }
-  span:not(:first-of-type) {
+  > * + * {
     border-left: 1px solid ${designSystem.colors.light.surfaceSecondary3};
   }
 `;
