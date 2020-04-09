@@ -11,17 +11,24 @@ const ReleaseNoteTitle = Markdown.withAnchorLink(Markdown.H3);
 const DateElement = styled.div`
   line-height: ${designSystem.typography.lineHeights.releaseNoteDate};
 `;
+const ReleaseNoteType = styled.div`
+  padding: ${designSystem.dimensions.spacings.xs}
+    ${designSystem.dimensions.spacings.s};
+  font-size: ${designSystem.typography.fontSizes.extraSmall};
+  line-height: ${designSystem.typography.lineHeights.releaseNoteDate};
+  border: 1px solid transparent;
+  border-radius: ${designSystem.tokens.borderRadiusForReleaseNoteType};
+  text-transform: capitalize;
 
+  ${getTypeStyles}
+`;
 const Topics = styled.div`
   color: ${designSystem.colors.light.textInfo};
   font-size: ${designSystem.typography.fontSizes.small};
-  span {
-    padding: ${designSystem.dimensions.spacings.xs};
-  }
-  span:first-of-type {
-    padding-left: 0;
-  }
+
   > * + * {
+    padding-left: ${designSystem.dimensions.spacings.xs};
+    margin-left: ${designSystem.dimensions.spacings.xs};
     border-left: 1px solid ${designSystem.colors.light.surfaceSecondary3};
   }
 `;
@@ -32,7 +39,7 @@ const ReleaseNote = (props) => {
       <ReleaseNoteTitle>{props.title}</ReleaseNoteTitle>
       <DateElement>{props.date}</DateElement>
       <SpacingsInline>
-        <ReleaseNoteType type={props.type} />
+        <ReleaseNoteType type={props.type}>{props.type}</ReleaseNoteType>
       </SpacingsInline>
       {props.topics.length > 0 && (
         <Topics>
@@ -60,49 +67,28 @@ ReleaseNote.propTypes = {
 
 export default ReleaseNote;
 
-const featureStyle = css`
-  background-color: ${designSystem.colors.light
-    .surfaceReleaseNoteNewFeatureType};
-  border-color: ${designSystem.colors.light.borderReleaseNoteNewFeatureType};
-`;
-const enhancementStyle = css`
-  background-color: ${designSystem.colors.light
-    .surfaceReleaseNoteEnhancementType};
-  border-color: ${designSystem.colors.light.textInfo};
-`;
-const fixStyle = css`
-  background-color: ${designSystem.colors.light.surfaceReleaseNoteFixType};
-  border-color: ${designSystem.colors.light.borderReleaseNoteFixType};
-`;
-const baseTypeStyle = css`
-  padding: ${designSystem.dimensions.spacings.xs}
-    ${designSystem.dimensions.spacings.s};
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  line-height: ${designSystem.typography.lineHeights.releaseNoteDate};
-  border: 1px solid transparent;
-  border-radius: ${designSystem.tokens.borderRadiusForReleaseNoteType};
-  text-transform: capitalize;
-`;
-
-function ReleaseNoteType(props) {
-  const typeToLowerCase = props.type.toLowerCase();
-  const customStyle = getTypeStyle(typeToLowerCase);
-  return <div css={[baseTypeStyle, customStyle]}>{typeToLowerCase}</div>;
-
-  function getTypeStyle(type) {
-    switch (type) {
-      case 'feature':
-        return featureStyle;
-      case 'enhancement':
-        return enhancementStyle;
-      case 'fix':
-        return fixStyle;
-      default:
-        return css``;
-    }
+function getTypeStyles(props) {
+  switch (props.type.toLowerCase()) {
+    case 'feature':
+      return css`
+        background-color: ${designSystem.colors.light
+          .surfaceReleaseNoteNewFeatureType};
+        border-color: ${designSystem.colors.light
+          .borderReleaseNoteNewFeatureType};
+      `;
+    case 'enhancement':
+      return css`
+        background-color: ${designSystem.colors.light
+          .surfaceReleaseNoteEnhancementType};
+        border-color: ${designSystem.colors.light.textInfo};
+      `;
+    case 'fix':
+      return css`
+        background-color: ${designSystem.colors.light
+          .surfaceReleaseNoteFixType};
+        border-color: ${designSystem.colors.light.borderReleaseNoteFixType};
+      `;
+    default:
+      return css``;
   }
 }
-
-ReleaseNoteType.propTypes = {
-  type: PropTypes.string.isRequired,
-};
