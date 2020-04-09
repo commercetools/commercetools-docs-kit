@@ -34,12 +34,16 @@ const Topics = styled.div`
 `;
 
 const ReleaseNote = (props) => {
+  const typeRenderedTexts = { fix: 'Resolved Issue' };
+
   return (
     <SpacingsStack scale="m">
       <ReleaseNoteTitle>{props.title}</ReleaseNoteTitle>
       <DateElement>{props.date}</DateElement>
       <SpacingsInline>
-        <ReleaseNoteType type={props.type}>{props.type}</ReleaseNoteType>
+        <ReleaseNoteType type={props.type}>
+          {typeRenderedTexts[props.type] || props.type}
+        </ReleaseNoteType>
       </SpacingsInline>
       {props.topics.length > 0 && (
         <Topics>
