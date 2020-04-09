@@ -11,16 +11,16 @@ const DateElement = styled.div`
   line-height: ${designSystem.typography.lineHeights.releaseNoteDate};
 `;
 
-const Topics = styled.tr`
+const Topics = styled.div`
   color: ${designSystem.colors.light.textInfo};
   font-size: ${designSystem.typography.fontSizes.small};
-  td {
+  span {
     padding: ${designSystem.dimensions.spacings.xs};
   }
-  td:first-of-type {
+  span:first-of-type {
     padding-left: 0;
   }
-  td:not(:first-of-type) {
+  span:not(:first-of-type) {
     border-left: 1px solid ${designSystem.colors.light.surfaceSecondary3};
   }
 `;
@@ -34,17 +34,11 @@ const ReleaseNote = (props) => {
         <ReleaseNoteType type={props.type} />
       </div>
       {props.topics.length > 0 && (
-        <div>
-          <table>
-            <tbody>
-              <Topics>
-                {props.topics.map((topic) => (
-                  <td key={topic}>{topic}</td>
-                ))}
-              </Topics>
-            </tbody>
-          </table>
-        </div>
+        <Topics>
+          {props.topics.map((topic) => (
+            <span key={topic}>{topic}</span>
+          ))}
+        </Topics>
       )}
 
       <div>
