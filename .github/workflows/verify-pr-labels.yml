@@ -2,7 +2,7 @@ name: Verify Pull Request Labels
 
 on:
   pull_request:
-    types: [opened, ready_for_review, labeled, unlabeled]
+    types: [ready_for_review, review_requested, labeled, unlabeled]
     paths-ignore:
       - "CHANGELOG.md"
 
