@@ -12,8 +12,8 @@ const Root = styled.div`
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; /* enables "momentum" style scrolling */
 
-  @media not percy,
-    only screen and (${designSystem.dimensions.viewports.largeTablet}) {
+  @media (not(percy)) and screen and (${designSystem.dimensions.viewports
+      .largeTablet}) {
     height: 100vh;
   }
 `;
