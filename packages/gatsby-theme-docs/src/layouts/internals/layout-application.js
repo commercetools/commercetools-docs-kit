@@ -7,14 +7,14 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 const Root = styled.div`
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; /* enables "momentum" style scrolling */
 
-  @media only percy {
-    /* Unset the 100vh to make view scrollable in order to take full page snapshots */
-    height: auto;
+  @media (not(percy)) and screen and (${designSystem.dimensions.viewports
+      .largeTablet}) {
+    height: 100vh;
   }
 `;
 const Container = styled.div`
