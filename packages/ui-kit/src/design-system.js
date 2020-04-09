@@ -32,9 +32,7 @@ export const colors = {
     surfaceError: customProperties.colorError95,
     surfaceSearchHighlight: customProperties.colorAccent95,
     surfaceForSearchInputWhenDisabled: customProperties.colorNeutral90,
-    surfaceReleaseNoteNewFeatureType: customProperties.colorPrimary85,
-    surfaceReleaseNoteEnhancementType: customProperties.colorInfo95,
-    surfaceReleaseNoteFixType: '#e4c5ff',
+    surfaceForReleaseNoteTypeFix: '#e4c5ff',
     // Different tones of text
     textPrimary: customProperties.colorSolid,
     textSecondary: '#666666',
@@ -51,8 +49,7 @@ export const colors = {
     borderInput: customProperties.colorNeutral60,
     borderHighlight: customProperties.colorPrimary,
     borderInfo: customProperties.colorInfo,
-    borderReleaseNoteNewFeatureType: customProperties.colorPrimary40,
-    borderReleaseNoteFixType: '#b866ff',
+    borderForReleaseNoteTypeFix: '#b866ff',
     // Links
     link: customProperties.colorPrimary25,
     linkHover: customProperties.colorPrimary,
@@ -72,7 +69,6 @@ export const tokens = {
   shadowForBetaFlag: customProperties.shadow7,
   shadowForSearchDialog: customProperties.shadow2,
   shadowForPageContent: customProperties.shadow11,
-  borderRadiusForReleaseNoteType: customProperties.borderRadius2,
 };
 
 export const dimensions = {
@@ -145,8 +141,8 @@ export const typography = {
   },
 
   lineHeights: {
+    small: pxToRem('16px'),
     body: pxToRem('23px'),
-    releaseNoteDate: pxToRem('16px'),
   },
 };
 
