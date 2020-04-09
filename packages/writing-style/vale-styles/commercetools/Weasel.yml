@@ -1,5 +1,5 @@
 # Adjusted copy from the write-good rule set.
-# Comment out cases we want to allow.
+# Comment out cases we want to allow. Rather allow than deny in this rule.
 extends: existence
 message: "'%s' is a weasel word!"
 ignorecase: true
