@@ -13,6 +13,6 @@ describe('Top menu', () => {
     cy.findByLabelText('Open Top Menu').click();
     cy.findByRole('top-menu').should('be.visible');
     cy.findByLabelText('Search').click();
-    cy.findByText('Developer Center').should('not.be.visible');
+    cy.findByLabelText('Open Top Menu').should('exist');
   });
 });
