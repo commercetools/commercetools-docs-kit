@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-api-docs": "2.4.0",
-    "gatsby": "2.19.17",
-    "gatsby-cli": "2.8.29"
+    "gatsby": "2.20.18",
+    "gatsby-cli": "2.11.7"
   }
 }

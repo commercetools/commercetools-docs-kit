@@ -25,7 +25,7 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
   },
   "dependencies": {
-    "@commercetools-uikit/tooltip": "10.13.0",
+    "@commercetools-uikit/tooltip": "10.18.4",
     "lodash.escape": "4.0.1",
     "lodash.throttle": "4.1.1",
     "parse-numeric-range": "0.0.2",
@@ -35,9 +35,9 @@
     "tiny-invariant": "1.1.0"
   },
   "devDependencies": {
-    "@commercetools-uikit/design-system": "10.13.0",
-    "@commercetools-uikit/icons": "10.13.0",
-    "@commercetools-uikit/spacings-inline": "10.13.0"
+    "@commercetools-uikit/design-system": "10.18.4",
+    "@commercetools-uikit/icons": "10.18.4",
+    "@commercetools-uikit/spacings-inline": "10.18.4"
   },
   "peerDependencies": {
     "@commercetools-uikit/design-system": "10.x",
