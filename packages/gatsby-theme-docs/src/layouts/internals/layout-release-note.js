@@ -8,7 +8,6 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import Stamp from '@commercetools-uikit/stamp';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 
-const ReleaseNoteTitle = Markdown.withAnchorLink(Markdown.H3);
 const DateElement = styled.div`
   line-height: ${designSystem.typography.lineHeights.small};
 `;
@@ -36,7 +35,7 @@ const Topics = styled.div`
 const ReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
-      <ReleaseNoteTitle>{props.title}</ReleaseNoteTitle>
+      <Markdown.H3>{props.title}</Markdown.H3>
       <DateElement>{props.date}</DateElement>
       <SpacingsInline>
         <ReleaseNoteType type={props.type}>
