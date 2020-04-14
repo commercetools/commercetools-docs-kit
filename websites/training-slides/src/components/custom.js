@@ -27,7 +27,7 @@ const Card = styled.div({
   display: 'flex',
   flexDirection: 'column',
   boxShadow: designSystem.tokens.shadow8,
-  borderRadius: pxToRem(designSystem.tokens.borderRadiusForCard),
+  borderRadius: pxToRem('4px'),
   padding: designSystem.dimensions.spacings.m,
   background: designSystem.colors.light.surfacePrimary,
   textAlign: 'left',
