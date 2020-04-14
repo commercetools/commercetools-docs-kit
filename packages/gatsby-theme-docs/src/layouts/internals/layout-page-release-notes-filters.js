@@ -24,9 +24,10 @@ const StickyContainer = styled.div`
   margin: 0 0 ${designSystem.dimensions.spacings.s};
 `;
 
+// TODO: Filters
 const LayoutPageReleaseNotesFilters = () => (
   <GridContainer>
-    <StickyContainer>{'TODO: filters'}</StickyContainer>
+    <StickyContainer></StickyContainer>
   </GridContainer>
 );
 LayoutPageReleaseNotesFilters.displayName = 'LayoutPageReleaseNotesFilters';
