@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "gatsby-theme-mdx-deck": "4.1.0",
-    "@commercetools-docs/ui-kit": "2.0.0",
+    "@commercetools-docs/ui-kit": "2.3.0",
     "gatsby-plugin-mdx": "1.0.73",
     "gatsby": "2.19.17",
     "gatsby-cli": "2.8.29"
