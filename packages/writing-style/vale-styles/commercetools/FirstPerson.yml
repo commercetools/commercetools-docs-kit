@@ -1,4 +1,5 @@
 # Adjusted to tolerate uppercased "My" because of our "My Carts", "My Orders" etc. APIs. which are referenced throughout the documentation.
+# TODO refactor: a better approach would be to keep the original rule and add an exceptions list.
 extends: existence
 message: "Avoid first-person pronouns such as '%s' (and uppercase it in 'My ...' APIs)."
 link: 'https://developers.google.com/style/pronouns#personal-pronouns'
@@ -17,3 +18,10 @@ tokens:
   - \bmy\b # this one NOT checked in uppercase (see first line)
   - \bmine\b
   - \bMine\b
+#exceptions:
+#  - My Carts
+#  - My Payments
+#  - My Orders
+#  - My Shopping Lists
+#  - ...
+

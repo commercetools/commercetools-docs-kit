@@ -1,7 +1,7 @@
-# modification of the Google Rule to recommend "2016 July 31" instead of the Anglo Saxon "July 31, 2016"
-# ISO dates "2016-07-31" are allowed too
+# modification of the Google Rule to recommend UK/Euro/Asia "31 July 2016" instead of the Anglo Saxon "July 31, 2016" in prose.
+# ISO dates "2016-07-31" are allowed too, esp. in example data
 extends: existence
-message: "Use '2016 July 31' or `2016-07-31` format, not '%s'."
+message: "Use '31 July 2016' (prose, headings) or `2016-07-31` (example data) format, not '%s'."
 link: 'https://developers.google.com/style/dates-times'
 ignorecase: true
 level: error
