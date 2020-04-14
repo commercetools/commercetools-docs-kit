@@ -2,8 +2,10 @@
   href: https://docs.commercetools.com/getting-started#sign-up
 - label: Log in
   href: https://docs.commercetools.com/login
-- label: Tech blog
+- label: Tech Blog
   href: https://techblog.commercetools.com
+- label: Integrations
+  href: https://marketplace.commercetools.com
 - label: Status
   href: https://status.commercetools.com
 - label: Support
