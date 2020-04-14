@@ -4,10 +4,7 @@
   "description": "commercetools Documentation Kit (monorepo)",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "websites/*"
-  ],
+  "workspaces": ["packages/*", "websites/*"],
   "scripts": {
     "start": "yarn --cwd websites/docs-smoke-test start",
     "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
