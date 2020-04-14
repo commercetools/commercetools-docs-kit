@@ -5,22 +5,22 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import Stamp from '@commercetools-uikit/stamp';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 
 const ReleaseNoteTitle = Markdown.withAnchorLink(Markdown.H3);
 const DateElement = styled.div`
-  line-height: ${designSystem.typography.lineHeights.releaseNoteDate};
+  line-height: ${designSystem.typography.lineHeights.small};
 `;
+// Wraps the uikit `Stamp` component to allow custom color schemes.
+// The `> div` selector should target the `Stamp` container element.
 const ReleaseNoteType = styled.div`
-  padding: ${designSystem.dimensions.spacings.xs}
-    ${designSystem.dimensions.spacings.s};
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  line-height: ${designSystem.typography.lineHeights.releaseNoteDate};
-  border: 1px solid transparent;
-  border-radius: ${designSystem.tokens.borderRadiusForReleaseNoteType};
-  text-transform: capitalize;
-
-  ${getTypeStyles}
+  > div {
+    color: ${designSystem.colors.light.textPrimary};
+    line-height: ${designSystem.typography.lineHeights.small};
+    font-size: ${designSystem.typography.fontSizes.extraSmall};
+    ${getTypeStyles}
+  }
 `;
 const Topics = styled.div`
   color: ${designSystem.colors.light.textInfo};
@@ -34,15 +34,13 @@ const Topics = styled.div`
 `;
 
 const ReleaseNote = (props) => {
-  const typeRenderedTexts = { fix: 'Resolved Issue' };
-
   return (
     <SpacingsStack scale="m">
       <ReleaseNoteTitle>{props.title}</ReleaseNoteTitle>
       <DateElement>{props.date}</DateElement>
       <SpacingsInline>
         <ReleaseNoteType type={props.type}>
-          {typeRenderedTexts[props.type] || props.type}
+          <Stamp tone={mapTypeToTone(props)}>{mapTypeToLabel(props)}</Stamp>
         </ReleaseNoteType>
       </SpacingsInline>
       {props.topics.length > 0 && (
@@ -72,27 +70,40 @@ ReleaseNote.propTypes = {
 export default ReleaseNote;
 
 function getTypeStyles(props) {
-  switch (props.type.toLowerCase()) {
-    case 'feature':
-      return css`
-        background-color: ${designSystem.colors.light
-          .surfaceReleaseNoteNewFeatureType};
-        border-color: ${designSystem.colors.light
-          .borderReleaseNoteNewFeatureType};
-      `;
-    case 'enhancement':
-      return css`
-        background-color: ${designSystem.colors.light
-          .surfaceReleaseNoteEnhancementType};
-        border-color: ${designSystem.colors.light.textInfo};
-      `;
+  switch (props.type) {
+    // TODO: provide this color in the uikit?
     case 'fix':
       return css`
         background-color: ${designSystem.colors.light
-          .surfaceReleaseNoteFixType};
-        border-color: ${designSystem.colors.light.borderReleaseNoteFixType};
+          .surfaceForReleaseNoteTypeFix};
+        border: 1px solid
+          ${designSystem.colors.light.borderForReleaseNoteTypeFix};
       `;
     default:
       return css``;
+  }
+}
+
+function mapTypeToTone(props) {
+  switch (props.type) {
+    case 'feature':
+      return 'positive';
+    case 'enhancement':
+      return 'information';
+    default:
+      return props.type;
+  }
+}
+
+function mapTypeToLabel(props) {
+  switch (props.type) {
+    case 'feature':
+      return 'Feature';
+    case 'enhancement':
+      return 'Enhancement';
+    case 'fix':
+      return 'Resolved Issue';
+    default:
+      return props.type;
   }
 }
