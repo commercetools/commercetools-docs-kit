@@ -36,11 +36,14 @@ module.exports = (themeOptions = {}) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
   validateThemeOptions(pluginOptions);
 
+  const productionHostname = 'docs.commercetools.com';
+
   return {
     siteMetadata: {
       author: 'commercetools',
-      productionHostname: 'docs.commercetools.com',
+      productionHostname,
       betaLink: null,
+      siteUrl: `https://${productionHostname}/${pluginOptions.websiteKey}`,
     },
     plugins: [
       /**
@@ -210,6 +213,54 @@ module.exports = (themeOptions = {}) => {
       'gatsby-plugin-remove-trailing-slashes',
       'gatsby-plugin-meta-redirect',
       'gatsby-plugin-netlify-cache',
+      {
+        resolve: 'gatsby-plugin-feed',
+        options: {
+          query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+          feeds: [
+            {
+              serialize: ({ query: { site, allReleaseNotePage } }) => {
+                return allReleaseNotePage.nodes.map((node) => {
+                  return {
+                    ...node,
+                    url: site.siteMetadata.siteUrl + node.slug,
+                    guid: site.siteMetadata.siteUrl + node.slug,
+                    custom_elements: [{ 'content:encoded': node.body }],
+                  };
+                });
+              },
+              query: `
+              {
+                allReleaseNotePage(
+                  sort: { order: DESC, fields: date },
+                ) {
+                    nodes {
+                      description
+                      body
+                      slug
+                      title
+                      date
+                    }
+                }
+              }
+            `,
+              output: '/release-notes.xml',
+              title: `${pluginOptions.websiteKey}'s rss feed`,
+            },
+          ],
+        },
+      },
     ].filter(Boolean),
   };
 };
