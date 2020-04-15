@@ -255,7 +255,7 @@ module.exports = (themeOptions = {}) => {
                 }
               }
             `,
-              output: '/release-notes.xml',
+              output: '/releases/feed.xml',
               title: `commercetools ${pluginOptions.title} Release Notes`,
             },
           ],
