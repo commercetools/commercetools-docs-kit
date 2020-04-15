@@ -15,7 +15,6 @@ module.exports = {
         title: 'Docs Smoke Test',
         websiteKey: 'docs-smoke-test',
         excludeFromSearchIndex: isProd && !shouldEnableSearch,
-        hasReleaseNotes: true,
         additionalPrismLanguages: ['scala', 'csharp'],
       },
     },
