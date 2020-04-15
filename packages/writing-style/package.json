@@ -15,7 +15,7 @@
   },
   "bin": {
     "commercetools-vale": "./bin/commercetools-vale.js",
-    "commercetools-vale-bin": "./bin/vale-2.1.1"
+    "commercetools-vale-bin": "./bin/commercetools-vale-bin.js"
   },
   "scripts": {
     "postinstall": "node scripts/download-vale.js",
