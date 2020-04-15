@@ -43,7 +43,7 @@ module.exports = (themeOptions = {}) => {
       author: 'commercetools',
       productionHostname,
       betaLink: null,
-      siteUrl: `https://${productionHostname}/${pluginOptions.websiteKey}`,
+      siteUrl: `https://${productionHostname}${pluginOptions.pathPrefix}`,
     },
     plugins: [
       /**
@@ -236,18 +236,16 @@ module.exports = (themeOptions = {}) => {
                     ...node,
                     url: site.siteMetadata.siteUrl + node.slug,
                     guid: site.siteMetadata.siteUrl + node.slug,
-                    custom_elements: [{ 'content:encoded': node.body }],
                   };
                 });
               },
               query: `
               {
                 allReleaseNotePage(
-                  sort: { order: DESC, fields: date },
+                  limit: 5, sort: { order: DESC, fields: date }, filter: {date: {gte: "2020-01-01"}},
                 ) {
                     nodes {
                       description
-                      body
                       slug
                       title
                       date
@@ -256,7 +254,7 @@ module.exports = (themeOptions = {}) => {
               }
             `,
               output: '/release-notes.xml',
-              title: `${pluginOptions.websiteKey}'s rss feed`,
+              title: `commercetools ${pluginOptions.title} Release Notes`,
             },
           ],
         },
