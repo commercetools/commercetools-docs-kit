@@ -206,13 +206,6 @@ module.exports = (themeOptions = {}) => {
           disable: process.env.ANALYZE_BUNDLE !== 'true',
         },
       },
-
-      /**
-       * The following plugins need to be last
-       */
-      'gatsby-plugin-remove-trailing-slashes',
-      'gatsby-plugin-meta-redirect',
-      'gatsby-plugin-netlify-cache',
       {
         resolve: 'gatsby-plugin-feed',
         options: {
@@ -261,6 +254,13 @@ module.exports = (themeOptions = {}) => {
           ],
         },
       },
+
+      /**
+       * The following plugins need to be last
+       */
+      'gatsby-plugin-remove-trailing-slashes',
+      'gatsby-plugin-meta-redirect',
+      'gatsby-plugin-netlify-cache',
     ].filter(Boolean),
   };
 };
