@@ -43,7 +43,7 @@ module.exports = (themeOptions = {}) => {
       author: 'commercetools',
       productionHostname,
       betaLink: null,
-      siteUrl: `https://${productionHostname}${pluginOptions.pathPrefix}`,
+      siteUrl: `https://${productionHostname}`,
     },
     plugins: [
       /**
@@ -225,6 +225,7 @@ module.exports = (themeOptions = {}) => {
                 siteUrl
                 site_url: siteUrl
               }
+              pathPrefix
             }
           }
         `,
@@ -234,15 +235,15 @@ module.exports = (themeOptions = {}) => {
                 return allReleaseNotePage.nodes.map((node) => {
                   return {
                     ...node,
-                    url: site.siteMetadata.siteUrl + node.slug,
-                    guid: site.siteMetadata.siteUrl + node.slug,
+                    url: `${site.siteMetadata.siteUrl}${site.pathPrefix}${node.slug}`,
+                    guid: `${site.siteMetadata.siteUrl}${site.pathPrefix}${node.slug}`,
                   };
                 });
               },
               query: `
               {
                 allReleaseNotePage(
-                  limit: 5, sort: { order: DESC, fields: date }, filter: {date: {gte: "2020-01-01"}},
+                  limit: 5, sort: { order: DESC, fields: date }, filter: {date: {gt: "1999-01-01"}},
                 ) {
                     nodes {
                       description
