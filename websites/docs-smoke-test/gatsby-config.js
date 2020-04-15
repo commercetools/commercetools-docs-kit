@@ -12,6 +12,8 @@ module.exports = {
     {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
+        title: 'Docs Smoke Test',
+        pathPrefix: '/docs-smoke-test',
         websiteKey: 'docs-smoke-test',
         excludeFromSearchIndex: isProd && !shouldEnableSearch,
         hasReleaseNotes: true,
