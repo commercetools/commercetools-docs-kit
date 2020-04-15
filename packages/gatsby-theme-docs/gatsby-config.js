@@ -250,6 +250,7 @@ module.exports = (themeOptions = {}) => {
                       slug
                       title
                       date
+                      categories: topics
                     }
                 }
               }
