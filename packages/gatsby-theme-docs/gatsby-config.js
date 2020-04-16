@@ -213,27 +213,23 @@ module.exports = (themeOptions = {}) => {
                 title
                 description
                 siteUrl
+                site_url: siteUrl
               }
             }
           }
         `,
-          setup: (options) => {
-            const {
-              query: {
-                site: {
-                  siteMetadata: { title, description, siteUrl },
-                },
-              },
-            } = options;
-            return {
-              ...options,
-              title: `commercetools ${title} Release Notes`,
-              description,
-              site_url: siteUrl,
-              language: 'en',
-              categories: ['commercetools', 'e-commerce'],
-            };
-          },
+          setup: ({
+            query: {
+              site: { siteMetadata },
+            },
+            ...rest
+          }) => ({
+            ...siteMetadata,
+            ...rest,
+            title: `commercetools ${siteMetadata.title} Release Notes`,
+            language: 'en',
+            categories: ['commercetools', 'e-commerce'],
+          }),
           feeds: [
             {
               serialize: ({ query: { site, allReleaseNotePage } }) => {
