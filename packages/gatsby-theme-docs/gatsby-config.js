@@ -36,14 +36,11 @@ module.exports = (themeOptions = {}) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
   validateThemeOptions(pluginOptions);
 
-  const productionHostname = 'docs.commercetools.com';
-
   return {
     siteMetadata: {
       author: 'commercetools',
-      productionHostname,
+      productionHostname: 'docs.commercetools.com',
       betaLink: null,
-      siteUrl: `https://${productionHostname}`,
     },
     plugins: [
       /**
@@ -225,7 +222,6 @@ module.exports = (themeOptions = {}) => {
                 siteUrl
                 site_url: siteUrl
               }
-              pathPrefix
             }
           }
         `,
@@ -235,8 +231,8 @@ module.exports = (themeOptions = {}) => {
                 return allReleaseNotePage.nodes.map((node) => {
                   return {
                     ...node,
-                    url: `${site.siteMetadata.siteUrl}${site.pathPrefix}${node.slug}`,
-                    guid: `${site.siteMetadata.siteUrl}${site.pathPrefix}${node.slug}`,
+                    url: `${site.siteMetadata.siteUrl}${node.slug}`,
+                    guid: `${site.siteMetadata.siteUrl}${node.slug}`,
                   };
                 });
               },
