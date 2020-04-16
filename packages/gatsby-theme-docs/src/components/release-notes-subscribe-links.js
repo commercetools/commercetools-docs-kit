@@ -1,6 +1,10 @@
 import React from 'react';
 
-// TODO: Actual implementation
-const ReleaseNotesSubscribeLinks = () => <div></div>;
+const ReleaseNotesSubscribeLinks = () => (
+  <div>
+    <div>rss</div>
+    <div>product newsletter</div>
+  </div>
+);
 
 export default ReleaseNotesSubscribeLinks;
