@@ -226,12 +226,12 @@ module.exports = (themeOptions = {}) => {
               },
             } = options;
             return {
+              ...options,
               title: `commercetools ${title} Release Notes`,
               description,
               site_url: siteUrl,
               language: 'en',
               categories: ['commercetools', 'e-commerce'],
-              output: '/releases/feed.xml',
             };
           },
           feeds: [
@@ -260,6 +260,7 @@ module.exports = (themeOptions = {}) => {
                 }
               }
             `,
+              output: '/releases/feed.xml',
             },
           ],
         },
