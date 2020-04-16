@@ -4,4 +4,4 @@ package.json
 .percy.yml
 .cache
 .yarn
-**/vale-styles/Google
+**/styles/Google
