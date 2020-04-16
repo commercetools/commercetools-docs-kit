@@ -12,7 +12,6 @@ module.exports = {
     {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
-        title: 'Docs Smoke Test',
         websiteKey: 'docs-smoke-test',
         excludeFromSearchIndex: isProd && !shouldEnableSearch,
         additionalPrismLanguages: ['scala', 'csharp'],

@@ -218,6 +218,20 @@ module.exports = (themeOptions = {}) => {
             }
           }
         `,
+          setup: (options) => {
+            const {
+              query: {
+                site: {
+                  siteMetadata: { title },
+                },
+              },
+            } = options;
+            return {
+              ...options,
+              // Override title to include specific site's title
+              title: `commercetools ${title} Release Notes`,
+            };
+          },
           feeds: [
             {
               serialize: ({ query: { site, allReleaseNotePage } }) => {
@@ -245,7 +259,7 @@ module.exports = (themeOptions = {}) => {
               }
             `,
               output: '/releases/feed.xml',
-              title: `commercetools ${pluginOptions.title} Release Notes`,
+              title: `commercetools Release Notes`,
             },
           ],
         },
