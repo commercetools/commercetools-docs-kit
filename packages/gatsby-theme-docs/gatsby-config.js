@@ -203,6 +203,64 @@ module.exports = (themeOptions = {}) => {
           disable: process.env.ANALYZE_BUNDLE !== 'true',
         },
       },
+      {
+        resolve: 'gatsby-plugin-feed',
+        options: {
+          query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+          setup: ({
+            query: {
+              site: { siteMetadata },
+            },
+            ...rest
+          }) => ({
+            ...siteMetadata,
+            ...rest,
+            title: `commercetools ${siteMetadata.title} Release Notes`,
+            language: 'en',
+            categories: ['commercetools', 'e-commerce'],
+          }),
+          feeds: [
+            {
+              serialize: ({ query: { site, allReleaseNotePage } }) => {
+                return allReleaseNotePage.nodes.map((node) => {
+                  return {
+                    ...node,
+                    url: `${site.siteMetadata.siteUrl}${node.slug}`,
+                    guid: `${site.siteMetadata.siteUrl}${node.slug}`,
+                  };
+                });
+              },
+              query: `
+              {
+                allReleaseNotePage(
+                  limit: 5, sort: { order: DESC, fields: date }, filter: {date: {gt: "1999-01-01"}},
+                ) {
+                    nodes {
+                      description
+                      slug
+                      title
+                      date
+                      categories: topics
+                    }
+                }
+              }
+            `,
+              output: '/releases/feed.xml',
+            },
+          ],
+        },
+      },
 
       /**
        * The following plugins need to be last

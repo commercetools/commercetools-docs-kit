@@ -32,6 +32,22 @@ exports.onPreBootstrap = ({ reporter }) => {
   });
 };
 
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    SiteSiteMetadata: {
+      // this field is needed by 'gatsby-plugin-feed' plugin
+      siteUrl: {
+        type: 'String',
+        resolve(source, args, context) {
+          const site = context.nodeModel.getAllNodes({ type: 'Site' })[0];
+          return `https://${source.productionHostname}${site.pathPrefix}`;
+        },
+      },
+    },
+  };
+  createResolvers(resolvers);
+};
+
 // Inspired by https://github.com/gatsbyjs/gatsby/blob/ead08cc1fd9fa30a46fa8b6b7411141a5c9ba4f8/packages/gatsby-theme-blog-core/gatsby-node.js#L29
 const identity = (node) => node;
 const resolverPassthrough = ({
@@ -267,7 +283,7 @@ function generateReleaseNoteSlug(node) {
   const date = node.frontmatter.date ? node.frontmatter.date.split('T')[0] : '';
   const title = node.frontmatter.title ? node.frontmatter.title : '';
 
-  const slug = slugify(`${date} ${title}`, { lower: true });
+  const slug = slugify(`${date} ${title}`, { lower: true, strict: true });
   return trimTrailingSlash(`${basePath}/${slug}`);
 }
 
