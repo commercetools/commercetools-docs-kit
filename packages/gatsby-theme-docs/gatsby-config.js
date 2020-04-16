@@ -213,7 +213,6 @@ module.exports = (themeOptions = {}) => {
                 title
                 description
                 siteUrl
-                site_url: siteUrl
               }
             }
           }
@@ -222,14 +221,17 @@ module.exports = (themeOptions = {}) => {
             const {
               query: {
                 site: {
-                  siteMetadata: { title },
+                  siteMetadata: { title, description, siteUrl },
                 },
               },
             } = options;
             return {
-              ...options,
-              // Override title to include specific site's title
               title: `commercetools ${title} Release Notes`,
+              description,
+              site_url: siteUrl,
+              language: 'en',
+              categories: ['commercetools', 'e-commerce'],
+              output: '/releases/feed.xml',
             };
           },
           feeds: [
@@ -258,8 +260,6 @@ module.exports = (themeOptions = {}) => {
                 }
               }
             `,
-              output: '/releases/feed.xml',
-              title: `commercetools Release Notes`,
             },
           ],
         },
