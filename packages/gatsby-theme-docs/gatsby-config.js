@@ -36,11 +36,14 @@ module.exports = (themeOptions = {}) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
   validateThemeOptions(pluginOptions);
 
+  const productionHostname = 'docs.commercetools.com';
+
   return {
     siteMetadata: {
       author: 'commercetools',
-      productionHostname: 'docs.commercetools.com',
+      productionHostname,
       betaLink: null,
+      siteUrl: `https://${productionHostname}`,
     },
     plugins: [
       /**
@@ -201,6 +204,54 @@ module.exports = (themeOptions = {}) => {
         resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
         options: {
           disable: process.env.ANALYZE_BUNDLE !== 'true',
+        },
+      },
+      {
+        resolve: 'gatsby-plugin-feed',
+        options: {
+          query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+              pathPrefix
+            }
+          }
+        `,
+          feeds: [
+            {
+              serialize: ({ query: { site, allReleaseNotePage } }) => {
+                return allReleaseNotePage.nodes.map((node) => {
+                  return {
+                    ...node,
+                    url: `${site.siteMetadata.siteUrl}${site.pathPrefix}${node.slug}`,
+                    guid: `${site.siteMetadata.siteUrl}${site.pathPrefix}${node.slug}`,
+                  };
+                });
+              },
+              query: `
+              {
+                allReleaseNotePage(
+                  limit: 5, sort: { order: DESC, fields: date }, filter: {date: {gt: "1999-01-01"}},
+                ) {
+                    nodes {
+                      description
+                      slug
+                      title
+                      date
+                      categories: topics
+                    }
+                }
+              }
+            `,
+              output: '/releases/feed.xml',
+              title: `commercetools ${pluginOptions.title} Release Notes`,
+            },
+          ],
         },
       },
 

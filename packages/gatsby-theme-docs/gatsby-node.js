@@ -283,7 +283,7 @@ function generateReleaseNoteSlug(node) {
   const date = node.frontmatter.date ? node.frontmatter.date.split('T')[0] : '';
   const title = node.frontmatter.title ? node.frontmatter.title : '';
 
-  const slug = slugify(`${date} ${title}`, { lower: true });
+  const slug = slugify(`${date} ${title}`, { lower: true, strict: true });
   return trimTrailingSlash(`${basePath}/${slug}`);
 }
 

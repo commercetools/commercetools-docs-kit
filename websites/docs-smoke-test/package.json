@@ -9,6 +9,7 @@
     "clean": "npx gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
     "build": "npx gatsby build --prefix-paths",
+    "build:serve": "npx gatsby build --prefix-paths && npx gatsby serve --prefix-paths -o",
     "prebuild": "yarn clean",
     "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test"
   },
