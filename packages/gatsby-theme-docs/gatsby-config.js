@@ -36,14 +36,11 @@ module.exports = (themeOptions = {}) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
   validateThemeOptions(pluginOptions);
 
-  const productionHostname = 'docs.commercetools.com';
-
   return {
     siteMetadata: {
       author: 'commercetools',
-      productionHostname,
+      productionHostname: 'docs.commercetools.com',
       betaLink: null,
-      siteUrl: `https://${productionHostname}`,
     },
     plugins: [
       /**
@@ -218,7 +215,6 @@ module.exports = (themeOptions = {}) => {
                 siteUrl
                 site_url: siteUrl
               }
-              pathPrefix
             }
           }
         `,
@@ -228,8 +224,8 @@ module.exports = (themeOptions = {}) => {
                 return allReleaseNotePage.nodes.map((node) => {
                   return {
                     ...node,
-                    url: `${site.siteMetadata.siteUrl}${site.pathPrefix}${node.slug}`,
-                    guid: `${site.siteMetadata.siteUrl}${site.pathPrefix}${node.slug}`,
+                    url: `${site.siteMetadata.siteUrl}${node.slug}`,
+                    guid: `${site.siteMetadata.siteUrl}${node.slug}`,
                   };
                 });
               },
@@ -261,52 +257,6 @@ module.exports = (themeOptions = {}) => {
       'gatsby-plugin-remove-trailing-slashes',
       'gatsby-plugin-meta-redirect',
       'gatsby-plugin-netlify-cache',
-      {
-        resolve: 'gatsby-plugin-feed',
-        options: {
-          query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-          feeds: [
-            {
-              serialize: ({ query: { site, allReleaseNotePage } }) => {
-                return allReleaseNotePage.nodes.map((node) => {
-                  return {
-                    ...node,
-                    url: `${site.siteMetadata.siteUrl}${node.slug}`,
-                    guid: `${site.siteMetadata.siteUrl}${node.slug}`,
-                  };
-                });
-              },
-              query: `
-              {
-                allReleaseNotePage(
-                  limit: 5, sort: { order: DESC, fields: date }, filter: {date: {gt: "1999-01-01"}},
-                ) {
-                    nodes {
-                      description
-                      slug
-                      title
-                      date
-                    }
-                }
-              }
-            `,
-              output: '/release-notes.xml',
-              title: `commercetools ${pluginOptions.title} Release Notes`,
-            },
-          ],
-        },
-      },
     ].filter(Boolean),
   };
 };
