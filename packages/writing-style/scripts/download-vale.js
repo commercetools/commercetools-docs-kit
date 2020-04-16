@@ -29,7 +29,7 @@ const localBinaryFileName = isWin
   ? `vale-${valeVersion}.exe`
   : `vale-${valeVersion}`;
 const archivePath = path.join(__dirname, `../${archiveName}`);
-const binPath = path.join(__dirname, '../bin');
+const binPath = path.join(__dirname, '../');
 const downloadBinaryPath = path.join(binPath, binaryFileName);
 const destBinaryPath = path.join(binPath, localBinaryFileName);
 
