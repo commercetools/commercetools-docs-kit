@@ -1,13 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
+
 import LayoutReleaseNoteBody from './layout-release-note-body';
+import Link from '../../components/link';
+
+const linkStyles = css`
+  text-decoration: none;
+  color: ${designSystem.colors.light.textPrimary} !important;
+
+  :hover {
+    color: ${designSystem.colors.light.linkNavigation} !important;
+  }
+`;
 
 const ReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
-      <Markdown.H3>{props.title}</Markdown.H3>
+      <Markdown.H3>
+        <Link css={linkStyles} href={props.slug}>
+          {props.title}
+        </Link>
+      </Markdown.H3>
       <LayoutReleaseNoteBody {...props} />
     </SpacingsStack>
   );
