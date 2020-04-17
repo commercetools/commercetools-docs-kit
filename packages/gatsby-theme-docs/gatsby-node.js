@@ -21,7 +21,6 @@ exports.onPreBootstrap = ({ reporter }) => {
     'src/images',
     'src/content',
     'src/content/files',
-    'src/code-examples',
     'src/releases',
   ];
   requiredDirectories.forEach((dir) => {
@@ -194,46 +193,11 @@ exports.onCreateNode = (
     ? pluginOptions.createNodeSlug(originalSlug, { node })
     : originalSlug;
 
-  const isContentPage =
-    parent.internal.mediaType === 'text/mdx' &&
-    parent.sourceInstanceName === 'content';
-  if (isContentPage) {
-    const fieldData = {
-      slug: trimTrailingSlash(slug) || '/',
-      title: node.frontmatter.title,
-      isGlobalBeta: Boolean(pluginOptions.beta),
-      excludeFromSearchIndex:
-        Boolean(node.frontmatter.excludeFromSearchIndex) ||
-        Boolean(pluginOptions.excludeFromSearchIndex),
-      beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
-    };
-    actions.createNode({
-      ...fieldData,
-      // Required fields
-      id: createNodeId(`${node.id} >>> ContentPage`),
-      parent: node.id,
-      children: [],
-      internal: {
-        type: 'ContentPage',
-        contentDigest: crypto
-          .createHash(`md5`)
-          .update(JSON.stringify(fieldData))
-          .digest(`hex`),
-        content: JSON.stringify(fieldData),
-        description: 'Content Pages',
-      },
-    });
-    actions.createParentChildLink({
-      parent,
-      child: node,
-    });
-  }
-
   const isReleaseNotesPage =
     parent.internal.mediaType === 'text/mdx' &&
     parent.sourceInstanceName === 'releaseNotes';
   if (isReleaseNotesPage) {
-    const fieldData = {
+    const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
       isGlobalBeta: Boolean(pluginOptions.beta),
@@ -247,7 +211,7 @@ exports.onCreateNode = (
       published: Boolean(node.frontmatter.published),
     };
     actions.createNode({
-      ...fieldData,
+      ...releaseNotesFieldData,
       // Required fields
       id: createNodeId(`${node.id} >>> ReleaseNotePage`),
       parent: node.id,
@@ -256,9 +220,9 @@ exports.onCreateNode = (
         type: 'ReleaseNotePage',
         contentDigest: crypto
           .createHash(`md5`)
-          .update(JSON.stringify(fieldData))
+          .update(JSON.stringify(releaseNotesFieldData))
           .digest(`hex`),
-        content: JSON.stringify(fieldData),
+        content: JSON.stringify(releaseNotesFieldData),
         description: 'Release Note Pages',
       },
     });
@@ -267,6 +231,39 @@ exports.onCreateNode = (
       child: node,
     });
   }
+
+  // If not explicitly handled, always fall back to build the page as a "content" page.
+  // This is useful in case the website requires additional MDX pages located in
+  // other file system directories, and thus with different `sourceInstanceName` names.
+  const contentPageFieldData = {
+    slug: trimTrailingSlash(slug) || '/',
+    title: node.frontmatter.title,
+    isGlobalBeta: Boolean(pluginOptions.beta),
+    excludeFromSearchIndex:
+      Boolean(node.frontmatter.excludeFromSearchIndex) ||
+      Boolean(pluginOptions.excludeFromSearchIndex),
+    beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
+  };
+  actions.createNode({
+    ...contentPageFieldData,
+    // Required fields
+    id: createNodeId(`${node.id} >>> ContentPage`),
+    parent: node.id,
+    children: [],
+    internal: {
+      type: 'ContentPage',
+      contentDigest: crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(contentPageFieldData))
+        .digest(`hex`),
+      content: JSON.stringify(contentPageFieldData),
+      description: 'Content Pages',
+    },
+  });
+  actions.createParentChildLink({
+    parent,
+    child: node,
+  });
 };
 
 function generateReleaseNoteSlug(node) {
