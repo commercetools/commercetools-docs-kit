@@ -57,7 +57,11 @@ const ReleaseNotesSubscribeLinks = () => (
           <span>RSS</span>
         </SpacingsInline>
       </Link>
-      <Link href="#" css={linkStyles} noUnderline={true}>
+      <Link
+        href="https://ok.commercetools.com/product-newsletter"
+        css={[linkStyles]}
+        noUnderline={true}
+      >
         <SpacingsInline scale="xs" alignItems="baseline">
           <MailIcon size="medium" />
           <span>Product Newsletter</span>
