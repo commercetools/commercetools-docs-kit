@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 // some files have no unique media type, see comments below
 const validMediaTypes = [
   'application/javascript',
@@ -11,9 +13,20 @@ const validMediaTypes = [
   'application/octet-stream', // languages without registered media type
   'text/plain', // more languages without registered media type
 ];
-const examplesDirectory = `${process.cwd()}/src/code-examples`;
 
-const createSchemaCustomization = ({ actions, schema }) => {
+// Ensure that certain directories exist.
+// https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
+exports.onPreBootstrap = ({ reporter }) => {
+  const requiredDirectories = ['src/code-examples'];
+  requiredDirectories.forEach((dir) => {
+    if (!fs.existsSync(dir)) {
+      reporter.info(`creating the ${dir} directory`);
+      fs.mkdirSync(dir);
+    }
+  });
+};
+
+exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
 
   const typeDefs = [
@@ -35,13 +48,13 @@ const createSchemaCustomization = ({ actions, schema }) => {
   createTypes(typeDefs);
 };
 
-async function onCreateNode({
+exports.onCreateNode = async ({
   node,
   actions,
   loadNodeContent,
   createNodeId,
   createContentDigest,
-}) {
+}) => {
   if (!isValidNode(node)) return;
 
   const { createNode, createParentChildLink } = actions;
@@ -73,14 +86,11 @@ async function onCreateNode({
     createNodeId(`${node.id} >>> CodeExample`),
     'CodeExample'
   );
-}
+};
 
 function isValidNode(node) {
   return (
     validMediaTypes.includes(node.internal.mediaType) &&
-    node.dir.startsWith(examplesDirectory)
+    node.sourceInstanceName === 'codeExamples'
   );
 }
-
-exports.createSchemaCustomization = createSchemaCustomization;
-exports.onCreateNode = onCreateNode;
