@@ -7,6 +7,8 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import Stamp from '@commercetools-uikit/stamp';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
+import Link from '../../components/link';
+import markdownFragmentToReact from '../../utils/markdown-fragment-to-react';
 
 const DateElement = styled.div`
   line-height: ${designSystem.typography.lineHeights.small};
@@ -46,9 +48,14 @@ const ReleaseNote = (props) => {
         </Topics>
       )}
 
-      <div>
+      {props.body ? (
         <MDXRenderer>{props.body}</MDXRenderer>
-      </div>
+      ) : (
+        <Markdown.TypographyPage>
+          <section>{markdownFragmentToReact(props.rawExcerpt)}</section>
+        </Markdown.TypographyPage>
+      )}
+      {props.hasMore ? <Link href={`${props.slug}`}>Read more...</Link> : null}
     </SpacingsStack>
   );
 };
@@ -59,7 +66,9 @@ ReleaseNote.propTypes = {
   description: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['feature', 'enhancement', 'fix']).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  body: PropTypes.string.isRequired,
+  body: PropTypes.string,
+  rawExcerpt: PropTypes.string,
+  hasMore: PropTypes.bool.isRequired,
 };
 
 export default ReleaseNote;

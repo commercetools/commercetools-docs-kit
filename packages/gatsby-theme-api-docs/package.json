@@ -21,10 +21,7 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/spacings-inline": "10.18.4",
     "@commercetools-uikit/spacings-stack": "10.18.4",
-    "gatsby-source-filesystem": "2.1.48",
-    "remark-parse": "8.0.0",
-    "remark-react": "7.0.1",
-    "unified": "9.0.0"
+    "gatsby-source-filesystem": "2.1.48"
   },
   "devDependencies": {
     "@commercetools-docs/ramldoc-generator": "2.5.0",

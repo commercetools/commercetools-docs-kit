@@ -10,15 +10,6 @@ import LayoutReleaseNotesList from '../layouts/release-notes-list';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
-const releaseNoteMarkdownComponents = {
-  ...markdownComponents,
-  // NOTE: release notes content can only have headings starting from h4.
-  h1: Markdown.withAnchorLink(Markdown.H4),
-  h2: Markdown.withAnchorLink(Markdown.H5),
-  h3: Markdown.withAnchorLink(Markdown.H6),
-  h4: Markdown.withAnchorLink(Markdown.H6),
-};
-
 const ReleaseNotesListTemplate = (props) => (
   <ThemeProvider>
     <LayoutReleaseNotesList
@@ -36,15 +27,13 @@ const ReleaseNotesListTemplate = (props) => (
           </div>
         </MDXProvider>
         <div>
-          <MDXProvider components={releaseNoteMarkdownComponents}>
-            <SpacingsStack>
-              {props.data.allReleaseNotePage &&
-                props.data.allReleaseNotePage.nodes &&
-                props.data.allReleaseNotePage.nodes.map((releaseNote) => (
-                  <LayoutReleaseNote key={releaseNote.slug} {...releaseNote} />
-                ))}
-            </SpacingsStack>
-          </MDXProvider>
+          <SpacingsStack>
+            {props.data.allReleaseNotePage &&
+              props.data.allReleaseNotePage.nodes &&
+              props.data.allReleaseNotePage.nodes.map((releaseNote) => (
+                <LayoutReleaseNote key={releaseNote.slug} {...releaseNote} />
+              ))}
+          </SpacingsStack>
         </div>
       </Markdown.TypographyPage>
     </LayoutReleaseNotesList>
@@ -73,7 +62,8 @@ ReleaseNotesListTemplate.propTypes = {
           description: PropTypes.string.isRequired,
           type: PropTypes.string.isRequired,
           topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-          body: PropTypes.string.isRequired,
+          rawExcerpt: PropTypes.string.isRequired,
+          hasMore: PropTypes.bool.isRequired,
         })
       ).isRequired,
     }),
@@ -99,7 +89,8 @@ export const query = graphql`
         description
         type
         topics
-        body
+        rawExcerpt
+        hasMore
       }
     }
   }
