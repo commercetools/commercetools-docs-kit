@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNotesDetail from '../layouts/release-notes-detail';
+import LayoutReleaseNoteBody from '../layouts/internals/layout-release-note-body';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
@@ -29,7 +29,7 @@ const ReleaseNotesDetailTemplate = (props) => (
             }
           />
           <div>
-            <MDXRenderer>{props.data.releaseNotePage.body}</MDXRenderer>
+            <LayoutReleaseNoteBody {...props.data.releaseNotePage} />
           </div>
         </Markdown.TypographyPage>
       </MDXProvider>
@@ -59,7 +59,7 @@ export const query = graphql`
       title
       isGlobalBeta
       excludeFromSearchIndex
-      date(formatString: "YYYY-MM-DD")
+      date(formatString: "D MMMM YYYY")
       description
       type
       topics
