@@ -87,7 +87,6 @@ export const dimensions = {
     searchBar: '300px',
     searchBarSmall: '150px',
     selectDropDownArrowWith: '12px',
-    rssIconWidth: '16px',
   },
   viewports: {
     mobile: `max-width: ${pageWidth}`,
