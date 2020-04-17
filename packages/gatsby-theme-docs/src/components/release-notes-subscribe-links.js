@@ -44,7 +44,7 @@ const ReleaseNotesSubscribeLinks = () => (
     <SpacingsStack scale="xs">
       <Link href="/releases/feed.xml" css={linkStyles} noUnderline={true}>
         <SpacingsInline scale="xs" alignItems="center">
-          <RssIcon size="big" />
+          <RssIcon size="medium" />
           <span>RSS</span>
         </SpacingsInline>
       </Link>
@@ -54,7 +54,7 @@ const ReleaseNotesSubscribeLinks = () => (
         noUnderline={true}
       >
         <SpacingsInline scale="xs" alignItems="center">
-          <MailIcon size="big" />
+          <MailIcon size="medium" />
           <span>Product Newsletter</span>
         </SpacingsInline>
       </ExternalSiteLink>
