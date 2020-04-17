@@ -134,6 +134,11 @@ export const typography = {
     ultraSmall: pxToRem('10px'),
   },
 
+  relativeFontSizes: {
+    // design spec: 10px (ultrasmall) in beta flag if base font is 16px
+    badgeFontToSurroundingInline: '62.5%',
+  },
+
   fontWeights: {
     regular: '400',
     medium: '500',
