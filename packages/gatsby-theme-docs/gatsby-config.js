@@ -89,14 +89,6 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/content`),
         },
       },
-      // Code examples
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'codeExamples',
-          path: path.resolve(`./src/code-examples`),
-        },
-      },
       // Release notes
       {
         resolve: 'gatsby-source-filesystem',
