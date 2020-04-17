@@ -50,7 +50,7 @@ const LayoutReleaseNotesDetail = (props) => {
                     font-size: ${designSystem.typography.fontSizes.small};
                   `}
                 >
-                  {'Back to all releases'}
+                  {`All ${siteData.siteMetadata.title} Releases`}
                 </span>
               </Link>
             </SpacingsInline>
