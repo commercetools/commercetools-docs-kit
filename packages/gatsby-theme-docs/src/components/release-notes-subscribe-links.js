@@ -6,25 +6,18 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
 import { MailIcon } from '@commercetools-uikit/icons';
 import UnstyledRssIcon from '../icons/rss.svg';
-import Link from './link';
-
-const RssIconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: ${designSystem.dimensions.spacings.m};
-  height: ${designSystem.dimensions.spacings.m};
-`;
+import Link, { ExternalSiteLink } from './link';
 
 const RssIcon = createStyledIcon(UnstyledRssIcon);
 
 const Container = styled.div`
-  margin-top: ${designSystem.dimensions.spacings.m};
+  margin: ${designSystem.dimensions.spacings.m} 0;
   padding-left: ${designSystem.dimensions.spacings.m};
   border-left: 1px solid ${designSystem.colors.light.borderPrimary};
 `;
 
 const linkStyles = css`
+  text-decoration: none;
   color: ${designSystem.colors.light.textSecondary} !important;
   font-size: ${designSystem.typography.fontSizes.body};
   line-height: ${designSystem.typography.lineHeights.body};
@@ -50,23 +43,21 @@ const ReleaseNotesSubscribeLinks = () => (
   <Container>
     <SpacingsStack scale="xs">
       <Link href="/releases/feed.xml" css={linkStyles} noUnderline={true}>
-        <SpacingsInline scale="xs" alignItems="baseline">
-          <RssIconContainer>
-            <RssIcon size="small" />
-          </RssIconContainer>
+        <SpacingsInline scale="xs" alignItems="center">
+          <RssIcon size="big" />
           <span>RSS</span>
         </SpacingsInline>
       </Link>
-      <Link
+      <ExternalSiteLink
         href="https://ok.commercetools.com/product-newsletter"
-        css={[linkStyles]}
+        css={linkStyles}
         noUnderline={true}
       >
-        <SpacingsInline scale="xs" alignItems="baseline">
-          <MailIcon size="medium" />
+        <SpacingsInline scale="xs" alignItems="center">
+          <MailIcon size="big" />
           <span>Product Newsletter</span>
         </SpacingsInline>
-      </Link>
+      </ExternalSiteLink>
     </SpacingsStack>
   </Container>
 );
