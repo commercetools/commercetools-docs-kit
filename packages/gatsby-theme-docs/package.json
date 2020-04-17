@@ -23,7 +23,7 @@
     "@commercetools-uikit/secondary-icon-button": "10.18.4",
     "@commercetools-uikit/spacings-inline": "10.18.4",
     "@commercetools-uikit/spacings-stack": "10.18.4",
-    "@commercetools-uikit/stamp": "10.18.4",
+    "@commercetools-uikit/stamp": "10.18.5",
     "@mdx-js/mdx": "1.5.5",
     "@mdx-js/react": "1.5.5",
     "@sentry/browser": "5.12.1",

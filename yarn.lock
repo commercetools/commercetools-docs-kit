@@ -1233,10 +1233,10 @@
     "@commercetools-uikit/spacings-inset-squish" "10.18.4"
     "@commercetools-uikit/spacings-stack" "10.18.4"
 
-"@commercetools-uikit/stamp@10.18.4":
-  version "10.18.4"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/stamp/-/stamp-10.18.4.tgz#f3bc2978f153e1fed59dfccfaa3b8197c8ec31d3"
-  integrity sha512-O82eQAnQyGAd1qaC8ti9U9aAjVx/ZSf7+G2qetPzjVJjUIh0sUyrtqaWm/RpBcRuWFWPbXQfpL5uMndvSX+OLA==
+"@commercetools-uikit/stamp@10.18.5":
+  version "10.18.5"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/stamp/-/stamp-10.18.5.tgz#2e8e29818661a9d08c526924413f1d37c61c562d"
+  integrity sha512-t2Z+G8lfV3aUFRJu3IvCLZYEVOpdlWVgRYDZufOcG7yxYaiiaTL6riTnfb+Ou02VHBxXIdo3CKU70agz2h9VXw==
   dependencies:
     "@commercetools-uikit/design-system" "10.18.4"
     "@commercetools-uikit/spacings-inset-squish" "10.18.4"
@@ -1472,18 +1472,6 @@
     "@emotion/stylis" "0.8.5"
     "@emotion/utils" "0.11.3"
     "@emotion/weak-memoize" "0.2.5"
-
-"@emotion/core@10.0.27":
-  version "10.0.27"
-  resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.27.tgz#7c3f78be681ab2273f3bf11ca3e2edc4a9dd1fdc"
-  integrity sha512-XbD5R36pVbohQMnKfajHv43g8EbN4NHdF6Zh9zg/C0nr0jqwOw3gYnC07Xj3yG43OYSRyrGsoQ5qPwc8ycvLZw==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    "@emotion/cache" "^10.0.27"
-    "@emotion/css" "^10.0.27"
-    "@emotion/serialize" "^0.11.15"
-    "@emotion/sheet" "0.9.4"
-    "@emotion/utils" "0.11.3"
 
 "@emotion/core@10.0.28":
   version "10.0.28"
