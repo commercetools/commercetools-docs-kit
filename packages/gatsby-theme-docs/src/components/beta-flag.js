@@ -36,6 +36,9 @@ const getStyles = (props) => {
   `;
 };
 
+const betaHint =
+  'This feature is marked as beta and is subject to change. Use with caution.';
+
 const BetaFlag = (props) => {
   if (props.href) {
     return (
@@ -44,7 +47,11 @@ const BetaFlag = (props) => {
       </Link>
     );
   }
-  return <span css={getStyles(props)}>{'BETA'}</span>;
+  return (
+    <span css={getStyles(props)} title={betaHint}>
+      {'BETA'}
+    </span>
+  );
 };
 BetaFlag.propTypes = {
   href: PropTypes.string,
