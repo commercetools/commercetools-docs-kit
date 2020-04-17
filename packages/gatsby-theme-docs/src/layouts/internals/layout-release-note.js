@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { ThemeProvider as UiKitThemeProvider } from 'emotion-theming';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import Stamp from '@commercetools-uikit/stamp';
@@ -10,16 +10,6 @@ import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 
 const DateElement = styled.div`
   line-height: ${designSystem.typography.lineHeights.small};
-`;
-// Wraps the uikit `Stamp` component to allow custom color schemes.
-// The `> div` selector should target the `Stamp` container element.
-const ReleaseNoteType = styled.div`
-  > div {
-    color: ${designSystem.colors.light.textPrimary};
-    line-height: ${designSystem.typography.lineHeights.small};
-    font-size: ${designSystem.typography.fontSizes.extraSmall};
-    ${getTypeStyles}
-  }
 `;
 const Topics = styled.div`
   color: ${designSystem.colors.light.textInfo};
@@ -31,17 +21,23 @@ const Topics = styled.div`
     border-left: 1px solid ${designSystem.colors.light.surfaceSecondary3};
   }
 `;
+const stampTheme = {
+  fontSizeDefault: designSystem.typography.fontSizes.extraSmall,
+  // Override the `critical` style which is used for the "fix" type
+  colorError95: designSystem.colors.light.surfaceForReleaseNoteTypeFix,
+  colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
+};
 
 const ReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
       <Markdown.H3>{props.title}</Markdown.H3>
       <DateElement>{props.date}</DateElement>
-      <SpacingsInline>
-        <ReleaseNoteType type={props.type}>
+      <UiKitThemeProvider theme={stampTheme}>
+        <SpacingsInline>
           <Stamp tone={mapTypeToTone(props)}>{mapTypeToLabel(props)}</Stamp>
-        </ReleaseNoteType>
-      </SpacingsInline>
+        </SpacingsInline>
+      </UiKitThemeProvider>
       {props.topics.length > 0 && (
         <Topics>
           {props.topics.map((topic) => (
@@ -68,27 +64,14 @@ ReleaseNote.propTypes = {
 
 export default ReleaseNote;
 
-function getTypeStyles(props) {
-  switch (props.type) {
-    // TODO: provide this color in the uikit?
-    case 'fix':
-      return css`
-        background-color: ${designSystem.colors.light
-          .surfaceForReleaseNoteTypeFix};
-        border: 1px solid
-          ${designSystem.colors.light.borderForReleaseNoteTypeFix};
-      `;
-    default:
-      return css``;
-  }
-}
-
 function mapTypeToTone(props) {
   switch (props.type) {
     case 'feature':
       return 'positive';
     case 'enhancement':
       return 'information';
+    case 'fix':
+      return 'critical';
     default:
       return props.type;
   }

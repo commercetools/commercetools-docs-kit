@@ -54,7 +54,7 @@
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
     "@emotion/babel-preset-css-prop": "10.0.27",
-    "@emotion/core": "10.0.27",
+    "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "@percy/cypress": "2.3.0",
     "@rollup/plugin-json": "4.0.2",
