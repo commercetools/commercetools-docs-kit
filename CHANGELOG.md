@@ -1,3 +1,54 @@
+## [2.5.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.4.0...v2.5.0) (2020-04-17)
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`, `gatsby-transformer-code-examples`
+  - [#370](https://github.com/commercetools/commercetools-docs-kit/pull/370) fix(theme): to not restrict content page nodes for specific filesystem ([@emmenko](https://github.com/emmenko))
+- `writing-style`
+  - [#366](https://github.com/commercetools/commercetools-docs-kit/pull/366) Writing Style Linter: Update vale and prevent binary from being published ([@nkuehn](https://github.com/nkuehn))
+- `gatsby-theme-docs`
+  - [#347](https://github.com/commercetools/commercetools-docs-kit/pull/347) fix(theme): to use height auto for small screens ([@emmenko](https://github.com/emmenko))
+  - [#351](https://github.com/commercetools/commercetools-docs-kit/pull/351) fix(theme): remove check for zeit github branch ([@emmenko](https://github.com/emmenko))
+  - [#348](https://github.com/commercetools/commercetools-docs-kit/pull/348) fix(theme): dynamically render the cookie consent scripts only on \*.commercetools.com domain ([@nkuehn](https://github.com/nkuehn))
+  - [#350](https://github.com/commercetools/commercetools-docs-kit/pull/350) fix: leftovers of release notes layout implementation ([@emmenko](https://github.com/emmenko))
+
+#### 🔮 Type: Chore
+
+- [#353](https://github.com/commercetools/commercetools-docs-kit/pull/353) chore(ci): add workflow to verify PR labels are assigned ([@emmenko](https://github.com/emmenko))
+
+#### 💅 Type: Enhancement
+
+- `gatsby-theme-docs`
+  - [#331](https://github.com/commercetools/commercetools-docs-kit/pull/331) Nav Content: Add Integrations marketplace to meta nav ([@nkuehn](https://github.com/nkuehn))
+- `writing-style`
+  - [#356](https://github.com/commercetools/commercetools-docs-kit/pull/356) Writing Style: match the date formatting style hint to our actual styleguide rule ([@nkuehn](https://github.com/nkuehn))
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-docs`
+  - [#367](https://github.com/commercetools/commercetools-docs-kit/pull/367) feat: release notes link to rss and product newsletter ([@davifantasia](https://github.com/davifantasia))
+  - [#364](https://github.com/commercetools/commercetools-docs-kit/pull/364) feat: generate rss feed ([@davifantasia](https://github.com/davifantasia))
+  - [#339](https://github.com/commercetools/commercetools-docs-kit/pull/339) feat(release-notes): create gatsby nodes for release notes frontmatter fields ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-docs`, `ui-kit`
+  - [#352](https://github.com/commercetools/commercetools-docs-kit/pull/352) Release notes list design implementation ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`
+  - [#336](https://github.com/commercetools/commercetools-docs-kit/pull/336) feat(theme): implement release notes page layout ([@emmenko](https://github.com/emmenko))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-docs`
+  - [#369](https://github.com/commercetools/commercetools-docs-kit/pull/369) refactor(theme): to customize Stamp using theme ([@emmenko](https://github.com/emmenko))
+  - [#365](https://github.com/commercetools/commercetools-docs-kit/pull/365) refactor: release notes left over ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`, `gatsby-transformer-mdx-introspection`, `gatsby-transformer-raml-legacy`, `gatsby-transformer-raml`, `ramldoc-generator`, `ui-kit`
+  - [#355](https://github.com/commercetools/commercetools-docs-kit/pull/355) refactor(theme): use uikit Stamp component for release note types ([@emmenko](https://github.com/emmenko))
+
+#### 🤖 Type: Dependencies
+
+- `writing-style`
+  - [#366](https://github.com/commercetools/commercetools-docs-kit/pull/366) Writing Style Linter: Update vale and prevent binary from being published ([@nkuehn](https://github.com/nkuehn))
+- `ramldoc-generator`
+  - [#343](https://github.com/commercetools/commercetools-docs-kit/pull/343) fix(deps): update dependency chalk to v4 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [2.4.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.3.0...v2.4.0) (2020-04-03)
 
 #### 🐛 Type: Bug
