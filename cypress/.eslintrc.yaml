@@ -4,3 +4,4 @@ env:
   cypress/globals: true
 rules:
   jest/expect-expect: 0
+  'testing-library/await-async-query': 0
