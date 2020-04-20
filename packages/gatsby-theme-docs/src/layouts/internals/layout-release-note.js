@@ -19,7 +19,11 @@ const linkStyles = css`
 const ReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
-      <Markdown.H3>
+      <Markdown.H3
+        css={css`
+          font-weight: ${designSystem.typography.fontWeights.bold};
+        `}
+      >
         <Link css={linkStyles} href={props.slug}>
           {props.title}
         </Link>

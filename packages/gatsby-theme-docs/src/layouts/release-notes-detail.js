@@ -6,7 +6,7 @@ import { AngleLeftIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { ReleaseNotesSubscribeLinks, Link } from '../components';
+import { Link } from '../components';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -58,6 +58,7 @@ const LayoutReleaseNotesDetail = (props) => {
               // Use h1 for the page title but style it as an h3.
               css={css`
                 font-size: ${designSystem.typography.fontSizes.h3};
+                font-weight: ${designSystem.typography.fontWeights.bold};
                 margin: ${designSystem.dimensions.spacings.big} 0 0;
                 color: unset;
               `}
@@ -65,9 +66,7 @@ const LayoutReleaseNotesDetail = (props) => {
               {props.pageData.title}
             </Markdown.H1>
           </LayoutPageHeader>
-          <LayoutPageHeaderSide>
-            <ReleaseNotesSubscribeLinks />
-          </LayoutPageHeaderSide>
+          <LayoutPageHeaderSide />
           <LayoutPageContent>
             <PageContentInset id="body-content">
               {props.children}
