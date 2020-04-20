@@ -48,12 +48,12 @@ const ReleaseNote = (props) => {
         </Topics>
       )}
 
-      {props.body ? (
-        <MDXRenderer>{props.body}</MDXRenderer>
-      ) : (
+      {props.bodyRenderer === 'excerpt' ? (
         <Markdown.TypographyPage>
-          <section>{markdownFragmentToReact(props.rawExcerpt)}</section>
+          <section>{markdownFragmentToReact(props.body)}</section>
         </Markdown.TypographyPage>
+      ) : (
+        <MDXRenderer>{props.body}</MDXRenderer>
       )}
       {props.hasMore ? <Link href={`${props.slug}`}>Read more...</Link> : null}
     </SpacingsStack>
@@ -66,8 +66,8 @@ ReleaseNote.propTypes = {
   description: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['feature', 'enhancement', 'fix']).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  body: PropTypes.string,
-  rawExcerpt: PropTypes.string,
+  body: PropTypes.string.isRequired,
+  bodyRenderer: PropTypes.oneOf(['mdx', 'excerpt']).isRequired,
   hasMore: PropTypes.bool.isRequired,
 };
 

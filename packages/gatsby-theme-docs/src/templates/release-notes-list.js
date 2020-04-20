@@ -31,7 +31,11 @@ const ReleaseNotesListTemplate = (props) => (
             {props.data.allReleaseNotePage &&
               props.data.allReleaseNotePage.nodes &&
               props.data.allReleaseNotePage.nodes.map((releaseNote) => (
-                <LayoutReleaseNote key={releaseNote.slug} {...releaseNote} />
+                <LayoutReleaseNote
+                  key={releaseNote.slug}
+                  bodyRenderer="excerpt"
+                  {...releaseNote}
+                />
               ))}
           </SpacingsStack>
         </div>
@@ -89,7 +93,7 @@ export const query = graphql`
         description
         type
         topics
-        rawExcerpt
+        body: rawExcerpt
         hasMore
       }
     }
