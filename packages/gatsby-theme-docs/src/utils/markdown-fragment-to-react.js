@@ -1,9 +1,16 @@
+import styled from '@emotion/styled';
 import unified from 'unified';
 import filter from 'unist-util-filter';
 import markdown from 'remark-parse';
 import remark2react from 'remark-react';
 import frontmatter from 'remark-frontmatter';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import components from '../markdown-components';
+
+const Div = styled.div``;
+const Heading = styled.p`
+  font-weight: ${designSystem.typography.fontWeights.bold};
+`;
 
 /**
  * Takes a markdown string and returns a react component rendering it
@@ -29,12 +36,12 @@ const markdownFragmentToReact = (markdownString) =>
       remarkReactComponents: {
         p: components.p,
         a: components.a,
-        h1: components.strong,
-        h2: components.strong,
-        h3: components.strong,
-        h4: components.strong,
-        h5: components.strong,
-        h6: components.strong,
+        h1: Heading,
+        h2: Heading,
+        h3: Heading,
+        h4: Heading,
+        h5: Heading,
+        h6: Heading,
         thematicBreak: components.thematicBreak,
         blockquote: components.blockquote,
         ul: components.ul,
@@ -43,7 +50,9 @@ const markdownFragmentToReact = (markdownString) =>
         dl: components.dl,
         dt: components.dt,
         dd: components.dd,
-        table: components.p,
+        table: Div,
+        thead: Div,
+        tbody: Div,
         tr: components.ul,
         td: components.li,
         th: components.li,
