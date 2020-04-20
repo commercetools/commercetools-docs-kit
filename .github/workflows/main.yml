@@ -16,8 +16,14 @@ on:
 
 jobs:
   build_lint_and_test:
-    # https://github.com/cypress-io/github-action/blob/263091cab1962eea06e293a19146e9d0241a1c32/README.md#important
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+
+    # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L8-L11
+    env:
+      # prevents extra Cypress installation progress messages
+      CI: 1
+      # avoid warnings like "tput: No value for $TERM and no -T specified"
+      TERM: xterm
 
     steps:
       - name: Checkout
@@ -71,6 +77,10 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+        env:
+          # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L14-L18
+          # https://github.com/marketplace/actions/cypress-io#custom-install
+          CYPRESS_INSTALL_BINARY: 0
 
       - name: Lint text files
         run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
@@ -87,17 +97,26 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS }}
 
-      - name: Running End-to-End tests
-        uses: cypress-io/github-action@v1
+      # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L23-L30
+      # https://github.com/marketplace/actions/cypress-io#custom-install
+      - name: Restoring Cypress cache
+        # restore / cache the binary ourselves on Linux
+        # see https://github.com/actions/cache
+        id: cache-cypress
+        uses: actions/cache@v1
         with:
-          headless: true
-          start: 'yarn run serve -l 8000 -n public'
-          wait-on: 'http://localhost:8000/docs-smoke-test'
-          env: 'CI=true'
-          command-prefix: 'percy exec --'
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package.json') }}
+
+      - name: Installing Cypress binary
+        run: yarn run cypress install && yarn run cypress cache list
+
+      - name: Running End-to-End tests
+        run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/docs-smoke-test' 'yarn run percy exec -- yarn run cypress run'
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
+          CYPRESS_CI: "true"
 
       - name: Uploading Cypress artifacts
         # Test run video was always captured, so this action uses "always()" condition
