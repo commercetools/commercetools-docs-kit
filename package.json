@@ -119,8 +119,7 @@
     "wait-on": "4.0.2"
   },
   "resolutions": {
-    "**/cypress": "4.4.0",
-    "**/sharp": "0.25.2"
+    "**/cypress": "4.4.0"
   },
   "engines": {
     "node": ">=10",
