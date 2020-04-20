@@ -3,6 +3,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 
 const LayoutPageHeader = styled.div`
   grid-area: page-header;
+  font-size: ${designSystem.typography.fontSizes.h3};
   padding: ${designSystem.dimensions.spacings.m}
     ${designSystem.dimensions.spacings.m} 0;
 

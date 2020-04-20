@@ -9,6 +9,8 @@ const getStyles = (props) => {
     border-radius: ${designSystem.tokens.borderRadiusForBetaFlag};
     color: ${designSystem.colors.light.textInfo};
     padding: 2px ${designSystem.dimensions.spacings.xs};
+    font-size: ${designSystem.typography.relativeFontSizes.ultraSmall};
+    vertical-align: middle;
   `;
   if (props.href) {
     return css`
@@ -17,7 +19,6 @@ const getStyles = (props) => {
       border: 1px solid ${designSystem.colors.light.borderInfo};
       box-shadow: ${designSystem.tokens.shadowForBetaFlag};
       color: ${designSystem.colors.light.textInfo} !important;
-      font-size: ${designSystem.typography.fontSizes.small};
 
       :active,
       :focus,
@@ -31,9 +32,11 @@ const getStyles = (props) => {
   return css`
     ${baseStyles}
     background-color: ${designSystem.colors.light.surfaceBeta};
-    font-size: ${designSystem.typography.fontSizes.ultraSmall};
   `;
 };
+
+const betaHint =
+  'This feature is marked as beta and is subject to change. Use with caution.';
 
 const BetaFlag = (props) => {
   if (props.href) {
@@ -43,7 +46,11 @@ const BetaFlag = (props) => {
       </Link>
     );
   }
-  return <span css={getStyles(props)}>{'BETA'}</span>;
+  return (
+    <span css={getStyles(props)} title={betaHint}>
+      {'BETA'}
+    </span>
+  );
 };
 BetaFlag.propTypes = {
   href: PropTypes.string,
