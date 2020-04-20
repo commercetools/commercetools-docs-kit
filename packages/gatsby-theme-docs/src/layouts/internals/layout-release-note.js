@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from '@emotion/styled';
 import { ThemeProvider as UiKitThemeProvider } from 'emotion-theming';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -8,7 +7,6 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import Stamp from '@commercetools-uikit/stamp';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 import Link from '../../components/link';
-import markdownFragmentToReact from '../../utils/markdown-fragment-to-react';
 
 const DateElement = styled.div`
   line-height: ${designSystem.typography.lineHeights.small};
@@ -30,7 +28,7 @@ const stampTheme = {
   colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
 };
 
-const ReleaseNote = (props) => {
+const LayoutReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
       <Markdown.H3>{props.title}</Markdown.H3>
@@ -47,31 +45,23 @@ const ReleaseNote = (props) => {
           ))}
         </Topics>
       )}
-
-      {props.bodyRenderer === 'excerpt' ? (
-        <Markdown.TypographyPage>
-          <section>{markdownFragmentToReact(props.body)}</section>
-        </Markdown.TypographyPage>
-      ) : (
-        <MDXRenderer>{props.body}</MDXRenderer>
-      )}
+      {props.children}
       {props.hasMore ? <Link href={`${props.slug}`}>Read more...</Link> : null}
     </SpacingsStack>
   );
 };
-ReleaseNote.propTypes = {
+LayoutReleaseNote.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['feature', 'enhancement', 'fix']).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  body: PropTypes.string.isRequired,
-  bodyRenderer: PropTypes.oneOf(['mdx', 'excerpt']).isRequired,
   hasMore: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
-export default ReleaseNote;
+export default LayoutReleaseNote;
 
 function mapTypeToTone(props) {
   switch (props.type) {

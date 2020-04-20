@@ -7,6 +7,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
+import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
@@ -31,11 +32,13 @@ const ReleaseNotesListTemplate = (props) => (
             {props.data.allReleaseNotePage &&
               props.data.allReleaseNotePage.nodes &&
               props.data.allReleaseNotePage.nodes.map((releaseNote) => (
-                <LayoutReleaseNote
-                  key={releaseNote.slug}
-                  bodyRenderer="excerpt"
-                  {...releaseNote}
-                />
+                <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
+                  <Markdown.TypographyPage>
+                    <section>
+                      {markdownFragmentToReact(releaseNote.body)}
+                    </section>
+                  </Markdown.TypographyPage>
+                </LayoutReleaseNote>
               ))}
           </SpacingsStack>
         </div>
