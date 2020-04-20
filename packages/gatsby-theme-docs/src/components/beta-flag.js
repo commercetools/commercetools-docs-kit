@@ -9,8 +9,7 @@ const getStyles = (props) => {
     border-radius: ${designSystem.tokens.borderRadiusForBetaFlag};
     color: ${designSystem.colors.light.textInfo};
     padding: 2px ${designSystem.dimensions.spacings.xs};
-    font-size: ${designSystem.typography.relativeFontSizes
-      .badgeFontToSurroundingInline};
+    font-size: ${designSystem.typography.relativeFontSizes.ultraSmall};
     vertical-align: middle;
   `;
   if (props.href) {

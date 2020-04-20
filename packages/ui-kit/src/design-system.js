@@ -6,10 +6,10 @@ const pageWidthSmall = '592px';
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
 
-export const pxToRem = (px) => {
+export const pxToRem = (px, suffix = 'rem') => {
   const pxNumber = px.replace(/([0-9]+)px$/, '$1');
   const remNumber = parseInt(pxNumber, 10) / rootFontSizeNumber;
-  return `${remNumber}rem`;
+  return `${remNumber}${suffix}`;
 };
 
 export const colors = {
@@ -135,8 +135,7 @@ export const typography = {
   },
 
   relativeFontSizes: {
-    // design spec: 10px (ultrasmall) in beta flag if base font is 16px
-    badgeFontToSurroundingInline: '62.5%',
+    ultraSmall: pxToRem('10px', 'em'),
   },
 
   fontWeights: {
