@@ -1,4 +1,5 @@
 import React from 'react';
+import { withPrefix } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -6,7 +7,7 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
 import { MailIcon } from '@commercetools-uikit/icons';
 import UnstyledRssIcon from '../icons/rss.svg';
-import Link, { ExternalSiteLink } from './link';
+import { ExternalSiteLink } from './link';
 
 const RssIcon = createStyledIcon(UnstyledRssIcon);
 
@@ -42,12 +43,16 @@ const linkStyles = css`
 const ReleaseNotesSubscribeLinks = () => (
   <Container>
     <SpacingsStack scale="xs">
-      <Link href="/releases/feed.xml" css={linkStyles} noUnderline={true}>
+      <ExternalSiteLink
+        href={withPrefix('/releases/feed.xml')}
+        css={linkStyles}
+        noUnderline={true}
+      >
         <SpacingsInline scale="xs" alignItems="center">
           <RssIcon size="medium" />
           <span>RSS</span>
         </SpacingsInline>
-      </Link>
+      </ExternalSiteLink>
       <ExternalSiteLink
         href="https://ok.commercetools.com/product-newsletter"
         css={linkStyles}
