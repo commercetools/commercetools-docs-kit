@@ -1,8 +1,9 @@
 import * as designSystem from './design-system';
 import * as Markdown from './components/markdown';
+import * as ReleaseNote from './components/release-note';
 
 // components
-export { designSystem, Markdown };
+export { designSystem, Markdown, ReleaseNote };
 export { default as ContentNotifications } from './components/content-notifications';
 export { default as Globals } from './components/globals';
 export { default as Link } from './components/link';

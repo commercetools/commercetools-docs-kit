@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
+import { ReleaseNote, designSystem } from '@commercetools-docs/ui-kit';
 import { AngleLeftIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useLayoutState from '../hooks/use-layout-state';
@@ -50,21 +50,11 @@ const LayoutReleaseNotesDetail = (props) => {
                     font-size: ${designSystem.typography.fontSizes.small};
                   `}
                 >
-                  {`All ${siteData.siteMetadata.title} Releases`}
+                  {`All Release Notes`}
                 </span>
               </Link>
             </SpacingsInline>
-            <Markdown.H1
-              // Use h1 for the page title but style it as an h3.
-              css={css`
-                font-size: ${designSystem.typography.fontSizes.h3};
-                font-weight: ${designSystem.typography.fontWeights.bold};
-                margin: ${designSystem.dimensions.spacings.big} 0 0;
-                color: unset;
-              `}
-            >
-              {props.pageData.title}
-            </Markdown.H1>
+            <ReleaseNote.H1>{props.pageData.title}</ReleaseNote.H1>
           </LayoutPageHeader>
           <LayoutPageHeaderSide />
           <LayoutPageContent>
