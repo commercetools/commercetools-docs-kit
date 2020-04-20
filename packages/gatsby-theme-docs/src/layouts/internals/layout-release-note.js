@@ -46,7 +46,7 @@ const LayoutReleaseNote = (props) => {
         </Topics>
       )}
       {props.children}
-      {props.hasMore ? <Link href={`${props.slug}`}>Read more...</Link> : null}
+      {props.hasMore && <Link href={props.slug}>Read more...</Link>}
     </SpacingsStack>
   );
 };
