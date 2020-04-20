@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
 import { values as valuesStr } from '../../utils/constants';
-import markdownToReact from '../../utils/markdown-to-react';
 
 const Enum = ({ description, values }) => {
   if (!description && !values) {
@@ -10,7 +10,7 @@ const Enum = ({ description, values }) => {
 
   return (
     <div>
-      {description ? markdownToReact(description) : null}
+      {description ? markdownFragmentToReact(description) : null}
 
       {values ? (
         <p>
