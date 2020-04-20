@@ -147,10 +147,14 @@ const Table = styled.table`
     }
     ${(props) => {
       const tableHeaders = React.Children.toArray(props.children).find(
-        (elem) => elem.props.mdxType === 'thead'
+        (elem) => elem.type === 'thead' || elem.props.mdxType === 'thead'
       );
+      if (!tableHeaders) return null;
       const rowHeaders = tableHeaders.props.children;
-      return React.Children.toArray(rowHeaders.props.children).reduce(
+      const rowHeadersChildren = Array.isArray(rowHeaders)
+        ? rowHeaders
+        : rowHeaders.props.children;
+      return React.Children.toArray(rowHeadersChildren).reduce(
         (styles, elem, index) => `
         ${styles}
         td:nth-of-type(${index + 1})::before { content: "${

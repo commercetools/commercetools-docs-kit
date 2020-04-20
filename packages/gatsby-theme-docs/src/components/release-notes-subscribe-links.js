@@ -46,7 +46,6 @@ const ReleaseNotesSubscribeLinks = () => (
       <ExternalSiteLink
         href={withPrefix('/releases/feed.xml')}
         css={linkStyles}
-        noUnderline={true}
       >
         <SpacingsInline scale="xs" alignItems="center">
           <RssIcon size="medium" />
@@ -56,7 +55,6 @@ const ReleaseNotesSubscribeLinks = () => (
       <ExternalSiteLink
         href="https://ok.commercetools.com/product-newsletter"
         css={linkStyles}
-        noUnderline={true}
       >
         <SpacingsInline scale="xs" alignItems="center">
           <MailIcon size="medium" />

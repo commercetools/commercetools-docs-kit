@@ -69,7 +69,7 @@ ReleaseNotesListTemplate.propTypes = {
           description: PropTypes.string.isRequired,
           type: PropTypes.string.isRequired,
           topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-          rawExcerpt: PropTypes.string.isRequired,
+          body: PropTypes.string.isRequired,
           hasMore: PropTypes.bool.isRequired,
         })
       ).isRequired,
