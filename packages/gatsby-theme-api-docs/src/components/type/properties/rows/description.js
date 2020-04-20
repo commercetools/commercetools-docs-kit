@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
 import extractAdditionalInfo from '../../../../utils/extract-additional-info';
-import markdownToReact from '../../../../utils/markdown-to-react';
 import Enum from '../../enum';
 
 const Description = ({ property, discriminatorValue }) => {
@@ -16,7 +16,7 @@ const Description = ({ property, discriminatorValue }) => {
           values={property.enumeration}
         />
       ) : (
-        markdownToReact(property.description)
+        markdownFragmentToReact(property.description)
       )}
 
       <p>

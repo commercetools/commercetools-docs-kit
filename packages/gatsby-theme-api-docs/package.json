@@ -21,15 +21,12 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/spacings-inline": "10.18.4",
     "@commercetools-uikit/spacings-stack": "10.18.4",
-    "gatsby-source-filesystem": "2.1.48",
-    "remark-parse": "8.0.0",
-    "remark-react": "7.0.1",
-    "unified": "9.0.0"
+    "gatsby-source-filesystem": "2.2.4"
   },
   "devDependencies": {
     "@commercetools-docs/ramldoc-generator": "2.5.0",
-    "gatsby": "2.19.17",
-    "gatsby-cli": "2.8.29"
+    "gatsby": "2.20.26",
+    "gatsby-cli": "2.11.12"
   },
   "peerDependencies": {
     "@emotion/core": "10.x",

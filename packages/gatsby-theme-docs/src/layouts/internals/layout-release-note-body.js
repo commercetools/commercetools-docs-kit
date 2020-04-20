@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from '@emotion/styled';
 import { ThemeProvider as UiKitThemeProvider } from 'emotion-theming';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -44,9 +43,7 @@ const ReleaseNoteBody = (props) => (
       </Topics>
     )}
 
-    <div>
-      <MDXRenderer>{props.body}</MDXRenderer>
-    </div>
+    <div>{props.children}</div>
   </SpacingsStack>
 );
 
@@ -54,7 +51,7 @@ ReleaseNoteBody.propTypes = {
   date: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['feature', 'enhancement', 'fix']).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  body: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default ReleaseNoteBody;

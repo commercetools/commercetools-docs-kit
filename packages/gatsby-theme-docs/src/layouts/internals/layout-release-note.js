@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
-
-import LayoutReleaseNoteBody from './layout-release-note-body';
 import Link from '../../components/link';
+import LayoutReleaseNoteBody from './layout-release-note-body';
 
 const linkStyles = css`
   text-decoration: none;
@@ -16,7 +15,7 @@ const linkStyles = css`
   }
 `;
 
-const ReleaseNote = (props) => {
+const LayoutReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
       <Markdown.H3
@@ -29,17 +28,19 @@ const ReleaseNote = (props) => {
         </Link>
       </Markdown.H3>
       <LayoutReleaseNoteBody {...props} />
+      {props.hasMore && <Link href={props.slug}>Read more...</Link>}
     </SpacingsStack>
   );
 };
-ReleaseNote.propTypes = {
+LayoutReleaseNote.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['feature', 'enhancement', 'fix']).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  body: PropTypes.string.isRequired,
+  hasMore: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
-export default ReleaseNote;
+export default LayoutReleaseNote;

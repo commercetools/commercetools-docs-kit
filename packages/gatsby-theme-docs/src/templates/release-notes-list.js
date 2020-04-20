@@ -7,17 +7,9 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
+import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
-
-const releaseNoteMarkdownComponents = {
-  ...markdownComponents,
-  // NOTE: release notes content can only have headings starting from h4.
-  h1: Markdown.withAnchorLink(Markdown.H4),
-  h2: Markdown.withAnchorLink(Markdown.H5),
-  h3: Markdown.withAnchorLink(Markdown.H6),
-  h4: Markdown.withAnchorLink(Markdown.H6),
-};
 
 const ReleaseNotesListTemplate = (props) => (
   <ThemeProvider>
@@ -36,15 +28,19 @@ const ReleaseNotesListTemplate = (props) => (
           </div>
         </MDXProvider>
         <div>
-          <MDXProvider components={releaseNoteMarkdownComponents}>
-            <SpacingsStack>
-              {props.data.allReleaseNotePage &&
-                props.data.allReleaseNotePage.nodes &&
-                props.data.allReleaseNotePage.nodes.map((releaseNote) => (
-                  <LayoutReleaseNote key={releaseNote.slug} {...releaseNote} />
-                ))}
-            </SpacingsStack>
-          </MDXProvider>
+          <SpacingsStack>
+            {props.data.allReleaseNotePage &&
+              props.data.allReleaseNotePage.nodes &&
+              props.data.allReleaseNotePage.nodes.map((releaseNote) => (
+                <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
+                  <Markdown.TypographyPage>
+                    <section>
+                      {markdownFragmentToReact(releaseNote.body)}
+                    </section>
+                  </Markdown.TypographyPage>
+                </LayoutReleaseNote>
+              ))}
+          </SpacingsStack>
         </div>
       </Markdown.TypographyPage>
     </LayoutReleaseNotesList>
@@ -74,6 +70,7 @@ ReleaseNotesListTemplate.propTypes = {
           type: PropTypes.string.isRequired,
           topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
           body: PropTypes.string.isRequired,
+          hasMore: PropTypes.bool.isRequired,
         })
       ).isRequired,
     }),
@@ -99,7 +96,8 @@ export const query = graphql`
         description
         type
         topics
-        body
+        body: rawExcerpt
+        hasMore
       }
     }
   }

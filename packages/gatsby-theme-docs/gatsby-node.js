@@ -172,6 +172,12 @@ exports.sourceNodes = ({ actions, schema }) => {
           type: 'String!',
           resolve: resolverPassthrough({ fieldName: 'body' }),
         },
+        rawExcerpt: {
+          type: 'String!',
+        },
+        hasMore: {
+          type: 'Boolean!',
+        },
       },
       interfaces: ['Node'],
     })
@@ -197,6 +203,7 @@ exports.onCreateNode = (
     parent.internal.mediaType === 'text/mdx' &&
     parent.sourceInstanceName === 'releaseNotes';
   if (isReleaseNotesPage) {
+    const excerptSplit = node.rawBody.split('<!--more-->');
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
@@ -209,6 +216,8 @@ exports.onCreateNode = (
       type: node.frontmatter.type,
       topics: node.frontmatter.topics || [],
       published: Boolean(node.frontmatter.published),
+      rawExcerpt: excerptSplit[0],
+      hasMore: excerptSplit.length > 1,
     };
     actions.createNode({
       ...releaseNotesFieldData,

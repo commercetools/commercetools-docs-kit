@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNotesDetail from '../layouts/release-notes-detail';
 import LayoutReleaseNoteBody from '../layouts/internals/layout-release-note-body';
@@ -29,7 +30,9 @@ const ReleaseNotesDetailTemplate = (props) => (
             }
           />
           <div>
-            <LayoutReleaseNoteBody {...props.data.releaseNotePage} />
+            <LayoutReleaseNoteBody {...props.data.releaseNotePage}>
+              <MDXRenderer>{props.data.releaseNotePage.body}</MDXRenderer>
+            </LayoutReleaseNoteBody>
           </div>
         </Markdown.TypographyPage>
       </MDXProvider>
