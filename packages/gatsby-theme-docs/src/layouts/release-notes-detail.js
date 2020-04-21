@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import { AngleLeftIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { ReleaseNotesSubscribeLinks, Link } from '../components';
+import { Link } from '../components';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -17,6 +17,7 @@ import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
+import { ReleaseNotePageTitle } from '../components/release-note-heading';
 
 const LayoutReleaseNotesDetail = (props) => {
   const layoutState = useLayoutState();
@@ -50,24 +51,13 @@ const LayoutReleaseNotesDetail = (props) => {
                     font-size: ${designSystem.typography.fontSizes.small};
                   `}
                 >
-                  {'Back to all releases'}
+                  {`All Release Notes`}
                 </span>
               </Link>
             </SpacingsInline>
-            <Markdown.H1
-              // Use h1 for the page title but style it as an h3.
-              css={css`
-                font-size: ${designSystem.typography.fontSizes.h3};
-                margin: ${designSystem.dimensions.spacings.big} 0 0;
-                color: unset;
-              `}
-            >
-              {props.pageData.title}
-            </Markdown.H1>
+            <ReleaseNotePageTitle>{props.pageData.title}</ReleaseNotePageTitle>
           </LayoutPageHeader>
-          <LayoutPageHeaderSide>
-            <ReleaseNotesSubscribeLinks />
-          </LayoutPageHeaderSide>
+          <LayoutPageHeaderSide />
           <LayoutPageContent>
             <PageContentInset id="body-content">
               {props.children}

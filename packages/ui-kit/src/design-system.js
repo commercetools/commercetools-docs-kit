@@ -147,6 +147,7 @@ export const typography = {
   lineHeights: {
     small: pxToRem('16px'),
     body: pxToRem('23px'),
+    releaseNoteHeader: pxToRem('28px'),
   },
 };
 
