@@ -10,4 +10,13 @@ describe('Viewports', () => {
       widths: [512, 956],
     });
   });
+  it('should take snapshots of sticky page navigation', () => {
+    cy.visit(URL_DOCS_SMOKE_TEST);
+    cy.findByLabelText('Page Table of Contents Navigation').within(() => {
+      cy.findByText('Last section').click();
+      cy.percySnapshot(cy.state('runnable').fullTitle(), {
+        percyCSS: `#application { height: 100vh !important; }`,
+      });
+    });
+  });
 });

@@ -12,8 +12,7 @@ const Root = styled.div`
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; /* enables "momentum" style scrolling */
 
-  @media (not(percy)) and screen and (${designSystem.dimensions.viewports
-      .largeTablet}) {
+  @media only screen and (${designSystem.dimensions.viewports.tablet}) {
     height: 100vh;
   }
 `;
@@ -38,7 +37,7 @@ const Container = styled.div`
 
 const LayoutApplication = (props) => (
   <UiKitThemeProvider theme={designSystem.uikitTheme}>
-    <Root role="application">
+    <Root role="application" id="application">
       <Container {...props} />
     </Root>
     <div id="modal-portal" />
