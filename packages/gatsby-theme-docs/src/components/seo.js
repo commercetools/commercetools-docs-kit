@@ -7,65 +7,67 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { useSiteData } from '../hooks/use-site-data';
 
 const SEO = (props) => {
   const siteData = useSiteData();
   const metaDescription =
     props.description || siteData.siteMetadata.description;
-
+  const metaTags = [
+    {
+      name: 'description',
+      content: metaDescription,
+    },
+    props.keywords.length > 0 && {
+      name: 'keywords',
+      content: props.keywords.join(', '),
+    },
+    {
+      property: 'og:title',
+      content: props.title,
+    },
+    {
+      property: 'og:description',
+      content: metaDescription,
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary',
+    },
+    {
+      name: 'twitter:creator',
+      content: siteData.siteMetadata.author,
+    },
+    {
+      name: 'twitter:title',
+      content: props.title,
+    },
+    {
+      name: 'twitter:description',
+      content: metaDescription,
+    },
+    props.excludeFromSearchIndex && {
+      name: 'robots',
+      content: 'noindex',
+    },
+    ...props.meta,
+  ].filter(Boolean);
   return (
     <Helmet
-      htmlAttributes={{
-        lang: props.lang,
-      }}
-      title={props.title}
       titleTemplate={`%s | ${siteData.siteMetadata.title} | commercetools`}
-      meta={[
-        {
-          name: 'description',
-          content: metaDescription,
-        },
-        props.keywords.length > 0 && {
-          name: 'keywords',
-          content: props.keywords.join(', '),
-        },
-        {
-          property: 'og:title',
-          content: props.title,
-        },
-        {
-          property: 'og:description',
-          content: metaDescription,
-        },
-        {
-          property: 'og:type',
-          content: 'website',
-        },
-        {
-          name: 'twitter:card',
-          content: 'summary',
-        },
-        {
-          name: 'twitter:creator',
-          content: siteData.siteMetadata.author,
-        },
-        {
-          name: 'twitter:title',
-          content: props.title,
-        },
-        {
-          name: 'twitter:description',
-          content: metaDescription,
-        },
-        props.excludeFromSearchIndex && {
-          name: 'robots',
-          content: 'noindex',
-        },
-        ...props.meta,
-      ].filter(Boolean)}
-    />
+    >
+      <meta charSet="utf-8" />
+      <html lang={props.lang} amp />
+      <title>{props.title}</title>
+      {metaTags.map((tag) => (
+        <meta key={tag.name} {...tag} />
+      ))}
+    </Helmet>
   );
 };
 SEO.displayName = 'SEO';

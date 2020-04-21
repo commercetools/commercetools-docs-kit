@@ -1,9 +1,9 @@
 import { parseFragment } from 'parse5';
-import rangeParser from 'parse-numeric-range';
+import parseNumericRange from './parse-numeric-range';
 
 const getLinesForRange = (value) => {
   if (!value) return [];
-  return rangeParser.parse(value.trim()).filter((n) => n > 0);
+  return parseNumericRange(value.trim()).filter((n) => n > 0);
 };
 
 const intialOptions = {

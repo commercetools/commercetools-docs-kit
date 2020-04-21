@@ -259,7 +259,6 @@ module.exports = (themeOptions = {}) => {
        */
       'gatsby-plugin-remove-trailing-slashes',
       'gatsby-plugin-meta-redirect',
-      'gatsby-plugin-netlify-cache',
     ].filter(Boolean),
   };
 };
