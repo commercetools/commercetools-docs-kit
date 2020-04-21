@@ -10,7 +10,9 @@ describe('Viewports', () => {
       widths: [512, 956],
     });
   });
-  it('should take snapshots of sticky page navigation', () => {
+  // Currently snapshots with scroll postion are not supported by Percy.
+  // https://github.com/percy/percy-cypress/issues/2#issuecomment-533316240
+  it.skip('should take snapshots of sticky page navigation', () => {
     cy.visit(URL_DOCS_SMOKE_TEST);
     cy.findByLabelText('Page Table of Contents Navigation').within(() => {
       cy.findByText('Last section').click();

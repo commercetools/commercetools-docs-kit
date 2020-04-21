@@ -2,6 +2,10 @@ version: 1
 snapshot:
   widths: [1634]
   min-height: 1024
+  percy-css: |
+    #application {
+      height: auto;
+    }
 static-snapshots:
   base-url: /
   snapshot-files: '**/components/**/*.html'
