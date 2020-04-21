@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { H3 } from '../../components/release-note-headings';
+import { ReleaseNoteListTitle } from '../../components/release-note-heading';
 import Link from '../../components/link';
 import LayoutReleaseNoteBody from './layout-release-note-body';
 
@@ -19,11 +19,11 @@ const linkStyles = css`
 const LayoutReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
-      <H3>
+      <ReleaseNoteListTitle>
         <Link css={linkStyles} href={props.slug}>
           {props.title}
         </Link>
-      </H3>
+      </ReleaseNoteListTitle>
       <LayoutReleaseNoteBody {...props} />
       {props.hasMore && <Link href={props.slug}>Read more...</Link>}
     </SpacingsStack>

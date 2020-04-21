@@ -17,7 +17,7 @@ import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
-import { H1 } from '../components/release-note-headings';
+import { ReleaseNotePageTitle } from '../components/release-note-heading';
 
 const LayoutReleaseNotesDetail = (props) => {
   const layoutState = useLayoutState();
@@ -55,7 +55,7 @@ const LayoutReleaseNotesDetail = (props) => {
                 </span>
               </Link>
             </SpacingsInline>
-            <H1>{props.pageData.title}</H1>
+            <ReleaseNotePageTitle>{props.pageData.title}</ReleaseNotePageTitle>
           </LayoutPageHeader>
           <LayoutPageHeaderSide />
           <LayoutPageContent>
