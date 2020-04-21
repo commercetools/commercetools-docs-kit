@@ -10059,14 +10059,6 @@ gatsby-plugin-meta-redirect@1.1.1:
   dependencies:
     fs-extra "^7.0.0"
 
-gatsby-plugin-netlify-cache@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify-cache/-/gatsby-plugin-netlify-cache-1.2.0.tgz#e68db9c5bd4ae103b4589f9be2a3cb9958750788"
-  integrity sha512-unt4mAVpC0JzwZSo8KQV4P/trDHkr3PeTWDF5Hijw9jGfNQIWXbcj9nYljAVg7HCich6E6b27Q+zuf53InwpDQ==
-  dependencies:
-    babel-runtime "^6.26.0"
-    fs-extra "^7.0.0"
-
 gatsby-plugin-page-creator@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.2.3.tgz#a6e8ef426d2bf447c002976ec9b48ad82ca20760"
@@ -16503,11 +16495,6 @@ parse-latin@^4.0.0:
     nlcst-to-string "^2.0.0"
     unist-util-modify-children "^1.0.0"
     unist-util-visit-children "^1.0.0"
-
-parse-numeric-range@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/parse-numeric-range/-/parse-numeric-range-1.1.0.tgz#5f948a0b10fdaec0835761db561ddb84448925f7"
-  integrity sha512-PcvSV+HK39V85rV6IJ+OhfeUQINhrrT4RH3RIekvhtPl/DGsRmXvhn5CpojnEod6XTgR82+Nz/NjNw6vsEZpaw==
 
 parse-passwd@^1.0.0:
   version "1.0.0"

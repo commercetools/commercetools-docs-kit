@@ -1,5 +1,5 @@
 import { parseFragment } from 'parse5';
-import rangeParser from 'parse-numeric-range';
+import rangeParser from './parse-numeric-range';
 
 const getLinesForRange = (value) => {
   if (!value) return [];
