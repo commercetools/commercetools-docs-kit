@@ -30,7 +30,12 @@ const LayoutContent = (props) => {
         isGlobalBeta={props.pageData.isGlobalBeta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
-      <LayoutMain isTopMenuOpen={layoutState.topMenu.isTopMenuOpen}>
+      <LayoutMain
+        preventScroll={
+          layoutState.topMenu.isTopMenuOpen ||
+          layoutState.sidebar.isSidebarMenuOpen
+        }
+      >
         <LayoutHeader
           {...layoutState.searchDialog}
           {...layoutState.topMenu}

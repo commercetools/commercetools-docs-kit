@@ -34,7 +34,12 @@ const LayoutReleaseNotesDetail = (props) => {
         // that there are release notes.
         hasReleaseNotes={true}
       />
-      <LayoutMain isTopMenuOpen={layoutState.topMenu.isTopMenuOpen}>
+      <LayoutMain
+        preventScroll={
+          layoutState.topMenu.isTopMenuOpen ||
+          layoutState.sidebar.isSidebarMenuOpen
+        }
+      >
         <LayoutHeader
           {...layoutState.searchDialog}
           {...layoutState.topMenu}

@@ -15,7 +15,7 @@ const LayoutMain = styled.main`
 
   ${(props) =>
     // Prevents scroll when top menu is open
-    props.isTopMenuOpen &&
+    props.preventScroll &&
     css`
       height: 100vh;
       overflow-y: hidden;
