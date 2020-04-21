@@ -76,6 +76,9 @@ function processProperties({
 
   if (properties) {
     propertiesArray = propertiesToArrays(properties);
+    propertiesArray = propertiesArray.filter(
+      (property) => !property.deprecated
+    );
     propertiesArray = sortProperties({
       properties: propertiesArray,
       moveToTop: movePropertiesToTop,
