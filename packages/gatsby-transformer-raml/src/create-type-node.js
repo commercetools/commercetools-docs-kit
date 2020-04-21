@@ -76,6 +76,7 @@ function processProperties({
 
   if (properties) {
     propertiesArray = propertiesToArrays(properties);
+    propertiesArray = removeDeprecatedProperties(propertiesArray);
     propertiesArray = sortProperties({
       properties: propertiesArray,
       moveToTop: movePropertiesToTop,
@@ -102,6 +103,10 @@ function propertiesToArrays(properties) {
   return Object.entries(properties).map(([key, value]) => {
     return { ...value, name: key };
   });
+}
+
+function removeDeprecatedProperties(properties = []) {
+  return properties.filter((property) => !property.deprecated);
 }
 
 function examplesToArrays(examples, fileNodeDir) {
