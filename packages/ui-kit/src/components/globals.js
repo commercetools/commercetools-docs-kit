@@ -29,6 +29,12 @@ const Globals = () => (
         padding: 0 0 0 ${dimensions.spacings.l};
       }
 
+      @media only percy {
+        #application {
+          height: auto;
+        }
+      }
+
       /* Images */
 
       .gatsby-resp-image-wrapper {
