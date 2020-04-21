@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { ReleaseNote, designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import { AngleLeftIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useLayoutState from '../hooks/use-layout-state';
@@ -17,6 +17,7 @@ import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
+import { H1 } from '../components/release-note-headings';
 
 const LayoutReleaseNotesDetail = (props) => {
   const layoutState = useLayoutState();
@@ -54,7 +55,7 @@ const LayoutReleaseNotesDetail = (props) => {
                 </span>
               </Link>
             </SpacingsInline>
-            <ReleaseNote.H1>{props.pageData.title}</ReleaseNote.H1>
+            <H1>{props.pageData.title}</H1>
           </LayoutPageHeader>
           <LayoutPageHeaderSide />
           <LayoutPageContent>

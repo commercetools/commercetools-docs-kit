@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { ReleaseNote, designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem } from '@commercetools-docs/ui-kit';
+import { H3 } from '../../components/release-note-headings';
 import Link from '../../components/link';
 import LayoutReleaseNoteBody from './layout-release-note-body';
 
@@ -18,11 +19,11 @@ const linkStyles = css`
 const LayoutReleaseNote = (props) => {
   return (
     <SpacingsStack scale="m">
-      <ReleaseNote.H3>
+      <H3>
         <Link css={linkStyles} href={props.slug}>
           {props.title}
         </Link>
-      </ReleaseNote.H3>
+      </H3>
       <LayoutReleaseNoteBody {...props} />
       {props.hasMore && <Link href={props.slug}>Read more...</Link>}
     </SpacingsStack>
