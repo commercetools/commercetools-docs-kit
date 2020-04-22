@@ -10,14 +10,14 @@ title: Custom Anchor
 
 ### In mardown document
 
-```mdx
+```md
 <Anchor name="any-html-id-compatible-string-expected-usage" />
 ```
 
 ### Generated DOM
 
 ```html
-<a name="any-html-id-compatible-string-expected-usage" />
+<a name="any-html-id-compatible-string-expected-usage"></a>
 ```
 
 ## With Other Props
@@ -28,7 +28,7 @@ title: Custom Anchor
 
 ### In mardown document
 
-```mdx
+```md
 <Anchor
   name="any-html-id-compatible-string-with-other-props"
   id="any-html-id-compatible-string-with-other-props" 
@@ -38,7 +38,7 @@ title: Custom Anchor
 ### Generated DOM
 
 ```html
-<a name="any-html-id-compatible-string-with-other-props" />
+<a name="any-html-id-compatible-string-with-other-props"></a>
 ```
 
 ## With Children
@@ -49,7 +49,7 @@ title: Custom Anchor
 
 ### In mardown document
 
-```mdx
+```md
 <Anchor name="any-html-id-compatible-string-with-children" >
   I must not put text here
 </Anchor>
@@ -58,7 +58,7 @@ title: Custom Anchor
 ### Generated DOM
 
 ```html
-<a name="any-html-id-compatible-string-with-children" />
+<a name="any-html-id-compatible-string-with-children"></a>
 ```
 
 ## In a title
@@ -66,3 +66,49 @@ title: Custom Anchor
 [Anchor in a title links to the next title](#any-html-id-compatible-string-in-a-title)
 
 ### Anchor in title links here <Anchor name="any-html-id-compatible-string-in-a-title" />
+
+### Usage
+```md
+### Anchor in title links here <Anchor name="any-html-id-compatible-string-in-a-title" />
+```
+
+### Generated DOM
+
+```html
+<h4>
+  Anchor in title links here
+  <a name="any-html-id-compatible-string-in-a-title"></a>
+</h4>
+```
+
+## In a list
+
+[Anchor in a list links to firs item on the list](#any-html-id-compatible-string-in-a-list)
+
+* List 1 <Anchor name="any-html-id-compatible-string-in-a-list" />
+* List 2
+* List 3
+* List 4
+* List 5
+* List 6
+* List 7
+* List 8
+* List 9
+* List 10
+* List 11
+* List 12
+
+### Usage
+
+```md
+* List 1 <Anchor name="any-html-id-compatible-string-in-a-list" />
+```
+
+### Generated DOM
+
+```html
+<li>
+  List 1
+  <a name="any-html-id-compatible-string-in-a-list"></a>
+</li>
+```
