@@ -148,6 +148,7 @@ The available JSX components are:
 - `<Warning>`: a notification message with warning colors
 - `<Error>`: a notification message with error colors
 - `<CodeExample file="example.js" title="JavaScript Code Sample" />`: loading a code block from a file in `src/code-examples/`, supports all parameters of the fenced code block.
+- `<Anchor>`: inserts a custom anchor on any part of the document, can be used with headers, lists, in paragraphs, etc, it is used for navigating to specific parts of the document.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
