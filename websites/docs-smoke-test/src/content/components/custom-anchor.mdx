@@ -1,0 +1,68 @@
+---
+title: Custom Anchor
+---
+
+## Expected Usage
+
+[Anchor expected usage links to the next line](#any-html-id-compatible-string-expected-usage)
+
+<Anchor name="any-html-id-compatible-string-expected-usage"/>
+
+### In mardown document
+
+```mdx
+<Anchor name="any-html-id-compatible-string-expected-usage" />
+```
+
+### Generated DOM
+
+```html
+<a name="any-html-id-compatible-string-expected-usage" />
+```
+
+## With Other Props
+
+[Anchor with other props links to the next line](#any-html-id-compatible-string-with-other-props)
+
+<Anchor name="any-html-id-compatible-string-with-other-props" id="any-html-id-compatible-string-with-other-props"/>
+
+### In mardown document
+
+```mdx
+<Anchor
+  name="any-html-id-compatible-string-with-other-props"
+  id="any-html-id-compatible-string-with-other-props" 
+/>
+```
+
+### Generated DOM
+
+```html
+<a name="any-html-id-compatible-string-with-other-props" />
+```
+
+## With Children
+
+[Anchor with children links to the next line](#any-html-id-compatible-string-with-children)
+
+<Anchor name="any-html-id-compatible-string-with-children" >I must not put text here</Anchor>
+
+### In mardown document
+
+```mdx
+<Anchor name="any-html-id-compatible-string-with-children" >
+  I must not put text here
+</Anchor>
+```
+
+### Generated DOM
+
+```html
+<a name="any-html-id-compatible-string-with-children" />
+```
+
+## In a title
+
+[Anchor in a title links to the next title](#any-html-id-compatible-string-in-a-title)
+
+### Anchor in title links here <Anchor name="any-html-id-compatible-string-in-a-title" />

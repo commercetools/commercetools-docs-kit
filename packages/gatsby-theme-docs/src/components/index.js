@@ -1,3 +1,4 @@
+export { default as Anchor } from './anchor';
 export { default as BetaFlag } from './beta-flag';
 export { default as BurgerIcon } from './burger-icon';
 export { default as CodeExample } from './code-example';
