@@ -39,6 +39,22 @@ const createTestProps = (custom) => ({
           },
         ],
       },
+      {
+        title: 'Link 3',
+        url: '#link-3',
+        items: [
+          {
+            // Here we skip the level 2 links on purpose, to simulate
+            // a missing heading level.
+            items: [
+              {
+                title: 'Link 3/1/1',
+                url: '#link-3-1-1',
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   ...custom,
@@ -59,6 +75,12 @@ const renderApp = (ui) =>
         </Section>
         <Section id="section-link-2-1-1" className="section-h4">
           <h4 id="link-2-1-1">{'Title for link 2/1/1'}</h4>
+        </Section>
+        <Section id="section-link-3" className="section-h2">
+          <h2 id="link-3">{'Title for link 3'}</h2>
+        </Section>
+        <Section id="section-link-3-1-1" className="section-h4">
+          <h4 id="link-3-1-1">{'Title for link 3/1/1'}</h4>
         </Section>
       </Content>
       {ui}
@@ -86,6 +108,7 @@ jest.useFakeTimers();
 
 describe('rendering', () => {
   it('should mark links as active for visible sections when scrolling', () => {
+    console.warn = jest.fn();
     const props = createTestProps();
     const rendered = renderApp(<PageNavigation {...props} />);
 
@@ -93,10 +116,20 @@ describe('rendering', () => {
     expect(rendered.queryByText('Link 2')).toBeInTheDocument();
     expect(rendered.queryByText('Link 2/1')).toBeInTheDocument();
     expect(rendered.queryByText('Link 2/1/1')).toBeInTheDocument();
+    expect(rendered.queryByText('Link 3')).toBeInTheDocument();
+    expect(rendered.queryByText('Link 3/1')).not.toBeInTheDocument();
+    expect(rendered.queryByText('Link 3/1/1')).toBeInTheDocument();
 
     expect(rendered.queryByRole(/^active-(.*)/)).not.toBeInTheDocument();
 
-    const hrefIds = ['link-1', 'link-2', 'link-2-1', 'link-2-1-1'];
+    const hrefIds = [
+      'link-1',
+      'link-2',
+      'link-2-1',
+      'link-2-1-1',
+      'link-3',
+      'link-3-1-1',
+    ];
 
     hrefIds.forEach((hrefId) => {
       applySectionElementsMocks(
@@ -112,5 +145,14 @@ describe('rendering', () => {
         rendered.container.querySelector('[aria-current=true]')
       ).toHaveAttribute('href', `#${hrefId}`);
     });
+
+    expect(
+      rendered.queryByText('Missing heading for level 2')
+    ).toBeInTheDocument();
+    expect(console.warn).toHaveBeenCalledWith(
+      expect.stringContaining(
+        'The items in the table of contents are missing the heading for level 2'
+      )
+    );
   });
 });

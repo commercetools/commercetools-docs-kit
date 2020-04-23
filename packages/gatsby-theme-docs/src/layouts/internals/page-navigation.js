@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { SafeHTMLElement, designSystem } from '@commercetools-docs/ui-kit';
+import {
+  SafeHTMLElement,
+  designSystem,
+  ContentNotifications,
+} from '@commercetools-docs/ui-kit';
 import useActiveSection from '../../hooks/use-active-section';
 
 const itemType = {
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  title: PropTypes.string,
 };
 const itemsType = PropTypes.arrayOf(
   PropTypes.shape({
@@ -88,18 +92,39 @@ const LevelGroup = (props) => {
   return (
     <Group level={props.level}>
       {props.items.map((item, subItemIndex) => {
-        const isActive = getIsActive(props.activeSection, item.url);
+        if (item.url) {
+          const isActive = getIsActive(props.activeSection, item.url);
+          return (
+            <ListItem key={subItemIndex}>
+              <Link
+                href={item.url}
+                level={props.level}
+                role={`level-${props.level}`}
+                isActive={isActive}
+                aria-current={isActive}
+              >
+                <Indented level={props.level}>{item.title}</Indented>
+              </Link>
+              {props.children &&
+                React.cloneElement(props.children, {
+                  items: item.items,
+                  level: props.level + 1,
+                  activeSection: props.activeSection,
+                })}
+            </ListItem>
+          );
+        }
+        console.warn(
+          `The items in the table of contents are missing the heading for level ${props.level}. Please make sure to check the heading structure in the MDX content page.`
+        );
+        // Render the list without the link, but show an error message
         return (
           <ListItem key={subItemIndex}>
-            <Link
-              href={item.url}
-              level={props.level}
-              role={`level-${props.level}`}
-              isActive={isActive}
-              aria-current={isActive}
-            >
-              <Indented level={props.level}>{item.title}</Indented>
-            </Link>
+            {process.env.NODE_ENV !== 'development' && (
+              <Indented level={props.level}>
+                <ContentNotifications.Error>{`Missing heading for level ${props.level}`}</ContentNotifications.Error>
+              </Indented>
+            )}
             {props.children &&
               React.cloneElement(props.children, {
                 items: item.items,
