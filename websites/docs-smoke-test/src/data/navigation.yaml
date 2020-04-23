@@ -8,6 +8,8 @@
       path: /views/links
     - title: Code blocks
       path: /views/code-blocks
+    - title: Custom Anchor
+      path: /views/custom-anchor
 - chapter-title: Components
   beta: true
   pages:

@@ -8,6 +8,7 @@ import {
   CodeExample,
   MultiCodeExample,
   BetaFlag as Beta,
+  Anchor,
 } from './components';
 import PlaceholderMarkdownComponents from './overrides/markdown-components';
 
@@ -54,6 +55,7 @@ const components = {
   CodeExample,
   MultiCodeExample,
   Beta,
+  Anchor,
 
   // Custom React components that can be injected from each website
   // See ../overrides/README.md

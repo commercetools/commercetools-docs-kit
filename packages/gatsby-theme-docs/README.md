@@ -12,7 +12,7 @@ npx install-peerdeps --dev @commercetools-docs/gatsby-theme-docs
 
 ### Choose a path prefix
 
-All commercetools documentation websites are served under `docs.commercetools.com`. In order to make this work, all documentation websites must be bundled for production using a `pathPrefix`. This value determines the URL path where the website is served from.
+All commercetools documentation websites are served under `docs.commercetools.com`. To make this work, all documentation websites must be bundled for production using a `pathPrefix`. This value determines the URL path where the website is served from.
 
 For example, for the "Custom Applications" website, the path prefix is `/custom-applications`.
 
@@ -148,6 +148,7 @@ The available JSX components are:
 - `<Warning>`: a notification message with warning colors
 - `<Error>`: a notification message with error colors
 - `<CodeExample file="example.js" title="JavaScript Code Sample" />`: loading a code block from a file in `src/code-examples/`, supports all parameters of the fenced code block.
+- `<Anchor>`: inserts a custom anchor on any part of the document, can be used with headers, lists, in paragraphs, etc, it is used for navigating to specific parts of the document that are not headings. Also useful when a document has multiple headings with the same text or when heading names change and old third party links shall continue to work. Cannot override ID generation of the site generator, this adds additional named anchors and IDs have precedence.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
