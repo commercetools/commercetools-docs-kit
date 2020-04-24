@@ -10,6 +10,7 @@ const crypto = require('crypto');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
+const processTableOfContentFields = require('./src/utils/process-table-of-content-fields');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -53,6 +54,7 @@ const resolverPassthrough = ({
   typeName = 'Mdx',
   fieldName,
   resolveNode = identity,
+  processResult = identity,
 }) => async (source, args, context, info) => {
   const type = info.schema.getType(typeName);
   const mdxNode = context.nodeModel.getNodeById({
@@ -62,7 +64,8 @@ const resolverPassthrough = ({
   const result = await field.resolve(resolveNode(mdxNode), args, context, {
     fieldName,
   });
-  return result;
+
+  return processResult(result);
 };
 
 exports.sourceNodes = ({ actions, schema }) => {
@@ -132,7 +135,10 @@ exports.sourceNodes = ({ actions, schema }) => {
               default: 6,
             },
           },
-          resolve: resolverPassthrough({ fieldName: 'tableOfContents' }),
+          resolve: resolverPassthrough({
+            fieldName: 'tableOfContents',
+            processResult: processTableOfContentFields,
+          }),
         },
       },
       interfaces: ['Node'],
