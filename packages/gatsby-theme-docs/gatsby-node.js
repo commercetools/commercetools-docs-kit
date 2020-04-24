@@ -54,6 +54,7 @@ const resolverPassthrough = ({
   typeName = 'Mdx',
   fieldName,
   resolveNode = identity,
+  processResult = identity,
 }) => async (source, args, context, info) => {
   const type = info.schema.getType(typeName);
   const mdxNode = context.nodeModel.getNodeById({
@@ -64,11 +65,7 @@ const resolverPassthrough = ({
     fieldName,
   });
 
-  if (fieldName === 'tableOfContents') {
-    return processTableOfContentFields(result);
-  }
-
-  return result;
+  return processResult(result);
 };
 
 exports.sourceNodes = ({ actions, schema }) => {
@@ -138,7 +135,10 @@ exports.sourceNodes = ({ actions, schema }) => {
               default: 6,
             },
           },
-          resolve: resolverPassthrough({ fieldName: 'tableOfContents' }),
+          resolve: resolverPassthrough({
+            fieldName: 'tableOfContents',
+            processResult: processTableOfContentFields,
+          }),
         },
       },
       interfaces: ['Node'],
