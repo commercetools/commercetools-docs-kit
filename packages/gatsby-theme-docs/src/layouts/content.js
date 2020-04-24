@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
+import processTableOfContentFields from '../utils/process-table-of-content-fields';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { BetaFlag, ContentPagination } from '../components';
@@ -60,7 +61,9 @@ const LayoutContent = (props) => {
           </LayoutPageContent>
           <LayoutPageNavigation
             pageTitle={props.pageContext.shortTitle || props.pageData.title}
-            tableOfContents={props.pageData.tableOfContents}
+            tableOfContents={processTableOfContentFields(
+              props.pageData.tableOfContents
+            )}
           />
         </LayoutPage>
         <LayoutFooter />
