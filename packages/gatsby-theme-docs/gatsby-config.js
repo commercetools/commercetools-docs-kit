@@ -21,6 +21,7 @@ const defaultOptions = {
   excludeFromSearchIndex: true,
   createNodeSlug: undefined,
   additionalPrismLanguages: [],
+  overrideTopMenuLinks: false,
 };
 const requiredOptions = ['websiteKey'];
 
@@ -71,6 +72,7 @@ module.exports = (themeOptions = {}) => {
         options: {
           name: 'internalConfigurationData',
           path: path.join(__dirname, `./src/data`),
+          ignore: pluginOptions.overrideTopMenuLinks ? ['**/top-*'] : [],
         },
       },
       // Assets (e.g. images) used from the markdown pages
