@@ -1,0 +1,33 @@
+{
+  "name": "@commercetools-docs/gatsby-theme-constants",
+  "version": "2.5.0",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Gatsby theme for commercetools documentation providing the functionalities to render constants values in MDX defined in configuration files",
+  "homepage": "https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-theme-constants",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
+    "yaml",
+    "constants"
+  ],
+  "dependencies": {
+    "@commercetools-docs/ui-kit": "2.5.0",
+    "gatsby-transformer-yaml": "2.4.1",
+    "prop-types": "15.7.2"
+  },
+  "devDependencies": {
+    "gatsby": "2.21.11",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "peerDependencies": {
+    "gatsby": "2.x",
+    "react": "16.x",
+    "react-dom": "16.x"
+  }
+}

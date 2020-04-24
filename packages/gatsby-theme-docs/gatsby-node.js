@@ -73,7 +73,7 @@ const resolverPassthrough = ({
   return processResult(result);
 };
 
-exports.sourceNodes = ({ actions, schema }) => {
+exports.createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes(`
     type NavigationYaml implements Node @dontInfer {
       id: ID!
@@ -113,6 +113,12 @@ exports.sourceNodes = ({ actions, schema }) => {
       feature
       fix
       enhancement
+    }
+
+    type LimitsYaml implements Node @dontInfer {
+      id: ID!
+      name: String!
+      value: String!
     }
   `);
 

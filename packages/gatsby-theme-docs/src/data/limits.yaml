@@ -1,0 +1,6 @@
+- name: numberLimit
+  value: 60
+- name: stringLimit
+  value: unlimited
+- name: zeroNumberLimit
+  value: 0
