@@ -6,6 +6,7 @@
   ],
   "settings": {
     // https://vscode.readthedocs.io/en/latest/getstarted/settings/
+    "window.title": "${activeEditorShort}${separator}commercetools-docs-kit (workspace)",
     "npm.packageManager": "yarn",
     "eslint.packageManager": "yarn",
     "search.exclude": {
