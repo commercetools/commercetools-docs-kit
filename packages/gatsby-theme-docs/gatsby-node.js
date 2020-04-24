@@ -10,6 +10,7 @@ const crypto = require('crypto');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
+const processTableOfContentFields = require('./src/utils/process-table-of-content-fields');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -62,6 +63,11 @@ const resolverPassthrough = ({
   const result = await field.resolve(resolveNode(mdxNode), args, context, {
     fieldName,
   });
+
+  if (fieldName === 'tableOfContents') {
+    return processTableOfContentFields(result);
+  }
+
   return result;
 };
 

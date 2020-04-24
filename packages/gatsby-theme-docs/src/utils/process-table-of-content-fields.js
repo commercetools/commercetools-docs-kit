@@ -1,4 +1,4 @@
-import githubSlugger from 'github-slugger';
+const githubSlugger = require('github-slugger');
 
 const slugger = githubSlugger();
 
@@ -28,4 +28,4 @@ function processTableOfContentFields(tableOfContents, level = 0) {
   return returnedTableOfContents;
 }
 
-export default processTableOfContentFields;
+module.exports = processTableOfContentFields;
