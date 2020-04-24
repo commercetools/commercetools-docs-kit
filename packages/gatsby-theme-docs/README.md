@@ -79,6 +79,8 @@ The project structure should contain at least the following files and folders:
 
   - `availablePrismLanguages` (_optional_): in case you need to include **Prism languages** that are [not included by default by `prism-react-renderer`](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js), you can pass a list of them here.
 
+  - `defaultConfigurationData` (_optional_, defaults to `true`): in case you need to provide custom configuration data for the top and footer menus it's possible to deactivate the default content of the `src/data` folder by passing `false` to this option. If passed, all files in the [the default /src/data](./src/data) folder need to be provided in the website using the theme.
+
 - `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](#writing-content-pages)_).
 
 - `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.

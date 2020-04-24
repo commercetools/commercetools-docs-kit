@@ -21,6 +21,7 @@ const defaultOptions = {
   excludeFromSearchIndex: true,
   createNodeSlug: undefined,
   additionalPrismLanguages: [],
+  defaultConfigurationData: true,
 };
 const requiredOptions = ['websiteKey'];
 
@@ -57,7 +58,7 @@ module.exports = (themeOptions = {}) => {
             node { etc...
       */
 
-      // Data files (.yaml)
+      // Configuration data files provided by the website using the theme (.yaml)
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -65,14 +66,16 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/data`),
         },
       },
-      // Data files for internal use (.yaml)
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'internalConfigurationData',
-          path: path.join(__dirname, `./src/data`),
-        },
-      },
+      // Default configuration data files provided by the theme (.yaml)
+      pluginOptions.defaultConfigurationData
+        ? {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+              name: 'internalConfigurationData',
+              path: path.join(__dirname, `./src/data`),
+            },
+          }
+        : false,
       // Assets (e.g. images) used from the markdown pages
       {
         resolve: 'gatsby-source-filesystem',
