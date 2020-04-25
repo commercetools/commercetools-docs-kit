@@ -79,7 +79,7 @@ The project structure should contain at least the following files and folders:
 
   - `availablePrismLanguages` (_optional_): in case you need to include **Prism languages** that are [not included by default by `prism-react-renderer`](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js), you can pass a list of them here.
 
-  - `overrideDefaultConfigurationData` (_optional_, array of strings): allows to replace the configuration files in `src/data` instead of augmenting them. The option is passed to the `ignore` [option of the gatsby filesystem plugin](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#options). For example, by passing `['**/top-*']` and placing a `top-menu.yaml` and `top-side-menu.yaml` files in the website's `src/data` folder the top navigation can be overridden completely. The ignored files **must** be provided.
+  - `overrideDefaultConfigurationData` (_optional_, array of strings): allows to replace the configuration files in `src/data` instead of augmenting them. The option is passed to the `ignore` [option of the gatsby filesystem plugin](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#options). For example, by passing `['**/top-*']` and placing `top-menu.yaml` and `top-side-menu.yaml` files in the website's `src/data` folder the top navigation can be overridden completely. The ignored files **must** be provided.
 
 - `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](#writing-content-pages)_).
 
