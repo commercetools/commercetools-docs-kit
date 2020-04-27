@@ -13,6 +13,11 @@
     },
     {
       "handle": "filesystem"
+    },
+    {
+      "src": "/([a-z]+)/.*",
+      "status": 404,
+      "dest": "/$1/404"
     }
   ]
 }
