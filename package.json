@@ -6,6 +6,7 @@
   "private": true,
   "workspaces": ["packages/*", "websites/*"],
   "scripts": {
+    "clean": "lerna run clean --scope '@commercetools-website/*'",
     "start": "yarn --cwd websites/docs-smoke-test start",
     "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
     "prebuild": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-docs/*'",
