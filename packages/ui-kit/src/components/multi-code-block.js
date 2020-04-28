@@ -88,7 +88,20 @@ const languageDisplayNames = {
 function MultiCodeBlock(props) {
   const langs = extractLanguages(props.children);
 
-  const [selected, setSelected] = React.useState(langs[0]);
+  const [selected, setSelected] = React.useState(
+    langs.find(
+      (lang) =>
+        // connfirm if selectedLanguage exists in list of languages
+        lang === props.selectedLanguage
+    ) || langs[0]
+  );
+
+  React.useEffect(() => {
+    // run only if there are multiple blocks of code
+    if (langs.length > 1) {
+      console.log(props.selectedLanguage);
+    }
+  }, [props.selectedLanguage, langs]);
 
   return (
     <Container>
@@ -149,7 +162,11 @@ function MultiCodeBlock(props) {
   }
 
   function handleOnLanguageChange(e) {
-    setSelected(e.target.value);
+    if (props.onLanguageChange) {
+      props.onLanguageChange(e.target.value);
+    } else {
+      setSelected(e.target.value);
+    }
   }
 
   function renderChildren(children, selectedChild) {
@@ -167,6 +184,8 @@ MultiCodeBlock.propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element.isRequired),
   ]).isRequired,
+  selectedLanguage: PropTypes.string,
+  onLanguageChange: PropTypes.func,
 };
 
 export default MultiCodeBlock;

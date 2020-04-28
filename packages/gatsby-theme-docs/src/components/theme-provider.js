@@ -4,9 +4,12 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { Reset, Globals } from '@commercetools-docs/ui-kit';
 import { SiteDataContext } from '../hooks/use-site-data';
 import useAdditionalSiteData from '../overrides/use-additional-site-data';
+import CodeExampleLanguageContext from '../hooks/use-code-example-language';
 import ErrorBoundary from './error-boundary';
 
 const ThemeProvider = (props) => {
+  const [language, setLanguage] = React.useState('test');
+
   const data = useStaticQuery(graphql`
     query GetSiteData {
       site {
@@ -29,9 +32,11 @@ const ThemeProvider = (props) => {
   return (
     <ErrorBoundary>
       <SiteDataContext.Provider value={siteData}>
-        <Reset />
-        <Globals />
-        {props.children}
+        <CodeExampleLanguageContext.Provider value={{ language, setLanguage }}>
+          <Reset />
+          <Globals />
+          {props.children}
+        </CodeExampleLanguageContext.Provider>
       </SiteDataContext.Provider>
     </ErrorBoundary>
   );
