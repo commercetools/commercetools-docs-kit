@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
-import useLimitsByName from '../hooks/use-limits-by-name';
+import { useLimitByName } from '../hooks/use-limits';
 
 const Limit = (props) => {
-  const limit = useLimitsByName(props.name);
+  const limit = useLimitByName(props.name);
 
   if (!limit) {
     const message = `${props.name} limit is not found.`;
