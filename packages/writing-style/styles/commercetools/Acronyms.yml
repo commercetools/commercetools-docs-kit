@@ -23,6 +23,7 @@ exceptions:
   - DEBUG
   - DHL
   - DOM
+  - ENUM
   - EUR
   - FAQ
   - GET
@@ -49,12 +50,14 @@ exceptions:
   - PHP
   - PNG
   - POST
+  - PSR
   - RAM
   - RAML
   - REST
   - RFC # "Request For Comment" would confuse readers even more.
   - RSA
   - SDK
+  - SDL # appears in many pages
   - SHA
   - SKU # generally we try to explain domain terminology but this one is so prevalent across the documentation that we allow it
   - SNS # AWS SNS, appears in many pages in a single place and amazon uses the short name themselves, too
