@@ -62,6 +62,8 @@ The project structure should contain at least the following files and folders:
 
   - `websiteKey` (**required**): the identifier of the website, used for error reporting and similar concerns. Usually this value would be the same as the `pathPrefix` without the leading slash and without whitespaces.
 
+  - `websitePrimaryColor` (_optional_): the primary color to visually identify the website. It will be apply to heading H1 elements and the website title in the left navigation.
+
   - `gaTrackingId` (_optional_): this is the Google Analytics tracking ID. For all sites hosted on the `docs.commercetools.com` domain the ID must be: `UA-38285631-3`.
 
     > For test websites the field should not be set.

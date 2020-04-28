@@ -42,6 +42,7 @@ PageContentTemplate.propTypes = {
   data: PropTypes.shape({
     contentPage: PropTypes.shape({
       title: PropTypes.string.isRequired,
+      websitePrimaryColor: PropTypes.string,
       beta: PropTypes.bool.isRequired,
       isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
@@ -56,6 +57,7 @@ export const query = graphql`
   query QueryMarkdownPage($slug: String!) {
     contentPage(slug: { eq: $slug }) {
       title
+      websitePrimaryColor
       beta
       isGlobalBeta
       excludeFromSearchIndex

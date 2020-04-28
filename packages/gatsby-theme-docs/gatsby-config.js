@@ -16,6 +16,7 @@ proxyEnvironmentVariables.forEach((envName) => {
 
 const defaultOptions = {
   websiteKey: '',
+  websitePrimaryColor: '',
   beta: false,
   gaTrackingId: undefined,
   excludeFromSearchIndex: true,

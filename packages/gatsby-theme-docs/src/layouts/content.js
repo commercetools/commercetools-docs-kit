@@ -22,7 +22,7 @@ const LayoutContent = (props) => {
   const siteData = useSiteData();
 
   return (
-    <LayoutApplication>
+    <LayoutApplication websitePrimaryColor={props.pageData.websitePrimaryColor}>
       <LayoutSidebar
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
@@ -77,6 +77,7 @@ LayoutContent.propTypes = {
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    websitePrimaryColor: PropTypes.string,
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,

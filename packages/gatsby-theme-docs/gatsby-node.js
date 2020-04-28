@@ -120,6 +120,7 @@ exports.sourceNodes = ({ actions, schema }) => {
         id: { type: 'ID!' },
         slug: { type: 'String!' },
         title: { type: 'String!' },
+        websitePrimaryColor: { type: 'String' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
         beta: { type: 'Boolean!' },
@@ -154,6 +155,7 @@ exports.sourceNodes = ({ actions, schema }) => {
         id: { type: 'ID!' },
         slug: { type: 'String!' },
         title: { type: 'String!' },
+        websitePrimaryColor: { type: 'String' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
         date: {
@@ -213,6 +215,7 @@ exports.onCreateNode = (
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
+      websitePrimaryColor: pluginOptions.websitePrimaryColor,
       isGlobalBeta: Boolean(pluginOptions.beta),
       excludeFromSearchIndex:
         Boolean(node.frontmatter.excludeFromSearchIndex) ||
@@ -253,6 +256,7 @@ exports.onCreateNode = (
   const contentPageFieldData = {
     slug: trimTrailingSlash(slug) || '/',
     title: node.frontmatter.title,
+    websitePrimaryColor: pluginOptions.websitePrimaryColor,
     isGlobalBeta: Boolean(pluginOptions.beta),
     excludeFromSearchIndex:
       Boolean(node.frontmatter.excludeFromSearchIndex) ||

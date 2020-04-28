@@ -47,6 +47,7 @@ ReleaseNotesDetailTemplate.propTypes = {
   data: PropTypes.shape({
     releaseNotePage: PropTypes.shape({
       title: PropTypes.string.isRequired,
+      websitePrimaryColor: PropTypes.string,
       isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
@@ -60,6 +61,7 @@ export const query = graphql`
   query QueryReleaseDetailPage($slug: String!) {
     releaseNotePage(slug: { eq: $slug }) {
       title
+      websitePrimaryColor
       isGlobalBeta
       excludeFromSearchIndex
       date(formatString: "D MMMM YYYY")
