@@ -7,7 +7,8 @@ export const useLimits = () => {
         allLimitsYaml {
           nodes {
             name
-            value
+            number
+            text
           }
         }
       }

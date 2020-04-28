@@ -118,7 +118,8 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     type LimitsYaml implements Node @dontInfer {
       id: ID!
       name: String!
-      value: String!
+      number: Float
+      text: String
     }
   `);
 

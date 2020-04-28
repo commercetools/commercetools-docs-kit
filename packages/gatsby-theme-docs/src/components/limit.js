@@ -16,7 +16,7 @@ const Limit = (props) => {
     throw new Error(message);
   }
 
-  return <>{limit.value}</>;
+  return <>{`${limit.number || ''} ${limit.text || ''}`.trim()}</>;
 };
 
 Limit.propTypes = {

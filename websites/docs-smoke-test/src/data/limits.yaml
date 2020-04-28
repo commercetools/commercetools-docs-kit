@@ -1,6 +1,7 @@
-- name: numberLimit
-  value: 60
-- name: stringLimit
-  value: unlimited
-- name: zeroNumberLimit
-  value: 0
+- name: numberAndText
+  number: 60
+  text: megabytes
+- name: number
+  number: 7
+- name: text
+  text: "[a-zA-Z0-9_\\-]{2,256}"
