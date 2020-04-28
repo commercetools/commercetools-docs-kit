@@ -8,7 +8,7 @@ import CodeExampleLanguageContext from '../hooks/use-code-example-language';
 import ErrorBoundary from './error-boundary';
 
 const ThemeProvider = (props) => {
-  const [language, setLanguage] = React.useState('test');
+  const [codeExampleLanguage, setCodeExampleLanguage] = React.useState('');
 
   const data = useStaticQuery(graphql`
     query GetSiteData {
@@ -32,7 +32,12 @@ const ThemeProvider = (props) => {
   return (
     <ErrorBoundary>
       <SiteDataContext.Provider value={siteData}>
-        <CodeExampleLanguageContext.Provider value={{ language, setLanguage }}>
+        <CodeExampleLanguageContext.Provider
+          value={{
+            codeExampleLanguage,
+            setCodeExampleLanguage,
+          }}
+        >
           <Reset />
           <Globals />
           {props.children}

@@ -1,8 +1,11 @@
 import React from 'react';
 
 const CodeExampleLanguageContext = React.createContext({
-  language: '',
-  setLanguage: () => {},
+  codeExampleLanguage: '',
+  setCodeExampleLanguage: () => {},
 });
 CodeExampleLanguageContext.displayName = 'CodeExampleLanguageContext';
 export default CodeExampleLanguageContext;
+
+export const useCodeExampleLanguageContext = () =>
+  React.useContext(CodeExampleLanguageContext);

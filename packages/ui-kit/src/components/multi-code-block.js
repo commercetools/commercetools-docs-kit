@@ -96,13 +96,6 @@ function MultiCodeBlock(props) {
     ) || langs[0]
   );
 
-  React.useEffect(() => {
-    // run only if there are multiple blocks of code
-    if (langs.length > 1) {
-      console.log(props.selectedLanguage);
-    }
-  }, [props.selectedLanguage, langs]);
-
   return (
     <Container>
       {renderHeader(props.title, langs)}
@@ -164,9 +157,8 @@ function MultiCodeBlock(props) {
   function handleOnLanguageChange(e) {
     if (props.onLanguageChange) {
       props.onLanguageChange(e.target.value);
-    } else {
-      setSelected(e.target.value);
     }
+    setSelected(e.target.value);
   }
 
   function renderChildren(children, selectedChild) {
