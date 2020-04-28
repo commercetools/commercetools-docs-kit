@@ -58,14 +58,6 @@ module.exports = (themeOptions = {}) => {
             node { etc...
       */
 
-      // Site provided configuration data files (.yaml)
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'configurationData',
-          path: path.resolve(`./src/data`),
-        },
-      },
       // Default configuration data files (.yaml)
       {
         resolve: 'gatsby-source-filesystem',
@@ -73,6 +65,22 @@ module.exports = (themeOptions = {}) => {
           name: 'internalConfigurationData',
           path: path.join(__dirname, `./src/data`),
           ignore: pluginOptions.overrideDefaultConfigurationData,
+        },
+      },
+      // Default content pages (.mdx)
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'internalContent',
+          path: path.join(__dirname, `./src/content`),
+        },
+      },
+      // Site provided configuration data files (.yaml)
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'configurationData',
+          path: path.resolve(`./src/data`),
         },
       },
       // Assets (e.g. images) used from the markdown pages
