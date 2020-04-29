@@ -12,12 +12,17 @@ function MultiCodeExample(props) {
   const codeExamples = useCodeExamples();
   const context = useCodeExampleLanguageContext();
 
+  function handleOnLanguageChange(newLanguage) {
+    localStorage.setItem('codeExampleLanguage', newLanguage);
+    context.setCodeExampleLanguage(newLanguage);
+  }
+
   try {
     return (
       <MultiCodeBlock
         title={props.title}
         selectedLanguage={context.codeExampleLanguage}
-        onLanguageChange={context.setCodeExampleLanguage}
+        onLanguageChange={handleOnLanguageChange}
       >
         {React.Children.map(props.children, (child, index) => {
           if (!child.props || child.props.mdxType !== 'CodeExample') {

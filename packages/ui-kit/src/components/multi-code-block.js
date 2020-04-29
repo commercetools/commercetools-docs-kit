@@ -96,9 +96,26 @@ function MultiCodeBlock(props) {
     ) || langs[0]
   );
 
+  React.useEffect(() => {
+    // do only if this has multile code examples
+    if (langs.length > 1) {
+      const langIndex = langs.findIndex(
+        (lang) => lang === props.selectedLanguage
+      );
+
+      // will set selected language if
+      // - the language exists for this instance
+      // - this is not the first render.
+      // - this is not the instance that set the language
+      if (langIndex > -1 && selected !== props.selectedLanguage) {
+        setSelected(props.selectedLanguage);
+      }
+    }
+  }, [props.selectedLanguage, langs, selected]);
+
   return (
     <Container>
-      {renderHeader(props.title, langs)}
+      {renderHeader(props.title, langs, selected)}
       {renderChildren(props.children, selected)}
     </Container>
   );
@@ -111,7 +128,7 @@ function MultiCodeBlock(props) {
     return [children.props.language];
   }
 
-  function renderHeader(title, languages = []) {
+  function renderHeader(title, languages = [], selectedLanguage) {
     if (title || languages.length > 1) {
       return (
         <Header>
@@ -122,7 +139,7 @@ function MultiCodeBlock(props) {
               alignItems="center"
               justifyContent="flex-end"
             >
-              {renderLanguages(languages)}
+              {renderLanguages(languages, selectedLanguage)}
             </SpacingsInline>
           </HeaderInner>
         </Header>
@@ -132,11 +149,14 @@ function MultiCodeBlock(props) {
     return null;
   }
 
-  function renderLanguages(languages) {
+  function renderLanguages(languages, selectedLanguage) {
     if (languages.length > 1) {
       return (
         <LanguagesDropDownWrapper>
-          <LanguagesDropDown onChange={handleOnLanguageChange}>
+          <LanguagesDropDown
+            onChange={handleOnLanguageChange}
+            value={selectedLanguage}
+          >
             {languages.map((lang) => (
               <option key={lang} value={lang}>
                 {languageDisplayNames[lang] || lang}

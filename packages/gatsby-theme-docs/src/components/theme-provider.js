@@ -8,7 +8,9 @@ import CodeExampleLanguageContext from '../hooks/use-code-example-language';
 import ErrorBoundary from './error-boundary';
 
 const ThemeProvider = (props) => {
-  const [codeExampleLanguage, setCodeExampleLanguage] = React.useState('');
+  const [codeExampleLanguage, setCodeExampleLanguage] = React.useState(
+    localStorage.getItem('codeExampleLanguage')
+  );
 
   const data = useStaticQuery(graphql`
     query GetSiteData {
