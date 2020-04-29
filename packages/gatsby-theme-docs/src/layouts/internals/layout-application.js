@@ -42,9 +42,9 @@ const LayoutApplication = (props) => (
       ...designSystem.uikitTheme,
       // Docs specific theme properties
       colors: {
+        ...designSystem.colors,
         light: {
-          primary:
-            props.websitePrimaryColor || designSystem.colors.light.primary,
+          primary: props.websitePrimaryColor,
         },
       },
     }}
@@ -56,7 +56,7 @@ const LayoutApplication = (props) => (
   </UiKitThemeProvider>
 );
 LayoutApplication.propTypes = {
-  websitePrimaryColor: PropTypes.string,
+  websitePrimaryColor: PropTypes.string.isRequired,
 };
 
 export default LayoutApplication;

@@ -42,7 +42,7 @@ PageContentTemplate.propTypes = {
   data: PropTypes.shape({
     contentPage: PropTypes.shape({
       title: PropTypes.string.isRequired,
-      websitePrimaryColor: PropTypes.string,
+      websitePrimaryColor: PropTypes.string.isRequired,
       beta: PropTypes.bool.isRequired,
       isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,

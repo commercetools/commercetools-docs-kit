@@ -47,7 +47,7 @@ ReleaseNotesDetailTemplate.propTypes = {
   data: PropTypes.shape({
     releaseNotePage: PropTypes.shape({
       title: PropTypes.string.isRequired,
-      websitePrimaryColor: PropTypes.string,
+      websitePrimaryColor: PropTypes.string.isRequired,
       isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,

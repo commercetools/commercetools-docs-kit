@@ -120,7 +120,7 @@ exports.sourceNodes = ({ actions, schema }) => {
         id: { type: 'ID!' },
         slug: { type: 'String!' },
         title: { type: 'String!' },
-        websitePrimaryColor: { type: 'String' },
+        websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
         beta: { type: 'Boolean!' },
@@ -155,7 +155,7 @@ exports.sourceNodes = ({ actions, schema }) => {
         id: { type: 'ID!' },
         slug: { type: 'String!' },
         title: { type: 'String!' },
-        websitePrimaryColor: { type: 'String' },
+        websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
         date: {
