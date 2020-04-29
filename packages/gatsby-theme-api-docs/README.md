@@ -4,11 +4,41 @@ This is the core Gatsby theme for building commercetools documentation websites,
 
 ## Getting started
 
-To create a new documentation website you need to install this theme and its peer dependencies:
+To create a new documentation website you need to install this theme, the base docs theme and its peer dependencies:
 
+```sh
+npx install-peerdeps --dev @commercetools-docs/gatsby-theme-docs @commercetools-docs/gatsby-theme-api-docs
 ```
-npx install-peerdeps --dev @commercetools-docs/gatsby-theme-api-docs
+
+Then configure both in `gatsby-config.js` with the api docs theme coming after the base docs theme.
+
+```js
+module.exports = {
+  // ... more
+  plugins: [
+    {
+      resolve: '@commercetools-docs/gatsby-theme-docs',
+      options: {
+        websiteKey: 'api-docs-example',
+      },
+    },
+    {
+      resolve: '@commercetools-docs/gatsby-theme-api-docs',
+      options: {
+        transformerRaml: {
+          includeApis: ['example'],
+          movePropertiesToTop: [
+            'id',
+          ],
+          movePropertiesToBottom: ['custom'],
+        },
+      },
+    },
+  ],
+};
 ```
+
+Read more about GatsbyJS theme composition [here](https://www.gatsbyjs.org/docs/theme-api/#theme-composition).
 
 ### API spec theme
 

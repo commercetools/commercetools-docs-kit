@@ -9,11 +9,16 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: '@commercetools-docs/gatsby-theme-api-docs',
+      resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
         websiteKey: 'api-docs-smoke-test',
         websitePrimaryColor: 'goldenrod',
         excludeFromSearchIndex: isProd,
+      },
+    },
+    {
+      resolve: '@commercetools-docs/gatsby-theme-api-docs',
+      options: {
         transformerRaml: {
           includeApis: ['test'],
           movePropertiesToTop: [

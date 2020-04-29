@@ -26,10 +26,6 @@ module.exports = (themeOptions = {}) => {
         resolve: '@commercetools-docs/gatsby-transformer-raml',
         options: themeOptions.transformerRaml,
       },
-      {
-        resolve: '@commercetools-docs/gatsby-theme-docs',
-        options: themeOptions,
-      },
     ],
   };
 };
