@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 
 const path = require('path');
-const { customProperties } = require('@commercetools-uikit/design-system');
+const defaultOptions = require('./default-options');
 
 // Proxy env variables needed for `gatsby-browser.js` and `gatsby-ssr.js`.
 // https://www.gatsbyjs.org/docs/environment-variables/#client-side-javascript
@@ -15,18 +15,7 @@ proxyEnvironmentVariables.forEach((envName) => {
   process.env[`GATSBY_${envName}`] = process.env[envName];
 });
 
-const defaultOptions = {
-  websiteKey: '',
-  websitePrimaryColor: customProperties.colorPrimary,
-  beta: false,
-  gaTrackingId: undefined,
-  excludeFromSearchIndex: true,
-  createNodeSlug: undefined,
-  additionalPrismLanguages: [],
-  overrideDefaultConfigurationData: [],
-};
 const requiredOptions = ['websiteKey'];
-
 const validateThemeOptions = (options) => {
   requiredOptions.forEach((option) => {
     if (!options[option]) {

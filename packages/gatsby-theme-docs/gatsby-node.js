@@ -11,6 +11,7 @@ const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
 const processTableOfContentFields = require('./src/utils/process-table-of-content-fields');
+const defaultOptions = require('./default-options');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -194,11 +195,13 @@ exports.sourceNodes = ({ actions, schema }) => {
 
 exports.onCreateNode = (
   { node, getNode, actions, createNodeId },
-  pluginOptions
+  themeOptions
 ) => {
   if (node.internal.type !== 'Mdx') {
     return;
   }
+
+  const pluginOptions = { ...defaultOptions, ...themeOptions };
 
   const parent = getNode(node.parent);
 
@@ -311,8 +314,10 @@ exports.createPages = async (...args) => {
 
 async function createContentPages(
   { graphql, actions, reporter },
-  pluginOptions
+  themeOptions
 ) {
+  const pluginOptions = { ...defaultOptions, ...themeOptions };
+
   const result = await graphql(`
     query QueryAllContentPages {
       allContentPage {
@@ -378,8 +383,10 @@ async function createContentPages(
 
 async function createReleaseNotePages(
   { graphql, actions, reporter },
-  pluginOptions
+  themeOptions
 ) {
+  const pluginOptions = { ...defaultOptions, ...themeOptions };
+
   const result = await graphql(`
     query QueryAllReleaseNotePages {
       allReleaseNotePage {
@@ -409,7 +416,9 @@ async function createReleaseNotePages(
   });
 }
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
+exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
+  const pluginOptions = { ...defaultOptions, ...themeOptions };
+
   const config = getConfig();
   config.module.rules = [
     ...config.module.rules.map((rule) => ({
