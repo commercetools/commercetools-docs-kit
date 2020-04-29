@@ -49,12 +49,14 @@ exceptions:
   - PHP
   - PNG
   - POST
+  - PSR # PHP Specification Request, used in PHP content and in that context known.
   - RAM
   - RAML
   - REST
   - RFC # "Request For Comment" would confuse readers even more.
   - RSA
   - SDK
+  - SDL # We refer to the "GraphQL SDL" in our Release notes and in the GraphQL context that's ok.
   - SHA
   - SKU # generally we try to explain domain terminology but this one is so prevalent across the documentation that we allow it
   - SNS # AWS SNS, appears in many pages in a single place and amazon uses the short name themselves, too
@@ -74,12 +76,18 @@ exceptions:
   - UTC
   - UTF
   - UUID
+  - VIP
   - XML
   - XSS
   - YAML # Do not use YML
   - ZIP
   - ISO
   - RSS
+  # MC UI Text (Cart discount rule editor)
+  - NOT
+  - AND
+  - OR
+  # Specials and Brands
   - YYYY # to be able to describe date formats like YYYY-MM-DD
   - ZEIT # the zeit.co service is trademarked in uppercased letters.
   # the following exceptions are allowed because they are caught as errors by the ToDo rule.
