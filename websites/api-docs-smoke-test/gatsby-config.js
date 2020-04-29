@@ -12,6 +12,7 @@ module.exports = {
       resolve: '@commercetools-docs/gatsby-theme-api-docs',
       options: {
         websiteKey: 'api-docs-smoke-test',
+        websitePrimaryColor: 'goldenrod',
         excludeFromSearchIndex: isProd,
         transformerRaml: {
           includeApis: ['test'],

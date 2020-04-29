@@ -48,9 +48,16 @@ const SidebarScrollFader = styled.div`
   position: absolute;
 `;
 const WebsiteTitle = styled.div`
-  color: ${designSystem.colors.light.primary};
+  color: ${(props) => props.theme.colors.light.primary};
   padding: ${designSystem.dimensions.spacings.m};
   font-size: ${designSystem.typography.fontSizes.h4};
+`;
+const WebsiteTitleLink = styled.a`
+  text-decoration: none;
+  color: ${(props) => props.theme.colors.light.primary};
+  :hover {
+    text-decoration: underline;
+  }
 `;
 const ReleaseNotesTitle = styled.div``;
 const LinkTitle = styled.div`
@@ -335,19 +342,9 @@ const Sidebar = (props) => {
         <WebsiteTitle>
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaFlag />}</div>
-            <Link
-              id="site-title"
-              to="/"
-              css={css`
-                text-decoration: none;
-                color: ${designSystem.colors.light.primary};
-                :hover {
-                  text-decoration: underline;
-                }
-              `}
-            >
+            <WebsiteTitleLink as={Link} id="site-title" to="/">
               {props.siteTitle}
-            </Link>
+            </WebsiteTitleLink>
           </SpacingsStack>
         </WebsiteTitle>
         <SidebarScrollFader

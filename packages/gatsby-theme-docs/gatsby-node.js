@@ -11,6 +11,7 @@ const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
 const processTableOfContentFields = require('./src/utils/process-table-of-content-fields');
+const defaultOptions = require('./default-options');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -120,6 +121,7 @@ exports.sourceNodes = ({ actions, schema }) => {
         id: { type: 'ID!' },
         slug: { type: 'String!' },
         title: { type: 'String!' },
+        websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
         beta: { type: 'Boolean!' },
@@ -154,6 +156,7 @@ exports.sourceNodes = ({ actions, schema }) => {
         id: { type: 'ID!' },
         slug: { type: 'String!' },
         title: { type: 'String!' },
+        websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
         date: {
@@ -192,11 +195,13 @@ exports.sourceNodes = ({ actions, schema }) => {
 
 exports.onCreateNode = (
   { node, getNode, actions, createNodeId },
-  pluginOptions
+  themeOptions
 ) => {
   if (node.internal.type !== 'Mdx') {
     return;
   }
+
+  const pluginOptions = { ...defaultOptions, ...themeOptions };
 
   const parent = getNode(node.parent);
 
@@ -213,6 +218,7 @@ exports.onCreateNode = (
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
+      websitePrimaryColor: pluginOptions.websitePrimaryColor,
       isGlobalBeta: Boolean(pluginOptions.beta),
       excludeFromSearchIndex:
         Boolean(node.frontmatter.excludeFromSearchIndex) ||
@@ -253,6 +259,7 @@ exports.onCreateNode = (
   const contentPageFieldData = {
     slug: trimTrailingSlash(slug) || '/',
     title: node.frontmatter.title,
+    websitePrimaryColor: pluginOptions.websitePrimaryColor,
     isGlobalBeta: Boolean(pluginOptions.beta),
     excludeFromSearchIndex:
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
@@ -307,8 +314,10 @@ exports.createPages = async (...args) => {
 
 async function createContentPages(
   { graphql, actions, reporter },
-  pluginOptions
+  themeOptions
 ) {
+  const pluginOptions = { ...defaultOptions, ...themeOptions };
+
   const result = await graphql(`
     query QueryAllContentPages {
       allContentPage {
@@ -374,8 +383,10 @@ async function createContentPages(
 
 async function createReleaseNotePages(
   { graphql, actions, reporter },
-  pluginOptions
+  themeOptions
 ) {
+  const pluginOptions = { ...defaultOptions, ...themeOptions };
+
   const result = await graphql(`
     query QueryAllReleaseNotePages {
       allReleaseNotePage {
@@ -405,7 +416,9 @@ async function createReleaseNotePages(
   });
 }
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
+exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
+  const pluginOptions = { ...defaultOptions, ...themeOptions };
+
   const config = getConfig();
   config.module.rules = [
     ...config.module.rules.map((rule) => ({

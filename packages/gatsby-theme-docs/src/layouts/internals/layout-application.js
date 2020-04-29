@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { ThemeProvider as UiKitThemeProvider } from 'emotion-theming';
 import { designSystem } from '@commercetools-docs/ui-kit';
@@ -36,12 +37,26 @@ const Container = styled.div`
 `;
 
 const LayoutApplication = (props) => (
-  <UiKitThemeProvider theme={designSystem.uikitTheme}>
+  <UiKitThemeProvider
+    theme={{
+      ...designSystem.uikitTheme,
+      // Docs specific theme properties
+      colors: {
+        ...designSystem.colors,
+        light: {
+          primary: props.websitePrimaryColor,
+        },
+      },
+    }}
+  >
     <Root role="application" id="application">
       <Container {...props} />
     </Root>
     <div id="modal-portal" />
   </UiKitThemeProvider>
 );
+LayoutApplication.propTypes = {
+  websitePrimaryColor: PropTypes.string.isRequired,
+};
 
 export default LayoutApplication;

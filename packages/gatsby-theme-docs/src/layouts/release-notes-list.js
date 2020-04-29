@@ -21,7 +21,7 @@ const LayoutReleaseNotesList = (props) => {
   const siteData = useSiteData();
 
   return (
-    <LayoutApplication>
+    <LayoutApplication websitePrimaryColor={props.pageData.websitePrimaryColor}>
       <LayoutSidebar
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
@@ -67,6 +67,7 @@ LayoutReleaseNotesList.propTypes = {
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    websitePrimaryColor: PropTypes.string.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,

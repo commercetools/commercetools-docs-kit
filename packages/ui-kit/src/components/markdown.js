@@ -31,7 +31,7 @@ const H1 = styled.h1`
   margin: 0 0 ${dimensions.spacings.s};
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.15;
-  color: ${colors.light.primary};
+  color: ${(props) => props.theme.colors.light.primary};
 `;
 const H2 = styled.h2`
   ${headerStyles};

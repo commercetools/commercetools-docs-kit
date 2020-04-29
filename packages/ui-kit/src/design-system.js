@@ -14,8 +14,6 @@ export const pxToRem = (px, suffix = 'rem') => {
 
 export const colors = {
   light: {
-    // Used to give the website a unique tone (e.g. page titles, navigation links)
-    primary: customProperties.colorAccent40,
     // Surfaces are used for backgrounds
     surfacePrimary: customProperties.colorSurface,
     surfaceSecondary1: customProperties.colorNeutral95,
