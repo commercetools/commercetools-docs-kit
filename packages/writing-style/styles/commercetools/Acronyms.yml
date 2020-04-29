@@ -78,6 +78,7 @@ exceptions:
   - UTF
   - UUID
   - VAT
+  - VIP
   - XML
   - XSS
   - YAML # Do not use YML
