@@ -1,0 +1,187 @@
+---
+title: Cards
+---
+
+<Info>This describes variations that use the maximum extent of the feature set, all can be used with less and need to render</Info>
+
+Cards typically need to be embedded into a flexbox-ish overflow wrapper that defines the responsive behavior and defines whether it's two aside or three aside if necessary.
+
+ * All content including headings is markdown (blank lines needed but that has to be learnt for all components)
+ * Headings have no linkable / hover anchor.
+ * Headings can never become entries in the page index nav if used in a content page
+ * `#` for the larger heading variant ("H3" in the design)?
+ * `##` or higher levels for the smaller heading variant ("H4" in the design)?
+ * Either an icon or an image path can be set, but not both. An Image is sized into the width of the card, an icon is sized into a fixed 48x48px square.
+ * Cards can occur in two interaction variants, "active" (visually elevated) and "flat" (visually an outline only).
+
+
+# Wrapper
+
+```jsx
+<Cards narrow>
+  <Card>foo</Card>
+  <Card>bar</Card>
+  <Card>next row unless three aside (narrow) prop passed?</Card>
+  <Card>next row in any case</Card>
+</Cards>
+```
+
+## Pseudo-CSS:
+```css
+.cards {
+	width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+ }
+.cards > * {
+	flex-basis: 332px; /* the minimum width to never be three in a row */
+	flex-grow: 1;
+	flex-shrink: 1;
+	/* No maximum width possible here in flexbox, i.e. there could be one card taking full width (not intended, but acceptable)
+     Worth trying to abuse CSS grid as a single-row, auto-growing hack with explicit responsive breakpoints?
+  */
+}
+.cards.narrow > * {
+	flex-basis: 250px; /* the minimum width to never be four in a row */
+}
+```
+
+## Output
+
+<Cards>
+  <Card>foo</Card>
+  <Card>bar</Card>
+  <Card>next row unless three aside prop passed?</Card>
+  <Card>next row in any case</Card>
+</Cards>
+
+# Flat
+
+Flat cards have one card-level link target (href) and can have other links in the content, too, or no linking at all.
+The link target (href) is only useful if a link label for the bottom of the card is set.
+
+## Flat with Image and Link
+
+### MDX
+
+```jsx
+<Card
+  href="/components/images"
+  linkLabel="Read more about images..."
+  image="/images/200.jpg">
+## Example Small Heading
+This links to the images page and has an image and a read more link.
+</Card>
+```
+
+### Output
+
+<Card
+  href="/components/images"
+  linkLabel="Read more about images..."
+  image="/images/200.jpg">
+## Example Small Heading
+This links to the images page and has an image and a read more link.
+</Card>
+
+## Flat with Icon and no Link
+
+### MDX
+
+```jsx
+<Card icon="/images/200.jpg">
+# Example Large Heading
+This links to the images page and has an image and a read more link.
+</Card>
+```
+The `href` property can be set but will have no effect when neither `active` or `linkLabel` are set.
+
+### Output
+
+<Card icon="/images/200.jpg">
+# Example Large Heading
+This links to the images page and has an image and a read more link.
+</Card>
+
+
+# Active
+
+Active cards have one card-level link target (href) and no other links in the content.
+They are visually elevated and elevate even more when hovered.
+The link target (href) can be repeated as a link at the bottom by setting a card link label.
+
+## Active with Image and Link
+
+### MDX
+
+```jsx
+<Card active
+  href="/components/images"
+  linkLabel="Read more about images..."
+  image="/images/200.jpg">
+# Example Large Heading
+This links to the images page and has an image and a read more link.
+</Card>
+```
+
+### Output
+
+<Card active
+  href="/components/images"
+  linkLabel="Read more about images..."
+  image="/images/200.jpg">
+# Example Large Heading
+This links to the images page and has an image and a read more link.
+</Card>
+
+## Active with Icon and no Link
+
+### MDX
+
+```jsx
+<Card active
+  href="/components/images"
+  icon="/images/200.jpg">
+## Example Small Heading
+This links to the images page and has an image and a read more link.
+</Card>
+```
+
+### Output
+
+<Card active
+  href="/components/images"
+  icon="/images/200.jpg">
+## Example Small Heading
+This links to the images page and has an image and a read more link.
+</Card>
+
+# Embedded MDX in the Component Body
+
+<Warning>this (really??) cannot be prevented but should not be used</Warning>
+
+Since the MD(X) spec allows embedding markdown into JSX without a custom rendering by leaving blank lines, authors can use that pattern to place arbitrary article body content that would render in a way that is not card compatible.
+
+If possible we should either embrace it or try to block it and warn the user.
+
+### MDX
+
+```jsx
+<Card>
+
+## Disallowed Subsection Heading
+This would render like the full page body and should be prevented or not done
+
+Even  | Tables |
+------|--------|
+would | work   |
+
+
+</Card>
+```
+
+### Output
+
+(breaks until implemented?)
