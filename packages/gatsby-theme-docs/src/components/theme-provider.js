@@ -9,7 +9,9 @@ import ErrorBoundary from './error-boundary';
 
 const ThemeProvider = (props) => {
   const [codeExampleLanguage, setCodeExampleLanguage] = React.useState(
-    localStorage.getItem('codeExampleLanguage')
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('codeExampleLanguage')
+      : ''
   );
 
   const data = useStaticQuery(graphql`
