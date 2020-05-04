@@ -29,7 +29,7 @@
     "lodash.escape": "4.0.1",
     "lodash.throttle": "4.1.1",
     "parse5": "6.0.0",
-    "prism-react-renderer": "1.1.0",
+    "prism-react-renderer": "1.0.2",
     "prop-types": "15.7.2",
     "tiny-invariant": "1.1.0"
   },
