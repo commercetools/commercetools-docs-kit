@@ -65,7 +65,7 @@ const SEO = (props) => {
       <html lang={props.lang} amp />
       <title>{props.title}</title>
       {metaTags.map((tag) => (
-        <meta key={tag.name} {...tag} />
+        <meta key={tag.name || tag.property} {...tag} />
       ))}
     </Helmet>
   );
