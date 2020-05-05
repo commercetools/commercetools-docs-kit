@@ -18,7 +18,7 @@ module.exports = {
       additionalPrismLanguages: ['scala', 'csharp'],
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
-        '@commercetools-docs/gatsby-transformer-data-limits',
+        '@commercetools-docs/gatsby-theme-data-limits',
       ],
     }),
   ],

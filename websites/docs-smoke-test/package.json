@@ -14,8 +14,9 @@
     "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "2.5.0",
     "@commercetools-docs/gatsby-theme-code-examples": "2.5.0",
+    "@commercetools-docs/gatsby-theme-docs": "2.5.0",
+    "@commercetools-docs/gatsby-theme-data-limits": "2.5.0",
     "gatsby": "2.21.11",
     "gatsby-cli": "2.12.8"
   }

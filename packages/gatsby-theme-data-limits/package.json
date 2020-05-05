@@ -1,24 +1,24 @@
 {
-  "name": "@commercetools-docs/gatsby-transformer-data-limits",
+  "name": "@commercetools-docs/gatsby-theme-data-limits",
   "version": "2.5.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "Gatsby transformer plugin to expose data limits in MDX from a yaml configuration file",
-  "homepage": "https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-transformer-data-limits",
+  "description": "Gatsby theme for commercetools documentation providing the functionalities to render values (limits) in MDX defined in a configuration file",
+  "homepage": "https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-theme-data-limits",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
-    "gatsby-transformer",
+    "gatsby-theme",
     "yaml",
     "data",
     "limits"
   ],
-  "main": "src/index.js",
   "dependencies": {
     "@commercetools-docs/ui-kit": "2.5.0",
+    "gatsby-transformer-yaml": "2.4.1",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
