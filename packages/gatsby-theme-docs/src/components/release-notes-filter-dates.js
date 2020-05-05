@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-// import DateField from '@commercetools-uikit/date-field';
+import DateInput from '@commercetools-uikit/date-input';
 
 export const FilterTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
@@ -27,11 +27,10 @@ const ReleaseNotesFilterDates = () => {
       <SpacingsStack scale="xs">
         <DateLabel htmlFor="from-filter-date">From</DateLabel>
         <div>
-          <input
-            type="date"
+          <DateInput
             id="from-filter-date"
             value={fromFilterDate}
-            min={minDate}
+            minValue={minDate}
             onChange={handleOnFromFilterDateChange}
           />
         </div>
@@ -40,11 +39,10 @@ const ReleaseNotesFilterDates = () => {
       <SpacingsStack scale="xs">
         <DateLabel htmlFor="to-filter-date">To</DateLabel>
         <div>
-          <input
-            type="date"
+          <DateInput
             id="to-filter-date"
             value={toFilterDate}
-            min={minDate}
+            minValue={minDate}
             onChange={handleOnToFilterDateChange}
           />
         </div>

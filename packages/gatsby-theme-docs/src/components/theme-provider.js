@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Reset, Globals } from '@commercetools-docs/ui-kit';
 import { SiteDataContext } from '../hooks/use-site-data';
@@ -27,13 +28,15 @@ const ThemeProvider = (props) => {
     siteMetadata: { ...data.site.siteMetadata, ...additionalData },
   };
   return (
-    <ErrorBoundary>
-      <SiteDataContext.Provider value={siteData}>
-        <Reset />
-        <Globals />
-        {props.children}
-      </SiteDataContext.Provider>
-    </ErrorBoundary>
+    <IntlProvider locale="en">
+      <ErrorBoundary>
+        <SiteDataContext.Provider value={siteData}>
+          <Reset />
+          <Globals />
+          {props.children}
+        </SiteDataContext.Provider>
+      </ErrorBoundary>
+    </IntlProvider>
   );
 };
 ThemeProvider.propTypes = {
