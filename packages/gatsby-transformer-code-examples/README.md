@@ -10,25 +10,24 @@ This plugin transforms file contents into `CodeExample` types and makes them ava
 
 As a prerequisite configure a source plugin, for example, `gatsby-source-filesystem` to point the directory of the code examples, for example `src/code-examples`. Other source plugins can be used, too.
 
-Example `gatsby-config.js` content:
+In your `gatsby-config.js`:
 
 ```js
-// In your gatsby-config.js
-const path = require('path');
-
 module.exports = {
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `codeExamples`,
-        path: path.resolve('./src/code-examples'),
+        path: './src/code-examples',
       },
     },
     `@commercetools-docs/gatsby-transformer-code-examples`,
   ],
 };
 ```
+
+Where the _source folder_ `./src/code-examples/` contains the files that will be loaded and referenced in the React components.
 
 ## GraphQl Query Example
 
@@ -60,3 +59,30 @@ In addition the following are included to cover languages with no explicit mime 
 
 - `application/octet-stream`
 - `text/plain`
+
+## Using UI components in Markdown
+
+The package exports the following components, which can be injected into the `components` props of the `MDXProvider`.
+
+```jsx
+import {
+  CodeExample,
+  MultiCodeExample,
+} from '@commercetools-docs/gatsby-transformer-code-examples';
+
+<MDXProvider components={{ CodeExample, MultiCodeExample }}>
+  {/*  */}
+</MDXProvider>;
+```
+
+Then in your MDX files:
+
+```markdown
+<MultiCodeExample title="Multilanguage Code Samples">
+  <CodeExample path="example.js" highlightLines={[3]} />
+  <CodeExample path="example.java"/>
+  <CodeExample path="example.console" noPromptLines={[3, 4]} />
+</MultiCodeExample>
+
+<CodeExample path="example.js" title="JavaScript Code Sample" />
+```

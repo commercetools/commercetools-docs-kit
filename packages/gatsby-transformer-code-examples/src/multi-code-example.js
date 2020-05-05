@@ -5,7 +5,7 @@ import {
   MultiCodeBlock,
   CodeBlock,
 } from '@commercetools-docs/ui-kit';
-import useCodeExamples from '../hooks/use-code-examples';
+import useCodeExamples from './use-code-examples';
 
 function MultiCodeExample(props) {
   const codeExamples = useCodeExamples();

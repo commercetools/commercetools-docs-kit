@@ -4,12 +4,10 @@ import {
   ContentNotifications,
 } from '@commercetools-docs/ui-kit';
 import {
-  Link,
   CodeExample,
   MultiCodeExample,
-  BetaFlag as Beta,
-  Anchor,
-} from './components';
+} from '@commercetools-docs/gatsby-transformer-code-examples';
+import { Link, BetaFlag as Beta, Anchor } from './components';
 import PlaceholderMarkdownComponents from './overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components

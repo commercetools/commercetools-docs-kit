@@ -5,7 +5,7 @@ import {
   CodeBlock,
   ContentNotifications,
 } from '@commercetools-docs/ui-kit';
-import useCodeExamples from '../hooks/use-code-examples';
+import useCodeExamples from './use-code-examples';
 
 function CodeExample(props) {
   const codeExamples = useCodeExamples();
