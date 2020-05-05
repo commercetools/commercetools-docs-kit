@@ -1,10 +1,20 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
+import ReleaseNotesFilterDates from '../../components/release-notes-filter-dates';
+import ReleaseNotesFilterTopics from '../../components/release-notes-filter-topics';
+
+const StackedLinesIndentedIcon = createStyledIcon(
+  UnstyledStackedLinesIndentedIcon
+);
 
 const GridContainer = styled.div`
   display: none;
   border-left: 1px solid ${designSystem.colors.light.borderPrimary};
+  margin-top: ${designSystem.dimensions.spacings.wide};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
@@ -22,14 +32,48 @@ const StickyContainer = styled.div`
   position: sticky;
   top: ${designSystem.dimensions.spacings.xxl};
   margin: 0 0 ${designSystem.dimensions.spacings.s};
+  padding-left: ${designSystem.dimensions.spacings.m};
+`;
+const ReleasesTitleLink = styled.a`
+  color: ${designSystem.colors.light.textSecondary};
+  font-size: ${designSystem.typography.fontSizes.extraSmall};
+  text-decoration: none;
+  :hover {
+    color: ${designSystem.colors.light.linkNavigation};
+    svg {
+      * {
+        fill: ${designSystem.colors.light.linkNavigation};
+      }
+    }
+  }
+  :hover,
+  :active {
+    outline-width: 0;
+  }
 `;
 
-// TODO: Filters
-const LayoutPageReleaseNotesFilters = () => (
-  <GridContainer>
-    <StickyContainer></StickyContainer>
-  </GridContainer>
-);
+const LayoutPageReleaseNotesFilters = () => {
+  return (
+    <GridContainer>
+      <StickyContainer>
+        <SpacingsStack scale="m">
+          <ReleasesTitleLink href="#top">
+            <SpacingsInline scale="s" alignItems="center">
+              <div>Releases</div>
+              <div>
+                <StackedLinesIndentedIcon color="textSecondary" />
+              </div>
+            </SpacingsInline>
+          </ReleasesTitleLink>
+
+          <ReleaseNotesFilterDates />
+
+          <ReleaseNotesFilterTopics />
+        </SpacingsStack>
+      </StickyContainer>
+    </GridContainer>
+  );
+};
 LayoutPageReleaseNotesFilters.displayName = 'LayoutPageReleaseNotesFilters';
 
 export default LayoutPageReleaseNotesFilters;
