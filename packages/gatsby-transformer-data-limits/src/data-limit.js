@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
-import { useLimitByName } from '../hooks/use-limits';
+import { useDataLimitByName } from './use-data-limits';
 
-const Limit = (props) => {
-  const limit = useLimitByName(props.name);
+const DataLimit = (props) => {
+  const limit = useDataLimitByName(props.name);
 
   if (!limit) {
-    const message = `${props.name} limit is not found.`;
-
+    const message = `${props.name} limit was not found.`;
     if (process.env.NODE_ENV !== 'production') {
       return <ContentNotifications.Error>{message}</ContentNotifications.Error>;
     }
-
     throw new Error(message);
   }
 
@@ -25,8 +23,8 @@ const Limit = (props) => {
   );
 };
 
-Limit.propTypes = {
+DataLimit.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default Limit;
+export default DataLimit;

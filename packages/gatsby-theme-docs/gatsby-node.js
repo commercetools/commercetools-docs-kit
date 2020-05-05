@@ -114,13 +114,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       fix
       enhancement
     }
-
-    type LimitsYaml implements Node @dontInfer {
-      id: ID!
-      name: String!
-      number: Float
-      text: String
-    }
   `);
 
   // Create a new type representing a Content Page

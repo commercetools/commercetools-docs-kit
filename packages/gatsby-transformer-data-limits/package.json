@@ -1,0 +1,34 @@
+{
+  "name": "@commercetools-docs/gatsby-transformer-data-limits",
+  "version": "2.5.0",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Gatsby transformer plugin to expose data limits in MDX from a yaml configuration file",
+  "homepage": "https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-transformer-data-limits",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-transformer",
+    "yaml",
+    "data",
+    "limits"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "@commercetools-docs/ui-kit": "2.5.0",
+    "prop-types": "15.7.2"
+  },
+  "devDependencies": {
+    "gatsby": "2.21.11",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "peerDependencies": {
+    "gatsby": "2.x",
+    "react": "16.x",
+    "react-dom": "16.x"
+  }
+}
