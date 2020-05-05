@@ -29,13 +29,13 @@ const ReleaseNotesFilterTopics = () => {
   return (
     <Container>
       <SpacingsStack>
-        <SpacingsInline alignItems="center">
+        <SpacingsInline alignItems="center" justifyContent="space-between">
           <FilterTitle>Filter By Topics</FilterTitle>
           <ClearAll href="#" onClick={handleOnClearAll}>
             Clear all
           </ClearAll>
         </SpacingsInline>
-        <div>
+        <SpacingsStack scale="s">
           {topics.map((topic) => (
             <div key={topic.name}>
               <CheckboxInput
@@ -47,7 +47,7 @@ const ReleaseNotesFilterTopics = () => {
               </CheckboxInput>
             </div>
           ))}
-        </div>
+        </SpacingsStack>
       </SpacingsStack>
     </Container>
   );
