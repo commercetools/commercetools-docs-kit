@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-// import CheckboxInput from '@commercetools-uikit/checkbox-input';
+import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { useReleaseNotesTopicsSet } from '../hooks/use-all-release-topics';
 import { FilterTitle } from './release-notes-filter-dates';
@@ -38,14 +38,13 @@ const ReleaseNotesFilterTopics = () => {
         <div>
           {topics.map((topic) => (
             <div key={topic.name}>
-              <input
-                type="checkbox"
-                id={topic.name}
+              <CheckboxInput
                 value={topic.name}
                 onChange={handleOnTopicChange}
-                checked={topic.checked}
-              />
-              <label htmlFor={topic.name}> {topic.name}</label>
+                isChecked={topic.checked}
+              >
+                {topic.name}
+              </CheckboxInput>
             </div>
           ))}
         </div>
