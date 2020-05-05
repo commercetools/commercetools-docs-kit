@@ -19,6 +19,7 @@ const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = ({ reporter }) => {
   const requiredDirectories = [
+    'src/cards',
     'src/data',
     'src/images',
     'src/content',
@@ -110,6 +111,11 @@ exports.sourceNodes = ({ actions, schema }) => {
       fix
       enhancement
     }
+
+    enum CardType {
+      flat
+      raised
+    }
   `);
 
   // Create a new type representing a Content Page
@@ -191,6 +197,28 @@ exports.sourceNodes = ({ actions, schema }) => {
       interfaces: ['Node'],
     })
   );
+
+  // Create a new type representing a Card
+  // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
+  actions.createTypes(
+    schema.buildObjectType({
+      name: 'Card',
+      fields: {
+        id: { type: 'ID!' },
+        type: { type: 'String!' },
+        title: { type: 'String!' },
+        link: { type: 'String!' },
+        linkLabel: { type: 'String' },
+        image: { type: 'File', fileByRelativePath: true },
+        icon: { type: 'File', fileByRelativePath: true },
+        body: {
+          type: 'String!',
+          resolve: resolverPassthrough({ fieldName: 'body' }),
+        },
+      },
+      interfaces: ['Node'],
+    })
+  );
 };
 
 exports.onCreateNode = (
@@ -251,6 +279,38 @@ exports.onCreateNode = (
       parent,
       child: node,
     });
+  }
+
+  const isCardFragment =
+    parent.internal.mediaType === 'text/mdx' &&
+    parent.sourceInstanceName === 'cards';
+  if (isCardFragment) {
+    const cardFieldData = {
+      type: node.frontmatter.type,
+      title: node.frontmatter.title,
+      link: node.frontmatter.link,
+      linkLabel: node.frontmatter.linkLabel,
+      image: node.frontmatter.image,
+      icon: node.frontmatter.icon,
+    };
+
+    actions.createNode({
+      ...cardFieldData,
+      // Required fields
+      id: createNodeId(`${node.id} >>> Card`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: `Card`,
+        contentDigest: crypto
+          .createHash(`md5`)
+          .update(JSON.stringify(cardFieldData))
+          .digest(`hex`),
+        content: JSON.stringify(cardFieldData),
+        description: `Card fragment`,
+      },
+    });
+    actions.createParentChildLink({ parent, child: node });
   }
 
   // If not explicitly handled, always fall back to build the page as a "content" page.

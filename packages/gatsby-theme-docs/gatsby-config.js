@@ -98,6 +98,14 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/releases`),
         },
       },
+      // Cards
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'cards',
+          path: path.resolve(`./src/cards`),
+        },
+      },
 
       /**
        * Transformers for making content available in graphql queries
