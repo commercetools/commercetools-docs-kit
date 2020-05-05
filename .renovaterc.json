@@ -22,5 +22,8 @@
   "labels": [
     "🤖 Type: Dependencies"
   ],
-  "ignoreDeps": []
+  "ignoreDeps": [
+    "gatsby-remark-relative-images",
+    "prism-react-renderer"
+  ]
 }
