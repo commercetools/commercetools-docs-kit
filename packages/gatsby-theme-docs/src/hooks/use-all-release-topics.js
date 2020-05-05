@@ -4,7 +4,7 @@ const useAllReleaseTopics = () => {
   const queryResult = useStaticQuery(
     graphql`
       query GetAllReleaseTopics {
-        allReleaseNotePage {
+        allReleaseNotePage(sort: { order: DESC, fields: date }) {
           nodes {
             topics
           }
@@ -27,5 +27,5 @@ export const useReleaseNotesTopicsSet = () => {
     obj.topics.forEach((topic) => topics.add(topic));
   });
 
-  return Array.from(topics);
+  return topics;
 };
