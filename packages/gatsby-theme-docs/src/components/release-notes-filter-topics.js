@@ -18,7 +18,13 @@ const ClearAll = styled.a`
 `;
 
 const ReleaseNotesFilterTopics = () => {
-  const topics = useReleaseNotesTopicsSet();
+  const topicsSet = useReleaseNotesTopicsSet();
+  const checkedTopics = Array.from(topicsSet).map((topic) => ({
+    name: topic,
+    checked: false,
+  }));
+
+  const [topics, setTopics] = React.useState(checkedTopics);
 
   return (
     <Container>
@@ -31,14 +37,15 @@ const ReleaseNotesFilterTopics = () => {
         </SpacingsInline>
         <div>
           {topics.map((topic) => (
-            <div key={topic}>
+            <div key={topic.name}>
               <input
                 type="checkbox"
-                id={topic}
-                value={topic}
-                onClick={handleOnTopicChange}
+                id={topic.name}
+                value={topic.name}
+                onChange={handleOnTopicChange}
+                checked={topic.checked}
               />
-              <label htmlFor={topic}> {topic}</label>
+              <label htmlFor={topic.name}> {topic.name}</label>
             </div>
           ))}
         </div>
@@ -48,11 +55,19 @@ const ReleaseNotesFilterTopics = () => {
 
   function handleOnClearAll(e) {
     e.preventDefault();
-    console.log('clear selected topics');
+    setTopics(topics.map((topic) => ({ ...topic, checked: false })));
   }
 
   function handleOnTopicChange(e) {
-    console.log(e.target.value);
+    setTopics(
+      topics.map((topic) => {
+        if (topic.name === e.target.value) {
+          return { ...topic, checked: !topic.checked };
+        }
+
+        return topic;
+      })
+    );
   }
 };
 
