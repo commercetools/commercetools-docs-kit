@@ -16,8 +16,10 @@ const DateLabel = styled.label`
 `;
 
 const ReleaseNotesFilterDates = () => {
+  // todo: get fromFilterDate initial value from release note with earliest date
   const minDate = '2020-01-01';
   const [fromFilterDate, setFromFilterDate] = React.useState(minDate);
+  // todo: get toFilterDate initial value from release note with latest date
   const [toFilterDate, setToFilterDate] = React.useState(minDate);
 
   return (
@@ -30,7 +32,6 @@ const ReleaseNotesFilterDates = () => {
           <DateInput
             id="from-filter-date"
             value={fromFilterDate}
-            minValue={minDate}
             onChange={handleOnFromFilterDateChange}
           />
         </div>
@@ -42,7 +43,6 @@ const ReleaseNotesFilterDates = () => {
           <DateInput
             id="to-filter-date"
             value={toFilterDate}
-            minValue={minDate}
             onChange={handleOnToFilterDateChange}
           />
         </div>
@@ -52,10 +52,14 @@ const ReleaseNotesFilterDates = () => {
 
   function handleOnFromFilterDateChange(e) {
     setFromFilterDate(e.target.value);
+
+    // todo: send info to release notes list to the list can be updated
   }
 
   function handleOnToFilterDateChange(e) {
     setToFilterDate(e.target.value);
+
+    // todo: send info to release notes list to the list can be updated
   }
 };
 
