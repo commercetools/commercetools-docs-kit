@@ -4,7 +4,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { useReleaseNotesTopicsSet } from '../hooks/use-all-release-topics';
+import { useReleaseNotesTopicsSet } from '../hooks/use-all-release-notes';
 import { FilterTitle } from './release-notes-filter-dates';
 
 const Container = styled.div`
