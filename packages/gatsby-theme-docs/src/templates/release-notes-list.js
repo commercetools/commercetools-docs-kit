@@ -25,14 +25,22 @@ const ReleaseNotesListTemplate = (props) => {
     if (fromFilterDate || toFilterDate || filterTopics.length > 0) {
       setReleaseNotes(
         props.data.allReleaseNotePage.nodes.filter((releaseNote) => {
-          let releaseNoteDateIsLaterThanFromFilterDate = true;
+          let releaseNoteDateIsSameOrAfterFromFilterDate = true;
+          let releaseNoteDateIsSameOrBeforeToFilterDate = true;
           let foundTopicInFilter = true;
 
           if (fromFilterDate) {
-            releaseNoteDateIsLaterThanFromFilterDate = moment(
+            releaseNoteDateIsSameOrAfterFromFilterDate = moment(
               releaseNote.date,
               'D MMMM YYYY'
             ).isSameOrAfter(moment(fromFilterDate, 'YYYY-MM-DD'));
+          }
+
+          if (toFilterDate) {
+            releaseNoteDateIsSameOrBeforeToFilterDate = moment(
+              releaseNote.date,
+              'D MMMM YYYY'
+            ).isSameOrBefore(moment(toFilterDate, 'YYYY-MM-DD'));
           }
 
           if (filterTopics.length > 0) {
@@ -41,7 +49,11 @@ const ReleaseNotesListTemplate = (props) => {
             );
           }
 
-          return releaseNoteDateIsLaterThanFromFilterDate && foundTopicInFilter;
+          return (
+            releaseNoteDateIsSameOrAfterFromFilterDate &&
+            releaseNoteDateIsSameOrBeforeToFilterDate &&
+            foundTopicInFilter
+          );
         })
       );
     }
