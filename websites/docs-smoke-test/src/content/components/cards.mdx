@@ -10,6 +10,10 @@ title: Cards
    * Icons are supported anywhere but only those that are officially provided by the kit. An icon is sized into a fixed 48x48px square.
  * Cards can occur in two interaction variants, "active" (visually elevated) and "flat" (visually an outline only).
  * Cards must be embedded into a wrapper component that defines the responsive sizes (two aside / three aside) and parameters that must be identical in a give row or grid (active card area, the heading size)
+   * trial & error led to a minimum width of ca 250px for narrow three-aside cards and ca 332px for two-aside cards.
+ * A single card must not fill the full width but stay left aligned.
+ * Multiple cards fill the full width and are scaled up to fill even if their content is smaller. Every card has the same width in all rows (resulting in a grid if it's multiple rows)
+ * Cards are sorted in rows, then columns.
 
 # "Cards" Wrapper
 
@@ -57,30 +61,6 @@ title: Cards
   <Card>next row unless three aside (narrow) prop passed?</Card>
   <Card>next row in any case</Card>
 </Cards>
-
-
-## Pseudo-CSS:
-
-This is for illustration. The implementation can be done differently. The design intent matches the CSS flexbox intent, but CSS grid might be more powerful although not originally being intended for rows with floating overflow.
-
-```css
-.cards {
-	width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: stretch;
- }
-.cards > * {
-	flex-basis: 332px; /* the minimum width to never be three in a row */
-	flex-grow: 1;
-	flex-shrink: 1;
-	/* No maximum width possible here in flexbox, i.e. there could be one card taking full width (not intended, but acceptable)  */
-}
-.cards.narrow > * {
-	flex-basis: 250px; /* the minimum width to never be four in a row */
-}
-```
 
 # "Card": the actual card
 
