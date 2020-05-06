@@ -53,7 +53,11 @@ const LayoutReleaseNotesList = (props) => {
               {props.children}
             </PageContentInset>
           </LayoutPageContent>
-          <LayoutPageReleaseNotesFilters />
+          <LayoutPageReleaseNotesFilters
+            handleOnFromFilterDateChange={props.handleOnFromFilterDateChange}
+            handleOnToFilterDateChange={props.handleOnToFilterDateChange}
+            handleOnFilterTopicsChange={props.handleOnFilterTopicsChange}
+          />
         </LayoutPage>
         <LayoutFooter />
       </LayoutMain>
@@ -72,6 +76,9 @@ LayoutReleaseNotesList.propTypes = {
     excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
+  handleOnFromFilterDateChange: PropTypes.func.isRequired,
+  handleOnToFilterDateChange: PropTypes.func.isRequired,
+  handleOnFilterTopicsChange: PropTypes.func.isRequired,
 };
 
 export default LayoutReleaseNotesList;

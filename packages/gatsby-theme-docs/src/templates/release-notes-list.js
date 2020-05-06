@@ -11,27 +11,68 @@ import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
-const ReleaseNotesListTemplate = (props) => (
-  <ThemeProvider>
-    <LayoutReleaseNotesList
-      pageContext={props.pageContext}
-      pageData={props.data.contentPage}
-    >
-      <Markdown.TypographyPage>
-        <SEO
-          title={props.data.contentPage.title}
-          excludeFromSearchIndex={props.data.contentPage.excludeFromSearchIndex}
-        />
-        <MDXProvider components={markdownComponents}>
+const ReleaseNotesListTemplate = (props) => {
+  const [releaseNotes, setReleaseNotes] = React.useState(
+    props.data.allReleaseNotePage ? props.data.allReleaseNotePage.nodes : []
+  );
+  const [fromFilterDate, setFromFilterDate] = React.useState('');
+  const [toFilterDate, setToFilterDate] = React.useState('');
+  const [filterTopics, setFilterTopics] = React.useState([]);
+
+  React.useEffect(() => {
+    setReleaseNotes(
+      props.data.allReleaseNotePage.nodes.filter((releaseNote) => {
+        let foundTopicInFilter = true;
+        // console.log('releaseNote.date', releaseNote.date);
+
+        // // todo: use moments to filter out any earlier date
+        // console.log('fromFilterDate', fromFilterDate);
+
+        // // todo: use moments to filter out any later date
+        // console.log('toFilterDate', toFilterDate);
+
+        // console.log(releaseNote.topics);
+
+        if (filterTopics.length > 0) {
+          foundTopicInFilter = releaseNote.topics.find((topic) =>
+            filterTopics.includes(topic)
+          );
+        }
+
+        return foundTopicInFilter;
+      })
+    );
+  }, [
+    props.data.allReleaseNotePage.nodes,
+    fromFilterDate,
+    toFilterDate,
+    filterTopics,
+  ]);
+
+  return (
+    <ThemeProvider>
+      <LayoutReleaseNotesList
+        pageContext={props.pageContext}
+        pageData={props.data.contentPage}
+        handleOnFromFilterDateChange={setFromFilterDate}
+        handleOnToFilterDateChange={setToFilterDate}
+        handleOnFilterTopicsChange={setFilterTopics}
+      >
+        <Markdown.TypographyPage>
+          <SEO
+            title={props.data.contentPage.title}
+            excludeFromSearchIndex={
+              props.data.contentPage.excludeFromSearchIndex
+            }
+          />
+          <MDXProvider components={markdownComponents}>
+            <div>
+              <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
+            </div>
+          </MDXProvider>
           <div>
-            <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-          </div>
-        </MDXProvider>
-        <div>
-          <SpacingsStack>
-            {props.data.allReleaseNotePage &&
-              props.data.allReleaseNotePage.nodes &&
-              props.data.allReleaseNotePage.nodes.map((releaseNote) => (
+            <SpacingsStack>
+              {releaseNotes.map((releaseNote) => (
                 <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
                   <Markdown.TypographyPage>
                     <section>
@@ -40,12 +81,13 @@ const ReleaseNotesListTemplate = (props) => (
                   </Markdown.TypographyPage>
                 </LayoutReleaseNote>
               ))}
-          </SpacingsStack>
-        </div>
-      </Markdown.TypographyPage>
-    </LayoutReleaseNotesList>
-  </ThemeProvider>
-);
+            </SpacingsStack>
+          </div>
+        </Markdown.TypographyPage>
+      </LayoutReleaseNotesList>
+    </ThemeProvider>
+  );
+};
 
 ReleaseNotesListTemplate.propTypes = {
   pageContext: PropTypes.shape({
