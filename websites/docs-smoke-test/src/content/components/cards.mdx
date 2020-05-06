@@ -9,7 +9,7 @@ title: Cards
    * To start with, Images are _not_ supported for free-form in-content cards, only in places that are fully designed and implemented by developers. An Image is sized into the width of the card.
    * Icons are supported anywhere but only those that are officially provided by the kit. An icon is sized into a fixed 48x48px square.
  * Cards can occur in two interaction variants, "active" (visually elevated) and "flat" (visually an outline only).
- * Cards must be embedded into a wrapper component that defines the responsive sizes (two aside / three aside) and parameters that must be identical in a give row or grid (active card area, the heading size)
+ * Cards must be embedded into a wrapper component that defines the responsive sizes (two aside / three aside) and parameters that must be identical in a given row or grid (active card area, the heading size)
    * trial & error led to a minimum width of ca 250px for narrow three-aside cards and ca 332px for two-aside cards.
  * A single card must not fill the full width but stay left aligned.
  * Multiple cards fill the full width and are scaled up to fill even if their content is smaller. Every card has the same width in all rows (resulting in a grid if it's multiple rows)
@@ -20,7 +20,7 @@ title: Cards
  Properties (for authors):
  * `active` (boolean): if set, the whole area of all child cards is a link, the card is elevated and has a hover effect if a link url is set.
  * `narrow` (boolean): by default, two cards are shown side by side (except mobile viewports). if `narrow` is passed, the minimum card width is reduced so that three cards fit the content width on microsite landing pages.
- * `smallTitle` (boolean): lets all cards have a smaller
+ * `smallTitle` (boolean): lets all cards have a smaller title font.
 
 ## Minimal form
 
@@ -68,7 +68,7 @@ Properties (for authors):
  * `title` (string): the card title, no markdown allowed.
  * `href` (string): the link target of the bottom link and, if `active` is set, the whole card. `href` has no effect when neither `active` or `link` are set.
  * `link` (string): the bottom link text. If not set, no bottom link is rendered at all.
- * `icon` (function): the component to be rendered into the 48x48px space reserved for an icon. If not set, the space is not reserved.
+ * `icon` (component): the component to be rendered into the 48x48px space reserved for an icon. If not set, the space is not reserved.
 
 ## Flat with Link
 
