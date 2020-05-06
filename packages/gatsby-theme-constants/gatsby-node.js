@@ -5,7 +5,6 @@
  */
 
 const fs = require('fs');
-const crypto = require('crypto');
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
@@ -35,7 +34,13 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   );
 };
 
-exports.onCreateNode = ({ node, getNode, actions, createNodeId }) => {
+exports.onCreateNode = ({
+  node,
+  getNode,
+  actions,
+  createNodeId,
+  createContentDigest,
+}) => {
   const parent = getNode(node.parent);
 
   const isConstantsFile =
@@ -59,10 +64,7 @@ exports.onCreateNode = ({ node, getNode, actions, createNodeId }) => {
       children: [],
       internal: {
         type: `Constant`,
-        contentDigest: crypto
-          .createHash(`md5`)
-          .update(JSON.stringify(constantsData))
-          .digest(`hex`),
+        contentDigest: createContentDigest(constantsData),
         content: JSON.stringify(constantsData),
         description: `Constant data`,
       },
