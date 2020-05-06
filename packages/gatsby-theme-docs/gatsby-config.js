@@ -109,9 +109,6 @@ module.exports = (themeOptions = {}) => {
       // For querying configuration data
       'gatsby-transformer-yaml',
 
-      // For querying code examples
-      `@commercetools-docs/gatsby-transformer-code-examples`,
-
       // For querying MDX
       {
         resolve: 'gatsby-plugin-mdx',

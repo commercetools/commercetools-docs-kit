@@ -3,13 +3,7 @@ import {
   Subtitle,
   ContentNotifications,
 } from '@commercetools-docs/ui-kit';
-import {
-  Link,
-  CodeExample,
-  MultiCodeExample,
-  BetaFlag as Beta,
-  Anchor,
-} from './components';
+import { Link, BetaFlag as Beta, Anchor } from './components';
 import PlaceholderMarkdownComponents from './overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
@@ -52,8 +46,6 @@ const components = {
   Info: ContentNotifications.Info,
   Warning: ContentNotifications.Warning,
   Error: ContentNotifications.Error,
-  CodeExample,
-  MultiCodeExample,
   Beta,
   Anchor,
 

@@ -31,7 +31,6 @@ The project structure should contain at least the following files and folders:
     │   ├── files
     │   └── index.mdx
     ├── images
-    ├── code-examples
     └── data
         └── navigation.yaml
 ```
@@ -88,8 +87,6 @@ The project structure should contain at least the following files and folders:
 - `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.
 
 - `src/images`: this folder should contain images that are used within the `*.mdx` content files. Images in this folder are processed and optimized by Gatsby for lazy loading. Supported image formats are `JPEG` and `PNG`.
-
-- `src/code-examples`: instead of placing them into markdown fenced code blocks, code examples can be put into this folder and be loaded into the documentation using the `<CodeExample>` component.
 
 - `src/data/navigation.yaml`: this contains the website main navigation links. The structure of the file is a _list of chapters_ as following:
 
@@ -151,7 +148,6 @@ The available JSX components are:
 - `<Info>`: a notification message with info colors
 - `<Warning>`: a notification message with warning colors
 - `<Error>`: a notification message with error colors
-- `<CodeExample file="example.js" title="JavaScript Code Sample" />`: loading a code block from a file in `src/code-examples/`, supports all parameters of the fenced code block.
 - `<Anchor>`: inserts a custom anchor on any part of the document, can be used with headers, lists, in paragraphs, etc, it is used for navigating to specific parts of the document that are not headings. Also useful when a document has multiple headings with the same text or when heading names change and old third party links shall continue to work. Cannot override ID generation of the site generator, this adds additional named anchors and IDs have precedence.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.

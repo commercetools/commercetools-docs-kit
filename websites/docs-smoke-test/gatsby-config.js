@@ -17,5 +17,6 @@ module.exports = {
         additionalPrismLanguages: ['scala', 'csharp'],
       },
     },
+    '@commercetools-docs/gatsby-theme-code-examples',
   ],
 };

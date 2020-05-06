@@ -14,7 +14,6 @@
   },
   "main": "index.js",
   "dependencies": {
-    "@commercetools-docs/gatsby-transformer-code-examples": "2.5.0",
     "@commercetools-docs/ui-kit": "2.5.0",
     "@commercetools-uikit/card": "10.18.4",
     "@commercetools-uikit/design-system": "10.18.4",
