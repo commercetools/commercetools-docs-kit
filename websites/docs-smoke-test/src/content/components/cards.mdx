@@ -86,9 +86,9 @@ This is for illustration. The implementation can be done differently. The design
 
 Properties (for authors):
  * `title` (string): the card title, no markdown allowed.
- * `href` (string): the link target of the bottom link and, if "active", the whole card. `href` has no effect when neither `active` or `link` are set.
+ * `href` (string): the link target of the bottom link and, if `active` is set, the whole card. `href` has no effect when neither `active` or `link` are set.
  * `link` (string): the bottom link text. If not set, no bottom link is rendered at all.
- * `icon` (function): the component to be rendered into the 48x48px space reserved for an icon.  If not set, the space is not reserved.
+ * `icon` (function): the component to be rendered into the 48x48px space reserved for an icon. If not set, the space is not reserved.
 
 ## Flat with Link
 
@@ -142,13 +142,13 @@ Properties (for authors):
 
 ## Flat with Icon
 
-This example assumes that the icon used here is already provided by the MDX provider anyways.  But since it's MDX, alternative or site-specific icons can be provided by adding an `import` statement in the MDX.
+This example assumes that the icon used here is already provided by the MDX provider anyways. But since it's MDX alternative or site-specific icons can be provided by adding an `import` statement in the MDX.
 
 <Warning>
 
 As discussed:
  * this would be the first place where authors have to learn more JSX syntax and not just the HTML-compatible subset.
- * Also, from an author experience perspective we need to be aware that referencing an icon that does not exist cannot be caught gracefully or dynamically but will cause a compilation error.
+ * Also, from an author experience perspective we need to be aware that referencing an icon that does not exist cannot be caught at runtime but will cause a compilation error.
 
 </Warning>
 
@@ -182,7 +182,7 @@ The link target (href) can be repeated as a link at the bottom by setting a card
 
 # Embedded MDX in the Component Body
 
-The MDX spec and implementation allows for putting two blank lines to allow fully rendered markdown inside a JSX component. Because the cards must render markdown in the body differently than the same markdown would be rendered in the page body the implementation must either block the situation (e.g. detecting that the children aren't text but finished components) or override the renderer to use the MD fragment renderer instead.
+The MDX spec and implementation allows for putting two blank lines to allow fully rendered markdown inside a JSX component. Because the cards must render markdown in the body differently than the same markdown would be rendered in the page body the implementation must either block the situation (for example detecting that the children aren't text but finished components) or override the renderer to use the MD fragment renderer instead.
 
 ```jsx
 <Card>
