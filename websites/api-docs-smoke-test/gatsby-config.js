@@ -14,6 +14,7 @@ module.exports = {
         websiteKey: 'api-docs-smoke-test',
         websitePrimaryColor: 'goldenrod',
         excludeFromSearchIndex: isProd,
+        themeAddOns: ['@commercetools-docs/gatsby-theme-api-docs'],
       },
     },
     {
