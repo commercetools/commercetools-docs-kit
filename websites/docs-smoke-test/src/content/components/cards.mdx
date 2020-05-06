@@ -2,8 +2,6 @@
 title: Cards
 ---
 
-<Info>This describes variations that use the maximum extent of the feature set, all can be used with less and need to render</Info>
-
  * The actual card content is markdown
  * Title have no linkable / hover anchor like section headings
  * Titles never become entries in the page index nav like section headings
@@ -15,11 +13,10 @@ title: Cards
 
 # "Cards" Wrapper
 
- * Component: `<Cards>`
- * Properties (for authors):
-   * `active` (boolean): if set, the whole area of all child cards is a link, the card is elevated and has a hover effect if a link url is set.
-   * `narrow` (boolean): by default, two cards are shown side by side (except mobile viewports). if `narrow` is passed, the minimum card width is reduced so that three cards fit the content width on microsite landing pages.
-   * `smallTitle` (boolean): lets all cards have a smaller
+ Properties (for authors):
+ * `active` (boolean): if set, the whole area of all child cards is a link, the card is elevated and has a hover effect if a link url is set.
+ * `narrow` (boolean): by default, two cards are shown side by side (except mobile viewports). if `narrow` is passed, the minimum card width is reduced so that three cards fit the content width on microsite landing pages.
+ * `smallTitle` (boolean): lets all cards have a smaller
 
 ## Minimal form
 
@@ -87,21 +84,20 @@ This is for illustration. The implementation can be done differently. The design
 
 # "Card": the actual card
 
- * Component: `<Card>`
- * Properties (for authors):
-  * `title` (string): the card title, no markdown allowed.
-  * `href` (string): the link target of the bottom link and, if "active", the whole card. `href` has no effect when neither `active` or `link` are set.
-  * `link` (string): the bottom link text. If not set, no bottom link is rendered at all.
-  * `icon` (function): the component to be rendered into the 48x48px space reserved for an icon.  If not set, the space is not reserved.
+Properties (for authors):
+ * `title` (string): the card title, no markdown allowed.
+ * `href` (string): the link target of the bottom link and, if "active", the whole card. `href` has no effect when neither `active` or `link` are set.
+ * `link` (string): the bottom link text. If not set, no bottom link is rendered at all.
+ * `icon` (function): the component to be rendered into the 48x48px space reserved for an icon.  If not set, the space is not reserved.
 
 ## Flat with Link
 
 ```jsx
 <Cards>
   <Card
+    title="A regular heading"
     href="/components/images"
-    linkLabel="Read more about images..."
-    title="A regular heading">
+    link="Read more about images...">
   This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.
   </Card>
 </Cards>
@@ -111,9 +107,9 @@ This is for illustration. The implementation can be done differently. The design
 
 <Cards>
   <Card
+    title="A regular heading"
     href="/components/images"
-    linkLabel="Read more about images..."
-    title="A regular heading">
+    link="Read more about images...">
   This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.
   </Card>
 </Cards>
@@ -125,9 +121,9 @@ This is for illustration. The implementation can be done differently. The design
 ```jsx
 <Cards active>
   <Card
+    title="A regular heading"
     href="/components/images"
-    linkLabel="Read more about images..."
-    title="A regular heading">
+    link="Read more about images...">
   This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.
   </Card>
 </Cards>
@@ -137,9 +133,9 @@ This is for illustration. The implementation can be done differently. The design
 
 <Cards active>
   <Card
+    title="A regular heading"
     href="/components/images"
-    linkLabel="Read more about images..."
-    title="A regular heading">
+    link="Read more about images...">
   This is visually elevated, has a link to the **images (bold)** page and the complete card is a clickable target.
   </Card>
 </Cards>
@@ -151,7 +147,7 @@ This example assumes that the icon used here is already provided by the MDX prov
 <Warning>
 
 As discussed:
- * this would be the first place where authors have to learn full JSX syntax and not just the HTML-compatible subset.
+ * this would be the first place where authors have to learn more JSX syntax and not just the HTML-compatible subset.
  * Also, from an author experience perspective we need to be aware that referencing an icon that does not exist cannot be caught gracefully or dynamically but will cause a compilation error.
 
 </Warning>
@@ -168,9 +164,11 @@ As discussed:
 
 ### Output
 
+(no actual icon set until one is available to not break this page)
+
 <Cards smallTitle>
   <Card
-    icon={Icon.ShoppingList}
+    icon={function(){}}
     title="A smaller title">
     Example Text on a card with an icon.
   </Card>
