@@ -10,6 +10,10 @@
 
 This repository contains packages to develop documentation websites for commercetools. It includes things like Gatsby themes, Gatsby plugins, UI components, etc.
 
+## Documentation
+
+Please look at the individual packages in [`packages` folder](./packages) for functional documentation. Start with the [base theme](./packages/gatsby-theme-docs) and then proceed with the feature add-ons (the other `gatsby-theme` prefixed packages).
+
 ## Developing packages
 
 Install the dependencies (uses yarn workspaces):
@@ -38,10 +42,6 @@ Start the [docs-smoke-test website](./websites/docs-smoke-test):
 ```bash
 $ yarn start
 ```
-
-## Documentation
-
-Please look at the single packages in [`packages` folder](./packages) for documentation specific of each package.
 
 ## Contributing
 

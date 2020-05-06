@@ -1,6 +1,8 @@
 # Gatsby Theme for Code Examples
 
-This theme exposes components in MDX to render code example files from a specific location.
+This theme provides components in MDX to render code examples from files, optionally in multiple programming languages.
+
+It is a feature add-on to `@commercetools-docs/gatsby-theme-docs` and is not usable standalone.
 
 ## Installation
 
@@ -26,7 +28,7 @@ module.exports = {
 };
 ```
 
-Example files should be added in the `./src/code-examples/` folder of the website.
+Example files must be added in the `./src/code-examples/` folder of the website. That folder is automatically generated when the plugin runs.
 
 ## Supported MIME Types
 
@@ -62,3 +64,5 @@ Then in your MDX files:
 
 <CodeExample path="example.js" title="JavaScript Code Sample" />
 ```
+
+In addition to `path`, the `<CodeExample>` component supports all custom parameters that can be passed to fenced code blocks in the [base theme](../gatsby-theme-docs)
