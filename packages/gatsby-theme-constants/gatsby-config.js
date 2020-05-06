@@ -9,7 +9,6 @@ module.exports = {
         path: path.resolve('./src/constants'),
       },
     },
-    // For querying configuration data
     'gatsby-transformer-yaml',
   ],
 };

@@ -5,6 +5,7 @@
  */
 
 const fs = require('fs');
+const crypto = require('crypto');
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
@@ -34,42 +35,38 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   );
 };
 
-// exports.onCreateNode = ({ node, getNode, actions, createNodeId }) => {
-//   if (node.internal.type !== 'Mdx') {
-//     return;
-//   }
+exports.onCreateNode = ({ node, getNode, actions, createNodeId }) => {
+  const parent = getNode(node.parent);
 
-//   const parent = getNode(node.parent);
+  const isConstantsFile =
+    node.internal.mediaType !== 'text/yaml' &&
+    parent &&
+    parent.sourceInstanceName === 'dataConstants';
+  if (isConstantsFile) {
+    const constantsData = {
+      // The name of the file
+      type: parent.name,
+      name: node.name,
+      number: node.number,
+      text: node.text,
+    };
 
-//   const isCardFragment =
-//     parent.internal.mediaType === 'text/mdx' &&
-//     parent.sourceInstanceName === 'cards';
-//   if (isCardFragment) {
-//     const cardFieldData = {
-//       type: node.frontmatter.type,
-//       title: node.frontmatter.title,
-//       link: node.frontmatter.link,
-//       linkLabel: node.frontmatter.linkLabel,
-//       image: node.frontmatter.image,
-//       icon: node.frontmatter.icon,
-//     };
-
-//     actions.createNode({
-//       ...cardFieldData,
-//       // Required fields
-//       id: createNodeId(`${node.id} >>> Card`),
-//       parent: node.id,
-//       children: [],
-//       internal: {
-//         type: `Card`,
-//         contentDigest: crypto
-//           .createHash(`md5`)
-//           .update(JSON.stringify(cardFieldData))
-//           .digest(`hex`),
-//         content: JSON.stringify(cardFieldData),
-//         description: `Card fragment`,
-//       },
-//     });
-//     actions.createParentChildLink({ parent, child: node });
-//   }
-// };
+    actions.createNode({
+      ...constantsData,
+      // Required fields
+      id: createNodeId(`${node.id} >>> Constant`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: `Constant`,
+        contentDigest: crypto
+          .createHash(`md5`)
+          .update(JSON.stringify(constantsData))
+          .digest(`hex`),
+        content: JSON.stringify(constantsData),
+        description: `Constant data`,
+      },
+    });
+    actions.createParentChildLink({ parent, child: node });
+  }
+};

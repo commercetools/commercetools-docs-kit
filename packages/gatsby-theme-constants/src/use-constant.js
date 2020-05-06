@@ -2,8 +2,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 const useConstant = (type, name) => {
   const queryResult = useStaticQuery(graphql`
-    query GetAllDataLimits {
-      allConstantsYaml {
+    query GetAllConstants {
+      allConstant {
         nodes {
           type
           name
@@ -13,7 +13,7 @@ const useConstant = (type, name) => {
       }
     }
   `);
-  const matchingConstants = queryResult.allConstantsYaml.nodes.filter(
+  const matchingConstants = queryResult.allConstant.nodes.filter(
     (constant) => constant.type === type && constant.name === name
   );
   if (matchingConstants.length > 1) {
