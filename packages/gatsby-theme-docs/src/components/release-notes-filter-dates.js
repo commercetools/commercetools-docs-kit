@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import DateInput from '@commercetools-uikit/date-input';
+import { useEarliestLatestDates } from '../hooks/use-all-release-notes';
 
 export const FilterTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
@@ -16,11 +17,11 @@ const DateLabel = styled.label`
 `;
 
 const ReleaseNotesFilterDates = () => {
-  // todo: get fromFilterDate initial value from release note with earliest date
-  const minDate = '2020-01-01';
-  const [fromFilterDate, setFromFilterDate] = React.useState(minDate);
-  // todo: get toFilterDate initial value from release note with latest date
-  const [toFilterDate, setToFilterDate] = React.useState(minDate);
+  const dates = useEarliestLatestDates();
+  const [fromFilterDate, setFromFilterDate] = React.useState(
+    dates.earliestDate
+  );
+  const [toFilterDate, setToFilterDate] = React.useState(dates.latestDate);
 
   return (
     <SpacingsStack scale="s">
