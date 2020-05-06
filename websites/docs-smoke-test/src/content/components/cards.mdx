@@ -66,8 +66,8 @@ title: Cards
 
 Properties (for authors):
  * `title` (string): the card title, no markdown allowed.
- * `href` (string): the link target of the bottom link and, if `clickable` is set, the whole card. `href` has no effect when neither `clickable` or `link` are set.
- * `link` (string): the bottom link text. If not set, no bottom link is rendered at all.
+ * `href` (string): the link target of the bottom link and, if `clickable` is set, the whole card. `href` has no effect when neither `clickable` or `textLink` are set.
+ * `textLink` (string): the bottom link text. If not set, no bottom link is rendered at all.
  * `icon` (component): the component to be rendered into the 48x48px space reserved for an icon. If not set, the space is not reserved.
 
 ## Flat with Link
@@ -77,7 +77,7 @@ Properties (for authors):
   <Card
     title="A regular heading"
     href="/components/images"
-    link="Read more about images...">
+    textLink="Read more about images...">
   This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.
   </Card>
 </Cards>
@@ -89,7 +89,7 @@ Properties (for authors):
   <Card
     title="A regular heading"
     href="/components/images"
-    link="Read more about images...">
+    textLink="Read more about images...">
   This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.
   </Card>
 </Cards>
@@ -103,7 +103,7 @@ Properties (for authors):
   <Card
     title="A regular heading"
     href="/components/images"
-    link="Read more about images...">
+    textLink="Read more about images...">
   This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.
   </Card>
 </Cards>
@@ -115,7 +115,7 @@ Properties (for authors):
   <Card
     title="A regular heading"
     href="/components/images"
-    link="Read more about images...">
+    textLink="Read more about images...">
   This is visually elevated, has a link to the **images (bold)** page and the complete card is a clickable target.
   </Card>
 </Cards>
