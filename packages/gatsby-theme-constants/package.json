@@ -26,6 +26,7 @@
     "react-dom": "16.13.1"
   },
   "peerDependencies": {
+    "@commercetools-docs/gatsby-theme-docs": "2.x",
     "gatsby": "2.x",
     "react": "16.x",
     "react-dom": "16.x"

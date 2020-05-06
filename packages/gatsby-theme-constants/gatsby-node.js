@@ -42,33 +42,35 @@ exports.onCreateNode = ({
   createContentDigest,
 }) => {
   const parent = getNode(node.parent);
-
   const isConstantsFile =
-    node.internal.mediaType !== 'text/yaml' &&
     parent &&
-    parent.sourceInstanceName === 'dataConstants';
-  if (isConstantsFile) {
-    const constantsData = {
-      // The name of the file
-      type: parent.name,
-      name: node.name,
-      number: node.number,
-      text: node.text,
-    };
+    parent.sourceInstanceName === 'dataConstants' &&
+    parent.internal.mediaType === 'text/yaml';
 
-    actions.createNode({
-      ...constantsData,
-      // Required fields
-      id: createNodeId(`${node.id} >>> Constant`),
-      parent: node.id,
-      children: [],
-      internal: {
-        type: `Constant`,
-        contentDigest: createContentDigest(constantsData),
-        content: JSON.stringify(constantsData),
-        description: `Constant data`,
-      },
-    });
-    actions.createParentChildLink({ parent, child: node });
+  if (!isConstantsFile) {
+    return;
   }
+
+  const constantsData = {
+    // The name of the file
+    type: parent.name,
+    name: node.name,
+    number: node.number,
+    text: node.text,
+  };
+
+  actions.createNode({
+    ...constantsData,
+    // Required fields
+    id: createNodeId(`${node.id} >>> Constant`),
+    parent: node.id,
+    children: [],
+    internal: {
+      type: `Constant`,
+      contentDigest: createContentDigest(constantsData),
+      content: JSON.stringify(constantsData),
+      description: `Constant data`,
+    },
+  });
+  actions.createParentChildLink({ parent, child: node });
 };
