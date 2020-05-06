@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -16,7 +17,7 @@ const DateLabel = styled.label`
   line-height: ${designSystem.typography.lineHeights.small};
 `;
 
-const ReleaseNotesFilterDates = () => {
+const ReleaseNotesFilterDates = (props) => {
   const dates = useEarliestLatestDates();
   const [fromFilterDate, setFromFilterDate] = React.useState(
     dates.earliestDate
@@ -53,15 +54,18 @@ const ReleaseNotesFilterDates = () => {
 
   function handleOnFromFilterDateChange(e) {
     setFromFilterDate(e.target.value);
-
-    // todo: send info to release notes list to the list can be updated
+    props.handleOnFromFilterDateChange(e.target.value);
   }
 
   function handleOnToFilterDateChange(e) {
     setToFilterDate(e.target.value);
-
-    // todo: send info to release notes list to the list can be updated
+    props.handleOnToFilterDateChange(e.target.value);
   }
+};
+
+ReleaseNotesFilterDates.propTypes = {
+  handleOnFromFilterDateChange: PropTypes.func.isRequired,
+  handleOnToFilterDateChange: PropTypes.func.isRequired,
 };
 
 export default ReleaseNotesFilterDates;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -52,7 +53,7 @@ const ReleasesTitleLink = styled.a`
   }
 `;
 
-const LayoutPageReleaseNotesFilters = () => {
+const LayoutPageReleaseNotesFilters = (props) => {
   return (
     <GridContainer>
       <StickyContainer>
@@ -66,14 +67,25 @@ const LayoutPageReleaseNotesFilters = () => {
             </SpacingsInline>
           </ReleasesTitleLink>
 
-          <ReleaseNotesFilterDates />
+          <ReleaseNotesFilterDates
+            handleOnFromFilterDateChange={props.handleOnFromFilterDateChange}
+            handleOnToFilterDateChange={props.handleOnToFilterDateChange}
+          />
 
-          <ReleaseNotesFilterTopics />
+          <ReleaseNotesFilterTopics
+            handleOnFilterTopicsChange={props.handleOnFilterTopicsChange}
+          />
         </SpacingsStack>
       </StickyContainer>
     </GridContainer>
   );
 };
 LayoutPageReleaseNotesFilters.displayName = 'LayoutPageReleaseNotesFilters';
+
+LayoutPageReleaseNotesFilters.propTypes = {
+  handleOnFromFilterDateChange: PropTypes.func.isRequired,
+  handleOnToFilterDateChange: PropTypes.func.isRequired,
+  handleOnFilterTopicsChange: PropTypes.func.isRequired,
+};
 
 export default LayoutPageReleaseNotesFilters;

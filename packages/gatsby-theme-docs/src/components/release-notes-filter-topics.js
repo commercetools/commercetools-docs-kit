@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -17,7 +18,7 @@ const ClearAll = styled.a`
   text-decoration: none;
 `;
 
-const ReleaseNotesFilterTopics = () => {
+const ReleaseNotesFilterTopics = (props) => {
   const topicsSet = useReleaseNotesTopicsSet();
   const checkedTopics = Array.from(topicsSet).map((topic) => ({
     name: topic,
@@ -55,19 +56,26 @@ const ReleaseNotesFilterTopics = () => {
   function handleOnClearAll(e) {
     e.preventDefault();
     setTopics(topics.map((topic) => ({ ...topic, checked: false })));
+    props.handleOnFilterTopicsChange([]);
   }
 
   function handleOnTopicChange(e) {
-    setTopics(
-      topics.map((topic) => {
-        if (topic.name === e.target.value) {
-          return { ...topic, checked: !topic.checked };
-        }
+    const filterTopics = topics.map((topic) => {
+      if (topic.name === e.target.value) {
+        return { ...topic, checked: !topic.checked };
+      }
 
-        return topic;
-      })
+      return topic;
+    });
+    setTopics(filterTopics);
+    props.handleOnFilterTopicsChange(
+      filterTopics.filter((topic) => topic.checked).map((topic) => topic.name)
     );
   }
+};
+
+ReleaseNotesFilterTopics.propTypes = {
+  handleOnFilterTopicsChange: PropTypes.func.isRequired,
 };
 
 export default ReleaseNotesFilterTopics;
