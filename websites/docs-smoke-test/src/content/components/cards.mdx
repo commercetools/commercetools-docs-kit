@@ -8,8 +8,8 @@ title: Cards
  * Either an icon or an image path can be set, but not both.
    * To start with, Images are _not_ supported for free-form in-content cards, only in places that are fully designed and implemented by developers. An Image is sized into the width of the card.
    * Icons are supported anywhere but only those that are officially provided by the kit. An icon is sized into a fixed 48x48px square.
- * Cards can occur in two interaction variants, "active" (visually elevated) and "flat" (visually an outline only).
- * Cards must be embedded into a wrapper component that defines the responsive sizes (two aside / three aside) and parameters that must be identical in a given row or grid (active card area, the heading size)
+ * Cards can occur in two interaction variants, "clickable" (visually elevated) and "flat" (visually an outline only).
+ * Cards must be embedded into a wrapper component that defines the responsive sizes (two aside / three aside) and parameters that must be identical in a given row or grid (clickable card area, the heading size)
    * trial & error led to a minimum width of ca 250px for narrow three-aside cards and ca 332px for two-aside cards.
  * A single card must not fill the full width but stay left aligned.
  * Multiple cards fill the full width and are scaled up to fill even if their content is smaller. Every card has the same width in all rows (resulting in a grid if it's multiple rows)
@@ -18,7 +18,7 @@ title: Cards
 # "Cards" Wrapper
 
  Properties (for authors):
- * `active` (boolean): if set, the whole area of all child cards is a link, the card is elevated and has a hover effect if a link url is set.
+ * `clickable` (boolean): if set, the whole area of all child cards is a link, the card is elevated and has a hover effect if a link url is set.
  * `narrow` (boolean): by default, two cards are shown side by side (except mobile viewports). if `narrow` is passed, the minimum card width is reduced so that three cards fit the content width on microsite landing pages.
  * `smallTitle` (boolean): lets all cards have a smaller title font.
 
@@ -45,7 +45,7 @@ title: Cards
 ## All options configured
 
 ```jsx
-<Cards active narrow smallTitle>
+<Cards clickable narrow smallTitle>
   <Card>foo</Card>
   <Card>bar</Card>
   <Card>next row unless three aside (narrow) prop passed?</Card>
@@ -55,7 +55,7 @@ title: Cards
 
 ### Output
 
-<Cards active narrow smallTitle>
+<Cards clickable narrow smallTitle>
   <Card>foo</Card>
   <Card>bar</Card>
   <Card>next row unless three aside (narrow) prop passed?</Card>
@@ -66,7 +66,7 @@ title: Cards
 
 Properties (for authors):
  * `title` (string): the card title, no markdown allowed.
- * `href` (string): the link target of the bottom link and, if `active` is set, the whole card. `href` has no effect when neither `active` or `link` are set.
+ * `href` (string): the link target of the bottom link and, if `clickable` is set, the whole card. `href` has no effect when neither `clickable` or `link` are set.
  * `link` (string): the bottom link text. If not set, no bottom link is rendered at all.
  * `icon` (component): the component to be rendered into the 48x48px space reserved for an icon. If not set, the space is not reserved.
 
@@ -94,12 +94,12 @@ Properties (for authors):
   </Card>
 </Cards>
 
-## Active with Link
+## Clickable with Link
 
-<Info>Active cards must have a href set. If not that is an error condition in development mode</Info>
+<Info>Clickable cards must have a href set. If not that is an error condition in development mode</Info>
 
 ```jsx
-<Cards active>
+<Cards clickable>
   <Card
     title="A regular heading"
     href="/components/images"
@@ -111,7 +111,7 @@ Properties (for authors):
 
 ### Output
 
-<Cards active>
+<Cards clickable>
   <Card
     title="A regular heading"
     href="/components/images"
@@ -154,9 +154,9 @@ As discussed:
   </Card>
 </Cards>
 
-# Active
+# Clickable (visually elevated)
 
-Active cards have one card-level link target (href) and no other links in the content.
+Clickable cards have one card-level link target (href) and no other links in the content.
 They are visually elevated and elevate even more when hovered.
 The link target (href) can be repeated as a link at the bottom by setting a card link label.
 
