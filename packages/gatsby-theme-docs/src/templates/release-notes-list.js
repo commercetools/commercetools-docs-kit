@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import moment from 'moment';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNote from '../layouts/internals/layout-release-note';
@@ -20,28 +21,30 @@ const ReleaseNotesListTemplate = (props) => {
   const [filterTopics, setFilterTopics] = React.useState([]);
 
   React.useEffect(() => {
-    setReleaseNotes(
-      props.data.allReleaseNotePage.nodes.filter((releaseNote) => {
-        let foundTopicInFilter = true;
-        // console.log('releaseNote.date', releaseNote.date);
+    // will not execute on first render
+    if (fromFilterDate || toFilterDate || filterTopics.length > 0) {
+      setReleaseNotes(
+        props.data.allReleaseNotePage.nodes.filter((releaseNote) => {
+          let releaseNoteDateIsLaterThanFromFilterDate = true;
+          let foundTopicInFilter = true;
 
-        // // todo: use moments to filter out any earlier date
-        // console.log('fromFilterDate', fromFilterDate);
+          if (fromFilterDate) {
+            releaseNoteDateIsLaterThanFromFilterDate = moment(
+              releaseNote.date,
+              'D MMMM YYYY'
+            ).isSameOrAfter(moment(fromFilterDate, 'YYYY-MM-DD'));
+          }
 
-        // // todo: use moments to filter out any later date
-        // console.log('toFilterDate', toFilterDate);
+          if (filterTopics.length > 0) {
+            foundTopicInFilter = releaseNote.topics.find((topic) =>
+              filterTopics.includes(topic)
+            );
+          }
 
-        // console.log(releaseNote.topics);
-
-        if (filterTopics.length > 0) {
-          foundTopicInFilter = releaseNote.topics.find((topic) =>
-            filterTopics.includes(topic)
-          );
-        }
-
-        return foundTopicInFilter;
-      })
-    );
+          return releaseNoteDateIsLaterThanFromFilterDate && foundTopicInFilter;
+        })
+      );
+    }
   }, [
     props.data.allReleaseNotePage.nodes,
     fromFilterDate,
