@@ -12,7 +12,10 @@ const Container = styled.div`
   border-top: 1px solid ${designSystem.colors.light.borderInput};
   padding-top: ${designSystem.dimensions.spacings.m};
 `;
-const ClearAll = styled.a`
+const ClearAll = styled.button`
+  border: none;
+  cursor: pointer;
+  padding: 0;
   color: ${designSystem.colors.light.textInfo};
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   text-decoration: none;
@@ -32,9 +35,7 @@ const ReleaseNotesFilterTopics = (props) => {
       <SpacingsStack>
         <SpacingsInline alignItems="center" justifyContent="space-between">
           <FilterTitle>Filter By Topics</FilterTitle>
-          <ClearAll href="#" onClick={handleOnClearAll}>
-            Clear all
-          </ClearAll>
+          <ClearAll onClick={handleOnClearAll}>Clear all</ClearAll>
         </SpacingsInline>
         <SpacingsStack scale="s">
           {topics.map((topic) => (
