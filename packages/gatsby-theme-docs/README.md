@@ -82,7 +82,7 @@ The project structure should contain at least the following files and folders:
 
   - `overrideDefaultConfigurationData` (_optional_, array of glob strings): allows to replace the configuration files in `src/data` instead of augmenting them. The option is passed to the `ignore` [option of the gatsby filesystem plugin](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#options). For example, by passing `['**/top-*']` and placing `top-menu.yaml` and `top-side-menu.yaml` files in the website's `src/data` folder the top navigation can be overridden completely. If this option is used, the files matching the glob patterns **must** be provided.
 
-  - `themeAddOnPlugins` (_optional_, array of Gatsby Theme plugins): see [using Theme Add-Ons](#using-theme-addons).
+  - `themeAddOns` (_optional_, array of Gatsby Theme plugin names): see [using Theme with Add-Ons](#using-theme-with-addons).
 
 - `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](#writing-content-pages)_).
 
@@ -154,7 +154,7 @@ The available JSX components are:
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
-## Using Theme Add-Ons
+## Using Theme with Add-Ons
 
 A Theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
 
