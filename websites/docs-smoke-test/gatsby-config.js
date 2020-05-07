@@ -1,5 +1,8 @@
 const isProd = process.env.NODE_ENV === 'production';
 const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
 
 module.exports = {
   pathPrefix: '/docs-smoke-test',
@@ -9,15 +12,11 @@ module.exports = {
     betaLink: '/beta',
   },
   plugins: [
-    {
-      resolve: '@commercetools-docs/gatsby-theme-docs',
-      options: {
-        websiteKey: 'docs-smoke-test',
-        excludeFromSearchIndex: isProd && !shouldEnableSearch,
-        additionalPrismLanguages: ['scala', 'csharp'],
-        themeAddOns: ['@commercetools-docs/gatsby-theme-code-examples'],
-      },
-    },
-    '@commercetools-docs/gatsby-theme-code-examples',
+    ...configureThemeWithAddOns({
+      websiteKey: 'docs-smoke-test',
+      excludeFromSearchIndex: isProd && !shouldEnableSearch,
+      additionalPrismLanguages: ['scala', 'csharp'],
+      addOnPlugins: ['@commercetools-docs/gatsby-theme-code-examples'],
+    }),
   ],
 };

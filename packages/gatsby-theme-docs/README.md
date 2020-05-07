@@ -82,7 +82,7 @@ The project structure should contain at least the following files and folders:
 
   - `overrideDefaultConfigurationData` (_optional_, array of glob strings): allows to replace the configuration files in `src/data` instead of augmenting them. The option is passed to the `ignore` [option of the gatsby filesystem plugin](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#options). For example, by passing `['**/top-*']` and placing `top-menu.yaml` and `top-side-menu.yaml` files in the website's `src/data` folder the top navigation can be overridden completely. If this option is used, the files matching the glob patterns **must** be provided.
 
-  - `themeAddOns` (_optional_, array of Gatsby Theme package names): allows to merge certain features of other commercetools-docs Gatsby Theme packages. For example, a theme can expose certain React components to be injected in the core theme MDX provider. Usually it's possible for a child theme to use components shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are loaded from the last theme child. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on. Read more about [using Theme Add-Ons](#using-theme-addons).
+  - `themeAddOnPlugins` (_optional_, array of Gatsby Theme plugins): see [using Theme Add-Ons](#using-theme-addons).
 
 - `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](#writing-content-pages)_).
 
@@ -157,7 +157,61 @@ The available JSX components are:
 ## Using Theme Add-Ons
 
 A Theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
+
+For example, a theme can expose certain React components to be injected in the core theme MDX provider. Usually it's possible for a child theme to use components shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are loaded from the last theme child. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on.
+
 When using add-on themes, a proxy export file will be created in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)), including all the exported components from the add-on packages.
+
+**We recommend to use the `configureThemeWithAddOns` function to configure the websites's `gatsby-config.js`**
+
+```js
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+
+module.exports = {
+  plugins: [
+    ...configureThemeWithAddOns({
+      websiteKey: 'my-website-key',
+      addOnPlugins: [
+        '@commercetools-docs/gatsby-theme-foo',
+        {
+          resolve: '@commercetools-docs/gatsby-theme-bar',
+          options: {
+            // ...
+          },
+        },
+      ],
+    }),
+  ],
+};
+```
+
+Alternatively you should pass the Gatsby theme add-ons as normal plugins and additionally reference the package names in the `themeAddOns` option of the commercetools core theme.
+
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: '@commercetools-docs/gatsby-theme-docs',
+      options: {
+        websiteKey: 'my-website-key',
+        themeAddOns: [
+          '@commercetools-docs/gatsby-theme-foo',
+          '@commercetools-docs/gatsby-theme-bar',
+        ],
+      },
+    },
+    '@commercetools-docs/gatsby-theme-foo',
+    {
+      resolve: '@commercetools-docs/gatsby-theme-bar',
+      options: {
+        // ...
+      },
+    },
+  ],
+};
+```
 
 ## Theme overrides
 
