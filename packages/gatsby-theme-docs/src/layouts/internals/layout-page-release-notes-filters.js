@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import styled from '@emotion/styled';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -55,29 +56,31 @@ const ReleasesTitleLink = styled.a`
 
 const LayoutPageReleaseNotesFilters = (props) => {
   return (
-    <GridContainer>
-      <StickyContainer>
-        <SpacingsStack scale="m">
-          <ReleasesTitleLink href="#top">
-            <SpacingsInline scale="s" alignItems="center">
-              <div>Releases</div>
-              <div>
-                <StackedLinesIndentedIcon color="textSecondary" />
-              </div>
-            </SpacingsInline>
-          </ReleasesTitleLink>
+    <IntlProvider locale="en">
+      <GridContainer>
+        <StickyContainer>
+          <SpacingsStack scale="m">
+            <ReleasesTitleLink href="#top">
+              <SpacingsInline scale="s" alignItems="center">
+                <div>Releases</div>
+                <div>
+                  <StackedLinesIndentedIcon color="textSecondary" />
+                </div>
+              </SpacingsInline>
+            </ReleasesTitleLink>
 
-          <ReleaseNotesFilterDates
-            handleOnFromFilterDateChange={props.handleOnFromFilterDateChange}
-            handleOnToFilterDateChange={props.handleOnToFilterDateChange}
-          />
+            <ReleaseNotesFilterDates
+              handleOnFromFilterDateChange={props.handleOnFromFilterDateChange}
+              handleOnToFilterDateChange={props.handleOnToFilterDateChange}
+            />
 
-          <ReleaseNotesFilterTopics
-            handleOnFilterTopicsChange={props.handleOnFilterTopicsChange}
-          />
-        </SpacingsStack>
-      </StickyContainer>
-    </GridContainer>
+            <ReleaseNotesFilterTopics
+              handleOnFilterTopicsChange={props.handleOnFilterTopicsChange}
+            />
+          </SpacingsStack>
+        </StickyContainer>
+      </GridContainer>
+    </IntlProvider>
   );
 };
 LayoutPageReleaseNotesFilters.displayName = 'LayoutPageReleaseNotesFilters';
