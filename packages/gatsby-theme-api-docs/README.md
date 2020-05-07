@@ -15,30 +15,33 @@ npx install-peerdeps --dev @commercetools-docs/gatsby-theme-api-docs
 In your `gatsby-config.js`:
 
 ```js
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+
 module.exports = {
+  // ... other site config
   plugins: [
-    {
-      resolve: '@commercetools-docs/gatsby-theme-docs',
-      options: {
-        // options
-        themeAddOns: ['@commercetools-docs/gatsby-theme-api-docs'],
-      },
-    },
-    {
-      resolve: '@commercetools-docs/gatsby-theme-api-docs',
-      options: {
-        transformerRaml: {
-          includeApis: ['example'],
-          movePropertiesToTop: ['id'],
-          movePropertiesToBottom: ['custom'],
+    ...configureThemeWithAddOns({
+      // ... other theme config
+      addOns: [
+        {
+          resolve: '@commercetools-docs/gatsby-theme-api-docs',
+          options: {
+            transformerRaml: {
+              includeApis: ['example'],
+              movePropertiesToTop: ['id'],
+              movePropertiesToBottom: ['custom'],
+            },
+          },
         },
-      },
-    },
+      ],
+    }),
   ],
 };
 ```
 
-RAML spec files are added in the `./src/api-specs/` folder of the website. That folder is automatically generated when the plugin runs.
+RAML spec files have to be added in the `./src/api-specs/` folder of the website. That folder is automatically generated when the plugin runs.
 
 The file location determines the `apiKey` through which it can be addressed:
 

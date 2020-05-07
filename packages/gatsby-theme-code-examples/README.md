@@ -15,16 +15,17 @@ npx install-peerdeps --dev @commercetools-docs/gatsby-theme-code-examples
 In your `gatsby-config.js`:
 
 ```js
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+
 module.exports = {
+  // ... other site config
   plugins: [
-    {
-      resolve: '@commercetools-docs/gatsby-theme-docs',
-      options: {
-        // options
-        themeAddOns: ['@commercetools-docs/gatsby-theme-code-examples'],
-      },
-    },
-    '@commercetools-docs/gatsby-theme-code-examples',
+    ...configureThemeWithAddOns({
+      // ... other theme config
+      addOns: ['@commercetools-docs/gatsby-theme-code-examples'],
+    }),
   ],
 };
 ```
