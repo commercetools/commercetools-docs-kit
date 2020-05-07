@@ -1,25 +1,27 @@
-# Gatsby theme for API docs
+# Gatsby Theme Add-On for API docs
 
-This is the core Gatsby theme for building commercetools documentation websites, specifically for API docs using RAML specs.
+This theme provides components in MDX to render API info from RAML spec files.
 
-## Getting started
+It is a feature add-on to `@commercetools-docs/gatsby-theme-docs` and is not usable standalone.
 
-To create a new documentation website you need to install this theme, the base docs theme and its peer dependencies:
+## Installation
 
-```sh
-npx install-peerdeps --dev @commercetools-docs/gatsby-theme-docs @commercetools-docs/gatsby-theme-api-docs
+```
+npx install-peerdeps --dev @commercetools-docs/gatsby-theme-api-docs
 ```
 
-Then configure both in `gatsby-config.js` with the api docs theme coming after the base docs theme.
+## Usage
+
+In your `gatsby-config.js`:
 
 ```js
 module.exports = {
-  // ... more
   plugins: [
     {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
-        websiteKey: 'api-docs-example',
+        // options
+        themeAddOns: ['@commercetools-docs/gatsby-theme-api-docs'],
       },
     },
     {
@@ -27,9 +29,7 @@ module.exports = {
       options: {
         transformerRaml: {
           includeApis: ['example'],
-          movePropertiesToTop: [
-            'id',
-          ],
+          movePropertiesToTop: ['id'],
           movePropertiesToBottom: ['custom'],
         },
       },
@@ -38,19 +38,28 @@ module.exports = {
 };
 ```
 
-Read more about GatsbyJS theme composition [here](https://www.gatsbyjs.org/docs/theme-api/#theme-composition).
+RAML spec files are added in the `./src/api-specs/` folder of the website. That folder is automatically generated when the plugin runs.
 
-### API spec theme
+The file location determines the `apiKey` through which it can be addressed:
 
-Besides the normal folder structure of the `@commercetools-docs/gatsby-theme-docs`, the API spec theme contains additional folders:
+- `src/api-specs/foo.raml` -> apiKey `foo`
+- `src/api-specs/bar/api.raml` -> apiKey `bar`
+- `src/api-specs/baz/baz.raml` -> apiKey `baz`
 
-- `src/api-specs` for your RAML API specifications. Individual files work, files in folders work, includes are also hot-reloaded. Do not include from locations outside the `api-specs` folder. The file location determines the `apiKey` through which it can be addressed:
-  - `src/api-specs/foo.raml` -> apiKey `foo`
-  - `src/api-specs/bar/api.raml` -> apiKey `bar`
-  - `src/api-specs/baz/baz.raml` -> apiKey `baz`
+## Using UI components in Markdown
 
-The following components are always available in MDX pages without explicitly importing them:
+The package exposes the following components in the MDX context:
 
-- `<ApiType>` (TODO explain parameters)
-- `<ApiEndpoint>` (TODO explain parameters)
-- `<ApiEndpointsForResource>` (TODO explain)
+- `<ApiType>`
+- `<ApiEndpoint>`
+- `<ApiEndpointsForResource>`
+
+Then in your MDX files:
+
+```markdown
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/artificially-complex/path/uri-parameter-one={uriParameterOne}/{uriParameterTwo}"
+  method="POST"
+/>
+```

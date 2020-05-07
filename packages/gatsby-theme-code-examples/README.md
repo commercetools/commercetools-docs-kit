@@ -1,4 +1,4 @@
-# Gatsby Theme for Code Examples
+# Gatsby Theme Add-On for Code Examples
 
 This theme provides components in MDX to render code examples from files, optionally in multiple programming languages.
 
@@ -21,6 +21,7 @@ module.exports = {
       resolve: '@commercetools-docs/gatsby-theme-docs',
       options: {
         // options
+        themeAddOns: ['@commercetools-docs/gatsby-theme-code-examples'],
       },
     },
     '@commercetools-docs/gatsby-theme-code-examples',
