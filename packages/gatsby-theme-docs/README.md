@@ -158,7 +158,7 @@ A theme add-on is a Gatsby Theme that exposes React components to be injected in
 
 Gatsby enables a child theme to use component shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are *only* loaded from the last theme in the Gatsby configuration. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on, allowing *multiple* add-ons to provide additional components to be available in MDX without having to manually import them into every page.
 
-When using add-on themes, a proxy export file will be generated in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)). This file provides all the exported components from the add-on packages.
+When using add-on themes, a proxy export file will be generated in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)). This file provides all the exported components from the add-on packages. For a component to be exported by an add-on package it has to be exported from `index.js` in the add-on package root.
 
 **To safely configure theme add-ons, use the `configureThemeWithAddOns` function in the websites's `gatsby-config.js`:**
 
