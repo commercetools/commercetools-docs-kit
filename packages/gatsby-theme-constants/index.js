@@ -1,1 +1,3 @@
-// no-op file required for loading the plugin inside the private workspace
+// Export only components that must be injected into the MDX provider
+// eslint-disable-next-line import/prefer-default-export
+export { default as Constant } from './src/constant';
