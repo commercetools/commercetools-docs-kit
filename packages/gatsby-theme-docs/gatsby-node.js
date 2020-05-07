@@ -12,7 +12,7 @@ const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
 const processTableOfContentFields = require('./utils/process-table-of-content-fields');
 const defaultOptions = require('./utils/default-options');
-const loadThemeAddOns = require('./utils/load-theme-addons');
+const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -33,8 +33,8 @@ exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
     }
   });
 
-  // Load theme add-ons
-  loadThemeAddOns(gatsbyApi, themeOptions);
+  // Bootstrap theme add-ons
+  bootstrapThemeAddOns(gatsbyApi, themeOptions);
 };
 
 exports.createResolvers = ({ createResolvers }) => {
