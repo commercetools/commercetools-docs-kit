@@ -156,11 +156,11 @@ The available JSX components are:
 
 A theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
 
-Usually it's possible for a child theme to use components shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are loaded from the last theme child. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on.
+Gatsby enables a child theme to use component shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are *only* loaded from the last theme in the Gatsby configuration. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on, allowing *multiple* add-ons to provide additional components to be available in MDX without having to manually import them into every page.
 
-When using add-on themes, a proxy export file will be created in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)), including all the exported components from the add-on packages.
+When using add-on themes, a proxy export file will be generated in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)). This file provides all the exported components from the add-on packages.
 
-**We recommend to use the `configureThemeWithAddOns` function to configure the websites's `gatsby-config.js`**
+**To safely configure theme add-ons, use the `configureThemeWithAddOns` function in the websites's `gatsby-config.js`:**
 
 ```js
 const {
@@ -172,7 +172,7 @@ module.exports = {
     ...configureThemeWithAddOns({
       // Pass the normal theme options
       websiteKey: 'my-website-key',
-      // Define the add-on plugins
+      // Define and configure the add-on plugins instead of configuring them in the main plugins array.
       addOns: [
         '@commercetools-docs/gatsby-theme-foo',
         {
@@ -189,7 +189,7 @@ module.exports = {
 
 ## Theme overrides
 
-The theme allows to inject functionalities to specific parts of it. [Read here](./src/overrides) for more information.
+The theme allows to inject custom functionalities to specific parts of it. [Read here](./src/overrides) for more information.
 
 ## API usage
 
