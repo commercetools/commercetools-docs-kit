@@ -8,7 +8,7 @@
 import React from 'react';
 import Prism from 'prism-react-renderer/prism';
 import { CacheProvider } from '@emotion/core';
-import { docsCache } from './create-emotion-cache';
+import { docsCache } from './utils/create-emotion-cache';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_NOW_GITHUB_COMMIT_SHA;

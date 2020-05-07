@@ -10,9 +10,9 @@ const crypto = require('crypto');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
-const processTableOfContentFields = require('./src/utils/process-table-of-content-fields');
-const defaultOptions = require('./default-options');
-const loadThemeAddOns = require('./load-theme-addons');
+const processTableOfContentFields = require('./utils/process-table-of-content-fields');
+const defaultOptions = require('./utils/default-options');
+const loadThemeAddOns = require('./utils/load-theme-addons');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 

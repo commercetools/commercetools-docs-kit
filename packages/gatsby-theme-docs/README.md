@@ -82,8 +82,7 @@ The project structure should contain at least the following files and folders:
 
   - `overrideDefaultConfigurationData` (_optional_, array of glob strings): allows to replace the configuration files in `src/data` instead of augmenting them. The option is passed to the `ignore` [option of the gatsby filesystem plugin](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#options). For example, by passing `['**/top-*']` and placing `top-menu.yaml` and `top-side-menu.yaml` files in the website's `src/data` folder the top navigation can be overridden completely. If this option is used, the files matching the glob patterns **must** be provided.
 
-  - `themeAddOns` (_optional_, array of Gatsby Theme packages): allows to merge certain features of other commercetools-docs Gatsby Theme packages. For example, a theme can expose certain React components to be injected in the core theme MDX provider. Usually it's possible for a child theme to use components shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are loaded from the last theme child. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on, with the following requirements:
-    - `markdown-components.js`: this file should be placed in the theme package's root folder and should export an object with React components to be injected into the MDX provider.
+  - `themeAddOns` (_optional_, array of Gatsby Theme package names): allows to merge certain features of other commercetools-docs Gatsby Theme packages. For example, a theme can expose certain React components to be injected in the core theme MDX provider. Usually it's possible for a child theme to use components shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are loaded from the last theme child. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on. Read more about [using Theme Add-Ons](#using-theme-addons).
 
 - `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](#writing-content-pages)_).
 
@@ -154,6 +153,11 @@ The available JSX components are:
 - `<Anchor>`: inserts a custom anchor on any part of the document, can be used with headers, lists, in paragraphs, etc, it is used for navigating to specific parts of the document that are not headings. Also useful when a document has multiple headings with the same text or when heading names change and old third party links shall continue to work. Cannot override ID generation of the site generator, this adds additional named anchors and IDs have precedence.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
+
+## Using Theme Add-Ons
+
+A Theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
+When using add-on themes, a proxy export file will be created in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)), including all the exported components from the add-on packages.
 
 ## Theme overrides
 
