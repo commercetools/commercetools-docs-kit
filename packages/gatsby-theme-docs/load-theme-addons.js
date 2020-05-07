@@ -8,9 +8,9 @@ function loadThemeAddOnsForMarkdownComponents(themeAddOnNames) {
     markdownComponents += `import * as components${index} from '${plugin}/markdown-components';`;
   });
   markdownComponents += `\n
-  export default {
-  ${themeAddOnNames.map((_, index) => `...components${index},`).join('\n')}
-  }
+export default {
+${themeAddOnNames.map((_, index) => `...components${index},`).join('\n')}
+}
   `;
   const addOnsFolderPath =
     'src/@commercetools-docs/gatsby-theme-docs/overrides';
@@ -22,9 +22,6 @@ function loadThemeAddOnsForMarkdownComponents(themeAddOnNames) {
     fs.mkdirSync('src/@commercetools-docs');
     fs.mkdirSync('src/@commercetools-docs/gatsby-theme-docs');
     fs.mkdirSync('src/@commercetools-docs/gatsby-theme-docs/overrides');
-  }
-  if (fs.existsSync(markdownComponentsPath)) {
-    fs.unlinkSync(markdownComponentsPath);
   }
   fs.writeFileSync(markdownComponentsPath, markdownComponents, 'utf-8');
 }
