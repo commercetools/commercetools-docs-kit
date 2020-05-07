@@ -1,19 +1,13 @@
 const pkg = require('./package.json');
 
 function configureThemeWithAddOns(themeOptions = {}) {
-  const { addOnPlugins, ...coreThemeOptions } = themeOptions;
-
-  if (!addOnPlugins || !Array.isArray(addOnPlugins)) {
-    throw new Error(
-      'Missing or wrong format for "addOnPlugins" option. Expected a list of Gatsby theme add-on plugins.'
-    );
-  }
-
+  const { addOns, ...coreThemeOptions } = themeOptions;
+  const addOnPlugins = addOns || [];
   const coreThemeConfig = {
     resolve: pkg.name,
     options: {
       ...coreThemeOptions,
-      themeAddOns: addOnPlugins.map((plugin) =>
+      addOns: addOnPlugins.map((plugin) =>
         typeof plugin === 'string' ? plugin : plugin.resolve
       ),
     },

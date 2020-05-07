@@ -82,8 +82,6 @@ The project structure should contain at least the following files and folders:
 
   - `overrideDefaultConfigurationData` (_optional_, array of glob strings): allows to replace the configuration files in `src/data` instead of augmenting them. The option is passed to the `ignore` [option of the gatsby filesystem plugin](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#options). For example, by passing `['**/top-*']` and placing `top-menu.yaml` and `top-side-menu.yaml` files in the website's `src/data` folder the top navigation can be overridden completely. If this option is used, the files matching the glob patterns **must** be provided.
 
-  - `themeAddOns` (_optional_, array of Gatsby Theme plugin names): see [using Theme with Add-Ons](#using-theme-with-addons).
-
 - `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](#writing-content-pages)_).
 
 - `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.
@@ -175,7 +173,7 @@ module.exports = {
       // Pass the normal theme options
       websiteKey: 'my-website-key',
       // Define the add-on plugins
-      addOnPlugins: [
+      addOns: [
         '@commercetools-docs/gatsby-theme-foo',
         {
           resolve: '@commercetools-docs/gatsby-theme-bar',
@@ -185,32 +183,6 @@ module.exports = {
         },
       ],
     }),
-  ],
-};
-```
-
-Alternatively you should pass the Gatsby theme add-ons as normal plugins and additionally reference the package names in the `themeAddOns` option of the commercetools core theme.
-
-```js
-module.exports = {
-  plugins: [
-    {
-      resolve: '@commercetools-docs/gatsby-theme-docs',
-      options: {
-        websiteKey: 'my-website-key',
-        themeAddOns: [
-          '@commercetools-docs/gatsby-theme-foo',
-          '@commercetools-docs/gatsby-theme-bar',
-        ],
-      },
-    },
-    '@commercetools-docs/gatsby-theme-foo',
-    {
-      resolve: '@commercetools-docs/gatsby-theme-bar',
-      options: {
-        // ...
-      },
-    },
   ],
 };
 ```

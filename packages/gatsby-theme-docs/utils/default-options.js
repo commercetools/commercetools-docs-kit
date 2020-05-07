@@ -9,7 +9,7 @@ const defaultOptions = {
   createNodeSlug: undefined,
   additionalPrismLanguages: [],
   overrideDefaultConfigurationData: [],
-  themeAddOns: [],
+  addOns: [],
 };
 
 module.exports = defaultOptions;
