@@ -172,7 +172,9 @@ const {
 module.exports = {
   plugins: [
     ...configureThemeWithAddOns({
+      // Pass the normal theme options
       websiteKey: 'my-website-key',
+      // Define the add-on plugins
       addOnPlugins: [
         '@commercetools-docs/gatsby-theme-foo',
         {
