@@ -12,7 +12,6 @@
     "type": "git",
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
-  "main": "src/index.js",
   "dependencies": {
     "@commercetools-docs/gatsby-transformer-mdx-introspection": "2.5.0",
     "@commercetools-docs/gatsby-transformer-raml": "2.5.0",

@@ -15,7 +15,6 @@
     "code",
     "examples"
   ],
-  "main": "src/index.js",
   "dependencies": {
     "@commercetools-docs/ui-kit": "2.5.0",
     "prop-types": "15.7.2"
