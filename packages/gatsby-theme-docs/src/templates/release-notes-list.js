@@ -56,8 +56,14 @@ const ReleaseNotesListTemplate = (props) => {
           );
         })
       );
+    } else if (
+      releaseNotes.length !== props.data.allReleaseNotePage.nodes.length
+    ) {
+      // this is not the first render but filters are empty
+      setReleaseNotes(props.data.allReleaseNotePage.nodes);
     }
   }, [
+    releaseNotes.length,
     props.data.allReleaseNotePage.nodes,
     fromFilterDate,
     toFilterDate,
