@@ -12,7 +12,6 @@
     "type": "git",
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
-  "main": "index.js",
   "dependencies": {
     "@commercetools-docs/ui-kit": "2.5.0",
     "@commercetools-uikit/card": "10.18.4",

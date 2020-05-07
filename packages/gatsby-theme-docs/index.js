@@ -13,6 +13,3 @@ export {
 } from './src/components';
 export * from './src/hooks/use-site-data';
 export { default as markdownFragmentToReact } from './src/utils/markdown-fragment-to-react';
-
-// For backwards compatibility
-export * from '@commercetools-docs/ui-kit';

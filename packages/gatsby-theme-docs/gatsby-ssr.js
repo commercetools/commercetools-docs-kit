@@ -11,7 +11,7 @@ import { withPrefix } from 'gatsby';
 import { createContentDigest } from 'gatsby-core-utils';
 import createEmotionServer from 'create-emotion-server';
 import { CacheProvider } from '@emotion/core';
-import { createDocsCache } from './create-emotion-cache';
+import { createDocsCache } from './utils/create-emotion-cache';
 
 const iconDarkDigest = createContentDigest(
   fs.readFileSync(require.resolve('./static/favicon-dark-32x32.png'))

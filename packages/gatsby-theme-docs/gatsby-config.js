@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 
 const path = require('path');
-const defaultOptions = require('./default-options');
+const defaultOptions = require('./utils/default-options');
 
 // Proxy env variables needed for `gatsby-browser.js` and `gatsby-ssr.js`.
 // https://www.gatsbyjs.org/docs/environment-variables/#client-side-javascript

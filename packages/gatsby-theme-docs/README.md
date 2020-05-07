@@ -152,9 +152,44 @@ The available JSX components are:
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
+## Using Theme with Add-Ons
+
+A theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
+
+Gatsby enables a child theme to use component shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are *only* loaded from the last theme in the Gatsby configuration. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on, allowing *multiple* add-ons to provide additional components to be available in MDX without having to manually import them into every page.
+
+When using add-on themes, a proxy export file will be generated in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)). This file provides all the exported components from the add-on packages.
+
+**To safely configure theme add-ons, use the `configureThemeWithAddOns` function in the websites's `gatsby-config.js`:**
+
+```js
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+
+module.exports = {
+  plugins: [
+    ...configureThemeWithAddOns({
+      // Pass the normal theme options
+      websiteKey: 'my-website-key',
+      // Define and configure the add-on plugins instead of configuring them in the main plugins array.
+      addOns: [
+        '@commercetools-docs/gatsby-theme-foo',
+        {
+          resolve: '@commercetools-docs/gatsby-theme-bar',
+          options: {
+            // ...
+          },
+        },
+      ],
+    }),
+  ],
+};
+```
+
 ## Theme overrides
 
-The theme allows to inject functionalities to specific parts of it. [Read here](./src/overrides) for more information.
+The theme allows to inject custom functionalities to specific parts of it. [Read here](./src/overrides) for more information.
 
 ## API usage
 

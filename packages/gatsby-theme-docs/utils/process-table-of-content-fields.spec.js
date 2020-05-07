@@ -1,4 +1,4 @@
-import processTableOfContentFields from './process-table-of-content-fields';
+const processTableOfContentFields = require('./process-table-of-content-fields');
 
 describe('processTableOfContentFields', () => {
   it('should remove jsx from titles and urls', () => {

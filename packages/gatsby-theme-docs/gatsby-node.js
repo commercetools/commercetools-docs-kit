@@ -10,14 +10,15 @@ const crypto = require('crypto');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
-const processTableOfContentFields = require('./src/utils/process-table-of-content-fields');
-const defaultOptions = require('./default-options');
+const processTableOfContentFields = require('./utils/process-table-of-content-fields');
+const defaultOptions = require('./utils/default-options');
+const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
-exports.onPreBootstrap = ({ reporter }) => {
+exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
   const requiredDirectories = [
     'src/data',
     'src/images',
@@ -27,10 +28,13 @@ exports.onPreBootstrap = ({ reporter }) => {
   ];
   requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
-      reporter.info(`creating the ${dir} directory`);
+      gatsbyApi.reporter.info(`creating the ${dir} directory`);
       fs.mkdirSync(dir);
     }
   });
+
+  // Bootstrap theme add-ons
+  bootstrapThemeAddOns(gatsbyApi, themeOptions);
 };
 
 exports.createResolvers = ({ createResolvers }) => {

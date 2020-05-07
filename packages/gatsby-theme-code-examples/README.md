@@ -1,4 +1,4 @@
-# Gatsby Theme for Code Examples
+# Gatsby Theme Add-On for Code Examples
 
 This theme provides components in MDX to render code examples from files, optionally in multiple programming languages.
 
@@ -15,15 +15,17 @@ npx install-peerdeps --dev @commercetools-docs/gatsby-theme-code-examples
 In your `gatsby-config.js`:
 
 ```js
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+
 module.exports = {
+  // ... other site config
   plugins: [
-    {
-      resolve: '@commercetools-docs/gatsby-theme-docs',
-      options: {
-        // options
-      },
-    },
-    '@commercetools-docs/gatsby-theme-code-examples',
+    ...configureThemeWithAddOns({
+      // ... other theme config
+      addOns: ['@commercetools-docs/gatsby-theme-code-examples'],
+    }),
   ],
 };
 ```

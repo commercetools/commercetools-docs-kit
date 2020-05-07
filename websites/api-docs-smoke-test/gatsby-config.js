@@ -1,4 +1,7 @@
 const isProd = process.env.NODE_ENV === 'production';
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
 
 module.exports = {
   pathPrefix: '/api-docs-smoke-test',
@@ -8,31 +11,30 @@ module.exports = {
     betaLink: '',
   },
   plugins: [
-    {
-      resolve: '@commercetools-docs/gatsby-theme-docs',
-      options: {
-        websiteKey: 'api-docs-smoke-test',
-        websitePrimaryColor: 'goldenrod',
-        excludeFromSearchIndex: isProd,
-      },
-    },
-    {
-      resolve: '@commercetools-docs/gatsby-theme-api-docs',
-      options: {
-        transformerRaml: {
-          includeApis: ['test'],
-          movePropertiesToTop: [
-            'id',
-            'version',
-            'key',
-            'createdAt',
-            'createdBy',
-            'lastModifiedAt',
-            'lastModifiedBy',
-          ],
-          movePropertiesToBottom: ['custom'],
+    ...configureThemeWithAddOns({
+      websiteKey: 'api-docs-smoke-test',
+      websitePrimaryColor: 'goldenrod',
+      excludeFromSearchIndex: isProd,
+      addOns: [
+        {
+          resolve: '@commercetools-docs/gatsby-theme-api-docs',
+          options: {
+            transformerRaml: {
+              includeApis: ['test'],
+              movePropertiesToTop: [
+                'id',
+                'version',
+                'key',
+                'createdAt',
+                'createdBy',
+                'lastModifiedAt',
+                'lastModifiedBy',
+              ],
+              movePropertiesToBottom: ['custom'],
+            },
+          },
         },
-      },
-    },
+      ],
+    }),
   ],
 };
