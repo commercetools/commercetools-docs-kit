@@ -156,9 +156,9 @@ The available JSX components are:
 
 ## Using Theme with Add-Ons
 
-A Theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
+A theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
 
-For example, a theme can expose certain React components to be injected in the core theme MDX provider. Usually it's possible for a child theme to use components shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are loaded from the last theme child. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on.
+Usually it's possible for a child theme to use components shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are loaded from the last theme child. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on.
 
 When using add-on themes, a proxy export file will be created in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)), including all the exported components from the add-on packages.
 
