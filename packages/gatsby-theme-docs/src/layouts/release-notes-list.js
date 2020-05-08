@@ -9,6 +9,7 @@ import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
+import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
@@ -41,20 +42,22 @@ const LayoutReleaseNotesList = (props) => {
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
-        <LayoutPage id="top">
-          <LayoutPageHeader>
-            <Markdown.H1>{props.pageData.title}</Markdown.H1>
-          </LayoutPageHeader>
-          <LayoutPageHeaderSide>
-            <ReleaseNotesSubscribeLinks />
-          </LayoutPageHeaderSide>
-          <LayoutPageContent>
-            <PageContentInset id="body-content">
-              {props.children}
-            </PageContentInset>
-          </LayoutPageContent>
-          <LayoutPageReleaseNotesFilters />
-        </LayoutPage>
+        <LayoutPageWrapper id="top">
+          <LayoutPage>
+            <LayoutPageHeader>
+              <Markdown.H1>{props.pageData.title}</Markdown.H1>
+            </LayoutPageHeader>
+            <LayoutPageHeaderSide>
+              <ReleaseNotesSubscribeLinks />
+            </LayoutPageHeaderSide>
+            <LayoutPageContent>
+              <PageContentInset id="body-content">
+                {props.children}
+              </PageContentInset>
+            </LayoutPageContent>
+            <LayoutPageReleaseNotesFilters />
+          </LayoutPage>
+        </LayoutPageWrapper>
         <LayoutFooter />
       </LayoutMain>
     </LayoutApplication>

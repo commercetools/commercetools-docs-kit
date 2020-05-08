@@ -19,6 +19,7 @@ const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
   const requiredDirectories = [
+    'static', // <-- used for the homepage "hero" image
     'src/data',
     'src/images',
     'src/content',
@@ -356,16 +357,11 @@ async function createContentPages(
     []
   );
   pages.forEach(({ slug }) => {
-    const isOverviewPage = slug === '/releases';
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
-    actions.createPage({
+    const pageData = {
       path: slug,
-      // This component will wrap our MDX content
-      component: isOverviewPage
-        ? require.resolve('./src/templates/release-notes-list.js')
-        : require.resolve('./src/templates/page-content.js'),
       // You can use the values in this context in our page layout component
       context: {
         slug,
@@ -374,7 +370,28 @@ async function createContentPages(
           : undefined,
         hasReleaseNotes: result.data.allReleaseNotePage.totalCount > 0,
       },
-    });
+    };
+    switch (slug) {
+      case '/':
+        actions.createPage({
+          ...pageData,
+          component: require.resolve('./src/templates/homepage.js'),
+        });
+        break;
+      case '/releases':
+        actions.createPage({
+          ...pageData,
+          component: require.resolve('./src/templates/release-notes-list.js'),
+        });
+        break;
+
+      default:
+        actions.createPage({
+          ...pageData,
+          component: require.resolve('./src/templates/page-content.js'),
+        });
+        break;
+    }
   });
 }
 

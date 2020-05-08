@@ -12,6 +12,7 @@ import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
+import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
@@ -46,29 +47,33 @@ const LayoutReleaseNotesDetail = (props) => {
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
-        <LayoutPage id="top">
-          <LayoutPageHeader>
-            <SpacingsInline alignItems="center">
-              <AngleLeftIcon size="medium" color="primary" />
-              <Link href="/releases" noUnderline={true}>
-                <span
-                  css={css`
-                    font-size: ${designSystem.typography.fontSizes.small};
-                  `}
-                >
-                  {`All Release Notes`}
-                </span>
-              </Link>
-            </SpacingsInline>
-            <ReleaseNotePageTitle>{props.pageData.title}</ReleaseNotePageTitle>
-          </LayoutPageHeader>
-          <LayoutPageHeaderSide />
-          <LayoutPageContent>
-            <PageContentInset id="body-content">
-              {props.children}
-            </PageContentInset>
-          </LayoutPageContent>
-        </LayoutPage>
+        <LayoutPageWrapper id="top">
+          <LayoutPage>
+            <LayoutPageHeader>
+              <SpacingsInline alignItems="center">
+                <AngleLeftIcon size="medium" color="primary" />
+                <Link href="/releases" noUnderline={true}>
+                  <span
+                    css={css`
+                      font-size: ${designSystem.typography.fontSizes.small};
+                    `}
+                  >
+                    {`All Release Notes`}
+                  </span>
+                </Link>
+              </SpacingsInline>
+              <ReleaseNotePageTitle>
+                {props.pageData.title}
+              </ReleaseNotePageTitle>
+            </LayoutPageHeader>
+            <LayoutPageHeaderSide />
+            <LayoutPageContent>
+              <PageContentInset id="body-content">
+                {props.children}
+              </PageContentInset>
+            </LayoutPageContent>
+          </LayoutPage>
+        </LayoutPageWrapper>
         <LayoutFooter />
       </LayoutMain>
     </LayoutApplication>

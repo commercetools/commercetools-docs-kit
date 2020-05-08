@@ -4,13 +4,13 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
-import LayoutContent from '../layouts/content';
+import LayoutContentHomepage from '../layouts/content-homepage';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
-const PageContentTemplate = (props) => (
+const HomepageTemplate = (props) => (
   <ThemeProvider>
-    <LayoutContent
+    <LayoutContentHomepage
       pageContext={props.pageContext}
       pageData={props.data.contentPage}
     >
@@ -28,12 +28,12 @@ const PageContentTemplate = (props) => (
           </div>
         </Markdown.TypographyPage>
       </MDXProvider>
-    </LayoutContent>
+    </LayoutContentHomepage>
   </ThemeProvider>
 );
 
-PageContentTemplate.displayName = 'PageContentTemplate';
-PageContentTemplate.propTypes = {
+HomepageTemplate.displayName = 'HomepageTemplate';
+HomepageTemplate.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
@@ -51,10 +51,10 @@ PageContentTemplate.propTypes = {
     }).isRequired,
   }).isRequired,
 };
-export default PageContentTemplate;
+export default HomepageTemplate;
 
 export const query = graphql`
-  query QueryContentPage($slug: String!) {
+  query QueryHomepage($slug: String!) {
     contentPage(slug: { eq: $slug }) {
       title
       websitePrimaryColor

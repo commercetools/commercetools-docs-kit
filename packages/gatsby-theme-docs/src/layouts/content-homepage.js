@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Markdown } from '@commercetools-docs/ui-kit';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { BetaFlag, ContentPagination } from '../components';
-import PlaceholderPageHeaderSide from '../overrides/page-header-side';
+import { ContentPagination } from '../components';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -12,13 +10,11 @@ import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
 import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPage from './internals/layout-page';
-import LayoutPageHeader from './internals/layout-page-header';
-import LayoutPageHeaderSide from './internals/layout-page-header-side';
-import LayoutPageNavigation from './internals/layout-page-navigation';
+import LayoutPageWithHero from './internals/layout-page-with-hero';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
-const LayoutContent = (props) => {
+const LayoutContentHomepage = (props) => {
   const layoutState = useLayoutState();
   const siteData = useSiteData();
 
@@ -44,35 +40,24 @@ const LayoutContent = (props) => {
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
         <LayoutPageWrapper id="top">
-          <LayoutPage>
-            <LayoutPageHeader>
-              {props.pageData.beta && (
-                <BetaFlag href={siteData.siteMetadata.betaLink} />
-              )}
-              <Markdown.H1>{props.pageData.title}</Markdown.H1>
-            </LayoutPageHeader>
-            <LayoutPageHeaderSide>
-              <PlaceholderPageHeaderSide />
-            </LayoutPageHeaderSide>
-            <LayoutPageContent>
-              <PageContentInset id="body-content">
-                {props.children}
-                <ContentPagination slug={props.pageContext.slug} />
-              </PageContentInset>
-            </LayoutPageContent>
-            <LayoutPageNavigation
-              pageTitle={props.pageContext.shortTitle || props.pageData.title}
-              tableOfContents={props.pageData.tableOfContents}
-            />
-          </LayoutPage>
+          <LayoutPageWithHero title={props.pageData.title}>
+            <LayoutPage>
+              <LayoutPageContent>
+                <PageContentInset id="body-content">
+                  {props.children}
+                  <ContentPagination slug={props.pageContext.slug} />
+                </PageContentInset>
+              </LayoutPageContent>
+            </LayoutPage>
+          </LayoutPageWithHero>
         </LayoutPageWrapper>
         <LayoutFooter />
       </LayoutMain>
     </LayoutApplication>
   );
 };
-LayoutContent.displayName = 'LayoutContent';
-LayoutContent.propTypes = {
+LayoutContentHomepage.displayName = 'LayoutContentHomepage';
+LayoutContentHomepage.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
@@ -89,4 +74,4 @@ LayoutContent.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default LayoutContent;
+export default LayoutContentHomepage;
