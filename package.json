@@ -28,7 +28,7 @@
     "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "prerelease": "yarn check-npm-login && yarn prebuild",
+    "prerelease": "yarn prebuild",
     "prerelease:canary": "yarn prerelease",
     "release": "changeset publish",
     "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes --force-publish \"*\""
