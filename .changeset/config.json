@@ -7,18 +7,7 @@
     }
   ],
   "commit": false,
-  "linked": [
-    [
-      "@commercetools-docs/ui-kit",
-      "@commercetools-docs/gatsby-theme-docs",
-      "@commercetools-docs/gatsby-theme-api-docs",
-      "@commercetools-docs/gatsby-theme-code-examples",
-      "@commercetools-docs/gatsby-theme-constants",
-      "@commercetools-docs/gatsby-transformer-mdx-introspection",
-      "@commercetools-docs/gatsby-transformer-raml",
-      "@commercetools-docs/ramldoc-generator"
-    ]
-  ],
+  "linked": [],
   "access": "restricted",
   "baseBranch": "master"
 }
