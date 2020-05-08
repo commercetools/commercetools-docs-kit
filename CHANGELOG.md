@@ -1,3 +1,120 @@
+## [3.0.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.5.0...v3.0.0) (2020-05-08)
+
+This release introduces some **breaking changes**, as documented below.
+
+- Dropping node `v10` support
+- The `@commercetools-docs/broken-link-checker` package has been removed. The NPM package is still available but it's marked as **deprecated**. As a replacement, we recommend using the [linkinator](https://www.npmjs.com/package/linkinator) package.
+- The `@commercetools-docs/gatsby-theme-api-docs` is now a theme "add-on" (read more about "add-ons" below).
+- The `@commercetools-docs/gatsby-transformer-code-examples` is now a theme "add-on" (read more about "add-ons" below) and has been renamed to `@commercetools-docs/gatsby-theme-code-examples`.
+
+### Introducing Gatsby Theme Add-Ons
+
+A theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
+
+Gatsby enables a child theme to use component shadowing (see [Theme overrides](https://github.com/commercetools/commercetools-docs-kit/blob/master/packages/gatsby-theme-docs/src/overrides/README.md)). However, with multiple themes, the shadowed components are _only_ loaded from the last theme in the Gatsby configuration. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on, allowing _multiple_ add-ons to provide additional components to be available in MDX without having to manually import them into every page.
+
+When using add-on themes, a proxy export file will be generated in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](https://github.com/commercetools/commercetools-docs-kit/blob/master/packages/gatsby-theme-docs/src/overrides/README.md)). This file provides all the exported components from the add-on packages. For a component to be exported by an add-on package it has to be exported from `index.js` in the add-on package root.
+
+**To safely configure theme add-ons, use the `configureThemeWithAddOns` function in the websites's `gatsby-config.js`:**
+
+```js
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+
+module.exports = {
+  plugins: [
+    ...configureThemeWithAddOns({
+      // Pass the normal theme options
+      websiteKey: 'my-website-key',
+      // Set up the theme add-ons
+      addOns: [
+        '@commercetools-docs/gatsby-theme-foo',
+        {
+          resolve: '@commercetools-docs/gatsby-theme-bar',
+          options: {
+            // ...
+          },
+        },
+      ],
+    }),
+  ],
+};
+```
+
+#### 🐛 Type: Bug
+
+- `gatsby-theme-docs`
+  - [#413](https://github.com/commercetools/commercetools-docs-kit/pull/413) fix: element keys should be unique ([@davifantasia](https://github.com/davifantasia))
+  - [#407](https://github.com/commercetools/commercetools-docs-kit/pull/407) fix(theme): render proper 404 page as a content page ([@emmenko](https://github.com/emmenko))
+  - [#399](https://github.com/commercetools/commercetools-docs-kit/pull/399) fix: inconsistent url and title or index nav ([@davifantasia](https://github.com/davifantasia))
+  - [#394](https://github.com/commercetools/commercetools-docs-kit/pull/394) fix(theme): gracefully handle missing heading level in TOC ([@emmenko](https://github.com/emmenko))
+  - [#388](https://github.com/commercetools/commercetools-docs-kit/pull/388) fix(theme-docs): Render mdx commonmark compliant ([@nkuehn](https://github.com/nkuehn))
+  - [#384](https://github.com/commercetools/commercetools-docs-kit/pull/384) fix(theme): sticky page nav and scrolling container ([@emmenko](https://github.com/emmenko))
+  - [#380](https://github.com/commercetools/commercetools-docs-kit/pull/380) fix(theme): rss link to be treated as external link ([@emmenko](https://github.com/emmenko))
+- `gatsby-transformer-raml`
+  - [#386](https://github.com/commercetools/commercetools-docs-kit/pull/386) fix: stop rendering deprecated properties ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-docs`, `ui-kit`
+  - [#382](https://github.com/commercetools/commercetools-docs-kit/pull/382) fix(theme): proptype warnings and mapping of some md elements ([@emmenko](https://github.com/emmenko))
+
+#### 💥 Type: Breaking Change
+
+- `broken-link-checker`
+  - [#424](https://github.com/commercetools/commercetools-docs-kit/pull/424) feat: use linkinator, drop broken-link-checker ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-docs`
+  - [#423](https://github.com/commercetools/commercetools-docs-kit/pull/423) refactor: require node 12 ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-api-docs`, `gatsby-theme-code-examples`, `gatsby-theme-docs`
+  - [#422](https://github.com/commercetools/commercetools-docs-kit/pull/422) feat: implement add-ons mechanism to merge markdown components from different add-on themes ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-api-docs`
+  - [#412](https://github.com/commercetools/commercetools-docs-kit/pull/412) refactor(api-theme): compose themes in website instead of inheriting ([@nkuehn](https://github.com/nkuehn))
+
+#### 🔮 Type: Chore
+
+- [#383](https://github.com/commercetools/commercetools-docs-kit/pull/383) refactor(ci): to not use cypress github action ([@emmenko](https://github.com/emmenko))
+
+#### 💅 Type: Enhancement
+
+- `writing-style`
+  - [#410](https://github.com/commercetools/commercetools-docs-kit/pull/410) WIP writing style: adjustments ([@adinakleine](https://github.com/adinakleine))
+- Other
+  - [#398](https://github.com/commercetools/commercetools-docs-kit/pull/398) enhancement(workspace): set the window title better find the window ([@nkuehn](https://github.com/nkuehn))
+
+#### 🚀 Type: New Feature
+
+- `gatsby-theme-code-examples`, `gatsby-theme-constants`, `gatsby-theme-docs`
+  - [#402](https://github.com/commercetools/commercetools-docs-kit/pull/402) feat: add gatsby theme to work with constant values ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-api-docs`, `gatsby-theme-code-examples`, `gatsby-theme-docs`
+  - [#422](https://github.com/commercetools/commercetools-docs-kit/pull/422) feat: implement add-ons mechanism to merge markdown components from different add-on themes ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-docs`, `ui-kit`
+  - [#411](https://github.com/commercetools/commercetools-docs-kit/pull/411) feat(theme): allow to configure website primary color ([@emmenko](https://github.com/emmenko))
+  - [#371](https://github.com/commercetools/commercetools-docs-kit/pull/371) feat: release notes details page ([@davifantasia](https://github.com/davifantasia))
+  - [#376](https://github.com/commercetools/commercetools-docs-kit/pull/376) feat(docs-theme): make beta flag available in any content ([@nkuehn](https://github.com/nkuehn))
+- `gatsby-theme-docs`
+  - [#400](https://github.com/commercetools/commercetools-docs-kit/pull/400) feat(theme): allow to override top-menu links ([@emmenko](https://github.com/emmenko))
+  - [#390](https://github.com/commercetools/commercetools-docs-kit/pull/390) Support custom anchors in MD(X) using <Achor name="my-anchor" /> ([@davifantasia](https://github.com/davifantasia))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`
+  - [#375](https://github.com/commercetools/commercetools-docs-kit/pull/375) Release Notes: Render excerpt in list with reduced formatting, show read more. ([@nkuehn](https://github.com/nkuehn))
+
+#### ⛑ Type: Refactoring
+
+- `gatsby-theme-code-examples`, `gatsby-theme-docs`, `gatsby-transformer-code-examples`
+  - [#419](https://github.com/commercetools/commercetools-docs-kit/pull/419) refactor(code-examples): make it a gatsby theme ([@emmenko](https://github.com/emmenko))
+- `gatsby-theme-api-docs`
+  - [#412](https://github.com/commercetools/commercetools-docs-kit/pull/412) refactor(api-theme): compose themes in website instead of inheriting ([@nkuehn](https://github.com/nkuehn))
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`
+  - [#375](https://github.com/commercetools/commercetools-docs-kit/pull/375) Release Notes: Render excerpt in list with reduced formatting, show read more. ([@nkuehn](https://github.com/nkuehn))
+
+#### 🤖 Type: Dependencies
+
+- `gatsby-theme-api-docs`, `gatsby-theme-docs`, `gatsby-transformer-mdx-introspection`, `ramldoc-generator`, `writing-style`
+  - [#418](https://github.com/commercetools/commercetools-docs-kit/pull/418) chore(deps): lock file maintenance all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+- Other
+  - [#417](https://github.com/commercetools/commercetools-docs-kit/pull/417) chore(deps): update dependency eslint-plugin-react-hooks to v4 ([@renovate[bot]](https://github.com/apps/renovate))
+- `gatsby-theme-docs`, `ui-kit`
+  - [#378](https://github.com/commercetools/commercetools-docs-kit/pull/378) fix(deps): update all dependencies (major) ([@renovate[bot]](https://github.com/apps/renovate))
+- `broken-link-checker`, `gatsby-theme-api-docs`, `gatsby-theme-docs`, `gatsby-transformer-mdx-introspection`, `ramldoc-generator`
+  - [#379](https://github.com/commercetools/commercetools-docs-kit/pull/379) chore(deps): lock file maintenance all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [2.5.0](https://github.com/commercetools/commercetools-docs-kit/compare/v2.4.0...v2.5.0) (2020-04-17)
 
 #### 🐛 Type: Bug
