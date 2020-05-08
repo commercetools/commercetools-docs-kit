@@ -1,0 +1,173 @@
+---
+title: Cards
+---
+
+ * The actual card content is markdown
+ * Card titles are not links
+ * Card titles never become entries in the page index nav like section headings
+ * Either an icon or an image path can be set, but not both.
+   * To start with, Images are _not_ supported for free-form in-content cards, only in places that are fully designed and implemented by developers. An Image is sized into the width of the card.
+   * Icons are supported anywhere but only those that are officially provided by the kit. An icon is sized into a fixed 48x48px square.
+ * Cards can occur in two interaction variants, "clickable" (visually elevated) and "flat" (visually an outline only).
+ * Cards must be embedded into a wrapper component that defines the responsive sizes (two aside / three aside) and parameters that must be identical in a given row or grid (clickable card area, the heading size)
+   * trial & error led to a minimum width of ca 250px for narrow three-aside cards and ca 332px for two-aside cards.
+ * A single card must not fill the full width but stay left aligned.
+ * Multiple cards fill the full width and are scaled up to fill even if their content is smaller. Every card has the same width in all rows (resulting in a grid if it's multiple rows)
+ * Cards are sorted in rows, then columns.
+
+# "Cards" Wrapper
+
+ Properties (for authors):
+ * `clickable` (boolean): if set, the whole area of all child cards is a link, the card is elevated and has a hover effect if a link url is set.
+ * `narrow` (boolean): by default, two cards are shown side by side (except mobile viewports). if `narrow` is passed, the minimum card width is reduced so that three cards fit the content width on microsite landing pages.
+ * `smallTitle` (boolean): lets all cards have a smaller title font.
+
+## Minimal form
+
+```jsx
+<Cards>
+  <Card>foo</Card>
+  <Card>bar</Card>
+  <Card>next row unless three aside (narrow) prop passed?</Card>
+  <Card>next row in any case</Card>
+</Cards>
+```
+### Output
+
+<Cards>
+  <Card>foo</Card>
+  <Card>bar</Card>
+  <Card>next row unless three aside (narrow) prop passed?</Card>
+  <Card>next row in any case</Card>
+</Cards>
+
+
+## All options configured
+
+```jsx
+<Cards clickable narrow smallTitle>
+  <Card>foo</Card>
+  <Card>bar</Card>
+  <Card>next row unless three aside (narrow) prop passed?</Card>
+  <Card>next row in any case</Card>
+</Cards>
+```
+
+### Output
+
+<Cards clickable narrow smallTitle>
+  <Card>foo</Card>
+  <Card>bar</Card>
+  <Card>next row unless three aside (narrow) prop passed?</Card>
+  <Card>next row in any case</Card>
+</Cards>
+
+# "Card": the actual card
+
+Properties (for authors):
+ * `title` (string): the card title, no markdown allowed.
+ * `href` (string): the link target of the bottom link and, if `clickable` is set, the whole card. `href` has no effect when neither `clickable` or `textLink` are set.
+ * `textLink` (string): the bottom link text. If not set, no bottom link is rendered at all.
+ * `icon` (component): the component to be rendered into the 48x48px space reserved for an icon. If not set, the space is not reserved.
+
+None of the properties are required but the body content should not be empty.
+
+## Flat with Link
+
+```jsx
+<Cards>
+  <Card
+    title="A regular heading"
+    href="/components/images"
+    textLink="Read more about images...">This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.</Card>
+</Cards>
+```
+
+### Output
+
+<Cards>
+  <Card
+    title="A regular heading"
+    href="/components/images"
+    textLink="Read more about images...">This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.</Card>
+</Cards>
+
+## Clickable with Link
+
+<Info>Clickable cards must have a href set. If not that is an error condition in development mode</Info>
+
+```jsx
+<Cards clickable>
+  <Card
+    title="A regular heading"
+    href="/components/images"
+    textLink="Read more about images...">This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.</Card>
+</Cards>
+```
+
+### Output
+
+<Cards clickable>
+  <Card
+    title="A regular heading"
+    href="/components/images"
+    textLink="Read more about images...">This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.</Card>
+</Cards>
+
+
+## Flat with Icon
+
+This example assumes that the icon used here is already provided by the MDX provider anyways. But since it's MDX alternative or site-specific icons can be provided by adding an `import` statement in the MDX.
+
+<Warning>
+
+As discussed:
+ * this would be the first place where authors have to learn more JSX syntax and not just the HTML-compatible subset.
+ * Also, from an author experience perspective we need to be aware that referencing an icon that does not exist cannot be caught at runtime but will cause a compilation error.
+
+</Warning>
+
+```jsx
+<Cards smallTitle>
+  <Card
+    icon={Icon.ShoppingList}
+    title="A smaller title">Example Text on a card with an icon.</Card>
+</Cards>
+```
+
+### Output
+
+(no actual icon set until one is available to not break this page)
+
+<Cards smallTitle>
+  <Card
+    title="A smaller title">Example Text on a card with an icon.</Card>
+</Cards>
+
+# Clickable (visually elevated)
+
+Clickable cards have one card-level link target (href) and no other links in the content.
+They are visually elevated and elevate even more when hovered.
+The link target (href) can be repeated as a link at the bottom by setting a card link label.
+
+# Embedded MDX in the Component Body
+
+The MDX spec and implementation allows for putting two blank lines to allow fully rendered markdown inside a JSX component. Because the cards must render markdown in the body differently than the same markdown would be rendered in the page body the implementation must either block the situation (for example detecting that the children aren't text but finished components) or override the renderer to use the MD fragment renderer instead.
+
+```jsx
+<Card>
+
+## Disallowed Subsection Heading
+This would render like the full page body and should be prevented or not done
+
+Even  | Tables |
+------|--------|
+would | work   |
+
+
+</Card>
+```
+
+## Output
+
+(breaks the build until card is implemented)
