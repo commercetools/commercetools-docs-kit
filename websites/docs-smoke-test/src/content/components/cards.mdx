@@ -70,6 +70,8 @@ Properties (for authors):
  * `textLink` (string): the bottom link text. If not set, no bottom link is rendered at all.
  * `icon` (component): the component to be rendered into the 48x48px space reserved for an icon. If not set, the space is not reserved.
 
+None of the properties are required but the body content should not be empty.
+
 ## Flat with Link
 
 ```jsx
@@ -77,9 +79,7 @@ Properties (for authors):
   <Card
     title="A regular heading"
     href="/components/images"
-    textLink="Read more about images...">
-  This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.
-  </Card>
+    textLink="Read more about images...">This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.</Card>
 </Cards>
 ```
 
@@ -89,9 +89,7 @@ Properties (for authors):
   <Card
     title="A regular heading"
     href="/components/images"
-    textLink="Read more about images...">
-  This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.
-  </Card>
+    textLink="Read more about images...">This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.</Card>
 </Cards>
 
 ## Clickable with Link
@@ -103,9 +101,7 @@ Properties (for authors):
   <Card
     title="A regular heading"
     href="/components/images"
-    textLink="Read more about images...">
-  This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.
-  </Card>
+    textLink="Read more about images...">This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.</Card>
 </Cards>
 ```
 
@@ -115,10 +111,9 @@ Properties (for authors):
   <Card
     title="A regular heading"
     href="/components/images"
-    textLink="Read more about images...">
-  This is visually elevated, has a link to the **images (bold)** page and the complete card is a clickable target.
-  </Card>
+    textLink="Read more about images...">This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.</Card>
 </Cards>
+
 
 ## Flat with Icon
 
@@ -136,9 +131,7 @@ As discussed:
 <Cards smallTitle>
   <Card
     icon={Icon.ShoppingList}
-    title="A smaller title">
-    Example Text on a card with an icon.
-  </Card>
+    title="A smaller title">Example Text on a card with an icon.</Card>
 </Cards>
 ```
 
@@ -148,10 +141,8 @@ As discussed:
 
 <Cards smallTitle>
   <Card
-    icon={function(){}}
-    title="A smaller title">
-    Example Text on a card with an icon.
-  </Card>
+    icon={Icon.ShoppingList}
+    title="A smaller title">Example Text on a card with an icon.</Card>
 </Cards>
 
 # Clickable (visually elevated)
