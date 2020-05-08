@@ -8,11 +8,7 @@ on:
   push:
     branches:
       - master
-    paths-ignore:
-      - "CHANGELOG.md"
   pull_request:
-    paths-ignore:
-      - "CHANGELOG.md"
 
 jobs:
   build_lint_and_test:
@@ -126,8 +122,18 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-      - name: Publishing to npm registry
-        if: github.ref == 'refs/heads/master'
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@master
+        with:
+          publish: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Publish canary releases only if the packages weren't published already
+      - name: Publishing canary releases to npm registry
+        if: github.ref == 'refs/heads/master' && steps.changesets.outputs.published != 'true'
         run: ./scripts/release_canary.sh
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@1.0.3/schema.json",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "commercetools/commercetools-docs-kit"
+    }
+  ],
+  "commit": false,
+  "linked": [
+    [
+      "@commercetools-docs/ui-kit",
+      "@commercetools-docs/gatsby-theme-docs"
+    ],
+    [
+      "@commercetools-docs/ui-kit",
+      "@commercetools-docs/gatsby-transformer-mdx-introspection",
+      "@commercetools-docs/gatsby-transformer-raml",
+      "@commercetools-docs/gatsby-theme-api-docs",
+      "@commercetools-docs/ramldoc-generator"
+    ],
+    [
+      "@commercetools-docs/ui-kit",
+      "@commercetools-docs/gatsby-theme-code-examples"
+    ],
+    [
+      "@commercetools-docs/ui-kit",
+      "@commercetools-docs/gatsby-theme-code-constants"
+    ]
+  ],
+  "access": "restricted",
+  "baseBranch": "master"
+}
