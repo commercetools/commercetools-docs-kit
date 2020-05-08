@@ -67,4 +67,4 @@ Then in your MDX files:
 <CodeExample path="example.js" title="JavaScript Code Sample" />
 ```
 
-In addition to `path`, the `<CodeExample>` component supports all custom parameters that can be passed to fenced code blocks in the [base theme](../gatsby-theme-docs)
+In addition to `path`, the `<CodeExample>` component supports all custom parameters that can be passed to fenced code blocks in the [base theme](https://www.npmjs.com/package/@commercetools-docs/gatsby-theme-docs)

@@ -6,7 +6,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
@@ -73,7 +72,7 @@ const resolverPassthrough = ({
   return processResult(result);
 };
 
-exports.sourceNodes = ({ actions, schema }) => {
+exports.createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes(`
     type NavigationYaml implements Node @dontInfer {
       id: ID!
@@ -198,7 +197,7 @@ exports.sourceNodes = ({ actions, schema }) => {
 };
 
 exports.onCreateNode = (
-  { node, getNode, actions, createNodeId },
+  { node, getNode, actions, createNodeId, createContentDigest },
   themeOptions
 ) => {
   if (node.internal.type !== 'Mdx') {
@@ -243,10 +242,7 @@ exports.onCreateNode = (
       children: [],
       internal: {
         type: 'ReleaseNotePage',
-        contentDigest: crypto
-          .createHash(`md5`)
-          .update(JSON.stringify(releaseNotesFieldData))
-          .digest(`hex`),
+        contentDigest: createContentDigest(releaseNotesFieldData),
         content: JSON.stringify(releaseNotesFieldData),
         description: 'Release Note Pages',
       },
@@ -278,10 +274,7 @@ exports.onCreateNode = (
     children: [],
     internal: {
       type: 'ContentPage',
-      contentDigest: crypto
-        .createHash(`md5`)
-        .update(JSON.stringify(contentPageFieldData))
-        .digest(`hex`),
+      contentDigest: createContentDigest(contentPageFieldData),
       content: JSON.stringify(contentPageFieldData),
       description: 'Content Pages',
     },
