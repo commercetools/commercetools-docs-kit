@@ -74,5 +74,9 @@
     "gatsby-cli": "2.x",
     "react": "16.x",
     "react-dom": "16.x"
+  },
+  "engines": {
+    "node": ">=12",
+    "npm": ">=5"
   }
 }

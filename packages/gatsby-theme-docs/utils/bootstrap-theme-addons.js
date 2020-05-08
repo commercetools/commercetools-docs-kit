@@ -21,9 +21,9 @@ ${themeAddOnNames.map((_, index) => `...components${index},`).join('\n')}
 }
   `;
   if (!fs.existsSync(addOnsFolderPath)) {
-    fs.mkdirSync('src/@commercetools-docs');
-    fs.mkdirSync('src/@commercetools-docs/gatsby-theme-docs');
-    fs.mkdirSync('src/@commercetools-docs/gatsby-theme-docs/overrides');
+    fs.mkdirSync('src/@commercetools-docs/gatsby-theme-docs/overrides', {
+      recursive: true,
+    });
   }
   fs.writeFileSync(markdownComponentsPath, markdownComponents, 'utf-8');
   fs.writeFileSync(gitignorePath, markdownComponentFileName, 'utf-8');
