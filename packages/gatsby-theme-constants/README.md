@@ -1,6 +1,8 @@
-# Gatsby Theme for Constants
+# Gatsby Theme Add-On for Constants
 
 This theme exposes components in MDX to render constant values centrally defined in data files. Use cases include centrally managing limits and defaults of the documented product.
+
+It is a feature add-on to `@commercetools-docs/gatsby-theme-docs` and is not usable standalone.
 
 ## Installation
 
