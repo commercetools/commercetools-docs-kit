@@ -16,45 +16,6 @@ This repository contains all the necessary packages to build a documentation web
 
 This repository is managed as a monorepo, meaning it contains multiple (sub)packages located in the [`packages`](./packages) directory.
 
-```
-packages/
-  broken-link-checker/
-  gatsby-theme-api-docs/
-  gatsby-theme-docs/
-  gatsby-transformer-mdx-introspection/
-  gatsby-transformer-raml/
-  ui-kit/
-  writing-style/
-```
-
-### Overview of main packages
-
-Below a short description of the most import packages:
-
-#### [broken-link-checker](./packages/broken-link-checker)
-
-This package exposes a binary script to run a link checker against a given built website folder.
-
-#### [gatsby-theme-api-docs](./packages/gatsby-theme-api-docs)
-
-This package implements a Gatsby theme on top of the core theme [gatsby-theme-docs](./packages/gatsby-theme-docs) and is used to document an HTTP API that is defined using a RAML API specification.
-
-#### [gatsby-theme-docs](./packages/gatsby-theme-docs)
-
-This package is most **important** one and contains the core logic of a Gatsby theme. To develop a website, you need to use the `@commercetools-docs/gatsby-theme-docs` package.
-
-#### [gatsby-transformer-mdx-introspection](./packages/gatsby-transformer-mdx-introspection)
-
-This package analyzes MDX pages to find out which React components have been used on which page, and exposes that information as GatsbyJS GraphQL nodes.
-
-#### [gatsby-transformer-raml](./packages/gatsby-transformer-raml)
-
-This package exposes RAML documents into GraphQL nodes.
-
-#### [ui-kit](./packages/ui-kit)
-
-This package implements the core design system used across the Gatsby themes. It also provides basic React components to be used as building blocks.
-
 ## Getting started
 
 1. Clone the repository
