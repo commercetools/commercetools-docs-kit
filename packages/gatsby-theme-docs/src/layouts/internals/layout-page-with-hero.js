@@ -50,7 +50,7 @@ const Title = styled(Markdown.H1)`
 
 const LayoutPageWithHero = (props) => (
   <>
-    <Container heroBackgroundURL={props.heroBackgroundURL}>
+    <Container>
       <ThemeProvider
         theme={{
           colors: {
@@ -68,7 +68,6 @@ const LayoutPageWithHero = (props) => (
 );
 LayoutPageWithHero.propTypes = {
   title: PropTypes.string.isRequired,
-  heroBackgroundURL: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
