@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "2.5.0",
+  "version": "3.0.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -13,7 +13,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
   "dependencies": {
-    "@commercetools-docs/ui-kit": "2.5.0",
+    "@commercetools-docs/ui-kit": "3.0.0",
     "@commercetools-uikit/card": "10.18.4",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/icon-button": "10.18.4",
@@ -55,13 +55,13 @@
     "prop-types": "15.7.2",
     "react-helmet": "6.0.0",
     "rehype-slug": "3.0.0",
+    "remark-emoji": "2.1.0",
+    "remark-frontmatter": "2.0.0",
     "remark-parse": "8.0.2",
     "remark-react": "7.0.1",
-    "remark-frontmatter": "2.0.0",
-    "unist-util-filter": "2.0.2",
+    "slugify": "1.4.0",
     "unified": "9.0.0",
-    "remark-emoji": "2.1.0",
-    "slugify": "1.4.0"
+    "unist-util-filter": "2.0.2"
   },
   "devDependencies": {
     "gatsby": "2.21.11",

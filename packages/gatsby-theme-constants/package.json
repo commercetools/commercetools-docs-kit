@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-docs/gatsby-theme-constants",
-  "version": "2.5.0",
+  "version": "3.0.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -16,7 +16,7 @@
     "constants"
   ],
   "dependencies": {
-    "@commercetools-docs/ui-kit": "2.5.0",
+    "@commercetools-docs/ui-kit": "3.0.0",
     "gatsby-transformer-yaml": "2.4.1",
     "prop-types": "15.7.2"
   },
