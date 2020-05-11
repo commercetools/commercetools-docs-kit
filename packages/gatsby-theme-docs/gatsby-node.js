@@ -20,7 +20,6 @@ const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
   const requiredDirectories = [
-    'static', // <-- used for the homepage "hero" image
     'src/data',
     'src/images',
     'src/content',
@@ -381,7 +380,7 @@ async function createContentPages(
           component: require.resolve('./src/templates/homepage.js'),
           context: {
             ...pageData.context,
-            colorPreset: `${pluginOptions.colorPreset}/${colorPreset.value.heroBackgroundName}`,
+            heroBackgroundRelativePath: `${pluginOptions.colorPreset}/${colorPreset.value.heroBackgroundName}`,
           },
         });
         break;

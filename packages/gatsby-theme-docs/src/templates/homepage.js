@@ -58,7 +58,7 @@ HomepageTemplate.propTypes = {
 export default HomepageTemplate;
 
 export const query = graphql`
-  query QueryHomepage($slug: String!, $colorPreset: String!) {
+  query QueryHomepage($slug: String!, $heroBackgroundRelativePath: String!) {
     contentPage(slug: { eq: $slug }) {
       title
       websitePrimaryColor
@@ -68,7 +68,7 @@ export const query = graphql`
       body
       tableOfContents(maxDepth: 4)
     }
-    heroBackground: file(relativePath: { eq: $colorPreset }) {
+    heroBackground: file(relativePath: { eq: $heroBackgroundRelativePath }) {
       publicURL
     }
   }
