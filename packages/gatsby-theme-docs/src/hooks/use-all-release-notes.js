@@ -17,14 +17,6 @@ export const useAllReleaseNotes = () => {
   return queryResult.allReleaseNotePage.nodes;
 };
 
-export const useEarliestLatestDates = () => {
-  const allReleaseNotes = useAllReleaseNotes();
-  return {
-    latestDate: allReleaseNotes[0].date,
-    earliestDate: allReleaseNotes[allReleaseNotes.length - 1].date,
-  };
-};
-
 export const useReleaseNotesTopicsSet = () => {
   const allReleaseNotes = useAllReleaseNotes();
 
