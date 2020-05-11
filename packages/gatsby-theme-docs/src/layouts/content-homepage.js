@@ -72,7 +72,6 @@ LayoutContentHomepage.propTypes = {
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
-    tableOfContents: PropTypes.object.isRequired,
   }).isRequired,
   heroBackground: PropTypes.shape({
     publicURL: PropTypes.string.isRequired,

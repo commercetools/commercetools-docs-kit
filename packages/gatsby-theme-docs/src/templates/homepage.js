@@ -48,7 +48,6 @@ HomepageTemplate.propTypes = {
       isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
-      tableOfContents: PropTypes.object.isRequired,
     }).isRequired,
     heroBackground: PropTypes.shape({
       publicURL: PropTypes.string.isRequired,
@@ -66,7 +65,6 @@ export const query = graphql`
       isGlobalBeta
       excludeFromSearchIndex
       body
-      tableOfContents(maxDepth: 4)
     }
     heroBackground: file(relativePath: { eq: $heroBackgroundRelativePath }) {
       publicURL
