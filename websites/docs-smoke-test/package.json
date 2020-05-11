@@ -17,7 +17,7 @@
     "@commercetools-docs/gatsby-theme-code-examples": "3.0.0",
     "@commercetools-docs/gatsby-theme-constants": "3.0.0",
     "@commercetools-docs/gatsby-theme-docs": "3.0.0",
-    "gatsby": "2.21.11",
-    "gatsby-cli": "2.12.8"
+    "gatsby": "2.21.22",
+    "gatsby-cli": "2.12.16"
   }
 }
