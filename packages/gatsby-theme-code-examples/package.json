@@ -1,0 +1,38 @@
+{
+  "name": "@commercetools-docs/gatsby-theme-code-examples",
+  "description": "Gatsby theme for commercetools documentation providing the functionalities to render Code Examples in MDX",
+  "version": "3.0.0",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
+    "code",
+    "examples"
+  ],
+  "dependencies": {
+    "@commercetools-docs/ui-kit": "3.0.0",
+    "prop-types": "15.7.2"
+  },
+  "devDependencies": {
+    "gatsby": "2.21.11",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "peerDependencies": {
+    "@commercetools-docs/gatsby-theme-docs": "2.x",
+    "gatsby": "2.x",
+    "gatsby-source-filesystem": "2.x",
+    "react": "16.x",
+    "react-dom": "16.x"
+  }
+}

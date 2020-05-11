@@ -6,18 +6,18 @@
 
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
-const processTableOfContentFields = require('./src/utils/process-table-of-content-fields');
-const defaultOptions = require('./default-options');
+const processTableOfContentFields = require('./utils/process-table-of-content-fields');
+const defaultOptions = require('./utils/default-options');
+const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
-exports.onPreBootstrap = ({ reporter }) => {
+exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
   const requiredDirectories = [
     'src/data',
     'src/images',
@@ -27,10 +27,13 @@ exports.onPreBootstrap = ({ reporter }) => {
   ];
   requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
-      reporter.info(`creating the ${dir} directory`);
+      gatsbyApi.reporter.info(`creating the ${dir} directory`);
       fs.mkdirSync(dir);
     }
   });
+
+  // Bootstrap theme add-ons
+  bootstrapThemeAddOns(gatsbyApi, themeOptions);
 };
 
 exports.createResolvers = ({ createResolvers }) => {
@@ -69,7 +72,7 @@ const resolverPassthrough = ({
   return processResult(result);
 };
 
-exports.sourceNodes = ({ actions, schema }) => {
+exports.createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes(`
     type NavigationYaml implements Node @dontInfer {
       id: ID!
@@ -194,7 +197,7 @@ exports.sourceNodes = ({ actions, schema }) => {
 };
 
 exports.onCreateNode = (
-  { node, getNode, actions, createNodeId },
+  { node, getNode, actions, createNodeId, createContentDigest },
   themeOptions
 ) => {
   if (node.internal.type !== 'Mdx') {
@@ -239,10 +242,7 @@ exports.onCreateNode = (
       children: [],
       internal: {
         type: 'ReleaseNotePage',
-        contentDigest: crypto
-          .createHash(`md5`)
-          .update(JSON.stringify(releaseNotesFieldData))
-          .digest(`hex`),
+        contentDigest: createContentDigest(releaseNotesFieldData),
         content: JSON.stringify(releaseNotesFieldData),
         description: 'Release Note Pages',
       },
@@ -274,10 +274,7 @@ exports.onCreateNode = (
     children: [],
     internal: {
       type: 'ContentPage',
-      contentDigest: crypto
-        .createHash(`md5`)
-        .update(JSON.stringify(contentPageFieldData))
-        .digest(`hex`),
+      contentDigest: createContentDigest(contentPageFieldData),
       content: JSON.stringify(contentPageFieldData),
       description: 'Content Pages',
     },

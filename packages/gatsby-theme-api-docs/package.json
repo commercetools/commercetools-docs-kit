@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-api-docs",
   "description": "Gatsby theme for commercetools documentation API",
-  "version": "2.5.0",
+  "version": "3.0.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -12,26 +12,35 @@
     "type": "git",
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
+    "api-docs",
+    "raml-spec"
+  ],
   "dependencies": {
-    "@commercetools-docs/gatsby-transformer-mdx-introspection": "2.5.0",
-    "@commercetools-docs/gatsby-transformer-raml": "2.5.0",
-    "@commercetools-docs/ui-kit": "2.5.0",
+    "@commercetools-docs/gatsby-transformer-mdx-introspection": "3.0.0",
+    "@commercetools-docs/gatsby-transformer-raml": "3.0.0",
+    "@commercetools-docs/ui-kit": "3.0.0",
     "@commercetools-uikit/card": "10.18.4",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/spacings-inline": "10.18.4",
     "@commercetools-uikit/spacings-stack": "10.18.4",
-    "gatsby-source-filesystem": "2.3.0"
+    "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "@commercetools-docs/ramldoc-generator": "2.5.0",
+    "@commercetools-docs/ramldoc-generator": "3.0.0",
     "gatsby": "2.21.11",
-    "gatsby-cli": "2.12.8"
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
   "peerDependencies": {
+    "@commercetools-docs/gatsby-theme-docs": "2.x",
     "@emotion/core": "10.x",
     "@emotion/styled": "10.x",
     "gatsby": "2.x",
-    "gatsby-cli": "2.x",
+    "gatsby-source-filesystem": "2.x",
     "react": "16.x",
     "react-dom": "16.x"
   }

@@ -16,45 +16,6 @@ This repository contains all the necessary packages to build a documentation web
 
 This repository is managed as a monorepo, meaning it contains multiple (sub)packages located in the [`packages`](./packages) directory.
 
-```
-packages/
-  broken-link-checker/
-  gatsby-theme-api-docs/
-  gatsby-theme-docs/
-  gatsby-transformer-mdx-introspection/
-  gatsby-transformer-raml/
-  ui-kit/
-  writing-style/
-```
-
-### Overview of main packages
-
-Below a short description of the most import packages:
-
-#### [broken-link-checker](./packages/broken-link-checker)
-
-This package exposes a binary script to run a link checker against a given built website folder.
-
-#### [gatsby-theme-api-docs](./packages/gatsby-theme-api-docs)
-
-This package implements a Gatsby theme on top of the core theme [gatsby-theme-docs](./packages/gatsby-theme-docs) and is used to document an HTTP API that is defined using a RAML API specification.
-
-#### [gatsby-theme-docs](./packages/gatsby-theme-docs)
-
-This package is most **important** one and contains the core logic of a Gatsby theme. To develop a website, you need to use the `@commercetools-docs/gatsby-theme-docs` package.
-
-#### [gatsby-transformer-mdx-introspection](./packages/gatsby-transformer-mdx-introspection)
-
-This package analyzes MDX pages to find out which React components have been used on which page, and exposes that information as GatsbyJS GraphQL nodes.
-
-#### [gatsby-transformer-raml](./packages/gatsby-transformer-raml)
-
-This package exposes RAML documents into GraphQL nodes.
-
-#### [ui-kit](./packages/ui-kit)
-
-This package implements the core design system used across the Gatsby themes. It also provides basic React components to be used as building blocks.
-
 ## Getting started
 
 1. Clone the repository
@@ -108,43 +69,22 @@ We use `yarn` to manage the dependencies in the monorepo, using the `workspace` 
 
 We use the `Renovate App` to manage dependency updates. The app/bot will create Pull Requests whenever there are new versions of the dependencies used in the repository. To avoid too many Pull Requests, we have scheduled updates on Mondays only.
 
-## Cutting a Release
+## Adding changesets
 
-By default, all releases go to the `next` distribution channel and should be considered **prereleases**. This gives us a chance to test out a release before marking it **stable** in the `latest` distribution channel.
+commercetools-docs uses [changesets](https://github.com/atlassian/changesets) to do versioning and creating changelogs.
 
-#### Draft release notes in the Changelog
+As a contributor you need to add a changeset by running `yarn changeset`.
+The command will prompt to select the packages that should be bumped, their associated semver bump types and some markdown which will be inserted into the changelogs.
 
-1. Make sure that each merged PR that should be mentioned in the release changelog is labelled with one of the [labels](https://github.com/commercetools/commercetools-docs-kit/labels) named `Type: ...` to indicate what kind of change it is.
-2. Create a changelog entry for the release
+When opening a Pull Request, a `changeset-bot` checks that the Pull Request contains a changeset. A changeset is **NOT required**, as things like documentation or other changes in the repository itself generally don't need a changeset.
 
-- Copy `.env.template` and name it `.env`
-- You'll need an [access token for the GitHub API](https://help.github.com/articles/creating-an-access-token-for-command-line-use/). Save it to the environment variable: `GITHUB_AUTH`
-- Run `yarn changelog`. The command will find all the labeled pull requests merged since the last release and group them by the label and affected packages, and create a change log entry with all the changes and links to PRs and their authors. Copy and paste it to `CHANGELOG.md`.
-- The list of committers does not need to be included.
-- Check if some Pull Requests are referenced by different label types and decide if you want to keep only one entry or have it listed multiple times.
-- Add a four-space indented paragraph after each non-trivial list item, explaining what changed and why. For each breaking change also write who it affects and instructions for migrating existing code.
-- Maybe add some newlines here and there. Preview the result on GitHub to get a feel for it. Changelog generator output is a bit too terse for my taste, so try to make it visually pleasing and well grouped.
+## Releasing packages
 
-3. (_Optional_) Include "_Migrating from .._" instructions for the previous release in case you deem it necessary.
-4. Commit the changelog (usually by opening a new Pull Request).
+commercetools-docs uses [changesets](https://github.com/atlassian/changesets) to do versioning and publishing a release.
 
-#### Release the packages
+A [Changesets release GitHub Action](https://github.com/changesets/action) opens a `Version Packages` Pull Request whenever there are some changesets that have not been released yet.
 
-1. Make sure the `CHANGELOG.md` has been updated.
-2. Check that your npm account has access to the `@commercetools-docs` organization and that you are logged in with the `npm` command-line tool.
-3. Run `yarn release`: the packages will be bundled with Rollup first, then Lerna will prompt you to select the version that you would like to release (minor, major, pre-release, etc.).
-4. Wait a bit until Lerna bumps the versions, creates a commit and a tag and finally publishes the packages to npm (to the `next` distribution channel).
-5. After publishing, create a GitHub Release with the same text as the `CHANGELOG.md` entry. See previous Releases for inspiration.
-
-#### Moving the `latest` dist-tag to a release:
-
-After testing the `next` release on a production project, if the version is **stable** it can be finally moved to the `latest` distribution channel.
-
-```bash
-$ yarn release:from-next-to-latest
-```
-
-The command will promote the version published on `next` to the `latest` npm dist-tag, for each package.
+When the `Version Packages` Pull Request gets merged, the Changesets release GitHub Action will automatically trigger the release.
 
 ## Canary releases
 

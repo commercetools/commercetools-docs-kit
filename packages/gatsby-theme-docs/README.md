@@ -31,7 +31,6 @@ The project structure should contain at least the following files and folders:
     │   ├── files
     │   └── index.mdx
     ├── images
-    ├── code-examples
     └── data
         └── navigation.yaml
 ```
@@ -88,8 +87,6 @@ The project structure should contain at least the following files and folders:
 - `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.
 
 - `src/images`: this folder should contain images that are used within the `*.mdx` content files. Images in this folder are processed and optimized by Gatsby for lazy loading. Supported image formats are `JPEG` and `PNG`.
-
-- `src/code-examples`: instead of placing them into markdown fenced code blocks, code examples can be put into this folder and be loaded into the documentation using the `<CodeExample>` component.
 
 - `src/data/navigation.yaml`: this contains the website main navigation links. The structure of the file is a _list of chapters_ as following:
 
@@ -151,14 +148,48 @@ The available JSX components are:
 - `<Info>`: a notification message with info colors
 - `<Warning>`: a notification message with warning colors
 - `<Error>`: a notification message with error colors
-- `<CodeExample file="example.js" title="JavaScript Code Sample" />`: loading a code block from a file in `src/code-examples/`, supports all parameters of the fenced code block.
 - `<Anchor>`: inserts a custom anchor on any part of the document, can be used with headers, lists, in paragraphs, etc, it is used for navigating to specific parts of the document that are not headings. Also useful when a document has multiple headings with the same text or when heading names change and old third party links shall continue to work. Cannot override ID generation of the site generator, this adds additional named anchors and IDs have precedence.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
+## Using Theme with Add-Ons
+
+A theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
+
+Gatsby enables a child theme to use component shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are *only* loaded from the last theme in the Gatsby configuration. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on, allowing *multiple* add-ons to provide additional components to be available in MDX without having to manually import them into every page.
+
+When using add-on themes, a proxy export file will be generated in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)). This file provides all the exported components from the add-on packages. For a component to be exported by an add-on package it has to be exported from `index.js` in the add-on package root.
+
+**To safely configure theme add-ons, use the `configureThemeWithAddOns` function in the websites's `gatsby-config.js`:**
+
+```js
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+
+module.exports = {
+  plugins: [
+    ...configureThemeWithAddOns({
+      // Pass the normal theme options
+      websiteKey: 'my-website-key',
+      // Define and configure the add-on plugins instead of configuring them in the main plugins array.
+      addOns: [
+        '@commercetools-docs/gatsby-theme-foo',
+        {
+          resolve: '@commercetools-docs/gatsby-theme-bar',
+          options: {
+            // ...
+          },
+        },
+      ],
+    }),
+  ],
+};
+```
+
 ## Theme overrides
 
-The theme allows to inject functionalities to specific parts of it. [Read here](./src/overrides) for more information.
+The theme allows to inject custom functionalities to specific parts of it. [Read here](./src/overrides) for more information.
 
 ## API usage
 
