@@ -75,9 +75,9 @@ const ReleaseNotesListTemplate = (props) => {
       <LayoutReleaseNotesList
         pageContext={props.pageContext}
         pageData={props.data.contentPage}
-        handleOnFromFilterDateChange={setFromFilterDate}
-        handleOnToFilterDateChange={setToFilterDate}
-        handleOnFilterTopicsChange={setFilterTopics}
+        onFromFilterDateChange={setFromFilterDate}
+        onToFilterDateChange={setToFilterDate}
+        onFilterTopicsChange={setFilterTopics}
       >
         <Markdown.TypographyPage>
           <SEO

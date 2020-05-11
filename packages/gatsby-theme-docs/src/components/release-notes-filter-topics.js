@@ -23,7 +23,7 @@ const ClearAll = styled.button`
 
 const ReleaseNotesFilterTopics = (props) => {
   const topicsSet = useReleaseNotesTopicsSet();
-  const checkedTopics = Array.from(topicsSet).map((topic) => ({
+  const checkedTopics = topicsSet.map((topic) => ({
     name: topic,
     checked: false,
   }));
@@ -57,7 +57,7 @@ const ReleaseNotesFilterTopics = (props) => {
   function handleOnClearAll(e) {
     e.preventDefault();
     setTopics(topics.map((topic) => ({ ...topic, checked: false })));
-    props.handleOnFilterTopicsChange([]);
+    props.onFilterTopicsChange([]);
   }
 
   function handleOnTopicChange(e) {
@@ -69,14 +69,14 @@ const ReleaseNotesFilterTopics = (props) => {
       return topic;
     });
     setTopics(filterTopics);
-    props.handleOnFilterTopicsChange(
+    props.onFilterTopicsChange(
       filterTopics.filter((topic) => topic.checked).map((topic) => topic.name)
     );
   }
 };
 
 ReleaseNotesFilterTopics.propTypes = {
-  handleOnFilterTopicsChange: PropTypes.func.isRequired,
+  onFilterTopicsChange: PropTypes.func.isRequired,
 };
 
 export default ReleaseNotesFilterTopics;

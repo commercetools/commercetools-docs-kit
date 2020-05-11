@@ -54,18 +54,18 @@ const ReleaseNotesFilterDates = (props) => {
 
   function handleOnFromFilterDateChange(e) {
     setFromFilterDate(e.target.value);
-    props.handleOnFromFilterDateChange(e.target.value);
+    props.onFromFilterDateChange(e.target.value);
   }
 
   function handleOnToFilterDateChange(e) {
     setToFilterDate(e.target.value);
-    props.handleOnToFilterDateChange(e.target.value);
+    props.onToFilterDateChange(e.target.value);
   }
 };
 
 ReleaseNotesFilterDates.propTypes = {
-  handleOnFromFilterDateChange: PropTypes.func.isRequired,
-  handleOnToFilterDateChange: PropTypes.func.isRequired,
+  onFromFilterDateChange: PropTypes.func.isRequired,
+  onToFilterDateChange: PropTypes.func.isRequired,
 };
 
 export default ReleaseNotesFilterDates;

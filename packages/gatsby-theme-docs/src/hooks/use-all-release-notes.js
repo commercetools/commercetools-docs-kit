@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-const useAllReleaseNotes = () => {
+export const useAllReleaseNotes = () => {
   const queryResult = useStaticQuery(
     graphql`
       query GetAllReleaseNotesForFilters {
@@ -16,8 +16,6 @@ const useAllReleaseNotes = () => {
 
   return queryResult.allReleaseNotePage.nodes;
 };
-
-export default useAllReleaseNotes;
 
 export const useEarliestLatestDates = () => {
   const allReleaseNotes = useAllReleaseNotes();
@@ -36,5 +34,5 @@ export const useReleaseNotesTopicsSet = () => {
     obj.topics.forEach((topic) => topics.add(topic));
   });
 
-  return topics;
+  return Array.from(topics);
 };

@@ -70,12 +70,12 @@ const LayoutPageReleaseNotesFilters = (props) => {
             </ReleasesTitleLink>
 
             <ReleaseNotesFilterDates
-              handleOnFromFilterDateChange={props.handleOnFromFilterDateChange}
-              handleOnToFilterDateChange={props.handleOnToFilterDateChange}
+              onFromFilterDateChange={props.onFromFilterDateChange}
+              onToFilterDateChange={props.onToFilterDateChange}
             />
 
             <ReleaseNotesFilterTopics
-              handleOnFilterTopicsChange={props.handleOnFilterTopicsChange}
+              onFilterTopicsChange={props.onFilterTopicsChange}
             />
           </SpacingsStack>
         </StickyContainer>
@@ -86,9 +86,9 @@ const LayoutPageReleaseNotesFilters = (props) => {
 LayoutPageReleaseNotesFilters.displayName = 'LayoutPageReleaseNotesFilters';
 
 LayoutPageReleaseNotesFilters.propTypes = {
-  handleOnFromFilterDateChange: PropTypes.func.isRequired,
-  handleOnToFilterDateChange: PropTypes.func.isRequired,
-  handleOnFilterTopicsChange: PropTypes.func.isRequired,
+  onFromFilterDateChange: PropTypes.func.isRequired,
+  onToFilterDateChange: PropTypes.func.isRequired,
+  onFilterTopicsChange: PropTypes.func.isRequired,
 };
 
 export default LayoutPageReleaseNotesFilters;
