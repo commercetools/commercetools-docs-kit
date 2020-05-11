@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import { navigate, useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import moment from 'moment';
@@ -13,71 +14,22 @@ import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
 const ReleaseNotesListTemplate = (props) => {
-  const [releaseNotes, setReleaseNotes] = React.useState(
-    props.data.allReleaseNotePage ? props.data.allReleaseNotePage.nodes : []
-  );
-  const [fromFilterDate, setFromFilterDate] = React.useState('');
-  const [toFilterDate, setToFilterDate] = React.useState('');
-  const [filterTopics, setFilterTopics] = React.useState([]);
-
-  React.useEffect(() => {
-    // will not execute on first render
-    if (fromFilterDate || toFilterDate || filterTopics.length > 0) {
-      setReleaseNotes(
-        props.data.allReleaseNotePage.nodes.filter((releaseNote) => {
-          let releaseNoteDateIsSameOrAfterFromFilterDate = true;
-          let releaseNoteDateIsSameOrBeforeToFilterDate = true;
-          let foundTopicInFilter = true;
-
-          if (fromFilterDate) {
-            releaseNoteDateIsSameOrAfterFromFilterDate = moment(
-              releaseNote.date,
-              'D MMMM YYYY'
-            ).isSameOrAfter(moment(fromFilterDate, 'YYYY-MM-DD'));
-          }
-
-          if (toFilterDate) {
-            releaseNoteDateIsSameOrBeforeToFilterDate = moment(
-              releaseNote.date,
-              'D MMMM YYYY'
-            ).isSameOrBefore(moment(toFilterDate, 'YYYY-MM-DD'));
-          }
-
-          if (filterTopics.length > 0) {
-            foundTopicInFilter = releaseNote.topics.find((topic) =>
-              filterTopics.includes(topic)
-            );
-          }
-
-          return (
-            releaseNoteDateIsSameOrAfterFromFilterDate &&
-            releaseNoteDateIsSameOrBeforeToFilterDate &&
-            foundTopicInFilter
-          );
-        })
-      );
-    } else if (
-      releaseNotes.length !== props.data.allReleaseNotePage.nodes.length
-    ) {
-      // this is not the first render but filters are empty
-      setReleaseNotes(props.data.allReleaseNotePage.nodes);
-    }
-  }, [
-    releaseNotes.length,
+  const location = useLocation();
+  const queryParameters = extractQueryParameters(location);
+  // next is to move navigation to ReleaseNotesFilterDates and ReleaseNotesFilterTopics component
+  const filteredReleases = filterReleases(
     props.data.allReleaseNotePage.nodes,
-    fromFilterDate,
-    toFilterDate,
-    filterTopics,
-  ]);
+    queryParameters
+  );
 
   return (
     <ThemeProvider>
       <LayoutReleaseNotesList
         pageContext={props.pageContext}
         pageData={props.data.contentPage}
-        onFromFilterDateChange={setFromFilterDate}
-        onToFilterDateChange={setToFilterDate}
-        onFilterTopicsChange={setFilterTopics}
+        onFromFilterDateChange={handleOnFromFilterDateChange}
+        onToFilterDateChange={handleOnToFilterDateChange}
+        onFilterTopicsChange={handleOnFilterTopicsChange}
       >
         <Markdown.TypographyPage>
           <SEO
@@ -93,7 +45,7 @@ const ReleaseNotesListTemplate = (props) => {
           </MDXProvider>
           <div>
             <SpacingsStack>
-              {releaseNotes.map((releaseNote) => (
+              {filteredReleases.map((releaseNote) => (
                 <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
                   <Markdown.TypographyPage>
                     <section>
@@ -108,6 +60,94 @@ const ReleaseNotesListTemplate = (props) => {
       </LayoutReleaseNotesList>
     </ThemeProvider>
   );
+
+  function extractQueryParameters(loc) {
+    const queryString = loc.search.substring(1);
+
+    if (queryString) {
+      const keyValueArray = queryString.split('&');
+      return {
+        fromFilterDate: decodeURIComponent(keyValueArray[0].split('=')[1]),
+        toFilterDate: decodeURIComponent(keyValueArray[1].split('=')[1]),
+        filterTopics: JSON.parse(
+          decodeURIComponent(keyValueArray[2].split('=')[1])
+        ),
+      };
+    }
+
+    return {
+      fromFilterDate: '',
+      toFilterDate: '',
+      filterTopics: [],
+    };
+  }
+
+  function filterReleases(releases, filters) {
+    if (
+      filters.fromFilterDate ||
+      filters.toFilterDate ||
+      filters.filterTopics.length > 0
+    ) {
+      return releases.filter((releaseNote) => {
+        let releaseNoteDateIsSameOrAfterFromFilterDate = true;
+        let releaseNoteDateIsSameOrBeforeToFilterDate = true;
+        let foundTopicInFilter = true;
+
+        if (filters.fromFilterDate) {
+          releaseNoteDateIsSameOrAfterFromFilterDate = moment(
+            releaseNote.date,
+            'D MMMM YYYY'
+          ).isSameOrAfter(moment(filters.fromFilterDate, 'YYYY-MM-DD'));
+        }
+
+        if (filters.toFilterDate) {
+          releaseNoteDateIsSameOrBeforeToFilterDate = moment(
+            releaseNote.date,
+            'D MMMM YYYY'
+          ).isSameOrBefore(moment(filters.toFilterDate, 'YYYY-MM-DD'));
+        }
+
+        if (filters.filterTopics.length > 0) {
+          foundTopicInFilter = releaseNote.topics.find((topic) =>
+            filters.filterTopics.includes(topic)
+          );
+        }
+
+        return (
+          releaseNoteDateIsSameOrAfterFromFilterDate &&
+          releaseNoteDateIsSameOrBeforeToFilterDate &&
+          foundTopicInFilter
+        );
+      });
+    }
+
+    return releases;
+  }
+
+  function handleOnFromFilterDateChange(fromFilterDate = '') {
+    navigateWithFilters({ fromFilterDate });
+  }
+
+  function handleOnToFilterDateChange(toFilterDate = '') {
+    navigateWithFilters({ toFilterDate });
+  }
+
+  function handleOnFilterTopicsChange(filterTopics = []) {
+    navigateWithFilters({ filterTopics: JSON.stringify(filterTopics) });
+  }
+
+  function navigateWithFilters(filters) {
+    const currentQueryParameters = extractQueryParameters(location);
+    const newQueryParameters = { ...currentQueryParameters, ...filters };
+
+    navigate(
+      `?fromFilterDate=${encodeURIComponent(
+        newQueryParameters.fromFilterDate
+      )}&toFilterDate=${encodeURIComponent(
+        newQueryParameters.toFilterDate
+      )}&filterTopics=${encodeURIComponent(newQueryParameters.filterTopics)}`
+    );
+  }
 };
 
 ReleaseNotesListTemplate.propTypes = {
