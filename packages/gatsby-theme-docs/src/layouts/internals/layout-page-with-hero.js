@@ -28,23 +28,21 @@ const Container = styled.div`
 `;
 // This wrapper element increases the padding for the "normal" content page.
 const ContentWrapper = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.s};
-
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    padding: 0 ${designSystem.dimensions.spacings.xxl};
+    padding: 0 ${designSystem.dimensions.spacings.m};
   }
 `;
 // Constraint the heading to the "page content" width.
 const Title = styled(Markdown.H1)`
-  padding: ${designSystem.dimensions.spacings.big}
+  padding: ${designSystem.dimensions.spacings.m}
     ${designSystem.dimensions.spacings.m};
   width: calc(100% - ${designSystem.dimensions.spacings.m} * 2);
   max-width: ${designSystem.dimensions.widths.pageContent};
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     width: calc(100% - ${designSystem.dimensions.spacings.large} * 2);
-    padding: ${designSystem.dimensions.spacings.big}
-      ${designSystem.dimensions.spacings.large};
+    padding: ${designSystem.dimensions.spacings.xl}
+      ${designSystem.dimensions.spacings.xl};
   }
 `;
 
