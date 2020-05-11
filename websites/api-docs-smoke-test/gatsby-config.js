@@ -13,7 +13,6 @@ module.exports = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'api-docs-smoke-test',
-      websitePrimaryColor: 'goldenrod',
       excludeFromSearchIndex: isProd,
       addOns: [
         {

@@ -40,7 +40,10 @@ const LayoutContentHomepage = (props) => {
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
         <LayoutPageWrapper id="top">
-          <LayoutPageWithHero title={props.pageData.title}>
+          <LayoutPageWithHero
+            title={props.pageData.title}
+            heroBackgroundURL={props.heroBackground.publicURL}
+          >
             <LayoutPage>
               <LayoutPageContent>
                 <PageContentInset id="body-content">
@@ -70,6 +73,9 @@ LayoutContentHomepage.propTypes = {
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,
+  }).isRequired,
+  heroBackground: PropTypes.shape({
+    publicURL: PropTypes.string.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
 };

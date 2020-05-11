@@ -12,6 +12,7 @@ const slugify = require('slugify');
 const processTableOfContentFields = require('./utils/process-table-of-content-fields');
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
+const colorPresets = require('./color-presets');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -206,6 +207,7 @@ exports.onCreateNode = (
   }
 
   const pluginOptions = { ...defaultOptions, ...themeOptions };
+  const colorPreset = colorPresets[pluginOptions.colorPreset];
 
   const parent = getNode(node.parent);
 
@@ -222,7 +224,7 @@ exports.onCreateNode = (
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
-      websitePrimaryColor: pluginOptions.websitePrimaryColor,
+      websitePrimaryColor: colorPreset.value.primaryColor,
       isGlobalBeta: Boolean(pluginOptions.beta),
       excludeFromSearchIndex:
         Boolean(node.frontmatter.excludeFromSearchIndex) ||
@@ -260,7 +262,7 @@ exports.onCreateNode = (
   const contentPageFieldData = {
     slug: trimTrailingSlash(slug) || '/',
     title: node.frontmatter.title,
-    websitePrimaryColor: pluginOptions.websitePrimaryColor,
+    websitePrimaryColor: colorPreset.value.primaryColor,
     isGlobalBeta: Boolean(pluginOptions.beta),
     excludeFromSearchIndex:
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
@@ -372,12 +374,18 @@ async function createContentPages(
       },
     };
     switch (slug) {
-      case '/':
+      case '/': {
+        const colorPreset = colorPresets[pluginOptions.colorPreset];
         actions.createPage({
           ...pageData,
           component: require.resolve('./src/templates/homepage.js'),
+          context: {
+            ...pageData.context,
+            colorPreset: `${pluginOptions.colorPreset}/${colorPreset.value.heroBackgroundName}`,
+          },
         });
         break;
+      }
       case '/releases':
         actions.createPage({
           ...pageData,

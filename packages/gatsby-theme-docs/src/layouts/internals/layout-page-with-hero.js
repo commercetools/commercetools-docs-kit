@@ -4,16 +4,12 @@ import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 
-// TODO: for now we assume that the website provides a file `homepage-hero.svg`
-// in the `static` folder.
-const homepageHeroSvgUri = '/homepage-hero.svg';
-
 // The container is used to render a background image with for the full page width.
 const Container = styled.div`
   grid-area: page-header;
   position: relative;
   background-color: ${(props) => props.theme.colors.light.primary};
-  background-image: url('${homepageHeroSvgUri}');
+  background-image: ${(props) => `url('${props.heroBackgroundURL}')`};
   background-attachment: fixed;
   background-size: cover;
 
@@ -30,6 +26,9 @@ const Container = styled.div`
 const ContentWrapper = styled.div`
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     padding: 0 ${designSystem.dimensions.spacings.m};
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    padding: 0;
   }
 `;
 // Constraint the heading to the "page content" width.
@@ -48,7 +47,7 @@ const Title = styled(Markdown.H1)`
 
 const LayoutPageWithHero = (props) => (
   <>
-    <Container>
+    <Container heroBackgroundURL={props.heroBackgroundURL}>
       <ThemeProvider
         theme={{
           colors: {
@@ -66,6 +65,7 @@ const LayoutPageWithHero = (props) => (
 );
 LayoutPageWithHero.propTypes = {
   title: PropTypes.string.isRequired,
+  heroBackgroundURL: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 

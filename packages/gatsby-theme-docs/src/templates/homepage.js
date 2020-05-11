@@ -13,6 +13,7 @@ const HomepageTemplate = (props) => (
     <LayoutContentHomepage
       pageContext={props.pageContext}
       pageData={props.data.contentPage}
+      heroBackground={props.data.heroBackground}
     >
       <MDXProvider components={markdownComponents}>
         <Markdown.TypographyPage>
@@ -49,12 +50,15 @@ HomepageTemplate.propTypes = {
       body: PropTypes.string.isRequired,
       tableOfContents: PropTypes.object.isRequired,
     }).isRequired,
+    heroBackground: PropTypes.shape({
+      publicURL: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 export default HomepageTemplate;
 
 export const query = graphql`
-  query QueryHomepage($slug: String!) {
+  query QueryHomepage($slug: String!, $colorPreset: String!) {
     contentPage(slug: { eq: $slug }) {
       title
       websitePrimaryColor
@@ -63,6 +67,9 @@ export const query = graphql`
       excludeFromSearchIndex
       body
       tableOfContents(maxDepth: 4)
+    }
+    heroBackground: file(relativePath: { eq: $colorPreset }) {
+      publicURL
     }
   }
 `;

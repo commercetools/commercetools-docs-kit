@@ -49,6 +49,14 @@ module.exports = (themeOptions = {}) => {
             node { etc...
       */
 
+      // Color presets
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'colorPresets',
+          path: path.join(__dirname, `./color-presets`),
+        },
+      },
       // Default configuration data files (.yaml)
       {
         resolve: 'gatsby-source-filesystem',
