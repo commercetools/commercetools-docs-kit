@@ -8,10 +8,12 @@ import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 const Container = styled.div`
   grid-area: page-header;
   position: relative;
-  background-color: ${(props) => props.theme.colors.light.primary};
-  background-image: ${(props) => `url('${props.heroBackgroundURL}')`};
   background-attachment: fixed;
   background-size: cover;
+  background-color: ${(props) => props.theme.colors.light.primary};
+
+  /* stylelint-disable-next-line function-whitespace-after */
+  background-image: ${(props) => `url('${props.heroBackgroundURL}')`};
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     background-size: auto;
