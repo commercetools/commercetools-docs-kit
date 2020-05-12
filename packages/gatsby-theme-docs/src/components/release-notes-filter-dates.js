@@ -5,6 +5,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import DateInput from '@commercetools-uikit/date-input';
 import { useLocation } from '@reach/router';
 import navigateWithFilters from '../utils/navigate-with-filters';
+import extractQueryParameters from '../utils/extract-query-parameters';
 
 export const FilterTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
@@ -19,8 +20,7 @@ const DateLabel = styled.label`
 
 const ReleaseNotesFilterDates = () => {
   const location = useLocation();
-  const [fromFilterDate, setFromFilterDate] = React.useState('');
-  const [toFilterDate, setToFilterDate] = React.useState('');
+  const { fromFilterDate, toFilterDate } = extractQueryParameters(location);
 
   return (
     <SpacingsStack scale="s">
@@ -31,7 +31,7 @@ const ReleaseNotesFilterDates = () => {
         <div>
           <DateInput
             id="from-filter-date"
-            value={fromFilterDate}
+            value={fromFilterDate || ''}
             onChange={handleOnFromFilterDateChange}
           />
         </div>
@@ -42,7 +42,7 @@ const ReleaseNotesFilterDates = () => {
         <div>
           <DateInput
             id="to-filter-date"
-            value={toFilterDate}
+            value={toFilterDate || ''}
             onChange={handleOnToFilterDateChange}
           />
         </div>
@@ -51,12 +51,10 @@ const ReleaseNotesFilterDates = () => {
   );
 
   function handleOnFromFilterDateChange(e) {
-    setFromFilterDate(e.target.value);
     navigateWithFilters({ fromFilterDate: e.target.value }, location);
   }
 
   function handleOnToFilterDateChange(e) {
-    setToFilterDate(e.target.value);
     navigateWithFilters({ toFilterDate: e.target.value }, location);
   }
 };

@@ -6,6 +6,7 @@ import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { useLocation } from '@reach/router';
 import navigateWithFilters from '../utils/navigate-with-filters';
+import extractQueryParameters from '../utils/extract-query-parameters';
 import { useReleaseNotesTopicsSet } from '../hooks/use-all-release-notes';
 import { FilterTitle } from './release-notes-filter-dates';
 
@@ -24,13 +25,22 @@ const ClearAll = styled.button`
 
 const ReleaseNotesFilterTopics = () => {
   const location = useLocation();
+  const { filterTopics } = extractQueryParameters(location);
   const topicsSet = useReleaseNotesTopicsSet();
   const checkedTopics = topicsSet.map((topic) => ({
     name: topic,
-    checked: false,
+    checked: isChecked(filterTopics, topic),
   }));
 
-  const [topics, setTopics] = React.useState(checkedTopics);
+  function isChecked(filterTopicsArray, topic) {
+    if (filterTopicsArray) {
+      return Array.isArray(filterTopicsArray)
+        ? filterTopicsArray.includes(topic)
+        : topic === filterTopicsArray;
+    }
+
+    return false;
+  }
 
   return (
     <Container>
@@ -40,7 +50,7 @@ const ReleaseNotesFilterTopics = () => {
           <ClearAll onClick={handleOnClearAll}>Clear all</ClearAll>
         </SpacingsInline>
         <SpacingsStack scale="s">
-          {topics.map((topic) => (
+          {checkedTopics.map((topic) => (
             <div key={topic.name}>
               <CheckboxInput
                 value={topic.name}
@@ -56,9 +66,7 @@ const ReleaseNotesFilterTopics = () => {
     </Container>
   );
 
-  function handleOnClearAll(e) {
-    e.preventDefault();
-    setTopics(topics.map((topic) => ({ ...topic, checked: false })));
+  function handleOnClearAll() {
     navigateWithFilters(
       {
         filterTopics: [],
@@ -68,17 +76,16 @@ const ReleaseNotesFilterTopics = () => {
   }
 
   function handleOnTopicChange(e) {
-    const filterTopics = topics.map((topic) => {
+    const filterdTopics = checkedTopics.map((topic) => {
       if (topic.name === e.target.value) {
         return { ...topic, checked: !topic.checked };
       }
 
       return topic;
     });
-    setTopics(filterTopics);
     navigateWithFilters(
       {
-        filterTopics: filterTopics
+        filterTopics: filterdTopics
           .filter((topic) => topic.checked)
           .map((topic) => topic.name),
       },

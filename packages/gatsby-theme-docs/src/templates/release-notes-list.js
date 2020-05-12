@@ -17,7 +17,6 @@ import markdownComponents from '../markdown-components';
 const ReleaseNotesListTemplate = (props) => {
   const location = useLocation();
   const queryParameters = extractQueryParameters(location);
-  // next is to move navigation to ReleaseNotesFilterDates and ReleaseNotesFilterTopics component
   const filteredReleases = filterReleases(
     props.data.allReleaseNotePage.nodes,
     queryParameters
@@ -63,7 +62,7 @@ const ReleaseNotesListTemplate = (props) => {
     if (
       filters.fromFilterDate ||
       filters.toFilterDate ||
-      filters.filterTopics.length > 0
+      filters.filterTopics
     ) {
       return releases.filter((releaseNote) => {
         let releaseNoteDateIsSameOrAfterFromFilterDate = true;
@@ -84,9 +83,13 @@ const ReleaseNotesListTemplate = (props) => {
           ).isSameOrBefore(moment(filters.toFilterDate, 'YYYY-MM-DD'));
         }
 
-        if (filters.filterTopics.length > 0) {
+        if (filters.filterTopics && Array.isArray(filters.filterTopics)) {
           foundTopicInFilter = releaseNote.topics.find((topic) =>
             filters.filterTopics.includes(topic)
+          );
+        } else if (filters.filterTopics) {
+          foundTopicInFilter = releaseNote.topics.find(
+            (topic) => filters.filterTopics === topic
           );
         }
 
