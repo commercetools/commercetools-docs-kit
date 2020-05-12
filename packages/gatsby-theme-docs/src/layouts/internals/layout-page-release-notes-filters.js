@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import styled from '@emotion/styled';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
@@ -54,7 +53,7 @@ const ReleasesTitleLink = styled.a`
   }
 `;
 
-const LayoutPageReleaseNotesFilters = (props) => {
+const LayoutPageReleaseNotesFilters = () => {
   return (
     <IntlProvider locale="en">
       <GridContainer>
@@ -69,14 +68,9 @@ const LayoutPageReleaseNotesFilters = (props) => {
               </SpacingsInline>
             </ReleasesTitleLink>
 
-            <ReleaseNotesFilterDates
-              onFromFilterDateChange={props.onFromFilterDateChange}
-              onToFilterDateChange={props.onToFilterDateChange}
-            />
+            <ReleaseNotesFilterDates />
 
-            <ReleaseNotesFilterTopics
-              onFilterTopicsChange={props.onFilterTopicsChange}
-            />
+            <ReleaseNotesFilterTopics />
           </SpacingsStack>
         </StickyContainer>
       </GridContainer>
@@ -84,11 +78,5 @@ const LayoutPageReleaseNotesFilters = (props) => {
   );
 };
 LayoutPageReleaseNotesFilters.displayName = 'LayoutPageReleaseNotesFilters';
-
-LayoutPageReleaseNotesFilters.propTypes = {
-  onFromFilterDateChange: PropTypes.func.isRequired,
-  onToFilterDateChange: PropTypes.func.isRequired,
-  onFilterTopicsChange: PropTypes.func.isRequired,
-};
 
 export default LayoutPageReleaseNotesFilters;

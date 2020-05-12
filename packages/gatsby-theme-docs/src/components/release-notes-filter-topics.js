@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import { useLocation } from '@reach/router';
+import navigateWithFilters from '../utils/navigate-with-filters';
 import { useReleaseNotesTopicsSet } from '../hooks/use-all-release-notes';
 import { FilterTitle } from './release-notes-filter-dates';
 
@@ -21,7 +22,8 @@ const ClearAll = styled.button`
   text-decoration: none;
 `;
 
-const ReleaseNotesFilterTopics = (props) => {
+const ReleaseNotesFilterTopics = () => {
+  const location = useLocation();
   const topicsSet = useReleaseNotesTopicsSet();
   const checkedTopics = topicsSet.map((topic) => ({
     name: topic,
@@ -57,7 +59,12 @@ const ReleaseNotesFilterTopics = (props) => {
   function handleOnClearAll(e) {
     e.preventDefault();
     setTopics(topics.map((topic) => ({ ...topic, checked: false })));
-    props.onFilterTopicsChange([]);
+    navigateWithFilters(
+      {
+        filterTopics: [],
+      },
+      location
+    );
   }
 
   function handleOnTopicChange(e) {
@@ -69,14 +76,15 @@ const ReleaseNotesFilterTopics = (props) => {
       return topic;
     });
     setTopics(filterTopics);
-    props.onFilterTopicsChange(
-      filterTopics.filter((topic) => topic.checked).map((topic) => topic.name)
+    navigateWithFilters(
+      {
+        filterTopics: filterTopics
+          .filter((topic) => topic.checked)
+          .map((topic) => topic.name),
+      },
+      location
     );
   }
-};
-
-ReleaseNotesFilterTopics.propTypes = {
-  onFilterTopicsChange: PropTypes.func.isRequired,
 };
 
 export default ReleaseNotesFilterTopics;

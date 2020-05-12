@@ -11,7 +11,6 @@ import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
 import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import extractQueryParameters from '../utils/extract-query-parameters';
-import navigateWithFilters from '../utils/navigate-with-filters';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
@@ -29,9 +28,6 @@ const ReleaseNotesListTemplate = (props) => {
       <LayoutReleaseNotesList
         pageContext={props.pageContext}
         pageData={props.data.contentPage}
-        onFromFilterDateChange={handleOnFromFilterDateChange}
-        onToFilterDateChange={handleOnToFilterDateChange}
-        onFilterTopicsChange={handleOnFilterTopicsChange}
       >
         <Markdown.TypographyPage>
           <SEO
@@ -103,18 +99,6 @@ const ReleaseNotesListTemplate = (props) => {
     }
 
     return releases;
-  }
-
-  function handleOnFromFilterDateChange(fromFilterDate = '') {
-    navigateWithFilters({ fromFilterDate }, location);
-  }
-
-  function handleOnToFilterDateChange(toFilterDate = '') {
-    navigateWithFilters({ toFilterDate }, location);
-  }
-
-  function handleOnFilterTopicsChange(filterTopics = []) {
-    navigateWithFilters({ filterTopics }, location);
   }
 };
 

@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import DateInput from '@commercetools-uikit/date-input';
+import { useLocation } from '@reach/router';
+import navigateWithFilters from '../utils/navigate-with-filters';
 
 export const FilterTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
@@ -16,7 +17,8 @@ const DateLabel = styled.label`
   line-height: ${designSystem.typography.lineHeights.small};
 `;
 
-const ReleaseNotesFilterDates = (props) => {
+const ReleaseNotesFilterDates = () => {
+  const location = useLocation();
   const [fromFilterDate, setFromFilterDate] = React.useState('');
   const [toFilterDate, setToFilterDate] = React.useState('');
 
@@ -50,18 +52,13 @@ const ReleaseNotesFilterDates = (props) => {
 
   function handleOnFromFilterDateChange(e) {
     setFromFilterDate(e.target.value);
-    props.onFromFilterDateChange(e.target.value);
+    navigateWithFilters({ fromFilterDate: e.target.value }, location);
   }
 
   function handleOnToFilterDateChange(e) {
     setToFilterDate(e.target.value);
-    props.onToFilterDateChange(e.target.value);
+    navigateWithFilters({ toFilterDate: e.target.value }, location);
   }
-};
-
-ReleaseNotesFilterDates.propTypes = {
-  onFromFilterDateChange: PropTypes.func.isRequired,
-  onToFilterDateChange: PropTypes.func.isRequired,
 };
 
 export default ReleaseNotesFilterDates;
