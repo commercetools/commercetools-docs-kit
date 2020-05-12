@@ -21,6 +21,7 @@ const ClearAll = styled.button`
   color: ${designSystem.colors.light.textInfo};
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   text-decoration: none;
+  background-color: transparent;
 `;
 
 const ReleaseNotesFilterTopics = () => {
@@ -47,7 +48,9 @@ const ReleaseNotesFilterTopics = () => {
       <SpacingsStack>
         <SpacingsInline alignItems="center" justifyContent="space-between">
           <FilterTitle>Filter By Topics</FilterTitle>
-          <ClearAll onClick={handleOnClearAll}>Clear all</ClearAll>
+          <ClearAll onClick={handleOnClearAll} aria-label="Clear all">
+            Clear all
+          </ClearAll>
         </SpacingsInline>
         <SpacingsStack scale="s">
           {checkedTopics.map((topic) => (

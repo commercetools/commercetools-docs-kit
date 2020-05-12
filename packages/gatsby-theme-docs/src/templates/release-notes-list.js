@@ -4,13 +4,13 @@ import { graphql } from 'gatsby';
 import { useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import moment from 'moment';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
 import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import extractQueryParameters from '../utils/extract-query-parameters';
+import filterReleases from '../utils/filter-releases';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
@@ -57,52 +57,6 @@ const ReleaseNotesListTemplate = (props) => {
       </LayoutReleaseNotesList>
     </ThemeProvider>
   );
-
-  function filterReleases(releases, filters) {
-    if (
-      filters.fromFilterDate ||
-      filters.toFilterDate ||
-      filters.filterTopics
-    ) {
-      return releases.filter((releaseNote) => {
-        let releaseNoteDateIsSameOrAfterFromFilterDate = true;
-        let releaseNoteDateIsSameOrBeforeToFilterDate = true;
-        let foundTopicInFilter = true;
-
-        if (filters.fromFilterDate) {
-          releaseNoteDateIsSameOrAfterFromFilterDate = moment(
-            releaseNote.date,
-            'D MMMM YYYY'
-          ).isSameOrAfter(moment(filters.fromFilterDate, 'YYYY-MM-DD'));
-        }
-
-        if (filters.toFilterDate) {
-          releaseNoteDateIsSameOrBeforeToFilterDate = moment(
-            releaseNote.date,
-            'D MMMM YYYY'
-          ).isSameOrBefore(moment(filters.toFilterDate, 'YYYY-MM-DD'));
-        }
-
-        if (filters.filterTopics && Array.isArray(filters.filterTopics)) {
-          foundTopicInFilter = releaseNote.topics.find((topic) =>
-            filters.filterTopics.includes(topic)
-          );
-        } else if (filters.filterTopics) {
-          foundTopicInFilter = releaseNote.topics.find(
-            (topic) => filters.filterTopics === topic
-          );
-        }
-
-        return (
-          releaseNoteDateIsSameOrAfterFromFilterDate &&
-          releaseNoteDateIsSameOrBeforeToFilterDate &&
-          foundTopicInFilter
-        );
-      });
-    }
-
-    return releases;
-  }
 };
 
 ReleaseNotesListTemplate.propTypes = {
