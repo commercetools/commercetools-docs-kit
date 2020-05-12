@@ -2,6 +2,7 @@
   "recurse": true,
   "silent": true,
   "skip": [
+    "https://commercetools.com/",
     "/getting-started",
     "/login",
     "/http-api",
