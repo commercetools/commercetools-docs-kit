@@ -26,12 +26,7 @@
     "cypress-open": "cross-env NODE_ENV=test cypress open",
     "check-links": "npx linkinator ./public",
     "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "prerelease": "yarn prebuild",
-    "prerelease:canary": "yarn prerelease",
-    "release": "changeset publish",
-    "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes --force-publish \"*\""
+    "changeset": "changeset"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
