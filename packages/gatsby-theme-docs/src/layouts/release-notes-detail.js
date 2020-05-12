@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { navigate } from '@reach/router';
+import { designSystem, Link as StyledLink } from '@commercetools-docs/ui-kit';
 import { AngleLeftIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { Link } from '../components';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -50,7 +50,13 @@ const LayoutReleaseNotesDetail = (props) => {
           <LayoutPageHeader>
             <SpacingsInline alignItems="center">
               <AngleLeftIcon size="medium" color="primary" />
-              <Link href="/releases" noUnderline={true}>
+              <StyledLink
+                href="#"
+                css={css`
+                  text-decoration: none;
+                `}
+                onClick={handleOnBackToAllReleases}
+              >
                 <span
                   css={css`
                     font-size: ${designSystem.typography.fontSizes.small};
@@ -58,7 +64,7 @@ const LayoutReleaseNotesDetail = (props) => {
                 >
                   {`All Release Notes`}
                 </span>
-              </Link>
+              </StyledLink>
             </SpacingsInline>
             <ReleaseNotePageTitle>{props.pageData.title}</ReleaseNotePageTitle>
           </LayoutPageHeader>
@@ -73,6 +79,11 @@ const LayoutReleaseNotesDetail = (props) => {
       </LayoutMain>
     </LayoutApplication>
   );
+
+  function handleOnBackToAllReleases(e) {
+    e.preventDefault();
+    navigate(-1);
+  }
 };
 LayoutReleaseNotesDetail.displayName = 'LayoutReleaseNotesDetail';
 LayoutReleaseNotesDetail.propTypes = {
