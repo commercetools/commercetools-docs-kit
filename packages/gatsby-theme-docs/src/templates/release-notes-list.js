@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { navigate, useLocation } from '@reach/router';
+import { useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import moment from 'moment';
@@ -10,6 +10,8 @@ import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
 import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
+import extractQueryParameters from '../utils/extract-query-parameters';
+import navigateWithFilters from '../utils/navigate-with-filters';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
@@ -61,27 +63,6 @@ const ReleaseNotesListTemplate = (props) => {
     </ThemeProvider>
   );
 
-  function extractQueryParameters(loc) {
-    const queryString = loc.search.substring(1);
-
-    if (queryString) {
-      const keyValueArray = queryString.split('&');
-      return {
-        fromFilterDate: decodeURIComponent(keyValueArray[0].split('=')[1]),
-        toFilterDate: decodeURIComponent(keyValueArray[1].split('=')[1]),
-        filterTopics: JSON.parse(
-          decodeURIComponent(keyValueArray[2].split('=')[1])
-        ),
-      };
-    }
-
-    return {
-      fromFilterDate: '',
-      toFilterDate: '',
-      filterTopics: [],
-    };
-  }
-
   function filterReleases(releases, filters) {
     if (
       filters.fromFilterDate ||
@@ -125,28 +106,15 @@ const ReleaseNotesListTemplate = (props) => {
   }
 
   function handleOnFromFilterDateChange(fromFilterDate = '') {
-    navigateWithFilters({ fromFilterDate });
+    navigateWithFilters({ fromFilterDate }, location);
   }
 
   function handleOnToFilterDateChange(toFilterDate = '') {
-    navigateWithFilters({ toFilterDate });
+    navigateWithFilters({ toFilterDate }, location);
   }
 
   function handleOnFilterTopicsChange(filterTopics = []) {
-    navigateWithFilters({ filterTopics: JSON.stringify(filterTopics) });
-  }
-
-  function navigateWithFilters(filters) {
-    const currentQueryParameters = extractQueryParameters(location);
-    const newQueryParameters = { ...currentQueryParameters, ...filters };
-
-    navigate(
-      `?fromFilterDate=${encodeURIComponent(
-        newQueryParameters.fromFilterDate
-      )}&toFilterDate=${encodeURIComponent(
-        newQueryParameters.toFilterDate
-      )}&filterTopics=${encodeURIComponent(newQueryParameters.filterTopics)}`
-    );
+    navigateWithFilters({ filterTopics }, location);
   }
 };
 
