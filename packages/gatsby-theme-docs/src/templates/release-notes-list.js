@@ -8,11 +8,11 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
+import { SEO, ThemeProvider } from '../components';
+import markdownComponents from '../markdown-components';
 import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import extractQueryParameters from '../utils/extract-query-parameters';
 import filterReleases from '../utils/filter-releases';
-import { SEO, ThemeProvider } from '../components';
-import markdownComponents from '../markdown-components';
 
 const ReleaseNotesListTemplate = (props) => {
   const location = useLocation();
