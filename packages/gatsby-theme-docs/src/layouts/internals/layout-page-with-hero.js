@@ -24,15 +24,6 @@ const Container = styled.div`
 
   /* License with attribution of the background by SVGBackgrounds.com */
 `;
-// This wrapper element increases the padding for the "normal" content page.
-const ContentWrapper = styled.div`
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    padding: 0 ${designSystem.dimensions.spacings.m};
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    padding: 0;
-  }
-`;
 // Constraint the heading to the "page content" width.
 const Title = styled(Markdown.H1)`
   padding: ${designSystem.dimensions.spacings.m}
@@ -44,6 +35,37 @@ const Title = styled(Markdown.H1)`
     width: calc(100% - ${designSystem.dimensions.spacings.large} * 2);
     padding: ${designSystem.dimensions.spacings.xl}
       ${designSystem.dimensions.spacings.xl};
+  }
+`;
+// This wrapper element increases the padding for the "normal" content page
+// and uses a single column layout.
+const ContentWrapper = styled.div`
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    padding: 0 ${designSystem.dimensions.spacings.m};
+    max-width: unset;
+    display: grid;
+    grid:
+      [row1-start] 'page-content' 1fr [row1-end]
+      / minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentWithMargings}
+      );
+  }
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    grid:
+      [row1-start] 'page-content' 1fr [row1-end]
+      / minmax(
+        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths
+          .pageContentWithMargingsAndPageNavigation}
+      );
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    padding: 0;
+    grid:
+      [row1-start] 'page-content' 1fr [row1-end]
+      / ${designSystem
+        .dimensions.widths.pageContentWithMargingsAndPageNavigation};
   }
 `;
 

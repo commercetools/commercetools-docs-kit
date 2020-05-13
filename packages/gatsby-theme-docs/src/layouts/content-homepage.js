@@ -9,7 +9,6 @@ import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
 import LayoutPageWrapper from './internals/layout-page-wrapper';
-import LayoutPage from './internals/layout-page';
 import LayoutPageWithHero from './internals/layout-page-with-hero';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
@@ -44,14 +43,12 @@ const LayoutContentHomepage = (props) => {
             title={props.pageData.title}
             heroBackgroundURL={props.heroBackground.publicURL}
           >
-            <LayoutPage>
-              <LayoutPageContent>
-                <PageContentInset id="body-content">
-                  {props.children}
-                  <ContentPagination slug={props.pageContext.slug} />
-                </PageContentInset>
-              </LayoutPageContent>
-            </LayoutPage>
+            <LayoutPageContent>
+              <PageContentInset id="body-content">
+                {props.children}
+                <ContentPagination slug={props.pageContext.slug} />
+              </PageContentInset>
+            </LayoutPageContent>
           </LayoutPageWithHero>
         </LayoutPageWrapper>
         <LayoutFooter />

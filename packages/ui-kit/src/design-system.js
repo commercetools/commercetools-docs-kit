@@ -79,6 +79,7 @@ export const dimensions = {
     pageContentSmall: pageWidthSmall,
     pageContentWithMargings: `calc(${pageWidth} + 32px * 2)`,
     pageContentSmallWithMargings: `calc(${pageWidthSmall} + 16px * 2)`,
+    pageContentWithMargingsAndPageNavigation: `calc(${pageWidth} + 32px * 2 + ${navbarWidth})`,
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
