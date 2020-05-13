@@ -24,10 +24,8 @@ const ReleaseNotesListTemplate = (props) => {
 
   React.useEffect(() => {
     if (location.href.includes('?')) {
-      const releaseNotesListElement = document.querySelector(
-        '#release-notes-list'
-      );
-      releaseNotesListElement.scrollIntoView({
+      const layoutPage = document.querySelector('#top');
+      layoutPage.scrollIntoView({
         block: 'start',
       });
     }

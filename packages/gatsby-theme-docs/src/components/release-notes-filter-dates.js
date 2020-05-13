@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import moment from 'moment';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import DateInput from '@commercetools-uikit/date-input';
@@ -21,6 +22,7 @@ const DateLabel = styled.label`
 const ReleaseNotesFilterDates = () => {
   const location = useLocation();
   const { fromFilterDate, toFilterDate } = extractQueryParameters(location);
+  const maximumDate = moment().format('YYYY-MM-DD');
 
   return (
     <SpacingsStack scale="s">
@@ -33,6 +35,7 @@ const ReleaseNotesFilterDates = () => {
             id="from-filter-date"
             value={fromFilterDate || ''}
             onChange={handleOnFromFilterDateChange}
+            maxValue={maximumDate}
           />
         </div>
       </SpacingsStack>
@@ -44,6 +47,7 @@ const ReleaseNotesFilterDates = () => {
             id="to-filter-date"
             value={toFilterDate || ''}
             onChange={handleOnToFilterDateChange}
+            maxValue={maximumDate}
           />
         </div>
       </SpacingsStack>
