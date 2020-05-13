@@ -22,8 +22,8 @@ function bootstrapThemeAddOnsForMarkdownComponents(themeAddOnNames) {
   });
   addOnComponentsExport += `\n
 export default {
-${themeAddOnNames.map((_, index) => `...components${index},`).join('\n')}
-}
+${themeAddOnNames.map((_, index) => `  ...components${index},`).join('\n')}
+};
   `;
   if (!fs.existsSync(addOnsFolderPath)) {
     fs.mkdirSync('src/@commercetools-docs/gatsby-theme-docs/overrides', {
