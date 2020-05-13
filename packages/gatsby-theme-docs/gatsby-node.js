@@ -380,7 +380,7 @@ async function createContentPages(
           component: require.resolve('./src/templates/homepage.js'),
           context: {
             ...pageData.context,
-            heroBackgroundRelativePath: `${pluginOptions.colorPreset}/${colorPreset.value.heroBackgroundName}`,
+            heroBackgroundRelativePath: `${colorPreset.relativePath}/${colorPreset.value.heroBackgroundName}`,
           },
         });
         break;

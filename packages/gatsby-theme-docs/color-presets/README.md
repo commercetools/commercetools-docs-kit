@@ -10,3 +10,24 @@ A preset usually includes a:
 Here is the list of the available presets:
 
 - `base`
+- `merchantCenterDeveloperDocs`
+- `merchantCenterUserDocs`
+- `platformDeveloperDocs`
+
+## Usage
+
+In your `gatsby-config.js`:
+
+```js
+const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
+
+module.exports = {
+  // ... other site config
+  plugins: [
+    ...configureThemeWithAddOns({
+      // ... other theme config
+      colorPreset: colorPresets.platformDeveloperDocs.key,
+    }),
+  ],
+};
+```

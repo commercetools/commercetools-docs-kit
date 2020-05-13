@@ -2,6 +2,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
 
 module.exports = {
   pathPrefix: '/api-docs-smoke-test',
@@ -13,6 +14,7 @@ module.exports = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'api-docs-smoke-test',
+      colorPreset: colorPresets.platformDeveloperDocs.key,
       excludeFromSearchIndex: isProd,
       addOns: [
         {
