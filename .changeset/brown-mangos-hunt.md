@@ -1,5 +1,6 @@
 ---
 '@commercetools-docs/gatsby-theme-docs': major
+'@commercetools-docs/ui-kit': patch
 ---
 
 Add a new template for the website homepage `index.mdx`. The page header renders a hero background image that can be defined by choosing one of the predefined **color presets**, using the `colorPreset` theme option.
