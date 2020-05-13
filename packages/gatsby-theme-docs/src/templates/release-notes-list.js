@@ -22,6 +22,17 @@ const ReleaseNotesListTemplate = (props) => {
     queryParameters
   );
 
+  React.useEffect(() => {
+    if (location.href.includes('?')) {
+      const releaseNotesListElement = document.querySelector(
+        '#release-notes-list'
+      );
+      releaseNotesListElement.scrollIntoView({
+        block: 'start',
+      });
+    }
+  }, [location.href]);
+
   return (
     <ThemeProvider>
       <LayoutReleaseNotesList
@@ -40,7 +51,7 @@ const ReleaseNotesListTemplate = (props) => {
               <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
             </div>
           </MDXProvider>
-          <div>
+          <div id="release-notes-list">
             <SpacingsStack>
               {filteredReleases.map((releaseNote) => (
                 <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
