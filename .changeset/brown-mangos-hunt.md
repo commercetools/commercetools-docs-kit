@@ -10,6 +10,9 @@ A color preset is what identifies a website or a group or content-related websit
 At the moment the available presets are:
 
 - `base` (default)
+- `merchantCenterDeveloperDocs`
+- `merchantCenterUserDocs`
+- `platformDeveloperDocs`
 
 **Breaking changes**
 
