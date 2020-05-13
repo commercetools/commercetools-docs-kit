@@ -1,5 +1,7 @@
 - chapter-title: Views
   pages:
+    - title: Markdown
+      path: /views/markdown
     - title: Empty
       path: /views/empty
     - title: Beta
