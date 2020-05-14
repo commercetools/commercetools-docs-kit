@@ -9,7 +9,7 @@ function navigateWithFilters(filters, location) {
     ...filters,
   });
 
-  navigate(encode(newQueryParameters, '?'));
+  navigate(encode(newQueryParameters, '?'), { state: { scrollToTop: true } });
 }
 
 function removeUnnecessaryParameters(parameters) {

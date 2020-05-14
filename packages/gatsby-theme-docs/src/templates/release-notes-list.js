@@ -23,13 +23,13 @@ const ReleaseNotesListTemplate = (props) => {
   );
 
   React.useEffect(() => {
-    if (location.href.includes('?')) {
+    if (location.state && location.state.scrollToTop) {
       const layoutPage = document.querySelector('#top');
       layoutPage.scrollIntoView({
         block: 'start',
       });
     }
-  }, [location.href]);
+  }, [location.state]);
 
   return (
     <ThemeProvider>
