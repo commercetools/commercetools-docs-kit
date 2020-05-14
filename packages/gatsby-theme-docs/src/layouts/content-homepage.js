@@ -44,7 +44,7 @@ const LayoutContentHomepage = (props) => {
             heroBackgroundURL={props.heroBackground.publicURL}
           >
             <LayoutPageContent>
-              <PageContentInset id="body-content">
+              <PageContentInset id="body-content" maxWidth="unset">
                 {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
               </PageContentInset>

@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
 const PageContentInset = styled.div`
+  max-width: ${(props) =>
+    props.maxWidth || designSystem.dimensions.widths.pageContent};
   padding: ${designSystem.dimensions.spacings.m}
     ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
 
