@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import styled from '@emotion/styled';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
@@ -53,7 +54,7 @@ const ReleasesTitleLink = styled.a`
   }
 `;
 
-const LayoutPageReleaseNotesFilters = () => {
+const LayoutPageReleaseNotesFilters = (props) => {
   return (
     <IntlProvider locale="en">
       <GridContainer>
@@ -68,9 +69,9 @@ const LayoutPageReleaseNotesFilters = () => {
               </SpacingsInline>
             </ReleasesTitleLink>
 
-            <ReleaseNotesFilterDates />
+            <ReleaseNotesFilterDates scrollToTop={props.scrollToTop} />
 
-            <ReleaseNotesFilterTopics />
+            <ReleaseNotesFilterTopics scrollToTop={props.scrollToTop} />
           </SpacingsStack>
         </StickyContainer>
       </GridContainer>
@@ -78,5 +79,9 @@ const LayoutPageReleaseNotesFilters = () => {
   );
 };
 LayoutPageReleaseNotesFilters.displayName = 'LayoutPageReleaseNotesFilters';
+
+LayoutPageReleaseNotesFilters.propTypes = {
+  scrollToTop: PropTypes.func,
+};
 
 export default LayoutPageReleaseNotesFilters;

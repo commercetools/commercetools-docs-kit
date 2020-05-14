@@ -14,7 +14,7 @@ function navigateWithFilters(filters, location) {
       ? encode(newQueryParameters, '?')
       : location.pathname;
 
-  navigate(to, { state: { scrollToTop: true } });
+  navigate(to);
 }
 
 function removeUnnecessaryParameters(parameters) {

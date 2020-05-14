@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import moment from 'moment';
 import { designSystem } from '@commercetools-docs/ui-kit';
@@ -19,7 +20,7 @@ const DateLabel = styled.label`
   line-height: ${designSystem.typography.lineHeights.small};
 `;
 
-const ReleaseNotesFilterDates = () => {
+const ReleaseNotesFilterDates = (props) => {
   const location = useLocation();
   const { fromFilterDate, toFilterDate } = extractQueryParameters(location);
   const maximumDate = moment().format('YYYY-MM-DD');
@@ -56,11 +57,17 @@ const ReleaseNotesFilterDates = () => {
 
   function handleOnFromFilterDateChange(e) {
     navigateWithFilters({ fromFilterDate: e.target.value }, location);
+    props.scrollToTop();
   }
 
   function handleOnToFilterDateChange(e) {
     navigateWithFilters({ toFilterDate: e.target.value }, location);
+    props.scrollToTop();
   }
+};
+
+ReleaseNotesFilterDates.propTypes = {
+  scrollToTop: PropTypes.func,
 };
 
 export default ReleaseNotesFilterDates;

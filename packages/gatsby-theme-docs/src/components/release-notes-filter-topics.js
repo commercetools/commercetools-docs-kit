@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -24,7 +25,7 @@ const ClearAll = styled.button`
   background-color: transparent;
 `;
 
-const ReleaseNotesFilterTopics = () => {
+const ReleaseNotesFilterTopics = (props) => {
   const location = useLocation();
   const { filterTopics } = extractQueryParameters(location);
   const topicsSet = useReleaseNotesTopicsSet();
@@ -76,6 +77,7 @@ const ReleaseNotesFilterTopics = () => {
       },
       location
     );
+    props.scrollToTop();
   }
 
   function handleOnTopicChange(e) {
@@ -94,7 +96,12 @@ const ReleaseNotesFilterTopics = () => {
       },
       location
     );
+    props.scrollToTop();
   }
+};
+
+ReleaseNotesFilterTopics.propTypes = {
+  scrollToTop: PropTypes.func,
 };
 
 export default ReleaseNotesFilterTopics;

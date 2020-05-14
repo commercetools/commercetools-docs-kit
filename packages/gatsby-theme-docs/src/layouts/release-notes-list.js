@@ -53,7 +53,7 @@ const LayoutReleaseNotesList = (props) => {
               {props.children}
             </PageContentInset>
           </LayoutPageContent>
-          <LayoutPageReleaseNotesFilters />
+          <LayoutPageReleaseNotesFilters scrollToTop={props.scrollToTop} />
         </LayoutPage>
         <LayoutFooter />
       </LayoutMain>
@@ -72,6 +72,7 @@ LayoutReleaseNotesList.propTypes = {
     excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
+  scrollToTop: PropTypes.func,
 };
 
 export default LayoutReleaseNotesList;

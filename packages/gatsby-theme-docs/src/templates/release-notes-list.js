@@ -22,20 +22,12 @@ const ReleaseNotesListTemplate = (props) => {
     queryParameters
   );
 
-  React.useEffect(() => {
-    if (location.state && location.state.scrollToTop) {
-      const layoutPage = document.querySelector('#top');
-      layoutPage.scrollIntoView({
-        block: 'start',
-      });
-    }
-  }, [location.state]);
-
   return (
     <ThemeProvider>
       <LayoutReleaseNotesList
         pageContext={props.pageContext}
         pageData={props.data.contentPage}
+        scrollToTop={scrollToTop}
       >
         <Markdown.TypographyPage>
           <SEO
@@ -66,6 +58,13 @@ const ReleaseNotesListTemplate = (props) => {
       </LayoutReleaseNotesList>
     </ThemeProvider>
   );
+
+  function scrollToTop() {
+    const layoutPage = document.querySelector('#top');
+    layoutPage.scrollIntoView({
+      block: 'start',
+    });
+  }
 };
 
 ReleaseNotesListTemplate.propTypes = {
