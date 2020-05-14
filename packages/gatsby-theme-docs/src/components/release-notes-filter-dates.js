@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import moment from 'moment';
 import { designSystem } from '@commercetools-docs/ui-kit';
@@ -8,6 +7,7 @@ import DateInput from '@commercetools-uikit/date-input';
 import { useLocation } from '@reach/router';
 import navigateWithFilters from '../utils/navigate-with-filters';
 import extractQueryParameters from '../utils/extract-query-parameters';
+import scrollToTop from '../utils/scroll-to-top';
 
 export const FilterTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
@@ -20,7 +20,7 @@ const DateLabel = styled.label`
   line-height: ${designSystem.typography.lineHeights.small};
 `;
 
-const ReleaseNotesFilterDates = (props) => {
+const ReleaseNotesFilterDates = () => {
   const location = useLocation();
   const { fromFilterDate, toFilterDate } = extractQueryParameters(location);
   const maximumDate = moment().format('YYYY-MM-DD');
@@ -57,17 +57,13 @@ const ReleaseNotesFilterDates = (props) => {
 
   function handleOnFromFilterDateChange(e) {
     navigateWithFilters({ fromFilterDate: e.target.value }, location);
-    props.scrollToTop();
+    scrollToTop();
   }
 
   function handleOnToFilterDateChange(e) {
     navigateWithFilters({ toFilterDate: e.target.value }, location);
-    props.scrollToTop();
+    scrollToTop();
   }
-};
-
-ReleaseNotesFilterDates.propTypes = {
-  scrollToTop: PropTypes.func,
 };
 
 export default ReleaseNotesFilterDates;

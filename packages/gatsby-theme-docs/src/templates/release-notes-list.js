@@ -27,7 +27,6 @@ const ReleaseNotesListTemplate = (props) => {
       <LayoutReleaseNotesList
         pageContext={props.pageContext}
         pageData={props.data.contentPage}
-        scrollToTop={scrollToTop}
       >
         <Markdown.TypographyPage>
           <SEO
@@ -58,13 +57,6 @@ const ReleaseNotesListTemplate = (props) => {
       </LayoutReleaseNotesList>
     </ThemeProvider>
   );
-
-  function scrollToTop() {
-    const layoutPage = document.querySelector('#top');
-    layoutPage.scrollIntoView({
-      block: 'start',
-    });
-  }
 };
 
 ReleaseNotesListTemplate.propTypes = {

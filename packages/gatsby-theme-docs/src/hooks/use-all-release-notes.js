@@ -17,7 +17,7 @@ export const useAllReleaseNotes = () => {
   return queryResult.allReleaseNotePage.nodes;
 };
 
-export const useReleaseNotesTopicsSet = () => {
+export const useReleaseNotesTopics = () => {
   const allReleaseNotes = useAllReleaseNotes();
 
   const topics = new Set();

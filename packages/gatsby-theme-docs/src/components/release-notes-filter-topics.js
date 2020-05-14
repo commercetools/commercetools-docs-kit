@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -8,7 +7,9 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import { useLocation } from '@reach/router';
 import navigateWithFilters from '../utils/navigate-with-filters';
 import extractQueryParameters from '../utils/extract-query-parameters';
-import { useReleaseNotesTopicsSet } from '../hooks/use-all-release-notes';
+import topicIsChecked from '../utils/topic-is-checked';
+import scrollToTop from '../utils/scroll-to-top';
+import { useReleaseNotesTopics } from '../hooks/use-all-release-notes';
 import { FilterTitle } from './release-notes-filter-dates';
 
 const Container = styled.div`
@@ -25,24 +26,14 @@ const ClearAll = styled.button`
   background-color: transparent;
 `;
 
-const ReleaseNotesFilterTopics = (props) => {
+const ReleaseNotesFilterTopics = () => {
   const location = useLocation();
   const { filterTopics } = extractQueryParameters(location);
-  const topicsSet = useReleaseNotesTopicsSet();
-  const checkedTopics = topicsSet.map((topic) => ({
+  const topics = useReleaseNotesTopics();
+  const checkedTopics = topics.map((topic) => ({
     name: topic,
-    checked: isChecked(filterTopics, topic),
+    checked: topicIsChecked(filterTopics, topic),
   }));
-
-  function isChecked(filterTopicsArray, topic) {
-    if (filterTopicsArray) {
-      return Array.isArray(filterTopicsArray)
-        ? filterTopicsArray.includes(topic)
-        : topic === filterTopicsArray;
-    }
-
-    return false;
-  }
 
   return (
     <Container>
@@ -77,7 +68,7 @@ const ReleaseNotesFilterTopics = (props) => {
       },
       location
     );
-    props.scrollToTop();
+    scrollToTop();
   }
 
   function handleOnTopicChange(e) {
@@ -96,12 +87,8 @@ const ReleaseNotesFilterTopics = (props) => {
       },
       location
     );
-    props.scrollToTop();
+    scrollToTop();
   }
-};
-
-ReleaseNotesFilterTopics.propTypes = {
-  scrollToTop: PropTypes.func,
 };
 
 export default ReleaseNotesFilterTopics;
