@@ -9,15 +9,20 @@ function navigateWithFilters(filters, location) {
     ...filters,
   });
 
-  navigate(encode(newQueryParameters, '?'), { state: { scrollToTop: true } });
+  const to =
+    Object.keys(newQueryParameters).length > 0
+      ? encode(newQueryParameters, '?')
+      : location.pathname;
+
+  navigate(to, { state: { scrollToTop: true } });
 }
 
 function removeUnnecessaryParameters(parameters) {
   const returnedParameters = {};
   Object.keys(parameters).forEach((key) => {
-    if (Array.isArray(parameters[key]) && parameters.length > 0) {
+    if (!Array.isArray(parameters[key]) && parameters[key]) {
       returnedParameters[key] = parameters[key];
-    } else if (parameters[key]) {
+    } else if (parameters[key].length > 0) {
       returnedParameters[key] = parameters[key];
     }
   });
