@@ -4,9 +4,7 @@ import moment from 'moment';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import DateInput from '@commercetools-uikit/date-input';
-import { useLocation } from '@reach/router';
-import navigateWithFilters from '../utils/navigate-with-filters';
-import extractQueryParameters from '../utils/extract-query-parameters';
+import useReleaseNotesFilterParams from '../hooks/use-release-notes-filter-params';
 import scrollToTop from '../utils/scroll-to-top';
 
 export const FilterTitle = styled.div`
@@ -21,8 +19,7 @@ const DateLabel = styled.label`
 `;
 
 const ReleaseNotesFilterDates = () => {
-  const location = useLocation();
-  const { fromFilterDate, toFilterDate } = extractQueryParameters(location);
+  const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
   const maximumDate = moment().format('YYYY-MM-DD');
 
   return (
@@ -34,7 +31,7 @@ const ReleaseNotesFilterDates = () => {
         <div>
           <DateInput
             id="from-filter-date"
-            value={fromFilterDate || ''}
+            value={filterParams.fromFilterDate || ''}
             onChange={handleOnFromFilterDateChange}
             maxValue={maximumDate}
           />
@@ -46,7 +43,7 @@ const ReleaseNotesFilterDates = () => {
         <div>
           <DateInput
             id="to-filter-date"
-            value={toFilterDate || ''}
+            value={filterParams.toFilterDate || ''}
             onChange={handleOnToFilterDateChange}
             maxValue={maximumDate}
           />
@@ -56,12 +53,12 @@ const ReleaseNotesFilterDates = () => {
   );
 
   function handleOnFromFilterDateChange(e) {
-    navigateWithFilters({ fromFilterDate: e.target.value }, location);
+    setFilterParams({ fromFilterDate: e.target.value || undefined });
     scrollToTop();
   }
 
   function handleOnToFilterDateChange(e) {
-    navigateWithFilters({ toFilterDate: e.target.value }, location);
+    setFilterParams({ toFilterDate: e.target.value || undefined });
     scrollToTop();
   }
 };

@@ -4,12 +4,9 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { useLocation } from '@reach/router';
-import navigateWithFilters from '../utils/navigate-with-filters';
-import extractQueryParameters from '../utils/extract-query-parameters';
-import topicIsChecked from '../utils/topic-is-checked';
+import useReleaseNotesFilterParams from '../hooks/use-release-notes-filter-params';
 import scrollToTop from '../utils/scroll-to-top';
-import { useReleaseNotesTopics } from '../hooks/use-all-release-notes';
+import useReleaseNotesTopics from '../hooks/use-release-notes-topics';
 import { FilterTitle } from './release-notes-filter-dates';
 
 const Container = styled.div`
@@ -27,13 +24,8 @@ const ClearAll = styled.button`
 `;
 
 const ReleaseNotesFilterTopics = () => {
-  const location = useLocation();
-  const { filterTopics } = extractQueryParameters(location);
-  const topics = useReleaseNotesTopics();
-  const checkedTopics = topics.map((topic) => ({
-    name: topic,
-    checked: topicIsChecked(filterTopics, topic),
-  }));
+  const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
+  const allTopics = useReleaseNotesTopics(filterParams.filterTopics);
 
   return (
     <Container>
@@ -45,7 +37,7 @@ const ReleaseNotesFilterTopics = () => {
           </ClearAll>
         </SpacingsInline>
         <SpacingsStack scale="s">
-          {checkedTopics.map((topic) => (
+          {allTopics.map((topic) => (
             <div key={topic.name}>
               <CheckboxInput
                 value={topic.name}
@@ -62,31 +54,21 @@ const ReleaseNotesFilterTopics = () => {
   );
 
   function handleOnClearAll() {
-    navigateWithFilters(
-      {
-        filterTopics: [],
-      },
-      location
-    );
+    setFilterParams({ filterTopics: [] });
     scrollToTop();
   }
 
   function handleOnTopicChange(e) {
-    const filterdTopics = checkedTopics.map((topic) => {
-      if (topic.name === e.target.value) {
-        return { ...topic, checked: !topic.checked };
-      }
-
-      return topic;
+    const isChecked = e.target.checked;
+    const selectedTopic = e.target.value;
+    const newFilterTopic = isChecked
+      ? filterParams.filterTopics.concat(selectedTopic)
+      : filterParams.filterTopics.filter(
+          (topicName) => topicName !== selectedTopic
+        );
+    setFilterParams({
+      filterTopics: newFilterTopic,
     });
-    navigateWithFilters(
-      {
-        filterTopics: filterdTopics
-          .filter((topic) => topic.checked)
-          .map((topic) => topic.name),
-      },
-      location
-    );
     scrollToTop();
   }
 };

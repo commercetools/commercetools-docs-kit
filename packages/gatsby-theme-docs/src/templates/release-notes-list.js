@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -10,16 +9,12 @@ import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
+import useFilteredReleaseNotes from '../hooks/use-filtered-release-notes';
 import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
-import extractQueryParameters from '../utils/extract-query-parameters';
-import filterReleases from '../utils/filter-releases';
 
 const ReleaseNotesListTemplate = (props) => {
-  const location = useLocation();
-  const queryParameters = extractQueryParameters(location);
-  const filteredReleases = filterReleases(
-    props.data.allReleaseNotePage.nodes,
-    queryParameters
+  const filteredReleaseNotes = useFilteredReleaseNotes(
+    props.data.allReleaseNotePage.nodes
   );
 
   return (
@@ -42,7 +37,7 @@ const ReleaseNotesListTemplate = (props) => {
           </MDXProvider>
           <div id="release-notes-list">
             <SpacingsStack>
-              {filteredReleases.map((releaseNote) => (
+              {filteredReleaseNotes.map((releaseNote) => (
                 <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
                   <Markdown.TypographyPage>
                     <section>
