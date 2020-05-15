@@ -132,7 +132,7 @@ As discussed:
 ```jsx
 <Cards smallTitle>
   <Card
-    icon={Icon.ShoppingList}
+    icon={<Icon.ShoppingList />}
     title="A smaller title">Example Text on a card with an icon.</Card>
 </Cards>
 ```
@@ -170,7 +170,7 @@ would | work   |
 </Card>
 ```
 
-## Output
+**Output**
 
 (breaks the build until card is implemented)
 
@@ -182,7 +182,7 @@ Icons on cards that are **not narrow** are aligned to the top of the card regard
 <Cards>
   <Card
     title="A left aligned icon"
-    icon={<CardIcon name='shopping-list' />}>
+    icon={<Icon.ShoppingList />}
     The icon of this card should be left aligned.
   </Card>
 </Cards>
@@ -193,7 +193,7 @@ Icons on cards that are **not narrow** are aligned to the top of the card regard
 <Cards>
   <Card 
     title="A left aligned icon"
-    icon={<CardIcon name='shopping-list' />}>
+    icon={<Icon.ShoppingList />}
     The icon of this card should be left aligned.
   </Card>
 </Cards>
@@ -206,7 +206,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
     title="A top aligned icon"
     href="/components/images"
     textLink="Clickable top aligned icon..."
-    icon={<CardIcon name='shopping-list' />}>
+    icon={<Icon.ShoppingList />}
     The icon of this card should be top aligned.
   </Card>
 </Cards>
@@ -219,7 +219,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
     title="A top aligned icon"
     href="/components/images"
     textLink="Clickable top aligned icon..."
-    icon={<CardIcon name='shopping-list' />}>
+    icon={<Icon.ShoppingList />}
     The icon of this card should be top aligned.
   </Card>
 </Cards>
