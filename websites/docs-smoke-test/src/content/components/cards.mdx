@@ -2,16 +2,18 @@
 title: Cards
 ---
 
+<!-- to decouple the card implementation from the creation of an official icon set here's a local dummy icon: -->
+import DummyIcon from "../../images/dummy-icon.js"
+
  * The actual card content is markdown
  * Card titles are not links
  * Card titles never become entries in the page index nav like section headings.
- * Card titles will be rendered as H6 to enhance accessibility among other things.
+ * Card titles of both sizes are rendered as H6 to enhance accessibility while making sure they are always "inside" the actual headings
  * Either an icon or an image path can be set, but not both.
    * To start with, Images are _not_ supported for free-form in-content cards, only in places that are fully designed and implemented by developers. An Image is sized into the width of the card.
    * Icons are supported anywhere but only those that are officially provided by the kit. An icon is sized into a fixed 48x48px square.
  * Cards can occur in two interaction variants, "clickable" (visually elevated) and "flat" (visually an outline only).
  * Cards must be embedded into a wrapper component that defines the responsive sizes (two aside / three aside) and parameters that must be identical in a given row or grid (clickable card area, the heading size)
-   * trial & error led to a minimum width of ca 250px for narrow three-aside cards and ca 332px for two-aside cards.
  * A single card must not fill the full width but stay left aligned.
  * Multiple cards fill the full width and are scaled up to fill even if their content is smaller. Every card has the same width in all rows (resulting in a grid if it's multiple rows)
  * Cards are sorted in rows, then columns.
@@ -132,7 +134,7 @@ As discussed:
 ```jsx
 <Cards smallTitle>
   <Card
-    icon={<Icon.ShoppingList />}
+    icon={<DummyIcon />}
     title="A smaller title">Example Text on a card with an icon.</Card>
 </Cards>
 ```
@@ -143,6 +145,7 @@ As discussed:
 
 <Cards smallTitle>
   <Card
+    icon={<DummyIcon />}
     title="A smaller title">Example Text on a card with an icon.</Card>
 </Cards>
 
@@ -182,7 +185,7 @@ Icons on cards that are **not narrow** are aligned to the top of the card regard
 <Cards>
   <Card
     title="A left aligned icon"
-    icon={<Icon.ShoppingList />}
+    icon={<DummyIcon />}
     The icon of this card should be left aligned.
   </Card>
 </Cards>
@@ -191,9 +194,9 @@ Icons on cards that are **not narrow** are aligned to the top of the card regard
 **Output**
 
 <Cards>
-  <Card 
+  <Card
     title="A left aligned icon"
-    icon={<Icon.ShoppingList />}
+    icon={<DummyIcon />}>
     The icon of this card should be left aligned.
   </Card>
 </Cards>
@@ -206,7 +209,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
     title="A top aligned icon"
     href="/components/images"
     textLink="Clickable top aligned icon..."
-    icon={<Icon.ShoppingList />}
+    icon={<DummyIcon />}>
     The icon of this card should be top aligned.
   </Card>
 </Cards>
@@ -219,7 +222,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
     title="A top aligned icon"
     href="/components/images"
     textLink="Clickable top aligned icon..."
-    icon={<Icon.ShoppingList />}
+    icon={<DummyIcon />}>
     The icon of this card should be top aligned.
   </Card>
 </Cards>
