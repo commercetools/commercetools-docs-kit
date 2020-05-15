@@ -4,7 +4,8 @@ title: Cards
 
  * The actual card content is markdown
  * Card titles are not links
- * Card titles never become entries in the page index nav like section headings
+ * Card titles never become entries in the page index nav like section headings.
+ * Card titles will be rendered as H6 to enhance accessibility among other things.
  * Either an icon or an image path can be set, but not both.
    * To start with, Images are _not_ supported for free-form in-content cards, only in places that are fully designed and implemented by developers. An Image is sized into the width of the card.
    * Icons are supported anywhere but only those that are officially provided by the kit. An icon is sized into a fixed 48x48px square.
@@ -172,3 +173,41 @@ would | work   |
 ## Output
 
 (breaks the build until card is implemented)
+
+# Cards with Icons
+
+Icons on cards that are **not narrow** are aligned to the top of the card regardless of whether they are clickable or flat.
+
+```jsx
+<Cards>
+  <Card
+    title="A left aligned icon">The icon of this card should be left aligned.</Card>
+</Cards>
+```
+
+**Output**
+
+<Cards>
+  <Card
+    title="A left aligned icon">The icon of this card should be left aligned.</Card>
+</Cards>
+
+Icons on **narrow** cards are aligned to the left of the card regardless of whether they are clickable or flat.
+
+```jsx
+<Cards narrow clickable>
+  <Card
+    title="A top aligned icon"
+    href="/components/images"
+    textLink="Clickable top aligned icon...">The icon of this card should be top aligned.</Card>
+</Cards>
+```
+
+**Output**
+
+<Cards narrow clickable>
+  <Card
+    title="A top aligned icon"
+    href="/components/images"
+    textLink="Clickable top aligned icon...">The icon of this card should be top aligned.</Card>
+</Cards>
