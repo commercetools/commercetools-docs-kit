@@ -1,0 +1,61 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+import ContentNotifications from './content-notifications';
+import { dimensions } from '../design-system';
+
+// Explanation about the following sizes:
+// https://github.com/commercetools/commercetools-docs-kit/pull/427#discussion_r425442556
+const cardNarrowMinWidth = '242px';
+const cardRegularMinWidth = '328px';
+const CardsContainer = styled.div`
+  display: grid;
+  gap: ${dimensions.spacings.m};
+  grid-auto-columns: 1fr;
+  grid-template-columns: ${(props) =>
+    `repeat(auto-fill, minmax(${
+      props.narrow ? cardNarrowMinWidth : cardRegularMinWidth
+    }, 1fr))`};
+`;
+const CardContainer = styled.div`
+  border: 1px solid black;
+`;
+
+export const Cards = (props) => {
+  try {
+    return (
+      <CardsContainer {...props}>
+        {React.Children.map(props.children, (child) => {
+          if (!child.props || child.props.mdxType !== 'Card') {
+            throw new Error(
+              `Children of <Cards> must be a <Card> component and not "${
+                child.props ? child.props.mdxType : child
+              }"`
+            );
+          }
+          return React.cloneElement(child, [props], [...child.props.children]);
+        })}
+      </CardsContainer>
+    );
+  } catch (e) {
+    if (process.env.NODE_ENV !== 'production') {
+      return (
+        <ContentNotifications.Error>{e.message}</ContentNotifications.Error>
+      );
+    }
+
+    throw e;
+  }
+};
+
+Cards.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
+};
+
+export const Card = (props) => {
+  return <CardContainer>{props.children}</CardContainer>;
+};
+
+Card.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+};
