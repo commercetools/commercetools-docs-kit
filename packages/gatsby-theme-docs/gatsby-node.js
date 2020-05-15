@@ -12,6 +12,7 @@ const slugify = require('slugify');
 const processTableOfContentFields = require('./utils/process-table-of-content-fields');
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
+const colorPresets = require('./color-presets');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -205,6 +206,7 @@ exports.onCreateNode = (
   }
 
   const pluginOptions = { ...defaultOptions, ...themeOptions };
+  const colorPreset = colorPresets[pluginOptions.colorPreset];
 
   const parent = getNode(node.parent);
 
@@ -221,7 +223,7 @@ exports.onCreateNode = (
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
-      websitePrimaryColor: pluginOptions.websitePrimaryColor,
+      websitePrimaryColor: colorPreset.value.primaryColor,
       isGlobalBeta: Boolean(pluginOptions.beta),
       excludeFromSearchIndex:
         Boolean(node.frontmatter.excludeFromSearchIndex) ||
@@ -259,7 +261,7 @@ exports.onCreateNode = (
   const contentPageFieldData = {
     slug: trimTrailingSlash(slug) || '/',
     title: node.frontmatter.title,
-    websitePrimaryColor: pluginOptions.websitePrimaryColor,
+    websitePrimaryColor: colorPreset.value.primaryColor,
     isGlobalBeta: Boolean(pluginOptions.beta),
     excludeFromSearchIndex:
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
@@ -356,16 +358,11 @@ async function createContentPages(
     []
   );
   pages.forEach(({ slug }) => {
-    const isOverviewPage = slug === '/releases';
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
-    actions.createPage({
+    const pageData = {
       path: slug,
-      // This component will wrap our MDX content
-      component: isOverviewPage
-        ? require.resolve('./src/templates/release-notes-list.js')
-        : require.resolve('./src/templates/page-content.js'),
       // You can use the values in this context in our page layout component
       context: {
         slug,
@@ -374,7 +371,34 @@ async function createContentPages(
           : undefined,
         hasReleaseNotes: result.data.allReleaseNotePage.totalCount > 0,
       },
-    });
+    };
+    switch (slug) {
+      case '/': {
+        const colorPreset = colorPresets[pluginOptions.colorPreset];
+        actions.createPage({
+          ...pageData,
+          component: require.resolve('./src/templates/homepage.js'),
+          context: {
+            ...pageData.context,
+            heroBackgroundRelativePath: `${colorPreset.relativePath}/${colorPreset.value.heroBackgroundName}`,
+          },
+        });
+        break;
+      }
+      case '/releases':
+        actions.createPage({
+          ...pageData,
+          component: require.resolve('./src/templates/release-notes-list.js'),
+        });
+        break;
+
+      default:
+        actions.createPage({
+          ...pageData,
+          component: require.resolve('./src/templates/page-content.js'),
+        });
+        break;
+    }
   });
 }
 

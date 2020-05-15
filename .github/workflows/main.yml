@@ -52,13 +52,13 @@ jobs:
           # https://github.com/marketplace/actions/cypress-io#custom-install
           CYPRESS_INSTALL_BINARY: 0
 
-      - name: Lint text files
-        run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
-
       - name: Building websites for production
         run: yarn build
         env:
           ENABLE_SEARCH: 'true'
+
+      - name: Lint text files
+        run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
 
       - name: Running Visual Regression Tests
         uses: percy/snapshot-action@v0.1.1

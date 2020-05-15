@@ -1,8 +1,8 @@
-const { customProperties } = require('@commercetools-uikit/design-system');
+const colorPresets = require('../color-presets');
 
 const defaultOptions = {
   websiteKey: '',
-  websitePrimaryColor: customProperties.colorSolid,
+  colorPreset: colorPresets.base.key,
   beta: false,
   gaTrackingId: undefined,
   excludeFromSearchIndex: true,

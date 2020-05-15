@@ -61,7 +61,7 @@ The project structure should contain at least the following files and folders:
 
   - `websiteKey` (**required**): the identifier of the website, used for error reporting and similar concerns. Usually this value would be the same as the `pathPrefix` without the leading slash and without whitespaces.
 
-  - `websitePrimaryColor` (_optional_): the primary color to visually identify the website. It will be apply to heading H1 elements and the website title in the left navigation. **Default: `#00B39E`**
+  - `colorPreset` (_optional_): pick the "look and feel" of the website by choosing one of the available [Color Presets](./color-presets). **Default: `base`**
 
   - `gaTrackingId` (_optional_): this is the Google Analytics tracking ID. For all sites hosted on the `docs.commercetools.com` domain the ID must be: `UA-38285631-3`.
 
@@ -156,7 +156,7 @@ The available JSX components are:
 
 A theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
 
-Gatsby enables a child theme to use component shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are *only* loaded from the last theme in the Gatsby configuration. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on, allowing *multiple* add-ons to provide additional components to be available in MDX without having to manually import them into every page.
+Gatsby enables a child theme to use component shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are _only_ loaded from the last theme in the Gatsby configuration. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on, allowing _multiple_ add-ons to provide additional components to be available in MDX without having to manually import them into every page.
 
 When using add-on themes, a proxy export file will be generated in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)). This file provides all the exported components from the add-on packages. For a component to be exported by an add-on package it has to be exported from `index.js` in the add-on package root.
 
