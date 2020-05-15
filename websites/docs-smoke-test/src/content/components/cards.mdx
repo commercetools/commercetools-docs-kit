@@ -17,6 +17,8 @@ import DummyIcon from "../../images/dummy-icon.js"
  * A single card must not fill the full width but stay left aligned.
  * Multiple cards fill the full width and are scaled up to fill even if their content is smaller. Every card has the same width in all rows (resulting in a grid if it's multiple rows)
  * Cards are sorted in rows, then columns.
+ * on the landing pages (src/index.mdx) a regular card has a minimum width of 328px and a narrow card a minimum width of 242px. This assures they stay 2- and 3-aside respectively.
+ * **if** it's possible, cards would have different minimum sizes on content pages: narrow card 248px and regular 377px.
 
 # "Cards" Wrapper
 
@@ -154,7 +156,6 @@ As discussed:
 Clickable cards have one card-level link target (href) and no other links in the content.
 They are visually elevated and elevate even more when hovered.
 The link target (href) can be repeated as a link at the bottom by setting a card link label.
-
 
 # Cards with Icons
 
