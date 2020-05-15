@@ -55,6 +55,7 @@ module.exports = (themeOptions = {}) => {
         options: {
           name: 'colorPresets',
           path: path.join(__dirname, `./color-presets`),
+          ignore: ['**/*.md', '**/*.js'],
         },
       },
       // Default configuration data files (.yaml)
