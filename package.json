@@ -8,8 +8,9 @@
   "scripts": {
     "clean": "lerna run clean --scope '@commercetools-website/*'",
     "start": "yarn --cwd websites/docs-smoke-test start",
+    "build-packages": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-docs/*'",
     "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
-    "prebuild": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-docs/*'",
+    "prebuild": "yarn build-packages",
     "postbuild": "cp -f ./websites/index.html ./public && yarn check-links",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
