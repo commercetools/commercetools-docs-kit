@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Card from '@commercetools-uikit/card';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import { InformationIcon } from '@commercetools-uikit/icons';
 
 import addonComponents from './addon-components';
 
@@ -19,4 +20,9 @@ const DummyCards = styled.div`
 `;
 const DummyCard = styled(Card)``;
 
-export default { ...addonComponents, Cards: DummyCards, Card: DummyCard };
+export default {
+  ...addonComponents,
+  Cards: DummyCards,
+  Card: DummyCard,
+  DummyIcon: InformationIcon,
+};

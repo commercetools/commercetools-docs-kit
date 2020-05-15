@@ -4,16 +4,18 @@ title: Cards
 
  * The actual card content is markdown
  * Card titles are not links
- * Card titles never become entries in the page index nav like section headings
+ * Card titles never become entries in the page index nav like section headings.
+ * Card titles of both sizes are rendered as H6 to enhance accessibility while making sure they are always "inside" the actual headings
  * Either an icon or an image path can be set, but not both.
    * To start with, Images are _not_ supported for free-form in-content cards, only in places that are fully designed and implemented by developers. An Image is sized into the width of the card.
    * Icons are supported anywhere but only those that are officially provided by the kit. An icon is sized into a fixed 48x48px square.
  * Cards can occur in two interaction variants, "clickable" (visually elevated) and "flat" (visually an outline only).
  * Cards must be embedded into a wrapper component that defines the responsive sizes (two aside / three aside) and parameters that must be identical in a given row or grid (clickable card area, the heading size)
-   * trial & error led to a minimum width of ca 250px for narrow three-aside cards and ca 332px for two-aside cards.
  * A single card must not fill the full width but stay left aligned.
  * Multiple cards fill the full width and are scaled up to fill even if their content is smaller. Every card has the same width in all rows (resulting in a grid if it's multiple rows)
  * Cards are sorted in rows, then columns.
+ * on the landing pages (src/index.mdx) a regular card has a minimum width of 328px and a narrow card a minimum width of 242px. This assures they stay 2- and 3-aside respectively.
+ * **if** it's possible, cards would have different minimum sizes on content pages: narrow card 248px and regular 377px.
 
 # "Cards" Wrapper
 
@@ -131,7 +133,7 @@ As discussed:
 ```jsx
 <Cards smallTitle>
   <Card
-    icon={Icon.ShoppingList}
+    icon={<DummyIcon />}
     title="A smaller title">Example Text on a card with an icon.</Card>
 </Cards>
 ```
@@ -142,6 +144,7 @@ As discussed:
 
 <Cards smallTitle>
   <Card
+    icon={<DummyIcon />}
     title="A smaller title">Example Text on a card with an icon.</Card>
 </Cards>
 
@@ -150,6 +153,56 @@ As discussed:
 Clickable cards have one card-level link target (href) and no other links in the content.
 They are visually elevated and elevate even more when hovered.
 The link target (href) can be repeated as a link at the bottom by setting a card link label.
+
+# Cards with Icons
+
+Icons on cards that are **not narrow** are aligned to the top of the card regardless of whether they are clickable or flat.
+
+```jsx
+<Cards>
+  <Card
+    title="A left aligned icon"
+    icon={<DummyIcon />}>
+    The icon of this card should be left aligned.
+  </Card>
+</Cards>
+```
+
+**Output**
+
+<Cards>
+  <Card
+    title="A left aligned icon"
+    icon={<DummyIcon />}>
+    The icon of this card should be left aligned.
+  </Card>
+</Cards>
+
+Icons on **narrow** cards are aligned to the left of the card regardless of whether they are clickable or flat.
+
+```jsx
+<Cards narrow clickable>
+  <Card
+    title="A top aligned icon"
+    href="/components/images"
+    textLink="Clickable top aligned icon..."
+    icon={<DummyIcon />}>
+    The icon of this card should be top aligned.
+  </Card>
+</Cards>
+```
+
+**Output**
+
+<Cards narrow clickable>
+  <Card
+    title="A top aligned icon"
+    href="/components/images"
+    textLink="Clickable top aligned icon..."
+    icon={<DummyIcon />}>
+    The icon of this card should be top aligned.
+  </Card>
+</Cards>
 
 # Embedded MDX in the Component Body
 
@@ -169,6 +222,6 @@ would | work   |
 </Card>
 ```
 
-## Output
+**Output**
 
 (breaks the build until card is implemented)
