@@ -2,9 +2,6 @@
 title: Cards
 ---
 
-<!-- to decouple the card implementation from the creation of an official icon set here's a local dummy icon: -->
-import DummyIcon from "../../images/dummy-icon.js"
-
  * The actual card content is markdown
  * Card titles are not links
  * Card titles never become entries in the page index nav like section headings.
@@ -165,7 +162,7 @@ Icons on cards that are **not narrow** are aligned to the top of the card regard
 <Cards>
   <Card
     title="A left aligned icon"
-    icon={<DummyIcon />}
+    icon={<DummyIcon />}>
     The icon of this card should be left aligned.
   </Card>
 </Cards>
