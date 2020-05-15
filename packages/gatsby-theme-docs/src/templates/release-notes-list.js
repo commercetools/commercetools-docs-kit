@@ -7,31 +7,37 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
-import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
+import useFilteredReleaseNotes from '../hooks/use-filtered-release-notes';
+import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 
-const ReleaseNotesListTemplate = (props) => (
-  <ThemeProvider>
-    <LayoutReleaseNotesList
-      pageContext={props.pageContext}
-      pageData={props.data.contentPage}
-    >
-      <Markdown.TypographyPage>
-        <SEO
-          title={props.data.contentPage.title}
-          excludeFromSearchIndex={props.data.contentPage.excludeFromSearchIndex}
-        />
-        <MDXProvider components={markdownComponents}>
-          <div>
-            <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-          </div>
-        </MDXProvider>
-        <div>
-          <SpacingsStack>
-            {props.data.allReleaseNotePage &&
-              props.data.allReleaseNotePage.nodes &&
-              props.data.allReleaseNotePage.nodes.map((releaseNote) => (
+const ReleaseNotesListTemplate = (props) => {
+  const filteredReleaseNotes = useFilteredReleaseNotes(
+    props.data.allReleaseNotePage.nodes
+  );
+
+  return (
+    <ThemeProvider>
+      <LayoutReleaseNotesList
+        pageContext={props.pageContext}
+        pageData={props.data.contentPage}
+      >
+        <Markdown.TypographyPage>
+          <SEO
+            title={props.data.contentPage.title}
+            excludeFromSearchIndex={
+              props.data.contentPage.excludeFromSearchIndex
+            }
+          />
+          <MDXProvider components={markdownComponents}>
+            <div>
+              <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
+            </div>
+          </MDXProvider>
+          <div id="release-notes-list">
+            <SpacingsStack>
+              {filteredReleaseNotes.map((releaseNote) => (
                 <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
                   <Markdown.TypographyPage>
                     <section>
@@ -40,12 +46,13 @@ const ReleaseNotesListTemplate = (props) => (
                   </Markdown.TypographyPage>
                 </LayoutReleaseNote>
               ))}
-          </SpacingsStack>
-        </div>
-      </Markdown.TypographyPage>
-    </LayoutReleaseNotesList>
-  </ThemeProvider>
-);
+            </SpacingsStack>
+          </div>
+        </Markdown.TypographyPage>
+      </LayoutReleaseNotesList>
+    </ThemeProvider>
+  );
+};
 
 ReleaseNotesListTemplate.propTypes = {
   pageContext: PropTypes.shape({
