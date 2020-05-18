@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import css from '@emotion/css';
 import ContentNotifications from './content-notifications';
 import { dimensions } from '../design-system';
 
@@ -17,8 +18,22 @@ const CardsContainer = styled.div`
       props.narrow ? cardNarrowMinWidth : cardRegularMinWidth
     }, 1fr))`};
 `;
+
+const flatStyle = css`
+  border: 1px solid #cccccc;
+`;
+
+const clickableStyle = css`
+  cursor: pointer;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.24),
+    -1px 1px 3px 0 rgba(0, 0, 0, 0.12);
+`;
+
 const CardContainer = styled.div`
-  border: 1px solid black;
+  ${(props) => (props.clickable ? clickableStyle : flatStyle)};
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 6px;
 `;
 
 export const Cards = (props) => {
@@ -49,11 +64,19 @@ export const Cards = (props) => {
 };
 
 Cards.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element.isRequired),
+    PropTypes.element.isRequired,
+  ]).isRequired,
 };
 
 export const Card = (props) => {
-  return <CardContainer>{props.children}</CardContainer>;
+  /**
+   * todo: if clackable
+   * - check for href, throw error if not present
+   * - listen for onclick event
+   */
+  return <CardContainer {...props[0]}>{props.children}</CardContainer>;
 };
 
 Card.propTypes = {
