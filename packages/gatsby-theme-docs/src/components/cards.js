@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import ContentNotifications from './content-notifications';
-import { dimensions } from '../design-system';
+import { designSystem, ContentNotifications } from '@commercetools-docs/ui-kit';
 
 // Explanation about the following sizes:
 // https://github.com/commercetools/commercetools-docs-kit/pull/427#discussion_r425442556
@@ -10,7 +9,7 @@ const cardNarrowMinWidth = '242px';
 const cardRegularMinWidth = '328px';
 const CardsContainer = styled.div`
   display: grid;
-  gap: ${dimensions.spacings.m};
+  gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
   grid-template-columns: ${(props) =>
     `repeat(auto-fill, minmax(${
