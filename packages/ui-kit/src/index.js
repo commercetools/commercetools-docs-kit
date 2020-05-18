@@ -3,7 +3,8 @@ import * as Markdown from './components/markdown';
 
 // components
 export { designSystem, Markdown };
-export { Card, Cards } from './components/cards';
+export { default as Card } from './components/card';
+export { default as Cards } from './components/cards';
 export { default as ContentNotifications } from './components/content-notifications';
 export { default as Globals } from './components/globals';
 export { default as Link } from './components/link';
