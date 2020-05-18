@@ -51,7 +51,7 @@ const StickyContainer = styled.div`
   position: sticky;
   top: ${designSystem.dimensions.spacings.xxl};
   margin: 0 0 ${designSystem.dimensions.spacings.s};
-  padding-left: ${designSystem.dimensions.spacings.m};
+  padding: ${designSystem.dimensions.spacings.m};
 `;
 const ReleasesTitleLink = styled.a`
   color: ${designSystem.colors.light.textSecondary};
@@ -107,13 +107,15 @@ const LayoutPageReleaseNotesFilters = () => {
               </div>
             </SpacingsInline>
           </ReleasesTitleLink>
-          <SecondaryIconButton
-            icon={<CloseIcon size="medium" />}
-            label="Close release notes filters"
-            onClick={() => {
-              setMenuOpen(false);
-            }}
-          />
+          {isMenuOpen && (
+            <SecondaryIconButton
+              icon={<CloseIcon size="medium" />}
+              label="Close release notes filters"
+              onClick={() => {
+                setMenuOpen(false);
+              }}
+            />
+          )}
         </SpacingsInline>
         <ReleaseNotesFilterDates />
         <ReleaseNotesFilterTopics />
@@ -126,11 +128,17 @@ const LayoutPageReleaseNotesFilters = () => {
       ? ReactDOM.createPortal(
           <Overlay
             justifyContent="flex-end"
-            // onClick={() => {
-            //   // setMenuOpen(false);
-            // }}
+            onClick={() => {
+              setMenuOpen(false);
+            }}
           >
-            <SlidingContainer>{filtersContainer}</SlidingContainer>
+            <SlidingContainer
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+            >
+              {filtersContainer}
+            </SlidingContainer>
           </Overlay>,
           modalPortalNode
         )
