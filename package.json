@@ -118,13 +118,8 @@
     "wait-on": "5.0.0"
   },
   "resolutions": {
-<<<<<<< HEAD
-    "**/cypress": "4.5.0",
-    "**/sharp": "0.25.2"
-=======
     "**/cypress": "4.0.2",
     "**/sharp": "0.23.4"
->>>>>>> fix: working component shadowing and other small fixes
   },
   "engines": {
     "node": ">=12",

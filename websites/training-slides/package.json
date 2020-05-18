@@ -1,14 +1,14 @@
 {
   "private": true,
   "name": "@commercetools-website/training-slides",
-  "version": "2.2.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "start": "yarn develop",
     "develop": "npx gatsby develop -o",
     "serve": "npx gatsby serve --prefix-paths -o",
     "clean": "npx gatsby clean",
-    "clean:develop": "yarn clean && yarn develop",
+    "clean:develop": "yarn clean && yarn develop -o",
     "build": "npx gatsby build --prefix-paths",
     "build:serve": "npx gatsby build --prefix-paths && npx gatsby serve --prefix-paths -o",
     "prebuild": "yarn clean",
@@ -16,16 +16,14 @@
   },
   "dependencies": {
     "gatsby-theme-mdx-deck": "4.1.0",
-    "@commercetools-docs/ui-kit": "2.3.0",
-    "gatsby-plugin-mdx": "1.0.73",
-    "gatsby": "2.19.17",
-    "gatsby-cli": "2.8.29"
+    "@commercetools-docs/ui-kit": "3.0.1",
+    "gatsby-plugin-mdx": "1.2.7",
+    "gatsby": "2.21.11",
+    "gatsby-cli": "2.12.8"
   },
   "peerDependencies": {
     "@emotion/core": "10.x",
     "@emotion/styled": "10.x",
-    "gatsby": "2.x",
-    "gatsby-cli": "2.x",
     "react": "16.x",
     "react-dom": "16.x"
   }
