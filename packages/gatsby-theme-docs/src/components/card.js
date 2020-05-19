@@ -5,26 +5,26 @@ import css from '@emotion/css';
 import { navigate } from '@reach/router';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import Link from './link';
 
 const flatStyle = css`
-  border: 1px solid #cccccc;
+  border: 1px solid ${designSystem.colors.light.borderSecondary};
 `;
 const clickableStyle = css`
   cursor: pointer;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.24),
-    -1px 1px 3px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: ${designSystem.tokens.shadowForClickableCard};
 `;
 const CardContainer = styled.div`
   ${(props) => (props.clickable ? clickableStyle : flatStyle)};
-  background-color: #ffffff;
-  padding: 16px;
-  border-radius: 6px;
+  background-color: ${designSystem.colors.light.surfacePrimary};
+  padding: ${designSystem.dimensions.spacings.m};
+  border-radius: ${designSystem.tokens.borderRadiusForCard};
 `;
 const Icon = styled.div`
-  width: 48px;
-  min-width: 48px;
-  height: 48px;
+  width: ${designSystem.dimensions.spacings.big};
+  min-width: ${designSystem.dimensions.spacings.big};
+  height: ${designSystem.dimensions.spacings.big};
 
   svg {
     width: 100%;
@@ -32,21 +32,21 @@ const Icon = styled.div`
   }
 `;
 const normalTitle = css`
-  font-size: 24px;
-  line-height: 32px;
+  font-size: ${designSystem.typography.fontSizes.h3};
+  line-height: ${designSystem.typography.lineHeights.cardNormalTitle};
 `;
 const smallTitle = css`
-  font-size: 20px;
-  line-height: 26px;
+  font-size: ${designSystem.typography.fontSizes.h4};
+  line-height: ${designSystem.typography.lineHeights.cardSmallTitle};
 `;
 const Title = styled.h6`
   ${(props) => (props.smallTitle ? smallTitle : normalTitle)};
-  font-weight: 500;
+  font-weight: ${designSystem.typography.fontWeights.medium};
   letter-spacing: 0;
 `;
 const ReadMore = styled.div`
-  border-top: 1px solid #cccccc;
-  padding-top: 16px;
+  border-top: 1px solid ${designSystem.colors.light.borderSecondary};
+  padding-top: ${designSystem.dimensions.spacings.m};
 `;
 
 const Card = (props) => {
