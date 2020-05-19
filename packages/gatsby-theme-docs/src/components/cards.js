@@ -11,10 +11,11 @@ const CardsContainer = styled.div`
   display: grid;
   gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
-  grid-template-columns: ${(props) =>
-    `repeat(auto-fill, minmax(${
+  grid-template-columns: ${(props) => {
+    return `repeat(auto-fill, minmax(${
       props.narrow ? cardNarrowMinWidth : cardRegularMinWidth
-    }, 1fr))`};
+    }, 1fr))`;
+  }};
 `;
 
 const Cards = (props) => {
