@@ -11,25 +11,34 @@ const CardsContainer = styled.div`
   display: grid;
   gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
-  grid-template-columns: ${(props) => {
-    return `repeat(auto-fill, minmax(${
+  grid-template-columns: ${(props) =>
+    `repeat( auto-fill, minmax(${
       props.narrow ? cardNarrowMinWidth : cardRegularMinWidth
-    }, 1fr))`;
-  }};
+    }, 1fr)) `};
 `;
 
+// (!React.isValidElement(child)  child.type.name !== 'Card')
 const Cards = (props) => {
   try {
     return (
       <CardsContainer {...props}>
         {React.Children.map(props.children, (child) => {
-          if (!child.props || child.props.mdxType !== 'Card') {
-            throw new Error(
-              `Children of <Cards> must be a <Card> component and not "${
-                child.props ? child.props.mdxType : child
-              }"`
-            );
+          if (!React.isValidElement(child)) {
+            throwErrorMessage(child);
+          } else if (
+            child.type.displayName === 'MDXCreateElement' &&
+            child.props.mdxType !== 'Card'
+          ) {
+            // this is created in mdx but it is not a card
+            throwErrorMessage(child.props.mdxType);
+          } else if (
+            child.type.displayName !== 'MDXCreateElement' &&
+            child.type.name !== 'Card'
+          ) {
+            // this is not created in mdx but it is not a card
+            throwErrorMessage(child.type.name);
           }
+
           return React.cloneElement(child, [props], [...child.props.children]);
         })}
       </CardsContainer>
@@ -43,13 +52,16 @@ const Cards = (props) => {
 
     throw e;
   }
+
+  function throwErrorMessage(type) {
+    throw new Error(
+      `Children of <Cards> must be a <Card> component and not "${type}"`
+    );
+  }
 };
 
 Cards.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element.isRequired),
-    PropTypes.element.isRequired,
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Cards;

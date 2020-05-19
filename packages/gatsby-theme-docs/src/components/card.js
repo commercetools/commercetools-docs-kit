@@ -15,7 +15,7 @@ const clickableStyle = css`
   cursor: pointer;
   box-shadow: ${designSystem.tokens.shadowForClickableCard};
 `;
-const CardContainer = styled.div`
+const Container = styled.div`
   ${(props) => (props.clickable ? clickableStyle : flatStyle)};
   background-color: ${designSystem.colors.light.surfacePrimary};
   padding: ${designSystem.dimensions.spacings.m};
@@ -51,12 +51,12 @@ const ReadMore = styled.div`
 
 const Card = (props) => {
   return (
-    <CardContainer
+    <Container
       {...props[0]}
       onClick={props[0].clickable ? handleClick : undefined}
     >
       {props.icon ? renderCardContentWithIconLayout() : renderCardContent()}
-    </CardContainer>
+    </Container>
   );
 
   function handleClick(e) {
