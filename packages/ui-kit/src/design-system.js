@@ -70,6 +70,8 @@ export const tokens = {
   shadowForPageContent: customProperties.shadow11,
   shadowForClickableCard: `1px 1px 4px 0 rgba(0, 0, 0, 0.24),
   -1px 1px 3px 0 rgba(0, 0, 0, 0.12)`,
+  shadowForClickableCardOnHover: `0 14px 28px 0 rgba(0, 0, 0, 0.25),
+  0 10px 10px 0 rgba(0, 0, 0, 0.23)`,
 };
 
 export const dimensions = {

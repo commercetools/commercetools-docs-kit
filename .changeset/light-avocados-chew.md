@@ -5,7 +5,7 @@
 
 Implement Card components to be used in MDX files.
 
-There are 2 new components available in the MDX provider:
+This change includes 2 new components available in the MDX provider:
 
 - `<Cards>`: is a wrapper component that dictates how cards are rendered within a grid layout.
 - `<Card>`: a single card component to be rendered within the `<Cards>` wrapper component. A `<Card>` component contains card specific information, for example title, link, etc.
