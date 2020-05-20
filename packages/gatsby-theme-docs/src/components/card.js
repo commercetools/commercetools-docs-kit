@@ -5,7 +5,7 @@ import css from '@emotion/css';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem } from '@commercetools-docs/ui-kit';
-// import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
+import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import Link from './link';
 
 // todo: parse markdown fragment of body, markdownFragmentToReact currently not working as expected
@@ -88,7 +88,7 @@ const Card = (props) => {
 
         <SpacingsStack>
           <Title smallTitle={props.smallTitle}>{props.title}</Title>
-          <Body>{props.children}</Body>
+          <Body>{markdownFragmentToReact(props.children)}</Body>
           {props.href && props.textLink && (
             <ReadMore>
               {props.clickable ? (

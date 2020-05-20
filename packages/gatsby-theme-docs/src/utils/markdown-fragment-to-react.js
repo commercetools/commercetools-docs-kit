@@ -4,8 +4,8 @@ import filter from 'unist-util-filter';
 import markdown from 'remark-parse';
 import remark2react from 'remark-react';
 import frontmatter from 'remark-frontmatter';
-import { designSystem } from '@commercetools-docs/ui-kit';
-import components from '../markdown-components';
+import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
+import { Link } from '../components';
 
 const Div = styled.div``;
 const Heading = styled.p`
@@ -34,34 +34,34 @@ const markdownFragmentToReact = (markdownString) =>
     .use(remark2react, {
       sanitize: true,
       remarkReactComponents: {
-        p: components.p,
-        a: components.a,
+        p: Markdown.p,
+        a: Link,
         h1: Heading,
         h2: Heading,
         h3: Heading,
         h4: Heading,
         h5: Heading,
         h6: Heading,
-        thematicBreak: components.thematicBreak,
-        blockquote: components.blockquote,
-        ul: components.ul,
-        ol: components.ol,
-        li: components.li,
-        dl: components.dl,
-        dt: components.dt,
-        dd: components.dd,
+        thematicBreak: Markdown.thematicBreak,
+        blockquote: Markdown.blockquote,
+        ul: Markdown.ul,
+        ol: Markdown.ol,
+        li: Markdown.li,
+        dl: Markdown.dl,
+        dt: Markdown.dt,
+        dd: Markdown.dd,
         table: Div,
         thead: Div,
         tbody: Div,
-        tr: components.ul,
-        td: components.li,
-        th: components.li,
-        code: components.code,
-        pre: components.code,
-        em: components.em,
-        strong: components.strong,
-        delete: components.delete,
-        hr: components.hr,
+        tr: Markdown.ul,
+        td: Markdown.li,
+        th: Markdown.li,
+        code: Markdown.code,
+        pre: Markdown.code,
+        em: Markdown.em,
+        strong: Markdown.strong,
+        delete: Markdown.delete,
+        hr: Markdown.hr,
       },
     })
     .processSync(markdownString).result;
