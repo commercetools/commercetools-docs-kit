@@ -56,10 +56,7 @@ const ReadMore = styled.div`
 
 const Card = (props) => {
   return (
-    <Container
-      {...props[0]}
-      onClick={props[0].clickable ? handleClick : undefined}
-    >
+    <Container {...props} onClick={props.clickable ? handleClick : undefined}>
       {props.icon ? renderCardContentWithIconLayout() : renderCardContent()}
     </Container>
   );
@@ -70,7 +67,7 @@ const Card = (props) => {
   }
 
   function renderCardContentWithIconLayout() {
-    return props[0].narrow ? (
+    return props.narrow ? (
       <SpacingsStack scale="m">{renderCardContent()}</SpacingsStack>
     ) : (
       <SpacingsInline scale="m">{renderCardContent()}</SpacingsInline>
@@ -83,7 +80,7 @@ const Card = (props) => {
         {props.icon && <Icon>{props.icon}</Icon>}
 
         <SpacingsStack>
-          <Title {...props[0]}>{props.title}</Title>
+          <Title smallTitle={props.smallTitle}>{props.title}</Title>
           <div>{props.children}</div>
           {props.href && props.textLink && (
             <ReadMore>
@@ -99,11 +96,14 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
+  clickable: PropTypes.bool,
+  narrow: PropTypes.bool,
+  smallTitle: PropTypes.bool,
   title: PropTypes.string,
   href: PropTypes.string,
   textLink: PropTypes.string,
   icon: PropTypes.element,
-  children: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export default Card;

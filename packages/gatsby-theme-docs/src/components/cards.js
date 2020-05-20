@@ -17,7 +17,6 @@ const CardsContainer = styled.div`
     }, 1fr)) `};
 `;
 
-// (!React.isValidElement(child)  child.type.name !== 'Card')
 const Cards = (props) => {
   try {
     return (
@@ -39,7 +38,15 @@ const Cards = (props) => {
             throwErrorMessage(child.type.name);
           }
 
-          return React.cloneElement(child, [props], [...child.props.children]);
+          return React.cloneElement(
+            child,
+            {
+              clickable: props.clickable,
+              narrow: props.narrow,
+              smallTitle: props.smallTitle,
+            },
+            child.props.children
+          );
         })}
       </CardsContainer>
     );
@@ -61,6 +68,9 @@ const Cards = (props) => {
 };
 
 Cards.propTypes = {
+  clickable: PropTypes.bool,
+  narrow: PropTypes.bool,
+  smallTitle: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 
