@@ -7,7 +7,8 @@ import { designSystem, ContentNotifications } from '@commercetools-docs/ui-kit';
 // https://github.com/commercetools/commercetools-docs-kit/pull/427#discussion_r425442556
 const cardNarrowMinWidth = '242px';
 const cardRegularMinWidth = '328px';
-const CardsContainer = styled.div`
+const CardsContainer = styled.ul`
+  list-style: none;
   display: grid;
   gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
