@@ -64,7 +64,7 @@ const markdownFragmentToReact = (markdownString, customElements) =>
         td: Markdown.Li,
         th: Markdown.Li,
         code: Markdown.InlineCode,
-        pre: Markdown.CodeBlock,
+        pre: Markdown.InlineCode,
         em: Markdown.Em,
         strong: Markdown.Strong,
         delete: Markdown.Delete,
