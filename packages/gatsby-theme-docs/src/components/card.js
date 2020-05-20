@@ -20,7 +20,7 @@ const clickableStyle = css`
   :hover {
     box-shadow: ${designSystem.tokens.shadowForClickableCardOnHover};
   }
-  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.1s ease-in-out;
 `;
 const Container = styled.li`
   ${(props) => (props.clickable ? clickableStyle : flatStyle)};
