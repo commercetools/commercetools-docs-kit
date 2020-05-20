@@ -61,23 +61,23 @@ const ReadMore = styled.div`
 `;
 
 const Card = (props) => {
-  return props.clickable && props.href ? (
-    <Link href={props.href} noUnderline>
-      {renderCardContainer()}
-    </Link>
-  ) : (
-    renderCardContainer()
+  return (
+    <Container {...props}>
+      {props.clickable && props.href ? (
+        <Link href={props.href} noUnderline>
+          {renderNarrowOrWideCard()}
+        </Link>
+      ) : (
+        renderNarrowOrWideCard()
+      )}
+    </Container>
   );
 
-  function renderCardContainer() {
-    return (
-      <Container {...props}>
-        {props.narrow ? (
-          <SpacingsStack scale="m">{renderCardContent()}</SpacingsStack>
-        ) : (
-          <SpacingsInline scale="m">{renderCardContent()}</SpacingsInline>
-        )}
-      </Container>
+  function renderNarrowOrWideCard() {
+    return props.narrow ? (
+      <SpacingsStack scale="m">{renderCardContent()}</SpacingsStack>
+    ) : (
+      <SpacingsInline scale="m">{renderCardContent()}</SpacingsInline>
     );
   }
 
