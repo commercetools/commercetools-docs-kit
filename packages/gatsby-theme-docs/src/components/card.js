@@ -14,6 +14,10 @@ const flatStyle = css`
 const clickableStyle = css`
   cursor: pointer;
   box-shadow: ${designSystem.tokens.shadowForClickableCard};
+  :hover {
+    box-shadow: ${designSystem.tokens.shadowForClickableCardOnHover};
+  }
+  transition: box-shadow 0.3s ease-in-out;
 `;
 const Container = styled.div`
   ${(props) => (props.clickable ? clickableStyle : flatStyle)};
