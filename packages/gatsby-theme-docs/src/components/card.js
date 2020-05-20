@@ -8,9 +8,6 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import Link from './link';
 
-// todo: parse markdown fragment of body, markdownFragmentToReact currently not working as expected
-// todo: if card is clickable, render all links in body as span
-
 const flatStyle = css`
   border: 1px solid ${designSystem.colors.light.borderSecondary};
 `;
@@ -88,7 +85,11 @@ const Card = (props) => {
 
         <SpacingsStack>
           <Title smallTitle={props.smallTitle}>{props.title}</Title>
-          <Body>{markdownFragmentToReact(props.children)}</Body>
+          <Body>
+            {props.clickable
+              ? markdownFragmentToReact(props.children, { a: styled.span`` })
+              : markdownFragmentToReact(props.children)}
+          </Body>
           {props.href && props.textLink && (
             <ReadMore>
               {props.clickable ? (
