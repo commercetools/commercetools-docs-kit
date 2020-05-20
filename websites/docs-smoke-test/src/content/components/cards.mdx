@@ -204,6 +204,56 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
   </Card>
 </Cards>
 
+# Icons with Markdown in Body
+
+**Bullet List**
+
+```jsx
+<Cards>
+  <Card title="Bullet List Body">
+    - Item 1
+    - Item 2
+    - Item 3
+  </Card>
+</Cards>
+```
+
+<Cards>
+  <Card title="Bullet List Body">
+    - Item 1
+    - Item 2
+    - Item 3
+  </Card>
+</Cards>
+
+**Link**
+
+```jsx
+<Cards clickable>
+  <Card
+    title="Link in Body"
+    href="/components/images"
+    textLink="Click here"
+    icon={<DummyIcon />}>
+    An internal [link](/views/code-blocks).
+
+    An external [link](https://commercetools.com).
+  </Card>
+</Cards>
+```
+
+<Cards clickable>
+  <Card
+    title="Link in Body"
+    href="/components/images"
+    textLink="Click here">
+    An internal [link](/views/code-blocks).
+
+    An external [link](https://commercetools.com).
+  </Card>
+</Cards>
+
+
 # Embedded MDX in the Component Body
 
 The MDX spec and implementation allows for putting two blank lines to allow fully rendered markdown inside a JSX component. Because the cards must render markdown in the body differently than the same markdown would be rendered in the page body the implementation must either block the situation (for example detecting that the children aren't text but finished components) or override the renderer to use the MD fragment renderer instead.
