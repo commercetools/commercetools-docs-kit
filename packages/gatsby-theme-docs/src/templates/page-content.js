@@ -8,13 +8,17 @@ import LayoutContent from '../layouts/content';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
+const ContentCards = (props) => (
+  <markdownComponents.Cards fitContentColumn={true} {...props} />
+);
+
 const PageContentTemplate = (props) => (
   <ThemeProvider>
     <LayoutContent
       pageContext={props.pageContext}
       pageData={props.data.contentPage}
     >
-      <MDXProvider components={markdownComponents}>
+      <MDXProvider components={{ ...markdownComponents, Cards: ContentCards }}>
         <Markdown.TypographyPage>
           <SEO
             title={props.pageContext.shortTitle || props.data.contentPage.title}
