@@ -115,7 +115,7 @@ Card.propTypes = {
   href: PropTypes.string,
   textLink: PropTypes.string,
   icon: PropTypes.element,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Card;
