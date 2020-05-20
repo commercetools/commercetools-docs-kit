@@ -6,6 +6,7 @@ import { navigate } from '@reach/router';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem } from '@commercetools-docs/ui-kit';
+// import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import Link from './link';
 
 const flatStyle = css`
