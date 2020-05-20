@@ -204,7 +204,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
   </Card>
 </Cards>
 
-# Icons with Markdown in Body
+# Cards with Markdown in Body
 
 **Bullet List**
 
@@ -226,16 +226,40 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
   </Card>
 </Cards>
 
-**Link**
+## Link in Body of a Flat Card
+
+```jsx
+<Cards>
+  <Card
+    title="Link in Body of Flat"
+    href="/components/images"
+    textLink="Click here"
+    icon={<DummyIcon />}>
+    This [link](/views/code-blocks) should render normally.
+  </Card>
+</Cards>
+```
+
+<Cards>
+  <Card
+    title="Link in Body of Flat"
+    href="/components/images"
+    textLink="Click here"
+    icon={<DummyIcon />}>
+    This [link](/views/code-blocks) should render normally.
+  </Card>
+</Cards>
+
+## Link in Body of a Clickable Card
 
 ```jsx
 <Cards clickable>
   <Card
-    title="Link in Body"
+    title="Link in Body of Clickable"
     href="/components/images"
     textLink="Click here"
     icon={<DummyIcon />}>
-    An internal [link](/views/code-blocks).
+    This [link](/views/code-blocks) should render as "This link".
   </Card>
 </Cards>
 ```
@@ -244,8 +268,9 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
   <Card
     title="Link in Body"
     href="/components/images"
-    textLink="Click here">
-    An internal [link](/views/code-blocks).
+    textLink="Click here"
+    icon={<DummyIcon />}>
+    This [link](/views/code-blocks) should render as "This link".
   </Card>
 </Cards>
 
