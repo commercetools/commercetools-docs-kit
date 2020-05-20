@@ -22,7 +22,7 @@ const clickableStyle = css`
   }
   transition: box-shadow 0.3s ease-in-out;
 `;
-const Container = styled.div`
+const Container = styled.li`
   ${(props) => (props.clickable ? clickableStyle : flatStyle)};
   background-color: ${designSystem.colors.light.surfacePrimary};
   padding: ${designSystem.dimensions.spacings.m};
