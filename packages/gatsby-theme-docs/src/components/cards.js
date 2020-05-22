@@ -23,7 +23,7 @@ const CardsContainer = styled.ul`
         ? cardRegularMinWidthInContentColumn
         : cardRegularMinWidth;
     }
-    return `repeat( auto-fill, minmax(${columnMinWidth}, 1fr))`;
+    return `repeat( auto-fill, minmax(${columnMinWidth}, 1fr)) `;
   }};
 `;
 
