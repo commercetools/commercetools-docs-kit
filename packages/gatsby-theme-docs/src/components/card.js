@@ -84,12 +84,16 @@ const Card = (props) => {
         {props.icon && <Icon>{props.icon}</Icon>}
 
         <SpacingsStack>
-          <Title smallTitle={props.smallTitle}>{props.title}</Title>
-          <Body>
-            {props.clickable
-              ? markdownFragmentToReact(props.children, { a: styled.span`` })
-              : markdownFragmentToReact(props.children)}
-          </Body>
+          {props.title && (
+            <Title smallTitle={props.smallTitle}>{props.title}</Title>
+          )}
+          {props.children && (
+            <Body>
+              {props.clickable
+                ? markdownFragmentToReact(props.children, { a: styled.span`` })
+                : markdownFragmentToReact(props.children)}
+            </Body>
+          )}
           {props.href && props.textLink && (
             <ReadMore>
               {props.clickable ? (
