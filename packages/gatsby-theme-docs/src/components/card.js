@@ -55,6 +55,7 @@ const Body = styled.div`
 const ReadMore = styled.div`
   border-top: 1px solid ${designSystem.colors.light.borderSecondary};
   padding-top: ${designSystem.dimensions.spacings.m};
+  margin-top: ${designSystem.dimensions.spacings.m} !important;
 `;
 
 const Card = (props) => {
