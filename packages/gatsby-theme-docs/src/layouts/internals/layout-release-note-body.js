@@ -49,7 +49,8 @@ const ReleaseNoteBody = (props) => (
 
 ReleaseNoteBody.propTypes = {
   date: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['feature', 'enhancement', 'fix']).isRequired,
+  type: PropTypes.oneOf(['feature', 'enhancement', 'fix', 'announcement'])
+    .isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   children: PropTypes.node.isRequired,
 };
@@ -64,6 +65,8 @@ function mapTypeToTone(props) {
       return 'information';
     case 'fix':
       return 'critical';
+    case 'announcement':
+      return 'primary';
     default:
       return props.type;
   }
@@ -77,6 +80,8 @@ function mapTypeToLabel(props) {
       return 'Enhancement';
     case 'fix':
       return 'Resolved Issue';
+    case 'announcement':
+      return 'Announcement';
     default:
       return props.type;
   }
