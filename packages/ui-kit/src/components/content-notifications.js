@@ -7,6 +7,7 @@ import {
   WarningIcon,
   ErrorIcon,
 } from '@commercetools-uikit/icons';
+import { TypographyContainer } from './markdown';
 import { colors, tokens, dimensions } from '../design-system';
 
 const getIconByType = (type) => {
@@ -81,7 +82,7 @@ const ContentNotification = (props) => {
 
           </Info>
         */}
-        <div>{props.children}</div>
+        <TypographyContainer>{props.children}</TypographyContainer>
       </SpacingsInline>
     </Container>
   );

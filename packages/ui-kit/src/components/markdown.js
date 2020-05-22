@@ -5,17 +5,6 @@ import RibbonIcon from '../icons/ribbon-icon.svg';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import { CodeBlockMarkdownWrapper as CodeBlock } from './multi-code-block';
 
-const TypographyPage = styled.div`
-  font-family: ${typography.fontFamilies.primary};
-  font-size: ${typography.fontSizes.body};
-  font-weight: ${typography.fontWeights.regular};
-  line-height: 1.5;
-  word-spacing: 2px;
-
-  section > * + * {
-    margin-top: ${dimensions.spacings.m};
-  }
-`;
 const headerStyles = () => css`
   font-weight: ${typography.fontWeights.medium};
   line-height: 1.3;
@@ -62,46 +51,57 @@ const H6 = styled.h6`
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.4;
 `;
+
+/*
+The "container" styles have to be applied to containers that render markdown inside a surrounding
+visual box like a blockquote, notification box, card, or Subtitle.
+Heading margins are not set here because headings can and should not be used inside such containers.
+*/
+const containerStyles = () => css`
+  > * + * {
+    margin-top: ${dimensions.spacings.m};
+    margin-bottom: ${dimensions.spacings.m};
+  }
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+`;
+
 const ThematicBreak = styled.hr`
   display: none;
 `;
 const Blockquote = styled.blockquote`
+  ${containerStyles};
   background-color: ${colors.light.surfaceQuote};
   border-left: 1px solid ${colors.light.borderHighlight};
   border-radius: 0 ${tokens.borderRadiusForBlockquote}
     ${tokens.borderRadiusForBlockquote} 0;
   color: ${colors.light.textFaded};
   font-size: ${typography.fontSizes.small};
-  margin: ${dimensions.spacings.l} ${dimensions.spacings.xxl};
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
-
-  > :first-of-type {
-    margin-top: 0;
-  }
-  > :last-of-type {
-    margin-bottom: 0;
-  }
 `;
 const Ul = styled.ul`
-  margin: 0 0 ${dimensions.spacings.xxl};
   padding-left: ${dimensions.spacings.xl};
   > * + * {
     margin-top: ${dimensions.spacings.s};
   }
 `;
 const Ol = styled.ol`
-  margin: 0 0 ${dimensions.spacings.xxl};
   padding-left: ${dimensions.spacings.xl};
   > * + * {
     margin-top: ${dimensions.spacings.s};
   }
 `;
 const Li = styled.li`
+  ${containerStyles};
   line-height: 1.46;
 
   > ul,
   > ol {
-    margin: 0 0 ${dimensions.spacings.m};
+    margin: ${dimensions.spacings.s} 0 ${dimensions.spacings.m};
   }
 `;
 const Dl = styled.dl`
@@ -113,6 +113,7 @@ const Dt = styled.dt`
   color: ${colors.light.textSecondary};
 `;
 const Dd = styled.dd`
+  ${containerStyles}
   padding: 0 0 0 ${dimensions.spacings.l};
 
   > * + * {
@@ -184,6 +185,7 @@ const TableRow = styled.tr`
   }
 `;
 const TableCell = styled.td`
+  ${containerStyles};
   border-bottom: 1px solid ${colors.light.borderPrimary};
   font-size: ${typography.fontSizes.small};
   padding: ${dimensions.spacings.s};
@@ -203,6 +205,7 @@ const TableCell = styled.td`
   }
 `;
 const TableHeader = styled.th`
+  ${containerStyles};
   font-size: ${typography.fontSizes.small};
   padding: ${dimensions.spacings.s};
   text-align: left;
@@ -227,6 +230,28 @@ const Delete = styled.span`
   text-decoration: line-through;
 `;
 const Hr = styled(ThematicBreak)``;
+
+const TypographyPage = styled.div`
+  font-family: ${typography.fontFamilies.primary};
+  font-size: ${typography.fontSizes.body};
+  font-weight: ${typography.fontWeights.regular};
+  line-height: 1.5;
+  word-spacing: 2px;
+
+  section > * + * {
+    margin-top: ${dimensions.spacings.m};
+  }
+  section > ${Blockquote} {
+    margin: ${dimensions.spacings.l} ${dimensions.spacings.xxl};
+  }
+  section > ${Ul}, section > ${Ol} {
+    margin: ${dimensions.spacings.s} 0 ${dimensions.spacings.xxl};
+  }
+`;
+
+const TypographyContainer = styled.div`
+  ${containerStyles};
+`;
 
 /* eslint-disable react/display-name,react/prop-types */
 const withAnchorLink = (Component) => (props) => {
@@ -261,6 +286,7 @@ const withAnchorLink = (Component) => (props) => {
 
 export {
   TypographyPage,
+  TypographyContainer,
   Paragraph,
   H1,
   H2,
