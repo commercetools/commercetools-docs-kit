@@ -87,13 +87,7 @@ const Card = (props) => {
           {props.title && (
             <Title smallTitle={props.smallTitle}>{props.title}</Title>
           )}
-          {props.children && (
-            <Body>
-              {props.clickable
-                ? markdownFragmentToReact(props.children, { a: styled.span`` })
-                : markdownFragmentToReact(props.children)}
-            </Body>
-          )}
+          {props.children && <Body>{renderBodyContent()}</Body>}
           {props.href && props.textLink && (
             <ReadMore>
               {props.clickable ? (
@@ -108,6 +102,16 @@ const Card = (props) => {
         </SpacingsStack>
       </>
     );
+  }
+
+  function renderBodyContent() {
+    if (typeof props.children === 'string') {
+      return props.clickable
+        ? markdownFragmentToReact(props.children, { a: styled.span`` })
+        : markdownFragmentToReact(props.children);
+    }
+
+    return props.children;
   }
 };
 
