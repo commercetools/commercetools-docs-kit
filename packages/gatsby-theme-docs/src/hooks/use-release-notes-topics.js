@@ -3,31 +3,19 @@ import { useStaticQuery, graphql } from 'gatsby';
 const useReleaseNotesTopics = (selectedTopics = []) => {
   const data = useStaticQuery(graphql`
     query GetAllReleaseNotesTopics {
-      allReleaseNotePage(sort: { order: DESC, fields: date }) {
-        nodes {
-          topics
+      allReleaseNoteTopics: allReleaseNotePage(
+        sort: { fields: topics, order: ASC }
+      ) {
+        group(field: topics) {
+          fieldValue
         }
       }
     }
   `);
-
-  // Convert to a Set first to remove duplicates
-  const topics = new Set();
-  data.allReleaseNotePage.nodes.forEach((node) => {
-    node.topics.forEach((topic) => {
-      topics.add(topic);
-    });
-  });
-  return Array.from(topics).reduce((allTopics, topic) => {
-    const isChecked = selectedTopics.includes(topic);
-    return [
-      ...allTopics,
-      {
-        name: topic,
-        checked: isChecked,
-      },
-    ];
-  }, []);
+  return data.allReleaseNoteTopics.group.map((topic) => ({
+    name: topic.fieldValue,
+    checked: selectedTopics.includes(topic.fieldValue),
+  }));
 };
 
 export default useReleaseNotesTopics;
