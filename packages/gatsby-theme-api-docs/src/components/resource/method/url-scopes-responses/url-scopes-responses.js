@@ -27,6 +27,19 @@ const Type = styled.span`
   border-radius: ${tokens.borderRadiusForMethodType};
   text-transform: uppercase;
 `;
+const PathFragment = styled.span`
+  display: inline-block;
+`;
+const SlashWrappingPath = (props) => {
+  return props.children.split('/').map((segment, index) => {
+    return (
+      <PathFragment key={index}>
+        {index > 0 && '/'}
+        {segment}
+      </PathFragment>
+    );
+  });
+};
 
 const UrlScopesResponses = ({
   apiKey,
@@ -47,8 +60,12 @@ const UrlScopesResponses = ({
           {method}
         </Type>
         <p>
-          <BasePath>{uris.baseUri}</BasePath>
-          <ResourceUriPath>{uris.resourcePathUri}</ResourceUriPath>
+          <BasePath>
+            <SlashWrappingPath>{uris.baseUri}</SlashWrappingPath>
+          </BasePath>
+          <ResourceUriPath>
+            <SlashWrappingPath>{uris.resourcePathUri}</SlashWrappingPath>
+          </ResourceUriPath>
         </p>
       </SpacingsInline>
 
