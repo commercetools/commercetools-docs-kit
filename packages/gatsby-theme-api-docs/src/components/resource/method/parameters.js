@@ -1,24 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import styled from '@emotion/styled';
+import {
+  Markdown,
+  designSystem as uiKitDesignSystem,
+} from '@commercetools-docs/ui-kit';
 import { useTypeLocations } from '../../../hooks/use-type-locations';
 import generateTypeToRender from '../../../utils/generate-type-to-render';
 import Required from '../../required';
 import Table from '../../table';
+import TableTopic from './table-topic';
+
+// inline-blocks inside a block are wrapped first before wrapping inline.
+// this implements a wrapping behavior where property name and type are separated
+// into lines before the name is wrapped in itself if it consists of multiple words.
+const PropertyName = styled.div`
+  display: inline-block;
+  margin-right: ${uiKitDesignSystem.dimensions.spacings.s};
+  white-space: nowrap;
+`;
+const PropertyType = styled.div`
+  display: inline-block;
+`;
 
 const Parameters = (props) => {
   const typeLocations = useTypeLocations();
 
   return (
     <Table>
-      {props.title ? (
+      {props.title && (
         <thead>
           <tr>
-            <th colSpan="2">{props.title}</th>
+            <th colSpan="2">
+              <TableTopic>{props.title}</TableTopic>
+            </th>
           </tr>
         </thead>
-      ) : null}
+      )}
 
       <tbody>
         {props.parameters.map((parameter) => {
@@ -31,23 +49,21 @@ const Parameters = (props) => {
           return (
             <tr key={parameter.name}>
               <td>
-                <SpacingsStack scale="xs">
-                  <p className="name-type">
-                    <Markdown.InlineCode>{parameter.name}</Markdown.InlineCode>
-                    {parameter.required ? <Required>*</Required> : null}
-                  </p>
-                  <p className="name name-type">
-                    {typeToRender.displayPrefix && (
-                      <span className="name">{typeToRender.displayPrefix}</span>
-                    )}
+                <PropertyName className="name-type">
+                  <Markdown.InlineCode>{parameter.name}</Markdown.InlineCode>
+                  {parameter.required && <Required />}
+                </PropertyName>
+                <PropertyType className="name name-type">
+                  {typeToRender.displayPrefix && (
+                    <span className="name">{typeToRender.displayPrefix}</span>
+                  )}
 
-                    {typeof typeToRender.type === 'string' ? (
-                      <span className="name">{typeToRender.type}</span>
-                    ) : (
-                      typeToRender.type
-                    )}
-                  </p>
-                </SpacingsStack>
+                  {typeof typeToRender.type === 'string' ? (
+                    <span className="name">{typeToRender.type}</span>
+                  ) : (
+                    typeToRender.type
+                  )}
+                </PropertyType>
               </td>
               <td>{parameter.description ? parameter.description : '-'}</td>
             </tr>

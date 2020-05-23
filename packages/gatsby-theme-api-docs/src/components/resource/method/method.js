@@ -6,29 +6,18 @@ import {
   designSystem as uiKitDesignSystem,
   Markdown,
 } from '@commercetools-docs/ui-kit';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
 import { generateEndpointURN } from '../../../utils/ctp-urn';
 import {
   oauth2Scopes,
   queryParametersTitle,
   pathParametersTitle,
-  requestRepresentation,
 } from '../../../utils/constants';
 import { tokens, dimensions, colors, typography } from '../../../design-system';
 import UrlScopesResponses from './url-scopes-responses';
 import Parameters from './parameters';
 import RequestRepresentation from './request-representation';
-
-const Type = styled.span`
-  font-size: ${uiKitDesignSystem.typography.fontSizes.h4};
-  line-height: ${typography.lineHeights.methodType};
-  color: ${uiKitDesignSystem.colors.light.surfacePrimary};
-  padding: ${uiKitDesignSystem.dimensions.spacings.xs}
-    ${uiKitDesignSystem.dimensions.spacings.m};
-  border-radius: ${tokens.borderRadiusForMethodType};
-  text-transform: uppercase;
-`;
 
 const Title = styled.span`
   font-size: ${uiKitDesignSystem.typography.fontSizes.h3};
@@ -65,7 +54,6 @@ const Method = ({
   if (method.uriParameters) {
     allUriParameters = allUriParameters.concat(method.uriParameters);
   }
-
   const methodColor = computeMethodColor(methodType.toLowerCase());
 
   const id = generateEndpointURN({
@@ -76,19 +64,9 @@ const Method = ({
 
   return (
     <SpacingsStack scale="s">
-      <SpacingsInline alignItems="center" scale="s">
-        <Type
-          css={css`
-            background-color: ${methodColor};
-          `}
-        >
-          {methodType}
-        </Type>
+      <TitleWithAnchor id={id}>{method.displayName}</TitleWithAnchor>
 
-        <TitleWithAnchor id={id}>{method.displayName}</TitleWithAnchor>
-      </SpacingsInline>
-
-      <Description>{method.description}</Description>
+      <Description>{markdownFragmentToReact(method.description)}</Description>
 
       <SpacingsStack scale="m">
         <UrlScopesResponseContainer
@@ -98,6 +76,8 @@ const Method = ({
         >
           <UrlScopesResponses
             apiKey={apiKey}
+            method={methodType}
+            methodColor={methodColor}
             uris={uris}
             scopes={{
               title: oauth2Scopes,
@@ -109,28 +89,27 @@ const Method = ({
           />
         </UrlScopesResponseContainer>
 
-        {allUriParameters.length > 0 ? (
+        {allUriParameters.length > 0 && (
           <Parameters
             title={pathParametersTitle}
             parameters={allUriParameters}
           />
-        ) : null}
+        )}
 
-        {method.queryParameters ? (
+        {method.queryParameters && (
           <Parameters
             apiKey={apiKey}
             title={queryParametersTitle}
             parameters={method.queryParameters}
           />
-        ) : null}
+        )}
 
-        {method.body ? (
+        {method.body && (
           <RequestRepresentation
-            titleSuffix={requestRepresentation}
             apiKey={apiKey}
             apiType={method.body.applicationjson.type}
           />
-        ) : null}
+        )}
       </SpacingsStack>
     </SpacingsStack>
   );

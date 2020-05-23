@@ -1,20 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { designSystem } from '@commercetools-docs/ui-kit';
 import ApiType from '../../type';
+import { requestRepresentation } from '../../../utils/constants';
+import TableTopic from './table-topic';
 
-const TitleTypeString = styled.span`
-  color: ${designSystem.colors.light.textFaded};
-  font-weight: ${designSystem.typography.fontWeights.regular};
-`;
-
-const RequestRepresentation = ({ titleSuffix, apiKey, apiType }) => {
+const RequestRepresentation = ({ apiKey, apiType }) => {
   const title = (
     <p>
-      {titleSuffix ? `${titleSuffix}: ` : null}
-      <TitleTypeString>{apiType}</TitleTypeString>
+      <TableTopic>{requestRepresentation}:</TableTopic>
+      {apiType}
     </p>
   );
   return (
@@ -32,7 +27,6 @@ const RequestRepresentation = ({ titleSuffix, apiKey, apiType }) => {
 RequestRepresentation.propTypes = {
   apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.string.isRequired,
-  titleSuffix: PropTypes.string,
 };
 
 export default RequestRepresentation;
