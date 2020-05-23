@@ -26,10 +26,7 @@ const Title = styled.span`
 `;
 
 const UrlScopesResponseContainer = styled.div`
-  /* background-color: ${uiKitDesignSystem.colors.light.surfacePrimary}; */
-  /* border: ${dimensions.widths.tableBorder} solid ${colors.light.border}; */
   border-radius: ${tokens.borderRadiusForTable};
-  /* box-shadow: ${tokens.shadowForUrlScopesResponse}; */
   border-left-width: ${dimensions.widths.methodBorderLeft};
   border-left-style: solid;
 `;
