@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { tokens, typography } from '../../../../design-system';
@@ -12,9 +11,6 @@ import { responseRepresentation } from '../../../../utils/constants';
 import Scopes from './scopes';
 import Responses from './responses';
 
-const Container = styled.div`
-  padding: ${designSystem.dimensions.spacings.m};
-`;
 const BasePath = styled.span`
   color: ${designSystem.colors.light.textFaded};
   display: inline-block;
@@ -41,35 +37,33 @@ const UrlScopesResponses = ({
   responses,
 }) => {
   return (
-    <Container>
-      <SpacingsStack scale="s">
-        <SpacingsInline>
-          <Type
-            css={css`
-              background-color: ${methodColor};
-            `}
-          >
-            {method}
-          </Type>
-          <p>
-            <BasePath>{uris.baseUri}</BasePath>
-            <ResourceUriPath>{uris.resourcePathUri}</ResourceUriPath>
-          </p>
-        </SpacingsInline>
+    <>
+      <SpacingsInline>
+        <Type
+          css={css`
+            background-color: ${methodColor};
+          `}
+        >
+          {method}
+        </Type>
+        <p>
+          <BasePath>{uris.baseUri}</BasePath>
+          <ResourceUriPath>{uris.resourcePathUri}</ResourceUriPath>
+        </p>
+      </SpacingsInline>
 
-        {scopes.scopes ? (
-          <Scopes scopes={scopes.scopes} title={scopes.title} />
-        ) : null}
+      {scopes.scopes ? (
+        <Scopes scopes={scopes.scopes} title={scopes.title} />
+      ) : null}
 
-        {responses ? (
-          <Responses
-            apiKey={apiKey}
-            responses={responses}
-            title={responseRepresentation}
-          />
-        ) : null}
-      </SpacingsStack>
-    </Container>
+      {responses ? (
+        <Responses
+          apiKey={apiKey}
+          responses={responses}
+          title={responseRepresentation}
+        />
+      ) : null}
+    </>
   );
 };
 

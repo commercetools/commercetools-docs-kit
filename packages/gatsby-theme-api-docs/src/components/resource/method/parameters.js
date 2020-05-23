@@ -27,50 +27,44 @@ const Parameters = (props) => {
   const typeLocations = useTypeLocations();
 
   return (
-    <Table>
-      {props.title && (
-        <thead>
-          <tr>
-            <th colSpan="2">
-              <TableTopic>{props.title}</TableTopic>
-            </th>
-          </tr>
-        </thead>
-      )}
+    <div>
+      {' '}
+      {props.title && <TableTopic>{props.title}:</TableTopic>}
+      <Table>
+        <tbody>
+          {props.parameters.map((parameter) => {
+            const typeToRender = generateTypeToRender({
+              typeLocations,
+              property: parameter,
+              apiKey: props.apiKey,
+            });
 
-      <tbody>
-        {props.parameters.map((parameter) => {
-          const typeToRender = generateTypeToRender({
-            typeLocations,
-            property: parameter,
-            apiKey: props.apiKey,
-          });
+            return (
+              <tr key={parameter.name}>
+                <td>
+                  <PropertyName className="name-type">
+                    <Markdown.InlineCode>{parameter.name}</Markdown.InlineCode>
+                    {parameter.required && <Required />}
+                  </PropertyName>
+                  <PropertyType className="name name-type">
+                    {typeToRender.displayPrefix && (
+                      <span className="name">{typeToRender.displayPrefix}</span>
+                    )}
 
-          return (
-            <tr key={parameter.name}>
-              <td>
-                <PropertyName className="name-type">
-                  <Markdown.InlineCode>{parameter.name}</Markdown.InlineCode>
-                  {parameter.required && <Required />}
-                </PropertyName>
-                <PropertyType className="name name-type">
-                  {typeToRender.displayPrefix && (
-                    <span className="name">{typeToRender.displayPrefix}</span>
-                  )}
-
-                  {typeof typeToRender.type === 'string' ? (
-                    <span className="name">{typeToRender.type}</span>
-                  ) : (
-                    typeToRender.type
-                  )}
-                </PropertyType>
-              </td>
-              <td>{parameter.description ? parameter.description : '-'}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </Table>
+                    {typeof typeToRender.type === 'string' ? (
+                      <span className="name">{typeToRender.type}</span>
+                    ) : (
+                      typeToRender.type
+                    )}
+                  </PropertyType>
+                </td>
+                <td>{parameter.description ? parameter.description : '-'}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    </div>
   );
 };
 

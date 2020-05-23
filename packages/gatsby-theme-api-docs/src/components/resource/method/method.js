@@ -26,15 +26,22 @@ const Title = styled.span`
 `;
 
 const UrlScopesResponseContainer = styled.div`
-  background-color: ${uiKitDesignSystem.colors.light.surfacePrimary};
-  border: ${dimensions.widths.tableBorder} solid ${colors.light.border};
+  /* background-color: ${uiKitDesignSystem.colors.light.surfacePrimary}; */
+  /* border: ${dimensions.widths.tableBorder} solid ${colors.light.border}; */
   border-radius: ${tokens.borderRadiusForTable};
-  box-shadow: ${tokens.shadowForUrlScopesResponse};
+  /* box-shadow: ${tokens.shadowForUrlScopesResponse}; */
   border-left-width: ${dimensions.widths.methodBorderLeft};
+  border-left-style: solid;
 `;
 
 const Description = styled.p`
   line-height: ${uiKitDesignSystem.typography.lineHeights.body};
+`;
+
+const Container = styled.div`
+  padding: ${uiKitDesignSystem.dimensions.spacings.s} 0
+    ${uiKitDesignSystem.dimensions.spacings.s}
+    ${uiKitDesignSystem.dimensions.spacings.m};
 `;
 
 const TitleWithAnchor = Markdown.withAnchorLink(Title);
@@ -74,35 +81,39 @@ const Method = ({
             border-left-color: ${methodColor};
           `}
         >
-          <UrlScopesResponses
-            apiKey={apiKey}
-            method={methodType}
-            methodColor={methodColor}
-            uris={uris}
-            scopes={{
-              title: oauth2Scopes,
-              scopes: method.securedBy
-                ? method.securedBy[0].oauth_2_0.scopes
-                : null,
-            }}
-            responses={method.responses}
-          />
+          <Container>
+            <SpacingsStack scale="s">
+              <UrlScopesResponses
+                apiKey={apiKey}
+                method={methodType}
+                methodColor={methodColor}
+                uris={uris}
+                scopes={{
+                  title: oauth2Scopes,
+                  scopes: method.securedBy
+                    ? method.securedBy[0].oauth_2_0.scopes
+                    : null,
+                }}
+                responses={method.responses}
+              />
+
+              {allUriParameters.length > 0 && (
+                <Parameters
+                  title={pathParametersTitle}
+                  parameters={allUriParameters}
+                />
+              )}
+
+              {method.queryParameters && (
+                <Parameters
+                  apiKey={apiKey}
+                  title={queryParametersTitle}
+                  parameters={method.queryParameters}
+                />
+              )}
+            </SpacingsStack>
+          </Container>
         </UrlScopesResponseContainer>
-
-        {allUriParameters.length > 0 && (
-          <Parameters
-            title={pathParametersTitle}
-            parameters={allUriParameters}
-          />
-        )}
-
-        {method.queryParameters && (
-          <Parameters
-            apiKey={apiKey}
-            title={queryParametersTitle}
-            parameters={method.queryParameters}
-          />
-        )}
 
         {method.body && (
           <RequestRepresentation
