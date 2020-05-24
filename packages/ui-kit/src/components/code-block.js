@@ -6,13 +6,75 @@ import { css } from '@emotion/core';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import theme from 'prism-react-renderer/themes/nightOwl';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 
+// This is a custom theme for Prism and it implements a minimal color palette
+// with commercetools colors.
+// The theme is inspired by "theme-ui" Prism preset: https://theme-ui.com/packages/prism#theme-ui-colors
+const theme = {
+  plain: {
+    color: colors.light.textPrimary,
+    backgroundColor: colors.light.surfacePrimary,
+  },
+  styles: [
+    {
+      types: [
+        'comment',
+        'prolog',
+        'doctype',
+        'cdata',
+        'punctuation',
+        'operator',
+        'entity',
+        'url',
+      ],
+      style: {
+        color: colors.light.syntaxHighlightNeutral,
+      },
+    },
+    {
+      types: ['comment'],
+      style: {
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: [
+        'property',
+        'tag',
+        'boolean',
+        'number',
+        'constant',
+        'symbol',
+        'deleted',
+        'function',
+        'class-name',
+        'regex',
+        'important',
+        'variable',
+      ],
+      style: {
+        color: colors.light.syntaxHighlightAccent,
+      },
+    },
+    {
+      types: ['atrule', 'attr-value', 'keyword'],
+      style: {
+        color: colors.light.syntaxHighlightPrimary,
+      },
+    },
+    {
+      types: ['selector', 'attr-name', 'string', 'char', 'builtin', 'inserted'],
+      style: {
+        color: colors.light.syntaxHighlightSecondary,
+      },
+    },
+  ],
+};
+
 const HighlightedContainer = styled.div`
-  background-color: ${colors.light.surfaceCode};
   margin: 0;
   padding: ${dimensions.spacings.s} ${dimensions.spacings.xs}
     ${dimensions.spacings.s} ${dimensions.spacings.m};
@@ -21,7 +83,7 @@ const HighlightedContainer = styled.div`
 const Preformatted = styled.pre`
   font-family: ${typography.fontFamilies.code};
   font-size: ${typography.fontSizes.small};
-  background-color: ${colors.light.surfaceCode} !important;
+
   margin: 0;
   padding: 0;
   width: 100%;
@@ -31,13 +93,13 @@ const CopyArea = styled.div`
   cursor: pointer;
   svg {
     * {
-      fill: ${colors.light.surfacePrimary};
+      fill: ${colors.light.syntaxHighlightNeutral};
     }
   }
   :hover {
     svg {
       * {
-        fill: ${colors.light.surfaceCodeHighlight};
+        fill: ${colors.light.syntaxHighlightPrimary};
       }
     }
   }
@@ -45,7 +107,7 @@ const CopyArea = styled.div`
 const TooltipWrapperComponent = (props) =>
   ReactDOM.createPortal(props.children, document.body);
 const TooltipBodyComponent = styled.div`
-  background-color: ${colors.light.surfaceCodeHighlight};
+  background-color: ${colors.light.syntaxHighlightAccent};
   border-radius: ${tokens.borderRadiusForTooltip};
   color: ${colors.light.textInverted};
   font-size: ${typography.fontSizes.extraSmall};
@@ -64,19 +126,19 @@ const getLineStyles = (options) => {
         margin: 0 0 0 -${dimensions.spacings.m};
         padding: 0 ${dimensions.spacings.s} 0 0;
         color: ${options.shouldShowPrompt
-          ? colors.light.surfaceSecondary3
-          : colors.light.surfaceCode};
+          ? colors.light.syntaxHighlightNeutral
+          : 'transparent'};
       }
     `;
   }
   if (options.shouldHighlightLine) {
     highlightLineStyles = css`
-      background-color: ${colors.light.surfaceCodeHighlight};
+      background-color: ${colors.light.syntaxHighlightSurface};
 
       /* stylelint-disable function-calc-no-invalid */
-      width: calc(
-        100% - ${options.shouldShowPrompt ? dimensions.spacings.m : '0px'}
-      );
+      width: ${options.isCommandLine
+        ? `calc(100% - ${dimensions.spacings.s})`
+        : '100%'};
     `;
   }
   return [promptLineStyles, highlightLineStyles];

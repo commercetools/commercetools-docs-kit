@@ -20,9 +20,6 @@ export const colors = {
     surfaceSecondary2: customProperties.colorNeutral90,
     surfaceSecondary3: customProperties.colorNeutral60,
     surfaceInlineCode: customProperties.colorNeutral90,
-    surfaceCode: customProperties.colorAccent,
-    surfaceCodeCopy: customProperties.colorAccent30,
-    surfaceCodeHighlight: customProperties.colorAccent40,
     surfaceInfo: customProperties.colorInfo95,
     surfaceBeta: customProperties.colorInfo85,
     surfaceQuote: customProperties.colorAccent98,
@@ -52,6 +49,12 @@ export const colors = {
     link: customProperties.colorPrimary25,
     linkHover: customProperties.colorPrimary,
     linkNavigation: customProperties.colorInfo,
+    // Syntax highlighting
+    syntaxHighlightPrimary: customProperties.colorPrimary,
+    syntaxHighlightSecondary: customProperties.colorWarning,
+    syntaxHighlightAccent: customProperties.colorAccent40,
+    syntaxHighlightNeutral: customProperties.colorNeutral60,
+    syntaxHighlightSurface: customProperties.colorNeutral95,
   },
 };
 
