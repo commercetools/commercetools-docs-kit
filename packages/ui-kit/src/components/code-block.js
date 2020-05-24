@@ -132,13 +132,12 @@ const getLineStyles = (options) => {
     `;
   }
   if (options.shouldHighlightLine) {
+    const width = options.isCommandLine
+      ? `calc(100% - ${dimensions.spacings.s})`
+      : '100%';
     highlightLineStyles = css`
       background-color: ${colors.light.syntaxHighlightSurface};
-
-      /* stylelint-disable function-calc-no-invalid */
-      width: ${options.isCommandLine
-        ? `calc(100% - ${dimensions.spacings.s})`
-        : '100%'};
+      width: ${width};
     `;
   }
   return [promptLineStyles, highlightLineStyles];
