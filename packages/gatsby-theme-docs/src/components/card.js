@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
-import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import Link from './link';
@@ -35,6 +33,22 @@ const Icon = styled.div`
     height: 100%;
   }
 `;
+const InlineContainer = styled.div`
+  display: flex;
+  height: 100%;
+  > * + * {
+    margin-left: ${designSystem.dimensions.spacings.m};
+  }
+`;
+const StackContainer = styled.div`
+  flex-grow: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  > * + * {
+    margin-top: ${designSystem.dimensions.spacings.m};
+  }
+`;
 const normalTitle = css`
   font-size: ${designSystem.typography.fontSizes.h3};
   line-height: ${designSystem.typography.lineHeights.cardNormalTitle};
@@ -52,10 +66,13 @@ const Title = styled.h6`
 const Body = styled.div`
   color: ${designSystem.colors.light.textPrimary};
 `;
+const ReamMoreContainer = styled.div`
+  margin-top: auto;
+`;
 const ReadMore = styled.div`
   border-top: 1px solid ${designSystem.colors.light.borderSecondary};
   padding-top: ${designSystem.dimensions.spacings.m};
-  margin-top: ${designSystem.dimensions.spacings.m} !important;
+  margin-top: ${designSystem.dimensions.spacings.m};
 `;
 
 const Card = (props) => {
@@ -73,9 +90,9 @@ const Card = (props) => {
 
   function renderNarrowOrWideCard() {
     return props.narrow ? (
-      <SpacingsStack scale="m">{renderCardContent()}</SpacingsStack>
+      <StackContainer>{renderCardContent()}</StackContainer>
     ) : (
-      <SpacingsInline scale="m">{renderCardContent()}</SpacingsInline>
+      <InlineContainer>{renderCardContent()}</InlineContainer>
     );
   }
 
@@ -84,23 +101,31 @@ const Card = (props) => {
       <>
         {props.icon && <Icon>{props.icon}</Icon>}
 
-        <SpacingsStack>
+        <StackContainer
+          css={css`
+            > * + * {
+              margin-top: ${designSystem.dimensions.spacings.s};
+            }
+          `}
+        >
           {props.title && (
             <Title smallTitle={props.smallTitle}>{props.title}</Title>
           )}
           {props.children && <Body>{renderBodyContent()}</Body>}
           {props.href && props.textLink && (
-            <ReadMore>
-              {props.clickable ? (
-                props.textLink
-              ) : (
-                <Link href={props.href} noUnderline>
-                  {props.textLink}
-                </Link>
-              )}
-            </ReadMore>
+            <ReamMoreContainer>
+              <ReadMore>
+                {props.clickable ? (
+                  props.textLink
+                ) : (
+                  <Link href={props.href} noUnderline>
+                    {props.textLink}
+                  </Link>
+                )}
+              </ReadMore>
+            </ReamMoreContainer>
           )}
-        </SpacingsStack>
+        </StackContainer>
       </>
     );
   }
