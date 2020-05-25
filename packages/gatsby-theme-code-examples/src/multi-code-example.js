@@ -12,7 +12,7 @@ function MultiCodeExample(props) {
 
   try {
     return (
-      <MultiCodeBlock title={props.title}>
+      <MultiCodeBlock title={props.title} useThemeLight={props.useThemeLight}>
         {React.Children.map(props.children, (child, index) => {
           if (!child.props || child.props.mdxType !== 'CodeExample') {
             throw new Error(
@@ -58,6 +58,7 @@ function MultiCodeExample(props) {
 }
 
 MultiCodeExample.propTypes = {
+  useThemeLight: PropTypes.bool,
   title: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
 };

@@ -49,12 +49,50 @@ export const colors = {
     link: customProperties.colorPrimary25,
     linkHover: customProperties.colorPrimary,
     linkNavigation: customProperties.colorInfo,
-    // Syntax highlighting
-    syntaxHighlightPrimary: customProperties.colorPrimary,
-    syntaxHighlightSecondary: customProperties.colorWarning,
-    syntaxHighlightAccent: customProperties.colorAccent40,
-    syntaxHighlightNeutral: customProperties.colorNeutral60,
-    syntaxHighlightSurface: customProperties.colorNeutral95,
+    // Code blocks
+    // We support 2 theme versions: a light one and a dark one.
+    // This is not to be confused with a (potential) website theme, hence
+    // the 2 versions being grouped together.
+    // The code block theme is controlled by a prop, which will use the
+    // emotion theming provider to inject the correct version of a theme.
+    //
+    //   <ThemeProvider
+    //     theme={{
+    //       colors: colors.light.codeBlocks[props.theme || 'dark'],
+    //     }}
+    //   >
+    //
+    // Do not use these properties directly, but always throw an emotion theme provider.
+    codeBlocks: {
+      light: {
+        border: customProperties.colorNeutral90,
+        surface: customProperties.colorSurface,
+        surfaceHeader: customProperties.colorNeutral90,
+        surfaceLanguageDropdown: customProperties.colorSolid,
+        surfaceLanguageDropdownHover: customProperties.colorNeutral60,
+        textHeader: customProperties.colorSolid,
+        surfaceCopyIcon: customProperties.colorSolid,
+        surfaceCopyIconHover: customProperties.colorAccent40,
+        surfaceCopyTooltip: customProperties.colorAccent40,
+        textCopyTooltip: customProperties.colorSurface,
+        surfaceLineHighlight: customProperties.colorAccent40,
+        surfacePrompt: customProperties.colorNeutral60,
+      },
+      dark: {
+        border: customProperties.colorAccent40,
+        surface: customProperties.colorAccent,
+        surfaceHeader: customProperties.colorSolid,
+        surfaceLanguageDropdown: customProperties.colorSurface,
+        surfaceLanguageDropdownHover: customProperties.colorNeutral90,
+        textHeader: customProperties.colorNeutral60,
+        surfaceCopyIcon: customProperties.colorSurface,
+        surfaceCopyIconHover: customProperties.colorAccent40,
+        surfaceCopyTooltip: customProperties.colorAccent40,
+        textCopyTooltip: customProperties.colorSurface,
+        surfaceLineHighlight: customProperties.colorAccent40,
+        surfacePrompt: customProperties.colorNeutral60,
+      },
+    },
   },
 };
 

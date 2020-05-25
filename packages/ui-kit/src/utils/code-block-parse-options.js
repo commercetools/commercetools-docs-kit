@@ -10,6 +10,7 @@ const intialOptions = {
   title: undefined,
   highlightLines: [],
   noPromptLines: [],
+  useThemeLight: false,
 };
 
 const getOptionName = (name) =>
@@ -37,5 +38,6 @@ export default function parseCodeBlockOptions(props = {}) {
     title: normalizedOptions.title,
     highlightLines: getLinesForRange(normalizedOptions.highlightLines),
     noPromptLines: getLinesForRange(normalizedOptions.noPromptLines),
+    useThemeLight: typeof normalizedOptions.useThemeLight === 'string',
   };
 }
