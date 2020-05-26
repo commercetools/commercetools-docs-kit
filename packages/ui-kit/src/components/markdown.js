@@ -60,7 +60,6 @@ Heading margins are not set here because headings can and should not be used ins
 const containerStyles = () => css`
   > * + * {
     margin-top: ${dimensions.spacings.m};
-    margin-bottom: ${dimensions.spacings.m};
   }
   > :first-child {
     margin-top: 0;
