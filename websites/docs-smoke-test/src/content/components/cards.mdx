@@ -23,6 +23,7 @@ title: Cards
  * `clickable` (boolean): if set, the whole area of all child cards is a link, the card is elevated and has a hover effect if a link url is set.
  * `narrow` (boolean): by default, two cards are shown side by side (except mobile viewports). if `narrow` is passed, the minimum card width is reduced so that three cards fit the content width on microsite landing pages.
  * `smallTitle` (boolean): lets all cards have a smaller title font.
+ * `fitContentColumn` (boolean): renders a little differently for cards used on content pages. The is automatically set for cards on landing pages.
 
 ## Minimal form
 
@@ -48,7 +49,7 @@ title: Cards
 ## All options configured
 
 ```jsx
-<Cards clickable narrow smallTitle>
+<Cards clickable narrow smallTitle fitContentColumn>
   <Card>foo</Card>
   <Card>bar</Card>
   <Card>next row unless three aside (narrow) prop passed?</Card>
@@ -59,10 +60,10 @@ title: Cards
 **Output**
 
 <Cards clickable narrow smallTitle>
-  <Card>foo</Card>
-  <Card>bar</Card>
-  <Card>next row unless three aside (narrow) prop passed?</Card>
-  <Card>next row in any case</Card>
+  <Card href="/components/images">foo</Card>
+  <Card href="/components/images">bar</Card>
+  <Card href="/components/images">next row unless three aside (narrow) prop passed?</Card>
+  <Card href="/components/images">next row in any case</Card>
 </Cards>
 
 # "Card": the actual card
@@ -83,7 +84,12 @@ None of the properties are required but the body content should not be empty.
     title="A regular heading"
     href="/components/images"
     textLink="Read more about images...">This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.</Card>
+  <Card
+    title="A regular heading"
+    href="/components/images"
+    textLink="Read more about images...">Short content, link bottom aligned</Card>
 </Cards>
+
 ```
 
 **Output**
@@ -93,6 +99,10 @@ None of the properties are required but the body content should not be empty.
     title="A regular heading"
     href="/components/images"
     textLink="Read more about images...">This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.</Card>
+  <Card
+    title="A regular heading"
+    href="/components/images"
+    textLink="Read more about images...">Short content, link bottom aligned</Card>
 </Cards>
 
 ## Clickable with Link
@@ -162,8 +172,17 @@ Icons on cards that are **not narrow** are aligned to the top of the card regard
 <Cards>
   <Card
     title="A left aligned icon"
-    icon={<DummyIcon />}>
+    icon={<DummyIcon />}
+    href="/components/images"
+    textLink="Read more about images...">
     The icon of this card should be left aligned.
+  </Card>
+  <Card
+    title="A left aligned icon"
+    icon={<DummyIcon />}
+    href="/components/images"
+    textLink="Read more about images...">
+    The icon of this card should be left aligned. This has more text than the latter.
   </Card>
 </Cards>
 ```
@@ -173,8 +192,17 @@ Icons on cards that are **not narrow** are aligned to the top of the card regard
 <Cards>
   <Card
     title="A left aligned icon"
-    icon={<DummyIcon />}>
+    icon={<DummyIcon />}
+    href="/components/images"
+    textLink="Read more about images...">
     The icon of this card should be left aligned.
+  </Card>
+  <Card
+    title="A left aligned icon"
+    icon={<DummyIcon />}
+    href="/components/images"
+    textLink="Read more about images...">
+    The icon of this card should be left aligned. This has more descriptive text than the latter.
   </Card>
 </Cards>
 
@@ -189,6 +217,13 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
     icon={<DummyIcon />}>
     The icon of this card should be top aligned.
   </Card>
+  <Card
+    title="A top aligned icon"
+    href="/components/images"
+    textLink="Clickable top aligned icon..."
+    icon={<DummyIcon />}>
+    The icon of this card should be top aligned. This has more descriptive text than the latter.
+  </Card>
 </Cards>
 ```
 
@@ -202,7 +237,85 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
     icon={<DummyIcon />}>
     The icon of this card should be top aligned.
   </Card>
+  <Card
+    title="A top aligned icon"
+    href="/components/images"
+    textLink="Clickable top aligned icon..."
+    icon={<DummyIcon />}>
+    The icon of this card should be top aligned. This has more descriptive text than the latter.
+  </Card>
 </Cards>
+
+# Cards with Markdown in Body
+
+## Bullet List in Body of Flat Card
+
+```jsx
+<Cards>
+  <Card title="Bullet List Body">
+    - Item 1
+    - Item 2
+    - Item 3
+  </Card>
+</Cards>
+```
+
+<Cards>
+  <Card title="Bullet List Body">
+    - Item 1
+    - Item 2
+    - Item 3
+  </Card>
+</Cards>
+
+## Link in Body of a Flat Card
+
+```jsx
+<Cards>
+  <Card
+    title="Link in Body of Flat"
+    href="/components/images"
+    textLink="Click here"
+    icon={<DummyIcon />}>
+    This [link](/views/code-blocks) should render as a link.
+  </Card>
+</Cards>
+```
+
+<Cards>
+  <Card
+    title="Link in Body of Flat"
+    href="/components/images"
+    textLink="Click here"
+    icon={<DummyIcon />}>
+    This [link](/views/code-blocks) should render as a link.
+  </Card>
+</Cards>
+
+## Link in Body of a Clickable Card
+
+```jsx
+<Cards clickable>
+  <Card
+    title="Link in Body of Clickable"
+    href="/components/images"
+    textLink="Click here"
+    icon={<DummyIcon />}>
+    This [link](/views/code-blocks) should **not** render as a link.
+  </Card>
+</Cards>
+```
+
+<Cards clickable>
+  <Card
+    title="Link in Body"
+    href="/components/images"
+    textLink="Click here"
+    icon={<DummyIcon />}>
+    This [link](/views/code-blocks) should **not** render as a link.
+  </Card>
+</Cards>
+
 
 # Embedded MDX in the Component Body
 
