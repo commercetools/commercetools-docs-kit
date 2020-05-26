@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/ui-kit",
   "description": "UI component library for building commercetools documentation websites",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.18.4",
+    "@commercetools-uikit/icons": "10.19.0",
     "@commercetools-uikit/spacings-inline": "10.18.4"
   },
   "peerDependencies": {
