@@ -3,12 +3,13 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import RibbonIcon from '../icons/ribbon-icon.svg';
 import { colors, dimensions, typography, tokens } from '../design-system';
-import { CodeBlockMarkdownWrapper as CodeBlock } from './multi-code-block';
+import {
+  CodeBlockMarkdownWrapper as CodeBlock,
+  Container as CodeBlockContainer,
+} from './multi-code-block';
 
 const headerStyles = () => css`
-  font-weight: ${typography.fontWeights.medium};
   line-height: 1.3;
-  margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.s};
 `;
 
 const Paragraph = styled.p`
@@ -17,28 +18,28 @@ const Paragraph = styled.p`
 const H1 = styled.h1`
   ${headerStyles};
   font-size: ${typography.fontSizes.h1};
-  margin: 0 0 ${dimensions.spacings.s};
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.15;
   color: ${(props) => props.theme.colors.light.primary};
+  /* H1 is the page title and used outside the Typography wrappers so it directly has a margin */
+  margin: 0 0 ${dimensions.spacings.s};
 `;
 const H2 = styled.h2`
   ${headerStyles};
-  border-bottom: 1px solid ${colors.light.borderPrimary};
   font-size: ${typography.fontSizes.h2};
   font-weight: ${typography.fontWeights.bold};
-  margin: ${dimensions.spacings.huge} 0 ${dimensions.spacings.m};
+  border-bottom: 1px solid ${colors.light.borderPrimary};
   padding-bottom: ${dimensions.spacings.s};
 `;
 const H3 = styled.h3`
   ${headerStyles};
   font-size: ${typography.fontSizes.h3};
-  margin: ${dimensions.spacings.big} 0 0;
+  font-weight: ${typography.fontWeights.medium};
 `;
 const H4 = styled.h4`
   ${headerStyles};
   font-size: ${typography.fontSizes.h4};
-  margin: ${dimensions.spacings.xl} 0 0;
+  font-weight: ${typography.fontWeights.medium};
 `;
 const H5 = styled.h5`
   ${headerStyles};
@@ -60,12 +61,6 @@ Heading margins are not set here because headings can and should not be used ins
 const containerStyles = () => css`
   > * + * {
     margin-top: ${dimensions.spacings.m};
-  }
-  > :first-child {
-    margin-top: 0;
-  }
-  > :last-child {
-    margin-bottom: 0;
   }
 `;
 
@@ -240,11 +235,29 @@ const TypographyPage = styled.div`
   section > * + * {
     margin-top: ${dimensions.spacings.m};
   }
+  section > ${H2} {
+    margin: ${dimensions.spacings.huge} 0 ${dimensions.spacings.m};
+  }
+  section > ${H3} {
+    margin: ${dimensions.spacings.big} 0 0;
+  }
+  section > ${H4} {
+    margin: ${dimensions.spacings.xl} 0 0;
+  }
+  section > ${H5} {
+    margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.s};
+  }
+  section > ${H6} {
+    margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.s};
+  }
   section > ${Blockquote} {
     margin: ${dimensions.spacings.l} ${dimensions.spacings.xxl};
   }
   section > ${Ul}, section > ${Ol} {
     margin: ${dimensions.spacings.s} 0 ${dimensions.spacings.xxl};
+  }
+  section > ${CodeBlockContainer} {
+    margin-bottom: ${dimensions.spacings.xxl};
   }
 `;
 

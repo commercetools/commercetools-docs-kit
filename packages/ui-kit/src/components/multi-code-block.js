@@ -6,10 +6,10 @@ import { colors, dimensions, typography, tokens } from '../design-system';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
 import CodeBlock from './code-block';
 
-const Container = styled.div`
+// exported to be able to refer to it in conditional styling of wrapper components.
+export const Container = styled.div`
   border: 1px solid ${colors.light.surfaceCodeHighlight};
   border-radius: ${tokens.borderRadiusForCodeBlock};
-  margin: 0 0 ${dimensions.spacings.xxl};
 `;
 const Header = styled.div`
   background-color: ${colors.light.textPrimary};
