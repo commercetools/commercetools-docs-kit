@@ -7,8 +7,8 @@ import { ThemeProvider } from 'emotion-theming';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import themeDark from 'prism-react-renderer/themes/nightOwl';
-import themeLight from 'prism-react-renderer/themes/nightOwlLight';
+import themePrimary from 'prism-react-renderer/themes/nightOwl';
+import themeSecondary from 'prism-react-renderer/themes/nightOwlLight';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
@@ -206,14 +206,16 @@ const CodeBlock = (props) => {
     <ThemeProvider
       theme={{
         colors:
-          colors.light.codeBlocks[props.secondaryTheme ? 'light' : 'dark'],
+          colors.light.codeBlocks[
+            props.secondaryTheme ? 'secondary' : 'primary'
+          ],
       }}
     >
       <Highlight
         {...defaultProps}
         code={props.content}
         language={language}
-        theme={props.secondaryTheme ? themeLight : themeDark}
+        theme={props.secondaryTheme ? themeSecondary : themePrimary}
       >
         {({
           className,

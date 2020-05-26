@@ -99,7 +99,9 @@ function MultiCodeBlock(props) {
     <ThemeProvider
       theme={{
         colors:
-          colors.light.codeBlocks[props.secondaryTheme ? 'light' : 'dark'],
+          colors.light.codeBlocks[
+            props.secondaryTheme ? 'secondary' : 'primary'
+          ],
       }}
     >
       <Container>
