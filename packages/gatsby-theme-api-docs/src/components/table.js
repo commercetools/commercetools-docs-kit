@@ -30,10 +30,12 @@ const Table = styled.table`
     tr {
       padding: 0 ${uiKitDesignSystem.dimensions.spacings.s};
 
-      :not(:first-of-type) {
-        td {
-          border-top: ${dimensions.widths.tableBorder} solid
-            ${colors.light.border};
+      @media screen and (${dimensions.viewports.tablet}) {
+        :not(:first-of-type) {
+          td {
+            border-top: ${dimensions.widths.tableBorder} solid
+              ${colors.light.border};
+          }
         }
       }
     }
@@ -44,14 +46,25 @@ const Table = styled.table`
       border-top: none;
       word-break: break-word;
       font-size: ${typography.fontSizes.small};
+      @media screen and (${dimensions.viewports.mobile}) {
+        display: block;
+      }
 
       :first-of-type {
-        min-width: ${dimensions.widths.typeTableLeftColumnWidthMin};
-        max-width: ${dimensions.widths.typeTableLeftColumnWidthMax};
+        @media screen and (${dimensions.viewports.mobile}) {
+          border-top: ${dimensions.widths.tableBorder} solid
+            ${colors.light.border};
+        }
+        @media screen and (${dimensions.viewports.tablet}) {
+          min-width: ${dimensions.widths.typeTableLeftColumnWidthMin};
+          max-width: ${dimensions.widths.typeTableLeftColumnWidthMax};
+        }
       }
 
       :last-of-type {
-        padding-left: ${uiKitDesignSystem.dimensions.spacings.m};
+        @media screen and (${dimensions.viewports.tablet}) {
+          padding-left: ${uiKitDesignSystem.dimensions.spacings.m};
+        }
       }
 
       .name-type {

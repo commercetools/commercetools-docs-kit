@@ -14,7 +14,7 @@ const Container = styled.span`
   }
 `;
 const BasePath = styled.span`
-  color: ${designSystem.colors.light.textFaded};
+  color: ${designSystem.colors.light.textSecondary};
   display: inline-block;
 `;
 const ResourceUriPath = styled.span`

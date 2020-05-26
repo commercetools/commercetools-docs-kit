@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { colors, typography, dimensions } from '../../../design-system';
 
 export default styled.span`
-  color: ${designSystem.colors.light.textFaded};
-  font-size: ${designSystem.typography.fontSizes.h5};
-  font-weight: ${designSystem.typography.fontWeights.regular};
+  color: ${colors.light.textSecondary};
+  font-size: ${typography.fontSizes.h5};
+  font-weight: ${typography.fontWeights.regular};
   white-space: nowrap;
-  min-width: 9rem;
+  @media screen and (${dimensions.viewports.tablet}) {
+    min-width: 9rem;
+  }
 `;
