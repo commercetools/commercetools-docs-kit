@@ -48,13 +48,23 @@ securitySchemes:
   oauth_2_0: !include oauth2.raml
 securedBy:
 - oauth_2_0
-baseUri: https://subdomain-{exampleUriParameter}.example.com
+baseUri: https://api.{region}.{cloudProvider}.commercetools.com
 baseUriParameters:
-  exampleUriParameter:
+  region:
     enum:
-    - subdomainOne
-    - subdomainTwo
-    - subdomainThree
+    - regionOne
+    - regionTwo
+    - regionThree
+    type: string
+    (builtinType): string
+    description: |-
+      Free text description of the uri parameter.
+    required: true
+  cloudProvider:
+    enum:
+    - providerOne
+    - providerTwo
+    - providerThree
     type: string
     (builtinType): string
     description: |-
