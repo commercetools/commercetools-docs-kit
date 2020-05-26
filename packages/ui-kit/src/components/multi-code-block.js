@@ -98,7 +98,8 @@ function MultiCodeBlock(props) {
   return (
     <ThemeProvider
       theme={{
-        colors: colors.light.codeBlocks[props.useThemeLight ? 'light' : 'dark'],
+        colors:
+          colors.light.codeBlocks[props.secondaryTheme ? 'light' : 'dark'],
       }}
     >
       <Container>
@@ -167,16 +168,18 @@ function MultiCodeBlock(props) {
     if (Array.isArray(children)) {
       return React.cloneElement(
         children.find((child) => child.props.language === selectedChild),
-        { useThemeLight: props.useThemeLight }
+        { secondaryTheme: props.secondaryTheme }
       );
     }
 
-    return React.cloneElement(children, { useThemeLight: props.useThemeLight });
+    return React.cloneElement(children, {
+      secondaryTheme: props.secondaryTheme,
+    });
   }
 }
 
 MultiCodeBlock.propTypes = {
-  useThemeLight: PropTypes.bool,
+  secondaryTheme: PropTypes.bool,
   title: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.element,
@@ -196,7 +199,7 @@ export const CodeBlockMarkdownWrapper = (props) => {
     title,
     highlightLines,
     noPromptLines,
-    useThemeLight,
+    secondaryTheme,
   } = codeBlockParseOptions(props.children.props);
   const content =
     props.children.props && props.children.props.children
@@ -204,7 +207,7 @@ export const CodeBlockMarkdownWrapper = (props) => {
       : props.children;
 
   return (
-    <MultiCodeBlock title={title} useThemeLight={useThemeLight}>
+    <MultiCodeBlock title={title} secondaryTheme={secondaryTheme}>
       <CodeBlock
         content={content}
         language={languageCode}

@@ -205,14 +205,15 @@ const CodeBlock = (props) => {
   return (
     <ThemeProvider
       theme={{
-        colors: colors.light.codeBlocks[props.useThemeLight ? 'light' : 'dark'],
+        colors:
+          colors.light.codeBlocks[props.secondaryTheme ? 'light' : 'dark'],
       }}
     >
       <Highlight
         {...defaultProps}
         code={props.content}
         language={language}
-        theme={props.useThemeLight ? themeLight : themeDark}
+        theme={props.secondaryTheme ? themeLight : themeDark}
       >
         {({
           className,
@@ -286,7 +287,7 @@ const CodeBlock = (props) => {
   );
 };
 CodeBlock.propTypes = {
-  useThemeLight: PropTypes.bool,
+  secondaryTheme: PropTypes.bool,
   language: PropTypes.string,
   highlightLines: PropTypes.arrayOf(PropTypes.number),
   noPromptLines: PropTypes.arrayOf(PropTypes.number),
