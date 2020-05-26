@@ -4,8 +4,8 @@ import filter from 'unist-util-filter';
 import markdown from 'remark-parse';
 import remark2react from 'remark-react';
 import frontmatter from 'remark-frontmatter';
-import { designSystem } from '@commercetools-docs/ui-kit';
-import components from '../markdown-components';
+import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
+import Link from '../components/link';
 
 const Div = styled.div``;
 const Heading = styled.p`
@@ -21,12 +21,19 @@ const Heading = styled.p`
  * - tables rendered as bullet lists (one list per row)
  * - code blocks rendered as inline code
  * - none of the custom MDX components available -> for example subtitle
+ *
+ * Elements can be customized with the customElements object, its structure should be like so:
+ * {
+ *  a: <custom-anchor-tag>,
+ *  p: <custom-paragrapgh-tag>,
+ * }
+ *
  * @param {String} markdownString
+ * @param {Object} customElements
  */
-
 const removeFrontmatter = () => (tree) =>
   filter(tree, (node) => node.type !== 'yaml');
-const markdownFragmentToReact = (markdownString) =>
+const markdownFragmentToReact = (markdownString, customElements) =>
   unified()
     .use(markdown, { commonmark: true })
     .use(frontmatter)
@@ -34,34 +41,35 @@ const markdownFragmentToReact = (markdownString) =>
     .use(remark2react, {
       sanitize: true,
       remarkReactComponents: {
-        p: components.p,
-        a: components.a,
+        p: Markdown.Paragraph,
+        a: Link,
         h1: Heading,
         h2: Heading,
         h3: Heading,
         h4: Heading,
         h5: Heading,
         h6: Heading,
-        thematicBreak: components.thematicBreak,
-        blockquote: components.blockquote,
-        ul: components.ul,
-        ol: components.ol,
-        li: components.li,
-        dl: components.dl,
-        dt: components.dt,
-        dd: components.dd,
+        thematicBreak: Markdown.ThematicBreak,
+        blockquote: Markdown.Blockquote,
+        ul: Markdown.Ul,
+        ol: Markdown.Ol,
+        li: Markdown.Li,
+        dl: Markdown.Dl,
+        dt: Markdown.Dt,
+        dd: Markdown.Dd,
         table: Div,
         thead: Div,
         tbody: Div,
-        tr: components.ul,
-        td: components.li,
-        th: components.li,
-        code: components.code,
-        pre: components.code,
-        em: components.em,
-        strong: components.strong,
-        delete: components.delete,
-        hr: components.hr,
+        tr: Markdown.Ul,
+        td: Markdown.Li,
+        th: Markdown.Li,
+        code: Markdown.InlineCode,
+        pre: Markdown.InlineCode,
+        em: Markdown.Em,
+        strong: Markdown.Strong,
+        delete: Markdown.Delete,
+        hr: Markdown.Hr,
+        ...customElements,
       },
     })
     .processSync(markdownString).result;

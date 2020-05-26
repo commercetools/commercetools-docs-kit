@@ -1,9 +1,9 @@
 import {
+  ContentNotifications,
   Markdown,
   Subtitle,
-  ContentNotifications,
 } from '@commercetools-docs/ui-kit';
-import { Link, BetaFlag as Beta, Anchor } from './components';
+import { Card, Cards, Link, BetaFlag as Beta, Anchor } from './components';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
@@ -48,6 +48,8 @@ const components = {
   Error: ContentNotifications.Error,
   Beta,
   Anchor,
+  Card,
+  Cards,
 
   // Custom React components that can be injected from each website
   // See ../overrides/README.md
