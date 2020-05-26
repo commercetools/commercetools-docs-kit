@@ -9,7 +9,7 @@ const Container = styled.div`
   margin: 1em 0;
 `;
 
-const ResourceMethod = ({ apiKey, resource, method }) => {
+const ResourceMethod = ({ apiKey, resource, method, title }) => {
   const resourceObject = useReadResourceByResourcePath(apiKey, resource);
 
   if (!resourceObject) {
@@ -32,6 +32,7 @@ const ResourceMethod = ({ apiKey, resource, method }) => {
         resourceUriParameters={resourceObject.allUriParameters}
         method={methodObject}
         methodType={method}
+        title={title}
       />
     </Container>
   );
@@ -41,6 +42,7 @@ ResourceMethod.propTypes = {
   apiKey: PropTypes.string.isRequired,
   resource: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default ResourceMethod;

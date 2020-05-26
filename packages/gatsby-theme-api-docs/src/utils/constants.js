@@ -2,7 +2,7 @@ export const values = 'Values';
 export const docsTitle = 'commercetools Documentation';
 export const apiTypeStrings = {
   description: 'Description',
-  values: 'Values',
+  values: 'values',
   properties: 'Properties',
   name: 'Name',
   type: 'Type',

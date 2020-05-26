@@ -2,6 +2,7 @@ import { customProperties } from '@commercetools-uikit/design-system';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
 export const tokens = {
+  ...designSystem.tokens,
   borderRadiusForTable: customProperties.borderRadius6,
   borderRadiusForMethodType: designSystem.pxToRem(`12px`),
   borderRadiusForResponseCode: designSystem.pxToRem(`10px`),
@@ -14,18 +15,23 @@ export const tokens = {
 };
 
 export const dimensions = {
+  ...designSystem.dimensions,
   widths: {
-    typeTableNameColumnWidth: '30%',
+    ...designSystem.dimensions.widths,
+    typeTableLeftColumnWidthMin: '25%',
+    typeTableLeftColumnWidthMax: '45%',
     tableBorder: designSystem.pxToRem(`1px`),
     methodBorderLeft: designSystem.pxToRem('8px'),
   },
   spacings: {
+    ...designSystem.dimensions.spacings,
     xxs: designSystem.pxToRem('2px'),
   },
 };
 
 export const colors = {
   light: {
+    ...designSystem.colors.light,
     surfaceTableHead: '#f2f2f2',
     border: '#e6e6e6',
     methods: {
@@ -37,6 +43,7 @@ export const colors = {
 };
 
 export const typography = {
+  ...designSystem.typography,
   lineHeights: {
     th: designSystem.pxToRem('24px'),
     methodType: designSystem.pxToRem('24px'),

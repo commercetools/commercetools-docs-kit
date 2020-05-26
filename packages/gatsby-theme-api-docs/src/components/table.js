@@ -28,7 +28,7 @@ const Table = styled.table`
 
   tbody {
     tr {
-      padding: 0 ${uiKitDesignSystem.dimensions.spacings.xs};
+      padding: 0 ${uiKitDesignSystem.dimensions.spacings.s};
 
       :not(:first-of-type) {
         td {
@@ -43,13 +43,18 @@ const Table = styled.table`
       vertical-align: top;
       border-top: none;
       word-break: break-word;
+      font-size: ${typography.fontSizes.small};
+
+      :first-of-type {
+        min-width: ${dimensions.widths.typeTableLeftColumnWidthMin};
+        max-width: ${dimensions.widths.typeTableLeftColumnWidthMax};
+      }
 
       :last-of-type {
         padding-left: ${uiKitDesignSystem.dimensions.spacings.m};
       }
 
       .name-type {
-        font-size: ${uiKitDesignSystem.typography.fontSizes.small};
         line-height: ${typography.lineHeights.propertyType};
       }
 

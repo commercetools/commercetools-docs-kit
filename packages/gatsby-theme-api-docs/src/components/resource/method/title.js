@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-const TableTopic = styled.span`
+export default styled.span`
   color: ${designSystem.colors.light.textFaded};
+  font-size: ${designSystem.typography.fontSizes.h5};
   font-weight: ${designSystem.typography.fontWeights.regular};
-  margin-right: ${designSystem.dimensions.spacings.s};
+  white-space: nowrap;
+  min-width: 9rem;
 `;
-
-export default TableTopic;

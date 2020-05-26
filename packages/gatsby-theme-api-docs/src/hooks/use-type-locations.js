@@ -59,3 +59,7 @@ export const useTypeLocations = () => {
 
   return convertComponentInMdxToTypeLocations(queryResult);
 };
+
+export const locationForType = (apiKey, type, typeLocations) => {
+  return typeLocations[`${apiKey}__${type}`];
+};

@@ -5,11 +5,12 @@ import {
   Markdown,
   designSystem as uiKitDesignSystem,
 } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { useTypeLocations } from '../../../hooks/use-type-locations';
 import generateTypeToRender from '../../../utils/generate-type-to-render';
 import Required from '../../required';
 import Table from '../../table';
-import TableTopic from './table-topic';
+import Title from './title';
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
 // this implements a wrapping behavior where property name and type are separated
@@ -27,9 +28,8 @@ const Parameters = (props) => {
   const typeLocations = useTypeLocations();
 
   return (
-    <div>
-      {' '}
-      {props.title && <TableTopic>{props.title}:</TableTopic>}
+    <SpacingsStack scale="xs">
+      {props.title && <Title>{props.title}:</Title>}
       <Table>
         <tbody>
           {props.parameters.map((parameter) => {
@@ -64,7 +64,7 @@ const Parameters = (props) => {
           })}
         </tbody>
       </Table>
-    </div>
+    </SpacingsStack>
   );
 };
 

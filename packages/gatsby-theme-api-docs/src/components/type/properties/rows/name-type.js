@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import {
-  Markdown,
-  designSystem as uiKitDesignSystem,
-} from '@commercetools-docs/ui-kit';
+import { Markdown } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { BetaFlag } from '@commercetools-docs/gatsby-theme-docs';
+import { typography } from '../../../../design-system';
 import { useTypeLocations } from '../../../../hooks/use-type-locations';
 import generateTypeToRender from '../../../../utils/generate-type-to-render';
 import Required from '../../../required';
@@ -13,12 +13,11 @@ import Required from '../../../required';
 // this implements a wrapping behavior where property name and type are separated
 // into lines before the name is wrapped in itself if it consists of multiple words.
 const PropertyName = styled.div`
-  display: inline-block;
-  margin-right: ${uiKitDesignSystem.dimensions.spacings.s};
   white-space: nowrap;
 `;
-const PropertyType = styled.div`
-  display: inline-block;
+const PropertyType = styled.div``;
+const BetaWrapper = styled.span`
+  font-size: ${typography.fontSizes.body};
 `;
 
 const NameType = ({
@@ -35,10 +34,15 @@ const NameType = ({
   });
 
   return (
-    <>
+    <SpacingsStack scale="xs">
       <PropertyName className="name-type">
         <Markdown.InlineCode>{property.name}</Markdown.InlineCode>
-        {property.required ? <Required /> : null}
+        {property.required && <Required />}
+        {property.beta && (
+          <BetaWrapper>
+            <BetaFlag />
+          </BetaWrapper>
+        )}
       </PropertyName>
 
       {parentDiscriminator && property.name === parentDiscriminator ? (
@@ -58,7 +62,7 @@ const NameType = ({
           typeToRender.type
         )}
       </PropertyType>
-    </>
+    </SpacingsStack>
   );
 };
 
@@ -71,6 +75,7 @@ NameType.propTypes = {
       type: PropTypes.string.isRequired,
     }),
     required: PropTypes.bool.isRequired,
+    beta: PropTypes.bool,
   }).isRequired,
   parentDiscriminator: PropTypes.string,
   discriminatorValue: PropTypes.string,
