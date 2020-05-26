@@ -113,6 +113,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       feature
       fix
       enhancement
+      announcement
     }
   `);
 
