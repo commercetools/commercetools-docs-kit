@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import Link from './link';
 
@@ -137,7 +137,11 @@ const Card = (props) => {
         : markdownFragmentToReact(props.children);
     }
 
-    return props.children;
+    return (
+      <Markdown.TypographyContainer>
+        {props.children}
+      </Markdown.TypographyContainer>
+    );
   }
 };
 
