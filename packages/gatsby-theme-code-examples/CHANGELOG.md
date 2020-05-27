@@ -1,5 +1,17 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 4.0.0
+
+### Minor Changes
+
+- [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8) [#458](https://github.com/commercetools/commercetools-docs-kit/pull/458) Thanks [@renovate](https://github.com/apps/renovate)! - Add the option for code blocks and code examples to pass a `secondaryTheme` prop to render a lighter version of the syntax highlighting theme. See the examples in `components/code-blocks` and `components/code-examples`
+
+### Patch Changes
+
+- Updated dependencies [[`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8), [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8), [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8), [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8), [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8)]:
+  - @commercetools-docs/gatsby-theme-docs@4.1.0
+  - @commercetools-docs/ui-kit@3.1.0
+
 ## 3.0.3
 
 ### Patch Changes
