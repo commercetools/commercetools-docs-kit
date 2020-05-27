@@ -14,7 +14,7 @@ import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 
 const HighlightedContainer = styled.div`
-  background-color: ${(props) => props.theme.colors.surface};
+  background-color: ${(props) => props.theme.codeBlockColors.surface};
   border-radius: ${tokens.borderRadiusForCodeBlock};
   margin: 0;
   padding: ${dimensions.spacings.s} ${dimensions.spacings.xs}
@@ -24,7 +24,8 @@ const HighlightedContainer = styled.div`
 const Preformatted = styled.pre`
   font-family: ${typography.fontFamilies.code};
   font-size: ${typography.fontSizes.small};
-  background-color: ${(props) => props.theme.colors.surface} !important;
+  background-color: ${(props) =>
+    props.theme.codeBlockColors.surface} !important;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -34,13 +35,13 @@ const CopyArea = styled.div`
   cursor: pointer;
   svg {
     * {
-      fill: ${(props) => props.theme.colors.surfaceCopyIcon};
+      fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIcon};
     }
   }
   :hover {
     svg {
       * {
-        fill: ${(props) => props.theme.colors.surfaceCopyIconHover};
+        fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIconHover};
       }
     }
   }
@@ -48,9 +49,10 @@ const CopyArea = styled.div`
 const TooltipWrapperComponent = (props) =>
   ReactDOM.createPortal(props.children, document.body);
 const TooltipBodyComponent = styled.div`
-  background-color: ${(props) => props.theme.colors.surfaceCopyTooltip};
+  background-color: ${(props) =>
+    props.theme.codeBlockColors.surfaceCopyTooltip};
   border-radius: ${tokens.borderRadiusForTooltip};
-  color: ${(props) => props.theme.colors.textCopyTooltip};
+  color: ${(props) => props.theme.codeBlockColors.textCopyTooltip};
   font-size: ${typography.fontSizes.extraSmall};
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
@@ -205,7 +207,7 @@ const CodeBlock = (props) => {
   return (
     <ThemeProvider
       theme={{
-        colors:
+        codeBlockColors:
           colors.light.codeBlocks[
             props.secondaryTheme ? 'secondary' : 'primary'
           ],
