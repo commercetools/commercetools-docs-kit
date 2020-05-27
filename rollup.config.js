@@ -4,7 +4,7 @@ process.env.BUILD_ROLLUP = true;
 const fs = require('fs');
 const babel = require('rollup-plugin-babel');
 const readPkgUp = require('read-pkg-up');
-const resolve = require('@rollup/plugin-node-resolve');
+const resolve = require('@rollup/plugin-node-resolve').default;
 // eslint-disable-next-line import/no-unresolved
 const json = require('@rollup/plugin-json');
 const commonjs = require('rollup-plugin-commonjs');
