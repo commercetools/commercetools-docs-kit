@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { ThemeProvider } from 'emotion-theming';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import codeBlockParseOptions from '../utils/code-block-parse-options';
 import CodeBlock from './code-block';
 
-// exported to be able to refer to it in conditional styling of wrapper components.
 export const Container = styled.div`
-  border: 1px solid ${colors.light.surfaceCodeHighlight};
+  background-color: ${(props) => props.theme.codeBlockColors.surface};
+  border: 1px solid ${(props) => props.theme.codeBlockColors.border};
   border-radius: ${tokens.borderRadiusForCodeBlock};
 `;
 const Header = styled.div`
-  background-color: ${colors.light.textPrimary};
-  border-bottom: 1px solid ${colors.light.surfaceCodeHighlight};
+  background-color: ${(props) => props.theme.codeBlockColors.surfaceHeader};
+  border-radius: ${tokens.borderRadiusForCodeBlock}
+    ${tokens.borderRadiusForCodeBlock} 0 0;
+  border-bottom: 1px solid ${(props) => props.theme.codeBlockColors.border};
   padding: ${dimensions.spacings.s} ${dimensions.spacings.m};
 `;
 const HeaderInner = styled.div`
@@ -22,15 +25,17 @@ const HeaderInner = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 const HeaderText = styled.span`
-  color: ${colors.light.textFaded};
+  color: ${(props) => props.theme.codeBlockColors.textHeader};
 `;
-const languagesBackgroundImageUrl = (color) => {
-  return `url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Ecaret-down%3C/title%3E%3Cdesc%3ECreated with sketchtool.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Icons' stroke='none' stroke-width='1' fill-rule='evenodd'%3E%3Cg id='MC-icon-set' transform='translate(-168.000000, -936.000000)' fill='%23${color}'%3E%3Cg id='Directions' transform='translate(24.000000, 888.000000)'%3E%3Cg id='Caret-Down' transform='translate(144.000000, 48.000000)'%3E%3Cpath d='M20.6658731,7.4053255 C20.4433682,7.16948908 20.1796129,7.05166867 19.8748538,7.05166867 L4.12508466,7.05166867 C3.82020235,7.05166867 3.55663185,7.16948908 3.33394217,7.4053255 C3.11125249,7.64142273 3,7.92055342 3,8.24323919 C3,8.56585976 3.11125249,8.84499045 3.33394217,9.08089208 L11.2088575,17.4207121 C11.4317935,17.6565485 11.695364,17.7746297 12,17.7746297 C12.304636,17.7746297 12.5684528,17.6565485 12.7909578,17.4207121 L20.6658731,9.08082687 C20.8883165,8.84499045 21,8.56585976 21,8.24317399 C21,7.92055342 20.8883165,7.64142273 20.6658731,7.4053255 L20.6658731,7.4053255 Z' id='shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
-};
 
+const getCaretSvgUrl = (color) =>
+  `url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Icons' stroke='none' stroke-width='1' fill-rule='evenodd'%3E%3Cg id='MC-icon-set' transform='translate(-168.000000, -936.000000)' fill='%23${color}'%3E%3Cg id='Directions' transform='translate(24.000000, 888.000000)'%3E%3Cg id='Caret-Down' transform='translate(144.000000, 48.000000)'%3E%3Cpath d='M20.6658731,7.4053255 C20.4433682,7.16948908 20.1796129,7.05166867 19.8748538,7.05166867 L4.12508466,7.05166867 C3.82020235,7.05166867 3.55663185,7.16948908 3.33394217,7.4053255 C3.11125249,7.64142273 3,7.92055342 3,8.24323919 C3,8.56585976 3.11125249,8.84499045 3.33394217,9.08089208 L11.2088575,17.4207121 C11.4317935,17.6565485 11.695364,17.7746297 12,17.7746297 C12.304636,17.7746297 12.5684528,17.6565485 12.7909578,17.4207121 L20.6658731,9.08082687 C20.8883165,8.84499045 21,8.56585976 21,8.24317399 C21,7.92055342 20.8883165,7.64142273 20.6658731,7.4053255 L20.6658731,7.4053255 Z' id='shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
 const LanguagesDropDownWrapper = styled.div`
-  background-color: ${colors.light.textPrimary};
-  background-image: ${languagesBackgroundImageUrl('ffffff')};
+  /* stylelint-disable function-url-quotes */
+  background-image: ${(props) =>
+    getCaretSvgUrl(
+      props.theme.codeBlockColors.surfaceLanguageDropdown.replace('#', '')
+    )};
   background-repeat: no-repeat, repeat;
   background-position: right 0 top 50%, 0 0;
   background-size: ${dimensions.widths.selectDropDownArrowWith} auto, 100%;
@@ -39,7 +44,7 @@ const LanguagesDropDown = styled.select`
   display: block;
   font-size: ${typography.fontSizes.body};
   line-height: ${typography.lineHeights.body};
-  color: ${colors.light.surfacePrimary};
+  color: ${(props) => props.theme.codeBlockColors.surfaceLanguageDropdown};
   padding-right: ${dimensions.spacings.m};
   box-sizing: border-box;
   cursor: pointer;
@@ -56,7 +61,8 @@ const LanguagesDropDown = styled.select`
   }
 
   :hover {
-    color: ${colors.light.surfaceInlineCode};
+    color: ${(props) =>
+      props.theme.codeBlockColors.surfaceLanguageDropdownHover};
   }
 
   :focus {
@@ -91,10 +97,19 @@ function MultiCodeBlock(props) {
   const [selected, setSelected] = React.useState(langs[0]);
 
   return (
-    <Container>
-      {renderHeader(props.title, langs)}
-      {renderChildren(props.children, selected)}
-    </Container>
+    <ThemeProvider
+      theme={{
+        codeBlockColors:
+          colors.light.codeBlocks[
+            props.secondaryTheme ? 'secondary' : 'primary'
+          ],
+      }}
+    >
+      <Container>
+        {renderHeader(props.title, langs)}
+        {renderChildren(props.children, selected)}
+      </Container>
+    </ThemeProvider>
   );
 
   function extractLanguages(children) {
@@ -154,14 +169,20 @@ function MultiCodeBlock(props) {
 
   function renderChildren(children, selectedChild) {
     if (Array.isArray(children)) {
-      return children.find((child) => child.props.language === selectedChild);
+      return React.cloneElement(
+        children.find((child) => child.props.language === selectedChild),
+        { secondaryTheme: props.secondaryTheme }
+      );
     }
 
-    return children;
+    return React.cloneElement(children, {
+      secondaryTheme: props.secondaryTheme,
+    });
   }
 }
 
 MultiCodeBlock.propTypes = {
+  secondaryTheme: PropTypes.bool,
   title: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.element,
@@ -177,16 +198,19 @@ export const CodeBlockMarkdownWrapper = (props) => {
   const className = props.children.props ? props.children.props.className : '';
   const languageToken = className || 'language-text';
   const [, languageCode] = languageToken.split('language-');
-  const { title, highlightLines, noPromptLines } = codeBlockParseOptions(
-    props.children.props
-  );
+  const {
+    title,
+    highlightLines,
+    noPromptLines,
+    secondaryTheme,
+  } = codeBlockParseOptions(props.children.props);
   const content =
     props.children.props && props.children.props.children
       ? props.children.props.children
       : props.children;
 
   return (
-    <MultiCodeBlock title={title}>
+    <MultiCodeBlock title={title} secondaryTheme={secondaryTheme}>
       <CodeBlock
         content={content}
         language={languageCode}

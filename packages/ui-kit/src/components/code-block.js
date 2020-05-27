@@ -3,16 +3,19 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { ThemeProvider } from 'emotion-theming';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import theme from 'prism-react-renderer/themes/nightOwl';
+import themePrimary from 'prism-react-renderer/themes/nightOwl';
+import themeSecondary from 'prism-react-renderer/themes/nightOwlLight';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import copyToClipboard from '../utils/copy-to-clipboard';
 
 const HighlightedContainer = styled.div`
-  background-color: ${colors.light.surfaceCode};
+  background-color: ${(props) => props.theme.codeBlockColors.surface};
+  border-radius: ${tokens.borderRadiusForCodeBlock};
   margin: 0;
   padding: ${dimensions.spacings.s} ${dimensions.spacings.xs}
     ${dimensions.spacings.s} ${dimensions.spacings.m};
@@ -21,7 +24,8 @@ const HighlightedContainer = styled.div`
 const Preformatted = styled.pre`
   font-family: ${typography.fontFamilies.code};
   font-size: ${typography.fontSizes.small};
-  background-color: ${colors.light.surfaceCode} !important;
+  background-color: ${(props) =>
+    props.theme.codeBlockColors.surface} !important;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -31,13 +35,13 @@ const CopyArea = styled.div`
   cursor: pointer;
   svg {
     * {
-      fill: ${colors.light.surfacePrimary};
+      fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIcon};
     }
   }
   :hover {
     svg {
       * {
-        fill: ${colors.light.surfaceCodeHighlight};
+        fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIconHover};
       }
     }
   }
@@ -45,14 +49,15 @@ const CopyArea = styled.div`
 const TooltipWrapperComponent = (props) =>
   ReactDOM.createPortal(props.children, document.body);
 const TooltipBodyComponent = styled.div`
-  background-color: ${colors.light.surfaceCodeHighlight};
+  background-color: ${(props) =>
+    props.theme.codeBlockColors.surfaceCopyTooltip};
   border-radius: ${tokens.borderRadiusForTooltip};
-  color: ${colors.light.textInverted};
+  color: ${(props) => props.theme.codeBlockColors.textCopyTooltip};
   font-size: ${typography.fontSizes.extraSmall};
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
 
-const getLineStyles = (options) => {
+const getLineStyles = (theme, options) => {
   let promptLineStyles;
   let highlightLineStyles;
   if (options.isCommandLine) {
@@ -64,19 +69,18 @@ const getLineStyles = (options) => {
         margin: 0 0 0 -${dimensions.spacings.m};
         padding: 0 ${dimensions.spacings.s} 0 0;
         color: ${options.shouldShowPrompt
-          ? colors.light.surfaceSecondary3
-          : colors.light.surfaceCode};
+          ? theme.colors.surfacePrompt
+          : 'transparent'};
       }
     `;
   }
   if (options.shouldHighlightLine) {
+    const width = options.isCommandLine
+      ? `calc(100% - ${dimensions.spacings.s})`
+      : '100%';
     highlightLineStyles = css`
-      background-color: ${colors.light.surfaceCodeHighlight};
-
-      /* stylelint-disable function-calc-no-invalid */
-      width: calc(
-        100% - ${options.shouldShowPrompt ? dimensions.spacings.m : '0px'}
-      );
+      background-color: ${theme.colors.surfaceLineHighlight};
+      width: ${width};
     `;
   }
   return [promptLineStyles, highlightLineStyles];
@@ -201,81 +205,93 @@ const CodeBlock = (props) => {
   };
 
   return (
-    <Highlight
-      {...defaultProps}
-      code={props.content}
-      language={language}
-      theme={theme}
+    <ThemeProvider
+      theme={{
+        codeBlockColors:
+          colors.light.codeBlocks[
+            props.secondaryTheme ? 'secondary' : 'primary'
+          ],
+      }}
     >
-      {({
-        className,
-        style,
-        tokens: syntaxTokens,
-        getLineProps,
-        getTokenProps,
-      }) => (
-        <HighlightedContainer>
-          <SpacingsInline scale="xs" alignItems="flex-start">
-            <Preformatted className={className} style={style}>
-              {syntaxTokens.map((line, index) => {
-                const isLastLine = syntaxTokens.length - 1 === index;
-                if (isLastLine) {
-                  if (line.length === 1 && line[0].empty) {
-                    return null;
+      <Highlight
+        {...defaultProps}
+        code={props.content}
+        language={language}
+        theme={props.secondaryTheme ? themeSecondary : themePrimary}
+      >
+        {({
+          className,
+          style,
+          tokens: syntaxTokens,
+          getLineProps,
+          getTokenProps,
+        }) => (
+          <HighlightedContainer>
+            <SpacingsInline scale="xs" alignItems="flex-start">
+              <Preformatted className={className} style={style}>
+                {syntaxTokens.map((line, index) => {
+                  const isLastLine = syntaxTokens.length - 1 === index;
+                  if (isLastLine) {
+                    if (line.length === 1 && line[0].empty) {
+                      return null;
+                    }
                   }
-                }
 
-                const shouldShowPrompt = isCommandLine
-                  ? !props.noPromptLines.includes(index + 1)
-                  : false;
-
-                const shouldHighlightLine =
-                  props.highlightLines && props.highlightLines.length > 0
-                    ? props.highlightLines.some(
-                        (highlightine) => highlightine === index + 1
-                      )
+                  const shouldShowPrompt = isCommandLine
+                    ? !props.noPromptLines.includes(index + 1)
                     : false;
 
-                return (
-                  <div
-                    key={index}
-                    {...getLineProps({
-                      line,
-                      key: index,
-                      ...(isCommandLine ? { 'data-prompt': '$' } : {}),
-                    })}
-                    css={getLineStyles({
-                      isCommandLine,
-                      shouldShowPrompt,
-                      shouldHighlightLine,
-                    })}
-                  >
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
-                  </div>
-                );
-              })}
-            </Preformatted>
-            <Tooltip
-              placement="left"
-              title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
-              components={{
-                TooltipWrapperComponent,
-                BodyComponent: TooltipBodyComponent,
-              }}
-            >
-              <CopyArea onClick={handleCopyToClipboardClick}>
-                <ClipboardIcon />
-              </CopyArea>
-            </Tooltip>
-          </SpacingsInline>
-        </HighlightedContainer>
-      )}
-    </Highlight>
+                  const shouldHighlightLine =
+                    props.highlightLines && props.highlightLines.length > 0
+                      ? props.highlightLines.some(
+                          (highlightine) => highlightine === index + 1
+                        )
+                      : false;
+
+                  return (
+                    <div
+                      key={index}
+                      {...getLineProps({
+                        line,
+                        key: index,
+                        ...(isCommandLine ? { 'data-prompt': '$' } : {}),
+                      })}
+                      css={(theme) =>
+                        getLineStyles(theme, {
+                          isCommandLine,
+                          shouldShowPrompt,
+                          shouldHighlightLine,
+                        })
+                      }
+                    >
+                      {line.map((token, key) => (
+                        <span key={key} {...getTokenProps({ token, key })} />
+                      ))}
+                    </div>
+                  );
+                })}
+              </Preformatted>
+              <Tooltip
+                placement="left"
+                title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
+                components={{
+                  TooltipWrapperComponent,
+                  BodyComponent: TooltipBodyComponent,
+                }}
+              >
+                <CopyArea onClick={handleCopyToClipboardClick}>
+                  <ClipboardIcon />
+                </CopyArea>
+              </Tooltip>
+            </SpacingsInline>
+          </HighlightedContainer>
+        )}
+      </Highlight>
+    </ThemeProvider>
   );
 };
 CodeBlock.propTypes = {
+  secondaryTheme: PropTypes.bool,
   language: PropTypes.string,
   highlightLines: PropTypes.arrayOf(PropTypes.number),
   noPromptLines: PropTypes.arrayOf(PropTypes.number),

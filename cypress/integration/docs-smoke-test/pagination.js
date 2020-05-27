@@ -4,8 +4,10 @@ describe('Pagination', () => {
   const baseUrl = `${URL_DOCS_SMOKE_TEST}components`;
   const links = [
     `${baseUrl}/code-blocks`,
+    `${baseUrl}/code-examples`,
     `${baseUrl}/content-notifications`,
     `${baseUrl}/images`,
+    `${baseUrl}/cards`,
   ];
   links.forEach((url, index) => {
     const nextUrl = links[index + 1];
