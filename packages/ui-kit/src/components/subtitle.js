@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { typography } from '../design-system';
+import { TypographyContainer } from './markdown';
 
-const Subtitle = styled.div`
+const Subtitle = styled(TypographyContainer)`
   font-size: ${typography.fontSizes.h3};
 `;
 
