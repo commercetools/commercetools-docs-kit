@@ -319,26 +319,3 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
     This [link](/views/code-blocks) should **not** render as a link.
   </Card>
 </Cards>
-
-
-# Embedded MDX in the Component Body
-
-The MDX spec and implementation allows for putting two blank lines to allow fully rendered markdown inside a JSX component. Because the cards must render markdown in the body differently than the same markdown would be rendered in the page body the implementation must either block the situation (for example detecting that the children aren't text but finished components) or override the renderer to use the MD fragment renderer instead.
-
-```jsx
-<Card>
-
-## Disallowed Subsection Heading
-This would render like the full page body and should be prevented or not done
-
-Even  | Tables |
-------|--------|
-would | work   |
-
-
-</Card>
-```
-
-**Output**
-
-(breaks the build until card is implemented)
