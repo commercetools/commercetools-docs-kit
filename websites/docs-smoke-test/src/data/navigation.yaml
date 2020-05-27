@@ -12,6 +12,8 @@
       path: /views/links
     - title: Code blocks
       path: /views/code-blocks
+    - title: Code examples
+      path: /views/code-examples
     - title: Custom Anchor
       path: /views/custom-anchor
 - chapter-title: Components
@@ -19,12 +21,12 @@
   pages:
     - title: Code blocks
       path: /components/code-blocks
+    - title: Code Examples
+      path: /components/code-examples
     - title: Content notifications
       path: /components/content-notifications
     - title: Images
       path: /components/images
-    - title: Code Examples
-      path: /components/code-examples
     - title: Cards
       path: /components/cards
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps

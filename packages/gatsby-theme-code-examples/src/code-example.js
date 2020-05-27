@@ -21,7 +21,7 @@ function CodeExample(props) {
   }
 
   return (
-    <MultiCodeBlock title={props.title}>
+    <MultiCodeBlock title={props.title} secondaryTheme={props.secondaryTheme}>
       <CodeBlock
         content={codeExample.content}
         language={codeExample.language}
@@ -41,6 +41,7 @@ function reportError(errorMsg) {
 }
 
 CodeExample.propTypes = {
+  secondaryTheme: PropTypes.bool,
   path: PropTypes.string.isRequired,
   title: PropTypes.string,
   highlightLines: PropTypes.arrayOf(PropTypes.number),
