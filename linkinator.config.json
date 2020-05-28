@@ -3,6 +3,7 @@
   "silent": true,
   "skip": [
     "https://commercetools.com/",
+    "https://support.commercetools.com",
     "/getting-started",
     "/login",
     "/http-api",
