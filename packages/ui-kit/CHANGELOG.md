@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 3.1.0
+
+### Minor Changes
+
+- [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8) [#458](https://github.com/commercetools/commercetools-docs-kit/pull/458) Thanks [@renovate](https://github.com/apps/renovate)! - Add the option for code blocks and code examples to pass a `secondaryTheme` prop to render a lighter version of the syntax highlighting theme. See the examples in `components/code-blocks` and `components/code-examples`
+
+* [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8) [#458](https://github.com/commercetools/commercetools-docs-kit/pull/458) Thanks [@renovate](https://github.com/apps/renovate)! - Markdown UI Kit: refactor content spacing to be able to render markdown inside
+
 ## 3.0.2
 
 ### Patch Changes

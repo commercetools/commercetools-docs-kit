@@ -1,5 +1,29 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 4.1.0
+
+### Minor Changes
+
+- [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8) [#458](https://github.com/commercetools/commercetools-docs-kit/pull/458) Thanks [@renovate](https://github.com/apps/renovate)! - This change ensures non string contents of cards are rendered with appropriate styles.
+
+* [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8) [#458](https://github.com/commercetools/commercetools-docs-kit/pull/458) Thanks [@renovate](https://github.com/apps/renovate)! - Implement Card components to be used in MDX files.
+
+  This change includes 2 new components available in the MDX provider:
+
+  - `<Cards>`: is a wrapper component that dictates how cards are rendered within a grid layout.
+  - `<Card>`: a single card component to be rendered within the `<Cards>` wrapper component. A `<Card>` component contains card specific information, for example title, link, etc.
+
+  You can find usage examples here: https://commercetools-docs-kit.now.sh/docs-smoke-test/components/cards
+
+- [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8) [#458](https://github.com/commercetools/commercetools-docs-kit/pull/458) Thanks [@renovate](https://github.com/apps/renovate)! - Announcement type in release notes
+
+  The list of types allowed to be defined for a release not now includes "announcement."
+
+### Patch Changes
+
+- Updated dependencies [[`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8), [`6206775`](https://github.com/commercetools/commercetools-docs-kit/commit/620677547ea378038309ac508872dd889383c4c8)]:
+  - @commercetools-docs/ui-kit@3.1.0
+
 ## 4.0.2
 
 ### Patch Changes
