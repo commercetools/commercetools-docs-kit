@@ -17,7 +17,7 @@
     "@commercetools-docs/gatsby-theme-code-examples": "4.0.0",
     "@commercetools-docs/gatsby-theme-constants": "4.0.0",
     "@commercetools-docs/gatsby-theme-docs": "4.1.0",
-    "@commercetools-uikit/card": "10.18.4",
+    "@commercetools-uikit/card": "10.21.0",
     "@commercetools-uikit/icons": "10.18.4",
     "gatsby": "2.22.9",
     "gatsby-cli": "2.12.34"

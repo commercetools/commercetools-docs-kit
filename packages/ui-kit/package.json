@@ -14,18 +14,13 @@
   },
   "main": "./dist/ui-kit.cjs.js",
   "module": "./dist/ui-kit.es.js",
-  "files": [
-    "dist",
-    "package.json",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["dist", "package.json", "LICENSE", "README.md"],
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
   },
   "dependencies": {
-    "@commercetools-uikit/tooltip": "10.18.4",
+    "@commercetools-uikit/tooltip": "10.21.0",
     "lodash.escape": "4.0.1",
     "lodash.throttle": "4.1.1",
     "parse5": "6.0.0",
@@ -36,7 +31,7 @@
   "devDependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/icons": "10.19.0",
-    "@commercetools-uikit/spacings-inline": "10.18.4"
+    "@commercetools-uikit/spacings-inline": "10.21.0"
   },
   "peerDependencies": {
     "@commercetools-uikit/design-system": "10.x",

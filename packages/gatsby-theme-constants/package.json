@@ -8,13 +8,7 @@
   },
   "description": "Gatsby theme for commercetools documentation providing the functionalities to render constants values in MDX defined in configuration files",
   "homepage": "https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-theme-constants",
-  "keywords": [
-    "gatsby",
-    "gatsby-plugin",
-    "gatsby-theme",
-    "yaml",
-    "constants"
-  ],
+  "keywords": ["gatsby", "gatsby-plugin", "gatsby-theme", "yaml", "constants"],
   "dependencies": {
     "@commercetools-docs/ui-kit": "3.1.0",
     "gatsby-transformer-yaml": "2.4.2",
