@@ -24,11 +24,6 @@ const Globals = () => (
         margin: 0;
       }
 
-      .section-h4,
-      .section-h5 {
-        padding: 0 0 0 ${dimensions.spacings.l};
-      }
-
       /* Images */
 
       .gatsby-resp-image-wrapper {

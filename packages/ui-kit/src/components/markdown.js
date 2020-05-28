@@ -235,6 +235,14 @@ const TypographyPage = styled.div`
   section > * + * {
     margin-top: ${dimensions.spacings.m};
   }
+
+  .section-h4,
+  .section-h5,
+  .section-h6,
+  .section-h7 {
+    padding: 0 0 0 ${dimensions.spacings.l};
+  }
+
   section > ${H2} {
     margin: ${dimensions.spacings.huge} 0 ${dimensions.spacings.m};
   }
@@ -245,7 +253,7 @@ const TypographyPage = styled.div`
     margin: ${dimensions.spacings.xl} 0 0;
   }
   section > ${H5} {
-    margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.s};
+    margin: ${dimensions.spacings.xl} 0 0;
   }
   section > ${H6} {
     margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.s};

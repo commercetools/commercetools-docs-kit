@@ -86,7 +86,12 @@ const Indented = styled.div`
   }};
 `;
 const LevelGroup = (props) => {
-  if (!props.items) {
+  if (
+    !props.items ||
+    /* only render children if they are not empty wrappers around deep levels that
+  are not part of the index nav to prevent unnecessary spacing in the layout */
+    (props.level === 3 && props.items.length === 1 && !props.items[0].title)
+  ) {
     return null;
   }
   return (
