@@ -27,7 +27,8 @@
     "cypress-open": "cross-env NODE_ENV=test cypress open",
     "check-links": "npx linkinator ./public",
     "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
-    "changeset": "changeset"
+    "changeset": "changeset",
+    "versions:uikit": "bulk-update-versions --match '@commercetools-uikit/(.*)'"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
@@ -67,6 +68,7 @@
     "babel-plugin-macros": "2.8.0",
     "babel-plugin-transform-dynamic-import": "2.1.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
+    "bulk-update-versions": "1.0.0",
     "core-js": "3.6.5",
     "cross-env": "7.0.2",
     "cypress": "4.6.0",

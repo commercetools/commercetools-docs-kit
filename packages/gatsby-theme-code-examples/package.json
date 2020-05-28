@@ -12,13 +12,7 @@
     "type": "git",
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
-  "keywords": [
-    "gatsby",
-    "gatsby-plugin",
-    "gatsby-theme",
-    "code",
-    "examples"
-  ],
+  "keywords": ["gatsby", "gatsby-plugin", "gatsby-theme", "code", "examples"],
   "dependencies": {
     "@commercetools-docs/ui-kit": "3.1.0",
     "prop-types": "15.7.2"
