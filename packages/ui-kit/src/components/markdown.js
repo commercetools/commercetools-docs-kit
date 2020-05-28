@@ -231,7 +231,6 @@ const TypographyPage = styled.div`
   font-size: ${typography.fontSizes.body};
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.5;
-  word-spacing: 2px;
 
   section > * + * {
     margin-top: ${dimensions.spacings.m};
