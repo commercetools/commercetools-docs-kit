@@ -141,7 +141,6 @@ const LevelGroup = (props) => {
                   items: item.items,
                   level: props.level + 1,
                   activeSection: props.activeSection,
-                  navLevels: props.navLevels,
                 })}
             </ListItem>
           );
@@ -162,7 +161,6 @@ const LevelGroup = (props) => {
                 items: item.items,
                 level: props.level + 1,
                 activeSection: props.activeSection,
-                navLevels: props.navLevels,
               })}
           </ListItem>
         );
@@ -199,7 +197,6 @@ const Container = (props) => (
               items: item.items,
               activeSection: props.activeSection,
               level: 2,
-              navLevels: props.navLevels,
             })}
         </SpacingsStack>
       );
@@ -211,7 +208,6 @@ Container.propTypes = {
   items: itemsType.isRequired,
   activeSection: PropTypes.instanceOf(SafeHTMLElement),
   children: PropTypes.node,
-  navLevels: PropTypes.number.isRequired,
 };
 
 const PageNavigation = (props) => {
@@ -220,10 +216,11 @@ const PageNavigation = (props) => {
     <Container
       items={props.tableOfContents.items}
       activeSection={activeSection}
-      navLevels={props.navLevels}
     >
       {props.navLevels >= 2 && (
-        <LevelGroup>{props.navLevels >= 3 && <LevelGroup />}</LevelGroup>
+        <LevelGroup navLevels={props.navLevels}>
+          {props.navLevels >= 3 && <LevelGroup navLevels={props.navLevels} />}
+        </LevelGroup>
       )}
     </Container>
   );
