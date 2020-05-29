@@ -190,9 +190,9 @@ const PageNavigation = (props) => {
       items={props.tableOfContents.items}
       activeSection={activeSection}
     >
-      <LevelGroup>
-        <LevelGroup />
-      </LevelGroup>
+      {props.navLevels >= 2 && (
+        <LevelGroup>{props.navLevels >= 3 && <LevelGroup />}</LevelGroup>
+      )}
     </Container>
   );
 };
@@ -201,6 +201,7 @@ PageNavigation.propTypes = {
   tableOfContents: PropTypes.shape({
     items: itemsType,
   }),
+  navLevels: PropTypes.number.isRequired,
 };
 
 export default PageNavigation;

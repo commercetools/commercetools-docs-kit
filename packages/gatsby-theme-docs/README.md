@@ -124,9 +124,16 @@ This is the actual page content.
 
 Supported frontmatter options are:
 
-- `title`: the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
-- `beta`: to indicate if the _beta_ info message should be displayed or not.
-- `excludeFromSearchIndex`: to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
+- `title` (string, **required**): the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
+- `beta` (boolean): to indicate if the _beta_ info message should be displayed or not.
+- `excludeFromSearchIndex` (boolean): to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
+- `navLevels` (number): allows to reduce the depth of the on-page navigation for pages where it would get too long to fit the screen. You want to set 2 here if you need it.
+
+## Writing release notes
+
+Release notes files follow a different specification and their file location does not imply the URL so they can be reorganized without changing the permanent release note URL.
+
+Take a look at [typical example template](../websites/docs-smoke-test/src/releases/release-note-template.mdx) or read the [specification by example file](../websites/docs-smoke-test/src/releases/release-format-definition.mdx) to learn the complete format.
 
 ### Available JSX components within markdown files
 

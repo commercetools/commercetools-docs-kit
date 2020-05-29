@@ -64,6 +64,7 @@ PageContentTemplate.propTypes = {
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
       tableOfContents: PropTypes.object.isRequired,
+      navLevels: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
 };
@@ -78,7 +79,8 @@ export const query = graphql`
       isGlobalBeta
       excludeFromSearchIndex
       body
-      tableOfContents(maxDepth: 6)
+      tableOfContents
+      navLevels
     }
   }
 `;

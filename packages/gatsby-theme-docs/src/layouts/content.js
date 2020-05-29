@@ -63,6 +63,7 @@ const LayoutContent = (props) => {
             <LayoutPageNavigation
               pageTitle={props.pageContext.shortTitle || props.pageData.title}
               tableOfContents={props.pageData.tableOfContents}
+              navLevels={props.pageData.navLevels}
             />
           </LayoutPage>
         </LayoutPageWrapper>
@@ -85,6 +86,7 @@ LayoutContent.propTypes = {
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,
+    navLevels: PropTypes.number.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
 };

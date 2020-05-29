@@ -147,6 +147,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             processResult: processTableOfContentFields,
           }),
         },
+        navLevels: { type: 'Int!' },
       },
       interfaces: ['Node'],
     })
@@ -268,6 +269,9 @@ exports.onCreateNode = (
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
       Boolean(pluginOptions.excludeFromSearchIndex),
     beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
+    navLevels: node.frontmatter.navLevels
+      ? Number(node.frontmatter.navLevels)
+      : 3,
   };
   actions.createNode({
     ...contentPageFieldData,
