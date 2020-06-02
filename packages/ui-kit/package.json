@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.19.0",
+    "@commercetools-uikit/icons": "10.20.0",
     "@commercetools-uikit/spacings-inline": "10.21.0"
   },
   "peerDependencies": {
