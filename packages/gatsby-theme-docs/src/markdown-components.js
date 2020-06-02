@@ -13,12 +13,12 @@ const components = {
   // NOTE: we want to ensure that only one h1 exists on each page.
   // Therefore, we map the markdown header elements starting from h2.
   // The h1 header will be automatically rendered based on the page title.
-  h1: Markdown.withAnchorLink(Markdown.H2),
-  h2: Markdown.withAnchorLink(Markdown.H3),
-  h3: Markdown.withAnchorLink(Markdown.H4),
-  h4: Markdown.withAnchorLink(Markdown.H5),
-  h5: Markdown.withAnchorLink(Markdown.H6),
-  h6: Markdown.withAnchorLink(Markdown.H6),
+  h1: Markdown.withAnchorLink(Markdown.H2) /* "Section" */,
+  h2: Markdown.withAnchorLink(Markdown.H3) /* "Subsection" */,
+  h3: Markdown.withAnchorLink(Markdown.H4) /* "Sub-Subsection" */,
+  h4: Markdown.withAnchorLink(Markdown.H4) /* "Sub-Subsection", not in  nav */,
+  h5: Markdown.withAnchorLink(Markdown.H4) /* "Sub-Subsection", not in  nav */,
+  h6: Markdown.withAnchorLink(Markdown.H4) /* "Sub-Subsection", not in  nav */,
   thematicBreak: Markdown.ThematicBreak,
   blockquote: Markdown.Blockquote,
   ul: Markdown.Ul,

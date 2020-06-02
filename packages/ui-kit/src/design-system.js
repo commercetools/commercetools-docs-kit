@@ -106,6 +106,7 @@ export const tokens = {
   borderRadiusForImageFrame: customProperties.borderRadius6,
   borderRadiusForBlockquote: customProperties.borderRadius6,
   borderRadiusForCard: customProperties.borderRadius6,
+  borderRadiusForChildSectionNav: customProperties.borderRadius6,
   shadowForBetaFlag: customProperties.shadow7,
   shadowForSearchDialog: customProperties.shadow2,
   shadowForPageContent: customProperties.shadow11,

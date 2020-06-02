@@ -106,7 +106,10 @@ const LayoutPageNavigation = (props) => {
             <div>{props.pageTitle}</div>
           </SpacingsInline>
         </PageTitleLink>
-        <PageNavigation tableOfContents={props.tableOfContents} />
+        <PageNavigation
+          tableOfContents={props.tableOfContents}
+          navLevels={props.navLevels}
+        />
       </SpacingsStack>
     </nav>
   );
@@ -150,6 +153,7 @@ LayoutPageNavigation.propTypes = {
   tableOfContents: PropTypes.shape({
     items: PropTypes.array,
   }),
+  navLevels: PropTypes.number.isRequired,
 };
 
 export default LayoutPageNavigation;

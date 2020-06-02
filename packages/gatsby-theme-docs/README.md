@@ -124,9 +124,16 @@ This is the actual page content.
 
 Supported frontmatter options are:
 
-- `title`: the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
-- `beta`: to indicate if the _beta_ info message should be displayed or not.
-- `excludeFromSearchIndex`: to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
+- `title` (string, **required**): the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
+- `beta` (boolean): to indicate if the _beta_ info message should be displayed or not.
+- `excludeFromSearchIndex` (boolean): to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
+- `navLevels` (number): allows to reduce the depth of the on-page navigation for pages where it would get too long to fit the screen. You want to set 2 here if you need it.
+
+## Writing release notes
+
+Release notes files follow a different specification and their file location does not imply the URL so they can be reorganized without changing the permanent release note URL.
+
+Take a look at [typical example template](../websites/docs-smoke-test/src/releases/release-note-template.mdx) or read the [specification by example file](../websites/docs-smoke-test/src/releases/release-format-definition.mdx) to learn the complete format.
 
 ### Available JSX components within markdown files
 
@@ -149,6 +156,7 @@ The available JSX components are:
 - `<Warning>`: a notification message with warning colors
 - `<Error>`: a notification message with error colors
 - `<Anchor>`: inserts a custom anchor on any part of the document, can be used with headers, lists, in paragraphs, etc, it is used for navigating to specific parts of the document that are not headings. Also useful when a document has multiple headings with the same text or when heading names change and old third party links shall continue to work. Cannot override ID generation of the site generator, this adds additional named anchors and IDs have precedence.
+- `<ChildSectionsNav parent="a-section-slug" />`: a table of contents containing links to all subsections of the given parent. Use only for large numbers of child sections with _markdown level four or higher_ which are not part of the index navigation on the right side of the page. The component allows to make long pages with long lists of deep sections easier to navigate.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 

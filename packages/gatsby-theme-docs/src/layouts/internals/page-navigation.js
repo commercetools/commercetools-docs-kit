@@ -20,9 +20,27 @@ const itemsType = PropTypes.arrayOf(
   })
 );
 
-const getIsActive = (activeSection, urlHash) =>
-  activeSection &&
-  activeSection.id.replace('section-', '') === urlHash.substring(1);
+function flatten(items) {
+  return items.reduce((acc, item) => {
+    const itemCopy = { ...item };
+    let newAcc = acc.concat(itemCopy);
+    if (itemCopy.items) {
+      newAcc = newAcc.concat(flatten(itemCopy.items));
+    }
+    return newAcc;
+  }, []);
+}
+
+const getIsActive = (activeSection, item, recursive = false) => {
+  if (!activeSection) return false;
+  const itemAndChildUrls =
+    item.items && recursive
+      ? [item.url, ...flatten(item.items).map((flatChild) => flatChild.url)]
+      : [item.url];
+  return itemAndChildUrls.includes(
+    `#${activeSection.id.replace('section-', '')}`
+  );
+};
 
 const Link = styled.a`
   font-size: ${(props) => {
@@ -86,14 +104,27 @@ const Indented = styled.div`
   }};
 `;
 const LevelGroup = (props) => {
-  if (!props.items) {
+  if (
+    !props.items ||
+    /* only render children if they are not empty wrappers around deep levels that
+  are not part of the index nav to prevent unnecessary spacing in the layout */
+    (props.level >= props.navLevels &&
+      props.items.length === 1 &&
+      !props.items[0].title)
+  ) {
     return null;
   }
   return (
     <Group level={props.level}>
       {props.items.map((item, subItemIndex) => {
         if (item.url) {
-          const isActive = getIsActive(props.activeSection, item.url);
+          const isActive = getIsActive(
+            props.activeSection,
+            item,
+            /* recurse if last rendered level or containing an empty level below */
+            props.level >= props.navLevels ||
+              (item.items && item.items.length === 1 && !item.items[0].title)
+          );
           return (
             <ListItem key={subItemIndex}>
               <Link
@@ -143,12 +174,13 @@ LevelGroup.propTypes = {
   items: itemsType,
   activeSection: PropTypes.instanceOf(SafeHTMLElement),
   children: PropTypes.node,
+  navLevels: PropTypes.number.isRequired,
 };
 const Container = (props) => (
   <SpacingsStack scale="s">
     {props.items.map((item, index) => {
       const level = 1;
-      const isActive = getIsActive(props.activeSection, item.url);
+      const isActive = getIsActive(props.activeSection, item);
       return (
         <SpacingsStack scale="s" key={index}>
           <Link
@@ -185,9 +217,11 @@ const PageNavigation = (props) => {
       items={props.tableOfContents.items}
       activeSection={activeSection}
     >
-      <LevelGroup>
-        <LevelGroup />
-      </LevelGroup>
+      {props.navLevels >= 2 && (
+        <LevelGroup navLevels={props.navLevels}>
+          {props.navLevels >= 3 && <LevelGroup navLevels={props.navLevels} />}
+        </LevelGroup>
+      )}
     </Container>
   );
 };
@@ -196,6 +230,7 @@ PageNavigation.propTypes = {
   tableOfContents: PropTypes.shape({
     items: itemsType,
   }),
+  navLevels: PropTypes.number.isRequired,
 };
 
 export default PageNavigation;

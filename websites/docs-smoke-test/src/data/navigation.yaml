@@ -8,6 +8,8 @@
       path: /views/beta
     - title: Nested headings
       path: /views/nested-headings
+    - title: Two-level nav
+      path: /views/two-level-index-nav
     - title: Links
       path: /views/links
     - title: Code blocks

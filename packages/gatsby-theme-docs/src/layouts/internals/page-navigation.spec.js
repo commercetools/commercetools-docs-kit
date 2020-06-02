@@ -17,6 +17,7 @@ const Section = styled.section`
 `;
 
 const createTestProps = (custom) => ({
+  navLevels: 3,
   tableOfContents: {
     items: [
       {

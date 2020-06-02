@@ -7,6 +7,8 @@ import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutContent from '../layouts/content';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
+import { PageTocContext } from '../hooks/use-page-toc';
+import ChildSectionsNav from '../components/child-sections-nav';
 
 const ContentCards = (props) => (
   <markdownComponents.Cards fitContentColumn={true} {...props} />
@@ -14,25 +16,35 @@ const ContentCards = (props) => (
 
 const PageContentTemplate = (props) => (
   <ThemeProvider>
-    <LayoutContent
-      pageContext={props.pageContext}
-      pageData={props.data.contentPage}
-    >
-      <MDXProvider components={{ ...markdownComponents, Cards: ContentCards }}>
-        <Markdown.TypographyPage>
-          <SEO
-            title={props.pageContext.shortTitle || props.data.contentPage.title}
-            excludeFromSearchIndex={
-              props.data.contentPage.excludeFromSearchIndex
-            }
-          />
-          {/* This wrapper div is important to ensure the vertical space */}
-          <div>
-            <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-          </div>
-        </Markdown.TypographyPage>
-      </MDXProvider>
-    </LayoutContent>
+    <PageTocContext.Provider value={props.data.contentPage.tableOfContents}>
+      <LayoutContent
+        pageContext={props.pageContext}
+        pageData={props.data.contentPage}
+      >
+        <MDXProvider
+          components={{
+            ...markdownComponents,
+            Cards: ContentCards,
+            ChildSectionsNav,
+          }}
+        >
+          <Markdown.TypographyPage>
+            <SEO
+              title={
+                props.pageContext.shortTitle || props.data.contentPage.title
+              }
+              excludeFromSearchIndex={
+                props.data.contentPage.excludeFromSearchIndex
+              }
+            />
+            {/* This wrapper div is important to ensure the vertical space */}
+            <div>
+              <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
+            </div>
+          </Markdown.TypographyPage>
+        </MDXProvider>
+      </LayoutContent>
+    </PageTocContext.Provider>
   </ThemeProvider>
 );
 
@@ -52,6 +64,7 @@ PageContentTemplate.propTypes = {
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
       tableOfContents: PropTypes.object.isRequired,
+      navLevels: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
 };
@@ -66,7 +79,8 @@ export const query = graphql`
       isGlobalBeta
       excludeFromSearchIndex
       body
-      tableOfContents(maxDepth: 4)
+      tableOfContents
+      navLevels
     }
   }
 `;
