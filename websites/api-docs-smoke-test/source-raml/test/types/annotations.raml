@@ -1,0 +1,13 @@
+#%RAML 1.0 Library
+
+types:
+  AnnotationsTestType:
+    properties:
+      isBetaType:
+        description: Beta property. If true, a "beta" flag should appear beside the type name.
+        type: string
+        (beta): true
+      isDeprecatedType:
+        description: Deprecated property. THIS MUST NOT BE RENDERED AT ALL (=hidden in documentation, it just stays there to keep SDKs backwards compatible).
+        type: string
+        (deprecated): true

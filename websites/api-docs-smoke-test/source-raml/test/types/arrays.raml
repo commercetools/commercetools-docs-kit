@@ -1,0 +1,43 @@
+#%RAML 1.0 Library
+
+uses:
+  scalars: scalars.raml
+
+types:
+  ArrayTestType:
+    description: A type containing arrays of different kinds.
+    properties:
+      arrayOfIntExample:
+        description: A property with an array of ints. JSON primitive is `array`, display type is "Array of Int".
+        type: integer[]
+        minItems: 1
+        uniqueItems: false
+      arrayOfUniqueIntExample:
+        description: A property with an array of ints in which items must be unique. JSON primitive is `array`, display type is "Array of Int"
+        type: integer[]
+        minItems: 1
+        uniqueItems: true
+      arrayOfTwonumbersExample:
+        type: integer[]
+        minItems: 2
+        maxItems: 2
+      arrayOfFloatExample:
+        description: An array of float. JSON primitive is `array`, display type is "Array of Float". !!! Until underlying libraries are fixed, this displays "Array of Number" because the pattern information is lost.
+        type: array
+        items:
+          type: number
+          format: "float"
+        minItems: 1
+        maxItems: 1
+        uniqueItems: false
+      arrayOfNumberNoDefaultsExample:
+        description: An array of float. JSON primitive is `array`, display type is "Array of Number"
+        type: number[]
+      arrayOfStringExample:
+        description: An array of strings. JSON primitive is `array`, display type is "Array of String"
+        type: string[]
+        uniqueItems: false
+      arrayOfObjectType:
+        description: An array of IntegerTestType. JSON primitive is `array`, display type is "Array of IntegerTestType"
+        type: scalars.IntegerTestType[]
+        uniqueItems: false
