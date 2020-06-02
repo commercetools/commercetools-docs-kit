@@ -2,6 +2,7 @@
 usage: References test types.
 
 uses:
+  annotations: ../annotation-types/annotations.raml
   scalars: scalars.raml
 
 types:
@@ -26,7 +27,7 @@ types:
       - shipping-method
       - state
       - tax-category
-    (enumDescriptions):
+    (annotations.enumDescriptions):
       example-target: References an ExampleTargetType.
       cart-discount: References a cart discount.
       category: References a category.
@@ -79,7 +80,7 @@ types:
   ExampleTargetTypeReference:
     type: Reference
     displayName: Reference
-    (refersTo): ExampleTargetType
+    (annotations.refersTo): ExampleTargetType
     discriminatorValue: example-target
     properties:
       obj:
@@ -88,13 +89,13 @@ types:
   ExampleTargetTypeKeyReference:
     type: KeyReference
     displayName: KeyReference
-    (refersTo): ExampleTargetType
+    (annotations.refersTo): ExampleTargetType
     discriminatorValue: example-target
 
   ExampleTargetTypeResourceIdentifier:
     type: ResourceIdentifier
     displayName: ResourceIdentifier
-    (refersTo): ExampleTargetType
+    (annotations.refersTo): ExampleTargetType
     discriminatorValue: example-target
 
   # This pattern is needed for cases like the customerId on the Cart, which is a pointer to another resource, but in plain String id format.
@@ -102,7 +103,7 @@ types:
   ExampleTargetTypePointer:
     displayName: String
     type: string
-    (refersTo): ExampleTargetType
+    (annotations.refersTo): ExampleTargetType
 
   # References: This is the actual Test Type to be rendered:
   ReferencesTestType:

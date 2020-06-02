@@ -1,6 +1,9 @@
 #%RAML 1.0 Library
 usage: Out of order properties test types.
 
+uses:
+  annotations: ../annotation-types/annotations.raml
+
 types:
   OutOfOrderPropertiesTestType:
     description: |
@@ -16,7 +19,7 @@ types:
         description: Should display 8th (1st in RAML)
       createdBy:
         type: object
-        (beta): true
+        (annotations.beta): true
         description: Should display 5th (2nd in RAML)
       ninthProperty:
         type: string
@@ -41,7 +44,7 @@ types:
         description: Should display 12th (9th in RAML)
       lastModifiedBy:
         type: object
-        (beta): true
+        (annotations.beta): true
         description: Should display 7th (10th in RAML)
       thirteenthProperty:
         type: string

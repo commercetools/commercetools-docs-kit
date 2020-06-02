@@ -1,6 +1,9 @@
 #%RAML 1.0 Library
 usage: Enum test types.
 
+uses:
+  annotations: ../annotation-types/annotations.raml
+
 types:
   EnumTest:
     description: Example enumeration for the SetOfEnumTestTypes type.
@@ -42,7 +45,7 @@ types:
   EnumWithDescriptionExample:
     description: Enum with agreed upon description annotation.
     type: string
-    (enumDescriptions):
+    (annotations.enumDescriptions):
       value1: description 1
       value2: description 2
       value3: description 3
