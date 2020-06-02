@@ -18,8 +18,8 @@
     "@commercetools-docs/gatsby-theme-constants": "4.0.1",
     "@commercetools-docs/gatsby-theme-docs": "4.1.1",
     "@commercetools-uikit/card": "10.21.0",
-    "@commercetools-uikit/icons": "10.18.4",
-    "gatsby": "2.22.9",
-    "gatsby-cli": "2.12.34"
+    "@commercetools-uikit/icons": "10.20.0",
+    "gatsby": "2.22.16",
+    "gatsby-cli": "2.12.41"
   }
 }
