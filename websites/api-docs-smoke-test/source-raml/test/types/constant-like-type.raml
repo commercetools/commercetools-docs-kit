@@ -1,0 +1,10 @@
+#%RAML 1.0 Library
+usage: Constant like test types.
+
+# Making constant values explicit is more usable so we render this pattern differnt than a regular Enum:
+
+types:
+  ConstantLikeType:
+    type: string
+    description: render an enum with one value as a constant.
+    enum: [constantExampleValue]

@@ -1,0 +1,55 @@
+#%RAML 1.0 Library
+usage: Enum test types.
+
+uses:
+  annotations: ../annotation-types/annotations.raml
+
+types:
+  EnumTest:
+    description: Example enumeration for the SetOfEnumTestTypes type.
+    type: string
+    enum:
+      - EnumEntryOne
+      - EnumEntryTwo
+      - EnumEntryThree
+  EnumPropertiesType:
+    description: Test data for properties with enums that are of differing primitive types
+    properties:
+      intWithEnumExample:
+        description: An int with enum values
+        type: integer
+        enum: [ 1, 2, 3 ]
+      floatWithEnumExample:
+        description: A float with enum values
+        type: number
+        format: float
+        default: 1.0
+        enum: [ 1.0, 2.0, 3.0 ]
+      enumOfStringExample:
+        description: A string with enum values (undescribed)
+        type: string
+        enum:
+          - "dog"
+          - "cat"
+          - "elephant"
+  SetOfEnumTestType:
+    description: A type containing a property with a set of Enums
+    # I.e. how `ChannelDraft` has `ChannelRole`s
+    properties:
+      setofEnumExample:
+        description: |
+          Contains a Set of `EnumTest`. If `uniqueItems` is `true` for an Array,
+          the then instead of "Array of ______", it needs to read "Set of _______".
+        type: EnumTest[]
+        uniqueItems: true
+  EnumWithDescriptionExample:
+    description: Enum with agreed upon description annotation.
+    type: string
+    (annotations.enumDescriptions):
+      value1: description 1
+      value2: description 2
+      value3: description 3
+    enum:
+      - value1
+      - value2
+      - value3
