@@ -90,6 +90,7 @@ uses:
             description: A 200 response.  This is the case when reading or modifying something.
             body:
               type: arrays.ArrayTestType
+              example: !include examples/array-test-type.json
     /{id}:
       post:
         displayName: Update a Resource by ID
