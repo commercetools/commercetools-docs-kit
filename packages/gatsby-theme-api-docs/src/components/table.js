@@ -45,7 +45,6 @@ const Table = styled.table`
       vertical-align: top;
       border-top: none;
       word-break: break-word;
-      font-size: ${typography.fontSizes.small};
       @media screen and (${dimensions.viewports.mobile}) {
         display: block;
       }
