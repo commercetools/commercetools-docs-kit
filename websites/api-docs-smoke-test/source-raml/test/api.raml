@@ -53,11 +53,13 @@ uses:
             scopes: ["manage_test:{projectKey}"]
       body:
         type: objects.ObjectTestTypeDraft
+        example: !include examples/object-test-type-draft.json
       responses:
         201:
           description: 201 Created response. This is the success response when creating something.
           body:
             type: objects.ObjectTestType
+            example: !include examples/object-test-type.json
     get:
       displayName: Get all resources
       description: Query/retrieve (GET) a specific resource or resource(s). This should return a paged query result of _blah_.
