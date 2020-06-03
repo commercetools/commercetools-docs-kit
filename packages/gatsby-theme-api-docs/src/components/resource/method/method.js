@@ -19,10 +19,9 @@ import Responses from './responses';
 import Parameters from './parameters';
 import RequestRepresentation from './request-representation';
 
-const Title = styled.span`
-  font-size: ${typography.fontSizes.h3};
+const Title = styled.h6`
+  font-size: ${typography.fontSizes.h4};
   font-weight: ${typography.fontWeights.medium};
-  line-height: ${typography.lineHeights.methodTitle};
 `;
 
 const Description = styled.p`
@@ -65,8 +64,8 @@ const Method = ({
 
   return (
     <SpacingsStack scale="s">
-      {title || method.displayName ? (
-        <TitleWithAnchor id={id}>{title || method.displayName}</TitleWithAnchor>
+      {title ? (
+        <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
       ) : (
         <a name={id}></a>
       )}
