@@ -67,18 +67,23 @@ uses:
         where:
           type: string
           required: false
+          example: 6 in arrayOfIntExample
         sort:
           type: string
           required: false
+          example: DESC
         expand:
           type: string
           required: false
+          example: arrayOfObjectType[*]
         limit:
           type: number
           required: false
+          example: 50
         offset:
           type: number
           required: false
+          example: 5
         collection:
           type: objects.ObjectTestType
           required: false
