@@ -119,6 +119,7 @@ uses:
           200:
             body:
               type: objects.ObjectTestType
+              example: !include examples/object-test-type.json
       delete:
         displayName: Delete a Resource by its ID
         description: Deletes a resource.
@@ -130,6 +131,7 @@ uses:
             description: Deletion was successful.
             body:
               type: objects.ObjectTestType
+              example: !include examples/object-test-type.json
     /key={key}:
       get:
         displayName: Get a Resource by its Key
@@ -140,6 +142,7 @@ uses:
             description: this is directly using a named type without messing with it, thats how we want to use RAML
             body:
               type: objects.ObjectTestType
+              example: !include examples/object-test-type.json
           502:
             body:
               type: scalars.StringTestType
