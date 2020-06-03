@@ -5,7 +5,7 @@ import { Markdown } from '@commercetools-docs/ui-kit';
 import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { colors, dimensions } from '../../../../design-system';
+import { colors, dimensions, typography } from '../../../../design-system';
 
 import extractAdditionalInfo from '../../../../utils/extract-additional-info';
 import { values as valuesStr } from '../../../../utils/constants';
@@ -15,6 +15,7 @@ const Info = styled.span`
   border: 1px solid ${colors.light.borderInfo};
   background-color: ${colors.light.surfaceInfo};
   padding: ${dimensions.spacings.xxs} ${dimensions.spacings.xs};
+  font-size: ${typography.fontSizes.small};
 `;
 const InfoValue = (props) => {
   const value = props.children;
