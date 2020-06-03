@@ -1,10 +1,10 @@
 {
-  "version": "1",
+  "version": 1,
   "objectTypeProperty": {
     "arrayOfIntExample": [2, 4, 2, 6, 4, 6, 2],
     "arrayOfUniqueIntExample": [2, 6, 10, 14],
     "arrayOfTwonumbersExample": [6, 10],
-    "arrayOfFloatExample": [1.64, 0.36],
+    "arrayOfFloatExample": [1.64],
     "arrayOfNumberNoDefaultsExample": [20, 18, 16, 14, 12],
     "arrayOfStringExample": ["dogdog", "catcat", "birdbird"],
     "arrayOfObjectType": [
@@ -13,7 +13,7 @@
         "integerExampleInt32": 2
       },
       {
-        "integerExample": 129300,
+        "integerExample": 60000,
         "integerExampleInt32": 22
       }
     ]
