@@ -135,8 +135,8 @@ export const dimensions = {
     selectDropDownArrowWith: '12px',
   },
   viewports: {
-    mobile: `max-width: ${pageWidth}`,
-    tablet: `min-width: calc(${pageWidth} - 0.01px)`,
+    mobile: `max-width: calc(768px - 0.02px)`,
+    tablet: `min-width: calc(768px - 0.01px)`,
     largeTablet: `min-width: calc(848px - 0.01px)`,
     laptop: `min-width: calc(1024px - 0.01px)`,
     desktop: `min-width: calc(1280px - 0.01px)`,
