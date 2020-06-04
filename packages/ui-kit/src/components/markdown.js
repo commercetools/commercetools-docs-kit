@@ -262,7 +262,7 @@ const TypographyPage = styled.div`
     margin: ${dimensions.spacings.l} ${dimensions.spacings.xxl};
   }
   section > ${Ul}, section > ${Ol} {
-    margin: ${dimensions.spacings.s} 0 ${dimensions.spacings.xxl};
+    margin-bottom: ${dimensions.spacings.xxl};
   }
   section > ${CodeBlockContainer} {
     margin-bottom: ${dimensions.spacings.xxl};
