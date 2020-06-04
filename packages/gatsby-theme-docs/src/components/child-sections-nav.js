@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: ${designSystem.dimensions.spacings.m};
   border-radius: ${designSystem.tokens.borderRadiusForChildSectionNav};
   columns: auto ${designSystem.dimensions.widths.pageNavigationSmall};
-  column-gap: ${designSystem.dimensions.spacings.m};
+  column-gap: ${designSystem.dimensions.spacings.l};
 `;
 const ColumnContainer = styled.div`
   margin-bottom: ${designSystem.dimensions.spacings.s};
@@ -25,6 +25,7 @@ const Link = styled.a`
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   color: ${designSystem.colors.light.textSecondary};
   text-decoration: none;
+  overflow-wrap: break-word;
   :hover {
     color: ${designSystem.colors.light.linkNavigation};
   }
