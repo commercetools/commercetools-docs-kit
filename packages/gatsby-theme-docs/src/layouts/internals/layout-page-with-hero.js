@@ -22,7 +22,6 @@ const Container = styled.div`
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     background-size: cover;
-    background-position: center;
     max-height: unset;
   }
 `;
