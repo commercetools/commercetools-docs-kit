@@ -5,4 +5,3 @@ const colorInfo25Faded = '#066DAD';
 exports.primaryColor = colorInfo25;
 exports.bannerBackgroundColor = colorInfo25Faded;
 exports.heroBackgroundName = 'hero-background.svg';
-exports.cardBannerName = 'card-banner.svg';
