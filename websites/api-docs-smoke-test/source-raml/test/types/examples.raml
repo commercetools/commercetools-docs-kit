@@ -69,6 +69,7 @@ types:
         description: |
           The list of update actions to be performed on the ExampleResource.
           Actions are applied in the given order.
+    example: !include ../examples/example-resource-update.json
 
   ExampleResourceUpdateAction:
     discriminator: action
@@ -80,6 +81,7 @@ types:
     displayName: Do SomeThing
     type: ExampleResourceUpdateAction
     discriminatorValue: doSomeThing
+    example: !include ../examples/do-something-on-example-resource.json
 
   ChangeSomePropertyOnExampleResource:
     type: ExampleResourceUpdateAction
