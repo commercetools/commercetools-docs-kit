@@ -13,7 +13,7 @@ npx install-peerdeps --dev @commercetools-docs/ui-kit
 ## Design System
 
 The package includes a small design system that should be used for everything related to documentation websites.
-It exposes design tokens that mostly derive from the original [commercetools design system library](https://github.com/commercetools/ui-kit).
+It exposes design tokens that derive from the original [commercetools design system library](https://github.com/commercetools/ui-kit).
 
 ```js
 import { designSystem } from '@commercetools-docs/ui-kit';

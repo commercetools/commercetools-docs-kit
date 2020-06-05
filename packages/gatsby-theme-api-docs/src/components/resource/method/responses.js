@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { tokens, dimensions, typography } from '../../../../design-system';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { tokens, dimensions, typography } from '../../../design-system';
 
-import { useTypeLocations } from '../../../../hooks/use-type-locations';
-import renderTypeAsLink from '../../../../utils/render-type-as-link';
+import { useTypeLocations } from '../../../hooks/use-type-locations';
+import renderTypeAsLink from '../../../utils/render-type-as-link';
 import Title from './title';
 
 const ResponseCode = styled.span`
@@ -19,7 +20,6 @@ const ResponseCode = styled.span`
 
 const LinkContainer = styled.span`
   margin-left: ${designSystem.dimensions.spacings.s};
-  font-size: ${designSystem.typography.fontSizes.small};
   line-height: ${typography.lineHeights.responseBodyType};
 `;
 
@@ -27,28 +27,32 @@ const Responses = ({ apiKey, responses, title }) => {
   const typeLocations = useTypeLocations();
 
   return (
-    <div>
-      {title ? <Title>{title}</Title> : null}
+    <SpacingsInline>
+      {title && <Title>{title}:</Title>}
 
-      {responses.map((response) => {
-        return (
-          <p key={response.code}>
-            <ResponseCode css={computeStatusCodeBackgroundColor(response.code)}>
-              {response.code}
-            </ResponseCode>
-            <LinkContainer>
-              {response.body
-                ? renderTypeAsLink(
-                    apiKey,
-                    response.body.applicationjson.type,
-                    typeLocations
-                  )
-                : 'No body is returned.'}
-            </LinkContainer>
-          </p>
-        );
-      })}
-    </div>
+      <div>
+        {responses.map((response) => {
+          return (
+            <p key={response.code}>
+              <ResponseCode
+                css={computeStatusCodeBackgroundColor(response.code)}
+              >
+                {response.code}
+              </ResponseCode>
+              <LinkContainer>
+                {response.body
+                  ? renderTypeAsLink(
+                      apiKey,
+                      response.body.applicationjson.type,
+                      typeLocations
+                    )
+                  : 'No body is returned.'}
+              </LinkContainer>
+            </p>
+          );
+        })}
+      </div>
+    </SpacingsInline>
   );
 };
 

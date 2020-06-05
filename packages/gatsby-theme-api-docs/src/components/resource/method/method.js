@@ -2,50 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import {
-  designSystem as uiKitDesignSystem,
-  Markdown,
-} from '@commercetools-docs/ui-kit';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
 import { generateEndpointURN } from '../../../utils/ctp-urn';
 import {
   oauth2Scopes,
   queryParametersTitle,
   pathParametersTitle,
-  requestRepresentation,
+  responseRepresentation,
 } from '../../../utils/constants';
 import { tokens, dimensions, colors, typography } from '../../../design-system';
-import UrlScopesResponses from './url-scopes-responses';
+import Url from './url';
+import Scopes from './scopes';
+import Responses from './responses';
 import Parameters from './parameters';
 import RequestRepresentation from './request-representation';
 
-const Type = styled.span`
-  font-size: ${uiKitDesignSystem.typography.fontSizes.h4};
-  line-height: ${typography.lineHeights.methodType};
-  color: ${uiKitDesignSystem.colors.light.surfacePrimary};
-  padding: ${uiKitDesignSystem.dimensions.spacings.xs}
-    ${uiKitDesignSystem.dimensions.spacings.m};
-  border-radius: ${tokens.borderRadiusForMethodType};
-  text-transform: uppercase;
-`;
-
-const Title = styled.span`
-  font-size: ${uiKitDesignSystem.typography.fontSizes.h3};
-  font-weight: ${uiKitDesignSystem.typography.fontWeights.medium};
-  line-height: ${typography.lineHeights.methodTitle};
-`;
-
-const UrlScopesResponseContainer = styled.div`
-  background-color: ${uiKitDesignSystem.colors.light.surfacePrimary};
-  border: ${dimensions.widths.tableBorder} solid ${colors.light.border};
-  border-radius: ${tokens.borderRadiusForTable};
-  box-shadow: ${tokens.shadowForUrlScopesResponse};
-  border-left-width: ${dimensions.widths.methodBorderLeft};
+const Title = styled.h6`
+  font-size: ${typography.fontSizes.h4};
+  font-weight: ${typography.fontWeights.medium};
 `;
 
 const Description = styled.p`
-  line-height: ${uiKitDesignSystem.typography.lineHeights.body};
+  line-height: ${typography.lineHeights.body};
+`;
+
+const Container = styled.div`
+  border-radius: ${tokens.borderRadiusForTable};
+  border-left-width: ${dimensions.widths.methodBorderLeft};
+  border-left-style: solid;
+  padding: ${dimensions.spacings.s} 0 ${dimensions.spacings.s}
+    ${dimensions.spacings.m};
 `;
 
 const TitleWithAnchor = Markdown.withAnchorLink(Title);
@@ -56,6 +44,7 @@ const Method = ({
   resourceUriParameters,
   method,
   methodType,
+  title,
 }) => {
   let allUriParameters = [];
   if (resourceUriParameters) {
@@ -65,7 +54,6 @@ const Method = ({
   if (method.uriParameters) {
     allUriParameters = allUriParameters.concat(method.uriParameters);
   }
-
   const methodColor = computeMethodColor(methodType.toLowerCase());
 
   const id = generateEndpointURN({
@@ -76,62 +64,67 @@ const Method = ({
 
   return (
     <SpacingsStack scale="s">
-      <SpacingsInline alignItems="center" scale="s">
-        <Type
-          css={css`
-            background-color: ${methodColor};
-          `}
-        >
-          {methodType}
-        </Type>
+      {title ? (
+        <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
+      ) : (
+        <a name={id}></a>
+      )}
 
-        <TitleWithAnchor id={id}>{method.displayName}</TitleWithAnchor>
-      </SpacingsInline>
+      {method.description && (
+        <Description>{markdownFragmentToReact(method.description)}</Description>
+      )}
 
-      <Description>{method.description}</Description>
-
-      <SpacingsStack scale="m">
-        <UrlScopesResponseContainer
-          css={css`
-            border-left-color: ${methodColor};
-          `}
-        >
-          <UrlScopesResponses
+      <Container
+        css={css`
+          border-left-color: ${methodColor};
+        `}
+      >
+        <SpacingsStack scale="m">
+          <Url
             apiKey={apiKey}
+            method={methodType}
+            methodColor={methodColor}
             uris={uris}
-            scopes={{
-              title: oauth2Scopes,
-              scopes: method.securedBy
-                ? method.securedBy[0].oauth_2_0.scopes
-                : null,
-            }}
-            responses={method.responses}
           />
-        </UrlScopesResponseContainer>
 
-        {allUriParameters.length > 0 ? (
-          <Parameters
-            title={pathParametersTitle}
-            parameters={allUriParameters}
-          />
-        ) : null}
+          {method.securedBy && (
+            <Scopes
+              scopes={method.securedBy[0].oauth_2_0.scopes}
+              title={oauth2Scopes}
+            />
+          )}
 
-        {method.queryParameters ? (
-          <Parameters
-            apiKey={apiKey}
-            title={queryParametersTitle}
-            parameters={method.queryParameters}
-          />
-        ) : null}
+          {allUriParameters.length > 0 && (
+            <Parameters
+              title={pathParametersTitle}
+              parameters={allUriParameters}
+            />
+          )}
 
-        {method.body ? (
-          <RequestRepresentation
-            titleSuffix={requestRepresentation}
-            apiKey={apiKey}
-            apiType={method.body.applicationjson.type}
-          />
-        ) : null}
-      </SpacingsStack>
+          {method.queryParameters && (
+            <Parameters
+              apiKey={apiKey}
+              title={queryParametersTitle}
+              parameters={method.queryParameters}
+            />
+          )}
+
+          {method.body && (
+            <RequestRepresentation
+              apiKey={apiKey}
+              apiType={method.body.applicationjson.type}
+            />
+          )}
+
+          {method.responses && (
+            <Responses
+              apiKey={apiKey}
+              responses={method.responses}
+              title={responseRepresentation}
+            />
+          )}
+        </SpacingsStack>
+      </Container>
     </SpacingsStack>
   );
 };
@@ -161,6 +154,7 @@ Method.propTypes = {
   resourceUriParameters: PropTypes.arrayOf(PropTypes.object.isRequired),
   method: PropTypes.object.isRequired,
   methodType: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default Method;

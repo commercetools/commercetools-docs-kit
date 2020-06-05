@@ -1,10 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import styled from '@emotion/styled';
 import { Markdown } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { BetaFlag } from '@commercetools-docs/gatsby-theme-docs';
+import { typography } from '../../../../design-system';
 import { useTypeLocations } from '../../../../hooks/use-type-locations';
 import generateTypeToRender from '../../../../utils/generate-type-to-render';
 import Required from '../../../required';
+
+// inline-blocks inside a block are wrapped first before wrapping inline.
+// this implements a wrapping behavior where property name and type are separated
+// into lines before the name is wrapped in itself if it consists of multiple words.
+const PropertyName = styled.div`
+  white-space: nowrap;
+`;
+const PropertyType = styled.div``;
+const BetaWrapper = styled.span`
+  font-size: ${typography.fontSizes.body};
+`;
 
 const NameType = ({
   apiKey,
@@ -21,18 +35,23 @@ const NameType = ({
 
   return (
     <SpacingsStack scale="xs">
-      <p className="name-type">
+      <PropertyName className="name-type">
         <Markdown.InlineCode>{property.name}</Markdown.InlineCode>
-        {property.required ? <Required>*</Required> : null}
+        {property.required && <Required />}
+        {property.beta && (
+          <BetaWrapper>
+            <BetaFlag />
+          </BetaWrapper>
+        )}
+      </PropertyName>
 
-        {parentDiscriminator && property.name === parentDiscriminator ? (
-          <>
-            {' '}
-            : <Markdown.InlineCode>{discriminatorValue}</Markdown.InlineCode>
-          </>
-        ) : null}
-      </p>
-      <p className="name-type">
+      {parentDiscriminator && property.name === parentDiscriminator ? (
+        <PropertyName>
+          {' '}
+          : <Markdown.InlineCode>{discriminatorValue}</Markdown.InlineCode>
+        </PropertyName>
+      ) : null}
+      <PropertyType className="name-type">
         {typeToRender.displayPrefix && (
           <span className="name">{typeToRender.displayPrefix}</span>
         )}
@@ -42,7 +61,7 @@ const NameType = ({
         ) : (
           typeToRender.type
         )}
-      </p>
+      </PropertyType>
     </SpacingsStack>
   );
 };
@@ -56,6 +75,7 @@ NameType.propTypes = {
       type: PropTypes.string.isRequired,
     }),
     required: PropTypes.bool.isRequired,
+    beta: PropTypes.bool,
   }).isRequired,
   parentDiscriminator: PropTypes.string,
   discriminatorValue: PropTypes.string,

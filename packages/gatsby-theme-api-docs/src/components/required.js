@@ -5,5 +5,9 @@ import { dimensions } from '../design-system';
 export default styled.span`
   color: ${designSystem.colors.light.textWarning};
   font-size: ${designSystem.typography.fontSizes.small};
-  margin-left: ${dimensions.spacings.xxs};
+  font-weight: ${designSystem.typography.fontWeights.bold};
+  margin: 0 ${dimensions.spacings.xs};
+  ::after {
+    content: '*';
+  }
 `;

@@ -25,6 +25,7 @@ const extractAdditionalInfo = (property) => {
     'items',
     'library',
     'required',
+    'beta',
   ];
 
   mainInfo.forEach((field) => {

@@ -13,29 +13,30 @@ const Table = styled.table`
   border-spacing: 0;
 
   thead {
-    display: block;
-    padding: ${uiKitDesignSystem.dimensions.spacings.s};
     background-color: ${colors.light.surfaceTableHead};
-    border-radius: ${tokens.borderRadiusForTable} ${tokens.borderRadiusForTable}
-      0 0;
-  }
 
-  th {
-    vertical-align: bottom;
-    text-align: left;
-    border: none;
-    font-weight: ${uiKitDesignSystem.typography.fontWeights.bold};
-    line-height: ${typography.lineHeights.th};
+    th {
+      vertical-align: bottom;
+      text-align: left;
+      border: none;
+      font-weight: ${uiKitDesignSystem.typography.fontWeights.bold};
+      line-height: ${typography.lineHeights.th};
+      padding: ${uiKitDesignSystem.dimensions.spacings.xs}
+        ${uiKitDesignSystem.dimensions.spacings.s};
+    }
   }
 
   tbody {
     tr {
-      display: block;
       padding: 0 ${uiKitDesignSystem.dimensions.spacings.s};
 
-      :not(:first-of-type) {
-        border-top: ${dimensions.widths.tableBorder} solid
-          ${colors.light.border};
+      @media screen and (${dimensions.viewports.tablet}) {
+        :not(:first-of-type) {
+          td {
+            border-top: ${dimensions.widths.tableBorder} solid
+              ${colors.light.border};
+          }
+        }
       }
     }
 
@@ -44,22 +45,33 @@ const Table = styled.table`
       vertical-align: top;
       border-top: none;
       word-break: break-word;
+      @media screen and (${dimensions.viewports.mobile}) {
+        display: block;
+      }
 
       :first-of-type {
-        width: ${dimensions.widths.tableColumn};
+        @media screen and (${dimensions.viewports.mobile}) {
+          border-top: ${dimensions.widths.tableBorder} solid
+            ${colors.light.border};
+        }
+        @media screen and (${dimensions.viewports.tablet}) {
+          min-width: ${dimensions.widths.typeTableLeftColumnWidthMin};
+          max-width: ${dimensions.widths.typeTableLeftColumnWidthMax};
+        }
       }
 
       :last-of-type {
-        padding-left: ${uiKitDesignSystem.dimensions.spacings.m};
+        @media screen and (${dimensions.viewports.tablet}) {
+          padding-left: ${uiKitDesignSystem.dimensions.spacings.m};
+        }
+      }
+
+      .name-type {
+        line-height: ${typography.lineHeights.propertyType};
       }
 
       .name {
         color: ${uiKitDesignSystem.colors.light.textFaded};
-      }
-
-      .name-type {
-        font-size: ${uiKitDesignSystem.typography.fontSizes.small};
-        line-height: ${typography.lineHeights.propertyType};
       }
     }
   }

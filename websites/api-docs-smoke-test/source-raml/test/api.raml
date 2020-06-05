@@ -3,13 +3,20 @@
 title: Commercetools Test API Spec
 version: v0.1 beta
 mediaType: application/json
-baseUri: https://subdomain-{exampleUriParameter}.example.com
+baseUri: https://api.{region}.{cloudProvider}.commercetools.com
 baseUriParameters:
-  exampleUriParameter:
+  region:
     enum:
-      - subdomainOne
-      - subdomainTwo
-      - subdomainThree
+      - regionOne
+      - regionTwo
+      - regionThree
+    description: |
+      Free text description of the uri parameter.
+  cloudProvider:
+    enum:
+      - providerOne
+      - providerTwo
+      - providerThree
     description: |
       Free text description of the uri parameter.
 securitySchemes:

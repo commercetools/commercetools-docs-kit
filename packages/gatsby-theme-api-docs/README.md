@@ -66,3 +66,14 @@ Then in your MDX files:
   method="POST"
 />
 ```
+
+Optionally pass a title if the Endpoint does not have a displayName in the API specification:
+
+```markdown
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/artificially-complex/path/uri-parameter-one={uriParameterOne}/{uriParameterTwo}"
+  method="POST"
+  title="Test API Endpoint"
+/>
+```

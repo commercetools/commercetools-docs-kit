@@ -1,30 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import ApiType from '../../type';
+import { requestRepresentation } from '../../../utils/constants';
+import {
+  useTypeLocations,
+  locationForType,
+} from '../../../hooks/use-type-locations';
+import renderTypeAsLink from '../../../utils/render-type-as-link';
 
-const TitleTypeString = styled.span`
-  color: ${designSystem.colors.light.textFaded};
-  font-weight: ${designSystem.typography.fontWeights.regular};
-`;
+import Title from './title';
 
-const RequestRepresentation = ({ titleSuffix, apiKey, apiType }) => {
+const RequestRepresentation = ({ apiKey, apiType }) => {
+  const typeLocations = useTypeLocations();
+  const notDefinedElsewhere =
+    typeof locationForType(apiKey, apiType, typeLocations) === 'undefined';
   const title = (
-    <p>
-      {titleSuffix ? `${titleSuffix}: ` : null}
-      <TitleTypeString>{apiType}</TitleTypeString>
-    </p>
+    <SpacingsInline>
+      <Title>{requestRepresentation}:</Title>{' '}
+      {renderTypeAsLink(apiKey, apiType, typeLocations)}
+    </SpacingsInline>
   );
   return (
     <SpacingsStack scale="s">
-      <ApiType
-        apiKey={apiKey}
-        type={apiType}
-        renderDescriptionBelowProperties={true}
-        propertiesTableTitle={title}
-      />
+      {title}
+      {notDefinedElsewhere && (
+        <ApiType
+          apiKey={apiKey}
+          type={apiType}
+          renderDescriptionBelowProperties={true}
+        />
+      )}
     </SpacingsStack>
   );
 };
@@ -32,7 +39,6 @@ const RequestRepresentation = ({ titleSuffix, apiKey, apiType }) => {
 RequestRepresentation.propTypes = {
   apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.string.isRequired,
-  titleSuffix: PropTypes.string,
 };
 
 export default RequestRepresentation;
