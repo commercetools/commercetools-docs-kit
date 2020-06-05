@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { keyframes } from '@emotion/core';
+import { keyframes, css } from '@emotion/core';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import IconButton from '@commercetools-uikit/icon-button';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
+import { useInView } from 'react-intersection-observer';
 import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
 import { Overlay } from '../../components';
 import PageNavigation from './page-navigation';
@@ -42,11 +43,41 @@ const GridContainer = styled.div`
     width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
-const StickyContainer = styled.div`
-  position: sticky;
-  top: ${designSystem.dimensions.spacings.xxl};
-  margin: 0 0 ${designSystem.dimensions.spacings.s};
-`;
+
+const stickyContainerCss = css({
+  position: 'sticky',
+  top: 0,
+  marginTop: `-1px`,
+  paddingTop: '1px',
+});
+const stuckContainerCss = css(stickyContainerCss, {
+  maxHeight: '100vh',
+  overflow: 'auto',
+  scrollbarWidth: 'thin',
+});
+
+const StickyContainer = (props) => {
+  // this intersection observer only observes a one pixel high line outside the viewport.
+  // the sticky element has a one pixel negative margin and hence the observer exactly detects when
+  // the element is "stuck"
+  const [ref, isStuck] = useInView({
+    rootMargin: `1px 0px -100% 0px`,
+    threshold: 0,
+  });
+  return (
+    <div
+      ref={ref}
+      css={isStuck ? stuckContainerCss : stickyContainerCss}
+      {...props}
+    >
+      {props.children}
+    </div>
+  );
+};
+StickyContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const PageTitleLink = styled.a`
   color: ${designSystem.colors.light.textSecondary};
   font-size: ${designSystem.typography.fontSizes.extraSmall};
@@ -96,7 +127,10 @@ const LayoutPageNavigation = (props) => {
     return null;
 
   const navigationContainer = (
-    <nav aria-label="Page Table of Contents Navigation">
+    <nav
+      aria-label="Page Table of Contents Navigation"
+      css={{ marginBottom: designSystem.dimensions.spacings.l }}
+    >
       <SpacingsStack scale="m">
         <PageTitleLink href="#top">
           <SpacingsInline scale="s" alignItems="center">

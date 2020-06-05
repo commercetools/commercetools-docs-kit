@@ -60,6 +60,7 @@
     "react-helmet": "6.0.0",
     "react-intl": "4.6.3",
     "react-router-dom": "5.2.0",
+    "react-intersection-observer": "8.26.2",
     "rehype-slug": "3.0.0",
     "remark-emoji": "2.1.0",
     "remark-frontmatter": "2.0.0",
