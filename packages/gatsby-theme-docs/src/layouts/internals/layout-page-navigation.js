@@ -51,7 +51,7 @@ const stickyContainerCss = css({
   paddingTop: '1px',
 });
 const stuckContainerCss = css(stickyContainerCss, {
-  height: '100vh',
+  maxHeight: '100vh',
   overflow: 'auto',
   // now showing the scrollbar while allowing to scroll by touch or mouse is not
   // polyfilled by emotion so let's do it here:
