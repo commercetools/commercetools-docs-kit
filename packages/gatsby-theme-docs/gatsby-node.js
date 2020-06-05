@@ -373,6 +373,7 @@ async function createContentPages(
           context: {
             ...pageData.context,
             heroBackgroundRelativePath: `${colorPreset.relativePath}/${colorPreset.value.heroBackgroundName}`,
+            heroBackgroundColor: colorPreset.value.bannerBackgroundColor,
           },
         });
         break;

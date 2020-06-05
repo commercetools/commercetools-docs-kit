@@ -4,25 +4,26 @@ import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 
+const bannerHeight = '200px';
+
 // The container is used to render a background image with for the full page width.
 const Container = styled.div`
   grid-area: page-header;
   position: relative;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: ${(props) => props.theme.colors.light.primary};
+  min-height: ${bannerHeight};
+  max-height: ${bannerHeight};
+  background-color: ${(props) => props.heroBackgroundColor};
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: left;
 
   /* stylelint-disable-next-line function-whitespace-after */
   background-image: ${(props) => `url('${props.heroBackgroundURL}')`};
 
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    background-size: auto;
-  }
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
     background-size: cover;
+    max-height: unset;
   }
-
-  /* License with attribution of the background by SVGBackgrounds.com */
 `;
 // Constraint the heading to the "page content" width.
 const Title = styled(Markdown.H1)`
@@ -33,7 +34,7 @@ const Title = styled(Markdown.H1)`
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     width: calc(100% - ${designSystem.dimensions.spacings.large} * 2);
-    padding: ${designSystem.dimensions.spacings.xl}
+    padding: ${designSystem.dimensions.spacings.m}
       ${designSystem.dimensions.spacings.xl};
   }
 `;
@@ -71,7 +72,10 @@ const ContentWrapper = styled.div`
 
 const LayoutPageWithHero = (props) => (
   <>
-    <Container heroBackgroundURL={props.heroBackgroundURL}>
+    <Container
+      heroBackgroundURL={props.heroBackgroundURL}
+      heroBackgroundColor={props.heroBackgroundColor}
+    >
       <ThemeProvider
         theme={{
           colors: {
@@ -90,6 +94,7 @@ const LayoutPageWithHero = (props) => (
 LayoutPageWithHero.propTypes = {
   title: PropTypes.string.isRequired,
   heroBackgroundURL: PropTypes.string.isRequired,
+  heroBackgroundColor: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
