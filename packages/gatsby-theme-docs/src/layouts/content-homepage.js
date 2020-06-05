@@ -42,6 +42,7 @@ const LayoutContentHomepage = (props) => {
           <LayoutPageWithHero
             title={props.pageData.title}
             heroBackgroundURL={props.heroBackground.publicURL}
+            heroBackgroundColor={props.pageContext.heroBackgroundColor}
           >
             <LayoutPageContent>
               <PageContentInset id="body-content" maxWidth="unset">
@@ -62,6 +63,7 @@ LayoutContentHomepage.propTypes = {
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
     hasReleaseNotes: PropTypes.bool.isRequired,
+    heroBackgroundColor: PropTypes.string.isRequired,
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,

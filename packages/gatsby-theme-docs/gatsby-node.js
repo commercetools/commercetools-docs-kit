@@ -165,20 +165,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
-        date: {
-          type: 'Date!',
-          args: {
-            formatString: { type: 'String' },
-            fromNow: { type: 'Boolean' },
-            difference: { type: 'String' },
-            locale: { type: 'String' },
-          },
-          resolve: resolverPassthrough({
-            typeName: 'MdxFrontmatter',
-            fieldName: 'date',
-            resolveNode: (node) => node.frontmatter,
-          }),
-        },
+        date: { type: 'Date!', extensions: { dateformat: {} } },
         description: { type: 'String!' },
         type: { type: 'ReleaseNoteType!' },
         topics: { type: '[String!]!' },
@@ -329,7 +316,7 @@ async function createContentPages(
           slug
         }
       }
-      allReleaseNotePage {
+      allReleaseNotePage(sort: { order: DESC, fields: date }) {
         totalCount
       }
     }
@@ -386,6 +373,7 @@ async function createContentPages(
           context: {
             ...pageData.context,
             heroBackgroundRelativePath: `${colorPreset.relativePath}/${colorPreset.value.heroBackgroundName}`,
+            heroBackgroundColor: colorPreset.value.bannerBackgroundColor,
           },
         });
         break;
