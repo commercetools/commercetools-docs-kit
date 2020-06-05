@@ -122,7 +122,7 @@ const SidebarLink = (props) => {
         return (
           <Link
             {...forwardProps}
-            to={trimTrailingSlash(props.to)}
+            to={props.to === '/' ? props.to : trimTrailingSlash(props.to)}
             getProps={({ href }) => {
               // Manually check that the link is the active one, even with trailing slashes.
               // The gatsby link is by default configured to match the exact path, therefore we
