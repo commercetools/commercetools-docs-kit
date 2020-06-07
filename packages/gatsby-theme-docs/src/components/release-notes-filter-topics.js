@@ -27,6 +27,8 @@ const ReleaseNotesFilterTopics = () => {
   const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
   const allTopics = useReleaseNotesTopics(filterParams.filterTopics);
 
+  if (allTopics.length === 0) return null;
+
   return (
     <Container>
       <SpacingsStack>
