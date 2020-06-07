@@ -1,5 +1,21 @@
 # @commercetools-docs/ui-kit
 
+## 5.0.0
+
+### Minor Changes
+
+- [`08e13cd`](https://github.com/commercetools/commercetools-docs-kit/commit/08e13cd4bf505dbc6124077bc794a0777ffa88f3) [#480](https://github.com/commercetools/commercetools-docs-kit/pull/480) Thanks [@emmenko](https://github.com/emmenko)! - Update color presets SVG banners and colors. Additionally add new color presets: `option-{1,2,3}`.
+
+### Patch Changes
+
+- [`3dd84ca`](https://github.com/commercetools/commercetools-docs-kit/commit/3dd84ca932145271cc6dba0e79d5e129a4e5a090) [#467](https://github.com/commercetools/commercetools-docs-kit/pull/467) Thanks [@nkuehn](https://github.com/nkuehn)! - Support for long and deeply nested pages
+
+  - render deep heading levels (> 3) like level 3 (keeps their hierarchy in the nav, but all rendered identically)
+  - configure lower index nav depth per page to support long pages with lots of sections
+  - component to render a table of contents of a given section inside the main column
+
+* [`e58e26a`](https://github.com/commercetools/commercetools-docs-kit/commit/e58e26a0399afc6a86a49721971a5999b2df25b7) [#478](https://github.com/commercetools/commercetools-docs-kit/pull/478) Thanks [@nkuehn](https://github.com/nkuehn)! - Fix spacing above lists and inside the child section navigator
+
 ## 3.1.1
 
 ### Patch Changes
