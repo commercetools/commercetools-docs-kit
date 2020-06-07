@@ -1,5 +1,30 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 5.0.0
+
+### Minor Changes
+
+- [`3dd84ca`](https://github.com/commercetools/commercetools-docs-kit/commit/3dd84ca932145271cc6dba0e79d5e129a4e5a090) [#467](https://github.com/commercetools/commercetools-docs-kit/pull/467) Thanks [@nkuehn](https://github.com/nkuehn)! - Support for long and deeply nested pages
+
+  - render deep heading levels (> 3) like level 3 (keeps their hierarchy in the nav, but all rendered identically)
+  - configure lower index nav depth per page to support long pages with lots of sections
+  - component to render a table of contents of a given section inside the main column
+
+* [`08e13cd`](https://github.com/commercetools/commercetools-docs-kit/commit/08e13cd4bf505dbc6124077bc794a0777ffa88f3) [#480](https://github.com/commercetools/commercetools-docs-kit/pull/480) Thanks [@emmenko](https://github.com/emmenko)! - Update color presets SVG banners and colors. Additionally add new color presets: `option-{1,2,3}`.
+
+### Patch Changes
+
+- [`4e69047`](https://github.com/commercetools/commercetools-docs-kit/commit/4e690472d48135461ab3b1fa5b6fcdfc789e19a2) [#482](https://github.com/commercetools/commercetools-docs-kit/pull/482) Thanks [@emmenko](https://github.com/emmenko)! - Fix back to docs link when in release notes pages
+
+* [`6b19dbc`](https://github.com/commercetools/commercetools-docs-kit/commit/6b19dbc32d60954e0c741757045e1805b32cb001) [#479](https://github.com/commercetools/commercetools-docs-kit/pull/479) Thanks [@nkuehn](https://github.com/nkuehn)! - Scrollable index navigation for robustness with larger pages
+
+- [`8c1a43e`](https://github.com/commercetools/commercetools-docs-kit/commit/8c1a43e61e1050db0fe4aa61cbcda3bf2d978a46) Thanks [@emmenko](https://github.com/emmenko)! - Fix sort order of release notes
+
+* [`e58e26a`](https://github.com/commercetools/commercetools-docs-kit/commit/e58e26a0399afc6a86a49721971a5999b2df25b7) [#478](https://github.com/commercetools/commercetools-docs-kit/pull/478) Thanks [@nkuehn](https://github.com/nkuehn)! - Fix spacing above lists and inside the child section navigator
+
+* Updated dependencies [[`3dd84ca`](https://github.com/commercetools/commercetools-docs-kit/commit/3dd84ca932145271cc6dba0e79d5e129a4e5a090), [`08e13cd`](https://github.com/commercetools/commercetools-docs-kit/commit/08e13cd4bf505dbc6124077bc794a0777ffa88f3), [`e58e26a`](https://github.com/commercetools/commercetools-docs-kit/commit/e58e26a0399afc6a86a49721971a5999b2df25b7)]:
+  - @commercetools-docs/ui-kit@5.0.0
+
 ## 4.1.1
 
 ### Patch Changes
