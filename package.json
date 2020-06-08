@@ -121,7 +121,8 @@
   },
   "resolutions": {
     "**/cypress": "4.7.0",
-    "**/sharp": "0.25.3"
+    "**/sharp": "0.25.3",
+    "**/gatsby-link": "2.4.3"
   },
   "engines": {
     "node": ">=12",
