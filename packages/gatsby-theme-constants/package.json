@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-docs/gatsby-theme-constants",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -16,17 +16,17 @@
     "constants"
   ],
   "dependencies": {
-    "@commercetools-docs/ui-kit": "3.1.1",
-    "gatsby-transformer-yaml": "2.4.2",
+    "@commercetools-docs/ui-kit": "5.0.0",
+    "gatsby-transformer-yaml": "2.4.3",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "gatsby": "2.22.16",
+    "gatsby": "2.23.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "peerDependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "4.1.1",
+    "@commercetools-docs/gatsby-theme-docs": "5.0.0",
     "gatsby": "2.x",
     "react": "16.x",
     "react-dom": "16.x"
