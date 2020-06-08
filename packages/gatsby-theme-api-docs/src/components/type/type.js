@@ -4,7 +4,6 @@ import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../utils/ctp-urn';
 import { useApiTypes } from '../../hooks/use-api-types';
 import reportError from '../../utils/report-error';
-import { apiTypeStrings } from '../../utils/constants';
 import Children from './children';
 import ChildrenUnionLike from './children-union-like';
 
@@ -36,7 +35,6 @@ const ApiType = (props) => {
       ) : (
         <Children
           apiType={matchedApiType}
-          strings={apiTypeStrings}
           renderDescriptionBelowProperties={
             props.renderDescriptionBelowProperties
           }

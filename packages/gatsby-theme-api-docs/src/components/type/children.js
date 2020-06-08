@@ -8,7 +8,6 @@ import Examples from './examples';
 const Children = ({
   apiType,
   parentDiscriminator,
-  strings,
   renderDescriptionBelowProperties,
   propertiesTableTitle,
 }) => {
@@ -46,14 +45,7 @@ const Children = ({
         />
       ) : null}
 
-      {apiType.examples ? (
-        <Examples
-          examples={apiType.examples}
-          title={
-            apiType.examples.length > 1 ? strings.examples : strings.example
-          }
-        />
-      ) : null}
+      {apiType.examples ? <Examples examples={apiType.examples} /> : null}
     </SpacingsStack>
   );
 };
@@ -61,7 +53,6 @@ const Children = ({
 Children.propTypes = {
   apiType: PropTypes.object.isRequired,
   parentDiscriminator: PropTypes.string,
-  strings: PropTypes.object,
   renderDescriptionBelowProperties: PropTypes.bool,
   propertiesTableTitle: PropTypes.oneOfType([
     PropTypes.string,
