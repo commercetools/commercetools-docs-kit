@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 5.0.2
+
+### Patch Changes
+
+- [`c0b74d5`](https://github.com/commercetools/commercetools-docs-kit/commit/c0b74d5bd16ef6db8a7ab3844b292dc4daff425d) [#494](https://github.com/commercetools/commercetools-docs-kit/pull/494) Thanks [@emmenko](https://github.com/emmenko)! - Use correct `theme.codeBlockColors` for `<CodeBlock>` components
+
 ## 5.0.1
 
 ### Patch Changes
