@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 5.0.2
+
+### Patch Changes
+
+- [`b0fd7bc`](https://github.com/commercetools/commercetools-docs-kit/commit/b0fd7bc0f8daa77b9d5c360f8e9161d92ec94457) [#496](https://github.com/commercetools/commercetools-docs-kit/pull/496) Thanks [@emmenko](https://github.com/emmenko)! - Push footer to the page bottom, even when page content is very short
+
+- Updated dependencies [[`c0b74d5`](https://github.com/commercetools/commercetools-docs-kit/commit/c0b74d5bd16ef6db8a7ab3844b292dc4daff425d)]:
+  - @commercetools-docs/ui-kit@5.0.2
+
 ## 5.0.1
 
 ### Patch Changes
