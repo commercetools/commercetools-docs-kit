@@ -1,5 +1,17 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 5.0.1
+
+### Patch Changes
+
+- [`00abb72`](https://github.com/commercetools/commercetools-docs-kit/commit/00abb725dca4c7d97fa5e6bec7b6edd2bc001594) Thanks [@emmenko](https://github.com/emmenko)! - Update all dependencies
+
+* [`262053d`](https://github.com/commercetools/commercetools-docs-kit/commit/262053d351e5478a19cf21a8e2c11d3f2e80c8b4) [#492](https://github.com/commercetools/commercetools-docs-kit/pull/492) Thanks [@davifantasia](https://github.com/davifantasia)! - refactor: render api type examples with title
+
+* Updated dependencies [[`00abb72`](https://github.com/commercetools/commercetools-docs-kit/commit/00abb725dca4c7d97fa5e6bec7b6edd2bc001594), [`45e874b`](https://github.com/commercetools/commercetools-docs-kit/commit/45e874b50e5af90ef6bb733d90ba424473dadd81)]:
+  - @commercetools-docs/gatsby-theme-docs@5.0.1
+  - @commercetools-docs/ui-kit@5.0.1
+
 ## 5.0.0
 
 ### Minor Changes

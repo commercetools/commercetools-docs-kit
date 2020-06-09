@@ -92,7 +92,7 @@ export const colors = {
         surfaceCopyIconHover: customProperties.colorAccent40,
         surfaceCopyTooltip: customProperties.colorAccent40,
         textCopyTooltip: customProperties.colorSurface,
-        surfaceLineHighlight: customProperties.colorAccent40,
+        surfaceLineHighlight: customProperties.colorNeutral90,
         surfacePrompt: customProperties.colorNeutral60,
       },
     },

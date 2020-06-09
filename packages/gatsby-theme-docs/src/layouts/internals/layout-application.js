@@ -19,6 +19,7 @@ const Root = styled.div`
 `;
 const Container = styled.div`
   position: relative;
+  height: 100%;
   display: grid;
   grid:
     [row1-start] 'main' 1fr [row1-end]
