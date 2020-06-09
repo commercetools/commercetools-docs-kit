@@ -84,24 +84,26 @@ const Card = (props) => {
 
   return (
     <Container {...props}>
-      <StackContainer scale="m">
-        {image && <Img fluid={image.childImageSharp.fluid} />}
-        {props.clickable && props.href ? (
-          <Link href={props.href} noUnderline>
-            {renderNarrowOrWideCard()}
-          </Link>
-        ) : (
-          renderNarrowOrWideCard()
-        )}
-      </StackContainer>
+      {props.clickable && props.href ? (
+        <Link href={props.href} noUnderline>
+          {renderNarrowOrWideCard()}
+        </Link>
+      ) : (
+        renderNarrowOrWideCard()
+      )}
     </Container>
   );
 
   function renderNarrowOrWideCard() {
-    return props.narrow ? (
-      <StackContainer>{renderCardContent()}</StackContainer>
-    ) : (
-      <InlineContainer>{renderCardContent()}</InlineContainer>
+    return (
+      <StackContainer scale="m">
+        {image && <Img fluid={image.childImageSharp.fluid} />}
+        {props.narrow ? (
+          <StackContainer>{renderCardContent()}</StackContainer>
+        ) : (
+          <InlineContainer>{renderCardContent()}</InlineContainer>
+        )}
+      </StackContainer>
     );
   }
 
