@@ -69,7 +69,7 @@ const getLineStyles = (theme, options) => {
         margin: 0 0 0 -${dimensions.spacings.m};
         padding: 0 ${dimensions.spacings.s} 0 0;
         color: ${options.shouldShowPrompt
-          ? theme.colors.surfacePrompt
+          ? theme.codeBlockColors.surfacePrompt
           : 'transparent'};
       }
     `;
@@ -79,7 +79,7 @@ const getLineStyles = (theme, options) => {
       ? `calc(100% - ${dimensions.spacings.s})`
       : '100%';
     highlightLineStyles = css`
-      background-color: ${theme.colors.surfaceLineHighlight};
+      background-color: ${theme.codeBlockColors.surfaceLineHighlight};
       width: ${width};
     `;
   }
