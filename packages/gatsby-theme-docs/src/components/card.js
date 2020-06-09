@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
+import Img from 'gatsby-image';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
+import { useImagesByName } from '../hooks/use-images';
 import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 import Link from './link';
 
@@ -76,15 +78,22 @@ const ReadMore = styled.div`
 `;
 
 const Card = (props) => {
+  // TODO: this is queried for every isntance of a card
+  // need to optimize
+  const image = useImagesByName(props.image);
+
   return (
     <Container {...props}>
-      {props.clickable && props.href ? (
-        <Link href={props.href} noUnderline>
-          {renderNarrowOrWideCard()}
-        </Link>
-      ) : (
-        renderNarrowOrWideCard()
-      )}
+      <StackContainer scale="m">
+        {image && <Img fluid={image.childImageSharp.fluid} />}
+        {props.clickable && props.href ? (
+          <Link href={props.href} noUnderline>
+            {renderNarrowOrWideCard()}
+          </Link>
+        ) : (
+          renderNarrowOrWideCard()
+        )}
+      </StackContainer>
     </Container>
   );
 
@@ -149,6 +158,7 @@ Card.propTypes = {
   clickable: PropTypes.bool,
   narrow: PropTypes.bool,
   smallTitle: PropTypes.bool,
+  image: PropTypes.string,
   title: PropTypes.string,
   href: PropTypes.string,
   textLink: PropTypes.string,

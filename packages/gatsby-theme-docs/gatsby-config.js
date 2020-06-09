@@ -113,7 +113,14 @@ module.exports = (themeOptions = {}) => {
        */
 
       // For querying images
-      'gatsby-transformer-sharp',
+      {
+        resolve: 'gatsby-transformer-sharp',
+        options: {
+          // The option defaults to true
+          // More info: https://www.gatsbyjs.org/packages/gatsby-transformer-sharp/#configuration-options
+          checkSupportedExtensions: false,
+        },
+      },
 
       // For querying configuration data
       'gatsby-transformer-yaml',
