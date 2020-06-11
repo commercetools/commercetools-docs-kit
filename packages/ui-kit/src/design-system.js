@@ -110,6 +110,7 @@ export const tokens = {
   borderRadiusForBlockquote: customProperties.borderRadius6,
   borderRadiusForCard: customProperties.borderRadius6,
   borderRadiusForChildSectionNav: customProperties.borderRadius6,
+  borderRadiusForRssFeedTable: customProperties.borderRadius6,
   shadowForBetaFlag: customProperties.shadow7,
   shadowForSearchDialog: customProperties.shadow2,
   shadowForPageContent: customProperties.shadow11,
@@ -117,6 +118,7 @@ export const tokens = {
   -1px 1px 3px 0 rgba(0, 0, 0, 0.12)`,
   shadowForClickableCardOnHover: `0 14px 28px 0 rgba(0, 0, 0, 0.25),
   0 10px 10px 0 rgba(0, 0, 0, 0.23)`,
+  shadowForRssFeedTable: '0 1px 2px 0 rgba(0, 0, 0, 0.25)',
 };
 
 export const dimensions = {

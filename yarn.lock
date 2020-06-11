@@ -2183,6 +2183,18 @@
     prop-types "15.7.2"
     tiny-invariant "1.1.0"
 
+"@commercetools-uikit/loading-spinner@10.21.0":
+  version "10.21.0"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/loading-spinner/-/loading-spinner-10.21.0.tgz#b3473ad80c6547444cdacbf6cae07c10339d2919"
+  integrity sha512-BD1NDu6Ix4QLePea0BxMVlsSGdh60qLhJJ/eTeLpohzqq2bZIxgd3WdVTEXcLB/DxcLEw+1F0neii/PUpA+xIQ==
+  dependencies:
+    "@commercetools-uikit/design-system" "10.18.4"
+    "@commercetools-uikit/spacings-inline" "10.21.0"
+    "@commercetools-uikit/text" "10.21.0"
+    "@commercetools-uikit/utils" "10.21.0"
+    "@emotion/core" "10.0.28"
+    prop-types "15.7.2"
+
 "@commercetools-uikit/secondary-icon-button@10.21.0":
   version "10.21.0"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/secondary-icon-button/-/secondary-icon-button-10.21.0.tgz#f8a213fc53c423086d94c04a5c0c262ccbf1f0e3"
@@ -21434,6 +21446,14 @@ rollup@2.15.0:
   optionalDependencies:
     fsevents "~2.1.2"
 
+rss-parser@3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/rss-parser/-/rss-parser-3.8.0.tgz#6ab883c5cfb69202e25c76fe2b17e3e9179a39f6"
+  integrity sha512-EvjM0r3IymXnk+SCUawLhdH36D2WQCwpEfIyvu4hpPswYuMSk/jlCLOcg24OvXwVdcJcEocAlTZVjGNjOOSJXg==
+  dependencies:
+    entities "^1.1.1"
+    xml2js "^0.4.19"
+
 rss@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/rss/-/rss-1.2.2.tgz#50a1698876138133a74f9a05d2bdc8db8d27a921"
@@ -25215,7 +25235,7 @@ xml-parse-from-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/xml-parse-from-string/-/xml-parse-from-string-1.0.1.tgz#a9029e929d3dbcded169f3c6e28238d95a5d5a28"
   integrity sha1-qQKekp09vN7RafPG4oI42VpdWig=
 
-xml2js@^0.4.23, xml2js@^0.4.5:
+xml2js@^0.4.19, xml2js@^0.4.23, xml2js@^0.4.5:
   version "0.4.23"
   resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
   integrity sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==
