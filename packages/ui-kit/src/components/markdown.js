@@ -124,6 +124,26 @@ const Table = styled.table`
   tbody {
     border-top: 2px solid ${colors.light.borderPrimary};
   }
+  thead {
+    display: ${(props) => {
+      const tHeadElement = props.children.find(
+        (child) => child.props.mdxType === 'thead'
+      );
+
+      if (tHeadElement) {
+        const thChildrenList = React.Children.map(
+          tHeadElement.props.children.props.children,
+          (child) => child.props.children
+        );
+
+        if (thChildrenList.join()) {
+          return 'table-header-group';
+        }
+      }
+
+      return 'none';
+    }};
+  }
   thead tr {
     background: ${colors.light.surfacePrimary} !important;
   }
