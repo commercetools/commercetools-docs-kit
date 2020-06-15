@@ -128,13 +128,13 @@ const Table = styled.table`
     display: ${(props) => {
       const tHeadElement = props.children.find(
         (child) => child.props.mdxType === 'thead'
-      );
+      ); /* stylelint-disable-line function-whitespace-after */
 
       if (tHeadElement) {
         const thChildrenList = React.Children.map(
           tHeadElement.props.children.props.children,
           (child) => child.props.children
-        );
+        ); /* stylelint-disable-line function-whitespace-after */
 
         if (thChildrenList.join()) {
           return 'table-header-group';
