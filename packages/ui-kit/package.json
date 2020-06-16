@@ -34,7 +34,8 @@
     "prop-types": "15.7.2",
     "tiny-invariant": "1.1.0",
     "moment": "2.26.0",
-    "rss-parser": "3.8.0"
+    "rss-parser": "3.8.0",
+    "swr": "0.2.3"
   },
   "devDependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
