@@ -10,6 +10,7 @@ import { colors, tokens, dimensions } from '../design-system';
 const parser = new Parser();
 
 const Table = styled.table`
+  width: 100%;
   border-radius: ${tokens.borderRadiusForRssFeedTable};
   box-shadow: ${tokens.shadowForRssFeedTable};
 
@@ -74,7 +75,7 @@ const RssFeeds = (props) => {
   }
 
   return (
-    <>
+    <div>
       {Object.keys(feed).length < 1 ? (
         <LoadingSpinner size="s">{'Loading feeds'}</LoadingSpinner>
       ) : (
@@ -94,7 +95,7 @@ const RssFeeds = (props) => {
           </tbody>
         </Table>
       )}
-    </>
+    </div>
   );
 };
 
