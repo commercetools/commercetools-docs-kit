@@ -60,8 +60,11 @@ const RssFeeds = (props) => {
       .then((response) => response.text())
       .then((str) => parser.parseString(str))
       .then((data) => {
-        if (localStorage) {
-          localStorage.setItem(`feeds-${props.url}`, JSON.stringify(data));
+        if (Window.localStorage) {
+          Window.localStorage.setItem(
+            `rss-feed-${props.url}`,
+            JSON.stringify(data)
+          );
         }
 
         setFeed(data);
@@ -103,8 +106,10 @@ const RssFeeds = (props) => {
   );
 
   function getFeedFromLocalStorage() {
-    if (localStorage) {
-      return JSON.parse(localStorage.getItem(`feeds-${props.url}`)) || {};
+    if (Window.localStorage) {
+      return (
+        JSON.parse(Window.localStorage.getItem(`rss-feed-${props.url}`)) || {}
+      );
     }
 
     return {};
