@@ -23,6 +23,11 @@ const Container = styled.li`
   padding: ${designSystem.dimensions.spacings.m};
   border-radius: ${designSystem.tokens.borderRadiusForCard};
 `;
+const ImageContainer = styled.div`
+  svg {
+    width: 100%;
+  }
+`;
 const Icon = styled.div`
   width: ${designSystem.dimensions.spacings.big};
   min-width: ${designSystem.dimensions.spacings.big};
@@ -91,7 +96,7 @@ const Card = (props) => {
   function renderNarrowOrWideCard() {
     return (
       <StackContainer scale="m">
-        {props.image && <div>{props.image}</div>}
+        {props.image && <ImageContainer>{props.image}</ImageContainer>}
         {props.narrow ? (
           <StackContainer>{renderCardContent()}</StackContainer>
         ) : (
