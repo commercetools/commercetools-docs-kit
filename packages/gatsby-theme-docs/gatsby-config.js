@@ -202,8 +202,6 @@ module.exports = (themeOptions = {}) => {
         resolve: 'gatsby-plugin-hubspot',
         options: {
           trackingCode: pluginOptions.hubspotTrackingCode,
-          respectDNT: true,
-          productionOnly: true,
         },
       },
       {
