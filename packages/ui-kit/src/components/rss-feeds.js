@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import css from '@emotion/css';
 import Parser from 'rss-parser';
 import moment from 'moment';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './content-notifications';
 import { colors, tokens, dimensions } from '../design-system';
+import Link from './link';
 
 const parser = new Parser();
 
@@ -92,7 +94,16 @@ const RssFeeds = (props) => {
           <tbody>
             {feed.items.map((item) => (
               <tr key={item.title}>
-                <td>{moment(item.pubDate).format('D MMMM YYYY')}</td>
+                <td>
+                  <Link
+                    href={item.link}
+                    css={css`
+                      text-decoration: none;
+                    `}
+                  >
+                    {moment(item.pubDate).format('D MMMM YYYY')}
+                  </Link>
+                </td>
                 <td>{item.title}</td>
               </tr>
             ))}
