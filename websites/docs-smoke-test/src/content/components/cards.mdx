@@ -326,14 +326,14 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 
 ```jsx
 <Cards>
-  <Card image="name-of-image">
+  <Card image={<CardBannerOSSIcon/>}>
     Flat card with an image
   </Card>
 </Cards>
 ```
 
 <Cards>
-  <Card image="200.jpg">
+  <Card image={<CardBannerOSSIcon/>}>
     Flat card with an image
   </Card>
 </Cards>
@@ -345,7 +345,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
   <Card 
     title="Clickable with Image"
     href="/components/images"
-    image="name-of-image">
+    image={<CardBannerMcDevsIcon />}>
     Clickable card with an image
   </Card>
 </Cards>
@@ -355,7 +355,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
   <Card 
     title="Clickable with Image"
     href="/components/images"
-    image="200.jpg">
+    image={<CardBannerMcDevsIcon />}>
     Clickakble card with an image
   </Card>
 </Cards>
@@ -364,7 +364,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 ```jsx
 <Cards>
   <Card
-    image="name-of-image"
+    image={<CardBannerMcDocsIcon />}
     icon={<DummyIcon />}>
     Wide card with an image and an icon
   </Card>
@@ -373,7 +373,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 
 <Cards>
   <Card
-    image="200.jpg"
+    image={<CardBannerMcDocsIcon />}
     icon={<DummyIcon />}>
     Wide card with an image and an icon
   </Card>
@@ -384,7 +384,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 ```jsx
 <Cards narrow>
   <Card
-    image="name-of-image"
+    image={<CardBannerPlatformIcon />}
     icon={<DummyIcon />}>
     Narrow card with an image and an icon
   </Card>
@@ -393,7 +393,7 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 
 <Cards narrow>
   <Card
-    image="200.jpg"
+    image={<CardBannerPlatformIcon />}
     icon={<DummyIcon />}>
     Narrow card with an image and an icon
   </Card>
