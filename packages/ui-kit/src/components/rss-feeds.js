@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import Parser from 'rss-parser';
 import moment from 'moment';
-import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './content-notifications';
 import { colors, tokens, dimensions } from '../design-system';
@@ -40,13 +39,8 @@ const Table = styled.table`
 `;
 
 const RssFeeds = (props) => {
-  if (
-    !props.feedUrls ||
-    !Array.isArray(props.feedUrls) ||
-    props.feedUrls.length < 1
-  ) {
-    const message =
-      'Must pass prop feedUrls of an array type with at least 1 rss url to RssFeeds component.';
+  if (!props.url) {
+    const message = 'Must pass prop url to RssFeeds component.';
     if (process.env.NODE_ENV !== 'production') {
       return <ContentNotifications.Error>{message}</ContentNotifications.Error>;
     }
@@ -54,29 +48,18 @@ const RssFeeds = (props) => {
     throw new Error(message);
   }
 
-  // eslint-disable-next-line
-  const [feeds, setFeeds] = React.useState([]);
-  // eslint-disable-next-line
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [feed, setFeed] = React.useState({});
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [error, setError] = React.useState();
 
   // eslint-disable-next-line
   React.useEffect(() => {
-    const feedsPromises = props.feedUrls.map(
-      (url) =>
-        new Promise((resolve, reject) => {
-          parser.parseURL(url, (err, feed) => {
-            if (err) {
-              reject(err);
-            }
-
-            resolve(feed);
-          });
-        })
-    );
-
-    Promise.all(feedsPromises)
-      .then((values) => {
-        setFeeds(values);
+    fetch(props.url)
+      .then((response) => response.text())
+      .then((str) => parser.parseString(str))
+      .then((data) => {
+        setFeed(data);
       })
       .catch((e) => {
         console.log(e);
@@ -84,7 +67,7 @@ const RssFeeds = (props) => {
           'Something went wrong with the request, make sure all urls are valid rss feeds'
         );
       });
-  }, [props.feedUrls]);
+  }, [props.url]);
 
   if (error) {
     return <ContentNotifications.Error>{error}</ContentNotifications.Error>;
@@ -92,35 +75,31 @@ const RssFeeds = (props) => {
 
   return (
     <>
-      {feeds.length < 1 ? (
+      {Object.keys(feed).length < 1 ? (
         <LoadingSpinner size="s">{'Loading feeds'}</LoadingSpinner>
       ) : (
-        <SpacingsStack scale="m">
-          {feeds.map((feed) => (
-            <Table key={feed.title}>
-              <thead>
-                <tr>
-                  <th colSpan="2">{feed.title}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {feed.items.map((item) => (
-                  <tr key={item.title}>
-                    <td>{moment(item.pubDate).format('D MMMM YYYY')}</td>
-                    <td>{item.title}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          ))}
-        </SpacingsStack>
+        <Table key={feed.title}>
+          <thead>
+            <tr>
+              <th colSpan="2">{feed.title}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {feed.items.map((item) => (
+              <tr key={item.title}>
+                <td>{moment(item.pubDate).format('D MMMM YYYY')}</td>
+                <td>{item.title}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       )}
     </>
   );
 };
 
 RssFeeds.propTypes = {
-  feedUrls: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default RssFeeds;
