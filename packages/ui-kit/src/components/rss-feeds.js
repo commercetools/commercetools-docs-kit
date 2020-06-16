@@ -50,9 +50,7 @@ const RssFeeds = (props) => {
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [feed, setFeed] = React.useState(
-    JSON.parse(localStorage.getItem(`feeds-${props.url}`)) || {}
-  );
+  const [feed, setFeed] = React.useState(getFeedFromLocalStorage());
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [error, setError] = React.useState();
 
@@ -62,7 +60,10 @@ const RssFeeds = (props) => {
       .then((response) => response.text())
       .then((str) => parser.parseString(str))
       .then((data) => {
-        localStorage.setItem(`feeds-${props.url}`, JSON.stringify(data));
+        if (localStorage) {
+          localStorage.setItem(`feeds-${props.url}`, JSON.stringify(data));
+        }
+
         setFeed(data);
       })
       .catch((e) => {
@@ -100,6 +101,14 @@ const RssFeeds = (props) => {
       )}
     </div>
   );
+
+  function getFeedFromLocalStorage() {
+    if (localStorage) {
+      return JSON.parse(localStorage.getItem(`feeds-${props.url}`)) || {};
+    }
+
+    return {};
+  }
 };
 
 RssFeeds.propTypes = {
