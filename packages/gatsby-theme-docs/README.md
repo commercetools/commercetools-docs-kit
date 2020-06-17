@@ -65,7 +65,9 @@ The project structure should contain at least the following files and folders:
 
   - `gaTrackingId` (_optional_): this is the Google Analytics tracking ID. For all sites hosted on the `docs.commercetools.com` domain the ID must be: `UA-38285631-3`.
 
-    > For test websites the field should not be set.
+    > For test websites the gaTrackingId field should not be set.
+
+  - `hubspotTrackingCode` (_optional_): this is HubSpot tracking code.
 
   - `excludeFromSearchIndex` (_optional_): indicates that the website should not be indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute. **Default: `true`**
 
