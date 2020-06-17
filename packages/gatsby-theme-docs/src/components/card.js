@@ -23,6 +23,13 @@ const Container = styled.li`
   padding: ${designSystem.dimensions.spacings.m};
   border-radius: ${designSystem.tokens.borderRadiusForCard};
 `;
+const ImageContainer = styled.div`
+  svg,
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
 const Icon = styled.div`
   width: ${designSystem.dimensions.spacings.big};
   min-width: ${designSystem.dimensions.spacings.big};
@@ -89,10 +96,15 @@ const Card = (props) => {
   );
 
   function renderNarrowOrWideCard() {
-    return props.narrow ? (
-      <StackContainer>{renderCardContent()}</StackContainer>
-    ) : (
-      <InlineContainer>{renderCardContent()}</InlineContainer>
+    return (
+      <StackContainer scale="m">
+        {props.image && <ImageContainer>{props.image}</ImageContainer>}
+        {props.narrow ? (
+          <StackContainer>{renderCardContent()}</StackContainer>
+        ) : (
+          <InlineContainer>{renderCardContent()}</InlineContainer>
+        )}
+      </StackContainer>
     );
   }
 
@@ -149,6 +161,7 @@ Card.propTypes = {
   clickable: PropTypes.bool,
   narrow: PropTypes.bool,
   smallTitle: PropTypes.bool,
+  image: PropTypes.element,
   title: PropTypes.string,
   href: PropTypes.string,
   textLink: PropTypes.string,

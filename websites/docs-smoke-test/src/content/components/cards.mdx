@@ -319,3 +319,82 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
     This [link](/views/code-blocks) should **not** render as a link.
   </Card>
 </Cards>
+
+# Cards with Images
+
+## Flat Card with an Image
+
+```jsx
+<Cards>
+  <Card image={<CardBannerOSSIcon/>}>
+    Flat card with an image
+  </Card>
+</Cards>
+```
+
+<Cards>
+  <Card image={<CardBannerOSSIcon/>}>
+    Flat card with an image
+  </Card>
+</Cards>
+
+## Clickable Card with an Image
+
+```jsx
+<Cards clickable>
+  <Card 
+    title="Clickable with Image"
+    href="/components/images"
+    image={<CardBannerMcDevsIcon />}>
+    Clickable card with an image
+  </Card>
+</Cards>
+```
+
+<Cards clickable>
+  <Card 
+    title="Clickable with Image"
+    href="/components/images"
+    image={<CardBannerMcDevsIcon />}>
+    Clickakble card with an image
+  </Card>
+</Cards>
+
+## A Wide Card with an Image and an icon
+```jsx
+<Cards>
+  <Card
+    image={<CardBannerMcDocsIcon />}
+    icon={<DummyIcon />}>
+    Wide card with an image and an icon
+  </Card>
+</Cards>
+```
+
+<Cards>
+  <Card
+    image={<CardBannerMcDocsIcon />}
+    icon={<DummyIcon />}>
+    Wide card with an image and an icon
+  </Card>
+</Cards>
+
+## A Narrow Card with an Image and an icon
+
+```jsx
+<Cards narrow>
+  <Card
+    image={<CardBannerPlatformIcon />}
+    icon={<DummyIcon />}>
+    Narrow card with an image and an icon
+  </Card>
+</Cards>
+```
+
+<Cards narrow>
+  <Card
+    image={<CardBannerPlatformIcon />}
+    icon={<DummyIcon />}>
+    Narrow card with an image and an icon
+  </Card>
+</Cards>
