@@ -24,8 +24,10 @@ const Container = styled.li`
   border-radius: ${designSystem.tokens.borderRadiusForCard};
 `;
 const ImageContainer = styled.div`
-  svg {
+  svg,
+  img {
     width: 100%;
+    height: auto;
   }
 `;
 const Icon = styled.div`
