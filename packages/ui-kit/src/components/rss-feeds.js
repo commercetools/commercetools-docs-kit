@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
+import useSWR from 'swr';
 import Parser from 'rss-parser';
 import moment from 'moment';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './content-notifications';
 import { colors, tokens, dimensions } from '../design-system';
 import Link from './link';
-
-const parser = new Parser();
 
 const Table = styled.table`
   width: 100%;
@@ -51,48 +50,37 @@ const RssFeeds = (props) => {
     throw new Error(message);
   }
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [feed, setFeed] = React.useState(getFeedFromLocalStorage());
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [error, setError] = React.useState();
+  async function fetcher(...args) {
+    const rssParser = new Parser();
+    const feed = await rssParser.parseURL(args[0]);
+    return feed;
+  }
 
-  // eslint-disable-next-line
-  React.useEffect(() => {
-    fetch(props.url)
-      .then((response) => response.text())
-      .then((str) => parser.parseString(str))
-      .then((data) => {
-        if (typeof localStorage !== 'undefined') {
-          localStorage.setItem(`rss-feed-${props.url}`, JSON.stringify(data));
-        }
-
-        setFeed(data);
-      })
-      .catch((e) => {
-        console.log(e);
-        setError(
-          'Something went wrong with the request, make sure all urls are valid rss feeds'
-        );
-      });
-  }, [props.url]);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { data, error } = useSWR(props.url, fetcher);
 
   if (error) {
-    return <ContentNotifications.Error>{error}</ContentNotifications.Error>;
+    console.log(error);
+    return (
+      <ContentNotifications.Error>
+        Error Loading RSS feed from {props.url}
+      </ContentNotifications.Error>
+    );
   }
 
   return (
     <div>
-      {Object.keys(feed).length < 1 ? (
+      {!data ? (
         <LoadingSpinner size="s">{'Loading feeds'}</LoadingSpinner>
       ) : (
-        <Table key={feed.title}>
+        <Table key={data.title}>
           <thead>
             <tr>
-              <th colSpan="2">{feed.title}</th>
+              <th colSpan="2">{data.title}</th>
             </tr>
           </thead>
           <tbody>
-            {feed.items.map((item) => (
+            {data.items.map((item) => (
               <tr key={item.title}>
                 <td>
                   <Link
@@ -112,14 +100,6 @@ const RssFeeds = (props) => {
       )}
     </div>
   );
-
-  function getFeedFromLocalStorage() {
-    if (typeof localStorage !== 'undefined') {
-      return JSON.parse(localStorage.getItem(`rss-feed-${props.url}`)) || {};
-    }
-
-    return {};
-  }
 };
 
 RssFeeds.propTypes = {
