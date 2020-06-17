@@ -198,6 +198,12 @@ module.exports = (themeOptions = {}) => {
           exclude: [],
         },
       },
+      pluginOptions.hubspotTrackingCode && {
+        resolve: 'gatsby-plugin-hubspot',
+        options: {
+          trackingCode: pluginOptions.hubspotTrackingCode,
+        },
+      },
       {
         resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
         options: {
