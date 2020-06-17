@@ -16,9 +16,10 @@ const Table = styled.table`
   box-shadow: ${tokens.shadowForRssFeedTable};
 
   thead {
-    background-color: ${colors.light.surfaceSecondary1};
-
     th {
+      background-color: ${colors.light.surfaceSecondary1};
+      border-radius: ${tokens.borderRadiusForRssFeedTable}
+        ${tokens.borderRadiusForRssFeedTable} 0 0;
       padding: ${dimensions.spacings.s};
     }
   }
