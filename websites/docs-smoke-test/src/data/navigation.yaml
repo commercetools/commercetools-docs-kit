@@ -31,6 +31,8 @@
       path: /components/images
     - title: Cards
       path: /components/cards
+    - title: RSS Feeds
+      path: /components/rss-feeds
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
   pages:
     - title: Page with some very long title too much for our innocent API to handle
