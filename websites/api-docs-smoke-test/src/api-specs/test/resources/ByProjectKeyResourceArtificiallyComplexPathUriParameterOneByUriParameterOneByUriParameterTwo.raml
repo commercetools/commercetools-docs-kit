@@ -17,12 +17,20 @@ uriParameters:
     description: |-
       A Path parameter in the equal-sign-pseudo-query notation
     required: true
+    examples:
+      default:
+        strict: true
+        value: "lastName = \"Doe\""
   uriParameterTwo:
     type: string
     (builtinType): string
     description: |-
       A Path parameter as a plain variable path element
     required: true
+    examples:
+      default:
+        strict: true
+        value: "plain"
 post:
   description: |-
     Updates the resource. OutOfOrderPropertiesTestType is used because it is big and long.
@@ -34,14 +42,27 @@ post:
       (builtinType): number
       description: |-
         some parameter to construct a combination of URI and query params
+      examples:
+        default:
+          strict: true
+          value: 1
     queryParameterTwo:
       required: false
       type: string
       (builtinType): string
+      examples:
+        default:
+          strict: true
+          value: "string-path"
   body:
     application/json:
       type: OutOfOrderPropertiesTestType
       (builtinType): object
+      examples:
+        default:
+          strict: true
+          value: !include ../examples/ByProjectKeyResourceArtificiallyComplexPathUriParameterOneByUriParameterOneByUriParameterTwoPost-default.json
+
   responses:
     200:
       description: |-
@@ -50,6 +71,11 @@ post:
         application/json:
           type: ArrayTestType
           (builtinType): object
+          examples:
+            default:
+              strict: true
+              value: !include ../examples/ByProjectKeyResourceArtificiallyComplexPathUriParameterOneByUriParameterOneByUriParameterTwoPost-200-default.json
+
     202:
       description: |-
         DateTestType is used because it is big and long
@@ -59,3 +85,7 @@ post:
         application/json:
           type: DateTestType
           (builtinType): object
+          examples:
+            default:
+              strict: true
+              value: !include ../examples/ByProjectKeyResourceArtificiallyComplexPathUriParameterOneByUriParameterOneByUriParameterTwoPost-202-default.json
