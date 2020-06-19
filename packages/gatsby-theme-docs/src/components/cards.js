@@ -40,12 +40,6 @@ const Cards = (props) => {
           ) {
             // this is created in mdx but it is not a card
             throwErrorMessage(child.props.mdxType);
-          } else if (
-            child.type.displayName !== 'MDXCreateElement' &&
-            child.type.name !== 'Card'
-          ) {
-            // this is not created in mdx but it is not a card
-            throwErrorMessage(child.type.name);
           }
 
           return React.cloneElement(
