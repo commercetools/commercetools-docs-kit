@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 5.0.3
+
+### Patch Changes
+
+- [`065391d`](https://github.com/commercetools/commercetools-docs-kit/commit/065391dc77e610c3202e9b9f871f16ff5565b681) [#497](https://github.com/commercetools/commercetools-docs-kit/pull/497) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: rss feeds component
+
 ## 5.0.2
 
 ### Patch Changes

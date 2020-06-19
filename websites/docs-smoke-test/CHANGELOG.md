@@ -1,5 +1,21 @@
 # @commercetools-website/docs-smoke-test
 
+## 3.1.5
+
+### Patch Changes
+
+- [`065391d`](https://github.com/commercetools/commercetools-docs-kit/commit/065391dc77e610c3202e9b9f871f16ff5565b681) [#497](https://github.com/commercetools/commercetools-docs-kit/pull/497) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: rss feeds component
+
+* [`2b2953e`](https://github.com/commercetools/commercetools-docs-kit/commit/2b2953eeceded2ea5c27ef0c35ff71bffc5c6f85) [#493](https://github.com/commercetools/commercetools-docs-kit/pull/493) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: card with image
+
+  This enables authors to include an image in a card.
+
+* Updated dependencies [[`065391d`](https://github.com/commercetools/commercetools-docs-kit/commit/065391dc77e610c3202e9b9f871f16ff5565b681), [`a1674bd`](https://github.com/commercetools/commercetools-docs-kit/commit/a1674bd294018c8768248826aacd68e708eb882a), [`b6b58e0`](https://github.com/commercetools/commercetools-docs-kit/commit/b6b58e0ec07aa7f877c0037a312c47b34d4b1e51)]:
+  - @commercetools-docs/ui-kit@5.0.3
+  - @commercetools-docs/gatsby-theme-docs@5.0.3
+  - @commercetools-docs/gatsby-theme-code-examples@5.0.3
+  - @commercetools-docs/gatsby-theme-constants@5.0.3
+
 ## 3.1.4
 
 ### Patch Changes
