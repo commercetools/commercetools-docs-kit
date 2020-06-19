@@ -25,6 +25,10 @@ get:
       (builtinType): boolean
       description: |-
         Whether to apply fuzzy search on the text to analyze.
+      examples:
+        default:
+          strict: true
+          value: true
     fuzzyLevel:
       required: false
       format: float
@@ -33,24 +37,44 @@ get:
       description: |-
         Provide explicitly the fuzzy level desired if fuzzy is enabled. This value can not be higher than the one
         chosen by the platform by default.
+      examples:
+        default:
+          strict: true
+          value: 7
     staged:
       required: false
       type: boolean
       (builtinType): boolean
       description: |-
         Whether to query for the current or staged projections.
+      examples:
+        default:
+          strict: true
+          value: true
     filter:
       required: false
       type: string
       (builtinType): string
+      examples:
+        default:
+          strict: true
+          value: "bodyMassIndex"
     filter.facets:
       required: false
       type: string
       (builtinType): string
+      examples:
+        default:
+          strict: true
+          value: "weight,height"
     filter.query:
       required: false
       type: string
       (builtinType): string
+      examples:
+        default:
+          strict: true
+          value: "lastName = Doe"
     facet:
       required: false
       type: string
@@ -59,3 +83,7 @@ get:
       required: false
       type: string
       (builtinType): string
+      examples:
+        default:
+          strict: true
+          value: "en"

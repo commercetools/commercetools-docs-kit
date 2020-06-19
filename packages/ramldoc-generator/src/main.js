@@ -33,7 +33,7 @@ function generateRamlIfSpecPath(options) {
   );
 
   shell.exec(
-    `java -jar ${jarFile} generate ${options.src} -o ${resolvedDestinationPath}/${options.name} -t ramldoc`
+    `java -jar ${jarFile} generate ${options.src} -o ${resolvedDestinationPath}/${options.name} -t RAML_DOC`
   );
 }
 

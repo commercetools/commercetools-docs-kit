@@ -21,6 +21,11 @@ post:
     application/json:
       type: ExampleResourceUpdate
       (builtinType): object
+      examples:
+        default:
+          strict: true
+          value: !include ../examples/ByProjectKeyResourceByIdPost-default.json
+
 get:
   securedBy:
   - oauth_2_0:
@@ -37,18 +42,31 @@ get:
       (builtinType): string
       description: |-
         This is a query parameter.
+      examples:
+        default:
+          strict: true
+          value: "optional"
     secondOptionalQueryParameter:
       required: false
       type: string
       (builtinType): string
       description: |-
         This is another query parameter.
+      examples:
+        default:
+          strict: true
+          value: "second optional"
   responses:
     200:
       body:
         application/json:
           type: ObjectTestType
           (builtinType): object
+          examples:
+            default:
+              strict: true
+              value: !include ../examples/ByProjectKeyResourceByIdGet-200-default.json
+
 delete:
   securedBy:
   - oauth_2_0:
@@ -65,3 +83,7 @@ delete:
         application/json:
           type: ObjectTestType
           (builtinType): object
+          examples:
+            default:
+              strict: true
+              value: !include ../examples/ByProjectKeyResourceByIdDelete-200-default.json
