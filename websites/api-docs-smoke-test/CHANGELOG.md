@@ -1,5 +1,17 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 3.0.9
+
+### Patch Changes
+
+- [`b5a1f85`](https://github.com/commercetools/commercetools-docs-kit/commit/b5a1f85a90bc0fba77c0915bb401d3249305473b) [#507](https://github.com/commercetools/commercetools-docs-kit/pull/507) Thanks [@davifantasia](https://github.com/davifantasia)! - Update raml doc generator
+
+  This change is in response to the latest version (1.0.0-20200617122809) of [rmf-codegen](https://github.com/commercetools/rmf-codegen). [rmf-codegen](https://github.com/commercetools/rmf-codegen) is a dependency of [ramldoc-generator](https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/ramldoc-generator).
+
+- Updated dependencies [[`a1674bd`](https://github.com/commercetools/commercetools-docs-kit/commit/a1674bd294018c8768248826aacd68e708eb882a), [`b6b58e0`](https://github.com/commercetools/commercetools-docs-kit/commit/b6b58e0ec07aa7f877c0037a312c47b34d4b1e51)]:
+  - @commercetools-docs/gatsby-theme-docs@5.0.3
+  - @commercetools-docs/gatsby-theme-api-docs@5.0.3
+
 ## 3.0.8
 
 ### Patch Changes
