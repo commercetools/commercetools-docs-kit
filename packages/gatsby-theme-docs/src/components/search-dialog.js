@@ -11,7 +11,6 @@ const searchInputId = 'search-bar';
 
 const centeredContainerStyle = css`
   width: 100%;
-  max-width: 100vw;
   display: block;
   max-width: ${designSystem.dimensions.widths.pageContent};
   margin: 0 auto;
