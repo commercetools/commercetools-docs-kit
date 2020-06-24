@@ -9,7 +9,15 @@ const AlgoliaSearch = React.lazy(() => import('./algolia-search'));
 
 const searchInputId = 'search-bar';
 
-const Container = styled.div`
+const centeredContainerStyle = css`
+  width: 100%;
+  max-width: 100vw;
+  display: block;
+  max-width: ${designSystem.dimensions.widths.pageContent};
+  margin: 0 auto;
+`;
+
+const containerStyle = css`
   width: 100%;
   max-width: 100vw;
   display: block;
@@ -125,7 +133,7 @@ const SearchDialog = (props) => {
 
   return (
     <>
-      <Container>
+      <div css={props.centered ? centeredContainerStyle : containerStyle}>
         <RightBlank />
         <Center>
           <Content
@@ -146,12 +154,13 @@ const SearchDialog = (props) => {
             </React.Suspense>
           </Content>
         </Center>
-      </Container>
+      </div>
     </>
   );
 };
 SearchDialog.propTypes = {
   onClose: PropTypes.func.isRequired,
+  centered: PropTypes.bool,
 };
 
 export default SearchDialog;
