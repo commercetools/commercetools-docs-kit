@@ -188,7 +188,10 @@ const LayoutHeader = (props) => (
       <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
         {props.isSearchDialogOpen ? (
           <Overlay position="absolute" onClick={props.closeSearchDialog}>
-            <SearchDialog onClose={props.closeSearchDialog} />
+            <SearchDialog
+              centered={props.centeredSearchDialog}
+              onClose={props.closeSearchDialog}
+            />
           </Overlay>
         ) : (
           <>
@@ -226,6 +229,7 @@ LayoutHeader.propTypes = {
   isTopMenuOpen: PropTypes.bool.isRequired,
   toggleTopMenu: PropTypes.func.isRequired,
   closeTopMenu: PropTypes.func.isRequired,
+  centeredSearchDialog: PropTypes.bool,
 };
 
 export default LayoutHeader;
