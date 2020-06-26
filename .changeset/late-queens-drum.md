@@ -1,6 +1,5 @@
 ---
-"@commercetools-docs/ui-kit": patch
-"@commercetools-website/docs-smoke-test": patch
+'@commercetools-docs/ui-kit': patch
 ---
 
 Add custom title capability to rss feeds
