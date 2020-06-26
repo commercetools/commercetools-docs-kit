@@ -90,8 +90,8 @@ const Globals = () => (
       ul,
       ol {
         list-style-position: outside;
-        padding-inline-start: 0px;
-        -webkit-padding-start: 0px;
+        padding-inline-start: 0;
+        -webkit-padding-start: 0;
       }
     `}
   />
