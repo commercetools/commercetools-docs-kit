@@ -87,6 +87,12 @@ const Globals = () => (
         line-height: 0;
         position: relative;
       }
+      ul,
+      ol {
+        list-style-position: outside;
+        padding-inline-start: 0px;
+        -webkit-padding-start: 0px;
+      }
     `}
   />
 );

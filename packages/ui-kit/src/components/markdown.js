@@ -79,7 +79,7 @@ const Blockquote = styled.blockquote`
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
 const Ul = styled.ul`
-  padding-left: ${dimensions.spacings.xl};
+  padding-left: ${dimensions.spacings.l};
   list-style-type: disc;
   > * + * {
     margin-top: ${dimensions.spacings.s};
@@ -275,10 +275,6 @@ const TypographyPage = styled.div`
 
 const TypographyContainer = styled.div`
   ${containerStyles};
-  > ul,
-  li {
-    padding-inline-start: 1.5rem;
-  }
 `;
 
 /* eslint-disable react/display-name,react/prop-types */
