@@ -77,7 +77,7 @@ const RssFeeds = (props) => {
         <Table key={data.title}>
           <thead>
             <tr>
-              <th colSpan="2">{data.title}</th>
+              <th colSpan="2">{props.title ? props.title : data.title}</th>
             </tr>
           </thead>
           <tbody>
@@ -105,6 +105,7 @@ const RssFeeds = (props) => {
 
 RssFeeds.propTypes = {
   url: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default RssFeeds;
