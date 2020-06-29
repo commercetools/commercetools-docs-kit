@@ -3,7 +3,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 
 const PageContentInset = styled.div`
   max-width: ${(props) =>
-    props.maxWidth || designSystem.dimensions.widths.pageContentWide};
+    props.maxWidth || designSystem.dimensions.widths.pageContentWideMax};
   section > * {
     max-width: ${(props) =>
       props.maxWidth || designSystem.dimensions.widths.pageContent};

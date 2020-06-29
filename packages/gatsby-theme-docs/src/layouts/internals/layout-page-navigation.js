@@ -34,13 +34,10 @@ const GridContainer = styled.div`
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
     grid-area: page-navigation;
-    width: ${designSystem.dimensions.widths.pageNavigation};
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    width: ${designSystem.dimensions.widths.pageNavigationSmall};
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
 

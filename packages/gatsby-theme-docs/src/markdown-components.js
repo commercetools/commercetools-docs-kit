@@ -2,9 +2,13 @@ import {
   ContentNotifications,
   Markdown,
   Subtitle,
+  sideBySideContainerStyle,
 } from '@commercetools-docs/ui-kit';
+import styled from '@emotion/styled';
 import { Card, Cards, Link, BetaFlag as Beta, Anchor } from './components';
 import placeholderMarkdownComponents from './overrides/markdown-components';
+
+const SideBySide = styled.div(sideBySideContainerStyle);
 
 // See https://mdxjs.com/getting-started#table-of-components
 const components = {
@@ -50,6 +54,7 @@ const components = {
   Anchor,
   Card,
   Cards,
+  SideBySide,
 
   // Custom React components that can be injected from each website
   // See ../overrides/README.md
