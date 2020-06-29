@@ -16,6 +16,7 @@ const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 const isMatching = (a, b) => trimTrailingSlash(a) === trimTrailingSlash(b);
 
 const Container = styled.nav`
+  max-width: ${designSystem.dimensions.widths.pageContent};
   display: grid;
   grid-gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;

@@ -3,4 +3,60 @@ title: ArrayTestType
 description: Test types
 ---
 
+<Subtitle>This page serves to test the ArrayTestType rendering but also to test the responsive behavior in "largeDesktop" responsive sizes. It should be moved to an own smoke test to not mix topics once this moves out of a "Work in Progress" State. </Subtitle>
+
+# Content
+
+## Test Subsection Title
+
+Lorem ipsum dolor sit amet, everti feugiat gloriatur sed et, an omnes saepe intellegat vix. Ei aperiam postulant mea, primis omnesque voluptatibus ad nec. Vim ea nobis tation, pro putent discere pertinacia eu, ex quo gubergren referrentur. Nam in graeco periculis, qui at conceptam intellegat. Ea purto natum accusam sed. Has ne partem adversarium theophrastus, sed tale eirmod ad, eum in malis ignota nusquam.
+
+Id quo virtute epicurei phaedrum. No volumus atomorum sit, sonet sensibus ne quo. Tale porro cu qui, ridens option praesent ius ei, nam brute iracundia cu. Aeque soluta necessitatibus te quo, cu vel aperiri euismod delectus. Eu quod invenire mnesarchum sed, his ne decore mollis audire, sit ea aeque zril doctus.
+
+Possim pericula deterruisset ius cu. Ea ius nibh primis, vel ex tota nostrum perpetua, ea has veniam voluptaria. Sit vide praesent no, error epicurei usu ea. Accusata mnesarchum cu sea, ut quando mollis recusabo per, nec cu vero mutat. Eros petentium nec ut, vix ne velit novum delenit, ea harum dolorem cum.
+
+Ne porro cetero salutatus mea, his et munere eleifend praesent. Vis eu dolore tritani appetere. Habeo mutat oporteat ius ad, ei ipsum consequat has. Mea ex aperiri legimus. No possit petentium vix, id vix invidunt moderatius. Saepe tamquam fabellas vis ad.
+
+Dolor saepe dolorem est eu, mea movet elitr voluptaria no. Duo posse ornatus adipiscing te, et odio molestie usu. Ea cibo nonumes eum, legimus vituperata ex per. Vide incorrupte liberavisse mei eu. Illum maiestatis definitionem mea cu, cu quo dicam graeco.
+
+## Tables are generally allowed to go wide
+
+Tables with data examples are often a problem anyways and their readability gets better and not worse when they get more space:
+
+|Column A | Column B longer title | Column C | Column B | Column C Longer title | Column B | Column C | Column B | Column C|
+|---------|----------|---------|----------|---------|----------|---------|----------|---------|
+|A1 | B1 | C1| B1 | C1| B1 | C1| B1 | C1|
+|A2 | B2 | C2 has a description (special case)| B2 | C2| B2 | C2| B2 is simply long | C2|
+|A3 | B3 | C3| B2 | C2| B2 | C2 is a special case too | B2 | C2|
+
+# API Representations
+
+## ArrayTestType
+
 <ApiType apiKey="test" type="ArrayTestType" />
+
+## Manual Side By Side Content
+
+<SideBySide>
+
+The `<SideBySide>` component allows wrapping two arbitrary pieces of markdown or MDX block-level
+contents to allow the wide layout to put the next to each other if the space allows. It's for "Pairs" of
+content that directly belong to each other. If multiple blocks are intended for this "left" part it needs to be wrapped
+in a `<div>` which is not nice but at least works.
+
+```md
+<SideBySide>
+
+Block one - don't forget the blank lines!
+
+Blick two - don't forget the blank lines!
+
+</SideBySide>
+```
+
+</SideBySide>
+
+## The Same type again to test the layout
+
+<ApiType apiKey="test" type="ArrayTestType" />
+
