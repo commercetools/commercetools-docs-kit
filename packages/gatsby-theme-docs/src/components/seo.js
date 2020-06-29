@@ -64,6 +64,10 @@ const SEO = (props) => {
       <meta charSet="utf-8" />
       <html lang={props.lang} amp />
       <title>{props.title}</title>
+      <link
+        rel="canonical"
+        href={`https://${siteData.siteMetadata.productionHostname}${siteData.pathPrefix}${props.slug}`}
+      />
       {metaTags.map((tag) => (
         <meta key={tag.name || tag.property} {...tag} />
       ))}
@@ -84,6 +88,7 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default SEO;

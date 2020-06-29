@@ -29,6 +29,7 @@ const ReleaseNotesListTemplate = (props) => {
             excludeFromSearchIndex={
               props.data.contentPage.excludeFromSearchIndex
             }
+            slug={props.pageContext.slug}
           />
           <MDXProvider components={markdownComponents}>
             <div>

@@ -28,6 +28,7 @@ const ReleaseNotesDetailTemplate = (props) => (
             excludeFromSearchIndex={
               props.data.releaseNotePage.excludeFromSearchIndex
             }
+            slug={props.pageContext.slug}
           />
           <div>
             <LayoutReleaseNoteBody {...props.data.releaseNotePage}>

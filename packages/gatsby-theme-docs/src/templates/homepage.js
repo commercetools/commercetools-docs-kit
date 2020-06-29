@@ -22,6 +22,7 @@ const HomepageTemplate = (props) => (
             excludeFromSearchIndex={
               props.data.contentPage.excludeFromSearchIndex
             }
+            slug={props.pageContext.slug}
           />
           {/* This wrapper div is important to ensure the vertical space */}
           <div>
