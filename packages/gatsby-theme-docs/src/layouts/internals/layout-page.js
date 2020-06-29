@@ -38,7 +38,7 @@ const LayoutPage = styled.div`
     grid:
       [row1-start] 'page-header page-header-side' auto [row1-end]
       [row2-start] 'page-content page-navigation' 1fr [row2-end]
-      / ${designSystem.dimensions.widths.pageContentWithMargins}
+      / ${designSystem.dimensions.widths.pageContentWideWithMargins}
       ${designSystem.dimensions.widths.pageNavigation};
   }
 `;

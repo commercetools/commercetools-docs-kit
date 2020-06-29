@@ -3,6 +3,7 @@ import { customProperties } from '@commercetools-uikit/design-system';
 const rootFontSizeNumber = 16;
 const pageWidth = '770px';
 const pageWidthSmall = '592px';
+const asideColumnWidth = pageWidthSmall; // THIS IS JUST SOME VALUE TO TRY OUT
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
 
@@ -129,9 +130,12 @@ export const dimensions = {
   widths: {
     pageContent: pageWidth,
     pageContentSmall: pageWidthSmall,
+    pageContentWide: `calc(${pageWidthSmall} + ${asideColumnWidth})`,
     pageContentWithMargins: `calc(${pageWidth} + 32px * 2)`,
     pageContentSmallWithMargins: `calc(${pageWidthSmall} + 16px * 2)`,
+    pageContentWideWithMargins: `calc(${pageWidthSmall} + ${asideColumnWidth} + 32px * 2)`,
     pageContentWithMarginsAndPageNavigation: `calc(${pageWidth} + 32px * 2 + ${navbarWidth})`,
+    pageContentWideWithMarginsAndPageNavigation: `calc(${pageWidthSmall} + ${asideColumnWidth} + 32px * 2 + ${navbarWidth})`,
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',

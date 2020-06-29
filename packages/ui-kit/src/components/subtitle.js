@@ -4,6 +4,7 @@ import { TypographyContainer } from './markdown';
 
 const Subtitle = styled(TypographyContainer)`
   font-size: ${typography.fontSizes.h3};
+  max-width: 100% !important;
 `;
 
 export default Subtitle;
