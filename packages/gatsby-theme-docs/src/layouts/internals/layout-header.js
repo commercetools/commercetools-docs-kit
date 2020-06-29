@@ -34,8 +34,8 @@ const Container = styled.header`
       [row1-start] 'header-content header-blank' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       1fr;
   }
@@ -44,8 +44,8 @@ const Container = styled.header`
       [row1-start] 'header-content header-blank' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
@@ -54,8 +54,8 @@ const Container = styled.header`
       [row1-start] 'header-content header-blank' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
@@ -63,7 +63,7 @@ const Container = styled.header`
     grid:
       [row1-start] 'header-content header-blank' ${designSystem.dimensions
         .heights.header} [row1-end]
-      / ${designSystem.dimensions.widths.pageContentWithMargings}
+      / ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
 `;

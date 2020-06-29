@@ -9,8 +9,8 @@ const LayoutPage = styled.div`
       [row1-start] 'page-header page-header-side' auto [row1-end]
       [row2-start] 'page-content page-navigation' 1fr [row2-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       0;
   }
@@ -19,8 +19,8 @@ const LayoutPage = styled.div`
       [row1-start] 'page-header page-header-side' auto [row1-end]
       [row2-start] 'page-content page-navigation' 1fr [row2-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       ${designSystem.dimensions.widths.pageNavigation};
   }
@@ -29,8 +29,8 @@ const LayoutPage = styled.div`
       [row1-start] 'page-header page-header-side' auto [row1-end]
       [row2-start] 'page-content page-navigation' 1fr [row2-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       ${designSystem.dimensions.widths.pageNavigationSmall};
   }
@@ -38,7 +38,7 @@ const LayoutPage = styled.div`
     grid:
       [row1-start] 'page-header page-header-side' auto [row1-end]
       [row2-start] 'page-content page-navigation' 1fr [row2-end]
-      / ${designSystem.dimensions.widths.pageContentWithMargings}
+      / ${designSystem.dimensions.widths.pageContentWithMargins}
       ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
