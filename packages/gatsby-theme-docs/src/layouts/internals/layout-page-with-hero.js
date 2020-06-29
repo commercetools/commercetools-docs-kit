@@ -48,17 +48,17 @@ const ContentWrapper = styled.div`
     grid:
       [row1-start] 'page-content' 1fr [row1-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       );
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
       [row1-start] 'page-content' 1fr [row1-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths
-          .pageContentWithMargingsAndPageNavigation}
+          .pageContentWithMarginsAndPageNavigation}
       );
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
@@ -66,7 +66,7 @@ const ContentWrapper = styled.div`
     grid:
       [row1-start] 'page-content' 1fr [row1-end]
       / ${designSystem
-        .dimensions.widths.pageContentWithMargingsAndPageNavigation};
+        .dimensions.widths.pageContentWithMarginsAndPageNavigation};
   }
 `;
 
