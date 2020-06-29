@@ -79,7 +79,7 @@ const Blockquote = styled.blockquote`
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
 const Ul = styled.ul`
-  padding-left: ${dimensions.spacings.l};
+  padding-left: ${dimensions.spacings.xl};
   list-style-type: disc;
   > * + * {
     margin-top: ${dimensions.spacings.s};
