@@ -35,10 +35,6 @@ const GridContainer = styled.div`
     display: block;
     grid-area: page-navigation;
   }
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-  }
 `;
 
 const stickyContainerCss = css({
