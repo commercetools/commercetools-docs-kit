@@ -9,11 +9,11 @@ const createTestPluginOptions = () => ({
   cleanWhitespace: true,
   removeMdxCompilationArtifacts: true,
   shouldIndexNode: () => true,
-  // This whitelist is an example of a blacklist that can be used for
+  // This list is an example of a block list that can be used for
   // thorough parsing of a component tree. `p` and `span` are excluded
   // due to being generally insignificant, and `MDXLayout` is excluded
   // because it is always the root of the primary component tree
-  tagWhitelist: [/^(?!(?:MDXLayout)|(?:p)|(?:span)).*$/],
+  tagList: [/^(?!(?:MDXLayout)|(?:p)|(?:span)).*$/],
 });
 
 async function introspectMdx(
