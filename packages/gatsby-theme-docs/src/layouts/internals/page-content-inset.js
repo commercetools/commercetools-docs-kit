@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 
 const PageContentInset = styled.div`
   max-width: ${(props) =>
@@ -7,6 +7,10 @@ const PageContentInset = styled.div`
   section > * {
     max-width: ${(props) =>
       props.maxWidth || designSystem.dimensions.widths.pageContent};
+  }
+  section > .full-width-content,
+  section > ${Markdown.H2}, section > ${Markdown.Table} {
+    max-width: unset;
   }
   padding: ${designSystem.dimensions.spacings.m}
     ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
