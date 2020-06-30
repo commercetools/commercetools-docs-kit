@@ -59,7 +59,7 @@ The "container" styles have to be applied to containers that render markdown ins
 visual box like a blockquote, notification box, card, or Subtitle.
 Heading margins are not set here because headings can and should not be used inside such containers.
 */
-const containerStyles = () => css`
+const typographyContainerStyle = () => css`
   > * + * {
     margin-top: ${dimensions.spacings.m};
   }
@@ -69,7 +69,7 @@ const ThematicBreak = styled.hr`
   display: none;
 `;
 const Blockquote = styled.blockquote`
-  ${containerStyles};
+  ${typographyContainerStyle};
   background-color: ${colors.light.surfaceQuote};
   border-left: 1px solid ${colors.light.borderHighlight};
   border-radius: 0 ${tokens.borderRadiusForBlockquote}
@@ -92,7 +92,7 @@ const Ol = styled.ol`
   }
 `;
 const Li = styled.li`
-  ${containerStyles};
+  ${typographyContainerStyle};
   line-height: 1.46;
 
   > ul,
@@ -112,7 +112,7 @@ const Dt = styled.dt`
   color: ${colors.light.textSecondary};
 `;
 const Dd = styled.dd`
-  ${containerStyles}
+  ${typographyContainerStyle}
   padding: 0 0 0 ${dimensions.spacings.l};
 
   > * + * {
@@ -184,7 +184,7 @@ const TableRow = styled.tr`
   }
 `;
 const TableCell = styled.td`
-  ${containerStyles};
+  ${typographyContainerStyle};
   border-bottom: 1px solid ${colors.light.borderPrimary};
   font-size: ${typography.fontSizes.small};
   padding: ${dimensions.spacings.s};
@@ -204,7 +204,7 @@ const TableCell = styled.td`
   }
 `;
 const TableHeader = styled.th`
-  ${containerStyles};
+  ${typographyContainerStyle};
   font-size: ${typography.fontSizes.small};
   padding: ${dimensions.spacings.s};
   text-align: left;
@@ -274,7 +274,7 @@ const TypographyPage = styled.div`
 `;
 
 const TypographyContainer = styled.div`
-  ${containerStyles};
+  ${typographyContainerStyle};
 `;
 
 /* eslint-disable react/display-name,react/prop-types */
@@ -311,6 +311,7 @@ const withAnchorLink = (Component) => (props) => {
 export {
   TypographyPage,
   TypographyContainer,
+  typographyContainerStyle,
   Paragraph,
   H1,
   H2,
