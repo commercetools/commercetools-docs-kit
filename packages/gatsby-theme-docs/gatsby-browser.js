@@ -11,7 +11,7 @@ import { CacheProvider } from '@emotion/core';
 import { docsCache } from './utils/create-emotion-cache';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
-const commitSha = process.env.GATSBY_NOW_GITHUB_COMMIT_SHA;
+const commitSha = process.env.GATSBY_VERCEL_GITHUB_COMMIT_SHA;
 
 const injectScript = (url, attributes = {}, onLoad) => {
   const script = document.createElement('script');
