@@ -80,6 +80,7 @@ const Blockquote = styled.blockquote`
 `;
 const Ul = styled.ul`
   padding-left: ${dimensions.spacings.xl};
+  list-style-type: disc;
   > * + * {
     margin-top: ${dimensions.spacings.s};
   }
@@ -97,6 +98,9 @@ const Li = styled.li`
   > ul,
   > ol {
     margin: ${dimensions.spacings.s} 0 ${dimensions.spacings.m};
+  }
+  > ul {
+    list-style-type: circle;
   }
 `;
 const Dl = styled.dl`
