@@ -20,7 +20,6 @@ module.exports = {
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants',
       ],
-      enableCanonicalUrls: true,
     }),
   ],
 };
