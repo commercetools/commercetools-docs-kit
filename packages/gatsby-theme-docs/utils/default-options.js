@@ -10,6 +10,7 @@ const defaultOptions = {
   additionalPrismLanguages: [],
   overrideDefaultConfigurationData: [],
   addOns: [],
+  enableCanonicalUrls: false,
 };
 
 module.exports = defaultOptions;

@@ -15,6 +15,7 @@ proxyEnvironmentVariables.forEach((envName) => {
   process.env[`GATSBY_${envName}`] = process.env[envName];
 });
 
+const productionHostname = 'docs.commercetools.com';
 const requiredOptions = ['websiteKey'];
 const validateThemeOptions = (options) => {
   requiredOptions.forEach((option) => {
@@ -31,7 +32,7 @@ module.exports = (themeOptions = {}) => {
   return {
     siteMetadata: {
       author: 'commercetools',
-      productionHostname: 'docs.commercetools.com',
+      productionHostname,
       betaLink: null,
     },
     plugins: [
@@ -168,6 +169,12 @@ module.exports = (themeOptions = {}) => {
        */
       'gatsby-plugin-sharp',
       'gatsby-plugin-react-helmet',
+      pluginOptions.enableCanonicalUrls && {
+        resolve: 'gatsby-plugin-react-helmet-canonical-urls',
+        options: {
+          siteUrl: `https://${productionHostname}`,
+        },
+      },
       'gatsby-plugin-emotion',
       {
         resolve: 'gatsby-plugin-prefetch-google-fonts',
