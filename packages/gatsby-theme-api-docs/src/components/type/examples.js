@@ -25,7 +25,7 @@ const Examples = ({ examples }) => {
 
   function extractExampleTitle(example) {
     if (example.displayName) return example.displayName;
-    if (example.name) return example.name;
+    if (example.name) return example.name === 'default' ? '' : example.name;
     return '';
   }
 };
