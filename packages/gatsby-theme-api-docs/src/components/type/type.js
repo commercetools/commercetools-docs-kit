@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../utils/ctp-urn';
 import { useApiTypes } from '../../hooks/use-api-types';
@@ -26,12 +25,8 @@ const ApiType = (props) => {
   const apiTypeSubTypes = filterOutApiTypeSubtypes(matchedApiType, apiTypes);
   const urn = generateTypeURN(matchedApiType);
 
-  const typeCss = css`
-    max-width: 100% !important;
-  `;
-
   return (
-    <div id={urn} css={typeCss}>
+    <div id={urn} className="full-width-content">
       {matchedApiType.oneOf ? (
         <ChildrenUnionLike
           apiType={matchedApiType}

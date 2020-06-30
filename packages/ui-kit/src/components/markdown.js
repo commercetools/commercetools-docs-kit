@@ -31,7 +31,6 @@ const H2 = styled.h2`
   font-weight: ${typography.fontWeights.bold};
   border-bottom: 1px solid ${colors.light.borderPrimary};
   padding-bottom: ${dimensions.spacings.s};
-  max-width: 100% !important;
 `;
 const H3 = styled.h3`
   ${headerStyles};
@@ -126,7 +125,6 @@ const Table = styled.table`
   border-collapse: collapse;
   font-size: ${typography.fontSizes.body};
   margin: 0;
-  max-width: 100% !important;
   tbody {
     border-top: 2px solid ${colors.light.borderPrimary};
   }
