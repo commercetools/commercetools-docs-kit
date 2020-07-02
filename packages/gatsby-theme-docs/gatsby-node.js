@@ -257,8 +257,9 @@ exports.onCreateNode = (
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
       Boolean(pluginOptions.excludeFromSearchIndex),
     allowWideContentLayout:
-      Boolean(node.frontmatter.allowWideContentLayout) ||
-      Boolean(pluginOptions.allowWideContentLayout),
+      typeof node.frontmatter.wideLayout === 'boolean'
+        ? node.frontmatter.wideLayout
+        : Boolean(pluginOptions.allowWideContentLayout) || Boolean(),
     beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)

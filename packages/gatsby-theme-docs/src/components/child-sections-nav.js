@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { designSystem, ContentNotifications } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { usePageToc } from '../hooks/use-page-toc';
+import { usePageData } from '../hooks/use-page-data';
 
 const Container = styled.div`
   border: 1px solid ${designSystem.colors.light.borderSecondary};
@@ -72,7 +72,7 @@ SectionNavigation.propTypes = {
 
 const ChildSectionsNav = (props) => {
   const sectionToC = skipEmptyLevels(
-    findCurrentSection(props.parent, usePageToc())
+    findCurrentSection(props.parent, usePageData().tableOfContents)
   );
   const isValid = sectionToC && sectionToC.items && sectionToC.items.length > 0;
   return (

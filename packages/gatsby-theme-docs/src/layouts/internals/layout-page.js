@@ -1,9 +1,6 @@
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-// TODO allow "largeDesktop" width only if configured in the theme options.
-// Should be possible via the site metadata hook or more CSS-ish means.
-
 const LayoutPage = styled.div`
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     max-width: unset;
