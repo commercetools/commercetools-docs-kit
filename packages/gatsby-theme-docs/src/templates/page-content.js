@@ -62,6 +62,7 @@ PageContentTemplate.propTypes = {
       beta: PropTypes.bool.isRequired,
       isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
+      allowWideContentLayout: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
       tableOfContents: PropTypes.object.isRequired,
       navLevels: PropTypes.number.isRequired,
@@ -78,6 +79,7 @@ export const query = graphql`
       beta
       isGlobalBeta
       excludeFromSearchIndex
+      allowWideContentLayout
       body
       tableOfContents
       navLevels
