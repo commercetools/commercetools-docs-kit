@@ -14,4 +14,4 @@ export { default as SearchDialog } from './search-dialog';
 export { default as SearchInput } from './search-input';
 export { default as ThemeProvider } from './theme-provider';
 export { default as TopMenu } from './top-menu';
-export { default as SideBySide } from './side-by-side';
+export { SideBySide, FullWidthContainer } from './side-by-side';

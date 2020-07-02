@@ -8,8 +8,7 @@ const PageContentInset = styled.div`
     max-width: ${(props) =>
       props.maxWidth || designSystem.dimensions.widths.pageContent};
   }
-  section > .full-width-content,
-  section > ${Markdown.H2}, section > ${Markdown.Table} {
+  section > ${Markdown.H2} {
     max-width: unset;
   }
   padding: ${designSystem.dimensions.spacings.m}

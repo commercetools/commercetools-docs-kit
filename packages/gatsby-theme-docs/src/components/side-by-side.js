@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { dimensions } from '@commercetools-docs/ui-kit/src/design-system';
 import { usePageData } from '../hooks/use-page-data';
 
@@ -37,4 +38,20 @@ SideBySide.propTypes = {
   children: PropTypes.any,
 };
 
-export default SideBySide;
+const fullWidthStyle = css`
+  max-width: unset !important;
+`;
+
+const FullWidthContainer = (props) => {
+  const pageData = usePageData();
+  return (
+    <div css={pageData.allowWideContentLayout ? fullWidthStyle : null}>
+      {props.children}
+    </div>
+  );
+};
+FullWidthContainer.propTypes = {
+  children: PropTypes.any,
+};
+
+export { SideBySide, FullWidthContainer };
