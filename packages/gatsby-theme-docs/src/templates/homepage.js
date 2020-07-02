@@ -4,32 +4,37 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
+import { PageDataContext } from '../hooks/use-page-data';
 import LayoutContentHomepage from '../layouts/content-homepage';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
 const HomepageTemplate = (props) => (
   <ThemeProvider>
-    <LayoutContentHomepage
-      pageContext={props.pageContext}
-      pageData={props.data.contentPage}
-      heroBackground={props.data.heroBackground}
-    >
-      <MDXProvider components={markdownComponents}>
-        <Markdown.TypographyPage>
-          <SEO
-            title={props.pageContext.shortTitle || props.data.contentPage.title}
-            excludeFromSearchIndex={
-              props.data.contentPage.excludeFromSearchIndex
-            }
-          />
-          {/* This wrapper div is important to ensure the vertical space */}
-          <div>
-            <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-          </div>
-        </Markdown.TypographyPage>
-      </MDXProvider>
-    </LayoutContentHomepage>
+    <PageDataContext.Provider value={props.data.contentPage}>
+      <LayoutContentHomepage
+        pageContext={props.pageContext}
+        pageData={props.data.contentPage}
+        heroBackground={props.data.heroBackground}
+      >
+        <MDXProvider components={markdownComponents}>
+          <Markdown.TypographyPage>
+            <SEO
+              title={
+                props.pageContext.shortTitle || props.data.contentPage.title
+              }
+              excludeFromSearchIndex={
+                props.data.contentPage.excludeFromSearchIndex
+              }
+            />
+            {/* This wrapper div is important to ensure the vertical space */}
+            <div>
+              <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
+            </div>
+          </Markdown.TypographyPage>
+        </MDXProvider>
+      </LayoutContentHomepage>
+    </PageDataContext.Provider>
   </ThemeProvider>
 );
 
