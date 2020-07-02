@@ -44,7 +44,9 @@ const LayoutPage = styled.div`
       ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
+  ${(props) =>
+    props.allowWideContentLayout
+      ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
     grid:
       [row1-start] 'page-header page-header-side' auto [row1-end]
       [row2-start] 'page-content page-navigation' 1fr [row2-end]
@@ -53,7 +55,8 @@ const LayoutPage = styled.div`
         ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
       )
       minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
-  }
+  }`
+      : ''}
 `;
 
 export default LayoutPage;

@@ -129,6 +129,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
+        allowWideContentLayout: { type: 'Boolean!' },
         beta: { type: 'Boolean!' },
         body: {
           type: 'String!',
@@ -255,6 +256,9 @@ exports.onCreateNode = (
     excludeFromSearchIndex:
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
       Boolean(pluginOptions.excludeFromSearchIndex),
+    allowWideContentLayout:
+      Boolean(node.frontmatter.allowWideContentLayout) ||
+      Boolean(pluginOptions.allowWideContentLayout),
     beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)
