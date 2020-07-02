@@ -207,21 +207,31 @@ The theme allows to inject custom functionalities to specific parts of it. [Read
 
 ## API usage
 
-The theme additionally [exports](./index.js) some React components and functions that are useful to build custom views in your website.
+The theme additionally [exports](./index.js) some React components and functions that are useful to build custom views in your website. Two hooks allow to build components that can be placed into MDX files while still having access to all necessary data:
+
+- `usePageData` provides frontmatter values or their defaults and other page-level metadata like the table of contents.
+- `useSiteData` provides site wide metadata.
 
 ```jsx
 import {
   Markdown,
   Spacings,
   useSiteData,
+  usePageData,
 } from '@commercetools-docs/gatsby-theme-docs';
 
 const MyComponent = () => {
   const siteData = useSiteData();
+  const pageData = usePageData();
   return (
     <Spacings.Stack>
       <Markdown.H1>{siteData.siteMetadata.title}</Markdown.H1>
       <Markdown.Paragraph>{'Hello, world!'}</Markdown.Paragraph>
+      {usePageData.beta ? (
+        <Warning>Beta!</Warning>
+      ) : (
+        <Info>Generally available</Info>
+      )}
     </Spacings.Stack>
   );
 };
