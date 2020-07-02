@@ -2,6 +2,8 @@
   pages:
     - title: Large Desktop
       path: /large-desktop-layout
+    - title: Regular Desktop
+      path: /regular-desktop-layout
 - chapter-title: Types
   pages:
     - title: OutOfOrderPropertiesTestType
