@@ -1,8 +1,11 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { dimensions } from '../design-system';
+import { dimensions } from '@commercetools-docs/ui-kit/src/design-system';
+import { usePageData } from '../hooks/use-page-data';
 
 // allows the first and second child of this container to float side by side in large desktop sizes
-const SideBySide = styled.div`
+const SideBySideContainer = styled.div`
   margin-top: 0 !important; /* a stupid "important-war" with the UI kit's stack components */
   > * {
     margin-top: ${dimensions.spacings.m};
@@ -23,5 +26,15 @@ const SideBySide = styled.div`
     }
   }
 `;
+
+const SideBySide = (props) => {
+  const pageData = usePageData();
+  if (pageData.allowWideContentLayout)
+    return <SideBySideContainer>{props.children}</SideBySideContainer>;
+  return <>{props.children}</>;
+};
+SideBySide.propTypes = {
+  children: PropTypes.any,
+};
 
 export default SideBySide;

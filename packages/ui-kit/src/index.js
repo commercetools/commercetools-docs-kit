@@ -20,4 +20,3 @@ export { default as CodeBlock } from './components/code-block';
 // utils
 export { default as createStyledIcon } from './utils/create-styled-icon';
 export { default as SafeHTMLElement } from './utils/safe-html-element';
-export { default as SideBySide } from './components/side-by-side';

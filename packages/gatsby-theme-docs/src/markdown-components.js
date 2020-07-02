@@ -2,9 +2,15 @@ import {
   ContentNotifications,
   Markdown,
   Subtitle,
-  SideBySide,
 } from '@commercetools-docs/ui-kit';
-import { Card, Cards, Link, BetaFlag as Beta, Anchor } from './components';
+import {
+  Card,
+  Cards,
+  Link,
+  BetaFlag as Beta,
+  Anchor,
+  SideBySide,
+} from './components';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
