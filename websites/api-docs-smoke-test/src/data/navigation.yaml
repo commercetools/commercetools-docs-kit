@@ -22,10 +22,8 @@
       path: /types/object-test-type-draft/
     - title: AnyTestType
       path: /types/any-test-type/
-    - title: EnumTest
-      path: /types/enum-test/
-    - title: EnumPropertiesType
-      path: /types/enum-properties-type/
+    - title: Enums
+      path: /types/enums/
     - title: ArrayTestType
       path: /types/array-test-type/
     - title: UnionLikeType
