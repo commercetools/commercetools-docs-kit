@@ -254,12 +254,15 @@ exports.onCreateNode = (
     websitePrimaryColor: colorPreset.value.primaryColor,
     isGlobalBeta: Boolean(pluginOptions.beta),
     excludeFromSearchIndex:
+      // frontmatter can only exclude in an otherwise not excluded site,
+      // but it can't include in a generally excluded site
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
       Boolean(pluginOptions.excludeFromSearchIndex),
     allowWideContentLayout:
+      // frontmatter can generally override the site-wide setting
       typeof node.frontmatter.wideLayout === 'boolean'
         ? node.frontmatter.wideLayout
-        : Boolean(pluginOptions.allowWideContentLayout) || Boolean(),
+        : Boolean(pluginOptions.allowWideContentLayout),
     beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)
