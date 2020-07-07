@@ -1,11 +1,17 @@
 const path = require('path');
 
+const getTagListOption = (themeOptions) => {
+  if (!themeOptions.transformerMdx) return [];
+  return (
+    themeOptions.transformerMdx.tagList ||
+    // backwards compatibility
+    themeOptions.transformerMdx.tagWhitelist
+  );
+};
+
 module.exports = (themeOptions = {}) => {
-  // Extract tagWhitelist from theme options if specified
-  const additionalTags =
-    themeOptions.transformerMdx && themeOptions.transformerMdx.tagWhitelist
-      ? themeOptions.transformerMdx.tagWhitelist
-      : [];
+  // Extract the `tagList` from the theme options if specified
+  const additionalTags = getTagListOption(themeOptions);
   return {
     plugins: [
       {
@@ -19,7 +25,7 @@ module.exports = (themeOptions = {}) => {
         resolve: '@commercetools-docs/gatsby-transformer-mdx-introspection',
         options: {
           ...themeOptions.transformerMdx,
-          tagWhitelist: ['ApiType', 'ApiEndpoint', ...additionalTags],
+          tagList: ['ApiType', 'ApiEndpoint', ...additionalTags],
         },
       },
       {
