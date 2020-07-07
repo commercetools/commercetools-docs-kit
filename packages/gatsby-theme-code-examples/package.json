@@ -24,7 +24,7 @@
     "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "gatsby": "2.23.12",
+    "gatsby": "2.23.22",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },

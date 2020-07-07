@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@commercetools-uikit/loading-spinner": "10.21.0",
-    "@commercetools-uikit/tooltip": "10.21.0",
+    "@commercetools-uikit/tooltip": "10.23.0",
     "lodash.escape": "4.0.1",
     "lodash.throttle": "4.1.1",
     "parse5": "6.0.0",
