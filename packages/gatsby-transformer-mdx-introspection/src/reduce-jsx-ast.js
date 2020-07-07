@@ -171,7 +171,7 @@ function transformAttributes(attributes, context) {
  * @param {object} context Context object
  */
 function transformJsxElement(jsxElement, context) {
-  const { tagWhitelistLiteralSet, tagWhitelistRegex, jsx } = context;
+  const { tagListLiteralSet, tagListRegex, jsx } = context;
 
   // Keep track of any JSX elements seen outside of direct children to parse
   // and index (but not tag as children of the current element)
@@ -211,8 +211,8 @@ function transformJsxElement(jsxElement, context) {
   children = reduceChildren(children, context);
 
   const hasGatsbyNode =
-    tagWhitelistLiteralSet.has(component) ||
-    tagWhitelistRegex.some((r) => component.match(r));
+    tagListLiteralSet.has(component) ||
+    tagListRegex.some((r) => component.match(r));
   const reducedNode = {
     component,
     attributes,
@@ -283,13 +283,13 @@ function transformNode(node, context) {
 function reduceJsxAst(
   jsxAst,
   jsx,
-  { tagWhitelist, cleanWhitespace, removeMdxCompilationArtifacts }
+  { tagList, cleanWhitespace, removeMdxCompilationArtifacts }
 ) {
   const context = {
-    tagWhitelistLiteralSet: new Set(
-      tagWhitelist.filter((entry) => typeof entry === 'string')
+    tagListLiteralSet: new Set(
+      tagList.filter((entry) => typeof entry === 'string')
     ),
-    tagWhitelistRegex: tagWhitelist.filter(
+    tagListRegex: tagList.filter(
       (entry) => typeof entry === 'object' && entry instanceof RegExp
     ),
     cleanWhitespace,
