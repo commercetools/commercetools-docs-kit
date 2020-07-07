@@ -475,7 +475,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   };
 
-  // Restricting importing from `prismjs` to only the whitelisted languages,
+  // Restricting importing from `prismjs` to only the listed languages,
   // to not blow up the bundle.
   // Inspired by https://github.com/facebook/docusaurus/pull/2250
   const prismLanguages = (pluginOptions.additionalPrismLanguages || [])

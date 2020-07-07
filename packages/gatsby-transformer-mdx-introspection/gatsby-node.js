@@ -22,7 +22,7 @@ const defaultOptions = {
 // Generated node name
 const nodeName = 'ComponentInMdx';
 
-// Whether the plugin should introspect Mdx nodes. Set to false if tagWhitelist
+// Whether the plugin should introspect Mdx nodes. Set to false if tagList
 // is unset
 let pluginEnabled = true;
 
@@ -31,8 +31,14 @@ let pluginEnabled = true;
  * override default options
  * @param {object} options User-set options object
  */
-function mergeDefaults(options) {
-  return { ...defaultOptions, ...options };
+function mergeDefaults(themeOptions) {
+  const { tagWhitelist, ...options } = themeOptions;
+  return {
+    ...defaultOptions,
+    ...options,
+    // backwards compatibility
+    tagList: options.tagList || tagWhitelist,
+  };
 }
 
 /**
@@ -83,11 +89,11 @@ async function queryChildren(node, context, { filter, sort, deep, first }) {
 }
 
 exports.onPreInit = ({ reporter }, options) => {
-  const { tagWhitelist } = mergeDefaults(options);
-  if (tagWhitelist == null) {
+  const { tagList } = mergeDefaults(options);
+  if (tagList == null) {
     pluginEnabled = false;
     reporter.error(
-      `The required option 'tagWhitelist' in gatsby-transformer-mdx-introspection is unset.
+      `The required option 'tagList' in gatsby-transformer-mdx-introspection is unset.
 The plugin has been disabled and Mdx nodes will not be introspected.`
     );
   }
@@ -244,7 +250,7 @@ async function getReducedForest(cache, node, options) {
   const cacheKey = reducedCacheKey(node, {
     removeMdxCompilationArtifacts: withDefaults.removeMdxCompilationArtifacts,
     cleanWhitespace: withDefaults.cleanWhitespace,
-    tagWhitelist: withDefaults.tagWhitelist,
+    tagList: withDefaults.tagList,
   });
   const cachedForest = await cache.get(cacheKey);
   if (cachedForest) {

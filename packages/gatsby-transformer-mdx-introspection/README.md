@@ -79,11 +79,11 @@ query GetAllApiTypes {
 
 ## Options
 
-**`tagWhitelist`** [array\<string | RegExp>](**required**)
+**`tagList`** [array\<string | RegExp>](**required**)
 
-JSX components that generate Gatsby data nodes in the final output (other nodes still appear as children in `tree` and their children can generate nodes). To introspect all nodes for debugging purposes, a wildcard regular expression can be used as the only whitelist term (`[/.*/]`).
+JSX components that generate Gatsby data nodes in the final output (other nodes still appear as children in `tree` and their children can generate nodes). To introspect all nodes for debugging purposes, a wildcard regular expression can be used as the only list term (`[/.*/]`).
 
-> **Note**: most target use cases need to whitelist specific tags to inspect. This is the recommended approach to improve performance, but the whitelist configuration can be used as a blacklist, too by specifying a single regular expression with a [negative look-around](https://www.regular-expressions.info/lookaround.html).
+> **Note**: most target use cases need to allow specific tags to inspect. This is the recommended approach to improve performance, but the tag list configuration can be used as a block list too by specifying a single regular expression with a [negative look-around](https://www.regular-expressions.info/lookaround.html).
 
 **`cleanWhitespace`** [boolean] (optional, defaults to true)
 
