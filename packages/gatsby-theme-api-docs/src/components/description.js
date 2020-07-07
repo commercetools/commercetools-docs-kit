@@ -20,7 +20,7 @@ const Description = (props) => (
   </DescriptionContainer>
 );
 Description.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 export default Description;
