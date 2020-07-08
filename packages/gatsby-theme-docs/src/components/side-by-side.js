@@ -35,7 +35,7 @@ const SideBySide = (props) => {
   return <>{props.children}</>;
 };
 SideBySide.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 const fullWidthStyle = css`
@@ -51,7 +51,7 @@ const FullWidthContainer = (props) => {
   );
 };
 FullWidthContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 export { SideBySide, FullWidthContainer };
