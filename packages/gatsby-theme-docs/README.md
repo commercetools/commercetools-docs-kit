@@ -71,7 +71,7 @@ The project structure should contain at least the following files and folders:
 
   - `excludeFromSearchIndex` (_optional_): indicates that the website should not be indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute. **Default: `true`**
 
-  - `allowWideContentLayout` (_optional_): defaults all pages to allowing side-by-side content in pages. See also the `wideLayout` frontmatter and the `<SideBySide>` component.
+  - `allowWideContentLayout` (_optional_): enables all content pages to use a wider layout that gives space to side-by-side content on large viewports. See also the `wideLayout` frontmatter option and the `<SideBySide>` component on how to use it. **Default: `false`**.
 
   - `beta` (_optional_): indicates that the website should be marked as **beta**. Each page gets a beta flag, no matter if the page frontmatter has it defined or not. Furthermore, in the main navigation, the beta flag is shown near the website title and not next to each link. **Default: `false`**
 
@@ -132,7 +132,7 @@ Supported frontmatter options are:
 - `beta` (boolean): to indicate if the _beta_ info message should be displayed or not.
 - `excludeFromSearchIndex` (boolean): to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
 - `navLevels` (number): allows to reduce the depth of the on-page navigation for pages where it would get too long to fit the screen. You want to set 2 here if you need it.
-- `wideLayout` (boolean): to indicate that the page can go into a two-column content space on large viewport sizes. See the `<SideBySide>` component below for how to use the space.
+- `wideLayout` (boolean): to indicate that the page can go into a two-column content space on large viewport sizes. See the `<SideBySide>` component below for more information on how to use it. This option overrides the `allowWideContentLayout` theme option.
 
 ## Writing release notes
 
