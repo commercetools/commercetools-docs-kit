@@ -259,7 +259,7 @@ exports.onCreateNode = (
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
       Boolean(pluginOptions.excludeFromSearchIndex),
     allowWideContentLayout:
-      // frontmatter can generally override the site-wide setting
+      // // the frontmatter `wideLayout` option overrides the global `allowWideContentLayout` theme option
       typeof node.frontmatter.wideLayout === 'boolean'
         ? node.frontmatter.wideLayout
         : Boolean(pluginOptions.allowWideContentLayout),

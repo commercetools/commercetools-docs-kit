@@ -71,8 +71,9 @@ SectionNavigation.propTypes = {
 };
 
 const ChildSectionsNav = (props) => {
+  const pageData = usePageData();
   const sectionToC = skipEmptyLevels(
-    findCurrentSection(props.parent, usePageData().tableOfContents)
+    findCurrentSection(props.parent, pageData.tableOfContents)
   );
   const isValid = sectionToC && sectionToC.items && sectionToC.items.length > 0;
   return (
