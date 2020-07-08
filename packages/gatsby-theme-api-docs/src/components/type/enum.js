@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import Description from '../description';
 
-const EnumContainer = styled.div`
+const Container = styled.div`
   max-width: ${designSystem.dimensions.widths.pageContent};
 `;
 
@@ -14,7 +14,7 @@ const Enum = ({ description, values }) => {
   }
 
   return (
-    <EnumContainer>
+    <Container>
       {description ? <Description>${description}</Description> : null}
 
       {values ? (
@@ -24,7 +24,7 @@ const Enum = ({ description, values }) => {
           ))}
         </Markdown.Dl>
       ) : null}
-    </EnumContainer>
+    </Container>
   );
 };
 
