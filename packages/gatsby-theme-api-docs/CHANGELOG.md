@@ -1,5 +1,44 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 6.0.0
+
+### Minor Changes
+
+- [`411d6e6`](https://github.com/commercetools/commercetools-docs-kit/commit/411d6e62eff4a6a3804b040c17a39116333b435b) [#529](https://github.com/commercetools/commercetools-docs-kit/pull/529) Thanks [@nkuehn](https://github.com/nkuehn)! - Optional two-column content layout with side-by-side components
+
+  - `<SideBySide>` component for manual pages
+  - Side-by-side layout for API types and their examples
+  - Theme option and frontmatter to allow wide layouts
+
+  To enable this for all pages, configure the global theme option `allowWideContentLayout`.
+  Single pages can also be enabled/disabled by specifying the `wideLayout` frontmatter option.
+
+  Then, in the MDX files, wrap the containers/elements that should go side-by-side with the
+  `<SideBySide>` component:
+
+  ```jsx
+  <SideBySide>
+    This is the block on the left, or on top if the screen is not wide enough.
+    <div>
+      This goes to the right when the screen is wide enough. I can write
+      **normal** MDX content here.
+    </div>
+  </SideBySide>
+  ```
+
+### Patch Changes
+
+- [`0a61e96`](https://github.com/commercetools/commercetools-docs-kit/commit/0a61e9691ca58322107b5798cd08321df9d51a95) [#523](https://github.com/commercetools/commercetools-docs-kit/pull/523) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update all dependencies
+
+* [`1919f39`](https://github.com/commercetools/commercetools-docs-kit/commit/1919f391e824222963eca3807d9d961c3bcf9842) [#533](https://github.com/commercetools/commercetools-docs-kit/pull/533) Thanks [@emmenko](https://github.com/emmenko)! - Use non oppressive language. The `tagWhitelist` option for the `gatsby-transformer-mdx-introspection` has been deprecated in favor of `tagList`.
+
+- [`fb16ae5`](https://github.com/commercetools/commercetools-docs-kit/commit/fb16ae56a69f7ccc8761dca287590e15bc329bfc) [#535](https://github.com/commercetools/commercetools-docs-kit/pull/535) Thanks [@davifantasia](https://github.com/davifantasia)! - refactor: render enums as a definition list
+
+- Updated dependencies [[`411d6e6`](https://github.com/commercetools/commercetools-docs-kit/commit/411d6e62eff4a6a3804b040c17a39116333b435b), [`2703f63`](https://github.com/commercetools/commercetools-docs-kit/commit/2703f63ec320ea6c79bdc5608bcd240d59d7c2b3), [`0a61e96`](https://github.com/commercetools/commercetools-docs-kit/commit/0a61e9691ca58322107b5798cd08321df9d51a95), [`76db6f7`](https://github.com/commercetools/commercetools-docs-kit/commit/76db6f7d3dc67c06895259a0e01fd1d7a70f8fac), [`deb72f1`](https://github.com/commercetools/commercetools-docs-kit/commit/deb72f1a055d8bbd11bcb7e5bbdc26359044874c), [`1919f39`](https://github.com/commercetools/commercetools-docs-kit/commit/1919f391e824222963eca3807d9d961c3bcf9842), [`ca7d387`](https://github.com/commercetools/commercetools-docs-kit/commit/ca7d387ceb82edc9d296517f0e0854146b047d4f)]:
+  - @commercetools-docs/gatsby-theme-docs@6.0.0
+  - @commercetools-docs/ui-kit@6.0.0
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@3.0.3
+
 ## 5.0.3
 
 ### Patch Changes

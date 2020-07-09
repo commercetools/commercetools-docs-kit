@@ -1,5 +1,35 @@
 # @commercetools-docs/ui-kit
 
+## 6.0.0
+
+### Patch Changes
+
+- [`411d6e6`](https://github.com/commercetools/commercetools-docs-kit/commit/411d6e62eff4a6a3804b040c17a39116333b435b) [#529](https://github.com/commercetools/commercetools-docs-kit/pull/529) Thanks [@nkuehn](https://github.com/nkuehn)! - Optional two-column content layout with side-by-side components
+
+  - `<SideBySide>` component for manual pages
+  - Side-by-side layout for API types and their examples
+  - Theme option and frontmatter to allow wide layouts
+
+  To enable this for all pages, configure the global theme option `allowWideContentLayout`.
+  Single pages can also be enabled/disabled by specifying the `wideLayout` frontmatter option.
+
+  Then, in the MDX files, wrap the containers/elements that should go side-by-side with the
+  `<SideBySide>` component:
+
+  ```jsx
+  <SideBySide>
+    This is the block on the left, or on top if the screen is not wide enough.
+    <div>
+      This goes to the right when the screen is wide enough. I can write
+      **normal** MDX content here.
+    </div>
+  </SideBySide>
+  ```
+
+* [`2703f63`](https://github.com/commercetools/commercetools-docs-kit/commit/2703f63ec320ea6c79bdc5608bcd240d59d7c2b3) [#522](https://github.com/commercetools/commercetools-docs-kit/pull/522) Thanks [@davifantasia](https://github.com/davifantasia)! - Add custom title capability to rss feeds
+
+- [`76db6f7`](https://github.com/commercetools/commercetools-docs-kit/commit/76db6f7d3dc67c06895259a0e01fd1d7a70f8fac) [#521](https://github.com/commercetools/commercetools-docs-kit/pull/521) Thanks [@nkuehn](https://github.com/nkuehn)! - Define list styling when enclosed in containers
+
 ## 5.0.3
 
 ### Patch Changes
