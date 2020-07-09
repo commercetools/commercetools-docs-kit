@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { dimensions } from '@commercetools-docs/ui-kit/src/design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import { usePageData } from '../hooks/use-page-data';
 
 /**
@@ -20,23 +20,24 @@ import { usePageData } from '../hooks/use-page-data';
 const SideBySideContainer = styled.div`
   margin-top: 0 !important;
   > * {
-    margin-top: ${dimensions.spacings.m};
+    margin-top: ${designSystem.dimensions.spacings.m};
   }
 
-  @media screen and (${dimensions.viewports.largeDesktop}) {
+  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
     max-width: 100% !important;
     display: grid;
-    grid-template-columns: 1fr ${dimensions.widths.pageContentSmall};
+    grid-template-columns: 1fr ${designSystem.dimensions.widths
+        .pageContentSmall};
     grid-template-rows: auto;
-    grid-column-gap: ${dimensions.spacings.xl};
-    grid-row-gap: ${dimensions.spacings.xl};
+    grid-column-gap: ${designSystem.dimensions.spacings.xl};
+    grid-row-gap: ${designSystem.dimensions.spacings.xl};
     justify-items: stretch;
     align-items: start;
     > :only-child {
       /* If there aren't two children of a side by side it does not force it into two columns
       even though the right one is empty. Instead, it gives it the regular pageContent max width. */
       grid-column: auto / span 2;
-      max-width: ${dimensions.widths.pageContent};
+      max-width: ${designSystem.dimensions.widths.pageContent};
     }
   }
 `;
