@@ -1,5 +1,13 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 6.0.1
+
+### Patch Changes
+
+- [`1311970`](https://github.com/commercetools/commercetools-docs-kit/commit/1311970bb9e69f3646caec077146480255be165d) [#545](https://github.com/commercetools/commercetools-docs-kit/pull/545) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: improper import
+
+  Fixes build failure in sites using the latest theme
+
 ## 6.0.0
 
 ### Minor Changes
