@@ -162,7 +162,7 @@ The available JSX components are:
 - `<Error>`: a notification message with error colors
 - `<Anchor>`: inserts a custom anchor on any part of the document, can be used with headers, lists, in paragraphs, etc, it is used for navigating to specific parts of the document that are not headings. Also useful when a document has multiple headings with the same text or when heading names change and old third party links shall continue to work. Cannot override ID generation of the site generator, this adds additional named anchors and IDs have precedence.
 - `<ChildSectionsNav parent="a-section-slug" />`: a table of contents containing links to all subsections of the given parent. Use only for large numbers of child sections with _markdown level four or higher_ which are not part of the index navigation on the right side of the page. The component allows to make long pages with long lists of deep sections easier to navigate.
-- `<SideBySide>`: positions its second child block to the right of the first child on wide viewport sizes if wide layout is allowed (see theme option and frontmatter above).
+- `<SideBySide>`: use this component to wrap two content blocks that should be positioned side by side on wide viewport sizes. This feature is enabled by configuring the `allowWideContentLayout` theme option or the `wideLayout` page frontmatter option.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 

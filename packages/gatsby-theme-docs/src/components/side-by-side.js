@@ -5,12 +5,24 @@ import { css } from '@emotion/core';
 import { dimensions } from '@commercetools-docs/ui-kit/src/design-system';
 import { usePageData } from '../hooks/use-page-data';
 
-// allows the first and second child of this container to float side by side in large desktop sizes
+/**
+ * Allows the first and second child of this container to float side by side in large desktop sizes.
+ *
+ * NOTE about the `!important` override.
+ * The <SideBySide> content is sometimes an entry in the UI Kit stack (e.g. in API docs).
+ * The UI kit stack forces the top spacing and uses `!important`.
+ * However, given that the SideBySide is responsive, the second item can sometimes be
+ * to the right of the first and sometimes under it.
+ * Therefore, we need different spacing "logic" here - the UI Kit stacks and inlines are
+ * not intended for responsive content. As a consequence, without this override, the right
+ * item would not be top aligned with the left item.
+ */
 const SideBySideContainer = styled.div`
-  margin-top: 0 !important; /* a stupid "important-war" with the UI kit's stack components */
+  margin-top: 0 !important;
   > * {
     margin-top: ${dimensions.spacings.m};
   }
+
   @media screen and (${dimensions.viewports.largeDesktop}) {
     max-width: 100% !important;
     display: grid;
@@ -21,7 +33,8 @@ const SideBySideContainer = styled.div`
     justify-items: stretch;
     align-items: start;
     > :only-child {
-      /* if there aren't actually two, let the first take the space: */
+      /* If there aren't two children of a side by side it does not force it into two columns
+      even though the right one is empty. Instead, it gives it the regular pageContent max width. */
       grid-column: auto / span 2;
       max-width: ${dimensions.widths.pageContent};
     }
