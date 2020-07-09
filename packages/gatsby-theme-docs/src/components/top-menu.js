@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
@@ -29,7 +31,13 @@ const Content = styled.div`
   height: fit-content;
   /* stylelint-enable */
 `;
-const ContentGrid = styled.div`
+const centeredContainerStyle = css`
+  width: 100%;
+  display: block;
+  max-width: ${designSystem.dimensions.widths.pageContent};
+  margin: 0 auto;
+`;
+const contentGridStyle = css`
   width: 100%;
   position: relative;
   display: grid;
@@ -136,7 +144,7 @@ const ColumnTitle = styled.div`
   }
 `;
 
-const TopMenu = () => {
+const TopMenu = (props) => {
   const data = useStaticQuery(graphql`
     query GetTopMenuLinks {
       allTopMenuYaml {
@@ -169,7 +177,7 @@ const TopMenu = () => {
           event.stopPropagation();
         }}
       >
-        <ContentGrid>
+        <div css={props.centered ? centeredContainerStyle : contentGridStyle}>
           <LeftBlank />
           <Center>
             <Columns>
@@ -202,10 +210,14 @@ const TopMenu = () => {
               </SideColumn>
             </Columns>
           </Center>
-        </ContentGrid>
+        </div>
       </Content>
     </Container>
   );
+};
+
+TopMenu.propTypes = {
+  centered: PropTypes.bool,
 };
 
 export default TopMenu;
