@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
-import { values as valuesStr } from '../../utils/constants';
+import styled from '@emotion/styled';
+import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
+import Description from '../description';
+
+const Container = styled.div`
+  max-width: ${designSystem.dimensions.widths.pageContent};
+`;
 
 const Enum = ({ description, values }) => {
   if (!description && !values) {
@@ -9,15 +14,17 @@ const Enum = ({ description, values }) => {
   }
 
   return (
-    <div>
-      {description ? markdownFragmentToReact(description) : null}
+    <Container>
+      {description ? <Description>${description}</Description> : null}
 
       {values ? (
-        <p>
-          {valuesStr}: {values.join(', ')}
-        </p>
+        <Markdown.Dl>
+          {values.map((value, index) => (
+            <Markdown.Dt key={index}>{value}</Markdown.Dt>
+          ))}
+        </Markdown.Dl>
       ) : null}
-    </div>
+    </Container>
   );
 };
 

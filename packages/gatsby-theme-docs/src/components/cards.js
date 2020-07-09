@@ -9,7 +9,7 @@ import { designSystem, ContentNotifications } from '@commercetools-docs/ui-kit';
 const cardNarrowMinWidth = '242px';
 const cardRegularMinWidth = '328px';
 const cardRegularMinWidthInContentColumn = '288px';
-const CardsContainer = styled.ul`
+const Container = styled.ul`
   list-style: none;
   display: grid;
   gap: ${designSystem.dimensions.spacings.m};
@@ -30,7 +30,7 @@ const CardsContainer = styled.ul`
 const Cards = (props) => {
   try {
     return (
-      <CardsContainer {...props}>
+      <Container {...props}>
         {React.Children.map(props.children, (child) => {
           if (!React.isValidElement(child)) {
             throwErrorMessage(child);
@@ -52,7 +52,7 @@ const Cards = (props) => {
             child.props.children
           );
         })}
-      </CardsContainer>
+      </Container>
     );
   } catch (e) {
     if (process.env.NODE_ENV !== 'production') {

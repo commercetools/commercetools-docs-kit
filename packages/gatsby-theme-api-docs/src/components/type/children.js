@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { SideBySide } from '@commercetools-docs/gatsby-theme-docs';
 import Enum from './enum';
 import Properties from './properties/properties';
 import Examples from './examples';
+import Description from '../description';
 
 const Children = ({
   apiType,
@@ -11,9 +13,13 @@ const Children = ({
   renderDescriptionBelowProperties,
   propertiesTableTitle,
 }) => {
-  if (renderDescriptionBelowProperties) {
-    return (
-      <SpacingsStack scale="m">
+  return (
+    <SpacingsStack scale="m">
+      {apiType.description && !renderDescriptionBelowProperties ? (
+        <Description>{apiType.description}</Description>
+      ) : null}
+
+      <SideBySide>
         {apiType.properties ? (
           <Properties
             apiType={apiType}
@@ -22,30 +28,14 @@ const Children = ({
           />
         ) : null}
 
-        {apiType.enumeration || apiType.description ? (
-          <Enum
-            description={apiType.description}
-            values={apiType.enumeration}
-          />
-        ) : null}
-      </SpacingsStack>
-    );
-  }
+        {apiType.examples ? <Examples examples={apiType.examples} /> : null}
+      </SideBySide>
 
-  return (
-    <SpacingsStack scale="m">
-      {apiType.enumeration || apiType.description ? (
-        <Enum description={apiType.description} values={apiType.enumeration} />
+      {apiType.description && renderDescriptionBelowProperties ? (
+        <Description>{apiType.description}</Description>
       ) : null}
 
-      {apiType.properties ? (
-        <Properties
-          apiType={apiType}
-          parentDiscriminator={parentDiscriminator}
-        />
-      ) : null}
-
-      {apiType.examples ? <Examples examples={apiType.examples} /> : null}
+      {apiType.enumeration ? <Enum values={apiType.enumeration} /> : null}
     </SpacingsStack>
   );
 };

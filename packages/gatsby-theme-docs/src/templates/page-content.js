@@ -7,7 +7,7 @@ import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutContent from '../layouts/content';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
-import { PageTocContext } from '../hooks/use-page-toc';
+import { PageDataContext } from '../hooks/use-page-data';
 import ChildSectionsNav from '../components/child-sections-nav';
 
 const ContentCards = (props) => (
@@ -16,7 +16,7 @@ const ContentCards = (props) => (
 
 const PageContentTemplate = (props) => (
   <ThemeProvider>
-    <PageTocContext.Provider value={props.data.contentPage.tableOfContents}>
+    <PageDataContext.Provider value={props.data.contentPage}>
       <LayoutContent
         pageContext={props.pageContext}
         pageData={props.data.contentPage}
@@ -44,7 +44,7 @@ const PageContentTemplate = (props) => (
           </Markdown.TypographyPage>
         </MDXProvider>
       </LayoutContent>
-    </PageTocContext.Provider>
+    </PageDataContext.Provider>
   </ThemeProvider>
 );
 
@@ -62,6 +62,7 @@ PageContentTemplate.propTypes = {
       beta: PropTypes.bool.isRequired,
       isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
+      allowWideContentLayout: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
       tableOfContents: PropTypes.object.isRequired,
       navLevels: PropTypes.number.isRequired,
@@ -78,6 +79,7 @@ export const query = graphql`
       beta
       isGlobalBeta
       excludeFromSearchIndex
+      allowWideContentLayout
       body
       tableOfContents
       navLevels

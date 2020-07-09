@@ -73,7 +73,7 @@ const Title = styled.h6`
 const Body = styled.div`
   color: ${designSystem.colors.light.textPrimary};
 `;
-const ReamMoreContainer = styled.div`
+const ReadMoreContainer = styled.div`
   margin-top: auto;
 `;
 const ReadMore = styled.div`
@@ -125,7 +125,7 @@ const Card = (props) => {
           )}
           {props.children && <Body>{renderBodyContent()}</Body>}
           {props.href && props.textLink && (
-            <ReamMoreContainer>
+            <ReadMoreContainer>
               <ReadMore>
                 {props.clickable ? (
                   props.textLink
@@ -135,7 +135,7 @@ const Card = (props) => {
                   </Link>
                 )}
               </ReadMore>
-            </ReamMoreContainer>
+            </ReadMoreContainer>
           )}
         </StackContainer>
       </>

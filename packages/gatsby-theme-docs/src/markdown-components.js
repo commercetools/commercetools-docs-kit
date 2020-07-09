@@ -3,7 +3,14 @@ import {
   Markdown,
   Subtitle,
 } from '@commercetools-docs/ui-kit';
-import { Card, Cards, Link, BetaFlag as Beta, Anchor } from './components';
+import {
+  Card,
+  Cards,
+  Link,
+  BetaFlag as Beta,
+  Anchor,
+  SideBySide,
+} from './components';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
@@ -50,6 +57,7 @@ const components = {
   Anchor,
   Card,
   Cards,
+  SideBySide,
 
   // Custom React components that can be injected from each website
   // See ../overrides/README.md

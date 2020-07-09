@@ -50,8 +50,8 @@ const contentGridStyle = css`
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / ${designSystem.dimensions.spacings.xl}
       minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       1fr;
   }
@@ -60,8 +60,8 @@ const contentGridStyle = css`
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / ${designSystem.dimensions.spacings.xl}
       minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
@@ -70,8 +70,8 @@ const contentGridStyle = css`
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / ${designSystem.dimensions.widths.pageNavigationSmall}
       minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
@@ -79,7 +79,7 @@ const contentGridStyle = css`
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / ${designSystem.dimensions.widths.pageNavigation}
-      ${designSystem.dimensions.widths.pageContentWithMargings}
+      ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
 `;
