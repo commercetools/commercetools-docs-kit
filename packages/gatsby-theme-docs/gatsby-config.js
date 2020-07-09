@@ -5,12 +5,7 @@ const defaultOptions = require('./utils/default-options');
 
 // Proxy env variables needed for `gatsby-browser.js` and `gatsby-ssr.js`.
 // https://www.gatsbyjs.org/docs/environment-variables/#client-side-javascript
-const proxyEnvironmentVariables = [
-  'NODE_ENV',
-  'NOW_GITHUB_DEPLOYMENT',
-  'NOW_GITHUB_COMMIT_SHA',
-  'NOW_GITHUB_COMMIT_REF',
-];
+const proxyEnvironmentVariables = ['NODE_ENV', 'VERCEL_GITHUB_COMMIT_SHA'];
 proxyEnvironmentVariables.forEach((envName) => {
   process.env[`GATSBY_${envName}`] = process.env[envName];
 });

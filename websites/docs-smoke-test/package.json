@@ -20,7 +20,7 @@
     "@commercetools-docs/ui-kit": "5.0.3",
     "@commercetools-uikit/card": "10.21.0",
     "@commercetools-uikit/icons": "10.22.0",
-    "gatsby": "2.23.12",
-    "gatsby-cli": "2.12.52"
+    "gatsby": "2.23.22",
+    "gatsby-cli": "2.12.59"
   }
 }

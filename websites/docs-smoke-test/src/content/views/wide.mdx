@@ -1,0 +1,27 @@
+---
+title: Wide Desktop Layout
+description: Test components that can flow into two content columns
+wideLayout: true
+---
+
+# Manual Side By Side Content
+
+<SideBySide>
+
+The `<SideBySide>` component allows wrapping two arbitrary pieces of markdown or MDX block-level
+contents to allow the wide layout to put the next to each other if the space allows. It's for "Pairs" of
+content that directly belong to each other. If multiple blocks are intended for this "left" part it needs to be wrapped
+in a `<div>` which is not nice but at least works.
+
+```md
+<SideBySide>
+
+Block one - don't forget the blank lines!
+
+Blick two - don't forget the blank lines!
+
+</SideBySide>
+```
+
+</SideBySide>
+

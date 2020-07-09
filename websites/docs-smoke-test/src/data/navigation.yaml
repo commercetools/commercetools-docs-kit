@@ -18,6 +18,8 @@
       path: /views/code-examples
     - title: Custom Anchor
       path: /views/custom-anchor
+    - title: Wide Layout
+      path: /views/wide
 - chapter-title: Components
   beta: true
   pages:

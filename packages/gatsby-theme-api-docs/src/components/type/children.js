@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { SideBySide } from '@commercetools-docs/gatsby-theme-docs';
 import Description from './description';
 import Enum from './enum';
 import Properties from './properties/properties';
@@ -16,17 +17,19 @@ const Children = ({
     <SpacingsStack scale="m">
       {!renderDescriptionBelowProperties && renderDescriptionAndEnums()}
 
-      {apiType.properties && (
-        <Properties
-          apiType={apiType}
-          parentDiscriminator={parentDiscriminator}
-          title={propertiesTableTitle}
-        />
-      )}
+      <SideBySide>
+        {apiType.properties && (
+          <Properties
+            apiType={apiType}
+            parentDiscriminator={parentDiscriminator}
+            title={propertiesTableTitle}
+          />
+        )}
+
+        {apiType.examples && <Examples examples={apiType.examples} />}
+      </SideBySide>
 
       {renderDescriptionBelowProperties && renderDescriptionAndEnums()}
-
-      {apiType.examples && <Examples examples={apiType.examples} />}
     </SpacingsStack>
   );
 

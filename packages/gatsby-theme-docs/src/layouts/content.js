@@ -44,7 +44,9 @@ const LayoutContent = (props) => {
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
         <LayoutPageWrapper id="top">
-          <LayoutPage>
+          <LayoutPage
+            allowWideContentLayout={props.pageData.allowWideContentLayout}
+          >
             <LayoutPageHeader>
               {props.pageData.beta && (
                 <BetaFlag href={siteData.siteMetadata.betaLink} />
@@ -85,6 +87,7 @@ LayoutContent.propTypes = {
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
+    allowWideContentLayout: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,
     navLevels: PropTypes.number.isRequired,
   }).isRequired,

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FullWidthContainer } from '@commercetools-docs/gatsby-theme-docs';
 import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../utils/ctp-urn';
 import { useApiTypes } from '../../hooks/use-api-types';
@@ -26,7 +27,7 @@ const ApiType = (props) => {
   const urn = generateTypeURN(matchedApiType);
 
   return (
-    <div id={urn}>
+    <FullWidthContainer id={urn}>
       {matchedApiType.oneOf ? (
         <ChildrenUnionLike
           apiType={matchedApiType}
@@ -41,7 +42,7 @@ const ApiType = (props) => {
           propertiesTableTitle={props.propertiesTableTitle}
         />
       )}
-    </div>
+    </FullWidthContainer>
   );
 };
 

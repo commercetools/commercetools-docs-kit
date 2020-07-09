@@ -19,8 +19,8 @@ const ContentGrid = styled.div`
     grid:
       [row1-start] 'footer-main footer-right-blank' 1fr [row1-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       1fr;
   }
@@ -28,8 +28,8 @@ const ContentGrid = styled.div`
     grid:
       [row1-start] 'footer-main footer-right-blank' 1fr [row1-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
@@ -37,15 +37,15 @@ const ContentGrid = styled.div`
     grid:
       [row1-start] 'footer-main footer-right-blank' 1fr [row1-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
       [row1-start] 'footer-main footer-right-blank' 1fr [row1-end]
-      / ${designSystem.dimensions.widths.pageContentWithMargings}
+      / ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
 `;

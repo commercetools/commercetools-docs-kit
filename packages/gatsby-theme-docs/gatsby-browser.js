@@ -11,7 +11,7 @@ import { CacheProvider } from '@emotion/core';
 import { docsCache } from './utils/create-emotion-cache';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
-const commitSha = process.env.GATSBY_NOW_GITHUB_COMMIT_SHA;
+const commitSha = process.env.GATSBY_VERCEL_GITHUB_COMMIT_SHA;
 
 const injectScript = (url, attributes = {}, onLoad) => {
   const script = document.createElement('script');
@@ -35,7 +35,7 @@ export const onClientEntry = (
         dsn: 'https://e43538aae75e412eb16b27d8011f5a8b@sentry.io/1819068',
         release: commitSha,
         environment: pluginOptions.websiteKey,
-        whitelistUrls: ['docs.commercetools.com', 'now.sh'],
+        denyUrls: ['docs.commercetools.com', 'now.sh', 'vercel.app'],
       });
     });
   }
