@@ -1,39 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
-import Description from '../description';
+import { Markdown } from '@commercetools-docs/ui-kit';
 
-const Container = styled.div`
-  max-width: ${designSystem.dimensions.widths.pageContent};
-`;
-
-const Enum = ({ description, values }) => {
-  if (!description && !values) {
-    throw new Error('Must pass description or values props to Enum component.');
+const Enum = ({ values, enumDescriptions }) => {
+  if (!values) {
+    throw new Error(
+      'Must pass values props to Enum component --- <Enum values={<Array>} />.'
+    );
   }
 
   return (
-    <Container>
-      {description ? <Description>${description}</Description> : null}
+    <Markdown.Dl>
+      {values &&
+        values.map((value) => {
+          const description =
+            enumDescriptions &&
+            enumDescriptions.find(
+              (enumDescription) => enumDescription.name === value
+            ).description;
 
-      {values ? (
-        <Markdown.Dl>
-          {values.map((value, index) => (
-            <Markdown.Dt key={index}>{value}</Markdown.Dt>
-          ))}
-        </Markdown.Dl>
-      ) : null}
-    </Container>
+          return (
+            <React.Fragment key={value}>
+              <Markdown.Dt>{value}</Markdown.Dt>
+              <Markdown.Dd>{description}</Markdown.Dd>
+            </React.Fragment>
+          );
+        })}
+    </Markdown.Dl>
   );
 };
 
 Enum.propTypes = {
-  description: PropTypes.string,
   values: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.string,
   ]),
+  enumDescriptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired
+  ),
 };
 
 export default Enum;

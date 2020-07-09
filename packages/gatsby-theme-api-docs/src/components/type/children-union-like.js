@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import Description from './description';
 import Children from './children';
-import Description from '../description';
 
 const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
   return (
     <SpacingsStack scale="m">
-      <Description>{apiType.description}</Description>
+      {apiType.description && <Description>{apiType.description}</Description>}
 
       <SpacingsStack scale="m">
         {apiTypeSubTypes.map((subType) => (
