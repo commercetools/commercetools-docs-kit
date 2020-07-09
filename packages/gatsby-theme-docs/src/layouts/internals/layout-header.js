@@ -180,7 +180,7 @@ const LayoutHeader = (props) => (
               top={designSystem.dimensions.heights.header}
               onClick={props.closeTopMenu}
             >
-              <TopMenu />
+              <TopMenu centered={props.centeredTopMenu} />
             </Overlay>
           ) : null}
         </DocumentationSwitcherContainer>
@@ -229,6 +229,7 @@ LayoutHeader.propTypes = {
   isTopMenuOpen: PropTypes.bool.isRequired,
   toggleTopMenu: PropTypes.func.isRequired,
   closeTopMenu: PropTypes.func.isRequired,
+  centeredTopMenu: PropTypes.bool,
   centeredSearchDialog: PropTypes.bool,
 };
 
