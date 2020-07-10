@@ -56,11 +56,14 @@ const fullWidthStyle = css`
   max-width: unset !important;
 `;
 
-const FullWidthContainer = (props) => {
+const FullWidthContainer = ({ children, ...others }) => {
   const pageData = usePageData();
   return (
-    <div css={pageData.allowWideContentLayout ? fullWidthStyle : null}>
-      {props.children}
+    <div
+      css={pageData.allowWideContentLayout ? fullWidthStyle : null}
+      {...others}
+    >
+      {children}
     </div>
   );
 };
