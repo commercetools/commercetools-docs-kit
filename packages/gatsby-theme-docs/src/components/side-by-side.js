@@ -59,9 +59,10 @@ const fullWidthStyle = css`
 const FullWidthContainer = (props) => {
   const pageData = usePageData();
   return (
-    <div css={pageData.allowWideContentLayout ? fullWidthStyle : null}>
-      {props.children}
-    </div>
+    <div
+      css={pageData.allowWideContentLayout ? fullWidthStyle : null}
+      {...props}
+    />
   );
 };
 FullWidthContainer.propTypes = {
