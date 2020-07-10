@@ -13,16 +13,16 @@ const Enum = ({ values, enumDescriptions }) => {
     <Markdown.Dl>
       {values &&
         values.map((value) => {
-          const description =
+          const enumDescription =
             enumDescriptions &&
-            enumDescriptions.find(
-              (enumDescription) => enumDescription.name === value
-            ).description;
+            enumDescriptions.find((enumDesc) => enumDesc.name === value);
 
           return (
             <React.Fragment key={value}>
               <Markdown.Dt>{value}</Markdown.Dt>
-              <Markdown.Dd>{description}</Markdown.Dd>
+              {enumDescription && enumDescription.description && (
+                <Markdown.Dd>{enumDescription.description}</Markdown.Dd>
+              )}
             </React.Fragment>
           );
         })}
