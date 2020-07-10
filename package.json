@@ -24,6 +24,7 @@
     "test": "jest --config jest.test.config.js",
     "test:watch": "yarn test --watch",
     "test:e2e": "cross-env NODE_ENV=test cypress run",
+    "test:e2e:api-docs-smoke-test": "cross-env NODE_ENV=test cypress run --spec cypress/integration/api-docs-smoke-test/**/*",
     "cypress-open": "cross-env NODE_ENV=test cypress open",
     "check-links": "npx linkinator ./public",
     "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
