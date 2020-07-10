@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 6.0.2
+
+### Patch Changes
+
+- [`9d36ae3`](https://github.com/commercetools/commercetools-docs-kit/commit/9d36ae3445a2146808695110317a687e7f463d87) [#547](https://github.com/commercetools/commercetools-docs-kit/pull/547) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: for undefined enum description that causes build failure in microsites that depend on gatsby-theme-api-docs
+
 ## 6.0.1
 
 ### Patch Changes
