@@ -9,5 +9,6 @@ describe('API type soft linking', () => {
     cy.findByLabelText('Link to ArrayTestType').should('exist');
     cy.findByLabelText('Link to ArrayTestType').click();
     cy.findByLabelText('ArrayTestType definition').should('be.visible');
+    cy.percySnapshot();
   });
 });

@@ -124,8 +124,13 @@ const SidebarLink = (props) => {
             {...forwardProps}
             to={props.to === '/' ? props.to : trimTrailingSlash(props.to)}
             getProps={({ href }) => {
-              // todo: use React.children instead of accessing through array
-              const ariaLabel = `Open ${forwardProps.children[0].props.children}`;
+              const linkText =
+                forwardProps.children &&
+                Array.isArray(forwardProps.children) &&
+                forwardProps.children[0].props &&
+                forwardProps.children[0].props.children;
+              const ariaLabel = linkText ? `Open ${linkText}` : undefined;
+
               // Manually check that the link is the active one, even with trailing slashes.
               // The gatsby link is by default configured to match the exact path, therefore we
               // need to check this manually.
