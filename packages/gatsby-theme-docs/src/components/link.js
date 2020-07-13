@@ -96,10 +96,10 @@ export const ExternalSiteLink = (props) => (
  */
 const PureLink = (extendedProps) => {
   const siteData = useSiteData();
-  const { location, noUnderline, ariaLabel, ...props } = extendedProps;
+  const { location, noUnderline, ...props } = extendedProps;
   // For image links, return the link as-is.
   if (props.href.startsWith(withPrefix('/static'))) {
-    return <a {...props} aria-label={ariaLabel} data-link-type="image-link" />;
+    return <a {...props} data-link-type="image-link" />;
   }
 
   // Remove possible `pathPrefix` from both the `location.pathname` and the provided `href`.
@@ -148,7 +148,6 @@ const PureLink = (extendedProps) => {
     return (
       <ExternalSiteLink
         {...props}
-        aria-label={ariaLabel}
         data-link-type="external-link"
         css={getStylesFromProps({ noUnderline })}
       >
@@ -164,7 +163,6 @@ const PureLink = (extendedProps) => {
   if (isAnchorLink || isLinkToSamePage) {
     return (
       <AnchorLink
-        aria-label={ariaLabel}
         data-link-type="anchor-link"
         href={trimTrailingSlash(hrefObject.hash)}
         className={props.className}
@@ -187,7 +185,6 @@ const PureLink = (extendedProps) => {
   if (!isLinkToAnotherDocsSite) {
     return (
       <GatsbyRouterLink
-        aria-label={ariaLabel}
         data-link-type="gatsby-link"
         to={trimTrailingSlash(hrefObject.pathname) + hrefObject.hash}
         className={props.className}
@@ -211,7 +208,6 @@ const PureLink = (extendedProps) => {
       : trimTrailingSlash(hrefObject.pathname) + hrefObject.hash;
   return (
     <InternalSiteLink
-      aria-label={ariaLabel}
       data-link-type="internal-link"
       href={internalHref}
       className={props.className}

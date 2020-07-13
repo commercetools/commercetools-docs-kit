@@ -8,9 +8,7 @@ function renderTypeAsLink(apiKey, type, typeLocations) {
   const originalTypeLocation = typeLocation ? typeLocation.urlAnchorTag : '';
 
   return originalTypeLocation ? (
-    <Link ariaLabel={`Link to ${type}`} href={originalTypeLocation}>
-      {type}
-    </Link>
+    <Link href={originalTypeLocation}>{type}</Link>
   ) : (
     type
   );
