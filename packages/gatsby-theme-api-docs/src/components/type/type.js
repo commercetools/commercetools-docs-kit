@@ -27,7 +27,10 @@ const ApiType = (props) => {
   const urn = generateTypeURN(matchedApiType);
 
   return (
-    <FullWidthContainer id={urn}>
+    <FullWidthContainer
+      id={urn}
+      aria-label={`${matchedApiType.displayName} definition`}
+    >
       {matchedApiType.oneOf ? (
         <ChildrenUnionLike
           apiType={matchedApiType}
