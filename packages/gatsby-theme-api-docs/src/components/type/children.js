@@ -9,7 +9,6 @@ import Examples from './examples';
 
 const Children = ({
   apiType,
-  parentDiscriminator,
   renderDescriptionBelowProperties,
   propertiesTableTitle,
 }) => {
@@ -19,11 +18,7 @@ const Children = ({
 
       <SideBySide>
         {apiType.properties && (
-          <Properties
-            apiType={apiType}
-            parentDiscriminator={parentDiscriminator}
-            title={propertiesTableTitle}
-          />
+          <Properties apiType={apiType} title={propertiesTableTitle} />
         )}
 
         {apiType.examples && <Examples examples={apiType.examples} />}
@@ -52,7 +47,6 @@ const Children = ({
 
 Children.propTypes = {
   apiType: PropTypes.object.isRequired,
-  parentDiscriminator: PropTypes.string,
   renderDescriptionBelowProperties: PropTypes.bool,
   propertiesTableTitle: PropTypes.oneOfType([
     PropTypes.string,

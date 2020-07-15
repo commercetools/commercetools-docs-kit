@@ -2,15 +2,17 @@
 displayName: UnionLikeSubType2
 type: UnionLikeType
 (builtinType): object
-discriminatorValue: subtype2
+discriminatorValue: value2
 description: |-
   This specific instance of the union is rendered like a regular type with a property table
 properties:
   kind:
-    type: string
+    type: EnumWithDescriptionExample
     (builtinType): string
+    description: |-
+      Enum with agreed upon description annotation.
     enum:
-    - subtype2
+    - value2
     required: true
   bar:
     type: string

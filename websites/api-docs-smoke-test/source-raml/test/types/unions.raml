@@ -3,6 +3,9 @@ usage: Unions test types.
 
 # Not supporting actual RAML Union types, only a pattern that has a parent without own properties except the discriminator
 
+uses:
+  enums: enums.raml
+
 types:
   UnionLikeType:
     description: |
@@ -10,18 +13,18 @@ types:
     type: object
     discriminator: kind
     properties:
-      kind: string
+      kind: enums.EnumWithDescriptionExample
   UnionLikeSubType1:
     description: This specific instance of the union is rendered like a regular type with a property table
     type: UnionLikeType
-    discriminatorValue: subtype1
+    discriminatorValue: value1
     properties:
       foo: string
       name: string
   UnionLikeSubType2:
     description: This specific instance of the union is rendered like a regular type with a property table
     type: UnionLikeType
-    discriminatorValue: subtype2
+    discriminatorValue: value2
     properties:
       bar: string
       name: string

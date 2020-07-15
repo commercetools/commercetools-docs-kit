@@ -15,10 +15,7 @@ const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
             <p>
               <strong>{subType.displayName}</strong>
             </p>
-            <Children
-              apiType={subType}
-              parentDiscriminator={apiType.discriminator}
-            />
+            <Children apiType={subType} />
           </SpacingsStack>
         ))}
       </SpacingsStack>

@@ -38,30 +38,48 @@ const DescriptionText = styled.span`
 `;
 
 const Description = ({ property, discriminatorValue }) => {
+  const isConstantLike =
+    property.enumeration && property.enumeration.length === 1;
   const additionalInfos = extractAdditionalInfo(property);
   const renderEnums = property.enumeration && !discriminatorValue;
   return (
     <SpacingsStack scale="s">
-      <DescriptionText>
-        {markdownFragmentToReact(property.description)}
-      </DescriptionText>
-      <SpacingsInline>
-        {renderEnums ? (
-          <Info>
-            {valuesStr}: {property.enumeration.join(', ')}
-          </Info>
-        ) : null}
-        {Object.entries(additionalInfos).map(([info, value], index) => {
-          return (
-            !(typeof value === 'boolean' && !value) && (
-              <Info key={index}>
-                {info}
-                <InfoValue>{value}</InfoValue>
+      {isConstantLike ? (
+        <DescriptionText>
+          <div>
+            <Markdown.InlineCode>
+              &quot;{property.enumeration[0]}&quot;
+            </Markdown.InlineCode>
+          </div>
+          <div>
+            Only &quot;{property.enumeration[0]}&quot; value must be assigned to{' '}
+            {property.name}
+          </div>
+        </DescriptionText>
+      ) : (
+        <>
+          <DescriptionText>
+            {markdownFragmentToReact(property.description)}
+          </DescriptionText>
+          <SpacingsInline>
+            {renderEnums ? (
+              <Info>
+                {valuesStr}: {property.enumeration.join(', ')}
               </Info>
-            )
-          );
-        })}
-      </SpacingsInline>
+            ) : null}
+            {Object.entries(additionalInfos).map(([info, value], index) => {
+              return (
+                !(typeof value === 'boolean' && !value) && (
+                  <Info key={index}>
+                    {info}
+                    <InfoValue>{value}</InfoValue>
+                  </Info>
+                )
+              );
+            })}
+          </SpacingsInline>
+        </>
+      )}
     </SpacingsStack>
   );
 };
