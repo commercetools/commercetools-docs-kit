@@ -8,7 +8,6 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { colors, dimensions, typography } from '../../../../design-system';
 
 import extractAdditionalInfo from '../../../../utils/extract-additional-info';
-import { values as valuesStr } from '../../../../utils/constants';
 
 const Info = styled.span`
   display: inline-block;
@@ -47,9 +46,7 @@ const Description = ({ property, discriminatorValue }) => {
       {isConstantLike ? (
         <DescriptionText>
           <div>
-            <Markdown.InlineCode>
-              &quot;{property.enumeration[0]}&quot;
-            </Markdown.InlineCode>
+            <Markdown.InlineCode>{property.enumeration[0]}</Markdown.InlineCode>
           </div>
           <div>
             Only &quot;{property.enumeration[0]}&quot; value must be assigned to{' '}
@@ -64,7 +61,7 @@ const Description = ({ property, discriminatorValue }) => {
           <SpacingsInline>
             {renderEnums ? (
               <Info>
-                {valuesStr}: {property.enumeration.join(', ')}
+                Value must be one of: {property.enumeration.join(', ')}
               </Info>
             ) : null}
             {Object.entries(additionalInfos).map(([info, value], index) => {
