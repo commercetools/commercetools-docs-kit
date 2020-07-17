@@ -7,45 +7,56 @@ import Enum from './enum';
 import Properties from './properties/properties';
 import Examples from './examples';
 
-const Children = ({
-  apiType,
-  renderDescriptionBelowProperties,
-  propertiesTableTitle,
-}) => {
+const DescriptionAndEnums = (props) => {
+  return (
+    <>
+      {props.apiType.description && (
+        <Description>{props.apiType.description}</Description>
+      )}
+      {props.apiType.enumeration && (
+        <Enum
+          values={props.apiType.enumeration}
+          enumDescriptions={props.apiType.enumDescriptions}
+        />
+      )}
+    </>
+  );
+};
+
+DescriptionAndEnums.propTypes = {
+  apiType: PropTypes.object.isRequired,
+};
+
+const Children = (props) => {
   return (
     <SpacingsStack scale="m">
-      {!renderDescriptionBelowProperties && renderDescriptionAndEnums()}
+      {!props.renderDescriptionBelowProperties && (
+        <DescriptionAndEnums apiType={props.apiType} />
+      )}
 
       <SideBySide>
-        {apiType.properties && (
-          <Properties apiType={apiType} title={propertiesTableTitle} />
-        )}
-
-        {apiType.examples && <Examples examples={apiType.examples} />}
-      </SideBySide>
-
-      {renderDescriptionBelowProperties && renderDescriptionAndEnums()}
-    </SpacingsStack>
-  );
-
-  function renderDescriptionAndEnums() {
-    return (
-      <>
-        {apiType.description && (
-          <Description>{apiType.description}</Description>
-        )}
-        {apiType.enumeration && (
-          <Enum
-            values={apiType.enumeration}
-            enumDescriptions={apiType.enumDescriptions}
+        {props.apiType.properties && (
+          <Properties
+            apiKey={props.apiKey}
+            apiType={props.apiType}
+            title={props.propertiesTableTitle}
           />
         )}
-      </>
-    );
-  }
+
+        {props.apiType.examples && (
+          <Examples examples={props.apiType.examples} />
+        )}
+      </SideBySide>
+
+      {props.renderDescriptionBelowProperties && (
+        <DescriptionAndEnums apiType={props.apiType} />
+      )}
+    </SpacingsStack>
+  );
 };
 
 Children.propTypes = {
+  apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.object.isRequired,
   renderDescriptionBelowProperties: PropTypes.bool,
   propertiesTableTitle: PropTypes.oneOfType([
