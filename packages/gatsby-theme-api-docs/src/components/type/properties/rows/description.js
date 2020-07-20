@@ -45,7 +45,9 @@ const ConstantLikeEnumDescription = (props) => {
       <div>
         <Markdown.InlineCode>
           {generateAppropriatePrimitiveText(
-            props.property.type,
+            constantDescriptionsType
+              ? constantDescriptionsType.type
+              : props.property.type,
             props.property.enumeration[0]
           )}
         </Markdown.InlineCode>
