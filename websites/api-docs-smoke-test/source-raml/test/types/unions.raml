@@ -38,14 +38,21 @@ types:
   UnionLikeSubTypeWithEnumDescriptionProperties1:
     description: The discriminatorValue (value1) of this union like sub stype is defined in EnumWithDescriptionExample
     type: UnionLikeWithEnumDescriptionPropertiesInSubtype
-    discriminatorValue: value1
+    discriminatorValue: enumValue1
     properties:
       foo: string
       name: string
   UnionLikeSubTypeWithEnumDescriptionProperties2:
     description: The discriminatorValue (value2) of this union like sub stype is defined in EnumWithDescriptionExample
     type: UnionLikeWithEnumDescriptionPropertiesInSubtype
-    discriminatorValue: value2
+    discriminatorValue: enumValue2
     properties:
       bar: string
+      name: string
+  UnionLikeSubTypeWithEnumDescriptionProperties3:
+    description: The discriminatorValue (value2) of this union like sub stype is defined in EnumWithDescriptionExample but without a description.
+    type: UnionLikeWithEnumDescriptionPropertiesInSubtype
+    discriminatorValue: enumWithoutDescription
+    properties:
+      baz: string
       name: string
