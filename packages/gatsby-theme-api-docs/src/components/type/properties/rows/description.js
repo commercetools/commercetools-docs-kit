@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { css } from '@emotion/core';
+import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { colors, dimensions, typography } from '../../../../design-system';
 import extractAdditionalInfo from '../../../../utils/extract-additional-info';
+import capitalizeFirst from '../../../../utils/capitalize-first';
 import { useApiTypeByApiKeyAndDisplayName } from '../../../../hooks/use-api-types';
+
+const customCodeStyle = css`
+  color: ${designSystem.colors.light.textPrimary};
+`;
 
 const Info = styled.span`
   display: inline-block;
   border: 1px solid ${colors.light.borderInfo};
-  background-color: ${colors.light.surfaceInfo};
   padding: ${dimensions.spacings.xxs} ${dimensions.spacings.xs};
   font-size: ${typography.fontSizes.small};
 `;
@@ -79,7 +84,10 @@ const InfoValue = (props) => {
     case 'string':
       return (
         <>
-          : <Markdown.InlineCode>{value}</Markdown.InlineCode>
+          :{' '}
+          <Markdown.InlineCode css={customCodeStyle}>
+            {value}
+          </Markdown.InlineCode>
         </>
       );
     default:
@@ -89,21 +97,16 @@ const InfoValue = (props) => {
 InfoValue.propTypes = {
   children: PropTypes.any.isRequired,
 };
-
 const AdditionalInfo = (props) => {
-  const infosToRenderWithAppropriatePrimitiveText = ['default'];
+  const additionalInfos = extractAdditionalInfo(props.property);
   return (
     <>
-      {Object.entries(props.additionalInfos).map(([info, value], index) => {
+      {Object.entries(additionalInfos).map(([info, value], index) => {
         return (
           !(typeof value === 'boolean' && !value) && (
             <Info key={index}>
-              {info}
-              <InfoValue>
-                {infosToRenderWithAppropriatePrimitiveText.includes(info)
-                  ? generateAppropriatePrimitiveText(props.type, value)
-                  : value}
-              </InfoValue>
+              {capitalizeFirst(info)}
+              <InfoValue>{value}</InfoValue>
             </Info>
           )
         );
@@ -112,8 +115,7 @@ const AdditionalInfo = (props) => {
   );
 };
 AdditionalInfo.propTypes = {
-  additionalInfos: PropTypes.object.isRequired,
-  type: PropTypes.string,
+  property: PropTypes.object.isRequired,
 };
 
 const Description = (props) => {
@@ -129,7 +131,6 @@ const Description = (props) => {
     );
   }
 
-  const additionalInfos = extractAdditionalInfo(props.property);
   const renderEnums = props.property.enumeration && !props.discriminatorValue;
   return (
     <SpacingsStack scale="s">
@@ -139,24 +140,33 @@ const Description = (props) => {
       <SpacingsInline>
         {renderEnums ? (
           <Info>
-            Value can be:{' '}
+            Can be{' '}
             {props.property.enumeration.map((currentEnum, index) => {
-              return index === props.property.enumeration.length - 1
-                ? `or ${generateAppropriatePrimitiveText(
-                    props.property.type,
-                    currentEnum
-                  )}`
-                : `${generateAppropriatePrimitiveText(
-                    props.property.type,
-                    currentEnum
-                  )}, `;
+              return index === props.property.enumeration.length - 1 ? (
+                <React.Fragment key={currentEnum}>
+                  or{' '}
+                  <Markdown.InlineCode css={customCodeStyle}>
+                    {generateAppropriatePrimitiveText(
+                      props.property.type,
+                      currentEnum
+                    )}
+                  </Markdown.InlineCode>
+                </React.Fragment>
+              ) : (
+                <React.Fragment key={currentEnum}>
+                  <Markdown.InlineCode css={customCodeStyle}>
+                    {generateAppropriatePrimitiveText(
+                      props.property.type,
+                      currentEnum
+                    )}
+                  </Markdown.InlineCode>
+                  ,{' '}
+                </React.Fragment>
+              );
             })}
           </Info>
         ) : null}
-        <AdditionalInfo
-          additionalInfos={additionalInfos}
-          type={props.property.type}
-        />
+        <AdditionalInfo property={props.property} />
       </SpacingsInline>
     </SpacingsStack>
   );
