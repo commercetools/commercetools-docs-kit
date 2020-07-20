@@ -23,7 +23,7 @@ const DescriptionText = styled.span`
 const ConstantLikeEnumDescription = (props) => {
   const constantDescriptionsType = useApiTypeByApiKeyAndDisplayName(
     props.apiKey,
-    props.apiType
+    props.property.type
   );
 
   let constantDescriptionObject;
@@ -32,18 +32,23 @@ const ConstantLikeEnumDescription = (props) => {
     constantDescriptionObject =
       constantDescriptionsType.enumDescriptions &&
       constantDescriptionsType.enumDescriptions.find((enumDescription) => {
-        return enumDescription.name === props.constant;
+        return enumDescription.name === props.property.enumeration[0];
       });
   }
 
   const description =
     (constantDescriptionObject && constantDescriptionObject.description) ||
-    props.fallbackDescription;
+    props.property.description;
 
   return (
     <SpacingsStack scale="s">
       <div>
-        <Markdown.InlineCode>{props.constant}</Markdown.InlineCode>
+        <Markdown.InlineCode>
+          {generateAppropriatePrimitiveText(
+            props.property.type,
+            props.property.enumeration[0]
+          )}
+        </Markdown.InlineCode>
       </div>
 
       {description && (
@@ -55,10 +60,12 @@ const ConstantLikeEnumDescription = (props) => {
   );
 };
 ConstantLikeEnumDescription.propTypes = {
-  constant: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired,
-  apiType: PropTypes.string.isRequired,
-  fallbackDescription: PropTypes.string,
+  property: PropTypes.shape({
+    type: PropTypes.string,
+    enumeration: PropTypes.array,
+    description: PropTypes.string,
+  }),
 };
 
 const InfoValue = (props) => {
@@ -81,6 +88,32 @@ InfoValue.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
+const AdditionalInfo = (props) => {
+  const infosToRenderWithAppropriatePrimitiveText = ['default'];
+  return (
+    <>
+      {Object.entries(props.additionalInfos).map(([info, value], index) => {
+        return (
+          !(typeof value === 'boolean' && !value) && (
+            <Info key={index}>
+              {info}
+              <InfoValue>
+                {infosToRenderWithAppropriatePrimitiveText.includes(info)
+                  ? generateAppropriatePrimitiveText(props.type, value)
+                  : value}
+              </InfoValue>
+            </Info>
+          )
+        );
+      })}
+    </>
+  );
+};
+AdditionalInfo.propTypes = {
+  additionalInfos: PropTypes.object.isRequired,
+  type: PropTypes.string,
+};
+
 const Description = (props) => {
   const isConstantLike =
     props.property.enumeration && props.property.enumeration.length === 1;
@@ -88,10 +121,8 @@ const Description = (props) => {
   if (isConstantLike) {
     return (
       <ConstantLikeEnumDescription
-        constant={props.property.enumeration[0]}
-        fallbackDescription={props.property.description}
         apiKey={props.apiKey}
-        apiType={props.property.type}
+        property={props.property}
       />
     );
   }
@@ -106,19 +137,24 @@ const Description = (props) => {
       <SpacingsInline>
         {renderEnums ? (
           <Info>
-            Value must be one of: {props.property.enumeration.join(', ')}
+            Value can be:{' '}
+            {props.property.enumeration.map((currentEnum, index) => {
+              return index === props.property.enumeration.length - 1
+                ? `or ${generateAppropriatePrimitiveText(
+                    props.property.type,
+                    currentEnum
+                  )}`
+                : `${generateAppropriatePrimitiveText(
+                    props.property.type,
+                    currentEnum
+                  )}, `;
+            })}
           </Info>
         ) : null}
-        {Object.entries(additionalInfos).map(([info, value], index) => {
-          return (
-            !(typeof value === 'boolean' && !value) && (
-              <Info key={index}>
-                {info}
-                <InfoValue>{value}</InfoValue>
-              </Info>
-            )
-          );
-        })}
+        <AdditionalInfo
+          additionalInfos={additionalInfos}
+          type={props.property.type}
+        />
       </SpacingsInline>
     </SpacingsStack>
   );
@@ -128,5 +164,14 @@ Description.propTypes = {
   property: PropTypes.object.isRequired,
   discriminatorValue: PropTypes.string,
 };
+
+function generateAppropriatePrimitiveText(type, value) {
+  switch (type.toLowerCase()) {
+    case 'string':
+      return `"${value}"`;
+    default:
+      return value;
+  }
+}
 
 export default Description;
