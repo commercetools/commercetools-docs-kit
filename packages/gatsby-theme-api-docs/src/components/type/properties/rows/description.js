@@ -19,7 +19,6 @@ const Info = styled.span`
 const DescriptionText = styled.span`
   display: inline-block;
 `;
-const constantTypesToExcludeFromLookip = ['Int', 'String', 'Float'];
 
 const ConstantLikeEnumDescription = (props) => {
   const constantDescriptionsType = useApiTypeByApiKeyAndDisplayName(
@@ -27,15 +26,19 @@ const ConstantLikeEnumDescription = (props) => {
     props.apiType
   );
 
-  let constantDescription;
+  let constantDescriptionObject;
 
   if (constantDescriptionsType) {
-    constantDescription =
+    constantDescriptionObject =
       constantDescriptionsType.enumDescriptions &&
       constantDescriptionsType.enumDescriptions.find((enumDescription) => {
         return enumDescription.name === props.constant;
       });
   }
+
+  const description =
+    (constantDescriptionObject && constantDescriptionObject.description) ||
+    props.fallbackDescription;
 
   return (
     <SpacingsStack scale="s">
@@ -43,9 +46,9 @@ const ConstantLikeEnumDescription = (props) => {
         <Markdown.InlineCode>{props.constant}</Markdown.InlineCode>
       </div>
 
-      {constantDescription && constantDescription.description && (
+      {description && (
         <DescriptionText>
-          {markdownFragmentToReact(constantDescription.description)}
+          {markdownFragmentToReact(description)}
         </DescriptionText>
       )}
     </SpacingsStack>
@@ -55,6 +58,7 @@ ConstantLikeEnumDescription.propTypes = {
   constant: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.string.isRequired,
+  fallbackDescription: PropTypes.string,
 };
 
 const InfoValue = (props) => {
@@ -81,13 +85,11 @@ const Description = (props) => {
   const isConstantLike =
     props.property.enumeration && props.property.enumeration.length === 1;
 
-  if (
-    isConstantLike &&
-    !constantTypesToExcludeFromLookip.includes(props.property.type)
-  ) {
+  if (isConstantLike) {
     return (
       <ConstantLikeEnumDescription
         constant={props.property.enumeration[0]}
+        fallbackDescription={props.property.description}
         apiKey={props.apiKey}
         apiType={props.property.type}
       />

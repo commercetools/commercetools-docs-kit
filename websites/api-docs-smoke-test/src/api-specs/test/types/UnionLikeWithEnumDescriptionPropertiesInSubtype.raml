@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+displayName: UnionLikeWithEnumDescriptionPropertiesInSubtype
+type: object
+(builtinType): object
+discriminator: type
+(oneOf):
+- UnionLikeSubTypeWithEnumDescriptionProperties1
+- UnionLikeSubTypeWithEnumDescriptionProperties2
+description: |-
+  This pattern has sub-types whose properties are enumerations with descriptions.
+properties:
+  type:
+    type: EnumWithDescriptionExample
+    (builtinType): string
+    description: |-
+      Enum with agreed upon description annotation.
+    required: true

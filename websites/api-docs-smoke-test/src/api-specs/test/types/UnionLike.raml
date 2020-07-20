@@ -1,5 +1,5 @@
 #%RAML 1.0 DataType
-displayName: UnionLikeType
+displayName: UnionLike
 type: object
 (builtinType): object
 discriminator: kind
@@ -10,8 +10,6 @@ description: |-
   A pattern of inheritance that is to be represented like a union, i.e. this parent type would not be shown with a property list on its own.
 properties:
   kind:
-    type: EnumWithDescriptionExample
+    type: string
     (builtinType): string
-    description: |-
-      Enum with agreed upon description annotation.
     required: true

@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+displayName: UnionLikeSubTypeWithEnumDescriptionProperties1
+type: UnionLikeWithEnumDescriptionPropertiesInSubtype
+(builtinType): object
+discriminatorValue: value1
+description: |-
+  The discriminatorValue (value1) of this union like sub stype is defined in EnumWithDescriptionExample
+properties:
+  type:
+    type: EnumWithDescriptionExample
+    (builtinType): string
+    description: |-
+      Enum with agreed upon description annotation.
+    enum:
+    - value1
+    required: true
+  foo:
+    type: string
+    (builtinType): string
+    required: true
+  name:
+    type: string
+    (builtinType): string
+    required: true

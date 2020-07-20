@@ -8,8 +8,8 @@
   pages:
     - title: OutOfOrderPropertiesTestType
       path: /types/out-of-order-properties-test-type
-    - title: ConstantLikeType
-      path: /types/constant-like-type
+    - title: Constants
+      path: /types/constants
     - title: NumberTestType
       path: /types/number-test-type
     - title: IntegerTestType
@@ -32,8 +32,8 @@
       path: /types/enums
     - title: ArrayTestType
       path: /types/array-test-type
-    - title: UnionLikeType
-      path: /types/union-like-type
+    - title: Unions
+      path: /types/unions
     - title: OptionalPropertyTestType
       path: /types/optional-property-test-type
     - title: AnnotationsTestType
