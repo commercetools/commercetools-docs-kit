@@ -299,7 +299,7 @@ function generateReleaseNoteSlug(node) {
   }
 
   const date = node.frontmatter.date
-    ? JSON.stringify(node.frontmatter.date).split('T')[0]
+    ? node.frontmatter.date.toISOString().split('T')[0]
     : '';
   const title = node.frontmatter.title ? node.frontmatter.title : '';
 
