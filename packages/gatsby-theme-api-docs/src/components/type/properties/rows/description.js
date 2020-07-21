@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
+import { Markdown } from '@commercetools-docs/ui-kit';
 import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -12,12 +12,14 @@ import capitalizeFirst from '../../../../utils/capitalize-first';
 import { useApiTypeByApiKeyAndDisplayName } from '../../../../hooks/use-api-types';
 
 const customCodeStyle = css`
-  color: ${designSystem.colors.light.textPrimary};
+  border: none;
+  background-color: unset;
 `;
 
 const Info = styled.span`
   display: inline-block;
   border: 1px solid ${colors.light.borderInfo};
+  background-color: ${colors.light.surfaceInfo};
   padding: ${dimensions.spacings.xxs} ${dimensions.spacings.xs};
   font-size: ${typography.fontSizes.small};
 `;
