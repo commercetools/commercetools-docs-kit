@@ -33,11 +33,13 @@ const ApiType = (props) => {
     >
       {matchedApiType.oneOf ? (
         <ChildrenUnionLike
+          apiKey={props.apiKey}
           apiType={matchedApiType}
           apiTypeSubTypes={apiTypeSubTypes}
         />
       ) : (
         <Children
+          apiKey={props.apiKey}
           apiType={matchedApiType}
           renderDescriptionBelowProperties={
             props.renderDescriptionBelowProperties

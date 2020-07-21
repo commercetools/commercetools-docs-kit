@@ -1,4 +1,3 @@
-export const values = 'Values';
 export const docsTitle = 'commercetools Documentation';
 export const apiTypeStrings = {
   description: 'Description',

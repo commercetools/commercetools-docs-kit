@@ -20,12 +20,7 @@ const BetaWrapper = styled.span`
   font-size: ${typography.fontSizes.body};
 `;
 
-const NameType = ({
-  apiKey,
-  property,
-  parentDiscriminator,
-  discriminatorValue,
-}) => {
+const NameType = ({ apiKey, property }) => {
   const typeLocations = useTypeLocations();
   const typeToRender = generateTypeToRender({
     typeLocations,
@@ -44,13 +39,6 @@ const NameType = ({
           </BetaWrapper>
         )}
       </PropertyName>
-
-      {parentDiscriminator && property.name === parentDiscriminator ? (
-        <PropertyName>
-          {' '}
-          : <Markdown.InlineCode>{discriminatorValue}</Markdown.InlineCode>
-        </PropertyName>
-      ) : null}
       <PropertyType className="name-type">
         {typeToRender.displayPrefix && (
           <span className="name">{typeToRender.displayPrefix}</span>

@@ -7,25 +7,32 @@ function resolveConflictingFieldTypes(property) {
 
   propsToStringify.forEach((prop) => {
     if (returnedProperty[prop]) {
-      returnedProperty[prop] = stringifyField(returnedProperty[prop]);
+      returnedProperty[prop] = stringifyField(
+        returnedProperty[prop],
+        returnedProperty.type
+      );
     }
   });
 
   return returnedProperty;
 }
 
-function stringifyField(prop) {
+function stringifyField(prop, type) {
   const propType = computeType(prop);
 
   switch (propType) {
     case 'array':
       return prop.map((val) => {
-        return `${val}`;
+        return type === 'number' && Number.isInteger(val)
+          ? `${val.toFixed(1)}`
+          : `${val}`;
       });
     case 'object':
       return JSON.stringify(prop);
     default:
-      return `${prop}`;
+      return type === 'number' && Number.isInteger(prop)
+        ? `${prop.toFixed(1)}`
+        : `${prop}`;
   }
 }
 

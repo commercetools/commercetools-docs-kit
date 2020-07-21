@@ -66,3 +66,14 @@ export const useApiTypes = () => {
 
   return queryResult.allRamlType.nodes;
 };
+
+export const useApiTypeByApiKeyAndDisplayName = (
+  apikey = '',
+  apiTypeDisplayName = ''
+) => {
+  return useApiTypes().find((apiType) => {
+    return (
+      apiType.apiKey === apikey && apiType.displayName === apiTypeDisplayName
+    );
+  });
+};

@@ -3,22 +3,18 @@ import PropTypes from 'prop-types';
 import NameType from './name-type';
 import Description from './description';
 
-const Rows = ({ apiType, parentDiscriminator, discriminatorValue }) => {
-  return apiType.properties.map((property) => {
+const Rows = (props) => {
+  return props.apiType.properties.map((property) => {
     return (
       <tr key={property.name}>
         <td>
-          <NameType
-            apiKey={apiType.apiKey}
-            property={property}
-            parentDiscriminator={parentDiscriminator}
-            discriminatorValue={discriminatorValue}
-          />
+          <NameType apiKey={props.apiType.apiKey} property={property} />
         </td>
         <td>
           <Description
+            apiKey={props.apiKey}
             property={property}
-            discriminatorValue={discriminatorValue}
+            discriminatorValue={props.apiType.discriminatorValue}
           />
         </td>
       </tr>
@@ -27,9 +23,8 @@ const Rows = ({ apiType, parentDiscriminator, discriminatorValue }) => {
 };
 
 Rows.propTypes = {
+  apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.object.isRequired,
-  parentDiscriminator: PropTypes.string,
-  discriminatorValue: PropTypes.string,
 };
 
 export default Rows;
