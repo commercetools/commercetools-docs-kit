@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "chalk": "4.1.0",
-    "mri": "1.1.5",
+    "mri": "1.1.6",
     "shelljs": "0.8.4"
   }
 }
