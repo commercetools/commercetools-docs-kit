@@ -14,6 +14,7 @@ import { useApiTypeByApiKeyAndDisplayName } from '../../../../hooks/use-api-type
 const customCodeStyle = css`
   border: none;
   background-color: unset;
+  padding: 0;
 `;
 
 const Info = styled.span`
@@ -82,8 +83,14 @@ const InfoValue = (props) => {
   const valueType = typeof value;
   switch (valueType) {
     case 'boolean':
-      return value ? '' : ': No';
-    case 'string':
+      return value ? (
+        ''
+      ) : (
+        <>
+          : <Markdown.InlineCode css={customCodeStyle}>No</Markdown.InlineCode>
+        </>
+      );
+    default:
       return (
         <>
           :{' '}
@@ -92,8 +99,6 @@ const InfoValue = (props) => {
           </Markdown.InlineCode>
         </>
       );
-    default:
-      return `: ${value}`;
   }
 };
 InfoValue.propTypes = {
