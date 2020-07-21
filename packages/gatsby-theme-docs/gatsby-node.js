@@ -298,7 +298,9 @@ function generateReleaseNoteSlug(node) {
     return trimTrailingSlash(`${basePath}/${node.frontmatter.slug}`);
   }
 
-  const date = node.frontmatter.date ? node.frontmatter.date.split('T')[0] : '';
+  const date = node.frontmatter.date
+    ? JSON.stringify(node.frontmatter.date).split('T')[0]
+    : '';
   const title = node.frontmatter.title ? node.frontmatter.title : '';
 
   const slug = slugify(`${date} ${title}`, { lower: true, strict: true });
