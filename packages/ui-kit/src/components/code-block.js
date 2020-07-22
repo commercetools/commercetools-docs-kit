@@ -7,10 +7,10 @@ import { ThemeProvider } from 'emotion-theming';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import themePrimary from 'prism-react-renderer/themes/nightOwl';
-import themeSecondary from 'prism-react-renderer/themes/nightOwlLight';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { colors, dimensions, typography, tokens } from '../design-system';
+import themePrimary from '../prism-themes/commercetools';
+import themeSecondary from '../prism-themes/commercetoolsLight';
 import copyToClipboard from '../utils/copy-to-clipboard';
 
 const HighlightedContainer = styled.div`
