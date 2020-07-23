@@ -11,6 +11,6 @@ describe('API type soft linking', () => {
       cy.findByText('SoftLinkArray').click();
     });
     cy.findByLabelText('SoftLinkArray definition').should('be.visible');
-    cy.percySnapshot();
+    cy.percySnapshot('Soft linking test', { minHeight: 768 });
   });
 });
