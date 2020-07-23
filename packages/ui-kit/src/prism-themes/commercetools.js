@@ -1,67 +1,35 @@
-import { colors } from '../design-system';
+import nightOwl from 'prism-react-renderer/themes/nightOwl';
 
-// This is a custom theme for Prism and it implements a minimal color palette
-// with commercetools colors.
-// The theme is inspired by "theme-ui" Prism preset: https://theme-ui.com/packages/prism#theme-ui-colors
-// NOTE: this theme is currently not used and is just here for reference in case we want
-// to experiment with it at some point.
-export default {
-  plain: {
-    color: colors.light.textPrimary,
-    backgroundColor: colors.light.surfacePrimary,
+const commercetoolsTheme = { ...nightOwl };
+
+// for the defaults see
+// https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/themes/nightOwl.js
+// current changes:
+// - less "neon" variation of the "string", new: rgb(192,228,139)
+// - swap "property" and "string"/"url"/"inserted"/"attr-name" to make typical code less "glaring"
+//   and to hightlight the property keys in JSON which eases understanding the structure.
+const additionalStyles = [
+  {
+    types: ['string', 'url'],
+    style: {
+      color: 'rgb(128, 203, 196)',
+    },
   },
-  styles: [
-    {
-      types: [
-        'comment',
-        'prolog',
-        'doctype',
-        'cdata',
-        'punctuation',
-        'operator',
-        'entity',
-        'url',
-      ],
-      style: {
-        color: colors.light.syntaxHighlightNeutral,
-      },
+  {
+    types: ['inserted', 'attr-name'],
+    style: {
+      color: 'rgb(128, 203, 196)',
+      fontStyle: 'italic',
     },
-    {
-      types: ['comment'],
-      style: {
-        fontStyle: 'italic',
-      },
+  },
+  {
+    types: ['property'],
+    style: {
+      color: 'rgb(192,228,139)',
     },
-    {
-      types: [
-        'property',
-        'tag',
-        'boolean',
-        'number',
-        'constant',
-        'symbol',
-        'deleted',
-        'function',
-        'class-name',
-        'regex',
-        'important',
-        'variable',
-      ],
-      style: {
-        color: colors.light.syntaxHighlightAccent,
-      },
-    },
-    {
-      types: ['atrule', 'attr-value', 'keyword'],
-      style: {
-        color: colors.light.syntaxHighlightPrimary,
-      },
-    },
-    {
-      types: ['selector', 'attr-name', 'string', 'char', 'builtin', 'inserted'],
-      style: {
-        color: colors.light.syntaxHighlightSecondary,
-      },
-    },
-  ],
-};
+  },
+];
+
+commercetoolsTheme.styles = [...nightOwl.styles, ...additionalStyles];
+
+export default commercetoolsTheme;
