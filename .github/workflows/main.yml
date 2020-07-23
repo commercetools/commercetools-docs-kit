@@ -88,6 +88,13 @@ jobs:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
           CYPRESS_CI: "true"
 
+      - name: Running API End-to-End tests
+        run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/api-docs-smoke-test' 'yarn run percy exec -- yarn run cypress run'
+        env:
+          NODE_ENV: test
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_API_SMOKE_TESTS_E2E }}
+          CYPRESS_CI: "true"
+
       - name: Uploading Cypress artifacts
         # Test run video was always captured, so this action uses "always()" condition
         uses: actions/upload-artifact@v1
