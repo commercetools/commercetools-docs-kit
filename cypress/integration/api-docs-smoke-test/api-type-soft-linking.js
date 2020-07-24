@@ -17,6 +17,7 @@ describe('API type soft linking', () => {
      *  https://github.com/percy/percy-cypress/issues/2#issuecomment-533316240
      *
      * So this test will instead:
+     *  - check if url is as expected
      *  - check if element with expected id exists
      *  - in this case the id should be ctp-test-type-softlinkarray
      */
