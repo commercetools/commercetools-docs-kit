@@ -126,6 +126,9 @@ const SwitcherButton = styled.a`
     props.isActive
       ? designSystem.colors.light.linkNavigation
       : designSystem.colors.light.textPrimary};
+  :hover {
+    color: ${designSystem.colors.light.linkNavigation};
+  }
 `;
 const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
@@ -140,85 +143,107 @@ const SearchContainer = styled.div`
   }
 `;
 
-const LayoutHeader = (props) => (
-  <Container>
-    <Content>
-      <Inline alignItems="center">
-        <LogoContainer>
-          {/* Injected by React portal */}
-          <div
-            id="sidebar-menu-toggle"
-            css={css`
-              display: flex;
-              @media screen and (${designSystem.dimensions.viewports.laptop}) {
-                display: none;
-              }
-            `}
-          />
-          <LogoButton />
-        </LogoContainer>
-        <DocumentationSwitcherContainer isActive={props.isTopMenuOpen}>
-          <SwitcherButton
-            role="button"
-            aria-label={
-              props.isTopMenuOpen ? 'Close Top Menu' : 'Open Top Menu'
-            }
-            isActive={props.isTopMenuOpen}
-            onClick={props.toggleTopMenu}
-          >
-            <SpacingsInline alignItems="center">
-              <span>{props.siteTitle}</span>
-              {props.isTopMenuOpen ? (
-                <AngleUpIcon size="medium" color="info" />
-              ) : (
-                <AngleDownIcon size="medium" />
-              )}
-            </SpacingsInline>
-          </SwitcherButton>
-          {props.isTopMenuOpen ? (
-            <Overlay
-              top={designSystem.dimensions.heights.header}
-              onClick={props.closeTopMenu}
-            >
-              <TopMenu centered={props.centeredTopMenu} />
-            </Overlay>
-          ) : null}
-        </DocumentationSwitcherContainer>
-      </Inline>
-      <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
-        {props.isSearchDialogOpen ? (
-          <Overlay position="absolute" onClick={props.closeSearchDialog}>
-            <SearchDialog
-              centered={props.centeredSearchDialog}
-              onClose={props.closeSearchDialog}
+const LayoutHeader = (props) => {
+  const [
+    mouseIsOverTopMenuButton,
+    setMouseIsOverTopMenuButton,
+  ] = React.useState(false);
+
+  return (
+    <Container>
+      <Content>
+        <Inline alignItems="center">
+          <LogoContainer>
+            {/* Injected by React portal */}
+            <div
+              id="sidebar-menu-toggle"
+              css={css`
+                display: flex;
+                @media screen and (${designSystem.dimensions.viewports
+                    .laptop}) {
+                  display: none;
+                }
+              `}
             />
-          </Overlay>
-        ) : (
-          <>
-            <MediaQuery forViewport="mobile">
-              <IconButton
-                icon={<SearchIcon />}
-                size="big"
-                label="Open search dialog"
-                onClick={props.openSearchDialog}
-                isDisabled={props.excludeFromSearchIndex}
+            <LogoButton />
+          </LogoContainer>
+          <DocumentationSwitcherContainer isActive={props.isTopMenuOpen}>
+            <SwitcherButton
+              role="button"
+              aria-label={
+                props.isTopMenuOpen ? 'Close Top Menu' : 'Open Top Menu'
+              }
+              isActive={props.isTopMenuOpen}
+              onClick={props.toggleTopMenu}
+              onMouseOver={handleOnMouseOverTopMenu}
+              onMouseLeave={handleOnMouseLeaveTopMenu}
+            >
+              <SpacingsInline alignItems="center">
+                <span>{props.siteTitle}</span>
+                {!mouseIsOverTopMenuButton && !props.isTopMenuOpen && (
+                  <AngleDownIcon size="medium" />
+                )}
+                {mouseIsOverTopMenuButton && !props.isTopMenuOpen && (
+                  <AngleDownIcon size="medium" color="info" />
+                )}
+                {props.isTopMenuOpen && (
+                  <AngleUpIcon size="medium" color="info" />
+                )}
+              </SpacingsInline>
+            </SwitcherButton>
+            {props.isTopMenuOpen ? (
+              <Overlay
+                top={designSystem.dimensions.heights.header}
+                onClick={props.closeTopMenu}
+              >
+                <TopMenu centered={props.centeredTopMenu} />
+              </Overlay>
+            ) : null}
+          </DocumentationSwitcherContainer>
+        </Inline>
+        <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
+          {props.isSearchDialogOpen ? (
+            <Overlay position="absolute" onClick={props.closeSearchDialog}>
+              <SearchDialog
+                centered={props.centeredSearchDialog}
+                onClose={props.closeSearchDialog}
               />
-            </MediaQuery>
-            <MediaQuery forViewport="tablet">
-              <SearchInput
-                id="search-input-placeholder"
-                size="small"
-                onFocus={props.openSearchDialog}
-                isDisabled={props.excludeFromSearchIndex}
-              />
-            </MediaQuery>
-          </>
-        )}
-      </SearchContainer>
-    </Content>
-    <Blank />
-  </Container>
-);
+            </Overlay>
+          ) : (
+            <>
+              <MediaQuery forViewport="mobile">
+                <IconButton
+                  icon={<SearchIcon />}
+                  size="big"
+                  label="Open search dialog"
+                  onClick={props.openSearchDialog}
+                  isDisabled={props.excludeFromSearchIndex}
+                />
+              </MediaQuery>
+              <MediaQuery forViewport="tablet">
+                <SearchInput
+                  id="search-input-placeholder"
+                  size="small"
+                  onFocus={props.openSearchDialog}
+                  isDisabled={props.excludeFromSearchIndex}
+                />
+              </MediaQuery>
+            </>
+          )}
+        </SearchContainer>
+      </Content>
+      <Blank />
+    </Container>
+  );
+
+  function handleOnMouseOverTopMenu() {
+    setMouseIsOverTopMenuButton(true);
+  }
+
+  function handleOnMouseLeaveTopMenu() {
+    setMouseIsOverTopMenuButton(false);
+  }
+};
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
