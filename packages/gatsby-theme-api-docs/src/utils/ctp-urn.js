@@ -4,30 +4,30 @@
  * Formally correct, a URN would have to be urn:example:ctp:$apiKey:type:$typeName but we omit the urn:example namespace.
  */
 const prefix = 'ctp';
-const encodedHyphen = '%2D';
+const encodedColon = '%3A';
 const encodedHash = '%23';
-const colonRegExp = new RegExp(encodedHyphen, 'g');
+const colonRegExp = new RegExp(encodedColon, 'g');
 const hashRegExp = new RegExp(encodedHash, 'g');
 
 // encode the minimum required only, but add the hash so the result is compatible
 // being a URL fragment identifier a.k.a. hash.
 const encodeURNComponent = (input) => {
   return encodeURI(input)
-    .replace(/-/g, encodedHyphen)
+    .replace(/:/g, encodedColon)
     .replace(/#/g, encodedHash);
 };
 
 const decodeURNComponent = (input) => {
-  return decodeURI(input.replace(colonRegExp, '-').replace(hashRegExp, '#'));
+  return decodeURI(input.replace(colonRegExp, ':').replace(hashRegExp, '#'));
 };
 
 const URNComponents = (urn) => {
-  return urn.split('-').map(decodeURNComponent);
+  return urn.split(':').map(decodeURNComponent);
 };
 
 export const generateTypeURN = ({ apiKey = '', displayName = '' }) => {
-  return `${prefix}-${encodeURNComponent(apiKey)}-type-${encodeURNComponent(
-    displayName.toLowerCase()
+  return `${prefix}:${encodeURNComponent(apiKey)}:type:${encodeURNComponent(
+    displayName
   )}`;
 };
 
@@ -51,9 +51,9 @@ export const generateEndpointURN = ({
   path = '',
   method = '',
 }) => {
-  return `${prefix}-${encodeURNComponent(apiKey)}-endpoint-${encodeURNComponent(
+  return `${prefix}:${encodeURNComponent(apiKey)}:endpoint:${encodeURNComponent(
     path
-  )}-${encodeURNComponent(method.toLowerCase())}`;
+  )}:${encodeURNComponent(method.toUpperCase())}`;
 };
 
 export const parseEndpointURN = (urn) => {
