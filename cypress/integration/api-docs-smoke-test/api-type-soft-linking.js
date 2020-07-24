@@ -21,19 +21,14 @@ describe('API type soft linking', () => {
      *  - check if element with expected id exists
      *  - in this case the id should be ctp-test-type-softlinkarray
      */
-
-    /**
-     * TODO:
-     *
-     * - urn id does not work with tests, will need to standardize pattern by replacing
-     * ":" with "-" and making sure letters are lower cased
-     * - api-docs-smoke-test-e2e replicates snapshots, no need to have separate project on percy
-     */
-    cy.get('#body-content')
-      .find('#ctp:test:type:SoftLinkArray')
-      .should('exist');
-    // cy.get('#ctp:test:type:SoftLinkArray').should('exist');
-    // cy.findByLabelText('SoftLinkArray definition').should('be.visible');
+    const typeElementId = 'ctp-test-type-softlinkarray';
+    cy.url().should(
+      'eq',
+      `${
+        Cypress.config().baseUrl
+      }${URL_API_DOCS_SMOKE_TEST}e2e-tests/soft-linking-second-page#${typeElementId}`
+    );
+    cy.get('#body-content').find(`#${typeElementId}`).should('exist');
     cy.percySnapshot();
   });
 });
