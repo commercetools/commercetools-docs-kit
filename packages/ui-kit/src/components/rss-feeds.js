@@ -74,15 +74,15 @@ const RssFeeds = (props) => {
       {!data ? (
         <LoadingSpinner size="s">{'Loading feeds'}</LoadingSpinner>
       ) : (
-        <Table key={data.title}>
+        <Table>
           <thead>
             <tr>
               <th colSpan="2">{props.title ? props.title : data.title}</th>
             </tr>
           </thead>
           <tbody>
-            {data.items.map((item) => (
-              <tr key={item.title}>
+            {data.items.map((item, index) => (
+              <tr key={`${item.title}${index}`}>
                 <td>
                   <Link
                     href={item.link}
