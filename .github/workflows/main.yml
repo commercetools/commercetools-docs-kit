@@ -82,10 +82,17 @@ jobs:
         run: yarn run cypress install && yarn run cypress cache list
 
       - name: Running End-to-End tests
-        run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/docs-smoke-test' 'yarn run percy exec -- yarn run cypress run'
+        run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/docs-smoke-test' 'yarn run percy exec -- yarn test:e2e:docs-smoke-test'
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
+          CYPRESS_CI: "true"
+
+      - name: Running API End-to-End tests
+        run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/api-docs-smoke-test' 'yarn run percy exec -- yarn test:e2e:api-docs-smoke-test'
+        env:
+          NODE_ENV: test
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_API_SMOKE_TESTS_E2E }}
           CYPRESS_CI: "true"
 
       - name: Uploading Cypress artifacts
