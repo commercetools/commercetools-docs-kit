@@ -17,7 +17,7 @@ const Table = styled.table`
 
   thead {
     th {
-      background-color: ${colors.light.surfaceSecondary1};
+      background-color: ${colors.light.surfaceSecondary2};
       border-radius: ${tokens.borderRadiusForRssFeedTable}
         ${tokens.borderRadiusForRssFeedTable} 0 0;
       padding: ${dimensions.spacings.s};
