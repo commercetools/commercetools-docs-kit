@@ -82,7 +82,7 @@ const Group = styled.ul`
   padding: 0;
   list-style: none;
   display: grid;
-  grid-gap: ${designSystem.dimensions.spacings.s};
+  grid-gap: ${designSystem.dimensions.spacings.xs};
 
   /* Nested ul should get no padding */
   ul {
@@ -91,7 +91,7 @@ const Group = styled.ul`
 `;
 const ListItem = styled.li`
   display: grid;
-  grid-gap: ${designSystem.dimensions.spacings.s};
+  grid-gap: ${designSystem.dimensions.spacings.xs};
 `;
 const Indented = styled.div`
   padding: ${(props) => {
@@ -182,7 +182,7 @@ const Container = (props) => (
       const level = 1;
       const isActive = getIsActive(props.activeSection, item);
       return (
-        <SpacingsStack scale="s" key={index}>
+        <SpacingsStack scale="xs" key={index}>
           <Link
             href={item.url}
             level={level}
