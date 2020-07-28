@@ -82,7 +82,7 @@ const Group = styled.ul`
   padding: 0;
   list-style: none;
   display: grid;
-  grid-gap: ${designSystem.dimensions.spacings.xs};
+  grid-gap: ${designSystem.dimensions.spacings.s};
 
   /* Nested ul should get no padding */
   ul {
@@ -91,7 +91,7 @@ const Group = styled.ul`
 `;
 const ListItem = styled.li`
   display: grid;
-  grid-gap: ${designSystem.dimensions.spacings.xs};
+  grid-gap: ${designSystem.dimensions.spacings.s};
 `;
 const Indented = styled.div`
   padding: ${(props) => {
@@ -177,12 +177,12 @@ LevelGroup.propTypes = {
   navLevels: PropTypes.number.isRequired,
 };
 const Container = (props) => (
-  <SpacingsStack scale="s">
+  <SpacingsStack scale="m">
     {props.items.map((item, index) => {
       const level = 1;
       const isActive = getIsActive(props.activeSection, item);
       return (
-        <SpacingsStack scale="xs" key={index}>
+        <SpacingsStack scale="s" key={index}>
           <Link
             href={item.url}
             level={level}
