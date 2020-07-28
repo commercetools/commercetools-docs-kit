@@ -172,6 +172,7 @@ const TopMenu = (props) => {
     <Container>
       <Content
         role="top-menu"
+        aria-labelledby="top-menu-switcher"
         onClick={(event) => {
           // Prevent overlay to close when clicking on the content area.
           event.stopPropagation();

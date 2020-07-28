@@ -100,9 +100,13 @@ const LogoContainer = styled.div`
     display: none;
   }
 `;
-const DocumentationSwitcherContainer = styled.div`
-  color: ${designSystem.colors.light.textSecondary};
+const DocumentationSwitcherButton = styled.div`
+  color: ${(props) =>
+    props.isActive
+      ? designSystem.colors.light.linkNavigation
+      : designSystem.colors.light.textPrimary};
   font-size: ${designSystem.typography.fontSizes.body};
+  cursor: pointer;
   padding: 0;
   margin: 0 0 0 ${designSystem.dimensions.spacings.m};
   display: flex;
@@ -112,22 +116,23 @@ const DocumentationSwitcherContainer = styled.div`
   height: calc(100% - 2px);
   border-bottom: 2px solid
     ${(props) =>
-      props.isActive || props.mouseIsOverTopMenuButton
+      props.isActive
         ? designSystem.colors.light.linkNavigation
         : 'transparent'};
 
+  :hover,
+  :focus {
+    border-bottom: 2px solid ${designSystem.colors.light.linkNavigation};
+    color: ${designSystem.colors.light.linkNavigation};
+    svg {
+      * {
+        fill: ${designSystem.colors.light.linkNavigation};
+      }
+    }
+  }
+
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     margin: 0 0 0 ${designSystem.dimensions.spacings.xl};
-  }
-`;
-const SwitcherButton = styled.a`
-  cursor: pointer;
-  color: ${(props) =>
-    props.isActive
-      ? designSystem.colors.light.linkNavigation
-      : designSystem.colors.light.textPrimary};
-  :hover {
-    color: ${designSystem.colors.light.linkNavigation};
   }
 `;
 const SearchContainer = styled.div`
@@ -144,11 +149,18 @@ const SearchContainer = styled.div`
 `;
 
 const LayoutHeader = (props) => {
-  const [
-    mouseIsOverTopMenuButton,
-    setMouseIsOverTopMenuButton,
-  ] = React.useState(false);
-
+  const handleTopMenuButtonKeyPress = (event) => {
+    const enterOrSpace =
+      event.key === 'Enter' ||
+      event.key === ' ' ||
+      event.key === 'Spacebar' ||
+      event.which === 13 ||
+      event.which === 32;
+    if (enterOrSpace) {
+      event.preventDefault();
+      props.toggleTopMenu(event);
+    }
+  };
   return (
     <Container>
       <Content>
@@ -167,42 +179,35 @@ const LayoutHeader = (props) => {
             />
             <LogoButton />
           </LogoContainer>
-          <DocumentationSwitcherContainer
+          <DocumentationSwitcherButton
+            role="button"
+            id="top-menu-switcher"
+            tabIndex="1"
+            aria-expanded={props.isTopMenuOpen}
+            aria-label={
+              props.isTopMenuOpen ? 'Close Top Menu' : 'Open Top Menu'
+            }
             isActive={props.isTopMenuOpen}
-            mouseIsOverTopMenuButton={mouseIsOverTopMenuButton}
+            onClick={props.toggleTopMenu}
+            onKeyPress={handleTopMenuButtonKeyPress}
           >
-            <SwitcherButton
-              role="button"
-              aria-label={
-                props.isTopMenuOpen ? 'Close Top Menu' : 'Open Top Menu'
-              }
-              isActive={props.isTopMenuOpen}
-              onClick={props.toggleTopMenu}
-              onMouseOver={handleOnMouseOverTopMenu}
-              onMouseLeave={handleOnMouseLeaveTopMenu}
+            <SpacingsInline alignItems="center">
+              <span>{props.siteTitle}</span>
+              {props.isTopMenuOpen ? (
+                <AngleUpIcon size="medium" color="info" />
+              ) : (
+                <AngleDownIcon size="medium" />
+              )}
+            </SpacingsInline>
+          </DocumentationSwitcherButton>
+          {props.isTopMenuOpen ? (
+            <Overlay
+              top={designSystem.dimensions.heights.header}
+              onClick={props.closeTopMenu}
             >
-              <SpacingsInline alignItems="center">
-                <span>{props.siteTitle}</span>
-                {!mouseIsOverTopMenuButton && !props.isTopMenuOpen && (
-                  <AngleDownIcon size="medium" />
-                )}
-                {mouseIsOverTopMenuButton && !props.isTopMenuOpen && (
-                  <AngleDownIcon size="medium" color="info" />
-                )}
-                {props.isTopMenuOpen && (
-                  <AngleUpIcon size="medium" color="info" />
-                )}
-              </SpacingsInline>
-            </SwitcherButton>
-            {props.isTopMenuOpen ? (
-              <Overlay
-                top={designSystem.dimensions.heights.header}
-                onClick={props.closeTopMenu}
-              >
-                <TopMenu centered={props.centeredTopMenu} />
-              </Overlay>
-            ) : null}
-          </DocumentationSwitcherContainer>
+              <TopMenu centered={props.centeredTopMenu} />
+            </Overlay>
+          ) : null}
         </Inline>
         <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
           {props.isSearchDialogOpen ? (
@@ -238,14 +243,6 @@ const LayoutHeader = (props) => {
       <Blank />
     </Container>
   );
-
-  function handleOnMouseOverTopMenu() {
-    setMouseIsOverTopMenuButton(true);
-  }
-
-  function handleOnMouseLeaveTopMenu() {
-    setMouseIsOverTopMenuButton(false);
-  }
 };
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
