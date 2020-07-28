@@ -99,7 +99,7 @@ const LayoutPageReleaseNotesFilters = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <ReleasesTitleLink href="#top">
+          <ReleasesTitleLink href="#header">
             <SpacingsInline scale="s" alignItems="center">
               <div>Releases</div>
               <div>

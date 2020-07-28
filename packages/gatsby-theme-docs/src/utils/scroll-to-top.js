@@ -1,5 +1,5 @@
 function scrollToTop() {
-  const layoutPage = document.querySelector('#top');
+  const layoutPage = document.querySelector('#header');
   layoutPage.scrollIntoView({
     block: 'start',
   });
