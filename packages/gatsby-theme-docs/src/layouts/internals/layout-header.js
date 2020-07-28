@@ -112,7 +112,7 @@ const DocumentationSwitcherContainer = styled.div`
   height: calc(100% - 2px);
   border-bottom: 2px solid
     ${(props) =>
-      props.isActive
+      props.isActive || props.mouseIsOverTopMenuButton
         ? designSystem.colors.light.linkNavigation
         : 'transparent'};
 
@@ -167,7 +167,10 @@ const LayoutHeader = (props) => {
             />
             <LogoButton />
           </LogoContainer>
-          <DocumentationSwitcherContainer isActive={props.isTopMenuOpen}>
+          <DocumentationSwitcherContainer
+            isActive={props.isTopMenuOpen}
+            mouseIsOverTopMenuButton={mouseIsOverTopMenuButton}
+          >
             <SwitcherButton
               role="button"
               aria-label={
