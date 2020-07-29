@@ -17,10 +17,14 @@ const ClearAll = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-  color: ${designSystem.colors.light.textInfo};
+  color: ${designSystem.colors.light.link};
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   text-decoration: none;
   background-color: transparent;
+
+  :hover {
+    color: ${designSystem.colors.light.linkHover};
+  }
 `;
 
 const ReleaseNotesFilterTopics = () => {
