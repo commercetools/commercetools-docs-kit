@@ -50,7 +50,25 @@ const LayoutReleaseNotesDetail = (props) => {
         <LayoutPageWrapper>
           <LayoutPage>
             <LayoutPageHeader>
-              <Link href="/releases" noUnderline={true}>
+              <Link
+                href="/releases"
+                noUnderline={true}
+                css={css`
+                  svg {
+                    * {
+                      fill: ${designSystem.colors.light.link};
+                    }
+                  }
+
+                  :hover {
+                    svg {
+                      * {
+                        fill: ${designSystem.colors.light.linkHover};
+                      }
+                    }
+                  }
+                `}
+              >
                 <SpacingsInline alignItems="center">
                   <AngleLeftIcon size="medium" color="primary" />
 
