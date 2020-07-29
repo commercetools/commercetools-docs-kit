@@ -162,7 +162,7 @@ const LayoutHeader = (props) => {
     }
   };
   return (
-    <Container>
+    <Container id="top">
       <Content>
         <Inline alignItems="center">
           <LogoContainer>

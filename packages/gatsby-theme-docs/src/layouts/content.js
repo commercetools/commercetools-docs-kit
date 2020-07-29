@@ -43,7 +43,7 @@ const LayoutContent = (props) => {
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
-        <LayoutPageWrapper id="top">
+        <LayoutPageWrapper>
           <LayoutPage
             allowWideContentLayout={props.pageData.allowWideContentLayout}
           >

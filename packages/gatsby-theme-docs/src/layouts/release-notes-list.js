@@ -42,7 +42,7 @@ const LayoutReleaseNotesList = (props) => {
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
-        <LayoutPageWrapper id="top">
+        <LayoutPageWrapper>
           <LayoutPage>
             <LayoutPageHeader>
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
