@@ -64,3 +64,9 @@
       path: /endpoints/simple-resource-delete-by-id
     - title: All Endpoints of Resource
       path: /endpoints/endpoints-for-resource
+- chapter-title: E2E Tests
+  pages:
+    - title: Soft Linking First Page
+      path: /e2e-tests/soft-linking-first-page
+    - title: Soft Linking Second Page
+      path: /e2e-tests/soft-linking-second-page
