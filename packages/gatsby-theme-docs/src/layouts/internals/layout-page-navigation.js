@@ -132,7 +132,7 @@ const LayoutPageNavigation = (props) => {
       css={{ marginBottom: designSystem.dimensions.spacings.l }}
     >
       <SpacingsStack scale="m">
-        <PageTitleLink href="#header">
+        <PageTitleLink href="#top">
           <SpacingsInline scale="s" alignItems="center">
             <div>
               <StackedLinesIndentedIcon color="textSecondary" />

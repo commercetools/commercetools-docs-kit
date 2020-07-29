@@ -141,7 +141,7 @@ const SearchContainer = styled.div`
 `;
 
 const LayoutHeader = (props) => (
-  <Container id="header">
+  <Container id="top">
     <Content>
       <Inline alignItems="center">
         <LogoContainer>
