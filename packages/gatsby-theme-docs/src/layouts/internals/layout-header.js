@@ -100,9 +100,13 @@ const LogoContainer = styled.div`
     display: none;
   }
 `;
-const DocumentationSwitcherContainer = styled.div`
-  color: ${designSystem.colors.light.textSecondary};
+const DocumentationSwitcherButton = styled.div`
+  color: ${(props) =>
+    props.isActive
+      ? designSystem.colors.light.linkNavigation
+      : designSystem.colors.light.textPrimary};
   font-size: ${designSystem.typography.fontSizes.body};
+  cursor: pointer;
   padding: 0;
   margin: 0 0 0 ${designSystem.dimensions.spacings.m};
   display: flex;
@@ -116,16 +120,20 @@ const DocumentationSwitcherContainer = styled.div`
         ? designSystem.colors.light.linkNavigation
         : 'transparent'};
 
+  :hover,
+  :focus {
+    border-bottom: 2px solid ${designSystem.colors.light.linkNavigation};
+    color: ${designSystem.colors.light.linkNavigation};
+    svg {
+      * {
+        fill: ${designSystem.colors.light.linkNavigation};
+      }
+    }
+  }
+
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     margin: 0 0 0 ${designSystem.dimensions.spacings.xl};
   }
-`;
-const SwitcherButton = styled.a`
-  cursor: pointer;
-  color: ${(props) =>
-    props.isActive
-      ? designSystem.colors.light.linkNavigation
-      : designSystem.colors.light.textPrimary};
 `;
 const SearchContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
@@ -140,31 +148,48 @@ const SearchContainer = styled.div`
   }
 `;
 
-const LayoutHeader = (props) => (
-  <Container id="top">
-    <Content>
-      <Inline alignItems="center">
-        <LogoContainer>
-          {/* Injected by React portal */}
-          <div
-            id="sidebar-menu-toggle"
-            css={css`
-              display: flex;
-              @media screen and (${designSystem.dimensions.viewports.laptop}) {
-                display: none;
-              }
-            `}
-          />
-          <LogoButton />
-        </LogoContainer>
-        <DocumentationSwitcherContainer isActive={props.isTopMenuOpen}>
-          <SwitcherButton
+const LayoutHeader = (props) => {
+  const handleTopMenuButtonKeyPress = (event) => {
+    const enterOrSpace =
+      event.key === 'Enter' ||
+      event.key === ' ' ||
+      event.key === 'Spacebar' ||
+      event.which === 13 ||
+      event.which === 32;
+    if (enterOrSpace) {
+      event.preventDefault();
+      props.toggleTopMenu(event);
+    }
+  };
+  return (
+    <Container id="top">
+      <Content>
+        <Inline alignItems="center">
+          <LogoContainer>
+            {/* Injected by React portal */}
+            <div
+              id="sidebar-menu-toggle"
+              css={css`
+                display: flex;
+                @media screen and (${designSystem.dimensions.viewports
+                    .laptop}) {
+                  display: none;
+                }
+              `}
+            />
+            <LogoButton />
+          </LogoContainer>
+          <DocumentationSwitcherButton
             role="button"
+            id="top-menu-switcher"
+            tabIndex="1"
+            aria-expanded={props.isTopMenuOpen}
             aria-label={
               props.isTopMenuOpen ? 'Close Top Menu' : 'Open Top Menu'
             }
             isActive={props.isTopMenuOpen}
             onClick={props.toggleTopMenu}
+            onKeyPress={handleTopMenuButtonKeyPress}
           >
             <SpacingsInline alignItems="center">
               <span>{props.siteTitle}</span>
@@ -174,7 +199,7 @@ const LayoutHeader = (props) => (
                 <AngleDownIcon size="medium" />
               )}
             </SpacingsInline>
-          </SwitcherButton>
+          </DocumentationSwitcherButton>
           {props.isTopMenuOpen ? (
             <Overlay
               top={designSystem.dimensions.heights.header}
@@ -183,42 +208,42 @@ const LayoutHeader = (props) => (
               <TopMenu centered={props.centeredTopMenu} />
             </Overlay>
           ) : null}
-        </DocumentationSwitcherContainer>
-      </Inline>
-      <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
-        {props.isSearchDialogOpen ? (
-          <Overlay position="absolute" onClick={props.closeSearchDialog}>
-            <SearchDialog
-              centered={props.centeredSearchDialog}
-              onClose={props.closeSearchDialog}
-            />
-          </Overlay>
-        ) : (
-          <>
-            <MediaQuery forViewport="mobile">
-              <IconButton
-                icon={<SearchIcon />}
-                size="big"
-                label="Open search dialog"
-                onClick={props.openSearchDialog}
-                isDisabled={props.excludeFromSearchIndex}
+        </Inline>
+        <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
+          {props.isSearchDialogOpen ? (
+            <Overlay position="absolute" onClick={props.closeSearchDialog}>
+              <SearchDialog
+                centered={props.centeredSearchDialog}
+                onClose={props.closeSearchDialog}
               />
-            </MediaQuery>
-            <MediaQuery forViewport="tablet">
-              <SearchInput
-                id="search-input-placeholder"
-                size="small"
-                onFocus={props.openSearchDialog}
-                isDisabled={props.excludeFromSearchIndex}
-              />
-            </MediaQuery>
-          </>
-        )}
-      </SearchContainer>
-    </Content>
-    <Blank />
-  </Container>
-);
+            </Overlay>
+          ) : (
+            <>
+              <MediaQuery forViewport="mobile">
+                <IconButton
+                  icon={<SearchIcon />}
+                  size="big"
+                  label="Open search dialog"
+                  onClick={props.openSearchDialog}
+                  isDisabled={props.excludeFromSearchIndex}
+                />
+              </MediaQuery>
+              <MediaQuery forViewport="tablet">
+                <SearchInput
+                  id="search-input-placeholder"
+                  size="small"
+                  onFocus={props.openSearchDialog}
+                  isDisabled={props.excludeFromSearchIndex}
+                />
+              </MediaQuery>
+            </>
+          )}
+        </SearchContainer>
+      </Content>
+      <Blank />
+    </Container>
+  );
+};
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,

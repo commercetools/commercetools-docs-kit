@@ -18,9 +18,7 @@ describe('API type soft linking', () => {
         Cypress.config().baseUrl
       }${URL_API_DOCS_SMOKE_TEST}e2e-tests/soft-linking-second-page#${typeElementId}`
     );
-    cy.get('#body-content')
-      .find(`#${Cypress.$.escapeSelector(typeElementId)}`)
-      .should('exist');
+    cy.findByLabelText('SoftLinkArray definition').should('be.visible');
     cy.percySnapshot();
   });
 });

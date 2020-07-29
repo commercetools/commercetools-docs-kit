@@ -177,7 +177,7 @@ LevelGroup.propTypes = {
   navLevels: PropTypes.number.isRequired,
 };
 const Container = (props) => (
-  <SpacingsStack scale="s">
+  <SpacingsStack scale="m">
     {props.items.map((item, index) => {
       const level = 1;
       const isActive = getIsActive(props.activeSection, item);
