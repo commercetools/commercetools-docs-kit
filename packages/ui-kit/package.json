@@ -25,16 +25,16 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
   },
   "dependencies": {
-    "@commercetools-uikit/loading-spinner": "10.24.0",
-    "@commercetools-uikit/tooltip": "10.23.0",
+    "@commercetools-uikit/loading-spinner": "10.27.0",
+    "@commercetools-uikit/tooltip": "10.27.0",
     "lodash.escape": "4.0.1",
     "lodash.throttle": "4.1.1",
-    "parse5": "6.0.0",
+    "parse5": "6.0.1",
     "prism-react-renderer": "1.0.2",
     "prop-types": "15.7.2",
     "tiny-invariant": "1.1.0",
     "moment": "2.27.0",
-    "rss-parser": "3.8.0",
+    "rss-parser": "3.9.0",
     "swr": "0.2.3"
   },
   "devDependencies": {

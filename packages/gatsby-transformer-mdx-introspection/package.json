@@ -17,7 +17,7 @@
   "scripts": {},
   "dependencies": {
     "@babel/parser": "7.10.5",
-    "@mdx-js/mdx": "1.6.13",
+    "@mdx-js/mdx": "1.6.14",
     "deepmerge": "4.2.2",
     "gray-matter": "4.0.2"
   }
