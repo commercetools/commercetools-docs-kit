@@ -50,15 +50,10 @@ const LayoutReleaseNotesDetail = (props) => {
         <LayoutPageWrapper id="top">
           <LayoutPage>
             <LayoutPageHeader>
-              <SpacingsInline alignItems="center">
-                <AngleLeftIcon size="medium" color="primary" />
-                <Link
-                  href="/releases"
-                  noUnderline={true}
-                  css={css`
-                    display: inline-flex;
-                  `}
-                >
+              <Link href="/releases" noUnderline={true}>
+                <SpacingsInline alignItems="center">
+                  <AngleLeftIcon size="medium" color="primary" />
+
                   <span
                     css={css`
                       font-size: ${designSystem.typography.fontSizes.small};
@@ -66,8 +61,8 @@ const LayoutReleaseNotesDetail = (props) => {
                   >
                     {`All Release Notes`}
                   </span>
-                </Link>
-              </SpacingsInline>
+                </SpacingsInline>
+              </Link>
               <ReleaseNotePageTitle>
                 {props.pageData.title}
               </ReleaseNotePageTitle>
