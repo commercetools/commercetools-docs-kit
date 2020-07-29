@@ -52,7 +52,13 @@ const LayoutReleaseNotesDetail = (props) => {
             <LayoutPageHeader>
               <SpacingsInline alignItems="center">
                 <AngleLeftIcon size="medium" color="primary" />
-                <Link href="/releases" noUnderline={true}>
+                <Link
+                  href="/releases"
+                  noUnderline={true}
+                  css={css`
+                    display: inline-flex;
+                  `}
+                >
                   <span
                     css={css`
                       font-size: ${designSystem.typography.fontSizes.small};
