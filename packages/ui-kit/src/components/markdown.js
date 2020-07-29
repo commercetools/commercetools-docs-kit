@@ -3,10 +3,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import RibbonIcon from '../icons/ribbon-icon.svg';
 import { colors, dimensions, typography, tokens } from '../design-system';
-import {
-  CodeBlockMarkdownWrapper as CodeBlock,
-  Container as CodeBlockContainer,
-} from './multi-code-block';
+import { CodeBlockMarkdownWrapper as CodeBlock } from './multi-code-block';
 
 const headerStyles = () => css`
   line-height: 1.3;
@@ -54,29 +51,8 @@ const H6 = styled.h6`
   line-height: 1.4;
 `;
 
-/*
-The "container" styles have to be applied to containers that render markdown inside a surrounding
-visual box like a blockquote, notification box, card, or Subtitle.
-Heading margins are not set here because headings can and should not be used inside such containers.
-*/
-const containerStyles = () => css`
-  > * + * {
-    margin-top: ${dimensions.spacings.m};
-  }
-`;
-
 const ThematicBreak = styled.hr`
   display: none;
-`;
-const Blockquote = styled.blockquote`
-  ${containerStyles};
-  background-color: ${colors.light.surfaceQuote};
-  border-left: 1px solid ${colors.light.borderHighlight};
-  border-radius: 0 ${tokens.borderRadiusForBlockquote}
-    ${tokens.borderRadiusForBlockquote} 0;
-  color: ${colors.light.textFaded};
-  font-size: ${typography.fontSizes.small};
-  padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
 const Ul = styled.ul`
   padding-left: ${dimensions.spacings.xl};
@@ -91,6 +67,38 @@ const Ol = styled.ol`
     margin-top: ${dimensions.spacings.s};
   }
 `;
+const Dl = styled.dl`
+  > dd + * {
+    margin: ${dimensions.spacings.m} 0 0;
+  }
+`;
+const Dt = styled.dt`
+  color: ${colors.light.textSecondary};
+`;
+
+/*
+The "container" styles have to be applied to containers that render markdown inside a surrounding
+visual box like a blockquote, notification box, card, or Subtitle.
+Heading margins are not set here because headings can and should not be used inside such containers.
+*/
+const containerStyles = () => css`
+  > * + * {
+    margin-top: ${dimensions.spacings.m};
+  }
+  > * + ${Ul}, > * + ${Ol}, > * + ${Dl} {
+    margin-top: ${dimensions.spacings.s};
+  }
+`;
+
+const Dd = styled.dd`
+  ${containerStyles}
+  padding: 0 0 0 ${dimensions.spacings.l};
+
+  > * + * {
+    margin: ${dimensions.spacings.m} 0 0;
+  }
+`;
+
 const Li = styled.li`
   ${containerStyles};
   line-height: 1.46;
@@ -103,22 +111,18 @@ const Li = styled.li`
     list-style-type: circle;
   }
 `;
-const Dl = styled.dl`
-  > dd + * {
-    margin: ${dimensions.spacings.m} 0 0;
-  }
-`;
-const Dt = styled.dt`
-  color: ${colors.light.textSecondary};
-`;
-const Dd = styled.dd`
-  ${containerStyles}
-  padding: 0 0 0 ${dimensions.spacings.l};
 
-  > * + * {
-    margin: ${dimensions.spacings.m} 0 0;
-  }
+const Blockquote = styled.blockquote`
+  ${containerStyles};
+  background-color: ${colors.light.surfaceQuote};
+  border-left: 1px solid ${colors.light.borderHighlight};
+  border-radius: 0 ${tokens.borderRadiusForBlockquote}
+    ${tokens.borderRadiusForBlockquote} 0;
+  color: ${colors.light.textFaded};
+  font-size: ${typography.fontSizes.small};
+  padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
+
 const Table = styled.table`
   border: 1px solid ${colors.light.borderPrimary};
   border-top: 2px solid ${colors.light.borderPrimary};
@@ -213,6 +217,7 @@ const TableHeader = styled.th`
     display: block;
   }
 `;
+
 const InlineCode = styled.code`
   background-color: ${colors.light.surfaceInlineCode};
   border: 1px solid ${colors.light.surfaceInfo};
@@ -222,7 +227,6 @@ const InlineCode = styled.code`
   font-size: ${typography.fontSizes.small};
   padding: 0 ${dimensions.spacings.xs};
 `;
-
 const Em = styled.em``;
 const Strong = styled.strong``;
 const Delete = styled.span`
@@ -238,6 +242,14 @@ const TypographyPage = styled.div`
 
   section > * + * {
     margin-top: ${dimensions.spacings.m};
+  }
+
+  section > h2 + *,
+  section > h3 + *,
+  section > h4 + *,
+  section > h5 + *,
+  section > h6 + * {
+    margin-top: ${dimensions.spacings.s};
   }
 
   .section-h4,
@@ -265,11 +277,8 @@ const TypographyPage = styled.div`
   section > ${Blockquote} {
     margin: ${dimensions.spacings.l} ${dimensions.spacings.xxl};
   }
-  section > ${Ul}, section > ${Ol} {
-    margin-bottom: ${dimensions.spacings.xxl};
-  }
-  section > ${CodeBlockContainer} {
-    margin-bottom: ${dimensions.spacings.xxl};
+  section > ${Ul}, section > ${Ol}, section > ${Dl} {
+    margin-top: ${dimensions.spacings.s};
   }
 `;
 
