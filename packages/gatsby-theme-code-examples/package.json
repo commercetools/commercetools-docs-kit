@@ -29,7 +29,7 @@
     "react-dom": "16.13.1"
   },
   "peerDependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "7.0.0",
+    "@commercetools-docs/gatsby-theme-docs": "7.x",
     "gatsby": "2.x",
     "gatsby-source-filesystem": "2.x",
     "react": "16.x",

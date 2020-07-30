@@ -36,7 +36,7 @@
     "react-dom": "16.13.1"
   },
   "peerDependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "7.0.0",
+    "@commercetools-docs/gatsby-theme-docs": "7.x",
     "@emotion/core": "10.x",
     "@emotion/styled": "10.x",
     "gatsby": "2.x",
