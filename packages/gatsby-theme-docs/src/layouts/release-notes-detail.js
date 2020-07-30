@@ -50,9 +50,28 @@ const LayoutReleaseNotesDetail = (props) => {
         <LayoutPageWrapper>
           <LayoutPage>
             <LayoutPageHeader>
-              <SpacingsInline alignItems="center">
-                <AngleLeftIcon size="medium" color="primary" />
-                <Link href="/releases" noUnderline={true}>
+              <Link
+                href="/releases"
+                noUnderline={true}
+                css={css`
+                  svg {
+                    * {
+                      fill: ${designSystem.colors.light.link};
+                    }
+                  }
+
+                  :hover {
+                    svg {
+                      * {
+                        fill: ${designSystem.colors.light.linkHover};
+                      }
+                    }
+                  }
+                `}
+              >
+                <SpacingsInline alignItems="center">
+                  <AngleLeftIcon size="medium" color="primary" />
+
                   <span
                     css={css`
                       font-size: ${designSystem.typography.fontSizes.small};
@@ -60,8 +79,8 @@ const LayoutReleaseNotesDetail = (props) => {
                   >
                     {`All Release Notes`}
                   </span>
-                </Link>
-              </SpacingsInline>
+                </SpacingsInline>
+              </Link>
               <ReleaseNotePageTitle>
                 {props.pageData.title}
               </ReleaseNotePageTitle>

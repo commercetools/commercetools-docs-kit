@@ -29,20 +29,21 @@ const stampTheme = {
 
 const ReleaseNoteBody = (props) => (
   <SpacingsStack scale="m">
-    <DateElement>{props.date}</DateElement>
-    <UiKitThemeProvider theme={stampTheme}>
-      <SpacingsInline>
-        <Stamp tone={mapTypeToTone(props)}>{mapTypeToLabel(props)}</Stamp>
-      </SpacingsInline>
-    </UiKitThemeProvider>
-    {props.topics.length > 0 && (
-      <Topics>
-        {props.topics.map((topic) => (
-          <span key={topic}>{topic}</span>
-        ))}
-      </Topics>
-    )}
-
+    <SpacingsStack scale="s">
+      <DateElement>{props.date}</DateElement>
+      <UiKitThemeProvider theme={stampTheme}>
+        <SpacingsInline>
+          <Stamp tone={mapTypeToTone(props)}>{mapTypeToLabel(props)}</Stamp>
+        </SpacingsInline>
+      </UiKitThemeProvider>
+      {props.topics.length > 0 && (
+        <Topics>
+          {props.topics.map((topic) => (
+            <span key={topic}>{topic}</span>
+          ))}
+        </Topics>
+      )}
+    </SpacingsStack>
     <div>{props.children}</div>
   </SpacingsStack>
 );

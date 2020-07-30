@@ -93,6 +93,12 @@ const linkStyles = css`
 
   :hover {
     color: ${designSystem.colors.light.linkNavigation} !important;
+
+    svg {
+      * {
+        fill: ${designSystem.colors.light.linkNavigation};
+      }
+    }
   }
 `;
 const activeLinkStyles = css`
