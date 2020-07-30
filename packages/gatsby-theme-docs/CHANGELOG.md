@@ -1,5 +1,20 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 7.0.0
+
+### Patch Changes
+
+- [`bfc81c9`](https://github.com/commercetools/commercetools-docs-kit/commit/bfc81c9916692e4391e10217ac35ea12ac709301) [#586](https://github.com/commercetools/commercetools-docs-kit/pull/586) Thanks [@davifantasia](https://github.com/davifantasia)! - back to top now linked to header instead of content
+
+* [`79ca608`](https://github.com/commercetools/commercetools-docs-kit/commit/79ca6087b4ed32fbc781ce0797538f60c6860419) [#549](https://github.com/commercetools/commercetools-docs-kit/pull/549) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: broken soft links in import api
+
+- [`f06192c`](https://github.com/commercetools/commercetools-docs-kit/commit/f06192c544987a431094fd9b2d77ffa07ac46ead) [#585](https://github.com/commercetools/commercetools-docs-kit/pull/585) Thanks [@davifantasia](https://github.com/davifantasia)! - Release notes design review styling changes
+
+* [`a592bdf`](https://github.com/commercetools/commercetools-docs-kit/commit/a592bdfdd3720b39501bfe6981eeed9ba55e6941) [#581](https://github.com/commercetools/commercetools-docs-kit/pull/581) Thanks [@davifantasia](https://github.com/davifantasia)! - - top menu is highlighted on hover
+  - index menu style changes
+* Updated dependencies [[`ff1246e`](https://github.com/commercetools/commercetools-docs-kit/commit/ff1246e5e204181c21b6767239fa3cb788a4c0ee), [`8b44418`](https://github.com/commercetools/commercetools-docs-kit/commit/8b444189da90b5def5c71cc975818b730baaeca7)]:
+  - @commercetools-docs/ui-kit@7.0.0
+
 ## 6.0.1
 
 ### Patch Changes

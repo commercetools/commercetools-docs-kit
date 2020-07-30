@@ -1,5 +1,15 @@
 # @commercetools-docs/ui-kit
 
+## 7.0.0
+
+### Minor Changes
+
+- [`8b44418`](https://github.com/commercetools/commercetools-docs-kit/commit/8b444189da90b5def5c71cc975818b730baaeca7) [#574](https://github.com/commercetools/commercetools-docs-kit/pull/574) Thanks [@nkuehn](https://github.com/nkuehn)! - Optimize JSON syntax highlighting, tone down one color
+
+### Patch Changes
+
+- [`ff1246e`](https://github.com/commercetools/commercetools-docs-kit/commit/ff1246e5e204181c21b6767239fa3cb788a4c0ee) [#578](https://github.com/commercetools/commercetools-docs-kit/pull/578) Thanks [@nkuehn](https://github.com/nkuehn)! - Tighter spacing between some content blocks (headings, lists, code blocks)
+
 ## 6.0.0
 
 ### Patch Changes
