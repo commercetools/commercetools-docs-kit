@@ -3342,11 +3342,6 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.13.tgz#d58d2db408ee1fb2bfd6314d3cc86c444d08dc52"
   integrity sha512-k8UfufP+eZbxHsprAvGvQB/vmiXpbhMYnM0c6xov5xEg3dYdtzrpjnf2kYsTIwyr3RG2SeZXGjE9tG9vzli53Q==
 
-"@mdx-js/react@1.6.14":
-  version "1.6.14"
-  resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.14.tgz#20c64d6691a894227cd04006b620e5fff85f79b1"
-  integrity sha512-WN4OWXiSTN5x1Ee0ZeYQ9bjjSSgH3Mfx/ezcSV3T691C/PcHTNWwJa5qhcuq8V/NrVAeMc26aXuSdOAq6sRb1g==
-
 "@mdx-js/runtime@^1.6.6":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@mdx-js/runtime/-/runtime-1.6.13.tgz#f3c0616882f010cb49ff789fdac9d98618016115"
@@ -10484,10 +10479,10 @@ gatsby-plugin-manifest@2.4.21:
     semver "^5.7.1"
     sharp "^0.25.1"
 
-gatsby-plugin-mdx@1.2.30:
-  version "1.2.30"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.2.30.tgz#ee27c41f9c3277033a29d065768c56074e4a27a8"
-  integrity sha512-QhiiwyvPglCpG2FC/Qxk+ZiJhwK0PfQ+7I3lBrDPGWax+sIq3ZZzbhnd2Bjb3nBwFZFFVGAdCSHfqdFZM1W7IQ==
+gatsby-plugin-mdx@1.2.27:
+  version "1.2.27"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.2.27.tgz#dadc9ce6e874b1f181c12b5cc019bb7217d4e457"
+  integrity sha512-2j5voALrvJ14JR9UzY9NygatVHRpGcm15jjJRDYtnT9k5ptKkqYLuiPcQ3eBxoqwjvAamLJ8WYRhc/poP/Ezuw==
   dependencies:
     "@babel/core" "^7.10.3"
     "@babel/generator" "^7.10.3"
@@ -10504,7 +10499,7 @@ gatsby-plugin-mdx@1.2.30:
     escape-string-regexp "^1.0.5"
     eval "^0.1.4"
     fs-extra "^8.1.0"
-    gatsby-core-utils "^1.3.14"
+    gatsby-core-utils "^1.3.12"
     gray-matter "^4.0.2"
     json5 "^2.1.3"
     loader-utils "^1.4.0"
