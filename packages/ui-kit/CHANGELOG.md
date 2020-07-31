@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 7.0.1
+
+### Patch Changes
+
+- [`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5) [#590](https://github.com/commercetools/commercetools-docs-kit/pull/590) Thanks [@nkuehn](https://github.com/nkuehn)! - Don't wrap the date in RSS feed component
+
 ## 7.0.0
 
 ### Minor Changes

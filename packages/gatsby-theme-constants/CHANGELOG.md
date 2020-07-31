@@ -1,5 +1,15 @@
 # @commercetools-docs/gatsby-theme-constants
 
+## 7.0.1
+
+### Patch Changes
+
+- [`cebd5c9`](https://github.com/commercetools/commercetools-docs-kit/commit/cebd5c9d6c0d294f1335580f18d728b5eac4aa15) [#588](https://github.com/commercetools/commercetools-docs-kit/pull/588) Thanks [@emmenko](https://github.com/emmenko)! - Use version range for gatsby docs peer deps
+
+- Updated dependencies [[`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5), [`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5)]:
+  - @commercetools-docs/ui-kit@7.0.1
+  - @commercetools-docs/gatsby-theme-docs@7.0.1
+
 ## 7.0.0
 
 ### Patch Changes
