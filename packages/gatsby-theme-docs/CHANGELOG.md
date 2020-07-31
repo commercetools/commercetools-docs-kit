@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 7.0.1
+
+### Patch Changes
+
+- [`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5) [#590](https://github.com/commercetools/commercetools-docs-kit/pull/590) Thanks [@nkuehn](https://github.com/nkuehn)! - Fix RSS feeds being empty in some sites
+
+- Updated dependencies [[`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5)]:
+  - @commercetools-docs/ui-kit@7.0.1
+
 ## 7.0.0
 
 ### Patch Changes
