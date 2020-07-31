@@ -246,7 +246,7 @@ module.exports = (themeOptions = {}) => {
               query: `
               {
                 allReleaseNotePage(
-                  limit: 5, sort: { order: DESC, fields: date }, filter: {date: {gt: "1999-01-01"}},
+                  limit: 5, sort: { order: DESC, fields: date },
                 ) {
                     nodes {
                       description

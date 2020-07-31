@@ -41,6 +41,10 @@ const Table = styled.table`
   }
 `;
 
+const DateWrapper = styled.span`
+  white-space: nowrap;
+`;
+
 const RssFeeds = (props) => {
   if (!props.url) {
     const message = 'Must pass prop url to RssFeeds component.';
@@ -84,14 +88,16 @@ const RssFeeds = (props) => {
             {data.items.map((item, index) => (
               <tr key={`${item.title}${index}`}>
                 <td>
-                  <Link
-                    href={item.link}
-                    css={css`
-                      text-decoration: none;
-                    `}
-                  >
-                    {moment(item.pubDate).format('D MMMM YYYY')}
-                  </Link>
+                  <DateWrapper>
+                    <Link
+                      href={item.link}
+                      css={css`
+                        text-decoration: none;
+                      `}
+                    >
+                      {moment(item.pubDate).format('D MMMM YYYY')}
+                    </Link>
+                  </DateWrapper>
                 </td>
                 <td>{item.title}</td>
               </tr>
