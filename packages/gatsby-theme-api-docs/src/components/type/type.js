@@ -10,7 +10,8 @@ import ChildrenUnionLike from './children-union-like';
 
 const ApiType = (props) => {
   const apiTypes = useApiTypes();
-  const renderExamples = Boolean(props.renderExamples);
+  const renderExamples =
+    typeof props.renderExamples === 'boolean' ? props.renderExamples : true;
 
   const matchedApiType = apiTypes.find((apiType) => {
     return (
