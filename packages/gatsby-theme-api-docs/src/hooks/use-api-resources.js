@@ -18,6 +18,10 @@ export default () => {
           builtinType
           description
         }
+        codeExamples {
+          language
+          value
+        }
         responses {
           code
           description

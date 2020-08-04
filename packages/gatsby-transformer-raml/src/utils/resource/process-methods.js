@@ -1,23 +1,36 @@
 const parametersToArray = require('../parameters-to-array');
 const responsesToArray = require('./responses-to-array');
 
+function examplesToArray(codeExamples) {
+  if (codeExamples) {
+    return Object.entries(codeExamples).map(([key, value]) => {
+      return { language: key, value };
+    });
+  }
+  return undefined;
+}
+
 function processMethods(resource) {
-  const returnedMethod = JSON.parse(JSON.stringify(resource));
+  const returnedMethods = JSON.parse(JSON.stringify(resource));
   const methods = ['post', 'put', 'get', 'delete'];
 
   methods.forEach((method) => {
-    if (returnedMethod[method]) {
-      returnedMethod[method].queryParameters = parametersToArray(
-        returnedMethod[method].queryParameters
+    if (returnedMethods[method]) {
+      returnedMethods[method].queryParameters = parametersToArray(
+        returnedMethods[method].queryParameters
       );
 
-      returnedMethod[method].responses = responsesToArray(
-        returnedMethod[method].responses
+      returnedMethods[method].responses = responsesToArray(
+        returnedMethods[method].responses
+      );
+
+      returnedMethods[method].codeExamples = examplesToArray(
+        returnedMethods[method].codeExamples
       );
     }
   });
 
-  return returnedMethod;
+  return returnedMethods;
 }
 
 module.exports = processMethods;
