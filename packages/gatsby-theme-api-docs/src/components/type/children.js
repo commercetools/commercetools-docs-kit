@@ -28,6 +28,8 @@ DescriptionAndEnums.propTypes = {
 };
 
 const Children = (props) => {
+  const renderExamples = props.apiType.examples && props.renderExamples;
+
   return (
     <SpacingsStack scale="m">
       {!props.renderDescriptionBelowProperties && (
@@ -43,9 +45,7 @@ const Children = (props) => {
           />
         )}
 
-        {props.apiType.examples && (
-          <Examples examples={props.apiType.examples} />
-        )}
+        {renderExamples && <Examples examples={props.apiType.examples} />}
       </SideBySide>
 
       {props.renderDescriptionBelowProperties && (
@@ -59,6 +59,7 @@ Children.propTypes = {
   apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.object.isRequired,
   renderDescriptionBelowProperties: PropTypes.bool,
+  renderExamples: PropTypes.bool,
   propertiesTableTitle: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,

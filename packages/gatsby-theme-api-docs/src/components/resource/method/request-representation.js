@@ -30,6 +30,7 @@ const RequestRepresentation = ({ apiKey, apiType }) => {
           apiKey={apiKey}
           type={apiType}
           renderDescriptionBelowProperties={true}
+          renderExamples={false}
         />
       )}
     </SpacingsStack>
