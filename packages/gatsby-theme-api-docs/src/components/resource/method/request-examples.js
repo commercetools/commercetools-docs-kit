@@ -10,7 +10,7 @@ const RequestExamples = ({ examples }) => {
 
   return (
     <SpacingsStack scale="m">
-      <MultiCodeBlock title={`Request Example`}>
+      <MultiCodeBlock title={`Request Example:`}>
         {examples.map((example) => {
           return (
             <CodeBlock

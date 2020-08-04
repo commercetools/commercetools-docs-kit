@@ -1,13 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import useReadResourceByResourcePath from '../hooks/use-read-resource-by-resource-path';
 import reportError from '../utils/report-error';
 import Method from './resource/method';
-
-const Container = styled.div`
-  margin: 1em 0;
-`;
 
 const ResourceMethod = ({ apiKey, resource, method, title }) => {
   const resourceObject = useReadResourceByResourcePath(apiKey, resource);
@@ -25,16 +20,14 @@ const ResourceMethod = ({ apiKey, resource, method, title }) => {
   }
 
   return (
-    <Container>
-      <Method
-        apiKey={apiKey}
-        uris={resourceObject.uris}
-        resourceUriParameters={resourceObject.allUriParameters}
-        method={methodObject}
-        methodType={method}
-        title={title}
-      />
-    </Container>
+    <Method
+      apiKey={apiKey}
+      uris={resourceObject.uris}
+      resourceUriParameters={resourceObject.allUriParameters}
+      method={methodObject}
+      methodType={method}
+      title={title}
+    />
   );
 };
 

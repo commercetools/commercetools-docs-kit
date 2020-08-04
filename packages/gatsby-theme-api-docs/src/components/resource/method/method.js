@@ -2,11 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import {
+  Markdown,
+  MultiCodeBlock,
+  CodeBlock,
+} from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import {
   markdownFragmentToReact,
   SideBySide,
+  FullWidthContainer,
 } from '@commercetools-docs/gatsby-theme-docs';
 import { generateEndpointURN } from '../../../utils/ctp-urn';
 import {
@@ -22,14 +27,11 @@ import Responses from './responses';
 import Parameters from './parameters';
 import RequestRepresentation from './request-representation';
 import RequestExamples from './request-examples';
+import { useApiTypeByApiKeyAndDisplayName } from '../../../hooks/use-api-types';
 
 const Title = styled.h6`
   font-size: ${typography.fontSizes.h4};
   font-weight: ${typography.fontWeights.medium};
-`;
-
-const Description = styled.p`
-  line-height: ${typography.lineHeights.body};
 `;
 
 const Container = styled.div`
@@ -66,75 +68,106 @@ const Method = ({
     method: methodType,
   });
 
+  const successResponse =
+    method.responses &&
+    method.responses.find(
+      (response) => response.code >= 200 && response.code < 300
+    );
+  const successResponseBody =
+    successResponse &&
+    successResponse.body &&
+    successResponse.body.applicationjson;
+  const successType = useApiTypeByApiKeyAndDisplayName(
+    apiKey,
+    successResponseBody && successResponseBody.type
+  );
+  const successTypeExample =
+    successType &&
+    successType.examples.find((example) => example.name === 'default');
+
   return (
-    <SpacingsStack scale="s">
+    <>
       {title ? (
         <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
       ) : (
         <a name={id}></a>
       )}
 
-      {method.description && (
-        <Description>{markdownFragmentToReact(method.description)}</Description>
-      )}
-
-      <SideBySide>
+      <FullWidthContainer>
         <Container
           css={css`
             border-left-color: ${methodColor};
           `}
         >
-          <SpacingsStack scale="m">
-            <Url
-              apiKey={apiKey}
-              method={methodType}
-              methodColor={methodColor}
-              uris={uris}
-            />
-
-            {method.securedBy && (
-              <Scopes
-                scopes={method.securedBy[0].oauth_2_0.scopes}
-                title={oauth2Scopes}
-              />
-            )}
-
-            {allUriParameters.length > 0 && (
-              <Parameters
-                title={pathParametersTitle}
-                parameters={allUriParameters}
-              />
-            )}
-
-            {method.queryParameters && (
-              <Parameters
+          <SideBySide>
+            <SpacingsStack scale="m">
+              <Url
                 apiKey={apiKey}
-                title={queryParametersTitle}
-                parameters={method.queryParameters}
+                method={methodType}
+                methodColor={methodColor}
+                uris={uris}
               />
-            )}
 
-            {method.body && (
-              <RequestRepresentation
-                apiKey={apiKey}
-                apiType={method.body.applicationjson.type}
-              />
-            )}
+              {method.description &&
+                markdownFragmentToReact(method.description)}
 
-            {method.responses && (
-              <Responses
-                apiKey={apiKey}
-                responses={method.responses}
-                title={responseRepresentation}
-              />
-            )}
-          </SpacingsStack>
+              {method.securedBy && (
+                <Scopes
+                  scopes={method.securedBy[0].oauth_2_0.scopes}
+                  title={oauth2Scopes}
+                />
+              )}
+
+              {allUriParameters.length > 0 && (
+                <Parameters
+                  title={pathParametersTitle}
+                  parameters={allUriParameters}
+                />
+              )}
+
+              {method.queryParameters && (
+                <Parameters
+                  apiKey={apiKey}
+                  title={queryParametersTitle}
+                  parameters={method.queryParameters}
+                />
+              )}
+
+              {method.body && (
+                <RequestRepresentation
+                  apiKey={apiKey}
+                  apiType={method.body.applicationjson.type}
+                />
+              )}
+
+              {method.responses && (
+                <Responses
+                  apiKey={apiKey}
+                  responses={method.responses}
+                  title={responseRepresentation}
+                />
+              )}
+            </SpacingsStack>
+            <SpacingsStack scale="m">
+              {method.codeExamples && (
+                <RequestExamples examples={method.codeExamples} />
+              )}
+              {successTypeExample && (
+                <MultiCodeBlock
+                  title={`Response Example:`}
+                  secondaryTheme={true}
+                >
+                  <CodeBlock
+                    language="json"
+                    content={successTypeExample.value}
+                  />
+                </MultiCodeBlock>
+              )}
+            </SpacingsStack>
+          </SideBySide>
         </Container>
-        {method.codeExamples && (
-          <RequestExamples examples={method.codeExamples} />
-        )}
-      </SideBySide>
-    </SpacingsStack>
+      </FullWidthContainer>
+    </>
   );
 };
 
