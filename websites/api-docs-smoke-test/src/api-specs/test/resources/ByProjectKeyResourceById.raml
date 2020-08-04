@@ -26,6 +26,22 @@ post:
           strict: true
           value: !include ../examples/ByProjectKeyResourceByIdPost-default.json
 
+  (codeExamples):
+    curl: |-
+      curl -XPOST /{projectKey}/resource/{id} -i \
+      --header 'Authorization: Bearer YOUR_TOKEN \
+      --header 'Content-Type: application/json' \
+      --data-binary @- << EOF 
+      {
+        "version" : 1,
+        "actions" : [ {
+          "action" : "doSomeThing"
+        }, {
+          "action" : "changeSomeProperty",
+          "someProperty" : "any string"
+        } ]
+      }
+      EOF
 get:
   securedBy:
   - oauth_2_0:
@@ -67,6 +83,10 @@ get:
               strict: true
               value: !include ../examples/ByProjectKeyResourceByIdGet-200-default.json
 
+  (codeExamples):
+    curl: |-
+      curl -XGET /{projectKey}/resource/{id} -i \
+      --header 'Authorization: Bearer YOUR_TOKEN'
 delete:
   securedBy:
   - oauth_2_0:
@@ -87,3 +107,8 @@ delete:
             default:
               strict: true
               value: !include ../examples/ByProjectKeyResourceByIdDelete-200-default.json
+
+  (codeExamples):
+    curl: |-
+      curl -XDELETE /{projectKey}/resource/{id} -i \
+      --header 'Authorization: Bearer YOUR_TOKEN'
