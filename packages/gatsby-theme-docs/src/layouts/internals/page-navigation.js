@@ -9,14 +9,16 @@ import {
 } from '@commercetools-docs/ui-kit';
 import useActiveSection from '../../hooks/use-active-section';
 
-const itemType = {
-  url: PropTypes.string,
-  title: PropTypes.string,
-};
 const itemsType = PropTypes.arrayOf(
   PropTypes.shape({
-    ...itemType,
-    items: PropTypes.arrayOf(PropTypes.shape(itemType)),
+    url: PropTypes.string,
+    title: PropTypes.string,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string,
+        title: PropTypes.string,
+      })
+    ),
   })
 );
 
