@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 7.0.2
+
+### Patch Changes
+
+- [`aa9e848`](https://github.com/commercetools/commercetools-docs-kit/commit/aa9e8485454a2e18024772192c37979756af9167) [#592](https://github.com/commercetools/commercetools-docs-kit/pull/592) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- Updated dependencies [[`aa9e848`](https://github.com/commercetools/commercetools-docs-kit/commit/aa9e8485454a2e18024772192c37979756af9167)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.2
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@3.0.4
+  - @commercetools-docs/ui-kit@7.0.2
+
 ## 7.0.1
 
 ### Patch Changes
