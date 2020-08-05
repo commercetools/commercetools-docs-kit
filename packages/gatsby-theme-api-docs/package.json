@@ -25,13 +25,13 @@
     "@commercetools-docs/ui-kit": "7.0.1",
     "@commercetools-uikit/card": "10.21.0",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/spacings-inline": "10.21.0",
-    "@commercetools-uikit/spacings-stack": "10.21.0",
+    "@commercetools-uikit/spacings-inline": "10.27.1",
+    "@commercetools-uikit/spacings-stack": "10.27.1",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
     "@commercetools-docs/ramldoc-generator": "3.0.2",
-    "gatsby": "2.24.13",
+    "gatsby": "2.24.27",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
