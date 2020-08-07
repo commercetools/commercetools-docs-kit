@@ -55,7 +55,7 @@
     "hast-util-heading": "1.0.4",
     "lodash.throttle": "4.1.1",
     "moment": "2.27.0",
-    "prismjs": "1.20.0",
+    "prismjs": "1.21.0",
     "prop-types": "15.7.2",
     "qss": "2.0.3",
     "react-helmet": "6.1.0",
