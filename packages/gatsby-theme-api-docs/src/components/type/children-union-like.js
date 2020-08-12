@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import Description from './description';
+import Description from '../description';
 import Children from './children';
 
 const ChildrenUnionLike = (props) => {
