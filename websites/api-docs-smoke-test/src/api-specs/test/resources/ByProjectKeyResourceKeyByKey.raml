@@ -34,3 +34,8 @@ get:
             default:
               strict: true
               value: !include ../examples/ByProjectKeyResourceKeyByKeyGet-200-default.json
+
+  (codeExamples):
+    curl: |-
+      curl -XGET /{projectKey}/resource/key={key} -i \
+      --header 'Authorization: Bearer YOUR_TOKEN'

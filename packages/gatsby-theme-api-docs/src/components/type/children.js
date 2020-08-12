@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { SideBySide } from '@commercetools-docs/gatsby-theme-docs';
-import Description from './description';
+import Description from '../description';
 import Enum from './enum';
 import Properties from './properties/properties';
 import Examples from './examples';

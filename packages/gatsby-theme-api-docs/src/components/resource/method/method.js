@@ -18,14 +18,11 @@ import Scopes from './scopes';
 import Responses from './responses';
 import Parameters from './parameters';
 import RequestRepresentation from './request-representation';
+import Description from '../../description';
 
 const Title = styled.h6`
   font-size: ${typography.fontSizes.h4};
   font-weight: ${typography.fontWeights.medium};
-`;
-
-const Description = styled.p`
-  line-height: ${typography.lineHeights.body};
 `;
 
 const Container = styled.div`
