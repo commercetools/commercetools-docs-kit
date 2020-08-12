@@ -28,6 +28,18 @@ types:
         default: 1.5
         minimum: 0.1
         maximum: 2.23
+  WideLayoutFloatTestType:
+    description: A copy of FloatTestType, used to test wide layout.
+    properties:
+      floatExample:
+        required: true
+        type: number
+        # https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md/#number
+        format: float
+        description: _Description Text_ including rendered markdown.
+        default: 1.5
+        minimum: 0.1
+        maximum: 2.23
   NumberTestType:
     description: Tests JSON type "number",
     properties:
