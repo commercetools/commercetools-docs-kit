@@ -165,15 +165,6 @@ module.exports = (themeOptions = {}) => {
       'gatsby-plugin-react-helmet',
       'gatsby-plugin-emotion',
       {
-        resolve: 'gatsby-plugin-prefetch-google-fonts',
-        options: {
-          fonts: [
-            { family: 'Roboto', variants: ['400', '400i', '500', '700'] },
-            { family: 'Roboto Mono', variants: ['400', '500'] },
-          ],
-        },
-      },
-      {
         resolve: 'gatsby-plugin-manifest',
         options: {
           // We want to generate legacy "apple-touch" icons for the dark color icon.
