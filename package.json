@@ -60,7 +60,7 @@
     "@emotion/styled": "10.0.27",
     "@percy/cypress": "2.3.1",
     "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "8.4.0",
+    "@rollup/plugin-node-resolve": "9.0.0",
     "@svgr/rollup": "5.4.0",
     "@testing-library/cypress": "6.0.0",
     "@testing-library/jest-dom": "5.11.3",
