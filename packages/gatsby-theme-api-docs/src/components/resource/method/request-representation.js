@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import ApiType from '../../type';
-import { requestRepresentation } from '../../../utils/constants';
 import {
   useTypeLocations,
   locationForType,
@@ -18,7 +17,7 @@ const RequestRepresentation = ({ apiKey, apiType }) => {
     typeof locationForType(apiKey, apiType, typeLocations) === 'undefined';
   const title = (
     <SpacingsInline>
-      <Title>{requestRepresentation}:</Title>{' '}
+      <Title>Request Body:</Title>{' '}
       {renderTypeAsLink(apiKey, apiType, typeLocations)}
     </SpacingsInline>
   );
@@ -30,6 +29,7 @@ const RequestRepresentation = ({ apiKey, apiType }) => {
           apiKey={apiKey}
           type={apiType}
           renderDescriptionBelowProperties={true}
+          renderExamples={false}
         />
       )}
     </SpacingsStack>
