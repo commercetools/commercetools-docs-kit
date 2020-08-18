@@ -61,6 +61,7 @@ ApiType.propTypes = {
     PropTypes.object,
   ]),
   renderDescriptionBelowProperties: PropTypes.bool,
+  // renderExamples is needed because examples are rendered differently in methods
   renderExamples: PropTypes.bool,
 };
 
