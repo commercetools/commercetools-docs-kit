@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 7.0.3
+
+### Patch Changes
+
+- [`2dd19f2`](https://github.com/commercetools/commercetools-docs-kit/commit/2dd19f2e8a60c55bfd87f72ec8b8ca79fbdbbc52) [#614](https://github.com/commercetools/commercetools-docs-kit/pull/614) Thanks [@emmenko](https://github.com/emmenko)! - Load fonts using typeface packages, instead of gatsby plugin for google fonts
+
+* [`b5aa043`](https://github.com/commercetools/commercetools-docs-kit/commit/b5aa043f4d7655ee51322cb04df6ac766a311f9f) [#601](https://github.com/commercetools/commercetools-docs-kit/pull/601) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency prismjs to v1.21.0 [security]
+
+* Updated dependencies [[`fed7a9b`](https://github.com/commercetools/commercetools-docs-kit/commit/fed7a9b6e375f53750df78b1989ea8c67482516c)]:
+  - @commercetools-docs/ui-kit@7.0.3
+
 ## 7.0.2
 
 ### Patch Changes
