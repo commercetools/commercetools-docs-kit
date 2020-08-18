@@ -5,6 +5,8 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
+import 'typeface-roboto';
+import 'typeface-roboto-mono';
 import React from 'react';
 import Prism from 'prism-react-renderer/prism';
 import { CacheProvider } from '@emotion/core';

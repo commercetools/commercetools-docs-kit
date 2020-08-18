@@ -39,7 +39,6 @@
     "gatsby-plugin-manifest": "2.4.23",
     "gatsby-plugin-mdx": "1.2.34",
     "gatsby-plugin-meta-redirect": "1.1.1",
-    "gatsby-plugin-prefetch-google-fonts": "1.4.3",
     "gatsby-plugin-react-helmet": "3.3.10",
     "gatsby-plugin-remove-trailing-slashes": "2.3.11",
     "gatsby-plugin-sharp": "2.6.27",
@@ -68,6 +67,8 @@
     "remark-parse": "8.0.3",
     "remark-react": "7.0.1",
     "slugify": "1.4.5",
+    "typeface-roboto": "0.0.75",
+    "typeface-roboto-mono": "0.0.75",
     "unified": "9.1.0",
     "unist-util-filter": "2.0.2"
   },
