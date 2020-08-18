@@ -17,11 +17,7 @@ const ChildrenUnionLike = (props) => {
             <p>
               <strong>{subType.displayName}</strong>
             </p>
-            <Children
-              apiKey={props.apiKey}
-              apiType={subType}
-              renderExamples={props.renderExamples}
-            />
+            <Children apiKey={props.apiKey} apiType={subType} />
           </SpacingsStack>
         ))}
       </SpacingsStack>
@@ -33,7 +29,6 @@ ChildrenUnionLike.propTypes = {
   apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.object.isRequired,
   apiTypeSubTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  renderExamples: PropTypes.bool,
 };
 
 export default ChildrenUnionLike;
