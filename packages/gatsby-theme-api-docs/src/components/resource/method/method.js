@@ -110,6 +110,7 @@ const Method = ({
             <RequestRepresentation
               apiKey={apiKey}
               apiType={method.body.applicationjson.type}
+              codeExamples={method.codeExamples}
             />
           )}
 
