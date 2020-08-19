@@ -28,6 +28,10 @@ export default () => {
             }
           }
         }
+        codeExamples {
+          language
+          value
+        }
       }
 
       fragment methodBodies on RamlResourceMethodBody {
