@@ -19,6 +19,7 @@ import Responses from './responses';
 import Parameters from './parameters';
 import RequestRepresentation from './request-representation';
 import Description from '../../description';
+import RequestResponseExamples from './request-response-examples';
 
 const Title = styled.h6`
   font-size: ${typography.fontSizes.h4};
@@ -110,7 +111,6 @@ const Method = ({
             <RequestRepresentation
               apiKey={apiKey}
               apiType={method.body.applicationjson.type}
-              codeExamples={method.codeExamples}
             />
           )}
 
@@ -121,6 +121,12 @@ const Method = ({
               title={responseRepresentation}
             />
           )}
+
+          <RequestResponseExamples
+            apiKey={apiKey}
+            requestCodeExamples={method.codeExamples}
+            responses={method.responses}
+          />
         </SpacingsStack>
       </Container>
     </SpacingsStack>

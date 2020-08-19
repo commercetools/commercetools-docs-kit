@@ -2,15 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import {
-  designSystem,
-  MultiCodeBlock,
-  CodeBlock,
-} from '@commercetools-docs/ui-kit';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { tokens, dimensions, typography } from '../../../design-system';
-import { useApiTypes } from '../../../hooks/use-api-types';
 import { useTypeLocations } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
 import Title from './title';
@@ -30,25 +25,6 @@ const LinkContainer = styled.span`
 
 const Responses = ({ apiKey, responses, title }) => {
   const typeLocations = useTypeLocations();
-  const apiTypes = useApiTypes();
-
-  // extract code examples of all responses
-  const codeExamples = [];
-  responses.forEach((response) => {
-    const typeDisplayName = response.body && response.body.applicationjson.type;
-    if (typeDisplayName) {
-      const apiType = apiTypes.find((type) => {
-        return type.apiKey === apiKey && type.displayName === typeDisplayName;
-      });
-
-      if (apiType.examples) {
-        codeExamples.push({
-          typeDisplayName,
-          value: apiType.examples[0].value,
-        });
-      }
-    }
-  });
 
   return (
     <SpacingsStack scale="s">
@@ -78,22 +54,6 @@ const Responses = ({ apiKey, responses, title }) => {
           })}
         </div>
       </SpacingsInline>
-
-      {codeExamples.map((codeExample) => {
-        return (
-          <MultiCodeBlock
-            key={codeExample.typeDisplayName}
-            secondaryTheme={true}
-            title={
-              codeExamples.length === 1
-                ? `Response Example:`
-                : `${codeExample.typeDisplayName} Response Example:`
-            }
-          >
-            <CodeBlock language="json" content={codeExample.value} />
-          </MultiCodeBlock>
-        );
-      })}
     </SpacingsStack>
   );
 };
