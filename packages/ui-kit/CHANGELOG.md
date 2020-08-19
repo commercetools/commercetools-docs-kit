@@ -1,5 +1,17 @@
 # @commercetools-docs/ui-kit
 
+## 7.0.4
+
+### Patch Changes
+
+- [`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f) [#616](https://github.com/commercetools/commercetools-docs-kit/pull/616) Thanks [@emmenko](https://github.com/emmenko)! - Update UI Kit dependencies
+
+## 7.0.3
+
+### Patch Changes
+
+- [`fed7a9b`](https://github.com/commercetools/commercetools-docs-kit/commit/fed7a9b6e375f53750df78b1989ea8c67482516c) [#597](https://github.com/commercetools/commercetools-docs-kit/pull/597) Thanks [@emmenko](https://github.com/emmenko)! - chore: update prism-renderer to 1.1.1
+
 ## 7.0.2
 
 ### Patch Changes

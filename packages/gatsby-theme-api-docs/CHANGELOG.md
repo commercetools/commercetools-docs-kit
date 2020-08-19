@@ -1,5 +1,24 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 7.0.4
+
+### Patch Changes
+
+- [`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f) [#616](https://github.com/commercetools/commercetools-docs-kit/pull/616) Thanks [@emmenko](https://github.com/emmenko)! - Update UI Kit dependencies
+
+- Updated dependencies [[`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.4
+  - @commercetools-docs/ui-kit@7.0.4
+
+## 7.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`2dd19f2`](https://github.com/commercetools/commercetools-docs-kit/commit/2dd19f2e8a60c55bfd87f72ec8b8ca79fbdbbc52), [`fed7a9b`](https://github.com/commercetools/commercetools-docs-kit/commit/fed7a9b6e375f53750df78b1989ea8c67482516c), [`b5aa043`](https://github.com/commercetools/commercetools-docs-kit/commit/b5aa043f4d7655ee51322cb04df6ac766a311f9f), [`e1df4de`](https://github.com/commercetools/commercetools-docs-kit/commit/e1df4de7e0c0d970f52bc56f463a48e8b260ecba)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.3
+  - @commercetools-docs/ui-kit@7.0.3
+  - @commercetools-docs/gatsby-transformer-raml@3.0.2
+
 ## 7.0.2
 
 ### Patch Changes
