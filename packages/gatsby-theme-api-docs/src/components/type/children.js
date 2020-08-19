@@ -43,7 +43,7 @@ const Children = (props) => {
           />
         )}
 
-        {props.apiType.examples && (
+        {props.apiType.examples && !props.doNotRenderExamples && (
           <Examples examples={props.apiType.examples} />
         )}
       </SideBySide>
@@ -63,6 +63,7 @@ Children.propTypes = {
     PropTypes.object,
   ]),
   renderDescriptionBelowProperties: PropTypes.bool,
+  doNotRenderExamples: PropTypes.bool,
 };
 
 export default Children;

@@ -36,6 +36,7 @@ const ApiType = (props) => {
           apiKey={props.apiKey}
           apiType={matchedApiType}
           apiTypeSubTypes={apiTypeSubTypes}
+          doNotRenderExamples={props.doNotRenderExamples}
         />
       ) : (
         <Children
@@ -45,6 +46,7 @@ const ApiType = (props) => {
           renderDescriptionBelowProperties={
             props.renderDescriptionBelowProperties
           }
+          doNotRenderExamples={props.doNotRenderExamples}
         />
       )}
     </FullWidthContainer>
@@ -59,6 +61,7 @@ ApiType.propTypes = {
     PropTypes.object,
   ]),
   renderDescriptionBelowProperties: PropTypes.bool,
+  doNotRenderExamples: PropTypes.bool,
 };
 
 export default ApiType;
