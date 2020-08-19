@@ -46,6 +46,8 @@
       path: /types/single-full-example-test-type
 - chapter-title: Endpoints
   pages:
+    - title: Methods
+      path: /endpoints/methods
     - title: GET Resource
       path: /endpoints/simple-resource-get
     - title: GET Resource by ID
