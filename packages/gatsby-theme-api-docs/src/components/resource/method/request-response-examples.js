@@ -73,7 +73,15 @@ RequestResponseExamples.propTypes = {
   responses: PropTypes.arrayOf(
     PropTypes.shape({
       code: PropTypes.number.isRequired,
-      body: PropTypes.object,
+      body: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.shape({
+          applicationjson: PropTypes.shape({
+            builtinType: PropTypes.string.isRequired,
+            type: PropTypes.string.isRequired,
+          }),
+        }),
+      ]),
     }).isRequired
   ),
 };
