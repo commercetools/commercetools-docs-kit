@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/ui-kit",
   "description": "UI component library for building commercetools documentation websites",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -14,7 +14,12 @@
   },
   "main": "./dist/ui-kit.cjs.js",
   "module": "./dist/ui-kit.es.js",
-  "files": ["dist", "package.json", "LICENSE", "README.md"],
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
