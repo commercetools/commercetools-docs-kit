@@ -6,64 +6,18 @@
       path: /regular-desktop-layout
 - chapter-title: Types
   pages:
-    - title: OutOfOrderPropertiesTestType
-      path: /types/out-of-order-properties-test-type
-    - title: NumberTestType
-      path: /types/number-test-type
-    - title: IntegerTestType
-      path: /types/integer-test-type
-    - title: FloatTestType
-      path: /types/float-test-type
-    - title: StringTestType
-      path: /types/string-test-type
-    - title: BooleanTestType
-      path: /types/boolean-test-type
-    - title: DateTestType
-      path: /types/date-test-type
-    - title: ArrayTestType
-      path: /types/array-test-type
-    - title: ObjectTestType
-      path: /types/object-test-type
-    - title: ObjectTestTypeDraft
-      path: /types/object-test-type-draft
-    - title: AnyTestType
-      path: /types/any-test-type
-    - title: Enums
-      path: /types/enums
-    - title: Constants
-      path: /types/constants
-    - title: Unions
-      path: /types/unions
-    - title: OptionalPropertyTestType
-      path: /types/optional-property-test-type
-    - title: AnnotationsTestType
-      path: /types/annotations-test-type
-    - title: ExamplesTestType
-      path: /types/examples-test-type
-    - title: SingleExampleTestType
-      path: /types/single-example-test-type
-    - title: SingleFullExampleTestType
-      path: /types/single-full-example-test-type
+    - title: General
+      path: /types/general
+    - title: Scalars
+      path: /types/scalars
+    - title: Examples
+      path: /types/examples
+    - title: Enums, Constants & Unions
+      path: /types/enums-constants-unions
 - chapter-title: Endpoints
   pages:
     - title: Methods
       path: /endpoints/methods
-    - title: GET Resource
-      path: /endpoints/simple-resource-get
-    - title: GET Resource by ID
-      path: /endpoints/simple-resource-get-by-id
-    - title: GET Resource by key
-      path: /endpoints/simple-resource-get-by-key
-    - title: GET Search Resource
-      path: /endpoints/simple-resource-search
-    - title: POST Resource
-      path: /endpoints/simple-resource-post
-    - title: POST with all options
-      path: /endpoints/complexity-smoketest-post
-    - title: POST Resource by ID
-      path: /endpoints/simple-resource-post-by-id
-    - title: DELETE resource by ID
-      path: /endpoints/simple-resource-delete-by-id
     - title: All Endpoints of Resource
       path: /endpoints/endpoints-for-resource
 - chapter-title: E2E Tests
