@@ -1,0 +1,126 @@
+---
+title: Methods
+description: All cases for endpoint methods
+---
+
+# Get Resource
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource"
+  method="GET"
+/>
+```
+
+<ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="GET" />
+
+# GET Resource by ID
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/{id}"
+  method="GET"
+  title="Custom Title from MDX"
+/>
+```
+
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/{id}"
+  method="GET"
+  title="Custom Title from MDX"
+/>
+
+# GET Resource by Key
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/key={key}"
+  method="GET"
+/>
+```
+
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/key={key}"
+  method="GET"
+/>
+
+# GET Search Resource
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/searchApiPattern"
+  method="GET"
+/>
+```
+
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/searchApiPattern"
+  method="GET"
+/>
+
+# POST Resource
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource"
+  method="POST"
+/>
+```
+
+<ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="POST" />
+
+# POST with All Options
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/artificially-complex/path/uri-parameter-one={uriParameterOne}/{uriParameterTwo}"
+  method="POST"
+/>
+```
+
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/artificially-complex/path/uri-parameter-one={uriParameterOne}/{uriParameterTwo}"
+  method="POST"
+/>
+
+# POST Resource by ID
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/{id}"
+  method="POST"
+/>
+```
+
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/{id}"
+  method="POST"
+/>
+
+# DELETE Resource by ID
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/{id}"
+  method="DELETE"
+/>
+```
+
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/{id}"
+  method="DELETE"
+/>
