@@ -20,7 +20,7 @@ Id quo virtute epicurei phaedrum. No volumus atomorum sit, sonet sensibus ne quo
 
 # API Endpoint Representations
 
-## An Endpoint with Simple Request Example
+## An ApiEndpoint with Simple Request Example
 
 <ApiEndpoint
   apiKey="test"
@@ -28,7 +28,7 @@ Id quo virtute epicurei phaedrum. No volumus atomorum sit, sonet sensibus ne quo
   method="GET"
 />
 
-## An Endpoint with Object Request Example
+## An ApiEndpoint with Object Request Example
 
 <ApiEndpoint
   apiKey="test"
@@ -36,21 +36,25 @@ Id quo virtute epicurei phaedrum. No volumus atomorum sit, sonet sensibus ne quo
   method="POST"
 />
 
-## An Endpoint with Simple Request & Response Examples
+## An ApiEndpoint with Simple Request & Response Examples
 
 <ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="GET" />
 
-## An Endpoint with Object Request & Response Examples
+## An ApiEndpoint with Object Request & Response Examples
 
 <ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="POST" />
 
-## An Endpoint with Object Request & Multiple Response Examples
+## An ApiEndpoint with Object Request & Multiple Response Examples
 
 <ApiEndpoint
   apiKey="test"
   resource="/{projectKey}/resource/artificially-complex/path/uri-parameter-one={uriParameterOne}/{uriParameterTwo}"
   method="POST"
 />
+
+## An ApiEndpointsForResource
+
+<ApiEndpointsForResource apiKey="test" resource="/{projectKey}/resource" />
 
 ## Manual Side By Side Content
 
