@@ -64,7 +64,7 @@ const Method = ({
   });
 
   return (
-    <>
+    <SpacingsStack scale="s">
       {title ? (
         <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
       ) : (
@@ -135,7 +135,7 @@ const Method = ({
           </SpacingsStack>
         </SideBySide>
       </Container>
-    </>
+    </SpacingsStack>
   );
 };
 
