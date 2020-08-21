@@ -8,7 +8,7 @@ snapshot:
     }
 static-snapshots:
   base-url: /
-  snapshot-files: '**/components/**/*.html,**/views/markdown/*.html,**/releases/index.html,**/types/**/*.html,**/endpoints/**/*.html,**/layouts/**/*.html'
+  snapshot-files: '**/components/**/*.html,**/views/markdown/*.html,**/releases/index.html,**/types/**/*.html,**/endpoints/**/*.html'
   ignore-files: '**/site-template/**/*.html'
 agent:
   asset-discovery:
