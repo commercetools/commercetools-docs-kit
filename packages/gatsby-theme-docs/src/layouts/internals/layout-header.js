@@ -122,7 +122,6 @@ const DocumentationSwitcherButton = styled.div`
 
   :hover,
   :focus {
-    outline: none;
     border-bottom: 2px solid ${designSystem.colors.light.linkNavigation};
     color: ${designSystem.colors.light.linkNavigation};
     svg {
@@ -130,6 +129,10 @@ const DocumentationSwitcherButton = styled.div`
         fill: ${designSystem.colors.light.linkNavigation};
       }
     }
+  }
+
+  :focus {
+    outline: none;
   }
 
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
@@ -163,11 +166,6 @@ const LayoutHeader = (props) => {
     }
   };
 
-  const handleOnMouseLeave = (e) => {
-    if (!props.isTopMenuOpen) {
-      e.target.blur();
-    }
-  };
   return (
     <Container id="top">
       <Content>
@@ -197,7 +195,6 @@ const LayoutHeader = (props) => {
             isActive={props.isTopMenuOpen}
             onClick={props.toggleTopMenu}
             onKeyPress={handleTopMenuButtonKeyPress}
-            onMouseLeave={handleOnMouseLeave}
           >
             <SpacingsInline alignItems="center">
               <span>{props.siteTitle}</span>
