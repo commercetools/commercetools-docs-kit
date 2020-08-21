@@ -131,6 +131,10 @@ const DocumentationSwitcherButton = styled.div`
     }
   }
 
+  :focus {
+    outline: none;
+  }
+
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     margin: 0 0 0 ${designSystem.dimensions.spacings.xl};
   }
@@ -161,6 +165,7 @@ const LayoutHeader = (props) => {
       props.toggleTopMenu(event);
     }
   };
+
   return (
     <Container id="top">
       <Content>
