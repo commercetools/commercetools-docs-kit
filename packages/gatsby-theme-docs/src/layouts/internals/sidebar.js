@@ -333,6 +333,9 @@ const Sidebar = (props) => {
   const isReleasePage = props.location.pathname.startsWith(
     withPrefix('/releases')
   );
+  const releaseNotesIconHoverStyle = isReleasePage
+    ? designSystem.colors.light.linkNavigation
+    : designSystem.colors.light.linkHover;
   const shouldRenderLinkToReleaseNotes = props.hasReleaseNotes;
   const shouldRenderBackToDocsLink = props.hasReleaseNotes && isReleasePage;
   // Restore scroll position
@@ -386,7 +389,11 @@ const Sidebar = (props) => {
                 text-decoration: underline;
                 :hover {
                   color: ${designSystem.colors.light.linkHover} !important;
-                  text-decoration: none;
+                  svg {
+                    * {
+                      fill: ${releaseNotesIconHoverStyle};
+                    }
+                  }
                 }
               `}
               customActiveStyles={css`
