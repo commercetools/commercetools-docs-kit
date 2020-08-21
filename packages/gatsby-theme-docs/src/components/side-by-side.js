@@ -21,7 +21,7 @@ const SideBySideContainer = styled.div`
   @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
     max-width: 100% !important;
     grid-template-columns: 1fr ${designSystem.dimensions.widths
-        .pageContentSmall};
+        .sideBySideSecondColumn};
     > :only-child {
       /* Robustness for data driven situations like generated API docs:
       If there aren't two children of a side by side it does not force it into two columns
