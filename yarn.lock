@@ -1286,7 +1286,7 @@
   dependencies:
     "@commercetools-uikit/utils" "10.21.0"
 
-"@commercetools-uikit/card@10.30.2":
+"@commercetools-uikit/card@^10.30.2":
   version "10.30.2"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/card/-/card-10.30.2.tgz#67d4dcb2e4979a65da0daffacc2607b81499709e"
   integrity sha512-zvFrLXymY98mCLQoNpXEic+XI4tk8yFWZAVvjGFQ/TWFzy7f6wDOyxvVuHYazanlkx+tmzN0J3ySl6S3MCZhcA==
@@ -1297,7 +1297,7 @@
     "@emotion/styled" "^10.0.27"
     prop-types "15.7.2"
 
-"@commercetools-uikit/checkbox-input@10.30.1":
+"@commercetools-uikit/checkbox-input@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/checkbox-input/-/checkbox-input-10.30.1.tgz#3862dc5fbd6a4fd71348e98dbbb0a10215436ad4"
   integrity sha512-sa3FGGEr5SOj4y4gtJQYdpTTxtYEwlc0Td6XQDW3xD0XKJ1omhSylJCrOPQBO75I89ss6/vI34nBYT634gJpsQ==
@@ -1323,7 +1323,7 @@
     "@emotion/styled" "^10.0.27"
     prop-types "15.7.2"
 
-"@commercetools-uikit/date-input@10.30.1":
+"@commercetools-uikit/date-input@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/date-input/-/date-input-10.30.1.tgz#46410f38756e3440f4226bd18d1d11df9e5e6f62"
   integrity sha512-amFNpo/JcXbwv/hk7WXGtcA2zZ7J/eBx2zuUtmolvnzL84c4tH842yeH2fX6e6jDzrlTJf8J4jLIClRQr50tSw==
@@ -1349,7 +1349,7 @@
     tiny-invariant "1.1.0"
     warning "4.0.3"
 
-"@commercetools-uikit/design-system@10.18.4":
+"@commercetools-uikit/design-system@10.18.4", "@commercetools-uikit/design-system@^10.18.4":
   version "10.18.4"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/design-system/-/design-system-10.18.4.tgz#0f1eaf5da8e08d1c3fa7dd7d80cfb7708dfda183"
   integrity sha512-uwLgTWgN1tFuhNlrqbMvSva4/rv8WSCWJmN5shHskzzWc5/EOuG3pt5DSwvbZnkPRRkZMU28vocZcqWt4P7uGg==
@@ -1361,7 +1361,7 @@
   dependencies:
     "@commercetools-uikit/utils" "10.21.0"
 
-"@commercetools-uikit/icon-button@10.30.1":
+"@commercetools-uikit/icon-button@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/icon-button/-/icon-button-10.30.1.tgz#c9f5cd7245e10af4af90f5480bd959d0fd5aa126"
   integrity sha512-PqlEYqKXhNRk1mRVD/3vhFeQZJ1lyIpyZtAaW834mq+BVyFhEwm+5XG4LWWLZf5Y/jLZeSUNrD01RbdD4VBq+Q==
@@ -1379,7 +1379,7 @@
     react-required-if "1.0.3"
     tiny-invariant "1.1.0"
 
-"@commercetools-uikit/icons@10.30.1":
+"@commercetools-uikit/icons@10.30.1", "@commercetools-uikit/icons@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/icons/-/icons-10.30.1.tgz#2426a3e09a68dfafd7be3c4d4564603f821b7684"
   integrity sha512-rcZvlLYmELXXFtpx6wJThaq3u9A5kELiZhqKiCP+n5LvgdvR7rmFI6zEEu03fwtcfGRaKixWCXIiP30dNe7mBw==
@@ -1390,7 +1390,7 @@
     prop-types "15.7.2"
     tiny-invariant "1.1.0"
 
-"@commercetools-uikit/loading-spinner@10.30.1":
+"@commercetools-uikit/loading-spinner@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/loading-spinner/-/loading-spinner-10.30.1.tgz#1795efae31304a9947601d76bc3fbe91396a89ce"
   integrity sha512-a+MbJt+kkkO92Uk/xel/DRPsGBk87e1TTqkazYBzN/u6E/vljM74YS8kSg2CxFvUrubJuB9DJZWZe17O3ioBpw==
@@ -1402,7 +1402,7 @@
     "@emotion/core" "^10.0.34"
     prop-types "15.7.2"
 
-"@commercetools-uikit/secondary-icon-button@10.30.1":
+"@commercetools-uikit/secondary-icon-button@10.30.1", "@commercetools-uikit/secondary-icon-button@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/secondary-icon-button/-/secondary-icon-button-10.30.1.tgz#5f5cdfbfbef2e5ee3605948e5149cac78bbb44c6"
   integrity sha512-va12NVN2/UcIxVkSEEODF67VkB5fXgofhXeIOdmOM93A3MnCocDzSuqmimFZ4SFg8r1x8uWsQY0DgxO97Nlp3w==
@@ -1433,7 +1433,7 @@
     prop-types "15.7.2"
     react-select "3.1.0"
 
-"@commercetools-uikit/spacings-inline@10.30.1":
+"@commercetools-uikit/spacings-inline@10.30.1", "@commercetools-uikit/spacings-inline@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-inline/-/spacings-inline-10.30.1.tgz#4d7aa65e06ff03eed91d0e2368c0305be45455c0"
   integrity sha512-zV1cqwse30mQwXRZNmPzXHvczFJFYrOQjjS/Jz+Tyuedhy0wj5vEYntgSCxTcsHK5ZzJnGrqO5xc6QE7OcQ0Kg==
@@ -1463,7 +1463,7 @@
     "@emotion/core" "^10.0.34"
     prop-types "15.7.2"
 
-"@commercetools-uikit/spacings-stack@10.30.1":
+"@commercetools-uikit/spacings-stack@10.30.1", "@commercetools-uikit/spacings-stack@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-stack/-/spacings-stack-10.30.1.tgz#f941e09abf694dac930e5785fe6f9890689ce424"
   integrity sha512-sm1q/rcm0bBT0gHEygXh3vXMXovuezZqFtuiEOaOXzkZhPLb2kbZ5ChsAQEUYOUy4RGALhvRJhaXxBjq8yJK7Q==
@@ -1483,7 +1483,7 @@
     "@commercetools-uikit/spacings-inset-squish" "10.30.1"
     "@commercetools-uikit/spacings-stack" "10.30.1"
 
-"@commercetools-uikit/stamp@10.30.1":
+"@commercetools-uikit/stamp@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/stamp/-/stamp-10.30.1.tgz#38a2ef239c4fef3be74908ea99629e14f0e0ad81"
   integrity sha512-bYWPT7qkstKoYDVYvZEFC5+K5Jp62k95XNI1ZWOU2yOupOYk+xGUx/o4zZtarA0Gdw6qVwPQX3akcWvd3bQmpw==
@@ -1507,7 +1507,7 @@
     react-required-if "1.0.3"
     warning "4.0.3"
 
-"@commercetools-uikit/tooltip@10.30.1":
+"@commercetools-uikit/tooltip@10.30.1", "@commercetools-uikit/tooltip@^10.30.1":
   version "10.30.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/tooltip/-/tooltip-10.30.1.tgz#7477c30420fc075d553efd15887799ca8db46577"
   integrity sha512-UfzLkxSVf/l50W8yrXN/aSJovj/T6v/XRASu7W15bQMHNYtJahdnNggMgfmaEfAKJjGJzdeL8vJkVbhJIJTHTA==
@@ -5955,6 +5955,11 @@ bl@~0.8.1:
   dependencies:
     readable-stream "~1.0.26"
 
+blob-util@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/blob-util/-/blob-util-2.0.2.tgz#3b4e3c281111bb7f11128518006cdc60b403a1eb"
+  integrity sha512-T7JQa+zsXXEa6/8ZhHcQEW1UFfVM49Ts65uBkFL6fz2QmrElqmbajIDJvuA0tEhRe5eIjpV9ZF+0RfZR9voJFQ==
+
 blob@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
@@ -6911,13 +6916,23 @@ cli-spinners@^1.0.0:
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-1.3.1.tgz#002c1990912d0d59580c93bd36c056de99e4259a"
   integrity sha512-1QL4544moEsDVH9T/l6Cemov/37iv1RtoKf7NJ04A60+4MREXNfx/QvavbH6QoGdsD4N4Mwy49cmaINR/o2mdg==
 
-cli-table3@^0.5.1, cli-table3@~0.5.1:
+cli-table3@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/cli-table3/-/cli-table3-0.5.1.tgz#0252372d94dfc40dbd8df06005f48f31f656f202"
   integrity sha512-7Qg2Jrep1S/+Q3EceiZtQcDPWxhAvBw+ERf1162v4sikJrvojMHFqXt8QIVha8UlH9rgU0BeWPytZ9/TzYqlUw==
   dependencies:
     object-assign "^4.1.0"
     string-width "^2.1.1"
+  optionalDependencies:
+    colors "^1.1.2"
+
+cli-table3@~0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/cli-table3/-/cli-table3-0.6.0.tgz#b7b1bc65ca8e7b5cef9124e13dc2b21e2ce4faee"
+  integrity sha512-gnB85c3MGC7Nm9I/FkiasNBOKjOiO1RNuXXarQms37q4QMpWdlbBgD/VnOStA2faG1dpXMv31RFApjX1/QdgWQ==
+  dependencies:
+    object-assign "^4.1.0"
+    string-width "^4.2.0"
   optionalDependencies:
     colors "^1.1.2"
 
@@ -8057,10 +8072,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-cypress@*, cypress@4.12.1:
-  version "4.12.1"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-4.12.1.tgz#0ead1b9f4c0917d69d8b57f996b6e01fe693b6ec"
-  integrity sha512-9SGIPEmqU8vuRA6xst2CMTYd9sCFCxKSzrHt0wr+w2iAQMCIIsXsQ5Gplns1sT6LDbZcmLv6uehabAOl3fhc9Q==
+cypress@*, cypress@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-5.0.0.tgz#6957e299b790af8b1cd7bea68261b8935646f72e"
+  integrity sha512-jhPd0PMO1dPSBNpx6pHVLkmnnaTfMy3wCoacHAKJ9LJG06y16zqUNSFri64N4BjuGe8y6mNMt8TdgKnmy9muCg==
   dependencies:
     "@cypress/listr-verbose-renderer" "^0.4.1"
     "@cypress/request" "^2.88.5"
@@ -8068,26 +8083,27 @@ cypress@*, cypress@4.12.1:
     "@types/sinonjs__fake-timers" "^6.0.1"
     "@types/sizzle" "^2.3.2"
     arch "^2.1.2"
+    blob-util "2.0.2"
     bluebird "^3.7.2"
     cachedir "^2.3.0"
-    chalk "^2.4.2"
+    chalk "^4.1.0"
     check-more-types "^2.24.0"
-    cli-table3 "~0.5.1"
+    cli-table3 "~0.6.0"
     commander "^4.1.1"
     common-tags "^1.8.0"
     debug "^4.1.1"
     eventemitter2 "^6.4.2"
-    execa "^1.0.0"
+    execa "^4.0.2"
     executable "^4.1.1"
     extract-zip "^1.7.0"
-    fs-extra "^8.1.0"
+    fs-extra "^9.0.1"
     getos "^3.2.1"
     is-ci "^2.0.0"
     is-installed-globally "^0.3.2"
     lazy-ass "^1.6.0"
     listr "^0.14.3"
     lodash "^4.17.19"
-    log-symbols "^3.0.0"
+    log-symbols "^4.0.0"
     minimist "^1.2.5"
     moment "^2.27.0"
     ospath "^1.2.2"
@@ -8095,7 +8111,7 @@ cypress@*, cypress@4.12.1:
     ramda "~0.26.1"
     request-progress "^3.0.0"
     supports-color "^7.1.0"
-    tmp "~0.1.0"
+    tmp "~0.2.1"
     untildify "^4.0.0"
     url "^0.11.0"
     yauzl "^2.10.0"
@@ -8673,7 +8689,7 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-dom-accessibility-api@^0.5.1:
+dom-accessibility-api@^0.5.0, dom-accessibility-api@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.5.1.tgz#152f5e88583d900977119223e3e76c2d93d23830"
   integrity sha512-8DhtmKTYWXNpPiL/QOszbnkAbCGuPz9ieVwDrmWM1rNx4KRI3zqmvKANAD1PJdvvov3+eq1BPLXQkYTpqTrWng==
@@ -15273,13 +15289,6 @@ log-symbols@^2.2.0:
   dependencies:
     chalk "^2.0.1"
 
-log-symbols@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-3.0.0.tgz#f3a08516a5dea893336a7dee14d18a1cfdab77c4"
-  integrity sha512-dSkNGuI7iG3mfvDzUuYZyvk5dD9ocYCYzNU6CYDE6+Xqd+gwme6Z00NS3dUh8mq/73HaEtT7m6W+yUPtU6BZnQ==
-  dependencies:
-    chalk "^2.4.2"
-
 log-symbols@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-4.0.0.tgz#69b3cc46d20f448eccdb75ea1fa733d9e821c920"
@@ -18954,7 +18963,7 @@ react-intersection-observer@8.27.1:
   dependencies:
     tiny-invariant "^1.1.0"
 
-react-intl@5.7.0:
+react-intl@^5.7.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.7.0.tgz#36894113a8f2ebe9c68c705434edd7e06f49841d"
   integrity sha512-2bH+piiMyIcRgbz3QxFcEVn+VNTLDRknO/3VN+hPCwcQEy56jIo/Y//UQ4WCzfg8Aeo90120Qi0Z562Ivi6MHA==
@@ -21986,19 +21995,12 @@ tmp@^0.0.33:
   dependencies:
     os-tmpdir "~1.0.2"
 
-tmp@^0.2.1:
+tmp@^0.2.1, tmp@~0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.2.1.tgz#8457fc3037dcf4719c251367a1af6500ee1ccf14"
   integrity sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ==
   dependencies:
     rimraf "^3.0.0"
-
-tmp@~0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.1.0.tgz#ee434a4e22543082e294ba6201dcc6eafefa2877"
-  integrity sha512-J7Z2K08jbGcdA1kkQpJSqLF6T0tdQqpR2pnSUXsIchbPdTI9v3e85cLW0d6WDhwuAleOV71j2xWs8qMPfK7nKw==
-  dependencies:
-    rimraf "^2.6.3"
 
 tmpl@1.0.x:
   version "1.0.4"
