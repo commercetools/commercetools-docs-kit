@@ -34,19 +34,21 @@ const Children = (props) => {
         <DescriptionAndEnums apiType={props.apiType} />
       )}
 
-      <SideBySide>
-        {props.apiType.properties && (
-          <Properties
-            apiKey={props.apiKey}
-            apiType={props.apiType}
-            title={props.propertiesTableTitle}
-          />
-        )}
+      {(props.apiType.properties || props.apiType.examples) && (
+        <SideBySide>
+          {props.apiType.properties && (
+            <Properties
+              apiKey={props.apiKey}
+              apiType={props.apiType}
+              title={props.propertiesTableTitle}
+            />
+          )}
 
-        {props.apiType.examples && !props.doNotRenderExamples && (
-          <Examples examples={props.apiType.examples} />
-        )}
-      </SideBySide>
+          {props.apiType.examples && !props.doNotRenderExamples && (
+            <Examples examples={props.apiType.examples} />
+          )}
+        </SideBySide>
+      )}
 
       {props.renderDescriptionBelowProperties && (
         <DescriptionAndEnums apiType={props.apiType} />
