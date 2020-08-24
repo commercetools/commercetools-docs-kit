@@ -42,7 +42,7 @@ const LayoutPage = styled.div`
       minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
   ${(props) =>
-    props.allowWideContentLayout
+    props.allowGlobalWideContentLayout
       ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
     grid:
       [row1-start] 'page-header page-header-side' auto [row1-end]

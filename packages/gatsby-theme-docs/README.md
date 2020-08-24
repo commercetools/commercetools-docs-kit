@@ -71,7 +71,7 @@ The project structure should contain at least the following files and folders:
 
   - `excludeFromSearchIndex` (_optional_): indicates that the website should not be indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute. **Default: `true`**
 
-  - `allowWideContentLayout` (_optional_): enables all content pages to use a wider layout that gives space to side-by-side content on large viewports. See also the `wideLayout` frontmatter option and the `<SideBySide>` component on how to use it. **Default: `false`**.
+  - `allowGlobalWideContentLayout` (_optional_): enables all content pages to use a wider layout that gives space to side-by-side content on large viewports. See also the `wideLayout` frontmatter option and the `<SideBySide>` component on how to use it. **Default: `false`**.
 
   - `beta` (_optional_): indicates that the website should be marked as **beta**. Each page gets a beta flag, no matter if the page frontmatter has it defined or not. Furthermore, in the main navigation, the beta flag is shown near the website title and not next to each link. **Default: `false`**
 
@@ -132,7 +132,7 @@ Supported frontmatter options are:
 - `beta` (boolean): to indicate if the _beta_ info message should be displayed or not.
 - `excludeFromSearchIndex` (boolean): to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
 - `navLevels` (number): allows to reduce the depth of the on-page navigation for pages where it would get too long to fit the screen. You want to set 2 here if you need it.
-- `wideLayout` (boolean): to indicate that the page can go into a two-column content space on large viewport sizes. See the `<SideBySide>` component below for more information on how to use it. This option overrides the `allowWideContentLayout` theme option.
+- `wideLayout` (boolean): to indicate that the page can go into a two-column content space on large viewport sizes. See the `<SideBySide>` component below for more information on how to use it. This option overrides the `allowGlobalWideContentLayout` theme option.
 
 ## Writing release notes
 
@@ -162,7 +162,7 @@ The available JSX components are:
 - `<Error>`: a notification message with error colors
 - `<Anchor>`: inserts a custom anchor on any part of the document, can be used with headers, lists, in paragraphs, etc, it is used for navigating to specific parts of the document that are not headings. Also useful when a document has multiple headings with the same text or when heading names change and old third party links shall continue to work. Cannot override ID generation of the site generator, this adds additional named anchors and IDs have precedence.
 - `<ChildSectionsNav parent="a-section-slug" />`: a table of contents containing links to all subsections of the given parent. Use only for large numbers of child sections with _markdown level four or higher_ which are not part of the index navigation on the right side of the page. The component allows to make long pages with long lists of deep sections easier to navigate.
-- `<SideBySide>`: use this component to wrap two content blocks that should be positioned side by side on wide viewport sizes. This feature is enabled by configuring the `allowWideContentLayout` theme option or the `wideLayout` page frontmatter option.
+- `<SideBySide>`: use this component to wrap two content blocks that should be positioned side by side on wide viewport sizes. This feature is enabled by configuring the `allowGlobalWideContentLayout` theme option or the `wideLayout` page frontmatter option.
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
