@@ -6,7 +6,7 @@ const defaultOptions = {
   beta: false,
   gaTrackingId: undefined,
   excludeFromSearchIndex: true,
-  allowGlobalWideContentLayout: false,
+  allowWideContentLayout: false,
   createNodeSlug: undefined,
   additionalPrismLanguages: [],
   overrideDefaultConfigurationData: [],

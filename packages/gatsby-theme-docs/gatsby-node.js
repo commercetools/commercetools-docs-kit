@@ -129,7 +129,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
-        allowGlobalWideContentLayout: { type: 'Boolean!' },
+        allowWideContentLayout: { type: 'Boolean!' },
         beta: { type: 'Boolean!' },
         body: {
           type: 'String!',
@@ -258,11 +258,11 @@ exports.onCreateNode = (
       // but it can't include in a generally excluded site
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
       Boolean(pluginOptions.excludeFromSearchIndex),
-    allowGlobalWideContentLayout:
-      // // the frontmatter `wideLayout` option overrides the global `allowGlobalWideContentLayout` theme option
+    allowWideContentLayout:
+      // // the frontmatter `wideLayout` option overrides the global `allowWideContentLayout` theme option
       typeof node.frontmatter.wideLayout === 'boolean'
         ? node.frontmatter.wideLayout
-        : Boolean(pluginOptions.allowGlobalWideContentLayout),
+        : Boolean(pluginOptions.allowWideContentLayout),
     beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)

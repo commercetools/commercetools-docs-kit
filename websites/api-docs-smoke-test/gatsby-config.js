@@ -16,7 +16,7 @@ module.exports = {
       websiteKey: 'api-docs-smoke-test',
       colorPreset: colorPresets.platformDeveloperDocs.key,
       excludeFromSearchIndex: isProd,
-      allowGlobalWideContentLayout: true,
+      allowWideContentLayout: true,
       addOns: [
         {
           resolve: '@commercetools-docs/gatsby-theme-api-docs',

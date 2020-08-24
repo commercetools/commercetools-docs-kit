@@ -45,9 +45,7 @@ const LayoutContent = (props) => {
         />
         <LayoutPageWrapper>
           <LayoutPage
-            allowGlobalWideContentLayout={
-              props.pageData.allowGlobalWideContentLayout
-            }
+            allowWideContentLayout={props.pageData.allowWideContentLayout}
           >
             <LayoutPageHeader>
               {props.pageData.beta && (
@@ -89,7 +87,7 @@ LayoutContent.propTypes = {
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
-    allowGlobalWideContentLayout: PropTypes.bool.isRequired,
+    allowWideContentLayout: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,
     navLevels: PropTypes.number.isRequired,
   }).isRequired,
