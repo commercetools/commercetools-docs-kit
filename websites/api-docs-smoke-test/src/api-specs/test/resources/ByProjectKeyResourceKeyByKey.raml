@@ -37,5 +37,5 @@ get:
 
   (codeExamples):
     curl: |-
-      curl -XGET /{projectKey}/resource/key={key} -i \
-      --header 'Authorization: Bearer YOUR_TOKEN'
+      curl -X GET https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/key={key} -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'

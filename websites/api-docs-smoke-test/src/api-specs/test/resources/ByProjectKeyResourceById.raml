@@ -28,10 +28,10 @@ post:
 
   (codeExamples):
     curl: |-
-      curl -XPOST /{projectKey}/resource/{id} -i \
-      --header 'Authorization: Bearer YOUR_TOKEN \
+      curl -X POST https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/{id} -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}' \
       --header 'Content-Type: application/json' \
-      --data-binary @- << EOF 
+      --data-binary @- << DATA 
       {
         "version" : 1,
         "actions" : [ {
@@ -41,7 +41,7 @@ post:
           "someProperty" : "any string"
         } ]
       }
-      EOF
+      DATA
 get:
   securedBy:
   - oauth_2_0:
@@ -85,8 +85,8 @@ get:
 
   (codeExamples):
     curl: |-
-      curl -XGET /{projectKey}/resource/{id} -i \
-      --header 'Authorization: Bearer YOUR_TOKEN'
+      curl -X GET https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/{id} -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'
 delete:
   securedBy:
   - oauth_2_0:
@@ -110,5 +110,5 @@ delete:
 
   (codeExamples):
     curl: |-
-      curl -XDELETE /{projectKey}/resource/{id} -i \
-      --header 'Authorization: Bearer YOUR_TOKEN'
+      curl -X DELETE https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/{id} -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'
