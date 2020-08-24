@@ -58,7 +58,7 @@
     "prop-types": "15.7.2",
     "qss": "2.0.3",
     "react-helmet": "6.1.0",
-    "react-intl": "5.7.0",
+    "react-intl": "^5.7.0",
     "react-router-dom": "5.2.0",
     "react-intersection-observer": "8.27.1",
     "rehype-slug": "3.0.0",
