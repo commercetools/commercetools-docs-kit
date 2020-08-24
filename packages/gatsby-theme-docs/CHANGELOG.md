@@ -1,5 +1,18 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 7.0.5
+
+### Patch Changes
+
+- [`f9cd4d4`](https://github.com/commercetools/commercetools-docs-kit/commit/f9cd4d4d41fee1f81689eab63ee9ae04315a9627) [#622](https://github.com/commercetools/commercetools-docs-kit/pull/622) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: correct hover behaviour of release notes
+
+* [`288ac41`](https://github.com/commercetools/commercetools-docs-kit/commit/288ac4121e17d69a8dcbb361043686908273f64f) [#624](https://github.com/commercetools/commercetools-docs-kit/pull/624) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- [`a413bd9`](https://github.com/commercetools/commercetools-docs-kit/commit/a413bd99f6ac7c87363802dde999c29ed79931f0) [#621](https://github.com/commercetools/commercetools-docs-kit/pull/621) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: remove focus outline for top menu link
+
+- Updated dependencies [[`288ac41`](https://github.com/commercetools/commercetools-docs-kit/commit/288ac4121e17d69a8dcbb361043686908273f64f)]:
+  - @commercetools-docs/ui-kit@7.0.5
+
 ## 7.0.4
 
 ### Patch Changes
