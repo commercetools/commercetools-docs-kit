@@ -1,9 +1,13 @@
 - chapter-title: Layouts
   pages:
-    - title: Large Desktop
-      path: /large-desktop-layout
-    - title: Regular Desktop
-      path: /regular-desktop-layout
+    - title: API Type Large Desktop
+      path: /layouts/type-large-desktop
+    - title: API Type Regular Desktop
+      path: /layouts/type-regular-desktop
+    - title: API Endpoint Large Desktop
+      path: /layouts/endpoint-large-desktop
+    - title: API Endpoint Regular Desktop
+      path: /layouts/endpoint-regular-desktop
 - chapter-title: Types
   pages:
     - title: General

@@ -259,10 +259,11 @@ exports.onCreateNode = (
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
       Boolean(pluginOptions.excludeFromSearchIndex),
     allowWideContentLayout:
-      // // the frontmatter `wideLayout` option overrides the global `allowWideContentLayout` theme option
-      typeof node.frontmatter.wideLayout === 'boolean'
-        ? node.frontmatter.wideLayout
-        : Boolean(pluginOptions.allowWideContentLayout),
+      // the frontmatter `wideLayout` and the theme's allowWideContentLayout
+      // must be set for the page to switch to wide layout
+      Boolean(
+        node.frontmatter.wideLayout && pluginOptions.allowWideContentLayout
+      ),
     beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)
