@@ -92,10 +92,10 @@ post:
 
   (codeExamples):
     curl: |-
-      curl -XPOST /{projectKey}/resource/artificially-complex/path/uri-parameter-one={uriParameterOne}/{uriParameterTwo} -i \
-      --header 'Authorization: Bearer YOUR_TOKEN \
+      curl -X POST https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/artificially-complex/path/uri-parameter-one={uriParameterOne}/{uriParameterTwo} -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}' \
       --header 'Content-Type: application/json' \
-      --data-binary @- << EOF 
+      --data-binary @- << DATA 
       {
         "eigthProperty" : "Should display 8th (1st in RAML)",
         "createdBy" : {
@@ -120,4 +120,4 @@ post:
         "createdAt" : "2015-02-28T16:41:41.090Z",
         "version" : "Should display 2nd (16th in RAML)"
       }
-      EOF
+      DATA

@@ -89,5 +89,5 @@ get:
           value: "en"
   (codeExamples):
     curl: |-
-      curl -XGET /{projectKey}/resource/searchApiPattern -i \
-      --header 'Authorization: Bearer YOUR_TOKEN'
+      curl -X GET https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/searchApiPattern -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'

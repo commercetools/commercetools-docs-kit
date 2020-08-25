@@ -41,10 +41,10 @@ post:
 
   (codeExamples):
     curl: |-
-      curl -XPOST /{projectKey}/resource -i \
-      --header 'Authorization: Bearer YOUR_TOKEN \
+      curl -X POST https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}' \
       --header 'Content-Type: application/json' \
-      --data-binary @- << EOF 
+      --data-binary @- << DATA 
       {
         "objectTypeProperty" : {
           "arrayOfIntExample" : [ 1, 2, 1, 3, 2, 3, 1 ],
@@ -62,7 +62,7 @@ post:
           } ]
         }
       }
-      EOF
+      DATA
 get:
   securedBy:
   - oauth_2_0:
@@ -136,5 +136,5 @@ get:
 
   (codeExamples):
     curl: |-
-      curl -XGET /{projectKey}/resource -i \
-      --header 'Authorization: Bearer YOUR_TOKEN'
+      curl -X GET https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'
