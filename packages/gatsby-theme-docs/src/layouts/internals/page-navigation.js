@@ -189,11 +189,29 @@ const Container = (props) => (
   <SpacingsStack scale="m">
     {props.items.map((item, index) => {
       const level = 1;
+      let skipsOneLevelOfNav;
+
+      if (props.navLevels === 2) {
+        skipsOneLevelOfNav = Boolean(
+          item.items && !item.items[0].title && item.items[0].items
+        );
+      }
+
+      if (props.navLevels === 3) {
+        skipsOneLevelOfNav = Boolean(
+          item.items &&
+            item.items[0].items &&
+            !item.items[0].items[0].title &&
+            item.items[0].items[0].items
+        );
+      }
+
       const isActive = getIsActive(
         props.activeSection,
         item,
-        item.items && !item.items[0].title && item.items[0].items
+        skipsOneLevelOfNav
       );
+
       return (
         <SpacingsStack scale="s" key={index}>
           <Link
@@ -201,7 +219,7 @@ const Container = (props) => (
             level={level}
             role={`level-${level}`}
             isActive={isActive}
-            aria-current={isActive}
+            aria-current={isActive && !skipsOneLevelOfNav}
           >
             <Indented level={1}>{item.title}</Indented>
           </Link>
@@ -221,6 +239,7 @@ Container.propTypes = {
   items: itemsType.isRequired,
   activeSection: PropTypes.instanceOf(SafeHTMLElement),
   children: PropTypes.node,
+  navLevels: PropTypes.number.isRequired,
 };
 
 const PageNavigation = (props) => {
@@ -229,6 +248,7 @@ const PageNavigation = (props) => {
     <Container
       items={props.tableOfContents.items}
       activeSection={activeSection}
+      navLevels={props.navLevels}
     >
       {props.navLevels >= 2 && (
         <LevelGroup navLevels={props.navLevels}>
