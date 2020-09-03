@@ -1,6 +1,6 @@
 import { URL_DOCS_SMOKE_TEST } from '../../support/urls';
 
-describe('Content menu', () => {
+describe('Child sections nav', () => {
   it('should navigate to appropriate section', () => {
     cy.visit(`${URL_DOCS_SMOKE_TEST}views/two-level-index-nav`);
     cy.get('#section-content-menu-with-first-level-heading').within(() => {
