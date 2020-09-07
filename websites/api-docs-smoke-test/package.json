@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/api-docs-smoke-test",
-  "version": "3.0.18",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "yarn develop",
