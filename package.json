@@ -64,7 +64,7 @@
     "@svgr/rollup": "5.4.0",
     "@testing-library/cypress": "7.0.0",
     "@testing-library/jest-dom": "5.11.4",
-    "@testing-library/react": "10.4.9",
+    "@testing-library/react": "11.0.2",
     "babel-eslint": "10.1.0",
     "babel-jest": "26.3.0",
     "babel-plugin-macros": "2.8.0",
