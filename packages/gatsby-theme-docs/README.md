@@ -56,7 +56,7 @@ module.exports = {
   plugins: [
     // pass plugin options here
     ...configureThemeWithAddOns({
-      // options associated with gatsby-theme-docs
+      // See available plugin options below
       websiteKey: 'docs-smoke-test', // required
       colorPreset: colorPresets.base.key,
       additionalPrismLanguages: ['scala', 'csharp'],
