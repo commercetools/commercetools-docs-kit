@@ -37,7 +37,7 @@ The project structure should contain at least the following files and folders:
 
 - `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`, otherwise provide a valid ESLint configuration.
 
-- `gatsby-config.js`: this is required for a Gatsby website and should contain the website specific configuration. Note that all plugins and associated options must be passed using `configureThemeWithAddOns`, in addition there is no need to pass `gatsby-theme-docs` as a plugin but only the required options. See the code sample below for more details.
+- `gatsby-config.js`: this is required for a Gatsby website and should contain the website specific configuration. If your website requires the usage of [add-ons](#using-theme-with-add-ons), you need to configure the main theme using the `configureThemeWithAddOns` helper function. See examples below.
 
 ```js
 const {
