@@ -1,6 +1,6 @@
 # Core Gatsby theme
 
-This is the core Gatsby theme for building commercetools documentation websites.
+This is the core [Gatsby theme](https://www.gatsbyjs.com/docs/themes/) for building commercetools documentation websites.
 
 ## Getting started
 
@@ -8,6 +8,26 @@ To create a new documentation website you need to install this theme and its pee
 
 ```
 npx install-peerdeps --dev @commercetools-docs/gatsby-theme-docs
+```
+
+Then setup the theme configuration:
+
+```js
+module.exports = {
+  pathPrefix: '/change-path-prefix',
+  siteMetadata: {
+    title: 'CHANGE TITLE',
+    description: 'CHANGE DESCRIPTION',
+  },
+  plugins: [
+    {
+      resolve: '@commercetools-docs/gatsby-theme-docs',
+      options: {
+        websiteKey: 'change-website-key',
+      },
+    },
+  ],
+};
 ```
 
 ### Choose a path prefix
@@ -46,7 +66,7 @@ const {
 const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
 
 module.exports = {
-  pathPrefix: '/change-path-prefix', // required if using mono-repository
+  pathPrefix: '/change-path-prefix',
   siteMetadata: {
     title: 'CHANGE TITLE',
     description: 'CHANGE DESCRIPTION',
@@ -57,7 +77,7 @@ module.exports = {
     // pass plugin options here
     ...configureThemeWithAddOns({
       // See available plugin options below
-      websiteKey: 'docs-smoke-test', // required
+      websiteKey: 'change-website-key', // required
       colorPreset: colorPresets.base.key,
       additionalPrismLanguages: ['scala', 'csharp'],
       excludeFromSearchIndex: false,
@@ -72,7 +92,7 @@ module.exports = {
 };
 ```
 
-Available options for the theme plugin are:
+### Available Options for the Theme Plugin
 
 - `websiteKey` (**required**): the identifier of the website, used for error reporting and similar concerns. Usually this value would be the same as the `pathPrefix` without the leading slash and without whitespaces.
 
@@ -127,7 +147,7 @@ These are required directories:
   - chapter-title: {} # another chapter, and so on...
   ```
 
-## Writing content pages
+## Writing Content Pages
 
 Content pages are located in the `src/content` folder and should be `*.mdx` files.
 
@@ -153,7 +173,7 @@ Supported frontmatter options are:
 - `navLevels` (number): allows to reduce the depth of the on-page navigation for pages where it would get too long to fit the screen. You want to set 2 here if you need it.
 - `wideLayout` (boolean): to indicate that the page can go into a two-column content space on large viewport sizes. See the `<SideBySide>` component below for more information on how to use it. This option must be used with `allowWideContentLayout` theme option set to `true`.
 
-### Available JSX components within markdown files
+### Available JSX components within Markdown Files
 
 Besides the standard markdown syntax, the theme provides some extra JSX components that can be used within the `*.mdx` files.
 
@@ -181,7 +201,7 @@ The available JSX components are:
 
 > When using JSX components, it's recommended to leave a **blank line** between the element tags and the actual content. This allows the content to be parsed as markdown, so you can use markdown syntax within the custom component tags.
 
-### Writing release notes
+### Writing Release Notes
 
 Release notes files follow a different specification and their file location does not imply the URL so they can be reorganized without changing the permanent release note URL.
 
@@ -222,7 +242,7 @@ module.exports = {
 };
 ```
 
-## Theme overrides
+## Theme Overrides
 
 The theme allows to inject custom functionalities to specific parts of it. [Read here](./src/overrides) for more information.
 
