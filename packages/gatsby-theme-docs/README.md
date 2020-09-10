@@ -62,7 +62,7 @@ module.exports = {
       additionalPrismLanguages: ['scala', 'csharp'],
       excludeFromSearchIndex: false,
 
-      // these are Gatsby themes - https://www.gatsbyjs.com/docs/themes/
+      // See https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-theme-docs#using-theme-with-add-ons
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants',
