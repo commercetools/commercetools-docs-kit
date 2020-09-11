@@ -6,13 +6,13 @@
   <a href="https://github.com/commercetools/commercetools-docs-kit/releases"><img src="https://badgen.net/github/release/commercetools/commercetools-docs-kit" alt="Latest release" /></a> <a href="https://github.com/commercetools/commercetools-docs-kit/blob/master/LICENSE"><img src="https://badgen.net/github/license/commercetools/commercetools-docs-kit" alt="GitHub license" /></a>
 </p>
 
+This repository contains packages to develop documentation websites for commercetools. It includes things like Gatsby themes, Gatsby plugins, UI components, etc. Please look at the individual packages in [`packages` folder](./packages) for functional documentation.
+
 ## Getting started
 
-This repository contains packages to develop documentation websites for commercetools. It includes things like Gatsby themes, Gatsby plugins, UI components, etc.
+For general documentation use cases, start with the [base theme](./packages/gatsby-theme-docs). The [`packages` folder](./packages) also includes [base theme](./packages/gatsby-theme-docs) addons that you may find useful.
 
-## Documentation
-
-Please look at the individual packages in [`packages` folder](./packages) for functional documentation. Start with the [base theme](./packages/gatsby-theme-docs) and then proceed with the feature add-ons (the other `gatsby-theme` prefixed packages).
+For documention based on API specifications, start with the [API theme](./packages/gatsby-theme-api-docs). Note that the [API theme](./packages/gatsby-theme-api-docs) is also an addon to the [base theme](./packages/gatsby-theme-docs).
 
 ## Developing packages
 
