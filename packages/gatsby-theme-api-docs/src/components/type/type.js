@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FullWidthContainer } from '@commercetools-docs/gatsby-theme-docs';
 import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../utils/ctp-urn';
 import { useApiTypes } from '../../hooks/use-api-types';
@@ -26,33 +27,41 @@ const ApiType = (props) => {
   const urn = generateTypeURN(matchedApiType);
 
   return (
-    <div id={urn}>
+    <FullWidthContainer
+      id={urn}
+      aria-label={`${matchedApiType.displayName} definition`}
+    >
       {matchedApiType.oneOf ? (
         <ChildrenUnionLike
+          apiKey={props.apiKey}
           apiType={matchedApiType}
           apiTypeSubTypes={apiTypeSubTypes}
+          doNotRenderExamples={props.doNotRenderExamples}
         />
       ) : (
         <Children
+          apiKey={props.apiKey}
           apiType={matchedApiType}
+          propertiesTableTitle={props.propertiesTableTitle}
           renderDescriptionBelowProperties={
             props.renderDescriptionBelowProperties
           }
-          propertiesTableTitle={props.propertiesTableTitle}
+          doNotRenderExamples={props.doNotRenderExamples}
         />
       )}
-    </div>
+    </FullWidthContainer>
   );
 };
 
 ApiType.propTypes = {
   apiKey: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  renderDescriptionBelowProperties: PropTypes.bool,
   propertiesTableTitle: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
   ]),
+  renderDescriptionBelowProperties: PropTypes.bool,
+  doNotRenderExamples: PropTypes.bool,
 };
 
 export default ApiType;

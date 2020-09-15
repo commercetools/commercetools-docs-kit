@@ -3,6 +3,7 @@ import { customProperties } from '@commercetools-uikit/design-system';
 const rootFontSizeNumber = 16;
 const pageWidth = '770px';
 const pageWidthSmall = '592px';
+const asideColumnWidth = pageWidthSmall;
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
 
@@ -129,15 +130,19 @@ export const dimensions = {
   widths: {
     pageContent: pageWidth,
     pageContentSmall: pageWidthSmall,
-    pageContentWithMargings: `calc(${pageWidth} + 32px * 2)`,
-    pageContentSmallWithMargings: `calc(${pageWidthSmall} + 16px * 2)`,
-    pageContentWithMargingsAndPageNavigation: `calc(${pageWidth} + 32px * 2 + ${navbarWidth})`,
+    pageContentWide: `calc(${pageWidth} + ${asideColumnWidth} + 32px)`,
+    pageContentWithMargins: `calc(${pageWidth} + 32px * 2)`,
+    pageContentSmallWithMargins: `calc(${pageWidthSmall} + 16px * 2)`,
+    pageContentWideWithMargins: `calc(${pageWidthSmall} + ${asideColumnWidth} + 32px * 3)`,
+    pageContentWideWithMarginsMax: `calc(${pageWidth} + ${asideColumnWidth} + 32px * 3)`,
+    pageContentWithMarginsAndPageNavigation: `calc(${pageWidth} + 32px * 2 + ${navbarWidth})`,
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
     searchBar: '300px',
     searchBarSmall: '150px',
     selectDropDownArrowWith: '12px',
+    sideBySideSecondColumn: '560px',
   },
   viewports: {
     mobile: `max-width: calc(768px - 0.02px)`,
@@ -145,7 +150,7 @@ export const dimensions = {
     largeTablet: `min-width: calc(848px - 0.01px)`,
     laptop: `min-width: calc(1024px - 0.01px)`,
     desktop: `min-width: calc(1280px - 0.01px)`,
-    largeDesktop: `min-width: calc(1866px - 0.01px)`,
+    largeDesktop: `min-width: calc(1706px - 0.01px)`,
   },
   spacings: {
     xs: pxToRem('4px'),

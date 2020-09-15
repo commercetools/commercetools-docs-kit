@@ -34,3 +34,8 @@ get:
             default:
               strict: true
               value: !include ../examples/ByProjectKeyResourceKeyByKeyGet-200-default.json
+
+  (codeExamples):
+    curl: |-
+      curl -X GET https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/key={key} -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'

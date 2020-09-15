@@ -38,7 +38,7 @@ const LayoutContentHomepage = (props) => {
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
-        <LayoutPageWrapper id="top">
+        <LayoutPageWrapper>
           <LayoutPageWithHero
             title={props.pageData.title}
             heroBackgroundURL={props.heroBackground.publicURL}

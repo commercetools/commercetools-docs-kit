@@ -15,6 +15,9 @@ annotationTypes:
     type: array
     items: string
     allowedTargets: TypeDeclaration
+  codeExamples:
+    type: object
+    allowedTargets: Method
   enumDescriptions:
      type: object
      (builtinType): object
@@ -77,6 +80,7 @@ types:
   ArrayTestType: !include types/ArrayTestType.raml
   BooleanTestType: !include types/BooleanTestType.raml
   ChangeSomePropertyOnExampleResource: !include types/ChangeSomePropertyOnExampleResource.raml
+  ConstantLikeProperties: !include types/ConstantLikeProperties.raml
   ConstantLikeType: !include types/ConstantLikeType.raml
   DateTestType: !include types/DateTestType.raml
   DoSomeThingOnExampleResource: !include types/DoSomeThingOnExampleResource.raml
@@ -108,10 +112,19 @@ types:
   SetOfEnumTestType: !include types/SetOfEnumTestType.raml
   SingleExampleTestType: !include types/SingleExampleTestType.raml
   SingleFullExampleTestType: !include types/SingleFullExampleTestType.raml
+  SoftLinkArray: !include types/SoftLinkArray.raml
+  SoftLinkObject: !include types/SoftLinkObject.raml
+  SoftLinkOutOfOrderProperties: !include types/SoftLinkOutOfOrderProperties.raml
   StringTestType: !include types/StringTestType.raml
+  UnionLike: !include types/UnionLike.raml
   UnionLikeSubType1: !include types/UnionLikeSubType1.raml
   UnionLikeSubType2: !include types/UnionLikeSubType2.raml
-  UnionLikeType: !include types/UnionLikeType.raml
+  UnionLikeSubTypeWithEnumDescriptionProperties1: !include types/UnionLikeSubTypeWithEnumDescriptionProperties1.raml
+  UnionLikeSubTypeWithEnumDescriptionProperties2: !include types/UnionLikeSubTypeWithEnumDescriptionProperties2.raml
+  UnionLikeSubTypeWithEnumDescriptionProperties3: !include types/UnionLikeSubTypeWithEnumDescriptionProperties3.raml
+  UnionLikeWithEnumDescriptionPropertiesInSubtype: !include types/UnionLikeWithEnumDescriptionPropertiesInSubtype.raml
+  WideLayoutArrayTestType: !include types/WideLayoutArrayTestType.raml
+  WideLayoutFloatTestType: !include types/WideLayoutFloatTestType.raml
 
 /{projectKey}: !include resources/ByProjectKey.raml
 /{projectKey}/resource: !include resources/ByProjectKeyResource.raml

@@ -26,6 +26,22 @@ post:
           strict: true
           value: !include ../examples/ByProjectKeyResourceByIdPost-default.json
 
+  (codeExamples):
+    curl: |-
+      curl -X POST https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/{id} -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}' \
+      --header 'Content-Type: application/json' \
+      --data-binary @- << DATA 
+      {
+        "version" : 1,
+        "actions" : [ {
+          "action" : "doSomeThing"
+        }, {
+          "action" : "changeSomeProperty",
+          "someProperty" : "any string"
+        } ]
+      }
+      DATA
 get:
   securedBy:
   - oauth_2_0:
@@ -67,6 +83,10 @@ get:
               strict: true
               value: !include ../examples/ByProjectKeyResourceByIdGet-200-default.json
 
+  (codeExamples):
+    curl: |-
+      curl -X GET https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/{id} -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'
 delete:
   securedBy:
   - oauth_2_0:
@@ -87,3 +107,8 @@ delete:
             default:
               strict: true
               value: !include ../examples/ByProjectKeyResourceByIdDelete-200-default.json
+
+  (codeExamples):
+    curl: |-
+      curl -X DELETE https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/{id} -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'

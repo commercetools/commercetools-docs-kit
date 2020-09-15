@@ -87,3 +87,7 @@ get:
         default:
           strict: true
           value: "en"
+  (codeExamples):
+    curl: |-
+      curl -X GET https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource/searchApiPattern -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'

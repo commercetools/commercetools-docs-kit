@@ -7,6 +7,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
       description: String
       queryParameters: [RamlResourceQueryParameter!]
       responses: [RamlResourceResponse!]
+      codeExamples: [RamlResourceCodeExample!]
     }
     `,
     schema.buildObjectType({
@@ -48,6 +49,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         queryParameters: '[RamlResourceQueryParameter!]',
         body: 'RamlResourceMethodBody',
         responses: '[RamlResourceResponse!]',
+        codeExamples: '[RamlResourceCodeExample!]',
       },
       interfaces: ['Method'],
     }),
@@ -60,6 +62,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         description: 'String',
         queryParameters: '[RamlResourceQueryParameter!]',
         responses: '[RamlResourceResponse!]',
+        codeExamples: '[RamlResourceCodeExample!]',
       },
       interfaces: ['Method'],
     }),
@@ -110,6 +113,14 @@ const defineRamlResource = ({ schema, createTypes }) => {
       fields: {
         type: 'String!',
         builtinType: 'String!',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceCodeExample',
+      fields: {
+        language: 'String!',
+        value: 'String!',
       },
     }),
   ];

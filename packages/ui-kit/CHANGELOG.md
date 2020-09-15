@@ -1,5 +1,75 @@
 # @commercetools-docs/ui-kit
 
+## 7.0.5
+
+### Patch Changes
+
+- [`288ac41`](https://github.com/commercetools/commercetools-docs-kit/commit/288ac4121e17d69a8dcbb361043686908273f64f) [#624](https://github.com/commercetools/commercetools-docs-kit/pull/624) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+## 7.0.4
+
+### Patch Changes
+
+- [`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f) [#616](https://github.com/commercetools/commercetools-docs-kit/pull/616) Thanks [@emmenko](https://github.com/emmenko)! - Update UI Kit dependencies
+
+## 7.0.3
+
+### Patch Changes
+
+- [`fed7a9b`](https://github.com/commercetools/commercetools-docs-kit/commit/fed7a9b6e375f53750df78b1989ea8c67482516c) [#597](https://github.com/commercetools/commercetools-docs-kit/pull/597) Thanks [@emmenko](https://github.com/emmenko)! - chore: update prism-renderer to 1.1.1
+
+## 7.0.2
+
+### Patch Changes
+
+- [`aa9e848`](https://github.com/commercetools/commercetools-docs-kit/commit/aa9e8485454a2e18024772192c37979756af9167) [#592](https://github.com/commercetools/commercetools-docs-kit/pull/592) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+## 7.0.1
+
+### Patch Changes
+
+- [`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5) [#590](https://github.com/commercetools/commercetools-docs-kit/pull/590) Thanks [@nkuehn](https://github.com/nkuehn)! - Don't wrap the date in RSS feed component
+
+## 7.0.0
+
+### Minor Changes
+
+- [`8b44418`](https://github.com/commercetools/commercetools-docs-kit/commit/8b444189da90b5def5c71cc975818b730baaeca7) [#574](https://github.com/commercetools/commercetools-docs-kit/pull/574) Thanks [@nkuehn](https://github.com/nkuehn)! - Optimize JSON syntax highlighting, tone down one color
+
+### Patch Changes
+
+- [`ff1246e`](https://github.com/commercetools/commercetools-docs-kit/commit/ff1246e5e204181c21b6767239fa3cb788a4c0ee) [#578](https://github.com/commercetools/commercetools-docs-kit/pull/578) Thanks [@nkuehn](https://github.com/nkuehn)! - Tighter spacing between some content blocks (headings, lists, code blocks)
+
+## 6.0.0
+
+### Patch Changes
+
+- [`411d6e6`](https://github.com/commercetools/commercetools-docs-kit/commit/411d6e62eff4a6a3804b040c17a39116333b435b) [#529](https://github.com/commercetools/commercetools-docs-kit/pull/529) Thanks [@nkuehn](https://github.com/nkuehn)! - Optional two-column content layout with side-by-side components
+
+  - `<SideBySide>` component for manual pages
+  - Side-by-side layout for API types and their examples
+  - Theme option and frontmatter to allow wide layouts
+
+  To enable this for all pages, configure the global theme option `allowWideContentLayout`.
+  Single pages can also be enabled/disabled by specifying the `wideLayout` frontmatter option.
+
+  Then, in the MDX files, wrap the containers/elements that should go side-by-side with the
+  `<SideBySide>` component:
+
+  ```jsx
+  <SideBySide>
+    This is the block on the left, or on top if the screen is not wide enough.
+    <div>
+      This goes to the right when the screen is wide enough. I can write
+      **normal** MDX content here.
+    </div>
+  </SideBySide>
+  ```
+
+* [`2703f63`](https://github.com/commercetools/commercetools-docs-kit/commit/2703f63ec320ea6c79bdc5608bcd240d59d7c2b3) [#522](https://github.com/commercetools/commercetools-docs-kit/pull/522) Thanks [@davifantasia](https://github.com/davifantasia)! - Add custom title capability to rss feeds
+
+- [`76db6f7`](https://github.com/commercetools/commercetools-docs-kit/commit/76db6f7d3dc67c06895259a0e01fd1d7a70f8fac) [#521](https://github.com/commercetools/commercetools-docs-kit/pull/521) Thanks [@nkuehn](https://github.com/nkuehn)! - Define list styling when enclosed in containers
+
 ## 5.0.3
 
 ### Patch Changes

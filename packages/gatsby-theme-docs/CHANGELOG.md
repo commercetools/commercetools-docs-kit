@@ -1,5 +1,129 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 7.0.6
+
+### Patch Changes
+
+- [`386117c`](https://github.com/commercetools/commercetools-docs-kit/commit/386117ced08531af7007ff6b7aac738a78cf4496) [#620](https://github.com/commercetools/commercetools-docs-kit/pull/620) Thanks [@davifantasia](https://github.com/davifantasia)! - Changes here is the last or 3 parts to:
+
+  - render request and response examples and
+  - fix broken ui for types rendered in endpoints using a large desktop layout
+
+* [`7248f86`](https://github.com/commercetools/commercetools-docs-kit/commit/7248f867eb1da1ade1301ed50d54e102f7839ec0) [#630](https://github.com/commercetools/commercetools-docs-kit/pull/630) Thanks [@davifantasia](https://github.com/davifantasia)! - Fix for index menu inconsistent highlighting when content menu is used
+
+## 7.0.5
+
+### Patch Changes
+
+- [`f9cd4d4`](https://github.com/commercetools/commercetools-docs-kit/commit/f9cd4d4d41fee1f81689eab63ee9ae04315a9627) [#622](https://github.com/commercetools/commercetools-docs-kit/pull/622) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: correct hover behaviour of release notes
+
+* [`288ac41`](https://github.com/commercetools/commercetools-docs-kit/commit/288ac4121e17d69a8dcbb361043686908273f64f) [#624](https://github.com/commercetools/commercetools-docs-kit/pull/624) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- [`a413bd9`](https://github.com/commercetools/commercetools-docs-kit/commit/a413bd99f6ac7c87363802dde999c29ed79931f0) [#621](https://github.com/commercetools/commercetools-docs-kit/pull/621) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: remove focus outline for top menu link
+
+- Updated dependencies [[`288ac41`](https://github.com/commercetools/commercetools-docs-kit/commit/288ac4121e17d69a8dcbb361043686908273f64f)]:
+  - @commercetools-docs/ui-kit@7.0.5
+
+## 7.0.4
+
+### Patch Changes
+
+- [`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f) [#616](https://github.com/commercetools/commercetools-docs-kit/pull/616) Thanks [@emmenko](https://github.com/emmenko)! - Update UI Kit dependencies
+
+- Updated dependencies [[`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f)]:
+  - @commercetools-docs/ui-kit@7.0.4
+
+## 7.0.3
+
+### Patch Changes
+
+- [`2dd19f2`](https://github.com/commercetools/commercetools-docs-kit/commit/2dd19f2e8a60c55bfd87f72ec8b8ca79fbdbbc52) [#614](https://github.com/commercetools/commercetools-docs-kit/pull/614) Thanks [@emmenko](https://github.com/emmenko)! - Load fonts using typeface packages, instead of gatsby plugin for google fonts
+
+* [`b5aa043`](https://github.com/commercetools/commercetools-docs-kit/commit/b5aa043f4d7655ee51322cb04df6ac766a311f9f) [#601](https://github.com/commercetools/commercetools-docs-kit/pull/601) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency prismjs to v1.21.0 [security]
+
+* Updated dependencies [[`fed7a9b`](https://github.com/commercetools/commercetools-docs-kit/commit/fed7a9b6e375f53750df78b1989ea8c67482516c)]:
+  - @commercetools-docs/ui-kit@7.0.3
+
+## 7.0.2
+
+### Patch Changes
+
+- [`aa9e848`](https://github.com/commercetools/commercetools-docs-kit/commit/aa9e8485454a2e18024772192c37979756af9167) [#592](https://github.com/commercetools/commercetools-docs-kit/pull/592) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- Updated dependencies [[`aa9e848`](https://github.com/commercetools/commercetools-docs-kit/commit/aa9e8485454a2e18024772192c37979756af9167)]:
+  - @commercetools-docs/ui-kit@7.0.2
+
+## 7.0.1
+
+### Patch Changes
+
+- [`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5) [#590](https://github.com/commercetools/commercetools-docs-kit/pull/590) Thanks [@nkuehn](https://github.com/nkuehn)! - Fix RSS feeds being empty in some sites
+
+- Updated dependencies [[`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5)]:
+  - @commercetools-docs/ui-kit@7.0.1
+
+## 7.0.0
+
+### Patch Changes
+
+- [`bfc81c9`](https://github.com/commercetools/commercetools-docs-kit/commit/bfc81c9916692e4391e10217ac35ea12ac709301) [#586](https://github.com/commercetools/commercetools-docs-kit/pull/586) Thanks [@davifantasia](https://github.com/davifantasia)! - back to top now linked to header instead of content
+
+* [`79ca608`](https://github.com/commercetools/commercetools-docs-kit/commit/79ca6087b4ed32fbc781ce0797538f60c6860419) [#549](https://github.com/commercetools/commercetools-docs-kit/pull/549) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: broken soft links in import api
+
+- [`f06192c`](https://github.com/commercetools/commercetools-docs-kit/commit/f06192c544987a431094fd9b2d77ffa07ac46ead) [#585](https://github.com/commercetools/commercetools-docs-kit/pull/585) Thanks [@davifantasia](https://github.com/davifantasia)! - Release notes design review styling changes
+
+* [`a592bdf`](https://github.com/commercetools/commercetools-docs-kit/commit/a592bdfdd3720b39501bfe6981eeed9ba55e6941) [#581](https://github.com/commercetools/commercetools-docs-kit/pull/581) Thanks [@davifantasia](https://github.com/davifantasia)! - - top menu is highlighted on hover
+  - index menu style changes
+* Updated dependencies [[`ff1246e`](https://github.com/commercetools/commercetools-docs-kit/commit/ff1246e5e204181c21b6767239fa3cb788a4c0ee), [`8b44418`](https://github.com/commercetools/commercetools-docs-kit/commit/8b444189da90b5def5c71cc975818b730baaeca7)]:
+  - @commercetools-docs/ui-kit@7.0.0
+
+## 6.0.1
+
+### Patch Changes
+
+- [`1311970`](https://github.com/commercetools/commercetools-docs-kit/commit/1311970bb9e69f3646caec077146480255be165d) [#545](https://github.com/commercetools/commercetools-docs-kit/pull/545) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: improper import
+
+  Fixes build failure in sites using the latest theme
+
+## 6.0.0
+
+### Minor Changes
+
+- [`411d6e6`](https://github.com/commercetools/commercetools-docs-kit/commit/411d6e62eff4a6a3804b040c17a39116333b435b) [#529](https://github.com/commercetools/commercetools-docs-kit/pull/529) Thanks [@nkuehn](https://github.com/nkuehn)! - Optional two-column content layout with side-by-side components
+
+  - `<SideBySide>` component for manual pages
+  - Side-by-side layout for API types and their examples
+  - Theme option and frontmatter to allow wide layouts
+
+  To enable this for all pages, configure the global theme option `allowWideContentLayout`.
+  Single pages can also be enabled/disabled by specifying the `wideLayout` frontmatter option.
+
+  Then, in the MDX files, wrap the containers/elements that should go side-by-side with the
+  `<SideBySide>` component:
+
+  ```jsx
+  <SideBySide>
+    This is the block on the left, or on top if the screen is not wide enough.
+    <div>
+      This goes to the right when the screen is wide enough. I can write
+      **normal** MDX content here.
+    </div>
+  </SideBySide>
+  ```
+
+### Patch Changes
+
+- [`0a61e96`](https://github.com/commercetools/commercetools-docs-kit/commit/0a61e9691ca58322107b5798cd08321df9d51a95) [#523](https://github.com/commercetools/commercetools-docs-kit/pull/523) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update all dependencies
+
+* [`deb72f1`](https://github.com/commercetools/commercetools-docs-kit/commit/deb72f1a055d8bbd11bcb7e5bbdc26359044874c) [#517](https://github.com/commercetools/commercetools-docs-kit/pull/517) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: option to center search dialog in its parent container
+
+- [`1919f39`](https://github.com/commercetools/commercetools-docs-kit/commit/1919f391e824222963eca3807d9d961c3bcf9842) [#533](https://github.com/commercetools/commercetools-docs-kit/pull/533) Thanks [@emmenko](https://github.com/emmenko)! - Use non oppressive language. The `tagWhitelist` option for the `gatsby-transformer-mdx-introspection` has been deprecated in favor of `tagList`.
+
+* [`ca7d387`](https://github.com/commercetools/commercetools-docs-kit/commit/ca7d387ceb82edc9d296517f0e0854146b047d4f) [#544](https://github.com/commercetools/commercetools-docs-kit/pull/544) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: option to center top menu allows passing `centered` prop to LayoutHeader component so the menu is styled to be centered
+
+* Updated dependencies [[`411d6e6`](https://github.com/commercetools/commercetools-docs-kit/commit/411d6e62eff4a6a3804b040c17a39116333b435b), [`2703f63`](https://github.com/commercetools/commercetools-docs-kit/commit/2703f63ec320ea6c79bdc5608bcd240d59d7c2b3), [`76db6f7`](https://github.com/commercetools/commercetools-docs-kit/commit/76db6f7d3dc67c06895259a0e01fd1d7a70f8fac)]:
+  - @commercetools-docs/ui-kit@6.0.0
+
 ## 5.0.3
 
 ### Patch Changes

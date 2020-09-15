@@ -3,26 +3,22 @@ import PropTypes from 'prop-types';
 import Table from '../../table';
 import Rows from './rows/rows';
 
-const Properties = ({ title, apiType, parentDiscriminator }) => {
-  if (!apiType.properties) {
+const Properties = (props) => {
+  if (!props.apiType.properties) {
     throw new Error('Must pass properties props to Properties component.');
   }
 
   return (
     <Table>
-      {title ? (
+      {props.title ? (
         <thead>
           <tr>
-            <th colSpan="2">{title}</th>
+            <th colSpan="2">{props.title}</th>
           </tr>
         </thead>
       ) : null}
       <tbody>
-        <Rows
-          apiType={apiType}
-          parentDiscriminator={parentDiscriminator}
-          discriminatorValue={apiType.discriminatorValue}
-        />
+        <Rows {...props} />
       </tbody>
     </Table>
   );
@@ -30,8 +26,8 @@ const Properties = ({ title, apiType, parentDiscriminator }) => {
 
 Properties.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.object.isRequired,
-  parentDiscriminator: PropTypes.string,
 };
 
 export default Properties;

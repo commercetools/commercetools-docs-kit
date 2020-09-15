@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import Description from '../description';
 import Children from './children';
 
-const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
+const ChildrenUnionLike = (props) => {
   return (
     <SpacingsStack scale="m">
-      <p>{apiType.description}</p>
+      {props.apiType.description && (
+        <Description>{props.apiType.description}</Description>
+      )}
 
       <SpacingsStack scale="m">
-        {apiTypeSubTypes.map((subType) => (
+        {props.apiTypeSubTypes.map((subType) => (
           <SpacingsStack key={subType.displayName} scale="s">
             <p>
               <strong>{subType.displayName}</strong>
             </p>
             <Children
+              apiKey={props.apiKey}
               apiType={subType}
-              parentDiscriminator={apiType.discriminator}
+              doNotRenderExamples={props.doNotRenderExamples}
             />
           </SpacingsStack>
         ))}
@@ -26,8 +30,10 @@ const ChildrenUnionLike = ({ apiType, apiTypeSubTypes }) => {
 };
 
 ChildrenUnionLike.propTypes = {
+  apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.object.isRequired,
   apiTypeSubTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  doNotRenderExamples: PropTypes.bool,
 };
 
 export default ChildrenUnionLike;

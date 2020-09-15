@@ -9,14 +9,16 @@ import {
 } from '@commercetools-docs/ui-kit';
 import useActiveSection from '../../hooks/use-active-section';
 
-const itemType = {
-  url: PropTypes.string,
-  title: PropTypes.string,
-};
 const itemsType = PropTypes.arrayOf(
   PropTypes.shape({
-    ...itemType,
-    items: PropTypes.arrayOf(PropTypes.shape(itemType)),
+    url: PropTypes.string,
+    title: PropTypes.string,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string,
+        title: PropTypes.string,
+      })
+    ),
   })
 );
 
@@ -33,10 +35,17 @@ function flatten(items) {
 
 const getIsActive = (activeSection, item, recursive = false) => {
   if (!activeSection) return false;
-  const itemAndChildUrls =
-    item.items && recursive
-      ? [item.url, ...flatten(item.items).map((flatChild) => flatChild.url)]
-      : [item.url];
+
+  let itemAndChildUrls;
+
+  if (item.items && recursive) {
+    const flattenedItems = flatten(item.items);
+    const flattenedItemUrls = flattenedItems.map((flatChild) => flatChild.url);
+    itemAndChildUrls = [item.url, ...flattenedItemUrls];
+  } else {
+    itemAndChildUrls = [item.url];
+  }
+
   return itemAndChildUrls.includes(
     `#${activeSection.id.replace('section-', '')}`
   );
@@ -177,10 +186,32 @@ LevelGroup.propTypes = {
   navLevels: PropTypes.number.isRequired,
 };
 const Container = (props) => (
-  <SpacingsStack scale="s">
+  <SpacingsStack scale="m">
     {props.items.map((item, index) => {
       const level = 1;
-      const isActive = getIsActive(props.activeSection, item);
+      let skipsOneLevelOfNav;
+
+      if (props.navLevels === 2) {
+        skipsOneLevelOfNav = Boolean(
+          item.items && !item.items[0].title && item.items[0].items
+        );
+      }
+
+      if (props.navLevels === 3) {
+        skipsOneLevelOfNav = Boolean(
+          item.items &&
+            item.items[0].items &&
+            !item.items[0].items[0].title &&
+            item.items[0].items[0].items
+        );
+      }
+
+      const isActive = getIsActive(
+        props.activeSection,
+        item,
+        skipsOneLevelOfNav
+      );
+
       return (
         <SpacingsStack scale="s" key={index}>
           <Link
@@ -188,7 +219,7 @@ const Container = (props) => (
             level={level}
             role={`level-${level}`}
             isActive={isActive}
-            aria-current={isActive}
+            aria-current={isActive && !skipsOneLevelOfNav}
           >
             <Indented level={1}>{item.title}</Indented>
           </Link>
@@ -208,6 +239,7 @@ Container.propTypes = {
   items: itemsType.isRequired,
   activeSection: PropTypes.instanceOf(SafeHTMLElement),
   children: PropTypes.node,
+  navLevels: PropTypes.number.isRequired,
 };
 
 const PageNavigation = (props) => {
@@ -216,6 +248,7 @@ const PageNavigation = (props) => {
     <Container
       items={props.tableOfContents.items}
       activeSection={activeSection}
+      navLevels={props.navLevels}
     >
       {props.navLevels >= 2 && (
         <LevelGroup navLevels={props.navLevels}>

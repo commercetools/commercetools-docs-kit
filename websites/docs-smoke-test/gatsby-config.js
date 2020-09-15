@@ -16,6 +16,7 @@ module.exports = {
       websiteKey: 'docs-smoke-test',
       excludeFromSearchIndex: isProd && !shouldEnableSearch,
       additionalPrismLanguages: ['scala', 'csharp'],
+      allowWideContentLayout: true,
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants',

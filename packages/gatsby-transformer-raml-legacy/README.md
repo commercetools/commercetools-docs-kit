@@ -49,8 +49,8 @@ The RAML transformer accepts the following configuration options:
 
 - `validate` (boolean): Passed through to the respective RAML parser option.
 - `canonicalTypeImpl` (string): Passed through to the respective `raml2obj` option.
-- `includeApis` (string array): Whitelist API keys (derived from file and folder names)
-- `excludeApis` (sring array): Blacklist API keys (derived from file and folder names)
+- `includeApis` (string array): List of allowed API keys (derived from file and folder names)
+- `excludeApis` (string array): List of denied API keys (derived from file and folder names)
 - `annotateConstantLikeEnums` (boolean): Adds an additional `const` attribute with the de-facto constant value of a type whenever it detects `enum` value arrays that have exactly one entry only.
 
 ## A typical GraphQL query

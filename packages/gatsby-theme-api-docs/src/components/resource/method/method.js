@@ -4,7 +4,10 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
+import {
+  markdownFragmentToReact,
+  SideBySide,
+} from '@commercetools-docs/gatsby-theme-docs';
 import { generateEndpointURN } from '../../../utils/ctp-urn';
 import {
   oauth2Scopes,
@@ -18,14 +21,12 @@ import Scopes from './scopes';
 import Responses from './responses';
 import Parameters from './parameters';
 import RequestRepresentation from './request-representation';
+import Description from '../../description';
+import RequestResponseExamples from './request-response-examples';
 
 const Title = styled.h6`
   font-size: ${typography.fontSizes.h4};
   font-weight: ${typography.fontWeights.medium};
-`;
-
-const Description = styled.p`
-  line-height: ${typography.lineHeights.body};
 `;
 
 const Container = styled.div`
@@ -79,51 +80,60 @@ const Method = ({
           border-left-color: ${methodColor};
         `}
       >
-        <SpacingsStack scale="m">
-          <Url
-            apiKey={apiKey}
-            method={methodType}
-            methodColor={methodColor}
-            uris={uris}
-          />
-
-          {method.securedBy && (
-            <Scopes
-              scopes={method.securedBy[0].oauth_2_0.scopes}
-              title={oauth2Scopes}
-            />
-          )}
-
-          {allUriParameters.length > 0 && (
-            <Parameters
-              title={pathParametersTitle}
-              parameters={allUriParameters}
-            />
-          )}
-
-          {method.queryParameters && (
-            <Parameters
+        <SideBySide>
+          <SpacingsStack scale="m">
+            <Url
               apiKey={apiKey}
-              title={queryParametersTitle}
-              parameters={method.queryParameters}
+              method={methodType}
+              methodColor={methodColor}
+              uris={uris}
             />
-          )}
 
-          {method.body && (
-            <RequestRepresentation
-              apiKey={apiKey}
-              apiType={method.body.applicationjson.type}
-            />
-          )}
+            {method.securedBy && (
+              <Scopes
+                scopes={method.securedBy[0].oauth_2_0.scopes}
+                title={oauth2Scopes}
+              />
+            )}
 
-          {method.responses && (
-            <Responses
+            {allUriParameters.length > 0 && (
+              <Parameters
+                title={pathParametersTitle}
+                parameters={allUriParameters}
+              />
+            )}
+
+            {method.queryParameters && (
+              <Parameters
+                apiKey={apiKey}
+                title={queryParametersTitle}
+                parameters={method.queryParameters}
+              />
+            )}
+
+            {method.body && (
+              <RequestRepresentation
+                apiKey={apiKey}
+                apiType={method.body.applicationjson.type}
+              />
+            )}
+
+            {method.responses && (
+              <Responses
+                apiKey={apiKey}
+                responses={method.responses}
+                title={responseRepresentation}
+              />
+            )}
+          </SpacingsStack>
+          <SpacingsStack scale="m">
+            <RequestResponseExamples
               apiKey={apiKey}
+              requestCodeExamples={method.codeExamples}
               responses={method.responses}
-              title={responseRepresentation}
             />
-          )}
-        </SpacingsStack>
+          </SpacingsStack>
+        </SideBySide>
       </Container>
     </SpacingsStack>
   );

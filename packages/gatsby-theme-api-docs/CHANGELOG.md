@@ -1,5 +1,130 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 7.0.6
+
+### Patch Changes
+
+- [`386117c`](https://github.com/commercetools/commercetools-docs-kit/commit/386117ced08531af7007ff6b7aac738a78cf4496) [#620](https://github.com/commercetools/commercetools-docs-kit/pull/620) Thanks [@davifantasia](https://github.com/davifantasia)! - Changes here is the last or 3 parts to:
+
+  - render request and response examples and
+  - fix broken ui for types rendered in endpoints using a large desktop layout
+
+- Updated dependencies [[`386117c`](https://github.com/commercetools/commercetools-docs-kit/commit/386117ced08531af7007ff6b7aac738a78cf4496), [`7248f86`](https://github.com/commercetools/commercetools-docs-kit/commit/7248f867eb1da1ade1301ed50d54e102f7839ec0)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.6
+
+## 7.0.5
+
+### Patch Changes
+
+- [`288ac41`](https://github.com/commercetools/commercetools-docs-kit/commit/288ac4121e17d69a8dcbb361043686908273f64f) [#624](https://github.com/commercetools/commercetools-docs-kit/pull/624) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- Updated dependencies [[`f9cd4d4`](https://github.com/commercetools/commercetools-docs-kit/commit/f9cd4d4d41fee1f81689eab63ee9ae04315a9627), [`288ac41`](https://github.com/commercetools/commercetools-docs-kit/commit/288ac4121e17d69a8dcbb361043686908273f64f), [`a413bd9`](https://github.com/commercetools/commercetools-docs-kit/commit/a413bd99f6ac7c87363802dde999c29ed79931f0)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.5
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@3.0.5
+  - @commercetools-docs/ui-kit@7.0.5
+
+## 7.0.4
+
+### Patch Changes
+
+- [`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f) [#616](https://github.com/commercetools/commercetools-docs-kit/pull/616) Thanks [@emmenko](https://github.com/emmenko)! - Update UI Kit dependencies
+
+- Updated dependencies [[`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.4
+  - @commercetools-docs/ui-kit@7.0.4
+
+## 7.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`2dd19f2`](https://github.com/commercetools/commercetools-docs-kit/commit/2dd19f2e8a60c55bfd87f72ec8b8ca79fbdbbc52), [`fed7a9b`](https://github.com/commercetools/commercetools-docs-kit/commit/fed7a9b6e375f53750df78b1989ea8c67482516c), [`b5aa043`](https://github.com/commercetools/commercetools-docs-kit/commit/b5aa043f4d7655ee51322cb04df6ac766a311f9f), [`e1df4de`](https://github.com/commercetools/commercetools-docs-kit/commit/e1df4de7e0c0d970f52bc56f463a48e8b260ecba)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.3
+  - @commercetools-docs/ui-kit@7.0.3
+  - @commercetools-docs/gatsby-transformer-raml@3.0.2
+
+## 7.0.2
+
+### Patch Changes
+
+- [`aa9e848`](https://github.com/commercetools/commercetools-docs-kit/commit/aa9e8485454a2e18024772192c37979756af9167) [#592](https://github.com/commercetools/commercetools-docs-kit/pull/592) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- Updated dependencies [[`aa9e848`](https://github.com/commercetools/commercetools-docs-kit/commit/aa9e8485454a2e18024772192c37979756af9167)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.2
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@3.0.4
+  - @commercetools-docs/ui-kit@7.0.2
+
+## 7.0.1
+
+### Patch Changes
+
+- [`cebd5c9`](https://github.com/commercetools/commercetools-docs-kit/commit/cebd5c9d6c0d294f1335580f18d728b5eac4aa15) [#588](https://github.com/commercetools/commercetools-docs-kit/pull/588) Thanks [@emmenko](https://github.com/emmenko)! - Use version range for gatsby docs peer deps
+
+- Updated dependencies [[`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5), [`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5)]:
+  - @commercetools-docs/ui-kit@7.0.1
+  - @commercetools-docs/gatsby-theme-docs@7.0.1
+
+## 7.0.0
+
+### Patch Changes
+
+- [`bf583d6`](https://github.com/commercetools/commercetools-docs-kit/commit/bf583d67ef763bc10dc2c872a74f20c14834834b) [#561](https://github.com/commercetools/commercetools-docs-kit/pull/561) Thanks [@davifantasia](https://github.com/davifantasia)! - Render constant (single value enum) pattern in type properties. Types are also consistently rendered whether they are rendered as sub types of a union like or as stand alone.
+
+- Updated dependencies [[`bfc81c9`](https://github.com/commercetools/commercetools-docs-kit/commit/bfc81c9916692e4391e10217ac35ea12ac709301), [`ff1246e`](https://github.com/commercetools/commercetools-docs-kit/commit/ff1246e5e204181c21b6767239fa3cb788a4c0ee), [`79ca608`](https://github.com/commercetools/commercetools-docs-kit/commit/79ca6087b4ed32fbc781ce0797538f60c6860419), [`f06192c`](https://github.com/commercetools/commercetools-docs-kit/commit/f06192c544987a431094fd9b2d77ffa07ac46ead), [`8b44418`](https://github.com/commercetools/commercetools-docs-kit/commit/8b444189da90b5def5c71cc975818b730baaeca7), [`a592bdf`](https://github.com/commercetools/commercetools-docs-kit/commit/a592bdfdd3720b39501bfe6981eeed9ba55e6941)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.0
+  - @commercetools-docs/ui-kit@7.0.0
+
+## 6.0.2
+
+### Patch Changes
+
+- [`9d36ae3`](https://github.com/commercetools/commercetools-docs-kit/commit/9d36ae3445a2146808695110317a687e7f463d87) [#547](https://github.com/commercetools/commercetools-docs-kit/pull/547) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: for undefined enum description that causes build failure in microsites that depend on gatsby-theme-api-docs
+
+## 6.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`1311970`](https://github.com/commercetools/commercetools-docs-kit/commit/1311970bb9e69f3646caec077146480255be165d)]:
+  - @commercetools-docs/gatsby-theme-docs@6.0.1
+
+## 6.0.0
+
+### Minor Changes
+
+- [`411d6e6`](https://github.com/commercetools/commercetools-docs-kit/commit/411d6e62eff4a6a3804b040c17a39116333b435b) [#529](https://github.com/commercetools/commercetools-docs-kit/pull/529) Thanks [@nkuehn](https://github.com/nkuehn)! - Optional two-column content layout with side-by-side components
+
+  - `<SideBySide>` component for manual pages
+  - Side-by-side layout for API types and their examples
+  - Theme option and frontmatter to allow wide layouts
+
+  To enable this for all pages, configure the global theme option `allowWideContentLayout`.
+  Single pages can also be enabled/disabled by specifying the `wideLayout` frontmatter option.
+
+  Then, in the MDX files, wrap the containers/elements that should go side-by-side with the
+  `<SideBySide>` component:
+
+  ```jsx
+  <SideBySide>
+    This is the block on the left, or on top if the screen is not wide enough.
+    <div>
+      This goes to the right when the screen is wide enough. I can write
+      **normal** MDX content here.
+    </div>
+  </SideBySide>
+  ```
+
+### Patch Changes
+
+- [`0a61e96`](https://github.com/commercetools/commercetools-docs-kit/commit/0a61e9691ca58322107b5798cd08321df9d51a95) [#523](https://github.com/commercetools/commercetools-docs-kit/pull/523) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update all dependencies
+
+* [`1919f39`](https://github.com/commercetools/commercetools-docs-kit/commit/1919f391e824222963eca3807d9d961c3bcf9842) [#533](https://github.com/commercetools/commercetools-docs-kit/pull/533) Thanks [@emmenko](https://github.com/emmenko)! - Use non oppressive language. The `tagWhitelist` option for the `gatsby-transformer-mdx-introspection` has been deprecated in favor of `tagList`.
+
+- [`fb16ae5`](https://github.com/commercetools/commercetools-docs-kit/commit/fb16ae56a69f7ccc8761dca287590e15bc329bfc) [#535](https://github.com/commercetools/commercetools-docs-kit/pull/535) Thanks [@davifantasia](https://github.com/davifantasia)! - refactor: render enums as a definition list
+
+- Updated dependencies [[`411d6e6`](https://github.com/commercetools/commercetools-docs-kit/commit/411d6e62eff4a6a3804b040c17a39116333b435b), [`2703f63`](https://github.com/commercetools/commercetools-docs-kit/commit/2703f63ec320ea6c79bdc5608bcd240d59d7c2b3), [`0a61e96`](https://github.com/commercetools/commercetools-docs-kit/commit/0a61e9691ca58322107b5798cd08321df9d51a95), [`76db6f7`](https://github.com/commercetools/commercetools-docs-kit/commit/76db6f7d3dc67c06895259a0e01fd1d7a70f8fac), [`deb72f1`](https://github.com/commercetools/commercetools-docs-kit/commit/deb72f1a055d8bbd11bcb7e5bbdc26359044874c), [`1919f39`](https://github.com/commercetools/commercetools-docs-kit/commit/1919f391e824222963eca3807d9d961c3bcf9842), [`ca7d387`](https://github.com/commercetools/commercetools-docs-kit/commit/ca7d387ceb82edc9d296517f0e0854146b047d4f)]:
+  - @commercetools-docs/gatsby-theme-docs@6.0.0
+  - @commercetools-docs/ui-kit@6.0.0
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@3.0.3
+
 ## 5.0.3
 
 ### Patch Changes

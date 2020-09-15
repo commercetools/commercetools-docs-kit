@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import { FullWidthContainer } from '@commercetools-docs/gatsby-theme-docs';
 import useReadResourceByResourcePath from '../hooks/use-read-resource-by-resource-path';
 import reportError from '../utils/report-error';
 import Method from './resource/method';
-
-const Container = styled.div`
-  margin: 1em 0;
-`;
 
 const ResourceMethod = ({ apiKey, resource, method, title }) => {
   const resourceObject = useReadResourceByResourcePath(apiKey, resource);
@@ -25,7 +21,7 @@ const ResourceMethod = ({ apiKey, resource, method, title }) => {
   }
 
   return (
-    <Container>
+    <FullWidthContainer>
       <Method
         apiKey={apiKey}
         uris={resourceObject.uris}
@@ -34,7 +30,7 @@ const ResourceMethod = ({ apiKey, resource, method, title }) => {
         methodType={method}
         title={title}
       />
-    </Container>
+    </FullWidthContainer>
   );
 };
 

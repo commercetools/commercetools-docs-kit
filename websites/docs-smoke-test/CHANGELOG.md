@@ -1,5 +1,101 @@
 # @commercetools-website/docs-smoke-test
 
+## 3.1.14
+
+### Patch Changes
+
+- Updated dependencies [[`386117c`](https://github.com/commercetools/commercetools-docs-kit/commit/386117ced08531af7007ff6b7aac738a78cf4496), [`7248f86`](https://github.com/commercetools/commercetools-docs-kit/commit/7248f867eb1da1ade1301ed50d54e102f7839ec0)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.6
+  - @commercetools-docs/gatsby-theme-code-examples@7.0.6
+  - @commercetools-docs/gatsby-theme-constants@7.0.6
+
+## 3.1.13
+
+### Patch Changes
+
+- [`288ac41`](https://github.com/commercetools/commercetools-docs-kit/commit/288ac4121e17d69a8dcbb361043686908273f64f) [#624](https://github.com/commercetools/commercetools-docs-kit/pull/624) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- Updated dependencies [[`f9cd4d4`](https://github.com/commercetools/commercetools-docs-kit/commit/f9cd4d4d41fee1f81689eab63ee9ae04315a9627), [`288ac41`](https://github.com/commercetools/commercetools-docs-kit/commit/288ac4121e17d69a8dcbb361043686908273f64f), [`a413bd9`](https://github.com/commercetools/commercetools-docs-kit/commit/a413bd99f6ac7c87363802dde999c29ed79931f0)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.5
+  - @commercetools-docs/ui-kit@7.0.5
+  - @commercetools-docs/gatsby-theme-code-examples@7.0.5
+  - @commercetools-docs/gatsby-theme-constants@7.0.5
+
+## 3.1.12
+
+### Patch Changes
+
+- [`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f) [#616](https://github.com/commercetools/commercetools-docs-kit/pull/616) Thanks [@emmenko](https://github.com/emmenko)! - Update UI Kit dependencies
+
+- Updated dependencies [[`551c9bb`](https://github.com/commercetools/commercetools-docs-kit/commit/551c9bb0436215ca332c91e1a569471c878a3a8f)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.4
+  - @commercetools-docs/ui-kit@7.0.4
+  - @commercetools-docs/gatsby-theme-code-examples@7.0.4
+  - @commercetools-docs/gatsby-theme-constants@7.0.4
+
+## 3.1.11
+
+### Patch Changes
+
+- Updated dependencies [[`2dd19f2`](https://github.com/commercetools/commercetools-docs-kit/commit/2dd19f2e8a60c55bfd87f72ec8b8ca79fbdbbc52), [`fed7a9b`](https://github.com/commercetools/commercetools-docs-kit/commit/fed7a9b6e375f53750df78b1989ea8c67482516c), [`b5aa043`](https://github.com/commercetools/commercetools-docs-kit/commit/b5aa043f4d7655ee51322cb04df6ac766a311f9f)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.3
+  - @commercetools-docs/ui-kit@7.0.3
+  - @commercetools-docs/gatsby-theme-code-examples@7.0.3
+  - @commercetools-docs/gatsby-theme-constants@7.0.3
+
+## 3.1.10
+
+### Patch Changes
+
+- [`aa9e848`](https://github.com/commercetools/commercetools-docs-kit/commit/aa9e8485454a2e18024772192c37979756af9167) [#592](https://github.com/commercetools/commercetools-docs-kit/pull/592) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- Updated dependencies [[`aa9e848`](https://github.com/commercetools/commercetools-docs-kit/commit/aa9e8485454a2e18024772192c37979756af9167)]:
+  - @commercetools-docs/gatsby-theme-code-examples@7.0.2
+  - @commercetools-docs/gatsby-theme-constants@7.0.2
+  - @commercetools-docs/gatsby-theme-docs@7.0.2
+  - @commercetools-docs/ui-kit@7.0.2
+
+## 3.1.9
+
+### Patch Changes
+
+- Updated dependencies [[`cebd5c9`](https://github.com/commercetools/commercetools-docs-kit/commit/cebd5c9d6c0d294f1335580f18d728b5eac4aa15), [`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5), [`50ce1d6`](https://github.com/commercetools/commercetools-docs-kit/commit/50ce1d67c560a8b42e47e9894d562077ca0f92b5)]:
+  - @commercetools-docs/gatsby-theme-code-examples@7.0.1
+  - @commercetools-docs/gatsby-theme-constants@7.0.1
+  - @commercetools-docs/ui-kit@7.0.1
+  - @commercetools-docs/gatsby-theme-docs@7.0.1
+
+## 3.1.8
+
+### Patch Changes
+
+- Updated dependencies [[`bfc81c9`](https://github.com/commercetools/commercetools-docs-kit/commit/bfc81c9916692e4391e10217ac35ea12ac709301), [`ff1246e`](https://github.com/commercetools/commercetools-docs-kit/commit/ff1246e5e204181c21b6767239fa3cb788a4c0ee), [`79ca608`](https://github.com/commercetools/commercetools-docs-kit/commit/79ca6087b4ed32fbc781ce0797538f60c6860419), [`f06192c`](https://github.com/commercetools/commercetools-docs-kit/commit/f06192c544987a431094fd9b2d77ffa07ac46ead), [`8b44418`](https://github.com/commercetools/commercetools-docs-kit/commit/8b444189da90b5def5c71cc975818b730baaeca7), [`a592bdf`](https://github.com/commercetools/commercetools-docs-kit/commit/a592bdfdd3720b39501bfe6981eeed9ba55e6941)]:
+  - @commercetools-docs/gatsby-theme-docs@7.0.0
+  - @commercetools-docs/ui-kit@7.0.0
+  - @commercetools-docs/gatsby-theme-code-examples@7.0.0
+  - @commercetools-docs/gatsby-theme-constants@7.0.0
+
+## 3.1.7
+
+### Patch Changes
+
+- Updated dependencies [[`1311970`](https://github.com/commercetools/commercetools-docs-kit/commit/1311970bb9e69f3646caec077146480255be165d)]:
+  - @commercetools-docs/gatsby-theme-docs@6.0.1
+  - @commercetools-docs/gatsby-theme-code-examples@6.0.1
+  - @commercetools-docs/gatsby-theme-constants@6.0.1
+
+## 3.1.6
+
+### Patch Changes
+
+- [`0a61e96`](https://github.com/commercetools/commercetools-docs-kit/commit/0a61e9691ca58322107b5798cd08321df9d51a95) [#523](https://github.com/commercetools/commercetools-docs-kit/pull/523) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update all dependencies
+
+- Updated dependencies [[`411d6e6`](https://github.com/commercetools/commercetools-docs-kit/commit/411d6e62eff4a6a3804b040c17a39116333b435b), [`2703f63`](https://github.com/commercetools/commercetools-docs-kit/commit/2703f63ec320ea6c79bdc5608bcd240d59d7c2b3), [`0a61e96`](https://github.com/commercetools/commercetools-docs-kit/commit/0a61e9691ca58322107b5798cd08321df9d51a95), [`76db6f7`](https://github.com/commercetools/commercetools-docs-kit/commit/76db6f7d3dc67c06895259a0e01fd1d7a70f8fac), [`deb72f1`](https://github.com/commercetools/commercetools-docs-kit/commit/deb72f1a055d8bbd11bcb7e5bbdc26359044874c), [`1919f39`](https://github.com/commercetools/commercetools-docs-kit/commit/1919f391e824222963eca3807d9d961c3bcf9842), [`ca7d387`](https://github.com/commercetools/commercetools-docs-kit/commit/ca7d387ceb82edc9d296517f0e0854146b047d4f)]:
+  - @commercetools-docs/gatsby-theme-docs@6.0.0
+  - @commercetools-docs/ui-kit@6.0.0
+  - @commercetools-docs/gatsby-theme-code-examples@6.0.0
+  - @commercetools-docs/gatsby-theme-constants@6.0.0
+
 ## 3.1.5
 
 ### Patch Changes

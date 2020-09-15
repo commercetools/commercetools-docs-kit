@@ -1,63 +1,71 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { SideBySide } from '@commercetools-docs/gatsby-theme-docs';
+import Description from '../description';
 import Enum from './enum';
 import Properties from './properties/properties';
 import Examples from './examples';
 
-const Children = ({
-  apiType,
-  parentDiscriminator,
-  renderDescriptionBelowProperties,
-  propertiesTableTitle,
-}) => {
-  if (renderDescriptionBelowProperties) {
-    return (
-      <SpacingsStack scale="m">
-        {apiType.properties ? (
-          <Properties
-            apiType={apiType}
-            parentDiscriminator={parentDiscriminator}
-            title={propertiesTableTitle}
-          />
-        ) : null}
+const DescriptionAndEnums = (props) => {
+  return (
+    <>
+      {props.apiType.description && (
+        <Description>{props.apiType.description}</Description>
+      )}
+      {props.apiType.enumeration && (
+        <Enum
+          values={props.apiType.enumeration}
+          enumDescriptions={props.apiType.enumDescriptions}
+        />
+      )}
+    </>
+  );
+};
 
-        {apiType.enumeration || apiType.description ? (
-          <Enum
-            description={apiType.description}
-            values={apiType.enumeration}
-          />
-        ) : null}
-      </SpacingsStack>
-    );
-  }
+DescriptionAndEnums.propTypes = {
+  apiType: PropTypes.object.isRequired,
+};
 
+const Children = (props) => {
   return (
     <SpacingsStack scale="m">
-      {apiType.enumeration || apiType.description ? (
-        <Enum description={apiType.description} values={apiType.enumeration} />
-      ) : null}
+      {!props.renderDescriptionBelowProperties && (
+        <DescriptionAndEnums apiType={props.apiType} />
+      )}
 
-      {apiType.properties ? (
-        <Properties
-          apiType={apiType}
-          parentDiscriminator={parentDiscriminator}
-        />
-      ) : null}
+      {(props.apiType.properties || props.apiType.examples) && (
+        <SideBySide>
+          {props.apiType.properties && (
+            <Properties
+              apiKey={props.apiKey}
+              apiType={props.apiType}
+              title={props.propertiesTableTitle}
+            />
+          )}
 
-      {apiType.examples ? <Examples examples={apiType.examples} /> : null}
+          {props.apiType.examples && !props.doNotRenderExamples && (
+            <Examples examples={props.apiType.examples} />
+          )}
+        </SideBySide>
+      )}
+
+      {props.renderDescriptionBelowProperties && (
+        <DescriptionAndEnums apiType={props.apiType} />
+      )}
     </SpacingsStack>
   );
 };
 
 Children.propTypes = {
+  apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.object.isRequired,
-  parentDiscriminator: PropTypes.string,
-  renderDescriptionBelowProperties: PropTypes.bool,
   propertiesTableTitle: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
   ]),
+  renderDescriptionBelowProperties: PropTypes.bool,
+  doNotRenderExamples: PropTypes.bool,
 };
 
 export default Children;

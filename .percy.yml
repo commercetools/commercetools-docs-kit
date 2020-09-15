@@ -1,6 +1,6 @@
 version: 1
 snapshot:
-  widths: [1634]
+  widths: [1706]
   min-height: 1024
   percy-css: |
     #application {
@@ -8,7 +8,7 @@ snapshot:
     }
 static-snapshots:
   base-url: /
-  snapshot-files: '**/components/**/*.html,**/views/markdown/*.html,**/releases/index.html'
+  snapshot-files: '**/components/**/*.html,**/views/markdown/*.html,**/releases/index.html,**/types/**/*.html,**/endpoints/**/*.html,**/layouts/**/*.html'
   ignore-files: '**/site-template/**/*.html'
 agent:
   asset-discovery:

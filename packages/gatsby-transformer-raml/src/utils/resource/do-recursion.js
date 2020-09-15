@@ -5,6 +5,7 @@ const fieldsToClean = {
   '(resourcePathUri)': true,
   '(builtinType)': true,
   'application/json': true,
+  '(codeExamples)': true,
 };
 
 /**

@@ -129,6 +129,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
+        allowWideContentLayout: { type: 'Boolean!' },
         beta: { type: 'Boolean!' },
         body: {
           type: 'String!',
@@ -253,8 +254,16 @@ exports.onCreateNode = (
     websitePrimaryColor: colorPreset.value.primaryColor,
     isGlobalBeta: Boolean(pluginOptions.beta),
     excludeFromSearchIndex:
+      // frontmatter can only exclude in an otherwise not excluded site,
+      // but it can't include in a generally excluded site
       Boolean(node.frontmatter.excludeFromSearchIndex) ||
       Boolean(pluginOptions.excludeFromSearchIndex),
+    allowWideContentLayout:
+      // the frontmatter `wideLayout` and the theme's allowWideContentLayout
+      // must be set for the page to switch to wide layout
+      Boolean(
+        node.frontmatter.wideLayout && pluginOptions.allowWideContentLayout
+      ),
     beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)
@@ -475,7 +484,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   };
 
-  // Restricting importing from `prismjs` to only the whitelisted languages,
+  // Restricting importing from `prismjs` to only the listed languages,
   // to not blow up the bundle.
   // Inspired by https://github.com/facebook/docusaurus/pull/2250
   const prismLanguages = (pluginOptions.additionalPrismLanguages || [])

@@ -1,0 +1,58 @@
+---
+title: API Type Regular Desktop Layout
+description: Test components that can not flow into two content columns when the option is disabled
+wideLayout: false
+---
+
+<Subtitle>
+
+Tests the responsive behavior in "largeDesktop" responsive sizes. It has the `widelayout` frontmatter set to `false`.
+
+</Subtitle>
+
+
+# Content
+
+## Test Subsection Title
+
+Lorem ipsum dolor sit amet, everti feugiat gloriatur sed et, an omnes saepe intellegat vix. Ei aperiam postulant mea, primis omnesque voluptatibus ad nec. Vim ea nobis tation, pro putent discere pertinacia eu, ex quo gubergren referrentur. Nam in graeco periculis, qui at conceptam intellegat. Ea purto natum accusam sed. Has ne partem adversarium theophrastus, sed tale eirmod ad, eum in malis ignota nusquam.
+
+Id quo virtute epicurei phaedrum. No volumus atomorum sit, sonet sensibus ne quo. Tale porro cu qui, ridens option praesent ius ei, nam brute iracundia cu. Aeque soluta necessitatibus te quo, cu vel aperiri euismod delectus. Eu quod invenire mnesarchum sed, his ne decore mollis audire, sit ea aeque zril doctus.
+
+# API Representations
+
+## A type without examples
+
+This one should take the regular width:
+
+<ApiType apiKey="test" type="WideLayoutFloatTestType" />
+
+## WideLayoutArrayTestType
+
+<ApiType apiKey="test" type="WideLayoutArrayTestType" />
+
+## Manual Side By Side Content
+
+<SideBySide>
+
+The `<SideBySide>` component allows wrapping two arbitrary pieces of markdown or MDX block-level
+contents to allow the wide layout to put the next to each other if the space allows. It's for "Pairs" of
+content that directly belong to each other. If multiple blocks are intended for this "left" part it needs to be wrapped
+in a `<div>` which is not nice but at least works.
+
+```md
+<SideBySide>
+
+Block one - don't forget the blank lines!
+
+Blick two - don't forget the blank lines!
+
+</SideBySide>
+```
+
+</SideBySide>
+
+## WideLayoutArrayTestType again to test the layout
+
+<ApiType apiKey="test" type="WideLayoutArrayTestType" />
+

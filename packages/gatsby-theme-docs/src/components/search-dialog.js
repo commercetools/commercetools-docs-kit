@@ -27,8 +27,8 @@ const containerStyle = css`
       [row1-start] 'search-dialog-content right-blank' auto [row1-end]
       /
       minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       1fr;
   }
@@ -36,8 +36,8 @@ const containerStyle = css`
     grid:
       [row1-start] 'search-dialog-content right-blank' auto [row1-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
@@ -46,8 +46,8 @@ const containerStyle = css`
       [row1-start] 'search-dialog-content right-blank' auto [row1-end]
       /
       minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargings},
-        ${designSystem.dimensions.widths.pageContentWithMargings}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
@@ -55,7 +55,7 @@ const containerStyle = css`
     grid:
       [row1-start] 'search-dialog-content right-blank' auto [row1-end]
       /
-      ${designSystem.dimensions.widths.pageContentWithMargings}
+      ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
 `;

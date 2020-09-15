@@ -39,6 +39,30 @@ post:
               strict: true
               value: !include ../examples/ByProjectKeyResourcePost-201-default.json
 
+  (codeExamples):
+    curl: |-
+      curl -X POST https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}' \
+      --header 'Content-Type: application/json' \
+      --data-binary @- << DATA 
+      {
+        "objectTypeProperty" : {
+          "arrayOfIntExample" : [ 1, 2, 1, 3, 2, 3, 1 ],
+          "arrayOfUniqueIntExample" : [ 1, 3, 5, 7 ],
+          "arrayOfTwonumbersExample" : [ 3, 5 ],
+          "arrayOfFloatExample" : [ 0.82 ],
+          "arrayOfNumberNoDefaultsExample" : [ 10, 9, 8, 7, 6 ],
+          "arrayOfStringExample" : [ "dog", "cat", "bird" ],
+          "arrayOfObjectType" : [ {
+            "integerExample" : 777,
+            "integerExampleInt32" : 1
+          }, {
+            "integerExample" : 30000,
+            "integerExampleInt32" : 22
+          } ]
+        }
+      }
+      DATA
 get:
   securedBy:
   - oauth_2_0:
@@ -109,3 +133,8 @@ get:
             default:
               strict: true
               value: !include ../examples/ByProjectKeyResourceGet-200-default.json
+
+  (codeExamples):
+    curl: |-
+      curl -X GET https://api.{region}.{cloudProvider}.commercetools.com/{projectKey}/resource -i \
+      --header 'Authorization: Bearer ${BEARER_TOKEN}'

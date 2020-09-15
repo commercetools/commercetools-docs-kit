@@ -1,5 +1,11 @@
 # @commercetools-docs/ramldoc-generator
 
+## 3.0.3
+
+### Patch Changes
+
+- [`8055d4b`](https://github.com/commercetools/commercetools-docs-kit/commit/8055d4becffbcbacb7bcdb6348d8bac9d020af4b) [#629](https://github.com/commercetools/commercetools-docs-kit/pull/629) Thanks [@davifantasia](https://github.com/davifantasia)! - chore: update rmfCodegenVersion
+
 ## 3.0.2
 
 ### Patch Changes
