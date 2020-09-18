@@ -17,6 +17,7 @@ module.exports = {
       excludeFromSearchIndex: isProd && !shouldEnableSearch,
       additionalPrismLanguages: ['scala', 'csharp'],
       allowWideContentLayout: true,
+      enableCanonicalUrls: true,
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants',
