@@ -6,7 +6,7 @@ const { valeVersion } = require('../package.json');
 const binaryFileName =
   os.platform() === 'win32' ? `vale-${valeVersion}.exe` : `vale-${valeVersion}`;
 
-const valeBinary = path.join(__dirname, `../${binaryFileName}`);
+const valeBinary = path.join(__dirname, `../vale-bin/${binaryFileName}`);
 
 function run(commandArgs) {
   return spawn(valeBinary, commandArgs, {
