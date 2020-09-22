@@ -38,13 +38,9 @@
         ]
       }
     },
-    "vscode-vale.path": "${workspaceFolder}/node_modules/.bin/commercetools-vale-bin",
-    "vscode-vale.configPath": "${workspaceFolder}/packages/writing-style/.vale.ini",
-    "vscode-vale.fileExtensions": [
-      "md",
-      "markdown",
-      "mdx"
-    ],
+    "vale.core.useCLI": true,
+    "vale.valeCLI.path": "${workspaceFolder}/node_modules/.bin/commercetools-vale-bin",
+    "vale.valeCLI.config": "${workspaceFolder}/node_modules/@commercetools-docs/writing-style/.vale.ini",
     "spellright.notificationClass": "warning",
     "spellright.language": [
       "en"
@@ -68,7 +64,7 @@
       "ms-vscode.vscode-typescript-tslint-plugin",
       "redhat.vscode-yaml",
       "silvenon.mdx",
-      "testthedocs.vale"
+      "errata-ai.vale-server"
     ]
   }
 }

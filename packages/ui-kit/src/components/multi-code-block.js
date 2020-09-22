@@ -22,7 +22,7 @@ const Header = styled.div`
 const HeaderInner = styled.div`
   display: grid;
   grid-gap: ${dimensions.spacings.m};
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 1fr;
 `;
 const HeaderText = styled.span`
   color: ${(props) => props.theme.codeBlockColors.textHeader};
