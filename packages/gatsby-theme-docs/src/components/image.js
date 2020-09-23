@@ -10,6 +10,11 @@ const Container = styled.span`
 
 const Image = (props) => {
   const imageSharp = useImagesByRelativePath(props.src);
+
+  if (!imageSharp || !imageSharp.publicURL) {
+    return null;
+  }
+
   return (
     <Container>
       <img {...props} src={imageSharp.publicURL} />
