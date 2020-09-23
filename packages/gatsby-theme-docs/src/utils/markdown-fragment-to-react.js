@@ -6,6 +6,7 @@ import remark2react from 'remark-react';
 import frontmatter from 'remark-frontmatter';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import Link from '../components/link';
+import Image from '../components/image';
 
 const Div = styled.div``;
 const Heading = styled.p`
@@ -43,6 +44,7 @@ const markdownFragmentToReact = (markdownString, customElements) =>
       remarkReactComponents: {
         p: Markdown.Paragraph,
         a: Link,
+        img: Image,
         h1: Heading,
         h2: Heading,
         h3: Heading,
