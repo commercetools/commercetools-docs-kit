@@ -141,7 +141,9 @@ module.exports = (themeOptions = {}) => {
                 // It's important to specify the maxWidth (in pixels) of
                 // the content container as this plugin uses this as the
                 // base for generating different widths of each image.
-                maxWidth: 770,
+                maxWidth: 754,
+                loading: 'auto',
+                srcSetBreakpoints: [754, 1508],
                 showCaptions: ['title'],
               },
             },
