@@ -33,9 +33,9 @@
     "prism-react-renderer": "1.1.1",
     "prop-types": "15.7.2",
     "tiny-invariant": "1.1.0",
-    "moment": "2.28.0",
+    "moment": "2.29.0",
     "rss-parser": "3.9.0",
-    "swr": "0.3.2"
+    "swr": "0.3.3"
   },
   "devDependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
