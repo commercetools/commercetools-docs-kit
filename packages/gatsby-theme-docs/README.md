@@ -121,6 +121,8 @@ module.exports = {
 
 - `overrideDefaultConfigurationData` (_optional_, array of glob strings): allows to replace the configuration files in `src/data` instead of augmenting them. The option is passed to the `ignore` [option of the gatsby filesystem plugin](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#options). For example, by passing `['**/top-*']` and placing `top-menu.yaml` and `top-side-menu.yaml` files in the website's `src/data` folder the top navigation can be overridden completely. If this option is used, the files matching the glob patterns **must** be provided.
 
+- `enableCanonicalUrls` (_optional_): indicates that the website should use canonical URLs, pointing to the `docs.commercetools.com` domain. **Default: `true`**
+
 ## Auto Generated Directories
 
 These are required directories:
