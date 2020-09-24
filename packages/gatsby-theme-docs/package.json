@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "7.0.6",
+  "version": "8.0.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -13,7 +13,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git"
   },
   "dependencies": {
-    "@commercetools-docs/ui-kit": "7.0.5",
+    "@commercetools-docs/ui-kit": "8.0.0",
     "@commercetools-uikit/card": "^10.30.2",
     "@commercetools-uikit/checkbox-input": "^10.30.1",
     "@commercetools-uikit/date-input": "^10.30.1",
