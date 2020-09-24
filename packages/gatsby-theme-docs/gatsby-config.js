@@ -83,7 +83,7 @@ module.exports = (themeOptions = {}) => {
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'images/releases',
+          name: 'imagesReleases',
           path: path.resolve(`./src/images/releases`),
         },
       },

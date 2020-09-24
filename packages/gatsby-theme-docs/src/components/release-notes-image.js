@@ -9,18 +9,21 @@ const Img = styled.img`
   margin: auto;
 `;
 
-const Image = (props) => {
-  const resized = useResizedImagesByPath(props.src);
-  return resized ? (
+const ReleaseNotesImage = (props) => {
+  const image = useResizedImagesByPath(props.src);
+  if (!image) {
+    return null;
+  }
+  return (
     <figure className="gatsby-resp-image-figure">
-      <a href={resized.originalImg} target="_blank" rel="noreferrer">
+      <a href={image.originalImg} target="_blank" rel="noreferrer">
         <Img
           alt={props.alt}
           title={props.title}
-          src={resized.src}
-          srcSet={resized.srcSet}
-          width={resized.presentationWidth}
-          height={resized.presentationHeight}
+          src={image.src}
+          srcSet={image.srcSet}
+          width={image.presentationWidth}
+          height={image.presentationHeight}
         />
       </a>
       {props.title ? (
@@ -29,13 +32,13 @@ const Image = (props) => {
         </figcaption>
       ) : null}
     </figure>
-  ) : null;
+  );
 };
 
-Image.propTypes = {
+ReleaseNotesImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   title: PropTypes.string,
 };
 
-export default Image;
+export default ReleaseNotesImage;
