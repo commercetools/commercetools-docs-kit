@@ -87,7 +87,11 @@ const RssFeeds = (props) => {
           <tbody>
             {data.items.map((item, index) => (
               <tr key={`${item.title}${index}`}>
-                <td style={`width: ${dimensions.widths.rssFeedDateWidth}`}>
+                <td
+                  css={css`
+                    width: ${dimensions.widths.rssFeedDateWidth};
+                  `}
+                >
                   <DateWrapper>
                     <Link
                       href={item.link}
