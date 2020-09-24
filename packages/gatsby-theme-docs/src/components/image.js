@@ -21,7 +21,7 @@ const Image = (props) => {
           srcSet={resized.srcSet}
           width={resized.presentationWidth}
           height={resized.presentationHeight}
-        ></Img>
+        />
       </a>
       {props.title ? (
         <figcaption className="gatsby-resp-image-figcaption">

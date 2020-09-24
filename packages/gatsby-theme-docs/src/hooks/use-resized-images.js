@@ -1,4 +1,3 @@
-import nodeJsPath from 'path';
 import { useStaticQuery, graphql } from 'gatsby';
 
 export const useResizedImages = () => {
@@ -10,7 +9,6 @@ export const useResizedImages = () => {
             parent {
               ... on File {
                 relativePath
-                relativeDirectory
               }
             }
             fluid(maxWidth: 754, srcSetBreakpoints: [754, 1508]) {
@@ -28,17 +26,12 @@ export const useResizedImages = () => {
   return queryResult.allImageSharp.nodes.map((node) => {
     return {
       ...node.fluid,
-      path: nodeJsPath.join(
-        '/images/',
-        node.parent.relativeDirectory,
-        node.parent.relativePath
-      ),
+      path: ['/images', node.parent.relativePath].join('/'),
     };
   });
 };
 
-export const useResizedImagesByPath = (path = '') => {
-  return useResizedImages().find((resizedImage) => {
-    return resizedImage.path === path;
-  });
+export const useResizedImagesByPath = (path) => {
+  const allResizedImages = useResizedImages();
+  return allResizedImages.find((resizedImage) => resizedImage.path === path);
 };
