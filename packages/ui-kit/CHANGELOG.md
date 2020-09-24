@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 8.0.0
+
+### Patch Changes
+
+- [`849af3c`](https://github.com/commercetools/commercetools-docs-kit/commit/849af3cba129641d1799a5081b2ba6a4141cbc7e) [#665](https://github.com/commercetools/commercetools-docs-kit/pull/665) Thanks [@TimonRey](https://github.com/TimonRey)! - Set fixed width for the date column in the RSS Feed widget
+
+* [`12470b9`](https://github.com/commercetools/commercetools-docs-kit/commit/12470b97de700bc0fa4ea47d6ccdbc69a20941c9) [#654](https://github.com/commercetools/commercetools-docs-kit/pull/654) Thanks [@TimonRey](https://github.com/TimonRey)! - Fix spacing in code examples title bar
+
 ## 7.0.5
 
 ### Patch Changes
