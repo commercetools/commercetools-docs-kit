@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
@@ -49,6 +50,8 @@ const downloadAndExtractArchive = async (url) => {
     });
     fileStream.on('finish', resolve);
   });
+
+  shelljs.mkdir('-p', binPath);
 
   // Extract the vale binary from the downloaded archive into the "bin" folder
   const extractCommand = isWin
