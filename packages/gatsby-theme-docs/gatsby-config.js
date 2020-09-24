@@ -141,7 +141,16 @@ module.exports = (themeOptions = {}) => {
                 // It's important to specify the maxWidth (in pixels) of
                 // the content container as this plugin uses this as the
                 // base for generating different widths of each image.
-                maxWidth: 770,
+                //
+                // 754 is computed from
+                // pageWidth size (770) found in ui-kit/src/design-system.js
+                //   minus
+                // Left and right padding from gatsby-resp-image-figure class
+                //
+                // 754 is also specified in ./src/hooks/use-resized-images.js
+                maxWidth: 754,
+                loading: 'auto',
+                srcSetBreakpoints: [754, 1508],
                 showCaptions: ['title'],
               },
             },
