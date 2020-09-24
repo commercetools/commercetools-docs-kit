@@ -40,6 +40,7 @@
     "gatsby-plugin-mdx": "1.2.40",
     "gatsby-plugin-meta-redirect": "1.1.1",
     "gatsby-plugin-react-helmet": "3.3.11",
+    "gatsby-plugin-react-helmet-canonical-urls": "1.4.0",
     "gatsby-plugin-remove-trailing-slashes": "2.3.12",
     "gatsby-plugin-sharp": "2.6.36",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.12",

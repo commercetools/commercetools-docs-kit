@@ -18,6 +18,7 @@ const validateThemeOptions = (options) => {
     }
   });
 };
+const productionHostname = 'docs.commercetools.com';
 
 module.exports = (themeOptions = {}) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
@@ -26,7 +27,7 @@ module.exports = (themeOptions = {}) => {
   return {
     siteMetadata: {
       author: 'commercetools',
-      productionHostname: 'docs.commercetools.com',
+      productionHostname,
       betaLink: null,
     },
     plugins: [
@@ -172,6 +173,15 @@ module.exports = (themeOptions = {}) => {
        */
       'gatsby-plugin-sharp',
       'gatsby-plugin-react-helmet',
+      pluginOptions.enableCanonicalUrls !== false && {
+        resolve: 'gatsby-plugin-react-helmet-canonical-urls',
+        options: {
+          siteUrl: `https://${productionHostname}`,
+          noTrailingSlash: true,
+          noHash: true,
+          noQueryString: true,
+        },
+      },
       'gatsby-plugin-emotion',
       {
         resolve: 'gatsby-plugin-manifest',
