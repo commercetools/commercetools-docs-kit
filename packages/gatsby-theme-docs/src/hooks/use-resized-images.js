@@ -1,16 +1,12 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
 export const useResizedImages = () => {
-  const queryResult = useStaticQuery(
-    graphql`
-      {
-        allImageSharp {
-          nodes {
-            parent {
-              ... on File {
-                relativePath
-              }
-            }
+  const queryResult = useStaticQuery(graphql`
+    query GetAllReleaseNotesImages {
+      allFile(filter: { sourceInstanceName: { eq: "imagesReleases" } }) {
+        nodes {
+          relativePath
+          childImageSharp {
             fluid(maxWidth: 754, srcSetBreakpoints: [754, 1508]) {
               srcSet
               src
@@ -21,17 +17,19 @@ export const useResizedImages = () => {
           }
         }
       }
-    `
-  );
-  return queryResult.allImageSharp.nodes.map((node) => {
+    }
+  `);
+  return queryResult.allFile.nodes.map((node) => {
     return {
-      ...node.fluid,
-      path: ['/images', node.parent.relativePath].join('/'),
+      ...node.childImageSharp.fluid,
+      relativeImagePath: ['/images/releases', node.relativePath].join('/'),
     };
   });
 };
 
-export const useResizedImagesByPath = (path) => {
+export const useResizedImagesByPath = (imageSrcPath) => {
   const allResizedImages = useResizedImages();
-  return allResizedImages.find((resizedImage) => resizedImage.path === path);
+  return allResizedImages.find(
+    (resizedImage) => resizedImage.relativeImagePath === imageSrcPath
+  );
 };
