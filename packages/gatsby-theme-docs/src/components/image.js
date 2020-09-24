@@ -13,7 +13,7 @@ const Image = (props) => {
   const resized = useResizedImagesByPath(props.src);
   return resized ? (
     <figure className="gatsby-resp-image-figure">
-      <a href={resized.originalImg} target="ct-docs-original-size-image">
+      <a href={resized.originalImg} target="_blank" rel="noreferrer">
         <Img
           alt={props.alt}
           title={props.title}
