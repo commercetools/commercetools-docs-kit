@@ -22,6 +22,7 @@ exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
   const requiredDirectories = [
     'src/data',
     'src/images',
+    'src/images/releases',
     'src/content',
     'src/content/files',
     'src/releases',
