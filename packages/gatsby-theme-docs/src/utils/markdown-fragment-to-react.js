@@ -6,7 +6,7 @@ import remark2react from 'remark-react';
 import frontmatter from 'remark-frontmatter';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import Link from '../components/link';
-import Image from '../components/image';
+import MarkdownFragmentImage from '../components/markdown-fragment-image';
 
 const Div = styled.div``;
 const Heading = styled.p`
@@ -70,7 +70,7 @@ const markdownFragmentToReact = (markdownString, customElements) =>
         strong: Markdown.Strong,
         delete: Markdown.Delete,
         hr: Markdown.Hr,
-        img: Image,
+        img: MarkdownFragmentImage,
         ...customElements,
       },
     })
