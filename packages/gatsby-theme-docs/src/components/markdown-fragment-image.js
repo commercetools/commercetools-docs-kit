@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { useResizedImagesByPath } from '../hooks/use-resized-images';
 
-const ReleaseNotesImage = (props) => {
+const MarkdownFragmentImage = (props) => {
   const image = useResizedImagesByPath(props.src);
   if (!image) {
     return null;
@@ -81,10 +81,10 @@ const ReleaseNotesImage = (props) => {
   );
 };
 
-ReleaseNotesImage.propTypes = {
+MarkdownFragmentImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   title: PropTypes.string,
 };
 
-export default ReleaseNotesImage;
+export default MarkdownFragmentImage;
