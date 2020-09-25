@@ -17,6 +17,7 @@ export const useResizedImages = () => {
               presentationWidth
               presentationHeight
               originalImg
+              aspectRatio
             }
           }
         }
