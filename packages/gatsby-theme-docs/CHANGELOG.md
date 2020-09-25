@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 8.0.1
+
+### Patch Changes
+
+- [`cb51dfa`](https://github.com/commercetools/commercetools-docs-kit/commit/cb51dfaa08f090081e6180e99a1879281836f71a) [#670](https://github.com/commercetools/commercetools-docs-kit/pull/670) Thanks [@emmenko](https://github.com/emmenko)! - Fix release notes image aspect ratio
+
 ## 8.0.0
 
 ### Minor Changes

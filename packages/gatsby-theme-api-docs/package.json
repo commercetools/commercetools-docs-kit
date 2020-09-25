@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-api-docs",
   "description": "Gatsby theme for commercetools documentation API",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -35,7 +35,7 @@
     "react-dom": "16.13.1"
   },
   "peerDependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "8.0.0",
+    "@commercetools-docs/gatsby-theme-docs": "8.0.1",
     "@emotion/core": "10.x",
     "@emotion/styled": "10.x",
     "gatsby": "2.x",
