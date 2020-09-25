@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { designSystem } from '@commercetools-docs/ui-kit';
 import { useResizedImagesByPath } from '../hooks/use-resized-images';
 
 const MarkdownFragmentImage = (props) => {
@@ -54,7 +53,7 @@ const MarkdownFragmentImage = (props) => {
             title={props.title}
             src={image.src}
             srcSet={image.srcSet}
-            sizes={`(max-width: ${designSystem.dimensions.widths.pageContent}) 100vw, ${designSystem.dimensions.widths.pageContent}`}
+            sizes={image.sizes}
             css={css`
               width: 100%;
               height: 100%;
