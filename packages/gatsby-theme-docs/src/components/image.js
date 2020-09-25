@@ -20,9 +20,9 @@ const MarkdownFragmentImage = (props) => {
         css={css`
           position: relative;
           display: block;
-          margin-left: auto;
-          margin-right: auto;
-          max-width: ${designSystem.dimensions.widths.pageContent};
+          margin-left: auto !important;
+          margin-right: auto !important;
+          max-width: ${image.presentationWidth}px !important;
         `}
       >
         <a
