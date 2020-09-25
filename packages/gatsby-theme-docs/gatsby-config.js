@@ -92,6 +92,7 @@ module.exports = (themeOptions = {}) => {
         options: {
           name: 'images',
           path: path.resolve(`./src/images`),
+          ignore: ['releases/*', 'releases/**/*'],
         },
       },
       // Main content pages (.mdx)
