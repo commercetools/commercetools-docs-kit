@@ -40,8 +40,8 @@ const ReleaseNotesImage = (props) => {
             css={css`
               padding-bottom: ${ratio};
               position: relative;
-              bottom: 0px;
-              left: 0px;
+              bottom: 0;
+              left: 0;
               background-size: cover;
               display: block;
               transition: opacity 0.5s ease 0.5s;
@@ -58,15 +58,15 @@ const ReleaseNotesImage = (props) => {
             css={css`
               width: 100%;
               height: 100%;
-              margin: 0px;
+              margin: 0;
               vertical-align: middle;
               position: absolute;
-              top: 0px;
-              left: 0px;
+              top: 0;
+              left: 0;
               opacity: 1;
               transition: opacity 0.5s ease 0s;
               color: inherit;
-              box-shadow: white 0px 0px 0px 400px inset;
+              box-shadow: white 0 0 0 400px inset;
             `}
             loading="lazy"
           />
