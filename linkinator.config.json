@@ -2,6 +2,7 @@
   "recurse": true,
   "silent": true,
   "skip": [
+    ".(json|js|png|jpg|svg|css)(\\?(.*)+)?$",
     "https://docs.commercetools.com",
     "https://commercetools.com/",
     "https://support.commercetools.com",
