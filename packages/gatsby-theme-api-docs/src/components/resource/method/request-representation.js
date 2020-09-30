@@ -8,7 +8,7 @@ import {
 } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
 import ApiType from '../../type';
-import Title from './title';
+import { Title } from './styled-components';
 
 const RequestRepresentation = (props) => {
   const typeLocations = useTypeLocations();

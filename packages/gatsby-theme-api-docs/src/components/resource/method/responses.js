@@ -8,7 +8,7 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { tokens, dimensions, typography } from '../../../design-system';
 import { useTypeLocations } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
-import Title from './title';
+import { Title } from './styled-components';
 
 const ResponseCode = styled.span`
   font-size: ${designSystem.typography.fontSizes.extraSmall};

@@ -2,17 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { tokens, typography } from '../../../design-system';
 
-const Container = styled.span`
-  display: flex;
-  align-items: flex-start;
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    flex-wrap: wrap;
-  }
-`;
 const BasePath = styled.span`
   color: ${designSystem.colors.light.textSecondary};
   display: inline-block;
@@ -29,10 +23,10 @@ const Type = styled.span`
   padding: 0 ${designSystem.dimensions.spacings.s};
   border-radius: ${tokens.borderRadiusForMethodType};
   text-transform: uppercase;
-  margin-right: ${designSystem.dimensions.spacings.s};
 `;
 const PathFragment = styled.span`
   display: inline-block;
+  word-break: break-word;
 `;
 const SlashWrappingPath = (props) => {
   return props.children.split('/').map((segment, index) => {
@@ -47,27 +41,25 @@ const SlashWrappingPath = (props) => {
 
 const Url = ({ method, methodColor, uris }) => {
   return (
-    <>
-      <Container>
-        <Type
-          css={css`
-            background-color: ${methodColor};
-          `}
-        >
-          {method}
-        </Type>
-        <p>
-          <BasePath>
-            <SlashWrappingPath>
-              {uris.baseUri.replace(/^(https:\/\/)/, '')}
-            </SlashWrappingPath>
-          </BasePath>
-          <ResourceUriPath>
-            <SlashWrappingPath>{uris.resourcePathUri}</SlashWrappingPath>
-          </ResourceUriPath>
-        </p>
-      </Container>
-    </>
+    <SpacingsInline scale="xs">
+      <Type
+        css={css`
+          background-color: ${methodColor};
+        `}
+      >
+        {method}
+      </Type>
+      <SpacingsStack scale="xs">
+        <BasePath>
+          <SlashWrappingPath>
+            {uris.baseUri.replace(/^(https:\/\/)/, '')}
+          </SlashWrappingPath>
+        </BasePath>
+        <ResourceUriPath>
+          <SlashWrappingPath>{uris.resourcePathUri}</SlashWrappingPath>
+        </ResourceUriPath>
+      </SpacingsStack>
+    </SpacingsInline>
   );
 };
 

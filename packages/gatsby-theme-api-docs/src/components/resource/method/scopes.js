@@ -3,9 +3,20 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { Title } from './styled-components';
 
-import Title from './title';
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ScopeList = styled.div`
+  span:first-of-type {
+    code {
+      padding-left: 0;
+    }
+  }
+`;
 
 const Scope = styled.span`
   display: inline-block;
@@ -15,18 +26,18 @@ const Scope = styled.span`
 
 const Scopes = ({ scopes, title }) => {
   return (
-    <SpacingsInline>
-      {title && <Title>{title}:</Title>}
+    <Container>
+      {title && <Title>{`${title}:`}</Title>}
 
-      <div>
+      <ScopeList>
         {scopes.map((scope, index) => (
           <Scope key={scope}>
             <Markdown.InlineCode>{scope}</Markdown.InlineCode>
             {index < scopes.length - 1 && ','}
           </Scope>
         ))}
-      </div>
-    </SpacingsInline>
+      </ScopeList>
+    </Container>
   );
 };
 
