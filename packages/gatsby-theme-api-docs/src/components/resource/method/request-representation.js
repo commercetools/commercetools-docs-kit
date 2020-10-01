@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import {
   useTypeLocations,
   locationForType,
 } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
 import ApiType from '../../type';
-import { Title } from './styled-components';
+import Title from './title';
 
 const RequestRepresentation = (props) => {
   const typeLocations = useTypeLocations();
@@ -19,13 +18,11 @@ const RequestRepresentation = (props) => {
   );
 
   return (
-    <SpacingsStack scale="s">
-      <SpacingsInline>
-        <Title>Request Body:</Title>{' '}
-        {renderTypeAsLink(props.apiKey, props.apiType, typeLocations)}
-      </SpacingsInline>
-
-      {!requestRepresentationLocation && (
+    <SpacingsStack scale="xs">
+      <Title>Request Body:</Title>
+      {requestRepresentationLocation ? (
+        renderTypeAsLink(props.apiKey, props.apiType, typeLocations)
+      ) : (
         <ApiType
           apiKey={props.apiKey}
           type={props.apiType}

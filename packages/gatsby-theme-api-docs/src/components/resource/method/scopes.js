@@ -2,13 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
-
-import { Title } from './styled-components';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import Title from './title';
 
 const ScopeList = styled.div`
   span:first-of-type {
@@ -24,25 +19,24 @@ const Scope = styled.span`
   white-space: nowrap;
 `;
 
-const Scopes = ({ scopes, title }) => {
+const Scopes = (props) => {
   return (
-    <Container>
-      {title && <Title>{`${title}:`}</Title>}
+    <SpacingsStack scale="xs">
+      <Title>OAuth 2.0 Scopes:</Title>
 
       <ScopeList>
-        {scopes.map((scope, index) => (
+        {props.scopes.map((scope, index) => (
           <Scope key={scope}>
             <Markdown.InlineCode>{scope}</Markdown.InlineCode>
-            {index < scopes.length - 1 && ','}
+            {index < props.scopes.length - 1 && ','}
           </Scope>
         ))}
       </ScopeList>
-    </Container>
+    </SpacingsStack>
   );
 };
 
 Scopes.propTypes = {
-  title: PropTypes.string,
   scopes: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
 

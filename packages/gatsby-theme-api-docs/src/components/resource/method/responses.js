@@ -4,11 +4,10 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { tokens, dimensions, typography } from '../../../design-system';
 import { useTypeLocations } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
-import { Title } from './styled-components';
+import Title from './title';
 
 const ResponseCode = styled.span`
   font-size: ${designSystem.typography.fontSizes.extraSmall};
@@ -23,37 +22,34 @@ const LinkContainer = styled.span`
   line-height: ${typography.lineHeights.responseBodyType};
 `;
 
-const Responses = ({ apiKey, responses, title }) => {
+const Responses = ({ apiKey, responses }) => {
   const typeLocations = useTypeLocations();
 
   return (
-    <SpacingsStack scale="s">
-      <SpacingsInline>
-        {title && <Title>{title}:</Title>}
-
-        <div>
-          {responses.map((response) => {
-            return (
-              <p key={response.code}>
-                <ResponseCode
-                  css={computeStatusCodeBackgroundColor(response.code)}
-                >
-                  {response.code}
-                </ResponseCode>
-                <LinkContainer>
-                  {response.body
-                    ? renderTypeAsLink(
-                        apiKey,
-                        response.body.applicationjson.type,
-                        typeLocations
-                      )
-                    : 'No body is returned.'}
-                </LinkContainer>
-              </p>
-            );
-          })}
-        </div>
-      </SpacingsInline>
+    <SpacingsStack scale="xs">
+      <Title>Response:</Title>
+      <SpacingsStack scale="s">
+        {responses.map((response) => {
+          return (
+            <p key={response.code}>
+              <ResponseCode
+                css={computeStatusCodeBackgroundColor(response.code)}
+              >
+                {response.code}
+              </ResponseCode>
+              <LinkContainer>
+                {response.body
+                  ? renderTypeAsLink(
+                      apiKey,
+                      response.body.applicationjson.type,
+                      typeLocations
+                    )
+                  : 'No body is returned.'}
+              </LinkContainer>
+            </p>
+          );
+        })}
+      </SpacingsStack>
     </SpacingsStack>
   );
 };
@@ -86,7 +82,6 @@ Responses.propTypes = {
       body: PropTypes.object,
     })
   ).isRequired,
-  title: PropTypes.string,
 };
 
 export default Responses;

@@ -8,7 +8,3 @@ export const apiTypeStrings = {
   example: 'Example',
   examples: 'Examples',
 };
-export const responseRepresentation = 'Response';
-export const oauth2Scopes = 'OAuth 2.0 Scopes';
-export const queryParametersTitle = 'Query Parameters';
-export const pathParametersTitle = 'Path Parameters';
