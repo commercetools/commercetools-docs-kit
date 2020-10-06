@@ -51,9 +51,7 @@ const Url = ({ method, methodColor, uris }) => {
       </Type>
       <SpacingsStack scale="xs">
         <BasePath>
-          <SlashWrappingPath>
-            {uris.baseUri.replace(/^(https:\/\/)/, '')}
-          </SlashWrappingPath>
+          <SlashWrappingPath>{uris.baseUri}</SlashWrappingPath>
         </BasePath>
         <ResourceUriPath>
           <SlashWrappingPath>{uris.resourcePathUri}</SlashWrappingPath>
