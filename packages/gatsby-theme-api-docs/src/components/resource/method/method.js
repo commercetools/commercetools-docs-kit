@@ -113,13 +113,11 @@ const Method = ({
               <Responses apiKey={apiKey} responses={method.responses} />
             )}
           </SpacingsStack>
-          <SpacingsStack scale="m">
-            <RequestResponseExamples
-              apiKey={apiKey}
-              requestCodeExamples={method.codeExamples}
-              responses={method.responses}
-            />
-          </SpacingsStack>
+          <RequestResponseExamples
+            apiKey={apiKey}
+            requestCodeExamples={method.codeExamples}
+            responses={method.responses}
+          />
         </SideBySide>
       </Container>
     </SpacingsStack>
