@@ -34,7 +34,8 @@ export const onClientEntry = (
     require.ensure(['@sentry/browser'], (require) => {
       const Sentry = require('@sentry/browser');
       Sentry.init({
-        dsn: 'https://e43538aae75e412eb16b27d8011f5a8b@o32365.ingest.sentry.io/1819068',
+        dsn:
+          'https://e43538aae75e412eb16b27d8011f5a8b@o32365.ingest.sentry.io/1819068',
         release: commitSha,
         environment: pluginOptions.websiteKey,
         allowUrls: ['docs.commercetools.com', 'now.sh', 'vercel.app'],
