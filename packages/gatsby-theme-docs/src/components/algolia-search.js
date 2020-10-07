@@ -102,7 +102,6 @@ const algoliaStyles = css`
   .algolia-autocomplete .algolia-docsearch-suggestion--wrapper {
     background-color: ${designSystem.colors.light.surfacePrimary};
     width: 100%;
-    margin: 0 0 ${designSystem.dimensions.spacings.s};
     display: flex;
     align-items: flex-start;
   }
