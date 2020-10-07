@@ -65,6 +65,7 @@
     "rehype-slug": "3.0.0",
     "remark-emoji": "2.1.0",
     "remark-frontmatter": "3.0.0",
+    "remark-gfm": "1.0.0",
     "remark-parse": "9.0.0-alpha.1",
     "remark-react": "8.0.0",
     "slugify": "1.4.5",
