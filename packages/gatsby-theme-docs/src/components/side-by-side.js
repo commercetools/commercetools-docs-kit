@@ -10,7 +10,6 @@ import { usePageData } from '../hooks/use-page-data';
  * Allows the first and second child of this container to float side by side in large desktop sizes.
  */
 const SideBySideContainer = styled.div`
-  margin-top: 0 !important;
   display: grid;
   grid-column-gap: ${designSystem.dimensions.spacings.xl};
   grid-row-gap: ${designSystem.dimensions.spacings.l};
