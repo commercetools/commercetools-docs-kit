@@ -6,12 +6,13 @@ import remark2react from 'remark-react';
 import frontmatter from 'remark-frontmatter';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import Link from '../components/link';
-import MarkdownFragmentImage from '../components/markdown-fragment-image';
 
 const Div = styled.div``;
 const Heading = styled.p`
   font-weight: ${designSystem.typography.fontWeights.bold};
 `;
+// No images should be rendered in the release notes list.
+const MarkdownFragmentImage = () => null;
 
 /**
  * Takes a markdown string and returns a react component rendering it
