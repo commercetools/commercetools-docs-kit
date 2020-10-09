@@ -28,7 +28,6 @@ const LayoutContent = (props) => {
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
         siteTitle={siteData.siteMetadata.title}
-        isGlobalBeta={props.pageData.isGlobalBeta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
       <LayoutMain
@@ -66,6 +65,7 @@ const LayoutContent = (props) => {
               pageTitle={props.pageContext.shortTitle || props.pageData.title}
               tableOfContents={props.pageData.tableOfContents}
               navLevels={props.pageData.navLevels}
+              beta={props.pageData.beta}
             />
           </LayoutPage>
         </LayoutPageWrapper>

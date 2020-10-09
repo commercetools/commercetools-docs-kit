@@ -6,15 +6,18 @@ import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import IconButton from '@commercetools-uikit/icon-button';
+import { ArrowUpIcon } from '@commercetools-uikit/icons';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import { useInView } from 'react-intersection-observer';
 import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
-import { Overlay } from '../../components';
+import { Overlay, BetaFlag } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
   UnstyledStackedLinesIndentedIcon
 );
+
+const StyledArrowUpIcon = createStyledIcon(ArrowUpIcon);
 
 const slideInAnimation = keyframes`
   from { margin-right: -100%; }
@@ -133,11 +136,14 @@ const LayoutPageNavigation = (props) => {
     >
       <SpacingsStack scale="m">
         <PageTitleLink href="#top">
-          <SpacingsInline scale="s" alignItems="center">
+          <SpacingsInline scale="s">
             <div>
-              <StackedLinesIndentedIcon color="textSecondary" />
+              <StyledArrowUpIcon size="medium" color="textSecondary" />
             </div>
-            <div>{props.pageTitle}</div>
+            <SpacingsStack scale="xs">
+              <div>{props.pageTitle}</div>
+              <div>{props.beta && <BetaFlag />}</div>
+            </SpacingsStack>
           </SpacingsInline>
         </PageTitleLink>
         <PageNavigation
@@ -188,6 +194,7 @@ LayoutPageNavigation.propTypes = {
     items: PropTypes.array,
   }),
   navLevels: PropTypes.number.isRequired,
+  beta: PropTypes.bool.isRequired,
 };
 
 export default LayoutPageNavigation;
