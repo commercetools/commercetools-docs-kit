@@ -39,6 +39,18 @@ describe('rendering', () => {
       expected: { 'data-link-type': 'image-link' },
     },
     {
+      title: 'static link in /downloads folder',
+      props: { href: '/downloads/hello.html' },
+      location: { pathname: '/page-1' },
+      expected: { 'data-link-type': 'static-link' },
+    },
+    {
+      title: 'static link ending with .html',
+      props: { href: '/any/folder/hello.html' },
+      location: { pathname: '/page-1' },
+      expected: { 'data-link-type': 'static-link' },
+    },
+    {
       title: 'external link',
       props: {
         href: 'https://github.com/commercetools/commercetools-docs-kit',
