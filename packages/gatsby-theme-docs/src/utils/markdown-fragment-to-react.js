@@ -11,7 +11,7 @@ const Div = styled.div``;
 const Heading = styled.p`
   font-weight: ${designSystem.typography.fontWeights.bold};
 `;
-// No images should be rendered in the release notes list.
+// No images should be rendered in fragments that are embedded into other layouts
 const MarkdownFragmentImage = () => null;
 
 /**
