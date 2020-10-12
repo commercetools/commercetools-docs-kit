@@ -28,6 +28,7 @@ const LayoutContent = (props) => {
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
         siteTitle={siteData.siteMetadata.title}
+        isGlobalBeta={props.pageData.isGlobalBeta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
       <LayoutMain

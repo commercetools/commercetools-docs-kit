@@ -234,7 +234,6 @@ const SidebarChapter = (props) => {
       <SpacingsStack scale="s">
         <LinkItem>
           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-          {props.chapter.beta && !props.isGlobalBeta && <BetaFlag />}
         </LinkItem>
         <SpacingsStack scale="s">
           {props.chapter.pages &&
