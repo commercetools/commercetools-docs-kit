@@ -129,7 +129,10 @@ const LayoutPageNavigation = (props) => {
   const navigationContainer = (
     <nav
       aria-label="Page Table of Contents Navigation"
-      css={{ marginBottom: designSystem.dimensions.spacings.l }}
+      css={{
+        marginBottom: designSystem.dimensions.spacings.l,
+        marginRight: designSystem.dimensions.spacings.l,
+      }}
     >
       <SpacingsStack scale="m">
         <PageTitleLink href="#top">
