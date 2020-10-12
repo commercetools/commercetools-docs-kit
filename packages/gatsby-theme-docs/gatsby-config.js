@@ -3,6 +3,8 @@
 const path = require('path');
 const defaultOptions = require('./utils/default-options');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 // Proxy env variables needed for `gatsby-browser.js` and `gatsby-ssr.js`.
 // https://www.gatsbyjs.org/docs/environment-variables/#client-side-javascript
 const proxyEnvironmentVariables = ['NODE_ENV', 'VERCEL_GITHUB_COMMIT_SHA'];
@@ -149,9 +151,13 @@ module.exports = (themeOptions = {}) => {
                 // Left and right padding from gatsby-resp-image-figure class
                 //
                 // 754 is also specified in ./src/hooks/use-resized-images.js
+                // but cannot be reused from here because it has to be statically compiled into a GraphQL query.
                 maxWidth: 754,
                 loading: 'auto',
-                srcSetBreakpoints: [754, 1508],
+                // one resolution is enough for dev mode. 754 is generated anyways,
+                // so using it in the breakpoints array prevents the plugin from falling
+                // back to defaults when the array is empty.
+                srcSetBreakpoints: isProd ? [754, 1508] : [754],
                 showCaptions: ['title'],
               },
             },
