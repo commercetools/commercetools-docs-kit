@@ -247,7 +247,6 @@ const SidebarChapter = (props) => {
                 getChapterDOMElement={getChapterDOMElement}
               >
                 <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-                {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
               </SidebarLinkWrapper>
             ))}
         </SpacingsStack>
