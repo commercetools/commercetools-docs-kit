@@ -8,7 +8,6 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import { tokens, typography } from '../../../design-system';
 
 const BasePath = styled.span`
-  color: ${designSystem.colors.light.textSecondary};
   display: inline-block;
 `;
 const ResourceUriPath = styled.span`

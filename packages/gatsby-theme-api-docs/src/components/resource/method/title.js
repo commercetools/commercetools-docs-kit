@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
-import { colors, typography, dimensions } from '../../../design-system';
+import { typography, dimensions } from '../../../design-system';
 
 export default styled.span`
-  color: ${colors.light.textSecondary};
   font-size: ${typography.fontSizes.h5};
   font-weight: ${typography.fontWeights.regular};
   white-space: nowrap;
