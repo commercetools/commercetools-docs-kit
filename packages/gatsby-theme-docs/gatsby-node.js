@@ -246,6 +246,7 @@ exports.onCreateNode = (
       parent,
       child: node,
     });
+    return;
   }
 
   // If not explicitly handled, always fall back to build the page as a "content" page.
