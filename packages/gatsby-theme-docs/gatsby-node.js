@@ -26,6 +26,8 @@ exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
     'src/content',
     'src/content/files',
     'src/releases',
+    'static',
+    'static/downloads',
   ];
   requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
