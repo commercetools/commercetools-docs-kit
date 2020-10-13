@@ -1,29 +1,29 @@
 - menu-title: Developer Center
   items:
     - label: HTTP API
-      href: https://docs.commercetools.com/api
+      href: /../api
     - label: GraphQL API
-      href: https://docs.commercetools.com/api/graphql
+      href: /../api/graphql
       beta: true
     - label: Platform Release Notes
-      href: https://docs.commercetools.com/api/releases
+      href: /../api/releases
     - label: Custom Applications
-      href: https://docs.commercetools.com/custom-applications
+      href: /../custom-applications
       beta: true
     - label: SDKs & Client Libraries
-      href: https://docs.commercetools.com/sdk
+      href: /../sdk
     - label: Import & Export
-      href: https://docs.commercetools.com/tutorials/import-and-export
+      href: /../tutorials/import-and-export
     - label: SUNRISE Starter Frontends
-      href: https://docs.commercetools.com/sdk/sunrise
+      href: /../sdk/sunrise
     - label: Tutorials
-      href: https://docs.commercetools.com/tutorials
+      href: /../tutorials
     - label: FAQ
-      href: https://docs.commercetools.com/tutorials/faqs
+      href: /../tutorials/faqs
 
 - menu-title: Merchant Center
   items:
     - label: Documentation
-      href: https://docs.commercetools.com/merchant-center
+      href: /../merchant-center
     - label: Release Notes
-      href: https://docs.commercetools.com/merchant-center/releases
+      href: /../merchant-center/releases
