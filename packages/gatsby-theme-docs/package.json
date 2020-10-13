@@ -68,8 +68,8 @@
     "remark-parse": "8.0.3",
     "remark-react": "7.0.1",
     "slugify": "1.4.5",
-    "typeface-roboto": "0.0.75",
-    "typeface-roboto-mono": "0.0.75",
+    "typeface-roboto": "1.1.13",
+    "typeface-roboto-mono": "1.1.13",
     "unified": "9.2.0",
     "unist-util-filter": "2.0.2"
   },
