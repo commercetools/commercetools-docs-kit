@@ -46,6 +46,9 @@ const GridContainer = styled.div`
     width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
+const BetaWrapper = styled.div`
+  font-size: ${designSystem.typography.fontSizes.small};
+`;
 
 const stickyContainerCss = css({
   position: 'sticky',
@@ -145,7 +148,11 @@ const LayoutPageNavigation = (props) => {
             </div>
             <SpacingsStack scale="xs">
               <div>{props.pageTitle}</div>
-              <div>{props.beta && <BetaFlag />}</div>
+              {props.beta && (
+                <BetaWrapper>
+                  <BetaFlag />
+                </BetaWrapper>
+              )}
             </SpacingsStack>
           </SpacingsInline>
         </PageTitleLink>
