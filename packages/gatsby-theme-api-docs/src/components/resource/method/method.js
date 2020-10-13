@@ -2,19 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import {
   markdownFragmentToReact,
   SideBySide,
 } from '@commercetools-docs/gatsby-theme-docs';
 import { generateEndpointURN } from '../../../utils/ctp-urn';
-import {
-  oauth2Scopes,
-  queryParametersTitle,
-  pathParametersTitle,
-  responseRepresentation,
-} from '../../../utils/constants';
 import { tokens, dimensions, colors, typography } from '../../../design-system';
 import Url from './url';
 import Scopes from './scopes';
@@ -30,11 +24,11 @@ const Title = styled.h6`
 `;
 
 const Container = styled.div`
+  background-color: ${designSystem.colors.light.surfaceSecondary1};
   border-radius: ${tokens.borderRadiusForTable};
   border-left-width: ${dimensions.widths.methodBorderLeft};
   border-left-style: solid;
-  padding: ${dimensions.spacings.s} 0 ${dimensions.spacings.s}
-    ${dimensions.spacings.m};
+  padding: ${dimensions.spacings.m};
 `;
 
 const TitleWithAnchor = Markdown.withAnchorLink(Title);
@@ -81,7 +75,7 @@ const Method = ({
         `}
       >
         <SideBySide>
-          <SpacingsStack scale="m">
+          <SpacingsStack scale="l">
             <Url
               apiKey={apiKey}
               method={methodType}
@@ -90,15 +84,12 @@ const Method = ({
             />
 
             {method.securedBy && (
-              <Scopes
-                scopes={method.securedBy[0].oauth_2_0.scopes}
-                title={oauth2Scopes}
-              />
+              <Scopes scopes={method.securedBy[0].oauth_2_0.scopes} />
             )}
 
             {allUriParameters.length > 0 && (
               <Parameters
-                title={pathParametersTitle}
+                title={'Path Parameters'}
                 parameters={allUriParameters}
               />
             )}
@@ -106,7 +97,7 @@ const Method = ({
             {method.queryParameters && (
               <Parameters
                 apiKey={apiKey}
-                title={queryParametersTitle}
+                title={'Query Parameters'}
                 parameters={method.queryParameters}
               />
             )}
@@ -119,20 +110,14 @@ const Method = ({
             )}
 
             {method.responses && (
-              <Responses
-                apiKey={apiKey}
-                responses={method.responses}
-                title={responseRepresentation}
-              />
+              <Responses apiKey={apiKey} responses={method.responses} />
             )}
           </SpacingsStack>
-          <SpacingsStack scale="m">
-            <RequestResponseExamples
-              apiKey={apiKey}
-              requestCodeExamples={method.codeExamples}
-              responses={method.responses}
-            />
-          </SpacingsStack>
+          <RequestResponseExamples
+            apiKey={apiKey}
+            requestCodeExamples={method.codeExamples}
+            responses={method.responses}
+          />
         </SideBySide>
       </Container>
     </SpacingsStack>
