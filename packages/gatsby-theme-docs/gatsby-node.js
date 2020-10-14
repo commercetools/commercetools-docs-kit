@@ -26,6 +26,8 @@ exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
     'src/content',
     'src/content/files',
     'src/releases',
+    'static',
+    'static/downloads',
   ];
   requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
@@ -244,6 +246,7 @@ exports.onCreateNode = (
       parent,
       child: node,
     });
+    return;
   }
 
   // If not explicitly handled, always fall back to build the page as a "content" page.

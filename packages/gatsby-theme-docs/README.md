@@ -46,13 +46,15 @@ The project structure should contain at least the following files and folders:
 ├── .eslintrc.yml
 ├── gatsby-config.js
 ├── package.json
-└── src
-    ├── content
-    │   ├── files
-    │   └── index.mdx
-    ├── images
-    └── data
-        └── navigation.yaml
+├── src
+│   ├── content
+│   │   ├── files
+│   │   └── index.mdx
+│   ├── images
+│   └── data
+│       └── navigation.yaml
+└── static
+    └── downloads
 ```
 
 - `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`, otherwise provide a valid ESLint configuration.
@@ -148,6 +150,11 @@ These are required directories:
       # another page, and so on...
   - chapter-title: {} # another chapter, and so on...
   ```
+
+- `static`: this folder should contain files that do not need to be processed by Gatsby and will be served as-is. See [Gatsby static folder](https://www.gatsbyjs.com/docs/static-folder/).<br/>
+  Note that any `.html` file that is referenced as a link within the `*.mdx` content files is opened as a "static" HTML link, so when clicking on it the browser opens the link as a normal page.
+
+- `static/downloads`: this folder should contain static files that can be referenced in the links within the `*.mdx` content files. All links starting with `/downloads` will be rendered as "static" HTML links, so when clicking on it the browser opens the link as a normal page.
 
 ## Writing Content Pages
 
