@@ -5,21 +5,11 @@
     "https://docs.commercetools.com",
     "https://commercetools.com/",
     "https://support.commercetools.com",
-    "/getting-started",
-    "/login",
-    "/http-api",
-    "/graphql-api",
-    "/release-notes",
-    "/software-development-kits",
-    "/cli-overview",
-    "/import-api",
-    "/sunrise",
-    "/tutorials-overview",
+    "/docs",
+    "/api",
+    "/sdk",
+    "/tutorials",
     "/custom-applications",
-    "/faqs",
-    "/merchant-center",
-    "/merchant-center-releases",
-    "/privacy",
-    "/imprint"
+    "/merchant-center"
   ]
 }
