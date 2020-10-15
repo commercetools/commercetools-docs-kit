@@ -1,5 +1,37 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 9.0.0
+
+### Major Changes
+
+- [`9b69b27`](https://github.com/commercetools/commercetools-docs-kit/commit/9b69b275c762aa49f84bf38ea85791390a12aff1) [#702](https://github.com/commercetools/commercetools-docs-kit/pull/702) Thanks [@emmenko](https://github.com/emmenko)! - Do not render any image in the release notes list, Api type and endpoint descriptions and other places where markdown fragments are rendered inside a page.
+
+### Patch Changes
+
+- [`047f4cc`](https://github.com/commercetools/commercetools-docs-kit/commit/047f4ccaf5942b06a40412dbc1c472acd5d542a6) [#681](https://github.com/commercetools/commercetools-docs-kit/pull/681) Thanks [@nkuehn](https://github.com/nkuehn)! - Resize only minimal set of resolutions in dev mode
+
+* [`1d84a91`](https://github.com/commercetools/commercetools-docs-kit/commit/1d84a915a21203f2deb3c1395f941c14fa1ae4e6) [#711](https://github.com/commercetools/commercetools-docs-kit/pull/711) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: stop duplicating release note pages as content pages
+
+- [`459ef12`](https://github.com/commercetools/commercetools-docs-kit/commit/459ef126f2297ef46c38d7297f4f528edbaab2a5) [#695](https://github.com/commercetools/commercetools-docs-kit/pull/695) Thanks [@emmenko](https://github.com/emmenko)! - fix: sentry `allowUrls` option
+
+* [`73c843e`](https://github.com/commercetools/commercetools-docs-kit/commit/73c843e52caca2b9b7fc90d3f2355672b540431d) [#687](https://github.com/commercetools/commercetools-docs-kit/pull/687) Thanks [@TimonRey](https://github.com/TimonRey)! - Fixes the nav text to be inside the window in wide layout
+
+- [`168d064`](https://github.com/commercetools/commercetools-docs-kit/commit/168d064f74eb043af873ca2d3ddc984a61d3ef43) [#701](https://github.com/commercetools/commercetools-docs-kit/pull/701) Thanks [@TimonRey](https://github.com/TimonRey)! - Do not remove top margin for any side by side content. Resolves the API type having been too near to the description and manual side by side content being too near to the heading above.
+  ``
+
+* [`7f73056`](https://github.com/commercetools/commercetools-docs-kit/commit/7f73056c2fc9ee1df717d2af08195c752f63994a) [#714](https://github.com/commercetools/commercetools-docs-kit/pull/714) Thanks [@davifantasia](https://github.com/davifantasia)! - refactor: New color (cccccc) for light themed header code block
+
+- [`6ca154c`](https://github.com/commercetools/commercetools-docs-kit/commit/6ca154c3dbc452c6c031c55212018f669f24d9d9) [#713](https://github.com/commercetools/commercetools-docs-kit/pull/713) Thanks [@davifantasia](https://github.com/davifantasia)! - Update top menu
+
+* [`dad7828`](https://github.com/commercetools/commercetools-docs-kit/commit/dad7828c59dffba4b84606f7ba589bb7a2c662b1) [#705](https://github.com/commercetools/commercetools-docs-kit/pull/705) Thanks [@emmenko](https://github.com/emmenko)! - Fix rendering of links for static files as static HTML links
+
+- [`39bf45d`](https://github.com/commercetools/commercetools-docs-kit/commit/39bf45d35bb554899aaf7c05ca0da56963d7f5d3) [#685](https://github.com/commercetools/commercetools-docs-kit/pull/685) Thanks [@TimonRey](https://github.com/TimonRey)! - Fix space between search results
+
+* [`1a99ee3`](https://github.com/commercetools/commercetools-docs-kit/commit/1a99ee34f7d00e55fdfb045570f8cb1bd44ceaca) [#706](https://github.com/commercetools/commercetools-docs-kit/pull/706) Thanks [@TimonRey](https://github.com/TimonRey)! - The beta flag is no longer displayed in the main navigation on the left side. It moved to the top of the index navigation on the right side of the page where the design was slightly changed as well.
+
+* Updated dependencies [[`af0d313`](https://github.com/commercetools/commercetools-docs-kit/commit/af0d313567d94f32b1b397b48df514893e04c1cb)]:
+  - @commercetools-docs/ui-kit@9.0.0
+
 ## 8.0.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-docs/gatsby-transformer-raml",
-  "version": "3.0.2",
+  "version": "9.0.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -9,7 +9,12 @@
   "description": "Exposes RAML 1.0 APIs on the gatsbyJS GraphQL",
   "author": "commercetools GmbH <support@commercetools.com>",
   "homepage": "https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-transformer-raml#readme",
-  "keywords": ["gatsby", "gatsby-plugin", "gatsby-transformer", "raml"],
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-transformer",
+    "raml"
+  ],
   "scripts": {},
   "dependencies": {
     "firstline": "^2.0.2",

@@ -1,5 +1,11 @@
 # @commercetools-docs/ramldoc-generator
 
+## 9.0.0
+
+### Minor Changes
+
+- [`eae4427`](https://github.com/commercetools/commercetools-docs-kit/commit/eae44272fe9e7f7a9caaa7cf299856b831d6a9e5) [#716](https://github.com/commercetools/commercetools-docs-kit/pull/716) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: render inherited properties from parent types, also includes `hideInheritedProperties` for `ApiType` which hides inherited properties from parent type except the discriminator
+
 ## 3.0.3
 
 ### Patch Changes
