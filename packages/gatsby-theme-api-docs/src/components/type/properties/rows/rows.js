@@ -5,6 +5,13 @@ import Description from './description';
 
 const Rows = (props) => {
   return props.apiType.properties.map((property) => {
+    if (
+      props.hideInheritedProperties &&
+      property.inherited &&
+      !property.enumeration
+    )
+      return undefined;
+
     return (
       <tr key={property.name}>
         <td>
@@ -25,6 +32,7 @@ const Rows = (props) => {
 Rows.propTypes = {
   apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.object.isRequired,
+  hideInheritedProperties: PropTypes.bool,
 };
 
 export default Rows;

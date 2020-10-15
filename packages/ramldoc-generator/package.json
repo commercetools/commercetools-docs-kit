@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/ramldoc-generator",
   "version": "3.0.3",
-  "rmfCodegenVersion": "1.0.0-20200824120956",
+  "rmfCodegenVersion": "1.0.0-20200930123837",
   "description": "Generates RAML docs compatible with @commercetools-docs/gatsby-transformer-raml",
   "license": "MIT",
   "publishConfig": {

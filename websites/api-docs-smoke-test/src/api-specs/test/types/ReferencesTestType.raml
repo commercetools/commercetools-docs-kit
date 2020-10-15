@@ -13,6 +13,7 @@ properties:
       To be rendered as "String, refers to ExampleTargetType"
       with "ExampleTargetType" being a link.
     required: true
+    (inherited): false
   exampleTarget:
     type: ExampleTargetTypeReference
     (builtinType): object
@@ -20,6 +21,7 @@ properties:
       Type should be rendered as "Reference, refers to ExampleTargetType"
       with "Reference" and the "ExampleTargetType" being links.
     required: true
+    (inherited): false
   exampleTargets:
     type: array
     items:
@@ -29,6 +31,7 @@ properties:
       Type should be rendered as "Array of References, refers to ExampleTargetType"
       with "References" and "ExampleTargetType" being links.
     required: true
+    (inherited): false
   exampleTargetIdentifier:
     type: ExampleTargetTypeResourceIdentifier
     (builtinType): object
@@ -36,6 +39,7 @@ properties:
       Type should be rendered as "ResourceIdentifier, refers to ExampleTargetType"
       with "ResourceIdentifier" and "ExampleTargetType" being links.
     required: true
+    (inherited): false
   exampleTargetIdentifiers:
     type: array
     items:
@@ -45,6 +49,7 @@ properties:
       Type should be rendered as "Array of ResourceIdentifiers, refers to ExampleTargetType"
       with "ResourceIdentifiers" and "ExampleTargetType" being links.
     required: true
+    (inherited): false
   exampleTargetByKey:
     type: ExampleTargetTypeKeyReference
     (builtinType): object
@@ -52,6 +57,7 @@ properties:
       Type should be rendered as "KeyReference, refers to ExampleTargetType"
       with "KeyReference" and "ExampleTargetType" being links.
     required: true
+    (inherited): false
   exampleTargetsByKey:
     type: array
     items:
@@ -61,3 +67,4 @@ properties:
       Type should be rendered as "Array of KeyReferences, refers to ExampleTargetType"
       with "KeyReferences" and "ExampleTargetType" being links.
     required: true
+    (inherited): false

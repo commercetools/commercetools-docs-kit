@@ -50,6 +50,7 @@ const defineRamlType = ({ schema, createTypes }) => {
         description: 'String',
         discriminatorValue: 'String',
         enumeration: '[String!]',
+        inherited: 'Boolean!',
         items: 'RamlTypeItems',
         maxItems: 'Int',
         maxLength: 'Int',

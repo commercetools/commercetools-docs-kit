@@ -21,6 +21,7 @@ const ChildrenUnionLike = (props) => {
               apiKey={props.apiKey}
               apiType={subType}
               doNotRenderExamples={props.doNotRenderExamples}
+              hideInheritedProperties={props.hideInheritedProperties}
             />
           </SpacingsStack>
         ))}
@@ -34,6 +35,7 @@ ChildrenUnionLike.propTypes = {
   apiType: PropTypes.object.isRequired,
   apiTypeSubTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
   doNotRenderExamples: PropTypes.bool,
+  hideInheritedProperties: PropTypes.bool,
 };
 
 export default ChildrenUnionLike;

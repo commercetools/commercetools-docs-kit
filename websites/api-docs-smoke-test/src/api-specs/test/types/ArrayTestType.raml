@@ -19,6 +19,7 @@ properties:
     description: |-
       A property with an array of ints. JSON primitive is `array`, display type is "Array of Int".
     required: true
+    (inherited): false
   arrayOfUniqueIntExample:
     uniqueItems: true
     minItems: 1
@@ -29,6 +30,7 @@ properties:
     description: |-
       A property with an array of ints in which items must be unique. JSON primitive is `array`, display type is "Array of Int"
     required: true
+    (inherited): false
   arrayOfTwonumbersExample:
     minItems: 2
     maxItems: 2
@@ -37,6 +39,7 @@ properties:
       type: integer
     (builtinType): array
     required: true
+    (inherited): false
   arrayOfFloatExample:
     uniqueItems: false
     minItems: 1
@@ -49,6 +52,7 @@ properties:
     description: |-
       An array of float. JSON primitive is `array`, display type is "Array of Float". !!! Until underlying libraries are fixed, this displays "Array of Number" because the pattern information is lost.
     required: true
+    (inherited): false
   arrayOfNumberNoDefaultsExample:
     type: array
     items:
@@ -57,6 +61,7 @@ properties:
     description: |-
       An array of float. JSON primitive is `array`, display type is "Array of Number"
     required: true
+    (inherited): false
   arrayOfStringExample:
     uniqueItems: false
     type: array
@@ -66,6 +71,7 @@ properties:
     description: |-
       An array of strings. JSON primitive is `array`, display type is "Array of String"
     required: true
+    (inherited): false
   arrayOfObjectType:
     uniqueItems: false
     type: array
@@ -75,3 +81,4 @@ properties:
     description: |-
       An array of IntegerTestType. JSON primitive is `array`, display type is "Array of IntegerTestType"
     required: true
+    (inherited): false
