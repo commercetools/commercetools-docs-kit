@@ -1,5 +1,12 @@
 # @commercetools-website/site-template
 
+## 3.0.21
+
+### Patch Changes
+
+- Updated dependencies [[`047f4cc`](https://github.com/commercetools/commercetools-docs-kit/commit/047f4ccaf5942b06a40412dbc1c472acd5d542a6), [`1d84a91`](https://github.com/commercetools/commercetools-docs-kit/commit/1d84a915a21203f2deb3c1395f941c14fa1ae4e6), [`459ef12`](https://github.com/commercetools/commercetools-docs-kit/commit/459ef126f2297ef46c38d7297f4f528edbaab2a5), [`73c843e`](https://github.com/commercetools/commercetools-docs-kit/commit/73c843e52caca2b9b7fc90d3f2355672b540431d), [`168d064`](https://github.com/commercetools/commercetools-docs-kit/commit/168d064f74eb043af873ca2d3ddc984a61d3ef43), [`9b69b27`](https://github.com/commercetools/commercetools-docs-kit/commit/9b69b275c762aa49f84bf38ea85791390a12aff1), [`7f73056`](https://github.com/commercetools/commercetools-docs-kit/commit/7f73056c2fc9ee1df717d2af08195c752f63994a), [`6ca154c`](https://github.com/commercetools/commercetools-docs-kit/commit/6ca154c3dbc452c6c031c55212018f669f24d9d9), [`dad7828`](https://github.com/commercetools/commercetools-docs-kit/commit/dad7828c59dffba4b84606f7ba589bb7a2c662b1), [`39bf45d`](https://github.com/commercetools/commercetools-docs-kit/commit/39bf45d35bb554899aaf7c05ca0da56963d7f5d3), [`1a99ee3`](https://github.com/commercetools/commercetools-docs-kit/commit/1a99ee34f7d00e55fdfb045570f8cb1bd44ceaca)]:
+  - @commercetools-docs/gatsby-theme-docs@9.0.0
+
 ## 3.0.20
 
 ### Patch Changes

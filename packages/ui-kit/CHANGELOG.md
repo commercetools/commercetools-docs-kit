@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 9.0.0
+
+### Patch Changes
+
+- [`af0d313`](https://github.com/commercetools/commercetools-docs-kit/commit/af0d313567d94f32b1b397b48df514893e04c1cb) [#692](https://github.com/commercetools/commercetools-docs-kit/pull/692) Thanks [@davifantasia](https://github.com/davifantasia)! - Endpoint design implementation.
+
 ## 8.0.0
 
 ### Patch Changes

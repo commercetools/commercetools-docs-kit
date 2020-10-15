@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-api-docs",
   "description": "Gatsby theme for commercetools documentation API",
-  "version": "8.0.1",
+  "version": "9.0.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -21,21 +21,21 @@
   ],
   "dependencies": {
     "@commercetools-docs/gatsby-transformer-mdx-introspection": "3.0.5",
-    "@commercetools-docs/gatsby-transformer-raml": "3.0.2",
-    "@commercetools-docs/ui-kit": "8.0.0",
+    "@commercetools-docs/gatsby-transformer-raml": "9.0.0",
+    "@commercetools-docs/ui-kit": "9.0.0",
     "@commercetools-uikit/design-system": "^10.18.4",
     "@commercetools-uikit/spacings-inline": "^10.30.1",
     "@commercetools-uikit/spacings-stack": "^10.30.1",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "@commercetools-docs/ramldoc-generator": "3.0.3",
+    "@commercetools-docs/ramldoc-generator": "9.0.0",
     "gatsby": "2.24.73",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "peerDependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "8.0.1",
+    "@commercetools-docs/gatsby-theme-docs": "9.0.0",
     "@emotion/core": "10.x",
     "@emotion/styled": "10.x",
     "gatsby": "2.x",
