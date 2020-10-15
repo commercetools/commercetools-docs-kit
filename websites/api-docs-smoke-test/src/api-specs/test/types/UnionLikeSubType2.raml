@@ -12,11 +12,19 @@ properties:
     enum:
     - subtype2
     required: true
+    (inherited): true
+  nonDiscriminatorProperty:
+    type: string
+    (builtinType): string
+    required: true
+    (inherited): true
   bar:
     type: string
     (builtinType): string
     required: true
+    (inherited): false
   name:
     type: string
     (builtinType): string
     required: true
+    (inherited): false

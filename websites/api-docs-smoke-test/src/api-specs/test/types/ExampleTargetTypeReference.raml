@@ -13,9 +13,16 @@ properties:
     enum:
     - example-target
     required: true
+    (inherited): true
+  id:
+    type: string
+    (builtinType): string
+    required: true
+    (inherited): true
   obj:
     type: IntegerTestType
     (builtinType): object
     description: |-
       This is a type which contains test data for Integer properties.
     required: true
+    (inherited): false

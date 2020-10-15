@@ -15,6 +15,7 @@ properties:
       The expected version of the ExampleResource on which the changes should be applied.
       If the expected version does not match the actual version, a 409 Conflict will be returned.
     required: true
+    (inherited): false
   actions:
     type: array
     items:
@@ -24,3 +25,4 @@ properties:
       The list of update actions to be performed on the ExampleResource.
       Actions are applied in the given order.
     required: true
+    (inherited): false

@@ -41,6 +41,7 @@ const Children = (props) => {
               apiKey={props.apiKey}
               apiType={props.apiType}
               title={props.propertiesTableTitle}
+              hideInheritedProperties={props.hideInheritedProperties}
             />
           )}
 
@@ -66,6 +67,7 @@ Children.propTypes = {
   ]),
   renderDescriptionBelowProperties: PropTypes.bool,
   doNotRenderExamples: PropTypes.bool,
+  hideInheritedProperties: PropTypes.bool,
 };
 
 export default Children;

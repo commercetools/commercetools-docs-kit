@@ -41,6 +41,7 @@ export const useApiTypes = () => {
               description
               discriminatorValue
               enumeration
+              inherited
               items {
                 type
               }
