@@ -284,7 +284,6 @@ const SidebarNavigationLinks = (props) => {
       allNavigationYaml {
         nodes {
           chapterTitle
-          beta
           pages {
             title
             path

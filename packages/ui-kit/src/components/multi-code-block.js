@@ -11,6 +11,7 @@ export const Container = styled.div`
   background-color: ${(props) => props.theme.codeBlockColors.surface};
   border: 1px solid ${(props) => props.theme.codeBlockColors.border};
   border-radius: ${tokens.borderRadiusForCodeBlock};
+  word-break: break-word;
 `;
 const Header = styled.div`
   background-color: ${(props) => props.theme.codeBlockColors.surfaceHeader};

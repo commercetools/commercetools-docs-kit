@@ -85,7 +85,7 @@ export const colors = {
       secondary: {
         border: customProperties.colorNeutral90,
         surface: customProperties.colorSurface,
-        surfaceHeader: customProperties.colorNeutral90,
+        surfaceHeader: customProperties.colorNeutral,
         surfaceLanguageDropdown: customProperties.colorSolid,
         surfaceLanguageDropdownHover: customProperties.colorNeutral60,
         textHeader: customProperties.colorSolid,
