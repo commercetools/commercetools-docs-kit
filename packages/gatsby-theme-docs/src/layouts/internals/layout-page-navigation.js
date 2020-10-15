@@ -6,15 +6,18 @@ import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import IconButton from '@commercetools-uikit/icon-button';
+import { ArrowUpIcon } from '@commercetools-uikit/icons';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import { useInView } from 'react-intersection-observer';
 import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
-import { Overlay } from '../../components';
+import { Overlay, BetaFlag } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
   UnstyledStackedLinesIndentedIcon
 );
+
+const StyledArrowUpIcon = createStyledIcon(ArrowUpIcon);
 
 const slideInAnimation = keyframes`
   from { margin-right: -100%; }
@@ -42,6 +45,9 @@ const GridContainer = styled.div`
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     width: ${designSystem.dimensions.widths.pageNavigation};
   }
+`;
+const BetaWrapper = styled.div`
+  font-size: ${designSystem.typography.fontSizes.small};
 `;
 
 const stickyContainerCss = css({
@@ -136,11 +142,18 @@ const LayoutPageNavigation = (props) => {
     >
       <SpacingsStack scale="m">
         <PageTitleLink href="#top">
-          <SpacingsInline scale="s" alignItems="center">
+          <SpacingsInline scale="s">
             <div>
-              <StackedLinesIndentedIcon color="textSecondary" />
+              <StyledArrowUpIcon size="medium" color="textSecondary" />
             </div>
-            <div>{props.pageTitle}</div>
+            <SpacingsStack scale="xs">
+              <div>{props.pageTitle}</div>
+              {props.beta && (
+                <BetaWrapper>
+                  <BetaFlag />
+                </BetaWrapper>
+              )}
+            </SpacingsStack>
           </SpacingsInline>
         </PageTitleLink>
         <PageNavigation
@@ -191,6 +204,7 @@ LayoutPageNavigation.propTypes = {
     items: PropTypes.array,
   }),
   navLevels: PropTypes.number.isRequired,
+  beta: PropTypes.bool.isRequired,
 };
 
 export default LayoutPageNavigation;

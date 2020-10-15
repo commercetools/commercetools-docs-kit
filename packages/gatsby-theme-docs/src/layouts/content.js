@@ -66,6 +66,7 @@ const LayoutContent = (props) => {
               pageTitle={props.pageContext.shortTitle || props.pageData.title}
               tableOfContents={props.pageData.tableOfContents}
               navLevels={props.pageData.navLevels}
+              beta={props.pageData.beta}
             />
           </LayoutPage>
         </LayoutPageWrapper>
