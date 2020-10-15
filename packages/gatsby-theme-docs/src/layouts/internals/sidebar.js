@@ -234,7 +234,6 @@ const SidebarChapter = (props) => {
       <SpacingsStack scale="s">
         <LinkItem>
           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-          {props.chapter.beta && !props.isGlobalBeta && <BetaFlag />}
         </LinkItem>
         <SpacingsStack scale="s">
           {props.chapter.pages &&
@@ -248,7 +247,6 @@ const SidebarChapter = (props) => {
                 getChapterDOMElement={getChapterDOMElement}
               >
                 <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-                {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
               </SidebarLinkWrapper>
             ))}
         </SpacingsStack>
@@ -286,7 +284,6 @@ const SidebarNavigationLinks = (props) => {
       allNavigationYaml {
         nodes {
           chapterTitle
-          beta
           pages {
             title
             path
