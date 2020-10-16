@@ -3,7 +3,6 @@ import unified from 'unified';
 import filter from 'unist-util-filter';
 import parse from 'remark-parse';
 import remark2react from 'remark-react';
-import gfm from 'remark-gfm';
 import frontmatter from 'remark-frontmatter';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import Link from '../components/link';
@@ -39,7 +38,6 @@ const removeFrontmatter = () => (tree) =>
 const markdownFragmentToReact = (markdownString, customElements) =>
   unified()
     .use(parse)
-    .use(gfm)
     .use(frontmatter)
     .use(removeFrontmatter)
     .use(remark2react, {
