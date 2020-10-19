@@ -35,7 +35,7 @@
     "tiny-invariant": "1.1.0",
     "moment": "2.29.1",
     "rss-parser": "3.9.0",
-    "swr": "0.3.5"
+    "swr": "0.3.6"
   },
   "devDependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
