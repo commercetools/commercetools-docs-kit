@@ -124,6 +124,7 @@ const Blockquote = styled.blockquote`
 `;
 
 const Table = styled.table`
+  width: 100%;
   border: 1px solid ${colors.light.borderPrimary};
   border-top: 2px solid ${colors.light.borderPrimary};
   border-collapse: collapse;
