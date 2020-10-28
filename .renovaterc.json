@@ -7,6 +7,10 @@
   "separateMajorMinor": true,
   "packageRules": [
     {
+      "sourceUrlPrefixes": ["https://github.com/commercetools/ui-kit"],
+      "groupName": "all ui-kit packages"
+    },
+    {
       "packagePatterns": [
         "*"
       ],
