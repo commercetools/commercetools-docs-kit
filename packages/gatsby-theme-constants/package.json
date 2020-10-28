@@ -1,13 +1,18 @@
 {
   "name": "@commercetools-docs/gatsby-theme-constants",
+  "description": "Gatsby theme for commercetools documentation providing the functionalities to render constants values in MDX defined in configuration files",
   "version": "9.0.0",
   "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "Gatsby theme for commercetools documentation providing the functionalities to render constants values in MDX defined in configuration files",
-  "homepage": "https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-theme-constants",
+  "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git",
+    "directory": "packages/gatsby-theme-constants"
+  },
   "keywords": [
     "gatsby",
     "gatsby-plugin",

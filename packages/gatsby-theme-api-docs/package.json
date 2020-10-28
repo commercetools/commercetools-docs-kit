@@ -10,7 +10,8 @@
   "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/commercetools/commercetools-docs-kit.git"
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git",
+    "directory": "packages/gatsby-theme-api-docs"
   },
   "keywords": [
     "gatsby",
