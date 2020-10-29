@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@commercetools-docs/ramldoc-generator": "9.0.0",
-    "gatsby": "2.24.82",
+    "gatsby": "2.24.91",
     "react": "16.14.0",
     "react-dom": "16.14.0"
   },
