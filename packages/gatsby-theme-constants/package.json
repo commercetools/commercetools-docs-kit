@@ -22,11 +22,11 @@
   ],
   "dependencies": {
     "@commercetools-docs/ui-kit": "9.0.0",
-    "gatsby-transformer-yaml": "2.4.14",
+    "gatsby-transformer-yaml": "2.4.15",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "gatsby": "2.24.82",
+    "gatsby": "2.24.91",
     "react": "16.14.0",
     "react-dom": "16.14.0"
   },
