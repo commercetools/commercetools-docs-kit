@@ -1,5 +1,17 @@
 # @commercetools-docs/ui-kit
 
+## 10.0.0
+
+### Minor Changes
+
+- [`c88565b`](https://github.com/commercetools/commercetools-docs-kit/commit/c88565bb932a872b60614f999d711b82faf718ac) [#727](https://github.com/commercetools/commercetools-docs-kit/pull/727) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react monorepo to v17 (major)
+
+### Patch Changes
+
+- [`a4df2b7`](https://github.com/commercetools/commercetools-docs-kit/commit/a4df2b7e286cdedd8383321273ed1e6fe184bee2) [#729](https://github.com/commercetools/commercetools-docs-kit/pull/729) Thanks [@TimonRey](https://github.com/TimonRey)! - All tables in the body column are now taking the full width
+
+* [`71dfbe4`](https://github.com/commercetools/commercetools-docs-kit/commit/71dfbe4edf48225efeebe350bee0da4684bf60e1) [#724](https://github.com/commercetools/commercetools-docs-kit/pull/724) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update all dependencies
+
 ## 9.0.0
 
 ### Patch Changes
