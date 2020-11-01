@@ -26,21 +26,23 @@ const injectScript = (url, attributes = {}, onLoad) => {
   document.body.appendChild(script);
 };
 
-export const onClientEntry = (
+export const onClientEntry = async (
   _, // eslint-disable-line
   pluginOptions
 ) => {
   if (isProduction) {
-    require.ensure(['@sentry/browser'], (require) => {
-      const Sentry = require('@sentry/browser');
-      Sentry.init({
-        dsn:
-          'https://e43538aae75e412eb16b27d8011f5a8b@o32365.ingest.sentry.io/1819068',
-        release: commitSha,
-        environment: pluginOptions.websiteKey,
-        allowUrls: ['docs.commercetools.com', 'now.sh', 'vercel.app'],
-      });
+    const Sentry = await import('@sentry/browser');
+    Sentry.init({
+      dsn:
+        'https://e43538aae75e412eb16b27d8011f5a8b@o32365.ingest.sentry.io/1819068',
+      release: commitSha,
+      environment: pluginOptions.websiteKey,
+      allowUrls: ['docs.commercetools.com', 'now.sh', 'vercel.app'],
     });
+
+    if (typeof IntersectionObserver === 'undefined') {
+      await import('intersection-observer');
+    }
   }
   // Inject the cookie consent scripts only if the page is served on the domain `*.commercetools.com`.
   if (window && window.location.host.includes('.commercetools.com')) {
@@ -57,9 +59,11 @@ export const onClientEntry = (
   // Require additional Prism languages.
   // Inspired by https://github.com/facebook/docusaurus/pull/2250.
   window.Prism = Prism;
-  (pluginOptions.additionalPrismLanguages || []).forEach((lang) => {
-    require(`prismjs/components/prism-${lang}`); // eslint-disable-line
-  });
+  await Promise.all(
+    (pluginOptions.additionalPrismLanguages || []).map((lang) =>
+      import(`prismjs/components/prism-${lang}`)
+    )
+  );
   delete window.Prism;
 };
 
