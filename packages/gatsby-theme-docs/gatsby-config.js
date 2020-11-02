@@ -260,7 +260,7 @@ module.exports = (themeOptions = {}) => {
               query: `
               {
                 allReleaseNotePage(
-                  limit: 5, sort: { order: DESC, fields: date },
+                  limit: 10, sort: { order: DESC, fields: date },
                 ) {
                     nodes {
                       description

@@ -8,4 +8,11 @@ import { RssFeeds } from '@commercetools-docs/ui-kit'
 
 <Info>The RSS feed is only generated in production builds so this test fails in development mode.</Info>
 
-<RssFeeds url="/docs-smoke-test/releases/feed.xml" />
+<RssFeeds dataSources={
+  [
+    {title: "HTTP API", url: "https://docs.commercetools.com/api/releases/feed.xml"},
+    {title: "Merchant Center", url: "https://docs.commercetools.com/merchant-center/releases/feed.xml"},
+    {title: "Custom Applications", url: "https://docs.commercetools.com/custom-applications/releases/feed.xml"},
+    {title: "Import API", url: "https://docs.commercetools.com/import-api/releases/feed.xml"}
+  ]
+}/>

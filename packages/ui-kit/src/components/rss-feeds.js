@@ -1,121 +1,78 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import css from '@emotion/css';
 import useSWR from 'swr';
 import Parser from 'rss-parser';
-import moment from 'moment';
+import PropTypes from 'prop-types';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './content-notifications';
-import { colors, tokens, dimensions } from '../design-system';
-import Link from './link';
+import RssFeedTable from './rss-feed-table';
 
-const Table = styled.table`
-  width: 100%;
-  border-radius: ${tokens.borderRadiusForRssFeedTable};
-  box-shadow: ${tokens.shadowForRssFeedTable};
-
-  thead {
-    th {
-      background-color: ${colors.light.surfaceSecondary2};
-      border-radius: ${tokens.borderRadiusForRssFeedTable}
-        ${tokens.borderRadiusForRssFeedTable} 0 0;
-      padding: ${dimensions.spacings.s};
-    }
-  }
-
-  tbody {
-    tr {
-      td {
-        padding: ${dimensions.spacings.m};
-
-        :first-of-type {
-          color: ${colors.light.linkHover};
-        }
-      }
-
-      :not(:first-of-type) {
-        border-top: 1px solid ${colors.light.borderPrimary};
-      }
-    }
-  }
-`;
-
-const DateWrapper = styled.span`
-  white-space: nowrap;
-`;
+async function fetcher(...args) {
+  const rssParser = new Parser();
+  const promises = args.map(async (feed) => {
+    const feedData = await rssParser.parseURL(feed.url);
+    const refactoredData = feedData.items.map((item) => {
+      return { ...item, feedName: feed.title };
+    });
+    return refactoredData;
+  });
+  return Promise.all(promises).then((data) => {
+    return data;
+  });
+}
 
 const RssFeeds = (props) => {
-  if (!props.url) {
-    const message = 'Must pass prop url to RssFeeds component.';
-    if (process.env.NODE_ENV !== 'production') {
-      return <ContentNotifications.Error>{message}</ContentNotifications.Error>;
-    }
-
+  if (!props.dataSources) {
+    const message = (
+      <ContentNotifications.Error>
+        Must pass a source to RssFeeds component
+      </ContentNotifications.Error>
+    );
     throw new Error(message);
   }
 
-  async function fetcher(...args) {
-    const rssParser = new Parser();
-    const feed = await rssParser.parseURL(args[0]);
-    return feed;
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { data, error } = useSWR(props.url, fetcher);
+  const { data, error } = useSWR(props.dataSources, fetcher);
 
   if (error) {
     console.log(error);
-    return (
+    const message = (
       <ContentNotifications.Error>
-        Error Loading RSS feed from {props.url}
+        Error Loading Data from {props.dataSources}
       </ContentNotifications.Error>
     );
+    throw new Error(message);
   }
 
-  return (
-    <div>
-      {!data ? (
-        <LoadingSpinner size="s">{'Loading feeds'}</LoadingSpinner>
-      ) : (
-        <Table>
-          <thead>
-            <tr>
-              <th colSpan="2">{props.title ? props.title : data.title}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.items.map((item, index) => (
-              <tr key={`${item.title}${index}`}>
-                <td
-                  css={css`
-                    width: ${dimensions.widths.rssFeedDateWidth};
-                  `}
-                >
-                  <DateWrapper>
-                    <Link
-                      href={item.link}
-                      css={css`
-                        text-decoration: none;
-                      `}
-                    >
-                      {moment(item.pubDate).format('D MMMM YYYY')}
-                    </Link>
-                  </DateWrapper>
-                </td>
-                <td>{item.title}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
-    </div>
-  );
+  if (data) {
+    const oldestEntriesOfFeeds = data.reduce((list, feed) => {
+      return [...list, feed[feed.length - 1]];
+    }, []);
+
+    // we use the newest of the oldest entry of each feed as the last entry in the release note list
+    const lastEntryOfList = oldestEntriesOfFeeds.reduce(
+      (currentOldestEntry, entry) => {
+        return entry.pubDate > currentOldestEntry.pubDate
+          ? entry
+          : currentOldestEntry;
+      }
+    );
+
+    const limitedEntries = data.flat().reduce((list, entry) => {
+      return entry.pubDate >= lastEntryOfList.pubDate
+        ? [...list, entry]
+        : [...list];
+    }, []);
+
+    const tableData = limitedEntries.sort((dateOne, dateTwo) => {
+      return new Date(dateTwo.pubDate) - new Date(dateOne.pubDate);
+    });
+
+    return <RssFeedTable data={tableData} />;
+  }
+  return <LoadingSpinner size="s">{'Loading feeds'}</LoadingSpinner>;
 };
 
 RssFeeds.propTypes = {
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string,
+  dataSources: PropTypes.array.isRequired,
 };
 
 export default RssFeeds;
