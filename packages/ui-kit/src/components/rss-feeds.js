@@ -20,25 +20,23 @@ async function fetcher(...args) {
 
 const transformData = (data) => {
   // we use the newest of the oldest entry of each feed as the last entry in the release note list
-  const lastEntryOfList = () => {
-    return data
-      .reduce((list, feed) => {
-        return [...list, feed[feed.length - 1]];
-      }, [])
-      .reduce((currentOldestEntry, entry, index) => {
-        if (index === 0) {
-          return entry;
-        }
-        return entry.pubDate > currentOldestEntry.pubDate
-          ? entry
-          : currentOldestEntry;
-      }, {});
-  };
+  const lastEntryOfList = data
+    .reduce((list, feed) => {
+      return [...list, feed[feed.length - 1]];
+    }, [])
+    .reduce((currentOldestEntry, entry, index) => {
+      if (index === 0) {
+        return entry;
+      }
+      return entry.pubDate > currentOldestEntry.pubDate
+        ? entry
+        : currentOldestEntry;
+    }, {});
 
   const tableData = data
     .flat()
     .reduce((list, entry) => {
-      return new Date(entry.pubDate) >= new Date(lastEntryOfList().pubDate)
+      return new Date(entry.pubDate) >= new Date(lastEntryOfList.pubDate)
         ? [...list, entry]
         : [...list];
     }, [])
