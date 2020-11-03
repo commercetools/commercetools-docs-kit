@@ -96,7 +96,11 @@ const RssFeedTable = (props) => {
 };
 
 RssFeedTable.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default RssFeedTable;

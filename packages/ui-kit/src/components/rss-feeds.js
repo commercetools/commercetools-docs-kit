@@ -15,21 +15,19 @@ async function fetcher(...args) {
     });
     return refactoredData;
   });
-  return Promise.all(promises).then((data) => {
-    return data;
-  });
+  return Promise.all(promises);
 }
 
 const RssFeeds = (props) => {
   if (!props.dataSources) {
-    const message = (
-      <ContentNotifications.Error>
-        Must pass a source to RssFeeds component
-      </ContentNotifications.Error>
-    );
+    const message = `Missing prop "dataSources" for the "<RssFeeds>" component.`;
+    if (process.env.NODE_ENV !== 'production') {
+      return <ContentNotifications.Error>{message}</ContentNotifications.Error>;
+    }
     throw new Error(message);
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data, error } = useSWR(props.dataSources, fetcher);
 
   if (error) {
@@ -39,7 +37,7 @@ const RssFeeds = (props) => {
         Error Loading Data from {props.dataSources}
       </ContentNotifications.Error>
     );
-    throw new Error(message);
+    return message;
   }
 
   if (data) {
@@ -72,7 +70,12 @@ const RssFeeds = (props) => {
 };
 
 RssFeeds.propTypes = {
-  dataSources: PropTypes.array.isRequired,
+  dataSources: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default RssFeeds;
