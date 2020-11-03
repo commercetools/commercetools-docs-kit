@@ -214,7 +214,7 @@ The available JSX components are:
 
 Release notes files follow a different specification and their file location does not imply the URL so they can be reorganized without changing the permanent release note URL.
 
-Take a look at [typical example template](../websites/docs-smoke-test/src/releases/release-note-template.mdx) or read the [specification by example file](../websites/docs-smoke-test/src/releases/release-format-definition.mdx) to learn the complete format.
+Take a look at [typical example template](../../websites/docs-smoke-test/src/releases/release-note-template.mdx) or read the [specification by example file](../../websites/docs-smoke-test/src/releases/release-format-definition.mdx) to learn the complete format.
 
 ## Using Theme with Add-Ons
 
