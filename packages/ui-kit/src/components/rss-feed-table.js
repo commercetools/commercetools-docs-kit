@@ -99,6 +99,7 @@ RssFeedTable.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
+      feedName: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

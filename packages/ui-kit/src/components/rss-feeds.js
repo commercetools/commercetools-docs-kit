@@ -18,6 +18,36 @@ async function fetcher(...args) {
   return Promise.all(promises);
 }
 
+const transformData = (data) => {
+  // we use the newest of the oldest entry of each feed as the last entry in the release note list
+  const lastEntryOfList = () => {
+    return data
+      .reduce((list, feed) => {
+        return [...list, feed[feed.length - 1]];
+      }, [])
+      .reduce((currentOldestEntry, entry, index) => {
+        if (index === 0) {
+          return entry;
+        }
+        return entry.pubDate > currentOldestEntry.pubDate
+          ? entry
+          : currentOldestEntry;
+      }, {});
+  };
+
+  const tableData = data
+    .flat()
+    .reduce((list, entry) => {
+      return new Date(entry.pubDate) >= new Date(lastEntryOfList().pubDate)
+        ? [...list, entry]
+        : [...list];
+    }, [])
+    .sort((dateOne, dateTwo) => {
+      return new Date(dateTwo.pubDate) - new Date(dateOne.pubDate);
+    });
+  return tableData;
+};
+
 const RssFeeds = (props) => {
   if (!props.dataSources) {
     const message = `Missing prop "dataSources" for the "<RssFeeds>" component.`;
@@ -41,30 +71,7 @@ const RssFeeds = (props) => {
   }
 
   if (data) {
-    const oldestEntriesOfFeeds = data.reduce((list, feed) => {
-      return [...list, feed[feed.length - 1]];
-    }, []);
-
-    // we use the newest of the oldest entry of each feed as the last entry in the release note list
-    const lastEntryOfList = oldestEntriesOfFeeds.reduce(
-      (currentOldestEntry, entry) => {
-        return entry.pubDate > currentOldestEntry.pubDate
-          ? entry
-          : currentOldestEntry;
-      }
-    );
-
-    const limitedEntries = data.flat().reduce((list, entry) => {
-      return entry.pubDate >= lastEntryOfList.pubDate
-        ? [...list, entry]
-        : [...list];
-    }, []);
-
-    const tableData = limitedEntries.sort((dateOne, dateTwo) => {
-      return new Date(dateTwo.pubDate) - new Date(dateOne.pubDate);
-    });
-
-    return <RssFeedTable data={tableData} />;
+    return <RssFeedTable data={transformData(data)} />;
   }
   return <LoadingSpinner size="s">{'Loading feeds'}</LoadingSpinner>;
 };
