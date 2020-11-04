@@ -78,11 +78,7 @@ const LayoutPageWithHero = (props) => (
     >
       <ThemeProvider
         theme={{
-          colors: {
-            light: {
-              primary: designSystem.colors.light.textInverted,
-            },
-          },
+          websitePrimaryColor: designSystem.colors.light.textInverted,
         }}
       >
         <Title>{props.title}</Title>

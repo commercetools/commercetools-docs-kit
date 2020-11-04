@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 10.0.1
+
+### Patch Changes
+
+- [`b1190b5`](https://github.com/commercetools/commercetools-docs-kit/commit/b1190b593ce63b2eb3ac4d62f36d7717d35525bf) [#745](https://github.com/commercetools/commercetools-docs-kit/pull/745) Thanks [@emmenko](https://github.com/emmenko)! - It appeared that under some unknown circumstances the `props.theme` accessed from within a styled component results in an empty object when building the website in production mode. To fix that, we explicitly pass wherever possible the `theme` object after reading it from the context with `useTheme`.
+
 ## 10.0.0
 
 ### Minor Changes
