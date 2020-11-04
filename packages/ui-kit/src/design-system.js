@@ -62,7 +62,7 @@ export const colors = {
     //
     //   <ThemeProvider
     //     theme={{
-    //       colors: colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
+    //       codeBlockColors: colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
     //     }}
     //   >
     //
