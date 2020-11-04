@@ -41,13 +41,7 @@ const LayoutApplication = (props) => (
   <UiKitThemeProvider
     theme={{
       ...designSystem.uikitTheme,
-      // Docs specific theme properties
-      colors: {
-        ...designSystem.colors,
-        light: {
-          primary: props.websitePrimaryColor,
-        },
-      },
+      websitePrimaryColor: props.websitePrimaryColor,
     }}
   >
     <Root role="application" id="application">
