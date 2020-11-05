@@ -14,9 +14,13 @@ const Table = styled.table`
 
   thead {
     th {
+      :first-of-type {
+        border-radius: ${tokens.borderRadiusForRssFeedTable} 0 0 0;
+      }
+      :last-of-type {
+        border-radius: 0 ${tokens.borderRadiusForRssFeedTable} 0 0;
+      }
       background-color: ${colors.light.surfaceSecondary2};
-      border-radius: ${tokens.borderRadiusForRssFeedTable}
-        ${tokens.borderRadiusForRssFeedTable} 0 0;
       padding: ${dimensions.spacings.s};
     }
   }
@@ -57,7 +61,9 @@ const RssFeedTable = (props) => {
       <Table>
         <thead>
           <tr>
-            <th colSpan="3">Release Notes</th>
+            <th>Release Date</th>
+            <th>Area</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
@@ -65,7 +71,7 @@ const RssFeedTable = (props) => {
             <tr key={`${item.title}${index}`}>
               <td
                 css={css`
-                  width: ${dimensions.widths.rssFeedDateWidth};
+                  white-space: nowrap;
                 `}
               >
                 <DateWrapper>
@@ -81,10 +87,17 @@ const RssFeedTable = (props) => {
               </td>
               <td
                 css={css`
-                  width: ${dimensions.widths.rssFeedTitleWidth};
+                  white-space: nowrap;
                 `}
               >
-                {item.feedName}
+                <Link
+                  href={item.releaseNoteUrl}
+                  css={css`
+                    text-decoration: none;
+                  `}
+                >
+                  {item.feedName}
+                </Link>
               </td>
               <td>{item.title}</td>
             </tr>
@@ -100,6 +113,7 @@ RssFeedTable.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       feedName: PropTypes.string.isRequired,
+      releaseNoteUrl: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

@@ -11,7 +11,8 @@ async function fetcher(...args) {
   const promises = args.map(async (feed) => {
     const feedData = await rssParser.parseURL(feed.url);
     const refactoredData = feedData.items.map((item) => {
-      return { ...item, feedName: feed.title };
+      const releaseNoteUrl = feed.url.replace(/\/feed.xml/, '');
+      return { ...item, feedName: feed.title, releaseNoteUrl };
     });
     return refactoredData;
   });
