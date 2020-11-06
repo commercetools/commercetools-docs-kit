@@ -68,6 +68,7 @@ const RssFeedTable = (props) => {
               <td
                 css={css`
                   white-space: nowrap;
+                  padding-left: ${dimensions.spacings.l} !important;
                 `}
               >
                 <Link
