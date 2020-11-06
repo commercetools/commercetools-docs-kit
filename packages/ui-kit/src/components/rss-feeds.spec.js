@@ -9,7 +9,6 @@ describe('Rendering', () => {
       'Mon, 19 Oct 2020 00:00:00 GMT'
     );
   });
-  console.log(transformedData);
   it('should show only items with a newer date sorted', async () => {
     expect(transformedData[0].pubDate).toBe('Mon, 02 Nov 2020 00:00:00 GMT');
     expect(transformedData[1].pubDate).toBe('Sun, 01 Nov 2020 00:00:00 GMT');
