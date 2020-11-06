@@ -12,19 +12,6 @@ const Table = styled.table`
   border-radius: ${tokens.borderRadiusForRssFeedTable};
   box-shadow: ${tokens.shadowForRssFeedTable};
 
-  thead {
-    th {
-      :first-of-type {
-        border-radius: ${tokens.borderRadiusForRssFeedTable} 0 0 0;
-      }
-      :last-of-type {
-        border-radius: 0 ${tokens.borderRadiusForRssFeedTable} 0 0;
-      }
-      background-color: ${colors.light.surfaceSecondary2};
-      padding: ${dimensions.spacings.s};
-    }
-  }
-
   tbody {
     tr {
       td {
@@ -59,13 +46,6 @@ const RssFeedTable = (props) => {
   return (
     <div>
       <Table>
-        <thead>
-          <tr>
-            <th>Release Date</th>
-            <th>Area</th>
-            <th>Description</th>
-          </tr>
-        </thead>
         <tbody>
           {props.data.map((item, index) => (
             <tr key={`${item.title}${index}`}>
