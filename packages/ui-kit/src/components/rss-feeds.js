@@ -19,21 +19,26 @@ async function fetcher(...args) {
   return Promise.all(promises);
 }
 
-const transformData = (data) => {
-  // we use the newest of the oldest entry of each feed as the last entry in the release note list
+export const transformData = (data) => {
+  // First, we need to get the oldest release note from each feed,
+  // which is always the last entry of the list.
   const lastEntryOfList = data
     .reduce((list, feed) => {
       return [...list, feed[feed.length - 1]];
     }, [])
+    // After that, we need to compare the oldest release dates from each feed
+    // to get the newest of them. This will be our last entry in the list.
     .reduce((currentOldestEntry, entry, index) => {
       if (index === 0) {
         return entry;
       }
-      return entry.pubDate > currentOldestEntry.pubDate
+      return new Date(entry.pubDate) > new Date(currentOldestEntry.pubDate)
         ? entry
         : currentOldestEntry;
     }, {});
 
+  // After finding out the last entry in the list, we reduce the list
+  // to all entries that have a newer date than our last entry.
   const tableData = data
     .flat()
     .reduce((list, entry) => {
@@ -41,6 +46,7 @@ const transformData = (data) => {
         ? [...list, entry]
         : [...list];
     }, [])
+    // Now we sort the release notes after their release date.
     .sort((dateOne, dateTwo) => {
       return new Date(dateTwo.pubDate) - new Date(dateOne.pubDate);
     });

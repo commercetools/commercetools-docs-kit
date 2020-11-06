@@ -139,7 +139,6 @@ export const dimensions = {
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
-    rssFeedDateWidth: '180px',
     searchBar: '300px',
     searchBarSmall: '150px',
     selectDropDownArrowWith: '12px',
