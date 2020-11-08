@@ -38,12 +38,12 @@
     "tiny-invariant": "1.1.0",
     "moment": "2.29.1",
     "rss-parser": "3.9.0",
-    "swr": "0.3.6"
+    "swr": "0.3.8"
   },
   "devDependencies": {
-    "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.38.0",
-    "@commercetools-uikit/spacings-inline": "10.30.1"
+    "@commercetools-uikit/design-system": "10.39.6",
+    "@commercetools-uikit/icons": "10.39.6",
+    "@commercetools-uikit/spacings-inline": "10.39.6"
   },
   "peerDependencies": {
     "@commercetools-uikit/design-system": "10.x",
