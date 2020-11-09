@@ -124,8 +124,6 @@ module.exports = (themeOptions = {}) => {
             '.mdx',
             // ".md"
           ],
-          // implement commonmark for stricter compatibility, e.g. backslash newlines
-          commonmark: true,
           // List of remark plugins, that transform the markdown AST.
           remarkPlugins: [require('remark-emoji')],
           // List of rehype plugins, that transform the HTML AST.
