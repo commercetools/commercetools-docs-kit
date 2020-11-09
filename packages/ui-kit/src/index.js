@@ -5,7 +5,6 @@ import * as Markdown from './components/markdown';
 export { designSystem, Markdown };
 export { default as ContentNotifications } from './components/content-notifications';
 export { default as RssFeeds } from './components/rss-feeds';
-export { default as RssFeedTable } from './components/rss-feed-table';
 export { default as Globals } from './components/globals';
 export { default as Link } from './components/link';
 export { default as LogoButton } from './components/logo-button';

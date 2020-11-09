@@ -1,15 +1,15 @@
 import { transformData } from './rss-feeds';
 
-describe('Rendering', () => {
+describe('transformData', () => {
   const data = createTestData();
   const transformedData = transformData(data);
 
-  it('should limit the items with the newest of the oldest feed dates', async () => {
+  it('should limit the items with the newest of the oldest feed dates', () => {
     expect(transformedData[transformedData.length - 1].pubDate).toBe(
       'Mon, 19 Oct 2020 00:00:00 GMT'
     );
   });
-  it('should show only items with a newer date sorted', async () => {
+  it('should show only items with a newer date sorted', () => {
     expect(transformedData[0].pubDate).toBe('Mon, 02 Nov 2020 00:00:00 GMT');
     expect(transformedData[1].pubDate).toBe('Sun, 01 Nov 2020 00:00:00 GMT');
     expect(transformedData[2].pubDate).toBe('Tue, 29 Oct 2020 00:00:00 GMT');
