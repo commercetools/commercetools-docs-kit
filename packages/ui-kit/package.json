@@ -15,12 +15,7 @@
   },
   "main": "./dist/ui-kit.cjs.js",
   "module": "./dist/ui-kit.es.js",
-  "files": [
-    "dist",
-    "package.json",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["dist", "package.json", "LICENSE", "README.md"],
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
@@ -28,8 +23,8 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/loading-spinner": "^10.30.1",
-    "@commercetools-uikit/tooltip": "^10.30.1",
+    "@commercetools-uikit/loading-spinner": "^10.39.6",
+    "@commercetools-uikit/tooltip": "^10.39.6",
     "lodash.escape": "4.0.1",
     "lodash.throttle": "4.1.1",
     "parse5": "6.0.1",

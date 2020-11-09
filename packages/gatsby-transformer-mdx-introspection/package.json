@@ -13,11 +13,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/gatsby-transformer-mdx-introspection"
   },
-  "keywords": [
-    "gatsby",
-    "gatsby-plugin",
-    "mdx"
-  ],
+  "keywords": ["gatsby", "gatsby-plugin", "mdx"],
   "dependencies": {
     "@babel/parser": "7.12.5",
     "@mdx-js/mdx": "1.6.21",
