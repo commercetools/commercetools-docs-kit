@@ -29,7 +29,7 @@ module.exports = function getBabelPreset(api) {
         require('@babel/preset-env').default,
         {
           targets: {
-            browsers: ['last 1 versions'],
+            browsers: ['last 2 versions'],
             node: '8',
           },
         },
@@ -39,9 +39,9 @@ module.exports = function getBabelPreset(api) {
         require('@babel/preset-env').default,
         {
           targets: {
-            browsers: ['last 1 versions'],
+            browsers: ['last 2 versions'],
           },
-          corejs: 2,
+          corejs: { version: 3, proposals: true },
           // `entry` transforms `@babel/polyfill` into individual requires for
           // the targeted browsers. This is safer than `usage` which performs
           // static code analysis to determine what's required.
@@ -106,7 +106,9 @@ module.exports = function getBabelPreset(api) {
       [
         require('@babel/plugin-transform-runtime').default,
         {
-          helpers: false,
+          corejs: 3,
+          // To be able to use `runtime` in Rollup babel plugin
+          helpers: true,
           regenerator: true,
         },
       ],
