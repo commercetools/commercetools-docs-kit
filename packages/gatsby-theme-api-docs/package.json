@@ -24,9 +24,9 @@
     "@commercetools-docs/gatsby-transformer-mdx-introspection": "10.0.0",
     "@commercetools-docs/gatsby-transformer-raml": "9.0.0",
     "@commercetools-docs/ui-kit": "10.0.1",
-    "@commercetools-uikit/design-system": "^0.0.0-canary-20201011131630",
-    "@commercetools-uikit/spacings-inline": "^0.0.0-canary-20201011131630",
-    "@commercetools-uikit/spacings-stack": "^0.0.0-canary-20201011131630",
+    "@commercetools-uikit/design-system": "^10.39.8",
+    "@commercetools-uikit/spacings-inline": "^10.39.8",
+    "@commercetools-uikit/spacings-stack": "^10.39.8",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
