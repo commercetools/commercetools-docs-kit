@@ -24,14 +24,14 @@
     "@commercetools-docs/gatsby-transformer-mdx-introspection": "10.0.0",
     "@commercetools-docs/gatsby-transformer-raml": "9.0.0",
     "@commercetools-docs/ui-kit": "10.0.1",
-    "@commercetools-uikit/design-system": "^10.18.4",
-    "@commercetools-uikit/spacings-inline": "^10.30.1",
-    "@commercetools-uikit/spacings-stack": "^10.30.1",
+    "@commercetools-uikit/design-system": "^10.39.8",
+    "@commercetools-uikit/spacings-inline": "^10.39.8",
+    "@commercetools-uikit/spacings-stack": "^10.39.8",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
     "@commercetools-docs/ramldoc-generator": "9.0.0",
-    "gatsby": "2.24.91",
+    "gatsby": "2.25.3",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },

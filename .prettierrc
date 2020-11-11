@@ -1,5 +1,13 @@
 {
   "trailingComma": "es5",
   "singleQuote": true,
-  "parser": "babel"
+  "parser": "babel",
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
 }
