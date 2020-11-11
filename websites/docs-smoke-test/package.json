@@ -18,7 +18,7 @@
     "@commercetools-docs/gatsby-theme-constants": "10.0.1",
     "@commercetools-docs/gatsby-theme-docs": "10.0.1",
     "@commercetools-docs/ui-kit": "10.0.1",
-    "@commercetools-uikit/icons": "^10.39.6",
+    "@commercetools-uikit/icons": "^0.0.0-canary-20201011131630",
     "gatsby": "2.25.3",
     "gatsby-cli": "2.12.117"
   }

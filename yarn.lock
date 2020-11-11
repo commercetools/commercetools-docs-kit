@@ -1072,14 +1072,6 @@
     "@babel/helper-plugin-utils" "^7.10.4"
     "@babel/plugin-transform-typescript" "^7.12.1"
 
-"@babel/runtime-corejs3@7.12.1", "@babel/runtime-corejs3@^7.10.2":
-  version "7.12.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.1.tgz#51b9092befbeeed938335a109dbe0df51451e9dc"
-  integrity sha512-umhPIcMrlBZ2aTWlWjUseW9LjQKxi1dpFlQS8DzsxB//5K+u6GLTC/JliPKHsd5kJVPIU6X/Hy0YvWOYPcMxBw==
-  dependencies:
-    core-js-pure "^3.0.0"
-    regenerator-runtime "^0.13.4"
-
 "@babel/runtime-corejs3@7.12.5":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.5.tgz#ffee91da0eb4c6dae080774e94ba606368e414f4"
@@ -1088,17 +1080,25 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.12.1", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.0", "@babel/runtime@^7.11.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime-corejs3@^7.10.2":
   version "7.12.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.1.tgz#b4116a6b6711d010b2dad3b7b6e43bf1b9954740"
-  integrity sha512-J5AIf3vPj3UwXaAzb5j1xM4WAQDX3EMgemF8rjCP3SoW09LfRKAXQKt6CoVYl230P6iWdRcBbnLDDdnqWxZSCA==
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.1.tgz#51b9092befbeeed938335a109dbe0df51451e9dc"
+  integrity sha512-umhPIcMrlBZ2aTWlWjUseW9LjQKxi1dpFlQS8DzsxB//5K+u6GLTC/JliPKHsd5kJVPIU6X/Hy0YvWOYPcMxBw==
   dependencies:
+    core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.12.5", "@babel/runtime@^7.12.1":
+"@babel/runtime@7.12.5", "@babel/runtime@^7.12.1", "@babel/runtime@^7.9.1":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.0", "@babel/runtime@^7.11.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.1.tgz#b4116a6b6711d010b2dad3b7b6e43bf1b9954740"
+  integrity sha512-J5AIf3vPj3UwXaAzb5j1xM4WAQDX3EMgemF8rjCP3SoW09LfRKAXQKt6CoVYl230P6iWdRcBbnLDDdnqWxZSCA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1353,333 +1353,312 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@commercetools-uikit/accessible-button@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/accessible-button/-/accessible-button-10.39.6.tgz#fe6d94c0c0bb368f27605a964cc3bb9b4c0179b9"
-  integrity sha512-FUdTDuzR72dcSFiLgwgoV7BGqmo4NTqM6dc8gWBHLqZhD0uHN53b/clzIfFIWPgA9fxLHhxn+N+HTmSKorx6uQ==
+"@commercetools-uikit/accessible-button@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/accessible-button/-/accessible-button-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#d51590ce0b372a223436a1ec446aaf8fd235516f"
+  integrity sha512-K0M6I6EWBHUYtODWLGfmee8FQkSaHzLcmCxiAfhN2SlzAYM+h6aMo+L5ssX5Hqt9g9eu1Oaooyak4NVg8JnEdw==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
     common-tags "1.8.0"
-    lodash "4.17.20"
-    lodash-es "4.17.15"
+    lodash "4.17.15"
     prop-types "15.7.2"
 
-"@commercetools-uikit/calendar-utils@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/calendar-utils/-/calendar-utils-10.39.6.tgz#9fa2597f92fdb427879bd6c34927c5bb26b4324c"
-  integrity sha512-LfqzoLQNura5LY+D1sA5aashkqZZoqbbDSv9RPqV1xnA7Db+mHA+t/l3O9ij74aQsLGYtnGNvkutyzKyOBsasw==
+"@commercetools-uikit/calendar-utils@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/calendar-utils/-/calendar-utils-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#483b9445ab11db24c4c0d9238b20cb763b16b5f5"
+  integrity sha512-hmPuewOGeSIKHAKFgHQb1HlLlP+7/ASg2CL9eP0DdxgfiV0tok618VnrkoZqUEwUD3zSVwVdnjiemJYovpYQyQ==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/accessible-button" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
 
-"@commercetools-uikit/card@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/card/-/card-10.39.6.tgz#aeef13b1ae2830aecdb1ea75e60766724cf5379a"
-  integrity sha512-4pvRX3jhQuk5xQOE9k7itmFpua9EXAkO2GOc0qHEvuvjDzebSBi8uwFspCF4pI7fvJgfrW9qntn4eohM4MgtFQ==
+"@commercetools-uikit/card@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/card/-/card-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#fe0887eb497e57f08473045e5add5f6c4dc8133c"
+  integrity sha512-aLRWkiNA5YCLXHUcavDb7oT9KstcF8NvJEYnoknplMc3Y7oTgpoXrB+WRMKdvKvrBqiwJj9NI4NGhMZ3K1S2Sw==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
     prop-types "15.7.2"
 
-"@commercetools-uikit/checkbox-input@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/checkbox-input/-/checkbox-input-10.39.6.tgz#b1c066a1490956ec40c31438ed4e7ee475cfa73f"
-  integrity sha512-kOwKxvf0hI065YhhD7wJDV2y8bA45j7eDfJ3pTbYfMS/2KRkre7LJJfVas3OaV6wUXUoOokU7IkTNY2R2BBnyA==
+"@commercetools-uikit/checkbox-input@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/checkbox-input/-/checkbox-input-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#247c190975318e743fe3364d151aa0ce0f2ce87f"
+  integrity sha512-lQ7WEbb8hdUavtS7lKaUAEdG9+C5K0cAL6YYsUzte4B7BUifo3ydlXg6+hBsdt91v9gwlzi1DW/+aJ3Mw5Vfwg==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/icons" "10.39.6"
-    "@commercetools-uikit/select-utils" "10.39.6"
-    "@commercetools-uikit/text" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/icons" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/select-utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/text" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
     prop-types "15.7.2"
     tiny-invariant "1.1.0"
 
-"@commercetools-uikit/constraints@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/constraints/-/constraints-10.39.6.tgz#71b828068faa57f80e14ad45317338a22656e159"
-  integrity sha512-M0jHUhIa76l1tfXMvXAx9zyS6Nn0VtNrvL+JxzNGE6p5CK7gi5IOykr4uiXSO7vw9K5pm1YB5I1p8Bw+1iidcg==
+"@commercetools-uikit/constraints@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/constraints/-/constraints-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#15310ce7a4149899c3adc84de13a3e14715dcffc"
+  integrity sha512-aqHR5WwuUpW8VSgaaauZUGfLIf4HT71vZI60feB8fTug1jPKO/FUMNcOG66j69ad3LYib3mMlIsW3Fo0FOmCRA==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
     prop-types "15.7.2"
 
-"@commercetools-uikit/date-input@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/date-input/-/date-input-10.39.6.tgz#a479a8554158868d3e544ce0772f2cf3fa130834"
-  integrity sha512-JTxYzHX2DVpyRKZFhqbsnHJW3HumHUxI8AOB01AlDLyFbi+w45CtmMLGH7I3t1DEzmXoTh62nQcKA9jDD1VN9Q==
+"@commercetools-uikit/date-input@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/date-input/-/date-input-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#a681399327772f68f627b34a25ab36dd7c21d813"
+  integrity sha512-avYChigehaE7RLGlhYULlkLgGl1qYGYcxHfCk7gkMQp5ynACqJ7PQrytrqY01/CpNnClvNc/PNqZYarFoA1I7g==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/accessible-button" "10.39.6"
-    "@commercetools-uikit/calendar-utils" "10.39.6"
-    "@commercetools-uikit/constraints" "10.39.6"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/hooks" "10.39.6"
-    "@commercetools-uikit/icons" "10.39.6"
-    "@commercetools-uikit/secondary-icon-button" "10.39.6"
-    "@commercetools-uikit/select-utils" "10.39.6"
-    "@commercetools-uikit/spacings-inline" "10.39.6"
-    "@commercetools-uikit/text" "10.39.6"
-    "@commercetools-uikit/tooltip" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
+    "@commercetools-uikit/calendar-utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/constraints" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/hooks" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/icons" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/secondary-icon-button" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/select-utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/spacings-inline" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/text" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/tooltip" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
     common-tags "1.8.0"
-    downshift "6.0.6"
+    downshift "5.2.7"
     prop-types "15.7.2"
     react-is "16.13.1"
     react-required-if "1.0.3"
     tiny-invariant "1.1.0"
     warning "4.0.3"
 
-"@commercetools-uikit/design-system@10.39.6", "@commercetools-uikit/design-system@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/design-system/-/design-system-10.39.6.tgz#0a5305a9bb12bd249e3d67e16d0d4c4a8d2c0549"
-  integrity sha512-hMJFKLD+H4YyFOVe3rmz1gJjzq+uNA1PXrAh0AW3eLsZKiQwT1PJZVzna/N+GVzRwAGGncHww2COyCw9PZX1Iw==
+"@commercetools-uikit/design-system@0.0.0-canary-20201011131630":
+  version "0.0.0-canary-20201011131630"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/design-system/-/design-system-0.0.0-canary-20201011131630.tgz#086190e02218648f74008b7254f622e39dc478a2"
+  integrity sha512-Aav8wwf1hDDd0mwaIHPlhZPORCNy9/SW51FPexmBGZF04xUSTThO+HqMsfZ8RyyP5pPLrY7JKhVMzNToJD2RlQ==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
+    "@babel/runtime" "7.12.5"
+    "@babel/runtime-corejs3" "7.12.5"
 
-"@commercetools-uikit/hooks@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/hooks/-/hooks-10.39.6.tgz#2d47b0f65804a03c588d26ab53006b9f7b12c3a5"
-  integrity sha512-bCoB1Bqei0JDxWh9/u+XzAkrJ4lfPqTpIoEQmHUZNUeAiOrI59X38mB843Cehu/oIJMT0xakP2IQ1SsdAcDnNA==
-  dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/utils" "10.39.6"
+"@commercetools-uikit/design-system@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6", "@commercetools-uikit/design-system@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/design-system/-/design-system-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#4fe325dac21438bd325143fb4a5821479bc7391a"
+  integrity sha512-0fpDNugzRndePsFrgCTS9SpvVie+nLvRInfRFvKpnJGvjaM9WgYOu3JsRMrZsgyvB417wG3M2LW52Ib1xxR4nw==
 
-"@commercetools-uikit/icon-button@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/icon-button/-/icon-button-10.39.6.tgz#5eb91969140c740cd35cb38c5f6d0e94b7929a95"
-  integrity sha512-dNMSmoMaQxWj7vOSRa9U+wHNcWc3OiVR2pfm856YYtTnnxWf+cOGTvbtsgrzqFoB6ye/eUJH33Fd0CDTV2ryFg==
+"@commercetools-uikit/hooks@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/hooks/-/hooks-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#7c4cbf2bc60e00ae94a8a973db6996efbac88aba"
+  integrity sha512-9EnDlfPGFnonXUyHKwdMNToCdldC1tDN6Ji4niLQPin5oGsu1hj++vmEuLVdvfWNwfYdzXWv4oCuoXIr9bTNUw==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/accessible-button" "10.39.6"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/spacings" "10.39.6"
-    "@commercetools-uikit/text" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+
+"@commercetools-uikit/icon-button@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/icon-button/-/icon-button-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#301b2b3f530ab195559ea42961c72b0f47612a20"
+  integrity sha512-wxS2OZenWs1Y8UGBphv+7n9NjyXVzRPgRvcXC2lzUeMmOlcHwwqE7g1DDSp/uqbIY2HCGZpfa2IlSow7L2YibQ==
+  dependencies:
+    "@commercetools-uikit/accessible-button" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/spacings" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/text" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
     common-tags "1.8.0"
-    lodash "4.17.20"
-    lodash-es "4.17.15"
+    lodash "4.17.15"
     prop-types "15.7.2"
     react-required-if "1.0.3"
     tiny-invariant "1.1.0"
 
-"@commercetools-uikit/icons@10.39.6", "@commercetools-uikit/icons@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/icons/-/icons-10.39.6.tgz#54d46dc39d475ac454a901440d09a80c25f92a73"
-  integrity sha512-FHJbVVgKszmzQd93s4kl+ATO6XKuzKr5Qo56htWFbavmQmNZOgL7ECP8TKXnuyI4GM6HpRIPOpliBDV/cYhD5Q==
+"@commercetools-uikit/icons@0.0.0-canary-20201011131630":
+  version "0.0.0-canary-20201011131630"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/icons/-/icons-0.0.0-canary-20201011131630.tgz#c967fbab7a88c371b59bf0c70cf260821f05db30"
+  integrity sha512-Es5gdFRn68+P0d2AWsR7Le4iq764Kv44tjb3Cr7hDiZAy/gy4t6+ONvsxEimhJG0rJYQ/tYHU+kMu5IXxPrhwg==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
+    "@babel/runtime" "7.12.5"
+    "@babel/runtime-corejs3" "7.12.5"
+    "@commercetools-uikit/design-system" "0.0.0-canary-20201011131630"
     "@emotion/core" "^10.0.34"
     "@emotion/styled" "^10.0.27"
     "@emotion/styled-base" "^10.0.31"
+    emotion-theming "^10.0.27"
     prop-types "15.7.2"
     tiny-invariant "1.1.0"
 
-"@commercetools-uikit/loading-spinner@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/loading-spinner/-/loading-spinner-10.39.6.tgz#b96d77e539023ee26faccdf65de09027b439ad0d"
-  integrity sha512-/mrTT1B2eOVA84uACLckz90DcExvEOpBev/2jW7IyHAUsfhDzuHUcxEcKjloFUNLuKV018du39zurBZJqycw8A==
+"@commercetools-uikit/icons@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6", "@commercetools-uikit/icons@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/icons/-/icons-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#fba8b8433b99344f1f92a2442a940e466facc2c3"
+  integrity sha512-XTTbfdHCVgRVt4S+iGtogXUei1r6OzJRDu2RP9auGj1gSx7SMmSO7l+zUQkT2xJ9qkQxTK4Q5OoJeiXFdN8fXg==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/spacings-inline" "10.39.6"
-    "@commercetools-uikit/text" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
+    prop-types "15.7.2"
+    tiny-invariant "1.1.0"
+
+"@commercetools-uikit/loading-spinner@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/loading-spinner/-/loading-spinner-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#ca5fc310e5c39ba057f083146e2d1c28b1c92b41"
+  integrity sha512-PJ0B8mgDr3u9sg3eeUSF+mKlTUsXXTEcwlKVsTufkTutLCs5PRZAfRmYX2bOcM0b0X+bWAiwTNmcXouURq2mBQ==
+  dependencies:
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/spacings-inline" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/text" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
     prop-types "15.7.2"
 
-"@commercetools-uikit/secondary-icon-button@10.39.6", "@commercetools-uikit/secondary-icon-button@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/secondary-icon-button/-/secondary-icon-button-10.39.6.tgz#afaec446dd7bfa0495fc3dadd1e3a372c7e04d87"
-  integrity sha512-EzBSz8xs9gPlwolOa/ouzGz9+I72bQMJztsROvrEWiFQOLuXJFoIoJqpZjKx6CAU3hXkbYHMnFEhjSLVGIglLQ==
+"@commercetools-uikit/secondary-icon-button@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6", "@commercetools-uikit/secondary-icon-button@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/secondary-icon-button/-/secondary-icon-button-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#1243eaa74287befa48ca674aa9a9d8d2bdec2b9e"
+  integrity sha512-0zgkA5dVdMie1Y28TbNPhp5gXRdH9nfv5hnZH8y3mpHdHQY6DUphdol5XX62AARO7nD8zFx4DeNEz2uyqUu8Pw==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/accessible-button" "10.39.6"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/spacings" "10.39.6"
-    "@commercetools-uikit/text" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
+    "@commercetools-uikit/accessible-button" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/spacings" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/text" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
     common-tags "1.8.0"
-    lodash "4.17.20"
-    lodash-es "4.17.15"
+    lodash "4.17.15"
     prop-types "15.7.2"
     react-required-if "1.0.3"
 
-"@commercetools-uikit/select-utils@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/select-utils/-/select-utils-10.39.6.tgz#1058963fc2f2afb6841fae1e46af1b6ec291765b"
-  integrity sha512-MXhjHeSk5wyhA2TpHwq514WbHzrh3mY3heYCbAeNwBRcs4fr9IHNiPf/e7LE2f6mbpxs0DHlfILLLmbSCaL21g==
+"@commercetools-uikit/select-utils@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/select-utils/-/select-utils-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#9287057919d4a6633703800fd48700184462acbb"
+  integrity sha512-o54utzyiLuI3XfhcVOymMiGzjp0N0mien1AjyqrzTigTszCCUP9b3KTpCgTdZnyW4un0hgpMPxnrZwG1Cjdctw==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/accessible-button" "10.39.6"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/icons" "10.39.6"
-    "@commercetools-uikit/spacings" "10.39.6"
-    "@commercetools-uikit/text" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
-    lodash "4.17.20"
-    lodash-es "4.17.15"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/icons" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
+    lodash "4.17.15"
     prop-types "15.7.2"
     react-select "3.1.0"
 
-"@commercetools-uikit/spacings-inline@10.39.6", "@commercetools-uikit/spacings-inline@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-inline/-/spacings-inline-10.39.6.tgz#58a82c5f2ca173592f054a13da73d641c6ca996b"
-  integrity sha512-8FWH/QtcYu9xjxVMiIzub5K+WqCWK3duSPaz8b0ZZXg2OWrjeIFAoIWRoKjnU+McHi4OM6qEu3eGyf0TqKocBw==
+"@commercetools-uikit/spacings-inline@0.0.0-canary-20201011131630":
+  version "0.0.0-canary-20201011131630"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-inline/-/spacings-inline-0.0.0-canary-20201011131630.tgz#5c9fd0106e76646b524cd027b88b305aa8c93cb2"
+  integrity sha512-to3WIbRED8LJuUFTcez9j7l5TCbk3XN9yVogl0tGqfGa07bKwmZGcrLaeLZV1y9qpVGXPyEpIQy8yRfLCZEM+A==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
+    "@babel/runtime" "7.12.5"
+    "@babel/runtime-corejs3" "7.12.5"
+    "@commercetools-uikit/design-system" "0.0.0-canary-20201011131630"
+    "@commercetools-uikit/utils" "0.0.0-canary-20201011131630"
     "@emotion/core" "^10.0.34"
     prop-types "15.7.2"
 
-"@commercetools-uikit/spacings-inset-squish@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-inset-squish/-/spacings-inset-squish-10.39.6.tgz#587b102d8cc019d664449818c780bdfeea852260"
-  integrity sha512-cwb/i72gtcRH8QwJI4Jillb6LvzEmfZ2/Dqwr8KDnk+W7vao2+xnrQ2kNDLqC7Bs7FBvrrWL8pxLL929RGBuEA==
+"@commercetools-uikit/spacings-inline@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6", "@commercetools-uikit/spacings-inline@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-inline/-/spacings-inline-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#03f6020b62e83c668e1836dd44b47221964bd81a"
+  integrity sha512-K/fByOWVXuOZKo/ExTv8JgDxTU2KluCNmkyM9tc8AzyCdTL1LOcOR46EPJmZ3JM5T1mS0w1tc0A+EmHA/BPMhQ==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
     prop-types "15.7.2"
 
-"@commercetools-uikit/spacings-inset@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-inset/-/spacings-inset-10.39.6.tgz#b967271e3675f473e0ac921e51d7f56e253f3f05"
-  integrity sha512-bTVE0jNkZ2lB0AVS+f9OXHR5mhivldhnQ4npqyD9kBBRMbWKGxUXDYKfWZF8sdQmLlDV/CJKwREDINIIaUeFtw==
+"@commercetools-uikit/spacings-inset-squish@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-inset-squish/-/spacings-inset-squish-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#040ce879f0d1738133ec84170b56959dfcd7b888"
+  integrity sha512-2MaYWyF+hpq3MNTIAdHvKHAY/AubBQHbrxdYDrKzYtyTllEUNBh2GLadHWFscPJHJBGpYRv2ve+DYPoRIKwkrw==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
     prop-types "15.7.2"
 
-"@commercetools-uikit/spacings-stack@10.39.6", "@commercetools-uikit/spacings-stack@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-stack/-/spacings-stack-10.39.6.tgz#67915a971fdb71b1be08ba67464fe43841b8a597"
-  integrity sha512-pij0dIXpMLVIIfUKILYv72jZxXJQC+6rBL6GEC674STOYQ9VM4H7dRGMWg1QEgpJLBJsxuCMR4OjFjkZ+Y6M3w==
+"@commercetools-uikit/spacings-inset@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-inset/-/spacings-inset-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#1a3cf794b557feb4fa08e4d6ac1211fe143e43d1"
+  integrity sha512-9JLKATTLwzq+qTxB305fgM+TRWXh5hoB0aKYWjDlpbXQrfsRfH2c5u4YA65J/JkFg6Mn85E3QXJvF0WMyX1ITg==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
     prop-types "15.7.2"
 
-"@commercetools-uikit/spacings@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings/-/spacings-10.39.6.tgz#8a40b377848e724b64d76233dbb4eb870cbc3bb4"
-  integrity sha512-wmtydoMXlt0wlhZTZqqUrIKeL7CQzvtX4pmRuk+53BONGMTq+CEjtMeIR3ZNRNyti1sCuB/5BnI/ImgGYaZj5Q==
+"@commercetools-uikit/spacings-stack@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6", "@commercetools-uikit/spacings-stack@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings-stack/-/spacings-stack-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#ef19a50f1ee759b209f8bc4488d00895dd7e748b"
+  integrity sha512-DNZMCAUGsfgwE3bLqpPuI9kI/ouBC2e+vt3/CzTh1Z89r+OvVHH8RGhZj5bbCni62zHub5cTffhYEXcBzj2Sgg==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/spacings-inline" "10.39.6"
-    "@commercetools-uikit/spacings-inset" "10.39.6"
-    "@commercetools-uikit/spacings-inset-squish" "10.39.6"
-    "@commercetools-uikit/spacings-stack" "10.39.6"
-
-"@commercetools-uikit/stamp@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/stamp/-/stamp-10.39.6.tgz#91e2e063464f36223c81152acfb3e5887f0440cd"
-  integrity sha512-1Nza0EUKZG1BzHFOR84oFqguCtEwi8WXRaAG0Vt3tDdKGD/cgKI58RKUgJRnkOfxZEOqMcLybXPa1BznAhzbyQ==
-  dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@emotion/core" "^10.0.34"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
     prop-types "15.7.2"
 
-"@commercetools-uikit/text@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/text/-/text-10.39.6.tgz#3b049fb62b461e9c90533c872097d9080efa1c47"
-  integrity sha512-HOtFjnWNF/LKDEOPXGrlVxMo80UOa9K7bmvJYgNGC/69a8nv/gZ2wI4i58v+WCNCqIZjz+4UqPzvia/Gl11WIg==
+"@commercetools-uikit/spacings@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/spacings/-/spacings-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#5a4693d7b6f857a427a80b30604883e5872c6430"
+  integrity sha512-PSTXyqczPVoiKgIjx4p6TxJLUsrno4yChDf9U7htiOB//ozT15Xq0V9+0opjQJLzb9cGYhpvTEgdUQh0rJNkUg==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
+    "@commercetools-uikit/spacings-inline" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/spacings-inset" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/spacings-inset-squish" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/spacings-stack" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+
+"@commercetools-uikit/stamp@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/stamp/-/stamp-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#e9c739e1d2fd90f316d93c386a962b6c10f56ffa"
+  integrity sha512-RgE1m8jui2bsGDf+VO6+lzotC8RfBqONDc1WJw/Ghchne2+xBPFrgjNyWvjgi0ht8yzsn77zUSj0ZexwDPZS1g==
+  dependencies:
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/spacings-inset-squish" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    prop-types "15.7.2"
+
+"@commercetools-uikit/text@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/text/-/text-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#896905235e73b40ecc7cfdad655dabac3b3424e5"
+  integrity sha512-KBqGKxGpOLyu6sa3LfWrF8FUPL5cBERhzOwPwjNZmH4csIBA5io5kAoohU3kLNimv/MiS+o/7k1+KUYlA8H25A==
+  dependencies:
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
     common-tags "1.8.0"
-    lodash "4.17.20"
-    lodash-es "4.17.15"
+    lodash "4.17.15"
     prop-types "15.7.2"
     react-required-if "1.0.3"
     warning "4.0.3"
 
-"@commercetools-uikit/tooltip@10.39.6", "@commercetools-uikit/tooltip@^10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/tooltip/-/tooltip-10.39.6.tgz#aba208a11c6ce4a127f3cf15a06cf9ce806feb8a"
-  integrity sha512-ikD1NpNY5fq11g45BDRuH3+TLvazej6fvmBqAg2taye/m4nanEVL6IuIBIzE8+m6iTZzTFPhmku3b7/60Dsv4g==
+"@commercetools-uikit/tooltip@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6", "@commercetools-uikit/tooltip@^0.0.0-canary-20201011131630":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/tooltip/-/tooltip-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#dfc3cadff39e7c45c3bfc715975fd9a9f9875fcb"
+  integrity sha512-hwXUu6zEwlg4pde3D757oVdNXc8sItoamYkoAVXCZLsZNr/Mp+oypTZgOwgq8HWb2xhEhlq1HYakNJ3ubh2GQQ==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
-    "@commercetools-uikit/design-system" "10.39.6"
-    "@commercetools-uikit/hooks" "10.39.6"
-    "@commercetools-uikit/utils" "10.39.6"
-    "@emotion/core" "^10.0.34"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
-    lodash "4.17.20"
-    lodash-es "4.17.15"
+    "@commercetools-uikit/design-system" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/hooks" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@commercetools-uikit/utils" "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+    "@emotion/core" "10.0.28"
+    "@emotion/styled" "10.0.27"
+    lodash "4.17.15"
     prop-types "15.7.2"
     react-is "16.13.1"
-    tiny-invariant "1.1.0"
     use-popper "1.1.6"
 
-"@commercetools-uikit/utils@10.39.6":
-  version "10.39.6"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/utils/-/utils-10.39.6.tgz#a986e4137b7b4c5ea4d34095876921838eb19d27"
-  integrity sha512-eLbCKB00sUM00K/lU/Pk63EjLN42z7Zu2bMoVSAVPV2iAZ+zB6L/YRdXCXbwwP+fOTuDPZmOfOK0Mibdoli1uA==
+"@commercetools-uikit/utils@0.0.0-canary-20201011131630":
+  version "0.0.0-canary-20201011131630"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/utils/-/utils-0.0.0-canary-20201011131630.tgz#c84bf3876e4fbb659ad50cdd68aa3b9e30ada230"
+  integrity sha512-J9p+o3/HvvWRjeiBLZDSJDfQwENgKThveVFTxHjvaF1GnQp0NShOrAtVHNsUsr4ny0Ku18WAyKqV9VWOTmXtPw==
   dependencies:
-    "@babel/runtime" "7.12.1"
-    "@babel/runtime-corejs3" "7.12.1"
+    "@babel/runtime" "7.12.5"
+    "@babel/runtime-corejs3" "7.12.5"
+    "@emotion/is-prop-valid" "0.8.8"
+    warning "4.0.3"
+
+"@commercetools-uikit/utils@0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6":
+  version "0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/utils/-/utils-0.0.0-canary-f592e685bb1af2ae3cc09fae010abe25e130b5e6.tgz#633c0861aad45e261694d2f852661acb60996c5f"
+  integrity sha512-HHZQ4Nm1GOoTPKFl6CDk8sa19zRV+sPRmNqlxy8McPnmnq0rougmHFywV7x+0dCboZ2D2922QTvkmPST6AJckw==
+  dependencies:
     "@emotion/is-prop-valid" "0.8.8"
     warning "4.0.3"
 
@@ -1927,6 +1906,18 @@
     "@emotion/stylis" "0.8.5"
     "@emotion/utils" "0.11.3"
     "@emotion/weak-memoize" "0.2.5"
+
+"@emotion/core@10.0.28":
+  version "10.0.28"
+  resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.28.tgz#bb65af7262a234593a9e952c041d0f1c9b9bef3d"
+  integrity sha512-pH8UueKYO5jgg0Iq+AmCLxBsvuGtvlmiDCOuv8fGNYn3cowFpLN98L8zO56U0H1PjDIyAlXymgL3Wu7u7v6hbA==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    "@emotion/cache" "^10.0.27"
+    "@emotion/css" "^10.0.27"
+    "@emotion/serialize" "^0.11.15"
+    "@emotion/sheet" "0.9.4"
+    "@emotion/utils" "0.11.3"
 
 "@emotion/core@10.1.1":
   version "10.1.1"
@@ -7552,7 +7543,7 @@ compression@^1.7.4:
     safe-buffer "5.1.2"
     vary "~1.1.2"
 
-compute-scroll-into-view@^1.0.14:
+compute-scroll-into-view@^1.0.13:
   version "1.0.16"
   resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-1.0.16.tgz#5b7bf4f7127ea2c19b750353d7ce6776a90ee088"
   integrity sha512-a85LHKY81oQnikatZYA90pufpZ6sQx++BoCxOEMsjpZx+ZnaKGQnCyCehTRr/1p9GBIAHTjcU9k71kSYWloLiQ==
@@ -9108,13 +9099,13 @@ download@^7.1.0:
     p-event "^2.1.0"
     pify "^3.0.0"
 
-downshift@6.0.6:
-  version "6.0.6"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-6.0.6.tgz#82aee8e2e260d7ad99df8a0969bd002dd523abe8"
-  integrity sha512-tmLab3cXCn6PtZYl9V8r/nB2m+7/nCNrwo0B3kTHo/2lRBHr+1en1VNOQt2wIt0ajanAnxquZ00WPCyxe6cNFQ==
+downshift@5.2.7:
+  version "5.2.7"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-5.2.7.tgz#5e1e1619e317d3d630d430d07fb654564a720be7"
+  integrity sha512-/FjQt1rC2fswSdZsja3ORgCaQtrGX5fuHxWLheLScmPVI2nmD5NXohAChAS6/uF799shsRkDnMoNLqflcqfZuw==
   dependencies:
-    "@babel/runtime" "^7.11.2"
-    compute-scroll-into-view "^1.0.14"
+    "@babel/runtime" "^7.9.1"
+    compute-scroll-into-view "^1.0.13"
     prop-types "^15.7.2"
     react-is "^16.13.1"
 
@@ -15210,11 +15201,6 @@ lockfile@^1.0.4:
   dependencies:
     signal-exit "^3.0.2"
 
-lodash-es@4.17.15:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
-  integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
-
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
@@ -15390,7 +15376,12 @@ lodash.without@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.without/-/lodash.without-4.4.0.tgz#3cd4574a00b67bae373a94b748772640507b7aac"
   integrity sha1-PNRXSgC2e643OpS3SHcmQFB7eqw=
 
-lodash@4.17.20, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@^4.3.0:
+lodash@4.17.15:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
+lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@^4.3.0:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
