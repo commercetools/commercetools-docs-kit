@@ -8,6 +8,16 @@ import { RssFeeds } from '@commercetools-docs/ui-kit'
 
 <Info>The RSS feed is only generated in production builds so this test fails in development mode.</Info>
 
+## Table with one feed
+
+<RssFeeds dataSources={
+  [
+    {title: "Merchant Center", url: "https://docs.commercetools.com/merchant-center/releases/feed.xml"},
+  ]
+}/>
+
+## Table with multiple feeds
+
 <RssFeeds dataSources={
   [
     {title: "HTTP API", url: "https://docs.commercetools.com/api/releases/feed.xml"},

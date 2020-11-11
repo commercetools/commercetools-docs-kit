@@ -65,21 +65,25 @@ const RssFeedTable = (props) => {
                   </Link>
                 </DateWrapper>
               </td>
-              <td
-                css={css`
-                  white-space: nowrap;
-                  padding-left: ${dimensions.spacings.l} !important;
-                `}
-              >
-                <Link
-                  href={item.releaseNoteUrl}
+              {props.hasMultipleSources ? (
+                <td
                   css={css`
-                    text-decoration: none;
+                    white-space: nowrap;
+                    padding-left: ${dimensions.spacings.l} !important;
                   `}
                 >
-                  {item.feedName}
-                </Link>
-              </td>
+                  <Link
+                    href={item.releaseNoteUrl}
+                    css={css`
+                      text-decoration: none;
+                    `}
+                  >
+                    {item.feedName}
+                  </Link>
+                </td>
+              ) : (
+                <div />
+              )}
               <td>{item.title}</td>
             </tr>
           ))}
@@ -97,6 +101,7 @@ RssFeedTable.propTypes = {
       releaseNoteUrl: PropTypes.string.isRequired,
     })
   ).isRequired,
+  hasMultipleSources: PropTypes.bool.isRequired,
 };
 
 export default RssFeedTable;

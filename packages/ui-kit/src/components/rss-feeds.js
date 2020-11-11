@@ -76,7 +76,12 @@ const RssFeeds = (props) => {
   }
 
   if (data) {
-    return <RssFeedTable data={transformData(data)} />;
+    return (
+      <RssFeedTable
+        hasMultipleSources={props.dataSources.length !== 1}
+        data={transformData(data)}
+      />
+    );
   }
   return <LoadingSpinner size="s">{'Loading feeds'}</LoadingSpinner>;
 };
