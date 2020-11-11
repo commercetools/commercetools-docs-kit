@@ -1,5 +1,15 @@
 # @commercetools-docs/gatsby-theme-constants
 
+## 10.0.2
+
+### Patch Changes
+
+- [`24caa5f`](https://github.com/commercetools/commercetools-docs-kit/commit/24caa5ff2121cfe3a980ef5af74675155965ff2e) [#739](https://github.com/commercetools/commercetools-docs-kit/pull/739) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- Updated dependencies [[`24caa5f`](https://github.com/commercetools/commercetools-docs-kit/commit/24caa5ff2121cfe3a980ef5af74675155965ff2e), [`d292d22`](https://github.com/commercetools/commercetools-docs-kit/commit/d292d22275fd6cf9b316073cfcddb98b7ae055d8)]:
+  - @commercetools-docs/gatsby-theme-docs@10.0.2
+  - @commercetools-docs/ui-kit@10.0.2
+
 ## 10.0.1
 
 ### Patch Changes
