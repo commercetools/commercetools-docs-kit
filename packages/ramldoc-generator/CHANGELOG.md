@@ -1,5 +1,11 @@
 # @commercetools-docs/ramldoc-generator
 
+## 10.0.2
+
+### Patch Changes
+
+- [`24caa5f`](https://github.com/commercetools/commercetools-docs-kit/commit/24caa5ff2121cfe3a980ef5af74675155965ff2e) [#739](https://github.com/commercetools/commercetools-docs-kit/pull/739) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
 ## 9.0.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 10.0.2
+
+### Patch Changes
+
+- [`24caa5f`](https://github.com/commercetools/commercetools-docs-kit/commit/24caa5ff2121cfe3a980ef5af74675155965ff2e) [#739](https://github.com/commercetools/commercetools-docs-kit/pull/739) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+* [`d292d22`](https://github.com/commercetools/commercetools-docs-kit/commit/d292d22275fd6cf9b316073cfcddb98b7ae055d8) [#748](https://github.com/commercetools/commercetools-docs-kit/pull/748) Thanks [@emmenko](https://github.com/emmenko)! - Use babel transform runtime with corejs v3
+
 ## 10.0.1
 
 ### Patch Changes

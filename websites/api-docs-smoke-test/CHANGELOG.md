@@ -1,5 +1,15 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 3.0.25
+
+### Patch Changes
+
+- [`24caa5f`](https://github.com/commercetools/commercetools-docs-kit/commit/24caa5ff2121cfe3a980ef5af74675155965ff2e) [#739](https://github.com/commercetools/commercetools-docs-kit/pull/739) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+- Updated dependencies [[`24caa5f`](https://github.com/commercetools/commercetools-docs-kit/commit/24caa5ff2121cfe3a980ef5af74675155965ff2e)]:
+  - @commercetools-docs/gatsby-theme-api-docs@10.0.2
+  - @commercetools-docs/gatsby-theme-docs@10.0.2
+
 ## 3.0.24
 
 ### Patch Changes
