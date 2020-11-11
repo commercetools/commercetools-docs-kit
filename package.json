@@ -30,6 +30,7 @@
     "check-links": "npx linkinator ./public",
     "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "changeset": "changeset",
+    "changeset:version-and-format": "changeset version && prettier --write --parser json '**/package.json'",
     "versions:uikit": "bulk-update-versions --match '@commercetools-uikit/(.*)'"
   },
   "devDependencies": {
