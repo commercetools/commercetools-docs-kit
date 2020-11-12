@@ -81,9 +81,7 @@ const RssFeedTable = (props) => {
                     {item.feedName}
                   </Link>
                 </td>
-              ) : (
-                <div />
-              )}
+              ) : null}
               <td>{item.title}</td>
             </tr>
           ))}

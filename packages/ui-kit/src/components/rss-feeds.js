@@ -8,7 +8,7 @@ import RssFeedTable from './rss-feed-table';
 
 async function fetcher(...args) {
   const rssParser = new Parser();
-  const promises = args.map(async (feed) => {
+  const promises = JSON.parse(args).map(async (feed) => {
     const feedData = await rssParser.parseURL(feed.url);
     const refactoredData = feedData.items.map((item) => {
       const releaseNoteUrl = feed.url.replace(/\/feed.xml/, '');
@@ -78,7 +78,7 @@ const RssFeeds = (props) => {
   if (data) {
     return (
       <RssFeedTable
-        hasMultipleSources={props.dataSources.length !== 1}
+        hasMultipleSources={JSON.parse(props.dataSources).length !== 1}
         data={transformData(data)}
       />
     );
@@ -87,12 +87,7 @@ const RssFeeds = (props) => {
 };
 
 RssFeeds.propTypes = {
-  dataSources: PropTypes.arrayOf(
-    PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  dataSources: PropTypes.string.isRequired,
 };
 
 export default RssFeeds;
