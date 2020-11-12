@@ -10,19 +10,15 @@ import { RssFeeds } from '@commercetools-docs/ui-kit'
 
 ## Table with one feed
 
-<RssFeeds dataSources={
-  `[
-    {"title": "Merchant Center", "url": "https://docs.commercetools.com/merchant-center/releases/feed.xml"}
-  ]`
-}/>
+<RssFeeds dataSources={[
+    "https://docs.commercetools.com/merchant-center/releases/feed.xml"
+]}/>
 
 ## Table with multiple feeds
 
-<RssFeeds dataSources={
-  `[
-    {"title": "HTTP API", "url": "https://docs.commercetools.com/api/releases/feed.xml"},
-    {"title": "Merchant Center", "url": "https://docs.commercetools.com/merchant-center/releases/feed.xml"},
-    {"title": "Custom Applications", "url": "https://docs.commercetools.com/custom-applications/releases/feed.xml"},
-    {"title": "Import API", "url": "https://docs.commercetools.com/import-api/releases/feed.xml"}
-  ]`
-}/>
+<RssFeeds dataSources={[
+    "https://docs.commercetools.com/api/releases/feed.xml",
+    "https://docs.commercetools.com/merchant-center/releases/feed.xml",
+    "https://docs.commercetools.com/custom-applications/releases/feed.xml",
+    "https://docs.commercetools.com/import-api/releases/feed.xml"
+]}/>

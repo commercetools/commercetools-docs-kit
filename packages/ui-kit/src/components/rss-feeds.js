@@ -8,11 +8,12 @@ import RssFeedTable from './rss-feed-table';
 
 async function fetcher(...args) {
   const rssParser = new Parser();
-  const promises = JSON.parse(args).map(async (feed) => {
-    const feedData = await rssParser.parseURL(feed.url);
+  const promises = args.map(async (url) => {
+    const feedData = await rssParser.parseURL(url);
+    const feedName = feedData.title.split(' ').slice(1, 3).join(' ');
     const refactoredData = feedData.items.map((item) => {
-      const releaseNoteUrl = feed.url.replace(/\/feed.xml/, '');
-      return { ...item, feedName: feed.title, releaseNoteUrl };
+      const releaseNoteUrl = url.replace(/\/feed.xml/, '');
+      return { ...item, feedName, releaseNoteUrl };
     });
     return refactoredData;
   });
@@ -78,7 +79,7 @@ const RssFeeds = (props) => {
   if (data) {
     return (
       <RssFeedTable
-        hasMultipleSources={JSON.parse(props.dataSources).length !== 1}
+        hasMultipleSources={props.dataSources.length !== 1}
         data={transformData(data)}
       />
     );
@@ -87,7 +88,7 @@ const RssFeeds = (props) => {
 };
 
 RssFeeds.propTypes = {
-  dataSources: PropTypes.string.isRequired,
+  dataSources: PropTypes.array.isRequired,
 };
 
 export default RssFeeds;
