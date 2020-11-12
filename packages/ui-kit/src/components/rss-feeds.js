@@ -15,7 +15,7 @@ async function fetcher(...args) {
       '$1'
     );
     const refactoredData = feedData.items.map((item) => {
-      const releaseNoteUrl = url.replace(/\/feed.xml/, '');
+      const releaseNoteUrl = url.replace(/\/feed.xml$/, '');
       return { ...item, feedName, releaseNoteUrl };
     });
     return refactoredData;
@@ -82,7 +82,7 @@ const RssFeeds = (props) => {
   if (data) {
     return (
       <RssFeedTable
-        hasMultipleSources={props.dataSources.length !== 1}
+        hasMultipleSources={props.dataSources.length > 1}
         data={transformData(data)}
       />
     );
@@ -91,7 +91,7 @@ const RssFeeds = (props) => {
 };
 
 RssFeeds.propTypes = {
-  dataSources: PropTypes.array.isRequired,
+  dataSources: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 export default RssFeeds;
