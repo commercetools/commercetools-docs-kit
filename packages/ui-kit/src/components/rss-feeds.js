@@ -10,7 +10,10 @@ async function fetcher(...args) {
   const rssParser = new Parser();
   const promises = args.map(async (url) => {
     const feedData = await rssParser.parseURL(url);
-    const feedName = feedData.title.split(' ').slice(1, 3).join(' ');
+    const feedName = feedData.title.replace(
+      /^commercetools (.*) Release Notes$/,
+      '$1'
+    );
     const refactoredData = feedData.items.map((item) => {
       const releaseNoteUrl = url.replace(/\/feed.xml/, '');
       return { ...item, feedName, releaseNoteUrl };
