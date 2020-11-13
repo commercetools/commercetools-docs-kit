@@ -119,7 +119,7 @@ export const tokens = {
   -1px 1px 3px 0 rgba(0, 0, 0, 0.12)`,
   shadowForClickableCardOnHover: `0 14px 28px 0 rgba(0, 0, 0, 0.25),
   0 10px 10px 0 rgba(0, 0, 0, 0.23)`,
-  shadowForRssFeedTable: '0 1px 2px 0 rgba(0, 0, 0, 0.25)',
+  shadowForRssFeedTable: customProperties.shadow7,
 };
 
 export const dimensions = {
@@ -139,7 +139,6 @@ export const dimensions = {
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
-    rssFeedDateWidth: '180px',
     searchBar: '300px',
     searchBarSmall: '150px',
     selectDropDownArrowWith: '12px',
