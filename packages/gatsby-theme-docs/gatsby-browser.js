@@ -5,8 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import 'typeface-roboto';
-import 'typeface-roboto-mono';
+import 'fontsource-roboto/latin-400.css';
+import 'fontsource-roboto/latin-500.css';
+import 'fontsource-roboto/latin-700.css';
+import 'fontsource-roboto-mono/latin-400.css';
+import 'fontsource-roboto-mono/latin-500.css';
+import 'fontsource-roboto-mono/latin-700.css';
 import React from 'react';
 import Prism from 'prism-react-renderer/prism';
 import { CacheProvider } from '@emotion/core';
