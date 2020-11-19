@@ -136,6 +136,7 @@ export const dimensions = {
     pageContentWideWithMargins: `calc(${pageWidthSmall} + ${asideColumnWidth} + 32px * 3)`,
     pageContentWideWithMarginsMax: `calc(${pageWidth} + ${asideColumnWidth} + 32px * 3)`,
     pageContentWithMarginsAndPageNavigation: `calc(${pageWidth} + 32px * 2 + ${navbarWidth})`,
+    pageHeaderSideSmall: '175px',
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
@@ -143,6 +144,7 @@ export const dimensions = {
     searchBarSmall: '150px',
     selectDropDownArrowWith: '12px',
     sideBySideSecondColumn: '560px',
+    userResearchBannerMaxWidth: '188px',
   },
   viewports: {
     mobile: `max-width: calc(768px - 0.02px)`,

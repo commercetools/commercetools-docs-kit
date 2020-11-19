@@ -10,6 +10,7 @@ import { ArrowUpIcon } from '@commercetools-uikit/icons';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import { useInView } from 'react-intersection-observer';
 import { StackedLinesIndentedIconSvgIcon } from '../../icons';
+import PageHeaderSide from '../../overrides/page-header-side';
 import { Overlay, BetaFlag } from '../../components';
 import PageNavigation from './page-navigation';
 
@@ -173,7 +174,19 @@ const LayoutPageNavigation = (props) => {
               setMenuOpen(false);
             }}
           >
-            <SlidingContainer>{navigationContainer}</SlidingContainer>
+            <SlidingContainer>
+              <div
+                css={css`
+                  padding-left: ${designSystem.dimensions.spacings.m};
+                  margin: ${designSystem.dimensions.spacings.m}
+                    ${designSystem.dimensions.spacings.m}
+                    ${designSystem.dimensions.spacings.xl} 0;
+                `}
+              >
+                <PageHeaderSide />
+              </div>
+              {navigationContainer}
+            </SlidingContainer>
           </Overlay>,
           modalPortalNode
         )
