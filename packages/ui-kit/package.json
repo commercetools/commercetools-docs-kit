@@ -44,8 +44,8 @@
     "@commercetools-uikit/design-system": "10.x",
     "@commercetools-uikit/icons": "10.x",
     "@commercetools-uikit/spacings-inline": "10.x",
-    "@emotion/core": "10.x",
-    "@emotion/styled": "10.x",
+    "@emotion/core": "10.x || 11.x",
+    "@emotion/styled": "10.x || 11.x",
     "react": "16.x || 17.x",
     "react-dom": "16.x || 17.x"
   }
