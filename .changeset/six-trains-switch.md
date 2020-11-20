@@ -1,5 +1,5 @@
 ---
-'@commercetools-docs/gatsby-theme-docs': patch
+'@commercetools-docs/gatsby-theme-docs': minor
 '@commercetools-docs/ui-kit': patch
 ---
 

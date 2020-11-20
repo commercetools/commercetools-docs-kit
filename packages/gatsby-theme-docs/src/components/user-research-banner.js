@@ -11,7 +11,7 @@ const Banner = styled.div`
     border-top: 1px solid ${designSystem.colors.light.borderHighlight};
   }
   img {
-    margin: 0 0 -5px -5px;
+    margin: 4px 0 0 -4px;
   }
   p {
     font-size: ${designSystem.typography.fontSizes.small};
@@ -25,7 +25,7 @@ const UserResearchBanner = () => {
         <img width="22px" height="22px" src={ctLogo}></img>
         <p>We want your feedback</p>
         <Link
-          href={'https://ok.commercetools.com/free-trial'}
+          href={'https://ok.commercetools.com/user-research-program'}
           noUnderline
           css={css`
             font-size: ${designSystem.typography.fontSizes.extraSmall};

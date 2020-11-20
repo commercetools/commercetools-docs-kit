@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import UserResearchBanner from './user-research-banner';
+import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 import GlobalNavigationLink from './global-navigation-link';
 import BetaFlag from './beta-flag';
 
@@ -209,7 +209,7 @@ const TopMenu = (props) => {
                       {node.label}
                     </GlobalNavigationLink>
                   ))}
-                  <UserResearchBanner />
+                  <TopMenuBannerArea />
                 </SpacingsStack>
               </SideColumn>
             </Columns>
