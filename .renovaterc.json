@@ -1,9 +1,9 @@
 {
   "extends": [
     "config:base",
-    ":pinOnlyDevDependencies",
-    "schedule:weekly"
+    ":pinOnlyDevDependencies"
   ],
+  "schedule": ["on the 1st and 3rd day instance on Wednesday after 3am"],
   "separateMajorMinor": true,
   "packageRules": [
     {
