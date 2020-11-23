@@ -144,7 +144,6 @@ export const dimensions = {
     searchBarSmall: '150px',
     selectDropDownArrowWith: '12px',
     sideBySideSecondColumn: '560px',
-    userResearchBannerMaxWidth: '188px',
   },
   viewports: {
     mobile: `max-width: calc(768px - 0.02px)`,

@@ -7,7 +7,6 @@ import Link from './link';
 
 const Banner = styled.div`
   div {
-    max-width: ${designSystem.dimensions.widths.userResearchBannerMaxWidth};
     border-top: 1px solid ${designSystem.colors.light.borderHighlight};
   }
   img {
