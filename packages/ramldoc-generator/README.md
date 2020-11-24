@@ -1,5 +1,7 @@
 # commercetools Docs Kit "RAMLdoc" Generator
 
+> **DEPRECATED** in favor of the new **@commercetools-docs/rmf-codegen** package which provides the complete functionality of rmf-codegen without a restrictive wrapper CLI.
+
 This package provides an executable to transform any spec-compliant RAML API definition into the (also RAML-compliant) RAML document structure and layout required by the [@commercetools-docs/gatsby-transformer-raml](../gatsby-transformer-raml) plugin.
 
 The conversion step is applying a number normalizations and resolutions so that the RAML spec exposed to the site generator can be published exactly as-is without further semantic understanding of the API definition.
