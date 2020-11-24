@@ -14,7 +14,7 @@
     "directory": "packages/gatsby-theme-docs"
   },
   "scripts": {
-    "generate-icons": "svgr -d src/icons src/icons/svg"
+    "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },
   "dependencies": {
     "@commercetools-docs/ui-kit": "11.0.1",
