@@ -1,2 +1,2 @@
-export { default as LogoSvgIcon } from './Logo'
-export { default as RibbonSvgIcon } from './Ribbon'
+export { default as LogoSvgIcon } from './Logo';
+export { default as RibbonSvgIcon } from './Ribbon';
