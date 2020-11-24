@@ -9,8 +9,6 @@ function SvgLogoHorizontal(props) {
       y={0}
       viewBox="0 0 420.94 143.66"
       xmlSpace="preserve"
-      width="1em"
-      height="1em"
       {...props}
     >
       <style>{'.logo-horizontal_svg__st0{fill:#213c45}'}</style>
