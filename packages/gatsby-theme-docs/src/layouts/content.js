@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { BetaFlag, ContentPagination } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
+import PlaceholderPageHeaderSideBannerArea from '../overrides/page-header-banner-area';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -54,7 +56,10 @@ const LayoutContent = (props) => {
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
-              <PlaceholderPageHeaderSide />
+              <SpacingsStack size="m">
+                <PlaceholderPageHeaderSide />
+                <PlaceholderPageHeaderSideBannerArea />
+              </SpacingsStack>
             </LayoutPageHeaderSide>
             <LayoutPageContent>
               <PageContentInset id="body-content">
