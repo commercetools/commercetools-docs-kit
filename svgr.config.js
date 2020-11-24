@@ -1,4 +1,15 @@
 /* eslint-disable global-require */
+const path = require('path');
+
+const indexTemplate = (filePaths) => {
+  const exportEntries = filePaths.map((filePath) => {
+    const basename = path.basename(filePath, path.extname(filePath));
+    const exportName = `${basename}SvgIcon`;
+    return `export { default as ${exportName} } from './${basename}'`;
+  });
+  return exportEntries.join('\n');
+};
+
 module.exports = {
   icon: true,
   svgoConfig: {
@@ -11,5 +22,5 @@ module.exports = {
   },
   // same as the rollup plugin
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
-  indexTemplate: require('./svgr.index-template'),
+  indexTemplate,
 };
