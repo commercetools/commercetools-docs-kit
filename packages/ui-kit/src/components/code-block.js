@@ -203,15 +203,13 @@ const CodeBlock = (props) => {
     }, 1500);
   };
 
+  const codeBlockTheme = {
+    codeBlockColors:
+      colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
+  };
+
   return (
-    <ThemeProvider
-      theme={{
-        codeBlockColors:
-          colors.light.codeBlocks[
-            props.secondaryTheme ? 'secondary' : 'primary'
-          ],
-      }}
-    >
+    <ThemeProvider theme={codeBlockTheme}>
       <Highlight
         {...defaultProps}
         code={props.content}
@@ -225,9 +223,13 @@ const CodeBlock = (props) => {
           getLineProps,
           getTokenProps,
         }) => (
-          <HighlightedContainer>
+          <HighlightedContainer theme={codeBlockTheme}>
             <SpacingsInline scale="xs" alignItems="flex-start">
-              <Preformatted className={className} style={style}>
+              <Preformatted
+                className={className}
+                style={style}
+                theme={codeBlockTheme}
+              >
                 {syntaxTokens.map((line, index) => {
                   const isLastLine = syntaxTokens.length - 1 === index;
                   if (isLastLine) {
@@ -255,13 +257,11 @@ const CodeBlock = (props) => {
                         key: index,
                         ...(isCommandLine ? { 'data-prompt': '$' } : {}),
                       })}
-                      css={(theme) =>
-                        getLineStyles(theme, {
-                          isCommandLine,
-                          shouldShowPrompt,
-                          shouldHighlightLine,
-                        })
-                      }
+                      css={getLineStyles(codeBlockTheme, {
+                        isCommandLine,
+                        shouldShowPrompt,
+                        shouldHighlightLine,
+                      })}
                     >
                       {line.map((token, key) => (
                         <span key={key} {...getTokenProps({ token, key })} />
@@ -278,7 +278,10 @@ const CodeBlock = (props) => {
                   BodyComponent: TooltipBodyComponent,
                 }}
               >
-                <CopyArea onClick={handleCopyToClipboardClick}>
+                <CopyArea
+                  onClick={handleCopyToClipboardClick}
+                  theme={codeBlockTheme}
+                >
                   <ClipboardIcon />
                 </CopyArea>
               </Tooltip>

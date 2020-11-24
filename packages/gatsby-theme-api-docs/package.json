@@ -24,9 +24,9 @@
     "@commercetools-docs/gatsby-transformer-mdx-introspection": "10.0.2",
     "@commercetools-docs/gatsby-transformer-raml": "10.0.2",
     "@commercetools-docs/ui-kit": "10.0.2",
-    "@commercetools-uikit/design-system": "^10.39.8",
-    "@commercetools-uikit/spacings-inline": "^10.39.8",
-    "@commercetools-uikit/spacings-stack": "^10.39.8",
+    "@commercetools-uikit/design-system": "^10.42.2",
+    "@commercetools-uikit/spacings-inline": "^10.42.2",
+    "@commercetools-uikit/spacings-stack": "^10.42.2",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "prop-types": "15.7.2"

@@ -92,94 +92,79 @@ const languageDisplayNames = {
   ruby: 'Ruby',
   objectivec: 'Objective-C',
 };
+
+function extractLanguages(children) {
+  if (Array.isArray(children)) {
+    return children.map((child) => child.props.language);
+  }
+
+  return [children.props.language];
+}
+
 function MultiCodeBlock(props) {
   const langs = extractLanguages(props.children);
 
   const [selected, setSelected] = React.useState(langs[0]);
+  const handleOnLanguageChange = React.useCallback((event) => {
+    setSelected(event.target.value);
+  }, []);
+
+  const codeBlockTheme = {
+    codeBlockColors:
+      colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
+  };
 
   return (
-    <ThemeProvider
-      theme={{
-        codeBlockColors:
-          colors.light.codeBlocks[
-            props.secondaryTheme ? 'secondary' : 'primary'
-          ],
-      }}
-    >
-      <Container>
-        {renderHeader(props.title, langs)}
-        {renderChildren(props.children, selected)}
+    <ThemeProvider theme={codeBlockTheme}>
+      <Container theme={codeBlockTheme}>
+        {props.title || langs.length > 1 ? (
+          <Header theme={codeBlockTheme}>
+            <HeaderInner>
+              <HeaderText theme={codeBlockTheme}>{props.title}</HeaderText>
+              <SpacingsInline
+                scale="m"
+                alignItems="center"
+                justifyContent="flex-end"
+              >
+                {(() => {
+                  if (langs.length > 1) {
+                    return (
+                      <LanguagesDropDownWrapper theme={codeBlockTheme}>
+                        <LanguagesDropDown
+                          theme={codeBlockTheme}
+                          onChange={handleOnLanguageChange}
+                        >
+                          {langs.map((lang) => (
+                            <option key={lang} value={lang}>
+                              {languageDisplayNames[lang] || lang}
+                            </option>
+                          ))}
+                        </LanguagesDropDown>
+                      </LanguagesDropDownWrapper>
+                    );
+                  }
+                  return langs[0] === 'text' ? null : (
+                    <HeaderText theme={codeBlockTheme}>
+                      {languageDisplayNames[langs[0]] || langs[0]}
+                    </HeaderText>
+                  );
+                })()}
+              </SpacingsInline>
+            </HeaderInner>
+          </Header>
+        ) : null}
+
+        {React.cloneElement(
+          Array.isArray(props.children)
+            ? props.children.find((child) => child.props.language === selected)
+            : props.children,
+          {
+            secondaryTheme: props.secondaryTheme,
+          }
+        )}
       </Container>
     </ThemeProvider>
   );
-
-  function extractLanguages(children) {
-    if (Array.isArray(children)) {
-      return children.map((child) => child.props.language);
-    }
-
-    return [children.props.language];
-  }
-
-  function renderHeader(title, languages = []) {
-    if (title || languages.length > 1) {
-      return (
-        <Header>
-          <HeaderInner>
-            <HeaderText>{props.title}</HeaderText>
-            <SpacingsInline
-              scale="m"
-              alignItems="center"
-              justifyContent="flex-end"
-            >
-              {renderLanguages(languages)}
-            </SpacingsInline>
-          </HeaderInner>
-        </Header>
-      );
-    }
-
-    return null;
-  }
-
-  function renderLanguages(languages) {
-    if (languages.length > 1) {
-      return (
-        <LanguagesDropDownWrapper>
-          <LanguagesDropDown onChange={handleOnLanguageChange}>
-            {languages.map((lang) => (
-              <option key={lang} value={lang}>
-                {languageDisplayNames[lang] || lang}
-              </option>
-            ))}
-          </LanguagesDropDown>
-        </LanguagesDropDownWrapper>
-      );
-    }
-
-    return languages[0] === 'text' ? null : (
-      <HeaderText>
-        {languageDisplayNames[languages[0]] || languages[0]}
-      </HeaderText>
-    );
-  }
-
-  function handleOnLanguageChange(e) {
-    setSelected(e.target.value);
-  }
-
-  function renderChildren(children, selectedChild) {
-    if (Array.isArray(children)) {
-      return React.cloneElement(
-        children.find((child) => child.props.language === selectedChild),
-        { secondaryTheme: props.secondaryTheme }
-      );
-    }
-
-    return React.cloneElement(children, {
-      secondaryTheme: props.secondaryTheme,
-    });
-  }
 }
 
 MultiCodeBlock.propTypes = {
