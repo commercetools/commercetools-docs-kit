@@ -14,7 +14,7 @@ const LayoutPageHeaderSide = styled.aside`
     width: ${designSystem.dimensions.widths.pageNavigation};
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    width: ${designSystem.dimensions.widths.pageHeaderSideSmall};
+    width: ${designSystem.dimensions.widths.pageNavigationSmall};
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     width: ${designSystem.dimensions.widths.pageNavigation};
