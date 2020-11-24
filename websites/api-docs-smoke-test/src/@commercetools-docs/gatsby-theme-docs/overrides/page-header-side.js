@@ -1,6 +1,5 @@
 import React from 'react';
-import css from '@emotion/css';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { UserResearchBanner } from '@commercetools-docs/gatsby-theme-docs';
 import GitHubIcon from '../../../icons/github.svg';
 
@@ -8,15 +7,11 @@ import GitHubIcon from '../../../icons/github.svg';
 // eslint-disable-next-line react/display-name
 export default () => {
   return (
-    <div>
-      <div
-        css={css`
-          padding-bottom: ${designSystem.dimensions.spacings.m};
-        `}
-      >
+    <SpacingsStack size="m">
+      <div>
         <GitHubIcon />
       </div>
       <UserResearchBanner />
-    </div>
+    </SpacingsStack>
   );
 };

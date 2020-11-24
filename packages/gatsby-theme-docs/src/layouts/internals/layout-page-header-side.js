@@ -6,7 +6,7 @@ const LayoutPageHeaderSide = styled.aside`
   display: none;
   padding: 0 ${designSystem.dimensions.spacings.m};
   margin: ${designSystem.dimensions.spacings.m} 0
-    ${designSystem.dimensions.spacings.xl} 0;
+    ${designSystem.dimensions.spacings.large} 0;
   border-left: 1px solid ${designSystem.colors.light.borderPrimary};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {

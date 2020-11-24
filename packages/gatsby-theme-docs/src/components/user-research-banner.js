@@ -17,14 +17,15 @@ const UserResearchBanner = () => {
     <Banner>
       <div
         css={css`
-          padding: 8px 0 4px 0;
+          padding: ${designSystem.dimensions.spacings.s} 0
+            ${designSystem.dimensions.spacings.xs} 0;
         `}
       >
         <LogoSVG />
       </div>
       <p>We want your feedback</p>
       <Link
-        href={'https://ok.commercetools.com/user-research-program'}
+        href="https://ok.commercetools.com/user-research-program"
         noUnderline
         css={css`
           font-size: ${designSystem.typography.fontSizes.extraSmall};
