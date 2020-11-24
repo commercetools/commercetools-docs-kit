@@ -2,16 +2,11 @@ import React from 'react';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import ctLogo from '../../static/ct-logo.png';
+import LogoSVG from '../icons/ct-logo.svg';
 import Link from './link';
 
 const Banner = styled.div`
-  div {
-    border-top: 1px solid ${designSystem.colors.light.borderHighlight};
-  }
-  img {
-    margin: 4px 0 0 -4px;
-  }
+  border-top: 1px solid ${designSystem.colors.light.borderHighlight};
   p {
     font-size: ${designSystem.typography.fontSizes.small};
   }
@@ -20,19 +15,23 @@ const Banner = styled.div`
 const UserResearchBanner = () => {
   return (
     <Banner>
-      <div>
-        <img width="22px" height="22px" src={ctLogo}></img>
-        <p>We want your feedback</p>
-        <Link
-          href={'https://ok.commercetools.com/user-research-program'}
-          noUnderline
-          css={css`
-            font-size: ${designSystem.typography.fontSizes.extraSmall};
-          `}
-        >
-          Join our user Research Program
-        </Link>
+      <div
+        css={css`
+          padding: 8px 0 4px 0;
+        `}
+      >
+        <LogoSVG />
       </div>
+      <p>We want your feedback</p>
+      <Link
+        href={'https://ok.commercetools.com/user-research-program'}
+        noUnderline
+        css={css`
+          font-size: ${designSystem.typography.fontSizes.extraSmall};
+        `}
+      >
+        Join our user Research Program
+      </Link>
     </Banner>
   );
 };
