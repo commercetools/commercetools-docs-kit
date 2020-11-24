@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import RibbonIcon from '../icons/ribbon-icon.svg';
+import { RibbonSvgIcon } from '../icons';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import { CodeBlockMarkdownWrapper as CodeBlock } from './multi-code-block';
 
@@ -311,7 +311,7 @@ const withAnchorLink = (Component) => (props) => {
     >
       <span>{props.children}</span>
       <a href={`#${props.id}`} data-link-type="anchor-link">
-        <RibbonIcon />
+        <RibbonSvgIcon />
       </a>
     </Component>
   );

@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem, MediaQuery } from '@commercetools-docs/ui-kit';
-import LogoHorizontalSvg from '../../icons/logo-horizontal.svg';
+import { LogoHorizontalSvgIcon } from '../../icons';
 import { GlobalNavigationLink, BetaFlag } from '../../components';
 
 const Center = styled.div`
@@ -165,7 +165,7 @@ const LayoutFooter = () => {
       <Columns>
         <Column>
           <MediaQuery forViewport="tablet">
-            <LogoHorizontalSvg />
+            <LogoHorizontalSvgIcon />
           </MediaQuery>
         </Column>
         {data.allTopMenuYaml.nodes.map((node) => (
@@ -197,7 +197,7 @@ const LayoutFooter = () => {
         <RowItem gridArea="footer-copy">
           <SpacingsStack>
             <MediaQuery forViewport="mobile">
-              <LogoHorizontalSvg height={64} />
+              <LogoHorizontalSvgIcon height={64} />
             </MediaQuery>
             <SpacingsInline scale="m" alignItems="center">
               <CopyText>

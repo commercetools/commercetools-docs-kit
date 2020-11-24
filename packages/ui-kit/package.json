@@ -18,7 +18,8 @@
   "files": ["dist", "package.json", "LICENSE", "README.md"],
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js",
+    "generate-icons": "svgr -d src/icons src/icons/svg"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",

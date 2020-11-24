@@ -9,13 +9,13 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import IconButton from '@commercetools-uikit/icon-button';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import { CloseIcon } from '@commercetools-uikit/icons';
-import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
+import { StackedLinesIndentedIconSvgIcon } from '../../icons';
 import { Overlay } from '../../components';
 import ReleaseNotesFilterDates from '../../components/release-notes-filter-dates';
 import ReleaseNotesFilterTopics from '../../components/release-notes-filter-topics';
 
 const StackedLinesIndentedIcon = createStyledIcon(
-  UnstyledStackedLinesIndentedIcon
+  StackedLinesIndentedIconSvgIcon
 );
 
 const slideInAnimation = keyframes`

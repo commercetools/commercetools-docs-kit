@@ -6,10 +6,10 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
 import { MailIcon } from '@commercetools-uikit/icons';
-import UnstyledRssIcon from '../icons/rss.svg';
+import { RssSvgIcon } from '../icons';
 import { ExternalSiteLink } from './link';
 
-const RssIcon = createStyledIcon(UnstyledRssIcon);
+const RssIcon = createStyledIcon(RssSvgIcon);
 
 const Container = styled.div`
   margin: ${designSystem.dimensions.spacings.m} 0;

@@ -13,6 +13,9 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/gatsby-theme-docs"
   },
+  "scripts": {
+    "generate-icons": "svgr -d src/icons src/icons/svg"
+  },
   "dependencies": {
     "@commercetools-docs/ui-kit": "11.0.1",
     "@commercetools-uikit/card": "^10.42.2",

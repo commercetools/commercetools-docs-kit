@@ -10,7 +10,6 @@ const json = require('@rollup/plugin-json');
 const commonjs = require('rollup-plugin-commonjs');
 const peerDeps = require('rollup-plugin-peer-deps-external');
 const builtins = require('rollup-plugin-node-builtins');
-const svgr = require('@svgr/rollup').default;
 
 const { packageJson: pkg } = readPkgUp.sync({
   cwd: fs.realpathSync(process.cwd()),
@@ -39,14 +38,6 @@ const plugins = [
   }),
   json({ namedExports: false }),
   builtins(),
-  svgr({
-    // NOTE: disable this and manually add `removeViewBox: false` in the SVGO plugins list
-    // See related PR: https://github.com/smooth-code/svgr/pull/137
-    icon: false,
-    svgoConfig: {
-      plugins: [{ removeViewBox: false }, { cleanupIDs: true }],
-    },
-  }),
 ];
 
 const createConfig = (cliArgs) => [
