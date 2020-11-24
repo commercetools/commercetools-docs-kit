@@ -13,12 +13,15 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/ui-kit"
   },
-  "main": "dist/ui-kit.cjs.js",
-  "module": "dist/ui-kit.es.js",
-  "files": ["dist", "package.json", "LICENSE", "README.md"],
+  "main": "dist/commercetools-docs-ui-kit.cjs.js",
+  "module": "dist/commercetools-docs-ui-kit.esm.js",
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
-    "prebuild": "rimraf dist/**",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js",
     "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },
   "dependencies": {

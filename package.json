@@ -8,10 +8,16 @@
     "packages/*",
     "websites/*"
   ],
+  "preconstruct": {
+    "packages": [
+      "packages/ui-kit"
+    ]
+  },
   "scripts": {
+    "postinstall": "preconstruct dev",
     "clean": "lerna run clean --scope '@commercetools-website/*'",
     "start": "yarn --cwd websites/docs-smoke-test start",
-    "build-packages": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-docs/*'",
+    "build-packages": "preconstruct build",
     "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
     "prebuild": "yarn build-packages && yarn generate-icons",
     "postbuild": "cp -f ./websites/index.html ./public && yarn check-links",
@@ -64,8 +70,7 @@
     "@emotion/babel-plugin": "11.0.0",
     "@emotion/babel-preset-css-prop": "11.0.0",
     "@percy/cypress": "2.3.2",
-    "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "9.0.0",
+    "@preconstruct/cli": "2.0.0",
     "@svgr/cli": "5.5.0",
     "@svgr/plugin-jsx": "5.5.0",
     "@svgr/plugin-svgo": "5.5.0",
@@ -114,11 +119,6 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "read-pkg-up": "7.0.1",
-    "rollup": "2.33.3",
-    "rollup-plugin-babel": "4.4.0",
-    "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-node-builtins": "2.1.2",
-    "rollup-plugin-peer-deps-external": "2.2.4",
     "serve": "11.3.2",
     "shelljs": "0.8.4",
     "start-server-and-test": "1.11.6",
