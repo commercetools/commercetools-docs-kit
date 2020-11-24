@@ -12,7 +12,7 @@
     "build:serve": "npx gatsby build --prefix-paths && npx gatsby serve --prefix-paths -o",
     "prebuild": "yarn clean",
     "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test",
-    "generate-icons": "svgr -d src/icons src/icons/svg"
+    "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-code-examples": "11.0.1",

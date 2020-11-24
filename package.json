@@ -15,7 +15,7 @@
     "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
     "prebuild": "yarn build-packages && yarn generate-icons",
     "postbuild": "cp -f ./websites/index.html ./public && yarn check-links",
-    "generate-icons": "lerna run generate-icons && prettier --write '**/icons/*.js'",
+    "generate-icons": "lerna run generate-icons && prettier --write '**/generated/*.js'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",
