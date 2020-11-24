@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { ThemeProvider as UiKitThemeProvider } from 'emotion-theming';
+import { ThemeProvider as UiKitThemeProvider } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
 /* NOTE: `overflow` shorthand is only supported is Chrome and FF */

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';

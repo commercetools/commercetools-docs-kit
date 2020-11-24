@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { css, keyframes } from '@emotion/core';
+import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { BurgerIcon, Overlay } from '../../components';

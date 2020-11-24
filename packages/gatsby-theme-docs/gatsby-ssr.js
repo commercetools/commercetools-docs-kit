@@ -9,8 +9,8 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { withPrefix } from 'gatsby';
 import { createContentDigest } from 'gatsby-core-utils';
-import createEmotionServer from 'create-emotion-server';
-import { CacheProvider } from '@emotion/core';
+import createEmotionServer from '@emotion/server/create-instance';
+import { CacheProvider } from '@emotion/react';
 import { createDocsCache } from './utils/create-emotion-cache';
 
 const iconDarkDigest = createContentDigest(

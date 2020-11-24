@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import codeBlockParseOptions from '../utils/code-block-parse-options';

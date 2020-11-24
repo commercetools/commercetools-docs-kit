@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css, Global } from '@emotion/core';
+import { css, Global } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import reportErrorToSentry from '../utils/report-error-to-sentry';
 

@@ -13,7 +13,7 @@ import 'fontsource-roboto-mono/latin-500.css';
 import 'fontsource-roboto-mono/latin-700.css';
 import React from 'react';
 import Prism from 'prism-react-renderer/prism';
-import { CacheProvider } from '@emotion/core';
+import { CacheProvider } from '@emotion/react';
 import { docsCache } from './utils/create-emotion-cache';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';

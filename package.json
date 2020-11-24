@@ -33,7 +33,7 @@
     "changeset:version-and-format": "changeset version && prettier --write --parser json '**/package.json'",
     "versions:uikit": "bulk-update-versions --match '@commercetools-uikit/(.*)'"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "7.12.3",
     "@babel/plugin-proposal-class-properties": "7.12.1",
     "@babel/plugin-proposal-do-expressions": "7.12.1",
@@ -58,8 +58,6 @@
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
     "@emotion/babel-preset-css-prop": "11.0.0",
-    "@emotion/core": "11.0.0",
-    "@emotion/styled": "11.0.0",
     "@percy/cypress": "2.3.2",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "9.0.0",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { css, Global } from '@emotion/core';
+import { css, Global } from '@emotion/react';
 import { colors, dimensions, typography, tokens } from '../design-system';
 
 // eslint-disable-next-line react/display-name
