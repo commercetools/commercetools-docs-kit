@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 11.0.1
+
+### Patch Changes
+
+- [`b3a3911`](https://github.com/commercetools/commercetools-docs-kit/commit/b3a39119987baf7d9bd58c464ed198c9710cc8bb) [#764](https://github.com/commercetools/commercetools-docs-kit/pull/764) Thanks [@emmenko](https://github.com/emmenko)! - Fix `dist` bundles path
+
 ## 11.0.0
 
 ### Minor Changes
