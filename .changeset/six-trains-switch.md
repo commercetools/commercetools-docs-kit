@@ -1,6 +1,5 @@
 ---
 '@commercetools-docs/gatsby-theme-docs': minor
-'@commercetools-docs/ui-kit': patch
 ---
 
-A user research banner was implemented for all sites
+Render a User Research banner in all content pages.
