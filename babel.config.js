@@ -114,7 +114,6 @@ module.exports = function getBabelPreset(api, opts = {}) {
         require('@babel/plugin-transform-runtime').default,
         {
           corejs: 3,
-          // To be able to use `runtime` in Rollup babel plugin
           helpers: true,
           regenerator: true,
         },

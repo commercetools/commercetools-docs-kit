@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import css from '@emotion/css';
+import { css } from '@emotion/react';
 import moment from 'moment';
 import Link from './link';
 import ContentNotifications from './content-notifications';

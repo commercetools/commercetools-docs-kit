@@ -20,7 +20,6 @@ module.exports = {
       { cleanupIDs: false },
     ],
   },
-  // same as the rollup plugin
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
   indexTemplate,
 };
