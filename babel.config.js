@@ -63,7 +63,7 @@ module.exports = function getBabelPreset(api, opts = {}) {
           // behavior for any plugins that require one.
           ...(opts.runtime === 'automatic'
             ? // https://emotion.sh/docs/css-prop#babel-preset
-              { importSource: '@emotion/core' }
+              { importSource: '@emotion/react' }
             : { useBuiltIns: true }),
           runtime: opts.runtime || 'classic',
         },
@@ -75,7 +75,7 @@ module.exports = function getBabelPreset(api, opts = {}) {
         '@emotion/babel-preset-css-prop',
         {
           sourceMap: isEnvDevelopment,
-          autoLabel: !isEnvProduction,
+          autoLabel: 'dev-only',
         },
       ],
     ].filter(Boolean),
@@ -142,7 +142,7 @@ module.exports = function getBabelPreset(api, opts = {}) {
       // Use this plugin only with the JSX runtime `automatic`, otherwise
       // use the `@emotion/babel-preset-css-prop` preset.
       // https://emotion.sh/docs/@emotion/babel-preset-css-prop
-      opts.runtime === 'automatic' && require('babel-plugin-emotion').default,
+      opts.runtime === 'automatic' && require('@emotion/babel-plugin').default,
     ].filter(Boolean),
   };
 };

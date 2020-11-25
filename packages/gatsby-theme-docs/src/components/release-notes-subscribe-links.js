@@ -1,7 +1,7 @@
 import React from 'react';
 import { withPrefix } from 'gatsby';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';

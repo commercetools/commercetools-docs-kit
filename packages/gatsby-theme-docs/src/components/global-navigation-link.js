@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import Link from './link';
 

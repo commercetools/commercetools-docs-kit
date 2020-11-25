@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import RibbonIcon from '../icons/ribbon-icon.svg';
 import { colors, dimensions, typography, tokens } from '../design-system';

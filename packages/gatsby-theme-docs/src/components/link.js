@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Location } from '@reach/router';
 import { Link as GatsbyLink, withPrefix } from 'gatsby';
 import styled from '@emotion/styled';

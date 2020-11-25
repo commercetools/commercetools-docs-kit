@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '../design-system';
 
