@@ -12,9 +12,9 @@ import {
   MediaQuery,
 } from '@commercetools-docs/ui-kit';
 import { SearchDialog, SearchInput, Overlay, TopMenu } from '../../components';
-import UnstyledSearchIcon from '../../icons/search.svg';
+import { SearchSvgIcon } from '../../icons';
 
-const SearchIcon = createStyledIcon(UnstyledSearchIcon);
+const SearchIcon = createStyledIcon(SearchSvgIcon);
 
 const Container = styled.header`
   grid-area: header;

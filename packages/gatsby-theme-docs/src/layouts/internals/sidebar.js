@@ -10,10 +10,10 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
-import UnstyledReleaseNotesIcon from '../../icons/release-notes.svg';
+import { ReleaseNotesSvgIcon } from '../../icons';
 import LayoutHeaderLogo from './layout-header-logo';
 
-const ReleaseNotesIcon = createStyledIcon(UnstyledReleaseNotesIcon);
+const ReleaseNotesIcon = createStyledIcon(ReleaseNotesSvgIcon);
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 

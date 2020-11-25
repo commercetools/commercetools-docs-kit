@@ -9,12 +9,12 @@ import IconButton from '@commercetools-uikit/icon-button';
 import { ArrowUpIcon } from '@commercetools-uikit/icons';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import { useInView } from 'react-intersection-observer';
-import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
+import { StackedLinesIndentedIconSvgIcon } from '../../icons';
 import { Overlay, BetaFlag } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
-  UnstyledStackedLinesIndentedIcon
+  StackedLinesIndentedIconSvgIcon
 );
 
 const StyledArrowUpIcon = createStyledIcon(ArrowUpIcon);
