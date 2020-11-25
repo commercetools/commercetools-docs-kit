@@ -5,10 +5,7 @@
   "license": "MIT",
   "private": true,
   "workspaces": {
-    "packages": [
-      "packages/*",
-      "websites/*"
-    ]
+    "packages": ["packages/*", "websites/*"]
   },
   "scripts": {
     "clean": "lerna run clean --scope '@commercetools-website/*'",
