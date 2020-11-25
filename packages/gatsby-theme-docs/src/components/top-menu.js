@@ -203,12 +203,14 @@ const TopMenu = (props) => {
                 </Column>
               ))}
               <SideColumn>
-                <SpacingsStack scale="s">
-                  {data.allTopSideMenuYaml.nodes.map((node) => (
-                    <GlobalNavigationLink href={node.href} key={node.id}>
-                      {node.label}
-                    </GlobalNavigationLink>
-                  ))}
+                <SpacingsStack scale="l">
+                  <SpacingsStack scale="s">
+                    {data.allTopSideMenuYaml.nodes.map((node) => (
+                      <GlobalNavigationLink href={node.href} key={node.id}>
+                        {node.label}
+                      </GlobalNavigationLink>
+                    ))}
+                  </SpacingsStack>
                   <TopMenuBannerArea />
                 </SpacingsStack>
               </SideColumn>
