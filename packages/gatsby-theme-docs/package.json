@@ -80,8 +80,8 @@
     "unist-util-filter": "2.0.3"
   },
   "devDependencies": {
-    "gatsby": "2.27.2",
-    "gatsby-cli": "2.14.0",
+    "gatsby": "2.27.3",
+    "gatsby-cli": "2.14.1",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
