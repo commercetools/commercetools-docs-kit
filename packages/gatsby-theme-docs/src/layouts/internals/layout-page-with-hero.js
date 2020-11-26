@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { ThemeProvider } from '@emotion/react';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 
 const bannerHeight = '200px';
@@ -76,13 +75,13 @@ const LayoutPageWithHero = (props) => (
       heroBackgroundURL={props.heroBackgroundURL}
       heroBackgroundColor={props.heroBackgroundColor}
     >
-      <ThemeProvider
+      <Title
         theme={{
           websitePrimaryColor: designSystem.colors.light.textInverted,
         }}
       >
-        <Title>{props.title}</Title>
-      </ThemeProvider>
+        {props.title}
+      </Title>
     </Container>
     <ContentWrapper>{props.children}</ContentWrapper>
   </>
