@@ -56,7 +56,7 @@ const LayoutContent = (props) => {
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
-              <SpacingsStack size="m">
+              <SpacingsStack scale="m">
                 <PlaceholderPageHeaderSide />
                 <PlaceholderPageHeaderSideBannerArea />
               </SpacingsStack>

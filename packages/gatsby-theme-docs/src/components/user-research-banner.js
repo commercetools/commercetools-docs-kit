@@ -17,8 +17,7 @@ const UserResearchBanner = () => {
     <Banner>
       <div
         css={css`
-          padding: ${designSystem.dimensions.spacings.s} 0
-            ${designSystem.dimensions.spacings.xs} 0;
+          padding: ${designSystem.dimensions.spacings.xs} 0;
         `}
       >
         <CtLogoSvgIcon />
