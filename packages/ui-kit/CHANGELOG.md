@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 11.0.2
+
+### Patch Changes
+
+- [`deac3ac`](https://github.com/commercetools/commercetools-docs-kit/commit/deac3ac8372187a5eb3e96a8561eca190373f2cc) [#759](https://github.com/commercetools/commercetools-docs-kit/pull/759) Thanks [@emmenko](https://github.com/emmenko)! - Compile and bundle packages using [preconstruct](https://preconstruct.tools)
+
+* [`e99bf1a`](https://github.com/commercetools/commercetools-docs-kit/commit/e99bf1a6678960ae6a466d387f13f279f2e973c4) [#758](https://github.com/commercetools/commercetools-docs-kit/pull/758) Thanks [@emmenko](https://github.com/emmenko)! - Generate SVG icon components using `@svgr/cli`, to avoid importing SVG files via Babel/Rollup/Webpack.
+
 ## 11.0.1
 
 ### Patch Changes
