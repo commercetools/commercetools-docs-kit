@@ -70,6 +70,7 @@ const Content = styled.div`
 
   /* stylelint-disable declaration-block-no-duplicate-properties */
   height: 100%; /* For browsers that do not support this property yet */
+  height: -moz-fit-content;
   height: fit-content;
   /* stylelint-enable */
 
