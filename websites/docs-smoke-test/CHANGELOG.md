@@ -1,5 +1,21 @@
 # @commercetools-website/docs-smoke-test
 
+## 3.2.2
+
+### Patch Changes
+
+- [`4c558b9`](https://github.com/commercetools/commercetools-docs-kit/commit/4c558b9b9c5d99691d618813bdb6c4ecaec50069) [#766](https://github.com/commercetools/commercetools-docs-kit/pull/766) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`deac3ac`](https://github.com/commercetools/commercetools-docs-kit/commit/deac3ac8372187a5eb3e96a8561eca190373f2cc) [#759](https://github.com/commercetools/commercetools-docs-kit/pull/759) Thanks [@emmenko](https://github.com/emmenko)! - Compile and bundle packages using [preconstruct](https://preconstruct.tools)
+
+- [`e99bf1a`](https://github.com/commercetools/commercetools-docs-kit/commit/e99bf1a6678960ae6a466d387f13f279f2e973c4) [#758](https://github.com/commercetools/commercetools-docs-kit/pull/758) Thanks [@emmenko](https://github.com/emmenko)! - Generate SVG icon components using `@svgr/cli`, to avoid importing SVG files via Babel/Rollup/Webpack.
+
+- Updated dependencies [[`ae7263e`](https://github.com/commercetools/commercetools-docs-kit/commit/ae7263e34c13ae3d1c6944f472cbabceda68bbf8), [`4c558b9`](https://github.com/commercetools/commercetools-docs-kit/commit/4c558b9b9c5d99691d618813bdb6c4ecaec50069), [`deac3ac`](https://github.com/commercetools/commercetools-docs-kit/commit/deac3ac8372187a5eb3e96a8561eca190373f2cc), [`cde8175`](https://github.com/commercetools/commercetools-docs-kit/commit/cde8175c9305280fd1961d0e10f1b22deb18bd66), [`a838f51`](https://github.com/commercetools/commercetools-docs-kit/commit/a838f518e1a002d7978e5cc12bfd06335ada2ed6), [`e99bf1a`](https://github.com/commercetools/commercetools-docs-kit/commit/e99bf1a6678960ae6a466d387f13f279f2e973c4)]:
+  - @commercetools-docs/gatsby-theme-docs@11.0.2
+  - @commercetools-docs/gatsby-theme-code-examples@11.0.2
+  - @commercetools-docs/gatsby-theme-constants@11.0.2
+  - @commercetools-docs/ui-kit@11.0.2
+
 ## 3.2.1
 
 ### Patch Changes
