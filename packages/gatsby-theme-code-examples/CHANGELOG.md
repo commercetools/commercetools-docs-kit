@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 11.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`e72f61f`](https://github.com/commercetools/commercetools-docs-kit/commit/e72f61fa94726ef29fc6122ab1fe7b85df4d772f)]:
+  - @commercetools-docs/gatsby-theme-docs@11.0.3
+
 ## 11.0.2
 
 ### Patch Changes

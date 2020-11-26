@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 11.0.3
+
+### Patch Changes
+
+- [`e72f61f`](https://github.com/commercetools/commercetools-docs-kit/commit/e72f61fa94726ef29fc6122ab1fe7b85df4d772f) [#772](https://github.com/commercetools/commercetools-docs-kit/pull/772) Thanks [@emmenko](https://github.com/emmenko)! - Restore SVG Webpack loader
+
 ## 11.0.2
 
 ### Patch Changes
