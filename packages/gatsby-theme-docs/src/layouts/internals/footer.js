@@ -191,7 +191,7 @@ const LayoutFooter = () => {
               </GlobalNavigationLink>
             ))}
             <GlobalNavigationLink href="https://ok.commercetools.com/user-research-program">
-              Join our user Research Program
+              User Research Program
             </GlobalNavigationLink>
           </SpacingsStack>
         </SideColumn>
