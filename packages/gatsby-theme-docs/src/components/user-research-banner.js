@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import css from '@emotion/css';
+import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import LogoSVG from '../icons/ct-logo.svg';
+import { CtLogoSvgIcon } from '../icons';
 import Link from './link';
 
 const Banner = styled.div`
@@ -21,7 +21,7 @@ const UserResearchBanner = () => {
             ${designSystem.dimensions.spacings.xs} 0;
         `}
       >
-        <LogoSVG />
+        <CtLogoSvgIcon />
       </div>
       <p>We want your feedback</p>
       <Link
