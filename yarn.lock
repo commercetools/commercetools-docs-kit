@@ -1767,6 +1767,22 @@
     "@emotion/react" "^11.1.1"
     prop-types "15.7.2"
 
+"@commercetools-uikit/text-input@10.42.2":
+  version "10.42.2"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/text-input/-/text-input-10.42.2.tgz#9cb4bf9b83085fc62baff28608729abcc6fca958"
+  integrity sha512-v93v3FIq7tCSJW8Mhj4mMFTqu9zzaUp5NJjEwEqQlgdQiOZBhgqW/yKEGcnne0ZSZ/CqaQ6ir5FAgT+4UbZvxQ==
+  dependencies:
+    "@babel/runtime" "7.12.5"
+    "@babel/runtime-corejs3" "7.12.5"
+    "@commercetools-uikit/constraints" "10.42.2"
+    "@commercetools-uikit/design-system" "10.42.2"
+    "@commercetools-uikit/input-utils" "10.42.2"
+    "@commercetools-uikit/utils" "10.42.2"
+    "@emotion/react" "^11.1.1"
+    "@emotion/styled" "^11.0.0"
+    prop-types "15.7.2"
+    react-required-if "1.0.3"
+
 "@commercetools-uikit/text@10.42.2":
   version "10.42.2"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/text/-/text-10.42.2.tgz#14b66a6f1bf47bcf51db09fc4171acb9d5578683"
