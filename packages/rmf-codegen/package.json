@@ -1,13 +1,13 @@
 {
   "name": "@commercetools-docs/rmf-codegen",
   "version": "1.0.0",
-  "rmfCodegenVersion": "1.0.0-20201123180438",
+  "rmfCodegenVersion": "0.1.0",
   "description": "Provides RMF-Codegen to javascript projects",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "keywords": ["cli", "raml", "code generator"],
+  "keywords": ["cli", "raml", "code generator", "REST", "API documentation"],
   "scripts": {
     "postinstall": "node scripts/download-rmf-codegen.js",
     "test": "echo \"Error: no test specified\" && exit 1"

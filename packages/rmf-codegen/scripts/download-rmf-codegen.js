@@ -7,7 +7,7 @@ const { rmfCodegenVersion } = require('../package.json');
 const binPath = path.join(__dirname, '../bin');
 const jarName = `rmf-codegen-${rmfCodegenVersion}.jar`;
 const jarPath = path.join(binPath, jarName);
-const downloadURI = `https://dl.bintray.com/vrapio/vrapio/io/vrap/rmf/codegen/cli-application/${rmfCodegenVersion}/cli-application-${rmfCodegenVersion}-all.jar`;
+const downloadURI = `https://github.com/commercetools/rmf-codegen/releases/download/${rmfCodegenVersion}/rmf-codegen.jar`;
 
 const abortIfError = (result) => {
   if (result.code > 0) {
