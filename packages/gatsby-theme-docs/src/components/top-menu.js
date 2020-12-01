@@ -6,6 +6,7 @@ import { css } from '@emotion/react';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 import GlobalNavigationLink from './global-navigation-link';
 import BetaFlag from './beta-flag';
 
@@ -202,12 +203,15 @@ const TopMenu = (props) => {
                 </Column>
               ))}
               <SideColumn>
-                <SpacingsStack scale="s">
-                  {data.allTopSideMenuYaml.nodes.map((node) => (
-                    <GlobalNavigationLink href={node.href} key={node.id}>
-                      {node.label}
-                    </GlobalNavigationLink>
-                  ))}
+                <SpacingsStack scale="l">
+                  <SpacingsStack scale="s">
+                    {data.allTopSideMenuYaml.nodes.map((node) => (
+                      <GlobalNavigationLink href={node.href} key={node.id}>
+                        {node.label}
+                      </GlobalNavigationLink>
+                    ))}
+                  </SpacingsStack>
+                  <TopMenuBannerArea />
                 </SpacingsStack>
               </SideColumn>
             </Columns>

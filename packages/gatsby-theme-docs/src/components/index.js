@@ -15,3 +15,4 @@ export { default as SearchInput } from './search-input';
 export { SideBySide, FullWidthContainer } from './side-by-side';
 export { default as ThemeProvider } from './theme-provider';
 export { default as TopMenu } from './top-menu';
+export { default as UserResearchBanner } from './user-research-banner';
