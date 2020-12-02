@@ -28,7 +28,6 @@ const slideInAnimation = keyframes`
 const SlidingContainer = styled.div`
   background-color: ${designSystem.colors.light.surfacePrimary};
   animation: ${slideInAnimation} 0.5s ease-out alternate;
-  width: ${designSystem.dimensions.widths.pageNavigation};
   height: 100%;
   overflow: auto;
 `;
@@ -39,13 +38,6 @@ const GridContainer = styled.div`
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
     grid-area: page-navigation;
-    width: ${designSystem.dimensions.widths.pageNavigation};
-  }
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    width: ${designSystem.dimensions.widths.pageNavigationSmall};
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
 const BetaWrapper = styled.div`
@@ -139,7 +131,6 @@ const LayoutPageNavigation = (props) => {
       aria-label="Page Table of Contents Navigation"
       css={{
         marginBottom: designSystem.dimensions.spacings.l,
-        marginRight: designSystem.dimensions.spacings.l,
       }}
     >
       <SpacingsStack scale="m">
