@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const shelljs = require('shelljs');
+const os = require('os');
 const { rmfCodegenVersion } = require('../package.json');
 
 const binPath = path.join(__dirname, '../bin');
@@ -40,25 +41,33 @@ const downloadArchive = async (url) => {
   abortIfError(shelljs.chmod(755, jarPath));
 };
 
-if (!isJavaInstalled()) {
-  console.warn(
-    '[rmf-codegen] Warning: no java runtime detected in path. Using existing RAMLdocs is possible but not regeneration from master RAML definitions.'
-  );
-}
-console.log('[rmf-codegen] Verifying rmf-codegen installation...');
-if (fs.existsSync(jarPath)) {
-  console.log(
-    '[rmf-codegen] rmf-codegen jar already installed, skipping installation...'
-  );
+if (os.platform() === 'linux') {
+  console.log('use linux binary');
 } else {
-  console.log('[rmf-codegen] Installing rmf-codegen jar..');
-  downloadArchive(downloadURI).then(
-    () => {
-      console.log('[rmf-codegen] rmf-codegen jar installed.');
-    },
-    (error) => {
-      console.error('[rmf-codegen] Error installing rmf-codegen jar', error);
-      process.exit(1);
-    }
-  );
+  downloadJar();
+}
+
+function downloadJar() {
+  if (!isJavaInstalled()) {
+    console.warn(
+      '[rmf-codegen] Warning: no java runtime detected in path. Using existing RAMLdocs is possible but not regeneration from master RAML definitions.'
+    );
+  }
+  console.log('[rmf-codegen] Verifying rmf-codegen installation...');
+  if (fs.existsSync(jarPath)) {
+    console.log(
+      '[rmf-codegen] rmf-codegen jar already installed, skipping installation...'
+    );
+  } else {
+    console.log('[rmf-codegen] Installing rmf-codegen jar..');
+    downloadArchive(downloadURI).then(
+      () => {
+        console.log('[rmf-codegen] rmf-codegen jar installed.');
+      },
+      (error) => {
+        console.error('[rmf-codegen] Error installing rmf-codegen jar', error);
+        process.exit(1);
+      }
+    );
+  }
 }
