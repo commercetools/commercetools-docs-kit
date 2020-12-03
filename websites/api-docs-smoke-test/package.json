@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "start": "yarn develop",
+    "predevelop": "cd ../../api-specs/test && yarn build",
     "develop": "npx gatsby develop",
     "serve": "npx gatsby serve --prefix-paths -o",
     "clean": "npx gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
     "build": "npx gatsby build --prefix-paths",
-    "prebuild": "yarn clean",
-    "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
-    "generate-ramldoc": "npx rmf-codegen generate ./source-raml/test/api.raml --output-folder ./src/api-specs/test --target RAML_DOC"
+    "prebuild": "yarn clean && cd ../../api-specs/test && yarn build",
+    "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-api-docs": "11.0.3",
