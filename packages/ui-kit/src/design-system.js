@@ -51,6 +51,7 @@ export const colors = {
     borderForReleaseNoteTypeFix: '#b866ff',
     // Links
     link: customProperties.colorPrimary25,
+    linkChildSectionNavigationBackground: '#f2f2f2',
     linkHover: customProperties.colorPrimary,
     linkNavigation: customProperties.colorInfo,
     // Code blocks
@@ -126,6 +127,7 @@ export const dimensions = {
   heights: {
     header: '48px',
     inputSearch: '32px',
+    childSectionNavLink: '28px',
   },
   widths: {
     pageContent: pageWidth,
