@@ -1,0 +1,13 @@
+{
+  "name": "@commercetools-api-specs/test",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npx rmf-codegen verify ./api.raml"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@commercetools-docs/rmf-codegen": "1.0.0"
+  }
+}
