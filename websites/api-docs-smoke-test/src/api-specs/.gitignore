@@ -1,0 +1,2 @@
+# API spec master lives in the root directory, generated spec would not be committed but generated pre-development or pre-production builds.
+test/
