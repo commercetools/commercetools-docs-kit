@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "yarn generate-ramldoc",
     "test": "npx rmf-codegen verify ./api.raml",
     "generate-ramldoc": "npx rmf-codegen generate ./api.raml -o ../../websites/api-docs-smoke-test/src/api-specs/test -t RAML_DOC"
   },
