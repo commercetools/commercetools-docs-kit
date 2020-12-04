@@ -7,21 +7,6 @@ const { rmfCodegenVersion } = require('../package.json');
 
 const binPath = path.join(__dirname, '../bin');
 
-const abortIfError = (result) => {
-  if (result.code > 0) {
-    throw new Error(result.stderr);
-  }
-};
-
-const isJavaInstalled = () => {
-  try {
-    const result = shelljs.exec('java -version', { silent: true });
-    return result.code === 0;
-  } catch (error) {
-    return false;
-  }
-};
-
 if (os.platform() === 'linux') {
   downloadLinux();
 } else {
@@ -82,6 +67,15 @@ function downloadJar() {
   }
 }
 
+function isJavaInstalled() {
+  try {
+    const result = shelljs.exec('java -version', { silent: true });
+    return result.code === 0;
+  } catch (error) {
+    return false;
+  }
+}
+
 async function downloadArchive(url, filePath) {
   // Download the archive
   const res = await fetch(url);
@@ -96,4 +90,10 @@ async function downloadArchive(url, filePath) {
 
   // Assign proper write permissions to the file
   abortIfError(shelljs.chmod(755, filePath));
+}
+
+function abortIfError(result) {
+  if (result.code > 0) {
+    throw new Error(result.stderr);
+  }
 }
