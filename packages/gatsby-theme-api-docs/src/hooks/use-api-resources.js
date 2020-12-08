@@ -17,6 +17,9 @@ export default () => {
           type
           builtinType
           description
+          items {
+            type
+          }
         }
         responses {
           code

@@ -11,6 +11,7 @@ import generateTypeToRender from '../../../utils/generate-type-to-render';
 import Required from '../../required';
 import Table from '../../table';
 import Title from './title';
+import Description from '../../description';
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
 // this implements a wrapping behavior where property name and type are separated
@@ -58,7 +59,13 @@ const Parameters = (props) => {
                     )}
                   </PropertyType>
                 </td>
-                <td>{parameter.description ? parameter.description : '-'}</td>
+                <td>
+                  {parameter.description ? (
+                    <Description>{parameter.description}</Description>
+                  ) : (
+                    '-'
+                  )}
+                </td>
               </tr>
             );
           })}

@@ -72,28 +72,28 @@ uses:
       displayName: Get all resources
       description: Query/retrieve (GET) a specific resource or resource(s). This should return a paged query result of _blah_.
       queryParameters:
-        where:
+        stringParameter:
           type: string
           required: false
           example: 6 in arrayOfIntExample
-        sort:
-          type: string
-          required: false
-          example: DESC
-        expand:
-          type: string
-          required: false
-          example: arrayOfObjectType[*]
-        limit:
+        floatParameter:
           type: number
           required: false
           example: 50
-        offset:
-          type: number
+        integerParameter:
+          type: integer
           required: false
-          example: 5
-        collection:
+          example: 50
+        withMarkdownDescription:
+          type: number
+          description: This `markdown` should be parsed correctly.
+          required: false
+          example: 50
+        objectParameter:
           type: objects.ObjectTestType
+          required: false
+        arrayOfObject:
+          type: objects.ObjectTestType[]
           required: false
       securedBy:
       - oauth_2_0:
