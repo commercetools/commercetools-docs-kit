@@ -22,6 +22,9 @@ const SearchBoxContainer = styled.div`
     ${designSystem.tokens.borderRadiusForChildSectionNav} 0 0;
 `;
 
+// TODO: this component is visually similar to the `SearchInput` component used
+// for the docs search. As a follow up, we should look into extracting the common logic
+// into one input component.
 const SearchInput = styled.input`
   appearance: none;
   background-color: ${designSystem.colors.light.surfacePrimary};
@@ -107,8 +110,7 @@ const Link = styled.a`
   overflow-wrap: break-word;
   :hover {
     color: ${designSystem.colors.light.linkNavigation};
-    background-color: ${designSystem.colors.light
-      .linkChildSectionNavigationBackground};
+    background-color: ${designSystem.colors.light.surfaceSecondary1};
   }
   :hover,
   :active {
@@ -174,7 +176,7 @@ const ChildSectionsNav = (props) => {
           {searchValue !== '' ? (
             <SearchInputIcon position="right">
               <SecondaryIconButton
-                label="Close search dialog"
+                label="Reset input"
                 onClick={() => setSearchValue('')}
                 icon={<CloseIcon size="medium" />}
               />

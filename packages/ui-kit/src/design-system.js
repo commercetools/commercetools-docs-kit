@@ -51,7 +51,6 @@ export const colors = {
     borderForReleaseNoteTypeFix: '#b866ff',
     // Links
     link: customProperties.colorPrimary25,
-    linkChildSectionNavigationBackground: '#f2f2f2',
     linkHover: customProperties.colorPrimary,
     linkNavigation: customProperties.colorInfo,
     // Code blocks
