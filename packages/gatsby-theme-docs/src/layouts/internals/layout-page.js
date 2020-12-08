@@ -22,7 +22,7 @@ const LayoutPage = styled.div`
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths.pageContentWithMargins}
       )
-      ${designSystem.dimensions.widths.pageNavigation};
+      ${designSystem.dimensions.widths.pageNavigationSmall};
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
