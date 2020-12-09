@@ -182,7 +182,7 @@ const TopMenu = (props) => {
   `);
 
   return (
-    <Container>
+    <Container id="top-menu-container">
       <Content
         role="top-menu"
         aria-labelledby="top-menu-switcher"
