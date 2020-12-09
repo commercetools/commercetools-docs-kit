@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 12.0.0
+
+### Patch Changes
+
+- [`bc0d76f`](https://github.com/commercetools/commercetools-docs-kit/commit/bc0d76f8a23d1a281afd4674c2c429ab27529275) [#756](https://github.com/commercetools/commercetools-docs-kit/pull/756) Thanks [@TimonRey](https://github.com/TimonRey)! - The RssFeed is now one single table which shows the newest release notes of all feeds
+
 ## 11.0.2
 
 ### Patch Changes

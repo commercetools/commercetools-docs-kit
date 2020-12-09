@@ -1,5 +1,26 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 12.0.0
+
+### Minor Changes
+
+- [`bc0d76f`](https://github.com/commercetools/commercetools-docs-kit/commit/bc0d76f8a23d1a281afd4674c2c429ab27529275) [#756](https://github.com/commercetools/commercetools-docs-kit/pull/756) Thanks [@TimonRey](https://github.com/TimonRey)! - The RssFeed is now one single table which shows the newest release notes of all feeds
+
+* [`bc0d76f`](https://github.com/commercetools/commercetools-docs-kit/commit/bc0d76f8a23d1a281afd4674c2c429ab27529275) [#756](https://github.com/commercetools/commercetools-docs-kit/pull/756) Thanks [@TimonRey](https://github.com/TimonRey)! - Render a User Research banner in all content pages.
+
+### Patch Changes
+
+- [`49953f2`](https://github.com/commercetools/commercetools-docs-kit/commit/49953f254addc795b52290d32df884b028669e75) [#778](https://github.com/commercetools/commercetools-docs-kit/pull/778) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`c26ba76`](https://github.com/commercetools/commercetools-docs-kit/commit/c26ba76e3ecf16212918c2a347744f950031fcde) [#783](https://github.com/commercetools/commercetools-docs-kit/pull/783) Thanks [@TimonRey](https://github.com/TimonRey)! - A bug related to the width of the right column was fixed.
+
+- [`1771b58`](https://github.com/commercetools/commercetools-docs-kit/commit/1771b58de798986eb97fbaa66b87123bfcc5c900) [#792](https://github.com/commercetools/commercetools-docs-kit/pull/792) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all fontsource dependencies to v3.1.5
+
+* [`3b48184`](https://github.com/commercetools/commercetools-docs-kit/commit/3b48184e6ea7d148cf22d18d4abb075b2db04d40) [#791](https://github.com/commercetools/commercetools-docs-kit/pull/791) Thanks [@davifantasia](https://github.com/davifantasia)! - Update all minor and patch dependencies.
+
+* Updated dependencies [[`bc0d76f`](https://github.com/commercetools/commercetools-docs-kit/commit/bc0d76f8a23d1a281afd4674c2c429ab27529275)]:
+  - @commercetools-docs/ui-kit@12.0.0
+
 ## 11.0.3
 
 ### Patch Changes
