@@ -1,5 +1,23 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 12.0.0
+
+### Patch Changes
+
+- [`49953f2`](https://github.com/commercetools/commercetools-docs-kit/commit/49953f254addc795b52290d32df884b028669e75) [#778](https://github.com/commercetools/commercetools-docs-kit/pull/778) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`1b92bbc`](https://github.com/commercetools/commercetools-docs-kit/commit/1b92bbc0941fe4631d74a34561b1e722dd4013ec) [#788](https://github.com/commercetools/commercetools-docs-kit/pull/788) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: Query parameter "Array" type now renders as `Array of <object>`, and markdown in it's description is parsed appropirately.
+
+- [`45c7306`](https://github.com/commercetools/commercetools-docs-kit/commit/45c73068573b1717c6f3ae810a6927657943c9a0) [#760](https://github.com/commercetools/commercetools-docs-kit/pull/760) Thanks [@nkuehn](https://github.com/nkuehn)! - Add new rmf-codegen package as replacement to ramldoc-generator. The new package directly exposes rmf-codegen with all features and available options instead of wrapping one specific call in a custom CLI.
+
+* [`3b48184`](https://github.com/commercetools/commercetools-docs-kit/commit/3b48184e6ea7d148cf22d18d4abb075b2db04d40) [#791](https://github.com/commercetools/commercetools-docs-kit/pull/791) Thanks [@davifantasia](https://github.com/davifantasia)! - Update all minor and patch dependencies.
+
+* Updated dependencies [[`bc0d76f`](https://github.com/commercetools/commercetools-docs-kit/commit/bc0d76f8a23d1a281afd4674c2c429ab27529275), [`49953f2`](https://github.com/commercetools/commercetools-docs-kit/commit/49953f254addc795b52290d32df884b028669e75), [`1b92bbc`](https://github.com/commercetools/commercetools-docs-kit/commit/1b92bbc0941fe4631d74a34561b1e722dd4013ec), [`c26ba76`](https://github.com/commercetools/commercetools-docs-kit/commit/c26ba76e3ecf16212918c2a347744f950031fcde), [`45c7306`](https://github.com/commercetools/commercetools-docs-kit/commit/45c73068573b1717c6f3ae810a6927657943c9a0), [`bc0d76f`](https://github.com/commercetools/commercetools-docs-kit/commit/bc0d76f8a23d1a281afd4674c2c429ab27529275), [`1771b58`](https://github.com/commercetools/commercetools-docs-kit/commit/1771b58de798986eb97fbaa66b87123bfcc5c900), [`3b48184`](https://github.com/commercetools/commercetools-docs-kit/commit/3b48184e6ea7d148cf22d18d4abb075b2db04d40)]:
+  - @commercetools-docs/gatsby-theme-docs@12.0.0
+  - @commercetools-docs/ui-kit@12.0.0
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@12.0.0
+  - @commercetools-docs/gatsby-transformer-raml@12.0.0
+
 ## 11.0.3
 
 ### Patch Changes
