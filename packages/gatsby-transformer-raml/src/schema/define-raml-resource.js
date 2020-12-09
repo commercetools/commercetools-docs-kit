@@ -89,6 +89,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         type: 'String!',
         builtinType: 'String!',
         description: 'String',
+        items: 'RamlTypeItems',
       },
     }),
 

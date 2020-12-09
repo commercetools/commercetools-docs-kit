@@ -73,7 +73,7 @@ get:
   description: |-
     Query/retrieve (GET) a specific resource or resource(s). This should return a paged query result of _blah_.
   queryParameters:
-    where:
+    stringParameter:
       required: false
       type: string
       (builtinType): string
@@ -81,23 +81,7 @@ get:
         default:
           strict: true
           value: "6 in arrayOfIntExample"
-    sort:
-      required: false
-      type: string
-      (builtinType): string
-      examples:
-        default:
-          strict: true
-          value: "DESC"
-    expand:
-      required: false
-      type: string
-      (builtinType): string
-      examples:
-        default:
-          strict: true
-          value: "arrayOfObjectType[*]"
-    limit:
+    floatParameter:
       required: false
       format: float
       type: number
@@ -106,21 +90,38 @@ get:
         default:
           strict: true
           value: 50
-    offset:
+    integerParameter:
+      required: false
+      format: int
+      type: integer
+      (builtinType): integer
+      examples:
+        default:
+          strict: true
+          value: 50
+    withMarkdownDescription:
       required: false
       format: float
       type: number
       (builtinType): number
+      description: |-
+        This `markdown` should be parsed correctly.
       examples:
         default:
           strict: true
-          value: 5
-    collection:
+          value: 50
+    objectParameter:
       required: false
       type: ObjectTestType
       (builtinType): object
       description: |-
         A typical Object type with a non-scalar property.
+    arrayOfString:
+      required: false
+      type: array
+      items:
+        type: string
+      (builtinType): array
   responses:
     200:
       description: |-

@@ -65,14 +65,6 @@ const defineRamlType = ({ schema, createTypes }) => {
         uniqueItems: 'Boolean',
       },
     }),
-
-    // items describes an array field
-    schema.buildObjectType({
-      name: 'RamlTypeItems',
-      fields: {
-        type: 'String',
-      },
-    }),
   ];
   createTypes(typeDefs);
 };
