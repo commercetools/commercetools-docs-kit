@@ -19,8 +19,6 @@ const StackedLinesIndentedIcon = createStyledIcon(
   StackedLinesIndentedIconSvgIcon
 );
 
-const StyledArrowUpIcon = createStyledIcon(ArrowUpIcon);
-
 const slideInAnimation = keyframes`
   from { margin-right: -100%; }
   to { margin-right: 0; }
@@ -138,7 +136,7 @@ const LayoutPageNavigation = (props) => {
         <PageTitleLink href="#top">
           <SpacingsInline scale="s">
             <div>
-              <StyledArrowUpIcon size="medium" color="textSecondary" />
+              <ArrowUpIcon size="medium" color="neutral60" />
             </div>
             <SpacingsStack scale="xs">
               <div>{props.pageTitle}</div>
