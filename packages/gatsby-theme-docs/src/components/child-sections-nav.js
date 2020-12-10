@@ -36,7 +36,7 @@ const SearchInput = styled.input`
   display: flex;
   flex: 1;
   font-family: inherit;
-  font-size: ${designSystem.typography.fontSizes.body};
+  font-size: ${designSystem.typography.fontSizes.small};
   height: ${designSystem.dimensions.heights.inputSearch};
   min-height: ${designSystem.dimensions.heights.inputSearch};
   outline: none;
@@ -104,7 +104,7 @@ const Link = styled.a`
   display: flex;
   align-items: center;
   padding-left: ${designSystem.dimensions.spacings.s};
-  font-size: ${designSystem.typography.fontSizes.small};
+  font-size: ${designSystem.typography.fontSizes.extraSmall};
   color: ${designSystem.colors.light.textSecondary};
   text-decoration: none;
   overflow-wrap: break-word;
