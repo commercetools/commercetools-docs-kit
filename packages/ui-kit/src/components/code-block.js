@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css, ThemeProvider } from '@emotion/react';
+import { css, ThemeProvider, useTheme } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
@@ -47,14 +47,21 @@ const CopyArea = styled.div`
 `;
 const TooltipWrapperComponent = (props) =>
   ReactDOM.createPortal(props.children, document.body);
-const TooltipBodyComponent = styled.div`
-  background-color: ${(props) =>
-    props.theme.codeBlockColors.surfaceCopyTooltip};
-  border-radius: ${tokens.borderRadiusForTooltip};
-  color: ${(props) => props.theme.codeBlockColors.textCopyTooltip};
-  font-size: ${typography.fontSizes.extraSmall};
-  padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
-`;
+const TooltipBodyComponent = (props) => {
+  const theme = useTheme();
+  return (
+    <div
+      css={css`
+        background-color: ${theme.codeBlockColors.surfaceCopyTooltip};
+        border-radius: ${tokens.borderRadiusForTooltip};
+        color: ${theme.codeBlockColors.textCopyTooltip};
+        font-size: ${typography.fontSizes.extraSmall};
+        padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
+      `}
+      {...props}
+    />
+  );
+};
 
 const getLineStyles = (theme, options) => {
   let promptLineStyles;
