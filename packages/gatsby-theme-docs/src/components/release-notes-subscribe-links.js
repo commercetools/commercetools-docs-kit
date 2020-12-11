@@ -1,6 +1,5 @@
 import React from 'react';
 import { withPrefix } from 'gatsby';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -10,12 +9,6 @@ import { RssSvgIcon } from '../icons';
 import { ExternalSiteLink } from './link';
 
 const RssIcon = createStyledIcon(RssSvgIcon);
-
-const Container = styled.div`
-  margin: ${designSystem.dimensions.spacings.m} 0;
-  padding-left: ${designSystem.dimensions.spacings.m};
-  border-left: 1px solid ${designSystem.colors.light.borderPrimary};
-`;
 
 const linkStyles = css`
   text-decoration: none;
@@ -41,28 +34,23 @@ const linkStyles = css`
 `;
 
 const ReleaseNotesSubscribeLinks = () => (
-  <Container>
-    <SpacingsStack scale="xs">
-      <ExternalSiteLink
-        href={withPrefix('/releases/feed.xml')}
-        css={linkStyles}
-      >
-        <SpacingsInline scale="xs" alignItems="center">
-          <RssIcon size="medium" />
-          <span>RSS</span>
-        </SpacingsInline>
-      </ExternalSiteLink>
-      <ExternalSiteLink
-        href="https://ok.commercetools.com/product-newsletter"
-        css={linkStyles}
-      >
-        <SpacingsInline scale="xs" alignItems="center">
-          <MailIcon size="medium" />
-          <span>Product Newsletter</span>
-        </SpacingsInline>
-      </ExternalSiteLink>
-    </SpacingsStack>
-  </Container>
+  <SpacingsStack scale="xs">
+    <ExternalSiteLink href={withPrefix('/releases/feed.xml')} css={linkStyles}>
+      <SpacingsInline scale="xs" alignItems="center">
+        <RssIcon size="medium" />
+        <span>RSS</span>
+      </SpacingsInline>
+    </ExternalSiteLink>
+    <ExternalSiteLink
+      href="https://ok.commercetools.com/product-newsletter"
+      css={linkStyles}
+    >
+      <SpacingsInline scale="xs" alignItems="center">
+        <MailIcon size="medium" />
+        <span>Product Newsletter</span>
+      </SpacingsInline>
+    </ExternalSiteLink>
+  </SpacingsStack>
 );
 
 export default ReleaseNotesSubscribeLinks;
