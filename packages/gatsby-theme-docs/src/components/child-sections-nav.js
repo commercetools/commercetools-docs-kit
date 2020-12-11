@@ -36,7 +36,7 @@ const SearchInput = styled.input`
   display: flex;
   flex: 1;
   font-family: inherit;
-  font-size: ${designSystem.typography.fontSizes.small};
+  font-size: ${designSystem.typography.fontSizes.body};
   height: ${designSystem.dimensions.heights.inputSearch};
   min-height: ${designSystem.dimensions.heights.inputSearch};
   outline: none;
@@ -44,7 +44,7 @@ const SearchInput = styled.input`
   padding: 0
     calc(
       ${designSystem.dimensions.spacings.l} +
-        ${designSystem.dimensions.spacings.xs}
+        ${designSystem.dimensions.spacings.s}
     );
   width: ${designSystem.dimensions.widths.searchBar};
   &::placeholder {
@@ -64,14 +64,12 @@ const SearchInput = styled.input`
 const SearchInputIcon = styled.span`
   position: absolute;
   z-index: 1;
-  width: ${designSystem.dimensions.spacings.l};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: ${designSystem.dimensions.spacings.s};
-  padding-left: ${designSystem.dimensions.spacings.xs};
-  ${(props) => `${props.position}: ${designSystem.dimensions.spacings.xs};`}
+  padding: 8px;
+  ${(props) => `${props.position}: 0;`}
 `;
 
 const SearchBox = styled.div`
@@ -104,7 +102,7 @@ const Link = styled.a`
   display: flex;
   align-items: center;
   padding-left: ${designSystem.dimensions.spacings.s};
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
+  font-size: ${designSystem.typography.fontSizes.small};
   color: ${designSystem.colors.light.textSecondary};
   text-decoration: none;
   overflow-wrap: break-word;
@@ -170,7 +168,7 @@ const ChildSectionsNav = (props) => {
     <div>
       <SearchBoxContainer>
         <SearchBox>
-          <SearchInputIcon position="left">
+          <SearchInputIcon>
             <SearchIcon size="medium" />
           </SearchInputIcon>
           {searchValue !== '' ? (
