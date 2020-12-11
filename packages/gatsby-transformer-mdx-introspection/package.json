@@ -15,7 +15,7 @@
   },
   "keywords": ["gatsby", "gatsby-plugin", "mdx"],
   "dependencies": {
-    "@babel/parser": "7.12.7",
+    "@babel/parser": "7.12.10",
     "@mdx-js/mdx": "1.6.22",
     "deepmerge": "4.2.2",
     "gray-matter": "4.0.2"
