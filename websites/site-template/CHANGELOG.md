@@ -1,5 +1,14 @@
 # @commercetools-website/site-template
 
+## 3.1.5
+
+### Patch Changes
+
+- [`ea147fa`](https://github.com/commercetools/commercetools-docs-kit/commit/ea147fab4fb63b27144da48cb0f4808bc4683747) [#793](https://github.com/commercetools/commercetools-docs-kit/pull/793) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`fb83e48`](https://github.com/commercetools/commercetools-docs-kit/commit/fb83e48fc313f3244f6ffe848a111be00206d529), [`ea147fa`](https://github.com/commercetools/commercetools-docs-kit/commit/ea147fab4fb63b27144da48cb0f4808bc4683747), [`98c83db`](https://github.com/commercetools/commercetools-docs-kit/commit/98c83dbc75953921fb25284841aef1e9c19b7921)]:
+  - @commercetools-docs/gatsby-theme-docs@12.0.1
+
 ## 3.1.4
 
 ### Patch Changes

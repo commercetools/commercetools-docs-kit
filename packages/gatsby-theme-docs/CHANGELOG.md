@@ -1,5 +1,18 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 12.0.1
+
+### Patch Changes
+
+- [`fb83e48`](https://github.com/commercetools/commercetools-docs-kit/commit/fb83e48fc313f3244f6ffe848a111be00206d529) [#800](https://github.com/commercetools/commercetools-docs-kit/pull/800) Thanks [@TimonRey](https://github.com/TimonRey)! - A visual bug was fixed in the page header side of the release notes page.
+
+* [`ea147fa`](https://github.com/commercetools/commercetools-docs-kit/commit/ea147fab4fb63b27144da48cb0f4808bc4683747) [#793](https://github.com/commercetools/commercetools-docs-kit/pull/793) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [`98c83db`](https://github.com/commercetools/commercetools-docs-kit/commit/98c83dbc75953921fb25284841aef1e9c19b7921) [#795](https://github.com/commercetools/commercetools-docs-kit/pull/795) Thanks [@emmenko](https://github.com/emmenko)! - Do not restyle uikit icons
+
+- Updated dependencies [[`ea147fa`](https://github.com/commercetools/commercetools-docs-kit/commit/ea147fab4fb63b27144da48cb0f4808bc4683747), [`84fcfd2`](https://github.com/commercetools/commercetools-docs-kit/commit/84fcfd2593d392d93d7348f59d683dbfea601d8b)]:
+  - @commercetools-docs/ui-kit@12.0.1
+
 ## 12.0.0
 
 ### Minor Changes

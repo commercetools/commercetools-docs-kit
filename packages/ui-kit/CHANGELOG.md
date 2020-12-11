@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 12.0.1
+
+### Patch Changes
+
+- [`ea147fa`](https://github.com/commercetools/commercetools-docs-kit/commit/ea147fab4fb63b27144da48cb0f4808bc4683747) [#793](https://github.com/commercetools/commercetools-docs-kit/pull/793) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`84fcfd2`](https://github.com/commercetools/commercetools-docs-kit/commit/84fcfd2593d392d93d7348f59d683dbfea601d8b) [#794](https://github.com/commercetools/commercetools-docs-kit/pull/794) Thanks [@emmenko](https://github.com/emmenko)! - Fix code block tooltip to explicitly read from emotion theme
+
 ## 12.0.0
 
 ### Patch Changes
