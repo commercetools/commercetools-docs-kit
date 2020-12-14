@@ -126,6 +126,7 @@ export const dimensions = {
   heights: {
     header: '48px',
     inputSearch: '32px',
+    childSectionNavLink: '28px',
   },
   widths: {
     pageContent: pageWidth,
