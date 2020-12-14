@@ -83,7 +83,9 @@ const Container = styled.div`
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     padding: ${designSystem.dimensions.spacings.s};
   }
-  padding: ${designSystem.dimensions.spacings.m};
+  padding: ${designSystem.dimensions.spacings.m}
+    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.s}
+    ${designSystem.dimensions.spacings.m};
   border-radius: 0 0 ${designSystem.tokens.borderRadiusForChildSectionNav}
     ${designSystem.tokens.borderRadiusForChildSectionNav};
   columns: auto ${designSystem.dimensions.widths.pageNavigationSmall};
