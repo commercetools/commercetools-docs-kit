@@ -157,11 +157,18 @@ const ChildSectionsNav = (props) => {
   const sectionToC = skipEmptyLevels(
     findCurrentSection(props.parent, pageData.tableOfContents)
   );
-  const filteredSectionToCList = sectionToC.items.filter(
-    (item) =>
-      !searchValue ||
-      item.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
+
+  const filteredSectionToCList = sectionToC.items.filter((item) => {
+    const filterItem = item.title.toLowerCase();
+    const values = searchValue.toLowerCase().split(/\W+/);
+    const results = values.map((term) => {
+      if (term === '' || filterItem.includes(term)) {
+        return true;
+      }
+      return false;
+    });
+    return results.every(Boolean);
+  });
 
   const isValid = sectionToC && sectionToC.items && sectionToC.items.length > 0;
   return (
