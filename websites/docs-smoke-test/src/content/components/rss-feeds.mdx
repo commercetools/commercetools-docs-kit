@@ -8,6 +8,15 @@ import { RssFeeds } from '@commercetools-docs/ui-kit'
 
 <Info>The RSS feed is only generated in production builds so this test fails in development mode.</Info>
 
+## Table with one feed
+
 <RssFeeds dataSources={[
     "/docs-smoke-test/releases/feed.xml"
+]}/>
+
+## Table with multiple feeds
+
+<RssFeeds dataSources={[
+    "/docs-smoke-test/releases/feed.xml",
+    "/api-docs-smoke-test/releases/feed.xml"
 ]}/>
