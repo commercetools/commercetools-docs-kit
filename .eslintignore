@@ -1,3 +1,4 @@
+.yarn/
 code-examples/
 dist/
 node_modules/*

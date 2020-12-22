@@ -15,9 +15,9 @@ extends:
   - plugin:import/errors
   - plugin:import/warnings
   - plugin:jest/recommended
+  - plugin:prettier/recommended
   - plugin:react/recommended
   - plugin:testing-library/recommended
-  - prettier
   - prettier/react
 plugins:
   - import
@@ -36,13 +36,13 @@ rules:
   import/no-named-as-default-member: 0
   import/default: 0
   import/no-unresolved: 2
-  'react-hooks/rules-of-hooks': 'error'
-  'react-hooks/exhaustive-deps': 'warn'
-  'jest/valid-title': 'warn'
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps: warn
+  jest/valid-title: warn
 settings:
   react:
-    version: 'detect'
+    version: detect
 overrides:
   - files: ['*.spec.js']
     rules:
-      'react/display-name': 0
+      react/display-name: 0
