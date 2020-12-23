@@ -10696,10 +10696,10 @@ follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
   integrity sha512-SSG5xmZh1mkPGyKzjZP8zLjltIfpW32Y5QpdNJyjcfGxK3qo3NDDkZOZSFiGn1A6SclQxY9GzEwAHQ3dmYRWpg==
 
-fontsource-roboto-mono@3.1.6:
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/fontsource-roboto-mono/-/fontsource-roboto-mono-3.1.6.tgz#0223c20f4fbac4762a056b67eb08c8cdc08db36b"
-  integrity sha512-Evl8kuBf9xWx6zA1sBQd8qjSo0KgYg4+e7ZZK69e+izjOvLOIeTpcwz9ALDLv9AMZvcOvbdMUztxHXG0ntmFEw==
+fontsource-roboto-mono@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/fontsource-roboto-mono/-/fontsource-roboto-mono-4.0.0.tgz#f7f4c23acb0c2043a74fad647bd156b192957501"
+  integrity sha512-5IuPSFimxH+Ttd7T7MJiYDSBGH93+LoXLXqxl6t7oFvqx7N9JeHxcFe2vvuZEFtXnp468Mjr+u5Zym87YCj2nw==
 
 fontsource-roboto@3.1.5:
   version "3.1.5"
