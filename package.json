@@ -107,7 +107,7 @@
     "jest-watch-master": "1.0.0",
     "jest-watch-typeahead": "0.6.1",
     "lerna": "3.22.1",
-    "linkinator": "2.8.2",
+    "linkinator": "2.11.2",
     "lint-staged": "10.5.3",
     "percy": "0.28.5",
     "prettier": "2.2.1",
