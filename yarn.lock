@@ -14732,10 +14732,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-linkinator@2.8.2:
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/linkinator/-/linkinator-2.8.2.tgz#2783ccff6de762fe7d0d7f05d01990398b18ee4a"
-  integrity sha512-znqpvrlrrKhLG5vV777ND297Frx8kH4ODxkBTxqh9TVtwPRmilTCSZ2c5Rxvwjsndb1lwcw3fapWigR1dTOcIw==
+linkinator@2.11.2:
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/linkinator/-/linkinator-2.11.2.tgz#a882f95c5fb64e1e96b2755df66356d070bc9237"
+  integrity sha512-TmTtsxSiea6gL/vjd0rD1X7FZzRHLzWeaO+1QMiQh+OTKXCd+LW38ChTQjcxt1XNZ3BH9aAsoG+vxRhNkAY1Wg==
   dependencies:
     chalk "^4.0.0"
     cheerio "^1.0.0-rc.2"
