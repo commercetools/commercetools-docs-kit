@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 13.0.0
+
+### Patch Changes
+
+- [`999785f`](https://github.com/commercetools/commercetools-docs-kit/commit/999785f36b916e2cf19e7c6a12f1641dcfc30e7a) [#804](https://github.com/commercetools/commercetools-docs-kit/pull/804) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`a93fb0d`](https://github.com/commercetools/commercetools-docs-kit/commit/a93fb0da261735f9bdfcd38baa15de948072eab7) [#786](https://github.com/commercetools/commercetools-docs-kit/pull/786) Thanks [@TimonRey](https://github.com/TimonRey)! - A new filter for the child section navigator was implemented.
+
 ## 12.0.1
 
 ### Patch Changes

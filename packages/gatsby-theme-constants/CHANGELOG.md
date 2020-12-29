@@ -1,5 +1,17 @@
 # @commercetools-docs/gatsby-theme-constants
 
+## 13.0.0
+
+### Patch Changes
+
+- [`999785f`](https://github.com/commercetools/commercetools-docs-kit/commit/999785f36b916e2cf19e7c6a12f1641dcfc30e7a) [#804](https://github.com/commercetools/commercetools-docs-kit/pull/804) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`4232fe6`](https://github.com/commercetools/commercetools-docs-kit/commit/4232fe601e6f8e3688514e60237b8ac3e8b79757) [#809](https://github.com/commercetools/commercetools-docs-kit/pull/809) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* Updated dependencies [[`999785f`](https://github.com/commercetools/commercetools-docs-kit/commit/999785f36b916e2cf19e7c6a12f1641dcfc30e7a), [`a93fb0d`](https://github.com/commercetools/commercetools-docs-kit/commit/a93fb0da261735f9bdfcd38baa15de948072eab7), [`47020a1`](https://github.com/commercetools/commercetools-docs-kit/commit/47020a1ec78aeb3f0d98de5b3a90ded66fa95b14), [`4232fe6`](https://github.com/commercetools/commercetools-docs-kit/commit/4232fe601e6f8e3688514e60237b8ac3e8b79757)]:
+  - @commercetools-docs/gatsby-theme-docs@13.0.0
+  - @commercetools-docs/ui-kit@13.0.0
+
 ## 12.0.1
 
 ### Patch Changes
