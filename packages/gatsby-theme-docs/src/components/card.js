@@ -30,7 +30,7 @@ const ImageContainer = styled.div`
     height: auto;
   }
 `;
-const Icon = styled.div`
+const IconContainer = styled.div`
   width: ${designSystem.dimensions.spacings.big};
   min-width: ${designSystem.dimensions.spacings.big};
   height: ${designSystem.dimensions.spacings.big};
@@ -61,12 +61,10 @@ const Title = styled.h6`
   font-weight: ${designSystem.typography.fontWeights.medium};
   letter-spacing: 0;
 `;
-const Body = styled.div`
+const BodyContainer = styled.div`
   color: ${designSystem.colors.light.textPrimary};
 `;
-const ReadMoreContainer = styled.div`
-  margin-top: auto;
-`;
+const ReadMoreContainer = styled.div``;
 const ReadMore = styled.div`
   border-top: 1px solid ${designSystem.colors.light.borderSecondary};
   padding-top: ${designSystem.dimensions.spacings.m};
@@ -86,8 +84,11 @@ const StackContainer = styled.div`
   height: 100%;
   flex-direction: column;
 
-  > * ~ ${Body} {
+  > * + * {
     margin-top: ${getStackContainerMarginStyle};
+  }
+  > ${ReadMoreContainer} {
+    margin-top: auto;
   }
 `;
 
@@ -141,18 +142,18 @@ const Card = (props) => (
           }
         >
           <>
-            {props.icon && <Icon>{props.icon}</Icon>}
+            {props.icon && <IconContainer>{props.icon}</IconContainer>}
 
             <StackContainer scale="s">
               {props.title && (
                 <Title smallTitle={props.smallTitle}>{props.title}</Title>
               )}
               {props.children && (
-                <Body>
+                <BodyContainer>
                   <BodyContent clickable={props.clickable}>
                     {props.children}
                   </BodyContent>
-                </Body>
+                </BodyContainer>
               )}
               {props.href && props.textLink && (
                 <ReadMoreContainer>
