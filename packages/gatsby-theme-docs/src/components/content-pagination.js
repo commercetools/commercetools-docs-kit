@@ -21,8 +21,8 @@ const Container = styled.nav`
   grid-gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     grid-template-columns: 1fr 1fr;

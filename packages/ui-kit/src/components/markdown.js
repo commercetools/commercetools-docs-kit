@@ -245,11 +245,11 @@ const TypographyPage = styled.div`
     margin-top: ${dimensions.spacings.m};
   }
 
-  section > h2 + *,
-  section > h3 + *,
-  section > h4 + *,
-  section > h5 + *,
-  section > h6 + * {
+  section > ${H2} + *,
+  section > ${H3} + *,
+  section > ${H4} + *,
+  section > ${H5} + *,
+  section > ${H6} + * {
     margin-top: ${dimensions.spacings.s};
   }
 
