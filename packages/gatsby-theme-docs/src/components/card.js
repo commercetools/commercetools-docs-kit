@@ -86,7 +86,7 @@ const StackContainer = styled.div`
   height: 100%;
   flex-direction: column;
 
-  ${Body} {
+  > * ~ ${Body} {
     margin-top: ${getStackContainerMarginStyle};
   }
 `;
