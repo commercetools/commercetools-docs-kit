@@ -241,16 +241,16 @@ const TypographyPage = styled.div`
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.5;
 
-  section > * + * {
-    margin-top: ${dimensions.spacings.m};
-  }
-
   section > h2 + *,
   section > h3 + *,
   section > h4 + *,
   section > h5 + *,
   section > h6 + * {
     margin-top: ${dimensions.spacings.s};
+  }
+
+  section > * + * {
+    margin-top: ${dimensions.spacings.m};
   }
 
   .section-h4,
