@@ -20,18 +20,8 @@ const iconLightDigest = createContentDigest(
   fs.readFileSync(require.resolve('./static/favicon-light-32x32.png'))
 );
 
-/**
- * Matches different combinations of the lobotomized owl selector.
- * Examples:
- *   > * + *
- *   > h1 + *
- *   > h2 + *
- *   > * + h1
- *
- * Additionally, whitespaces are ignored.
- */
-const lobotomizedOwlSelectorRegex = />\s*(\*|\w+)\s*\+\s*(\*|\w+)/g;
-const patchedLobotomizedOwlSelector = '> $1:not(style) ~ $2:not(style)';
+const patchedLobotomizedOwlSelector = '> *:not(style) ~ *:not(style)';
+const lobotomizedOwlSelectorRegex = />\s*\*\s*\+\s*\*/g;
 
 export const replaceRenderer = ({
   bodyComponent,
