@@ -21,7 +21,7 @@ const iconLightDigest = createContentDigest(
 );
 
 const patchedLobotomizedOwlSelector = '> *:not(style) ~ *:not(style)';
-const lobotomizedOwlSelectorRegex = />\s?\*\s?\+\s?\*/g;
+const lobotomizedOwlSelectorRegex = />\s*\*\s*\+\s*\*/g;
 
 export const replaceRenderer = ({
   bodyComponent,
