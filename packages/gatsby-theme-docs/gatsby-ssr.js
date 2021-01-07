@@ -11,7 +11,7 @@ import { withPrefix } from 'gatsby';
 import { createContentDigest } from 'gatsby-core-utils';
 import createEmotionServer from '@emotion/server/create-instance';
 import { CacheProvider } from '@emotion/react';
-import { createDocsCache } from './utils/create-emotion-cache';
+import { createDocsCache, docsCacheKey } from './utils/create-emotion-cache';
 
 const iconDarkDigest = createContentDigest(
   fs.readFileSync(require.resolve('./static/favicon-dark-32x32.png'))
@@ -19,6 +19,9 @@ const iconDarkDigest = createContentDigest(
 const iconLightDigest = createContentDigest(
   fs.readFileSync(require.resolve('./static/favicon-light-32x32.png'))
 );
+
+const patchedLobotomizedOwlSelector = '> *:not(style) ~ *:not(style)';
+const lobotomizedOwlSelectorRegex = />\s?\*\s?\+\s?\*/g;
 
 export const replaceRenderer = ({
   bodyComponent,
@@ -32,23 +35,15 @@ export const replaceRenderer = ({
   const { html, css, ids } = extractCritical(
     renderToString(<CacheProvider value={cache}>{bodyComponent}</CacheProvider>)
   );
-  const patchedHtml = html
-    // There is a known issue with Emotion and SSR in case elements use
-    // nth child selectors, like the Lobotomized Owl (`* + *`).
-    // This causes a FOUC effect (Flash Of Unstyled Content), where the injected
-    // inline <style> element disrupts the CSS selector until it gets removed
-    // upon hydration on the client side.
-    // https://github.com/emotion-js/emotion/issues/1178
-    // Until this issue is solved, we need to find a way to exclude the <style>
-    // element to affect the styles of the CSS selector.
-    // I found the following modified Lobotomized Owl selector to work.
-    // It uses the "general sibling selector (~)" instead of the "adjacent sibling
-    // selector (+)" together with the `:not` psuedo-class to exclude the `style` elements.
-    // The "hack" is to replace all the normal Lobotomized Owl selector with
-    // the new one.
-    .replace(/> \* \+ \*/g, '> *:not(style) ~ *:not(style)');
-  replaceBodyHTMLString(patchedHtml);
 
+  const patchedHtml = html
+    // https://emmenko.medium.com/patching-lobotomized-owl-selector-for-emotion-ssr-5a582a3c424c
+    .replace(lobotomizedOwlSelectorRegex, patchedLobotomizedOwlSelector);
+  const patchedCss = css
+    // https://emmenko.medium.com/patching-lobotomized-owl-selector-for-emotion-ssr-5a582a3c424c
+    .replace(lobotomizedOwlSelectorRegex, patchedLobotomizedOwlSelector);
+
+  replaceBodyHTMLString(patchedHtml);
   setHeadComponents([
     <link
       key="favicon-dark"
@@ -64,9 +59,9 @@ export const replaceRenderer = ({
     />,
     <style
       key="emotion-ssr"
-      data-emotion-css={ids.join(' ')}
+      data-emotion={`${docsCacheKey} ${ids.join(' ')}`}
       dangerouslySetInnerHTML={{
-        __html: css,
+        __html: patchedCss,
       }}
     />,
   ]);
