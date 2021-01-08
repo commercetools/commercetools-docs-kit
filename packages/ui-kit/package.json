@@ -25,7 +25,7 @@
     "@commercetools-uikit/design-system": "^10.42.2",
     "@commercetools-uikit/icons": "^10.42.2",
     "@commercetools-uikit/loading-spinner": "^10.42.2",
-    "@commercetools-uikit/spacings-inline": "10.42.2",
+    "@commercetools-uikit/spacings-inline": "10.43.3",
     "@commercetools-uikit/tooltip": "^10.42.2",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
@@ -37,7 +37,7 @@
     "tiny-invariant": "1.1.0",
     "moment": "2.29.1",
     "rss-parser": "3.10.0",
-    "swr": "0.3.11"
+    "swr": "0.4.0"
   },
   "devDependencies": {
     "react": "17.0.1",

@@ -448,16 +448,33 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
 
   const config = getConfig();
   config.module.rules = [
-    ...config.module.rules.map((rule) => ({
-      ...rule,
-      test:
-        // Strip out the svg files from the following built-in rule
-        // See https://github.com/zabute/gatsby-plugin-svgr/blob/5087926076e61a0d5681c842af42c73d55a89653/gatsby-node.js#L10-L21
+    // Strip out the svg files from the following built-in rule
+    // See https://github.com/zabute/gatsby-plugin-svgr/blob/master/gatsby-node.js
+    ...config.module.rules.map((rule) => {
+      // Gatsby < 2.30 (no AVIF support)
+      if (
         String(rule.test) ===
         String(/\.(ico|svg|jpg|jpeg|png|gif|webp)(\?.*)?$/)
-          ? /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/
-          : rule.test,
-    })),
+      ) {
+        return {
+          ...rule,
+          test: /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/,
+        };
+      }
+
+      // Gatsby ≥ 2.30 (AVIF support)
+      if (
+        String(rule.test) ===
+        String(/\.(ico|svg|jpg|jpeg|png|gif|webp|avif)(\?.*)?$/)
+      ) {
+        return {
+          ...rule,
+          test: /\.(ico|jpg|jpeg|png|gif|webp|avif)(\?.*)?$/,
+        };
+      }
+
+      return rule;
+    }),
     {
       // Fix for react-intl
       // https://github.com/formatjs/formatjs/issues/143#issuecomment-518774786
