@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 14.0.0
+
+### Minor Changes
+
+- [`d435f41`](https://github.com/commercetools/commercetools-docs-kit/commit/d435f414cb6a94ef7c02f1ea907b7ba8cdf294ea) [#813](https://github.com/commercetools/commercetools-docs-kit/pull/813) Thanks [@renovate](https://github.com/apps/renovate)! - Update to gatsby >= `2.30`. See https://www.gatsbyjs.com/docs/reference/release-notes/v2.30/
+
 ## 13.0.1
 
 ### Patch Changes
