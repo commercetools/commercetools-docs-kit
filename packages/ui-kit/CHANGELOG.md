@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 13.0.1
+
+### Patch Changes
+
+- [`90a71dc`](https://github.com/commercetools/commercetools-docs-kit/commit/90a71dca81f1a8286b062066f6fff837c02659d8) [#816](https://github.com/commercetools/commercetools-docs-kit/pull/816) Thanks [@emmenko](https://github.com/emmenko)! - Fix patching lobotomized owl selector for emotion SSR.
+
 ## 13.0.0
 
 ### Patch Changes
