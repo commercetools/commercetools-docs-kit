@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/docs-smoke-test",
-  "version": "3.2.7",
+  "version": "3.3.0",
   "private": true,
   "scripts": {
     "start": "yarn develop",
@@ -15,10 +15,10 @@
     "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-code-examples": "13.0.1",
-    "@commercetools-docs/gatsby-theme-constants": "13.0.1",
-    "@commercetools-docs/gatsby-theme-docs": "13.0.1",
-    "@commercetools-docs/ui-kit": "13.0.1",
+    "@commercetools-docs/gatsby-theme-code-examples": "14.0.0",
+    "@commercetools-docs/gatsby-theme-constants": "14.0.0",
+    "@commercetools-docs/gatsby-theme-docs": "14.0.0",
+    "@commercetools-docs/ui-kit": "14.0.0",
     "@commercetools-uikit/icons": "^10.42.2",
     "gatsby": "2.30.1",
     "gatsby-cli": "2.17.0",
