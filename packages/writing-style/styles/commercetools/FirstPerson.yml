@@ -9,5 +9,6 @@ tokens:
   - (?:^|\s)I,\s
   - \bI'm\b
   - \bme\b
-  - \bmy(?!\s?(cart|order|profile|customer|payment|transaction|account|shopping)s?)\b # "negative lookahead" regex to rule out cases followed by our "my" apis
+  # The following rule is not possible any more in newer vale because the golang RE2 regex engine does not support negative lookahead.
+  # - \bmy(?!\s?(cart|order|profile|customer|payment|transaction|account|shopping)s?)\b # "negative lookahead" regex to rule out cases followed by our "my" apis
   - \bmine\b
