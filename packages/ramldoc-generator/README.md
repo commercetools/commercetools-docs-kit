@@ -13,4 +13,3 @@ In scripts that automate the generation of the canonical RAML, for example the f
 Would equal the following new command:
 
 `npx rmf-codegen <api-spec-source-path>/api.raml -o <api-spec-destination-path> -t RAML_DOC`
-

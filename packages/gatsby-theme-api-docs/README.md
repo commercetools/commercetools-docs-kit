@@ -43,7 +43,7 @@ module.exports = {
 
 ### Plugin Options
 
- * `transformerRaml`: See [gatsby-transformer-raml Plugin Options](../gatsby-transformer-raml#available-plugin-options)
+- `transformerRaml`: See [gatsby-transformer-raml Plugin Options](../gatsby-transformer-raml#available-plugin-options)
 
 ### Generating the required canonical RAML form
 
