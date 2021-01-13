@@ -9,7 +9,8 @@
   "commit": false,
   "linked": [
     [
-      "@commercetools-docs/*"
+      "@commercetools-docs/gatsby-theme-*",
+      "@commercetools-docs/ui-kit"
     ]
   ],
   "access": "restricted",
