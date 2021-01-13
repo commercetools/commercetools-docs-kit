@@ -5,6 +5,13 @@ const {
 const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
 
 module.exports = {
+  // https://www.gatsbyjs.com/docs/reference/release-notes/v2.28/#feature-flags-in-gatsby-configjs
+  // https://www.gatsbyjs.com/docs/reference/release-notes/v2.30
+  flags: {
+    DEV_SSR: true,
+    FAST_REFRESH: true,
+    PRESERVE_WEBPACK_CACHE: true,
+  },
   pathPrefix: '/api-docs-smoke-test',
   siteMetadata: {
     title: 'API Docs Smoke Test',

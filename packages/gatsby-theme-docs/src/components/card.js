@@ -106,7 +106,7 @@ const BodyContent = (props) => {
 };
 BodyContent.displayName = 'BodyContent';
 BodyContent.propTypes = {
-  clickable: PropTypes.bool.isRequired,
+  clickable: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
 
@@ -122,7 +122,7 @@ WrapWith.propTypes = {
 const Card = (props) => (
   <Container {...props}>
     <WrapWith
-      condition={props.clickable && props.href}
+      condition={Boolean(props.clickable && props.href)}
       wrapper={(children) => (
         <Link href={props.href} noUnderline>
           {children}
