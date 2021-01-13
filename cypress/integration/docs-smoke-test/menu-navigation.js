@@ -8,12 +8,11 @@ describe('Menu navigation', () => {
       cy.findByLabelText('Open Main Navigation').click();
       cy.findByLabelText('Main Navigation').should('be.visible');
       cy.get('#modal-portal').within(() => {
-        cy.get('#sidebar-overlay').should('be.visible');
         cy.findByText('Docs Smoke Test').should('be.visible');
-        cy.wait(1000);
-        cy.percySnapshot(cy.state('runnable').fullTitle(), {
-          widths: [956],
-        });
+        cy.findByText('Release notes').should('be.visible');
+      });
+      cy.percySnapshot(cy.state('runnable').fullTitle(), {
+        widths: [956],
       });
     });
   });
