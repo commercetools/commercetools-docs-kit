@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 12.0.1
+
+### Patch Changes
+
+- [`68592d2`](https://github.com/commercetools/commercetools-docs-kit/commit/68592d2eaf5cfc71ab5b0e6dd6a0d13455b2a428) [#814](https://github.com/commercetools/commercetools-docs-kit/pull/814) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency js-yaml to v4
+
 ## 12.0.0
 
 ### Patch Changes

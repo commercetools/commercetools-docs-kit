@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.0.3
+
+### Patch Changes
+
+- [`3370261`](https://github.com/commercetools/commercetools-docs-kit/commit/3370261d040fe422e2c6599d8d31410cd7075f92) [#821](https://github.com/commercetools/commercetools-docs-kit/pull/821) Thanks [@nkuehn](https://github.com/nkuehn)! - Update Vale version to 2.8.0, fix style rule and reformat YAML files with .yml ending using prettier
+
 ## 3.0.2
 
 ### Patch Changes
