@@ -5,14 +5,14 @@ message: "'%s' is a weasel word!"
 ignorecase: true
 level: warning
 tokens:
-#  - absolutely
-#  - accidentally
-#  - additionally
+  #  - absolutely
+  #  - accidentally
+  #  - additionally
   - allegedly
-#  - alternatively
+  #  - alternatively
   - angrily
   - anxiously
-#  - approximately
+  #  - approximately
   - awkwardly
   - badly
   - barely
@@ -26,49 +26,49 @@ tokens:
   - bubbly
   - busily
   - calmly
-#  - carefully
+  #  - carefully
   - carelessly
   - cautiously
   - cheerfully
   - clearly
   - closely
   - coldly
-#  - completely
+  #  - completely
   - consequently
-#  - correctly
+  #  - correctly
   - courageously
   - crinkly
   - cruelly
   - crumbly
   - cuddly
-#  - currently
-#  - daily
+  #  - currently
+  #  - daily
   - daringly
   - deadly
   - definitely
-#  - deliberately
+  #  - deliberately
   - doubtfully
   - dumbly
   - eagerly
-#  - early
-#  - easily
+  #  - early
+  #  - easily
   - elegantly
   - enormously
   - enthusiastically
   - equally
-#  - especially
-#  - eventually # "eventually consistent" is an important technical term in our product
-#  - exactly
+  #  - especially
+  #  - eventually # "eventually consistent" is an important technical term in our product
+  #  - exactly
   - exceedingly
-#  - exclusively
-#  - extremely
+  #  - exclusively
+  #  - extremely
   - fairly
   - faithfully
   - fatally
   - fiercely
-#  - finally
+  #  - finally
   - fondly
-#  - few
+  #  - few
   - foolishly
   - fortunately
   - frankly
@@ -79,17 +79,17 @@ tokens:
   - gladly
   - gracefully
   - greedily
-#  - happily
+  #  - happily
   - hardly
   - hastily
   - healthily
   - heartily
   - helpfully
   - honestly
-#  - hourly
+  #  - hourly
   - hungrily
   - hurriedly
-#  - immediately
+  #  - immediately
   - impatiently
   - inadequately
   - ingeniously
@@ -104,7 +104,7 @@ tokens:
   - largely
   - lately
   - lazily
-#  - likely
+  #  - likely
   - literally
   - lonely
   - loosely
@@ -112,21 +112,21 @@ tokens:
   - loudly
   - luckily
   - madly
-#  - many
+  #  - many
   - mentally
   - mildly
-#  - monthly
+  #  - monthly
   - mortally
   - mostly
   - mysteriously
   - neatly
   - nervously
-#  - nightly
+  #  - nightly
   - noisily
   - normally
   - obediently
   - occasionally
-#  - only
+  #  - only
   - openly
   - painfully
   - particularly
@@ -136,35 +136,35 @@ tokens:
   - poorly
   - powerfully
   - presumably
-#  - previously
+  #  - previously
   - promptly
   - punctually
-#  - quarterly
+  #  - quarterly
   - quickly
   - quietly
   - rapidly
-#  - rarely
-#  - really
-#  - recently
+  #  - rarely
+  #  - really
+  #  - recently
   - recklessly
-#  - regularly
+  #  - regularly
   - remarkably
-#  - relatively
+  #  - relatively
   - reluctantly
   - repeatedly
   - rightfully
   - roughly
   - rudely
   - sadly
-#  - safely
+  #  - safely
   - selfishly
   - sensibly
   - seriously
   - sharply
   - shortly
   - shyly
-#  - significantly
-#  - silently
+  #  - significantly
+  #  - silently
   - simply
   - sleepily
   - slowly
@@ -178,8 +178,8 @@ tokens:
   - stealthily
   - sternly
   - stupidly
-#  - substantially
-#  - successfully
+  #  - substantially
+  #  - successfully
   - suddenly
   - surprisingly
   - suspiciously
@@ -192,8 +192,8 @@ tokens:
   - truthfully
   - unexpectedly
   - unfortunately
-#  - usually
-#  - very
+  #  - usually
+  #  - very
   - victoriously
   - violently
   - vivaciously
@@ -201,7 +201,7 @@ tokens:
   - waverly
   - weakly
   - wearily
-#  - weekly
+  #  - weekly
   - wildly
   - wisely
   - worldly

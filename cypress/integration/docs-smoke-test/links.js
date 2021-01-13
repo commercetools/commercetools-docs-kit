@@ -174,7 +174,7 @@ const scenarios = [
   },
   {
     title:
-      'Link to a page of another internal site using a full url (recommended)',
+      'Link to a page of another internal site using a full URL (recommended)',
     expectationMessage:
       'It should be a normal html link (only in `production` mode)',
     linkSelector: () => {

@@ -2,7 +2,7 @@
   "name": "@commercetools-docs/writing-style",
   "description": "Wrapped and preconfigured vale linter for the commercetools writing style rules",
   "version": "3.0.2",
-  "valeVersion": "2.3.4",
+  "valeVersion": "2.7.1",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -20,8 +20,8 @@
   },
   "scripts": {
     "postinstall": "node scripts/download-vale.js",
-    "download:google": "node scripts/download-google-styles.js",
-    "download:writegood": "node scripts/download-writegood-styles.js"
+    "download:google": "node scripts/download-google-styles.js && prettier --write --parser yaml '**/*.{yaml,yml}'",
+    "download:writegood": "node scripts/download-writegood-styles.js && prettier --write --parser yaml '**/*.{yaml,yml}'"
   },
   "dependencies": {
     "7zip-bin": "5.0.3",

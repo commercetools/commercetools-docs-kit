@@ -191,11 +191,9 @@ The components should be rendered as XML tags, like HTML elements. For example:
 ```mdx
 <Subtitle>
 
-
 Content inside the component.
 
 </Subtitle>
-
 ```
 
 The available JSX components are:
