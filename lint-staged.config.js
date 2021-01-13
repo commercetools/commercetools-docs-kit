@@ -1,7 +1,6 @@
 module.exports = {
   '*.md': ['prettier --write --parser markdown'],
-  '*.yaml': ['prettier --write --parser yaml'],
-  '*.yml': ['prettier --write --parser yaml'],
+  '*.{yaml,yml}': ['prettier --write --parser yaml'],
   '*.js': [
     'prettier --write',
     // NOTE: apparently if you pass some argument that is not a flag AFTER the `reporters`
