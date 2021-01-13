@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 14.0.1
+
+### Patch Changes
+
+- [`857965e`](https://github.com/commercetools/commercetools-docs-kit/commit/857965e1d3413f245c377e4065fa55aa0ea2785b) [#826](https://github.com/commercetools/commercetools-docs-kit/pull/826) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
 ## 14.0.0
 
 ### Minor Changes

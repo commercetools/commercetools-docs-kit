@@ -1,5 +1,16 @@
 # @commercetools-website/docs-smoke-test
 
+## 3.3.1
+
+### Patch Changes
+
+- [`857965e`](https://github.com/commercetools/commercetools-docs-kit/commit/857965e1d3413f245c377e4065fa55aa0ea2785b) [#826](https://github.com/commercetools/commercetools-docs-kit/pull/826) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`857965e`](https://github.com/commercetools/commercetools-docs-kit/commit/857965e1d3413f245c377e4065fa55aa0ea2785b)]:
+  - @commercetools-docs/gatsby-theme-code-examples@14.0.1
+  - @commercetools-docs/gatsby-theme-constants@14.0.1
+  - @commercetools-docs/gatsby-theme-docs@14.0.1
+
 ## 3.3.0
 
 ### Minor Changes
