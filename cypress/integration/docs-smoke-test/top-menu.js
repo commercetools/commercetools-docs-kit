@@ -7,9 +7,9 @@ describe('Top menu', () => {
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {
       cy.findByText('Developer Center').should('be.visible');
+      cy.percySnapshot();
     });
     cy.findByLabelText('Close Top Menu').should('exist');
-    cy.percySnapshot();
   });
   it('should close top menu when clicking on the search input', () => {
     cy.visit(URL_DOCS_SMOKE_TEST);
