@@ -1,21 +1,20 @@
 const jsYaml = require('js-yaml');
 
-function createJsYamlSchema() {
-  /**
-   * Without definition of custom types, js-yaml throws an error when
-   * it hits tags like "!include".
-   *
-   * See here for more info on how to write custom types for js-yaml
-   * https://github.com/nodeca/js-yaml/wiki/Custom-types
-   */
-  const IncludeYamlType = new jsYaml.Type('!include', {
-    kind: 'scalar',
-    construct: (data) => {
-      return data !== null ? data : '';
-    },
-  });
+/**
+ * Without definition of custom types, js-yaml throws an error when
+ * it hits tags like "!include".
+ *
+ * See here for more info on how to write custom types for js-yaml
+ * https://github.com/nodeca/js-yaml/blob/master/examples/custom_types.js
+ */
 
-  return jsYaml.Schema.create([IncludeYamlType]);
-}
+const IncludeYamlType = new jsYaml.Type('!include', {
+  kind: 'scalar',
+  construct: (data) => {
+    return data !== null ? data : '';
+  },
+});
 
-module.exports = createJsYamlSchema;
+const jsYamlSchema = jsYaml.DEFAULT_SCHEMA.extend([IncludeYamlType]);
+
+module.exports = jsYamlSchema;

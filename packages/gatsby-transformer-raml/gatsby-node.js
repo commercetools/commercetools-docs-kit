@@ -3,7 +3,7 @@ const jsYaml = require('js-yaml');
 const createTypeNode = require('./src/create-type-node');
 const createResourceNode = require('./src/create-resource-node');
 const createApiNode = require('./src/create-api-node');
-const createJsYamlSchema = require('./src/create-js-yaml-schema');
+const JSYAML_SCHEMA = require('./src/create-js-yaml-schema');
 const defineSchema = require('./src/schema/define-schema');
 
 const RAML_TYPE_FILE = '#%RAML 1.0 DataType';
@@ -58,7 +58,6 @@ async function onCreateNode(
 
     // continue parsing document
     const content = await loadNodeContent(node);
-    const JSYAML_SCHEMA = createJsYamlSchema();
 
     try {
       const parsedContent = jsYaml.load(content, { schema: JSYAML_SCHEMA });
