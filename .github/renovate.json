@@ -1,7 +1,7 @@
 {
   "extends": [
     "config:base",
-    ":pinOnlyDevDependencies"
+    ":preserveSemverRanges"
   ],
   "schedule": ["on the 1st and 3rd day instance on Wednesday after 3am"],
   "separateMajorMinor": true,
