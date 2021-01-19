@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const slugify = require('slugify');
+const prompts = require('prompts');
+
+const questions = [
+  {
+    type: 'multiselect',
+    name: 'type',
+    message: 'Pick the type of the release note',
+    choices: [
+      { title: 'enhancement', value: 'enhancement' },
+      { title: 'feature', value: 'feature' },
+      { title: 'fix', value: 'fix' },
+      { title: 'announcement', value: 'announcement' },
+    ],
+  },
+  {
+    type: 'date',
+    name: 'date',
+    message: 'Pick a release date',
+  },
+  {
+    type: 'text',
+    name: 'title',
+    message: 'Define a title',
+    validate: (title) =>
+      title.length > 265 ? 'Title is longer than 256 chars!' : true,
+  },
+  {
+    type: 'text',
+    name: 'description',
+    message: 'Write a description',
+    format: (val, values) => `${values.title} ${val}`,
+    validate: (description) =>
+      description.length > 265 ? 'Description is longer than 256 chars!' : true,
+  },
+];
+
+(async () => {
+  const response = await prompts(questions);
+
+  const template = `---
+date: ${response.date}
+title: ${response.title}
+description: |
+  ${response.description}
+type: ${response.type}
+topics:
+# Please use the topics defined in the wiki and stay focused.
+# https://wiki.commercetools.com/display/DOCS/Writing+release+notes#Writingreleasenotes-Typesandtopics
+#  - Topic1
+#  - Topic2
+---
+
+${response.description}
+
+<!--more-->
+`;
+
+  fs.writeFileSync(
+    path.join(
+      process.cwd(),
+      `src/releases/${slugify(response.title, '-')}.mdx`
+    ),
+    template
+  );
+})();
