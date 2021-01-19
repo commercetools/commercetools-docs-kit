@@ -25,17 +25,18 @@ const questions = [
   {
     type: 'text',
     name: 'title',
-    message: 'Define a title',
+    message: 'The title of the release note. Max 256 character plain text.',
     validate: (title) =>
-      title.length > 265 ? 'Title is longer than 256 chars!' : true,
+      title.length > 256 ? 'Title is longer than 256 chars!' : true,
   },
   {
     type: 'text',
     name: 'description',
-    message: 'Write a description',
+    message:
+      'Key changes and their advantages. Max 256 character plain text. This text is tweet-able and used in RSS feeds.',
     format: (val, values) => `${values.title} ${val}`,
     validate: (description) =>
-      description.length > 265 ? 'Description is longer than 256 chars!' : true,
+      description.length > 256 ? 'Description is longer than 256 chars!' : true,
   },
 ];
 
