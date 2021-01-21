@@ -15,6 +15,14 @@ import LayoutHeaderLogo from './layout-header-logo';
 
 const ReleaseNotesIcon = createStyledIcon(ReleaseNotesSvgIcon);
 
+// React currently throws a warning when using useLayoutEffect on the server.
+// To get around it, we can conditionally useEffect on the server (no-op) and
+// useLayoutEffect in the browser. We need useLayoutEffect because we want
+// `connect` to perform sync updates to a ref to save the latest props after
+// a render is actually committed to the DOM.
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const scrollContainerId = 'navigation-scroll-container';
@@ -178,7 +186,7 @@ const SidebarLinkWrapper = (props) => {
   // We need to restore the scroll position as soon as possible, therefore we
   // use `useLayoutEffect` instead of `useEffect` as it fires synchronously after
   // all DOM mutations.
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const isActive = linkRef.current.getAttribute('aria-current') === 'page';
     // In case there was no scroll position saved in the location, and the link
     // is the active one, make sure that the chapter is "visible".

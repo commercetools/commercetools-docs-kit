@@ -5,6 +5,13 @@ const {
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
 
 module.exports = {
+  // https://www.gatsbyjs.com/docs/reference/release-notes/v2.28/#feature-flags-in-gatsby-configjs
+  // https://www.gatsbyjs.com/docs/reference/release-notes/v2.30
+  flags: {
+    DEV_SSR: true,
+    FAST_REFRESH: true,
+    PRESERVE_WEBPACK_CACHE: true,
+  },
   pathPrefix: '/docs-smoke-test',
   siteMetadata: {
     title: 'Docs Smoke Test',
