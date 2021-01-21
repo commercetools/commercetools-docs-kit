@@ -9,6 +9,7 @@
   },
   "keywords": ["cli", "raml", "code generator", "REST", "API documentation"],
   "scripts": {
+    "preinstall": "node scripts/install-vercel-java.js",
     "postinstall": "node scripts/download-rmf-codegen.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
