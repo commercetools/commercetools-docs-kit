@@ -3,26 +3,12 @@ const path = require('path');
 const fetch = require('node-fetch');
 const shelljs = require('shelljs');
 const { rmfCodegenVersion } = require('../package.json');
+const { javaIsInstalled, abortIfError } = require('./helpers');
 
 const binPath = path.join(__dirname, '../bin');
 const jarName = `rmf-codegen-${rmfCodegenVersion}.jar`;
 const jarPath = path.join(binPath, jarName);
 const downloadURI = `https://github.com/commercetools/rmf-codegen/releases/download/${rmfCodegenVersion}/rmf-codegen.jar`;
-
-const abortIfError = (result) => {
-  if (result.code > 0) {
-    throw new Error(result.stderr);
-  }
-};
-
-const isJavaInstalled = () => {
-  try {
-    const result = shelljs.exec('java -version', { silent: true });
-    return result.code === 0;
-  } catch (error) {
-    return false;
-  }
-};
 
 const downloadArchive = async (url) => {
   // Download the archive
@@ -40,7 +26,7 @@ const downloadArchive = async (url) => {
   abortIfError(shelljs.chmod(755, jarPath));
 };
 
-if (!isJavaInstalled()) {
+if (!javaIsInstalled()) {
   console.warn(
     '[rmf-codegen] Warning: no java runtime detected in path. Using existing RAMLdocs is possible but not regeneration from master RAML definitions.'
   );
