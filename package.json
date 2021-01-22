@@ -4,7 +4,7 @@
   "description": "commercetools Documentation Kit (monorepo)",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*", "websites/*"],
+  "workspaces": ["packages/*", "websites/*", "api-specs/*"],
   "preconstruct": {
     "packages": ["packages/ui-kit"]
   },
