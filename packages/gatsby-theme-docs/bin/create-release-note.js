@@ -74,13 +74,7 @@ description: |
   ${response.description}
 type: ${response.type}
 topics:
-${response.topics
-  .map((topic) => {
-    return `- ${topic}
-`;
-  })
-  .toString()
-  .replace(/,/g, '')}
+${response.topics.map((topic) => `- ${topic}`).join('\n')}
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet tristique arcu. Nullam et porta urna.
