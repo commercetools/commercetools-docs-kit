@@ -100,10 +100,10 @@ const ChildrenContainer = styled.div`
   margin-top: ${designSystem.dimensions.spacings.s};
 `;
 const Link = styled.a`
-  height: ${designSystem.dimensions.heights.childSectionNavLink};
   display: flex;
   align-items: center;
-  padding-left: ${designSystem.dimensions.spacings.s};
+  padding: ${designSystem.dimensions.spacings.xs}
+    ${designSystem.dimensions.spacings.s};
   font-size: ${designSystem.typography.fontSizes.small};
   color: ${designSystem.colors.light.textSecondary};
   text-decoration: none;
