@@ -11,10 +11,27 @@ const questions = [
     name: 'type',
     message: 'Pick the type of the release note',
     choices: [
-      { title: 'enhancement', value: 'enhancement' },
-      { title: 'feature', value: 'feature' },
-      { title: 'fix', value: 'fix' },
-      { title: 'announcement', value: 'announcement' },
+      {
+        title: 'enhancement',
+        value: 'enhancement',
+        description: 'for updates of existing features',
+      },
+      {
+        title: 'feature',
+        value: 'feature',
+        description: 'for the introduction of an entirely new feature',
+      },
+      {
+        title: 'fix',
+        value: 'fix',
+        description: 'for bug fixes',
+      },
+      {
+        title: 'announcement',
+        value: 'announcement',
+        description:
+          'for release notes with no product change nor immediate product change',
+      },
     ],
   },
   {
@@ -38,6 +55,13 @@ const questions = [
     validate: (description) =>
       description.length > 256 ? 'Description is longer than 256 chars!' : true,
   },
+  {
+    type: 'list',
+    name: 'topics',
+    message:
+      'Write down the topics for this release note. Seperate them with commas.',
+    separator: ',',
+  },
 ];
 
 (async () => {
@@ -50,13 +74,18 @@ description: |
   ${response.description}
 type: ${response.type}
 topics:
-# Please use the topics defined in the wiki and stay focused.
-# https://wiki.commercetools.com/display/DOCS/Writing+release+notes#Writingreleasenotes-Typesandtopics
-#  - Topic1
-#  - Topic2
+${response.topics
+  .map((topic) => {
+    return `- ${topic}
+`;
+  })
+  .toString()
+  .replace(/,/g, '')}
 ---
 
-${response.description}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet tristique arcu. Nullam et porta urna.
+Suspendisse potenti. Sed euismod eleifend sapien, et bibendum velit sollicitudin quis.
+Proin iaculis mauris in porttitor facilisis.
 
 <!--more-->
 `;
