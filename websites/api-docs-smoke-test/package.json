@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "yarn develop",
+    "predevelop": "cd ../../api-specs/test && yarn generate-ramldoc",
     "develop": "npx gatsby develop",
     "serve": "npx gatsby serve --prefix-paths -o",
     "clean": "npx gatsby clean",
