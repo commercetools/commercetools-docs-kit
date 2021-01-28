@@ -135,7 +135,12 @@ const LayoutPageNavigation = (props) => {
       <SpacingsStack scale="m">
         <PageTitleLink href="#top">
           <SpacingsInline scale="s">
-            <div>
+            <div
+              css={css`
+                margin-top: ${designSystem.dimensions.heights
+                  .arrowUpIconMarginTop};
+              `}
+            >
               <ArrowUpIcon size="medium" color="neutral60" />
             </div>
             <SpacingsStack scale="xs">
