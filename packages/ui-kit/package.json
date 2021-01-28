@@ -15,7 +15,12 @@
   },
   "main": "dist/commercetools-docs-ui-kit.cjs.js",
   "module": "dist/commercetools-docs-ui-kit.esm.js",
-  "files": ["dist", "package.json", "LICENSE", "README.md"],
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },
@@ -31,13 +36,13 @@
     "@emotion/styled": "^11.0.0",
     "lodash.escape": "4.0.1",
     "lodash.throttle": "4.1.1",
+    "moment": "2.29.1",
     "parse5": "6.0.1",
     "prism-react-renderer": "1.1.1",
     "prop-types": "15.7.2",
-    "tiny-invariant": "1.1.0",
-    "moment": "2.29.1",
     "rss-parser": "3.10.0",
-    "swr": "0.4.0"
+    "swr": "0.4.0",
+    "tiny-invariant": "1.1.0"
   },
   "devDependencies": {
     "react": "17.0.1",
