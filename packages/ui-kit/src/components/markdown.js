@@ -245,6 +245,10 @@ const TypographyPage = styled.div`
     margin-top: ${dimensions.spacings.m};
   }
 
+  section:first-of-type > * {
+    margin-top: 0 !important;
+  }
+
   section > ${H2} + *,
   section > ${H3} + *,
   section > ${H4} + *,
