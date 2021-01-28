@@ -220,6 +220,7 @@ const TableHeader = styled.th`
 `;
 
 const InlineCode = styled.code`
+  outline: 1px solid ${colors.light.borderSecondary};
   background-color: ${colors.light.surfaceInlineCode};
   border: 1px solid ${colors.light.surfaceInfo};
   border-radius: ${dimensions.spacings.xs};
