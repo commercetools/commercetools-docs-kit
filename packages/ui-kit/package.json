@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/ui-kit",
   "description": "UI component library for building commercetools documentation websites",
-  "version": "14.0.0",
+  "version": "14.0.2",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -15,12 +15,7 @@
   },
   "main": "dist/commercetools-docs-ui-kit.cjs.js",
   "module": "dist/commercetools-docs-ui-kit.esm.js",
-  "files": [
-    "dist",
-    "package.json",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["dist", "package.json", "LICENSE", "README.md"],
   "scripts": {
     "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },

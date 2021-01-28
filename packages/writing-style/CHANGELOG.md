@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.0.4
+
+### Patch Changes
+
+- [`cfa79c3`](https://github.com/commercetools/commercetools-docs-kit/commit/cfa79c34273a9ee311a845cac7124c30faf76da9) [#840](https://github.com/commercetools/commercetools-docs-kit/pull/840) Thanks [@adinakleine](https://github.com/adinakleine)! - Updates acronyms in writing style checker
+
 ## 3.0.3
 
 ### Patch Changes
