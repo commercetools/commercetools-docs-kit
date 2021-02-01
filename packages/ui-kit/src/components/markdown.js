@@ -221,8 +221,7 @@ const TableHeader = styled.th`
 
 const InlineCode = styled.code`
   background-color: ${colors.light.surfaceInlineCode};
-  border: 1px solid ${colors.light.surfaceInfo};
-  border-color: ${colors.light.borderSecondary};
+  border: 1px solid ${colors.light.borderSecondary};
   border-radius: ${dimensions.spacings.xs};
   color: ${colors.light.textCode};
   font-family: ${typography.fontFamilies.code};
