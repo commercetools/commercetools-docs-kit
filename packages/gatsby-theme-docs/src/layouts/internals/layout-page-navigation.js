@@ -139,9 +139,10 @@ const LayoutPageNavigation = (props) => {
               <ArrowUpIcon size="medium" color="neutral60" />
             </div>
             <SpacingsStack scale="xs">
+              {/* The padding is required to align the page title with the icon */}
               <div
                 css={css`
-                  padding-top: ${designSystem.dimensions.heights.onePixel};
+                  padding-top: 1px;
                 `}
               >
                 {props.pageTitle}
