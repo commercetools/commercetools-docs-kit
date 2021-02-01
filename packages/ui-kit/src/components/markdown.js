@@ -245,7 +245,7 @@ const TypographyPage = styled.div`
     margin-top: ${dimensions.spacings.m};
   }
 
-  section:first-of-type > * {
+  section:first-of-type > *:first-child {
     margin-top: 0 !important;
   }
 
