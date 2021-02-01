@@ -139,7 +139,14 @@ const LayoutPageNavigation = (props) => {
               <ArrowUpIcon size="medium" color="neutral60" />
             </div>
             <SpacingsStack scale="xs">
-              <div>{props.pageTitle}</div>
+              {/* The padding is required to align the page title with the icon */}
+              <div
+                css={css`
+                  padding-top: 1px;
+                `}
+              >
+                {props.pageTitle}
+              </div>
               {props.beta && (
                 <BetaWrapper>
                   <BetaFlag />
