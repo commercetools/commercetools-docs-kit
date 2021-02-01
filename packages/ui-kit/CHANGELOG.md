@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 14.0.3
+
+### Patch Changes
+
+- [`a318f55`](https://github.com/commercetools/commercetools-docs-kit/commit/a318f55874b57d3eada7b2b460936acc07c3cec9) [#854](https://github.com/commercetools/commercetools-docs-kit/pull/854) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit version range to `10.45.0`
+
+* [`758bf49`](https://github.com/commercetools/commercetools-docs-kit/commit/758bf4993e5811765a6c26a65e9e8dc9d49fb00d) [#852](https://github.com/commercetools/commercetools-docs-kit/pull/852) Thanks [@TimonRey](https://github.com/TimonRey)! - String literals were given an outline for better visibility.
+
 ## 14.0.2
 
 ### Patch Changes
