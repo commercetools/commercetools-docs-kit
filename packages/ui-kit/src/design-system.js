@@ -124,10 +124,10 @@ export const tokens = {
 
 export const dimensions = {
   heights: {
+    onePixel: '1px',
     header: '48px',
     inputSearch: '32px',
     childSectionNavLink: '28px',
-    arrowUpIconMarginTop: '-1px',
   },
   widths: {
     pageContent: pageWidth,
