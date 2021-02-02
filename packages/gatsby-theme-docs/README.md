@@ -107,7 +107,7 @@ module.exports = {
 - `hubspotTrackingCode` (_optional_): this is HubSpot tracking code.
 
 - `excludeFromSearchIndex` (_optional_): indicates that the website should not be indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute. **Default: `true`**
-  (Note that this dosn't currently work with Algolia Docsearch crawler)
+  (Note that this dosn't currently work with Algolia's Docsearch crawler)
 
 - `allowWideContentLayout` (_optional_): enables all content pages to use a wider layout that gives space to side-by-side content on large viewports. This must be used with `wideLayout`, see also the `wideLayout` frontmatter option and the `<SideBySide>` component on how to use it. **Default: `false`**.
 
@@ -180,7 +180,7 @@ Supported frontmatter options are:
 - `title` (string, **required**): the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
 - `beta` (boolean): to indicate if the _beta_ info message should be displayed or not.
 - `excludeFromSearchIndex` (boolean): to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
-  (Note that this dosn't currently work with Algolia Docsearch crawler)
+  (Note that this dosn't currently work with Algolia's Docsearch crawler)
 - `navLevels` (number): allows to reduce the depth of the on-page navigation for pages where it would get too long to fit the screen. You want to set 2 here if you need it.
 - `wideLayout` (boolean): to indicate that the page can go into a two-column content space on large viewport sizes. See the `<SideBySide>` component below for more information on how to use it. This option must be used with `allowWideContentLayout` theme option set to `true`.
 
