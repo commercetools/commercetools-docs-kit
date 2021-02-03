@@ -4,7 +4,7 @@
   "description": "commercetools Documentation Kit (monorepo)",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*", "websites/*"],
+  "workspaces": ["packages/*", "websites/*", "api-specs/*"],
   "preconstruct": {
     "packages": ["packages/ui-kit"]
   },
@@ -16,6 +16,7 @@
     "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
     "prebuild": "yarn build-packages && yarn generate-icons",
     "postbuild": "cp -f ./websites/index.html ./public && yarn check-links",
+    "vercel-build": "amazon-linux-extras install java-openjdk11 && yarn build",
     "generate-icons": "lerna run generate-icons && prettier --write '**/generated/*.js'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
