@@ -1,5 +1,25 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`a318f55`](https://github.com/commercetools/commercetools-docs-kit/commit/a318f55874b57d3eada7b2b460936acc07c3cec9), [`758bf49`](https://github.com/commercetools/commercetools-docs-kit/commit/758bf4993e5811765a6c26a65e9e8dc9d49fb00d)]:
+  - @commercetools-docs/gatsby-theme-docs@14.0.3
+  - @commercetools-docs/ui-kit@14.0.3
+
+## 14.0.2
+
+### Patch Changes
+
+- [`f55a7f7`](https://github.com/commercetools/commercetools-docs-kit/commit/f55a7f7bf7400f631ba7b3621474170bcae002d6) [#834](https://github.com/commercetools/commercetools-docs-kit/pull/834) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`df7876c`](https://github.com/commercetools/commercetools-docs-kit/commit/df7876c0510b436fd4388e28c6aa9116e92d8778) [#844](https://github.com/commercetools/commercetools-docs-kit/pull/844) Thanks [@TimonRey](https://github.com/TimonRey)! - The gatsby dependency was downgraded due to a bug related to the javasript bundle on development.
+
+* Updated dependencies [[`921c136`](https://github.com/commercetools/commercetools-docs-kit/commit/921c136cc5703fad7f504c5eeab033b22f0bbc1c), [`11db7cd`](https://github.com/commercetools/commercetools-docs-kit/commit/11db7cd67e367042e35937ed80167e6f57afe257), [`f55a7f7`](https://github.com/commercetools/commercetools-docs-kit/commit/f55a7f7bf7400f631ba7b3621474170bcae002d6), [`80c5efa`](https://github.com/commercetools/commercetools-docs-kit/commit/80c5efa1bfd3b3911145ce56d737e79601db9ee4), [`eeb404f`](https://github.com/commercetools/commercetools-docs-kit/commit/eeb404fb60f643ce58675368a9a11ac248e840e5), [`df7876c`](https://github.com/commercetools/commercetools-docs-kit/commit/df7876c0510b436fd4388e28c6aa9116e92d8778), [`5336b99`](https://github.com/commercetools/commercetools-docs-kit/commit/5336b9977734fdda6f4a1f3359cfd52ea4a68c06)]:
+  - @commercetools-docs/gatsby-theme-docs@14.0.2
+  - @commercetools-docs/ui-kit@14.0.2
+
 ## 14.0.1
 
 ### Patch Changes

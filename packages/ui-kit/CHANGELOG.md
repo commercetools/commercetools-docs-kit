@@ -1,5 +1,23 @@
 # @commercetools-docs/ui-kit
 
+## 14.0.3
+
+### Patch Changes
+
+- [`a318f55`](https://github.com/commercetools/commercetools-docs-kit/commit/a318f55874b57d3eada7b2b460936acc07c3cec9) [#854](https://github.com/commercetools/commercetools-docs-kit/pull/854) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit version range to `10.45.0`
+
+* [`758bf49`](https://github.com/commercetools/commercetools-docs-kit/commit/758bf4993e5811765a6c26a65e9e8dc9d49fb00d) [#852](https://github.com/commercetools/commercetools-docs-kit/pull/852) Thanks [@TimonRey](https://github.com/TimonRey)! - String literals were given an outline for better visibility.
+
+## 14.0.2
+
+### Patch Changes
+
+- [`921c136`](https://github.com/commercetools/commercetools-docs-kit/commit/921c136cc5703fad7f504c5eeab033b22f0bbc1c) [#850](https://github.com/commercetools/commercetools-docs-kit/pull/850) Thanks [@emmenko](https://github.com/emmenko)! - Fix emotion import, update lockfile
+
+* [`11db7cd`](https://github.com/commercetools/commercetools-docs-kit/commit/11db7cd67e367042e35937ed80167e6f57afe257) [#843](https://github.com/commercetools/commercetools-docs-kit/pull/843) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- [`f55a7f7`](https://github.com/commercetools/commercetools-docs-kit/commit/f55a7f7bf7400f631ba7b3621474170bcae002d6) [#834](https://github.com/commercetools/commercetools-docs-kit/pull/834) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
 ## 14.0.0
 
 ### Minor Changes

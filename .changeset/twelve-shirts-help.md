@@ -1,8 +1,0 @@
----
-"@commercetools-docs/gatsby-theme-docs": patch
-"@commercetools-website/api-docs-smoke-test": patch
-"@commercetools-website/docs-smoke-test": patch
-"@commercetools-website/site-template": patch
----
-
-Fix SSR warnings, use experimental flags for development.

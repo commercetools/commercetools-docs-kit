@@ -221,7 +221,7 @@ const TableHeader = styled.th`
 
 const InlineCode = styled.code`
   background-color: ${colors.light.surfaceInlineCode};
-  border: 1px solid ${colors.light.surfaceInfo};
+  border: 1px solid ${colors.light.borderSecondary};
   border-radius: ${dimensions.spacings.xs};
   color: ${colors.light.textCode};
   font-family: ${typography.fontFamilies.code};
@@ -243,6 +243,10 @@ const TypographyPage = styled.div`
 
   section > * + * {
     margin-top: ${dimensions.spacings.m};
+  }
+
+  section:first-of-type > *:first-child {
+    margin-top: 0 !important;
   }
 
   section > ${H2} + *,
