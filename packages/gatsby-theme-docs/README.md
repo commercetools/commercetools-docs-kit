@@ -107,7 +107,7 @@ module.exports = {
 - `hubspotTrackingCode` (_optional_): this is HubSpot tracking code.
 
 - `excludeFromSearchIndex` (_optional_): indicates that the website should not be indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute. **Default: `true`**
-  (Note that this dosn't currently work with Algolia's Docsearch crawler)
+  (Note that this doesn't currently work with Algolia's Docsearch crawler)
 
 - `allowWideContentLayout` (_optional_): enables all content pages to use a wider layout that gives space to side-by-side content on large viewports. This must be used with `wideLayout`, see also the `wideLayout` frontmatter option and the `<SideBySide>` component on how to use it. **Default: `false`**.
 
