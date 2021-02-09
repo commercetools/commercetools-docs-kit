@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
@@ -10,13 +10,24 @@ import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 import GlobalNavigationLink from './global-navigation-link';
 import BetaFlag from './beta-flag';
 
+const slideAnimationMobile = keyframes`
+  from { margin-top: -200%; }
+  to { margin-top: 0; }
+`;
+
+const slideAnimationDefault = keyframes`
+  from { margin-top: -50%; }
+  to { margin-top: 0; }
+`;
+
 const Container = styled.div`
   width: 100%;
   max-width: 100vw;
-
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    animation: ${slideAnimationMobile} 0.5s ease-out alternate;
     overflow: auto;
   }
+  animation: ${slideAnimationDefault} 0.3s ease-out alternate;
 `;
 const Content = styled.div`
   display: flex;
