@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@commercetools-docs/gatsby-theme-docs": "14.0.3",
-    "gatsby": "2.32.0",
+    "gatsby": "2.32.3",
     "gatsby-source-filesystem": "2.11.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"

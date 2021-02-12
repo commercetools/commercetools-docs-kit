@@ -9,5 +9,5 @@ module.exports = {
     'rss-feeds',
   ],
   testMatch: ['**/*.md', '**/*.mdx'],
-  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],
+  watchPlugins: ['jest-watch-typeahead/filename'],
 };

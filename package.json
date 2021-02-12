@@ -105,7 +105,6 @@
     "jest-runner-prettier": "0.3.6",
     "jest-runner-stylelint": "2.3.7",
     "jest-silent-reporter": "0.4.0",
-    "jest-watch-master": "1.0.0",
     "jest-watch-typeahead": "0.6.1",
     "lerna": "3.22.1",
     "linkinator": "2.13.1",
