@@ -1,4 +1,3 @@
-import React from 'react';
 import { withPrefix } from 'gatsby';
 import { css } from '@emotion/react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';

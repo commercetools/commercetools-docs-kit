@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FullWidthContainer } from '@commercetools-docs/gatsby-theme-docs';
 import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
@@ -200,7 +200,7 @@ const CodeBlock = (props) => {
   const isCommandLine = ['terminal', 'console'].includes(languageCode);
 
   // Copy to clipboard logic
-  const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
+  const [isCopiedToClipboard, setIsCopiedToClipboard] = useState(false);
   const handleCopyToClipboardClick = () => {
     copyToClipboard(props.content);
 

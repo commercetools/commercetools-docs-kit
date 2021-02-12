@@ -1,4 +1,4 @@
-import React from 'react';
+import { Children } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { RibbonSvgIcon } from '../icons';
@@ -151,7 +151,7 @@ const Table = styled.table`
       left: -9999px;
     }
     ${(props) => {
-      const tableHeaders = React.Children.toArray(props.children).find(
+      const tableHeaders = Children.toArray(props.children).find(
         (elem) => elem.type === 'thead' || elem.props.mdxType === 'thead'
       );
       if (!tableHeaders) return null;
@@ -159,7 +159,7 @@ const Table = styled.table`
       const rowHeadersChildren = Array.isArray(rowHeaders)
         ? rowHeaders
         : rowHeaders.props.children;
-      return React.Children.toArray(rowHeadersChildren).reduce(
+      return Children.toArray(rowHeadersChildren).reduce(
         (styles, elem, index) => `
         ${styles}
         td:nth-of-type(${index + 1})::before { content: "${

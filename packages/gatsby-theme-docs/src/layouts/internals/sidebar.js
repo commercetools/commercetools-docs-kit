@@ -1,4 +1,4 @@
-import React from 'react';
+import { useLayoutEffect, useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
@@ -21,7 +21,7 @@ const ReleaseNotesIcon = createStyledIcon(ReleaseNotesSvgIcon);
 // `connect` to perform sync updates to a ref to save the latest props after
 // a render is actually committed to the DOM.
 const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -175,9 +175,9 @@ const SidebarLinkWrapper = (props) => {
   const cachedScrollPosition = (location.state || {}).sidebarScrollPosition;
   const locationPath = trimTrailingSlash(location.pathname);
 
-  const linkRef = React.useRef();
+  const linkRef = useRef();
 
-  const restoreScrollPosition = React.useCallback(() => {
+  const restoreScrollPosition = useCallback(() => {
     document
       .getElementById(scrollContainerId)
       .scrollBy(0, cachedScrollPosition);
@@ -233,7 +233,7 @@ SidebarLinkWrapper.propTypes = {
 
 const SidebarChapter = (props) => {
   const elemId = `sidebar-chapter-${props.index}`;
-  const getChapterDOMElement = React.useCallback(
+  const getChapterDOMElement = useCallback(
     () => document.getElementById(elemId),
     [elemId]
   );

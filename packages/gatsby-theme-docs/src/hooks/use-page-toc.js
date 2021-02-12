@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
+import { createContext, useContext } from 'react';
 
-export const PageTocContext = React.createContext({});
+export const PageTocContext = createContext({});
 
-export const usePageToc = () => React.useContext(PageTocContext);
+export const usePageToc = () => useContext(PageTocContext);

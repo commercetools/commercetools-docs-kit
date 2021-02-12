@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -150,7 +150,7 @@ const Description = (props) => {
             Can be{' '}
             {props.property.enumeration.map((currentEnum, index) => {
               return index === props.property.enumeration.length - 1 ? (
-                <React.Fragment key={currentEnum}>
+                <Fragment key={currentEnum}>
                   or{' '}
                   <Markdown.InlineCode css={customCodeStyle}>
                     {generateAppropriatePrimitiveText(
@@ -158,9 +158,9 @@ const Description = (props) => {
                       currentEnum
                     )}
                   </Markdown.InlineCode>
-                </React.Fragment>
+                </Fragment>
               ) : (
-                <React.Fragment key={currentEnum}>
+                <Fragment key={currentEnum}>
                   <Markdown.InlineCode css={customCodeStyle}>
                     {generateAppropriatePrimitiveText(
                       props.property.type,
@@ -168,7 +168,7 @@ const Description = (props) => {
                     )}
                   </Markdown.InlineCode>
                   ,{' '}
-                </React.Fragment>
+                </Fragment>
               );
             })}
           </Info>

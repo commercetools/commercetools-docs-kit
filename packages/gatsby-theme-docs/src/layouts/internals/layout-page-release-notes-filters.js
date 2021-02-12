@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from 'react-intl';
 import { keyframes } from '@emotion/react';
@@ -85,9 +85,9 @@ const ToggleMenuButton = styled.div`
 `;
 
 const LayoutPageReleaseNotesFilters = () => {
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
-  const [modalPortalNode, setModalPortalNode] = React.useState();
-  React.useEffect(() => {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [modalPortalNode, setModalPortalNode] = useState();
+  useEffect(() => {
     setModalPortalNode(document.getElementById('modal-portal'));
   }, []);
 

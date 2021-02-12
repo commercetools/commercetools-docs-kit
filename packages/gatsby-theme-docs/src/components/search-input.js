@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
@@ -62,9 +62,9 @@ const SearchInputIcon = styled.span`
   ${(props) => `${props.position}: ${designSystem.dimensions.spacings.xs};`}
 `;
 
-const SearchInput = React.forwardRef((props, ref) => {
+const SearchInput = forwardRef((props, ref) => {
   const { onFocus } = props;
-  const [isActive, setIsActive] = React.useState(false);
+  const [isActive, setIsActive] = useState(false);
   const handleFocus = (event) => {
     if (props.isDisabled) return;
     if (onFocus) onFocus(event);
@@ -74,7 +74,7 @@ const SearchInput = React.forwardRef((props, ref) => {
     if (props.isDisabled) return;
     setIsActive(false);
   };
-  React.useEffect(() => {
+  useEffect(() => {
     const onKeyPress = (event) => {
       // Listen to "slash" key events to focus the search input
       if (event.key === '/') {

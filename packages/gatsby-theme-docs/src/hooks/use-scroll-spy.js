@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback, useEffect } from 'react';
 import throttle from 'lodash.throttle';
 
 const getElement = (selector) => document.querySelector(selector);
@@ -6,7 +6,7 @@ const getElement = (selector) => document.querySelector(selector);
 const throttleMs = 100;
 
 const useScrollSpy = (selector, callback) => {
-  const onScroll = React.useCallback(
+  const onScroll = useCallback(
     throttle(() => {
       const element = getElement(selector);
       callback(element);
@@ -14,7 +14,7 @@ const useScrollSpy = (selector, callback) => {
     [callback]
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     const element = getElement(selector);
     element.addEventListener('scroll', onScroll);
     return () => {

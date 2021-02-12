@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css, Global } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
@@ -222,13 +222,11 @@ const algoliaStyles = css`
   }
 `;
 
-const AlgoliaSearch = React.forwardRef((props, ref) => {
-  const [isSearchEnabled, setIsSearchEnabled] = React.useState(true);
-  const [hasErrorLoadingAlgolia, setHasErrorLoadingAlgolia] = React.useState(
-    false
-  );
+const AlgoliaSearch = forwardRef((props, ref) => {
+  const [isSearchEnabled, setIsSearchEnabled] = useState(true);
+  const [hasErrorLoadingAlgolia, setHasErrorLoadingAlgolia] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // https://github.com/algolia/docsearch/issues/352
     const isClient = typeof window !== 'undefined';
     if (isClient) {

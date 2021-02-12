@@ -1,4 +1,4 @@
-import React from 'react';
+import { Children, isValidElement, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { designSystem, ContentNotifications } from '@commercetools-docs/ui-kit';
@@ -31,8 +31,8 @@ const Cards = (props) => {
   try {
     return (
       <Container {...props}>
-        {React.Children.map(props.children, (child) => {
-          if (!React.isValidElement(child)) {
+        {Children.map(props.children, (child) => {
+          if (!isValidElement(child)) {
             throwErrorMessage(child);
           } else if (
             child.type.displayName === 'MDXCreateElement' &&
@@ -42,7 +42,7 @@ const Cards = (props) => {
             throwErrorMessage(child.props.mdxType);
           }
 
-          return React.cloneElement(
+          return cloneElement(
             child,
             {
               clickable: props.clickable,

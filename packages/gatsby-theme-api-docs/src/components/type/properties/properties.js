@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import Table from '../../table';
 import Rows from './rows/rows';

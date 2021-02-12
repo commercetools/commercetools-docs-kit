@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 import fs from 'fs';
-import React from 'react';
+
 import { renderToString } from 'react-dom/server';
 import { withPrefix } from 'gatsby';
 import { createContentDigest } from 'gatsby-core-utils';

@@ -1,32 +1,32 @@
-import React from 'react';
+import { useState, useCallback } from 'react';
 
 const useLayoutState = () => {
   // State for the sidebar menu
-  const [isSidebarMenuOpen, setSidebarMenuOpen] = React.useState(false);
-  const toggleSidebarMenu = React.useCallback(() => {
+  const [isSidebarMenuOpen, setSidebarMenuOpen] = useState(false);
+  const toggleSidebarMenu = useCallback(() => {
     setSidebarMenuOpen((prev) => !prev);
   }, [setSidebarMenuOpen]);
-  const closeSidebarMenu = React.useCallback(() => {
+  const closeSidebarMenu = useCallback(() => {
     setSidebarMenuOpen(false);
   }, [setSidebarMenuOpen]);
 
   // State for the top menu
-  const [isTopMenuOpen, setIsTopMenuOpen] = React.useState(false);
-  const toggleTopMenu = React.useCallback(() => {
+  const [isTopMenuOpen, setIsTopMenuOpen] = useState(false);
+  const toggleTopMenu = useCallback(() => {
     setIsTopMenuOpen((prev) => !prev);
   }, [setIsTopMenuOpen]);
-  const closeTopMenu = React.useCallback(() => {
+  const closeTopMenu = useCallback(() => {
     setIsTopMenuOpen(false);
   }, [setIsTopMenuOpen]);
 
   // State for the search dialog
-  const [isSearchDialogOpen, setIsSearchDialogOpen] = React.useState(false);
-  const openSearchDialog = React.useCallback(() => {
+  const [isSearchDialogOpen, setIsSearchDialogOpen] = useState(false);
+  const openSearchDialog = useCallback(() => {
     setIsSearchDialogOpen(true);
     // Additionally make sure to close the top menu
     closeTopMenu();
   }, [setIsSearchDialogOpen, closeTopMenu]);
-  const closeSearchDialog = React.useCallback(() => {
+  const closeSearchDialog = useCallback(() => {
     setIsSearchDialogOpen(false);
   }, [setIsSearchDialogOpen]);
 

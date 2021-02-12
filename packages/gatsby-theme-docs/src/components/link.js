@@ -1,4 +1,4 @@
-import React from 'react';
+import { isValidElement, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Location } from '@reach/router';
@@ -141,11 +141,11 @@ const PureLink = (extendedProps) => {
       hrefObject.host
     )
   ) {
-    const linkWithIcon = React.isValidElement(props.children) ? (
+    const linkWithIcon = isValidElement(props.children) ? (
       // In case the children are a React element (e.g. <code>) we need to inject
       // the external link icon next to the actual text.
       // For this we assume that the React element's own child is plain text.
-      React.cloneElement(props.children, {
+      cloneElement(props.children, {
         children: (
           <InlineLink>
             <span css={getStylesFromProps({ noUnderline })}>

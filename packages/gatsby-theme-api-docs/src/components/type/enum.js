@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
 
@@ -18,12 +18,12 @@ const Enum = ({ values, enumDescriptions }) => {
             enumDescriptions.find((enumDesc) => enumDesc.name === value);
 
           return (
-            <React.Fragment key={value}>
+            <Fragment key={value}>
               <Markdown.Dt>{value}</Markdown.Dt>
               {enumDescription && enumDescription.description && (
                 <Markdown.Dd>{enumDescription.description}</Markdown.Dd>
               )}
-            </React.Fragment>
+            </Fragment>
           );
         })}
     </Markdown.Dl>

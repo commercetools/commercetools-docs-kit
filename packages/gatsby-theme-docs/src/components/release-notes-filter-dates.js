@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import moment from 'moment';
 import { designSystem } from '@commercetools-docs/ui-kit';

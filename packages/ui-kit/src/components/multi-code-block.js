@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useCallback, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { ThemeProvider } from '@emotion/react';
@@ -104,8 +104,8 @@ function extractLanguages(children) {
 function MultiCodeBlock(props) {
   const langs = extractLanguages(props.children);
 
-  const [selected, setSelected] = React.useState(langs[0]);
-  const handleOnLanguageChange = React.useCallback((event) => {
+  const [selected, setSelected] = useState(langs[0]);
+  const handleOnLanguageChange = useCallback((event) => {
     setSelected(event.target.value);
   }, []);
 
@@ -154,7 +154,7 @@ function MultiCodeBlock(props) {
           </Header>
         ) : null}
 
-        {React.cloneElement(
+        {cloneElement(
           Array.isArray(props.children)
             ? props.children.find((child) => child.props.language === selected)
             : props.children,

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { MultiCodeBlock, CodeBlock } from '@commercetools-docs/ui-kit';

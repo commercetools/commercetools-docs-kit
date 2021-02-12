@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';

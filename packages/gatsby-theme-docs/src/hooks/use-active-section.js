@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useCallback } from 'react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import useScrollSpy from './use-scroll-spy';
 
@@ -16,8 +16,8 @@ const getSectionElements = () =>
 const offset = calculateOffset();
 
 const useActiveSelection = () => {
-  const [activeSection, setActiveSection] = React.useState();
-  const onScroll = React.useCallback(() => {
+  const [activeSection, setActiveSection] = useState();
+  const onScroll = useCallback(() => {
     const sectionElements = getSectionElements();
     let nextActiveSection;
     sectionElements.forEach((section) => {

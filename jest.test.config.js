@@ -1,3 +1,5 @@
+process.env.ENABLE_NEW_JSX_TRANSFORM = 'true';
+
 module.exports = {
   displayName: 'test',
   preset: 'jest-preset-gatsby',

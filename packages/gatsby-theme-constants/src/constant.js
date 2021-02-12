@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
 import useConstant from './use-constant';
