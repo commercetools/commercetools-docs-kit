@@ -113,13 +113,13 @@ describe('rendering', () => {
     const props = createTestProps();
     const rendered = renderApp(<PageNavigation {...props} />);
 
-    expect(rendered.queryByText('Link 1')).toBeInTheDocument();
-    expect(rendered.queryByText('Link 2')).toBeInTheDocument();
-    expect(rendered.queryByText('Link 2/1')).toBeInTheDocument();
-    expect(rendered.queryByText('Link 2/1/1')).toBeInTheDocument();
-    expect(rendered.queryByText('Link 3')).toBeInTheDocument();
+    expect(rendered.getByText('Link 1')).toBeInTheDocument();
+    expect(rendered.getByText('Link 2')).toBeInTheDocument();
+    expect(rendered.getByText('Link 2/1')).toBeInTheDocument();
+    expect(rendered.getByText('Link 2/1/1')).toBeInTheDocument();
+    expect(rendered.getByText('Link 3')).toBeInTheDocument();
     expect(rendered.queryByText('Link 3/1')).not.toBeInTheDocument();
-    expect(rendered.queryByText('Link 3/1/1')).toBeInTheDocument();
+    expect(rendered.getByText('Link 3/1/1')).toBeInTheDocument();
 
     expect(rendered.queryByRole(/^active-(.*)/)).not.toBeInTheDocument();
 
@@ -148,7 +148,7 @@ describe('rendering', () => {
     });
 
     expect(
-      rendered.queryByText('Missing heading for level 2')
+      rendered.getByText('Missing heading for level 2')
     ).toBeInTheDocument();
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining(

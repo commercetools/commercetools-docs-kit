@@ -274,7 +274,6 @@ SidebarChapter.propTypes = {
       })
     ),
   }).isRequired,
-  isGlobalBeta: PropTypes.bool.isRequired,
   onLinkClick: PropTypes.func,
   nextScrollPosition: PropTypes.number.isRequired,
   // from @react/router
@@ -319,9 +318,7 @@ const SidebarNavigationLinks = (props) => {
 };
 SidebarNavigationLinks.propTypes = {
   onLinkClick: PropTypes.func,
-  siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
-  hasReleaseNotes: PropTypes.bool.isRequired,
   nextScrollPosition: PropTypes.number.isRequired,
   // from @react/router
   location: PropTypes.shape({

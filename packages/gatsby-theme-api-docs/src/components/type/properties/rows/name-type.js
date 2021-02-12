@@ -65,8 +65,6 @@ NameType.propTypes = {
     required: PropTypes.bool.isRequired,
     beta: PropTypes.bool,
   }).isRequired,
-  parentDiscriminator: PropTypes.string,
-  discriminatorValue: PropTypes.string,
 };
 
 export default NameType;

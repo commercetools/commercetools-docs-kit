@@ -182,6 +182,7 @@ describe('rendering', () => {
     ]
       .filter(Boolean)
       .join(' ');
+    // eslint-disable-next-line jest/valid-title
     it(title, () => {
       getEnv.mockReturnValue(scenario.isProd === true);
 
@@ -189,7 +190,7 @@ describe('rendering', () => {
         <Link {...scenario.props}>{scenario.title}</Link>,
         scenario.location.pathname
       );
-      expect(rendered.queryByText(scenario.title)).toBeInTheDocument();
+      expect(rendered.getByText(scenario.title)).toBeInTheDocument();
       expect(
         rendered.container.querySelector(
           `[data-link-type="${scenario.expected['data-link-type']}"]`

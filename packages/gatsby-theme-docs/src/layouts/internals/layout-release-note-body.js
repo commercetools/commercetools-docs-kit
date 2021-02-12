@@ -50,6 +50,7 @@ const ReleaseNoteBody = (props) => (
 
 ReleaseNoteBody.propTypes = {
   date: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
   type: PropTypes.oneOf(['feature', 'enhancement', 'fix', 'announcement'])
     .isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,

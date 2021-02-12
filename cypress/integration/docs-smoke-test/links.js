@@ -212,7 +212,9 @@ describe('Links', () => {
     cy.visit(linksPageUrl);
   });
   scenarios.forEach((scenario) => {
+    // eslint-disable-next-line jest/valid-title
     describe(scenario.title, () => {
+      // eslint-disable-next-line jest/valid-title
       it(scenario.expectationMessage, () => {
         cy.findAllByText(scenario.title)
           .first()

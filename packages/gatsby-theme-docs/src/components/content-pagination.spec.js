@@ -20,10 +20,10 @@ describe('Rendering', () => {
 
     const rendered = render(<PurePagination slug={slug} data={data} />);
 
-    expect(rendered.queryByText('Previous:')).toBeInTheDocument();
-    expect(rendered.queryByText('Next:')).toBeInTheDocument();
-    expect(rendered.queryByText('page 1')).toBeInTheDocument();
-    expect(rendered.queryByText('page 3')).toBeInTheDocument();
+    expect(rendered.getByText('Previous:')).toBeInTheDocument();
+    expect(rendered.getByText('Next:')).toBeInTheDocument();
+    expect(rendered.getByText('page 1')).toBeInTheDocument();
+    expect(rendered.getByText('page 3')).toBeInTheDocument();
   });
 
   it('should render only previous button', async () => {
@@ -31,9 +31,9 @@ describe('Rendering', () => {
 
     const rendered = render(<PurePagination slug={slug} data={data} />);
 
-    expect(rendered.queryByText('Previous:')).toBeInTheDocument();
+    expect(rendered.getByText('Previous:')).toBeInTheDocument();
     expect(rendered.queryByText('Next:')).not.toBeInTheDocument();
-    expect(rendered.queryByText('page 2')).toBeInTheDocument();
+    expect(rendered.getByText('page 2')).toBeInTheDocument();
   });
 
   it('should render only next button', async () => {
@@ -42,8 +42,8 @@ describe('Rendering', () => {
     const rendered = render(<PurePagination slug={slug} data={data} />);
 
     expect(rendered.queryByText('Previous:')).not.toBeInTheDocument();
-    expect(rendered.queryByText('Next:')).toBeInTheDocument();
-    expect(rendered.queryByText('page 2')).toBeInTheDocument();
+    expect(rendered.getByText('Next:')).toBeInTheDocument();
+    expect(rendered.getByText('page 2')).toBeInTheDocument();
   });
 });
 

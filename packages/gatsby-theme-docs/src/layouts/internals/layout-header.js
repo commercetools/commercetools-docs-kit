@@ -252,7 +252,6 @@ const LayoutHeader = (props) => {
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
-  constraintWidth: PropTypes.string,
   isSearchDialogOpen: PropTypes.bool.isRequired,
   openSearchDialog: PropTypes.func.isRequired,
   closeSearchDialog: PropTypes.func.isRequired,

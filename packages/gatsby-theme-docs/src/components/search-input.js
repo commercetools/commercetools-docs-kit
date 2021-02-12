@@ -125,6 +125,7 @@ const SearchInput = React.forwardRef((props, ref) => {
 SearchInput.displayName = 'SearchInput';
 SearchInput.propTypes = {
   id: PropTypes.string,
+  // eslint-disable-next-line react/no-unused-prop-types
   size: PropTypes.oneOf(['small', 'scale']).isRequired,
   onFocus: PropTypes.func,
   onClose: PropTypes.func,
