@@ -39,7 +39,7 @@
     "@fontsource/roboto-mono": "4.1.0",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
-    "@sentry/browser": "5.30.0",
+    "@sentry/browser": "6.0.1",
     "@svgr/webpack": "5.5.0",
     "docsearch.js": "2.6.3",
     "gatsby-image": "2.10.0",
