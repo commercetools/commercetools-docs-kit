@@ -7,5 +7,5 @@ module.exports = {
     '<rootDir>/packages/gatsby-theme-*/src/**/*.js',
     '<rootDir>/packages/ui-kit/src/**/*.js',
   ],
-  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],
+  watchPlugins: ['jest-watch-typeahead/filename'],
 };
