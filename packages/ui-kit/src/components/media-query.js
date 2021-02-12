@@ -7,16 +7,23 @@ const MediaQuery = styled.div`
     switch (props.forViewport) {
       case 'mobile':
         return css`
-          display: none;
+          display: ${props.hideIfMatch ? 'block' : 'none'};
           @media screen and (${dimensions.viewports.mobile}) {
-            display: block;
+            display: ${props.hideIfMatch ? 'none' : 'block'};
           }
         `;
       case 'tablet':
         return css`
-          display: none;
+          display: ${props.hideIfMatch ? 'block' : 'none'};
           @media screen and (${dimensions.viewports.tablet}) {
-            display: block;
+            display: ${props.hideIfMatch ? 'none' : 'block'};
+          }
+        `;
+      case 'laptop':
+        return css`
+          display: ${props.hideIfMatch ? 'block' : 'none'};
+          @media screen and (${dimensions.viewports.laptop}) {
+            display: ${props.hideIfMatch ? 'none' : 'block'};
           }
         `;
       default:

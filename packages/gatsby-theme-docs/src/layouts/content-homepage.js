@@ -22,11 +22,13 @@ const LayoutContentHomepage = (props) => {
       <LayoutSidebar
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
+        {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
         isGlobalBeta={props.pageData.isGlobalBeta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
       <LayoutMain
+        {...layoutState.topMenu}
         preventScroll={
           layoutState.topMenu.isTopMenuOpen ||
           layoutState.sidebar.isSidebarMenuOpen

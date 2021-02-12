@@ -10,12 +10,7 @@ import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 import GlobalNavigationLink from './global-navigation-link';
 import BetaFlag from './beta-flag';
 
-const slideAnimationMobile = keyframes`
-  from { margin-top: -200%; }
-  to { margin-top: 0; }
-`;
-
-const slideAnimationDefault = keyframes`
+const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
   to { margin-top: 0; }
 `;
@@ -23,11 +18,6 @@ const slideAnimationDefault = keyframes`
 const Container = styled.div`
   width: 100%;
   max-width: 100vw;
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    animation: ${slideAnimationMobile} 0.5s ease-out alternate;
-    overflow: auto;
-  }
-  animation: ${slideAnimationDefault} 0.3s ease-out alternate;
 `;
 const Content = styled.div`
   display: flex;
@@ -43,6 +33,12 @@ const Content = styled.div`
   height: -moz-fit-content;
   height: fit-content;
   /* stylelint-enable */
+
+  animation: ${slideOpenAnimation} 0.15s ease-out alternate;
+
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    animation: ${slideOpenAnimation} 0.3s ease-out alternate;
+  }
 `;
 const centeredContainerStyle = css`
   width: 100%;
