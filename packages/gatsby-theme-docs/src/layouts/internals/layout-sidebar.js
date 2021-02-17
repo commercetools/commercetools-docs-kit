@@ -144,7 +144,6 @@ LayoutSidebar.propTypes = {
   isGlobalBeta: PropTypes.bool.isRequired,
   hasReleaseNotes: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,
-  closeSearchDialog: PropTypes.func.isRequired,
 };
 
 export default LayoutSidebar;
