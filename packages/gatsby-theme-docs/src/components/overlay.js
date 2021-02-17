@@ -8,7 +8,7 @@ const backgroundAnimation = keyframes`
 `;
 
 const Overlay = styled.div`
-  animation: ${backgroundAnimation} 0.3s;
+  animation: ${backgroundAnimation} 0.3s ease-out;
   animation-fill-mode: forwards;
   z-index: ${(props) => props.zIndex || designSystem.dimensions.stacks.overlay};
   position: ${(props) => props.position || 'fixed'};
