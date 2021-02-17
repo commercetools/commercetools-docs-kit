@@ -14,6 +14,10 @@ const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
   to { margin-top: 0; }
 `;
+const slideOpenAnimationMobile = keyframes`
+  from { margin-top: -150%; }
+  to { margin-top: 0; }
+`;
 
 const Container = styled.div`
   width: 100%;
@@ -37,7 +41,7 @@ const Content = styled.div`
   animation: ${slideOpenAnimation} 0.15s ease-out alternate;
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    animation: ${slideOpenAnimation} 0.3s ease-out alternate;
+    animation: ${slideOpenAnimationMobile} 0.3s ease-out alternate;
   }
 `;
 const centeredContainerStyle = css`

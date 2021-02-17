@@ -139,6 +139,7 @@ const LayoutSidebar = (props) => {
         ) : null}
         {props.isSearchDialogOpen && (
           <Overlay
+            zIndex="22"
             position="absolute"
             display="none"
             css={css`
