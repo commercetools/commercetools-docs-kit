@@ -10,7 +10,14 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
-import { ReleaseNotesSvgIcon } from '../../icons';
+import {
+  ReleaseNotesSvgIcon,
+  CustomApplicationSmallSvgIcon,
+  HttpApiSmallSvgIcon,
+  MerchantCenterSmallSvgIcon,
+  TutorialsSmallSvgIcon,
+  OpenSourceSmallSvgIcon,
+} from '../../icons';
 import LayoutHeaderLogo from './layout-header-logo';
 
 const ReleaseNotesIcon = createStyledIcon(ReleaseNotesSvgIcon);
@@ -330,6 +337,24 @@ SidebarNavigationLinks.propTypes = {
 };
 
 const Sidebar = (props) => {
+  let SiteIcon;
+  switch (props.siteTitle) {
+    case 'Custom Applications':
+      SiteIcon = createStyledIcon(CustomApplicationSmallSvgIcon);
+      break;
+    case 'HTTP API':
+      SiteIcon = createStyledIcon(HttpApiSmallSvgIcon);
+      break;
+    case 'Merchant Center':
+      SiteIcon = createStyledIcon(MerchantCenterSmallSvgIcon);
+      break;
+    case 'Tutorials':
+      SiteIcon = createStyledIcon(TutorialsSmallSvgIcon);
+      break;
+    default:
+      SiteIcon = createStyledIcon(OpenSourceSmallSvgIcon);
+  }
+
   // If this is a release page, we need to render the "back" link instead of
   // the normal navigation links.
   const isReleasePage = props.location.pathname.startsWith(
@@ -354,9 +379,12 @@ const Sidebar = (props) => {
         <WebsiteTitle theme={theme}>
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaFlag />}</div>
-            <WebsiteTitleLink as={Link} id="site-title" to="/" theme={theme}>
-              {props.siteTitle}
-            </WebsiteTitleLink>
+            <SpacingsInline scale="s">
+              <SiteIcon />
+              <WebsiteTitleLink as={Link} id="site-title" to="/" theme={theme}>
+                {props.siteTitle}
+              </WebsiteTitleLink>
+            </SpacingsInline>
           </SpacingsStack>
         </WebsiteTitle>
         <SidebarScrollFader
