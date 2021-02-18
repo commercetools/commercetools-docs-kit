@@ -52,7 +52,6 @@ LayoutMain.displayName = 'LayoutMain';
 LayoutMain.propTypes = {
   preventScroll: PropTypes.bool.isRequired,
   isTopMenuOpen: PropTypes.bool.isRequired,
-  toggleTopMenu: PropTypes.func.isRequired,
   closeTopMenu: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };

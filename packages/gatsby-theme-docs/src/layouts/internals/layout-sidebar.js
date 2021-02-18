@@ -160,7 +160,6 @@ LayoutSidebar.propTypes = {
   toggleSidebarMenu: PropTypes.func.isRequired,
   closeSidebarMenu: PropTypes.func.isRequired,
   isTopMenuOpen: PropTypes.bool.isRequired,
-  toggleTopMenu: PropTypes.func.isRequired,
   closeTopMenu: PropTypes.func.isRequired,
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,

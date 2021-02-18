@@ -251,8 +251,6 @@ LayoutHeader.propTypes = {
   closeSearchDialog: PropTypes.func.isRequired,
   isTopMenuOpen: PropTypes.bool.isRequired,
   toggleTopMenu: PropTypes.func.isRequired,
-  closeTopMenu: PropTypes.func.isRequired,
-  centeredTopMenu: PropTypes.bool,
   centeredSearchDialog: PropTypes.bool,
 };
 
