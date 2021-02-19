@@ -84,7 +84,7 @@ const LayoutSidebar = (props) => {
         {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
         {modalPortalNode &&
           ReactDOM.createPortal(
-            <Overlay onClick={props.closeSidebarMenu}>
+            <Overlay zIndex="22" onClick={props.closeSidebarMenu}>
               <Container
                 aria-label="Main Navigation"
                 isSidebarMenuOpen={true}
