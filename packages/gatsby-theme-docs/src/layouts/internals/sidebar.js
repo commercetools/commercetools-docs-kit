@@ -8,16 +8,10 @@ import { BackIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
+import PlaceholderSiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
-import {
-  ReleaseNotesSvgIcon,
-  CustomApplicationSmallSvgIcon,
-  HttpApiSmallSvgIcon,
-  MerchantCenterSmallSvgIcon,
-  TutorialsSmallSvgIcon,
-  OpenSourceSmallSvgIcon,
-} from '../../icons';
+import { ReleaseNotesSvgIcon } from '../../icons';
 import LayoutHeaderLogo from './layout-header-logo';
 
 const ReleaseNotesIcon = createStyledIcon(ReleaseNotesSvgIcon);
@@ -337,24 +331,6 @@ SidebarNavigationLinks.propTypes = {
 };
 
 const Sidebar = (props) => {
-  let SiteIcon;
-  switch (props.siteTitle) {
-    case 'Custom Applications':
-      SiteIcon = createStyledIcon(CustomApplicationSmallSvgIcon);
-      break;
-    case 'HTTP API':
-      SiteIcon = createStyledIcon(HttpApiSmallSvgIcon);
-      break;
-    case 'Merchant Center':
-      SiteIcon = createStyledIcon(MerchantCenterSmallSvgIcon);
-      break;
-    case 'Tutorials':
-      SiteIcon = createStyledIcon(TutorialsSmallSvgIcon);
-      break;
-    default:
-      SiteIcon = createStyledIcon(OpenSourceSmallSvgIcon);
-  }
-
   // If this is a release page, we need to render the "back" link instead of
   // the normal navigation links.
   const isReleasePage = props.location.pathname.startsWith(
@@ -380,7 +356,7 @@ const Sidebar = (props) => {
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaFlag />}</div>
             <SpacingsInline scale="s">
-              <SiteIcon />
+              <PlaceholderSiteIcon />
               <WebsiteTitleLink as={Link} id="site-title" to="/" theme={theme}>
                 {props.siteTitle}
               </WebsiteTitleLink>
