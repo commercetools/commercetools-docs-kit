@@ -63,7 +63,7 @@ const SearchInput = styled.input`
 
 const SearchInputIcon = styled.span`
   position: absolute;
-  z-index: 1;
+  z-index: ${designSystem.dimensions.stacks.base};
   display: flex;
   flex-direction: column;
   align-items: center;

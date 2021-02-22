@@ -6,7 +6,7 @@ const LayoutPageWrapper = styled.article`
   display: block;
   max-width: 100vw;
   box-shadow: ${designSystem.tokens.shadowForPageContent};
-  z-index: 1;
+  z-index: ${designSystem.dimensions.stacks.base};
 `;
 
 export default LayoutPageWrapper;

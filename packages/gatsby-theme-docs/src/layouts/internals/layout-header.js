@@ -11,15 +11,17 @@ import {
   LogoButton,
   MediaQuery,
 } from '@commercetools-docs/ui-kit';
-import { SearchDialog, SearchInput, Overlay, TopMenu } from '../../components';
+import { SearchDialog, SearchInput, Overlay } from '../../components';
 import { SearchSvgIcon } from '../../icons';
 
 const SearchIcon = createStyledIcon(SearchSvgIcon);
 
 const Container = styled.header`
   grid-area: header;
+  background-color: ${designSystem.colors.light.surfacePrimary};
   border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
-  z-index: 10;
+  border-left: 1px solid ${designSystem.colors.light.borderPrimary};
+  z-index: ${designSystem.dimensions.stacks.aboveOverlay};
   max-width: 100vw;
   width: 100%;
   display: grid;
@@ -108,7 +110,7 @@ const DocumentationSwitcherButton = styled.div`
   font-size: ${designSystem.typography.fontSizes.body};
   cursor: pointer;
   padding: 0;
-  margin: 0 0 0 ${designSystem.dimensions.spacings.m};
+  margin: 0 0 0 calc(${designSystem.dimensions.spacings.m} - 1px);
   display: flex;
   align-items: center;
   text-overflow: ellipsis;
@@ -136,7 +138,7 @@ const DocumentationSwitcherButton = styled.div`
   }
 
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    margin: 0 0 0 ${designSystem.dimensions.spacings.xl};
+    margin: 0 0 0 calc(${designSystem.dimensions.spacings.xl} - 1px);
   }
 `;
 const SearchContainer = styled.div`
@@ -205,14 +207,6 @@ const LayoutHeader = (props) => {
               )}
             </SpacingsInline>
           </DocumentationSwitcherButton>
-          {props.isTopMenuOpen ? (
-            <Overlay
-              top={designSystem.dimensions.heights.header}
-              onClick={props.closeTopMenu}
-            >
-              <TopMenu centered={props.centeredTopMenu} />
-            </Overlay>
-          ) : null}
         </Inline>
         <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
           {props.isSearchDialogOpen ? (
@@ -257,8 +251,6 @@ LayoutHeader.propTypes = {
   closeSearchDialog: PropTypes.func.isRequired,
   isTopMenuOpen: PropTypes.bool.isRequired,
   toggleTopMenu: PropTypes.func.isRequired,
-  closeTopMenu: PropTypes.func.isRequired,
-  centeredTopMenu: PropTypes.bool,
   centeredSearchDialog: PropTypes.bool,
 };
 

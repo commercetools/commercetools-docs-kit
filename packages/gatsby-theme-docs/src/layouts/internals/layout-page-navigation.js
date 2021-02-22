@@ -167,6 +167,7 @@ const LayoutPageNavigation = (props) => {
     return modalPortalNode
       ? ReactDOM.createPortal(
           <Overlay
+            zIndex="22"
             justifyContent="flex-end"
             onClick={() => {
               setMenuOpen(false);

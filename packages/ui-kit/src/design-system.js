@@ -166,6 +166,12 @@ export const dimensions = {
     enormous: pxToRem('72px'),
     huge: pxToRem('80px'),
   },
+  stacks: {
+    base: 1,
+    sidebar: 2,
+    overlay: 20,
+    aboveOverlay: 21,
+  },
 };
 
 export const typography = {
