@@ -29,6 +29,7 @@ const LayoutReleaseNotesDetail = (props) => {
       <LayoutSidebar
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
+        {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
         isGlobalBeta={props.pageData.isGlobalBeta}
         // Rendering a release note details page implicitly implies
@@ -36,6 +37,7 @@ const LayoutReleaseNotesDetail = (props) => {
         hasReleaseNotes={true}
       />
       <LayoutMain
+        {...layoutState.topMenu}
         preventScroll={
           layoutState.topMenu.isTopMenuOpen ||
           layoutState.sidebar.isSidebarMenuOpen

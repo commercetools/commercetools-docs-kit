@@ -52,7 +52,7 @@ const Input = styled.input`
 `;
 const SearchInputIcon = styled.span`
   position: absolute;
-  z-index: 1;
+  z-index: ${designSystem.dimensions.stacks.base};
   top: ${designSystem.dimensions.spacings.s};
   width: ${designSystem.dimensions.spacings.l};
   display: flex;
