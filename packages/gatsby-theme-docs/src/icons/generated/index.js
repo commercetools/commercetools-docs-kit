@@ -1,9 +1,13 @@
+export { default as HttpApiSmallSvgIcon } from './HttpApiSmall';
 export { default as CtLogoSvgIcon } from './CtLogo';
+export { default as CustomApplicationSmallSvgIcon } from './CustomApplicationSmall';
 export { default as LogoHorizontalSvgIcon } from './LogoHorizontal';
 export { default as LogoSvgIcon } from './Logo';
+export { default as MerchantCenterSmallSvgIcon } from './MerchantCenterSmall';
 export { default as OpenSourceSmallSvgIcon } from './OpenSourceSmall';
 export { default as ReleaseNotesSvgIcon } from './ReleaseNotes';
 export { default as RssSvgIcon } from './Rss';
 export { default as SearchSvgIcon } from './Search';
 export { default as SlashSvgIcon } from './Slash';
 export { default as StackedLinesIndentedIconSvgIcon } from './StackedLinesIndentedIcon';
+export { default as TutorialsSmallSvgIcon } from './TutorialsSmall';
