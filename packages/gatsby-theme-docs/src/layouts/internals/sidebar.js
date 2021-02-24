@@ -355,12 +355,12 @@ const Sidebar = (props) => {
         <WebsiteTitle theme={theme}>
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaFlag />}</div>
-            <SpacingsInline scale="s">
-              <PlaceholderSiteIcon />
-              <WebsiteTitleLink as={Link} id="site-title" to="/" theme={theme}>
-                {props.siteTitle}
-              </WebsiteTitleLink>
-            </SpacingsInline>
+            <WebsiteTitleLink as={Link} id="site-title" to="/" theme={theme}>
+              <SpacingsInline scale="s">
+                <PlaceholderSiteIcon />
+                <span>{props.siteTitle}</span>
+              </SpacingsInline>
+            </WebsiteTitleLink>
           </SpacingsStack>
         </WebsiteTitle>
         <SidebarScrollFader
