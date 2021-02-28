@@ -8,7 +8,7 @@ import { BackIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
-import PlaceholderSiteIcon from '../../overrides/site-icon';
+import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
 import { ReleaseNotesSvgIcon } from '../../icons';
@@ -357,7 +357,7 @@ const Sidebar = (props) => {
             <div>{props.isGlobalBeta && <BetaFlag />}</div>
             <WebsiteTitleLink as={Link} id="site-title" to="/" theme={theme}>
               <SpacingsInline scale="s">
-                <PlaceholderSiteIcon />
+                <SiteIcon />
                 <span>{props.siteTitle}</span>
               </SpacingsInline>
             </WebsiteTitleLink>
