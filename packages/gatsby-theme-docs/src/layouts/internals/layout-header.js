@@ -26,14 +26,14 @@ const Container = styled.header`
   width: 100%;
   display: grid;
   grid:
-    [row1-start] 'header-content' ${designSystem
-      .dimensions.heights.header} [row1-end]
+    [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
+      .heights.header} [row1-end]
     / 1fr;
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     display: grid;
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
@@ -43,17 +43,17 @@ const Container = styled.header`
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths.pageContentWithMargins}
       )
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
@@ -63,14 +63,14 @@ const Container = styled.header`
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
 `;
-const Content = styled.div`
-  grid-area: header-content;
+const TopMenuContainer = styled.div`
+  grid-area: header-top-menu;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,12 +78,17 @@ const Content = styled.div`
   margin: 0;
   height: 100%;
 `;
-const Blank = styled.div`
-  grid-area: header-blank;
-  display: none;
+const SearchBoxContainer = styled.div`
+  padding: 0 ${designSystem.dimensions.spacings.m};
+  grid-area: header-searchbox;
+  display: flex;
+  align-items: center;
 
-  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    display: block;
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    padding-right: 0;
+  }
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    padding-right: 0;
   }
 `;
 const Inline = styled.div`
@@ -170,7 +175,7 @@ const LayoutHeader = (props) => {
 
   return (
     <Container id="top">
-      <Content>
+      <TopMenuContainer>
         <Inline alignItems="center">
           <LogoContainer>
             {/* Injected by React portal */}
@@ -208,6 +213,8 @@ const LayoutHeader = (props) => {
             </SpacingsInline>
           </DocumentationSwitcherButton>
         </Inline>
+      </TopMenuContainer>
+      <SearchBoxContainer>
         <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
           {props.isSearchDialogOpen ? (
             <Overlay position="absolute" onClick={props.closeSearchDialog}>
@@ -218,7 +225,7 @@ const LayoutHeader = (props) => {
             </Overlay>
           ) : (
             <>
-              <MediaQuery forViewport="mobile">
+              <MediaQuery forViewport="largeTablet" hideIfMatch>
                 <IconButton
                   icon={<SearchIcon />}
                   size="big"
@@ -227,7 +234,7 @@ const LayoutHeader = (props) => {
                   isDisabled={props.excludeFromSearchIndex}
                 />
               </MediaQuery>
-              <MediaQuery forViewport="tablet">
+              <MediaQuery forViewport="largeTablet">
                 <SearchInput
                   id="search-input-placeholder"
                   size="small"
@@ -238,8 +245,7 @@ const LayoutHeader = (props) => {
             </>
           )}
         </SearchContainer>
-      </Content>
-      <Blank />
+      </SearchBoxContainer>
     </Container>
   );
 };

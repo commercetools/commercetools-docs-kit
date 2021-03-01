@@ -126,6 +126,7 @@ export const dimensions = {
   heights: {
     header: '48px',
     inputSearch: '32px',
+    inputSearchSmall: '26px',
     childSectionNavLink: '28px',
   },
   widths: {
@@ -141,7 +142,7 @@ export const dimensions = {
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
     searchBar: '300px',
-    searchBarSmall: '150px',
+    searchBarSmall: '160px',
     selectDropDownArrowWith: '12px',
     sideBySideSecondColumn: '560px',
   },
@@ -165,6 +166,9 @@ export const dimensions = {
     wide: pxToRem('64px'),
     enormous: pxToRem('72px'),
     huge: pxToRem('80px'),
+  },
+  specialSpacings: {
+    searchIcon: pxToRem('5px'),
   },
   stacks: {
     base: 1,

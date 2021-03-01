@@ -10,7 +10,10 @@ const SearchIcon = createStyledIcon(SearchSvgIcon);
 
 const Container = styled.div`
   position: relative;
-  width: 100%;
+  ${(props) =>
+    `width: ${
+      props.fullWidth ? `100%` : designSystem.dimensions.widths.searchBarSmall
+    }`}
 `;
 const Input = styled.input`
   appearance: none;
@@ -24,19 +27,21 @@ const Input = styled.input`
   flex: 1;
   font-family: inherit;
   font-size: ${designSystem.typography.fontSizes.small};
-  height: ${designSystem.dimensions.heights.inputSearch};
-  min-height: ${designSystem.dimensions.heights.inputSearch};
+  height: ${designSystem.dimensions.heights.inputSearchSmall};
+  min-height: ${designSystem.dimensions.heights.inputSearchSmall};
   outline: none;
   overflow: hidden;
-  padding: 0
+  padding: 1px
+    calc(
+      ${designSystem.dimensions.spacings.l} +
+        ${designSystem.dimensions.spacings.xs}
+    )
+    0
     calc(
       ${designSystem.dimensions.spacings.l} +
         ${designSystem.dimensions.spacings.xs}
     );
-  width: ${(props) =>
-    props.size === 'small'
-      ? designSystem.dimensions.widths.searchBarSmall
-      : '100%'};
+  width: 100%;
   &::placeholder {
     color: ${designSystem.colors.light.textFaded};
   }
@@ -53,7 +58,7 @@ const Input = styled.input`
 const SearchInputIcon = styled.span`
   position: absolute;
   z-index: ${designSystem.dimensions.stacks.base};
-  top: ${designSystem.dimensions.spacings.s};
+  top: ${designSystem.dimensions.specialSpacings.searchIcon};
   width: ${designSystem.dimensions.spacings.l};
   display: flex;
   flex-direction: column;
@@ -92,7 +97,7 @@ const SearchInput = React.forwardRef((props, ref) => {
     };
   }, [onFocus, props.isDisabled]);
   return (
-    <Container>
+    <Container fullWidth={props.fullWidth}>
       <SearchInputIcon position="left">
         <SearchIcon size="medium" />
       </SearchInputIcon>
@@ -127,6 +132,7 @@ SearchInput.propTypes = {
   id: PropTypes.string,
   // eslint-disable-next-line react/no-unused-prop-types
   size: PropTypes.oneOf(['small', 'scale']).isRequired,
+  fullWidth: PropTypes.bool,
   onFocus: PropTypes.func,
   onClose: PropTypes.func,
   isDisabled: PropTypes.bool.isRequired,
