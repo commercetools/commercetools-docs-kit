@@ -13,7 +13,13 @@ export {
   SideBySide,
   FullWidthContainer,
 } from './src/components';
-export * as Icons from './src/icons';
+export {
+  HttpApiSmallSvgIcon,
+  MerchantCenterSmallSvgIcon,
+  CustomApplicationSmallSvgIcon,
+  TutorialsSmallSvgIcon,
+  OpenSourceSmallSvgIcon,
+} from './src/icons';
 export * from './src/hooks/use-site-data';
 export * from './src/hooks/use-page-data';
 export { default as markdownFragmentToReact } from './src/utils/markdown-fragment-to-react';
