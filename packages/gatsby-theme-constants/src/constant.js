@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContentNotifications } from '@commercetools-docs/ui-kit';
+import { ContentNotifications, formatNumber } from '@commercetools-docs/ui-kit';
 import useConstant from './use-constant';
 
 const Constant = (props) => {
@@ -16,7 +16,7 @@ const Constant = (props) => {
 
   return (
     <>
-      {constantValue.number || ''}
+      {formatNumber(constantValue.number) || ''}
       {constantValue.text && constantValue.number ? <>&nbsp;</> : ''}
       {constantValue.text || ''}
     </>
