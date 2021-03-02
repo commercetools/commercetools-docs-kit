@@ -91,7 +91,14 @@ const InfoValue = (props) => {
         </>
       );
     case 'number':
-      return <>: {formatNumber(value)}</>;
+      return (
+        <>
+          :{' '}
+          <Markdown.InlineCode css={customCodeStyle}>
+            {formatNumber(value)}
+          </Markdown.InlineCode>
+        </>
+      );
     default:
       return (
         <>
