@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-mdx-introspection
 
+## 13.0.1
+
+### Patch Changes
+
+- [`670a475`](https://github.com/commercetools/commercetools-docs-kit/commit/670a47519a873e7f47a15fed5d58edcef9be2ef4) [#858](https://github.com/commercetools/commercetools-docs-kit/pull/858) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
 ## 13.0.0
 
 ### Patch Changes

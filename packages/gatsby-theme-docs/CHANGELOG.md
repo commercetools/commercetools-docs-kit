@@ -1,5 +1,26 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 14.0.4
+
+### Patch Changes
+
+- [`670a475`](https://github.com/commercetools/commercetools-docs-kit/commit/670a47519a873e7f47a15fed5d58edcef9be2ef4) [#858](https://github.com/commercetools/commercetools-docs-kit/pull/858) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`b0dcc19`](https://github.com/commercetools/commercetools-docs-kit/commit/b0dcc1989983043331eb5deb77a6ba40befe51b0) [#866](https://github.com/commercetools/commercetools-docs-kit/pull/866) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit versions to latest
+
+- [`afe3f22`](https://github.com/commercetools/commercetools-docs-kit/commit/afe3f2236007f1991d99fec609a274d7ffc7718e) [#835](https://github.com/commercetools/commercetools-docs-kit/pull/835) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency @sentry/browser to v6
+
+* [`17cdff4`](https://github.com/commercetools/commercetools-docs-kit/commit/17cdff49d6d4ac82ed0bdf65d9df8ecdd20d112a) [#851](https://github.com/commercetools/commercetools-docs-kit/pull/851) Thanks [@TimonRey](https://github.com/TimonRey)! - The back-to-top icon in the index navigation was aligned to the page title.
+
+- [`7c0f15e`](https://github.com/commercetools/commercetools-docs-kit/commit/7c0f15e1ae6736e73a00b7ef39692714bb99e9ae) [#869](https://github.com/commercetools/commercetools-docs-kit/pull/869) Thanks [@TimonRey](https://github.com/TimonRey)! - Icons were implemented next to the title in the sidebar for each microsite.
+
+* [`9d950ef`](https://github.com/commercetools/commercetools-docs-kit/commit/9d950ef8eaf36b19604a707f98a7e2e90f91cb8a) [#860](https://github.com/commercetools/commercetools-docs-kit/pull/860) Thanks [@TimonRey](https://github.com/TimonRey)! - Implement opening animation for top menu.
+
+- [`119bb8b`](https://github.com/commercetools/commercetools-docs-kit/commit/119bb8ba2cc32b6581c43e26aaa7e38063cc4529) [#857](https://github.com/commercetools/commercetools-docs-kit/pull/857) Thanks [@davifantasia](https://github.com/davifantasia)! - chore: readme update for excludeFromSearchIndex's Docsearch limitation
+
+- Updated dependencies [[`670a475`](https://github.com/commercetools/commercetools-docs-kit/commit/670a47519a873e7f47a15fed5d58edcef9be2ef4), [`b0dcc19`](https://github.com/commercetools/commercetools-docs-kit/commit/b0dcc1989983043331eb5deb77a6ba40befe51b0), [`17cdff4`](https://github.com/commercetools/commercetools-docs-kit/commit/17cdff49d6d4ac82ed0bdf65d9df8ecdd20d112a), [`3a024e8`](https://github.com/commercetools/commercetools-docs-kit/commit/3a024e8f51a12d0030c344a6bcbb38fffdc7abc8)]:
+  - @commercetools-docs/ui-kit@14.0.4
+
 ## 14.0.3
 
 ### Patch Changes
