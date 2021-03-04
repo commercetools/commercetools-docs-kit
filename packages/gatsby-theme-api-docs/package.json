@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-api-docs",
   "description": "Gatsby theme for commercetools documentation API",
-  "version": "14.0.3",
+  "version": "14.0.4",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -21,26 +21,26 @@
     "raml-spec"
   ],
   "dependencies": {
-    "@commercetools-docs/gatsby-transformer-mdx-introspection": "13.0.0",
+    "@commercetools-docs/gatsby-transformer-mdx-introspection": "13.0.1",
     "@commercetools-docs/gatsby-transformer-raml": "12.0.1",
-    "@commercetools-docs/ui-kit": "14.0.3",
-    "@commercetools-uikit/design-system": "^10.46.3",
-    "@commercetools-uikit/spacings-inline": "^10.47.0",
-    "@commercetools-uikit/spacings-stack": "^10.47.0",
+    "@commercetools-docs/ui-kit": "14.0.4",
+    "@commercetools-uikit/design-system": "^11.0.0",
+    "@commercetools-uikit/spacings-inline": "^11.0.0",
+    "@commercetools-uikit/spacings-stack": "^11.0.0",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "14.0.3",
-    "@commercetools-docs/rmf-codegen": "12.0.0",
+    "@commercetools-docs/gatsby-theme-docs": "14.0.4",
+    "@commercetools-docs/rmf-codegen": "12.1.0",
     "gatsby": "2.32.8",
     "gatsby-source-filesystem": "2.11.1",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
   "peerDependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "14.0.3",
+    "@commercetools-docs/gatsby-theme-docs": "14.0.4",
     "gatsby": "2.x",
     "gatsby-source-filesystem": "2.x",
     "react": "16.x || 17.x",

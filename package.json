@@ -47,8 +47,8 @@
     "@commercetools-frontend/babel-preset-mc-app": "18.5.1",
     "@commercetools-frontend/eslint-config-mc-app": "18.5.1",
     "@commercetools/github-labels": "1.1.0",
-    "@commitlint/cli": "11.0.0",
-    "@commitlint/config-conventional": "11.0.0",
+    "@commitlint/cli": "12.0.1",
+    "@commitlint/config-conventional": "12.0.1",
     "@manypkg/cli": "0.17.0",
     "@percy/cypress": "2.3.4",
     "@preconstruct/cli": "2.0.5",
@@ -93,7 +93,7 @@
     "wait-on": "5.2.1"
   },
   "engines": {
-    "node": ">=12",
+    "node": ">=14",
     "npm": ">=5"
   }
 }

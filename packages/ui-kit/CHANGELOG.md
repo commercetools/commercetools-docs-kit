@@ -1,5 +1,17 @@
 # @commercetools-docs/ui-kit
 
+## 14.0.4
+
+### Patch Changes
+
+- [`670a475`](https://github.com/commercetools/commercetools-docs-kit/commit/670a47519a873e7f47a15fed5d58edcef9be2ef4) [#858](https://github.com/commercetools/commercetools-docs-kit/pull/858) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`b0dcc19`](https://github.com/commercetools/commercetools-docs-kit/commit/b0dcc1989983043331eb5deb77a6ba40befe51b0) [#866](https://github.com/commercetools/commercetools-docs-kit/pull/866) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit versions to latest
+
+- [`17cdff4`](https://github.com/commercetools/commercetools-docs-kit/commit/17cdff49d6d4ac82ed0bdf65d9df8ecdd20d112a) [#851](https://github.com/commercetools/commercetools-docs-kit/pull/851) Thanks [@TimonRey](https://github.com/TimonRey)! - The back-to-top icon in the index navigation was aligned to the page title.
+
+* [`3a024e8`](https://github.com/commercetools/commercetools-docs-kit/commit/3a024e8f51a12d0030c344a6bcbb38fffdc7abc8) [#853](https://github.com/commercetools/commercetools-docs-kit/pull/853) Thanks [@TimonRey](https://github.com/TimonRey)! - The spacing between title and content on pages without description was removed.
+
 ## 14.0.3
 
 ### Patch Changes
