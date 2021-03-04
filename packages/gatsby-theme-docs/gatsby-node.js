@@ -503,6 +503,15 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
     ...config.resolve,
     // Add support for absolute imports
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    fallback: {
+      // http, https and timers Nodejs APIs are needed by the rss-parser in the UI Kit.
+      // mid-term we should better find an rss parser that works with browser APIs only
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      timers: require.resolve('timers-browserify'),
+      stream: require.resolve('stream-browserify'),
+      electron: false, // webpack can't understand the condition in the "got" module
+    },
   };
 
   // Restricting importing from `prismjs` to only the listed languages,
