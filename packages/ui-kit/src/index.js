@@ -16,10 +16,15 @@ export { default as TextSmall } from './components/text-small';
 
 // icons
 export {
+  CustomApplicationSvgIcon,
   CustomApplicationSmallSvgIcon,
+  HttpApiSvgIcon,
   HttpApiSmallSvgIcon,
+  MerchantCenterSvgIcon,
   MerchantCenterSmallSvgIcon,
+  OpenSourceSvgIcon,
   OpenSourceSmallSvgIcon,
+  TutorialsSvgIcon,
   TutorialsSmallSvgIcon,
 } from './icons';
 
