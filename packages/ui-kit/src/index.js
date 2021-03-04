@@ -14,6 +14,20 @@ export { default as Reset } from './components/reset';
 export { default as Subtitle } from './components/subtitle';
 export { default as TextSmall } from './components/text-small';
 
+// icons
+export {
+  CustomApplicationSvgIcon,
+  CustomApplicationSmallSvgIcon,
+  HttpApiSvgIcon,
+  HttpApiSmallSvgIcon,
+  MerchantCenterSvgIcon,
+  MerchantCenterSmallSvgIcon,
+  OpenSourceSvgIcon,
+  OpenSourceSmallSvgIcon,
+  TutorialsSvgIcon,
+  TutorialsSmallSvgIcon,
+} from './icons';
+
 // special exports for components that cannot be accessed through `Markdown` exports
 export { default as CodeBlock } from './components/code-block';
 
