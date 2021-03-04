@@ -16,18 +16,18 @@
   "keywords": ["gatsby", "gatsby-plugin", "gatsby-theme", "yaml", "constants"],
   "dependencies": {
     "@commercetools-docs/ui-kit": "14.0.4",
-    "gatsby-transformer-yaml": "2.11.0",
+    "gatsby-transformer-yaml": "3.0.0",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
     "@commercetools-docs/gatsby-theme-docs": "14.0.4",
-    "gatsby": "2.32.8",
+    "gatsby": "3.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
   "peerDependencies": {
     "@commercetools-docs/gatsby-theme-docs": "14.0.4",
-    "gatsby": "2.x",
+    "gatsby": "3.x",
     "react": "16.x || 17.x",
     "react-dom": "16.x || 17.x"
   }
