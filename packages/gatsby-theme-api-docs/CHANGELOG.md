@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 14.0.5
+
+### Patch Changes
+
+- [`a6cc2ae`](https://github.com/commercetools/commercetools-docs-kit/commit/a6cc2ae2d2cf542fff654918798f0f1cc50f27eb) [#879](https://github.com/commercetools/commercetools-docs-kit/pull/879) Thanks [@nkuehn](https://github.com/nkuehn)! - Format union type members as heading and make them linkable
+
+- Updated dependencies [[`898af56`](https://github.com/commercetools/commercetools-docs-kit/commit/898af56a02a30505ad0170e482378eb17c085add)]:
+  - @commercetools-docs/gatsby-theme-docs@14.0.5
+
 ## 14.0.4
 
 ### Patch Changes
