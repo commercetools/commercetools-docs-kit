@@ -504,13 +504,12 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
     // Add support for absolute imports
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     fallback: {
-      // http, https and timers Nodejs APIs are needed by the rss-parser in the UI Kit.
-      // mid-term we should better find an rss parser that works with browser APIs only
-      http: require.resolve('stream-http'),
-      https: require.resolve('https-browserify'),
-      timers: require.resolve('timers-browserify'),
-      stream: require.resolve('stream-browserify'),
+      http: false, // rss-parser related
+      https: false, // rss-parser related
+      timers: false, // rss-parser related
+      stream: require.resolve('stream-browserify'), // TODO document context
       electron: false, // webpack can't understand the condition in the "got" module
+      fs: false, // related to an issue in the "tmp" library
     },
   };
 

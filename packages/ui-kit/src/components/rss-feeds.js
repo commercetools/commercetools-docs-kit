@@ -9,7 +9,8 @@ import RssFeedTable from './rss-feed-table';
 async function fetcher(...args) {
   const rssParser = new Parser();
   const promises = args.map(async (url) => {
-    const feedData = await rssParser.parseURL(url);
+    const feedString = await fetch(url);
+    const feedData = await rssParser.parseString(feedString);
     const feedName = feedData.title.replace(
       /^commercetools (.*) Release Notes$/,
       '$1'
