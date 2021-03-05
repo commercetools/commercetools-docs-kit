@@ -5,3 +5,5 @@
   number: 256
 - name: slugPattern
   text: "[a-zA-Z0-9_\\-]{2,256}"
+- name: resourceLimit
+  number: 1000000.999999
