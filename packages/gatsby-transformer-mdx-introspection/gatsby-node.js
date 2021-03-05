@@ -169,7 +169,7 @@ exports.createResolvers = ({ createResolvers, intermediateSchema }) => {
           });
 
           // Apply limit/skip
-          if (result == null) return [];
+          if (result.length === 0) return result;
           if (limit != null) {
             const resolvedSkip = skip == null ? 0 : skip;
             return result.slice(resolvedSkip, resolvedSkip + limit);
