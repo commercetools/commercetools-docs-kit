@@ -79,16 +79,22 @@ const TopMenuContainer = styled.div`
   height: 100%;
 `;
 const SearchBoxContainer = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.m};
   grid-area: header-searchbox;
   display: flex;
   align-items: center;
+`;
 
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    padding-right: 0;
-  }
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    padding-right: 0;
+const SearchInputBox = styled.div`
+  padding: 0 ${designSystem.dimensions.spacings.m};
+  width: calc(
+    ${designSystem.dimensions.widths.pageNavigationSmall} -
+      ${designSystem.dimensions.spacings.m} * 2
+  );
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    width: calc(
+      ${designSystem.dimensions.widths.pageNavigation} -
+        ${designSystem.dimensions.spacings.m} * 2
+    );
   }
 `;
 const Inline = styled.div`
@@ -235,12 +241,14 @@ const LayoutHeader = (props) => {
                 />
               </MediaQuery>
               <MediaQuery forViewport="largeTablet">
-                <SearchInput
-                  id="search-input-placeholder"
-                  size="small"
-                  onFocus={props.openSearchDialog}
-                  isDisabled={props.excludeFromSearchIndex}
-                />
+                <SearchInputBox>
+                  <SearchInput
+                    id="search-input-placeholder"
+                    size="small"
+                    onFocus={props.openSearchDialog}
+                    isDisabled={props.excludeFromSearchIndex}
+                  />
+                </SearchInputBox>
               </MediaQuery>
             </>
           )}

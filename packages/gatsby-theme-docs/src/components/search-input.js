@@ -10,10 +10,7 @@ const SearchIcon = createStyledIcon(SearchSvgIcon);
 
 const Container = styled.div`
   position: relative;
-  ${(props) =>
-    `width: ${
-      props.fullWidth ? `100%` : designSystem.dimensions.widths.searchBarSmall
-    }`}
+  width: 100%;
 `;
 const Input = styled.input`
   appearance: none;
