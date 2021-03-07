@@ -68,6 +68,16 @@ const Container = styled.header`
       / ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
+
+  ${(props) =>
+    props.allowWideContentLayout
+      ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
+    grid:
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions.heights.header} [row1-end]
+      / ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+  }`
+      : ''}
 `;
 const TopMenuContainer = styled.div`
   grid-area: header-top-menu;
@@ -180,7 +190,7 @@ const LayoutHeader = (props) => {
   };
 
   return (
-    <Container id="top">
+    <Container id="top" allowWideContentLayout={props.allowWideContentLayout}>
       <TopMenuContainer>
         <Inline alignItems="center">
           <LogoContainer>
@@ -260,6 +270,7 @@ const LayoutHeader = (props) => {
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
+  allowWideContentLayout: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,
   openSearchDialog: PropTypes.func.isRequired,
   closeSearchDialog: PropTypes.func.isRequired,

@@ -46,6 +46,7 @@ const LayoutContent = (props) => {
           {...layoutState.topMenu}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+          allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
         <LayoutPageWrapper>
           <LayoutPage
