@@ -95,6 +95,8 @@ RssFeedTable.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
+      pubDate: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
       feedName: PropTypes.string.isRequired,
       releaseNoteUrl: PropTypes.string.isRequired,
     })
