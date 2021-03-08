@@ -4,9 +4,15 @@
   "description": "commercetools Documentation Kit (monorepo)",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*", "websites/*", "api-specs/*"],
+  "workspaces": [
+    "packages/*",
+    "websites/*",
+    "api-specs/*"
+  ],
   "preconstruct": {
-    "packages": ["packages/ui-kit"]
+    "packages": [
+      "packages/ui-kit"
+    ]
   },
   "scripts": {
     "postinstall": "preconstruct dev && manypkg check",
@@ -40,6 +46,7 @@
     "versions:uikit": "manypkg upgrade @commercetools-uikit"
   },
   "dependencies": {
+    "@babel/helper-define-map": "^7.12.13",
     "@babel/runtime": "7.13.7",
     "@babel/runtime-corejs3": "7.13.7",
     "@changesets/changelog-github": "0.2.8",
