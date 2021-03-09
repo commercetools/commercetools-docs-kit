@@ -5,21 +5,18 @@ import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './content-notifications';
 import RssFeedTable from './rss-feed-table';
 
-const parseFieldValue = (element) =>
-  element.innerHTML.replace('<![CDATA[', '').replace(']]>', '');
-
 // Inspired by https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
 async function parseRssFeed(url) {
   const response = await fetch(url);
   const rawBody = await response.text();
   const data = new window.DOMParser().parseFromString(rawBody, 'text/xml');
 
-  const feedTitle = parseFieldValue(data.querySelector('title'));
+  const feedTitle = data.querySelector('title').firstChild.data;
   const items = Array.from(data.querySelectorAll('item')).map((el) => {
-    const title = parseFieldValue(el.querySelector('title'));
-    const description = parseFieldValue(el.querySelector('description'));
-    const link = parseFieldValue(el.querySelector('link'));
-    const pubDate = parseFieldValue(el.querySelector('pubDate'));
+    const title = el.querySelector('title').firstChild.data;
+    const description = el.querySelector('description').firstChild.data;
+    const link = el.querySelector('link').firstChild.data;
+    const pubDate = el.querySelector('pubDate').firstChild.data;
     return {
       title,
       description,
@@ -35,7 +32,6 @@ async function fetcher(...args) {
   const promises = args.map(async (url) => {
     const releaseNoteUrl = url.replace(/\/feed.xml$/, '');
     const feedData = await parseRssFeed(url);
-    console.log(feedData);
     const feedName = feedData.feedTitle.replace(
       /^commercetools (.*) Release Notes$/,
       '$1'
