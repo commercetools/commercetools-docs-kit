@@ -9,7 +9,3 @@ snapshot:
     }
 discovery:
   network-idle-timeout: 5000 # ms (https://docs.percy.io/docs/command-line-client#section--network-idle-timeout-t)
-static:
-  base-url: /
-  files: "**/components/**/*.html,**/views/markdown/*.html,**/views/beta/*.html,**/releases/index.html,**/types/**/*.html,**/endpoints/**/*.html,**/layouts/**/*.html"
-  ignore: "**/site-template/**/*.html"
