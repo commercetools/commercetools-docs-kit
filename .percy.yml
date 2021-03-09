@@ -1,15 +1,15 @@
-version: 1
+version: 2
 snapshot:
-  widths: [1706]
+  widths:
+    - 1706
   min-height: 1024
   percy-css: |
     #application {
       height: auto;
     }
-static-snapshots:
+discovery:
+  network-idle-timeout: 5000 # ms (https://docs.percy.io/docs/command-line-client#section--network-idle-timeout-t)
+static:
   base-url: /
-  snapshot-files: '**/components/**/*.html,**/views/markdown/*.html,**/views/beta/*.html,**/releases/index.html,**/types/**/*.html,**/endpoints/**/*.html,**/layouts/**/*.html'
-  ignore-files: '**/site-template/**/*.html'
-agent:
-  asset-discovery:
-    network-idle-timeout: 5000 # ms (https://docs.percy.io/docs/command-line-client#section--network-idle-timeout-t)
+  files: "**/components/**/*.html,**/views/markdown/*.html,**/views/beta/*.html,**/releases/index.html,**/types/**/*.html,**/endpoints/**/*.html,**/layouts/**/*.html"
+  ignore: "**/site-template/**/*.html"
