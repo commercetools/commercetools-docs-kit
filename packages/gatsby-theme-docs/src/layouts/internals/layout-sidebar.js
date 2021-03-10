@@ -30,6 +30,10 @@ const Container = styled.nav`
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     width: ${designSystem.dimensions.widths.pageNavigation};
   }
+
+  @media only percy {
+    animation: unset;
+  }
 `;
 const MenuButton = styled.button`
   appearance: none;
