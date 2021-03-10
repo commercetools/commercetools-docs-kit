@@ -63,11 +63,12 @@ export const onClientEntry = async (
   // Require additional Prism languages.
   // Inspired by https://github.com/facebook/docusaurus/pull/2250.
   window.Prism = Prism;
-  await Promise.all(
-    (pluginOptions.additionalPrismLanguages || []).map((lang) =>
-      import(`prismjs/components/prism-${lang}`)
-    )
-  );
+  const additionalPrismLanguages = pluginOptions.additionalPrismLanguages || [];
+  // Use a for-loop to run dynamic imports sequentially.
+  for (let index = 0; index < additionalPrismLanguages.length; index++) {
+    const lang = additionalPrismLanguages[index];
+    await import(`prismjs/components/prism-${lang}`);
+  }
   delete window.Prism;
 };
 

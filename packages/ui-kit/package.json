@@ -34,7 +34,7 @@
     "lodash.throttle": "4.1.1",
     "moment": "2.29.1",
     "parse5": "6.0.1",
-    "prism-react-renderer": "1.1.1",
+    "prism-react-renderer": "1.2.0",
     "prop-types": "15.7.2",
     "swr": "0.4.2",
     "tiny-invariant": "1.1.0"
