@@ -1,23 +1,46 @@
 import React from 'react';
 import useSWR from 'swr';
-import Parser from 'rss-parser';
 import PropTypes from 'prop-types';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './content-notifications';
 import RssFeedTable from './rss-feed-table';
 
+// Inspired by https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
+async function parseRssFeed(url) {
+  const response = await fetch(url);
+  const rawBody = await response.text();
+  const data = new window.DOMParser().parseFromString(rawBody, 'text/xml');
+
+  const feedTitle = data.querySelector('title').firstChild.data;
+  const items = Array.from(data.querySelectorAll('item')).map((el) => {
+    const title = el.querySelector('title').firstChild.data;
+    const description = el.querySelector('description').firstChild.data;
+    const link = el.querySelector('link').firstChild.data;
+    const pubDate = el.querySelector('pubDate').firstChild.data;
+    return {
+      title,
+      description,
+      link,
+      pubDate,
+    };
+  });
+
+  return { feedTitle, items };
+}
+
 async function fetcher(...args) {
-  const rssParser = new Parser();
   const promises = args.map(async (url) => {
-    const feedData = await rssParser.parseURL(url);
-    const feedName = feedData.title.replace(
+    const releaseNoteUrl = url.replace(/\/feed.xml$/, '');
+    const feedData = await parseRssFeed(url);
+    const feedName = feedData.feedTitle.replace(
       /^commercetools (.*) Release Notes$/,
       '$1'
     );
-    const refactoredData = feedData.items.map((item) => {
-      const releaseNoteUrl = url.replace(/\/feed.xml$/, '');
-      return { ...item, feedName, releaseNoteUrl };
-    });
+    const refactoredData = feedData.items.map((item) => ({
+      ...item,
+      feedName,
+      releaseNoteUrl,
+    }));
     return refactoredData;
   });
   return Promise.all(promises);
