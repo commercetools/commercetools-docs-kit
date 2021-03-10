@@ -66,6 +66,7 @@
     "intersection-observer": "0.12.0",
     "lodash.throttle": "4.1.1",
     "moment": "2.29.1",
+    "prism-react-renderer": "1.2.0",
     "prismjs": "1.23.0",
     "prompts": "^2.4.0",
     "prop-types": "15.7.2",

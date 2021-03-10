@@ -22,7 +22,7 @@ module.exports = {
     ...configureThemeWithAddOns({
       websiteKey: 'docs-smoke-test',
       excludeFromSearchIndex: isProd && !shouldEnableSearch,
-      additionalPrismLanguages: ['scala', 'csharp'],
+      additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
       allowWideContentLayout: true,
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
