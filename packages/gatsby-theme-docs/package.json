@@ -71,6 +71,7 @@
     "prompts": "^2.4.0",
     "prop-types": "15.7.2",
     "qss": "2.0.3",
+    "raw-loader": "4.0.2",
     "react-helmet": "6.1.0",
     "react-intersection-observer": "8.31.0",
     "react-intl": "^5.7.0",

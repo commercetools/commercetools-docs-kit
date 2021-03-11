@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *
@@ -11,9 +10,9 @@ import { createContentDigest } from 'gatsby-core-utils';
 import createEmotionServer from '@emotion/server/create-instance';
 import { CacheProvider } from '@emotion/react';
 import { createDocsCache, docsCacheKey } from './utils/create-emotion-cache';
-// eslint-disable-next-line import/no-unresolved,import/extensions,import/no-webpack-loader-syntax
+// eslint-disable-next-line import/no-webpack-loader-syntax
 import iconDarkDigestRaw from '!!raw-loader!./static/favicon-dark-32x32.png';
-// eslint-disable-next-line import/no-unresolved,import/extensions,import/no-webpack-loader-syntax
+// eslint-disable-next-line import/no-webpack-loader-syntax
 import iconLightDigestRaw from '!!raw-loader!./static/favicon-light-32x32.png';
 
 const iconDarkDigest = createContentDigest(iconDarkDigestRaw);
