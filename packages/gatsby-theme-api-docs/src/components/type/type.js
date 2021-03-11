@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IntlProvider } from 'react-intl';
 import { FullWidthContainer } from '@commercetools-docs/gatsby-theme-docs';
 import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../utils/ctp-urn';
@@ -28,33 +27,31 @@ const ApiType = (props) => {
   const urn = generateTypeURN(matchedApiType);
 
   return (
-    <IntlProvider locale="en">
-      <FullWidthContainer
-        id={urn}
-        aria-label={`${matchedApiType.displayName} definition`}
-      >
-        {matchedApiType.oneOf ? (
-          <ChildrenUnionLike
-            apiKey={props.apiKey}
-            apiType={matchedApiType}
-            apiTypeSubTypes={apiTypeSubTypes}
-            doNotRenderExamples={props.doNotRenderExamples}
-            hideInheritedProperties={props.hideInheritedProperties}
-          />
-        ) : (
-          <Children
-            apiKey={props.apiKey}
-            apiType={matchedApiType}
-            propertiesTableTitle={props.propertiesTableTitle}
-            renderDescriptionBelowProperties={
-              props.renderDescriptionBelowProperties
-            }
-            doNotRenderExamples={props.doNotRenderExamples}
-            hideInheritedProperties={props.hideInheritedProperties}
-          />
-        )}
-      </FullWidthContainer>
-    </IntlProvider>
+    <FullWidthContainer
+      id={urn}
+      aria-label={`${matchedApiType.displayName} definition`}
+    >
+      {matchedApiType.oneOf ? (
+        <ChildrenUnionLike
+          apiKey={props.apiKey}
+          apiType={matchedApiType}
+          apiTypeSubTypes={apiTypeSubTypes}
+          doNotRenderExamples={props.doNotRenderExamples}
+          hideInheritedProperties={props.hideInheritedProperties}
+        />
+      ) : (
+        <Children
+          apiKey={props.apiKey}
+          apiType={matchedApiType}
+          propertiesTableTitle={props.propertiesTableTitle}
+          renderDescriptionBelowProperties={
+            props.renderDescriptionBelowProperties
+          }
+          doNotRenderExamples={props.doNotRenderExamples}
+          hideInheritedProperties={props.hideInheritedProperties}
+        />
+      )}
+    </FullWidthContainer>
   );
 };
 

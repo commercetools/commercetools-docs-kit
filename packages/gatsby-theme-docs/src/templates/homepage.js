@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -10,32 +11,34 @@ import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 
 const HomepageTemplate = (props) => (
-  <ThemeProvider>
-    <PageDataContext.Provider value={props.data.contentPage}>
-      <LayoutContentHomepage
-        pageContext={props.pageContext}
-        pageData={props.data.contentPage}
-        heroBackground={props.data.heroBackground}
-      >
-        <MDXProvider components={markdownComponents}>
-          <Markdown.TypographyPage>
-            <SEO
-              title={
-                props.pageContext.shortTitle || props.data.contentPage.title
-              }
-              excludeFromSearchIndex={
-                props.data.contentPage.excludeFromSearchIndex
-              }
-            />
-            {/* This wrapper div is important to ensure the vertical space */}
-            <div>
-              <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-            </div>
-          </Markdown.TypographyPage>
-        </MDXProvider>
-      </LayoutContentHomepage>
-    </PageDataContext.Provider>
-  </ThemeProvider>
+  <IntlProvider locale="en">
+    <ThemeProvider>
+      <PageDataContext.Provider value={props.data.contentPage}>
+        <LayoutContentHomepage
+          pageContext={props.pageContext}
+          pageData={props.data.contentPage}
+          heroBackground={props.data.heroBackground}
+        >
+          <MDXProvider components={markdownComponents}>
+            <Markdown.TypographyPage>
+              <SEO
+                title={
+                  props.pageContext.shortTitle || props.data.contentPage.title
+                }
+                excludeFromSearchIndex={
+                  props.data.contentPage.excludeFromSearchIndex
+                }
+              />
+              {/* This wrapper div is important to ensure the vertical space */}
+              <div>
+                <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
+              </div>
+            </Markdown.TypographyPage>
+          </MDXProvider>
+        </LayoutContentHomepage>
+      </PageDataContext.Provider>
+    </ThemeProvider>
+  </IntlProvider>
 );
 
 HomepageTemplate.displayName = 'HomepageTemplate';
