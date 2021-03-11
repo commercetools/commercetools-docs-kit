@@ -15,7 +15,7 @@
     "build-packages": "preconstruct build",
     "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
     "prebuild": "yarn build-packages && yarn generate-icons",
-    "postbuild": "cp -f ./websites/index.html ./public && yarn check-links && ls -R public && ls -R .cache",
+    "postbuild": "cp -f ./websites/index.html ./public && yarn check-links",
     "vercel-build": "amazon-linux-extras install java-openjdk11 > /dev/null && yarn build",
     "generate-icons": "lerna run generate-icons && prettier --write '**/generated/*.js'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
