@@ -6,12 +6,14 @@ export { default as Footer } from './src/layouts/internals/footer';
 export {
   BetaFlag,
   ErrorBoundary,
-  Link,
   ExternalSiteLink,
-  SEO,
-  ThemeProvider,
-  SideBySide,
   FullWidthContainer,
+  Link,
+  Overlay,
+  SEO,
+  SideBySide,
+  TopMenu,
+  ThemeProvider,
 } from './src/components';
 export * from './src/hooks/use-site-data';
 export * from './src/hooks/use-page-data';
