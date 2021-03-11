@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -15,37 +16,39 @@ const ContentCards = (props) => (
 );
 
 const PageContentTemplate = (props) => (
-  <ThemeProvider>
-    <PageDataContext.Provider value={props.data.contentPage}>
-      <LayoutContent
-        pageContext={props.pageContext}
-        pageData={props.data.contentPage}
-      >
-        <MDXProvider
-          components={{
-            ...markdownComponents,
-            Cards: ContentCards,
-            ChildSectionsNav,
-          }}
+  <IntlProvider locale="en">
+    <ThemeProvider>
+      <PageDataContext.Provider value={props.data.contentPage}>
+        <LayoutContent
+          pageContext={props.pageContext}
+          pageData={props.data.contentPage}
         >
-          <Markdown.TypographyPage>
-            <SEO
-              title={
-                props.pageContext.shortTitle || props.data.contentPage.title
-              }
-              excludeFromSearchIndex={
-                props.data.contentPage.excludeFromSearchIndex
-              }
-            />
-            {/* This wrapper div is important to ensure the vertical space */}
-            <div>
-              <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-            </div>
-          </Markdown.TypographyPage>
-        </MDXProvider>
-      </LayoutContent>
-    </PageDataContext.Provider>
-  </ThemeProvider>
+          <MDXProvider
+            components={{
+              ...markdownComponents,
+              Cards: ContentCards,
+              ChildSectionsNav,
+            }}
+          >
+            <Markdown.TypographyPage>
+              <SEO
+                title={
+                  props.pageContext.shortTitle || props.data.contentPage.title
+                }
+                excludeFromSearchIndex={
+                  props.data.contentPage.excludeFromSearchIndex
+                }
+              />
+              {/* This wrapper div is important to ensure the vertical space */}
+              <div>
+                <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
+              </div>
+            </Markdown.TypographyPage>
+          </MDXProvider>
+        </LayoutContent>
+      </PageDataContext.Provider>
+    </ThemeProvider>
+  </IntlProvider>
 );
 
 PageContentTemplate.displayName = 'PageContentTemplate';

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { IntlProvider } from 'react-intl';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
@@ -92,35 +91,33 @@ const LayoutPageReleaseNotesFilters = () => {
   }, []);
 
   const filtersContainer = (
-    <IntlProvider locale="en">
-      <SpacingsStack scale="m">
-        <SpacingsInline
-          scale="s"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <ReleasesTitleLink href="#top">
-            <SpacingsInline scale="s" alignItems="center">
-              <div>Releases</div>
-              <div>
-                <StackedLinesIndentedIcon color="textSecondary" />
-              </div>
-            </SpacingsInline>
-          </ReleasesTitleLink>
-          {isMenuOpen && (
-            <SecondaryIconButton
-              icon={<CloseIcon size="medium" />}
-              label="Close release notes filters"
-              onClick={() => {
-                setMenuOpen(false);
-              }}
-            />
-          )}
-        </SpacingsInline>
-        <ReleaseNotesFilterDates />
-        <ReleaseNotesFilterTopics />
-      </SpacingsStack>
-    </IntlProvider>
+    <SpacingsStack scale="m">
+      <SpacingsInline
+        scale="s"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <ReleasesTitleLink href="#top">
+          <SpacingsInline scale="s" alignItems="center">
+            <div>Releases</div>
+            <div>
+              <StackedLinesIndentedIcon color="textSecondary" />
+            </div>
+          </SpacingsInline>
+        </ReleasesTitleLink>
+        {isMenuOpen && (
+          <SecondaryIconButton
+            icon={<CloseIcon size="medium" />}
+            label="Close release notes filters"
+            onClick={() => {
+              setMenuOpen(false);
+            }}
+          />
+        )}
+      </SpacingsInline>
+      <ReleaseNotesFilterDates />
+      <ReleaseNotesFilterTopics />
+    </SpacingsStack>
   );
 
   if (isMenuOpen) {

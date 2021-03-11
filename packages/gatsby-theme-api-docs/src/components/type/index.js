@@ -1,5 +1,1 @@
-import Type from './type';
-
-const TypeFromIndex = Type;
-
-export default TypeFromIndex;
+export { default } from './type';

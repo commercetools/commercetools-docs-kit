@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContentNotifications, formatNumber } from '@commercetools-docs/ui-kit';
+import {
+  ContentNotifications,
+  useISO310NumberFormatter,
+} from '@commercetools-docs/ui-kit';
 import useConstant from './use-constant';
 
 const Constant = (props) => {
+  const formatNumber = useISO310NumberFormatter();
   const constantValue = useConstant(props.type, props.name);
 
   if (!constantValue) {
