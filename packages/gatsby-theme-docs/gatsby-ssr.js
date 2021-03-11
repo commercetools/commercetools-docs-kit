@@ -4,7 +4,6 @@
  *
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
-import fs from 'fs';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { withPrefix } from 'gatsby';
@@ -12,13 +11,13 @@ import { createContentDigest } from 'gatsby-core-utils';
 import createEmotionServer from '@emotion/server/create-instance';
 import { CacheProvider } from '@emotion/react';
 import { createDocsCache, docsCacheKey } from './utils/create-emotion-cache';
+// eslint-disable-next-line import/no-unresolved,import/extensions,import/no-webpack-loader-syntax
+import iconDarkDigestRaw from '!!raw-loader!./static/favicon-dark-32x32.png';
+// eslint-disable-next-line import/no-unresolved,import/extensions,import/no-webpack-loader-syntax
+import iconLightDigestRaw from '!!raw-loader!./static/favicon-light-32x32.png';
 
-const iconDarkDigest = createContentDigest(
-  fs.readFileSync(require.resolve('./static/favicon-dark-32x32.png'))
-);
-const iconLightDigest = createContentDigest(
-  fs.readFileSync(require.resolve('./static/favicon-light-32x32.png'))
-);
+const iconDarkDigest = createContentDigest(iconDarkDigestRaw);
+const iconLightDigest = createContentDigest(iconLightDigestRaw);
 
 // There is a known issue with Emotion and SSR in case elements use
 // nth child selectors, like the Lobotomized Owl (`* + *`).
