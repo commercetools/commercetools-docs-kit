@@ -42,6 +42,10 @@ Start the [docs-smoke-test website](./websites/docs-smoke-test):
 ```bash
 $ yarn start
 ```
+## Vercel configuration
+
+Vercel does not automatically detect this repository as a GatsbyJS project due to the custom build that merges multiple gatsbyJS sites into one folder.
+To enable caching and incremental builds the "Framework preset" needs to be done manually in the Vercel backend. For caching, the `prebuild` and `postbuild` scripts are moving the respective folders from the microsites to the root cache and public folders.
 
 ## Contributing
 
