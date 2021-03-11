@@ -74,8 +74,11 @@ const Container = styled.header`
       ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
     grid:
       [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions.heights.header} [row1-end]
-      / ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+      / minmax(
+        ${designSystem.dimensions.widths.pageContentWideWithMargins},
+        ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
+      )
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, ${designSystem.dimensions.widths.pageNavigation});
   }`
       : ''}
 `;
