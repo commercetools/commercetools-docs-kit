@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Markdown, formatNumber } from '@commercetools-docs/ui-kit';
+import { Markdown, useISO310NumberFormatter } from '@commercetools-docs/ui-kit';
 import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -81,6 +81,8 @@ ConstantLikeEnumDescription.propTypes = {
 const InfoValue = (props) => {
   const value = props.children;
   const valueType = typeof value;
+  const formatNumber = useISO310NumberFormatter();
+
   switch (valueType) {
     case 'boolean':
       return value ? (

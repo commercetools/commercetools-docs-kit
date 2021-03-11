@@ -2257,14 +2257,6 @@
     "@formatjs/ecma402-abstract" "1.6.2"
     tslib "^2.1.0"
 
-"@formatjs/intl-numberformat@^6.2.2":
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-numberformat/-/intl-numberformat-6.2.2.tgz#a75ea1d18ac3c89c2a28d9d9ac35f612699963e8"
-  integrity sha512-mM6dwNizz8GS62kVS7yj0avz+6HDvIJldsAv495XCTFxxcSmP4iTREG+0J+ex8puBTJRESgJx4MBcXJPj0K76Q==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.6.2"
-    tslib "^2.1.0"
-
 "@formatjs/intl-relativetimeformat@8.1.2":
   version "8.1.2"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-relativetimeformat/-/intl-relativetimeformat-8.1.2.tgz#119f3dce97458991f86bf34a736880e4a7bc1697"
