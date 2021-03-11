@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 15.0.0
+
+### Patch Changes
+
+- [#903](https://github.com/commercetools/commercetools-docs-kit/pull/903) [`3a94401`](https://github.com/commercetools/commercetools-docs-kit/commit/3a94401cdb0aa437448126738878a4b12b7f7381) Thanks [@emmenko](https://github.com/emmenko)! - Format ISO 31-0 number using `react-intl` instead of number format polyfill.
+
 ## 14.0.7
 
 ### Patch Changes
