@@ -17,7 +17,8 @@
   "dependencies": {
     "@commercetools-docs/ui-kit": "14.0.7",
     "gatsby-transformer-yaml": "2.11.0",
-    "prop-types": "15.7.2"
+    "prop-types": "15.7.2",
+    "react-intl": "^5.7.0"
   },
   "devDependencies": {
     "@commercetools-docs/gatsby-theme-docs": "14.0.7",

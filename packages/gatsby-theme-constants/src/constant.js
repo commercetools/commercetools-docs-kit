@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import {
   ContentNotifications,
   useISO310NumberFormatter,
@@ -19,11 +20,11 @@ const Constant = (props) => {
   }
 
   return (
-    <>
+    <IntlProvider locale="en">
       {formatNumber(constantValue.number) || ''}
       {constantValue.text && constantValue.number ? <>&nbsp;</> : ''}
       {constantValue.text || ''}
-    </>
+    </IntlProvider>
   );
 };
 
