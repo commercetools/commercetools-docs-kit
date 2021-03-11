@@ -1,5 +1,21 @@
 # @commercetools-docs/gatsby-theme-constants
 
+## 15.0.0
+
+### Major Changes
+
+- [#884](https://github.com/commercetools/commercetools-docs-kit/pull/884) [`ab2b717`](https://github.com/commercetools/commercetools-docs-kit/commit/ab2b717c48791df5543a66ff1cb5dde8ed31fc2e) Thanks [@renovate](https://github.com/apps/renovate)! - Migrate packages to Gatsby `v3`. Please refer to the official release notes: https://www.gatsbyjs.com/docs/reference/release-notes/v3.0/
+
+  Note that in the docs-kit packages there are no breaking changes, except for requiring React `>=17` and NodeJS `>=14`.
+
+### Patch Changes
+
+- [#903](https://github.com/commercetools/commercetools-docs-kit/pull/903) [`3a94401`](https://github.com/commercetools/commercetools-docs-kit/commit/3a94401cdb0aa437448126738878a4b12b7f7381) Thanks [@emmenko](https://github.com/emmenko)! - Format ISO 31-0 number using `react-intl` instead of number format polyfill.
+
+- Updated dependencies [[`b52dc29`](https://github.com/commercetools/commercetools-docs-kit/commit/b52dc294c48ce6fd462d6e79708fe42a4995a3d5), [`3a94401`](https://github.com/commercetools/commercetools-docs-kit/commit/3a94401cdb0aa437448126738878a4b12b7f7381), [`ab2b717`](https://github.com/commercetools/commercetools-docs-kit/commit/ab2b717c48791df5543a66ff1cb5dde8ed31fc2e)]:
+  - @commercetools-docs/gatsby-theme-docs@15.0.0
+  - @commercetools-docs/ui-kit@15.0.0
+
 ## 14.0.7
 
 ### Patch Changes
