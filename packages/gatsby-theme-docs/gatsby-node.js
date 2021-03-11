@@ -443,7 +443,10 @@ async function createReleaseNotePages(
   });
 }
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
+exports.onCreateWebpackConfig = (
+  { actions, getConfig, stage, loaders },
+  themeOptions
+) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
 
   const config = getConfig();
@@ -451,17 +454,6 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
     // Strip out the svg files from the following built-in rule
     // See https://github.com/zabute/gatsby-plugin-svgr/blob/master/gatsby-node.js
     ...config.module.rules.map((rule) => {
-      // Gatsby < 2.30 (no AVIF support)
-      if (
-        String(rule.test) ===
-        String(/\.(ico|svg|jpg|jpeg|png|gif|webp)(\?.*)?$/)
-      ) {
-        return {
-          ...rule,
-          test: /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/,
-        };
-      }
-
       // Gatsby ≥ 2.30 (AVIF support)
       if (
         String(rule.test) ===
@@ -499,10 +491,22 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
       ],
     },
   ];
+  if (stage === 'build-html' || stage === 'develop-html') {
+    // https://www.gatsbyjs.com/docs/debugging-html-builds/#fixing-third-party-modules
+    config.module.rules.push({
+      test: /tmp/,
+      use: loaders.null(),
+    });
+  }
+
   config.resolve = {
     ...config.resolve,
     // Add support for absolute imports
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    fallback: {
+      ...config.resolve.fallback,
+      electron: false, // webpack can't understand the condition in the "got" module
+    },
   };
 
   // Restricting importing from `prismjs` to only the listed languages,
@@ -518,5 +522,6 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
     )
   );
   // This will completely replace the webpack config with the modified object.
+  // (necessary to not only add rules but also change rules like taking over svg handling)
   actions.replaceWebpackConfig(config);
 };
