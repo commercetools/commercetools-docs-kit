@@ -147,7 +147,6 @@ const SearchDialog = (props) => {
                 <SearchInput
                   ref={ref}
                   id={searchInputId}
-                  fullWidth
                   size="scale"
                   onClose={props.onClose}
                 />

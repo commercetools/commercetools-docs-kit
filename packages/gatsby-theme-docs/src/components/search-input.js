@@ -94,7 +94,7 @@ const SearchInput = React.forwardRef((props, ref) => {
     };
   }, [onFocus, props.isDisabled]);
   return (
-    <Container fullWidth={props.fullWidth}>
+    <Container>
       <SearchInputIcon position="left">
         <SearchIcon size="medium" />
       </SearchInputIcon>
@@ -129,7 +129,6 @@ SearchInput.propTypes = {
   id: PropTypes.string,
   // eslint-disable-next-line react/no-unused-prop-types
   size: PropTypes.oneOf(['small', 'scale']).isRequired,
-  fullWidth: PropTypes.bool,
   onFocus: PropTypes.func,
   onClose: PropTypes.func,
   isDisabled: PropTypes.bool.isRequired,
