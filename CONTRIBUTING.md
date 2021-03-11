@@ -31,8 +31,8 @@ To develop locally, you can use the `websites/docs-smoke-test` application to te
 
 We only allow the **Squash and merge** mode when merging a Pull Request so that:
 
-- we have a cleaner commit history on `master` branch
-- we can have automatic releases, like `canary`, that will publish a new version on each new commit in `master`
+- we have a cleaner commit history on `main` branch
+- we can have automatic releases, like `canary`, that will publish a new version on each new commit in `main`
 
 Furthermore, we also prefer to use `rebase` when keeping branches up-to-date. This is again to have a cleaner history.
 
@@ -88,8 +88,8 @@ When the `Version Packages` Pull Request gets merged, the Changesets release Git
 
 ## Canary releases
 
-On `master` branch, we automatically publish **canary** releases from CI to the `canary` distribution channel, _after_ the build runs successfully.
+On `main` branch, we automatically publish **canary** releases from CI to the `canary` distribution channel, _after_ the build runs successfully.
 
-Canary releases are useful to test early changes that should not be released yet to `next` or `latest`. They are automatically triggered and released after a Pull Request merged into `master`, unless the commit message contains `[skip publish]`.
+Canary releases are useful to test early changes that should not be released yet to `next` or `latest`. They are automatically triggered and released after a Pull Request merged into `main`.
 
 Note that canary releases **will not create git tags and version bump commits**.
