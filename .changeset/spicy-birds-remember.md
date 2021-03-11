@@ -11,4 +11,4 @@
 
 Migrate packages to Gatsby `v3`. Please refer to the official release notes: https://www.gatsbyjs.com/docs/reference/release-notes/v3.0/
 
-Note that in the docs-kit packages there are no breaking changes.
+Note that in the docs-kit packages there are no breaking changes, except for requiring React `>=17` and NodeJS `>=14`.
