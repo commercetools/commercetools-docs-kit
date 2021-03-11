@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 15.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`df6061e`](https://github.com/commercetools/commercetools-docs-kit/commit/df6061e3812d912e38aa07b9190dd78301e448a6)]:
+  - @commercetools-docs/gatsby-theme-docs@15.0.1
+
 ## 15.0.0
 
 ### Major Changes

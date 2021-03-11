@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 15.0.1
+
+### Patch Changes
+
+- [#905](https://github.com/commercetools/commercetools-docs-kit/pull/905) [`df6061e`](https://github.com/commercetools/commercetools-docs-kit/commit/df6061e3812d912e38aa07b9190dd78301e448a6) Thanks [@emmenko](https://github.com/emmenko)! - Add missing `raw-loader` dependency
+
 ## 15.0.0
 
 ### Major Changes
