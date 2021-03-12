@@ -7,6 +7,7 @@ import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
 import { SearchSvgIcon, SlashSvgIcon } from '../icons';
 
 const SearchIcon = createStyledIcon(SearchSvgIcon);
+const iconHeight = '16px';
 
 const Container = styled.div`
   position: relative;
@@ -24,8 +25,8 @@ const Input = styled.input`
   flex: 1;
   font-family: inherit;
   font-size: ${designSystem.typography.fontSizes.small};
-  height: ${designSystem.dimensions.heights.inputSearchSmall};
-  min-height: ${designSystem.dimensions.heights.inputSearchSmall};
+  height: ${designSystem.dimensions.heights.inputSearchSecondary};
+  min-height: ${designSystem.dimensions.heights.inputSearchSecondary};
   outline: none;
   overflow: hidden;
   padding: 1px
@@ -55,7 +56,10 @@ const Input = styled.input`
 const SearchInputIcon = styled.span`
   position: absolute;
   z-index: ${designSystem.dimensions.stacks.base};
-  top: ${designSystem.dimensions.specialSpacings.searchIcon};
+  top: calc(
+    (${designSystem.dimensions.heights.inputSearchSecondary} - ${iconHeight}) /
+      2
+  );
   width: ${designSystem.dimensions.spacings.l};
   display: flex;
   flex-direction: column;

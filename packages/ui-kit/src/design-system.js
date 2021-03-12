@@ -125,8 +125,8 @@ export const tokens = {
 export const dimensions = {
   heights: {
     header: '48px',
-    inputSearch: '32px',
-    inputSearchSmall: '26px',
+    inputSearchPrimary: '32px',
+    inputSearchSecondary: '26px',
     childSectionNavLink: '28px',
   },
   widths: {
@@ -166,9 +166,6 @@ export const dimensions = {
     wide: pxToRem('64px'),
     enormous: pxToRem('72px'),
     huge: pxToRem('80px'),
-  },
-  specialSpacings: {
-    searchIcon: pxToRem('5px'),
   },
   stacks: {
     base: 1,
