@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const slugify = require('slugify');
 const prompts = require('prompts');
+const moment = require('moment');
 
 const questions = [
   {
@@ -35,14 +36,18 @@ const questions = [
     ],
   },
   {
-    type: 'date',
+    type: 'text',
     name: 'date',
-    message: 'Pick a release date',
+    message: 'Insert the release date with the following format: 2021-01-21',
+    validate: (date) => {
+      const checkDateFormat = moment(date, 'YYYY-MM-DD', true);
+      return checkDateFormat.isValid() ? true : 'Please use a valid format!';
+    },
   },
   {
     type: 'text',
     name: 'title',
-    message: 'The title of the release note. Max 256 character plain text.',
+    message: 'Insert the title for the release note. Write it in plain text.',
     validate: (title) =>
       title.length > 256 ? 'Title is longer than 256 chars!' : true,
   },
@@ -50,8 +55,7 @@ const questions = [
     type: 'text',
     name: 'description',
     message:
-      'Key changes and their advantages. Max 256 character plain text. This text is tweet-able and used in RSS feeds.',
-    format: (val, values) => `${values.title} ${val}`,
+      'Describe the key changes and their advantages briefly. Max 256 character plain text. This text is tweet-able and used in RSS feeds.',
     validate: (description) =>
       description.length > 256 ? 'Description is longer than 256 chars!' : true,
   },
@@ -59,7 +63,7 @@ const questions = [
     type: 'list',
     name: 'topics',
     message:
-      'Write down the topics for this release note. Seperate them with commas.',
+      'Fill in the topics for this release note. Seperate them with commas.',
     separator: ',',
   },
 ];
@@ -74,21 +78,16 @@ description: |
   ${response.description}
 type: ${response.type}
 topics:
-${response.topics.map((topic) => `- ${topic}`).join('\n')}
+${response.topics.map((topic) => `  - ${topic}`).join('\n')}
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet tristique arcu. Nullam et porta urna.
-Suspendisse potenti. Sed euismod eleifend sapien, et bibendum velit sollicitudin quis.
-Proin iaculis mauris in porttitor facilisis.
-
-<!--more-->
+Please write the content here. To use "Read More", insert <!--more-->.
 `;
 
+  const filemane = response.title.replace(/\s+/g, '-').toLowerCase();
+
   fs.writeFileSync(
-    path.join(
-      process.cwd(),
-      `src/releases/${slugify(response.title, '-')}.mdx`
-    ),
+    path.join(process.cwd(), `src/releases/${slugify(filemane, '-')}.mdx`),
     template
   );
 })();
