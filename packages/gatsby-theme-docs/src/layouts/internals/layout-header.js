@@ -95,16 +95,19 @@ const SearchBoxContainer = styled.div`
   grid-area: header-searchbox;
   display: flex;
   align-items: center;
+
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    padding: 0 ${designSystem.dimensions.spacings.m};
+  }
 `;
 
 const SearchInputBox = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.m};
-  width: calc(
+  max-width: calc(
     ${designSystem.dimensions.widths.pageNavigationSmall} -
       ${designSystem.dimensions.spacings.m} * 2
   );
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: calc(
+    max-width: calc(
       ${designSystem.dimensions.widths.pageNavigation} -
         ${designSystem.dimensions.spacings.m} * 2
     );
