@@ -30,7 +30,7 @@ const UserResearchBanner = () => {
           font-size: ${designSystem.typography.fontSizes.extraSmall};
         `}
       >
-        Join our User Research Program
+        Join our user research program
       </Link>
     </Banner>
   );
