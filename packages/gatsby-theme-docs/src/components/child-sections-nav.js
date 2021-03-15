@@ -100,7 +100,7 @@ const ChildrenContainer = styled.div`
   margin-top: ${designSystem.dimensions.spacings.s};
 `;
 const Link = styled.a`
-  overflow-x: scroll;
+  overflow-x: hidden;
   display: flex;
   align-items: center;
   padding: ${designSystem.dimensions.spacings.xs}
