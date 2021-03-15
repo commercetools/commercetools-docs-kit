@@ -92,6 +92,7 @@ const Container = styled.div`
   column-gap: ${designSystem.dimensions.spacings.l};
 `;
 const ColumnContainer = styled.div`
+  overflow: scroll;
   break-inside: avoid-column;
   margin-bottom: ${designSystem.dimensions.spacings.s};
 `;
