@@ -3,4 +3,4 @@
 '@commercetools-website/docs-smoke-test': patch
 ---
 
-A bug was fixed in the child section navigator.
+Fix overflowing issue with long words in `<ChildSectionNav>`
