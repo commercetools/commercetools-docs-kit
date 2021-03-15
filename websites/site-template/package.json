@@ -9,8 +9,8 @@
     "clean": "npx gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
     "build": "npx gatsby build --prefix-paths",
-    "prebuild": "yarn clean",
-    "postbuild": "rm -rf ../../public/site-template && mkdir -p ../../public && mv public ../../public/site-template"
+    "prebuild": "mkdir -p ../../public/site-template && rm -rf public && mv ../../public/site-template ./public && mkdir -p ../../.cache/site-template && rm -rf .cache && mv ../../.cache/site-template ./.cache",
+    "postbuild": "mv public ../../public/site-template && mv .cache ../../.cache/site-template"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-docs": "15.0.1",
