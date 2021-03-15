@@ -92,7 +92,6 @@ const Container = styled.div`
   column-gap: ${designSystem.dimensions.spacings.l};
 `;
 const ColumnContainer = styled.div`
-  overflow: scroll;
   break-inside: avoid-column;
   margin-bottom: ${designSystem.dimensions.spacings.s};
 `;
@@ -101,6 +100,7 @@ const ChildrenContainer = styled.div`
   margin-top: ${designSystem.dimensions.spacings.s};
 `;
 const Link = styled.a`
+  overflow-x: scroll;
   display: flex;
   align-items: center;
   padding: ${designSystem.dimensions.spacings.xs}
