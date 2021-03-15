@@ -10,7 +10,7 @@
     "clean:develop": "yarn clean && yarn develop",
     "build": "npx gatsby build --prefix-paths",
     "build:serve": "npx gatsby build --prefix-paths && npx gatsby serve --prefix-paths -o",
-    "prebuild": "ls ../../public/docs-smoke-test && ls ../../.cache/docs-smoke-test && mkdir -p ../../public/docs-smoke-test && rm -rf public && mv ../../public/docs-smoke-test ./public && mkdir -p ../../.cache/docs-smoke-test && rm -rf .cache && mv ../../.cache/docs-smoke-test ./.cache",
+    "prebuild": "mkdir -p ../../public/docs-smoke-test && rm -rf public && mv ../../public/docs-smoke-test ./public && mkdir -p ../../.cache/docs-smoke-test && rm -rf .cache && mv ../../.cache/docs-smoke-test ./.cache",
     "postbuild": "mv public ../../public/docs-smoke-test && mv .cache ../../.cache/docs-smoke-test",
     "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },

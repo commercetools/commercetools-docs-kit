@@ -10,7 +10,7 @@
     "clean": "npx gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
     "build": "npx gatsby build --prefix-paths",
-    "prebuild": "ls ../../public/api-docs-smoke-test && ls ../../.cache/api-docs-smoke-test && mkdir -p ../../public/api-docs-smoke-test && rm -rf public && mv ../../public/api-docs-smoke-test ./public && mkdir -p ../../.cache/api-docs-smoke-test && rm -rf .cache && mv ../../.cache/api-docs-smoke-test ./.cache && yarn predevelop",
+    "prebuild": "mkdir -p ../../public/api-docs-smoke-test && rm -rf public && mv ../../public/api-docs-smoke-test ./public && mkdir -p ../../.cache/api-docs-smoke-test && rm -rf .cache && mv ../../.cache/api-docs-smoke-test ./.cache && yarn predevelop",
     "postbuild": "mv public ../../public/api-docs-smoke-test && mv .cache ../../.cache/api-docs-smoke-test",
     "generate-ramldoc": "npx rmf-codegen generate ./source-raml/test/api.raml --output-folder ./src/api-specs/test --target RAML_DOC"
   },
