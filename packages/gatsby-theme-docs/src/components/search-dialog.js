@@ -75,7 +75,7 @@ const Content = styled.div`
   /* stylelint-enable */
 
   min-height: calc(
-    ${designSystem.dimensions.heights.inputSearch} +
+    ${designSystem.dimensions.heights.inputSearchPrimary} +
       ${designSystem.dimensions.spacings.l}
   );
 
@@ -109,8 +109,8 @@ const InputPlaceholder = () => (
       border-radius: ${designSystem.tokens.borderRadiusForSearchInput};
       display: flex;
       flex: 1;
-      height: ${designSystem.dimensions.heights.inputSearch};
-      min-height: ${designSystem.dimensions.heights.inputSearch};
+      height: ${designSystem.dimensions.heights.inputSearchPrimary};
+      min-height: ${designSystem.dimensions.heights.inputSearchPrimary};
     `}
   />
 );

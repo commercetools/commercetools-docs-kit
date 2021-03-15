@@ -37,8 +37,8 @@ const SearchInput = styled.input`
   flex: 1;
   font-family: inherit;
   font-size: ${designSystem.typography.fontSizes.body};
-  height: ${designSystem.dimensions.heights.inputSearch};
-  min-height: ${designSystem.dimensions.heights.inputSearch};
+  height: ${designSystem.dimensions.heights.inputSearchPrimary};
+  min-height: ${designSystem.dimensions.heights.inputSearchPrimary};
   outline: none;
   overflow: hidden;
   padding: 0

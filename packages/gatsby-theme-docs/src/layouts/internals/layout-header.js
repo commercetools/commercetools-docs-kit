@@ -26,14 +26,14 @@ const Container = styled.header`
   width: 100%;
   display: grid;
   grid:
-    [row1-start] 'header-content' ${designSystem
-      .dimensions.heights.header} [row1-end]
+    [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
+      .heights.header} [row1-end]
     / 1fr;
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     display: grid;
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
@@ -43,17 +43,17 @@ const Container = styled.header`
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths.pageContentWithMargins}
       )
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
@@ -63,14 +63,27 @@ const Container = styled.header`
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
+
+  ${(props) =>
+    props.allowWideContentLayout
+      ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
+    grid:
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions.heights.header} [row1-end]
+      / minmax(
+        ${designSystem.dimensions.widths.pageContentWideWithMargins},
+        ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
+      )
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, ${designSystem.dimensions.widths.pageNavigation});
+  }`
+      : ''}
 `;
-const Content = styled.div`
-  grid-area: header-content;
+const TopMenuContainer = styled.div`
+  grid-area: header-top-menu;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,12 +91,26 @@ const Content = styled.div`
   margin: 0;
   height: 100%;
 `;
-const Blank = styled.div`
-  grid-area: header-blank;
-  display: none;
+const SearchBoxContainer = styled.div`
+  grid-area: header-searchbox;
+  display: flex;
+  align-items: center;
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    display: block;
+    padding: 0 ${designSystem.dimensions.spacings.m};
+  }
+`;
+
+const SearchInputBox = styled.div`
+  max-width: calc(
+    ${designSystem.dimensions.widths.pageNavigationSmall} -
+      ${designSystem.dimensions.spacings.m} * 2
+  );
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    max-width: calc(
+      ${designSystem.dimensions.widths.pageNavigation} -
+        ${designSystem.dimensions.spacings.m} * 2
+    );
   }
 `;
 const Inline = styled.div`
@@ -169,8 +196,8 @@ const LayoutHeader = (props) => {
   };
 
   return (
-    <Container id="top">
-      <Content>
+    <Container id="top" allowWideContentLayout={props.allowWideContentLayout}>
+      <TopMenuContainer>
         <Inline alignItems="center">
           <LogoContainer>
             {/* Injected by React portal */}
@@ -208,6 +235,8 @@ const LayoutHeader = (props) => {
             </SpacingsInline>
           </DocumentationSwitcherButton>
         </Inline>
+      </TopMenuContainer>
+      <SearchBoxContainer>
         <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
           {props.isSearchDialogOpen ? (
             <Overlay position="absolute" onClick={props.closeSearchDialog}>
@@ -218,7 +247,7 @@ const LayoutHeader = (props) => {
             </Overlay>
           ) : (
             <>
-              <MediaQuery forViewport="mobile">
+              <MediaQuery forViewport="largeTablet" hideIfMatch>
                 <IconButton
                   icon={<SearchIcon />}
                   size="big"
@@ -227,25 +256,27 @@ const LayoutHeader = (props) => {
                   isDisabled={props.excludeFromSearchIndex}
                 />
               </MediaQuery>
-              <MediaQuery forViewport="tablet">
-                <SearchInput
-                  id="search-input-placeholder"
-                  size="small"
-                  onFocus={props.openSearchDialog}
-                  isDisabled={props.excludeFromSearchIndex}
-                />
+              <MediaQuery forViewport="largeTablet">
+                <SearchInputBox>
+                  <SearchInput
+                    id="search-input-placeholder"
+                    size="small"
+                    onFocus={props.openSearchDialog}
+                    isDisabled={props.excludeFromSearchIndex}
+                  />
+                </SearchInputBox>
               </MediaQuery>
             </>
           )}
         </SearchContainer>
-      </Content>
-      <Blank />
+      </SearchBoxContainer>
     </Container>
   );
 };
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
+  allowWideContentLayout: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,
   openSearchDialog: PropTypes.func.isRequired,
   closeSearchDialog: PropTypes.func.isRequired,

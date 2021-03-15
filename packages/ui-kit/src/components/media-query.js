@@ -19,6 +19,13 @@ const MediaQuery = styled.div`
             display: ${props.hideIfMatch ? 'none' : 'block'};
           }
         `;
+      case 'largeTablet':
+        return css`
+          display: ${props.hideIfMatch ? 'block' : 'none'};
+          @media screen and (${dimensions.viewports.largeTablet}) {
+            display: ${props.hideIfMatch ? 'none' : 'block'};
+          }
+        `;
       case 'laptop':
         return css`
           display: ${props.hideIfMatch ? 'block' : 'none'};

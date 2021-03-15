@@ -125,7 +125,8 @@ export const tokens = {
 export const dimensions = {
   heights: {
     header: '48px',
-    inputSearch: '32px',
+    inputSearchPrimary: '32px',
+    inputSearchSecondary: '26px',
     childSectionNavLink: '28px',
   },
   widths: {
@@ -141,7 +142,7 @@ export const dimensions = {
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
     searchBar: '300px',
-    searchBarSmall: '150px',
+    searchBarSmall: '160px',
     selectDropDownArrowWith: '12px',
     sideBySideSecondColumn: '560px',
   },
