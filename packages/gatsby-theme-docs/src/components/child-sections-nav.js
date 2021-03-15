@@ -107,7 +107,7 @@ const Link = styled.a`
   font-size: ${designSystem.typography.fontSizes.small};
   color: ${designSystem.colors.light.textSecondary};
   text-decoration: none;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   :hover {
     color: ${designSystem.colors.light.linkNavigation};
     background-color: ${designSystem.colors.light.surfaceSecondary1};
