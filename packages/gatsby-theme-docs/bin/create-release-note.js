@@ -69,6 +69,11 @@ const questions = [
 ];
 
 (async () => {
+  if (!fs.existsSync(path.join(process.cwd(), `src/releases`))) {
+    console.error(`No "releases" folder found in this directory`);
+    process.exit();
+  }
+
   const response = await prompts(questions);
 
   const template = `---
