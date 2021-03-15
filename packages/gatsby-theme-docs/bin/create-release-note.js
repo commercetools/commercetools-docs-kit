@@ -38,7 +38,7 @@ const questions = [
   {
     type: 'text',
     name: 'date',
-    message: 'Insert the release date with the following format: 2021-01-21',
+    message: 'Insert the release date with the following format: YYYY-MM-DD',
     validate: (date) => {
       const checkDateFormat = moment(date, 'YYYY-MM-DD', true);
       return checkDateFormat.isValid() ? true : 'Please use a valid format!';
@@ -69,7 +69,8 @@ const questions = [
 ];
 
 (async () => {
-  if (!fs.existsSync(path.join(process.cwd(), `src/releases`))) {
+  const folderpath = path.join(process.cwd(), `src/releases`);
+  if (!fs.existsSync(folderpath)) {
     console.error(`No "releases" folder found in this directory`);
     process.exit();
   }
@@ -92,7 +93,7 @@ Please write the content here. To use "Read More", insert <!--more-->.
   const filemane = response.title.replace(/\s+/g, '-').toLowerCase();
 
   fs.writeFileSync(
-    path.join(process.cwd(), `src/releases/${slugify(filemane, '-')}.mdx`),
+    path.join(`${folderpath}/${slugify(filemane, '-')}.mdx`),
     template
   );
 })();
