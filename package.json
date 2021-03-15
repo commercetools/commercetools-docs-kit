@@ -9,13 +9,14 @@
     "packages": ["packages/ui-kit"]
   },
   "scripts": {
+    "preinstall": "mkdir -p public && mkdir -p .cache && ls -Rl public > public/files-public-before.txt && ls -Rl .cache > public/files-cache-before.txt",
     "postinstall": "preconstruct dev && manypkg check",
     "clean": "lerna run clean --scope '@commercetools-website/*'",
     "start": "yarn --cwd websites/docs-smoke-test start",
     "build-packages": "preconstruct build",
     "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
-    "prebuild": "mkdir -p public && mkdir -p .cache && ls -Rl public > public/files-public-before.txt && ls -Rl .cache > public/files-cache-before.txt && yarn build-packages && yarn generate-icons",
-    "postbuild": "cp -f ./websites/index.html ./public && yarn check-links && ls -Rl public > public/files-public-after.txt && ls -Rl .cache > public/files-cache-after.txt",
+    "prebuild": "yarn build-packages && yarn generate-icons",
+    "postbuild": "cp -f ./websites/index.html ./public && yarn check-links && ls -Rl .cache > public/files-cache-after.txt && ls -Rl public > public/files-public-after.txt",
     "vercel-build": "amazon-linux-extras install java-openjdk11 > /dev/null && yarn build",
     "generate-icons": "lerna run generate-icons && prettier --write '**/generated/*.js'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
