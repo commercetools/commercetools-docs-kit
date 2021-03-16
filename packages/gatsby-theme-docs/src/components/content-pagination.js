@@ -50,8 +50,6 @@ PaginationButtonLink.propTypes = {
 };
 
 const PaginationButton = styled(Card)`
-  padding: ${designSystem.dimensions.spacings.s} !important;
-
   svg {
     * {
       fill: ${designSystem.colors.light.textPrimary};
@@ -72,7 +70,7 @@ const PaginationLink = (props) => (
     to={trimTrailingSlash(props.linkTo)}
     align={props.direction === 'left' ? 'right' : 'left'}
   >
-    <PaginationButton>
+    <PaginationButton insetScale="s">
       <SpacingsInline
         scale="m"
         alignItems="center"
