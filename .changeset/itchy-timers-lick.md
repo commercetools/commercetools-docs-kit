@@ -4,21 +4,17 @@
 
 Fix an issue with release note generator CLI.
 
-How to create a release note over your console:
+If you want to configure a topic list for a microsite, create a file called `docs-release-notes-config.yml` in the microsite folder. Then you can configure topics in the following format:
 
-1. Navigate to the microsite where you want to create the release note
-2. Run the following command in your terminal
-
+```yml
+topics:
+  Carts:
+    name: Carts
+  Limits:
+    name: Limits
+  Orders:
+    name: Orders
+    description: Describe the topic here
 ```
-yarn create-docs-release-note
-```
 
-3. Follow the instructions in your console.
-4. After finishing all instructions in the console, you can find the generated release note in the `src/releases` folder of your microsite.
-
-How to create a release note over over Visual Studio Code:
-
-1. Go to the `npm scripts` section and open the `package.json` file from the microsite in which you want to create a release note.
-2. Run the script `create-docs-release-note`.
-3. Follow the instructions in the console.
-4. After finishing all instructions in the console, you can find the generated release note in the `src/releases` folder of your microsite.
+The description is optional.

@@ -82,22 +82,16 @@ const selectQuestions = (customizedQuestions) => {
 
   const getQuestions = () => {
     if (configFile) {
-      const topics = configFile.config.topics;
-
-      const topicChoices = (topics) => {
-        return topics.map((topic) => {
-          return {
-            title: topic.name,
-            value: topic.name,
-            description: topic.description,
-          };
-        });
-      };
+      const topics = configFile.config.topics.map((topic) => ({
+        title: topic.name,
+        value: topic.name,
+        description: topic.description,
+      }));
       const multiselectTopicQuestion = {
         type: 'multiselect',
         name: 'topics',
         message: 'Select the topics for this release note.',
-        choices: topicChoices(topics),
+        choices: topics,
       };
       return selectQuestions(multiselectTopicQuestion);
     }
