@@ -1,5 +1,22 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 15.0.2
+
+### Patch Changes
+
+- [#878](https://github.com/commercetools/commercetools-docs-kit/pull/878) [`f10c62d`](https://github.com/commercetools/commercetools-docs-kit/commit/f10c62d56bcaa99efaa6e9bf753caf76bd9e78e7) Thanks [@TimonRey](https://github.com/TimonRey)! - The searchbox was moved over the index navigation.
+
+* [#908](https://github.com/commercetools/commercetools-docs-kit/pull/908) [`714fa0c`](https://github.com/commercetools/commercetools-docs-kit/commit/714fa0c0f13364aed4479fc61de3adde1d2b068d) Thanks [@TimonRey](https://github.com/TimonRey)! - The text in the user research banner was updated.
+
+- [#915](https://github.com/commercetools/commercetools-docs-kit/pull/915) [`e730e88`](https://github.com/commercetools/commercetools-docs-kit/commit/e730e884428a688919563e912301825eab81acd3) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#913](https://github.com/commercetools/commercetools-docs-kit/pull/913) [`8eb6fb3`](https://github.com/commercetools/commercetools-docs-kit/commit/8eb6fb3eb60b5bd1e110baaed7b46b1febddfa7b) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit dependencies to `11.2.0`
+
+- [#911](https://github.com/commercetools/commercetools-docs-kit/pull/911) [`379c4ba`](https://github.com/commercetools/commercetools-docs-kit/commit/379c4baaa540df17384db7f553acfe2fd713c2be) Thanks [@TimonRey](https://github.com/TimonRey)! - Fix overflowing issue with long words in `<ChildSectionNav>`
+
+- Updated dependencies [[`f10c62d`](https://github.com/commercetools/commercetools-docs-kit/commit/f10c62d56bcaa99efaa6e9bf753caf76bd9e78e7), [`e730e88`](https://github.com/commercetools/commercetools-docs-kit/commit/e730e884428a688919563e912301825eab81acd3), [`8eb6fb3`](https://github.com/commercetools/commercetools-docs-kit/commit/8eb6fb3eb60b5bd1e110baaed7b46b1febddfa7b)]:
+  - @commercetools-docs/ui-kit@15.0.2
+
 ## 15.0.1
 
 ### Patch Changes
