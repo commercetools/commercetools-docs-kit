@@ -74,15 +74,15 @@ const selectQuestions = (customizedQuestions) => {
     process.exit();
   }
 
-  const getQuestions = () => {
-    const moduleName = 'release-note-topic-config';
-    const explorerSync = cosmiconfigSync(moduleName, {
-      searchPlaces: [`${moduleName}.yml`],
-    });
-    const configFile = explorerSync.search();
+  const moduleName = 'docs-release-notes-config';
+  const explorerSync = cosmiconfigSync(moduleName, {
+    searchPlaces: [`${moduleName}.yml`, `${moduleName}.yaml`],
+  });
+  const configFile = explorerSync.search();
 
+  const getQuestions = () => {
     if (configFile) {
-      const topics = configFile.config;
+      const topics = configFile.config.topics;
 
       const topicChoices = (topics) => {
         return Object.keys(topics).map((topic) => {
