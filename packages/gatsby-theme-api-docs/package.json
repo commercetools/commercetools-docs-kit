@@ -34,8 +34,8 @@
   "devDependencies": {
     "@commercetools-docs/gatsby-theme-docs": "15.0.1",
     "@commercetools-docs/rmf-codegen": "12.1.0",
-    "gatsby": "3.0.4",
-    "gatsby-source-filesystem": "3.0.0",
+    "gatsby": "3.1.0",
+    "gatsby-source-filesystem": "3.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
