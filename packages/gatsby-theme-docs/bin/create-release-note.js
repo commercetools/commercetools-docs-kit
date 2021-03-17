@@ -85,7 +85,6 @@ const selectQuestions = (customizedQuestions) => {
       const topics = configFile.config.topics;
 
       const topicChoices = (topics) => {
-        console.log(topics);
         return topics.map((topic) => {
           return {
             title: topic.name,
