@@ -9,7 +9,7 @@
     "serve": "npx gatsby serve --prefix-paths -o",
     "clean": "npx gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
-    "create-docs-release-note": "PATH=$(npm bin):$PATH create-docs-release-note",
+    "create-docs-release-note": "npx create-docs-release-note",
     "build": "npx gatsby build --prefix-paths",
     "prebuild": "yarn clean && yarn predevelop",
     "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
