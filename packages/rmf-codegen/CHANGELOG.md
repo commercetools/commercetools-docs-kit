@@ -1,5 +1,11 @@
 # @commercetools-docs/rmf-codegen
 
+## 12.2.0
+
+### Minor Changes
+
+- [#916](https://github.com/commercetools/commercetools-docs-kit/pull/916) [`e989a2a`](https://github.com/commercetools/commercetools-docs-kit/commit/e989a2a32a34270dff8a005fac5ffd329801c2ce) Thanks [@emmenko](https://github.com/emmenko)! - update codegen version
+
 ## 12.1.0
 
 ### Minor Changes
