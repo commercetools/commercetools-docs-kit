@@ -7,6 +7,12 @@ const prompts = require('prompts');
 const moment = require('moment');
 const { cosmiconfigSync } = require('cosmiconfig');
 
+const moduleName = 'docs-release-notes-config';
+const explorerSync = cosmiconfigSync(moduleName, {
+  searchPlaces: [`${moduleName}.yml`, `${moduleName}.yaml`],
+});
+const configFile = explorerSync.search();
+
 const selectQuestions = (customizedQuestions) => {
   return [
     {
@@ -74,21 +80,18 @@ const selectQuestions = (customizedQuestions) => {
     process.exit();
   }
 
-  const moduleName = 'docs-release-notes-config';
-  const explorerSync = cosmiconfigSync(moduleName, {
-    searchPlaces: [`${moduleName}.yml`, `${moduleName}.yaml`],
-  });
-  const configFile = explorerSync.search();
-
   const getQuestions = () => {
     if (configFile) {
       const topics = configFile.config.topics;
 
       const topicChoices = (topics) => {
-        return Object.keys(topics).map((topic) => {
-          const title = topics[topic].name;
-          const description = topics[topic].description;
-          return { title, value: title, description: description || '' };
+        console.log(topics);
+        return topics.map((topic) => {
+          return {
+            title: topic.name,
+            value: topic.name,
+            description: topic.description,
+          };
         });
       };
       const multiselectTopicQuestion = {
