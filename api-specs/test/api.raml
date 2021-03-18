@@ -7,6 +7,7 @@ baseUri: https://api.regionOne.providerOne.commercetools.com
 (annotations.docsBaseUri): https://api.{region}.{cloudProvider}.commercetools.com
 (annotations.docsBaseUriParameters):
   region:
+    type: string
     enum:
       - regionOne
       - regionTwo
@@ -14,6 +15,7 @@ baseUri: https://api.regionOne.providerOne.commercetools.com
     description: |
       Free text description of the uri parameter.
   cloudProvider:
+    type: string
     enum:
       - providerOne
       - providerTwo
