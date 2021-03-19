@@ -41,6 +41,7 @@
     "@mdx-js/react": "1.6.22",
     "@sentry/browser": "6.2.2",
     "@svgr/webpack": "5.5.0",
+    "cosmiconfig": "^7.0.0",
     "docsearch.js": "2.6.3",
     "gatsby-plugin-emotion": "6.1.0",
     "gatsby-plugin-feed": "3.1.0",
