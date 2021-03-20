@@ -3,9 +3,12 @@
 title: Commercetools Test API Spec
 version: v0.1 beta
 mediaType: application/json
-baseUri: https://api.{region}.{cloudProvider}.commercetools.com
-baseUriParameters:
+baseUri: https://api.regionOne.providerOne.commercetools.com
+(annotations.docsBaseUri): https://api.{region}.{cloudProvider}.commercetools.com
+(annotations.docsBaseUriParameters):
   region:
+    type: string
+    required: true
     enum:
       - regionOne
       - regionTwo
@@ -13,6 +16,8 @@ baseUriParameters:
     description: |
       Free text description of the uri parameter.
   cloudProvider:
+    type: string
+    required: true
     enum:
       - providerOne
       - providerTwo

@@ -31,7 +31,14 @@ annotationTypes:
       if the `refersTo` annotation is used on a RAML element it designates that the element is referring, linking or pointing to another type of entity.
       Documentation should generate a navigatable link to that other entity.
     type: string
-
+  docsBaseUri:
+    allowedTargets:
+      - API
+    type: string
+  docsBaseUriParameters:
+    allowedTargets:
+      - API
+    type: object
 
 ## Reminder for future needs:
 #  messagesEmitted:
