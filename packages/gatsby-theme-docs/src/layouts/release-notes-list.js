@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
+import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { ReleaseNotesSubscribeLinks } from '../components';
@@ -18,6 +19,7 @@ import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
 const LayoutReleaseNotesList = (props) => {
+  const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
 
@@ -41,6 +43,7 @@ const LayoutReleaseNotesList = (props) => {
         <LayoutHeader
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
+          ref={ref}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />

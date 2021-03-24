@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { BetaFlag, ContentPagination } from '../components';
@@ -21,6 +22,7 @@ import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
 const LayoutContent = (props) => {
+  const { ref, inView } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
 
@@ -44,6 +46,7 @@ const LayoutContent = (props) => {
         <LayoutHeader
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
+          ref={ref}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
           allowWideContentLayout={props.pageData.allowWideContentLayout}
@@ -71,6 +74,9 @@ const LayoutContent = (props) => {
               </PageContentInset>
             </LayoutPageContent>
             <LayoutPageNavigation
+              {...layoutState.searchDialog}
+              isSearchBoxInView={inView}
+              excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
               pageTitle={props.pageContext.shortTitle || props.pageData.title}
               tableOfContents={props.pageData.tableOfContents}
               navLevels={props.pageData.navLevels}

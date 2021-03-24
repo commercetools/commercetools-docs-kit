@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { AngleLeftIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { Link } from '../components';
@@ -21,6 +22,7 @@ import PageContentInset from './internals/page-content-inset';
 import { ReleaseNotePageTitle } from '../components/release-note-heading';
 
 const LayoutReleaseNotesDetail = (props) => {
+  const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
 
@@ -46,6 +48,7 @@ const LayoutReleaseNotesDetail = (props) => {
         <LayoutHeader
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
+          ref={ref}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
