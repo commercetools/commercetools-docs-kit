@@ -1,5 +1,33 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 16.0.0
+
+### Minor Changes
+
+- [#907](https://github.com/commercetools/commercetools-docs-kit/pull/907) [`c47e680`](https://github.com/commercetools/commercetools-docs-kit/commit/c47e680c69ff45d59bee33fde380f12d467dccf2) Thanks [@TimonRey](https://github.com/TimonRey)! - Fix an issue with release note generator CLI.
+
+  If you want to configure a topic list for a microsite, create a file called `docs-release-notes-config.yml` in the microsite folder. Then you can configure topics in the following format:
+
+  ```yml
+  topics:
+    Carts:
+      name: Carts
+    Limits:
+      name: Limits
+    Orders:
+      name: Orders
+      description: Describe the topic here
+  ```
+
+  The description is optional.
+
+### Patch Changes
+
+- [#923](https://github.com/commercetools/commercetools-docs-kit/pull/923) [`529c35b`](https://github.com/commercetools/commercetools-docs-kit/commit/529c35bd8da4fbcb91d1125cd42f903376cc0627) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`529c35b`](https://github.com/commercetools/commercetools-docs-kit/commit/529c35bd8da4fbcb91d1125cd42f903376cc0627)]:
+  - @commercetools-docs/ui-kit@16.0.0
+
 ## 15.0.2
 
 ### Patch Changes
