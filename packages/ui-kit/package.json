@@ -36,7 +36,7 @@
     "prism-react-renderer": "1.2.0",
     "prop-types": "15.7.2",
     "react-intl": "^5.7.0",
-    "swr": "0.5.4",
+    "swr": "0.5.5",
     "tiny-invariant": "1.1.0"
   },
   "devDependencies": {
