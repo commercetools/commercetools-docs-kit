@@ -9,6 +9,7 @@
     "packages": ["packages/ui-kit"]
   },
   "scripts": {
+    "prepare": "husky install",
     "postinstall": "preconstruct dev && manypkg check",
     "clean": "lerna run clean --scope '@commercetools-website/*'",
     "start": "yarn --cwd websites/docs-smoke-test start",
