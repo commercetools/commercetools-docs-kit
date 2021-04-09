@@ -7,7 +7,7 @@
 '@commercetools-docs/ui-kit': patch
 '@commercetools-website/api-docs-smoke-test': patch
 '@commercetools-website/docs-smoke-test': patch
-'@commercetools-website/site-template patch'
+'@commercetools-website/site-template': patch
 ---
 
 Update dependencies (ref [#927](https://github.com/commercetools/commercetools-docs-kit/pull/927), [#932](https://github.com/commercetools/commercetools-docs-kit/pull/932)).
