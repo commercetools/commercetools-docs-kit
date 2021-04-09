@@ -37,7 +37,6 @@ const SlidingContainer = styled.div`
 `;
 const GridContainer = styled.div`
   display: none;
-  border-left: 1px solid ${designSystem.colors.light.borderPrimary};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
@@ -85,8 +84,7 @@ StickyContainer.propTypes = {
 const PageTitleLink = styled.a`
   color: ${designSystem.colors.light.textSecondary};
   font-size: ${designSystem.typography.fontSizes.extraSmall};
-  padding: ${designSystem.dimensions.spacings.s}
-    ${designSystem.dimensions.spacings.m} 0;
+  padding: 0 ${designSystem.dimensions.spacings.m};
   border-left: 1px solid transparent;
   text-decoration: none;
   :hover {
@@ -139,6 +137,10 @@ const SearchInputBox = styled.div`
   }
 `;
 
+const Blank = styled.div`
+  height: 60px;
+`;
+
 const LayoutPageNavigation = (props) => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const [modalPortalNode, setModalPortalNode] = React.useState();
@@ -156,7 +158,7 @@ const LayoutPageNavigation = (props) => {
   const searchContainer = (
     <SearchBox excludeFromSearchIndex={props.excludeFromSearchIndex}>
       {props.isSearchBoxInView ? (
-        <></>
+        <Blank />
       ) : (
         <SearchInputBox>
           <SearchInput

@@ -22,16 +22,21 @@ const PageContentInset = styled.div`
   section > ${Markdown.H2} {
     max-width: unset;
   }
-  padding: ${designSystem.dimensions.spacings.m}
-    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
+  margin-top: ${designSystem.dimensions.heights.pageSearchboxSpace};
+  border-right: ${(props) =>
+    props.showRightBorder
+      ? `1px solid ${designSystem.colors.light.borderPrimary}`
+      : `none`};
+
+  padding: 0 ${designSystem.dimensions.spacings.m}
+    ${designSystem.dimensions.spacings.xl};
 
   > * + * {
     margin: ${designSystem.dimensions.spacings.xl} 0 0;
   }
 
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    padding: ${designSystem.dimensions.spacings.m}
-      ${designSystem.dimensions.spacings.xl}
+    padding: 0 ${designSystem.dimensions.spacings.xl}
       ${designSystem.dimensions.spacings.xl};
   }
 `;

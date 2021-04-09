@@ -19,7 +19,7 @@ import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
 const LayoutReleaseNotesList = (props) => {
-  const { ref } = useInView();
+  const { ref, inView } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
 
@@ -56,11 +56,15 @@ const LayoutReleaseNotesList = (props) => {
               <ReleaseNotesSubscribeLinks />
             </LayoutPageHeaderSide>
             <LayoutPageContent>
-              <PageContentInset id="body-content">
+              <PageContentInset id="body-content" showRightBorder>
                 {props.children}
               </PageContentInset>
             </LayoutPageContent>
-            <LayoutPageReleaseNotesFilters />
+            <LayoutPageReleaseNotesFilters
+              {...layoutState.searchDialog}
+              isSearchBoxInView={inView}
+              excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+            />
           </LayoutPage>
         </LayoutPageWrapper>
         <LayoutFooter />

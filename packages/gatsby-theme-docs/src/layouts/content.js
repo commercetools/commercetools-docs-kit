@@ -68,7 +68,7 @@ const LayoutContent = (props) => {
               </SpacingsStack>
             </LayoutPageHeaderSide>
             <LayoutPageContent>
-              <PageContentInset id="body-content">
+              <PageContentInset id="body-content" showRightBorder>
                 {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
               </PageContentInset>
