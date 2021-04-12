@@ -12,7 +12,7 @@ import { useInView } from 'react-intersection-observer';
 import { StackedLinesIndentedIconSvgIcon } from '../../icons';
 import PlaceholderPageHeaderSide from '../../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../../overrides/page-header-banner-area';
-import { Overlay, BetaFlag } from '../../components';
+import { Overlay, BetaFlag, SearchInput } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
@@ -23,6 +23,11 @@ const slideInAnimation = keyframes`
   from { margin-right: -100%; }
   to { margin-right: 0; }
 `;
+const fadeInAnimation = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
 const SlidingContainer = styled.div`
   width: ${designSystem.dimensions.widths.pageNavigation};
   background-color: ${designSystem.colors.light.surfacePrimary};
@@ -32,7 +37,6 @@ const SlidingContainer = styled.div`
 `;
 const GridContainer = styled.div`
   display: none;
-  border-left: 1px solid ${designSystem.colors.light.borderPrimary};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
@@ -80,8 +84,7 @@ StickyContainer.propTypes = {
 const PageTitleLink = styled.a`
   color: ${designSystem.colors.light.textSecondary};
   font-size: ${designSystem.typography.fontSizes.extraSmall};
-  padding: ${designSystem.dimensions.spacings.s}
-    ${designSystem.dimensions.spacings.m} 0;
+  padding: 0 ${designSystem.dimensions.spacings.m};
   border-left: 1px solid transparent;
   text-decoration: none;
   :hover {
@@ -111,6 +114,33 @@ const ToggleMenuButton = styled.div`
   }
 `;
 
+const SearchBox = styled.div`
+  display: ${(props) => (props.excludeFromSearchIndex ? 'none' : 'block')};
+
+  @media only percy {
+    display: block !important;
+  }
+`;
+
+const SearchInputBox = styled.div`
+  padding: ${designSystem.dimensions.spacings.m};
+  animation: ${fadeInAnimation} 0.4s ease-in;
+  max-width: calc(
+    ${designSystem.dimensions.widths.pageNavigationSmall} -
+      ${designSystem.dimensions.spacings.m} * 2
+  );
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    max-width: calc(
+      ${designSystem.dimensions.widths.pageNavigation} -
+        ${designSystem.dimensions.spacings.m} * 2
+    );
+  }
+`;
+
+const Blank = styled.div`
+  height: 60px;
+`;
+
 const LayoutPageNavigation = (props) => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const [modalPortalNode, setModalPortalNode] = React.useState();
@@ -124,6 +154,23 @@ const LayoutPageNavigation = (props) => {
     (props.tableOfContents.items && props.tableOfContents.items.length === 0)
   )
     return null;
+
+  const searchContainer = (
+    <SearchBox excludeFromSearchIndex={props.excludeFromSearchIndex}>
+      {props.isSearchBoxInView ? (
+        <Blank />
+      ) : (
+        <SearchInputBox>
+          <SearchInput
+            id="search-input-placeholder"
+            size="small"
+            onFocus={props.openSearchDialog}
+            isDisabled={props.excludeFromSearchIndex}
+          />
+        </SearchInputBox>
+      )}
+    </SearchBox>
+  );
 
   const navigationContainer = (
     <nav
@@ -207,13 +254,18 @@ const LayoutPageNavigation = (props) => {
         />
       </ToggleMenuButton>
       <GridContainer>
-        <StickyContainer>{navigationContainer}</StickyContainer>
+        <StickyContainer>
+          {[searchContainer, navigationContainer]}
+        </StickyContainer>
       </GridContainer>
     </>
   );
 };
 LayoutPageNavigation.displayName = 'LayoutPageNavigation';
 LayoutPageNavigation.propTypes = {
+  isSearchBoxInView: PropTypes.bool.isRequired,
+  excludeFromSearchIndex: PropTypes.bool.isRequired,
+  openSearchDialog: PropTypes.func.isRequired,
   pageTitle: PropTypes.string.isRequired,
   tableOfContents: PropTypes.shape({
     items: PropTypes.array,

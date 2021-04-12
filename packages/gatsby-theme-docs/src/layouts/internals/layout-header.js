@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -181,7 +181,8 @@ const SearchContainer = styled.div`
   }
 `;
 
-const LayoutHeader = (props) => {
+// eslint-disable-next-line react/display-name
+const LayoutHeader = forwardRef((props, ref) => {
   const handleTopMenuButtonKeyPress = (event) => {
     const enterOrSpace =
       event.key === 'Enter' ||
@@ -236,7 +237,7 @@ const LayoutHeader = (props) => {
           </DocumentationSwitcherButton>
         </Inline>
       </TopMenuContainer>
-      <SearchBoxContainer>
+      <SearchBoxContainer ref={ref}>
         <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
           {props.isSearchDialogOpen ? (
             <Overlay position="absolute" onClick={props.closeSearchDialog}>
@@ -272,7 +273,7 @@ const LayoutHeader = (props) => {
       </SearchBoxContainer>
     </Container>
   );
-};
+});
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
