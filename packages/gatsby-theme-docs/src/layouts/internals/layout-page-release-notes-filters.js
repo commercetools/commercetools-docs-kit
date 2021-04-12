@@ -112,7 +112,7 @@ const SearchInputBox = styled.div`
 `;
 
 const Blank = styled.div`
-  height: 60px;
+  height: ${designSystem.dimensions.heights.pageSearchboxSpace};
 `;
 
 const LayoutPageReleaseNotesFilters = (props) => {
