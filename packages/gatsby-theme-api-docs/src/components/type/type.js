@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FullWidthContainer } from '@commercetools-docs/gatsby-theme-docs';
-import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
 import { generateTypeURN } from '../../utils/ctp-urn';
 import { useApiTypes } from '../../hooks/use-api-types';
 import reportError from '../../utils/report-error';
 import Children from './children';
-import ChildrenUnionLike from './children-union-like';
 
 const ApiType = (props) => {
   const apiTypes = useApiTypes();
@@ -23,7 +21,6 @@ const ApiType = (props) => {
     );
   }
 
-  const apiTypeSubTypes = filterOutApiTypeSubtypes(matchedApiType, apiTypes);
   const urn = generateTypeURN(matchedApiType);
 
   return (
@@ -31,26 +28,16 @@ const ApiType = (props) => {
       id={urn}
       aria-label={`${matchedApiType.displayName} definition`}
     >
-      {matchedApiType.oneOf ? (
-        <ChildrenUnionLike
-          apiKey={props.apiKey}
-          apiType={matchedApiType}
-          apiTypeSubTypes={apiTypeSubTypes}
-          doNotRenderExamples={props.doNotRenderExamples}
-          hideInheritedProperties={props.hideInheritedProperties}
-        />
-      ) : (
-        <Children
-          apiKey={props.apiKey}
-          apiType={matchedApiType}
-          propertiesTableTitle={props.propertiesTableTitle}
-          renderDescriptionBelowProperties={
-            props.renderDescriptionBelowProperties
-          }
-          doNotRenderExamples={props.doNotRenderExamples}
-          hideInheritedProperties={props.hideInheritedProperties}
-        />
-      )}
+      <Children
+        apiKey={props.apiKey}
+        apiType={matchedApiType}
+        propertiesTableTitle={props.propertiesTableTitle}
+        renderDescriptionBelowProperties={
+          props.renderDescriptionBelowProperties
+        }
+        doNotRenderExamples={props.doNotRenderExamples}
+        hideInheritedProperties={props.hideInheritedProperties}
+      />
     </FullWidthContainer>
   );
 };
