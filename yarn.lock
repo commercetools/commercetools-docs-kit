@@ -1408,10 +1408,10 @@
     babel-plugin-transform-react-remove-prop-types "0.4.24"
     core-js "3.10.0"
 
-"@commercetools-frontend/eslint-config-mc-app@18.7.0":
-  version "18.7.0"
-  resolved "https://registry.yarnpkg.com/@commercetools-frontend/eslint-config-mc-app/-/eslint-config-mc-app-18.7.0.tgz#c77e9bf31254a7546bdac1eca05c187cf8d02000"
-  integrity sha512-eGvowmD5YlbEhlCfFbCDPzPAWkZ32fhwJJ9oNEZ2ODuAoK7yt7WAFiHJbtnc653vUd2LcJOiBm3cHUJQXv4uNQ==
+"@commercetools-frontend/eslint-config-mc-app@19.0.1":
+  version "19.0.1"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/eslint-config-mc-app/-/eslint-config-mc-app-19.0.1.tgz#b6cb4eb702972053a8460ddd6490dab3f0c80940"
+  integrity sha512-XonvFiv6W+hqMdR+zjCiVeceNJg8m+nn5vDtfae1DhryDkZXVXF7DWrR752EfOx4y1yUMBpRqmwBA5WETA3mUQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.14.0"
     "@typescript-eslint/parser" "^4.14.0"
