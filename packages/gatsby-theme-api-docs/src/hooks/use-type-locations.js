@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { useStaticQuery, graphql } from 'gatsby';
 import { generateTypeURN } from '../utils/ctp-urn';
+import { useTypeLocationOverrides } from './use-type-location-overrides';
 
 const buildPageSlug = (page) => {
   const [pathWithoutExt] = page.parent.relativePath.split(page.parent.ext);
@@ -56,8 +57,15 @@ export const useTypeLocations = () => {
       }
     `
   );
+  const typeLocations = convertComponentInMdxToTypeLocations(queryResult);
+  const typeLocationOverrides = useTypeLocationOverrides().reduce(
+    (list, type) => {
+      return { ...list, [type.type]: { urlAnchorTag: type.path } };
+    },
+    {}
+  );
 
-  return convertComponentInMdxToTypeLocations(queryResult);
+  return { ...typeLocations, ...typeLocationOverrides };
 };
 
 export const locationForType = (apiKey, type, typeLocations) => {
