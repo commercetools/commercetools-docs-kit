@@ -1,2 +1,4 @@
-- type: test___ExternalTypeLocation
-  path: https://docs.commercetools.com/api/projects/carts#get-a-cart-by-id
+- type: test__ExternalLinkTestType
+  path: /types/general#externallinktesttype
+- type: test__ExampleForManualTypeLinks
+  path: /types/examples#exampleformanualtypelinks

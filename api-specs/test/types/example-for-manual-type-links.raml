@@ -1,0 +1,12 @@
+#%RAML 1.0 Library
+usage: External link test type.
+
+uses:
+  externalLinkTestType: external-link-test-type.raml
+
+types:
+  ExampleForManualTypeLinks:
+    properties:
+      isExternalType:
+        description: A link pointing to a type in another website.
+        type: externalLinkTestType.ExternalLinkTestType
