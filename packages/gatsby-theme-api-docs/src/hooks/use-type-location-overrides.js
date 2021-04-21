@@ -6,8 +6,9 @@ export const useTypeLocationOverrides = () => {
       {
         allTypeLocationsYaml {
           nodes {
+            apiKey
             type
-            path
+            href
           }
         }
       }

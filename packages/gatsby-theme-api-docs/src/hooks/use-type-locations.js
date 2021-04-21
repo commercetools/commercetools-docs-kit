@@ -24,10 +24,6 @@ const convertComponentInMdxToTypeLocations = (data) =>
     return {
       ...typeLocations,
       [`${apiKey}__${name}`]: {
-        apiKey,
-        name,
-        slug,
-        urn,
         urlAnchorTag,
       },
     };
@@ -60,11 +56,13 @@ export const useTypeLocations = () => {
   const typeLocations = convertComponentInMdxToTypeLocations(queryResult);
   const typeLocationOverrides = useTypeLocationOverrides().reduce(
     (list, type) => {
-      return { ...list, [type.type]: { urlAnchorTag: type.path } };
+      return {
+        ...list,
+        [`${type.apiKey}__${type.type}`]: { urlAnchorTag: type.href },
+      };
     },
     {}
   );
-
   return { ...typeLocations, ...typeLocationOverrides };
 };
 

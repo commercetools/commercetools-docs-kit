@@ -1,4 +1,6 @@
-- type: test__ExternalLinkTestType
-  path: /types/general#externallinktesttype
-- type: test__ExampleForManualTypeLinks
-  path: /types/examples#exampleformanualtypelinks
+- apiKey: test
+  type: ExternalLinkTestType
+  href: /types/general#externallinktesttype
+- apiKey: test
+  type: ExampleForManualTypeLinks
+  href: /types/examples#exampleformanualtypelinks
