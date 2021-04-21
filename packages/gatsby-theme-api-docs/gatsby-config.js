@@ -22,13 +22,6 @@ module.exports = (themeOptions = {}) => {
         },
       },
       {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'type-locations',
-          path: path.resolve('./src/type-locations'),
-        },
-      },
-      {
         resolve: '@commercetools-docs/gatsby-transformer-mdx-introspection',
         options: {
           ...themeOptions.transformerMdx,
