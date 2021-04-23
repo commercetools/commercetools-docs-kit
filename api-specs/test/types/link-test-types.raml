@@ -1,0 +1,22 @@
+#%RAML 1.0 Library
+usage: External link test type.
+
+uses:
+  scalars: scalars.raml
+
+types:
+  LinkToTypeOnSameSite:
+    properties:
+      test1:
+        description: A link pointing to a type the same microsite.
+        type: scalars.StringTestType
+  LinkToTypeOnAnotherSite:
+    properties:
+      test2:
+        description: A link pointing to a type in another microsite.
+        type: LinkToTypeOnAnotherSite
+  LinkToTypeOnExternalSite:
+    properties:
+      test3:
+        description: A link pointing to a type in an external website.
+        type: LinkToTypeOnExternalSite

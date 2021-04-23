@@ -1,6 +1,8 @@
-- apiKey: test
-  type: ExternalLinkTestType
-  href: /types/general#externallinktesttype
-- apiKey: test
-  type: ExampleForManualTypeLinks
-  href: /types/examples#exampleformanualtypelinks
+- api: test
+  locations:
+    - type: StringTestType
+      href: /types/scalars#stringtesttype
+    - type: TestTypeOnAnotherMicrosite
+      href: /../docs-smoke-test/types/examples#exampleformanualtypelinks
+    - type: TestTypeOnAnExternalWebsite
+      href: https://docs.commercetools.com/api/projects/types#query-types

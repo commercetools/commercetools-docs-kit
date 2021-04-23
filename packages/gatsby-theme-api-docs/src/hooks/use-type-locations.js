@@ -55,10 +55,21 @@ export const useTypeLocations = () => {
   );
   const typeLocations = convertComponentInMdxToTypeLocations(queryResult);
   const typeLocationOverrides = useTypeLocationOverrides().reduce(
-    (list, type) => {
+    (apiTypeLocationList, api) => {
+      const apiTypeLocations = api.locations.reduce(
+        (locationList, location) => {
+          return {
+            ...locationList,
+            [`${api.api}__${location.type}`]: {
+              urlAnchorTag: location.href,
+            },
+          };
+        },
+        {}
+      );
       return {
-        ...list,
-        [`${type.apiKey}__${type.type}`]: { urlAnchorTag: type.href },
+        ...apiTypeLocationList,
+        ...apiTypeLocations,
       };
     },
     {}
