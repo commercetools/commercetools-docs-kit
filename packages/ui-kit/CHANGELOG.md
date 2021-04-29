@@ -1,5 +1,15 @@
 # @commercetools-docs/ui-kit
 
+## 16.2.0
+
+### Patch Changes
+
+- [#925](https://github.com/commercetools/commercetools-docs-kit/pull/925) [`bbd73a7`](https://github.com/commercetools/commercetools-docs-kit/commit/bbd73a78b2492a9f56761937eb29ab915a7afc46) Thanks [@TimonRey](https://github.com/TimonRey)! - Show searchbox in right hand column if header is not visible
+
+* [#945](https://github.com/commercetools/commercetools-docs-kit/pull/945) [`a37b748`](https://github.com/commercetools/commercetools-docs-kit/commit/a37b7486e56ba7373b9d86d51c5e97d04ae2cb49) Thanks [@renovate](https://github.com/apps/renovate)! - update dependencies
+
+- [#952](https://github.com/commercetools/commercetools-docs-kit/pull/952) [`8d47a15`](https://github.com/commercetools/commercetools-docs-kit/commit/8d47a15bbf61c4190c3e5b877f5be3f41ca83450) Thanks [@TimonRey](https://github.com/TimonRey)! - Change height of searchbox field to 58px
+
 ## 16.1.0
 
 ### Minor Changes
