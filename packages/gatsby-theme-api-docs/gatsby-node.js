@@ -63,7 +63,7 @@ exports.onCreateNode = ({
       type: `Type location`,
       contentDigest: createContentDigest(typeLocationData),
       content: JSON.stringify(typeLocationData),
-      description: `Type location data`,
+      description: `Type location overrides`,
     },
   });
   actions.createParentChildLink({ parent, child: node });

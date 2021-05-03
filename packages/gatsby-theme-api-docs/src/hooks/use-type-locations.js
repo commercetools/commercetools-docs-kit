@@ -19,12 +19,12 @@ const convertComponentInMdxToTypeLocations = (data) =>
     const name = typeAttribute ? typeAttribute.value : null;
     const slug = buildPageSlug(node.page);
     const urn = generateTypeURN({ apiKey, displayName: name });
-    const urlAnchorTag = slug && urn ? `${slug}#${urn}` : '';
+    const url = slug && urn ? `${slug}#${urn}` : '';
 
     return {
       ...typeLocations,
       [`${apiKey}__${name}`]: {
-        urlAnchorTag,
+        url,
       },
     };
   }, {});
@@ -61,7 +61,7 @@ export const useTypeLocations = () => {
           return {
             ...locationList,
             [`${api.api}__${location.type}`]: {
-              urlAnchorTag: location.href,
+              url: location.href,
             },
           };
         },
