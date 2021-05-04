@@ -89,7 +89,7 @@ const Method = ({
 
             {allUriParameters.length > 0 && (
               <Parameters
-                title={'Path Parameters'}
+                title={'Path parameters'}
                 parameters={allUriParameters}
               />
             )}
@@ -97,7 +97,7 @@ const Method = ({
             {method.queryParameters && (
               <Parameters
                 apiKey={apiKey}
-                title={'Query Parameters'}
+                title={'Query parameters'}
                 parameters={method.queryParameters}
               />
             )}
