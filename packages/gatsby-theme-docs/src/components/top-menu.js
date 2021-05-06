@@ -38,7 +38,7 @@ const Content = styled.div`
   height: fit-content;
   /* stylelint-enable */
 
-  animation: ${slideOpenAnimation} 0.15s ease-out alternate;
+  animation: ${slideOpenAnimation} 0.3s ease-out alternate;
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     animation: ${slideOpenAnimationMobile} 0.3s ease-out alternate;

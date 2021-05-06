@@ -31,7 +31,7 @@ const fadeInAnimation = keyframes`
 const SlidingContainer = styled.div`
   width: ${designSystem.dimensions.widths.pageNavigation};
   background-color: ${designSystem.colors.light.surfacePrimary};
-  animation: ${slideInAnimation} 0.5s ease-out alternate;
+  animation: ${slideInAnimation} 0.3s ease-out alternate;
   height: 100%;
   overflow: auto;
 `;
