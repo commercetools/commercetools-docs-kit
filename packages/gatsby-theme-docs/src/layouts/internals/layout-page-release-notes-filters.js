@@ -29,7 +29,7 @@ const fadeInAnimation = keyframes`
 
 const SlidingContainer = styled.div`
   background-color: ${designSystem.colors.light.surfacePrimary};
-  animation: ${slideInAnimation} 0.3s ease-out alternate;
+  animation: ${slideInAnimation} 0.15s ease-out alternate;
   width: calc(${designSystem.dimensions.widths.pageNavigation});
   padding: ${designSystem.dimensions.spacings.m};
   height: 100%;
