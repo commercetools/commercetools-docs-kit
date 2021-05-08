@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SearchInput from './search-input';
 
 const AlgoliaSearch = React.lazy(() => import('./algolia-search'));
 
 const searchInputId = 'search-bar';
+
+const openDialogAnimation = keyframes`
+  from { margin-top: -20%; }
+  to { margin-top: 0; }
+`;
 
 const centeredContainerStyle = css`
   width: 100%;
@@ -63,6 +68,7 @@ const Content = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  animation: ${openDialogAnimation} 0.15s ease-out alternate;
   background-color: ${designSystem.colors.light.surfacePrimary};
   border-radius: 0 0 ${designSystem.tokens.borderRadiusForSearchDialog}
     ${designSystem.tokens.borderRadiusForSearchDialog};
