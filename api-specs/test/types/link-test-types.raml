@@ -3,6 +3,7 @@ usage: External link test type.
 
 uses:
   scalars: scalars.raml
+  overrides: type-overrides.raml
 
 types:
   LinkToTypeOnSameSite:
@@ -14,9 +15,9 @@ types:
     properties:
       LinkToTypeOnAnotherSite:
         description: A link pointing to a type in another microsite.
-        type: LinkToTypeOnAnotherSite
+        type: overrides.TestTypeOnAnotherMicrosite
   LinkToTypeOnExternalSite:
     properties:
       LinkToTypeOnExternalSite:
         description: A link pointing to a type in an external website.
-        type: LinkToTypeOnExternalSite
+        type: overrides.TestTypeOnAnExternalWebsite
