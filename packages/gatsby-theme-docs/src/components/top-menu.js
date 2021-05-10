@@ -41,7 +41,7 @@ const Content = styled.div`
   animation: ${slideOpenAnimation} 0.15s ease-out alternate;
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    animation: ${slideOpenAnimationMobile} 0.3s ease-out alternate;
+    animation: ${slideOpenAnimationMobile} 0.15s ease-out alternate;
   }
 `;
 const centeredContainerStyle = css`

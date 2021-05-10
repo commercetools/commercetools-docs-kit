@@ -22,7 +22,7 @@ const Container = styled.nav`
   background-color: ${designSystem.colors.light.surfaceSecondary1};
   border-right: 1px solid ${designSystem.colors.light.borderPrimary};
 
-  animation: ${slideInAnimation} 0.5s ease-out alternate;
+  animation: ${slideInAnimation} 0.15s ease-out alternate;
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     animation: unset;
     display: flex;
