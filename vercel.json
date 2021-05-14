@@ -17,7 +17,14 @@
     {
       "src": "/(\\S+?)/.*",
       "status": 404,
-      "dest": "/$1/404"
+      "dest": "/$1/4,04"
+    },
+    {
+      "src": "/(.*)",
+      "headers": {
+        "key": "X-Frame-Options",
+        "value": "DENY"
+      }
     }
   ]
 }
