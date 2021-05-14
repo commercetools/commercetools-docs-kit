@@ -18,53 +18,16 @@ exports.onPreBootstrap = ({ reporter }) => {
   });
 };
 
-exports.createSchemaCustomization = ({ actions, schema }) => {
-  actions.createTypes(
-    schema.buildObjectType({
-      name: 'TypeLocations',
-      fields: {
-        type: { type: 'String!' },
-        path: { type: 'String!' },
-      },
-      interfaces: ['Node'],
-    })
-  );
-};
-
-exports.onCreateNode = ({
-  node,
-  getNode,
-  actions,
-  createNodeId,
-  createContentDigest,
-}) => {
-  const parent = getNode(node.parent);
-  const isTypeLocationsFile =
-    parent &&
-    parent.sourceInstanceName === 'type-locations' &&
-    parent.internal.mediaType === 'text/yaml';
-
-  if (!isTypeLocationsFile) {
-    return;
-  }
-
-  const typeLocationData = {
-    // The name of the file
-    path: node.path,
-  };
-
-  actions.createNode({
-    ...typeLocationData,
-    // Required fields
-    id: createNodeId(`${node.id} >>> Type location`),
-    parent: node.id,
-    children: [],
-    internal: {
-      type: `TypeLocation`,
-      contentDigest: createContentDigest(typeLocationData),
-      content: JSON.stringify(typeLocationData),
-      description: `Type Location Overrides`,
-    },
-  });
-  actions.createParentChildLink({ parent, child: node });
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+    type TypeLocationsYaml implements Node @dontInfer {
+      id: ID!
+      api: String!
+      locations: [TypeLocationYamlLocations!]!
+    }
+    type TypeLocationYamlLocations {
+      type: String!
+      href: String!
+    }
+  `);
 };
