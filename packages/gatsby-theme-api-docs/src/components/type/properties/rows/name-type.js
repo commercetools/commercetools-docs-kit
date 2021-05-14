@@ -29,8 +29,8 @@ const NameType = ({ apiKey, property }) => {
     apiKey,
   });
 
-  const isRegex = (regex) =>
-    regex.charAt(0) === '/' && regex.charAt(regex.length - 1) === '/';
+  const isRegex = (string) =>
+    string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
 
   const getExpressionInsideSlashes = (input) => {
     return input.match(/\/([^;]*)\//);
