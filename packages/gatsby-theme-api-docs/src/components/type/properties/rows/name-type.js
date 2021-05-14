@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { css } from '@emotion/react';
+import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { BetaFlag } from '@commercetools-docs/gatsby-theme-docs';
 import { typography } from '../../../../design-system';
@@ -28,10 +29,37 @@ const NameType = ({ apiKey, property }) => {
     apiKey,
   });
 
+  const isRegex = (string) =>
+    string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
+
+  const getExpressionInsideSlashes = (input) => {
+    return input.match(/\/([^;]*)\//);
+  };
+
   return (
     <SpacingsStack scale="xs">
       <PropertyName className="name-type">
-        <Markdown.InlineCode>{property.name}</Markdown.InlineCode>
+        {isRegex(property.name) ? (
+          <Markdown.InlineCode>
+            <span
+              css={css`
+                color: ${designSystem.colors.light.textInfo};
+              `}
+            >
+              /
+            </span>
+            {getExpressionInsideSlashes(property.name)[1]}
+            <span
+              css={css`
+                color: ${designSystem.colors.light.textInfo};
+              `}
+            >
+              /
+            </span>
+          </Markdown.InlineCode>
+        ) : (
+          <Markdown.InlineCode>{property.name}</Markdown.InlineCode>
+        )}
         {property.required && <Required />}
         {property.beta && (
           <BetaWrapper>
@@ -43,8 +71,11 @@ const NameType = ({ apiKey, property }) => {
         {typeToRender.displayPrefix && (
           <span className="name">{typeToRender.displayPrefix}</span>
         )}
-
-        {typeof typeToRender.type === 'string' ? (
+        {isRegex(property.name) ? (
+          <span className="name">
+            Any property matching regular expression above
+          </span>
+        ) : typeof typeToRender.type === 'string' ? (
           <span className="name">{typeToRender.type}</span>
         ) : (
           typeToRender.type
