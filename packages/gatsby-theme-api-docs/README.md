@@ -67,6 +67,28 @@ The file location determines the `apiKey` through which it can be addressed:
 - `src/api-specs/bar/api.raml` -> apiKey `bar`
 - `src/api-specs/baz/baz.raml` -> apiKey `baz`
 
+### Overriding Common Types
+
+If you want to override common types, create a file called `type-locations.yaml` under the `src/data` folder of the website. Use the following format to override the types you want:
+
+```yaml
+- api: import
+  locations:
+    - type: AssetDimensions
+      href: /import-api/product-variant#assetdimensions
+    - type: DiscountedPrice
+      href: /import-api/order#discountedprice
+- api: history
+  locations:
+    - type: LocalizedLabel
+      href: /api/history/change-history#localizedlabel
+```
+
+- `api` -> Name of the api where the types are located.
+- `locations` -> List of type locations you want to override.
+- `type` -> Name of the type to override.
+- `href` -> Your custom link.
+
 ## Using UI components in MDX
 
 The package exposes the following components in the MDX context:
