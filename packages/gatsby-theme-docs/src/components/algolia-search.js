@@ -224,9 +224,8 @@ const algoliaStyles = css`
 
 const AlgoliaSearch = React.forwardRef((props, ref) => {
   const [isSearchEnabled, setIsSearchEnabled] = React.useState(true);
-  const [hasErrorLoadingAlgolia, setHasErrorLoadingAlgolia] = React.useState(
-    false
-  );
+  const [hasErrorLoadingAlgolia, setHasErrorLoadingAlgolia] =
+    React.useState(false);
 
   React.useEffect(() => {
     // https://github.com/algolia/docsearch/issues/352

@@ -191,9 +191,8 @@ const PureLink = (extendedProps) => {
 
   // Case 4: the link points to the same site but to a different page. We use the Gatsby link
   // to take advantage of the history navigation.
-  const isUsingUndocumentedNotationToLinkToAnotherDocsSite = hrefWithoutPrefix.startsWith(
-    '/../'
-  );
+  const isUsingUndocumentedNotationToLinkToAnotherDocsSite =
+    hrefWithoutPrefix.startsWith('/../');
   const isSameDocsHostname =
     hrefObject.hostname === siteData.siteMetadata.productionHostname;
   const isLinkToAnotherDocsSite =

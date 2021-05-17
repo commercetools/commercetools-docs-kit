@@ -117,12 +117,8 @@ const activeLinkStyles = css`
 `;
 
 const SidebarLink = (props) => {
-  const {
-    locationPath,
-    customStyles,
-    customActiveStyles,
-    ...forwardProps
-  } = props;
+  const { locationPath, customStyles, customActiveStyles, ...forwardProps } =
+    props;
   return (
     <ClassNames>
       {({ css: makeClassName }) => {
