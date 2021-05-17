@@ -14,7 +14,19 @@
       ]
     }
   ],
+  "routes": [
+    {
+      "src": "/(\\S+?)/.*",
+      "status": 404,
+      "dest": "/$1/4,04"
+    }
+  ],
   "redirects": [
-    { "source": "/", "destination": "/docs-smoke-test/", "statusCode": 302 }
+    { "source": "/", "destination": "/docs-smoke-test/", "statusCode": 302 },
+    {
+      "source": "/(.*)",
+      "destination": "/docs-smoke-test/404",
+      "statusCode": 404
+    }
   ]
 }
