@@ -14,16 +14,6 @@
       ]
     }
   ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(\\S+?)/.*",
-      "status": 404,
-      "dest": "/$1/4,04"
-    }
-  ],
   "redirects": [
     { "source": "/", "destination": "/docs-smoke-test/", "statusCode": 302 }
   ]
