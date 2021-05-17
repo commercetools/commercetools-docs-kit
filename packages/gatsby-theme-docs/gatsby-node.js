@@ -58,23 +58,25 @@ exports.createResolvers = ({ createResolvers }) => {
 
 // Inspired by https://github.com/gatsbyjs/gatsby/blob/ead08cc1fd9fa30a46fa8b6b7411141a5c9ba4f8/packages/gatsby-theme-blog-core/gatsby-node.js#L29
 const identity = (node) => node;
-const resolverPassthrough = ({
-  typeName = 'Mdx',
-  fieldName,
-  resolveNode = identity,
-  processResult = identity,
-}) => async (source, args, context, info) => {
-  const type = info.schema.getType(typeName);
-  const mdxNode = context.nodeModel.getNodeById({
-    id: source.parent,
-  });
-  const field = type.getFields()[fieldName];
-  const result = await field.resolve(resolveNode(mdxNode), args, context, {
+const resolverPassthrough =
+  ({
+    typeName = 'Mdx',
     fieldName,
-  });
+    resolveNode = identity,
+    processResult = identity,
+  }) =>
+  async (source, args, context, info) => {
+    const type = info.schema.getType(typeName);
+    const mdxNode = context.nodeModel.getNodeById({
+      id: source.parent,
+    });
+    const field = type.getFields()[fieldName];
+    const result = await field.resolve(resolveNode(mdxNode), args, context, {
+      fieldName,
+    });
 
-  return processResult(result);
-};
+    return processResult(result);
+  };
 
 exports.createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes(`
@@ -358,10 +360,11 @@ async function createContentPages(
     reporter.panicOnBuild('🚨  ERROR: Loading "allNavigationYaml" query');
   }
   const pages = result.data.allContentPage.nodes;
-  const navigationPages = navigationYamlResult.data.allNavigationYaml.nodes.reduce(
-    (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
-    []
-  );
+  const navigationPages =
+    navigationYamlResult.data.allNavigationYaml.nodes.reduce(
+      (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
+      []
+    );
   pages.forEach(({ slug }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)

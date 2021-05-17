@@ -184,12 +184,8 @@ export const CodeBlockMarkdownWrapper = (props) => {
   const className = props.children.props ? props.children.props.className : '';
   const languageToken = className || 'language-text';
   const [, languageCode] = languageToken.split('language-');
-  const {
-    title,
-    highlightLines,
-    noPromptLines,
-    secondaryTheme,
-  } = codeBlockParseOptions(props.children.props);
+  const { title, highlightLines, noPromptLines, secondaryTheme } =
+    codeBlockParseOptions(props.children.props);
   const content =
     props.children.props && props.children.props.children
       ? props.children.props.children
