@@ -129,7 +129,7 @@ const LayoutPageReleaseNotesFilters = (props) => {
       ) : (
         <SearchInputBox>
           <SearchInput
-            id="search-input-placeholder"
+            id="search-input-release-notes"
             size="small"
             onFocus={props.openSearchDialog}
             isDisabled={props.excludeFromSearchIndex}
