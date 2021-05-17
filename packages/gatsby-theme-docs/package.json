@@ -84,7 +84,7 @@
     "remark-react": "8.0.0",
     "slugify": "1.5.3",
     "unified": "9.2.1",
-    "unist-util-filter": "2.0.3"
+    "unist-util-filter": "3.0.0"
   },
   "devDependencies": {
     "gatsby": "3.5.0",
