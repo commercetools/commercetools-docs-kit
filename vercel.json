@@ -3,25 +3,28 @@
   "public": true,
   "name": "commercetools-docs-kit",
   "alias": "commercetools-docs-kit",
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        }
-      ]
-    }
-  ],
-  "redirects": [
-    { "source": "/", "destination": "/docs-smoke-test/", "statusCode": 302 }
-  ],
-  "rewrites": [
-    {
-      "source": "/(docs-smoke-test|api-docs-smoke-test)/(.*)",
-      "destination": "/$1/404"
+      "src": "/(.*)",
+      "headers": {
+        "X-Frame-Options": "DENY"
+      },
+      "continue": true
     },
-    { "source": "/(.*)", "destination": "/docs-smoke-test/404" }
+    {
+      "src": "/",
+      "status": 302,
+      "headers": {
+        "Location": "/docs-smoke-test/"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(\\S+?)/.*",
+      "status": 404,
+      "dest": "/$1/4,04"
+    }
   ]
 }
