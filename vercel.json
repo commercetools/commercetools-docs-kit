@@ -15,7 +15,8 @@
     }
   ],
   "redirects": [
-    { "source": "/", "destination": "/docs-smoke-test/", "statusCode": 302 }
+    { "source": "/", "destination": "/docs-smoke-test/", "statusCode": 302 },
+    { "source": "/(\\S+?)/.*", "destination": "/$1/404", "statusCode": 404 }
   ],
   "rewrites": [{ "source": "/(.*)", "destination": "/docs-smoke-test/404" }]
 }
