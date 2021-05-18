@@ -15,13 +15,12 @@
     }
   ],
   "redirects": [
-    { "source": "/", "destination": "/docs-smoke-test/", "statusCode": 302 }
-  ],
-  "rewrites": [
+    { "source": "/", "destination": "/docs-smoke-test/", "statusCode": 302 },
     {
       "source": "/(docs-smoke-test|api-docs-smoke-test)/(.*)",
-      "destination": "/$1/404"
-    },
-    { "source": "/(.*)", "destination": "/docs-smoke-test/404" }
-  ]
+      "destination": "/$1/404",
+      "statusCode": 404
+    }
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/docs-smoke-test/404" }]
 }
