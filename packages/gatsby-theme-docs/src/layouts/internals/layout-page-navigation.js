@@ -162,7 +162,7 @@ const LayoutPageNavigation = (props) => {
       ) : (
         <SearchInputBox>
           <SearchInput
-            id="search-input-placeholder"
+            id="search-input-page-navigation"
             size="small"
             onFocus={props.openSearchDialog}
             isDisabled={props.excludeFromSearchIndex}

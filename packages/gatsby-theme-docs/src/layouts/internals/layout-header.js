@@ -260,7 +260,7 @@ const LayoutHeader = forwardRef((props, ref) => {
               <MediaQuery forViewport="largeTablet">
                 <SearchInputBox>
                   <SearchInput
-                    id="search-input-placeholder"
+                    id="search-input-header"
                     size="small"
                     onFocus={props.openSearchDialog}
                     isDisabled={props.excludeFromSearchIndex}
