@@ -5,6 +5,13 @@
   "alias": "commercetools-docs-kit",
   "routes": [
     {
+      "src": "/(.*)",
+      "headers": {
+        "X-Frame-Options": "DENY"
+      },
+      "continue": true
+    },
+    {
       "src": "/",
       "status": 302,
       "headers": {
