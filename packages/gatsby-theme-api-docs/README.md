@@ -67,21 +67,21 @@ The file location determines the `apiKey` through which it can be addressed:
 - `src/api-specs/bar/api.raml` -> apiKey `bar`
 - `src/api-specs/baz/baz.raml` -> apiKey `baz`
 
-### Overriding Common Types
+### Overriding the location of certain API types
 
-If you want to override common types, create a file called `type-locations.yaml` under the `src/data` folder of the website. Use the following format to override the types you want:
+If you want to override the location to link to for certain API data types, create a file called `type-locations.yaml` under the `src/data` folder of the website. This can be useful to choose manual markdown based documentation for certain types or to link ot shared types used on other websites like public standards. Use the following format to override the type locations:
 
 ```yaml
 - api: import
   locations:
     - type: AssetDimensions
-      href: /import-api/product-variant#assetdimensions
+      href: /product-variant#assetdimensions
     - type: DiscountedPrice
-      href: /import-api/order#discountedprice
+      href: /../other-microsite/order#discountedprice
 - api: history
   locations:
     - type: LocalizedLabel
-      href: /api/history/change-history#localizedlabel
+      href: https://example.com/some/other/location/on/the/web
 ```
 
 - `api` -> Name of the api where the types are located.
