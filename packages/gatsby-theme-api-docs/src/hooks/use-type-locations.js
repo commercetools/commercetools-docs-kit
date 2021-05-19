@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { useStaticQuery, graphql } from 'gatsby';
 import { generateTypeURN } from '../utils/ctp-urn';
+import { useTypeLocationOverrides } from './use-type-location-overrides';
 
 const buildPageSlug = (page) => {
   const [pathWithoutExt] = page.parent.relativePath.split(page.parent.ext);
@@ -18,16 +19,12 @@ const convertComponentInMdxToTypeLocations = (data) =>
     const name = typeAttribute ? typeAttribute.value : null;
     const slug = buildPageSlug(node.page);
     const urn = generateTypeURN({ apiKey, displayName: name });
-    const urlAnchorTag = slug && urn ? `${slug}#${urn}` : '';
+    const url = slug && urn ? `${slug}#${urn}` : '';
 
     return {
       ...typeLocations,
       [`${apiKey}__${name}`]: {
-        apiKey,
-        name,
-        slug,
-        urn,
-        urlAnchorTag,
+        url,
       },
     };
   }, {});
@@ -56,8 +53,28 @@ export const useTypeLocations = () => {
       }
     `
   );
-
-  return convertComponentInMdxToTypeLocations(queryResult);
+  const typeLocations = convertComponentInMdxToTypeLocations(queryResult);
+  const typeLocationOverrides = useTypeLocationOverrides().reduce(
+    (apiTypeLocationList, api) => {
+      const apiTypeLocations = api.locations.reduce(
+        (locationList, location) => {
+          return {
+            ...locationList,
+            [`${api.api}__${location.type}`]: {
+              url: location.href,
+            },
+          };
+        },
+        {}
+      );
+      return {
+        ...apiTypeLocationList,
+        ...apiTypeLocations,
+      };
+    },
+    {}
+  );
+  return { ...typeLocations, ...typeLocationOverrides };
 };
 
 export const locationForType = (apiKey, type, typeLocations) => {
