@@ -48,10 +48,6 @@ const Input = styled.input`
     border-color: ${designSystem.colors.light.borderHighlight};
     padding-right: ${designSystem.dimensions.spacings.xs};
   }
-  &:disabled {
-    background-color: ${designSystem.colors.light
-      .surfaceForSearchInputWhenDisabled};
-  }
 `;
 const SearchInputIcon = styled.span`
   position: absolute;
@@ -71,6 +67,8 @@ const SearchInputIcon = styled.span`
 const SearchInput = React.forwardRef((props, ref) => {
   const { onFocus } = props;
   const [isActive, setIsActive] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
+
   const handleFocus = (event) => {
     if (props.isDisabled) return;
     if (onFocus) onFocus(event);
@@ -81,6 +79,9 @@ const SearchInput = React.forwardRef((props, ref) => {
     setIsActive(false);
   };
   React.useEffect(() => {
+    if (isLoading) {
+      setIsLoading(false);
+    }
     const onKeyPress = (event) => {
       // Listen to "slash" key events to focus the search input
       if (event.key === '/') {
@@ -96,7 +97,7 @@ const SearchInput = React.forwardRef((props, ref) => {
         window.removeEventListener('keyup', onKeyPress);
       }
     };
-  }, [onFocus, props.isDisabled]);
+  }, [onFocus, isLoading, props.isDisabled]);
   return (
     <Container>
       <SearchInputIcon position="left">
@@ -123,7 +124,7 @@ const SearchInput = React.forwardRef((props, ref) => {
         aria-label="Search"
         onFocus={handleFocus}
         onBlur={handleBlur}
-        disabled={props.isDisabled}
+        disabled={props.isDisabled || isLoading}
       />
     </Container>
   );
