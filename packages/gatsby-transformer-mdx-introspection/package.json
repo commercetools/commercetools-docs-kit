@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-transformer-mdx-introspection",
   "description": "Exposes what JSX component tags are placed on what MDX page with what attributes",
-  "version": "14.0.4",
+  "version": "14.0.5",
   "license": "MIT",
   "private": false,
   "publishConfig": {

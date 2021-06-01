@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.0.6
+
+### Patch Changes
+
+- [#973](https://github.com/commercetools/commercetools-docs-kit/pull/973) [`ccca2eb`](https://github.com/commercetools/commercetools-docs-kit/commit/ccca2eb41d0caef2e986083b99cdf82b0b53c1d2) Thanks [@adinakleine](https://github.com/adinakleine)! - Add unused software release terms of beta policy in writing style checks
+
 ## 3.0.5
 
 ### Patch Changes
