@@ -1,5 +1,25 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 16.3.0
+
+### Minor Changes
+
+- [#944](https://github.com/commercetools/commercetools-docs-kit/pull/944) [`d72fafa`](https://github.com/commercetools/commercetools-docs-kit/commit/d72fafae1e5d2b6000fd36ccc6f8ab13a6d2480e) Thanks [@timonrey](https://github.com/timonrey)! - Implement manual overrides of type locations
+
+### Patch Changes
+
+- [#951](https://github.com/commercetools/commercetools-docs-kit/pull/951) [`fcd26ee`](https://github.com/commercetools/commercetools-docs-kit/commit/fcd26ee5d61ab1559339ce86d9c20194fdd94d9f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#972](https://github.com/commercetools/commercetools-docs-kit/pull/972) [`dac6330`](https://github.com/commercetools/commercetools-docs-kit/commit/dac63303c353994afcb66728309cfb254ea66da8) Thanks [@renovate](https://github.com/apps/renovate)! - update all dependencies
+
+- [#956](https://github.com/commercetools/commercetools-docs-kit/pull/956) [`fad6d6e`](https://github.com/commercetools/commercetools-docs-kit/commit/fad6d6e29963cef930530fc5b1c233b6334a1cee) Thanks [@timonrey](https://github.com/timonrey)! - Lowercase 'parameters'
+
+* [#964](https://github.com/commercetools/commercetools-docs-kit/pull/964) [`88e7919`](https://github.com/commercetools/commercetools-docs-kit/commit/88e7919d99fd10bb82adf5aa61fd5d541f529e65) Thanks [@timonrey](https://github.com/timonrey)! - Visualize regular expression properties
+
+* Updated dependencies [[`fcd26ee`](https://github.com/commercetools/commercetools-docs-kit/commit/fcd26ee5d61ab1559339ce86d9c20194fdd94d9f), [`dac6330`](https://github.com/commercetools/commercetools-docs-kit/commit/dac63303c353994afcb66728309cfb254ea66da8), [`3965cba`](https://github.com/commercetools/commercetools-docs-kit/commit/3965cba917fd4b8cd375225e3794ea81e0c38669)]:
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@14.0.5
+  - @commercetools-docs/ui-kit@16.3.0
+
 ## 16.2.0
 
 ### Patch Changes

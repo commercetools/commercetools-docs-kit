@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 16.3.0
+
+### Patch Changes
+
+- [#951](https://github.com/commercetools/commercetools-docs-kit/pull/951) [`fcd26ee`](https://github.com/commercetools/commercetools-docs-kit/commit/fcd26ee5d61ab1559339ce86d9c20194fdd94d9f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#972](https://github.com/commercetools/commercetools-docs-kit/pull/972) [`dac6330`](https://github.com/commercetools/commercetools-docs-kit/commit/dac63303c353994afcb66728309cfb254ea66da8) Thanks [@renovate](https://github.com/apps/renovate)! - update all dependencies
+
 ## 16.2.0
 
 ### Patch Changes

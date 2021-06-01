@@ -1,5 +1,28 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 16.3.0
+
+### Patch Changes
+
+- [#975](https://github.com/commercetools/commercetools-docs-kit/pull/975) [`fe6c1ec`](https://github.com/commercetools/commercetools-docs-kit/commit/fe6c1ecbf75dccc046371d55d6f7041dbd08fc72) Thanks [@timonrey](https://github.com/timonrey)! - Disable search input field when page is still loading
+
+* [#951](https://github.com/commercetools/commercetools-docs-kit/pull/951) [`fcd26ee`](https://github.com/commercetools/commercetools-docs-kit/commit/fcd26ee5d61ab1559339ce86d9c20194fdd94d9f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#946](https://github.com/commercetools/commercetools-docs-kit/pull/946) [`e15757c`](https://github.com/commercetools/commercetools-docs-kit/commit/e15757c2b9ac19399ac8dd086385121cbc2e45ef) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency unist-util-filter to v3
+
+* [#960](https://github.com/commercetools/commercetools-docs-kit/pull/960) [`0cdb397`](https://github.com/commercetools/commercetools-docs-kit/commit/0cdb397f4cc96b5178b69fb106e8a3d3c7dc7001) Thanks [@timonrey](https://github.com/timonrey)! - Use same animation transition for all animations
+
+- [#962](https://github.com/commercetools/commercetools-docs-kit/pull/962) [`5601240`](https://github.com/commercetools/commercetools-docs-kit/commit/560124031bde209cf8a78141300c6e6e2284e891) Thanks [@timonrey](https://github.com/timonrey)! - Animate search dialog window
+
+* [#942](https://github.com/commercetools/commercetools-docs-kit/pull/942) [`01346bf`](https://github.com/commercetools/commercetools-docs-kit/commit/01346bf4cbbbf31d5ef5f16b407bdb5390463b47) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update gatsby monorepo (major)
+
+- [#972](https://github.com/commercetools/commercetools-docs-kit/pull/972) [`dac6330`](https://github.com/commercetools/commercetools-docs-kit/commit/dac63303c353994afcb66728309cfb254ea66da8) Thanks [@renovate](https://github.com/apps/renovate)! - update all dependencies
+
+* [#968](https://github.com/commercetools/commercetools-docs-kit/pull/968) [`9c4290f`](https://github.com/commercetools/commercetools-docs-kit/commit/9c4290ff0f0c968c7fc708dc674202fdad38eea9) Thanks [@timonrey](https://github.com/timonrey)! - Give unique IDs to search-inputs
+
+* Updated dependencies [[`fcd26ee`](https://github.com/commercetools/commercetools-docs-kit/commit/fcd26ee5d61ab1559339ce86d9c20194fdd94d9f), [`dac6330`](https://github.com/commercetools/commercetools-docs-kit/commit/dac63303c353994afcb66728309cfb254ea66da8)]:
+  - @commercetools-docs/ui-kit@16.3.0
+
 ## 16.2.0
 
 ### Minor Changes
