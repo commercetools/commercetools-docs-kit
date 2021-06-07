@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@commercetools-docs/rmf-codegen": "12.3.0",
-    "gatsby": "3.6.0",
+    "gatsby": "3.6.2",
     "gatsby-source-filesystem": "3.6.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
