@@ -5,6 +5,7 @@
  */
 
 const fs = require('fs');
+const loadablePlugin = require('@loadable/webpack-plugin');
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
@@ -30,4 +31,19 @@ exports.createSchemaCustomization = ({ actions }) => {
       href: String!
     }
   `);
+};
+
+exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.raml$/,
+          type: 'json',
+          use: [`yaml-loader`],
+        },
+      ],
+    },
+    plugins: [new loadablePlugin()],
+  });
 };
