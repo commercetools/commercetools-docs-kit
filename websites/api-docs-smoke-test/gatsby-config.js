@@ -1,4 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production';
+const isCi = process.env.CI ? true : false;
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
@@ -46,5 +47,12 @@ module.exports = {
         },
       ],
     }),
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        devMode: false,
+        disable: isCi,
+      },
+    },
   ],
 };
