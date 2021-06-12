@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import moment from 'moment';
+import { DocsDateFormat } from '@commercetools-docs/ui-kit';
 import Link from './link';
 import ContentNotifications from './content-notifications';
 import { colors, tokens, dimensions } from '../design-system';
@@ -61,7 +61,7 @@ const RssFeedTable = (props) => {
                       text-decoration: none;
                     `}
                   >
-                    {moment(item.pubDate).format('D MMMM YYYY')}
+                    {DocsDateFormat.format(new Date(item.pubDate))}
                   </Link>
                 </DateWrapper>
               </td>

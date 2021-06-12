@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const slugify = require('slugify');
 const prompts = require('prompts');
-const moment = require('moment');
+const { parseIsoDate } = require('@commercetools-docs/ui-kit');
 const { cosmiconfigSync } = require('cosmiconfig');
 
 const moduleName = 'docs-release-notes-config';
@@ -48,8 +48,9 @@ const selectQuestions = (customizedQuestions) => {
       name: 'date',
       message: 'Insert the release date with the following format: YYYY-MM-DD',
       validate: (date) => {
-        const checkDateFormat = moment(date, 'YYYY-MM-DD', true);
-        return checkDateFormat.isValid() ? true : 'Please use a valid format!';
+        return parseIsoDate(date) !== false
+          ? true
+          : 'Please use a valid ISO Date format!';
       },
     },
     {
