@@ -24,6 +24,12 @@ export default function parseCodeBlockOptions(props = {}) {
   // implementation does not support values with whitespaces.
   // https://github.com/mdx-js/mdx/blob/e95e2c114bead01164a8af068ae052cebf1534c2/packages/mdx/mdx-ast-to-mdx-hast.js#L38-L46
   // We mostly need this for things like `title="This is a title"`.
+
+  // TODO parse5 is too large, we could safe enough parse the values with a regex:
+  // (?<attribute>\w*)=(["](?<value_doublequote>.*?)["]|['](?<value_singlequote>.*?)[']|(?<value_noquote>\S*))
+  // it returns one match per attribute-value pair, containing named capture groups
+  // "attribute" and either one of the "value_*" groups
+
   const parsedOptions = parseFragment(`<x ${props.metastring} >`);
   if (!parsedOptions || parsedOptions.childNodes === 0) return intialOptions;
 
