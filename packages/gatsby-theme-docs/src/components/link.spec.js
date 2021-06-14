@@ -192,6 +192,7 @@ describe('rendering', () => {
       );
       expect(rendered.getByText(scenario.title)).toBeInTheDocument();
       expect(
+        // eslint-disable-next-line testing-library/no-node-access
         rendered.container.querySelector(
           `[data-link-type="${scenario.expected['data-link-type']}"]`
         )
