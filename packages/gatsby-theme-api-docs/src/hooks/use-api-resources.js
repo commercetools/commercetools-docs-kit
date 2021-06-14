@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-export default () => {
+const useApiResources = () => {
   const queryResult = useStaticQuery(
     graphql`
       fragment methods on Method {
@@ -85,3 +85,5 @@ export default () => {
 
   return queryResult.allRamlResource.nodes;
 };
+
+export default useApiResources;

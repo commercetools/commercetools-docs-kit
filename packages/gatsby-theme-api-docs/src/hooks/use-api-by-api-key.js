@@ -1,9 +1,11 @@
 import useApi from './use-apis';
 
-export default (apiKey) => {
+const useApiByKey = (apiKey) => {
   const apis = useApi();
 
   return apis.find((api) => {
     return api.apiKey === apiKey;
   });
 };
+
+export default useApiByKey;

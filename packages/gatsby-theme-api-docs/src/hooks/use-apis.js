@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-export default () => {
+const useApis = () => {
   const queryResult = useStaticQuery(
     graphql`
       {
@@ -25,3 +25,5 @@ export default () => {
 
   return queryResult.allRamlApi.nodes;
 };
+
+export default useApis;

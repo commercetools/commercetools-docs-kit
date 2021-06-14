@@ -1,11 +1,11 @@
 import useApiByApiKey from './use-api-by-api-key';
 import useApiResources from './use-api-resources';
 
-export default (apiKey, resourcePath) => {
+const useReadResourceByResourcePath = (apiKey, resourcePath) => {
   const api = useApiByApiKey(apiKey);
-  if (!api) return undefined;
-
   const resources = useApiResources();
+
+  if (!api) return undefined;
 
   const matchedResource = resources.find((resource) => {
     return (
@@ -41,3 +41,5 @@ function mergeUriParameters(baseUriParameters, uriParameters) {
 
   return returnedParams.length > 0 ? returnedParams : undefined;
 }
+
+export default useReadResourceByResourcePath;
