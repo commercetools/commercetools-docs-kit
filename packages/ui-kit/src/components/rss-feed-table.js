@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { DocsDateFormat } from '@commercetools-docs/ui-kit';
+import { DocsDateFormat } from '../utils/dates';
 import Link from './link';
 import ContentNotifications from './content-notifications';
 import { colors, tokens, dimensions } from '../design-system';
