@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import styled from '@emotion/styled';
 import PageNavigation from './page-navigation';
 
@@ -134,15 +134,18 @@ describe('rendering', () => {
 
     hrefIds.forEach((hrefId) => {
       applySectionElementsMocks(
+        // eslint-disable-next-line testing-library/no-node-access
         rendered.container.querySelectorAll('section[class^="section-h"]'),
         (el) => el.id === `section-${hrefId}`
       );
-      fireEvent.scroll(document.querySelector('[role="application"]'), {
+
+      fireEvent.scroll(screen.getByRole('application'), {
         // It does not matter how much we scroll since we control the `getBoundingClientRect`
         target: { scrollY: 1 },
       });
       jest.runAllTimers();
       expect(
+        // eslint-disable-next-line testing-library/no-node-access
         rendered.container.querySelector('[aria-current=true]')
       ).toHaveAttribute('href', `#${hrefId}`);
     });
