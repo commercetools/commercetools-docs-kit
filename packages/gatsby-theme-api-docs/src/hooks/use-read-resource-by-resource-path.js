@@ -1,18 +1,13 @@
 import useApiByApiKey from './use-api-by-api-key';
-import useApiResources from './use-api-resources';
+import { useApiResourceByApiKeyAndResourcePathUri } from './use-api-resources';
 
 const useReadResourceByResourcePath = (apiKey, resourcePath) => {
   const api = useApiByApiKey(apiKey);
-  const resources = useApiResources();
-
+  const matchedResource = useApiResourceByApiKeyAndResourcePathUri(
+    apiKey,
+    resourcePath
+  );
   if (!api) return undefined;
-
-  const matchedResource = resources.find((resource) => {
-    return (
-      resource.apiKey === apiKey && resource.resourcePathUri === resourcePath
-    );
-  });
-
   if (!matchedResource) return undefined;
 
   return {
