@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "yarn develop",
-    "predevelop": "cd ../../api-specs/test && yarn generate-ramldoc",
+    "predevelop": "yarn generate-ramldoc && yarn generate-ramldoc:public-ct-api",
     "develop": "npx gatsby develop",
     "serve": "npx gatsby serve --prefix-paths -o",
     "clean": "npx gatsby clean",
@@ -13,11 +13,13 @@
     "build": "npx gatsby build --prefix-paths",
     "prebuild": "yarn clean && yarn predevelop",
     "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
-    "generate-ramldoc": "npx rmf-codegen generate ./source-raml/test/api.raml --output-folder ./src/api-specs/test --target RAML_DOC"
+    "generate-ramldoc": "npx rmf-codegen generate ../../api-specs/test/api.raml --output-folder ./src/api-specs/test --target RAML_DOC",
+    "generate-ramldoc:public-ct-api": "rm -rf ../../commercetools-api-reference && git clone --single-branch --depth=1 -b master https://github.com/commercetools/commercetools-api-reference.git ../../commercetools-api-reference && npx rmf-codegen generate ../../commercetools-api-reference/api-specs/api/api.raml --output-folder ./src/api-specs/api --target RAML_DOC && rm -rf ../../commercetools-api-reference"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-api-docs": "16.3.0",
     "@commercetools-docs/gatsby-theme-docs": "16.3.0",
+    "@commercetools-docs/rmf-codegen": "12.3.0",
     "gatsby": "3.6.2",
     "gatsby-cli": "3.6.0",
     "gatsby-source-filesystem": "3.6.0",

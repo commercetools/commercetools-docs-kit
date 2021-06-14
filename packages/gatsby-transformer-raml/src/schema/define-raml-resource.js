@@ -98,7 +98,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
       fields: {
         code: 'Int!',
         description: 'String',
-        body: 'RamlResourceMethodBody!',
+        body: 'RamlResourceMethodBody', // DEBUG TODO: optional until all RAML_DOC is fully flattened again
       },
     }),
 

@@ -88,3 +88,6 @@ public
 
 # Metals
 .metals
+
+# working directory of cloned external smoke test API
+commercetools-api-reference
