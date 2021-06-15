@@ -177,7 +177,7 @@ const LayoutPageNavigation = (props) => {
 
   const navigationContainer = (
     <nav
-      key="search-container"
+      key="navigation-container"
       aria-label="Page Table of Contents Navigation"
       css={{
         marginBottom: designSystem.dimensions.spacings.l,

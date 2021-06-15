@@ -37,10 +37,17 @@ Build the packages
 $ yarn build
 ```
 
-Start the [docs-smoke-test website](./websites/docs-smoke-test) or the [api-docs-smoke-test website](./websites/api-docs-smoke-test):
+Start the [docs-smoke-test website](./websites/docs-smoke-test):
 
 ```bash
 $ cd websites/docs-smoke-test
+$ yarn start
+```
+
+Start the [api-docs-smoke-test website](./websites/api-docs-smoke-test):
+
+```bash
+$ cd websites/api-docs-smoke-test
 $ yarn start
 ```
 
