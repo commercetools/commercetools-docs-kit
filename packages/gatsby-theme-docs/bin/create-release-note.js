@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const slugify = require('slugify');
 const prompts = require('prompts');
-const { parseIsoDate } = require('@commercetools-docs/ui-kit');
+const { parseIsoDate } = require('@commercetools-docs/ui-kit/src/utils/dates');
 const { cosmiconfigSync } = require('cosmiconfig');
 
 const moduleName = 'docs-release-notes-config';
