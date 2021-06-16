@@ -1,10 +1,7 @@
-// This file is written as a CommonJS module because it's also used
-// without a build step in local utility scripts
-
 const isoDateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
 // if the date does not contain timezone, JS Date() is fine
-exports.parseIsoDate = (dateString) => {
+export const parseIsoDate = (dateString) => {
   // as an extra safety net enforce UTC midnight
   const UTCDateString = dateString + 'T00:00:00.000Z';
   const date = new Date(UTCDateString);
@@ -13,14 +10,14 @@ exports.parseIsoDate = (dateString) => {
 
 // Canada has adopted ISO-8601 so it's used as a replacement for the missing
 // explicit ISO format support in Javascript Intl
-exports.IsoDateFormat = new Intl.DateTimeFormat('en-CA', {
+export const IsoDateFormat = new Intl.DateTimeFormat('en-CA', {
   month: '2-digit',
   day: '2-digit',
   year: 'numeric',
 });
 
 // For docs content we have adopted the British style "4 December 1970" format.
-exports.DocsDateFormat = new Intl.DateTimeFormat('en-GB', {
+export const DocsDateFormat = new Intl.DateTimeFormat('en-GB', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',

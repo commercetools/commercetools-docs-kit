@@ -4,8 +4,15 @@ const fs = require('fs');
 const path = require('path');
 const slugify = require('slugify');
 const prompts = require('prompts');
-const { parseIsoDate } = require('@commercetools-docs/ui-kit/src/utils/dates');
 const { cosmiconfigSync } = require('cosmiconfig');
+
+const parseIsoDate = (dateString) => {
+  const UTCDateString = dateString + 'T00:00:00.000Z';
+  const date = new Date(UTCDateString);
+  return !isNaN(date.valueOf()) && /^\d{4}-\d{2}-\d{2}$/.test(dateString)
+    ? date
+    : false;
+};
 
 const moduleName = 'docs-release-notes-config';
 const explorerSync = cosmiconfigSync(moduleName, {
