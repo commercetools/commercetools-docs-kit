@@ -4,7 +4,7 @@ const isHeading = (node) => {
   if (node.type === 'jsx') {
     // will will later want to introspect here and consider certain of our Api generation JSX
     // as section delimiting "headings" that cause a new section to be started.
-    // this requires parsing the node.value string into a DOM (parse5, see MDX introspection plugin)
+    // this requires parsing the node.value string into a DOM (see MDX introspection plugin)
   }
   return isHastHeading(node);
 };

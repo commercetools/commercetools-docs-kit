@@ -11,6 +11,7 @@
     "create-docs-release-note": "npx create-docs-release-note",
     "build": "npx gatsby build --prefix-paths",
     "build:serve": "npx gatsby build --prefix-paths && npx gatsby serve --prefix-paths -o",
+    "build:analyze": "ANALYZE_BUNDLE=true yarn build",
     "prebuild": "yarn clean",
     "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test",
     "generate-icons": "svgr -d src/icons/generated src/icons/svg"

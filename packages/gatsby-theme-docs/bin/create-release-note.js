@@ -4,8 +4,15 @@ const fs = require('fs');
 const path = require('path');
 const slugify = require('slugify');
 const prompts = require('prompts');
-const moment = require('moment');
 const { cosmiconfigSync } = require('cosmiconfig');
+
+const parseIsoDate = (dateString) => {
+  const UTCDateString = dateString + 'T00:00:00.000Z';
+  const date = new Date(UTCDateString);
+  return !isNaN(date.valueOf()) && /^\d{4}-\d{2}-\d{2}$/.test(dateString)
+    ? date
+    : false;
+};
 
 const moduleName = 'docs-release-notes-config';
 const explorerSync = cosmiconfigSync(moduleName, {
@@ -48,8 +55,9 @@ const selectQuestions = (customizedQuestions) => {
       name: 'date',
       message: 'Insert the release date with the following format: YYYY-MM-DD',
       validate: (date) => {
-        const checkDateFormat = moment(date, 'YYYY-MM-DD', true);
-        return checkDateFormat.isValid() ? true : 'Please use a valid format!';
+        return parseIsoDate(date) !== false
+          ? true
+          : 'Please use a valid ISO Date format!';
       },
     },
     {
