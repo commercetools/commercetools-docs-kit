@@ -13,14 +13,6 @@ function createResourceNode({
 }) {
   const postProcessedResource = postProcessResource({ apiKey, resource });
 
-  // DEBUG: Log RAML_DOC files that do not have the response body (likely due to "baseResource" RAML not being flattened)
-  //        Remove once rmf-codegen flattens all RAML constructs again
-  if (postProcessedResource.post && postProcessedResource.post.responses) {
-    if (!postProcessedResource.post.responses.body)
-      console.log('no body in ' + postProcessedResource.resourceName);
-  }
-  // END DEBUG
-
   const resourceNode = {
     ...postProcessedResource,
     id: createNodeId(`${fileNode.id} >>> RAML_RESOURCE`),
