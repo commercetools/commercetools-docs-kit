@@ -105,6 +105,7 @@ export const query = graphql`
         slug
         title
         date(formatString: "D MMMM YYYY")
+        isoDate: date
         description
         type
         topics
