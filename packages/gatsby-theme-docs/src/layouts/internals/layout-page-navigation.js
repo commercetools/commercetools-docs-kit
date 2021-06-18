@@ -156,7 +156,10 @@ const LayoutPageNavigation = (props) => {
     return null;
 
   const searchContainer = (
-    <SearchBox excludeFromSearchIndex={props.excludeFromSearchIndex}>
+    <SearchBox
+      key="search-container"
+      excludeFromSearchIndex={props.excludeFromSearchIndex}
+    >
       {props.isSearchBoxInView ? (
         <Blank />
       ) : (
@@ -174,6 +177,7 @@ const LayoutPageNavigation = (props) => {
 
   const navigationContainer = (
     <nav
+      key="navigation-container"
       aria-label="Page Table of Contents Navigation"
       css={{
         marginBottom: designSystem.dimensions.spacings.l,

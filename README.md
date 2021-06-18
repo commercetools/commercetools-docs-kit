@@ -40,8 +40,18 @@ $ yarn build
 Start the [docs-smoke-test website](./websites/docs-smoke-test):
 
 ```bash
+$ cd websites/docs-smoke-test
 $ yarn start
 ```
+
+Start the [api-docs-smoke-test website](./websites/api-docs-smoke-test):
+
+```bash
+$ cd websites/api-docs-smoke-test
+$ yarn start
+```
+
+When building a production or test site, setting an environment variable `ANALYZE_BUNDLE=true` starts a [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) based size analysis after the build. Keep in mind that the analysis only covers the JS content, GatsbyJS GraphQL data live in separate JSON files in the `/public/page-data` folder and are a source of page weight, too. The `/public/page-data/sq` subfolder contains the static query results.
 
 ## Contributing
 

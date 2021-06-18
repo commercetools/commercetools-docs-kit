@@ -11,6 +11,8 @@
     "clean:develop": "yarn clean && yarn develop",
     "create-docs-release-note": "npx create-docs-release-note",
     "build": "npx gatsby build --prefix-paths",
+    "build:serve": "npx gatsby build --prefix-paths && npx gatsby serve --prefix-paths -o",
+    "build:analyze": "ANALYZE_BUNDLE=true yarn build",
     "prebuild": "yarn clean && yarn predevelop",
     "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
     "generate-ramldoc": "npx rmf-codegen generate ../../api-specs/test/api.raml --output-folder ./src/api-specs/test --target RAML_DOC",
@@ -20,9 +22,9 @@
     "@commercetools-docs/gatsby-theme-api-docs": "16.3.0",
     "@commercetools-docs/gatsby-theme-docs": "16.3.0",
     "@commercetools-docs/rmf-codegen": "12.3.0",
-    "gatsby": "3.6.2",
-    "gatsby-cli": "3.6.0",
-    "gatsby-source-filesystem": "3.6.0",
+    "gatsby": "3.7.2",
+    "gatsby-cli": "3.7.1",
+    "gatsby-source-filesystem": "3.7.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   }
