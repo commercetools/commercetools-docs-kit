@@ -29,6 +29,18 @@ const convertComponentInMdxToTypeLocations = (data) =>
     };
   }, {});
 
+const getTypeLocationOverrides = (typeLocationData) => {
+  const typeLocationOverrides = {};
+  typeLocationData.forEach((api) => {
+    api.locations.forEach((location) => {
+      typeLocationOverrides[`${api.api}__${location.type}`] = {
+        url: location.href,
+      };
+    });
+  });
+  return typeLocationOverrides;
+};
+
 export const useTypeLocations = () => {
   const queryResult = useStaticQuery(
     graphql`
@@ -54,25 +66,8 @@ export const useTypeLocations = () => {
     `
   );
   const typeLocations = convertComponentInMdxToTypeLocations(queryResult);
-  const typeLocationOverrides = useTypeLocationOverrides().reduce(
-    (apiTypeLocationList, api) => {
-      const apiTypeLocations = api.locations.reduce(
-        (locationList, location) => {
-          return {
-            ...locationList,
-            [`${api.api}__${location.type}`]: {
-              url: location.href,
-            },
-          };
-        },
-        {}
-      );
-      return {
-        ...apiTypeLocationList,
-        ...apiTypeLocations,
-      };
-    },
-    {}
+  const typeLocationOverrides = getTypeLocationOverrides(
+    useTypeLocationOverrides()
   );
   return { ...typeLocations, ...typeLocationOverrides };
 };
