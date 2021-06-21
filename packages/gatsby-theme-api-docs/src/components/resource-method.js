@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FullWidthContainer } from '@commercetools-docs/gatsby-theme-docs';
-import useReadResourceByResourcePath from '../hooks/use-read-resource-by-resource-path';
+import { useReadResourceByResourcePath } from '../hooks/use-read-resource-by-resource-path';
 import reportError from '../utils/report-error';
 import Method from './resource/method';
 
