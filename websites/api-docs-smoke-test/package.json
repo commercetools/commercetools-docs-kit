@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "yarn develop",
-    "predevelop": "yarn generate-ramldoc && yarn generate-ramldoc:public-ct-api",
+    "predevelop": "yarn generate-ramldoc",
     "develop": "npx gatsby develop",
     "serve": "npx gatsby serve --prefix-paths -o",
     "clean": "npx gatsby clean",
@@ -15,8 +15,9 @@
     "build:analyze": "ANALYZE_BUNDLE=true yarn build",
     "prebuild": "yarn clean && yarn predevelop",
     "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
-    "generate-ramldoc": "npx rmf-codegen generate ../../api-specs/test/api.raml --output-folder ./src/api-specs/test --target RAML_DOC",
-    "generate-ramldoc:public-ct-api": "rm -rf ../../commercetools-api-reference && git clone --single-branch --depth=1 -b master https://github.com/commercetools/commercetools-api-reference.git ../../commercetools-api-reference && npx rmf-codegen generate ../../commercetools-api-reference/api-specs/api/api.raml --output-folder ./src/api-specs/api --target RAML_DOC && rm -rf ../../commercetools-api-reference"
+    "generate-ramldoc": "yarn generate-ramldoc:test && yarn generate-ramldoc:api",
+    "generate-ramldoc:test": "npx rmf-codegen generate ../../api-specs/test/api.raml --output-folder ./src/api-specs/test --target RAML_DOC",
+    "generate-ramldoc:api": "npx rmf-codegen generate ../../api-specs/api/api.raml --output-folder ./src/api-specs/api --target RAML_DOC"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-api-docs": "16.3.0",
