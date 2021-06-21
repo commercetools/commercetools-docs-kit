@@ -1,0 +1,15 @@
+{
+  "action": "setDiscountedPrice",
+  "priceId": "{{priceId}}",
+  "staged": true,
+  "discounted": {
+    "value": {
+      "currencyCode": "EUR",
+      "centAmount": 4000
+    },
+    "discount": {
+      "typeId": "product-discount",
+      "id": "{{product-discount-id}}"
+    }
+  }
+}

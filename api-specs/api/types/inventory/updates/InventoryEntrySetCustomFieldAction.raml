@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): Inventory
+(docs-uri): https://docs.commercetools.com/http-api-projects-inventory.html#set-customfield
+type: InventoryEntryUpdateAction
+displayName: InventoryEntrySetCustomFieldAction
+discriminatorValue: setCustomField
+(postman-example): !include ../../../examples/Inventory/InventoryEntrySetCustomFieldAction.json
+properties:
+  name:
+    type: string
+    description: ''
+  value?:
+    type: any

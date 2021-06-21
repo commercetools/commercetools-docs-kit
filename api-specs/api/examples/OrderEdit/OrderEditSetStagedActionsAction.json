@@ -1,0 +1,9 @@
+{
+  "action": "setStagedActions",
+  "stagedActions": [
+    {
+      "action": "setCountry",
+      "country": "DE"
+    }
+  ]
+}

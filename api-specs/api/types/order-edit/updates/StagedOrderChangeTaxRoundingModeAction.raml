@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#change-tax-roundingmode
+type: StagedOrderUpdateAction
+displayName: StagedOrderChangeTaxRoundingModeAction
+discriminatorValue: changeTaxRoundingMode
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderChangeTaxRoundingModeAction.json
+properties:
+  taxRoundingMode:
+    type: RoundingMode

@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): Order
+(docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#update-itemshippingaddress
+type: OrderUpdateAction
+displayName: OrderUpdateItemShippingAddressAction
+discriminatorValue: updateItemShippingAddress
+(postman-example): !include ../../../examples/Order/OrderUpdateItemShippingAddressAction.json
+properties:
+  address:
+    type: BaseAddress

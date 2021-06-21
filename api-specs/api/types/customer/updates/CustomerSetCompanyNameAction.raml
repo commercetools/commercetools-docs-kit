@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Customer
+(docs-uri): https://docs.commercetools.com/http-api-projects-customers.html#set-company-name
+type: CustomerUpdateAction
+displayName: CustomerSetCompanyNameAction
+discriminatorValue: setCompanyName
+(postman-example): !include ../../../examples/Customer/CustomerSetCompanyNameAction.json
+properties:
+  companyName?:
+    type: string
+    description: If not defined, the company name is unset.

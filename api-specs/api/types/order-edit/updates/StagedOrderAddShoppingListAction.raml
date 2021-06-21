@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#add-shopping-list
+type: StagedOrderUpdateAction
+displayName: StagedOrderAddShoppingListAction
+discriminatorValue: addShoppingList
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderAddShoppingListAction.json
+properties:
+  shoppingList:
+    type: ShoppingListResourceIdentifier
+  supplyChannel?:
+    type: ChannelResourceIdentifier
+  distributionChannel?:
+    type: ChannelResourceIdentifier

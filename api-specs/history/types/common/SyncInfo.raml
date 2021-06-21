@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): Common
+type: object
+displayName: SyncInfo
+description:
+properties:
+  channel:
+    type: Reference
+  externalId:
+    type: string
+    description: Can be used to reference an external order instance, file etc.
+  syncedAt:
+    type: string

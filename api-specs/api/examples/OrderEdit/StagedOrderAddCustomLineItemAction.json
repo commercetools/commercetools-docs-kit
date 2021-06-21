@@ -1,0 +1,16 @@
+{
+  "action": "addCustomLineItem",
+  "name": {
+    "en": "Name"
+  },
+  "quantity": 2,
+  "money": {
+    "currencyCode": "EUR",
+    "centAmount": 4000
+  },
+  "slug": "slugString",
+  "taxCategory": {
+    "typeId": "tax-category",
+    "id": "{{tax-category-id}}"
+  }
+}

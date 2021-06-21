@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#transition-state
+type: StagedOrderUpdateAction
+displayName: StagedOrderTransitionStateAction
+discriminatorValue: transitionState
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderTransitionStateAction.json
+properties:
+  state:
+    type: StateResourceIdentifier
+  force?:
+    type: boolean

@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-shippingmethod-taxrate
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetShippingMethodTaxRateAction
+discriminatorValue: setShippingMethodTaxRate
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetShippingMethodTaxRateAction.json
+properties:
+  externalTaxRate?:
+    type: ExternalTaxRateDraft

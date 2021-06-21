@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+(package): Change
+type: Change
+displayName: SetOrderTaxedPriceChange
+description:
+discriminatorValue: SetOrderTaxedPriceChange
+properties:
+  type:
+    type: string
+    enum:
+      - SetOrderTaxedPriceChange
+  change:
+    description: Update action for `setOrderTaxedPrice`
+    type: string
+    enum:
+      - setOrderTaxedPrice
+  taxMode:
+    type: TaxMode
+  nextValue:
+    type: TaxedItemPrice
+  previousValue:
+    type: TaxedItemPrice

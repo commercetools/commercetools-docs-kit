@@ -1,0 +1,142 @@
+#%RAML 1.0 Library
+usage: Customer import types.
+(annotations.package): customers
+
+uses:
+  common: common.raml
+  custom-field: custom-field.raml
+  annotations: ../annotationTypes/annotations.raml
+
+types:
+  CustomerAddress:
+    description: |
+      Different from Address in that `key` is required and `id` is not supported. 
+    properties:
+      key:
+        description: |
+          User-defined identifier for the address.
+          It must follow the pattern [a-zA-Z0-9_\-]{2,256}, and unique per customer.
+        type: string
+      title?: string
+      salutation?: string
+      firstName?: string
+      lastName?: string
+      streetName?: string
+      streetNumber?: string
+      additionalStreetInfo?: string
+      postalCode?: string
+      city?: string
+      region?: string
+      state?: string
+      country: common.CountryCode
+      company?: string
+      department?: string
+      building?: string
+      apartment?: string
+      pOBox?: string
+      phone?: string
+      mobile?: string
+      email?: string
+      fax?: string
+      additionalAddressInfo?: string
+      externalId?: string
+  CustomerImport:
+    description: |
+      Import representation for a customer.
+    type: common.ImportResource
+    properties:
+      customerNumber?:
+        description: |
+          Maps to `Customer.customerNumber`.
+        type: string
+      email:
+        description: |
+          Maps to `Customer.email`.
+        type: string
+      password:
+        description: |
+          Maps to `Customer.password`.
+        type: string
+      stores?:
+        description: |
+          References stores by its keys.
+
+          The stores referenced
+          must already exist in the commercetools project, or the
+          import operation state is set to `Unresolved`.
+        type: common.StoreKeyReference[]
+      firstName?:
+        description: |
+          Maps to `Customer.firstName`.
+        type: string
+      lastName?:
+        description: |
+          Maps to `Customer.lastName`.
+        type: string
+      middleName?:
+        description: |
+          Maps to `Customer.middleName`.
+        type: string
+      title?:
+        description: |
+          Maps to `Customer.title`.
+        type: string
+      salutation?:
+        description: |
+          Maps to `Customer.salutation`.
+        type: string
+      externalId?:
+        description: |
+          Maps to `Customer.externalId`.
+        type: string
+      dateOfBirth?:
+        description: |
+          Maps to `Customer.dateOfBirth`.
+        type: date-only
+      companyName?:
+        description: |
+          Maps to `Customer.companyName`.
+        type: string
+      vatId?:
+        description: |
+          Maps to `Customer.vatId`.
+        type: string
+      isEmailVerified?:
+        description: |
+          Maps to `Customer.isEmailVerified`.
+        type: boolean
+      customerGroup?:
+        description: |
+          References a customer group by its key.
+
+          The customer group referenced
+          must already exist in the commercetools project, or the
+          import operation state is set to `Unresolved`.
+        type: common.CustomerGroupKeyReference
+      addresses:
+        description: |
+          Maps to `Customer.addresses`.
+        type: CustomerAddress[]
+      defaultBillingAddress?:
+        description: |
+          The index of the address in the addresses array. The `defaultBillingAddressId` of the customer will be set to the ID of that address.
+        type: integer
+      billingAddresses?:
+        description: |
+          The indices of the billing addresses in the addresses array. The `billingAddressIds` of the customer will be set to the IDs of that addresses.
+        type: integer[]
+      defaultShippingAddress?:
+        description: |
+          The index of the address in the addresses array. The `defaultShippingAddressId` of the customer will be set to the ID of that address.
+        type: integer
+      shippingAddresses?:
+        description: |
+          The indices of the shipping addresses in the addresses array. The `shippingAddressIds` of the customer will be set to the IDs of that addresses.
+        type: integer[]
+      locale?:
+        description: |
+          Maps to `Customer.locale`.
+        type: string
+      custom?:
+        description: The custom fields for this Customer.
+        type: custom-field.Custom

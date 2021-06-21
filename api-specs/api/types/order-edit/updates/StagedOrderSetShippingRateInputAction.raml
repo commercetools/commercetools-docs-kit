@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-shipping-rate-input
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetShippingRateInputAction
+discriminatorValue: setShippingRateInput
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetShippingRateInputAction.json
+properties:
+  shippingRateInput?:
+    type: ShippingRateInputDraft

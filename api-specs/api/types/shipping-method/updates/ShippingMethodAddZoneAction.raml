@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): ShippingMethod
+(docs-uri): https://docs.commercetools.com/http-api-projects-shippingMethods.html#add-zone
+type: ShippingMethodUpdateAction
+displayName: ShippingMethodAddZoneAction
+discriminatorValue: addZone
+(postman-example): !include ../../../examples/ShippingMethod/ShippingMethodAddZoneAction.json
+properties:
+  zone:
+    type: ZoneResourceIdentifier
+    description: ''

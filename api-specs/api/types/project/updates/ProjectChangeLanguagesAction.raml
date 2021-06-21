@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Project
+(docs-uri): https://docs.commercetools.com/http-api-projects-project.html#change-languages
+type: ProjectUpdateAction
+displayName: ProjectChangeLanguagesAction
+discriminatorValue: changeLanguages
+(postman-example): !include ../../../examples/Project/ProjectChangeLanguagesAction.json
+properties:
+  languages:
+    type: Locale[]
+    description: ' .'

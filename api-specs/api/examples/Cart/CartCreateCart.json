@@ -1,0 +1,7 @@
+{
+  "currency": "EUR",
+  "customerId": "{{customer-id}}",
+  "shippingAddress": {
+    "country": "DE"
+  }
+}

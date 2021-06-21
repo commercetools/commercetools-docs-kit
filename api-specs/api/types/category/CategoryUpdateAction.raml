@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+(package): Category
+type: object
+displayName: CategoryUpdateAction
+discriminator: action
+(java-extends): 'com.commercetools.api.models.ResourceUpdateAction<CategoryUpdateAction>'
+properties:
+  action:
+    type: string

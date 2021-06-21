@@ -1,0 +1,29 @@
+#%RAML 1.0 DataType
+type: object
+displayName: RecordPagedQueryResponse
+example: !include ../examples/RecordPagedQueryResponse.json
+description: |
+  Response to a query request for [Record](#record).
+properties:
+  limit:
+    type: integer
+    description: |
+      Maximum number of results requested in the query request.
+  count:
+    type: integer
+    description: |
+      Actual number of results returned.
+  total:
+    type: integer
+    description: |
+      Total number of results matching the query.
+      This number is an estimation and not [strongly consistent](/general-concepts#strong-consistency).
+  offset:
+    type: integer
+    description: |
+      The number of elements skipped, not a page number. Supplied by the client or the server default.
+  results:
+    type: array
+    description:
+    items:
+      type: Record

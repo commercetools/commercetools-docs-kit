@@ -1,0 +1,96 @@
+type:
+  baseDomain:
+    resourceType: DiscountCode
+    resourceQueryType: DiscountCodePagedQueryResponse
+    resourceDraft: DiscountCodeDraft
+    whereExample: 'code = "summersale"'
+    sortExample: createdAt asc
+(updateable): DiscountCode
+(deleteable): DiscountCode
+(createable): DiscountCodeDraft
+description:
+  Discount codes can be added to a discount-code to enable certain discount-code
+  discounts.
+get:
+  (java-implements):
+    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyDiscountCodesGet,
+    com.commercetools.api.models.discount_code.DiscountCodePagedQueryResponse>'
+  securedBy:
+    [
+      oauth_2_0:
+        { scopes: ['manage_project:{projectKey}', 'view_orders:{projectKey}'] },
+    ]
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/discount-codes.example.json
+post:
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes: ['manage_project:{projectKey}', 'manage_orders:{projectKey}'],
+        },
+    ]
+  body:
+    application/json:
+      example: !include ../examples/discount-code-create.example.json
+  responses:
+    201:
+      body:
+        application/json:
+          example: !include ../examples/discount-code.example.json
+/{ID}:
+  (methodName): withId
+  type:
+    baseResource:
+      uriParameterName: ID
+      resourceType: DiscountCode
+      resourceUpdateType: DiscountCodeUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes: ['manage_project:{projectKey}', 'view_orders:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/discount-code.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_orders:{projectKey}'],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/discount-code-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/discount-code.example.json
+  delete:
+    is:
+      - dataErasure
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_orders:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/discount-code.example.json

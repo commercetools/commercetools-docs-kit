@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): ShippingMethod
+(docs-uri): https://docs.commercetools.com/http-api-projects-shippingMethods.html#change-isdefault
+type: ShippingMethodUpdateAction
+displayName: ShippingMethodChangeIsDefaultAction
+discriminatorValue: changeIsDefault
+(postman-example): !include ../../../examples/ShippingMethod/ShippingMethodChangeIsDefaultAction.json
+properties:
+  isDefault:
+    type: boolean
+    description: Only one ShippingMethod in a project can be default.

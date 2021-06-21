@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+(package): Common
+type: object
+displayName: Parcel
+description:
+properties:
+  id:
+    type: string
+  createdAt:
+    type: string
+  measurements:
+    type: ParcelMeasurements
+  trackingData:
+    type: TrackingData
+  items:
+    type: array
+    items:
+      type: DeliveryItem

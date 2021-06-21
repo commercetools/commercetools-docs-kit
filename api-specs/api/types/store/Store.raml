@@ -1,0 +1,49 @@
+#%RAML 1.0 DataType
+(package): Store
+(docs-uri): https://docs.commercetools.com/http-api-projects-stores#stores
+type: BaseResource
+displayName: Store
+(updateType): StoreUpdate
+(java-extends): 'com.commercetools.api.models.DomainResource<Store>'
+properties:
+  id:
+    (identifier): true
+    type: string
+    description: ''
+  version:
+    type: number
+    format: int64
+    description: ''
+  createdAt:
+    type: datetime
+    description: ''
+  lastModifiedAt:
+    type: datetime
+    description: ''
+  lastModifiedBy?:
+    type: LastModifiedBy
+  createdBy?:
+    type: CreatedBy
+  key:
+    type: string
+    description: |-
+      User-specific unique identifier for the store.
+      The `key` is mandatory and immutable.
+      It is used to reference the store.
+  name?:
+    type: LocalizedString
+    description: The name of the store
+  languages?:
+    type: string[]
+    description: ''
+  distributionChannels:
+    type: ChannelReference[]
+    description: |-
+      Set of References to a Channel with `ProductDistribution` role
+  supplyChannels?:
+    type: ChannelReference[]
+    description: |-
+      Set of ResourceIdentifiers of Channels with `InventorySupply` role
+  custom?:
+    type: CustomFields
+    description: ''
