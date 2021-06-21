@@ -18,9 +18,6 @@
       "**/*.snap": true,
       "**/*.svg": true
     },
-    "files.associations": {
-      "*.mdx": "markdown"
-    },
     "javascript.validate.enable": true,
     "eslint.validate": [
       "javascript",
@@ -64,6 +61,7 @@
       "ms-vscode.vscode-typescript-tslint-plugin",
       "redhat.vscode-yaml",
       "silvenon.mdx",
+      "jounqin.vscode-mdx",
       "errata-ai.vale-server"
     ]
   }
