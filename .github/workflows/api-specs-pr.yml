@@ -4,11 +4,11 @@ on:
       - automated-api-reference-update
 
 jobs:
-  pull-request:
+  pr-for-api-spec-update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: pull-request
         uses: repo-sync/pull-request@v2

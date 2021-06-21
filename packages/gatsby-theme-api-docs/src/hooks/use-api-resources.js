@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-export default () => {
+export const useApiResources = () => {
   const queryResult = useStaticQuery(
     graphql`
       fragment methods on Method {
@@ -84,4 +84,26 @@ export default () => {
   );
 
   return queryResult.allRamlResource.nodes;
+};
+
+// A static property key based index for fast access in large APIs
+const byKeyAndResourcePathUriIndex = {};
+var isIndexed = false;
+const index = (apiResources) => {
+  if (!isIndexed) {
+    apiResources.forEach((apiResource) => {
+      byKeyAndResourcePathUriIndex[
+        apiResource.apiKey + '__' + apiResource.resourcePathUri
+      ] = apiResource;
+    });
+  }
+  isIndexed = true;
+};
+
+export const useApiResourceByApiKeyAndResourcePathUri = (
+  apiKey = '',
+  resourcePathUri = ''
+) => {
+  index(useApiResources());
+  return byKeyAndResourcePathUriIndex[apiKey + '__' + resourcePathUri];
 };

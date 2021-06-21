@@ -31,7 +31,7 @@ module.exports = {
           resolve: '@commercetools-docs/gatsby-theme-api-docs',
           options: {
             transformerRaml: {
-              includeApis: ['test'],
+              includeApis: ['test', 'api'],
               movePropertiesToTop: [
                 'id',
                 'version',
