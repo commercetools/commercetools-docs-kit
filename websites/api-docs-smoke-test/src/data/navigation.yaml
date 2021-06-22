@@ -24,6 +24,12 @@
       path: /endpoints/methods
     - title: All Endpoints of Resource
       path: /endpoints/endpoints-for-resource
+- chapter-title: Links
+  pages:
+    - title: Predefined Links
+      path: /links/predefined-links
+    - title: Link to a soft link
+      path: /links/link-to-soft-link
 - chapter-title: E2E Tests
   pages:
     - title: Soft Linking First Page

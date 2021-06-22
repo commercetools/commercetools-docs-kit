@@ -1,0 +1,29 @@
+---
+title: Predefined Links
+description: Using predefined links with types or resources
+---
+
+These predefined links must be defined in `/<root>/src/data/type-locations.yaml` like so:
+
+```yaml
+- api: test
+  locations:
+    - type: StringTestType
+      href: /types/scalars#stringtesttype
+    - type: TestTypeOnAnotherMicrosite
+      href: /../docs-smoke-test/views/links#common-use-cases
+    - type: TestTypeOnAnExternalWebsite
+      href: https://docs.commercetools.com/api/projects/types#query-types
+```
+
+## LinkToTypeOnSameSite
+
+<ApiType apiKey="test" type="LinkToTypeOnSameSite" />
+
+## LinkToTypeOnAnotherSite
+
+<ApiType apiKey="test" type="LinkToTypeOnAnotherSite" />
+
+## LinkToTypeOnExternalSite
+
+<ApiType apiKey="test" type="LinkToTypeOnExternalSite" />

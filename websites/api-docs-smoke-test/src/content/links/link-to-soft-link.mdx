@@ -1,0 +1,30 @@
+---
+title: Linking to Soft Links
+description: Using custom urns to link to types and resrouces
+---
+
+URN patterns for soft links:
+
+* Type: ctp:{api-key}:type:{type-name}
+* Resource:
+
+# Linking from Markdown
+
+[ArrayTestType](/types/general#ctp:test:type:ArrayTestType)
+
+```md
+[ArrayTestType](/types/general#ctp:test:type:ArrayTestType)
+```
+
+# Linking from Description of Type or Resource
+
+To link properly from the a type or a resource, always use full path or with an absolute URL
+
+Link with
+* full path
+* absolute url
+* microsite notation
+
+********Test
+
+<ApiType apiKey="test" type="LinkFromDescription" />
