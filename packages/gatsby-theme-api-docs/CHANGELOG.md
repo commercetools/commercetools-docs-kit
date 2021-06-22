@@ -1,5 +1,21 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 16.3.1
+
+### Patch Changes
+
+- [#987](https://github.com/commercetools/commercetools-docs-kit/pull/987) [`1dede6f`](https://github.com/commercetools/commercetools-docs-kit/commit/1dede6f2e025af68a1327f6a7ac2ce8f04b42598) Thanks [@nkuehn](https://github.com/nkuehn)! - Refactor API data hooks for performance
+
+* [#991](https://github.com/commercetools/commercetools-docs-kit/pull/991) [`05c9b91`](https://github.com/commercetools/commercetools-docs-kit/commit/05c9b9108397b8f32fd82d6e8b8cbb1298fa1042) Thanks [@timonrey](https://github.com/timonrey)! - Improve performance of type location overrides
+
+- [#978](https://github.com/commercetools/commercetools-docs-kit/pull/978) [`78bc6b0`](https://github.com/commercetools/commercetools-docs-kit/commit/78bc6b0a4c0c678fb941121b2e410bbf329065b0) Thanks [@renovate](https://github.com/apps/renovate)! - update all dependencies
+
+* [#988](https://github.com/commercetools/commercetools-docs-kit/pull/988) [`49d2059`](https://github.com/commercetools/commercetools-docs-kit/commit/49d20592a9808efb942649840dc62fde68c22c5a) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* Updated dependencies [[`78bc6b0`](https://github.com/commercetools/commercetools-docs-kit/commit/78bc6b0a4c0c678fb941121b2e410bbf329065b0), [`49d2059`](https://github.com/commercetools/commercetools-docs-kit/commit/49d20592a9808efb942649840dc62fde68c22c5a)]:
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@14.0.6
+  - @commercetools-docs/ui-kit@16.3.1
+
 ## 16.3.0
 
 ### Minor Changes
