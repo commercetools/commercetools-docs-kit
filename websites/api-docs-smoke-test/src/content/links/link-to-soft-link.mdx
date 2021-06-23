@@ -5,6 +5,8 @@ description: Using custom urns to link to types
 
 # Linking from Markdown
 
+## To Type
+
 Example:
 
 ```md
@@ -12,6 +14,16 @@ Example:
 ```
 
 Rendered link: [ArrayTestType](/types/general#ctp:test:type:ArrayTestType)
+
+## To Endpoint
+
+Example:
+
+```md
+[GET request for /{projectKey}/resource/key={key}](/endpoints/methods#ctp:test:endpoint:/%257BprojectKey%257D/resource/key=%257Bkey%257D:GET)
+```
+
+Rendered link: [GET request for /{projectKey}/resource/key={key}](/endpoints/methods#ctp:test:endpoint:/%257BprojectKey%257D/resource/key=%257Bkey%257D:GET)
 
 # Linking from Description of a Type
 
@@ -24,7 +36,7 @@ LinkFromDescription:
     properties:
       linkFromPropertyDescription:
         description: |-
-          From property description, link [ArrayTestType](/types/general#ctp:test:type:ArrayTestType) with `[ArrayTestType](/types/general#ctp:test:type:ArrayTestType)`
+          From property description, link [GET request for /{projectKey}/resource/key={key}](/endpoints/methods#ctp:test:endpoint:/%257BprojectKey%257D/resource/key=%257Bkey%257D:GET) with `[GET request for /{projectKey}/resource/key={key}](/endpoints/methods#ctp:test:endpoint:/%257BprojectKey%257D/resource/key=%257Bkey%257D:GET)`
         type: string
       linkWithMicrositeNotation:
         description: |-

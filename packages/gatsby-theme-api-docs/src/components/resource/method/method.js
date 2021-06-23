@@ -62,7 +62,7 @@ const Method = ({
       {title ? (
         <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
       ) : (
-        <a name={id}></a>
+        <span id={id} />
       )}
 
       {method.description && (
