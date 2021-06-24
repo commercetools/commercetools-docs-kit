@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+(package): CustomerGroup
+(docs-uri): https://docs.commercetools.com/http-api-projects-customerGroups.html#create-a-customergroup
+displayName: CustomerGroupDraft
+type: object
+properties:
+  key?:
+    type: string
+    description: User-specific unique identifier for the customer group.
+  groupName:
+    type: string
+    description: ''
+  custom?:
+    type: CustomFields
+    description: ''

@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Payment
+(docs-uri): https://docs.commercetools.com/http-api-projects-payments.html#set-methodinfomethod
+type: PaymentUpdateAction
+displayName: PaymentSetMethodInfoMethodAction
+discriminatorValue: setMethodInfoMethod
+(postman-example): !include ../../../examples/Payment/PaymentSetMethodInfoMethodAction.json
+properties:
+  method?:
+    type: string
+    description: If not provided, the method is unset.

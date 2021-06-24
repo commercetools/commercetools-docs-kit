@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Order
+type: object
+displayName: OrderUpdate
+(java-extends): 'com.commercetools.api.models.ResourceUpdate<OrderUpdate, OrderUpdateAction>'
+properties:
+  version:
+    type: number
+    format: int64
+  actions:
+    type: array
+    items: OrderUpdateAction

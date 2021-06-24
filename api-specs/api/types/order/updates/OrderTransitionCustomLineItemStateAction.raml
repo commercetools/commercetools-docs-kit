@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+(package): Order
+(docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#change-the-state-of-customlineitem-according-to-allowed-transitions
+type: OrderUpdateAction
+displayName: OrderTransitionCustomLineItemStateAction
+discriminatorValue: transitionCustomLineItemState
+(postman-example): !include ../../../examples/Order/OrderTransitionCustomLineItemStateAction.json
+properties:
+  customLineItemId:
+    type: string
+  quantity:
+    type: number
+    format: int64
+  fromState:
+    type: StateResourceIdentifier
+  toState:
+    type: StateResourceIdentifier
+  actualTransitionDate?:
+    type: datetime

@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Product
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#remove-from-category
+type: ProductUpdateAction
+displayName: ProductRemoveFromCategoryAction
+discriminatorValue: removeFromCategory
+(postman-example): !include ../../../examples/Product/ProductRemoveFromCategoryAction.json
+properties:
+  category:
+    type: CategoryResourceIdentifier
+    description: ''
+  staged?:
+    type: boolean
+    description: ''

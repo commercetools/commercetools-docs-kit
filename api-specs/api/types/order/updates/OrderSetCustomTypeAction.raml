@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Order
+(docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#set-custom-type
+type: OrderUpdateAction
+displayName: OrderSetCustomTypeAction
+discriminatorValue: setCustomType
+(postman-example): !include ../../../examples/Order/OrderSetCustomTypeAction.json
+properties:
+  type?:
+    type: TypeResourceIdentifier
+  fields?:
+    type: FieldContainer

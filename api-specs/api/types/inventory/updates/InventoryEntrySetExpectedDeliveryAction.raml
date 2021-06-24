@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Inventory
+(docs-uri): https://docs.commercetools.com/http-api-projects-inventory.html#set-expecteddelivery
+type: InventoryEntryUpdateAction
+displayName: InventoryEntrySetExpectedDeliveryAction
+discriminatorValue: setExpectedDelivery
+(postman-example): !include ../../../examples/Inventory/InventoryEntrySetExpectedDeliveryAction.json
+properties:
+  expectedDelivery?:
+    type: datetime
+    description: ''

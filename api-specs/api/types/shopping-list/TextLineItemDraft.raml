@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+(package): ShoppingList
+type: object
+displayName: TextLineItemDraft
+properties:
+  addedAt?:
+    type: datetime
+    description: Defaults to the current date and time.
+  custom?:
+    type: CustomFieldsDraft
+    description: The custom fields.
+  description?:
+    type: LocalizedString
+    description: ''
+  name:
+    type: LocalizedString
+    description: ''
+  quantity?:
+    type: number
+    format: int32
+    description: Defaults to `1`.

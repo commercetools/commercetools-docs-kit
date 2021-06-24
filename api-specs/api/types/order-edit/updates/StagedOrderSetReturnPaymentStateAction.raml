@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-returnpaymentstate
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetReturnPaymentStateAction
+discriminatorValue: setReturnPaymentState
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetReturnPaymentStateAction.json
+properties:
+  returnItemId:
+    type: string
+  paymentState:
+    type: ReturnPaymentState

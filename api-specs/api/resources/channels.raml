@@ -1,0 +1,97 @@
+type:
+  baseDomain:
+    resourceType: Channel
+    resourceQueryType: ChannelPagedQueryResponse
+    resourceDraft: ChannelDraft
+    whereExample: 'key = "berlin-store"'
+    sortExample: createdAt asc
+(updateable): Channel
+(deleteable): Channel
+(createable): ChannelDraft
+description: |
+  Channels represent a source or destination of different entities. They can be used to model warehouses or stores.
+get:
+  (java-implements):
+    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyChannelsGet,
+    com.commercetools.api.models.channel.ChannelPagedQueryResponse>'
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes: ['manage_project:{projectKey}', 'view_products:{projectKey}'],
+        },
+    ]
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/channels.example.json
+post:
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+        },
+    ]
+  body:
+    application/json:
+      example: !include ../examples/channel-create.example.json
+  responses:
+    201:
+      body:
+        application/json:
+          example: !include ../examples/channel.example.json
+/{ID}:
+  (methodName): withId
+  type:
+    baseResource:
+      uriParameterName: ID
+      resourceType: Channel
+      resourceUpdateType: ChannelUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'view_products:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/channel.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/channel-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/channel.example.json
+  delete:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/channel.example.json

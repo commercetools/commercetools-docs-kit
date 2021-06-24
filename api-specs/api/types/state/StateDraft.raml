@@ -1,0 +1,27 @@
+#%RAML 1.0 DataType
+(package): State
+(docs-uri): https://docs.commercetools.com/http-api-projects-states.html#statedraft
+type: object
+displayName: StateDraft
+properties:
+  key:
+    type: string
+    description: ''
+  type:
+    type: StateTypeEnum
+    description: ''
+  name?:
+    type: LocalizedString
+    description: ''
+  description?:
+    type: LocalizedString
+    description: ''
+  initial?:
+    type: boolean
+    description: ''
+  roles?:
+    type: StateRoleEnum[]
+    description: ''
+  transitions?:
+    description: ''
+    type: StateResourceIdentifier[]

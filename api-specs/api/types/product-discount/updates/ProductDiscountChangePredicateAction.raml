@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): ProductDiscount
+(docs-uri): https://docs.commercetools.com/http-api-projects-productDiscounts.html#change-predicate
+type: ProductDiscountUpdateAction
+displayName: ProductDiscountChangePredicateAction
+discriminatorValue: changePredicate
+(postman-example): !include ../../../examples/ProductDiscount/ProductDiscountChangePredicateAction.json
+properties:
+  predicate:
+    type: string
+    description: A valid ProductDiscount Predicate.

@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): ShippingMethod
+(docs-uri): https://docs.commercetools.com/http-api-projects-shippingMethods.html#remove-shippingrate
+type: ShippingMethodUpdateAction
+displayName: ShippingMethodRemoveShippingRateAction
+discriminatorValue: removeShippingRate
+(postman-example): !include ../../../examples/ShippingMethod/ShippingMethodRemoveShippingRateAction.json
+properties:
+  zone:
+    type: ZoneResourceIdentifier
+    description: ''
+  shippingRate:
+    type: ShippingRateDraft
+    description: ''

@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): Channel
+(docs-uri): https://docs.commercetools.com/http-api-projects-channels.html#set-roles
+type: ChannelUpdateAction
+displayName: ChannelSetRolesAction
+discriminatorValue: setRoles
+(postman-example): !include ../../../examples/Channel/ChannelSetRolesAction.json
+properties:
+  roles:
+    type: ChannelRoleEnum[]

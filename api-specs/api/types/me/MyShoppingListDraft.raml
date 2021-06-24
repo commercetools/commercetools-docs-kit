@@ -1,0 +1,30 @@
+#%RAML 1.0 DataType
+(package): Me
+(docs-uri): https://docs.commercetools.com/http-api-projects-me-shoppingLists#my-shopping-lists
+displayName: MyShoppingListDraft
+type: object
+properties:
+  name:
+    type: LocalizedString
+    description: ''
+  description?:
+    type: LocalizedString
+    description: ''
+  lineItems?:
+    type: ShoppingListLineItemDraft[]
+    description: ''
+  textLineItems?:
+    type: TextLineItemDraft[]
+    description: ''
+  custom?:
+    type: CustomFieldsDraft
+    description: The custom fields.
+  deleteDaysAfterLastModification?:
+    type: number
+    format: int64
+    description:
+      The shopping list will be deleted automatically if it hasn't been modified
+      for the specified amount of days.
+  store?:
+    type: StoreResourceIdentifier
+    description: ''

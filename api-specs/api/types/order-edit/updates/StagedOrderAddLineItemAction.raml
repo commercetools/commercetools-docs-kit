@@ -1,0 +1,33 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#add-lineitem
+type: StagedOrderUpdateAction
+displayName: StagedOrderAddLineItemAction
+discriminatorValue: addLineItem
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderAddLineItemAction.json
+properties:
+  custom?:
+    type: CustomFieldsDraft
+  distributionChannel?:
+    type: ChannelResourceIdentifier
+  externalTaxRate?:
+    type: ExternalTaxRateDraft
+  productId?:
+    type: string
+  variantId?:
+    type: number
+    format: int64
+  sku?:
+    type: string
+  quantity?:
+    type: number
+  addedAt?:
+    type: datetime
+  supplyChannel?:
+    type: ChannelResourceIdentifier
+  externalPrice?:
+    type: Money
+  externalTotalPrice?:
+    type: ExternalLineItemTotalPrice
+  shippingDetails?:
+    type: ItemShippingDetailsDraft

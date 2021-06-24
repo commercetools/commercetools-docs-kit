@@ -1,0 +1,52 @@
+#%RAML 1.0 DataType
+(package): Product
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#product
+displayName: Product
+type: BaseResource
+(updateType): ProductUpdate
+(java-extends): 'com.commercetools.api.models.DomainResource<Product>'
+properties:
+  id:
+    (identifier): true
+    type: string
+    description: The unique ID of the product.
+  version:
+    type: number
+    format: int64
+    description: The current version of the product.
+  createdAt:
+    type: datetime
+    description: ''
+  lastModifiedAt:
+    type: datetime
+    description: ''
+  lastModifiedBy?:
+    type: LastModifiedBy
+    description:
+      Present on resources updated after 1/02/2019 except for events not
+      tracked.
+  createdBy?:
+    type: CreatedBy
+    description:
+      Present on resources created after 1/02/2019 except for events not
+      tracked.
+  key?:
+    type: string
+    description: |-
+      User-specific unique identifier for the product.
+      *Product keys are different from product variant keys.*
+  productType:
+    description: ''
+    type: ProductTypeReference
+  masterData:
+    type: ProductCatalogData
+    description: The product data in the master catalog.
+  taxCategory?:
+    type: TaxCategoryReference
+    description: ''
+  state?:
+    type: StateReference
+    description: ''
+  reviewRatingStatistics?:
+    type: ReviewRatingStatistics
+    description: Statistics about the review ratings taken into account for this product.

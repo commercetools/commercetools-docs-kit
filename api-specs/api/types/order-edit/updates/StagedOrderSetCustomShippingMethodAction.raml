@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-custom-shipping-method
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetCustomShippingMethodAction
+discriminatorValue: setCustomShippingMethod
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetCustomShippingMethodAction.json
+properties:
+  shippingMethodName:
+    type: string
+  shippingRate:
+    type: ShippingRateDraft
+  taxCategory?:
+    type: TaxCategoryResourceIdentifier
+  externalTaxRate?:
+    type: ExternalTaxRateDraft

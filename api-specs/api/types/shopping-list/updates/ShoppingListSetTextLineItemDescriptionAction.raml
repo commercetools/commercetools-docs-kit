@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): ShoppingList
+(docs-uri): https://docs.commercetools.com/http-api-projects-shoppingLists.html#set-textlineitem-description
+type: ShoppingListUpdateAction
+displayName: ShoppingListSetTextLineItemDescriptionAction
+discriminatorValue: setTextLineItemDescription
+(postman-example): !include ../../../examples/ShoppingList/ShoppingListSetTextLineItemDescriptionAction.json
+properties:
+  textLineItemId:
+    type: string
+  description?:
+    type: LocalizedString

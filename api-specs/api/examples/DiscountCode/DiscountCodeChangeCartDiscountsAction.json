@@ -1,0 +1,7 @@
+{
+  "action": "changeCartDiscounts",
+  "cartDiscounts": [{
+    "typeId": "cart-discount",
+    "id": "{{cartDiscountId}}"
+  }]
+}

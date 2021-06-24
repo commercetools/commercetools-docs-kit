@@ -1,0 +1,1471 @@
+type: base
+uriParameters:
+  storeKey:
+    type: string
+/carts:
+  type:
+    baseDomain:
+      resourceType: Cart
+      # change to: resourceQueryType: CartPagedQueryResponse | Cart
+      resourceQueryType: CartPagedQueryResponse | object
+      resourceDraft: CartDraft
+      whereExample: 'customerEmail = "john.doe@example.com"'
+      sortExample: createdAt asc
+  (updateable): Cart
+  (deleteable): Cart
+  (createable): CartDraft
+  description: A shopping cart holds product variants and can be ordered.
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_orders:{projectKey}',
+                'view_orders:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    displayName: Query carts in store
+    description:
+      Queries carts in a specific Store. The {storeKey} path parameter maps to a
+      Store's key.
+    queryParameters:
+      customerId?:
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/carts.example.json
+  post:
+    displayName: Create cart in store
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_orders:{projectKey}',
+                'manage_orders:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    description: |
+      Creates a cart in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
+      When using this endpoint the cart's store field is always set to the store specified in the path parameter.
+      Creating a cart can fail with an InvalidOperation if the referenced shipping method
+      in the CartDraft has a predicate which does not match the cart.
+    body:
+      application/json:
+        example: !include ../examples/cart-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/cart.example.json
+  /customer-id={customerId}:
+    (methodName): withCustomerId
+    type:
+      baseResource:
+        uriParameterName: customerId
+        resourceType: Cart
+    get:
+      displayName: Get cart by customer id in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                ['manage_project:{projectKey}', 'view_orders:{projectKey}'],
+            },
+        ]
+      description: |
+        Retrieves the active cart of the customer that has been modified most recently in a specific Store.
+        The {storeKey} path parameter maps to a Store's key.
+
+        If the cart exists in the commercetools project but does not have the store field, or the store field
+        references a different store, this method returns a ResourceNotFound error.
+
+        The cart may not contain up-to-date prices, discounts etc. If you want to ensure they're up-to-date,
+        send an Update request with the Recalculate update action instead.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/cart.example.json
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: Cart
+        resourceUpdateType: CartUpdate
+    get:
+      displayName: Get cart by key in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_orders:{projectKey}',
+                  'view_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: |
+        Returns a cart by its key from a specific Store. The {storeKey} path parameter maps to a Store's key.
+        If the cart exists in the commercetools project but does not have the store field,
+        or the store field references a different store, this method returns a ResourceNotFound error.
+        The cart may not contain up-to-date prices, discounts etc.
+        If you want to ensure they're up-to-date, send an Update request with the Recalculate update action instead.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/cart.example.json
+    post:
+      displayName: Update cart by key in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_orders:{projectKey}',
+                  'manage_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: |
+        Updates a cart in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
+        If the cart exists in the commercetools project but does not have the store field,
+        or the store field references a different store, this method returns a ResourceNotFound error.
+      body:
+        application/json:
+          example: !include ../examples/cart-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/cart.example.json
+    delete:
+      displayName: Delete cart by key in store
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_orders:{projectKey}',
+                  'manage_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/cart.example.json
+  /replicate:
+    type: base
+    post:
+      displayName: Replicate cart for store
+      body:
+        application/json:
+          type: ReplicaCartDraft
+      responses:
+        201:
+          body:
+            application/json:
+              example: !include ../examples/cart.example.json
+              type: Cart
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_orders:{projectKey}:{storeKey}',
+                  'manage_orders:{projectKey}',
+                ],
+            },
+        ]
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: Cart
+        resourceUpdateType: CartUpdate
+    get:
+      displayName: Get cart by id in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'view_orders:{projectKey}',
+                  'view_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: |
+        Returns a cart by its ID from a specific Store. The {storeKey} path parameter maps to a Store's key.
+        If the cart exists in the commercetools project but does not have the store field,
+        or the store field references a different store, this method returns a ResourceNotFound error.
+        The cart may not contain up-to-date prices, discounts etc.
+        If you want to ensure they're up-to-date, send an Update request with the Recalculate update action instead.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/cart.example.json
+    post:
+      displayName: Update cart by id in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_orders:{projectKey}',
+                  'manage_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: |
+        Updates a cart in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
+        If the cart exists in the commercetools project but does not have the store field,
+        or the store field references a different store, this method returns a ResourceNotFound error.
+      body:
+        application/json:
+          example: !include ../examples/cart-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/cart.example.json
+    delete:
+      displayName: Delete cart by id in store
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_orders:{projectKey}',
+                  'manage_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/cart.example.json
+/orders:
+  type:
+    baseDomain:
+      resourceType: Order
+      resourceQueryType: OrderPagedQueryResponse
+      resourceDraft: OrderFromCartDraft
+      whereExample: 'customerEmail = "john.doe@example.com"'
+      sortExample: createdAt asc
+  (updateable): Order
+  (deleteable): Order
+  (createable): OrderFromCartDraft
+  description:
+    An order can be created from a cart, usually after a checkout process has
+    been completed.
+  get:
+    displayName: Query orders in store
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_orders:{projectKey}',
+                'view_orders:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    description:
+      Queries orders in a specific Store. The {storeKey} path parameter maps to
+      a Store's key.
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/orders.example.json
+  post:
+    displayName: Create order in store
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_orders:{projectKey}',
+                'manage_orders:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    description: |
+      Creates an order from a Cart from a specific Store. The {storeKey} path parameter maps to a Store's key.
+      When using this endpoint the orders's store field is always set to the store specified in the path parameter.
+      The cart must have a shipping address set before creating an order. When using the Platform TaxMode,
+      the shipping address is used for tax calculation.
+    body:
+      application/json:
+        example: !include ../examples/order-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/order.example.json
+  /order-number={orderNumber}:
+    (methodName): withOrderNumber
+    type:
+      baseResource:
+        uriParameterName: orderNumber
+        resourceType: Order
+        resourceUpdateType: OrderUpdate
+    get:
+      displayName: Get order by order number in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'view_orders:{projectKey}',
+                  'view_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: |
+        Returns an order by its order number from a specific Store.
+        The {storeKey} path parameter maps to a Store's key.
+        If the order exists in the commercetools project but does not have the store field,
+        or the store field references a different store, this method returns a ResourceNotFound error.
+        In case the orderNumber does not match the regular expression [a-zA-Z0-9_\-]+,
+        it should be provided in URL-encoded format.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/order.example.json
+    post:
+      displayName: Update order by order number in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_orders:{projectKey}',
+                  'manage_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: |
+        Updates an order in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
+        If the order exists in the commercetools project but does not have the store field,
+        or the store field references a different store, this method returns a ResourceNotFound error.
+        In case the orderNumber does not match the regular expression [a-zA-Z0-9_\-]+,
+        it should be provided in URL-encoded format.
+      body:
+        application/json:
+          example: !include ../examples/order-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/order.example.json
+    delete:
+      displayName: Delete order by order number in store
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_orders:{projectKey}',
+                  'manage_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/order.example.json
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: Order
+        resourceUpdateType: OrderUpdate
+    get:
+      displayName: Get order by id in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'view_orders:{projectKey}',
+                  'view_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: |
+        Returns an order by its ID from a specific Store. The {storeKey} path parameter maps to a Store's key.
+        If the order exists in the commercetools project but does not have the store field,
+        or the store field references a different store, this method returns a ResourceNotFound error.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/order.example.json
+    post:
+      displayName: Update order by id in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_orders:{projectKey}',
+                  'manage_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: |
+        Updates an order in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
+        If the order exists in the commercetools project but does not have the store field,
+        or the store field references a different store, this method returns a ResourceNotFound error.
+      body:
+        application/json:
+          example: !include ../examples/order-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/order.example.json
+    delete:
+      displayName: Delete order by id in store
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_orders:{projectKey}',
+                  'manage_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/order.example.json
+/me:
+  /carts:
+    type:
+      baseDomain:
+        resourceType: Cart
+        resourceQueryType: CartPagedQueryResponse
+        resourceDraft: MyCartDraft
+        whereExample: 'customerEmail = "john.doe@example.com"'
+        sortExample: createdAt asc
+    (updateable): Cart
+    (deleteable): Cart
+    (createable): MyCartDraft
+    description: A shopping cart holds product variants and can be ordered.
+    get:
+      displayName: Query my carts in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'manage_my_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/carts.example.json
+    post:
+      displayName: Create my cart in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'manage_my_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/cart-create.example.json
+      responses:
+        201:
+          body:
+            application/json:
+              example: !include ../examples/cart.example.json
+    /{ID}:
+      (methodName): withId
+      type:
+        baseResource:
+          uriParameterName: ID
+          resourceType: Cart
+          resourceUpdateType: MyCartUpdate
+      get:
+        displayName: Get my cart by id in store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_my_orders:{projectKey}',
+                    'manage_my_orders:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/cart.example.json
+      post:
+        displayName: Update my cart by id in store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_my_orders:{projectKey}',
+                    'manage_my_orders:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        body:
+          application/json:
+            example: !include ../examples/cart-update.example.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/cart.example.json
+      delete:
+        displayName: Delete my cart by id in store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_my_orders:{projectKey}',
+                    'manage_my_orders:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/cart.example.json
+  /orders:
+    type:
+      baseDomain:
+        resourceType: Order
+        resourceQueryType: OrderPagedQueryResponse
+        resourceDraft: MyOrderFromCartDraft
+        whereExample: 'customerEmail = "john.doe@example.com"'
+        sortExample: createdAt asc
+    description:
+      An order can be created from a order, usually after a checkout process has
+      been completed.
+    get:
+      displayName: Query my orders in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'manage_my_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/orders.example.json
+    post:
+      displayName: Create my order in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'manage_my_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/order-create.example.json
+      responses:
+        201:
+          body:
+            application/json:
+              example: !include ../examples/order.example.json
+    /{ID}:
+      (methodName): withId
+      type:
+        baseResource:
+          uriParameterName: ID
+          resourceType: Order
+      get:
+        displayName: Get my order by id in store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_my_orders:{projectKey}',
+                    'manage_my_orders:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/order.example.json
+  /active-cart:
+    type: base
+    get:
+      displayName: Get my active cart in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'manage_my_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              type: Cart
+              example: !include ../examples/cart.example.json
+  /shopping-lists:
+    type:
+      baseDomain:
+        resourceType: ShoppingList
+        resourceQueryType: ShoppingListPagedQueryResponse
+        resourceDraft: MyShoppingListDraft
+        whereExample: 'key = "my-shopping-list"'
+        sortExample: createdAt asc
+    description: |
+      shopping-lists e.g. for wishlist support
+    get:
+      (java-implements):
+        'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyInStoreKeyByStoreKeyMeShoppingListsGet,
+        com.commercetools.api.models.shopping_list.ShoppingListPagedQueryResponse>'
+      displayName: Get my shopping lists in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'view_shopping_lists:{projectKey}',
+                  'view_shopping_lists:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/shopping-lists.example.json
+    post:
+      displayName: Create my shopping lists in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_shopping_lists:{projectKey}',
+                  'manage_shopping_lists:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/shopping-list-create.example.json
+      responses:
+        201:
+          body:
+            application/json:
+              example: !include ../examples/shopping-list.example.json
+    /key={key}:
+      (methodName): withKey
+      type:
+        baseResource:
+          uriParameterName: key
+          resourceType: ShoppingList
+          resourceUpdateType: MyShoppingListUpdate
+      get:
+        displayName: Get my shopping list by key in store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_project:{projectKey}',
+                    'view_shopping_lists:{projectKey}',
+                    'view_shopping_lists:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        description: Gets a shopping list by Key.
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/shopping-list.example.json
+      post:
+        displayName: Update my shopping list by key in store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_project:{projectKey}',
+                    'manage_shopping_lists:{projectKey}',
+                    'manage_shopping_lists:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        description: Update a shopping list found by its Key.
+        body:
+          application/json:
+            example: !include ../examples/shopping-list-update.example.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/shopping-list.example.json
+      delete:
+        displayName: Delete my shopping list by key in store
+        is:
+          - dataErasure
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_project:{projectKey}',
+                    'manage_shopping_lists:{projectKey}',
+                    'manage_shopping_lists:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/shopping-list.example.json
+    /{ID}:
+      (methodName): withId
+      type:
+        baseResource:
+          uriParameterName: ID
+          resourceType: ShoppingList
+          resourceUpdateType: MyShoppingListUpdate
+      get:
+        displayName: Get my shopping list by id in store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_project:{projectKey}',
+                    'view_shopping_lists:{projectKey}',
+                    'view_shopping_lists:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        description: Gets a shopping list by ID.
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/shopping-list.example.json
+      post:
+        displayName: Update my shopping list by id in store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_project:{projectKey}',
+                    'manage_shopping_lists:{projectKey}',
+                    'manage_shopping_lists:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        body:
+          application/json:
+            example: !include ../examples/shopping-list-update.example.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/shopping-list.example.json
+      delete:
+        displayName: Delete my shopping list by id in store
+        is:
+          - dataErasure
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_project:{projectKey}',
+                    'manage_shopping_lists:{projectKey}',
+                    'manage_shopping_lists:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/shopping-list.example.json
+/customers:
+  type:
+    baseDomain:
+      resourceType: Customer
+      resourceQueryType: CustomerPagedQueryResponse
+      resourceDraft: CustomerDraft
+      whereExample: 'email = "foo@bar.com"'
+      sortExample: createdAt asc
+  (updateable): Customer
+  (deleteable): Customer
+  (createable): CustomerDraft
+  description: |
+    A customer is a person purchasing products. customers, Orders,
+    Comments and Reviews can be associated to a customer.
+  get:
+    displayName: Query customers in store
+    securedBy:
+      - oauth_2_0:
+          scopes:
+            - 'manage_project:{projectKey}'
+            - 'view_customers:{projectKey}'
+            - 'view_customers:{projectKey}:{storeKey}'
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customers.example.json
+  post:
+    displayName: Create customer in store
+    securedBy:
+      - oauth_2_0:
+          scopes:
+            - 'manage_project:{projectKey}'
+            - 'manage_customers:{projectKey}'
+            - 'manage_customers:{projectKey}:{storeKey}'
+    description: |
+      Creates a customer in a specific Store. The {storeKey} path parameter maps to a Store's key.
+      When using this endpoint, if omitted,
+      the customer's stores field is set to the store specified in the path parameter.
+      If an anonymous cart is passed in as when using this method,
+      then the cart is assigned to the created customer and the version number of the Cart increases.
+      If the ID of an anonymous session is given, all carts and orders will be assigned to the created customer and
+      the store specified. If you pass in a cart with a store field specified,
+      the store field must reference the same store specified in the {storeKey} path parameter.
+    body:
+      application/json:
+        example: !include ../examples/customer-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/customer-sign-in.example.json
+            type: CustomerSignInResult
+  /password-token={passwordToken}:
+    (methodName): withPasswordToken
+    type:
+      baseResource:
+        uriParameterName: passwordToken
+        resourceType: Customer
+    get:
+      displayName: Get customer by password verification token in store
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'view_customers:{projectKey}'
+              - 'view_customers:{projectKey}:{storeKey}'
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+  /email-token={emailToken}:
+    (methodName): withEmailToken
+    type:
+      baseResource:
+        uriParameterName: emailToken
+        resourceType: Customer
+    get:
+      displayName: Get customer by email verification token in store
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'view_customers:{projectKey}'
+              - 'view_customers:{projectKey}:{storeKey}'
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+  /email-token:
+    type: base
+    displayName: Customer's Email Verification in store
+    description: |
+      To verify a customer's email, an email token can be created. This should be embedded in a link and sent to the
+      customer via email. When the customer clicks on the link,
+      the "verify customer's email" endpoint should be called,
+      which sets customer's isVerifiedEmail field to true.
+    post:
+      displayName: Create a Token for verifying the Customer's Email in store
+      description: Create a Token for verifying the Customer's Email in store
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'manage_customers:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+      body:
+        application/json:
+          type: CustomerCreateEmailToken
+      responses:
+        200:
+          body:
+            application/json:
+              type: CustomerToken
+  /email/confirm:
+    type: base
+    post:
+      displayName: Verify Customer's Email in store
+      description: Verifies customer's email using a token.
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'manage_customers:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+      body:
+        application/json:
+          type: CustomerEmailVerify
+      responses:
+        200:
+          description: The email was verified.
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+              type: Customer
+  /password:
+    type: base
+    post:
+      displayName: Change a customers password in store
+      description: Change a customers password
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'manage_customers:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+      body:
+        application/json:
+          type: CustomerChangePassword
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+              type: Customer
+  /password/reset:
+    type: base
+    post:
+      displayName: Reset Customer's Password in store
+      description: Set a new password using a token.
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'manage_customers:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+      body:
+        application/json:
+          type: CustomerResetPassword
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+              type: Customer
+  /password-token:
+    type: base
+    displayName: Create a Token for Resetting the Customer's Password in store
+    description: |
+      The following workflow can be used to reset the customer's password:
+
+      * Create a password reset token and send it embedded in a link to the customer.
+      * When the customer clicks on the link, the customer is retrieved with the token.
+      * The customer enters a new password and the "reset customer's password" endpoint is called.
+    post:
+      displayName: Create a Token for Resetting the Customer's Password in store
+      description: |
+        The token value is used to reset the password of the customer with the given email. The token is
+        valid only for 10 minutes.
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'manage_customers:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+      body:
+        application/json:
+          type: CustomerCreatePasswordResetToken
+      responses:
+        200:
+          body:
+            application/json:
+              type: CustomerToken
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: Customer
+        resourceUpdateType: CustomerUpdate
+    get:
+      displayName: Get customer by key in store
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'view_customers:{projectKey}'
+              - 'view_customers:{projectKey}:{storeKey}'
+      description: |
+        Returns a customer by its Key from a specific Store. The {storeKey} path parameter maps to a Store's key.
+        It also considers customers that do not have the stores field.
+        If the customer exists in the commercetools project but the stores field references different stores,
+        this method returns a ResourceNotFound error.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+    post:
+      displayName: Update customer by key in store
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'manage_customers:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+      description: |
+        If the customer exists in the commercetools project but the stores field references a different store,
+        this method returns a ResourceNotFound error.
+      body:
+        application/json:
+          example: !include ../examples/customer-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+    delete:
+      displayName: Delete customer by key in store
+      is:
+        - dataErasure
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'manage_customers:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: Customer
+        resourceUpdateType: CustomerUpdate
+    get:
+      displayName: Get customer by id in store
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'view_customers:{projectKey}'
+              - 'view_customers:{projectKey}:{storeKey}'
+      description: |
+        Returns a customer by its ID from a specific Store. The {storeKey} path parameter maps to a Store's key.
+        It also considers customers that do not have the stores field.
+        If the customer exists in the commercetools project but the stores field references different stores,
+        this method returns a ResourceNotFound error.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+    post:
+      displayName: Post customer by id in store
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'manage_customers:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+      description: |
+        Updates a customer in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
+        If the customer exists in the commercetools project but the stores field references a different store,
+        this method returns a ResourceNotFound error.
+      body:
+        application/json:
+          example: !include ../examples/customer-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+    delete:
+      displayName: Delete customer by id in store
+      is:
+        - dataErasure
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'manage_customers:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+/login:
+  type: base
+  displayName: Authenticate Customer (Sign In) in store
+  description: Retrieves the authenticated customer.
+  post:
+    displayName: Authenticate Customer (Sign In) in store
+    description: Authenticate Customer (Sign In) in store
+    securedBy:
+      - oauth_2_0:
+          scopes:
+            - 'manage_project:{projectKey}'
+            - 'manage_customers:{projectKey}'
+            - 'manage_customers:{projectKey}:{storeKey}'
+    body:
+      application/json:
+        type: CustomerSignin
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/customer-sign-in.example.json
+            type: CustomerSignInResult
+/shipping-methods:
+  /matching-cart:
+    type: base
+    description: Get ShippingMethods for a cart in a store
+    get:
+      displayName: Get ShippingMethods for a cart in a store
+      is:
+        - expandable
+      securedBy:
+        - oauth_2_0:
+            scopes:
+              - 'manage_project:{projectKey}'
+              - 'view_orders:{projectKey}'
+              - 'manage_customers:{projectKey}:{storeKey}'
+              - 'view_shipping_methods:{projectKey}'
+      queryParameters:
+        cartId:
+          type: string
+      responses:
+        200:
+          body:
+            application/json:
+              type: ShippingMethodPagedQueryResponse
+              example: !include ../examples/shipping-methods.example.json
+/shopping-lists:
+  type:
+    baseDomain:
+      resourceType: ShoppingList
+      resourceQueryType: ShoppingListPagedQueryResponse
+      resourceDraft: ShoppingListDraft
+      whereExample: 'key = "my-shopping-list"'
+      sortExample: createdAt asc
+  description: |
+    shopping-lists e.g. for wishlist support
+  get:
+    (java-implements):
+      'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyInStoreKeyByStoreKeyShoppingListsGet,
+      com.commercetools.api.models.shopping_list.ShoppingListPagedQueryResponse>'
+    displayName: Get shopping lists in store
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_shopping_lists:{projectKey}',
+                'view_shopping_lists:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/shopping-lists.example.json
+  post:
+    displayName: Create shopping lists in store
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_shopping_lists:{projectKey}',
+                'manage_shopping_lists:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/shopping-list-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/shopping-list.example.json
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: ShoppingList
+        resourceUpdateType: ShoppingListUpdate
+    get:
+      displayName: Get shopping list by key in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'view_shopping_lists:{projectKey}',
+                  'view_shopping_lists:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Gets a shopping list by Key.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/shopping-list.example.json
+    post:
+      displayName: Update shopping list by key in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_shopping_lists:{projectKey}',
+                  'manage_shopping_lists:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Update a shopping list found by its Key.
+      body:
+        application/json:
+          example: !include ../examples/shopping-list-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/shopping-list.example.json
+    delete:
+      displayName: Delete shopping list by key in store
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_shopping_lists:{projectKey}',
+                  'manage_shopping_lists:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/shopping-list.example.json
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: ShoppingList
+        resourceUpdateType: ShoppingListUpdate
+    get:
+      displayName: Get shopping list by id in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'view_shopping_lists:{projectKey}',
+                  'view_shopping_lists:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Gets a shopping list by ID.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/shopping-list.example.json
+    post:
+      displayName: Update shopping list by id in store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_shopping_lists:{projectKey}',
+                  'manage_shopping_lists:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/shopping-list-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/shopping-list.example.json
+    delete:
+      displayName: Delete shopping list by id in store
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_project:{projectKey}',
+                  'manage_shopping_lists:{projectKey}',
+                  'manage_shopping_lists:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/shopping-list.example.json

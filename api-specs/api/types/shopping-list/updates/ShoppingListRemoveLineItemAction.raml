@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): ShoppingList
+(docs-uri): https://docs.commercetools.com/http-api-projects-shoppingLists.html#remove-lineitem
+type: ShoppingListUpdateAction
+displayName: ShoppingListRemoveLineItemAction
+discriminatorValue: removeLineItem
+(postman-example): !include ../../../examples/ShoppingList/ShoppingListRemoveLineItemAction.json
+properties:
+  lineItemId:
+    type: string
+  quantity?:
+    type: number
+    format: int64

@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): Extension
+type: object
+displayName: ExtensionUpdate
+(java-extends): 'com.commercetools.api.models.ResourceUpdate<ExtensionUpdate,
+  ExtensionUpdateAction>'
+properties:
+  version:
+    type: number
+    format: int64
+  actions:
+    type: array
+    items: ExtensionUpdateAction

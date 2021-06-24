@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): CustomerGroup
+(docs-uri): https://docs.commercetools.com/http-api-projects-customerGroups.html#change-name
+type: CustomerGroupUpdateAction
+displayName: CustomerGroupChangeNameAction
+discriminatorValue: changeName
+(postman-example): !include ../../../examples/CustomerGroup/CustomerGroupChangeNameAction.json
+properties:
+  name:
+    type: string
+    description: ''

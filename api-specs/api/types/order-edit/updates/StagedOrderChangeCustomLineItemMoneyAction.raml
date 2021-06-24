@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#change-customlineitem-money
+type: StagedOrderUpdateAction
+displayName: StagedOrderChangeCustomLineItemMoneyAction
+discriminatorValue: changeCustomLineItemMoney
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderChangeCustomLineItemMoneyAction.json
+properties:
+  customLineItemId:
+    type: string
+  money:
+    type: Money

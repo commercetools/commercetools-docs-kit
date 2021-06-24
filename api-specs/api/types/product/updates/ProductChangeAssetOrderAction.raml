@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+(package): Product
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#change-asset-order
+type: ProductUpdateAction
+displayName: ProductChangeAssetOrderAction
+discriminatorValue: changeAssetOrder
+(postman-example): !include ../../../examples/Product/ProductChangeAssetOrderAction.json
+properties:
+  variantId?:
+    type: number
+    format: int64
+    description: ''
+  sku?:
+    type: string
+  staged?:
+    type: boolean
+    description: ''
+  assetOrder:
+    type: string[]
+    description: ''
