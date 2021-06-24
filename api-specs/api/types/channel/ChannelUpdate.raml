@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): Channel
+type: object
+displayName: ChannelUpdate
+(java-extends): 'com.commercetools.api.models.ResourceUpdate<ChannelUpdate,
+  ChannelUpdateAction>'
+properties:
+  version:
+    type: number
+    format: int64
+  actions:
+    type: array
+    items: ChannelUpdateAction

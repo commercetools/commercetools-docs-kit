@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+(package): Product
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#set-customfield
+type: ProductUpdateAction
+displayName: ProductSetProductPriceCustomFieldAction
+discriminatorValue: setProductPriceCustomField
+(postman-example): !include ../../../examples/Product/ProductSetProductPriceCustomFieldAction.json
+properties:
+  priceId:
+    type: string
+  staged?:
+    type: boolean
+  name:
+    type: string
+  value?:
+    type: any

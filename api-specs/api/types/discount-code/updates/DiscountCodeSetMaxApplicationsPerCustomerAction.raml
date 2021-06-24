@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): DiscountCode
+(docs-uri): https://docs.commercetools.com/http-api-projects-discountCodes.html#set-max-applications-per-customer
+type: DiscountCodeUpdateAction
+displayName: DiscountCodeSetMaxApplicationsPerCustomerAction
+discriminatorValue: setMaxApplicationsPerCustomer
+(postman-example): !include ../../../examples/DiscountCode/DiscountCodeSetMaxApplicationsPerCustomerAction.json
+properties:
+  maxApplicationsPerCustomer?:
+    type: number
+    format: int64
+    description:
+      If the `maxApplicationsPerCustomer` parameter is not included, the field
+      will be emptied.

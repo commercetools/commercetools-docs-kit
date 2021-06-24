@@ -1,0 +1,8 @@
+{
+  "action": "setChanges",
+  "changes": [
+    { "resourceTypeId": "channel" },
+    { "resourceTypeId": "product" },
+    { "resourceTypeId": "payment" }
+  ]
+}

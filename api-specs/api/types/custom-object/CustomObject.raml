@@ -1,0 +1,34 @@
+#%RAML 1.0 DataType
+(package): CustomObject
+(docs-uri): https://docs.commercetools.com/http-api-projects-custom-objects.html#customobject
+displayName: CustomObject
+type: BaseResource
+(java-extends): 'com.commercetools.api.models.DomainResource<CustomObject>'
+properties:
+  id:
+    (identifier): true
+    type: string
+    description: ''
+  version:
+    type: number
+    format: int64
+    description: ''
+  createdAt:
+    type: datetime
+    description: ''
+  lastModifiedAt:
+    type: datetime
+    description: ''
+  lastModifiedBy?:
+    type: LastModifiedBy
+  createdBy?:
+    type: CreatedBy
+  container:
+    type: string
+    description: A namespace to group custom objects.
+  key:
+    type: string
+    description: ''
+  value:
+    type: any
+    description: ''

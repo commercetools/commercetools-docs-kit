@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): State
+(docs-uri): https://docs.commercetools.com/http-api-projects-states.html#add-state-roles
+type: StateUpdateAction
+displayName: StateAddRolesAction
+discriminatorValue: addRoles
+(postman-example): !include ../../../examples/State/StateAddRolesAction.json
+properties:
+  roles:
+    type: StateRoleEnum[]

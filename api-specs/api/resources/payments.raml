@@ -1,0 +1,157 @@
+type:
+  baseDomain:
+    resourceType: Payment
+    resourceQueryType: PaymentPagedQueryResponse
+    resourceDraft: PaymentDraft
+    whereExample: 'externalId = "1234567890"'
+    sortExample: createdAt asc
+(updateable): Payment
+(deleteable): Payment
+(createable): PaymentDraft
+description:
+  Payments hold information about the current state of receiving and/or
+  refunding money
+get:
+  (java-implements):
+    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyPaymentsGet,
+    com.commercetools.api.models.payment.PaymentPagedQueryResponse>'
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes: ['manage_project:{projectKey}', 'view_payments:{projectKey}'],
+        },
+    ]
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/payments.example.json
+post:
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            ['manage_project:{projectKey}', 'manage_payments:{projectKey}'],
+        },
+    ]
+  description:
+    To create a payment object a payment draft object has to be given with the
+    request.
+  body:
+    application/json:
+      example: !include ../examples/payment-create.example.json
+  responses:
+    201:
+      body:
+        application/json:
+          example: !include ../examples/payment.example.json
+/key={key}:
+  (methodName): withKey
+  type:
+    baseResource:
+      uriParameterName: key
+      resourceType: Payment
+      resourceUpdateType: PaymentUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'view_payments:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/payment.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_payments:{projectKey}'],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/payment-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/payment.example.json
+  delete:
+    is:
+      - dataErasure
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_payments:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/payment.example.json
+/{ID}:
+  (methodName): withId
+  type:
+    baseResource:
+      uriParameterName: ID
+      resourceType: Payment
+      resourceUpdateType: PaymentUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'view_payments:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/payment.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_payments:{projectKey}'],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/payment-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/payment.example.json
+  delete:
+    is:
+      - dataErasure
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_payments:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/payment.example.json

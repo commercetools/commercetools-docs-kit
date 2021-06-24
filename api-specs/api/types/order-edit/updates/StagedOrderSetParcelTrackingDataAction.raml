@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-parcel-tracking-data
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetParcelTrackingDataAction
+discriminatorValue: setParcelTrackingData
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetParcelTrackingDataAction.json
+properties:
+  parcelId:
+    type: string
+  trackingData?:
+    type: TrackingData

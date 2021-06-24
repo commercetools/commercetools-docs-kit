@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#remove-discountcode
+type: StagedOrderUpdateAction
+displayName: StagedOrderRemoveDiscountCodeAction
+discriminatorValue: removeDiscountCode
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderRemoveDiscountCodeAction.json
+properties:
+  discountCode:
+    type: DiscountCodeReference

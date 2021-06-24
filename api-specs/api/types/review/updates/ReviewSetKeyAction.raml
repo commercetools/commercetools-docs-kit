@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Review
+(docs-uri): https://docs.commercetools.com/http-api-projects-reviews.html#set-key
+type: ReviewUpdateAction
+displayName: ReviewSetKeyAction
+discriminatorValue: setKey
+(postman-example): !include ../../../examples/Review/ReviewSetKeyAction.json
+properties:
+  key?:
+    type: string
+    description: If `key` is absent or `null`, this field will be removed if it exists.

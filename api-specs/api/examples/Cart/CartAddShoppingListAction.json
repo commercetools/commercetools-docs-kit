@@ -1,0 +1,15 @@
+{
+  "action": "addShoppingList",
+  "shoppingList": {
+    "id": "{{shopping-list-id}}",
+    "typeId": "shopping-list"
+  },
+  "supplyChannel": {
+    "typeId": "channel",
+    "id": "{{channel-id}}"
+  },
+  "distributionChannel": {
+    "typeId": "channel",
+    "id": "{{channel-id}}"
+  }
+}
