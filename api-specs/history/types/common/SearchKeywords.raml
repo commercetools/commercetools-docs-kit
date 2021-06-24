@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): Common
+type: object
+displayName: SearchKeywords
+description:
+properties:
+  /^[a-z]{2}(-[A-Z]{2})?$/:
+    type: array
+    items:
+      type: SearchKeyword

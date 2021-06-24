@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Extension
+(docs-uri): https://docs.commercetools.com/http-api-projects-api-extensions.html#set-key
+type: ExtensionUpdateAction
+displayName: ExtensionSetKeyAction
+discriminatorValue: setKey
+(postman-example): !include ../../../examples/Extension/ExtensionSetKeyAction.json
+properties:
+  key?:
+    type: string
+    description: If `key` is absent or `null`, this field will be removed if it exists.

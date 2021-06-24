@@ -1,0 +1,13 @@
+{
+  "action": "removeShippingRate",
+  "zone": {
+    "typeId": "zone",
+    "id": "{{zone-id}}"
+  },
+  "shippingRate": {
+    "price": {
+      "currencyCode": "EUR",
+      "centAmount": 4000
+    }
+  }
+}

@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): DiscountCode
+(docs-uri): https://docs.commercetools.com/http-api-projects-discountCodes.html#change-isactive
+type: DiscountCodeUpdateAction
+displayName: DiscountCodeChangeIsActiveAction
+discriminatorValue: changeIsActive
+(postman-example): !include ../../../examples/DiscountCode/DiscountCodeChangeIsActiveAction.json
+properties:
+  isActive:
+    type: boolean
+    description: ''

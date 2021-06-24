@@ -1,0 +1,13 @@
+{
+  "action": "setTransitions",
+  "transitions": [
+    {
+      "typeId": "state",
+      "id": "{{state-id}}"
+    },
+    {
+      "typeId": "state",
+      "id": "{{state-id2}}"
+    }
+  ]
+}

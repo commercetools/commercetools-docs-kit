@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Cart
+(docs-uri): https://docs.commercetools.com/http-api-projects-carts.html#set-customlineitem-custom-type
+type: CartUpdateAction
+displayName: CartSetCustomLineItemCustomTypeAction
+discriminatorValue: setCustomLineItemCustomType
+(postman-example): !include ../../../examples/Cart/CartSetCustomLineItemCustomTypeAction.json
+properties:
+  customLineItemId:
+    type: string
+  type?:
+    type: TypeResourceIdentifier
+  fields?:
+    type: FieldContainer

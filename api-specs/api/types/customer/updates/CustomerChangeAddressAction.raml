@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+(package): Customer
+(docs-uri): https://docs.commercetools.com/http-api-projects-customers.html#change-address
+type: CustomerUpdateAction
+displayName: CustomerChangeAddressAction
+discriminatorValue: changeAddress
+(postman-example): !include ../../../examples/Customer/CustomerChangeAddressAction.json
+properties:
+  addressId?:
+    type: string
+    description: ''
+  addressKey?:
+    type: string
+    description: ''
+  address:
+    type: BaseAddress
+    description: ''

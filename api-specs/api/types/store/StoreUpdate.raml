@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Store
+type: object
+displayName: StoreUpdate
+(java-extends): 'com.commercetools.api.models.ResourceUpdate<StoreUpdate, StoreUpdateAction>'
+properties:
+  version:
+    type: number
+    format: int64
+  actions:
+    type: array
+    items: StoreUpdateAction

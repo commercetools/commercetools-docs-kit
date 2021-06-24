@@ -1,0 +1,26 @@
+#%RAML 1.0 DataType
+(package): Inventory
+(docs-uri): https://docs.commercetools.com/http-api-projects-inventory.html#inventoryentrydraft
+displayName: InventoryEntryDraft
+type: object
+properties:
+  sku:
+    type: string
+    description: ''
+  supplyChannel?:
+    description: ''
+    type: ChannelResourceIdentifier
+  quantityOnStock:
+    type: number
+    format: int64
+    description: ''
+  restockableInDays?:
+    type: number
+    format: int64
+    description: ''
+  expectedDelivery?:
+    type: datetime
+    description: ''
+  custom?:
+    type: CustomFieldsDraft
+    description: The custom fields.

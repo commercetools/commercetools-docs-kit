@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+(package): Label
+type: Label
+displayName: ProductLabel
+description:
+discriminatorValue: ProductLabel
+properties:
+  type:
+    type: string
+    enum:
+      - ProductLabel
+  slug:
+    type: LocalizedString
+  name:
+    type: LocalizedString

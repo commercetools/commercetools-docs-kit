@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+(package): Project
+type: object
+displayName: ProjectUpdateAction
+discriminator: action
+(java-extends): 'com.commercetools.api.models.ResourceUpdateAction<ProjectUpdateAction>'
+properties:
+  action:
+    type: string

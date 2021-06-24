@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+(package): ShoppingList
+(docs-uri): https://docs.commercetools.com/http-api-projects-shoppingLists.html#add-textlineitem
+type: ShoppingListUpdateAction
+displayName: ShoppingListAddTextLineItemAction
+discriminatorValue: addTextLineItem
+(postman-example): !include ../../../examples/ShoppingList/ShoppingListAddTextLineItemAction.json
+properties:
+  name:
+    type: LocalizedString
+  description?:
+    type: LocalizedString
+  quantity?:
+    type: number
+    format: int64
+  addedAt?:
+    type: datetime
+  custom?:
+    type: CustomFieldsDraft

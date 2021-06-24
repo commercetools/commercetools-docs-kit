@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Order
+(docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#set-customlineitem-customfield
+type: OrderUpdateAction
+displayName: OrderSetCustomLineItemCustomFieldAction
+discriminatorValue: setCustomLineItemCustomField
+(postman-example): !include ../../../examples/Order/OrderSetCustomLineItemCustomFieldAction.json
+properties:
+  customLineItemId:
+    type: string
+  name:
+    type: string
+  value?:
+    type: any

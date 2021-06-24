@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Zone
+type: object
+displayName: ZoneUpdate
+(java-extends): 'com.commercetools.api.models.ResourceUpdate<ZoneUpdate, ZoneUpdateAction>'
+properties:
+  version:
+    type: number
+    format: int64
+  actions:
+    type: array
+    items: ZoneUpdateAction

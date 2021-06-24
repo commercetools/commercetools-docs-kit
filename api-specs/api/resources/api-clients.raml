@@ -1,0 +1,73 @@
+type:
+  baseDomain:
+    resourceType: ApiClient
+    resourceQueryType: ApiClientPagedQueryResponse
+    resourceDraft: ApiClientDraft
+    whereExample: scopes = view_products
+    sortExample: createdAt asc
+description: |
+  Manage your API Clients via an API. Useful for Infrastructure-as-Code tooling, and regularly rotating API secrets.
+get:
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            [
+              'manage_api_clients:{projectKey}',
+              'view_api_clients:{projectKey}',
+            ],
+        },
+    ]
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/api-clients.example.json
+post:
+  securedBy: [oauth_2_0: { scopes: ['manage_api_clients:{projectKey}'] }]
+  body:
+    application/json:
+      example: !include ../examples/api-client-create.example.json
+  responses:
+    201:
+      body:
+        application/json:
+          example: !include ../examples/api-client.example.json
+
+/{ID}:
+  (methodName): withId
+  uriParameters:
+    ID:
+      type: string
+  type: base
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_api_clients:{projectKey}',
+                'view_api_clients:{projectKey}',
+              ],
+          },
+      ]
+    displayName: Get ApiClient by ID
+    description: Get ApiClient by ID
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/api-client.example.json
+            type: ApiClient
+  delete:
+    securedBy: [oauth_2_0: { scopes: ['manage_api_clients:{projectKey}'] }]
+    displayName: Delete ApiClient by ID
+    description: Delete ApiClient by ID
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/api-client.example.json
+            type: ApiClient

@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Project
+(docs-uri): https://docs.commercetools.com/http-api-projects-project.html#set-shippingrateinputtype
+type: ProjectUpdateAction
+displayName: ProjectSetShippingRateInputTypeAction
+discriminatorValue: setShippingRateInputType
+(postman-example): !include ../../../examples/Project/ProjectSetShippingRateInputTypeAction.json
+properties:
+  shippingRateInputType?:
+    type: ShippingRateInputType
+    description: If not set, removes existing shippingRateInputType.

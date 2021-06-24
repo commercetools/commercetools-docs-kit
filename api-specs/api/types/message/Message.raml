@@ -1,0 +1,34 @@
+#%RAML 1.0 DataType
+(package): Message
+(docs-uri): https://docs.commercetools.com/http-api-projects-messages.html#message
+type: BaseResource
+displayName: Message
+discriminator: type
+(java-extends): 'com.commercetools.api.models.DomainResource<Message>'
+properties:
+  id:
+    (identifier): true
+    type: string
+  version:
+    type: number
+    format: int64
+  createdAt:
+    type: datetime
+  lastModifiedAt:
+    type: datetime
+  lastModifiedBy?:
+    type: LastModifiedBy
+  createdBy?:
+    type: CreatedBy
+  sequenceNumber:
+    type: number
+    format: int64
+  resource:
+    type: Reference
+  resourceVersion:
+    type: number
+    format: int64
+  type:
+    type: string
+  resourceUserProvidedIdentifiers?:
+    type: UserProvidedIdentifiers

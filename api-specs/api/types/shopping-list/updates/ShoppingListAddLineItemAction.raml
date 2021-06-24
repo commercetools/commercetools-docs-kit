@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+(package): ShoppingList
+(docs-uri): https://docs.commercetools.com/http-api-projects-shoppingLists.html#add-lineitem
+type: ShoppingListUpdateAction
+displayName: ShoppingListAddLineItemAction
+discriminatorValue: addLineItem
+(postman-example): !include ../../../examples/ShoppingList/ShoppingListAddLineItemAction.json
+properties:
+  sku?:
+    type: string
+  productId?:
+    type: string
+  variantId?:
+    type: number
+    format: int64
+  quantity?:
+    type: number
+    format: int64
+  addedAt?:
+    type: datetime
+  custom?:
+    type: CustomFieldsDraft

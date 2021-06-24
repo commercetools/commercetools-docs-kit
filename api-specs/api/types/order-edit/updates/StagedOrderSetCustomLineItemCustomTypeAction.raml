@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-customlineitem-custom-type
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetCustomLineItemCustomTypeAction
+discriminatorValue: setCustomLineItemCustomType
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetCustomLineItemCustomTypeAction.json
+properties:
+  customLineItemId:
+    type: string
+  type?:
+    type: TypeResourceIdentifier
+  fields?:
+    type: FieldContainer

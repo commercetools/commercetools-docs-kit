@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): ShoppingList
+(docs-uri): https://docs.commercetools.com/http-api-projects-shoppingLists.html#set-textlineitem-custom-type
+type: ShoppingListUpdateAction
+displayName: ShoppingListSetTextLineItemCustomTypeAction
+discriminatorValue: setTextLineItemCustomType
+(postman-example): !include ../../../examples/ShoppingList/ShoppingListSetTextLineItemCustomTypeAction.json
+properties:
+  textLineItemId:
+    type: string
+  type?:
+    type: TypeResourceIdentifier
+  fields?:
+    type: FieldContainer

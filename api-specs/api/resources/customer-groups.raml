@@ -1,0 +1,183 @@
+type:
+  baseDomain:
+    resourceType: CustomerGroup
+    resourceQueryType: CustomerGroupPagedQueryResponse
+    resourceDraft: CustomerGroupDraft
+    whereExample: 'name = "VIP"'
+    sortExample: createdAt asc
+(updateable): CustomerGroup
+(deleteable): CustomerGroup
+(createable): CustomerGroupDraft
+description: customer-groups are used to evaluate products and channels.
+get:
+  (java-implements):
+    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyCustomerGroupsGet,
+    com.commercetools.api.models.customer_group.CustomerGroupPagedQueryResponse>'
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            [
+              'manage_project:{projectKey}',
+              'view_customers:{projectKey}',
+              'view_customer_groups:{projectKey}',
+            ],
+        },
+    ]
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/customer-groups.example.json
+post:
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            [
+              'manage_project:{projectKey}',
+              'manage_customers:{projectKey}',
+              'manage_customer_groups:{projectKey}',
+            ],
+        },
+    ]
+  body:
+    application/json:
+      example: !include ../examples/customer-group-create.example.json
+  responses:
+    201:
+      body:
+        application/json:
+          example: !include ../examples/customer-group.example.json
+/key={key}:
+  (methodName): withKey
+  type:
+    baseResource:
+      uriParameterName: key
+      resourceType: CustomerGroup
+      resourceUpdateType: CustomerGroupUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_customers:{projectKey}',
+                'view_customer_groups:{projectKey}',
+              ],
+          },
+      ]
+    description: Gets a customer group by Key.
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customer-group.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_customers:{projectKey}',
+                'manage_customer_groups:{projectKey}',
+              ],
+          },
+      ]
+    description: Updates a customer group by Key.
+    body:
+      application/json:
+        example: !include ../examples/customer-group-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customer-group.example.json
+  delete:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_customers:{projectKey}',
+                'manage_customer_groups:{projectKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customer-group.example.json
+/{ID}:
+  (methodName): withId
+  type:
+    baseResource:
+      uriParameterName: ID
+      resourceType: CustomerGroup
+      resourceUpdateType: CustomerGroupUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_customers:{projectKey}',
+                'view_customer_groups:{projectKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customer-group.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_customers:{projectKey}',
+                'manage_customer_groups:{projectKey}',
+              ],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/customer-group-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customer-group.example.json
+  delete:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_customers:{projectKey}',
+                'manage_customer_groups:{projectKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customer-group.example.json
