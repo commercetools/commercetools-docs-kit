@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-comment
+type: OrderEditUpdateAction
+displayName: OrderEditSetCommentAction
+discriminatorValue: setComment
+(postman-example): !include ../../../examples/OrderEdit/OrderEditSetCommentAction.json
+properties:
+  comment?:
+    type: string
+    description: ''

@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-returnshipmentstate
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetReturnShipmentStateAction
+discriminatorValue: setReturnShipmentState
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetReturnShipmentStateAction.json
+properties:
+  returnItemId:
+    type: string
+  shipmentState:
+    type: ReturnShipmentState

@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Inventory
+(docs-uri): https://docs.commercetools.com/http-api-projects-inventory.html#set-restockableindays
+type: InventoryEntryUpdateAction
+displayName: InventoryEntrySetRestockableInDaysAction
+discriminatorValue: setRestockableInDays
+(postman-example): !include ../../../examples/Inventory/InventoryEntrySetRestockableInDaysAction.json
+properties:
+  restockableInDays?:
+    type: number
+    format: int64
+    description: ''

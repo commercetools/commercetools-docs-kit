@@ -1,0 +1,271 @@
+type:
+  baseDomain:
+    resourceType: ShippingMethod
+    resourceQueryType: ShippingMethodPagedQueryResponse
+    resourceDraft: ShippingMethodDraft
+    whereExample: 'name = "DHL"'
+    sortExample: createdAt asc
+(updateable): ShippingMethod
+(deleteable): ShippingMethod
+(createable): ShippingMethodDraft
+description: Shipping Methods define where orders can be shipped and what the costs are.
+get:
+  (java-implements):
+    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyShippingMethodsGet,
+    com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse>'
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            [
+              'manage_project:{projectKey}',
+              'view_orders:{projectKey}',
+              'view_shipping_methods:{projectKey}',
+            ],
+        },
+    ]
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/shipping-methods.example.json
+post:
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            [
+              'manage_project:{projectKey}',
+              'manage_orders:{projectKey}',
+              'manage_shipping_methods:{projectKey}',
+            ],
+        },
+    ]
+  body:
+    application/json:
+      example: !include ../examples/shipping-method-create.example.json
+  responses:
+    201:
+      body:
+        application/json:
+          example: !include ../examples/shipping-method.example.json
+/key={key}:
+  (methodName): withKey
+  type:
+    baseResource:
+      uriParameterName: key
+      resourceType: ShippingMethod
+      resourceUpdateType: ShippingMethodUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_orders:{projectKey}',
+                'view_shipping_methods:{projectKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/shipping-method.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_orders:{projectKey}',
+                'manage_shipping_methods:{projectKey}',
+              ],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/shipping-method-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/shipping-method.example.json
+  delete:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_orders:{projectKey}',
+                'manage_shipping_methods:{projectKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/shipping-method.example.json
+/matching-cart:
+  type: base
+  description: Get ShippingMethods for a cart
+  get:
+    displayName: Get ShippingMethods for a cart
+    is:
+      - expandable
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_orders:{projectKey}',
+                'view_shipping_methods:{projectKey}',
+              ],
+          },
+      ]
+    queryParameters:
+      cartId:
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingMethodPagedQueryResponse
+            example: !include ../examples/shipping-methods.example.json
+/matching-orderedit:
+  type: base
+  description: Get ShippingMethods for an order edit
+  get:
+    displayName: Get ShippingMethods for an order edit
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_orders:{projectKey}',
+                'view_shipping_methods:{projectKey}',
+              ],
+          },
+      ]
+    queryParameters:
+      orderEditId:
+        type: string
+      country:
+        type: string
+      state?:
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingMethodPagedQueryResponse
+            example: !include ../examples/shipping-methods.example.json
+/matching-location:
+  type: base
+  description: Get ShippingMethods for a location
+  get:
+    displayName: Get ShippingMethods for a location
+    is:
+      - expandable
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_orders:{projectKey}',
+                'view_shipping_methods:{projectKey}',
+              ],
+          },
+      ]
+    queryParameters:
+      country:
+        type: string
+      state?:
+        type: string
+      currency?:
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingMethodPagedQueryResponse
+            example: !include ../examples/shipping-methods.example.json
+/{ID}:
+  (methodName): withId
+  type:
+    baseResource:
+      uriParameterName: ID
+      resourceType: ShippingMethod
+      resourceUpdateType: ShippingMethodUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_orders:{projectKey}',
+                'view_shipping_methods:{projectKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/shipping-method.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_orders:{projectKey}',
+                'manage_shipping_methods:{projectKey}',
+              ],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/shipping-method-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/shipping-method.example.json
+  delete:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'manage_orders:{projectKey}',
+                'manage_shipping_methods:{projectKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/shipping-method.example.json

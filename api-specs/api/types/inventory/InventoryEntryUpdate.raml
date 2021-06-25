@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Inventory
+type: object
+displayName: InventoryEntryUpdate
+(java-extends):
+  'com.commercetools.api.models.ResourceUpdate<InventoryEntryUpdate,
+  InventoryEntryUpdateAction>'
+properties:
+  version:
+    type: number
+    format: int64
+  actions:
+    type: array
+    items: InventoryEntryUpdateAction

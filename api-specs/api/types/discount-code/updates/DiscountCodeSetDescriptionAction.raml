@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): DiscountCode
+(docs-uri): https://docs.commercetools.com/http-api-projects-discountCodes.html#set-description
+type: DiscountCodeUpdateAction
+displayName: DiscountCodeSetDescriptionAction
+discriminatorValue: setDescription
+(postman-example): !include ../../../examples/DiscountCode/DiscountCodeSetDescriptionAction.json
+properties:
+  description?:
+    type: LocalizedString
+    description: If the `description` parameter is not included, the field will be emptied.

@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+(package): Product
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#set-attribute-in-all-variants
+type: ProductUpdateAction
+displayName: ProductSetAttributeInAllVariantsAction
+discriminatorValue: setAttributeInAllVariants
+(postman-example): !include ../../../examples/Product/ProductSetAttributeInAllVariantsAction.json
+properties:
+  name:
+    type: string
+    description: ''
+  value?:
+    type: any
+    description: The same update behavior as for Set Attribute applies.
+  staged?:
+    type: boolean
+    description: ''

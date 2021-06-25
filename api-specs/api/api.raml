@@ -1,0 +1,175 @@
+#%RAML 1.0
+---
+title: Commercetools
+baseUri: https://api.europe-west1.gcp.commercetools.com
+version: v1
+securitySchemes:
+  oauth_2_0: !include securitySchemes/oauth2.raml
+securedBy: [oauth_2_0]
+traits:
+  errorable: !include traits/errorable.raml
+  deprecatable200: !include traits/deprecatable200.raml
+  deprecatable201: !include traits/deprecatable201.raml
+  expandable: !include traits/expandable.raml
+  query: !include traits/query.raml
+  sortable: !include traits/sortable.raml
+  paging: !include traits/paging.raml
+  conflicting: !include traits/conflicting.raml
+  versioned: !include traits/versioned.raml
+  priceSelecting: !include traits/price-selecting.raml
+  dataErasure: !include traits/data-erasure.raml
+annotationTypes: !include types/annotations.raml
+types: !include types/types.raml
+mediaType: application/json
+resourceTypes:
+  baseDomain:
+    type: base
+    get:
+      is:
+        - expandable
+        - sortable:
+            sortExample: <<sortExample>>
+        - paging
+        - query:
+            whereExample: <<whereExample>>
+      displayName: Query <<resourcePathName>>
+      description: Query <<resourcePathName>>
+      responses:
+        200:
+          body:
+            application/json:
+              type: <<resourceQueryType>>
+    post?:
+      is:
+        - expandable
+        - deprecatable201
+      displayName: Create <<resourceType>>
+      description: Create <<resourceType>>
+      body:
+        application/json:
+          type: <<resourceDraft>>
+      responses:
+        201:
+          body:
+            application/json:
+              type: <<resourceType>>
+  baseResource:
+    type: base
+    uriParameters:
+      <<uriParameterName>>:
+        type: string
+    get:
+      is:
+        - expandable
+      displayName: Get <<resourceType>> by <<uriParameterName>>
+      description: Get <<resourceType>> by <<uriParameterName>>
+      responses:
+        200:
+          body:
+            application/json:
+              type: <<resourceType>>
+    post?:
+      is:
+        - conflicting
+        - expandable
+        - deprecatable200
+      displayName: Update <<resourceType>> by <<uriParameterName>>
+      description: Update <<resourceType>> by <<uriParameterName>>
+      body:
+        application/json:
+          type: <<resourceUpdateType>>
+      responses:
+        200:
+          body:
+            application/json:
+              type: <<resourceType>>
+    delete?:
+      is:
+        - versioned
+        - conflicting
+        - expandable
+      displayName: Delete <<resourceType>> by <<uriParameterName>>
+      description: Delete <<resourceType>> by <<uriParameterName>>
+      responses:
+        200:
+          body:
+            application/json:
+              type: <<resourceType>>
+  base:
+    get?:
+      is:
+        - errorable
+        - deprecatable200
+    post?:
+      is:
+        - errorable
+    delete?:
+      is:
+        - errorable
+        - deprecatable200
+/{projectKey}:
+  (methodName): withProjectKey
+  uriParameters:
+    projectKey:
+      type: string
+  displayName: Project
+  (updateable): Project
+  description: The Project endpoint is used to retrieve certain information from a project.
+  get:
+    displayName: Get project settings
+    is:
+      - errorable
+      - deprecatable200
+    description: |
+      The Endpoint is responding a limited set of information about settings and configuration of the project.
+    securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
+    responses:
+      200:
+        body:
+          example: !include examples/project.example.json
+          type: Project
+  post:
+    displayName: Update project settings
+    is:
+      - conflicting
+    description: Update project
+    securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
+    body:
+      application/json:
+        type: ProjectUpdate
+    responses:
+      200:
+        body:
+          example: !include examples/project.example.json
+          type: Project
+  /categories: !include resources/categories.raml
+  /carts: !include resources/carts.raml
+  /cart-discounts: !include resources/cart-discounts.raml
+  /channels: !include resources/channels.raml
+  /customers: !include resources/customers.raml
+  /customer-groups: !include resources/customer-groups.raml
+  /custom-objects: !include resources/custom-objects.raml
+  /discount-codes: !include resources/discount-codes.raml
+  /graphql: !include resources/graphql.raml
+  /inventory: !include resources/inventory.raml
+  /login: !include resources/login.raml
+  /messages: !include resources/messages.raml
+  /orders: !include resources/orders.raml
+  /payments: !include resources/payments.raml
+  /products: !include resources/products.raml
+  /product-discounts: !include resources/product-discounts.raml
+  /product-projections: !include resources/product-projections.raml
+  /product-types: !include resources/product-types.raml
+  /reviews: !include resources/reviews.raml
+  /shipping-methods: !include resources/shipping-methods.raml
+  /shopping-lists: !include resources/shopping-lists.raml
+  /states: !include resources/states.raml
+  /subscriptions: !include resources/subscriptions.raml
+  /tax-categories: !include resources/tax-categories.raml
+  /types: !include resources/types.raml
+  /zones: !include resources/zones.raml
+  /me: !include resources/me.raml
+  /extensions: !include resources/extensions.raml
+  /api-clients: !include resources/api-clients.raml
+  /stores: !include resources/stores.raml
+  /in-store/key={storeKey}: !include resources/in-store.raml

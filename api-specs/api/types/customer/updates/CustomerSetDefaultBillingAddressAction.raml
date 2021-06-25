@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Customer
+(docs-uri): https://docs.commercetools.com/http-api-projects-customers.html#set-default-billing-address
+type: CustomerUpdateAction
+displayName: CustomerSetDefaultBillingAddressAction
+discriminatorValue: setDefaultBillingAddress
+(postman-example): !include ../../../examples/Customer/CustomerSetDefaultBillingAddressAction.json
+properties:
+  addressId?:
+    type: string
+    description: If not defined, the customer's `defaultBillingAddress` is unset.
+  addressKey?:
+    type: string
+    description: ''

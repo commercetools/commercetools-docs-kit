@@ -1,0 +1,96 @@
+type:
+  baseDomain:
+    resourceType: InventoryEntry
+    resourceQueryType: InventoryPagedQueryResponse
+    resourceDraft: InventoryEntryDraft
+    whereExample: 'key = "berlin-store"'
+    sortExample: createdAt asc
+(updateable): InventoryEntry
+(deleteable): InventoryEntry
+(createable): InventoryEntryDraft
+description: Inventory allows you to track stock quantities.
+get:
+  (java-implements):
+    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyInventoryGet,
+    com.commercetools.api.models.inventory.InventoryPagedQueryResponse>'
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes: ['manage_project:{projectKey}', 'view_products:{projectKey}'],
+        },
+    ]
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/inventories.example.json
+post:
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+        },
+    ]
+  body:
+    application/json:
+      example: !include ../examples/inventory-create.example.json
+  responses:
+    201:
+      body:
+        application/json:
+          example: !include ../examples/inventory.example.json
+/{ID}:
+  (methodName): withId
+  type:
+    baseResource:
+      uriParameterName: ID
+      resourceType: InventoryEntry
+      resourceUpdateType: InventoryEntryUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'view_products:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/inventory.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/inventory-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/inventory.example.json
+  delete:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/inventory.example.json

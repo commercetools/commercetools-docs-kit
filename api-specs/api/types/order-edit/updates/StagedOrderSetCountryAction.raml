@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-country
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetCountryAction
+discriminatorValue: setCountry
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetCountryAction.json
+properties:
+  country?:
+    type: string

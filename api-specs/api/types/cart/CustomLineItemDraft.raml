@@ -1,0 +1,35 @@
+#%RAML 1.0 DataType
+(package): Cart
+(docs-uri): https://docs.commercetools.com/http-api-projects-carts.html#customlineitemdraft
+displayName: CustomLineItemDraft
+type: object
+properties:
+  name:
+    type: LocalizedString
+    description: ''
+  quantity:
+    type: number
+    format: int64
+    description: |-
+      The amount of a CustomLineItemin the cart.
+      Must be a positive integer.
+  money:
+    type: Money
+    description: ''
+  slug:
+    description: ''
+    type: string
+  taxCategory?:
+    type: TaxCategoryResourceIdentifier
+    description:
+      The given tax category will be used to select a tax rate when a cart has
+      the TaxMode `Platform`.
+  externalTaxRate?:
+    type: ExternalTaxRateDraft
+    description: An external tax rate can be set if the cart has the `External` TaxMode.
+  custom?:
+    type: CustomFieldsDraft
+    description: The custom fields.
+  shippingDetails?:
+    type: ItemShippingDetailsDraft
+    description: Container for custom line item specific address(es).

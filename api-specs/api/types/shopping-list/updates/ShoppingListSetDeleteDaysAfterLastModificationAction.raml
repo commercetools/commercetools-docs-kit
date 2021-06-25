@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): ShoppingList
+(docs-uri): https://docs.commercetools.com/http-api-projects-shoppingLists.html#set-deletedaysafterlastmodification
+type: ShoppingListUpdateAction
+displayName: ShoppingListSetDeleteDaysAfterLastModificationAction
+discriminatorValue: setDeleteDaysAfterLastModification
+(postman-example): !include ../../../examples/ShoppingList/ShoppingListSetDeleteDaysAfterLastModificationAction.json
+properties:
+  deleteDaysAfterLastModification?:
+    type: number
+    format: int64
+    description: ''

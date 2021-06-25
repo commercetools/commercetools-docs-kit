@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): CartDiscount
+(docs-uri): https://docs.commercetools.com/http-api-projects-cartDiscounts.html#change-name
+type: CartDiscountUpdateAction
+displayName: CartDiscountChangeNameAction
+discriminatorValue: changeName
+(postman-example): !include ../../../examples/CartDiscount/CartDiscountChangeNameAction.json
+properties:
+  name:
+    type: LocalizedString
+    description: ''

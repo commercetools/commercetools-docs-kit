@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+(package): Inventory
+type: object
+displayName: InventoryEntryUpdateAction
+discriminator: action
+(java-extends): 'com.commercetools.api.models.ResourceUpdateAction<InventoryEntryUpdateAction>'
+properties:
+  action:
+    type: string

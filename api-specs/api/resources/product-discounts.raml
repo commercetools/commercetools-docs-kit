@@ -1,0 +1,184 @@
+type:
+  baseDomain:
+    resourceType: ProductDiscount
+    resourceQueryType: ProductDiscountPagedQueryResponse
+    resourceDraft: ProductDiscountDraft
+    whereExample: 'name(en = "Summer Sale")'
+    sortExample: createdAt asc
+(updateable): ProductDiscount
+(deleteable): ProductDiscount
+(createable): ProductDiscountDraft
+description: Product discounts are used to change certain product prices.
+get:
+  (java-implements):
+    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyProductDiscountsGet,
+    com.commercetools.api.models.product_discount.ProductDiscountPagedQueryResponse>'
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes: ['manage_project:{projectKey}', 'view_products:{projectKey}'],
+        },
+    ]
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/product-discounts.example.json
+post:
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+        },
+    ]
+  body:
+    application/json:
+      example: !include ../examples/product-discount-create.example.json
+  responses:
+    201:
+      body:
+        application/json:
+          example: !include ../examples/product-discount.example.json
+/matching:
+  type: base
+  post:
+    displayName: Get matching product discounts
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'view_products:{projectKey}'],
+          },
+      ]
+    body:
+      application/json:
+        type: ProductDiscountMatchQuery
+        example: |
+          {
+            "productId": "123456",
+            "variantId": 1,
+            "staged": false,
+            "price": {
+              "value": {
+                "type": "centPrecision",
+                "centAmount": 100,
+                "currencyCode": "EUR",
+                "fractionDigits": 2
+              },
+            "id": "2474c2c3-d424-49af-b90a-b71bc74cf51b"
+            }
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductDiscount
+            example: !include ../examples/product-discount.example.json
+/key={key}:
+  (methodName): withKey
+  type:
+    baseResource:
+      uriParameterName: key
+      resourceType: ProductDiscount
+      resourceUpdateType: ProductDiscountUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'view_products:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/product-discount.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/product-discount-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/product-discount.example.json
+  delete:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/product-discount.example.json
+/{ID}:
+  (methodName): withId
+  type:
+    baseResource:
+      uriParameterName: ID
+      resourceType: ProductDiscount
+      resourceUpdateType: ProductDiscountUpdate
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'view_products:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/product-discount.example.json
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/product-discount-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/product-discount.example.json
+  delete:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              ['manage_project:{projectKey}', 'manage_products:{projectKey}'],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/product-discount.example.json

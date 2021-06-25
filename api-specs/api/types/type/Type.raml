@@ -1,0 +1,49 @@
+#%RAML 1.0 DataType
+(package): Type
+(docs-uri): https://docs.commercetools.com/http-api-projects-types.html#type
+type: BaseResource
+displayName: Type
+(updateType): TypeUpdate
+(java-extends): 'com.commercetools.api.models.DomainResource<Type>'
+properties:
+  id:
+    (identifier): true
+    type: string
+    description: The unique ID of the type.
+  version:
+    type: number
+    format: int64
+    description: The current version of the type.
+  createdAt:
+    type: datetime
+    description: ''
+  lastModifiedAt:
+    type: datetime
+    description: ''
+  lastModifiedBy?:
+    type: LastModifiedBy
+    description:
+      Present on resources updated after 1/02/2019 except for events not
+      tracked.
+  createdBy?:
+    type: CreatedBy
+    description:
+      Present on resources created after 1/02/2019 except for events not
+      tracked.
+  key:
+    type: string
+    description: |-
+      Identifier for the type (max.
+      256 characters).
+  name:
+    type: LocalizedString
+    description: ''
+  description?:
+    type: LocalizedString
+    description: ''
+  resourceTypeIds:
+    type: ResourceTypeId[]
+    description: Defines for which resource(s) the type is valid.
+  fieldDefinitions:
+    type: FieldDefinition[]
+    description: ''

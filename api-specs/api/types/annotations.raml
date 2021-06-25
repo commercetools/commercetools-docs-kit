@@ -1,0 +1,85 @@
+package:
+  type: string
+  allowedTargets: TypeDeclaration
+identifier:
+  type: boolean
+  allowedTargets: TypeDeclaration
+elementIdentifier:
+  type: boolean
+  allowedTargets: TypeDeclaration
+placeholderParam:
+  type: object
+  allowedTargets: TypeDeclaration
+  properties:
+    paramName: string
+    template: string
+    placeholder: string
+builder:
+  type: array
+  items:
+    type: object
+    properties:
+      paramNames: string[]
+  allowedTargets: TypeDeclaration
+docs-uri:
+  type: string
+updateType:
+  type: string
+  allowedTargets: TypeDeclaration
+updateable:
+  type: string
+deleteable:
+  type: string
+createable:
+  type: string
+methodName:
+  type: string
+asMap:
+  type: object
+  properties:
+    key: string
+    value: string
+postman-example:
+  type: any
+  allowedTargets: TypeDeclaration
+hasSimpleUpdateAction:
+  type: string
+  allowedTargets: TypeDeclaration
+hasUpdateActions:
+  allowedTargets: TypeDeclaration
+  type: array
+  items:
+    type: object
+    properties:
+      action: string
+      docsAnchor?: string
+      required?: boolean
+      fields?: object
+hasUpdateAction:
+  type: object
+  allowedTargets: TypeDeclaration
+  properties:
+    action: string
+    docsAnchor?: string
+    required?: boolean
+    fields?: object
+deprecated:
+  type: boolean
+  allowedTargets: TypeDeclaration
+markDeprecated:
+  type: boolean
+  allowedTargets: TypeDeclaration
+abstract:
+  type: boolean
+  allowedTargets: TypeDeclaration
+actionType:
+  type: string
+  allowedTargets: TypeDeclaration
+java-extends:
+  type: string
+  allowedTargets: TypeDeclaration
+java-implements:
+  type: string
+  allowedTargets: TypeDeclaration
+beta:
+  type: boolean

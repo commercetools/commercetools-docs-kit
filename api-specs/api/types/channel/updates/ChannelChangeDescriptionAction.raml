@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): Channel
+(docs-uri): https://docs.commercetools.com/http-api-projects-channels.html#change-description
+type: ChannelUpdateAction
+displayName: ChannelChangeDescriptionAction
+discriminatorValue: changeDescription
+(postman-example): !include ../../../examples/Channel/ChannelChangeDescriptionAction.json
+properties:
+  description:
+    type: LocalizedString

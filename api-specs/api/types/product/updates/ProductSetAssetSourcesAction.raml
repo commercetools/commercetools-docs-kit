@@ -1,0 +1,25 @@
+#%RAML 1.0 DataType
+(package): Product
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#set-asset-sources
+type: ProductUpdateAction
+displayName: ProductSetAssetSourcesAction
+discriminatorValue: setAssetSources
+(postman-example): !include ../../../examples/Product/ProductSetAssetSourcesAction.json
+properties:
+  variantId?:
+    type: number
+    format: int64
+    description: ''
+  sku?:
+    type: string
+  staged?:
+    type: boolean
+    description: ''
+  assetId?:
+    type: string
+    description: ''
+  assetKey?:
+    type: string
+  sources:
+    type: AssetSource[]
+    description: ''
