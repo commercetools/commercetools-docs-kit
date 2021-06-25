@@ -6,7 +6,7 @@ import {
   locationForType,
 } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
-import ApiTypeByKey from '../../type/type-by-key';
+import ApiTypeByKey from '../../type/type-by-api-key';
 import Title from './title';
 
 const RequestRepresentation = (props) => {
