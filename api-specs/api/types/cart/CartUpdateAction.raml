@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+(package): Cart
+type: object
+displayName: CartUpdateAction
+discriminator: action
+(java-extends): 'com.commercetools.api.models.ResourceUpdateAction<CartUpdateAction>'
+properties:
+  action:
+    type: string

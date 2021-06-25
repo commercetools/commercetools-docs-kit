@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Subscription
+type: Destination
+displayName: SqsDestination
+discriminatorValue: SQS
+properties:
+  accessKey:
+    type: string
+  accessSecret:
+    type: string
+  queueUrl:
+    type: string
+  region:
+    type: string

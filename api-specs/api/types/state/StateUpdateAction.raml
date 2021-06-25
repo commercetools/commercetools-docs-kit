@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+(package): State
+type: object
+displayName: StateUpdateAction
+discriminator: action
+(java-extends): 'com.commercetools.api.models.ResourceUpdateAction<StateUpdateAction>'
+properties:
+  action:
+    type: string

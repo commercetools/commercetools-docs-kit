@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): Inventory
+(docs-uri): https://docs.commercetools.com/http-api-projects-inventory.html#set-supplychannel
+type: InventoryEntryUpdateAction
+displayName: InventoryEntrySetSupplyChannelAction
+discriminatorValue: setSupplyChannel
+(postman-example): !include ../../../examples/Inventory/InventoryEntrySetSupplyChannelAction.json
+properties:
+  supplyChannel?:
+    type: ChannelResourceIdentifier
+    description: |-
+      If absent, the supply channel is removed.
+      This action will fail if an entry with the combination of sku and supplyChannel already exists.

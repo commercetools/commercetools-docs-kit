@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): Type
+(docs-uri): https://docs.commercetools.com/http-api-projects-types.html#change-name
+type: TypeUpdateAction
+displayName: TypeChangeNameAction
+discriminatorValue: changeName
+(postman-example): !include ../../../examples/Type/TypeChangeNameAction.json
+properties:
+  name:
+    type: LocalizedString

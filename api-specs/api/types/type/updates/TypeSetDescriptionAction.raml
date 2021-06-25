@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): Type
+(docs-uri): https://docs.commercetools.com/http-api-projects-types.html#set-description
+type: TypeUpdateAction
+displayName: TypeSetDescriptionAction
+discriminatorValue: setDescription
+(postman-example): !include ../../../examples/Type/TypeSetDescriptionAction.json
+properties:
+  description?:
+    type: LocalizedString

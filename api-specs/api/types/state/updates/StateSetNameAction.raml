@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): State
+(docs-uri): https://docs.commercetools.com/http-api-projects-states.html#set-state-name
+type: StateUpdateAction
+displayName: StateSetNameAction
+discriminatorValue: setName
+(postman-example): !include ../../../examples/State/StateSetNameAction.json
+properties:
+  name:
+    type: LocalizedString

@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): Channel
+(docs-uri): https://docs.commercetools.com/http-api-projects-channels.html#set-address
+type: ChannelUpdateAction
+displayName: ChannelSetAddressAction
+discriminatorValue: setAddress
+(postman-example): !include ../../../examples/Channel/ChannelSetAddressAction.json
+properties:
+  address?:
+    type: BaseAddress

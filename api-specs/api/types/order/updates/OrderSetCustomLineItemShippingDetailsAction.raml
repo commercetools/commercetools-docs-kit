@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Order
+(docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#set-customlineitemshippingdetails
+type: OrderUpdateAction
+displayName: OrderSetCustomLineItemShippingDetailsAction
+discriminatorValue: setCustomLineItemShippingDetails
+(postman-example): !include ../../../examples/Order/OrderSetCustomLineItemShippingDetailsAction.json
+properties:
+  customLineItemId:
+    type: string
+  shippingDetails?:
+    type: ItemShippingDetailsDraft

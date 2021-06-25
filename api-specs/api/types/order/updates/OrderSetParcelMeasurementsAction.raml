@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Order
+(docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#set-parcel-measurements
+type: OrderUpdateAction
+displayName: OrderSetParcelMeasurementsAction
+discriminatorValue: setParcelMeasurements
+(postman-example): !include ../../../examples/Order/OrderSetParcelMeasurementsAction.json
+properties:
+  parcelId:
+    type: string
+  measurements?:
+    type: ParcelMeasurements

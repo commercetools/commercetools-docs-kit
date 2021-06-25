@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Message
+(docs-uri): https://docs.commercetools.com/http-api-projects-messages.html#productpublishedmessage
+type: Message
+displayName: ProductPublishedMessage
+discriminatorValue: ProductPublished
+properties:
+  removedImageUrls:
+    type: array
+    items: string
+  productProjection:
+    type: ProductProjection
+  scope:
+    type: ProductPublishScope
