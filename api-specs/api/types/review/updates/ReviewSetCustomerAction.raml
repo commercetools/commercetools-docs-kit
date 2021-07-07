@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): Review
+(docs-uri): https://docs.commercetools.com/http-api-projects-reviews.html#set-customer
+type: ReviewUpdateAction
+displayName: ReviewSetCustomerAction
+discriminatorValue: setCustomer
+(postman-example): !include ../../../examples/Review/ReviewSetCustomerAction.json
+properties:
+  customer?:
+    type: CustomerResourceIdentifier
+    description: |-
+      The customer who created the review.
+      If `customer` is absent or `null`, this field will be removed if it exists.

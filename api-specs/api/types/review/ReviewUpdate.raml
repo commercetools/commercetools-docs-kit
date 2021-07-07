@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Review
+type: object
+displayName: ReviewUpdate
+(java-extends): 'com.commercetools.api.models.ResourceUpdate<ReviewUpdate, ReviewUpdateAction>'
+properties:
+  version:
+    type: number
+    format: int64
+  actions:
+    type: array
+    items: ReviewUpdateAction

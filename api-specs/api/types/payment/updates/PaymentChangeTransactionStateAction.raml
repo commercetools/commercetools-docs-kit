@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Payment
+(docs-uri): https://docs.commercetools.com/http-api-projects-payments.html#change-transactionstate
+type: PaymentUpdateAction
+displayName: PaymentChangeTransactionStateAction
+discriminatorValue: changeTransactionState
+(postman-example): !include ../../../examples/Payment/PaymentChangeTransactionStateAction.json
+properties:
+  transactionId:
+    type: string
+    description: ''
+  state:
+    type: TransactionState
+    description: ''

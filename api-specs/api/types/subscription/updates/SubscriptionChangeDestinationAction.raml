@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Subscription
+(docs-uri): https://docs.commercetools.com/http-api-projects-subscriptions.html#change-destination
+type: SubscriptionUpdateAction
+displayName: SubscriptionChangeDestinationAction
+discriminatorValue: changeDestination
+(postman-example): !include ../../../examples/Subscription/SubscriptionChangeDestinationAction.json
+properties:
+  destination:
+    type: Destination
+    description: ''

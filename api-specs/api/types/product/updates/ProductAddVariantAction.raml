@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+(package): Product
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#add-productvariant
+type: ProductUpdateAction
+displayName: ProductAddVariantAction
+discriminatorValue: addVariant
+(postman-example): !include ../../../examples/Product/ProductAddVariantAction.json
+properties:
+  sku?:
+    type: string
+  key?:
+    type: string
+  prices?:
+    type: PriceDraft[]
+  images?:
+    type: Image[]
+  attributes?:
+    type: Attribute[]
+  staged?:
+    type: boolean
+  assets?:
+    type: Asset[]

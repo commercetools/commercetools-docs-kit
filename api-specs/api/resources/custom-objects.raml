@@ -1,0 +1,124 @@
+type:
+  baseDomain:
+    resourceType: CustomObject
+    resourceQueryType: CustomObjectPagedQueryResponse
+    resourceDraft: CustomObjectDraft
+    whereExample: 'value = "john.doe@example.com"'
+    sortExample: createdAt asc
+description: Store custom JSON values.
+get:
+  (java-implements):
+    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyCustomObjectsGet,
+    com.commercetools.api.models.custom_object.CustomObjectPagedQueryResponse>'
+  securedBy:
+    - oauth_2_0:
+        scopes:
+          - 'manage_project:{projectKey}'
+          - 'view_products:{projectKey}'
+          - 'view_orders:{projectKey}'
+          - 'view_customers:{projectKey}'
+  description: |
+    The query endpoint allows to retrieve custom objects in a specific container or all custom objects.
+    For performance reasons, it is highly advisable to query only for custom objects in a container by using
+    the container field in the where predicate.
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/custom-objects.example.json
+post:
+  securedBy:
+    - oauth_2_0:
+        scopes:
+          - 'manage_project:{projectKey}'
+          - 'manage_products:{projectKey}'
+          - 'manage_orders:{projectKey}'
+          - 'manage_customers:{projectKey}'
+  description: |
+    Creates a new custom object or updates an existing custom object.
+    If an object with the given container/key exists,
+    the object will be replaced with the new value and the version is incremented.
+    If the request contains a version and an object with the given container/key exists then the version
+    must match the version of the existing object. Concurrent updates for the same custom object still can result
+    in a Conflict (409) even if the version is not provided.
+    Fields with null values will not be saved.
+  body:
+    application/json:
+      example: !include ../examples/custom-object-create.example.json
+  responses:
+    201:
+      body:
+        application/json:
+          example: !include ../examples/custom-object.example.json
+/{container}/{key}:
+  (methodName): withContainerAndKey
+  uriParameters:
+    container:
+      type: string
+    key:
+      type: string
+  type: base
+  get:
+    securedBy:
+      - oauth_2_0:
+          scopes:
+            - 'manage_project:{projectKey}'
+            - 'view_products:{projectKey}'
+            - 'view_orders:{projectKey}'
+            - 'view_customers:{projectKey}'
+    is:
+      - expandable
+    displayName: Get CustomObject by container and key
+    description: Get CustomObject by container and key
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/custom-object.example.json
+            type: CustomObject
+  delete:
+    is:
+      - dataErasure
+      - versioned
+      - conflicting
+      - expandable
+    displayName: Delete CustomObject by container and key
+    description: Delete CustomObject by container and key
+    securedBy:
+      - oauth_2_0:
+          scopes:
+            - 'manage_project:{projectKey}'
+            - 'manage_products:{projectKey}'
+            - 'manage_orders:{projectKey}'
+            - 'manage_customers:{projectKey}'
+    queryParameters:
+      version:
+        required: false
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/custom-object.example.json
+            type: CustomObject
+/{container}:
+  (methodName): withContainer
+  type:
+    baseResource:
+      uriParameterName: container
+      resourceType: CustomObjectPagedQueryResponse
+  get:
+    securedBy:
+      - oauth_2_0:
+          scopes:
+            - 'manage_project:{projectKey}'
+            - 'view_products:{projectKey}'
+            - 'view_orders:{projectKey}'
+            - 'view_customers:{projectKey}'
+    is:
+      - query:
+          whereExample: <<whereExample>>
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/custom-objects.example.json

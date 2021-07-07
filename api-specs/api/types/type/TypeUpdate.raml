@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Type
+type: object
+displayName: TypeUpdate
+(java-extends): 'com.commercetools.api.models.ResourceUpdate<TypeUpdate, TypeUpdateAction>'
+properties:
+  version:
+    type: number
+    format: int64
+  actions:
+    type: array
+    items: TypeUpdateAction

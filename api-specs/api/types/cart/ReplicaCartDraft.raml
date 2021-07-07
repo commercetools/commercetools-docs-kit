@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): Cart
+(docs-uri): https://docs.commercetools.com/http-api-projects-carts.html#replicacartdraft
+displayName: ReplicaCartDraft
+type: object
+properties:
+  reference:
+    type: CartReference | OrderReference
+    description: ''
+  key?:
+    type: string
+    description: User-specific unique identifier of the cart.

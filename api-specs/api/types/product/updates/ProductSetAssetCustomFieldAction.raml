@@ -1,0 +1,27 @@
+#%RAML 1.0 DataType
+(package): Product
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#set-asset-custom-field
+type: ProductUpdateAction
+displayName: ProductSetAssetCustomFieldAction
+discriminatorValue: setAssetCustomField
+(postman-example): !include ../../../examples/Product/ProductSetAssetCustomFieldAction.json
+properties:
+  variantId?:
+    type: number
+    format: int64
+    description: ''
+  sku?:
+    type: string
+  staged?:
+    type: boolean
+    description: ''
+  assetId?:
+    type: string
+    description: ''
+  assetKey?:
+    type: string
+  name:
+    type: string
+    description: ''
+  value?:
+    type: any

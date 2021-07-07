@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+(package): Product
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#change-master-variant
+type: ProductUpdateAction
+displayName: ProductChangeMasterVariantAction
+discriminatorValue: changeMasterVariant
+(postman-example): !include ../../../examples/Product/ProductChangeMasterVariantAction.json
+properties:
+  variantId?:
+    type: number
+    format: int64
+    description: ''
+  sku?:
+    type: string
+  staged?:
+    type: boolean
+    description: ''

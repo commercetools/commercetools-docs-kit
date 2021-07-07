@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Me
+type: object
+displayName: MyShoppingListUpdate
+(java-extends):
+  'com.commercetools.api.models.ResourceUpdate<MyShoppingListUpdate,
+  MyShoppingListUpdateAction>'
+properties:
+  version:
+    type: number
+    format: int64
+  actions:
+    type: array
+    items: MyShoppingListUpdateAction

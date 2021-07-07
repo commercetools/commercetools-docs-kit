@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): ShoppingList
+(docs-uri): https://docs.commercetools.com/http-api-projects-shoppingLists.html#change-lineitems-order
+type: ShoppingListUpdateAction
+displayName: ShoppingListChangeLineItemsOrderAction
+discriminatorValue: changeLineItemsOrder
+(postman-example): !include ../../../examples/ShoppingList/ShoppingListChangeLineItemsOrderAction.json
+properties:
+  lineItemOrder:
+    type: string[]

@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+(package): CustomerGroup
+type: object
+displayName: CustomerGroupUpdateAction
+discriminator: action
+(java-extends): 'com.commercetools.api.models.ResourceUpdateAction<CustomerGroupUpdateAction>'
+properties:
+  action:
+    type: string

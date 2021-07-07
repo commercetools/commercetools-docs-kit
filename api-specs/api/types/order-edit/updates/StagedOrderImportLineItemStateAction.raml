@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#import-state-for-lineitems
+type: StagedOrderUpdateAction
+displayName: StagedOrderImportLineItemStateAction
+discriminatorValue: importLineItemState
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderImportLineItemStateAction.json
+properties:
+  lineItemId:
+    type: string
+  state:
+    type: ItemState[]

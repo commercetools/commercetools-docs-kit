@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): Review
+(docs-uri): https://docs.commercetools.com/http-api-projects-reviews.html#set-author-name
+type: ReviewUpdateAction
+displayName: ReviewSetAuthorNameAction
+discriminatorValue: setAuthorName
+(postman-example): !include ../../../examples/Review/ReviewSetAuthorNameAction.json
+properties:
+  authorName?:
+    type: string
+    description:
+      If `authorName` is absent or `null`, this field will be removed if it
+      exists.

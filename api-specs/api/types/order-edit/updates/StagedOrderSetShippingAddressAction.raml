@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#set-shipping-address
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetShippingAddressAction
+discriminatorValue: setShippingAddress
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetShippingAddressAction.json
+properties:
+  address?:
+    type: BaseAddress

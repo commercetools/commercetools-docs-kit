@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Me
+(docs-uri): https://docs.commercetools.com/http-api-projects-me-profile.html#set-salutation
+
+type: MyCustomerUpdateAction
+displayName: MyCustomerSetSalutationAction
+discriminatorValue: setSalutation
+
+properties:
+  salutation?:
+    type: string

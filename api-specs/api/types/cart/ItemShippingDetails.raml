@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+(package): Cart
+(docs-uri): https://docs.commercetools.com/http-api-projects-carts.html#itemshippingdetails
+displayName: ItemShippingDetails
+type: object
+properties:
+  targets:
+    type: ItemShippingTarget[]
+    description: |-
+      Used to map what sub-quantity should be shipped to which address.
+      Duplicate address keys are not allowed.
+  valid:
+    type: boolean
+    description: |-
+      `true` if the quantity of the (custom) line item is equal to the sum of the sub-quantities in `targets`, `false` otherwise.
+      A cart cannot be ordered when the value is `false`.
+      The error InvalidItemShippingDetails will be triggered.

@@ -1,0 +1,23 @@
+#%RAML 1.0 DataType
+(package): Order
+(docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#delivery
+displayName: Delivery
+type: object
+properties:
+  id:
+    type: string
+    description: ''
+  createdAt:
+    type: datetime
+    description: ''
+  items:
+    description: |-
+      Items which are shipped in this delivery regardless their distribution over several parcels.
+      Can also be specified individually for each Parcel.
+    type: DeliveryItem[]
+  parcels:
+    description: ''
+    type: Parcel[]
+  address?:
+    type: Address
+    description: ''

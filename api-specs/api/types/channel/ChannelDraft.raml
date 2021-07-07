@@ -1,0 +1,27 @@
+#%RAML 1.0 DataType
+(package): Channel
+(docs-uri): https://docs.commercetools.com/http-api-projects-channels.html#channeldraft
+displayName: ChannelDraft
+type: object
+properties:
+  key:
+    type: string
+    description: ''
+  roles?:
+    type: ChannelRoleEnum[]
+    description: If not specified, then channel will get InventorySupply role by default
+  name?:
+    type: LocalizedString
+    description: ''
+  description?:
+    type: LocalizedString
+    description: ''
+  address?:
+    type: BaseAddress
+    description: ''
+  custom?:
+    type: CustomFieldsDraft
+    description: The custom fields.
+  geoLocation?:
+    type: GeoJson
+    description: ''

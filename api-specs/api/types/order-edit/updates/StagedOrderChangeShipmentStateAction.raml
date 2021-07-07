@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/http-api-projects-order-edits.html#change-shipmentstate
+type: StagedOrderUpdateAction
+displayName: StagedOrderChangeShipmentStateAction
+discriminatorValue: changeShipmentState
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderChangeShipmentStateAction.json
+properties:
+  shipmentState?:
+    type: ShipmentState

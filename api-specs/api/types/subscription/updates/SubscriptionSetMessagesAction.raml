@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+(package): Subscription
+(docs-uri): https://docs.commercetools.com/http-api-projects-subscriptions.html#set-messages
+type: SubscriptionUpdateAction
+displayName: SubscriptionSetMessagesAction
+discriminatorValue: setMessages
+(postman-example): !include ../../../examples/Subscription/SubscriptionSetMessagesAction.json
+properties:
+  messages?:
+    type: MessageSubscription[]
+    description: ''

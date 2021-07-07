@@ -1,0 +1,111 @@
+type:
+  baseDomain:
+    resourceType: ProductProjection
+    resourceQueryType: ProductProjectionPagedQueryResponse
+    resourceDraft: ProductProjectionDraft
+    whereExample: 'slug(en = "long-sleeves")'
+    sortExample: createdAt asc
+description: |
+  A projected representation of a product shows the product with its current or staged data. The current or staged
+  representation of a product in a catalog is called a product projection.
+get:
+  (java-implements):
+    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyProductProjectionsGet,
+    com.commercetools.api.models.product.ProductProjectionPagedQueryResponse>'
+  securedBy:
+    [
+      oauth_2_0:
+        {
+          scopes:
+            [
+              'manage_project:{projectKey}',
+              'view_products:{projectKey}',
+              'view_published_products:{projectKey}',
+            ],
+        },
+    ]
+  description: |
+    You can use the product projections query endpoint to get the current or staged representations of Products.
+    When used with an API client that has the view_published_products:{projectKey} scope,
+    this endpoint only returns published (current) product projections.
+  queryParameters:
+    staged?:
+      type: boolean
+      description: Whether to query for the current or staged projections.
+  is:
+    - priceSelecting
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/product-projections.example.json
+/search: !include product-projections-search.raml
+/suggest: !include product-projections-suggest.raml
+/key={key}:
+  (methodName): withKey
+  type:
+    baseResource:
+      uriParameterName: key
+      resourceType: ProductProjection
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_products:{projectKey}',
+                'view_published_products:{projectKey}',
+              ],
+          },
+      ]
+    description: |
+      Gets the current or staged representation of a product found by Key.
+      When used with an API client that has the view_published_products:{projectKey} scope,
+      this endpoint only returns published (current) product projections.
+    queryParameters:
+      staged?:
+        type: boolean
+        description: Whether to query for the current or staged projections.
+    is:
+      - priceSelecting
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/product-projection.example.json
+/{ID}:
+  (methodName): withId
+  type:
+    baseResource:
+      uriParameterName: ID
+      resourceType: ProductProjection
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_project:{projectKey}',
+                'view_products:{projectKey}',
+                'view_published_products:{projectKey}',
+              ],
+          },
+      ]
+    description: |
+      Gets the current or staged representation of a product in a catalog by ID.
+      When used with an API client that has the view_published_products:{projectKey} scope,
+      this endpoint only returns published (current) product projections.
+    queryParameters:
+      staged?:
+        type: boolean
+        description: Whether to query for the current or staged projections.
+    is:
+      - priceSelecting
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/product-projection.example.json
