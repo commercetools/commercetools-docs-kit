@@ -9,8 +9,6 @@ const buildPageSlug = (page) => {
 };
 
 const convertComponentInMdxToTypeLocations = (data) =>
-  // TODO refactor this inefficient access pattern into a plain loop
-  // and save the indexed structure as a cache
   data.allComponentInMdx.nodes.reduce((typeLocations, node) => {
     const apiKeyAttribute = node.attributes.find(
       (att) => att.name === 'apiKey'
