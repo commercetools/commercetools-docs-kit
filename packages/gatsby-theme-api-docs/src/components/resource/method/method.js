@@ -7,6 +7,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import {
   markdownFragmentToReact,
   SideBySide,
+  FullWidthContainer,
 } from '@commercetools-docs/gatsby-theme-docs';
 import { generateEndpointURN } from '../../../utils/ctp-urn';
 import { tokens, dimensions, colors, typography } from '../../../design-system';
@@ -58,69 +59,73 @@ const Method = ({
   });
 
   return (
-    <SpacingsStack scale="s">
-      {title ? (
-        <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
-      ) : (
-        <a name={id}></a>
-      )}
+    <FullWidthContainer>
+      <SpacingsStack scale="s">
+        {title ? (
+          <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
+        ) : (
+          <a name={id}></a>
+        )}
 
-      {method.description && (
-        <Description>{markdownFragmentToReact(method.description)}</Description>
-      )}
+        {method.description && (
+          <Description>
+            {markdownFragmentToReact(method.description)}
+          </Description>
+        )}
 
-      <Container
-        css={css`
-          border-left-color: ${methodColor};
-        `}
-      >
-        <SideBySide>
-          <SpacingsStack scale="l">
-            <Url
+        <Container
+          css={css`
+            border-left-color: ${methodColor};
+          `}
+        >
+          <SideBySide>
+            <SpacingsStack scale="l">
+              <Url
+                apiKey={apiKey}
+                method={methodType}
+                methodColor={methodColor}
+                uris={uris}
+              />
+
+              {method.securedBy && (
+                <Scopes scopes={method.securedBy[0].oauth_2_0.scopes} />
+              )}
+
+              {allUriParameters.length > 0 && (
+                <Parameters
+                  title={'Path parameters'}
+                  parameters={allUriParameters}
+                />
+              )}
+
+              {method.queryParameters && (
+                <Parameters
+                  apiKey={apiKey}
+                  title={'Query parameters'}
+                  parameters={method.queryParameters}
+                />
+              )}
+
+              {method.body && (
+                <RequestRepresentation
+                  apiKey={apiKey}
+                  apiType={method.body.applicationjson.type}
+                />
+              )}
+
+              {method.responses && (
+                <Responses apiKey={apiKey} responses={method.responses} />
+              )}
+            </SpacingsStack>
+            <RequestResponseExamples
               apiKey={apiKey}
-              method={methodType}
-              methodColor={methodColor}
-              uris={uris}
+              requestCodeExamples={method.codeExamples}
+              responses={method.responses}
             />
-
-            {method.securedBy && (
-              <Scopes scopes={method.securedBy[0].oauth_2_0.scopes} />
-            )}
-
-            {allUriParameters.length > 0 && (
-              <Parameters
-                title={'Path parameters'}
-                parameters={allUriParameters}
-              />
-            )}
-
-            {method.queryParameters && (
-              <Parameters
-                apiKey={apiKey}
-                title={'Query parameters'}
-                parameters={method.queryParameters}
-              />
-            )}
-
-            {method.body && (
-              <RequestRepresentation
-                apiKey={apiKey}
-                apiType={method.body.applicationjson.type}
-              />
-            )}
-
-            {method.responses && (
-              <Responses apiKey={apiKey} responses={method.responses} />
-            )}
-          </SpacingsStack>
-          <RequestResponseExamples
-            apiKey={apiKey}
-            requestCodeExamples={method.codeExamples}
-            responses={method.responses}
-          />
-        </SideBySide>
-      </Container>
-    </SpacingsStack>
+          </SideBySide>
+        </Container>
+      </SpacingsStack>
+    </FullWidthContainer>
   );
 };
 
