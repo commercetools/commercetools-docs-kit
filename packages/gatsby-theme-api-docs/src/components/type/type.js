@@ -84,7 +84,7 @@ const ApiType = (props) => {
 
 ApiType.propTypes = {
   apiKey: PropTypes.string.isRequired,
-  apiTypes: PropTypes.object.isRequired,
+  apiTypes: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
   propertiesTableTitle: PropTypes.oneOfType([
     PropTypes.string,
