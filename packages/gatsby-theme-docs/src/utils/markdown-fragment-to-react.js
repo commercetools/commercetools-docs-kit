@@ -33,13 +33,24 @@ const MarkdownFragmentImage = () => null;
  * @param {String} markdownString
  * @param {Object} customElements
  */
-const removeFrontmatter = () => (tree) =>
+const removeFrontmatterPlugin = () => (tree) =>
   filter(tree, (node) => node.type !== 'yaml');
-const markdownFragmentToReact = (markdownString, customElements) =>
-  unified()
+const noOpPlugin = () => (ast) => ast;
+const markdownFragmentToReact = (
+  markdownString,
+  customElements,
+  customPlugin
+) => {
+  const safeCustomPlugin =
+    typeof customPlugin === 'function' ? customPlugin : noOpPlugin;
+  // DEBUG, REMOVE BEFORE FINALIZING
+  console.log(markdownString);
+  console.log(safeCustomPlugin);
+  return unified()
     .use(parse)
     .use(frontmatter)
-    .use(removeFrontmatter)
+    .use(removeFrontmatterPlugin)
+    .use(safeCustomPlugin)
     .use(remark2react, {
       sanitize: true,
       remarkReactComponents: {
@@ -76,5 +87,5 @@ const markdownFragmentToReact = (markdownString, customElements) =>
       },
     })
     .processSync(markdownString).result;
-
+};
 export default markdownFragmentToReact;

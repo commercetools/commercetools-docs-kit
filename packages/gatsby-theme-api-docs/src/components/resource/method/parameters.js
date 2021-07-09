@@ -11,7 +11,7 @@ import generateTypeToRender from '../../../utils/generate-type-to-render';
 import Required from '../../required';
 import Table from '../../table';
 import Title from './title';
-import Description from '../../description';
+import { DescriptionText } from '../../description';
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
 // this implements a wrapping behavior where property name and type are separated
@@ -61,7 +61,7 @@ const Parameters = (props) => {
                 </td>
                 <td>
                   {parameter.description ? (
-                    <Description>{parameter.description}</Description>
+                    <DescriptionText markdownString={parameter.description} />
                   ) : (
                     '-'
                   )}

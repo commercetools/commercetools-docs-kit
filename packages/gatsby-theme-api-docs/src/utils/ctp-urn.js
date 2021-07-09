@@ -43,7 +43,7 @@ export const parseTypeURN = (urn) => {
       name: components[3],
     };
   }
-  return {};
+  return false;
 };
 
 export const generateEndpointURN = ({
@@ -69,5 +69,5 @@ export const parseEndpointURN = (urn) => {
       method: components[4],
     };
   }
-  return {};
+  return false;
 };
