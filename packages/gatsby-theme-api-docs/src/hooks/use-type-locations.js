@@ -22,6 +22,7 @@ const convertComponentInMdxToTypeLocations = (data) => {
 
     typeLocations[`${apiKey}__${name}`] = { url };
   });
+  return typeLocations;
 };
 
 const getTypeLocationOverrides = (typeLocationData) => {
