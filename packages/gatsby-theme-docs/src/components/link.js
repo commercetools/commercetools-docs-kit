@@ -79,12 +79,11 @@ export const ExternalSiteLink = (props) => (
  * ???
  *
  * ## other CT site
- * https://docs.commercetools.com/app-kit/getting-started
- * - prod: without origin
- * - dev: warning
- *
- * ### hidden features
  * /../app-kit/getting-started
+ * OR:
+ * https://docs.commercetools.com/app-kit/getting-started
+ * - prod: without origin, removed automatically
+ * - dev: warning
  *
  * ## external site
  * https://<domain>/something/else
