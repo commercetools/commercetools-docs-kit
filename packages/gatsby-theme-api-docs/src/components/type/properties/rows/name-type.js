@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -6,8 +5,7 @@ import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { BetaFlag } from '@commercetools-docs/gatsby-theme-docs';
 import { typography } from '../../../../design-system';
-import { useTypeLocations } from '../../../../hooks/use-type-locations';
-import generateTypeToRender from '../../../../utils/generate-type-to-render';
+import useTypeToRender from '../../../../hooks/use-type-to-render';
 import Required from '../../../required';
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
@@ -21,12 +19,10 @@ const BetaWrapper = styled.span`
   font-size: ${typography.fontSizes.body};
 `;
 
-const NameType = ({ apiKey, property }) => {
-  const typeLocations = useTypeLocations();
-  const typeToRender = generateTypeToRender({
-    typeLocations,
-    property,
-    apiKey,
+const NameType = (props) => {
+  const typeToRender = useTypeToRender({
+    property: props.property,
+    apiKey: props.apiKey,
   });
 
   const isRegex = (string) =>
@@ -39,7 +35,7 @@ const NameType = ({ apiKey, property }) => {
   return (
     <SpacingsStack scale="xs">
       <PropertyName className="name-type">
-        {isRegex(property.name) ? (
+        {isRegex(props.property.name) ? (
           <Markdown.InlineCode>
             <span
               css={css`
@@ -48,7 +44,7 @@ const NameType = ({ apiKey, property }) => {
             >
               /
             </span>
-            {getExpressionInsideSlashes(property.name)[1]}
+            {getExpressionInsideSlashes(props.property.name)[1]}
             <span
               css={css`
                 color: ${designSystem.colors.light.textInfo};
@@ -58,10 +54,10 @@ const NameType = ({ apiKey, property }) => {
             </span>
           </Markdown.InlineCode>
         ) : (
-          <Markdown.InlineCode>{property.name}</Markdown.InlineCode>
+          <Markdown.InlineCode>{props.property.name}</Markdown.InlineCode>
         )}
-        {property.required && <Required />}
-        {property.beta && (
+        {props.property.required && <Required />}
+        {props.property.beta && (
           <BetaWrapper>
             <BetaFlag />
           </BetaWrapper>
@@ -71,7 +67,7 @@ const NameType = ({ apiKey, property }) => {
         {typeToRender.displayPrefix && (
           <span className="name">{typeToRender.displayPrefix}</span>
         )}
-        {isRegex(property.name) ? (
+        {isRegex(props.property.name) ? (
           <span className="name">
             Any property matching regular expression above
           </span>
