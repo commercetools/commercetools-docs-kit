@@ -8,26 +8,22 @@ const buildPageSlug = (page) => {
   return `/${pathWithoutExt}`;
 };
 
-const convertComponentInMdxToTypeLocations = (data) =>
-  data.allComponentInMdx.nodes.reduce((typeLocations, node) => {
-    const apiKeyAttribute = node.attributes.find(
-      (att) => att.name === 'apiKey'
-    );
-    const typeAttribute = node.attributes.find((att) => att.name === 'type');
+const convertComponentInMdxToTypeLocations = (data) => {
+  const typeLocations = {};
+  data.allComponentInMdx.nodes.forEach((node) => {
+    const apiKey =
+      node.attributes[0].name === 'apiKey' ? node.attributes[0].value : null;
+    const name =
+      node.attributes[1].name === 'type' ? node.attributes[1].value : null;
 
-    const apiKey = apiKeyAttribute ? apiKeyAttribute.value : null;
-    const name = typeAttribute ? typeAttribute.value : null;
     const slug = buildPageSlug(node.page);
     const urn = generateTypeURN({ apiKey, displayName: name });
     const url = slug && urn ? `${slug}#${urn}` : '';
 
-    return {
-      ...typeLocations,
-      [`${apiKey}__${name}`]: {
-        url,
-      },
-    };
-  }, {});
+    typeLocations[`${apiKey}__${name}`] = { url };
+  });
+  return typeLocations;
+};
 
 const getTypeLocationOverrides = (typeLocationData) => {
   const typeLocationOverrides = {};
