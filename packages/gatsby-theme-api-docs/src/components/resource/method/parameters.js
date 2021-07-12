@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import {
@@ -26,53 +25,66 @@ const PropertyType = styled.div`
 `;
 
 const Parameters = (props) => {
-  const typeLocations = useTypeLocations();
-
   return (
     <SpacingsStack scale="xs">
       {props.title && <Title>{props.title}:</Title>}
       <Table>
         <tbody>
           {props.parameters.map((parameter) => {
-            const typeToRender = generateTypeToRender({
-              typeLocations,
-              property: parameter,
-              apiKey: props.apiKey,
-            });
-
             return (
-              <tr key={parameter.name}>
-                <td>
-                  <PropertyName className="name-type">
-                    <Markdown.InlineCode>{parameter.name}</Markdown.InlineCode>
-                    {parameter.required && <Required />}
-                  </PropertyName>
-                  <PropertyType className="name name-type">
-                    {typeToRender.displayPrefix && (
-                      <span className="name">{typeToRender.displayPrefix}</span>
-                    )}
-
-                    {typeof typeToRender.type === 'string' ? (
-                      <span className="name">{typeToRender.type}</span>
-                    ) : (
-                      typeToRender.type
-                    )}
-                  </PropertyType>
-                </td>
-                <td>
-                  {parameter.description ? (
-                    <Description>{parameter.description}</Description>
-                  ) : (
-                    '-'
-                  )}
-                </td>
-              </tr>
+              <ParameterRow
+                key={parameter.name}
+                apiKey={props.apiKey}
+                parameter={parameter}
+              />
             );
           })}
         </tbody>
       </Table>
     </SpacingsStack>
   );
+};
+
+function ParameterRow(props) {
+  const typeLocations = useTypeLocations();
+  const typeToRender = generateTypeToRender({
+    typeLocations,
+    property: props.parameter,
+    apiKey: props.apiKey,
+  });
+  return (
+    <tr key={props.parameter.name}>
+      <td>
+        <PropertyName className="name-type">
+          <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
+          {props.parameter.required && <Required />}
+        </PropertyName>
+        <PropertyType className="name name-type">
+          {typeToRender.displayPrefix && (
+            <span className="name">{typeToRender.displayPrefix}</span>
+          )}
+
+          {typeof typeToRender.type === 'string' ? (
+            <span className="name">{typeToRender.type}</span>
+          ) : (
+            typeToRender.type
+          )}
+        </PropertyType>
+      </td>
+      <td>
+        {props.parameter.description ? (
+          <Description>{props.parameter.description}</Description>
+        ) : (
+          '-'
+        )}
+      </td>
+    </tr>
+  );
+}
+
+ParameterRow.propTypes = {
+  apiKey: PropTypes.string,
+  parameter: PropTypes.object.isRequired,
 };
 
 Parameters.propTypes = {
