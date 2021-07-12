@@ -43,6 +43,22 @@ const Parameters = (props) => {
     </SpacingsStack>
   );
 };
+Parameters.propTypes = {
+  apiKey: PropTypes.string,
+  title: PropTypes.string,
+  parameters: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      required: PropTypes.bool,
+      description: PropTypes.string,
+      items: PropTypes.shape({
+        type: PropTypes.string,
+      }),
+    }).isRequired
+  ).isRequired,
+};
+Parameters.displayName = 'Parameters';
 
 function ParameterRow(props) {
   const typeToRender = useTypeToRender({
@@ -79,16 +95,18 @@ function ParameterRow(props) {
     </tr>
   );
 }
-
 ParameterRow.propTypes = {
   apiKey: PropTypes.string,
-  parameter: PropTypes.object.isRequired,
+  parameter: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    required: PropTypes.bool,
+    description: PropTypes.string,
+    items: PropTypes.shape({
+      type: PropTypes.string,
+    }),
+  }).isRequired,
 };
-
-Parameters.propTypes = {
-  apiKey: PropTypes.string,
-  title: PropTypes.string,
-  parameters: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+ParameterRow.displayName = 'ParameterRow';
 
 export default Parameters;

@@ -15,6 +15,7 @@ import Url from './url';
 import Scopes from './scopes';
 import Responses from './responses';
 import Parameters from './parameters';
+import QueryParameters from './query-parameters';
 import RequestRepresentation from './request-representation';
 import Description from '../../description';
 import RequestResponseExamples from './request-response-examples';
@@ -99,10 +100,10 @@ const Method = ({
               )}
 
               {method.queryParameters && (
-                <Parameters
+                <QueryParameters
                   apiKey={apiKey}
                   title={'Query parameters'}
-                  parameters={method.queryParameters}
+                  queryParameters={method.queryParameters}
                 />
               )}
 
