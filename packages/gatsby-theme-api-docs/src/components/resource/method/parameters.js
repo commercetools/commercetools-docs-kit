@@ -5,8 +5,7 @@ import {
   designSystem as uiKitDesignSystem,
 } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { useTypeLocations } from '../../../hooks/use-type-locations';
-import generateTypeToRender from '../../../utils/generate-type-to-render';
+import useTypeToRender from '../../../hooks/use-type-to-render';
 import Required from '../../required';
 import Table from '../../table';
 import Title from './title';
@@ -46,11 +45,10 @@ const Parameters = (props) => {
 };
 
 function ParameterRow(props) {
-  const typeLocations = useTypeLocations();
-  const typeToRender = generateTypeToRender({
-    typeLocations,
+  const typeToRender = useTypeToRender({
     property: props.parameter,
     apiKey: props.apiKey,
+    isParameter: true,
   });
   return (
     <tr key={props.parameter.name}>
