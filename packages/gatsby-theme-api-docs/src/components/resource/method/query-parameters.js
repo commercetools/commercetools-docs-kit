@@ -10,7 +10,7 @@ function transformQueryParameterDescriptions(queryParameters) {
     ) {
       return {
         ...parameter,
-        description: `${parameter.description}\n\nMultiple instances can be passed. E.g. \`${parameter.name}=<${parameter.items.type}>&${parameter.name}=<${parameter.items.type}>&${parameter.name}=<${parameter.items.type}>\``,
+        description: `${parameter.description}\n\nThe parameter can be passed multiple times.`,
       };
     }
 
