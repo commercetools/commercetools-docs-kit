@@ -3,15 +3,9 @@ import Parameters from './parameters';
 
 function transformQueryParameterDescriptions(queryParameters) {
   return queryParameters.map((parameter) => {
-    if (
-      parameter.description &&
-      parameter.type === 'array' &&
-      parameter.items
-    ) {
-      return {
-        ...parameter,
-        description: `${parameter.description}\n\nThe parameter can be passed multiple times.`,
-      };
+    if (parameter.type === 'array' && parameter.items) {
+      parameter.additionalDescription =
+        'The parameter can be passed multiple times.';
     }
 
     return parameter;

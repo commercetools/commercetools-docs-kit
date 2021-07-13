@@ -10,6 +10,7 @@ import Required from '../../required';
 import Table from '../../table';
 import Title from './title';
 import Description from '../../description';
+import Info from '../../info';
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
 // this implements a wrapping behavior where property name and type are separated
@@ -86,11 +87,18 @@ function ParameterRow(props) {
         </PropertyType>
       </td>
       <td>
-        {props.parameter.description ? (
-          <Description>{props.parameter.description}</Description>
-        ) : (
-          '-'
-        )}
+        <SpacingsStack scale="xs">
+          {props.parameter.description ? (
+            <Description>{props.parameter.description}</Description>
+          ) : (
+            '-'
+          )}
+          {props.parameter.additionalDescription && (
+            <div>
+              <Info>{props.parameter.additionalDescription}</Info>
+            </div>
+          )}
+        </SpacingsStack>
       </td>
     </tr>
   );
@@ -102,6 +110,7 @@ ParameterRow.propTypes = {
     type: PropTypes.string.isRequired,
     required: PropTypes.bool,
     description: PropTypes.string,
+    additionalDescription: PropTypes.string,
     items: PropTypes.shape({
       type: PropTypes.string,
     }),
