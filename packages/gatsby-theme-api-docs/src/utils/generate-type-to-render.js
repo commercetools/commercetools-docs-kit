@@ -1,13 +1,18 @@
 import capitalizeFirst from './capitalize-first';
 import renderTypeAsLink from './render-type-as-link';
 
-function generateTypeToRender({ typeLocations, property, apiKey }) {
+function generateTypeToRender({
+  typeLocations,
+  property,
+  apiKey,
+  isParameter,
+}) {
   let displayPrefix;
   let type;
 
   if (property.type === 'array' && property.items) {
     type = property.items.type;
-    displayPrefix = 'Array of ';
+    displayPrefix = isParameter ? '' : 'Array of ';
   } else if (isConstantLikeAndIsNotPrimitiveType(property)) {
     type = property.builtinType;
   } else {

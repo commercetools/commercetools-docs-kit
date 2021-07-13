@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -14,6 +13,7 @@ import Url from './url';
 import Scopes from './scopes';
 import Responses from './responses';
 import Parameters from './parameters';
+import QueryParameters from './query-parameters';
 import RequestRepresentation from './request-representation';
 import { DescriptionParagraph } from '../../description';
 import RequestResponseExamples from './request-response-examples';
@@ -96,10 +96,10 @@ const Method = ({
               )}
 
               {method.queryParameters && (
-                <Parameters
+                <QueryParameters
                   apiKey={apiKey}
                   title={'Query parameters'}
-                  parameters={method.queryParameters}
+                  queryParameters={method.queryParameters}
                 />
               )}
 

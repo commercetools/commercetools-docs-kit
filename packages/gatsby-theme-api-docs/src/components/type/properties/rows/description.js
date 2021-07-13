@@ -1,28 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Markdown, useISO310NumberFormatter } from '@commercetools-docs/ui-kit';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { colors, dimensions, typography } from '../../../../design-system';
 import extractAdditionalInfo from '../../../../utils/extract-additional-info';
 import capitalizeFirst from '../../../../utils/capitalize-first';
 import { useApiTypeByApiKeyAndDisplayName } from '../../../../hooks/use-api-types';
 import { DescriptionText } from '../../../description';
+import Info from '../../../info';
 
 const customCodeStyle = css`
   border: none;
   background-color: unset;
   padding: 0;
-`;
-
-const Info = styled.span`
-  display: inline-block;
-  border: 1px solid ${colors.light.borderInfo};
-  background-color: ${colors.light.surfaceInfo};
-  padding: ${dimensions.spacings.xxs} ${dimensions.spacings.xs};
-  font-size: ${typography.fontSizes.small};
 `;
 
 const ConstantLikeEnumDescription = (props) => {
