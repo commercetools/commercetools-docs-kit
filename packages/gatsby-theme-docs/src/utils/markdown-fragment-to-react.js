@@ -43,9 +43,6 @@ const markdownFragmentToReact = (
 ) => {
   const safeCustomPlugin =
     typeof customPlugin === 'function' ? customPlugin : noOpPlugin;
-  // DEBUG, REMOVE BEFORE FINALIZING
-  console.log(markdownString);
-  console.log(safeCustomPlugin);
   return unified()
     .use(parse)
     .use(frontmatter)
