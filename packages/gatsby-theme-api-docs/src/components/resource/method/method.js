@@ -5,7 +5,6 @@ import { css } from '@emotion/react';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import {
-  markdownFragmentToReact,
   SideBySide,
   FullWidthContainer,
 } from '@commercetools-docs/gatsby-theme-docs';
@@ -16,7 +15,7 @@ import Scopes from './scopes';
 import Responses from './responses';
 import Parameters from './parameters';
 import RequestRepresentation from './request-representation';
-import Description from '../../description';
+import { DescriptionParagraph } from '../../description';
 import RequestResponseExamples from './request-response-examples';
 
 const Title = styled.h6`
@@ -68,9 +67,7 @@ const Method = ({
         )}
 
         {method.description && (
-          <Description>
-            {markdownFragmentToReact(method.description)}
-          </Description>
+          <DescriptionParagraph>{method.description}</DescriptionParagraph>
         )}
 
         <Container

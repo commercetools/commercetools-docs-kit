@@ -7,7 +7,7 @@ import {
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { generateTypeURN } from '../../utils/ctp-urn';
 import reportError from '../../utils/report-error';
-import Description from '../description';
+import { DescriptionParagraph } from '../description';
 import Enum from './enum';
 import Properties from './properties/properties';
 import Examples from './examples';
@@ -29,7 +29,9 @@ const ApiType = (props) => {
     return (
       <>
         {props.apiType.description && (
-          <Description>{props.apiType.description}</Description>
+          <DescriptionParagraph>
+            {props.apiType.description}
+          </DescriptionParagraph>
         )}
         {props.apiType.enumeration && (
           <Enum
