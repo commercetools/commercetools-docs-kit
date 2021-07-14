@@ -1,5 +1,19 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 17.0.0
+
+### Major Changes
+
+- [#997](https://github.com/commercetools/commercetools-docs-kit/pull/997) [`18f44a9`](https://github.com/commercetools/commercetools-docs-kit/commit/18f44a9cb27c4e0a782cb910cdeabff136cdfab2) Thanks [@nkuehn](https://github.com/nkuehn)! - Refactored the provisioning of theme extensions' components into MDX to support components that have to be imported explicitly in MDX. Auto-provided components now have to be exported via `./shortcodes` by theme add-ons.
+
+  The API documentation is not automatically injecting its components into MDX any more to allow sites with large APIs to optimize the site performance (time to interactive).
+
+  To migrate, all MDX pages have to explicitly import the `ApiType` and `ApiEndpoint` components. It's recommended that sites create an intermediate `/shortcodes.js` file so that the MDX import lines only read
+
+  ```
+  import { ApiType, ApiEndpoint } from "./shortcodes"
+  ```
+
 ## 16.3.1
 
 ### Patch Changes
