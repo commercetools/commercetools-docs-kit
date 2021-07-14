@@ -62,8 +62,8 @@ uses:
       type: string
   /resource:
     post:
-      displayName: Create a Resource
-      description: Create (POST) operation to a resource.
+      displayName: Create or Update a Resource
+      description: Create or Update (POST) operation to a resource.
       securedBy:
         - oauth_2_0:
             scopes: ["manage_test:{projectKey}"]
@@ -76,6 +76,19 @@ uses:
           body:
             type: objects.ObjectTestType
             example: !include examples/object-test-type.json
+    put:
+      displayName: Create or Overwrite a Resource
+      description: Create or Overwrite (PUT) operation to a resource.
+      securedBy:
+        - oauth_2_0:
+            scopes: ["manage_test:{projectKey}"]
+      body:
+        type: objects.ObjectTestTypeDraft
+      responses:
+        201:
+          description: 201 Created response. This is the success response when creating something.
+          body:
+            type: objects.ObjectTestType
     get:
       displayName: Get all resources
       description: Query/retrieve (GET) a specific resource or resource(s). This should return a paged query result of _blah_.
