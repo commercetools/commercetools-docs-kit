@@ -131,8 +131,9 @@ function computeMethodColor(methodName) {
     case 'get':
       return colors.light.methods.get;
     case 'post':
-    case 'put':
       return colors.light.methods.post;
+    case 'put':
+      return colors.light.methods.put;
     case 'delete':
       return colors.light.methods.delete;
     default:
