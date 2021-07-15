@@ -31,6 +31,6 @@ You can provide the command globally too via `npm install -g @commercetools-docs
 
 To update the `rmf-codegen` version, update the custom `rmfCodegenVersion` property in `package.json`.
 
-Versions can be found on Bintray here - https://bintray.com/vrapio/vrapio/rmf-codegen#.
+The rmf-codegen JAR is downloaded from [the project's GitHub releases page](https://github.com/commercetools/rmf-codegen/releases).
 
-For more help on getting an appropriate version, create an issue here - https://github.com/vrapio/rmf-codegen/issues.
+For more help on getting an appropriate version, create an issue here - https://github.com/commercetools/rmf-codegen/issues.
