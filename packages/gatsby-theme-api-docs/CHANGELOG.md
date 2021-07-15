@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 17.0.1
+
+### Patch Changes
+
+- [#1025](https://github.com/commercetools/commercetools-docs-kit/pull/1025) [`a9aae5d`](https://github.com/commercetools/commercetools-docs-kit/commit/a9aae5da783d257a7e2cee75b8d21e37749b0274) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: put request is now color-coded
+
 ## 17.0.0
 
 ### Major Changes

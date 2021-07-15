@@ -1,5 +1,14 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 5.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`a9aae5d`](https://github.com/commercetools/commercetools-docs-kit/commit/a9aae5da783d257a7e2cee75b8d21e37749b0274), [`6fa3bbc`](https://github.com/commercetools/commercetools-docs-kit/commit/6fa3bbc41dfdca9644ab9cff9b71d952f430afcc)]:
+  - @commercetools-docs/gatsby-theme-api-docs@17.0.1
+  - @commercetools-docs/rmf-codegen@12.4.0
+  - @commercetools-docs/gatsby-theme-docs@17.0.1
+
 ## 5.0.0
 
 ### Major Changes
