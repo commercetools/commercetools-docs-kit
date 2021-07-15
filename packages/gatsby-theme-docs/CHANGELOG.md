@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 17.0.1
+
+### Patch Changes
+
+- [#1027](https://github.com/commercetools/commercetools-docs-kit/pull/1027) [`6fa3bbc`](https://github.com/commercetools/commercetools-docs-kit/commit/6fa3bbc41dfdca9644ab9cff9b71d952f430afcc) Thanks [@nkuehn](https://github.com/nkuehn)! - - upgrade rmf-codegen to 0.18
+  - bug fix
+
 ## 17.0.0
 
 ### Major Changes
