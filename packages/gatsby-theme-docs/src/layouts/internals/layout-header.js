@@ -154,9 +154,7 @@ const DocumentationSwitcherButton = styled.div`
     border-bottom: 2px solid ${designSystem.colors.light.linkNavigation};
     color: ${designSystem.colors.light.linkNavigation};
     svg {
-      * {
-        fill: ${designSystem.colors.light.linkNavigation};
-      }
+      fill: ${designSystem.colors.light.linkNavigation};
     }
   }
 

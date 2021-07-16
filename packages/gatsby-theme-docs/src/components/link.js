@@ -36,15 +36,11 @@ const InlineLink = styled.span`
     margin: 0 0 0 ${designSystem.dimensions.spacings.xs};
   }
   svg {
-    * {
-      fill: ${designSystem.colors.light.link};
-    }
+    fill: ${designSystem.colors.light.link};
   }
   :hover {
     svg {
-      * {
-        fill: ${designSystem.colors.light.linkHover};
-      }
+      fill: ${designSystem.colors.light.linkHover};
     }
   }
 `;

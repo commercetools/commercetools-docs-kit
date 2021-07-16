@@ -9,18 +9,14 @@ const linkStyles = css`
   color: ${designSystem.colors.light.textPrimary} !important;
 
   svg {
-    * {
-      fill: ${designSystem.colors.light.textPrimary} !important;
-    }
+    fill: ${designSystem.colors.light.textPrimary} !important;
   }
 
   :hover {
     color: ${designSystem.colors.light.linkNavigation} !important;
 
     svg {
-      * {
-        fill: ${designSystem.colors.light.linkNavigation} !important;
-      }
+      fill: ${designSystem.colors.light.linkNavigation} !important;
     }
   }
 `;

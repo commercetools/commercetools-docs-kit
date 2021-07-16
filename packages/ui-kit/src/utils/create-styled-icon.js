@@ -53,7 +53,7 @@ const getColor = (color) => {
 export default function createStyledIcon(Component) {
   const StyledComponent = styled(Component)(
     (props) => css`
-      * {
+      *:not([fill='none']) {
         fill: ${getColor(props.color)};
       }
       ${getSizeStyle(props.size)}
