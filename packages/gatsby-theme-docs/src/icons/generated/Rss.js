@@ -13,7 +13,6 @@ function SvgRss(props) {
         id="rss_svg__Release-notes-//-Final"
         stroke="none"
         strokeWidth={1}
-        fill="none"
         fillRule="evenodd"
       >
         <g

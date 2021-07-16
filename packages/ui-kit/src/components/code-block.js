@@ -33,15 +33,11 @@ const Preformatted = styled.pre`
 const CopyArea = styled.div`
   cursor: pointer;
   svg {
-    * {
-      fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIcon};
-    }
+    fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIcon};
   }
   :hover {
     svg {
-      * {
-        fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIconHover};
-      }
+      fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIconHover};
     }
   }
 `;
