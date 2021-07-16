@@ -1,5 +1,17 @@
 # @commercetools-website/docs-smoke-test
 
+## 4.1.6
+
+### Patch Changes
+
+- [#1030](https://github.com/commercetools/commercetools-docs-kit/pull/1030) [`f8d04a9`](https://github.com/commercetools/commercetools-docs-kit/commit/f8d04a930f5d3c029dfb3fed0b7b1582ee64ba89) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit packages to `12.2.1`
+
+- Updated dependencies [[`f8d04a9`](https://github.com/commercetools/commercetools-docs-kit/commit/f8d04a930f5d3c029dfb3fed0b7b1582ee64ba89)]:
+  - @commercetools-docs/gatsby-theme-docs@17.0.2
+  - @commercetools-docs/ui-kit@17.0.2
+  - @commercetools-docs/gatsby-theme-code-examples@17.0.2
+  - @commercetools-docs/gatsby-theme-constants@17.0.2
+
 ## 4.1.5
 
 ### Patch Changes
