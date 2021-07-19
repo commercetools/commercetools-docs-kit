@@ -71,23 +71,26 @@ function ParameterRow(props) {
   return (
     <tr key={props.parameter.name}>
       <td>
-        <PropertyName className="name-type">
-          <SpacingsInline scale="xs">
-            <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
-            {props.parameter.required && <Required />}
-          </SpacingsInline>
-        </PropertyName>
-        <PropertyType className="name name-type">
-          {typeToRender.displayPrefix && (
-            <span className="name">{typeToRender.displayPrefix}</span>
-          )}
+        <SpacingsInline scale="xs">
+          <PropertyName className="name-type">
+            <SpacingsInline scale="xs">
+              <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
+              {props.parameter.required && <Required />}
+            </SpacingsInline>
+          </PropertyName>
 
-          {typeof typeToRender.type === 'string' ? (
-            <span className="name">{typeToRender.type}</span>
-          ) : (
-            typeToRender.type
-          )}
-        </PropertyType>
+          <PropertyType className="name name-type">
+            {typeToRender.displayPrefix && (
+              <span className="name">{typeToRender.displayPrefix}</span>
+            )}
+
+            {typeof typeToRender.type === 'string' ? (
+              <span className="name">{typeToRender.type}</span>
+            ) : (
+              typeToRender.type
+            )}
+          </PropertyType>
+        </SpacingsInline>
       </td>
       <td>
         <SpacingsStack scale="xs">
