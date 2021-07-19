@@ -17,18 +17,14 @@ const linkStyles = css`
   line-height: ${designSystem.typography.lineHeights.body};
 
   svg {
-    * {
-      fill: ${designSystem.colors.light.surfaceSecondary3} !important;
-    }
+    fill: ${designSystem.colors.light.surfaceSecondary3} !important;
   }
 
   :hover {
     color: ${designSystem.colors.light.linkNavigation} !important;
 
     svg {
-      * {
-        fill: ${designSystem.colors.light.linkNavigation} !important;
-      }
+      fill: ${designSystem.colors.light.linkNavigation} !important;
     }
   }
 `;

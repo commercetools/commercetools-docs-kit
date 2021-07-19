@@ -1,11 +1,6 @@
 const isHastHeading = require('hast-util-heading');
 
 const isHeading = (node) => {
-  if (node.type === 'jsx') {
-    // will will later want to introspect here and consider certain of our Api generation JSX
-    // as section delimiting "headings" that cause a new section to be started.
-    // this requires parsing the node.value string into a DOM (see MDX introspection plugin)
-  }
   return isHastHeading(node);
 };
 
@@ -13,6 +8,15 @@ const isHeading = (node) => {
 // (e.g. h1 -> h2, h2 -> h3), we return the shifted tagName here as well.
 const mapNodeTagName = (tagName) =>
   tagName.replace(/([0-9])$/, (match) => parseInt(match, 10) + 1);
+
+// check for empty sections or sections that are just a blank line
+// (e.g. after an import statement or because there is no content in the lead)
+const sectionIsBlank = (sectionNode) => {
+  if (sectionNode.children.length === 0) return true;
+  if (!sectionNode.children.some((n) => n.type !== 'text' || n.value !== '\n'))
+    return true;
+  return false;
+};
 
 module.exports =
   ({ leadSectionClassSuffix = 'lead' } = {}) =>
@@ -29,7 +33,7 @@ module.exports =
     // eslint-disable-next-line no-restricted-syntax
     for (const node of ast.children) {
       if (isHeading(node)) {
-        if (sectionNode.children.length > 0) {
+        if (!sectionIsBlank(sectionNode)) {
           newNodes.push(sectionNode);
         }
         sectionNode = {
@@ -47,7 +51,7 @@ module.exports =
         sectionNode.children.push(node);
       }
     }
-    if (sectionNode.children.length > 0) {
+    if (!sectionIsBlank(sectionNode)) {
       newNodes.push(sectionNode);
     }
     // eslint-disable-next-line no-param-reassign

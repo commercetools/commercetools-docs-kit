@@ -1,8 +1,8 @@
-import useApiByApiKey from './use-api-by-api-key';
+import { useApiByKey } from './use-apis';
 import { useApiResourceByApiKeyAndResourcePathUri } from './use-api-resources';
 
-const useReadResourceByResourcePath = (apiKey, resourcePath) => {
-  const api = useApiByApiKey(apiKey);
+export const useReadResourceByResourcePath = (apiKey, resourcePath) => {
+  const api = useApiByKey(apiKey);
   const matchedResource = useApiResourceByApiKeyAndResourcePathUri(
     apiKey,
     resourcePath
@@ -36,5 +36,3 @@ function mergeUriParameters(baseUriParameters, uriParameters) {
 
   return returnedParams.length > 0 ? returnedParams : undefined;
 }
-
-export default useReadResourceByResourcePath;

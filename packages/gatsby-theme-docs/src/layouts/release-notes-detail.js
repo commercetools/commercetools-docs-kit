@@ -60,22 +60,18 @@ const LayoutReleaseNotesDetail = (props) => {
                 noUnderline={true}
                 css={css`
                   svg {
-                    * {
-                      fill: ${designSystem.colors.light.link};
-                    }
+                    fill: ${designSystem.colors.light.link};
                   }
 
                   :hover {
                     svg {
-                      * {
-                        fill: ${designSystem.colors.light.linkHover};
-                      }
+                      fill: ${designSystem.colors.light.linkHover};
                     }
                   }
                 `}
               >
                 <SpacingsInline alignItems="center">
-                  <AngleLeftIcon size="medium" color="primary" />
+                  <AngleLeftIcon size="medium" />
 
                   <span
                     css={css`

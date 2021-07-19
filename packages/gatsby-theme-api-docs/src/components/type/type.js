@@ -6,17 +6,14 @@ import {
 } from '@commercetools-docs/gatsby-theme-docs';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { generateTypeURN } from '../../utils/ctp-urn';
-import { useApiTypes } from '../../hooks/use-api-types';
 import reportError from '../../utils/report-error';
-import Description from '../description';
+import { DescriptionParagraph } from '../description';
 import Enum from './enum';
 import Properties from './properties/properties';
 import Examples from './examples';
 
 const ApiType = (props) => {
-  const apiTypes = useApiTypes();
-
-  const matchedApiType = apiTypes.find((apiType) => {
+  const matchedApiType = props.apiTypes.find((apiType) => {
     return (
       apiType.apiKey === props.apiKey && apiType.displayName === props.type
     );
@@ -32,7 +29,9 @@ const ApiType = (props) => {
     return (
       <>
         {props.apiType.description && (
-          <Description>{props.apiType.description}</Description>
+          <DescriptionParagraph>
+            {props.apiType.description}
+          </DescriptionParagraph>
         )}
         {props.apiType.enumeration && (
           <Enum
@@ -87,6 +86,7 @@ const ApiType = (props) => {
 
 ApiType.propTypes = {
   apiKey: PropTypes.string.isRequired,
+  apiTypes: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
   propertiesTableTitle: PropTypes.oneOfType([
     PropTypes.string,

@@ -1,12 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import {
-  markdownFragmentToReact,
   SideBySide,
+  FullWidthContainer,
 } from '@commercetools-docs/gatsby-theme-docs';
 import { generateEndpointURN } from '../../../utils/ctp-urn';
 import { tokens, dimensions, colors, typography } from '../../../design-system';
@@ -14,8 +13,9 @@ import Url from './url';
 import Scopes from './scopes';
 import Responses from './responses';
 import Parameters from './parameters';
+import QueryParameters from './query-parameters';
 import RequestRepresentation from './request-representation';
-import Description from '../../description';
+import { DescriptionParagraph } from '../../description';
 import RequestResponseExamples from './request-response-examples';
 
 const Title = styled.h6`
@@ -58,69 +58,71 @@ const Method = ({
   });
 
   return (
-    <SpacingsStack scale="s">
-      {title ? (
-        <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
-      ) : (
-        <a name={id}></a>
-      )}
+    <FullWidthContainer>
+      <SpacingsStack scale="s">
+        {title ? (
+          <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
+        ) : (
+          <a name={id}></a>
+        )}
 
-      {method.description && (
-        <Description>{markdownFragmentToReact(method.description)}</Description>
-      )}
+        {method.description && (
+          <DescriptionParagraph>{method.description}</DescriptionParagraph>
+        )}
 
-      <Container
-        css={css`
-          border-left-color: ${methodColor};
-        `}
-      >
-        <SideBySide>
-          <SpacingsStack scale="l">
-            <Url
+        <Container
+          css={css`
+            border-left-color: ${methodColor};
+          `}
+        >
+          <SideBySide>
+            <SpacingsStack scale="l">
+              <Url
+                apiKey={apiKey}
+                method={methodType}
+                methodColor={methodColor}
+                uris={uris}
+              />
+
+              {method.securedBy && (
+                <Scopes scopes={method.securedBy[0].oauth_2_0.scopes} />
+              )}
+
+              {allUriParameters.length > 0 && (
+                <Parameters
+                  title={'Path parameters'}
+                  parameters={allUriParameters}
+                />
+              )}
+
+              {method.queryParameters && (
+                <QueryParameters
+                  apiKey={apiKey}
+                  title={'Query parameters'}
+                  queryParameters={method.queryParameters}
+                />
+              )}
+
+              {method.body && (
+                <RequestRepresentation
+                  apiKey={apiKey}
+                  apiType={method.body.applicationjson.type}
+                />
+              )}
+
+              {method.responses && (
+                <Responses apiKey={apiKey} responses={method.responses} />
+              )}
+            </SpacingsStack>
+            <RequestResponseExamples
               apiKey={apiKey}
-              method={methodType}
-              methodColor={methodColor}
-              uris={uris}
+              requestCodeExamples={method.codeExamples}
+              responses={method.responses}
             />
-
-            {method.securedBy && (
-              <Scopes scopes={method.securedBy[0].oauth_2_0.scopes} />
-            )}
-
-            {allUriParameters.length > 0 && (
-              <Parameters
-                title={'Path parameters'}
-                parameters={allUriParameters}
-              />
-            )}
-
-            {method.queryParameters && (
-              <Parameters
-                apiKey={apiKey}
-                title={'Query parameters'}
-                parameters={method.queryParameters}
-              />
-            )}
-
-            {method.body && (
-              <RequestRepresentation
-                apiKey={apiKey}
-                apiType={method.body.applicationjson.type}
-              />
-            )}
-
-            {method.responses && (
-              <Responses apiKey={apiKey} responses={method.responses} />
-            )}
-          </SpacingsStack>
-          <RequestResponseExamples
-            apiKey={apiKey}
-            requestCodeExamples={method.codeExamples}
-            responses={method.responses}
-          />
-        </SideBySide>
-      </Container>
-    </SpacingsStack>
+          </SideBySide>
+        </Container>
+      </SpacingsStack>
+    </FullWidthContainer>
   );
 };
 
@@ -129,8 +131,9 @@ function computeMethodColor(methodName) {
     case 'get':
       return colors.light.methods.get;
     case 'post':
-    case 'put':
       return colors.light.methods.post;
+    case 'put':
+      return colors.light.methods.put;
     case 'delete':
       return colors.light.methods.delete;
     default:

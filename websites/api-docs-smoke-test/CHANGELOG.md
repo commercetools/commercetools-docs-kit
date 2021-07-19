@@ -1,5 +1,42 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 5.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`f8d04a9`](https://github.com/commercetools/commercetools-docs-kit/commit/f8d04a930f5d3c029dfb3fed0b7b1582ee64ba89)]:
+  - @commercetools-docs/gatsby-theme-api-docs@17.0.2
+  - @commercetools-docs/gatsby-theme-docs@17.0.2
+
+## 5.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`a9aae5d`](https://github.com/commercetools/commercetools-docs-kit/commit/a9aae5da783d257a7e2cee75b8d21e37749b0274), [`6fa3bbc`](https://github.com/commercetools/commercetools-docs-kit/commit/6fa3bbc41dfdca9644ab9cff9b71d952f430afcc)]:
+  - @commercetools-docs/gatsby-theme-api-docs@17.0.1
+  - @commercetools-docs/rmf-codegen@12.4.0
+  - @commercetools-docs/gatsby-theme-docs@17.0.1
+
+## 5.0.0
+
+### Major Changes
+
+- [#997](https://github.com/commercetools/commercetools-docs-kit/pull/997) [`18f44a9`](https://github.com/commercetools/commercetools-docs-kit/commit/18f44a9cb27c4e0a782cb910cdeabff136cdfab2) Thanks [@nkuehn](https://github.com/nkuehn)! - Refactored the provisioning of theme extensions' components into MDX to support components that have to be imported explicitly in MDX. Auto-provided components now have to be exported via `./shortcodes` by theme add-ons.
+
+  The API documentation is not automatically injecting its components into MDX any more to allow sites with large APIs to optimize the site performance (time to interactive).
+
+  To migrate, all MDX pages have to explicitly import the `ApiType` and `ApiEndpoint` components. It's recommended that sites create an intermediate `/shortcodes.js` file so that the MDX import lines only read
+
+  ```
+  import { ApiType, ApiEndpoint } from "./shortcodes"
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`18f44a9`](https://github.com/commercetools/commercetools-docs-kit/commit/18f44a9cb27c4e0a782cb910cdeabff136cdfab2), [`853f891`](https://github.com/commercetools/commercetools-docs-kit/commit/853f8915072f8153fd1efa266b06b66f0360717a), [`8d25b89`](https://github.com/commercetools/commercetools-docs-kit/commit/8d25b89ea3214bb631a1a82813678d8e0e3b55a3), [`4350552`](https://github.com/commercetools/commercetools-docs-kit/commit/4350552a891816ea3356bf350385eee797cd3365)]:
+  - @commercetools-docs/gatsby-theme-api-docs@17.0.0
+  - @commercetools-docs/gatsby-theme-docs@17.0.0
+
 ## 4.0.7
 
 ### Patch Changes

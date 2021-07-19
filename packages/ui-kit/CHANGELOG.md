@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 17.0.2
+
+### Patch Changes
+
+- [#1030](https://github.com/commercetools/commercetools-docs-kit/pull/1030) [`f8d04a9`](https://github.com/commercetools/commercetools-docs-kit/commit/f8d04a930f5d3c029dfb3fed0b7b1582ee64ba89) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit packages to `12.2.1`
+
 ## 16.3.1
 
 ### Patch Changes

@@ -42,6 +42,7 @@ const LayoutContentHomepage = (props) => {
           {...layoutState.topMenu}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+          allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
         <LayoutPageWrapper>
           <LayoutPageWithHero
@@ -76,6 +77,7 @@ LayoutContentHomepage.propTypes = {
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
+    allowWideContentLayout: PropTypes.bool.isRequired,
   }).isRequired,
   heroBackground: PropTypes.shape({
     publicURL: PropTypes.string.isRequired,

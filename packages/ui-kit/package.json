@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/ui-kit",
   "description": "UI component library for building commercetools documentation websites",
-  "version": "16.3.1",
+  "version": "17.0.2",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -21,12 +21,12 @@
   },
   "dependencies": {
     "@babel/runtime": "7.14.6",
-    "@babel/runtime-corejs3": "7.14.6",
-    "@commercetools-uikit/design-system": "^12.0.0",
-    "@commercetools-uikit/icons": "^12.0.0",
-    "@commercetools-uikit/loading-spinner": "^12.0.0",
-    "@commercetools-uikit/spacings-inline": "^12.0.0",
-    "@commercetools-uikit/tooltip": "^12.0.0",
+    "@babel/runtime-corejs3": "7.14.7",
+    "@commercetools-uikit/design-system": "^12.1.0",
+    "@commercetools-uikit/icons": "^12.2.1",
+    "@commercetools-uikit/loading-spinner": "^12.2.0",
+    "@commercetools-uikit/spacings-inline": "^12.2.0",
+    "@commercetools-uikit/tooltip": "^12.2.0",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "lodash.escape": "4.0.1",

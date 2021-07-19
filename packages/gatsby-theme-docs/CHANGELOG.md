@@ -1,5 +1,39 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 17.0.2
+
+### Patch Changes
+
+- [#1030](https://github.com/commercetools/commercetools-docs-kit/pull/1030) [`f8d04a9`](https://github.com/commercetools/commercetools-docs-kit/commit/f8d04a930f5d3c029dfb3fed0b7b1582ee64ba89) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit packages to `12.2.1`
+
+- Updated dependencies [[`f8d04a9`](https://github.com/commercetools/commercetools-docs-kit/commit/f8d04a930f5d3c029dfb3fed0b7b1582ee64ba89)]:
+  - @commercetools-docs/ui-kit@17.0.2
+
+## 17.0.1
+
+### Patch Changes
+
+- [#1027](https://github.com/commercetools/commercetools-docs-kit/pull/1027) [`6fa3bbc`](https://github.com/commercetools/commercetools-docs-kit/commit/6fa3bbc41dfdca9644ab9cff9b71d952f430afcc) Thanks [@nkuehn](https://github.com/nkuehn)! - - upgrade rmf-codegen to 0.18
+  - bug fix
+
+## 17.0.0
+
+### Major Changes
+
+- [#997](https://github.com/commercetools/commercetools-docs-kit/pull/997) [`18f44a9`](https://github.com/commercetools/commercetools-docs-kit/commit/18f44a9cb27c4e0a782cb910cdeabff136cdfab2) Thanks [@nkuehn](https://github.com/nkuehn)! - Refactored the provisioning of theme extensions' components into MDX to support components that have to be imported explicitly in MDX. Auto-provided components now have to be exported via `./shortcodes` by theme add-ons.
+
+  The API documentation is not automatically injecting its components into MDX any more to allow sites with large APIs to optimize the site performance (time to interactive).
+
+  To migrate, all MDX pages have to explicitly import the `ApiType` and `ApiEndpoint` components. It's recommended that sites create an intermediate `/shortcodes.js` file so that the MDX import lines only read
+
+  ```
+  import { ApiType, ApiEndpoint } from "./shortcodes"
+  ```
+
+### Patch Changes
+
+- [#1018](https://github.com/commercetools/commercetools-docs-kit/pull/1018) [`853f891`](https://github.com/commercetools/commercetools-docs-kit/commit/853f8915072f8153fd1efa266b06b66f0360717a) Thanks [@nkuehn](https://github.com/nkuehn)! - Resolve URN style links in RAML descriptions
+
 ## 16.3.1
 
 ### Patch Changes

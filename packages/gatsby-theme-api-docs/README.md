@@ -91,11 +91,24 @@ If you want to override the location to link to for certain API data types, crea
 
 ## Using UI components in MDX
 
-The package exposes the following components in the MDX context:
+Because the API documentation components load the complete API specification data, they are **not** automatically injected into the MDX provider but have to be imported explicitly.
+
+By convention it's recommended that websites define a `/shortcodes.js` module that can then be addressed in the MDX pages:
+
+```js
+export {
+  ApiType,
+  ApiEndpoint,
+  ApiEndpointsForResource,
+} from '@commercetools-docs/gatsby-theme-api-docs';
+```
+
+The package exposes the following components:
 
 - `<ApiType>`: Renders an API type.
 
 ```jsx
+import { ApiType } from '/shortcodes';
 {
   /*
   apiKey - name of the specs directory
@@ -109,6 +122,7 @@ The package exposes the following components in the MDX context:
 - `<ApiEndpoint>`: Renders an API endpoint.
 
 ```jsx
+import { ApiEndpoint } from '/shortcodes';
 {
   /*
   apiKey - name of the specs directory
@@ -128,6 +142,7 @@ The package exposes the following components in the MDX context:
 - `<ApiEndpointsForResource>`: Renders all endpoints of an API resource.
 
 ```jsx
+import { ApiEndpointsForResource } from '/shortcodes';
 {
   /*
   apiKey - name of the specs directory

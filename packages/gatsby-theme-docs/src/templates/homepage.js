@@ -55,6 +55,7 @@ HomepageTemplate.propTypes = {
       beta: PropTypes.bool.isRequired,
       isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
+      allowWideContentLayout: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
     }).isRequired,
     heroBackground: PropTypes.shape({
@@ -72,6 +73,7 @@ export const query = graphql`
       beta
       isGlobalBeta
       excludeFromSearchIndex
+      allowWideContentLayout
       body
     }
     heroBackground: file(relativePath: { eq: $heroBackgroundRelativePath }) {

@@ -1,5 +1,33 @@
 # @commercetools-website/docs-smoke-test
 
+## 4.1.6
+
+### Patch Changes
+
+- [#1030](https://github.com/commercetools/commercetools-docs-kit/pull/1030) [`f8d04a9`](https://github.com/commercetools/commercetools-docs-kit/commit/f8d04a930f5d3c029dfb3fed0b7b1582ee64ba89) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit packages to `12.2.1`
+
+- Updated dependencies [[`f8d04a9`](https://github.com/commercetools/commercetools-docs-kit/commit/f8d04a930f5d3c029dfb3fed0b7b1582ee64ba89)]:
+  - @commercetools-docs/gatsby-theme-docs@17.0.2
+  - @commercetools-docs/ui-kit@17.0.2
+  - @commercetools-docs/gatsby-theme-code-examples@17.0.2
+  - @commercetools-docs/gatsby-theme-constants@17.0.2
+
+## 4.1.5
+
+### Patch Changes
+
+- Updated dependencies [[`6fa3bbc`](https://github.com/commercetools/commercetools-docs-kit/commit/6fa3bbc41dfdca9644ab9cff9b71d952f430afcc)]:
+  - @commercetools-docs/gatsby-theme-docs@17.0.1
+
+## 4.1.4
+
+### Patch Changes
+
+- Updated dependencies [[`18f44a9`](https://github.com/commercetools/commercetools-docs-kit/commit/18f44a9cb27c4e0a782cb910cdeabff136cdfab2), [`853f891`](https://github.com/commercetools/commercetools-docs-kit/commit/853f8915072f8153fd1efa266b06b66f0360717a)]:
+  - @commercetools-docs/gatsby-theme-code-examples@17.0.0
+  - @commercetools-docs/gatsby-theme-constants@17.0.0
+  - @commercetools-docs/gatsby-theme-docs@17.0.0
+
 ## 4.1.3
 
 ### Patch Changes

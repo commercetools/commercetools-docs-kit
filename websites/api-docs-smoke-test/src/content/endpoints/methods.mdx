@@ -3,6 +3,8 @@ title: Methods
 description: All cases for endpoint methods
 ---
 
+import { ApiEndpoint } from "/shortcodes"
+
 # Get Resource
 
 ```jsx
@@ -77,6 +79,18 @@ description: All cases for endpoint methods
 
 <ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="POST" />
 
+# PUT Resource
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource"
+  method="PUT"
+/>
+```
+
+<ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="PUT" />
+
 # POST with All Options
 
 ```jsx
@@ -123,4 +137,22 @@ description: All cases for endpoint methods
   apiKey="test"
   resource="/{projectKey}/resource/{id}"
   method="DELETE"
+/>
+
+# Query Parameters with multiple instances
+
+The types of `expand`, `sort`, `where`, and `/^var[.][a-zA-Z0-9]+$/` will be rendered as a `String`. An additional description will be auto-generated to illustrate usage.
+
+```jsx
+<ApiEndpoint
+  apiKey="api"
+  resource="/{projectKey}/api-clients"
+  method="GET"
+/>
+```
+
+<ApiEndpoint
+  apiKey="api"
+  resource="/{projectKey}/api-clients"
+  method="GET"
 />

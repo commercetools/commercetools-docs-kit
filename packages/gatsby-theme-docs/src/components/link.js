@@ -36,15 +36,11 @@ const InlineLink = styled.span`
     margin: 0 0 0 ${designSystem.dimensions.spacings.xs};
   }
   svg {
-    * {
-      fill: ${designSystem.colors.light.link};
-    }
+    fill: ${designSystem.colors.light.link};
   }
   :hover {
     svg {
-      * {
-        fill: ${designSystem.colors.light.linkHover};
-      }
+      fill: ${designSystem.colors.light.linkHover};
     }
   }
 `;
@@ -79,12 +75,11 @@ export const ExternalSiteLink = (props) => (
  * ???
  *
  * ## other CT site
- * https://docs.commercetools.com/app-kit/getting-started
- * - prod: without origin
- * - dev: warning
- *
- * ### hidden features
  * /../app-kit/getting-started
+ * OR:
+ * https://docs.commercetools.com/app-kit/getting-started
+ * - prod: without origin, removed automatically
+ * - dev: warning
  *
  * ## external site
  * https://<domain>/something/else

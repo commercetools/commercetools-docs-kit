@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FullWidthContainer } from '@commercetools-docs/gatsby-theme-docs';
-import useReadResourceByResourcePath from '../hooks/use-read-resource-by-resource-path';
+import { useReadResourceByResourcePath } from '../hooks/use-read-resource-by-resource-path';
 import reportError from '../utils/report-error';
 import Method from './resource/method';
 
-const ResourceMethod = ({ apiKey, resource, method, title }) => {
+const ResourceMethodByKey = ({ apiKey, resource, method, title }) => {
   const resourceObject = useReadResourceByResourcePath(apiKey, resource);
 
   if (!resourceObject) {
@@ -21,24 +20,22 @@ const ResourceMethod = ({ apiKey, resource, method, title }) => {
   }
 
   return (
-    <FullWidthContainer>
-      <Method
-        apiKey={apiKey}
-        uris={resourceObject.uris}
-        resourceUriParameters={resourceObject.allUriParameters}
-        method={methodObject}
-        methodType={method}
-        title={title}
-      />
-    </FullWidthContainer>
+    <Method
+      apiKey={apiKey}
+      uris={resourceObject.uris}
+      resourceUriParameters={resourceObject.allUriParameters}
+      method={methodObject}
+      methodType={method}
+      title={title}
+    />
   );
 };
 
-ResourceMethod.propTypes = {
+ResourceMethodByKey.propTypes = {
   apiKey: PropTypes.string.isRequired,
   resource: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,
   title: PropTypes.string,
 };
 
-export default ResourceMethod;
+export default ResourceMethodByKey;
