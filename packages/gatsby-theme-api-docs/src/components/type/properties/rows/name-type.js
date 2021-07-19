@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { BetaFlag } from '@commercetools-docs/gatsby-theme-docs';
 import { typography } from '../../../../design-system';
 import useTypeToRender from '../../../../hooks/use-type-to-render';
@@ -35,33 +36,35 @@ const NameType = (props) => {
   return (
     <SpacingsStack scale="xs">
       <PropertyName className="name-type">
-        {isRegex(props.property.name) ? (
-          <Markdown.InlineCode>
-            <span
-              css={css`
-                color: ${designSystem.colors.light.textInfo};
-              `}
-            >
-              /
-            </span>
-            {getExpressionInsideSlashes(props.property.name)[1]}
-            <span
-              css={css`
-                color: ${designSystem.colors.light.textInfo};
-              `}
-            >
-              /
-            </span>
-          </Markdown.InlineCode>
-        ) : (
-          <Markdown.InlineCode>{props.property.name}</Markdown.InlineCode>
-        )}
-        {props.property.required && <Required />}
-        {props.property.beta && (
-          <BetaWrapper>
-            <BetaFlag />
-          </BetaWrapper>
-        )}
+        <SpacingsInline scale="xs">
+          {isRegex(props.property.name) ? (
+            <Markdown.InlineCode>
+              <span
+                css={css`
+                  color: ${designSystem.colors.light.textInfo};
+                `}
+              >
+                /
+              </span>
+              {getExpressionInsideSlashes(props.property.name)[1]}
+              <span
+                css={css`
+                  color: ${designSystem.colors.light.textInfo};
+                `}
+              >
+                /
+              </span>
+            </Markdown.InlineCode>
+          ) : (
+            <Markdown.InlineCode>{props.property.name}</Markdown.InlineCode>
+          )}
+          {props.property.required && <Required />}
+          {props.property.beta && (
+            <BetaWrapper>
+              <BetaFlag />
+            </BetaWrapper>
+          )}
+        </SpacingsInline>
       </PropertyName>
       <PropertyType className="name-type">
         {typeToRender.displayPrefix && (
