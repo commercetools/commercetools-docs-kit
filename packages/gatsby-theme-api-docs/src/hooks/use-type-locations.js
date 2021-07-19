@@ -3,38 +3,45 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { generateTypeURN } from '../utils/ctp-urn';
 import { useTypeLocationOverrides } from './use-type-location-overrides';
 
+var locationsAreIndexed = false;
+var overridesAreIndexed = false;
+const typeLocations = {};
+const typeLocationOverrides = {};
+
 const buildPageSlug = (page) => {
   const [pathWithoutExt] = page.parent.relativePath.split(page.parent.ext);
   return `/${pathWithoutExt}`;
 };
 
 const convertComponentInMdxToTypeLocations = (data) => {
-  const typeLocations = {};
-  data.allComponentInMdx.nodes.forEach((node) => {
-    const apiKey =
-      node.attributes[0].name === 'apiKey' ? node.attributes[0].value : null;
-    const name =
-      node.attributes[1].name === 'type' ? node.attributes[1].value : null;
+  if (!locationsAreIndexed) {
+    data.allComponentInMdx.nodes.forEach((node) => {
+      const apiKey =
+        node.attributes[0].name === 'apiKey' ? node.attributes[0].value : null;
+      const name =
+        node.attributes[1].name === 'type' ? node.attributes[1].value : null;
 
-    const slug = buildPageSlug(node.page);
-    const urn = generateTypeURN({ apiKey, displayName: name });
-    const url = slug && urn ? `${slug}#${urn}` : '';
+      const slug = buildPageSlug(node.page);
+      const urn = generateTypeURN({ apiKey, displayName: name });
+      const url = slug && urn ? `${slug}#${urn}` : '';
 
-    typeLocations[`${apiKey}__${name}`] = { url };
-  });
-  return typeLocations;
+      typeLocations[`${apiKey}__${name}`] = { url };
+    });
+  }
+  locationsAreIndexed = true;
 };
 
-const getTypeLocationOverrides = (typeLocationData) => {
-  const typeLocationOverrides = {};
-  typeLocationData.forEach((api) => {
-    api.locations.forEach((location) => {
-      typeLocationOverrides[`${api.api}__${location.type}`] = {
-        url: location.href,
-      };
+const convertTypeLocationOverrides = (typeLocationData) => {
+  if (!overridesAreIndexed) {
+    typeLocationData.forEach((api) => {
+      api.locations.forEach((location) => {
+        typeLocationOverrides[`${api.api}__${location.type}`] = {
+          url: location.href,
+        };
+      });
     });
-  });
-  return typeLocationOverrides;
+  }
+  overridesAreIndexed = true;
 };
 
 export const useTypeLocations = () => {
@@ -61,10 +68,8 @@ export const useTypeLocations = () => {
       }
     `
   );
-  const typeLocations = convertComponentInMdxToTypeLocations(queryResult);
-  const typeLocationOverrides = getTypeLocationOverrides(
-    useTypeLocationOverrides()
-  );
+  convertComponentInMdxToTypeLocations(queryResult);
+  convertTypeLocationOverrides(useTypeLocationOverrides());
   return { ...typeLocations, ...typeLocationOverrides };
 };
 
