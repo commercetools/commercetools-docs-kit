@@ -191,7 +191,6 @@ const ChildSectionsNav = (props) => {
           ) : null}
           <SearchInput
             type="text"
-            id="searchInput"
             aria-label="Search"
             value={searchValue || ''}
             onChange={(event) => setSearchValue(event.target.value)}
