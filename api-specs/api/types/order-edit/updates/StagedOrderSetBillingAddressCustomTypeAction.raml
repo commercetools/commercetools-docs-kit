@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+(package): OrderEdit
+(docs-uri): https://docs.commercetools.com/api/projects/order-edits#set-billing-address-custom-type
+type: StagedOrderUpdateAction
+displayName: StagedOrderSetBillingAddressCustomTypeAction
+discriminatorValue: setBillingAddressCustomType
+(postman-example): !include ../../../examples/OrderEdit/StagedOrderSetShippingAddressCustomTypeAction.json
+properties:
+  type?:
+    type: TypeResourceIdentifier
+  fields?:
+    type: FieldContainer
