@@ -1,5 +1,13 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 17.0.3
+
+### Patch Changes
+
+- [#1007](https://github.com/commercetools/commercetools-docs-kit/pull/1007) [`aa4b6da`](https://github.com/commercetools/commercetools-docs-kit/commit/aa4b6da6433acc32b37a9ceae9b5e38a460d867b) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency prismjs to v1.24.0 [security]
+
+* [#1035](https://github.com/commercetools/commercetools-docs-kit/pull/1035) [`27e1f49`](https://github.com/commercetools/commercetools-docs-kit/commit/27e1f4995983aa947d03d913c585e6eaae86ce40) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: duplicate searchInput id
+
 ## 17.0.2
 
 ### Patch Changes

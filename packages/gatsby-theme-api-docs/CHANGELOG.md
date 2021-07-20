@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 17.0.3
+
+### Patch Changes
+
+- [#1034](https://github.com/commercetools/commercetools-docs-kit/pull/1034) [`13f9e8e`](https://github.com/commercetools/commercetools-docs-kit/commit/13f9e8e30966b4717e910417e6115df1913d55ad) Thanks [@timonrey](https://github.com/timonrey)! - Use index for type locations to improve performance.
+
 ## 17.0.2
 
 ### Patch Changes
