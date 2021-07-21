@@ -5,6 +5,7 @@ import {
   designSystem as uiKitDesignSystem,
 } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useTypeToRender from '../../../hooks/use-type-to-render';
 import Required from '../../required';
 import Table from '../../table';
@@ -71,8 +72,10 @@ function ParameterRow(props) {
     <tr key={props.parameter.name}>
       <td>
         <PropertyName className="name-type">
-          <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
-          {props.parameter.required && <Required />}
+          <SpacingsInline scale="xs">
+            <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
+            {props.parameter.required && <Required />}
+          </SpacingsInline>
         </PropertyName>
         <PropertyType className="name name-type">
           {typeToRender.displayPrefix && (
