@@ -37,30 +37,28 @@ const NameType = (props) => {
     <SpacingsStack scale="xs">
       <PropertyName className="name-type">
         <SpacingsInline scale="xs">
-          <SpacingsInline scale="xs">
-            {isRegex(props.property.name) ? (
-              <Markdown.InlineCode>
-                <span
-                  css={css`
-                    color: ${designSystem.colors.light.textInfo};
-                  `}
-                >
-                  /
-                </span>
-                {getExpressionInsideSlashes(props.property.name)[1]}
-                <span
-                  css={css`
-                    color: ${designSystem.colors.light.textInfo};
-                  `}
-                >
-                  /
-                </span>
-              </Markdown.InlineCode>
-            ) : (
-              <Markdown.InlineCode>{props.property.name}</Markdown.InlineCode>
-            )}
-            {props.property.required && <Required />}
-          </SpacingsInline>
+          {isRegex(props.property.name) ? (
+            <Markdown.InlineCode>
+              <span
+                css={css`
+                  color: ${designSystem.colors.light.textInfo};
+                `}
+              >
+                /
+              </span>
+              {getExpressionInsideSlashes(props.property.name)[1]}
+              <span
+                css={css`
+                  color: ${designSystem.colors.light.textInfo};
+                `}
+              >
+                /
+              </span>
+            </Markdown.InlineCode>
+          ) : (
+            <Markdown.InlineCode>{props.property.name}</Markdown.InlineCode>
+          )}
+          {props.property.required && <Required />}
           {props.property.beta && (
             <BetaWrapper>
               <BetaFlag />
