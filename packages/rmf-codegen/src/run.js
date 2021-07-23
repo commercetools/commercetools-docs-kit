@@ -5,7 +5,7 @@ const { rmfCodegenVersion } = require('../package.json');
 function run(args) {
   const jarFile = path.resolve(
     __dirname,
-    `../bin/rmf-codegen-${rmfCodegenVersion}.jar`
+    `../bin/rmf-codegen.jar`
   );
 
   return spawn('java', ['-jar', jarFile, ...args], {

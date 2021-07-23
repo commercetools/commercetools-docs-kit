@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/rmf-codegen",
   "version": "12.4.0",
-  "rmfCodegenVersion": "0.1.10",
+  "rmfCodegenVersion": "^0.1.7",
   "description": "Provides RMF-Codegen to javascript projects",
   "license": "MIT",
   "publishConfig": {
@@ -15,5 +15,8 @@
   "bin": {
     "rmf-codegen": "bin/rmf-codegen.js"
   },
-  "dependencies": {}
+  "dependencies": {
+    "cheerio": "1.0.0-rc.10",
+    "semver": "^7.3.5"
+  }
 }
