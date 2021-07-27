@@ -77,6 +77,7 @@ const SearchInput = React.forwardRef((props, ref) => {
   const handleBlur = () => {
     if (props.isDisabled) return;
     setIsActive(false);
+    props.onClose();
   };
   React.useEffect(() => {
     if (isLoading) {
