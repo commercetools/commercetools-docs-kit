@@ -160,4 +160,4 @@ import { ApiEndpointsForResource } from '/shortcodes';
 
 ### Resource Query Paramesters of Array Type
 
-All query parameters of array type are not rendered as arrays. Only the Type (e.g. `String`) of the array items is rendered along with additional text in the description that reads `The parameter can be passed multiple times.`.
+All query parameters of array type are not rendered as arrays. Only the type (e.g. `String`) of the array items is rendered along with additional text in the description that reads `The parameter can be passed multiple times.`.
