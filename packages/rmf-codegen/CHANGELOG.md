@@ -1,5 +1,11 @@
 # @commercetools-docs/rmf-codegen
 
+## 12.4.1
+
+### Patch Changes
+
+- [#1044](https://github.com/commercetools/commercetools-docs-kit/pull/1044) [`3b226d3`](https://github.com/commercetools/commercetools-docs-kit/commit/3b226d33000dd7c6713653d4ef42e301ebefaf79) Thanks [@nkuehn](https://github.com/nkuehn)! - Update rmf-codegen to `0.1.10`
+
 ## 12.4.0
 
 ### Minor Changes
