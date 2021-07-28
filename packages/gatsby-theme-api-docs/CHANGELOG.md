@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 17.0.4
+
+### Patch Changes
+
+- [#1043](https://github.com/commercetools/commercetools-docs-kit/pull/1043) [`8fcf1d2`](https://github.com/commercetools/commercetools-docs-kit/commit/8fcf1d2acb1b579c07157dd6811a5b3673e182d5) Thanks [@davifantasia](https://github.com/davifantasia)! - fix: property name and beta flag spacing
+
 ## 17.0.3
 
 ### Patch Changes
