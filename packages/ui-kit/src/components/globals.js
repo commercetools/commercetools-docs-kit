@@ -24,6 +24,10 @@ const Globals = () => (
         margin: 0;
       }
 
+      [data-reach-skip-link]:focus {
+        z-index: 100;
+      }
+
       /* Images */
 
       .gatsby-resp-image-wrapper {

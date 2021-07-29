@@ -19,6 +19,22 @@ import { docsCache } from './utils/create-emotion-cache';
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_VERCEL_GITHUB_COMMIT_SHA;
 
+// Focus `main` container for keyboard accessibility purposes.
+// This is apparently required in browsers such as Firefox or Safari.
+// In Chrome, it seems that the `autofocus` attribute is enough.
+// For more advanced uses cases, we might want to look into Gatsby's recommendations
+// of using `@react/skip-nav`:
+// * https://www.gatsbyjs.com/blog/2020-02-10-accessible-client-side-routing-improvements/
+// * https://github.com/gatsbyjs/gatsby/tree/master/examples/using-reach-skip-nav
+const focusMainContent = () => {
+  if (document) {
+    const elem = document.querySelector('main');
+    if (elem) {
+      elem.focus();
+    }
+  }
+};
+
 const injectScript = (url, attributes = {}, onLoad) => {
   const script = document.createElement('script');
   script.type = 'text/javascript';
@@ -69,8 +85,16 @@ export const onClientEntry = async (
     await import(`prismjs/components/prism-${lang}`);
   }
   delete window.Prism;
+
+  focusMainContent();
 };
 
 export const wrapRootElement = ({ element }) => (
   <CacheProvider value={docsCache}>{element}</CacheProvider>
 );
+
+export const onRouteUpdate = ({ prevLocation }) => {
+  if (prevLocation !== null) {
+    focusMainContent();
+  }
+};
