@@ -1,4 +1,4 @@
-import generateType from './type/generate-type';
+const generateType = require('./type/generate-type');
 
 function parametersToArray(parameters) {
   if (parameters) {
