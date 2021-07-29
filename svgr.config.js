@@ -13,12 +13,7 @@ const indexTemplate = (filePaths) => {
 module.exports = {
   icon: false,
   svgoConfig: {
-    plugins: [
-      { removeViewBox: false },
-      { prefixIds: true },
-      // Keeps ID's of svgs so they can be targeted with CSS
-      { cleanupIDs: false },
-    ],
+    plugins: [{ removeViewBox: false }],
   },
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
   indexTemplate,

@@ -1,14 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>rss</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Release-notes-//-Final" stroke="none" stroke-width="1" fill-rule="evenodd">
-        <g id="Release-Notes-//-Third-Iteration-/-All" transform="translate(-1074.000000, -63.000000)">
-            <g id="Group-11" transform="translate(1056.000000, 63.000000)"></g>
-            <g id="Component-/-icon-/-16px-/-RSS" transform="translate(1074.000000, 63.000000)" fill="#999999">
-                <path d="M10.9333333,12.4 C10.9333333,8.3499375 7.65010833,5.06666667 3.6,5.06666667 L3.6,3.6 C8.46012083,3.6 12.4,7.53987917 12.4,12.4 L10.9333333,12.4 Z M8.4,12.4 C8.4,9.749 6.251,7.6 3.6,7.6 L3.6,6 C7.1346,6 10,8.8654 10,12.4 L8.4,12.4 Z M5.2,12.4 C4.31635,12.4 3.6,11.68365 3.6,10.8 C3.6,9.91635 4.31635,9.2 5.2,9.2 C6.08365,9.2 6.8,9.91635 6.8,10.8 C6.8,11.68365 6.08365,12.4 5.2,12.4 L5.2,12.4 Z M11.75,2 L4.25,2 C3.00734375,2 2,3.00734375 2,4.25 L2,11.75 C2,12.9926562 3.00734375,14 4.25,14 L11.75,14 C12.9926562,14 14,12.9926562 14,11.75 L14,4.25 C14,3.00734375 12.9926562,2 11.75,2 L11.75,2 Z" id="Fill-1"></path>
-            </g>
-        </g>
-    </g>
+<svg viewBox="0 0 16 16" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
+  <g fill-rule="evenodd">
+    <path d="M10.933 12.4A7.333 7.333 0 003.6 5.067V3.6a8.8 8.8 0 018.8 8.8h-1.467zm-2.533 0a4.8 4.8 0 00-4.8-4.8V6a6.4 6.4 0 016.4 6.4H8.4zm-3.2 0a1.6 1.6 0 110-3.2 1.6 1.6 0 010 3.2zM11.75 2h-7.5A2.25 2.25 0 002 4.25v7.5A2.25 2.25 0 004.25 14h7.5A2.25 2.25 0 0014 11.75v-7.5A2.25 2.25 0 0011.75 2z" fill="#999"/>
+  </g>
 </svg>
