@@ -1,13 +1,14 @@
+import generateType from './type/generate-type';
+
 function parametersToArray(parameters) {
   if (parameters) {
-    return Object.entries(parameters).map(([key, value]) => {
+    return Object.entries(parameters).map(([key, parameter]) => {
       return {
-        ...value,
+        ...parameter,
         name: key,
 
-        // transforming number type to float is specific to commercetools
-        type: value.type === 'number' ? 'float' : value.type,
-        builtinType: value.type === 'number' ? 'float' : value.type,
+        type: generateType(parameter),
+        builtinType: generateType(parameter),
       };
     });
   }
