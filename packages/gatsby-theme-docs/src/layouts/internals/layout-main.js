@@ -26,7 +26,13 @@ const Container = styled.main`
 `;
 
 const LayoutMain = (props) => (
-  <Container preventScroll={props.preventScroll}>
+  <Container
+    preventScroll={props.preventScroll}
+    // This is important to make the main container the active element when the page loads.
+    // The user can then use the keyboard navigation for example to scroll up/down.
+    autoFocus
+    tabIndex={0}
+  >
     {props.isTopMenuOpen ? (
       // GIVEN that the viewport is equal or less than laptop (sidebar not visible)
       // AND the top menu has been opened
