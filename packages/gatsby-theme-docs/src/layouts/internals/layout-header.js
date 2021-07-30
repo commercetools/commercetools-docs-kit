@@ -215,7 +215,6 @@ const LayoutHeader = forwardRef((props, ref) => {
           <DocumentationSwitcherButton
             role="button"
             id="top-menu-switcher"
-            tabIndex="1"
             aria-expanded={props.isTopMenuOpen}
             aria-label={
               props.isTopMenuOpen ? 'Close Top Menu' : 'Open Top Menu'
