@@ -1,5 +1,5 @@
-function generateType(property) {
-  switch (property.type) {
+function generateType(type) {
+  switch (type.type) {
     case 'integer':
       return 'Int';
     case 'number':
@@ -11,12 +11,12 @@ function generateType(property) {
     case 'datetime-only':
       return 'DateTimeOnly';
     case 'datetime':
-      if (property.format) {
-        return property.format === 'rfc2616' ? 'DateTimeRfc2616' : 'DateTime';
+      if (type.format) {
+        return type.format === 'rfc2616' ? 'DateTimeRfc2616' : 'DateTime';
       }
       return 'DateTime';
     default:
-      return property.type;
+      return type.type;
   }
 }
 
