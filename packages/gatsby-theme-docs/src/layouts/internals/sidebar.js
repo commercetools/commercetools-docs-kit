@@ -351,10 +351,10 @@ const Sidebar = (props) => {
         <WebsiteTitle theme={theme}>
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaFlag />}</div>
-            <WebsiteTitleLink as={Link} id="site-title" to="/" theme={theme}>
+            <WebsiteTitleLink as={Link} to="/" theme={theme}>
               <SpacingsInline scale="s">
                 <SiteIcon />
-                <span>{props.siteTitle}</span>
+                <span id="site-title">{props.siteTitle}</span>
               </SpacingsInline>
             </WebsiteTitleLink>
           </SpacingsStack>
