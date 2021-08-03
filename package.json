@@ -58,7 +58,7 @@
     "@svgr/cli": "5.5.0",
     "@svgr/plugin-jsx": "5.5.0",
     "@svgr/plugin-svgo": "5.5.0",
-    "@testing-library/cypress": "7.0.7",
+    "@testing-library/cypress": "8.0.0",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.0.0",
     "babel-eslint": "10.1.0",
