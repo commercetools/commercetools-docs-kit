@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import unified from 'unified';
+import { unified } from 'unified';
 import { filter } from 'unist-util-filter';
 import parse from 'remark-parse';
 import remark2react from 'remark-react';
