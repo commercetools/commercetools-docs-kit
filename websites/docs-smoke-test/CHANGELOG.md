@@ -1,5 +1,19 @@
 # @commercetools-website/docs-smoke-test
 
+## 4.1.8
+
+### Patch Changes
+
+- [#1068](https://github.com/commercetools/commercetools-docs-kit/pull/1068) [`5010b56`](https://github.com/commercetools/commercetools-docs-kit/commit/5010b56faaa213b713d6d95f1774b29efc65d22c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1056](https://github.com/commercetools/commercetools-docs-kit/pull/1056) [`80bed81`](https://github.com/commercetools/commercetools-docs-kit/commit/80bed81184c7d20b07e5c848adbef4735f777d41) Thanks [@emmenko](https://github.com/emmenko)! - Clean up SVG markup (remove unnecessary metadata, ids, etc.)
+
+* Updated dependencies [[`5010b56`](https://github.com/commercetools/commercetools-docs-kit/commit/5010b56faaa213b713d6d95f1774b29efc65d22c), [`0de0856`](https://github.com/commercetools/commercetools-docs-kit/commit/0de085609ebbd455291930300a156fb0f490182f), [`80bed81`](https://github.com/commercetools/commercetools-docs-kit/commit/80bed81184c7d20b07e5c848adbef4735f777d41), [`2dce059`](https://github.com/commercetools/commercetools-docs-kit/commit/2dce05940eb2d0b5153afb2eb663434659b59d2c), [`e8dfa87`](https://github.com/commercetools/commercetools-docs-kit/commit/e8dfa87ec45596cb21aaa3217bfc73ca2c7a39c5), [`f6a8247`](https://github.com/commercetools/commercetools-docs-kit/commit/f6a8247ab74c20d8c2ce45520157c135bec0ea8d), [`f115d98`](https://github.com/commercetools/commercetools-docs-kit/commit/f115d98af1e98aff06765b404848c7cbcf7f6350), [`b5b19a6`](https://github.com/commercetools/commercetools-docs-kit/commit/b5b19a6d130e956c36344b27d612aa2b205df978)]:
+  - @commercetools-docs/gatsby-theme-code-examples@17.0.5
+  - @commercetools-docs/gatsby-theme-constants@17.0.5
+  - @commercetools-docs/gatsby-theme-docs@17.0.5
+  - @commercetools-docs/ui-kit@17.0.5
+
 ## 4.1.7
 
 ### Patch Changes
