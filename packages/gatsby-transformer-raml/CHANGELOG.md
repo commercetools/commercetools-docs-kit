@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 12.1.0
+
+### Minor Changes
+
+- [#1062](https://github.com/commercetools/commercetools-docs-kit/pull/1062) [`69cfb46`](https://github.com/commercetools/commercetools-docs-kit/commit/69cfb46a7dbdf0e6aa8664b475822de722e50f37) Thanks [@nkuehn](https://github.com/nkuehn)! - Numeric query parameter types render as GraphQL-ish "Int" and "Float" now like in body JSON types
+
 ## 12.0.1
 
 ### Patch Changes

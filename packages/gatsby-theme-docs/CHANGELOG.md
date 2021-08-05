@@ -1,5 +1,28 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 17.0.5
+
+### Patch Changes
+
+- [#1068](https://github.com/commercetools/commercetools-docs-kit/pull/1068) [`5010b56`](https://github.com/commercetools/commercetools-docs-kit/commit/5010b56faaa213b713d6d95f1774b29efc65d22c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1067](https://github.com/commercetools/commercetools-docs-kit/pull/1067) [`0de0856`](https://github.com/commercetools/commercetools-docs-kit/commit/0de085609ebbd455291930300a156fb0f490182f) Thanks [@davifantasia](https://github.com/davifantasia)! - chore: update unified to v10
+
+- [#1056](https://github.com/commercetools/commercetools-docs-kit/pull/1056) [`80bed81`](https://github.com/commercetools/commercetools-docs-kit/commit/80bed81184c7d20b07e5c848adbef4735f777d41) Thanks [@emmenko](https://github.com/emmenko)! - Clean up SVG markup (remove unnecessary metadata, ids, etc.)
+
+* [#1072](https://github.com/commercetools/commercetools-docs-kit/pull/1072) [`2dce059`](https://github.com/commercetools/commercetools-docs-kit/commit/2dce05940eb2d0b5153afb2eb663434659b59d2c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency unist-util-filter to v4
+
+- [#1074](https://github.com/commercetools/commercetools-docs-kit/pull/1074) [`e8dfa87`](https://github.com/commercetools/commercetools-docs-kit/commit/e8dfa87ec45596cb21aaa3217bfc73ca2c7a39c5) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1071](https://github.com/commercetools/commercetools-docs-kit/pull/1071) [`f6a8247`](https://github.com/commercetools/commercetools-docs-kit/commit/f6a8247ab74c20d8c2ce45520157c135bec0ea8d) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency remark-parse to v10
+
+- [#1057](https://github.com/commercetools/commercetools-docs-kit/pull/1057) [`f115d98`](https://github.com/commercetools/commercetools-docs-kit/commit/f115d98af1e98aff06765b404848c7cbcf7f6350) Thanks [@emmenko](https://github.com/emmenko)! - Fixes issue with `tabIndex` for keyboard navigation. Now when the page loads, the user can user the keyboard to navigate up/down.
+
+* [#1064](https://github.com/commercetools/commercetools-docs-kit/pull/1064) [`b5b19a6`](https://github.com/commercetools/commercetools-docs-kit/commit/b5b19a6d130e956c36344b27d612aa2b205df978) Thanks [@timonrey](https://github.com/timonrey)! - Use another element to select the site-title for algolia search. This should fix the issue with having wrong content in the search results.
+
+* Updated dependencies [[`5010b56`](https://github.com/commercetools/commercetools-docs-kit/commit/5010b56faaa213b713d6d95f1774b29efc65d22c), [`80bed81`](https://github.com/commercetools/commercetools-docs-kit/commit/80bed81184c7d20b07e5c848adbef4735f777d41)]:
+  - @commercetools-docs/ui-kit@17.0.5
+
 ## 17.0.3
 
 ### Patch Changes
