@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 17.0.5
+
+### Patch Changes
+
+- [#1068](https://github.com/commercetools/commercetools-docs-kit/pull/1068) [`5010b56`](https://github.com/commercetools/commercetools-docs-kit/commit/5010b56faaa213b713d6d95f1774b29efc65d22c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1056](https://github.com/commercetools/commercetools-docs-kit/pull/1056) [`80bed81`](https://github.com/commercetools/commercetools-docs-kit/commit/80bed81184c7d20b07e5c848adbef4735f777d41) Thanks [@emmenko](https://github.com/emmenko)! - Clean up SVG markup (remove unnecessary metadata, ids, etc.)
+
 ## 17.0.2
 
 ### Patch Changes
