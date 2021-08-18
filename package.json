@@ -71,7 +71,7 @@
     "eslint-import-resolver-webpack": "0.13.1",
     "husky": "7.0.1",
     "jest": "27.0.6",
-    "jest-preset-gatsby": "1.0.133",
+    "jest-preset-gatsby": "1.0.134",
     "jest-runner-eslint": "0.10.1",
     "jest-runner-executor": "1.0.0",
     "jest-runner-prettier": "0.3.6",

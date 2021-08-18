@@ -1230,7 +1230,7 @@
     "@babel/helper-validator-option" "^7.14.5"
     "@babel/plugin-transform-typescript" "^7.14.5"
 
-"@babel/preset-typescript@^7.14.0", "@babel/preset-typescript@^7.9.0":
+"@babel/preset-typescript@^7.14.0", "@babel/preset-typescript@^7.15.0":
   version "7.15.0"
   resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.15.0.tgz#e8fca638a1a0f64f14e1119f7fe4500277840945"
   integrity sha512-lt0Y/8V3y06Wq/8H/u0WakrqciZ7Fz7mwPDHWUJAXlABL5hiUG42BNlRXiELNjeWjO5rWmnNKlx+yzJvxezHow==
@@ -6440,7 +6440,7 @@ babel-preset-current-node-syntax@^1.0.0:
     "@babel/plugin-syntax-optional-chaining" "^7.8.3"
     "@babel/plugin-syntax-top-level-await" "^7.8.3"
 
-babel-preset-gatsby@^1.0.0, babel-preset-gatsby@^1.11.0:
+babel-preset-gatsby@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-1.11.0.tgz#2bf2ac10f84d1bc76f32000a1a8591be4770ea9b"
   integrity sha512-qEd0bQbytain59zTFXEjoE2CEIDQMbFIALULcSVtKoUaoA4bDYvlRXUemt9z8BCa6864fh7ikU5+afOtazLm1Q==
@@ -13951,14 +13951,14 @@ jest-pnp-resolver@^1.2.2:
   resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.2.2.tgz#b704ac0ae028a89108a4d040b3f919dfddc8e33c"
   integrity sha512-olV41bKSMm8BdnuMsewT4jqlZ8+3TCARAXjZGT9jcoSnrfUnRCqnMoF9XEeoWjbzObpqF9dRhHQj0Xb9QdF6/w==
 
-jest-preset-gatsby@1.0.133:
-  version "1.0.133"
-  resolved "https://registry.yarnpkg.com/jest-preset-gatsby/-/jest-preset-gatsby-1.0.133.tgz#13f40d8d18b4320bf52fc1bbaec8cbac17ff7b17"
-  integrity sha512-xbjzZaw+ZhuugdCElky6lXrl3/8MJ/6nQT6rnzb8UBbcP0E2PtFnqFr70+ZbPyQKEZpFt9qMGUGGnDyPz/EIZQ==
+jest-preset-gatsby@1.0.134:
+  version "1.0.134"
+  resolved "https://registry.yarnpkg.com/jest-preset-gatsby/-/jest-preset-gatsby-1.0.134.tgz#7a2c48a04e0ca52e4ffdec82692dc0c1ee46f141"
+  integrity sha512-hgS+PzOCra5USvFIxQmKexria6VZ/fvp8D82TOgJkULWck8f3Cuq26Rc6D30sPjPPUM3GIeLyLZNv3wNXfQH0A==
   dependencies:
-    "@babel/preset-typescript" "^7.9.0"
+    "@babel/preset-typescript" "^7.15.0"
     babel-jest "^27.0.0"
-    babel-preset-gatsby "^1.0.0"
+    babel-preset-gatsby "^1.11.0"
     identity-obj-proxy "^3.0.0"
     jest-raw-loader "^1.0.1"
 
