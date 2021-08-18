@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 17.0.6
+
+### Patch Changes
+
+- [#1077](https://github.com/commercetools/commercetools-docs-kit/pull/1077) [`1ca025e`](https://github.com/commercetools/commercetools-docs-kit/commit/1ca025e61928033fc8716268afa76d3e4167cc38) Thanks [@timonrey](https://github.com/timonrey)! - Add assert dependency.
+
 ## 17.0.5
 
 ### Patch Changes

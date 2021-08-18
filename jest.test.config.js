@@ -29,4 +29,5 @@ module.exports = {
   globals: {
     __BASE_PATH__: '',
   },
+  testEnvironment: 'jsdom',
 };
