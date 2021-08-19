@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
+import { DescriptionText } from '../description';
 
 const Enum = ({ values, enumDescriptions }) => {
   if (!values) {
@@ -21,7 +22,11 @@ const Enum = ({ values, enumDescriptions }) => {
             <React.Fragment key={value}>
               <Markdown.Dt>{value}</Markdown.Dt>
               {enumDescription && enumDescription.description && (
-                <Markdown.Dd>{enumDescription.description}</Markdown.Dd>
+                <Markdown.Dd>
+                  <DescriptionText
+                    markdownString={enumDescription.description}
+                  />
+                </Markdown.Dd>
               )}
             </React.Fragment>
           );
