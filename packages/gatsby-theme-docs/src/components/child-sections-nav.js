@@ -94,6 +94,7 @@ const Container = styled.div`
 const ColumnContainer = styled.div`
   break-inside: avoid-column;
   margin-bottom: ${designSystem.dimensions.spacings.s};
+  page-break-inside: avoid;
 `;
 const ChildrenContainer = styled.div`
   padding: 0 ${designSystem.dimensions.spacings.m};
