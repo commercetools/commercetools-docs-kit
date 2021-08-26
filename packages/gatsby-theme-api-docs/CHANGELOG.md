@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 17.0.7
+
+### Patch Changes
+
+- [#1090](https://github.com/commercetools/commercetools-docs-kit/pull/1090) [`e7526d8`](https://github.com/commercetools/commercetools-docs-kit/commit/e7526d82f342744f285ebb296220bd2bed0d5895) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: parse enum description as markdown
+
 ## 17.0.5
 
 ### Patch Changes
