@@ -1,5 +1,5 @@
 ---
-"@commercetools-docs/rmf-codegen": patch
+'@commercetools-docs/rmf-codegen': patch
 ---
 
-Update RMF codegen to 0.1.11
+Update RMF code generator to v0.1.11

@@ -55,6 +55,7 @@ exceptions:
   - RAML
   - REST
   - RFC # "Request For Comment" would confuse readers even more.
+  - RMF # "Rest Modeling Framework"
   - RSA
   - SDK
   - SDL # We refer to the "GraphQL SDL" in our Release notes and in the GraphQL context that's ok.
