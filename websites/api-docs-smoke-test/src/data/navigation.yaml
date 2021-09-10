@@ -30,3 +30,7 @@
       path: /e2e-tests/soft-linking-first-page
     - title: Soft Linking Second Page
       path: /e2e-tests/soft-linking-second-page
+- chapter-title: Docs Replications
+  pages:
+    - title: Long Page with Many Types
+      path: /docs-replications/long-page

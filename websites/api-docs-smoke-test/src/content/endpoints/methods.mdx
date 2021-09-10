@@ -138,21 +138,3 @@ import { ApiEndpoint } from "/shortcodes"
   resource="/{projectKey}/resource/{id}"
   method="DELETE"
 />
-
-# Query Parameters with multiple instances
-
-The types of `expand`, `sort`, `where`, and `/^var[.][a-zA-Z0-9]+$/` will be rendered as a `String`. An additional description will be auto-generated to illustrate usage.
-
-```jsx
-<ApiEndpoint
-  apiKey="api"
-  resource="/{projectKey}/api-clients"
-  method="GET"
-/>
-```
-
-<ApiEndpoint
-  apiKey="api"
-  resource="/{projectKey}/api-clients"
-  method="GET"
-/>
