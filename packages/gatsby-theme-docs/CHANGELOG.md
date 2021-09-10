@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 17.0.7
+
+### Patch Changes
+
+- [#1076](https://github.com/commercetools/commercetools-docs-kit/pull/1076) [`c247638`](https://github.com/commercetools/commercetools-docs-kit/commit/c247638a770b6e4780692757761c2d192bde7f47) Thanks [@timonrey](https://github.com/timonrey)! - Firefox fix: Avoid very long type names from wrapping over to the next column in the child section navigator.
+
 ## 17.0.6
 
 ### Patch Changes
