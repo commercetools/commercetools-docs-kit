@@ -1,5 +1,12 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 5.0.8
+
+### Patch Changes
+
+- Updated dependencies [[`267fcf0`](https://github.com/commercetools/commercetools-docs-kit/commit/267fcf0f05900e3d37a7bbae762c95a7cf038936)]:
+  - @commercetools-docs/rmf-codegen@12.4.2
+
 ## 5.0.7
 
 ### Patch Changes
