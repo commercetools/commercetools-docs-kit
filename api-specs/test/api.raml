@@ -116,6 +116,10 @@ uses:
         arrayOfString:
           type: string[]
           required: false
+        arrayOfStringWithDescription:
+          description: This should render above the text "The parameter can be passed multiple times."
+          type: string[]
+          required: false
       securedBy:
       - oauth_2_0:
           scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]
