@@ -1,9 +1,11 @@
+import React from 'react';
 import styled from '@emotion/styled';
 import { unified } from 'unified';
 import { filter } from 'unist-util-filter';
-import parse from 'remark-parse';
-import remark2react from 'remark-react';
-import frontmatter from 'remark-frontmatter';
+import rehypeReact from 'rehype-react';
+import remarkParse from 'remark-parse';
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkRehype from 'remark-rehype';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import Link from '../components/link';
 
@@ -44,13 +46,14 @@ const markdownFragmentToReact = (
   const safeCustomPlugin =
     typeof customPlugin === 'function' ? customPlugin : noOpPlugin;
   return unified()
-    .use(parse)
-    .use(frontmatter)
+    .use(remarkParse)
+    .use(remarkFrontmatter)
     .use(removeFrontmatterPlugin)
     .use(safeCustomPlugin)
-    .use(remark2react, {
-      sanitize: true,
-      remarkReactComponents: {
+    .use(remarkRehype)
+    .use(rehypeReact, {
+      createElement: React.createElement,
+      components: {
         p: Markdown.Paragraph,
         a: Link,
         h1: Heading,
