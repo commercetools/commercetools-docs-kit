@@ -53,6 +53,7 @@ const markdownFragmentToReact = (
     .use(remarkRehype)
     .use(rehypeReact, {
       createElement: React.createElement,
+      Fragment: React.Fragment,
       components: {
         p: Markdown.Paragraph,
         a: Link,
