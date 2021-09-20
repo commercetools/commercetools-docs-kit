@@ -17,11 +17,14 @@ function processMethods({
         returnedMethods[method].queryParameters
       );
 
-      returnedMethods[method].queryParameters = sortProperties({
-        properties: returnedMethods[method].queryParameters,
-        moveToTop: moveEndpointQueryParametersToTop,
-        moveToBottom: moveEndpointQueryParametersToBottom,
-      });
+      returnedMethods[method].queryParameters = returnedMethods[method]
+        .queryParameters
+        ? sortProperties({
+            properties: returnedMethods[method].queryParameters,
+            moveToTop: moveEndpointQueryParametersToTop,
+            moveToBottom: moveEndpointQueryParametersToBottom,
+          })
+        : returnedMethods[method].queryParameters;
 
       returnedMethods[method].responses = responsesToArray(
         returnedMethods[method].responses
