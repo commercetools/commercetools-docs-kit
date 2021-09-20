@@ -27,8 +27,10 @@ async function onCreateNode(
   },
   {
     includeApis = [],
-    movePropertiesToTop = [],
-    movePropertiesToBottom = [],
+    moveTypePropertiesToTop = [],
+    moveTypePropertiesToBottom = [],
+    moveEndpointQueryParametersToTop = [],
+    moveEndpointQueryParametersToBottom = [],
   } = {}
 ) {
   if (!['File'].includes(node.internal.type)) return;
@@ -73,8 +75,8 @@ async function onCreateNode(
           createNodeId,
           createParentChildLink,
           createContentDigest,
-          movePropertiesToTop,
-          movePropertiesToBottom,
+          moveTypePropertiesToTop,
+          moveTypePropertiesToBottom,
         });
       } else if (ramlIndicator === RAML_RESOURCE_FILE) {
         createResourceNode({
@@ -85,6 +87,8 @@ async function onCreateNode(
           createNodeId,
           createParentChildLink,
           createContentDigest,
+          moveEndpointQueryParametersToTop,
+          moveEndpointQueryParametersToBottom,
         });
       } else {
         createApiNode({

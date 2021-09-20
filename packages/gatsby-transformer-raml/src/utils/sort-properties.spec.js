@@ -1,19 +1,20 @@
 const sortProperties = require('./sort-properties');
 
-describe('sort properties to top, bottom or top and bottom of the properties array', () => {
+describe('sort properties in an array', () => {
   const properties = [
     { name: 'eigthProperty' },
     { name: 'createdBy' },
+    { name: 'ninthProperty' },
     { name: 'key' },
     { name: 'tenthProperty' },
     { name: 'custom' },
     { name: 'eleventhProperty' },
+    { name: 'fourteenthProperty' },
     { name: 'id' },
     { name: 'twelthProperty' },
     { name: 'lastModifiedBy' },
     { name: 'thirteenthProperty' },
     { name: 'lastModifiedAt' },
-    { name: 'fourteenthProperty' },
     { name: 'fifteenthProperty' },
     { name: 'createdAt' },
     { name: 'version' },
@@ -38,12 +39,13 @@ describe('sort properties to top, bottom or top and bottom of the properties arr
       { name: 'lastModifiedAt' },
       { name: 'lastModifiedBy' },
       { name: 'eigthProperty' },
+      { name: 'ninthProperty' },
       { name: 'tenthProperty' },
       { name: 'custom' },
       { name: 'eleventhProperty' },
+      { name: 'fourteenthProperty' },
       { name: 'twelthProperty' },
       { name: 'thirteenthProperty' },
-      { name: 'fourteenthProperty' },
       { name: 'fifteenthProperty' },
     ];
 
@@ -53,10 +55,11 @@ describe('sort properties to top, bottom or top and bottom of the properties arr
   });
 
   it('sort properties to the bottom of the array', () => {
-    const moveToBottom = ['custom'];
+    const moveToBottom = ['fourteenthProperty', 'fifteenthProperty', 'custom'];
     const sortedPropertiesToBottom = [
       { name: 'eigthProperty' },
       { name: 'createdBy' },
+      { name: 'ninthProperty' },
       { name: 'key' },
       { name: 'tenthProperty' },
       { name: 'eleventhProperty' },
@@ -65,10 +68,10 @@ describe('sort properties to top, bottom or top and bottom of the properties arr
       { name: 'lastModifiedBy' },
       { name: 'thirteenthProperty' },
       { name: 'lastModifiedAt' },
-      { name: 'fourteenthProperty' },
-      { name: 'fifteenthProperty' },
       { name: 'createdAt' },
       { name: 'version' },
+      { name: 'fourteenthProperty' },
+      { name: 'fifteenthProperty' },
       { name: 'custom' },
     ];
 
@@ -87,7 +90,7 @@ describe('sort properties to top, bottom or top and bottom of the properties arr
       'lastModifiedAt',
       'lastModifiedBy',
     ];
-    const moveToBottom = ['custom'];
+    const moveToBottom = ['fourteenthProperty', 'fifteenthProperty', 'custom'];
     const sortedPropertiesToTop = [
       { name: 'id' },
       { name: 'version' },
@@ -97,6 +100,7 @@ describe('sort properties to top, bottom or top and bottom of the properties arr
       { name: 'lastModifiedAt' },
       { name: 'lastModifiedBy' },
       { name: 'eigthProperty' },
+      { name: 'ninthProperty' },
       { name: 'tenthProperty' },
       { name: 'eleventhProperty' },
       { name: 'twelthProperty' },

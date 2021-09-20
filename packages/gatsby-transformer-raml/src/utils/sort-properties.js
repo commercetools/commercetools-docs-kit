@@ -1,4 +1,8 @@
-function sortProperties({ properties, moveToTop = [], moveToBottom = [] }) {
+function sortProperties({
+  properties = [],
+  moveToTop = [],
+  moveToBottom = [],
+}) {
   const copy = JSON.parse(JSON.stringify(properties));
 
   return copy.sort((a, b) => {
@@ -13,19 +17,19 @@ function sortProperties({ properties, moveToTop = [], moveToBottom = [] }) {
       return indexInMoveToTopA - indexInMoveToTopB;
     }
 
-    // b. if only a.name occurs in moveToTop, return -1, a.name comes fist
+    // b. if only a.name occurs in moveToTop, return -1, a.name comes first
     if (indexInMoveToTopA > -1) {
       return -1;
     }
 
-    // c. if only b.name occurs in moveToTop, return 1, b.name comes fist
+    // c. if only b.name occurs in moveToTop, return 1, b.name comes first
     if (indexInMoveToTopB > -1) {
       return 1;
     }
 
     // 2. Sort properteis in moveToBottom - just do opposite of sorting to first
     if (indexInMoveToBottomA > -1 && indexInMoveToBottomB > -1) {
-      return indexInMoveToTopB - indexInMoveToTopA;
+      return indexInMoveToBottomA - indexInMoveToBottomB;
     }
 
     if (indexInMoveToBottomA > -1) {

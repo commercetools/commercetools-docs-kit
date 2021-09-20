@@ -30,8 +30,8 @@ module.exports = {
           options: {
             transformerRaml: {
               includeApis: ['example'],
-              movePropertiesToTop: ['id'],
-              movePropertiesToBottom: ['custom'],
+              moveTypePropertiesToTop: ['id'],
+              moveTypePropertiesToBottom: ['custom'],
             },
           },
         },

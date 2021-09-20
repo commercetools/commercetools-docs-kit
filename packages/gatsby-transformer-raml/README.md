@@ -29,8 +29,10 @@ module.exports = {
       resolve: `@commercetools-docs/gatsby-transformer-raml`,
       options: {
         includeApis: ['example'],
-        movePropertiesToTop: ['id'],
-        movePropertiesToBottom: ['custom'],
+        moveTypePropertiesToTop: ['id'],
+        moveTypePropertiesToBottom: ['custom'],
+        moveEndpointQueryParametersToTop: ['where'],
+        moveEndpointQueryParametersToBottom: ['/^var[.][a-zA-Z0-9]+$/'],
       },
     },
   ],
@@ -62,8 +64,10 @@ The example above assumes the RAML specs are sourced from the `api-specs` direct
 ### Available Plugin Options
 
 - `includeApis`: This is a list of the names each API specifications directory located in `./src/api-specs`. Only APIs listed here will be available on the website.
-- `movePropertiesToTop`: This is the list of API type properties that must be sorted to the top.
-- `movePropertiesToBottom`: This is the list of API type properties that must be sorted to the bottom.
+- `moveTypePropertiesToTop`: This is the list of API type properties that must be sorted to the top.
+- `moveTypePropertiesToBottom`: This is the list of API type properties that must be sorted to the bottom.
+- `moveEndpointQueryParametersToTop`: This is the list of endpoint query parameters that must be sorted to the top.
+- `moveEndpointQueryParametersToBottom`: This is the list of endpoint query parameters that must be sorted to the bottom.
 
 Example `gatsby-config.js` content:
 
@@ -75,8 +79,13 @@ module.exports = {
       resolve: `@commercetools-docs/gatsby-transformer-raml`,
       options: {
         includeApis: ['test'],
-        movePropertiesToTop: ['id', 'name', 'surname'],
-        movePropertiesToBottom: ['last-property'],
+        moveTypePropertiesToTop: ['id', 'name', 'surname'],
+        moveTypePropertiesToBottom: ['last-property'],
+        moveEndpointQueryParametersToTop: ['where', 'sort', 'limit'],
+        moveEndpointQueryParametersToBottom: [
+          'expand',
+          '/^var[.][a-zA-Z0-9]+$/',
+        ],
       },
     },
   ],

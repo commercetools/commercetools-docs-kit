@@ -1,5 +1,4 @@
 const isProd = process.env.NODE_ENV === 'production';
-const isCi = process.env.CI ? true : false;
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
@@ -32,7 +31,7 @@ module.exports = {
           options: {
             transformerRaml: {
               includeApis: ['test', 'api'],
-              movePropertiesToTop: [
+              moveTypePropertiesToTop: [
                 'id',
                 'version',
                 'key',
@@ -41,7 +40,13 @@ module.exports = {
                 'lastModifiedAt',
                 'lastModifiedBy',
               ],
-              movePropertiesToBottom: ['custom'],
+              moveTypePropertiesToBottom: ['custom'],
+              moveEndpointQueryParametersToTop: ['where', 'sort', 'limit'],
+              moveEndpointQueryParametersToBottom: [
+                'withTotal',
+                'expand',
+                '/^var[.][a-zA-Z0-9]+$/',
+              ],
             },
           },
         },
