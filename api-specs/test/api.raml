@@ -230,6 +230,36 @@ uses:
               type: date-test-type.DateTestType
               example: !include examples/date-test-type.json
 
+    /description-with-urn-links:
+      post:
+        description: This link - [ObjectTestTypeDraft](ctp:test:type:ObjectTestTypeDraft), `[ObjectTestTypeDraft](ctp:test:type:ObjectTestTypeDraft)`, must be auto-generated.
+        queryParameters:
+          queryParameterOne:
+            type: number
+            description: This link - [StringTestType](ctp:test:type:StringTestType), `[StringTestType](ctp:test:type:StringTestType)`, must be auto-generated.
+            required: false
+            example: 1
+          queryParameterTwo:
+            type: string
+            required: false
+            example: string-path
+        body:
+          type: out-of-order-properties-test-type.OutOfOrderPropertiesTestType
+          example: !include examples/out-of-order-properties-test-type.json
+        responses:
+          200:
+            description: ArrayTestType is used because it is big and long.
+            body:
+              type: arrays.ArrayTestType
+              example: !include examples/array-test-type.json
+          202:
+            description: |
+              DateTestType is used because it is big and long
+              This is not used by commercetools but a valid 2xx response that says that it will process the stuff later.
+              It's here to check how we handle multiple "OK" style response options.
+            body:
+              type: date-test-type.DateTestType
+              example: !include examples/date-test-type.json
 
     /searchApiPattern:
       get:
@@ -268,36 +298,40 @@ uses:
             type: string
             required: false
             example: en
-    /description-with-urn-links:
-      post:
-        description: This link - [ObjectTestTypeDraft](ctp:test:type:ObjectTestTypeDraft), `[ObjectTestTypeDraft](ctp:test:type:ObjectTestTypeDraft)`, must be auto-generated.
+
+    /sorted-query-parameters:
+      get:
+        displayName: Sorted Query Parameters
+        description: Query parameters should be sorted as in the description of each parameter.
+        securedBy:
+          - oauth_2_0:
+              scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]
         queryParameters:
-          queryParameterOne:
+          expand?:
+            type: objects.ObjectTestType[]
+            description: Should display 6th (1st in RAML)
+          where?:
+            type: objects.ObjectTestType[]
+            description: Should display 1st (2nd in RAML)
+          sort?:
+            type: objects.ObjectTestType[]
+            description: Should display 2nd (3rd in RAML)
+          limit?:
             type: number
-            description: This link - [StringTestType](ctp:test:type:StringTestType), `[StringTestType](ctp:test:type:StringTestType)`, must be auto-generated.
+            description: Should display 3rd (4th in RAML)
+            example: 500
+          offset?:
+            type: number
+            description: Should display 4th (5th in RAML)
+            example: 5
+          /^var[.][a-zA-Z0-9]+$/:
+            type: string[]
             required: false
-            example: 1
-          queryParameterTwo:
-            type: string
-            required: false
-            example: string-path
-        body:
-          type: out-of-order-properties-test-type.OutOfOrderPropertiesTestType
-          example: !include examples/out-of-order-properties-test-type.json
-        responses:
-          200:
-            description: ArrayTestType is used because it is big and long.
-            body:
-              type: arrays.ArrayTestType
-              example: !include examples/array-test-type.json
-          202:
-            description: |
-              DateTestType is used because it is big and long
-              This is not used by commercetools but a valid 2xx response that says that it will process the stuff later.
-              It's here to check how we handle multiple "OK" style response options.
-            body:
-              type: date-test-type.DateTestType
-              example: !include examples/date-test-type.json
+            description: Should display 7th (6th in RAML)
+          withTotal?:
+            type: boolean
+            description: Should display 5th (7th in RAML)
+            example: true
 
 #   /resourceWithHeaders:
 #    description: Tests use of specific headers.
