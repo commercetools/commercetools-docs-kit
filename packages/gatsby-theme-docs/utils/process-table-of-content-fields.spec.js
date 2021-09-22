@@ -85,7 +85,7 @@ describe('processTableOfContentFields', () => {
           title: 'In a title',
           items: [
             {
-              url: '#anchor-in-title-links-here',
+              url: '#anchor-in-title-links-here-',
               title: 'Anchor in title links here',
             },
             {
