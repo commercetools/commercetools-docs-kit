@@ -63,14 +63,14 @@ jobs:
       - name: Running Visual Regression Tests
         run: |
           yarn percy snapshot ./public \
-            --files="**/components/**/*.html" \
-            --files="**/views/markdown/*.html" \
-            --files="**/**/views/beta/*.html" \
-            --files="**/releases/index.html" \
-            --files="**/types/**/*.html" \
-            --files="**/endpoints/**/*.html" \
-            --files="**/layouts/**/*.html" \
-            --ignore="**/site-template/**/*.html"
+            --include="**/components/**/*.html" \
+            --include="**/views/markdown/*.html" \
+            --include="**/**/views/beta/*.html" \
+            --include="**/releases/index.html" \
+            --include="**/types/**/*.html" \
+            --include="**/endpoints/**/*.html" \
+            --include="**/layouts/**/*.html" \
+            --exclude="**/site-template/**/*.html"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS }}
 
