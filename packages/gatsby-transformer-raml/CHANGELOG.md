@@ -1,5 +1,15 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.0.0
+
+### Major Changes
+
+- [#1111](https://github.com/commercetools/commercetools-docs-kit/pull/1111) [`354c165`](https://github.com/commercetools/commercetools-docs-kit/commit/354c165fd29d9c8238bdd06cc63f8560ca269f4f) Thanks [@davifantasia](https://github.com/davifantasia)! - BREAKING CHANGE:
+
+  `movePropertiesToTop` and `movePropertiesToBottom` has been replaced with `moveTypePropertiesToTop` and `moveTypePropertiesToBottom`, but the funtionalities remain the same.
+
+  `moveEndpointQueryParametersToTop` and `moveEndpointQueryParametersToBottom` options are added to provide sorting configuration for query parameters.
+
 ## 12.1.0
 
 ### Minor Changes

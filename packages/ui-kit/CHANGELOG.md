@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 17.0.8
+
+### Patch Changes
+
+- [#1082](https://github.com/commercetools/commercetools-docs-kit/pull/1082) [`42a7393`](https://github.com/commercetools/commercetools-docs-kit/commit/42a7393ed3b3dad44a36196c5ba7d03bcaee7629) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
 ## 17.0.5
 
 ### Patch Changes
