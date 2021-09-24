@@ -20,8 +20,8 @@
     "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },
   "dependencies": {
-    "@babel/runtime": "7.14.8",
-    "@babel/runtime-corejs3": "7.14.9",
+    "@babel/runtime": "7.15.4",
+    "@babel/runtime-corejs3": "7.15.4",
     "@commercetools-uikit/design-system": "^12.1.0",
     "@commercetools-uikit/icons": "^12.2.1",
     "@commercetools-uikit/loading-spinner": "^12.2.0",
@@ -34,7 +34,7 @@
     "prism-react-renderer": "1.2.1",
     "prop-types": "15.7.2",
     "react-intl": "^5.7.0",
-    "swr": "1.0.0",
+    "swr": "1.0.1",
     "tiny-invariant": "1.1.0"
   },
   "devDependencies": {

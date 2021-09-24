@@ -8,4 +8,4 @@ snapshot:
       height: auto;
     }
 discovery:
-  network-idle-timeout: 5000 # ms (https://docs.percy.io/docs/command-line-client#section--network-idle-timeout-t)
+  network-idle-timeout: 750 # ms (https://docs.percy.io/docs/command-line-client#section--network-idle-timeout-t)
