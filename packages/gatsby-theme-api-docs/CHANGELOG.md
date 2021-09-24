@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 17.0.8
+
+### Patch Changes
+
+- [#1082](https://github.com/commercetools/commercetools-docs-kit/pull/1082) [`42a7393`](https://github.com/commercetools/commercetools-docs-kit/commit/42a7393ed3b3dad44a36196c5ba7d03bcaee7629) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
+- Updated dependencies [[`354c165`](https://github.com/commercetools/commercetools-docs-kit/commit/354c165fd29d9c8238bdd06cc63f8560ca269f4f), [`42a7393`](https://github.com/commercetools/commercetools-docs-kit/commit/42a7393ed3b3dad44a36196c5ba7d03bcaee7629)]:
+  - @commercetools-docs/gatsby-transformer-raml@13.0.0
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@14.0.8
+  - @commercetools-docs/ui-kit@17.0.8
+
 ## 17.0.7
 
 ### Patch Changes

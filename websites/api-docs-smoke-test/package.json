@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/api-docs-smoke-test",
-  "version": "5.0.8",
+  "version": "5.0.9",
   "private": true,
   "scripts": {
     "start": "yarn develop",
@@ -20,8 +20,8 @@
     "generate-ramldoc:test": "cd ../../api-specs/test && yarn generate-ramldoc"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-api-docs": "17.0.7",
-    "@commercetools-docs/gatsby-theme-docs": "17.0.7",
+    "@commercetools-docs/gatsby-theme-api-docs": "17.0.8",
+    "@commercetools-docs/gatsby-theme-docs": "17.0.8",
     "@commercetools-docs/rmf-codegen": "12.4.2",
     "gatsby": "3.14.0",
     "gatsby-cli": "3.14.0",
