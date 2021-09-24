@@ -52,7 +52,7 @@
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
     "@manypkg/cli": "0.18.0",
-    "@percy/cli": "1.0.0-beta.68",
+    "@percy/cli": "1.0.0-beta.63",
     "@percy/cypress": "2.3.4",
     "@preconstruct/cli": "2.1.4",
     "@svgr/cli": "5.5.0",
