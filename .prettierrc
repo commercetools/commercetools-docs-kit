@@ -8,6 +8,13 @@
       "options": {
         "parser": "json"
       }
+    },
+    {
+      "files": "*.raml",
+      "options": {
+        "parser": "yaml",
+        "proseWrap": "preserve"
+      }
     }
   ]
 }
