@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 17.0.9
+
+### Patch Changes
+
+- [#1120](https://github.com/commercetools/commercetools-docs-kit/pull/1120) [`5b929e0`](https://github.com/commercetools/commercetools-docs-kit/commit/5b929e00be55a1144074bf500f41fec97c88d3f3) Thanks [@timonrey](https://github.com/timonrey)! - Use new link for product newsletter page
+
 ## 17.0.8
 
 ### Patch Changes
