@@ -38,7 +38,7 @@ const ReleaseNotesSubscribeLinks = () => (
       </SpacingsInline>
     </ExternalSiteLink>
     <ExternalSiteLink
-      href="https://ok.commercetools.com/product-newsletter"
+      href="https://commercetools.com/newsletter/product"
       css={linkStyles}
     >
       <SpacingsInline scale="xs" alignItems="center">
