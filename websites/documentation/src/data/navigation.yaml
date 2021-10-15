@@ -2,3 +2,53 @@
   pages:
     - title: Getting started
       path: /getting-started
+- chapter-title: Views
+  pages:
+    - title: Markdown
+      path: /placeholder
+    - title: Nested Headings
+      path: /placeholder
+    - title: Links
+      path: /placeholder
+    - title: Code blocks
+      path: /placeholder
+    - title: Code examples
+      path: /placeholder
+    - title: Custom Anchor
+      path: /placeholder
+    - title: Wide Layout
+      path: /placeholder
+- chapter-title: Components
+  pages:
+    - title: Code blocks
+      path: /placeholder
+    - title: Code examples
+      path: /placeholder
+    - title: Code notifications
+      path: /placeholder
+    - title: Images
+      path: /placeholder
+    - title: Cards
+      path: /placeholder
+    - title: RSS Feeds
+      path: /placeholder
+    - title: Child section navigation
+      path: /placeholder
+- chapter-title: Types
+  pages:
+    - title: General
+      path: /placeholder
+    - title: Scalars
+      path: /placeholder
+    - title: Examples
+      path: /placeholder
+    - title: Enums, Constants & Unions
+      path: /placeholder
+- chapter-title: Endpoints
+  pages:
+    - title: Methods
+      path: /placeholder
+    - title: All Endpoints of Resource
+      path: /placeholder
+    - title: Child section navigation
+      path: /placeholder
