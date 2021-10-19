@@ -1,54 +1,63 @@
-- chapter-title: Getting started
+- chapter-title: Getting Started
   pages:
-    - title: Getting started
-      path: /getting-started
-- chapter-title: Views
+    - title: Install a site # prerequisites, checking out a repo, VSCode workspace, yarn install
+      path: /getting-started/install
+    - title: Start the Preview # how to start and stop the dev server in watch mode, how to run a local full build
+      path: /getting-started/preview
+    - title: Troubleshooting
+      path: /getting-started/troubleshooting
+- chapter-title: Writing Content
   pages:
-    - title: Markdown
-      path: /placeholder
-    - title: Nested Headings
-      path: /placeholder
-    - title: Links
-      path: /placeholder
-    - title: Code blocks
-      path: /placeholder
-    - title: Code examples
-      path: /placeholder
-    - title: Custom Anchor
-      path: /placeholder
-    - title: Wide Layout
-      path: /placeholder
-- chapter-title: Components
+    - title: Pages # filesystem convention, frontmatter, wide layouts
+      path: /writing/pages
+    - title:
+        Markdown & MDX # side-by side comparisons of MDX and the resulting output,
+        # plus our custom tags like info, side-by-side, cards, RSS feeds etc
+        # plus HTML that we styled but that does not have markdown (maybe only the definition list)
+      path: /writing/markdown
+    - title: Images # markdown, titles annotations, filesystem convention (could be part of markdown)
+      path: /writing/images
+    - title: Navigation # top nav, side nav, child section nav
+      path: /writing/navigation
+    - title: Code # markdown code examples, code examples in files, multilanguage examples
+      path: /writing/code-examples
+    - title: Release Notes # all about release notes & the generator script
+      path: /writing/release-notes
+    - title: Data Constants # the constants feature
+      path: /writing/constants
+- chapter-title: API Documentation
   pages:
-    - title: Code blocks
-      path: /placeholder
-    - title: Code examples
-      path: /placeholder
-    - title: Code notifications
-      path: /placeholder
-    - title: Images
-      path: /placeholder
-    - title: Cards
-      path: /placeholder
-    - title: RSS Feeds
-      path: /placeholder
-    - title: Child section navigation
-      path: /placeholder
-- chapter-title: Types
+    - title: Add RAML Specs # rmf-codegen/RAMLDOC, filesystem convention, links to specs and resourcess
+      path: /api-docs/raml
+    - title: API Endpoints
+      path: /api-docs/endpoints
+    - title: API Data Types
+      path: /api-docs/types
+    - title: Examples # examples in JSON files, example validation, multiple named examples
+      path: /api-docs/examples
+- chapter-title: Configuration
   pages:
-    - title: General
-      path: /placeholder
-    - title: Scalars
-      path: /placeholder
-    - title: Examples
-      path: /placeholder
-    - title: Enums, Constants & Unions
-      path: /placeholder
-- chapter-title: Endpoints
+    - title: Create a site
+      path: /configuration/setup
+    - title: Theme extensions
+      path: /configuration/extensions
+    - title: Custom Components
+      path: /configuration/components
+    - title: Override Components
+      path: /configuration/overrides
+    - title: API Documentation
+      path: /configuration/api
+    - title: RSS
+      path: /configuration/rss
+    - title: Deploy
+      path: /configuraition/deploy
+    - title: Troubleshooting
+      path: /configuration/troubleshooting
+- chapter-title: Developing
   pages:
-    - title: Methods
-      path: /placeholder
-    - title: All Endpoints of Resource
-      path: /placeholder
-    - title: Child section navigation
-      path: /placeholder
+    - title: Write an extension
+      path: /developing/extensions
+    - title: Contribute
+      path: /developing/contribute
+    - title: Tests
+      path: /developing/tests
