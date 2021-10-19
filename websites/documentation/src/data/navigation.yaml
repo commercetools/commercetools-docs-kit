@@ -21,6 +21,8 @@
       path: /writing/navigation
     - title: Code # markdown code examples, code examples in files, multilanguage examples
       path: /writing/code-examples
+    - title: Reusable content fragments # import syntax for MDX fragments, file layout
+      path: /writing/import-content
     - title: Release Notes # all about release notes & the generator script
       path: /writing/release-notes
     - title: Data Constants # the constants feature
