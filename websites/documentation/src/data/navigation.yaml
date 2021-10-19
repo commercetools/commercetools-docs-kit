@@ -57,6 +57,8 @@
       path: /configuration/troubleshooting
 - chapter-title: Developing
   pages:
+    - title: Get Started Developing
+      path: /developing/getting-started
     - title: Write an extension
       path: /developing/extensions
     - title: Contribute
