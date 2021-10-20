@@ -9,6 +9,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@commercetools-docs/rmf-codegen": "13.0.0"
+    "@commercetools-docs/rmf-codegen": "13.0.1"
   }
 }
