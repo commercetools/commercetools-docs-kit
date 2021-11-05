@@ -1,4 +1,15 @@
 version: 2
+static:
+  include:
+    - "**/components/**/*.html"
+    - "**/views/markdown/*.html"
+    - "**/**/views/beta/*.html"
+    - "**/releases/index.html"
+    - "**/types/**/*.html"
+    - "**/endpoints/**/*.html"
+    - "**/layouts/**/*.html"
+  exclude:
+    - "**/site-template/**/*.html"
 snapshot:
   widths:
     - 1706
