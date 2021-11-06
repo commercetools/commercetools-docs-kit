@@ -61,9 +61,7 @@ jobs:
         run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
 
       - name: Running Visual Regression Tests
-        run: |
-          ls -lah ./public
-          yarn percy snapshot ./public
+        run: yarn percy snapshot ./public
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS }}
 
