@@ -20,9 +20,3 @@
 // Reference: https://docs.cypress.io/api/plugins/configuration-api.html#Promises
 
 /* eslint-disable global-require */
-
-const percyHealthCheck = require('@percy/cypress/task');
-
-module.exports = (on) => {
-  on('task', percyHealthCheck);
-};
