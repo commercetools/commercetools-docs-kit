@@ -1361,7 +1361,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.6", "@babel/runtime@^7.14.8", "@babel/runtime@^7.15.3", "@babel/runtime@^7.15.4", "@babel/runtime@^7.16.3", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.6", "@babel/runtime@^7.14.8", "@babel/runtime@^7.15.3", "@babel/runtime@^7.15.4", "@babel/runtime@^7.16.3", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
   version "7.16.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.3.tgz#b86f0db02a04187a3c17caa77de69840165d42d5"
   integrity sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==
@@ -10437,12 +10437,12 @@ gatsby-plugin-google-analytics@3.14.0:
     minimatch "3.0.4"
     web-vitals "^1.1.2"
 
-gatsby-plugin-hubspot@1.3.5:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-hubspot/-/gatsby-plugin-hubspot-1.3.5.tgz#aa4d2446b325dde1e10bf771bacb3d25aaec5aff"
-  integrity sha512-HehDD6xVK7KkyLojc0fN00ZvnkHyE/AcsS/Tzh8vqOEeJjWHxw+Fa4bWE7yWGZZnw0jD9Z5uxIlMQzuVp7Q5nw==
+gatsby-plugin-hubspot@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-hubspot/-/gatsby-plugin-hubspot-2.0.0.tgz#35d393f3a7072fc149d520e1be263cd1b6c4e11f"
+  integrity sha512-QldNOgR4/XOoSTov3mX5q2W0kRP7WMAL7yBxkV9ngqf0iGw47HYTUymYezuJfuaQ9IpOydcdk249ys0OZCKvpw==
   dependencies:
-    "@babel/runtime" "^7.6.3"
+    "@babel/runtime" "^7.15.4"
 
 gatsby-plugin-image@1.14.0:
   version "1.14.0"
