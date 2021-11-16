@@ -33,7 +33,7 @@
     "unist-util-visit": "^4.0.0"
   },
   "devDependencies": {
-    "@commercetools-docs/rmf-codegen": "12.4.2",
+    "@commercetools-docs/rmf-codegen": "13.0.1",
     "gatsby": "3.14.5",
     "gatsby-source-filesystem": "3.14.0",
     "react": "17.0.2",

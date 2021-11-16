@@ -1611,6 +1611,11 @@
     human-id "^1.0.2"
     prettier "^1.19.1"
 
+"@commercetools-docs/rmf-codegen@13.0.1":
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/@commercetools-docs/rmf-codegen/-/rmf-codegen-13.0.1.tgz#cc335c61c1d939336bbc240dc0a29d4c05da1172"
+  integrity sha512-DdQBMmsKGu75P1bjBlDKB9ldZadtjGma68M302sfQzMjMncRZ6mdzLp7D2vWvH2S/+RJAU2XnsXKBZHT1oAx+g==
+
 "@commercetools-frontend/babel-preset-mc-app@20.10.6":
   version "20.10.6"
   resolved "https://registry.yarnpkg.com/@commercetools-frontend/babel-preset-mc-app/-/babel-preset-mc-app-20.10.6.tgz#71be588bd8c842e082295c1c93d4242e225d9e97"
