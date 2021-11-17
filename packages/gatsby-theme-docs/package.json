@@ -76,7 +76,7 @@
     "react-helmet": "6.1.0",
     "react-intersection-observer": "8.32.2",
     "react-intl": "^5.7.0",
-    "react-router-dom": "5.3.0",
+    "react-router-dom": "6.0.2",
     "rehype-react": "7.0.3",
     "rehype-slug": "4.0.1",
     "remark-emoji": "2.2.0",
