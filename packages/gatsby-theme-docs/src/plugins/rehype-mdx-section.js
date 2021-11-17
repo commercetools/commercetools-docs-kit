@@ -1,9 +1,9 @@
 const requireEsm = require('esm')(module);
 
-const isHastHeading = requireEsm('hast-util-heading');
+const { heading } = requireEsm('hast-util-heading');
 
 const isHeading = (node) => {
-  return isHastHeading(node);
+  return heading(node);
 };
 
 // Since we are mapping the headings shifted to one in the markdown provider
