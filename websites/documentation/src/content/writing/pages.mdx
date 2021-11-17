@@ -1,6 +1,31 @@
 ---
-title: Getting started
+title: Pages
 beta: false
 ---
 
-To be changed: Write content.
+# Writing Content Pages
+
+Content pages are located in the `src/content` folder and should be `*.mdx` files.
+
+Pages can be freely organized accordingly to the website structure. Note that the pages URL matches the file system path by default.
+For example, `src/content/getting-started/installation.mdx` results in the URL path `/getting-started/installation`.
+
+Each `*.mdx` content page must contain some metadata in the frontmatter section, which is the leading section of the file within the `---` lines.
+
+```mdx
+---
+title: The title of this page
+beta: false
+---
+
+This is the actual page content.
+```
+
+Supported frontmatter options are:
+
+- `title` (string, **required**): the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
+- `beta` (boolean): to indicate if the _beta_ info message should be displayed or not.
+- `excludeFromSearchIndex` (boolean): to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
+  (Note that this doesn't currently work with Algolia's Docsearch crawler)
+- `navLevels` (number): allows to reduce the depth of the on-page navigation for pages where it would get too long to fit the screen. You want to set 2 here if you need it.
+- `wideLayout` (boolean): to indicate that the page can go into a two-column content space on large viewport sizes. See the `<SideBySide>` component below for more information on how to use it. This option must be used with `allowWideContentLayout` theme option set to `true`.

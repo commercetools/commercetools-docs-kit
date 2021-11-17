@@ -41,7 +41,7 @@
   pages:
     - title: Create a site
       path: /configuration/setup
-    - title: Theme extensions
+    - title: Theme Extensions
       path: /configuration/extensions
     - title: Custom Components
       path: /configuration/components

@@ -3,8 +3,157 @@ title: Set up a new docs site
 beta: false
 ---
 
-In its simplest form, copy the contents of our [site template](https://github.com/commercetools/commercetools-docs-kit/tree/main/websites/site-template) into your existing javscript project and get started.
+## Getting started
 
-Replace all occurrences of "CHANGE ME" with your site's data and complete the settings in the `gatsby-config.js` file.
+To create a new documentation website you need to install this theme and its peer dependencies:
 
-When activating theme extensions, don't forget to import the respective package in `package.json`.
+```
+npx install-peerdeps --dev @commercetools-docs/gatsby-theme-docs
+```
+
+Then setup the theme configuration:
+
+```js
+module.exports = {
+  pathPrefix: '/change-path-prefix',
+  siteMetadata: {
+    title: 'CHANGE TITLE',
+    description: 'CHANGE DESCRIPTION',
+  },
+  plugins: [
+    {
+      resolve: '@commercetools-docs/gatsby-theme-docs',
+      options: {
+        websiteKey: 'change-website-key',
+      },
+    },
+  ],
+};
+```
+
+### Choose a path prefix
+
+All commercetools documentation websites are served under `docs.commercetools.com`. To make this work, all documentation websites must be bundled for production using a `pathPrefix`. This value determines the URL path where the website is served from.
+
+For example, for the "Custom Applications" website, the path prefix is `/custom-applications`.
+
+The `pathPrefix` is configured in the `gatsby-config.js` file.
+
+### Folder structure
+
+The project structure should contain at least the following files and folders:
+
+```
+├── .eslintrc.yml
+├── gatsby-config.js
+├── package.json
+├── src
+│   ├── content
+│   │   ├── files
+│   │   └── index.mdx
+│   ├── images
+│   └── data
+│       └── navigation.yaml
+└── static
+    └── downloads
+```
+
+- `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`, otherwise provide a valid ESLint configuration.
+
+- `gatsby-config.js`: this is required for a Gatsby website and should contain the website specific configuration. If your website requires the usage of [add-ons](#using-theme-with-add-ons), you need to configure the main theme using the `configureThemeWithAddOns` helper function. See examples below.
+
+```js
+const {
+  configureThemeWithAddOns,
+} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
+
+module.exports = {
+  pathPrefix: '/change-path-prefix',
+  siteMetadata: {
+    title: 'CHANGE TITLE',
+    description: 'CHANGE DESCRIPTION',
+    betaLink: '/change-beta-link',
+  },
+
+  plugins: [
+    // pass plugin options here
+    ...configureThemeWithAddOns({
+      // See available plugin options below
+      websiteKey: 'change-website-key', // required
+      colorPreset: colorPresets.base.key,
+      additionalPrismLanguages: ['scala', 'csharp'],
+      excludeFromSearchIndex: false,
+
+      // See https://github.com/commercetools/commercetools-docs-kit/tree/master/packages/gatsby-theme-docs#using-theme-with-add-ons
+      addOns: [
+        '@commercetools-docs/gatsby-theme-code-examples',
+        '@commercetools-docs/gatsby-theme-constants',
+      ],
+    }),
+  ],
+};
+```
+
+### Available Options for the Theme Plugin
+
+- `websiteKey` (**required**): the identifier of the website, used for error reporting and similar concerns. Usually this value would be the same as the `pathPrefix` without the leading slash and without whitespaces.
+
+- `colorPreset` (_optional_): pick the "look and feel" of the website by choosing one of the available [Color Presets](./color-presets). **Default: `base`**
+
+- `gaTrackingId` (_optional_): this is the Google Analytics tracking ID. For all sites hosted on the `docs.commercetools.com` domain the ID must be: `UA-38285631-3`.
+
+  > For test websites the gaTrackingId field should not be set.
+
+- `hubspotTrackingCode` (_optional_): this is HubSpot tracking code.
+
+- `excludeFromSearchIndex` (_optional_): indicates that the website should not be indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute. **Default: `true`**
+  (Note that this doesn't currently work with Algolia's Docsearch crawler)
+
+- `allowWideContentLayout` (_optional_): enables all content pages to use a wider layout that gives space to side-by-side content on large viewports. This must be used with `wideLayout`, see also the `wideLayout` frontmatter option and the `<SideBySide>` component on how to use it. **Default: `false`**.
+
+- `beta` (_optional_): indicates that the website should be marked as **beta**. Each page gets a beta flag, no matter if the page frontmatter has it defined or not. Furthermore, in the main navigation, the beta flag is shown near the website title and not next to each link. **Default: `false`**
+
+- `createNodeSlug` (_optional_): in case you need to have more control over the creation of the page slugs, you can implement this function. This is useful if for example your website has content files in other file system locations and you want to provide a more meaningful URL path.
+
+  ```ts
+  type Options = { node: Node }; // A Gatsby Node
+  type CreateNodeSlugFn = (originalSlug: string, { node }: Options) => string;
+  ```
+
+- `availablePrismLanguages` (_optional_): in case you need to include **Prism languages** that are [not included by default by `prism-react-renderer`](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js), you can pass a list of them here.
+
+- `overrideDefaultConfigurationData` (_optional_, array of glob strings): allows to replace the configuration files in `src/data` instead of augmenting them. The option is passed to the `ignore` [option of the gatsby filesystem plugin](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#options). For example, by passing `['**/top-*']` and placing `top-menu.yaml` and `top-side-menu.yaml` files in the website's `src/data` folder the top navigation can be overridden completely. If this option is used, the files matching the glob patterns **must** be provided.
+
+- `enableCanonicalUrls` (_optional_): indicates that the website should use canonical URLs, pointing to the `docs.commercetools.com` domain. **Default: `true`**
+
+## Auto Generated Directories
+
+These are required directories:
+
+- `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](#writing-content-pages)_).
+
+- `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.
+
+- `src/images`: this folder should contain images that are used within the `*.mdx` content files. Images in this folder are processed and optimized by Gatsby for lazy loading. Supported image formats are `JPEG` and `PNG`.
+
+- `src/data/navigation.yaml`: this contains the website main navigation links. The structure of the file is a _list of chapters_ as following:
+
+  ```yaml
+  - chapter-title: This is the title
+    beta: false # (optional): will show the beta flag next to the chapter title
+    pagination: false # (optional) hides the prev/next content pagination at the bottom of the pages in this chapter. Use for non-linear content like reference documentation.
+    pages:
+      - title: The first page
+        path: '/chapter-1/first-page'
+        beta: false # (optional): will show the beta flag next to the page title
+      - title: Another page
+        path: '/chapter-1/another-page'
+      # another page, and so on...
+  - chapter-title: {} # another chapter, and so on...
+  ```
+
+- `static`: this folder should contain files that do not need to be processed by Gatsby and will be served as-is. See [Gatsby static folder](https://www.gatsbyjs.com/docs/static-folder/).<br/>
+  Note that any `.html` file that is referenced as a link within the `*.mdx` content files is opened as a "static" HTML link, so when clicking on it the browser opens the link as a normal page.
+
+- `static/downloads`: this folder should contain static files that can be referenced in the links within the `*.mdx` content files. All links starting with `/downloads` will be rendered as "static" HTML links, so when clicking on it the browser opens the link as a normal page.
