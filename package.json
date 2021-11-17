@@ -72,7 +72,7 @@
     "husky": "7.0.4",
     "jest": "27.3.1",
     "jest-preset-gatsby": "1.0.134",
-    "jest-runner-eslint": "0.11.1",
+    "jest-runner-eslint": "1.0.0",
     "jest-runner-executor": "1.0.0",
     "jest-runner-prettier": "0.3.7",
     "jest-runner-stylelint": "2.3.7",
