@@ -1,4 +1,6 @@
-const isHastHeading = require('hast-util-heading');
+const requireEsm = require('esm')(module);
+
+const isHastHeading = requireEsm('hast-util-heading');
 
 const isHeading = (node) => {
   return isHastHeading(node);
