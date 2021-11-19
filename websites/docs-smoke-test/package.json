@@ -4,16 +4,14 @@
   "private": true,
   "scripts": {
     "start": "yarn develop",
-    "develop": "npx gatsby develop",
-    "serve": "npx gatsby serve --prefix-paths -o",
-    "clean": "npx gatsby clean",
+    "develop": "yarn gatsby develop",
+    "serve": "yarn gatsby serve --prefix-paths -o",
+    "clean": "yarn gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
-    "create-docs-release-note": "npx create-docs-release-note",
-    "build": "npx gatsby build --prefix-paths",
-    "build:serve": "npx gatsby build --prefix-paths && npx gatsby serve --prefix-paths -o",
+    "create-docs-release-note": "yarn create-docs-release-note",
+    "build": "./scripts/build.sh",
+    "build:serve": "yarn gatsby build --prefix-paths && yarn gatsby serve --prefix-paths -o",
     "build:analyze": "ANALYZE_BUNDLE=true yarn build",
-    "prebuild": "yarn clean",
-    "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test",
     "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },
   "dependencies": {

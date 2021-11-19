@@ -4,7 +4,6 @@
   "version": "3.0.7",
   "valeVersion": "2.8.0",
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },

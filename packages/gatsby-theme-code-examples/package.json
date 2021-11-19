@@ -3,7 +3,6 @@
   "description": "Gatsby theme for commercetools documentation providing the functionalities to render Code Examples in MDX",
   "version": "17.0.8",
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
