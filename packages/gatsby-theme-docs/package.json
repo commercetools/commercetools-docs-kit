@@ -80,14 +80,14 @@
     "rehype-slug": "4.0.1",
     "remark-emoji": "2.2.0",
     "remark-frontmatter": "4.0.1",
-    "remark-parse": "10.0.0",
+    "remark-parse": "10.0.1",
     "remark-rehype": "10.0.1",
     "slugify": "1.6.2",
-    "unified": "10.1.0",
+    "unified": "10.1.1",
     "unist-util-filter": "4.0.0"
   },
   "devDependencies": {
-    "gatsby": "3.14.5",
+    "gatsby": "3.14.6",
     "gatsby-cli": "3.14.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
