@@ -11,6 +11,12 @@ module.exports = {
       /(.*)\/views\/beta\/(.*)\.html/,
     ],
     exclude: ['site-template/*'],
+    overrides: [
+      {
+        files: /(.*)\/components\/rss-feeds\/index\.html/,
+        waitForSelector: 'table[data-table-name="rss-feed"]',
+      },
+    ],
   },
   snapshot: {
     widths: [1706],
