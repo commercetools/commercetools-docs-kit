@@ -474,16 +474,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:7.16.3":
-  version: 7.16.3
-  resolution: "@babel/parser@npm:7.16.3"
-  bin:
-    parser: ./bin/babel-parser.js
-  checksum: 486b676b9d47d10de72598f9453eb4591535c5639b5e153d46442fb0d8523d775abf6e5f457193730b609d55ad0fd171f28a075c1fa5679f5049279e77cd63b2
-  languageName: node
-  linkType: hard
-
-"@babel/parser@npm:^7.1.0, @babel/parser@npm:^7.10.5, @babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.7, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.15.8, @babel/parser@npm:^7.16.0, @babel/parser@npm:^7.16.3, @babel/parser@npm:^7.7.0, @babel/parser@npm:^7.7.2":
+"@babel/parser@npm:7.16.4, @babel/parser@npm:^7.1.0, @babel/parser@npm:^7.10.5, @babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.7, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.15.8, @babel/parser@npm:^7.16.0, @babel/parser@npm:^7.16.3, @babel/parser@npm:^7.7.0, @babel/parser@npm:^7.7.2":
   version: 7.16.4
   resolution: "@babel/parser@npm:7.16.4"
   bin:
@@ -2194,7 +2185,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-api-specs/api@workspace:api-specs/api"
   dependencies:
-    "@commercetools-docs/rmf-codegen": 13.0.1
+    "@commercetools-docs/rmf-codegen": 13.8.0
   languageName: unknown
   linkType: soft
 
@@ -2202,7 +2193,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-api-specs/test@workspace:api-specs/test"
   dependencies:
-    "@commercetools-docs/rmf-codegen": 13.0.1
+    "@commercetools-docs/rmf-codegen": 13.8.0
   languageName: unknown
   linkType: soft
 
@@ -2212,14 +2203,14 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-transformer-mdx-introspection": 14.0.8
     "@commercetools-docs/gatsby-transformer-raml": 13.0.0
-    "@commercetools-docs/rmf-codegen": 13.0.1
+    "@commercetools-docs/rmf-codegen": 13.8.0
     "@commercetools-docs/ui-kit": 17.0.8
     "@commercetools-uikit/design-system": ^12.1.0
     "@commercetools-uikit/spacings-inline": ^12.2.0
     "@commercetools-uikit/spacings-stack": ^12.2.0
     "@emotion/react": ^11.1.1
     "@emotion/styled": ^11.0.0
-    gatsby: 3.14.5
+    gatsby: 3.14.6
     gatsby-source-filesystem: 3.14.0
     prop-types: 15.7.2
     react: 17.0.2
@@ -2238,7 +2229,7 @@ __metadata:
   resolution: "@commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples"
   dependencies:
     "@commercetools-docs/ui-kit": 17.0.8
-    gatsby: 3.14.5
+    gatsby: 3.14.6
     gatsby-source-filesystem: 3.14.0
     prop-types: 15.7.2
     react: 17.0.2
@@ -2256,7 +2247,7 @@ __metadata:
   resolution: "@commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants"
   dependencies:
     "@commercetools-docs/ui-kit": 17.0.8
-    gatsby: 3.14.5
+    gatsby: 3.14.6
     gatsby-transformer-yaml: 3.14.0
     prop-types: 15.7.2
     react: 17.0.2
@@ -2296,7 +2287,7 @@ __metadata:
     assert: 2.0.0
     cosmiconfig: ^7.0.0
     docsearch.js: 2.6.3
-    gatsby: 3.14.5
+    gatsby: 3.14.6
     gatsby-cli: 3.14.2
     gatsby-plugin-emotion: 6.14.0
     gatsby-plugin-feed: 3.14.0
@@ -2337,10 +2328,10 @@ __metadata:
     rehype-slug: 4.0.1
     remark-emoji: 2.2.0
     remark-frontmatter: 4.0.1
-    remark-parse: 10.0.0
+    remark-parse: 10.0.1
     remark-rehype: 10.0.1
     slugify: 1.6.2
-    unified: 10.1.0
+    unified: 10.1.1
     unist-util-filter: 4.0.0
   peerDependencies:
     gatsby: 3.x
@@ -2356,7 +2347,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-transformer-mdx-introspection@workspace:packages/gatsby-transformer-mdx-introspection"
   dependencies:
-    "@babel/parser": 7.16.3
+    "@babel/parser": 7.16.4
     "@mdx-js/mdx": 1.6.22
     deepmerge: 4.2.2
     gray-matter: 4.0.3
@@ -2372,12 +2363,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/rmf-codegen@npm:13.0.1":
-  version: 13.0.1
-  resolution: "@commercetools-docs/rmf-codegen@npm:13.0.1"
+"@commercetools-docs/rmf-codegen@npm:13.8.0":
+  version: 13.8.0
+  resolution: "@commercetools-docs/rmf-codegen@npm:13.8.0"
   bin:
     rmf-codegen: bin/rmf-codegen.js
-  checksum: 65a786911b0b69ee9c9d4967a2cebb9274a560fd2cf7bde8e8acc6df8d29d840e80a7212023571bf84361b9fb4b53ba227643e7ce501f6fca4aadcd38dd36e17
+  checksum: f45ed9ee527a17ef7283a133ef4ce8096ae347b4600d4bea77b54115d058847d4c1bbe7f694ac360db60ed8417c908fb02cc1bfe857b2fede519965ef9a422fb
   languageName: node
   linkType: hard
 
@@ -2950,8 +2941,8 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-api-docs": 17.0.8
     "@commercetools-docs/gatsby-theme-docs": 17.0.9
-    "@commercetools-docs/rmf-codegen": 13.0.1
-    gatsby: 3.14.5
+    "@commercetools-docs/rmf-codegen": 13.8.0
+    gatsby: 3.14.6
     gatsby-cli: 3.14.2
     gatsby-source-filesystem: 3.14.0
     react: 17.0.2
@@ -2968,7 +2959,7 @@ __metadata:
     "@commercetools-docs/gatsby-theme-docs": 17.0.9
     "@commercetools-docs/ui-kit": 17.0.8
     "@commercetools-uikit/icons": ^12.2.1
-    gatsby: 3.14.5
+    gatsby: 3.14.6
     gatsby-cli: 3.14.2
     react: 17.0.2
     react-dom: 17.0.2
@@ -2980,7 +2971,7 @@ __metadata:
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
     "@commercetools-docs/gatsby-theme-docs": 17.0.9
-    gatsby: 3.14.5
+    gatsby: 3.14.6
     gatsby-cli: 3.14.2
     react: 17.0.2
     react-dom: 17.0.2
@@ -9219,7 +9210,7 @@ __metadata:
     stylelint-config-prettier: 9.0.3
     stylelint-config-standard: 22.0.0
     stylelint-order: 5.0.0
-    typescript: 4.4.4
+    typescript: 4.5.2
     wait-on: 6.0.0
   languageName: unknown
   linkType: soft
@@ -13359,9 +13350,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:3.14.5":
-  version: 3.14.5
-  resolution: "gatsby@npm:3.14.5"
+"gatsby@npm:3.14.6":
+  version: 3.14.6
+  resolution: "gatsby@npm:3.14.6"
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/core": ^7.15.5
@@ -13515,7 +13506,7 @@ __metadata:
     react-dom: ^16.9.0 || ^17.0.0
   bin:
     gatsby: ./cli.js
-  checksum: add7511512a6420c19ccd6a77fb50a6bc425a4a98cc9f10ca528c76c5800f2196314b519d7e4f91fa16c8feac804234d83dd24975cb12827e9152f156081bb4e
+  checksum: 6555a24f2aa73c3ab433d3ad3e3b1882f50ed4338d6598522af661d0b43e892dde0a096c4163069d0d4469813cd055ee3bda1e07bd8f5103b2cd991b19e20f13
   languageName: node
   linkType: hard
 
@@ -22206,14 +22197,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-parse@npm:10.0.0":
-  version: 10.0.0
-  resolution: "remark-parse@npm:10.0.0"
+"remark-parse@npm:10.0.1":
+  version: 10.0.1
+  resolution: "remark-parse@npm:10.0.1"
   dependencies:
     "@types/mdast": ^3.0.0
     mdast-util-from-markdown: ^1.0.0
     unified: ^10.0.0
-  checksum: cebd0d8f95b7b0b827277773ddafd05d295a450a2a712f085ccedad2572678712785869b7a0dea53c215f124c22dad5b5247c29d461729933565ed7b5f262e6d
+  checksum: 505088e564ab53ff054433368adbb7b551f69240c7d9768975529837a86f1d0f085e72d6211929c5c42db315273df4afc94f3d3a8662ffdb69468534c6643d29
   languageName: node
   linkType: hard
 
@@ -25181,17 +25172,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.4.4":
-  version: 4.4.4
-  resolution: "typescript@npm:4.4.4"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 89ecb8436bb48ef5594d49289f5f89103071716b6e4844278f4fb3362856e31203e187a9c76d205c3f0b674d221a058fd28310dbcbcf5d95e9a57229bb5203f1
-  languageName: node
-  linkType: hard
-
-"typescript@npm:^4.4.3":
+"typescript@npm:4.5.2, typescript@npm:^4.4.3":
   version: 4.5.2
   resolution: "typescript@npm:4.5.2"
   bin:
@@ -25201,17 +25182,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.4.4#~builtin<compat/typescript>":
-  version: 4.4.4
-  resolution: "typescript@patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=ddd1e8"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: bd629ad0da4a15d79aaad56baf3ee7d96f6a181760d430ae77f8c5325df7bffd9edee57544a3970e3651e8b796fe03a5838a7eb39c6d46cc3866c0b23d36a0dd
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>":
+"typescript@patch:typescript@4.5.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>":
   version: 4.5.2
   resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=ddd1e8"
   bin:
@@ -25291,9 +25262,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unified@npm:10.1.0":
-  version: 10.1.0
-  resolution: "unified@npm:10.1.0"
+"unified@npm:10.1.1, unified@npm:^10.0.0":
+  version: 10.1.1
+  resolution: "unified@npm:10.1.1"
   dependencies:
     "@types/unist": ^2.0.0
     bail: ^2.0.0
@@ -25302,7 +25273,7 @@ __metadata:
     is-plain-obj: ^4.0.0
     trough: ^2.0.0
     vfile: ^5.0.0
-  checksum: b7e1d8dcf61d139ff57df1d393b177098a7fa53bddd47dd8c44cdfe983557d653719fd0ba3668a0be89a4a6189907327d56c2d13b21361e3d07b74f51b0d98ef
+  checksum: 5419bd8d9608393bd6637d9b7948fa50b7ecfd1641513293f4af38ac602aadc2b04074c2714191ed5a783a2bffbcb0ee2665fe5367b436a45ee493d264e14e71
   languageName: node
   linkType: hard
 
@@ -25317,21 +25288,6 @@ __metadata:
     trough: ^1.0.0
     vfile: ^4.0.0
   checksum: 0cac4ae119893fbd49d309b4db48595e4d4e9f0a2dc1dde4d0074059f9a46012a2905f37c1346715e583f30c970bc8078db8462675411d39ff5036ae18b4fb8a
-  languageName: node
-  linkType: hard
-
-"unified@npm:^10.0.0":
-  version: 10.1.1
-  resolution: "unified@npm:10.1.1"
-  dependencies:
-    "@types/unist": ^2.0.0
-    bail: ^2.0.0
-    extend: ^3.0.0
-    is-buffer: ^2.0.0
-    is-plain-obj: ^4.0.0
-    trough: ^2.0.0
-    vfile: ^5.0.0
-  checksum: 5419bd8d9608393bd6637d9b7948fa50b7ecfd1641513293f4af38ac602aadc2b04074c2714191ed5a783a2bffbcb0ee2665fe5367b436a45ee493d264e14e71
   languageName: node
   linkType: hard
 
