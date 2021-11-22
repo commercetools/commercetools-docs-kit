@@ -11,7 +11,6 @@ echo "Building Gatsby website @commercetools-website/api-docs-smoke-test."
 
 yarn gatsby build --prefix-paths
 
-
 echo "Copying public folder of @commercetools-website/api-docs-smoke-test into root public folder."
 
 rm -rf ../../public/api-docs-smoke-test

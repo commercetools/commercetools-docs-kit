@@ -80,10 +80,9 @@ async function queryChildren(node, context, { filter, sort, deep, first }) {
 
   // Perform query
   const derivedFilter = merge(filter, baseFilter);
-  const result = await context.nodeModel.runQuery({
-    query: { filter: derivedFilter, sort },
+  const result = await context.nodeModel.findOne({
     type: nodeName,
-    firstOnly: first,
+    query: { filter: derivedFilter, sort },
   });
   return result;
 }

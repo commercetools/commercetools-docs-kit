@@ -43,11 +43,11 @@ exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
 exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
     SiteSiteMetadata: {
-      // this field is needed by 'gatsby-plugin-feed' plugin
+      // this field is needed by plugins needing an absolute production site URL, e.g. the'gatsby-plugin-feed' plugin
       siteUrl: {
         type: 'String',
-        resolve(source, args, context) {
-          const site = context.nodeModel.getAllNodes({ type: 'Site' })[0];
+        resolve: async (source, args, context) => {
+          const site = await context.nodeModel.findOne({ type: 'Site' });
           return `https://${source.productionHostname}${site.pathPrefix}`;
         },
       },
