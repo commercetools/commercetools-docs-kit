@@ -13,7 +13,7 @@ module.exports = {
     exclude: ['site-template/*'],
     overrides: [
       {
-        files: /(.*)\/components\/rss-feeds\/index\.html/,
+        include: /(.*)\/components\/rss-feeds\/index\.html/,
         waitForSelector: 'table[data-table-name="rss-feed"]',
       },
     ],
