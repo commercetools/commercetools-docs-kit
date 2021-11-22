@@ -47,9 +47,7 @@ exports.createResolvers = ({ createResolvers }) => {
       siteUrl: {
         type: 'String',
         resolve: async (source, args, context) => {
-          const site = await context.nodeModel.findOne({
-            query: { type: 'Site' },
-          });
+          const site = await context.nodeModel.findOne({ type: 'Site' });
           return `https://${source.productionHostname}${site.pathPrefix}`;
         },
       },

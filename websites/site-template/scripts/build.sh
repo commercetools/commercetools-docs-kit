@@ -10,7 +10,6 @@ echo "Building Gatsby website @commercetools-website/site-template."
 
 yarn gatsby build --prefix-paths
 
-
 echo "Copying public folder of @commercetools-website/site-template into root public folder."
 
 rm -rf ../../public/site-template
