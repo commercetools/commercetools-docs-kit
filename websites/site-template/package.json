@@ -8,9 +8,7 @@
     "serve": "npx gatsby serve --prefix-paths -o",
     "clean": "npx gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
-    "build": "npx gatsby build --prefix-paths",
-    "prebuild": "yarn clean",
-    "postbuild": "rm -rf ../../public/site-template && mkdir -p ../../public && mv public ../../public/site-template"
+    "build": "./scripts/build.sh"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-docs": "17.0.9",

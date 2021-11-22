@@ -3,7 +3,6 @@
   "description": "Gatsby theme for commercetools documentation API",
   "version": "17.0.8",
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },

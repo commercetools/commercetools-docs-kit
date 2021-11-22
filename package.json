@@ -2,23 +2,18 @@
   "name": "commercetools-docs-kit",
   "version": "0.0.0",
   "description": "commercetools Documentation Kit (monorepo)",
-  "license": "MIT",
   "private": true,
   "workspaces": ["packages/*", "websites/*", "api-specs/*"],
   "preconstruct": {
     "packages": ["packages/ui-kit"]
   },
   "scripts": {
-    "prepare": "husky install",
-    "postinstall": "preconstruct dev && manypkg check",
-    "clean": "lerna run clean --scope '@commercetools-website/*'",
-    "start": "yarn --cwd websites/docs-smoke-test start",
+    "clean": "yarn workspaces foreach -p --include '@commercetools-website/*' run clean",
+    "start": "yarn workspace @commercetools-website/docs-smoke-test start",
     "build-packages": "preconstruct build",
-    "build": "cross-env NODE_ENV=production lerna run build --scope '@commercetools-website/*'",
-    "prebuild": "yarn build-packages && yarn generate-icons",
-    "postbuild": "cp -f ./websites/index.html ./public && yarn check-links",
+    "build": "./scripts/build.sh",
     "vercel-build": "amazon-linux-extras install java-openjdk11 > /dev/null && yarn build",
-    "generate-icons": "lerna run generate-icons && prettier --write '**/generated/*.js'",
+    "generate-icons": "yarn workspaces foreach -p --include @commercetools-docs/gatsby-theme-docs,@commercetools-docs/ui-kit,@commercetools-website/docs-smoke-test run generate-icons && prettier --write '**/generated/*.js'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",
@@ -37,7 +32,7 @@
     "check-links": "npx linkinator ./public",
     "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "changeset": "changeset",
-    "changeset:version-and-format": "changeset version && prettier --write --parser json '**/package.json'",
+    "changeset:version-and-format": "changeset version && prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install",
     "versions:uikit": "manypkg upgrade @commercetools-uikit"
   },
   "dependencies": {
@@ -78,7 +73,6 @@
     "jest-runner-stylelint": "2.3.7",
     "jest-silent-reporter": "0.5.0",
     "jest-watch-typeahead": "1.0.0",
-    "lerna": "4.0.0",
     "linkinator": "2.16.2",
     "lint-staged": "12.1.2",
     "prettier": "2.4.1",
@@ -97,5 +91,6 @@
   "engines": {
     "node": ">=14",
     "npm": ">=5"
-  }
+  },
+  "packageManager": "yarn@3.1.0"
 }

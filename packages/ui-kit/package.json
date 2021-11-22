@@ -3,7 +3,6 @@
   "description": "UI component library for building commercetools documentation websites",
   "version": "17.0.8",
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
