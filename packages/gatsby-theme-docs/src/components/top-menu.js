@@ -185,6 +185,7 @@ const TopMenu = (props) => {
     <Container>
       <Content
         role="top-menu"
+        id="top-menu" // experiment whether this is more stable in cypress.
         aria-labelledby="top-menu-switcher"
         onClick={(event) => {
           // Prevent overlay to close when clicking on the content area.
