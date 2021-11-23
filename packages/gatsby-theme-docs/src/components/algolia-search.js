@@ -5,6 +5,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import reportErrorToSentry from '../utils/report-error-to-sentry';
 
 const algoliaStyles = css`
+  /* stylelint-disable selector-class-pattern */
   .algolia-docsearch-suggestion--highlight {
     color: ${designSystem.colors.light.textInfo};
   }
