@@ -5455,7 +5455,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stylelint/postcss-css-in-js@npm:^0.37.2":
+"@stylelint/postcss-css-in-js@npm:0.37.2":
   version: 0.37.2
   resolution: "@stylelint/postcss-css-in-js@npm:0.37.2"
   dependencies:
@@ -9171,7 +9171,7 @@ __metadata:
     "@percy/cli": 1.0.0-beta.70
     "@percy/cypress": 3.1.1
     "@preconstruct/cli": 2.1.5
-    "@stylelint/postcss-css-in-js": ^0.37.2
+    "@stylelint/postcss-css-in-js": 0.37.2
     "@svgr/cli": 5.5.0
     "@svgr/plugin-jsx": 5.5.0
     "@svgr/plugin-svgo": 5.5.0
@@ -9197,7 +9197,7 @@ __metadata:
     jest-watch-typeahead: 1.0.0
     linkinator: 2.16.2
     lint-staged: 12.1.2
-    postcss-syntax: ^0.36.2
+    postcss-syntax: 0.36.2
     prettier: 2.4.1
     react: 17.0.2
     react-dom: 17.0.2
@@ -20935,7 +20935,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-syntax@npm:^0.36.2":
+"postcss-syntax@npm:0.36.2":
   version: 0.36.2
   resolution: "postcss-syntax@npm:0.36.2"
   peerDependencies:
