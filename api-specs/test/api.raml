@@ -76,9 +76,62 @@ uses:
           body:
             type: objects.ObjectTestType
             example: !include examples/object-test-type.json
+    head:
+      displayName: Get all resources
+      description: Query/retrieve (HEAD) a specific resource or resource(s). This should return a paged query result of _blah_.
+      queryParameters:
+        stringParameter:
+          type: string
+          required: false
+          example: 6 in arrayOfIntExample
+        floatParameter:
+          type: number
+          required: false
+          example: 50
+        integerParameter:
+          type: integer
+          required: false
+          example: 50
+        withMarkdownDescription:
+          type: number
+          description: This `markdown` should be parsed correctly.
+          required: false
+          example: 50
+        objectParameter:
+          type: objects.ObjectTestType
+          required: false
+        arrayOfString:
+          type: string[]
+          required: false
+        arrayOfStringWithDescription:
+          description: This should render above the text "The parameter can be passed multiple times."
+          type: string[]
+          required: false
+      securedBy:
+      - oauth_2_0:
+          scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]
+      responses:
+          200:
+            description: A 200 response.  This is the case when reading or modifying something.
+            body:
+              type: arrays.ArrayTestType
+              example: !include examples/array-test-type.json
     put:
       displayName: Create or Overwrite a Resource
       description: Create or Overwrite (PUT) operation to a resource.
+      securedBy:
+        - oauth_2_0:
+            scopes: ["manage_test:{projectKey}"]
+      body:
+        type: objects.ObjectTestTypeDraft
+      responses:
+        201:
+          description: 201 Created response. This is the success response when creating something.
+          body:
+            type: objects.ObjectTestType
+    patch:
+      displayName: Overwrite a Resource
+      description: Overwrite (PATCH) operation to a resource.
       securedBy:
         - oauth_2_0:
             scopes: ["manage_test:{projectKey}"]

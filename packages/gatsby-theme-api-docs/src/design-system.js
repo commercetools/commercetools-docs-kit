@@ -36,6 +36,7 @@ export const colors = {
     border: '#e6e6e6',
     methods: {
       get: '#078cdf',
+      head: '#51B9FA',
       post: '#00ccb4',
       put: '#b866ff',
       delete: '#e60050',

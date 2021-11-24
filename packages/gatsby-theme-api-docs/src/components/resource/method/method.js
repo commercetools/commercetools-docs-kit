@@ -130,7 +130,11 @@ function computeMethodColor(methodName) {
   switch (methodName) {
     case 'get':
       return colors.light.methods.get;
+    case 'head':
+      return colors.light.methods.head;
     case 'post':
+      return colors.light.methods.post;
+    case 'patch':
       return colors.light.methods.post;
     case 'put':
       return colors.light.methods.put;
