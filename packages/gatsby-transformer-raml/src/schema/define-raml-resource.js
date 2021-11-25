@@ -100,7 +100,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
       fields: {
         code: 'Int!',
         description: 'String',
-        body: 'RamlResourceMethodBody!',
+        body: 'RamlResourceMethodBody',
       },
     }),
 
