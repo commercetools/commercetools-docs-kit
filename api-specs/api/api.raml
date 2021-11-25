@@ -137,7 +137,33 @@ resourceTypes:
         body:
           example: !include examples/project.example.json
           type: Project
+  head:
+    displayName: Check for project existence
+    is:
+      - errorable
+      - deprecatable200
+    description: Check if there is a project matching the given key.
+    securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
+    responses:
+      200:
+        body:
+          example: !include examples/project.example.json
+          type: Project
   post:
+    displayName: Update project settings
+    is:
+      - conflicting
+    description: Update project
+    securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
+    body:
+      application/json:
+        type: ProjectUpdate
+    responses:
+      200:
+        body:
+          example: !include examples/project.example.json
+          type: Project
+  patch:
     displayName: Update project settings
     is:
       - conflicting
