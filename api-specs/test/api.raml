@@ -78,7 +78,7 @@ uses:
             example: !include examples/object-test-type.json
     head:
       displayName: Get all resources
-      description: Query/retrieve (HEAD) a specific resource or resource(s). This should return a paged query result of _blah_.
+      description: Query/retrieve (HEAD) specific data.
       queryParameters:
         stringParameter:
           type: string
@@ -113,9 +113,6 @@ uses:
       responses:
           200:
             description: A 200 response.  This is the case when reading or modifying something.
-            body:
-              type: arrays.ArrayTestType
-              example: !include examples/array-test-type.json
     put:
       displayName: Create or Overwrite a Resource
       description: Create or Overwrite (PUT) operation to a resource.
