@@ -77,8 +77,8 @@ uses:
             type: objects.ObjectTestType
             example: !include examples/object-test-type.json
     head:
-      displayName: Get all resources
-      description: Query/retrieve (HEAD) specific data.
+      displayName: Check for existence
+      description: Check if at least one resource exists matching the query condition.
       queryParameters:
         stringParameter:
           type: string
