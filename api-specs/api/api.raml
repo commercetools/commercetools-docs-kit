@@ -138,12 +138,11 @@ resourceTypes:
           example: !include examples/project.example.json
           type: Project
   head:
-    displayName: Check if project exists
+    displayName: Check for project existence
     is:
       - errorable
       - deprecatable200
-    description: |
-      The Endpoint is responding a limited set of information about settings and configuration of the project.
+    description: Check if there is a project matching the given key.
     securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
     responses:
       200:
