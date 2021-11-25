@@ -1,5 +1,17 @@
 # @commercetools-docs/ui-kit
 
+## 18.0.0
+
+### Patch Changes
+
+- [#1136](https://github.com/commercetools/commercetools-docs-kit/pull/1136) [`ae4051a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae4051a8edccae26a4d907903c743fc496cf4eba) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency stylelint to v14
+
+* [#1116](https://github.com/commercetools/commercetools-docs-kit/pull/1116) [`b25c4e1`](https://github.com/commercetools/commercetools-docs-kit/commit/b25c4e16dd4cfea81c517cacda19a1b9cbbcf6e6) Thanks [@renovate](https://github.com/apps/renovate)! - update dependencies
+
+- [#1152](https://github.com/commercetools/commercetools-docs-kit/pull/1152) [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572) Thanks [@emmenko](https://github.com/emmenko)! - Add `data-table-name` attribute to RSS feed tables.
+
+* [#1152](https://github.com/commercetools/commercetools-docs-kit/pull/1152) [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade to Yarn v3
+
 ## 17.0.8
 
 ### Patch Changes
