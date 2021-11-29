@@ -39,6 +39,16 @@ module.exports = {
 };
 ```
 
+### How the data flow works
+
+1. Master RAML in /api-specs/`<api-key>`
+2. CLI call to `rmf-codegen` transforms it into normalized flattened conventional RAML files in /website/src/api-specs/`<api-key> `
+3. Gatsby’s source-filesystem plugin listens to changes and creates and updates file nodes in the gatsby data model.
+4. Our `gatsby-transformer-raml` plugin creates the API Spec nodes on GraphQL from the file nodes, defining the schema and transforming key-value data structures to arrays to have a queryable GraphQL schema.
+5. Gatsbyjs static query hooks hold the api endpoints / api types data of a given API respectively.
+6. The frontend components use these react hooks to find and use the respective endpoint / type key they got passed as props.
+7. The user imports the needed api frontend components into a given MDX page and uses them there.
+
 ### API Specs Directory Structure
 
 One of the benefits of the gatsby-transformer-raml tool is that it supports multiple api specs parsing. For this to work properly, we recommend setting up the specs root directory such that all the specs directory are flattened. See example below:
