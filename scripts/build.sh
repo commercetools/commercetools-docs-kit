@@ -6,13 +6,18 @@ echo "Preparing production builds."
 
 yarn build-packages
 yarn generate-icons
-yarn node ./scripts/gatsby-cache.mjs pre
+
+if [ -n "$VERCEL" ]; then
+  yarn node ./scripts/gatsby-cache.mjs pre
+fi
 
 echo "Building Gatsby websites."
 
 cross-env NODE_ENV=production yarn workspaces foreach --include '@commercetools-website/*' run build
 
-yarn node ./scripts/gatsby-cache.mjs post
+if [ -n "$VERCEL" ]; then
+  yarn node ./scripts/gatsby-cache.mjs post
+fi
 
 echo "Copying test index.html file into public folder."
 cp -f ./websites/index.html ./public
