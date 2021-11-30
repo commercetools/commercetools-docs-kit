@@ -50,15 +50,15 @@ new Crawler({
               //               gets too near to the limit of 500 records per page.
               // Records:
               // - a paragraph / heading / lead paragraph
-              // - a list as a whole including sub-lists (ol, ul, dl)
-              // - a table row (or an API property in its table layout)
+              // - a full list including sub-lists (ol, ul, dl)
+              // - a full table (markdown or API type) - rows turned out to be too many
               // - a full blockquote
               // - an image caption
               // - cards are not structural, their h6 heading and paragraph indexed as content
               // Not Records (not indexed at all):
               // - code examples
-              // - API docs: oauth scopes of endpoints, URL of endpoints
-              '#body-content :not([data-search-key="embedded-api-description"]):not(li):not(dd):not(dt):not(td):not(blockquote) > p, #body-content h6, #body-content :not(li) > ul:not([data-search-key="cards-container"]), #body-content :not(li) > ol, #body-content :not(li) > blockquote, #body-content dl, #body-content figure, #body-content .lead, #body-content tr',
+              // - API docs: oauth scopes of endpoints, URL of endpoints, UI boilerplate
+              '#body-content :not([data-search-key="embedded-api-description"]):not(li):not(dd):not(dt):not(td):not(blockquote) > p, #body-content h6, #body-content :not(li) > ul:not([data-search-key="cards-container"]), #body-content :not(li) > ol, #body-content :not(li) > blockquote, #body-content dl, #body-content figure, #body-content .lead, #body-content table',
           },
           indexHeadings: true,
         });
