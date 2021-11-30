@@ -65,14 +65,6 @@ const Table = styled.table`
           padding-left: ${uiKitDesignSystem.dimensions.spacings.m};
         }
       }
-
-      .name-type {
-        line-height: ${typography.lineHeights.propertyType};
-      }
-
-      .name {
-        color: ${uiKitDesignSystem.colors.light.textFaded};
-      }
     }
   }
 `;

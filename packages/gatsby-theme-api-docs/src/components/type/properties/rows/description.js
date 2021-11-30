@@ -135,6 +135,7 @@ const Description = (props) => {
   return (
     <SpacingsStack scale="s">
       <DescriptionText markdownString={props.property.description} />
+      {' ' /* whitespace for the search crawler */}
       <SpacingsInline>
         {renderEnums ? (
           <Info>
