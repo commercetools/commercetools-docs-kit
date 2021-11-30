@@ -34,14 +34,31 @@ new Crawler({
             },
             lvl1: 'article h1',
             lvl2: 'article h2',
-            lvl3: ['article h3', 'article h4'], // an array is a list of fallbacks. We sometimes omit h3 to skip the side nav.
+            lvl3: ['article h3', 'article h4'], // an array is a list of fallbacks. Authors sometimes omit h3 to skip the side nav.
             lvl4: ['article h4', 'article h5'],
-            // The following end up as individual "records", which is the best practice for long documents
-            // https://www.algolia.com/doc/guides/sending-and-managing-data/prepare-your-data/how-to/indexing-long-documents/
             content:
-              // FYI the change types page exceeds the record number but that is OK in the specific case.
-              // TODO table content
-              'article :not(.embedded-api-description) > p, article ul, article ol, article figure, article .lead, article tr.api-type-property',
+              // The following end up as individual "records", which is the best practice for long documents
+              // https://www.algolia.com/doc/guides/sending-and-managing-data/prepare-your-data/how-to/indexing-long-documents/
+
+              // To test visually, paste this into the chrome inspector DOM search feature on
+              // https://commercetools-docs-kit.vercel.app/docs-smoke-test/views/markdown#tables
+              // navigate through the results and check for omissions or double matches
+              // test other smoke test pages, too (e.g. cards, API docs)
+
+              // General goal: Balance the algolia recommendation of a record per paragraph against
+              //               excessive tokenization that negatively impacts the result preview and
+              //               gets too near to the limit of 500 records per page.
+              // Records:
+              // - a paragraph / heading / lead paragraph
+              // - a list as a whole including sub-lists (ol, ul, dl)
+              // - a table row (or an API property in its table layout)
+              // - a full blockquote
+              // - an image caption
+              // - cards are not structural, their h6 heading and paragraph indexed as content
+              // Not Records (not indexed at all):
+              // - code examples
+              // - API docs: oauth scopes of endpoints, URL of endpoints
+              '#body-content :not(.embedded-api-description):not(li):not(dd):not(dt):not(td):not(blockquote) > p, #body-content h6, #body-content :not(li) > ul:not(.cards-container), #body-content :not(li) > ol, #body-content :not(li) > blockquote, #body-content dl, #body-content figure, #body-content .lead, #body-content tr',
           },
           indexHeadings: true,
         });
