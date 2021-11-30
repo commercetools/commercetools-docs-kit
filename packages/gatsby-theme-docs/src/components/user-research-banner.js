@@ -22,7 +22,7 @@ const UserResearchBanner = () => {
       >
         <CtLogoSvgIcon />
       </div>
-      <span>We want your feedback</span>
+      <p>We want your feedback</p>
       <Link
         href="https://ok.commercetools.com/user-research-program"
         noUnderline
