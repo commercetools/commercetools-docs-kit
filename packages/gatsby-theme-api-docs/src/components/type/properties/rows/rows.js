@@ -13,10 +13,7 @@ const Rows = (props) => {
       return undefined;
 
     return (
-      <tr
-        key={property.name}
-        className="api-type-property" /* class name for the search crawler */
-      >
+      <tr key={property.name}>
         <td>
           <NameType apiKey={props.apiType.apiKey} property={property} />
         </td>

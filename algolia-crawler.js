@@ -1,5 +1,5 @@
-// This is a hardcopy of the Algolia crawler configuration for reference
-// The live version is authored here:
+// This is a hardcopy of the Algolia crawler configuration for reference.
+// The master lives on Algolias crawler servers and is also executed there.
 // https://crawler.algolia.com/admin/crawlers/1b5189dd-f93c-43b7-8b45-e5ec6b0d319d/configuration/edit
 /* eslint-disable */
 
@@ -58,7 +58,7 @@ new Crawler({
               // Not Records (not indexed at all):
               // - code examples
               // - API docs: oauth scopes of endpoints, URL of endpoints
-              '#body-content :not(.embedded-api-description):not(li):not(dd):not(dt):not(td):not(blockquote) > p, #body-content h6, #body-content :not(li) > ul:not(.cards-container), #body-content :not(li) > ol, #body-content :not(li) > blockquote, #body-content dl, #body-content figure, #body-content .lead, #body-content tr',
+              '#body-content :not([data-search-key="embedded-api-description"]):not(li):not(dd):not(dt):not(td):not(blockquote) > p, #body-content h6, #body-content :not(li) > ul:not([data-search-key="cards-container"]), #body-content :not(li) > ol, #body-content :not(li) > blockquote, #body-content dl, #body-content figure, #body-content .lead, #body-content tr',
           },
           indexHeadings: true,
         });

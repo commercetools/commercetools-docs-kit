@@ -74,10 +74,7 @@ function ParameterRow(props) {
     isParameter: true,
   });
   return (
-    <tr
-      key={props.parameter.name}
-      className="api-type-property" /* class name for the search crawler */
-    >
+    <tr key={props.parameter.name}>
       <td>
         <PropertyName>
           <SpacingsInline scale="xs">

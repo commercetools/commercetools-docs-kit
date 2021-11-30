@@ -30,10 +30,7 @@ const Container = styled.ul`
 const Cards = (props) => {
   try {
     return (
-      <Container
-        {...props}
-        className="cards-container" /* class for the search crawler */
-      >
+      <Container {...props} data-search-key="cards-container">
         {React.Children.map(props.children, (child) => {
           if (!React.isValidElement(child)) {
             throwErrorMessage(child);

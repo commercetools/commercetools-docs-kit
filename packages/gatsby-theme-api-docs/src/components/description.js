@@ -17,7 +17,7 @@ const DescriptionTextContainer = styled.span`
 // as a property. Use this to embed description into a layout like
 // a table, card or bullet list.
 export const DescriptionText = (props) => (
-  <DescriptionTextContainer className="embedded-api-description">
+  <DescriptionTextContainer data-search-key="embedded-api-description">
     {markdownFragmentToReact(props.markdownString, {}, transformURNLinksPlugin)}
   </DescriptionTextContainer>
 );
@@ -28,7 +28,7 @@ export const DescriptionParagraph = (props) => {
   return (
     <DescriptionParagraphContainer>
       {typeof props.children === 'string' ? (
-        <Markdown.TypographyContainer className="body-text-api-description">
+        <Markdown.TypographyContainer>
           {markdownFragmentToReact(props.children, {}, transformURNLinksPlugin)}
         </Markdown.TypographyContainer>
       ) : (
