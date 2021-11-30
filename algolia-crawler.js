@@ -19,7 +19,7 @@ new Crawler({
   ],
   ignoreCanonicalTo: false,
   discoveryPatterns: ['https://docs.commercetools.com/**'],
-  schedule: 'at 11:30 on Tuesday',
+  schedule: 'at 22:00 every weekday',
   actions: [
     {
       indexName: 'commercetools',
