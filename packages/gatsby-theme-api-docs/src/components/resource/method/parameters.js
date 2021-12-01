@@ -27,7 +27,6 @@ const PropertyType = styled.div`
   display: inline-block;
   line-height: ${typography.lineHeights.propertyType};
   color: ${uiKitDesignSystem.colors.light.textFaded};
-  color: ${uiKitDesignSystem.colors.light.textFaded};
 `;
 
 const Parameters = (props) => {
