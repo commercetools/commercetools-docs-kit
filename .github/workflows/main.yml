@@ -41,7 +41,7 @@ jobs:
             public
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-yarn-v01
 
       - name: Set custom Yarn cache path
         run: yarn config set cacheFolder .cache/yarn
