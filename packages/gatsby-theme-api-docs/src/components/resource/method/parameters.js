@@ -81,7 +81,7 @@ function ParameterRow(props) {
             {props.parameter.required && <Required />}
           </SpacingsInline>
         </PropertyName>
-        {' ' /* whitespace for the search crawler */}
+        {'\u200B' /* zero-width space for the search crawler */}
         <PropertyType>
           {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
@@ -89,7 +89,7 @@ function ParameterRow(props) {
             ? typeToRender.type
             : typeToRender.type}
         </PropertyType>
-        {' ' /* whitespace for the search crawler */}
+        {'\u200B' /* zero-width space for the search crawler */}
       </td>
       <td>
         <SpacingsStack scale="xs">

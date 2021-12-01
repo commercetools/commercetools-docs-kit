@@ -70,7 +70,7 @@ const NameType = (props) => {
           )}
         </SpacingsInline>
       </PropertyName>
-      {' ' /* whitespace for the search crawler */}
+      {'\u200B' /* zero-width space for the search crawler */}
       <PropertyType>
         {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
@@ -80,7 +80,7 @@ const NameType = (props) => {
           ? typeToRender.type
           : typeToRender.type}
       </PropertyType>
-      {' ' /* whitespace for the search crawler */}
+      {'\u200B' /* zero-width space for the search crawler */}
     </SpacingsStack>
   );
 };
