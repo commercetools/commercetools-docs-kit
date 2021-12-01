@@ -53,7 +53,7 @@
     "@preconstruct/cli": "2.1.5",
     "@stylelint/postcss-css-in-js": "0.37.2",
     "@svgr/cli": "5.5.0",
-    "@svgr/plugin-jsx": "5.5.0",
+    "@svgr/plugin-jsx": "6.0.0",
     "@svgr/plugin-svgo": "5.5.0",
     "@testing-library/cypress": "8.0.2",
     "@testing-library/jest-dom": "5.15.0",
