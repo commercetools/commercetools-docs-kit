@@ -62,6 +62,7 @@ const NameType = (props) => {
           ) : (
             <Markdown.InlineCode>{props.property.name}</Markdown.InlineCode>
           )}
+          {'\u200B' /* zero-width space for the search crawler */}
           {props.property.required && <Required />}
           {props.property.beta && (
             <BetaWrapper>
@@ -70,7 +71,6 @@ const NameType = (props) => {
           )}
         </SpacingsInline>
       </PropertyName>
-      {'\u200B' /* zero-width space for the search crawler */}
       <PropertyType>
         {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
@@ -79,8 +79,8 @@ const NameType = (props) => {
           : typeof typeToRender.type === 'string'
           ? typeToRender.type
           : typeToRender.type}
+        {'\u200B' /* zero-width space for the search crawler */}
       </PropertyType>
-      {'\u200B' /* zero-width space for the search crawler */}
     </SpacingsStack>
   );
 };
