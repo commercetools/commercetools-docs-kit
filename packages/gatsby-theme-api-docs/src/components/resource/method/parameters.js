@@ -96,11 +96,12 @@ function ParameterRow(props) {
           ) : (
             '-'
           )}
-          {props.parameter.additionalDescription && (
-            <div>
-              <Info>{props.parameter.additionalDescription}</Info>
-            </div>
-          )}
+          {props.parameter.additionalDescription &&
+            props.parameter.description && (
+              <div>
+                <Info>{props.parameter.additionalDescription}</Info>
+              </div>
+            )}
         </SpacingsStack>
       </td>
     </tr>
