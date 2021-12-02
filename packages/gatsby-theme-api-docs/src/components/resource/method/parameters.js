@@ -93,10 +93,8 @@ function ParameterRow(props) {
       </td>
       <td>
         <SpacingsStack scale="xs">
-          {props.parameter.description ? (
+          {props.parameter.description && (
             <DescriptionText markdownString={props.parameter.description} />
-          ) : (
-            '-'
           )}
           {props.parameter.additionalDescription && (
             <div>
