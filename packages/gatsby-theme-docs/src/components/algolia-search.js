@@ -235,8 +235,9 @@ const AlgoliaSearch = React.forwardRef((props, ref) => {
       import('docsearch.js')
         .then(({ default: docsearch }) => {
           docsearch({
-            apiKey: '6643ae30b54ef6784e4baaf9c8dbde07',
+            apiKey: '058c5342ed03a928f2dde0142bee8db0',
             indexName: 'commercetools',
+            appId: '6NZ83LOI5M',
             inputSelector: `#${props.searchInputId}`,
             bindKeyboardShortcuts: false,
             debug: process.env.NODE_ENV !== 'production',

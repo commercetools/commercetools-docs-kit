@@ -30,7 +30,7 @@ const Container = styled.ul`
 const Cards = (props) => {
   try {
     return (
-      <Container {...props}>
+      <Container {...props} data-search-key="cards-container">
         {React.Children.map(props.children, (child) => {
           if (!React.isValidElement(child)) {
             throwErrorMessage(child);
