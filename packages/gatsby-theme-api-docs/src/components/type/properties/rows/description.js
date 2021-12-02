@@ -107,6 +107,7 @@ const AdditionalInfo = (props) => {
             <Info key={index}>
               {capitalizeFirst(info)}
               <InfoValue>{value}</InfoValue>
+              {'\u200B' /* zero-width space for the search crawler */}
             </Info>
           )
         );
@@ -162,6 +163,7 @@ const Description = (props) => {
                 </React.Fragment>
               );
             })}
+            {'\u200B' /* zero-width space for the search crawler */}
           </Info>
         ) : null}
         <AdditionalInfo property={props.property} />
