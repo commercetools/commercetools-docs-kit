@@ -15,11 +15,11 @@
   "keywords": ["gatsby", "gatsby-plugin", "gatsby-theme", "yaml", "constants"],
   "dependencies": {
     "@commercetools-docs/ui-kit": "18.0.0",
-    "gatsby-transformer-yaml": "4.2.0",
+    "gatsby-transformer-yaml": "4.3.0",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "gatsby": "4.2.0",
+    "gatsby": "4.3.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
