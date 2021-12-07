@@ -14,8 +14,12 @@ import Required from '../../../required';
 // into lines before the name is wrapped in itself if it consists of multiple words.
 const PropertyName = styled.div`
   white-space: nowrap;
+  line-height: ${typography.lineHeights.propertyType};
 `;
-const PropertyType = styled.div``;
+const PropertyType = styled.div`
+  line-height: ${typography.lineHeights.propertyType};
+  color: ${designSystem.colors.light.textFaded};
+`;
 const BetaWrapper = styled.span`
   font-size: ${typography.fontSizes.body};
 `;
@@ -35,7 +39,7 @@ const NameType = (props) => {
 
   return (
     <SpacingsStack scale="xs">
-      <PropertyName className="name-type">
+      <PropertyName>
         <SpacingsInline scale="xs">
           {isRegex(props.property.name) ? (
             <Markdown.InlineCode>
@@ -58,6 +62,7 @@ const NameType = (props) => {
           ) : (
             <Markdown.InlineCode>{props.property.name}</Markdown.InlineCode>
           )}
+          {'\u200B' /* zero-width space for the search crawler */}
           {props.property.required && <Required />}
           {props.property.beta && (
             <BetaWrapper>
@@ -66,19 +71,15 @@ const NameType = (props) => {
           )}
         </SpacingsInline>
       </PropertyName>
-      <PropertyType className="name-type">
-        {typeToRender.displayPrefix && (
-          <span className="name">{typeToRender.displayPrefix}</span>
-        )}
-        {isRegex(props.property.name) ? (
-          <span className="name">
-            Any property matching regular expression above
-          </span>
-        ) : typeof typeToRender.type === 'string' ? (
-          <span className="name">{typeToRender.type}</span>
-        ) : (
-          typeToRender.type
-        )}
+      <PropertyType>
+        {typeToRender.displayPrefix && typeToRender.displayPrefix}
+
+        {isRegex(props.property.name)
+          ? 'Any property matching regular expression above'
+          : typeof typeToRender.type === 'string'
+          ? typeToRender.type
+          : typeToRender.type}
+        {'\u200B' /* zero-width space for the search crawler */}
       </PropertyType>
     </SpacingsStack>
   );

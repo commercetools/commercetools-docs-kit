@@ -13,7 +13,16 @@ const indexTemplate = (filePaths) => {
 module.exports = {
   icon: false,
   svgoConfig: {
-    plugins: [{ removeViewBox: false }],
+    plugins: [
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false,
+          },
+        },
+      },
+    ],
   },
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
   indexTemplate,
