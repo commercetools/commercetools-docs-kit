@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "18.0.0",
+  "version": "18.0.1",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,7 +19,7 @@
     "generate-icons": "svgr -d -- src/icons/generated src/icons/svg"
   },
   "dependencies": {
-    "@commercetools-docs/ui-kit": "18.0.0",
+    "@commercetools-docs/ui-kit": "18.0.1",
     "@commercetools-uikit/card": "^12.2.0",
     "@commercetools-uikit/checkbox-input": "^12.2.1",
     "@commercetools-uikit/date-input": "^12.2.1",
