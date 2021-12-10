@@ -1,0 +1,349 @@
+---
+title: Code
+---
+
+# Code blocks
+
+## Themes
+
+### Primary (default)
+
+```md title="Title of the code block"
+The content is not highlighted as no language is defined in the code.
+```
+
+#### With highlighted lines
+
+```json highlightLines="10"
+{
+  "glossary": {
+    "title": "example glossary",
+    "GlossDiv": {
+      "title": "S",
+      "GlossList": {
+        "GlossEntry": {
+          "ID": 123.45,
+          "Sort": true,
+          "GlossTerm": "Standard Generalized Markup Language",
+          "Acronym": "SGML",
+          "Abbrev": "ISO 8879:1986",
+          "GlossDef": {
+            "para": "A meta-markup language, used to create markup languages such as DocBook.",
+            "GlossSeeAlso": ["GML", "XML"]
+          },
+          "GlossSee": null
+        }
+      }
+    }
+  }
+}
+```
+
+#### With prompt
+
+```console noPromptLines="2"
+curl -H "Content-Type: application/json" \
+  "https://api.europe-west1.gcp.commercetools.com"
+```
+
+### Secondary
+
+```md title="Title of the code block" secondaryTheme
+The content is not highlighted as no language is defined in the code.
+```
+
+#### With highlighted lines
+
+```json highlightLines="10" secondaryTheme
+{
+  "glossary": {
+    "title": "example glossary",
+    "GlossDiv": {
+      "title": "S",
+      "GlossList": {
+        "GlossEntry": {
+          "ID": 123.45,
+          "Sort": true,
+          "GlossTerm": "Standard Generalized Markup Language",
+          "Acronym": "SGML",
+          "Abbrev": "ISO 8879:1986",
+          "GlossDef": {
+            "para": "A meta-markup language, used to create markup languages such as DocBook.",
+            "GlossSeeAlso": ["GML", "XML"]
+          },
+          "GlossSee": null
+        }
+      }
+    }
+  }
+}
+```
+
+#### With prompt
+
+```console noPromptLines="2" secondaryTheme
+curl -H "Content-Type: application/json" \
+  "https://api.europe-west1.gcp.commercetools.com"
+```
+
+## Terminal/Console
+
+<Warning>
+
+_Writers / Nikolaus - What does the below mean exactly? Could we put it in a simpler language?_
+
+</Warning>
+
+Passing the option `noPromptLines="3-4"`.
+
+```console noPromptLines="3-4"
+cd project
+cp -R \
+  dist \
+  public/
+rm -rf dist
+yarn start
+```
+
+No options, but you can check that the indentation in regards to the left prompt is aligned when the line wraps.
+
+```console
+# fetch a token:
+curl https://auth.sphere.io/oauth/token --basic --user "{client_id}:{client_secret}" -X POST -d "grant_type=client_credentials&scope=manage_project:{project_key}"
+# now access the API:
+curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/products
+```
+
+Passing the option `title="Fetching an access token"`
+
+```console title="Fetching an access token"
+# fetch a token:
+curl https://auth.sphere.io/oauth/token --basic --user "{client_id}:{client_secret}" -X POST -d "grant_type=client_credentials&scope=manage_project:{project_key}"
+# now access the API:
+curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/products
+```
+
+## Javascript
+
+```javascript highlightLines="2,5-6"
+// Constructor
+var anObject = new Object();
+
+// Object literal
+var objectA = {};
+var objectA2 = {};
+var objectB = { index1: 'value 1', index2: 'value 2' };
+```
+
+## Python
+
+```python
+s = "Python syntax highlighting"
+print s
+```
+
+## C
+
+```csharp
+Person person = new Person {
+    Name = "John Doe",
+    Age = 39
+};
+
+// Equal to
+Person person = new Person();
+```
+
+## Java
+
+```java
+public class HelloWorldApp {
+  public static void main(String[] args) {
+      System.out.println("Hello World!"); // Prints the string to the console.
+  }
+}
+```
+
+## JSON
+
+```json
+{
+  "glossary": {
+    "title": "example glossary",
+    "GlossDiv": {
+      "title": "S",
+      "GlossList": {
+        "GlossEntry": {
+          "ID": 123.45,
+          "Sort": true,
+          "GlossTerm": "Standard Generalized Markup Language",
+          "Acronym": "SGML",
+          "Abbrev": "ISO 8879:1986",
+          "GlossDef": {
+            "para": "A meta-markup language, used to create markup languages such as DocBook.",
+            "GlossSeeAlso": ["GML", "XML"]
+          },
+          "GlossSee": null
+        }
+      }
+    }
+  }
+}
+```
+
+## PHP
+
+```php
+<?php
+function myAge(int $birthYear):string {
+    // calculate the age by subtracting the birth year from the current year.
+    $yearsOld = date('Y') - $birthYear;
+
+    // return the age in a descriptive string.
+    return $yearsOld . ' year' . ($yearsOld != 1 ? 's' : '');
+}
+
+echo 'I am currently ' . myAge(1995) . ' old.';
+```
+
+## Shell
+
+```sh
+#!/bin/bash
+# use $jpg in place of each filename given, in turn
+for jpg; do
+    # construct the PNG version of the filename by replacing .jpg with .png
+    png="${jpg%.jpg}.png"
+    # output status info to the user running the script
+    echo converting "$jpg" ...
+    # use the convert program (common in Linux) to create the PNG in a temp file
+    if convert "$jpg" jpg.to.png ; then
+        # if it worked, rename the temporary PNG image to the correct name
+        mv jpg.to.png "$png"
+    # ...otherwise complain and exit from the script
+    else
+        echo 'jpg2png: error: failed output saved in "jpg.to.png". adksjflkasd fkljasd lfkja lksdjf lkasdjf lkasdjf lkajsd fkljas dlkfj asdflk' >&2
+        exit 1
+    # the end of the "if" test construct
+    fi
+# the end of the "for" loop
+done
+# tell the user the good news
+echo all conversions successful
+exit 0
+```
+
+## Swift
+
+```swift
+struct Player {
+    var name: String
+    var highScore: Int = 0
+    var history: [Int] = []
+
+    init(_ name: String) {
+        self.name = name
+    }
+}
+
+var player = Player("Tomas")
+```
+
+## No language set
+
+```
+This is an example of a code block without a title. There is no syntax highlighting as no is language indicated.
+
+**Formatting syntax** like _this_ or <b>tag</b> should remain unparsed.
+```
+
+<Warning>
+
+_Writers - Is the last line in the code block correct? I edited it a bit._
+
+</Warning>
+
+
+# Code examples
+
+## Themes
+
+### Primary
+
+#### Multiple languages
+
+<MultiCodeExample title="Multilanguage Code Samples">
+  <CodeExample path="example.js" />
+  <CodeExample path="example.java"/>
+</MultiCodeExample>
+
+#### Single language
+
+<CodeExample path="example.js" title="JavaScript Code Sample" />
+
+### Secondary
+
+#### Multiple languages
+
+<MultiCodeExample title="Multilanguage Code Samples" secondaryTheme>
+  <CodeExample path="example.js" />
+  <CodeExample path="example.java"/>
+</MultiCodeExample>
+
+#### Single language
+
+<CodeExample path="example.js" title="JavaScript Code Sample" secondaryTheme />
+
+## Multiple languages
+
+<MultiCodeExample title="Multilanguage Code Samples">
+  <CodeExample path="example.js" highlightLines={[3]} />
+  <CodeExample path="example.java"/>
+  <CodeExample path="example.console" noPromptLines={[3, 4]} />
+</MultiCodeExample>
+
+## Single language
+
+### JavaScript
+
+<CodeExample path="example.js" title="JavaScript Code Sample" />
+
+### Java
+
+<CodeExample path="example.java" />
+
+### Scala
+
+<CodeExample path="example.scala" />
+
+### CSharp
+
+<CodeExample path="example.cs" title="CSharp Code Sample" />
+
+### cURL
+
+<CodeExample path="example.curl" title="Curl Code Sample" />
+
+### GraphQL
+
+<CodeExample path="example.graphql" title="GraphQL Code Sample" />
+
+### JSON
+
+<CodeExample path="example.json" />
+
+### PHP
+
+<CodeExample path="example.php" />
+
+### Shell
+
+<CodeExample path="example.sh" />
+
+### TypeScript
+
+<CodeExample path="example.ts" />
+
+### YAML
+
+<CodeExample path="example.yml" />
