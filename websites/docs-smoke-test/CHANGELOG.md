@@ -1,5 +1,17 @@
 # @commercetools-website/docs-smoke-test
 
+## 5.0.1
+
+### Patch Changes
+
+- [#1165](https://github.com/commercetools/commercetools-docs-kit/pull/1165) [`45f78836`](https://github.com/commercetools/commercetools-docs-kit/commit/45f788361de5ba8cf2d67794ecc1b726ff5e56aa) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all svgr packages to v6 (major)
+
+- Updated dependencies [[`45f78836`](https://github.com/commercetools/commercetools-docs-kit/commit/45f788361de5ba8cf2d67794ecc1b726ff5e56aa), [`fb3acae6`](https://github.com/commercetools/commercetools-docs-kit/commit/fb3acae66a72ebc8d1fc5cbff83dbe498d96540f)]:
+  - @commercetools-docs/gatsby-theme-docs@18.0.1
+  - @commercetools-docs/ui-kit@18.0.1
+  - @commercetools-docs/gatsby-theme-code-examples@18.0.1
+  - @commercetools-docs/gatsby-theme-constants@18.0.1
+
 ## 5.0.0
 
 ### Major Changes
