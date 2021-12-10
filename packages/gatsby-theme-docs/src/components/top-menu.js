@@ -32,7 +32,7 @@ const Content = styled.div`
   margin: 0;
   padding: 0;
 
-  /* stylelint-disable declaration-block-no-duplicate-properties */
+  /* stylelint-disable declaration-block-no-duplicate-properties, value-no-vendor-prefix */
   height: 100%; /* For browsers that do not support this property yet */
   height: -moz-fit-content;
   height: fit-content;

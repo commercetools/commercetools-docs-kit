@@ -1,5 +1,19 @@
 # @commercetools-docs/writing-style
 
+## 3.0.8
+
+### Patch Changes
+
+- [#1116](https://github.com/commercetools/commercetools-docs-kit/pull/1116) [`b25c4e1`](https://github.com/commercetools/commercetools-docs-kit/commit/b25c4e16dd4cfea81c517cacda19a1b9cbbcf6e6) Thanks [@renovate](https://github.com/apps/renovate)! - update dependencies
+
+* [#1152](https://github.com/commercetools/commercetools-docs-kit/pull/1152) [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade to Yarn v3
+
+## 3.0.7
+
+### Patch Changes
+
+- [#1082](https://github.com/commercetools/commercetools-docs-kit/pull/1082) [`42a7393`](https://github.com/commercetools/commercetools-docs-kit/commit/42a7393ed3b3dad44a36196c5ba7d03bcaee7629) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
 ## 3.0.6
 
 ### Patch Changes

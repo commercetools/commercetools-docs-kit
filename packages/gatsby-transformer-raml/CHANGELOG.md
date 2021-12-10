@@ -1,5 +1,23 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.0.1
+
+### Patch Changes
+
+- [#1155](https://github.com/commercetools/commercetools-docs-kit/pull/1155) [`1043390`](https://github.com/commercetools/commercetools-docs-kit/commit/1043390d8c220aa30dd6964294e374963e338d64) Thanks [@timonrey](https://github.com/timonrey)! - Add API docs theme support for HEAD and PATCH methods
+
+* [#1152](https://github.com/commercetools/commercetools-docs-kit/pull/1152) [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade to Yarn v3
+
+## 13.0.0
+
+### Major Changes
+
+- [#1111](https://github.com/commercetools/commercetools-docs-kit/pull/1111) [`354c165`](https://github.com/commercetools/commercetools-docs-kit/commit/354c165fd29d9c8238bdd06cc63f8560ca269f4f) Thanks [@davifantasia](https://github.com/davifantasia)! - BREAKING CHANGE:
+
+  `movePropertiesToTop` and `movePropertiesToBottom` has been replaced with `moveTypePropertiesToTop` and `moveTypePropertiesToBottom`, but the funtionalities remain the same.
+
+  `moveEndpointQueryParametersToTop` and `moveEndpointQueryParametersToBottom` options are added to provide sorting configuration for query parameters.
+
 ## 12.1.0
 
 ### Minor Changes

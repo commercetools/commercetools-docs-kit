@@ -1,5 +1,41 @@
 # @commercetools-website/site-template
 
+## 5.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`45f78836`](https://github.com/commercetools/commercetools-docs-kit/commit/45f788361de5ba8cf2d67794ecc1b726ff5e56aa), [`fb3acae6`](https://github.com/commercetools/commercetools-docs-kit/commit/fb3acae66a72ebc8d1fc5cbff83dbe498d96540f)]:
+  - @commercetools-docs/gatsby-theme-docs@18.0.1
+
+## 5.0.0
+
+### Major Changes
+
+- [#1139](https://github.com/commercetools/commercetools-docs-kit/pull/1139) [`001e85a`](https://github.com/commercetools/commercetools-docs-kit/commit/001e85aa36d6d6d5bc0ecc0cac822ccd6d1ea38b) Thanks [@renovate](https://github.com/apps/renovate)! - Migrate to Gatsby v4 (see [official release notes](https://v4.gatsbyjs.com/docs/reference/release-notes/migrating-from-v3-to-v4) for more info).
+
+  Running Gatsby now requires a minimal Node.js version of `4.15.0`.
+
+### Patch Changes
+
+- [#1145](https://github.com/commercetools/commercetools-docs-kit/pull/1145) [`424806a`](https://github.com/commercetools/commercetools-docs-kit/commit/424806a8fedeacc33b2fa9ce68a353049ef0c42a) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`ae4051a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae4051a8edccae26a4d907903c743fc496cf4eba), [`001e85a`](https://github.com/commercetools/commercetools-docs-kit/commit/001e85aa36d6d6d5bc0ecc0cac822ccd6d1ea38b), [`424806a`](https://github.com/commercetools/commercetools-docs-kit/commit/424806a8fedeacc33b2fa9ce68a353049ef0c42a), [`b25c4e1`](https://github.com/commercetools/commercetools-docs-kit/commit/b25c4e16dd4cfea81c517cacda19a1b9cbbcf6e6), [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572)]:
+  - @commercetools-docs/gatsby-theme-docs@18.0.0
+
+## 4.0.16
+
+### Patch Changes
+
+- Updated dependencies [[`5b929e0`](https://github.com/commercetools/commercetools-docs-kit/commit/5b929e00be55a1144074bf500f41fec97c88d3f3)]:
+  - @commercetools-docs/gatsby-theme-docs@17.0.9
+
+## 4.0.15
+
+### Patch Changes
+
+- Updated dependencies [[`42a7393`](https://github.com/commercetools/commercetools-docs-kit/commit/42a7393ed3b3dad44a36196c5ba7d03bcaee7629), [`95aa497`](https://github.com/commercetools/commercetools-docs-kit/commit/95aa497eb3ec192af81fef3ea1215b60b1ebbe51)]:
+  - @commercetools-docs/gatsby-theme-docs@17.0.8
+
 ## 4.0.14
 
 ### Patch Changes

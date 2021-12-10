@@ -67,6 +67,18 @@ import { ApiEndpoint } from "/shortcodes"
   method="GET"
 />
 
+# HEAD Resource
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource"
+  method="HEAD"
+/>
+```
+
+<ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="HEAD" />
+
 # POST Resource
 
 ```jsx
@@ -78,6 +90,18 @@ import { ApiEndpoint } from "/shortcodes"
 ```
 
 <ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="POST" />
+
+# PATCH Resource
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource"
+  method="PATCH"
+/>
+```
+
+<ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="PATCH" />
 
 # PUT Resource
 
@@ -139,20 +163,18 @@ import { ApiEndpoint } from "/shortcodes"
   method="DELETE"
 />
 
-# Query Parameters with multiple instances
-
-The types of `expand`, `sort`, `where`, and `/^var[.][a-zA-Z0-9]+$/` will be rendered as a `String`. An additional description will be auto-generated to illustrate usage.
+# Get Resource with Sorted Query parameters
 
 ```jsx
 <ApiEndpoint
-  apiKey="api"
-  resource="/{projectKey}/api-clients"
+  apiKey="test"
+  resource="/{projectKey}/resource/sorted-query-parameters"
   method="GET"
 />
 ```
 
 <ApiEndpoint
-  apiKey="api"
-  resource="/{projectKey}/api-clients"
+  apiKey="test"
+  resource="/{projectKey}/resource/sorted-query-parameters"
   method="GET"
 />

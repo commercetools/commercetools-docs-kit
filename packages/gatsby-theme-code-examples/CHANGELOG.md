@@ -1,5 +1,40 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 18.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`45f78836`](https://github.com/commercetools/commercetools-docs-kit/commit/45f788361de5ba8cf2d67794ecc1b726ff5e56aa)]:
+  - @commercetools-docs/ui-kit@18.0.1
+
+## 18.0.0
+
+### Major Changes
+
+- [#1139](https://github.com/commercetools/commercetools-docs-kit/pull/1139) [`001e85a`](https://github.com/commercetools/commercetools-docs-kit/commit/001e85aa36d6d6d5bc0ecc0cac822ccd6d1ea38b) Thanks [@renovate](https://github.com/apps/renovate)! - Migrate to Gatsby v4 (see [official release notes](https://v4.gatsbyjs.com/docs/reference/release-notes/migrating-from-v3-to-v4) for more info).
+
+  Running Gatsby now requires a minimal Node.js version of `4.15.0`.
+
+### Patch Changes
+
+- [#1145](https://github.com/commercetools/commercetools-docs-kit/pull/1145) [`424806a`](https://github.com/commercetools/commercetools-docs-kit/commit/424806a8fedeacc33b2fa9ce68a353049ef0c42a) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1116](https://github.com/commercetools/commercetools-docs-kit/pull/1116) [`b25c4e1`](https://github.com/commercetools/commercetools-docs-kit/commit/b25c4e16dd4cfea81c517cacda19a1b9cbbcf6e6) Thanks [@renovate](https://github.com/apps/renovate)! - update dependencies
+
+- [#1152](https://github.com/commercetools/commercetools-docs-kit/pull/1152) [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade to Yarn v3
+
+- Updated dependencies [[`ae4051a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae4051a8edccae26a4d907903c743fc496cf4eba), [`b25c4e1`](https://github.com/commercetools/commercetools-docs-kit/commit/b25c4e16dd4cfea81c517cacda19a1b9cbbcf6e6), [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572), [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572)]:
+  - @commercetools-docs/ui-kit@18.0.0
+
+## 17.0.8
+
+### Patch Changes
+
+- [#1082](https://github.com/commercetools/commercetools-docs-kit/pull/1082) [`42a7393`](https://github.com/commercetools/commercetools-docs-kit/commit/42a7393ed3b3dad44a36196c5ba7d03bcaee7629) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
+- Updated dependencies [[`42a7393`](https://github.com/commercetools/commercetools-docs-kit/commit/42a7393ed3b3dad44a36196c5ba7d03bcaee7629)]:
+  - @commercetools-docs/ui-kit@17.0.8
+
 ## 17.0.5
 
 ### Patch Changes

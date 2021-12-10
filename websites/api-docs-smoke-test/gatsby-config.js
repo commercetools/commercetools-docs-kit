@@ -1,5 +1,4 @@
 const isProd = process.env.NODE_ENV === 'production';
-const isCi = process.env.CI ? true : false;
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
@@ -9,10 +8,8 @@ module.exports = {
   // https://www.gatsbyjs.com/docs/reference/release-notes/v2.28/#feature-flags-in-gatsby-configjs
   // https://www.gatsbyjs.com/docs/reference/release-notes/v2.30
   flags: {
-    DEV_SSR: true,
     FAST_DEV: true,
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
-    PRESERVE_WEBPACK_CACHE: true,
   },
   pathPrefix: '/api-docs-smoke-test',
   siteMetadata: {
@@ -32,7 +29,7 @@ module.exports = {
           options: {
             transformerRaml: {
               includeApis: ['test', 'api'],
-              movePropertiesToTop: [
+              moveTypePropertiesToTop: [
                 'id',
                 'version',
                 'key',
@@ -41,7 +38,13 @@ module.exports = {
                 'lastModifiedAt',
                 'lastModifiedBy',
               ],
-              movePropertiesToBottom: ['custom'],
+              moveTypePropertiesToBottom: ['custom'],
+              moveEndpointQueryParametersToTop: ['where', 'sort', 'limit'],
+              moveEndpointQueryParametersToBottom: [
+                'withTotal',
+                'expand',
+                '/^var[.][a-zA-Z0-9]+$/',
+              ],
             },
           },
         },

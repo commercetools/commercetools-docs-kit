@@ -29,13 +29,25 @@ module.exports = {
       resolve: `@commercetools-docs/gatsby-transformer-raml`,
       options: {
         includeApis: ['example'],
-        movePropertiesToTop: ['id'],
-        movePropertiesToBottom: ['custom'],
+        moveTypePropertiesToTop: ['id'],
+        moveTypePropertiesToBottom: ['custom'],
+        moveEndpointQueryParametersToTop: ['where'],
+        moveEndpointQueryParametersToBottom: ['/^var[.][a-zA-Z0-9]+$/'],
       },
     },
   ],
 };
 ```
+
+### How the data flow works
+
+1. Master RAML in /api-specs/`<api-key>`
+2. CLI call to `rmf-codegen` transforms it into normalized flattened conventional RAML files in /website/src/api-specs/`<api-key> `
+3. Gatsby’s source-filesystem plugin listens to changes and creates and updates file nodes in the gatsby data model.
+4. Our `gatsby-transformer-raml` plugin creates the API Spec nodes on GraphQL from the file nodes, defining the schema and transforming key-value data structures to arrays to have a queryable GraphQL schema.
+5. Gatsbyjs static query hooks hold the api endpoints / api types data of a given API respectively.
+6. The frontend components use these react hooks to find and use the respective endpoint / type key they got passed as props.
+7. The user imports the needed api frontend components into a given MDX page and uses them there.
 
 ### API Specs Directory Structure
 
@@ -62,8 +74,10 @@ The example above assumes the RAML specs are sourced from the `api-specs` direct
 ### Available Plugin Options
 
 - `includeApis`: This is a list of the names each API specifications directory located in `./src/api-specs`. Only APIs listed here will be available on the website.
-- `movePropertiesToTop`: This is the list of API type properties that must be sorted to the top.
-- `movePropertiesToBottom`: This is the list of API type properties that must be sorted to the bottom.
+- `moveTypePropertiesToTop`: This is the list of API type properties that must be sorted to the top.
+- `moveTypePropertiesToBottom`: This is the list of API type properties that must be sorted to the bottom.
+- `moveEndpointQueryParametersToTop`: This is the list of endpoint query parameters that must be sorted to the top.
+- `moveEndpointQueryParametersToBottom`: This is the list of endpoint query parameters that must be sorted to the bottom.
 
 Example `gatsby-config.js` content:
 
@@ -75,8 +89,13 @@ module.exports = {
       resolve: `@commercetools-docs/gatsby-transformer-raml`,
       options: {
         includeApis: ['test'],
-        movePropertiesToTop: ['id', 'name', 'surname'],
-        movePropertiesToBottom: ['last-property'],
+        moveTypePropertiesToTop: ['id', 'name', 'surname'],
+        moveTypePropertiesToBottom: ['last-property'],
+        moveEndpointQueryParametersToTop: ['where', 'sort', 'limit'],
+        moveEndpointQueryParametersToBottom: [
+          'expand',
+          '/^var[.][a-zA-Z0-9]+$/',
+        ],
       },
     },
   ],
