@@ -17,7 +17,3 @@ echo "Copying test index.html file into public folder."
 
 cp -f ./websites/index.html ./public
 
-echo "Running link checker"
-
-# run the test but don't fail the otherwise successful build (separate check exists) -> || true
-yarn check-links || true
