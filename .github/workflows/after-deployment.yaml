@@ -1,0 +1,30 @@
+name: After deployments
+
+on: [deployment_status]
+
+jobs:
+  fetch-vercel-logs:
+    name: 'Vercel Build Log'
+    if: github.event.deployment_status.state != 'pending'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+      - name: Install Vercel CLI
+        run: npm i --silent --no-progress vercel
+      - name: CLICK HERE TO SEE THE VERCEL BUILD LOG
+        run: FORCE_COLOR=true vercel logs -n 10000 --scope commercetools --token="${{ secrets.VERCEL_TOKEN }}" ${{ github.event.deployment_status.target_url }}
+  link-check:
+    name: 'Check links'
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16' # ensure a 7+ npx CLI behavior
+      - name: Check links
+        # the docs production domain has to be rewritten to the preview URL to allow new pages to be created without the link checker
+        # erroring on the canonical URL of the new page. Known compromise to not find links that point to the absolute production URL
+        # but the docs kit is automatically making those a relative URL in authored content so the impact is low.
+        run: npx --yes linkinator@2.x --config linkinator.remote.config.json --url-rewrite-replace=${{ github.event.deployment_status.target_url }} ${{ github.event.deployment_status.target_url }}
