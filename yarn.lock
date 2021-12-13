@@ -1866,7 +1866,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-api-specs/test@workspace:api-specs/test"
   dependencies:
-    "@commercetools-docs/rmf-codegen": 13.8.0
+    "@commercetools-docs/rmf-codegen": 13.9.0
   languageName: unknown
   linkType: soft
 
@@ -2035,15 +2035,6 @@ __metadata:
     js-yaml: ^4.0.0
   languageName: unknown
   linkType: soft
-
-"@commercetools-docs/rmf-codegen@npm:13.8.0":
-  version: 13.8.0
-  resolution: "@commercetools-docs/rmf-codegen@npm:13.8.0"
-  bin:
-    rmf-codegen: bin/rmf-codegen.js
-  checksum: f45ed9ee527a17ef7283a133ef4ce8096ae347b4600d4bea77b54115d058847d4c1bbe7f694ac360db60ed8417c908fb02cc1bfe857b2fede519965ef9a422fb
-  languageName: node
-  linkType: hard
 
 "@commercetools-docs/rmf-codegen@npm:13.9.0":
   version: 13.9.0
