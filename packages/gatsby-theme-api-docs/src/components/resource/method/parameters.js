@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import {
   Markdown,
   designSystem as uiKitDesignSystem,
@@ -13,6 +14,13 @@ import Title from './title';
 import { DescriptionText } from '../../description';
 import Info from '../../info';
 import { typography } from '../../../design-system';
+
+const isRegex = (string) =>
+  string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
+
+const getExpressionInsideSlashes = (input) => {
+  return input.match(/\/([^;]*)\//);
+};
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
 // this implements a wrapping behavior where property name and type are separated
@@ -77,7 +85,27 @@ function ParameterRow(props) {
       <td>
         <PropertyName>
           <SpacingsInline scale="xs">
-            <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
+            {isRegex(props.parameter.name) ? (
+              <Markdown.InlineCode>
+                <span
+                  css={css`
+                    color: ${uiKitDesignSystem.colors.light.textInfo};
+                  `}
+                >
+                  /
+                </span>
+                {getExpressionInsideSlashes(props.parameter.name)[1]}
+                <span
+                  css={css`
+                    color: ${uiKitDesignSystem.colors.light.textInfo};
+                  `}
+                >
+                  /
+                </span>
+              </Markdown.InlineCode>
+            ) : (
+              <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
+            )}
             {props.parameter.required && <Required />}
           </SpacingsInline>
         </PropertyName>
@@ -85,7 +113,9 @@ function ParameterRow(props) {
         <PropertyType>
           {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
-          {typeof typeToRender.type === 'string'
+          {isRegex(props.parameter.name)
+            ? `Any ${typeToRender.type.toLowerCase()} parameter matching this regular expression`
+            : typeof typeToRender.type === 'string'
             ? typeToRender.type
             : typeToRender.type}
         </PropertyType>
