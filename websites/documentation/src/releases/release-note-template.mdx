@@ -1,0 +1,25 @@
+---
+date: 2021-12-31
+title: Title of the release note
+description: Stand-alone text conveying the key changes and its advantages for external feed consumers, redistribution, notifications, and others
+type: Type of release note is regarding a `feature`, `fix`, `enhancement`, or `announcement`
+topics: Topics the release note covers
+---
+
+A short introduction of the key changes. You can use any MDX allowed in documentation, but we strongly advise to use only use basic Markdown. Metadata is defined in YAML [frontmatter](#frontmatter).
+
+You can also add a longer explanation by using `<!--more-->`. This renders a "Read more" separator that separates the long form, that is not visble in the release note overview page unless clicked.
+
+<!--more-->
+
+# Frontmatter:
+
+ - `date` (date): release date in `YYYY-MM-DD` format (parsed in ISO date)
+ - `title` (string): title for the website
+ - `description` (string): description (with a maximum of 256 characters) containing the key changes and its advantage ("tweet-able" and for RSS).
+ - `type` (string): type of release note, which can be:
+    - `feature` for new features
+    - `fix` for resolved issues
+    - `enhancement` for enhancement
+    - `announcement` for announcements
+ - `topics` (array of string): topics the release note covers. It is a YAML array of free-to-choose text entries. The **Filter** option in the website may be constrained to pre-defined topics.

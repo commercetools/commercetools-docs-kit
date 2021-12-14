@@ -23,9 +23,9 @@
       path: /writing/code
     - title: Reusable content fragments # import syntax for MDX fragments, file layout
       path: /writing/import-content
-    - title: Release Notes # all about release notes & the generator script
+    - title: Release notes # all about release notes & the generator script
       path: /writing/release-notes
-    - title: Data Constants # the constants feature
+    - title: Data constants # the constants feature
       path: /writing/constants
 - chapter-title: API Documentation
   pages:
