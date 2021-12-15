@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import {
   Markdown,
   designSystem as uiKitDesignSystem,
@@ -9,6 +8,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useTypeToRender from '../../../hooks/use-type-to-render';
 import Required from '../../required';
+import RenderRegexProperty from '../../../utils/render-regex-property';
 import Table from '../../table';
 import Title from './title';
 import { DescriptionText } from '../../description';
@@ -17,10 +17,6 @@ import { typography } from '../../../design-system';
 
 const isRegex = (string) =>
   string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
-
-const getExpressionInsideSlashes = (input) => {
-  return input.match(/\/([^;]*)\//);
-};
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
 // this implements a wrapping behavior where property name and type are separated
@@ -86,23 +82,7 @@ function ParameterRow(props) {
         <PropertyName>
           <SpacingsInline scale="xs">
             {isRegex(props.parameter.name) ? (
-              <Markdown.InlineCode>
-                <span
-                  css={css`
-                    color: ${uiKitDesignSystem.colors.light.textInfo};
-                  `}
-                >
-                  /
-                </span>
-                {getExpressionInsideSlashes(props.parameter.name)[1]}
-                <span
-                  css={css`
-                    color: ${uiKitDesignSystem.colors.light.textInfo};
-                  `}
-                >
-                  /
-                </span>
-              </Markdown.InlineCode>
+              <RenderRegexProperty expression={props.parameter.name} />
             ) : (
               <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
             )}
