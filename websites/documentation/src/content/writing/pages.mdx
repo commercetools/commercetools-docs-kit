@@ -3,7 +3,7 @@ title: Pages
 wideLayout: true
 ---
 
-The respective files of all content pages can be found in `src/content`. All new pages must be created as MDX files in this directory. MDX allows you to use JSX in your Markdown content, in addition to standard Markdown syntax.
+You can find the respective files of all content pages in `src/content`. All new pages must be created as MDX files in this directory. MDX allows you to use JSX in your Markdown content, in addition to standard Markdown syntax.
 
 The page URL corresponds to the file system path by default. For example, an MDX file in `src/content/getting-started/installation.mdx` will render a page in `docs.commercetools.com/getting-started/installation`.
 
@@ -16,7 +16,6 @@ All content pages must contain some metadata enclosed within the `---` lines in 
 ```mdx
 ---
 title: The title of this page
-beta: false
 ---
 
 This is the actual page content.
@@ -29,7 +28,7 @@ We support the following key-value pairs in the frontmatter section:
 
   <Info>
 
-  You can use <Beta /> in other places of a file apart from the frontmatter section. For more information, see.
+  You can use <Beta /> in other places of a file apart from the frontmatter section. For more information, see [Beta section](/writing/sample#beta-section-).
 
   </Info>
 
@@ -41,7 +40,7 @@ We support the following key-value pairs in the frontmatter section:
 
   </Warning>
 
-- `navLevels` (number): use to reduce the depth of right-hand index navigation for pages where it could get too long to fit all headings in the screen. You must set to 2. For more information, see [Child section navigation].
+- `navLevels` (number): use to reduce the depth of right-hand index navigation for pages where it could get too long to fit all headings in the screen. You must set to 2. For more information, see [Child section navigation](/writing/navigation#child-section-navigation).
 
   <Warning>
 
@@ -51,7 +50,7 @@ We support the following key-value pairs in the frontmatter section:
 
   </Warning>
 
-- `wideLayout` (boolean): use to make a page responsive and compatible for large viewport sizes. When used, the page can go into a two-column content space. For more information, see `<SideBySide>` component.
+- `wideLayout` (boolean)<Anchor name="wide-layout" />: use to make a page responsive and compatible for large viewport sizes. When used, the page can go into a two-column content space. For more information, see `<SideBySide>` [component](#side-by-side).
 
 # JSX components
 
@@ -65,9 +64,15 @@ Content inside the component.
 </Subtitle>
 ```
 
+<Info>
+
+When using JSX components, it's recommended to leave a **blank line** between the element tags and content. This allows the content to be parsed as Markdown, so you can use Markdown syntax within the custom component tags.
+
+</Info>
+
 You can use the following JSX components:
 
-- `<Subtitle>`: use to provide a brief information about the page besides the title. For more information, see [Titles and subtitles].
+- `<Subtitle>`: use to provide a brief information about the page besides the title. For more information, see [Titles and headings](/writing/markdown#titles-and-headings).
 - `<Info>`: use to add any additional information.
 - `<Warning>`: use to add a warning message.
 - `<Error>`: use to add an error message.
@@ -80,10 +85,4 @@ You can use the following JSX components:
   </Info>
 
 - `<ChildSectionsNav parent="a-section-slug" />`: use to add a table of contents containing links to all subsections of the given parent. For more information, see [Child section navigation](/writing/navigation#child-section-navigation).
-- `<SideBySide>`: use to wrap two content blocks side by side on wide viewport sizes. This feature is enabled by configuring the `allowWideContentLayout` theme option or `wideLayout` frontmatter option. For more information, see.
-
-<Info>
-
-When using JSX components, it's recommended to leave a **blank line** between the element tags and content. This allows the content to be parsed as Markdown, so you can use Markdown syntax within the custom component tags.
-
-</Info>
+- `<SideBySide>`<Anchor name="side-by-side" />: use to wrap two content blocks side by side on wide viewport sizes. This feature is enabled by configuring the `allowWideContentLayout` theme option or `wideLayout` [frontmatter option](#wide-layout).
