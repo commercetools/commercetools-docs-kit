@@ -3,16 +3,6 @@ name: After deployments
 on: [deployment_status]
 
 jobs:
-  fetch-vercel-logs:
-    name: 'Vercel Build Log'
-    if: github.event.deployment_status.state != 'pending'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v2
-      - name: Install Vercel CLI
-        run: npm i --silent --no-progress vercel
-      - name: CLICK HERE TO SEE THE VERCEL BUILD LOG
-        run: FORCE_COLOR=true vercel logs -n 10000 --scope commercetools --token="${{ secrets.VERCEL_TOKEN }}" ${{ github.event.deployment_status.target_url }}
   link-check:
     name: 'Check links'
     if: github.event.deployment_status.state == 'success'
