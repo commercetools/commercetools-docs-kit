@@ -8,7 +8,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useTypeToRender from '../../../hooks/use-type-to-render';
 import Required from '../../required';
-import RenderRegexProperty from '../../../utils/render-regex-property';
+import RegexProperty from '../../type/properties/regex-properties';
 import Table from '../../table';
 import Title from './title';
 import { DescriptionText } from '../../description';
@@ -82,7 +82,7 @@ function ParameterRow(props) {
         <PropertyName>
           <SpacingsInline scale="xs">
             {isRegex(props.parameter.name) ? (
-              <RenderRegexProperty expression={props.parameter.name} />
+              <RegexProperty expression={props.parameter.name} />
             ) : (
               <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
             )}

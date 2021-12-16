@@ -1,8 +1,10 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 
-function renderRegexProperties(data) {
-  const expression = data.expression.match(/\/([^;]*)\//)[1];
+const RegexProperties = (props) => {
+  const expression = props.expression.match(/\/([^;]*)\//)[1];
 
   return (
     <Markdown.InlineCode>
@@ -23,6 +25,10 @@ function renderRegexProperties(data) {
       </span>
     </Markdown.InlineCode>
   );
-}
+};
 
-export default renderRegexProperties;
+RegexProperties.propTypes = {
+  expression: PropTypes.string.isRequired,
+};
+
+export default RegexProperties;

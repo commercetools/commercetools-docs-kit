@@ -5,7 +5,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { BetaFlag } from '@commercetools-docs/gatsby-theme-docs';
 import { typography } from '../../../../design-system';
-import RenderRegexProperty from '../../../../utils/render-regex-property';
+import RegexProperty from '../../properties/regex-properties';
 import useTypeToRender from '../../../../hooks/use-type-to-render';
 import Required from '../../../required';
 
@@ -38,7 +38,7 @@ const NameType = (props) => {
       <PropertyName>
         <SpacingsInline scale="xs">
           {isRegex(props.property.name) ? (
-            <RenderRegexProperty expression={props.property.name} />
+            <RegexProperty expression={props.property.name} />
           ) : (
             <Markdown.InlineCode>{props.property.name}</Markdown.InlineCode>
           )}
