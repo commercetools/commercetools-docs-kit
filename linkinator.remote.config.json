@@ -1,0 +1,24 @@
+{
+  "__available_flags": "https://github.com/JustinBeckwith/linkinator/blob/main/src/config.ts#L3",
+  "recurse": true,
+  "skip": [
+    "/.+/(page-data|static)/(.*)",
+    "/[^/]+/[^/]+.(js|json)$",
+    "https://support.commercetools.com",
+    "/api$",
+    "/api/",
+    "/docs/",
+    "/sdk",
+    "/tutorials",
+    "/custom-applications",
+    "/merchant-center",
+    "/getting-started",
+    "/import-export"
+  ],
+  "verbosity": "error",
+  "retry": true,
+  "retryErrors": true,
+  "retryErrorsCount": 3,
+  "retryErrorsJitter": 500,
+  "urlRewriteSearch": "https://docs.commercetools.com"
+}
