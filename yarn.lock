@@ -467,12 +467,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:7.16.6":
-  version: 7.16.6
-  resolution: "@babel/parser@npm:7.16.6"
+"@babel/parser@npm:7.16.4":
+  version: 7.16.4
+  resolution: "@babel/parser@npm:7.16.4"
   bin:
     parser: ./bin/babel-parser.js
-  checksum: 5cbb01a7b2ba5d609945099bfadb01f54e11ef85201e1e0bf47010ee1b35c257eca6ff91606c6ce8adba82a95e180b583183e4dc076f4a70e706152075dd98ca
+  checksum: ce0a8f92f440f2a12bc932f070a7b60c5133bf8a63f461841f9e39af0194f573707959d606c6fad1a2fd496a45148553afd9b74d3b8dd36cdb7861598d1f3e36
   languageName: node
   linkType: hard
 
@@ -1823,7 +1823,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime-corejs3@npm:7.16.5, @babel/runtime-corejs3@npm:^7.10.2":
+"@babel/runtime-corejs3@npm:^7.10.2":
   version: 7.16.5
   resolution: "@babel/runtime-corejs3@npm:7.16.5"
   dependencies:
@@ -1842,7 +1842,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.16.5, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2, @babel/runtime@npm:^7.9.6":
+"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2, @babel/runtime@npm:^7.9.6":
   version: 7.16.5
   resolution: "@babel/runtime@npm:7.16.5"
   dependencies:
@@ -2314,7 +2314,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-transformer-mdx-introspection@workspace:packages/gatsby-transformer-mdx-introspection"
   dependencies:
-    "@babel/parser": 7.16.6
+    "@babel/parser": 7.16.4
     "@mdx-js/mdx": 1.6.22
     deepmerge: 4.2.2
     gray-matter: 4.0.3
@@ -2343,8 +2343,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/ui-kit@workspace:packages/ui-kit"
   dependencies:
-    "@babel/runtime": 7.16.5
-    "@babel/runtime-corejs3": 7.16.5
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": ^12.1.0
     "@commercetools-uikit/icons": ^12.2.1
     "@commercetools-uikit/loading-spinner": ^12.2.0
@@ -9159,8 +9159,8 @@ __metadata:
   resolution: "commercetools-docs-kit@workspace:."
   dependencies:
     "@babel/helper-define-map": ^7.12.13
-    "@babel/runtime": 7.16.5
-    "@babel/runtime-corejs3": 7.16.5
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@changesets/changelog-github": 0.4.2
     "@changesets/cli": 2.18.1
     "@commercetools-frontend/babel-preset-mc-app": 20.12.1
