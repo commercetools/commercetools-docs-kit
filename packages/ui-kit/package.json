@@ -19,8 +19,8 @@
     "generate-icons": "svgr -d -- src/icons/generated src/icons/svg"
   },
   "dependencies": {
-    "@babel/runtime": "7.16.3",
-    "@babel/runtime-corejs3": "7.16.3",
+    "@babel/runtime": "7.16.5",
+    "@babel/runtime-corejs3": "7.16.5",
     "@commercetools-uikit/design-system": "^12.1.0",
     "@commercetools-uikit/icons": "^12.2.1",
     "@commercetools-uikit/loading-spinner": "^12.2.0",
