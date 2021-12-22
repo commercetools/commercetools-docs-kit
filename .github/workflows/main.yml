@@ -25,28 +25,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Read .nvmrc
-        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-        id: nvm
-
       - name: Setup Node (uses version in .nvmrc)
         uses: actions/setup-node@v2
         with:
-          node-version: '${{ steps.nvm.outputs.NVMRC }}'
-
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+          node-version-file: '.nvmrc'
 
       - uses: actions/cache@v2
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: |
+            .cache
+            public
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - name: Set custom Yarn cache path
+        run: yarn config set cacheFolder .cache/yarn
+
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
         env:
           # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L14-L18
           # https://github.com/marketplace/actions/cypress-io#custom-install
@@ -61,16 +58,7 @@ jobs:
         run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
 
       - name: Running Visual Regression Tests
-        run: |
-          yarn percy snapshot ./public \
-            --files="**/components/**/*.html" \
-            --files="**/views/markdown/*.html" \
-            --files="**/**/views/beta/*.html" \
-            --files="**/releases/index.html" \
-            --files="**/types/**/*.html" \
-            --files="**/endpoints/**/*.html" \
-            --files="**/layouts/**/*.html" \
-            --ignore="**/site-template/**/*.html"
+        run: yarn percy snapshot ./public
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS }}
 

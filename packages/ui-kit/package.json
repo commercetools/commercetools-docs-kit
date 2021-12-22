@@ -1,9 +1,8 @@
 {
   "name": "@commercetools-docs/ui-kit",
   "description": "UI component library for building commercetools documentation websites",
-  "version": "17.0.8",
+  "version": "18.0.1",
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
@@ -17,11 +16,11 @@
   "module": "dist/commercetools-docs-ui-kit.esm.js",
   "files": ["dist", "package.json", "LICENSE", "README.md"],
   "scripts": {
-    "generate-icons": "svgr -d src/icons/generated src/icons/svg"
+    "generate-icons": "svgr -d -- src/icons/generated src/icons/svg"
   },
   "dependencies": {
-    "@babel/runtime": "7.15.4",
-    "@babel/runtime-corejs3": "7.15.4",
+    "@babel/runtime": "7.16.3",
+    "@babel/runtime-corejs3": "7.16.3",
     "@commercetools-uikit/design-system": "^12.1.0",
     "@commercetools-uikit/icons": "^12.2.1",
     "@commercetools-uikit/loading-spinner": "^12.2.0",
@@ -34,8 +33,8 @@
     "prism-react-renderer": "1.2.1",
     "prop-types": "15.7.2",
     "react-intl": "^5.7.0",
-    "swr": "1.0.1",
-    "tiny-invariant": "1.1.0"
+    "swr": "1.1.1",
+    "tiny-invariant": "1.2.0"
   },
   "devDependencies": {
     "react": "17.0.2",

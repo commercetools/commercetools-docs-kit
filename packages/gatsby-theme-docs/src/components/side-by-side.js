@@ -12,7 +12,7 @@ import { usePageData } from '../hooks/use-page-data';
 const SideBySideContainer = styled.div`
   display: grid;
   grid-column-gap: ${designSystem.dimensions.spacings.xl};
-  grid-row-gap: ${designSystem.dimensions.spacings.l};
+  row-gap: ${designSystem.dimensions.spacings.l};
   grid-template-rows: auto;
   align-items: start;
   justify-items: stretch;

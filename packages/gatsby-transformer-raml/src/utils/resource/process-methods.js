@@ -9,7 +9,7 @@ function processMethods({
   moveEndpointQueryParametersToBottom,
 }) {
   const returnedMethods = JSON.parse(JSON.stringify(resource));
-  const methods = ['post', 'put', 'get', 'delete'];
+  const methods = ['post', 'put', 'patch', 'get', 'head', 'delete'];
 
   methods.forEach((method) => {
     if (returnedMethods[method]) {

@@ -8,10 +8,15 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useTypeToRender from '../../../hooks/use-type-to-render';
 import Required from '../../required';
+import RegexProperty from '../../type/properties/regex-properties';
 import Table from '../../table';
 import Title from './title';
 import { DescriptionText } from '../../description';
 import Info from '../../info';
+import { typography } from '../../../design-system';
+
+const isRegex = (string) =>
+  string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
 // this implements a wrapping behavior where property name and type are separated
@@ -20,9 +25,12 @@ const PropertyName = styled.div`
   display: inline-block;
   margin-right: ${uiKitDesignSystem.dimensions.spacings.s};
   white-space: nowrap;
+  line-height: ${typography.lineHeights.propertyType};
 `;
 const PropertyType = styled.div`
   display: inline-block;
+  line-height: ${typography.lineHeights.propertyType};
+  color: ${uiKitDesignSystem.colors.light.textFaded};
 `;
 
 const Parameters = (props) => {
@@ -71,30 +79,32 @@ function ParameterRow(props) {
   return (
     <tr key={props.parameter.name}>
       <td>
-        <PropertyName className="name-type">
+        <PropertyName>
           <SpacingsInline scale="xs">
-            <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
+            {isRegex(props.parameter.name) ? (
+              <RegexProperty expression={props.parameter.name} />
+            ) : (
+              <Markdown.InlineCode>{props.parameter.name}</Markdown.InlineCode>
+            )}
             {props.parameter.required && <Required />}
           </SpacingsInline>
         </PropertyName>
-        <PropertyType className="name name-type">
-          {typeToRender.displayPrefix && (
-            <span className="name">{typeToRender.displayPrefix}</span>
-          )}
+        {'\u200B' /* zero-width space for the search crawler */}
+        <PropertyType>
+          {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
-          {typeof typeToRender.type === 'string' ? (
-            <span className="name">{typeToRender.type}</span>
-          ) : (
-            typeToRender.type
-          )}
+          {isRegex(props.parameter.name)
+            ? `Any ${typeToRender.type.toLowerCase()} parameter matching this regular expression`
+            : typeof typeToRender.type === 'string'
+            ? typeToRender.type
+            : typeToRender.type}
         </PropertyType>
+        {'\u200B' /* zero-width space for the search crawler */}
       </td>
       <td>
         <SpacingsStack scale="xs">
-          {props.parameter.description ? (
+          {props.parameter.description && (
             <DescriptionText markdownString={props.parameter.description} />
-          ) : (
-            '-'
           )}
           {props.parameter.additionalDescription && (
             <div>

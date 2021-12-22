@@ -1,5 +1,41 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 18.0.1
+
+### Patch Changes
+
+- [#1166](https://github.com/commercetools/commercetools-docs-kit/pull/1166) [`ca1c9c8c`](https://github.com/commercetools/commercetools-docs-kit/commit/ca1c9c8cd1793df9a27272ad88eb77032acff4c3) Thanks [@timonrey](https://github.com/timonrey)! - API type properties without descriptions render without the dash to avoid unnecessary whitespace
+
+* [#1160](https://github.com/commercetools/commercetools-docs-kit/pull/1160) [`fb3acae6`](https://github.com/commercetools/commercetools-docs-kit/commit/fb3acae66a72ebc8d1fc5cbff83dbe498d96540f) Thanks [@nkuehn](https://github.com/nkuehn)! - Update and Improve Algolia Docsearch Setup
+
+* Updated dependencies [[`45f78836`](https://github.com/commercetools/commercetools-docs-kit/commit/45f788361de5ba8cf2d67794ecc1b726ff5e56aa)]:
+  - @commercetools-docs/ui-kit@18.0.1
+
+## 18.0.0
+
+### Major Changes
+
+- [#1139](https://github.com/commercetools/commercetools-docs-kit/pull/1139) [`001e85a`](https://github.com/commercetools/commercetools-docs-kit/commit/001e85aa36d6d6d5bc0ecc0cac822ccd6d1ea38b) Thanks [@renovate](https://github.com/apps/renovate)! - Migrate to Gatsby v4 (see [official release notes](https://v4.gatsbyjs.com/docs/reference/release-notes/migrating-from-v3-to-v4) for more info).
+
+  Running Gatsby now requires a minimal Node.js version of `4.15.0`.
+
+### Patch Changes
+
+- [#1127](https://github.com/commercetools/commercetools-docs-kit/pull/1127) [`abcaccf`](https://github.com/commercetools/commercetools-docs-kit/commit/abcaccf64530492ee7a788c3170e92751c5886ac) Thanks [@jenschude](https://github.com/jenschude)! - The `@commercetools-docs/rmf-codegen` package has been moved to its own repository https://github.com/commercetools/rmf-codegen.
+
+* [#1155](https://github.com/commercetools/commercetools-docs-kit/pull/1155) [`1043390`](https://github.com/commercetools/commercetools-docs-kit/commit/1043390d8c220aa30dd6964294e374963e338d64) Thanks [@timonrey](https://github.com/timonrey)! - Add API docs theme support for HEAD and PATCH methods
+
+- [#1145](https://github.com/commercetools/commercetools-docs-kit/pull/1145) [`424806a`](https://github.com/commercetools/commercetools-docs-kit/commit/424806a8fedeacc33b2fa9ce68a353049ef0c42a) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1116](https://github.com/commercetools/commercetools-docs-kit/pull/1116) [`b25c4e1`](https://github.com/commercetools/commercetools-docs-kit/commit/b25c4e16dd4cfea81c517cacda19a1b9cbbcf6e6) Thanks [@renovate](https://github.com/apps/renovate)! - update dependencies
+
+- [#1152](https://github.com/commercetools/commercetools-docs-kit/pull/1152) [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade to Yarn v3
+
+- Updated dependencies [[`ae4051a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae4051a8edccae26a4d907903c743fc496cf4eba), [`001e85a`](https://github.com/commercetools/commercetools-docs-kit/commit/001e85aa36d6d6d5bc0ecc0cac822ccd6d1ea38b), [`1043390`](https://github.com/commercetools/commercetools-docs-kit/commit/1043390d8c220aa30dd6964294e374963e338d64), [`424806a`](https://github.com/commercetools/commercetools-docs-kit/commit/424806a8fedeacc33b2fa9ce68a353049ef0c42a), [`b25c4e1`](https://github.com/commercetools/commercetools-docs-kit/commit/b25c4e16dd4cfea81c517cacda19a1b9cbbcf6e6), [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572), [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572)]:
+  - @commercetools-docs/ui-kit@18.0.0
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@15.0.0
+  - @commercetools-docs/gatsby-transformer-raml@13.0.1
+
 ## 17.0.8
 
 ### Patch Changes

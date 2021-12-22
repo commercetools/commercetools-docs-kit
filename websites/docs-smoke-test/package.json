@@ -1,29 +1,27 @@
 {
   "name": "@commercetools-website/docs-smoke-test",
-  "version": "4.1.12",
+  "version": "5.0.1",
   "private": true,
   "scripts": {
     "start": "yarn develop",
-    "develop": "npx gatsby develop",
-    "serve": "npx gatsby serve --prefix-paths -o",
-    "clean": "npx gatsby clean",
+    "develop": "yarn gatsby develop",
+    "serve": "yarn gatsby serve --prefix-paths -o",
+    "clean": "yarn gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
-    "create-docs-release-note": "npx create-docs-release-note",
-    "build": "npx gatsby build --prefix-paths",
-    "build:serve": "npx gatsby build --prefix-paths && npx gatsby serve --prefix-paths -o",
+    "create-docs-release-note": "yarn create-docs-release-note",
+    "build": "./scripts/build.sh",
+    "build:serve": "yarn gatsby build --prefix-paths && yarn gatsby serve --prefix-paths -o",
     "build:analyze": "ANALYZE_BUNDLE=true yarn build",
-    "prebuild": "yarn clean",
-    "postbuild": "rm -rf ../../public/docs-smoke-test && mkdir -p ../../public && mv public ../../public/docs-smoke-test",
-    "generate-icons": "svgr -d src/icons/generated src/icons/svg"
+    "generate-icons": "svgr -d -- src/icons/generated src/icons/svg"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-code-examples": "17.0.8",
-    "@commercetools-docs/gatsby-theme-constants": "17.0.8",
-    "@commercetools-docs/gatsby-theme-docs": "17.0.9",
-    "@commercetools-docs/ui-kit": "17.0.8",
+    "@commercetools-docs/gatsby-theme-code-examples": "18.0.1",
+    "@commercetools-docs/gatsby-theme-constants": "18.0.1",
+    "@commercetools-docs/gatsby-theme-docs": "18.0.1",
+    "@commercetools-docs/ui-kit": "18.0.1",
     "@commercetools-uikit/icons": "^12.2.1",
-    "gatsby": "3.14.0",
-    "gatsby-cli": "3.14.0",
+    "gatsby": "4.4.0",
+    "gatsby-cli": "4.4.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   }

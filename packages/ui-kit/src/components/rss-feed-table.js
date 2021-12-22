@@ -45,7 +45,7 @@ const RssFeedTable = (props) => {
 
   return (
     <div>
-      <Table>
+      <Table data-table-name="rss-feed">
         <tbody>
           {props.data.map((item, index) => (
             <tr key={`${item.title}${index}`}>

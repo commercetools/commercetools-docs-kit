@@ -71,7 +71,13 @@ export const useApiResources = () => {
             put {
               ...methodsWithBodies
             }
+            patch {
+              ...methodsWithBodies
+            }
             get {
+              ...methods
+            }
+            head {
               ...methods
             }
             delete {

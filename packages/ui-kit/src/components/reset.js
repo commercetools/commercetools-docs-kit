@@ -12,6 +12,7 @@ const Reset = () => (
   <>
     <Global
       styles={css`
+        /* stylelint-disable property-no-vendor-prefix, selector-id-pattern */
         html,
         body,
         #___gatsby,
@@ -154,7 +155,7 @@ const Reset = () => (
           -webkit-text-size-adjust: 100%;
 
           /* Change the default tap highlight to be completely transparent in iOS. */
-          -webkit-tap-highlight-color: rgba(black, 0);
+          -webkit-tap-highlight-color: rgba(black 0);
         }
 
         /* See https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
