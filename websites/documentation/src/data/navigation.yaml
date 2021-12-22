@@ -43,6 +43,10 @@
       path: /configuration/setup
     - title: Theme Extensions
       path: /configuration/extensions
+    - title: Plugins
+      path: /configuration/plugins
+    - title: Packages
+      path: /configuration/packages
     - title: Custom Components
       path: /configuration/components
     - title: Override Components
