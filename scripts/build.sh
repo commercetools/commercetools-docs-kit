@@ -17,6 +17,3 @@ echo "Copying test index.html file into public folder."
 
 cp -f ./websites/index.html ./public
 
-echo "Running link checker"
-
-yarn check-links
