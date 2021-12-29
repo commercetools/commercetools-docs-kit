@@ -11,7 +11,7 @@ module.exports = {
   siteMetadata: {
     title: 'Docs Kit Docs',
     description: '',
-    betaLink: '',
+    betaLink: '.',
   },
   plugins: [
     ...configureThemeWithAddOns({
