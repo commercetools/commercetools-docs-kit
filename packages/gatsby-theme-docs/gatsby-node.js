@@ -26,6 +26,8 @@ exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
     'src/content',
     'src/content/files',
     'src/releases',
+    'static',
+    'static/downloads',
   ];
   requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
@@ -41,11 +43,11 @@ exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
 exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
     SiteSiteMetadata: {
-      // this field is needed by 'gatsby-plugin-feed' plugin
+      // this field is needed by plugins needing an absolute production site URL, e.g. the'gatsby-plugin-feed' plugin
       siteUrl: {
         type: 'String',
-        resolve(source, args, context) {
-          const site = context.nodeModel.getAllNodes({ type: 'Site' })[0];
+        resolve: async (source, args, context) => {
+          const site = await context.nodeModel.findOne({ type: 'Site' });
           return `https://${source.productionHostname}${site.pathPrefix}`;
         },
       },
@@ -56,23 +58,25 @@ exports.createResolvers = ({ createResolvers }) => {
 
 // Inspired by https://github.com/gatsbyjs/gatsby/blob/ead08cc1fd9fa30a46fa8b6b7411141a5c9ba4f8/packages/gatsby-theme-blog-core/gatsby-node.js#L29
 const identity = (node) => node;
-const resolverPassthrough = ({
-  typeName = 'Mdx',
-  fieldName,
-  resolveNode = identity,
-  processResult = identity,
-}) => async (source, args, context, info) => {
-  const type = info.schema.getType(typeName);
-  const mdxNode = context.nodeModel.getNodeById({
-    id: source.parent,
-  });
-  const field = type.getFields()[fieldName];
-  const result = await field.resolve(resolveNode(mdxNode), args, context, {
+const resolverPassthrough =
+  ({
+    typeName = 'Mdx',
     fieldName,
-  });
+    resolveNode = identity,
+    processResult = identity,
+  }) =>
+  async (source, args, context, info) => {
+    const type = info.schema.getType(typeName);
+    const mdxNode = context.nodeModel.getNodeById({
+      id: source.parent,
+    });
+    const field = type.getFields()[fieldName];
+    const result = await field.resolve(resolveNode(mdxNode), args, context, {
+      fieldName,
+    });
 
-  return processResult(result);
-};
+    return processResult(result);
+  };
 
 exports.createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes(`
@@ -244,6 +248,7 @@ exports.onCreateNode = (
       parent,
       child: node,
     });
+    return;
   }
 
   // If not explicitly handled, always fall back to build the page as a "content" page.
@@ -355,10 +360,11 @@ async function createContentPages(
     reporter.panicOnBuild('🚨  ERROR: Loading "allNavigationYaml" query');
   }
   const pages = result.data.allContentPage.nodes;
-  const navigationPages = navigationYamlResult.data.allNavigationYaml.nodes.reduce(
-    (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
-    []
-  );
+  const navigationPages =
+    navigationYamlResult.data.allNavigationYaml.nodes.reduce(
+      (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
+      []
+    );
   pages.forEach(({ slug }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
@@ -440,21 +446,30 @@ async function createReleaseNotePages(
   });
 }
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
+exports.onCreateWebpackConfig = (
+  { actions, getConfig, stage, loaders },
+  themeOptions
+) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
 
   const config = getConfig();
   config.module.rules = [
-    ...config.module.rules.map((rule) => ({
-      ...rule,
-      test:
-        // Strip out the svg files from the following built-in rule
-        // See https://github.com/zabute/gatsby-plugin-svgr/blob/5087926076e61a0d5681c842af42c73d55a89653/gatsby-node.js#L10-L21
+    // Strip out the svg files from the following built-in rule
+    // See https://github.com/zabute/gatsby-plugin-svgr/blob/master/gatsby-node.js
+    ...config.module.rules.map((rule) => {
+      // Gatsby ≥ 2.30 (AVIF support)
+      if (
         String(rule.test) ===
-        String(/\.(ico|svg|jpg|jpeg|png|gif|webp)(\?.*)?$/)
-          ? /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/
-          : rule.test,
-    })),
+        String(/\.(ico|svg|jpg|jpeg|png|gif|webp|avif)(\?.*)?$/)
+      ) {
+        return {
+          ...rule,
+          test: /\.(ico|jpg|jpeg|png|gif|webp|avif)(\?.*)?$/,
+        };
+      }
+
+      return rule;
+    }),
     {
       // Fix for react-intl
       // https://github.com/formatjs/formatjs/issues/143#issuecomment-518774786
@@ -468,21 +483,40 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
         {
           loader: require.resolve('@svgr/webpack'),
           options: {
-            // NOTE: disable this and manually add `removeViewBox: false` in the SVGO plugins list
-            // See related PR: https://github.com/smooth-code/svgr/pull/137
             icon: false,
             svgoConfig: {
-              plugins: [{ removeViewBox: false }, { cleanupIDs: true }],
+              plugins: [
+                {
+                  name: 'preset-default',
+                  params: {
+                    overrides: {
+                      removeViewBox: false,
+                    },
+                  },
+                },
+              ],
             },
           },
         },
       ],
     },
   ];
+  if (stage === 'build-html' || stage === 'develop-html') {
+    // https://www.gatsbyjs.com/docs/debugging-html-builds/#fixing-third-party-modules
+    config.module.rules.push({
+      test: /tmp/,
+      use: loaders.null(),
+    });
+  }
+
   config.resolve = {
     ...config.resolve,
     // Add support for absolute imports
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    fallback: {
+      ...config.resolve.fallback,
+      electron: false, // webpack can't understand the condition in the "got" module
+    },
   };
 
   // Restricting importing from `prismjs` to only the listed languages,
@@ -498,5 +532,6 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, themeOptions) => {
     )
   );
   // This will completely replace the webpack config with the modified object.
+  // (necessary to not only add rules but also change rules like taking over svg handling)
   actions.replaceWebpackConfig(config);
 };

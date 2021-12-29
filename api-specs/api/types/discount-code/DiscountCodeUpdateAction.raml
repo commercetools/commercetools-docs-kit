@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+(package): DiscountCode
+type: object
+displayName: DiscountCodeUpdateAction
+discriminator: action
+(java-extends): com.commercetools.api.models.ResourceUpdateAction<DiscountCodeUpdateAction>
+properties:
+  action:
+    type: string

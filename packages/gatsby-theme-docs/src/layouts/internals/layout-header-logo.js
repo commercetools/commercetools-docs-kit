@@ -4,6 +4,7 @@ import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
 
 const Container = styled.div`
   display: none;
+
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     height: calc(
       ${designSystem.dimensions.heights.header} - 1px
@@ -13,6 +14,9 @@ const Container = styled.div`
     border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
     display: flex;
     justify-content: flex-end;
+
+    position: relative;
+    z-index: ${designSystem.dimensions.stacks.aboveOverlay};
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     width: ${designSystem.dimensions.widths.pageNavigation};

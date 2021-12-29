@@ -1,5 +1,5 @@
 import React from 'react';
-import { css, Global } from '@emotion/core';
+import { css, Global } from '@emotion/react';
 import { colors, dimensions, typography, tokens } from '../design-system';
 
 // eslint-disable-next-line react/display-name
@@ -22,6 +22,10 @@ const Globals = () => (
         outline: 0;
         padding: 0;
         margin: 0;
+      }
+
+      [data-reach-skip-link]:focus {
+        z-index: 100;
       }
 
       /* Images */

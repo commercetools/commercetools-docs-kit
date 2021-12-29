@@ -1,38 +1,32 @@
 {
   "name": "@commercetools-docs/gatsby-theme-code-examples",
   "description": "Gatsby theme for commercetools documentation providing the functionalities to render Code Examples in MDX",
-  "version": "8.0.0",
+  "version": "18.0.1",
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/commercetools/commercetools-docs-kit.git"
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git",
+    "directory": "packages/gatsby-theme-code-examples"
   },
-  "keywords": [
-    "gatsby",
-    "gatsby-plugin",
-    "gatsby-theme",
-    "code",
-    "examples"
-  ],
+  "keywords": ["gatsby", "gatsby-plugin", "gatsby-theme", "code", "examples"],
   "dependencies": {
-    "@commercetools-docs/ui-kit": "8.0.0",
+    "@commercetools-docs/ui-kit": "18.0.1",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "gatsby": "2.24.63",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "gatsby": "4.4.0",
+    "gatsby-source-filesystem": "4.4.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "peerDependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "8.0.0",
-    "gatsby": "2.x",
-    "gatsby-source-filesystem": "2.x",
-    "react": "16.x",
-    "react-dom": "16.x"
+    "gatsby": "4.x",
+    "gatsby-source-filesystem": "4.x",
+    "react": "17.x",
+    "react-dom": "17.x"
   }
 }

@@ -1,0 +1,8 @@
+- api: test
+  locations:
+    - type: StringTestType
+      href: /types/scalars#stringtesttype
+    - type: TestTypeOnAnotherMicrosite
+      href: /../docs-smoke-test/views/links#common-use-cases
+    - type: TestTypeOnAnExternalWebsite
+      href: https://docs.commercetools.com/api/projects/types#query-types

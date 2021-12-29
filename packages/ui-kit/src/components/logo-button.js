@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { dimensions, colors, typography } from '../design-system';
-import LogoSvg from '../icons/logo.svg';
+import { LogoSvgIcon } from '../icons';
 
 const LinkContainer = styled.span`
   padding: 0 ${dimensions.spacings.m};
@@ -36,7 +36,7 @@ const LogoButton = () => (
   <Link href="/">
     <LinkContainer>
       <SpacingsInline scale="m" alignItems="center">
-        <LogoSvg height={32} />
+        <LogoSvgIcon height={32} />
         <Title>{'Documentation'}</Title>
       </SpacingsInline>
     </LinkContainer>

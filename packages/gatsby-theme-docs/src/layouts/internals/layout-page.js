@@ -22,7 +22,7 @@ const LayoutPage = styled.div`
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths.pageContentWithMargins}
       )
-      ${designSystem.dimensions.widths.pageNavigation};
+      ${designSystem.dimensions.widths.pageNavigationSmall};
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
@@ -39,7 +39,10 @@ const LayoutPage = styled.div`
       [row1-start] 'page-header page-header-side' auto [row1-end]
       [row2-start] 'page-content page-navigation' 1fr [row2-end] /
       ${designSystem.dimensions.widths.pageContentWithMargins}
-      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
+      minmax(
+        ${designSystem.dimensions.widths.pageNavigationSmall},
+        ${designSystem.dimensions.widths.pageNavigation}
+      );
   }
   ${(props) =>
     props.allowWideContentLayout
@@ -51,7 +54,7 @@ const LayoutPage = styled.div`
         ${designSystem.dimensions.widths.pageContentWideWithMargins},
         ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
       )
-      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, ${designSystem.dimensions.widths.pageNavigation});
   }`
       : ''}
 `;

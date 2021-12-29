@@ -19,10 +19,12 @@ The `<Beta />`  tag can be used inline <Beta /> and should be applied self-closi
 
 Paragraphs are separated by a blank line.
 
-Line breaks are expressed with a backslash\
-(before this) at the end of the line.
-
 Second paragraph. _Italic_, **bold**, **_italic and bold_**, ~~strikethrough~~ and `monospace`.
+
+### Line Break
+
+The backslash, `\`, is interpreted as a new line.\
+This sentence should appear on a new line.
 
 ## List items
 
@@ -154,21 +156,13 @@ Here's a link to [a website](https://commercetools.com), to a [local doc](/compo
 
 ## Tables
 
-Tables can look like this:
+Tables look like this:
 
 | Left Aligned  | Center Aligned | Right Aligned |
 | ------------- | :------------: | ------------: |
 | Hello         |     short      |         $1600 |
 | World         |    content     |           $12 |
 | zebra stripes | avoid insects  |            $1 |
-
-or taking the full width:
-
-| Left Aligned  | Center Aligned | Right Aligned | This right aligned content is a long content that extends to the edge of the screen |
-| ------------- | :------------: | ------------: | ----------------------------------------------------------------------------------: |
-| Centered cell |    Content     |       Content |                                                                             Content |
-| Content       |    Content     |       Content |                                                                             Content |
-| Content       |    Content     |  Centered cell |                                                                             Content |
 
 ## Horizontal rules
 
@@ -181,6 +175,7 @@ or taking the full width:
 * Number and text example -> <Constant type="limits" name="jsonSize"/>
 * Number example in bold -> **<Constant type="limits" name="slugLength"/>**
 * Text example -> <Constant type="limits" name="slugPattern"/>
+* Long formatted number example -> <Constant type="limits" name="resourceLimit" />
 
 # Last section
 

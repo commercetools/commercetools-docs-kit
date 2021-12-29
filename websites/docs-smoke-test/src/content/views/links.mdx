@@ -106,7 +106,7 @@ title: Links
 | --------------------------- | ------------- | ---------------------------------------------------------------- |
 | [Link](nested/link-target/) | `gatsby-link` | It should be a Gatsby link, history navigation, to a sub folder. |
 
-### Link to a page of another internal site using a full url (recommended)
+### Link to a page of another internal site using a full URL (recommended)
 
 ```md
 [Link](https://docs.commercetools.com/site-template)
@@ -125,6 +125,20 @@ title: Links
 | Link                       | Type            | Expected outcome                                             |
 | -------------------------- | --------------- | ------------------------------------------------------------ |
 | [Link](/../site-template/) | `internal-link` | It should be a normal html link (only in `production` mode). |
+
+### Link pointing to static files
+
+```md
+[Link](/downloads/hello.txt)
+[Link](/downloads/hello.json)
+[Link](/html/hello.html)
+```
+
+| Link     | Type          | Expected outcome                           |
+| -------- | ------------- | ------------------------------------------ |
+| [Link](/downloads/hello.txt) | `static-link` | It renders a normal HTML link pointing to the `hello.txt` page |
+| [Link](/downloads/hello.json) | `static-link` | It renders a normal HTML link pointing to the `hello.json` page |
+| [Link](/html/hello.html) | `static-link` | It renders a normal HTML link pointing to the `hello.html` page (HTML pages do not work in development mode) |
 
 ## Last Heading
 

@@ -1,0 +1,9 @@
+{
+  "action": "addReturnInfo",
+  "items": {
+    "quantity": 1,
+    "lineItemId": "{{lineItemId}}",
+    "shipmentState": "BackInStock"
+  },
+  "returnDate": "2018-10-12T14:00:00.000Z"
+}

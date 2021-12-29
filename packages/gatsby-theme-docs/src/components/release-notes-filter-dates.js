@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import moment from 'moment';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem, IsoDateFormat } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import DateInput from '@commercetools-uikit/date-input';
 import useReleaseNotesFilterParams from '../hooks/use-release-notes-filter-params';
@@ -20,7 +19,7 @@ const DateLabel = styled.label`
 
 const ReleaseNotesFilterDates = () => {
   const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
-  const maximumDate = moment().format('YYYY-MM-DD');
+  const maximumDate = IsoDateFormat.format(new Date());
 
   return (
     <SpacingsStack scale="s">

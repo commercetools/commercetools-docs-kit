@@ -62,7 +62,7 @@ export const colors = {
     //
     //   <ThemeProvider
     //     theme={{
-    //       colors: colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
+    //       codeBlockColors: colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
     //     }}
     //   >
     //
@@ -85,7 +85,7 @@ export const colors = {
       secondary: {
         border: customProperties.colorNeutral90,
         surface: customProperties.colorSurface,
-        surfaceHeader: customProperties.colorNeutral90,
+        surfaceHeader: customProperties.colorNeutral,
         surfaceLanguageDropdown: customProperties.colorSolid,
         surfaceLanguageDropdownHover: customProperties.colorNeutral60,
         textHeader: customProperties.colorSolid,
@@ -119,13 +119,16 @@ export const tokens = {
   -1px 1px 3px 0 rgba(0, 0, 0, 0.12)`,
   shadowForClickableCardOnHover: `0 14px 28px 0 rgba(0, 0, 0, 0.25),
   0 10px 10px 0 rgba(0, 0, 0, 0.23)`,
-  shadowForRssFeedTable: '0 1px 2px 0 rgba(0, 0, 0, 0.25)',
+  shadowForRssFeedTable: customProperties.shadow7,
 };
 
 export const dimensions = {
   heights: {
     header: '48px',
-    inputSearch: '32px',
+    inputSearchPrimary: '32px',
+    inputSearchSecondary: '26px',
+    childSectionNavLink: '28px',
+    pageSearchboxSpace: '58px',
   },
   widths: {
     pageContent: pageWidth,
@@ -139,9 +142,8 @@ export const dimensions = {
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
     marketingContent: '1168px',
-    rssFeedDateWidth: '180px',
     searchBar: '300px',
-    searchBarSmall: '150px',
+    searchBarSmall: '160px',
     selectDropDownArrowWith: '12px',
     sideBySideSecondColumn: '560px',
   },
@@ -165,6 +167,12 @@ export const dimensions = {
     wide: pxToRem('64px'),
     enormous: pxToRem('72px'),
     huge: pxToRem('80px'),
+  },
+  stacks: {
+    base: 1,
+    sidebar: 2,
+    overlay: 20,
+    aboveOverlay: 21,
   },
 };
 

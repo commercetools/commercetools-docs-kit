@@ -1,0 +1,63 @@
+#%RAML 1.0 DataType
+(package): Cart
+(docs-uri): https://docs.commercetools.com/http-api-projects-carts.html#lineitemdraft
+displayName: LineItemDraft
+(builder):
+  - paramNames:
+      - productId
+      - variantId
+      - quantity
+  - paramNames:
+      - sku
+      - quantity
+properties:
+  productId?:
+    type: string
+  variantId?:
+    type: number
+    format: int64
+  sku?:
+    type: string
+  quantity?:
+    type: number
+    format: int64
+    default: 1
+    description: |-
+      The amount of a `LineItem`in the cart.
+      Must be a positive integer.
+  addedAt?:
+    type: datetime
+    description: |-
+      When the line item was added to the cart. Optional for backwards
+      compatibility reasons only.
+  supplyChannel?:
+    type: ChannelResourceIdentifier
+    description: |-
+      By providing supply channel information, you can unique identify
+      inventory entries that should be reserved.
+      The provided channel should have
+      the InventorySupply role.
+  distributionChannel?:
+    type: ChannelResourceIdentifier
+    description: |-
+      The channel is used to select a ProductPrice.
+      The provided channel should have the ProductDistribution role.
+  externalTaxRate?:
+    type: ExternalTaxRateDraft
+    description: An external tax rate can be set if the cart has the `External` TaxMode.
+  custom?:
+    type: CustomFieldsDraft
+    description: The custom fields.
+  externalPrice?:
+    type: Money
+    description:
+      Sets the line item `price` to the given value and sets the line item
+      `priceMode` to `ExternalPrice` LineItemPriceMode.
+  externalTotalPrice?:
+    type: ExternalLineItemTotalPrice
+    description:
+      Sets the line item `price` and `totalPrice` to the given values and sets
+      the line item `priceMode` to `ExternalTotal` LineItemPriceMode.
+  shippingDetails?:
+    type: ItemShippingDetailsDraft
+    description: Container for line item specific address(es).

@@ -39,6 +39,18 @@ describe('rendering', () => {
       expected: { 'data-link-type': 'image-link' },
     },
     {
+      title: 'static link in /downloads folder',
+      props: { href: '/downloads/hello.html' },
+      location: { pathname: '/page-1' },
+      expected: { 'data-link-type': 'static-link' },
+    },
+    {
+      title: 'static link ending with .html',
+      props: { href: '/any/folder/hello.html' },
+      location: { pathname: '/page-1' },
+      expected: { 'data-link-type': 'static-link' },
+    },
+    {
       title: 'external link',
       props: {
         href: 'https://github.com/commercetools/commercetools-docs-kit',
@@ -170,6 +182,7 @@ describe('rendering', () => {
     ]
       .filter(Boolean)
       .join(' ');
+    // eslint-disable-next-line jest/valid-title
     it(title, () => {
       getEnv.mockReturnValue(scenario.isProd === true);
 
@@ -177,8 +190,9 @@ describe('rendering', () => {
         <Link {...scenario.props}>{scenario.title}</Link>,
         scenario.location.pathname
       );
-      expect(rendered.queryByText(scenario.title)).toBeInTheDocument();
+      expect(rendered.getByText(scenario.title)).toBeInTheDocument();
       expect(
+        // eslint-disable-next-line testing-library/no-node-access
         rendered.container.querySelector(
           `[data-link-type="${scenario.expected['data-link-type']}"]`
         )

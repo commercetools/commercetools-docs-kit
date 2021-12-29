@@ -3,6 +3,8 @@ title: Methods
 description: All cases for endpoint methods
 ---
 
+import { ApiEndpoint } from "/shortcodes"
+
 # Get Resource
 
 ```jsx
@@ -65,6 +67,18 @@ description: All cases for endpoint methods
   method="GET"
 />
 
+# HEAD Resource
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource"
+  method="HEAD"
+/>
+```
+
+<ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="HEAD" />
+
 # POST Resource
 
 ```jsx
@@ -76,6 +90,30 @@ description: All cases for endpoint methods
 ```
 
 <ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="POST" />
+
+# PATCH Resource
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource"
+  method="PATCH"
+/>
+```
+
+<ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="PATCH" />
+
+# PUT Resource
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource"
+  method="PUT"
+/>
+```
+
+<ApiEndpoint apiKey="test" resource="/{projectKey}/resource" method="PUT" />
 
 # POST with All Options
 
@@ -123,4 +161,20 @@ description: All cases for endpoint methods
   apiKey="test"
   resource="/{projectKey}/resource/{id}"
   method="DELETE"
+/>
+
+# Get Resource with Sorted Query parameters
+
+```jsx
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/sorted-query-parameters"
+  method="GET"
+/>
+```
+
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/sorted-query-parameters"
+  method="GET"
 />

@@ -1,6 +1,12 @@
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  // https://www.gatsbyjs.com/docs/reference/release-notes/v2.28/#feature-flags-in-gatsby-configjs
+  // https://www.gatsbyjs.com/docs/reference/release-notes/v2.30
+  flags: {
+    FAST_DEV: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+  },
   pathPrefix: '/site-template',
   siteMetadata: {
     title: 'CHANGE-ME',

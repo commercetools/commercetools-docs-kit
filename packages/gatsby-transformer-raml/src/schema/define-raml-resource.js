@@ -20,7 +20,9 @@ const defineRamlResource = ({ schema, createTypes }) => {
         uriParameters: '[RamlResourceUriParameter!]',
         post: 'RamlResourceMethodWithBody',
         put: 'RamlResourceMethodWithBody',
+        patch: 'RamlResourceMethodWithBody',
         get: 'RamlResourceMethodWithoutBody',
+        head: 'RamlResourceMethodWithoutBody',
         delete: 'RamlResourceMethodWithoutBody',
       },
       interfaces: ['Node'],
@@ -89,6 +91,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
         type: 'String!',
         builtinType: 'String!',
         description: 'String',
+        items: 'RamlTypeItems',
       },
     }),
 
@@ -97,7 +100,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
       fields: {
         code: 'Int!',
         description: 'String',
-        body: 'RamlResourceMethodBody!',
+        body: 'RamlResourceMethodBody',
       },
     }),
 

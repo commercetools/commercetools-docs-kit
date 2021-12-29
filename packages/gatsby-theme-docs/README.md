@@ -46,13 +46,15 @@ The project structure should contain at least the following files and folders:
 ├── .eslintrc.yml
 ├── gatsby-config.js
 ├── package.json
-└── src
-    ├── content
-    │   ├── files
-    │   └── index.mdx
-    ├── images
-    └── data
-        └── navigation.yaml
+├── src
+│   ├── content
+│   │   ├── files
+│   │   └── index.mdx
+│   ├── images
+│   └── data
+│       └── navigation.yaml
+└── static
+    └── downloads
 ```
 
 - `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`, otherwise provide a valid ESLint configuration.
@@ -105,6 +107,7 @@ module.exports = {
 - `hubspotTrackingCode` (_optional_): this is HubSpot tracking code.
 
 - `excludeFromSearchIndex` (_optional_): indicates that the website should not be indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute. **Default: `true`**
+  (Note that this doesn't currently work with Algolia's Docsearch crawler)
 
 - `allowWideContentLayout` (_optional_): enables all content pages to use a wider layout that gives space to side-by-side content on large viewports. This must be used with `wideLayout`, see also the `wideLayout` frontmatter option and the `<SideBySide>` component on how to use it. **Default: `false`**.
 
@@ -149,6 +152,11 @@ These are required directories:
   - chapter-title: {} # another chapter, and so on...
   ```
 
+- `static`: this folder should contain files that do not need to be processed by Gatsby and will be served as-is. See [Gatsby static folder](https://www.gatsbyjs.com/docs/static-folder/).<br/>
+  Note that any `.html` file that is referenced as a link within the `*.mdx` content files is opened as a "static" HTML link, so when clicking on it the browser opens the link as a normal page.
+
+- `static/downloads`: this folder should contain static files that can be referenced in the links within the `*.mdx` content files. All links starting with `/downloads` will be rendered as "static" HTML links, so when clicking on it the browser opens the link as a normal page.
+
 ## Writing Content Pages
 
 Content pages are located in the `src/content` folder and should be `*.mdx` files.
@@ -172,6 +180,7 @@ Supported frontmatter options are:
 - `title` (string, **required**): the title of the page. Most of the time is the same value as in the `src/data/navigation.yaml` but it can be longer if needed.
 - `beta` (boolean): to indicate if the _beta_ info message should be displayed or not.
 - `excludeFromSearchIndex` (boolean): to indicate if the page should be excluded from being indexed by crawlers. This option effectively sets the `robots="noindex"` meta attribute.
+  (Note that this doesn't currently work with Algolia's Docsearch crawler)
 - `navLevels` (number): allows to reduce the depth of the on-page navigation for pages where it would get too long to fit the screen. You want to set 2 here if you need it.
 - `wideLayout` (boolean): to indicate that the page can go into a two-column content space on large viewport sizes. See the `<SideBySide>` component below for more information on how to use it. This option must be used with `allowWideContentLayout` theme option set to `true`.
 
@@ -184,11 +193,9 @@ The components should be rendered as XML tags, like HTML elements. For example:
 ```mdx
 <Subtitle>
 
-
 Content inside the component.
 
 </Subtitle>
-
 ```
 
 The available JSX components are:
@@ -207,7 +214,7 @@ The available JSX components are:
 
 Release notes files follow a different specification and their file location does not imply the URL so they can be reorganized without changing the permanent release note URL.
 
-Take a look at [typical example template](../websites/docs-smoke-test/src/releases/release-note-template.mdx) or read the [specification by example file](../websites/docs-smoke-test/src/releases/release-format-definition.mdx) to learn the complete format.
+Take a look at [typical example template](../../websites/docs-smoke-test/src/releases/release-note-template.mdx) or read the [specification by example file](../../websites/docs-smoke-test/src/releases/release-format-definition.mdx) to learn the complete format.
 
 ## Using Theme with Add-Ons
 
@@ -215,7 +222,7 @@ A theme add-on is a Gatsby Theme that exposes React components to be injected in
 
 Gatsby enables a child theme to use component shadowing (see [Theme overrides](#theme-overrides)). However, with multiple themes, the shadowed components are _only_ loaded from the last theme in the Gatsby configuration. To solve this problem, a commercetools-docs Gatsby Theme can be used as an add-on, allowing _multiple_ add-ons to provide additional components to be available in MDX without having to manually import them into every page.
 
-When using add-on themes, a proxy export file will be generated in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)). This file provides all the exported components from the add-on packages. For a component to be exported by an add-on package it has to be exported from `index.js` in the add-on package root.
+When using add-on themes, a proxy export file will be generated in the websites `src/@commercetools-docs/gatsby-theme-docs/overrides` folder to leverage Gatsby's component shadowing (see [Theme overrides](#theme-overrides)). This file provides all the exported components from the add-on packages. For a component to be exported by an add-on package it has to be exported from `shortcodes.js` in the add-on package root.
 
 **To safely configure theme add-ons, use the `configureThemeWithAddOns` function in the websites's `gatsby-config.js`:**
 

@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FullWidthContainer } from '@commercetools-docs/gatsby-theme-docs';
-import filterOutApiTypeSubtypes from '../../utils/filter-out-api-subtypes';
+import {
+  FullWidthContainer,
+  SideBySide,
+} from '@commercetools-docs/gatsby-theme-docs';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { generateTypeURN } from '../../utils/ctp-urn';
-import { useApiTypes } from '../../hooks/use-api-types';
 import reportError from '../../utils/report-error';
-import Children from './children';
-import ChildrenUnionLike from './children-union-like';
+import { DescriptionParagraph } from '../description';
+import Enum from './enum';
+import Properties from './properties/properties';
+import Examples from './examples';
 
 const ApiType = (props) => {
-  const apiTypes = useApiTypes();
-
-  const matchedApiType = apiTypes.find((apiType) => {
+  const matchedApiType = props.apiTypes.find((apiType) => {
     return (
       apiType.apiKey === props.apiKey && apiType.displayName === props.type
     );
@@ -23,7 +25,28 @@ const ApiType = (props) => {
     );
   }
 
-  const apiTypeSubTypes = filterOutApiTypeSubtypes(matchedApiType, apiTypes);
+  const DescriptionAndEnums = (props) => {
+    return (
+      <>
+        {props.apiType.description && (
+          <DescriptionParagraph>
+            {props.apiType.description}
+          </DescriptionParagraph>
+        )}
+        {props.apiType.enumeration && (
+          <Enum
+            values={props.apiType.enumeration}
+            enumDescriptions={props.apiType.enumDescriptions}
+          />
+        )}
+      </>
+    );
+  };
+
+  DescriptionAndEnums.propTypes = {
+    apiType: PropTypes.object.isRequired,
+  };
+
   const urn = generateTypeURN(matchedApiType);
 
   return (
@@ -31,30 +54,39 @@ const ApiType = (props) => {
       id={urn}
       aria-label={`${matchedApiType.displayName} definition`}
     >
-      {matchedApiType.oneOf ? (
-        <ChildrenUnionLike
-          apiKey={props.apiKey}
-          apiType={matchedApiType}
-          apiTypeSubTypes={apiTypeSubTypes}
-          doNotRenderExamples={props.doNotRenderExamples}
-        />
-      ) : (
-        <Children
-          apiKey={props.apiKey}
-          apiType={matchedApiType}
-          propertiesTableTitle={props.propertiesTableTitle}
-          renderDescriptionBelowProperties={
-            props.renderDescriptionBelowProperties
-          }
-          doNotRenderExamples={props.doNotRenderExamples}
-        />
-      )}
+      <SpacingsStack scale="m">
+        {!props.renderDescriptionBelowProperties && (
+          <DescriptionAndEnums apiType={matchedApiType} />
+        )}
+
+        {(matchedApiType.properties || matchedApiType.examples) && (
+          <SideBySide>
+            {matchedApiType.properties && (
+              <Properties
+                apiKey={props.apiKey}
+                apiType={matchedApiType}
+                title={props.propertiesTableTitle}
+                hideInheritedProperties={props.hideInheritedProperties}
+              />
+            )}
+
+            {matchedApiType.examples && !props.doNotRenderExamples && (
+              <Examples examples={matchedApiType.examples} />
+            )}
+          </SideBySide>
+        )}
+
+        {props.renderDescriptionBelowProperties && (
+          <DescriptionAndEnums apiType={matchedApiType} />
+        )}
+      </SpacingsStack>
     </FullWidthContainer>
   );
 };
 
 ApiType.propTypes = {
   apiKey: PropTypes.string.isRequired,
+  apiTypes: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
   propertiesTableTitle: PropTypes.oneOfType([
     PropTypes.string,
@@ -62,6 +94,7 @@ ApiType.propTypes = {
   ]),
   renderDescriptionBelowProperties: PropTypes.bool,
   doNotRenderExamples: PropTypes.bool,
+  hideInheritedProperties: PropTypes.bool,
 };
 
 export default ApiType;

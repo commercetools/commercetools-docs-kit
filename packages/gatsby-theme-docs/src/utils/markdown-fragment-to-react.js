@@ -1,17 +1,20 @@
+import React from 'react';
 import styled from '@emotion/styled';
-import unified from 'unified';
-import filter from 'unist-util-filter';
-import markdown from 'remark-parse';
-import remark2react from 'remark-react';
-import frontmatter from 'remark-frontmatter';
+import { unified } from 'unified';
+import { filter } from 'unist-util-filter';
+import rehypeReact from 'rehype-react';
+import remarkParse from 'remark-parse';
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkRehype from 'remark-rehype';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import Link from '../components/link';
-import Image from '../components/image';
 
 const Div = styled.div``;
 const Heading = styled.p`
   font-weight: ${designSystem.typography.fontWeights.bold};
 `;
+// No images should be rendered in fragments that are embedded into other layouts
+const MarkdownFragmentImage = () => null;
 
 /**
  * Takes a markdown string and returns a react component rendering it
@@ -32,16 +35,26 @@ const Heading = styled.p`
  * @param {String} markdownString
  * @param {Object} customElements
  */
-const removeFrontmatter = () => (tree) =>
+const removeFrontmatterPlugin = () => (tree) =>
   filter(tree, (node) => node.type !== 'yaml');
-const markdownFragmentToReact = (markdownString, customElements) =>
-  unified()
-    .use(markdown, { commonmark: true })
-    .use(frontmatter)
-    .use(removeFrontmatter)
-    .use(remark2react, {
-      sanitize: true,
-      remarkReactComponents: {
+const noOpPlugin = () => (ast) => ast;
+const markdownFragmentToReact = (
+  markdownString,
+  customElements,
+  customPlugin
+) => {
+  const safeCustomPlugin =
+    typeof customPlugin === 'function' ? customPlugin : noOpPlugin;
+  return unified()
+    .use(remarkParse)
+    .use(remarkFrontmatter)
+    .use(removeFrontmatterPlugin)
+    .use(safeCustomPlugin)
+    .use(remarkRehype)
+    .use(rehypeReact, {
+      createElement: React.createElement,
+      Fragment: React.Fragment,
+      components: {
         p: Markdown.Paragraph,
         a: Link,
         h1: Heading,
@@ -70,10 +83,10 @@ const markdownFragmentToReact = (markdownString, customElements) =>
         strong: Markdown.Strong,
         delete: Markdown.Delete,
         hr: Markdown.Hr,
-        img: Image,
+        img: MarkdownFragmentImage,
         ...customElements,
       },
     })
     .processSync(markdownString).result;
-
+};
 export default markdownFragmentToReact;

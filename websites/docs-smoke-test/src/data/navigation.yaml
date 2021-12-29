@@ -4,7 +4,7 @@
       path: /views/markdown
     - title: Empty
       path: /views/empty
-    - title: Beta
+    - title: Beta with long page title to see how the index nav behaves
       path: /views/beta
     - title: Nested headings
       path: /views/nested-headings
@@ -35,6 +35,8 @@
       path: /components/cards
     - title: RSS Feeds
       path: /components/rss-feeds
+    - title: Child section navigation
+      path: /components/child-section-navigation
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
   pages:
     - title: Page with some very long title too much for our innocent API to handle

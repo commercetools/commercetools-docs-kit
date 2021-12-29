@@ -37,7 +37,6 @@ const ThemeProvider = (props) => {
   );
 };
 ThemeProvider.propTypes = {
-  additionalSiteData: PropTypes.object,
   children: PropTypes.node.isRequired,
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -18,39 +19,41 @@ const ReleaseNotesListTemplate = (props) => {
   );
 
   return (
-    <ThemeProvider>
-      <LayoutReleaseNotesList
-        pageContext={props.pageContext}
-        pageData={props.data.contentPage}
-      >
-        <Markdown.TypographyPage>
-          <SEO
-            title={props.data.contentPage.title}
-            excludeFromSearchIndex={
-              props.data.contentPage.excludeFromSearchIndex
-            }
-          />
-          <MDXProvider components={markdownComponents}>
-            <div>
-              <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
+    <IntlProvider locale="en">
+      <ThemeProvider>
+        <LayoutReleaseNotesList
+          pageContext={props.pageContext}
+          pageData={props.data.contentPage}
+        >
+          <Markdown.TypographyPage>
+            <SEO
+              title={props.data.contentPage.title}
+              excludeFromSearchIndex={
+                props.data.contentPage.excludeFromSearchIndex
+              }
+            />
+            <MDXProvider components={markdownComponents}>
+              <div>
+                <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
+              </div>
+            </MDXProvider>
+            <div id="release-notes-list">
+              <SpacingsStack>
+                {filteredReleaseNotes.map((releaseNote) => (
+                  <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
+                    <Markdown.TypographyPage>
+                      <section>
+                        {markdownFragmentToReact(releaseNote.body)}
+                      </section>
+                    </Markdown.TypographyPage>
+                  </LayoutReleaseNote>
+                ))}
+              </SpacingsStack>
             </div>
-          </MDXProvider>
-          <div id="release-notes-list">
-            <SpacingsStack>
-              {filteredReleaseNotes.map((releaseNote) => (
-                <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
-                  <Markdown.TypographyPage>
-                    <section>
-                      {markdownFragmentToReact(releaseNote.body)}
-                    </section>
-                  </Markdown.TypographyPage>
-                </LayoutReleaseNote>
-              ))}
-            </SpacingsStack>
-          </div>
-        </Markdown.TypographyPage>
-      </LayoutReleaseNotesList>
-    </ThemeProvider>
+          </Markdown.TypographyPage>
+        </LayoutReleaseNotesList>
+      </ThemeProvider>
+    </IntlProvider>
   );
 };
 
@@ -102,6 +105,7 @@ export const query = graphql`
         slug
         title
         date(formatString: "D MMMM YYYY")
+        isoDate: date
         description
         type
         topics

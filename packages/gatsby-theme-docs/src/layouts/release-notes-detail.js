@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { AngleLeftIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { Link } from '../components';
@@ -21,6 +22,7 @@ import PageContentInset from './internals/page-content-inset';
 import { ReleaseNotePageTitle } from '../components/release-note-heading';
 
 const LayoutReleaseNotesDetail = (props) => {
+  const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
 
@@ -29,6 +31,7 @@ const LayoutReleaseNotesDetail = (props) => {
       <LayoutSidebar
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
+        {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
         isGlobalBeta={props.pageData.isGlobalBeta}
         // Rendering a release note details page implicitly implies
@@ -36,6 +39,7 @@ const LayoutReleaseNotesDetail = (props) => {
         hasReleaseNotes={true}
       />
       <LayoutMain
+        {...layoutState.topMenu}
         preventScroll={
           layoutState.topMenu.isTopMenuOpen ||
           layoutState.sidebar.isSidebarMenuOpen
@@ -44,6 +48,7 @@ const LayoutReleaseNotesDetail = (props) => {
         <LayoutHeader
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
+          ref={ref}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
         />
@@ -55,22 +60,18 @@ const LayoutReleaseNotesDetail = (props) => {
                 noUnderline={true}
                 css={css`
                   svg {
-                    * {
-                      fill: ${designSystem.colors.light.link};
-                    }
+                    fill: ${designSystem.colors.light.link};
                   }
 
                   :hover {
                     svg {
-                      * {
-                        fill: ${designSystem.colors.light.linkHover};
-                      }
+                      fill: ${designSystem.colors.light.linkHover};
                     }
                   }
                 `}
               >
                 <SpacingsInline alignItems="center">
-                  <AngleLeftIcon size="medium" color="primary" />
+                  <AngleLeftIcon size="medium" />
 
                   <span
                     css={css`

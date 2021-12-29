@@ -23,6 +23,7 @@ describe('Rendering', () => {
     // Focus
     input.focus();
     await waitFor(() => {
+      // eslint-disable-next-line testing-library/no-node-access
       expect(document.activeElement).toEqual(input);
     });
   });
@@ -41,6 +42,7 @@ describe('Rendering', () => {
     // Focus
     fireEvent.keyUp(document.body, { key: '/' });
     await waitFor(() => {
+      // eslint-disable-next-line testing-library/no-node-access
       expect(document.activeElement).toEqual(input);
     });
   });

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css, Global } from '@emotion/core';
+import { css, Global } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import reportErrorToSentry from '../utils/report-error-to-sentry';
 
 const algoliaStyles = css`
+  /* stylelint-disable selector-class-pattern */
   .algolia-docsearch-suggestion--highlight {
     color: ${designSystem.colors.light.textInfo};
   }
@@ -102,7 +103,6 @@ const algoliaStyles = css`
   .algolia-autocomplete .algolia-docsearch-suggestion--wrapper {
     background-color: ${designSystem.colors.light.surfacePrimary};
     width: 100%;
-    margin: 0 0 ${designSystem.dimensions.spacings.s};
     display: flex;
     align-items: flex-start;
   }
@@ -225,9 +225,8 @@ const algoliaStyles = css`
 
 const AlgoliaSearch = React.forwardRef((props, ref) => {
   const [isSearchEnabled, setIsSearchEnabled] = React.useState(true);
-  const [hasErrorLoadingAlgolia, setHasErrorLoadingAlgolia] = React.useState(
-    false
-  );
+  const [hasErrorLoadingAlgolia, setHasErrorLoadingAlgolia] =
+    React.useState(false);
 
   React.useEffect(() => {
     // https://github.com/algolia/docsearch/issues/352
@@ -236,8 +235,9 @@ const AlgoliaSearch = React.forwardRef((props, ref) => {
       import('docsearch.js')
         .then(({ default: docsearch }) => {
           docsearch({
-            apiKey: '6643ae30b54ef6784e4baaf9c8dbde07',
+            apiKey: '058c5342ed03a928f2dde0142bee8db0',
             indexName: 'commercetools',
+            appId: '6NZ83LOI5M',
             inputSelector: `#${props.searchInputId}`,
             bindKeyboardShortcuts: false,
             debug: process.env.NODE_ENV !== 'production',

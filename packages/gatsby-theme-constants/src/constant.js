@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContentNotifications } from '@commercetools-docs/ui-kit';
+import {
+  ContentNotifications,
+  useISO310NumberFormatter,
+} from '@commercetools-docs/ui-kit';
 import useConstant from './use-constant';
 
 const Constant = (props) => {
+  const formatNumber = useISO310NumberFormatter();
   const constantValue = useConstant(props.type, props.name);
 
   if (!constantValue) {
@@ -16,7 +20,7 @@ const Constant = (props) => {
 
   return (
     <>
-      {constantValue.number || ''}
+      {formatNumber(constantValue.number) || ''}
       {constantValue.text && constantValue.number ? <>&nbsp;</> : ''}
       {constantValue.text || ''}
     </>

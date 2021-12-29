@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css, keyframes } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SearchInput from './search-input';
 
 const AlgoliaSearch = React.lazy(() => import('./algolia-search'));
 
 const searchInputId = 'search-bar';
+
+const openDialogAnimation = keyframes`
+  from { margin-top: -20%; }
+  to { margin-top: 0; }
+`;
 
 const centeredContainerStyle = css`
   width: 100%;
@@ -63,18 +68,20 @@ const Content = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  animation: ${openDialogAnimation} 0.15s ease-out alternate;
   background-color: ${designSystem.colors.light.surfacePrimary};
   border-radius: 0 0 ${designSystem.tokens.borderRadiusForSearchDialog}
     ${designSystem.tokens.borderRadiusForSearchDialog};
   box-shadow: ${designSystem.tokens.shadowForSearchDialog};
 
-  /* stylelint-disable declaration-block-no-duplicate-properties */
+  /* stylelint-disable declaration-block-no-duplicate-properties, value-no-vendor-prefix */
   height: 100%; /* For browsers that do not support this property yet */
+  height: -moz-fit-content;
   height: fit-content;
   /* stylelint-enable */
 
   min-height: calc(
-    ${designSystem.dimensions.heights.inputSearch} +
+    ${designSystem.dimensions.heights.inputSearchPrimary} +
       ${designSystem.dimensions.spacings.l}
   );
 
@@ -108,8 +115,8 @@ const InputPlaceholder = () => (
       border-radius: ${designSystem.tokens.borderRadiusForSearchInput};
       display: flex;
       flex: 1;
-      height: ${designSystem.dimensions.heights.inputSearch};
-      min-height: ${designSystem.dimensions.heights.inputSearch};
+      height: ${designSystem.dimensions.heights.inputSearchPrimary};
+      min-height: ${designSystem.dimensions.heights.inputSearchPrimary};
     `}
   />
 );

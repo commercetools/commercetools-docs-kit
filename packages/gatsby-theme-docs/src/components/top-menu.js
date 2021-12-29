@@ -2,20 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css, keyframes } from '@emotion/react';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 import GlobalNavigationLink from './global-navigation-link';
 import BetaFlag from './beta-flag';
+
+const slideOpenAnimation = keyframes`
+  from { margin-top: -50%; }
+  to { margin-top: 0; }
+`;
+const slideOpenAnimationMobile = keyframes`
+  from { margin-top: -150%; }
+  to { margin-top: 0; }
+`;
 
 const Container = styled.div`
   width: 100%;
   max-width: 100vw;
-
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    overflow: auto;
-  }
 `;
 const Content = styled.div`
   display: flex;
@@ -26,10 +32,17 @@ const Content = styled.div`
   margin: 0;
   padding: 0;
 
-  /* stylelint-disable declaration-block-no-duplicate-properties */
+  /* stylelint-disable declaration-block-no-duplicate-properties, value-no-vendor-prefix */
   height: 100%; /* For browsers that do not support this property yet */
+  height: -moz-fit-content;
   height: fit-content;
   /* stylelint-enable */
+
+  animation: ${slideOpenAnimation} 0.15s ease-out alternate;
+
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    animation: ${slideOpenAnimationMobile} 0.15s ease-out alternate;
+  }
 `;
 const centeredContainerStyle = css`
   width: 100%;
@@ -201,12 +214,15 @@ const TopMenu = (props) => {
                 </Column>
               ))}
               <SideColumn>
-                <SpacingsStack scale="s">
-                  {data.allTopSideMenuYaml.nodes.map((node) => (
-                    <GlobalNavigationLink href={node.href} key={node.id}>
-                      {node.label}
-                    </GlobalNavigationLink>
-                  ))}
+                <SpacingsStack scale="l">
+                  <SpacingsStack scale="s">
+                    {data.allTopSideMenuYaml.nodes.map((node) => (
+                      <GlobalNavigationLink href={node.href} key={node.id}>
+                        {node.label}
+                      </GlobalNavigationLink>
+                    ))}
+                  </SpacingsStack>
+                  <TopMenuBannerArea />
                 </SpacingsStack>
               </SideColumn>
             </Columns>

@@ -50,6 +50,7 @@ const defineRamlType = ({ schema, createTypes }) => {
         description: 'String',
         discriminatorValue: 'String',
         enumeration: '[String!]',
+        inherited: 'Boolean!',
         items: 'RamlTypeItems',
         maxItems: 'Int',
         maxLength: 'Int',
@@ -62,14 +63,6 @@ const defineRamlType = ({ schema, createTypes }) => {
         required: 'Boolean!',
         type: 'String!',
         uniqueItems: 'Boolean',
-      },
-    }),
-
-    // items describes an array field
-    schema.buildObjectType({
-      name: 'RamlTypeItems',
-      fields: {
-        type: 'String',
       },
     }),
   ];

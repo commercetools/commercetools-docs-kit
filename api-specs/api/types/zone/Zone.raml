@@ -1,0 +1,41 @@
+#%RAML 1.0 DataType
+(package): Zone
+(docs-uri): https://docs.commercetools.com/http-api-projects-zones.html#zone
+type: BaseResource
+displayName: Zone
+(updateType): ZoneUpdate
+(java-extends): 'com.commercetools.api.models.DomainResource<Zone>'
+properties:
+  id:
+    (identifier): true
+    type: string
+    description: The unique ID of the zone.
+  version:
+    type: number
+    format: int64
+    description: The current version of the zone.
+  createdAt:
+    type: datetime
+    description: ''
+  lastModifiedAt:
+    type: datetime
+    description: ''
+  lastModifiedBy?:
+    type: LastModifiedBy
+  createdBy?:
+    type: CreatedBy
+  key?:
+    type: string
+    description: |-
+      User-specific unique identifier for a zone.
+      Must be unique across a project.
+      The field can be reset using the Set Key UpdateAction.
+  name:
+    type: string
+    description: ''
+  description?:
+    type: string
+    description: ''
+  locations:
+    type: Location[]
+    description: ''

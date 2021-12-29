@@ -4,10 +4,10 @@ import styled from '@emotion/styled';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
-import UnstyledSearchIcon from '../icons/search.svg';
-import UnstyledSlashIcon from '../icons/slash.svg';
+import { SearchSvgIcon, SlashSvgIcon } from '../icons';
 
-const SearchIcon = createStyledIcon(UnstyledSearchIcon);
+const SearchIcon = createStyledIcon(SearchSvgIcon);
+const iconHeight = '16px';
 
 const Container = styled.div`
   position: relative;
@@ -25,19 +25,21 @@ const Input = styled.input`
   flex: 1;
   font-family: inherit;
   font-size: ${designSystem.typography.fontSizes.small};
-  height: ${designSystem.dimensions.heights.inputSearch};
-  min-height: ${designSystem.dimensions.heights.inputSearch};
+  height: ${designSystem.dimensions.heights.inputSearchSecondary};
+  min-height: ${designSystem.dimensions.heights.inputSearchSecondary};
   outline: none;
   overflow: hidden;
-  padding: 0
+  padding: 1px
+    calc(
+      ${designSystem.dimensions.spacings.l} +
+        ${designSystem.dimensions.spacings.xs}
+    )
+    0
     calc(
       ${designSystem.dimensions.spacings.l} +
         ${designSystem.dimensions.spacings.xs}
     );
-  width: ${(props) =>
-    props.size === 'small'
-      ? designSystem.dimensions.widths.searchBarSmall
-      : '100%'};
+  width: 100%;
   &::placeholder {
     color: ${designSystem.colors.light.textFaded};
   }
@@ -46,15 +48,14 @@ const Input = styled.input`
     border-color: ${designSystem.colors.light.borderHighlight};
     padding-right: ${designSystem.dimensions.spacings.xs};
   }
-  &:disabled {
-    background-color: ${designSystem.colors.light
-      .surfaceForSearchInputWhenDisabled};
-  }
 `;
 const SearchInputIcon = styled.span`
   position: absolute;
-  z-index: 1;
-  top: ${designSystem.dimensions.spacings.s};
+  z-index: ${designSystem.dimensions.stacks.base};
+  top: calc(
+    (${designSystem.dimensions.heights.inputSearchSecondary} - ${iconHeight}) /
+      2
+  );
   width: ${designSystem.dimensions.spacings.l};
   display: flex;
   flex-direction: column;
@@ -66,6 +67,8 @@ const SearchInputIcon = styled.span`
 const SearchInput = React.forwardRef((props, ref) => {
   const { onFocus } = props;
   const [isActive, setIsActive] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
+
   const handleFocus = (event) => {
     if (props.isDisabled) return;
     if (onFocus) onFocus(event);
@@ -74,8 +77,12 @@ const SearchInput = React.forwardRef((props, ref) => {
   const handleBlur = () => {
     if (props.isDisabled) return;
     setIsActive(false);
+    props.onClose();
   };
   React.useEffect(() => {
+    if (isLoading) {
+      setIsLoading(false);
+    }
     const onKeyPress = (event) => {
       // Listen to "slash" key events to focus the search input
       if (event.key === '/') {
@@ -91,14 +98,14 @@ const SearchInput = React.forwardRef((props, ref) => {
         window.removeEventListener('keyup', onKeyPress);
       }
     };
-  }, [onFocus, props.isDisabled]);
+  }, [onFocus, isLoading, props.isDisabled]);
   return (
     <Container>
       <SearchInputIcon position="left">
         <SearchIcon size="medium" />
       </SearchInputIcon>
       <SearchInputIcon position="right" hidden={isActive}>
-        <UnstyledSlashIcon height={16} />
+        <SlashSvgIcon height={16} />
       </SearchInputIcon>
       {props.onClose && (
         <SearchInputIcon position="right">
@@ -118,7 +125,7 @@ const SearchInput = React.forwardRef((props, ref) => {
         aria-label="Search"
         onFocus={handleFocus}
         onBlur={handleBlur}
-        disabled={props.isDisabled}
+        disabled={props.isDisabled || isLoading}
       />
     </Container>
   );
@@ -126,6 +133,7 @@ const SearchInput = React.forwardRef((props, ref) => {
 SearchInput.displayName = 'SearchInput';
 SearchInput.propTypes = {
   id: PropTypes.string,
+  // eslint-disable-next-line react/no-unused-prop-types
   size: PropTypes.oneOf(['small', 'scale']).isRequired,
   onFocus: PropTypes.func,
   onClose: PropTypes.func,

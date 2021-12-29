@@ -2,18 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
-import { css, ClassNames } from '@emotion/core';
+import { css, ClassNames, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { BackIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
+import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
-import UnstyledReleaseNotesIcon from '../../icons/release-notes.svg';
+import { ReleaseNotesSvgIcon } from '../../icons';
 import LayoutHeaderLogo from './layout-header-logo';
 
-const ReleaseNotesIcon = createStyledIcon(UnstyledReleaseNotesIcon);
+const ReleaseNotesIcon = createStyledIcon(ReleaseNotesSvgIcon);
+
+// React currently throws a warning when using useLayoutEffect on the server.
+// To get around it, we can conditionally useEffect on the server (no-op) and
+// useLayoutEffect in the browser. We need useLayoutEffect because we want
+// `connect` to perform sync updates to a ref to save the latest props after
+// a render is actually committed to the DOM.
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -48,13 +57,13 @@ const SidebarScrollFader = styled.div`
   position: absolute;
 `;
 const WebsiteTitle = styled.div`
-  color: ${(props) => props.theme.colors.light.primary};
+  color: ${(props) => props.theme.websitePrimaryColor};
   padding: ${designSystem.dimensions.spacings.m};
   font-size: ${designSystem.typography.fontSizes.h4};
 `;
 const WebsiteTitleLink = styled.a`
   text-decoration: none;
-  color: ${(props) => props.theme.colors.light.primary};
+  color: ${(props) => props.theme.websitePrimaryColor};
   :hover {
     text-decoration: underline;
   }
@@ -108,12 +117,8 @@ const activeLinkStyles = css`
 `;
 
 const SidebarLink = (props) => {
-  const {
-    locationPath,
-    customStyles,
-    customActiveStyles,
-    ...forwardProps
-  } = props;
+  const { locationPath, customStyles, customActiveStyles, ...forwardProps } =
+    props;
   return (
     <ClassNames>
       {({ css: makeClassName }) => {
@@ -178,7 +183,7 @@ const SidebarLinkWrapper = (props) => {
   // We need to restore the scroll position as soon as possible, therefore we
   // use `useLayoutEffect` instead of `useEffect` as it fires synchronously after
   // all DOM mutations.
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const isActive = linkRef.current.getAttribute('aria-current') === 'page';
     // In case there was no scroll position saved in the location, and the link
     // is the active one, make sure that the chapter is "visible".
@@ -234,7 +239,6 @@ const SidebarChapter = (props) => {
       <SpacingsStack scale="s">
         <LinkItem>
           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-          {props.chapter.beta && !props.isGlobalBeta && <BetaFlag />}
         </LinkItem>
         <SpacingsStack scale="s">
           {props.chapter.pages &&
@@ -248,7 +252,6 @@ const SidebarChapter = (props) => {
                 getChapterDOMElement={getChapterDOMElement}
               >
                 <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-                {pageLink.beta && !props.isGlobalBeta && <BetaFlag />}
               </SidebarLinkWrapper>
             ))}
         </SpacingsStack>
@@ -268,7 +271,6 @@ SidebarChapter.propTypes = {
       })
     ),
   }).isRequired,
-  isGlobalBeta: PropTypes.bool.isRequired,
   onLinkClick: PropTypes.func,
   nextScrollPosition: PropTypes.number.isRequired,
   // from @react/router
@@ -286,7 +288,6 @@ const SidebarNavigationLinks = (props) => {
       allNavigationYaml {
         nodes {
           chapterTitle
-          beta
           pages {
             title
             path
@@ -314,9 +315,7 @@ const SidebarNavigationLinks = (props) => {
 };
 SidebarNavigationLinks.propTypes = {
   onLinkClick: PropTypes.func,
-  siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
-  hasReleaseNotes: PropTypes.bool.isRequired,
   nextScrollPosition: PropTypes.number.isRequired,
   // from @react/router
   location: PropTypes.shape({
@@ -344,15 +343,19 @@ const Sidebar = (props) => {
   // - initialize the new scroll position
   // - scroll to the previous position in case it was defined
   const nextScrollPosition = useScrollPosition(scrollContainerId);
+  const theme = useTheme();
   return (
     <>
       <SidebarHeader>
         <LayoutHeaderLogo />
-        <WebsiteTitle>
+        <WebsiteTitle theme={theme}>
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaFlag />}</div>
-            <WebsiteTitleLink as={Link} id="site-title" to="/">
-              {props.siteTitle}
+            <WebsiteTitleLink as={Link} to="/" theme={theme}>
+              <SpacingsInline scale="s">
+                <SiteIcon />
+                <span id="site-title">{props.siteTitle}</span>
+              </SpacingsInline>
             </WebsiteTitleLink>
           </SpacingsStack>
         </WebsiteTitle>

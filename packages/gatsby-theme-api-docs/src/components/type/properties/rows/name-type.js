@@ -1,12 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { BetaFlag } from '@commercetools-docs/gatsby-theme-docs';
 import { typography } from '../../../../design-system';
-import { useTypeLocations } from '../../../../hooks/use-type-locations';
-import generateTypeToRender from '../../../../utils/generate-type-to-render';
+import RegexProperty from '../../properties/regex-properties';
+import useTypeToRender from '../../../../hooks/use-type-to-render';
 import Required from '../../../required';
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
@@ -14,41 +14,52 @@ import Required from '../../../required';
 // into lines before the name is wrapped in itself if it consists of multiple words.
 const PropertyName = styled.div`
   white-space: nowrap;
+  line-height: ${typography.lineHeights.propertyType};
 `;
-const PropertyType = styled.div``;
+const PropertyType = styled.div`
+  line-height: ${typography.lineHeights.propertyType};
+  color: ${designSystem.colors.light.textFaded};
+`;
 const BetaWrapper = styled.span`
   font-size: ${typography.fontSizes.body};
 `;
 
-const NameType = ({ apiKey, property }) => {
-  const typeLocations = useTypeLocations();
-  const typeToRender = generateTypeToRender({
-    typeLocations,
-    property,
-    apiKey,
+const NameType = (props) => {
+  const typeToRender = useTypeToRender({
+    property: props.property,
+    apiKey: props.apiKey,
   });
+
+  const isRegex = (string) =>
+    string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
 
   return (
     <SpacingsStack scale="xs">
-      <PropertyName className="name-type">
-        <Markdown.InlineCode>{property.name}</Markdown.InlineCode>
-        {property.required && <Required />}
-        {property.beta && (
-          <BetaWrapper>
-            <BetaFlag />
-          </BetaWrapper>
-        )}
+      <PropertyName>
+        <SpacingsInline scale="xs">
+          {isRegex(props.property.name) ? (
+            <RegexProperty expression={props.property.name} />
+          ) : (
+            <Markdown.InlineCode>{props.property.name}</Markdown.InlineCode>
+          )}
+          {'\u200B' /* zero-width space for the search crawler */}
+          {props.property.required && <Required />}
+          {props.property.beta && (
+            <BetaWrapper>
+              <BetaFlag />
+            </BetaWrapper>
+          )}
+        </SpacingsInline>
       </PropertyName>
-      <PropertyType className="name-type">
-        {typeToRender.displayPrefix && (
-          <span className="name">{typeToRender.displayPrefix}</span>
-        )}
+      <PropertyType>
+        {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
-        {typeof typeToRender.type === 'string' ? (
-          <span className="name">{typeToRender.type}</span>
-        ) : (
-          typeToRender.type
-        )}
+        {isRegex(props.property.name)
+          ? `Any ${typeToRender.type.toLowerCase()} property matching this regular expression`
+          : typeof typeToRender.type === 'string'
+          ? typeToRender.type
+          : typeToRender.type}
+        {'\u200B' /* zero-width space for the search crawler */}
       </PropertyType>
     </SpacingsStack>
   );
@@ -65,8 +76,6 @@ NameType.propTypes = {
     required: PropTypes.bool.isRequired,
     beta: PropTypes.bool,
   }).isRequired,
-  parentDiscriminator: PropTypes.string,
-  discriminatorValue: PropTypes.string,
 };
 
 export default NameType;

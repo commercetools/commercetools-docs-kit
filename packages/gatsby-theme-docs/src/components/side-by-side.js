@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { usePageData } from '../hooks/use-page-data';
@@ -10,10 +10,9 @@ import { usePageData } from '../hooks/use-page-data';
  * Allows the first and second child of this container to float side by side in large desktop sizes.
  */
 const SideBySideContainer = styled.div`
-  margin-top: 0 !important;
   display: grid;
   grid-column-gap: ${designSystem.dimensions.spacings.xl};
-  grid-row-gap: ${designSystem.dimensions.spacings.l};
+  row-gap: ${designSystem.dimensions.spacings.l};
   grid-template-rows: auto;
   align-items: start;
   justify-items: stretch;

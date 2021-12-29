@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Location } from '@reach/router';
 import { Link as GatsbyLink, withPrefix } from 'gatsby';
 import styled from '@emotion/styled';
@@ -36,15 +36,11 @@ const InlineLink = styled.span`
     margin: 0 0 0 ${designSystem.dimensions.spacings.xs};
   }
   svg {
-    * {
-      fill: ${designSystem.colors.light.link};
-    }
+    fill: ${designSystem.colors.light.link};
   }
   :hover {
     svg {
-      * {
-        fill: ${designSystem.colors.light.linkHover};
-      }
+      fill: ${designSystem.colors.light.linkHover};
     }
   }
 `;
@@ -79,12 +75,11 @@ export const ExternalSiteLink = (props) => (
  * ???
  *
  * ## other CT site
- * https://docs.commercetools.com/app-kit/getting-started
- * - prod: without origin
- * - dev: warning
- *
- * ### hidden features
  * /../app-kit/getting-started
+ * OR:
+ * https://docs.commercetools.com/app-kit/getting-started
+ * - prod: without origin, removed automatically
+ * - dev: warning
  *
  * ## external site
  * https://<domain>/something/else
@@ -108,6 +103,7 @@ const PureLink = (extendedProps) => {
     siteData.pathPrefix
   );
   const hrefWithoutPrefix = withoutPrefix(props.href, siteData.pathPrefix);
+
   // Construct an URL object for the given `href` and provide a "dummy" base origin
   // from the current website location url with the sole purpose of resolving
   // the correct pathname in case the `href` is a filesystem-relative path.
@@ -116,7 +112,22 @@ const PureLink = (extendedProps) => {
     `https://${dummyHostname}${pathnameWithoutPrefix}${location.hash || ''}`
   );
 
-  // Case 1: the link points to an external website.
+  // Case 1: the link points to a static file/page, so it should not be processed by Gatsby.
+  // Note that all files that should be served statically MUST be defined in the `/static` folder
+  // of the website.
+  // As a convention, we only match links to those files that respect the following rules:
+  // - the files are within the `/downloads` folder
+  // - any HTML file (file path ending with `.html`)
+  if (
+    hrefObject.pathname.startsWith('/downloads') ||
+    // NOTE: serving static HTML pages does not work in development mode.
+    // https://github.com/gatsbyjs/gatsby/issues/13072
+    hrefObject.pathname.endsWith('.html')
+  ) {
+    return <StyledExternalSiteLink {...props} data-link-type="static-link" />;
+  }
+
+  // Case 2: the link points to an external website.
   const isExternalLink =
     /^https?/.test(props.href) || (props.target && props.target === '_blank');
   if (
@@ -156,7 +167,7 @@ const PureLink = (extendedProps) => {
     );
   }
 
-  // Case 2: the link points to the exact same page. We use only the `hash` parameter
+  // Case 3: the link points to the exact same page. We use only the `hash` parameter
   // to avoids Gatsby to add the `pathPrefix`.
   const isAnchorLink = hrefWithoutPrefix.startsWith('#');
   const isLinkToSamePage = hrefObject.pathname === pathnameWithoutPrefix;
@@ -173,11 +184,10 @@ const PureLink = (extendedProps) => {
     );
   }
 
-  // Case 3: the link points to the same site but to a different page. We use the Gatsby link
+  // Case 4: the link points to the same site but to a different page. We use the Gatsby link
   // to take advantage of the history navigation.
-  const isUsingUndocumentedNotationToLinkToAnotherDocsSite = hrefWithoutPrefix.startsWith(
-    '/../'
-  );
+  const isUsingUndocumentedNotationToLinkToAnotherDocsSite =
+    hrefWithoutPrefix.startsWith('/../');
   const isSameDocsHostname =
     hrefObject.hostname === siteData.siteMetadata.productionHostname;
   const isLinkToAnotherDocsSite =

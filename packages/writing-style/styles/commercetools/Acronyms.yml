@@ -44,6 +44,7 @@ exceptions:
   - MIME
   - MIT
   - NET # otherwise ".NET" is complaining but it's generally known among developers
+  - NPM
   - PATH
   - PDF
   - PHP
@@ -71,11 +72,13 @@ exceptions:
   - UPS
   - URI
   - URL
+  - USA
   - USB
   - USD
   - UTC
   - UTF
   - UUID
+  - VAT
   - VIP
   - XML
   - XSS

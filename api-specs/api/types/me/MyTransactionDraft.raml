@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+(package): Me
+type: object
+displayName: MyTransactionDraft
+properties:
+  timestamp?:
+    type: datetime
+    description: The time at which the transaction took place.
+  type:
+    type: TransactionType
+    description: |-
+      The type of this transaction.
+      Only the `Authorization` or `Charge`
+      TransactionTypes are allowed here.
+  amount:
+    type: Money
+    description: ''
+  interactionId?:
+    type: string
+    description: |-
+      The identifier that is used by the interface that managed the transaction (usually the PSP).
+      If a matching interaction was logged in the interfaceInteractions array,
+      the corresponding interaction should be findable with this ID.
+      The `state` is set to the `Initial` TransactionState.

@@ -1,0 +1,6 @@
+{
+  "action": "setLocalizedDescription",
+  "localizedDescription": {
+    "en": "localizedDescriptionString"
+  }
+}

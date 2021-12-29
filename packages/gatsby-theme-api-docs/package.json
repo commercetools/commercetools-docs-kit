@@ -1,16 +1,16 @@
 {
   "name": "@commercetools-docs/gatsby-theme-api-docs",
   "description": "Gatsby theme for commercetools documentation API",
-  "version": "8.0.0",
+  "version": "18.0.1",
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/commercetools/commercetools-docs-kit.git"
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git",
+    "directory": "packages/gatsby-theme-api-docs"
   },
   "keywords": [
     "gatsby",
@@ -20,27 +20,28 @@
     "raml-spec"
   ],
   "dependencies": {
-    "@commercetools-docs/gatsby-transformer-mdx-introspection": "3.0.5",
-    "@commercetools-docs/gatsby-transformer-raml": "3.0.2",
-    "@commercetools-docs/ui-kit": "8.0.0",
-    "@commercetools-uikit/design-system": "^10.18.4",
-    "@commercetools-uikit/spacings-inline": "^10.30.1",
-    "@commercetools-uikit/spacings-stack": "^10.30.1",
-    "prop-types": "15.7.2"
+    "@commercetools-docs/gatsby-transformer-mdx-introspection": "15.0.0",
+    "@commercetools-docs/gatsby-transformer-raml": "13.0.1",
+    "@commercetools-docs/ui-kit": "18.0.1",
+    "@commercetools-uikit/design-system": "^12.1.0",
+    "@commercetools-uikit/spacings-inline": "^12.2.0",
+    "@commercetools-uikit/spacings-stack": "^12.2.0",
+    "@emotion/react": "^11.1.1",
+    "@emotion/styled": "^11.0.0",
+    "prop-types": "15.7.2",
+    "unist-util-visit": "^4.0.0"
   },
   "devDependencies": {
-    "@commercetools-docs/ramldoc-generator": "3.0.3",
-    "gatsby": "2.24.63",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "@commercetools-docs/rmf-codegen": "13.9.0",
+    "gatsby": "4.4.0",
+    "gatsby-source-filesystem": "4.4.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "peerDependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "8.0.0",
-    "@emotion/core": "10.x",
-    "@emotion/styled": "10.x",
-    "gatsby": "2.x",
-    "gatsby-source-filesystem": "2.x",
-    "react": "16.x",
-    "react-dom": "16.x"
+    "gatsby": "4.x",
+    "gatsby-source-filesystem": "4.x",
+    "react": "17.x",
+    "react-dom": "17.x"
   }
 }

@@ -5,12 +5,12 @@ ignorecase: true
 action:
   name: replace
 swap:
-  "(?:e-mail)": email
-  "(?:cell ?phone)": smartphone|phone|mobile phone
-  "tap (?:&|and) hold": touch & hold
-  "(?:file ?path|path ?name)": path
-  "(?:kill|terminate|abort)": stop|exit|cancel|end|deactivate|turn off
-  "un(?:check|select)": clear
+  '(?:e-mail)': email
+  '(?:cell ?phone)': smartphone|phone|mobile phone
+  'tap (?:&|and) hold': touch & hold
+  '(?:file ?path|path ?name)': path
+  '(?:kill|terminate|abort)': stop|exit|cancel|end|deactivate|turn off
+  'un(?:check|select)': clear
   # above: preceding|over|this # note NK: I tried to change a few places and it did rather get cumbersome. I don't think it's worth the efforts.
   account name: username
   approx\.: approximately
@@ -19,7 +19,6 @@ swap:
   autoupdate: automatically update
   cellular data: mobile data
   cellular network: mobile network
-  chapter: document|page|section
   check box: checkbox
   command line: command-line
   click on: click|click in
@@ -37,7 +36,9 @@ swap:
   i18n: internationalization
   l10n: localization
   long press: touch & hold
+  open beta: public beta # acc. to our beta policy
   open-source: open source
+  private beta: closed beta # acc. to our beta policy
   regex: regular expression
   sign into: sign in to
   single sign on: single sign-on

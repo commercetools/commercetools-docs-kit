@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+(package): CustomObject
+(docs-uri): https://docs.commercetools.com/http-api-projects-custom-objects.html#create-a-customobject
+displayName: CustomObjectDraft
+type: object
+properties:
+  container:
+    type: string
+    description: A namespace to group custom objects.
+  key:
+    type: string
+    description: A user-defined key that is unique within the given container.
+  value:
+    type: any
+    description: ''
+  version?:
+    type: number
+    format: int64
+    description: ''

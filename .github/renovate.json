@@ -1,0 +1,46 @@
+{
+  "extends": ["config:base", ":preserveSemverRanges"],
+  "schedule": ["on the 1st and 3rd day instance on Wednesday after 3am"],
+  "separateMajorMinor": true,
+  "packageRules": [
+    {
+      "sourceUrlPrefixes": ["https://github.com/commercetools/ui-kit"],
+      "groupName": "all ui-kit packages"
+    },
+    {
+      "sourceUrlPrefixes": ["https://github.com/gregberge/svgr"],
+      "groupName": "all svgr packages"
+    },
+    {
+      "packagePatterns": ["*"],
+      "updateTypes": ["minor", "patch"],
+      "groupName": "all dependencies",
+      "groupSlug": "all"
+    },
+    {
+      "matchPackageNames": ["hast-util-heading"],
+      "allowedVersions": "<2"
+    },
+    {
+      "matchPackageNames": ["rehype-slug"],
+      "allowedVersions": "<5"
+    },
+    {
+      "matchPackageNames": ["remark-emoji"],
+      "allowedVersions": "<3"
+    },
+    {
+      "matchPackageNames": ["node-fetch"],
+      "allowedVersions": "<3"
+    },
+    {
+      "matchPackageNames": ["react-router-dom"],
+      "allowedVersions": "<6"
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": false
+  },
+  "labels": ["🤖 Type: Dependencies"],
+  "ignoreDeps": ["gatsby-remark-relative-images"]
+}

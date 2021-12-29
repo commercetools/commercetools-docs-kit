@@ -5,15 +5,35 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import 'typeface-roboto';
-import 'typeface-roboto-mono';
+import '@fontsource/roboto/latin-400.css';
+import '@fontsource/roboto/latin-500.css';
+import '@fontsource/roboto/latin-700.css';
+import '@fontsource/roboto-mono/latin-400.css';
+import '@fontsource/roboto-mono/latin-500.css';
+import '@fontsource/roboto-mono/latin-700.css';
 import React from 'react';
 import Prism from 'prism-react-renderer/prism';
-import { CacheProvider } from '@emotion/core';
+import { CacheProvider } from '@emotion/react';
 import { docsCache } from './utils/create-emotion-cache';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_VERCEL_GITHUB_COMMIT_SHA;
+
+// Focus `main` container for keyboard accessibility purposes.
+// This is apparently required in browsers such as Firefox or Safari.
+// In Chrome, it seems that the `autofocus` attribute is enough.
+// For more advanced uses cases, we might want to look into Gatsby's recommendations
+// of using `@react/skip-nav`:
+// * https://www.gatsbyjs.com/blog/2020-02-10-accessible-client-side-routing-improvements/
+// * https://github.com/gatsbyjs/gatsby/tree/master/examples/using-reach-skip-nav
+const focusMainContent = () => {
+  if (document) {
+    const elem = document.querySelector('main');
+    if (elem) {
+      elem.focus();
+    }
+  }
+};
 
 const injectScript = (url, attributes = {}, onLoad) => {
   const script = document.createElement('script');
@@ -26,20 +46,22 @@ const injectScript = (url, attributes = {}, onLoad) => {
   document.body.appendChild(script);
 };
 
-export const onClientEntry = (
+export const onClientEntry = async (
   _, // eslint-disable-line
   pluginOptions
 ) => {
   if (isProduction) {
-    require.ensure(['@sentry/browser'], (require) => {
-      const Sentry = require('@sentry/browser');
-      Sentry.init({
-        dsn: 'https://e43538aae75e412eb16b27d8011f5a8b@sentry.io/1819068',
-        release: commitSha,
-        environment: pluginOptions.websiteKey,
-        denyUrls: ['docs.commercetools.com', 'now.sh', 'vercel.app'],
-      });
+    const Sentry = await import('@sentry/browser');
+    Sentry.init({
+      dsn: 'https://e43538aae75e412eb16b27d8011f5a8b@o32365.ingest.sentry.io/1819068',
+      release: commitSha,
+      environment: pluginOptions.websiteKey,
+      allowUrls: ['docs.commercetools.com', 'now.sh', 'vercel.app'],
     });
+
+    if (typeof IntersectionObserver === 'undefined') {
+      await import('intersection-observer');
+    }
   }
   // Inject the cookie consent scripts only if the page is served on the domain `*.commercetools.com`.
   if (window && window.location.host.includes('.commercetools.com')) {
@@ -56,12 +78,23 @@ export const onClientEntry = (
   // Require additional Prism languages.
   // Inspired by https://github.com/facebook/docusaurus/pull/2250.
   window.Prism = Prism;
-  (pluginOptions.additionalPrismLanguages || []).forEach((lang) => {
-    require(`prismjs/components/prism-${lang}`); // eslint-disable-line
-  });
+  const additionalPrismLanguages = pluginOptions.additionalPrismLanguages || [];
+  // Use a for-loop to run dynamic imports sequentially.
+  for (let index = 0; index < additionalPrismLanguages.length; index++) {
+    const lang = additionalPrismLanguages[index];
+    await import(`prismjs/components/prism-${lang}`);
+  }
   delete window.Prism;
+
+  focusMainContent();
 };
 
 export const wrapRootElement = ({ element }) => (
   <CacheProvider value={docsCache}>{element}</CacheProvider>
 );
+
+export const onRouteUpdate = ({ prevLocation }) => {
+  if (prevLocation !== null) {
+    focusMainContent();
+  }
+};

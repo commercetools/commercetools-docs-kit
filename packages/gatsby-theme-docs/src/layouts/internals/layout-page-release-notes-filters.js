@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { IntlProvider } from 'react-intl';
-import { keyframes } from '@emotion/core';
+import PropTypes from 'prop-types';
+import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -9,22 +9,27 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import IconButton from '@commercetools-uikit/icon-button';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import { CloseIcon } from '@commercetools-uikit/icons';
-import UnstyledStackedLinesIndentedIcon from '../../icons/stacked-lines-indented-icon.svg';
-import { Overlay } from '../../components';
+import { StackedLinesIndentedIconSvgIcon } from '../../icons';
+import { Overlay, SearchInput } from '../../components';
 import ReleaseNotesFilterDates from '../../components/release-notes-filter-dates';
 import ReleaseNotesFilterTopics from '../../components/release-notes-filter-topics';
 
 const StackedLinesIndentedIcon = createStyledIcon(
-  UnstyledStackedLinesIndentedIcon
+  StackedLinesIndentedIconSvgIcon
 );
 
 const slideInAnimation = keyframes`
   from { margin-right: -100%; }
   to { margin-right: 0; }
 `;
+const fadeInAnimation = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
 const SlidingContainer = styled.div`
   background-color: ${designSystem.colors.light.surfacePrimary};
-  animation: ${slideInAnimation} 0.5s ease-out alternate;
+  animation: ${slideInAnimation} 0.15s ease-out alternate;
   width: calc(${designSystem.dimensions.widths.pageNavigation});
   padding: ${designSystem.dimensions.spacings.m};
   height: 100%;
@@ -32,8 +37,6 @@ const SlidingContainer = styled.div`
 `;
 const GridContainer = styled.div`
   display: none;
-  border-left: 1px solid ${designSystem.colors.light.borderPrimary};
-  margin-top: ${designSystem.dimensions.spacings.wide};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
@@ -51,7 +54,8 @@ const StickyContainer = styled.div`
   position: sticky;
   top: ${designSystem.dimensions.spacings.xxl};
   margin: 0 0 ${designSystem.dimensions.spacings.s};
-  padding: ${designSystem.dimensions.spacings.m};
+  padding: 0 ${designSystem.dimensions.spacings.m}
+    ${designSystem.dimensions.spacings.m};
 `;
 const ReleasesTitleLink = styled.a`
   color: ${designSystem.colors.light.textSecondary};
@@ -84,43 +88,85 @@ const ToggleMenuButton = styled.div`
   }
 `;
 
-const LayoutPageReleaseNotesFilters = () => {
+const SearchBox = styled.div`
+  display: ${(props) => (props.excludeFromSearchIndex ? 'none' : 'block')};
+
+  @media only percy {
+    display: block !important;
+  }
+`;
+
+const SearchInputBox = styled.div`
+  padding: ${designSystem.dimensions.spacings.m} 0;
+  animation: ${fadeInAnimation} 0.4s ease-in;
+  max-width: calc(
+    ${designSystem.dimensions.widths.pageNavigationSmall} -
+      ${designSystem.dimensions.spacings.m} * 2
+  );
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    max-width: calc(
+      ${designSystem.dimensions.widths.pageNavigation} -
+        ${designSystem.dimensions.spacings.m} * 2
+    );
+  }
+`;
+
+const Blank = styled.div`
+  height: ${designSystem.dimensions.heights.pageSearchboxSpace};
+`;
+
+const LayoutPageReleaseNotesFilters = (props) => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const [modalPortalNode, setModalPortalNode] = React.useState();
   React.useEffect(() => {
     setModalPortalNode(document.getElementById('modal-portal'));
   }, []);
 
+  const searchContainer = (
+    <SearchBox excludeFromSearchIndex={props.excludeFromSearchIndex}>
+      {props.isSearchBoxInView ? (
+        <Blank />
+      ) : (
+        <SearchInputBox>
+          <SearchInput
+            id="search-input-release-notes"
+            size="small"
+            onFocus={props.openSearchDialog}
+            isDisabled={props.excludeFromSearchIndex}
+          />
+        </SearchInputBox>
+      )}
+    </SearchBox>
+  );
+
   const filtersContainer = (
-    <IntlProvider locale="en">
-      <SpacingsStack scale="m">
-        <SpacingsInline
-          scale="s"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <ReleasesTitleLink href="#top">
-            <SpacingsInline scale="s" alignItems="center">
-              <div>Releases</div>
-              <div>
-                <StackedLinesIndentedIcon color="textSecondary" />
-              </div>
-            </SpacingsInline>
-          </ReleasesTitleLink>
-          {isMenuOpen && (
-            <SecondaryIconButton
-              icon={<CloseIcon size="medium" />}
-              label="Close release notes filters"
-              onClick={() => {
-                setMenuOpen(false);
-              }}
-            />
-          )}
-        </SpacingsInline>
-        <ReleaseNotesFilterDates />
-        <ReleaseNotesFilterTopics />
-      </SpacingsStack>
-    </IntlProvider>
+    <SpacingsStack scale="m">
+      <SpacingsInline
+        scale="s"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <ReleasesTitleLink href="#top">
+          <SpacingsInline scale="s" alignItems="center">
+            <div>Releases</div>
+            <div>
+              <StackedLinesIndentedIcon color="textSecondary" />
+            </div>
+          </SpacingsInline>
+        </ReleasesTitleLink>
+        {isMenuOpen && (
+          <SecondaryIconButton
+            icon={<CloseIcon size="medium" />}
+            label="Close release notes filters"
+            onClick={() => {
+              setMenuOpen(false);
+            }}
+          />
+        )}
+      </SpacingsInline>
+      <ReleaseNotesFilterDates />
+      <ReleaseNotesFilterTopics />
+    </SpacingsStack>
   );
 
   if (isMenuOpen) {
@@ -157,11 +203,16 @@ const LayoutPageReleaseNotesFilters = () => {
         />
       </ToggleMenuButton>
       <GridContainer>
-        <StickyContainer>{filtersContainer}</StickyContainer>
+        <StickyContainer>{[searchContainer, filtersContainer]}</StickyContainer>
       </GridContainer>
     </>
   );
 };
 LayoutPageReleaseNotesFilters.displayName = 'LayoutPageReleaseNotesFilters';
+LayoutPageReleaseNotesFilters.propTypes = {
+  isSearchBoxInView: PropTypes.bool.isRequired,
+  excludeFromSearchIndex: PropTypes.bool.isRequired,
+  openSearchDialog: PropTypes.func.isRequired,
+};
 
 export default LayoutPageReleaseNotesFilters;

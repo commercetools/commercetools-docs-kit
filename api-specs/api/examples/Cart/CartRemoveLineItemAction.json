@@ -1,0 +1,17 @@
+{
+  "action": "removeLineItem",
+  "lineItemId": "{{lineItemId}}",
+  "quantity": 1,
+  "externalPrice": {
+    "currencyCode": "EUR",
+    "centAmount": 4000
+  },
+  "shippingDetailsToRemove": {
+    "targets": [
+      {
+        "addressKey": "AddressKeyStringFromAddress",
+        "quantity": 2
+      }
+    ]
+  }
+}

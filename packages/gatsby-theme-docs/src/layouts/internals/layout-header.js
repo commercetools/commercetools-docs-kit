@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
 import IconButton from '@commercetools-uikit/icon-button';
@@ -11,27 +11,29 @@ import {
   LogoButton,
   MediaQuery,
 } from '@commercetools-docs/ui-kit';
-import { SearchDialog, SearchInput, Overlay, TopMenu } from '../../components';
-import UnstyledSearchIcon from '../../icons/search.svg';
+import { SearchDialog, SearchInput, Overlay } from '../../components';
+import { SearchSvgIcon } from '../../icons';
 
-const SearchIcon = createStyledIcon(UnstyledSearchIcon);
+const SearchIcon = createStyledIcon(SearchSvgIcon);
 
 const Container = styled.header`
   grid-area: header;
+  background-color: ${designSystem.colors.light.surfacePrimary};
   border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
-  z-index: 10;
+  border-left: 1px solid ${designSystem.colors.light.borderPrimary};
+  z-index: ${designSystem.dimensions.stacks.aboveOverlay};
   max-width: 100vw;
   width: 100%;
   display: grid;
   grid:
-    [row1-start] 'header-content' ${designSystem
-      .dimensions.heights.header} [row1-end]
+    [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
+      .heights.header} [row1-end]
     / 1fr;
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     display: grid;
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
@@ -41,17 +43,17 @@ const Container = styled.header`
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths.pageContentWithMargins}
       )
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
@@ -61,14 +63,27 @@ const Container = styled.header`
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
-      [row1-start] 'header-content header-blank' ${designSystem.dimensions
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
         .heights.header} [row1-end]
       / ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
+
+  ${(props) =>
+    props.allowWideContentLayout
+      ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
+    grid:
+      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions.heights.header} [row1-end]
+      / minmax(
+        ${designSystem.dimensions.widths.pageContentWideWithMargins},
+        ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
+      )
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, ${designSystem.dimensions.widths.pageNavigation});
+  }`
+      : ''}
 `;
-const Content = styled.div`
-  grid-area: header-content;
+const TopMenuContainer = styled.div`
+  grid-area: header-top-menu;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,12 +91,26 @@ const Content = styled.div`
   margin: 0;
   height: 100%;
 `;
-const Blank = styled.div`
-  grid-area: header-blank;
-  display: none;
+const SearchBoxContainer = styled.div`
+  grid-area: header-searchbox;
+  display: flex;
+  align-items: center;
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    display: block;
+    padding: 0 ${designSystem.dimensions.spacings.m};
+  }
+`;
+
+const SearchInputBox = styled.div`
+  max-width: calc(
+    ${designSystem.dimensions.widths.pageNavigationSmall} -
+      ${designSystem.dimensions.spacings.m} * 2
+  );
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    max-width: calc(
+      ${designSystem.dimensions.widths.pageNavigation} -
+        ${designSystem.dimensions.spacings.m} * 2
+    );
   }
 `;
 const Inline = styled.div`
@@ -108,7 +137,7 @@ const DocumentationSwitcherButton = styled.div`
   font-size: ${designSystem.typography.fontSizes.body};
   cursor: pointer;
   padding: 0;
-  margin: 0 0 0 ${designSystem.dimensions.spacings.m};
+  margin: 0 0 0 calc(${designSystem.dimensions.spacings.m} - 1px);
   display: flex;
   align-items: center;
   text-overflow: ellipsis;
@@ -125,9 +154,7 @@ const DocumentationSwitcherButton = styled.div`
     border-bottom: 2px solid ${designSystem.colors.light.linkNavigation};
     color: ${designSystem.colors.light.linkNavigation};
     svg {
-      * {
-        fill: ${designSystem.colors.light.linkNavigation};
-      }
+      fill: ${designSystem.colors.light.linkNavigation};
     }
   }
 
@@ -136,7 +163,7 @@ const DocumentationSwitcherButton = styled.div`
   }
 
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    margin: 0 0 0 ${designSystem.dimensions.spacings.xl};
+    margin: 0 0 0 calc(${designSystem.dimensions.spacings.xl} - 1px);
   }
 `;
 const SearchContainer = styled.div`
@@ -152,7 +179,8 @@ const SearchContainer = styled.div`
   }
 `;
 
-const LayoutHeader = (props) => {
+// eslint-disable-next-line react/display-name
+const LayoutHeader = forwardRef((props, ref) => {
   const handleTopMenuButtonKeyPress = (event) => {
     const enterOrSpace =
       event.key === 'Enter' ||
@@ -167,8 +195,8 @@ const LayoutHeader = (props) => {
   };
 
   return (
-    <Container id="top">
-      <Content>
+    <Container id="top" allowWideContentLayout={props.allowWideContentLayout}>
+      <TopMenuContainer>
         <Inline alignItems="center">
           <LogoContainer>
             {/* Injected by React portal */}
@@ -187,7 +215,6 @@ const LayoutHeader = (props) => {
           <DocumentationSwitcherButton
             role="button"
             id="top-menu-switcher"
-            tabIndex="1"
             aria-expanded={props.isTopMenuOpen}
             aria-label={
               props.isTopMenuOpen ? 'Close Top Menu' : 'Open Top Menu'
@@ -205,15 +232,9 @@ const LayoutHeader = (props) => {
               )}
             </SpacingsInline>
           </DocumentationSwitcherButton>
-          {props.isTopMenuOpen ? (
-            <Overlay
-              top={designSystem.dimensions.heights.header}
-              onClick={props.closeTopMenu}
-            >
-              <TopMenu centered={props.centeredTopMenu} />
-            </Overlay>
-          ) : null}
         </Inline>
+      </TopMenuContainer>
+      <SearchBoxContainer ref={ref}>
         <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
           {props.isSearchDialogOpen ? (
             <Overlay position="absolute" onClick={props.closeSearchDialog}>
@@ -224,7 +245,7 @@ const LayoutHeader = (props) => {
             </Overlay>
           ) : (
             <>
-              <MediaQuery forViewport="mobile">
+              <MediaQuery forViewport="largeTablet" hideIfMatch>
                 <IconButton
                   icon={<SearchIcon />}
                   size="big"
@@ -233,33 +254,32 @@ const LayoutHeader = (props) => {
                   isDisabled={props.excludeFromSearchIndex}
                 />
               </MediaQuery>
-              <MediaQuery forViewport="tablet">
-                <SearchInput
-                  id="search-input-placeholder"
-                  size="small"
-                  onFocus={props.openSearchDialog}
-                  isDisabled={props.excludeFromSearchIndex}
-                />
+              <MediaQuery forViewport="largeTablet">
+                <SearchInputBox>
+                  <SearchInput
+                    id="search-input-header"
+                    size="small"
+                    onFocus={props.openSearchDialog}
+                    isDisabled={props.excludeFromSearchIndex}
+                  />
+                </SearchInputBox>
               </MediaQuery>
             </>
           )}
         </SearchContainer>
-      </Content>
-      <Blank />
+      </SearchBoxContainer>
     </Container>
   );
-};
+});
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
-  constraintWidth: PropTypes.string,
+  allowWideContentLayout: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,
   openSearchDialog: PropTypes.func.isRequired,
   closeSearchDialog: PropTypes.func.isRequired,
   isTopMenuOpen: PropTypes.bool.isRequired,
   toggleTopMenu: PropTypes.func.isRequired,
-  closeTopMenu: PropTypes.func.isRequired,
-  centeredTopMenu: PropTypes.bool,
   centeredSearchDialog: PropTypes.bool,
 };
 

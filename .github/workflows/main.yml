@@ -1,13 +1,13 @@
 name: Main workflow
 
 # The event triggers are configured as following:
-# - on branch master, trigger the workflow on every push
+# - on branch main, trigger the workflow on every push
 # - on any pull request, trigger the workflow
 # This is to avoid running the workflow twice on pull requests.
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -25,28 +25,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Read .nvmrc
-        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-        id: nvm
-
       - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+          node-version-file: '.nvmrc'
 
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/cache@v1
+      - uses: actions/cache@v2
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: |
+            .cache
+            public
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - name: Set custom Yarn cache path
+        run: yarn config set cacheFolder .cache/yarn
+
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
         env:
           # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L14-L18
           # https://github.com/marketplace/actions/cypress-io#custom-install
@@ -61,9 +58,7 @@ jobs:
         run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
 
       - name: Running Visual Regression Tests
-        uses: percy/snapshot-action@v0.1.1
-        with:
-          build-directory: public
+        run: yarn percy snapshot ./public
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS }}
 
@@ -73,7 +68,7 @@ jobs:
         # restore / cache the binary ourselves on Linux
         # see https://github.com/actions/cache
         id: cache-cypress
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.cache/Cypress
           key: ${{ runner.os }}-cypress-${{ hashFiles('**/package.json') }}
@@ -86,18 +81,18 @@ jobs:
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
-          CYPRESS_CI: "true"
+          CYPRESS_CI: 'true'
 
       - name: Running API End-to-End tests
         run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/api-docs-smoke-test' 'yarn run percy exec -- yarn test:e2e:api-docs-smoke-test'
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_API_SMOKE_TESTS_E2E }}
-          CYPRESS_CI: "true"
+          CYPRESS_CI: 'true'
 
       - name: Uploading Cypress artifacts
         # Test run video was always captured, so this action uses "always()" condition
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         if: failure()
         with:
           name: cypress-videos

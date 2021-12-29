@@ -1,0 +1,6 @@
+{
+  "action": "addDistributionChannel",
+  "distributionChannel": {
+    "typeId":  "channel", "id": "12345"
+  }
+}

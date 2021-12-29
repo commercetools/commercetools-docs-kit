@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+(package): CustomerGroup
+(docs-uri): https://docs.commercetools.com/http-api-projects-customerGroups.html#create-a-customergroup
+displayName: CustomerGroupDraft
+type: object
+properties:
+  key?:
+    type: string
+    description: User-defined unique identifier for the customer group.
+  groupName:
+    type: string
+    description: |
+      Unique value which must be different from any value used for `name` in [CustomerGroup](ctp:api:type:CustomerGroup) in the project.
+      If not, a `DuplicateField` [error](/../api/errors#400-bad-request-1) is thrown.
+  custom?:
+    type: CustomFieldsDraft
+    description:

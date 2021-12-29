@@ -1,36 +1,48 @@
 /* eslint-disable import/prefer-default-export */
 import { useStaticQuery, graphql } from 'gatsby';
 import { generateTypeURN } from '../utils/ctp-urn';
+import { useTypeLocationOverrides } from './use-type-location-overrides';
+
+var locationsAreIndexed = false;
+var overridesAreIndexed = false;
+const typeLocations = {};
+const typeLocationOverrides = {};
 
 const buildPageSlug = (page) => {
   const [pathWithoutExt] = page.parent.relativePath.split(page.parent.ext);
   return `/${pathWithoutExt}`;
 };
 
-const convertComponentInMdxToTypeLocations = (data) =>
-  data.allComponentInMdx.nodes.reduce((typeLocations, node) => {
-    const apiKeyAttribute = node.attributes.find(
-      (att) => att.name === 'apiKey'
-    );
-    const typeAttribute = node.attributes.find((att) => att.name === 'type');
+const convertComponentInMdxToTypeLocations = (data) => {
+  if (!locationsAreIndexed) {
+    data.allComponentInMdx.nodes.forEach((node) => {
+      const apiKey =
+        node.attributes[0].name === 'apiKey' ? node.attributes[0].value : null;
+      const name =
+        node.attributes[1].name === 'type' ? node.attributes[1].value : null;
 
-    const apiKey = apiKeyAttribute ? apiKeyAttribute.value : null;
-    const name = typeAttribute ? typeAttribute.value : null;
-    const slug = buildPageSlug(node.page);
-    const urn = generateTypeURN({ apiKey, displayName: name });
-    const urlAnchorTag = slug && urn ? `${slug}#${urn}` : '';
+      const slug = buildPageSlug(node.page);
+      const urn = generateTypeURN({ apiKey, displayName: name });
+      const url = slug && urn ? `${slug}#${urn}` : '';
 
-    return {
-      ...typeLocations,
-      [`${apiKey}__${name}`]: {
-        apiKey,
-        name,
-        slug,
-        urn,
-        urlAnchorTag,
-      },
-    };
-  }, {});
+      typeLocations[`${apiKey}__${name}`] = { url };
+    });
+  }
+  locationsAreIndexed = true;
+};
+
+const convertTypeLocationOverrides = (typeLocationData) => {
+  if (!overridesAreIndexed) {
+    typeLocationData.forEach((api) => {
+      api.locations.forEach((location) => {
+        typeLocationOverrides[`${api.api}__${location.type}`] = {
+          url: location.href,
+        };
+      });
+    });
+  }
+  overridesAreIndexed = true;
+};
 
 export const useTypeLocations = () => {
   const queryResult = useStaticQuery(
@@ -56,8 +68,9 @@ export const useTypeLocations = () => {
       }
     `
   );
-
-  return convertComponentInMdxToTypeLocations(queryResult);
+  convertComponentInMdxToTypeLocations(queryResult);
+  convertTypeLocationOverrides(useTypeLocationOverrides());
+  return { ...typeLocations, ...typeLocationOverrides };
 };
 
 export const locationForType = (apiKey, type, typeLocations) => {

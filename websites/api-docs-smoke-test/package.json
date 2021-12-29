@@ -1,22 +1,29 @@
 {
   "name": "@commercetools-website/api-docs-smoke-test",
-  "version": "3.0.20",
+  "version": "6.0.1",
   "private": true,
   "scripts": {
     "start": "yarn develop",
-    "develop": "npx gatsby develop",
-    "serve": "npx gatsby serve --prefix-paths -o",
-    "clean": "npx gatsby clean",
+    "develop": "yarn generate-ramldoc && yarn gatsby develop",
+    "serve": "yarn gatsby serve --prefix-paths -o",
+    "clean": "yarn gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
-    "build": "npx gatsby build --prefix-paths",
-    "prebuild": "yarn clean",
-    "postbuild": "rm -rf ../../public/api-docs-smoke-test && mkdir -p ../../public && mv public ../../public/api-docs-smoke-test",
-    "generate-ramldoc": "npx commercetools-ramldoc-generator --name test --src ./source-raml/test/api.raml"
+    "create-docs-release-note": "yarn create-docs-release-note",
+    "build": "./scripts/build.sh",
+    "build:serve": "yarn gatsby build --prefix-paths && yarn gatsby serve --prefix-paths -o",
+    "build:analyze": "ANALYZE_BUNDLE=true yarn build",
+    "generate-ramldoc": "yarn generate-ramldoc:test && yarn generate-ramldoc:api",
+    "generate-ramldoc:api": "cd ../../api-specs/api && yarn generate-ramldoc",
+    "generate-ramldoc:test": "cd ../../api-specs/test && yarn generate-ramldoc"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-api-docs": "8.0.0",
-    "@commercetools-docs/gatsby-theme-docs": "8.0.0",
-    "gatsby": "2.24.63",
-    "gatsby-cli": "2.12.99"
+    "@commercetools-docs/gatsby-theme-api-docs": "18.0.1",
+    "@commercetools-docs/gatsby-theme-docs": "18.0.1",
+    "@commercetools-docs/rmf-codegen": "13.9.0",
+    "gatsby": "4.4.0",
+    "gatsby-cli": "4.4.0",
+    "gatsby-source-filesystem": "4.4.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   }
 }

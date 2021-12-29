@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - automated-api-reference-update
+
+jobs:
+  pr-for-api-spec-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: 'main'
+          pr_title: 'Automated Specs Update'
+          pr_body: 'Automated synchronization of changes from `api-specs` directory in [commercetools-docs](https://github.com/commercetools/commercetools-docs) repo.'
+          github_token: ${{ secrets.GITHUB_TOKEN }}

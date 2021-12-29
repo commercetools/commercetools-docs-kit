@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { BetaFlag, ContentPagination } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
+import PlaceholderPageHeaderSideBannerArea from '../overrides/page-header-banner-area';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -19,6 +22,7 @@ import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
 const LayoutContent = (props) => {
+  const { ref, inView } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
 
@@ -27,11 +31,13 @@ const LayoutContent = (props) => {
       <LayoutSidebar
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
+        {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
         isGlobalBeta={props.pageData.isGlobalBeta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
       <LayoutMain
+        {...layoutState.topMenu}
         preventScroll={
           layoutState.topMenu.isTopMenuOpen ||
           layoutState.sidebar.isSidebarMenuOpen
@@ -40,8 +46,10 @@ const LayoutContent = (props) => {
         <LayoutHeader
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
+          ref={ref}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+          allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
         <LayoutPageWrapper>
           <LayoutPage
@@ -54,18 +62,25 @@ const LayoutContent = (props) => {
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
-              <PlaceholderPageHeaderSide />
+              <SpacingsStack scale="m">
+                <PlaceholderPageHeaderSide />
+                <PlaceholderPageHeaderSideBannerArea />
+              </SpacingsStack>
             </LayoutPageHeaderSide>
             <LayoutPageContent>
-              <PageContentInset id="body-content">
+              <PageContentInset id="body-content" showRightBorder>
                 {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
               </PageContentInset>
             </LayoutPageContent>
             <LayoutPageNavigation
+              {...layoutState.searchDialog}
+              isSearchBoxInView={inView}
+              excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
               pageTitle={props.pageContext.shortTitle || props.pageData.title}
               tableOfContents={props.pageData.tableOfContents}
               navLevels={props.pageData.navLevels}
+              beta={props.pageData.beta}
             />
           </LayoutPage>
         </LayoutPageWrapper>

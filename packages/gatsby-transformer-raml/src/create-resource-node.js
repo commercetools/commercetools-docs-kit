@@ -10,8 +10,15 @@ function createResourceNode({
   createNodeId,
   createParentChildLink,
   createContentDigest,
+  moveEndpointQueryParametersToTop,
+  moveEndpointQueryParametersToBottom,
 }) {
-  const postProcessedResource = postProcessResource({ apiKey, resource });
+  const postProcessedResource = postProcessResource({
+    apiKey,
+    resource,
+    moveEndpointQueryParametersToTop,
+    moveEndpointQueryParametersToBottom,
+  });
 
   const resourceNode = {
     ...postProcessedResource,
@@ -29,7 +36,12 @@ function createResourceNode({
   createParentChildLink({ parent: fileNode, child: resourceNode });
 }
 
-function postProcessResource({ apiKey, resource }) {
+function postProcessResource({
+  apiKey,
+  resource,
+  moveEndpointQueryParametersToTop,
+  moveEndpointQueryParametersToBottom,
+}) {
   let postProcessedResource = doRecursion(resource);
 
   postProcessedResource.apiKey = apiKey;
@@ -42,7 +54,11 @@ function postProcessResource({ apiKey, resource }) {
     postProcessedResource.baseUriParameters
   );
 
-  postProcessedResource = processMethods(postProcessedResource);
+  postProcessedResource = processMethods({
+    resource: postProcessedResource,
+    moveEndpointQueryParametersToTop,
+    moveEndpointQueryParametersToBottom,
+  });
 
   return postProcessedResource;
 }

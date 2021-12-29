@@ -1,5 +1,55 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.0.1
+
+### Patch Changes
+
+- [#1155](https://github.com/commercetools/commercetools-docs-kit/pull/1155) [`1043390`](https://github.com/commercetools/commercetools-docs-kit/commit/1043390d8c220aa30dd6964294e374963e338d64) Thanks [@timonrey](https://github.com/timonrey)! - Add API docs theme support for HEAD and PATCH methods
+
+* [#1152](https://github.com/commercetools/commercetools-docs-kit/pull/1152) [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade to Yarn v3
+
+## 13.0.0
+
+### Major Changes
+
+- [#1111](https://github.com/commercetools/commercetools-docs-kit/pull/1111) [`354c165`](https://github.com/commercetools/commercetools-docs-kit/commit/354c165fd29d9c8238bdd06cc63f8560ca269f4f) Thanks [@davifantasia](https://github.com/davifantasia)! - BREAKING CHANGE:
+
+  `movePropertiesToTop` and `movePropertiesToBottom` has been replaced with `moveTypePropertiesToTop` and `moveTypePropertiesToBottom`, but the funtionalities remain the same.
+
+  `moveEndpointQueryParametersToTop` and `moveEndpointQueryParametersToBottom` options are added to provide sorting configuration for query parameters.
+
+## 12.1.0
+
+### Minor Changes
+
+- [#1062](https://github.com/commercetools/commercetools-docs-kit/pull/1062) [`69cfb46`](https://github.com/commercetools/commercetools-docs-kit/commit/69cfb46a7dbdf0e6aa8664b475822de722e50f37) Thanks [@nkuehn](https://github.com/nkuehn)! - Numeric query parameter types render as GraphQL-ish "Int" and "Float" now like in body JSON types
+
+## 12.0.1
+
+### Patch Changes
+
+- [`68592d2`](https://github.com/commercetools/commercetools-docs-kit/commit/68592d2eaf5cfc71ab5b0e6dd6a0d13455b2a428) [#814](https://github.com/commercetools/commercetools-docs-kit/pull/814) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency js-yaml to v4
+
+## 12.0.0
+
+### Patch Changes
+
+- [`1b92bbc`](https://github.com/commercetools/commercetools-docs-kit/commit/1b92bbc0941fe4631d74a34561b1e722dd4013ec) [#788](https://github.com/commercetools/commercetools-docs-kit/pull/788) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: Query parameter "Array" type now renders as `Array of <object>`, and markdown in it's description is parsed appropirately.
+
+* [`45c7306`](https://github.com/commercetools/commercetools-docs-kit/commit/45c73068573b1717c6f3ae810a6927657943c9a0) [#760](https://github.com/commercetools/commercetools-docs-kit/pull/760) Thanks [@nkuehn](https://github.com/nkuehn)! - Add new rmf-codegen package as replacement to ramldoc-generator. The new package directly exposes rmf-codegen with all features and available options instead of wrapping one specific call in a custom CLI.
+
+## 10.0.2
+
+### Patch Changes
+
+- [`24caa5f`](https://github.com/commercetools/commercetools-docs-kit/commit/24caa5ff2121cfe3a980ef5af74675155965ff2e) [#739](https://github.com/commercetools/commercetools-docs-kit/pull/739) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+## 9.0.0
+
+### Minor Changes
+
+- [`eae4427`](https://github.com/commercetools/commercetools-docs-kit/commit/eae44272fe9e7f7a9caaa7cf299856b831d6a9e5) [#716](https://github.com/commercetools/commercetools-docs-kit/pull/716) Thanks [@davifantasia](https://github.com/davifantasia)! - feat: render inherited properties from parent types, also includes `hideInheritedProperties` for `ApiType` which hides inherited properties from parent type except the discriminator
+
 ## 3.0.2
 
 ### Patch Changes

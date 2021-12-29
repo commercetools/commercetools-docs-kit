@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { css, keyframes } from '@emotion/core';
+import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
-import { BurgerIcon, Overlay } from '../../components';
+import { designSystem, MediaQuery } from '@commercetools-docs/ui-kit';
+import { BurgerIcon, Overlay, TopMenu } from '../../components';
 import Sidebar from './sidebar';
 
 const slideInAnimation = keyframes`
@@ -14,7 +14,7 @@ const slideInAnimation = keyframes`
 const Container = styled.nav`
   grid-area: sidebar;
   position: fixed;
-  z-index: 2;
+  z-index: ${designSystem.dimensions.stacks.sidebar};
   height: 100vh;
   width: ${designSystem.dimensions.widths.pageNavigationSmall};
   display: ${(props) => (props.isSidebarMenuOpen ? 'flex' : 'none')};
@@ -22,13 +22,17 @@ const Container = styled.nav`
   background-color: ${designSystem.colors.light.surfaceSecondary1};
   border-right: 1px solid ${designSystem.colors.light.borderPrimary};
 
-  animation: ${slideInAnimation} 0.5s ease-out alternate;
+  animation: ${slideInAnimation} 0.15s ease-out alternate;
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     animation: unset;
     display: flex;
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     width: ${designSystem.dimensions.widths.pageNavigation};
+  }
+
+  @media only percy {
+    animation: unset;
   }
 `;
 const MenuButton = styled.button`
@@ -84,7 +88,7 @@ const LayoutSidebar = (props) => {
         {menuButtonNode && ReactDOM.createPortal(menuButton, menuButtonNode)}
         {modalPortalNode &&
           ReactDOM.createPortal(
-            <Overlay onClick={props.closeSidebarMenu}>
+            <Overlay zIndex="22" onClick={props.closeSidebarMenu}>
               <Container
                 aria-label="Main Navigation"
                 isSidebarMenuOpen={true}
@@ -119,8 +123,27 @@ const LayoutSidebar = (props) => {
           isGlobalBeta={props.isGlobalBeta}
           hasReleaseNotes={props.hasReleaseNotes}
         />
+        {props.isTopMenuOpen ? (
+          // GIVEN that the viewport is equal or larger than laptop (sidebar visible)
+          // AND the top menu has been opened
+          // THEN render the top menu overlay in this position.
+          // This is to ensure that the `z-index` values of the sidebar + main containers
+          // are correctly applied in relation to the top bar (logo + header) and therefore
+          // the top menu "slide down" animation does not transition over the top bar
+          // but instead underneath.
+          // See `./layout-main.js` for rendering the top menu for smaller viewports.
+          <MediaQuery forViewport="laptop">
+            <Overlay
+              top={designSystem.dimensions.heights.header}
+              onClick={props.closeTopMenu}
+            >
+              <TopMenu />
+            </Overlay>
+          </MediaQuery>
+        ) : null}
         {props.isSearchDialogOpen && (
           <Overlay
+            zIndex="22"
             position="absolute"
             display="none"
             css={css`
@@ -140,11 +163,12 @@ LayoutSidebar.propTypes = {
   isSidebarMenuOpen: PropTypes.bool.isRequired,
   toggleSidebarMenu: PropTypes.func.isRequired,
   closeSidebarMenu: PropTypes.func.isRequired,
+  isTopMenuOpen: PropTypes.bool.isRequired,
+  closeTopMenu: PropTypes.func.isRequired,
   siteTitle: PropTypes.string.isRequired,
   isGlobalBeta: PropTypes.bool.isRequired,
   hasReleaseNotes: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,
-  closeSearchDialog: PropTypes.func.isRequired,
 };
 
 export default LayoutSidebar;

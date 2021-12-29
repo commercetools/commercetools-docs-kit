@@ -1,5 +1,245 @@
 # @commercetools-docs/ui-kit
 
+## 18.0.1
+
+### Patch Changes
+
+- [#1165](https://github.com/commercetools/commercetools-docs-kit/pull/1165) [`45f78836`](https://github.com/commercetools/commercetools-docs-kit/commit/45f788361de5ba8cf2d67794ecc1b726ff5e56aa) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all svgr packages to v6 (major)
+
+## 18.0.0
+
+### Patch Changes
+
+- [#1136](https://github.com/commercetools/commercetools-docs-kit/pull/1136) [`ae4051a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae4051a8edccae26a4d907903c743fc496cf4eba) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency stylelint to v14
+
+* [#1116](https://github.com/commercetools/commercetools-docs-kit/pull/1116) [`b25c4e1`](https://github.com/commercetools/commercetools-docs-kit/commit/b25c4e16dd4cfea81c517cacda19a1b9cbbcf6e6) Thanks [@renovate](https://github.com/apps/renovate)! - update dependencies
+
+- [#1152](https://github.com/commercetools/commercetools-docs-kit/pull/1152) [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572) Thanks [@emmenko](https://github.com/emmenko)! - Add `data-table-name` attribute to RSS feed tables.
+
+* [#1152](https://github.com/commercetools/commercetools-docs-kit/pull/1152) [`795b5cc`](https://github.com/commercetools/commercetools-docs-kit/commit/795b5ccd3141220031c4aa3dca2f42b7b2e9d572) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade to Yarn v3
+
+## 17.0.8
+
+### Patch Changes
+
+- [#1082](https://github.com/commercetools/commercetools-docs-kit/pull/1082) [`42a7393`](https://github.com/commercetools/commercetools-docs-kit/commit/42a7393ed3b3dad44a36196c5ba7d03bcaee7629) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
+## 17.0.5
+
+### Patch Changes
+
+- [#1068](https://github.com/commercetools/commercetools-docs-kit/pull/1068) [`5010b56`](https://github.com/commercetools/commercetools-docs-kit/commit/5010b56faaa213b713d6d95f1774b29efc65d22c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1056](https://github.com/commercetools/commercetools-docs-kit/pull/1056) [`80bed81`](https://github.com/commercetools/commercetools-docs-kit/commit/80bed81184c7d20b07e5c848adbef4735f777d41) Thanks [@emmenko](https://github.com/emmenko)! - Clean up SVG markup (remove unnecessary metadata, ids, etc.)
+
+## 17.0.2
+
+### Patch Changes
+
+- [#1030](https://github.com/commercetools/commercetools-docs-kit/pull/1030) [`f8d04a9`](https://github.com/commercetools/commercetools-docs-kit/commit/f8d04a930f5d3c029dfb3fed0b7b1582ee64ba89) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit packages to `12.2.1`
+
+## 16.3.1
+
+### Patch Changes
+
+- [#988](https://github.com/commercetools/commercetools-docs-kit/pull/988) [`49d2059`](https://github.com/commercetools/commercetools-docs-kit/commit/49d20592a9808efb942649840dc62fde68c22c5a) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+## 16.3.0
+
+### Patch Changes
+
+- [#951](https://github.com/commercetools/commercetools-docs-kit/pull/951) [`fcd26ee`](https://github.com/commercetools/commercetools-docs-kit/commit/fcd26ee5d61ab1559339ce86d9c20194fdd94d9f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#972](https://github.com/commercetools/commercetools-docs-kit/pull/972) [`dac6330`](https://github.com/commercetools/commercetools-docs-kit/commit/dac63303c353994afcb66728309cfb254ea66da8) Thanks [@renovate](https://github.com/apps/renovate)! - update all dependencies
+
+## 16.2.0
+
+### Patch Changes
+
+- [#925](https://github.com/commercetools/commercetools-docs-kit/pull/925) [`bbd73a7`](https://github.com/commercetools/commercetools-docs-kit/commit/bbd73a78b2492a9f56761937eb29ab915a7afc46) Thanks [@TimonRey](https://github.com/TimonRey)! - Show searchbox in right hand column if header is not visible
+
+* [#945](https://github.com/commercetools/commercetools-docs-kit/pull/945) [`a37b748`](https://github.com/commercetools/commercetools-docs-kit/commit/a37b7486e56ba7373b9d86d51c5e97d04ae2cb49) Thanks [@renovate](https://github.com/apps/renovate)! - update dependencies
+
+- [#952](https://github.com/commercetools/commercetools-docs-kit/pull/952) [`8d47a15`](https://github.com/commercetools/commercetools-docs-kit/commit/8d47a15bbf61c4190c3e5b877f5be3f41ca83450) Thanks [@TimonRey](https://github.com/TimonRey)! - Change height of searchbox field to 58px
+
+## 16.1.0
+
+### Minor Changes
+
+- [#933](https://github.com/commercetools/commercetools-docs-kit/pull/933) [`9aa2f00`](https://github.com/commercetools/commercetools-docs-kit/commit/9aa2f0048cc79f222cdf32ce96701d4138113331) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade uikit packages to v12
+
+### Patch Changes
+
+- [`9c58dd9`](https://github.com/commercetools/commercetools-docs-kit/commit/9c58dd9d509f2d3abd0ef5bf1738cd67e6dd2c02) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies (ref [#927](https://github.com/commercetools/commercetools-docs-kit/pull/927), [#932](https://github.com/commercetools/commercetools-docs-kit/pull/932)).
+
+## 16.0.0
+
+### Patch Changes
+
+- [#923](https://github.com/commercetools/commercetools-docs-kit/pull/923) [`529c35b`](https://github.com/commercetools/commercetools-docs-kit/commit/529c35bd8da4fbcb91d1125cd42f903376cc0627) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+## 15.0.2
+
+### Patch Changes
+
+- [#878](https://github.com/commercetools/commercetools-docs-kit/pull/878) [`f10c62d`](https://github.com/commercetools/commercetools-docs-kit/commit/f10c62d56bcaa99efaa6e9bf753caf76bd9e78e7) Thanks [@TimonRey](https://github.com/TimonRey)! - The searchbox was moved over the index navigation.
+
+* [#915](https://github.com/commercetools/commercetools-docs-kit/pull/915) [`e730e88`](https://github.com/commercetools/commercetools-docs-kit/commit/e730e884428a688919563e912301825eab81acd3) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#913](https://github.com/commercetools/commercetools-docs-kit/pull/913) [`8eb6fb3`](https://github.com/commercetools/commercetools-docs-kit/commit/8eb6fb3eb60b5bd1e110baaed7b46b1febddfa7b) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit dependencies to `11.2.0`
+
+## 15.0.0
+
+### Patch Changes
+
+- [#903](https://github.com/commercetools/commercetools-docs-kit/pull/903) [`3a94401`](https://github.com/commercetools/commercetools-docs-kit/commit/3a94401cdb0aa437448126738878a4b12b7f7381) Thanks [@emmenko](https://github.com/emmenko)! - Format ISO 31-0 number using `react-intl` instead of number format polyfill.
+
+## 14.0.7
+
+### Patch Changes
+
+- [#893](https://github.com/commercetools/commercetools-docs-kit/pull/893) [`cc59270`](https://github.com/commercetools/commercetools-docs-kit/commit/cc59270a892052ff0ec7ae2541794e69d3ae7e5b) Thanks [@emmenko](https://github.com/emmenko)! - Replace `rss-parser` with own custom script, to make it more browser compatible (avoid using Nodejs APIs).
+
+* [#896](https://github.com/commercetools/commercetools-docs-kit/pull/896) [`a093dc5`](https://github.com/commercetools/commercetools-docs-kit/commit/a093dc5dd44416b9bd400243890cd2470be45d35) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#895](https://github.com/commercetools/commercetools-docs-kit/pull/895) [`e3a0164`](https://github.com/commercetools/commercetools-docs-kit/commit/e3a01646f97e226d802d140b66ce1672d94a8c7a) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade `prism-react-renderer` to `1.2.0`.
+
+## 14.0.6
+
+### Patch Changes
+
+- [`4b18472`](https://github.com/commercetools/commercetools-docs-kit/commit/4b184722e3a273303a0240f1d38f88cb0cb19bdd) [#880](https://github.com/commercetools/commercetools-docs-kit/pull/880) Thanks [@nkuehn](https://github.com/nkuehn)! - ISO 31 (international) number formating for constants and API property constraints (narrow nonbreaking space as thousands separator)
+
+* [`09ccdd7`](https://github.com/commercetools/commercetools-docs-kit/commit/09ccdd79b853c9ea892913243647073d14da8e8b) [#881](https://github.com/commercetools/commercetools-docs-kit/pull/881) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade dependencies
+
+## 14.0.4
+
+### Patch Changes
+
+- [`670a475`](https://github.com/commercetools/commercetools-docs-kit/commit/670a47519a873e7f47a15fed5d58edcef9be2ef4) [#858](https://github.com/commercetools/commercetools-docs-kit/pull/858) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`b0dcc19`](https://github.com/commercetools/commercetools-docs-kit/commit/b0dcc1989983043331eb5deb77a6ba40befe51b0) [#866](https://github.com/commercetools/commercetools-docs-kit/pull/866) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit versions to latest
+
+- [`17cdff4`](https://github.com/commercetools/commercetools-docs-kit/commit/17cdff49d6d4ac82ed0bdf65d9df8ecdd20d112a) [#851](https://github.com/commercetools/commercetools-docs-kit/pull/851) Thanks [@TimonRey](https://github.com/TimonRey)! - The back-to-top icon in the index navigation was aligned to the page title.
+
+* [`3a024e8`](https://github.com/commercetools/commercetools-docs-kit/commit/3a024e8f51a12d0030c344a6bcbb38fffdc7abc8) [#853](https://github.com/commercetools/commercetools-docs-kit/pull/853) Thanks [@TimonRey](https://github.com/TimonRey)! - The spacing between title and content on pages without description was removed.
+
+## 14.0.3
+
+### Patch Changes
+
+- [`a318f55`](https://github.com/commercetools/commercetools-docs-kit/commit/a318f55874b57d3eada7b2b460936acc07c3cec9) [#854](https://github.com/commercetools/commercetools-docs-kit/pull/854) Thanks [@emmenko](https://github.com/emmenko)! - Update uikit version range to `10.45.0`
+
+* [`758bf49`](https://github.com/commercetools/commercetools-docs-kit/commit/758bf4993e5811765a6c26a65e9e8dc9d49fb00d) [#852](https://github.com/commercetools/commercetools-docs-kit/pull/852) Thanks [@TimonRey](https://github.com/TimonRey)! - String literals were given an outline for better visibility.
+
+## 14.0.2
+
+### Patch Changes
+
+- [`921c136`](https://github.com/commercetools/commercetools-docs-kit/commit/921c136cc5703fad7f504c5eeab033b22f0bbc1c) [#850](https://github.com/commercetools/commercetools-docs-kit/pull/850) Thanks [@emmenko](https://github.com/emmenko)! - Fix emotion import, update lockfile
+
+* [`11db7cd`](https://github.com/commercetools/commercetools-docs-kit/commit/11db7cd67e367042e35937ed80167e6f57afe257) [#843](https://github.com/commercetools/commercetools-docs-kit/pull/843) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- [`f55a7f7`](https://github.com/commercetools/commercetools-docs-kit/commit/f55a7f7bf7400f631ba7b3621474170bcae002d6) [#834](https://github.com/commercetools/commercetools-docs-kit/pull/834) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+## 14.0.0
+
+### Minor Changes
+
+- [`d435f41`](https://github.com/commercetools/commercetools-docs-kit/commit/d435f414cb6a94ef7c02f1ea907b7ba8cdf294ea) [#813](https://github.com/commercetools/commercetools-docs-kit/pull/813) Thanks [@renovate](https://github.com/apps/renovate)! - Update to gatsby >= `2.30`. See https://www.gatsbyjs.com/docs/reference/release-notes/v2.30/
+
+## 13.0.1
+
+### Patch Changes
+
+- [`90a71dc`](https://github.com/commercetools/commercetools-docs-kit/commit/90a71dca81f1a8286b062066f6fff837c02659d8) [#816](https://github.com/commercetools/commercetools-docs-kit/pull/816) Thanks [@emmenko](https://github.com/emmenko)! - Fix patching lobotomized owl selector for emotion SSR.
+
+## 13.0.0
+
+### Patch Changes
+
+- [`999785f`](https://github.com/commercetools/commercetools-docs-kit/commit/999785f36b916e2cf19e7c6a12f1641dcfc30e7a) [#804](https://github.com/commercetools/commercetools-docs-kit/pull/804) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`a93fb0d`](https://github.com/commercetools/commercetools-docs-kit/commit/a93fb0da261735f9bdfcd38baa15de948072eab7) [#786](https://github.com/commercetools/commercetools-docs-kit/pull/786) Thanks [@TimonRey](https://github.com/TimonRey)! - A new filter for the child section navigator was implemented.
+
+## 12.0.1
+
+### Patch Changes
+
+- [`ea147fa`](https://github.com/commercetools/commercetools-docs-kit/commit/ea147fab4fb63b27144da48cb0f4808bc4683747) [#793](https://github.com/commercetools/commercetools-docs-kit/pull/793) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [`84fcfd2`](https://github.com/commercetools/commercetools-docs-kit/commit/84fcfd2593d392d93d7348f59d683dbfea601d8b) [#794](https://github.com/commercetools/commercetools-docs-kit/pull/794) Thanks [@emmenko](https://github.com/emmenko)! - Fix code block tooltip to explicitly read from emotion theme
+
+## 12.0.0
+
+### Patch Changes
+
+- [`bc0d76f`](https://github.com/commercetools/commercetools-docs-kit/commit/bc0d76f8a23d1a281afd4674c2c429ab27529275) [#756](https://github.com/commercetools/commercetools-docs-kit/pull/756) Thanks [@TimonRey](https://github.com/TimonRey)! - The RssFeed is now one single table which shows the newest release notes of all feeds
+
+## 11.0.2
+
+### Patch Changes
+
+- [`deac3ac`](https://github.com/commercetools/commercetools-docs-kit/commit/deac3ac8372187a5eb3e96a8561eca190373f2cc) [#759](https://github.com/commercetools/commercetools-docs-kit/pull/759) Thanks [@emmenko](https://github.com/emmenko)! - Compile and bundle packages using [preconstruct](https://preconstruct.tools)
+
+* [`e99bf1a`](https://github.com/commercetools/commercetools-docs-kit/commit/e99bf1a6678960ae6a466d387f13f279f2e973c4) [#758](https://github.com/commercetools/commercetools-docs-kit/pull/758) Thanks [@emmenko](https://github.com/emmenko)! - Generate SVG icon components using `@svgr/cli`, to avoid importing SVG files via Babel/Rollup/Webpack.
+
+## 11.0.1
+
+### Patch Changes
+
+- [`b3a3911`](https://github.com/commercetools/commercetools-docs-kit/commit/b3a39119987baf7d9bd58c464ed198c9710cc8bb) [#764](https://github.com/commercetools/commercetools-docs-kit/pull/764) Thanks [@emmenko](https://github.com/emmenko)! - Fix `dist` bundles path
+
+## 11.0.0
+
+### Minor Changes
+
+- [`b868afb`](https://github.com/commercetools/commercetools-docs-kit/commit/b868afb18542efbae1741ce7f34ac0b6cace2041) [#752](https://github.com/commercetools/commercetools-docs-kit/pull/752) Thanks [@renovate](https://github.com/apps/renovate)! - Migrate to emotion v11. https://emotion.sh/docs/emotion-11
+
+  Additionally, some peer dependencies changed:
+
+  - The `@commercetools-docs/gatsby-theme-api-docs` does not require the peer dependencies `@emotion/core`, and `@emotion/styled`, as they are now included in the package's dependencies.
+  - The `@commercetools-docs/gatsby-theme-docs` does not require the peer dependencies `@emotion/core`, and `@emotion/styled`, as they are now included in the package's dependencies.
+  - The `@commercetools-docs/ui-kit` does not require the peer dependencies `@commercetools-uikit/design-system`, `@commercetools-uikit/icons`, `@commercetools-uikit/spacings-inline`, `@emotion/core`, and `@emotion/styled`, as they are now included in the package's dependencies.
+
+### Patch Changes
+
+- [`791d3dc`](https://github.com/commercetools/commercetools-docs-kit/commit/791d3dcecbc5ed4984bf4cef7daa5bee92ad0514) [#743](https://github.com/commercetools/commercetools-docs-kit/pull/743) Thanks [@TimonRey](https://github.com/TimonRey)! - The RssFeed is now one single table which shows the newest release notes of all feeds
+
+* [`b6530d9`](https://github.com/commercetools/commercetools-docs-kit/commit/b6530d9471ffe48f447d643b158afe4e72a0888f) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies https://github.com/commercetools/commercetools-docs-kit/pull/751
+
+## 10.0.2
+
+### Patch Changes
+
+- [`24caa5f`](https://github.com/commercetools/commercetools-docs-kit/commit/24caa5ff2121cfe3a980ef5af74675155965ff2e) [#739](https://github.com/commercetools/commercetools-docs-kit/pull/739) Thanks [@renovate](https://github.com/apps/renovate)! - chore: update dependencies
+
+* [`d292d22`](https://github.com/commercetools/commercetools-docs-kit/commit/d292d22275fd6cf9b316073cfcddb98b7ae055d8) [#748](https://github.com/commercetools/commercetools-docs-kit/pull/748) Thanks [@emmenko](https://github.com/emmenko)! - Use babel transform runtime with corejs v3
+
+## 10.0.1
+
+### Patch Changes
+
+- [`b1190b5`](https://github.com/commercetools/commercetools-docs-kit/commit/b1190b593ce63b2eb3ac4d62f36d7717d35525bf) [#745](https://github.com/commercetools/commercetools-docs-kit/pull/745) Thanks [@emmenko](https://github.com/emmenko)! - It appeared that under some unknown circumstances the `props.theme` accessed from within a styled component results in an empty object when building the website in production mode. To fix that, we explicitly pass wherever possible the `theme` object after reading it from the context with `useTheme`.
+
+## 10.0.0
+
+### Minor Changes
+
+- [`c88565b`](https://github.com/commercetools/commercetools-docs-kit/commit/c88565bb932a872b60614f999d711b82faf718ac) [#727](https://github.com/commercetools/commercetools-docs-kit/pull/727) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react monorepo to v17 (major)
+
+### Patch Changes
+
+- [`a4df2b7`](https://github.com/commercetools/commercetools-docs-kit/commit/a4df2b7e286cdedd8383321273ed1e6fe184bee2) [#729](https://github.com/commercetools/commercetools-docs-kit/pull/729) Thanks [@TimonRey](https://github.com/TimonRey)! - All tables in the body column are now taking the full width
+
+* [`71dfbe4`](https://github.com/commercetools/commercetools-docs-kit/commit/71dfbe4edf48225efeebe350bee0da4684bf60e1) [#724](https://github.com/commercetools/commercetools-docs-kit/pull/724) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update all dependencies
+
+## 9.0.0
+
+### Patch Changes
+
+- [`af0d313`](https://github.com/commercetools/commercetools-docs-kit/commit/af0d313567d94f32b1b397b48df514893e04c1cb) [#692](https://github.com/commercetools/commercetools-docs-kit/pull/692) Thanks [@davifantasia](https://github.com/davifantasia)! - Endpoint design implementation.
+
 ## 8.0.0
 
 ### Patch Changes

@@ -21,8 +21,8 @@ const Container = styled.nav`
   grid-gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     grid-template-columns: 1fr 1fr;
@@ -32,13 +32,25 @@ const Container = styled.nav`
   }
 `;
 
+const PaginationButton = styled(Card)`
+  svg {
+    fill: ${designSystem.colors.light.textPrimary};
+  }
+  :hover {
+    background-color: ${designSystem.colors.light.surfaceQuote};
+    svg {
+      fill: ${designSystem.colors.light.textInfo};
+    }
+  }
+`;
+
 const PaginationButtonLink = styled(Link)`
   text-align: ${(props) => props.align};
   text-decoration: none;
   font-size: ${designSystem.typography.fontSizes.h5};
   color: ${designSystem.colors.light.textPrimary};
 
-  :hover {
+  :hover > ${PaginationButton} {
     background-color: ${designSystem.colors.light.surfaceQuote};
   }
 `;
@@ -49,30 +61,12 @@ PaginationButtonLink.propTypes = {
   align: PropTypes.oneOf(['left', 'right']),
 };
 
-const PaginationButton = styled(Card)`
-  padding: ${designSystem.dimensions.spacings.s} !important;
-
-  svg {
-    * {
-      fill: ${designSystem.colors.light.textPrimary};
-    }
-  }
-  :hover {
-    background-color: ${designSystem.colors.light.surfaceQuote};
-    svg {
-      * {
-        fill: ${designSystem.colors.light.textInfo};
-      }
-    }
-  }
-`;
-
 const PaginationLink = (props) => (
   <PaginationButtonLink
     to={trimTrailingSlash(props.linkTo)}
     align={props.direction === 'left' ? 'right' : 'left'}
   >
-    <PaginationButton>
+    <PaginationButton insetScale="s">
       <SpacingsInline
         scale="m"
         alignItems="center"

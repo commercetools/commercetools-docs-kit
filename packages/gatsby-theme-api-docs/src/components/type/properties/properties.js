@@ -28,6 +28,7 @@ Properties.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.object.isRequired,
+  hideInheritedProperties: PropTypes.bool,
 };
 
 export default Properties;

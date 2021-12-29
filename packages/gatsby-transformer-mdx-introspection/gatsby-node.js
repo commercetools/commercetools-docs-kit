@@ -80,10 +80,9 @@ async function queryChildren(node, context, { filter, sort, deep, first }) {
 
   // Perform query
   const derivedFilter = merge(filter, baseFilter);
-  const result = await context.nodeModel.runQuery({
-    query: { filter: derivedFilter, sort },
+  const result = await context.nodeModel.findOne({
     type: nodeName,
-    firstOnly: first,
+    query: { filter: derivedFilter, sort },
   });
   return result;
 }
@@ -169,7 +168,7 @@ exports.createResolvers = ({ createResolvers, intermediateSchema }) => {
           });
 
           // Apply limit/skip
-          if (result == null) return [];
+          if (result.length === 0) return result;
           if (limit != null) {
             const resolvedSkip = skip == null ? 0 : skip;
             return result.slice(resolvedSkip, resolvedSkip + limit);

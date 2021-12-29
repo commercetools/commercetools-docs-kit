@@ -28,7 +28,7 @@ const BurgerIcon = (props) => (
 BurgerIcon.displayName = 'BurgerIcon';
 BurgerIcon.propTypes = {
   size: PropTypes.number.isRequired,
-  isActive: PropTypes.bool.isRequired,
+  // isActive: PropTypes.bool.isRequired,
 };
 BurgerIcon.defaultProps = {
   size: 24,

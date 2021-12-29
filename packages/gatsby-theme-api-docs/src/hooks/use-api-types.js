@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 // since in gatsby component-level queries have to be static (i.e. cannot dynamically take variables)
 // we have to load a bigger chunk of data statically on a granularity that is OK to provide as an explicit
 // component.
@@ -41,6 +40,7 @@ export const useApiTypes = () => {
               description
               discriminatorValue
               enumeration
+              inherited
               items {
                 type
               }
@@ -67,13 +67,23 @@ export const useApiTypes = () => {
   return queryResult.allRamlType.nodes;
 };
 
+// A static property key based index for fast access in large APIs
+const byKeyAndDisplayNameIndex = {};
+var isIndexed = false;
+const index = (apiTypes) => {
+  if (!isIndexed) {
+    apiTypes.forEach((apiType) => {
+      byKeyAndDisplayNameIndex[apiType.apiKey + '__' + apiType.displayName] =
+        apiType;
+    });
+  }
+  isIndexed = true;
+};
+
 export const useApiTypeByApiKeyAndDisplayName = (
-  apikey = '',
+  apiKey = '',
   apiTypeDisplayName = ''
 ) => {
-  return useApiTypes().find((apiType) => {
-    return (
-      apiType.apiKey === apikey && apiType.displayName === apiTypeDisplayName
-    );
-  });
+  index(useApiTypes());
+  return byKeyAndDisplayNameIndex[apiKey + '__' + apiTypeDisplayName];
 };

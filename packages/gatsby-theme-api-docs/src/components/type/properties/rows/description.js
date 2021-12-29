@@ -1,31 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { Markdown } from '@commercetools-docs/ui-kit';
-import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
+import { css } from '@emotion/react';
+import { Markdown, useISO310NumberFormatter } from '@commercetools-docs/ui-kit';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { colors, dimensions, typography } from '../../../../design-system';
 import extractAdditionalInfo from '../../../../utils/extract-additional-info';
 import capitalizeFirst from '../../../../utils/capitalize-first';
 import { useApiTypeByApiKeyAndDisplayName } from '../../../../hooks/use-api-types';
+import { DescriptionText } from '../../../description';
+import Info from '../../../info';
 
 const customCodeStyle = css`
   border: none;
   background-color: unset;
   padding: 0;
-`;
-
-const Info = styled.span`
-  display: inline-block;
-  border: 1px solid ${colors.light.borderInfo};
-  background-color: ${colors.light.surfaceInfo};
-  padding: ${dimensions.spacings.xxs} ${dimensions.spacings.xs};
-  font-size: ${typography.fontSizes.small};
-`;
-const DescriptionText = styled.span`
-  display: inline-block;
 `;
 
 const ConstantLikeEnumDescription = (props) => {
@@ -47,7 +35,6 @@ const ConstantLikeEnumDescription = (props) => {
   const description =
     (constantDescriptionObject && constantDescriptionObject.description) ||
     props.property.description;
-
   return (
     <SpacingsStack scale="s">
       <div>
@@ -60,12 +47,7 @@ const ConstantLikeEnumDescription = (props) => {
           )}
         </Markdown.InlineCode>
       </div>
-
-      {description && (
-        <DescriptionText>
-          {markdownFragmentToReact(description)}
-        </DescriptionText>
-      )}
+      {description && <DescriptionText markdownString={description} />}
     </SpacingsStack>
   );
 };
@@ -81,6 +63,8 @@ ConstantLikeEnumDescription.propTypes = {
 const InfoValue = (props) => {
   const value = props.children;
   const valueType = typeof value;
+  const formatNumber = useISO310NumberFormatter();
+
   switch (valueType) {
     case 'boolean':
       return value ? (
@@ -88,6 +72,15 @@ const InfoValue = (props) => {
       ) : (
         <>
           : <Markdown.InlineCode css={customCodeStyle}>No</Markdown.InlineCode>
+        </>
+      );
+    case 'number':
+      return (
+        <>
+          :{' '}
+          <Markdown.InlineCode css={customCodeStyle}>
+            {formatNumber(value)}
+          </Markdown.InlineCode>
         </>
       );
     default:
@@ -114,6 +107,7 @@ const AdditionalInfo = (props) => {
             <Info key={index}>
               {capitalizeFirst(info)}
               <InfoValue>{value}</InfoValue>
+              {'\u200B' /* zero-width space for the search crawler */}
             </Info>
           )
         );
@@ -141,9 +135,7 @@ const Description = (props) => {
   const renderEnums = props.property.enumeration && !props.discriminatorValue;
   return (
     <SpacingsStack scale="s">
-      <DescriptionText>
-        {markdownFragmentToReact(props.property.description)}
-      </DescriptionText>
+      <DescriptionText markdownString={props.property.description} />
       <SpacingsInline>
         {renderEnums ? (
           <Info>
@@ -171,6 +163,7 @@ const Description = (props) => {
                 </React.Fragment>
               );
             })}
+            {'\u200B' /* zero-width space for the search crawler */}
           </Info>
         ) : null}
         <AdditionalInfo property={props.property} />

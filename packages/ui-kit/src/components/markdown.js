@@ -1,7 +1,7 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import RibbonIcon from '../icons/ribbon-icon.svg';
+import { RibbonSvgIcon } from '../icons';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import { CodeBlockMarkdownWrapper as CodeBlock } from './multi-code-block';
 
@@ -17,7 +17,7 @@ const H1 = styled.h1`
   font-size: ${typography.fontSizes.h1};
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.15;
-  color: ${(props) => props.theme.colors.light.primary};
+  color: ${(props) => props.theme.websitePrimaryColor};
 
   /* H1 is the page title and used outside the Typography wrappers so it directly has a margin */
   margin: 0 0 ${dimensions.spacings.s};
@@ -124,6 +124,7 @@ const Blockquote = styled.blockquote`
 `;
 
 const Table = styled.table`
+  width: 100%;
   border: 1px solid ${colors.light.borderPrimary};
   border-top: 2px solid ${colors.light.borderPrimary};
   border-collapse: collapse;
@@ -220,7 +221,7 @@ const TableHeader = styled.th`
 
 const InlineCode = styled.code`
   background-color: ${colors.light.surfaceInlineCode};
-  border: 1px solid ${colors.light.surfaceInfo};
+  border: 1px solid ${colors.light.borderSecondary};
   border-radius: ${dimensions.spacings.xs};
   color: ${colors.light.textCode};
   font-family: ${typography.fontFamilies.code};
@@ -244,11 +245,15 @@ const TypographyPage = styled.div`
     margin-top: ${dimensions.spacings.m};
   }
 
-  section > h2 + *,
-  section > h3 + *,
-  section > h4 + *,
-  section > h5 + *,
-  section > h6 + * {
+  section:first-of-type > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  section > ${H2} + *,
+  section > ${H3} + *,
+  section > ${H4} + *,
+  section > ${H5} + *,
+  section > ${H6} + * {
     margin-top: ${dimensions.spacings.s};
   }
 
@@ -310,7 +315,7 @@ const withAnchorLink = (Component) => (props) => {
     >
       <span>{props.children}</span>
       <a href={`#${props.id}`} data-link-type="anchor-link">
-        <RibbonIcon />
+        <RibbonSvgIcon />
       </a>
     </Component>
   );

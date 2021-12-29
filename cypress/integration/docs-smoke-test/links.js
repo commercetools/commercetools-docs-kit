@@ -12,6 +12,59 @@ const scenarios = [
     },
   },
   {
+    title: 'Link pointing to static files',
+    expectationMessage:
+      'It renders a static link to the given file "hello.txt"',
+    linkSelector: () => {
+      // See how to test external domains: https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/testing-dom__tab-handling-links/cypress/integration/tab_handling_anchor_links_spec.js
+      cy.get('a')
+        .eq(1)
+        .contains('Link')
+        .should(
+          'have.prop',
+          'href',
+          `${Cypress.config().baseUrl}${URL_DOCS_SMOKE_TEST}downloads/hello.txt`
+        );
+    },
+    expected: {},
+  },
+  {
+    title: 'Link pointing to static files',
+    expectationMessage:
+      'It renders a static link to the given file "hello.json"',
+    linkSelector: () => {
+      // See how to test external domains: https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/testing-dom__tab-handling-links/cypress/integration/tab_handling_anchor_links_spec.js
+      cy.get('a')
+        .eq(2)
+        .contains('Link')
+        .should(
+          'have.prop',
+          'href',
+          `${
+            Cypress.config().baseUrl
+          }${URL_DOCS_SMOKE_TEST}downloads/hello.json`
+        );
+    },
+    expected: {},
+  },
+  {
+    title: 'Link pointing to static files',
+    expectationMessage:
+      'It renders a static link to the given file "hello.html"',
+    linkSelector: () => {
+      // See how to test external domains: https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/testing-dom__tab-handling-links/cypress/integration/tab_handling_anchor_links_spec.js
+      cy.get('a')
+        .eq(3)
+        .contains('Link')
+        .should(
+          'have.prop',
+          'href',
+          `${Cypress.config().baseUrl}${URL_DOCS_SMOKE_TEST}html/hello.html`
+        );
+    },
+    expected: {},
+  },
+  {
     title: 'Link pointing to a different website',
     expectationMessage:
       'It should work and be an OutboundLink that tracks via google analytics',
@@ -121,7 +174,7 @@ const scenarios = [
   },
   {
     title:
-      'Link to a page of another internal site using a full url (recommended)',
+      'Link to a page of another internal site using a full URL (recommended)',
     expectationMessage:
       'It should be a normal html link (only in `production` mode)',
     linkSelector: () => {
@@ -159,7 +212,9 @@ describe('Links', () => {
     cy.visit(linksPageUrl);
   });
   scenarios.forEach((scenario) => {
+    // eslint-disable-next-line jest/valid-title
     describe(scenario.title, () => {
+      // eslint-disable-next-line jest/valid-title
       it(scenario.expectationMessage, () => {
         cy.findAllByText(scenario.title)
           .first()

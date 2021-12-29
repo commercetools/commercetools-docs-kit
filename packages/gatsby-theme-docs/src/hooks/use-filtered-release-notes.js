@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { parseIsoDate } from '@commercetools-docs/ui-kit';
 import { useLocation } from '@reach/router';
 import { decode } from 'qss';
 
@@ -17,17 +17,14 @@ const useFilteredReleaseNotes = (releaseNotesNodes) => {
     let foundTopicInFilter = true;
 
     if (queryParams.fromFilterDate) {
-      releaseNoteDateIsSameOrAfterFromFilterDate = moment(
-        releaseNote.date,
-        'D MMMM YYYY'
-      ).isSameOrAfter(moment(queryParams.fromFilterDate, 'YYYY-MM-DD'));
+      releaseNoteDateIsSameOrAfterFromFilterDate =
+        new Date(releaseNote.isoDate) >=
+        parseIsoDate(queryParams.fromFilterDate);
     }
 
     if (queryParams.toFilterDate) {
-      releaseNoteDateIsSameOrBeforeToFilterDate = moment(
-        releaseNote.date,
-        'D MMMM YYYY'
-      ).isSameOrBefore(moment(queryParams.toFilterDate, 'YYYY-MM-DD'));
+      releaseNoteDateIsSameOrBeforeToFilterDate =
+        new Date(releaseNote.isoDate) <= parseIsoDate(queryParams.toFilterDate);
     }
 
     if (queryParams.filterTopics && Array.isArray(queryParams.filterTopics)) {

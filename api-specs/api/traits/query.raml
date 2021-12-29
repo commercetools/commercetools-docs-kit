@@ -1,0 +1,16 @@
+#%RAML 1.0 Trait
+
+queryParameters:
+  where:
+    type: QueryPredicate[]
+    required: false
+    example: [<<whereExample>>]
+  /^var[.][a-zA-Z0-9]+$/:
+    type: string[]
+    required: false
+    (placeholderParam):
+      paramName: predicateVar
+      template: var.<varName>
+      placeholder: varName
+    description: |-
+      [Predicate parameter](/../api/predicates/query#input-variables) values.

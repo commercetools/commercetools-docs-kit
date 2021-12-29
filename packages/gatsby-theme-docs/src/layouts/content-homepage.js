@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { ContentPagination } from '../components';
@@ -14,6 +15,7 @@ import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
 const LayoutContentHomepage = (props) => {
+  const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
 
@@ -22,21 +24,25 @@ const LayoutContentHomepage = (props) => {
       <LayoutSidebar
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
+        {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
         isGlobalBeta={props.pageData.isGlobalBeta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
       <LayoutMain
+        {...layoutState.topMenu}
         preventScroll={
           layoutState.topMenu.isTopMenuOpen ||
           layoutState.sidebar.isSidebarMenuOpen
         }
       >
         <LayoutHeader
+          ref={ref}
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+          allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
         <LayoutPageWrapper>
           <LayoutPageWithHero
@@ -71,6 +77,7 @@ LayoutContentHomepage.propTypes = {
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
+    allowWideContentLayout: PropTypes.bool.isRequired,
   }).isRequired,
   heroBackground: PropTypes.shape({
     publicURL: PropTypes.string.isRequired,

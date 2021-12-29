@@ -15,17 +15,18 @@ const reorderFields = (obj, fields) => {
 const extractAdditionalInfo = (property) => {
   let additionalInfo = JSON.parse(JSON.stringify(property));
   const mainInfo = [
-    'name',
-    'description',
-    'type',
+    'beta',
     'builtinType',
-    'originalType',
-    'enumeration',
     'constant',
+    'description',
+    'enumeration',
+    'inherited',
     'items',
     'library',
+    'name',
+    'originalType',
     'required',
-    'beta',
+    'type',
   ];
 
   mainInfo.forEach((field) => {

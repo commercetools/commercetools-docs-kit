@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import styled from '@emotion/styled';
 import PageNavigation from './page-navigation';
 
@@ -113,13 +113,13 @@ describe('rendering', () => {
     const props = createTestProps();
     const rendered = renderApp(<PageNavigation {...props} />);
 
-    expect(rendered.queryByText('Link 1')).toBeInTheDocument();
-    expect(rendered.queryByText('Link 2')).toBeInTheDocument();
-    expect(rendered.queryByText('Link 2/1')).toBeInTheDocument();
-    expect(rendered.queryByText('Link 2/1/1')).toBeInTheDocument();
-    expect(rendered.queryByText('Link 3')).toBeInTheDocument();
+    expect(rendered.getByText('Link 1')).toBeInTheDocument();
+    expect(rendered.getByText('Link 2')).toBeInTheDocument();
+    expect(rendered.getByText('Link 2/1')).toBeInTheDocument();
+    expect(rendered.getByText('Link 2/1/1')).toBeInTheDocument();
+    expect(rendered.getByText('Link 3')).toBeInTheDocument();
     expect(rendered.queryByText('Link 3/1')).not.toBeInTheDocument();
-    expect(rendered.queryByText('Link 3/1/1')).toBeInTheDocument();
+    expect(rendered.getByText('Link 3/1/1')).toBeInTheDocument();
 
     expect(rendered.queryByRole(/^active-(.*)/)).not.toBeInTheDocument();
 
@@ -134,21 +134,24 @@ describe('rendering', () => {
 
     hrefIds.forEach((hrefId) => {
       applySectionElementsMocks(
+        // eslint-disable-next-line testing-library/no-node-access
         rendered.container.querySelectorAll('section[class^="section-h"]'),
         (el) => el.id === `section-${hrefId}`
       );
-      fireEvent.scroll(document.querySelector('[role="application"]'), {
+
+      fireEvent.scroll(screen.getByRole('application'), {
         // It does not matter how much we scroll since we control the `getBoundingClientRect`
         target: { scrollY: 1 },
       });
       jest.runAllTimers();
       expect(
+        // eslint-disable-next-line testing-library/no-node-access
         rendered.container.querySelector('[aria-current=true]')
       ).toHaveAttribute('href', `#${hrefId}`);
     });
 
     expect(
-      rendered.queryByText('Missing heading for level 2')
+      rendered.getByText('Missing heading for level 2')
     ).toBeInTheDocument();
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining(

@@ -53,14 +53,14 @@ describe('parameters-to-array.js', () => {
       {
         name: 'limit',
         required: false,
-        type: 'integer',
-        builtinType: 'integer',
+        type: 'Int',
+        builtinType: 'Int',
       },
       {
         name: 'height',
         required: false,
-        type: 'float',
-        builtinType: 'float',
+        type: 'Float',
+        builtinType: 'Float',
       },
     ];
 

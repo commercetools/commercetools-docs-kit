@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const doRecursion = require('./utils/type/do-recursion');
-const sortProperties = require('./utils/type/sort-properties');
+const sortProperties = require('./utils/sort-properties');
 const resolveConflictingFieldTypes = require('./utils/type/resolve-conflicting-field-types');
 const generateType = require('./utils/type/generate-type');
 const generateBuiltinType = require('./utils/type/generate-built-in-type');
@@ -14,15 +14,15 @@ function createTypeNode({
   createNodeId,
   createParentChildLink,
   createContentDigest,
-  movePropertiesToTop,
-  movePropertiesToBottom,
+  moveTypePropertiesToTop,
+  moveTypePropertiesToBottom,
 }) {
   const postProcessedType = postProcessType({
     apiKey,
     type,
     fileNode,
-    movePropertiesToTop,
-    movePropertiesToBottom,
+    moveTypePropertiesToTop,
+    moveTypePropertiesToBottom,
   });
 
   const typeNode = {
@@ -45,16 +45,16 @@ function postProcessType({
   apiKey,
   type,
   fileNode,
-  movePropertiesToTop,
-  movePropertiesToBottom,
+  moveTypePropertiesToTop,
+  moveTypePropertiesToBottom,
 }) {
   const postProcessedType = doRecursion(type);
 
   postProcessedType.apiKey = apiKey;
   postProcessedType.properties = processProperties({
     properties: postProcessedType.properties,
-    movePropertiesToTop,
-    movePropertiesToBottom,
+    moveTypePropertiesToTop,
+    moveTypePropertiesToBottom,
   });
   postProcessedType.examples = examplesToArrays(
     postProcessedType.examples,
@@ -69,8 +69,8 @@ function postProcessType({
 
 function processProperties({
   properties,
-  movePropertiesToTop,
-  movePropertiesToBottom,
+  moveTypePropertiesToTop,
+  moveTypePropertiesToBottom,
 }) {
   let propertiesArray;
 
@@ -81,8 +81,8 @@ function processProperties({
     );
     propertiesArray = sortProperties({
       properties: propertiesArray,
-      moveToTop: movePropertiesToTop,
-      moveToBottom: movePropertiesToBottom,
+      moveToTop: moveTypePropertiesToTop,
+      moveToBottom: moveTypePropertiesToBottom,
     });
 
     propertiesArray = propertiesArray.map((property) => {

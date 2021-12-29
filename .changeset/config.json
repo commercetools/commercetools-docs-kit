@@ -8,14 +8,8 @@
   ],
   "commit": false,
   "linked": [
-    [
-      "@commercetools-docs/gatsby-theme-api-docs",
-      "@commercetools-docs/gatsby-theme-code-examples",
-      "@commercetools-docs/gatsby-theme-constants",
-      "@commercetools-docs/gatsby-theme-docs",
-      "@commercetools-docs/ui-kit"
-    ]
+    ["@commercetools-docs/gatsby-theme-*", "@commercetools-docs/ui-kit"]
   ],
   "access": "restricted",
-  "baseBranch": "master"
+  "baseBranch": "main"
 }

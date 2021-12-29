@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -19,25 +20,27 @@ const releaseNoteMarkdownComponents = {
 };
 
 const ReleaseNotesDetailTemplate = (props) => (
-  <ThemeProvider>
-    <LayoutReleaseNotesDetail pageData={props.data.releaseNotePage}>
-      <MDXProvider components={releaseNoteMarkdownComponents}>
-        <Markdown.TypographyPage>
-          <SEO
-            title={props.data.releaseNotePage.title}
-            excludeFromSearchIndex={
-              props.data.releaseNotePage.excludeFromSearchIndex
-            }
-          />
-          <div>
-            <LayoutReleaseNoteBody {...props.data.releaseNotePage}>
-              <MDXRenderer>{props.data.releaseNotePage.body}</MDXRenderer>
-            </LayoutReleaseNoteBody>
-          </div>
-        </Markdown.TypographyPage>
-      </MDXProvider>
-    </LayoutReleaseNotesDetail>
-  </ThemeProvider>
+  <IntlProvider locale="en">
+    <ThemeProvider>
+      <LayoutReleaseNotesDetail pageData={props.data.releaseNotePage}>
+        <MDXProvider components={releaseNoteMarkdownComponents}>
+          <Markdown.TypographyPage>
+            <SEO
+              title={props.data.releaseNotePage.title}
+              excludeFromSearchIndex={
+                props.data.releaseNotePage.excludeFromSearchIndex
+              }
+            />
+            <div>
+              <LayoutReleaseNoteBody {...props.data.releaseNotePage}>
+                <MDXRenderer>{props.data.releaseNotePage.body}</MDXRenderer>
+              </LayoutReleaseNoteBody>
+            </div>
+          </Markdown.TypographyPage>
+        </MDXProvider>
+      </LayoutReleaseNotesDetail>
+    </ThemeProvider>
+  </IntlProvider>
 );
 
 ReleaseNotesDetailTemplate.propTypes = {

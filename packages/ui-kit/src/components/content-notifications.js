@@ -89,12 +89,10 @@ const ContentNotification = (props) => {
 };
 ContentNotification.propTypes = {
   type: PropTypes.oneOf(['error', 'warning', 'info']).isRequired,
-  showBeta: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 ContentNotification.defaultProps = {
   type: 'info',
-  showBeta: false,
 };
 
 const Info = (props) => <ContentNotification {...props} type="info" />;
