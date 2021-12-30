@@ -3,6 +3,41 @@ title: Theme Extensions
 beta: false
 ---
 
+## Using Theme Color Presets
+
+A color preset is what identifies a website or a group or content-related websites.
+
+A preset usually includes a:
+
+- **primary color**: the color that visually identifies the website. It will be applied to heading H1 elements and the website title in the left navigation.
+- **hero banner**: a background image with certain visual patterns to be used in the website's landing page. The banner should have the same or similar colors to the primary color.
+
+Here is the list of the available presets:
+
+- `base`
+- `merchantCenterDeveloperDocs`
+- `merchantCenterUserDocs`
+- `platformDeveloperDocs`
+
+### Usage
+
+In your `gatsby-config.js`:
+
+```js
+const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
+
+module.exports = {
+  // ... other site config
+  plugins: [
+    ...configureThemeWithAddOns({
+      // ... other theme config
+      colorPreset: colorPresets.platformDeveloperDocs.key,
+    }),
+  ],
+};
+```
+
+
 ## Using Theme with Add-Ons
 
 A theme add-on is a Gatsby Theme that exposes React components to be injected into the MDX provider of the core theme.
@@ -38,9 +73,66 @@ module.exports = {
 };
 ```
 
-### Theme Overrides
+## Theme Overrides
 
-The theme allows to inject custom functionalities to specific parts of it. [Read here](/configuration/overrides) for more information.
+Overrides files using [Gatsby theme shadowing](https://www.gatsbyjs.org/docs/themes/shadowing/), to inject functionalities to specific parts of the theme.
+
+### Usage
+
+To use this feature, the website must mimic the folder structure of the Gatsby theme and list the files in the `overrides` folder that should be overridden.
+
+```
+src
+└── @commercetools-docs
+    └── gatsby-theme-docs
+        └── overrides
+            ├── markdown-components.js
+            ├── page-header-side.js
+            └── use-additional-site-data.js
+```
+
+> Note that Gatsby shadowing works with any file in the theme. However, the theme provides an explicit stable extension point that is the `overrides` folder. Users of the theme should use this extension point only instead of relying on theme-internal file system paths that can potentially change any time.
+
+### Available overrides
+
+- `markdown-components`: allows to pass React components to be injected in the content pages.
+
+  ```jsx
+  import MyCustomComponent from '../../../components/my-custom-component';
+
+  const markdownComponents = {
+    MyCustomComponent,
+  };
+  export default markdownComponents;
+  ```
+
+  With this, in the `*.mdx` content pages the `<MyCustomComponent>` is available to use.
+
+- `page-header-side`: allows to render something in the top-right corner of a content page. Any valid React component should be _default_ exported.
+
+- `use-additional-site-data`: allows to return custom site metadata using React hooks. The data is merged with the default `siteMetadata` of the Gatsby theme and can be accessed using the `useSiteData` hook.
+
+  ```js
+  import { useStaticQuery, graphql } from 'gatsby';
+
+  // This website defines the `repositoryUrl` value in the `siteMetadata` config.
+  // Therefore, we query those extra values and return them.
+  const useAdditionalSiteData = () => {
+    const data = useStaticQuery(graphql`
+      query GetAdditionalSiteData {
+        site {
+          siteMetadata {
+            repositoryUrl
+          }
+        }
+      }
+    `);
+
+    return data.site.siteMetadata;
+  };
+  export default useAdditionalSiteData;
+  ```
+
 
 ### Helpful Components & Functions
 
