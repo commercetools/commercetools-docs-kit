@@ -25,6 +25,6 @@
   "dependencies": {
     "7zip-bin": "5.1.1",
     "node-fetch": "2.6.6",
-    "shelljs": "0.8.4"
+    "shelljs": "0.8.5"
   }
 }
