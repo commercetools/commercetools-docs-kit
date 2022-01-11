@@ -56,7 +56,7 @@
     - title: RSS
       path: /configuration/rss
     - title: Deploy
-      path: /configuraition/deploy
+      path: /configuration/deploy
     - title: Troubleshooting
       path: /configuration/troubleshooting
 - chapter-title: Developing
