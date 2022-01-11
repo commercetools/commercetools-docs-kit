@@ -68,8 +68,11 @@ const Ol = styled.ol`
   }
 `;
 const Dl = styled.dl`
-  > dd + * {
-    margin: ${dimensions.spacings.m} 0 0;
+  > * + dt {
+    margin: ${dimensions.spacings.s} 0 0;
+  }
+  > * + dd {
+    margin: ${dimensions.spacings.xs} 0 0;
   }
 `;
 const Dt = styled.dt`
@@ -95,7 +98,7 @@ const Dd = styled.dd`
   padding: 0 0 0 ${dimensions.spacings.l};
 
   > * + * {
-    margin: ${dimensions.spacings.m} 0 0;
+    margin: ${dimensions.spacings.s} 0;
   }
 `;
 
