@@ -16,7 +16,7 @@
   "dependencies": {
     "@commercetools-docs/ui-kit": "18.0.1",
     "gatsby-transformer-yaml": "4.4.0",
-    "prop-types": "15.7.2"
+    "prop-types": "15.8.1"
   },
   "devDependencies": {
     "gatsby": "4.4.0",
