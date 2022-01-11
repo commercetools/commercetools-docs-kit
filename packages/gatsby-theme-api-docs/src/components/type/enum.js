@@ -20,7 +20,9 @@ const Enum = ({ values, enumDescriptions }) => {
 
           return (
             <React.Fragment key={value}>
-              <Markdown.Dt>{value}</Markdown.Dt>
+              <Markdown.Dt>
+                <Markdown.InlineCode>{value}</Markdown.InlineCode>
+              </Markdown.Dt>
               {enumDescription && enumDescription.description && (
                 <Markdown.Dd>
                   <DescriptionText
