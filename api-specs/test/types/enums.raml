@@ -47,8 +47,12 @@ types:
     description: Enum with agreed upon description annotation.
     type: string
     (annotations.enumDescriptions):
-      enumValue1: description 1
-      enumValue2: description 2
+      enumValue1: Description 1
+      enumValue2: |
+        Description 2 with a line break (first line)
+        Second line.
+
+        New paragraph.
       enumWithMarkdownDescription: |
         `inline-code` should be formatted as an inline code. [ObjectTestType](/types/general#objecttesttype) should link to the header of the definition of `ObjectTestType` on this website - `api-docs-smoke-test`. [Links](/../docs-smoke-test/views/markdown#links) should link to the header for the definition of  `Links` on `docs-smoke-test` microsite.
     enum:
