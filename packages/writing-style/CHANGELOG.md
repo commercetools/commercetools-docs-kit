@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.0.9
+
+### Patch Changes
+
+- [#1182](https://github.com/commercetools/commercetools-docs-kit/pull/1182) [`a540653f`](https://github.com/commercetools/commercetools-docs-kit/commit/a540653f85e3b396a1b5a937997bd54aaa8fb772) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
 ## 3.0.8
 
 ### Patch Changes
