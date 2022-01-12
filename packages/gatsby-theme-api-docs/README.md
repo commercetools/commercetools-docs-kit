@@ -47,7 +47,7 @@ module.exports = {
 
 ### Generating the required canonical RAML form
 
-Use the [**@commercetools-docs/rmf-codegen**](../rmf-codegen) `RAML_DOC` target output to generate RAML API specifications in the canonical file layout required by this plugin. It does an (any valid) RAML to (canonical flattened) RAML conversion allowing the gatsbyJS plugin to handle the RAML literally without parsing or resolving.
+Use the [**@commercetools/rmf-codegen**](https://github.com/commercetools/rmf-codegen#rmf-codegen) `RAML_DOC` target output to generate RAML API specifications in the canonical file layout required by this plugin. It does an (any valid) RAML to (canonical flattened) RAML conversion allowing the gatsbyJS plugin to handle the RAML literally without parsing or resolving.
 
 Example call:
 
