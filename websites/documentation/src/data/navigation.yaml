@@ -27,6 +27,8 @@
       path: /writing/release-notes
     - title: Data constants # the constants feature
       path: /writing/constants
+    - title: Sample Page # a sample page
+      path: /writing/sample
 - chapter-title: API Documentation
   pages:
     - title: Add RAML Specs # rmf-codegen/RAMLDOC, filesystem convention, links to specs and resourcess
