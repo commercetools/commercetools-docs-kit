@@ -13,7 +13,7 @@
     "postbuild": "rm -rf ../../public/documentation && mkdir -p ../../public && mv public ../../public/documentation"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "18.0.1",
+    "@commercetools-docs/gatsby-theme-docs": "18.1.0",
     "gatsby": "4.4.0",
     "gatsby-cli": "4.4.0",
     "react": "17.0.2",
