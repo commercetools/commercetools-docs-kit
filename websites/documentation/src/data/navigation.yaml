@@ -65,5 +65,9 @@
       path: /developing/getting-started
     - title: Write an extension
       path: /developing/extensions
+    - title: Contributing
+      path: /developing/contributing
+    - title: Code of Conduct
+      path: /developing/code-of-conduct
     - title: Tests
       path: /developing/tests
