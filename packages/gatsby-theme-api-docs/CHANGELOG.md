@@ -1,5 +1,23 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 18.1.0
+
+### Minor Changes
+
+- [#1187](https://github.com/commercetools/commercetools-docs-kit/pull/1187) [`6609ee62`](https://github.com/commercetools/commercetools-docs-kit/commit/6609ee62bd6964b1c50b0042e9880d9433852bc4) Thanks [@nkuehn](https://github.com/nkuehn)! - Render enum values as string literal code formatting
+
+* [#1177](https://github.com/commercetools/commercetools-docs-kit/pull/1177) [`4a4ed7b3`](https://github.com/commercetools/commercetools-docs-kit/commit/4a4ed7b35f0082fcc0aeac7f558cf22cace0190b) Thanks [@timonrey](https://github.com/timonrey)! - Format query parameters with regex pattern like for the regex property types.
+
+### Patch Changes
+
+- [#1182](https://github.com/commercetools/commercetools-docs-kit/pull/1182) [`a540653f`](https://github.com/commercetools/commercetools-docs-kit/commit/a540653f85e3b396a1b5a937997bd54aaa8fb772) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+* [#1178](https://github.com/commercetools/commercetools-docs-kit/pull/1178) [`c3e43bb4`](https://github.com/commercetools/commercetools-docs-kit/commit/c3e43bb46941ebc4805e0a70f5043a34346b7053) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+* Updated dependencies [[`a540653f`](https://github.com/commercetools/commercetools-docs-kit/commit/a540653f85e3b396a1b5a937997bd54aaa8fb772)]:
+  - @commercetools-docs/gatsby-transformer-mdx-introspection@15.0.1
+  - @commercetools-docs/ui-kit@18.1.0
+
 ## 18.0.1
 
 ### Patch Changes
