@@ -57,13 +57,14 @@ Please don't forget to frequently update the package to get the latest styles.
 
 ### Usage in the VSCode vale plugin
 
-The [vscode-vale plugin](https://marketplace.visualstudio.com/items?itemName=testthedocs.vale) is always passing a `--config` parameter even if none is configured, so you have to separately configure the binary and the config location as follows, for example in a workspace configuration file:
+The [vale plugin](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) is always passing a `--config` parameter even if none is configured, so you have to separately configure the binary and the config location as follows, for example in a workspace configuration file:
 
 ```json
 {
   "settings": {
-    "vscode-vale.path": "${workspaceFolder}/node_modules/.bin/commercetools-vale-bin",
-    "vscode-vale.configPath": "${workspaceFolder}/node_modules/@commercetools-docs/writing-style/.vale.ini"
+    "vale.core.useCLI": true,
+    "vale.valeCLI.path": "${workspaceFolder}/node_modules/.bin/commercetools-vale-bin",
+    "vale.valeCLI.config": "${workspaceFolder}/node_modules/@commercetools-docs/writing-style/.vale.ini",
   }
 }
 ```
