@@ -65,9 +65,5 @@
       path: /developing/getting-started
     - title: Write an extension
       path: /developing/extensions
-    - title: Contributing
-      path: https://github.com/commercetools/commercetools-docs-kit/blob/main/CONTRIBUTING.md
-    - title: Code of Conduct
-      path: https://github.com/commercetools/commercetools-docs-kit/blob/main/CODE_OF_CONDUCT.md
     - title: Tests
       path: /developing/tests
