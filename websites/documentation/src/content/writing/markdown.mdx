@@ -106,12 +106,6 @@ Add a blank line to introduce paragraph breaks.
 
 This is how a paragraph break is rendered.
 
-<Warning>
-
-_Nikolaus - The next line is being rendered below code sample. Similarly for other instances where empty line is introduced._
-
-</Warning>
-
 </SideBySide>
 
 ## Line break
@@ -127,14 +121,6 @@ Add a `\` at the end of a sentence to introduce a line break.\
 This is how a line break is rendered.
 
 </SideBySide>
-
-<Warning>
-
-_Writers - Find out where the `\` doesn't work and put an info box wherever it doesn't work._
-
-- `\` does not work in RAML descriptions. It causes the build to break.
-
-</Warning>
 
 ## Bulleted list
 
@@ -342,12 +328,6 @@ a code block
 
 Links are rendered differently based on the target.
 
-<Warning>
-
-_Writers - This lists all the edge cases, but check if they can be filtered down to the ideal use cases_
-
-</Warning>
-
 - **Link to a different website:**
 
   <SideBySide>
@@ -363,12 +343,6 @@ _Writers - This lists all the edge cases, but check if they can be filtered down
   </SideBySide>
 
 - **Link to an empty string:**
-
-  <Warning>
-
-  _Writers - What is the use case for this? Should this be documented?_
-
-  </Warning>
 
   <SideBySide>
 
@@ -411,10 +385,6 @@ _Writers - This lists all the edge cases, but check if they can be filtered down
   </SideBySide>
 
 - **Link to another page on this site, but using an absolute URL:**
-
-  <Warning>
-  Double check this link.
-  </Warning>
 
   <SideBySide>
 
@@ -500,10 +470,6 @@ _Writers - This lists all the edge cases, but check if they can be filtered down
 
 - **Link to a page of another internal site using a full URL (recommended):**
 
-  <Warning>
-  Double check this link.
-  </Warning>
-
   <SideBySide>
 
   ```md
@@ -518,10 +484,6 @@ _Writers - This lists all the edge cases, but check if they can be filtered down
 
 - **Link to a page of another internal site:**
 
-  <Warning>
-  Double check this link.
-  </Warning>
-
   <SideBySide>
 
   ```md
@@ -535,10 +497,6 @@ _Writers - This lists all the edge cases, but check if they can be filtered down
   </SideBySide>
 
 - **Link to static files:**
-
-  <Warning>
-  Double check this link.
-  </Warning>
 
   <SideBySide>
 
@@ -570,12 +528,6 @@ The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-e
 The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-expected-usage"/>
 
 ## Anchor with children links
-
-<Warning>
-
-_Writers - I do not understand this function clearly. How different is it from the above?_
-
-</Warning>
 
 [This link jumps to the anchored line.](#any-html-id-compatible-string-with-children)
 
@@ -614,19 +566,7 @@ _Writers - I do not understand this function clearly. How different is it from t
 
 # Cards
 
-<Warning>
-
-_Writers - Check links/image path when migrated._
-
-</Warning>
-
 A card, by default, is flat and of regular width. Two regular cards and three narrow cards can be stacked side by side (except in mobile viewports) in microsite landing pages. You can also use a narrow card of reduced width by passing `narrow` in the syntax. It is also possible to make these cards clickable by passing `clickable` in the syntax.
-
-<Warning>
-
-_Writers - What are the use cases. Use cases to be documented in templates too._
-
-</Warning>
 
 - Flat - _Use case_
 - Clickable - _Use case_
@@ -636,11 +576,6 @@ _Writers - What are the use cases. Use cases to be documented in templates too._
 The following properties can be used to define the content within the card:
 
 - `fitContentColumn` (boolean): automatically set to cards on landing pages. However, it is rendered differently for cards used in content pages.
-  <Warning>
-
-  _Writers / Nikolaus - What does this parameter do exactly? The current information doesn't say much as to what it does._
-
-  </Warning>
 
 - `title` (string): use to set a title for a card, no Markdown allowed.(Does "no markdown" mean that formatting isn't applicable?)
   - `smallTitle` (boolean): use to reduce and set a smaller font size to card titles.
@@ -672,12 +607,6 @@ This is an example of a set of cards with no properties defined. It is flat and 
 ### Cards with a list in the body
 
 It is also possible to have a list in the body of the card. Lists are usually used in flat cards as you can provide multiple target links for multiple list entries, which is not the case for [clickable cards](#clickable-card) that have only one target link.
-
-<Warning>
-
-_Writers - Is the above paragraph right?_
-
-</Warning>
 
 ```jsx
 <Cards>
@@ -751,23 +680,9 @@ They have one card-level target link (href) and no other links in the content. T
     textLink="Read more about navigation">In a clickable card, the complete card is a clickable target.</Card>
 </Cards>
 
-<Warning>
-
-_Writers - What is the use of the link text if the card and link text have the same target link?_
-
-</Warning>
-
 ## Cards with an image
 
 Images are not supported for free-form in-content cards, but only in places that are fully designed and implemented by developers. An image is sized into the width of the card.
-
-<Warning>
-
-_Writers / Nikolaus_
-  - _What does the above information mean?_
-  - _Why aren't images/icons not rendered? Am I missing something?_
-
-</Warning>
 
 ### Flat card
 
