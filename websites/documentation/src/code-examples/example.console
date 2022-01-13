@@ -1,0 +1,6 @@
+cd project
+cp -R \
+  dist \
+  public/
+rm -rf dist
+yarn start

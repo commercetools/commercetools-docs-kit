@@ -30,7 +30,7 @@ module.exports = (themeOptions = {}) => {
     siteMetadata: {
       author: 'commercetools',
       productionHostname,
-      betaLink: null,
+      betaLink: '.',
     },
     plugins: [
       /**

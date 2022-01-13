@@ -2920,6 +2920,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@commercetools-website/documentation@workspace:websites/documentation":
+  version: 0.0.0-use.local
+  resolution: "@commercetools-website/documentation@workspace:websites/documentation"
+  dependencies:
+    "@commercetools-docs/gatsby-theme-docs": 18.1.0
+    gatsby: 4.4.0
+    gatsby-cli: 4.4.0
+    react: 17.0.2
+    react-dom: 17.0.2
+  languageName: unknown
+  linkType: soft
+
 "@commercetools-website/site-template@workspace:websites/site-template":
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"

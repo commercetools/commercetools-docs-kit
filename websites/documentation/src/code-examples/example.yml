@@ -1,0 +1,10 @@
+- title: Menu
+  pages:
+    - title: Home
+      path: /home
+    - title: About
+      path: /about
+    - title: Products
+      path: /products
+    - title: Contact
+      path: /contact

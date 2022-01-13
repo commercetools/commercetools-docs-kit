@@ -1,0 +1,75 @@
+- chapter-title: Getting Started
+  pages:
+    - title: Install a site # prerequisites, checking out a repo, VSCode workspace, yarn install
+      path: /getting-started/install
+    - title: Start the Preview # how to start and stop the dev server in watch mode, how to run a local full build
+      path: /getting-started/preview
+    - title: Troubleshooting
+      path: /getting-started/troubleshooting
+- chapter-title: Writing Content
+  pages:
+    - title: Pages # filesystem convention, frontmatter, wide layouts
+      path: /writing/pages
+    - title:
+        Markdown & MDX # side-by side comparisons of MDX and the resulting output,
+        # plus our custom tags like info, side-by-side, cards, RSS feeds etc
+        # plus HTML that we styled but that does not have markdown (maybe only the definition list)
+      path: /writing/markdown
+    - title: Images # markdown, titles annotations, filesystem convention (could be part of markdown)
+      path: /writing/images
+    - title: Navigation # top nav, side nav, child section nav
+      path: /writing/navigation
+    - title: Code # markdown code examples, code examples in files, multilanguage examples
+      path: /writing/code
+    - title: Reusable content fragments # import syntax for MDX fragments, file layout
+      path: /writing/import-content
+    - title: Release notes # all about release notes & the generator script
+      path: /writing/release-notes
+    - title: Data constants # the constants feature
+      path: /writing/constants
+    - title: Sample Page # a sample page
+      path: /writing/sample
+- chapter-title: API Documentation
+  pages:
+    - title: Add RAML Specs # rmf-codegen/RAMLDOC, filesystem convention, links to specs and resourcess
+      path: /api-docs/raml
+    - title: API Endpoints
+      path: /api-docs/endpoints
+    - title: API Data Types
+      path: /api-docs/types
+    - title: Examples # examples in JSON files, example validation, multiple named examples
+      path: /api-docs/examples
+- chapter-title: Configuration
+  pages:
+    - title: Create a site
+      path: /configuration/setup
+    - title: Theme Extensions
+      path: /configuration/extensions
+    - title: Plugins
+      path: /configuration/plugins
+    - title: Packages
+      path: /configuration/packages
+    - title: Custom Components
+      path: /configuration/components
+    - title: Override Components
+      path: /configuration/overrides
+    - title: API Documentation
+      path: /configuration/api
+    - title: RSS
+      path: /configuration/rss
+    - title: Deploy
+      path: /configuration/deploy
+    - title: Troubleshooting
+      path: /configuration/troubleshooting
+- chapter-title: Developing
+  pages:
+    - title: Get Started Developing
+      path: /developing/getting-started
+    - title: Write an extension
+      path: /developing/extensions
+    - title: Contributing
+      path: /developing/contributing
+    - title: Code of Conduct
+      path: /developing/code-of-conduct
+    - title: Tests
+      path: /developing/tests

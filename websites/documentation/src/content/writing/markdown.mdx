@@ -1,0 +1,855 @@
+---
+title: Markdown & MDX
+wideLayout: true
+navLevels: 2
+---
+
+# Titles and headings
+
+All content pages start with a title, followed by the subtitle and content. The title is defined using the `title` key in the frontmatter of the MDX file, followed by the subtitle, defined using the `<Subtitle>` tag.
+
+```md
+---
+title: Title of the page
+---
+
+<Subtitle>
+
+Short sentence with the main use case and benefits of the feature.
+
+</Subtitle>
+
+# Headers
+
+You can use standard Markdown syntax for headings.
+
+The first line of content is closely bound to the heading with a smaller margin. Heading levels 1,2, and 3 appear in the right-hand index navigation by default, which helps readers understand the page's content without reading or scrolling through them.
+
+# Level 1 heading
+
+They have the biggest font than other headings, and bound to the left margin of the page.
+
+## Level 2 heading
+
+They have a smaller font than the level 1 headings, and are also bound to the left margin of the page.
+
+### Level 3 heading
+
+They have the smallest font compared to the other headings, and are slightly indented to th right from the left margin of the page.
+
+#### Level 4 heading
+
+Any headings after level 3 are rendered and aligned the same as level 3 headings, but do not appear on the right-hand index navigation as level 3 headings.
+```
+
+The rendered page can be seen [here](/writing/sample).
+
+<Warning>
+Avoid using links, code formatting, or any other style in headings.
+</Warning>
+
+# Text formatting
+
+You can use standard Markdown syntax for formatting text.
+
+- <SideBySide>
+
+  **Bold text**
+
+  ```
+  **Bold text**
+  ```
+
+  </SideBySide>
+
+- <SideBySide>
+
+  _Italicized text_
+
+  ```
+  _Italicized text_
+  ```
+
+  </SideBySide>
+
+- <SideBySide>
+
+  _**Bold and italicized text**_
+
+  ```
+  _**Bold and italicized text**_
+  ```
+
+  </SideBySide>
+
+- <SideBySide>
+
+  `Monospaced text`
+
+  ```
+  `Monospaced text`
+  ```
+
+  </SideBySide>
+
+## Paragraph break
+
+<SideBySide>
+
+```md
+Add a blank line to introduce paragraph breaks.
+
+This is how a paragraph break is rendered.
+```
+
+Add a blank line to introduce paragraph breaks.
+
+This is how a paragraph break is rendered.
+
+</SideBySide>
+
+## Line break
+
+<SideBySide>
+
+```md
+Add a `\` at the end of a sentence to introduce a line break.\
+This is how a line break is rendered.
+```
+
+Add a `\` at the end of a sentence to introduce a line break.\
+This is how a line break is rendered.
+
+</SideBySide>
+
+## Bulleted list
+
+<SideBySide>
+
+```md
+Use bulleted lists to list items that have no particular order or sequence.
+- Item 1
+  - Sub-item 1
+- Item 2
+```
+
+Use bulleted lists to list items that have no particular order or sequence.
+- Item 1
+  - Sub-item 1
+- Item 2
+
+</SideBySide>
+
+## Numbered list
+
+<SideBySide>
+
+```md
+Use numbered lists to list items that follow a particular order or sequence.
+1. Step 1
+2. Step 2
+```
+
+Use numbered lists to list items that follow a particular order or sequence.
+1. Step 1
+2. Step 2
+
+</SideBySide>
+
+## Tables
+
+We strongly prefer bulleted lists to tables for consistency, visual styling, and Markdown formatting reasons.
+
+<SideBySide>
+
+```md
+| Column A | Column B | Column C |
+| -------- | -------- | -------- |
+| A1       | B1       | C1       |
+| A2       | B2       | C2       |
+| A3       | B3       | C3       |
+```
+
+| Column A | Column B | Column C |
+| -------- | -------- | -------- |
+| A1       | B1       | C1       |
+| A2       | B2       | C2       |
+| A3       | B3       | C3       |
+
+</SideBySide>
+
+# Special mentions
+
+Special mentions are limited to Info or Warning boxes in our documentation. Place them (before or after a sentence) in relevance to the context being discussed for better clarity. Limit the usage of notices, to where necessary, to avoid reducing its effectiveness in emphasizing important information.
+
+- **Info box**
+
+  <Info>
+
+  An Info box is used to:
+
+  - emphasize points or reminders.
+  - point out exceptions from the standard behavior described in the respective section.
+  - indicate possible side effects that are not obvious or expected in the first place.
+
+  </Info>
+
+- **Warning box**
+
+  <Warning>
+
+  A Warning box is used to warn users about the possibility of issues or data loss.
+
+  </Warning>
+
+When using Markdown syntax within, leave an empty line between the content and element tags for the formatting to render.
+
+**Multiple paragraphs:**
+
+<SideBySide>
+
+```md
+<Info>
+
+Paragraph A
+
+Paragraph B
+
+</Info>
+```
+
+<Info>
+
+Paragraph A
+
+Paragraph B
+
+</Info>
+
+</SideBySide>
+
+**Bulleted list:**
+
+<SideBySide>
+
+```md
+<Info>
+
+- Item A
+- Item B
+
+</Info>
+```
+
+<Info>
+
+- Item A
+- Item B
+
+</Info>
+
+</SideBySide>
+
+**Ordered list:**
+
+<SideBySide>
+
+```md
+<Info>
+
+1. Item A
+2. Item B
+
+</Info>
+```
+
+<Info>
+
+1. Item A
+2. Item B
+
+</Info>
+
+</SideBySide>
+
+**Code block:**
+
+<SideBySide>
+
+~~~md
+<Info>
+
+```
+a code block
+```
+
+</Info>
+~~~
+
+<Info>
+
+```md
+a code block
+```
+
+</Info>
+
+</SideBySide>
+
+**Table:**
+
+<SideBySide>
+
+```md
+<Info>
+
+| Column A | Column B | Column C |
+| -------- | -------- | -------- |
+| A1       | B1       | C1       |
+| A2       | B2       | C2       |
+| A3       | B3       | C3       |
+
+</Info>
+```
+
+<Info>
+
+| Column A | Column B | Column C |
+| -------- | -------- | -------- |
+| A1       | B1       | C1       |
+| A2       | B2       | C2       |
+| A3       | B3       | C3       |
+
+</Info>
+
+</SideBySide>
+
+# Links
+
+Links are rendered differently based on the target.
+
+- **Link to a different website:**
+
+  <SideBySide>
+
+  ```md
+  [Link](https://commercetools.com)
+  ```
+
+  | Link | Type            | Outcome                                         |
+  | ---- | --------------- | ----------------------------------------------- |
+  | [Link](https://commercetools.com) | `external-link` | Outbound link that tracks via Google Analytics. |
+
+  </SideBySide>
+
+- **Link to an empty string:**
+
+  <SideBySide>
+
+  ```md
+  [Link]()
+  ```
+
+  | Link | Type          | Outcome                      |
+  | ---- | ------------- | ---------------------------- |
+  | [Link]() | `gatsby-link` | Empty link to the same page. |
+
+  </SideBySide>
+
+- **Link to a heading anchor on the same page:**
+
+  <SideBySide>
+
+  ```md
+  [Link](#links)
+  ```
+
+  | Link | Type          | Outcome                                                     |
+  | ---- | ------------- | ----------------------------------------------------------- |
+  | [Link](#links) | `anchor-link` | Jumps to that position without visible scrolling or reload. |
+
+  </SideBySide>
+
+- **Link to a heading anchor on the same page, but using the full path:**
+
+  <SideBySide>
+
+  ```md
+  [Link](/writing/markdown#links)
+  ```
+
+  | Link | Type          | Outcome                                                     |
+  | ---- | ------------- | ----------------------------------------------------------- |
+  | [Link](/writing/markdown#links) | `anchor-link` | Jumps to that position without visible scrolling or reload. |
+
+  </SideBySide>
+
+- **Link to another page on this site, but using a full path:**
+
+  <SideBySide>
+
+  ```md
+  [Link](/writing/pages)
+  ```
+
+  | Link | Type          | Outcome                          |
+  | ---- | ------------- | -------------------------------- |
+  | [Link](/writing/pages) | `gatsby-link` | Gatsby link, history navigation. |
+
+  </SideBySide>
+
+- **Link to another page on this site with a specific anchor to a page on this site:**
+
+  <SideBySide>
+
+  ```md
+  [Link](/#links)
+  ```
+
+  | Link | Type          | Outcome                                                                             |
+  | ---- | ------------- | ----------------------------------------------------------------------------------- |
+  | [Link](/#links) | `gatsby-link` | Gatsby link, history navigation, and directly jumps to the anchor element position. |
+
+  </SideBySide>
+
+- **Link to another page on this site using a relative upwards traversal path:**
+
+  <SideBySide>
+
+  ```md
+  [Link](../writing/navigation)
+  ```
+
+  | Link | Type          | Outcome                                              |
+  | ---- | ------------- | ---------------------------------------------------- |
+  | [Link](../writing/navigation) | `gatsby-link` | Gatsby link, history navigation, to a parent folder. |
+
+  </SideBySide>
+
+- **Link to a sub-page of this one (omitting the trailing slash):**
+
+  <SideBySide>
+
+  ```md
+  [Link](nested/link-target)
+  ```
+
+  | Link | Type          | Outcome                                           |
+  | ---- | ------------- | ------------------------------------------------- |
+  | [Link](nested/link-target) | `gatsby-link` | Gatsby link, history navigation, to a sub folder. |
+
+  </SideBySide>
+
+- **Link to a sub-page of this one (including the trailing slash):**
+
+  <SideBySide>
+
+  ```md
+  [Link](nested/link-target/)
+  ```
+
+  | Link | Type          | Outcome                                           |
+  | ---- | ------------- | ------------------------------------------------- |
+  | [Link](nested/link-target/) | `gatsby-link` | Gatsby link, history navigation, to a sub folder. |
+
+  </SideBySide>
+
+- **Link to a page of another internal site using a full URL (recommended):**
+
+  <SideBySide>
+
+  ```md
+  [Link](https://docs.commercetools.com/site-template)
+  ```
+
+  | Link | Type            | Outcome                                      |
+  | ---- | --------------- | -------------------------------------------- |
+  | [Link](https://docs.commercetools.com/site-template) | `internal-link` | Regular HTML link (only in production mode). |
+
+  </SideBySide>
+
+- **Link to a page of another internal site:**
+
+  <SideBySide>
+
+  ```md
+  [Link](/../site-template/)
+  ```
+
+  | Link | Type            | Outcome                                      |
+  | ---- | --------------- | -------------------------------------------- |
+  | [Link](/../site-template/) | `internal-link` | Regular HTML link (only in production mode). |
+
+  </SideBySide>
+
+- **Link to static files:**
+
+  <SideBySide>
+
+  ```md
+  [Link](/downloads/hello.txt)
+  [Link](/downloads/hello.json)
+  [Link](/html/hello.html)
+  ```
+
+  | Link | Type          | Outcome                                                                                |
+  | ---- | ------------- | -------------------------------------------------------------------------------------- |
+  | [Link](/downloads/hello.txt) | `static-link` | Regular HTML link pointing to the hello.txt page                                       |
+  | [Link](/downloads/hello.json) | `static-link` | Regular HTML link pointing to the hello.json page                                      |
+  | [Link](/html/hello.html) | `static-link` | Regular HTML link pointing to the hello.html page (HTML pages do not work in dev mode) |
+
+  </SideBySide>
+
+# Custom anchors
+
+## Anchor in a line
+
+```md
+[This link jumps to the anchored line.](#any-html-id-compatible-string-expected-usage)
+
+The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-expected-usage" />
+```
+[This link jumps to the anchored line.](#any-html-id-compatible-string-expected-usage)
+
+The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-expected-usage"/>
+
+## Anchor with children links
+
+[This link jumps to the anchored line.](#any-html-id-compatible-string-with-children)
+
+<Anchor name="any-html-id-compatible-string-with-children" >No text is allowed here.</Anchor>
+
+```md
+<Anchor name="any-html-id-compatible-string-with-children" >
+  No text is allowed here.
+</Anchor>
+```
+
+## Anchor in a title
+
+```md
+[This link jumps to the anchored title.](#any-html-id-compatible-string-in-a-title)
+
+### The anchor is placed in this title <Anchor name="any-html-id-compatible-string-in-a-title" />
+```
+
+[This link jumps to the anchored title.](#any-html-id-compatible-string-in-a-title)
+
+### The anchor is placed in this title <Anchor name="any-html-id-compatible-string-in-a-title" />
+
+## Anchor in a list
+
+```md
+[This link jumps to the anchored item in the list.](#any-html-id-compatible-string-in-a-list)
+- Item 1 <Anchor name="any-html-id-compatible-string-in-a-list" />
+- Item 2
+```
+
+[This link jumps to the anchored item in the list.](#any-html-id-compatible-string-in-a-list)
+
+- Item 1 <Anchor name="any-html-id-compatible-string-in-a-list" />
+- Item 2
+
+# Cards
+
+A card, by default, is flat and of regular width. Two regular cards and three narrow cards can be stacked side by side (except in mobile viewports) in microsite landing pages. You can also use a narrow card of reduced width by passing `narrow` in the syntax. It is also possible to make these cards clickable by passing `clickable` in the syntax.
+
+- Flat - _Use case_
+- Clickable - _Use case_
+- Regular - _Use case_
+- Narrow - _Use case_
+
+The following properties can be used to define the content within the card:
+
+- `fitContentColumn` (boolean): automatically set to cards on landing pages. However, it is rendered differently for cards used in content pages.
+
+- `title` (string): use to set a title for a card, no Markdown allowed.(Does "no markdown" mean that formatting isn't applicable?)
+  - `smallTitle` (boolean): use to reduce and set a smaller font size to card titles.
+- `textLink` (string): use to set the bottom link text. If not set, the bottom link is not rendered at all.
+- `href` (string): use to set the target of the bottom link and whole card (if `clickable` is set). If `clickable` or `textLink` isn't set, `href` has no effect.
+- `icon` (component): use to reserve a 48x48px space for an icon in the card.
+- `image` (component): use to reserve a `define pixels` space for an image in the card.
+
+## Cards with no properties defined
+
+This is an example of a set of cards with no properties defined. It is flat and of regular width as the parameters `clickable` and `narrow` are not defined. It only contains the body as `title` is not defined.
+
+```jsx
+<Cards>
+  <Card>Card A</Card>
+  <Card>Card B</Card>
+  <Card>Card C</Card>
+  <Card>Card D</Card>
+</Cards>
+```
+
+<Cards>
+  <Card>Card A</Card>
+  <Card>Card B</Card>
+  <Card>Card C</Card>
+  <Card>Card D</Card>
+</Cards>
+
+### Cards with a list in the body
+
+It is also possible to have a list in the body of the card. Lists are usually used in flat cards as you can provide multiple target links for multiple list entries, which is not the case for [clickable cards](#clickable-card) that have only one target link.
+
+```jsx
+<Cards>
+  <Card title="Card with bullet list">
+    - Item 1 - Item 2 - Sub-item 1 - Item 3
+  </Card>
+</Cards>
+```
+
+<Cards>
+<Card title="Card with bullet list">
+
+- Item 1
+- Item 2
+  - Sub-item 1
+- Item 3
+
+</Card>
+</Cards>
+
+## Cards with a link
+
+### Flat card
+
+```jsx
+<Cards>
+  <Card
+    title="Title of the card"
+    href="/writing/navigation"
+    textLink="Read more about navigation"
+  >
+    In a flat card, only the target link is clickable.
+  </Card>
+</Cards>
+```
+
+<Cards>
+  <Card
+    title="Title of the card"
+    href="/writing/navigation"
+    textLink="Read more about navigation"
+  >
+    In a flat card, only the target link is clickable.
+  </Card>
+</Cards>
+
+### Clickable card
+
+<Info>
+Clickable cards must have a href set.
+</Info>
+
+They have one card-level target link (href) and no other links in the content. The target link (href) can be repeated as a link at the bottom by setting a card link label.
+
+```jsx
+<Cards clickable>
+  <Card
+    title="Title of the card"
+    href="/writing/navigation"
+    textLink="Read more about navigation"
+  >
+    In a clickable card, the complete card is a clickable target.
+  </Card>
+</Cards>
+```
+
+<Cards clickable>
+  <Card
+    title="Title of the card"
+    href="/writing/navigation"
+    textLink="Read more about navigation">In a clickable card, the complete card is a clickable target.</Card>
+</Cards>
+
+## Cards with an image
+
+Images are not supported for free-form in-content cards, but only in places that are fully designed and implemented by developers. An image is sized into the width of the card.
+
+### Flat card
+
+```jsx
+<Cards>
+<Card
+  title="Title of the card"
+  image={<CardBannerOSSIcon />}
+>
+  Flat card with an image
+</Card>
+</Cards>
+```
+
+<Cards>
+<Card
+  title="Title of the card"
+  image={<CardBannerOSSIcon />}
+>
+  Flat card with an image
+</Card>
+</Cards>
+
+### Clickable card
+
+```jsx
+<Cards clickable>
+  <Card
+    title="Title of the card"
+    href="/writing/navigation"
+    image={<CardBannerMcDevsIcon />}
+  >
+    Clickable card with an image
+  </Card>
+</Cards>
+```
+
+<Cards clickable>
+  <Card
+    title="Title of the card"
+    href="/writing/navigation"
+    image={<CardBannerMcDevsIcon />}>
+    Clickable card with an image
+  </Card>
+</Cards>
+
+## Cards with an icon
+
+<Info>
+
+Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story/components-icons--all-icons) are supported. They fit in a 48x48px square aligned at the top or left of a card.
+
+</Info>
+
+### Flat card
+
+```jsx
+<Cards>
+  <Card
+    title="Title of the card"
+    icon={<DummyIcon />}
+    href="/writing/navigation"
+    textLink="Read more about images"
+  >
+    Icons in regular cards are aligned to the top regardless of whether they are
+    clickable or flat.
+  </Card>
+</Cards>
+```
+
+<Cards>
+  <Card
+    title="Title of the card"
+    icon={<DummyIcon />}
+    href="/writing/navigation"
+    textLink="Read more about images">
+    Icons in regular cards are aligned to the top regardless of whether they are clickable or flat.
+  </Card>
+</Cards>
+
+### Clickable card
+
+```jsx
+<Cards narrow clickable>
+  <Card
+    title="Title of the card"
+    href="/writing/navigation"
+    textLink="Read more about images"
+    icon={<DummyIcon />}
+  >
+    Icons in narrow cards are aligned to the left regardless of whether they are
+    clickable or flat.
+  </Card>
+</Cards>
+```
+
+<Cards narrow clickable>
+  <Card
+    title="Title of the card"
+    href="/writing/navigation"
+    textLink="Read more about images"
+    icon={<DummyIcon />}>
+    Icons in narrow cards are aligned to the left regardless of whether they are clickable or flat.
+  </Card>
+</Cards>
+
+## Cards with an image and icon
+
+### Regular card
+
+```jsx
+<Cards>
+  <Card
+    image={<CardBannerMcDocsIcon />}
+    icon={<DummyIcon />}
+  >
+    Regular card with an image and icon
+  </Card>
+</Cards>
+```
+
+<Cards>
+  <Card
+    image={<CardBannerMcDocsIcon />}
+    icon={<DummyIcon />}
+  >
+    Regular card with an image and icon
+  </Card>
+</Cards>
+
+### Narrow card
+
+```jsx
+<Cards narrow>
+  <Card
+    image={<CardBannerPlatformIcon />}
+    icon={<DummyIcon />}
+  >
+    Narrow card with an image and icon
+  </Card>
+</Cards>
+```
+
+<Cards narrow>
+  <Card
+    image={<CardBannerPlatformIcon />}
+    icon={<DummyIcon />}
+  >
+    Narrow card with an image and icon
+  </Card>
+</Cards>
+
+# RSS feed
+
+RSS feed is an online file that notifies users of our latest content updates.
+
+<Info>
+RSS feeds are only generated in production builds.
+</Info>
+
+## Table with one feed
+
+<SideBySide>
+
+```
+<RssFeeds dataSources={[
+"/docs-smoke-test/releases/feed.xml"
+]}/>
+```
+
+</SideBySide>
+
+## Table with multiple feeds
+
+<SideBySide>
+
+```
+<RssFeeds dataSources={[
+"/docs-smoke-test/releases/feed.xml",
+"/api-docs-smoke-test/releases/feed.xml"
+]}/>
+```
+
+</SideBySide>
