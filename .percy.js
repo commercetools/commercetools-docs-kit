@@ -2,18 +2,18 @@ module.exports = {
   version: 2,
   static: {
     include: [
-      /(.*)\/components\/(.*)\.html/,
-      /(.*)\/endpoints\/(.*)\.html/,
-      /(.*)\/layouts\/(.*)\.html/,
-      /(.*)\/releases\/index\.html/,
-      /(.*)\/types\/(.*)\.html/,
-      /(.*)\/views\/markdown\/(.*)\.html/,
-      /(.*)\/views\/beta\/(.*)\.html/,
+      /(.*-smoke-test.*)\/components\/(.*)\.html/,
+      /(.*-smoke-test.*)\/endpoints\/(.*)\.html/,
+      /(.*-smoke-test.*)\/layouts\/(.*)\.html/,
+      /(.*-smoke-test.*)\/releases\/index\.html/,
+      /(.*-smoke-test.*)\/types\/(.*)\.html/,
+      /(.*-smoke-test.*)\/views\/markdown\/(.*)\.html/,
+      /(.*-smoke-test.*)\/views\/beta\/(.*)\.html/,
     ],
     exclude: ['site-template/*'],
     overrides: [
       {
-        include: /(.*)\/components\/rss-feeds\/index\.html/,
+        include: /(.*-smoke-test.*)\/components\/rss-feeds\/index\.html/,
         waitForSelector: 'table[data-table-name="rss-feed"]',
       },
     ],
