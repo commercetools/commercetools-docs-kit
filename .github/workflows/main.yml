@@ -74,6 +74,10 @@ jobs:
           # vercel-args: '--prod'  # TODO only of on main branch
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+          alias-domains: | #Optional
+            docs-kit-sha-${{ github.sha }}-commercetools.vercel.app
+            docs-kit-pr-{{PR_NUMBER}}-commercetools.vercel.app
+            docs-kit-branch-{{BRANCH}}-commercetools.vercel.app
 
       - name: Update Deployment Status
         uses: bobheadxi/deployments@v0.6.2
