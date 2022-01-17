@@ -1,9 +1,11 @@
 name: Main workflow
 
 # The event triggers are configured as following:
-# - on branch main, trigger the workflow on every push
+# - on branch main, trigger the workflow on every push to trigger production checks and deployment
 # - on any pull request, trigger the workflow
 # This is to avoid running the workflow twice on pull requests.
+
+# TODO separate production and PR deployments (e.g. main does not need to run the tests after build and deployment)
 on:
   push:
     branches:
@@ -35,9 +37,9 @@ jobs:
           path: |
             .cache
             public
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-build-
 
       - name: Set custom Yarn cache path
         run: yarn config set cacheFolder .cache/yarn
@@ -54,9 +56,42 @@ jobs:
         env:
           ENABLE_SEARCH: 'true'
 
+      - name: start deployment
+        uses: bobheadxi/deployments@v0.6
+        id: start-deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: ${{ github.ref_name }}
+
+      - name: deploy to Vercel
+        id: deploy-to-vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-project-name: commercetools-docs-kit
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # vercel-args: '--prod'  # TODO only of on main branch
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+          working-directory: ./public
+
+      - name: update deployment status
+        uses: bobheadxi/deployments@v0.6
+        id: finish_deployment
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env_url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
+          deployment_id: ${{ steps.start-deployment.outputs.deployment_id }}
+
+      # TODO move this into a separate workflow that holds the static checks only? They can run independently of builds
       - name: Lint text files
         run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
 
+      # Tests run after deployment to make sure a preview URL is available for every build
+      # TODO maybe just stop the job here when on the main branch?
       - name: Running Visual Regression Tests
         run: yarn percy snapshot ./public
         env:
