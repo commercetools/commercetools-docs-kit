@@ -33,12 +33,12 @@ const extractAdditionalInfo = (property) => {
   let sortedList = Object.entries(additionalInfo);
 
   tagIdentifier.forEach((tag) => {
-    sortedList = sortedList.reduce((list, item) => {
+    sortedList.forEach((item) => {
       if (item[0].includes(tag)) {
-        return [item, ...list];
+        sortedList.unshift(item);
       }
-      return [...list, item];
-    }, []);
+      sortedList.push(item);
+    });
   });
 
   let sortedAdditionalInfo = {};
