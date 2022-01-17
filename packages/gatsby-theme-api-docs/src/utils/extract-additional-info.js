@@ -1,17 +1,3 @@
-const reorderFields = (obj, fields) => {
-  const returnedObject = { ...obj };
-
-  fields.forEach((field) => {
-    const fieldToOrder = returnedObject[field];
-    if (fieldToOrder) {
-      delete returnedObject[field];
-      returnedObject[field] = fieldToOrder;
-    }
-  });
-
-  return returnedObject;
-};
-
 const extractAdditionalInfo = (property) => {
   let additionalInfo = JSON.parse(JSON.stringify(property));
   const mainInfo = [
@@ -43,9 +29,24 @@ const extractAdditionalInfo = (property) => {
       delete additionalInfo[key];
   });
 
-  additionalInfo = reorderFields(additionalInfo, ['default']);
+  const tagIdentifier = ['max', 'min', 'default'];
+  let sortedList = Object.entries(additionalInfo);
 
-  return additionalInfo;
+  tagIdentifier.forEach((tag) => {
+    sortedList = sortedList.reduce((list, item) => {
+      if (item[0].includes(tag)) {
+        return [item, ...list];
+      }
+      return [...list, item];
+    }, []);
+  });
+
+  let sortedAdditionalInfo = {};
+  sortedList.forEach((item) => {
+    sortedAdditionalInfo[item[0]] = item[1];
+  });
+
+  return sortedAdditionalInfo;
 };
 
 export default extractAdditionalInfo;
