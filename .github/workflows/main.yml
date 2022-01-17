@@ -22,13 +22,13 @@ jobs:
       # avoid warnings like "tput: No value for $TERM and no -T specified"
       TERM: xterm
       # default to being a preview deployment
-      DEPLOY_ENV: preview
+      DEPLOY_ENV: Preview
       VERCEL_ARGS: ''
 
     steps:
       - name: Determine Deploy Environment
         if: ${{ env.GITHUB_REF_NAME == 'main' }}
-        run: echo "DEPLOY_ENV=production" >> $GITHUB_ENV && echo "VERCEL_ARGS=--prod" >> $GITHUB_ENV
+        run: echo "DEPLOY_ENV=Production" >> $GITHUB_ENV && echo "VERCEL_ARGS=--prod" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v2
