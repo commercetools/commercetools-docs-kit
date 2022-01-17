@@ -38,8 +38,6 @@ jobs:
             .cache
             public
           key: ${{ runner.os }}-build-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
 
       - name: Set custom Yarn cache path
         run: yarn config set cacheFolder .cache/yarn
@@ -73,11 +71,13 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # vercel-args: '--prod'  # TODO only of on main branch
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+          scope: commercetools
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-          alias-domains: | #Optional
-            docs-kit-sha-${{ github.sha }}-commercetools.vercel.app
-            docs-kit-pr-{{PR_NUMBER}}-commercetools.vercel.app
-            docs-kit-branch-{{BRANCH}}-commercetools.vercel.app
+          # there are length restrictions to domains and only *.commercetools.vercel.app works
+          # reliably for generated subdomains. No branch name domain because branch names can be long.
+          alias-domains: |
+            docskit-sha-${{ github.sha }}.commercetools.vercel.app
+            docskit-pr-{{PR_NUMBER}}.commercetools.vercel.app
 
       - name: Update Deployment Status
         uses: bobheadxi/deployments@v0.6.2
