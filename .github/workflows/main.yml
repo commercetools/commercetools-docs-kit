@@ -71,6 +71,7 @@ jobs:
           step: start
           token: ${{ secrets.GITHUB_TOKEN }}
           env: ${{ env.DEPLOY_ENV }}
+          ref: ${{ github.head_ref }}
 
       - name: Deploy to Vercel
         id: deploy-to-vercel
