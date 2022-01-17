@@ -56,7 +56,7 @@ jobs:
         env:
           ENABLE_SEARCH: 'true'
 
-      - name: start deployment
+      - name: Initialize Deployment
         uses: bobheadxi/deployments@v0.6.2
         id: start-deployment
         with:
@@ -64,7 +64,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           env: ${{ github.ref_name }}
 
-      - name: deploy to Vercel
+      - name: Deploy to Vercel
         id: deploy-to-vercel
         uses: amondnet/vercel-action@v20
         with:
@@ -74,9 +74,8 @@ jobs:
           # vercel-args: '--prod'  # TODO only of on main branch
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-          working-directory: ./public
 
-      - name: update deployment status
+      - name: Update Deployment Status
         uses: bobheadxi/deployments@v0.6.2
         id: finish_deployment
         with:

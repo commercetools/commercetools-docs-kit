@@ -1,0 +1,6 @@
+# https://vercel.com/guides/prevent-uploading-sourcepaths-with-vercelignore
+# Ignore everything (folders and files) on root only
+/*
+!api
+!public
+!vercel.json
