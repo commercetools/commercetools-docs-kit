@@ -1,0 +1,25 @@
+---
+title: Navigation
+---
+
+# Top navigation
+
+The top navigation entries can be modified in `packages/gatsby-theme-docs/src/data/top-menu.yaml`.
+
+# Side navigation
+
+The left-hand navigation allows you to navigate different pages in the microsite, while the right-hand navigation allows you to navigate within a page. You can organize the pages shown in the left-hand navigation in `/src/data/navigation.yaml`.
+
+# Child section navigation
+
+As the name suggests, it is a navigator within a section that is used to shorten the right-hand navigation. It condenses headings (from level 3 to 6) and displays them within this section, rather than the right-hand navigation. Hierarchy can be represented by adding additional `#`.
+
+This is the syntax `<ChildSectionsNav parent="a-section-slug" />` to add the navigation.
+
+`<ChildSectionsNav parent="child-section-example" />` is rendered as [shown here](/writing/sample#child-section-example).
+
+At commercetools, we typically use the child section navigation in _Representations_ and _Update Actions_ of resource pages. As the list can be long in some cases, use `navLevels` and set to `2` in the frontmatter of the MDX file. This displays only upto level 2 headings in the right-hand index navigation of the page.
+
+<Warning>
+Adding the flag removes all level 3 headings in a page from the right-hand index navigation.
+</Warning>

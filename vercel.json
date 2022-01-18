@@ -1,8 +1,9 @@
 {
   "version": 2,
   "public": true,
-  "name": "commercetools-docs-kit",
-  "alias": "commercetools-docs-kit",
+  "github": {
+    "enabled": false
+  },
   "routes": [
     {
       "src": "/(.*)",
@@ -15,7 +16,7 @@
       "src": "/",
       "status": 302,
       "headers": {
-        "Location": "/docs-smoke-test/"
+        "Location": "/documentation/"
       }
     },
     {

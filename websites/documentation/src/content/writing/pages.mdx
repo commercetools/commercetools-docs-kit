@@ -1,0 +1,80 @@
+---
+title: Pages
+wideLayout: true
+---
+
+You can find the respective files of all content pages in `src/content`. All new pages must be created as MDX files in this directory. MDX allows you to use JSX in your Markdown content, in addition to standard Markdown syntax.
+
+The page URL corresponds to the file system path by default. For example, an MDX file in `src/content/getting-started/installation.mdx` will render a page in `docs.commercetools.com/getting-started/installation`.
+
+You can freely organize pages according to the website structure in `src/data/navigation.yaml`.
+
+# Markdown frontmatter
+
+All content pages must contain some metadata enclosed within the `---` lines in the frontmatter section. The frontmatter section is a leading section of a file that allows you to add key-value pairs that define the properties of a content page.
+
+```mdx
+---
+title: The title of this page
+---
+
+This is the actual page content.
+```
+
+We support the following key-value pairs in the frontmatter section:
+
+- `title` (string): use (mandatorily) to define the title of a page. It can have the same value as the title in `src/data/navigation.yaml`, or longer.
+- `beta` (boolean): use to indicate if <Beta /> should be displayed for an entire page.
+
+  <Info>
+
+  You can use <Beta /> in other places of a file apart from the frontmatter section. For more information, see [Beta section](/writing/sample#beta-section-).
+
+  </Info>
+
+- `excludeFromSearchIndex` (boolean): use to exclude a page from being indexed by web crawlers. This option effectively sets the `robots="noindex"` meta attribute.
+
+  <Warning>
+
+  This doesn't work with Algolia's Docsearch crawler currently.
+
+  </Warning>
+
+- `navLevels` (number): use to reduce the depth of right-hand index navigation for pages where it could get too long to fit all headings in the screen. In addition the [Child section navigation](/writing/navigation#child-section-navigation) helps you to keep the index navigation short.
+
+- `wideLayout` (boolean)<Anchor name="wide-layout" />: use to make a page responsive and compatible for large viewport sizes. When used, the page can go into a two-column content space. For more information, see `<SideBySide>` [component](#side-by-side).
+
+# JSX components
+
+As mentioned earlier, it is possible to render JSX components within MDX files. The components must be added as XML tags, like HTML elements. For example:
+
+```mdx
+<Subtitle>
+
+Content inside the component.
+
+</Subtitle>
+```
+
+<Info>
+
+When using JSX components, it's recommended to leave a **blank line** between the element tags and content. This allows the content to be parsed as Markdown, so you can use Markdown syntax within the custom component tags.
+
+</Info>
+
+You can use the following JSX components:
+
+- `<Subtitle>`: use to provide a brief information about the page besides the title. For more information, see [Titles and headings](/writing/markdown#titles-and-headings).
+- `<Info>`: use to add any additional information.
+- `<Warning>`: use to add a warning message.
+- `<Error>`: use to add an error message.
+- `<Anchor>`: use to insert a custom anchor on any part of the document such as lists, paragraphs, etc. You can navigate to specific parts of the document (that are not headings) using anchor links. It is also useful when a document has multiple headings with the same text, or when heading names change and old third-party links continue to work. For more information, see [Custom anchors](/writing/markdown#custom-anchors).
+
+  <Info>
+
+  You cannot override ID generation of the site generator. It adds additional named anchors and IDs have precedence.
+
+  </Info>
+
+- `<ChildSectionsNav parent="a-section-slug" />`: use to add a table of contents containing links to all subsections of the given parent. For more information, see [Child section navigation](/writing/navigation#child-section-navigation).
+- `<SideBySide>`<Anchor name="side-by-side" />: use to wrap two content blocks side by side on wide viewport sizes. This feature is enabled by configuring the `allowWideContentLayout` theme option or `wideLayout` [frontmatter option](#wide-layout).

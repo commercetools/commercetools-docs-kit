@@ -1,0 +1,10 @@
+# https://vercel.com/guides/prevent-uploading-sourcepaths-with-vercelignore
+# Ignore everything (folders and files) on root only
+/*
+!api
+!public
+!vercel.json
+
+# temporarily upload files for installation to get the vercel side to work with the
+# old project config. Remove once all branches are up to date with deploying from GH actions.
+!package.json
