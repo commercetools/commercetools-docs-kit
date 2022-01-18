@@ -23,9 +23,12 @@ jobs:
       DEPLOY_ENV: Preview
 
     steps:
+      - uses: hmarr/debug-action@v2
+
       - name: Detect Production Deploy
-        if: ${{ env.GITHUB_REF_NAME == 'main' }}
-        run: echo "DEPLOY_ENV=Production" >> $GITHUB_ENV
+        if: github.event_name == 'push' && github.head_ref == 'main'
+        run: |
+          echo "DEPLOY_ENV=Production" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v2
