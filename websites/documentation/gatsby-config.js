@@ -19,10 +19,7 @@ module.exports = {
       excludeFromSearchIndex: true,
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
       allowWideContentLayout: true,
-      addOns: [
-        '@commercetools-docs/gatsby-theme-code-examples',
-        '@commercetools-docs/gatsby-theme-constants',
-      ],
+      addOns: ['@commercetools-docs/gatsby-theme-code-examples'],
     }),
   ],
 };
