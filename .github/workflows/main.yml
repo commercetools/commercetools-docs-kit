@@ -26,8 +26,7 @@ jobs:
       - uses: hmarr/debug-action@v2
 
       - name: Detect Production Deploy
-        # && github.event_name == 'push'
-        if: github.head_ref == 'nk-fix-deploy-via-github-action'
+        if: github.event_name == 'push' && github.head_ref == 'main'
         run: |
           echo "DEPLOY_ENV=Production" >> $GITHUB_ENV
 
