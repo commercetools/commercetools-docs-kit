@@ -1,10 +1,8 @@
 name: Main workflow
-
 # The event triggers are configured as following:
 # - on branch main, trigger the workflow on every push to trigger production checks and deployment
 # - on any pull request, trigger the workflow
 # This is to avoid running the workflow twice on pull requests.
-
 on:
   push:
     branches:
@@ -23,12 +21,11 @@ jobs:
       TERM: xterm
       # default to being a preview deployment
       DEPLOY_ENV: Preview
-      VERCEL_ARGS: ''
 
     steps:
       - name: Detect Production Deploy
         if: ${{ env.GITHUB_REF_NAME == 'main' }}
-        run: echo "DEPLOY_ENV=Production" >> $GITHUB_ENV && echo "VERCEL_ARGS=--prod" >> $GITHUB_ENV
+        run: echo "DEPLOY_ENV=Production" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -60,11 +57,25 @@ jobs:
         env:
           ENABLE_SEARCH: 'true'
 
-      # TODO fails when run before build but would be better before (issues with the generated markdown component overrides)
+      # FYI fails when run before build but would be better before (issues with the generated markdown component overrides)
       - name: Lint text files
         run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
 
-      - name: Initialize Deployment
+      - name: Deploy to Vercel (Production)
+        if: ${{ env.DEPLOY_ENV == 'Production' }}
+        id: deploy-production-to-vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-project-name: commercetools-docs-kit
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+          scope: commercetools
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+
+      - name: Initialize GitHub Deployment
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         uses: bobheadxi/deployments@v0.6.2
         id: start-deployment
         with:
@@ -73,14 +84,14 @@ jobs:
           env: ${{ env.DEPLOY_ENV }}
           ref: ${{ github.head_ref }}
 
-      - name: Deploy to Vercel
-        id: deploy-to-vercel
+      - name: Deploy to Vercel (Preview)
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        id: deploy-preview-to-vercel
         uses: amondnet/vercel-action@v20
         with:
           vercel-project-name: commercetools-docs-kit
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-args: ${{ env.VERCEL_ARGS }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
           scope: commercetools
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
@@ -90,7 +101,8 @@ jobs:
             docskit-sha-${{ github.sha }}.commercetools.vercel.app
             docskit-pr-{{PR_NUMBER}}.commercetools.vercel.app
 
-      - name: Update Deployment Status
+      - name: Update GitHub Deployment Status
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         uses: bobheadxi/deployments@v0.6.2
         id: finish_deployment
         with:
