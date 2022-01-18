@@ -24,7 +24,9 @@ jobs:
 
     steps:
       - name: Detect Production Deploy
-        if: ${{ github.ref_name == 'nk-fix-deploy-via-github-action' }}
+        # ${{ github.ref_name == 'nk-fix-deploy-via-github-action' }}
+        #  && github.event_name == 'push'
+        if: github.ref_name == 'nk-fix-deploy-via-github-action'
         run: echo "DEPLOY_ENV=Production" >> $GITHUB_ENV
 
       - name: Checkout
