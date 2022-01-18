@@ -1,7 +1,6 @@
 name: Main workflow
-
 # The event triggers are configured as following:
-# - on branch main, trigger the workflow on every push
+# - on branch main, trigger the workflow on every push to trigger production checks and deployment
 # - on any pull request, trigger the workflow
 # This is to avoid running the workflow twice on pull requests.
 on:
@@ -11,17 +10,26 @@ on:
   pull_request:
 
 jobs:
-  build_lint_and_test:
+  build_deploy_test:
     runs-on: ubuntu-latest
 
     # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L8-L11
     env:
-      # prevents extra Cypress installation progress messages
+      # prevents extra Cypress installation progress messages (github action default is true)
       CI: 1
       # avoid warnings like "tput: No value for $TERM and no -T specified"
       TERM: xterm
+      # default to being a preview deployment
+      DEPLOY_ENV: Preview
 
     steps:
+      - uses: hmarr/debug-action@v2
+
+      - name: Detect Production Deploy
+        if: github.event_name == 'push' && github.ref_name == 'main'
+        run: |
+          echo "DEPLOY_ENV=Production" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -35,9 +43,7 @@ jobs:
           path: |
             .cache
             public
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          key: ${{ runner.os }}-build-v1-${{ hashFiles('**/yarn.lock') }}
 
       - name: Set custom Yarn cache path
         run: yarn config set cacheFolder .cache/yarn
@@ -54,10 +60,63 @@ jobs:
         env:
           ENABLE_SEARCH: 'true'
 
+      # FYI fails when run before build but would be better before (issues with the generated markdown component overrides)
       - name: Lint text files
         run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
 
+      - name: Deploy to Vercel (Production)
+        if: ${{ env.DEPLOY_ENV == 'Production' }}
+        id: deploy-production-to-vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-project-name: commercetools-docs-kit
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+          scope: commercetools
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+
+      - name: Initialize GitHub Deployment
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        uses: bobheadxi/deployments@v0.6.2
+        id: start-deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: ${{ env.DEPLOY_ENV }}
+          ref: ${{ github.head_ref }}
+
+      - name: Deploy to Vercel (Preview)
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        id: deploy-preview-to-vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-project-name: commercetools-docs-kit
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+          scope: commercetools
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+          # there are length restrictions to domains and only *.commercetools.vercel.app works
+          # reliably for generated subdomains. No branch name domain because branch names can be long.
+          alias-domains: |
+            docskit-sha-${{ github.sha }}.commercetools.vercel.app
+            docskit-pr-{{PR_NUMBER}}.commercetools.vercel.app
+
+      - name: Update GitHub Deployment Status
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        uses: bobheadxi/deployments@v0.6.2
+        id: finish_deployment
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env_url: ${{ steps.deploy-preview-to-vercel.outputs.preview-url }}
+          deployment_id: ${{ steps.start-deployment.outputs.deployment_id }}
+
       - name: Running Visual Regression Tests
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         run: yarn percy snapshot ./public
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS }}
@@ -65,6 +124,7 @@ jobs:
       # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L23-L30
       # https://github.com/marketplace/actions/cypress-io#custom-install
       - name: Restoring Cypress cache
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         # restore / cache the binary ourselves on Linux
         # see https://github.com/actions/cache
         id: cache-cypress
@@ -74,9 +134,11 @@ jobs:
           key: ${{ runner.os }}-cypress-${{ hashFiles('**/package.json') }}
 
       - name: Installing Cypress binary
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         run: yarn run cypress install && yarn run cypress cache list
 
       - name: Running End-to-End tests
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/docs-smoke-test' 'yarn run percy exec -- yarn test:e2e:docs-smoke-test'
         env:
           NODE_ENV: test
@@ -84,6 +146,7 @@ jobs:
           CYPRESS_CI: 'true'
 
       - name: Running API End-to-End tests
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/api-docs-smoke-test' 'yarn run percy exec -- yarn test:e2e:api-docs-smoke-test'
         env:
           NODE_ENV: test
@@ -93,7 +156,7 @@ jobs:
       - name: Uploading Cypress artifacts
         # Test run video was always captured, so this action uses "always()" condition
         uses: actions/upload-artifact@v2
-        if: failure()
+        if: ${{ failure() && env.DEPLOY_ENV == 'Preview' }}
         with:
           name: cypress-videos
           path: cypress/videos
