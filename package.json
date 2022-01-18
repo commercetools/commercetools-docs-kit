@@ -12,7 +12,7 @@
     "start": "yarn workspace @commercetools-website/docs-smoke-test start",
     "build-packages": "preconstruct build",
     "build": "./scripts/build.sh",
-    "vercel-build": "amazon-linux-extras install java-openjdk11 > /dev/null && yarn build",
+    "vercel-build": "echo \"you're welcome - nothing to build\"",
     "generate-icons": "yarn workspaces foreach -p --include @commercetools-docs/gatsby-theme-docs,@commercetools-docs/ui-kit,@commercetools-website/docs-smoke-test run generate-icons && prettier --write '**/generated/*.js'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
