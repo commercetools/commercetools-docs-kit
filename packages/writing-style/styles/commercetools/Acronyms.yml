@@ -31,6 +31,7 @@ exceptions:
   - HTML
   - HTTP
   - HTTPS
+  - ICU
   - IDE
   - IETF
   - IEEE
