@@ -45,6 +45,7 @@ exceptions:
   - MIT
   - NET # otherwise ".NET" is complaining but it's generally known among developers
   - NPM
+  - OIDC
   - PATH
   - PDF
   - PHP
