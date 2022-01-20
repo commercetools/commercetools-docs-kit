@@ -8,6 +8,7 @@ import { useSiteData } from '../hooks/use-site-data';
 import { BetaFlag, ContentPagination } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../overrides/page-header-banner-area';
+import PlaceholderGlobalNotification from '../overrides/global-notification';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -15,6 +16,7 @@ import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
 import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPage from './internals/layout-page';
+import LayoutGlobalNotification from './internals/layout-global-notification';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageNavigation from './internals/layout-page-navigation';
@@ -55,6 +57,9 @@ const LayoutContent = (props) => {
           <LayoutPage
             allowWideContentLayout={props.pageData.allowWideContentLayout}
           >
+            <LayoutGlobalNotification>
+              <PlaceholderGlobalNotification />
+            </LayoutGlobalNotification>
             <LayoutPageHeader>
               {props.pageData.beta && (
                 <BetaFlag href={siteData.siteMetadata.betaLink} />

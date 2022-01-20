@@ -5,6 +5,7 @@ export { default as Card } from './card';
 export { default as Cards } from './cards';
 export { default as ContentPagination } from './content-pagination';
 export { default as GlobalNavigationLink } from './global-navigation-link';
+export { default as GlobalNotifications } from './global-notifications';
 export { default as ErrorBoundary } from './error-boundary';
 export { default as Link, ExternalSiteLink } from './link';
 export { default as Overlay } from './overlay';
