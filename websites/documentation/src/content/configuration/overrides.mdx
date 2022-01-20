@@ -61,17 +61,3 @@ src
   export default useAdditionalSiteData;
   ```
 
-- `global-notification`: allows to render a global notification at the top of the page. You should use the `<GlobalNotifications.Info>` or `<GlobalNotification.Warning>` component to render the content.
-
-  ```js title="src/@commercetools-docs/gatsby-theme-docs/overrides/global-notification.js"
-  import React from 'react';
-  import { GlobalNotifications } from '@commercetools-docs/gatsby-theme-docs';
-
-  const GlobalNotification = () => (
-    <GlobalNotifications.Info>
-      This is a global info notification
-    </GlobalNotifications.Info>
-  );
-
-  export default GlobalNotification;
-  ```

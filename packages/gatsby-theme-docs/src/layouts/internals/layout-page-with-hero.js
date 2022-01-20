@@ -2,17 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
-import PlaceholderGlobalNotification from '../../overrides/global-notification';
-import LayoutGlobalNotification from './layout-global-notification';
 
 const bannerHeight = '200px';
 
+// The container is used to render a background image with for the full page width.
 const Container = styled.div`
   grid-area: page-header;
   position: relative;
-`;
-// The hero is used to render a background image with for the full page width.
-const Hero = styled.div`
   min-height: ${bannerHeight};
   max-height: ${bannerHeight};
   background-color: ${(props) => props.heroBackgroundColor};
@@ -74,11 +70,8 @@ const ContentWrapper = styled.div`
 `;
 
 const LayoutPageWithHero = (props) => (
-  <Container>
-    <LayoutGlobalNotification>
-      <PlaceholderGlobalNotification />
-    </LayoutGlobalNotification>
-    <Hero
+  <>
+    <Container
       heroBackgroundURL={props.heroBackgroundURL}
       heroBackgroundColor={props.heroBackgroundColor}
     >
@@ -89,9 +82,9 @@ const LayoutPageWithHero = (props) => (
       >
         {props.title}
       </Title>
-    </Hero>
+    </Container>
     <ContentWrapper>{props.children}</ContentWrapper>
-  </Container>
+  </>
 );
 LayoutPageWithHero.propTypes = {
   title: PropTypes.string.isRequired,
