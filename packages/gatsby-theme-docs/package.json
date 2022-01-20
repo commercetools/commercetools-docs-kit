@@ -16,7 +16,7 @@
     "create-docs-release-note": "bin/create-release-note.js"
   },
   "scripts": {
-    "generate-icons": "svgr -d -- src/icons/generated src/icons/svg"
+    "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
   },
   "dependencies": {
     "@commercetools-docs/ui-kit": "18.1.0",
