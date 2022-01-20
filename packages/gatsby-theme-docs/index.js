@@ -8,6 +8,7 @@ export {
   ErrorBoundary,
   ExternalSiteLink,
   FullWidthContainer,
+  GlobalNotifications,
   Link,
   Overlay,
   SEO,
