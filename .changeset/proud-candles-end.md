@@ -1,5 +1,5 @@
 ---
-"@commercetools-docs/writing-style": patch
+'@commercetools-docs/writing-style': patch
 ---
 
-Allow more acronyms to be used: `ICU`, `OIDC`.
+Allow more acronyms to be used: `ICU`.
