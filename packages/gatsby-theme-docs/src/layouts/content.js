@@ -5,10 +5,9 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { BetaFlag, ContentPagination } from '../components';
+import { BetaFlag, ContentPagination, GlobalNotification } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../overrides/page-header-banner-area';
-import PlaceholderGlobalNotification from '../overrides/global-notification';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -58,7 +57,13 @@ const LayoutContent = (props) => {
             allowWideContentLayout={props.pageData.allowWideContentLayout}
           >
             <LayoutGlobalNotification>
-              <PlaceholderGlobalNotification />
+              {props.pageData.globalNotification && (
+                <GlobalNotification
+                  type={props.pageData.globalNotification.notificationType}
+                >
+                  {props.pageData.globalNotification.content}
+                </GlobalNotification>
+              )}
             </LayoutGlobalNotification>
             <LayoutPageHeader>
               {props.pageData.beta && (
@@ -103,6 +108,10 @@ LayoutContent.propTypes = {
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    globalNotification: PropTypes.shape({
+      notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
+      content: PropTypes.string.isRequired,
+    }),
     websitePrimaryColor: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,

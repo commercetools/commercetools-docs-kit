@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { InformationIcon, WarningIcon } from '@commercetools-uikit/icons';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
 
 const getIconByType = (type) => {
   switch (type) {
@@ -60,7 +61,7 @@ const GlobalNotification = (props) => {
         <div>
           <Icon color={iconColor} />
         </div>
-        <div>{props.children}</div>
+        <div>{markdownFragmentToReact(props.children)}</div>
       </SpacingsInline>
     </Container>
   );
@@ -69,11 +70,5 @@ GlobalNotification.propTypes = {
   type: PropTypes.oneOf(['warning', 'info']).isRequired,
   children: PropTypes.node.isRequired,
 };
-GlobalNotification.defaultProps = {
-  type: 'info',
-};
 
-const Info = (props) => <GlobalNotification {...props} type="info" />;
-const Warning = (props) => <GlobalNotification {...props} type="warning" />;
-
-export default { Info, Warning };
+export default GlobalNotification;

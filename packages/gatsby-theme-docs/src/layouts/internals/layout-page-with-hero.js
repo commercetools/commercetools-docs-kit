@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
-import PlaceholderGlobalNotification from '../../overrides/global-notification';
+import { GlobalNotification } from '../../components';
 import LayoutGlobalNotification from './layout-global-notification';
 
 const bannerHeight = '200px';
@@ -76,7 +76,11 @@ const ContentWrapper = styled.div`
 const LayoutPageWithHero = (props) => (
   <Container>
     <LayoutGlobalNotification>
-      <PlaceholderGlobalNotification />
+      {props.globalNotification && (
+        <GlobalNotification type={props.globalNotification.notificationType}>
+          {props.globalNotification.content}
+        </GlobalNotification>
+      )}
     </LayoutGlobalNotification>
     <Hero
       heroBackgroundURL={props.heroBackgroundURL}
@@ -97,6 +101,10 @@ LayoutPageWithHero.propTypes = {
   title: PropTypes.string.isRequired,
   heroBackgroundURL: PropTypes.string.isRequired,
   heroBackgroundColor: PropTypes.string.isRequired,
+  globalNotification: PropTypes.shape({
+    notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
+    content: PropTypes.string.isRequired,
+  }),
   children: PropTypes.node.isRequired,
 };
 
