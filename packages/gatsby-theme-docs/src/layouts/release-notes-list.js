@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { Markdown, LayoutPage } from '@commercetools-docs/ui-kit';
 import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
@@ -11,7 +11,6 @@ import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
 import LayoutPageWrapper from './internals/layout-page-wrapper';
-import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageReleaseNotesFilters from './internals/layout-page-release-notes-filters';
