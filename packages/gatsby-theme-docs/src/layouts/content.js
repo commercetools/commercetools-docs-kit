@@ -9,7 +9,6 @@ import { BetaFlag, ContentPagination, GlobalNotification } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../overrides/page-header-banner-area';
 import LayoutApplication from './internals/layout-application';
-import LayoutPage from './internals/layout-page';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
