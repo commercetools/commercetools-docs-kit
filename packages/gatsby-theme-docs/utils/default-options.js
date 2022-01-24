@@ -12,6 +12,7 @@ const defaultOptions = {
   overrideDefaultConfigurationData: [],
   addOns: [],
   enableCanonicalUrls: true,
+  globalNotification: undefined,
 };
 
 module.exports = defaultOptions;

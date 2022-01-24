@@ -55,7 +55,7 @@ jobs:
           # https://github.com/marketplace/actions/cypress-io#custom-install
           CYPRESS_INSTALL_BINARY: 0
 
-      - name: Building websites for production
+      - name: Building Websites
         run: yarn build
         env:
           ENABLE_SEARCH: 'true'
@@ -66,14 +66,14 @@ jobs:
 
       - name: Deploy to Vercel (Production)
         if: ${{ env.DEPLOY_ENV == 'Production' }}
-        id: deploy-production-to-vercel
+        id: deploy-to-vercel-production
         uses: amondnet/vercel-action@v20
         with:
           vercel-project-name: commercetools-docs-kit
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-args: '--prod'
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+          vercel-args: '--prod'
           scope: commercetools
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
 
@@ -89,13 +89,14 @@ jobs:
 
       - name: Deploy to Vercel (Preview)
         if: ${{ env.DEPLOY_ENV == 'Preview' }}
-        id: deploy-preview-to-vercel
+        id: deploy-to-vercel
         uses: amondnet/vercel-action@v20
         with:
           vercel-project-name: commercetools-docs-kit
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+          vercel-args: ${{ secrets.VERCEL_ARGS}}
           scope: commercetools
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
           # there are length restrictions to domains and only *.commercetools.vercel.app works
@@ -112,7 +113,7 @@ jobs:
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
-          env_url: ${{ steps.deploy-preview-to-vercel.outputs.preview-url }}
+          env_url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
           deployment_id: ${{ steps.start-deployment.outputs.deployment_id }}
 
       - name: Running Visual Regression Tests

@@ -16,39 +16,42 @@ const ContentCards = (props) => (
 );
 
 const PageContentTemplate = (props) => (
-  <IntlProvider locale="en">
-    <ThemeProvider>
-      <PageDataContext.Provider value={props.data.contentPage}>
-        <LayoutContent
-          pageContext={props.pageContext}
-          pageData={props.data.contentPage}
-        >
-          <MDXProvider
-            components={{
-              ...markdownComponents,
-              Cards: ContentCards,
-              ChildSectionsNav,
-            }}
+  console.log(props),
+  (
+    <IntlProvider locale="en">
+      <ThemeProvider>
+        <PageDataContext.Provider value={props.data.contentPage}>
+          <LayoutContent
+            pageContext={props.pageContext}
+            pageData={props.data.contentPage}
           >
-            <Markdown.TypographyPage>
-              <SEO
-                title={
-                  props.pageContext.shortTitle || props.data.contentPage.title
-                }
-                excludeFromSearchIndex={
-                  props.data.contentPage.excludeFromSearchIndex
-                }
-              />
-              {/* This wrapper div is important to ensure the vertical space */}
-              <div>
-                <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-              </div>
-            </Markdown.TypographyPage>
-          </MDXProvider>
-        </LayoutContent>
-      </PageDataContext.Provider>
-    </ThemeProvider>
-  </IntlProvider>
+            <MDXProvider
+              components={{
+                ...markdownComponents,
+                Cards: ContentCards,
+                ChildSectionsNav,
+              }}
+            >
+              <Markdown.TypographyPage>
+                <SEO
+                  title={
+                    props.pageContext.shortTitle || props.data.contentPage.title
+                  }
+                  excludeFromSearchIndex={
+                    props.data.contentPage.excludeFromSearchIndex
+                  }
+                />
+                {/* This wrapper div is important to ensure the vertical space */}
+                <div>
+                  <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
+                </div>
+              </Markdown.TypographyPage>
+            </MDXProvider>
+          </LayoutContent>
+        </PageDataContext.Provider>
+      </ThemeProvider>
+    </IntlProvider>
+  )
 );
 
 PageContentTemplate.displayName = 'PageContentTemplate';
@@ -61,6 +64,10 @@ PageContentTemplate.propTypes = {
   data: PropTypes.shape({
     contentPage: PropTypes.shape({
       title: PropTypes.string.isRequired,
+      globalNotification: PropTypes.shape({
+        notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
+        content: PropTypes.string.isRequired,
+      }),
       websitePrimaryColor: PropTypes.string.isRequired,
       beta: PropTypes.bool.isRequired,
       isGlobalBeta: PropTypes.bool.isRequired,
@@ -83,6 +90,10 @@ export const query = graphql`
       isGlobalBeta
       excludeFromSearchIndex
       allowWideContentLayout
+      globalNotification {
+        notificationType
+        content
+      }
       body
       tableOfContents
       navLevels
