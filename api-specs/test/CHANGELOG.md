@@ -1,5 +1,11 @@
 # @commercetools-api-specs/test
 
+## 0.0.4
+
+### Patch Changes
+
+- [#1198](https://github.com/commercetools/commercetools-docs-kit/pull/1198) [`fdc249d5`](https://github.com/commercetools/commercetools-docs-kit/commit/fdc249d5df2198dacea00bf26573bdbf684519f3) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
 ## 0.0.3
 
 ### Patch Changes

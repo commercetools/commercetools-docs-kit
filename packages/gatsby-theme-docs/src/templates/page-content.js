@@ -82,15 +82,15 @@ export const query = graphql`
   query QueryContentPage($slug: String!) {
     contentPage(slug: { eq: $slug }) {
       title
+      globalNotification {
+        notificationType
+        content
+      }
       websitePrimaryColor
       beta
       isGlobalBeta
       excludeFromSearchIndex
       allowWideContentLayout
-      globalNotification {
-        notificationType
-        content
-      }
       body
       tableOfContents
       navLevels
