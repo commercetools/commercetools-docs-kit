@@ -2100,7 +2100,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-api-specs/test@workspace:api-specs/test"
   dependencies:
-    "@commercetools-docs/rmf-codegen": 13.9.0
+    "@commercetools-docs/rmf-codegen": 13.10.0
   languageName: unknown
   linkType: soft
 
@@ -2276,15 +2276,6 @@ __metadata:
   bin:
     rmf-codegen: bin/rmf-codegen.js
   checksum: 3aa59117933363aadbe668cd884333d709cd44a78015f4f1e50d7c83c030ec3160dfd08ebed0f46176d479259097f8fa81f296a7a909b9b11332b4713e171acb
-  languageName: node
-  linkType: hard
-
-"@commercetools-docs/rmf-codegen@npm:13.9.0":
-  version: 13.9.0
-  resolution: "@commercetools-docs/rmf-codegen@npm:13.9.0"
-  bin:
-    rmf-codegen: bin/rmf-codegen.js
-  checksum: cf9c26a7fdbbbcd48f5938520021a1604f128c7a48e8cb811b000fada73652c828774aae6f658c4af04cad1c133a6908fc1cdaff3f84805792292d0e453b66a2
   languageName: node
   linkType: hard
 
