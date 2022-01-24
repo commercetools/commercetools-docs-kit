@@ -60,7 +60,7 @@ export default function parseCodeBlockOptions(
   if (rawOptions.secondaryTheme === 'false') rawOptions.secondaryTheme = false; // Boolean("false") = true
   return {
     ...defaultOptions,
-    title: rawOptions.title.toString(),
+    title: rawOptions.title?.toString(),
     highlightLines: getLinesForRange(rawOptions.highlightLines),
     noPromptLines: getLinesForRange(rawOptions.noPromptLines),
     secondaryTheme: Boolean(rawOptions.secondaryTheme),
