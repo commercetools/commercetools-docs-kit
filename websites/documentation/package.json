@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/documentation",
-  "version": "4.0.16",
+  "version": "5.0.0",
   "private": true,
   "scripts": {
     "start": "yarn develop",
@@ -13,8 +13,8 @@
     "postbuild": "rm -rf ../../public/documentation && mkdir -p ../../public && mv public ../../public/documentation"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-code-examples": "18.1.0",
-    "@commercetools-docs/gatsby-theme-docs": "18.1.0",
+    "@commercetools-docs/gatsby-theme-code-examples": "18.2.0",
+    "@commercetools-docs/gatsby-theme-docs": "18.2.0",
     "gatsby": "4.5.5",
     "gatsby-cli": "4.5.2",
     "react": "17.0.2",

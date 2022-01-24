@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.0.2
+
+### Patch Changes
+
+- [#1203](https://github.com/commercetools/commercetools-docs-kit/pull/1203) [`554d26d7`](https://github.com/commercetools/commercetools-docs-kit/commit/554d26d7784d520e6377fc1cd7137dfc729a2a66) Thanks [@emmenko](https://github.com/emmenko)! - Point READMEs to new documentation website.
+
 ## 13.0.1
 
 ### Patch Changes
