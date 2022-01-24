@@ -7,7 +7,7 @@ const asideColumnWidth = pageWidthSmall;
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
 
-export const pxToRem = (px, suffix = 'rem') => {
+export const pxToRem = (px: string, suffix = 'rem') => {
   const pxNumber = px.replace(/([0-9]+)px$/, '$1');
   const remNumber = parseInt(pxNumber, 10) / rootFontSizeNumber;
   return `${remNumber}${suffix}`;

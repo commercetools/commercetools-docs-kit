@@ -1,9 +1,11 @@
-const getSelection = (document) =>
-  document.getSelection().rangeCount > 0
-    ? document.getSelection().getRangeAt(0)
+const getSelection = (document: Document) => {
+  const selection = document.getSelection();
+  return selection && selection.rangeCount > 0
+    ? selection.getRangeAt(0)
     : false;
+};
 
-const createTextArea = (document, text) => {
+const createTextArea = (document: Document, text: string) => {
   const el = document.createElement('textarea');
   el.value = text;
   el.setAttribute('readonly', '');
@@ -12,7 +14,7 @@ const createTextArea = (document, text) => {
   return el;
 };
 
-const copyToClipboard = (text) => {
+const copyToClipboard = (text: string) => {
   const el = createTextArea(document, text);
   const selected = getSelection(document);
   document.body.appendChild(el);
@@ -22,8 +24,8 @@ const copyToClipboard = (text) => {
   document.body.removeChild(el);
 
   if (selected) {
-    document.getSelection().removeAllRanges();
-    document.getSelection().addRange(selected);
+    document.getSelection()?.removeAllRanges();
+    document.getSelection()?.addRange(selected);
   }
 };
 

@@ -2,8 +2,13 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { dimensions } from '../design-system';
 
+type MediaQueryProps = {
+  forViewport?: string,
+  hideIfMatch?: boolean,
+};
+
 const MediaQuery = styled.div`
-  ${(props) => {
+  ${(props: MediaQueryProps) => {
     switch (props.forViewport) {
       case 'mobile':
         return css`

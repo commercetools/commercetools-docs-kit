@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { render, screen } from '@testing-library/react';
 import useISO310NumberFormatter from './use-iso310-number-formatter';
 
-const TestComponent = (props) => {
+const TestComponent = (props: { value: number }) => {
   const formatNumber = useISO310NumberFormatter();
   return <div>Number: {formatNumber(props.value)}</div>;
 };

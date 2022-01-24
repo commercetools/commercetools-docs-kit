@@ -1,0 +1,12 @@
+export { default as HttpApiSmallSvgIcon } from './http-api-small';
+export { default as HttpApiSvgIcon } from './http-api';
+export { default as CustomApplicationSmallSvgIcon } from './custom-application-small';
+export { default as CustomApplicationSvgIcon } from './custom-application';
+export { default as LogoSvgIcon } from './logo';
+export { default as MerchantCenterSmallSvgIcon } from './merchant-center-small';
+export { default as MerchantCenterSvgIcon } from './merchant-center';
+export { default as OpenSourceSmallSvgIcon } from './open-source-small';
+export { default as OpenSourceSvgIcon } from './open-source';
+export { default as RibbonSvgIcon } from './ribbon';
+export { default as TutorialsSmallSvgIcon } from './tutorials-small';
+export { default as TutorialsSvgIcon } from './tutorials';

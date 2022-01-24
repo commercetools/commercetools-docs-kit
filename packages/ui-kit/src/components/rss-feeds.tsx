@@ -1,34 +1,46 @@
 import React from 'react';
 import useSWR from 'swr';
-import PropTypes from 'prop-types';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './content-notifications';
 import RssFeedTable from './rss-feed-table';
 
+const firstDataForQuery = (node: ParentNode, query: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const firstChild: any = node.querySelector(query);
+  return firstChild?.data;
+};
+
 // Inspired by https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
-async function parseRssFeed(url) {
+async function parseRssFeed(url: string) {
   const response = await fetch(url);
   const rawBody = await response.text();
-  const data = new window.DOMParser().parseFromString(rawBody, 'text/xml');
+  const documentFragment = new window.DOMParser().parseFromString(
+    rawBody,
+    'text/xml'
+  );
 
-  const feedTitle = data.querySelector('title').firstChild.data;
-  const items = Array.from(data.querySelectorAll('item')).map((el) => {
-    const title = el.querySelector('title').firstChild.data;
-    const description = el.querySelector('description').firstChild.data;
-    const link = el.querySelector('link').firstChild.data;
-    const pubDate = el.querySelector('pubDate').firstChild.data;
-    return {
-      title,
-      description,
-      link,
-      pubDate,
-    };
-  });
+  const feedTitle = firstDataForQuery(documentFragment, 'title');
+
+  const items = Array.from(documentFragment.querySelectorAll('item')).map(
+    (el) => {
+      const title = firstDataForQuery(el, 'title');
+      const description = firstDataForQuery(el, 'description');
+      const link = firstDataForQuery(el, 'link');
+      const pubDate = firstDataForQuery(el, 'pubDate');
+      return {
+        title,
+        description,
+        link,
+        pubDate,
+      };
+    }
+  );
 
   return { feedTitle, items };
 }
 
-async function fetcher(...args) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function fetcher(...args: any[]) {
   const promises = args.map(async (url) => {
     const releaseNoteUrl = url.replace(/\/feed.xml$/, '');
     const feedData = await parseRssFeed(url);
@@ -46,41 +58,51 @@ async function fetcher(...args) {
   return Promise.all(promises);
 }
 
-export const transformData = (data) => {
+type DatedData = { pubDate: string };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const transformData = (data: any) => {
   // First, we need to get the oldest release note from each feed,
   // which is always the last entry of the list.
   const lastEntryOfList = data
-    .reduce((list, feed) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .reduce((list: any, feed: string | any[]) => {
       return [...list, feed[feed.length - 1]];
     }, [])
     // After that, we need to compare the oldest release dates from each feed
     // to get the newest of them. This will be our last entry in the list.
-    .reduce((currentOldestEntry, entry, index) => {
-      if (index === 0) {
-        return entry;
-      }
-      return new Date(entry.pubDate) > new Date(currentOldestEntry.pubDate)
-        ? entry
-        : currentOldestEntry;
-    }, {});
+    .reduce(
+      (currentOldestEntry: DatedData, entry: DatedData, index: number) => {
+        if (index === 0) {
+          return entry;
+        }
+        return new Date(entry.pubDate) > new Date(currentOldestEntry.pubDate)
+          ? entry
+          : currentOldestEntry;
+      },
+      {}
+    );
 
   // After finding out the last entry in the list, we reduce the list
   // to all entries that have a newer date than our last entry.
   const tableData = data
     .flat()
-    .reduce((list, entry) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .reduce((list: any, entry: DatedData) => {
       return new Date(entry.pubDate) >= new Date(lastEntryOfList.pubDate)
         ? [...list, entry]
         : [...list];
     }, [])
     // Now we sort the release notes after their release date.
-    .sort((dateOne, dateTwo) => {
-      return new Date(dateTwo.pubDate) - new Date(dateOne.pubDate);
+    .sort((dateOne: DatedData, dateTwo: DatedData) => {
+      return (
+        new Date(dateTwo.pubDate).getTime() -
+        new Date(dateOne.pubDate).getTime()
+      );
     });
   return tableData;
 };
 
-const RssFeeds = (props) => {
+const RssFeeds = (props: RssFeedsProps) => {
   if (!props.dataSources) {
     const message = `Missing prop "dataSources" for the "<RssFeeds>" component.`;
     if (process.env.NODE_ENV !== 'production') {
@@ -110,11 +132,11 @@ const RssFeeds = (props) => {
       />
     );
   }
-  return <LoadingSpinner size="s">{'Loading feeds'}</LoadingSpinner>;
+  return <LoadingSpinner scale="s">{'Loading feeds'}</LoadingSpinner>;
 };
 
-RssFeeds.propTypes = {
-  dataSources: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+type RssFeedsProps = {
+  dataSources: string[],
 };
 
 export default RssFeeds;

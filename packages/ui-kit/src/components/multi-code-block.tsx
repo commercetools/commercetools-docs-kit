@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import reactIs from 'react-is';
 import styled from '@emotion/styled';
 import { ThemeProvider } from '@emotion/react';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -29,7 +29,7 @@ const HeaderText = styled.span`
   color: ${(props) => props.theme.codeBlockColors.textHeader};
 `;
 
-const getCaretSvgUrl = (color) =>
+const getCaretSvgUrl = (color: string) =>
   `url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Icons' stroke='none' stroke-width='1' fill-rule='evenodd'%3E%3Cg id='MC-icon-set' transform='translate(-168.000000, -936.000000)' fill='%23${color}'%3E%3Cg id='Directions' transform='translate(24.000000, 888.000000)'%3E%3Cg id='Caret-Down' transform='translate(144.000000, 48.000000)'%3E%3Cpath d='M20.6658731,7.4053255 C20.4433682,7.16948908 20.1796129,7.05166867 19.8748538,7.05166867 L4.12508466,7.05166867 C3.82020235,7.05166867 3.55663185,7.16948908 3.33394217,7.4053255 C3.11125249,7.64142273 3,7.92055342 3,8.24323919 C3,8.56585976 3.11125249,8.84499045 3.33394217,9.08089208 L11.2088575,17.4207121 C11.4317935,17.6565485 11.695364,17.7746297 12,17.7746297 C12.304636,17.7746297 12.5684528,17.6565485 12.7909578,17.4207121 L20.6658731,9.08082687 C20.8883165,8.84499045 21,8.56585976 21,8.24317399 C21,7.92055342 20.8883165,7.64142273 20.6658731,7.4053255 L20.6658731,7.4053255 Z' id='shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
 const LanguagesDropDownWrapper = styled.div`
   /* stylelint-disable function-url-quotes */
@@ -71,7 +71,7 @@ const LanguagesDropDown = styled.select`
   }
 `;
 
-const languageDisplayNames = {
+const languageDisplayNames: { [key: string]: string } = {
   sh: 'Terminal',
   zsh: 'Terminal',
   console: 'Terminal',
@@ -93,7 +93,7 @@ const languageDisplayNames = {
   objectivec: 'Objective-C',
 };
 
-function extractLanguages(children) {
+function extractLanguages(children: OneOrManyChildren): string[] {
   if (Array.isArray(children)) {
     return children.map((child) => child.props.language);
   }
@@ -101,7 +101,7 @@ function extractLanguages(children) {
   return [children.props.language];
 }
 
-function MultiCodeBlock(props) {
+function MultiCodeBlock(props: MultiCodeBlockProps) {
   const langs = extractLanguages(props.children);
 
   const [selected, setSelected] = React.useState(langs[0]);
@@ -113,6 +113,15 @@ function MultiCodeBlock(props) {
     codeBlockColors:
       colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
   };
+
+  let selectedElement: React.ReactElement | undefined;
+  if (Array.isArray(props.children)) {
+    selectedElement =
+      props.children.find((child) => child.props.language === selected) ||
+      undefined;
+  } else {
+    selectedElement = props.children;
+  }
 
   return (
     <ThemeProvider theme={codeBlockTheme}>
@@ -154,50 +163,51 @@ function MultiCodeBlock(props) {
           </Header>
         ) : null}
 
-        {React.cloneElement(
-          Array.isArray(props.children)
-            ? props.children.find((child) => child.props.language === selected)
-            : props.children,
-          {
+        {selectedElement &&
+          React.cloneElement(selectedElement, {
             secondaryTheme: props.secondaryTheme,
-          }
-        )}
+          })}
       </Container>
     </ThemeProvider>
   );
 }
 
-MultiCodeBlock.propTypes = {
-  secondaryTheme: PropTypes.bool,
-  title: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element.isRequired),
-  ]).isRequired,
+type OneOrManyChildren = React.ReactElement | React.ReactElement[];
+type MultiCodeBlockProps = {
+  secondaryTheme?: boolean;
+  title?: string;
+  children: OneOrManyChildren;
 };
 
 export default MultiCodeBlock;
 
-/* eslint-disable react/display-name,react/prop-types */
+/* eslint-disable react/display-name */
 // Maps the props coming from MDX to the underlying <CodeBlock> component.
-export const CodeBlockMarkdownWrapper = (props) => {
-  const className = props.children.props ? props.children.props.className : '';
+export const CodeBlockMarkdownWrapper = (props: {
+  children?: React.ReactNode;
+}) => {
+  const childElement = reactIs.isElement(props.children)
+    ? props.children
+    : null;
+  const childProps = childElement?.props;
+  const className = childProps ? childProps.className : '';
   const languageToken = className || 'language-text';
   const [, languageCode] = languageToken.split('language-');
   const { title, highlightLines, noPromptLines, secondaryTheme } =
-    codeBlockParseOptions(props.children.props);
+    codeBlockParseOptions(childProps);
   const content =
-    props.children.props && props.children.props.children
-      ? props.children.props.children
-      : props.children;
+    childProps && childProps.children ? childProps.children : childProps;
 
   return (
-    <MultiCodeBlock title={title} secondaryTheme={secondaryTheme}>
+    <MultiCodeBlock
+      title={title as string}
+      secondaryTheme={secondaryTheme as boolean}
+    >
       <CodeBlock
         content={content}
         language={languageCode}
-        highlightLines={highlightLines}
-        noPromptLines={noPromptLines}
+        highlightLines={highlightLines as number[]}
+        noPromptLines={noPromptLines as number[]}
       />
     </MultiCodeBlock>
   );

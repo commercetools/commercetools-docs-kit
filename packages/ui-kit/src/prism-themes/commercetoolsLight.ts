@@ -7,6 +7,11 @@ const commercetoolsLightTheme = { ...nightOwlLight };
 // - swap rgb(72, 118, 214)  and rgb(12, 150, 155) to have string literals
 //   in green in both light and dark because they occur side by side in API docs.
 // - booleans and numbers in a tone that's visually similar to the dark variant.
+
+// need to recreate this prismic type, it's not exported.
+type FontStyle = 'italic' | 'normal' | undefined;
+const italicStyle: FontStyle = 'italic';
+
 const additionalStyles = [
   {
     types: ['operator', 'keyword', 'property', 'namespace'],
@@ -18,7 +23,7 @@ const additionalStyles = [
     types: ['inserted', 'attr-name'],
     style: {
       color: 'rgb(12, 150, 155)',
-      fontStyle: 'italic',
+      fontStyle: italicStyle,
     },
   },
   {

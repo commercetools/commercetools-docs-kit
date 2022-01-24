@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import {
@@ -10,7 +9,7 @@ import {
 import { TypographyContainer } from './markdown';
 import { colors, tokens, dimensions } from '../design-system';
 
-const getIconByType = (type) => {
+const getIconByType = (type: string) => {
   switch (type) {
     case 'warning':
       return WarningIcon;
@@ -20,7 +19,7 @@ const getIconByType = (type) => {
       return InformationIcon;
   }
 };
-const getIconColorByType = (type) => {
+const getIconColorByType = (type: string) => {
   switch (type) {
     case 'warning':
       return 'warning';
@@ -31,7 +30,7 @@ const getIconColorByType = (type) => {
   }
 };
 const Container = styled.div`
-  background-color: ${(props) => {
+  background-color: ${(props: ContentNotificationProps) => {
     switch (props.type) {
       case 'warning':
         return colors.light.surfaceWarning;
@@ -42,7 +41,7 @@ const Container = styled.div`
     }
   }};
   border: 1px solid
-    ${(props) => {
+    ${(props: ContentNotificationProps) => {
       switch (props.type) {
         case 'warning':
           return colors.light.textWarning;
@@ -56,11 +55,14 @@ const Container = styled.div`
   padding: ${dimensions.spacings.m};
 `;
 
-const ContentNotification = (props) => {
-  const Icon = getIconByType(props.type);
-  const iconColor = getIconColorByType(props.type);
+const ContentNotification = ({
+  type = 'info',
+  children,
+}: ContentNotificationProps) => {
+  const Icon = getIconByType(type);
+  const iconColor = getIconColorByType(type);
   return (
-    <Container type={props.type}>
+    <Container type={type}>
       <SpacingsInline scale="s" alignItems="flex-start">
         <div>
           <Icon color={iconColor} />
@@ -82,21 +84,26 @@ const ContentNotification = (props) => {
 
           </Info>
         */}
-        <TypographyContainer>{props.children}</TypographyContainer>
+        <TypographyContainer>{children}</TypographyContainer>
       </SpacingsInline>
     </Container>
   );
 };
-ContentNotification.propTypes = {
-  type: PropTypes.oneOf(['error', 'warning', 'info']).isRequired,
-  children: PropTypes.node.isRequired,
-};
-ContentNotification.defaultProps = {
-  type: 'info',
+type ContentNotificationType = 'error' | 'warning' | 'info';
+type ContentNotificationProps = {
+  type?: ContentNotificationType,
+  children?: ReactNode,
 };
 
-const Info = (props) => <ContentNotification {...props} type="info" />;
-const Error = (props) => <ContentNotification {...props} type="error" />;
-const Warning = (props) => <ContentNotification {...props} type="warning" />;
+const Info = (props: ContentNotificationProps) => (
+  <ContentNotification {...props} type="info" />
+);
+const Error = (props: ContentNotificationProps) => (
+  <ContentNotification {...props} type="error" />
+);
+const Warning = (props: ContentNotificationProps) => (
+  <ContentNotification {...props} type="warning" />
+);
 
-export default { Info, Error, Warning };
+const ContentNotifications = { Info, Error, Warning };
+export default ContentNotifications;

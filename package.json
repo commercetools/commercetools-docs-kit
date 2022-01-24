@@ -13,7 +13,7 @@
     "build-packages": "preconstruct build",
     "build": "./scripts/build.sh",
     "vercel-build": "echo \"you're welcome - nothing to build\"",
-    "generate-icons": "yarn workspaces foreach -p --include @commercetools-docs/gatsby-theme-docs,@commercetools-docs/ui-kit,@commercetools-website/docs-smoke-test run generate-icons && prettier --write '**/generated/*.js'",
+    "generate-icons": "yarn workspaces foreach -p --include @commercetools-docs/gatsby-theme-docs,@commercetools-website/docs-smoke-test run generate-icons && yarn workspace @commercetools-docs/ui-kit generate-icons && prettier --write '**/generated/*.{js,ts,tsx}'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",
@@ -88,7 +88,7 @@
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "24.0.0",
     "stylelint-order": "5.0.0",
-    "typescript": "4.5.4",
+    "typescript": "^4.5.5",
     "wait-on": "6.0.0"
   },
   "engines": {

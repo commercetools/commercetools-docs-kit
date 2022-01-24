@@ -1,10 +1,10 @@
 /* eslint-disable */
 // From https://github.com/euank/node-parse-numeric-range
 // The package does not ship with CommonJS modules, so we just copy over the implementation.
-export default function parsePart(string) {
-  let res = [],
+export default function parsePart(string: string) {
+  let res: number[] = [],
     m;
-  for (let str of string.split(',').map((str) => str.trim())) {
+  for (let str of string.split(',').map((str: any) => str.trim())) {
     // just a number
     if (/^-?\d+$/.test(str)) {
       res.push(parseInt(str, 10));
@@ -22,7 +22,7 @@ export default function parsePart(string) {
         // Make it inclusive by moving the right 'stop-point' away by one.
         if (sep === '-' || sep === '..' || sep === '\u2025') rhs += incr;
 
-        for (let i = lhs; i !== rhs; i += incr) res.push(i);
+        for (let i: number = lhs; i !== rhs; i += incr) res.push(i);
       }
     }
   }

@@ -1,7 +1,7 @@
 const isoDateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
 // if the date does not contain timezone, JS Date() is fine
-export const parseIsoDate = (dateString) => {
+export const parseIsoDate = (dateString: string) => {
   // as an extra safety net enforce UTC midnight
   const UTCDateString = dateString + 'T00:00:00.000Z';
   const date = new Date(UTCDateString);

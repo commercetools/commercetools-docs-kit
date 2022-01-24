@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css, ThemeProvider, useTheme } from '@emotion/react';
+import { css, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { Language, defaultProps } from 'prism-react-renderer';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import themePrimary from '../prism-themes/commercetools';
 import themeSecondary from '../prism-themes/commercetoolsLight';
@@ -41,9 +40,9 @@ const CopyArea = styled.div`
     }
   }
 `;
-const TooltipWrapperComponent = (props) =>
+const TooltipWrapperComponent = (props: { children?: React.ReactNode }) =>
   ReactDOM.createPortal(props.children, document.body);
-const TooltipBodyComponent = (props) => {
+const TooltipBodyComponent = (props: { children?: React.ReactNode }) => {
   const theme = useTheme();
   return (
     <div
@@ -59,7 +58,14 @@ const TooltipBodyComponent = (props) => {
   );
 };
 
-const getLineStyles = (theme, options) => {
+const getLineStyles = (
+  theme: Theme,
+  options: {
+    shouldShowPrompt: boolean,
+    isCommandLine: boolean,
+    shouldHighlightLine: boolean,
+  }
+) => {
   let promptLineStyles;
   let highlightLineStyles;
   if (options.isCommandLine) {
@@ -181,7 +187,7 @@ const getLineStyles = (theme, options) => {
  * yarn start
  * ```
  */
-const languageAliases = {
+const languageAliases: { [key: string]: Language } = {
   sh: 'bash',
   zsh: 'bash',
   console: 'bash',
@@ -190,7 +196,8 @@ const languageAliases = {
   js: 'javascript',
   yml: 'yaml',
 };
-const CodeBlock = (props) => {
+
+const CodeBlock = (props: CodeBlockProps) => {
   const languageCode = props.language || 'text';
   const language = languageAliases[languageCode] || languageCode;
   const isCommandLine = ['terminal', 'console'].includes(languageCode);
@@ -241,9 +248,10 @@ const CodeBlock = (props) => {
                     }
                   }
 
-                  const shouldShowPrompt = isCommandLine
-                    ? !props.noPromptLines.includes(index + 1)
-                    : false;
+                  const shouldShowPrompt =
+                    isCommandLine && props.noPromptLines
+                      ? !props.noPromptLines.includes(index + 1)
+                      : false;
 
                   const shouldHighlightLine =
                     props.highlightLines && props.highlightLines.length > 0
@@ -295,12 +303,13 @@ const CodeBlock = (props) => {
     </ThemeProvider>
   );
 };
-CodeBlock.propTypes = {
-  secondaryTheme: PropTypes.bool,
-  language: PropTypes.string,
-  highlightLines: PropTypes.arrayOf(PropTypes.number),
-  noPromptLines: PropTypes.arrayOf(PropTypes.number),
-  content: PropTypes.string,
+
+type CodeBlockProps = {
+  secondaryTheme?: boolean,
+  language?: string,
+  highlightLines?: number[],
+  noPromptLines?: number[],
+  content: string,
 };
 
 export default CodeBlock;

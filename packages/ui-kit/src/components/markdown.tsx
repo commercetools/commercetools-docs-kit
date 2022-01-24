@@ -1,4 +1,5 @@
 import React from 'react';
+import reactIs from 'react-is';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { RibbonSvgIcon } from '../icons';
@@ -155,10 +156,13 @@ const Table = styled.table`
     }
     ${(props) => {
       const tableHeaders = React.Children.toArray(props.children).find(
-        (elem) => elem.type === 'thead' || elem.props.mdxType === 'thead'
+        (elem) =>
+          reactIs.isElement(elem) &&
+          (elem.type === 'thead' || elem.props.mdxType === 'thead')
       );
       if (!tableHeaders) return null;
-      const rowHeaders = tableHeaders.props.children;
+      const rowHeaders =
+        reactIs.isElement(tableHeaders) && tableHeaders.props.children;
       const rowHeadersChildren = Array.isArray(rowHeaders)
         ? rowHeaders
         : rowHeaders.props.children;
@@ -166,7 +170,7 @@ const Table = styled.table`
         (styles, elem, index) => `
         ${styles}
         td:nth-of-type(${index + 1})::before { content: "${
-          elem.props.children
+          reactIs.isElement(elem) && elem.props.children
         }"; }
       `,
         ''
@@ -294,8 +298,9 @@ const TypographyContainer = styled.div`
   ${containerStyles};
 `;
 
-/* eslint-disable react/display-name,react/prop-types */
-const withAnchorLink = (Component) => (props) => {
+/* eslint-disable react/display-name */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const withAnchorLink = (Component: React.ComponentType) => (props: any) => {
   return (
     <Component
       {...props}
@@ -323,7 +328,6 @@ const withAnchorLink = (Component) => (props) => {
     </Component>
   );
 };
-/* eslint-enable */
 
 export {
   TypographyPage,

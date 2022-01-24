@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { DocsDateFormat } from '../utils/dates';
@@ -33,7 +32,7 @@ const DateWrapper = styled.span`
   white-space: nowrap;
 `;
 
-const RssFeedTable = (props) => {
+const RssFeedTable = (props: RssReedTableProps) => {
   if (!props.data) {
     const message = 'Must pass data to RssFeedTable component.';
     if (process.env.NODE_ENV !== 'production') {
@@ -47,7 +46,7 @@ const RssFeedTable = (props) => {
     <div>
       <Table data-table-name="rss-feed">
         <tbody>
-          {props.data.map((item, index) => (
+          {props.data.map((item: FeedEntry, index: number) => (
             <tr key={`${item.title}${index}`}>
               <td
                 css={css`
@@ -91,17 +90,16 @@ const RssFeedTable = (props) => {
   );
 };
 
-RssFeedTable.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      pubDate: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      feedName: PropTypes.string.isRequired,
-      releaseNoteUrl: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  hasMultipleSources: PropTypes.bool.isRequired,
+type FeedEntry = {
+  title: string,
+  pubDate: string,
+  link: string,
+  feedName: string,
+  releaseNoteUrl: string,
+};
+type RssReedTableProps = {
+  data: FeedEntry[],
+  hasMultipleSources: boolean,
 };
 
 export default RssFeedTable;

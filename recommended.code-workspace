@@ -48,7 +48,8 @@
       "mdx",
       "yaml"
     ],
-    "spellright.configurationScope": "user"
+    "spellright.configurationScope": "user",
+    "typescript.tsdk": "node_modules/typescript/lib"
   },
   "extensions": {
     "recommendations": [

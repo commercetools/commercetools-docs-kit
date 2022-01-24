@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '../design-system';
+import React from 'react';
 
+type IconSize = 'small' | 'medium' | 'big' | 'scale';
 const iconSizes = {
   small: 12,
   medium: 16,
   big: 24,
 };
 
-const getSizeStyle = (size) => {
+const getSizeStyle = (size: IconSize) => {
   switch (size) {
     case 'scale':
       return `
@@ -34,7 +35,7 @@ const getSizeStyle = (size) => {
   }
 };
 
-const getColor = (color) => {
+const getColor = (color: keyof typeof colors.light) => {
   if (!color) return 'inherit';
 
   const iconColor = colors.light[color];
@@ -50,18 +51,19 @@ const getColor = (color) => {
   return iconColor;
 };
 
-export default function createStyledIcon(Component) {
+export default function createStyledIcon(Component: React.ComponentClass) {
   const StyledComponent = styled(Component)(
-    (props) => css`
+    (props: StyledComponentProps) => css`
       *:not([fill='none']) {
         fill: ${getColor(props.color)};
       }
       ${getSizeStyle(props.size)}
     `
   );
-  StyledComponent.propTypes = {
-    color: PropTypes.string,
-    size: PropTypes.oneOf(['small', 'medium', 'big', 'scale']),
+  type StyledComponentProps = {
+    color: keyof typeof colors.light;
+    size: IconSize;
   };
+
   return StyledComponent;
 }
