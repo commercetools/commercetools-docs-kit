@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
+import { GlobalNotification } from '../../components';
+import LayoutGlobalNotification from './layout-global-notification';
 
 const bannerHeight = '200px';
 
-// The container is used to render a background image with for the full page width.
 const Container = styled.div`
   grid-area: page-header;
   position: relative;
+`;
+// The hero is used to render a background image with for the full page width.
+const Hero = styled.div`
   min-height: ${bannerHeight};
   max-height: ${bannerHeight};
   background-color: ${(props) => props.heroBackgroundColor};
@@ -70,8 +74,15 @@ const ContentWrapper = styled.div`
 `;
 
 const LayoutPageWithHero = (props) => (
-  <>
-    <Container
+  <Container>
+    <LayoutGlobalNotification>
+      {props.globalNotification && (
+        <GlobalNotification type={props.globalNotification.notificationType}>
+          {props.globalNotification.content}
+        </GlobalNotification>
+      )}
+    </LayoutGlobalNotification>
+    <Hero
       heroBackgroundURL={props.heroBackgroundURL}
       heroBackgroundColor={props.heroBackgroundColor}
     >
@@ -82,14 +93,18 @@ const LayoutPageWithHero = (props) => (
       >
         {props.title}
       </Title>
-    </Container>
+    </Hero>
     <ContentWrapper>{props.children}</ContentWrapper>
-  </>
+  </Container>
 );
 LayoutPageWithHero.propTypes = {
   title: PropTypes.string.isRequired,
   heroBackgroundURL: PropTypes.string.isRequired,
   heroBackgroundColor: PropTypes.string.isRequired,
+  globalNotification: PropTypes.shape({
+    notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
+    content: PropTypes.string.isRequired,
+  }),
   children: PropTypes.node.isRequired,
 };
 
