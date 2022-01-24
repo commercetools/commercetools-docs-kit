@@ -91,15 +91,15 @@ const RssFeedTable = (props: RssReedTableProps) => {
 };
 
 type FeedEntry = {
-  title: string,
-  pubDate: string,
-  link: string,
-  feedName: string,
-  releaseNoteUrl: string,
+  title: string;
+  pubDate: string;
+  link: string;
+  feedName: string;
+  releaseNoteUrl: string;
 };
 type RssReedTableProps = {
-  data: FeedEntry[],
-  hasMultipleSources: boolean,
+  data: FeedEntry[];
+  hasMultipleSources: boolean;
 };
 
 export default RssFeedTable;

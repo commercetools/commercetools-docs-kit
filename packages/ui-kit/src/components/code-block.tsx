@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled';
-import { css, Theme, ThemeProvider, useTheme } from '@emotion/react';
+import { css, type Theme, ThemeProvider, useTheme } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
@@ -61,9 +61,9 @@ const TooltipBodyComponent = (props: { children?: React.ReactNode }) => {
 const getLineStyles = (
   theme: Theme,
   options: {
-    shouldShowPrompt: boolean,
-    isCommandLine: boolean,
-    shouldHighlightLine: boolean,
+    shouldShowPrompt: boolean;
+    isCommandLine: boolean;
+    shouldHighlightLine: boolean;
   }
 ) => {
   let promptLineStyles;
@@ -305,11 +305,11 @@ const CodeBlock = (props: CodeBlockProps) => {
 };
 
 type CodeBlockProps = {
-  secondaryTheme?: boolean,
-  language?: string,
-  highlightLines?: number[],
-  noPromptLines?: number[],
-  content: string,
+  secondaryTheme?: boolean;
+  language?: string;
+  highlightLines?: number[];
+  noPromptLines?: number[];
+  content: string;
 };
 
 export default CodeBlock;

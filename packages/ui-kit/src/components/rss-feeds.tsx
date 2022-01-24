@@ -136,7 +136,7 @@ const RssFeeds = (props: RssFeedsProps) => {
 };
 
 type RssFeedsProps = {
-  dataSources: string[],
+  dataSources: string[];
 };
 
 export default RssFeeds;

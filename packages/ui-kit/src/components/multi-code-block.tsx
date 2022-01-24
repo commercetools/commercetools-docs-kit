@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { ThemeProvider } from '@emotion/react';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { colors, dimensions, typography, tokens } from '../design-system';
-import codeBlockParseOptions from '../utils/code-block-parse-options';
+import parseCodeBlockOptions from '../utils/code-block-parse-options';
 import CodeBlock from './code-block';
 
 export const Container = styled.div`
@@ -193,22 +193,13 @@ export const CodeBlockMarkdownWrapper = (props: {
   const className = childProps ? childProps.className : '';
   const languageToken = className || 'language-text';
   const [, languageCode] = languageToken.split('language-');
-  const { title, highlightLines, noPromptLines, secondaryTheme } =
-    codeBlockParseOptions(childProps);
+  const parsedOptions = parseCodeBlockOptions(childProps);
   const content =
     childProps && childProps.children ? childProps.children : childProps;
 
   return (
-    <MultiCodeBlock
-      title={title as string}
-      secondaryTheme={secondaryTheme as boolean}
-    >
-      <CodeBlock
-        content={content}
-        language={languageCode}
-        highlightLines={highlightLines as number[]}
-        noPromptLines={noPromptLines as number[]}
-      />
+    <MultiCodeBlock {...parsedOptions}>
+      <CodeBlock {...parsedOptions} content={content} language={languageCode} />
     </MultiCodeBlock>
   );
 };

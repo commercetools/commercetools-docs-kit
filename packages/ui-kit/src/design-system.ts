@@ -13,7 +13,70 @@ export const pxToRem = (px: string, suffix = 'rem') => {
   return `${remNumber}${suffix}`;
 };
 
-export const colors = {
+// explicit types for the color part because the structure allows multiple instances
+// (light / dark,  primary / secondary for code blocks).
+// The rest of the design system is enough to be inferred
+export type ColorKey = keyof ColorSet;
+export type ColorSet = {
+  surfacePrimary: string;
+  surfaceSecondary1: string;
+  surfaceSecondary2: string;
+  surfaceSecondary3: string;
+  surfaceInlineCode: string;
+  surfaceCode: string;
+  surfaceCodeCopy: string;
+  surfaceCodeHighlight: string;
+  surfaceInfo: string;
+  surfaceBeta: string;
+  surfaceQuote: string;
+  surfaceWarning: string;
+  surfaceError: string;
+  surfaceSearchHighlight: string;
+  surfaceForSearchInputWhenDisabled: string;
+  surfaceForReleaseNoteTypeFix: string;
+  textPrimary: string;
+  textSecondary: string;
+  textFaded: string;
+  textCode: string;
+  textInfo: string;
+  textError: string;
+  textWarning: string;
+  textInverted: string;
+  textSearchHeading: string;
+  borderPrimary: string;
+  borderSecondary: string;
+  borderInput: string;
+  borderHighlight: string;
+  borderInfo: string;
+  borderForReleaseNoteTypeFix: string;
+  link: string;
+  linkHover: string;
+  linkNavigation: string;
+  codeBlocks: {
+    primary: CodeBlockColorSet;
+    secondary: CodeBlockColorSet;
+  };
+};
+export type CodeBlockColorSet = {
+  border: string;
+  surface: string;
+  surfaceHeader: string;
+  surfaceLanguageDropdown: string;
+  surfaceLanguageDropdownHover: string;
+  textHeader: string;
+  surfaceCopyIcon: string;
+  surfaceCopyIconHover: string;
+  surfaceCopyTooltip: string;
+  textCopyTooltip: string;
+  surfaceLineHighlight: string;
+  surfacePrompt: string;
+};
+export type Colors = {
+  light: ColorSet;
+  dark?: ColorSet;
+};
+
+export const colors: Colors = {
   light: {
     // Surfaces are used for backgrounds
     surfacePrimary: customProperties.colorSurface,

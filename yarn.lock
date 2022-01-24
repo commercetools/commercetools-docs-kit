@@ -2352,7 +2352,6 @@ __metadata:
     react-is: ^17.0.2
     swr: 1.1.2
     tiny-invariant: 1.2.0
-    typescript: ^4.5.5
   peerDependencies:
     react: 17.x
     react-dom: 17.x

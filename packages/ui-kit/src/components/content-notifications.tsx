@@ -9,7 +9,7 @@ import {
 import { TypographyContainer } from './markdown';
 import { colors, tokens, dimensions } from '../design-system';
 
-const getIconByType = (type: string) => {
+const getIconByType = (type: ContentNotificationProps['type']) => {
   switch (type) {
     case 'warning':
       return WarningIcon;
@@ -19,7 +19,7 @@ const getIconByType = (type: string) => {
       return InformationIcon;
   }
 };
-const getIconColorByType = (type: string) => {
+const getIconColorByType = (type: ContentNotificationProps['type']) => {
   switch (type) {
     case 'warning':
       return 'warning';
@@ -91,8 +91,8 @@ const ContentNotification = ({
 };
 type ContentNotificationType = 'error' | 'warning' | 'info';
 type ContentNotificationProps = {
-  type?: ContentNotificationType,
-  children?: ReactNode,
+  type?: ContentNotificationType;
+  children?: ReactNode;
 };
 
 const Info = (props: ContentNotificationProps) => (
