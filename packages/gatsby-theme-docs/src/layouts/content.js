@@ -5,7 +5,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { BetaFlag, ContentPagination } from '../components';
+import { BetaFlag, ContentPagination, GlobalNotification } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../overrides/page-header-banner-area';
 import LayoutApplication from './internals/layout-application';
@@ -15,6 +15,7 @@ import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
 import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPage from './internals/layout-page';
+import LayoutGlobalNotification from './internals/layout-global-notification';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageNavigation from './internals/layout-page-navigation';
@@ -55,6 +56,15 @@ const LayoutContent = (props) => {
           <LayoutPage
             allowWideContentLayout={props.pageData.allowWideContentLayout}
           >
+            <LayoutGlobalNotification>
+              {props.pageData.globalNotification && (
+                <GlobalNotification
+                  type={props.pageData.globalNotification.notificationType}
+                >
+                  {props.pageData.globalNotification.content}
+                </GlobalNotification>
+              )}
+            </LayoutGlobalNotification>
             <LayoutPageHeader>
               {props.pageData.beta && (
                 <BetaFlag href={siteData.siteMetadata.betaLink} />
@@ -98,6 +108,10 @@ LayoutContent.propTypes = {
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    globalNotification: PropTypes.shape({
+      notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
+      content: PropTypes.string.isRequired,
+    }),
     websitePrimaryColor: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,

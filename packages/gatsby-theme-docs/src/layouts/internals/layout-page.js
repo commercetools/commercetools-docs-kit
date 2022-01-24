@@ -6,8 +6,9 @@ const LayoutPage = styled.div`
     max-width: unset;
     display: grid;
     grid:
-      [row1-start] 'page-header page-header-side' auto [row1-end]
-      [row2-start] 'page-content page-navigation' 1fr [row2-end]
+      [row1-start] 'global-notification empty' auto [row1-end]
+      [row2-start] 'page-header page-header-side' auto [row2-end]
+      [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths.pageContentWithMargins}
@@ -16,8 +17,9 @@ const LayoutPage = styled.div`
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
-      [row1-start] 'page-header page-header-side' auto [row1-end]
-      [row2-start] 'page-content page-navigation' 1fr [row2-end]
+      [row1-start] 'global-notification empty' auto [row1-end]
+      [row2-start] 'page-header page-header-side' auto [row2-end]
+      [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths.pageContentWithMargins}
@@ -26,8 +28,9 @@ const LayoutPage = styled.div`
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
-      [row1-start] 'page-header page-header-side' auto [row1-end]
-      [row2-start] 'page-content page-navigation' 1fr [row2-end]
+      [row1-start] 'global-notification empty' auto [row1-end]
+      [row2-start] 'page-header page-header-side' auto [row2-end]
+      [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths.pageContentWithMargins}
@@ -36,8 +39,9 @@ const LayoutPage = styled.div`
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
-      [row1-start] 'page-header page-header-side' auto [row1-end]
-      [row2-start] 'page-content page-navigation' 1fr [row2-end] /
+      [row1-start] 'global-notification empty' auto [row1-end]
+      [row2-start] 'page-header page-header-side' auto [row2-end]
+      [row3-start] 'page-content page-navigation' 1fr [row3-end] /
       ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(
         ${designSystem.dimensions.widths.pageNavigationSmall},
@@ -48,8 +52,9 @@ const LayoutPage = styled.div`
     props.allowWideContentLayout
       ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
     grid:
-      [row1-start] 'page-header page-header-side' auto [row1-end]
-      [row2-start] 'page-content page-navigation' 1fr [row2-end]
+      [row1-start] 'global-notification empty' auto [row1-end]
+      [row2-start] 'page-header page-header-side' auto [row2-end]
+      [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentWideWithMargins},
         ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
