@@ -74,6 +74,10 @@ export const query = graphql`
       isGlobalBeta
       excludeFromSearchIndex
       allowWideContentLayout
+      globalNotification {
+        notificationType
+        content
+      }
       body
     }
     heroBackground: file(relativePath: { eq: $heroBackgroundRelativePath }) {
