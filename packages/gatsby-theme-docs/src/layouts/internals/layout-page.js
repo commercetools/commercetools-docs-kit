@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-const dimensions = designSystem.dimensions;
 const LayoutPage = styled.div`
-  @media screen and (${dimensions.viewports.tablet}) {
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
     max-width: unset;
     display: grid;
     grid:
@@ -11,58 +10,56 @@ const LayoutPage = styled.div`
       [row2-start] 'page-header page-header-side' auto [row2-end]
       [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
-        ${dimensions.widths.pageContentSmallWithMargins},
-        ${dimensions.widths.pageContentWithMargins}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       0;
   }
-  @media screen and (${dimensions.viewports.largeTablet}) {
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
       [row1-start] 'global-notification empty' auto [row1-end]
       [row2-start] 'page-header page-header-side' auto [row2-end]
       [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
-        ${dimensions.widths.pageContentSmallWithMargins},
-        ${dimensions.widths.pageContentWithMargins}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
-      ${dimensions.widths.pageNavigationSmall};
+      ${designSystem.dimensions.widths.pageNavigationSmall};
   }
-  @media screen and (${dimensions.viewports.laptop}) {
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
       [row1-start] 'global-notification empty' auto [row1-end]
       [row2-start] 'page-header page-header-side' auto [row2-end]
       [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
-        ${dimensions.widths.pageContentSmallWithMargins},
-        ${dimensions.widths.pageContentWithMargins}
+        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${designSystem.dimensions.widths.pageContentWithMargins}
       )
-      ${dimensions.widths.pageNavigationSmall};
+      ${designSystem.dimensions.widths.pageNavigationSmall};
   }
-  @media screen and (${dimensions.viewports.desktop}) {
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
-      [row1-start] 'page-header page-header-side' auto [row1-end]
-      [row2-start] 'page-content page-navigation' 1fr [row2-end] /
       [row1-start] 'global-notification empty' auto [row1-end]
       [row2-start] 'page-header page-header-side' auto [row2-end]
       [row3-start] 'page-content page-navigation' 1fr [row3-end] /
-      ${dimensions.widths.pageContentWithMargins}
+      ${designSystem.dimensions.widths.pageContentWithMargins}
       minmax(
-        ${dimensions.widths.pageNavigationSmall},
-        ${dimensions.widths.pageNavigation}
+        ${designSystem.dimensions.widths.pageNavigationSmall},
+        ${designSystem.dimensions.widths.pageNavigation}
       );
   }
   ${(props) =>
     props.allowWideContentLayout
-      ? `@media screen and (${dimensions.viewports.largeDesktop}) {
+      ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
     grid:
       [row1-start] 'global-notification empty' auto [row1-end]
       [row2-start] 'page-header page-header-side' auto [row2-end]
       [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
-        ${dimensions.widths.pageContentWideWithMargins},
-        ${dimensions.widths.pageContentWideWithMarginsMax}
+        ${designSystem.dimensions.widths.pageContentWideWithMargins},
+        ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
       )
-      minmax(${dimensions.widths.pageNavigationSmall}, ${dimensions.widths.pageNavigation});
+      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, ${designSystem.dimensions.widths.pageNavigation});
   }`
       : ''}
 `;
