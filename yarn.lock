@@ -401,7 +401,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.16.7":
+"@babel/helper-module-imports@npm:^7.12.5, @babel/helper-module-imports@npm:^7.16.7":
   version: 7.16.7
   resolution: "@babel/helper-module-imports@npm:7.16.7"
   dependencies:
@@ -1133,6 +1133,17 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: bbd1a56b095be7820029b209677b194db9b1d26691fe999856462e66b25b281f031f3dfd91b1619e9dcf95bebe336211833b854d0fb8780d618e35667c2d0d7e
+  languageName: node
+  linkType: hard
+
+"@babel/plugin-syntax-typescript@npm:^7.12.1":
+  version: 7.16.7
+  resolution: "@babel/plugin-syntax-typescript@npm:7.16.7"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.16.7
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 661e636060609ede9a402e22603b01784c21fabb0a637e65f561c8159351fe0130bbc11fdefe31902107885e3332fc34d95eb652ac61d3f61f2d61f5da20609e
   languageName: node
   linkType: hard
 
@@ -1873,7 +1884,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.16.7, @babel/types@npm:^7.16.8":
+"@babel/types@npm:^7.12.6, @babel/types@npm:^7.16.7, @babel/types@npm:^7.16.8":
   version: 7.16.8
   resolution: "@babel/types@npm:7.16.8"
   dependencies:
@@ -2346,6 +2357,7 @@ __metadata:
     lodash.escape: 4.0.1
     lodash.throttle: 4.1.1
     prism-react-renderer: 1.2.1
+    prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
     react-intl: ^5.7.0
@@ -7886,6 +7898,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-typescript-to-proptypes@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "babel-plugin-typescript-to-proptypes@npm:2.0.0"
+  dependencies:
+    "@babel/helper-module-imports": ^7.12.5
+    "@babel/plugin-syntax-typescript": ^7.12.1
+    "@babel/types": ^7.12.6
+  peerDependencies:
+    "@babel/core": ^7.0.0
+    typescript: ^4.0.0
+  checksum: 7eef77c5ffd8face65a199d6f23a0fbab2e464c8bd8fcf1e3458b3682bebb08fa4a6fd53cd61564ab5d845ba2ccbabf22a6bb30609fa9b843e1e709ab98715f2
+  languageName: node
+  linkType: hard
+
 "babel-polyfill@npm:^6.26.0":
   version: 6.26.0
   resolution: "babel-polyfill@npm:6.26.0"
@@ -9342,6 +9368,7 @@ __metadata:
     "@testing-library/react": 12.1.2
     babel-eslint: 10.1.0
     babel-jest: 27.4.6
+    babel-plugin-typescript-to-proptypes: ^2.0.0
     core-js: 3.20.2
     cross-env: 7.0.3
     cypress: 9.2.1
