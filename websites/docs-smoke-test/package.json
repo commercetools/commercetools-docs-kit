@@ -12,7 +12,7 @@
     "build": "./scripts/build.sh",
     "build:serve": "yarn gatsby build --prefix-paths && yarn gatsby serve --prefix-paths -o",
     "build:analyze": "ANALYZE_BUNDLE=true yarn build",
-    "generate-icons": "svgr -d -- src/icons/generated src/icons/svg"
+    "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-code-examples": "18.1.0",

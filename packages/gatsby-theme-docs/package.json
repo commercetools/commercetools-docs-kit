@@ -12,11 +12,12 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/gatsby-theme-docs"
   },
+  "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/setup",
   "bin": {
     "create-docs-release-note": "bin/create-release-note.js"
   },
   "scripts": {
-    "generate-icons": "svgr -d -- src/icons/generated src/icons/svg"
+    "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
   },
   "dependencies": {
     "@commercetools-docs/ui-kit": "18.1.0",
