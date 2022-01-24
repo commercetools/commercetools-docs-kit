@@ -13,7 +13,6 @@ export { default as MultiCodeBlock } from './components/multi-code-block';
 export { default as Reset } from './components/reset';
 export { default as Subtitle } from './components/subtitle';
 export { default as TextSmall } from './components/text-small';
-export * from './components/layout';
 
 // icons
 export {

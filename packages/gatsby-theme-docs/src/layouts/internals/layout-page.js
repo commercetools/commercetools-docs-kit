@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import { dimensions } from '../../design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
 
+const dimensions = designSystem.dimensions;
 const LayoutPage = styled.div`
   @media screen and (${dimensions.viewports.tablet}) {
     max-width: unset;
