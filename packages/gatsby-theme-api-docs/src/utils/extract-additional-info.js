@@ -1,5 +1,8 @@
-const extractAdditionalInfo = (property) => {
-  let additionalInfo = JSON.parse(JSON.stringify(property));
+const extractAdditionalInfo = (properties) => {
+  let additionalInfos = Object.entries(properties).map((prop) => {
+    return { name: prop[0], value: prop[1] };
+  });
+
   const mainInfo = [
     'beta',
     'builtinType',
@@ -16,37 +19,30 @@ const extractAdditionalInfo = (property) => {
   ];
 
   mainInfo.forEach((field) => {
-    delete additionalInfo[field];
+    additionalInfos = additionalInfos.filter(
+      (entry) => field !== entry.name && entry.value
+    );
   });
 
-  Object.keys(additionalInfo).forEach((key) => {
-    if (
-      (!additionalInfo[key] &&
-        typeof additionalInfo[key] !== 'number' &&
-        typeof additionalInfo[key] !== 'boolean') ||
-      typeof additionalInfo[key] === 'object'
-    )
-      delete additionalInfo[key];
+  const defaultInfo = [];
+  const minInfo = [];
+  const maxInfo = [];
+  const otherInfos = [];
+  additionalInfos.forEach((item) => {
+    if (item.name.includes('default')) {
+      defaultInfo.push(item);
+    } else if (item.name.includes('min')) {
+      minInfo.push(item);
+    } else if (item.name.includes('max')) {
+      maxInfo.push(item);
+    } else {
+      otherInfos.push(item);
+    }
   });
 
-  const tagIdentifier = ['max', 'min', 'default'];
-  let sortedList = Object.entries(additionalInfo);
+  additionalInfos = defaultInfo.concat(minInfo, maxInfo, otherInfos);
 
-  tagIdentifier.forEach((tag) => {
-    sortedList.forEach((item) => {
-      if (item[0].includes(tag)) {
-        sortedList.unshift(item);
-      }
-      sortedList.push(item);
-    });
-  });
-
-  let sortedAdditionalInfo = {};
-  sortedList.forEach((item) => {
-    sortedAdditionalInfo[item[0]] = item[1];
-  });
-
-  return sortedAdditionalInfo;
+  return additionalInfos;
 };
 
 export default extractAdditionalInfo;

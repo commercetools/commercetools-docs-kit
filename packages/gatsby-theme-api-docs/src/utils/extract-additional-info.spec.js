@@ -5,40 +5,34 @@ describe('Ordering tags', () => {
 
   it('should order default property to the very top', () => {
     const sortedData = extractAdditionalInfo(data[0]);
-    expect(JSON.stringify(sortedData)).toBe(
-      JSON.stringify(expectedTestResults()[0])
-    );
+    expect(sortedData).toEqual(expectedTestResults()[0]);
   });
   it('should order properties with min and max names to the top behind the default', () => {
     const sortedData = extractAdditionalInfo(data[1]);
-    expect(JSON.stringify(sortedData)).toBe(
-      JSON.stringify(expectedTestResults()[1])
-    );
+    expect(sortedData).toEqual(expectedTestResults()[1]);
   });
   it('should order properties with min and max names to the very top if there is no default property', () => {
     const sortedData = extractAdditionalInfo(data[2]);
-    expect(JSON.stringify(sortedData)).toBe(
-      JSON.stringify(expectedTestResults()[2])
-    );
+    expect(sortedData).toEqual(expectedTestResults()[2]);
   });
 });
 
 function createTestData() {
   return [
     {
-      maxItems: 1,
+      maxItems: 2,
       minItems: 2,
-      uniqueItems: 2,
+      uniqueItems: true,
       default: 1,
     },
     {
       maximum: 1,
-      default: 1,
-      minimum: 2,
+      default: 2,
+      minimum: 1,
     },
     {
       minLength: 1,
-      pattern: 2,
+      pattern: true,
       maxLength: 1,
     },
   ];
@@ -46,21 +40,51 @@ function createTestData() {
 
 function expectedTestResults() {
   return [
-    {
-      default: 1,
-      minItems: 2,
-      maxItems: 1,
-      uniqueItems: 2,
-    },
-    {
-      default: 1,
-      minimum: 2,
-      maximum: 1,
-    },
-    {
-      minLength: 1,
-      maxLength: 1,
-      pattern: 2,
-    },
+    [
+      {
+        name: 'default',
+        value: 1,
+      },
+      {
+        name: 'minItems',
+        value: 2,
+      },
+      {
+        name: 'maxItems',
+        value: 2,
+      },
+      {
+        name: 'uniqueItems',
+        value: true,
+      },
+    ],
+    [
+      {
+        name: 'default',
+        value: 2,
+      },
+      {
+        name: 'minimum',
+        value: 1,
+      },
+      {
+        name: 'maximum',
+        value: 1,
+      },
+    ],
+    [
+      {
+        name: 'minLength',
+        value: 1,
+      },
+      {
+        name: 'maxLength',
+        value: 1,
+      },
+      {
+        name: 'pattern',
+        value: true,
+      },
+    ],
   ];
 }
