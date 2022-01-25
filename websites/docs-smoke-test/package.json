@@ -19,7 +19,7 @@
     "@commercetools-docs/gatsby-theme-constants": "18.2.0",
     "@commercetools-docs/gatsby-theme-docs": "18.2.0",
     "@commercetools-docs/ui-kit": "18.2.0",
-    "@commercetools-uikit/icons": "^12.2.1",
+    "@commercetools-uikit/icons": "^12.2.9",
     "gatsby": "4.5.5",
     "gatsby-cli": "4.5.2",
     "react": "17.0.2",
