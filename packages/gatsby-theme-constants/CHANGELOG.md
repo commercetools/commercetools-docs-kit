@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-constants
 
+## 18.2.0
+
+### Patch Changes
+
+- [#1203](https://github.com/commercetools/commercetools-docs-kit/pull/1203) [`554d26d7`](https://github.com/commercetools/commercetools-docs-kit/commit/554d26d7784d520e6377fc1cd7137dfc729a2a66) Thanks [@emmenko](https://github.com/emmenko)! - Point READMEs to new documentation website.
+
+* [#1198](https://github.com/commercetools/commercetools-docs-kit/pull/1198) [`fdc249d5`](https://github.com/commercetools/commercetools-docs-kit/commit/fdc249d5df2198dacea00bf26573bdbf684519f3) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+* Updated dependencies [[`554d26d7`](https://github.com/commercetools/commercetools-docs-kit/commit/554d26d7784d520e6377fc1cd7137dfc729a2a66)]:
+  - @commercetools-docs/ui-kit@18.2.0
+
 ## 18.1.0
 
 ### Patch Changes
