@@ -28,15 +28,15 @@ const extractAdditionalInfo = (properties) => {
   const minInfo = [];
   const maxInfo = [];
   const otherInfos = [];
-  additionalInfos.forEach((item) => {
-    if (item.name.includes('default')) {
-      defaultInfo.push(item);
-    } else if (item.name.includes('min')) {
-      minInfo.push(item);
-    } else if (item.name.includes('max')) {
-      maxInfo.push(item);
+  additionalInfos.forEach((info) => {
+    if (info.name.includes('default')) {
+      defaultInfo.push(info);
+    } else if (info.name.includes('min')) {
+      minInfo.push(info);
+    } else if (info.name.includes('max')) {
+      maxInfo.push(info);
     } else {
-      otherInfos.push(item);
+      otherInfos.push(info);
     }
   });
 
