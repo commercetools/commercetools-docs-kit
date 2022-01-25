@@ -2085,14 +2085,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-api-docs@18.2.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
+"@commercetools-docs/gatsby-theme-api-docs@18.2.1, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs"
   dependencies:
-    "@commercetools-docs/gatsby-transformer-mdx-introspection": 15.0.2
+    "@commercetools-docs/gatsby-transformer-mdx-introspection": 15.0.3
     "@commercetools-docs/gatsby-transformer-raml": 13.0.2
     "@commercetools-docs/rmf-codegen": 13.10.0
-    "@commercetools-docs/ui-kit": 18.2.0
+    "@commercetools-docs/ui-kit": 18.2.1
     "@commercetools-uikit/design-system": ^12.2.9
     "@commercetools-uikit/spacings-inline": ^12.2.9
     "@commercetools-uikit/spacings-stack": ^12.2.9
@@ -2112,11 +2112,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-code-examples@18.2.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
+"@commercetools-docs/gatsby-theme-code-examples@18.2.1, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples"
   dependencies:
-    "@commercetools-docs/ui-kit": 18.2.0
+    "@commercetools-docs/ui-kit": 18.2.1
     gatsby: 4.5.5
     gatsby-source-filesystem: 4.5.2
     prop-types: 15.8.1
@@ -2130,11 +2130,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-constants@18.2.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
+"@commercetools-docs/gatsby-theme-constants@18.2.1, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants"
   dependencies:
-    "@commercetools-docs/ui-kit": 18.2.0
+    "@commercetools-docs/ui-kit": 18.2.1
     gatsby: 4.5.5
     gatsby-transformer-yaml: 4.5.0
     prop-types: 15.8.1
@@ -2147,11 +2147,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@18.2.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@18.2.1, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
-    "@commercetools-docs/ui-kit": 18.2.0
+    "@commercetools-docs/ui-kit": 18.2.1
     "@commercetools-uikit/card": ^12.2.9
     "@commercetools-uikit/checkbox-input": ^12.2.9
     "@commercetools-uikit/date-input": ^12.2.9
@@ -2231,7 +2231,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-transformer-mdx-introspection@15.0.2, @commercetools-docs/gatsby-transformer-mdx-introspection@workspace:packages/gatsby-transformer-mdx-introspection":
+"@commercetools-docs/gatsby-transformer-mdx-introspection@15.0.3, @commercetools-docs/gatsby-transformer-mdx-introspection@workspace:packages/gatsby-transformer-mdx-introspection":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-transformer-mdx-introspection@workspace:packages/gatsby-transformer-mdx-introspection"
   dependencies:
@@ -2260,7 +2260,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-docs/ui-kit@18.2.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
+"@commercetools-docs/ui-kit@18.2.1, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/ui-kit@workspace:packages/ui-kit"
   dependencies:
@@ -2827,8 +2827,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-api-docs": 18.2.0
-    "@commercetools-docs/gatsby-theme-docs": 18.2.0
+    "@commercetools-docs/gatsby-theme-api-docs": 18.2.1
+    "@commercetools-docs/gatsby-theme-docs": 18.2.1
     "@commercetools-docs/rmf-codegen": 13.10.0
     gatsby: 4.5.5
     gatsby-cli: 4.5.2
@@ -2842,10 +2842,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/docs-smoke-test@workspace:websites/docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 18.2.0
-    "@commercetools-docs/gatsby-theme-constants": 18.2.0
-    "@commercetools-docs/gatsby-theme-docs": 18.2.0
-    "@commercetools-docs/ui-kit": 18.2.0
+    "@commercetools-docs/gatsby-theme-code-examples": 18.2.1
+    "@commercetools-docs/gatsby-theme-constants": 18.2.1
+    "@commercetools-docs/gatsby-theme-docs": 18.2.1
+    "@commercetools-docs/ui-kit": 18.2.1
     "@commercetools-uikit/icons": ^12.2.9
     gatsby: 4.5.5
     gatsby-cli: 4.5.2
@@ -2858,8 +2858,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 18.2.0
-    "@commercetools-docs/gatsby-theme-docs": 18.2.0
+    "@commercetools-docs/gatsby-theme-code-examples": 18.2.1
+    "@commercetools-docs/gatsby-theme-docs": 18.2.1
     gatsby: 4.5.5
     gatsby-cli: 4.5.2
     react: 17.0.2
@@ -2871,7 +2871,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 18.2.0
+    "@commercetools-docs/gatsby-theme-docs": 18.2.1
     gatsby: 4.5.5
     gatsby-cli: 4.5.2
     react: 17.0.2
