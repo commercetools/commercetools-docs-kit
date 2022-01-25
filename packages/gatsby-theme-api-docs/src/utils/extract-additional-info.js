@@ -24,16 +24,17 @@ const extractAdditionalInfo = (properties) => {
     );
   });
 
+  // The code below orders the infos so that the default value and the min-max values are ordered at the beginning of the array.
   const defaultInfo = [];
   const minInfo = [];
   const maxInfo = [];
   const otherInfos = [];
   additionalInfos.forEach((info) => {
-    if (info.name.includes('default')) {
+    if (info.name.startsWith('default')) {
       defaultInfo.push(info);
-    } else if (info.name.includes('min')) {
+    } else if (info.name.startsWith('min')) {
       minInfo.push(info);
-    } else if (info.name.includes('max')) {
+    } else if (info.name.startsWith('max')) {
       maxInfo.push(info);
     } else {
       otherInfos.push(info);
