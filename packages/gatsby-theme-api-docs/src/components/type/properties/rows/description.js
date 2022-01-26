@@ -101,12 +101,12 @@ const AdditionalInfo = (props) => {
   const additionalInfos = extractAdditionalInfo(props.property);
   return (
     <>
-      {Object.entries(additionalInfos).map(([info, value], index) => {
+      {additionalInfos.map((info, index) => {
         return (
-          !(typeof value === 'boolean' && !value) && (
+          !(typeof value === 'boolean' && !info.value) && (
             <Info key={index}>
-              {capitalizeFirst(info)}
-              <InfoValue>{value}</InfoValue>
+              {capitalizeFirst(info.name)}
+              <InfoValue>{info.value}</InfoValue>
               {'\u200B' /* zero-width space for the search crawler */}
             </Info>
           )
