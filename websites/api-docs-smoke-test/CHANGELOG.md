@@ -1,5 +1,13 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 6.0.5
+
+### Patch Changes
+
+- Updated dependencies [[`a494bb95`](https://github.com/commercetools/commercetools-docs-kit/commit/a494bb9563b3c967eaa7b32342c1f13daefba835), [`3610dc6f`](https://github.com/commercetools/commercetools-docs-kit/commit/3610dc6f692d281f1a1ad37653aed2134b40175e)]:
+  - @commercetools-docs/gatsby-theme-api-docs@18.2.2
+  - @commercetools-docs/gatsby-theme-docs@18.2.2
+
 ## 6.0.4
 
 ### Patch Changes
