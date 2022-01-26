@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 18.2.2
+
+### Patch Changes
+
+- [#1209](https://github.com/commercetools/commercetools-docs-kit/pull/1209) [`3610dc6f`](https://github.com/commercetools/commercetools-docs-kit/commit/3610dc6f692d281f1a1ad37653aed2134b40175e) Thanks [@emmenko](https://github.com/emmenko)! - Improve layout of global notification, especially the relation with scroll top anchor positions to not overlap with notification.
+
 ## 18.2.1
 
 ### Patch Changes
