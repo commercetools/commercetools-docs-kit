@@ -28,7 +28,10 @@ const LayoutContent = (props) => {
   const siteData = useSiteData();
 
   return (
-    <LayoutApplication websitePrimaryColor={props.pageData.websitePrimaryColor}>
+    <LayoutApplication
+      websitePrimaryColor={props.pageData.websitePrimaryColor}
+      globalNotification={props.pageData.globalNotification}
+    >
       <LayoutSidebar
         {...layoutState.sidebar}
         {...layoutState.searchDialog}

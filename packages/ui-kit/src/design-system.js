@@ -129,6 +129,7 @@ export const dimensions = {
     inputSearchSecondary: '26px',
     childSectionNavLink: '28px',
     pageSearchboxSpace: '58px',
+    globalNotificationContent: '36px',
   },
   widths: {
     pageContent: pageWidth,
