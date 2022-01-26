@@ -1,19 +1,8 @@
-const reorderFields = (obj, fields) => {
-  const returnedObject = { ...obj };
-
-  fields.forEach((field) => {
-    const fieldToOrder = returnedObject[field];
-    if (fieldToOrder) {
-      delete returnedObject[field];
-      returnedObject[field] = fieldToOrder;
-    }
+const extractAdditionalInfo = (properties) => {
+  let additionalInfos = Object.entries(properties).map((prop) => {
+    return { name: prop[0], value: prop[1] };
   });
 
-  return returnedObject;
-};
-
-const extractAdditionalInfo = (property) => {
-  let additionalInfo = JSON.parse(JSON.stringify(property));
   const mainInfo = [
     'beta',
     'builtinType',
@@ -30,22 +19,31 @@ const extractAdditionalInfo = (property) => {
   ];
 
   mainInfo.forEach((field) => {
-    delete additionalInfo[field];
+    additionalInfos = additionalInfos.filter(
+      (entry) => field !== entry.name && entry.value
+    );
   });
 
-  Object.keys(additionalInfo).forEach((key) => {
-    if (
-      (!additionalInfo[key] &&
-        typeof additionalInfo[key] !== 'number' &&
-        typeof additionalInfo[key] !== 'boolean') ||
-      typeof additionalInfo[key] === 'object'
-    )
-      delete additionalInfo[key];
+  // The code below orders the infos so that the default value and the min-max values are ordered at the beginning of the array.
+  const defaultInfo = [];
+  const minInfo = [];
+  const maxInfo = [];
+  const otherInfos = [];
+  additionalInfos.forEach((info) => {
+    if (info.name.startsWith('default')) {
+      defaultInfo.push(info);
+    } else if (info.name.startsWith('min')) {
+      minInfo.push(info);
+    } else if (info.name.startsWith('max')) {
+      maxInfo.push(info);
+    } else {
+      otherInfos.push(info);
+    }
   });
 
-  additionalInfo = reorderFields(additionalInfo, ['default']);
+  additionalInfos = defaultInfo.concat(minInfo, maxInfo, otherInfos);
 
-  return additionalInfo;
+  return additionalInfos;
 };
 
 export default extractAdditionalInfo;
