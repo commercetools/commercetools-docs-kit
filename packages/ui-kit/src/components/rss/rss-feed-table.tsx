@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { DocsDateFormat } from '../utils/dates';
-import Link from './link';
-import ContentNotifications from './content-notifications';
-import { colors, tokens, dimensions } from '../design-system';
+import { DocsDateFormat } from '../../utils/dates';
+import Link from '../link';
+import ContentNotifications from '../content-notifications';
+import { colors, tokens, dimensions } from '../../design-system';
 
 const Table = styled.table`
   width: 100%;

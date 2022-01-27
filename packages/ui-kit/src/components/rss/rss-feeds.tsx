@@ -1,26 +1,22 @@
 import React from 'react';
 import useSWR from 'swr';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
-import ContentNotifications from './content-notifications';
+import ContentNotifications from './../content-notifications';
 import RssFeedTable from './rss-feed-table';
 
 const firstDataForQuery = (node: ParentNode, query: string) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const firstChild: any = node.querySelector(query);
-  return firstChild?.data;
+  return firstChild?.textContent.trim();
 };
 
 // Inspired by https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
-async function parseRssFeed(url: string) {
-  const response = await fetch(url);
-  const rawBody = await response.text();
+const parseRssFeed = (rssString: string) => {
   const documentFragment = new window.DOMParser().parseFromString(
-    rawBody,
+    rssString,
     'text/xml'
   );
-
   const feedTitle = firstDataForQuery(documentFragment, 'title');
-
   const items = Array.from(documentFragment.querySelectorAll('item')).map(
     (el) => {
       const title = firstDataForQuery(el, 'title');
@@ -35,15 +31,19 @@ async function parseRssFeed(url: string) {
       };
     }
   );
-
   return { feedTitle, items };
+};
+async function fetchRssFeed(url: string) {
+  const response = await fetch(url);
+  const rawBody = await response.text();
+  return parseRssFeed(rawBody);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function fetcher(...args: any[]) {
   const promises = args.map(async (url) => {
     const releaseNoteUrl = url.replace(/\/feed.xml$/, '');
-    const feedData = await parseRssFeed(url);
+    const feedData = await fetchRssFeed(url);
     const feedName = feedData.feedTitle.replace(
       /^commercetools (.*) Release Notes$/,
       '$1'
@@ -60,7 +60,7 @@ async function fetcher(...args: any[]) {
 
 type DatedData = { pubDate: string };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const transformData = (data: any) => {
+const transformData = (data: any) => {
   // First, we need to get the oldest release note from each feed,
   // which is always the last entry of the list.
   const lastEntryOfList = data
@@ -140,3 +140,4 @@ type RssFeedsProps = {
 };
 
 export default RssFeeds;
+export { transformData, parseRssFeed, fetchRssFeed };

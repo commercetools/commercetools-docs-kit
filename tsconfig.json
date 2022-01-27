@@ -3,7 +3,8 @@
     "jsx": "react-jsx",
     "target": "es2019",
     "jsxImportSource": "@emotion/react",
-    "module": "esnext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true
