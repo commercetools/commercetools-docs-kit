@@ -11,7 +11,7 @@ import { FilterTitle } from './release-notes-filter-dates';
 
 const Container = styled.div`
   border-top: 1px solid ${designSystem.colors.light.borderInput};
-  padding-top: ${designSystem.dimensions.spacings.m};
+  padding: ${designSystem.dimensions.spacings.m} 0;
 `;
 const ClearAll = styled.button`
   border: none;
