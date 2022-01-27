@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/api-docs-smoke-test",
-  "version": "6.0.5",
+  "version": "6.0.6",
   "private": true,
   "scripts": {
     "start": "yarn develop",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-api-docs": "18.2.2",
-    "@commercetools-docs/gatsby-theme-docs": "18.2.2",
+    "@commercetools-docs/gatsby-theme-docs": "18.2.3",
     "@commercetools-docs/rmf-codegen": "13.10.0",
     "gatsby": "4.5.5",
     "gatsby-cli": "4.5.2",
