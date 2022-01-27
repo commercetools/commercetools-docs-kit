@@ -72,7 +72,7 @@ const transformData = (data: any) => {
     // to get the newest of them. This will be our last entry in the list.
     .reduce(
       (currentOldestEntry: DatedData, entry: DatedData, index: number) => {
-        if (index === 0) {
+        if (!entry || index === 0) {
           return entry;
         }
         return new Date(entry.pubDate) > new Date(currentOldestEntry.pubDate)
