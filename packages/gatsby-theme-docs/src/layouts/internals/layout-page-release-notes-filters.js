@@ -82,7 +82,6 @@ const ToggleMenuButton = styled.div`
   );
   right: ${designSystem.dimensions.spacings.m};
   cursor: pointer;
-  z-index: ${designSystem.dimensions.stacks.base};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: none;
