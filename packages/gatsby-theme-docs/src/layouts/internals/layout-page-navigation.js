@@ -56,7 +56,6 @@ const stickyContainerCss = css({
 const stuckContainerCss = css(stickyContainerCss, {
   maxHeight: '100vh',
   overflow: 'auto',
-  scrollbarWidth: 'thin',
 });
 
 const StickyContainer = (props) => {
@@ -219,7 +218,7 @@ const LayoutPageNavigation = (props) => {
     return modalPortalNode
       ? ReactDOM.createPortal(
           <Overlay
-            zIndex="22"
+            zIndex={designSystem.dimensions.stacks.aboveOverlay}
             justifyContent="flex-end"
             onClick={() => {
               setMenuOpen(false);
