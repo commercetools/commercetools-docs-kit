@@ -178,11 +178,11 @@ jobs:
       - name: Check links
         uses: JustinBeckwith/linkinator-action@v1.10.0
         with:
-          paths: ${{ github.event.deployment_status.target_url }}
+          paths: docskit-sha-${{ github.sha }}.commercetools.vercel.app
           config: linkinator.remote.config.json
           markdown: false
           # the docs production domain has to be rewritten to the preview URL to allow new pages to be created without the link checker
           # erroring on the canonical URL of the new page. Known compromise to not find links that point to the absolute production URL
           # but the docs kit is automatically making those a relative URL in authored content so the impact is low.
-          urlRewriteReplace: ${{ github.event.deployment_status.target_url }}
+          urlRewriteReplace: docskit-sha-${{ github.sha }}.commercetools.vercel.app
           urlRewriteSearch: https://docs.commercetools.com
