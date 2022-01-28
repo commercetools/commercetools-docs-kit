@@ -32,6 +32,7 @@ const SlidingContainer = styled.div`
   width: ${designSystem.dimensions.widths.pageNavigation};
   background-color: ${designSystem.colors.light.surfacePrimary};
   animation: ${slideInAnimation} 0.15s ease-out alternate;
+  padding: 0 ${designSystem.dimensions.spacings.m};
   height: 100%;
   overflow: auto;
 `;
@@ -48,7 +49,6 @@ const stickyContainerCss = css({
   position: 'sticky',
   top: 0,
   marginTop: `-1px`,
-  paddingLeft: '16px',
   padding: `1px ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.m}`,
 });
 const stuckContainerCss = css(stickyContainerCss, {
