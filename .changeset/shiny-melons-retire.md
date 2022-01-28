@@ -2,4 +2,4 @@
 '@commercetools-docs/gatsby-theme-docs': patch
 ---
 
-Missing `globalNotification` query field for homepage
+Scrolling through the release note topics is fixed.

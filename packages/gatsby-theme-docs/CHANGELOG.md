@@ -1,5 +1,31 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 18.2.3
+
+### Patch Changes
+
+- [#1211](https://github.com/commercetools/commercetools-docs-kit/pull/1211) [`0f0d5075`](https://github.com/commercetools/commercetools-docs-kit/commit/0f0d50759c205511cdfb86efb9745a64b4d1f25d) Thanks [@emmenko](https://github.com/emmenko)! - Keep flexible height for global notification for small viewports (as component is not sticky).
+
+## 18.2.2
+
+### Patch Changes
+
+- [#1209](https://github.com/commercetools/commercetools-docs-kit/pull/1209) [`3610dc6f`](https://github.com/commercetools/commercetools-docs-kit/commit/3610dc6f692d281f1a1ad37653aed2134b40175e) Thanks [@emmenko](https://github.com/emmenko)! - Improve layout of global notification, especially the relation with scroll top anchor positions to not overlap with notification.
+
+- Updated dependencies [[`3610dc6f`](https://github.com/commercetools/commercetools-docs-kit/commit/3610dc6f692d281f1a1ad37653aed2134b40175e)]:
+  - @commercetools-docs/ui-kit@18.2.2
+
+## 18.2.1
+
+### Patch Changes
+
+- [#1206](https://github.com/commercetools/commercetools-docs-kit/pull/1206) [`1a5b9aae`](https://github.com/commercetools/commercetools-docs-kit/commit/1a5b9aae72652d0faef1ecb99f1642bc9ce9a4fa) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies range versions
+
+* [#1207](https://github.com/commercetools/commercetools-docs-kit/pull/1207) [`52420756`](https://github.com/commercetools/commercetools-docs-kit/commit/5242075631a584c7af67444035d8f41ac2d878de) Thanks [@emmenko](https://github.com/emmenko)! - Missing `globalNotification` query field for homepage
+
+* Updated dependencies [[`1a5b9aae`](https://github.com/commercetools/commercetools-docs-kit/commit/1a5b9aae72652d0faef1ecb99f1642bc9ce9a4fa)]:
+  - @commercetools-docs/ui-kit@18.2.1
+
 ## 18.2.0
 
 ### Minor Changes

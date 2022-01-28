@@ -46,6 +46,10 @@ const Container = styled.div`
   }};
   padding: ${designSystem.dimensions.spacings.s};
 
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    max-height: ${designSystem.dimensions.heights.globalNotificationContent};
+    overflow: hidden;
+  }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     padding: ${designSystem.dimensions.spacings.s}
       ${designSystem.dimensions.spacings.xl};

@@ -13,6 +13,11 @@ const Root = styled.div`
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; /* enables "momentum" style scrolling */
 
+  scroll-padding-top: ${(props) =>
+    props.isGlobalNotificationVisible
+      ? `calc(${designSystem.dimensions.heights.globalNotificationContent} + ${designSystem.dimensions.spacings.s} * 3)`
+      : designSystem.dimensions.spacings.s};
+
   @media only screen and (${designSystem.dimensions.viewports.tablet}) {
     height: 100vh;
   }
@@ -44,7 +49,11 @@ const LayoutApplication = (props) => (
       websitePrimaryColor: props.websitePrimaryColor,
     }}
   >
-    <Root role="application" id="application">
+    <Root
+      role="application"
+      id="application"
+      isGlobalNotificationVisible={Boolean(props.globalNotification)}
+    >
       <Container {...props} />
     </Root>
     <div id="modal-portal" />
@@ -52,6 +61,10 @@ const LayoutApplication = (props) => (
 );
 LayoutApplication.propTypes = {
   websitePrimaryColor: PropTypes.string.isRequired,
+  globalNotification: PropTypes.shape({
+    notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
+    content: PropTypes.string.isRequired,
+  }),
 };
 
 export default LayoutApplication;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { keyframes } from '@emotion/react';
+import { keyframes, css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -9,6 +9,7 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import IconButton from '@commercetools-uikit/icon-button';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import { CloseIcon } from '@commercetools-uikit/icons';
+import { useInView } from 'react-intersection-observer';
 import { StackedLinesIndentedIconSvgIcon } from '../../icons';
 import { Overlay, SearchInput } from '../../components';
 import ReleaseNotesFilterDates from '../../components/release-notes-filter-dates';
@@ -28,10 +29,10 @@ const fadeInAnimation = keyframes`
 `;
 
 const SlidingContainer = styled.div`
+  width: ${designSystem.dimensions.widths.pageNavigation};
   background-color: ${designSystem.colors.light.surfacePrimary};
   animation: ${slideInAnimation} 0.15s ease-out alternate;
-  width: calc(${designSystem.dimensions.widths.pageNavigation});
-  padding: ${designSystem.dimensions.spacings.m};
+  padding: 0 ${designSystem.dimensions.spacings.m};
   height: 100%;
   overflow: auto;
 `;
@@ -41,22 +42,42 @@ const GridContainer = styled.div`
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
     grid-area: page-navigation;
-    width: ${designSystem.dimensions.widths.pageNavigation};
-  }
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    width: ${designSystem.dimensions.widths.pageNavigationSmall};
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: ${designSystem.dimensions.widths.pageNavigation};
   }
 `;
-const StickyContainer = styled.div`
-  position: sticky;
-  top: ${designSystem.dimensions.spacings.xxl};
-  margin: 0 0 ${designSystem.dimensions.spacings.s};
-  padding: 0 ${designSystem.dimensions.spacings.m}
-    ${designSystem.dimensions.spacings.m};
-`;
+
+const stickyContainerCss = css({
+  position: 'sticky',
+  top: 0,
+  marginTop: `-1px`,
+  padding: `1px ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.m}`,
+});
+const stuckContainerCss = css(stickyContainerCss, {
+  maxHeight: '100vh',
+  overflow: 'auto',
+});
+
+const StickyContainer = (props) => {
+  // this intersection observer only observes a one pixel high line outside the viewport.
+  // the sticky element has a one pixel negative margin and hence the observer exactly detects when
+  // the element is "stuck"
+  const [ref, isStuck] = useInView({
+    rootMargin: `1px 0px -100% 0px`,
+    threshold: 0,
+  });
+  return (
+    <div
+      ref={ref}
+      css={isStuck ? stuckContainerCss : stickyContainerCss}
+      {...props}
+    >
+      {props.children}
+    </div>
+  );
+};
+StickyContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const ReleasesTitleLink = styled.a`
   color: ${designSystem.colors.light.textSecondary};
   font-size: ${designSystem.typography.fontSizes.extraSmall};
@@ -82,6 +103,7 @@ const ToggleMenuButton = styled.div`
   );
   right: ${designSystem.dimensions.spacings.m};
   cursor: pointer;
+  z-index: ${designSystem.dimensions.stacks.base};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: none;
@@ -123,7 +145,10 @@ const LayoutPageReleaseNotesFilters = (props) => {
   }, []);
 
   const searchContainer = (
-    <SearchBox excludeFromSearchIndex={props.excludeFromSearchIndex}>
+    <SearchBox
+      key="search-container"
+      excludeFromSearchIndex={props.excludeFromSearchIndex}
+    >
       {props.isSearchBoxInView ? (
         <Blank />
       ) : (
@@ -173,6 +198,7 @@ const LayoutPageReleaseNotesFilters = (props) => {
     return modalPortalNode
       ? ReactDOM.createPortal(
           <Overlay
+            zIndex={designSystem.dimensions.stacks.aboveOverlay}
             justifyContent="flex-end"
             onClick={() => {
               setMenuOpen(false);
