@@ -49,6 +49,11 @@ module.exports = {
           },
         },
       ],
+      globalNotification: {
+        notificationType: 'info',
+        content:
+          'This is a global notification. You can _write_ **markdown** here!',
+      },
     }),
   ],
 };
