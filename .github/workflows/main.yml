@@ -23,8 +23,6 @@ jobs:
       DEPLOY_ENV: Preview
 
     steps:
-      - uses: hmarr/debug-action@v2
-
       - name: Detect Production Deploy
         if: github.event_name == 'push' && github.ref_name == 'main'
         run: |
@@ -60,9 +58,11 @@ jobs:
         env:
           ENABLE_SEARCH: 'true'
 
-      # FYI fails when run before build but would be better before (issues with the generated markdown component overrides)
-      - name: Lint text files
-        run: yarn run jest --projects jest.{eslint,stylelint,test,text}.config.js --maxWorkers=3 --reporters jest-silent-reporter
+      - name: Running linters and tests
+        run: |
+          yarn jest --projects jest.{eslint,stylelint,test,text}.config.js \
+            --maxWorkers=3 \
+            --reporters jest-silent-reporter
 
       - name: Deploy to Vercel (Production)
         if: ${{ env.DEPLOY_ENV == 'Production' }}
@@ -116,7 +116,6 @@ jobs:
           deployment_id: ${{ steps.start-deployment.outputs.deployment_id }}
 
       - name: Running Visual Regression Tests
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         run: yarn percy snapshot ./public
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS }}
@@ -124,7 +123,6 @@ jobs:
       # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L23-L30
       # https://github.com/marketplace/actions/cypress-io#custom-install
       - name: Restoring Cypress cache
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         # restore / cache the binary ourselves on Linux
         # see https://github.com/actions/cache
         id: cache-cypress
@@ -134,11 +132,9 @@ jobs:
           key: ${{ runner.os }}-cypress-${{ hashFiles('**/package.json') }}
 
       - name: Installing Cypress binary
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         run: yarn run cypress install && yarn run cypress cache list
 
       - name: Running End-to-End tests
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/docs-smoke-test' 'yarn run percy exec -- yarn test:e2e:docs-smoke-test'
         env:
           NODE_ENV: test
@@ -146,7 +142,6 @@ jobs:
           CYPRESS_CI: 'true'
 
       - name: Running API End-to-End tests
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
         run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/api-docs-smoke-test' 'yarn run percy exec -- yarn test:e2e:api-docs-smoke-test'
         env:
           NODE_ENV: test
@@ -156,7 +151,7 @@ jobs:
       - name: Uploading Cypress artifacts
         # Test run video was always captured, so this action uses "always()" condition
         uses: actions/upload-artifact@v2
-        if: ${{ failure() && env.DEPLOY_ENV == 'Preview' }}
+        if: failure()
         with:
           name: cypress-videos
           path: cypress/videos
