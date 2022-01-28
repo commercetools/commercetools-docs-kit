@@ -8,6 +8,8 @@ on:
     branches:
       - main
   pull_request:
+  repository_dispatch:
+    types: [manual-build-and-deploy]
 
 jobs:
   build_deploy_test:
@@ -156,3 +158,31 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+
+  link-check:
+    name: 'Check links'
+
+    needs: build_deploy_test
+
+    if: github.event_name != 'push' && github.ref_name != 'main'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Check links
+        uses: JustinBeckwith/linkinator-action@v1.10.0
+        with:
+          paths: ${{ github.event.deployment_status.target_url }}
+          config: linkinator.remote.config.json
+          markdown: false
+          # the docs production domain has to be rewritten to the preview URL to allow new pages to be created without the link checker
+          # erroring on the canonical URL of the new page. Known compromise to not find links that point to the absolute production URL
+          # but the docs kit is automatically making those a relative URL in authored content so the impact is low.
+          urlRewriteReplace: ${{ github.event.deployment_status.target_url }}
+          urlRewriteSearch: https://docs.commercetools.com
