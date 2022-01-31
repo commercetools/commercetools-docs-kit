@@ -16,6 +16,8 @@ const colorPresets = require('./color-presets');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
@@ -70,12 +72,31 @@ const resolverPassthrough =
     const mdxNode = context.nodeModel.getNodeById({
       id: source.parent,
     });
-    const field = type.getFields()[fieldName];
-    const result = await field.resolve(resolveNode(mdxNode), args, context, {
-      fieldName,
-    });
+    if (mdxNode) {
+      const field = type.getFields()[fieldName];
+      const result = await field.resolve(resolveNode(mdxNode), args, context, {
+        fieldName,
+      });
 
-    return processResult(result);
+      return processResult(result);
+    } else {
+      // on MDX syntax errors the MDX node does not exist.
+      // this emulates the output of the MDX v1 library to show an error to authors.
+      // It works when changing a previously working file. On initial load or start the page is a 404.
+      // Because the parent-child relationship is broken gatsby seems unable to recover after fixing the syntax error.
+      return isProd
+        ? null
+        : `
+      return function MDXContent() {
+        return mdx(
+          "code",
+          null,
+          "Gatsby could not find the MDX for this page. You may have a syntax errors in your MDX file, check the console for errors and RESTART the dev server."
+        );
+      };
+      MDXContent.isMDXComponent = true;
+      `;
+    }
   };
 
 exports.createSchemaCustomization = ({ actions, schema }) => {
