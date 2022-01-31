@@ -64,5 +64,28 @@
       "jounqin.vscode-mdx",
       "errata-ai.vale-server"
     ]
+  },
+  "launch": {
+    "configurations": [
+      {
+        "name": "docs-smoke-test (nodejs develop)",
+        "type": "pwa-node",
+        "request": "launch",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "program": "${workspaceRoot}/node_modules/.bin/gatsby",
+        "cwd": "${workspaceFolder}/websites/docs-smoke-test",
+        "args": [
+          "develop"
+        ],
+        "runtimeArgs": [
+          "--nolazy"
+        ],
+        "console": "integratedTerminal",
+        "stopOnEntry": false,
+      }
+    ],
+    "compounds": []
   }
 }
