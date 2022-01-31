@@ -84,6 +84,7 @@ public
 .idea
 .vscode/*
 !.vscode/spellright.dict
+!.vscode/launch.json
 
 # Cypress
 cypress/screenshots
