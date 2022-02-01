@@ -71,6 +71,7 @@ exceptions:
   - SSL
   - SSO
   - TLS # does not make sense to allow SSL but not TLS
+  - TSV
   - SVG
   - TCP
   - UPS
