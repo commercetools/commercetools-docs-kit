@@ -26,6 +26,7 @@ exceptions:
   - DOM
   - EUR
   - FAQ
+  - GBP
   - GET
   - GIF
   - GDPR
@@ -39,6 +40,7 @@ exceptions:
   - IMPEX
   - JAR
   - JPEG # Do not use JPG, use JPEG
+  - JPY
   - JSON
   - JSX
   - JVM
