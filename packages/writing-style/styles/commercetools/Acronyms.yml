@@ -15,6 +15,7 @@ exceptions:
   - ASCII # will only get worse when spelled out
   - AWS
   - CDN # "content delivery network" does not make it more understandable
+  - CHF
   - CLI
   - CORS
   - CPU
@@ -25,6 +26,7 @@ exceptions:
   - DOM
   - EUR
   - FAQ
+  - GBP
   - GET
   - GIF
   - GDPR
@@ -38,6 +40,7 @@ exceptions:
   - IMPEX
   - JAR
   - JPEG # Do not use JPG, use JPEG
+  - JPY
   - JSON
   - JSX
   - JVM
@@ -68,6 +71,7 @@ exceptions:
   - SSL
   - SSO
   - TLS # does not make sense to allow SSL but not TLS
+  - TSV
   - SVG
   - TCP
   - UPS
