@@ -13,70 +13,7 @@ export const pxToRem = (px: string, suffix = 'rem') => {
   return `${remNumber}${suffix}`;
 };
 
-// explicit types for the color part because the structure allows multiple instances
-// (light / dark,  primary / secondary for code blocks).
-// The rest of the design system is enough to be inferred
-export type ColorKey = keyof ColorSet;
-export type ColorSet = {
-  surfacePrimary: string;
-  surfaceSecondary1: string;
-  surfaceSecondary2: string;
-  surfaceSecondary3: string;
-  surfaceInlineCode: string;
-  surfaceCode: string;
-  surfaceCodeCopy: string;
-  surfaceCodeHighlight: string;
-  surfaceInfo: string;
-  surfaceBeta: string;
-  surfaceQuote: string;
-  surfaceWarning: string;
-  surfaceError: string;
-  surfaceSearchHighlight: string;
-  surfaceForSearchInputWhenDisabled: string;
-  surfaceForReleaseNoteTypeFix: string;
-  textPrimary: string;
-  textSecondary: string;
-  textFaded: string;
-  textCode: string;
-  textInfo: string;
-  textError: string;
-  textWarning: string;
-  textInverted: string;
-  textSearchHeading: string;
-  borderPrimary: string;
-  borderSecondary: string;
-  borderInput: string;
-  borderHighlight: string;
-  borderInfo: string;
-  borderForReleaseNoteTypeFix: string;
-  link: string;
-  linkHover: string;
-  linkNavigation: string;
-  codeBlocks: {
-    primary: CodeBlockColorSet;
-    secondary: CodeBlockColorSet;
-  };
-};
-export type CodeBlockColorSet = {
-  border: string;
-  surface: string;
-  surfaceHeader: string;
-  surfaceLanguageDropdown: string;
-  surfaceLanguageDropdownHover: string;
-  textHeader: string;
-  surfaceCopyIcon: string;
-  surfaceCopyIconHover: string;
-  surfaceCopyTooltip: string;
-  textCopyTooltip: string;
-  surfaceLineHighlight: string;
-  surfacePrompt: string;
-};
-export type Colors = {
-  light: ColorSet;
-  dark?: ColorSet;
-};
-
-export const colors: Colors = {
+export const colors = {
   light: {
     // Surfaces are used for backgrounds
     surfacePrimary: customProperties.colorSurface,
@@ -129,7 +66,7 @@ export const colors: Colors = {
     //     }}
     //   >
     //
-    // Do not use these properties directly, but always throw an emotion theme provider.
+    // Do not use these properties directly, but always through an emotion theme provider.
     codeBlocks: {
       primary: {
         border: customProperties.colorAccent40,
@@ -161,7 +98,7 @@ export const colors: Colors = {
       },
     },
   },
-};
+} as const;
 
 export const tokens = {
   borderRadiusForBetaFlag: customProperties.borderRadius4,
@@ -183,7 +120,7 @@ export const tokens = {
   shadowForClickableCardOnHover: `0 14px 28px 0 rgba(0, 0, 0, 0.25),
   0 10px 10px 0 rgba(0, 0, 0, 0.23)`,
   shadowForRssFeedTable: customProperties.shadow7,
-};
+} as const;
 
 export const dimensions = {
   heights: {
@@ -238,7 +175,7 @@ export const dimensions = {
     overlay: 20,
     aboveOverlay: 21,
   },
-};
+} as const;
 
 export const typography = {
   fontFamilies: {
@@ -280,9 +217,9 @@ export const typography = {
     cardNormalTitle: pxToRem('32px'),
     cardSmallTitle: pxToRem('26px'),
   },
-};
+} as const;
 
 export const uikitTheme = {
   fontFamilyDefault: typography.fontFamilies.primary,
   fontFamilyBody: typography.fontFamilies.primary,
-};
+} as const;
