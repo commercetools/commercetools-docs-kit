@@ -8,6 +8,7 @@ import {
 } from '@commercetools-docs/ui-kit';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { usePageData } from '../hooks/use-page-data';
 import { SearchSvgIcon } from '../icons';
@@ -91,15 +92,20 @@ const Container = styled.div`
   columns: auto ${designSystem.dimensions.widths.pageNavigationSmall};
   column-gap: ${designSystem.dimensions.spacings.l};
 `;
+
 const ColumnContainer = styled.div`
+  margin-bottom: ${(props) =>
+    props.hasSubSections
+      ? designSystem.dimensions.spacings.l
+      : designSystem.dimensions.spacings.s};
   break-inside: avoid-column;
-  margin-bottom: ${designSystem.dimensions.spacings.s};
   page-break-inside: avoid;
 `;
-const ChildrenContainer = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.m};
-  margin-top: ${designSystem.dimensions.spacings.s};
+
+const DashContainer = styled.div`
+  padding-left: 8px;
 `;
+
 const Link = styled.a`
   display: flex;
   align-items: center;
@@ -125,13 +131,14 @@ const SectionNavigation = (props) => {
     <>
       <Link href={item.url}>{item.title}</Link>
       {item.items && (
-        <ChildrenContainer>
-          <SpacingsStack scale="s">
-            {item.items.map((subitem, index) => (
+        <SpacingsStack scale="xs">
+          {item.items.map((subitem, index) => (
+            <SpacingsInline key={index} scale="xs">
+              <DashContainer>-</DashContainer>
               <SectionNavigation key={index} tocNode={subitem} />
-            ))}
-          </SpacingsStack>
-        </ChildrenContainer>
+            </SpacingsInline>
+          ))}
+        </SpacingsStack>
       )}
     </>
   );
@@ -173,6 +180,8 @@ const ChildSectionsNav = (props) => {
     return results.every(Boolean);
   });
 
+  console.log(filteredSectionToCList);
+
   const isValid = sectionToC && sectionToC.items && sectionToC.items.length > 0;
   return (
     <div>
@@ -202,7 +211,7 @@ const ChildSectionsNav = (props) => {
         {isValid ? (
           filteredSectionToCList.map((item, index) => {
             return (
-              <ColumnContainer key={index}>
+              <ColumnContainer key={index} hasSubSections={item.items}>
                 <SectionNavigation tocNode={item} />
               </ColumnContainer>
             );
