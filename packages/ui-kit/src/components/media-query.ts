@@ -7,8 +7,8 @@ type MediaQueryProps = {
   hideIfMatch?: boolean;
 };
 
-const MediaQuery = styled.div`
-  ${(props: MediaQueryProps) => {
+const MediaQuery = styled.div<MediaQueryProps>`
+  ${(props) => {
     switch (props.forViewport) {
       case 'mobile':
         return css`

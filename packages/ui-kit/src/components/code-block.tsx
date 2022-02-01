@@ -5,7 +5,7 @@ import { css, type Theme, ThemeProvider, useTheme } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import Highlight, { Language, defaultProps } from 'prism-react-renderer';
+import Highlight, { type Language, defaultProps } from 'prism-react-renderer';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import themePrimary from '../prism-themes/commercetools';
 import themeSecondary from '../prism-themes/commercetoolsLight';

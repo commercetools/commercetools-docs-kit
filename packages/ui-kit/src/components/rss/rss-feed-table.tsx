@@ -5,6 +5,7 @@ import { DocsDateFormat } from '../../utils/dates';
 import Link from '../link';
 import ContentNotifications from '../content-notifications';
 import { colors, tokens, dimensions } from '../../design-system';
+import { type FlatRssEntry } from './rss-feeds';
 
 const Table = styled.table`
   width: 100%;
@@ -32,7 +33,7 @@ const DateWrapper = styled.span`
   white-space: nowrap;
 `;
 
-const RssFeedTable = (props: RssReedTableProps) => {
+const RssFeedTable = (props: RssFeedTableProps) => {
   if (!props.data) {
     const message = 'Must pass data to RssFeedTable component.';
     if (process.env.NODE_ENV !== 'production') {
@@ -46,7 +47,7 @@ const RssFeedTable = (props: RssReedTableProps) => {
     <div>
       <Table data-table-name="rss-feed">
         <tbody>
-          {props.data.map((item: FeedEntry, index: number) => (
+          {props.data.map((item: FlatRssEntry, index: number) => (
             <tr key={`${item.title}${index}`}>
               <td
                 css={css`
@@ -90,15 +91,8 @@ const RssFeedTable = (props: RssReedTableProps) => {
   );
 };
 
-type FeedEntry = {
-  title: string;
-  pubDate: string;
-  link: string;
-  feedName: string;
-  releaseNoteUrl: string;
-};
-type RssReedTableProps = {
-  data: FeedEntry[];
+type RssFeedTableProps = {
+  data: FlatRssEntry[];
   hasMultipleSources: boolean;
 };
 

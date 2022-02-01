@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { transformData, parseRssFeed } from './rss-feeds';
+import { transformData, parseRssFeed, type FlatRssEntry } from './rss-feeds';
 
 describe('transformData', () => {
   const data = createTestData();
@@ -99,7 +99,7 @@ describe('parseRssString', () => {
   });
 });
 
-function createTestData() {
+function createTestData(): FlatRssEntry[][] {
   return [
     [
       {
@@ -107,18 +107,24 @@ function createTestData() {
         title: 'description',
         pubDate: 'Mon, 02 Nov 2020 00:00:00 GMT',
         releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/1',
       },
       {
         feedName: 'HTTP API',
         title: 'description',
         pubDate: 'Sun, 01 Nov 2020 00:00:00 GMT',
         releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/2',
       },
       {
         feedName: 'HTTP API',
         title: 'description',
         pubDate: 'Mon, 19 Oct 2020 00:00:00 GMT',
         releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/3',
       },
     ],
     [
@@ -128,6 +134,8 @@ function createTestData() {
         pubDate: 'Fri, 23 Oct 2020 00:00:00 GMT',
         releaseNoteUrl:
           'https://docs.commercetools.com/merchant-center/releases',
+        description: '',
+        link: 'https://example.com/4',
       },
       {
         feedName: 'Merchant Center',
@@ -135,13 +143,18 @@ function createTestData() {
         pubDate: 'Tue, 06 Oct 2020 00:00:00 GMT',
         releaseNoteUrl:
           'https://docs.commercetools.com/merchant-center/releases',
+        description: '',
+        link: 'https://example.com/5',
       },
+
       {
         feedName: 'Merchant Center',
         title: 'description',
         pubDate: 'Tue, 08 Sep 2020 00:00:00 GMT',
         releaseNoteUrl:
           'https://docs.commercetools.com/merchant-center/releases',
+        description: '',
+        link: 'https://example.com/6',
       },
     ],
     [
@@ -151,6 +164,8 @@ function createTestData() {
         pubDate: 'Tue, 29 Oct 2020 00:00:00 GMT',
         releaseNoteUrl:
           'https://docs.commercetools.com/custom-applications/releases',
+        description: '',
+        link: 'https://example.com/7',
       },
       {
         feedName: 'Custom Applications',
@@ -158,6 +173,8 @@ function createTestData() {
         pubDate: 'Fri, 25 Sep 2020 00:00:00 GMT',
         releaseNoteUrl:
           'https://docs.commercetools.com/custom-applications/releases',
+        description: '',
+        link: 'https://example.com/8',
       },
     ],
     [
@@ -166,6 +183,8 @@ function createTestData() {
         title: 'description',
         pubDate: 'Mon, 07 Sep 2020 00:00:00 GMT',
         releaseNoteUrl: 'https://docs.commercetools.com/import-api/releases',
+        description: '',
+        link: 'https://example.com/9',
       },
     ],
   ];

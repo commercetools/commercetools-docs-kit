@@ -1,7 +1,7 @@
 module.exports = {
   runner: 'jest-runner-stylelint',
   displayName: 'stylelint',
-  moduleFileExtensions: ['js'],
+  moduleFileExtensions: ['js', 'ts', 'tsx'],
   modulePathIgnorePatterns: ['dist', '.cache', 'public', '.spec.js'],
   testMatch: [
     '<rootDir>/packages/gatsby-theme-*/src/**/*.js',
