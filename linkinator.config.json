@@ -5,12 +5,14 @@
     "https://docs.commercetools.com",
     "https://commercetools.com/",
     "https://support.commercetools.com",
-    "/api$",
-    "/api/",
-    "/docs/",
-    "/sdk",
-    "/tutorials",
-    "/custom-applications",
-    "/merchant-center"
+    "/.+/api$",
+    "/.+/api/",
+    "/.+/custom-applications",
+    "/.+/docs/",
+    "/.+/import-export",
+    "/.+/merchant-center",
+    "/.+/sdk",
+    "/.+/tutorials",
+    "/.+/getting-started"
   ]
 }
