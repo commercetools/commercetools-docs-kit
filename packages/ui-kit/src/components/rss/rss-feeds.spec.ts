@@ -1,6 +1,3 @@
-/**
- * @jest-environment jsdom
- */
 import { transformData, parseRssFeed, type FlatRssEntry } from './rss-feeds';
 
 describe('transformData', () => {
