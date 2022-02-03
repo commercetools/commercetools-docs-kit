@@ -12,7 +12,7 @@ import themeSecondary from '../prism-themes/commercetoolsLight';
 import copyToClipboard from '../utils/copy-to-clipboard';
 
 const HighlightedContainer = styled.div`
-  background-color: ${(props) => props.theme.codeBlockColors.surface};
+  background-color: ${(props) => props.theme.surface};
   border-radius: ${tokens.borderRadiusForCodeBlock};
   margin: 0;
   padding: ${dimensions.spacings.s} ${dimensions.spacings.xs}
@@ -22,8 +22,7 @@ const HighlightedContainer = styled.div`
 const Preformatted = styled.pre`
   font-family: ${typography.fontFamilies.code};
   font-size: ${typography.fontSizes.small};
-  background-color: ${(props) =>
-    props.theme.codeBlockColors.surface} !important;
+  background-color: ${(props) => props.theme.surface} !important;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -32,11 +31,11 @@ const Preformatted = styled.pre`
 const CopyArea = styled.div`
   cursor: pointer;
   svg {
-    fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIcon};
+    fill: ${(props) => props.theme.surfaceCopyIcon};
   }
   :hover {
     svg {
-      fill: ${(props) => props.theme.codeBlockColors.surfaceCopyIconHover};
+      fill: ${(props) => props.theme.surfaceCopyIconHover};
     }
   }
 `;
@@ -47,9 +46,9 @@ const TooltipBodyComponent = (props: { children?: React.ReactNode }) => {
   return (
     <div
       css={css`
-        background-color: ${theme.codeBlockColors.surfaceCopyTooltip};
+        background-color: ${theme.surfaceCopyTooltip};
         border-radius: ${tokens.borderRadiusForTooltip};
-        color: ${theme.codeBlockColors.textCopyTooltip};
+        color: ${theme.textCopyTooltip};
         font-size: ${typography.fontSizes.extraSmall};
         padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
       `}
@@ -77,7 +76,7 @@ const getLineStyles = (
         margin: 0 0 0 -${dimensions.spacings.m};
         padding: 0 ${dimensions.spacings.s} 0 0;
         color: ${options.shouldShowPrompt
-          ? theme.codeBlockColors.surfacePrompt
+          ? theme.surfacePrompt
           : 'transparent'};
       }
     `;
@@ -87,7 +86,7 @@ const getLineStyles = (
       ? `calc(100% - ${dimensions.spacings.s})`
       : '100%';
     highlightLineStyles = css`
-      background-color: ${theme.codeBlockColors.surfaceLineHighlight};
+      background-color: ${theme.surfaceLineHighlight};
       width: ${width};
     `;
   }
@@ -213,10 +212,8 @@ const CodeBlock = (props: CodeBlockProps) => {
     }, 1500);
   };
 
-  const codeBlockTheme = {
-    codeBlockColors:
-      colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
-  };
+  const codeBlockTheme: Theme =
+    colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'];
 
   return (
     <ThemeProvider theme={codeBlockTheme}>

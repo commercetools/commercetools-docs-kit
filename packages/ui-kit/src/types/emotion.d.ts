@@ -1,7 +1,7 @@
 import '@emotion/react';
 
-// allow untyped Theming
+// https://emotion.sh/docs/typescript#define-a-theme
+// Backwards compatible option, allow untyped theming
 declare module '@emotion/react' {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  export interface Theme extends Record<string, any> {}
+  export interface Theme extends Record<string, string> {}
 }
