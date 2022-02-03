@@ -19,7 +19,7 @@
   "dependencies": {
     "@commercetools-docs/gatsby-theme-api-docs": "18.2.2",
     "@commercetools-docs/gatsby-theme-docs": "18.2.3",
-    "@commercetools-docs/rmf-codegen": "13.10.0",
+    "@commercetools-docs/rmf-codegen": "13.11.0",
     "gatsby": "4.6.1",
     "gatsby-cli": "4.6.0",
     "gatsby-source-filesystem": "4.6.0",
