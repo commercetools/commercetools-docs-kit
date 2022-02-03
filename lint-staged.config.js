@@ -26,7 +26,8 @@ module.exports = {
     // For that reason, we move the `--onlyChanged` flag next to it.
     'yarn lint:js --reporters=jest-silent-reporter --onlyChanged',
 
-    // TODO complains about type errors that a global "tsc --noEmit --skipLibCheck" does not complain about. To be investigated.
-    // 'tsc-files --noEmit',
+    // TODO remove the explicit inclusion of the emotion declaration once
+    // https://github.com/gustavopch/tsc-files/issues/20 is resolved
+    'tsc-files --noEmit packages/ui-kit/src/types/emotion.d.ts',
   ],
 };
