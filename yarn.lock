@@ -3053,7 +3053,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-api-specs/api@workspace:api-specs/api"
   dependencies:
-    "@commercetools-docs/rmf-codegen": 13.10.0
+    "@commercetools-docs/rmf-codegen": 13.11.0
   languageName: unknown
   linkType: soft
 
@@ -3071,7 +3071,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-transformer-mdx-introspection": 15.0.3
     "@commercetools-docs/gatsby-transformer-raml": 13.0.2
-    "@commercetools-docs/rmf-codegen": 13.10.0
+    "@commercetools-docs/rmf-codegen": 13.11.0
     "@commercetools-docs/ui-kit": 18.2.2
     "@commercetools-uikit/design-system": ^12.2.9
     "@commercetools-uikit/spacings-inline": ^12.2.9
@@ -3150,7 +3150,7 @@ __metadata:
     "@fontsource/roboto-mono": 4.5.1
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
-    "@sentry/browser": 6.17.3
+    "@sentry/browser": 6.17.4
     "@svgr/webpack": 6.2.1
     assert: 2.0.0
     cosmiconfig: ^7.0.0
@@ -3240,6 +3240,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@commercetools-docs/rmf-codegen@npm:13.11.0":
+  version: 13.11.0
+  resolution: "@commercetools-docs/rmf-codegen@npm:13.11.0"
+  bin:
+    rmf-codegen: bin/rmf-codegen.js
+  checksum: be37c72751fb8c6bb1cb0a4879a5b9ac050ce1ab6f07fef47f79a2bf68bcd654cc224ee644f27af7da4e3eb0a0f822006627ea04693b8b5a3a0a639bc9ddf5ca
+  languageName: node
+  linkType: hard
+
 "@commercetools-docs/ui-kit@18.2.2, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/ui-kit@workspace:packages/ui-kit"
@@ -3260,7 +3269,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-intl: ^5.7.0
-    swr: 1.2.0
+    swr: 1.2.1
     tiny-invariant: 1.2.0
   peerDependencies:
     react: 17.x
@@ -3809,7 +3818,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-api-docs": 18.2.2
     "@commercetools-docs/gatsby-theme-docs": 18.2.3
-    "@commercetools-docs/rmf-codegen": 13.10.0
+    "@commercetools-docs/rmf-codegen": 13.11.0
     gatsby: 4.6.1
     gatsby-cli: 4.6.0
     gatsby-source-filesystem: 4.6.0
@@ -6189,67 +6198,67 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:6.17.3":
-  version: 6.17.3
-  resolution: "@sentry/browser@npm:6.17.3"
+"@sentry/browser@npm:6.17.4":
+  version: 6.17.4
+  resolution: "@sentry/browser@npm:6.17.4"
   dependencies:
-    "@sentry/core": 6.17.3
-    "@sentry/types": 6.17.3
-    "@sentry/utils": 6.17.3
+    "@sentry/core": 6.17.4
+    "@sentry/types": 6.17.4
+    "@sentry/utils": 6.17.4
     tslib: ^1.9.3
-  checksum: d80e8992bf0408190f7ccbab572475503bf004c9f4de7a5d17ffa02d2883324dc509ebfc47b03e4c4b044cbd6f6e856563fc6bb02cbda37912871fea733a7bbe
+  checksum: cbc780efc5c897854f40911b8bd79e66f33ec604d08600def8100e621e2354f4786d7e18411a752ce58dcaa83345965f60f8776a364e5c086f12fda171618f07
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:6.17.3":
-  version: 6.17.3
-  resolution: "@sentry/core@npm:6.17.3"
+"@sentry/core@npm:6.17.4":
+  version: 6.17.4
+  resolution: "@sentry/core@npm:6.17.4"
   dependencies:
-    "@sentry/hub": 6.17.3
-    "@sentry/minimal": 6.17.3
-    "@sentry/types": 6.17.3
-    "@sentry/utils": 6.17.3
+    "@sentry/hub": 6.17.4
+    "@sentry/minimal": 6.17.4
+    "@sentry/types": 6.17.4
+    "@sentry/utils": 6.17.4
     tslib: ^1.9.3
-  checksum: b7c1e60da81c46da8ec5142a2f67179dd3895724320de5fa76193a4ccb356eaab1e084147872c5e25453661f4e0b25da57ea7f0d86a990ef88b5382291f9f8d1
+  checksum: daf80e9b2df5acaf8eeafabfddf24d30b2f9ab981843e1b01120f428803dc71c58e761005eec17d9004ffb483c210118bad50d774a4042929f0d55d3fb476104
   languageName: node
   linkType: hard
 
-"@sentry/hub@npm:6.17.3":
-  version: 6.17.3
-  resolution: "@sentry/hub@npm:6.17.3"
+"@sentry/hub@npm:6.17.4":
+  version: 6.17.4
+  resolution: "@sentry/hub@npm:6.17.4"
   dependencies:
-    "@sentry/types": 6.17.3
-    "@sentry/utils": 6.17.3
+    "@sentry/types": 6.17.4
+    "@sentry/utils": 6.17.4
     tslib: ^1.9.3
-  checksum: 3f12ef7eb8056a0e850ffcbcbf32cfd973d3604132c7d033bc05e6ebb7bebf7c90dfbc6c009a8504f7837d622e9275b45d0f5ad7dd3f9240e4e0cd0012916d96
+  checksum: 61c27230a87c071050730a0d8cbd9ae1f92c5007c9852900d288fed5bf35303bdba8acdcb6cad849540085ce81e072b89ba0e1ede249f6d940e81e06c6452af6
   languageName: node
   linkType: hard
 
-"@sentry/minimal@npm:6.17.3":
-  version: 6.17.3
-  resolution: "@sentry/minimal@npm:6.17.3"
+"@sentry/minimal@npm:6.17.4":
+  version: 6.17.4
+  resolution: "@sentry/minimal@npm:6.17.4"
   dependencies:
-    "@sentry/hub": 6.17.3
-    "@sentry/types": 6.17.3
+    "@sentry/hub": 6.17.4
+    "@sentry/types": 6.17.4
     tslib: ^1.9.3
-  checksum: af7866cc2a75f5914d11fbd4f3528fd32ce669756d042fafbb26df314d3b20e127780d7c30485737ff4b50930b774afdb2f7fc0b86345b43b551d36db54eefca
+  checksum: e67efeaf1be5eda8afc1a9254f485fdf861361cc007cf2da18aad09fd7bae98600c94f013e673e907551dda80bc2925353ace2c7709cac42ba2e1924b6da6f04
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:6.17.3":
-  version: 6.17.3
-  resolution: "@sentry/types@npm:6.17.3"
-  checksum: b3b38e725c113bc88fb546e67d9224179a920cdd7c8a9ea1bbf086f65e55f8cdafc720219d191a86b7a2057fc2d1d44beae1849675acd81a2b9278cd37892d41
+"@sentry/types@npm:6.17.4":
+  version: 6.17.4
+  resolution: "@sentry/types@npm:6.17.4"
+  checksum: e2c514b42cb27143150bcbea3438e65b96deebf5804ffbe6d889c5997cd448ec61ed486a4b903fd57d7297cfcc9cb33d2dd0b3a394830a66fe3b99c0fee05aab
   languageName: node
   linkType: hard
 
-"@sentry/utils@npm:6.17.3":
-  version: 6.17.3
-  resolution: "@sentry/utils@npm:6.17.3"
+"@sentry/utils@npm:6.17.4":
+  version: 6.17.4
+  resolution: "@sentry/utils@npm:6.17.4"
   dependencies:
-    "@sentry/types": 6.17.3
+    "@sentry/types": 6.17.4
     tslib: ^1.9.3
-  checksum: 7da5e7de04448de2d1443a3285b9217da8cd9fda71a945dcef1255cec6df92c8f8e4fcc7927131ae4df717648a7ef6b2a71a234b592b56e540c8ab4d19ccfc4d
+  checksum: 9c82b947d20a5324573963517fbde006f4b2b9568a788bd24889451eb922e4c726ff239793380d5af1a255c915f86d0c22d118e83eeedb5e0ec61c1b742127e9
   languageName: node
   linkType: hard
 
@@ -6587,9 +6596,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:5.16.1":
-  version: 5.16.1
-  resolution: "@testing-library/jest-dom@npm:5.16.1"
+"@testing-library/jest-dom@npm:5.16.2":
+  version: 5.16.2
+  resolution: "@testing-library/jest-dom@npm:5.16.2"
   dependencies:
     "@babel/runtime": ^7.9.2
     "@types/testing-library__jest-dom": ^5.9.1
@@ -6600,7 +6609,7 @@ __metadata:
     dom-accessibility-api: ^0.5.6
     lodash: ^4.17.15
     redent: ^3.0.0
-  checksum: c5e3b5b021b50478137f96b85f8f6f86d2b25555d2501548982e093986f9c089c7b394449c30283ca3e28a50e845587403d9124ad1b516c55cf9af20a0fbbde4
+  checksum: e4569df67c4c4998d2c60c6cf00ce2f1ac10c9397e0970320728c8be8f4e2c17a0e801705ce8a7384f7f5629b598a6f58db91d4401dde02044f5625405ca0988
   languageName: node
   linkType: hard
 
@@ -10040,7 +10049,7 @@ __metadata:
     "@svgr/plugin-jsx": 6.2.1
     "@svgr/plugin-svgo": 6.2.0
     "@testing-library/cypress": 8.0.2
-    "@testing-library/jest-dom": 5.16.1
+    "@testing-library/jest-dom": 5.16.2
     "@testing-library/react": 12.1.2
     babel-eslint: 10.1.0
     babel-jest: 27.4.6
@@ -24982,12 +24991,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swr@npm:1.2.0":
-  version: 1.2.0
-  resolution: "swr@npm:1.2.0"
+"swr@npm:1.2.1":
+  version: 1.2.1
+  resolution: "swr@npm:1.2.1"
   peerDependencies:
     react: ^16.11.0 || ^17.0.0 || ^18.0.0
-  checksum: 9858cbd1849fea5d4d9c63c90b8115ffdc27ddd5500d37f43d6fe58fc57777846fc8e9bf2b12a954b5e8328eac38ecccfa16c5a08afe00a48dfb828516e208f7
+  checksum: 87f6093f468dc76f31d7dc7bdd8f925cd9d8a8e8062eecaf6e17ba4ffeb4d5aebe01e73e0cf30ef0e913121f630c33e393eeff8aab6e5479cb3291cd7f2d7dca
   languageName: node
   linkType: hard
 
