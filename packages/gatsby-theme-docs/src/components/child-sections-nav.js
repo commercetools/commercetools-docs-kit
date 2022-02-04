@@ -127,8 +127,8 @@ const SectionNavigation = (props) => {
       {props.isSubItem ? (
         <Link href={item.url}>
           <SpacingsInline scale="xs">
-            <div>-</div>
-            <div>{item.title}</div>
+            <span>-</span>
+            <span>{item.title}</span>
           </SpacingsInline>
         </Link>
       ) : (
