@@ -7,7 +7,6 @@ import {
   createStyledIcon,
 } from '@commercetools-docs/ui-kit';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
-import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { usePageData } from '../hooks/use-page-data';
@@ -102,10 +101,6 @@ const ColumnContainer = styled.div`
   page-break-inside: avoid;
 `;
 
-const DashContainer = styled.div`
-  padding-left: 8px;
-`;
-
 const Link = styled.a`
   display: flex;
   align-items: center;
@@ -129,16 +124,22 @@ const SectionNavigation = (props) => {
   const item = props.tocNode;
   return (
     <>
-      <Link href={item.url}>{item.title}</Link>
+      {props.isSubItem ? (
+        <Link href={item.url}>
+          <SpacingsInline scale="xs">
+            <div>-</div>
+            <div>{item.title}</div>
+          </SpacingsInline>
+        </Link>
+      ) : (
+        <Link href={item.url}>{item.title}</Link>
+      )}
       {item.items && (
-        <SpacingsStack scale="xs">
+        <>
           {item.items.map((subitem, index) => (
-            <SpacingsInline key={index} scale="xs">
-              <DashContainer>-</DashContainer>
-              <SectionNavigation key={index} tocNode={subitem} />
-            </SpacingsInline>
+            <SectionNavigation key={index} tocNode={subitem} isSubItem />
           ))}
-        </SpacingsStack>
+        </>
       )}
     </>
   );
@@ -154,6 +155,7 @@ const itemsType = PropTypes.arrayOf(
   })
 );
 SectionNavigation.propTypes = {
+  isSubItem: PropTypes.bool,
   tocNode: PropTypes.shape({
     url: PropTypes.string,
     title: PropTypes.string,
@@ -168,19 +170,48 @@ const ChildSectionsNav = (props) => {
     findCurrentSection(props.parent, pageData.tableOfContents)
   );
 
-  const filteredSectionToCList = sectionToC.items.filter((item) => {
+  const filteredSectionToCList = [];
+  sectionToC.items.forEach((item) => {
+    let matchedItems = [];
     const filterItem = item.title.toLowerCase();
     const values = searchValue.toLowerCase().split(/\W+/);
     const results = values.map((term) => {
       if (term === '' || filterItem.includes(term)) {
         return true;
       }
+      if (item.items) {
+        item.items.forEach((subItem) => {
+          const filterItem = subItem.title.toLowerCase();
+          const subResults = values.map((term) => {
+            if (term === '' || filterItem.includes(term)) {
+              return true;
+            }
+            return false;
+          });
+          if (subResults.every(Boolean) && !matchedItems.includes(subItem)) {
+            matchedItems.push(subItem);
+          }
+        });
+        if (matchedItems.length > 0) {
+          return true;
+        }
+        return false;
+      }
       return false;
     });
-    return results.every(Boolean);
+    if (results.every(Boolean)) {
+      if (matchedItems.length > 0) {
+        const modifiedItem = {
+          title: item.title,
+          url: item.url,
+          items: matchedItems,
+        };
+        filteredSectionToCList.push(modifiedItem);
+      } else {
+        filteredSectionToCList.push(item);
+      }
+    }
   });
-
-  console.log(filteredSectionToCList);
 
   const isValid = sectionToC && sectionToC.items && sectionToC.items.length > 0;
   return (
