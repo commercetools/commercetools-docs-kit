@@ -55,6 +55,9 @@ jobs:
           # https://github.com/marketplace/actions/cypress-io#custom-install
           CYPRESS_INSTALL_BINARY: 0
 
+      - name: Running static type checking
+        run: yarn typecheck
+
       - name: Building Websites
         run: yarn build
         env:
@@ -98,7 +101,6 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          vercel-args: ${{ secrets.VERCEL_ARGS}}
           scope: commercetools
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
           # there are length restrictions to domains and only *.commercetools.vercel.app works

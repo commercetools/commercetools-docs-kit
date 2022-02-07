@@ -17,7 +17,7 @@
   "module": "dist/commercetools-docs-ui-kit.esm.js",
   "files": ["dist", "package.json", "LICENSE", "README.md"],
   "scripts": {
-    "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
+    "generate-icons": "svgr -d src/icons/generated --typescript -- src/icons/svg"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.7",
@@ -34,10 +34,15 @@
     "prism-react-renderer": "1.2.1",
     "prop-types": "15.8.1",
     "react-intl": "^5.7.0",
+    "react-is": "17.0.2",
     "swr": "1.2.1",
     "tiny-invariant": "1.2.0"
   },
   "devDependencies": {
+    "@svgr/cli": "6.2.1",
+    "@types/react": "17.0.38",
+    "@types/react-dom": "17.0.11",
+    "@types/react-is": "17.0.3",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },

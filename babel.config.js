@@ -1,3 +1,4 @@
+// should track https://github.com/commercetools/ui-kit/blob/main/babel.config.js as suitable
 module.exports = {
   presets: [
     [
@@ -9,4 +10,5 @@ module.exports = {
       },
     ],
   ],
+  plugins: ['babel-plugin-typescript-to-proptypes'],
 };

@@ -491,7 +491,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.16.7":
+"@babel/helper-module-imports@npm:^7.12.5, @babel/helper-module-imports@npm:^7.16.7":
   version: 7.16.7
   resolution: "@babel/helper-module-imports@npm:7.16.7"
   dependencies:
@@ -1479,6 +1479,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-syntax-typescript@npm:^7.12.1, @babel/plugin-syntax-typescript@npm:^7.16.7":
+  version: 7.16.7
+  resolution: "@babel/plugin-syntax-typescript@npm:7.16.7"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.16.7
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 661e636060609ede9a402e22603b01784c21fabb0a637e65f561c8159351fe0130bbc11fdefe31902107885e3332fc34d95eb652ac61d3f61f2d61f5da20609e
+  languageName: node
+  linkType: hard
+
 "@babel/plugin-syntax-typescript@npm:^7.16.0, @babel/plugin-syntax-typescript@npm:^7.7.2":
   version: 7.16.5
   resolution: "@babel/plugin-syntax-typescript@npm:7.16.5"
@@ -1487,17 +1498,6 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: 73454e8e9d5be92304d60d457203b43e04a9d331c4234eefad390a3a4d36a30d75b211ba9e98205e0b322a6c178e46b5852da35889eef9183549d6589d04a01e
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-syntax-typescript@npm:^7.16.7":
-  version: 7.16.7
-  resolution: "@babel/plugin-syntax-typescript@npm:7.16.7"
-  dependencies:
-    "@babel/helper-plugin-utils": ^7.16.7
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 661e636060609ede9a402e22603b01784c21fabb0a637e65f561c8159351fe0130bbc11fdefe31902107885e3332fc34d95eb652ac61d3f61f2d61f5da20609e
   languageName: node
   linkType: hard
 
@@ -2788,7 +2788,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.16.7, @babel/types@npm:^7.16.8":
+"@babel/types@npm:^7.12.6, @babel/types@npm:^7.16.7, @babel/types@npm:^7.16.8":
   version: 7.16.8
   resolution: "@babel/types@npm:7.16.8"
   dependencies:
@@ -3061,7 +3061,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-api-specs/test@workspace:api-specs/test"
   dependencies:
-    "@commercetools-docs/rmf-codegen": 13.10.0
+    "@commercetools-docs/rmf-codegen": 13.11.0
   languageName: unknown
   linkType: soft
 
@@ -3231,15 +3231,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/rmf-codegen@npm:13.10.0":
-  version: 13.10.0
-  resolution: "@commercetools-docs/rmf-codegen@npm:13.10.0"
-  bin:
-    rmf-codegen: bin/rmf-codegen.js
-  checksum: 3aa59117933363aadbe668cd884333d709cd44a78015f4f1e50d7c83c030ec3160dfd08ebed0f46176d479259097f8fa81f296a7a909b9b11332b4713e171acb
-  languageName: node
-  linkType: hard
-
 "@commercetools-docs/rmf-codegen@npm:13.11.0":
   version: 13.11.0
   resolution: "@commercetools-docs/rmf-codegen@npm:13.11.0"
@@ -3262,6 +3253,10 @@ __metadata:
     "@commercetools-uikit/tooltip": ^12.2.9
     "@emotion/react": ^11.7.1
     "@emotion/styled": ^11.6.0
+    "@svgr/cli": 6.2.1
+    "@types/react": 17.0.38
+    "@types/react-dom": 17.0.11
+    "@types/react-is": 17.0.3
     lodash.escape: 4.0.1
     lodash.throttle: 4.1.1
     prism-react-renderer: 1.2.1
@@ -3269,6 +3264,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-intl: ^5.7.0
+    react-is: 17.0.2
     swr: 1.2.1
     tiny-invariant: 1.2.0
   peerDependencies:
@@ -7137,7 +7133,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-is@npm:^17.0.0":
+"@types/react-dom@npm:17.0.11":
+  version: 17.0.11
+  resolution: "@types/react-dom@npm:17.0.11"
+  dependencies:
+    "@types/react": "*"
+  checksum: 4d5730dffbef86c887cecad7e3cecda424ce6a64d0b5441c63b5b015d48219868660a2bb1aa15e897e565ad8867fa6b885d4358b04e1c4e589ba4c07c3fda55c
+  languageName: node
+  linkType: hard
+
+"@types/react-is@npm:17.0.3, @types/react-is@npm:^17.0.0":
   version: 17.0.3
   resolution: "@types/react-is@npm:17.0.3"
   dependencies:
@@ -7163,6 +7168,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: e68b0d59aa69577fc6a6d654b25d5d8408625498f4c483f160b557fac21e840f6e8807cbde93e9f039949b6d624a019b1990d18499c1d65aecf3605c25e30242
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:17.0.38":
+  version: 17.0.38
+  resolution: "@types/react@npm:17.0.38"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 4079f4f959cd4a4bfaeda8b89fe8a1b1f8bdc9d87acfdc5f74a0b39cec9ec6a470724357c62778c0f063180b360c250e920c5a142f1dbcda67d9cc25a6d43a85
   languageName: node
   linkType: hard
 
@@ -8638,6 +8654,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-typescript-to-proptypes@npm:2.0.0":
+  version: 2.0.0
+  resolution: "babel-plugin-typescript-to-proptypes@npm:2.0.0"
+  dependencies:
+    "@babel/helper-module-imports": ^7.12.5
+    "@babel/plugin-syntax-typescript": ^7.12.1
+    "@babel/types": ^7.12.6
+  peerDependencies:
+    "@babel/core": ^7.0.0
+    typescript: ^4.0.0
+  checksum: 7eef77c5ffd8face65a199d6f23a0fbab2e464c8bd8fcf1e3458b3682bebb08fa4a6fd53cd61564ab5d845ba2ccbabf22a6bb30609fa9b843e1e709ab98715f2
+  languageName: node
+  linkType: hard
+
 "babel-polyfill@npm:^6.26.0":
   version: 6.26.0
   resolution: "babel-polyfill@npm:6.26.0"
@@ -10053,6 +10083,7 @@ __metadata:
     "@testing-library/react": 12.1.2
     babel-eslint: 10.1.0
     babel-jest: 27.4.6
+    babel-plugin-typescript-to-proptypes: 2.0.0
     core-js: 3.21.0
     cross-env: 7.0.3
     cypress: 9.4.1
@@ -10081,6 +10112,7 @@ __metadata:
     stylelint-config-prettier: 9.0.3
     stylelint-config-standard: 24.0.0
     stylelint-order: 5.0.0
+    tsc-files: ^1.1.3
     typescript: 4.5.5
     wait-on: 6.0.0
   languageName: unknown
@@ -25599,6 +25631,17 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 356e2647b8b1e6ab00380c0537fa569b63bd9b6f006cc40fd650f81fae1817bd8fecc075300036950d8f45c1d85b95be33cd1e48a1a424a7d86c3dbb42bf60e5
+  languageName: node
+  linkType: hard
+
+"tsc-files@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "tsc-files@npm:1.1.3"
+  peerDependencies:
+    typescript: ">=3"
+  bin:
+    tsc-files: lib/index.js
+  checksum: dd21524d9de841edf65278a00fe963679773a1dbde0b9316cc3ca9aed60b8903dae4c8819974ead0ab28efde7e1c112a572c8152050e02a3653d7b6416009605
   languageName: node
   linkType: hard
 

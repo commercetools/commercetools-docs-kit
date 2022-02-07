@@ -4,10 +4,16 @@
   "parser": "babel",
   "overrides": [
     {
+      "files": "*.mdx",
+      "options": { "parser": "markdown" }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "options": { "parser": "typescript" }
+    },
+    {
       "files": "*.json",
-      "options": {
-        "parser": "json"
-      }
+      "options": { "parser": "json" }
     },
     {
       "files": "*.raml",
