@@ -7,7 +7,7 @@ import {
   createStyledIcon,
 } from '@commercetools-docs/ui-kit';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
-import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { usePageData } from '../hooks/use-page-data';
 import { SearchSvgIcon } from '../icons';
@@ -91,15 +91,16 @@ const Container = styled.div`
   columns: auto ${designSystem.dimensions.widths.pageNavigationSmall};
   column-gap: ${designSystem.dimensions.spacings.l};
 `;
+
 const ColumnContainer = styled.div`
+  margin-bottom: ${(props) =>
+    props.hasSubSections
+      ? designSystem.dimensions.spacings.l
+      : designSystem.dimensions.spacings.s};
   break-inside: avoid-column;
-  margin-bottom: ${designSystem.dimensions.spacings.s};
   page-break-inside: avoid;
 `;
-const ChildrenContainer = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.m};
-  margin-top: ${designSystem.dimensions.spacings.s};
-`;
+
 const Link = styled.a`
   display: flex;
   align-items: center;
@@ -123,15 +124,22 @@ const SectionNavigation = (props) => {
   const item = props.tocNode;
   return (
     <>
-      <Link href={item.url}>{item.title}</Link>
+      {props.isSubItem ? (
+        <Link href={item.url}>
+          <SpacingsInline scale="xs">
+            <span>-</span>
+            <span>{item.title}</span>
+          </SpacingsInline>
+        </Link>
+      ) : (
+        <Link href={item.url}>{item.title}</Link>
+      )}
       {item.items && (
-        <ChildrenContainer>
-          <SpacingsStack scale="s">
-            {item.items.map((subitem, index) => (
-              <SectionNavigation key={index} tocNode={subitem} />
-            ))}
-          </SpacingsStack>
-        </ChildrenContainer>
+        <>
+          {item.items.map((subitem, index) => (
+            <SectionNavigation key={index} tocNode={subitem} isSubItem />
+          ))}
+        </>
       )}
     </>
   );
@@ -147,6 +155,7 @@ const itemsType = PropTypes.arrayOf(
   })
 );
 SectionNavigation.propTypes = {
+  isSubItem: PropTypes.bool,
   tocNode: PropTypes.shape({
     url: PropTypes.string,
     title: PropTypes.string,
@@ -161,16 +170,41 @@ const ChildSectionsNav = (props) => {
     findCurrentSection(props.parent, pageData.tableOfContents)
   );
 
-  const filteredSectionToCList = sectionToC.items.filter((item) => {
+  const filteredSectionToCList = [];
+  sectionToC.items.forEach((item) => {
+    let matchedItems = [];
     const filterItem = item.title.toLowerCase();
     const values = searchValue.toLowerCase().split(/\W+/);
     const results = values.map((term) => {
       if (term === '' || filterItem.includes(term)) {
         return true;
       }
+      if (item.items) {
+        item.items.forEach((subItem) => {
+          const filterItem = subItem.title.toLowerCase();
+          const subResults = values.map(
+            (term) => term === '' || filterItem.includes(term)
+          );
+          if (subResults.every(Boolean) && !matchedItems.includes(subItem)) {
+            matchedItems.push(subItem);
+          }
+        });
+        return matchedItems.length > 0;
+      }
       return false;
     });
-    return results.every(Boolean);
+    if (results.every(Boolean)) {
+      if (matchedItems.length > 0) {
+        const modifiedItem = {
+          title: item.title,
+          url: item.url,
+          items: matchedItems,
+        };
+        filteredSectionToCList.push(modifiedItem);
+      } else {
+        filteredSectionToCList.push(item);
+      }
+    }
   });
 
   const isValid = sectionToC && sectionToC.items && sectionToC.items.length > 0;
@@ -202,7 +236,7 @@ const ChildSectionsNav = (props) => {
         {isValid ? (
           filteredSectionToCList.map((item, index) => {
             return (
-              <ColumnContainer key={index}>
+              <ColumnContainer key={index} hasSubSections={item.items}>
                 <SectionNavigation tocNode={item} />
               </ColumnContainer>
             );
