@@ -1,5 +1,21 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 18.3.0
+
+### Minor Changes
+
+- [#1228](https://github.com/commercetools/commercetools-docs-kit/pull/1228) [`26c3a2fc`](https://github.com/commercetools/commercetools-docs-kit/commit/26c3a2fc4648b96328783efcecda0e606d449a18) Thanks [@timonrey](https://github.com/timonrey)! - Subsections are now supported by the child section navigator
+
+### Patch Changes
+
+- [#1221](https://github.com/commercetools/commercetools-docs-kit/pull/1221) [`b7626e50`](https://github.com/commercetools/commercetools-docs-kit/commit/b7626e50deb9679c1a164a944000b72a41ff1977) Thanks [@nkuehn](https://github.com/nkuehn)! - Handle MDX crashes (usually syntax errors).
+  At least a little - users still need to restart the dev server.
+
+* [#1213](https://github.com/commercetools/commercetools-docs-kit/pull/1213) [`419db6d5`](https://github.com/commercetools/commercetools-docs-kit/commit/419db6d5021c4742c3f5dd0259e15b41eee93440) Thanks [@timonrey](https://github.com/timonrey)! - Scrolling through the release note topics is fixed.
+
+* Updated dependencies [[`2e69493b`](https://github.com/commercetools/commercetools-docs-kit/commit/2e69493bc8091d07266ba3ae3d261973b9058699)]:
+  - @commercetools-docs/ui-kit@18.3.0
+
 ## 18.2.3
 
 ### Patch Changes

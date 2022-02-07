@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.0.11
+
+### Patch Changes
+
+- [#1220](https://github.com/commercetools/commercetools-docs-kit/pull/1220) [`890dc3db`](https://github.com/commercetools/commercetools-docs-kit/commit/890dc3db00f97434f0cdc60d3e0efcbcbbcb33e3) Thanks [@adinakleine](https://github.com/adinakleine)! - Update writing style checker
+
 ## 3.0.10
 
 ### Patch Changes
