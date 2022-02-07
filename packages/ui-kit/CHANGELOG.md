@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 18.3.0
+
+### Minor Changes
+
+- [#1217](https://github.com/commercetools/commercetools-docs-kit/pull/1217) [`2e69493b`](https://github.com/commercetools/commercetools-docs-kit/commit/2e69493bc8091d07266ba3ae3d261973b9058699) Thanks [@nkuehn](https://github.com/nkuehn)! - Added Typescript Support in the UI-Kit library
+
 ## 18.2.2
 
 ### Patch Changes
