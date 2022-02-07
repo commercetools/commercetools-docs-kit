@@ -18,7 +18,7 @@ const H1 = styled.h1`
   font-size: ${typography.fontSizes.h1};
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.15;
-  color: ${(props) => props.theme.websitePrimaryColor};
+  color: ${(props) => props.theme.websitePrimaryColor!};
 
   /* H1 is the page title and used outside the Typography wrappers so it directly has a margin */
   margin: 0 0 ${dimensions.spacings.s};

@@ -28,6 +28,6 @@ module.exports = {
 
     // TODO remove the explicit inclusion of the emotion declaration once
     // https://github.com/gustavopch/tsc-files/issues/20 is resolved
-    'tsc-files --noEmit packages/ui-kit/src/types/emotion.d.ts',
+    'tsc-files --noEmit packages/ui-kit/src/emotion.d.ts',
   ],
 };

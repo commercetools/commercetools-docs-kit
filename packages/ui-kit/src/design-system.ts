@@ -13,7 +13,72 @@ export const pxToRem = (px: string, suffix = 'rem') => {
   return `${remNumber}${suffix}`;
 };
 
-export const colors = {
+export type ThemeColorTokens = {
+  // Surfaces are used for backgrounds
+  surfacePrimary: string;
+  surfaceSecondary1: string;
+  surfaceSecondary2: string;
+  surfaceSecondary3: string;
+  surfaceInlineCode: string;
+  surfaceCode: string;
+  surfaceCodeCopy: string;
+  surfaceCodeHighlight: string;
+  surfaceInfo: string;
+  surfaceBeta: string;
+  surfaceQuote: string;
+  surfaceWarning: string;
+  surfaceError: string;
+  surfaceSearchHighlight: string;
+  surfaceForSearchInputWhenDisabled: string;
+  surfaceForReleaseNoteTypeFix: string;
+  // Different tones of text
+  textPrimary: string;
+  textSecondary: string;
+  textFaded: string;
+  textCode: string;
+  textInfo: string;
+  textError: string;
+  textWarning: string;
+  textInverted: string;
+  textSearchHeading: string;
+  // Different tones of border colors
+  borderPrimary: string;
+  borderSecondary: string;
+  borderInput: string;
+  borderHighlight: string;
+  borderInfo: string;
+  borderForReleaseNoteTypeFix: string;
+  // Links
+  link: string;
+  linkHover: string;
+  linkNavigation: string;
+};
+
+export type ThemeCodeBlocksColorTokens = {
+  border: string;
+  surface: string;
+  surfaceHeader: string;
+  surfaceLanguageDropdown: string;
+  surfaceLanguageDropdownHover: string;
+  textHeader: string;
+  surfaceCopyIcon: string;
+  surfaceCopyIconHover: string;
+  surfaceCopyTooltip: string;
+  textCopyTooltip: string;
+  surfaceLineHighlight: string;
+  surfacePrompt: string;
+};
+
+export type ThemeColors = {
+  light: ThemeColorTokens & {
+    codeBlocks: {
+      primary: ThemeCodeBlocksColorTokens;
+      secondary: ThemeCodeBlocksColorTokens;
+    };
+  };
+};
+
+export const colors: ThemeColors = {
   light: {
     // Surfaces are used for backgrounds
     surfacePrimary: customProperties.colorSurface,
@@ -98,7 +163,7 @@ export const colors = {
       },
     },
   },
-} as const;
+};
 
 export const tokens = {
   borderRadiusForBetaFlag: customProperties.borderRadius4,

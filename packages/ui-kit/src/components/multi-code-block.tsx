@@ -8,16 +8,16 @@ import parseCodeBlockOptions from '../utils/code-block-parse-options';
 import CodeBlock from './code-block';
 
 export const Container = styled.div`
-  background-color: ${(props) => props.theme.codeBlockColors.surface};
-  border: 1px solid ${(props) => props.theme.codeBlockColors.border};
+  background-color: ${(props) => props.theme.codeBlockColors!.surface};
+  border: 1px solid ${(props) => props.theme.codeBlockColors!.border};
   border-radius: ${tokens.borderRadiusForCodeBlock};
   word-break: break-word;
 `;
 const Header = styled.div`
-  background-color: ${(props) => props.theme.codeBlockColors.surfaceHeader};
+  background-color: ${(props) => props.theme.codeBlockColors!.surfaceHeader};
   border-radius: ${tokens.borderRadiusForCodeBlock}
     ${tokens.borderRadiusForCodeBlock} 0 0;
-  border-bottom: 1px solid ${(props) => props.theme.codeBlockColors.border};
+  border-bottom: 1px solid ${(props) => props.theme.codeBlockColors!.border};
   padding: ${dimensions.spacings.s} ${dimensions.spacings.m};
 `;
 const HeaderInner = styled.div`
@@ -26,7 +26,7 @@ const HeaderInner = styled.div`
   grid-template-columns: auto 1fr;
 `;
 const HeaderText = styled.span`
-  color: ${(props) => props.theme.codeBlockColors.textHeader};
+  color: ${(props) => props.theme.codeBlockColors!.textHeader};
 `;
 
 const getCaretSvgUrl = (color: string) =>
@@ -35,7 +35,7 @@ const LanguagesDropDownWrapper = styled.div`
   /* stylelint-disable function-url-quotes */
   background-image: ${(props) =>
     getCaretSvgUrl(
-      props.theme.codeBlockColors.surfaceLanguageDropdown.replace('#', '')
+      props.theme.codeBlockColors!.surfaceLanguageDropdown.replace('#', '')
     )};
   background-repeat: no-repeat, repeat;
   background-position: right 0 top 50%, 0 0;
@@ -45,7 +45,7 @@ const LanguagesDropDown = styled.select`
   display: block;
   font-size: ${typography.fontSizes.body};
   line-height: ${typography.lineHeights.body};
-  color: ${(props) => props.theme.codeBlockColors.surfaceLanguageDropdown};
+  color: ${(props) => props.theme.codeBlockColors!.surfaceLanguageDropdown};
   padding-right: ${dimensions.spacings.m};
   box-sizing: border-box;
   cursor: pointer;
@@ -63,7 +63,7 @@ const LanguagesDropDown = styled.select`
 
   :hover {
     color: ${(props) =>
-      props.theme.codeBlockColors.surfaceLanguageDropdownHover};
+      props.theme.codeBlockColors!.surfaceLanguageDropdownHover};
   }
 
   :focus {
