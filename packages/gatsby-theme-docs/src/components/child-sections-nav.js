@@ -182,20 +182,14 @@ const ChildSectionsNav = (props) => {
       if (item.items) {
         item.items.forEach((subItem) => {
           const filterItem = subItem.title.toLowerCase();
-          const subResults = values.map((term) => {
-            if (term === '' || filterItem.includes(term)) {
-              return true;
-            }
-            return false;
-          });
+          const subResults = values.map(
+            (term) => term === '' || filterItem.includes(term)
+          );
           if (subResults.every(Boolean) && !matchedItems.includes(subItem)) {
             matchedItems.push(subItem);
           }
         });
-        if (matchedItems.length > 0) {
-          return true;
-        }
-        return false;
+        return matchedItems.length > 0;
       }
       return false;
     });
