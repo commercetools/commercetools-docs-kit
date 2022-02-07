@@ -37,6 +37,7 @@
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
+    "@babel/core": "^7.17.0",
     "@babel/helper-define-map": "^7.16.7",
     "@babel/runtime": "^7.17.0",
     "@babel/runtime-corejs3": "^7.17.0",
@@ -95,6 +96,7 @@
     "wait-on": "6.0.0"
   },
   "resolutions": {
+    "@babel/core": "^7.17.0",
     "eslint-config-react-app": "^7.0.0"
   },
   "engines": {
