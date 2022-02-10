@@ -3273,7 +3273,6 @@ __metadata:
     unist-util-visit: ^4.0.0
   peerDependencies:
     gatsby: 4.x
-    gatsby-source-filesystem: 4.x
     react: 17.x
     react-dom: 17.x
   languageName: unknown
@@ -3303,6 +3302,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/ui-kit": 18.3.0
     gatsby: 4.6.1
+    gatsby-source-filesystem: 4.6.0
     gatsby-transformer-yaml: 4.6.0
     prop-types: 15.8.1
     react: 17.0.2
