@@ -31,18 +31,17 @@ The exported `designSystem` object contains several top-level entries:
 - `dimensions`
 - `typography`
 
-
 ## commercetools Writing Style Linter
 
 This package provides
 
-- commercetools specific writing style and terminology rules for the configurable [vale](https://errata-ai.github.io/vale/) prose linter.
+- commercetools specific writing style and terminology rules for the configurable [vale](https://docs.errata.ai/) prose linter.
 - the `commercetools-vale` command-line tool which wraps the vale binary and calls it using the included writing style and configuration
 - the `commercetools-vale-bin` command is directly calling the vale binary without passing the commercetools configuration. The `.vale.ini` configuration location has to be passed separately via vale's `--config` flag.
 
 The base style is the [Google Developer Documentation Style Guide](https://github.com/errata-ai/Google), which is included as a copy (MIT licensed, too) and modified and partially overridden with commercetools specific rules.
 
-The configuration defaults to checking `.md`, `.mdx`, `.txt`, and `.html` files, which can be overridden by calling it with a command-line parameter `commercetools-vale --glob='*.{js,md}' ./path/to/content` passing a list of [supported file format extensions](https://errata-ai.github.io/vale/formats/#formats).
+The configuration defaults to checking `.md`, `.mdx`, `.txt`, and `.html` files, which can be overridden by calling it with a command-line parameter `commercetools-vale --glob='*.{js,md}' ./path/to/content` passing a list of [supported file format extensions](https://docs.errata.ai/vale/scoping#formats).
 
 ### Automatic vale binary download for the current platform
 
@@ -64,7 +63,7 @@ The [vale plugin](https://marketplace.visualstudio.com/items?itemName=errata-ai.
   "settings": {
     "vale.core.useCLI": true,
     "vale.valeCLI.path": "${workspaceFolder}/node_modules/.bin/commercetools-vale-bin",
-    "vale.valeCLI.config": "${workspaceFolder}/node_modules/@commercetools-docs/writing-style/.vale.ini",
+    "vale.valeCLI.config": "${workspaceFolder}/node_modules/@commercetools-docs/writing-style/.vale.ini"
   }
 }
 ```
