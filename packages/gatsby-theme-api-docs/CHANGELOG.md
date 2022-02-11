@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 18.3.1
+
+### Patch Changes
+
+- [#1231](https://github.com/commercetools/commercetools-docs-kit/pull/1231) [`2a674341`](https://github.com/commercetools/commercetools-docs-kit/commit/2a674341ec649c192e58b05bb17445308ea8a993) Thanks [@nkuehn](https://github.com/nkuehn)! - Fixes the package dependency setup for gatsby plugins referred in the theme config.
+
 ## 18.3.0
 
 ### Patch Changes
