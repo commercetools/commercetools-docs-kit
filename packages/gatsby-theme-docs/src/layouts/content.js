@@ -21,6 +21,7 @@ import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
+import PageReadTime from './internals/page-read-time-estimation';
 
 const LayoutContent = (props) => {
   const { ref, inView } = useInView();
@@ -73,6 +74,7 @@ const LayoutContent = (props) => {
                 <BetaFlag href={siteData.siteMetadata.betaLink} />
               )}
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
+              <PageReadTime timeToRead={props.pageData.timeToRead} />
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
               <SpacingsStack scale="m">
@@ -122,6 +124,7 @@ LayoutContent.propTypes = {
     allowWideContentLayout: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,
     navLevels: PropTypes.number.isRequired,
+    timeToRead: PropTypes.number.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
 };

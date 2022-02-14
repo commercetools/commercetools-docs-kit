@@ -73,6 +73,7 @@ PageContentTemplate.propTypes = {
       body: PropTypes.string.isRequired,
       tableOfContents: PropTypes.object.isRequired,
       navLevels: PropTypes.number.isRequired,
+      timeToRead: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
 };
@@ -94,6 +95,7 @@ export const query = graphql`
       body
       tableOfContents
       navLevels
+      timeToRead
     }
   }
 `;
