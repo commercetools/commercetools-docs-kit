@@ -17,4 +17,3 @@ export {
 } from './src/components';
 export * from './src/hooks/use-site-data';
 export * from './src/hooks/use-page-data';
-export { default as markdownFragmentToReact } from './src/utils/markdown-fragment-to-react';

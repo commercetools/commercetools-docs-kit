@@ -35,6 +35,7 @@ export { default as CodeBlock } from './components/code-block';
 export { default as createStyledIcon } from './utils/create-styled-icon';
 export { default as SafeHTMLElement } from './utils/safe-html-element';
 export { parseIsoDate, IsoDateFormat, DocsDateFormat } from './utils/dates';
+export { default as markdownFragmentToReact } from './utils/markdown-fragment-to-react';
 
 // hooks
 export { default as useISO310NumberFormatter } from './hooks/use-iso310-number-formatter';

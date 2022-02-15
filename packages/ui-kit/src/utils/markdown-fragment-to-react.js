@@ -6,8 +6,13 @@ import rehypeReact from 'rehype-react';
 import remarkParse from 'remark-parse';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkRehype from 'remark-rehype';
-import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
+import * as designSystem from '../design-system';
+import * as Markdown from '../components/markdown';
 import Link from '../components/link';
+
+// This utility is voluntarily left as javascript and only exposes its function signature
+// with types. Type modeling the ast transform chaining would be very abstract, require a lot
+// of understanding of the rehype / remark / unified infrastructure with little gain.
 
 const Div = styled.div``;
 const Heading = styled.p`
@@ -15,6 +20,11 @@ const Heading = styled.p`
 `;
 // No images should be rendered in fragments that are embedded into other layouts
 const MarkdownFragmentImage = () => null;
+
+const removeFrontmatterPlugin = () => (tree) =>
+  filter(tree, (node) => node.type !== 'yaml');
+
+const noOpPlugin = () => (ast) => ast;
 
 /**
  * Takes a markdown string and returns a react component rendering it
@@ -28,16 +38,15 @@ const MarkdownFragmentImage = () => null;
  *
  * Elements can be customized with the customElements object, its structure should be like so:
  * {
- *  a: <custom-anchor-tag>,
- *  p: <custom-paragrapgh-tag>,
+ *  a: custom-link-component,
+ *  p: custom-paragraph-component,
  * }
  *
- * @param {String} markdownString
- * @param {Object} customElements
+ * @param {string}  markdownString
+ * @param {Object.<string, React.ComponentType>} customElements - custom HTML element to component mapping
+ * @param {function} customPlugin - additional remark plugins to be applied before processing
+ * @returns {React.ReactNode} -
  */
-const removeFrontmatterPlugin = () => (tree) =>
-  filter(tree, (node) => node.type !== 'yaml');
-const noOpPlugin = () => (ast) => ast;
 const markdownFragmentToReact = (
   markdownString,
   customElements,

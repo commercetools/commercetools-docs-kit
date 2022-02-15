@@ -3441,9 +3441,11 @@ __metadata:
     "@emotion/react": ^11.7.1
     "@emotion/styled": ^11.6.0
     "@svgr/cli": 6.2.1
+    "@types/mdast": ^3.0.10
     "@types/react": 17.0.38
     "@types/react-dom": 17.0.11
     "@types/react-is": 17.0.3
+    "@types/unist": ^2.0.6
     lodash.escape: 4.0.1
     lodash.throttle: 4.1.1
     prism-react-renderer: 1.2.1
@@ -3452,8 +3454,13 @@ __metadata:
     react-dom: 17.0.2
     react-intl: ^5.7.0
     react-is: 17.0.2
+    rehype-react: 7.0.4
+    remark-frontmatter: 4.0.1
+    remark-parse: 10.0.1
+    remark-rehype: 10.1.0
     swr: 1.2.1
     tiny-invariant: 1.2.0
+    unified: 10.1.1
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -7244,7 +7251,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdast@npm:^3.0.0":
+"@types/mdast@npm:^3.0.0, @types/mdast@npm:^3.0.10":
   version: 3.0.10
   resolution: "@types/mdast@npm:3.0.10"
   dependencies:
@@ -7523,7 +7530,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/unist@npm:*, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.3":
+"@types/unist@npm:*, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.3, @types/unist@npm:^2.0.6":
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
   checksum: 25cb860ff10dde48b54622d58b23e66214211a61c84c0f15f88d38b61aa1b53d4d46e42b557924a93178c501c166aa37e28d7f6d994aba13d24685326272d5db

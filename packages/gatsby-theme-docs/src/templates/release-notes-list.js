@@ -5,13 +5,13 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { Markdown, markdownFragmentToReact } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNote from '../layouts/internals/layout-release-note';
 import LayoutReleaseNotesList from '../layouts/release-notes-list';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 import useFilteredReleaseNotes from '../hooks/use-filtered-release-notes';
-import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
+import GatsbyLink from '../components/link';
 
 const ReleaseNotesListTemplate = (props) => {
   const filteredReleaseNotes = useFilteredReleaseNotes(
@@ -43,7 +43,9 @@ const ReleaseNotesListTemplate = (props) => {
                   <LayoutReleaseNote key={releaseNote.slug} {...releaseNote}>
                     <Markdown.TypographyPage>
                       <section>
-                        {markdownFragmentToReact(releaseNote.body)}
+                        {markdownFragmentToReact(releaseNote.body, {
+                          a: GatsbyLink,
+                        })}
                       </section>
                     </Markdown.TypographyPage>
                   </LayoutReleaseNote>

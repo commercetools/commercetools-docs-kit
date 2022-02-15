@@ -29,14 +29,21 @@
     "@commercetools-uikit/tooltip": "^12.2.9",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@types/mdast": "^3.0.10",
+    "@types/unist": "^2.0.6",
     "lodash.escape": "4.0.1",
     "lodash.throttle": "4.1.1",
     "prism-react-renderer": "1.2.1",
     "prop-types": "15.8.1",
     "react-intl": "^5.7.0",
     "react-is": "17.0.2",
+    "rehype-react": "7.0.4",
+    "remark-frontmatter": "4.0.1",
+    "remark-parse": "10.0.1",
+    "remark-rehype": "10.1.0",
     "swr": "1.2.1",
-    "tiny-invariant": "1.2.0"
+    "tiny-invariant": "1.2.0",
+    "unified": "10.1.1"
   },
   "devDependencies": {
     "@svgr/cli": "6.2.1",

@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
-import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
-import Link from './link';
+import {
+  designSystem,
+  Markdown,
+  markdownFragmentToReact,
+} from '@commercetools-docs/ui-kit';
+import GatsbyLink from './link';
 
 const flatStyle = css`
   border: 1px solid ${designSystem.colors.light.borderSecondary};
@@ -96,7 +99,7 @@ const BodyContent = (props) => {
   if (typeof props.children === 'string') {
     return props.clickable
       ? markdownFragmentToReact(props.children, { a: styled.span`` })
-      : markdownFragmentToReact(props.children);
+      : markdownFragmentToReact(props.children, { a: GatsbyLink });
   }
   return (
     <Markdown.TypographyContainer>
@@ -124,9 +127,9 @@ const Card = (props) => (
     <WrapWith
       condition={Boolean(props.clickable && props.href)}
       wrapper={(children) => (
-        <Link href={props.href} noUnderline>
+        <GatsbyLink href={props.href} noUnderline>
           {children}
-        </Link>
+        </GatsbyLink>
       )}
     >
       <StackContainer>
@@ -161,9 +164,9 @@ const Card = (props) => (
                     {props.clickable ? (
                       props.textLink
                     ) : (
-                      <Link href={props.href} noUnderline>
+                      <GatsbyLink href={props.href} noUnderline>
                         {props.textLink}
-                      </Link>
+                      </GatsbyLink>
                     )}
                   </ReadMore>
                 </ReadMoreContainer>

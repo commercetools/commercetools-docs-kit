@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
-import { markdownFragmentToReact } from '@commercetools-docs/gatsby-theme-docs';
+import {
+  designSystem,
+  Markdown,
+  markdownFragmentToReact,
+} from '@commercetools-docs/ui-kit';
+import { Link as GatsbyLink } from '@commercetools-docs/gatsby-theme-docs';
 import transformURNLinksPlugin from '../utils/transform-urn-links-plugin';
 
 const DescriptionParagraphContainer = styled.div`
@@ -18,7 +22,11 @@ const DescriptionTextContainer = styled.span`
 // a table, card or bullet list.
 export const DescriptionText = (props) => (
   <DescriptionTextContainer data-search-key="embedded-api-description">
-    {markdownFragmentToReact(props.markdownString, {}, transformURNLinksPlugin)}
+    {markdownFragmentToReact(
+      props.markdownString,
+      { a: GatsbyLink },
+      transformURNLinksPlugin
+    )}
   </DescriptionTextContainer>
 );
 
@@ -29,7 +37,11 @@ export const DescriptionParagraph = (props) => {
     <DescriptionParagraphContainer>
       {typeof props.children === 'string' ? (
         <Markdown.TypographyContainer>
-          {markdownFragmentToReact(props.children, {}, transformURNLinksPlugin)}
+          {markdownFragmentToReact(
+            props.children,
+            { a: GatsbyLink },
+            transformURNLinksPlugin
+          )}
         </Markdown.TypographyContainer>
       ) : (
         props.children
