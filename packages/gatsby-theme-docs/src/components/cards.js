@@ -1,36 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { designSystem, ContentNotifications } from '@commercetools-docs/ui-kit';
-
-// Explanation about the following sizes:
-// https://github.com/commercetools/commercetools-docs-kit/pull/427#discussion_r425442556
-// the "inContentColumn" variation prevents only one card being in one row in regular content (except mobile)
-const cardNarrowMinWidth = '242px';
-const cardRegularMinWidth = '328px';
-const cardRegularMinWidthInContentColumn = '288px';
-const Container = styled.ul`
-  list-style: none;
-  display: grid;
-  gap: ${designSystem.dimensions.spacings.m};
-  grid-auto-columns: 1fr;
-  grid-template-columns: ${(props) => {
-    let columnMinWidth;
-    if (props.narrow) {
-      columnMinWidth = cardNarrowMinWidth;
-    } else {
-      columnMinWidth = props.fitContentColumn
-        ? cardRegularMinWidthInContentColumn
-        : cardRegularMinWidth;
-    }
-    return `repeat( auto-fill, minmax(${columnMinWidth}, 1fr)) `;
-  }};
-`;
+import { ContentNotifications, cardElements } from '@commercetools-docs/ui-kit';
 
 const Cards = (props) => {
   try {
     return (
-      <Container {...props} data-search-key="cards-container">
+      <cardElements.CardsContainer {...props} data-search-key="cards-container">
         {React.Children.map(props.children, (child) => {
           if (!React.isValidElement(child)) {
             throwErrorMessage(child);
@@ -52,7 +28,7 @@ const Cards = (props) => {
             child.props.children
           );
         })}
-      </Container>
+      </cardElements.CardsContainer>
     );
   } catch (e) {
     if (process.env.NODE_ENV !== 'production') {

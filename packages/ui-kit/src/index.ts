@@ -14,6 +14,9 @@ export { default as Reset } from './components/reset';
 export { default as Subtitle } from './components/subtitle';
 export { default as TextSmall } from './components/text-small';
 
+// style blocks for components to be composed to components with functionality
+export * as cardElements from './components/card-elements';
+
 // icons
 export {
   CustomApplicationSvgIcon,
