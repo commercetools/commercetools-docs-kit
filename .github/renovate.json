@@ -26,8 +26,32 @@
       "allowedVersions": "<5"
     },
     {
+      "matchPackageNames": ["rehype-react"],
+      "allowedVersions": "<7"
+    },
+    {
+      "matchPackageNames": ["unified"],
+      "allowedVersions": "<10"
+    },
+    {
+      "matchPackageNames": ["unist-util-filter"],
+      "allowedVersions": "<3"
+    },
+    {
       "matchPackageNames": ["remark-emoji"],
       "allowedVersions": "<3"
+    },
+    {
+      "matchPackageNames": ["remark-parse"],
+      "allowedVersions": "<10"
+    },
+    {
+      "matchPackageNames": ["remark-rehype"],
+      "allowedVersions": "<9"
+    },
+    {
+      "matchPackageNames": ["remark-frontmatter"],
+      "allowedVersions": "<4"
     },
     {
       "matchPackageNames": ["node-fetch"],
