@@ -74,7 +74,9 @@ const LayoutContent = (props) => {
                 <BetaFlag href={siteData.siteMetadata.betaLink} />
               )}
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
-              <PageReadTime timeToRead={props.pageData.timeToRead} />
+              {props.pageData.showTimeToRead && (
+                <PageReadTime data={props.pageData} />
+              )}
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
               <SpacingsStack scale="m">
@@ -125,6 +127,8 @@ LayoutContent.propTypes = {
     tableOfContents: PropTypes.object.isRequired,
     navLevels: PropTypes.number.isRequired,
     timeToRead: PropTypes.number.isRequired,
+    showTimeToRead: PropTypes.number.isRequired,
+    setTimeToRead: PropTypes.number.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
 };

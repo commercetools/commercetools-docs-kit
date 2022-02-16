@@ -18,19 +18,6 @@ const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const isProd = process.env.NODE_ENV === 'production';
 
-const mdxResolverPassthrough =
-  (fieldName) => async (source, args, context, info) => {
-    const type = info.schema.getType(`Mdx`);
-    const mdxNode = context.nodeModel.getNodeById({
-      id: source.parent,
-    });
-    const resolver = type.getFields()[fieldName].resolve;
-    const result = await resolver(mdxNode, args, context, {
-      fieldName,
-    });
-    return result;
-  };
-
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
@@ -200,24 +187,14 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         navLevels: { type: 'Int!' },
         timeToRead: {
           type: 'Int',
-          extensions: { mdxpassthrough: { fieldName: 'timeToRead' } },
+          resolve: resolverPassthrough({ fieldName: 'timeToRead' }),
         },
+        showTimeToRead: { type: 'Boolean' },
+        setTimeToRead: { type: 'Int' },
       },
       interfaces: ['Node'],
     })
   );
-
-  actions.createFieldExtension({
-    name: `mdxpassthrough`,
-    args: {
-      fieldName: `String!`,
-    },
-    extend({ fieldName }) {
-      return {
-        resolve: mdxResolverPassthrough(fieldName),
-      };
-    },
-  });
 
   // Create a new type representing a Release Note Page.
   // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
@@ -335,6 +312,12 @@ exports.onCreateNode = (
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)
       : 3,
+    showTimeToRead: node.frontmatter.showTimeToRead
+      ? Boolean(node.frontmatter.showTimeToRead)
+      : false,
+    setTimeToRead: node.frontmatter.setTimeToRead
+      ? Number(node.frontmatter.setTimeToRead)
+      : null,
   };
   actions.createNode({
     ...contentPageFieldData,
