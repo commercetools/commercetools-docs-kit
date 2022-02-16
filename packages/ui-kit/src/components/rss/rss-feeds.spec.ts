@@ -1,4 +1,5 @@
 import { transformData, parseRssFeed, type FlatRssEntry } from './rss-feeds';
+import { expect } from '@jest/globals';
 
 describe('transformData', () => {
   const data = createTestData();
