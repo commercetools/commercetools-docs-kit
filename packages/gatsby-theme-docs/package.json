@@ -77,15 +77,9 @@
     "react-intersection-observer": "8.33.1",
     "react-intl": "^5.7.0",
     "react-router-dom": "5.3.0",
-    "rehype-react": "7.0.4",
     "rehype-slug": "4.0.1",
     "remark-emoji": "2.2.0",
-    "remark-frontmatter": "4.0.1",
-    "remark-parse": "10.0.1",
-    "remark-rehype": "10.1.0",
-    "slugify": "1.6.5",
-    "unified": "10.1.1",
-    "unist-util-filter": "4.0.0"
+    "slugify": "1.6.5"
   },
   "devDependencies": {
     "gatsby": "4.6.1",

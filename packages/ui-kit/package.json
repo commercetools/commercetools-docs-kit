@@ -43,7 +43,8 @@
     "remark-rehype": "10.1.0",
     "swr": "1.2.1",
     "tiny-invariant": "1.2.0",
-    "unified": "10.1.1"
+    "unified": "10.1.1",
+    "unist-util-filter": "4.0.0"
   },
   "devDependencies": {
     "@svgr/cli": "6.2.1",
