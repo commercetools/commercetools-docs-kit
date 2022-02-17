@@ -18,18 +18,7 @@ export { default as TextSmall } from './components/text-small';
 export * as cardElements from './components/card-elements';
 
 // icons
-export {
-  CustomApplicationSvgIcon,
-  CustomApplicationSmallSvgIcon,
-  HttpApiSvgIcon,
-  HttpApiSmallSvgIcon,
-  MerchantCenterSvgIcon,
-  MerchantCenterSmallSvgIcon,
-  OpenSourceSvgIcon,
-  OpenSourceSmallSvgIcon,
-  TutorialsSvgIcon,
-  TutorialsSmallSvgIcon,
-} from './icons';
+export * as Icons from './icons';
 
 // special exports for components that cannot be accessed through `Markdown` exports
 export { default as CodeBlock } from './components/code-block';

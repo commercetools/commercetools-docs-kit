@@ -5,14 +5,14 @@ import {
   designSystem,
   ContentNotifications,
   createStyledIcon,
+  Icons,
 } from '@commercetools-docs/ui-kit';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { usePageData } from '../hooks/use-page-data';
-import { SearchSvgIcon } from '../icons';
 
-const SearchIcon = createStyledIcon(SearchSvgIcon);
+const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 
 const SearchBoxContainer = styled.div`
   border: 1px solid ${designSystem.colors.light.borderSecondary};

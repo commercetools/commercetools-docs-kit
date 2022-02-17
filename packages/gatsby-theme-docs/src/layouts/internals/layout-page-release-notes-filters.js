@@ -3,20 +3,23 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { keyframes, css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
+import {
+  createStyledIcon,
+  designSystem,
+  Icons,
+} from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import IconButton from '@commercetools-uikit/icon-button';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { useInView } from 'react-intersection-observer';
-import { StackedLinesIndentedIconSvgIcon } from '../../icons';
 import { Overlay, SearchInput } from '../../components';
 import ReleaseNotesFilterDates from '../../components/release-notes-filter-dates';
 import ReleaseNotesFilterTopics from '../../components/release-notes-filter-topics';
 
 const StackedLinesIndentedIcon = createStyledIcon(
-  StackedLinesIndentedIconSvgIcon
+  Icons.StackedLinesIndentedIconSvgIcon
 );
 
 const slideInAnimation = keyframes`

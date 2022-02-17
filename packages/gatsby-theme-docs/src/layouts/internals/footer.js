@@ -3,8 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { designSystem, MediaQuery } from '@commercetools-docs/ui-kit';
-import { LogoHorizontalSvgIcon } from '../../icons';
+import { designSystem, MediaQuery, Icons } from '@commercetools-docs/ui-kit';
 import { GlobalNavigationLink, BetaFlag } from '../../components';
 
 const Center = styled.div`
@@ -165,7 +164,7 @@ const LayoutFooter = () => {
       <Columns>
         <Column>
           <MediaQuery forViewport="tablet">
-            <LogoHorizontalSvgIcon />
+            <Icons.LogoHorizontalSvgIcon />
           </MediaQuery>
         </Column>
         {data.allTopMenuYaml.nodes.map((node) => (
@@ -200,7 +199,7 @@ const LayoutFooter = () => {
         <RowItem gridArea="footer-copy">
           <SpacingsStack>
             <MediaQuery forViewport="mobile">
-              <LogoHorizontalSvgIcon height={64} />
+              <Icons.LogoHorizontalSvgIcon height={64} />
             </MediaQuery>
             <SpacingsInline scale="m" alignItems="center">
               <CopyText>

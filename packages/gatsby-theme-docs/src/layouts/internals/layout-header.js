@@ -10,11 +10,11 @@ import {
   createStyledIcon,
   LogoButton,
   MediaQuery,
+  Icons,
 } from '@commercetools-docs/ui-kit';
 import { SearchDialog, SearchInput, Overlay } from '../../components';
-import { SearchSvgIcon } from '../../icons';
 
-const SearchIcon = createStyledIcon(SearchSvgIcon);
+const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 
 const Container = styled.header`
   grid-area: header;
