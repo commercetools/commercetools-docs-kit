@@ -75,7 +75,7 @@ const LayoutContent = (props) => {
               )}
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (
-                <PageReadTime data={props.pageData} />
+                <PageReadTime timeToRead={props.pageData.timeToRead} />
               )}
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
@@ -126,9 +126,8 @@ LayoutContent.propTypes = {
     allowWideContentLayout: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,
     navLevels: PropTypes.number.isRequired,
+    showTimeToRead: PropTypes.bool.isRequired,
     timeToRead: PropTypes.number.isRequired,
-    showTimeToRead: PropTypes.number.isRequired,
-    setTimeToRead: PropTypes.number.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
 };

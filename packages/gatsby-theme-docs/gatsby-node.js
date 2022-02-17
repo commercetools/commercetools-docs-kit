@@ -185,12 +185,8 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           }),
         },
         navLevels: { type: 'Int!' },
-        timeToRead: {
-          type: 'Int',
-          resolve: resolverPassthrough({ fieldName: 'timeToRead' }),
-        },
-        showTimeToRead: { type: 'Boolean' },
-        setTimeToRead: { type: 'Int' },
+        showTimeToRead: { type: 'Boolean!' },
+        timeToRead: { type: 'Int' },
       },
       interfaces: ['Node'],
     })
@@ -315,9 +311,9 @@ exports.onCreateNode = (
     showTimeToRead: node.frontmatter.showTimeToRead
       ? Boolean(node.frontmatter.showTimeToRead)
       : false,
-    setTimeToRead: node.frontmatter.setTimeToRead
-      ? Number(node.frontmatter.setTimeToRead)
-      : null,
+    timeToRead: node.frontmatter.timeToRead
+      ? Number(node.frontmatter.timeToRead)
+      : Number(node.timeToRead),
   };
   actions.createNode({
     ...contentPageFieldData,

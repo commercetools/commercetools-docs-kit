@@ -9,21 +9,11 @@ const Container = styled.p`
 `;
 
 const PageReadTime = (props) => {
-  return (
-    <Container>
-      {props.data.setTimeToRead
-        ? props.data.setTimeToRead
-        : props.data.timeToRead}{' '}
-      min read
-    </Container>
-  );
+  return <Container> {props.timeToRead} min read</Container>;
 };
 
 PageReadTime.propTypes = {
-  data: PropTypes.shape({
-    timeToRead: PropTypes.number.isRequired,
-    setTimeToRead: PropTypes.number.isRequired,
-  }),
+  timeToRead: PropTypes.number.isRequired,
 };
 
 export default PageReadTime;
