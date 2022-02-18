@@ -9,11 +9,22 @@ const Container = styled.p`
 `;
 
 const PageReadTime = (props) => {
-  return <Container> {props.timeToRead} min read</Container>;
+  return (
+    <Container>
+      {' '}
+      {props.data.timeToRead > 0
+        ? props.data.timeToRead
+        : props.data.estimatedTimeToRead}{' '}
+      min read
+    </Container>
+  );
 };
 
 PageReadTime.propTypes = {
-  timeToRead: PropTypes.number.isRequired,
+  data: PropTypes.shape({
+    timeToRead: PropTypes.number.isRequired,
+    estimatedTimeToRead: PropTypes.number.isRequired,
+  }),
 };
 
 export default PageReadTime;
