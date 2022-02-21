@@ -185,7 +185,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           }),
         },
         navLevels: { type: 'Int!' },
-        showTimeToRead: { type: 'Boolean!' },
+        showTimeToRead: { type: 'Boolean' },
         timeToRead: { type: 'Int!' },
         estimatedTimeToRead: {
           type: 'Int!',
