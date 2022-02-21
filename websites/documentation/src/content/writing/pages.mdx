@@ -44,6 +44,16 @@ We support the following key-value pairs in the frontmatter section:
 
 - `wideLayout` (boolean)<Anchor name="wide-layout" />: use to make a page responsive and compatible for large viewport sizes. When used, the page can go into a two-column content space. For more information, see `<SideBySide>` [component](#side-by-side).
 
+- `showTimeToRead` (boolean)<Anchor name="show-time-to-read" />: use to show the reading time of a page. If the `setTimeToRead` frontmatter is not defined, gatsby will analyse the page and determine the reading time.
+
+- `setTimeToRead` (number)<Anchor name="set-time-to-read" />: use to set the reading time of a page. If defined, it replaces the automatically generated value from gatsby.
+
+  <Warning>
+
+  This only works if the `showTimeToRead` frontmatter is defined and **true**.
+
+  </Warning>
+
 # JSX components
 
 As mentioned earlier, it is possible to render JSX components within MDX files. The components must be added as XML tags, like HTML elements. For example:

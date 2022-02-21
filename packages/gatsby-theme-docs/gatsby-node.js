@@ -185,6 +185,12 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           }),
         },
         navLevels: { type: 'Int!' },
+        showTimeToRead: { type: 'Boolean' },
+        timeToRead: { type: 'Int' },
+        estimatedTimeToRead: {
+          type: 'Int!',
+          resolve: resolverPassthrough({ fieldName: 'timeToRead' }),
+        },
       },
       interfaces: ['Node'],
     })
@@ -306,6 +312,12 @@ exports.onCreateNode = (
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)
       : 3,
+    showTimeToRead: node.frontmatter.showTimeToRead
+      ? Boolean(node.frontmatter.showTimeToRead)
+      : false,
+    timeToRead: node.frontmatter.timeToRead
+      ? Number(node.frontmatter.timeToRead)
+      : 0,
   };
   actions.createNode({
     ...contentPageFieldData,
