@@ -1,0 +1,13 @@
+# exclude links on top-menu entries like for linkinator
+https:\/\/docs.commercetools.com
+https:\/\/commercetools.com\/
+https:\/\/support.commercetools.com
+\/.+\/api$
+\/.+\/api\/
+\/.+\/custom-applications
+\/.+\/docs\/
+\/.+\/import-export
+\/.+\/merchant-center
+\/.+\/sdk
+\/.+\/tutorials
+\/.+\/getting-started
