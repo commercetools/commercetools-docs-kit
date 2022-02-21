@@ -10,6 +10,7 @@ import {
   BetaFlag as Beta,
   Anchor,
   SideBySide,
+  Mermaid,
 } from './components';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 
@@ -58,6 +59,7 @@ const components = {
   Card,
   Cards,
   SideBySide,
+  Mermaid,
 
   // Custom React components that can be injected from each website
   // See ../overrides/README.md

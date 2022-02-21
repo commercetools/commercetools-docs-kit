@@ -1,4 +1,4 @@
-import { visit } from 'unist-util-visit';
+import visit from 'unist-util-visit';
 import { useTypeLocations, locationForType } from '../hooks/use-type-locations';
 import { parseTypeURN } from './ctp-urn';
 

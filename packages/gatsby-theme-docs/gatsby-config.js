@@ -127,7 +127,10 @@ module.exports = (themeOptions = {}) => {
           // implement commonmark for stricter compatibility, e.g. backslash transformed to newlines
           commonmark: true,
           // List of remark plugins, that transform the markdown AST.
-          remarkPlugins: [require('remark-emoji')],
+          remarkPlugins: [
+            require('remark-emoji'),
+            require('./src/plugins/remark-mdx-mermaid'),
+          ],
           // List of rehype plugins, that transform the HTML AST.
           rehypePlugins: [
             require('rehype-slug'),
