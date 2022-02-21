@@ -186,7 +186,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         },
         navLevels: { type: 'Int!' },
         showTimeToRead: { type: 'Boolean' },
-        timeToRead: { type: 'Int!' },
+        timeToRead: { type: 'Int' },
         estimatedTimeToRead: {
           type: 'Int!',
           resolve: resolverPassthrough({ fieldName: 'timeToRead' }),
