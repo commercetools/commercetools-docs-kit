@@ -2,4 +2,4 @@
 '@commercetools-docs/gatsby-theme-docs': minor
 ---
 
-Implement reading time estimation for pages
+Implements two new frontmatters called `showTimeToRead` and `timeToRead` for showing and setting the estimated reading time for pages.
