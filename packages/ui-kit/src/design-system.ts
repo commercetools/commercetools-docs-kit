@@ -212,6 +212,15 @@ export const dimensions = {
     searchBarSmall: '160px',
     selectDropDownArrowWith: '12px',
     sideBySideSecondColumn: '560px',
+    // The card sizes are manually optimized to make regular cards two-aside on landing pages
+    // and narrow cards three-aside in any landing page size.
+    // Plus, you can put 2,3,4,6 cards in a grid without whitespace.
+    // In content page columns it's not ideal, but the numbers just don't add up if we want the same card
+    // to perfectly fit the landing pages.
+    cardNarrowMinWidth: '242px',
+    cardRegularMinWidth: '328px',
+    // the "inContentColumn" variation prevents only one card being in one row in regular content (except mobile)
+    cardRegularMinWidthInContentColumn: '288px',
   },
   viewports: {
     mobile: `max-width: calc(768px - 0.02px)`,

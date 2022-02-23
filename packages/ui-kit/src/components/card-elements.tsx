@@ -35,12 +35,6 @@ import { css } from '@emotion/react';
  *  </CardContainer>
  */
 
-// Explanation about the following sizes:
-// https://github.com/commercetools/commercetools-docs-kit/pull/427#discussion_r425442556
-// the "inContentColumn" variation prevents only one card being in one row in regular content (except mobile)
-const cardNarrowMinWidth = '242px';
-const cardRegularMinWidth = '328px';
-const cardRegularMinWidthInContentColumn = '288px';
 export type CardsContainerProps = {
   narrow?: boolean;
   fitContentColumn?: boolean;
@@ -53,11 +47,11 @@ export const CardsContainer = styled.ul<CardsContainerProps>`
   grid-template-columns: ${(props) => {
     let columnMinWidth;
     if (props.narrow) {
-      columnMinWidth = cardNarrowMinWidth;
+      columnMinWidth = designSystem.dimensions.widths.cardNarrowMinWidth;
     } else {
       columnMinWidth = props.fitContentColumn
-        ? cardRegularMinWidthInContentColumn
-        : cardRegularMinWidth;
+        ? designSystem.dimensions.widths.cardRegularMinWidthInContentColumn
+        : designSystem.dimensions.widths.cardRegularMinWidth;
     }
     return `repeat( auto-fill, minmax(${columnMinWidth}, 1fr)) `;
   }};
