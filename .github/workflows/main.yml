@@ -161,6 +161,11 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
+      - name: Check local links including anchors
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        working-directory: public
+        run: npx --quiet start-server-and-test 'npx --quiet http-server --silent -p 9000' 9000 'docker run --network=host -v "$(pwd)/../:/repo/" tennox/linkcheck --skip-file /repo/linkcheck-local-skip-list :9000'
+
   link-check:
     name: 'Check links'
 
