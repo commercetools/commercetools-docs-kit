@@ -3,12 +3,15 @@ import { withPrefix } from 'gatsby';
 import { css } from '@emotion/react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
+import {
+  designSystem,
+  createStyledIcon,
+  Icons,
+} from '@commercetools-docs/ui-kit';
 import { MailIcon } from '@commercetools-uikit/icons';
-import { RssSvgIcon } from '../icons';
 import { ExternalSiteLink } from './link';
 
-const RssIcon = createStyledIcon(RssSvgIcon);
+const RssIcon = createStyledIcon(Icons.RssSvgIcon);
 
 const linkStyles = css`
   text-decoration: none;

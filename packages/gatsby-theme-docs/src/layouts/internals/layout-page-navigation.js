@@ -7,16 +7,19 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import IconButton from '@commercetools-uikit/icon-button';
 import { ArrowUpIcon } from '@commercetools-uikit/icons';
-import { createStyledIcon, designSystem } from '@commercetools-docs/ui-kit';
+import {
+  createStyledIcon,
+  designSystem,
+  Icons,
+} from '@commercetools-docs/ui-kit';
 import { useInView } from 'react-intersection-observer';
-import { StackedLinesIndentedIconSvgIcon } from '../../icons';
 import PlaceholderPageHeaderSide from '../../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../../overrides/page-header-banner-area';
 import { Overlay, BetaFlag, SearchInput } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
-  StackedLinesIndentedIconSvgIcon
+  Icons.StackedLinesIndentedIconSvgIcon
 );
 
 const slideInAnimation = keyframes`

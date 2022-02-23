@@ -11,10 +11,10 @@ import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
 import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
-import { ReleaseNotesSvgIcon } from '../../icons';
+import { Icons } from '@commercetools-docs/ui-kit';
 import LayoutHeaderLogo from './layout-header-logo';
 
-const ReleaseNotesIcon = createStyledIcon(ReleaseNotesSvgIcon);
+const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
 // React currently throws a warning when using useLayoutEffect on the server.
 // To get around it, we can conditionally useEffect on the server (no-op) and

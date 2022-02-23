@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { InformationIcon, WarningIcon } from '@commercetools-uikit/icons';
-import { designSystem } from '@commercetools-docs/ui-kit';
-import markdownFragmentToReact from '../utils/markdown-fragment-to-react';
+import {
+  designSystem,
+  markdownFragmentToReact,
+} from '@commercetools-docs/ui-kit';
+import GatsbyLink from './link';
 
 const getIconByType = (type) => {
   switch (type) {
@@ -65,7 +68,7 @@ const GlobalNotification = (props) => {
         <div>
           <Icon color={iconColor} />
         </div>
-        <div>{markdownFragmentToReact(props.children)}</div>
+        <div>{markdownFragmentToReact(props.children, { a: GatsbyLink })}</div>
       </SpacingsInline>
     </Container>
   );

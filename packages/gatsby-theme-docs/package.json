@@ -16,9 +16,6 @@
   "bin": {
     "create-docs-release-note": "bin/create-release-note.js"
   },
-  "scripts": {
-    "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
-  },
   "dependencies": {
     "@commercetools-docs/ui-kit": "18.3.0",
     "@commercetools-uikit/card": "^13.0.0",
@@ -77,15 +74,9 @@
     "react-intersection-observer": "8.33.1",
     "react-intl": "^5.7.0",
     "react-router-dom": "5.3.0",
-    "rehype-react": "7.0.4",
     "rehype-slug": "4.0.1",
     "remark-emoji": "2.2.0",
-    "remark-frontmatter": "4.0.1",
-    "remark-parse": "10.0.1",
-    "remark-rehype": "10.1.0",
-    "slugify": "1.6.5",
-    "unified": "10.1.1",
-    "unist-util-filter": "4.0.0"
+    "slugify": "1.6.5"
   },
   "devDependencies": {
     "gatsby": "4.7.2",

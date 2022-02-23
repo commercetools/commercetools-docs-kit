@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import { CloseIcon } from '@commercetools-uikit/icons';
-import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
-import { SearchSvgIcon, SlashSvgIcon } from '../icons';
+import {
+  designSystem,
+  createStyledIcon,
+  Icons,
+} from '@commercetools-docs/ui-kit';
 
-const SearchIcon = createStyledIcon(SearchSvgIcon);
+const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 const iconHeight = '16px';
 
 const Container = styled.div`
@@ -105,7 +108,7 @@ const SearchInput = React.forwardRef((props, ref) => {
         <SearchIcon size="medium" />
       </SearchInputIcon>
       <SearchInputIcon position="right" hidden={isActive}>
-        <SlashSvgIcon height={16} />
+        <Icons.SlashSvgIcon height={16} />
       </SearchInputIcon>
       {props.onClose && (
         <SearchInputIcon position="right">
