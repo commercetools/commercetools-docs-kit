@@ -61,7 +61,7 @@ The project structure should contain at least the following files and folders:
 
 - `.eslintrc.yaml`: in case you're using a monorepository, you need to provide this file with an empty object `{}`, otherwise provide a valid ESLint configuration.
 
-- `gatsby-config.js`: this is required for a Gatsby website and should contain the website specific configuration. If your website requires the usage of [add-ons](#using-theme-with-add-ons), you need to configure the main theme using the `configureThemeWithAddOns` helper function. See examples below.
+- `gatsby-config.js`: this is required for a Gatsby website and should contain the website specific configuration. If your website requires the usage of [add-ons](/configuration/extensions#using-theme-with-add-ons), you need to configure the main theme using the `configureThemeWithAddOns` helper function. See examples below.
 
 ```js
 const {
@@ -132,7 +132,7 @@ module.exports = {
 
 These are required directories:
 
-- `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](#writing-content-pages)_).
+- `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](/writing/pages)_).
 
 - `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.
 
