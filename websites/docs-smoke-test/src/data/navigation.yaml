@@ -40,14 +40,14 @@
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
   pages:
     - title: Page with some very long title too much for our innocent API to handle
-      path: /#last-section
+      path: /empty-pages/empty-page-one
     - title: Beta Page with some very long title too much for our innocent API to handle
-      path: /#last-section
+      path: /empty-pages/empty-page-two
       beta: true
 - chapter-title: ChapterWithLongNameThatOverflowsBecauseItsOneWord
   pages:
     - title: PageWithLongNameThatOverflowsBecauseItsOneWord
-      path: /#last-section
+      path: /empty-pages/empty-page-three
     - title: BetaPageWithLongNameThatOverflowsBecauseItsOneWord
-      path: /#last-section
+      path: /empty-pages/empty-page-four
       beta: true
