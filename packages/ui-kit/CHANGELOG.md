@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 18.4.0
+
+### Patch Changes
+
+- [#1234](https://github.com/commercetools/commercetools-docs-kit/pull/1234) [`666d2b8b`](https://github.com/commercetools/commercetools-docs-kit/commit/666d2b8bd5cee0e739248e47f6723616ce147431) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+* [#1243](https://github.com/commercetools/commercetools-docs-kit/pull/1243) [`7c12b041`](https://github.com/commercetools/commercetools-docs-kit/commit/7c12b0415c33655059bc8229f8e40c14c8f43f8f) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
 ## 18.3.0
 
 ### Minor Changes
