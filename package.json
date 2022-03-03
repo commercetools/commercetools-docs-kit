@@ -73,7 +73,7 @@
     "jest-preset-gatsby": "1.0.134",
     "jest-runner-eslint": "1.0.0",
     "jest-runner-executor": "1.0.0",
-    "jest-runner-prettier": "0.3.7",
+    "jest-runner-prettier": "1.0.0",
     "jest-runner-stylelint": "2.3.7",
     "jest-silent-reporter": "0.5.0",
     "jest-watch-typeahead": "1.0.0",
