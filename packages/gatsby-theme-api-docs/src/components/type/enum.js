@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
+import styled from '@emotion/styled';
 import { DescriptionText } from '../description';
+
+const EnumContainer = styled.div`
+  max-width: ${designSystem.dimensions.widths.pageContent};
+`;
 
 const Enum = ({ values, enumDescriptions }) => {
   if (!values) {
@@ -12,27 +17,29 @@ const Enum = ({ values, enumDescriptions }) => {
 
   return (
     <Markdown.Dl>
-      {values &&
-        values.map((value) => {
-          const enumDescription =
-            enumDescriptions &&
-            enumDescriptions.find((enumDesc) => enumDesc.name === value);
+      <EnumContainer>
+        {values &&
+          values.map((value) => {
+            const enumDescription =
+              enumDescriptions &&
+              enumDescriptions.find((enumDesc) => enumDesc.name === value);
 
-          return (
-            <React.Fragment key={value}>
-              <Markdown.Dt>
-                <Markdown.InlineCode>{value}</Markdown.InlineCode>
-              </Markdown.Dt>
-              {enumDescription && enumDescription.description && (
-                <Markdown.Dd>
-                  <DescriptionText
-                    markdownString={enumDescription.description}
-                  />
-                </Markdown.Dd>
-              )}
-            </React.Fragment>
-          );
-        })}
+            return (
+              <React.Fragment key={value}>
+                <Markdown.Dt>
+                  <Markdown.InlineCode>{value}</Markdown.InlineCode>
+                </Markdown.Dt>
+                {enumDescription && enumDescription.description && (
+                  <Markdown.Dd>
+                    <DescriptionText
+                      markdownString={enumDescription.description}
+                    />
+                  </Markdown.Dd>
+                )}
+              </React.Fragment>
+            );
+          })}
+      </EnumContainer>
     </Markdown.Dl>
   );
 };
