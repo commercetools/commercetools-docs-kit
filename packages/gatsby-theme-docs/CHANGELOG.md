@@ -1,5 +1,20 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 18.4.0
+
+### Minor Changes
+
+- [#1238](https://github.com/commercetools/commercetools-docs-kit/pull/1238) [`ceea3620`](https://github.com/commercetools/commercetools-docs-kit/commit/ceea3620bd5c87a0dbc7079d45452242d9005af7) Thanks [@timonrey](https://github.com/timonrey)! - Implements two new frontmatters called `showTimeToRead` and `timeToRead` for showing and setting the estimated reading time for pages.
+
+### Patch Changes
+
+- [#1234](https://github.com/commercetools/commercetools-docs-kit/pull/1234) [`666d2b8b`](https://github.com/commercetools/commercetools-docs-kit/commit/666d2b8bd5cee0e739248e47f6723616ce147431) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+* [#1243](https://github.com/commercetools/commercetools-docs-kit/pull/1243) [`7c12b041`](https://github.com/commercetools/commercetools-docs-kit/commit/7c12b0415c33655059bc8229f8e40c14c8f43f8f) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+* Updated dependencies [[`666d2b8b`](https://github.com/commercetools/commercetools-docs-kit/commit/666d2b8bd5cee0e739248e47f6723616ce147431), [`7c12b041`](https://github.com/commercetools/commercetools-docs-kit/commit/7c12b0415c33655059bc8229f8e40c14c8f43f8f)]:
+  - @commercetools-docs/ui-kit@18.4.0
+
 ## 18.3.0
 
 ### Minor Changes
