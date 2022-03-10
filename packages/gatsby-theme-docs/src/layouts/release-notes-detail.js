@@ -8,7 +8,7 @@ import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { Link } from '../components';
-import LayoutApplication from './internals/layout-application';
+import { layoutElements } from '@commercetools-docs/ui-kit';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
@@ -20,6 +20,8 @@ import LayoutPageHeaderSide from './internals/layout-page-header-side';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 import { ReleaseNotePageTitle } from '../components/release-note-heading';
+
+const { LayoutApplication } = layoutElements;
 
 const LayoutReleaseNotesDetail = (props) => {
   const { ref } = useInView();

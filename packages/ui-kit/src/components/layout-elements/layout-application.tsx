@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { ThemeProvider as UiKitThemeProvider } from '@emotion/react';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { dimensions, uikitTheme } from '../../design-system';
 
 /* NOTE: `overflow` shorthand is only supported is Chrome and FF */
-const Root = styled.div`
+type RootProps = { isGlobalNotificationVisible?: boolean };
+const Root = styled.div<RootProps>`
   position: relative;
   width: 100vw;
   height: auto;
@@ -15,14 +15,14 @@ const Root = styled.div`
 
   scroll-padding-top: ${(props) =>
     props.isGlobalNotificationVisible
-      ? `calc(${designSystem.dimensions.heights.globalNotificationContent} + ${designSystem.dimensions.spacings.s} * 3)`
-      : designSystem.dimensions.spacings.s};
+      ? `calc(${dimensions.heights.globalNotificationContent} + ${dimensions.spacings.s} * 3)`
+      : dimensions.spacings.s};
 
-  @media only screen and (${designSystem.dimensions.viewports.tablet}) {
+  @media only screen and (${dimensions.viewports.tablet}) {
     height: 100vh;
   }
 `;
-const Container = styled.div`
+const Container = styled.div<LayoutApplicationProps>`
   position: relative;
   height: 100%;
   display: grid;
@@ -30,22 +30,28 @@ const Container = styled.div`
     [row1-start] 'main' 1fr [row1-end]
     / 1fr;
 
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+  @media screen and (${dimensions.viewports.laptop}) {
     grid:
       [row1-start] 'sidebar main' 1fr [row1-end]
-      / ${designSystem.dimensions.widths.pageNavigationSmall} 1fr;
+      / ${dimensions.widths.pageNavigationSmall} 1fr;
   }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+  @media screen and (${dimensions.viewports.desktop}) {
     grid:
       [row1-start] 'sidebar main' 1fr [row1-end]
-      / ${designSystem.dimensions.widths.pageNavigation} 1fr;
+      / ${dimensions.widths.pageNavigation} 1fr;
   }
 `;
-
-const LayoutApplication = (props) => (
+type LayoutApplicationProps = {
+  websitePrimaryColor: string;
+  globalNotification?: {
+    notificationType: 'info' | 'warning';
+    content: string;
+  };
+};
+const LayoutApplication = (props: LayoutApplicationProps) => (
   <UiKitThemeProvider
     theme={{
-      ...designSystem.uikitTheme,
+      ...uikitTheme,
       websitePrimaryColor: props.websitePrimaryColor,
     }}
   >
@@ -59,12 +65,5 @@ const LayoutApplication = (props) => (
     <div id="modal-portal" />
   </UiKitThemeProvider>
 );
-LayoutApplication.propTypes = {
-  websitePrimaryColor: PropTypes.string.isRequired,
-  globalNotification: PropTypes.shape({
-    notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
-    content: PropTypes.string.isRequired,
-  }),
-};
 
 export default LayoutApplication;

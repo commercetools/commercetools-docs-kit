@@ -11,8 +11,9 @@ import {
   LogoButton,
   MediaQuery,
   Icons,
+  Overlay,
 } from '@commercetools-docs/ui-kit';
-import { SearchDialog, SearchInput, Overlay } from '../../components';
+import { SearchDialog, SearchInput } from '../../components';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 

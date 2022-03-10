@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import { designSystem, MediaQuery } from '@commercetools-docs/ui-kit';
-import { BurgerIcon, Overlay, TopMenu } from '../../components';
+import {
+  designSystem,
+  MediaQuery,
+  BurgerIcon,
+  Overlay,
+} from '@commercetools-docs/ui-kit';
+import { TopMenu } from '../../components';
 import Sidebar from './sidebar';
 
 const slideInAnimation = keyframes`

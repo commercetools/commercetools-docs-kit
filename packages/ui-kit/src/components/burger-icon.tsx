@@ -1,12 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const svgPaths = {
   burger: `M0 2.5 L16 2.5 M0 8 L16 8 M0 13.5 L16 13.5`,
   cross: `M2 2 L14 14 M2 14 L14 2`,
 };
 
-const BurgerIcon = (props) => (
+type BurgerIconProps = {
+  size: number;
+};
+const BurgerIcon = (props: BurgerIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 16 16"
@@ -26,10 +28,6 @@ const BurgerIcon = (props) => (
   </svg>
 );
 BurgerIcon.displayName = 'BurgerIcon';
-BurgerIcon.propTypes = {
-  size: PropTypes.number.isRequired,
-  // isActive: PropTypes.bool.isRequired,
-};
 BurgerIcon.defaultProps = {
   size: 24,
 };

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { designSystem, MediaQuery } from '@commercetools-docs/ui-kit';
-import { Overlay, TopMenu } from '../../components';
+import { designSystem, MediaQuery, Overlay } from '@commercetools-docs/ui-kit';
+import { TopMenu } from '../../components';
 
 const Container = styled.main`
   grid-area: main;

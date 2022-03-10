@@ -13,9 +13,12 @@ export { default as MultiCodeBlock } from './components/multi-code-block';
 export { default as Reset } from './components/reset';
 export { default as Subtitle } from './components/subtitle';
 export { default as TextSmall } from './components/text-small';
+export { default as BurgerIcon } from './components/burger-icon';
+export { default as Overlay } from './components/overlay';
 
 // style blocks for components to be composed to components with functionality
 export * as cardElements from './components/card-elements';
+export * as layoutElements from './components/layout-elements';
 
 // icons
 export * as Icons from './icons';

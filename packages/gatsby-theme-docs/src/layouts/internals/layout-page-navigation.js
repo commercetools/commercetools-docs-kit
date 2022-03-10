@@ -11,11 +11,12 @@ import {
   createStyledIcon,
   designSystem,
   Icons,
+  Overlay,
 } from '@commercetools-docs/ui-kit';
 import { useInView } from 'react-intersection-observer';
 import PlaceholderPageHeaderSide from '../../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../../overrides/page-header-banner-area';
-import { Overlay, BetaFlag, SearchInput } from '../../components';
+import { BetaFlag, SearchInput } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(

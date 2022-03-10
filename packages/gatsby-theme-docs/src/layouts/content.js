@@ -8,7 +8,7 @@ import { useSiteData } from '../hooks/use-site-data';
 import { BetaFlag, ContentPagination, GlobalNotification } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../overrides/page-header-banner-area';
-import LayoutApplication from './internals/layout-application';
+import { layoutElements } from '@commercetools-docs/ui-kit';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
@@ -22,6 +22,8 @@ import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 import PageReadTime from './internals/page-read-time-estimation';
+
+const { LayoutApplication } = layoutElements;
 
 const LayoutContent = (props) => {
   const { ref, inView } = useInView();

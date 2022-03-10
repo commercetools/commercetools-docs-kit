@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import { ContentPagination } from '../components';
-import LayoutApplication from './internals/layout-application';
+import { layoutElements } from '@commercetools-docs/ui-kit';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
@@ -13,6 +13,8 @@ import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPageWithHero from './internals/layout-page-with-hero';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
+
+const { LayoutApplication } = layoutElements;
 
 const LayoutContentHomepage = (props) => {
   const { ref } = useInView();

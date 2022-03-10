@@ -1,4 +1,3 @@
-export { default as LayoutApplication } from './src/layouts/internals/layout-application';
 export { default as LayoutSidebar } from './src/layouts/internals/layout-sidebar';
 export { default as LayoutHeader } from './src/layouts/internals/layout-header';
 export { default as LayoutPage } from './src/layouts/internals/layout-page';
@@ -9,7 +8,6 @@ export {
   ExternalSiteLink,
   FullWidthContainer,
   Link,
-  Overlay,
   SEO,
   SideBySide,
   TopMenu,

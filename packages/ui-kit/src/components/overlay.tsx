@@ -1,16 +1,23 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { dimensions } from '../design-system';
 
 const backgroundAnimation = keyframes`
   from { background-color: rgba(0, 0, 0, 0); }
   to { background-color: rgba(0, 0, 0, 0.5); }
 `;
 
-const Overlay = styled.div`
+type OverlayProps = {
+  zIndex?: number;
+  position?: string;
+  top?: string;
+  display?: string;
+  justifyContent?: string;
+};
+const Overlay = styled.div<OverlayProps>`
   animation: ${backgroundAnimation} 0.3s ease-out;
   animation-fill-mode: forwards;
-  z-index: ${(props) => props.zIndex || designSystem.dimensions.stacks.overlay};
+  z-index: ${(props) => props.zIndex || dimensions.stacks.overlay};
   position: ${(props) => props.position || 'fixed'};
   top: ${(props) => props.top || '0'};
   left: 0;

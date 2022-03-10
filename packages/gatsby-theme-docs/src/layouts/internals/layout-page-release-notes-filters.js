@@ -7,6 +7,7 @@ import {
   createStyledIcon,
   designSystem,
   Icons,
+  Overlay,
 } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -14,7 +15,7 @@ import IconButton from '@commercetools-uikit/icon-button';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { useInView } from 'react-intersection-observer';
-import { Overlay, SearchInput } from '../../components';
+import { SearchInput } from '../../components';
 import ReleaseNotesFilterDates from '../../components/release-notes-filter-dates';
 import ReleaseNotesFilterTopics from '../../components/release-notes-filter-topics';
 
