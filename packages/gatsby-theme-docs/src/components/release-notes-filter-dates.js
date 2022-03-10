@@ -23,7 +23,7 @@ const ReleaseNotesFilterDates = () => {
 
   return (
     <SpacingsStack scale="s">
-      <FilterTitle>Filter by Date</FilterTitle>
+      <FilterTitle>Filter by date</FilterTitle>
 
       <SpacingsStack scale="xs">
         <DateLabel htmlFor="from-filter-date">From</DateLabel>
