@@ -3411,7 +3411,8 @@ __metadata:
     hast-util-heading: 1.0.5
     intersection-observer: 0.12.0
     lodash.throttle: 4.1.1
-    mermaid: ^8.14.0
+    mermaid: 8.14.0
+    murmurhash: 2.0.0
     prism-react-renderer: 1.3.1
     prismjs: 1.27.0
     prompts: ^2.4.0
@@ -21311,7 +21312,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mermaid@npm:^8.14.0":
+"mermaid@npm:8.14.0":
   version: 8.14.0
   resolution: "mermaid@npm:8.14.0"
   dependencies:
@@ -22044,6 +22045,13 @@ __metadata:
     duplexer2: ^0.1.2
     object-assign: ^4.1.0
   checksum: 99cf8934714da7f9ce03e1f0a99621a41443217d80849c62e22b31b6ac356b9acd22f41e555fd7a759f1c7c9d3273e7abff2fb82dff8285f00a6a1022727e4ab
+  languageName: node
+  linkType: hard
+
+"murmurhash@npm:2.0.0":
+  version: 2.0.0
+  resolution: "murmurhash@npm:2.0.0"
+  checksum: 01546111bea9699e5241b29397a7d9569f3b75aa417dc492a06e7b075b98657cef05b2c560f534770ed5822ed6556333b3d7935b3f275a80332d9417e4944ecd
   languageName: node
   linkType: hard
 

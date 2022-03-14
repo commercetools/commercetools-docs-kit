@@ -31,11 +31,12 @@ flowchart LR
     subgraph a subgraph
     b2-->A
     end
-    A[Start] --> B{Is it?}
-    B -->|Yes| C[OK]
+    A[Start] --> GitHub{GitHub}
+    GitHub -->|Yes| C[OK]
     C --> D[Rethink]
-    D --> B
-    B ---->|No| E[End]
+    D --> GitHub
+    GitHub ---->|No| E[End]
+    click GitHub "http://www.github.com" "B is a link to Github"
 ```
 
 # A Class Diagram
