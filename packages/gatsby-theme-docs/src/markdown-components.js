@@ -2,6 +2,7 @@ import {
   ContentNotifications,
   Markdown,
   Subtitle,
+  Mermaid,
 } from '@commercetools-docs/ui-kit';
 import {
   Card,
@@ -10,7 +11,6 @@ import {
   BetaFlag as Beta,
   Anchor,
   SideBySide,
-  Mermaid,
 } from './components';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 

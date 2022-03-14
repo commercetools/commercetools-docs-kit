@@ -1,7 +1,7 @@
 import * as designSystem from './design-system';
 import * as Markdown from './components/markdown';
 
-// components
+// components that are not part of the "Markdown" export:
 export { designSystem, Markdown };
 export { default as ContentNotifications } from './components/content-notifications';
 export { default as RssFeeds } from './components/rss/rss-feeds';
@@ -13,15 +13,14 @@ export { default as MultiCodeBlock } from './components/multi-code-block';
 export { default as Reset } from './components/reset';
 export { default as Subtitle } from './components/subtitle';
 export { default as TextSmall } from './components/text-small';
+export { default as Mermaid } from './components/mermaid';
+export { default as CodeBlock } from './components/code-block';
 
 // style blocks for components to be composed to components with functionality
 export * as cardElements from './components/card-elements';
 
 // icons
 export * as Icons from './icons';
-
-// special exports for components that cannot be accessed through `Markdown` exports
-export { default as CodeBlock } from './components/code-block';
 
 // utils
 export { default as createStyledIcon } from './utils/create-styled-icon';

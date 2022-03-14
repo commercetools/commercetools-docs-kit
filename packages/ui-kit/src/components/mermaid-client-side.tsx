@@ -57,7 +57,6 @@ const config = {
     useMaxWidth: true,
     htmlLabels: true,
     curve: 'cardinal',
-    fontFamily: designSystem.typography.fontFamilies.primary,
   },
   sequence: {
     // https://mermaid-js.github.io/mermaid/#/sequenceDiagram?id=possible-configuration-parameters
@@ -93,7 +92,7 @@ const config = {
     stroke: inherit;
   }
 `,
-};
+} as const;
 
 const Figure = styled.figure`
   background-color: ${designSystem.colors.light.surfaceSecondary1};
@@ -109,15 +108,19 @@ const Figure = styled.figure`
   }
 `;
 
-const idForGraph = (graph) => `mermaid-${murmurhash.v3(graph)}`;
+const idForGraph = (graph: string) => `mermaid-${murmurhash.v3(graph)}`;
 
 mermaid.initialize(config);
 
-const Mermaid = ({ graph }) => {
+type MermaidProps = {
+  graph: string;
+};
+
+const Mermaid = ({ graph }: MermaidProps) => {
   const [svg, setSvg] = useState('');
 
   useEffect(() => {
-    mermaid.mermaidAPI.render(idForGraph(graph), graph, (svg) => {
+    mermaid.mermaidAPI.render(idForGraph(graph), graph, (svg: string) => {
       setSvg(svg);
     });
   }, [graph]);
