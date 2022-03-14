@@ -1,5 +1,43 @@
 ---
-title: Learn how to develop a new documentation website
+title: The commercetools docs kit. A docs-as-code website generator
 ---
 
-<Info>This documentation is yet to be written</Info>
+<Subtitle>
+
+The docs kit is a fully styled and preconfigured [GatsbyJS](https://www.gatsbyjs.com/) theme. In fact, it's much more than a visual theme:
+
+</Subtitle>
+
+- All content is created as [MDX](https://mdxjs.com/) files (markdown with custom React components)
+- Preview of the full website while authoring
+- [Images](/writing/images#images) dynamically optimized
+- Blazing fast statically pregenerated sites
+- Precisely preconfigured full text search using [Algolia docsearch](https://docsearch.algolia.com/)
+- [Release notes](/writing/release-notes) with filtering, topic tagging and RSS feed
+- Fully responsive including special layouts for very wide screens (hello devs!)
+- Syntax highlighting for many [code](/writing/code) languages, line highlighting, command prompts
+- Many useful custom components that can be directly used in MDX files:
+  - [Cards](/writing/markdown#cards) (with images, links, icons etc)
+  - [RSS feeds](/writing/markdown#rss-feed) widget
+  - [Mermaid diagrams](/writing/images#mermaid-diagrams)
+  - [Special mentions](/writing/markdown#special-mentions) (info / warn / error)
+  - Multi-language code blocks, code examples from files.
+- [Re-usable content](/writing/import-content) fragments using MDX transclusion
+- Central definition of important [constant values in data files](/writing/constants)
+- Custom site-specific components can be centrally injected into MDX (for example interactive features)
+- [Dynamic API documentation](/api-docs/raml) from RAML API specifications (using rmf-codegen for parsing and evaluation)
+  - "hybrid" API documentation mode: Full control on what page which endpoint and type is documented in which order, but the actual endpoint and type specs are fully generated. Free form MDX content can be interleaved with API documentation.
+  - Resources and Types are autolinked no matter where they are placed in the site. No manual maintenance of API documentation links when refactoring the site structure.
+  - scales into very large APIs.
+
+The docs kit follows the convention over configuration principle, especially concerning file naming, file locations and navigation structure. This makes it easy for an author to contribute to any existing documentation website. There is [configurability](/configuration/setup) available nevertheless
+
+Many components are provided in the standalone `@commercetools-docs/ui-kit` NPM package and can be used in other website that want to take over the basic design language of the documentation.
+
+<Info>
+
+The commercetools docs-kit implementation is developed and maintained under the open source MIT license.
+
+All artwork, visual design and other creative or visual content elements remain under full copyright of commercetools GmbH.
+
+</Info>
