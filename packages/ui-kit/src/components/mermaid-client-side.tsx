@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import mermaid from 'mermaid';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { colors, typography, tokens, dimensions } from '../design-system';
 import { customProperties } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import murmurhash from 'murmurhash';
@@ -19,39 +19,39 @@ const config = {
   arrowMarkerAbsolute: false,
   themeVariables: {
     // https://mermaid-js.github.io/mermaid/#/theming?id=theme-variables-reference-table
-    background: designSystem.colors.light.surfacePrimary,
-    lineColor: designSystem.colors.light.borderInfo,
-    textColor: designSystem.colors.light.textPrimary,
-    fontFamily: designSystem.typography.fontFamilies.primary,
-    fontSize: designSystem.typography.fontSizes.body,
+    background: colors.light.surfacePrimary,
+    lineColor: colors.light.borderInfo,
+    textColor: colors.light.textPrimary,
+    fontFamily: typography.fontFamilies.primary,
+    fontSize: typography.fontSizes.body,
     primaryColor: customProperties.colorInfo95,
     primaryBorderColor: customProperties.colorInfo,
-    primaryTextColor: designSystem.colors.light.textPrimary,
+    primaryTextColor: colors.light.textPrimary,
 
     secondaryColor: customProperties.colorAccent40,
     secondaryBorderColor: customProperties.colorAccent30,
-    secondaryTextColor: designSystem.colors.light.textPrimary,
+    secondaryTextColor: colors.light.textPrimary,
 
     tertiaryColor: customProperties.colorPrimary95,
     tertiaryBorderColor: customProperties.colorPrimary25,
-    tertiaryTextColor: designSystem.colors.light.textPrimary,
+    tertiaryTextColor: colors.light.textPrimary,
 
     // notes are conventionally yellow but there is none in the design system
     noteBkgColor: 'lightyellow',
-    noteTextColor: designSystem.colors.light.textPrimary,
+    noteTextColor: colors.light.textPrimary,
     noteBorderColor: 'yellow',
 
-    errorBkgColor: designSystem.colors.light.surfaceError,
-    errorTextColor: designSystem.colors.light.textError,
+    errorBkgColor: colors.light.surfaceError,
+    errorTextColor: colors.light.textError,
 
     // sequence diagram specifics:
     // https://mermaid-js.github.io/mermaid/#/theming?id=sequence-diagram
-    sequenceNumberColor: designSystem.colors.light.textInverted,
-    actorLineColor: designSystem.colors.light.borderInfo,
+    sequenceNumberColor: colors.light.textInverted,
+    actorLineColor: colors.light.borderInfo,
 
     // flow chart specifics:
     // https://mermaid-js.github.io/mermaid/#/theming?id=flowchart
-    edgeLabelBackground: designSystem.colors.light.surfaceSecondary1,
+    edgeLabelBackground: colors.light.surfaceSecondary1,
   },
   flowchart: {
     useMaxWidth: true,
@@ -60,7 +60,7 @@ const config = {
   },
   sequence: {
     // https://mermaid-js.github.io/mermaid/#/sequenceDiagram?id=possible-configuration-parameters
-    fontFamily: designSystem.typography.fontFamilies.primary,
+    fontFamily: typography.fontFamilies.primary,
     mirrorActors: false,
     useMaxWidth: true,
     rightAngles: false,
@@ -72,22 +72,22 @@ const config = {
     noteMargin: 10,
     messageMargin: 35,
 
-    actorFontSize: designSystem.typography.fontSizes.body,
-    actorFontWeight: designSystem.typography.fontWeights.regular,
-    messageFontSize: designSystem.typography.fontSizes.body,
-    messageFontFamily: designSystem.typography.fontFamilies.primary,
-    messageFontWeight: designSystem.typography.fontWeights.regular,
-    noteFontSize: designSystem.typography.fontSizes.small,
+    actorFontSize: typography.fontSizes.body,
+    actorFontWeight: typography.fontWeights.regular,
+    messageFontSize: typography.fontSizes.body,
+    messageFontFamily: typography.fontFamilies.primary,
+    messageFontWeight: typography.fontWeights.regular,
+    noteFontSize: typography.fontSizes.small,
   },
   gantt: {
     numberSectionStyles: 4,
     axisFormat: '%Y-%m-%d',
-    fontFamily: designSystem.typography.fontFamilies.primary,
+    fontFamily: typography.fontFamilies.primary,
   },
   // this low level CSS override is rather a bugfix workaround, resetting fill and stroke to fix font rendering.
   themeCSS: `
   .messageText {
-    color: ${designSystem.colors.light.textSecondary}
+    color: ${colors.light.textSecondary}
     fill: inherit;
     stroke: inherit;
   }
@@ -95,15 +95,15 @@ const config = {
 } as const;
 
 const Figure = styled.figure`
-  background-color: ${designSystem.colors.light.surfaceSecondary1};
-  border-radius: ${designSystem.tokens.borderRadiusForImageFrame};
+  background-color: ${colors.light.surfaceSecondary1};
+  border-radius: ${tokens.borderRadiusForImageFrame};
   margin: 0;
-  padding: ${designSystem.dimensions.spacings.xs};
+  padding: ${dimensions.spacings.xs};
   display: flex;
   justify-content: center;
   line-height: normal;
   a span.nodeLabel {
-    color: ${designSystem.colors.light.link} !important;
+    color: ${colors.light.link} !important;
     text-decoration: underline;
   }
 `;
