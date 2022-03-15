@@ -38,6 +38,10 @@
       "allowedVersions": "<3"
     },
     {
+      "matchPackageNames": ["unist-util-visit"],
+      "allowedVersions": "<3"
+    },
+    {
       "matchPackageNames": ["remark-emoji"],
       "allowedVersions": "<3"
     },
