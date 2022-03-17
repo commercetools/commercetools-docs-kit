@@ -3297,8 +3297,8 @@ __metadata:
     "@commercetools-docs/rmf-codegen": 13.13.0
     "@commercetools-docs/ui-kit": 18.4.0
     "@commercetools-uikit/design-system": ^14.0.0
-    "@commercetools-uikit/spacings-inline": ^14.0.0
-    "@commercetools-uikit/spacings-stack": ^14.0.0
+    "@commercetools-uikit/spacings-inline": ^14.0.1
+    "@commercetools-uikit/spacings-stack": ^14.0.1
     "@emotion/react": ^11.7.1
     "@emotion/styled": ^11.6.0
     gatsby: 4.9.0
@@ -3355,15 +3355,15 @@ __metadata:
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
     "@commercetools-docs/ui-kit": 18.4.0
-    "@commercetools-uikit/card": ^14.0.0
-    "@commercetools-uikit/checkbox-input": ^14.0.0
-    "@commercetools-uikit/date-input": ^14.0.0
+    "@commercetools-uikit/card": ^14.0.1
+    "@commercetools-uikit/checkbox-input": ^14.0.2
+    "@commercetools-uikit/date-input": ^14.0.2
     "@commercetools-uikit/design-system": ^14.0.0
-    "@commercetools-uikit/icon-button": ^14.0.0
-    "@commercetools-uikit/icons": ^14.0.0
-    "@commercetools-uikit/secondary-icon-button": ^14.0.0
-    "@commercetools-uikit/spacings-inline": ^14.0.0
-    "@commercetools-uikit/spacings-stack": ^14.0.0
+    "@commercetools-uikit/icon-button": ^14.0.2
+    "@commercetools-uikit/icons": ^14.0.1
+    "@commercetools-uikit/secondary-icon-button": ^14.0.2
+    "@commercetools-uikit/spacings-inline": ^14.0.1
+    "@commercetools-uikit/spacings-stack": ^14.0.1
     "@commercetools-uikit/stamp": ^14.0.0
     "@emotion/cache": ^11.7.1
     "@emotion/react": ^11.7.1
@@ -3470,10 +3470,10 @@ __metadata:
     "@babel/runtime": ^7.16.7
     "@babel/runtime-corejs3": ^7.16.8
     "@commercetools-uikit/design-system": ^14.0.0
-    "@commercetools-uikit/icons": ^14.0.0
-    "@commercetools-uikit/loading-spinner": ^14.0.0
-    "@commercetools-uikit/spacings-inline": ^14.0.0
-    "@commercetools-uikit/tooltip": ^14.0.0
+    "@commercetools-uikit/icons": ^14.0.1
+    "@commercetools-uikit/loading-spinner": ^14.0.1
+    "@commercetools-uikit/spacings-inline": ^14.0.1
+    "@commercetools-uikit/tooltip": ^14.0.1
     "@emotion/react": ^11.7.1
     "@emotion/styled": ^11.6.0
     "@svgr/cli": 6.2.1
@@ -3625,7 +3625,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/card@npm:^14.0.0":
+"@commercetools-uikit/card@npm:^14.0.1":
   version: 14.0.1
   resolution: "@commercetools-uikit/card@npm:14.0.1"
   dependencies:
@@ -3643,7 +3643,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/checkbox-input@npm:^14.0.0":
+"@commercetools-uikit/checkbox-input@npm:^14.0.2":
   version: 14.0.2
   resolution: "@commercetools-uikit/checkbox-input@npm:14.0.2"
   dependencies:
@@ -3682,7 +3682,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/date-input@npm:^14.0.0":
+"@commercetools-uikit/date-input@npm:^14.0.2":
   version: 14.0.2
   resolution: "@commercetools-uikit/date-input@npm:14.0.2"
   dependencies:
@@ -3760,7 +3760,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/icon-button@npm:^14.0.0":
+"@commercetools-uikit/icon-button@npm:^14.0.2":
   version: 14.0.2
   resolution: "@commercetools-uikit/icon-button@npm:14.0.2"
   dependencies:
@@ -3782,7 +3782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/icons@npm:14.0.1, @commercetools-uikit/icons@npm:^14.0.0":
+"@commercetools-uikit/icons@npm:14.0.1, @commercetools-uikit/icons@npm:^14.0.1":
   version: 14.0.1
   resolution: "@commercetools-uikit/icons@npm:14.0.1"
   dependencies:
@@ -3822,7 +3822,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/loading-spinner@npm:^14.0.0":
+"@commercetools-uikit/loading-spinner@npm:^14.0.1":
   version: 14.0.1
   resolution: "@commercetools-uikit/loading-spinner@npm:14.0.1"
   dependencies:
@@ -3841,7 +3841,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/secondary-icon-button@npm:14.0.2, @commercetools-uikit/secondary-icon-button@npm:^14.0.0":
+"@commercetools-uikit/secondary-icon-button@npm:14.0.2, @commercetools-uikit/secondary-icon-button@npm:^14.0.2":
   version: 14.0.2
   resolution: "@commercetools-uikit/secondary-icon-button@npm:14.0.2"
   dependencies:
@@ -3887,7 +3887,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/spacings-inline@npm:14.0.1, @commercetools-uikit/spacings-inline@npm:^14.0.0":
+"@commercetools-uikit/spacings-inline@npm:14.0.1, @commercetools-uikit/spacings-inline@npm:^14.0.1":
   version: 14.0.1
   resolution: "@commercetools-uikit/spacings-inline@npm:14.0.1"
   dependencies:
@@ -3935,7 +3935,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/spacings-stack@npm:14.0.1, @commercetools-uikit/spacings-stack@npm:^14.0.0":
+"@commercetools-uikit/spacings-stack@npm:14.0.1, @commercetools-uikit/spacings-stack@npm:^14.0.1":
   version: 14.0.1
   resolution: "@commercetools-uikit/spacings-stack@npm:14.0.1"
   dependencies:
@@ -4001,7 +4001,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/tooltip@npm:14.0.1, @commercetools-uikit/tooltip@npm:^14.0.0":
+"@commercetools-uikit/tooltip@npm:14.0.1, @commercetools-uikit/tooltip@npm:^14.0.1":
   version: 14.0.1
   resolution: "@commercetools-uikit/tooltip@npm:14.0.1"
   dependencies:
@@ -4059,7 +4059,7 @@ __metadata:
     "@commercetools-docs/gatsby-theme-constants": 18.4.0
     "@commercetools-docs/gatsby-theme-docs": 18.4.0
     "@commercetools-docs/ui-kit": 18.4.0
-    "@commercetools-uikit/icons": ^14.0.0
+    "@commercetools-uikit/icons": ^14.0.1
     gatsby: 4.9.0
     gatsby-cli: 4.9.0
     react: 17.0.2
