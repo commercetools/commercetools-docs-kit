@@ -37,7 +37,7 @@ const ReleaseNotesFilterTopics = () => {
     <Container>
       <SpacingsStack>
         <SpacingsInline alignItems="center" justifyContent="space-between">
-          <FilterTitle>Filter By Topics</FilterTitle>
+          <FilterTitle>Filter by topics</FilterTitle>
           <ClearAll onClick={handleOnClearAll} aria-label="Clear all">
             Clear all
           </ClearAll>
