@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.0.12
+
+### Patch Changes
+
+- [#1249](https://github.com/commercetools/commercetools-docs-kit/pull/1249) [`951284c9`](https://github.com/commercetools/commercetools-docs-kit/commit/951284c94b606ef4a1f9d60e9a258e854ca6f717) Thanks [@timonrey](https://github.com/timonrey)! - Improve writing style rules
+
 ## 3.0.11
 
 ### Patch Changes

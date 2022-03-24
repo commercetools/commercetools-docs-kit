@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 18.5.0
+
+### Minor Changes
+
+- [#1258](https://github.com/commercetools/commercetools-docs-kit/pull/1258) [`4f0c3984`](https://github.com/commercetools/commercetools-docs-kit/commit/4f0c3984d173fe4d77cced2c835825ffcad59487) Thanks [@renovate](https://github.com/apps/renovate)! - Update uikit dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`4f0c3984`](https://github.com/commercetools/commercetools-docs-kit/commit/4f0c3984d173fe4d77cced2c835825ffcad59487)]:
+  - @commercetools-docs/ui-kit@18.5.0
+
 ## 18.4.0
 
 ### Patch Changes
