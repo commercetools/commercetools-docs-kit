@@ -117,7 +117,7 @@ jobs:
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
-          env: ${{ ${{ steps.start-deployment.outputs.env }} }}
+          env: ${{ steps.start-deployment.outputs.env }}
           env_url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
           deployment_id: ${{ steps.start-deployment.outputs.deployment_id }}
 
