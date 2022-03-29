@@ -27,5 +27,8 @@
     "7zip-bin": "5.1.1",
     "node-fetch": "2.6.7",
     "shelljs": "0.8.5"
+  },
+  "devDependencies": {
+    "prettier": "2.6.1"
   }
 }

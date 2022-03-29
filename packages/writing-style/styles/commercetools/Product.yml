@@ -34,8 +34,6 @@ swap:
   UI-kit: UI Kit
   UiKit: UI Kit
   UIKit: UI Kit
-  ImpEx: IMPEX
-  Imp-Ex: IMPEX
-  NodeJs: Node.js
-  node.js: Node.js
-  Nodejs: Node.js
+  IMPEX: ImpEx
+  Imp-Ex: ImpEx
+  Impex: ImpEx
