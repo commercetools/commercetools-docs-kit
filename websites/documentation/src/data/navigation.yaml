@@ -1,9 +1,7 @@
 - chapter-title: Getting Started
   pages:
     - title: Install a site # prerequisites, checking out a repo, VSCode workspace, yarn install
-      path: /configuration/setup
-    - title: Start the Preview # how to start and stop the dev server in watch mode, how to run a local full build
-      path: /getting-started/preview
+      path: /getting-started/setup
     - title: Troubleshooting
       path: /getting-started/troubleshooting
 - chapter-title: Writing Content

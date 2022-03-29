@@ -2,4 +2,31 @@
 title: Troubleshooting
 ---
 
-<Info>This documentation is yet to be written</Info>
+# Frequent errors
+
+## _"Cannot read properties of null (reading 'excludeFromSearchIndex')"_
+
+This misleading error is shown in the preview site and the console if you have saved an MDX file with invalid syntax. One frequent cause are unclosed JSX tags, for example `<Subtitle>Example Subtitle</Subtitle>` where the closing tag is not actually closing (should end `</Subtitle>`). Many other syntax errors are possible too.
+
+<Info>Tip: Don't save the file before having conpleted a certain JSX tags block.</Info>
+
+# Warnings that are harmless
+
+## _"The GraphQL query in the non-page component...."_
+
+The following warning is always part of the console output but is not actually true:
+
+```
+warn The GraphQL query in the non-page component "/Users/USERNAME/GitHub/commercetools-docs-kit/packages/gatsby-theme-docs/src/templates/release-notes-list.js" will not be run.
+Exported queries are only executed for Page components. It's possible you're
+trying to create pages in your gatsby-node.js and that's failing for some
+reason.
+
+If the failing component(s) is a regular component and not intended to be a page
+component, you generally want to use a <StaticQuery> (https://gatsbyjs.org/docs/static-query)
+instead of exporting a page query.
+
+If you're more experienced with GraphQL, you can also export GraphQL
+fragments from components and compose the fragments in the Page component
+query and pass data down into the child component — https://graphql.org/learn/queries/#fragments
+```

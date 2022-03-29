@@ -3,11 +3,10 @@ title: Release notes
 wideLayout: true
 ---
 
-
 # Setting up the release notes feature
 
 The release notes feature is toggled by creating a conventionally named file `src/content/releases.mdx`.
-The file is written like a regular content page. The docs-kit is automatically generating the release notes list below the content of that file and is applying a custom layout with filters for finding release notes.
+The file is written like a regular content page. The Docs-Kit is automatically generating the release notes list below the content of that file and is applying a custom layout with filters for finding release notes.
 
 See the [test site](/../docs-smoke-test/releases) for an example.
 
@@ -16,9 +15,9 @@ See the [test site](/../docs-smoke-test/releases) for an example.
 Release note files can be found in `src/content/releases` and are written in MDX like regular content. You can also place files in folders to better organize the release notes.
 
 <Info>
-  The docs-kit provides an interactive command-line script to create new release notes.
+  The Docs-Kit provides an interactive command-line script to create new release notes.
 
-  Calling `yarn create-docs-release-note` in the terminal guides through the creation
+Calling `yarn create-docs-release-note` in the terminal guides through the creation
 </Info>
 
 The files' location does not imply the URL like for content.
@@ -26,7 +25,6 @@ The URL is built from the frontmatter fields for date and title.
 This way you can reorganize the files without changing the URL of the release note.
 
 To learn the full release note file format including the full specification of the frontmatter fields, see the [specification by example file](/../docs-smoke-test/releases/2000-03-03-release-note-format-definition-custom).
-
 
 # Template
 
@@ -36,7 +34,8 @@ When not using the CLI tool to create a release note, you can use this template:
 ---
 date: 2020-01-01
 title: (TEMPLATE) TITLE
-description: | # title content and what this is good for //  max 256 characters // for MC, RSS and other feeds
+description:
+  | # title content and what this is good for //  max 256 characters // for MC, RSS and other feeds
   (TEMPLATE) DESCRIPTION
 type: enhancement # feature | fix | enhancement | announcement
 topics:
@@ -51,7 +50,7 @@ topics:
 
 FooBar Intro Line: What this is good for (like description)
 
- * [API] FooBar
+- [API] FooBar
 
 <!--more-->
 
