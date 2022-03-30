@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-api-docs",
   "description": "Gatsby theme for commercetools documentation API",
-  "version": "18.4.0",
+  "version": "18.5.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -23,7 +23,7 @@
   "dependencies": {
     "@commercetools-docs/gatsby-transformer-mdx-introspection": "15.0.3",
     "@commercetools-docs/gatsby-transformer-raml": "13.0.2",
-    "@commercetools-docs/ui-kit": "18.4.0",
+    "@commercetools-docs/ui-kit": "18.5.0",
     "@commercetools-uikit/design-system": "^14.0.0",
     "@commercetools-uikit/spacings-inline": "^14.0.1",
     "@commercetools-uikit/spacings-stack": "^14.0.1",
@@ -31,7 +31,7 @@
     "@emotion/styled": "^11.6.0",
     "gatsby-source-filesystem": "4.9.0",
     "prop-types": "15.8.1",
-    "unist-util-visit": "^4.0.0"
+    "unist-util-visit": "2.0.3"
   },
   "devDependencies": {
     "@commercetools-docs/rmf-codegen": "13.13.0",

@@ -1,5 +1,18 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 18.5.0
+
+### Minor Changes
+
+- [#1258](https://github.com/commercetools/commercetools-docs-kit/pull/1258) [`4f0c3984`](https://github.com/commercetools/commercetools-docs-kit/commit/4f0c3984d173fe4d77cced2c835825ffcad59487) Thanks [@renovate](https://github.com/apps/renovate)! - Update uikit dependencies
+
+### Patch Changes
+
+- [#1248](https://github.com/commercetools/commercetools-docs-kit/pull/1248) [`bfd1a7d3`](https://github.com/commercetools/commercetools-docs-kit/commit/bfd1a7d3375c7cf11839441dda10da243d2b2890) Thanks [@timonrey](https://github.com/timonrey)! - Release note filter headings are now consistently lowercase
+
+- Updated dependencies [[`4f0c3984`](https://github.com/commercetools/commercetools-docs-kit/commit/4f0c3984d173fe4d77cced2c835825ffcad59487)]:
+  - @commercetools-docs/ui-kit@18.5.0
+
 ## 18.4.0
 
 ### Minor Changes

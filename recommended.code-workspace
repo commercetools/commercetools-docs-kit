@@ -63,7 +63,9 @@
       "redhat.vscode-yaml",
       "silvenon.mdx",
       "jounqin.vscode-mdx",
-      "errata-ai.vale-server"
+      "errata-ai.vale-server",
+      "bierner.markdown-mermaid",
+      "bpruitt-goddard.mermaid-markdown-syntax-highlighting"
     ]
   },
   "launch": {
@@ -76,7 +78,7 @@
           "<node_internals>/**"
         ],
         "program": "${workspaceRoot}/node_modules/.bin/gatsby",
-        "cwd": "${workspaceFolder}/websites/docs-smoke-test",
+        "cwd": "${workspaceRoot}/websites/docs-smoke-test",
         "args": [
           "develop"
         ],

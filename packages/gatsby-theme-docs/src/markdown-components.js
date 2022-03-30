@@ -2,6 +2,7 @@ import {
   ContentNotifications,
   Markdown,
   Subtitle,
+  Mermaid,
 } from '@commercetools-docs/ui-kit';
 import {
   Card,
@@ -58,6 +59,7 @@ const components = {
   Card,
   Cards,
   SideBySide,
+  Mermaid,
 
   // Custom React components that can be injected from each website
   // See ../overrides/README.md

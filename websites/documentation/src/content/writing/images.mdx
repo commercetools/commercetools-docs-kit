@@ -1,17 +1,67 @@
 ---
-title: Images
+title: Images and Diagrams
 wideLayout: true
 ---
 
-You can find all images in `/src/images`, and can use standard Markdown syntax to insert images. It is good to have a meaningful image names and alt text when using images. A meaningful alt text is useful for visually impaired users using softwares to read text on a page. Also, a meaningful image name with keywords helps with SEO.
+# Images
 
-The site generator automatically optimizes images, hence, it's not necessary to adjust them in concerns of file size, resolution, and so on.
+All image files must be placed in `/src/images` in full original resolution and quality. Multiple compressed and lower resolution files are generated automatically when building the website.
 
-- You can add a caption to images by following the Markdown syntax.
-- Images with a transparent background (PNG) would have a white background.
-- SVG images are not handled by Gatsby, but would still be rendered.
+You use [standard markdown syntax](https://commonmark.org/help/tutorial/08-images.html) to insert images into content pages.
 
-- We do not recommend using:
+It is good to have a meaningful alt text when using images. A meaningful alt text is useful for visually impaired users using softwares to read text on a page.
 
-  - external images
-  - images of small sizes or large heights
+- You can add a caption to images by following the Markdown syntax for titles.
+- Images with a transparent background (PNG) are rendered on white background. It's OK to leave transparent background
+- SVG images are not optimized or scaled, but would still be rendered. They need to be placed into `/src/files/` for unprocessed delivery.
+
+<SideBySide>
+
+```markdown
+Full example with alt text title:
+
+![a large dog](/images/dog.jpg 'This dog serves as an example image and this is the title text')
+
+Full SVG example:
+
+![illustation of a shoppin cart](/content/files/cart.svs 'We love illustrated shopping carts')
+```
+
+![a large dog](/images/dog.jpg 'This dog serves as an example image and this is the title text')
+
+</SideBySide>
+
+Unless not otherwise possible, avoid:
+
+- images on external servers (not optimized, can disappear)
+- images of small sizes or large heights
+
+# Mermaid Diagrams
+
+It's possible to create diagrams using [mermaid syntax](https://mermaid-js.github.io/mermaid/#/) directly in the MDX files. For example, it's possible to create sequence diagrams, flowcharts, class diagrams, ER diagrams, state diagrams and others.
+
+To author, either use [mermaid.live](https://mermaid.live) or install the mermaid VSCode plugin to get syntax support while writing.
+
+Avoid custom CSS or theme overrides for better maintainability of the content.
+
+<SideBySide>
+
+````markdown
+```mermaid
+sequenceDiagram
+    Alice->John: Hello John, how are you?
+    loop Every minute
+        John-->Alice: Great!
+    end
+```
+````
+
+```mermaid
+sequenceDiagram
+    Alice->John: Hello John, how are you?
+    loop Every minute
+        John-->Alice: Great!
+    end
+```
+
+</SideBySide>
