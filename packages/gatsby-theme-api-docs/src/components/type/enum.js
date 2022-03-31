@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
-import { DescriptionText } from '../description';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { DescriptionText, DescriptionParagraph } from '../description';
 
-const Enum = ({ values, enumDescriptions }) => {
+const Enum = ({
+  values,
+  enumDescriptions,
+  description,
+  displayName,
+  anchor,
+}) => {
   if (!values) {
     throw new Error(
       'Must pass values props to Enum component --- <Enum values={<Array>} />.'
@@ -11,29 +18,36 @@ const Enum = ({ values, enumDescriptions }) => {
   }
 
   return (
-    <Markdown.Dl>
-      {values &&
-        values.map((value) => {
-          const enumDescription =
-            enumDescriptions &&
-            enumDescriptions.find((enumDesc) => enumDesc.name === value);
+    <div aria-label={`${displayName} definition`} id={anchor}>
+      <SpacingsStack scale="m">
+        {description && (
+          <DescriptionParagraph>{description}</DescriptionParagraph>
+        )}
+        <Markdown.Dl>
+          {values &&
+            values.map((value) => {
+              const enumDescription =
+                enumDescriptions &&
+                enumDescriptions.find((enumDesc) => enumDesc.name === value);
 
-          return (
-            <React.Fragment key={value}>
-              <Markdown.Dt>
-                <Markdown.InlineCode>{value}</Markdown.InlineCode>
-              </Markdown.Dt>
-              {enumDescription && enumDescription.description && (
-                <Markdown.Dd>
-                  <DescriptionText
-                    markdownString={enumDescription.description}
-                  />
-                </Markdown.Dd>
-              )}
-            </React.Fragment>
-          );
-        })}
-    </Markdown.Dl>
+              return (
+                <React.Fragment key={value}>
+                  <Markdown.Dt>
+                    <Markdown.InlineCode>{value}</Markdown.InlineCode>
+                  </Markdown.Dt>
+                  {enumDescription && enumDescription.description && (
+                    <Markdown.Dd>
+                      <DescriptionText
+                        markdownString={enumDescription.description}
+                      />
+                    </Markdown.Dd>
+                  )}
+                </React.Fragment>
+              );
+            })}
+        </Markdown.Dl>{' '}
+      </SpacingsStack>
+    </div>
   );
 };
 
@@ -48,6 +62,9 @@ Enum.propTypes = {
       description: PropTypes.string.isRequired,
     }).isRequired
   ),
+  description: PropTypes.string,
+  displayName: PropTypes.string,
+  anchor: PropTypes.string,
 };
 
 export default Enum;
