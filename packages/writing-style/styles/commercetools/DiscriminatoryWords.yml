@@ -1,0 +1,11 @@
+# This list contains expressions that are discriminating which should not be used.
+extends: existence
+message: "'%s' is a discriminating expression. Please use a different wording."
+ignorecase: true
+level: error
+tokens:
+  - whitelist(?:ed|)
+  - blacklist(?:ed|)
+  - master
+  - slave
+  - native
