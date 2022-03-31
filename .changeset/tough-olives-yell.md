@@ -1,5 +1,5 @@
 ---
-'@commercetools-docs/writing-style': patch
+'@commercetools-docs/writing-style': minor
 ---
 
-Applies all suggested writing style improvements.
+Updates the google and writegood writing style packages as well as the vale dependency. The writing style rules now use the new product name 'ImpEx' and updates the weasel word list as well.
