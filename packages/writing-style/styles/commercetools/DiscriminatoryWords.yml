@@ -4,8 +4,9 @@ message: "'%s' is a discriminating expression. Please use a different wording."
 ignorecase: true
 level: error
 tokens:
-  - whitelist(?:ed|)
   - blacklist(?:ed|)
+  - disabled?
   - master
-  - slave
   - native
+  - slave
+  - whitelist(?:ed|)
