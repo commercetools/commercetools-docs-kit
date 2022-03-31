@@ -26,7 +26,6 @@ swap:
   curated roles: predefined roles
   CURL: cURL
   data are: data is
-  disabled?: deactivated | turned off # ambiguity with the medical condition, avoid.
   fewer data: less data
   file name: filename
   firewalls: firewall rules

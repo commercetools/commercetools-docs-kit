@@ -97,7 +97,6 @@ exceptions:
   - OR
   # Specials and Brands
   - YYYY # to be able to describe date formats like YYYY-MM-DD
-  - ZEIT # the zeit.co service is trademarked in uppercased letters.
   # the following exceptions are allowed because they are caught as errors by the ToDo rule.
   - XXX
   - FIXME
