@@ -25,63 +25,50 @@ const ApiType = (props) => {
     );
   }
 
-  const DescriptionAndEnums = (props) => {
-    return (
-      <>
-        {props.apiType.description && (
-          <DescriptionParagraph>
-            {props.apiType.description}
-          </DescriptionParagraph>
-        )}
-        {props.apiType.enumeration && (
-          <Enum
-            values={props.apiType.enumeration}
-            enumDescriptions={props.apiType.enumDescriptions}
-          />
-        )}
-      </>
-    );
-  };
-
-  DescriptionAndEnums.propTypes = {
-    apiType: PropTypes.object.isRequired,
-  };
-
   const urn = generateTypeURN(matchedApiType);
 
-  return (
-    <FullWidthContainer
-      id={urn}
-      aria-label={`${matchedApiType.displayName} definition`}
-    >
-      <SpacingsStack scale="m">
-        {!props.renderDescriptionBelowProperties && (
-          <DescriptionAndEnums apiType={matchedApiType} />
-        )}
+  if (matchedApiType.enumeration) {
+    return (
+      <Enum
+        values={matchedApiType.enumeration}
+        enumDescriptions={matchedApiType.enumDescriptions}
+        description={matchedApiType.description}
+        displayName={matchedApiType.displayName}
+        anchor={urn}
+      />
+    );
+  } else {
+    return (
+      <FullWidthContainer
+        id={urn}
+        aria-label={`${matchedApiType.displayName} definition`}
+      >
+        <SpacingsStack scale="m">
+          {matchedApiType.description && (
+            <DescriptionParagraph>
+              {matchedApiType.description}
+            </DescriptionParagraph>
+          )}
+          {(matchedApiType.properties || matchedApiType.examples) && (
+            <SideBySide>
+              {matchedApiType.properties && (
+                <Properties
+                  apiKey={props.apiKey}
+                  apiType={matchedApiType}
+                  title={props.propertiesTableTitle}
+                  hideInheritedProperties={props.hideInheritedProperties}
+                />
+              )}
 
-        {(matchedApiType.properties || matchedApiType.examples) && (
-          <SideBySide>
-            {matchedApiType.properties && (
-              <Properties
-                apiKey={props.apiKey}
-                apiType={matchedApiType}
-                title={props.propertiesTableTitle}
-                hideInheritedProperties={props.hideInheritedProperties}
-              />
-            )}
-
-            {matchedApiType.examples && !props.doNotRenderExamples && (
-              <Examples examples={matchedApiType.examples} />
-            )}
-          </SideBySide>
-        )}
-
-        {props.renderDescriptionBelowProperties && (
-          <DescriptionAndEnums apiType={matchedApiType} />
-        )}
-      </SpacingsStack>
-    </FullWidthContainer>
-  );
+              {matchedApiType.examples && !props.doNotRenderExamples && (
+                <Examples examples={matchedApiType.examples} />
+              )}
+            </SideBySide>
+          )}
+        </SpacingsStack>
+      </FullWidthContainer>
+    );
+  }
 };
 
 ApiType.propTypes = {
@@ -92,7 +79,6 @@ ApiType.propTypes = {
     PropTypes.string,
     PropTypes.object,
   ]),
-  renderDescriptionBelowProperties: PropTypes.bool,
   doNotRenderExamples: PropTypes.bool,
   hideInheritedProperties: PropTypes.bool,
 };
