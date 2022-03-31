@@ -1,6 +1,9 @@
 import { customProperties } from '@commercetools-uikit/design-system';
 
 const rootFontSizeNumber = 16;
+// the "width availability contract" with content is that content
+// always has between "pageWidthSmall" and "pageWidth" available and
+// must float / stretch into the available width
 const pageWidth = '770px';
 const pageWidthSmall = '592px';
 const asideColumnWidth = pageWidthSmall;
@@ -211,7 +214,7 @@ export const dimensions = {
     searchBar: '300px',
     searchBarSmall: '160px',
     selectDropDownArrowWith: '12px',
-    sideBySideSecondColumn: '560px',
+    sideBySideSecondColumn: asideColumnWidth,
     // The card sizes are manually optimized to make regular cards two-aside on landing pages
     // and narrow cards three-aside in any landing page size.
     // Plus, you can put 2,3,4,6 cards in a grid without whitespace.

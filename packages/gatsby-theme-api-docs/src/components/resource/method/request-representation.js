@@ -26,7 +26,6 @@ const RequestRepresentation = (props) => {
         <ApiTypeByKey
           apiKey={props.apiKey}
           type={props.apiType}
-          renderDescriptionBelowProperties
           doNotRenderExamples
         />
       )}
