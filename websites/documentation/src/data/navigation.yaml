@@ -27,7 +27,7 @@
       path: /writing/constants
     - title: Sample Page # a sample page
       path: /writing/sample
-- chapter-title: API Documentation
+- chapter-title: Creating API Documentation
   pages:
     - title: Add RAML Specs # rmf-codegen/RAMLDOC, filesystem convention, links to specs and resourcess
       path: /api-docs/raml
@@ -39,6 +39,8 @@
       path: /api-docs/examples
 - chapter-title: Configuration
   pages:
+    - title: Theme Configuration
+      path: /configuration/theme
     - title: Theme Extensions
       path: /configuration/extensions
     - title: Plugins
