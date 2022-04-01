@@ -19,4 +19,6 @@ swap:
   SHA1: SHA-1|HAS-SHA1
   url: URL
   admin: administrator # technically case insensitive, but we have a lot of "Admin Center" in old release notes etc (a deprecated product)
-
+  NodeJs: Node.js
+  node.js: Node.js
+  Nodejs: Node.js

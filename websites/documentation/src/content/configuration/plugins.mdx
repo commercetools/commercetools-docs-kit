@@ -187,7 +187,7 @@ module.exports = {
 
 #### How the data flow works
 
-1. Master RAML in /api-specs/`<api-key>`
+1. Main RAML in /api-specs/`<api-key>`
 2. CLI call to `rmf-codegen` transforms it into normalized flattened conventional RAML files in /website/src/api-specs/`<api-key> `
 3. Gatsby’s source-filesystem plugin listens to changes and creates and updates file nodes in the gatsby data model.
 4. Our `gatsby-transformer-raml` plugin creates the API Spec nodes on GraphQL from the file nodes, defining the schema and transforming key-value data structures to arrays to have a queryable GraphQL schema.
