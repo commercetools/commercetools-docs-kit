@@ -1,6 +1,11 @@
 /* eslint-disable global-require */
 
 module.exports = {
+  apiDeveloperDocs: {
+    key: 'apiDeveloperDocs',
+    relativePath: 'api-developer-docs',
+    value: require('./api-developer-docs'),
+  },
   base: {
     key: 'base',
     relativePath: 'base',
@@ -16,9 +21,9 @@ module.exports = {
     relativePath: 'merchant-center-user-docs',
     value: require('./merchant-center-user-docs'),
   },
-  platformDeveloperDocs: {
+  tutorialDeveloperDocs: {
     key: 'platformDeveloperDocs',
     relativePath: 'platform-developer-docs',
-    value: require('./platform-developer-docs'),
+    value: require('./tutorial-developer-docs'),
   },
 };

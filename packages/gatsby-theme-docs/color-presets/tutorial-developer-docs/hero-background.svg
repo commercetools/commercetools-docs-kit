@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1700px" height="200px" viewBox="0 0 1700 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Option3_Banner</title>
+<svg width="1718px" height="218px" viewBox="0 0 1718 218" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>APP_UI_KIT_Banner</title>
     <defs>
-        <linearGradient x1="0%" y1="50.6920415%" x2="100%" y2="49.4592344%" id="linearGradient-1">
-            <stop stop-color="#FF5F00" offset="0%"></stop>
-            <stop stop-color="#FF761C" offset="100%"></stop>
+        <filter x="-0.7%" y="-6.0%" width="101.4%" height="112.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="-44.7510465%" y1="51.1599781%" x2="100%" y2="49.4592344%" id="linearGradient-2">
+            <stop stop-color="#0087EB" offset="0%"></stop>
+            <stop stop-color="#6BBFFF" offset="100%"></stop>
         </linearGradient>
-        <rect id="path-2" x="0" y="0" width="1700" height="200"></rect>
+        <rect id="path-3" x="0" y="0" width="1700" height="200"></rect>
     </defs>
     <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Color-Scheme----Banner-/-All" transform="translate(-845.000000, -2370.000000)">
-            <g id="Option3_Banner" transform="translate(845.000000, 2370.000000)">
-                <mask id="mask-3" fill="white">
-                    <use xlink:href="#path-2"></use>
+        <g id="Color-Scheme----Banner-/-All" transform="translate(-831.000000, -464.000000)">
+            <g id="APP_UI_KIT_Banner" filter="url(#filter-1)" transform="translate(840.000000, 473.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
                 </mask>
-                <use id="bg-Reserve2" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
-                <g id="Group" mask="url(#mask-3)">
-                    <g transform="translate(624.000000, -28.000000)" id="Group-10">
+                <use id="bg-App-kit" fill="url(#linearGradient-2)" xlink:href="#path-3"></use>
+                <g id="Group" mask="url(#mask-4)">
+                    <g transform="translate(608.000000, -28.000000)" id="Group-10">
                         <g transform="translate(324.000000, 152.000000)">
                             <polygon id="Fill-1" fill="#FFFFFF" points="100.527357 40.5851622 59.1623006 20.0297641 59 20.3632156 100.527357 41 100.608277 40.9595394 142 20.3339165 141.837699 20"></polygon>
                             <polygon id="Fill-2" fill="#FFFFFF" points="101.0995 95 101.9005 95 101.9005 41 101.0995 41"></polygon>
                             <path d="M41.4465682,38.0391638 L0,58.3150841 L0,112.684916 L0.102277186,112.735009 L41.5272892,133 L60.190353,123.871646 L60.190353,96.7725719 L83,85.6136206 L83,58.2859389 L82.8977228,58.2353903 L41.5272892,38 L41.4465682,38.0391638 Z M0.367372312,112.45813 L0.367372312,58.5418698 L41.5272892,38.4057552 L82.6330863,58.5127246 L82.6330863,85.3868348 L59.8229807,96.5453308 L59.8229807,123.644405 L41.5272892,132.594245 L0.367372312,112.45813 Z" id="Fill-5" fill="#FFFFFF"></path>
                             <polygon id="Fill-6" fill="#FFFFFF" points="41.5273566 78.5851622 0.162300649 58.0297641 0 58.3632156 41.5273566 79 41.6087368 78.9595394 83 58.3339165 82.8372396 58"></polygon>
+                            <polygon id="Fill-7" fill="#FFFFFF" points="41.1 133 41.9 133 41.9 79 41.1 79"></polygon>
                             <path d="M100.527289,0 L100.44611,0.0391636147 L59,20.3149867 L59,47.5856135 L59.1027347,47.6352511 L81.8098535,58.7426898 L81.8098535,85.8434558 L81.9121296,85.8935488 L100.527289,95 L100.608009,94.960381 L142,74.713703 L142,20.2858417 L141.897265,20.2357487 L100.527289,0 Z M82.1767631,85.6166711 L82.1767631,58.5163605 L82.0744871,58.4658121 L59.3673683,47.3588288 L59.3673683,20.5417713 L100.527289,0.405753264 L141.632632,20.5126263 L141.632632,74.4869183 L100.527289,94.5937913 L82.1767631,85.6166711 Z" id="Fill-8" fill="#FFFFFF"></path>
                         </g>
                         <g transform="translate(264.000000, 0.000000)">
@@ -48,6 +58,7 @@
                             <polygon id="Fill-6" fill="#FFFFFF" points="156 152.858642 262.719048 205.894762 262.928873 206 370 152.933983 369.581536 152.076536 262.928873 204.933274 156.41965 152"></polygon>
                             <polygon id="Fill-7" fill="#FFFFFF" points="262.2 348 263.8 348 263.8 205 262.2 205"></polygon>
                             <path d="M107.429312,0 L0.266119986,52.8259544 L0,52.9567235 L0,195.042088 L107.220218,247.896574 L107.429312,248 L155.649303,224.227369 L155.914235,224.0966 L155.914235,153.349338 L214.73388,124.353077 L215,124.223496 L215,53.0328073 L107.638406,0.102237647 L107.429312,0 Z M0.951616557,194.45006 L0.951616557,53.5487508 L107.429312,1.05922957 L214.048383,53.6248346 L214.048383,123.631469 L155.228738,152.626541 L154.962618,152.758499 L154.962618,223.504573 L107.429312,246.939582 L0.951616557,194.45006 Z" id="Fill-8" fill="#FFFFFF"></path>
+                            <path d="M107.429312,246.634302 L59.414851,223 L0.266119986,252.113756 L0,252.245519 L0,394.120179 L107.220218,446.896726 L107.429312,447 L214.73388,394.175971 L215,394.045394 L215,252.321491 L155.439021,223 L107.429312,246.634302 Z M155.439021,224.058855 L214.048383,252.912645 L214.048383,393.45424 L107.429312,445.941145 L0.951616557,393.529025 L0.951616557,252.836674 L59.414851,224.058855 L107.429312,247.693156 L155.439021,224.058855 Z" id="Fill-9" fill="#FFFFFF"></path>
                         </g>
                     </g>
                 </g>

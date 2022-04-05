@@ -1,6 +1,6 @@
 // Custom color
 const colorPrimary = '#003037';
-const colorBannerFaded = '#72E6D1';
+const colorBannerFaded = '#6BBFFF';
 
 exports.primaryColor = colorPrimary;
 exports.bannerBackgroundColor = colorBannerFaded;
