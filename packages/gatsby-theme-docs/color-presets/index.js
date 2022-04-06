@@ -21,9 +21,9 @@ module.exports = {
     relativePath: 'merchant-center-user-docs',
     value: require('./merchant-center-user-docs'),
   },
-  tutorialDeveloperDocs: {
+  platformDeveloperDocs: {
     key: 'platformDeveloperDocs',
     relativePath: 'platform-developer-docs',
-    value: require('./tutorial-developer-docs'),
+    value: require('./platform-developer-docs'),
   },
 };
