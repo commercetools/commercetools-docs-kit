@@ -1,7 +1,7 @@
 // Custom color
-const colorNeutral50 = '#808080';
-const colorNeutral50Faded = '#B3B3B3';
+const colorPrimary = '#003037';
+const colorBannerFaded = '#EFEFEF';
 
-exports.primaryColor = colorNeutral50;
-exports.bannerBackgroundColor = colorNeutral50Faded;
+exports.primaryColor = colorPrimary;
+exports.bannerBackgroundColor = colorBannerFaded;
 exports.heroBackgroundName = 'hero-background.svg';

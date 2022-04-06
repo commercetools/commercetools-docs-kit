@@ -20,7 +20,7 @@ module.exports = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'api-docs-smoke-test',
-      colorPreset: colorPresets.platformDeveloperDocs.key,
+      colorPreset: colorPresets.apiDeveloperDocs.key,
       excludeFromSearchIndex: isProd,
       allowWideContentLayout: true,
       addOns: [

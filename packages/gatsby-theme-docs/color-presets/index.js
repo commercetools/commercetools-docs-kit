@@ -1,6 +1,11 @@
 /* eslint-disable global-require */
 
 module.exports = {
+  apiDeveloperDocs: {
+    key: 'apiDeveloperDocs',
+    relativePath: 'api-developer-docs',
+    value: require('./api-developer-docs'),
+  },
   base: {
     key: 'base',
     relativePath: 'base',

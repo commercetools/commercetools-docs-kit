@@ -1,7 +1,7 @@
-const { customProperties } = require('@commercetools-uikit/design-system');
 // Custom color
-const colorInfoFaded = '#52B9FA';
+const colorPrimary = '#003037';
+const colorBannerFaded = '#6BBFFF';
 
-exports.primaryColor = customProperties.colorInfo;
-exports.bannerBackgroundColor = colorInfoFaded;
+exports.primaryColor = colorPrimary;
+exports.bannerBackgroundColor = colorBannerFaded;
 exports.heroBackgroundName = 'hero-background.svg';
