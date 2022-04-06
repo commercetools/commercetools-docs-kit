@@ -1,0 +1,34 @@
+---
+title: Files and Folder Structure
+---
+
+# Folder Conventions
+
+- `src/content`: this is where you would put your content pages as `*.mdx` files (_see [Writing content pages](/writing/pages)_).
+
+- `src/content/files`: this folder should contain static files that can be referenced within the `*.mdx` content files. For example SVG files, PDF files, etc.
+
+- `src/images`: this folder should contain images that are used within the `*.mdx` content files. Images in this folder are processed and optimized by Gatsby for lazy loading. Supported image formats are `JPEG` and `PNG`.
+
+- `static`: this folder should contain files that do not need to be processed by Gatsby and will be served as-is. See [Gatsby static folder](https://www.gatsbyjs.com/docs/static-folder/).<br/>
+  Note that any `.html` file that is referenced as a link within the `*.mdx` content files is opened as a "static" HTML link, so when clicking on it the browser opens the link as a normal page.
+
+- `static/downloads`: this folder should contain static files that can be referenced in the links within the `*.mdx` content files. All links starting with `/downloads` will be rendered as "static" HTML links, so when clicking on it the browser opens the link as a normal page.
+
+# Special Files
+
+- `src/data/navigation.yaml`: this contains the website main navigation links. The structure of the file is a _list of chapters_ as following:
+
+  ```yaml
+  - chapter-title: This is the title
+    beta: false # (optional): will show the beta flag next to the chapter title
+    pagination: false # (optional) hides the prev/next content pagination at the bottom of the pages in this chapter. Use for non-linear content like reference documentation.
+    pages:
+      - title: The first page
+        path: '/chapter-1/first-page'
+        beta: false # (optional): will show the beta flag next to the page title
+      - title: Another page
+        path: '/chapter-1/another-page'
+      # another page, and so on...
+  - chapter-title: {} # another chapter, and so on...
+  ```

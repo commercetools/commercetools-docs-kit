@@ -1,0 +1,80 @@
+---
+title: Set up a new docs site
+---
+
+# Install and configure
+
+A Docs-Kit website is a [Gatsby](https://gatsbyjs.com) project with at least the `@commercetools-docs/gatsby-theme-docs` Gatsby theme installed. The theme is providing not only the visual design but also all core functionality.
+
+To create a new documentation website, create an empty folder and run the following commands to initialize a minimal setup (Node.js is assumed to be installed).
+
+```console
+npx install-peerdeps --dev @commercetools-docs/gatsby-theme-docs
+mkdir src
+```
+
+This can take some time, creates a bare `package.json` file and downloads the dependencies.
+
+Then create a file `gatsby-config.js` with the following content and modify the strings starting "change-" to your project name. The docs kit is preconfigured to host sites under a path prefix because one Gatsby website represents only one part (or "microsite") of the overall documentation.
+
+```js
+module.exports = {
+  pathPrefix: '/change-path-prefix',
+  siteMetadata: {
+    title: 'CHANGE TITLE',
+    description: 'CHANGE DESCRIPTION',
+  },
+  plugins: [
+    {
+      resolve: '@commercetools-docs/gatsby-theme-docs',
+      options: {
+        websiteKey: 'change-website-key',
+      },
+    },
+  ],
+};
+```
+
+# Start the local preview server
+
+Now start the development server:
+
+```console
+npm exec gatsby develop
+```
+
+You will see the "404 Not Found" page of the development server because there is no page created yet.
+The Docs-Kit has automatically created the conventional folder structure for you:
+
+```
+├── src
+│   ├── content
+│   │   ├── files
+│   ├── images
+│   └── data
+└── static
+    └── downloads
+```
+
+# Start writing pages
+
+Now create a file `index.mdx` in the `src/content` folder and add some markdown content.
+This is your home page and the only file named `index`.
+
+All pages are served on a URL path that matches the filename inside `src/content` without the file extension. For example, `src/content/example-topic/example-page.mdx` in a page with path prefix `my-site` would be served as `/my-site/example-topic/example-page` in production.
+
+All pages must be in MDX format.
+
+Read more: [Writing pages](/writing/pages)
+
+# Next steps
+
+Head on to the following documentation to complete your setup and writing skills:
+
+- [Define the navigation menu](/writing/navigation)
+- [Site and theme configuration](/configuration/theme)
+- [File and folder structure](/writing/files-folders)
+
+Of course, you also want to give your project the proper tooling and configuration that you give any Javascript project. As a minimum you should complete the `package.json` data, add a `.gitignore`, a `LICENSE` file, a `README.md`. Take a closer look at the root folder of the repository of the Docs-Kit, it has a lot more than needed in an average documentation site but you should find examples for most needs.
+
+Finally, don't forget to [deploy](/configuration/deploy).

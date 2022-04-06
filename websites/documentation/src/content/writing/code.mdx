@@ -14,11 +14,11 @@ You can use standard Markdown syntax for code blocks. It is also possible to ren
 
 <SideBySide>
 
-~~~
+````
 ```md title="Code block in primary theme"
 Sample code goes here.
 ```
-~~~
+````
 
 ```md title="Code block in primary theme"
 Sample code goes here.
@@ -30,11 +30,11 @@ Sample code goes here.
 
 <SideBySide>
 
-~~~md secondaryTheme
+````md secondaryTheme
 ```md title="Code block in secondary theme" secondaryTheme
 Sample code goes here.
 ```
-~~~
+````
 
 ```md title="Code block in secondary theme" secondaryTheme
 Sample code goes here.
@@ -46,10 +46,9 @@ Sample code goes here.
 
 It is also possible to highlight specific lines in a code. To highlight, pass `highlightLines` in the syntax and enter the range or specific line to be highlighted.
 
-
 <SideBySide>
 
-~~~
+````
 ```json highlightLines="10"
 {
   "glossary": {
@@ -74,7 +73,7 @@ It is also possible to highlight specific lines in a code. To highlight, pass `h
   }
 }
 ```
-~~~
+````
 
 ```json highlightLines="10"
 {
@@ -103,16 +102,16 @@ It is also possible to highlight specific lines in a code. To highlight, pass `h
 
 </SideBySide>
 
-## With prompt
+## Terminal / Console with prompt
+
+using language `console` instead of `sh` prefixes a `$ `as command prompt to each line:
 
 ```console noPromptLines="2"
 curl -H "Content-Type: application/json" \
   "https://api.europe-west1.gcp.commercetools.com"
 ```
 
-## Terminal/Console
-
-Passing the option `noPromptLines="3-4"`.
+To omit he prompt on certain lines, add the option `noPromptLines="3-4"`.
 
 ```console noPromptLines="3-4"
 cd project
@@ -147,12 +146,12 @@ curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/
 
 <SideBySide>
 
-~~~
+````
 ```
 The syntax is not highlighted as no language is indicated.
 **Formatting syntax** like _this_ or <b>tag</b> will remain unparsed.
 ```
-~~~
+````
 
 ```
 The syntax is not highlighted as no language is indicated.
@@ -251,12 +250,12 @@ The syntax is not highlighted as no language is indicated.
 
 <SideBySide>
 
-~~~
+````
 ```python title="Python code sample"
 s = "Python syntax highlighting"
 print s
 ```
-~~~
+````
 
 ```python title="Python code sample"
 s = "Python syntax highlighting"
@@ -293,7 +292,7 @@ print s
 
 <SideBySide>
 
-~~~
+````
 ```swift title="Swift code sample"
 struct Player {
     var name: String
@@ -307,7 +306,7 @@ struct Player {
 
 var player = Player("Tomas")
 ```
-~~~
+````
 
 ```swift title="Swift code sample"
 struct Player {

@@ -1,9 +1,7 @@
 - chapter-title: Getting Started
   pages:
     - title: Install a site # prerequisites, checking out a repo, VSCode workspace, yarn install
-      path: /getting-started/install
-    - title: Start the Preview # how to start and stop the dev server in watch mode, how to run a local full build
-      path: /getting-started/preview
+      path: /getting-started/setup
     - title: Troubleshooting
       path: /getting-started/troubleshooting
 - chapter-title: Writing Content
@@ -29,7 +27,7 @@
       path: /writing/constants
     - title: Sample Page # a sample page
       path: /writing/sample
-- chapter-title: API Documentation
+- chapter-title: Creating API Documentation
   pages:
     - title: Add RAML Specs # rmf-codegen/RAMLDOC, filesystem convention, links to specs and resourcess
       path: /api-docs/raml
@@ -41,8 +39,8 @@
       path: /api-docs/examples
 - chapter-title: Configuration
   pages:
-    - title: Create a site
-      path: /configuration/setup
+    - title: Theme Configuration
+      path: /configuration/theme
     - title: Theme Extensions
       path: /configuration/extensions
     - title: Plugins
