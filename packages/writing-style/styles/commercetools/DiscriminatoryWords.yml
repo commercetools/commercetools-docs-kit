@@ -6,7 +6,7 @@ level: error
 tokens:
   - blacklist(?:ed|)
   - disabled?
-  - master(?!data| data| variant|variant| category)
+  - master(?!data| data| variant|variant| catalog)
   - native
   - slave
   - whitelist(?:ed|)
