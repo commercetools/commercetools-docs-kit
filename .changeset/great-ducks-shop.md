@@ -2,4 +2,4 @@
 '@commercetools-docs/writing-style': patch
 ---
 
-Adds exceptions for using the word 'master'. It can be followed by 'variant', 'data', and 'catalog' now.
+Adds exceptions for 'master variant', 'master data', and 'master catalog' in the writing styles.
