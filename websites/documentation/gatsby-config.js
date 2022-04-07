@@ -1,6 +1,7 @@
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
 
 module.exports = {
   flags: {
@@ -16,6 +17,7 @@ module.exports = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'documentation',
+      colorPreset: colorPresets.platformDeveloperDocs.key,
       excludeFromSearchIndex: true,
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
       allowWideContentLayout: true,
