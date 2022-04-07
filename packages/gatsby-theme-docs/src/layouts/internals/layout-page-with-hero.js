@@ -88,7 +88,7 @@ const LayoutPageWithHero = (props) => (
     >
       <Title
         theme={{
-          websitePrimaryColor: designSystem.colors.light.textInverted,
+          websitePrimaryColor: designSystem.colors.light.headlinePrimary,
         }}
       >
         {props.title}
