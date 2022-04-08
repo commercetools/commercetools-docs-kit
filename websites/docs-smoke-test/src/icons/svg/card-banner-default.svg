@@ -12,9 +12,9 @@
                 <feMergeNode in="SourceGraphic"></feMergeNode>
             </feMerge>
         </filter>
-        <linearGradient x1="0%" y1="50.6920415%" x2="100%" y2="49.4592344%" id="linearGradient-4">
-            <stop stop-color="#0087EB" offset="0%"></stop>
-            <stop stop-color="#6BBFFF" offset="100%"></stop>
+         <linearGradient x1="0%" y1="50.6920415%" x2="100%" y2="49.4592344%" id="linearGradient-4">
+            <stop stop-color="#787878" offset="0%"></stop>
+            <stop stop-color="#EFEFEF" offset="100%"></stop>
         </linearGradient>
         <rect id="path-5" x="0" y="0" width="1700" height="200"></rect>
     </defs>

@@ -1,18 +1,21 @@
 import { ConnectedSquareIcon } from '@commercetools-uikit/icons';
 import addonComponents from './addon-components';
 import {
-  // Backwards compatibility with the exports
-  CardBannerOssSvgIcon as CardBannerOSSIcon,
-  CardBannerMcDevsSvgIcon as CardBannerMcDevsIcon,
-  CardBannerMcDocsSvgIcon as CardBannerMcDocsIcon,
-  CardBannerPlatformSvgIcon as CardBannerPlatformIcon,
+  CardBannerApiSvgIcon as CardBannerApiIcon,
+  CardBannerDefaultSvgIcon as CardBannerDefaultIcon,
+  CardBannerMcSvgIcon as CardBannerMcIcon,
+  CardBannerOptional1SvgIcon as CardBannerOptional1Icon,
+  CardBannerOptional2SvgIcon as CardBannerOptional2Icon,
+  CardBannerOssSvgIcon as CardBannerOssIcon,
 } from '../../../icons';
 
 export default {
   ...addonComponents,
   DummyIcon: ConnectedSquareIcon,
-  CardBannerOSSIcon,
-  CardBannerMcDevsIcon,
-  CardBannerMcDocsIcon,
-  CardBannerPlatformIcon,
+  CardBannerApiIcon,
+  CardBannerDefaultIcon,
+  CardBannerMcIcon,
+  CardBannerOptional1Icon,
+  CardBannerOptional2Icon,
+  CardBannerOssIcon,
 };

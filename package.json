@@ -13,7 +13,7 @@
     "build-packages": "preconstruct build",
     "build": "./scripts/build.sh",
     "vercel-build": "echo \"you're welcome - nothing to build\"",
-    "generate-icons": "yarn workspaces foreach -p --include @commercetools-website/docs-smoke-test,@commercetools-docs/ui-kit run generate-icons && prettier --write '**/generated/*.{js,ts,tsx}'",
+    "generate-icons": "yarn workspace @commercetools-website/docs-smoke-test run generate-icons && yarn workspace @commercetools-docs/ui-kit run generate-icons && prettier --write '**/generated/*.{js,ts,tsx}'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js jest.text.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",

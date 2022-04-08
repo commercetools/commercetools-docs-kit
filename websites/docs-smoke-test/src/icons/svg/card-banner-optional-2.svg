@@ -1,38 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="324px" height="80px" viewBox="0 0 324 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>APP_UI_KIT_Card_Banner</title>
+    <title>Option1_Card_Banner Copy 3</title>
     <defs>
         <rect id="path-1" x="0" y="0" width="324" height="80" rx="6"></rect>
-        <filter x="-0.7%" y="-6.0%" width="101.4%" height="112.0%" filterUnits="objectBoundingBox" id="filter-3">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-            </feMerge>
-        </filter>
-        <linearGradient x1="0%" y1="50.6920415%" x2="100%" y2="49.4592344%" id="linearGradient-4">
-            <stop stop-color="#0087EB" offset="0%"></stop>
-            <stop stop-color="#6BBFFF" offset="100%"></stop>
+        <linearGradient x1="0%" y1="50.6920415%" x2="100%" y2="49.4592344%" id="linearGradient-3">
+            <stop stop-color="#FF5F00" offset="0%"></stop>
+            <stop stop-color="#FF761C" offset="100%"></stop>
         </linearGradient>
-        <rect id="path-5" x="0" y="0" width="1700" height="200"></rect>
+        <rect id="path-4" x="0" y="0" width="1700" height="200"></rect>
     </defs>
     <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Color-Scheme----Banner-/-All" transform="translate(-944.000000, -680.000000)">
-            <g id="APP_UI_KIT_Card_Banner" transform="translate(944.000000, 680.000000)">
+        <g id="Color-Scheme----Banner-/-All" transform="translate(-944.000000, -2581.000000)">
+            <g id="Option1_Card_Banner-Copy-3" transform="translate(944.000000, 2581.000000)">
                 <mask id="mask-2" fill="white">
                     <use xlink:href="#path-1"></use>
                 </mask>
                 <use id="Mask" fill="#078CDF" xlink:href="#path-1"></use>
-                <g id="APP_UI_KIT_Banner" filter="url(#filter-3)" mask="url(#mask-2)">
-                    <g transform="translate(-774.000000, -120.000000)">
-                        <mask id="mask-6" fill="white">
-                            <use xlink:href="#path-5"></use>
+                <g id="Option1_Banner" mask="url(#mask-2)">
+                    <g transform="translate(-790.000000, -120.000000)">
+                        <mask id="mask-5" fill="white">
+                            <use xlink:href="#path-4"></use>
                         </mask>
-                        <use id="bg-App-kit" stroke="none" fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
-                        <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-6)">
-                            <g transform="translate(608.000000, -28.000000)" id="Group-10">
+                        <use id="bg-Reserve1" stroke="none" fill="url(#linearGradient-3)" fill-rule="evenodd" xlink:href="#path-4"></use>
+                        <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-5)">
+                            <g transform="translate(628.000000, -28.000000)" id="Group-10">
                                 <g transform="translate(324.000000, 152.000000)">
                                     <polygon id="Fill-1" fill="#FFFFFF" points="100.527357 40.5851622 59.1623006 20.0297641 59 20.3632156 100.527357 41 100.608277 40.9595394 142 20.3339165 141.837699 20"></polygon>
                                     <polygon id="Fill-2" fill="#FFFFFF" points="101.0995 95 101.9005 95 101.9005 41 101.0995 41"></polygon>
