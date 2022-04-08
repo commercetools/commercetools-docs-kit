@@ -22,6 +22,7 @@ module.exports = {
           },
         },
       },
+      'prefixIds',
     ],
   },
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
