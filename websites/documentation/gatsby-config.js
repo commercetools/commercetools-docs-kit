@@ -1,7 +1,6 @@
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
-const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
 
 module.exports = {
   flags: {
