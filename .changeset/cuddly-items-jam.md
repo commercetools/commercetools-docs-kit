@@ -3,4 +3,4 @@
 '@commercetools-docs/ui-kit': patch
 ---
 
-Uses new headline color for the page hero title.
+Implements new documentation logo and the new headline color for the page hero title.
