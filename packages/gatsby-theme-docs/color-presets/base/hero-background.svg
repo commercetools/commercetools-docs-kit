@@ -3,7 +3,7 @@
     <title>Grey</title>
     <defs>
         <linearGradient x1="0%" y1="50.6920415%" x2="100%" y2="49.4592344%" id="linearGradient-1">
-            <stop stop-color="#787878" offset="0%"></stop>
+            <stop stop-color="#D1D1D1" offset="0%"></stop>
             <stop stop-color="#EFEFEF" offset="100%"></stop>
         </linearGradient>
         <rect id="path-2" x="0" y="0" width="1700" height="200"></rect>

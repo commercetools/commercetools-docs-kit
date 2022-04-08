@@ -1,38 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="324px" height="80px" viewBox="0 0 324 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>APP_UI_KIT_Card_Banner</title>
+    <title>Grey</title>
     <defs>
         <rect id="path-1" x="0" y="0" width="324" height="80" rx="6"></rect>
-        <filter x="-0.7%" y="-6.0%" width="101.4%" height="112.0%" filterUnits="objectBoundingBox" id="filter-3">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-            </feMerge>
-        </filter>
-         <linearGradient x1="0%" y1="50.6920415%" x2="100%" y2="49.4592344%" id="linearGradient-4">
-            <stop stop-color="#787878" offset="0%"></stop>
+        <linearGradient x1="0%" y1="50.6920415%" x2="100%" y2="49.4592344%" id="linearGradient-3">
+            <stop stop-color="#D1D1D1" offset="0%"></stop>
             <stop stop-color="#EFEFEF" offset="100%"></stop>
         </linearGradient>
-        <rect id="path-5" x="0" y="0" width="1700" height="200"></rect>
+        <rect id="path-4" x="0" y="0" width="1700" height="200"></rect>
     </defs>
     <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Color-Scheme----Banner-/-All" transform="translate(-944.000000, -680.000000)">
-            <g id="APP_UI_KIT_Card_Banner" transform="translate(944.000000, 680.000000)">
+        <g id="Color-Scheme----Banner-/-All" transform="translate(-944.000000, -284.000000)">
+            <g id="Grey" transform="translate(944.000000, 284.000000)">
                 <mask id="mask-2" fill="white">
                     <use xlink:href="#path-1"></use>
                 </mask>
                 <use id="Mask" fill="#078CDF" xlink:href="#path-1"></use>
-                <g id="APP_UI_KIT_Banner" filter="url(#filter-3)" mask="url(#mask-2)">
-                    <g transform="translate(-774.000000, -120.000000)">
-                        <mask id="mask-6" fill="white">
-                            <use xlink:href="#path-5"></use>
+                <g mask="url(#mask-2)">
+                    <g transform="translate(-775.000000, -114.000000)">
+                        <mask id="mask-5" fill="white">
+                            <use xlink:href="#path-4"></use>
                         </mask>
-                        <use id="bg-App-kit" stroke="none" fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
-                        <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-6)">
-                            <g transform="translate(608.000000, -28.000000)" id="Group-10">
+                        <use id="bg-Open-Source" stroke="none" fill="url(#linearGradient-3)" fill-rule="evenodd" xlink:href="#path-4"></use>
+                        <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-5)">
+                            <g transform="translate(607.000000, -32.000000)" id="Group-10">
                                 <g transform="translate(324.000000, 152.000000)">
                                     <polygon id="Fill-1" fill="#FFFFFF" points="100.527357 40.5851622 59.1623006 20.0297641 59 20.3632156 100.527357 41 100.608277 40.9595394 142 20.3339165 141.837699 20"></polygon>
                                     <polygon id="Fill-2" fill="#FFFFFF" points="101.0995 95 101.9005 95 101.9005 41 101.0995 41"></polygon>
@@ -47,7 +38,6 @@
                                 <g transform="translate(0.000000, 132.000000)">
                                     <polygon id="Fill-1" fill="#FFFFFF" points="203.055372 82.1703244 119.328512 41.0595283 119 41.7264312 203.055372 83 203.219163 82.9190787 287 41.667833 286.671488 41"></polygon>
                                     <polygon id="Fill-2" fill="#FFFFFF" points="204.199 192 205.801 192 205.801 83 204.199 83"></polygon>
-                                    <path d="M83.8918489,77.0791521 L0,118.057854 L0,227.942146 L0.207018882,228.043387 L84.055236,269 L121.831076,250.551117 L121.831076,195.782461 L168,173.229633 L168,117.99895 L167.792981,117.896789 L84.055236,77 L83.8918489,77.0791521 Z M0.74359697,227.4838 L0.74359697,118.5162 L84.055236,77.8200526 L167.257331,118.457296 L167.257331,172.771287 L121.087479,195.323195 L121.087479,250.09185 L84.055236,268.179947 L0.74359697,227.4838 Z" id="Fill-5" fill="#FFFFFF"></path>
                                     <path d="M203.055235,0 L202.890922,0.0791517267 L119,41.0576573 L119,96.1730294 L119.207945,96.2733496 L165.169342,118.722068 L165.169342,173.494142 L165.376359,173.595383 L203.055235,192 L203.218621,191.919928 L287,151.000326 L287,40.9987537 L286.792055,40.8975131 L203.055235,0 Z M165.912002,173.035799 L165.912002,118.264644 L165.704986,118.162483 L119.743589,95.7146856 L119.743589,41.516001 L203.055235,0.820048703 L286.256411,41.4570974 L286.256411,150.541982 L203.055235,191.179031 L165.912002,173.035799 Z" id="Fill-8" fill="#FFFFFF"></path>
                                 </g>
                             </g>
