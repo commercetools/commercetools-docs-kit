@@ -17,7 +17,6 @@ module.exports = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'documentation',
-      colorPreset: colorPresets.platformDeveloperDocs.key,
       excludeFromSearchIndex: true,
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
       allowWideContentLayout: true,
