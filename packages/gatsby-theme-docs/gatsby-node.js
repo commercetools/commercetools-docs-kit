@@ -538,6 +538,7 @@ exports.onCreateWebpackConfig = (
                     },
                   },
                 },
+                'prefixIds',
               ],
             },
           },

@@ -11,18 +11,18 @@ const SvgOpenSource = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <defs>
-      <path id="a" d="M0 0h19v35H0z" />
-      <path id="c" d="M0 0h35v19H0z" />
+      <path id="open-source_svg__a" d="M0 0h19v35H0z" />
+      <path id="open-source_svg__c" d="M0 0h35v19H0z" />
     </defs>
     <g fill="none" fillRule="evenodd">
       <g transform="translate(3 3)">
-        <mask id="b" fill="#fff">
-          <use xlinkHref="#a" />
+        <mask id="open-source_svg__b" fill="#fff">
+          <use xlinkHref="#open-source_svg__a" />
         </mask>
         <path
           d="M9.5 2.544c3.895 0 7.054 3.215 7.054 7.18 0 3.966-3.159 7.181-7.054 7.181-3.895 0-7.054-3.215-7.054-7.18 0-3.966 3.159-7.181 7.054-7.181M8.277 19.26V35h2.446V19.26c5.202-.687 8.872-5.537 8.197-10.834C18.245 3.13 13.48-.606 8.277.081 3.075.77-.595 5.62.08 10.915c.555 4.353 3.922 7.78 8.197 8.345"
           fill="#003037"
-          mask="url(#b)"
+          mask="url(#open-source_svg__b)"
         />
       </g>
       <path
@@ -30,13 +30,13 @@ const SvgOpenSource = (props: SVGProps<SVGSVGElement>) => (
         fill="#003037"
       />
       <g transform="translate(3 58)">
-        <mask id="d" fill="#fff">
-          <use xlinkHref="#c" />
+        <mask id="open-source_svg__d" fill="#fff">
+          <use xlinkHref="#open-source_svg__c" />
         </mask>
         <path
           d="M9.696 16.554c-3.97 0-7.189-3.158-7.189-7.054 0-3.896 3.219-7.054 7.189-7.054s7.189 3.158 7.189 7.054c0 3.896-3.219 7.054-7.189 7.054M9.696 0C4.35-.008.008 4.238 0 9.485-.008 14.732 4.319 18.992 9.665 19c4.871.008 8.989-3.537 9.616-8.277H35V8.37H19.243C18.703 3.6 14.59-.009 9.696 0"
           fill="#003037"
-          mask="url(#d)"
+          mask="url(#open-source_svg__d)"
         />
       </g>
       <path

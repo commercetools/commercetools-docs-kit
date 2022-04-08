@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const SvgCardBannerOss = (props) => (
+const SvgCardBannerDefault = (props) => (
   <svg
     width={324}
     height={80}
@@ -15,10 +15,10 @@ const SvgCardBannerOss = (props) => (
         y1="50.692%"
         x2="100%"
         y2="49.459%"
-        id="card-banner-oss_svg__e"
+        id="card-banner-default_svg__e"
       >
-        <stop stopColor="#0087EB" offset="0%" />
-        <stop stopColor="#6BBFFF" offset="100%" />
+        <stop stopColor="#787878" offset="0%" />
+        <stop stopColor="#EFEFEF" offset="100%" />
       </linearGradient>
       <filter
         x="-.7%"
@@ -26,7 +26,7 @@ const SvgCardBannerOss = (props) => (
         width="101.4%"
         height="112%"
         filterUnits="objectBoundingBox"
-        id="card-banner-oss_svg__b"
+        id="card-banner-default_svg__b"
       >
         <feOffset dy={2} in="SourceAlpha" result="shadowOffsetOuter1" />
         <feGaussianBlur
@@ -45,33 +45,33 @@ const SvgCardBannerOss = (props) => (
         </feMerge>
       </filter>
       <rect
-        id="card-banner-oss_svg__a"
+        id="card-banner-default_svg__a"
         x={0}
         y={0}
         width={324}
         height={80}
         rx={6}
       />
-      <path id="card-banner-oss_svg__d" d="M0 0h1700v200H0z" />
+      <path id="card-banner-default_svg__d" d="M0 0h1700v200H0z" />
     </defs>
     <g fill="none" fillRule="evenodd">
-      <mask id="card-banner-oss_svg__c" fill="#fff">
-        <use xlinkHref="#card-banner-oss_svg__a" />
+      <mask id="card-banner-default_svg__c" fill="#fff">
+        <use xlinkHref="#card-banner-default_svg__a" />
       </mask>
-      <use fill="#078CDF" xlinkHref="#card-banner-oss_svg__a" />
+      <use fill="#078CDF" xlinkHref="#card-banner-default_svg__a" />
       <g
-        filter="url(#card-banner-oss_svg__b)"
-        mask="url(#card-banner-oss_svg__c)"
+        filter="url(#card-banner-default_svg__b)"
+        mask="url(#card-banner-default_svg__c)"
       >
         <g transform="translate(-774 -120)">
-          <mask id="card-banner-oss_svg__f" fill="#fff">
-            <use xlinkHref="#card-banner-oss_svg__d" />
+          <mask id="card-banner-default_svg__f" fill="#fff">
+            <use xlinkHref="#card-banner-default_svg__d" />
           </mask>
           <use
-            fill="url(#card-banner-oss_svg__e)"
-            xlinkHref="#card-banner-oss_svg__d"
+            fill="url(#card-banner-default_svg__e)"
+            xlinkHref="#card-banner-default_svg__d"
           />
-          <g fill="#FFF" mask="url(#card-banner-oss_svg__f)">
+          <g fill="#FFF" mask="url(#card-banner-default_svg__f)">
             <path d="m1032.527 164.585-41.365-20.555-.162.333L1032.527 165l.081-.04L1074 144.334l-.162-.334zM1033.1 219h.8v-54h-.8zM973.447 162.04 932 182.314v54.37l.102.05L973.527 257l18.663-9.128v-27.1l22.81-11.158v-27.328l-.102-.05L973.528 162l-.081.04Zm-41.08 74.418v-53.916l41.16-20.136 41.106 20.107v26.874l-22.81 11.158v27.1l-18.296 8.95-41.16-20.137Z" />
             <path d="m973.527 202.585-41.365-20.555-.162.333L973.527 203l.082-.04L1015 182.334l-.163-.334z" />
             <path d="m1032.527 124-.08.04L991 144.314v27.27l.103.05 22.707 11.108v27.1l.102.05 18.615 9.107.081-.04L1074 198.714v-54.428l-.103-.05-41.37-20.236Zm-18.35 85.617v-27.1l-.103-.051-22.707-11.107v-26.817l41.16-20.136 41.106 20.107v53.974l-41.106 20.107-18.35-8.977ZM973.1 143h.8V89h-.8z" />
@@ -84,4 +84,4 @@ const SvgCardBannerOss = (props) => (
   </svg>
 );
 
-export default SvgCardBannerOss;
+export default SvgCardBannerDefault;
