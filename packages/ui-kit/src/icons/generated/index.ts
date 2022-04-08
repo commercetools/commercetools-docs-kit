@@ -3,6 +3,7 @@ export { default as HttpApiSvgIcon } from './HttpApi';
 export { default as CtLogoSvgIcon } from './CtLogo';
 export { default as CustomApplicationSmallSvgIcon } from './CustomApplicationSmall';
 export { default as CustomApplicationSvgIcon } from './CustomApplication';
+export { default as DocumentationLogoSvgIcon } from './DocumentationLogo';
 export { default as LogoHorizontalSvgIcon } from './LogoHorizontal';
 export { default as LogoSvgIcon } from './Logo';
 export { default as MerchantCenterSmallSvgIcon } from './MerchantCenterSmall';
