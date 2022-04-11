@@ -22,9 +22,7 @@ const Link = styled.a`
 `;
 const Title = styled.span`
   display: none;
-  color: ${colors.light.textLogoTitle};
-  font-family: ${typography.fontFamilies.documentationLogo};
-  font-size: ${typography.fontSizes.h4};
+  font-size: ${typography.fontSizes.body};
 
   @media screen and (${dimensions.viewports.laptop}) {
     display: block;
@@ -39,7 +37,7 @@ const LogoButton = () => (
     <LinkContainer>
       <SpacingsInline scale="m" alignItems="center">
         <LogoSvgIcon height={32} />
-        <Title>Documentation</Title>
+        <Title>{'Documentation'}</Title>
       </SpacingsInline>
     </LinkContainer>
   </Link>
