@@ -44,6 +44,7 @@ export type ThemeColorTokens = {
   textWarning: string;
   textInverted: string;
   textSearchHeading: string;
+  textLogoTitle: string;
   // Different tones of border colors
   borderPrimary: string;
   borderSecondary: string;
@@ -112,6 +113,7 @@ export const colors: ThemeColors = {
     textWarning: customProperties.colorWarning,
     textInverted: customProperties.colorSurface,
     textSearchHeading: customProperties.colorPrimary25,
+    textLogoTitle: '#808080',
     // Different tones of border colors
     borderPrimary: customProperties.colorNeutral90,
     borderSecondary: customProperties.colorNeutral,
@@ -262,6 +264,7 @@ export const typography = {
   fontFamilies: {
     primary: "'Roboto', sans-serif",
     code: "'Roboto Mono', monospace",
+    documentationLogo: 'TTCommonsPro-Rg, TT Commons Pro',
   },
 
   rootFontSize: `${rootFontSizeNumber}px`,
