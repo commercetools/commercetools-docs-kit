@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 18.6.0
+
+### Patch Changes
+
+- [#1250](https://github.com/commercetools/commercetools-docs-kit/pull/1250) [`b8f5e3a8`](https://github.com/commercetools/commercetools-docs-kit/commit/b8f5e3a828ba8d7cb581390293a88beda3105409) Thanks [@timonrey](https://github.com/timonrey)! - - Enum types are not taking the full width of the page any more in wide layout pages
+  - The side column now has the correct, slightly wider, width in the wide layout to match the minimum width promised for body content.
+- Updated dependencies [[`6ad663b7`](https://github.com/commercetools/commercetools-docs-kit/commit/6ad663b76bbc4d2414ebd52eb12fea5ef28efd70), [`302e94af`](https://github.com/commercetools/commercetools-docs-kit/commit/302e94af4c01d78ac782f3acf363604c679ce8b6), [`a362fa4e`](https://github.com/commercetools/commercetools-docs-kit/commit/a362fa4e614aecc7037845f6b4b52de6fd5b7813), [`a4cd66c1`](https://github.com/commercetools/commercetools-docs-kit/commit/a4cd66c10a346aacb03cc1e019d2aba009168c14)]:
+  - @commercetools-docs/ui-kit@18.6.0
+
 ## 18.5.0
 
 ### Minor Changes
