@@ -7,6 +7,6 @@ tokens:
   - blacklist(?:ed|)
   - disabled?
   - master(?!data| data| variant|variant| catalog)
-  - native
+  - (?!cloud )native(?! computing foundation)
   - slave
   - whitelist(?:ed|)
