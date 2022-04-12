@@ -15,35 +15,11 @@ const SvgCardBannerDefault = (props) => (
         y1="50.692%"
         x2="100%"
         y2="49.459%"
-        id="card-banner-default_svg__e"
+        id="card-banner-default_svg__d"
       >
-        <stop stopColor="#787878" offset="0%" />
+        <stop stopColor="#D1D1D1" offset="0%" />
         <stop stopColor="#EFEFEF" offset="100%" />
       </linearGradient>
-      <filter
-        x="-.7%"
-        y="-6%"
-        width="101.4%"
-        height="112%"
-        filterUnits="objectBoundingBox"
-        id="card-banner-default_svg__b"
-      >
-        <feOffset dy={2} in="SourceAlpha" result="shadowOffsetOuter1" />
-        <feGaussianBlur
-          stdDeviation={2}
-          in="shadowOffsetOuter1"
-          result="shadowBlurOuter1"
-        />
-        <feColorMatrix
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"
-          in="shadowBlurOuter1"
-          result="shadowMatrixOuter1"
-        />
-        <feMerge>
-          <feMergeNode in="shadowMatrixOuter1" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
       <rect
         id="card-banner-default_svg__a"
         x={0}
@@ -52,31 +28,28 @@ const SvgCardBannerDefault = (props) => (
         height={80}
         rx={6}
       />
-      <path id="card-banner-default_svg__d" d="M0 0h1700v200H0z" />
+      <path id="card-banner-default_svg__c" d="M0 0h1700v200H0z" />
     </defs>
     <g fill="none" fillRule="evenodd">
-      <mask id="card-banner-default_svg__c" fill="#fff">
+      <mask id="card-banner-default_svg__b" fill="#fff">
         <use xlinkHref="#card-banner-default_svg__a" />
       </mask>
       <use fill="#078CDF" xlinkHref="#card-banner-default_svg__a" />
-      <g
-        filter="url(#card-banner-default_svg__b)"
-        mask="url(#card-banner-default_svg__c)"
-      >
-        <g transform="translate(-774 -120)">
-          <mask id="card-banner-default_svg__f" fill="#fff">
-            <use xlinkHref="#card-banner-default_svg__d" />
+      <g mask="url(#card-banner-default_svg__b)">
+        <g transform="translate(-775 -114)">
+          <mask id="card-banner-default_svg__e" fill="#fff">
+            <use xlinkHref="#card-banner-default_svg__c" />
           </mask>
           <use
-            fill="url(#card-banner-default_svg__e)"
-            xlinkHref="#card-banner-default_svg__d"
+            fill="url(#card-banner-default_svg__d)"
+            xlinkHref="#card-banner-default_svg__c"
           />
-          <g fill="#FFF" mask="url(#card-banner-default_svg__f)">
-            <path d="m1032.527 164.585-41.365-20.555-.162.333L1032.527 165l.081-.04L1074 144.334l-.162-.334zM1033.1 219h.8v-54h-.8zM973.447 162.04 932 182.314v54.37l.102.05L973.527 257l18.663-9.128v-27.1l22.81-11.158v-27.328l-.102-.05L973.528 162l-.081.04Zm-41.08 74.418v-53.916l41.16-20.136 41.106 20.107v26.874l-22.81 11.158v27.1l-18.296 8.95-41.16-20.137Z" />
-            <path d="m973.527 202.585-41.365-20.555-.162.333L973.527 203l.082-.04L1015 182.334l-.163-.334z" />
-            <path d="m1032.527 124-.08.04L991 144.314v27.27l.103.05 22.707 11.108v27.1l.102.05 18.615 9.107.081-.04L1074 198.714v-54.428l-.103-.05-41.37-20.236Zm-18.35 85.617v-27.1l-.103-.051-22.707-11.107v-26.817l41.16-20.136 41.106 20.107v53.974l-41.106 20.107-18.35-8.977ZM973.1 143h.8V89h-.8z" />
-            <path d="M972.527 67.074 953.993 58 931 69.257v54.412l.103.05L972.527 144l.081-.04L1014 123.698v-54.47l-.103-.05L991.063 58l-18.536 9.074Zm18.536-8.667 22.57 11.048v54.016l-41.106 20.122-41.16-20.15V69.483l22.626-11.077 18.534 9.073 18.536-9.073ZM811.055 186.17l-83.726-41.11-.329.666L811.055 187l.164-.08L895 145.667l-.329-.668zM812.199 296h1.602V187h-1.602zM691.892 181.08 608 222.057v109.884l.207.101L692.055 373l37.776-18.449v-54.769L776 277.23v-55.231l-.207-.102L692.055 181l-.163.08Zm-83.148 150.404V222.516l83.311-40.696 83.202 40.637v54.314l-46.17 22.552v54.769l-37.032 18.088-83.311-40.696Z" />
-            <path d="m811.055 104-.164.08L727 145.057v55.115l.208.1 45.961 22.45v54.771l.207.101L811.056 296l.163-.08L895 255V145l-.208-.101L811.055 104Zm-37.143 173.036v-54.771l-.207-.103-45.961-22.447v-54.199l83.311-40.696 83.201 40.637v109.085l-83.2 40.637-37.144-18.143Z" />
+          <g fill="#FFF" mask="url(#card-banner-default_svg__e)">
+            <path d="m1031.527 160.585-41.365-20.555-.162.333L1031.527 161l.081-.04L1073 140.334l-.162-.334zM1032.1 215h.8v-54h-.8zM972.447 158.04 931 178.314v54.37l.102.05L972.527 253l18.663-9.128v-27.1l22.81-11.158v-27.328l-.102-.05L972.528 158l-.081.04Zm-41.08 74.418v-53.916l41.16-20.136 41.106 20.107v26.874l-22.81 11.158v27.1l-18.296 8.95-41.16-20.137Z" />
+            <path d="m972.527 198.585-41.365-20.555-.162.333L972.527 199l.082-.04L1014 178.334l-.163-.334z" />
+            <path d="m1031.527 120-.08.04L990 140.314v27.27l.103.05 22.707 11.108v27.1l.102.05 18.615 9.107.081-.04L1073 194.714v-54.428l-.103-.05-41.37-20.236Zm-18.35 85.617v-27.1l-.103-.051-22.707-11.107v-26.817l41.16-20.136 41.106 20.107v53.974l-41.106 20.107-18.35-8.977ZM972.1 139h.8V85h-.8z" />
+            <path d="M971.527 63.074 952.993 54 930 65.257v54.412l.103.05L971.527 140l.081-.04L1013 119.698v-54.47l-.103-.05L990.063 54l-18.536 9.074Zm18.536-8.667 22.57 11.048v54.016l-41.106 20.122-41.16-20.15V65.483l22.626-11.077 18.534 9.073 18.536-9.073ZM810.055 182.17l-83.726-41.11-.329.666L810.055 183l.164-.08L894 141.667l-.329-.668zM811.199 292h1.602V183h-1.602z" />
+            <path d="m810.055 100-.164.08L726 141.057v55.115l.208.1 45.961 22.45v54.771l.207.101L810.056 292l.163-.08L894 251V141l-.208-.101L810.055 100Zm-37.143 173.036v-54.771l-.207-.103-45.961-22.447v-54.199l83.311-40.696 83.201 40.637v109.085l-83.2 40.637-37.144-18.143Z" />
           </g>
         </g>
       </g>

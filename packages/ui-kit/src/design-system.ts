@@ -55,6 +55,8 @@ export type ThemeColorTokens = {
   link: string;
   linkHover: string;
   linkNavigation: string;
+  // Headlines
+  headlinePrimary: string;
 };
 
 export type ThemeCodeBlocksColorTokens = {
@@ -121,6 +123,8 @@ export const colors: ThemeColors = {
     link: customProperties.colorPrimary25,
     linkHover: customProperties.colorPrimary,
     linkNavigation: customProperties.colorInfo,
+    // Headlines
+    headlinePrimary: '#003037',
     // Code blocks
     // We support 2 theme versions: a primary one and a secondary one.
     // This is not to be confused with a (potential) website theme, hence
