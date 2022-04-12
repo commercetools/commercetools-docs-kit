@@ -1,5 +1,15 @@
 # @commercetools-docs/writing-style
 
+## 3.1.0
+
+### Minor Changes
+
+- [#1266](https://github.com/commercetools/commercetools-docs-kit/pull/1266) [`d5367119`](https://github.com/commercetools/commercetools-docs-kit/commit/d5367119d4245c911016bba1d4b256054cc8b936) Thanks [@timonrey](https://github.com/timonrey)! - Updates the google and writegood writing style packages as well as the vale dependency. The writing style rules now use the new product name 'ImpEx' and updates the weasel word list as well. It also introduces a new file covering discriminating words.
+
+### Patch Changes
+
+- [#1273](https://github.com/commercetools/commercetools-docs-kit/pull/1273) [`5a5a79c8`](https://github.com/commercetools/commercetools-docs-kit/commit/5a5a79c8bd545f1ced13c2fa24e0586023d1b9e8) Thanks [@timonrey](https://github.com/timonrey)! - Adds exceptions for 'master variant', 'master data', and 'master catalog' in the writing styles.
+
 ## 3.0.12
 
 ### Patch Changes
