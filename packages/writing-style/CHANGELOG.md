@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.1.1
+
+### Patch Changes
+
+- [#1282](https://github.com/commercetools/commercetools-docs-kit/pull/1282) [`fdfd8175`](https://github.com/commercetools/commercetools-docs-kit/commit/fdfd8175f97fb2db4752fde15bfad3ea6902f886) Thanks [@timonrey](https://github.com/timonrey)! - Adds `native Merchant Center application` to writing style rule exceptions.
+
 ## 3.1.0
 
 ### Minor Changes
