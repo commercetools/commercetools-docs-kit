@@ -61,7 +61,7 @@ const LayoutContent = (props) => {
             allowWideContentLayout={props.pageData.allowWideContentLayout}
           >
             <LayoutGlobalNotification>
-              {siteData.siteMetadata.globalNotification.content && (
+              {siteData.siteMetadata.globalNotification.isActive && (
                 <GlobalNotification
                   type={
                     siteData.siteMetadata.globalNotification.notificationType

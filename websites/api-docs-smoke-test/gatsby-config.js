@@ -17,6 +17,7 @@ module.exports = {
     description: 'Documentation website for API smoke tests',
     betaLink: '',
     globalNotification: {
+      isActive: true,
       notificationType: 'info',
       content:
         'This is a global notification. You can _write_ **markdown** here!',
