@@ -51,10 +51,6 @@ HomepageTemplate.propTypes = {
   data: PropTypes.shape({
     contentPage: PropTypes.shape({
       title: PropTypes.string.isRequired,
-      globalNotification: PropTypes.shape({
-        notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
-        content: PropTypes.string.isRequired,
-      }),
       websitePrimaryColor: PropTypes.string.isRequired,
       beta: PropTypes.bool.isRequired,
       isGlobalBeta: PropTypes.bool.isRequired,
@@ -73,19 +69,11 @@ export const query = graphql`
   query QueryHomepage($slug: String!, $heroBackgroundRelativePath: String!) {
     contentPage(slug: { eq: $slug }) {
       title
-      globalNotification {
-        notificationType
-        content
-      }
       websitePrimaryColor
       beta
       isGlobalBeta
       excludeFromSearchIndex
       allowWideContentLayout
-      globalNotification {
-        notificationType
-        content
-      }
       body
     }
     heroBackground: file(relativePath: { eq: $heroBackgroundRelativePath }) {

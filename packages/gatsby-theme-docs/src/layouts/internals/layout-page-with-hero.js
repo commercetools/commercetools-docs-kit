@@ -76,7 +76,7 @@ const ContentWrapper = styled.div`
 const LayoutPageWithHero = (props) => (
   <Container>
     <LayoutGlobalNotification>
-      {props.globalNotification && (
+      {props.globalNotification.content && (
         <GlobalNotification type={props.globalNotification.notificationType}>
           {props.globalNotification.content}
         </GlobalNotification>

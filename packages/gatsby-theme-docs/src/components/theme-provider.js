@@ -17,6 +17,10 @@ const ThemeProvider = (props) => {
           author
           productionHostname
           betaLink
+          globalNotification {
+            notificationType
+            content
+          }
         }
       }
     }

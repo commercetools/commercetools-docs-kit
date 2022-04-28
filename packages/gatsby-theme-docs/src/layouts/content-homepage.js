@@ -22,7 +22,7 @@ const LayoutContentHomepage = (props) => {
   return (
     <LayoutApplication
       websitePrimaryColor={props.pageData.websitePrimaryColor}
-      globalNotification={props.pageData.globalNotification}
+      globalNotification={siteData.siteMetadata.globalNotification}
     >
       <LayoutSidebar
         {...layoutState.sidebar}
@@ -52,7 +52,7 @@ const LayoutContentHomepage = (props) => {
             title={props.pageData.title}
             heroBackgroundURL={props.heroBackground.publicURL}
             heroBackgroundColor={props.pageContext.heroBackgroundColor}
-            globalNotification={props.pageData.globalNotification}
+            globalNotification={siteData.siteMetadata.globalNotification}
           >
             <LayoutPageContent>
               <PageContentInset id="body-content" maxWidth="unset">
@@ -77,10 +77,6 @@ LayoutContentHomepage.propTypes = {
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    globalNotification: PropTypes.shape({
-      notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
-      content: PropTypes.string.isRequired,
-    }),
     websitePrimaryColor: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,

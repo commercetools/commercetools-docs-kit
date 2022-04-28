@@ -141,15 +141,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       enhancement
       announcement
     }
-
-    enum GlobalNotificationType {
-      info
-      warning
-    }
-    type GlobalNotification {
-      notificationType: GlobalNotificationType!
-      content: String!
-    }
   `);
 
   // Create a new type representing a Content Page
@@ -161,7 +152,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         id: { type: 'ID!' },
         slug: { type: 'String!' },
         title: { type: 'String!' },
-        globalNotification: { type: 'GlobalNotification' },
         websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
         isGlobalBeta: { type: 'Boolean!' },
@@ -294,7 +284,6 @@ exports.onCreateNode = (
   const contentPageFieldData = {
     slug: trimTrailingSlash(slug) || '/',
     title: node.frontmatter.title,
-    globalNotification: pluginOptions.globalNotification,
     websitePrimaryColor: colorPreset.value.primaryColor,
     isGlobalBeta: Boolean(pluginOptions.beta),
     excludeFromSearchIndex:

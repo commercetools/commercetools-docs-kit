@@ -31,6 +31,10 @@ module.exports = (themeOptions = {}) => {
       author: 'commercetools',
       productionHostname,
       betaLink: '.',
+      globalNotification: {
+        notificationType: false,
+        content: false,
+      },
     },
     plugins: [
       /**
