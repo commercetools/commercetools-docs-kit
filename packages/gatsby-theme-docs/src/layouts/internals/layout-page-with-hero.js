@@ -76,7 +76,7 @@ const ContentWrapper = styled.div`
 const LayoutPageWithHero = (props) => (
   <Container>
     <LayoutGlobalNotification>
-      {props.globalNotification && (
+      {props.globalNotification.active && (
         <GlobalNotification type={props.globalNotification.notificationType}>
           {props.globalNotification.content}
         </GlobalNotification>
@@ -102,6 +102,7 @@ LayoutPageWithHero.propTypes = {
   heroBackgroundURL: PropTypes.string.isRequired,
   heroBackgroundColor: PropTypes.string.isRequired,
   globalNotification: PropTypes.shape({
+    active: PropTypes.bool.isRequired,
     notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
     content: PropTypes.string.isRequired,
   }),

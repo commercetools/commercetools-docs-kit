@@ -31,7 +31,7 @@ const LayoutContent = (props) => {
   return (
     <LayoutApplication
       websitePrimaryColor={props.pageData.websitePrimaryColor}
-      globalNotification={props.pageData.globalNotification}
+      globalNotification={siteData.siteMetadata.globalNotification}
     >
       <LayoutSidebar
         {...layoutState.sidebar}
@@ -61,11 +61,13 @@ const LayoutContent = (props) => {
             allowWideContentLayout={props.pageData.allowWideContentLayout}
           >
             <LayoutGlobalNotification>
-              {props.pageData.globalNotification && (
+              {siteData.siteMetadata.globalNotification.active && (
                 <GlobalNotification
-                  type={props.pageData.globalNotification.notificationType}
+                  type={
+                    siteData.siteMetadata.globalNotification.notificationType
+                  }
                 >
-                  {props.pageData.globalNotification.content}
+                  {siteData.siteMetadata.globalNotification.content}
                 </GlobalNotification>
               )}
             </LayoutGlobalNotification>
@@ -115,10 +117,6 @@ LayoutContent.propTypes = {
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    globalNotification: PropTypes.shape({
-      notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
-      content: PropTypes.string.isRequired,
-    }),
     websitePrimaryColor: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
     isGlobalBeta: PropTypes.bool.isRequired,

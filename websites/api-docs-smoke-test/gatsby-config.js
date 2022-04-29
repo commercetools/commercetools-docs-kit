@@ -16,6 +16,12 @@ module.exports = {
     title: 'API Docs Smoke Test',
     description: 'Documentation website for API smoke tests',
     betaLink: '',
+    globalNotification: {
+      active: true,
+      notificationType: 'info',
+      content:
+        'This is a global notification. You can _write_ **markdown** here!',
+    },
   },
   plugins: [
     ...configureThemeWithAddOns({
@@ -49,11 +55,6 @@ module.exports = {
           },
         },
       ],
-      globalNotification: {
-        notificationType: 'info',
-        content:
-          'This is a global notification. You can _write_ **markdown** here!',
-      },
     }),
   ],
 };
