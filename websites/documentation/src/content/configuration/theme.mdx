@@ -44,7 +44,7 @@ The Docs-Kit theme also receives its plugin configuration through this standard 
 - `description` (**required**): Defines the description of the website.
 - `betaLink` (_optional_): Configures the link for _beta button_.
 - `globalNotification` (_optional_, object): Activates a global banner at the top of every page within the website. It contains three configuration options:
-    -  `isActive` (Boolean): flag to activate the global notification banner.
+    -  `active` (Boolean): flag to activate the global notification banner.
     -  `notificationType` (String, must be either `info` or `warning`) defines the type and color of the banner.
     -  `content` (String) defines the text within the banner.
 
@@ -54,7 +54,7 @@ The Docs-Kit theme also receives its plugin configuration through this standard 
     description: 'CHANGE DESCRIPTION',
     betaLink: '',
     globalNotification: {
-      isActive: true,
+      active: true,
       notificationType: 'info',
       content:
         'This is a global notification. You can _write_ **markdown** here!',

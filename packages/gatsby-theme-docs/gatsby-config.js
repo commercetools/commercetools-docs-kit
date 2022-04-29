@@ -32,7 +32,7 @@ module.exports = (themeOptions = {}) => {
       productionHostname,
       betaLink: '.',
       globalNotification: {
-        isActive: false,
+        active: false,
         notificationType: 'info',
         content: '',
       },

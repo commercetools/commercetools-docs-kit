@@ -18,7 +18,7 @@ const ThemeProvider = (props) => {
           productionHostname
           betaLink
           globalNotification {
-            isActive
+            active
             notificationType
             content
           }
