@@ -38,7 +38,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: |
             .cache
@@ -132,7 +132,7 @@ jobs:
         # restore / cache the binary ourselves on Linux
         # see https://github.com/actions/cache
         id: cache-cypress
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: ${{ runner.os }}-cypress-${{ hashFiles('**/package.json') }}
