@@ -7,7 +7,6 @@ import {
   designSystem,
   markdownFragmentToReact,
 } from '@commercetools-docs/ui-kit';
-import GatsbyLink from './link';
 
 const getIconByType = (type) => {
   switch (type) {
@@ -68,7 +67,7 @@ const GlobalNotification = (props) => {
         <div>
           <Icon color={iconColor} />
         </div>
-        <div>{markdownFragmentToReact(props.children, { a: GatsbyLink })}</div>
+        <div>{markdownFragmentToReact(props.children)}</div>
       </SpacingsInline>
     </Container>
   );

@@ -20,7 +20,7 @@ module.exports = {
       active: true,
       notificationType: 'info',
       content:
-        'This is a global notification. You can _write_ **markdown** here!',
+        'This is a global notification. You can _write_ **markdown** here! [Link to official website](https://docs.commercetools.com)',
     },
   },
   plugins: [
