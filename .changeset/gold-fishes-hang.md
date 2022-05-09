@@ -2,4 +2,4 @@
 '@commercetools-docs/gatsby-theme-docs': patch
 ---
 
-Avoids using gatsby links in the global notification banner.
+Avoids using the gatsby link component for global notifications.
