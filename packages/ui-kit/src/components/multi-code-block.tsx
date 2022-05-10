@@ -105,9 +105,12 @@ function MultiCodeBlock(props: MultiCodeBlockProps) {
   const langs = extractLanguages(props.children);
 
   const [selected, setSelected] = React.useState(langs[0]);
-  const handleOnLanguageChange = React.useCallback((event) => {
-    setSelected(event.target.value);
-  }, []);
+  const handleOnLanguageChange = React.useCallback(
+    (event: { target: { value: React.SetStateAction<string> } }) => {
+      setSelected(event.target.value);
+    },
+    []
+  );
 
   const codeBlockTheme = {
     codeBlockColors:
