@@ -93,8 +93,8 @@
   "peerDependencies": {
     "gatsby": "4.x",
     "gatsby-cli": "4.x",
-    "react": "18.x",
-    "react-dom": "18.x"
+    "react": "17.x || 18.x",
+    "react-dom": "17.x || 18.x"
   },
   "engines": {
     "node": ">=14"
