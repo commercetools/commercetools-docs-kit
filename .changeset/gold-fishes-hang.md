@@ -2,4 +2,4 @@
 '@commercetools-docs/gatsby-theme-docs': patch
 ---
 
-Avoids using the gatsby link component for global notifications.
+The global notifications no longer use the Gatsby link component. This results in correct rendering of links within the global notification banner.
