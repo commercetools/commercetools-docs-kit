@@ -25,6 +25,9 @@ const LayoutReleaseNotesDetail = (props) => {
   const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
+  const excludeFromSearchIndex =
+    props.pageData.excludeFromSearchIndex ||
+    siteData.siteMetadata.excludeFromSearchIndex;
 
   return (
     <LayoutApplication websitePrimaryColor={props.pageData.websitePrimaryColor}>
@@ -50,7 +53,7 @@ const LayoutReleaseNotesDetail = (props) => {
           {...layoutState.topMenu}
           ref={ref}
           siteTitle={siteData.siteMetadata.title}
-          excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+          excludeFromSearchIndex={excludeFromSearchIndex}
         />
         <LayoutPageWrapper>
           <LayoutPage>

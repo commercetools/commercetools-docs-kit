@@ -18,6 +18,9 @@ const LayoutContentHomepage = (props) => {
   const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
+  const excludeFromSearchIndex =
+    props.pageData.excludeFromSearchIndex ||
+    siteData.siteMetadata.excludeFromSearchIndex;
 
   return (
     <LayoutApplication
@@ -44,7 +47,7 @@ const LayoutContentHomepage = (props) => {
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
           siteTitle={siteData.siteMetadata.title}
-          excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+          excludeFromSearchIndex={excludeFromSearchIndex}
           allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
         <LayoutPageWrapper>

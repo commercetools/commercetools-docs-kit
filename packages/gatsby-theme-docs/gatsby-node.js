@@ -247,9 +247,7 @@ exports.onCreateNode = (
       title: node.frontmatter.title,
       websitePrimaryColor: colorPreset.value.primaryColor,
       isGlobalBeta: Boolean(pluginOptions.beta),
-      excludeFromSearchIndex:
-        Boolean(node.frontmatter.excludeFromSearchIndex) ||
-        Boolean(pluginOptions.excludeFromSearchIndex),
+      excludeFromSearchIndex: Boolean(node.frontmatter.excludeFromSearchIndex),
       date: node.frontmatter.date,
       description: node.frontmatter.description,
       type: node.frontmatter.type,
@@ -289,8 +287,7 @@ exports.onCreateNode = (
     excludeFromSearchIndex:
       // frontmatter can only exclude in an otherwise not excluded site,
       // but it can't include in a generally excluded site
-      Boolean(node.frontmatter.excludeFromSearchIndex) ||
-      Boolean(pluginOptions.excludeFromSearchIndex),
+      Boolean(node.frontmatter.excludeFromSearchIndex),
     allowWideContentLayout:
       // the frontmatter `wideLayout` and the theme's allowWideContentLayout
       // must be set for the page to switch to wide layout
