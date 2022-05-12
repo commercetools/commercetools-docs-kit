@@ -14,6 +14,7 @@ const ThemeProvider = (props) => {
         siteMetadata {
           title
           description
+          beta
           author
           productionHostname
           betaLink

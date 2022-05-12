@@ -33,6 +33,7 @@ module.exports = (themeOptions = {}) => {
       betaLink: '.',
       excludeFromSearchIndex: true,
       allowWideContentLayout: false,
+      beta: false,
       globalNotification: {
         active: false,
         notificationType: 'info',

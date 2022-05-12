@@ -154,7 +154,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         title: { type: 'String!' },
         websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
-        isGlobalBeta: { type: 'Boolean!' },
         allowWideContentLayout: { type: 'Boolean!' },
         beta: { type: 'Boolean!' },
         body: {
@@ -197,7 +196,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         title: { type: 'String!' },
         websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
-        isGlobalBeta: { type: 'Boolean!' },
         date: { type: 'Date!', extensions: { dateformat: {} } },
         description: { type: 'String!' },
         type: { type: 'ReleaseNoteType!' },
@@ -246,7 +244,6 @@ exports.onCreateNode = (
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
       websitePrimaryColor: colorPreset.value.primaryColor,
-      isGlobalBeta: Boolean(pluginOptions.beta),
       excludeFromSearchIndex: Boolean(node.frontmatter.excludeFromSearchIndex),
       date: node.frontmatter.date,
       description: node.frontmatter.description,
@@ -283,7 +280,6 @@ exports.onCreateNode = (
     slug: trimTrailingSlash(slug) || '/',
     title: node.frontmatter.title,
     websitePrimaryColor: colorPreset.value.primaryColor,
-    isGlobalBeta: Boolean(pluginOptions.beta),
     excludeFromSearchIndex:
       // frontmatter can only exclude in an otherwise not excluded site,
       // but it can't include in a generally excluded site

@@ -63,7 +63,6 @@ PageContentTemplate.propTypes = {
       title: PropTypes.string.isRequired,
       websitePrimaryColor: PropTypes.string.isRequired,
       beta: PropTypes.bool.isRequired,
-      isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       allowWideContentLayout: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
@@ -83,7 +82,6 @@ export const query = graphql`
       title
       websitePrimaryColor
       beta
-      isGlobalBeta
       excludeFromSearchIndex
       allowWideContentLayout
       body

@@ -36,7 +36,7 @@ const LayoutReleaseNotesDetail = (props) => {
         {...layoutState.searchDialog}
         {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
-        isGlobalBeta={props.pageData.isGlobalBeta}
+        isGlobalBeta={siteData.siteMetadata.beta}
         // Rendering a release note details page implicitly implies
         // that there are release notes.
         hasReleaseNotes={true}
@@ -107,7 +107,6 @@ LayoutReleaseNotesDetail.propTypes = {
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
     websitePrimaryColor: PropTypes.string.isRequired,
-    isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,

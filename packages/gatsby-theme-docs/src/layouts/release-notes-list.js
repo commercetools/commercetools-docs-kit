@@ -33,7 +33,7 @@ const LayoutReleaseNotesList = (props) => {
         {...layoutState.searchDialog}
         {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
-        isGlobalBeta={props.pageData.isGlobalBeta}
+        isGlobalBeta={siteData.siteMetadata.beta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
       <LayoutMain
@@ -83,7 +83,6 @@ LayoutReleaseNotesList.propTypes = {
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
     websitePrimaryColor: PropTypes.string.isRequired,
-    isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,

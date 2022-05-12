@@ -35,7 +35,7 @@ const LayoutContentHomepage = (props) => {
         {...layoutState.searchDialog}
         {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
-        isGlobalBeta={props.pageData.isGlobalBeta}
+        isGlobalBeta={siteData.siteMetadata.beta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
       <LayoutMain
@@ -85,7 +85,6 @@ LayoutContentHomepage.propTypes = {
     title: PropTypes.string.isRequired,
     websitePrimaryColor: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
-    isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
     allowWideContentLayout: PropTypes.bool.isRequired,
   }).isRequired,
