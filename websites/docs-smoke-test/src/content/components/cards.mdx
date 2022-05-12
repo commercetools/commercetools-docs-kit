@@ -2,7 +2,7 @@
 title: Cards
 ---
 
- * The actual card content is markdown
+* The actual card content is markdown
  * Card titles are not links
  * Card titles never become entries in the page index nav like section headings.
  * Card titles of both sizes are rendered as H6 to enhance accessibility while making sure they are always "inside" the actual headings
@@ -112,9 +112,21 @@ None of the properties are required but the body content should not be empty.
 ```jsx
 <Cards clickable>
   <Card
-    title="A regular heading"
+    title="Card with internal Link"
     href="/components/images"
-    textLink="Read more about images...">This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.</Card>
+    textLink="Read more about images..."
+  >
+    This is visually eleveated, has a link to the **images (bold)** page and the
+    complete card is a clickable target.
+  </Card>
+  <Card
+    title="Card with external Link"
+    href="https://commercetools.com"
+    textLink="Read more about images..."
+  >
+    This is visually eleveated, has a link to an external page and the
+    complete card is a clickable target.
+  </Card>
 </Cards>
 ```
 
@@ -122,9 +134,14 @@ None of the properties are required but the body content should not be empty.
 
 <Cards clickable>
   <Card
-    title="A regular heading"
+    title="Card with internal Link"
     href="/components/images"
     textLink="Read more about images...">This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.</Card>
+  <Card
+    title="Card with external Link"
+    href="https://commercetools.com"
+    textLink="Read more about images...">This is visually eleveated, has a link to an **external (bold)** page and the
+    complete card is a clickable target..</Card>
 </Cards>
 
 
@@ -449,6 +466,42 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
     href="/components/images"
     image={<CardBannerOssIcon />}>
     Clickable card with an image
+  </Card>
+</Cards>
+
+## Clickable Card with an Image and an external Link
+
+```jsx
+<Cards clickable>
+  <Card
+    title="Clickable with Image and external link"
+    href="https://commercetools.com"
+    image={<CardBannerApiIcon />}
+  >
+    Clickable card with an image. The external link icon is not being rendered.
+  </Card>
+  <Card
+    title="Clickable with Image and external link"
+    href="https://commercetools.com"
+    image={<CardBannerDefaultIcon />}
+  >
+    Clickable card with an image. The external link icon is not being rendered.
+  </Card>
+</Cards>
+```
+
+<Cards clickable>
+  <Card
+    title="Clickable with Image and external link"
+    href="https://commercetools.com"
+    image={<CardBannerApiIcon />}>
+    Clickable card with an image. The external link icon is not being rendered.
+  </Card>
+  <Card
+    title="Clickable with Image and external link"
+    href="https://commercetools.com"
+    image={<CardBannerDefaultIcon />}>
+    Clickable card with an image. The external link icon is not being rendered.
   </Card>
 </Cards>
 

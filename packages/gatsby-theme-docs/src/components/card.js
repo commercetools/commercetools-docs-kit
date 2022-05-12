@@ -52,7 +52,7 @@ const Card = (props) => (
     <WrapWith
       condition={Boolean(props.clickable && props.href)}
       wrapper={(children) => (
-        <GatsbyLink href={props.href} noUnderline>
+        <GatsbyLink href={props.href} noUnderline noAdditionalStyling>
           {children}
         </GatsbyLink>
       )}
@@ -86,13 +86,9 @@ const Card = (props) => (
               {props.href && props.textLink && (
                 <ReadMoreContainer>
                   <ReadMore>
-                    {props.clickable ? (
-                      props.textLink
-                    ) : (
-                      <GatsbyLink href={props.href} noUnderline>
-                        {props.textLink}
-                      </GatsbyLink>
-                    )}
+                    <GatsbyLink href={props.href} noUnderline>
+                      {props.textLink}
+                    </GatsbyLink>
                   </ReadMore>
                 </ReadMoreContainer>
               )}

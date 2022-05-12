@@ -156,6 +156,15 @@ const PureLink = (extendedProps) => {
         <ExternalLinkIcon size="small" />
       </InlineLink>
     );
+    if (props.noAdditionalStyling) {
+      return (
+        <ExternalSiteLink
+          {...props}
+          data-link-type="external-link"
+          css={getStylesFromProps({ noUnderline })}
+        ></ExternalSiteLink>
+      );
+    }
     return (
       <ExternalSiteLink
         {...props}
@@ -232,6 +241,7 @@ PureLink.propTypes = {
   target: PropTypes.string,
   className: PropTypes.string,
   noUnderline: PropTypes.bool,
+  noAdditionalStyling: PropTypes.bool,
   children: PropTypes.node,
   // from @react/router
   location: PropTypes.object.isRequired,
