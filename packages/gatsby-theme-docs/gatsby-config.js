@@ -32,6 +32,7 @@ module.exports = (themeOptions = {}) => {
       productionHostname,
       betaLink: '.',
       excludeFromSearchIndex: true,
+      allowWideContentLayout: false,
       globalNotification: {
         active: false,
         notificationType: 'info',

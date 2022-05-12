@@ -14,12 +14,12 @@ module.exports = {
     description: 'CHANGE-ME',
     betaLink: '',
     excludeFromSearchIndex: isProd,
+    allowWideContentLayout: true,
   },
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'CHANGE-ME',
       // additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
-      allowWideContentLayout: true,
       addOns: [
         // '@commercetools-docs/gatsby-theme-code-examples',
         // '@commercetools-docs/gatsby-theme-api-docs'

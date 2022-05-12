@@ -5,7 +5,6 @@ const defaultOptions = {
   colorPreset: colorPresets.base.key,
   beta: false,
   gaTrackingId: undefined,
-  allowWideContentLayout: false,
   createNodeSlug: undefined,
   additionalPrismLanguages: [],
   overrideDefaultConfigurationData: [],

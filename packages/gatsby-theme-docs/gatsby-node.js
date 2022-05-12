@@ -291,9 +291,7 @@ exports.onCreateNode = (
     allowWideContentLayout:
       // the frontmatter `wideLayout` and the theme's allowWideContentLayout
       // must be set for the page to switch to wide layout
-      Boolean(
-        node.frontmatter.wideLayout && pluginOptions.allowWideContentLayout
-      ),
+      Boolean(node.frontmatter.wideLayout),
     beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)

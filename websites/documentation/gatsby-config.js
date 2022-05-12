@@ -13,12 +13,12 @@ module.exports = {
     description: '',
     betaLink: '/beta',
     excludeFromSearchIndex: true,
+    allowWideContentLayout: true,
   },
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'documentation',
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
-      allowWideContentLayout: true,
       addOns: ['@commercetools-docs/gatsby-theme-code-examples'],
     }),
   ],
