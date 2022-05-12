@@ -33,6 +33,7 @@ const LayoutContent = (props) => {
   const allowWideContentLayout =
     props.pageData.allowWideContentLayout &&
     siteData.siteMetadata.allowWideContentLayout;
+  const isBeta = props.pageData.beta || siteData.siteMetadata.beta;
 
   return (
     <LayoutApplication
@@ -76,9 +77,7 @@ const LayoutContent = (props) => {
               )}
             </LayoutGlobalNotification>
             <LayoutPageHeader>
-              {props.pageData.beta && (
-                <BetaFlag href={siteData.siteMetadata.betaLink} />
-              )}
+              {isBeta && <BetaFlag href={siteData.siteMetadata.betaLink} />}
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />
@@ -103,7 +102,7 @@ const LayoutContent = (props) => {
               pageTitle={props.pageContext.shortTitle || props.pageData.title}
               tableOfContents={props.pageData.tableOfContents}
               navLevels={props.pageData.navLevels}
-              beta={props.pageData.beta}
+              beta={isBeta}
             />
           </LayoutPage>
         </LayoutPageWrapper>
