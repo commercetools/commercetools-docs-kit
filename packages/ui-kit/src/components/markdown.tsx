@@ -168,7 +168,7 @@ const Table = styled.table`
       const rowHeadersChildren = Array.isArray(rowHeaders)
         ? rowHeaders
         : rowHeaders.props.children;
-      return React.Children.toArray(rowHeadersChildren).reduce(
+      return React.Children.toArray(rowHeadersChildren).reduce<string>(
         (styles, elem, index) => `
         ${styles}
         td:nth-of-type(${index + 1})::before { content: "${
