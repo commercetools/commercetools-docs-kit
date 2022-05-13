@@ -115,6 +115,8 @@ jobs:
         id: finish_deployment
         with:
           step: finish
+          override: false
+          auto_inactive: false
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
           env: ${{ steps.start-deployment.outputs.env }}
