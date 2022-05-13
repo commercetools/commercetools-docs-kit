@@ -25,6 +25,9 @@ const LayoutReleaseNotesDetail = (props) => {
   const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
+  const excludeFromSearchIndex =
+    props.pageData.excludeFromSearchIndex ||
+    siteData.siteMetadata.excludeFromSearchIndex;
 
   return (
     <LayoutApplication websitePrimaryColor={props.pageData.websitePrimaryColor}>
@@ -33,7 +36,7 @@ const LayoutReleaseNotesDetail = (props) => {
         {...layoutState.searchDialog}
         {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
-        isGlobalBeta={props.pageData.isGlobalBeta}
+        isGlobalBeta={siteData.siteMetadata.beta}
         // Rendering a release note details page implicitly implies
         // that there are release notes.
         hasReleaseNotes={true}
@@ -50,7 +53,7 @@ const LayoutReleaseNotesDetail = (props) => {
           {...layoutState.topMenu}
           ref={ref}
           siteTitle={siteData.siteMetadata.title}
-          excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+          excludeFromSearchIndex={excludeFromSearchIndex}
         />
         <LayoutPageWrapper>
           <LayoutPage>
@@ -104,7 +107,6 @@ LayoutReleaseNotesDetail.propTypes = {
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
     websitePrimaryColor: PropTypes.string.isRequired,
-    isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,

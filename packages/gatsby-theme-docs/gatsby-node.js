@@ -154,7 +154,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         title: { type: 'String!' },
         websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
-        isGlobalBeta: { type: 'Boolean!' },
         allowWideContentLayout: { type: 'Boolean!' },
         beta: { type: 'Boolean!' },
         body: {
@@ -197,7 +196,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         title: { type: 'String!' },
         websitePrimaryColor: { type: 'String!' },
         excludeFromSearchIndex: { type: 'Boolean!' },
-        isGlobalBeta: { type: 'Boolean!' },
         date: { type: 'Date!', extensions: { dateformat: {} } },
         description: { type: 'String!' },
         type: { type: 'ReleaseNoteType!' },
@@ -246,10 +244,7 @@ exports.onCreateNode = (
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
       websitePrimaryColor: colorPreset.value.primaryColor,
-      isGlobalBeta: Boolean(pluginOptions.beta),
-      excludeFromSearchIndex:
-        Boolean(node.frontmatter.excludeFromSearchIndex) ||
-        Boolean(pluginOptions.excludeFromSearchIndex),
+      excludeFromSearchIndex: Boolean(node.frontmatter.excludeFromSearchIndex),
       date: node.frontmatter.date,
       description: node.frontmatter.description,
       type: node.frontmatter.type,
@@ -285,19 +280,12 @@ exports.onCreateNode = (
     slug: trimTrailingSlash(slug) || '/',
     title: node.frontmatter.title,
     websitePrimaryColor: colorPreset.value.primaryColor,
-    isGlobalBeta: Boolean(pluginOptions.beta),
     excludeFromSearchIndex:
       // frontmatter can only exclude in an otherwise not excluded site,
       // but it can't include in a generally excluded site
-      Boolean(node.frontmatter.excludeFromSearchIndex) ||
-      Boolean(pluginOptions.excludeFromSearchIndex),
-    allowWideContentLayout:
-      // the frontmatter `wideLayout` and the theme's allowWideContentLayout
-      // must be set for the page to switch to wide layout
-      Boolean(
-        node.frontmatter.wideLayout && pluginOptions.allowWideContentLayout
-      ),
-    beta: Boolean(pluginOptions.beta) || Boolean(node.frontmatter.beta),
+      Boolean(node.frontmatter.excludeFromSearchIndex),
+    allowWideContentLayout: Boolean(node.frontmatter.wideLayout),
+    beta: Boolean(node.frontmatter.beta),
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)
       : 3,

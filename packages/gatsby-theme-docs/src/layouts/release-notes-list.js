@@ -22,6 +22,9 @@ const LayoutReleaseNotesList = (props) => {
   const { ref, inView } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
+  const excludeFromSearchIndex =
+    props.pageData.excludeFromSearchIndex ||
+    siteData.siteMetadata.excludeFromSearchIndex;
 
   return (
     <LayoutApplication websitePrimaryColor={props.pageData.websitePrimaryColor}>
@@ -30,7 +33,7 @@ const LayoutReleaseNotesList = (props) => {
         {...layoutState.searchDialog}
         {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
-        isGlobalBeta={props.pageData.isGlobalBeta}
+        isGlobalBeta={siteData.siteMetadata.beta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
       <LayoutMain
@@ -45,7 +48,7 @@ const LayoutReleaseNotesList = (props) => {
           {...layoutState.topMenu}
           ref={ref}
           siteTitle={siteData.siteMetadata.title}
-          excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+          excludeFromSearchIndex={excludeFromSearchIndex}
         />
         <LayoutPageWrapper>
           <LayoutPage>
@@ -63,7 +66,7 @@ const LayoutReleaseNotesList = (props) => {
             <LayoutPageReleaseNotesFilters
               {...layoutState.searchDialog}
               isSearchBoxInView={inView}
-              excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+              excludeFromSearchIndex={excludeFromSearchIndex}
             />
           </LayoutPage>
         </LayoutPageWrapper>
@@ -80,7 +83,6 @@ LayoutReleaseNotesList.propTypes = {
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
     websitePrimaryColor: PropTypes.string.isRequired,
-    isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,

@@ -69,7 +69,6 @@ ReleaseNotesListTemplate.propTypes = {
       title: PropTypes.string.isRequired,
       websitePrimaryColor: PropTypes.string.isRequired,
       beta: PropTypes.bool.isRequired,
-      isGlobalBeta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
     }).isRequired,
@@ -98,7 +97,6 @@ export const query = graphql`
       title
       websitePrimaryColor
       beta
-      isGlobalBeta
       excludeFromSearchIndex
       body
     }

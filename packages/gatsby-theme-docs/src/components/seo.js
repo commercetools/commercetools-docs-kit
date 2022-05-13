@@ -12,6 +12,9 @@ import { useSiteData } from '../hooks/use-site-data';
 
 const SEO = (props) => {
   const siteData = useSiteData();
+  const excludeFromSearchIndex =
+    props.excludeFromSearchIndex ||
+    siteData.siteMetadata.excludeFromSearchIndex;
   const metaDescription =
     props.description || siteData.siteMetadata.description;
   const metaTags = [
@@ -51,7 +54,7 @@ const SEO = (props) => {
       name: 'twitter:description',
       content: metaDescription,
     },
-    props.excludeFromSearchIndex && {
+    excludeFromSearchIndex && {
       name: 'robots',
       content: 'noindex',
     },

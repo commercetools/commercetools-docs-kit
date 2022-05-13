@@ -16,13 +16,12 @@ module.exports = {
     title: 'Docs Smoke Test',
     description: 'Documentation website for smoke tests',
     betaLink: '/beta',
+    excludeFromSearchIndex: isProd && !shouldEnableSearch,
   },
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'docs-smoke-test',
-      excludeFromSearchIndex: isProd && !shouldEnableSearch,
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
-      allowWideContentLayout: true,
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants',

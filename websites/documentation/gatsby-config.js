@@ -12,13 +12,12 @@ module.exports = {
     title: 'Docs Kit Docs',
     description: '',
     betaLink: '/beta',
+    excludeFromSearchIndex: true,
   },
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'documentation',
-      excludeFromSearchIndex: true,
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
-      allowWideContentLayout: true,
       addOns: ['@commercetools-docs/gatsby-theme-code-examples'],
     }),
   ],

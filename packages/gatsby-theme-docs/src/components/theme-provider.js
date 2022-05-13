@@ -14,9 +14,11 @@ const ThemeProvider = (props) => {
         siteMetadata {
           title
           description
+          beta
           author
           productionHostname
           betaLink
+          excludeFromSearchIndex
           globalNotification {
             active
             notificationType

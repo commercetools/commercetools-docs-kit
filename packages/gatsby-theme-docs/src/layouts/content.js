@@ -27,6 +27,10 @@ const LayoutContent = (props) => {
   const { ref, inView } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
+  const excludeFromSearchIndex =
+    props.pageData.excludeFromSearchIndex ||
+    siteData.siteMetadata.excludeFromSearchIndex;
+  const isBeta = props.pageData.beta || siteData.siteMetadata.beta;
 
   return (
     <LayoutApplication
@@ -38,7 +42,7 @@ const LayoutContent = (props) => {
         {...layoutState.searchDialog}
         {...layoutState.topMenu}
         siteTitle={siteData.siteMetadata.title}
-        isGlobalBeta={props.pageData.isGlobalBeta}
+        isGlobalBeta={siteData.siteMetadata.beta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
       <LayoutMain
@@ -53,7 +57,7 @@ const LayoutContent = (props) => {
           {...layoutState.topMenu}
           ref={ref}
           siteTitle={siteData.siteMetadata.title}
-          excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+          excludeFromSearchIndex={excludeFromSearchIndex}
           allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
         <LayoutPageWrapper>
@@ -72,9 +76,7 @@ const LayoutContent = (props) => {
               )}
             </LayoutGlobalNotification>
             <LayoutPageHeader>
-              {props.pageData.beta && (
-                <BetaFlag href={siteData.siteMetadata.betaLink} />
-              )}
+              {isBeta && <BetaFlag href={siteData.siteMetadata.betaLink} />}
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />
@@ -95,11 +97,11 @@ const LayoutContent = (props) => {
             <LayoutPageNavigation
               {...layoutState.searchDialog}
               isSearchBoxInView={inView}
-              excludeFromSearchIndex={props.pageData.excludeFromSearchIndex}
+              excludeFromSearchIndex={excludeFromSearchIndex}
               pageTitle={props.pageContext.shortTitle || props.pageData.title}
               tableOfContents={props.pageData.tableOfContents}
               navLevels={props.pageData.navLevels}
-              beta={props.pageData.beta}
+              beta={isBeta}
             />
           </LayoutPage>
         </LayoutPageWrapper>
@@ -119,7 +121,6 @@ LayoutContent.propTypes = {
     title: PropTypes.string.isRequired,
     websitePrimaryColor: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
-    isGlobalBeta: PropTypes.bool.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
     allowWideContentLayout: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,

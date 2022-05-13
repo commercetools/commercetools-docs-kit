@@ -33,6 +33,7 @@ const SideBySideContainer = styled.div`
 
 const SideBySide = (props) => {
   const pageData = usePageData();
+
   if (pageData.allowWideContentLayout)
     return <SideBySideContainer>{props.children}</SideBySideContainer>;
   return <SpacingsStack scale="l">{props.children}</SpacingsStack>;
@@ -47,6 +48,7 @@ const fullWidthStyle = css`
 
 const FullWidthContainer = (props) => {
   const pageData = usePageData();
+
   return (
     <div
       css={pageData.allowWideContentLayout ? fullWidthStyle : null}

@@ -16,6 +16,7 @@ module.exports = {
     title: 'API Docs Smoke Test',
     description: 'Documentation website for API smoke tests',
     betaLink: '',
+    excludeFromSearchIndex: isProd,
     globalNotification: {
       active: true,
       notificationType: 'info',
@@ -27,8 +28,6 @@ module.exports = {
     ...configureThemeWithAddOns({
       websiteKey: 'api-docs-smoke-test',
       colorPreset: colorPresets.apiDeveloperDocs.key,
-      excludeFromSearchIndex: isProd,
-      allowWideContentLayout: true,
       addOns: [
         {
           resolve: '@commercetools-docs/gatsby-theme-api-docs',
