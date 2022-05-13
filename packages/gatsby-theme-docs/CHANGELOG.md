@@ -1,5 +1,27 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.0.0
+
+### Major Changes
+
+- [#1297](https://github.com/commercetools/commercetools-docs-kit/pull/1297) [`d4aeae78`](https://github.com/commercetools/commercetools-docs-kit/commit/d4aeae789b9205d0770878a3592ccc8c864eebc2) Thanks [@timonrey](https://github.com/timonrey)! - Breaking Change: The plugin options `excludeFromSearchIndex` and `beta` have now moved to the site metadata and the plugin option `allowWideContentLayout` has been removed completely. The frontmatter `wideLayout` sets the wide layout now independently. This fixes a problem with differently configured pages leaking between preview builds and production builds due to gatsby's data node caching.
+
+* [#1285](https://github.com/commercetools/commercetools-docs-kit/pull/1285) [`643bb03f`](https://github.com/commercetools/commercetools-docs-kit/commit/643bb03f8c2cf804cc87b62845c7e8ed2b8550b3) Thanks [@timonrey](https://github.com/timonrey)! - BREAKING CHANGE: Moves the globalNotification configuration to the siteMetadata.
+  If the global notification banner is used, the configuration needs to move out from the plugin configurations to the site metadata in the gatsby config file. It also implements `active` as a new configuration option which has to be set.
+
+### Minor Changes
+
+- [#1296](https://github.com/commercetools/commercetools-docs-kit/pull/1296) [`f4056b97`](https://github.com/commercetools/commercetools-docs-kit/commit/f4056b97c73e846644e9572a749183dd3410ade2) Thanks [@timonrey](https://github.com/timonrey)! - Improves Cards with external links. The external link icon will now be rendered only for text links and not for the card itself.
+
+### Patch Changes
+
+- [#1292](https://github.com/commercetools/commercetools-docs-kit/pull/1292) [`0e3955c2`](https://github.com/commercetools/commercetools-docs-kit/commit/0e3955c277ea010d9fd6c6903a7bfd8db029952f) Thanks [@timonrey](https://github.com/timonrey)! - The global notifications no longer use the Gatsby link component. This results in correct rendering of links within the global notification banner.
+
+* [#1293](https://github.com/commercetools/commercetools-docs-kit/pull/1293) [`8ff60721`](https://github.com/commercetools/commercetools-docs-kit/commit/8ff60721e180b806b6ccbd80ea302dd37a01992b) Thanks [@timonrey](https://github.com/timonrey)! - Update all gatsby dependencies.
+
+* Updated dependencies [[`5b54ea00`](https://github.com/commercetools/commercetools-docs-kit/commit/5b54ea00aa618be2248a0640a683d493fdf8add0), [`8ff60721`](https://github.com/commercetools/commercetools-docs-kit/commit/8ff60721e180b806b6ccbd80ea302dd37a01992b)]:
+  - @commercetools-docs/ui-kit@19.0.0
+
 ## 18.6.0
 
 ### Minor Changes
