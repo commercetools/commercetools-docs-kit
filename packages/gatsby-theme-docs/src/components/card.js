@@ -86,9 +86,13 @@ const Card = (props) => (
               {props.href && props.textLink && (
                 <ReadMoreContainer>
                   <ReadMore>
-                    <GatsbyLink href={props.href} noUnderline>
-                      {props.textLink}
-                    </GatsbyLink>
+                    {props.clickable ? (
+                      props.textLink
+                    ) : (
+                      <GatsbyLink href={props.href} noUnderline>
+                        {props.textLink}
+                      </GatsbyLink>
+                    )}
                   </ReadMore>
                 </ReadMoreContainer>
               )}
