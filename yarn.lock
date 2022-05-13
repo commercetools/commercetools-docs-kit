@@ -3429,7 +3429,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-helmet: 6.1.0
-    react-intersection-observer: 8.33.1
+    react-intersection-observer: 9.1.0
     react-intl: ^5.7.0
     react-router-dom: 5.3.0
     rehype-slug: 4.0.1
@@ -24623,12 +24623,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intersection-observer@npm:8.33.1":
-  version: 8.33.1
-  resolution: "react-intersection-observer@npm:8.33.1"
+"react-intersection-observer@npm:9.1.0":
+  version: 9.1.0
+  resolution: "react-intersection-observer@npm:9.1.0"
   peerDependencies:
     react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
-  checksum: 5feb0df01dd64f1fa0b8300fb4fc12db95350c1ae2514f66f0652371f65e5501758a662746000dc2584d24dcce07139590e5375d6c9920a60b282af83468d0c4
+  checksum: 1d4cabaea62d70d551687b9d6561e9892a87f8f4ace46b8bbf006788d36061a49e3c0774a89ad24f1e35dc3dc5ba653ca26064199554ce071a4787823f875ee4
   languageName: node
   linkType: hard
 
