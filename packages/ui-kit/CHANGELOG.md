@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 19.0.0
+
+### Patch Changes
+
+- [#1281](https://github.com/commercetools/commercetools-docs-kit/pull/1281) [`5b54ea00`](https://github.com/commercetools/commercetools-docs-kit/commit/5b54ea00aa618be2248a0640a683d493fdf8add0) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependency mermaid to v9
+
+* [#1293](https://github.com/commercetools/commercetools-docs-kit/pull/1293) [`8ff60721`](https://github.com/commercetools/commercetools-docs-kit/commit/8ff60721e180b806b6ccbd80ea302dd37a01992b) Thanks [@timonrey](https://github.com/timonrey)! - Update all gatsby dependencies.
+
 ## 18.6.0
 
 ### Minor Changes
