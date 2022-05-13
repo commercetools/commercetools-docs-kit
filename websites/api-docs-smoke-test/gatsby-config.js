@@ -17,7 +17,6 @@ module.exports = {
     description: 'Documentation website for API smoke tests',
     betaLink: '',
     excludeFromSearchIndex: isProd,
-    allowWideContentLayout: true,
     globalNotification: {
       active: true,
       notificationType: 'info',

@@ -21,9 +21,6 @@ const LayoutContentHomepage = (props) => {
   const excludeFromSearchIndex =
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
-  const allowWideContentLayout =
-    props.pageData.allowWideContentLayout &&
-    siteData.siteMetadata.allowWideContentLayout;
 
   return (
     <LayoutApplication
@@ -51,7 +48,7 @@ const LayoutContentHomepage = (props) => {
           {...layoutState.topMenu}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={excludeFromSearchIndex}
-          allowWideContentLayout={allowWideContentLayout}
+          allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
         <LayoutPageWrapper>
           <LayoutPageWithHero

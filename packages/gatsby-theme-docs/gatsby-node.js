@@ -284,10 +284,7 @@ exports.onCreateNode = (
       // frontmatter can only exclude in an otherwise not excluded site,
       // but it can't include in a generally excluded site
       Boolean(node.frontmatter.excludeFromSearchIndex),
-    allowWideContentLayout:
-      // the frontmatter `wideLayout` and the theme's allowWideContentLayout
-      // must be set for the page to switch to wide layout
-      Boolean(node.frontmatter.wideLayout),
+    allowWideContentLayout: Boolean(node.frontmatter.wideLayout),
     beta: Boolean(node.frontmatter.beta),
     navLevels: node.frontmatter.navLevels
       ? Number(node.frontmatter.navLevels)

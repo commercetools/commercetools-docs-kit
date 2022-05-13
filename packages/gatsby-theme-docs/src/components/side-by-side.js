@@ -5,7 +5,6 @@ import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { usePageData } from '../hooks/use-page-data';
-import { useSiteData } from '../hooks/use-site-data';
 
 /**
  * Allows the first and second child of this container to float side by side in large desktop sizes.
@@ -32,19 +31,10 @@ const SideBySideContainer = styled.div`
   }
 `;
 
-const usePageAndSiteData = () => {
-  const pageData = usePageData();
-  const siteData = useSiteData();
-
-  return (
-    pageData.allowWideContentLayout &&
-    siteData.siteMetadata.allowWideContentLayout
-  );
-};
-
 const SideBySide = (props) => {
-  const allowWideContentLayout = usePageAndSiteData();
-  if (allowWideContentLayout)
+  const pageData = usePageData();
+
+  if (pageData.allowWideContentLayout)
     return <SideBySideContainer>{props.children}</SideBySideContainer>;
   return <SpacingsStack scale="l">{props.children}</SpacingsStack>;
 };
@@ -57,9 +47,13 @@ const fullWidthStyle = css`
 `;
 
 const FullWidthContainer = (props) => {
-  const allowWideContentLayout = usePageAndSiteData();
+  const pageData = usePageData();
+
   return (
-    <div css={allowWideContentLayout ? fullWidthStyle : null} {...props} />
+    <div
+      css={pageData.allowWideContentLayout ? fullWidthStyle : null}
+      {...props}
+    />
   );
 };
 FullWidthContainer.propTypes = {

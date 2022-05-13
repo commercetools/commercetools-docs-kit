@@ -13,7 +13,6 @@ module.exports = {
     description: '',
     betaLink: '/beta',
     excludeFromSearchIndex: true,
-    allowWideContentLayout: true,
   },
   plugins: [
     ...configureThemeWithAddOns({

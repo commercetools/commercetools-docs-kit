@@ -17,7 +17,6 @@ module.exports = {
     description: 'Documentation website for smoke tests',
     betaLink: '/beta',
     excludeFromSearchIndex: isProd && !shouldEnableSearch,
-    allowWideContentLayout: true,
   },
   plugins: [
     ...configureThemeWithAddOns({

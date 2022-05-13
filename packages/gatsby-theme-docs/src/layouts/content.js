@@ -30,9 +30,6 @@ const LayoutContent = (props) => {
   const excludeFromSearchIndex =
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
-  const allowWideContentLayout =
-    props.pageData.allowWideContentLayout &&
-    siteData.siteMetadata.allowWideContentLayout;
   const isBeta = props.pageData.beta || siteData.siteMetadata.beta;
 
   return (
@@ -61,10 +58,12 @@ const LayoutContent = (props) => {
           ref={ref}
           siteTitle={siteData.siteMetadata.title}
           excludeFromSearchIndex={excludeFromSearchIndex}
-          allowWideContentLayout={allowWideContentLayout}
+          allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
         <LayoutPageWrapper>
-          <LayoutPage allowWideContentLayout={allowWideContentLayout}>
+          <LayoutPage
+            allowWideContentLayout={props.pageData.allowWideContentLayout}
+          >
             <LayoutGlobalNotification>
               {siteData.siteMetadata.globalNotification.active && (
                 <GlobalNotification

@@ -19,7 +19,6 @@ const ThemeProvider = (props) => {
           productionHostname
           betaLink
           excludeFromSearchIndex
-          allowWideContentLayout
           globalNotification {
             active
             notificationType
