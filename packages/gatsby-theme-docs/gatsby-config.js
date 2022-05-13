@@ -31,7 +31,7 @@ module.exports = (themeOptions = {}) => {
       author: 'commercetools',
       productionHostname,
       betaLink: '.',
-      excludeFromSearchIndex: true,
+      excludeFromSearchIndex: false,
       beta: false,
       globalNotification: {
         active: false,
