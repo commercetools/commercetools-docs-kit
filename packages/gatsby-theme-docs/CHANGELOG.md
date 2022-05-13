@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.0.1
+
+### Patch Changes
+
+- [#1298](https://github.com/commercetools/commercetools-docs-kit/pull/1298) [`c583b93b`](https://github.com/commercetools/commercetools-docs-kit/commit/c583b93be8608cefd98357b1df836d6c3241e75a) Thanks [@timonrey](https://github.com/timonrey)! - Sets the default of the siteMetadata option `excludeFromSearchIndex` to false.
+
 ## 19.0.0
 
 ### Major Changes
