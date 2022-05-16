@@ -184,37 +184,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       interfaces: ['Node'],
     })
   );
-
-  // Create a new type representing a Release Note Page.
-  // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
-  actions.createTypes(
-    schema.buildObjectType({
-      name: 'ReleaseNotePage',
-      fields: {
-        id: { type: 'ID!' },
-        slug: { type: 'String!' },
-        title: { type: 'String!' },
-        websitePrimaryColor: { type: 'String!' },
-        excludeFromSearchIndex: { type: 'Boolean!' },
-        date: { type: 'Date!', extensions: { dateformat: {} } },
-        description: { type: 'String!' },
-        type: { type: 'ReleaseNoteType!' },
-        topics: { type: '[String!]!' },
-        published: { type: 'Boolean!' },
-        body: {
-          type: 'String!',
-          resolve: resolverPassthrough({ fieldName: 'body' }),
-        },
-        rawExcerpt: {
-          type: 'String!',
-        },
-        hasMore: {
-          type: 'Boolean!',
-        },
-      },
-      interfaces: ['Node'],
-    })
-  );
 };
 
 exports.onCreateNode = (
@@ -241,9 +210,10 @@ exports.onCreateNode = (
   if (isReleaseNotesPage) {
     const excerptSplit = node.rawBody.split('<!--more-->');
     const releaseNotesFieldData = {
+      pageType: 'ReleaseNote',
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
-      websitePrimaryColor: colorPreset.value.primaryColor,
+      websitePrimaryColor: colorPreset.value.primaryColor, // TODO should be moved to a site property
       excludeFromSearchIndex: Boolean(node.frontmatter.excludeFromSearchIndex),
       date: node.frontmatter.date,
       description: node.frontmatter.description,
@@ -253,23 +223,13 @@ exports.onCreateNode = (
       rawExcerpt: excerptSplit[0],
       hasMore: excerptSplit.length > 1,
     };
-    actions.createNode({
-      ...releaseNotesFieldData,
-      // Required fields
-      id: createNodeId(`${node.id} >>> ReleaseNotePage`),
-      parent: node.id,
-      children: [],
-      internal: {
-        type: 'ReleaseNotePage',
-        contentDigest: createContentDigest(releaseNotesFieldData),
-        content: JSON.stringify(releaseNotesFieldData),
-        description: 'Release Note Pages',
-      },
-    });
-    actions.createParentChildLink({
-      parent,
-      child: node,
-    });
+    Object.entries(releaseNotesFieldData).forEach(([objKey, objValue]) =>
+      actions.createNodeField({
+        node,
+        name: objKey,
+        value: objValue,
+      })
+    );
     return;
   }
 
@@ -352,7 +312,10 @@ async function createContentPages(
           slug
         }
       }
-      allReleaseNotePage(sort: { order: DESC, fields: date }) {
+      allReleaseNotePage: allMdx(
+        sort: { order: DESC, fields: fields___date }
+        filter: { fields: { pageType: { eq: "ReleaseNote" } } }
+      ) {
         totalCount
       }
     }
@@ -398,7 +361,7 @@ async function createContentPages(
         shortTitle: matchingNavigationPage
           ? matchingNavigationPage.title
           : undefined,
-        hasReleaseNotes: result.data.allReleaseNotePage.totalCount > 0,
+        hasReleaseNotes: result.data.allReleaseNotePage.totalCount > 0, // TODO shouldn't this be a dynamic piece of site data instead page data?
       },
     };
     switch (slug) {
@@ -440,9 +403,13 @@ async function createReleaseNotePages(
 
   const result = await graphql(`
     query QueryAllReleaseNotePages {
-      allReleaseNotePage {
+      allReleaseNotePage: allMdx(
+        filter: { fields: { pageType: { eq: "ReleaseNote" } } }
+      ) {
         nodes {
-          slug
+          fields {
+            slug
+          }
         }
       }
     }
@@ -454,7 +421,7 @@ async function createReleaseNotePages(
       )}`
     );
   }
-  result.data.allReleaseNotePage.nodes.forEach(({ slug }) => {
+  result.data.allReleaseNotePage.nodes.forEach(({ fields: { slug } }) => {
     actions.createPage({
       path: slug,
       // This component will wrap our MDX content

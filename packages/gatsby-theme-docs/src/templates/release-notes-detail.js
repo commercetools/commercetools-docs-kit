@@ -19,29 +19,33 @@ const releaseNoteMarkdownComponents = {
   h4: Markdown.withAnchorLink(Markdown.H6),
 };
 
-const ReleaseNotesDetailTemplate = (props) => (
-  <IntlProvider locale="en">
-    <ThemeProvider>
-      <LayoutReleaseNotesDetail pageData={props.data.releaseNotePage}>
-        <MDXProvider components={releaseNoteMarkdownComponents}>
-          <Markdown.TypographyPage>
-            <SEO
-              title={props.data.releaseNotePage.title}
-              excludeFromSearchIndex={
-                props.data.releaseNotePage.excludeFromSearchIndex
-              }
-            />
-            <div>
-              <LayoutReleaseNoteBody {...props.data.releaseNotePage}>
-                <MDXRenderer>{props.data.releaseNotePage.body}</MDXRenderer>
-              </LayoutReleaseNoteBody>
-            </div>
-          </Markdown.TypographyPage>
-        </MDXProvider>
-      </LayoutReleaseNotesDetail>
-    </ThemeProvider>
-  </IntlProvider>
-);
+const ReleaseNotesDetailTemplate = (props) => {
+  const releaseNotePage = {
+    body: props.data.releaseNotePage.body,
+    ...props.data.releaseNotePage.fields,
+  };
+  return (
+    <IntlProvider locale="en">
+      <ThemeProvider>
+        <LayoutReleaseNotesDetail pageData={releaseNotePage}>
+          <MDXProvider components={releaseNoteMarkdownComponents}>
+            <Markdown.TypographyPage>
+              <SEO
+                title={releaseNotePage.title}
+                excludeFromSearchIndex={releaseNotePage.excludeFromSearchIndex}
+              />
+              <div>
+                <LayoutReleaseNoteBody {...releaseNotePage}>
+                  <MDXRenderer>{releaseNotePage.body}</MDXRenderer>
+                </LayoutReleaseNoteBody>
+              </div>
+            </Markdown.TypographyPage>
+          </MDXProvider>
+        </LayoutReleaseNotesDetail>
+      </ThemeProvider>
+    </IntlProvider>
+  );
+};
 
 ReleaseNotesDetailTemplate.propTypes = {
   pageContext: PropTypes.shape({
@@ -49,9 +53,11 @@ ReleaseNotesDetailTemplate.propTypes = {
   }).isRequired,
   data: PropTypes.shape({
     releaseNotePage: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      websitePrimaryColor: PropTypes.string.isRequired,
-      excludeFromSearchIndex: PropTypes.bool.isRequired,
+      fields: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        websitePrimaryColor: PropTypes.string.isRequired,
+        excludeFromSearchIndex: PropTypes.bool.isRequired,
+      }),
       body: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
@@ -61,14 +67,18 @@ export default ReleaseNotesDetailTemplate;
 
 export const query = graphql`
   query QueryReleaseDetailPage($slug: String!) {
-    releaseNotePage(slug: { eq: $slug }) {
-      title
-      websitePrimaryColor
-      excludeFromSearchIndex
-      date(formatString: "D MMMM YYYY")
-      description
-      type
-      topics
+    releaseNotePage: mdx(
+      fields: { slug: { eq: $slug }, pageType: { eq: "ReleaseNote" } }
+    ) {
+      fields {
+        title
+        websitePrimaryColor
+        excludeFromSearchIndex
+        date(formatString: "D MMMM YYYY")
+        description
+        type
+        topics
+      }
       body
     }
   }

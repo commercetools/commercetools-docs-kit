@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { node } from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -14,9 +14,10 @@ import useFilteredReleaseNotes from '../hooks/use-filtered-release-notes';
 import GatsbyLink from '../components/link';
 
 const ReleaseNotesListTemplate = (props) => {
-  const filteredReleaseNotes = useFilteredReleaseNotes(
-    props.data.allReleaseNotePage.nodes
-  );
+  const releaseNotes = props.data.allReleaseNotePage.nodes.map((node) => ({
+    ...node.fields,
+  }));
+  const filteredReleaseNotes = useFilteredReleaseNotes(releaseNotes);
 
   return (
     <IntlProvider locale="en">
@@ -75,14 +76,16 @@ ReleaseNotesListTemplate.propTypes = {
     allReleaseNotePage: PropTypes.shape({
       nodes: PropTypes.arrayOf(
         PropTypes.shape({
-          slug: PropTypes.string.isRequired,
-          title: PropTypes.string.isRequired,
-          date: PropTypes.string.isRequired,
-          description: PropTypes.string.isRequired,
-          type: PropTypes.string.isRequired,
-          topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-          body: PropTypes.string.isRequired,
-          hasMore: PropTypes.bool.isRequired,
+          fields: PropTypes.shape({
+            slug: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            date: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
+            type: PropTypes.string.isRequired,
+            topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+            body: PropTypes.string.isRequired,
+            hasMore: PropTypes.bool.isRequired,
+          }),
         })
       ).isRequired,
     }),
@@ -100,17 +103,22 @@ export const query = graphql`
       excludeFromSearchIndex
       body
     }
-    allReleaseNotePage(sort: { order: DESC, fields: date }) {
+    allReleaseNotePage: allMdx(
+      sort: { order: DESC, fields: fields___date }
+      filter: { fields: { pageType: { eq: "ReleaseNote" } } }
+    ) {
       nodes {
-        slug
-        title
-        date(formatString: "D MMMM YYYY")
-        isoDate: date
-        description
-        type
-        topics
-        body: rawExcerpt
-        hasMore
+        fields {
+          slug
+          title
+          date(formatString: "D MMMM YYYY")
+          isoDate: date
+          description
+          type
+          topics
+          body: rawExcerpt
+          hasMore
+        }
       }
     }
   }

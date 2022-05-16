@@ -3,10 +3,11 @@ import { useStaticQuery, graphql } from 'gatsby';
 const useReleaseNotesTopics = (selectedTopics = []) => {
   const data = useStaticQuery(graphql`
     query GetAllReleaseNotesTopics {
-      allReleaseNoteTopics: allReleaseNotePage(
-        sort: { fields: topics, order: ASC }
+      allReleaseNoteTopics: allMdx(
+        sort: { fields: fields___topics, order: ASC }
+        filter: { fields: { pageType: { eq: "ReleaseNote" } } }
       ) {
-        group(field: topics) {
+        group(field: fields___topics) {
           fieldValue
         }
       }

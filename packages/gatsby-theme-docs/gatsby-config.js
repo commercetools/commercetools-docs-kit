@@ -261,28 +261,34 @@ module.exports = (themeOptions = {}) => {
           feeds: [
             {
               serialize: ({ query: { site, allReleaseNotePage } }) => {
-                return allReleaseNotePage.nodes.map((node) => {
+                return allReleaseNotePage.nodes.map(({ fields }) => {
                   return {
-                    ...node,
-                    url: `${site.siteMetadata.siteUrl}${node.slug}`,
-                    guid: `${site.siteMetadata.siteUrl}${node.slug}`,
+                    ...fields,
+                    url: `${site.siteMetadata.siteUrl}${fields.slug}`,
+                    guid: `${site.siteMetadata.siteUrl}${fields.slug}`,
                   };
                 });
               },
               query: `
               {
-                allReleaseNotePage(
-                  limit: 10, sort: { order: DESC, fields: date },
+                allReleaseNotePage: allMdx(
+                  sort: {order: DESC, fields: fields___date}
+                  limit: 10
+                  filter: {fields: {pageType: {eq: "ReleaseNote"}}}
                 ) {
-                    nodes {
+                  nodes {
+                    id
+                    fields {
                       description
                       slug
                       title
                       date
                       categories: topics
                     }
+                  }
                 }
               }
+
             `,
               output: '/releases/feed.xml',
               title: 'commercetools Release Notes',
