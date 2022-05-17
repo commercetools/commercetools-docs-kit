@@ -66,6 +66,7 @@ const resolverPassthrough =
     fieldName,
     resolveNode = identity,
     processResult = identity,
+    errorFallback = null,
   }) =>
   async (source, args, context, info) => {
     const type = info.schema.getType(typeName);
@@ -80,22 +81,12 @@ const resolverPassthrough =
 
       return processResult(result);
     } else {
-      // on MDX syntax errors the MDX node does not exist.
-      // this emulates the output of the MDX v1 library to show an error to authors.
-      // It works when changing a previously working file. On initial load or start the page is a 404.
+      // On MDX syntax errors the MDX node does not exist instead of showing an error (which is nasty).
+      // This emulates the output of the MDX v1 library to show an error to authors.
+      // This works when changing a previously working file.
       // Because the parent-child relationship is broken gatsby seems unable to recover after fixing the syntax error.
-      return isProd
-        ? null
-        : `
-      return function MDXContent() {
-        return mdx(
-          "code",
-          null,
-          "Gatsby could not find the MDX for this page. You may have a syntax errors in your MDX file, check the console for errors and RESTART the dev server."
-        );
-      };
-      MDXContent.isMDXComponent = true;
-      `;
+      // On initial load or start the page is a 404.
+      return isProd ? null : errorFallback;
     }
   };
 
@@ -143,6 +134,17 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     }
   `);
 
+  const staticErrorMdx = `
+  return function MDXContent() {
+    return mdx(
+      "code",
+      null,
+      "Gatsby could not find the MDX data for this page. You may have a syntax error in your MDX file, check the console for errors and RESTART the dev server."
+    );
+  };
+  MDXContent.isMDXComponent = true;
+  `;
+
   // Create a new type representing a Content Page
   // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
   actions.createTypes(
@@ -158,7 +160,10 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         beta: { type: 'Boolean!' },
         body: {
           type: 'String!',
-          resolve: resolverPassthrough({ fieldName: 'body' }),
+          resolve: resolverPassthrough({
+            fieldName: 'body',
+            errorFallback: staticErrorMdx,
+          }),
         },
         tableOfContents: {
           type: 'JSON',
@@ -171,6 +176,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           resolve: resolverPassthrough({
             fieldName: 'tableOfContents',
             processResult: processTableOfContentFields,
+            errorFallback: {},
           }),
         },
         navLevels: { type: 'Int!' },
@@ -178,7 +184,10 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         timeToRead: { type: 'Int' },
         estimatedTimeToRead: {
           type: 'Int!',
-          resolve: resolverPassthrough({ fieldName: 'timeToRead' }),
+          resolve: resolverPassthrough({
+            fieldName: 'timeToRead',
+            errorFallback: 0,
+          }),
         },
       },
       interfaces: ['Node'],
@@ -203,7 +212,10 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         published: { type: 'Boolean!' },
         body: {
           type: 'String!',
-          resolve: resolverPassthrough({ fieldName: 'body' }),
+          resolve: resolverPassthrough({
+            fieldName: 'body',
+            errorFallback: staticErrorMdx,
+          }),
         },
         rawExcerpt: {
           type: 'String!',
