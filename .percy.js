@@ -16,6 +16,10 @@ module.exports = {
         include: /(.*-smoke-test.*)\/components\/rss-feeds\/index\.html/,
         waitForSelector: 'table[data-table-name="rss-feed"]',
       },
+      {
+        include: /(.*-smoke-test.*)\/components\/mermaid-diagram\/index\.html/,
+        waitForSelector: '#body-content svg.statediagram',
+      },
     ],
   },
   snapshot: {
