@@ -18,7 +18,7 @@ module.exports = {
       },
       {
         include: /(.*-smoke-test.*)\/components\/mermaid-diagram\/index\.html/,
-        waitForTimeout: 2000,
+        waitForSelector: '#body-content svg.statediagram',
       },
     ],
   },
