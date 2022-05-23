@@ -260,7 +260,7 @@ export const dimensions = {
 
 export const typography = {
   fontFamilies: {
-    primary: "'Roboto', sans-serif",
+    primary: "'TT-Commons-Pro', sans-serif",
     code: "'Roboto Mono', monospace",
   },
 

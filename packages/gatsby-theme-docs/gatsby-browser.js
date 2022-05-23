@@ -5,9 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import '@fontsource/roboto/latin-400.css';
-import '@fontsource/roboto/latin-500.css';
-import '@fontsource/roboto/latin-700.css';
+import './src/fonts/tt-commons-pro/font.css';
 import '@fontsource/roboto-mono/latin-400.css';
 import '@fontsource/roboto-mono/latin-500.css';
 import '@fontsource/roboto-mono/latin-700.css';

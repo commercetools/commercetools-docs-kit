@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(tt-commons-pro-rg.woff2) format('woff2'), url(tt-commons-pro-rg.woff) format('woff')
+}
+
+/* explicitly including regular weight italic because it can occur in body text. Not using
+italic elsewhere in the website, so the others are commented out */
+@font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(tt-commons-pro-it.woff2) format('woff2'), url(tt-commons-pro-it.woff) format('woff')
+}
+
+@font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(tt-commons-pro-md.woff2) format('woff2'), url(tt-commons-pro-md.woff) format('woff')
+}
+
+/* @font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 500;
+  src: url(tt-commons-pro-md-it.woff2) format('woff2'), url(tt-commons-pro-md-it.woff) format('woff')
+}
+
+@font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(tt-commons-pro-db.woff2) format('woff2'), url(tt-commons-pro-db.woff) format('woff')
+}
+
+@font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src: url(tt-commons-pro-db-it.woff2) format('woff2'), url(tt-commons-pro-db-it.woff) format('woff')
+}
+*/
+
+@font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(tt-commons-pro-bd.woff2) format('woff2'), url(tt-commons-pro-bd.woff) format('woff')
+}
+
+/* @font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: url(tt-commons-pro-bd-it.woff2) format('woff2'), url(tt-commons-pro-bd-it.woff) format('woff')
+}
+
+@font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(tt-commons-pro-xbd.woff2) format('woff2'), url(tt-commons-pro-xbd.woff) format('woff')
+}
+
+@font-face {
+  font-family: "TT-Commons-Pro";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 800;
+  src: url(tt-commons-pro-xbd-it.woff2) format('woff2'), url(tt-commons-pro-xbd-it.woff) format('woff')
+}
+ */
+
+ /* this is the tracker code of the payment plan for the TT fonts. It needs to stay.
+It's better to keep all font faces loaded from this one file for that reason.
+Moved to the bottom here for performance */
+@import url(//hello.myfonts.net/count/3efac6);

@@ -3386,7 +3386,6 @@ __metadata:
     "@emotion/react": ^11.7.1
     "@emotion/server": ^11.4.0
     "@emotion/styled": ^11.6.0
-    "@fontsource/roboto": 4.5.3
     "@fontsource/roboto-mono": 4.5.3
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
@@ -4651,13 +4650,6 @@ __metadata:
   version: 4.5.3
   resolution: "@fontsource/roboto-mono@npm:4.5.3"
   checksum: 98779a20a24fd50f0d8bb2a7c283e18a42e7eaf4829895601d63cdf9dc4e2212abf081f7609daa7c700b0bd8d18c530284730dd73ab07e4e2e3bf92b253e6ba8
-  languageName: node
-  linkType: hard
-
-"@fontsource/roboto@npm:4.5.3":
-  version: 4.5.3
-  resolution: "@fontsource/roboto@npm:4.5.3"
-  checksum: 5c25485184dcb9162834ef2633528b8c21812ae4bbb37e9a32f07b4db93226361d6b60fe71c61b60aeea7e9fe69be6c9d80b05eea477ec71f166a0fd3feb3df5
   languageName: node
   linkType: hard
 
