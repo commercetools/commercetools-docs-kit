@@ -271,14 +271,14 @@ export const typography = {
     h2: pxToRem('26px'),
     h3: pxToRem('24px'),
     h4: pxToRem('20px'),
-    h5: pxToRem('16px'),
-    h6: pxToRem('16px'),
-    body: pxToRem('16px'),
-    small: pxToRem('14px'),
+    h5: pxToRem('17px'),
+    h6: pxToRem('17px'),
+    body: pxToRem('17px'),
+    small: pxToRem('15px'),
     // The sizes below are only used in specific case. Do not use them regularly.
     // If necessary, ask the Design team.
-    extraSmall: pxToRem('12px'),
-    ultraSmall: pxToRem('10px'),
+    extraSmall: pxToRem('13px'),
+    ultraSmall: pxToRem('11px'),
   },
 
   relativeFontSizes: {
@@ -288,7 +288,7 @@ export const typography = {
   fontWeights: {
     regular: '400',
     medium: '500',
-    bold: '700',
+    bold: '600',
   },
 
   lineHeights: {

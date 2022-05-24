@@ -31,6 +31,7 @@ italic elsewhere in the website, so the others are commented out */
   font-weight: 500;
   src: url(tt-commons-pro-md-it.woff2) format('woff2'), url(tt-commons-pro-md-it.woff) format('woff')
 }
+*/
 
 @font-face {
   font-family: "TT-Commons-Pro";
@@ -47,7 +48,6 @@ italic elsewhere in the website, so the others are commented out */
   font-weight: 600;
   src: url(tt-commons-pro-db-it.woff2) format('woff2'), url(tt-commons-pro-db-it.woff) format('woff')
 }
-*/
 
 @font-face {
   font-family: "TT-Commons-Pro";
