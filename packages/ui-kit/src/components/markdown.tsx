@@ -2,9 +2,11 @@ import React from 'react';
 import reactIs from 'react-is';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import Tooltip from '@commercetools-uikit/tooltip';
 import { RibbonSvgIcon } from '../icons';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import { CodeBlockMarkdownWrapper as CodeBlock } from './multi-code-block';
+import copyToClipboard from '../utils/copy-to-clipboard';
 
 const headerStyles = () => css`
   line-height: 1.3;
@@ -298,36 +300,64 @@ const TypographyContainer = styled.div`
   ${containerStyles};
 `;
 
+const CopyArea = styled.div`
+  cursor: pointer;
+`;
+
+const TooltipBodyComponent = styled.div`
+  background-color: ${colors.light.surfaceCodeCopy};
+  color: ${colors.light.textInverted};
+  font-weight: ${typography.fontWeights.regular};
+  border-radius: ${tokens.borderRadiusForTooltip};
+  font-size: ${typography.fontSizes.extraSmall};
+  padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
+`;
+
 /* eslint-disable react/display-name */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const withAnchorLink = (Component: React.ComponentType) => (props: any) => {
-  return (
-    <Component
-      {...props}
-      css={css`
-        display: flex;
-        align-items: baseline;
-        :hover {
-          [data-link-type='anchor-link'] {
-            svg {
-              * {
-                fill: ${colors.light.linkNavigation};
+const withCopyToClipboard =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (Component: React.ComponentType) => (props: any) => {
+    const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
+    const handleCopyToClipboardClick = (event: React.SyntheticEvent) => {
+      event.preventDefault();
+      const sectionUrl = `${window.location.href.split('#')[0]}#${props.id}`;
+      copyToClipboard(sectionUrl);
+      setIsCopiedToClipboard(true);
+      setTimeout(() => setIsCopiedToClipboard(false), 1500);
+    };
+    return (
+      <Component
+        {...props}
+        css={css`
+          display: flex;
+          align-items: baseline;
+          :hover {
+            div {
+              svg {
+                * {
+                  fill: ${colors.light.linkNavigation};
+                }
               }
             }
           }
-        }
-        > * + * {
-          margin: 0 0 0 ${dimensions.spacings.s};
-        }
-      `}
-    >
-      <span>{props.children}</span>
-      <a href={`#${props.id}`} data-link-type="anchor-link">
-        <RibbonSvgIcon />
-      </a>
-    </Component>
-  );
-};
+          > * + * {
+            margin: 0 0 0 ${dimensions.spacings.s};
+          }
+        `}
+      >
+        <span>{props.children}</span>
+        <Tooltip
+          title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
+          placement="right"
+          components={{ BodyComponent: TooltipBodyComponent }}
+        >
+          <CopyArea onClick={handleCopyToClipboardClick}>
+            <RibbonSvgIcon />
+          </CopyArea>
+        </Tooltip>
+      </Component>
+    );
+  };
 
 export {
   TypographyPage,
@@ -357,5 +387,5 @@ export {
   Strong,
   Delete,
   Hr,
-  withAnchorLink,
+  withCopyToClipboard,
 };
