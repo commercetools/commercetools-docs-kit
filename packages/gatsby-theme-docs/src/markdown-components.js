@@ -24,9 +24,15 @@ const components = {
   h1: Markdown.withCopyToClipboard(Markdown.H2) /* "Section" */,
   h2: Markdown.withCopyToClipboard(Markdown.H3) /* "Subsection" */,
   h3: Markdown.withCopyToClipboard(Markdown.H4) /* "Sub-Subsection" */,
-  h4: Markdown.withCopyToClipboard(Markdown.H4) /* "Sub-Subsection", not in  nav */,
-  h5: Markdown.withCopyToClipboard(Markdown.H4) /* "Sub-Subsection", not in  nav */,
-  h6: Markdown.withCopyToClipboard(Markdown.H4) /* "Sub-Subsection", not in  nav */,
+  h4: Markdown.withCopyToClipboard(
+    Markdown.H4
+  ) /* "Sub-Subsection", not in  nav */,
+  h5: Markdown.withCopyToClipboard(
+    Markdown.H4
+  ) /* "Sub-Subsection", not in  nav */,
+  h6: Markdown.withCopyToClipboard(
+    Markdown.H4
+  ) /* "Sub-Subsection", not in  nav */,
   thematicBreak: Markdown.ThematicBreak,
   blockquote: Markdown.Blockquote,
   ul: Markdown.Ul,
