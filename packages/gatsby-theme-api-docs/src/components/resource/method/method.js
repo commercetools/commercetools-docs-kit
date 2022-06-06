@@ -31,7 +31,7 @@ const Container = styled.div`
   padding: ${dimensions.spacings.m};
 `;
 
-const TitleWithAnchor = Markdown.withAnchorLink(Title);
+const TitleWithAnchor = Markdown.withCopyToClipboard(Title);
 
 const Method = ({
   apiKey,
