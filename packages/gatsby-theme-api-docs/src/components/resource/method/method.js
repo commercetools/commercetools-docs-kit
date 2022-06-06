@@ -67,10 +67,6 @@ const Method = ({
           <a name={id}></a>
         )}
 
-        {method.description && (
-          <DescriptionParagraph>{method.description}</DescriptionParagraph>
-        )}
-
         <Container
           css={css`
             border-left-color: ${methodColor};
@@ -84,6 +80,12 @@ const Method = ({
                 methodColor={methodColor}
                 uris={uris}
               />
+
+              {method.description && (
+                <DescriptionParagraph>
+                  {method.description}
+                </DescriptionParagraph>
+              )}
 
               {method.securedBy && (
                 <Scopes scopes={method.securedBy[0].oauth_2_0.scopes} />
