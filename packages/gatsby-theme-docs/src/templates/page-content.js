@@ -10,6 +10,7 @@ import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 import { PageDataContext } from '../hooks/use-page-data';
 import ChildSectionsNav from '../components/child-sections-nav';
+import MultiColumnLayout from '../components/multi-column-layout';
 
 const ContentCards = (props) => (
   <markdownComponents.Cards fitContentColumn={true} {...props} />
@@ -28,6 +29,7 @@ const PageContentTemplate = (props) => (
               ...markdownComponents,
               Cards: ContentCards,
               ChildSectionsNav,
+              MultiColumnLayout,
             }}
           >
             <Markdown.TypographyPage>
