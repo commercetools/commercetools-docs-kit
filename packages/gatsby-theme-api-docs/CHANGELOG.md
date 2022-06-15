@@ -1,5 +1,18 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 19.1.0
+
+### Minor Changes
+
+- [#1318](https://github.com/commercetools/commercetools-docs-kit/pull/1318) [`fdeedf76`](https://github.com/commercetools/commercetools-docs-kit/commit/fdeedf7634ef2f4fbd6533913e3dfad7bf12597b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Improve the error handling and error message for the `transformURNLinksPlugin` function handling the case in which `typeUrl` cannot be found. The implementation prevents the unhandled error to happen and offers a more explanatory error detailing `name` and `apiKey` of the not found typeUrl.
+
+### Patch Changes
+
+- [#1288](https://github.com/commercetools/commercetools-docs-kit/pull/1288) [`40184fc4`](https://github.com/commercetools/commercetools-docs-kit/commit/40184fc48cdfe44de1df2c568e025a8ae55d1f85) Thanks [@renovate](https://github.com/apps/renovate)! - Update all ui-kit packages to v15
+
+- Updated dependencies [[`40184fc4`](https://github.com/commercetools/commercetools-docs-kit/commit/40184fc48cdfe44de1df2c568e025a8ae55d1f85)]:
+  - @commercetools-docs/ui-kit@19.1.0
+
 ## 19.0.0
 
 ### Patch Changes
