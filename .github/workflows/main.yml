@@ -65,9 +65,12 @@ jobs:
 
       - name: Running linters and tests
         run: |
-          yarn jest --projects jest.{eslint,stylelint,test,text}.config.js \
+          yarn jest --projects jest.{eslint,stylelint,test}.config.js \
             --maxWorkers=3 \
             --reporters jest-silent-reporter
+
+      - name: Run Writing Style check over Websites
+        run: yarn lint:text
 
       - name: Deploy to Vercel (Production)
         if: ${{ env.DEPLOY_ENV == 'Production' }}

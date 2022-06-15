@@ -11418,7 +11418,6 @@ __metadata:
     jest: 27.5.1
     jest-preset-gatsby: 1.0.134
     jest-runner-eslint: 1.0.0
-    jest-runner-executor: 1.0.0
     jest-runner-prettier: 1.0.0
     jest-runner-stylelint: 2.3.7
     jest-silent-reporter: 0.5.0
@@ -11808,19 +11807,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:6.0.0, cosmiconfig@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "cosmiconfig@npm:6.0.0"
-  dependencies:
-    "@types/parse-json": ^4.0.0
-    import-fresh: ^3.1.0
-    parse-json: ^5.0.0
-    path-type: ^4.0.0
-    yaml: ^1.7.2
-  checksum: 8eed7c854b91643ecb820767d0deb038b50780ecc3d53b0b19e03ed8aabed4ae77271198d1ae3d49c3b110867edf679f5faad924820a8d1774144a87cb6f98fc
-  languageName: node
-  linkType: hard
-
 "cosmiconfig@npm:7.0.0":
   version: 7.0.0
   resolution: "cosmiconfig@npm:7.0.0"
@@ -11846,6 +11832,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cosmiconfig@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "cosmiconfig@npm:6.0.0"
+  dependencies:
+    "@types/parse-json": ^4.0.0
+    import-fresh: ^3.1.0
+    parse-json: ^5.0.0
+    path-type: ^4.0.0
+    yaml: ^1.7.2
+  checksum: 8eed7c854b91643ecb820767d0deb038b50780ecc3d53b0b19e03ed8aabed4ae77271198d1ae3d49c3b110867edf679f5faad924820a8d1774144a87cb6f98fc
+  languageName: node
+  linkType: hard
+
 "cosmiconfig@npm:^7, cosmiconfig@npm:^7.0.0, cosmiconfig@npm:^7.0.1":
   version: 7.0.1
   resolution: "cosmiconfig@npm:7.0.1"
@@ -11867,19 +11866,6 @@ __metadata:
   bin:
     create-gatsby: cli.js
   checksum: 7848418078a12bb97a82624db7a5c1776b276a9d8500a7e63ca561cff73d3ab52b469eebe0d8c80d0639ad5c927aff378b4a0c0ee57c5670df00e76bfc2bf059
-  languageName: node
-  linkType: hard
-
-"create-jest-runner@npm:0.5.3":
-  version: 0.5.3
-  resolution: "create-jest-runner@npm:0.5.3"
-  dependencies:
-    chalk: ^2.4.2
-    jest-worker: ^24.0.0
-    throat: ^4.1.0
-  bin:
-    create-jest-runner: ./generator/index.js
-  checksum: bc4ff25448588bb925c2f36a4994f4e4b251bd63f759d8576d1847b3918d0849639764bce4f4517648b5f04b74a2476966a720ddfd1654106fa75e631d5e7f4c
   languageName: node
   linkType: hard
 
@@ -19546,17 +19532,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-runner-executor@npm:1.0.0":
-  version: 1.0.0
-  resolution: "jest-runner-executor@npm:1.0.0"
-  dependencies:
-    cosmiconfig: 6.0.0
-    create-jest-runner: 0.5.3
-    lodash.kebabcase: 4.1.1
-  checksum: f50ac325b7d3a731b266891c6a9144250d646842b5ccf32020e92b43d6b9d84f82eceeb4a26f127cf2da23cb5e110df2e5e5a0c5cd48fe9177076528cd0226a9
-  languageName: node
-  linkType: hard
-
 "jest-runner-prettier@npm:1.0.0":
   version: 1.0.0
   resolution: "jest-runner-prettier@npm:1.0.0"
@@ -19804,16 +19779,6 @@ __metadata:
     jest-util: ^27.5.1
     string-length: ^4.0.1
   checksum: 191c4e9c278c0902ade1a8a80883ac244963ba3e6e78607a3d5f729ccca9c6e71fb3b316f87883658132641c5d818aa84202585c76752e03c539e6cbecb820bd
-  languageName: node
-  linkType: hard
-
-"jest-worker@npm:^24.0.0":
-  version: 24.9.0
-  resolution: "jest-worker@npm:24.9.0"
-  dependencies:
-    merge-stream: ^2.0.0
-    supports-color: ^6.1.0
-  checksum: bd23b6c8728dcf3bad0d84543ea1bc4a95ccd3b5a40f9e2796d527ab0e87dc6afa6c30cc7b67845dce1cfe7894753812d19793de605db1976b7ac08930671bff
   languageName: node
   linkType: hard
 
@@ -20781,13 +20746,6 @@ __metadata:
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
-  languageName: node
-  linkType: hard
-
-"lodash.kebabcase@npm:4.1.1":
-  version: 4.1.1
-  resolution: "lodash.kebabcase@npm:4.1.1"
-  checksum: 5a6c59161914e1bae23438a298c7433e83d935e0f59853fa862e691164696bc07f6dfa4c313d499fbf41ba8d53314e9850416502376705a357d24ee6ca33af78
   languageName: node
   linkType: hard
 
@@ -27409,15 +27367,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supports-color@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "supports-color@npm:6.1.0"
-  dependencies:
-    has-flag: ^3.0.0
-  checksum: 74358f9535c83ee113fbaac354b11e808060f6e7d8722082ee43af3578469134e89d00026dce2a6b93ce4e5b89d0e9a10f638b2b9f64c7838c2fb2883a47b3d5
-  languageName: node
-  linkType: hard
-
 "supports-color@npm:^7.0.0, supports-color@npm:^7.1.0":
   version: 7.2.0
   resolution: "supports-color@npm:7.2.0"
@@ -27732,13 +27681,6 @@ __metadata:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: b6937a38c80c7f84d9c11dd75e49d5c44f71d95e810a3250bd1f1797fc7117c57698204adf676b71497acc205d769d65c16ae8fa10afad832ae1322630aef10a
-  languageName: node
-  linkType: hard
-
-"throat@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "throat@npm:4.1.0"
-  checksum: 43519b0cea6d3b2a8fe056fcbc319e289037be67d2204d4d33513d20d6ee9da6255f7ba8c89e2ec8c97b0f188a910b8666def38d1058d2bf4a39613812c36d98
   languageName: node
   linkType: hard
 
