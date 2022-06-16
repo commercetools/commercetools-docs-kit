@@ -1,5 +1,17 @@
 # @commercetools-docs/writing-style
 
+## 3.2.0
+
+### Minor Changes
+
+- [#1321](https://github.com/commercetools/commercetools-docs-kit/pull/1321) [`b7f801f2`](https://github.com/commercetools/commercetools-docs-kit/commit/b7f801f2baecf0941fd8ac317be11ab3cac33767) Thanks [@nkuehn](https://github.com/nkuehn)! - Exclude self-closing JSX tags in MDX from writing style. This addresses issues with property values of e.g. Api documentation tags being writing style checked which they should not.
+
+  Also adds further HTTP verbs to the allowed acronyms and updates the vale binary to 2.18.0
+
+### Patch Changes
+
+- [#1320](https://github.com/commercetools/commercetools-docs-kit/pull/1320) [`3ed0eb7a`](https://github.com/commercetools/commercetools-docs-kit/commit/3ed0eb7a65f2cc06251606233100d37b3b349e60) Thanks [@melindafekete](https://github.com/melindafekete)! - Update writing style to match branding guidelines
+
 ## 3.1.1
 
 ### Patch Changes

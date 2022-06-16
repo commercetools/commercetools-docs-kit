@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 19.1.0
+
+### Patch Changes
+
+- [#1288](https://github.com/commercetools/commercetools-docs-kit/pull/1288) [`40184fc4`](https://github.com/commercetools/commercetools-docs-kit/commit/40184fc48cdfe44de1df2c568e025a8ae55d1f85) Thanks [@renovate](https://github.com/apps/renovate)! - Update all ui-kit packages to v15
+
 ## 19.0.0
 
 ### Patch Changes

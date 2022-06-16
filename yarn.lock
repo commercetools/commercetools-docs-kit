@@ -3304,14 +3304,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-api-docs@19.0.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
+"@commercetools-docs/gatsby-theme-api-docs@19.1.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs"
   dependencies:
     "@commercetools-docs/gatsby-transformer-mdx-introspection": 15.0.4
     "@commercetools-docs/gatsby-transformer-raml": 13.0.3
     "@commercetools-docs/rmf-codegen": 13.13.0
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/ui-kit": 19.1.0
     "@commercetools-uikit/design-system": ^15.0.0
     "@commercetools-uikit/spacings-inline": ^15.0.0
     "@commercetools-uikit/spacings-stack": ^15.0.0
@@ -3330,11 +3330,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-code-examples@19.0.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
+"@commercetools-docs/gatsby-theme-code-examples@19.1.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/ui-kit": 19.1.0
     gatsby: 4.13.1
     gatsby-source-filesystem: 4.13.0
     prop-types: 15.8.1
@@ -3348,11 +3348,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-constants@19.0.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
+"@commercetools-docs/gatsby-theme-constants@19.1.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/ui-kit": 19.1.0
     gatsby: 4.13.1
     gatsby-source-filesystem: 4.13.0
     gatsby-transformer-yaml: 4.13.0
@@ -3366,11 +3366,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@19.0.1, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@19.1.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/ui-kit": 19.1.0
     "@commercetools-uikit/card": ^15.0.0
     "@commercetools-uikit/checkbox-input": ^15.0.0
     "@commercetools-uikit/date-input": ^15.0.0
@@ -3485,7 +3485,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-docs/ui-kit@19.0.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
+"@commercetools-docs/ui-kit@19.1.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/ui-kit@workspace:packages/ui-kit"
   dependencies:
@@ -4079,8 +4079,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-api-docs": 19.0.0
-    "@commercetools-docs/gatsby-theme-docs": 19.0.1
+    "@commercetools-docs/gatsby-theme-api-docs": 19.1.0
+    "@commercetools-docs/gatsby-theme-docs": 19.1.0
     "@commercetools-docs/rmf-codegen": 13.13.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
@@ -4094,10 +4094,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/docs-smoke-test@workspace:websites/docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 19.0.0
-    "@commercetools-docs/gatsby-theme-constants": 19.0.0
-    "@commercetools-docs/gatsby-theme-docs": 19.0.1
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/gatsby-theme-code-examples": 19.1.0
+    "@commercetools-docs/gatsby-theme-constants": 19.1.0
+    "@commercetools-docs/gatsby-theme-docs": 19.1.0
+    "@commercetools-docs/ui-kit": 19.1.0
     "@commercetools-uikit/icons": ^15.0.0
     "@svgr/cli": 6.2.1
     gatsby: 4.13.1
@@ -4111,8 +4111,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 19.0.0
-    "@commercetools-docs/gatsby-theme-docs": 19.0.1
+    "@commercetools-docs/gatsby-theme-code-examples": 19.1.0
+    "@commercetools-docs/gatsby-theme-docs": 19.1.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
     react: 17.0.2
@@ -4124,7 +4124,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 19.0.1
+    "@commercetools-docs/gatsby-theme-docs": 19.1.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
     react: 17.0.2
@@ -11418,7 +11418,6 @@ __metadata:
     jest: 27.5.1
     jest-preset-gatsby: 1.0.134
     jest-runner-eslint: 1.0.0
-    jest-runner-executor: 1.0.0
     jest-runner-prettier: 1.0.0
     jest-runner-stylelint: 2.3.7
     jest-silent-reporter: 0.5.0
@@ -11434,7 +11433,7 @@ __metadata:
     start-server-and-test: 1.14.0
     stylelint: 14.5.3
     stylelint-config-prettier: 9.0.3
-    stylelint-config-standard: 25.0.0
+    stylelint-config-standard: 26.0.0
     stylelint-order: 5.0.0
     tsc-files: ^1.1.3
     typescript: 4.6.2
@@ -11808,19 +11807,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:6.0.0, cosmiconfig@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "cosmiconfig@npm:6.0.0"
-  dependencies:
-    "@types/parse-json": ^4.0.0
-    import-fresh: ^3.1.0
-    parse-json: ^5.0.0
-    path-type: ^4.0.0
-    yaml: ^1.7.2
-  checksum: 8eed7c854b91643ecb820767d0deb038b50780ecc3d53b0b19e03ed8aabed4ae77271198d1ae3d49c3b110867edf679f5faad924820a8d1774144a87cb6f98fc
-  languageName: node
-  linkType: hard
-
 "cosmiconfig@npm:7.0.0":
   version: 7.0.0
   resolution: "cosmiconfig@npm:7.0.0"
@@ -11846,6 +11832,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cosmiconfig@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "cosmiconfig@npm:6.0.0"
+  dependencies:
+    "@types/parse-json": ^4.0.0
+    import-fresh: ^3.1.0
+    parse-json: ^5.0.0
+    path-type: ^4.0.0
+    yaml: ^1.7.2
+  checksum: 8eed7c854b91643ecb820767d0deb038b50780ecc3d53b0b19e03ed8aabed4ae77271198d1ae3d49c3b110867edf679f5faad924820a8d1774144a87cb6f98fc
+  languageName: node
+  linkType: hard
+
 "cosmiconfig@npm:^7, cosmiconfig@npm:^7.0.0, cosmiconfig@npm:^7.0.1":
   version: 7.0.1
   resolution: "cosmiconfig@npm:7.0.1"
@@ -11867,19 +11866,6 @@ __metadata:
   bin:
     create-gatsby: cli.js
   checksum: 7848418078a12bb97a82624db7a5c1776b276a9d8500a7e63ca561cff73d3ab52b469eebe0d8c80d0639ad5c927aff378b4a0c0ee57c5670df00e76bfc2bf059
-  languageName: node
-  linkType: hard
-
-"create-jest-runner@npm:0.5.3":
-  version: 0.5.3
-  resolution: "create-jest-runner@npm:0.5.3"
-  dependencies:
-    chalk: ^2.4.2
-    jest-worker: ^24.0.0
-    throat: ^4.1.0
-  bin:
-    create-jest-runner: ./generator/index.js
-  checksum: bc4ff25448588bb925c2f36a4994f4e4b251bd63f759d8576d1847b3918d0849639764bce4f4517648b5f04b74a2476966a720ddfd1654106fa75e631d5e7f4c
   languageName: node
   linkType: hard
 
@@ -19546,17 +19532,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-runner-executor@npm:1.0.0":
-  version: 1.0.0
-  resolution: "jest-runner-executor@npm:1.0.0"
-  dependencies:
-    cosmiconfig: 6.0.0
-    create-jest-runner: 0.5.3
-    lodash.kebabcase: 4.1.1
-  checksum: f50ac325b7d3a731b266891c6a9144250d646842b5ccf32020e92b43d6b9d84f82eceeb4a26f127cf2da23cb5e110df2e5e5a0c5cd48fe9177076528cd0226a9
-  languageName: node
-  linkType: hard
-
 "jest-runner-prettier@npm:1.0.0":
   version: 1.0.0
   resolution: "jest-runner-prettier@npm:1.0.0"
@@ -19804,16 +19779,6 @@ __metadata:
     jest-util: ^27.5.1
     string-length: ^4.0.1
   checksum: 191c4e9c278c0902ade1a8a80883ac244963ba3e6e78607a3d5f729ccca9c6e71fb3b316f87883658132641c5d818aa84202585c76752e03c539e6cbecb820bd
-  languageName: node
-  linkType: hard
-
-"jest-worker@npm:^24.0.0":
-  version: 24.9.0
-  resolution: "jest-worker@npm:24.9.0"
-  dependencies:
-    merge-stream: ^2.0.0
-    supports-color: ^6.1.0
-  checksum: bd23b6c8728dcf3bad0d84543ea1bc4a95ccd3b5a40f9e2796d527ab0e87dc6afa6c30cc7b67845dce1cfe7894753812d19793de605db1976b7ac08930671bff
   languageName: node
   linkType: hard
 
@@ -20781,13 +20746,6 @@ __metadata:
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
-  languageName: node
-  linkType: hard
-
-"lodash.kebabcase@npm:4.1.1":
-  version: 4.1.1
-  resolution: "lodash.kebabcase@npm:4.1.1"
-  checksum: 5a6c59161914e1bae23438a298c7433e83d935e0f59853fa862e691164696bc07f6dfa4c313d499fbf41ba8d53314e9850416502376705a357d24ee6ca33af78
   languageName: node
   linkType: hard
 
@@ -27281,23 +27239,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-config-recommended@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "stylelint-config-recommended@npm:7.0.0"
+"stylelint-config-recommended@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "stylelint-config-recommended@npm:8.0.0"
   peerDependencies:
-    stylelint: ^14.4.0
-  checksum: 9a60a59effb7565314d6001779a31228d5713b4d13e05e991e6da5f9d0784aacf55bc0fe217010e257a79136753a22ae61e309fb982367ebd4de3316f37eb821
+    stylelint: ^14.8.0
+  checksum: 0c5ca94625e5308a7afb8315bb350a2b48f46fdd8d8922dd9a8c2e37b3407f2294794d930726ad6bf2007abcde1abd34084808cf83adf150efe3a643e0eb5ac4
   languageName: node
   linkType: hard
 
-"stylelint-config-standard@npm:25.0.0":
-  version: 25.0.0
-  resolution: "stylelint-config-standard@npm:25.0.0"
+"stylelint-config-standard@npm:26.0.0":
+  version: 26.0.0
+  resolution: "stylelint-config-standard@npm:26.0.0"
   dependencies:
-    stylelint-config-recommended: ^7.0.0
+    stylelint-config-recommended: ^8.0.0
   peerDependencies:
-    stylelint: ^14.4.0
-  checksum: bfd5773f47ea7fcddba972037d6dd32d1fb900c2ca592a313fe1a28df054ef465b11e6e53fe6e87bbf0c356ab33a7a4eecc447cf7a1bd39c9b50c7b4bfb48d81
+    stylelint: ^14.9.0
+  checksum: c1fe44df1755bcccc740b385a24acffa922d331d9f9ba39dafad81cc9643e6c1f870abd1ee73b2737d6903e06efb83b2a1ee26d786faef0123fc22e1f09c13fe
   languageName: node
   linkType: hard
 
@@ -27406,15 +27364,6 @@ __metadata:
   dependencies:
     has-flag: ^3.0.0
   checksum: 95f6f4ba5afdf92f495b5a912d4abee8dcba766ae719b975c56c084f5004845f6f5a5f7769f52d53f40e21952a6d87411bafe34af4a01e65f9926002e38e1dac
-  languageName: node
-  linkType: hard
-
-"supports-color@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "supports-color@npm:6.1.0"
-  dependencies:
-    has-flag: ^3.0.0
-  checksum: 74358f9535c83ee113fbaac354b11e808060f6e7d8722082ee43af3578469134e89d00026dce2a6b93ce4e5b89d0e9a10f638b2b9f64c7838c2fb2883a47b3d5
   languageName: node
   linkType: hard
 
@@ -27732,13 +27681,6 @@ __metadata:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: b6937a38c80c7f84d9c11dd75e49d5c44f71d95e810a3250bd1f1797fc7117c57698204adf676b71497acc205d769d65c16ae8fa10afad832ae1322630aef10a
-  languageName: node
-  linkType: hard
-
-"throat@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "throat@npm:4.1.0"
-  checksum: 43519b0cea6d3b2a8fe056fcbc319e289037be67d2204d4d33513d20d6ee9da6255f7ba8c89e2ec8c97b0f188a910b8666def38d1058d2bf4a39613812c36d98
   languageName: node
   linkType: hard
 
