@@ -1,5 +1,13 @@
 # @commercetools-website/documentation
 
+## 5.0.10
+
+### Patch Changes
+
+- Updated dependencies [[`40184fc4`](https://github.com/commercetools/commercetools-docs-kit/commit/40184fc48cdfe44de1df2c568e025a8ae55d1f85), [`7700ed78`](https://github.com/commercetools/commercetools-docs-kit/commit/7700ed783416d1ba262d5cd633fca8a6b2ad53e4)]:
+  - @commercetools-docs/gatsby-theme-docs@19.1.0
+  - @commercetools-docs/gatsby-theme-code-examples@19.1.0
+
 ## 5.0.9
 
 ### Patch Changes

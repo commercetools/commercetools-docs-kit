@@ -128,12 +128,14 @@ This is how a line break is rendered.
 
 ```md
 Use bulleted lists to list items that have no particular order or sequence.
+
 - Item 1
   - Sub-item 1
 - Item 2
 ```
 
 Use bulleted lists to list items that have no particular order or sequence.
+
 - Item 1
   - Sub-item 1
 - Item 2
@@ -146,11 +148,13 @@ Use bulleted lists to list items that have no particular order or sequence.
 
 ```md
 Use numbered lists to list items that follow a particular order or sequence.
+
 1. Step 1
 2. Step 2
 ```
 
 Use numbered lists to list items that follow a particular order or sequence.
+
 1. Step 1
 2. Step 2
 
@@ -276,7 +280,7 @@ Paragraph B
 
 <SideBySide>
 
-~~~md
+````md
 <Info>
 
 ```
@@ -284,7 +288,7 @@ a code block
 ```
 
 </Info>
-~~~
+````
 
 <Info>
 
@@ -336,8 +340,8 @@ Links are rendered differently based on the target.
   [Link](https://commercetools.com)
   ```
 
-  | Link | Type            | Outcome                                         |
-  | ---- | --------------- | ----------------------------------------------- |
+  | Link                              | Type            | Outcome                                         |
+  | --------------------------------- | --------------- | ----------------------------------------------- |
   | [Link](https://commercetools.com) | `external-link` | Outbound link that tracks via Google Analytics. |
 
   </SideBySide>
@@ -350,8 +354,8 @@ Links are rendered differently based on the target.
   [Link]()
   ```
 
-  | Link | Type          | Outcome                      |
-  | ---- | ------------- | ---------------------------- |
+  | Link     | Type          | Outcome                      |
+  | -------- | ------------- | ---------------------------- |
   | [Link]() | `gatsby-link` | Empty link to the same page. |
 
   </SideBySide>
@@ -364,8 +368,8 @@ Links are rendered differently based on the target.
   [Link](#links)
   ```
 
-  | Link | Type          | Outcome                                                     |
-  | ---- | ------------- | ----------------------------------------------------------- |
+  | Link           | Type          | Outcome                                                     |
+  | -------------- | ------------- | ----------------------------------------------------------- |
   | [Link](#links) | `anchor-link` | Jumps to that position without visible scrolling or reload. |
 
   </SideBySide>
@@ -378,8 +382,8 @@ Links are rendered differently based on the target.
   [Link](/writing/markdown#links)
   ```
 
-  | Link | Type          | Outcome                                                     |
-  | ---- | ------------- | ----------------------------------------------------------- |
+  | Link                            | Type          | Outcome                                                     |
+  | ------------------------------- | ------------- | ----------------------------------------------------------- |
   | [Link](/writing/markdown#links) | `anchor-link` | Jumps to that position without visible scrolling or reload. |
 
   </SideBySide>
@@ -392,8 +396,8 @@ Links are rendered differently based on the target.
   [Link](/writing/pages)
   ```
 
-  | Link | Type          | Outcome                          |
-  | ---- | ------------- | -------------------------------- |
+  | Link                   | Type          | Outcome                          |
+  | ---------------------- | ------------- | -------------------------------- |
   | [Link](/writing/pages) | `gatsby-link` | Gatsby link, history navigation. |
 
   </SideBySide>
@@ -406,8 +410,8 @@ Links are rendered differently based on the target.
   [Link](/#links)
   ```
 
-  | Link | Type          | Outcome                                                                             |
-  | ---- | ------------- | ----------------------------------------------------------------------------------- |
+  | Link            | Type          | Outcome                                                                             |
+  | --------------- | ------------- | ----------------------------------------------------------------------------------- |
   | [Link](/#links) | `gatsby-link` | Gatsby link, history navigation, and directly jumps to the anchor element position. |
 
   </SideBySide>
@@ -420,8 +424,8 @@ Links are rendered differently based on the target.
   [Link](../writing/navigation)
   ```
 
-  | Link | Type          | Outcome                                              |
-  | ---- | ------------- | ---------------------------------------------------- |
+  | Link                          | Type          | Outcome                                              |
+  | ----------------------------- | ------------- | ---------------------------------------------------- |
   | [Link](../writing/navigation) | `gatsby-link` | Gatsby link, history navigation, to a parent folder. |
 
   </SideBySide>
@@ -434,8 +438,8 @@ Links are rendered differently based on the target.
   [Link](nested/link-target)
   ```
 
-  | Link | Type          | Outcome                                           |
-  | ---- | ------------- | ------------------------------------------------- |
+  | Link                       | Type          | Outcome                                           |
+  | -------------------------- | ------------- | ------------------------------------------------- |
   | [Link](nested/link-target) | `gatsby-link` | Gatsby link, history navigation, to a sub folder. |
 
   </SideBySide>
@@ -448,8 +452,8 @@ Links are rendered differently based on the target.
   [Link](nested/link-target/)
   ```
 
-  | Link | Type          | Outcome                                           |
-  | ---- | ------------- | ------------------------------------------------- |
+  | Link                        | Type          | Outcome                                           |
+  | --------------------------- | ------------- | ------------------------------------------------- |
   | [Link](nested/link-target/) | `gatsby-link` | Gatsby link, history navigation, to a sub folder. |
 
   </SideBySide>
@@ -462,8 +466,8 @@ Links are rendered differently based on the target.
   [Link](https://docs.commercetools.com/site-template)
   ```
 
-  | Link | Type            | Outcome                                      |
-  | ---- | --------------- | -------------------------------------------- |
+  | Link                                                 | Type            | Outcome                                      |
+  | ---------------------------------------------------- | --------------- | -------------------------------------------- |
   | [Link](https://docs.commercetools.com/site-template) | `internal-link` | Regular HTML link (only in production mode). |
 
   </SideBySide>
@@ -476,8 +480,8 @@ Links are rendered differently based on the target.
   [Link](/../site-template/)
   ```
 
-  | Link | Type            | Outcome                                      |
-  | ---- | --------------- | -------------------------------------------- |
+  | Link                       | Type            | Outcome                                      |
+  | -------------------------- | --------------- | -------------------------------------------- |
   | [Link](/../site-template/) | `internal-link` | Regular HTML link (only in production mode). |
 
   </SideBySide>
@@ -492,11 +496,11 @@ Links are rendered differently based on the target.
   [Link](/html/hello.html)
   ```
 
-  | Link | Type          | Outcome                                                                                |
-  | ---- | ------------- | -------------------------------------------------------------------------------------- |
-  | [Link](/downloads/hello.txt) | `static-link` | Regular HTML link pointing to the hello.txt page                                       |
+  | Link                          | Type          | Outcome                                                                                |
+  | ----------------------------- | ------------- | -------------------------------------------------------------------------------------- |
+  | [Link](/downloads/hello.txt)  | `static-link` | Regular HTML link pointing to the hello.txt page                                       |
   | [Link](/downloads/hello.json) | `static-link` | Regular HTML link pointing to the hello.json page                                      |
-  | [Link](/html/hello.html) | `static-link` | Regular HTML link pointing to the hello.html page (HTML pages do not work in dev mode) |
+  | [Link](/html/hello.html)      | `static-link` | Regular HTML link pointing to the hello.html page (HTML pages do not work in dev mode) |
 
   </SideBySide>
 
@@ -509,6 +513,7 @@ Links are rendered differently based on the target.
 
 The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-expected-usage" />
 ```
+
 [This link jumps to the anchored line.](#any-html-id-compatible-string-expected-usage)
 
 The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-expected-usage"/>
@@ -541,6 +546,7 @@ The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-e
 
 ```md
 [This link jumps to the anchored item in the list.](#any-html-id-compatible-string-in-a-list)
+
 - Item 1 <Anchor name="any-html-id-compatible-string-in-a-list" />
 - Item 2
 ```
@@ -674,12 +680,9 @@ Images are not supported for free-form in-content cards, but only in places that
 
 ```jsx
 <Cards>
-<Card
-  title="Title of the card"
-  image={<CardBannerOSSIcon />}
->
-  Flat card with an image
-</Card>
+  <Card title="Title of the card" image={<CardBannerOSSIcon />}>
+    Flat card with an image
+  </Card>
 </Cards>
 ```
 
@@ -781,10 +784,7 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 
 ```jsx
 <Cards>
-  <Card
-    image={<CardBannerMcDocsIcon />}
-    icon={<DummyIcon />}
-  >
+  <Card image={<CardBannerMcDocsIcon />} icon={<DummyIcon />}>
     Regular card with an image and icon
   </Card>
 </Cards>
@@ -803,10 +803,7 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 
 ```jsx
 <Cards narrow>
-  <Card
-    image={<CardBannerPlatformIcon />}
-    icon={<DummyIcon />}
-  >
+  <Card image={<CardBannerPlatformIcon />} icon={<DummyIcon />}>
     Narrow card with an image and icon
   </Card>
 </Cards>
@@ -845,11 +842,13 @@ RSS feeds are only generated in production builds.
 
 <SideBySide>
 
-```
-<RssFeeds dataSources={[
-"/docs-smoke-test/releases/feed.xml",
-"/api-docs-smoke-test/releases/feed.xml"
-]}/>
+```jsx
+<RssFeeds
+  dataSources={[
+    '/docs-smoke-test/releases/feed.xml',
+    '/api-docs-smoke-test/releases/feed.xml',
+  ]}
+/>
 ```
 
 </SideBySide>

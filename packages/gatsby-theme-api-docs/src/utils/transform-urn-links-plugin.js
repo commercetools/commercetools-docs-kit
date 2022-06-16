@@ -13,10 +13,14 @@ const transformURNLinksPlugin = () => (ast) => {
         typeUrn.name,
         typeLocations
       );
-      node.url =
-        typeUrl.url && typeof typeUrl.url === 'string'
-          ? typeUrl.url
-          : 'Content Error - type location not found for: ' + node.url;
+      if (typeUrl === undefined) {
+        node.url = `Content Error - type with name '${typeUrn.name}' not found in '${typeUrn.apiKey}' API`;
+      } else {
+        node.url =
+          typeUrl.url && typeof typeUrl.url === 'string'
+            ? typeUrl.url
+            : `Content Error - type location not found for: ${node.url}`;
+      }
     }
   });
 };
