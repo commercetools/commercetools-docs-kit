@@ -3304,14 +3304,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-api-docs@19.0.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
+"@commercetools-docs/gatsby-theme-api-docs@19.1.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs"
   dependencies:
     "@commercetools-docs/gatsby-transformer-mdx-introspection": 15.0.4
     "@commercetools-docs/gatsby-transformer-raml": 13.0.3
     "@commercetools-docs/rmf-codegen": 13.13.0
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/ui-kit": 19.1.0
     "@commercetools-uikit/design-system": ^15.0.0
     "@commercetools-uikit/spacings-inline": ^15.0.0
     "@commercetools-uikit/spacings-stack": ^15.0.0
@@ -3330,11 +3330,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-code-examples@19.0.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
+"@commercetools-docs/gatsby-theme-code-examples@19.1.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/ui-kit": 19.1.0
     gatsby: 4.13.1
     gatsby-source-filesystem: 4.13.0
     prop-types: 15.8.1
@@ -3348,11 +3348,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-constants@19.0.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
+"@commercetools-docs/gatsby-theme-constants@19.1.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/ui-kit": 19.1.0
     gatsby: 4.13.1
     gatsby-source-filesystem: 4.13.0
     gatsby-transformer-yaml: 4.13.0
@@ -3366,11 +3366,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@19.0.1, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@19.1.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/ui-kit": 19.1.0
     "@commercetools-uikit/card": ^15.0.0
     "@commercetools-uikit/checkbox-input": ^15.0.0
     "@commercetools-uikit/date-input": ^15.0.0
@@ -3390,7 +3390,7 @@ __metadata:
     "@fontsource/roboto-mono": 4.5.3
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
-    "@sentry/browser": 6.18.1
+    "@sentry/browser": 7.1.1
     "@svgr/webpack": 6.2.1
     assert: 2.0.0
     cosmiconfig: ^7.0.0
@@ -3485,7 +3485,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-docs/ui-kit@19.0.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
+"@commercetools-docs/ui-kit@19.1.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/ui-kit@workspace:packages/ui-kit"
   dependencies:
@@ -4079,8 +4079,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-api-docs": 19.0.0
-    "@commercetools-docs/gatsby-theme-docs": 19.0.1
+    "@commercetools-docs/gatsby-theme-api-docs": 19.1.0
+    "@commercetools-docs/gatsby-theme-docs": 19.1.0
     "@commercetools-docs/rmf-codegen": 13.13.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
@@ -4094,10 +4094,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/docs-smoke-test@workspace:websites/docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 19.0.0
-    "@commercetools-docs/gatsby-theme-constants": 19.0.0
-    "@commercetools-docs/gatsby-theme-docs": 19.0.1
-    "@commercetools-docs/ui-kit": 19.0.0
+    "@commercetools-docs/gatsby-theme-code-examples": 19.1.0
+    "@commercetools-docs/gatsby-theme-constants": 19.1.0
+    "@commercetools-docs/gatsby-theme-docs": 19.1.0
+    "@commercetools-docs/ui-kit": 19.1.0
     "@commercetools-uikit/icons": ^15.0.0
     "@svgr/cli": 6.2.1
     gatsby: 4.13.1
@@ -4111,8 +4111,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 19.0.0
-    "@commercetools-docs/gatsby-theme-docs": 19.0.1
+    "@commercetools-docs/gatsby-theme-code-examples": 19.1.0
+    "@commercetools-docs/gatsby-theme-docs": 19.1.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
     react: 17.0.2
@@ -4124,7 +4124,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 19.0.1
+    "@commercetools-docs/gatsby-theme-docs": 19.1.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
     react: 17.0.2
@@ -7275,67 +7275,55 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:6.18.1":
-  version: 6.18.1
-  resolution: "@sentry/browser@npm:6.18.1"
+"@sentry/browser@npm:7.1.1":
+  version: 7.1.1
+  resolution: "@sentry/browser@npm:7.1.1"
   dependencies:
-    "@sentry/core": 6.18.1
-    "@sentry/types": 6.18.1
-    "@sentry/utils": 6.18.1
+    "@sentry/core": 7.1.1
+    "@sentry/types": 7.1.1
+    "@sentry/utils": 7.1.1
     tslib: ^1.9.3
-  checksum: 29c4b852311512b96e938e73629007829933335b2cecb979f065f68af08db1adc6fa8f0763b6da3acafea0ce89d5c3719426b92449780512a58aac6a205c1a62
+  checksum: 7a2dc5a1ea4822dab09e02d739783b35c341659586f1d4aa23f335bb48758af5af754daecb873e1797ed88c9e636778c2bc0474b7566556521cd84ae8273ad76
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:6.18.1":
-  version: 6.18.1
-  resolution: "@sentry/core@npm:6.18.1"
+"@sentry/core@npm:7.1.1":
+  version: 7.1.1
+  resolution: "@sentry/core@npm:7.1.1"
   dependencies:
-    "@sentry/hub": 6.18.1
-    "@sentry/minimal": 6.18.1
-    "@sentry/types": 6.18.1
-    "@sentry/utils": 6.18.1
+    "@sentry/hub": 7.1.1
+    "@sentry/types": 7.1.1
+    "@sentry/utils": 7.1.1
     tslib: ^1.9.3
-  checksum: 03b8b56c094938b177642c7d801fe6d5d7a2a8fffad6fab38e1080b46165b850fe1ef827e115880e484ad871b9660d34aa781cd58360afbd154acbabd82c8c5e
+  checksum: 687d46e7a0960cf595ae7ce392aaad2157653513cd1f92bf2bbcbfe6663365fab874a53f63220fcf1ad1312abe27bc871bc1e84abe5b60cd661642e661be4b6c
   languageName: node
   linkType: hard
 
-"@sentry/hub@npm:6.18.1":
-  version: 6.18.1
-  resolution: "@sentry/hub@npm:6.18.1"
+"@sentry/hub@npm:7.1.1":
+  version: 7.1.1
+  resolution: "@sentry/hub@npm:7.1.1"
   dependencies:
-    "@sentry/types": 6.18.1
-    "@sentry/utils": 6.18.1
+    "@sentry/types": 7.1.1
+    "@sentry/utils": 7.1.1
     tslib: ^1.9.3
-  checksum: 814a33e7a77e7c327c1bef29ea4ce0dea31502b174f3490b158a53af805ca070e1ccd3a62a54b979cbc478e261913a03f9628fbe3174e358dbe06c8b1cd95e9e
+  checksum: ddc61b31aa0f45ee9ea3f32173d6e49fa93fa8b83eb7d5ab0c53758f31731e1ae70a0730212ed3a0889ea47372e5919f511ad7c056dae2c18d31049caeb0c38c
   languageName: node
   linkType: hard
 
-"@sentry/minimal@npm:6.18.1":
-  version: 6.18.1
-  resolution: "@sentry/minimal@npm:6.18.1"
-  dependencies:
-    "@sentry/hub": 6.18.1
-    "@sentry/types": 6.18.1
-    tslib: ^1.9.3
-  checksum: ce4db8bae8e0fa46d1650e791499a0c0463d765868460484b09237fc542556e2b331280d2f291d60e0c2ba3dd90793a9be54cd2730a2e037300ff3d0d2ea2f9d
+"@sentry/types@npm:7.1.1":
+  version: 7.1.1
+  resolution: "@sentry/types@npm:7.1.1"
+  checksum: 3f1b43782ca93c6520589b3739d4833cd00afb0f3ff72f5afaa42d4224c63163b1ef6bd167143b7d72667d0711f09fc4a42d36418ee242898a9cbd979dbac65d
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:6.18.1":
-  version: 6.18.1
-  resolution: "@sentry/types@npm:6.18.1"
-  checksum: dbf4abc28adbd734cd7fb353b547e9686293e734a8fbe4f88fd711c65fcf9905e2affdd35f1e422038168153b7b0b02a972e76dd5fb2edc74a62b1733820a1d0
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:6.18.1":
-  version: 6.18.1
-  resolution: "@sentry/utils@npm:6.18.1"
+"@sentry/utils@npm:7.1.1":
+  version: 7.1.1
+  resolution: "@sentry/utils@npm:7.1.1"
   dependencies:
-    "@sentry/types": 6.18.1
+    "@sentry/types": 7.1.1
     tslib: ^1.9.3
-  checksum: 998e2e565e693e86c2e2bae830fe7df04e9cf588eb13cc98f03df35e2b5de78fff669b1a9dffc893a0d2c81e2c61e1107ad5f876e1203415325514849fb25336
+  checksum: b36d0e03b007229cad81dc8db517c4bf58c8e7636aa80a575dc91fb605028c1a0b61e5f090704e04b5e9021fd8ec95b1a6f1465449f2a1a6c657b283295add71
   languageName: node
   linkType: hard
 
@@ -11319,6 +11307,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"colorette@npm:^2.0.17":
+  version: 2.0.17
+  resolution: "colorette@npm:2.0.17"
+  checksum: 693a56d816846e0e213f92c8061b65eb5025030b28a113f90c539fe34c860abc41132c03599af26bcbc213170a31bac1bf2d4c535ccad5ac7b5cb3248f9d98a8
+  languageName: node
+  linkType: hard
+
 "colors@npm:1.4.0":
   version: 1.4.0
   resolution: "colors@npm:1.4.0"
@@ -11370,10 +11365,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^8.2.0, commander@npm:^8.3.0":
+"commander@npm:^8.2.0":
   version: 8.3.0
   resolution: "commander@npm:8.3.0"
   checksum: 0f82321821fc27b83bd409510bb9deeebcfa799ff0bf5d102128b500b7af22872c0c92cb6a0ebc5a4cf19c6b550fba9cedfa7329d18c6442a625f851377bacf0
+  languageName: node
+  linkType: hard
+
+"commander@npm:^9.3.0":
+  version: 9.3.0
+  resolution: "commander@npm:9.3.0"
+  checksum: d421ce66fee25792a1470c69aa8d1b86434bf873a96483aa92c8267f81a6f20c6f7c426f5e82f88ac50a8ec4855d3f2787aebcdef8aa559e1080a2337a95a217
   languageName: node
   linkType: hard
 
@@ -11416,13 +11418,12 @@ __metadata:
     jest: 27.5.1
     jest-preset-gatsby: 1.0.134
     jest-runner-eslint: 1.0.0
-    jest-runner-executor: 1.0.0
     jest-runner-prettier: 1.0.0
     jest-runner-stylelint: 2.3.7
     jest-silent-reporter: 0.5.0
     jest-watch-typeahead: 1.0.0
     linkinator: 3.0.3
-    lint-staged: 12.3.4
+    lint-staged: 13.0.1
     postcss-syntax: 0.36.2
     prettier: 2.6.1
     react: 17.0.2
@@ -11432,7 +11433,7 @@ __metadata:
     start-server-and-test: 1.14.0
     stylelint: 14.5.3
     stylelint-config-prettier: 9.0.3
-    stylelint-config-standard: 25.0.0
+    stylelint-config-standard: 26.0.0
     stylelint-order: 5.0.0
     tsc-files: ^1.1.3
     typescript: 4.6.2
@@ -11806,19 +11807,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:6.0.0, cosmiconfig@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "cosmiconfig@npm:6.0.0"
-  dependencies:
-    "@types/parse-json": ^4.0.0
-    import-fresh: ^3.1.0
-    parse-json: ^5.0.0
-    path-type: ^4.0.0
-    yaml: ^1.7.2
-  checksum: 8eed7c854b91643ecb820767d0deb038b50780ecc3d53b0b19e03ed8aabed4ae77271198d1ae3d49c3b110867edf679f5faad924820a8d1774144a87cb6f98fc
-  languageName: node
-  linkType: hard
-
 "cosmiconfig@npm:7.0.0":
   version: 7.0.0
   resolution: "cosmiconfig@npm:7.0.0"
@@ -11844,6 +11832,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cosmiconfig@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "cosmiconfig@npm:6.0.0"
+  dependencies:
+    "@types/parse-json": ^4.0.0
+    import-fresh: ^3.1.0
+    parse-json: ^5.0.0
+    path-type: ^4.0.0
+    yaml: ^1.7.2
+  checksum: 8eed7c854b91643ecb820767d0deb038b50780ecc3d53b0b19e03ed8aabed4ae77271198d1ae3d49c3b110867edf679f5faad924820a8d1774144a87cb6f98fc
+  languageName: node
+  linkType: hard
+
 "cosmiconfig@npm:^7, cosmiconfig@npm:^7.0.0, cosmiconfig@npm:^7.0.1":
   version: 7.0.1
   resolution: "cosmiconfig@npm:7.0.1"
@@ -11865,19 +11866,6 @@ __metadata:
   bin:
     create-gatsby: cli.js
   checksum: 7848418078a12bb97a82624db7a5c1776b276a9d8500a7e63ca561cff73d3ab52b469eebe0d8c80d0639ad5c927aff378b4a0c0ee57c5670df00e76bfc2bf059
-  languageName: node
-  linkType: hard
-
-"create-jest-runner@npm:0.5.3":
-  version: 0.5.3
-  resolution: "create-jest-runner@npm:0.5.3"
-  dependencies:
-    chalk: ^2.4.2
-    jest-worker: ^24.0.0
-    throat: ^4.1.0
-  bin:
-    create-jest-runner: ./generator/index.js
-  checksum: bc4ff25448588bb925c2f36a4994f4e4b251bd63f759d8576d1847b3918d0849639764bce4f4517648b5f04b74a2476966a720ddfd1654106fa75e631d5e7f4c
   languageName: node
   linkType: hard
 
@@ -14917,6 +14905,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"execa@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "execa@npm:6.1.0"
+  dependencies:
+    cross-spawn: ^7.0.3
+    get-stream: ^6.0.1
+    human-signals: ^3.0.1
+    is-stream: ^3.0.0
+    merge-stream: ^2.0.0
+    npm-run-path: ^5.1.0
+    onetime: ^6.0.0
+    signal-exit: ^3.0.7
+    strip-final-newline: ^3.0.0
+  checksum: 1a4af799839134f5c72eb63d525b87304c1114a63aa71676c91d57ccef2e26f2f53e14c11384ab11c4ec479be1efa83d11c8190e00040355c2c5c3364327fa8e
+  languageName: node
+  linkType: hard
+
 "execall@npm:^2.0.0":
   version: 2.0.0
   resolution: "execall@npm:2.0.0"
@@ -16716,7 +16721,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-stream@npm:^6.0.0":
+"get-stream@npm:^6.0.0, get-stream@npm:^6.0.1":
   version: 6.0.1
   resolution: "get-stream@npm:6.0.1"
   checksum: e04ecece32c92eebf5b8c940f51468cd53554dcbb0ea725b2748be583c9523d00128137966afce410b9b051eb2ef16d657cd2b120ca8edafcf5a65e81af63cad
@@ -17833,6 +17838,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"human-signals@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "human-signals@npm:3.0.1"
+  checksum: f252a7769c8094a5c9dc6772816bdb417b188820b04c8b42d0fc468e03a0ba905b1dd07afabe9385cc83504af1ccc2b985cd1e4aeeeb8e0029896c5af2e6f354
+  languageName: node
+  linkType: hard
+
 "humanize-ms@npm:^1.2.1":
   version: 1.2.1
   resolution: "humanize-ms@npm:1.2.1"
@@ -18809,6 +18821,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-stream@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "is-stream@npm:3.0.0"
+  checksum: 172093fe99119ffd07611ab6d1bcccfe8bc4aa80d864b15f43e63e54b7abc71e779acd69afdb854c4e2a67fdc16ae710e370eda40088d1cfc956a50ed82d8f16
+  languageName: node
+  linkType: hard
+
 "is-string@npm:^1.0.5, is-string@npm:^1.0.7":
   version: 1.0.7
   resolution: "is-string@npm:1.0.7"
@@ -19513,17 +19532,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-runner-executor@npm:1.0.0":
-  version: 1.0.0
-  resolution: "jest-runner-executor@npm:1.0.0"
-  dependencies:
-    cosmiconfig: 6.0.0
-    create-jest-runner: 0.5.3
-    lodash.kebabcase: 4.1.1
-  checksum: f50ac325b7d3a731b266891c6a9144250d646842b5ccf32020e92b43d6b9d84f82eceeb4a26f127cf2da23cb5e110df2e5e5a0c5cd48fe9177076528cd0226a9
-  languageName: node
-  linkType: hard
-
 "jest-runner-prettier@npm:1.0.0":
   version: 1.0.0
   resolution: "jest-runner-prettier@npm:1.0.0"
@@ -19771,16 +19779,6 @@ __metadata:
     jest-util: ^27.5.1
     string-length: ^4.0.1
   checksum: 191c4e9c278c0902ade1a8a80883ac244963ba3e6e78607a3d5f729ccca9c6e71fb3b316f87883658132641c5d818aa84202585c76752e03c539e6cbecb820bd
-  languageName: node
-  linkType: hard
-
-"jest-worker@npm:^24.0.0":
-  version: 24.9.0
-  resolution: "jest-worker@npm:24.9.0"
-  dependencies:
-    merge-stream: ^2.0.0
-    supports-color: ^6.1.0
-  checksum: bd23b6c8728dcf3bad0d84543ea1bc4a95ccd3b5a40f9e2796d527ab0e87dc6afa6c30cc7b67845dce1cfe7894753812d19793de605db1976b7ac08930671bff
   languageName: node
   linkType: hard
 
@@ -20306,7 +20304,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lilconfig@npm:2.0.4, lilconfig@npm:^2.0.3":
+"lilconfig@npm:2.0.5":
+  version: 2.0.5
+  resolution: "lilconfig@npm:2.0.5"
+  checksum: f7bb9e42656f06930ad04e583026f087508ae408d3526b8b54895e934eb2a966b7aafae569656f2c79a29fe6d779b3ec44ba577e80814734c8655d6f71cdf2d1
+  languageName: node
+  linkType: hard
+
+"lilconfig@npm:^2.0.3":
   version: 2.0.4
   resolution: "lilconfig@npm:2.0.4"
   checksum: 02ae530aa49218d782eb79e92c600ea5220828987f85aa3403fa512cadc7efe38c0ac7d0cd2edf600ad3fae1f6c1752f5b4bb78c0d9950435b044d53d507c9e1
@@ -20350,26 +20355,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:12.3.4":
-  version: 12.3.4
-  resolution: "lint-staged@npm:12.3.4"
+"lint-staged@npm:13.0.1":
+  version: 13.0.1
+  resolution: "lint-staged@npm:13.0.1"
   dependencies:
     cli-truncate: ^3.1.0
-    colorette: ^2.0.16
-    commander: ^8.3.0
-    debug: ^4.3.3
-    execa: ^5.1.1
-    lilconfig: 2.0.4
-    listr2: ^4.0.1
-    micromatch: ^4.0.4
+    colorette: ^2.0.17
+    commander: ^9.3.0
+    debug: ^4.3.4
+    execa: ^6.1.0
+    lilconfig: 2.0.5
+    listr2: ^4.0.5
+    micromatch: ^4.0.5
     normalize-path: ^3.0.0
-    object-inspect: ^1.12.0
+    object-inspect: ^1.12.2
+    pidtree: ^0.6.0
     string-argv: ^0.3.1
-    supports-color: ^9.2.1
-    yaml: ^1.10.2
+    yaml: ^2.1.1
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: 4e0b4b9da4183a0daeab35d41e4d243fb1270a39db997efa0c3745fa148a7a4b8b723a51cb757595fc8bb118796ca1465e67aede72f25e9ea48165aec36cec3b
+  checksum: a321b351bbdc7dba09c9f026e385b887dabaaea1258eb478fbbe73dc395e11ebe26c946f8514426c7fc7e3e0efbe0761fe64f70e0d26361f912af79f80bf3e4e
   languageName: node
   linkType: hard
 
@@ -20394,16 +20399,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"listr2@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "listr2@npm:4.0.1"
+"listr2@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "listr2@npm:4.0.5"
   dependencies:
     cli-truncate: ^2.1.0
     colorette: ^2.0.16
     log-update: ^4.0.0
     p-map: ^4.0.0
     rfdc: ^1.3.0
-    rxjs: ^7.5.2
+    rxjs: ^7.5.5
     through: ^2.3.8
     wrap-ansi: ^7.0.0
   peerDependencies:
@@ -20411,7 +20416,7 @@ __metadata:
   peerDependenciesMeta:
     enquirer:
       optional: true
-  checksum: 38f7c8b779122039f07aee16b29788b04e8766d62244fc747d15e224eeeccefc375c05e0eb3d7e69bf20b0080f69dc003415cdb0b3933f766a29ba6b77dfdd65
+  checksum: 7af31851abe25969ef0581c6db808117e36af15b131401795182427769d9824f451ba9e8aff6ccd25b6a4f6c8796f816292caf08e5f1f9b1775e8e9c313dc6c5
   languageName: node
   linkType: hard
 
@@ -20741,13 +20746,6 @@ __metadata:
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
-  languageName: node
-  linkType: hard
-
-"lodash.kebabcase@npm:4.1.1":
-  version: 4.1.1
-  resolution: "lodash.kebabcase@npm:4.1.1"
-  checksum: 5a6c59161914e1bae23438a298c7433e83d935e0f59853fa862e691164696bc07f6dfa4c313d499fbf41ba8d53314e9850416502376705a357d24ee6ca33af78
   languageName: node
   linkType: hard
 
@@ -21688,6 +21686,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mimic-fn@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "mimic-fn@npm:4.0.0"
+  checksum: 995dcece15ee29aa16e188de6633d43a3db4611bcf93620e7e62109ec41c79c0f34277165b8ce5e361205049766e371851264c21ac64ca35499acb5421c2ba56
+  languageName: node
+  linkType: hard
+
 "mimic-response@npm:^1.0.0, mimic-response@npm:^1.0.1":
   version: 1.0.1
   resolution: "mimic-response@npm:1.0.1"
@@ -22474,6 +22479,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"npm-run-path@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "npm-run-path@npm:5.1.0"
+  dependencies:
+    path-key: ^4.0.0
+  checksum: dc184eb5ec239d6a2b990b43236845332ef12f4e0beaa9701de724aa797fe40b6bbd0157fb7639d24d3ab13f5d5cf22d223a19c6300846b8126f335f788bee66
+  languageName: node
+  linkType: hard
+
 "npmlog@npm:^4.0.1":
   version: 4.1.2
   resolution: "npmlog@npm:4.1.2"
@@ -22581,10 +22595,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"object-inspect@npm:^1.12.0":
-  version: 1.12.0
-  resolution: "object-inspect@npm:1.12.0"
-  checksum: 2b36d4001a9c921c6b342e2965734519c9c58c355822243c3207fbf0aac271f8d44d30d2d570d450b2cc6f0f00b72bcdba515c37827d2560e5f22b1899a31cf4
+"object-inspect@npm:^1.12.2":
+  version: 1.12.2
+  resolution: "object-inspect@npm:1.12.2"
+  checksum: a534fc1b8534284ed71f25ce3a496013b7ea030f3d1b77118f6b7b1713829262be9e6243acbcb3ef8c626e2b64186112cb7f6db74e37b2789b9c789ca23048b2
   languageName: node
   linkType: hard
 
@@ -22748,6 +22762,15 @@ __metadata:
   dependencies:
     mimic-fn: ^2.1.0
   checksum: 2478859ef817fc5d4e9c2f9e5728512ddd1dbc9fb7829ad263765bb6d3b91ce699d6e2332eef6b7dff183c2f490bd3349f1666427eaba4469fba0ac38dfd0d34
+  languageName: node
+  linkType: hard
+
+"onetime@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "onetime@npm:6.0.0"
+  dependencies:
+    mimic-fn: ^4.0.0
+  checksum: 0846ce78e440841335d4e9182ef69d5762e9f38aa7499b19f42ea1c4cd40f0b4446094c455c713f9adac3f4ae86f613bb5e30c99e52652764d06a89f709b3788
   languageName: node
   linkType: hard
 
@@ -23326,6 +23349,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"path-key@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "path-key@npm:4.0.0"
+  checksum: 8e6c314ae6d16b83e93032c61020129f6f4484590a777eed709c4a01b50e498822b00f76ceaf94bc64dbd90b327df56ceadce27da3d83393790f1219e07721d7
+  languageName: node
+  linkType: hard
+
 "path-parse@npm:^1.0.6":
   version: 1.0.7
   resolution: "path-parse@npm:1.0.7"
@@ -23441,6 +23471,15 @@ __metadata:
   version: 2.3.1
   resolution: "picomatch@npm:2.3.1"
   checksum: 050c865ce81119c4822c45d3c84f1ced46f93a0126febae20737bd05ca20589c564d6e9226977df859ed5e03dc73f02584a2b0faad36e896936238238b0446cf
+  languageName: node
+  linkType: hard
+
+"pidtree@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "pidtree@npm:0.6.0"
+  bin:
+    pidtree: bin/pidtree.js
+  checksum: 8fbc073ede9209dd15e80d616e65eb674986c93be49f42d9ddde8dbbd141bb53d628a7ca4e58ab5c370bb00383f67d75df59a9a226dede8fa801267a7030c27a
   languageName: node
   linkType: hard
 
@@ -25760,21 +25799,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^7.5.2":
-  version: 7.5.2
-  resolution: "rxjs@npm:7.5.2"
-  dependencies:
-    tslib: ^2.1.0
-  checksum: daf1fe7289de500b25d822fd96cde3c138c7902e8bf0e6aa12a3e70847a5cabeeb4d677f10e19387e1db44b12c5b1be0ff5c79b8cd63ed6ce891d765e566cf4d
-  languageName: node
-  linkType: hard
-
 "rxjs@npm:^7.5.4":
   version: 7.5.4
   resolution: "rxjs@npm:7.5.4"
   dependencies:
     tslib: ^2.1.0
   checksum: 6f55f835f2543bc8214900f9e28b6320e6adc95875011fbca63e80a66eb18c9ff7cfdccb23b2180cbb6412762b98ed158c89fd51cb020799d127c66ea38c3c0e
+  languageName: node
+  linkType: hard
+
+"rxjs@npm:^7.5.5":
+  version: 7.5.5
+  resolution: "rxjs@npm:7.5.5"
+  dependencies:
+    tslib: ^2.1.0
+  checksum: e034f60805210cce756dd2f49664a8108780b117cf5d0e2281506e9e6387f7b4f1532d974a8c8b09314fa7a16dd2f6cff3462072a5789672b5dcb45c4173f3c6
   languageName: node
   linkType: hard
 
@@ -27090,6 +27129,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"strip-final-newline@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "strip-final-newline@npm:3.0.0"
+  checksum: 23ee263adfa2070cd0f23d1ac14e2ed2f000c9b44229aec9c799f1367ec001478469560abefd00c5c99ee6f0b31c137d53ec6029c53e9f32a93804e18c201050
+  languageName: node
+  linkType: hard
+
 "strip-indent@npm:^3.0.0":
   version: 3.0.0
   resolution: "strip-indent@npm:3.0.0"
@@ -27193,23 +27239,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-config-recommended@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "stylelint-config-recommended@npm:7.0.0"
+"stylelint-config-recommended@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "stylelint-config-recommended@npm:8.0.0"
   peerDependencies:
-    stylelint: ^14.4.0
-  checksum: 9a60a59effb7565314d6001779a31228d5713b4d13e05e991e6da5f9d0784aacf55bc0fe217010e257a79136753a22ae61e309fb982367ebd4de3316f37eb821
+    stylelint: ^14.8.0
+  checksum: 0c5ca94625e5308a7afb8315bb350a2b48f46fdd8d8922dd9a8c2e37b3407f2294794d930726ad6bf2007abcde1abd34084808cf83adf150efe3a643e0eb5ac4
   languageName: node
   linkType: hard
 
-"stylelint-config-standard@npm:25.0.0":
-  version: 25.0.0
-  resolution: "stylelint-config-standard@npm:25.0.0"
+"stylelint-config-standard@npm:26.0.0":
+  version: 26.0.0
+  resolution: "stylelint-config-standard@npm:26.0.0"
   dependencies:
-    stylelint-config-recommended: ^7.0.0
+    stylelint-config-recommended: ^8.0.0
   peerDependencies:
-    stylelint: ^14.4.0
-  checksum: bfd5773f47ea7fcddba972037d6dd32d1fb900c2ca592a313fe1a28df054ef465b11e6e53fe6e87bbf0c356ab33a7a4eecc447cf7a1bd39c9b50c7b4bfb48d81
+    stylelint: ^14.9.0
+  checksum: c1fe44df1755bcccc740b385a24acffa922d331d9f9ba39dafad81cc9643e6c1f870abd1ee73b2737d6903e06efb83b2a1ee26d786faef0123fc22e1f09c13fe
   languageName: node
   linkType: hard
 
@@ -27321,15 +27367,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supports-color@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "supports-color@npm:6.1.0"
-  dependencies:
-    has-flag: ^3.0.0
-  checksum: 74358f9535c83ee113fbaac354b11e808060f6e7d8722082ee43af3578469134e89d00026dce2a6b93ce4e5b89d0e9a10f638b2b9f64c7838c2fb2883a47b3d5
-  languageName: node
-  linkType: hard
-
 "supports-color@npm:^7.0.0, supports-color@npm:^7.1.0":
   version: 7.2.0
   resolution: "supports-color@npm:7.2.0"
@@ -27345,13 +27382,6 @@ __metadata:
   dependencies:
     has-flag: ^4.0.0
   checksum: c052193a7e43c6cdc741eb7f378df605636e01ad434badf7324f17fb60c69a880d8d8fcdcb562cf94c2350e57b937d7425ab5b8326c67c2adc48f7c87c1db406
-  languageName: node
-  linkType: hard
-
-"supports-color@npm:^9.2.1":
-  version: 9.2.1
-  resolution: "supports-color@npm:9.2.1"
-  checksum: 8a2bfeb64c1512d21a1a998c1f64acdaa85cf1f6a101627286548f19785524b329d7b28d567a28fc2d708fc7aba32f4c82a9b224f76b30a337a39d3e53418ff7
   languageName: node
   linkType: hard
 
@@ -27651,13 +27681,6 @@ __metadata:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: b6937a38c80c7f84d9c11dd75e49d5c44f71d95e810a3250bd1f1797fc7117c57698204adf676b71497acc205d769d65c16ae8fa10afad832ae1322630aef10a
-  languageName: node
-  linkType: hard
-
-"throat@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "throat@npm:4.1.0"
-  checksum: 43519b0cea6d3b2a8fe056fcbc319e289037be67d2204d4d33513d20d6ee9da6255f7ba8c89e2ec8c97b0f188a910b8666def38d1058d2bf4a39613812c36d98
   languageName: node
   linkType: hard
 
@@ -29831,6 +29854,13 @@ __metadata:
   version: 1.10.2
   resolution: "yaml@npm:1.10.2"
   checksum: ce4ada136e8a78a0b08dc10b4b900936912d15de59905b2bf415b4d33c63df1d555d23acb2a41b23cf9fb5da41c256441afca3d6509de7247daa062fd2c5ea5f
+  languageName: node
+  linkType: hard
+
+"yaml@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "yaml@npm:2.1.1"
+  checksum: f48bb209918aa57cfaf78ef6448d1a1f8187f45c746f933268b7023dc59e5456004611879126c9bb5ea55b0a2b1c2b392dfde436931ece0c703a3d754562bb96
   languageName: node
   linkType: hard
 
