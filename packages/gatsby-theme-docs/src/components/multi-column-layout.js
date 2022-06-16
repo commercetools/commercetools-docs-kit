@@ -13,7 +13,7 @@ const Container = styled.div`
     ${designSystem.dimensions.spacings.m};
   border-radius: ${designSystem.tokens.borderRadiusForChildSectionNav}
     ${designSystem.tokens.borderRadiusForChildSectionNav};
-  columns: auto ${designSystem.dimensions.widths.pageNavigationSmall};
+  columns: auto ${designSystem.dimensions.widths.multiColumnLayoutColumnWidth};
   column-gap: ${designSystem.dimensions.spacings.l};
 `;
 

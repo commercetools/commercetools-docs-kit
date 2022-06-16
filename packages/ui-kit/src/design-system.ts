@@ -219,6 +219,7 @@ export const dimensions = {
     searchBarSmall: '160px',
     selectDropDownArrowWith: '12px',
     sideBySideSecondColumn: asideColumnWidth,
+    multiColumnLayoutColumnWidth: '240px',
     // The card sizes are manually optimized to make regular cards two-aside on landing pages
     // and narrow cards three-aside in any landing page size.
     // Plus, you can put 2,3,4,6 cards in a grid without whitespace.
