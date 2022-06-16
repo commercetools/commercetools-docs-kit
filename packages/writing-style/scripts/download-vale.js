@@ -8,11 +8,14 @@ const { path7za } = require('7zip-bin');
 const { valeVersion } = require('../package.json');
 
 const platform = os.platform();
+const arch = process.arch;
 
 const archiveName = (() => {
   switch (platform) {
     case 'darwin':
-      return `vale_${valeVersion}_macOS_64-bit.tar.gz`;
+      return arch === 'arm64'
+        ? `vale_${valeVersion}_macOS_arm64.tar.gz`
+        : `vale_${valeVersion}_macOS_64-bit.tar.gz`;
     case 'linux':
       return `vale_${valeVersion}_Linux_64-bit.tar.gz`;
     case 'win32':

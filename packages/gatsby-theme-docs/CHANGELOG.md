@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.1.0
+
+### Patch Changes
+
+- [#1288](https://github.com/commercetools/commercetools-docs-kit/pull/1288) [`40184fc4`](https://github.com/commercetools/commercetools-docs-kit/commit/40184fc48cdfe44de1df2c568e025a8ae55d1f85) Thanks [@renovate](https://github.com/apps/renovate)! - Update all ui-kit packages to v15
+
+* [#1301](https://github.com/commercetools/commercetools-docs-kit/pull/1301) [`7700ed78`](https://github.com/commercetools/commercetools-docs-kit/commit/7700ed783416d1ba262d5cd633fca8a6b2ad53e4) Thanks [@nkuehn](https://github.com/nkuehn)! - More robust MDX syntax error handling. Still requires restart but the humane error page is back.
+
+* Updated dependencies [[`40184fc4`](https://github.com/commercetools/commercetools-docs-kit/commit/40184fc48cdfe44de1df2c568e025a8ae55d1f85)]:
+  - @commercetools-docs/ui-kit@19.1.0
+
 ## 19.0.1
 
 ### Patch Changes
