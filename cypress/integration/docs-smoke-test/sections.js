@@ -8,14 +8,17 @@ describe('Sections', () => {
     cy.visit(markdownPageUrl);
   });
   describe('when h2 header is rendered', () => {
-    it('should render an adjacent "Copy to clipboard" div', () => {
+    it('should render an adjacent "Copy link to clipboard" div', () => {
       cy.findAllByText('A section header')
         .first()
         .parents('h2')
         .first()
         .within(() => {
           cy.get('div').first().trigger('mouseover');
-          cy.get('div').eq(1).get('div').should('contain', 'Copy to clipboard');
+          cy.get('div')
+            .eq(1)
+            .get('div')
+            .should('contain', 'Copy link to clipboard');
         });
     });
     it('should copy the header href location to the clipboard when clicked', () => {
