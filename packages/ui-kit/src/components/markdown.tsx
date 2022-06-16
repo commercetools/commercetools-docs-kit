@@ -323,7 +323,10 @@ const withCopyToClipboard =
       const sectionUrl = `${window.location.href.split('#')[0]}#${props.id}`;
       copyToClipboard(sectionUrl);
       setIsCopiedToClipboard(true);
-      setTimeout(() => setIsCopiedToClipboard(false), 1500);
+    };
+
+    const handleTooltipClose = () => {
+      setIsCopiedToClipboard(false);
     };
     return (
       <Component
@@ -347,9 +350,10 @@ const withCopyToClipboard =
       >
         <span>{props.children}</span>
         <Tooltip
-          title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
+          title={isCopiedToClipboard ? 'Copied' : 'Copy link to clipboard'}
           placement="right"
           components={{ BodyComponent: TooltipBodyComponent }}
+          onClose={handleTooltipClose}
         >
           <CopyArea onClick={handleCopyToClipboardClick}>
             <RibbonSvgIcon />
