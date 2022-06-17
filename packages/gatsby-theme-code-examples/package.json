@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-code-examples",
   "description": "Gatsby theme for commercetools documentation providing the functionalities to render Code Examples in MDX",
-  "version": "19.1.0",
+  "version": "19.2.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
