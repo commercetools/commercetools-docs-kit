@@ -8,6 +8,7 @@ const validMediaTypes = [
   'application/x-httpd-php',
   'application/x-sh',
   'video/mp2t', // typescript represented as this because the .ts extension collides
+  'text/jsx',
   'text/yaml',
   'text/vnd.curl',
   'application/octet-stream', // languages without registered media type
