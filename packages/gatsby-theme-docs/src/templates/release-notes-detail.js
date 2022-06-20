@@ -13,10 +13,10 @@ import markdownComponents from '../markdown-components';
 const releaseNoteMarkdownComponents = {
   ...markdownComponents,
   // NOTE: release notes content can only have headings starting from h4.
-  h1: Markdown.withAnchorLink(Markdown.H4),
-  h2: Markdown.withAnchorLink(Markdown.H5),
-  h3: Markdown.withAnchorLink(Markdown.H6),
-  h4: Markdown.withAnchorLink(Markdown.H6),
+  h1: Markdown.withCopyToClipboard(Markdown.H4),
+  h2: Markdown.withCopyToClipboard(Markdown.H5),
+  h3: Markdown.withCopyToClipboard(Markdown.H6),
+  h4: Markdown.withCopyToClipboard(Markdown.H6),
 };
 
 const ReleaseNotesDetailTemplate = (props) => (

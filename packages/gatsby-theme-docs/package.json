@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "19.0.1",
+  "version": "19.1.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -17,7 +17,7 @@
     "create-docs-release-note": "bin/create-release-note.js"
   },
   "dependencies": {
-    "@commercetools-docs/ui-kit": "19.0.0",
+    "@commercetools-docs/ui-kit": "19.1.0",
     "@commercetools-uikit/card": "^15.0.0",
     "@commercetools-uikit/checkbox-input": "^15.0.0",
     "@commercetools-uikit/date-input": "^15.0.0",
@@ -48,7 +48,7 @@
     "gatsby-plugin-hubspot": "2.0.0",
     "gatsby-plugin-image": "2.13.0",
     "gatsby-plugin-manifest": "4.13.0",
-    "gatsby-plugin-mdx": "3.13.0",
+    "gatsby-plugin-mdx": "3.15.2",
     "gatsby-plugin-meta-redirect": "1.1.1",
     "gatsby-plugin-react-helmet": "5.13.0",
     "gatsby-plugin-react-helmet-canonical-urls": "1.4.0",

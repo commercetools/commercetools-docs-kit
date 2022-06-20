@@ -30,6 +30,7 @@ exceptions:
   - GET
   - GIF
   - GDPR
+  - HEAD
   - HTML
   - HTTP
   - HTTPS
@@ -49,12 +50,14 @@ exceptions:
   - MIT
   - NET # otherwise ".NET" is complaining but it's generally known among developers
   - NPM
+  - PATCH
   - PATH
   - PDF
   - PHP
   - PNG
   - POST
   - PSR # PHP Specification Request, used in PHP content and in that context known.
+  - PUT
   - RAM
   - RAML
   - REST

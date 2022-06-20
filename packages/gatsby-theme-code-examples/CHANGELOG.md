@@ -1,5 +1,18 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 19.2.0
+
+### Minor Changes
+
+- [#1326](https://github.com/commercetools/commercetools-docs-kit/pull/1326) [`96e7beef`](https://github.com/commercetools/commercetools-docs-kit/commit/96e7beefee0624b9297aa17e71beacbaff3618b8) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Adds support for JSX files as code examples.
+
+## 19.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`40184fc4`](https://github.com/commercetools/commercetools-docs-kit/commit/40184fc48cdfe44de1df2c568e025a8ae55d1f85)]:
+  - @commercetools-docs/ui-kit@19.1.0
+
 ## 19.0.0
 
 ### Patch Changes
