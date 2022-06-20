@@ -1,0 +1,71 @@
+---
+title: Custom Objects
+navLevels: 2
+wideLayout: true
+---
+
+import { ApiType, ApiEndpoint } from "/shortcodes"
+
+<Subtitle>
+
+Custom Objects store arbitrary JSON-formatted data on commercetools Composable Commerce.
+
+</Subtitle>
+
+Custom Objects allow you to persist data that does not fit the standard data model. This frees your application completely from any third-party persistence solution and means that all your data stays in one place. They are grouped into containers, which can be used like namespaces.
+
+You can use Custom Objects to store custom data for a [Product](/projects/products) as a [ReferenceType](/projects/productTypes#referencetype) [Attribute](/projects/products#attribute), or as a [ReferenceType](/projects/types#customfieldreferencetype) [Custom Object](/projects/custom-objects) by setting `referenceTypeId` to _key-value-document_. When you do this, any data stored in the Custom Object is accessible using [Reference Expansion](/general-concepts#reference-expansion), and no additional scopes are required.
+
+A maximum number of **<Constant type="limit" name="customObjectsLimit"/>** Custom Objects can be created per Project. [Learn more about this limit](/limits#custom-objects).
+
+# Representations
+
+<ChildSectionsNav parent="representations"/>
+
+### CustomObject
+
+<ApiType apiKey="api" type="CustomObject" />
+
+### CustomObjectDraft
+
+<ApiType apiKey="api" type="CustomObjectDraft" />
+
+### CustomObjectPagedQueryResponse
+
+<ApiType apiKey="api" type="CustomObjectPagedQueryResponse" />
+
+### CustomObjectReference
+
+<ApiType apiKey="api" type="CustomObjectReference" />
+
+# Get CustomObject by container and key
+
+<ApiEndpoint
+apiKey="api"
+resource="/{projectKey}/custom-objects/{container}/{key}"
+method="GET"
+/>
+
+# Create or Update CustomObject
+
+<ApiEndpoint
+apiKey="api"
+resource="/{projectKey}/custom-objects"
+method="POST"
+/>
+
+# Query CustomObjects
+
+<ApiEndpoint
+apiKey="api"
+resource="/{projectKey}/custom-objects/{container}"
+method="GET"
+/>
+
+# Delete CustomObject by container and key
+
+<ApiEndpoint
+apiKey="api"
+resource="/{projectKey}/custom-objects/{container}/{key}"
+method="DELETE"
+/>

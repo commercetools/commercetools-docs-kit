@@ -25,6 +25,16 @@ const RequestResponseExamples = (props) => {
             value: apiType.examples[0].value,
           });
         }
+
+        const examplesNode = response.body?.applicationjson?.examples;
+        if (examplesNode && Array.isArray(examplesNode)) {
+          examplesNode.forEach((example) => {
+            responsesCodeExamples.push({
+              typeDisplayName: example.key,
+              value: example.value,
+            });
+          });
+        }
       }
     });
   }
