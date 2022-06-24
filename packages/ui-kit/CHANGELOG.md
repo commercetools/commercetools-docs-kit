@@ -1,5 +1,17 @@
 # @commercetools-docs/ui-kit
 
+## 19.3.0
+
+### Minor Changes
+
+- [#1314](https://github.com/commercetools/commercetools-docs-kit/pull/1314) [`db91f3a4`](https://github.com/commercetools/commercetools-docs-kit/commit/db91f3a4e8d8c79bda250f1d81ce0f80d33e6adc) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - The change is about the functionality of the "ribbon" icon displayed along with each section header.
+
+  When hoverying over the icon a "Copy to clipboard" tooltip appears and, once clicked, the href pointing to that specific section is copied to the clipboard.
+
+### Patch Changes
+
+- [#1308](https://github.com/commercetools/commercetools-docs-kit/pull/1308) [`a0c67021`](https://github.com/commercetools/commercetools-docs-kit/commit/a0c670214a231869fe999a8684c0a6c6c4508863) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependency react-intl to v6
+
 ## 19.1.0
 
 ### Patch Changes
