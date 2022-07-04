@@ -13,7 +13,6 @@ const RequestResponseExamples = (props) => {
       const typeDisplayName =
         response.body && response.body.applicationjson.type;
       const { code } = response;
-      console.log('response', response);
       if (typeDisplayName) {
         const apiType = apiTypes.find((type) => {
           return (

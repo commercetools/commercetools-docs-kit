@@ -71,12 +71,9 @@ post:
       200:
         body:
           application/json:
+            example: !include ../examples/custom-object.example.json
             type: CustomObject
 
-      201:
-        body:
-          application/json:
-            type: CustomObject
   delete:
     is:
       - dataErasure
