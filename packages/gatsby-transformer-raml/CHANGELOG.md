@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.0.4
+
+### Patch Changes
+
+- [#1329](https://github.com/commercetools/commercetools-docs-kit/pull/1329) [`1a60a240`](https://github.com/commercetools/commercetools-docs-kit/commit/1a60a240d3b004827485ed75e485f90aafaaea1c) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fields marked as `markDeprecated` should not be rendered in the API docs as it happens with the `deprecated` flag.
+
 ## 13.0.3
 
 ### Patch Changes
