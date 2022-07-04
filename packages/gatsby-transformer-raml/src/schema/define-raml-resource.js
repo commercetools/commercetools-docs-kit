@@ -116,16 +116,6 @@ const defineRamlResource = ({ schema, createTypes }) => {
       fields: {
         type: 'String!',
         builtinType: 'String!',
-        examples: '[RamlExampleEntry!]',
-      },
-    }),
-
-    schema.buildObjectType({
-      name: 'RamlExampleEntry',
-      fields: {
-        key: 'String',
-        strict: 'Boolean!',
-        value: 'String!',
       },
     }),
 

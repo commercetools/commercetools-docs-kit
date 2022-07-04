@@ -1,7 +1,6 @@
 const parametersToArray = require('../parameters-to-array');
 const responsesToArray = require('./responses-to-array');
 const codeExamplesToArray = require('./code-examples-to-array');
-const examplesToArray = require('./examples-to-array');
 const sortProperties = require('../sort-properties');
 
 function processMethods({
@@ -34,15 +33,6 @@ function processMethods({
       returnedMethods[method].codeExamples = codeExamplesToArray(
         returnedMethods[method].codeExamples
       );
-      if (returnedMethods[method].responses) {
-        returnedMethods[method].responses.forEach((response) => {
-          if (response?.body?.applicationjson.examples) {
-            response.body.applicationjson.examples = examplesToArray(
-              response.body.applicationjson.examples
-            );
-          }
-        });
-      }
     }
   });
 
