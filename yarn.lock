@@ -3366,7 +3366,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@19.3.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@19.4.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
@@ -4080,7 +4080,7 @@ __metadata:
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
     "@commercetools-docs/gatsby-theme-api-docs": 19.3.0
-    "@commercetools-docs/gatsby-theme-docs": 19.3.0
+    "@commercetools-docs/gatsby-theme-docs": 19.4.0
     "@commercetools-docs/rmf-codegen": 13.13.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
@@ -4096,7 +4096,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 19.3.0
     "@commercetools-docs/gatsby-theme-constants": 19.3.0
-    "@commercetools-docs/gatsby-theme-docs": 19.3.0
+    "@commercetools-docs/gatsby-theme-docs": 19.4.0
     "@commercetools-docs/ui-kit": 19.3.0
     "@commercetools-uikit/icons": ^15.0.0
     "@svgr/cli": 6.2.1
@@ -4112,7 +4112,7 @@ __metadata:
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 19.3.0
-    "@commercetools-docs/gatsby-theme-docs": 19.3.0
+    "@commercetools-docs/gatsby-theme-docs": 19.4.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
     react: 17.0.2
@@ -4124,7 +4124,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 19.3.0
+    "@commercetools-docs/gatsby-theme-docs": 19.4.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
     react: 17.0.2
