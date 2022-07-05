@@ -272,10 +272,13 @@ uses:
               type: arrays.ArrayTestType
               example: !include examples/array-test-type.json
           201:
-            description: ArrayTestType  is used because it is big and long.
+            description: ArrayTestType is used here to have 2 responses using the same response type with no explicit example.
             body:
               type: arrays.ArrayTestType
-              example: !include examples/array-test-type.json
+          203:
+            description: ArrayTestType is used here to have 2 responses using the same response type with no explicit example.
+            body:
+              type: arrays.ArrayTestType
           202:
             description: |
               DateTestType is used because it is big and long
