@@ -18,7 +18,7 @@ const scenarios = [
     linkSelector: () => {
       // See how to test external domains: https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/testing-dom__tab-handling-links/cypress/integration/tab_handling_anchor_links_spec.js
       cy.get('a')
-        .eq(1)
+        .eq(0)
         .contains('Link')
         .should(
           'have.prop',
@@ -35,7 +35,7 @@ const scenarios = [
     linkSelector: () => {
       // See how to test external domains: https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/testing-dom__tab-handling-links/cypress/integration/tab_handling_anchor_links_spec.js
       cy.get('a')
-        .eq(2)
+        .eq(1)
         .contains('Link')
         .should(
           'have.prop',
@@ -54,7 +54,7 @@ const scenarios = [
     linkSelector: () => {
       // See how to test external domains: https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/testing-dom__tab-handling-links/cypress/integration/tab_handling_anchor_links_spec.js
       cy.get('a')
-        .eq(3)
+        .eq(2)
         .contains('Link')
         .should(
           'have.prop',
