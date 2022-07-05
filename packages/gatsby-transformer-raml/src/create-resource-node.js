@@ -16,6 +16,7 @@ function createResourceNode({
   const postProcessedResource = postProcessResource({
     apiKey,
     resource,
+    fileNode,
     moveEndpointQueryParametersToTop,
     moveEndpointQueryParametersToBottom,
   });
@@ -39,6 +40,7 @@ function createResourceNode({
 function postProcessResource({
   apiKey,
   resource,
+  fileNode,
   moveEndpointQueryParametersToTop,
   moveEndpointQueryParametersToBottom,
 }) {
@@ -58,6 +60,7 @@ function postProcessResource({
     resource: postProcessedResource,
     moveEndpointQueryParametersToTop,
     moveEndpointQueryParametersToBottom,
+    fileNode,
   });
 
   return postProcessedResource;

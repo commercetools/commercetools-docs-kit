@@ -30,7 +30,6 @@ export const useApiResources = () => {
               builtinType
               examples {
                 key
-                strict
                 value
               }
             }

@@ -8,6 +8,7 @@ function processMethods({
   resource,
   moveEndpointQueryParametersToTop,
   moveEndpointQueryParametersToBottom,
+  fileNode,
 }) {
   const returnedMethods = JSON.parse(JSON.stringify(resource));
   const methods = ['post', 'put', 'patch', 'get', 'head', 'delete'];
@@ -38,7 +39,8 @@ function processMethods({
         returnedMethods[method].responses.forEach((response) => {
           if (response?.body?.applicationjson.examples) {
             response.body.applicationjson.examples = examplesToArray(
-              response.body.applicationjson.examples
+              response.body.applicationjson.examples,
+              fileNode.dir
             );
           }
         });
