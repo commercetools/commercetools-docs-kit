@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.4.0
+
+### Minor Changes
+
+- [#1334](https://github.com/commercetools/commercetools-docs-kit/pull/1334) [`917c5eb4`](https://github.com/commercetools/commercetools-docs-kit/commit/917c5eb48422e6f3d26f491418c6fb330cf09329) Thanks [@timonrey](https://github.com/timonrey)! - Adds support for component shadowing for the avatar component. Now it can be overritten and displayed in the top bar next to the top menu button.
+
 ## 19.3.0
 
 ### Minor Changes

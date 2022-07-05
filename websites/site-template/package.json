@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/site-template",
-  "version": "5.0.14",
+  "version": "5.0.15",
   "private": true,
   "scripts": {
     "start": "yarn develop",
@@ -11,7 +11,7 @@
     "build": "./scripts/build.sh"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "19.3.0",
+    "@commercetools-docs/gatsby-theme-docs": "19.4.0",
     "gatsby": "4.13.1",
     "gatsby-cli": "4.13.0",
     "react": "17.0.2",
