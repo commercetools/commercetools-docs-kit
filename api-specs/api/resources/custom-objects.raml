@@ -73,15 +73,6 @@ post:
           application/json:
             type: CustomObject
 
-      202:
-        body:
-          application/json:
-            type: CustomObject
-            (builtinType): object
-            examples:
-              default:
-                strict: true
-                value: !include ../examples/custom-object.example.json
   delete:
     is:
       - dataErasure
