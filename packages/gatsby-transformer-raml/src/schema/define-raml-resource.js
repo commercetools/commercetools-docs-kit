@@ -124,7 +124,6 @@ const defineRamlResource = ({ schema, createTypes }) => {
       name: 'RamlExampleEntry',
       fields: {
         key: 'String',
-        strict: 'Boolean!',
         value: 'String!',
       },
     }),
