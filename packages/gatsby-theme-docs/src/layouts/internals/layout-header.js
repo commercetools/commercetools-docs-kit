@@ -13,6 +13,7 @@ import {
   Icons,
 } from '@commercetools-docs/ui-kit';
 import { SearchDialog, SearchInput, Overlay } from '../../components';
+import Avatar from '../../overrides/avatar';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 
@@ -232,6 +233,9 @@ const LayoutHeader = forwardRef((props, ref) => {
               )}
             </SpacingsInline>
           </DocumentationSwitcherButton>
+        </Inline>
+        <Inline>
+          <Avatar />
         </Inline>
       </TopMenuContainer>
       <SearchBoxContainer ref={ref}>
