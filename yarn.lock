@@ -3304,14 +3304,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-api-docs@19.1.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
+"@commercetools-docs/gatsby-theme-api-docs@19.3.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs"
   dependencies:
     "@commercetools-docs/gatsby-transformer-mdx-introspection": 15.0.4
-    "@commercetools-docs/gatsby-transformer-raml": 13.0.3
+    "@commercetools-docs/gatsby-transformer-raml": 13.0.4
     "@commercetools-docs/rmf-codegen": 13.13.0
-    "@commercetools-docs/ui-kit": 19.1.0
+    "@commercetools-docs/ui-kit": 19.3.0
     "@commercetools-uikit/design-system": ^15.0.0
     "@commercetools-uikit/spacings-inline": ^15.0.0
     "@commercetools-uikit/spacings-stack": ^15.0.0
@@ -3330,11 +3330,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-code-examples@19.2.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
+"@commercetools-docs/gatsby-theme-code-examples@19.3.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.1.0
+    "@commercetools-docs/ui-kit": 19.3.0
     gatsby: 4.13.1
     gatsby-source-filesystem: 4.13.0
     prop-types: 15.8.1
@@ -3348,11 +3348,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-constants@19.1.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
+"@commercetools-docs/gatsby-theme-constants@19.3.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.1.0
+    "@commercetools-docs/ui-kit": 19.3.0
     gatsby: 4.13.1
     gatsby-source-filesystem: 4.13.0
     gatsby-transformer-yaml: 4.13.0
@@ -3366,11 +3366,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@19.1.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@19.3.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.1.0
+    "@commercetools-docs/ui-kit": 19.3.0
     "@commercetools-uikit/card": ^15.0.0
     "@commercetools-uikit/checkbox-input": ^15.0.0
     "@commercetools-uikit/date-input": ^15.0.0
@@ -3431,7 +3431,7 @@ __metadata:
     react-dom: 17.0.2
     react-helmet: 6.1.0
     react-intersection-observer: 9.1.0
-    react-intl: ^5.7.0
+    react-intl: ^6.0.0
     react-router-dom: 5.3.0
     rehype-slug: 4.0.1
     remark-emoji: 2.2.0
@@ -3461,7 +3461,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-transformer-raml@13.0.3, @commercetools-docs/gatsby-transformer-raml@workspace:packages/gatsby-transformer-raml":
+"@commercetools-docs/gatsby-transformer-raml@13.0.4, @commercetools-docs/gatsby-transformer-raml@workspace:packages/gatsby-transformer-raml":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-transformer-raml@workspace:packages/gatsby-transformer-raml"
   dependencies:
@@ -3485,7 +3485,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-docs/ui-kit@19.1.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
+"@commercetools-docs/ui-kit@19.3.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/ui-kit@workspace:packages/ui-kit"
   dependencies:
@@ -3512,7 +3512,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.7.0
+    react-intl: ^6.0.0
     react-is: 17.0.2
     rehype-react: 6.2.1
     remark-frontmatter: 3.0.0
@@ -4079,8 +4079,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-api-docs": 19.1.0
-    "@commercetools-docs/gatsby-theme-docs": 19.1.0
+    "@commercetools-docs/gatsby-theme-api-docs": 19.3.0
+    "@commercetools-docs/gatsby-theme-docs": 19.3.0
     "@commercetools-docs/rmf-codegen": 13.13.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
@@ -4094,10 +4094,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/docs-smoke-test@workspace:websites/docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 19.2.0
-    "@commercetools-docs/gatsby-theme-constants": 19.1.0
-    "@commercetools-docs/gatsby-theme-docs": 19.1.0
-    "@commercetools-docs/ui-kit": 19.1.0
+    "@commercetools-docs/gatsby-theme-code-examples": 19.3.0
+    "@commercetools-docs/gatsby-theme-constants": 19.3.0
+    "@commercetools-docs/gatsby-theme-docs": 19.3.0
+    "@commercetools-docs/ui-kit": 19.3.0
     "@commercetools-uikit/icons": ^15.0.0
     "@svgr/cli": 6.2.1
     gatsby: 4.13.1
@@ -4111,8 +4111,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 19.2.0
-    "@commercetools-docs/gatsby-theme-docs": 19.1.0
+    "@commercetools-docs/gatsby-theme-code-examples": 19.3.0
+    "@commercetools-docs/gatsby-theme-docs": 19.3.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
     react: 17.0.2
@@ -4124,7 +4124,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 19.1.0
+    "@commercetools-docs/gatsby-theme-docs": 19.3.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
     react: 17.0.2
@@ -4676,16 +4676,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/ecma402-abstract@npm:1.11.0":
-  version: 1.11.0
-  resolution: "@formatjs/ecma402-abstract@npm:1.11.0"
-  dependencies:
-    "@formatjs/intl-localematcher": 0.2.21
-    tslib: ^2.1.0
-  checksum: 7e3cf459c2e7dccc931f43b2234336862853af9fce79760d7ffc04d3bb60d16ff77c21ce6df48e198e8846aad72847e3a7b12b29fd586691b66bb704e0e631f8
-  languageName: node
-  linkType: hard
-
 "@formatjs/ecma402-abstract@npm:1.11.3":
   version: 1.11.3
   resolution: "@formatjs/ecma402-abstract@npm:1.11.3"
@@ -4696,12 +4686,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/fast-memoize@npm:1.2.0":
-  version: 1.2.0
-  resolution: "@formatjs/fast-memoize@npm:1.2.0"
+"@formatjs/ecma402-abstract@npm:1.11.7":
+  version: 1.11.7
+  resolution: "@formatjs/ecma402-abstract@npm:1.11.7"
   dependencies:
-    tslib: ^2.1.0
-  checksum: fbc94672c4d0abc595c5680052c1fdaa652e7ffca98175a631a19ec44c5b6e2861ce0410c8ea3c4b46827aad5d229f89c0143a2ccf34ca2fbff79bdf63d27377
+    "@formatjs/intl-localematcher": 0.2.28
+    tslib: 2.4.0
+  checksum: e01271dd67f82f8a0008172da0ab97afbd955fc124260d226d957cc0153652740f33a1267a7a56fd46878c670caaaf9b84c70e88c39c6c6e719d96b200ad2a40
   languageName: node
   linkType: hard
 
@@ -4714,14 +4705,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/icu-messageformat-parser@npm:2.0.15":
-  version: 2.0.15
-  resolution: "@formatjs/icu-messageformat-parser@npm:2.0.15"
+"@formatjs/fast-memoize@npm:1.2.4":
+  version: 1.2.4
+  resolution: "@formatjs/fast-memoize@npm:1.2.4"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.0
-    "@formatjs/icu-skeleton-parser": 1.3.2
-    tslib: ^2.1.0
-  checksum: 43c4880e1acd8a26d1101bb7e20b743c7029d2430cdc0b463d1d7b0840cc3edb82826f65abe56a6677e6003cc062fe24be268ea65f5f7cdaed921cc53cda60c7
+    tslib: 2.4.0
+  checksum: 52c59b52c4eaf1e87d7458b5b21c9fd8864ce7737941881f35a67be828ddcdf64f1eb13a4e1e291dbfe770ca42f0d3508a8a5f771aba51b878b9b264f0c3e0f8
   languageName: node
   linkType: hard
 
@@ -4736,13 +4725,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/icu-skeleton-parser@npm:1.3.2":
-  version: 1.3.2
-  resolution: "@formatjs/icu-skeleton-parser@npm:1.3.2"
+"@formatjs/icu-messageformat-parser@npm:2.1.3":
+  version: 2.1.3
+  resolution: "@formatjs/icu-messageformat-parser@npm:2.1.3"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.0
-    tslib: ^2.1.0
-  checksum: 740231ba397b2cd808d47dd81a29ecab63dfa5885d8e9f8dc87567271e13ab093e25c7d20701b64f44e8d6b366514ff68762011ea6bd03554929a5fac439a93d
+    "@formatjs/ecma402-abstract": 1.11.7
+    "@formatjs/icu-skeleton-parser": 1.3.9
+    tslib: 2.4.0
+  checksum: b39285756815b984ab5a4ef7c2f3f9e4b621dbf402fad887d52f7a458d1c59e317e3457643407ec153de184ea62df8858c4862945e1d7dea646b2f65616b1215
   languageName: node
   linkType: hard
 
@@ -4756,14 +4746,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl-displaynames@npm:5.2.6":
-  version: 5.2.6
-  resolution: "@formatjs/intl-displaynames@npm:5.2.6"
+"@formatjs/icu-skeleton-parser@npm:1.3.9":
+  version: 1.3.9
+  resolution: "@formatjs/icu-skeleton-parser@npm:1.3.9"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.0
-    "@formatjs/intl-localematcher": 0.2.21
-    tslib: ^2.1.0
-  checksum: 4a784e0b73f2bb6c4d5aef81bfe262f6db5912f610b1c4fca9db26ec83dd6d21142e8987c57296df24359deace3dc1a9fc9532245dc5e862dd761a79149e8237
+    "@formatjs/ecma402-abstract": 1.11.7
+    tslib: 2.4.0
+  checksum: c4e43e9ce6f64f3649a1b4791cf2a655af95ff3688133a29776a40e59ef98381faf8646854fc58ea432d7f65d70649c159941f1a24c658c944253d572113b436
   languageName: node
   linkType: hard
 
@@ -4778,14 +4767,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl-listformat@npm:6.3.6":
-  version: 6.3.6
-  resolution: "@formatjs/intl-listformat@npm:6.3.6"
+"@formatjs/intl-displaynames@npm:6.0.2":
+  version: 6.0.2
+  resolution: "@formatjs/intl-displaynames@npm:6.0.2"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.0
-    "@formatjs/intl-localematcher": 0.2.21
-    tslib: ^2.1.0
-  checksum: 2118f74e5165e20919b6ef61c03473c8d93c505c581b5ed780a253dc8563ae8517e8026d9ddb069abeb17bb88868e7309d1c6909b2d8e7f2a4ce0d0bdf489c2d
+    "@formatjs/ecma402-abstract": 1.11.7
+    "@formatjs/intl-localematcher": 0.2.28
+    tslib: 2.4.0
+  checksum: 60ae2656070d033470005ff4ef3e915b3a4736e126c6fcdb4678ce802abaf1aa4d4d76f8e75a8748d8abfa18bd8ac3cbee5bbe728e9b5c017234ae30a2e581ee
   languageName: node
   linkType: hard
 
@@ -4800,12 +4789,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl-localematcher@npm:0.2.21":
-  version: 0.2.21
-  resolution: "@formatjs/intl-localematcher@npm:0.2.21"
+"@formatjs/intl-listformat@npm:7.0.2":
+  version: 7.0.2
+  resolution: "@formatjs/intl-listformat@npm:7.0.2"
   dependencies:
-    tslib: ^2.1.0
-  checksum: d766eb8ce8b2628d781fdb34fd0833a0a1b28f20e70a72dfabbca27cf02bd1b994a72c357b2b3d4888bc20c33b6b7cc7e10e92847ec228a40745a2e84d8d2e24
+    "@formatjs/ecma402-abstract": 1.11.7
+    "@formatjs/intl-localematcher": 0.2.28
+    tslib: 2.4.0
+  checksum: fc2e7139e4472f4219092503d1bd58be57675beb944e18c3aca039a925069dd2084d21963706c5da91b88a51ff2eb4ab60cd5f716815fcc57a735387a3791158
   languageName: node
   linkType: hard
 
@@ -4818,23 +4809,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl@npm:1.17.0":
-  version: 1.17.0
-  resolution: "@formatjs/intl@npm:1.17.0"
+"@formatjs/intl-localematcher@npm:0.2.28":
+  version: 0.2.28
+  resolution: "@formatjs/intl-localematcher@npm:0.2.28"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.0
-    "@formatjs/fast-memoize": 1.2.0
-    "@formatjs/icu-messageformat-parser": 2.0.15
-    "@formatjs/intl-displaynames": 5.2.6
-    "@formatjs/intl-listformat": 6.3.6
-    intl-messageformat: 9.10.0
-    tslib: ^2.1.0
-  peerDependencies:
-    typescript: ^4.5
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 9a620111e6c30b739dfee9e7002375f7ec4b2ec74bbac3b12a7ba29a06bba98781b3297ab15b8cf1e6f870e9470141d847d8d531fa34c8aa61aa2e17532cfb40
+    tslib: 2.4.0
+  checksum: 5906c3ff997f57b9e8c968b9d3c4cbd94352b9cda58b338f436855091845cf1f364bd261815cccd67f22faa530834d6cb05a0677a1ee6f457e68847cbab928f4
   languageName: node
   linkType: hard
 
@@ -4855,6 +4835,26 @@ __metadata:
     typescript:
       optional: true
   checksum: 74dfcbdf22efc7a0731ecc1851170f76e0bc2b41d43e9e47fa4d70201d7ba677fd190f74cd7fb8ae062b4ace38a863652c04c1c2741f53d93cf03f981eac7ab2
+  languageName: node
+  linkType: hard
+
+"@formatjs/intl@npm:2.3.0":
+  version: 2.3.0
+  resolution: "@formatjs/intl@npm:2.3.0"
+  dependencies:
+    "@formatjs/ecma402-abstract": 1.11.7
+    "@formatjs/fast-memoize": 1.2.4
+    "@formatjs/icu-messageformat-parser": 2.1.3
+    "@formatjs/intl-displaynames": 6.0.2
+    "@formatjs/intl-listformat": 7.0.2
+    intl-messageformat: 10.1.0
+    tslib: 2.4.0
+  peerDependencies:
+    typescript: ^4.5
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: d3a8a1011876651f118c63de1a5db4f4c3bf043a9e9438a77e9c3f62147386f98b07ed1f78c80a071057b66055ae105feaf27c8fb70a57441fb9d3c85fa982b4
   languageName: node
   linkType: hard
 
@@ -8240,6 +8240,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: e68b0d59aa69577fc6a6d654b25d5d8408625498f4c483f160b557fac21e840f6e8807cbde93e9f039949b6d624a019b1990d18499c1d65aecf3605c25e30242
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:16 || 17 || 18":
+  version: 18.0.12
+  resolution: "@types/react@npm:18.0.12"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 526ea13b3adf7fe4b475e55b7426510a7861ef2910664a9014ef42cba0c699d5167dc378eb161e2ec26c07a3b6fde9b6bdcbbb6f4b5580612246bc289395ef03
   languageName: node
   linkType: hard
 
@@ -18197,15 +18208,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intl-messageformat@npm:9.10.0":
-  version: 9.10.0
-  resolution: "intl-messageformat@npm:9.10.0"
+"intl-messageformat@npm:10.1.0":
+  version: 10.1.0
+  resolution: "intl-messageformat@npm:10.1.0"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.0
-    "@formatjs/fast-memoize": 1.2.0
-    "@formatjs/icu-messageformat-parser": 2.0.15
-    tslib: ^2.1.0
-  checksum: dfdb9586a79b2eb3e89eabc6a24c95439c61507410a896fdec4b522222a92ef4621bbd62eb6d117cdf9724c42720b0bf564d5d3384d53953fedeabe1c52ceac6
+    "@formatjs/ecma402-abstract": 1.11.7
+    "@formatjs/fast-memoize": 1.2.4
+    "@formatjs/icu-messageformat-parser": 2.1.3
+    tslib: 2.4.0
+  checksum: 04660765d9814b111e0a6a44ce6c2f6ef524d51d5ba8e6e27765d0c2cc09dd61b974080af8e0fc2de5cd209e1cf722658b4cccac25c417b998a4f7326c636da3
   languageName: node
   linkType: hard
 
@@ -24767,27 +24778,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intl@npm:^5.7.0":
-  version: 5.23.0
-  resolution: "react-intl@npm:5.23.0"
+"react-intl@npm:^6.0.0":
+  version: 6.0.4
+  resolution: "react-intl@npm:6.0.4"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.0
-    "@formatjs/icu-messageformat-parser": 2.0.15
-    "@formatjs/intl": 1.17.0
-    "@formatjs/intl-displaynames": 5.2.6
-    "@formatjs/intl-listformat": 6.3.6
+    "@formatjs/ecma402-abstract": 1.11.7
+    "@formatjs/icu-messageformat-parser": 2.1.3
+    "@formatjs/intl": 2.3.0
+    "@formatjs/intl-displaynames": 6.0.2
+    "@formatjs/intl-listformat": 7.0.2
     "@types/hoist-non-react-statics": ^3.3.1
-    "@types/react": 16 || 17
+    "@types/react": 16 || 17 || 18
     hoist-non-react-statics: ^3.3.2
-    intl-messageformat: 9.10.0
-    tslib: ^2.1.0
+    intl-messageformat: 10.1.0
+    tslib: 2.4.0
   peerDependencies:
-    react: ^16.3.0 || 17
+    react: ^16.6.0 || 17 || 18
     typescript: ^4.5
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 8dc254355fcb72e9bb9958f534c1c833463ab42e899bf1418e3818a6aa7e6859d0192d0d9ed5cd4f76146ccf1e4e7c803c484514aa4670f7015090acc98562b2
+  checksum: f84f4f9952561e939464e765552f1f2520d3bf916c301d9f1ca53c045613e42bd215a0c062883bf09feaba7ce493b46193d8d282b4f367f39214305131c52b72
   languageName: node
   linkType: hard
 
@@ -28128,6 +28139,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:2.4.0, tslib@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "tslib@npm:2.4.0"
+  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^1.10.0, tslib@npm:^1.6.0, tslib@npm:^1.8.1, tslib@npm:^1.9.0, tslib@npm:^1.9.3":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
@@ -28139,13 +28157,6 @@ __metadata:
   version: 2.3.1
   resolution: "tslib@npm:2.3.1"
   checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "tslib@npm:2.4.0"
-  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
   languageName: node
   linkType: hard
 
