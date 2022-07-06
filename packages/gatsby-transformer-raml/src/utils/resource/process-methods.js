@@ -1,7 +1,8 @@
 const parametersToArray = require('../parameters-to-array');
 const responsesToArray = require('./responses-to-array');
 const codeExamplesToArray = require('./code-examples-to-array');
-const examplesToArray = require('./examples-to-array');
+const examplesToArray = require('./examples-to-array').examplesToArray;
+const resolveExampleFile = require('./examples-to-array').resolveExampleFile;
 const sortProperties = require('../sort-properties');
 
 function processMethods({
@@ -40,7 +41,8 @@ function processMethods({
           if (response?.body?.applicationjson.examples) {
             response.body.applicationjson.examples = examplesToArray(
               response.body.applicationjson.examples,
-              fileNode.dir
+              fileNode.dir,
+              resolveExampleFile
             );
           }
         });

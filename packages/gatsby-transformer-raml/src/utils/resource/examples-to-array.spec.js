@@ -1,14 +1,18 @@
-const examplesToArray = require('./examples-to-array');
+const examplesToArray = require('./examples-to-array').examplesToArray;
+
+const mockJsonExampleContent = '{"someAttribute": "someValue"}';
+
+function mockResolveExampleFile() {
+  return mockJsonExampleContent;
+}
 
 it('should transform objects of examples to array', () => {
   const examplesBefore = {
     default: {
-      strict: true,
       value:
         '!include ../examples/ByProjectKeyCustomObjectsPost-201-default.json',
     },
     case1: {
-      strict: false,
       value:
         '!include ../examples/ByProjectKeyCustomObjectsPost-201-case1.json',
     },
@@ -17,17 +21,15 @@ it('should transform objects of examples to array', () => {
   const examplesAfter = [
     {
       key: 'default',
-      strict: true,
-      value:
-        '!include ../examples/ByProjectKeyCustomObjectsPost-201-default.json',
+      value: mockJsonExampleContent,
     },
     {
       key: 'case1',
-      strict: false,
-      value:
-        '!include ../examples/ByProjectKeyCustomObjectsPost-201-case1.json',
+      value: mockJsonExampleContent,
     },
   ];
 
-  expect(examplesToArray(examplesBefore)).toEqual(examplesAfter);
+  expect(examplesToArray(examplesBefore, '', mockResolveExampleFile)).toEqual(
+    examplesAfter
+  );
 });

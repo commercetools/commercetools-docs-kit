@@ -1,11 +1,15 @@
 const path = require('path');
 const fs = require('fs');
 
-function examplesToArray(examples, fileNodeDir) {
+function resolveExampleFile(fileNodeDir, filePath) {
+  const exampleAbsolutePath = path.resolve(fileNodeDir, filePath);
+  return fs.readFileSync(exampleAbsolutePath, 'utf8');
+}
+
+function examplesToArray(examples, fileNodeDir, resolveExampleFile) {
   if (examples) {
     return Object.entries(examples).map(([key, value]) => {
-      const exampleAbsolutePath = path.resolve(fileNodeDir, value.value);
-      const jsonString = fs.readFileSync(exampleAbsolutePath, 'utf8');
+      const jsonString = resolveExampleFile(fileNodeDir, value.value);
       return { key, value: jsonString };
     });
   }
@@ -13,4 +17,4 @@ function examplesToArray(examples, fileNodeDir) {
   return undefined;
 }
 
-module.exports = examplesToArray;
+module.exports = { examplesToArray, resolveExampleFile };
