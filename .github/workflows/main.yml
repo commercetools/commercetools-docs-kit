@@ -43,7 +43,7 @@ jobs:
           path: |
             .cache
             public
-          key: ${{ runner.os }}-build-v1-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-v2-${{ hashFiles('**/yarn.lock') }}
 
       - name: Set custom Yarn cache path
         run: yarn config set cacheFolder .cache/yarn
