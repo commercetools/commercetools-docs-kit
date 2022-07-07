@@ -20,11 +20,11 @@ it('should transform objects of examples to array', () => {
 
   const examplesAfter = [
     {
-      key: 'default',
+      name: 'default',
       value: mockJsonExampleContent,
     },
     {
-      key: 'case1',
+      name: 'case1',
       value: mockJsonExampleContent,
     },
   ];

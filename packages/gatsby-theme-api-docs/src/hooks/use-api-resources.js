@@ -29,7 +29,7 @@ export const useApiResources = () => {
               type
               builtinType
               examples {
-                key
+                name
                 value
               }
             }

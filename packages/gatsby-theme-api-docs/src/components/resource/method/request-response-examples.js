@@ -29,11 +29,11 @@ const RequestResponseExamples = (props) => {
               typeDisplayName:
                 examplesNode.length === 1
                   ? typeDisplayName
-                  : `${typeDisplayName} (${example.key})`,
+                  : `${typeDisplayName} (${example.name})`,
               value: example.value,
             });
           });
-        } else if (apiType.examples) {
+        } else if (apiType.examples && apiType.examples.length > 0) {
           responsesCodeExamples.push({
             code,
             typeDisplayName,

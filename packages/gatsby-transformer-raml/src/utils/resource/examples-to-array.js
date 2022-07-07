@@ -8,9 +8,9 @@ function resolveExampleFile(fileNodeDir, filePath) {
 
 function examplesToArray(examples, fileNodeDir, resolveExampleFile) {
   if (examples) {
-    return Object.entries(examples).map(([key, value]) => {
+    return Object.entries(examples).map(([name, value]) => {
       const jsonString = resolveExampleFile(fileNodeDir, value.value);
-      return { key, value: jsonString };
+      return { name, ...value, value: jsonString };
     });
   }
 
