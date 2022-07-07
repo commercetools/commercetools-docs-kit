@@ -26,7 +26,10 @@ const RequestResponseExamples = (props) => {
           examplesNode.forEach((example) => {
             responsesCodeExamples.push({
               code,
-              typeDisplayName: example.key,
+              typeDisplayName:
+                examplesNode.length === 1
+                  ? typeDisplayName
+                  : `${typeDisplayName} (${example.key})`,
               value: example.value,
             });
           });
@@ -58,7 +61,7 @@ const RequestResponseExamples = (props) => {
       {responsesCodeExamples.map((codeExample) => {
         return (
           <MultiCodeBlock
-            key={codeExample.code}
+            key={`${codeExample.code}-${codeExample.typeDisplayName}`}
             secondaryTheme={true}
             title={`${codeExample.code} Response Example: ${codeExample.typeDisplayName}`}
           >
