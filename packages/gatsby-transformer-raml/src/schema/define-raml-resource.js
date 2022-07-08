@@ -116,6 +116,7 @@ const defineRamlResource = ({ schema, createTypes }) => {
       fields: {
         type: 'String!',
         builtinType: 'String!',
+        examples: '[RamlExample!]',
       },
     }),
 

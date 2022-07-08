@@ -5,6 +5,10 @@ const sortProperties = require('./utils/sort-properties');
 const resolveConflictingFieldTypes = require('./utils/type/resolve-conflicting-field-types');
 const generateType = require('./utils/type/generate-type');
 const generateBuiltinType = require('./utils/type/generate-built-in-type');
+const examplesToArray =
+  require('./utils/resource/examples-to-array').examplesToArray;
+const resolveExampleFile =
+  require('./utils/resource/examples-to-array').resolveExampleFile;
 
 function createTypeNode({
   apiKey,
@@ -56,9 +60,10 @@ function postProcessType({
     moveTypePropertiesToTop,
     moveTypePropertiesToBottom,
   });
-  postProcessedType.examples = examplesToArrays(
+  postProcessedType.examples = examplesToArray(
     postProcessedType.examples,
-    fileNode.dir
+    fileNode.dir,
+    resolveExampleFile
   );
   postProcessedType.enumDescriptions = enumDescriptionsToArray(
     postProcessedType.enumDescriptions
@@ -105,18 +110,6 @@ function propertiesToArrays(properties) {
   return Object.entries(properties).map(([key, value]) => {
     return { ...value, name: key };
   });
-}
-
-function examplesToArrays(examples, fileNodeDir) {
-  if (examples) {
-    return Object.entries(examples).map(([key, value]) => {
-      const exampleAbsolutePath = path.resolve(fileNodeDir, value.value);
-      const jsonString = fs.readFileSync(exampleAbsolutePath, 'utf8');
-      return { name: key, ...value, value: jsonString };
-    });
-  }
-
-  return undefined;
 }
 
 function enumDescriptionsToArray(enumDescriptions) {

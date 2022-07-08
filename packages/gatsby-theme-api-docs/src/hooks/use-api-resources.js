@@ -28,6 +28,10 @@ export const useApiResources = () => {
             applicationjson {
               type
               builtinType
+              examples {
+                name
+                value
+              }
             }
           }
         }

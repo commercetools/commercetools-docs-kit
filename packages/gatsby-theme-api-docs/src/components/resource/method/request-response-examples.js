@@ -12,6 +12,7 @@ const RequestResponseExamples = (props) => {
     props.responses.forEach((response) => {
       const typeDisplayName =
         response.body && response.body.applicationjson.type;
+      const { code } = response;
       if (typeDisplayName) {
         const apiType = apiTypes.find((type) => {
           return (
@@ -19,8 +20,22 @@ const RequestResponseExamples = (props) => {
           );
         });
 
-        if (apiType.examples) {
+        const examplesNode = response.body?.applicationjson?.examples;
+
+        if (examplesNode && Array.isArray(examplesNode)) {
+          examplesNode.forEach((example) => {
+            responsesCodeExamples.push({
+              code,
+              typeDisplayName:
+                examplesNode.length === 1
+                  ? typeDisplayName
+                  : `${typeDisplayName} (${example.name})`,
+              value: example.value,
+            });
+          });
+        } else if (apiType.examples && apiType.examples.length > 0) {
           responsesCodeExamples.push({
+            code,
             typeDisplayName,
             value: apiType.examples[0].value,
           });
@@ -46,13 +61,9 @@ const RequestResponseExamples = (props) => {
       {responsesCodeExamples.map((codeExample) => {
         return (
           <MultiCodeBlock
-            key={codeExample.typeDisplayName}
+            key={`${codeExample.code}-${codeExample.typeDisplayName}`}
             secondaryTheme={true}
-            title={
-              responsesCodeExamples.length === 1
-                ? `Response Example:`
-                : `${codeExample.typeDisplayName} Response Example:`
-            }
+            title={`${codeExample.code} Response Example: ${codeExample.typeDisplayName}`}
           >
             <CodeBlock language="json" content={codeExample.value} />
           </MultiCodeBlock>
