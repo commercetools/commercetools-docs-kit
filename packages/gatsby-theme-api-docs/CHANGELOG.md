@@ -1,5 +1,17 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 19.5.0
+
+### Minor Changes
+
+- [#1331](https://github.com/commercetools/commercetools-docs-kit/pull/1331) [`9dfa5e73`](https://github.com/commercetools/commercetools-docs-kit/commit/9dfa5e7341eddafe876e33b390c4b22de64b41f3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - When an API endpoint method response has one or more `example` nodes defined in the .raml file, those examples will be displayed in the API method page. In case no `example` nodes are defined, the response type example will be displayed instead.
+  The API response code is now visible in the example code section header to help identifying what the example is referring to.
+
+### Patch Changes
+
+- Updated dependencies [[`9dfa5e73`](https://github.com/commercetools/commercetools-docs-kit/commit/9dfa5e7341eddafe876e33b390c4b22de64b41f3)]:
+  - @commercetools-docs/gatsby-transformer-raml@13.1.0
+
 ## 19.3.0
 
 ### Minor Changes
