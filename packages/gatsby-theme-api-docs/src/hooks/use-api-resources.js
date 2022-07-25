@@ -46,6 +46,10 @@ export const useApiResources = () => {
           type
           builtinType
         }
+        applicationxwwwformurlencoded {
+          type
+          builtinType
+        }
       }
 
       fragment methodsWithBodies on RamlResourceMethodWithBody {

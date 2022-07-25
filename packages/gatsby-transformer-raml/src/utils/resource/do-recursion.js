@@ -5,6 +5,7 @@ const fieldsToClean = {
   '(resourcePathUri)': true,
   '(builtinType)': true,
   'application/json': true,
+  'application/x-www-form-urlencoded': true,
   '(codeExamples)': true,
 };
 
