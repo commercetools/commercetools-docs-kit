@@ -108,11 +108,22 @@ const defineRamlResource = ({ schema, createTypes }) => {
       name: 'RamlResourceMethodBody',
       fields: {
         applicationjson: 'RamlResourceMethodBodyApplicationJson',
+        applicationxwwwformurlencoded:
+          'RamlResourceMethodBodyApplicationxwwwformurlencoded',
       },
     }),
 
     schema.buildObjectType({
       name: 'RamlResourceMethodBodyApplicationJson',
+      fields: {
+        type: 'String!',
+        builtinType: 'String!',
+        examples: '[RamlExample!]',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceMethodBodyApplicationxwwwformurlencoded',
       fields: {
         type: 'String!',
         builtinType: 'String!',

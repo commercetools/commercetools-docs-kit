@@ -109,7 +109,10 @@ const Method = ({
               {method.body && (
                 <RequestRepresentation
                   apiKey={apiKey}
-                  apiType={method.body.applicationjson.type}
+                  apiType={
+                    method.body.applicationjson?.type ||
+                    method.body.applicationxwwwformurlencoded?.type
+                  }
                 />
               )}
 
