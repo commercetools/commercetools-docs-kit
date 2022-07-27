@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 19.5.1
+
+### Patch Changes
+
+- [#1347](https://github.com/commercetools/commercetools-docs-kit/pull/1347) [`2940036f`](https://github.com/commercetools/commercetools-docs-kit/commit/2940036f7d3a29565d343b253d1f8eb11da6ed04) Thanks [@timonrey](https://github.com/timonrey)! - Adds support for post requests using the content type "application/x-www-form-urlencoded".
+
+- Updated dependencies [[`2940036f`](https://github.com/commercetools/commercetools-docs-kit/commit/2940036f7d3a29565d343b253d1f8eb11da6ed04)]:
+  - @commercetools-docs/gatsby-transformer-raml@13.1.1
+
 ## 19.5.0
 
 ### Minor Changes
