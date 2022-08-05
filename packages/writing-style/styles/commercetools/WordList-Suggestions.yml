@@ -6,3 +6,6 @@ action:
   name: replace
 swap:
   Extension: API Extension
+  once: after
+  Once: After
+  via: using|through|by|with
