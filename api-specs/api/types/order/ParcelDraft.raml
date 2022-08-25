@@ -3,6 +3,7 @@
 (docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#parceldraft
 displayName: ParcelDraft
 type: object
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<ParcelDraft>'
 properties:
   measurements?:
     description: ''
@@ -13,3 +14,6 @@ properties:
   items?:
     type: DeliveryItem[]
     description: The delivery items contained in this parcel.
+  custom?:
+    type: CustomFieldsDraft
+    description: Custom Fields of this parcel.

@@ -5,6 +5,7 @@ type: StagedOrderUpdateAction
 displayName: StagedOrderAddDeliveryAction
 discriminatorValue: addDelivery
 example: !include ../../../examples/OrderEdit/StagedOrderAddDeliveryAction.json
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<StagedOrderAddDeliveryAction>'
 properties:
   items?:
     type: DeliveryItem[]
@@ -12,3 +13,6 @@ properties:
     type: BaseAddress
   parcels?:
     type: ParcelDraft[]
+  custom?:
+    type: CustomFieldsDraft
+    description: Custom Fields for the Transaction.

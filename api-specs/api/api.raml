@@ -1,6 +1,6 @@
 #%RAML 1.0
 ---
-title: Commercetools
+title: commercetools Composable Commerce
 baseUri: https://api.{region}.commercetools.com
 (sdkBaseUri): https://api.europe-west1.gcp.commercetools.com
 baseUriParameters:
@@ -29,6 +29,8 @@ traits:
   conflicting: !include traits/conflicting.raml
   versioned: !include traits/versioned.raml
   priceSelecting: !include traits/price-selecting.raml
+  localeProjecting: !include traits/locale-projecting.raml
+  storeProjecting: !include traits/store-projecting.raml
   dataErasure: !include traits/data-erasure.raml
 annotationTypes: !include types/annotations.raml
 types: !include types/types.raml
@@ -63,6 +65,17 @@ resourceTypes:
           body:
             application/json:
               type: <<resourceType>>
+    head?:
+      displayName: Check <<resourcePathName>> are existing
+      responses:
+        200:
+          description: |
+            At least one <<resourceType>> matching the query exists
+        404:
+          description: |
+            ## Not Found
+
+            A 404 in case no <<resourceType>> could be found that is matching the query condition.
   baseResource:
     type: base
     uriParameters:
@@ -103,6 +116,17 @@ resourceTypes:
           body:
             application/json:
               type: <<resourceType>>
+    head?:
+      displayName: Check <<resourceType>> exists by <<uriParameterName | !lowercamelcase>>
+      responses:
+        200:
+          description: |
+            The <<resourceType>> exists
+        404:
+          description: |
+            ## Not Found
+
+            A 404 indicates that the <<resourceType>> was not found / does not exist.
   base:
     get?:
       is:
@@ -115,12 +139,16 @@ resourceTypes:
       is:
         - errorable
         - deprecatable200
+    head?:
+      is:
+        - errorable
+        - deprecatable200
 /{projectKey}:
   (methodName): withProjectKey
   uriParameters:
     projectKey:
       type: string
-      description: '`key` of the [Project](/../api/projects/project#project).'
+      description: '`key` of the [Project](ctp:api:type:Project).'
   displayName: Project
   (updateable): Project
   description: The Project endpoint is used to retrieve certain information from a project.
@@ -129,21 +157,7 @@ resourceTypes:
     is:
       - errorable
       - deprecatable200
-    description: |
-      The Endpoint is responding a limited set of information about settings and configuration of the project.
-    securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
-    responses:
-      200:
-        body:
-          example: !include examples/project.example.json
-          type: Project
-  head:
-    displayName: Check for project existence
-    is:
-      - errorable
-      - deprecatable200
-    description: Check if there is a project matching the given key.
-    securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
+    securedBy: [oauth_2_0: { scopes: ['view_project_settings:{projectKey}'] }]
     responses:
       200:
         body:
@@ -153,21 +167,6 @@ resourceTypes:
     displayName: Update project settings
     is:
       - conflicting
-    description: Update project
-    securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
-    body:
-      application/json:
-        type: ProjectUpdate
-    responses:
-      200:
-        body:
-          example: !include examples/project.example.json
-          type: Project
-  patch:
-    displayName: Update project settings
-    is:
-      - conflicting
-    description: Update project
     securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
     body:
       application/json:
@@ -194,7 +193,11 @@ resourceTypes:
   /products: !include resources/products.raml
   /product-discounts: !include resources/product-discounts.raml
   /product-projections: !include resources/product-projections.raml
+  /product-selections: !include resources/product-selections.raml
   /product-types: !include resources/product-types.raml
+  /quotes: !include resources/quotes.raml
+  /quote-requests: !include resources/quote-requests.raml
+  /staged-quotes: !include resources/staged-quotes.raml
   /reviews: !include resources/reviews.raml
   /shipping-methods: !include resources/shipping-methods.raml
   /shopping-lists: !include resources/shopping-lists.raml
@@ -208,3 +211,4 @@ resourceTypes:
   /api-clients: !include resources/api-clients.raml
   /stores: !include resources/stores.raml
   /in-store/key={storeKey}: !include resources/in-store.raml
+  /standalone-prices: !include resources/standalone-prices.raml

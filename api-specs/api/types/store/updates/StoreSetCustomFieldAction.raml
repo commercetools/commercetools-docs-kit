@@ -1,6 +1,6 @@
 #%RAML 1.0 DataType
 (package): Store
-(docs-uri): https://docs.commercetools.com/http-api-projects-stores#set-custom-field
+(docs-uri): https://docs.commercetools.com/api/projects/stores#set-custom-field
 type: StoreUpdateAction
 displayName: StoreSetCustomFieldAction
 discriminatorValue: setCustomField
@@ -8,6 +8,11 @@ example: !include ../../../examples/Store/StoreSetCustomFieldAction.json
 properties:
   name:
     type: string
-    description: ''
+    description: |
+      Name of the [Custom Field](/../api/projects/custom-fields).
   value?:
-    type: any
+    type: CustomFieldValue
+    description: |
+      If `value` is absent or `null`, this field will be removed if it exists.
+      Trying to remove a field that does not exist will fail with an [InvalidOperation](/../api/errors#general-400-invalid-operation) error.
+      If `value` is provided, it is set for the field defined by `name`.

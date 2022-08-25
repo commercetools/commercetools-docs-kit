@@ -3,10 +3,11 @@
 (docs-uri): https://docs.commercetools.com/http-api-projects-payments.html#transaction
 type: object
 displayName: Transaction
+(java-extends): 'com.commercetools.api.models.Customizable<Transaction>'
 properties:
   id:
     type: string
-    description: The unique ID of this object.
+    description: Unique identifier of the Transaction.
   timestamp?:
     type: datetime
     description: The time at which the transaction took place.
@@ -24,3 +25,6 @@ properties:
   state?:
     type: TransactionState
     description: The state of this transaction.
+  custom?:
+    type: CustomFields
+    description: Custom Fields for the Transaction.

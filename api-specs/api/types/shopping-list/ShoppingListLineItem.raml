@@ -2,6 +2,7 @@
 (package): ShoppingList
 type: object
 displayName: ShoppingListLineItem
+(java-extends): 'com.commercetools.api.models.Customizable<ShoppingListLineItem>'
 properties:
   addedAt:
     type: datetime
@@ -11,6 +12,7 @@ properties:
     type: datetime
   id:
     type: string
+    description: Unique identifier of the ShoppingListLineItem.
   name:
     type: LocalizedString
   productId:

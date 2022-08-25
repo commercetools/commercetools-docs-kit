@@ -1,44 +1,52 @@
 #%RAML 1.0 DataType
 (package): CustomerGroup
-(docs-uri): https://docs.commercetools.com/http-api-projects-customerGroups.html#customergroup
+(docs-uri): https://docs.commercetools.com/api/projects/customerGroups#customergroup
 displayName: CustomerGroup
 (updateType): CustomerGroupUpdate
 type: BaseResource
-(java-extends): 'com.commercetools.api.models.DomainResource<CustomerGroup>'
+(java-extends): 'com.commercetools.api.models.DomainResource<CustomerGroup>, com.commercetools.api.models.Customizable<CustomerGroup>'
 description:
 properties:
   id:
     (identifier): true
     type: string
-    description: Unique ID of the customer group.
+    description: |
+      Unique identifier of the CustomerGroup.
   version:
     type: number
     format: int64
-    description: Current version of the customer group.
+    description: |
+      Current version of the CustomerGroup.
   createdAt:
     type: datetime
-    description: ''
+    description: |
+      Date and time (UTC) the CustomerGroup was initially created.
   lastModifiedAt:
     type: datetime
-    description: ''
+    description: |
+      Date and time (UTC) the CustomerGroup was last updated.
   lastModifiedBy?:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources updated after 1 February 2019 except for [events not tracked](/client-logging#events-tracked).
+      Present on resources updated after 1 February 2019 except for [events not tracked](/../api/client-logging#events-tracked).
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/client-logging#events-tracked).
+      Present on resources created after 1 February 2019 except for [events not tracked](/../api/client-logging#events-tracked).
   key?:
     type: string
     description: |
-      User-defined unique identifier for the customer group.
+      User-defined unique identifier for the CustomerGroup.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
   name:
     type: string
     description: |
-      Unique within the project.
+      Unique name of the CustomerGroup.
   custom?:
     type: CustomFields
-    description: ''
+    description: |
+      Custom Fields for the CustomerGroup.

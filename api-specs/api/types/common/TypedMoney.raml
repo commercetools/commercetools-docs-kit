@@ -2,8 +2,10 @@
 (package): Common
 (docs-uri): https://docs.commercetools.com/http-api-types.html#money
 displayName: TypedMoney
-type: object
+type: Money
 discriminator: type
+description: |
+  Base polymorphic read-only Money type which is stored in cent precision or high precision. The actual type is determined by the `type` field.
 properties:
   type:
     type: MoneyType
@@ -11,8 +13,8 @@ properties:
     type: number
     format: int32
     maximum: 12
-  centAmount:
-    type: number
-    format: int64
-  currencyCode:
-    type: CurrencyCode
+    description: |
+      Number of digits after the decimal separator:
+
+      * Equal to the default number of fraction digits for a currency in [CentPrecisionMoney](ctp:api:type:CentPrecisionMoney).
+      * Greater than the default number of fraction digits for a currency in [HighPrecisionMoney](ctp:api:type:HighPrecisionMoney).

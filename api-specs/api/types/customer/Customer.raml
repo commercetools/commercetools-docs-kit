@@ -4,12 +4,12 @@
 displayName: Customer
 (updateType): CustomerUpdate
 type: BaseResource
-(java-extends): 'com.commercetools.api.models.DomainResource<Customer>'
+(java-extends): 'com.commercetools.api.models.DomainResource<Customer>, com.commercetools.api.models.Customizable<Customer>'
 properties:
   id:
     (identifier): true
     type: string
-    description: The unique ID of the customer.
+    description: Unique identifier of the Customer.
   version:
     type: number
     format: int64
@@ -42,9 +42,9 @@ properties:
       The customer's email address and the main identifier of uniqueness for a customer account.
       Email addresses are either unique to the store they're specified for, _or_ for the entire project.
       For more information, see Email uniquenes.
-  password:
+  password?:
     type: string
-    description: ''
+    description: 'Only present with the default `authenticationMode`, `Password`.'
   firstName?:
     type: string
     description: ''
@@ -102,12 +102,17 @@ properties:
   key?:
     type: string
     description: |-
-      User-specific unique identifier for a customer.
-      Must be unique across a project.
-      The field can be reset using the Set Key UpdateAction
+      User-defined unique identifier of the Customer.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
   stores?:
     type: StoreKeyReference[]
     description: |-
       References to the stores the customer account is associated with.
       If no stores are specified, the customer is a global customer, and can log in using the Password Flow for global Customers.
       If one or more stores are specified, the customer can only log in using the Password Flow for Customers in a Store for those specific stores.
+  authenticationMode?:
+    type: AuthenticationMode
+    (beta): true
+    description: Defines whether a Customer has a password.

@@ -4,12 +4,12 @@
 displayName: Order
 (updateType): OrderUpdate
 type: BaseResource
-(java-extends): 'com.commercetools.api.models.DomainResource<Order>'
+(java-extends): 'com.commercetools.api.models.DomainResource<Order>, com.commercetools.api.models.Customizable<Order>, com.commercetools.api.models.order.OrderLike<Order>'
 properties:
   id:
     (identifier): true
     type: string
-    description: The unique ID of the order.
+    description: Unique identifier of the Order.
   version:
     type: number
     format: int64
@@ -114,17 +114,21 @@ properties:
   discountCodes?:
     description: ''
     type: DiscountCodeInfo[]
-  lastMessageSequenceNumber:
+  lastMessageSequenceNumber?:
+    (markDeprecated): true
     type: number
     format: int64
     description: |-
-      The sequence number of the last order message produced by changes to this order.
-      `0` means, that no messages were created yet.
+      Internal-only field.
   cart?:
     type: CartReference
     description: |-
       Set when this order was created from a cart.
       The cart will have the state `Ordered`.
+  quote?:
+    type: QuoteReference
+    description: |-
+      Set when this order was created from a quote.
   custom?:
     type: CustomFields
     description: ''

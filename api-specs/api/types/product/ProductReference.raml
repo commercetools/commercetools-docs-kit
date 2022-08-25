@@ -1,9 +1,18 @@
 #%RAML 1.0 DataType
 (package): Product
-(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#product
+(docs-uri): https://docs.commercetools.com/api/projects/products#product
+(java-extends): com.commercetools.api.models.Identifiable<Product>
 type: Reference
 displayName: ProductReference
 discriminatorValue: product
+description: |
+  [Reference](ctp:api:type:Reference) to a [Product](ctp:api:type:Product).
 properties:
   obj?:
     type: Product
+    description: |
+      Contains the representation of the expanded Product. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for Products.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [Product](ctp:api:type:Product).

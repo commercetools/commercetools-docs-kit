@@ -2,6 +2,7 @@
 (package): Me
 type: object
 displayName: MyTransactionDraft
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<MyTransactionDraft>'
 properties:
   timestamp?:
     type: datetime
@@ -22,3 +23,6 @@ properties:
       If a matching interaction was logged in the interfaceInteractions array,
       the corresponding interaction should be findable with this ID.
       The `state` is set to the `Initial` TransactionState.
+  custom?:
+    type: CustomFieldsDraft
+    description: Custom Fields for the Transaction.

@@ -1,0 +1,35 @@
+#%RAML 1.0 DataType
+(package): QuoteRequest
+(docs-uri): https://docs.commercetools.com/api/projects/quote-requests#quoterequestdraft
+type: object
+displayName: QuoteRequestDraft
+properties:
+  cart:
+    type: CartResourceIdentifier
+    description: |
+      Cart for which a Quote is requested. Anonymous Carts as well as Carts with [Discount Codes](/../api?projects/discount-codes) are not supported.
+  cartVersion:
+    type: number
+    format: int64
+    description: |
+      Current version of the referenced Cart.
+  key?:
+    type: string
+    description: |
+      User-defined unique identifier for the QuoteRequest.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
+  comment:
+    type: string
+    description: |
+      Message from the Buyer included in the Quote Request.
+  custom?:
+    type: CustomFieldsDraft
+    description: |
+      Custom Fields to be added to the Quote Request.
+  state?:
+    type: StateReference
+    description: |
+      [State](ctp:api:type:State) of this Quote Request.
+      This reference can point to a State in a custom workflow.

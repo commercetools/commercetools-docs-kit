@@ -2,6 +2,7 @@
 (package): Payment
 type: object
 displayName: TransactionDraft
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<TransactionDraft>'
 properties:
   timestamp?:
     type: datetime
@@ -22,3 +23,6 @@ properties:
     description: |-
       The state of this transaction.
       If not set, defaults to `Initial`.
+  custom?:
+    type: CustomFieldsDraft
+    description: Custom Fields for the Transaction.

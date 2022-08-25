@@ -1,0 +1,11 @@
+{
+  "action": "setTransactionCustomType",
+  "type": {
+    "id": "{{type-id}}",
+    "typeId": "type"
+  },
+  "fields": {
+    "examplaryStringTypeField": "TextString"
+  },
+  "transactionId": "transactionIdTest"
+}

@@ -1,6 +1,6 @@
 #%RAML 1.0 DataType
 (package): Channel
-(docs-uri): https://docs.commercetools.com/http-api-projects-channels.html#set-custom-type
+(docs-uri): https://docs.commercetools.com/api/projects/channels#set-custom-type
 type: ChannelUpdateAction
 displayName: ChannelSetCustomTypeAction
 discriminatorValue: setCustomType
@@ -8,5 +8,10 @@ example: !include ../../../examples/Channel/ChannelSetCustomTypeAction.json
 properties:
   type?:
     type: TypeResourceIdentifier
+    description: |
+      Defines the [Type](ctp:api:type:Type) that extends the Channel with [Custom Fields](/../api/projects/custom-fields).
+      If absent, any existing Type and Custom Fields are removed from the Channel.
   fields?:
     type: FieldContainer
+    description: |
+      Sets the [Custom Fields](/../api/projects/custom-fields) fields for the Channel.

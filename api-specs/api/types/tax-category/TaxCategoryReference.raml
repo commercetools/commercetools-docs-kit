@@ -1,9 +1,18 @@
 #%RAML 1.0 DataType
 (package): TaxCategory
-(docs-uri): https://docs.commercetools.com/http-api-projects-taxCategories.html#taxcategory
+(docs-uri): https://docs.commercetools.com/api/projects/taxCategories#taxcategoryreference
+(java-extends): com.commercetools.api.models.Identifiable<TaxCategory>
 type: Reference
 displayName: TaxCategoryReference
 discriminatorValue: tax-category
+description: |
+  [Reference](ctp:api:type:Reference) to a [TaxCategory](ctp:api:type:TaxCategory).
 properties:
   obj?:
     type: TaxCategory
+    description: |
+      Contains the representation of the expanded TaxCategory. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for TaxCategories.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [TaxCategory](ctp:api:type:TaxCategory).

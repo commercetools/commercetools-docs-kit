@@ -1,17 +1,23 @@
 #%RAML 1.0 DataType
 (package): CustomerGroup
-(docs-uri): https://docs.commercetools.com/http-api-projects-customerGroups.html#create-a-customergroup
+(docs-uri): https://docs.commercetools.com/api/projects/customerGroups#customergroupdraft
 displayName: CustomerGroupDraft
 type: object
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<CustomerGroupDraft>'
 properties:
   key?:
     type: string
-    description: User-defined unique identifier for the customer group.
+    description: |
+      User-defined unique identifier for the CustomerGroup.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
   groupName:
     type: string
     description: |
-      Unique value which must be different from any value used for `name` in [CustomerGroup](ctp:api:type:CustomerGroup) in the project.
+      Unique value which must be different from any value used for `name` in [CustomerGroup](ctp:api:type:CustomerGroup) in the Project.
       If not, a `DuplicateField` [error](/../api/errors#400-bad-request-1) is thrown.
   custom?:
     type: CustomFieldsDraft
-    description:
+    description: |
+      Custom Fields for the CustomerGroup.

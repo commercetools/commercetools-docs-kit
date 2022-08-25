@@ -1,7 +1,9 @@
 #%RAML 1.0 DataType
 (package): Order
+(docs-uri): https://docs.commercetools.com/api/projects/orders#returnitemdraft
 displayName: ReturnItemDraft
 type: object
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<ReturnItemDraft>'
 properties:
   quantity:
     type: number
@@ -14,3 +16,6 @@ properties:
     type: string
   shipmentState:
     type: ReturnShipmentState
+  custom?:
+    type: CustomFieldsDraft
+    description: Custom Fields of this return item.

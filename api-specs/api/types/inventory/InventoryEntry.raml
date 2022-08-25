@@ -1,26 +1,29 @@
 #%RAML 1.0 DataType
 (package): Inventory
-(docs-uri): https://docs.commercetools.com/http-api-projects-inventory.html#inventoryentry
+(docs-uri): https://docs.commercetools.com/api/projects/inventory#inventoryentry
 displayName: InventoryEntry
 (updateType): InventoryEntryUpdate
 (actionType): InventoryEntryUpdateAction
 type: BaseResource
-(java-extends): 'com.commercetools.api.models.DomainResource<InventoryEntry>'
+(java-extends): 'com.commercetools.api.models.DomainResource<InventoryEntry>, com.commercetools.api.models.Customizable<InventoryEntry>'
 properties:
   id:
     (identifier): true
     type: string
-    description: The unique ID of the inventory entry.
+    description: |
+      Unique identifier of the InventoryEntry.
   version:
     type: number
     format: int64
-    description: ''
+    description: |
+      Current version of the InventoryEntry.
   createdAt:
     type: datetime
-    description: ''
+    description: |
+      Date and time (UTC) the InventoryEntry was initially created.
   lastModifiedAt:
     type: datetime
-    description: ''
+    description: Date and time (UTC) the InventoryEntry was last updated.
   lastModifiedBy?:
     type: LastModifiedBy
     (beta): true
@@ -31,33 +34,40 @@ properties:
     (beta): true
     description: |
       Present on resources created after 1 February 2019 except for [events not tracked](/client-logging#events-tracked).
+  key?:
+    type: string
+    description: |
+      User-defined unique identifier of the InventoryEntry.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
   sku:
     type: string
-    description: ''
+    description: |
+      [ProductVariant](ctp:api:type:ProductVariant) `sku` of the InventoryEntry.
   supplyChannel?:
     type: ChannelReference
-    description: Optional connection to a particular supplier.
+    description: |
+      [Channel](ctp:api:type:Channel) that supplies this InventoryEntry.
   quantityOnStock:
     type: number
     format: int64
     description: |-
-      Overall amount of stock.
-      (available + reserved)
+      Overall amount of stock (`availableQuantity` + reserved).
   availableQuantity:
     type: number
     format: int64
-    description: |-
-      Available amount of stock.
-      (available means: `quantityOnStock` - reserved quantity)
+    description: |
+      Available amount of stock (`quantityOnStock` - reserved).
   restockableInDays?:
     type: number
     format: int64
-    description:
-      The time period in days, that tells how often this inventory entry is
-      restocked.
+    description: How often the InventoryEntry is restocked (in days).
   expectedDelivery?:
     type: datetime
-    description: The date and time of the next restock.
+    description: |
+      Date and time of the next restock.
   custom?:
     type: CustomFields
-    description: ''
+    description: |
+      Custom Fields of the InventoryEntry.

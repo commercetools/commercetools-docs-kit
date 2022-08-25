@@ -3,6 +3,7 @@
 (docs-uri): https://docs.commercetools.com/http-api-projects-carts.html#cartdraft
 displayName: CartDraft
 type: object
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<CartDraft>'
 properties:
   currency:
     type: CurrencyCode
@@ -10,7 +11,11 @@ properties:
       4217](https://en.wikipedia.org/wiki/ISO_4217).
   key?:
     type: string
-    description: User-specific unique identifier of the cart.
+    description: |
+      User-defined unique identifier for the Cart.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
   customerId?:
     type: string
     description: Id of an existing Customer.

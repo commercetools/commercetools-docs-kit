@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+(package): ProductSelection
+(docs-uri):
+(java-extends): com.commercetools.api.models.Identifiable<ProductSelection>
+type: Reference
+displayName: ProductSelectionReference
+discriminatorValue: product-selection
+description: |
+  [Reference](ctp:api:type:Reference) to a [ProductSelection](ctp:api:type:ProductSelection).
+properties:
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [ProductSelection](ctp:api:type:ProductSelection).
+  obj?:
+    type: ProductSelection
+    description: |
+      Contains the representation of the expanded ProductSelection. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for ProductSelections.
