@@ -38,7 +38,7 @@ module.exports = {
       resolve: '@commercetools-docs/gatsby-theme-learning',
       options: {
         auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
-        learnApiDomain: process.env.GATSBY_LEARNINGAPI_DOMAIN,
+        learnApiDomain: process.env.GATSBY_LEARNAPI_DOMAIN,
       },
     },
   ],
