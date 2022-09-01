@@ -27,12 +27,5 @@ module.exports = {
         auth0ClientId: 'nZwQWPaoTq8IIk67VV8o0Ska9lGp4hnW',
       },
     },
-    {
-      resolve: '@commercetools-docs/gatsby-theme-learning',
-      options: {
-        auth0Domain: 'commercetools-professionals.eu.auth0.com',
-        learnApiDomain: 'https://api.learn.commercetools.com',
-      },
-    },
   ],
 };
