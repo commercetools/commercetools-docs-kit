@@ -9,7 +9,6 @@ module.exports = {
         keepPropTypes: true,
       },
     ],
-    '@babel/preset-env',
     '@babel/preset-react',
   ],
   plugins: ['babel-plugin-typescript-to-proptypes'],
