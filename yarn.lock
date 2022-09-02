@@ -3477,9 +3477,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-learning@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@commercetools-docs/gatsby-theme-learning@npm:1.0.0"
+"@commercetools-docs/gatsby-theme-learning@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@commercetools-docs/gatsby-theme-learning@npm:1.1.0"
   dependencies:
     "@auth0/auth0-react": 1.10.2
     "@commercetools-uikit/design-system": ^15.0.0
@@ -3488,18 +3488,19 @@ __metadata:
     "@commercetools-uikit/primary-button": ^15.0.0
     "@mdx-js/react": 1.6.22
     react-intersection-observer: ^9.3.5
-  checksum: d87d41e1fbb3a20840ac0f416ad7991e85532439cb1d52b4968cf53c4b45a5fce45c02f2d66206a574912957b8a120bfef466f3eaf192db6914b3280d5f2f457
+  checksum: 26827c9f1d28c3f80abe119dba8d54129c639bca742271d5132aa245603c1d84a554fe784766857cc78e1a4f5e6fac93674244a51005f8cb167aaeded417ca17
   languageName: node
   linkType: hard
 
-"@commercetools-docs/gatsby-theme-sso-ui-kit@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@commercetools-docs/gatsby-theme-sso-ui-kit@npm:1.0.0"
+"@commercetools-docs/gatsby-theme-sso-ui-kit@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@commercetools-docs/gatsby-theme-sso-ui-kit@npm:1.1.0"
   dependencies:
     "@auth0/auth0-react": 1.10.2
     "@commercetools-uikit/icons": ^15.1.0
     "@commercetools-uikit/secondary-button": ^15.1.0
-  checksum: 3fafed694dbf996c9e9c33d8a629d4c4120b48f3a50ec972ec0c079fa650ae9db19a1ae65e7c4eda8f1894bab00fe10ccd3f67abc69e6b0fa1302011c34e7ea6
+    md5: 2.3.0
+  checksum: 57d20c28ddd833f7895cd12196c3dec70ddfa84dbba98442e1dc5ee06874536243baff3a36966d026de8531194664500e653658ca1073de0f8aaf1abd7b039e3
   languageName: node
   linkType: hard
 
@@ -4443,8 +4444,8 @@ __metadata:
     "@commercetools-docs/gatsby-theme-code-examples": 19.3.0
     "@commercetools-docs/gatsby-theme-constants": 19.3.0
     "@commercetools-docs/gatsby-theme-docs": 19.4.0
-    "@commercetools-docs/gatsby-theme-learning": 1.0.0
-    "@commercetools-docs/gatsby-theme-sso-ui-kit": 1.0.0
+    "@commercetools-docs/gatsby-theme-learning": 1.1.0
+    "@commercetools-docs/gatsby-theme-sso-ui-kit": 1.1.0
     "@commercetools-docs/ui-kit": 19.3.0
     "@commercetools-uikit/avatar": 15.2.1
     "@commercetools-uikit/icons": ^15.0.0
@@ -11394,6 +11395,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"charenc@npm:0.0.2":
+  version: 0.0.2
+  resolution: "charenc@npm:0.0.2"
+  checksum: 81dcadbe57e861d527faf6dd3855dc857395a1c4d6781f4847288ab23cffb7b3ee80d57c15bba7252ffe3e5e8019db767757ee7975663ad2ca0939bb8fcaf2e5
+  languageName: node
+  linkType: hard
+
 "check-more-types@npm:2.24.0, check-more-types@npm:^2.24.0":
   version: 2.24.0
   resolution: "check-more-types@npm:2.24.0"
@@ -12504,6 +12512,13 @@ __metadata:
     shebang-command: ^1.2.0
     which: ^1.2.9
   checksum: f893bb0d96cd3d5751d04e67145bdddf25f99449531a72e82dcbbd42796bbc8268c1076c6b3ea51d4d455839902804b94bc45dfb37ecbb32ea8e54a6741c3ab9
+  languageName: node
+  linkType: hard
+
+"crypt@npm:0.0.2":
+  version: 0.0.2
+  resolution: "crypt@npm:0.0.2"
+  checksum: baf4c7bbe05df656ec230018af8cf7dbe8c14b36b98726939cef008d473f6fe7a4fad906cfea4062c93af516f1550a3f43ceb4d6615329612c6511378ed9fe34
   languageName: node
   linkType: hard
 
@@ -19025,7 +19040,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-buffer@npm:^1.1.5":
+"is-buffer@npm:^1.1.5, is-buffer@npm:~1.1.6":
   version: 1.1.6
   resolution: "is-buffer@npm:1.1.6"
   checksum: 4a186d995d8bbf9153b4bd9ff9fd04ae75068fe695d29025d25e592d9488911eeece84eefbd8fa41b8ddcc0711058a71d4c466dcf6f1f6e1d83830052d8ca707
@@ -21897,6 +21912,17 @@ __metadata:
   bin:
     md5-file: cli.js
   checksum: c606a00ff58adf5428e8e2f36d86e5d3c7029f9688126faca302cd83b5e92cac183a62e1d1f05fae7c2614e80f993326fd0a8d6a3a913c41ec7ea0eefc25aa76
+  languageName: node
+  linkType: hard
+
+"md5@npm:2.3.0":
+  version: 2.3.0
+  resolution: "md5@npm:2.3.0"
+  dependencies:
+    charenc: 0.0.2
+    crypt: 0.0.2
+    is-buffer: ~1.1.6
+  checksum: a63cacf4018dc9dee08c36e6f924a64ced735b37826116c905717c41cebeb41a522f7a526ba6ad578f9c80f02cb365033ccd67fe186ffbcc1a1faeb75daa9b6e
   languageName: node
   linkType: hard
 
