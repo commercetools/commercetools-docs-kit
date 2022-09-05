@@ -3,6 +3,7 @@ const {
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
 
 module.exports = {
+  jsxRuntime: 'automatic',
   flags: {
     DEV_SSR: true,
     FAST_DEV: true,
