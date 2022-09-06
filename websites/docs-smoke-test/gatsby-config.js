@@ -33,15 +33,15 @@ module.exports = {
     {
       resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
       options: {
-        auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
-        auth0ClientId: process.env.GATSBY_AUTH0_CLIENTID,
+        auth0Domain: 'commercetools-professionals.eu.auth0.com',
+        auth0ClientId: 'nZwQWPaoTq8IIk67VV8o0Ska9lGp4hnW',
       },
     },
     {
       resolve: '@commercetools-docs/gatsby-theme-learning',
       options: {
-        auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
-        learnApiDomain: process.env.GATSBY_LEARNAPI_DOMAIN,
+        auth0Domain: 'commercetools-professionals.eu.auth0.com',
+        learnApiDomain: 'https://api.learn.commercetools.com/',
       },
     },
   ],
