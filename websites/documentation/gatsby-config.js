@@ -23,8 +23,8 @@ module.exports = {
     {
       resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
       options: {
-        auth0Domain: 'commercetools-professionals.eu.auth0.com',
-        auth0ClientId: 'nZwQWPaoTq8IIk67VV8o0Ska9lGp4hnW',
+        auth0Domain: 'commercetools.eu.auth0.com',
+        auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
       },
     },
   ],
