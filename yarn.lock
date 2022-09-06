@@ -4482,6 +4482,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 19.3.0
     "@commercetools-docs/gatsby-theme-docs": 19.4.0
+    "@commercetools-docs/gatsby-theme-sso-ui-kit": 1.1.0
     gatsby: 4.13.1
     gatsby-cli: 4.13.0
     react: 17.0.2
