@@ -1,3 +1,5 @@
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
@@ -23,8 +25,8 @@ module.exports = {
     {
       resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
       options: {
-        auth0Domain: 'commercetools.eu.auth0.com',
-        auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
+        auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
+        auth0ClientId: process.env.GATSBY_AUTH0_CLIENTID,
       },
     },
   ],
