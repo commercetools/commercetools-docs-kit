@@ -9,5 +9,5 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['babel-plugin-typescript-to-proptypes'],
+  plugins: ['babel-plugin-typescript-to-proptypes', '@babel/plugin-syntax-jsx'],
 };
