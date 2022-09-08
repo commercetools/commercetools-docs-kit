@@ -62,6 +62,9 @@ jobs:
         run: yarn build
         env:
           ENABLE_SEARCH: 'true'
+          GATSBY_AUTH0_DOMAIN: ${{ secrets.GATSBY_AUTH0_DOMAIN }}
+          GATSBY_AUTH0_CLIENTID: ${{ secrets.GATSBY_AUTH0_CLIENTID }}
+          GATSBY_LEARNAPI_DOMAIN: ${{ secrets.GATSBY_LEARNAPI_DOMAIN }}
 
       - name: Running linters and tests
         run: |

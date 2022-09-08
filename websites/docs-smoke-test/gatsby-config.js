@@ -1,5 +1,8 @@
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+
 const isProd = process.env.NODE_ENV === 'production';
 const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
+
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
@@ -27,5 +30,19 @@ module.exports = {
         '@commercetools-docs/gatsby-theme-constants',
       ],
     }),
+    {
+      resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
+      options: {
+        auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
+        auth0ClientId: process.env.GATSBY_AUTH0_CLIENTID,
+      },
+    },
+    {
+      resolve: '@commercetools-docs/gatsby-theme-learning',
+      options: {
+        auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
+        learnApiDomain: process.env.GATSBY_LEARNAPI_DOMAIN,
+      },
+    },
   ],
 };

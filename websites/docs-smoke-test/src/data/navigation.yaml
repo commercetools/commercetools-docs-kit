@@ -39,6 +39,8 @@
       path: /components/child-section-navigation
     - title: Mermaid Diagrams
       path: /components/mermaid-diagram
+    - title: Quiz
+      path: /components/quiz
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
   pages:
     - title: Page with some very long title too much for our innocent API to handle

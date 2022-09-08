@@ -4,8 +4,7 @@ module.exports = {
     [
       '@commercetools-frontend/babel-preset-mc-app',
       {
-        // TODO: change this to `automatic` when using the new runtime
-        runtime: 'classic',
+        runtime: 'automatic',
         keepPropTypes: true,
       },
     ],
