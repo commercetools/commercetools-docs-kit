@@ -28,6 +28,13 @@ module.exports = {
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants',
+        {
+          resolve: '@commercetools-docs/gatsby-theme-learning',
+          options: {
+            auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
+            learnApiDomain: process.env.GATSBY_LEARNAPI_DOMAIN,
+          },
+        },
       ],
     }),
     {
@@ -35,13 +42,6 @@ module.exports = {
       options: {
         auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
         auth0ClientId: process.env.GATSBY_AUTH0_CLIENTID,
-      },
-    },
-    {
-      resolve: '@commercetools-docs/gatsby-theme-learning',
-      options: {
-        auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
-        learnApiDomain: process.env.GATSBY_LEARNAPI_DOMAIN,
       },
     },
   ],
