@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 19.5.2
+
+### Patch Changes
+
+- [#1367](https://github.com/commercetools/commercetools-docs-kit/pull/1367) [`1c857112`](https://github.com/commercetools/commercetools-docs-kit/commit/1c8571124b6821f1bfd63789d4612b1a93705da3) Thanks [@timonrey](https://github.com/timonrey)! - Allow Regex properties to be used with any type, not only string.
+
 ## 19.5.1
 
 ### Patch Changes

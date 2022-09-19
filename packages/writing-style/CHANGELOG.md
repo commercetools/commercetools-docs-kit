@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.3.0
+
+### Minor Changes
+
+- [#1350](https://github.com/commercetools/commercetools-docs-kit/pull/1350) [`2d3bf6ef`](https://github.com/commercetools/commercetools-docs-kit/commit/2d3bf6efc3c4768cc3056d47da9ecb3fe21a77ae) Thanks [@naveenchkrvrthy](https://github.com/naveenchkrvrthy)! - adds words to word suggestion list
+
 ## 3.2.0
 
 ### Minor Changes
