@@ -306,7 +306,6 @@ const CodeBlock = (props: CodeBlockProps) => {
                     ]
                   ),
                 }}
-                isOpen={true}
               >
                 <CopyArea onClick={handleCopyToClipboardClick}>
                   <ClipboardIcon />
