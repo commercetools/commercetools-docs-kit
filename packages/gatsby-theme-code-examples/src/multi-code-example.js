@@ -1,4 +1,4 @@
-import React from 'react';
+import { Children } from 'react';
 import PropTypes from 'prop-types';
 import {
   ContentNotifications,
@@ -13,7 +13,7 @@ function MultiCodeExample(props) {
   try {
     return (
       <MultiCodeBlock title={props.title} secondaryTheme={props.secondaryTheme}>
-        {React.Children.map(props.children, (child, index) => {
+        {Children.map(props.children, (child, index) => {
           if (!child.props || child.props.mdxType !== 'CodeExample') {
             throw new Error(
               `Children of <MultiLanguageCodeExamples> must be a <CodeExample> component and not "${

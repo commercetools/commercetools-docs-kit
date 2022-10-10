@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from '@commercetools-docs/gatsby-theme-docs';
 import { locationForType } from '../hooks/use-type-locations';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { css, keyframes } from '@emotion/react';
@@ -66,9 +66,9 @@ const MenuButton = styled.button`
 `;
 
 const LayoutSidebar = (props) => {
-  const [menuButtonNode, setMenuButtonNode] = React.useState();
-  const [modalPortalNode, setModalPortalNode] = React.useState();
-  React.useEffect(() => {
+  const [menuButtonNode, setMenuButtonNode] = useState();
+  const [modalPortalNode, setModalPortalNode] = useState();
+  useEffect(() => {
     setMenuButtonNode(document.getElementById('sidebar-menu-toggle'));
     setModalPortalNode(document.getElementById('modal-portal'));
   }, []);

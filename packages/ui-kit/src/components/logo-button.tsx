@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { dimensions, colors, typography } from '../design-system';

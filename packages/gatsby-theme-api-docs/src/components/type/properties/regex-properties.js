@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Markdown, designSystem } from '@commercetools-docs/ui-kit';

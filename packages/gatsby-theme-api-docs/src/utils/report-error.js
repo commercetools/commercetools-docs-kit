@@ -1,4 +1,3 @@
-import React from 'react';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
 
 function reportError(errorMsg) {

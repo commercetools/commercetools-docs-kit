@@ -1,4 +1,3 @@
-import React from 'react';
 import useSWR from 'swr';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './../content-notifications';

@@ -1,11 +1,11 @@
-import React from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SearchInput from './search-input';
 
-const AlgoliaSearch = React.lazy(() => import('./algolia-search'));
+const AlgoliaSearch = lazy(() => import('./algolia-search'));
 
 const searchInputId = 'search-bar';
 
@@ -122,9 +122,9 @@ const InputPlaceholder = () => (
 );
 
 const SearchDialog = (props) => {
-  const ref = React.useRef();
+  const ref = useRef();
   const { onClose } = props;
-  React.useEffect(() => {
+  useEffect(() => {
     const onKeyPress = (event) => {
       // Listen to "escape" key events to close the dialog
       if (event.key.toLowerCase() === 'escape') {
@@ -148,7 +148,7 @@ const SearchDialog = (props) => {
               event.stopPropagation();
             }}
           >
-            <React.Suspense fallback={<InputPlaceholder />}>
+            <Suspense fallback={<InputPlaceholder />}>
               <AlgoliaSearch searchInputId={searchInputId} ref={ref}>
                 <SearchInput
                   ref={ref}
@@ -157,7 +157,7 @@ const SearchDialog = (props) => {
                   onClose={props.onClose}
                 />
               </AlgoliaSearch>
-            </React.Suspense>
+            </Suspense>
           </Content>
         </Center>
       </div>

@@ -1,11 +1,11 @@
-import React from 'react';
+import { useCallback } from 'react';
 import { useLocation, navigate } from '@reach/router';
 import { encode, decode } from 'qss';
 
 const useReleaseNotesFilterParams = () => {
   const location = useLocation();
 
-  const setFilterParams = React.useCallback(
+  const setFilterParams = useCallback(
     (params) => {
       const currentQueryParams = decode(location.search.substring(1));
       const newQueryString = encode({

@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
+import { createContext, useContext } from 'react';
 
-export const PageDataContext = React.createContext({});
+export const PageDataContext = createContext({});
 
-export const usePageData = () => React.useContext(PageDataContext);
+export const usePageData = () => useContext(PageDataContext);

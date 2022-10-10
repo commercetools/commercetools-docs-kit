@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { designSystem, IsoDateFormat } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';

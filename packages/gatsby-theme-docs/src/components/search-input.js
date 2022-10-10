@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
@@ -67,10 +67,10 @@ const SearchInputIcon = styled.span`
   ${(props) => `${props.position}: ${designSystem.dimensions.spacings.xs};`}
 `;
 
-const SearchInput = React.forwardRef((props, ref) => {
+const SearchInput = forwardRef((props, ref) => {
   const { onFocus } = props;
-  const [isActive, setIsActive] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isActive, setIsActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleFocus = (event) => {
     if (props.isDisabled) return;
@@ -82,7 +82,7 @@ const SearchInput = React.forwardRef((props, ref) => {
     setIsActive(false);
     props.onClose();
   };
-  React.useEffect(() => {
+  useEffect(() => {
     if (isLoading) {
       setIsLoading(false);
     }

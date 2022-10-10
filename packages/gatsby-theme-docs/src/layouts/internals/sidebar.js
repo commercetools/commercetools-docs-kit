@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
@@ -7,11 +7,14 @@ import styled from '@emotion/styled';
 import { BackIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
+import {
+  designSystem,
+  createStyledIcon,
+  Icons,
+} from '@commercetools-docs/ui-kit';
 import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
-import { Icons } from '@commercetools-docs/ui-kit';
 import LayoutHeaderLogo from './layout-header-logo';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
@@ -22,7 +25,7 @@ const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 // `connect` to perform sync updates to a ref to save the latest props after
 // a render is actually committed to the DOM.
 const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -172,9 +175,9 @@ const SidebarLinkWrapper = (props) => {
   const cachedScrollPosition = (location.state || {}).sidebarScrollPosition;
   const locationPath = trimTrailingSlash(location.pathname);
 
-  const linkRef = React.useRef();
+  const linkRef = useRef();
 
-  const restoreScrollPosition = React.useCallback(() => {
+  const restoreScrollPosition = useCallback(() => {
     document
       .getElementById(scrollContainerId)
       .scrollBy(0, cachedScrollPosition);
@@ -230,7 +233,7 @@ SidebarLinkWrapper.propTypes = {
 
 const SidebarChapter = (props) => {
   const elemId = `sidebar-chapter-${props.index}`;
-  const getChapterDOMElement = React.useCallback(
+  const getChapterDOMElement = useCallback(
     () => document.getElementById(elemId),
     [elemId]
   );

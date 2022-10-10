@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement, Fragment } from 'react';
 import styled from '@emotion/styled';
 import unified from 'unified';
 import filter from 'unist-util-filter';
@@ -61,8 +61,8 @@ const markdownFragmentToReact = (
     .use(safeCustomPlugin)
     .use(remarkRehype)
     .use(rehypeReact, {
-      createElement: React.createElement,
-      Fragment: React.Fragment,
+      createElement,
+      Fragment,
       components: {
         p: Markdown.Paragraph,
         a: Link,
