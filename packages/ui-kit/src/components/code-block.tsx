@@ -1,4 +1,3 @@
-import type { Theme } from '@emotion/react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled';
@@ -6,18 +5,29 @@ import { css } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import { createSequentialId } from '@commercetools-uikit/utils';
-import { ThemeProvider } from '@commercetools-uikit/design-system';
 import Highlight, { type Language, defaultProps } from 'prism-react-renderer';
-import { colors, dimensions, typography, tokens } from '../design-system';
+import {
+  colors,
+  dimensions,
+  typography,
+  tokens,
+  tokensToCssVars,
+} from '../design-system';
 import themePrimary from '../prism-themes/commercetools';
 import themeSecondary from '../prism-themes/commercetoolsLight';
 import copyToClipboard from '../utils/copy-to-clipboard';
 
-const sequentialId = createSequentialId('theme-container-code-block-');
+type CodeBlockProps = {
+  isMulti?: boolean;
+  secondaryTheme?: boolean;
+  language?: string;
+  highlightLines?: number[];
+  noPromptLines?: number[];
+  content: string;
+};
 
 const HighlightedContainer = styled.div`
-  background-color: var(--surface-for-code-block);
+  background-color: ${tokens.surfaceForCodeBlock};
   border-radius: ${tokens.borderRadiusForCodeBlock};
   margin: 0;
   padding: ${dimensions.spacings.s} ${dimensions.spacings.xs}
@@ -27,7 +37,7 @@ const HighlightedContainer = styled.div`
 const Preformatted = styled.pre`
   font-family: ${typography.fontFamilies.code};
   font-size: ${typography.fontSizes.small};
-  background-color: var(--surface-for-code-block) !important;
+  background-color: ${tokens.surfaceForCodeBlock} !important;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -36,11 +46,11 @@ const Preformatted = styled.pre`
 const CopyArea = styled.div`
   cursor: pointer;
   svg {
-    fill: var(--surface-copy-icon-for-code-block);
+    fill: ${tokens.surfaceCopyIconForCodeBlock};
   }
   :hover {
     svg {
-      fill: var(--surface-copy-icon-hover-for-code-block);
+      fill: ${tokens.surfaceCopyIconHoverForCodeBlock};
     }
   }
 `;
@@ -50,9 +60,9 @@ const TooltipBodyComponent = (props: { children?: React.ReactNode }) => {
   return (
     <div
       css={css`
-        background-color: var(--surface-copy-tooltip-for-code-block);
+        background-color: ${tokens.surfaceCopyTooltipForCodeBlock};
         border-radius: ${tokens.borderRadiusForTooltip};
-        color: var(--text-copy-tooltip-for-code-block);
+        color: ${tokens.textCopyTooltipForCodeBlock};
         font-size: ${typography.fontSizes.extraSmall};
         padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
       `}
@@ -77,7 +87,7 @@ const getLineStyles = (options: {
         margin: 0 0 0 -${dimensions.spacings.m};
         padding: 0 ${dimensions.spacings.s} 0 0;
         color: ${options.shouldShowPrompt
-          ? 'var(--surface-prompt-for-code-block)'
+          ? tokens.surfacePromptForCodeBlock
           : 'transparent'};
       }
     `;
@@ -87,7 +97,7 @@ const getLineStyles = (options: {
       ? `calc(100% - ${dimensions.spacings.s})`
       : '100%';
     highlightLineStyles = css`
-      background-color: var(--surface-line-highlight-for-code-block);
+      background-color: ${tokens.surfaceLineHighlightForCodeBlock};
       width: ${width};
     `;
   }
@@ -213,10 +223,6 @@ const CodeBlock = (props: CodeBlockProps) => {
     }, 1500);
   };
 
-  const themeContainerId = sequentialId();
-  const themeOverrides =
-    colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'];
-
   return (
     <Highlight
       {...defaultProps}
@@ -231,11 +237,17 @@ const CodeBlock = (props: CodeBlockProps) => {
         getLineProps,
         getTokenProps,
       }) => (
-        <div id={themeContainerId}>
-          <ThemeProvider
-            parentSelector={() => document.getElementById(themeContainerId)}
-            themeOverrides={themeOverrides}
-          />
+        <div
+          style={
+            props.isMulti
+              ? {}
+              : tokensToCssVars(
+                  colors.light.codeBlocks[
+                    props.secondaryTheme ? 'secondary' : 'primary'
+                  ]
+                )
+          }
+        >
           <HighlightedContainer>
             <SpacingsInline scale="xs" alignItems="flex-start">
               <Preformatted className={className} style={style}>
@@ -287,6 +299,14 @@ const CodeBlock = (props: CodeBlockProps) => {
                   TooltipWrapperComponent,
                   BodyComponent: TooltipBodyComponent,
                 }}
+                styles={{
+                  body: tokensToCssVars(
+                    colors.light.codeBlocks[
+                      props.secondaryTheme ? 'secondary' : 'primary'
+                    ]
+                  ),
+                }}
+                isOpen={true}
               >
                 <CopyArea onClick={handleCopyToClipboardClick}>
                   <ClipboardIcon />
@@ -298,14 +318,6 @@ const CodeBlock = (props: CodeBlockProps) => {
       )}
     </Highlight>
   );
-};
-
-type CodeBlockProps = {
-  secondaryTheme?: boolean;
-  language?: string;
-  highlightLines?: number[];
-  noPromptLines?: number[];
-  content: string;
 };
 
 export default CodeBlock;

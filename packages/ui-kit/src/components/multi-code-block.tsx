@@ -2,25 +2,34 @@ import React from 'react';
 import reactIs from 'react-is';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import { createSequentialId } from '@commercetools-uikit/utils';
-import { ThemeProvider } from '@commercetools-uikit/design-system';
-import { colors, dimensions, typography, tokens } from '../design-system';
+import {
+  colors,
+  dimensions,
+  typography,
+  tokens,
+  tokensToCssVars,
+} from '../design-system';
 import parseCodeBlockOptions from '../utils/code-block-parse-options';
 import CodeBlock from './code-block';
 
-const sequentialId = createSequentialId('theme-container-multi-code-block-');
+type OneOrManyChildren = React.ReactElement | React.ReactElement[];
+type MultiCodeBlockProps = {
+  secondaryTheme?: boolean;
+  title?: string;
+  children: OneOrManyChildren;
+};
 
 export const Container = styled.div`
-  background-color: var(--surface-for-code-block);
-  border: 1px solid var(--border-for-code-block);
+  background-color: ${tokens.surfaceForCodeBlock};
+  border: 1px solid ${tokens.borderForCodeBlock};
   border-radius: ${tokens.borderRadiusForCodeBlock};
   word-break: break-word;
 `;
 const Header = styled.div`
-  background-color: var(--surface-header-for-code-block);
+  background-color: ${tokens.surfaceHeaderForCodeBlock};
   border-radius: ${tokens.borderRadiusForCodeBlock}
     ${tokens.borderRadiusForCodeBlock} 0 0;
-  border-bottom: 1px solid var(--border-for-code-block);
+  border-bottom: 1px solid ${tokens.borderForCodeBlock};
   padding: ${dimensions.spacings.s} ${dimensions.spacings.m};
 `;
 const HeaderInner = styled.div`
@@ -29,10 +38,10 @@ const HeaderInner = styled.div`
   grid-template-columns: auto 1fr;
 `;
 const HeaderText = styled.span`
-  color: var(--text-header-for-code-block);
+  color: ${tokens.textHeaderForCodeBlock};
 `;
 
-const caretSvgUrl = `url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Icons' stroke='none' stroke-width='1' fill-rule='evenodd'%3E%3Cg id='MC-icon-set' transform='translate(-168.000000, -936.000000)' fill='var(--surface-language-dropdown-for-code-block)'%3E%3Cg id='Directions' transform='translate(24.000000, 888.000000)'%3E%3Cg id='Caret-Down' transform='translate(144.000000, 48.000000)'%3E%3Cpath d='M20.6658731,7.4053255 C20.4433682,7.16948908 20.1796129,7.05166867 19.8748538,7.05166867 L4.12508466,7.05166867 C3.82020235,7.05166867 3.55663185,7.16948908 3.33394217,7.4053255 C3.11125249,7.64142273 3,7.92055342 3,8.24323919 C3,8.56585976 3.11125249,8.84499045 3.33394217,9.08089208 L11.2088575,17.4207121 C11.4317935,17.6565485 11.695364,17.7746297 12,17.7746297 C12.304636,17.7746297 12.5684528,17.6565485 12.7909578,17.4207121 L20.6658731,9.08082687 C20.8883165,8.84499045 21,8.56585976 21,8.24317399 C21,7.92055342 20.8883165,7.64142273 20.6658731,7.4053255 L20.6658731,7.4053255 Z' id='shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
+const caretSvgUrl = `url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Icons' stroke='none' stroke-width='1' fill-rule='evenodd'%3E%3Cg id='MC-icon-set' transform='translate(-168.000000, -936.000000)' fill='${tokens.surfaceLanguageDropdownForCodeBlock}'%3E%3Cg id='Directions' transform='translate(24.000000, 888.000000)'%3E%3Cg id='Caret-Down' transform='translate(144.000000, 48.000000)'%3E%3Cpath d='M20.6658731,7.4053255 C20.4433682,7.16948908 20.1796129,7.05166867 19.8748538,7.05166867 L4.12508466,7.05166867 C3.82020235,7.05166867 3.55663185,7.16948908 3.33394217,7.4053255 C3.11125249,7.64142273 3,7.92055342 3,8.24323919 C3,8.56585976 3.11125249,8.84499045 3.33394217,9.08089208 L11.2088575,17.4207121 C11.4317935,17.6565485 11.695364,17.7746297 12,17.7746297 C12.304636,17.7746297 12.5684528,17.6565485 12.7909578,17.4207121 L20.6658731,9.08082687 C20.8883165,8.84499045 21,8.56585976 21,8.24317399 C21,7.92055342 20.8883165,7.64142273 20.6658731,7.4053255 L20.6658731,7.4053255 Z' id='shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
 const LanguagesDropDownWrapper = styled.div`
   background-image: ${caretSvgUrl};
   background-repeat: no-repeat, repeat;
@@ -43,7 +52,7 @@ const LanguagesDropDown = styled.select`
   display: block;
   font-size: ${typography.fontSizes.body};
   line-height: ${typography.lineHeights.body};
-  color: var(--surface-language-dropdown-for-code-block);
+  color: ${tokens.surfaceLanguageDropdownForCodeBlock};
   padding-right: ${dimensions.spacings.m};
   box-sizing: border-box;
   cursor: pointer;
@@ -60,7 +69,7 @@ const LanguagesDropDown = styled.select`
   }
 
   :hover {
-    color: var(--surface-language-dropdown-hover-for-code-block);
+    color: ${tokens.surfaceLanguageDropdownHoverForCodeBlock};
   }
 
   :focus {
@@ -106,10 +115,6 @@ function MultiCodeBlock(props: MultiCodeBlockProps) {
     setSelected(event.target.value);
   }, []);
 
-  const themeContainerId = sequentialId();
-  const themeOverrides =
-    colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'];
-
   let selectedElement: React.ReactElement | undefined;
   if (Array.isArray(props.children)) {
     selectedElement =
@@ -120,11 +125,11 @@ function MultiCodeBlock(props: MultiCodeBlockProps) {
   }
 
   return (
-    <div id={themeContainerId}>
-      <ThemeProvider
-        parentSelector={() => document.getElementById(themeContainerId)}
-        themeOverrides={themeOverrides}
-      />
+    <div
+      style={tokensToCssVars(
+        colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary']
+      )}
+    >
       <Container>
         {props.title || langs.length > 1 ? (
           <Header>
@@ -162,19 +167,13 @@ function MultiCodeBlock(props: MultiCodeBlockProps) {
 
         {selectedElement &&
           React.cloneElement(selectedElement, {
+            isMulti: true,
             secondaryTheme: props.secondaryTheme,
           })}
       </Container>
     </div>
   );
 }
-
-type OneOrManyChildren = React.ReactElement | React.ReactElement[];
-type MultiCodeBlockProps = {
-  secondaryTheme?: boolean;
-  title?: string;
-  children: OneOrManyChildren;
-};
 
 export default MultiCodeBlock;
 

@@ -1,3 +1,4 @@
+import kebabCase from 'lodash.kebabcase';
 import { designTokens } from '@commercetools-uikit/design-system';
 
 const rootFontSizeNumber = 16;
@@ -129,14 +130,12 @@ export const colors: ThemeColors = {
     // We support 2 theme versions: a primary one and a secondary one.
     // This is not to be confused with a (potential) website theme, hence
     // the 2 versions being grouped together.
-    // The code block theme is controlled by a prop, which will use the
-    // emotion theming provider to inject the correct version of a theme.
+    // The code block theme is controlled by a prop `secondaryTheme` to inject
+    // the correct CSS variables.
     //
-    //   <ThemeProvider
-    //     theme={{
-    //       codeBlockColors: colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
-    //     }}
-    //   >
+    //   <div style={tokensToCssVars(
+    //     colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary']
+    //   )}>
     //
     // Do not use these properties directly, but always through an emotion theme provider.
     codeBlocks: {
@@ -192,6 +191,27 @@ export const tokens = {
   shadowForClickableCardOnHover: `0 14px 28px 0 rgba(0, 0, 0, 0.25),
   0 10px 10px 0 rgba(0, 0, 0, 0.23)`,
   shadowForRssFeedTable: designTokens.shadow7,
+
+  // Code blocks
+  borderForCodeBlock: 'var(--border-for-code-block)',
+  surfaceForCodeBlock: 'var(--surface-for-code-block)',
+  surfaceHeaderForCodeBlock: 'var(--surface-header-for-code-block)',
+  surfaceLanguageDropdownForCodeBlock:
+    'var(--surface-language-dropdown-for-code-block)',
+  surfaceLanguageDropdownHoverForCodeBlock:
+    'var(--surface-language-dropdown-hover-for-code-block)',
+  textHeaderForCodeBlock: 'var(--text-header-for-code-block)',
+  surfaceCopyIconForCodeBlock: 'var(--surface-copy-icon-for-code-block)',
+  surfaceCopyIconHoverForCodeBlock:
+    'var(--surface-copy-icon-hover-for-code-block)',
+  surfaceCopyTooltipForCodeBlock: 'var(--surface-copy-tooltip-for-code-block)',
+  textCopyTooltipForCodeBlock: 'var(--text-copy-tooltip-for-code-block)',
+  surfaceLineHighlightForCodeBlock:
+    'var(--surface-line-highlight-for-code-block)',
+  surfacePromptForCodeBlock: 'var(--surface-prompt-for-code-block)',
+
+  // Globals
+  websitePrimaryColor: 'var(--website-primary-color)',
 } as const;
 
 export const dimensions = {
@@ -299,3 +319,9 @@ export const typography = {
     cardSmallTitle: pxToRem('26px'),
   },
 } as const;
+
+// TODO: expose from uikit?
+export const tokensToCssVars = (obj: Record<string, string>) =>
+  Object.fromEntries(
+    Object.entries(obj).map(([key, value]) => [`--${kebabCase(key)}`, value])
+  );

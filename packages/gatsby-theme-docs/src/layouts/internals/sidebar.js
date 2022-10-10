@@ -57,13 +57,13 @@ const SidebarScrollFader = styled.div`
   position: absolute;
 `;
 const WebsiteTitle = styled.div`
-  color: var(--website-primary-color);
+  color: ${designSystem.tokens.websitePrimaryColor};
   padding: ${designSystem.dimensions.spacings.m};
   font-size: ${designSystem.typography.fontSizes.h4};
 `;
 const WebsiteTitleLink = styled.a`
   text-decoration: none;
-  color: var(--website-primary-color);
+  color: ${designSystem.tokens.websitePrimaryColor};
   :hover {
     text-decoration: underline;
   }
