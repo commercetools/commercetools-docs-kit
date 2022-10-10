@@ -11,9 +11,13 @@ describe('Menu navigation', () => {
         cy.findByText('Docs Smoke Test').should('be.visible');
         cy.findByText('Release notes').should('be.visible');
       });
-      cy.percySnapshot(cy.state('runnable').fullTitle(), {
-        widths: [956],
-      });
+      cy.percySnapshot(
+        // @ts-ignore
+        cy.state('runnable').fullTitle(),
+        {
+          widths: [956],
+        }
+      );
     });
   });
 });

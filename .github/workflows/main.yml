@@ -162,14 +162,6 @@ jobs:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_API_SMOKE_TESTS_E2E }}
           CYPRESS_CI: 'true'
 
-      - name: Uploading Cypress artifacts
-        # Test run video was always captured, so this action uses "always()" condition
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
-
       - name: Check local links including anchors
         if: ${{ env.DEPLOY_ENV == 'Preview' }}
         working-directory: public
