@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { ThemeProvider as UiKitThemeProvider } from '@emotion/react';
+import { ThemeProvider as UiKitThemeProvider } from '@commercetools-uikit/design-system';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import Stamp from '@commercetools-uikit/stamp';
+import { createSequentialId } from '@commercetools-uikit/utils';
 import { designSystem } from '@commercetools-docs/ui-kit';
+
+const sequentialId = createSequentialId('theme-container-release-note-body-');
 
 const DateElement = styled.div`
   line-height: ${designSystem.typography.lineHeights.small};
@@ -20,7 +23,9 @@ const Topics = styled.div`
     border-left: 1px solid ${designSystem.colors.light.surfaceSecondary3};
   }
 `;
-const stampTheme = {
+
+const themeContainerId = sequentialId();
+const themeOverrides = {
   fontSizeDefault: designSystem.typography.fontSizes.extraSmall,
   // Override the `critical` style which is used for the "fix" type
   colorError95: designSystem.colors.light.surfaceForReleaseNoteTypeFix,
@@ -31,11 +36,15 @@ const ReleaseNoteBody = (props) => (
   <SpacingsStack scale="m">
     <SpacingsStack scale="s">
       <DateElement>{props.date}</DateElement>
-      <UiKitThemeProvider theme={stampTheme}>
+      <div id={themeContainerId}>
+        <UiKitThemeProvider
+          parentSelector={() => document.getElementById(themeContainerId)}
+          themeOverrides={themeOverrides}
+        />
         <SpacingsInline>
           <Stamp tone={mapTypeToTone(props)}>{mapTypeToLabel(props)}</Stamp>
         </SpacingsInline>
-      </UiKitThemeProvider>
+      </div>
       {props.topics.length > 0 && (
         <Topics>
           {props.topics.map((topic) => (

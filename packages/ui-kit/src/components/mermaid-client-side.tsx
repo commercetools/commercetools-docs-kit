@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import mermaid from 'mermaid';
 import { colors, typography, tokens, dimensions } from '../design-system';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import murmurhash from 'murmurhash';
 
@@ -24,16 +24,16 @@ const config = {
     textColor: colors.light.textPrimary,
     fontFamily: typography.fontFamilies.primary,
     fontSize: typography.fontSizes.body,
-    primaryColor: customProperties.colorInfo95,
-    primaryBorderColor: customProperties.colorInfo,
+    primaryColor: designTokens.colorInfo95,
+    primaryBorderColor: designTokens.colorInfo,
     primaryTextColor: colors.light.textPrimary,
 
-    secondaryColor: customProperties.colorAccent40,
-    secondaryBorderColor: customProperties.colorAccent30,
+    secondaryColor: designTokens.colorAccent40,
+    secondaryBorderColor: designTokens.colorAccent30,
     secondaryTextColor: colors.light.textPrimary,
 
-    tertiaryColor: customProperties.colorPrimary95,
-    tertiaryBorderColor: customProperties.colorPrimary25,
+    tertiaryColor: designTokens.colorPrimary95,
+    tertiaryBorderColor: designTokens.colorPrimary25,
     tertiaryTextColor: colors.light.textPrimary,
 
     // notes are conventionally yellow but there is none in the design system
