@@ -6,6 +6,11 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import murmurhash from 'murmurhash';
 
+const cssVarFallbackValueRe = /^var\(--(.*),\s?(.*)\)$/;
+const cssVarToValue = (value: string) =>
+  // Apparently Mermaid does not like the usage of CSS variables like `var(--color-solid, #222)`.
+  value.replace(cssVarFallbackValueRe, '$2');
+
 // This is a client-side only component.
 
 // styling happens through a mix of the generic "themeVariables", diagram
@@ -19,39 +24,39 @@ const config = {
   arrowMarkerAbsolute: false,
   themeVariables: {
     // https://mermaid-js.github.io/mermaid/#/theming?id=theme-variables-reference-table
-    background: colors.light.surfacePrimary,
-    lineColor: colors.light.borderInfo,
-    textColor: colors.light.textPrimary,
+    background: cssVarToValue(colors.light.surfacePrimary),
+    lineColor: cssVarToValue(colors.light.borderInfo),
+    textColor: cssVarToValue(colors.light.textPrimary),
     fontFamily: typography.fontFamilies.primary,
     fontSize: typography.fontSizes.body,
-    primaryColor: designTokens.colorInfo95,
-    primaryBorderColor: designTokens.colorInfo,
-    primaryTextColor: colors.light.textPrimary,
+    primaryColor: cssVarToValue(designTokens.colorInfo95),
+    primaryBorderColor: cssVarToValue(designTokens.colorInfo),
+    primaryTextColor: cssVarToValue(colors.light.textPrimary),
 
-    secondaryColor: designTokens.colorAccent40,
-    secondaryBorderColor: designTokens.colorAccent30,
-    secondaryTextColor: colors.light.textPrimary,
+    secondaryColor: cssVarToValue(designTokens.colorAccent40),
+    secondaryBorderColor: cssVarToValue(designTokens.colorAccent30),
+    secondaryTextColor: cssVarToValue(colors.light.textPrimary),
 
-    tertiaryColor: designTokens.colorPrimary95,
-    tertiaryBorderColor: designTokens.colorPrimary25,
-    tertiaryTextColor: colors.light.textPrimary,
+    tertiaryColor: cssVarToValue(designTokens.colorPrimary95),
+    tertiaryBorderColor: cssVarToValue(designTokens.colorPrimary25),
+    tertiaryTextColor: cssVarToValue(colors.light.textPrimary),
 
     // notes are conventionally yellow but there is none in the design system
     noteBkgColor: 'lightyellow',
-    noteTextColor: colors.light.textPrimary,
+    noteTextColor: cssVarToValue(colors.light.textPrimary),
     noteBorderColor: 'yellow',
 
-    errorBkgColor: colors.light.surfaceError,
-    errorTextColor: colors.light.textError,
+    errorBkgColor: cssVarToValue(colors.light.surfaceError),
+    errorTextColor: cssVarToValue(colors.light.textError),
 
     // sequence diagram specifics:
     // https://mermaid-js.github.io/mermaid/#/theming?id=sequence-diagram
-    sequenceNumberColor: colors.light.textInverted,
-    actorLineColor: colors.light.borderInfo,
+    sequenceNumberColor: cssVarToValue(colors.light.textInverted),
+    actorLineColor: cssVarToValue(colors.light.borderInfo),
 
     // flow chart specifics:
     // https://mermaid-js.github.io/mermaid/#/theming?id=flowchart
-    edgeLabelBackground: colors.light.surfaceSecondary1,
+    edgeLabelBackground: cssVarToValue(colors.light.surfaceSecondary1),
   },
   flowchart: {
     useMaxWidth: true,
