@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "target": "ES2022",
+    "lib": ["ESNext", "DOM"],
+    "noEmit": true,
+    "moduleResolution": "Node",
+    "types": ["cypress", "@percy/cypress", "@testing-library/cypress"]
+  },
+  "include": ["./**/*.ts"]
+}
