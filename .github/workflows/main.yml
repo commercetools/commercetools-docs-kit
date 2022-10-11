@@ -63,6 +63,7 @@ jobs:
         env:
           ENABLE_SEARCH: 'true'
           NODE_OPTIONS: '--max-old-space-size=4096'
+          GATSBY_CPU_COUNT: 2
           GATSBY_AUTH0_DOMAIN: ${{ secrets.GATSBY_AUTH0_DOMAIN }}
           GATSBY_AUTH0_CLIENTID: ${{ secrets.GATSBY_AUTH0_CLIENTID }}
           GATSBY_LEARNAPI_DOMAIN: ${{ secrets.GATSBY_LEARNAPI_DOMAIN }}
