@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 const SvgCardBannerApi = (props) => (
   <svg
     width={324}
@@ -7,6 +6,7 @@ const SvgCardBannerApi = (props) => (
     viewBox="0 0 324 80"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
+    role="img"
     {...props}
   >
     <defs>
@@ -57,5 +57,4 @@ const SvgCardBannerApi = (props) => (
     </g>
   </svg>
 );
-
 export default SvgCardBannerApi;

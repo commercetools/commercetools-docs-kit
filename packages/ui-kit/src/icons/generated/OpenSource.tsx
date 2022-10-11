@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { SVGProps } from 'react';
-
 const SvgOpenSource = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={80}
@@ -8,6 +7,7 @@ const SvgOpenSource = (props: SVGProps<SVGSVGElement>) => (
     viewBox="0 0 80 80"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
+    role="img"
     {...props}
   >
     <defs>
@@ -46,5 +46,4 @@ const SvgOpenSource = (props: SVGProps<SVGSVGElement>) => (
     </g>
   </svg>
 );
-
 export default SvgOpenSource;
