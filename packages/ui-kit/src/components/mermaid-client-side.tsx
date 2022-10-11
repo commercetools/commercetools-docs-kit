@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import mermaid from 'mermaid';
-import { colors, typography, tokens, dimensions } from '../design-system';
 import { designTokens } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import murmurhash from 'murmurhash';
-
-const cssVarFallbackValueRe = /^var\(--(.*),\s?(.*)\)$/;
-const cssVarToValue = (value: string) =>
-  // Apparently Mermaid does not like the usage of CSS variables like `var(--color-solid, #222)`.
-  value.replace(cssVarFallbackValueRe, '$2');
+import { colors, typography, tokens, dimensions } from '../design-system';
+import { cssVarToValue } from '../utils/css-variables';
 
 // This is a client-side only component.
 
