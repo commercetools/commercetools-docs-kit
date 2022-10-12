@@ -56,7 +56,8 @@ We support the following key-value pairs in the frontmatter section:
 
 # JSX components
 
-As mentioned earlier, it is possible to render JSX components within MDX files. The components must be added as XML tags, like HTML elements. For example:
+As mentioned earlier, it is possible to render JSX components within MDX files.
+The components must be added as XML tags, like HTML elements. For example:
 
 ```mdx
 <Subtitle>
@@ -68,7 +69,8 @@ Content inside the component.
 
 <Info>
 
-When using JSX components, it's recommended to leave a **blank line** between the element tags and content. This allows the content to be parsed as Markdown, so you can use Markdown syntax within the custom component tags.
+When using JSX components, it's recommended to leave a **blank line** between the element tags and content.
+This allows the content to be parsed as Markdown, so you can use Markdown syntax within the custom component tags.
 
 </Info>
 
@@ -78,13 +80,21 @@ You can use the following JSX components:
 - `<Info>`: use to add any additional information.
 - `<Warning>`: use to add a warning message.
 - `<Error>`: use to add an error message.
-- `<Anchor>`: use to insert a custom anchor on any part of the document such as lists, paragraphs, etc. You can navigate to specific parts of the document (that are not headings) using anchor links. It is also useful when a document has multiple headings with the same text, or when heading names change and old third-party links continue to work. For more information, see [Custom anchors](/writing/markdown#custom-anchors).
+- `<Anchor>`: use to insert a custom anchor on any part of the document such as lists, paragraphs, etc.
+  You can navigate to specific parts of the document (that are not headings) using anchor links.
+  It is also useful when a document has multiple headings with the same text, or when heading names change and old third-party links continue to work.
+  For more information, see [Custom anchors](/writing/markdown#custom-anchors).
 
-  <Info>
+    <Info>
 
-  You cannot override ID generation of the site generator. It adds additional named anchors and IDs have precedence.
+  You cannot override ID generation of the site generator.
+  It adds additional named anchors and IDs have precedence.
 
-  </Info>
+    </Info>
 
-- `<ChildSectionsNav parent="a-section-slug" />`: use to add a table of contents containing links to all subsections of the given parent. For more information, see [Child section navigation](/writing/navigation#child-section-navigation).
-- `<SideBySide>`<Anchor name="side-by-side" />: use to wrap two content blocks side by side on wide viewport sizes. This feature is enabled by setting the `wideLayout` [frontmatter option](#wide-layout).
+- `<ChildSectionsNav parent="a-section-slug" />`: use to add a table of contents containing links to all subsections of the given parent.
+  For more information, see [Child section navigation](/writing/navigation#child-section-navigation).
+- `<SideBySide>`<Anchor name="side-by-side" />: use to wrap two content blocks side by side on wide viewport sizes.
+  This feature is enabled by setting the `wideLayout` [frontmatter option](#wide-layout).
+- `<MultiCodeExample>`: can be wrapped around multiple markdown code blocks to show them as one code block with a language selector. [Read more...](/writing/code)
+- `<Glossary>`: can be wrapped around a term in body text. The UI feature is not implemented yet, but the kit allows authors to already set the tags invisibly to later enable it.

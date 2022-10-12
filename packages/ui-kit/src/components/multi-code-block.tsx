@@ -181,9 +181,7 @@ type MultiCodeBlockProps = {
 
 export default MultiCodeBlock;
 
-/* eslint-disable react/display-name */
-// Maps the props coming from MDX to the underlying <CodeBlock> component.
-export const CodeBlockMarkdownWrapper = (props: {
+const getCodeBlockPropsFromMdxPreNodeProps = (props: {
   children?: React.ReactNode;
 }) => {
   const childElement = reactIs.isElement(props.children)
@@ -191,15 +189,46 @@ export const CodeBlockMarkdownWrapper = (props: {
     : null;
   const childProps = childElement?.props;
   const className = childProps ? childProps.className : '';
-  const languageToken = className || 'language-text';
+  const languageToken: string = className || 'language-text';
   const [, languageCode] = languageToken.split('language-');
   const parsedOptions = parseCodeBlockOptions(childProps);
   const content =
     childProps && childProps.children ? childProps.children : childProps;
 
+  return {
+    ...parsedOptions,
+    content,
+    language: languageCode,
+  };
+};
+
+/* eslint-disable react/display-name */
+// Maps the props coming from MDX to the underlying <CodeBlock> component.
+export const CodeBlockMarkdownWrapper = (props: {
+  children?: React.ReactNode;
+}) => {
+  const options = getCodeBlockPropsFromMdxPreNodeProps(props);
   return (
-    <MultiCodeBlock {...parsedOptions}>
-      <CodeBlock {...parsedOptions} content={content} language={languageCode} />
+    <MultiCodeBlock {...options}>
+      <CodeBlock {...options} />
     </MultiCodeBlock>
   );
+};
+
+// takes the mdx fenced code block children and makes then <CodeBlock>s
+export const MultiCodeBlockMarkdownWrapper = (props: {
+  title: string;
+  children: React.ReactNode[];
+}) => {
+  const children = React.Children.toArray(props.children);
+  const codeBlocks = children.map((child) => {
+    // TODO a) it does not work this way, this is just what compiles at all
+    // TODO b) the interface of the functions is likely unfortunate -> refactor something
+    const options = getCodeBlockPropsFromMdxPreNodeProps({
+      children: child,
+    });
+    return <CodeBlock {...options} key={options.content} />;
+  });
+
+  return <MultiCodeBlock title={props.title}>{codeBlocks}</MultiCodeBlock>;
 };
