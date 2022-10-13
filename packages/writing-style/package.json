@@ -24,11 +24,11 @@
     "download:writegood": "node scripts/download-writegood-styles.js && prettier --write --parser yaml '**/*.{yaml,yml}'"
   },
   "dependencies": {
-    "7zip-bin": "5.1.1",
+    "7zip-bin": "5.2.0",
     "node-fetch": "2.6.7",
     "shelljs": "0.8.5"
   },
   "devDependencies": {
-    "prettier": "2.6.1"
+    "prettier": "2.7.1"
   }
 }
