@@ -19,7 +19,8 @@ import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
 const LayoutReleaseNotesList = (props) => {
-  const { ref, inView } = useInView();
+  const { ref, inView, entry } = useInView();
+  const isSearchBoxInView = !Boolean(entry) || inView;
   const layoutState = useLayoutState();
   const siteData = useSiteData();
   const excludeFromSearchIndex =
@@ -65,7 +66,7 @@ const LayoutReleaseNotesList = (props) => {
             </LayoutPageContent>
             <LayoutPageReleaseNotesFilters
               {...layoutState.searchDialog}
-              isSearchBoxInView={inView}
+              isSearchBoxInView={isSearchBoxInView}
               excludeFromSearchIndex={excludeFromSearchIndex}
             />
           </LayoutPage>
