@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import reactIs from 'react-is';
 import styled from '@emotion/styled';
 import { ThemeProvider } from '@emotion/react';
@@ -222,12 +222,11 @@ export const MultiCodeBlockMarkdownWrapper = (props: {
 }) => {
   const children = React.Children.toArray(props.children);
   const codeBlocks = children.map((child) => {
-    // TODO a) it does not work this way, this is just what compiles at all
     // TODO b) the interface of the functions is likely unfortunate -> refactor something
     const options = getCodeBlockPropsFromMdxPreNodeProps({
-      children: child,
+      children: (child as ReactElement).props.children,
     });
-    return <CodeBlock {...options} key={options.content} />;
+    return <CodeBlock {...options} key={options.language} />;
   });
 
   return <MultiCodeBlock title={props.title}>{codeBlocks}</MultiCodeBlock>;
