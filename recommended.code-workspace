@@ -23,18 +23,6 @@
       "javascript",
       "javascriptreact"
     ],
-    "stylelint.configOverrides": {
-      "rules": {
-        "csstools/value-no-unknown-custom-properties": [
-          true,
-          {
-            "importFrom": [
-              "node_modules/@commercetools-uikit/design-system/materials/custom-properties.css"
-            ]
-          }
-        ]
-      }
-    },
     "vale.core.useCLI": true,
     "vale.valeCLI.path": "${workspaceFolder}/node_modules/.bin/commercetools-vale-bin",
     "vale.valeCLI.config": "${workspaceFolder}/node_modules/@commercetools-docs/writing-style/.vale.ini",
