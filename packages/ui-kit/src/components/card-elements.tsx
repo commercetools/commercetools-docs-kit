@@ -76,6 +76,7 @@ export const CardContainer = styled.li<CardContainerProps>`
   background-color: ${designSystem.colors.light.surfacePrimary};
   padding: ${designSystem.dimensions.spacings.m};
   border-radius: ${designSystem.tokens.borderRadiusForCard};
+  list-style: none;
 `;
 export const ImageContainer = styled.div`
   svg,
