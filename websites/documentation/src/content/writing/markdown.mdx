@@ -349,8 +349,8 @@ They are rendered differently based on the target and analytics tracking is adde
 ## Link to a page of another docs microsite
 
 <Info>
-This one is important to remember because it is a special feature of the docs-kit.
-It's a valid URL but not a common type of link target.
+This special  `/../` notation is important to remember because it is a special feature of the docs-kit.
+It's a valid URL but not a common or useful type of link target outside the concept of path prefixed microsites.
 </Info>
 
 <SideBySide>
@@ -401,7 +401,7 @@ The anchor is placed in this text line. <Anchor name="any-html-id-compatible-str
 
 The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-expected-usage"/>
 
-### The anchor is placed in this title <Anchor name="any-html-id-compatible-string-in-a-title" />
+_titles can't be previewed here without breaking the page flow_
 
 - Item 1 <Anchor name="any-html-id-compatible-string-in-a-list" />
 - Item 2
@@ -434,6 +434,8 @@ The following properties can be used to define the content within the card:
 
 This is an example of a set of cards with no properties defined. It is flat and of regular width as the parameters `clickable` and `narrow` are not defined. It only contains the body as `title` is not defined.
 
+<SideBySide>
+
 ```jsx title="you write:" secondaryTheme
 <Cards>
   <Card>Card A</Card>
@@ -450,9 +452,13 @@ This is an example of a set of cards with no properties defined. It is flat and 
   <Card>Card D</Card>
 </Cards>
 
+</SideBySide>
+
 ### Cards with a list in the body
 
 It is also possible to have a list in the body of the card. Lists are usually used in flat cards as you can provide multiple target links for multiple list entries, which is not the case for [clickable cards](#clickable-card) that have only one target link.
+
+<SideBySide>
 
 ```jsx title="you write:" secondaryTheme
 <Cards>
@@ -473,9 +479,13 @@ It is also possible to have a list in the body of the card. Lists are usually us
 </Card>
 </Cards>
 
+</SideBySide>
+
 ## Cards with a link
 
 ### Flat card
+
+<SideBySide>
 
 ```jsx title="you write:" secondaryTheme
 <Cards>
@@ -499,13 +509,17 @@ It is also possible to have a list in the body of the card. Lists are usually us
   </Card>
 </Cards>
 
+</SideBySide>
+
 ### Clickable card
 
 <Info>
-Clickable cards must have a href set.
+Clickable cards must have an href set.
 </Info>
 
 They have one card-level target link (href) and no other links in the content. The target link (href) can be repeated as a link at the bottom by setting a card link label.
+
+<SideBySide>
 
 ```jsx title="you write:" secondaryTheme
 <Cards clickable>
@@ -526,11 +540,15 @@ They have one card-level target link (href) and no other links in the content. T
     textLink="Read more about navigation">In a clickable card, the complete card is a clickable target.</Card>
 </Cards>
 
+</SideBySide>
+
 ## Cards with an image
 
 Images are not supported for free-form in-content cards, but only in places that are fully designed and implemented by developers. An image is sized into the width of the card.
 
 ### Flat card
+
+<SideBySide>
 
 ```jsx title="you write:" secondaryTheme
 <Cards>
@@ -549,7 +567,11 @@ Images are not supported for free-form in-content cards, but only in places that
 </Card>
 </Cards>
 
+</SideBySide>
+
 ### Clickable card
+
+<SideBySide>
 
 ```jsx title="you write:" secondaryTheme
 <Cards clickable>
@@ -572,6 +594,8 @@ Images are not supported for free-form in-content cards, but only in places that
   </Card>
 </Cards>
 
+</SideBySide>
+
 ## Cards with an icon
 
 <Info>
@@ -581,6 +605,8 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 </Info>
 
 ### Flat card
+
+<SideBySide>
 
 ```jsx title="you write:" secondaryTheme
 <Cards>
@@ -606,7 +632,11 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
   </Card>
 </Cards>
 
+</SideBySide>
+
 ### Clickable card
+
+<SideBySide>
 
 ```jsx title="you write:" secondaryTheme
 <Cards narrow clickable>
@@ -632,9 +662,13 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
   </Card>
 </Cards>
 
+</SideBySide>
+
 ## Cards with an image and icon
 
 ### Regular card
+
+<SideBySide>
 
 ```jsx title="you write:" secondaryTheme
 <Cards>
@@ -653,7 +687,11 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
   </Card>
 </Cards>
 
+</SideBySide>
+
 ### Narrow card
+
+<SideBySide>
 
 ```jsx title="you write:" secondaryTheme
 <Cards narrow>
@@ -672,6 +710,8 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
   </Card>
 </Cards>
 
+</SideBySide>
+
 # RSS feed
 
 RSS feed is an online file that notifies users of our latest content updates.
@@ -680,7 +720,7 @@ RSS feed is an online file that notifies users of our latest content updates.
 RSS feeds are only generated in production builds.
 </Info>
 
-## Table with one feed
+## List from one feed
 
 <SideBySide>
 
@@ -692,7 +732,7 @@ RSS feeds are only generated in production builds.
 
 </SideBySide>
 
-## Table with multiple feeds
+## List from multiple feeds
 
 <SideBySide>
 
