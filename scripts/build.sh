@@ -13,7 +13,7 @@ echo "Building Gatsby websites."
 yarn workspaces foreach \
   --include '@commercetools-website/*' \
   --parallel \
-  --jobs=3 \
+  --jobs=2 \
   --verbose \
   run build
 
