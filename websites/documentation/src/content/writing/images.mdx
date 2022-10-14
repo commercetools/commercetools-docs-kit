@@ -17,7 +17,7 @@ It is good to have a meaningful alt text when using images. A meaningful alt tex
 
 <SideBySide>
 
-```markdown
+```md title="you write:" secondaryTheme
 Full example with alt text title:
 
 ![a large dog](/images/dog.jpg 'This dog serves as an example image and this is the title text')
@@ -27,7 +27,9 @@ Full SVG example:
 ![illustation of a shoppin cart](/content/files/cart.svs 'We love illustrated shopping carts')
 ```
 
+<Card>
 ![a large dog](/images/dog.jpg 'This dog serves as an example image and this is the title text')
+</Card>
 
 </SideBySide>
 
@@ -46,7 +48,7 @@ Avoid custom CSS or theme overrides for better maintainability of the content.
 
 <SideBySide>
 
-````markdown
+````md title="you write:" secondaryTheme
 ```mermaid
 sequenceDiagram
     Alice->John: Hello John, how are you?
@@ -56,6 +58,7 @@ sequenceDiagram
 ```
 ````
 
+<Card>
 ```mermaid
 sequenceDiagram
     Alice->John: Hello John, how are you?
@@ -63,5 +66,6 @@ sequenceDiagram
         John-->Alice: Great!
     end
 ```
+</Card>
 
 </SideBySide>

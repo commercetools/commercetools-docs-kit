@@ -18,7 +18,7 @@ In its minimal form, code blocks are standard markdown as follows:
 
 <SideBySide>
 
-````
+````md title="you write:" secondaryTheme
 ```
 The syntax is not highlighted as no language is indicated.
 **Formatting syntax** like _this_ or <b>tag</b> will remain unparsed.
@@ -34,11 +34,11 @@ The syntax is not highlighted as no language is indicated.
 
 ## Themes, title
 
-**Primary theme (default)**
+### Primary theme (default)
 
 <SideBySide>
 
-````
+````md title="you write:" secondaryTheme
 ```md title="Code block in primary theme"
 Sample code goes here.
 ```
@@ -50,11 +50,11 @@ Sample code goes here.
 
 </SideBySide>
 
-**Secondary theme**
+### Secondary theme
 
 <SideBySide>
 
-````md secondaryTheme
+````md title="you write:" secondaryTheme
 ```md title="Code block in secondary theme" secondaryTheme
 Sample code goes here.
 ```
@@ -72,7 +72,7 @@ It is also possible to highlight specific lines in a code. To highlight, pass `h
 
 <SideBySide>
 
-````
+````md title="you write:" secondaryTheme
 ```json highlightLines="10"
 {
   "glossary": {
@@ -170,7 +170,7 @@ It's possible to nest multiple markdown code blocks into one `<MultiCodeBlock>` 
 
 <SideBySide>
 
-````md secondaryTheme
+````md title="you write:" secondaryTheme
 <MultiCodeBlock>
 
 ```js
@@ -213,7 +213,7 @@ Some parameters available on the markdown code blocks above can be passed as pro
 
 <SideBySide>
 
-```
+```md title="you write:" secondaryTheme
 <CodeExample path="example.graphql" title="GraphQL code sample" />
 ```
 
@@ -225,7 +225,7 @@ Some parameters available on the markdown code blocks above can be passed as pro
 
 <SideBySide>
 
-```
+```md title="you write:" secondaryTheme
 <MultiCodeExample title="Multilanguage code samples">
   <CodeExample path="example.js" highlightLines={[3]} />
   <CodeExample path="example.java"/>
