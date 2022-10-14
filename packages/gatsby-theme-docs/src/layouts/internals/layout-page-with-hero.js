@@ -20,7 +20,6 @@ const Hero = styled.div`
   background-size: auto;
   background-position: left;
 
-  /* stylelint-disable-next-line function-whitespace-after */
   background-image: ${(props) => `url('${props.heroBackgroundURL}')`};
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {

@@ -223,6 +223,16 @@ Some parameters available on the markdown code blocks above can be passed as pro
 
 ## Multiple languages
 
+Similarly to standard code blocks, you can render multiple code examples combined into one code block, with a dropdown option to switch between the code examples.
+
+<Info>
+
+This functionality requires the [Add-On for Code Examples](/configuration/extensions#gatsby-theme-add-on-for-code-examples) to be installed.
+
+</Info>
+
+**Primary theme (default)**
+
 <SideBySide>
 
 ```md title="you write:" secondaryTheme
@@ -233,7 +243,27 @@ Some parameters available on the markdown code blocks above can be passed as pro
 </MultiCodeExample>
 ```
 
-<MultiCodeExample title="Multilanguage code samples">
+<MultiCodeExample title="Multi-language code samples in primary theme">
+  <CodeExample path="example.js" highlightLines={[3]} />
+  <CodeExample path="example.java"/>
+  <CodeExample path="example.console" noPromptLines={[3, 4]} />
+</MultiCodeExample>
+
+</SideBySide>
+
+**Secondary theme**
+
+<SideBySide>
+
+```
+<MultiCodeExample title="Multilanguage code samples" secondaryTheme>
+  <CodeExample path="example.js" highlightLines={[3]} />
+  <CodeExample path="example.java"/>
+  <CodeExample path="example.console" noPromptLines={[3, 4]} />
+</MultiCodeExample>
+```
+
+<MultiCodeExample title="Multi-language code samples in primary theme" secondaryTheme>
   <CodeExample path="example.js" highlightLines={[3]} />
   <CodeExample path="example.java"/>
   <CodeExample path="example.console" noPromptLines={[3, 4]} />

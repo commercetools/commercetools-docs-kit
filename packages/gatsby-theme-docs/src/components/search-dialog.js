@@ -74,11 +74,9 @@ const Content = styled.div`
     ${designSystem.tokens.borderRadiusForSearchDialog};
   box-shadow: ${designSystem.tokens.shadowForSearchDialog};
 
-  /* stylelint-disable declaration-block-no-duplicate-properties, value-no-vendor-prefix */
   height: 100%; /* For browsers that do not support this property yet */
   height: -moz-fit-content;
   height: fit-content;
-  /* stylelint-enable */
 
   min-height: calc(
     ${designSystem.dimensions.heights.inputSearchPrimary} +
