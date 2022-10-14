@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { SVGProps } from 'react';
-
 const SvgTutorialsSmall = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={25}
     height={25}
     viewBox="0 0 25 25"
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
     {...props}
   >
     <g fill="#003037" fillRule="nonzero">
@@ -15,5 +15,4 @@ const SvgTutorialsSmall = (props: SVGProps<SVGSVGElement>) => (
     </g>
   </svg>
 );
-
 export default SvgTutorialsSmall;

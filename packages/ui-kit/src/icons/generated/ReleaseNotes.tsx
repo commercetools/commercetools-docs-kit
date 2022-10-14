@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { SVGProps } from 'react';
-
 const SvgReleaseNotes = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 12 12"
     width={12}
     height={12}
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
     {...props}
   >
     <path
@@ -15,5 +15,4 @@ const SvgReleaseNotes = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-
 export default SvgReleaseNotes;

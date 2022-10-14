@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import mermaid from 'mermaid';
-import { colors, typography, tokens, dimensions } from '../design-system';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import murmurhash from 'murmurhash';
+import { colors, typography, tokens, dimensions } from '../design-system';
+import { cssVarToValue } from '../utils/css-variables';
 
 // This is a client-side only component.
 
@@ -19,39 +20,39 @@ const config = {
   arrowMarkerAbsolute: false,
   themeVariables: {
     // https://mermaid-js.github.io/mermaid/#/theming?id=theme-variables-reference-table
-    background: colors.light.surfacePrimary,
-    lineColor: colors.light.borderInfo,
-    textColor: colors.light.textPrimary,
+    background: cssVarToValue(colors.light.surfacePrimary),
+    lineColor: cssVarToValue(colors.light.borderInfo),
+    textColor: cssVarToValue(colors.light.textPrimary),
     fontFamily: typography.fontFamilies.primary,
     fontSize: typography.fontSizes.body,
-    primaryColor: customProperties.colorInfo95,
-    primaryBorderColor: customProperties.colorInfo,
-    primaryTextColor: colors.light.textPrimary,
+    primaryColor: cssVarToValue(designTokens.colorInfo95),
+    primaryBorderColor: cssVarToValue(designTokens.colorInfo),
+    primaryTextColor: cssVarToValue(colors.light.textPrimary),
 
-    secondaryColor: customProperties.colorAccent40,
-    secondaryBorderColor: customProperties.colorAccent30,
-    secondaryTextColor: colors.light.textPrimary,
+    secondaryColor: cssVarToValue(designTokens.colorAccent40),
+    secondaryBorderColor: cssVarToValue(designTokens.colorAccent30),
+    secondaryTextColor: cssVarToValue(colors.light.textPrimary),
 
-    tertiaryColor: customProperties.colorPrimary95,
-    tertiaryBorderColor: customProperties.colorPrimary25,
-    tertiaryTextColor: colors.light.textPrimary,
+    tertiaryColor: cssVarToValue(designTokens.colorPrimary95),
+    tertiaryBorderColor: cssVarToValue(designTokens.colorPrimary25),
+    tertiaryTextColor: cssVarToValue(colors.light.textPrimary),
 
     // notes are conventionally yellow but there is none in the design system
     noteBkgColor: 'lightyellow',
-    noteTextColor: colors.light.textPrimary,
+    noteTextColor: cssVarToValue(colors.light.textPrimary),
     noteBorderColor: 'yellow',
 
-    errorBkgColor: colors.light.surfaceError,
-    errorTextColor: colors.light.textError,
+    errorBkgColor: cssVarToValue(colors.light.surfaceError),
+    errorTextColor: cssVarToValue(colors.light.textError),
 
     // sequence diagram specifics:
     // https://mermaid-js.github.io/mermaid/#/theming?id=sequence-diagram
-    sequenceNumberColor: colors.light.textInverted,
-    actorLineColor: colors.light.borderInfo,
+    sequenceNumberColor: cssVarToValue(colors.light.textInverted),
+    actorLineColor: cssVarToValue(colors.light.borderInfo),
 
     // flow chart specifics:
     // https://mermaid-js.github.io/mermaid/#/theming?id=flowchart
-    edgeLabelBackground: colors.light.surfaceSecondary1,
+    edgeLabelBackground: cssVarToValue(colors.light.surfaceSecondary1),
   },
   flowchart: {
     useMaxWidth: true,
