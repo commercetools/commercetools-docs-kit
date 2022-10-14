@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, waitFor, fireEvent } from '@testing-library/react';
 import SearchDialog from './search-dialog';
 

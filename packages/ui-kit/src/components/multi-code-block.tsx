@@ -1,4 +1,10 @@
-import React from 'react';
+import {
+  cloneElement,
+  useCallback,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
 import reactIs from 'react-is';
 import styled from '@emotion/styled';
 import { ThemeProvider } from '@emotion/react';
@@ -103,8 +109,8 @@ function extractLanguages(children: OneOrManyChildren): string[] {
 function MultiCodeBlock(props: MultiCodeBlockProps) {
   const langs = extractLanguages(props.children);
 
-  const [selected, setSelected] = React.useState(langs[0]);
-  const handleOnLanguageChange = React.useCallback((event) => {
+  const [selected, setSelected] = useState(langs[0]);
+  const handleOnLanguageChange = useCallback((event) => {
     setSelected(event.target.value);
   }, []);
 
@@ -113,7 +119,7 @@ function MultiCodeBlock(props: MultiCodeBlockProps) {
       colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
   };
 
-  let selectedElement: React.ReactElement | undefined;
+  let selectedElement: ReactElement | undefined;
   if (Array.isArray(props.children)) {
     selectedElement =
       props.children.find((child) => child.props.language === selected) ||
@@ -163,7 +169,7 @@ function MultiCodeBlock(props: MultiCodeBlockProps) {
         ) : null}
 
         {selectedElement &&
-          React.cloneElement(selectedElement, {
+          cloneElement(selectedElement, {
             secondaryTheme: props.secondaryTheme,
           })}
       </Container>
@@ -171,7 +177,7 @@ function MultiCodeBlock(props: MultiCodeBlockProps) {
   );
 }
 
-type OneOrManyChildren = React.ReactElement | React.ReactElement[];
+type OneOrManyChildren = ReactElement | ReactElement[];
 type MultiCodeBlockProps = {
   secondaryTheme?: boolean;
   title?: string;
@@ -182,9 +188,7 @@ export default MultiCodeBlock;
 
 /* eslint-disable react/display-name */
 // Maps the props coming from MDX to the underlying <CodeBlock> component.
-export const CodeBlockMarkdownWrapper = (props: {
-  children?: React.ReactNode;
-}) => {
+export const CodeBlockMarkdownWrapper = (props: { children?: ReactNode }) => {
   const childElement = reactIs.isElement(props.children)
     ? props.children
     : null;

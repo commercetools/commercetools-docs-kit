@@ -3,7 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
-import React from 'react';
+
 import { renderToString } from 'react-dom/server';
 import { withPrefix } from 'gatsby';
 // NOTE: prefer importing specific module (https://github.com/gatsbyjs/gatsby/pull/35985)

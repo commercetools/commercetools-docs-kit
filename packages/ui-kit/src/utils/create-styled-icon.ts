@@ -2,7 +2,6 @@ import invariant from 'tiny-invariant';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '../design-system';
-import React from 'react';
 
 export type IconSize = 'small' | 'medium' | 'big' | 'scale';
 export type StyledComponentProps = {

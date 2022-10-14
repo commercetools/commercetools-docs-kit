@@ -1,4 +1,4 @@
-import React from 'react';
+import { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -146,7 +146,7 @@ const LevelGroup = (props) => {
                 <Indented level={props.level}>{item.title}</Indented>
               </Link>
               {props.children &&
-                React.cloneElement(props.children, {
+                cloneElement(props.children, {
                   items: item.items,
                   level: props.level + 1,
                   activeSection: props.activeSection,
@@ -166,7 +166,7 @@ const LevelGroup = (props) => {
               </Indented>
             )}
             {props.children &&
-              React.cloneElement(props.children, {
+              cloneElement(props.children, {
                 items: item.items,
                 level: props.level + 1,
                 activeSection: props.activeSection,
@@ -224,7 +224,7 @@ const Container = (props) => (
             <Indented level={1}>{item.title}</Indented>
           </Link>
           {props.children &&
-            React.cloneElement(props.children, {
+            cloneElement(props.children, {
               items: item.items,
               activeSection: props.activeSection,
               level: 2,

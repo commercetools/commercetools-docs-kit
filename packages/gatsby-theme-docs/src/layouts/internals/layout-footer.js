@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';

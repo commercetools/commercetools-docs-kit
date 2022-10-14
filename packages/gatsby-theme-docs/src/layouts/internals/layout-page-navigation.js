@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { keyframes, css } from '@emotion/react';
@@ -145,9 +145,9 @@ const Blank = styled.div`
 `;
 
 const LayoutPageNavigation = (props) => {
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
-  const [modalPortalNode, setModalPortalNode] = React.useState();
-  React.useEffect(() => {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [modalPortalNode, setModalPortalNode] = useState();
+  useEffect(() => {
     setModalPortalNode(document.getElementById('modal-portal'));
   }, []);
 

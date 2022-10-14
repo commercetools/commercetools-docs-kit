@@ -1,4 +1,4 @@
-import React from 'react';
+import { lazy, Suspense } from 'react';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 
 // This is a client-side only implementation of mermaid, which is its primary development target.
@@ -10,7 +10,7 @@ import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 // server side rendering also has the disadvantage that clickable elements cannot
 // work because this requires attaching event handlers.
 
-const MermaidLazy = React.lazy(() => import('./mermaid-client-side'));
+const MermaidLazy = lazy(() => import('./mermaid-client-side'));
 
 type MermaidProps = {
   graph: string;
@@ -21,11 +21,11 @@ const Mermaid = (props: MermaidProps) => {
   return (
     <>
       {isClientSide && (
-        <React.Suspense
+        <Suspense
           fallback={<LoadingSpinner scale="l" maxDelayDuration={500} />}
         >
           <MermaidLazy graph={props.graph} />
-        </React.Suspense>
+        </Suspense>
       )}
     </>
   );

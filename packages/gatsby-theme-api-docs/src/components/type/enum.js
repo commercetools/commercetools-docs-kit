@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -31,7 +31,7 @@ const Enum = ({
                 enumDescriptions.find((enumDesc) => enumDesc.name === value);
 
               return (
-                <React.Fragment key={value}>
+                <Fragment key={value}>
                   <Markdown.Dt>
                     <Markdown.InlineCode>{value}</Markdown.InlineCode>
                   </Markdown.Dt>
@@ -42,7 +42,7 @@ const Enum = ({
                       />
                     </Markdown.Dd>
                   )}
-                </React.Fragment>
+                </Fragment>
               );
             })}
         </Markdown.Dl>{' '}

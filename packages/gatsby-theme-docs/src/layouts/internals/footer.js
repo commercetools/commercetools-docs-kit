@@ -1,4 +1,4 @@
-import React from 'react';
+import { Children } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -43,7 +43,7 @@ const Columns = styled.div`
   grid-gap: ${designSystem.dimensions.spacings.xl};
   grid-auto-columns: 1fr;
   grid-template-columns: repeat(
-    ${(props) => React.Children.count(props.children)},
+    ${(props) => Children.count(props.children)},
     1fr
   );
 

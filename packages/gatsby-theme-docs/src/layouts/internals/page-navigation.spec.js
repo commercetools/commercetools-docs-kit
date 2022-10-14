@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import styled from '@emotion/styled';
 import PageNavigation from './page-navigation';

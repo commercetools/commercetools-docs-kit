@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { useReadResourceByResourcePath } from '../../hooks/use-read-resource-by-resource-path';
 import Resource from './resource';

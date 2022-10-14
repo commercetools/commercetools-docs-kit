@@ -1,9 +1,7 @@
-import type { Theme } from '@emotion/react';
-
-import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled';
-import { css, ThemeProvider, useTheme } from '@emotion/react';
+import { css, ThemeProvider, useTheme, type Theme } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
@@ -205,7 +203,7 @@ const CodeBlock = (props: CodeBlockProps) => {
   const isCommandLine = ['terminal', 'console'].includes(languageCode);
 
   // Copy to clipboard logic
-  const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
+  const [isCopiedToClipboard, setIsCopiedToClipboard] = useState(false);
   const handleCopyToClipboardClick = () => {
     copyToClipboard(props.content);
 

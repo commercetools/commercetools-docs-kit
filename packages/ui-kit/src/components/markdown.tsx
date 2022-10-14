@@ -1,4 +1,9 @@
-import React from 'react';
+import {
+  Children,
+  useState,
+  type ComponentType,
+  type SyntheticEvent,
+} from 'react';
 import reactIs from 'react-is';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -157,7 +162,7 @@ const Table = styled.table`
       left: -9999px;
     }
     ${(props) => {
-      const tableHeaders = React.Children.toArray(props.children).find(
+      const tableHeaders = Children.toArray(props.children).find(
         (elem) =>
           reactIs.isElement(elem) &&
           (elem.type === 'thead' || elem.props.mdxType === 'thead')
@@ -168,7 +173,7 @@ const Table = styled.table`
       const rowHeadersChildren = Array.isArray(rowHeaders)
         ? rowHeaders
         : rowHeaders.props.children;
-      return React.Children.toArray(rowHeadersChildren).reduce(
+      return Children.toArray(rowHeadersChildren).reduce(
         (styles, elem, index) => `
         ${styles}
         td:nth-of-type(${index + 1})::before { content: "${
@@ -316,9 +321,9 @@ const TooltipBodyComponent = styled.div`
 /* eslint-disable react/display-name */
 const withCopyToClipboard =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (Component: React.ComponentType) => (props: any) => {
-    const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
-    const handleCopyToClipboardClick = (event: React.SyntheticEvent) => {
+  (Component: ComponentType) => (props: any) => {
+    const [isCopiedToClipboard, setIsCopiedToClipboard] = useState(false);
+    const handleCopyToClipboardClick = (event: SyntheticEvent) => {
       event.preventDefault();
       const sectionUrl = `${window.location.href.split('#')[0]}#${props.id}`;
       copyToClipboard(sectionUrl);
