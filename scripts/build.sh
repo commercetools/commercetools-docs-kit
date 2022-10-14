@@ -10,12 +10,10 @@ yarn node ./scripts/gatsby-cache.mjs pre
 
 echo "Building Gatsby websites."
 
-yarn workspaces foreach \
-  --include '@commercetools-website/*' \
-  --parallel \
-  --jobs=3 \
-  --verbose \
-  run build
+yarn workspace @commercetools-website/api-docs-smoke-test build
+yarn workspace @commercetools-website/docs-smoke-test build
+yarn workspace @commercetools-website/documentation build
+yarn workspace @commercetools-website/site-template build
 
 yarn node ./scripts/gatsby-cache.mjs post
 

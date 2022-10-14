@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { ThemeProvider as UiKitThemeProvider } from '@emotion/react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import Stamp from '@commercetools-uikit/stamp';
@@ -20,22 +19,23 @@ const Topics = styled.div`
     border-left: 1px solid ${designSystem.colors.light.surfaceSecondary3};
   }
 `;
-const stampTheme = {
-  fontSizeDefault: designSystem.typography.fontSizes.extraSmall,
-  // Override the `critical` style which is used for the "fix" type
-  colorError95: designSystem.colors.light.surfaceForReleaseNoteTypeFix,
-  colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
-};
 
 const ReleaseNoteBody = (props) => (
   <SpacingsStack scale="m">
     <SpacingsStack scale="s">
       <DateElement>{props.date}</DateElement>
-      <UiKitThemeProvider theme={stampTheme}>
+      <div
+        style={designSystem.tokensToCssVars({
+          fontSizeDefault: designSystem.typography.fontSizes.extraSmall,
+          // Override the `critical` style which is used for the "fix" type
+          colorError95: designSystem.colors.light.surfaceForReleaseNoteTypeFix,
+          colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
+        })}
+      >
         <SpacingsInline>
           <Stamp tone={mapTypeToTone(props)}>{mapTypeToLabel(props)}</Stamp>
         </SpacingsInline>
-      </UiKitThemeProvider>
+      </div>
       {props.topics.length > 0 && (
         <Topics>
           {props.topics.map((topic) => (

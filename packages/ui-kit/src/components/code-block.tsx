@@ -1,20 +1,33 @@
-import type { Theme } from '@emotion/react';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled';
-import { css, ThemeProvider, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
 import Highlight, { type Language, defaultProps } from 'prism-react-renderer';
-import { colors, dimensions, typography, tokens } from '../design-system';
+import {
+  colors,
+  dimensions,
+  typography,
+  tokens,
+  tokensToCssVars,
+} from '../design-system';
 import themePrimary from '../prism-themes/commercetools';
 import themeSecondary from '../prism-themes/commercetoolsLight';
 import copyToClipboard from '../utils/copy-to-clipboard';
 
+type CodeBlockProps = {
+  isMulti?: boolean;
+  secondaryTheme?: boolean;
+  language?: string;
+  highlightLines?: number[];
+  noPromptLines?: number[];
+  content: string;
+};
+
 const HighlightedContainer = styled.div`
-  background-color: ${(props) => props.theme.codeBlockColors!.surface};
+  background-color: ${tokens.surfaceForCodeBlock};
   border-radius: ${tokens.borderRadiusForCodeBlock};
   margin: 0;
   padding: ${dimensions.spacings.s} ${dimensions.spacings.xs}
@@ -24,8 +37,7 @@ const HighlightedContainer = styled.div`
 const Preformatted = styled.pre`
   font-family: ${typography.fontFamilies.code};
   font-size: ${typography.fontSizes.small};
-  background-color: ${(props) =>
-    props.theme.codeBlockColors!.surface} !important;
+  background-color: ${tokens.surfaceForCodeBlock} !important;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -34,24 +46,23 @@ const Preformatted = styled.pre`
 const CopyArea = styled.div`
   cursor: pointer;
   svg {
-    fill: ${(props) => props.theme.codeBlockColors!.surfaceCopyIcon};
+    fill: ${tokens.surfaceCopyIconForCodeBlock};
   }
   :hover {
     svg {
-      fill: ${(props) => props.theme.codeBlockColors!.surfaceCopyIconHover};
+      fill: ${tokens.surfaceCopyIconHoverForCodeBlock};
     }
   }
 `;
 const TooltipWrapperComponent = (props: { children?: React.ReactNode }) =>
   ReactDOM.createPortal(props.children, document.body);
 const TooltipBodyComponent = (props: { children?: React.ReactNode }) => {
-  const theme = useTheme();
   return (
     <div
       css={css`
-        background-color: ${theme.codeBlockColors!.surfaceCopyTooltip};
+        background-color: ${tokens.surfaceCopyTooltipForCodeBlock};
         border-radius: ${tokens.borderRadiusForTooltip};
-        color: ${theme.codeBlockColors!.textCopyTooltip};
+        color: ${tokens.textCopyTooltipForCodeBlock};
         font-size: ${typography.fontSizes.extraSmall};
         padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
       `}
@@ -60,14 +71,11 @@ const TooltipBodyComponent = (props: { children?: React.ReactNode }) => {
   );
 };
 
-const getLineStyles = (
-  theme: Theme,
-  options: {
-    shouldShowPrompt: boolean;
-    isCommandLine: boolean;
-    shouldHighlightLine: boolean;
-  }
-) => {
+const getLineStyles = (options: {
+  shouldShowPrompt: boolean;
+  isCommandLine: boolean;
+  shouldHighlightLine: boolean;
+}) => {
   let promptLineStyles;
   let highlightLineStyles;
   if (options.isCommandLine) {
@@ -79,7 +87,7 @@ const getLineStyles = (
         margin: 0 0 0 -${dimensions.spacings.m};
         padding: 0 ${dimensions.spacings.s} 0 0;
         color: ${options.shouldShowPrompt
-          ? theme.codeBlockColors!.surfacePrompt
+          ? tokens.surfacePromptForCodeBlock
           : 'transparent'};
       }
     `;
@@ -89,7 +97,7 @@ const getLineStyles = (
       ? `calc(100% - ${dimensions.spacings.s})`
       : '100%';
     highlightLineStyles = css`
-      background-color: ${theme.codeBlockColors!.surfaceLineHighlight};
+      background-color: ${tokens.surfaceLineHighlightForCodeBlock};
       width: ${width};
     `;
   }
@@ -215,33 +223,34 @@ const CodeBlock = (props: CodeBlockProps) => {
     }, 1500);
   };
 
-  const codeBlockTheme = {
-    codeBlockColors:
-      colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
-  };
-
   return (
-    <ThemeProvider theme={codeBlockTheme}>
-      <Highlight
-        {...defaultProps}
-        code={props.content}
-        language={language}
-        theme={props.secondaryTheme ? themeSecondary : themePrimary}
-      >
-        {({
-          className,
-          style,
-          tokens: syntaxTokens,
-          getLineProps,
-          getTokenProps,
-        }) => (
-          <HighlightedContainer theme={codeBlockTheme}>
+    <Highlight
+      {...defaultProps}
+      code={props.content}
+      language={language}
+      theme={props.secondaryTheme ? themeSecondary : themePrimary}
+    >
+      {({
+        className,
+        style,
+        tokens: syntaxTokens,
+        getLineProps,
+        getTokenProps,
+      }) => (
+        <div
+          style={
+            props.isMulti
+              ? {}
+              : tokensToCssVars(
+                  colors.light.codeBlocks[
+                    props.secondaryTheme ? 'secondary' : 'primary'
+                  ]
+                )
+          }
+        >
+          <HighlightedContainer>
             <SpacingsInline scale="xs" alignItems="flex-start">
-              <Preformatted
-                className={className}
-                style={style}
-                theme={codeBlockTheme}
-              >
+              <Preformatted className={className} style={style}>
                 {syntaxTokens.map((line, index) => {
                   const isLastLine = syntaxTokens.length - 1 === index;
                   if (isLastLine) {
@@ -270,7 +279,7 @@ const CodeBlock = (props: CodeBlockProps) => {
                         key: index,
                         ...(isCommandLine ? { 'data-prompt': '$' } : {}),
                       })}
-                      css={getLineStyles(codeBlockTheme, {
+                      css={getLineStyles({
                         isCommandLine,
                         shouldShowPrompt,
                         shouldHighlightLine,
@@ -290,28 +299,24 @@ const CodeBlock = (props: CodeBlockProps) => {
                   TooltipWrapperComponent,
                   BodyComponent: TooltipBodyComponent,
                 }}
+                styles={{
+                  body: tokensToCssVars(
+                    colors.light.codeBlocks[
+                      props.secondaryTheme ? 'secondary' : 'primary'
+                    ]
+                  ),
+                }}
               >
-                <CopyArea
-                  onClick={handleCopyToClipboardClick}
-                  theme={codeBlockTheme}
-                >
+                <CopyArea onClick={handleCopyToClipboardClick}>
                   <ClipboardIcon />
                 </CopyArea>
               </Tooltip>
             </SpacingsInline>
           </HighlightedContainer>
-        )}
-      </Highlight>
-    </ThemeProvider>
+        </div>
+      )}
+    </Highlight>
   );
-};
-
-type CodeBlockProps = {
-  secondaryTheme?: boolean;
-  language?: string;
-  highlightLines?: number[];
-  noPromptLines?: number[];
-  content: string;
 };
 
 export default CodeBlock;

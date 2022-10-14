@@ -86,9 +86,9 @@ const LayoutPageWithHero = (props) => (
       heroBackgroundColor={props.heroBackgroundColor}
     >
       <Title
-        theme={{
+        style={designSystem.tokensToCssVars({
           websitePrimaryColor: designSystem.colors.light.headlinePrimary,
-        }}
+        })}
       >
         {props.title}
       </Title>

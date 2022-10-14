@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { SVGProps } from 'react';
-
 const SvgCtLogo = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 34.3 39"
     width={16}
     height={16}
+    role="img"
     {...props}
   >
     <path
@@ -27,5 +27,4 @@ const SvgCtLogo = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-
 export default SvgCtLogo;

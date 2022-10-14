@@ -1,4 +1,5 @@
-import { customProperties } from '@commercetools-uikit/design-system';
+import kebabCase from 'lodash.kebabcase';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 const rootFontSizeNumber = 16;
 // the "width availability contract" with content is that content
@@ -60,18 +61,18 @@ export type ThemeColorTokens = {
 };
 
 export type ThemeCodeBlocksColorTokens = {
-  border: string;
-  surface: string;
-  surfaceHeader: string;
-  surfaceLanguageDropdown: string;
-  surfaceLanguageDropdownHover: string;
-  textHeader: string;
-  surfaceCopyIcon: string;
-  surfaceCopyIconHover: string;
-  surfaceCopyTooltip: string;
-  textCopyTooltip: string;
-  surfaceLineHighlight: string;
-  surfacePrompt: string;
+  borderForCodeBlock: string;
+  surfaceForCodeBlock: string;
+  surfaceHeaderForCodeBlock: string;
+  surfaceLanguageDropdownForCodeBlock: string;
+  surfaceLanguageDropdownHoverForCodeBlock: string;
+  textHeaderForCodeBlock: string;
+  surfaceCopyIconForCodeBlock: string;
+  surfaceCopyIconHoverForCodeBlock: string;
+  surfaceCopyTooltipForCodeBlock: string;
+  textCopyTooltipForCodeBlock: string;
+  surfaceLineHighlightForCodeBlock: string;
+  surfacePromptForCodeBlock: string;
 };
 
 export type ThemeColors = {
@@ -86,112 +87,131 @@ export type ThemeColors = {
 export const colors: ThemeColors = {
   light: {
     // Surfaces are used for backgrounds
-    surfacePrimary: customProperties.colorSurface,
-    surfaceSecondary1: customProperties.colorNeutral95,
-    surfaceSecondary2: customProperties.colorNeutral90,
-    surfaceSecondary3: customProperties.colorNeutral60,
-    surfaceInlineCode: customProperties.colorNeutral95,
-    surfaceCode: customProperties.colorAccent,
-    surfaceCodeCopy: customProperties.colorAccent30,
-    surfaceCodeHighlight: customProperties.colorAccent40,
-    surfaceInfo: customProperties.colorInfo95,
-    surfaceBeta: customProperties.colorInfo85,
-    surfaceQuote: customProperties.colorAccent98,
-    surfaceWarning: customProperties.colorWarning95,
-    surfaceError: customProperties.colorError95,
-    surfaceSearchHighlight: customProperties.colorAccent95,
-    surfaceForSearchInputWhenDisabled: customProperties.colorNeutral90,
+    surfacePrimary: designTokens.colorSurface,
+    surfaceSecondary1: designTokens.colorNeutral95,
+    surfaceSecondary2: designTokens.colorNeutral90,
+    surfaceSecondary3: designTokens.colorNeutral60,
+    surfaceInlineCode: designTokens.colorNeutral95,
+    surfaceCode: designTokens.colorAccent,
+    surfaceCodeCopy: designTokens.colorAccent30,
+    surfaceCodeHighlight: designTokens.colorAccent40,
+    surfaceInfo: designTokens.colorInfo95,
+    surfaceBeta: designTokens.colorInfo85,
+    surfaceQuote: designTokens.colorAccent98,
+    surfaceWarning: designTokens.colorWarning95,
+    surfaceError: designTokens.colorError95,
+    surfaceSearchHighlight: designTokens.colorAccent95,
+    surfaceForSearchInputWhenDisabled: designTokens.colorNeutral90,
     surfaceForReleaseNoteTypeFix: '#e4c5ff',
     // Different tones of text
-    textPrimary: customProperties.colorSolid,
+    textPrimary: designTokens.colorSolid,
     textSecondary: '#666666',
-    textFaded: customProperties.colorNeutral60,
-    textCode: customProperties.colorError,
-    textInfo: customProperties.colorInfo,
-    textError: customProperties.colorError,
-    textWarning: customProperties.colorWarning,
-    textInverted: customProperties.colorSurface,
-    textSearchHeading: customProperties.colorPrimary25,
+    textFaded: designTokens.colorNeutral60,
+    textCode: designTokens.colorError,
+    textInfo: designTokens.colorInfo,
+    textError: designTokens.colorError,
+    textWarning: designTokens.colorWarning,
+    textInverted: designTokens.colorSurface,
+    textSearchHeading: designTokens.colorPrimary25,
     // Different tones of border colors
-    borderPrimary: customProperties.colorNeutral90,
-    borderSecondary: customProperties.colorNeutral,
-    borderInput: customProperties.colorNeutral60,
-    borderHighlight: customProperties.colorPrimary,
-    borderInfo: customProperties.colorInfo,
+    borderPrimary: designTokens.colorNeutral90,
+    borderSecondary: designTokens.colorNeutral,
+    borderInput: designTokens.colorNeutral60,
+    borderHighlight: designTokens.colorPrimary,
+    borderInfo: designTokens.colorInfo,
     borderForReleaseNoteTypeFix: '#b866ff',
     // Links
-    link: customProperties.colorPrimary25,
-    linkHover: customProperties.colorPrimary,
-    linkNavigation: customProperties.colorInfo,
+    link: designTokens.colorPrimary25,
+    linkHover: designTokens.colorPrimary,
+    linkNavigation: designTokens.colorInfo,
     // Headlines
     headlinePrimary: '#003037',
     // Code blocks
     // We support 2 theme versions: a primary one and a secondary one.
     // This is not to be confused with a (potential) website theme, hence
     // the 2 versions being grouped together.
-    // The code block theme is controlled by a prop, which will use the
-    // emotion theming provider to inject the correct version of a theme.
+    // The code block theme is controlled by a prop `secondaryTheme` to inject
+    // the correct CSS variables.
     //
-    //   <ThemeProvider
-    //     theme={{
-    //       codeBlockColors: colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary'],
-    //     }}
-    //   >
+    //   <div style={tokensToCssVars(
+    //     colors.light.codeBlocks[props.secondaryTheme ? 'secondary' : 'primary']
+    //   )}>
     //
     // Do not use these properties directly, but always through an emotion theme provider.
     codeBlocks: {
       primary: {
-        border: customProperties.colorAccent40,
-        surface: customProperties.colorAccent,
-        surfaceHeader: customProperties.colorSolid,
-        surfaceLanguageDropdown: customProperties.colorSurface,
-        surfaceLanguageDropdownHover: customProperties.colorNeutral90,
-        textHeader: customProperties.colorNeutral60,
-        surfaceCopyIcon: customProperties.colorSurface,
-        surfaceCopyIconHover: customProperties.colorAccent40,
-        surfaceCopyTooltip: customProperties.colorAccent40,
-        textCopyTooltip: customProperties.colorSurface,
-        surfaceLineHighlight: customProperties.colorAccent40,
-        surfacePrompt: customProperties.colorNeutral60,
+        borderForCodeBlock: designTokens.colorAccent40,
+        surfaceForCodeBlock: designTokens.colorAccent,
+        surfaceHeaderForCodeBlock: designTokens.colorSolid,
+        surfaceLanguageDropdownForCodeBlock: designTokens.colorSurface,
+        surfaceLanguageDropdownHoverForCodeBlock: designTokens.colorNeutral90,
+        textHeaderForCodeBlock: designTokens.colorNeutral60,
+        surfaceCopyIconForCodeBlock: designTokens.colorSurface,
+        surfaceCopyIconHoverForCodeBlock: designTokens.colorAccent40,
+        surfaceCopyTooltipForCodeBlock: designTokens.colorAccent40,
+        textCopyTooltipForCodeBlock: designTokens.colorSurface,
+        surfaceLineHighlightForCodeBlock: designTokens.colorAccent40,
+        surfacePromptForCodeBlock: designTokens.colorNeutral60,
       },
       secondary: {
-        border: customProperties.colorNeutral90,
-        surface: customProperties.colorSurface,
-        surfaceHeader: customProperties.colorNeutral,
-        surfaceLanguageDropdown: customProperties.colorSolid,
-        surfaceLanguageDropdownHover: customProperties.colorNeutral60,
-        textHeader: customProperties.colorSolid,
-        surfaceCopyIcon: customProperties.colorSolid,
-        surfaceCopyIconHover: customProperties.colorAccent40,
-        surfaceCopyTooltip: customProperties.colorAccent40,
-        textCopyTooltip: customProperties.colorSurface,
-        surfaceLineHighlight: customProperties.colorNeutral90,
-        surfacePrompt: customProperties.colorNeutral60,
+        borderForCodeBlock: designTokens.colorNeutral90,
+        surfaceForCodeBlock: designTokens.colorSurface,
+        surfaceHeaderForCodeBlock: designTokens.colorNeutral,
+        surfaceLanguageDropdownForCodeBlock: designTokens.colorSolid,
+        surfaceLanguageDropdownHoverForCodeBlock: designTokens.colorNeutral60,
+        textHeaderForCodeBlock: designTokens.colorSolid,
+        surfaceCopyIconForCodeBlock: designTokens.colorSolid,
+        surfaceCopyIconHoverForCodeBlock: designTokens.colorAccent40,
+        surfaceCopyTooltipForCodeBlock: designTokens.colorAccent40,
+        textCopyTooltipForCodeBlock: designTokens.colorSurface,
+        surfaceLineHighlightForCodeBlock: designTokens.colorNeutral90,
+        surfacePromptForCodeBlock: designTokens.colorNeutral60,
       },
     },
   },
 };
 
 export const tokens = {
-  borderRadiusForBetaFlag: customProperties.borderRadius4,
-  borderRadiusForSearchDialog: customProperties.borderRadius6,
-  borderRadiusForSearchInput: customProperties.borderRadius6,
-  borderRadiusForCodeBlock: customProperties.borderRadius6,
-  borderRadiusForTooltip: customProperties.borderRadius4,
-  borderRadiusForContentNotification: customProperties.borderRadius6,
-  borderRadiusForImageFrame: customProperties.borderRadius6,
-  borderRadiusForBlockquote: customProperties.borderRadius6,
-  borderRadiusForCard: customProperties.borderRadius6,
-  borderRadiusForChildSectionNav: customProperties.borderRadius6,
-  borderRadiusForRssFeedTable: customProperties.borderRadius6,
-  shadowForBetaFlag: customProperties.shadow7,
-  shadowForSearchDialog: customProperties.shadow2,
-  shadowForPageContent: customProperties.shadow11,
+  borderRadiusForBetaFlag: designTokens.borderRadius4,
+  borderRadiusForSearchDialog: designTokens.borderRadius6,
+  borderRadiusForSearchInput: designTokens.borderRadius6,
+  borderRadiusForCodeBlock: designTokens.borderRadius6,
+  borderRadiusForTooltip: designTokens.borderRadius4,
+  borderRadiusForContentNotification: designTokens.borderRadius6,
+  borderRadiusForImageFrame: designTokens.borderRadius6,
+  borderRadiusForBlockquote: designTokens.borderRadius6,
+  borderRadiusForCard: designTokens.borderRadius6,
+  borderRadiusForChildSectionNav: designTokens.borderRadius6,
+  borderRadiusForRssFeedTable: designTokens.borderRadius6,
+  shadowForBetaFlag: designTokens.shadow7,
+  shadowForSearchDialog: designTokens.shadow2,
+  shadowForPageContent: designTokens.shadow11,
   shadowForClickableCard: `1px 1px 4px 0 rgba(0, 0, 0, 0.24),
   -1px 1px 3px 0 rgba(0, 0, 0, 0.12)`,
   shadowForClickableCardOnHover: `0 14px 28px 0 rgba(0, 0, 0, 0.25),
   0 10px 10px 0 rgba(0, 0, 0, 0.23)`,
-  shadowForRssFeedTable: customProperties.shadow7,
+  shadowForRssFeedTable: designTokens.shadow7,
+
+  // Code blocks
+  borderForCodeBlock: 'var(--border-for-code-block)',
+  surfaceForCodeBlock: 'var(--surface-for-code-block)',
+  surfaceHeaderForCodeBlock: 'var(--surface-header-for-code-block)',
+  surfaceLanguageDropdownForCodeBlock:
+    'var(--surface-language-dropdown-for-code-block)',
+  surfaceLanguageDropdownHoverForCodeBlock:
+    'var(--surface-language-dropdown-hover-for-code-block)',
+  textHeaderForCodeBlock: 'var(--text-header-for-code-block)',
+  surfaceCopyIconForCodeBlock: 'var(--surface-copy-icon-for-code-block)',
+  surfaceCopyIconHoverForCodeBlock:
+    'var(--surface-copy-icon-hover-for-code-block)',
+  surfaceCopyTooltipForCodeBlock: 'var(--surface-copy-tooltip-for-code-block)',
+  textCopyTooltipForCodeBlock: 'var(--text-copy-tooltip-for-code-block)',
+  surfaceLineHighlightForCodeBlock:
+    'var(--surface-line-highlight-for-code-block)',
+  surfacePromptForCodeBlock: 'var(--surface-prompt-for-code-block)',
+
+  // Globals
+  websitePrimaryColor: 'var(--website-primary-color)',
 } as const;
 
 export const dimensions = {
@@ -300,7 +320,8 @@ export const typography = {
   },
 } as const;
 
-export const uikitTheme = {
-  fontFamilyDefault: typography.fontFamilies.primary,
-  fontFamilyBody: typography.fontFamilies.primary,
-} as const;
+// TODO: expose from uikit?
+export const tokensToCssVars = (obj: Record<string, string>) =>
+  Object.fromEntries(
+    Object.entries(obj).map(([key, value]) => [`--${kebabCase(key)}`, value])
+  );

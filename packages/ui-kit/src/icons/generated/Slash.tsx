@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { SVGProps } from 'react';
-
 const SvgSlash = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 16 16"
     width={16}
     height={16}
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
     {...props}
   >
     <g fill="none" fillRule="evenodd">
@@ -19,5 +19,4 @@ const SvgSlash = (props: SVGProps<SVGSVGElement>) => (
     </g>
   </svg>
 );
-
 export default SvgSlash;

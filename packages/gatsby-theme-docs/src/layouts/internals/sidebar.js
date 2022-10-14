@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
-import { css, ClassNames, useTheme } from '@emotion/react';
+import { css, ClassNames } from '@emotion/react';
 import styled from '@emotion/styled';
 import { BackIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -57,13 +57,13 @@ const SidebarScrollFader = styled.div`
   position: absolute;
 `;
 const WebsiteTitle = styled.div`
-  color: ${(props) => props.theme.websitePrimaryColor};
+  color: ${designSystem.tokens.websitePrimaryColor};
   padding: ${designSystem.dimensions.spacings.m};
   font-size: ${designSystem.typography.fontSizes.h4};
 `;
 const WebsiteTitleLink = styled.a`
   text-decoration: none;
-  color: ${(props) => props.theme.websitePrimaryColor};
+  color: ${designSystem.tokens.websitePrimaryColor};
   :hover {
     text-decoration: underline;
   }
@@ -343,15 +343,15 @@ const Sidebar = (props) => {
   // - initialize the new scroll position
   // - scroll to the previous position in case it was defined
   const nextScrollPosition = useScrollPosition(scrollContainerId);
-  const theme = useTheme();
+
   return (
     <>
       <SidebarHeader>
         <LayoutHeaderLogo />
-        <WebsiteTitle theme={theme}>
+        <WebsiteTitle>
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaFlag />}</div>
-            <WebsiteTitleLink as={Link} to="/" theme={theme}>
+            <WebsiteTitleLink as={Link} to="/">
               <SpacingsInline scale="s">
                 <SiteIcon />
                 <span id="site-title">{props.siteTitle}</span>

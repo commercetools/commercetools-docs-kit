@@ -1,9 +1,9 @@
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
 export const tokens = {
   ...designSystem.tokens,
-  borderRadiusForTable: customProperties.borderRadius6,
+  borderRadiusForTable: designTokens.borderRadius6,
   borderRadiusForMethodType: designSystem.pxToRem(`12px`),
   borderRadiusForResponseCode: designSystem.pxToRem(`10px`),
   shadowForTable: `0 ${designSystem.pxToRem(`1px`)} ${designSystem.pxToRem(

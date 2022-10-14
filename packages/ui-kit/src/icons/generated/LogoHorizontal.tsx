@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { SVGProps } from 'react';
-
 const SvgLogoHorizontal = (props: SVGProps<SVGSVGElement>) => (
   <svg
     id="logo-horizontal_svg__Layer_1"
@@ -9,6 +8,7 @@ const SvgLogoHorizontal = (props: SVGProps<SVGSVGElement>) => (
     y={0}
     viewBox="0 0 420.94 143.66"
     xmlSpace="preserve"
+    role="img"
     {...props}
   >
     <style>{'.logo-horizontal_svg__st0{fill:#213c45}'}</style>
@@ -95,5 +95,4 @@ const SvgLogoHorizontal = (props: SVGProps<SVGSVGElement>) => (
     </g>
   </svg>
 );
-
 export default SvgLogoHorizontal;
