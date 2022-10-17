@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { ThemeProvider as UiKitThemeProvider } from '@emotion/react';
+import { ThemeProvider as UiKitThemeProvider } from '@commercetools-uikit/design-system';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
 /* NOTE: `overflow` shorthand is only supported is Chrome and FF */
@@ -43,12 +43,14 @@ const Container = styled.div`
 `;
 
 const LayoutApplication = (props) => (
-  <UiKitThemeProvider
-    theme={{
-      ...designSystem.uikitTheme,
-      websitePrimaryColor: props.websitePrimaryColor,
-    }}
-  >
+  <>
+    <UiKitThemeProvider
+      themeOverrides={{
+        fontFamilyDefault: designSystem.typography.fontFamilies.primary,
+        fontFamilyBody: designSystem.typography.fontFamilies.primary,
+        websitePrimaryColor: props.websitePrimaryColor,
+      }}
+    />
     <Root
       role="application"
       id="application"
@@ -57,7 +59,7 @@ const LayoutApplication = (props) => (
       <Container {...props} />
     </Root>
     <div id="modal-portal" />
-  </UiKitThemeProvider>
+  </>
 );
 LayoutApplication.propTypes = {
   websitePrimaryColor: PropTypes.string.isRequired,

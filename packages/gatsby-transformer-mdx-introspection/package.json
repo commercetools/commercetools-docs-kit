@@ -15,7 +15,7 @@
   "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/plugins#gatsby-transformer-mdx-introspection",
   "keywords": ["gatsby", "gatsby-plugin", "mdx"],
   "dependencies": {
-    "@babel/parser": "^7.16.12",
+    "@babel/parser": "^7.19.4",
     "@mdx-js/mdx": "1.6.22",
     "deepmerge": "4.2.2",
     "gray-matter": "4.0.3"

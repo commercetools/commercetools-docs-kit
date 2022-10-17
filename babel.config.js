@@ -1,4 +1,7 @@
-// should track https://github.com/commercetools/ui-kit/blob/main/babel.config.js as suitable
+/**
+ * NOTE: reference config from https://github.com/commercetools/merchant-center-application-kit/blob/main/babel.config.js
+ * @type {import('@babel/core').TransformOptions}
+ */
 module.exports = {
   presets: [
     [

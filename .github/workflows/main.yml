@@ -62,13 +62,14 @@ jobs:
         run: yarn build
         env:
           ENABLE_SEARCH: 'true'
+          NODE_OPTIONS: '--max-old-space-size=6144'
           GATSBY_AUTH0_DOMAIN: ${{ secrets.GATSBY_AUTH0_DOMAIN }}
           GATSBY_AUTH0_CLIENTID: ${{ secrets.GATSBY_AUTH0_CLIENTID }}
           GATSBY_LEARNAPI_DOMAIN: ${{ secrets.GATSBY_LEARNAPI_DOMAIN }}
 
       - name: Running linters and tests
         run: |
-          yarn jest --projects jest.{eslint,stylelint,test}.config.js \
+          yarn jest --projects jest.{eslint,test}.config.js \
             --maxWorkers=3 \
             --reporters jest-silent-reporter
 
@@ -146,29 +147,21 @@ jobs:
           key: ${{ runner.os }}-cypress-${{ hashFiles('**/package.json') }}
 
       - name: Installing Cypress binary
-        run: yarn run cypress install && yarn run cypress cache list
+        run: yarn cypress install && yarn cypress cache list
 
       - name: Running End-to-End tests
-        run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/docs-smoke-test' 'yarn run percy exec -- yarn test:e2e:docs-smoke-test'
+        run: yarn percy exec -- yarn test:e2e:docs-smoke-test --config baseUrl="${{ steps.deploy-to-vercel.outputs.preview-url }}"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
           CYPRESS_CI: 'true'
 
       - name: Running API End-to-End tests
-        run: yarn run start-server-and-test 'yarn run serve -l 8000 -n public' 'http://localhost:8000/api-docs-smoke-test' 'yarn run percy exec -- yarn test:e2e:api-docs-smoke-test'
+        run: yarn percy exec -- yarn test:e2e:api-docs-smoke-test --config baseUrl="${{ steps.deploy-to-vercel.outputs.preview-url }}"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_API_SMOKE_TESTS_E2E }}
           CYPRESS_CI: 'true'
-
-      - name: Uploading Cypress artifacts
-        # Test run video was always captured, so this action uses "always()" condition
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
 
       - name: Check local links including anchors
         if: ${{ env.DEPLOY_ENV == 'Preview' }}

@@ -20,7 +20,6 @@ const Hero = styled.div`
   background-size: auto;
   background-position: left;
 
-  /* stylelint-disable-next-line function-whitespace-after */
   background-image: ${(props) => `url('${props.heroBackgroundURL}')`};
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
@@ -87,9 +86,9 @@ const LayoutPageWithHero = (props) => (
       heroBackgroundColor={props.heroBackgroundColor}
     >
       <Title
-        theme={{
+        style={designSystem.tokensToCssVars({
           websitePrimaryColor: designSystem.colors.light.headlinePrimary,
-        }}
+        })}
       >
         {props.title}
       </Title>

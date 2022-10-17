@@ -16,6 +16,6 @@
   "keywords": ["gatsby", "gatsby-plugin", "gatsby-transformer", "raml"],
   "dependencies": {
     "firstline": "^2.0.2",
-    "js-yaml": "^4.0.0"
+    "js-yaml": "^4.1.0"
   }
 }

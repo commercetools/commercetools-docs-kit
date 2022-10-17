@@ -10,7 +10,11 @@ yarn node ./scripts/gatsby-cache.mjs pre
 
 echo "Building Gatsby websites."
 
-cross-env NODE_ENV=production yarn workspaces foreach --include '@commercetools-website/*' run build
+yarn workspace @commercetools-website/api-docs-smoke-test build
+yarn workspace @commercetools-website/docs-smoke-test build
+yarn workspace @commercetools-website/documentation build
+yarn workspace @commercetools-website/site-template build
+
 yarn node ./scripts/gatsby-cache.mjs post
 
 echo "Copying test index.html file into public folder."

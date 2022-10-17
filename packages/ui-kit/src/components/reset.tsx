@@ -12,7 +12,6 @@ const Reset = () => (
   <>
     <Global
       styles={css`
-        /* stylelint-disable property-no-vendor-prefix, selector-id-pattern */
         html,
         body,
         #___gatsby,

@@ -24,7 +24,8 @@ import PageContentInset from './internals/page-content-inset';
 import PageReadTime from './internals/page-read-time-estimation';
 
 const LayoutContent = (props) => {
-  const { ref, inView } = useInView();
+  const { ref, inView, entry } = useInView();
+  const isSearchBoxInView = !Boolean(entry) || inView;
   const layoutState = useLayoutState();
   const siteData = useSiteData();
   const excludeFromSearchIndex =
@@ -96,7 +97,7 @@ const LayoutContent = (props) => {
             </LayoutPageContent>
             <LayoutPageNavigation
               {...layoutState.searchDialog}
-              isSearchBoxInView={inView}
+              isSearchBoxInView={isSearchBoxInView}
               excludeFromSearchIndex={excludeFromSearchIndex}
               pageTitle={props.pageContext.shortTitle || props.pageData.title}
               tableOfContents={props.pageData.tableOfContents}
