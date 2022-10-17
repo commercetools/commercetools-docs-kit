@@ -89,6 +89,10 @@ jobs:
           scope: commercetools
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
 
+      - name: Set DEPLOY_URL variable (Production)
+        if: ${{ env.DEPLOY_ENV == 'Production' }}
+        run: echo 'DEPLOY_URL=${{ steps.deploy-to-vercel-production.outputs.preview-url }}' >> "$GITHUB_ENV"
+
       - name: Initialize GitHub Deployment
         if: ${{ env.DEPLOY_ENV == 'Preview' }}
         uses: bobheadxi/deployments@v1.1.0
@@ -115,6 +119,10 @@ jobs:
           alias-domains: |
             docskit-sha-${{ github.sha }}.commercetools.vercel.app
             docskit-pr-{{PR_NUMBER}}.commercetools.vercel.app
+
+      - name: Set DEPLOY_URL variable (Preview)
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        run: echo 'DEPLOY_URL=${{ steps.deploy-to-vercel.outputs.preview-url }}' >> "$GITHUB_ENV"
 
       - name: Update GitHub Deployment Status
         if: ${{ env.DEPLOY_ENV == 'Preview' }}
@@ -150,14 +158,14 @@ jobs:
         run: yarn cypress install && yarn cypress cache list
 
       - name: Running End-to-End tests
-        run: yarn percy exec -- yarn test:e2e:docs-smoke-test --config baseUrl="${{ steps.deploy-to-vercel.outputs.preview-url }}"
+        run: yarn percy exec -- yarn test:e2e:docs-smoke-test --config baseUrl="${{ env.DEPLOY_URL }}"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
           CYPRESS_CI: 'true'
 
       - name: Running API End-to-End tests
-        run: yarn percy exec -- yarn test:e2e:api-docs-smoke-test --config baseUrl="${{ steps.deploy-to-vercel.outputs.preview-url }}"
+        run: yarn percy exec -- yarn test:e2e:api-docs-smoke-test --config baseUrl="${{ env.DEPLOY_URL }}"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_API_SMOKE_TESTS_E2E }}
