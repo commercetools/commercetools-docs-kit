@@ -5,8 +5,8 @@ ignorecase: false
 action:
   name: replace
 swap:
-  MC: Merchant Center
-  mc: Merchant Center
+  '(?:^|\s+)MC(?=\s+|$)': Merchant Center
+  '(?:^|\s+)mc(?=\s+|$)': Merchant Center
   merchant center: Merchant Center
   Merchant center: Merchant Center
   merchant Center: Merchant Center
