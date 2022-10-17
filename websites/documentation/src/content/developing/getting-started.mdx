@@ -2,11 +2,15 @@
 title: Get Started Developing the Docs-Kit
 ---
 
+# Setup
+
 Install the dependencies (uses yarn workspaces):
 
 ```bash
 $ yarn
 ```
+
+# Testing
 
 To run the tests:
 
@@ -17,24 +21,42 @@ $ yarn test
 $ yarn test:watch
 ```
 
-Build the packages
+# Build the packages
 
 ```bash
 $ yarn build
 ```
 
-Start the [docs-smoke-test website](./websites/docs-smoke-test):
+# Start Test Websites
+
+Two websites hosted in this repository serve as the target if e2e and visual regression tests.
+
+To start them including the self-learning features which require SSO and other configuration, three environment variables need to be provided.
+Create two files named `.env.development` and `.env.production` in `websites/docs-smoke-test` with the following content:
+
+```
+GATSBY_AUTH0_DOMAIN=example.com
+GATSBY_AUTH0_CLIENTID=XXX
+GATSBY_LEARN_API_DOMAIN=https://example.com
+```
+
+`GATSBY_AUTH0_CLIENTID` requires a confidential secret to get SSO operational but the site starts with a blank, too.
+
+Remember that `.env.development` file should never be added to git (this is prevented by .gitignore rule)
+
+## Start the [docs-smoke-test website](./websites/docs-smoke-test):
 
 ```bash
 $ cd websites/docs-smoke-test
 $ yarn start
 ```
 
-Start the [api-docs-smoke-test website](./websites/api-docs-smoke-test):
+## Start the [api-docs-smoke-test website](./websites/api-docs-smoke-test):
 
 ```bash
 $ cd websites/api-docs-smoke-test
 $ yarn start
 ```
 
-When building a production or test site, setting an environment variable `ANALYZE_BUNDLE=true` starts a [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) based size analysis after the build. Keep in mind that the analysis only covers the JS content, GatsbyJS GraphQL data live in separate JSON files in the `/public/page-data` folder and are a source of page weight, too. The `/public/page-data/sq` subfolder contains the static query results.
+When building a production or test site, setting an environment variable `ANALYZE_BUNDLE=true` starts a [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) based size analysis after the build.
+Keep in mind that the analysis only covers the JS content, GatsbyJS GraphQL data live in separate JSON files in the `/public/page-data` folder and are a source of page weight, too. The `/public/page-data/sq` subfolder contains the static query results.
