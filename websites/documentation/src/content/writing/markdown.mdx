@@ -4,11 +4,17 @@ wideLayout: true
 navLevels: 2
 ---
 
-# Titles and headings
+# Frontmatter, Title
 
-All content pages start with a title, followed by the subtitle and content. The title is defined using the `title` key in the frontmatter of the MDX file, followed by the subtitle, defined using the `<Subtitle>` tag.
+Content pages typically have a title, followed by the subtitle and content.
+The title is defined using the `title` key in the frontmatter of the MDX file.
+"Frontmatter" is a block of `yaml` syntax data properties at the top of an MDX file, enclosed by lines with three minus-dash signs.
 
-```md
+followed by the subtitle, defined using the `<Subtitle>` tag.
+
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 ---
 title: Title of the page
 ---
@@ -19,12 +25,30 @@ Short sentence with the main use case and benefits of the feature.
 
 </Subtitle>
 
-# Headers
+Start content here.
+```
+
+<Card>
+<Subtitle>
+
+Short sentence with the main use case and benefits of the feature.
+
+</Subtitle>
+Start content here.
+</Card>
+
+</SideBySide>
+
+# Headings
 
 You can use standard Markdown syntax for headings.
 
-The first line of content is closely bound to the heading with a smaller margin. Heading levels 1,2, and 3 appear in the right-hand index navigation by default, which helps readers understand the page's content without reading or scrolling through them.
+The first line of content is closely bound to the heading with a smaller margin.
+Heading levels 1,2, and 3 appear in the right-hand index navigation by default, which helps readers understand the page's content without reading or scrolling through them.
 
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 # Level 1 heading
 
 They have the biggest font than other headings, and bound to the left margin of the page.
@@ -42,6 +66,10 @@ They have the smallest font compared to the other headings, and are slightly ind
 Any headings after level 3 are rendered and aligned the same as level 3 headings, but do not appear on the right-hand index navigation as level 3 headings.
 ```
 
+_(no preview for headings in the docs, would break the page layout)_
+
+</SideBySide>
+
 The rendered page can be seen [here](/writing/sample).
 
 <Warning>
@@ -52,59 +80,72 @@ Avoid using links, code formatting, or any other style in headings.
 
 You can use standard Markdown syntax for formatting text.
 
-- <SideBySide>
+## Bold text
 
-  **Bold text**
+<SideBySide>
 
-  ```
-  **Bold text**
-  ```
+```md title="you write:" secondaryTheme
+**Bold text**
+```
 
-  </SideBySide>
+<Card>**Bold text**</Card>
 
-- <SideBySide>
+</SideBySide>
 
-  _Italicized text_
+## Italicized text
 
-  ```
-  _Italicized text_
-  ```
+<SideBySide>
 
-  </SideBySide>
+```md title="you write:" secondaryTheme
+_Italicized text_
+```
 
-- <SideBySide>
+<Card>_Italicized text_</Card>
 
-  _**Bold and italicized text**_
+</SideBySide>
 
-  ```
-  _**Bold and italicized text**_
-  ```
+<SideBySide>
 
-  </SideBySide>
+```md title="you write:" secondaryTheme
+_**Bold and italicized text**_
+```
 
-- <SideBySide>
+<Card>_**Bold and italicized text**_</Card>
 
-  `Monospaced text`
+</SideBySide>
 
-  ```
-  `Monospaced text`
-  ```
+## Monospaced Text
 
-  </SideBySide>
+Monospaced Text is to be used for string literals, that is cases where the communication is not intended by the meaning of the word but to be the exact character sequence as displayed.
+Typical examples are inline code spans like shell commands, file names, folder paths, but also constant values.
+
+<SideBySide>
+
+```md title="you write:" secondaryTheme
+`Monospaced text`
+```
+
+<Card>`Monospaced text`</Card>
+
+</SideBySide>
 
 ## Paragraph break
 
 <SideBySide>
 
-```md
+```md title="you write:" secondaryTheme
 Add a blank line to introduce paragraph breaks.
 
 This is how a paragraph break is rendered.
 ```
 
+<Card>
+
 Add a blank line to introduce paragraph breaks.
 
 This is how a paragraph break is rendered.
+
+</Card>
 
 </SideBySide>
 
@@ -112,13 +153,15 @@ This is how a paragraph break is rendered.
 
 <SideBySide>
 
-```md
+```md title="you write:" secondaryTheme
 Add a `\` at the end of a sentence to introduce a line break.\
 This is how a line break is rendered.
 ```
 
+<Card>
 Add a `\` at the end of a sentence to introduce a line break.\
 This is how a line break is rendered.
+</Card>
 
 </SideBySide>
 
@@ -126,7 +169,7 @@ This is how a line break is rendered.
 
 <SideBySide>
 
-```md
+```md title="you write:" secondaryTheme
 Use bulleted lists to list items that have no particular order or sequence.
 
 - Item 1
@@ -134,11 +177,15 @@ Use bulleted lists to list items that have no particular order or sequence.
 - Item 2
 ```
 
+<Card>
+
 Use bulleted lists to list items that have no particular order or sequence.
 
 - Item 1
   - Sub-item 1
 - Item 2
+
+</Card>
 
 </SideBySide>
 
@@ -146,17 +193,21 @@ Use bulleted lists to list items that have no particular order or sequence.
 
 <SideBySide>
 
-```md
+```md title="you write:" secondaryTheme
 Use numbered lists to list items that follow a particular order or sequence.
 
 1. Step 1
 2. Step 2
 ```
 
+<Card>
+
 Use numbered lists to list items that follow a particular order or sequence.
 
 1. Step 1
 2. Step 2
+
+</Card>
 
 </SideBySide>
 
@@ -166,7 +217,7 @@ We strongly prefer bulleted lists to tables for consistency, visual styling, and
 
 <SideBySide>
 
-```md
+```md title="you write:" secondaryTheme
 | Column A | Column B | Column C |
 | -------- | -------- | -------- |
 | A1       | B1       | C1       |
@@ -174,387 +225,190 @@ We strongly prefer bulleted lists to tables for consistency, visual styling, and
 | A3       | B3       | C3       |
 ```
 
+<Card>
+
 | Column A | Column B | Column C |
 | -------- | -------- | -------- |
 | A1       | B1       | C1       |
 | A2       | B2       | C2       |
 | A3       | B3       | C3       |
+
+</Card>
 
 </SideBySide>
 
 # Special mentions
 
-Special mentions are limited to Info or Warning boxes in our documentation. Place them (before or after a sentence) in relevance to the context being discussed for better clarity. Limit the usage of notices, to where necessary, to avoid reducing its effectiveness in emphasizing important information.
+Special mentions are limited to Info or Warning boxes in our documentation.
+Place them (before or after a sentence) in relevance to the context being discussed for better clarity.
+Limit the usage of notices, to where necessary, to avoid reducing its effectiveness in emphasizing important information.
 
-- **Info box**
+When using Markdown syntax within, you must leave an empty line between the content and element tags for the formatting to render.
+Nearly all Markdown is possible inside Special Mentions but only text microformatting and lists are recommended.
 
-  <Info>
-
-  An Info box is used to:
-
-  - emphasize points or reminders.
-  - point out exceptions from the standard behavior described in the respective section.
-  - indicate possible side effects that are not obvious or expected in the first place.
-
-  </Info>
-
-- **Warning box**
-
-  <Warning>
-
-  A Warning box is used to warn users about the possibility of issues or data loss.
-
-  </Warning>
-
-When using Markdown syntax within, leave an empty line between the content and element tags for the formatting to render.
-
-**Multiple paragraphs:**
+## Info box
 
 <SideBySide>
 
-```md
+```md title="you write:" secondaryTheme
 <Info>
 
-Paragraph A
+An Info box is used to:
 
-Paragraph B
+- emphasize points or reminders.
+- point out exceptions from the standard behavior described in the respective section.
+- indicate possible side effects that are not obvious or expected in the first place.
 
 </Info>
 ```
 
+<Card>
+
 <Info>
 
-Paragraph A
+An Info box is used to:
 
-Paragraph B
+- emphasize points or reminders.
+- point out exceptions from the standard behavior described in the respective section.
+- indicate possible side effects that are not obvious or expected in the first place.
 
 </Info>
+
+</Card>
 
 </SideBySide>
 
-**Bulleted list:**
+## Warning box
 
 <SideBySide>
 
-```md
-<Info>
+```md title="you write:" secondaryTheme
+<Warning>
 
-- Item A
-- Item B
+A Warning box is used to warn users about the possibility of issues or data loss.
 
-</Info>
+</Warning>
 ```
 
-<Info>
+<Card>
+<Warning>
 
-- Item A
-- Item B
+A Warning box is used to warn users about the possibility of issues or data loss.
 
-</Info>
-
-</SideBySide>
-
-**Ordered list:**
-
-<SideBySide>
-
-```md
-<Info>
-
-1. Item A
-2. Item B
-
-</Info>
-```
-
-<Info>
-
-1. Item A
-2. Item B
-
-</Info>
-
-</SideBySide>
-
-**Code block:**
-
-<SideBySide>
-
-````md
-<Info>
-
-```
-a code block
-```
-
-</Info>
-````
-
-<Info>
-
-```md
-a code block
-```
-
-</Info>
-
-</SideBySide>
-
-**Table:**
-
-<SideBySide>
-
-```md
-<Info>
-
-| Column A | Column B | Column C |
-| -------- | -------- | -------- |
-| A1       | B1       | C1       |
-| A2       | B2       | C2       |
-| A3       | B3       | C3       |
-
-</Info>
-```
-
-<Info>
-
-| Column A | Column B | Column C |
-| -------- | -------- | -------- |
-| A1       | B1       | C1       |
-| A2       | B2       | C2       |
-| A3       | B3       | C3       |
-
-</Info>
+</Warning>
+</Card>
 
 </SideBySide>
 
 # Links
 
-Links are rendered differently based on the target.
+Link URLs have to follow a defined convention depending on whether they point to the same microsite, a different docs-kit microsite or to an external location.
+They are rendered differently based on the target and analytics tracking is added depending on the target.
 
-- **Link to a different website:**
+## Link to an external website
 
-  <SideBySide>
+<SideBySide>
 
-  ```md
-  [Link](https://commercetools.com)
-  ```
+```md title="you write:" secondaryTheme
+[Link to commercetools' marketing website](https://commercetools.com)
+```
 
-  | Link                              | Type            | Outcome                                         |
-  | --------------------------------- | --------------- | ----------------------------------------------- |
-  | [Link](https://commercetools.com) | `external-link` | Outbound link that tracks via Google Analytics. |
+<Card>[Link to commercetools' marketing website](https://commercetools.com)</Card>
 
-  </SideBySide>
+</SideBySide>
 
-- **Link to an empty string:**
+## Link to a heading or other anchor on the same page
 
-  <SideBySide>
+<SideBySide>
 
-  ```md
-  [Link]()
-  ```
+```md title="you write:" secondaryTheme
+[how to write links](#links)
+```
 
-  | Link     | Type          | Outcome                      |
-  | -------- | ------------- | ---------------------------- |
-  | [Link]() | `gatsby-link` | Empty link to the same page. |
+<Card>[how to write links](#links)</Card>
 
-  </SideBySide>
+</SideBySide>
 
-- **Link to a heading anchor on the same page:**
+## Link to another page on this site
 
-  <SideBySide>
+<SideBySide>
 
-  ```md
-  [Link](#links)
-  ```
+```md title="you write:" secondaryTheme
+[writing pages](/writing/pages)
 
-  | Link           | Type          | Outcome                                                     |
-  | -------------- | ------------- | ----------------------------------------------------------- |
-  | [Link](#links) | `anchor-link` | Jumps to that position without visible scrolling or reload. |
+[writing pages - markdown frontmatter section](/writing/pages#markdown-frontmatter)
+```
 
-  </SideBySide>
+<Card>
+[writing pages](/writing/pages)
+[writing pages - markdown frontmatter section](/writing/pages#markdown-frontmatter)
+</Card>
 
-- **Link to a heading anchor on the same page, but using the full path:**
+</SideBySide>
 
-  <SideBySide>
+## Link to a page of another docs microsite
 
-  ```md
-  [Link](/writing/markdown#links)
-  ```
+<Info>
+This special  `/../` notation is important to remember because it is a special feature of the docs-kit.
+It's a valid URL but not a common or useful type of link target outside the concept of path prefixed microsites.
+</Info>
 
-  | Link                            | Type          | Outcome                                                     |
-  | ------------------------------- | ------------- | ----------------------------------------------------------- |
-  | [Link](/writing/markdown#links) | `anchor-link` | Jumps to that position without visible scrolling or reload. |
+<SideBySide>
 
-  </SideBySide>
+```md title="you write:" secondaryTheme
+[A link to the '/views/links' path in the `docs-smoke-test` microsite](/../docs-smoke-test/views/links)
+```
 
-- **Link to another page on this site, but using a full path:**
+<Card>[A link to the '/views/links' path in the `docs-smoke-test` microsite](/../docs-smoke-test/views/links)</Card>
 
-  <SideBySide>
+</SideBySide>
 
-  ```md
-  [Link](/writing/pages)
-  ```
+Technically, this is navigation into a "negative" path depth. In development mode this will not be working link target, but in production the site is hosted inside a subfolder of the main domain, so this pattern is navigating out of the current website into the main domain and then into the other microsite.
 
-  | Link                   | Type          | Outcome                          |
-  | ---------------------- | ------------- | -------------------------------- |
-  | [Link](/writing/pages) | `gatsby-link` | Gatsby link, history navigation. |
+## Link to static files
 
-  </SideBySide>
+<SideBySide>
 
-- **Link to another page on this site with a specific anchor to a page on this site:**
+```md title="you write:" secondaryTheme
+[Link](/downloads/hello.txt)
+```
 
-  <SideBySide>
+[Link](/downloads/hello.txt)
 
-  ```md
-  [Link](/#links)
-  ```
+</SideBySide>
 
-  | Link            | Type          | Outcome                                                                             |
-  | --------------- | ------------- | ----------------------------------------------------------------------------------- |
-  | [Link](/#links) | `gatsby-link` | Gatsby link, history navigation, and directly jumps to the anchor element position. |
+# Custom link targets
 
-  </SideBySide>
+The `<Anchor>` component allows to create invisible link targets at any place in the content.
+It allows to create links to places that are not a heading - headings have an autogenerated "anchor" to link to them.
 
-- **Link to another page on this site using a relative upwards traversal path:**
+<SideBySide>
 
-  <SideBySide>
-
-  ```md
-  [Link](../writing/navigation)
-  ```
-
-  | Link                          | Type          | Outcome                                              |
-  | ----------------------------- | ------------- | ---------------------------------------------------- |
-  | [Link](../writing/navigation) | `gatsby-link` | Gatsby link, history navigation, to a parent folder. |
-
-  </SideBySide>
-
-- **Link to a sub-page of this one (omitting the trailing slash):**
-
-  <SideBySide>
-
-  ```md
-  [Link](nested/link-target)
-  ```
-
-  | Link                       | Type          | Outcome                                           |
-  | -------------------------- | ------------- | ------------------------------------------------- |
-  | [Link](nested/link-target) | `gatsby-link` | Gatsby link, history navigation, to a sub folder. |
-
-  </SideBySide>
-
-- **Link to a sub-page of this one (including the trailing slash):**
-
-  <SideBySide>
-
-  ```md
-  [Link](nested/link-target/)
-  ```
-
-  | Link                        | Type          | Outcome                                           |
-  | --------------------------- | ------------- | ------------------------------------------------- |
-  | [Link](nested/link-target/) | `gatsby-link` | Gatsby link, history navigation, to a sub folder. |
-
-  </SideBySide>
-
-- **Link to a page of another internal site using a full URL (recommended):**
-
-  <SideBySide>
-
-  ```md
-  [Link](https://docs.commercetools.com/site-template)
-  ```
-
-  | Link                                                 | Type            | Outcome                                      |
-  | ---------------------------------------------------- | --------------- | -------------------------------------------- |
-  | [Link](https://docs.commercetools.com/site-template) | `internal-link` | Regular HTML link (only in production mode). |
-
-  </SideBySide>
-
-- **Link to a page of another internal site:**
-
-  <SideBySide>
-
-  ```md
-  [Link](/../site-template/)
-  ```
-
-  | Link                       | Type            | Outcome                                      |
-  | -------------------------- | --------------- | -------------------------------------------- |
-  | [Link](/../site-template/) | `internal-link` | Regular HTML link (only in production mode). |
-
-  </SideBySide>
-
-- **Link to static files:**
-
-  <SideBySide>
-
-  ```md
-  [Link](/downloads/hello.txt)
-  [Link](/downloads/hello.json)
-  [Link](/html/hello.html)
-  ```
-
-  | Link                          | Type          | Outcome                                                                                |
-  | ----------------------------- | ------------- | -------------------------------------------------------------------------------------- |
-  | [Link](/downloads/hello.txt)  | `static-link` | Regular HTML link pointing to the hello.txt page                                       |
-  | [Link](/downloads/hello.json) | `static-link` | Regular HTML link pointing to the hello.json page                                      |
-  | [Link](/html/hello.html)      | `static-link` | Regular HTML link pointing to the hello.html page (HTML pages do not work in dev mode) |
-
-  </SideBySide>
-
-# Custom anchors
-
-## Anchor in a line
-
-```md
+```md title="you write:" secondaryTheme
 [This link jumps to the anchored line.](#any-html-id-compatible-string-expected-usage)
 
-The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-expected-usage" />
+The anchor is placed in this text line. <Anchor name="any-html-id-compatible-string-expected-usage" />
+
+### The anchor is placed in this title <Anchor name="any-html-id-compatible-string-in-a-title" />
+
+- Item 1 <Anchor name="any-html-id-compatible-string-in-a-list" />
+- Item 2
 ```
+
+<Card>
 
 [This link jumps to the anchored line.](#any-html-id-compatible-string-expected-usage)
 
 The anchor is placed in this line. <Anchor name="any-html-id-compatible-string-expected-usage"/>
 
-## Anchor with children links
-
-[This link jumps to the anchored line.](#any-html-id-compatible-string-with-children)
-
-<Anchor name="any-html-id-compatible-string-with-children" >No text is allowed here.</Anchor>
-
-```md
-<Anchor name="any-html-id-compatible-string-with-children" >
-  No text is allowed here.
-</Anchor>
-```
-
-## Anchor in a title
-
-```md
-[This link jumps to the anchored title.](#any-html-id-compatible-string-in-a-title)
-
-### The anchor is placed in this title <Anchor name="any-html-id-compatible-string-in-a-title" />
-```
-
-[This link jumps to the anchored title.](#any-html-id-compatible-string-in-a-title)
-
-### The anchor is placed in this title <Anchor name="any-html-id-compatible-string-in-a-title" />
-
-## Anchor in a list
-
-```md
-[This link jumps to the anchored item in the list.](#any-html-id-compatible-string-in-a-list)
+_titles can't be previewed here without breaking the page flow_
 
 - Item 1 <Anchor name="any-html-id-compatible-string-in-a-list" />
 - Item 2
-```
 
-[This link jumps to the anchored item in the list.](#any-html-id-compatible-string-in-a-list)
+</Card>
 
-- Item 1 <Anchor name="any-html-id-compatible-string-in-a-list" />
-- Item 2
+</SideBySide>
 
 # Cards
 
@@ -580,7 +434,9 @@ The following properties can be used to define the content within the card:
 
 This is an example of a set of cards with no properties defined. It is flat and of regular width as the parameters `clickable` and `narrow` are not defined. It only contains the body as `title` is not defined.
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards>
   <Card>Card A</Card>
   <Card>Card B</Card>
@@ -596,11 +452,15 @@ This is an example of a set of cards with no properties defined. It is flat and 
   <Card>Card D</Card>
 </Cards>
 
+</SideBySide>
+
 ### Cards with a list in the body
 
 It is also possible to have a list in the body of the card. Lists are usually used in flat cards as you can provide multiple target links for multiple list entries, which is not the case for [clickable cards](#clickable-card) that have only one target link.
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards>
   <Card title="Card with bullet list">
     - Item 1 - Item 2 - Sub-item 1 - Item 3
@@ -619,11 +479,15 @@ It is also possible to have a list in the body of the card. Lists are usually us
 </Card>
 </Cards>
 
+</SideBySide>
+
 ## Cards with a link
 
 ### Flat card
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards>
   <Card
     title="Title of the card"
@@ -645,15 +509,19 @@ It is also possible to have a list in the body of the card. Lists are usually us
   </Card>
 </Cards>
 
+</SideBySide>
+
 ### Clickable card
 
 <Info>
-Clickable cards must have a href set.
+Clickable cards must have an href set.
 </Info>
 
 They have one card-level target link (href) and no other links in the content. The target link (href) can be repeated as a link at the bottom by setting a card link label.
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards clickable>
   <Card
     title="Title of the card"
@@ -672,13 +540,17 @@ They have one card-level target link (href) and no other links in the content. T
     textLink="Read more about navigation">In a clickable card, the complete card is a clickable target.</Card>
 </Cards>
 
+</SideBySide>
+
 ## Cards with an image
 
 Images are not supported for free-form in-content cards, but only in places that are fully designed and implemented by developers. An image is sized into the width of the card.
 
 ### Flat card
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards>
   <Card title="Title of the card" image={<CardBannerOSSIcon />}>
     Flat card with an image
@@ -695,15 +567,18 @@ Images are not supported for free-form in-content cards, but only in places that
 </Card>
 </Cards>
 
+</SideBySide>
+
 ### Clickable card
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards clickable>
   <Card
     title="Title of the card"
     href="/writing/navigation"
-    image={<CardBannerMcDevsIcon />}
-  >
+    image={<CardBannerMcDevsIcon />}>
     Clickable card with an image
   </Card>
 </Cards>
@@ -718,6 +593,8 @@ Images are not supported for free-form in-content cards, but only in places that
   </Card>
 </Cards>
 
+</SideBySide>
+
 ## Cards with an icon
 
 <Info>
@@ -728,16 +605,16 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 
 ### Flat card
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards>
   <Card
     title="Title of the card"
     icon={<DummyIcon />}
     href="/writing/navigation"
-    textLink="Read more about images"
-  >
-    Icons in regular cards are aligned to the top regardless of whether they are
-    clickable or flat.
+    textLink="Read more about images">
+    Icons in regular cards are aligned to the top regardless of whether they are clickable or flat.
   </Card>
 </Cards>
 ```
@@ -752,18 +629,20 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
   </Card>
 </Cards>
 
+</SideBySide>
+
 ### Clickable card
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards narrow clickable>
   <Card
     title="Title of the card"
     href="/writing/navigation"
     textLink="Read more about images"
-    icon={<DummyIcon />}
-  >
-    Icons in narrow cards are aligned to the left regardless of whether they are
-    clickable or flat.
+    icon={<DummyIcon />}>
+    Icons in narrow cards are aligned to the left regardless of whether they are clickable or flat.
   </Card>
 </Cards>
 ```
@@ -778,11 +657,15 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
   </Card>
 </Cards>
 
+</SideBySide>
+
 ## Cards with an image and icon
 
 ### Regular card
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards>
   <Card image={<CardBannerMcDocsIcon />} icon={<DummyIcon />}>
     Regular card with an image and icon
@@ -791,17 +674,18 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 ```
 
 <Cards>
-  <Card
-    image={<CardBannerMcDocsIcon />}
-    icon={<DummyIcon />}
-  >
+  <Card image={<CardBannerMcDocsIcon />} icon={<DummyIcon />}>
     Regular card with an image and icon
   </Card>
 </Cards>
 
+</SideBySide>
+
 ### Narrow card
 
-```jsx
+<SideBySide>
+
+```md title="you write:" secondaryTheme
 <Cards narrow>
   <Card image={<CardBannerPlatformIcon />} icon={<DummyIcon />}>
     Narrow card with an image and icon
@@ -818,6 +702,8 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
   </Card>
 </Cards>
 
+</SideBySide>
+
 # RSS feed
 
 RSS feed is an online file that notifies users of our latest content updates.
@@ -826,29 +712,31 @@ RSS feed is an online file that notifies users of our latest content updates.
 RSS feeds are only generated in production builds.
 </Info>
 
-## Table with one feed
+## List from one feed
 
 <SideBySide>
 
+```md title="you write:" secondaryTheme
+<RssFeeds dataSources={['/docs-smoke-test/releases/feed.xml']} />
 ```
-<RssFeeds dataSources={[
-"/docs-smoke-test/releases/feed.xml"
-]}/>
-```
+
+(not included in preview)
 
 </SideBySide>
 
-## Table with multiple feeds
+## List from multiple feeds
 
 <SideBySide>
 
-```jsx
+```md title="you write:" secondaryTheme
 <RssFeeds
-  dataSources={[
-    '/docs-smoke-test/releases/feed.xml',
-    '/api-docs-smoke-test/releases/feed.xml',
-  ]}
+dataSources={[
+'/docs-smoke-test/releases/feed.xml',
+'/api-docs-smoke-test/releases/feed.xml',
+]}
 />
 ```
+
+(not included in preview)
 
 </SideBySide>

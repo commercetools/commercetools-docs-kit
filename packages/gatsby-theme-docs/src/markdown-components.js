@@ -3,6 +3,7 @@ import {
   Markdown,
   Subtitle,
   Mermaid,
+  MultiCodeBlockMarkdownWrapper,
 } from '@commercetools-docs/ui-kit';
 import {
   Card,
@@ -11,6 +12,7 @@ import {
   BetaFlag as Beta,
   Anchor,
   SideBySide,
+  Glossary,
 } from './components';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 
@@ -66,7 +68,8 @@ const components = {
   Cards,
   SideBySide,
   Mermaid,
-
+  MultiCodeBlock: MultiCodeBlockMarkdownWrapper,
+  Glossary,
   // Custom React components that can be injected from each website
   // See ../overrides/README.md
   ...placeholderMarkdownComponents,
