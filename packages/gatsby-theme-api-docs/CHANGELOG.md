@@ -743,13 +743,16 @@
   Then, in the MDX files, wrap the containers/elements that should go side-by-side with the
   `<SideBySide>` component:
 
-  ```jsx
+  ```md
   <SideBySide>
-    This is the block on the left, or on top if the screen is not wide enough.
+
+  This is the block on the left, or on top if the screen is not wide enough.
+
     <div>
       This goes to the right when the screen is wide enough. I can write
       **normal** MDX content here.
     </div>
+
   </SideBySide>
   ```
 

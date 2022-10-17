@@ -436,7 +436,7 @@ This is an example of a set of cards with no properties defined. It is flat and 
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards>
   <Card>Card A</Card>
   <Card>Card B</Card>
@@ -460,7 +460,7 @@ It is also possible to have a list in the body of the card. Lists are usually us
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards>
   <Card title="Card with bullet list">
     - Item 1 - Item 2 - Sub-item 1 - Item 3
@@ -487,7 +487,7 @@ It is also possible to have a list in the body of the card. Lists are usually us
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards>
   <Card
     title="Title of the card"
@@ -521,7 +521,7 @@ They have one card-level target link (href) and no other links in the content. T
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards clickable>
   <Card
     title="Title of the card"
@@ -550,7 +550,7 @@ Images are not supported for free-form in-content cards, but only in places that
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards>
   <Card title="Title of the card" image={<CardBannerOSSIcon />}>
     Flat card with an image
@@ -573,13 +573,12 @@ Images are not supported for free-form in-content cards, but only in places that
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards clickable>
   <Card
     title="Title of the card"
     href="/writing/navigation"
-    image={<CardBannerMcDevsIcon />}
-  >
+    image={<CardBannerMcDevsIcon />}>
     Clickable card with an image
   </Card>
 </Cards>
@@ -608,16 +607,14 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards>
   <Card
     title="Title of the card"
     icon={<DummyIcon />}
     href="/writing/navigation"
-    textLink="Read more about images"
-  >
-    Icons in regular cards are aligned to the top regardless of whether they are
-    clickable or flat.
+    textLink="Read more about images">
+    Icons in regular cards are aligned to the top regardless of whether they are clickable or flat.
   </Card>
 </Cards>
 ```
@@ -638,16 +635,14 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards narrow clickable>
   <Card
     title="Title of the card"
     href="/writing/navigation"
     textLink="Read more about images"
-    icon={<DummyIcon />}
-  >
-    Icons in narrow cards are aligned to the left regardless of whether they are
-    clickable or flat.
+    icon={<DummyIcon />}>
+    Icons in narrow cards are aligned to the left regardless of whether they are clickable or flat.
   </Card>
 </Cards>
 ```
@@ -670,7 +665,7 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards>
   <Card image={<CardBannerMcDocsIcon />} icon={<DummyIcon />}>
     Regular card with an image and icon
@@ -679,10 +674,7 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 ```
 
 <Cards>
-  <Card
-    image={<CardBannerMcDocsIcon />}
-    icon={<DummyIcon />}
-  >
+  <Card image={<CardBannerMcDocsIcon />} icon={<DummyIcon />}>
     Regular card with an image and icon
   </Card>
 </Cards>
@@ -693,7 +685,7 @@ Only icons provided in the [UI Kit](https://uikit.commercetools.com/?path=/story
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <Cards narrow>
   <Card image={<CardBannerPlatformIcon />} icon={<DummyIcon />}>
     Narrow card with an image and icon
@@ -724,7 +716,7 @@ RSS feeds are only generated in production builds.
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <RssFeeds dataSources={['/docs-smoke-test/releases/feed.xml']} />
 ```
 
@@ -736,12 +728,12 @@ RSS feeds are only generated in production builds.
 
 <SideBySide>
 
-```jsx title="you write:" secondaryTheme
+```md title="you write:" secondaryTheme
 <RssFeeds
-  dataSources={[
-    '/docs-smoke-test/releases/feed.xml',
-    '/api-docs-smoke-test/releases/feed.xml',
-  ]}
+dataSources={[
+'/docs-smoke-test/releases/feed.xml',
+'/api-docs-smoke-test/releases/feed.xml',
+]}
 />
 ```
 
