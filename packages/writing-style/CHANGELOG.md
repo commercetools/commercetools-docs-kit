@@ -1,5 +1,13 @@
 # @commercetools-docs/writing-style
 
+## 3.3.1
+
+### Patch Changes
+
+- [#1377](https://github.com/commercetools/commercetools-docs-kit/pull/1377) [`de6a79cb`](https://github.com/commercetools/commercetools-docs-kit/commit/de6a79cb7848165dc0eb70a86173df7360b11aa8) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies
+
+- [#1370](https://github.com/commercetools/commercetools-docs-kit/pull/1370) [`77b1a30b`](https://github.com/commercetools/commercetools-docs-kit/commit/77b1a30ba88c73d6dcf7b10e1a2cc9b408163061) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - `mc` rule has been updated to admit `mc` strings as part of urls
+
 ## 3.3.0
 
 ### Minor Changes
