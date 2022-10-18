@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 19.6.1
+
+### Patch Changes
+
+- [#1386](https://github.com/commercetools/commercetools-docs-kit/pull/1386) [`a4adfb57`](https://github.com/commercetools/commercetools-docs-kit/commit/a4adfb5757e426bc652869d4c81e808962015b71) Thanks [@emmenko](https://github.com/emmenko)! - Fix extracting of CSS color
+
 ## 19.6.0
 
 ### Patch Changes
