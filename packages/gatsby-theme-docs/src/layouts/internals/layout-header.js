@@ -1,4 +1,5 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -14,6 +15,7 @@ import {
 } from '@commercetools-docs/ui-kit';
 import { SearchDialog, SearchInput, Overlay } from '../../components';
 import PlaceholderAvatarArea from '../../overrides/avatar';
+import { useSiteData } from '../../hooks/use-site-data';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 
@@ -182,6 +184,39 @@ const SearchContainer = styled.div`
 
 // eslint-disable-next-line react/display-name
 const LayoutHeader = forwardRef((props, ref) => {
+  const siteData = useSiteData();
+
+  const data = useStaticQuery(graphql`
+    query GetTopMenuLinks {
+      allTopMenuYaml {
+        nodes {
+          id
+          menuTitle
+          items {
+            label
+            href
+            beta
+          }
+        }
+      }
+    }
+  `);
+
+  console.log('path prefix', siteData.pathPrefix);
+
+  const siteContextMap = new Map();
+  data.allTopMenuYaml.nodes.forEach((node) => {
+    const contextTitle = node.menuTitle;
+    node.items.forEach((item) => {
+      if (item.href.startsWith('/../')) {
+        const minisiteSegment = item.href.split('/')[2];
+        if (minisiteSegment) {
+          siteContextMap.set(minisiteSegment, contextTitle);
+        }
+      }
+    });
+  });
+
   const handleTopMenuButtonKeyPress = (event) => {
     const enterOrSpace =
       event.key === 'Enter' ||
@@ -225,7 +260,10 @@ const LayoutHeader = forwardRef((props, ref) => {
             onKeyPress={handleTopMenuButtonKeyPress}
           >
             <SpacingsInline alignItems="center">
-              <span>{props.siteTitle}</span>
+              <span>
+                {props.siteContext}
+                {props.siteTitle}
+              </span>
               {props.isTopMenuOpen ? (
                 <AngleUpIcon size="medium" color="info" />
               ) : (
@@ -277,6 +315,7 @@ const LayoutHeader = forwardRef((props, ref) => {
 });
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
+  siteContext: PropTypes.string,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
   allowWideContentLayout: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,
