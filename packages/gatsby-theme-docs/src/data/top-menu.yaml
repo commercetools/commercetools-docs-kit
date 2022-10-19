@@ -1,7 +1,7 @@
 - menu-title: Developer Center
   items:
     - label: HTTP API
-      href: /../api
+      href: /../api-docs-smoke-test
     - label: GraphQL API
       href: /../api/graphql
       beta: true
@@ -24,6 +24,6 @@
 - menu-title: Merchant Center
   items:
     - label: Documentation
-      href: /../merchant-center
+      href: /../docs-smoke-test
     - label: Release Notes
       href: /../merchant-center/releases
