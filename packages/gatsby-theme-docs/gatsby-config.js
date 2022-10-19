@@ -225,12 +225,12 @@ module.exports = (themeOptions = {}) => {
           trackingCode: pluginOptions.hubspotTrackingCode,
         },
       },
-      {
-        resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
-        options: {
-          disable: process.env.ANALYZE_BUNDLE !== 'true',
-        },
-      },
+      ...(process.env.ANALYZE_BUNDLE === 'true'
+        ? [
+            `gatsby-plugin-perf-budgets`,
+            'gatsby-plugin-webpack-bundle-analyser-v2',
+          ]
+        : []),
       {
         resolve: 'gatsby-plugin-feed',
         options: {
