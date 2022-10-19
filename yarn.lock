@@ -11788,8 +11788,8 @@ __metadata:
   linkType: hard
 
 "devcert@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "devcert@npm:1.2.0"
+  version: 1.2.2
+  resolution: "devcert@npm:1.2.2"
   dependencies:
     "@types/configstore": ^2.1.1
     "@types/debug": ^0.0.30
@@ -11806,6 +11806,7 @@ __metadata:
     eol: ^0.9.1
     get-port: ^3.2.0
     glob: ^7.1.2
+    is-valid-domain: ^0.1.6
     lodash: ^4.17.4
     mkdirp: ^0.5.1
     password-prompt: ^1.0.4
@@ -11813,7 +11814,7 @@ __metadata:
     sudo-prompt: ^8.2.0
     tmp: ^0.0.33
     tslib: ^1.10.0
-  checksum: 3671d172b69d28de86e78851701cc63a17ffa3748ee92337b4ebeea0f53d85cde55d45cc529899a047b8ffe605300203af6ba2549a69e91ce9dd4cf310387611
+  checksum: 53f0281378be4b732019315b571a4d6e2133ad3963b8686cb19ac25fe37d186a745429248a0c4fcc558edba9b755fff23ed94e2a3e7e8ef7506893389941a372
   languageName: node
   linkType: hard
 
@@ -17218,6 +17219,15 @@ __metadata:
   dependencies:
     tslib: ^2.0.3
   checksum: cf4fd43c00c2e72cd5cff911923070b89f0933b464941bd782e2315385f80b5a5acd772db3b796542e5e3cfed735f4dffd88c54d62db1ebfc5c3daa7b1af2bc6
+  languageName: node
+  linkType: hard
+
+"is-valid-domain@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "is-valid-domain@npm:0.1.6"
+  dependencies:
+    punycode: ^2.1.1
+  checksum: 4e497673431c57b83026dfded173ff65fb432fad6db6715d14435acdd125e4acc2fc2fe865290c6329d0895362416b57f43483e0b73258b97242004f151b10ca
   languageName: node
   linkType: hard
 
