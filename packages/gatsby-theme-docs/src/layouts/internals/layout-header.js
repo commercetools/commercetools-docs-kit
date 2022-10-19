@@ -1,11 +1,10 @@
-import React, { forwardRef, useEffect } from 'react';
+import React, { forwardRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
 import IconButton from '@commercetools-uikit/icon-button';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import {
   designSystem,
   createStyledIcon,
@@ -182,12 +181,44 @@ const SearchContainer = styled.div`
   }
 `;
 
+const SiteContextTitle = styled.div`
+  margin-right: ${designSystem.dimensions.spacings.s};
+`;
+
+const SiteTitle = styled.div`
+  margin-right: ${designSystem.dimensions.spacings.s};
+  ${({ hasContext }) =>
+    hasContext &&
+    `
+    font-weight: 600;
+  `}
+`;
+
+const TitleContainer = styled.div`
+  ${({ hasContext }) =>
+    hasContext &&
+    `
+    @media screen and (${designSystem.dimensions.viewports.mobile}) {
+      font-size: 14px;
+    }
+  `}
+  display: flex;
+  flex-flow: row wrap;
+`;
+
+const getSiteContextTitleByPath = (sitePathsMap, sitePath) => {
+  const siteSegment = sitePath.replace('/', '');
+  if (sitePathsMap.has(siteSegment)) {
+    return sitePathsMap.get(siteSegment);
+  }
+};
+
 // eslint-disable-next-line react/display-name
 const LayoutHeader = forwardRef((props, ref) => {
   const siteData = useSiteData();
 
   const data = useStaticQuery(graphql`
-    query GetTopMenuLinks {
+    query GetTopMenuItems {
       allTopMenuYaml {
         nodes {
           id
@@ -201,8 +232,6 @@ const LayoutHeader = forwardRef((props, ref) => {
       }
     }
   `);
-
-  console.log('path prefix', siteData.pathPrefix);
 
   const siteContextMap = new Map();
   data.allTopMenuYaml.nodes.forEach((node) => {
@@ -229,6 +258,10 @@ const LayoutHeader = forwardRef((props, ref) => {
       props.toggleTopMenu(event);
     }
   };
+  const siteContextTitle = getSiteContextTitleByPath(
+    siteContextMap,
+    siteData.pathPrefix
+  );
 
   return (
     <Container id="top" allowWideContentLayout={props.allowWideContentLayout}>
@@ -259,17 +292,19 @@ const LayoutHeader = forwardRef((props, ref) => {
             onClick={props.toggleTopMenu}
             onKeyPress={handleTopMenuButtonKeyPress}
           >
-            <SpacingsInline alignItems="center">
-              <span>
-                {props.siteContext}
+            <TitleContainer hasContext={!!siteContextTitle}>
+              {siteContextTitle && (
+                <SiteContextTitle>{siteContextTitle} &gt; </SiteContextTitle>
+              )}
+              <SiteTitle hasContext={!!siteContextTitle}>
                 {props.siteTitle}
-              </span>
+              </SiteTitle>
               {props.isTopMenuOpen ? (
                 <AngleUpIcon size="medium" color="info" />
               ) : (
                 <AngleDownIcon size="medium" />
               )}
-            </SpacingsInline>
+            </TitleContainer>
           </DocumentationSwitcherButton>
         </Inline>
         <Inline>
@@ -315,7 +350,6 @@ const LayoutHeader = forwardRef((props, ref) => {
 });
 LayoutHeader.propTypes = {
   siteTitle: PropTypes.string.isRequired,
-  siteContext: PropTypes.string,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
   allowWideContentLayout: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,
