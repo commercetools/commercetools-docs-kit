@@ -221,12 +221,9 @@ const LayoutHeader = forwardRef((props, ref) => {
     query GetTopMenuItems {
       allTopMenuYaml {
         nodes {
-          id
           menuTitle
           items {
-            label
             href
-            beta
           }
         }
       }
@@ -235,7 +232,10 @@ const LayoutHeader = forwardRef((props, ref) => {
 
   const siteContextMap = new Map();
   data.allTopMenuYaml.nodes.forEach((node) => {
-    const contextTitle = node.menuTitle;
+    const contextTitle =
+      node.menuTitle === 'Developer Center'
+        ? 'Composable Commerce'
+        : 'Composable Frontend';
     node.items.forEach((item) => {
       if (item.href.startsWith('/../')) {
         const minisiteSegment = item.href.split('/')[2];
