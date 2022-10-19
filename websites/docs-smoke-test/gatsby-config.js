@@ -31,14 +31,14 @@ module.exports = {
         {
           resolve: '@commercetools-docs/gatsby-theme-learning',
           options: {
-            auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
+            auth0Domain: 'process.env.GATSBY_AUTH0_DOMAIN',
             learnApiBaseUrl: process.env.GATSBY_LEARNAPI_DOMAIN,
           },
         },
         {
           resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
           options: {
-            auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
+            auth0Domain: 'process.env.GATSBY_AUTH0_DOMAIN',
             auth0ClientId: process.env.GATSBY_AUTH0_CLIENTID,
             learnApiBaseUrl: process.env.GATSBY_LEARNAPI_DOMAIN,
           },
