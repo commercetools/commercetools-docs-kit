@@ -199,7 +199,7 @@ const TitleContainer = styled.div`
     hasContext &&
     `
     @media screen and (${designSystem.dimensions.viewports.mobile}) {
-      font-size: 14px;
+      font-size: ${designSystem.typography.fontSizes.small};
     }
   `}
   display: flex;
