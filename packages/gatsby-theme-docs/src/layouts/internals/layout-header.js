@@ -190,7 +190,7 @@ const SiteTitle = styled.div`
   ${({ hasContext }) =>
     hasContext &&
     `
-    font-weight: 600;
+    font-weight: ${designSystem.typography.fontWeights.medium};
   `}
 `;
 
