@@ -187,14 +187,16 @@ const SiteContextTitle = styled.div`
 
 const SiteTitle = styled.div`
   margin-right: ${designSystem.dimensions.spacings.s};
-  ${({ hasContext }) =>
-    hasContext &&
-    `
-    font-weight: ${designSystem.typography.fontWeights.medium};
-  `}
+  font-weight: ${({ hasContext }) =>
+    hasContext
+      ? designSystem.typography.fontWeights.medium
+      : designSystem.typography.fontWeights.regular};
 `;
 
 const TitleContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  font-size: ${designSystem.typography.fontSizes.body};
   ${({ hasContext }) =>
     hasContext &&
     `
@@ -202,8 +204,6 @@ const TitleContainer = styled.div`
       font-size: ${designSystem.typography.fontSizes.small};
     }
   `}
-  display: flex;
-  flex-flow: row wrap;
 `;
 
 const getSiteContextTitleByPath = (sitePathsMap, sitePath) => {
