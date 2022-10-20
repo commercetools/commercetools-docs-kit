@@ -4,4 +4,13 @@ title: VideoPlayer component
 
 # Video Player
 
-<VideoPlayer />
+<VideoPlayer options={{
+    autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    sources: [{
+        src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
+        type: 'application/x-mpegURL'
+    }]
+}}/>
