@@ -9,7 +9,7 @@ describe('Top menu', () => {
     cy.findByLabelText('Open Top Menu').click();
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {
-      cy.findByText('Composable Commerce').should('be.visible');
+      cy.findByText('Documentation').should('be.visible');
       cy.percySnapshot();
     });
     cy.findByLabelText('Close Top Menu').should('exist');
@@ -22,7 +22,7 @@ describe('Top menu', () => {
     cy.findByLabelText('Open Top Menu').click();
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {
-      cy.findByText('Composable Commerce').should('be.visible');
+      cy.findByText('Documentation').should('be.visible');
     });
     cy.findByLabelText('Search').click();
     cy.findByLabelText('Open Top Menu').should('exist');
