@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -15,6 +14,7 @@ import {
 import { SearchDialog, SearchInput, Overlay } from '../../components';
 import PlaceholderAvatarArea from '../../overrides/avatar';
 import { useSiteData } from '../../hooks/use-site-data';
+import useTopMenuItems from '../../hooks/use-top-menu-items';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 
@@ -216,35 +216,7 @@ const getSiteContextTitleByPath = (sitePathsMap, sitePath) => {
 // eslint-disable-next-line react/display-name
 const LayoutHeader = forwardRef((props, ref) => {
   const siteData = useSiteData();
-
-  const data = useStaticQuery(graphql`
-    query GetTopMenuItems {
-      allTopMenuYaml {
-        nodes {
-          menuTitle
-          items {
-            href
-          }
-        }
-      }
-    }
-  `);
-
-  const siteContextMap = new Map();
-  data.allTopMenuYaml.nodes.forEach((node) => {
-    const contextTitle =
-      node.menuTitle === 'Developer Center'
-        ? 'Composable Commerce'
-        : 'Composable Frontend';
-    node.items.forEach((item) => {
-      if (item.href.startsWith('/../')) {
-        const minisiteSegment = item.href.split('/')[2];
-        if (minisiteSegment) {
-          siteContextMap.set(minisiteSegment, contextTitle);
-        }
-      }
-    });
-  });
+  const siteContextMap = useTopMenuItems();
 
   const handleTopMenuButtonKeyPress = (event) => {
     const enterOrSpace =

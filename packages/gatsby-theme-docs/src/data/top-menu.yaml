@@ -1,4 +1,4 @@
-- menu-title: Developer Center
+- menu-title: Composable Commerce
   items:
     - label: HTTP API
       href: /../api-docs-smoke-test
@@ -21,7 +21,7 @@
     - label: FAQ
       href: /../tutorials/faqs
 
-- menu-title: Merchant Center
+- menu-title: Composable Frontend
   items:
     - label: Documentation
       href: /../docs-smoke-test
