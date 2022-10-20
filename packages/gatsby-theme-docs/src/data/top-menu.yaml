@@ -1,29 +1,11 @@
-- menu-title: Composable Commerce
+- menu-title: Documentation
   items:
-    - label: HTTP API
-      href: /../api-docs-smoke-test
-    - label: GraphQL API
-      href: /../api/graphql
-      beta: true
-    - label: Platform Release Notes
-      href: /../api/releases
-    - label: Custom Applications
-      href: /../custom-applications
-      beta: true
-    - label: SDKs & Client Libraries
-      href: /../sdk
-    - label: Import & Export
-      href: /../tutorials/import-and-export
-    - label: SUNRISE Starter Frontends
-      href: /../sdk/sunrise
-    - label: Tutorials
-      href: /../tutorials
-    - label: FAQ
-      href: /../tutorials/faqs
+    - label: Docs Kit Docs
+      href: /../documentation
 
-- menu-title: Composable Frontend
+- menu-title: Test Sites
   items:
-    - label: Documentation
+    - label: Docs Smoke Test
       href: /../docs-smoke-test
-    - label: Release Notes
-      href: /../merchant-center/releases
+    - label: API Docs Smoke Test
+      href: /../api-docs-smoke-test

@@ -206,6 +206,15 @@ const TitleContainer = styled.div`
   `}
 `;
 
+const TitleItemsWrapper = styled.span`
+  display: inline-flex;
+`;
+
+const CaretContainer = styled.div`
+  position: relative;
+  bottom: 1px;
+`;
+
 const getSiteContextTitleByPath = (sitePathsMap, sitePath) => {
   const siteSegment = sitePath.replace('/', '');
   if (sitePathsMap.has(siteSegment)) {
@@ -266,16 +275,22 @@ const LayoutHeader = forwardRef((props, ref) => {
           >
             <TitleContainer hasContext={!!siteContextTitle}>
               {siteContextTitle && (
-                <SiteContextTitle>{siteContextTitle} &gt; </SiteContextTitle>
+                <SiteContextTitle>
+                  {siteContextTitle}&nbsp;&nbsp;&gt;{' '}
+                </SiteContextTitle>
               )}
-              <SiteTitle hasContext={!!siteContextTitle}>
-                {props.siteTitle}
-              </SiteTitle>
-              {props.isTopMenuOpen ? (
-                <AngleUpIcon size="medium" color="info" />
-              ) : (
-                <AngleDownIcon size="medium" />
-              )}
+              <TitleItemsWrapper>
+                <SiteTitle hasContext={!!siteContextTitle}>
+                  {props.siteTitle}
+                </SiteTitle>
+                <CaretContainer>
+                  {props.isTopMenuOpen ? (
+                    <AngleUpIcon size="medium" color="info" />
+                  ) : (
+                    <AngleDownIcon size="medium" />
+                  )}
+                </CaretContainer>
+              </TitleItemsWrapper>
             </TitleContainer>
           </DocumentationSwitcherButton>
         </Inline>
