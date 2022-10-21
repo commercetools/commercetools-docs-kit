@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 
 const VideoPlayerLazy = React.lazy(() => import('./video-player-client-side'));
@@ -11,11 +12,15 @@ const VideoPlayer = (props) => {
         <React.Suspense
           fallback={<LoadingSpinner scale="l" maxDelayDuration={500} />}
         >
-          <VideoPlayerLazy />
+          <VideoPlayerLazy options={props.options} />
         </React.Suspense>
       )}
     </>
   );
+};
+
+VideoPlayer.propTypes = {
+  options: PropTypes.object,
 };
 
 export default VideoPlayer;
