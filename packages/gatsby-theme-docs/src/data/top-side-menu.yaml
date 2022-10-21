@@ -1,12 +1,4 @@
-- label: Sign up
-  href: /../tutorials/getting-started#sign-up
-- label: Log in
-  href: /../docs/login
-- label: Tech Blog
-  href: https://techblog.commercetools.com
-- label: Integrations
-  href: https://marketplace.commercetools.com
-- label: Status
-  href: https://status.commercetools.com
-- label: Support
-  href: https://support.commercetools.com
+- label: GitHub
+  href: https://github.com/commercetools/commercetools-docs-kit
+- label: Home
+  href: /../
