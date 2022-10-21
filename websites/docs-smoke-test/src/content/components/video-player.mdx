@@ -5,12 +5,11 @@ title: VideoPlayer component
 # Video Player
 
 <VideoPlayer options={{
-    autoplay: true,
     controls: true,
     responsive: true,
     fluid: true,
-    sources: [{
-        src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
-        type: 'application/x-mpegURL'
-    }]
-}}/>
+}}
+  videoUrl="https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"
+  autoplay={false}
+  thumbnail="https://octodex.github.com/images/minion.png"
+/>

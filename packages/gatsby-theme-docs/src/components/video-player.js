@@ -12,7 +12,7 @@ const VideoPlayer = (props) => {
         <React.Suspense
           fallback={<LoadingSpinner scale="l" maxDelayDuration={500} />}
         >
-          <VideoPlayerLazy options={props.options} />
+          <VideoPlayerLazy {...props} />
         </React.Suspense>
       )}
     </>
@@ -20,6 +20,9 @@ const VideoPlayer = (props) => {
 };
 
 VideoPlayer.propTypes = {
+  videoUrl: PropTypes.string.isRequired,
+  autoplay: PropTypes.bool,
+  thumbnail: PropTypes.string,
   options: PropTypes.object,
 };
 

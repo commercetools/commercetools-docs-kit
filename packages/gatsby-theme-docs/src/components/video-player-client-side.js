@@ -3,6 +3,12 @@ import videojs from 'video.js';
 import PropTypes from 'prop-types';
 import 'video.js/dist/video-js.css';
 
+const prepareVideoOptions = (options, videoUrl, autoplay, poster) => {
+  const currOptions = options || {};
+  const sources = [{ src: videoUrl }];
+  return { ...currOptions, sources, autoplay, poster };
+};
+
 const VideoPlayer = (props) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
@@ -13,14 +19,15 @@ const VideoPlayer = (props) => {
 
       if (!videoElement) return;
 
-      const player = (playerRef.current = videojs(
+      playerRef.current = videojs(
         videoElement,
-        props.options,
-        () => {
-          videojs.log('player is ready');
-          props.onReady && props.onReady(player);
-        }
-      ));
+        prepareVideoOptions(
+          props.options,
+          props.videoUrl,
+          props.autoplay,
+          props.thumbnail
+        )
+      );
     }
   }, [props, videoRef]);
 
@@ -41,7 +48,9 @@ const VideoPlayer = (props) => {
   );
 };
 VideoPlayer.propTypes = {
-  onReady: PropTypes.func,
+  videoUrl: PropTypes.string.isRequired,
+  autoplay: PropTypes.bool,
+  thumbnail: PropTypes.string,
   options: PropTypes.object,
 };
 
