@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
 import IconButton from '@commercetools-uikit/icon-button';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import {
   designSystem,
   createStyledIcon,
@@ -14,6 +13,8 @@ import {
 } from '@commercetools-docs/ui-kit';
 import { SearchDialog, SearchInput, Overlay } from '../../components';
 import PlaceholderAvatarArea from '../../overrides/avatar';
+import { useSiteData } from '../../hooks/use-site-data';
+import useTopMenuItems from '../../hooks/use-top-menu-items';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 
@@ -180,8 +181,69 @@ const SearchContainer = styled.div`
   }
 `;
 
+const SiteContextTitle = styled.div`
+  margin-right: ${designSystem.dimensions.spacings.s};
+  &:after {
+    content: '\\00a0\\00a0>';
+  }
+`;
+
+/**
+ * hasContext props defines if the site title will be prefixed by
+ * come site context information (such as Composable Commerce).
+ * Typically such prop is always going to be true but with `hasContext`
+ * we allow a fallback strategy for unforeseen cases where site context information
+ * is not going to be available
+ */
+const SiteTitle = styled.div`
+  margin-right: ${designSystem.dimensions.spacings.s};
+  font-weight: ${({ hasContext }) =>
+    hasContext
+      ? designSystem.typography.fontWeights.medium
+      : designSystem.typography.fontWeights.regular};
+`;
+
+/**
+ * hasContext props defines if the site title will be prefixed by
+ * come site context information (such as Composable Commerce).
+ * Typically such prop is always going to be true but with `hasContext`
+ * we allow a fallback strategy for unforeseen cases where site context information
+ * is not going to be available
+ */
+const TitleContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  font-size: ${designSystem.typography.fontSizes.body};
+  ${({ hasContext }) =>
+    hasContext &&
+    `
+    @media screen and (${designSystem.dimensions.viewports.mobile}) {
+      font-size: ${designSystem.typography.fontSizes.small};
+    }
+  `}
+`;
+
+const TitleItemsWrapper = styled.span`
+  display: inline-flex;
+`;
+
+const CaretContainer = styled.div`
+  position: relative;
+  bottom: 1px;
+`;
+
+const getSiteContextTitleByPath = (sitePathsMap, sitePath) => {
+  const siteSegment = sitePath.replace('/', '');
+  if (sitePathsMap.has(siteSegment)) {
+    return sitePathsMap.get(siteSegment);
+  }
+};
+
 // eslint-disable-next-line react/display-name
 const LayoutHeader = forwardRef((props, ref) => {
+  const siteData = useSiteData();
+  const siteContextMap = useTopMenuItems();
+
   const handleTopMenuButtonKeyPress = (event) => {
     const enterOrSpace =
       event.key === 'Enter' ||
@@ -194,6 +256,10 @@ const LayoutHeader = forwardRef((props, ref) => {
       props.toggleTopMenu(event);
     }
   };
+  const siteContextTitle = getSiteContextTitleByPath(
+    siteContextMap,
+    siteData.pathPrefix
+  );
 
   return (
     <Container id="top" allowWideContentLayout={props.allowWideContentLayout}>
@@ -224,14 +290,23 @@ const LayoutHeader = forwardRef((props, ref) => {
             onClick={props.toggleTopMenu}
             onKeyPress={handleTopMenuButtonKeyPress}
           >
-            <SpacingsInline alignItems="center">
-              <span>{props.siteTitle}</span>
-              {props.isTopMenuOpen ? (
-                <AngleUpIcon size="medium" color="info" />
-              ) : (
-                <AngleDownIcon size="medium" />
+            <TitleContainer hasContext={!!siteContextTitle}>
+              {siteContextTitle && (
+                <SiteContextTitle>{siteContextTitle}</SiteContextTitle>
               )}
-            </SpacingsInline>
+              <TitleItemsWrapper>
+                <SiteTitle hasContext={!!siteContextTitle}>
+                  {props.siteTitle}
+                </SiteTitle>
+                <CaretContainer>
+                  {props.isTopMenuOpen ? (
+                    <AngleUpIcon size="medium" color="info" />
+                  ) : (
+                    <AngleDownIcon size="medium" />
+                  )}
+                </CaretContainer>
+              </TitleItemsWrapper>
+            </TitleContainer>
           </DocumentationSwitcherButton>
         </Inline>
         <Inline>
