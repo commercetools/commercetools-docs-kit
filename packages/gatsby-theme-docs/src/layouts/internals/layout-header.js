@@ -183,8 +183,18 @@ const SearchContainer = styled.div`
 
 const SiteContextTitle = styled.div`
   margin-right: ${designSystem.dimensions.spacings.s};
+  &:after {
+    content: '\\00a0\\00a0>';
+  }
 `;
 
+/**
+ * hasContext props defines if the site title will be prefixed by
+ * come site context information (such as Composable Commerce).
+ * Typically such prop is always going to be true but with `hasContext`
+ * we allow a fallback strategy for unforeseen cases where site context information
+ * is not going to be available
+ */
 const SiteTitle = styled.div`
   margin-right: ${designSystem.dimensions.spacings.s};
   font-weight: ${({ hasContext }) =>
@@ -193,6 +203,13 @@ const SiteTitle = styled.div`
       : designSystem.typography.fontWeights.regular};
 `;
 
+/**
+ * hasContext props defines if the site title will be prefixed by
+ * come site context information (such as Composable Commerce).
+ * Typically such prop is always going to be true but with `hasContext`
+ * we allow a fallback strategy for unforeseen cases where site context information
+ * is not going to be available
+ */
 const TitleContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -275,9 +292,7 @@ const LayoutHeader = forwardRef((props, ref) => {
           >
             <TitleContainer hasContext={!!siteContextTitle}>
               {siteContextTitle && (
-                <SiteContextTitle>
-                  {siteContextTitle}&nbsp;&nbsp;&gt;{' '}
-                </SiteContextTitle>
+                <SiteContextTitle>{siteContextTitle}</SiteContextTitle>
               )}
               <TitleItemsWrapper>
                 <SiteTitle hasContext={!!siteContextTitle}>
