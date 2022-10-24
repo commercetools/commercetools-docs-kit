@@ -10,6 +10,7 @@ const VIDEO_PRESETS = {
   controls: true,
   responsive: true,
   fluid: true,
+  language: 'en',
   controlBar: {
     pictureInPictureToggle: !!document.pictureInPictureEnabled,
   },
