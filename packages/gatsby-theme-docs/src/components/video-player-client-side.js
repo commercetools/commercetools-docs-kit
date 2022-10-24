@@ -3,10 +3,21 @@ import videojs from 'video.js';
 import PropTypes from 'prop-types';
 import 'video.js/dist/video-js.css';
 
-const prepareVideoOptions = (options, videoUrl, autoplay, poster) => {
-  const currOptions = options || {};
+/**
+ * Preset value. Evaluate overtime if any of these needs to be a prop
+ */
+const VIDEO_PRESETS = {
+  controls: true,
+  responsive: true,
+  fluid: true,
+  controlBar: {
+    pictureInPictureToggle: !!document.pictureInPictureEnabled,
+  },
+};
+
+const prepareVideoOptions = (videoUrl, poster) => {
   const sources = [{ src: videoUrl }];
-  return { ...currOptions, sources, autoplay, poster };
+  return { ...VIDEO_PRESETS, sources, poster };
 };
 
 const VideoPlayer = (props) => {
@@ -21,12 +32,7 @@ const VideoPlayer = (props) => {
 
       playerRef.current = videojs(
         videoElement,
-        prepareVideoOptions(
-          props.options,
-          props.videoUrl,
-          props.autoplay,
-          props.thumbnail
-        )
+        prepareVideoOptions(props.videoUrl, props.thumbnail)
       );
     }
   }, [props, videoRef]);
@@ -49,9 +55,7 @@ const VideoPlayer = (props) => {
 };
 VideoPlayer.propTypes = {
   videoUrl: PropTypes.string.isRequired,
-  autoplay: PropTypes.bool,
   thumbnail: PropTypes.string,
-  options: PropTypes.object,
 };
 
 export default VideoPlayer;

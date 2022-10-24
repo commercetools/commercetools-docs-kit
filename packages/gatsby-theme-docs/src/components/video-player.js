@@ -21,9 +21,7 @@ const VideoPlayer = (props) => {
 
 VideoPlayer.propTypes = {
   videoUrl: PropTypes.string.isRequired,
-  autoplay: PropTypes.bool,
   thumbnail: PropTypes.string,
-  options: PropTypes.object,
 };
 
 export default VideoPlayer;
