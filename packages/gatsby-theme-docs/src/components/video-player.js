@@ -20,8 +20,8 @@ const VideoPlayer = (props) => {
 };
 
 VideoPlayer.propTypes = {
-  videoUrl: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string,
+  url: PropTypes.string.isRequired,
+  posterPath: PropTypes.string,
 };
 
 export default VideoPlayer;

@@ -71,7 +71,7 @@ const components = {
   Mermaid,
   MultiCodeBlock: MultiCodeBlockMarkdownWrapper,
   Glossary,
-  VideoPlayer,
+  Video: VideoPlayer,
   // Custom React components that can be injected from each website
   // See ../overrides/README.md
   ...placeholderMarkdownComponents,

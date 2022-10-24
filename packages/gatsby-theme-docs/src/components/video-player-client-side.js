@@ -32,7 +32,7 @@ const VideoPlayer = (props) => {
 
       playerRef.current = videojs(
         videoElement,
-        prepareVideoOptions(props.videoUrl, props.thumbnail)
+        prepareVideoOptions(props.url, props.posterPath)
       );
     }
   }, [props, videoRef]);
@@ -54,8 +54,8 @@ const VideoPlayer = (props) => {
   );
 };
 VideoPlayer.propTypes = {
-  videoUrl: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string,
+  url: PropTypes.string.isRequired,
+  posterPath: PropTypes.string,
 };
 
 export default VideoPlayer;
