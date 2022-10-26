@@ -1,5 +1,20 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.7.0
+
+### Minor Changes
+
+- [#1395](https://github.com/commercetools/commercetools-docs-kit/pull/1395) [`b20ca8b5`](https://github.com/commercetools/commercetools-docs-kit/commit/b20ca8b5594277977438f3d3715d352bd9465fa2) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add additional information to the site title in the topbar indicating if the website relates to Composable Commerce or Composable Frontend
+
+- [#1407](https://github.com/commercetools/commercetools-docs-kit/pull/1407) [`5a4b378d`](https://github.com/commercetools/commercetools-docs-kit/commit/5a4b378d79f70fb3dfd1dca425dee13aac8544fe) Thanks [@timonrey](https://github.com/timonrey)! - Add support for email links. They are now being rendered as external links.
+
+### Patch Changes
+
+- [#1388](https://github.com/commercetools/commercetools-docs-kit/pull/1388) [`e873a23a`](https://github.com/commercetools/commercetools-docs-kit/commit/e873a23a6ea9647bb09d9e43d9c535880d616d48) Thanks [@emmenko](https://github.com/emmenko)! - Keep using `react-intl` version 5
+
+- Updated dependencies [[`e873a23a`](https://github.com/commercetools/commercetools-docs-kit/commit/e873a23a6ea9647bb09d9e43d9c535880d616d48)]:
+  - @commercetools-docs/ui-kit@19.7.0
+
 ## 19.6.1
 
 ### Patch Changes

@@ -129,7 +129,9 @@ const PureLink = (extendedProps) => {
 
   // Case 2: the link points to an external website.
   const isExternalLink =
-    /^https?/.test(props.href) || (props.target && props.target === '_blank');
+    /^https?/.test(props.href) ||
+    /^mailto?/.test(props.href) ||
+    (props.target && props.target === '_blank');
   if (
     isExternalLink &&
     ![siteData.siteMetadata.productionHostname, dummyHostname].includes(
