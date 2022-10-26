@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { customProperties } from '@commercetools-uikit/design-system';
@@ -19,28 +19,28 @@ const VideoPlayerLazy = React.lazy(() => import('./video-player-client-side'));
 const VideoPlayer = (props) => {
   const isClientSide = typeof window !== 'undefined';
 
+  const placeholder = (
+    <VideoPlaceholder>
+      <LoadingSpinner scale="l" maxDelayDuration={500} />
+    </VideoPlaceholder>
+  );
+
   return (
-    <>
+    <div>
       {isClientSide ? (
-        <React.Suspense
-          fallback={
-            <VideoPlaceholder>
-              <LoadingSpinner scale="l" maxDelayDuration={500} />
-            </VideoPlaceholder>
-          }
-        >
+        <React.Suspense fallback={placeholder}>
           <VideoPlayerLazy {...props} />
         </React.Suspense>
       ) : (
-        <VideoPlaceholder />
+        placeholder
       )}
-    </>
+    </div>
   );
 };
 
 VideoPlayer.propTypes = {
   url: PropTypes.string.isRequired,
-  posterPath: PropTypes.string,
+  poster: PropTypes.string,
 };
 
 export default VideoPlayer;
