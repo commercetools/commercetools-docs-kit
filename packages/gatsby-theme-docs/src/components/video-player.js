@@ -9,6 +9,7 @@ const VideoPlaceholder = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  aspect-ratio: 16 / 9;
   height: ${(props) => props.height}px;
   background-color: ${customProperties.backgroundColorForTag};
 `;
@@ -16,33 +17,22 @@ const VideoPlaceholder = styled.div`
 const VideoPlayerLazy = React.lazy(() => import('./video-player-client-side'));
 
 const VideoPlayer = (props) => {
-  const ref = useRef(null);
-  const [placeholderHeight, setPlaceholderHeight] = useState(0);
   const isClientSide = typeof window !== 'undefined';
-
-  useLayoutEffect(() => {
-    if (!ref || !ref.current) {
-      return;
-    }
-    const width = ref.current.offsetWidth;
-    if (width) {
-      const height = width * (10 / 16); // 16:10 ratio
-      setPlaceholderHeight(height);
-    }
-  }, []);
 
   return (
     <>
-      {isClientSide && (
+      {isClientSide ? (
         <React.Suspense
           fallback={
-            <VideoPlaceholder height={placeholderHeight} ref={ref}>
+            <VideoPlaceholder>
               <LoadingSpinner scale="l" maxDelayDuration={500} />
             </VideoPlaceholder>
           }
         >
           <VideoPlayerLazy {...props} />
         </React.Suspense>
+      ) : (
+        <VideoPlaceholder />
       )}
     </>
   );
