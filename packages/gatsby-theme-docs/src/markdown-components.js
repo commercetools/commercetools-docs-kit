@@ -13,6 +13,7 @@ import {
   Anchor,
   SideBySide,
   Glossary,
+  VideoPlayer,
 } from './components';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 
@@ -70,6 +71,7 @@ const components = {
   Mermaid,
   MultiCodeBlock: MultiCodeBlockMarkdownWrapper,
   Glossary,
+  Video: VideoPlayer,
   // Custom React components that can be injected from each website
   // See ../overrides/README.md
   ...placeholderMarkdownComponents,
