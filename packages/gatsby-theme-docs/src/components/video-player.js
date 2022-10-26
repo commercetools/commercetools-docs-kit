@@ -10,7 +10,7 @@ const VideoPlaceholder = styled.div`
   justify-content: center;
   width: 100%;
   aspect-ratio: 16 / 9;
-  height: ${(props) => props.height}px;
+  padding-bottom: 3em;
   background-color: ${customProperties.backgroundColorForTag};
 `;
 
