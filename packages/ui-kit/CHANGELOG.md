@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 19.7.0
+
+### Patch Changes
+
+- [#1388](https://github.com/commercetools/commercetools-docs-kit/pull/1388) [`e873a23a`](https://github.com/commercetools/commercetools-docs-kit/commit/e873a23a6ea9647bb09d9e43d9c535880d616d48) Thanks [@emmenko](https://github.com/emmenko)! - Keep using `react-intl` version 5
+
 ## 19.6.1
 
 ### Patch Changes
