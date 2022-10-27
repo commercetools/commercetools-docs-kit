@@ -13,7 +13,7 @@
         # plus our custom tags like info, side-by-side, cards, RSS feeds etc
         # plus HTML that we styled but that does not have markdown (maybe only the definition list)
       path: /writing/markdown
-    - title: Images and Diagrams # markdown, titles annotations, filesystem convention (could be part of markdown)
+    - title: Embedding Media # markdown, titles annotations, filesystem convention (could be part of markdown)
       path: /writing/images
     - title: Navigation # top nav, side nav, child section nav
       path: /writing/navigation
