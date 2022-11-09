@@ -31,19 +31,6 @@ $ yarn build
 
 Two websites hosted in this repository serve as the target if e2e and visual regression tests.
 
-To start them including the self-learning features which require SSO and other configuration, three environment variables need to be provided.
-Create two files named `.env.development` and `.env.production` in `websites/docs-smoke-test` with the following content:
-
-```
-GATSBY_AUTH0_DOMAIN=example.com
-GATSBY_AUTH0_CLIENTID=XXX
-GATSBY_LEARN_API_DOMAIN=https://example.com
-```
-
-`GATSBY_AUTH0_CLIENTID` requires a confidential secret to get SSO operational but the site starts with a blank, too.
-
-Remember that `.env.development` file should never be added to git (this is prevented by .gitignore rule)
-
 ## Start the [docs-smoke-test website](./websites/docs-smoke-test):
 
 ```bash

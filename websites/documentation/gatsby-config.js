@@ -25,9 +25,9 @@ module.exports = {
         {
           resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
           options: {
-            auth0Domain: process.env.GATSBY_AUTH0_DOMAIN,
-            auth0ClientId: process.env.GATSBY_AUTH0_CLIENTID,
-            learnApiBaseUrl: process.env.GATSBY_LEARN_API_DOMAIN,
+            auth0Domain: 'commercetools.eu.auth0.com',
+            auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
+            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
           },
         },
       ],
