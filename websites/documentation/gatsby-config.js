@@ -27,7 +27,7 @@ module.exports = {
           options: {
             auth0Domain: 'commercetools.eu.auth0.com',
             auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
+            learnApiBaseUrl: 'https://api.learn.commercetools.com',
           },
         },
       ],
