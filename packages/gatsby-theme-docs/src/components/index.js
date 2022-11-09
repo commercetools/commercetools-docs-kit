@@ -18,3 +18,4 @@ export { default as ThemeProvider } from './theme-provider';
 export { default as TopMenu } from './top-menu';
 export { default as UserResearchBanner } from './user-research-banner';
 export { default as Glossary } from './glossary-placeholder';
+export { default as VideoPlayer } from './video-player';
