@@ -2165,9 +2165,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-learning@npm:1.3.6":
-  version: 1.3.6
-  resolution: "@commercetools-docs/gatsby-theme-learning@npm:1.3.6"
+"@commercetools-docs/gatsby-theme-learning@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@commercetools-docs/gatsby-theme-learning@npm:1.4.0"
   dependencies:
     "@auth0/auth0-react": 1.10.2
     "@commercetools-docs/gatsby-theme-sso-ui-kit": ^1.3.6
@@ -2185,7 +2185,7 @@ __metadata:
     "@emotion/styled": ^11.10.0
     "@mdx-js/react": ^1.6.0
     react-intersection-observer: 9.3.5
-  checksum: f8bb09c8a3d448ef2c1b23878c40e8b61acbc6037e948c8a2c8ee1231973ddb1be66aed66e11d013d8f495fd80796cc588b771d72609208b042a53f89fa4f82b
+  checksum: fbfb3e777262d914397668ade0c31945d91de2a58edf65b2742180bd5e375106e4df8d60dd10000dfdf98d7672ee4a3eb353dccbe2b3525313e1abc5a2437867
   languageName: node
   linkType: hard
 
@@ -2963,7 +2963,7 @@ __metadata:
     "@commercetools-docs/gatsby-theme-code-examples": 19.7.0
     "@commercetools-docs/gatsby-theme-constants": 19.7.0
     "@commercetools-docs/gatsby-theme-docs": 19.7.0
-    "@commercetools-docs/gatsby-theme-learning": 1.3.6
+    "@commercetools-docs/gatsby-theme-learning": 1.4.0
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 1.3.6
     "@commercetools-docs/ui-kit": 19.7.0
     "@commercetools-uikit/avatar": ^15.3.0
