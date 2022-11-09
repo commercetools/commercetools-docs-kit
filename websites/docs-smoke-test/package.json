@@ -18,7 +18,7 @@
     "@commercetools-docs/gatsby-theme-code-examples": "19.7.0",
     "@commercetools-docs/gatsby-theme-constants": "19.7.0",
     "@commercetools-docs/gatsby-theme-docs": "19.7.0",
-    "@commercetools-docs/gatsby-theme-learning": "1.3.6",
+    "@commercetools-docs/gatsby-theme-learning": "1.4.0",
     "@commercetools-docs/gatsby-theme-sso-ui-kit": "1.3.6",
     "@commercetools-docs/ui-kit": "19.7.0",
     "@commercetools-uikit/avatar": "^15.3.0",
