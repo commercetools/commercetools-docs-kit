@@ -38,6 +38,12 @@ src
 
 - `page-header-side`: allows to render something in the top-right corner of a content page. Any valid React component should be _default_ exported.
 
+- `page-header-banner-area`: allows to render something in the top-right corner of a content page below the component provided from `page-header-side`. Any valid React component should be _default_ exported.
+
+- `layout-page-header-side`: allows to override the layout for the components provided from `page-header-side` and `page-header-banner-area` in the top-right corner of a content page. If you want to display nothing at all in the top-right corner of a content page, you need to override all three files.
+
+- `top-menu-banner-area`: allows to render something at the bottom of the right column of the top menu. Any valid React component should be _default_ exported.
+
 - `use-additional-site-data`: allows to return custom site metadata using React hooks. The data is merged with the default `siteMetadata` of the Gatsby theme and can be accessed using the `useSiteData` hook.
 
   ```js
