@@ -17,6 +17,13 @@ const DateLabel = styled.label`
   line-height: ${designSystem.typography.lineHeights.small};
 `;
 
+// Override min-width from the uikit date component
+const DateInputContainer = styled.div`
+  div span div {
+    min-width: 0;
+  }
+`;
+
 const ReleaseNotesFilterDates = () => {
   const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
   const maximumDate = IsoDateFormat.format(new Date());
@@ -27,26 +34,26 @@ const ReleaseNotesFilterDates = () => {
 
       <SpacingsStack scale="xs">
         <DateLabel htmlFor="from-filter-date">From</DateLabel>
-        <div>
+        <DateInputContainer>
           <DateInput
             id="from-filter-date"
             value={filterParams.fromFilterDate || ''}
             onChange={handleOnFromFilterDateChange}
             maxValue={maximumDate}
           />
-        </div>
+        </DateInputContainer>
       </SpacingsStack>
 
       <SpacingsStack scale="xs">
         <DateLabel htmlFor="to-filter-date">To</DateLabel>
-        <div>
+        <DateInputContainer>
           <DateInput
             id="to-filter-date"
             value={filterParams.toFilterDate || ''}
             onChange={handleOnToFilterDateChange}
             maxValue={maximumDate}
           />
-        </div>
+        </DateInputContainer>
       </SpacingsStack>
     </SpacingsStack>
   );
