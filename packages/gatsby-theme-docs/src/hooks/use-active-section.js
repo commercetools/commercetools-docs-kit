@@ -57,11 +57,6 @@ const useActiveSelection = () => {
     setActiveSection(
       calclulateActiveSection(visibleSections, locationHash, sectionElements[0])
     );
-    // by resetting the url hash it prevents some incorrect behaviours when the hash
-    // is changed but the page cannot scroll (bottom of the page)
-    if (window.location.hash) {
-      window.history.replaceState(null, '', window.location.pathname);
-    }
   }, []);
 
   const onHashChange = (event) => {
