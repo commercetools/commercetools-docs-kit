@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/docs-smoke-test",
-  "version": "5.1.11",
+  "version": "5.1.12",
   "private": true,
   "scripts": {
     "start": "yarn develop",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@commercetools-docs/gatsby-theme-code-examples": "19.7.0",
     "@commercetools-docs/gatsby-theme-constants": "19.7.0",
-    "@commercetools-docs/gatsby-theme-docs": "19.8.0",
+    "@commercetools-docs/gatsby-theme-docs": "19.8.1",
     "@commercetools-docs/gatsby-theme-learning": "1.4.2",
     "@commercetools-docs/gatsby-theme-sso-ui-kit": "1.4.1",
     "@commercetools-docs/ui-kit": "19.7.0",
