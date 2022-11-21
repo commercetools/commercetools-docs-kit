@@ -1,5 +1,21 @@
 # @commercetools-website/documentation
 
+## 5.0.18
+
+### Patch Changes
+
+- [#1415](https://github.com/commercetools/commercetools-docs-kit/pull/1415) [`2c523aa3`](https://github.com/commercetools/commercetools-docs-kit/commit/2c523aa389923b5be077b4d2a20e121b9dafa2d1) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Do not use github secrets or .env files to build/run the websites, use hardcoded values instead
+
+- Updated dependencies [[`ffc1e943`](https://github.com/commercetools/commercetools-docs-kit/commit/ffc1e94363188f1e9954a239cb8b9a270eca6ab6)]:
+  - @commercetools-docs/gatsby-theme-docs@19.8.1
+
+## 5.0.17
+
+### Patch Changes
+
+- Updated dependencies [[`d92768a0`](https://github.com/commercetools/commercetools-docs-kit/commit/d92768a05e19aeee496126999e24b42f274ad719), [`0b529c91`](https://github.com/commercetools/commercetools-docs-kit/commit/0b529c914503c131ab02fbf82923b69e1dd2bcd2)]:
+  - @commercetools-docs/gatsby-theme-docs@19.8.0
+
 ## 5.0.16
 
 ### Patch Changes

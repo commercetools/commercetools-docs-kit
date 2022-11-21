@@ -1,5 +1,21 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.8.1
+
+### Patch Changes
+
+- [#1431](https://github.com/commercetools/commercetools-docs-kit/pull/1431) [`ffc1e943`](https://github.com/commercetools/commercetools-docs-kit/commit/ffc1e94363188f1e9954a239cb8b9a270eca6ab6) Thanks [@timonrey](https://github.com/timonrey)! - Fix a layout bug in the top-right corner on release note pages. The top-right corner on release note pages can now not be overwritten.
+
+## 19.8.0
+
+### Minor Changes
+
+- [#1400](https://github.com/commercetools/commercetools-docs-kit/pull/1400) [`0b529c91`](https://github.com/commercetools/commercetools-docs-kit/commit/0b529c914503c131ab02fbf82923b69e1dd2bcd2) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add Video component
+
+### Patch Changes
+
+- [#1414](https://github.com/commercetools/commercetools-docs-kit/pull/1414) [`d92768a0`](https://github.com/commercetools/commercetools-docs-kit/commit/d92768a05e19aeee496126999e24b42f274ad719) Thanks [@timonrey](https://github.com/timonrey)! - Provide the possibility to override the whole page-header-side area in the top-right corner.
+
 ## 19.7.0
 
 ### Minor Changes

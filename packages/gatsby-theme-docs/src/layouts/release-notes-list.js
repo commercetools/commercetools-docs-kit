@@ -13,7 +13,7 @@ import LayoutFooter from './internals/layout-footer';
 import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
-import LayoutPageHeaderSide from '../overrides/layout-page-header-side';
+import LayoutReleaseNotePageHeaderSide from './layout-release-note-page-header-side';
 import LayoutPageReleaseNotesFilters from './internals/layout-page-release-notes-filters';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
@@ -56,9 +56,9 @@ const LayoutReleaseNotesList = (props) => {
             <LayoutPageHeader>
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
             </LayoutPageHeader>
-            <LayoutPageHeaderSide>
+            <LayoutReleaseNotePageHeaderSide>
               <ReleaseNotesSubscribeLinks />
-            </LayoutPageHeaderSide>
+            </LayoutReleaseNotePageHeaderSide>
             <LayoutPageContent>
               <PageContentInset id="body-content" showRightBorder>
                 {props.children}
