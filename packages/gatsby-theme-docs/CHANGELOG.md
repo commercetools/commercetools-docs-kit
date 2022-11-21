@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.8.1
+
+### Patch Changes
+
+- [#1431](https://github.com/commercetools/commercetools-docs-kit/pull/1431) [`ffc1e943`](https://github.com/commercetools/commercetools-docs-kit/commit/ffc1e94363188f1e9954a239cb8b9a270eca6ab6) Thanks [@timonrey](https://github.com/timonrey)! - Fix a layout bug in the top-right corner on release note pages. The top-right corner on release note pages can now not be overwritten.
+
 ## 19.8.0
 
 ### Minor Changes
