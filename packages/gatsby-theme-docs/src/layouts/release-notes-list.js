@@ -11,7 +11,7 @@ import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
 import LayoutPageWrapper from './internals/layout-page-wrapper';
-import LayoutPage from './internals/layout-page';
+import LayoutPageReleaseNotes from './internals/layout-page-release-notes';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutReleaseNotePageHeaderSide from './layout-release-note-page-header-side';
 import LayoutPageReleaseNotesFilters from './internals/layout-page-release-notes-filters';
@@ -52,7 +52,7 @@ const LayoutReleaseNotesList = (props) => {
           excludeFromSearchIndex={excludeFromSearchIndex}
         />
         <LayoutPageWrapper>
-          <LayoutPage>
+          <LayoutPageReleaseNotes>
             <LayoutPageHeader>
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
             </LayoutPageHeader>
@@ -69,7 +69,7 @@ const LayoutReleaseNotesList = (props) => {
               isSearchBoxInView={isSearchBoxInView}
               excludeFromSearchIndex={excludeFromSearchIndex}
             />
-          </LayoutPage>
+          </LayoutPageReleaseNotes>
         </LayoutPageWrapper>
         <LayoutFooter />
       </LayoutMain>

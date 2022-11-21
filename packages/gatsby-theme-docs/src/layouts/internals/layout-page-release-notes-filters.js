@@ -32,7 +32,7 @@ const fadeInAnimation = keyframes`
 `;
 
 const SlidingContainer = styled.div`
-  width: ${designSystem.dimensions.widths.pageNavigation};
+  width: ${designSystem.dimensions.widths.pageNavigationReleaseNotes};
   background-color: ${designSystem.colors.light.surfacePrimary};
   animation: ${slideInAnimation} 0.15s ease-out alternate;
   padding: 0 ${designSystem.dimensions.spacings.m};
@@ -125,15 +125,9 @@ const SearchInputBox = styled.div`
   padding: ${designSystem.dimensions.spacings.m} 0;
   animation: ${fadeInAnimation} 0.4s ease-in;
   max-width: calc(
-    ${designSystem.dimensions.widths.pageNavigationSmall} -
+    ${designSystem.dimensions.widths.pageNavigationReleaseNotes} -
       ${designSystem.dimensions.spacings.m} * 2
   );
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    max-width: calc(
-      ${designSystem.dimensions.widths.pageNavigation} -
-        ${designSystem.dimensions.spacings.m} * 2
-    );
-  }
 `;
 
 const Blank = styled.div`

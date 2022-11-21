@@ -14,7 +14,7 @@ import LayoutSidebar from './internals/layout-sidebar';
 import LayoutMain from './internals/layout-main';
 import LayoutFooter from './internals/layout-footer';
 import LayoutPageWrapper from './internals/layout-page-wrapper';
-import LayoutPage from './internals/layout-page';
+import LayoutPageReleaseNotes from './internals/layout-page-release-notes';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutReleaseNotePageHeaderSide from './layout-release-note-page-header-side';
 import LayoutPageContent from './internals/layout-page-content';
@@ -56,7 +56,7 @@ const LayoutReleaseNotesDetail = (props) => {
           excludeFromSearchIndex={excludeFromSearchIndex}
         />
         <LayoutPageWrapper>
-          <LayoutPage>
+          <LayoutPageReleaseNotes>
             <LayoutPageHeader>
               <Link
                 href="/releases"
@@ -95,7 +95,7 @@ const LayoutReleaseNotesDetail = (props) => {
                 {props.children}
               </PageContentInset>
             </LayoutPageContent>
-          </LayoutPage>
+          </LayoutPageReleaseNotes>
         </LayoutPageWrapper>
         <LayoutFooter />
       </LayoutMain>

@@ -10,6 +10,7 @@ const pageWidthSmall = '592px';
 const asideColumnWidth = pageWidthSmall;
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
+const navbarWidthReleaseNoteFilter = '274px';
 
 export const pxToRem = (px: string, suffix = 'rem') => {
   const pxNumber = px.replace(/([0-9]+)px$/, '$1');
@@ -234,6 +235,7 @@ export const dimensions = {
     pageContentWithMarginsAndPageNavigation: `calc(${pageWidth} + 32px * 2 + ${navbarWidth})`,
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
+    pageNavigationReleaseNotes: navbarWidthReleaseNoteFilter,
     marketingContent: '1168px',
     searchBar: '300px',
     searchBarSmall: '160px',
