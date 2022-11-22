@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         include: /(.*-smoke-test.*)\/components\/video-player\/index\.html/,
-        waitForSelector: '#body-content div.video-js',
+        waitForSelector: '#body-content div#vjs_video_998',
       },
     ],
   },
