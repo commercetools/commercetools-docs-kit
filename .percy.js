@@ -20,6 +20,10 @@ module.exports = {
         include: /(.*-smoke-test.*)\/components\/mermaid-diagram\/index\.html/,
         waitForSelector: '#body-content svg.statediagram',
       },
+      {
+        include: /(.*-smoke-test.*)\/components\/video-player\/index\.html/,
+        waitForSelector: '#body-content div.video-js',
+      },
     ],
   },
   snapshot: {
