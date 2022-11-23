@@ -32,6 +32,7 @@ const LayoutContent = (props) => {
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
   const isBeta = props.pageData.beta || siteData.siteMetadata.beta;
+  const isLearning = props.pageContext.courseId && props.pageContext.section;
 
   return (
     <LayoutApplication
@@ -78,7 +79,9 @@ const LayoutContent = (props) => {
             </LayoutGlobalNotification>
             <LayoutPageHeader>
               {isBeta && <BetaFlag href={siteData.siteMetadata.betaLink} />}
-              <Markdown.H1>{props.pageData.title}</Markdown.H1>
+              <Markdown.H1>
+                {props.pageData.title} {isLearning ? '(learning page)' : ''}
+              </Markdown.H1>
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />
               )}
@@ -117,6 +120,8 @@ LayoutContent.propTypes = {
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
     hasReleaseNotes: PropTypes.bool.isRequired,
+    courseId: PropTypes.string,
+    section: PropTypes.string,
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,

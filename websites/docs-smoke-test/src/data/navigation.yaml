@@ -20,6 +20,14 @@
       path: /views/custom-anchor
     - title: Wide Layout
       path: /views/wide
+- chapter-title: Self-learning
+  pages:
+    - title: Learning page 1
+      path: /self-learning/first-page
+    - title: Learning page 2
+      path: /self-learning/second-page
+    - title: Learning page 3
+      path: /self-learning/third-page
 - chapter-title: Components
   beta: true
   pages:

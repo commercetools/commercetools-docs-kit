@@ -57,6 +57,8 @@ PageContentTemplate.propTypes = {
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
     hasReleaseNotes: PropTypes.bool.isRequired,
+    courseId: PropTypes.string,
+    section: PropTypes.string,
   }).isRequired,
   data: PropTypes.shape({
     contentPage: PropTypes.shape({

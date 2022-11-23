@@ -189,6 +189,8 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             errorFallback: 0,
           }),
         },
+        courseId: { type: 'String' },
+        section: { type: 'String' },
       },
       interfaces: ['Node'],
     })
@@ -307,6 +309,8 @@ exports.onCreateNode = (
     timeToRead: node.frontmatter.timeToRead
       ? Number(node.frontmatter.timeToRead)
       : 0,
+    courseId: String(node.frontmatter.courseId) || '',
+    section: String(node.frontmatter.section) || '',
   };
   actions.createNode({
     ...contentPageFieldData,
@@ -362,6 +366,8 @@ async function createContentPages(
       allContentPage {
         nodes {
           slug
+          courseId
+          section
         }
       }
       allReleaseNotePage(sort: { order: DESC, fields: date }) {
@@ -398,7 +404,7 @@ async function createContentPages(
       (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
       []
     );
-  pages.forEach(({ slug }) => {
+  pages.forEach(({ slug, courseId, section }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
@@ -411,6 +417,8 @@ async function createContentPages(
           ? matchingNavigationPage.title
           : undefined,
         hasReleaseNotes: result.data.allReleaseNotePage.totalCount > 0,
+        courseId,
+        section,
       },
     };
     switch (slug) {

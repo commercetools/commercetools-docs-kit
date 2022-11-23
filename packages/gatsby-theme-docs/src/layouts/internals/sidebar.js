@@ -251,7 +251,12 @@ const SidebarChapter = (props) => {
                 nextScrollPosition={props.nextScrollPosition}
                 getChapterDOMElement={getChapterDOMElement}
               >
-                <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+                <LinkSubtitle>
+                  {pageLink.title}{' '}
+                  {pageLink.courseId
+                    ? `(c:${pageLink.courseId} s:${pageLink.section})`
+                    : ''}
+                </LinkSubtitle>
               </SidebarLinkWrapper>
             ))}
         </SpacingsStack>
@@ -295,11 +300,40 @@ const SidebarNavigationLinks = (props) => {
           }
         }
       }
+      allContentPage(filter: { section: { ne: null } }) {
+        nodes {
+          slug
+          courseId
+          section
+        }
+      }
     }
   `);
+  const learningData = data.allContentPage;
+  let navData = data.allNavigationYaml;
+
+  if (learningData.nodes && learningData.nodes.length > 0) {
+    navData.nodes = navData.nodes.map((navChapter) => {
+      const pages = navChapter.pages.map((pageNode) => {
+        const matchingLearningPage = learningData.nodes.find(
+          (learningPage) => pageNode.path === learningPage.slug
+        );
+        if (matchingLearningPage) {
+          return {
+            ...pageNode,
+            courseId: matchingLearningPage.courseId,
+            section: matchingLearningPage.section,
+          };
+        }
+        return pageNode;
+      });
+      return { ...navChapter, pages };
+    });
+  }
+
   return (
     <>
-      {data.allNavigationYaml.nodes.map((node, index) => (
+      {navData.nodes.map((node, index) => (
         <SidebarChapter
           key={index}
           index={index}
