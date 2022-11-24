@@ -62,7 +62,7 @@ const SEO = (props) => {
   ].filter(Boolean);
   return (
     <Helmet
-      titleTemplate={`%s | ${siteData.siteMetadata.title} | commercetools`}
+      titleTemplate={`%s | ${siteData.siteMetadata.title} | ${siteData.siteMetadata.productName}`}
     >
       <meta charSet="utf-8" />
       <html lang={props.lang} amp />

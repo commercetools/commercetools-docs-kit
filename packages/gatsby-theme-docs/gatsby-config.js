@@ -33,6 +33,7 @@ module.exports = (themeOptions = {}) => {
       betaLink: '.',
       excludeFromSearchIndex: false,
       beta: false,
+      productName: 'commercetools',
       globalNotification: {
         active: false,
         notificationType: 'info',

@@ -19,6 +19,7 @@ const ThemeProvider = (props) => {
           productionHostname
           betaLink
           excludeFromSearchIndex
+          productName
           globalNotification {
             active
             notificationType
