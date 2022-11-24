@@ -9,9 +9,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useSiteData } from '../hooks/use-site-data';
+import useTopMenuItems from '../hooks/use-top-menu-items';
+import getSiteContextTitleByPath from '../utils/get-site-context-title';
 
 const SEO = (props) => {
   const siteData = useSiteData();
+  const siteContextMap = useTopMenuItems();
+  const siteContextTitle = getSiteContextTitleByPath(
+    siteContextMap,
+    siteData.pathPrefix
+  );
   const excludeFromSearchIndex =
     props.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
@@ -62,7 +69,9 @@ const SEO = (props) => {
   ].filter(Boolean);
   return (
     <Helmet
-      titleTemplate={`%s | ${siteData.siteMetadata.title} | commercetools`}
+      titleTemplate={`%s | ${siteData.siteMetadata.title} | ${
+        siteContextTitle || 'commercetools'
+      }`}
     >
       <meta charSet="utf-8" />
       <html lang={props.lang} amp />
