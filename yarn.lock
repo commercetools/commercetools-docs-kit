@@ -2130,7 +2130,7 @@ __metadata:
     gatsby-source-filesystem: 4.24.0
     gatsby-transformer-sharp: 4.24.0
     gatsby-transformer-yaml: 4.24.0
-    github-slugger: 1.4.0
+    github-slugger: 2.0.0
     hast-util-heading: 1.0.5
     intersection-observer: 0.12.2
     lodash.throttle: 4.1.1
@@ -15385,7 +15385,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"github-slugger@npm:1.4.0, github-slugger@npm:^1.1.1, github-slugger@npm:^1.2.1":
+"github-slugger@npm:2.0.0":
+  version: 2.0.0
+  resolution: "github-slugger@npm:2.0.0"
+  checksum: 250375cde2058f21454872c2c79f72c4637340c30c51ff158ca4ec71cbc478f33d54477d787a662f9207aeb095a2060f155bc01f15329ba8a5fb6698e0fc81f8
+  languageName: node
+  linkType: hard
+
+"github-slugger@npm:^1.1.1, github-slugger@npm:^1.2.1":
   version: 1.4.0
   resolution: "github-slugger@npm:1.4.0"
   checksum: 4f52e7a21f5c6a4c5328f01fe4fe13ae8881fea78bfe31f9e72c4038f97e3e70d52fb85aa7633a52c501dc2486874474d9abd22aa61cbe9b113099a495551c6b
