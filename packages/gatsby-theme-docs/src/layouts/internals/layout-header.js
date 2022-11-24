@@ -15,6 +15,7 @@ import { SearchDialog, SearchInput, Overlay } from '../../components';
 import PlaceholderAvatarArea from '../../overrides/avatar';
 import { useSiteData } from '../../hooks/use-site-data';
 import useTopMenuItems from '../../hooks/use-top-menu-items';
+import getSiteContextTitleByPath from '../../utils/get-site-context-title';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 
@@ -231,13 +232,6 @@ const CaretContainer = styled.div`
   position: relative;
   bottom: 1px;
 `;
-
-const getSiteContextTitleByPath = (sitePathsMap, sitePath) => {
-  const siteSegment = sitePath.replace('/', '');
-  if (sitePathsMap.has(siteSegment)) {
-    return sitePathsMap.get(siteSegment);
-  }
-};
 
 // eslint-disable-next-line react/display-name
 const LayoutHeader = forwardRef((props, ref) => {
