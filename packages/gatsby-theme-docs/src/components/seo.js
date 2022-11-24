@@ -10,13 +10,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useSiteData } from '../hooks/use-site-data';
 import useTopMenuItems from '../hooks/use-top-menu-items';
-
-const getSiteContextTitleByPath = (sitePathsMap, sitePath) => {
-  const siteSegment = sitePath.replace('/', '');
-  if (sitePathsMap.has(siteSegment)) {
-    return sitePathsMap.get(siteSegment);
-  }
-};
+import getSiteContextTitleByPath from '../utils/get-site-context-title';
 
 const SEO = (props) => {
   const siteData = useSiteData();
