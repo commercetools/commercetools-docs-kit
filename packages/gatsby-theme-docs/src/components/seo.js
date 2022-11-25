@@ -70,7 +70,7 @@ const SEO = (props) => {
   return (
     <Helmet
       titleTemplate={`%s | ${siteData.siteMetadata.title} | ${
-        siteContextTitle || 'commercetools'
+        siteContextTitle ? `commercetools ${siteContextTitle}` : `commercetools`
       }`}
     >
       <meta charSet="utf-8" />
