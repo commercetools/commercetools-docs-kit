@@ -9981,7 +9981,7 @@ __metadata:
     babel-plugin-typescript-to-proptypes: 2.0.0
     core-js: 3.25.5
     cross-env: 7.0.3
-    cypress: 10.9.0
+    cypress: 11.2.0
     eslint: 8.25.0
     eslint-formatter-pretty: 4.1.0
     eslint-import-resolver-webpack: 0.13.2
@@ -10783,9 +10783,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:10.9.0":
-  version: 10.9.0
-  resolution: "cypress@npm:10.9.0"
+"cypress@npm:11.2.0":
+  version: 11.2.0
+  resolution: "cypress@npm:11.2.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -10831,7 +10831,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 79e3dccbb82d0b0c92bb8888682766a9738374f473cf2e9a04825a6b3dbe4420c57948cabaf757af0929192a8e61b7f08b32d7f6ee0c3cddf2736cf4f408edc1
+  checksum: e13649fb4b62a3c9dff7cc571f4e01dba009d8179b05c4f885c5ceb4ed76b78a7323fec491d992da35527708b54e596bfc9edb1d702f788317889f794d8c1e76
   languageName: node
   linkType: hard
 
