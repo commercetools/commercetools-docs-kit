@@ -51,9 +51,9 @@ export const generateEndpointURN = ({
   path = '',
   method = '',
 }) => {
-  return `${prefix}:${encodeURNComponent(apiKey)}:endpoint:${encodeURNComponent(
-    path
-  )}:${encodeURNComponent(method.toUpperCase())}`;
+  return `${prefix}:${encodeURNComponent(
+    apiKey
+  )}:endpoint:${path}:${encodeURNComponent(method.toUpperCase())}`;
 };
 
 export const parseEndpointURN = (urn) => {

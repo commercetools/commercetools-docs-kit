@@ -68,6 +68,7 @@ const Method = ({
         )}
 
         <Container
+          id={id}
           css={css`
             border-left-color: ${methodColor};
           `}
