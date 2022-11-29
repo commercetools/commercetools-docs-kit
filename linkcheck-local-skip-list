@@ -11,3 +11,4 @@ https:\/\/support.commercetools.com
 \/.+\/sdk
 \/.+\/tutorials
 \/.+\/getting-started
+\#ctp:.+:endpoint
