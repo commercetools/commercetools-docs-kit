@@ -6,19 +6,27 @@
 const prefix = 'ctp';
 const encodedColon = '%3A';
 const encodedHash = '%23';
+const encodedPercent = '%25';
 const colonRegExp = new RegExp(encodedColon, 'g');
 const hashRegExp = new RegExp(encodedHash, 'g');
+const percentRegExp = new RegExp(encodedPercent, 'g');
 
 // encode the minimum required only, but add the hash so the result is compatible
 // being a URL fragment identifier a.k.a. hash.
 const encodeURNComponent = (input) => {
   return encodeURI(input)
     .replace(/:/g, encodedColon)
-    .replace(/#/g, encodedHash);
+    .replace(/#/g, encodedHash)
+    .replace(/%/g, encodedPercent);
 };
 
 const decodeURNComponent = (input) => {
-  return decodeURI(input.replace(colonRegExp, ':').replace(hashRegExp, '#'));
+  return decodeURI(
+    input
+      .replace(colonRegExp, ':')
+      .replace(hashRegExp, '#')
+      .replace(percentRegExp, '%')
+  );
 };
 
 const URNComponents = (urn) => {
@@ -46,14 +54,17 @@ export const parseTypeURN = (urn) => {
   return false;
 };
 
-export const generateEndpointURN = ({
-  apiKey = '',
-  path = '',
-  method = '',
-}) => {
-  return `${prefix}:${encodeURNComponent(
-    apiKey
-  )}:endpoint:${path}:${encodeURNComponent(method.toUpperCase())}`;
+export const generateEndpointURN = (
+  { apiKey = '', path = '', method = '' },
+  isDom
+) => {
+  if (isDom) {
+    // don't escape the URN when adding it to the DOM
+    return `${prefix}:${apiKey}:endpoint${path}:${method.toUpperCase()}`;
+  }
+  return `${prefix}:${encodeURNComponent(apiKey)}:endpoint${encodeURNComponent(
+    path
+  )}:${encodeURNComponent(method.toUpperCase())}`;
 };
 
 export const parseEndpointURN = (urn) => {
