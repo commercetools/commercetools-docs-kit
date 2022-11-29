@@ -67,7 +67,7 @@ const Method = ({
           <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
         ) : (
           // eslint-disable-next-line jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid
-          <a id={id}></a>
+          <a id={id} name={id}></a>
         )}
 
         <Container
