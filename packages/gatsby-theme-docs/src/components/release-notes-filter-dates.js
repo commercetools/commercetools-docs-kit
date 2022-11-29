@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { designSystem, IsoDateFormat } from '@commercetools-docs/ui-kit';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import DateInput from '@commercetools-uikit/date-input';
 import useReleaseNotesFilterParams from '../hooks/use-release-notes-filter-params';
 import scrollToTop from '../utils/scroll-to-top';
 
@@ -17,9 +16,25 @@ const DateLabel = styled.label`
   line-height: ${designSystem.typography.lineHeights.small};
 `;
 
+const DateInputField = styled.input`
+  color: ${designSystem.colors.light.textPrimary};
+  border: 1px solid ${designSystem.colors.light.borderInput};
+  border-radius: ${designSystem.tokens.borderRadiusForSearchDialog};
+  font-size: ${designSystem.typography.fontSizes.body};
+  height: ${designSystem.dimensions.heights.inputSearchPrimary};
+  padding: 0 ${designSystem.dimensions.spacings.s};
+  box-sizing: border-box;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+
+  &:focus {
+    border-color: ${designSystem.colors.light.borderHighlight};
+  }
+`;
+
 const ReleaseNotesFilterDates = () => {
   const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
-  const maximumDate = IsoDateFormat.format(new Date());
 
   return (
     <SpacingsStack scale="s">
@@ -28,11 +43,11 @@ const ReleaseNotesFilterDates = () => {
       <SpacingsStack scale="xs">
         <DateLabel htmlFor="from-filter-date">From</DateLabel>
         <div>
-          <DateInput
+          <DateInputField
+            type="date"
             id="from-filter-date"
             value={filterParams.fromFilterDate || ''}
             onChange={handleOnFromFilterDateChange}
-            maxValue={maximumDate}
           />
         </div>
       </SpacingsStack>
@@ -40,11 +55,11 @@ const ReleaseNotesFilterDates = () => {
       <SpacingsStack scale="xs">
         <DateLabel htmlFor="to-filter-date">To</DateLabel>
         <div>
-          <DateInput
+          <DateInputField
+            type="date"
             id="to-filter-date"
             value={filterParams.toFilterDate || ''}
             onChange={handleOnToFilterDateChange}
-            maxValue={maximumDate}
           />
         </div>
       </SpacingsStack>
