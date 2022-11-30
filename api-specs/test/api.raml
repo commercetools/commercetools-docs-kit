@@ -171,6 +171,9 @@ uses:
           description: This should render above the text "The parameter can be passed multiple times."
           type: string[]
           required: false
+        unionParameter:
+          type: number | string | objects.ObjectTestType
+          required: false
       securedBy:
       - oauth_2_0:
           scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]

@@ -90,8 +90,17 @@ const defineRamlResource = ({ schema, createTypes }) => {
         required: 'Boolean',
         type: 'String!',
         builtinType: 'String!',
+        unionParams: '[RamlResourceQueryUnionParameter!]',
         description: 'String',
         items: 'RamlTypeItems',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceQueryUnionParameter',
+      fields: {
+        type: 'String!',
+        builtinType: 'String!',
       },
     }),
 

@@ -18,6 +18,31 @@ import { typography } from '../../../design-system';
 const isRegex = (string) =>
   string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
 
+const isTypeUnion = (strType) => {
+  return typeof strType === 'string' && strType === 'Union';
+};
+
+const handleTypeUnion = (paramsArray) => {
+  const generateUnionSentence = () =>
+    paramsArray
+      .map(({ type }, idx, { length }) =>
+        length > idx + 1 ? `${type}, ` : ` or ${type}`
+      )
+      .join('');
+
+  return `Can be ${generateUnionSentence()}`;
+};
+
+const getParameterType = ({ name, unionParams }, type) => {
+  if (isRegex(name)) {
+    return `Any ${type.toLowerCase()} parameter matching this regular expression`;
+  }
+  if (isTypeUnion(type)) {
+    return handleTypeUnion(unionParams);
+  }
+  return type;
+};
+
 // inline-blocks inside a block are wrapped first before wrapping inline.
 // this implements a wrapping behavior where property name and type are separated
 // into lines before the name is wrapped in itself if it consists of multiple words.
@@ -93,11 +118,7 @@ function ParameterRow(props) {
         <PropertyType>
           {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
-          {isRegex(props.parameter.name)
-            ? `Any ${typeToRender.type.toLowerCase()} parameter matching this regular expression`
-            : typeof typeToRender.type === 'string'
-            ? typeToRender.type
-            : typeToRender.type}
+          {getParameterType(props.parameter, typeToRender.type)}
         </PropertyType>
         {'\u200B' /* zero-width space for the search crawler */}
       </td>
