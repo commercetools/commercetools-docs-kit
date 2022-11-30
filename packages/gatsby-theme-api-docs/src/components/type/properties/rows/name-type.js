@@ -25,10 +25,11 @@ const BetaWrapper = styled.span`
 `;
 
 const NameType = (props) => {
-  const typeToRender = useTypeToRender({
+  const typesToRender = useTypeToRender({
     property: props.property,
     apiKey: props.apiKey,
   });
+  const typeToRender = typesToRender[0];
 
   const isRegex = (string) =>
     string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';

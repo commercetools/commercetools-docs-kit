@@ -2,7 +2,6 @@ const generateType = require('./type/generate-type');
 
 function getTypes(typeUnion) {
   const typesList = typeUnion.split('|').map((item) => item.trim());
-  console.log('splitted', typesList);
   const results = typesList.map((typeItem) => ({
     type: generateType({ type: typeItem }),
     builtinType: generateType({ type: typeItem }),

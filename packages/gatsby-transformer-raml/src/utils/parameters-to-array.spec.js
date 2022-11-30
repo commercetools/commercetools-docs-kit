@@ -22,12 +22,14 @@ describe('parameters-to-array.js', () => {
         required: false,
         type: 'string',
         builtinType: 'string',
+        unionParams: [],
       },
       {
         name: 'sort',
         required: false,
         type: 'string',
         builtinType: 'string',
+        unionParams: [],
       },
     ];
 
@@ -55,12 +57,14 @@ describe('parameters-to-array.js', () => {
         required: false,
         type: 'Int',
         builtinType: 'Int',
+        unionParams: [],
       },
       {
         name: 'height',
         required: false,
         type: 'Float',
         builtinType: 'Float',
+        unionParams: [],
       },
     ];
 

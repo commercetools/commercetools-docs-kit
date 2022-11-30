@@ -3,9 +3,10 @@ import generateTypeToRender from '../utils/generate-type-to-render';
 
 function useTypeToRender({ property, apiKey, isParameter } = {}) {
   const typeLocations = useTypeLocations();
+  const properties = Array.isArray(property) ? property : [property];
   return generateTypeToRender({
     typeLocations,
-    property,
+    properties,
     apiKey,
     isParameter,
   });

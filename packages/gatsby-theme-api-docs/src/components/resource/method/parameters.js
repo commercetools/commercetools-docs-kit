@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import {
@@ -22,23 +23,16 @@ const isTypeUnion = (strType) => {
   return typeof strType === 'string' && strType === 'Union';
 };
 
-const handleTypeUnion = (paramsArray) => {
-  const generateUnionSentence = () =>
-    paramsArray
-      .map(({ type }, idx, { length }) =>
-        length > idx + 1 ? `${type}, ` : ` or ${type}`
-      )
-      .join('');
-
-  return `Can be ${generateUnionSentence()}`;
+const handleTypeUnion = (paramsArray, apiKey) => {
+  return <UnionParametersRow types={paramsArray} apiKey={apiKey} />;
 };
 
-const getParameterType = ({ name, unionParams }, type) => {
+const getParameterType = ({ name, unionParams }, type, apiKey) => {
   if (isRegex(name)) {
     return `Any ${type.toLowerCase()} parameter matching this regular expression`;
   }
   if (isTypeUnion(type)) {
-    return handleTypeUnion(unionParams);
+    return handleTypeUnion(unionParams, apiKey);
   }
   return type;
 };
@@ -95,12 +89,46 @@ Parameters.propTypes = {
 };
 Parameters.displayName = 'Parameters';
 
+function UnionParametersRow(props) {
+  const typesToRender = useTypeToRender({
+    property: props.types,
+    apiKey: props.apiKey,
+    isParameter: true,
+  });
+
+  return (
+    <>
+      Can be{' '}
+      {typesToRender.map(({ type }, idx, { length }) =>
+        length > idx + 1 ? <span>{type}, </span> : <span>or {type}</span>
+      )}
+    </>
+  );
+}
+
+UnionParametersRow.propTypes = {
+  apiKey: PropTypes.string.isRequired,
+  types: PropTypes.arrayOf({
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    required: PropTypes.bool,
+    description: PropTypes.string,
+    additionalDescription: PropTypes.string,
+    items: PropTypes.shape({
+      type: PropTypes.string,
+    }),
+  }).isRequired,
+};
+UnionParametersRow.displayName = 'UnionParametersRow';
+
 function ParameterRow(props) {
-  const typeToRender = useTypeToRender({
+  const typesToRender = useTypeToRender({
     property: props.parameter,
     apiKey: props.apiKey,
     isParameter: true,
   });
+  const typeToRender = typesToRender[0];
+
   return (
     <tr key={props.parameter.name}>
       <td>
@@ -118,7 +146,7 @@ function ParameterRow(props) {
         <PropertyType>
           {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
-          {getParameterType(props.parameter, typeToRender.type)}
+          {getParameterType(props.parameter, typeToRender.type, props.apiKey)}
         </PropertyType>
         {'\u200B' /* zero-width space for the search crawler */}
       </td>
