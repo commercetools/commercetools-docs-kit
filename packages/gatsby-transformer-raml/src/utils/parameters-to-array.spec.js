@@ -70,4 +70,30 @@ describe('parameters-to-array.js', () => {
 
     expect(parametersToArray(parametersBefore)).toEqual(parametersAfter);
   });
+
+  it('should properly convert union types transform number to float', () => {
+    const parametersBefore = {
+      unionParameter: {
+        required: false,
+        type: 'integer | string | number',
+        builtinType: 'Union',
+      },
+    };
+
+    const parametersAfter = [
+      {
+        name: 'unionParameter',
+        required: false,
+        type: 'Union',
+        builtinType: 'Union',
+        unionParams: [
+          { type: 'Int', builtinType: 'Int' },
+          { type: 'string', builtinType: 'string' },
+          { type: 'Float', builtinType: 'Float' },
+        ],
+      },
+    ];
+
+    expect(parametersToArray(parametersBefore)).toEqual(parametersAfter);
+  });
 });
