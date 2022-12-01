@@ -61,6 +61,10 @@ const SEO = (props) => {
       name: 'twitter:description',
       content: metaDescription,
     },
+    {
+      name: 'commercetools:title-for-onsite-search',
+      content: `${siteContextTitle} > ${siteData.siteMetadata.title}`,
+    },
     excludeFromSearchIndex && {
       name: 'robots',
       content: 'noindex',
