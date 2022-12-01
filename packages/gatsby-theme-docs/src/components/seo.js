@@ -63,7 +63,9 @@ const SEO = (props) => {
     },
     {
       name: 'commercetools:title-for-onsite-search',
-      content: `${siteContextTitle} > ${siteData.siteMetadata.title}`,
+      content: siteContextTitle
+        ? `${siteContextTitle} > ${siteData.siteMetadata.title}`
+        : siteData.siteMetadata.title,
     },
     excludeFromSearchIndex && {
       name: 'robots',
