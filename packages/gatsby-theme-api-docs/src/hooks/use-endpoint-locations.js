@@ -29,7 +29,6 @@ const convertComponentInMdxToEndpointLocations = (data) => {
       const urn = generateEndpointURN({ apiKey, method, path: resource });
       const url = slug && urn ? `${slug}#${urn}` : '';
 
-      console.log('adding', `${apiKey}__${resource}__${method}`, url);
       endpointLocations[`${apiKey}__${resource}__${method}`] = { url };
     });
   }
