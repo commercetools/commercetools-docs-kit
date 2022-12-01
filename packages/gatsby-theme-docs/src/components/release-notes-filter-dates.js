@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem, IsoDateFormat } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import useReleaseNotesFilterParams from '../hooks/use-release-notes-filter-params';
 import scrollToTop from '../utils/scroll-to-top';
@@ -35,6 +35,7 @@ const DateInputField = styled.input`
 
 const ReleaseNotesFilterDates = () => {
   const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
+  const maximumDate = IsoDateFormat.format(new Date());
 
   return (
     <SpacingsStack scale="s">
@@ -46,6 +47,7 @@ const ReleaseNotesFilterDates = () => {
           <DateInputField
             type="date"
             id="from-filter-date"
+            max={maximumDate}
             value={filterParams.fromFilterDate || ''}
             onChange={handleOnFromFilterDateChange}
           />
@@ -58,6 +60,7 @@ const ReleaseNotesFilterDates = () => {
           <DateInputField
             type="date"
             id="to-filter-date"
+            max={maximumDate}
             value={filterParams.toFilterDate || ''}
             onChange={handleOnToFilterDateChange}
           />
