@@ -49,6 +49,7 @@ const ReleaseNotesFilterDates = () => {
             id="from-filter-date"
             max={maximumDate}
             value={filterParams.fromFilterDate || ''}
+            onClick={handleClick}
             onChange={handleOnFromFilterDateChange}
           />
         </div>
@@ -68,6 +69,12 @@ const ReleaseNotesFilterDates = () => {
       </SpacingsStack>
     </SpacingsStack>
   );
+
+  function handleClick(e) {
+    if ('showPicker' in HTMLInputElement.prototype) {
+      document.getElementById(e.target.id).showPicker();
+    }
+  }
 
   function handleOnFromFilterDateChange(e) {
     setFilterParams({ fromFilterDate: e.target.value || undefined });
