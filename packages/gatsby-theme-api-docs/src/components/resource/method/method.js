@@ -51,24 +51,16 @@ const Method = ({
   }
   const methodColor = computeMethodColor(methodType.toLowerCase());
 
-  const id = generateEndpointURN(
-    {
-      apiKey,
-      path: new URL(`${uris.baseUri}${uris.resourcePathUri}`).pathname,
-      method: methodType,
-    },
-    true
-  );
+  const id = generateEndpointURN({
+    apiKey,
+    path: uris.resourcePathUri,
+    method: methodType,
+  });
 
   return (
-    <FullWidthContainer>
+    <FullWidthContainer id={id}>
       <SpacingsStack scale="s">
-        {title ? (
-          <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
-        ) : (
-          // eslint-disable-next-line jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid
-          <a id={id} name={id}></a>
-        )}
+        {title && <TitleWithAnchor>{title}</TitleWithAnchor>}
 
         <Container
           css={css`
