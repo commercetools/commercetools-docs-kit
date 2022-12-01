@@ -1,10 +1,14 @@
 import { useTypeLocations } from './use-type-locations';
-import generateTypeToRender from '../utils/generate-type-to-render';
+import generateTypesToRender from '../utils/generate-type-to-render';
 
-function useTypeToRender({ property, apiKey, isParameter } = {}) {
+/**
+ * It accept either a single property or an array of properties.
+ * The funtion returns an array of types to render
+ */
+function useTypesToRender({ property, apiKey, isParameter } = {}) {
   const typeLocations = useTypeLocations();
   const properties = Array.isArray(property) ? property : [property];
-  return generateTypeToRender({
+  return generateTypesToRender({
     typeLocations,
     properties,
     apiKey,
@@ -12,4 +16,4 @@ function useTypeToRender({ property, apiKey, isParameter } = {}) {
   });
 }
 
-export default useTypeToRender;
+export default useTypesToRender;

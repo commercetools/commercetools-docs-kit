@@ -7,7 +7,7 @@ import {
 } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import useTypeToRender from '../../../hooks/use-type-to-render';
+import useTypesToRender from '../../../hooks/use-type-to-render';
 import Required from '../../required';
 import RegexProperty from '../../type/properties/regex-properties';
 import Table from '../../table';
@@ -23,16 +23,12 @@ const isTypeUnion = (strType) => {
   return typeof strType === 'string' && strType === 'Union';
 };
 
-const handleTypeUnion = (paramsArray, apiKey) => {
-  return <UnionParametersRow types={paramsArray} apiKey={apiKey} />;
-};
-
 const getParameterType = ({ name, unionParams }, type, apiKey) => {
   if (isRegex(name)) {
     return `Any ${type.toLowerCase()} parameter matching this regular expression`;
   }
   if (isTypeUnion(type)) {
-    return handleTypeUnion(unionParams, apiKey);
+    return <UnionParametersRow types={unionParams} apiKey={apiKey} />;
   }
   return type;
 };
@@ -90,7 +86,7 @@ Parameters.propTypes = {
 Parameters.displayName = 'Parameters';
 
 function UnionParametersRow(props) {
-  const typesToRender = useTypeToRender({
+  const typesToRender = useTypesToRender({
     property: props.types,
     apiKey: props.apiKey,
     isParameter: true,
@@ -122,12 +118,12 @@ UnionParametersRow.propTypes = {
 UnionParametersRow.displayName = 'UnionParametersRow';
 
 function ParameterRow(props) {
-  const typesToRender = useTypeToRender({
+  const typesToRender = useTypesToRender({
     property: props.parameter,
     apiKey: props.apiKey,
     isParameter: true,
   });
-  const typeToRender = typesToRender[0];
+  const typeToRender = typesToRender[0]; // safe as we expect a single item in the array
 
   return (
     <tr key={props.parameter.name}>

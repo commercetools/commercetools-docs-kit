@@ -1,9 +1,13 @@
 import capitalizeFirst from './capitalize-first';
 import renderTypeAsLink from './render-type-as-link';
 
-function generateTypeToRender({
+/**
+ * Give an array of type properties, it returns
+ * an array of types ready to be rendered
+ */
+function generateTypesToRender({
   typeLocations,
-  properties,
+  properties, // array of properties
   apiKey,
   isParameter,
 }) {
@@ -38,4 +42,4 @@ function isConstantLikeAndIsNotPrimitiveType(property) {
   return isConstantLike && !isPrimitiveType;
 }
 
-export default generateTypeToRender;
+export default generateTypesToRender;
