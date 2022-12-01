@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { useStaticQuery, graphql } from 'gatsby';
 import { generateEndpointURN } from '../utils/ctp-urn';
-import { useTypeLocationOverrides } from './use-type-location-overrides';
+import { useEndpointLocationOverrides } from './use-endpoint-location-overrides';
 
 var locationsAreIndexed = false;
 var overridesAreIndexed = false;
@@ -36,18 +36,20 @@ const convertComponentInMdxToEndpointLocations = (data) => {
   locationsAreIndexed = true;
 };
 
-// const convertTypeLocationOverrides = (typeLocationData) => {
-//   if (!overridesAreIndexed) {
-//     typeLocationData.forEach((api) => {
-//       api.locations.forEach((location) => {
-//         typeLocationOverrides[`${api.api}__${location.type}`] = {
-//           url: location.href,
-//         };
-//       });
-//     });
-//   }
-//   overridesAreIndexed = true;
-// };
+const convertEndpointLocationOverrides = (endpointLocationData) => {
+  if (!overridesAreIndexed) {
+    endpointLocationData.forEach((api) => {
+      api.locations.forEach((location) => {
+        endpointLocationOverrides[
+          `${api.api}__${location.resource}__${location.method}`
+        ] = {
+          url: location.href,
+        };
+      });
+    });
+  }
+  overridesAreIndexed = true;
+};
 
 export const useEndpointLocations = () => {
   const queryResult = useStaticQuery(
@@ -74,7 +76,7 @@ export const useEndpointLocations = () => {
     `
   );
   convertComponentInMdxToEndpointLocations(queryResult);
-  // convertTypeLocationOverrides(useTypeLocationOverrides());
+  convertEndpointLocationOverrides(useEndpointLocationOverrides());
   return { ...endpointLocations, ...endpointLocationOverrides };
 };
 

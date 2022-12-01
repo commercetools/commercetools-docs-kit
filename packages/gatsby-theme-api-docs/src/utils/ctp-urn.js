@@ -49,7 +49,7 @@ export const generateEndpointURN = ({
   path = '',
   method = '',
 }) => {
-  return `${prefix}:${encodeURNComponent(apiKey)}:endpoint${encodeURNComponent(
+  return `${prefix}:${encodeURNComponent(apiKey)}:endpoint:${encodeURNComponent(
     path
   )}:${encodeURNComponent(method.toUpperCase())}`;
 };
