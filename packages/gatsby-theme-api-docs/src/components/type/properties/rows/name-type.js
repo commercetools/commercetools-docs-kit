@@ -6,7 +6,7 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { BetaFlag } from '@commercetools-docs/gatsby-theme-docs';
 import { typography } from '../../../../design-system';
 import RegexProperty from '../../properties/regex-properties';
-import useTypeToRender from '../../../../hooks/use-type-to-render';
+import useTypesToRender from '../../../../hooks/use-type-to-render';
 import Required from '../../../required';
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
@@ -25,10 +25,11 @@ const BetaWrapper = styled.span`
 `;
 
 const NameType = (props) => {
-  const typeToRender = useTypeToRender({
+  const typesToRender = useTypesToRender({
     property: props.property,
     apiKey: props.apiKey,
   });
+  const typeToRender = typesToRender[0]; // safe as we expect a single item in the array
 
   const isRegex = (string) =>
     string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
