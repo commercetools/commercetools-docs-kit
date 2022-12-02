@@ -20,6 +20,10 @@ export const useApiResources = () => {
           items {
             type
           }
+          unionParams {
+            builtinType
+            type
+          }
         }
         responses {
           code
