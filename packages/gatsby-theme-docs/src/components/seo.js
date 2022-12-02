@@ -61,6 +61,12 @@ const SEO = (props) => {
       name: 'twitter:description',
       content: metaDescription,
     },
+    {
+      name: 'commercetools:title-for-onsite-search',
+      content: siteContextTitle
+        ? `${siteContextTitle} > ${siteData.siteMetadata.title}`
+        : siteData.siteMetadata.title,
+    },
     excludeFromSearchIndex && {
       name: 'robots',
       content: 'noindex',
@@ -70,7 +76,7 @@ const SEO = (props) => {
   return (
     <Helmet
       titleTemplate={`%s | ${siteData.siteMetadata.title} | ${
-        siteContextTitle || 'commercetools'
+        siteContextTitle ? `commercetools ${siteContextTitle}` : `commercetools`
       }`}
     >
       <meta charSet="utf-8" />
