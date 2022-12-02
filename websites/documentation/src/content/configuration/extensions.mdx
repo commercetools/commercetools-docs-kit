@@ -266,6 +266,24 @@ If you want to override the location to link to for certain API data types, crea
 - `type` -> Name of the type to override.
 - `href` -> Your custom link.
 
+#### Overriding the location of certain API endpoints
+
+If you want to override the location to link to for certain API endpoints, create a file called `endpoint-locations.yaml` under the `src/data` folder of the website. This can be useful to choose manual markdown based documentation for endpoints. Use the following format to override the endpoint locations:
+
+```yaml
+- api: test
+  locations:
+    - resource: /{projectKey}/resource
+      method: GET
+      href: https://docs.commercetools.com/api/projects/categories
+```
+
+- `api` -> Name of the api where the endpoints are located.
+- `locations` -> List of endpoint locations you want to override.
+- `resource` -> API endpoint resource
+- `method` -> API endpoint method name, for example GET, POST, HEAD.
+- `href` -> Your custom link.
+
 ### Using UI components in MDX
 
 Because the API documentation components load the complete API specification data, they are **not** automatically injected into the MDX provider but have to be imported explicitly.
