@@ -16,7 +16,7 @@ const PageContentInset = styled.div`
   max-width: ${(props) =>
     props.maxWidth || designSystem.dimensions.widths.pageContentWide};
   section {
-    overflow: auto;
+    overflow: clip;
   }
   section > * {
     max-width: ${(props) =>

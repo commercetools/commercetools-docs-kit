@@ -222,6 +222,7 @@ export const dimensions = {
     childSectionNavLink: '28px',
     pageSearchboxSpace: '58px',
     globalNotificationContent: '36px',
+    globalNotificationWithSmallSpacing: 'calc(36px + 8px)',
   },
   widths: {
     pageContent: pageWidth,
