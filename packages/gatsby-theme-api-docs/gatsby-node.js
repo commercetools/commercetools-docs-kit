@@ -29,5 +29,15 @@ exports.createSchemaCustomization = ({ actions }) => {
       type: String!
       href: String!
     }
+    type EndpointLocationsYaml implements Node @dontInfer {
+      id: ID!
+      api: String!
+      locations: [EndpointLocationYamlLocations!]!
+    }
+    type EndpointLocationYamlLocations {
+      resource: String!
+      method: String!
+      href: String!
+    }
   `);
 };
