@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { designSystem, IsoDateFormat } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useReleaseNotesFilterParams from '../hooks/use-release-notes-filter-params';
 import scrollToTop from '../utils/scroll-to-top';
 
@@ -33,13 +34,32 @@ const DateInputField = styled.input`
   }
 `;
 
+const ClearAll = styled.button`
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: ${designSystem.colors.light.link};
+  font-size: ${designSystem.typography.fontSizes.extraSmall};
+  text-decoration: none;
+  background-color: transparent;
+
+  :hover {
+    color: ${designSystem.colors.light.linkHover};
+  }
+`;
+
 const ReleaseNotesFilterDates = () => {
   const [, setFilterParams] = useReleaseNotesFilterParams();
   const maximumDate = IsoDateFormat.format(new Date());
 
   return (
     <SpacingsStack scale="s">
-      <FilterTitle>Filter by date</FilterTitle>
+      <SpacingsInline alignItems="center" justifyContent="space-between">
+        <FilterTitle>Filter by date</FilterTitle>
+        <ClearAll onClick={handleOnClearAll} aria-label="Clear all">
+          Clear all
+        </ClearAll>
+      </SpacingsInline>
 
       <SpacingsStack scale="xs">
         <DateLabel htmlFor="from-filter-date">From</DateLabel>
@@ -66,6 +86,15 @@ const ReleaseNotesFilterDates = () => {
       </SpacingsStack>
     </SpacingsStack>
   );
+
+  function handleOnClearAll() {
+    setFilterParams({
+      fromFilterDate: undefined,
+      toFilterDate: undefined,
+      filterTopics: [],
+    });
+    scrollToTop();
+  }
 
   function handleOnFromFilterDateChange(e) {
     const date = IsoDateFormat.format(new Date(e.target.value));
