@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { designSystem, IsoDateFormat } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -50,6 +50,8 @@ const ClearAll = styled.button`
 
 const ReleaseNotesFilterDates = () => {
   const [, setFilterParams] = useReleaseNotesFilterParams();
+  const [fromDate, setFromFilterDate] = useState();
+  const [toDate, setToFilterDate] = useState();
   const maximumDate = IsoDateFormat.format(new Date());
 
   return (
@@ -68,6 +70,7 @@ const ReleaseNotesFilterDates = () => {
             type="date"
             id="from-filter-date"
             max={maximumDate}
+            value={fromDate}
             onChange={handleOnFromFilterDateChange}
           />
         </div>
@@ -80,6 +83,7 @@ const ReleaseNotesFilterDates = () => {
             type="date"
             id="to-filter-date"
             max={maximumDate}
+            value={toDate}
             onChange={handleOnToFilterDateChange}
           />
         </div>
@@ -93,12 +97,15 @@ const ReleaseNotesFilterDates = () => {
       toFilterDate: undefined,
       filterTopics: [],
     });
+    setFromFilterDate(undefined);
+    setToFilterDate(undefined);
     scrollToTop();
   }
 
   function handleOnFromFilterDateChange(e) {
     const date = IsoDateFormat.format(new Date(e.target.value));
     if (date.length === 10) {
+      setFromFilterDate(date);
       setFilterParams({ fromFilterDate: e.target.value || undefined });
       scrollToTop();
     }
@@ -107,6 +114,7 @@ const ReleaseNotesFilterDates = () => {
   function handleOnToFilterDateChange(e) {
     const date = IsoDateFormat.format(new Date(e.target.value));
     if (date.length === 10) {
+      setToFilterDate(date);
       setFilterParams({ toFilterDate: e.target.value || undefined });
       scrollToTop();
     }
