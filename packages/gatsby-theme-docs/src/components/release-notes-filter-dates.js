@@ -34,7 +34,7 @@ const DateInputField = styled.input`
 `;
 
 const ReleaseNotesFilterDates = () => {
-  const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
+  const [, setFilterParams] = useReleaseNotesFilterParams();
   const maximumDate = IsoDateFormat.format(new Date());
 
   return (
@@ -48,8 +48,6 @@ const ReleaseNotesFilterDates = () => {
             type="date"
             id="from-filter-date"
             max={maximumDate}
-            value={filterParams.fromFilterDate || ''}
-            onClick={handleClick}
             onChange={handleOnFromFilterDateChange}
           />
         </div>
@@ -62,7 +60,6 @@ const ReleaseNotesFilterDates = () => {
             type="date"
             id="to-filter-date"
             max={maximumDate}
-            value={filterParams.toFilterDate || ''}
             onChange={handleOnToFilterDateChange}
           />
         </div>
@@ -70,20 +67,20 @@ const ReleaseNotesFilterDates = () => {
     </SpacingsStack>
   );
 
-  function handleClick(e) {
-    if ('showPicker' in HTMLInputElement.prototype) {
-      document.getElementById(e.target.id).showPicker();
+  function handleOnFromFilterDateChange(e) {
+    const date = IsoDateFormat.format(new Date(e.target.value));
+    if (date.length === 10) {
+      setFilterParams({ fromFilterDate: e.target.value || undefined });
+      scrollToTop();
     }
   }
 
-  function handleOnFromFilterDateChange(e) {
-    setFilterParams({ fromFilterDate: e.target.value || undefined });
-    scrollToTop();
-  }
-
   function handleOnToFilterDateChange(e) {
-    setFilterParams({ toFilterDate: e.target.value || undefined });
-    scrollToTop();
+    const date = IsoDateFormat.format(new Date(e.target.value));
+    if (date.length === 10) {
+      setFilterParams({ toFilterDate: e.target.value || undefined });
+      scrollToTop();
+    }
   }
 };
 
