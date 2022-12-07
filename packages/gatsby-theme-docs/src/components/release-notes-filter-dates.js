@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { designSystem, IsoDateFormat } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -49,10 +49,20 @@ const ClearAll = styled.button`
 `;
 
 const ReleaseNotesFilterDates = () => {
-  const [, setFilterParams] = useReleaseNotesFilterParams();
+  const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
   const [fromDate, setFromFilterDate] = useState();
   const [toDate, setToFilterDate] = useState();
   const maximumDate = IsoDateFormat.format(new Date());
+
+  useEffect(() => {
+    if (filterParams.fromFilterDate) {
+      setFromFilterDate(filterParams.fromFilterDate);
+    }
+    if (filterParams.toFilterDate) {
+      setToFilterDate(filterParams.toFilterDate);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SpacingsStack scale="s">
@@ -105,20 +115,34 @@ const ReleaseNotesFilterDates = () => {
   }
 
   function handleOnFromFilterDateChange(e) {
-    const date = IsoDateFormat.format(new Date(e.target.value));
+    let date;
+    try {
+      date = IsoDateFormat.format(new Date(e.target.value));
+    } catch (err) {
+      return;
+    }
     if (date.length === 10) {
       setFromFilterDate(date);
       setFilterParams({ fromFilterDate: e.target.value || undefined });
       scrollToTop();
+    } else if (date.length !== 10 && fromDate) {
+      setFromFilterDate(undefined);
     }
   }
 
   function handleOnToFilterDateChange(e) {
-    const date = IsoDateFormat.format(new Date(e.target.value));
+    let date;
+    try {
+      date = IsoDateFormat.format(new Date(e.target.value));
+    } catch (err) {
+      return;
+    }
     if (date.length === 10) {
       setToFilterDate(date);
       setFilterParams({ toFilterDate: e.target.value || undefined });
       scrollToTop();
+    } else if (date.length !== 10 && toDate) {
+      setToFilterDate(undefined);
     }
   }
 };
