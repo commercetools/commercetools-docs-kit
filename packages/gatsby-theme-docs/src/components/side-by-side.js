@@ -22,7 +22,7 @@ const SideBySideContainer = styled.div`
     max-width: 100% !important;
     grid-template-columns: 1fr ${designSystem.dimensions.widths
         .sideBySideSecondColumn};
-    > :nth-child(2) {
+    > [data-is-wide-sticky='true'] {
       position: sticky;
       top: ${(props) => props.stickyMargin || 0};
     }
@@ -45,8 +45,8 @@ const SideBySide = (props) => {
       <SideBySideContainer
         stickyMargin={
           siteData.siteMetadata.globalNotification.active
-            ? designSystem.dimensions.heights.globalNotificationWithSmallSpacing
-            : '0'
+            ? `calc(${designSystem.dimensions.heights.globalNotificationWithSmallSpacing} + 1rem)`
+            : '1rem'
         }
       >
         {props.children}

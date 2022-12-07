@@ -9,7 +9,7 @@ const Examples = ({ examples }) => {
   }
 
   return (
-    <SpacingsStack scale="m">
+    <SpacingsStack scale="m" data-is-wide-sticky="true">
       {examples.map((example) => {
         return (
           <MultiCodeBlock
