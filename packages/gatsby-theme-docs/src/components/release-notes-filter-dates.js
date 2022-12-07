@@ -99,6 +99,8 @@ const ReleaseNotesFilterDates = () => {
     });
     setFromFilterDate(undefined);
     setToFilterDate(undefined);
+    document.getElementById('from-filter-date').value = '';
+    document.getElementById('to-filter-date').value = '';
     scrollToTop();
   }
 
