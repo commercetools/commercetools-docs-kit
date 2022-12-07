@@ -45,7 +45,7 @@ const RequestResponseExamples = (props) => {
   }
 
   return (
-    <SpacingsStack scale="s">
+    <SpacingsStack scale="s" data-is-wide-sticky="true">
       {props.requestCodeExamples && (
         <MultiCodeBlock title={`Request Example:`}>
           {props.requestCodeExamples.map((example) => (
