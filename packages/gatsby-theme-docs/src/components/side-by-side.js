@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { usePageData } from '../hooks/use-page-data';
+import { useSiteData } from '../hooks/use-site-data';
 
 /**
  * Allows the first and second child of this container to float side by side in large desktop sizes.
@@ -21,6 +22,10 @@ const SideBySideContainer = styled.div`
     max-width: 100% !important;
     grid-template-columns: 1fr ${designSystem.dimensions.widths
         .sideBySideSecondColumn};
+    > [data-is-wide-sticky='true'] {
+      position: sticky;
+      top: ${(props) => props.stickyMargin || 0};
+    }
     > :only-child {
       /* Robustness for data driven situations like generated API docs:
       If there aren't two children of a side by side it does not force it into two columns
@@ -33,9 +38,20 @@ const SideBySideContainer = styled.div`
 
 const SideBySide = (props) => {
   const pageData = usePageData();
+  const siteData = useSiteData();
 
   if (pageData.allowWideContentLayout)
-    return <SideBySideContainer>{props.children}</SideBySideContainer>;
+    return (
+      <SideBySideContainer
+        stickyMargin={
+          siteData.siteMetadata.globalNotification.active
+            ? `calc(${designSystem.dimensions.heights.globalNotificationWithSmallSpacing} + 1rem)`
+            : '1rem'
+        }
+      >
+        {props.children}
+      </SideBySideContainer>
+    );
   return <SpacingsStack scale="l">{props.children}</SpacingsStack>;
 };
 SideBySide.propTypes = {
