@@ -111,7 +111,6 @@ const ReleaseNotesFilterDates = () => {
     });
     setFromFilterDate('');
     setToFilterDate('');
-    setFilterParams({ fromFilterDate: undefined, toFilterDate: undefined });
   }
 
   function handleOnFromFilterDateChange(e) {
