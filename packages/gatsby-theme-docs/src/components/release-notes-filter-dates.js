@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { designSystem, IsoDateFormat } from '@commercetools-docs/ui-kit';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import useReleaseNotesFilterParams from '../hooks/use-release-notes-filter-params';
@@ -48,11 +48,19 @@ const ClearAll = styled.button`
   }
 `;
 
+/**
+ * Return the date in yyyy-mm-dd format
+ */
+const isoYMD = (inDate) => {
+  const date = inDate || new Date();
+  return date.toISOString().substring(0, 10);
+};
+
 const ReleaseNotesFilterDates = () => {
   const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
-  const [fromDate, setFromFilterDate] = useState();
-  const [toDate, setToFilterDate] = useState();
-  const maximumDate = IsoDateFormat.format(new Date());
+  const [fromDate, setFromFilterDate] = useState('');
+  const [toDate, setToFilterDate] = useState('');
+  const maximumDate = isoYMD();
 
   useEffect(() => {
     if (filterParams.fromFilterDate) {
@@ -116,29 +124,25 @@ const ReleaseNotesFilterDates = () => {
   function handleOnFromFilterDateChange(e) {
     let date;
     try {
-      date = IsoDateFormat.format(new Date(e.target.value));
+      date = isoYMD(new Date(e.target.value));
     } catch (err) {
-      return;
+      if (fromDate) {
+        setFromFilterDate('');
+      }
     }
-    if (date.length === 10) {
-      setFromFilterDate(date);
-    } else if (date.length !== 10 && fromDate) {
-      setFromFilterDate(undefined);
-    }
+    setFromFilterDate(date);
   }
 
   function handleOnToFilterDateChange(e) {
     let date;
     try {
-      date = IsoDateFormat.format(new Date(e.target.value));
+      date = isoYMD(new Date(e.target.value));
     } catch (err) {
-      return;
+      if (toDate) {
+        setToFilterDate('');
+      }
     }
-    if (date.length === 10) {
-      setToFilterDate(date);
-    } else if (date.length !== 10 && fromDate) {
-      setToFilterDate(undefined);
-    }
+    setToFilterDate(date);
   }
 
   function handleOnBlur(event, field) {
