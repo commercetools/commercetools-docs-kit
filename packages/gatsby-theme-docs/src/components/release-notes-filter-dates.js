@@ -66,12 +66,12 @@ const ReleaseNotesFilterDates = () => {
 
   return (
     <SpacingsStack scale="s">
-      <SpacingsInline alignItems="center" justifyContent="space-between">
-        <FilterTitle>Filter by date</FilterTitle>
+      <SpacingsInline alignItems="center">
         <ClearAll onClick={handleOnClearAll} aria-label="Clear all">
           Clear all
         </ClearAll>
       </SpacingsInline>
+      <FilterTitle>Filter by date</FilterTitle>
 
       <SpacingsStack scale="xs">
         <DateLabel htmlFor="from-filter-date">From</DateLabel>
