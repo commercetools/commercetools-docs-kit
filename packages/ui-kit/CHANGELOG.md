@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 19.9.0
+
+### Minor Changes
+
+- [#1453](https://github.com/commercetools/commercetools-docs-kit/pull/1453) [`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add sticky behaviour to code content in the right column (when in wide screen mode) for both endpoints and types
+
 ## 19.7.0
 
 ### Patch Changes
