@@ -2085,7 +2085,6 @@ __metadata:
     "@commercetools-docs/ui-kit": 19.7.0
     "@commercetools-uikit/card": ^15.3.0
     "@commercetools-uikit/checkbox-input": ^15.3.0
-    "@commercetools-uikit/date-input": ^15.3.0
     "@commercetools-uikit/design-system": ^15.3.0
     "@commercetools-uikit/icon-button": ^15.3.0
     "@commercetools-uikit/icons": ^15.3.0
@@ -2415,47 +2414,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/calendar-time-utils@npm:15.3.0":
-  version: 15.3.0
-  resolution: "@commercetools-uikit/calendar-time-utils@npm:15.3.0"
-  dependencies:
-    "@babel/runtime": ^7.19.0
-    "@babel/runtime-corejs3": ^7.19.1
-    "@commercetools-uikit/utils": 15.3.0
-  peerDependencies:
-    moment-timezone: 0.5.x
-  checksum: 65694cec81464f30a41e6b8130d0bb1f469d246a436105cd074366d3b41eef27a11935dc7f6ff3c4434095f602348bfb422e9adad03514b03e5e9653170bdd07
-  languageName: node
-  linkType: hard
-
-"@commercetools-uikit/calendar-utils@npm:15.3.0":
-  version: 15.3.0
-  resolution: "@commercetools-uikit/calendar-utils@npm:15.3.0"
-  dependencies:
-    "@babel/runtime": ^7.19.0
-    "@babel/runtime-corejs3": ^7.19.1
-    "@commercetools-uikit/accessible-button": 15.3.0
-    "@commercetools-uikit/design-system": 15.3.0
-    "@commercetools-uikit/hooks": 15.3.0
-    "@commercetools-uikit/icons": 15.3.0
-    "@commercetools-uikit/input-utils": 15.3.0
-    "@commercetools-uikit/secondary-icon-button": 15.3.0
-    "@commercetools-uikit/spacings-inline": 15.3.0
-    "@commercetools-uikit/text": 15.3.0
-    "@commercetools-uikit/tooltip": 15.3.0
-    "@commercetools-uikit/utils": 15.3.0
-    "@emotion/react": ^11.4.0
-    "@emotion/styled": ^11.3.0
-    prop-types: 15.8.1
-    react-select: 5.4.0
-  peerDependencies:
-    moment: 2.x
-    react: 17.x
-    react-intl: 5.x
-  checksum: 5b19e70f59f2369b8eda43a128863d0f25d86b414c96347ee4e4740b1be78810c350a4a8d69252ecd00319ec44e8c372aeab0009ee6c1c9669880e4c0e4bdfff
-  languageName: node
-  linkType: hard
-
 "@commercetools-uikit/card@npm:^15.3.0":
   version: 15.3.0
   resolution: "@commercetools-uikit/card@npm:15.3.0"
@@ -2510,39 +2468,6 @@ __metadata:
   peerDependencies:
     react: 17.x
   checksum: fe086a951e49c8eda8e64fe1814f0e3a1e08a6ce24315d732c8db3ac29859927d4c6ddc73e2a10b8147ac7c9a21df8b9bdde87eb5657b74326303b4af2fc5de4
-  languageName: node
-  linkType: hard
-
-"@commercetools-uikit/date-input@npm:^15.3.0":
-  version: 15.3.0
-  resolution: "@commercetools-uikit/date-input@npm:15.3.0"
-  dependencies:
-    "@babel/runtime": ^7.19.0
-    "@babel/runtime-corejs3": ^7.19.1
-    "@commercetools-uikit/accessible-button": 15.3.0
-    "@commercetools-uikit/calendar-time-utils": 15.3.0
-    "@commercetools-uikit/calendar-utils": 15.3.0
-    "@commercetools-uikit/constraints": 15.3.0
-    "@commercetools-uikit/design-system": 15.3.0
-    "@commercetools-uikit/hooks": 15.3.0
-    "@commercetools-uikit/icons": 15.3.0
-    "@commercetools-uikit/secondary-icon-button": 15.3.0
-    "@commercetools-uikit/select-utils": 15.3.0
-    "@commercetools-uikit/spacings-inline": 15.3.0
-    "@commercetools-uikit/text": 15.3.0
-    "@commercetools-uikit/tooltip": 15.3.0
-    "@commercetools-uikit/utils": 15.3.0
-    "@emotion/react": ^11.4.0
-    "@emotion/styled": ^11.3.0
-    downshift: 6.1.11
-    prop-types: 15.8.1
-    react-is: 17.0.2
-    warning: 4.0.3
-  peerDependencies:
-    moment: 2.x
-    react: 17.x
-    react-intl: 5.x
-  checksum: ccbe11045d9584bb38d1aa62af4b258a0c9f5b7e23d703aa1f0b9b9c45e53a88551c2c927e1f26802c528358567046692bf1333b30fb403c1d0231391e3e2b77
   languageName: node
   linkType: hard
 
@@ -2763,7 +2688,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/secondary-icon-button@npm:15.3.0, @commercetools-uikit/secondary-icon-button@npm:^15.3.0":
+"@commercetools-uikit/secondary-icon-button@npm:^15.3.0":
   version: 15.3.0
   resolution: "@commercetools-uikit/secondary-icon-button@npm:15.3.0"
   dependencies:
@@ -2923,7 +2848,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/tooltip@npm:15.3.0, @commercetools-uikit/tooltip@npm:^15.3.0":
+"@commercetools-uikit/tooltip@npm:^15.3.0":
   version: 15.3.0
   resolution: "@commercetools-uikit/tooltip@npm:15.3.0"
   dependencies:
@@ -12240,21 +12165,6 @@ __metadata:
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
   checksum: 38e902c80b0666ab59e9310a3d24ed237029a7ce34d976796349765ac96b8d769f6df19090f1f471b77a25ca391971efde8a1ea63bb83111bd8bec8e5cc9b2cd
-  languageName: node
-  linkType: hard
-
-"downshift@npm:6.1.11":
-  version: 6.1.11
-  resolution: "downshift@npm:6.1.11"
-  dependencies:
-    "@babel/runtime": ^7.14.8
-    compute-scroll-into-view: ^1.0.17
-    prop-types: ^15.7.2
-    react-is: ^17.0.2
-    tslib: ^2.3.0
-  peerDependencies:
-    react: ">=16.12.0"
-  checksum: 96d58ddcaf19cf41bb11e8d6f8e78db9eca1eca6e4dd2c6a43204283d4f442f37f445769443869698ad4d45db3926987ff39a95dbe785283f236088f53c08592
   languageName: node
   linkType: hard
 

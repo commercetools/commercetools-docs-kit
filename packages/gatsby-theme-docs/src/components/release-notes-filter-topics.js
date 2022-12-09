@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import useReleaseNotesFilterParams from '../hooks/use-release-notes-filter-params';
@@ -13,19 +12,6 @@ const Container = styled.div`
   border-top: 1px solid ${designSystem.colors.light.borderInput};
   padding: ${designSystem.dimensions.spacings.m} 0;
 `;
-const ClearAll = styled.button`
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  color: ${designSystem.colors.light.link};
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  text-decoration: none;
-  background-color: transparent;
-
-  :hover {
-    color: ${designSystem.colors.light.linkHover};
-  }
-`;
 
 const ReleaseNotesFilterTopics = () => {
   const [filterParams, setFilterParams] = useReleaseNotesFilterParams();
@@ -36,12 +22,7 @@ const ReleaseNotesFilterTopics = () => {
   return (
     <Container>
       <SpacingsStack>
-        <SpacingsInline alignItems="center" justifyContent="space-between">
-          <FilterTitle>Filter by topics</FilterTitle>
-          <ClearAll onClick={handleOnClearAll} aria-label="Clear all">
-            Clear all
-          </ClearAll>
-        </SpacingsInline>
+        <FilterTitle>Filter by topics</FilterTitle>
         <SpacingsStack scale="s">
           {allTopics.map((topic) => (
             <div key={topic.name}>
@@ -58,11 +39,6 @@ const ReleaseNotesFilterTopics = () => {
       </SpacingsStack>
     </Container>
   );
-
-  function handleOnClearAll() {
-    setFilterParams({ filterTopics: [] });
-    scrollToTop();
-  }
 
   function handleOnTopicChange(e) {
     const isChecked = e.target.checked;
