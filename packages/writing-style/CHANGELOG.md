@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.3.2
+
+### Patch Changes
+
+- [#1405](https://github.com/commercetools/commercetools-docs-kit/pull/1405) [`bac80b75`](https://github.com/commercetools/commercetools-docs-kit/commit/bac80b7592efc144aed9ab14a7482151d9a29c4f) Thanks [@emmenko](https://github.com/emmenko)! - Use `TokenIgnores` instead `BlockIgnores` to exclude JSX elements in MDX.
+
 ## 3.3.1
 
 ### Patch Changes

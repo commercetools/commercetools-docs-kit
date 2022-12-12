@@ -1,5 +1,13 @@
 # @commercetools-api-specs/test
 
+## 0.2.0
+
+### Minor Changes
+
+- [#1448](https://github.com/commercetools/commercetools-docs-kit/pull/1448) [`8266d506`](https://github.com/commercetools/commercetools-docs-kit/commit/8266d5064a27b8c29460e28187ac8a224d21ad5b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Display nicely multiple types (union) in API parameters
+
+- [#1445](https://github.com/commercetools/commercetools-docs-kit/pull/1445) [`ae9d441a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae9d441a1acf5289724281a16680795d1ea1167b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for endpoint URN resolution in links. As per type URN, an override mechanism is provided and documented
+
 ## 0.1.0
 
 ### Minor Changes
