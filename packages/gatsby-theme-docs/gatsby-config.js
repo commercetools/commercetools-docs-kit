@@ -131,18 +131,19 @@ module.exports = (themeOptions = {}) => {
             '.mdx',
             // ".md"
           ],
-          // implement commonmark for stricter compatibility, e.g. backslash transformed to newlines
-          commonmark: true,
-          // List of remark plugins, that transform the markdown AST.
-          remarkPlugins: [
-            require('remark-emoji'),
-            require('./src/plugins/remark-mdx-mermaid'),
-          ],
-          // List of rehype plugins, that transform the HTML AST.
-          rehypePlugins: [
-            require('rehype-slug'),
-            require('./src/plugins/rehype-mdx-section'),
-          ],
+          mdxOptions: {
+            // List of remark plugins, that transform the markdown AST.
+            remarkPlugins: [
+              require('remark-emoji'),
+              require('./src/plugins/remark-mdx-mermaid'),
+            ],
+            // List of rehype plugins, that transform the HTML AST.
+            rehypePlugins: [
+              require('rehype-slug'),
+              require('./src/plugins/rehype-mdx-section'),
+            ],
+            format: 'mdx',
+          },
           gatsbyRemarkPlugins: [
             // Convert absolute image file paths to relative. Required for remark-images to work.
             // https://www.gatsbyjs.org/packages/gatsby-remark-relative-images/?=gatsby-remark-relative-images
@@ -177,10 +178,13 @@ module.exports = (themeOptions = {}) => {
                 destinationDir: 'files',
               },
             },
-            // 'gatsby-remark-rewrite-relative-links',
+            'gatsby-remark-images',
+            'gatsby-remark-copy-linked-files',
           ],
+          // implement commonmark for stricter compatibility, e.g. backslash transformed to newlines
+          // commonmark: true, TODO: migration
           // workaround https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-510153237
-          plugins: ['gatsby-remark-images', 'gatsby-remark-copy-linked-files'],
+          // plugins: ['gatsby-remark-images', 'gatsby-remark-copy-linked-files'], TODO: migration
         },
       },
 
