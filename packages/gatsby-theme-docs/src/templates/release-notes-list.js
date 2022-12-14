@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown, markdownFragmentToReact } from '@commercetools-docs/ui-kit';
@@ -33,9 +32,7 @@ const ReleaseNotesListTemplate = (props) => {
               }
             />
             <MDXProvider components={markdownComponents}>
-              <div>
-                <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-              </div>
+              <div>{props.chidlren}</div>
             </MDXProvider>
             <div id="release-notes-list">
               <SpacingsStack>
@@ -87,6 +84,7 @@ ReleaseNotesListTemplate.propTypes = {
       ).isRequired,
     }),
   }).isRequired,
+  chidlren: PropTypes.any.isRequired,
 };
 
 export default ReleaseNotesListTemplate;

@@ -74,7 +74,10 @@ const resolverPassthrough =
       id: source.parent,
     });
     if (mdxNode) {
-      const field = type.getFields()[fieldName];
+      const field = type.getFields()[fieldName]; // TODO: migration
+      if (!field) {
+        return errorFallback;
+      }
       const result = await field.resolve(resolveNode(mdxNode), args, context, {
         fieldName,
       });
@@ -251,7 +254,7 @@ exports.onCreateNode = (
     parent.internal.mediaType === 'text/mdx' &&
     parent.sourceInstanceName === 'releaseNotes';
   if (isReleaseNotesPage) {
-    const excerptSplit = node.rawBody.split('<!--more-->');
+    const excerptSplit = node.body.split('<!--more-->');
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
@@ -276,6 +279,7 @@ exports.onCreateNode = (
         contentDigest: createContentDigest(releaseNotesFieldData),
         content: JSON.stringify(releaseNotesFieldData),
         description: 'Release Note Pages',
+        contentFilePath: node.internal.contentFilePath,
       },
     });
     actions.createParentChildLink({
@@ -319,6 +323,7 @@ exports.onCreateNode = (
       contentDigest: createContentDigest(contentPageFieldData),
       content: JSON.stringify(contentPageFieldData),
       description: 'Content Pages',
+      contentFilePath: node.internal.contentFilePath,
     },
   });
   actions.createParentChildLink({
@@ -330,7 +335,7 @@ exports.onCreateNode = (
 function generateReleaseNoteSlug(node) {
   const basePath = '/releases';
 
-  if (node.fileAbsolutePath.endsWith('index.mdx')) {
+  if (node.internal.contentFilePath.endsWith('index.mdx')) {
     return basePath;
   }
 
@@ -338,7 +343,9 @@ function generateReleaseNoteSlug(node) {
     return trimTrailingSlash(`${basePath}/${node.frontmatter.slug}`);
   }
 
-  const date = node.frontmatter.date ? node.frontmatter.date.split('T')[0] : '';
+  const date = node.frontmatter.date
+    ? node.frontmatter.date.toISOString().split('T')[0]
+    : '';
   const title = node.frontmatter.title ? node.frontmatter.title : '';
 
   const slug = slugify(`${date} ${title}`, { lower: true, strict: true });
@@ -362,6 +369,9 @@ async function createContentPages(
       allContentPage {
         nodes {
           slug
+          internal {
+            contentFilePath
+          }
         }
       }
       allReleaseNotePage(sort: { order: DESC, fields: date }) {
@@ -398,7 +408,7 @@ async function createContentPages(
       (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
       []
     );
-  pages.forEach(({ slug }) => {
+  pages.forEach(({ slug, contentFilePath: path }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
@@ -416,9 +426,10 @@ async function createContentPages(
     switch (slug) {
       case '/': {
         const colorPreset = colorPresets[pluginOptions.colorPreset];
+        const homepageTemplate = require.resolve('./src/templates/homepage.js');
         actions.createPage({
           ...pageData,
-          component: require.resolve('./src/templates/homepage.js'),
+          component: `${homepageTemplate}?__contentFilePath=${path}`,
           context: {
             ...pageData.context,
             heroBackgroundRelativePath: `${colorPreset.relativePath}/${colorPreset.value.heroBackgroundName}`,
@@ -428,16 +439,24 @@ async function createContentPages(
         break;
       }
       case '/releases':
+        const releaseNoteTemplate = require.resolve(
+          './src/templates/release-notes-list.js'
+        );
+
         actions.createPage({
           ...pageData,
-          component: require.resolve('./src/templates/release-notes-list.js'),
+          component: `${releaseNoteTemplate}?__contentFilePath=${path}`,
         });
         break;
 
       default:
+        const pageContentTemplate = require.resolve(
+          './src/templates/page-content.js'
+        );
+
         actions.createPage({
           ...pageData,
-          component: require.resolve('./src/templates/page-content.js'),
+          component: `${pageContentTemplate}?__contentFilePath=${path}`,
         });
         break;
     }
@@ -466,11 +485,14 @@ async function createReleaseNotePages(
       )}`
     );
   }
-  result.data.allReleaseNotePage.nodes.forEach(({ slug }) => {
+  result.data.allReleaseNotePage.nodes.forEach(({ slug, path: rnPath }) => {
+    const releaseNoteDetailTemplate = require.resolve(
+      './src/templates/release-notes-detail.js'
+    );
     actions.createPage({
       path: slug,
       // This component will wrap our MDX content
-      component: require.resolve('./src/templates/release-notes-detail.js'),
+      component: `${releaseNoteDetailTemplate}?__contentFilePath=${rnPath}`,
       // You can use the values in this context in our page layout component
       context: {
         slug,

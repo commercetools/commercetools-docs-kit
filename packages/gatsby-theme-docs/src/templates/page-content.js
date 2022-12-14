@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutContent from '../layouts/content';
@@ -40,9 +39,7 @@ const PageContentTemplate = (props) => (
                 }
               />
               {/* This wrapper div is important to ensure the vertical space */}
-              <div>
-                <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-              </div>
+              <div>{props.children}</div>
             </Markdown.TypographyPage>
           </MDXProvider>
         </LayoutContent>
@@ -73,6 +70,7 @@ PageContentTemplate.propTypes = {
       estimatedTimeToRead: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
+  children: PropTypes.any.isRequired,
 };
 export default PageContentTemplate;
 
