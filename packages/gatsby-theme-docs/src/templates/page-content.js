@@ -14,39 +14,42 @@ const ContentCards = (props) => (
   <markdownComponents.Cards fitContentColumn={true} {...props} />
 );
 
-const PageContentTemplate = (props) => (
-  <IntlProvider locale="en">
-    <ThemeProvider>
-      <PageDataContext.Provider value={props.data.contentPage}>
-        <LayoutContent
-          pageContext={props.pageContext}
-          pageData={props.data.contentPage}
-        >
-          <MDXProvider
-            components={{
-              ...markdownComponents,
-              Cards: ContentCards,
-              ChildSectionsNav,
-            }}
+const PageContentTemplate = (props, ...args) => {
+  console.log(props, args);
+  return (
+    <IntlProvider locale="en">
+      <ThemeProvider>
+        <PageDataContext.Provider value={props.data.contentPage}>
+          <LayoutContent
+            pageContext={props.pageContext}
+            pageData={props.data.contentPage}
           >
-            <Markdown.TypographyPage>
-              <SEO
-                title={
-                  props.pageContext.shortTitle || props.data.contentPage.title
-                }
-                excludeFromSearchIndex={
-                  props.data.contentPage.excludeFromSearchIndex
-                }
-              />
-              {/* This wrapper div is important to ensure the vertical space */}
-              <div>{props.children}</div>
-            </Markdown.TypographyPage>
-          </MDXProvider>
-        </LayoutContent>
-      </PageDataContext.Provider>
-    </ThemeProvider>
-  </IntlProvider>
-);
+            <MDXProvider
+              components={{
+                ...markdownComponents,
+                Cards: ContentCards,
+                ChildSectionsNav,
+              }}
+            >
+              <Markdown.TypographyPage>
+                <SEO
+                  title={
+                    props.pageContext.shortTitle || props.data.contentPage.title
+                  }
+                  excludeFromSearchIndex={
+                    props.data.contentPage.excludeFromSearchIndex
+                  }
+                />
+                {/* This wrapper div is important to ensure the vertical space */}
+                <div>{props.children}</div>
+              </Markdown.TypographyPage>
+            </MDXProvider>
+          </LayoutContent>
+        </PageDataContext.Provider>
+      </ThemeProvider>
+    </IntlProvider>
+  );
+};
 
 PageContentTemplate.displayName = 'PageContentTemplate';
 PageContentTemplate.propTypes = {

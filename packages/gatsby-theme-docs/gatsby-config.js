@@ -142,7 +142,7 @@ module.exports = (themeOptions = {}) => {
               require('rehype-slug'),
               require('./src/plugins/rehype-mdx-section'),
             ],
-            format: 'mdx',
+            development: true,
           },
           gatsbyRemarkPlugins: [
             // Convert absolute image file paths to relative. Required for remark-images to work.
