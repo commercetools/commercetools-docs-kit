@@ -83,6 +83,12 @@ const Ol = styled.ol`
   > * + * {
     margin-top: ${dimensions.spacings.s};
   }
+  > li > ol {
+    list-style-type: lower-alpha;
+  }
+  > li > ol > li > ol {
+    list-style-type: lower-roman;
+  }
 `;
 const Dl = styled.dl`
   > * + dt {
