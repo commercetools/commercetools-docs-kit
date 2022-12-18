@@ -42,9 +42,10 @@ const Responses = ({ apiKey, responses }) => {
                   ? renderTypeAsLink(
                       apiKey,
                       response.body.applicationjson.type,
-                      typeLocations
+                      typeLocations,
+                      response.description
                     )
-                  : 'No body is returned.'}
+                  : response.description || 'No body is returned.'}
               </LinkContainer>
             </p>
           );

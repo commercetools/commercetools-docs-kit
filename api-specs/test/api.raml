@@ -443,6 +443,38 @@ uses:
               example: !include examples/product-example.json
               type: any
 
+    /namespace-action:
+      uriParameters:
+        namespace:
+          displayName: Namespace
+          type: string
+          description: Namespace
+        action:
+          displayName: Action
+          type: string
+          description: Action
+      get:
+        description: Use the GET method to allow the frontend to fetch data asynchronously.
+        responses:
+          200:
+            description: We recommend to use standard HTTP response codes and `application/json` encoded content.
+      post:
+        description: Use the POST method to write data to a backend system.
+        responses:
+          200:
+            description: We recommend to use standard HTTP response codes and `application/json` encoded content.
+
+    /namespace-action-with-example:
+      get:
+        description: Use the GET method to allow the frontend to fetch data asynchronously. The example fetches a cart.
+        responses:
+          200:
+            description: We recommend to use standard HTTP response codes and `application/json` encoded content. The response will look like the response you have declared in your action. As an example we will fetch the cart.
+            body:
+              application/json:
+                type: object
+                example: !include examples/action-success.json
+
 
 #   /resourceWithHeaders:
 #    description: Tests use of specific headers.
