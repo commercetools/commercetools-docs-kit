@@ -33,6 +33,23 @@ const Container = styled.div`
 
 const TitleWithAnchor = Markdown.withCopyToClipboard(Title);
 
+function convertContentType(type) {
+  switch (type) {
+    case 'applicationjson':
+      return 'application/json';
+    case 'applicationxwwwformurlencoded':
+      return 'application/x-www-form-urlencoded';
+    case 'imagejpeg':
+      return 'image/jpeg';
+    case 'imagepng':
+      return 'image/png';
+    case 'imagegif':
+      return 'image/gif';
+    default:
+      return '';
+  }
+}
+
 const Method = ({
   apiKey,
   uris,
@@ -49,6 +66,26 @@ const Method = ({
   if (method.uriParameters) {
     allUriParameters = allUriParameters.concat(method.uriParameters);
   }
+
+  let contentType;
+  if (method.body) {
+    const findOutContentTypes = Object.keys(method.body).reduce(
+      (list, value) => {
+        return method.body[value] !== null ? [...list, value] : [...list];
+      },
+      []
+    );
+    findOutContentTypes.forEach((type) => {
+      if (!contentType) {
+        contentType = convertContentType(type);
+      } else {
+        contentType = `${contentType} ${convertContentType(type)}`;
+      }
+    });
+  }
+
+  const isImage = contentType ? contentType.includes('image') : false;
+
   const methodColor = computeMethodColor(methodType.toLowerCase());
 
   const id = generateEndpointURN({
@@ -108,18 +145,22 @@ const Method = ({
                     method.body.applicationjson?.type ||
                     method.body.applicationxwwwformurlencoded?.type
                   }
+                  isImage={isImage}
+                  contentType={contentType}
                 />
               )}
 
-              {method.responses && (
+              {!isImage && method.responses && (
                 <Responses apiKey={apiKey} responses={method.responses} />
               )}
             </SpacingsStack>
-            <RequestResponseExamples
-              apiKey={apiKey}
-              requestCodeExamples={method.codeExamples}
-              responses={method.responses}
-            />
+            {!isImage && (
+              <RequestResponseExamples
+                apiKey={apiKey}
+                requestCodeExamples={method.codeExamples}
+                responses={method.responses}
+              />
+            )}
           </SideBySide>
         </Container>
       </SpacingsStack>
