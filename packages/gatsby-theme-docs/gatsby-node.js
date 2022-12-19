@@ -426,9 +426,7 @@ async function createContentPages(
     switch (slug) {
       case '/': {
         const colorPreset = colorPresets[pluginOptions.colorPreset];
-        const homepageTemplate = path.resolve(
-          '../../packages/gatsby-theme-docs/src/templates/homepage.js'
-        ); // TODO: figure out how to load template
+        const homepageTemplate = require.resolve('./src/templates/homepage.js');
 
         actions.createPage({
           ...pageData,
@@ -443,9 +441,9 @@ async function createContentPages(
         break;
       }
       case '/releases':
-        const releaseNoteTemplate = path.resolve(
-          '../../packages/gatsby-theme-docs/src/templates/release-notes-list.js'
-        ); // TODO: figure out how to load template
+        const releaseNoteTemplate = require.resolve(
+          './src/templates/release-notes-list.js'
+        );
 
         actions.createPage({
           ...pageData,
@@ -454,9 +452,9 @@ async function createContentPages(
 
         break;
 
-      default: // TODO: figure out how to load template
-        const pageContentTemplate = path.resolve(
-          '../../packages/gatsby-theme-docs/src/templates/page-content.js'
+      default:
+        const pageContentTemplate = require.resolve(
+          './src/templates/page-content.js'
         );
 
         actions.createPage({
@@ -496,9 +494,9 @@ async function createReleaseNotePages(
   }
   result.data.allReleaseNotePage.nodes.forEach(
     ({ slug, internal: { contentFilePath: rnPath } }) => {
-      const releaseNoteDetailTemplate = path.resolve(
-        '../../packages/gatsby-theme-docs/src/templates/release-notes-detail.js'
-      ); // TODO: figure out how to load template
+      const releaseNoteDetailTemplate = require.resolve(
+        './src/templates/release-notes-detail.js'
+      );
       actions.createPage({
         path: slug,
         // This component will wrap our MDX content
