@@ -254,7 +254,7 @@ exports.onCreateNode = (
     parent.internal.mediaType === 'text/mdx' &&
     parent.sourceInstanceName === 'releaseNotes';
   if (isReleaseNotesPage) {
-    const excerptSplit = node.body.split('<!--more-->');
+    const excerptSplit = node.body.split('{/* more */}');
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,

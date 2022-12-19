@@ -15,7 +15,6 @@ const ContentCards = (props) => (
 );
 
 const PageContentTemplate = (props, ...args) => {
-  console.log(props, args);
   return (
     <IntlProvider locale="en">
       <ThemeProvider>
