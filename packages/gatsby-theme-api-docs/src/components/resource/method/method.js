@@ -79,7 +79,7 @@ const Method = ({
       if (!contentType) {
         contentType = convertContentType(type);
       } else {
-        contentType = `${contentType} ${convertContentType(type)}`;
+        contentType = `${contentType} or ${convertContentType(type)}`;
       }
     });
   }
