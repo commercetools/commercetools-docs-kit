@@ -144,6 +144,7 @@ module.exports = (themeOptions = {}) => {
             remarkPlugins: [
               require('remark-emoji'),
               require('./src/plugins/remark-mdx-mermaid'),
+              require('remark-gfm'),
             ],
             // List of rehype plugins, that transform the HTML AST.
             rehypePlugins: [

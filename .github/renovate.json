@@ -46,6 +46,10 @@
       "allowedVersions": "<3"
     },
     {
+      "matchPackageNames": ["remark-gfm"],
+      "allowedVersions": "<2"
+    },
+    {
       "matchPackageNames": ["remark-parse"],
       "allowedVersions": "<10"
     },
