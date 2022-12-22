@@ -21,7 +21,9 @@ const releaseNoteMarkdownComponents = {
 
 const ReleaseNotesDetailTemplate = (props) => (
   <IntlProvider locale="en">
-    <ThemeProvider>
+    <ThemeProvider
+      websitePrimaryColor={props.data.releaseNotePage.websitePrimaryColor}
+    >
       <LayoutReleaseNotesDetail pageData={props.data.releaseNotePage}>
         <MDXProvider components={releaseNoteMarkdownComponents}>
           <Markdown.TypographyPage>

@@ -17,7 +17,9 @@ const ContentCards = (props) => (
 
 const PageContentTemplate = (props) => (
   <IntlProvider locale="en">
-    <ThemeProvider>
+    <ThemeProvider
+      websitePrimaryColor={props.data.contentPage.websitePrimaryColor}
+    >
       <PageDataContext.Provider value={props.data.contentPage}>
         <LayoutContent
           pageContext={props.pageContext}

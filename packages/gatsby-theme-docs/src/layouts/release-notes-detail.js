@@ -30,7 +30,7 @@ const LayoutReleaseNotesDetail = (props) => {
     siteData.siteMetadata.excludeFromSearchIndex;
 
   return (
-    <LayoutApplication websitePrimaryColor={props.pageData.websitePrimaryColor}>
+    <LayoutApplication>
       <LayoutSidebar
         {...layoutState.sidebar}
         {...layoutState.searchDialog}

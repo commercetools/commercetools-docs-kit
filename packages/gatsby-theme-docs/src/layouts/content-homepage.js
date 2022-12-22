@@ -24,7 +24,6 @@ const LayoutContentHomepage = (props) => {
 
   return (
     <LayoutApplication
-      websitePrimaryColor={props.pageData.websitePrimaryColor}
       globalNotification={siteData.siteMetadata.globalNotification}
     >
       <LayoutSidebar
