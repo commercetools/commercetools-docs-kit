@@ -3,7 +3,7 @@ const colorPresets = require('../color-presets');
 const defaultOptions = {
   websiteKey: '',
   colorPreset: colorPresets.base.key,
-  gaTrackingId: undefined,
+  gaTrackingIds: undefined,
   createNodeSlug: undefined,
   additionalPrismLanguages: [],
   overrideDefaultConfigurationData: [],
