@@ -1,5 +1,15 @@
 # @commercetools-docs/ui-kit
 
+## 19.10.0
+
+### Patch Changes
+
+- [#1457](https://github.com/commercetools/commercetools-docs-kit/pull/1457) [`598a26f9`](https://github.com/commercetools/commercetools-docs-kit/commit/598a26f967ad6a0202661d5969c315009260fc59) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Gracefully degrates when rendering links in table headers in mobile view
+
+- [#1418](https://github.com/commercetools/commercetools-docs-kit/pull/1418) [`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4) Thanks [@emmenko](https://github.com/emmenko)! - Load CSS variables via global import instead of using UI Kit's `<ThemeProvider>` (does not support SSR).
+
+- [#1463](https://github.com/commercetools/commercetools-docs-kit/pull/1463) [`d052cb76`](https://github.com/commercetools/commercetools-docs-kit/commit/d052cb767f7b1d5b165b1c65fd5052fc62a2fb10) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Nested numbered list are displaying according to Google guidelines
+
 ## 19.9.0
 
 ### Minor Changes

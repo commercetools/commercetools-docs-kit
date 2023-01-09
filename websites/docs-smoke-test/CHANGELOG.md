@@ -1,5 +1,17 @@
 # @commercetools-website/docs-smoke-test
 
+## 5.2.1
+
+### Patch Changes
+
+- [#1457](https://github.com/commercetools/commercetools-docs-kit/pull/1457) [`598a26f9`](https://github.com/commercetools/commercetools-docs-kit/commit/598a26f967ad6a0202661d5969c315009260fc59) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Gracefully degrates when rendering links in table headers in mobile view
+
+- Updated dependencies [[`598a26f9`](https://github.com/commercetools/commercetools-docs-kit/commit/598a26f967ad6a0202661d5969c315009260fc59), [`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4), [`8ce75634`](https://github.com/commercetools/commercetools-docs-kit/commit/8ce756340bdd7e3288e36fcf9c979688e0bc272a), [`a17f6dd9`](https://github.com/commercetools/commercetools-docs-kit/commit/a17f6dd9681b8a0441becde648b6eba3ebd1b8ee), [`1e111dbc`](https://github.com/commercetools/commercetools-docs-kit/commit/1e111dbc3eedcd167d3397120d5a8bedfd3b4662), [`d052cb76`](https://github.com/commercetools/commercetools-docs-kit/commit/d052cb767f7b1d5b165b1c65fd5052fc62a2fb10)]:
+  - @commercetools-docs/ui-kit@19.10.0
+  - @commercetools-docs/gatsby-theme-docs@19.10.0
+  - @commercetools-docs/gatsby-theme-code-examples@19.10.0
+  - @commercetools-docs/gatsby-theme-constants@19.10.0
+
 ## 5.2.0
 
 ### Minor Changes
