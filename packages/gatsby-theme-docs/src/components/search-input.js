@@ -73,14 +73,22 @@ const SearchInput = React.forwardRef((props, ref) => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const handleFocus = (event) => {
-    if (props.isDisabled) return;
-    if (onFocus) onFocus(event);
+    if (props.isDisabled) {
+      return;
+    }
+    if (onFocus) {
+      onFocus(event);
+    }
     setIsActive(true);
   };
   const handleBlur = () => {
-    if (props.isDisabled) return;
+    if (props.isDisabled) {
+      return;
+    }
+    if (props.onClose) {
+      props.onClose();
+    }
     setIsActive(false);
-    props.onClose();
   };
   React.useEffect(() => {
     if (isLoading) {
@@ -89,8 +97,11 @@ const SearchInput = React.forwardRef((props, ref) => {
     const onKeyPress = (event) => {
       // Listen to "slash" key events to focus the search input
       if (event.key === '/') {
-        if (onFocus) onFocus(event);
-        else setIsActive(true);
+        if (onFocus) {
+          onFocus(event);
+        } else {
+          setIsActive(true);
+        }
       }
     };
     if (!props.isDisabled) {
