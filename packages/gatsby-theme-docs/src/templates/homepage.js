@@ -11,7 +11,9 @@ import markdownComponents from '../markdown-components';
 
 const HomepageTemplate = (props) => (
   <IntlProvider locale="en">
-    <ThemeProvider>
+    <ThemeProvider
+      websitePrimaryColor={props.data.contentPage.websitePrimaryColor}
+    >
       <PageDataContext.Provider value={props.data.contentPage}>
         <LayoutContentHomepage
           pageContext={props.pageContext}

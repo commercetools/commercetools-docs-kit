@@ -11,6 +11,7 @@ import '@fontsource/roboto/latin-700.css';
 import '@fontsource/roboto-mono/latin-400.css';
 import '@fontsource/roboto-mono/latin-500.css';
 import '@fontsource/roboto-mono/latin-700.css';
+import './globals.css';
 import React from 'react';
 import Prism from 'prism-react-renderer/prism';
 import { CacheProvider } from '@emotion/react';

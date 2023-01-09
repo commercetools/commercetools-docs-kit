@@ -24,6 +24,12 @@ const productionHostname = 'docs.commercetools.com';
 
 module.exports = (themeOptions = {}) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
+  // backwards compat to single value GA configuration
+  if (
+    pluginOptions.gaTrackingId &&
+    typeof pluginOptions.gaTrackingId === 'string'
+  )
+    pluginOptions.gaTrackingIds = [pluginOptions.gaTrackingId];
   validateThemeOptions(pluginOptions);
 
   return {
@@ -222,20 +228,28 @@ module.exports = (themeOptions = {}) => {
           include_favicon: false,
         },
       },
-      pluginOptions.gaTrackingId && {
-        resolve: 'gatsby-plugin-google-analytics',
+      pluginOptions.gaTrackingIds && {
+        resolve: `gatsby-plugin-google-gtag`,
         options: {
-          trackingId: pluginOptions.gaTrackingId,
-          head: false,
-          anonymize: true,
-          respectDNT: false,
-          exclude: [],
+          trackingIds: pluginOptions.gaTrackingIds,
+          gtagConfig: {
+            anonymize_ip: true,
+            cookie_expires: 0,
+          },
+          pluginConfig: {
+            head: false,
+            respectDNT: false,
+            exclude: [],
+            delayOnRouteUpdate: 0,
+          },
         },
       },
       pluginOptions.hubspotTrackingCode && {
         resolve: 'gatsby-plugin-hubspot',
         options: {
           trackingCode: pluginOptions.hubspotTrackingCode,
+          respectDNT: false,
+          productionOnly: true,
         },
       },
       {

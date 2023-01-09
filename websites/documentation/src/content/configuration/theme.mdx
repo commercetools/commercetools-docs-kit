@@ -11,7 +11,8 @@ The Docs-Kit theme also receives its plugin configuration through this standard 
 
 - `colorPreset` (_optional_): pick the "look and feel" of the website by choosing one of the available [Color Presets](./extensions#using-theme-color-presets). **Default: `base`**
 
-- `gaTrackingId` (_optional_): this is the Google Analytics tracking ID. For all sites hosted on the `docs.commercetools.com` domain the ID must be: `UA-38285631-3`.
+- `gaTrackingIds` (_optional_, Array): List of tracking IDs to be passed to `gtag.js`.
+  For all sites hosted on the `docs.commercetools.com` domain the IDs must be `["G-XGR7PSLVB2", "UA-38285631-3"]` to fill both UA and GA4 concurrently for the time being.
 
   > For test websites the gaTrackingId field should not be set.
 
