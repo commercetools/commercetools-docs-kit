@@ -1,5 +1,26 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.9.0
+
+### Minor Changes
+
+- [#1453](https://github.com/commercetools/commercetools-docs-kit/pull/1453) [`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add sticky behaviour to code content in the right column (when in wide screen mode) for both endpoints and types
+
+- [#1443](https://github.com/commercetools/commercetools-docs-kit/pull/1443) [`1c56b3b5`](https://github.com/commercetools/commercetools-docs-kit/commit/1c56b3b5f9d262f658081a65f466b72deb9165b2) Thanks [@timonrey](https://github.com/timonrey)! - Uptate for the search inside the documentation: Show the product name together with the website name on the first level of every search result.
+
+- [#1445](https://github.com/commercetools/commercetools-docs-kit/pull/1445) [`ae9d441a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae9d441a1acf5289724281a16680795d1ea1167b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for endpoint URN resolution in links. As per type URN, an override mechanism is provided and documented
+
+### Patch Changes
+
+- [#1439](https://github.com/commercetools/commercetools-docs-kit/pull/1439) [`a6f96deb`](https://github.com/commercetools/commercetools-docs-kit/commit/a6f96deb50997bb6e6c9adf36ab409ed18258dfb) Thanks [@timonrey](https://github.com/timonrey)! - Adjust the google search results and display the product name instead of 'commercetools'.
+
+- [#1420](https://github.com/commercetools/commercetools-docs-kit/pull/1420) [`677fc233`](https://github.com/commercetools/commercetools-docs-kit/commit/677fc23352b5c022ab8caf4f12eb3dfccedf3678) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix wrong link highlighted when navigating sections, improved navigation behaviour
+
+- [#1446](https://github.com/commercetools/commercetools-docs-kit/pull/1446) [`33894024`](https://github.com/commercetools/commercetools-docs-kit/commit/3389402406cc73959659fd461a4c16aabe8b68ee) Thanks [@timonrey](https://github.com/timonrey)! - Fix regression on the date filter for release notes. The release note date filter is now visible and functional on all viewports.
+
+- Updated dependencies [[`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3)]:
+  - @commercetools-docs/ui-kit@19.9.0
+
 ## 19.8.1
 
 ### Patch Changes

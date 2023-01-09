@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 19.9.0
+
+### Patch Changes
+
+- Updated dependencies [[`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3)]:
+  - @commercetools-docs/ui-kit@19.9.0
+
 ## 19.7.0
 
 ### Patch Changes

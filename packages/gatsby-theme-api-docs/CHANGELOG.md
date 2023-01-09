@@ -1,5 +1,21 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 19.9.0
+
+### Minor Changes
+
+- [#1453](https://github.com/commercetools/commercetools-docs-kit/pull/1453) [`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add sticky behaviour to code content in the right column (when in wide screen mode) for both endpoints and types
+
+- [#1448](https://github.com/commercetools/commercetools-docs-kit/pull/1448) [`8266d506`](https://github.com/commercetools/commercetools-docs-kit/commit/8266d5064a27b8c29460e28187ac8a224d21ad5b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Display nicely multiple types (union) in API parameters
+
+- [#1445](https://github.com/commercetools/commercetools-docs-kit/pull/1445) [`ae9d441a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae9d441a1acf5289724281a16680795d1ea1167b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for endpoint URN resolution in links. As per type URN, an override mechanism is provided and documented
+
+### Patch Changes
+
+- Updated dependencies [[`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3), [`8266d506`](https://github.com/commercetools/commercetools-docs-kit/commit/8266d5064a27b8c29460e28187ac8a224d21ad5b)]:
+  - @commercetools-docs/ui-kit@19.9.0
+  - @commercetools-docs/gatsby-transformer-raml@13.2.0
+
 ## 19.7.0
 
 ### Patch Changes

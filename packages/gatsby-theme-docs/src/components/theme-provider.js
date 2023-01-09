@@ -37,13 +37,14 @@ const ThemeProvider = (props) => {
     <ErrorBoundary>
       <SiteDataContext.Provider value={siteData}>
         <Reset />
-        <Globals />
+        <Globals websitePrimaryColor={props.websitePrimaryColor} />
         {props.children}
       </SiteDataContext.Provider>
     </ErrorBoundary>
   );
 };
 ThemeProvider.propTypes = {
+  websitePrimaryColor: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 

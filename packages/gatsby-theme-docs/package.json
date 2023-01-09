@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "19.8.1",
+  "version": "19.9.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -17,10 +17,9 @@
     "create-docs-release-note": "bin/create-release-note.js"
   },
   "dependencies": {
-    "@commercetools-docs/ui-kit": "19.7.0",
+    "@commercetools-docs/ui-kit": "19.9.0",
     "@commercetools-uikit/card": "^15.3.0",
     "@commercetools-uikit/checkbox-input": "^15.3.0",
-    "@commercetools-uikit/date-input": "^15.3.0",
     "@commercetools-uikit/design-system": "^15.3.0",
     "@commercetools-uikit/icon-button": "^15.3.0",
     "@commercetools-uikit/icons": "^15.3.0",
@@ -46,7 +45,7 @@
     "gatsby-core-utils": "3.24.0",
     "gatsby-plugin-emotion": "7.24.0",
     "gatsby-plugin-feed": "4.24.0",
-    "gatsby-plugin-google-analytics": "4.24.0",
+    "gatsby-plugin-google-gtag": "5.3.0",
     "gatsby-plugin-hubspot": "2.0.0",
     "gatsby-plugin-image": "2.24.0",
     "gatsby-plugin-manifest": "4.24.0",

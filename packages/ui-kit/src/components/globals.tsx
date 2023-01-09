@@ -2,10 +2,17 @@ import React from 'react';
 import { css, Global } from '@emotion/react';
 import { colors, dimensions, typography, tokens } from '../design-system';
 
-// eslint-disable-next-line react/display-name
-const Globals = () => (
+type TGlobalsProps = {
+  websitePrimaryColor: string;
+};
+
+const Globals = (props: TGlobalsProps) => (
   <Global
     styles={css`
+      :root {
+        --website-primary-color: ${props.websitePrimaryColor};
+      }
+
       html,
       body {
         padding: 0;
@@ -100,4 +107,5 @@ const Globals = () => (
     `}
   />
 );
+
 export default Globals;

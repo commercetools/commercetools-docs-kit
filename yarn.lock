@@ -2016,14 +2016,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-api-docs@19.7.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
+"@commercetools-docs/gatsby-theme-api-docs@19.9.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs"
   dependencies:
     "@commercetools-docs/gatsby-transformer-mdx-introspection": 15.0.5
-    "@commercetools-docs/gatsby-transformer-raml": 13.1.2
+    "@commercetools-docs/gatsby-transformer-raml": 13.2.0
     "@commercetools-docs/rmf-codegen": 13.13.0
-    "@commercetools-docs/ui-kit": 19.7.0
+    "@commercetools-docs/ui-kit": 19.9.0
     "@commercetools-uikit/design-system": ^15.3.0
     "@commercetools-uikit/spacings-inline": ^15.3.0
     "@commercetools-uikit/spacings-stack": ^15.3.0
@@ -2042,11 +2042,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-code-examples@19.7.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
+"@commercetools-docs/gatsby-theme-code-examples@19.9.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.7.0
+    "@commercetools-docs/ui-kit": 19.9.0
     gatsby: 4.24.4
     gatsby-source-filesystem: 4.24.0
     prop-types: 15.8.1
@@ -2060,11 +2060,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-constants@19.7.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
+"@commercetools-docs/gatsby-theme-constants@19.9.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.7.0
+    "@commercetools-docs/ui-kit": 19.9.0
     gatsby: 4.24.4
     gatsby-source-filesystem: 4.24.0
     gatsby-transformer-yaml: 4.24.0
@@ -2078,14 +2078,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@19.8.1, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@19.9.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
-    "@commercetools-docs/ui-kit": 19.7.0
+    "@commercetools-docs/ui-kit": 19.9.0
     "@commercetools-uikit/card": ^15.3.0
     "@commercetools-uikit/checkbox-input": ^15.3.0
-    "@commercetools-uikit/date-input": ^15.3.0
     "@commercetools-uikit/design-system": ^15.3.0
     "@commercetools-uikit/icon-button": ^15.3.0
     "@commercetools-uikit/icons": ^15.3.0
@@ -2113,7 +2112,7 @@ __metadata:
     gatsby-core-utils: 3.24.0
     gatsby-plugin-emotion: 7.24.0
     gatsby-plugin-feed: 4.24.0
-    gatsby-plugin-google-analytics: 4.24.0
+    gatsby-plugin-google-gtag: 5.3.0
     gatsby-plugin-hubspot: 2.0.0
     gatsby-plugin-image: 2.24.0
     gatsby-plugin-manifest: 4.24.0
@@ -2165,9 +2164,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-learning@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@commercetools-docs/gatsby-theme-learning@npm:1.5.0"
+"@commercetools-docs/gatsby-theme-learning@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@commercetools-docs/gatsby-theme-learning@npm:1.5.1"
   dependencies:
     "@auth0/auth0-react": 1.10.2
     "@commercetools-docs/gatsby-theme-sso-ui-kit": ^1.3.6
@@ -2185,7 +2184,7 @@ __metadata:
     "@emotion/styled": ^11.10.0
     "@mdx-js/react": ^1.6.0
     react-intersection-observer: 9.3.5
-  checksum: 315148685fa28355ff017121429e144beaf9c0045917785fad189f515c1e67df93cd55f8f76d33d8c098e68dd56497797585c7941e410f41fa55a469fcc32e8d
+  checksum: d7dd1ceb0280915eedfbc4d06659874642fd2991a92568a0c9dd81f6fb1b3d22564ae547f47b98bea0098d268d69efb1e2363945ba09c63f57bdbabcc7a952ec
   languageName: node
   linkType: hard
 
@@ -2234,7 +2233,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-transformer-raml@13.1.2, @commercetools-docs/gatsby-transformer-raml@workspace:packages/gatsby-transformer-raml":
+"@commercetools-docs/gatsby-transformer-raml@13.2.0, @commercetools-docs/gatsby-transformer-raml@workspace:packages/gatsby-transformer-raml":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-transformer-raml@workspace:packages/gatsby-transformer-raml"
   dependencies:
@@ -2258,7 +2257,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-docs/ui-kit@19.7.0, @commercetools-docs/ui-kit@^19.0.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
+"@commercetools-docs/ui-kit@19.9.0, @commercetools-docs/ui-kit@^19.0.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/ui-kit@workspace:packages/ui-kit"
   dependencies:
@@ -2415,47 +2414,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/calendar-time-utils@npm:15.3.0":
-  version: 15.3.0
-  resolution: "@commercetools-uikit/calendar-time-utils@npm:15.3.0"
-  dependencies:
-    "@babel/runtime": ^7.19.0
-    "@babel/runtime-corejs3": ^7.19.1
-    "@commercetools-uikit/utils": 15.3.0
-  peerDependencies:
-    moment-timezone: 0.5.x
-  checksum: 65694cec81464f30a41e6b8130d0bb1f469d246a436105cd074366d3b41eef27a11935dc7f6ff3c4434095f602348bfb422e9adad03514b03e5e9653170bdd07
-  languageName: node
-  linkType: hard
-
-"@commercetools-uikit/calendar-utils@npm:15.3.0":
-  version: 15.3.0
-  resolution: "@commercetools-uikit/calendar-utils@npm:15.3.0"
-  dependencies:
-    "@babel/runtime": ^7.19.0
-    "@babel/runtime-corejs3": ^7.19.1
-    "@commercetools-uikit/accessible-button": 15.3.0
-    "@commercetools-uikit/design-system": 15.3.0
-    "@commercetools-uikit/hooks": 15.3.0
-    "@commercetools-uikit/icons": 15.3.0
-    "@commercetools-uikit/input-utils": 15.3.0
-    "@commercetools-uikit/secondary-icon-button": 15.3.0
-    "@commercetools-uikit/spacings-inline": 15.3.0
-    "@commercetools-uikit/text": 15.3.0
-    "@commercetools-uikit/tooltip": 15.3.0
-    "@commercetools-uikit/utils": 15.3.0
-    "@emotion/react": ^11.4.0
-    "@emotion/styled": ^11.3.0
-    prop-types: 15.8.1
-    react-select: 5.4.0
-  peerDependencies:
-    moment: 2.x
-    react: 17.x
-    react-intl: 5.x
-  checksum: 5b19e70f59f2369b8eda43a128863d0f25d86b414c96347ee4e4740b1be78810c350a4a8d69252ecd00319ec44e8c372aeab0009ee6c1c9669880e4c0e4bdfff
-  languageName: node
-  linkType: hard
-
 "@commercetools-uikit/card@npm:^15.3.0":
   version: 15.3.0
   resolution: "@commercetools-uikit/card@npm:15.3.0"
@@ -2510,39 +2468,6 @@ __metadata:
   peerDependencies:
     react: 17.x
   checksum: fe086a951e49c8eda8e64fe1814f0e3a1e08a6ce24315d732c8db3ac29859927d4c6ddc73e2a10b8147ac7c9a21df8b9bdde87eb5657b74326303b4af2fc5de4
-  languageName: node
-  linkType: hard
-
-"@commercetools-uikit/date-input@npm:^15.3.0":
-  version: 15.3.0
-  resolution: "@commercetools-uikit/date-input@npm:15.3.0"
-  dependencies:
-    "@babel/runtime": ^7.19.0
-    "@babel/runtime-corejs3": ^7.19.1
-    "@commercetools-uikit/accessible-button": 15.3.0
-    "@commercetools-uikit/calendar-time-utils": 15.3.0
-    "@commercetools-uikit/calendar-utils": 15.3.0
-    "@commercetools-uikit/constraints": 15.3.0
-    "@commercetools-uikit/design-system": 15.3.0
-    "@commercetools-uikit/hooks": 15.3.0
-    "@commercetools-uikit/icons": 15.3.0
-    "@commercetools-uikit/secondary-icon-button": 15.3.0
-    "@commercetools-uikit/select-utils": 15.3.0
-    "@commercetools-uikit/spacings-inline": 15.3.0
-    "@commercetools-uikit/text": 15.3.0
-    "@commercetools-uikit/tooltip": 15.3.0
-    "@commercetools-uikit/utils": 15.3.0
-    "@emotion/react": ^11.4.0
-    "@emotion/styled": ^11.3.0
-    downshift: 6.1.11
-    prop-types: 15.8.1
-    react-is: 17.0.2
-    warning: 4.0.3
-  peerDependencies:
-    moment: 2.x
-    react: 17.x
-    react-intl: 5.x
-  checksum: ccbe11045d9584bb38d1aa62af4b258a0c9f5b7e23d703aa1f0b9b9c45e53a88551c2c927e1f26802c528358567046692bf1333b30fb403c1d0231391e3e2b77
   languageName: node
   linkType: hard
 
@@ -2763,7 +2688,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/secondary-icon-button@npm:15.3.0, @commercetools-uikit/secondary-icon-button@npm:^15.3.0":
+"@commercetools-uikit/secondary-icon-button@npm:^15.3.0":
   version: 15.3.0
   resolution: "@commercetools-uikit/secondary-icon-button@npm:15.3.0"
   dependencies:
@@ -2923,7 +2848,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-uikit/tooltip@npm:15.3.0, @commercetools-uikit/tooltip@npm:^15.3.0":
+"@commercetools-uikit/tooltip@npm:^15.3.0":
   version: 15.3.0
   resolution: "@commercetools-uikit/tooltip@npm:15.3.0"
   dependencies:
@@ -2962,8 +2887,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-api-docs": 19.7.0
-    "@commercetools-docs/gatsby-theme-docs": 19.8.1
+    "@commercetools-docs/gatsby-theme-api-docs": 19.9.0
+    "@commercetools-docs/gatsby-theme-docs": 19.9.0
     "@commercetools-docs/rmf-codegen": 13.13.0
     gatsby: 4.24.4
     gatsby-cli: 4.24.0
@@ -2977,12 +2902,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/docs-smoke-test@workspace:websites/docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 19.7.0
-    "@commercetools-docs/gatsby-theme-constants": 19.7.0
-    "@commercetools-docs/gatsby-theme-docs": 19.8.1
-    "@commercetools-docs/gatsby-theme-learning": 1.5.0
+    "@commercetools-docs/gatsby-theme-code-examples": 19.9.0
+    "@commercetools-docs/gatsby-theme-constants": 19.9.0
+    "@commercetools-docs/gatsby-theme-docs": 19.9.0
+    "@commercetools-docs/gatsby-theme-learning": 1.5.1
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 1.4.1
-    "@commercetools-docs/ui-kit": 19.7.0
+    "@commercetools-docs/ui-kit": 19.9.0
     "@commercetools-uikit/avatar": ^15.3.0
     "@commercetools-uikit/icons": ^15.3.0
     "@commercetools-uikit/radio-input": ^15.3.0
@@ -2998,8 +2923,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 19.7.0
-    "@commercetools-docs/gatsby-theme-docs": 19.8.1
+    "@commercetools-docs/gatsby-theme-code-examples": 19.9.0
+    "@commercetools-docs/gatsby-theme-docs": 19.9.0
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 1.4.1
     gatsby: 4.24.4
     gatsby-cli: 4.24.0
@@ -3012,7 +2937,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 19.8.1
+    "@commercetools-docs/gatsby-theme-docs": 19.9.0
     gatsby: 4.24.4
     gatsby-cli: 4.24.0
     react: 17.0.2
@@ -12243,21 +12168,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"downshift@npm:6.1.11":
-  version: 6.1.11
-  resolution: "downshift@npm:6.1.11"
-  dependencies:
-    "@babel/runtime": ^7.14.8
-    compute-scroll-into-view: ^1.0.17
-    prop-types: ^15.7.2
-    react-is: ^17.0.2
-    tslib: ^2.3.0
-  peerDependencies:
-    react: ">=16.12.0"
-  checksum: 96d58ddcaf19cf41bb11e8d6f8e78db9eca1eca6e4dd2c6a43204283d4f442f37f445769443869698ad4d45db3926987ff39a95dbe785283f236088f53c08592
-  languageName: node
-  linkType: hard
-
 "downshift@npm:6.1.9":
   version: 6.1.9
   resolution: "downshift@npm:6.1.9"
@@ -14592,18 +14502,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-google-analytics@npm:4.24.0":
-  version: 4.24.0
-  resolution: "gatsby-plugin-google-analytics@npm:4.24.0"
+"gatsby-plugin-google-gtag@npm:5.3.0":
+  version: 5.3.0
+  resolution: "gatsby-plugin-google-gtag@npm:5.3.0"
   dependencies:
     "@babel/runtime": ^7.15.4
-    minimatch: 3.0.4
-    web-vitals: ^1.1.2
+    minimatch: ^3.1.2
   peerDependencies:
-    gatsby: ^4.0.0-next
-    react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
-    react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
-  checksum: 390fe9d54a2241d208953472f3e58f6e6273b71872104c1fc757dd2a37fa74c52e06876d8f5de0e6fd150d8cfecbf1f21ffd4ed559bfe1b295587ae626e2741d
+    gatsby: ^5.0.0-next
+    react: ^18.0.0 || ^0.0.0
+    react-dom: ^18.0.0 || ^0.0.0
+  checksum: d8b01aa1f4c9c4ee4be29c7b76e5d530ff4c0646effd2701f98aed2a134ad3114987d723af5905d815ac2b4312ebcc300a62b2f89ce5fb54e6de70a4ed963041
   languageName: node
   linkType: hard
 
@@ -27173,13 +27082,6 @@ __metadata:
   version: 1.1.4
   resolution: "web-namespaces@npm:1.1.4"
   checksum: 5149842ccbfbc56fe4f8758957b3f8c8616a281874a5bb84aa1b305e4436a9bad853d21c629a7b8f174902449e1489c7a6c724fccf60965077c5636bd8aed42b
-  languageName: node
-  linkType: hard
-
-"web-vitals@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "web-vitals@npm:1.1.2"
-  checksum: 92071029089277166e11141b735831d9011e85737d32c1360034676db898ab0ca95f19041ee01904f2189ad6e711b9da6b17567e4831290a429a586c98bc573f
   languageName: node
   linkType: hard
 

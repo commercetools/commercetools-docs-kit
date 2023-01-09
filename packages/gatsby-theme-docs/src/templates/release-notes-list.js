@@ -20,7 +20,9 @@ const ReleaseNotesListTemplate = (props) => {
 
   return (
     <IntlProvider locale="en">
-      <ThemeProvider>
+      <ThemeProvider
+        websitePrimaryColor={props.data.contentPage.websitePrimaryColor}
+      >
         <LayoutReleaseNotesList
           pageContext={props.pageContext}
           pageData={props.data.contentPage}
