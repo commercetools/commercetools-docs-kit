@@ -34,7 +34,7 @@ const RequestRepresentation = (props) => {
         <Title>Request Body:</Title>
         <ContentType>{props.contentType}</ContentType>
       </BodyTitleContainer>
-      {props.isImage ? (
+      {!props.isStructuredDataType ? (
         <Title>The file to upload</Title>
       ) : requestRepresentationLocation ? (
         renderTypeAsLink(props.apiKey, props.apiType, typeLocations)
@@ -52,7 +52,7 @@ const RequestRepresentation = (props) => {
 RequestRepresentation.propTypes = {
   apiKey: PropTypes.string.isRequired,
   apiType: PropTypes.string,
-  isImage: PropTypes.bool.isRequired,
+  isStructuredDataType: PropTypes.bool.isRequired,
   contentType: PropTypes.string.isRequired,
 };
 

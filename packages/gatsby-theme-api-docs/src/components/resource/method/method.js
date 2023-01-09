@@ -84,7 +84,9 @@ const Method = ({
     });
   }
 
-  const isImage = contentType ? contentType.includes('image') : false;
+  const isStructuredDataType = contentType
+    ? contentType.includes('application')
+    : false;
 
   const methodColor = computeMethodColor(methodType.toLowerCase());
 
@@ -145,16 +147,16 @@ const Method = ({
                     method.body.applicationjson?.type ||
                     method.body.applicationxwwwformurlencoded?.type
                   }
-                  isImage={isImage}
+                  isStructuredDataType={isStructuredDataType}
                   contentType={contentType}
                 />
               )}
 
-              {!isImage && method.responses && (
+              {isStructuredDataType && method.responses && (
                 <Responses apiKey={apiKey} responses={method.responses} />
               )}
             </SpacingsStack>
-            {!isImage && (
+            {isStructuredDataType && (
               <RequestResponseExamples
                 apiKey={apiKey}
                 requestCodeExamples={method.codeExamples}
