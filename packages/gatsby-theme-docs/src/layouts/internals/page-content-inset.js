@@ -22,9 +22,6 @@ import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 const PageContentInset = styled.div`
   max-width: ${(props) =>
     props.maxWidth || designSystem.dimensions.widths.pageContentWide};
-  section {
-    overflow: clip;
-  }
   section > * {
     max-width: ${(props) =>
       props.maxWidth || designSystem.dimensions.widths.pageContent};
