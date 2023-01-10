@@ -1,5 +1,26 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.10.0
+
+### Minor Changes
+
+- [#1470](https://github.com/commercetools/commercetools-docs-kit/pull/1470) [`1e111dbc`](https://github.com/commercetools/commercetools-docs-kit/commit/1e111dbc3eedcd167d3397120d5a8bedfd3b4662) Thanks [@nkuehn](https://github.com/nkuehn)! - Allow multiple GA tracking IDs by using gtag.js
+
+  To migrate, rename the `gaTrackingId` theme configuration to `gaTrackingIds` and pass an array of strings.
+  The previous configuration is still supported for compatibility.
+  Find the new IDs for commercetools docs in the docs-kit documentation including the new GA4 id.
+
+### Patch Changes
+
+- [#1418](https://github.com/commercetools/commercetools-docs-kit/pull/1418) [`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4) Thanks [@emmenko](https://github.com/emmenko)! - Load CSS variables via global import instead of using UI Kit's `<ThemeProvider>` (does not support SSR).
+
+- [#1466](https://github.com/commercetools/commercetools-docs-kit/pull/1466) [`8ce75634`](https://github.com/commercetools/commercetools-docs-kit/commit/8ce756340bdd7e3288e36fcf9c979688e0bc272a) Thanks [@timonrey](https://github.com/timonrey)! - Fix issue with the clickable cards being cut off in certaion situations.
+
+- [#1452](https://github.com/commercetools/commercetools-docs-kit/pull/1452) [`a17f6dd9`](https://github.com/commercetools/commercetools-docs-kit/commit/a17f6dd9681b8a0441becde648b6eba3ebd1b8ee) Thanks [@emmenko](https://github.com/emmenko)! - Fix prop access
+
+- Updated dependencies [[`598a26f9`](https://github.com/commercetools/commercetools-docs-kit/commit/598a26f967ad6a0202661d5969c315009260fc59), [`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4), [`d052cb76`](https://github.com/commercetools/commercetools-docs-kit/commit/d052cb767f7b1d5b165b1c65fd5052fc62a2fb10)]:
+  - @commercetools-docs/ui-kit@19.10.0
+
 ## 19.9.0
 
 ### Minor Changes

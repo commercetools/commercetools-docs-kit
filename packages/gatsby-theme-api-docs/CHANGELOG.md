@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 19.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`598a26f9`](https://github.com/commercetools/commercetools-docs-kit/commit/598a26f967ad6a0202661d5969c315009260fc59), [`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4), [`d052cb76`](https://github.com/commercetools/commercetools-docs-kit/commit/d052cb767f7b1d5b165b1c65fd5052fc62a2fb10)]:
+  - @commercetools-docs/ui-kit@19.10.0
+
 ## 19.9.0
 
 ### Minor Changes
