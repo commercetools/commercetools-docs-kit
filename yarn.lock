@@ -1965,7 +1965,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs"
   dependencies:
-    "@commercetools-docs/gatsby-transformer-mdx-introspection": 15.0.5
     "@commercetools-docs/gatsby-transformer-raml": 13.2.0
     "@commercetools-docs/rmf-codegen": 13.13.0
     "@commercetools-docs/ui-kit": 19.9.0
@@ -2094,9 +2093,11 @@ __metadata:
     remark-emoji: 2.2.0
     remark-frontmatter: 3.0.0
     remark-gfm: 1.0.0
+    remark-mdx: 2.2.0
     remark-parse: 9.0.0
     remark-rehype: 8.1.0
     slugify: 1.6.5
+    unified: 9.2.2
     unist-util-visit: 2.0.3
     video.js: 7.20.3
   peerDependencies:
@@ -2167,12 +2168,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-docs/gatsby-transformer-mdx-introspection@15.0.5, @commercetools-docs/gatsby-transformer-mdx-introspection@workspace:packages/gatsby-transformer-mdx-introspection":
+"@commercetools-docs/gatsby-transformer-mdx-introspection@workspace:packages/gatsby-transformer-mdx-introspection":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-transformer-mdx-introspection@workspace:packages/gatsby-transformer-mdx-introspection"
   dependencies:
     "@babel/parser": ^7.19.4
     "@mdx-js/mdx": ^2.1.1
+    "@mdx-js/react": 2.2.1
     deepmerge: 4.2.2
     gray-matter: 4.0.3
   languageName: unknown
@@ -23843,6 +23845,16 @@ __metadata:
     mdast-util-gfm: ^0.1.0
     micromark-extension-gfm: ^0.3.0
   checksum: 877b0f6472a90a490b5d5a1393f46d22c4ab7451b1e83ebd7362e5be9c661b6ed03e76c28f76894f460bedf23345c589d3f412c273ce0d4d442c6a4d65b0eae4
+  languageName: node
+  linkType: hard
+
+"remark-mdx@npm:2.2.0":
+  version: 2.2.0
+  resolution: "remark-mdx@npm:2.2.0"
+  dependencies:
+    mdast-util-mdx: ^2.0.0
+    micromark-extension-mdxjs: ^1.0.0
+  checksum: 7637834d65f5348a83c8f8d034cdfc6e183a753fe1fb3b930989f4f30f96d48e4373b3ec85a53dbb3c20ef88674974d2cb4a075b08d7c7ffe1eb68b05dfba397
   languageName: node
   linkType: hard
 

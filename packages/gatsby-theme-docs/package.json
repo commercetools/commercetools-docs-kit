@@ -80,9 +80,11 @@
     "remark-emoji": "2.2.0",
     "remark-frontmatter": "3.0.0",
     "remark-gfm": "1.0.0",
+    "remark-mdx": "2.2.0",
     "remark-parse": "9.0.0",
     "remark-rehype": "8.1.0",
     "slugify": "1.6.5",
+    "unified": "9.2.2",
     "unist-util-visit": "2.0.3",
     "video.js": "7.20.3"
   },

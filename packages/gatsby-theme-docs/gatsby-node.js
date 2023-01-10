@@ -13,6 +13,7 @@ const processTableOfContentFields = require('./utils/process-table-of-content-fi
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 const colorPresets = require('./color-presets');
+const extractAPITagInfo = require('./utils/api-tag-info');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -232,7 +233,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   );
 };
 
-exports.onCreateNode = (
+exports.onCreateNode = async (
   { node, getNode, actions, createNodeId, createContentDigest },
   themeOptions
 ) => {
@@ -312,6 +313,11 @@ exports.onCreateNode = (
       ? Number(node.frontmatter.timeToRead)
       : 0,
   };
+
+  if (node?.internal?.contentFilePath?.includes('methods.mdx')) {
+    await extractAPITagInfo(['ApiType', 'ApiEndpoint'], node);
+  }
+
   actions.createNode({
     ...contentPageFieldData,
     // Required fields
