@@ -13,7 +13,7 @@ const processTableOfContentFields = require('./utils/process-table-of-content-fi
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 const colorPresets = require('./color-presets');
-const extractAPITagInfo = require('./utils/api-tag-info');
+const extractShortcodeOccurrence = require('./utils/api-tag-info');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -315,7 +315,7 @@ exports.onCreateNode = async (
   };
 
   if (node?.internal?.contentFilePath?.includes('methods.mdx')) {
-    await extractAPITagInfo(['ApiType', 'ApiEndpoint'], node);
+    await extractShortcodeOccurrence(['ApiType', 'ApiEndpoint'], node);
   }
 
   actions.createNode({

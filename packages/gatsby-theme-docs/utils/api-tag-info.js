@@ -1,25 +1,38 @@
-const unified = require('unified');
-const remarkParse = require('remark-parse');
+// loaded via require because we use the pre-ESM version at the moment.
+// to be changed once upgraded to a latest version
+const visit = require('unist-util-visit');
 
-async function extractAPITagInfo(tagList, mdxNode) {
-  if (!Array.isArray(tagList) || tagList.length === 0) {
+async function extractShortcodeOccurrence(shortcodeList, mdxNode) {
+  if (!Array.isArray(shortcodeList) || shortcodeList.length === 0) {
     return;
   }
   const { body: mdxContent } = mdxNode;
 
-  const { default: remarkMdx } = await import('remark-mdx');
-  // parse mdx body into mdx AST
-  const ast = unified().use(remarkParse).use(remarkMdx).parse(`
-import { ApiEndpoint } from '/shortcodes'
+  // using the processor interface from the full mdx package instead of working directly with remark-mdx
+  // to be sure that the various dependency and unified libraries fit.
+  const { createProcessor } = await import('@mdx-js/mdx');
+  const processor = createProcessor();
+  // https://github.com/unifiedjs/unified#processorparsefile
+  const ast = processor.parse(mdxContent);
 
-# heading 1
+  const shortcodes = []; // {name: shortCodeName, attributes: [{name: foo, value: bar}]}
 
-<ApiEndpoint apiKey="test" resource="/{projectKey}/resource/{id}" method="GET" title="Custom Title from MDX" />
+  const isShortcode = (node) => {
+    return (
+      node.type === 'mdxJsxFlowElement' && shortcodeList.includes(node.name)
+    );
+  };
 
-# heading 2
-  `);
-
-  console.log(JSON.stringify(ast, null, 2));
+  // https://unifiedjs.com/explore/package/unist-util-is/#test
+  visit(ast, isShortcode, (node) => {
+    shortcodes.push({
+      name: node.name,
+      attributes: node.attributes.map((attr) => ({
+        name: attr.name,
+        value: attr.value,
+      })),
+    });
+  });
 }
 
-module.exports = extractAPITagInfo;
+module.exports = extractShortcodeOccurrence;

@@ -111,13 +111,13 @@ module.exports = (themeOptions = {}) => {
         },
       },
       // Topics content pages (.mdx)
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'topics',
-          path: path.resolve(`./src/topics`),
-        },
-      },
+      // {
+      //   resolve: 'gatsby-source-filesystem',
+      //   options: {
+      //     name: 'topics',
+      //     path: path.resolve(`./src/topics`),
+      //   },
+      // },
       // Release notes
       {
         resolve: 'gatsby-source-filesystem',
