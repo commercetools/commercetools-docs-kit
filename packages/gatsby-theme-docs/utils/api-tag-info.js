@@ -29,10 +29,17 @@ async function extractShortcodeOccurrence(shortcodeList, mdxNode) {
       name: node.name,
       attributes: node.attributes.map((attr) => ({
         name: attr.name,
-        value: attr.value,
+        value: attr.value || '',
       })),
     });
   });
+
+  // remove duplicates (if they exist)
+  return shortcodes.filter(
+    (item, index, array) =>
+      array.findIndex((v2) => JSON.stringify(v2) === JSON.stringify(item)) ===
+      index
+  );
 }
 
 module.exports = extractShortcodeOccurrence;

@@ -28,6 +28,7 @@ exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
     'src/images/releases',
     'src/content',
     'src/content/files',
+    'src/content/topics',
     'src/releases',
     'static',
     'static/downloads',
@@ -151,7 +152,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
   // Create a new type representing a Content Page
   // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
-  actions.createTypes(
+  const typeDefs = [
     schema.buildObjectType({
       name: 'ContentPage',
       fields: {
@@ -193,10 +194,29 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             errorFallback: 0,
           }),
         },
+        shortcodeOccurrence: '[ShortcodeOccurence!]',
       },
       interfaces: ['Node'],
-    })
-  );
+    }),
+
+    schema.buildObjectType({
+      name: 'ShortcodeOccurence',
+      fields: {
+        name: 'String!',
+        attributes: '[ShortcodeOccurenceAttribute!]',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'ShortcodeOccurenceAttribute',
+      fields: {
+        name: 'String!',
+        value: 'String!',
+      },
+    }),
+  ];
+
+  actions.createTypes(typeDefs);
 
   // Create a new type representing a Release Note Page.
   // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
@@ -312,11 +332,11 @@ exports.onCreateNode = async (
     timeToRead: node.frontmatter.timeToRead
       ? Number(node.frontmatter.timeToRead)
       : 0,
+    shortcodeOccurrence: await extractShortcodeOccurrence(
+      ['ApiType', 'ApiEndpoint'],
+      node
+    ),
   };
-
-  if (node?.internal?.contentFilePath?.includes('methods.mdx')) {
-    await extractShortcodeOccurrence(['ApiType', 'ApiEndpoint'], node);
-  }
 
   actions.createNode({
     ...contentPageFieldData,
