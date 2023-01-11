@@ -26,7 +26,7 @@ async function extractShortcodeOccurrence(shortcodeList, mdxNode) {
   // https://unifiedjs.com/explore/package/unist-util-is/#test
   visit(ast, isShortcode, (node) => {
     shortcodes.push({
-      name: node.name,
+      component: node.name,
       attributes: node.attributes.map((attr) => ({
         name: attr.name,
         value: attr.value || '',
@@ -37,8 +37,9 @@ async function extractShortcodeOccurrence(shortcodeList, mdxNode) {
   // remove duplicates (if they exist)
   return shortcodes.filter(
     (item, index, array) =>
-      array.findIndex((v2) => JSON.stringify(v2) === JSON.stringify(item)) ===
-      index
+      array.findIndex(
+        (item2) => JSON.stringify(item2) === JSON.stringify(item)
+      ) === index
   );
 }
 

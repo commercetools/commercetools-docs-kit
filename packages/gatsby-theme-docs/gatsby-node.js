@@ -13,7 +13,7 @@ const processTableOfContentFields = require('./utils/process-table-of-content-fi
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 const colorPresets = require('./color-presets');
-const extractShortcodeOccurrence = require('./utils/api-tag-info');
+const extractShortcodeOccurrence = require('./utils/api-shortcode');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -202,7 +202,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     schema.buildObjectType({
       name: 'ShortcodeOccurence',
       fields: {
-        name: 'String!',
+        component: 'String!',
         attributes: '[ShortcodeOccurenceAttribute!]',
       },
     }),
