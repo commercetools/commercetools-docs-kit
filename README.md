@@ -15,7 +15,7 @@ See the [documentation](https://commercetools-docs-kit.vercel.app) of this kit f
 
 ## Contributing
 
-Contributions are welcomed. Please have a read at the [contribution guidelines](CONTRIBUTING.md).
+Contributions are welcomed. Please have a read at the [contribution guidelines](CONTRIBUTING.mdx).
 
 ## Licenses
 
