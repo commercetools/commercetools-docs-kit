@@ -28,7 +28,7 @@ exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
     'src/images/releases',
     'src/content',
     'src/content/files',
-    'src/content/topics',
+    'src/topics',
     'src/releases',
     'static',
     'static/downloads',
