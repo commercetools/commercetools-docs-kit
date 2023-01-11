@@ -11,8 +11,11 @@ const visit = require('unist-util-visit');
 module.exports = () => (ast) => {
   visit(ast, { type: 'code', lang: 'mermaid' }, (node) => {
     return Object.assign(node, {
-      type: 'jsx',
-      value: '<Mermaid graph={`' + node.value + '`} />',
+      type: 'mdxJsxTextElement',
+      name: 'Mermaid',
+      attributes: [
+        { type: 'mdxJsxAttribute', name: 'graph', value: node.value },
+      ],
     });
   });
 };
