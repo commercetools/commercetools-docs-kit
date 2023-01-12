@@ -67,7 +67,7 @@ const Method = ({
     allUriParameters = allUriParameters.concat(method.uriParameters);
   }
 
-  let contentType;
+  const contentType = [];
   if (method.body) {
     const findOutContentTypes = Object.keys(method.body).reduce(
       (list, value) => {
@@ -76,17 +76,13 @@ const Method = ({
       []
     );
     findOutContentTypes.forEach((type) => {
-      if (!contentType) {
-        contentType = convertContentType(type);
-      } else {
-        contentType = `${contentType} or ${convertContentType(type)}`;
-      }
+      contentType.push(convertContentType(type));
     });
   }
 
-  const isStructuredDataType = contentType
-    ? contentType.includes('application')
-    : false;
+  const isStructuredDataType =
+    contentType.includes('application/json') ||
+    contentType.includes('application/x-www-form-urlencoded');
 
   const methodColor = computeMethodColor(methodType.toLowerCase());
 
