@@ -2112,7 +2112,7 @@ __metadata:
     gatsby-core-utils: 3.24.0
     gatsby-plugin-emotion: 7.24.0
     gatsby-plugin-feed: 4.24.0
-    gatsby-plugin-google-gtag: 5.3.0
+    gatsby-plugin-google-gtag: 4.25.0
     gatsby-plugin-hubspot: 2.0.0
     gatsby-plugin-image: 2.24.0
     gatsby-plugin-manifest: 4.24.0
@@ -14502,17 +14502,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-google-gtag@npm:5.3.0":
-  version: 5.3.0
-  resolution: "gatsby-plugin-google-gtag@npm:5.3.0"
+"gatsby-plugin-google-gtag@npm:4.25.0":
+  version: 4.25.0
+  resolution: "gatsby-plugin-google-gtag@npm:4.25.0"
   dependencies:
     "@babel/runtime": ^7.15.4
     minimatch: ^3.1.2
   peerDependencies:
-    gatsby: ^5.0.0-next
-    react: ^18.0.0 || ^0.0.0
-    react-dom: ^18.0.0 || ^0.0.0
-  checksum: d8b01aa1f4c9c4ee4be29c7b76e5d530ff4c0646effd2701f98aed2a134ad3114987d723af5905d815ac2b4312ebcc300a62b2f89ce5fb54e6de70a4ed963041
+    gatsby: ^4.0.0-next
+    react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
+    react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
+  checksum: 61801a1c576fbf6a4a8226658154330121366c182b34c5c7eb95fcaee7d49261ea77ff5d11ae0611614a3a5518f04bc29a6f7a93c1dcc0dd171041e0fe2b1c95
   languageName: node
   linkType: hard
 
