@@ -9,7 +9,7 @@ import {
   CardBannerOssSvgIcon as CardBannerOssIcon,
 } from '../../../icons';
 
-export default {
+const icons = {
   ...addonComponents,
   DummyIcon: ConnectedSquareIcon,
   CardBannerApiIcon,
@@ -19,3 +19,5 @@ export default {
   CardBannerOptional2Icon,
   CardBannerOssIcon,
 };
+
+export default icons;

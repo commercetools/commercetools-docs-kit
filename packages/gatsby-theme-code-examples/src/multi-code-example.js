@@ -9,15 +9,14 @@ import useCodeExamples from './use-code-examples';
 
 function MultiCodeExample(props) {
   const codeExamples = useCodeExamples();
-
   try {
     return (
       <MultiCodeBlock title={props.title} secondaryTheme={props.secondaryTheme}>
         {React.Children.map(props.children, (child, index) => {
-          if (!child.props || child.props.mdxType !== 'CodeExample') {
+          if (!child.props || child.type.name !== 'CodeExample') {
             throw new Error(
               `Children of <MultiLanguageCodeExamples> must be a <CodeExample> component and not "${
-                child.props ? child.props.mdxType : child
+                child.props ? child.type.name : child
               }"`
             );
           }
