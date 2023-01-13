@@ -149,7 +149,11 @@ const Method = ({
               )}
 
               {(!method.body || isStructuredDataType) && method.responses && (
-                <Responses apiKey={apiKey} responses={method.responses} />
+                <Responses
+                  apiKey={apiKey}
+                  responses={method.responses}
+                  contentType={contentType}
+                />
               )}
             </SpacingsStack>
             {(!method.body || isStructuredDataType) && (

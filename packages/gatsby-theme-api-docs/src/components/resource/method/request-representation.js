@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import SpacingsInlie from '@commercetools-uikit/spacings-inline';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import {
   useTypeLocations,
   locationForType,
@@ -23,7 +23,7 @@ const RequestRepresentation = (props) => {
     <SpacingsStack scale="xs">
       <Title>Request Body:</Title>
       {!props.isStructuredDataType ? (
-        <SpacingsInlie>
+        <SpacingsInline alignItems="center">
           {props.contentType.map((type, index) => {
             if (index === 0) {
               return <ContentType key={index}>{type}</ContentType>;
@@ -36,13 +36,13 @@ const RequestRepresentation = (props) => {
             );
           })}
           <span>The file to upload.</span>
-        </SpacingsInlie>
+        </SpacingsInline>
       ) : requestRepresentationLocation ? (
-        <SpacingsInlie>
+        <SpacingsInline alignItems="center">
           {renderTypeAsLink(props.apiKey, props.apiType, typeLocations)}
           <span>as</span>
           <ContentType>{props.contentType}</ContentType>
-        </SpacingsInlie>
+        </SpacingsInline>
       ) : (
         <SpacingsStack>
           <ContentType>{props.contentType}</ContentType>
