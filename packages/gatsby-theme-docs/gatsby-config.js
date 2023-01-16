@@ -5,6 +5,15 @@ const defaultOptions = require('./utils/default-options');
 
 const isProd = process.env.NODE_ENV === 'production';
 
+const wrapESMPlugin = (name) =>
+  function wrapESM(opts) {
+    return async (...args) => {
+      const mod = await import(name);
+      const plugin = mod.default(opts);
+      return plugin(...args);
+    };
+  };
+
 // Proxy env variables needed for `gatsby-browser.js` and `gatsby-ssr.js`.
 // https://www.gatsbyjs.org/docs/environment-variables/#client-side-javascript
 const proxyEnvironmentVariables = ['NODE_ENV', 'VERCEL_GITHUB_COMMIT_SHA'];
@@ -151,6 +160,7 @@ module.exports = (themeOptions = {}) => {
               require('remark-emoji'),
               require('./src/plugins/remark-mdx-mermaid'),
               require('remark-gfm'),
+              wrapESMPlugin('remark-mdx-code-meta'),
             ],
             // List of rehype plugins, that transform the HTML AST.
             rehypePlugins: [

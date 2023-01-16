@@ -2095,6 +2095,7 @@ __metadata:
     remark-frontmatter: 3.0.0
     remark-gfm: 1.0.0
     remark-mdx: 2.2.0
+    remark-mdx-code-meta: 2.0.0
     remark-parse: 9.0.0
     remark-rehype: 8.1.0
     slugify: 1.6.5
@@ -23845,6 +23846,21 @@ __metadata:
     mdast-util-gfm: ^0.1.0
     micromark-extension-gfm: ^0.3.0
   checksum: 877b0f6472a90a490b5d5a1393f46d22c4ab7451b1e83ebd7362e5be9c661b6ed03e76c28f76894f460bedf23345c589d3f412c273ce0d4d442c6a4d65b0eae4
+  languageName: node
+  linkType: hard
+
+"remark-mdx-code-meta@npm:2.0.0":
+  version: 2.0.0
+  resolution: "remark-mdx-code-meta@npm:2.0.0"
+  dependencies:
+    "@types/mdast": ^3.0.0
+    acorn: ^8.0.0
+    acorn-jsx: ^5.0.0
+    estree-util-is-identifier-name: ^2.0.0
+    hast-util-to-string: ^2.0.0
+    unified: ^10.0.0
+    unist-util-visit: ^4.0.0
+  checksum: 2f3dd0b7e312aa41fa8f80007c62d2a07353dd577811e60f391b157b7341e83b6ef40f2a6411ae1d9eb846a2f3288b8fc199fe7c8feb651cbce04610d92f0241
   languageName: node
   linkType: hard
 

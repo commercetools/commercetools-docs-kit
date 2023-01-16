@@ -20,19 +20,6 @@ function processToC(node, current, toString) {
     case `paragraph`: {
       current.title = toString(node);
       current.url = `#${slugger.slug(current.title)}`;
-      // visit(node, (item) => {
-      //   if (item.type === `link`) {
-      //     current.title = toString(node);
-      //     // console.log('title', typedCurrent.title);
-      //     current.url = slugger.slug(current.title);
-      //     //console.log('url', typedCurrent.url);
-      //   }
-
-      //   // if (item.type === `text`) {
-      //   //   typedCurrent.title = item.value;
-      //   // }
-      // });
-
       return current;
     }
 
