@@ -21,7 +21,11 @@ const convertComponentInMdxToEndpointLocations = (data) => {
         const method = occurrence.attributes.find(
           (attribute) => attribute.name === 'method'
         ).value;
-        const urn = generateEndpointURN({ key, method, path: resource });
+        const urn = generateEndpointURN({
+          apiKey: key,
+          method,
+          path: resource,
+        });
         const url = node.slug && urn ? `${node.slug}#${urn}` : '';
         endpointLocations[`${key}__${resource}__${method}`] = { url };
       });
