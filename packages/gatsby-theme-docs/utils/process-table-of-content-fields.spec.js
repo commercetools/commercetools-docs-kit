@@ -1,3 +1,4 @@
+// deprecated, to be removed
 const processTableOfContentFields = require('./process-table-of-content-fields');
 
 describe('processTableOfContentFields', () => {

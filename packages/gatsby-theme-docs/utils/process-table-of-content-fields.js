@@ -1,3 +1,4 @@
+// TODO: deprecated, To be removed
 const githubSlugger = require('github-slugger');
 
 const slugger = githubSlugger();

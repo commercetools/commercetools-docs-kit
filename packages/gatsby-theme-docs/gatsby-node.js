@@ -9,7 +9,7 @@ const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
 const slugify = require('slugify');
-const processTableOfContentFields = require('./utils/process-table-of-content-fields');
+const generateToC = require('./utils/generate-toc');
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 const colorPresets = require('./color-presets');
@@ -178,11 +178,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
               default: 6,
             },
           },
-          resolve: resolverPassthrough({
-            fieldName: 'tableOfContents',
-            processResult: processTableOfContentFields,
-            errorFallback: {},
-          }),
         },
         navLevels: { type: 'Int!' },
         showTimeToRead: { type: 'Boolean' },
@@ -310,6 +305,10 @@ exports.onCreateNode = async (
     return;
   }
 
+  const { createProcessor } = await import('@mdx-js/mdx');
+  const processor = createProcessor();
+  // https://github.com/unifiedjs/unified#processorparsefile
+  const nodeBodyAst = processor.parse(node.body);
   // If not explicitly handled, always fall back to build the page as a "content" page.
   // This is useful in case the website requires additional MDX pages located in
   // other file system directories, and thus with different `sourceInstanceName` names.
@@ -332,10 +331,11 @@ exports.onCreateNode = async (
     timeToRead: node.frontmatter.timeToRead
       ? Number(node.frontmatter.timeToRead)
       : 0,
-    shortcodeOccurrence: await extractShortcodeOccurrence(
+    shortcodeOccurrence: extractShortcodeOccurrence(
       ['ApiType', 'ApiEndpoint'],
-      node
+      nodeBodyAst
     ),
+    tableOfContents: await generateToC(nodeBodyAst),
   };
 
   actions.createNode({

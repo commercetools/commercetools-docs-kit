@@ -2,18 +2,10 @@
 // to be changed once upgraded to a latest version
 const visit = require('unist-util-visit');
 
-async function extractShortcodeOccurrence(shortcodeList, mdxNode) {
+function extractShortcodeOccurrence(shortcodeList, ast) {
   if (!Array.isArray(shortcodeList) || shortcodeList.length === 0) {
     return;
   }
-  const { body: mdxContent } = mdxNode;
-
-  // using the processor interface from the full mdx package instead of working directly with remark-mdx
-  // to be sure that the various dependency and unified libraries fit.
-  const { createProcessor } = await import('@mdx-js/mdx');
-  const processor = createProcessor();
-  // https://github.com/unifiedjs/unified#processorparsefile
-  const ast = processor.parse(mdxContent);
 
   const shortcodes = []; // {name: shortCodeName, attributes: [{name: foo, value: bar}]}
 
