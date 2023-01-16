@@ -58,8 +58,10 @@ export default ReleaseNotesDetailTemplate;
 // eslint-disable-next-line react/prop-types
 export function Head({ data }) {
   return (
-    // eslint-disable-next-line react/prop-types
-    <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
+    <ThemeProvider
+      // eslint-disable-next-line react/prop-types
+      websitePrimaryColor={data.releaseNotePage.websitePrimaryColor}
+    >
       <SEO
         // eslint-disable-next-line react/prop-types
         title={data.releaseNotePage.title}
