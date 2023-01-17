@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import {
   useTypeLocations,
   locationForType,
@@ -25,7 +26,7 @@ const RequestRepresentation = (props) => {
     align-items: center;
     flex-direction: row;
     span {
-      margin-right: 8px;
+      margin-right: ${designSystem.dimensions.spacings.s};
     }
   `;
 
