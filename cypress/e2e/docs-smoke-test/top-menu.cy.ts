@@ -4,8 +4,8 @@ describe('Top menu', () => {
   it('should toggle top menu and take a snapshot', () => {
     // Wait for Gastby to be fully loaded otherwise the click event won't be
     // handled correctly.
-    // We can check for the existence of the `data-gatsby-head` in the `meta` tag.
-    cy.visit(URL_DOCS_SMOKE_TEST).get('meta[data-gatsby-head]');
+    // We can check for the existence of the `cz-shortcut-listen` in the `body` tag.
+    cy.visit(URL_DOCS_SMOKE_TEST).get('body[cz-shortcut-listen]');
     cy.findByLabelText('Open Top Menu').click();
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {
@@ -17,8 +17,8 @@ describe('Top menu', () => {
   it('should close top menu when clicking on the search input', () => {
     // Wait for Gastby to be fully loaded otherwise the click event won't be
     // handled correctly.
-    // We can check for the existence of the `data-gatsby-head` in the `meta` tag.
-    cy.visit(URL_DOCS_SMOKE_TEST).get('meta[data-gatsby-head]');
+    // We can check for the existence of the `cz-shortcut-listen` in the `body` tag.
+    cy.visit(URL_DOCS_SMOKE_TEST).get('body[cz-shortcut-listen]');
     cy.findByLabelText('Open Top Menu').click();
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {
