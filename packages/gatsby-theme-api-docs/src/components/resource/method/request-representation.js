@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import {
@@ -19,23 +20,30 @@ const RequestRepresentation = (props) => {
     typeLocations
   );
 
+  const ContentTypeRow = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    span {
+      margin-right: 8px;
+    }
+  `;
+
   return (
     <SpacingsStack scale="xs">
       <Title>Request Body:</Title>
       {!props.isStructuredDataType ? (
         <SpacingsInline alignItems="center">
           {props.contentType.map((type, index) => {
-            if (index === 0) {
-              return <ContentType key={index}>{type}</ContentType>;
-            }
             return (
-              <>
-                <span>or</span>
-                <ContentType key={index}>{type}</ContentType>
-              </>
+              <ContentTypeRow key={index}>
+                {index !== 0 && <span>or</span>}
+                <ContentType>{type}</ContentType>
+                {index === props.contentType.length - 1 && <p>.</p>}
+              </ContentTypeRow>
             );
           })}
-          <span>The file to upload.</span>
+          <span>The file to upload</span>
         </SpacingsInline>
       ) : requestRepresentationLocation ? (
         <SpacingsInline alignItems="center">

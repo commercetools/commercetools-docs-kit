@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import {
+  designSystem,
+  markdownFragmentToReact,
+} from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { tokens, dimensions, typography } from '../../../design-system';
@@ -56,7 +59,8 @@ const Responses = ({ apiKey, responses, contentType }) => {
                     )}
                   </SpacingsInline>
                 ) : (
-                  response.description || 'No body is returned.'
+                  markdownFragmentToReact(response.description) ||
+                  'No body is returned.'
                 )}
               </LinkContainer>
             </SpacingsInline>
