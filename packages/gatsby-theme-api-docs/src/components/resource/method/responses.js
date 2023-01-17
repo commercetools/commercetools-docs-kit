@@ -36,7 +36,7 @@ const Responses = ({ apiKey, responses, contentType }) => {
       <SpacingsStack scale="s">
         {responses.map((response) => {
           return (
-            <SpacingsInline key={response.code}>
+            <SpacingsInline alignItems="center" key={response.code}>
               <ResponseCode
                 css={computeStatusCodeBackgroundColor(response.code)}
               >
