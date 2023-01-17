@@ -157,10 +157,10 @@ module.exports = (themeOptions = {}) => {
           mdxOptions: {
             // List of remark plugins, that transform the markdown AST.
             remarkPlugins: [
+              wrapESMPlugin('remark-mdx-code-meta'),
               require('remark-emoji'),
               require('./src/plugins/remark-mdx-mermaid'),
               require('remark-gfm'),
-              wrapESMPlugin('remark-mdx-code-meta'),
             ],
             // List of rehype plugins, that transform the HTML AST.
             rehypePlugins: [
