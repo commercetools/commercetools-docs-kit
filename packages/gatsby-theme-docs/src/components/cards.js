@@ -9,24 +9,17 @@ const Cards = (props) => {
      * In the markdown the props are defined only at parent level for simplicity.
      * The above implies that each child will have the same clickable, narrow and smallTitle prop as the one
      * applied to the parent.
-     *
-     * Some safety checks are applied to ensure editors don't add arbitrary content to the `Cards` component.
-     * This element should only be used with children of type `Card`
      */
     return (
       <cardElements.CardsContainer {...props} data-search-key="cards-container">
         {Children.toArray(props.children)
-          .filter((child) => typeof child !== 'string')
+          .filter(
+            (child) =>
+              React.isValidElement(child) &&
+              typeof child.type === 'function' &&
+              child.type.name === 'Card'
+          )
           .map((child) => {
-            if (!React.isValidElement(child)) {
-              throwErrorMessage(child.type);
-            } else if (
-              typeof child.type !== 'function' ||
-              child.type.name !== 'Card'
-            ) {
-              throwErrorMessage(child);
-            }
-
             return React.cloneElement(
               child,
               {
@@ -47,12 +40,6 @@ const Cards = (props) => {
     }
 
     throw e;
-  }
-
-  function throwErrorMessage(type) {
-    throw new Error(
-      `Children of <Cards> must be a <Card> component and not "${type}"`
-    );
   }
 };
 
