@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { designSystem } from '@commercetools-docs/ui-kit';
 import {
   useTypeLocations,
   locationForType,
@@ -8,6 +11,7 @@ import {
 import renderTypeAsLink from '../../../utils/render-type-as-link';
 import ApiTypeByKey from '../../type/type-by-api-key';
 import Title from './title';
+import ContentType from './highlights';
 
 const RequestRepresentation = (props) => {
   const typeLocations = useTypeLocations();
@@ -17,17 +21,46 @@ const RequestRepresentation = (props) => {
     typeLocations
   );
 
+  const ContentTypeRow = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    span {
+      margin-right: ${designSystem.dimensions.spacings.s};
+    }
+  `;
+
   return (
     <SpacingsStack scale="xs">
       <Title>Request Body:</Title>
-      {requestRepresentationLocation ? (
-        renderTypeAsLink(props.apiKey, props.apiType, typeLocations)
+      {!props.isStructuredDataType ? (
+        <SpacingsInline alignItems="center">
+          {props.contentType.map((type, index) => {
+            return (
+              <ContentTypeRow key={index}>
+                {index !== 0 && <span>or</span>}
+                <ContentType>{type}</ContentType>
+                {index === props.contentType.length - 1 && <p>.</p>}
+              </ContentTypeRow>
+            );
+          })}
+          <span>The file to upload</span>
+        </SpacingsInline>
+      ) : requestRepresentationLocation ? (
+        <SpacingsInline alignItems="center">
+          {renderTypeAsLink(props.apiKey, props.apiType, typeLocations)}
+          <span>as</span>
+          <ContentType>{props.contentType}</ContentType>
+        </SpacingsInline>
       ) : (
-        <ApiTypeByKey
-          apiKey={props.apiKey}
-          type={props.apiType}
-          doNotRenderExamples
-        />
+        <SpacingsStack>
+          <ContentType>{props.contentType}</ContentType>
+          <ApiTypeByKey
+            apiKey={props.apiKey}
+            type={props.apiType}
+            doNotRenderExamples
+          />
+        </SpacingsStack>
       )}
     </SpacingsStack>
   );
@@ -35,7 +68,9 @@ const RequestRepresentation = (props) => {
 
 RequestRepresentation.propTypes = {
   apiKey: PropTypes.string.isRequired,
-  apiType: PropTypes.string.isRequired,
+  apiType: PropTypes.string,
+  isStructuredDataType: PropTypes.bool.isRequired,
+  contentType: PropTypes.array.isRequired,
 };
 
 export default RequestRepresentation;

@@ -119,6 +119,9 @@ const defineRamlResource = ({ schema, createTypes }) => {
         applicationjson: 'RamlResourceMethodBodyApplicationJson',
         applicationxwwwformurlencoded:
           'RamlResourceMethodBodyApplicationxwwwformurlencoded',
+        imagejpeg: 'RamlResourceMethodBodyImageJpeg',
+        imagepng: 'RamlResourceMethodBodyImagePng',
+        imagegif: 'RamlResourceMethodBodyImageGif',
       },
     }),
 
@@ -137,6 +140,30 @@ const defineRamlResource = ({ schema, createTypes }) => {
         type: 'String!',
         builtinType: 'String!',
         examples: '[RamlExample!]',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceMethodBodyImageJpeg',
+      fields: {
+        type: 'String!',
+        builtinType: 'String!',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceMethodBodyImagePng',
+      fields: {
+        type: 'String!',
+        builtinType: 'String!',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'RamlResourceMethodBodyImageGif',
+      fields: {
+        type: 'String!',
+        builtinType: 'String!',
       },
     }),
 

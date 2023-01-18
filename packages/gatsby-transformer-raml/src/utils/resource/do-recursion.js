@@ -6,6 +6,9 @@ const fieldsToClean = {
   '(builtinType)': true,
   'application/json': true,
   'application/x-www-form-urlencoded': true,
+  'image/jpeg': true,
+  'image/png': true,
+  'image/gif': true,
   '(codeExamples)': true,
 };
 
