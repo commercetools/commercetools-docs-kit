@@ -54,6 +54,18 @@ export const useApiResources = () => {
           type
           builtinType
         }
+        imagejpeg {
+          type
+          builtinType
+        }
+        imagepng {
+          type
+          builtinType
+        }
+        imagegif {
+          type
+          builtinType
+        }
       }
 
       fragment methodsWithBodies on RamlResourceMethodWithBody {
