@@ -17,6 +17,7 @@ import Title from './title';
 const ResponseCode = styled.span`
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   color: ${designSystem.colors.light.surfacePrimary};
+  margin-top: ${dimensions.spacings.xxs};
   padding: ${dimensions.spacings.xxs} ${designSystem.dimensions.spacings.s};
   border-radius: ${tokens.borderRadiusForResponseCode};
   line-height: ${typography.lineHeights.responseCode};
@@ -36,7 +37,7 @@ const Responses = ({ apiKey, responses, contentType }) => {
       <SpacingsStack scale="s">
         {responses.map((response) => {
           return (
-            <SpacingsInline alignItems="center" key={response.code}>
+            <SpacingsInline key={response.code}>
               <ResponseCode
                 css={computeStatusCodeBackgroundColor(response.code)}
               >
