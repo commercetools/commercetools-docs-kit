@@ -13,12 +13,7 @@ const Cards = (props) => {
     return (
       <cardElements.CardsContainer {...props} data-search-key="cards-container">
         {Children.toArray(props.children)
-          .filter(
-            (child) =>
-              React.isValidElement(child) &&
-              typeof child.type === 'function' &&
-              child.type.name === 'Card'
-          )
+          .filter((child) => React.isValidElement(child))
           .map((child) => {
             return React.cloneElement(
               child,
