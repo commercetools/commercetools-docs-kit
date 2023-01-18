@@ -34,7 +34,7 @@ const ReleaseNotesListTemplate = (props) => {
               }
             />
             <MDXProvider components={markdownComponents}>
-              <div>{props.chidlren}</div>
+              <div>{props.children}</div>
             </MDXProvider>
             <div id="release-notes-list">
               <SpacingsStack>
@@ -86,7 +86,7 @@ ReleaseNotesListTemplate.propTypes = {
       ).isRequired,
     }),
   }).isRequired,
-  chidlren: PropTypes.any.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 export default ReleaseNotesListTemplate;
