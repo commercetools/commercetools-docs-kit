@@ -59,6 +59,12 @@ Properties (for authors):
 
 **Output**
 
+<Cards clickable narrow smallTitle>
+  <Card href="/components/images">foo</Card>
+  <Card href="/components/images">bar</Card>
+  <Card href="/components/images">next row unless three aside (narrow) prop passed?</Card>
+  <Card href="/components/images">next row in any case</Card>
+</Cards>
 
 # "Card": the actual card
 
@@ -88,6 +94,16 @@ None of the properties are required but the body content should not be empty.
 
 **Output**
 
+<Cards>
+  <Card
+    title="A regular heading"
+    href="/components/images"
+    textLink="Read more about images...">This is visually flat, has a link to the **images (bold)** page and only the link is a clickable target.</Card>
+  <Card
+    title="A regular heading"
+    href="/components/images"
+    textLink="Read more about images...">Short content, link bottom aligned</Card>
+</Cards>
 
 ## Clickable with Link
 
@@ -109,6 +125,17 @@ None of the properties are required but the body content should not be empty.
 
 **Output**
 
+<Cards clickable>
+  <Card
+    title="Card with internal Link"
+    href="/components/images"
+    textLink="Read more about images...">This is visually eleveated, has a link to the **images (bold)** page and the complete card is a clickable target.</Card>
+  <Card
+    title="Card with external Link"
+    href="https://commercetools.com"
+    textLink="Read more about images...">This is visually eleveated, has a link to an **external (bold)** page and the
+    complete card is a clickable target..</Card>
+</Cards>
 
 ## Flat with Icon
 
@@ -135,6 +162,11 @@ As discussed:
 
 (no actual icon set until one is available to not break this page)
 
+<Cards smallTitle>
+  <Card
+    icon={<DummyIcon />}
+    title="A smaller title">Example Text on a card with an icon.</Card>
+</Cards>
 
 # Clickable (visually elevated)
 
@@ -167,6 +199,22 @@ Icons on cards that are **not narrow** are aligned to the top of the card regard
 
 **Output**
 
+<Cards>
+  <Card
+    title="A left aligned icon"
+    icon={<DummyIcon />}
+    href="/components/images"
+    textLink="Read more about images...">
+    The icon of this card should be left aligned.
+  </Card>
+  <Card
+    title="A left aligned icon"
+    icon={<DummyIcon />}
+    href="/components/images"
+    textLink="Read more about images...">
+    The icon of this card should be left aligned. This has more descriptive text than the latter.
+  </Card>
+</Cards>
 
 Icons on **narrow** cards are aligned to the left of the card regardless of whether they are clickable or flat.
 
@@ -191,6 +239,22 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 
 **Output**
 
+<Cards narrow clickable>
+  <Card
+    title="A top aligned icon"
+    href="/components/images"
+    textLink="Clickable top aligned icon..."
+    icon={<DummyIcon />}>
+    The icon of this card should be top aligned.
+  </Card>
+  <Card
+    title="A top aligned icon"
+    href="/components/images"
+    textLink="Clickable top aligned icon..."
+    icon={<DummyIcon />}>
+    The icon of this card should be top aligned. This has more descriptive text than the latter.
+  </Card>
+</Cards>
 
 # Cards with Markdown in Body
 
@@ -209,6 +273,16 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 </Cards>
 ```
 
+<Cards>
+<Card title="Bullet List Body">
+
+- Item 1
+- Item 2 (dot)
+  - Sub-item (circle)
+- Item 3
+
+</Card>
+</Cards>
 
 ## Link in Body of a Flat Card
 
@@ -224,20 +298,15 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 </Cards>
 ```
 
-## Link in Body of a Clickable Card
-
-```md
-<Cards clickable>
+<Cards>
   <Card
-    title="Link in Body"
+    title="Link in Body of Flat"
     href="/components/images"
     textLink="Click here"
     icon={<DummyIcon />}>
-    This [link](/views/code-blocks) should **not** render as a link.
+    This [link](/views/code-blocks) should render as a link.
   </Card>
 </Cards>
-```
-
 
 # Cards with Images
 
@@ -266,6 +335,26 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 </Cards>
 ```
 
+<Cards>
+  <Card image={<CardBannerApiIcon />}>
+    Flat card with an image
+  </Card>
+  <Card image={<CardBannerDefaultIcon />}>
+    Flat card with an image
+  </Card>
+  <Card image={<CardBannerMcIcon />}>
+    Flat card with an image
+  </Card>
+  <Card image={<CardBannerOptional1Icon />}>
+    Flat card with an image
+  </Card>
+  <Card image={<CardBannerOptional2Icon />}>
+    Flat card with an image
+  </Card>
+  <Card image={<CardBannerOssIcon />}>
+    Flat card with an image
+  </Card>
+</Cards>
 
 ## Clickable Card with an Image
 
@@ -310,6 +399,45 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 </Cards>
 ```
 
+<Cards clickable>
+  <Card
+    title="Clickable with Image"
+    href="/components/images"
+    image={<CardBannerApiIcon />}>
+    Clickable card with an image
+  </Card>
+  <Card
+    title="Clickable with Image"
+    href="/components/images"
+    image={<CardBannerDefaultIcon />}>
+    Clickable card with an image
+  </Card>
+  <Card
+    title="Clickable with Image"
+    href="/components/images"
+    image={<CardBannerMcIcon />}>
+    Clickable card with an image
+  </Card>
+  <Card
+    title="Clickable with Image"
+    href="/components/images"
+    image={<CardBannerOptional1Icon />}>
+    Clickable card with an image
+  </Card>
+  <Card
+    title="Clickable with Image"
+    href="/components/images"
+    image={<CardBannerOptional2Icon />}>
+    Clickable card with an image
+  </Card>
+  <Card
+    title="Clickable with Image"
+    href="/components/images"
+    image={<CardBannerOssIcon />}>
+    Clickable card with an image
+  </Card>
+</Cards>
+
 ## Clickable Card with an Image and an external Link
 
 ```md
@@ -329,6 +457,20 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 </Cards>
 ```
 
+<Cards clickable>
+  <Card
+    title="Clickable with Image and external link"
+    href="https://commercetools.com"
+    image={<CardBannerApiIcon />}>
+    Clickable card with an image. The external link icon is not being rendered.
+  </Card>
+  <Card
+    title="Clickable with Image and external link"
+    href="https://commercetools.com"
+    image={<CardBannerDefaultIcon />}>
+    Clickable card with an image. The external link icon is not being rendered.
+  </Card>
+</Cards>
 
 ## A Wide Card with an Image and an icon
 
@@ -355,6 +497,26 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 </Cards>
 ```
 
+<Cards>
+  <Card image={<CardBannerApiIcon />} icon={<DummyIcon />}>
+    Wide card with an image and an icon
+  </Card>
+  <Card image={<CardBannerDefaultIcon />} icon={<DummyIcon />}>
+    Wide card with an image and an icon
+  </Card>
+  <Card image={<CardBannerMcIcon />} icon={<DummyIcon />}>
+    Wide card with an image and an icon
+  </Card>
+  <Card image={<CardBannerOptional1Icon />} icon={<DummyIcon />}>
+    Wide card with an image and an icon
+  </Card>
+  <Card image={<CardBannerOptional2Icon />} icon={<DummyIcon />}>
+    Wide card with an image and an icon
+  </Card>
+  <Card image={<CardBannerOssIcon />} icon={<DummyIcon />}>
+    Wide card with an image and an icon
+  </Card>
+</Cards>
 
 ## A Narrow Card with an Image and an icon
 
@@ -381,6 +543,39 @@ Icons on **narrow** cards are aligned to the left of the card regardless of whet
 </Cards>
 ```
 
+<Cards narrow>
+  <Card image={<CardBannerApiIcon />} icon={<DummyIcon />}>
+    Narrow card with an image and an icon
+  </Card>
+  <Card image={<CardBannerDefaultIcon />} icon={<DummyIcon />}>
+    Narrow card with an image and an icon
+  </Card>
+  <Card image={<CardBannerMcIcon />} icon={<DummyIcon />}>
+    Narrow card with an image and an icon
+  </Card>
+  <Card image={<CardBannerOptional1Icon />} icon={<DummyIcon />}>
+    Narrow card with an image and an icon
+  </Card>
+  <Card image={<CardBannerOptional2Icon />} icon={<DummyIcon />}>
+    Narrow card with an image and an icon
+  </Card>
+  <Card image={<CardBannerOssIcon />} icon={<DummyIcon />}>
+    Narrow card with an image and an icon
+  </Card>
+</Cards>
+
 # Misuse case: standalone cards
 
-It cannot bre prevented that a `<Card>` is used standalone and there are use cases where a plain wrapper border box is needed.
+It cannot be prevented that a `<Card>` is used standalone and there are use cases where a plain wrapper border box is needed.
+
+<Card>A **formatted** text inline in a Card</Card>
+
+<Card>
+A **formatted** text in a single separate line in a card
+</Card>
+
+<Card>
+
+A **formatted** text after and before extra blank lines in MDX
+
+</Card>

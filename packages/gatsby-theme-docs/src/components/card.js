@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import {
-  Markdown,
-  markdownFragmentToReact,
-  cardElements,
-} from '@commercetools-docs/ui-kit';
+import { cardElements } from '@commercetools-docs/ui-kit';
 import GatsbyLink from './link';
 
 const {
@@ -19,24 +14,6 @@ const {
   ReadMore,
   Title,
 } = cardElements;
-
-const BodyContent = (props) => {
-  if (typeof props.children === 'string') {
-    return props.clickable
-      ? markdownFragmentToReact(props.children, { a: styled.span`` })
-      : markdownFragmentToReact(props.children, { a: GatsbyLink });
-  }
-  return (
-    <Markdown.TypographyContainer>
-      {props.children}
-    </Markdown.TypographyContainer>
-  );
-};
-BodyContent.displayName = 'BodyContent';
-BodyContent.propTypes = {
-  clickable: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-};
 
 const WrapWith = (props) =>
   props.condition ? props.wrapper(props.children) : props.children;
@@ -77,11 +54,7 @@ const Card = (props) => (
                 <Title smallTitle={props.smallTitle}>{props.title}</Title>
               )}
               {props.children && (
-                <BodyContainer>
-                  <BodyContent clickable={props.clickable}>
-                    {props.children}
-                  </BodyContent>
-                </BodyContainer>
+                <BodyContainer>{props.children}</BodyContainer>
               )}
               {props.href && props.textLink && (
                 <ReadMoreContainer>
