@@ -36,11 +36,11 @@ const Enum = ({
                     <Markdown.InlineCode>{value}</Markdown.InlineCode>
                   </Markdown.DescriptionTerm>
                   {enumDescription && enumDescription.description && (
-                    <Markdown.DefinitionDescription>
+                    <Markdown.DescriptionDetails>
                       <DescriptionText
                         markdownString={enumDescription.description}
                       />
-                    </Markdown.DefinitionDescription>
+                    </Markdown.DescriptionDetails>
                   )}
                 </React.Fragment>
               );
