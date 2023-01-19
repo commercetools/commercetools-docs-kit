@@ -271,8 +271,9 @@ const TypographyPage = styled.div`
   line-height: 1.5;
 
   section > p > img {
-    margin: ${dimensions.spacings.m} 0;
-    padding: 0 ${dimensions.spacings.s};
+    display: block;
+    position: relative;
+    margin: ${dimensions.spacings.m} auto;
   }
 
   section > * + * {
