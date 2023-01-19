@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ContentNotifications, cardElements } from '@commercetools-docs/ui-kit';
 
@@ -10,21 +10,27 @@ const Cards = (props) => {
      * The above implies that each child will have the same clickable, narrow and smallTitle prop as the one
      * applied to the parent.
      */
+    const sanitizedChildren = React.Children.toArray(props.children).filter(
+      (child) => React.isValidElement(child)
+    );
     return (
       <cardElements.CardsContainer {...props} data-search-key="cards-container">
-        {Children.toArray(props.children)
-          .filter((child) => React.isValidElement(child))
-          .map((child) => {
-            return React.cloneElement(
-              child,
-              {
-                clickable: props.clickable,
-                narrow: props.narrow,
-                smallTitle: props.smallTitle,
-              },
-              child.props.children
-            );
-          })}
+        {sanitizedChildren.map((child) => {
+          if (child.type.displayName !== 'Card') {
+            // this is created in mdx but it is not a card
+            throwErrorMessage();
+          }
+
+          return React.cloneElement(
+            child,
+            {
+              clickable: props.clickable,
+              narrow: props.narrow,
+              smallTitle: props.smallTitle,
+            },
+            child.props.children
+          );
+        })}
       </cardElements.CardsContainer>
     );
   } catch (e) {
@@ -35,6 +41,10 @@ const Cards = (props) => {
     }
 
     throw e;
+  }
+
+  function throwErrorMessage() {
+    throw new Error(`Children of <Cards> must be a <Card> component`);
   }
 };
 
