@@ -41,9 +41,6 @@ const components = {
   ul: Markdown.Ul,
   ol: Markdown.Ol,
   li: Markdown.Li,
-  dl: Markdown.Dl,
-  dt: Markdown.Dt,
-  dd: Markdown.Dd,
   table: Markdown.Table,
   tr: Markdown.TableRow,
   td: Markdown.TableCell,
@@ -59,6 +56,9 @@ const components = {
   a: Link,
 
   // Official react components to be used in MDX files
+  DescriptionDetails: Markdown.DescriptionDetails,
+  DescriptionTerm: Markdown.DescriptionTerm,
+  DescriptionList: Markdown.DescriptionList,
   Subtitle,
   Info: ContentNotifications.Info,
   Warning: ContentNotifications.Warning,

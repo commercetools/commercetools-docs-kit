@@ -23,7 +23,7 @@ const Enum = ({
         {description && (
           <DescriptionParagraph>{description}</DescriptionParagraph>
         )}
-        <Markdown.Dl>
+        <Markdown.DescriptionList>
           {values &&
             values.map((value) => {
               const enumDescription =
@@ -32,20 +32,20 @@ const Enum = ({
 
               return (
                 <React.Fragment key={value}>
-                  <Markdown.Dt>
+                  <Markdown.DescriptionTerm>
                     <Markdown.InlineCode>{value}</Markdown.InlineCode>
-                  </Markdown.Dt>
+                  </Markdown.DescriptionTerm>
                   {enumDescription && enumDescription.description && (
-                    <Markdown.Dd>
+                    <Markdown.DefinitionDescription>
                       <DescriptionText
                         markdownString={enumDescription.description}
                       />
-                    </Markdown.Dd>
+                    </Markdown.DefinitionDescription>
                   )}
                 </React.Fragment>
               );
             })}
-        </Markdown.Dl>{' '}
+        </Markdown.DescriptionList>{' '}
       </SpacingsStack>
     </div>
   );
