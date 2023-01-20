@@ -7,17 +7,18 @@ import {
 } from '@commercetools-docs/ui-kit';
 import useCodeExamples from './use-code-examples';
 
+const isCodeExampleNode = (alienNode) =>
+  alienNode.props && alienNode.props.path;
+
 function MultiCodeExample(props) {
   const codeExamples = useCodeExamples();
   try {
     return (
       <MultiCodeBlock title={props.title} secondaryTheme={props.secondaryTheme}>
         {React.Children.map(props.children, (child, index) => {
-          if (!child.props || child.type.name !== 'CodeExample') {
+          if (!isCodeExampleNode(child)) {
             throw new Error(
-              `Children of <MultiLanguageCodeExamples> must be a <CodeExample> component and not "${
-                child.props ? child.type.name : child
-              }"`
+              `Children of <MultiLanguageCodeExamples> must be a <CodeExample> component.`
             );
           }
           if (!child.props.path) {

@@ -25,8 +25,7 @@ WrapWith.propTypes = {
 };
 
 const isReactLink = (alienElement) =>
-  React.isValidElement(alienElement) &&
-  (alienElement?.type?.name || '') === 'Link';
+  React.isValidElement(alienElement) && alienElement.props.href;
 
 /**
  * Expects a React Link element, returns just the text contained in the link.
