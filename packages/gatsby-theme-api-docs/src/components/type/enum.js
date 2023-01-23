@@ -32,15 +32,15 @@ const Enum = ({
 
               return (
                 <React.Fragment key={value}>
-                  <Markdown.DescriptionTerm>
+                  <Markdown.Term>
                     <Markdown.InlineCode>{value}</Markdown.InlineCode>
-                  </Markdown.DescriptionTerm>
+                  </Markdown.Term>
                   {enumDescription && enumDescription.description && (
-                    <Markdown.DescriptionDetails>
+                    <Markdown.Details>
                       <DescriptionText
                         markdownString={enumDescription.description}
                       />
-                    </Markdown.DescriptionDetails>
+                    </Markdown.Details>
                   )}
                 </React.Fragment>
               );

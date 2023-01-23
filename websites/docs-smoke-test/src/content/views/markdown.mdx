@@ -78,39 +78,39 @@ Here's a nested ordered list:
 Here's a definition list:
 
 <DescriptionList>
-  <DescriptionTerm>
+  <Term>
 
 `Healthy`
 
-  </DescriptionTerm>
-  <DescriptionDetails>The subscription is delivering messages as expected</DescriptionDetails>
-  <DescriptionTerm>
+  </Term>
+  <Details>The subscription is delivering messages as expected</Details>
+  <Term>
 
 `ConfigurationError`
 
-  </DescriptionTerm>
-  <DescriptionDetails>
+  </Term>
+  <Details>
 
 Messages can not be delivered with the current configuration. If the configuration is fixed in this health status,
 all messages that haven’t been delivered yet will still be delivered and the status will change to `Healthy`.
 
 `ConfigurationError`s are automatically turned into `ConfigurationErrorDeliveryStopped` after some time. See the [Delivery Guarantees](#last-section) section for more details.
 
-  </DescriptionDetails>
-  <DescriptionTerm>
+  </Details>
+  <Term>
 
 `ConfigurationErrorDeliveryStopped`
 
-  </DescriptionTerm>
-  <DescriptionDetails>
+  </Term>
+  <Details>
 
 Messages can not be delivered with the current configuration and delivery of those is not attempted anymore.
 Undelivered messages are not retained and will not be delivered if the configuration is fixed in this status, but the status will change to `Healthy`
 as soon as new messages can be delivered successfully again.
 
-  </DescriptionDetails>
-  <DescriptionTerm>Something else</DescriptionTerm>
-  <DescriptionDetails>Yet something else</DescriptionDetails>
+  </Details>
+  <Term>Something else</Term>
+  <Details>Yet something else</Details>
 </DescriptionList>
 
 ### Subsection (second level)

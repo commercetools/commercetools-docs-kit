@@ -98,7 +98,7 @@ const DescriptionList = styled.dl`
     margin: ${dimensions.spacings.xs} 0 0;
   }
 `;
-const DescriptionTerm = styled.dt`
+const Term = styled.dt`
   color: ${colors.light.textSecondary};
 `;
 
@@ -116,7 +116,7 @@ const containerStyles = () => css`
   }
 `;
 
-const DescriptionDetails = styled.dd`
+const Details = styled.dd`
   ${containerStyles}
   padding: 0 0 0 ${dimensions.spacings.l};
 
@@ -399,8 +399,8 @@ export {
   Ol,
   Li,
   DescriptionList,
-  DescriptionTerm,
-  DescriptionDetails,
+  Term,
+  Details,
   Table,
   TableRow,
   TableCell,

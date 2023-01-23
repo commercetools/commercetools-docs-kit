@@ -56,8 +56,8 @@ const components = {
   a: Link,
 
   // Official react components to be used in MDX files
-  DescriptionDetails: Markdown.DescriptionDetails,
-  DescriptionTerm: Markdown.DescriptionTerm,
+  Details: Markdown.Details,
+  Term: Markdown.Term,
   DescriptionList: Markdown.DescriptionList,
   Subtitle,
   Info: ContentNotifications.Info,
