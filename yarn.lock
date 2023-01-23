@@ -2091,7 +2091,7 @@ __metadata:
     react-intl: ^5.25.1
     react-router-dom: 5.3.4
     rehype-slug: 4.0.1
-    remark-emoji: 2.2.0
+    remark-emoji: 3.0.2
     remark-frontmatter: 3.0.0
     remark-gfm: 1.0.0
     remark-mdx: 2.2.0
@@ -12264,10 +12264,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"emoticon@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "emoticon@npm:3.2.0"
-  checksum: f30649d18b672ab3139e95cb04f77b2442feb95c99dc59372ff80fbfd639b2bf4018bc68ab0b549bd765aecf8230d7899c43f86cfcc7b6370c06c3232783e24f
+"emoticon@npm:^4.0.0":
+  version: 4.0.1
+  resolution: "emoticon@npm:4.0.1"
+  checksum: 991ab6421927601af4eb44036b60e3125759a4d81f32d2ad96b66e3491e2fdb6a026eeb6bffbfa66724592dca95235570785963607d16961ea73a62ecce715e2
   languageName: node
   linkType: hard
 
@@ -20969,7 +20969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-emoji@npm:^1.10.0":
+"node-emoji@npm:^1.11.0":
   version: 1.11.0
   resolution: "node-emoji@npm:1.11.0"
   dependencies:
@@ -23818,14 +23818,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-emoji@npm:2.2.0":
-  version: 2.2.0
-  resolution: "remark-emoji@npm:2.2.0"
+"remark-emoji@npm:3.0.2":
+  version: 3.0.2
+  resolution: "remark-emoji@npm:3.0.2"
   dependencies:
-    emoticon: ^3.2.0
-    node-emoji: ^1.10.0
-    unist-util-visit: ^2.0.3
-  checksum: 638d4be72eb4110a447f389d4b8c454921f188c0acabf1b6579f3ddaa301ee91010173d6eebd975ea622ae3de7ed4531c0315a4ffd4f9653d80c599ef9ec21a8
+    emoticon: ^4.0.0
+    node-emoji: ^1.11.0
+    unist-util-visit: ^4.1.0
+  checksum: e5e3cccca64424073f7421d40ebf50e9ea3ca4604ee09cda7d0c8d3dba31f29fb99a6fac249709937e4eba259bca78431401eb11e319471b55a22d9eaf05471f
   languageName: node
   linkType: hard
 

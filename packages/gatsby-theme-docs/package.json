@@ -77,7 +77,7 @@
     "react-intl": "^5.25.1",
     "react-router-dom": "5.3.4",
     "rehype-slug": "4.0.1",
-    "remark-emoji": "2.2.0",
+    "remark-emoji": "3.0.2",
     "remark-frontmatter": "3.0.0",
     "remark-gfm": "1.0.0",
     "remark-mdx": "2.2.0",

@@ -158,7 +158,7 @@ module.exports = (themeOptions = {}) => {
             // List of remark plugins, that transform the markdown AST.
             remarkPlugins: [
               wrapESMPlugin('remark-mdx-code-meta'),
-              require('remark-emoji'),
+              wrapESMPlugin('remark-emoji'),
               require('./src/plugins/remark-mdx-mermaid'),
               require('remark-gfm'),
             ],

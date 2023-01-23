@@ -42,10 +42,6 @@
       "allowedVersions": "<3"
     },
     {
-      "matchPackageNames": ["remark-emoji"],
-      "allowedVersions": "<3"
-    },
-    {
       "matchPackageNames": ["remark-gfm"],
       "allowedVersions": "<2"
     },
