@@ -1,4 +1,5 @@
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
 
 const isProd = process.env.NODE_ENV === 'production';
 const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
@@ -24,6 +25,7 @@ module.exports = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'docs-smoke-test',
+      colorPreset: colorPresets.termsDocs.key,
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',

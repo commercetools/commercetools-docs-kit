@@ -26,4 +26,9 @@ module.exports = {
     relativePath: 'platform-developer-docs',
     value: require('./platform-developer-docs'),
   },
+  termsDocs: {
+    key: 'termsDocs',
+    relativePath: 'terms-docs',
+    value: require('./terms-docs'),
+  },
 };
