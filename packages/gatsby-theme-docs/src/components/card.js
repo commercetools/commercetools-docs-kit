@@ -55,7 +55,7 @@ const BodyContent = (props) => {
 
 BodyContent.displayName = 'BodyContent';
 BodyContent.propTypes = {
-  clickable: PropTypes.bool.isRequired,
+  clickable: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 

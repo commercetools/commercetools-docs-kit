@@ -76,7 +76,7 @@ const resolverPassthrough =
       id: source.parent,
     });
     if (mdxNode) {
-      const field = type.getFields()[fieldName]; // TODO: migration
+      const field = type.getFields()[fieldName];
       if (!field) {
         return errorFallback;
       }
