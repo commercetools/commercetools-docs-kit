@@ -273,6 +273,7 @@ const TypographyPage = styled.div`
   section > p > img {
     display: block;
     position: relative;
+    padding: 0 ${dimensions.spacings.s};
     margin: ${dimensions.spacings.m} auto;
   }
 
