@@ -164,7 +164,7 @@ module.exports = (themeOptions = {}) => {
             ],
             // List of rehype plugins, that transform the HTML AST.
             rehypePlugins: [
-              require('rehype-slug'),
+              wrapESMPlugin('rehype-slug'),
               require('./src/plugins/rehype-mdx-section'),
             ],
             development: true,

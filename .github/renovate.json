@@ -22,10 +22,6 @@
       "allowedVersions": "<2"
     },
     {
-      "matchPackageNames": ["rehype-slug"],
-      "allowedVersions": "<5"
-    },
-    {
       "matchPackageNames": ["rehype-react"],
       "allowedVersions": "<7"
     },
