@@ -4,8 +4,9 @@ describe('Top menu', () => {
   it('should toggle top menu and take a snapshot', () => {
     // Wait for Gastby to be fully loaded otherwise the click event won't be
     // handled correctly.
-    cy.visit(URL_DOCS_SMOKE_TEST).get('main', { timeout: 60000 });
+    cy.visit(URL_DOCS_SMOKE_TEST).get('header[id="top"]');
     cy.findByLabelText('Open Top Menu').click();
+    cy.get('div[role="top-menu"]');
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {
       cy.findByText('Documentation').should('be.visible');
@@ -16,8 +17,9 @@ describe('Top menu', () => {
   it('should close top menu when clicking on the search input', () => {
     // Wait for Gastby to be fully loaded otherwise the click event won't be
     // handled correctly.
-    cy.visit(URL_DOCS_SMOKE_TEST).get('main', { timeout: 60000 });
+    cy.visit(URL_DOCS_SMOKE_TEST).get('header[id="top"]');
     cy.findByLabelText('Open Top Menu').click();
+    cy.get('div[role="top-menu"]');
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {
       cy.findByText('Documentation').should('be.visible');
