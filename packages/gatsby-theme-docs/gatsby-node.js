@@ -19,9 +19,14 @@ const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const isProd = process.env.NODE_ENV === 'production';
 
+let processor;
+
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
-exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
+exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
+  const { createProcessor } = await import('@mdx-js/mdx');
+  console.log('creating processor');
+  processor = createProcessor();
   const requiredDirectories = [
     'src/data',
     'src/images',
@@ -305,8 +310,6 @@ exports.onCreateNode = async (
     return;
   }
 
-  const { createProcessor } = await import('@mdx-js/mdx');
-  const processor = createProcessor();
   // https://github.com/unifiedjs/unified#processorparsefile
   const nodeBodyAst = processor.parse(node.body);
   // If not explicitly handled, always fall back to build the page as a "content" page.
