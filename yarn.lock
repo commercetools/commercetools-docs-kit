@@ -2118,7 +2118,6 @@ __metadata:
     gatsby-plugin-manifest: 4.24.0
     gatsby-plugin-mdx: 3.20.0
     gatsby-plugin-meta-redirect: 1.1.1
-    gatsby-plugin-remove-trailing-slashes: 4.19.0
     gatsby-plugin-sharp: 4.24.0
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.27
     gatsby-remark-copy-linked-files: 5.24.0
@@ -14650,17 +14649,6 @@ __metadata:
   peerDependencies:
     gatsby: ^4.0.0-next
   checksum: 46b6944dd7de9fb3f5bcf39fc49932485e09331b0e3c67f71a4ee98013919a4773bd75fd106e66bfb87d45e782d93a68dd78a25bd37e637fd3cb834cc040ec69
-  languageName: node
-  linkType: hard
-
-"gatsby-plugin-remove-trailing-slashes@npm:4.19.0":
-  version: 4.19.0
-  resolution: "gatsby-plugin-remove-trailing-slashes@npm:4.19.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-  peerDependencies:
-    gatsby: ^4.0.0-next
-  checksum: 2d0937e89d62641b2d9438a5901bb26db52df79b8fb45117ef9d6050c61eaab09ab2f79eacbb0b6b34e825e69a719e7b68d2ce3ba49096a6e6bc067dfa5e225c
   languageName: node
   linkType: hard
 

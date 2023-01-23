@@ -33,6 +33,7 @@ module.exports = (themeOptions = {}) => {
   validateThemeOptions(pluginOptions);
 
   return {
+    trailingSlash: 'never',
     siteMetadata: {
       author: 'commercetools',
       productionHostname,
@@ -296,9 +297,8 @@ module.exports = (themeOptions = {}) => {
       },
 
       /**
-       * The following plugins need to be last
+       * The following plugin need to be last
        */
-      'gatsby-plugin-remove-trailing-slashes',
       'gatsby-plugin-meta-redirect',
     ].filter(Boolean),
   };
