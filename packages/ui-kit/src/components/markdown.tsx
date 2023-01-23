@@ -270,6 +270,13 @@ const TypographyPage = styled.div`
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.5;
 
+  section > p > img {
+    display: block;
+    position: relative;
+    padding: 0 ${dimensions.spacings.s};
+    margin: ${dimensions.spacings.m} auto;
+  }
+
   section > * + * {
     margin-top: ${dimensions.spacings.m};
   }
