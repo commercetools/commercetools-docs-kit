@@ -206,10 +206,6 @@ module.exports = (themeOptions = {}) => {
             'gatsby-remark-images',
             'gatsby-remark-copy-linked-files',
           ],
-          // implement commonmark for stricter compatibility, e.g. backslash transformed to newlines
-          // commonmark: true, TODO: migration
-          // workaround https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-510153237
-          // plugins: ['gatsby-remark-images', 'gatsby-remark-copy-linked-files'], TODO: migration
         },
       },
 

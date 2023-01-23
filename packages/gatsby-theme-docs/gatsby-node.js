@@ -13,7 +13,7 @@ const generateToC = require('./utils/generate-toc');
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 const colorPresets = require('./color-presets');
-const extractShortcodeOccurrence = require('./utils/api-shortcode');
+const extractShortcodeOccurrence = require('./utils/extract-shortcode-occurrence');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
