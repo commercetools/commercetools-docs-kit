@@ -9,7 +9,7 @@
   "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/commercetools/commercetools-docs-kit.git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit/tree/@commercetools-docs/gatsby-transformer-mdx-introspection@15.0.5/packages/gatsby-transformer-mdx-introspection",
     "directory": "packages/gatsby-transformer-mdx-introspection"
   },
   "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/plugins#gatsby-transformer-mdx-introspection",
