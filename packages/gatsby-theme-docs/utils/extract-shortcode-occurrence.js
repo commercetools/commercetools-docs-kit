@@ -15,7 +15,6 @@ function extractShortcodeOccurrence(shortcodeList, ast) {
     );
   };
 
-  // https://unifiedjs.com/explore/package/unist-util-is/#test
   visit(ast, isShortcode, (node) => {
     shortcodes.push({
       component: node.name,
