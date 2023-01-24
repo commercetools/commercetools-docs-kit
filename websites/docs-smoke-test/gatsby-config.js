@@ -25,7 +25,7 @@ module.exports = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'docs-smoke-test',
-      colorPreset: colorPresets.termsDocs.key,
+      colorPreset: colorPresets.optionThree.key,
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
