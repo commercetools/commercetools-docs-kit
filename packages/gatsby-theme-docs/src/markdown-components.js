@@ -54,6 +54,7 @@ const components = {
   strong: Markdown.Strong,
   delete: Markdown.Delete,
   hr: Markdown.Hr,
+  Hr: Markdown.Hr,
   pre: Markdown.CodeBlock,
   // Custom component specific to the Gatsby theme
   a: Link,
