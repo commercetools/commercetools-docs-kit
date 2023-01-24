@@ -90,7 +90,7 @@ const Ol = styled.ol`
     list-style-type: lower-roman;
   }
 `;
-const DescriptionList = styled.dl`
+const Dl = styled.dl`
   > * + dt {
     margin: ${dimensions.spacings.s} 0 0;
   }
@@ -98,7 +98,7 @@ const DescriptionList = styled.dl`
     margin: ${dimensions.spacings.xs} 0 0;
   }
 `;
-const Term = styled.dt`
+const Dt = styled.dt`
   color: ${colors.light.textSecondary};
 `;
 
@@ -111,12 +111,12 @@ const containerStyles = () => css`
   > * + * {
     margin-top: ${dimensions.spacings.m};
   }
-  > * + ${Ul}, > * + ${Ol}, > * + ${DescriptionList} {
+  > * + ${Ul}, > * + ${Ol}, > * + ${Dl} {
     margin-top: ${dimensions.spacings.s};
   }
 `;
 
-const Details = styled.dd`
+const Dd = styled.dd`
   ${containerStyles}
   padding: 0 0 0 ${dimensions.spacings.l};
 
@@ -318,7 +318,7 @@ const TypographyPage = styled.div`
   section > ${Blockquote} {
     margin: ${dimensions.spacings.l} ${dimensions.spacings.xxl};
   }
-  section > ${Ul}, section > ${Ol}, section > ${DescriptionList} {
+  section > ${Ul}, section > ${Ol}, section > ${Dl} {
     margin-top: ${dimensions.spacings.s};
   }
 `;
@@ -405,9 +405,9 @@ export {
   Ul,
   Ol,
   Li,
-  DescriptionList,
-  Term,
-  Details,
+  Dl,
+  Dt,
+  Dd,
   Table,
   TableRow,
   TableCell,
