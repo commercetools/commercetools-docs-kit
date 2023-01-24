@@ -27,6 +27,15 @@ const ApiType = (props) => {
 
   const urn = generateTypeURN(matchedApiType);
 
+  const shoudldRenderProperties = matchedApiType.properties;
+  const shouldRenderExamples =
+    matchedApiType.examples && !props.doNotRenderExamples;
+
+  const WrapperNode =
+    shoudldRenderProperties && shouldRenderExamples
+      ? SideBySide
+      : React.Fragment;
+
   if (matchedApiType.enumeration) {
     return (
       <Enum
@@ -49,9 +58,9 @@ const ApiType = (props) => {
               {matchedApiType.description}
             </DescriptionParagraph>
           )}
-          {(matchedApiType.properties || matchedApiType.examples) && (
-            <SideBySide>
-              {matchedApiType.properties && (
+          {(shoudldRenderProperties || shouldRenderExamples) && (
+            <WrapperNode>
+              {shoudldRenderProperties && (
                 <Properties
                   apiKey={props.apiKey}
                   apiType={matchedApiType}
@@ -59,11 +68,10 @@ const ApiType = (props) => {
                   hideInheritedProperties={props.hideInheritedProperties}
                 />
               )}
-
-              {matchedApiType.examples && !props.doNotRenderExamples && (
+              {shouldRenderExamples && (
                 <Examples examples={matchedApiType.examples} />
               )}
-            </SideBySide>
+            </WrapperNode>
           )}
         </SpacingsStack>
       </FullWidthContainer>
