@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.11.0
+
+### Patch Changes
+
+- [#1486](https://github.com/commercetools/commercetools-docs-kit/pull/1486) [`b8da578e`](https://github.com/commercetools/commercetools-docs-kit/commit/b8da578e4a66cf8d77ce7ee22d2b8f8e7f061ced) Thanks [@timonrey](https://github.com/timonrey)! - We now provide three optional color presets from the kit that can be used to configure your website.
+
+- [#1479](https://github.com/commercetools/commercetools-docs-kit/pull/1479) [`8becd5fd`](https://github.com/commercetools/commercetools-docs-kit/commit/8becd5fd705b0ed14ba57002623409bff9a935a4) Thanks [@timonrey](https://github.com/timonrey)! - Tech maintenace for dependencies
+
+- Updated dependencies [[`3ab7b187`](https://github.com/commercetools/commercetools-docs-kit/commit/3ab7b187404347e96bea178fcea6fe9016dcab16)]:
+  - @commercetools-docs/ui-kit@19.11.0
+
 ## 19.10.0
 
 ### Minor Changes
