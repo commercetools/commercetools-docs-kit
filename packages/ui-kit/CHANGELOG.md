@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 19.11.0
+
+### Patch Changes
+
+- [#1485](https://github.com/commercetools/commercetools-docs-kit/pull/1485) [`3ab7b187`](https://github.com/commercetools/commercetools-docs-kit/commit/3ab7b187404347e96bea178fcea6fe9016dcab16) Thanks [@timonrey](https://github.com/timonrey)! - All images within the content are now rendered with the correct spacing at the edges.
+
 ## 19.10.0
 
 ### Patch Changes
