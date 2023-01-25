@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.3.0
+
+### Minor Changes
+
+- [#1462](https://github.com/commercetools/commercetools-docs-kit/pull/1462) [`2e4ea1cf`](https://github.com/commercetools/commercetools-docs-kit/commit/2e4ea1cfe7b7b2705664bec9e2bfbc42fe93b1d2) Thanks [@timonrey](https://github.com/timonrey)! - Enhancements for the request and response bodies: the content type is now displayed in the request and response body, the two bodies were adjusted to support images, and descriptions inside of the response body are now displayed next to the response code.
+
 ## 13.2.0
 
 ### Minor Changes

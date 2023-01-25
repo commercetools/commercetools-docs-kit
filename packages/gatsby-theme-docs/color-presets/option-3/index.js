@@ -1,5 +1,5 @@
 // Custom color
-const colorError35 = '#b3003e';
+const colorError35 = '#003037';
 const colorError35Faded = '#D9610D';
 
 exports.primaryColor = colorError35;
