@@ -1,5 +1,17 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 19.11.0
+
+### Minor Changes
+
+- [#1462](https://github.com/commercetools/commercetools-docs-kit/pull/1462) [`2e4ea1cf`](https://github.com/commercetools/commercetools-docs-kit/commit/2e4ea1cfe7b7b2705664bec9e2bfbc42fe93b1d2) Thanks [@timonrey](https://github.com/timonrey)! - Enhancements for the request and response bodies: the content type is now displayed in the request and response body, the two bodies were adjusted to support images, and descriptions inside of the response body are now displayed next to the response code.
+
+### Patch Changes
+
+- Updated dependencies [[`3ab7b187`](https://github.com/commercetools/commercetools-docs-kit/commit/3ab7b187404347e96bea178fcea6fe9016dcab16), [`2e4ea1cf`](https://github.com/commercetools/commercetools-docs-kit/commit/2e4ea1cfe7b7b2705664bec9e2bfbc42fe93b1d2)]:
+  - @commercetools-docs/ui-kit@19.11.0
+  - @commercetools-docs/gatsby-transformer-raml@13.3.0
+
 ## 19.10.0
 
 ### Patch Changes
