@@ -31,10 +31,12 @@ const ApiType = (props) => {
   const shouldRenderExamples =
     matchedApiType.examples && !props.doNotRenderExamples;
 
-  const WrapperNode =
-    shoudldRenderProperties && shouldRenderExamples
-      ? SideBySide
-      : React.Fragment;
+  /**
+   * When doNotRenderExamples prop is passed, it means that the <ApiType> component is never
+   * going to render both properties AND examples, meaning that there's no need to wrap these
+   * components into a SideBySide wrapper. A react fragment is enough.
+   */
+  const WrapperNode = props.doNotRenderExamples ? React.Fragment : SideBySide;
 
   if (matchedApiType.enumeration) {
     return (
