@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 19.11.1
+
+### Patch Changes
+
+- [#1487](https://github.com/commercetools/commercetools-docs-kit/pull/1487) [`44d13733`](https://github.com/commercetools/commercetools-docs-kit/commit/44d1373366c22f512de43cba972b4c08bdd227c5) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix UI issue with Api Type properties list displayed in Api Method page
+
 ## 19.11.0
 
 ### Minor Changes
