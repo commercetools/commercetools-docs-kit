@@ -295,11 +295,6 @@ module.exports = (themeOptions = {}) => {
           ],
         },
       },
-
-      /**
-       * The following plugin need to be last
-       */
-      'gatsby-plugin-meta-redirect',
     ].filter(Boolean),
   };
 };
