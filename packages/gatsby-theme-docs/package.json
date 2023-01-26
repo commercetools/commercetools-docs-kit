@@ -82,7 +82,7 @@
     "video.js": "7.20.3"
   },
   "devDependencies": {
-    "cosmiconfig": "^7.0.1",
+    "cosmiconfig": "^8.0.0",
     "gatsby": "4.24.4",
     "gatsby-cli": "4.24.0",
     "react": "17.0.2",

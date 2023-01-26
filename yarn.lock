@@ -2105,7 +2105,7 @@ __metadata:
     "@svgr/webpack": 6.4.0
     "@videojs/themes": ^1.0.1
     assert: 2.0.0
-    cosmiconfig: ^7.0.1
+    cosmiconfig: ^8.0.0
     docsearch.js: 2.6.3
     gatsby: 4.24.4
     gatsby-cli: 4.24.0
@@ -10282,6 +10282,18 @@ __metadata:
     path-type: ^4.0.0
     yaml: ^1.10.0
   checksum: 4be63e7117955fd88333d7460e4c466a90f556df6ef34efd59034d2463484e339666c41f02b523d574a797ec61f4a91918c5b89a316db2ea2f834e0d2d09465b
+  languageName: node
+  linkType: hard
+
+"cosmiconfig@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "cosmiconfig@npm:8.0.0"
+  dependencies:
+    import-fresh: ^3.2.1
+    js-yaml: ^4.1.0
+    parse-json: ^5.0.0
+    path-type: ^4.0.0
+  checksum: ff4cdf89ac1ae52e7520816622c21a9e04380d04b82d653f5139ec581aa4f7f29e096d46770bc76c4a63c225367e88a1dfa233ea791669a35101f5f9b972c7d1
   languageName: node
   linkType: hard
 
