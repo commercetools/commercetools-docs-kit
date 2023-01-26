@@ -28,12 +28,6 @@ const ReleaseNotesListTemplate = (props) => {
           pageData={props.data.contentPage}
         >
           <Markdown.TypographyPage>
-            <SEO
-              title={props.data.contentPage.title}
-              excludeFromSearchIndex={
-                props.data.contentPage.excludeFromSearchIndex
-              }
-            />
             <MDXProvider components={markdownComponents}>
               <div>
                 <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
@@ -92,6 +86,21 @@ ReleaseNotesListTemplate.propTypes = {
 };
 
 export default ReleaseNotesListTemplate;
+
+// eslint-disable-next-line react/prop-types
+export function Head({ data }) {
+  return (
+    // eslint-disable-next-line react/prop-types
+    <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
+      <SEO
+        // eslint-disable-next-line react/prop-types
+        title={data.contentPage.title}
+        // eslint-disable-next-line react/prop-types
+        excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+      />
+    </ThemeProvider>
+  );
+}
 
 export const query = graphql`
   query QueryReleaseOverviewPage($slug: String!) {

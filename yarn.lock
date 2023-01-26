@@ -1630,7 +1630,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.19.4
   resolution: "@babel/runtime@npm:7.19.4"
   dependencies:
@@ -2118,9 +2118,6 @@ __metadata:
     gatsby-plugin-manifest: 4.24.0
     gatsby-plugin-mdx: 3.20.0
     gatsby-plugin-meta-redirect: 1.1.1
-    gatsby-plugin-react-helmet: 5.24.0
-    gatsby-plugin-react-helmet-canonical-urls: 1.4.0
-    gatsby-plugin-remove-trailing-slashes: 4.19.0
     gatsby-plugin-sharp: 4.24.0
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.27
     gatsby-remark-copy-linked-files: 5.24.0
@@ -2142,7 +2139,6 @@ __metadata:
     raw-loader: 4.0.2
     react: 17.0.2
     react-dom: 17.0.2
-    react-helmet: 6.1.0
     react-intersection-observer: 9.4.0
     react-intl: ^5.25.1
     react-router-dom: 5.3.4
@@ -14656,41 +14652,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-react-helmet-canonical-urls@npm:1.4.0":
-  version: 1.4.0
-  resolution: "gatsby-plugin-react-helmet-canonical-urls@npm:1.4.0"
-  dependencies:
-    "@babel/runtime": ^7.3.1
-  peerDependencies:
-    gatsby-plugin-react-helmet: "*"
-    react-helmet: "*"
-  checksum: 165489e540707bb0c2d23e5a8180ec64afcb92733c29833d94ada6a9bc7c0dee3d426cf9810ced6bbad699525567701edd38d6392966360e032fbd5e8b35ca00
-  languageName: node
-  linkType: hard
-
-"gatsby-plugin-react-helmet@npm:5.24.0":
-  version: 5.24.0
-  resolution: "gatsby-plugin-react-helmet@npm:5.24.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-  peerDependencies:
-    gatsby: ^4.0.0-next
-    react-helmet: ^5.1.3 || ^6.0.0
-  checksum: 9f9c44b3bc664edecb05e975506de61c5b60cf621a34c9c5c14a8fcc1e7bd7f5ed34e51ce05085fcb1025cc3c95ce9ba6436a9c2125a22bbf357bee7cb2ae22f
-  languageName: node
-  linkType: hard
-
-"gatsby-plugin-remove-trailing-slashes@npm:4.19.0":
-  version: 4.19.0
-  resolution: "gatsby-plugin-remove-trailing-slashes@npm:4.19.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-  peerDependencies:
-    gatsby: ^4.0.0-next
-  checksum: 2d0937e89d62641b2d9438a5901bb26db52df79b8fb45117ef9d6050c61eaab09ab2f79eacbb0b6b34e825e69a719e7b68d2ce3ba49096a6e6bc067dfa5e225c
-  languageName: node
-  linkType: hard
-
 "gatsby-plugin-sharp@npm:4.24.0":
   version: 4.24.0
   resolution: "gatsby-plugin-sharp@npm:4.24.0"
@@ -22696,33 +22657,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-fast-compare@npm:^3.1.1":
-  version: 3.2.0
-  resolution: "react-fast-compare@npm:3.2.0"
-  checksum: 8ef272c825ae329f61633ce4ce7f15aa5b84e5214d88bc0823880236e03e985a13195befa2c7a4eda7db3b017dc7985729152d88445823f652403cf36c2b86aa
-  languageName: node
-  linkType: hard
-
 "react-from-dom@npm:0.6.2":
   version: 0.6.2
   resolution: "react-from-dom@npm:0.6.2"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
   checksum: 5d66b0c1eb591247a73bed9487a04e390abb4ad6c65e6cea7bfdd35070685b90a5da720de30915b963aba3f4628135d6db4c93da40cd5114c8bbe34a9725a83e
-  languageName: node
-  linkType: hard
-
-"react-helmet@npm:6.1.0":
-  version: 6.1.0
-  resolution: "react-helmet@npm:6.1.0"
-  dependencies:
-    object-assign: ^4.1.1
-    prop-types: ^15.7.2
-    react-fast-compare: ^3.1.1
-    react-side-effect: ^2.1.0
-  peerDependencies:
-    react: ">=16.3.0"
-  checksum: a4998479dab7fc1c2799eddefb1870a9d881b5f71cfdf97979a9882e42f4bb50402d55335f308f461e735e01a06f46b16cc7b4e6bcb22c7a4a6f85a753c5c106
   languageName: node
   linkType: hard
 
@@ -22868,15 +22808,6 @@ __metadata:
     react: 0.0.0-experimental-c8b778b7f-20220825
     webpack: ^5.59.0
   checksum: 55fc67030b775ededaafc149aa17ebdac6cd4df7f9d61f194f3e3d98bb5cf83a67bd313ce25b9c597df55fa88162840690ba2b61e22d36532478a008c5209385
-  languageName: node
-  linkType: hard
-
-"react-side-effect@npm:^2.1.0":
-  version: 2.1.1
-  resolution: "react-side-effect@npm:2.1.1"
-  peerDependencies:
-    react: ^16.3.0 || ^17.0.0
-  checksum: 324511ea8f6669555e166b4af280cdf46034bf0e33c486711e3ce17f88f6f21fed17055098408be1347657d0cbcd614bca944cf9f8e4ecfa96a21d13893fe9fc
   languageName: node
   linkType: hard
 

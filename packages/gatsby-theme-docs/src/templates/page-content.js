@@ -33,14 +33,6 @@ const PageContentTemplate = (props) => (
             }}
           >
             <Markdown.TypographyPage>
-              <SEO
-                title={
-                  props.pageContext.shortTitle || props.data.contentPage.title
-                }
-                excludeFromSearchIndex={
-                  props.data.contentPage.excludeFromSearchIndex
-                }
-              />
               {/* This wrapper div is important to ensure the vertical space */}
               <div>
                 <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
@@ -77,6 +69,21 @@ PageContentTemplate.propTypes = {
   }).isRequired,
 };
 export default PageContentTemplate;
+
+// eslint-disable-next-line react/prop-types
+export function Head({ data, pageContext }) {
+  return (
+    // eslint-disable-next-line react/prop-types
+    <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
+      <SEO
+        // eslint-disable-next-line react/prop-types
+        title={pageContext.shortTitle || data.contentPage.title}
+        // eslint-disable-next-line react/prop-types
+        excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+      />
+    </ThemeProvider>
+  );
+}
 
 export const query = graphql`
   query QueryContentPage($slug: String!) {

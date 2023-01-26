@@ -33,6 +33,7 @@ module.exports = (themeOptions = {}) => {
   validateThemeOptions(pluginOptions);
 
   return {
+    trailingSlash: 'never',
     siteMetadata: {
       author: 'commercetools',
       productionHostname,
@@ -194,16 +195,6 @@ module.exports = (themeOptions = {}) => {
        * Plugins for general functionality
        */
       'gatsby-plugin-sharp',
-      'gatsby-plugin-react-helmet',
-      pluginOptions.enableCanonicalUrls !== false && {
-        resolve: 'gatsby-plugin-react-helmet-canonical-urls',
-        options: {
-          siteUrl: `https://${productionHostname}`,
-          noTrailingSlash: true,
-          noHash: true,
-          noQueryString: true,
-        },
-      },
       'gatsby-plugin-emotion',
       {
         resolve: 'gatsby-plugin-manifest',
@@ -306,9 +297,8 @@ module.exports = (themeOptions = {}) => {
       },
 
       /**
-       * The following plugins need to be last
+       * The following plugin need to be last
        */
-      'gatsby-plugin-remove-trailing-slashes',
       'gatsby-plugin-meta-redirect',
     ].filter(Boolean),
   };
