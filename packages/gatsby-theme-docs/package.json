@@ -49,7 +49,6 @@
     "gatsby-plugin-image": "2.24.0",
     "gatsby-plugin-manifest": "4.24.0",
     "gatsby-plugin-mdx": "3.20.0",
-    "gatsby-plugin-meta-redirect": "1.1.1",
     "gatsby-plugin-sharp": "4.24.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.27",
     "gatsby-remark-copy-linked-files": "5.24.0",

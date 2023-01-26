@@ -2117,7 +2117,6 @@ __metadata:
     gatsby-plugin-image: 2.24.0
     gatsby-plugin-manifest: 4.24.0
     gatsby-plugin-mdx: 3.20.0
-    gatsby-plugin-meta-redirect: 1.1.1
     gatsby-plugin-sharp: 4.24.0
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.27
     gatsby-remark-copy-linked-files: 5.24.0
@@ -14193,7 +14192,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^7.0.0, fs-extra@npm:^7.0.1":
+"fs-extra@npm:^7.0.1":
   version: 7.0.1
   resolution: "fs-extra@npm:7.0.1"
   dependencies:
@@ -14630,15 +14629,6 @@ __metadata:
     react: ^16.9.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
   checksum: cd9c68e250f8050233d9fb2d1908df6f66454933382ad33cf749d1d4a8c6d948d368366c2cad473124c8fb9e13a3ad967918c0cb45b700fcf3d380da9b4423df
-  languageName: node
-  linkType: hard
-
-"gatsby-plugin-meta-redirect@npm:1.1.1":
-  version: 1.1.1
-  resolution: "gatsby-plugin-meta-redirect@npm:1.1.1"
-  dependencies:
-    fs-extra: ^7.0.0
-  checksum: acd6d54ea2f1ea216dab1767952ef6df2fc54471f551e12f8b56a8220114eb77831d96b0ddfbb3eb349440a74bd895bec273a69f9f867d116d2b107354fce519
   languageName: node
   linkType: hard
 
