@@ -1,5 +1,13 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 19.11.1
+
+### Patch Changes
+
+- [#1490](https://github.com/commercetools/commercetools-docs-kit/pull/1490) [`00ebe7dd`](https://github.com/commercetools/commercetools-docs-kit/commit/00ebe7dd31416d93c506816cd3156177eca483f1) Thanks [@timonrey](https://github.com/timonrey)! - Cleanup of unused gatsby plugins in the configuration.
+
+- [#1484](https://github.com/commercetools/commercetools-docs-kit/pull/1484) [`495d1d0a`](https://github.com/commercetools/commercetools-docs-kit/commit/495d1d0a98adec7b4db69c7c48fd51cbe89747c8) Thanks [@timonrey](https://github.com/timonrey)! - The website is now using Gatsby's built in support for modifying the document head and to configure trailing slashes instead of using Gatsby plugins for these purposes.
+
 ## 19.11.0
 
 ### Patch Changes
