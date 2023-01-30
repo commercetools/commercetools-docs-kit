@@ -73,7 +73,7 @@ export function Head({ data }) {
 }
 
 export const query = graphql`
-  query QueryReleaseDetailPage($slug: String!) {
+  query ($slug: String!) {
     releaseNotePage(slug: { eq: $slug }) {
       title
       websitePrimaryColor
