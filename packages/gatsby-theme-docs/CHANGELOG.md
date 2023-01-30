@@ -1,5 +1,13 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 20.0.1
+
+### Patch Changes
+
+- [#1494](https://github.com/commercetools/commercetools-docs-kit/pull/1494) [`968578f2`](https://github.com/commercetools/commercetools-docs-kit/commit/968578f2724ce9e8adbb3d2d4360565513fd2c3e) Thanks [@timonrey](https://github.com/timonrey)! - Remove unused Gatsby plugin dependencies
+
+- [#1492](https://github.com/commercetools/commercetools-docs-kit/pull/1492) [`dd9c0d6a`](https://github.com/commercetools/commercetools-docs-kit/commit/dd9c0d6afc71c73cd0032eda9c78a827b3379513) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Use un-named query for templates to avoid mdx2 errors
+
 ## 20.0.0
 
 ### Major Changes
