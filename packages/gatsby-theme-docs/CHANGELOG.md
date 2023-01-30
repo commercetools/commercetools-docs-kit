@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 20.0.0
+
+### Major Changes
+
+- [#1459](https://github.com/commercetools/commercetools-docs-kit/pull/1459) [`20e0fce1`](https://github.com/commercetools/commercetools-docs-kit/commit/20e0fce158aeb3e3983587330416cb7283a6e9c8) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Migrate theme packages and websites to MDX v2. Deprecate gatsby-transformer-mdx-introspection package
+
+### Patch Changes
+
+- Updated dependencies [[`20e0fce1`](https://github.com/commercetools/commercetools-docs-kit/commit/20e0fce158aeb3e3983587330416cb7283a6e9c8)]:
+  - @commercetools-docs/ui-kit@20.0.0
+
 ## 19.11.1
 
 ### Patch Changes
