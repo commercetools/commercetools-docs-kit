@@ -1,11 +1,16 @@
+---
+title: Nested markdown in blockquote
+---
+
 > ## This is a header.
 >
 > 1.  This is the first list item.
 > 2.  This is the second list item.
 >
 > Here's some example code:
->
->     return shell_exec("echo $input | $markdown_script");
+>```
+>return shell_exec("echo $input | $markdown_script");
+>```
 
 Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
 in chapters 12--14"). Three dots ... are converted to an ellipsis.

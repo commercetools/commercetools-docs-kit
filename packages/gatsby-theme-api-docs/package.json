@@ -21,7 +21,6 @@
     "raml-spec"
   ],
   "dependencies": {
-    "@commercetools-docs/gatsby-transformer-mdx-introspection": "15.0.5",
     "@commercetools-docs/gatsby-transformer-raml": "13.3.0",
     "@commercetools-docs/ui-kit": "19.11.0",
     "@commercetools-uikit/design-system": "^15.3.0",

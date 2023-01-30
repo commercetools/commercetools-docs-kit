@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNotesDetail from '../layouts/release-notes-detail';
 import LayoutReleaseNoteBody from '../layouts/internals/layout-release-note-body';
@@ -29,7 +28,7 @@ const ReleaseNotesDetailTemplate = (props) => (
           <Markdown.TypographyPage>
             <div>
               <LayoutReleaseNoteBody {...props.data.releaseNotePage}>
-                <MDXRenderer>{props.data.releaseNotePage.body}</MDXRenderer>
+                {props.children}
               </LayoutReleaseNoteBody>
             </div>
           </Markdown.TypographyPage>
@@ -51,6 +50,7 @@ ReleaseNotesDetailTemplate.propTypes = {
       body: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 export default ReleaseNotesDetailTemplate;

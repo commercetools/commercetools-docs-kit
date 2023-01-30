@@ -2,7 +2,18 @@
 
 // You can edit this file and additionally inject custom components into MDX.
 // However, do not forget to import the './addon-components.js' file!
-
+import { ConnectedSquareIcon } from '@commercetools-uikit/icons';
 import addonComponents from './addon-components';
+import {
+  CardBannerMcSvgIcon as CardBannerMcIcon,
+  CardBannerOssSvgIcon as CardBannerOSSIcon,
+  CardBannerOssSvgIcon as CardBannerPlatformIcon,
+} from '../../../icons';
 
-export default { ...addonComponents };
+export default {
+  ...addonComponents,
+  DummyIcon: ConnectedSquareIcon,
+  CardBannerPlatformIcon,
+  CardBannerMcIcon,
+  CardBannerOSSIcon,
+};

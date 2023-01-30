@@ -5,6 +5,15 @@ const defaultOptions = require('./utils/default-options');
 
 const isProd = process.env.NODE_ENV === 'production';
 
+const wrapESMPlugin = (name) =>
+  function wrapESM(opts) {
+    return async (...args) => {
+      const mod = await import(name);
+      const plugin = mod.default(opts);
+      return plugin(...args);
+    };
+  };
+
 // Proxy env variables needed for `gatsby-browser.js` and `gatsby-ssr.js`.
 // https://www.gatsbyjs.org/docs/environment-variables/#client-side-javascript
 const proxyEnvironmentVariables = ['NODE_ENV', 'VERCEL_GITHUB_COMMIT_SHA'];
@@ -111,6 +120,14 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/content`),
         },
       },
+      // Topics content pages (.mdx)
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'topics',
+          path: path.resolve(`./src/topics`),
+        },
+      },
       // Release notes
       {
         resolve: 'gatsby-source-filesystem',
@@ -138,18 +155,21 @@ module.exports = (themeOptions = {}) => {
             '.mdx',
             // ".md"
           ],
-          // implement commonmark for stricter compatibility, e.g. backslash transformed to newlines
-          commonmark: true,
-          // List of remark plugins, that transform the markdown AST.
-          remarkPlugins: [
-            require('remark-emoji'),
-            require('./src/plugins/remark-mdx-mermaid'),
-          ],
-          // List of rehype plugins, that transform the HTML AST.
-          rehypePlugins: [
-            require('rehype-slug'),
-            require('./src/plugins/rehype-mdx-section'),
-          ],
+          mdxOptions: {
+            // List of remark plugins, that transform the markdown AST.
+            remarkPlugins: [
+              wrapESMPlugin('remark-mdx-code-meta'),
+              wrapESMPlugin('remark-emoji'),
+              require('./src/plugins/remark-mdx-mermaid'),
+              require('remark-gfm'),
+            ],
+            // List of rehype plugins, that transform the HTML AST.
+            rehypePlugins: [
+              wrapESMPlugin('rehype-slug'),
+              require('./src/plugins/rehype-mdx-section'),
+            ],
+            development: true,
+          },
           gatsbyRemarkPlugins: [
             // Convert absolute image file paths to relative. Required for remark-images to work.
             // https://www.gatsbyjs.org/packages/gatsby-remark-relative-images/?=gatsby-remark-relative-images
@@ -184,10 +204,9 @@ module.exports = (themeOptions = {}) => {
                 destinationDir: 'files',
               },
             },
-            // 'gatsby-remark-rewrite-relative-links',
+            'gatsby-remark-images',
+            'gatsby-remark-copy-linked-files',
           ],
-          // workaround https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-510153237
-          plugins: ['gatsby-remark-images', 'gatsby-remark-copy-linked-files'],
         },
       },
 
