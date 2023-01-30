@@ -22,14 +22,6 @@ const HomepageTemplate = (props) => (
         >
           <MDXProvider components={markdownComponents}>
             <Markdown.TypographyPage>
-              <SEO
-                title={
-                  props.pageContext.shortTitle || props.data.contentPage.title
-                }
-                excludeFromSearchIndex={
-                  props.data.contentPage.excludeFromSearchIndex
-                }
-              />
               {/* This wrapper div is important to ensure the vertical space */}
               <div>{props.children}</div>
             </Markdown.TypographyPage>
@@ -62,6 +54,21 @@ HomepageTemplate.propTypes = {
   children: PropTypes.any.isRequired,
 };
 export default HomepageTemplate;
+
+// eslint-disable-next-line react/prop-types
+export function Head({ data, pageContext }) {
+  return (
+    // eslint-disable-next-line react/prop-types
+    <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
+      <SEO
+        // eslint-disable-next-line react/prop-types
+        title={pageContext.shortTitle || data.contentPage.title}
+        // eslint-disable-next-line react/prop-types
+        excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+      />
+    </ThemeProvider>
+  );
+}
 
 export const query = graphql`
   query QueryHomepage($slug: String!, $heroBackgroundRelativePath: String!) {

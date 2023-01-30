@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "19.11.0",
+  "version": "19.11.1",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -72,7 +72,6 @@
     "prop-types": "15.8.1",
     "qss": "2.0.3",
     "raw-loader": "4.0.2",
-    "react-helmet": "6.1.0",
     "react-intersection-observer": "9.4.0",
     "react-intl": "^5.25.1",
     "react-router-dom": "5.3.4",
@@ -90,7 +89,7 @@
     "video.js": "7.20.3"
   },
   "devDependencies": {
-    "cosmiconfig": "^7.0.1",
+    "cosmiconfig": "^8.0.0",
     "gatsby": "4.24.4",
     "gatsby-cli": "4.24.0",
     "react": "17.0.2",

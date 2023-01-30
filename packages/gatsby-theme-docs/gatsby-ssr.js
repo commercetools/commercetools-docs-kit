@@ -39,6 +39,7 @@ export const replaceRenderer = ({
   bodyComponent,
   replaceBodyHTMLString,
   setHeadComponents,
+  setHtmlAttributes,
 }) => {
   // https://emotion.sh/docs/ssr#on-server
   // https://emotion.sh/docs/ssr#gatsby
@@ -56,6 +57,7 @@ export const replaceRenderer = ({
     .replace(lobotomizedOwlSelectorRegex, patchedLobotomizedOwlSelector);
 
   replaceBodyHTMLString(patchedHtml);
+  setHtmlAttributes({ lang: 'en' });
   setHeadComponents([
     <link
       key="favicon-dark"
