@@ -55,8 +55,8 @@ export const useTypeLocations = () => {
         ) {
           nodes {
             slug
-            component
             shortcodeOccurrence {
+              component
               attributes {
                 name
                 value
