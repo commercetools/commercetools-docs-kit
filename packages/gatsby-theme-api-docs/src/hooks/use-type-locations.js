@@ -12,6 +12,9 @@ const convertComponentInMdxToTypeLocations = (data) => {
   if (!locationsAreIndexed) {
     data.allContentPage.nodes.forEach((node) => {
       node.shortcodeOccurrence.forEach((occurrence) => {
+        if (occurrence.component !== 'ApiType') {
+          return;
+        }
         const apiKey = occurrence.attributes.find(
           (attribute) => attribute.name === 'apiKey'
         ).value;
@@ -53,6 +56,7 @@ export const useTypeLocations = () => {
           nodes {
             slug
             shortcodeOccurrence {
+              component
               attributes {
                 name
                 value

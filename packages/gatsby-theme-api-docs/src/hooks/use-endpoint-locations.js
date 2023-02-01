@@ -12,6 +12,9 @@ const convertComponentInMdxToEndpointLocations = (data) => {
   if (!locationsAreIndexed) {
     data.allContentPage.nodes.forEach((node) => {
       node.shortcodeOccurrence.forEach((occurrence) => {
+        if (occurrence.component !== 'ApiEndpoint') {
+          return;
+        }
         const key = occurrence.attributes.find(
           (attribute) => attribute.name === 'apiKey'
         ).value;
@@ -63,6 +66,7 @@ export const useEndpointLocations = () => {
           nodes {
             slug
             shortcodeOccurrence {
+              component
               attributes {
                 name
                 value
