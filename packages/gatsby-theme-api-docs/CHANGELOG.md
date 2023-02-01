@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 20.0.2
+
+### Patch Changes
+
+- [#1495](https://github.com/commercetools/commercetools-docs-kit/pull/1495) [`1f8395f1`](https://github.com/commercetools/commercetools-docs-kit/commit/1f8395f15b81d5ceca475c8fcddb443fa2bdeefc) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Ensure api location and type location are correctly loaded and filtered
+
 ## 20.0.0
 
 ### Major Changes
