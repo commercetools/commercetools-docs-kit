@@ -88,12 +88,20 @@ module.exports = (themeOptions = {}) => {
           ignore: pluginOptions.overrideDefaultConfigurationData,
         },
       },
-      // Default content pages (.mdx)
+      // Default content pages provided by this theme package directly (.mdx)
       {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'internalContent',
           path: path.join(__dirname, `./src/content`),
+        },
+      },
+      // Site provided content pages in the site content folder (.mdx)
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'content',
+          path: path.resolve(`./src/content`),
         },
       },
       // Site provided configuration data files (.yaml)
@@ -104,7 +112,7 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/data`),
         },
       },
-      // Assets (e.g. images) used from the markdown pages
+      // Site provided assets (e.g. images) used from the markdown pages
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -112,15 +120,7 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/images`),
         },
       },
-      // Main content pages (.mdx)
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'content',
-          path: path.resolve(`./src/content`),
-        },
-      },
-      // Topics content pages (.mdx)
+      // Site provided markdown fragments to be included in pages (.mdx)
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -128,7 +128,7 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/topics`),
         },
       },
-      // Release notes
+      // Site provided release notes
       {
         resolve: 'gatsby-source-filesystem',
         options: {
