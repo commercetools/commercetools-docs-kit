@@ -274,6 +274,12 @@ exports.onCreateNode = async (
   const isReleaseNotesPage =
     parent.internal.mediaType === 'text/mdx' &&
     parent.sourceInstanceName === 'releaseNotes';
+
+  const isContentPage =
+    parent.internal.mediaType === 'text/mdx' &&
+    (parent.sourceInstanceName === 'content' ||
+      parent.sourceInstanceName === 'internalContent');
+
   if (isReleaseNotesPage) {
     const excerptSplit = node.body.split('{/* more */}');
     const releaseNotesFieldData = {
@@ -310,55 +316,57 @@ exports.onCreateNode = async (
     return;
   }
 
-  // https://github.com/unifiedjs/unified#processorparsefile
-  const nodeBodyAst = processor.parse(node.body);
-  // If not explicitly handled, always fall back to build the page as a "content" page.
-  // This is useful in case the website requires additional MDX pages located in
-  // other file system directories, and thus with different `sourceInstanceName` names.
-  const contentPageFieldData = {
-    slug: trimTrailingSlash(slug) || '/',
-    title: node.frontmatter.title,
-    websitePrimaryColor: colorPreset.value.primaryColor,
-    excludeFromSearchIndex:
-      // frontmatter can only exclude in an otherwise not excluded site,
-      // but it can't include in a generally excluded site
-      Boolean(node.frontmatter.excludeFromSearchIndex),
-    allowWideContentLayout: Boolean(node.frontmatter.wideLayout),
-    beta: Boolean(node.frontmatter.beta),
-    navLevels: node.frontmatter.navLevels
-      ? Number(node.frontmatter.navLevels)
-      : 3,
-    showTimeToRead: node.frontmatter.showTimeToRead
-      ? Boolean(node.frontmatter.showTimeToRead)
-      : false,
-    timeToRead: node.frontmatter.timeToRead
-      ? Number(node.frontmatter.timeToRead)
-      : 0,
-    shortcodeOccurrence: extractShortcodeOccurrence(
-      ['ApiType', 'ApiEndpoint'],
-      nodeBodyAst
-    ),
-    tableOfContents: await generateToC(nodeBodyAst),
-  };
+  if (isContentPage) {
+    // https://github.com/unifiedjs/unified#processorparsefile
+    const nodeBodyAst = processor.parse(node.body);
+    // If not explicitly handled, always fall back to build the page as a "content" page.
+    // This is useful in case the website requires additional MDX pages located in
+    // other file system directories, and thus with different `sourceInstanceName` names.
+    const contentPageFieldData = {
+      slug: trimTrailingSlash(slug) || '/',
+      title: node.frontmatter.title,
+      websitePrimaryColor: colorPreset.value.primaryColor,
+      excludeFromSearchIndex:
+        // frontmatter can only exclude in an otherwise not excluded site,
+        // but it can't include in a generally excluded site
+        Boolean(node.frontmatter.excludeFromSearchIndex),
+      allowWideContentLayout: Boolean(node.frontmatter.wideLayout),
+      beta: Boolean(node.frontmatter.beta),
+      navLevels: node.frontmatter.navLevels
+        ? Number(node.frontmatter.navLevels)
+        : 3,
+      showTimeToRead: node.frontmatter.showTimeToRead
+        ? Boolean(node.frontmatter.showTimeToRead)
+        : false,
+      timeToRead: node.frontmatter.timeToRead
+        ? Number(node.frontmatter.timeToRead)
+        : 0,
+      shortcodeOccurrence: extractShortcodeOccurrence(
+        ['ApiType', 'ApiEndpoint'],
+        nodeBodyAst
+      ),
+      tableOfContents: await generateToC(nodeBodyAst),
+    };
 
-  actions.createNode({
-    ...contentPageFieldData,
-    // Required fields
-    id: createNodeId(`${node.id} >>> ContentPage`),
-    parent: node.id,
-    children: [],
-    internal: {
-      type: 'ContentPage',
-      contentDigest: createContentDigest(contentPageFieldData),
-      content: JSON.stringify(contentPageFieldData),
-      description: 'Content Pages',
-      contentFilePath: node.internal.contentFilePath,
-    },
-  });
-  actions.createParentChildLink({
-    parent,
-    child: node,
-  });
+    actions.createNode({
+      ...contentPageFieldData,
+      // Required fields
+      id: createNodeId(`${node.id} >>> ContentPage`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: 'ContentPage',
+        contentDigest: createContentDigest(contentPageFieldData),
+        content: JSON.stringify(contentPageFieldData),
+        description: 'Content Pages',
+        contentFilePath: node.internal.contentFilePath,
+      },
+    });
+    actions.createParentChildLink({
+      parent,
+      child: node,
+    });
+  }
 };
 
 function generateReleaseNoteSlug(node) {
