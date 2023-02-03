@@ -2093,44 +2093,44 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cbor-extract/cbor-extract-darwin-arm64@npm:2.0.0":
-  version: 2.0.0
-  resolution: "@cbor-extract/cbor-extract-darwin-arm64@npm:2.0.0"
+"@cbor-extract/cbor-extract-darwin-arm64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@cbor-extract/cbor-extract-darwin-arm64@npm:2.1.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@cbor-extract/cbor-extract-darwin-x64@npm:2.0.0":
-  version: 2.0.0
-  resolution: "@cbor-extract/cbor-extract-darwin-x64@npm:2.0.0"
+"@cbor-extract/cbor-extract-darwin-x64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@cbor-extract/cbor-extract-darwin-x64@npm:2.1.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@cbor-extract/cbor-extract-linux-arm64@npm:2.0.0":
-  version: 2.0.0
-  resolution: "@cbor-extract/cbor-extract-linux-arm64@npm:2.0.0"
+"@cbor-extract/cbor-extract-linux-arm64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@cbor-extract/cbor-extract-linux-arm64@npm:2.1.1"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@cbor-extract/cbor-extract-linux-arm@npm:2.0.0":
-  version: 2.0.0
-  resolution: "@cbor-extract/cbor-extract-linux-arm@npm:2.0.0"
+"@cbor-extract/cbor-extract-linux-arm@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@cbor-extract/cbor-extract-linux-arm@npm:2.1.1"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@cbor-extract/cbor-extract-linux-x64@npm:2.0.0":
-  version: 2.0.0
-  resolution: "@cbor-extract/cbor-extract-linux-x64@npm:2.0.0"
+"@cbor-extract/cbor-extract-linux-x64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@cbor-extract/cbor-extract-linux-x64@npm:2.1.1"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@cbor-extract/cbor-extract-win32-x64@npm:2.0.0":
-  version: 2.0.0
-  resolution: "@cbor-extract/cbor-extract-win32-x64@npm:2.0.0"
+"@cbor-extract/cbor-extract-win32-x64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@cbor-extract/cbor-extract-win32-x64@npm:2.1.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -9849,16 +9849,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cbor-extract@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "cbor-extract@npm:2.0.2"
+"cbor-extract@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "cbor-extract@npm:2.1.1"
   dependencies:
-    "@cbor-extract/cbor-extract-darwin-arm64": 2.0.0
-    "@cbor-extract/cbor-extract-darwin-x64": 2.0.0
-    "@cbor-extract/cbor-extract-linux-arm": 2.0.0
-    "@cbor-extract/cbor-extract-linux-arm64": 2.0.0
-    "@cbor-extract/cbor-extract-linux-x64": 2.0.0
-    "@cbor-extract/cbor-extract-win32-x64": 2.0.0
+    "@cbor-extract/cbor-extract-darwin-arm64": 2.1.1
+    "@cbor-extract/cbor-extract-darwin-x64": 2.1.1
+    "@cbor-extract/cbor-extract-linux-arm": 2.1.1
+    "@cbor-extract/cbor-extract-linux-arm64": 2.1.1
+    "@cbor-extract/cbor-extract-linux-x64": 2.1.1
+    "@cbor-extract/cbor-extract-win32-x64": 2.1.1
     node-gyp: latest
     node-gyp-build-optional-packages: 5.0.3
   dependenciesMeta:
@@ -9874,19 +9874,21 @@ __metadata:
       optional: true
     "@cbor-extract/cbor-extract-win32-x64":
       optional: true
-  checksum: e50299622e33d179a438e413e202e2bc603d66e4860901f906e56902a4c2547e7fd0a81c7352eaf6701f26506eaf94d35cd278ff10027d447d56621d513fafbe
+  bin:
+    download-cbor-prebuilds: bin/download-prebuilds.js
+  checksum: 283d9cdb3c716b171b5ad8666673f4ac373f975b51d9a38233d280c6f9381d66c6af4c011a561d993c4be6e427e34681bc3c5af194b9da0c9ab3401d424b7988
   languageName: node
   linkType: hard
 
-"cbor-x@npm:^1.3.1":
-  version: 1.4.1
-  resolution: "cbor-x@npm:1.4.1"
+"cbor-x@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "cbor-x@npm:1.5.1"
   dependencies:
-    cbor-extract: ^2.0.2
+    cbor-extract: ^2.1.1
   dependenciesMeta:
     cbor-extract:
       optional: true
-  checksum: c71eac36f72f86efb0c69ef98c8253f9c2100509221bddfe36b6bfa441393a1278bdbb28b84d50a80b6de7676a3f9ce517f26fc2f6b02ff8bd230569af5e54d8
+  checksum: e4ff6012194e93739a36027a2d8abbe4e98f62c003c77896bed1c22bf29782fe371480c7db37a0fc288a1a56cb0b711e48072ed6f42d51bdf96395a1ed01bcea
   languageName: node
   linkType: hard
 
