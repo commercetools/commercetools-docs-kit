@@ -611,6 +611,12 @@ exports.onCreateWebpackConfig = (
     });
   }
 
+  // improve build performance in memory critical stage of builds by not generating source maps
+  // (yes, this can make errors cryptic, we will have to revisit if it's firing back too much)
+  if (stage === 'build-html' || stage === `build-javascript`) {
+    config.devtool = false;
+  }
+
   config.resolve = {
     ...config.resolve,
     // Add support for absolute imports
