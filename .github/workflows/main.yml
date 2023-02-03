@@ -64,6 +64,27 @@ jobs:
           ENABLE_SEARCH: 'true'
           NODE_OPTIONS: '--max-old-space-size=6144'
 
+      - name: Deploy to Vercel (Preview)
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        id: deploy-to-vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-project-name: commercetools-docs-kit
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+          scope: commercetools
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+          # there are length restrictions to domains and only *.commercetools.vercel.app works
+          # reliably for generated subdomains. No branch name domain because branch names can be long.
+          alias-domains: |
+            docskit-sha-${{ github.sha }}.commercetools.vercel.app
+            docskit-pr-{{PR_NUMBER}}.commercetools.vercel.app
+
+      - name: Set DEPLOY_URL variable (Preview)
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        run: echo 'DEPLOY_URL=${{ steps.deploy-to-vercel.outputs.preview-url }}' >> "$GITHUB_ENV"
+
       - name: Running linters and tests
         run: |
           yarn jest --projects jest.{eslint,test}.config.js \
@@ -89,51 +110,6 @@ jobs:
       - name: Set DEPLOY_URL variable (Production)
         if: ${{ env.DEPLOY_ENV == 'Production' }}
         run: echo 'DEPLOY_URL=${{ steps.deploy-to-vercel-production.outputs.preview-url }}' >> "$GITHUB_ENV"
-
-      - name: Initialize GitHub Deployment
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
-        uses: bobheadxi/deployments@v1.1.0
-        id: start-deployment
-        with:
-          step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
-          env: ${{ env.DEPLOY_ENV }}
-          ref: ${{ github.head_ref }}
-
-      - name: Deploy to Vercel (Preview)
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
-        id: deploy-to-vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-project-name: commercetools-docs-kit
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          scope: commercetools
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-          # there are length restrictions to domains and only *.commercetools.vercel.app works
-          # reliably for generated subdomains. No branch name domain because branch names can be long.
-          alias-domains: |
-            docskit-sha-${{ github.sha }}.commercetools.vercel.app
-            docskit-pr-{{PR_NUMBER}}.commercetools.vercel.app
-
-      - name: Set DEPLOY_URL variable (Preview)
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
-        run: echo 'DEPLOY_URL=${{ steps.deploy-to-vercel.outputs.preview-url }}' >> "$GITHUB_ENV"
-
-      - name: Update GitHub Deployment Status
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
-        uses: bobheadxi/deployments@v1.1.0
-        id: finish_deployment
-        with:
-          step: finish
-          override: false
-          auto_inactive: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ job.status }}
-          env: ${{ steps.start-deployment.outputs.env }}
-          env_url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
-          deployment_id: ${{ steps.start-deployment.outputs.deployment_id }}
 
       - name: Running Visual Regression Tests
         run: yarn percy snapshot ./public
