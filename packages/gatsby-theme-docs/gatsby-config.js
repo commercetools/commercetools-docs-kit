@@ -214,7 +214,10 @@ module.exports = (themeOptions = {}) => {
        * Plugins for general functionality
        */
       'gatsby-plugin-sharp',
-      'gatsby-plugin-emotion',
+      {
+        resolve: 'gatsby-plugin-emotion',
+        options: { sourceMap: false },
+      },
       {
         resolve: 'gatsby-plugin-manifest',
         options: {
