@@ -1,6 +1,7 @@
 // loaded via require because we use the pre-ESM version at the moment.
 // to be changed once upgraded to a latest version
 const githubSlugger = require('github-slugger');
+const sanitizeSlug = require('./slug-sanitize');
 const slugger = githubSlugger();
 
 async function generateToC(ast, maxDepth = 6) {
@@ -21,7 +22,7 @@ function processToC(node, current, toString) {
       current.title = toString(node);
       const nodeSlug = slugger.slug(current.title);
       // remove the trailing dash(es) or underscore(s)
-      current.url = `#${nodeSlug.replace(/[-_]+$/, '')}`;
+      current.url = `#${sanitizeSlug(nodeSlug)}`;
       return current;
     }
 

@@ -15,12 +15,15 @@ const slugs = new Slugger();
  * TODO: ehnancement: add the possibility of passing in a 'options.postProcess' function to be able to sanitize
  * the slugs with a custom function implementation
  */
-module.exports = () => (tree) => {
-  slugs.reset();
-  visit(tree, 'element', (node) => {
-    if (headingRank(node) && node.properties && !hasProperty(node, 'id')) {
-      const nodeSlug = slugs.slug(toString(node));
-      node.properties.id = nodeSlug.replace(/[-_]+$/, '');
-    }
-  });
-};
+module.exports =
+  (options = {}) =>
+  (tree) => {
+    slugs.reset();
+    const postProcess = options.postProcess || ((input) => input);
+    visit(tree, 'element', (node) => {
+      if (headingRank(node) && node.properties && !hasProperty(node, 'id')) {
+        const nodeSlug = slugs.slug(toString(node));
+        node.properties.id = postProcess(nodeSlug);
+      }
+    });
+  };
