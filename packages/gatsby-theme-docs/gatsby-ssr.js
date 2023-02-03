@@ -8,7 +8,7 @@ import { renderToString } from 'react-dom/server';
 import { withPrefix } from 'gatsby';
 // NOTE: prefer importing specific module (https://github.com/gatsbyjs/gatsby/pull/35985)
 // This might be related to the error `Reading from "bun:ffi" is not handled by plugins (Unhandled scheme)`.
-import { createContentDigest } from 'gatsby-core-utils/dist/create-content-digest';
+import { createContentDigest } from 'gatsby-core-utils';
 import createEmotionServer from '@emotion/server/create-instance';
 import { CacheProvider } from '@emotion/react';
 import { createDocsCache, docsCacheKey } from './utils/create-emotion-cache';

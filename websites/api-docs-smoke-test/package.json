@@ -20,9 +20,9 @@
     "@commercetools-docs/gatsby-theme-api-docs": "20.0.2",
     "@commercetools-docs/gatsby-theme-docs": "20.0.1",
     "@commercetools-docs/rmf-codegen": "13.13.0",
-    "gatsby": "4.24.4",
-    "gatsby-cli": "4.24.0",
-    "gatsby-source-filesystem": "4.24.0",
+    "gatsby": "5.5.0",
+    "gatsby-cli": "5.5.0",
+    "gatsby-source-filesystem": "5.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }

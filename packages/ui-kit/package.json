@@ -41,7 +41,7 @@
     "prop-types": "15.8.1",
     "react-intl": "^6.2.7",
     "react-is": "18.2.0",
-    "rehype-react": "6.2.1",
+    "rehype-react": "7.1.2",
     "remark-frontmatter": "3.0.0",
     "remark-parse": "9.0.0",
     "remark-rehype": "8.1.0",
