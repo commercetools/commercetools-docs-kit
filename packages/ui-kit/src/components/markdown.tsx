@@ -196,10 +196,11 @@ const Table = styled.table`
         })::before { content: "${discoverLeafReactElement(elem)}"; }
       `,
         ''
-      );
+      ) as string;
     }}
   }
 `;
+
 const TableRow = styled.tr`
   &:nth-of-type(odd) {
     background: ${colors.light.surfaceSecondary1};
