@@ -298,9 +298,7 @@ module.exports = (themeOptions = {}) => {
               },
               query: `
               {
-                allReleaseNotePage(
-                  limit: 10, sort: { order: DESC, fields: date },
-                ) {
+                allReleaseNotePage(limit: 10, sort: {date: DESC}) {
                     nodes {
                       description
                       slug
