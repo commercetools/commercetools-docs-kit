@@ -2,7 +2,7 @@
 
 const path = require('path');
 const defaultOptions = require('./utils/default-options');
-const sanitizeSlug = require('./utils/slug-sanitize');
+const preProcessSlug = require('./utils/slug-pre-process');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -168,7 +168,7 @@ module.exports = (themeOptions = {}) => {
             rehypePlugins: [
               [
                 require('./src/plugins/rehype-id-slug'),
-                { postProcess: sanitizeSlug },
+                { preProcess: preProcessSlug },
               ],
               require('./src/plugins/rehype-mdx-section'),
             ],
