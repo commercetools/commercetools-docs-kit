@@ -19,7 +19,9 @@ function processToC(node, current, toString) {
   switch (node.type) {
     case `paragraph`: {
       current.title = toString(node);
-      current.url = `#${slugger.slug(current.title)}`;
+      const nodeSlug = slugger.slug(current.title);
+      // remove the trailing dash(es) or underscore(s)
+      current.url = `#${nodeSlug.replace(/[-_]+$/, '')}`;
       return current;
     }
 
