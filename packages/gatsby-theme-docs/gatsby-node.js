@@ -21,9 +21,10 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let processor;
 
-const debugMem = () => {
+const memoryDebugMode = process.env.DEBUG_GATSBY_MEM === 'true';
+const startLoggingMemory = () => {
   // memory debug mode, forces GC every second and prints a "top" like summary
-  if (process.env.DEBUG_GATSBY_MEM === 'true') {
+  if (memoryDebugMode) {
     const top = require('process-top')();
     const v8 = require(`v8`);
     const vm = require(`vm`);
@@ -33,6 +34,13 @@ const debugMem = () => {
       gc();
       console.log(top.toString());
     }, 1000);
+  }
+};
+const writeHeapDump = () => {
+  if (memoryDebugMode) {
+    const { writeHeapSnapshot } = require('v8');
+    writeHeapSnapshot();
+    console.log('Wrote heap snapshot');
   }
 };
 
@@ -406,7 +414,7 @@ function generateReleaseNoteSlug(node) {
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async (...args) => {
-  debugMem();
+  startLoggingMemory();
   await createContentPages(...args);
   await createReleaseNotePages(...args);
 };
@@ -634,6 +642,28 @@ exports.onCreateWebpackConfig = (
   if (stage === 'build-html' || stage === `build-javascript`) {
     config.devtool = false;
   }
+
+  // https://webpack.js.org/configuration/cache/
+  // don't mess with "type", "name","cacheLocation" ,"buildDependencies" - these are for sure controlled by gatsby
+  // This is to be able to play with webpack cache settings because a heapdump showed that "CachedSource" is dominating heap usage
+  // TL;DR of this analysis: it all does not make any difference. Can be removed before moving on.
+  config.cache = {
+    ...config.cache,
+    ...{
+      // baseline with 100 copies of the markdown page: 3.2 GB heap, 60.605 s "buidling HTML renderer" phase
+      // with maxmemgenerations 0 and allowCollectingMemory: 3.2 GB heap, 59s.  --> unchanged
+      // allowCollectingMemory: true, // defaults to false
+      // allowCollectingMemory baseline: 85 sec 1.6 GB heap
+      // allowCollectingMemory true: 87 sec 1.6 GB heap
+      // idleTimeout: 60000, // defaults to 60000 millis
+      // idleTimeoutAfterLargeChanges: 1000, // defaults to 1000 millis
+      // idleTimeoutForInitialStore: 5000, // defaults to 5000
+      // maxMemoryGenerations: 0, // see docs https://webpack.js.org/configuration/cache/#cachemaxmemorygenerations
+      // maxMemoryGenerations baseline: 85 sec 1.6 GB heap
+      // maxMemoryGenerations 1: 100sec, 1.6 GB heap
+      // maxMemoryGenerations 0: 87sec 1.5 GB heap (hard to tell in the small site)
+    },
+  };
 
   config.resolve = {
     ...config.resolve,
