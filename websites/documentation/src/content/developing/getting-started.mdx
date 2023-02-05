@@ -47,3 +47,6 @@ $ yarn start
 
 When building a production or test site, setting an environment variable `ANALYZE_BUNDLE=true` starts a [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) based size analysis after the build.
 Keep in mind that the analysis only covers the JS content, GatsbyJS GraphQL data live in separate JSON files in the `/public/page-data` folder and are a source of page weight, too. The `/public/page-data/sq` subfolder contains the static query results.
+
+To analyze memory issues, set an environment variable `DEBUG_GATSBY_MEM=true`. This forces a GC every second and prints process statistics.
+Run on uncached builds for more insighful results.

@@ -21,6 +21,21 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let processor;
 
+const debugMem = () => {
+  // memory debug mode, forces GC every second and prints a "top" like summary
+  if (process.env.DEBUG_GATSBY_MEM === 'true') {
+    const top = require('process-top')();
+    const v8 = require(`v8`);
+    const vm = require(`vm`);
+    v8.setFlagsFromString(`--expose_gc`);
+    const gc = vm.runInNewContext(`gc`);
+    setInterval(() => {
+      gc();
+      console.log(top.toString());
+    }, 1000);
+  }
+};
+
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
@@ -391,6 +406,7 @@ function generateReleaseNoteSlug(node) {
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async (...args) => {
+  debugMem();
   await createContentPages(...args);
   await createReleaseNotePages(...args);
 };
@@ -464,7 +480,6 @@ async function createContentPages(
       case '/': {
         const colorPreset = colorPresets[pluginOptions.colorPreset];
         const homepageTemplate = require.resolve('./src/templates/homepage.js');
-
         actions.createPage({
           ...pageData,
           component: `${homepageTemplate}?__contentFilePath=${contentPath}`,
@@ -477,6 +492,7 @@ async function createContentPages(
 
         break;
       }
+      // TODO is this case necessary?  The whole function is only querying content pages.
       case '/releases':
         const releaseNoteTemplate = require.resolve(
           './src/templates/release-notes-list.js'
@@ -494,6 +510,7 @@ async function createContentPages(
           './src/templates/page-content.js'
         );
 
+        console.log('calling createPage on ' + slug);
         actions.createPage({
           ...pageData,
           component: `${pageContentTemplate}?__contentFilePath=${contentPath}`,
@@ -534,6 +551,7 @@ async function createReleaseNotePages(
       const releaseNoteDetailTemplate = require.resolve(
         './src/templates/release-notes-detail.js'
       );
+      console.log('calling createPage on ' + slug);
       actions.createPage({
         path: slug,
         // This component will wrap our MDX content

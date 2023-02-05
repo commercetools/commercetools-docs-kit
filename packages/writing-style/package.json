@@ -25,10 +25,10 @@
   },
   "dependencies": {
     "7zip-bin": "5.2.0",
-    "node-fetch": "2.6.7",
+    "node-fetch": "2.6.9",
     "shelljs": "0.8.5"
   },
   "devDependencies": {
-    "prettier": "2.7.1"
+    "prettier": "2.8.3"
   }
 }
