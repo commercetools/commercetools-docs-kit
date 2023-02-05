@@ -646,22 +646,17 @@ exports.onCreateWebpackConfig = (
   // https://webpack.js.org/configuration/cache/
   // don't mess with "type", "name","cacheLocation" ,"buildDependencies" - these are for sure controlled by gatsby
   // This is to be able to play with webpack cache settings because a heapdump showed that "CachedSource" is dominating heap usage
-  // TL;DR of this analysis: it all does not make any difference. Can be removed before moving on.
+  // TL;DR of the current settings: they do not make measurable difference but
   config.cache = {
     ...config.cache,
     ...{
       // baseline with 100 copies of the markdown page: 3.2 GB heap, 60.605 s "buidling HTML renderer" phase
       // with maxmemgenerations 0 and allowCollectingMemory: 3.2 GB heap, 59s.  --> unchanged
-      // allowCollectingMemory: true, // defaults to false
-      // allowCollectingMemory baseline: 85 sec 1.6 GB heap
-      // allowCollectingMemory true: 87 sec 1.6 GB heap
+      allowCollectingMemory: true, // defaults to false
       // idleTimeout: 60000, // defaults to 60000 millis
       // idleTimeoutAfterLargeChanges: 1000, // defaults to 1000 millis
       // idleTimeoutForInitialStore: 5000, // defaults to 5000
-      // maxMemoryGenerations: 0, // see docs https://webpack.js.org/configuration/cache/#cachemaxmemorygenerations
-      // maxMemoryGenerations baseline: 85 sec 1.6 GB heap
-      // maxMemoryGenerations 1: 100sec, 1.6 GB heap
-      // maxMemoryGenerations 0: 87sec 1.5 GB heap (hard to tell in the small site)
+      maxMemoryGenerations: 0, // see docs https://webpack.js.org/configuration/cache/#cachemaxmemorygenerations
     },
   };
 
