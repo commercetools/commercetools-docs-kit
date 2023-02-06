@@ -26,6 +26,7 @@
     "@commercetools-uikit/radio-input": "^15.3.0",
     "gatsby": "4.24.4",
     "gatsby-cli": "4.24.0",
+    "process-top": "^1.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },

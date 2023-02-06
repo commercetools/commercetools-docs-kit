@@ -2899,6 +2899,7 @@ __metadata:
     "@svgr/cli": 6.4.0
     gatsby: 4.24.4
     gatsby-cli: 4.24.0
+    process-top: ^1.2.0
     react: 17.0.2
     react-dom: 17.0.2
   languageName: unknown
@@ -13478,6 +13479,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"event-loop-delay@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "event-loop-delay@npm:1.0.1"
+  dependencies:
+    napi-macros: ^2.0.0
+    node-gyp-build: ^4.2.0
+  checksum: 50ad61292fb8f0e0b470a4de1c2da4541adfa7eee6fe9202cbd96b14c0bc64749ebdfdb6cbff854510208cb4c740d11a2849c5dfa26d242f914b4beb381b673a
+  languageName: node
+  linkType: hard
+
 "event-source-polyfill@npm:1.0.25":
   version: 1.0.25
   resolution: "event-source-polyfill@npm:1.0.25"
@@ -20914,6 +20925,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"napi-macros@npm:^2.0.0":
+  version: 2.2.2
+  resolution: "napi-macros@npm:2.2.2"
+  checksum: c6f9bd71cdbbc37ddc3535aa5be481238641d89585b8a3f4d301cb89abf459e2d294810432bb7d12056d1f9350b1a0899a5afcf460237a3da6c398cf0fec7629
+  languageName: node
+  linkType: hard
+
 "natural-compare@npm:^1.4.0":
   version: 1.4.0
   resolution: "natural-compare@npm:1.4.0"
@@ -21055,6 +21073,17 @@ __metadata:
     node-gyp-build-optional-packages-optional: optional.js
     node-gyp-build-optional-packages-test: build-test.js
   checksum: be3f0235925c8361e5bc1a03848f5e24815b0df8aa90bd13f1eac91cd86264bbb8b7689ca6cd083b02c8099c7b54f9fb83066c7bb77c2389dc4eceab921f084f
+  languageName: node
+  linkType: hard
+
+"node-gyp-build@npm:^4.2.0":
+  version: 4.6.0
+  resolution: "node-gyp-build@npm:4.6.0"
+  bin:
+    node-gyp-build: bin.js
+    node-gyp-build-optional: optional.js
+    node-gyp-build-test: build-test.js
+  checksum: 25d78c5ef1f8c24291f4a370c47ba52fcea14f39272041a90a7894cd50d766f7c8cb8fb06c0f42bf6f69b204b49d9be3c8fc344aac09714d5bdb95965499eb15
   languageName: node
   linkType: hard
 
@@ -22750,6 +22779,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier-bytes@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "prettier-bytes@npm:1.0.4"
+  checksum: 001eb6393092cfd4d9169a6c9a5799a8dc38c6f72a3cac8af434618df3beed40b57071f6f134a6e811a301384832c306fffe1287014201de490d9bc1ddc7e0aa
+  languageName: node
+  linkType: hard
+
 "prettier-linter-helpers@npm:^1.0.0":
   version: 1.0.0
   resolution: "prettier-linter-helpers@npm:1.0.0"
@@ -22850,6 +22886,18 @@ __metadata:
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
   checksum: 1d38588e520dab7cea67cbbe2efdd86a10cc7a074c09657635e34f035277b59fbb57d09d8638346bf7090f8e8ebc070c96fa5fd183b777fff4f5edff5e9466cf
+  languageName: node
+  linkType: hard
+
+"process-top@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "process-top@npm:1.2.0"
+  dependencies:
+    event-loop-delay: ^1.0.0
+    prettier-bytes: ^1.0.4
+  bin:
+    process-top: bin.js
+  checksum: 18db697833ff6dbf5db6ae43c220b95c8e773f3bcb9b4c5a5b3bafd50ef7fa20dd9ee8d24ec6e77254a0ac5610ae5add5aaf3f02b87fd1c19c45d686cd7b75d8
   languageName: node
   linkType: hard
 
