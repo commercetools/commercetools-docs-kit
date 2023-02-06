@@ -1,5 +1,14 @@
 # @commercetools-website/docs-smoke-test
 
+## 6.0.2
+
+### Patch Changes
+
+- [#1508](https://github.com/commercetools/commercetools-docs-kit/pull/1508) [`8b3e2ba5`](https://github.com/commercetools/commercetools-docs-kit/commit/8b3e2ba50cc83b2ac15329c0ff4105d880378a39) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Performance improvements by disabling sitemaps generation upon build, added DEBUG_GATSBY_MEM flag to enable performance profiling during build
+
+- Updated dependencies [[`8b3e2ba5`](https://github.com/commercetools/commercetools-docs-kit/commit/8b3e2ba50cc83b2ac15329c0ff4105d880378a39), [`17f841f4`](https://github.com/commercetools/commercetools-docs-kit/commit/17f841f41e2f101c281c4a4baaa63c21821fe472), [`60c6242d`](https://github.com/commercetools/commercetools-docs-kit/commit/60c6242d597caad82f0990839e523bb618b83152), [`54ca0ef1`](https://github.com/commercetools/commercetools-docs-kit/commit/54ca0ef15eb153761f433048c0a65c515bac73bf), [`3844b005`](https://github.com/commercetools/commercetools-docs-kit/commit/3844b0051466fdd9a2b3237d1ee38de310a7f688)]:
+  - @commercetools-docs/gatsby-theme-docs@20.1.0
+
 ## 6.0.1
 
 ### Patch Changes
