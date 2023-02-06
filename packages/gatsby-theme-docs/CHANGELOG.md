@@ -1,5 +1,21 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 20.1.0
+
+### Minor Changes
+
+- [#1502](https://github.com/commercetools/commercetools-docs-kit/pull/1502) [`3844b005`](https://github.com/commercetools/commercetools-docs-kit/commit/3844b0051466fdd9a2b3237d1ee38de310a7f688) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Heading ids and corresponding toc url slugs are now stripped by any extra dash or underscore
+
+### Patch Changes
+
+- [#1508](https://github.com/commercetools/commercetools-docs-kit/pull/1508) [`8b3e2ba5`](https://github.com/commercetools/commercetools-docs-kit/commit/8b3e2ba50cc83b2ac15329c0ff4105d880378a39) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Performance improvements by disabling sitemaps generation upon build, added DEBUG_GATSBY_MEM flag to enable performance profiling during build
+
+- [#1505](https://github.com/commercetools/commercetools-docs-kit/pull/1505) [`17f841f4`](https://github.com/commercetools/commercetools-docs-kit/commit/17f841f41e2f101c281c4a4baaa63c21821fe472) Thanks [@nkuehn](https://github.com/nkuehn)! - Reduce memory usage in HTML build stage by not generating source maps in that stage
+
+- [#1499](https://github.com/commercetools/commercetools-docs-kit/pull/1499) [`60c6242d`](https://github.com/commercetools/commercetools-docs-kit/commit/60c6242d597caad82f0990839e523bb618b83152) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Filter only content and releaseNotes nodes when creating gatsby pages
+
+- [#1501](https://github.com/commercetools/commercetools-docs-kit/pull/1501) [`54ca0ef1`](https://github.com/commercetools/commercetools-docs-kit/commit/54ca0ef15eb153761f433048c0a65c515bac73bf) Thanks [@nkuehn](https://github.com/nkuehn)! - Performance: Do not generate CSS source maps
+
 ## 20.0.1
 
 ### Patch Changes
