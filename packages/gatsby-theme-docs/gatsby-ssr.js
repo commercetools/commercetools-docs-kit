@@ -17,6 +17,53 @@ import iconDarkDigestRaw from '!!raw-loader!./static/favicon-dark-32x32.png';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import iconLightDigestRaw from '!!raw-loader!./static/favicon-light-32x32.png';
 
+// start build hack to force shared components out of intermediate per-page bundles at SSR bundling time (.cache/page-ssr/routes folder)
+import markdownComponents from './src/markdown-components';
+import designSystem from '@commercetools-docs/ui-kit';
+import IconButton from '@commercetools-uikit/icon-button';
+import ChildSectionsNav from './src/components/child-sections-nav';
+import {
+  BetaFlag,
+  ContentPagination,
+  GlobalNotification,
+} from './src/components';
+import LayoutApplication from './src/layouts/internals/layout-application';
+import LayoutHeader from './src/layouts/internals/layout-header';
+import LayoutSidebar from './src/layouts/internals/layout-sidebar';
+import LayoutMain from './src/layouts/internals/layout-main';
+import LayoutFooter from './src/layouts/internals/layout-footer';
+import LayoutPageWrapper from './src/layouts/internals/layout-page-wrapper';
+import LayoutPage from './src/layouts/internals/layout-page';
+import LayoutGlobalNotification from './src/layouts/internals/layout-global-notification';
+import LayoutPageHeader from './src/layouts/internals/layout-page-header';
+import LayoutPageNavigation from './src/layouts/internals/layout-page-navigation';
+import PageReadTime from './src/layouts/internals/page-read-time-estimation';
+import { IntlProvider } from 'react-intl';
+
+// eslint-disable-next-line no-unused-vars
+const doSomethingWithTheImport = {
+  ...markdownComponents,
+  designSystem,
+  IconButton,
+  ChildSectionsNav,
+  BetaFlag,
+  ContentPagination,
+  GlobalNotification,
+  LayoutApplication,
+  LayoutHeader,
+  LayoutSidebar,
+  LayoutMain,
+  LayoutFooter,
+  LayoutPageWrapper,
+  LayoutPage,
+  LayoutGlobalNotification,
+  LayoutPageHeader,
+  LayoutPageNavigation,
+  PageReadTime,
+  IntlProvider,
+};
+// end build hack to force shared components into a central place at SSR bundling time
+
 const iconDarkDigest = createContentDigest(iconDarkDigestRaw);
 const iconLightDigest = createContentDigest(iconLightDigestRaw);
 
