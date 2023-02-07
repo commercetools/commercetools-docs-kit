@@ -11,8 +11,7 @@ module.exports = {
   // https://www.gatsbyjs.com/docs/reference/release-notes/v2.28/#feature-flags-in-gatsby-configjs
   // https://www.gatsbyjs.com/docs/reference/release-notes/v2.30
   flags: {
-    FAST_DEV: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    DEV_SSR: true,
   },
   pathPrefix: '/docs-smoke-test',
   siteMetadata: {
@@ -28,7 +27,7 @@ module.exports = {
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants',
-        {
+        /*         {
           resolve: '@commercetools-docs/gatsby-theme-learning',
           options: {
             auth0Domain: 'auth.id.commercetools.com',
@@ -42,7 +41,7 @@ module.exports = {
             auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
             learnApiBaseUrl: 'https://api.learn.commercetools.com',
           },
-        },
+         },*/
       ],
     }),
   ],
