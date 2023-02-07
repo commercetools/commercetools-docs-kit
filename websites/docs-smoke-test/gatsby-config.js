@@ -28,21 +28,6 @@ module.exports = {
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants',
-        {
-          resolve: '@commercetools-docs/gatsby-theme-learning',
-          options: {
-            auth0Domain: 'auth.id.commercetools.com',
-            learnApiBaseUrl: 'https://api.learn.commercetools.com',
-          },
-        },
-        {
-          resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
-          options: {
-            auth0Domain: 'auth.id.commercetools.com',
-            auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-            learnApiBaseUrl: 'https://api.learn.commercetools.com',
-          },
-        },
       ],
     }),
   ],

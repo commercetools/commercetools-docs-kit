@@ -20,17 +20,7 @@ module.exports = {
     ...configureThemeWithAddOns({
       websiteKey: 'documentation',
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
-      addOns: [
-        '@commercetools-docs/gatsby-theme-code-examples',
-        {
-          resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
-          options: {
-            auth0Domain: 'auth.id.commercetools.com',
-            auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-            learnApiBaseUrl: 'https://api.learn.commercetools.com',
-          },
-        },
-      ],
+      addOns: ['@commercetools-docs/gatsby-theme-code-examples'],
     }),
   ],
 };
