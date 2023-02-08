@@ -1,0 +1,47 @@
+---
+title: Modeling Categories
+---
+
+Categories group and organize products in hierarchical structures.
+
+The main use for categories is to organize navigation structures in a storefront.
+
+However, you can also use categories for other business reasons, like the following:
+
+- Logically grouping products,
+- Creating promotions or seasonal sales,
+- Storing product information.
+
+Categories are also helpful during the day-to-day maintenance of a project, as all product searches are filterable by categories.
+
+We recommend that the first step of your product modeling process is modeling product categories. Categories can help define what eventually become Product Types.
+
+# Category trees
+
+A category can have any number of subcategories. Collectively, you can think of this as a category tree with many branches of sub-categories. When defining your category structure, keep in mind that many aspects of the site’s navigation are driven by the category tree.
+
+For example, a fashion brand might categorize “pants” in their products in one of two ways, depending on what was important for their navigation:
+
+![category modeling, two ways](/images/product-modeling/category-tree.png)
+
+Similarly, the same fashion brand could store gender information as a product attribute and use the following:
+
+![category modeling, another way](/images/product-modeling/category-tree-2.png)
+
+Finally, they could also model pants and other groupings of products like shirts as Product Types. Then, they might only use two categories: Men’s Clothing or Women’s Clothing, with no subcategories.
+
+# Keep in mind
+
+Category modeling is an ongoing process which you should start before attempting to model products or attributes, and continue throughout the lifecycle of your store. When modeling categories, pay attention to the following:
+
+1. **Consider your business’ purpose. What are you selling?** For example, a fashion brand might sell clothes and accessories; two logical categories for them might be “Clothes” and “Accessories”.
+1. **Define main categories.** These will often map directly to your business’ purpose. For example, a mountain bike brand might sell bikes, bike parts and apparel. Their three main categories might be “Bikes”, “Bike Parts”, and “Apparel”.
+1. **Determine if more main categories exist.** For example, a fashion brand might sell “clothing” and “accessories, but there might be classifications of products within those which make sense as main categories such as clothing for men or clothing for women.
+
+# Best practices: categories
+
+- **Use Categories instead of Product Types:** Categories are more flexible and easier to add and remove. If you aren’t sure whether to model something as a Category or Product Type, in most cases it’s better to use a Category.
+- **Keep search performance in mind:** If you add a Product to too many Categories, the file size of the Product grows and makes it hard to retrieve. Similarly, if you have too many categories, search re-indexes can become difficult.
+- **Keep Categories simple:** “Pants” and “Women’s Pants” are simple categories, “Women’s wool work pants” is too complex.
+- **Keep category trees simple:** Categories are often used to model navigation in frontend sites. Category trees which are nested many levels deep, while perhaps modeling the nuances of your products can result in a poor user experience in the shop frontend. In general, shallower category trees are better.
+- **Cache category trees:** When retrieving category information in a front-end application, cache the category trees to improve performance, as they are relatively static pieces of information.

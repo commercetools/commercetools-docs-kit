@@ -1,0 +1,73 @@
+---
+title: Learning in docs test page
+---
+
+# Welcome!
+
+When beginning a project, it is important to consider which aspects of your products will map to Product Types, Products, Product Attributes, and Product Variants. How you choose to define your products has an effect on store performance, load time, ease of product management and more.
+
+A Product Type is the collection of attributes which act as a template for products of the same type or kind. For example, a clothing store might have the following Product Types:
+
+- Pants
+- Shoes
+- Shirts
+- Accessories
+
+In a clothing store, creating product types for different types of pants – short pants, long pants, boot cut pants, etc. – is not beneficial, because the attributes in the different product types are similar. In this case, it would be better to use one Product Type for all pants, and to store other information as product attributes.
+
+Many projects only have one generic Product Type, but Product Types can be as broad or granular as needed. Pushing all information into one product type can lead to a complicated data model with high payloads and poor performance.
+
+## Product types: keep in mind
+
+Keep the following in mind when thinking about what product types to create:
+
+- Product Types are a **template** of attributes from which products are created.
+- When a new product is created, it must have a Product Type. Once a product type is selected for a product, it cannot be changed.
+- Once a Product Type is in use, it cannot be deleted without deleting all Products using the product type first.
+- Product Types are generally restrictive: if you need flexibility, consider using a category.
+
+## Product types: helpful questions
+
+When creating your data model’s product types, ask the following questions:
+
+- What are major groupings of products?
+- Could this Product Type also be modeled as a Category? Categories often provide more flexibility than Product Types in terms of providing front-end capabilities like faceted search.
+
+# Product attributes
+
+A Product Attribute is a property or feature of a Product. Every product consists of a collection attributes. For example, a T-shirt might have the following Product Attributes:
+
+- Colors
+- Sizes
+- Fabric
+
+A Product or Product Variant can only use the Product Attributes defined in its Product Type.
+
+<Warning>
+
+You can add Product Attributes to a Product Type at any time, but you should be careful when removing Attributes that have values on Products.
+When doing so, the respective attribute will be removed from all Products of the related Product Type by a background process together with its values.
+
+</Warning>
+
+## Product attributes: keep in mind
+
+When modelling Product Attributes, first consider [categories](/product-modeling/categories) and classifications for grouping and organizing larger orders of product items. For example, a fashion business might have the following categories:
+
+- Pants - Men
+- Pants - Women
+- Shoes - Men
+- Shoes - Women
+
+In the attribute definition process evaluate the origin data format to determine the right data type for the attribute. You can find a list of data types for Product Attributes [here](/../api/projects/productTypes#attributetype).
+
+If the same information is used in a large number of Products or Product Variants, it is more efficient to design it as a [Custom Object](/../api/projects/custom-objects) and reference it using a Product Attribute.
+
+Try not to over-engineer your Product Types with too many Product Attributes. You can add Product Attributes at any time, but removing Product Attributes which are already in use can be tricky.
+
+## Product attributes: helpful questions
+
+When modeling Product Attributes for a Product Type, ask the following questions:
+
+- What is the purpose of this product attribute? Try to avoid creating attributes that don’t have a clear use case that feed into the front-end experience or touchpoints, even if they exist in another system in your company.
+- Can a Product Attribute apply to more than one item? In general, avoid single-use Product Attributes.

@@ -1,0 +1,52 @@
+---
+title: Product Modeling by Example of a Book Store
+---
+
+Let’s put the knowledge into practice by examining how to model products for a book store.
+
+# Analyze the product set’s attributes
+
+Books' main identifier is the International Standard Book Number (ISBN). All books have the following properties:
+
+- ISBN-10
+- ISBN-13
+- Title
+- Author
+- Publisher
+- Publishing Date
+- Description
+
+In addition, books under the same ISBN can be sold in multiple editions (first pressing, second pressing, etc.), as well as have different variations (hard cover, paperback, audio book). Some sellers also list the product’s dimensions (width x height x depth).
+
+# Decide on major product groups
+
+Our book store only sells one thing: books. No accessories, no book bags, no bookmarks or notebooks. Therefore, we can safely model one product type: Book, with the attributes listed above.
+
+However before doing so, we need to ask some questions:
+
+- **What data types should the products be?**
+  While it’s tempting to store everything, especially things like ISBNs as Strings, this can lead to bad data later. Similarly, we could store Authors and Publishers as a single String, but this could lead to issues where books with multiple authors being listed incorrectly.
+- **Should we localize?**
+  One of the greatest strengths of commercetools Composable Commece is its robust out-of-the-box support for localization of product data. However, storing localization fields if you don’t need them can lead to large amounts of unneeded data.
+- **Which fields should be required?**
+  It’s helpful to think of the final product detail page you’re trying to construct when deciding on required fields. At a minimum, how much information does that page need?
+
+After thinking things through, we arrive at the following Product type:
+
+- Product Type: Book
+- Attributes:
+  - ISBN-10 – Number (Required)
+  - ISBN-13: Number (Required)
+  - Title: Localized String (Required)
+  - Author: Set of Localized String (Required)
+  - Publisher: Set of Localized String
+  - Publishing Date: Date
+  - Description: Localized String
+
+# Next steps and modeling concerns
+
+This example is a walkthrough of how to model a simple product catalog scenario. In reality, there are multiple complicating factors a similar business might need to address, such as:
+
+- What about used books? If we model one book as a Product, we could end up with an enormous amount of Product Variants when modeling use books.
+- Some books change ISBNs between publishings/editions. Do we want to display these as one “book” in the final store?
+- ISBN classification is country-specific. Can two Products have the same ISBN, or are they unique?

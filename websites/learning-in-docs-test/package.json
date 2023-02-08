@@ -1,0 +1,24 @@
+{
+  "name": "learning-in-docs-test",
+  "private": true,
+  "scripts": {
+    "start": "yarn develop",
+    "develop": "yarn gatsby develop",
+    "serve": "yarn gatsby serve --prefix-paths -o",
+    "clean": "yarn gatsby clean",
+    "clean:develop": "yarn clean && yarn develop",
+    "build": "gatsby build --prefix-paths",
+    "build:serve": "yarn build --prefix-paths && yarn gatsby serve --prefix-paths -o"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@commercetools-docs/gatsby-theme-docs": "20.1.1",
+    "@commercetools-docs/gatsby-theme-learning": "*",
+    "@commercetools-frontend/eslint-config-mc-app": "21.17.0",
+    "eslint": "8.25.0",
+    "gatsby": "4.24.4",
+    "gatsby-cli": "4.24.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  }
+}

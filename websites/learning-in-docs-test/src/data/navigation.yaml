@@ -1,0 +1,32 @@
+- chapter-title: Product Modeling Guide (Dev Only)
+  pages:
+    - title: Overview
+      path: /product-modeling/
+    - title: Categories
+      path: /product-modeling/categories
+    - title: Product types and attributes
+      path: /product-modeling/product-types
+    - title: Products and variants
+      path: /product-modeling/products
+    - title: Checklist - getting started with product modeling
+      path: /product-modeling/checklist
+    - title: Scenario – Product modeling for a book store
+      path: /product-modeling/scenario
+    - title: Test your knowledge
+      path: /product-modeling/final-quiz
+- chapter-title: Product Modeling Guide (Production Only)
+  pages:
+    - title: Overview
+      path: /product-modeling-prod/
+    - title: Categories
+      path: /product-modeling-prodg/categories
+    - title: Product types and attributes
+      path: /product-modeling-prod/product-types
+    - title: Products and variants
+      path: /product-modeling-prod/products
+    - title: Checklist - getting started with product modeling
+      path: /product-modeling-prod/checklist
+    - title: Scenario – Product modeling for a book store
+      path: /product-modeling-prod/scenario
+    - title: Test your knowledge
+      path: /product-modeling-prod/final-quiz
