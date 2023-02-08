@@ -87,7 +87,7 @@
   },
   "devDependencies": {
     "cosmiconfig": "^8.0.0",
-    "gatsby": "5.5.0",
+    "gatsby": "5.7.0-next.1",
     "gatsby-cli": "5.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"

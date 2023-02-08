@@ -518,7 +518,6 @@ async function createContentPages(
           './src/templates/page-content.js'
         );
 
-        console.log('calling createPage on ' + slug);
         actions.createPage({
           ...pageData,
           component: `${pageContentTemplate}?__contentFilePath=${contentPath}`,
@@ -559,7 +558,6 @@ async function createReleaseNotePages(
       const releaseNoteDetailTemplate = require.resolve(
         './src/templates/release-notes-detail.js'
       );
-      console.log('calling createPage on ' + slug);
       actions.createPage({
         path: slug,
         // This component will wrap our MDX content
@@ -645,20 +643,20 @@ exports.onCreateWebpackConfig = (
 
   // https://webpack.js.org/configuration/cache/
   // don't mess with "type", "name","cacheLocation" ,"buildDependencies" - these are for sure controlled by gatsby
-  // This is to be able to play with webpack cache settings because a heapdump showed that "CachedSource" is dominating heap usage
-  // TL;DR of the current settings: they do not make measurable difference but
-  config.cache = {
-    ...config.cache,
-    ...{
-      // baseline with 100 copies of the markdown page: 3.2 GB heap, 60.605 s "buidling HTML renderer" phase
-      // with maxmemgenerations 0 and allowCollectingMemory: 3.2 GB heap, 59s.  --> unchanged
-      allowCollectingMemory: true, // defaults to false
-      // idleTimeout: 60000, // defaults to 60000 millis
-      // idleTimeoutAfterLargeChanges: 1000, // defaults to 1000 millis
-      // idleTimeoutForInitialStore: 5000, // defaults to 5000
-      maxMemoryGenerations: 0, // see docs https://webpack.js.org/configuration/cache/#cachemaxmemorygenerations
-    },
-  };
+  // the develop stage has a significant problem with webpack using Buffers ("ext" memory).
+  if (stage === `develop` || stage === `develop-html`) {
+    config.cache = {
+      ...config.cache,
+      ...{
+        // compression: 'brotli', // only impacts the filesystem representation
+        // the following combination at least leads to the dev server freeing some of the memory again once navigating the preview.
+        idleTimeout: 100, // defaults to 60000 millis
+        idleTimeoutAfterLargeChanges: 100, // defaults to 1000 millis
+        allowCollectingMemory: true, // defaults to false.
+        maxMemoryGenerations: 0, // see docs https://webpack.js.org/configuration/cache/#cachemaxmemorygenerations
+      },
+    };
+  }
 
   config.resolve = {
     ...config.resolve,
@@ -682,6 +680,9 @@ exports.onCreateWebpackConfig = (
       new RegExp(`^./(${prismLanguages})$`)
     )
   );
+
+  // require("fs"); fs.writeFileSync("webpack-config.json", JSON.stringify(config, null, 2));
+
   // This will completely replace the webpack config with the modified object.
   // (necessary to not only add rules but also change rules like taking over svg handling)
   actions.replaceWebpackConfig(config);
