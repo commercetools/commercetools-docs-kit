@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 20.1.1
+
+### Patch Changes
+
+- [#1509](https://github.com/commercetools/commercetools-docs-kit/pull/1509) [`95920fbb`](https://github.com/commercetools/commercetools-docs-kit/commit/95920fbb47979bad1f4f88accc1ea6e186339acb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - hack to force shared components out of intermediate per-page bundles at SSR bundling time
+
 ## 20.0.0
 
 ### Major Changes
