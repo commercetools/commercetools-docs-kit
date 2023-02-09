@@ -6,19 +6,19 @@
   "publishConfig": {
     "access": "public"
   },
-  "bugs": "https://github.com/commercetools/learning-tech/issues",
+  "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/commercetools/learning-tech.git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/gatsby-theme-sso-ui-kit"
   },
   "dependencies": {
     "@auth0/auth0-react": "1.10.2",
     "@commercetools-docs/ui-kit": "20.0.0",
-    "@commercetools-uikit/avatar": "^15.3.0",
-    "@commercetools-uikit/icons": "^15.3.0",
-    "@commercetools-uikit/secondary-button": "^15.3.0",
-    "@commercetools-uikit/spacings": "^15.3.0",
+    "@commercetools-uikit/avatar": "15.3.0",
+    "@commercetools-uikit/icons": "15.3.0",
+    "@commercetools-uikit/secondary-button": "15.3.0",
+    "@commercetools-uikit/spacings": "15.3.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "downshift": "6.1.9",
