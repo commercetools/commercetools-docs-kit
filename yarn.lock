@@ -2250,7 +2250,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-learning@*, @commercetools-docs/gatsby-theme-learning@1.5.1, @commercetools-docs/gatsby-theme-learning@workspace:packages/gatsby-theme-learning":
+"@commercetools-docs/gatsby-theme-learning@1.5.1, @commercetools-docs/gatsby-theme-learning@workspace:packages/gatsby-theme-learning":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-learning@workspace:packages/gatsby-theme-learning"
   dependencies:
@@ -19417,22 +19417,6 @@ __metadata:
   checksum: 5a3ebb17915b03452320804466345382a6c25ac782ec4874fecdb2385793896cd459be2f187dc7def8899180c32ee0ab9a1aa7fe52193ac3ff3fe29bb0591729
   languageName: node
   linkType: hard
-
-"learning-in-docs-test@workspace:websites/learning-in-docs-test":
-  version: 0.0.0-use.local
-  resolution: "learning-in-docs-test@workspace:websites/learning-in-docs-test"
-  dependencies:
-    "@babel/core": ^7.0.0
-    "@commercetools-docs/gatsby-theme-docs": 20.1.1
-    "@commercetools-docs/gatsby-theme-learning": "*"
-    "@commercetools-frontend/eslint-config-mc-app": 21.17.0
-    eslint: 8.25.0
-    gatsby: 4.24.4
-    gatsby-cli: 4.24.0
-    react: 17.0.2
-    react-dom: 17.0.2
-  languageName: unknown
-  linkType: soft
 
 "leven@npm:^3.1.0":
   version: 3.1.0
