@@ -1,0 +1,37 @@
+{
+  "name": "@commercetools-docs/gatsby-theme-sso-ui-kit",
+  "description": "Gatsby plugin adding Auth0 SSO functionality",
+  "version": "1.4.1",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/commercetools/commercetools-docs-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/commercetools-docs-kit.git",
+    "directory": "packages/gatsby-theme-sso-ui-kit"
+  },
+  "dependencies": {
+    "@auth0/auth0-react": "1.10.2",
+    "@commercetools-docs/ui-kit": "20.0.0",
+    "@commercetools-uikit/avatar": "15.3.0",
+    "@commercetools-uikit/icons": "15.3.0",
+    "@commercetools-uikit/secondary-button": "15.3.0",
+    "@commercetools-uikit/spacings": "15.3.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "downshift": "6.1.9",
+    "md5": "2.3.0",
+    "react-intl": "^5.25.1",
+    "react-router-dom": "5.3.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "12.1.5",
+    "@types/react": "17.0.50",
+    "prop-types": "15.8.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  }
+}
