@@ -21,10 +21,9 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let processor;
 
-const memoryDebugMode = process.env.DEBUG_GATSBY_MEM === 'true';
-const startLoggingMemory = () => {
+const debugMem = () => {
   // memory debug mode, forces GC every second and prints a "top" like summary
-  if (memoryDebugMode) {
+  if (process.env.DEBUG_GATSBY_MEM === 'true') {
     const top = require('process-top')();
     const v8 = require(`v8`);
     const vm = require(`vm`);
@@ -36,6 +35,7 @@ const startLoggingMemory = () => {
     }, 1000);
   }
 };
+
 const writeHeapDump = () => {
   if (memoryDebugMode) {
     const { writeHeapSnapshot } = require('v8');
@@ -414,7 +414,7 @@ function generateReleaseNoteSlug(node) {
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async (...args) => {
-  startLoggingMemory();
+  debugMem();
   await createContentPages(...args);
   await createReleaseNotePages(...args);
 };
@@ -633,6 +633,11 @@ exports.onCreateWebpackConfig = (
       test: /tmp/,
       use: loaders.null(),
     });
+  }
+  // improve build performance in memory critical stage of builds by not generating source maps
+  // (yes, this can make errors cryptic, we will have to revisit if it's firing back too much)
+  if (stage === 'build-html' || stage === `build-javascript`) {
+    config.devtool = false;
   }
 
   // improve build performance in memory critical stage of builds by not generating source maps

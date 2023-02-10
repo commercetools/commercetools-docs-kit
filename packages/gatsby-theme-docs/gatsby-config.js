@@ -2,6 +2,7 @@
 
 const path = require('path');
 const defaultOptions = require('./utils/default-options');
+const preProcessSlug = require('./utils/slug-pre-process');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -165,7 +166,10 @@ module.exports = (themeOptions = {}) => {
             ],
             // List of rehype plugins, that transform the HTML AST.
             rehypePlugins: [
-              wrapESMPlugin('rehype-slug'),
+              [
+                require('./src/plugins/rehype-id-slug'),
+                { preProcess: preProcessSlug },
+              ],
               require('./src/plugins/rehype-mdx-section'),
             ],
             development: true,
