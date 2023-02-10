@@ -21,6 +21,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let processor;
 
+const lowMemMode = process.env.DOCS_LOW_MEM === 'true';
 const debugMem = () => {
   // memory debug mode, forces GC every second and prints a "top" like summary
   if (process.env.DEBUG_GATSBY_MEM === 'true') {
@@ -36,14 +37,14 @@ const debugMem = () => {
   }
 };
 
-const writeHeapDump = () => {
+/* const writeHeapDump = () => {
   if (memoryDebugMode) {
     const { writeHeapSnapshot } = require('v8');
     writeHeapSnapshot();
     console.log('Wrote heap snapshot');
   }
 };
-
+ */
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
@@ -634,15 +635,10 @@ exports.onCreateWebpackConfig = (
       use: loaders.null(),
     });
   }
-  // improve build performance in memory critical stage of builds by not generating source maps
-  // (yes, this can make errors cryptic, we will have to revisit if it's firing back too much)
-  if (stage === 'build-html' || stage === `build-javascript`) {
-    config.devtool = false;
-  }
 
   // improve build performance in memory critical stage of builds by not generating source maps
   // (yes, this can make errors cryptic, we will have to revisit if it's firing back too much)
-  if (stage === 'build-html' || stage === `build-javascript`) {
+  if (stage === 'build-html' || stage === `build-javascript` || lowMemMode) {
     config.devtool = false;
   }
 
@@ -661,6 +657,8 @@ exports.onCreateWebpackConfig = (
         maxMemoryGenerations: 0, // see docs https://webpack.js.org/configuration/cache/#cachemaxmemorygenerations
       },
     };
+    // run uncached if we have memory issues
+    if (lowMemMode) config.cache = false;
   }
 
   config.resolve = {
