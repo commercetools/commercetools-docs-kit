@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLocation, navigate } from '@reach/router';
+import { navigate } from 'gatsby';
+import { useLocation } from '@reach/router';
 import { encode, decode } from 'qss';
 
 const useReleaseNotesFilterParams = () => {
