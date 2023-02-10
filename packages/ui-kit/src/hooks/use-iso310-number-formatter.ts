@@ -7,7 +7,7 @@ const narrowNonBreakingSpace = '\u202F';
 const useISO310NumberFormatter = () => {
   const intl = useIntl();
   return useCallback(
-    (value) => {
+    (value: number | string) => {
       if (typeof value !== 'number') return value;
 
       return intl

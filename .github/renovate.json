@@ -58,10 +58,6 @@
       "allowedVersions": "<3"
     },
     {
-      "matchPackageNames": ["react-router-dom"],
-      "allowedVersions": "<6"
-    },
-    {
       "matchPackageNames": ["github-slugger"],
       "allowedVersions": "<2"
     }

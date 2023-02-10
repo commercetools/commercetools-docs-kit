@@ -1,6 +1,7 @@
 // loaded via require because we use the pre-ESM version at the moment.
 // to be changed once upgraded to a latest version
 const githubSlugger = require('github-slugger');
+const preProcessSlug = require('./slug-pre-process');
 const slugger = githubSlugger();
 
 async function generateToC(ast, maxDepth = 6) {
@@ -19,7 +20,8 @@ function processToC(node, current, toString) {
   switch (node.type) {
     case `paragraph`: {
       current.title = toString(node);
-      current.url = `#${slugger.slug(current.title)}`;
+      const nodeSlug = slugger.slug(preProcessSlug(current.title));
+      current.url = `#${nodeSlug}`;
       return current;
     }
 

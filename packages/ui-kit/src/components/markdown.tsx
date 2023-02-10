@@ -149,6 +149,7 @@ const Blockquote = styled.blockquote`
   padding: ${dimensions.spacings.xs} ${dimensions.spacings.s};
 `;
 
+// @ts-ignore
 const Table = styled.table`
   width: 100%;
   border: 1px solid ${colors.light.borderPrimary};

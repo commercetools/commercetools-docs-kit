@@ -21,6 +21,21 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let processor;
 
+const debugMem = () => {
+  // memory debug mode, forces GC every second and prints a "top" like summary
+  if (process.env.DEBUG_GATSBY_MEM === 'true') {
+    const top = require('process-top')();
+    const v8 = require(`v8`);
+    const vm = require(`vm`);
+    v8.setFlagsFromString(`--expose_gc`);
+    const gc = vm.runInNewContext(`gc`);
+    setInterval(() => {
+      gc();
+      console.log(top.toString());
+    }, 1000);
+  }
+};
+
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
@@ -391,6 +406,7 @@ function generateReleaseNoteSlug(node) {
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async (...args) => {
+  debugMem();
   await createContentPages(...args);
   await createReleaseNotePages(...args);
 };
@@ -609,6 +625,11 @@ exports.onCreateWebpackConfig = (
       test: /tmp/,
       use: loaders.null(),
     });
+  }
+  // improve build performance in memory critical stage of builds by not generating source maps
+  // (yes, this can make errors cryptic, we will have to revisit if it's firing back too much)
+  if (stage === 'build-html' || stage === `build-javascript`) {
+    config.devtool = false;
   }
 
   config.resolve = {

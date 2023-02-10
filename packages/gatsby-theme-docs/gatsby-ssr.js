@@ -17,6 +17,16 @@ import iconDarkDigestRaw from '!!raw-loader!./static/favicon-dark-32x32.png';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import iconLightDigestRaw from '!!raw-loader!./static/favicon-light-32x32.png';
 
+// start build hack to force components that are in many same-layout pages out of intermediate per-page
+// bundles at SSR bundling time (.cache/page-ssr/routes folder).  Homepage and release notes list not
+// included because they are one-off pages. Markdown overrides are included via the content page template.
+import contentTemplate from './src/templates/page-content';
+import releaseNoteTemplate from './src/templates/release-notes-detail';
+// eslint-disable-next-line no-unused-vars
+const doSomethingFakeWithTheImports = [contentTemplate, releaseNoteTemplate];
+
+// end build hack to force shared components into a central place at SSR bundling time
+
 const iconDarkDigest = createContentDigest(iconDarkDigestRaw);
 const iconLightDigest = createContentDigest(iconLightDigestRaw);
 
