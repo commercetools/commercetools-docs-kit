@@ -16,8 +16,8 @@
   "keywords": ["gatsby", "gatsby-plugin", "gatsby-theme", "yaml", "constants"],
   "dependencies": {
     "@commercetools-docs/ui-kit": "20.0.0",
-    "gatsby-source-filesystem": "5.5.0",
-    "gatsby-transformer-yaml": "5.5.0",
+    "gatsby-source-filesystem": "5.6.0",
+    "gatsby-transformer-yaml": "5.6.0",
     "prop-types": "15.8.1"
   },
   "devDependencies": {
