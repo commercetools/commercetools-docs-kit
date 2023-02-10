@@ -168,7 +168,7 @@ const LayoutPageReleaseNotesFilters = (props) => {
   );
 
   const filtersContainer = (
-    <SpacingsStack scale="m">
+    <SpacingsStack key="filters-container" scale="m">
       <SpacingsInline
         scale="s"
         justifyContent="space-between"
