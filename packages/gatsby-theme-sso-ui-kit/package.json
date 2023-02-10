@@ -13,7 +13,7 @@
     "directory": "packages/gatsby-theme-sso-ui-kit"
   },
   "dependencies": {
-    "@auth0/auth0-react": "1.10.2",
+    "@auth0/auth0-react": "1.12.1",
     "@commercetools-docs/ui-kit": "20.0.0",
     "@commercetools-uikit/avatar": "15.3.0",
     "@commercetools-uikit/icons": "15.3.0",
@@ -21,7 +21,7 @@
     "@commercetools-uikit/spacings": "15.3.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "downshift": "6.1.9",
+    "downshift": "6.1.12",
     "md5": "2.3.0",
     "react-intl": "^6.2.8"
   },
