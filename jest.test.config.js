@@ -10,9 +10,8 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/transform-file.js',
     // https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v2-to-v3/#reach-router
-    // To be removed once reach-router natively supports React 17 and gatsbyJS is not vendoring it any more
+    // To be removed once reach-router natively supports React 17 AND gatsbyJS is not vendoring it any more
     '^@reach/router(.*)': '<rootDir>/node_modules/@gatsbyjs/reach-router$1',
-    '^gatsby-page-utils/(.*)$': `gatsby-page-utils/dist/$1`, // Workaround for https://github.com/facebook/jest/issues/9771
   },
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
