@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  *
  * This component also exists since we don't allow html in authoring mdx documents.
  */
-const Anchor = (props) => <a name={props.name} />;
+const Anchor = (props) => <span id={props.name} />;
 
 Anchor.propTypes = {
   name: PropTypes.string.isRequired,
