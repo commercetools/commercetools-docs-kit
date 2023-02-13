@@ -129,9 +129,12 @@ function MultiCodeBlock(props: MultiCodeBlockProps) {
   const langs = extractLanguages(props.children);
 
   const [selected, setSelected] = React.useState(langs[0]);
-  const handleOnLanguageChange = React.useCallback((event) => {
-    setSelected(event.target.value);
-  }, []);
+  const handleOnLanguageChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement> | undefined) => {
+      setSelected(event?.target?.value || '');
+    },
+    []
+  );
 
   let selectedElement: React.ReactElement | undefined;
   if (Array.isArray(props.children)) {

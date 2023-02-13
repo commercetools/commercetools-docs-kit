@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { customProperties } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
+import useIsClientSide from '../hooks/use-is-client-side';
 
 const VideoPlaceholder = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ const VideoPlaceholder = styled.div`
 const VideoPlayerLazy = React.lazy(() => import('./video-player-client-side'));
 
 const VideoPlayer = (props) => {
-  const isClientSide = typeof window !== 'undefined';
+  const { isClientSide } = useIsClientSide();
 
   const placeholder = (
     <VideoPlaceholder>

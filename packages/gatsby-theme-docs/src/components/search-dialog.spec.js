@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, fireEvent } from '@testing-library/react';
+import { render, waitFor, fireEvent, act } from '@testing-library/react';
 import SearchDialog from './search-dialog';
 
 const createTestProps = (custom) => ({
@@ -21,7 +21,9 @@ describe('Rendering', () => {
     });
 
     // Focus
-    input.focus();
+    act(() => {
+      input.focus();
+    });
     await waitFor(() => {
       // eslint-disable-next-line testing-library/no-node-access
       expect(document.activeElement).toEqual(input);

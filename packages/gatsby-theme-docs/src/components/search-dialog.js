@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SearchInput from './search-input';
+import useIsClientSide from '../hooks/use-is-client-side';
 
 const AlgoliaSearch = React.lazy(() => import('./algolia-search'));
 
@@ -122,6 +123,8 @@ const InputPlaceholder = () => (
 const SearchDialog = (props) => {
   const ref = React.useRef();
   const { onClose } = props;
+  const { isClientSide } = useIsClientSide();
+
   React.useEffect(() => {
     const onKeyPress = (event) => {
       // Listen to "escape" key events to close the dialog
@@ -146,16 +149,18 @@ const SearchDialog = (props) => {
               event.stopPropagation();
             }}
           >
-            <React.Suspense fallback={<InputPlaceholder />}>
-              <AlgoliaSearch searchInputId={searchInputId} ref={ref}>
-                <SearchInput
-                  ref={ref}
-                  id={searchInputId}
-                  size="scale"
-                  onClose={props.onClose}
-                />
-              </AlgoliaSearch>
-            </React.Suspense>
+            {isClientSide && (
+              <React.Suspense fallback={<InputPlaceholder />}>
+                <AlgoliaSearch searchInputId={searchInputId} ref={ref}>
+                  <SearchInput
+                    ref={ref}
+                    id={searchInputId}
+                    size="scale"
+                    onClose={props.onClose}
+                  />
+                </AlgoliaSearch>
+              </React.Suspense>
+            )}
           </Content>
         </Center>
       </div>

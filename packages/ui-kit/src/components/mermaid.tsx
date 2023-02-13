@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 
 // This is a client-side only implementation of mermaid, which is its primary development target.
@@ -17,10 +17,15 @@ type MermaidProps = {
 };
 
 const Mermaid = (props: MermaidProps) => {
-  const isClientSide = typeof window !== 'undefined';
+  const [isClient, setClient] = useState(false);
+
+  useEffect(() => {
+    setClient(true);
+  }, []);
+
   return (
     <>
-      {isClientSide && (
+      {isClient && (
         <React.Suspense
           fallback={<LoadingSpinner scale="l" maxDelayDuration={500} />}
         >
