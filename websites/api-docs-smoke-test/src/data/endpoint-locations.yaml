@@ -1,0 +1,5 @@
+- api: test
+  locations:
+    - resource: /{projectKey}/resource
+      method: GET
+      href: https://docs.commercetools.com/api/projects/categories

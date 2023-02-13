@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutReleaseNotesDetail from '../layouts/release-notes-detail';
 import LayoutReleaseNoteBody from '../layouts/internals/layout-release-note-body';
@@ -21,19 +20,15 @@ const releaseNoteMarkdownComponents = {
 
 const ReleaseNotesDetailTemplate = (props) => (
   <IntlProvider locale="en">
-    <ThemeProvider>
+    <ThemeProvider
+      websitePrimaryColor={props.data.releaseNotePage.websitePrimaryColor}
+    >
       <LayoutReleaseNotesDetail pageData={props.data.releaseNotePage}>
         <MDXProvider components={releaseNoteMarkdownComponents}>
           <Markdown.TypographyPage>
-            <SEO
-              title={props.data.releaseNotePage.title}
-              excludeFromSearchIndex={
-                props.data.releaseNotePage.excludeFromSearchIndex
-              }
-            />
             <div>
               <LayoutReleaseNoteBody {...props.data.releaseNotePage}>
-                <MDXRenderer>{props.data.releaseNotePage.body}</MDXRenderer>
+                {props.children}
               </LayoutReleaseNoteBody>
             </div>
           </Markdown.TypographyPage>
@@ -55,12 +50,30 @@ ReleaseNotesDetailTemplate.propTypes = {
       body: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 export default ReleaseNotesDetailTemplate;
 
+// eslint-disable-next-line react/prop-types
+export function Head({ data }) {
+  return (
+    <ThemeProvider
+      // eslint-disable-next-line react/prop-types
+      websitePrimaryColor={data.releaseNotePage.websitePrimaryColor}
+    >
+      <SEO
+        // eslint-disable-next-line react/prop-types
+        title={data.releaseNotePage.title}
+        // eslint-disable-next-line react/prop-types
+        excludeFromSearchIndex={data.releaseNotePage.excludeFromSearchIndex}
+      />
+    </ThemeProvider>
+  );
+}
+
 export const query = graphql`
-  query QueryReleaseDetailPage($slug: String!) {
+  query ($slug: String!) {
     releaseNotePage(slug: { eq: $slug }) {
       title
       websitePrimaryColor

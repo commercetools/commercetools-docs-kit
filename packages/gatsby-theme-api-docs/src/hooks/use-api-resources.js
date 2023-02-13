@@ -20,6 +20,10 @@ export const useApiResources = () => {
           items {
             type
           }
+          unionParams {
+            builtinType
+            type
+          }
         }
         responses {
           code
@@ -47,6 +51,18 @@ export const useApiResources = () => {
           builtinType
         }
         applicationxwwwformurlencoded {
+          type
+          builtinType
+        }
+        imagejpeg {
+          type
+          builtinType
+        }
+        imagepng {
+          type
+          builtinType
+        }
+        imagegif {
           type
           builtinType
         }

@@ -45,7 +45,7 @@ module.exports =
           },
           children: [node],
         };
-      } else if (['import', 'export'].includes(node.type)) {
+      } else if (node.type === 'mdxjsEsm') {
         newNodes.push(node);
       } else {
         sectionNode.children.push(node);

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import { PageDataContext } from '../hooks/use-page-data';
@@ -12,7 +11,9 @@ import markdownComponents from '../markdown-components';
 
 const HomepageTemplate = (props) => (
   <IntlProvider locale="en">
-    <ThemeProvider>
+    <ThemeProvider
+      websitePrimaryColor={props.data.contentPage.websitePrimaryColor}
+    >
       <PageDataContext.Provider value={props.data.contentPage}>
         <LayoutContentHomepage
           pageContext={props.pageContext}
@@ -21,18 +22,8 @@ const HomepageTemplate = (props) => (
         >
           <MDXProvider components={markdownComponents}>
             <Markdown.TypographyPage>
-              <SEO
-                title={
-                  props.pageContext.shortTitle || props.data.contentPage.title
-                }
-                excludeFromSearchIndex={
-                  props.data.contentPage.excludeFromSearchIndex
-                }
-              />
               {/* This wrapper div is important to ensure the vertical space */}
-              <div>
-                <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-              </div>
+              <div>{props.children}</div>
             </Markdown.TypographyPage>
           </MDXProvider>
         </LayoutContentHomepage>
@@ -55,24 +46,38 @@ HomepageTemplate.propTypes = {
       beta: PropTypes.bool.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       allowWideContentLayout: PropTypes.bool.isRequired,
-      body: PropTypes.string.isRequired,
     }).isRequired,
     heroBackground: PropTypes.shape({
       publicURL: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  children: PropTypes.any.isRequired,
 };
 export default HomepageTemplate;
 
+// eslint-disable-next-line react/prop-types
+export function Head({ data, pageContext }) {
+  return (
+    // eslint-disable-next-line react/prop-types
+    <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
+      <SEO
+        // eslint-disable-next-line react/prop-types
+        title={pageContext.shortTitle || data.contentPage.title}
+        // eslint-disable-next-line react/prop-types
+        excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+      />
+    </ThemeProvider>
+  );
+}
+
 export const query = graphql`
-  query QueryHomepage($slug: String!, $heroBackgroundRelativePath: String!) {
+  query ($slug: String!, $heroBackgroundRelativePath: String!) {
     contentPage(slug: { eq: $slug }) {
       title
       websitePrimaryColor
       beta
       excludeFromSearchIndex
       allowWideContentLayout
-      body
     }
     heroBackground: file(relativePath: { eq: $heroBackgroundRelativePath }) {
       publicURL

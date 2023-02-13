@@ -11,7 +11,8 @@ The Docs-Kit theme also receives its plugin configuration through this standard 
 
 - `colorPreset` (_optional_): pick the "look and feel" of the website by choosing one of the available [Color Presets](./extensions#using-theme-color-presets). **Default: `base`**
 
-- `gaTrackingId` (_optional_): this is the Google Analytics tracking ID. For all sites hosted on the `docs.commercetools.com` domain the ID must be: `UA-38285631-3`.
+- `gaTrackingIds` (_optional_, Array): List of tracking IDs to be passed to `gtag.js`.
+  For all sites hosted on the `docs.commercetools.com` domain the IDs must be `["G-XGR7PSLVB2", "UA-38285631-3"]` to fill both UA and GA4 concurrently for the time being.
 
   > For test websites the gaTrackingId field should not be set.
 
@@ -38,9 +39,10 @@ The Docs-Kit theme also receives its plugin configuration through this standard 
 - `betaLink` (_optional_, string): Configures the link for _beta button_.
 - `excludeFromSearchIndex` (_optional_, boolean): indicates that the website should not be indexed by crawlers. This option sets the `robots="noindex"` meta attribute on all pages of the site. If true, the search box in the top navigation is not displayed. **Default: `true`** Note that the on-site Algolia Docsearch is not respecting the instruction, it is purely based on click-trough reachability from the home page.
 - `globalNotification` (_optional_, object): Activates a global banner at the top of every page within the website. It contains three configuration options:
-    -  `active` (Boolean): flag to activate the global notification banner.
-    -  `notificationType` (String, must be either `info` or `warning`) defines the type and color of the banner.
-    -  `content` (String) defines the text within the banner.
+
+  - `active` (Boolean): flag to activate the global notification banner.
+  - `notificationType` (String, must be either `info` or `warning`) defines the type and color of the banner.
+  - `content` (String) defines the text within the banner.
 
   ```js
   siteMetadata: {

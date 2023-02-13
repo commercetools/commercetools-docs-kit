@@ -126,7 +126,12 @@ const Mermaid = ({ graph }: MermaidProps) => {
     });
   }, [graph]);
 
-  return <Figure dangerouslySetInnerHTML={{ __html: svg }}></Figure>;
+  return (
+    <Figure
+      data-test-id="mermaid-diagram"
+      dangerouslySetInnerHTML={{ __html: svg }}
+    ></Figure>
+  );
 };
 Mermaid.propTypes = {
   graph: PropTypes.string.isRequired,

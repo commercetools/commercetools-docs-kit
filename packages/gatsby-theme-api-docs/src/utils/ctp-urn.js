@@ -12,9 +12,7 @@ const hashRegExp = new RegExp(encodedHash, 'g');
 // encode the minimum required only, but add the hash so the result is compatible
 // being a URL fragment identifier a.k.a. hash.
 const encodeURNComponent = (input) => {
-  return encodeURI(input)
-    .replace(/:/g, encodedColon)
-    .replace(/#/g, encodedHash);
+  return input.replace(/:/g, encodedColon).replace(/#/g, encodedHash);
 };
 
 const decodeURNComponent = (input) => {

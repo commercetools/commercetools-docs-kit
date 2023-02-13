@@ -1,5 +1,125 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 20.1.1
+
+### Patch Changes
+
+- [#1509](https://github.com/commercetools/commercetools-docs-kit/pull/1509) [`95920fbb`](https://github.com/commercetools/commercetools-docs-kit/commit/95920fbb47979bad1f4f88accc1ea6e186339acb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - hack to force shared components out of intermediate per-page bundles at SSR bundling time
+
+- [#1509](https://github.com/commercetools/commercetools-docs-kit/pull/1509) [`95920fbb`](https://github.com/commercetools/commercetools-docs-kit/commit/95920fbb47979bad1f4f88accc1ea6e186339acb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - hack to force shared components out of intermediate per-page bundles at SSR bundling time
+
+## 20.1.0
+
+### Minor Changes
+
+- [#1502](https://github.com/commercetools/commercetools-docs-kit/pull/1502) [`3844b005`](https://github.com/commercetools/commercetools-docs-kit/commit/3844b0051466fdd9a2b3237d1ee38de310a7f688) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Heading ids and corresponding toc url slugs are now stripped by any extra dash or underscore
+
+### Patch Changes
+
+- [#1508](https://github.com/commercetools/commercetools-docs-kit/pull/1508) [`8b3e2ba5`](https://github.com/commercetools/commercetools-docs-kit/commit/8b3e2ba50cc83b2ac15329c0ff4105d880378a39) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Performance improvements by disabling sitemaps generation upon build, added DEBUG_GATSBY_MEM flag to enable performance profiling during build
+
+- [#1505](https://github.com/commercetools/commercetools-docs-kit/pull/1505) [`17f841f4`](https://github.com/commercetools/commercetools-docs-kit/commit/17f841f41e2f101c281c4a4baaa63c21821fe472) Thanks [@nkuehn](https://github.com/nkuehn)! - Reduce memory usage in HTML build stage by not generating source maps in that stage
+
+- [#1499](https://github.com/commercetools/commercetools-docs-kit/pull/1499) [`60c6242d`](https://github.com/commercetools/commercetools-docs-kit/commit/60c6242d597caad82f0990839e523bb618b83152) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Filter only content and releaseNotes nodes when creating gatsby pages
+
+- [#1501](https://github.com/commercetools/commercetools-docs-kit/pull/1501) [`54ca0ef1`](https://github.com/commercetools/commercetools-docs-kit/commit/54ca0ef15eb153761f433048c0a65c515bac73bf) Thanks [@nkuehn](https://github.com/nkuehn)! - Performance: Do not generate CSS source maps
+
+## 20.0.1
+
+### Patch Changes
+
+- [#1494](https://github.com/commercetools/commercetools-docs-kit/pull/1494) [`968578f2`](https://github.com/commercetools/commercetools-docs-kit/commit/968578f2724ce9e8adbb3d2d4360565513fd2c3e) Thanks [@timonrey](https://github.com/timonrey)! - Remove unused Gatsby plugin dependencies
+
+- [#1492](https://github.com/commercetools/commercetools-docs-kit/pull/1492) [`dd9c0d6a`](https://github.com/commercetools/commercetools-docs-kit/commit/dd9c0d6afc71c73cd0032eda9c78a827b3379513) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Use un-named query for templates to avoid mdx2 errors
+
+## 20.0.0
+
+### Major Changes
+
+- [#1459](https://github.com/commercetools/commercetools-docs-kit/pull/1459) [`20e0fce1`](https://github.com/commercetools/commercetools-docs-kit/commit/20e0fce158aeb3e3983587330416cb7283a6e9c8) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Migrate theme packages and websites to MDX v2. Deprecate gatsby-transformer-mdx-introspection package
+
+### Patch Changes
+
+- Updated dependencies [[`20e0fce1`](https://github.com/commercetools/commercetools-docs-kit/commit/20e0fce158aeb3e3983587330416cb7283a6e9c8)]:
+  - @commercetools-docs/ui-kit@20.0.0
+
+## 19.11.1
+
+### Patch Changes
+
+- [#1490](https://github.com/commercetools/commercetools-docs-kit/pull/1490) [`00ebe7dd`](https://github.com/commercetools/commercetools-docs-kit/commit/00ebe7dd31416d93c506816cd3156177eca483f1) Thanks [@timonrey](https://github.com/timonrey)! - Cleanup of unused gatsby plugins in the configuration.
+
+- [#1484](https://github.com/commercetools/commercetools-docs-kit/pull/1484) [`495d1d0a`](https://github.com/commercetools/commercetools-docs-kit/commit/495d1d0a98adec7b4db69c7c48fd51cbe89747c8) Thanks [@timonrey](https://github.com/timonrey)! - The website is now using Gatsby's built in support for modifying the document head and to configure trailing slashes instead of using Gatsby plugins for these purposes.
+
+## 19.11.0
+
+### Patch Changes
+
+- [#1486](https://github.com/commercetools/commercetools-docs-kit/pull/1486) [`b8da578e`](https://github.com/commercetools/commercetools-docs-kit/commit/b8da578e4a66cf8d77ce7ee22d2b8f8e7f061ced) Thanks [@timonrey](https://github.com/timonrey)! - We now provide three optional color presets from the kit that can be used to configure your website.
+
+- [#1479](https://github.com/commercetools/commercetools-docs-kit/pull/1479) [`8becd5fd`](https://github.com/commercetools/commercetools-docs-kit/commit/8becd5fd705b0ed14ba57002623409bff9a935a4) Thanks [@timonrey](https://github.com/timonrey)! - Tech maintenace for dependencies
+
+- Updated dependencies [[`3ab7b187`](https://github.com/commercetools/commercetools-docs-kit/commit/3ab7b187404347e96bea178fcea6fe9016dcab16)]:
+  - @commercetools-docs/ui-kit@19.11.0
+
+## 19.10.0
+
+### Minor Changes
+
+- [#1470](https://github.com/commercetools/commercetools-docs-kit/pull/1470) [`1e111dbc`](https://github.com/commercetools/commercetools-docs-kit/commit/1e111dbc3eedcd167d3397120d5a8bedfd3b4662) Thanks [@nkuehn](https://github.com/nkuehn)! - Allow multiple GA tracking IDs by using gtag.js
+
+  To migrate, rename the `gaTrackingId` theme configuration to `gaTrackingIds` and pass an array of strings.
+  The previous configuration is still supported for compatibility.
+  Find the new IDs for commercetools docs in the docs-kit documentation including the new GA4 id.
+
+### Patch Changes
+
+- [#1418](https://github.com/commercetools/commercetools-docs-kit/pull/1418) [`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4) Thanks [@emmenko](https://github.com/emmenko)! - Load CSS variables via global import instead of using UI Kit's `<ThemeProvider>` (does not support SSR).
+
+- [#1466](https://github.com/commercetools/commercetools-docs-kit/pull/1466) [`8ce75634`](https://github.com/commercetools/commercetools-docs-kit/commit/8ce756340bdd7e3288e36fcf9c979688e0bc272a) Thanks [@timonrey](https://github.com/timonrey)! - Fix issue with the clickable cards being cut off in certaion situations.
+
+- [#1452](https://github.com/commercetools/commercetools-docs-kit/pull/1452) [`a17f6dd9`](https://github.com/commercetools/commercetools-docs-kit/commit/a17f6dd9681b8a0441becde648b6eba3ebd1b8ee) Thanks [@emmenko](https://github.com/emmenko)! - Fix prop access
+
+- Updated dependencies [[`598a26f9`](https://github.com/commercetools/commercetools-docs-kit/commit/598a26f967ad6a0202661d5969c315009260fc59), [`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4), [`d052cb76`](https://github.com/commercetools/commercetools-docs-kit/commit/d052cb767f7b1d5b165b1c65fd5052fc62a2fb10)]:
+  - @commercetools-docs/ui-kit@19.10.0
+
+## 19.9.0
+
+### Minor Changes
+
+- [#1453](https://github.com/commercetools/commercetools-docs-kit/pull/1453) [`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add sticky behaviour to code content in the right column (when in wide screen mode) for both endpoints and types
+
+- [#1443](https://github.com/commercetools/commercetools-docs-kit/pull/1443) [`1c56b3b5`](https://github.com/commercetools/commercetools-docs-kit/commit/1c56b3b5f9d262f658081a65f466b72deb9165b2) Thanks [@timonrey](https://github.com/timonrey)! - Uptate for the search inside the documentation: Show the product name together with the website name on the first level of every search result.
+
+- [#1445](https://github.com/commercetools/commercetools-docs-kit/pull/1445) [`ae9d441a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae9d441a1acf5289724281a16680795d1ea1167b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for endpoint URN resolution in links. As per type URN, an override mechanism is provided and documented
+
+### Patch Changes
+
+- [#1439](https://github.com/commercetools/commercetools-docs-kit/pull/1439) [`a6f96deb`](https://github.com/commercetools/commercetools-docs-kit/commit/a6f96deb50997bb6e6c9adf36ab409ed18258dfb) Thanks [@timonrey](https://github.com/timonrey)! - Adjust the google search results and display the product name instead of 'commercetools'.
+
+- [#1420](https://github.com/commercetools/commercetools-docs-kit/pull/1420) [`677fc233`](https://github.com/commercetools/commercetools-docs-kit/commit/677fc23352b5c022ab8caf4f12eb3dfccedf3678) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix wrong link highlighted when navigating sections, improved navigation behaviour
+
+- [#1446](https://github.com/commercetools/commercetools-docs-kit/pull/1446) [`33894024`](https://github.com/commercetools/commercetools-docs-kit/commit/3389402406cc73959659fd461a4c16aabe8b68ee) Thanks [@timonrey](https://github.com/timonrey)! - Fix regression on the date filter for release notes. The release note date filter is now visible and functional on all viewports.
+
+- Updated dependencies [[`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3)]:
+  - @commercetools-docs/ui-kit@19.9.0
+
+## 19.8.1
+
+### Patch Changes
+
+- [#1431](https://github.com/commercetools/commercetools-docs-kit/pull/1431) [`ffc1e943`](https://github.com/commercetools/commercetools-docs-kit/commit/ffc1e94363188f1e9954a239cb8b9a270eca6ab6) Thanks [@timonrey](https://github.com/timonrey)! - Fix a layout bug in the top-right corner on release note pages. The top-right corner on release note pages can now not be overwritten.
+
+## 19.8.0
+
+### Minor Changes
+
+- [#1400](https://github.com/commercetools/commercetools-docs-kit/pull/1400) [`0b529c91`](https://github.com/commercetools/commercetools-docs-kit/commit/0b529c914503c131ab02fbf82923b69e1dd2bcd2) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add Video component
+
+### Patch Changes
+
+- [#1414](https://github.com/commercetools/commercetools-docs-kit/pull/1414) [`d92768a0`](https://github.com/commercetools/commercetools-docs-kit/commit/d92768a05e19aeee496126999e24b42f274ad719) Thanks [@timonrey](https://github.com/timonrey)! - Provide the possibility to override the whole page-header-side area in the top-right corner.
+
 ## 19.7.0
 
 ### Minor Changes

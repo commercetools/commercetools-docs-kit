@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import LayoutContent from '../layouts/content';
@@ -15,41 +14,33 @@ const ContentCards = (props) => (
   <markdownComponents.Cards fitContentColumn={true} {...props} />
 );
 
-const PageContentTemplate = (props) => (
-  <IntlProvider locale="en">
-    <ThemeProvider>
-      <PageDataContext.Provider value={props.data.contentPage}>
-        <LayoutContent
-          pageContext={props.pageContext}
-          pageData={props.data.contentPage}
-        >
-          <MDXProvider
-            components={{
-              ...markdownComponents,
-              Cards: ContentCards,
-              ChildSectionsNav,
-            }}
+const PageContentTemplate = (props, ...args) => {
+  return (
+    <IntlProvider locale="en">
+      <ThemeProvider>
+        <PageDataContext.Provider value={props.data.contentPage}>
+          <LayoutContent
+            pageContext={props.pageContext}
+            pageData={props.data.contentPage}
           >
-            <Markdown.TypographyPage>
-              <SEO
-                title={
-                  props.pageContext.shortTitle || props.data.contentPage.title
-                }
-                excludeFromSearchIndex={
-                  props.data.contentPage.excludeFromSearchIndex
-                }
-              />
-              {/* This wrapper div is important to ensure the vertical space */}
-              <div>
-                <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-              </div>
-            </Markdown.TypographyPage>
-          </MDXProvider>
-        </LayoutContent>
-      </PageDataContext.Provider>
-    </ThemeProvider>
-  </IntlProvider>
-);
+            <MDXProvider
+              components={{
+                ...markdownComponents,
+                Cards: ContentCards,
+                ChildSectionsNav,
+              }}
+            >
+              <Markdown.TypographyPage>
+                {/* This wrapper div is important to ensure the vertical space */}
+                <div>{props.children}</div>
+              </Markdown.TypographyPage>
+            </MDXProvider>
+          </LayoutContent>
+        </PageDataContext.Provider>
+      </ThemeProvider>
+    </IntlProvider>
+  );
+};
 
 PageContentTemplate.displayName = 'PageContentTemplate';
 PageContentTemplate.propTypes = {
@@ -73,11 +64,27 @@ PageContentTemplate.propTypes = {
       estimatedTimeToRead: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
+  children: PropTypes.any.isRequired,
 };
 export default PageContentTemplate;
 
+// eslint-disable-next-line react/prop-types
+export function Head({ data, pageContext }) {
+  return (
+    // eslint-disable-next-line react/prop-types
+    <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
+      <SEO
+        // eslint-disable-next-line react/prop-types
+        title={pageContext.shortTitle || data.contentPage.title}
+        // eslint-disable-next-line react/prop-types
+        excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+      />
+    </ThemeProvider>
+  );
+}
+
 export const query = graphql`
-  query QueryContentPage($slug: String!) {
+  query ($slug: String!) {
     contentPage(slug: { eq: $slug }) {
       title
       websitePrimaryColor

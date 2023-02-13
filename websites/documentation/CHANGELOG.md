@@ -1,5 +1,92 @@
 # @commercetools-website/documentation
 
+## 6.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`95920fbb`](https://github.com/commercetools/commercetools-docs-kit/commit/95920fbb47979bad1f4f88accc1ea6e186339acb), [`95920fbb`](https://github.com/commercetools/commercetools-docs-kit/commit/95920fbb47979bad1f4f88accc1ea6e186339acb)]:
+  - @commercetools-docs/gatsby-theme-docs@20.1.1
+  - @commercetools-docs/gatsby-theme-code-examples@20.1.1
+
+## 6.0.2
+
+### Patch Changes
+
+- [#1508](https://github.com/commercetools/commercetools-docs-kit/pull/1508) [`8b3e2ba5`](https://github.com/commercetools/commercetools-docs-kit/commit/8b3e2ba50cc83b2ac15329c0ff4105d880378a39) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Performance improvements by disabling sitemaps generation upon build, added DEBUG_GATSBY_MEM flag to enable performance profiling during build
+
+- Updated dependencies [[`8b3e2ba5`](https://github.com/commercetools/commercetools-docs-kit/commit/8b3e2ba50cc83b2ac15329c0ff4105d880378a39), [`17f841f4`](https://github.com/commercetools/commercetools-docs-kit/commit/17f841f41e2f101c281c4a4baaa63c21821fe472), [`60c6242d`](https://github.com/commercetools/commercetools-docs-kit/commit/60c6242d597caad82f0990839e523bb618b83152), [`54ca0ef1`](https://github.com/commercetools/commercetools-docs-kit/commit/54ca0ef15eb153761f433048c0a65c515bac73bf), [`3844b005`](https://github.com/commercetools/commercetools-docs-kit/commit/3844b0051466fdd9a2b3237d1ee38de310a7f688)]:
+  - @commercetools-docs/gatsby-theme-docs@20.1.0
+
+## 6.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`968578f2`](https://github.com/commercetools/commercetools-docs-kit/commit/968578f2724ce9e8adbb3d2d4360565513fd2c3e), [`dd9c0d6a`](https://github.com/commercetools/commercetools-docs-kit/commit/dd9c0d6afc71c73cd0032eda9c78a827b3379513)]:
+  - @commercetools-docs/gatsby-theme-docs@20.0.1
+
+## 6.0.0
+
+### Major Changes
+
+- [#1459](https://github.com/commercetools/commercetools-docs-kit/pull/1459) [`20e0fce1`](https://github.com/commercetools/commercetools-docs-kit/commit/20e0fce158aeb3e3983587330416cb7283a6e9c8) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Migrate theme packages and websites to MDX v2. Deprecate gatsby-transformer-mdx-introspection package
+
+### Patch Changes
+
+- Updated dependencies [[`20e0fce1`](https://github.com/commercetools/commercetools-docs-kit/commit/20e0fce158aeb3e3983587330416cb7283a6e9c8)]:
+  - @commercetools-docs/gatsby-theme-code-examples@20.0.0
+  - @commercetools-docs/gatsby-theme-docs@20.0.0
+
+## 5.1.3
+
+### Patch Changes
+
+- Updated dependencies [[`00ebe7dd`](https://github.com/commercetools/commercetools-docs-kit/commit/00ebe7dd31416d93c506816cd3156177eca483f1), [`495d1d0a`](https://github.com/commercetools/commercetools-docs-kit/commit/495d1d0a98adec7b4db69c7c48fd51cbe89747c8)]:
+  - @commercetools-docs/gatsby-theme-docs@19.11.1
+
+## 5.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`b8da578e`](https://github.com/commercetools/commercetools-docs-kit/commit/b8da578e4a66cf8d77ce7ee22d2b8f8e7f061ced), [`8becd5fd`](https://github.com/commercetools/commercetools-docs-kit/commit/8becd5fd705b0ed14ba57002623409bff9a935a4)]:
+  - @commercetools-docs/gatsby-theme-docs@19.11.0
+  - @commercetools-docs/gatsby-theme-code-examples@19.11.0
+
+## 5.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4), [`8ce75634`](https://github.com/commercetools/commercetools-docs-kit/commit/8ce756340bdd7e3288e36fcf9c979688e0bc272a), [`a17f6dd9`](https://github.com/commercetools/commercetools-docs-kit/commit/a17f6dd9681b8a0441becde648b6eba3ebd1b8ee), [`1e111dbc`](https://github.com/commercetools/commercetools-docs-kit/commit/1e111dbc3eedcd167d3397120d5a8bedfd3b4662)]:
+  - @commercetools-docs/gatsby-theme-docs@19.10.0
+  - @commercetools-docs/gatsby-theme-code-examples@19.10.0
+
+## 5.1.0
+
+### Minor Changes
+
+- [#1445](https://github.com/commercetools/commercetools-docs-kit/pull/1445) [`ae9d441a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae9d441a1acf5289724281a16680795d1ea1167b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for endpoint URN resolution in links. As per type URN, an override mechanism is provided and documented
+
+### Patch Changes
+
+- Updated dependencies [[`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3), [`a6f96deb`](https://github.com/commercetools/commercetools-docs-kit/commit/a6f96deb50997bb6e6c9adf36ab409ed18258dfb), [`677fc233`](https://github.com/commercetools/commercetools-docs-kit/commit/677fc23352b5c022ab8caf4f12eb3dfccedf3678), [`1c56b3b5`](https://github.com/commercetools/commercetools-docs-kit/commit/1c56b3b5f9d262f658081a65f466b72deb9165b2), [`ae9d441a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae9d441a1acf5289724281a16680795d1ea1167b), [`33894024`](https://github.com/commercetools/commercetools-docs-kit/commit/3389402406cc73959659fd461a4c16aabe8b68ee)]:
+  - @commercetools-docs/gatsby-theme-docs@19.9.0
+  - @commercetools-docs/gatsby-theme-code-examples@19.9.0
+
+## 5.0.18
+
+### Patch Changes
+
+- [#1415](https://github.com/commercetools/commercetools-docs-kit/pull/1415) [`2c523aa3`](https://github.com/commercetools/commercetools-docs-kit/commit/2c523aa389923b5be077b4d2a20e121b9dafa2d1) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Do not use github secrets or .env files to build/run the websites, use hardcoded values instead
+
+- Updated dependencies [[`ffc1e943`](https://github.com/commercetools/commercetools-docs-kit/commit/ffc1e94363188f1e9954a239cb8b9a270eca6ab6)]:
+  - @commercetools-docs/gatsby-theme-docs@19.8.1
+
+## 5.0.17
+
+### Patch Changes
+
+- Updated dependencies [[`d92768a0`](https://github.com/commercetools/commercetools-docs-kit/commit/d92768a05e19aeee496126999e24b42f274ad719), [`0b529c91`](https://github.com/commercetools/commercetools-docs-kit/commit/0b529c914503c131ab02fbf82923b69e1dd2bcd2)]:
+  - @commercetools-docs/gatsby-theme-docs@19.8.0
+
 ## 5.0.16
 
 ### Patch Changes

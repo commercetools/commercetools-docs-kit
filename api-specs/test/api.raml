@@ -171,6 +171,9 @@ uses:
           description: This should render above the text "The parameter can be passed multiple times."
           type: string[]
           required: false
+        unionParameter:
+          type: number | datetime | objects.ObjectTestType
+          required: false
       securedBy:
       - oauth_2_0:
           scopes: ["manage_test:{projectKey}", "view_test:{projectKey}"]
@@ -407,6 +410,71 @@ uses:
             type: boolean
             description: Should display 5th (7th in RAML)
             example: true
+
+    /images:
+      post:
+        displayName: Upload a product image
+        queryParameters:
+          filename?:
+            type: string
+          variant?:
+            type: number
+            format: int64
+          sku?:
+            type: string
+          staged?:
+            type: boolean
+        description: |
+          Uploads a binary image file to a given product variant. The supported image formats are JPEG, PNG and GIF.
+        securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
+        body:
+          image/jpeg:
+            type: file
+          image/png:
+            type: file
+          image/gif:
+            type: file
+        headers:
+          Content-Type:
+            enum: ['image/jpeg', 'image/png', 'image/gif']
+        responses:
+          200:
+            body:
+              example: !include examples/product-example.json
+              type: any
+
+    /namespace-action:
+      uriParameters:
+        namespace:
+          displayName: Namespace
+          type: string
+          description: Namespace
+        action:
+          displayName: Action
+          type: string
+          description: Action
+      get:
+        description: Use the GET method to allow the frontend to fetch data asynchronously.
+        responses:
+          200:
+            description: We recommend to use standard HTTP response codes and `application/json` encoded content.
+      post:
+        description: Use the POST method to write data to a backend system.
+        responses:
+          200:
+            description: We recommend to use standard HTTP response codes and `application/json` encoded content.
+
+    /namespace-action-with-example:
+      get:
+        description: Use the GET method to allow the frontend to fetch data asynchronously. The example fetches a cart.
+        responses:
+          200:
+            description: We recommend to use standard HTTP response codes and `application/json` encoded content. The response will look like the response you have declared in your action. As an example we will fetch the cart.
+            body:
+              application/json:
+                type: object
+                example: !include examples/action-success.json
+
 
 #   /resourceWithHeaders:
 #    description: Tests use of specific headers.

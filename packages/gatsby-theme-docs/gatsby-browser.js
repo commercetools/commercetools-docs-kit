@@ -5,16 +5,17 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
+import React from 'react';
+import Prism from 'prism-react-renderer/prism';
+import { CacheProvider } from '@emotion/react';
+import { docsCache } from './utils/create-emotion-cache';
 import '@fontsource/roboto/latin-400.css';
 import '@fontsource/roboto/latin-500.css';
 import '@fontsource/roboto/latin-700.css';
 import '@fontsource/roboto-mono/latin-400.css';
 import '@fontsource/roboto-mono/latin-500.css';
 import '@fontsource/roboto-mono/latin-700.css';
-import React from 'react';
-import Prism from 'prism-react-renderer/prism';
-import { CacheProvider } from '@emotion/react';
-import { docsCache } from './utils/create-emotion-cache';
+import './globals.css';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_VERCEL_GITHUB_COMMIT_SHA;

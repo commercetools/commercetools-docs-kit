@@ -11,24 +11,46 @@ const { ContextReplacementPlugin } = require('webpack');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const MomentTimezoneDataPlugin = require('moment-timezone-data-webpack-plugin');
 const slugify = require('slugify');
-const processTableOfContentFields = require('./utils/process-table-of-content-fields');
+const generateToC = require('./utils/generate-toc');
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 const colorPresets = require('./color-presets');
+const extractShortcodeOccurrence = require('./utils/extract-shortcode-occurrence');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const isProd = process.env.NODE_ENV === 'production';
 
+let processor;
+
+const debugMem = () => {
+  // memory debug mode, forces GC every second and prints a "top" like summary
+  if (process.env.DEBUG_GATSBY_MEM === 'true') {
+    const top = require('process-top')();
+    const v8 = require(`v8`);
+    const vm = require(`vm`);
+    v8.setFlagsFromString(`--expose_gc`);
+    const gc = vm.runInNewContext(`gc`);
+    setInterval(() => {
+      gc();
+      console.log(top.toString());
+    }, 1000);
+  }
+};
+
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
-exports.onPreBootstrap = (gatsbyApi, themeOptions) => {
+exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
+  const { createProcessor } = await import('@mdx-js/mdx');
+  console.log('creating processor');
+  processor = createProcessor();
   const requiredDirectories = [
     'src/data',
     'src/images',
     'src/images/releases',
     'src/content',
     'src/content/files',
+    'src/topics',
     'src/releases',
     'static',
     'static/downloads',
@@ -77,6 +99,9 @@ const resolverPassthrough =
     });
     if (mdxNode) {
       const field = type.getFields()[fieldName];
+      if (!field) {
+        return errorFallback;
+      }
       const result = await field.resolve(resolveNode(mdxNode), args, context, {
         fieldName,
       });
@@ -149,7 +174,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
   // Create a new type representing a Content Page
   // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
-  actions.createTypes(
+  const typeDefs = [
     schema.buildObjectType({
       name: 'ContentPage',
       fields: {
@@ -175,11 +200,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
               default: 6,
             },
           },
-          resolve: resolverPassthrough({
-            fieldName: 'tableOfContents',
-            processResult: processTableOfContentFields,
-            errorFallback: {},
-          }),
         },
         navLevels: { type: 'Int!' },
         showTimeToRead: { type: 'Boolean' },
@@ -191,10 +211,29 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             errorFallback: 0,
           }),
         },
+        shortcodeOccurrence: '[ShortcodeOccurence!]',
       },
       interfaces: ['Node'],
-    })
-  );
+    }),
+
+    schema.buildObjectType({
+      name: 'ShortcodeOccurence',
+      fields: {
+        component: 'String!',
+        attributes: '[ShortcodeOccurenceAttribute!]',
+      },
+    }),
+
+    schema.buildObjectType({
+      name: 'ShortcodeOccurenceAttribute',
+      fields: {
+        name: 'String!',
+        value: 'String!',
+      },
+    }),
+  ];
+
+  actions.createTypes(typeDefs);
 
   // Create a new type representing a Release Note Page.
   // https://www.christopherbiscardi.com/post/constructing-query-types-in-themes
@@ -231,7 +270,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   );
 };
 
-exports.onCreateNode = (
+exports.onCreateNode = async (
   { node, getNode, actions, createNodeId, createContentDigest },
   themeOptions
 ) => {
@@ -252,8 +291,14 @@ exports.onCreateNode = (
   const isReleaseNotesPage =
     parent.internal.mediaType === 'text/mdx' &&
     parent.sourceInstanceName === 'releaseNotes';
+
+  const isContentPage =
+    parent.internal.mediaType === 'text/mdx' &&
+    (parent.sourceInstanceName === 'content' ||
+      parent.sourceInstanceName === 'internalContent');
+
   if (isReleaseNotesPage) {
-    const excerptSplit = node.rawBody.split('<!--more-->');
+    const excerptSplit = node.body.split('{/* more */}');
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
@@ -278,6 +323,7 @@ exports.onCreateNode = (
         contentDigest: createContentDigest(releaseNotesFieldData),
         content: JSON.stringify(releaseNotesFieldData),
         description: 'Release Note Pages',
+        contentFilePath: node.internal.contentFilePath,
       },
     });
     actions.createParentChildLink({
@@ -287,52 +333,63 @@ exports.onCreateNode = (
     return;
   }
 
-  // If not explicitly handled, always fall back to build the page as a "content" page.
-  // This is useful in case the website requires additional MDX pages located in
-  // other file system directories, and thus with different `sourceInstanceName` names.
-  const contentPageFieldData = {
-    slug: trimTrailingSlash(slug) || '/',
-    title: node.frontmatter.title,
-    websitePrimaryColor: colorPreset.value.primaryColor,
-    excludeFromSearchIndex:
-      // frontmatter can only exclude in an otherwise not excluded site,
-      // but it can't include in a generally excluded site
-      Boolean(node.frontmatter.excludeFromSearchIndex),
-    allowWideContentLayout: Boolean(node.frontmatter.wideLayout),
-    beta: Boolean(node.frontmatter.beta),
-    navLevels: node.frontmatter.navLevels
-      ? Number(node.frontmatter.navLevels)
-      : 3,
-    showTimeToRead: node.frontmatter.showTimeToRead
-      ? Boolean(node.frontmatter.showTimeToRead)
-      : false,
-    timeToRead: node.frontmatter.timeToRead
-      ? Number(node.frontmatter.timeToRead)
-      : 0,
-  };
-  actions.createNode({
-    ...contentPageFieldData,
-    // Required fields
-    id: createNodeId(`${node.id} >>> ContentPage`),
-    parent: node.id,
-    children: [],
-    internal: {
-      type: 'ContentPage',
-      contentDigest: createContentDigest(contentPageFieldData),
-      content: JSON.stringify(contentPageFieldData),
-      description: 'Content Pages',
-    },
-  });
-  actions.createParentChildLink({
-    parent,
-    child: node,
-  });
+  if (isContentPage) {
+    // https://github.com/unifiedjs/unified#processorparsefile
+    const nodeBodyAst = processor.parse(node.body);
+    // If not explicitly handled, always fall back to build the page as a "content" page.
+    // This is useful in case the website requires additional MDX pages located in
+    // other file system directories, and thus with different `sourceInstanceName` names.
+    const contentPageFieldData = {
+      slug: trimTrailingSlash(slug) || '/',
+      title: node.frontmatter.title,
+      websitePrimaryColor: colorPreset.value.primaryColor,
+      excludeFromSearchIndex:
+        // frontmatter can only exclude in an otherwise not excluded site,
+        // but it can't include in a generally excluded site
+        Boolean(node.frontmatter.excludeFromSearchIndex),
+      allowWideContentLayout: Boolean(node.frontmatter.wideLayout),
+      beta: Boolean(node.frontmatter.beta),
+      navLevels: node.frontmatter.navLevels
+        ? Number(node.frontmatter.navLevels)
+        : 3,
+      showTimeToRead: node.frontmatter.showTimeToRead
+        ? Boolean(node.frontmatter.showTimeToRead)
+        : false,
+      timeToRead: node.frontmatter.timeToRead
+        ? Number(node.frontmatter.timeToRead)
+        : 0,
+      shortcodeOccurrence: extractShortcodeOccurrence(
+        ['ApiType', 'ApiEndpoint'],
+        nodeBodyAst
+      ),
+      tableOfContents: await generateToC(nodeBodyAst),
+    };
+
+    actions.createNode({
+      ...contentPageFieldData,
+      // Required fields
+      id: createNodeId(`${node.id} >>> ContentPage`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: 'ContentPage',
+        contentDigest: createContentDigest(contentPageFieldData),
+        content: JSON.stringify(contentPageFieldData),
+        description: 'Content Pages',
+        contentFilePath: node.internal.contentFilePath,
+      },
+    });
+    actions.createParentChildLink({
+      parent,
+      child: node,
+    });
+  }
 };
 
 function generateReleaseNoteSlug(node) {
   const basePath = '/releases';
 
-  if (node.fileAbsolutePath.endsWith('index.mdx')) {
+  if (node.internal.contentFilePath.endsWith('index.mdx')) {
     return basePath;
   }
 
@@ -340,7 +397,9 @@ function generateReleaseNoteSlug(node) {
     return trimTrailingSlash(`${basePath}/${node.frontmatter.slug}`);
   }
 
-  const date = node.frontmatter.date ? node.frontmatter.date.split('T')[0] : '';
+  const date = node.frontmatter.date
+    ? node.frontmatter.date.toISOString().split('T')[0]
+    : '';
   const title = node.frontmatter.title ? node.frontmatter.title : '';
 
   const slug = slugify(`${date} ${title}`, { lower: true, strict: true });
@@ -349,6 +408,7 @@ function generateReleaseNoteSlug(node) {
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
 exports.createPages = async (...args) => {
+  debugMem();
   await createContentPages(...args);
   await createReleaseNotePages(...args);
 };
@@ -364,6 +424,9 @@ async function createContentPages(
       allContentPage {
         nodes {
           slug
+          internal {
+            contentFilePath
+          }
         }
       }
       allReleaseNotePage(sort: { order: DESC, fields: date }) {
@@ -400,7 +463,7 @@ async function createContentPages(
       (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
       []
     );
-  pages.forEach(({ slug }) => {
+  pages.forEach(({ slug, internal: { contentFilePath: contentPath } }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
@@ -418,29 +481,42 @@ async function createContentPages(
     switch (slug) {
       case '/': {
         const colorPreset = colorPresets[pluginOptions.colorPreset];
+        const homepageTemplate = require.resolve('./src/templates/homepage.js');
+
         actions.createPage({
           ...pageData,
-          component: require.resolve('./src/templates/homepage.js'),
+          component: `${homepageTemplate}?__contentFilePath=${contentPath}`,
           context: {
             ...pageData.context,
             heroBackgroundRelativePath: `${colorPreset.relativePath}/${colorPreset.value.heroBackgroundName}`,
             heroBackgroundColor: colorPreset.value.bannerBackgroundColor,
           },
         });
+
         break;
       }
       case '/releases':
+        const releaseNoteTemplate = require.resolve(
+          './src/templates/release-notes-list.js'
+        );
+
         actions.createPage({
           ...pageData,
-          component: require.resolve('./src/templates/release-notes-list.js'),
+          component: `${releaseNoteTemplate}?__contentFilePath=${contentPath}`,
         });
+
         break;
 
       default:
+        const pageContentTemplate = require.resolve(
+          './src/templates/page-content.js'
+        );
+
         actions.createPage({
           ...pageData,
-          component: require.resolve('./src/templates/page-content.js'),
+          component: `${pageContentTemplate}?__contentFilePath=${contentPath}`,
         });
+
         break;
     }
   });
@@ -457,6 +533,9 @@ async function createReleaseNotePages(
       allReleaseNotePage {
         nodes {
           slug
+          internal {
+            contentFilePath
+          }
         }
       }
     }
@@ -468,17 +547,22 @@ async function createReleaseNotePages(
       )}`
     );
   }
-  result.data.allReleaseNotePage.nodes.forEach(({ slug }) => {
-    actions.createPage({
-      path: slug,
-      // This component will wrap our MDX content
-      component: require.resolve('./src/templates/release-notes-detail.js'),
-      // You can use the values in this context in our page layout component
-      context: {
-        slug,
-      },
-    });
-  });
+  result.data.allReleaseNotePage.nodes.forEach(
+    ({ slug, internal: { contentFilePath: rnPath } }) => {
+      const releaseNoteDetailTemplate = require.resolve(
+        './src/templates/release-notes-detail.js'
+      );
+      actions.createPage({
+        path: slug,
+        // This component will wrap our MDX content
+        component: `${releaseNoteDetailTemplate}?__contentFilePath=${rnPath}`,
+        // You can use the values in this context in our page layout component
+        context: {
+          slug,
+        },
+      });
+    }
+  );
 }
 
 exports.onCreateWebpackConfig = (
@@ -543,6 +627,11 @@ exports.onCreateWebpackConfig = (
       test: /tmp/,
       use: loaders.null(),
     });
+  }
+  // improve build performance in memory critical stage of builds by not generating source maps
+  // (yes, this can make errors cryptic, we will have to revisit if it's firing back too much)
+  if (stage === 'build-html' || stage === `build-javascript`) {
+    config.devtool = false;
   }
 
   config.resolve = {

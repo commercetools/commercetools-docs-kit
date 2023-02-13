@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import {
@@ -6,7 +7,7 @@ import {
 } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import useTypeToRender from '../../../hooks/use-type-to-render';
+import useTypesToRender from '../../../hooks/use-type-to-render';
 import Required from '../../required';
 import RegexProperty from '../../type/properties/regex-properties';
 import Table from '../../table';
@@ -17,6 +18,20 @@ import { typography } from '../../../design-system';
 
 const isRegex = (string) =>
   string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
+
+const isTypeUnion = (strType) => {
+  return typeof strType === 'string' && strType === 'Union';
+};
+
+const getParameterType = ({ name, unionParams }, type, apiKey) => {
+  if (isRegex(name)) {
+    return `Any ${type.toLowerCase()} parameter matching this regular expression`;
+  }
+  if (isTypeUnion(type)) {
+    return <UnionParametersRow types={unionParams} apiKey={apiKey} />;
+  }
+  return type;
+};
 
 // inline-blocks inside a block are wrapped first before wrapping inline.
 // this implements a wrapping behavior where property name and type are separated
@@ -70,12 +85,46 @@ Parameters.propTypes = {
 };
 Parameters.displayName = 'Parameters';
 
+function UnionParametersRow(props) {
+  const typesToRender = useTypesToRender({
+    property: props.types,
+    apiKey: props.apiKey,
+    isParameter: true,
+  });
+
+  return (
+    <>
+      Can be{' '}
+      {typesToRender.map(({ type }, idx, { length }) =>
+        length > idx + 1 ? <span>{type}, </span> : <span>or {type}</span>
+      )}
+    </>
+  );
+}
+
+UnionParametersRow.propTypes = {
+  apiKey: PropTypes.string.isRequired,
+  types: PropTypes.arrayOf({
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    required: PropTypes.bool,
+    description: PropTypes.string,
+    additionalDescription: PropTypes.string,
+    items: PropTypes.shape({
+      type: PropTypes.string,
+    }),
+  }).isRequired,
+};
+UnionParametersRow.displayName = 'UnionParametersRow';
+
 function ParameterRow(props) {
-  const typeToRender = useTypeToRender({
+  const typesToRender = useTypesToRender({
     property: props.parameter,
     apiKey: props.apiKey,
     isParameter: true,
   });
+  const typeToRender = typesToRender[0]; // safe as we expect a single item in the array
+
   return (
     <tr key={props.parameter.name}>
       <td>
@@ -93,11 +142,7 @@ function ParameterRow(props) {
         <PropertyType>
           {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
-          {isRegex(props.parameter.name)
-            ? `Any ${typeToRender.type.toLowerCase()} parameter matching this regular expression`
-            : typeof typeToRender.type === 'string'
-            ? typeToRender.type
-            : typeToRender.type}
+          {getParameterType(props.parameter, typeToRender.type, props.apiKey)}
         </PropertyType>
         {'\u200B' /* zero-width space for the search crawler */}
       </td>

@@ -1,4 +1,11 @@
+function isUnion(type) {
+  return typeof type.type === 'string' && type.type.indexOf('|') >= 0;
+}
+
 function generateType(type) {
+  if (isUnion(type)) {
+    return 'Union';
+  }
   switch (type.type) {
     case 'integer':
       return 'Int';

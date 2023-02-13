@@ -7,11 +7,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { useSiteData } from '../hooks/use-site-data';
+import useTopMenuItems from '../hooks/use-top-menu-items';
+import getSiteContextTitleByPath from '../utils/get-site-context-title';
 
 const SEO = (props) => {
   const siteData = useSiteData();
+  const siteContextMap = useTopMenuItems();
+  const siteContextTitle = getSiteContextTitleByPath(
+    siteContextMap,
+    siteData.pathPrefix
+  );
   const excludeFromSearchIndex =
     props.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
@@ -54,23 +60,31 @@ const SEO = (props) => {
       name: 'twitter:description',
       content: metaDescription,
     },
+    {
+      name: 'commercetools:title-for-onsite-search',
+      content: siteContextTitle
+        ? `${siteContextTitle} > ${siteData.siteMetadata.title}`
+        : siteData.siteMetadata.title,
+    },
     excludeFromSearchIndex && {
       name: 'robots',
       content: 'noindex',
     },
     ...props.meta,
   ].filter(Boolean);
+
+  const titleTemplate = `${props.title} | ${siteData.siteMetadata.title} | ${
+    siteContextTitle ? `commercetools ${siteContextTitle}` : `commercetools`
+  }`;
+
   return (
-    <Helmet
-      titleTemplate={`%s | ${siteData.siteMetadata.title} | commercetools`}
-    >
+    <>
       <meta charSet="utf-8" />
-      <html lang={props.lang} amp />
-      <title>{props.title}</title>
+      <title>{titleTemplate}</title>
       {metaTags.map((tag) => (
         <meta key={tag.name || tag.property} {...tag} />
       ))}
-    </Helmet>
+    </>
   );
 };
 SEO.displayName = 'SEO';

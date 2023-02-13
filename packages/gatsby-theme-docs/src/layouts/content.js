@@ -17,7 +17,7 @@ import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPage from './internals/layout-page';
 import LayoutGlobalNotification from './internals/layout-global-notification';
 import LayoutPageHeader from './internals/layout-page-header';
-import LayoutPageHeaderSide from './internals/layout-page-header-side';
+import LayoutPageHeaderSide from '../overrides/layout-page-header-side';
 import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
@@ -35,7 +35,6 @@ const LayoutContent = (props) => {
 
   return (
     <LayoutApplication
-      websitePrimaryColor={props.pageData.websitePrimaryColor}
       globalNotification={siteData.siteMetadata.globalNotification}
     >
       <LayoutSidebar

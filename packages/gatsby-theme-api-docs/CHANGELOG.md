@@ -1,5 +1,69 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 20.1.1
+
+### Patch Changes
+
+- [#1509](https://github.com/commercetools/commercetools-docs-kit/pull/1509) [`95920fbb`](https://github.com/commercetools/commercetools-docs-kit/commit/95920fbb47979bad1f4f88accc1ea6e186339acb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - hack to force shared components out of intermediate per-page bundles at SSR bundling time
+
+## 20.0.2
+
+### Patch Changes
+
+- [#1495](https://github.com/commercetools/commercetools-docs-kit/pull/1495) [`1f8395f1`](https://github.com/commercetools/commercetools-docs-kit/commit/1f8395f15b81d5ceca475c8fcddb443fa2bdeefc) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Ensure api location and type location are correctly loaded and filtered
+
+## 20.0.0
+
+### Major Changes
+
+- [#1459](https://github.com/commercetools/commercetools-docs-kit/pull/1459) [`20e0fce1`](https://github.com/commercetools/commercetools-docs-kit/commit/20e0fce158aeb3e3983587330416cb7283a6e9c8) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Migrate theme packages and websites to MDX v2. Deprecate gatsby-transformer-mdx-introspection package
+
+### Patch Changes
+
+- Updated dependencies [[`20e0fce1`](https://github.com/commercetools/commercetools-docs-kit/commit/20e0fce158aeb3e3983587330416cb7283a6e9c8)]:
+  - @commercetools-docs/ui-kit@20.0.0
+
+## 19.11.1
+
+### Patch Changes
+
+- [#1487](https://github.com/commercetools/commercetools-docs-kit/pull/1487) [`44d13733`](https://github.com/commercetools/commercetools-docs-kit/commit/44d1373366c22f512de43cba972b4c08bdd227c5) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix UI issue with Api Type properties list displayed in Api Method page
+
+## 19.11.0
+
+### Minor Changes
+
+- [#1462](https://github.com/commercetools/commercetools-docs-kit/pull/1462) [`2e4ea1cf`](https://github.com/commercetools/commercetools-docs-kit/commit/2e4ea1cfe7b7b2705664bec9e2bfbc42fe93b1d2) Thanks [@timonrey](https://github.com/timonrey)! - Enhancements for the request and response bodies: the content type is now displayed in the request and response body, the two bodies were adjusted to support images, and descriptions inside of the response body are now displayed next to the response code.
+
+### Patch Changes
+
+- Updated dependencies [[`3ab7b187`](https://github.com/commercetools/commercetools-docs-kit/commit/3ab7b187404347e96bea178fcea6fe9016dcab16), [`2e4ea1cf`](https://github.com/commercetools/commercetools-docs-kit/commit/2e4ea1cfe7b7b2705664bec9e2bfbc42fe93b1d2)]:
+  - @commercetools-docs/ui-kit@19.11.0
+  - @commercetools-docs/gatsby-transformer-raml@13.3.0
+
+## 19.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`598a26f9`](https://github.com/commercetools/commercetools-docs-kit/commit/598a26f967ad6a0202661d5969c315009260fc59), [`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4), [`d052cb76`](https://github.com/commercetools/commercetools-docs-kit/commit/d052cb767f7b1d5b165b1c65fd5052fc62a2fb10)]:
+  - @commercetools-docs/ui-kit@19.10.0
+
+## 19.9.0
+
+### Minor Changes
+
+- [#1453](https://github.com/commercetools/commercetools-docs-kit/pull/1453) [`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add sticky behaviour to code content in the right column (when in wide screen mode) for both endpoints and types
+
+- [#1448](https://github.com/commercetools/commercetools-docs-kit/pull/1448) [`8266d506`](https://github.com/commercetools/commercetools-docs-kit/commit/8266d5064a27b8c29460e28187ac8a224d21ad5b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Display nicely multiple types (union) in API parameters
+
+- [#1445](https://github.com/commercetools/commercetools-docs-kit/pull/1445) [`ae9d441a`](https://github.com/commercetools/commercetools-docs-kit/commit/ae9d441a1acf5289724281a16680795d1ea1167b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for endpoint URN resolution in links. As per type URN, an override mechanism is provided and documented
+
+### Patch Changes
+
+- Updated dependencies [[`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3), [`8266d506`](https://github.com/commercetools/commercetools-docs-kit/commit/8266d5064a27b8c29460e28187ac8a224d21ad5b)]:
+  - @commercetools-docs/ui-kit@19.9.0
+  - @commercetools-docs/gatsby-transformer-raml@13.2.0
+
 ## 19.7.0
 
 ### Patch Changes

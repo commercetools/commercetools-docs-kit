@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/ui-kit",
   "description": "UI component library for building commercetools documentation websites",
-  "version": "19.7.0",
+  "version": "20.0.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -22,12 +22,12 @@
   "dependencies": {
     "@babel/runtime": "^7.19.4",
     "@babel/runtime-corejs3": "^7.19.4",
-    "@commercetools-uikit/design-system": "^15.3.0",
-    "@commercetools-uikit/icons": "^15.3.0",
-    "@commercetools-uikit/loading-spinner": "^15.3.0",
-    "@commercetools-uikit/spacings-inline": "^15.3.0",
-    "@commercetools-uikit/tooltip": "^15.3.0",
-    "@commercetools-uikit/utils": "^15.3.0",
+    "@commercetools-uikit/design-system": "15.3.0",
+    "@commercetools-uikit/icons": "15.3.0",
+    "@commercetools-uikit/loading-spinner": "15.3.0",
+    "@commercetools-uikit/spacings-inline": "15.3.0",
+    "@commercetools-uikit/tooltip": "15.3.0",
+    "@commercetools-uikit/utils": "15.3.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@types/lodash.kebabcase": "4.1.7",

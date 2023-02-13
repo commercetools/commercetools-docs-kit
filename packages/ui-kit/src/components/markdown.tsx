@@ -8,6 +8,20 @@ import { colors, dimensions, typography, tokens } from '../design-system';
 import { CodeBlockMarkdownWrapper as CodeBlock } from './multi-code-block';
 import copyToClipboard from '../utils/copy-to-clipboard';
 
+/**
+ * Recursively traverse the DOM tree starting from the given element,
+ * looking for the first non-react element.
+ */
+const discoverLeafReactElement = (
+  elem: React.ReactChild | React.ReactFragment | React.ReactPortal
+) => {
+  let leafElem = elem;
+  while (reactIs.isElement(leafElem)) {
+    leafElem = leafElem.props.children;
+  }
+  return leafElem;
+};
+
 const headerStyles = () => css`
   line-height: 1.3;
 `;
@@ -68,6 +82,12 @@ const Ol = styled.ol`
   padding-left: ${dimensions.spacings.xl};
   > * + * {
     margin-top: ${dimensions.spacings.s};
+  }
+  > li > ol {
+    list-style-type: lower-alpha;
+  }
+  > li > ol > li > ol {
+    list-style-type: lower-roman;
   }
 `;
 const Dl = styled.dl`
@@ -171,9 +191,9 @@ const Table = styled.table`
       return React.Children.toArray(rowHeadersChildren).reduce(
         (styles, elem, index) => `
         ${styles}
-        td:nth-of-type(${index + 1})::before { content: "${
-          reactIs.isElement(elem) && elem.props.children
-        }"; }
+        td:nth-of-type(${
+          index + 1
+        })::before { content: "${discoverLeafReactElement(elem)}"; }
       `,
         ''
       );
@@ -249,6 +269,13 @@ const TypographyPage = styled.div`
   font-size: ${typography.fontSizes.body};
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.5;
+
+  section > p > img {
+    display: block;
+    position: relative;
+    padding: 0 ${dimensions.spacings.s};
+    margin: ${dimensions.spacings.m} auto;
+  }
 
   section > * + * {
     margin-top: ${dimensions.spacings.m};

@@ -5,10 +5,8 @@ timeToRead: 5
 ---
 
 <Subtitle>
-
 This page gives an overview of different markdown elements and how they fit together.
-Custom React components **embedded in the markdown** can also support markdown syntax, as long as there are **empty lines** between the component tag and the content.
-
+Custom React components **embedded in the markdown** can also support markdown syntax.
 </Subtitle>
 
 # A section header
@@ -66,43 +64,52 @@ Here's a numbered list:
 2.  second item
 3.  third item
 
+Here's a nested ordered list:
+
+1. Step 1
+    1. Sub-step 1
+    2. Sub-step 2
+        1. Sub Sub-step 1
+        2. Sub Sub-step 2
+2. Step 2
+
 Here's a definition list:
 
-<dl>
-  <dt>
+<Dl>
+  <Dt>
 
 `Healthy`
 
-  </dt>
-  <dd>The subscription is delivering messages as expected</dd>
-  <dt>
+  </Dt>
+  <Dd>The subscription is delivering messages as expected</Dd>
+  <Dt>
 
 `ConfigurationError`
 
-  </dt>
-  <dd>
+  </Dt>
+  <Dd>
 
 Messages can not be delivered with the current configuration. If the configuration is fixed in this health status,
 all messages that haven’t been delivered yet will still be delivered and the status will change to `Healthy`.
 
 `ConfigurationError`s are automatically turned into `ConfigurationErrorDeliveryStopped` after some time. See the [Delivery Guarantees](#last-section) section for more details.
 
-  </dd>
-  <dt>
+  </Dd>
+  <Dt>
 
 `ConfigurationErrorDeliveryStopped`
 
-  </dt>
-  <dd>
+  </Dt>
+  <Dd>
 
 Messages can not be delivered with the current configuration and delivery of those is not attempted anymore.
 Undelivered messages are not retained and will not be delivered if the configuration is fixed in this status, but the status will change to `Healthy`
 as soon as new messages can be delivered successfully again.
 
-  </dd>
-  <dt>Something else</dt>
-  <dd>Yet something else</dd>
-</dl>
+  </Dd>
+  <Dt>Something else</Dt>
+  <Dd>Yet something else</Dd>
+</Dl>
 
 ### Subsection (second level)
 
@@ -118,14 +125,15 @@ Now a nested list:
 
 3.  Dump everything in the pot and follow
     this algorithm:
-
-        find wooden spoon
-        uncover pot
-        stir
-        cover pot
-        balance wooden spoon precariously on pot handle
-        wait 10 minutes
-        goto first step (or shut off burner when done)
+    ```
+    find wooden spoon
+    uncover pot
+    stir
+    cover pot
+    balance wooden spoon precariously on pot handle
+    wait 10 minutes
+    goto first step (or shut off burner when done)
+    ```
 
     > Do not bump wooden spoon or it falls.
 
@@ -134,15 +142,11 @@ that last line which continues item 3).
 
 ## Code blocks
 
-Note again how the actual text starts at 4 columns in (4 characters
-from the left side). Here's a code sample:
+Note that code blocks created by indenting content by 4 spaces (4 characters
+from the left side) are **not** supported and will **not** work as expected.
 
-    # Let me re-iterate ...
-    for i in 1 .. 10 { do-something(i) }
-
-As you probably guessed, indented 4 spaces. By the way, instead of
-indenting the block, you can use delimited blocks, where you can
-specify syntax highlight (**highly recommended**):
+The only supported way to create code blocks is by using delimited blocks, where you can
+specify syntax highlight:
 
 ```js
 const sum = (a, b) => a + b;
@@ -159,7 +163,7 @@ Here's a link to [a website](https://commercetools.com), to a [local doc](/compo
 
 Tables look like this:
 
-| Left Aligned  | Center Aligned | Right Aligned |
+| [Left Aligned](https://commercetools.com)  | Center Aligned | Right Aligned |
 | ------------- | :------------: | ------------: |
 | Hello         |     short      |         $1600 |
 | World         |    content     |           $12 |
@@ -177,6 +181,10 @@ Tables look like this:
 - Number example in bold -> **<Constant type="limits" name="slugLength"/>**
 - Text example -> <Constant type="limits" name="slugPattern"/>
 - Long formatted number example -> <Constant type="limits" name="resourceLimit" />
+
+## Emoji
+
+You can add cool emoji! :dog: :+1:
 
 # Last section
 

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown, markdownFragmentToReact } from '@commercetools-docs/ui-kit';
@@ -20,22 +19,16 @@ const ReleaseNotesListTemplate = (props) => {
 
   return (
     <IntlProvider locale="en">
-      <ThemeProvider>
+      <ThemeProvider
+        websitePrimaryColor={props.data.contentPage.websitePrimaryColor}
+      >
         <LayoutReleaseNotesList
           pageContext={props.pageContext}
           pageData={props.data.contentPage}
         >
           <Markdown.TypographyPage>
-            <SEO
-              title={props.data.contentPage.title}
-              excludeFromSearchIndex={
-                props.data.contentPage.excludeFromSearchIndex
-              }
-            />
             <MDXProvider components={markdownComponents}>
-              <div>
-                <MDXRenderer>{props.data.contentPage.body}</MDXRenderer>
-              </div>
+              <div>{props.children}</div>
             </MDXProvider>
             <div id="release-notes-list">
               <SpacingsStack>
@@ -87,12 +80,28 @@ ReleaseNotesListTemplate.propTypes = {
       ).isRequired,
     }),
   }).isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 export default ReleaseNotesListTemplate;
 
+// eslint-disable-next-line react/prop-types
+export function Head({ data }) {
+  return (
+    // eslint-disable-next-line react/prop-types
+    <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
+      <SEO
+        // eslint-disable-next-line react/prop-types
+        title={data.contentPage.title}
+        // eslint-disable-next-line react/prop-types
+        excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+      />
+    </ThemeProvider>
+  );
+}
+
 export const query = graphql`
-  query QueryReleaseOverviewPage($slug: String!) {
+  query ($slug: String!) {
     contentPage(slug: { eq: $slug }) {
       title
       websitePrimaryColor

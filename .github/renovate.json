@@ -22,10 +22,6 @@
       "allowedVersions": "<2"
     },
     {
-      "matchPackageNames": ["rehype-slug"],
-      "allowedVersions": "<5"
-    },
-    {
       "matchPackageNames": ["rehype-react"],
       "allowedVersions": "<7"
     },
@@ -42,8 +38,8 @@
       "allowedVersions": "<3"
     },
     {
-      "matchPackageNames": ["remark-emoji"],
-      "allowedVersions": "<3"
+      "matchPackageNames": ["remark-gfm"],
+      "allowedVersions": "<2"
     },
     {
       "matchPackageNames": ["remark-parse"],
@@ -64,6 +60,10 @@
     {
       "matchPackageNames": ["react-router-dom"],
       "allowedVersions": "<6"
+    },
+    {
+      "matchPackageNames": ["github-slugger"],
+      "allowedVersions": "<2"
     }
   ],
   "lockFileMaintenance": {

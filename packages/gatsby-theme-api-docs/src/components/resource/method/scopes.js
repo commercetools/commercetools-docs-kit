@@ -1,15 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import Scope from './highlights';
 import Title from './title';
-
-const Scope = styled.code`
-  display: inline-block;
-  color: ${designSystem.colors.light.textCode};
-  white-space: nowrap;
-`;
 
 const Scopes = (props) => {
   return (

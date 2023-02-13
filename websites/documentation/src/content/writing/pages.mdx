@@ -28,7 +28,7 @@ We support the following key-value pairs in the frontmatter section:
 
   <Info>
 
-  You can use <Beta /> in other places of a file apart from the frontmatter section. For more information, see [Beta section](/writing/sample#beta-section-).
+  You can use <Beta /> in other places of a file apart from the frontmatter section. For more information, see [Beta section](/writing/sample#beta-section).
 
   </Info>
 
@@ -61,18 +61,9 @@ The components must be added as XML tags, like HTML elements. For example:
 
 ```mdx
 <Subtitle>
-
 Content inside the component.
-
 </Subtitle>
 ```
-
-<Info>
-
-When using JSX components, it's recommended to leave a **blank line** between the element tags and content.
-This allows the content to be parsed as Markdown, so you can use Markdown syntax within the custom component tags.
-
-</Info>
 
 You can use the following JSX components:
 
@@ -86,10 +77,8 @@ You can use the following JSX components:
   For more information, see [Custom anchors](/writing/markdown#custom-link-targets).
 
     <Info>
-
   You cannot override ID generation of the site generator.
   It adds additional named anchors and IDs have precedence.
-
     </Info>
 
 - `<ChildSectionsNav parent="a-section-slug" />`: use to add a table of contents containing links to all subsections of the given parent.

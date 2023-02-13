@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import { Location } from '@reach/router';
 import { Link as GatsbyLink, withPrefix } from 'gatsby';
 import styled from '@emotion/styled';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
 import { Link as StyledLink, designSystem } from '@commercetools-docs/ui-kit';
 import getEnv from '../utils/get-env';
@@ -46,11 +46,7 @@ const InlineLink = styled.span`
 `;
 
 export const ExternalSiteLink = (props) => (
-  <StyledExternalSiteLink
-    {...props}
-    target="_blank"
-    rel="noopener noreferrer"
-  />
+  <StyledExternalSiteLink {...props} target="_blank" rel="noopener" />
 );
 
 /**

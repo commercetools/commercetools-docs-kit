@@ -29,7 +29,10 @@ new Crawler({
           // FYI selector documentation: https://github.com/cheeriojs/cheerio#selectors
           recordProps: {
             lvl0: {
-              selectors: '#site-title',
+              selectors:
+                $('meta[name=commercetools:title-for-onsite-search]').attr(
+                  'content'
+                ) || '#site-title',
               defaultValue: 'General Topics',
             },
             lvl1: 'article h1',

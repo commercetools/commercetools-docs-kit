@@ -2,8 +2,18 @@
 
 const path = require('path');
 const defaultOptions = require('./utils/default-options');
+const preProcessSlug = require('./utils/slug-pre-process');
 
 const isProd = process.env.NODE_ENV === 'production';
+
+const wrapESMPlugin = (name) =>
+  function wrapESM(opts) {
+    return async (...args) => {
+      const mod = await import(name);
+      const plugin = mod.default(opts);
+      return plugin(...args);
+    };
+  };
 
 // Proxy env variables needed for `gatsby-browser.js` and `gatsby-ssr.js`.
 // https://www.gatsbyjs.org/docs/environment-variables/#client-side-javascript
@@ -24,9 +34,16 @@ const productionHostname = 'docs.commercetools.com';
 
 module.exports = (themeOptions = {}) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
+  // backwards compat to single value GA configuration
+  if (
+    pluginOptions.gaTrackingId &&
+    typeof pluginOptions.gaTrackingId === 'string'
+  )
+    pluginOptions.gaTrackingIds = [pluginOptions.gaTrackingId];
   validateThemeOptions(pluginOptions);
 
   return {
+    trailingSlash: 'never',
     siteMetadata: {
       author: 'commercetools',
       productionHostname,
@@ -72,12 +89,20 @@ module.exports = (themeOptions = {}) => {
           ignore: pluginOptions.overrideDefaultConfigurationData,
         },
       },
-      // Default content pages (.mdx)
+      // Default content pages provided by this theme package directly (.mdx)
       {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'internalContent',
           path: path.join(__dirname, `./src/content`),
+        },
+      },
+      // Site provided content pages in the site content folder (.mdx)
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'content',
+          path: path.resolve(`./src/content`),
         },
       },
       // Site provided configuration data files (.yaml)
@@ -88,7 +113,7 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/data`),
         },
       },
-      // Assets (e.g. images) used from the markdown pages
+      // Site provided assets (e.g. images) used from the markdown pages
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -96,15 +121,15 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/images`),
         },
       },
-      // Main content pages (.mdx)
+      // Site provided markdown fragments to be included in pages (.mdx)
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'content',
-          path: path.resolve(`./src/content`),
+          name: 'topics',
+          path: path.resolve(`./src/topics`),
         },
       },
-      // Release notes
+      // Site provided release notes
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -131,18 +156,24 @@ module.exports = (themeOptions = {}) => {
             '.mdx',
             // ".md"
           ],
-          // implement commonmark for stricter compatibility, e.g. backslash transformed to newlines
-          commonmark: true,
-          // List of remark plugins, that transform the markdown AST.
-          remarkPlugins: [
-            require('remark-emoji'),
-            require('./src/plugins/remark-mdx-mermaid'),
-          ],
-          // List of rehype plugins, that transform the HTML AST.
-          rehypePlugins: [
-            require('rehype-slug'),
-            require('./src/plugins/rehype-mdx-section'),
-          ],
+          mdxOptions: {
+            // List of remark plugins, that transform the markdown AST.
+            remarkPlugins: [
+              wrapESMPlugin('remark-mdx-code-meta'),
+              wrapESMPlugin('remark-emoji'),
+              require('./src/plugins/remark-mdx-mermaid'),
+              require('remark-gfm'),
+            ],
+            // List of rehype plugins, that transform the HTML AST.
+            rehypePlugins: [
+              [
+                require('./src/plugins/rehype-id-slug'),
+                { preProcess: preProcessSlug },
+              ],
+              require('./src/plugins/rehype-mdx-section'),
+            ],
+            development: true,
+          },
           gatsbyRemarkPlugins: [
             // Convert absolute image file paths to relative. Required for remark-images to work.
             // https://www.gatsbyjs.org/packages/gatsby-remark-relative-images/?=gatsby-remark-relative-images
@@ -177,10 +208,9 @@ module.exports = (themeOptions = {}) => {
                 destinationDir: 'files',
               },
             },
-            // 'gatsby-remark-rewrite-relative-links',
+            'gatsby-remark-images',
+            'gatsby-remark-copy-linked-files',
           ],
-          // workaround https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-510153237
-          plugins: ['gatsby-remark-images', 'gatsby-remark-copy-linked-files'],
         },
       },
 
@@ -188,17 +218,10 @@ module.exports = (themeOptions = {}) => {
        * Plugins for general functionality
        */
       'gatsby-plugin-sharp',
-      'gatsby-plugin-react-helmet',
-      pluginOptions.enableCanonicalUrls !== false && {
-        resolve: 'gatsby-plugin-react-helmet-canonical-urls',
-        options: {
-          siteUrl: `https://${productionHostname}`,
-          noTrailingSlash: true,
-          noHash: true,
-          noQueryString: true,
-        },
+      {
+        resolve: 'gatsby-plugin-emotion',
+        options: { sourceMap: false },
       },
-      'gatsby-plugin-emotion',
       {
         resolve: 'gatsby-plugin-manifest',
         options: {
@@ -209,20 +232,28 @@ module.exports = (themeOptions = {}) => {
           include_favicon: false,
         },
       },
-      pluginOptions.gaTrackingId && {
-        resolve: 'gatsby-plugin-google-analytics',
+      pluginOptions.gaTrackingIds && {
+        resolve: `gatsby-plugin-google-gtag`,
         options: {
-          trackingId: pluginOptions.gaTrackingId,
-          head: false,
-          anonymize: true,
-          respectDNT: false,
-          exclude: [],
+          trackingIds: pluginOptions.gaTrackingIds,
+          gtagConfig: {
+            anonymize_ip: true,
+            cookie_expires: 0,
+          },
+          pluginConfig: {
+            head: false,
+            respectDNT: false,
+            exclude: [],
+            delayOnRouteUpdate: 0,
+          },
         },
       },
       pluginOptions.hubspotTrackingCode && {
         resolve: 'gatsby-plugin-hubspot',
         options: {
           trackingCode: pluginOptions.hubspotTrackingCode,
+          respectDNT: false,
+          productionOnly: true,
         },
       },
       {
@@ -290,12 +321,6 @@ module.exports = (themeOptions = {}) => {
           ],
         },
       },
-
-      /**
-       * The following plugins need to be last
-       */
-      'gatsby-plugin-remove-trailing-slashes',
-      'gatsby-plugin-meta-redirect',
     ].filter(Boolean),
   };
 };

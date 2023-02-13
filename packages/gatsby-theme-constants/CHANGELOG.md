@@ -1,5 +1,39 @@
 # @commercetools-docs/gatsby-theme-constants
 
+## 20.1.1
+
+### Patch Changes
+
+- [#1509](https://github.com/commercetools/commercetools-docs-kit/pull/1509) [`95920fbb`](https://github.com/commercetools/commercetools-docs-kit/commit/95920fbb47979bad1f4f88accc1ea6e186339acb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - hack to force shared components out of intermediate per-page bundles at SSR bundling time
+
+## 20.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`20e0fce1`](https://github.com/commercetools/commercetools-docs-kit/commit/20e0fce158aeb3e3983587330416cb7283a6e9c8)]:
+  - @commercetools-docs/ui-kit@20.0.0
+
+## 19.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`3ab7b187`](https://github.com/commercetools/commercetools-docs-kit/commit/3ab7b187404347e96bea178fcea6fe9016dcab16)]:
+  - @commercetools-docs/ui-kit@19.11.0
+
+## 19.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`598a26f9`](https://github.com/commercetools/commercetools-docs-kit/commit/598a26f967ad6a0202661d5969c315009260fc59), [`0d3cfb33`](https://github.com/commercetools/commercetools-docs-kit/commit/0d3cfb334e8a61bb3563dba4d77eb6c0467404b4), [`d052cb76`](https://github.com/commercetools/commercetools-docs-kit/commit/d052cb767f7b1d5b165b1c65fd5052fc62a2fb10)]:
+  - @commercetools-docs/ui-kit@19.10.0
+
+## 19.9.0
+
+### Patch Changes
+
+- Updated dependencies [[`86feac81`](https://github.com/commercetools/commercetools-docs-kit/commit/86feac81f1127d2b5c9645147463a8d77bef33c3)]:
+  - @commercetools-docs/ui-kit@19.9.0
+
 ## 19.7.0
 
 ### Patch Changes

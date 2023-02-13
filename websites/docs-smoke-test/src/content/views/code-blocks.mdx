@@ -6,7 +6,7 @@ timeToRead: false
 
 # Terminal/Console
 
-Passing the option `noPromptLines="3-4"`.
+Passing the option `noPromptLines="3-4,5"`.
 
 ```console noPromptLines="3-4"
 cd project
@@ -37,7 +37,9 @@ curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/
 
 # Javascript
 
-```javascript highlightLines="2,5-6"
+Passing the option `highlightLines="2,5-7,11..16`.
+
+```javascript highlightLines="2,5-7,11..16"
 // Constructor
 var anObject = new Object();
 
@@ -45,6 +47,15 @@ var anObject = new Object();
 var objectA = {};
 var objectA2 = {};
 var objectB = { index1: 'value 1', index2: 'value 2' };
+
+// filter object properties
+var allowed = ['index2'];
+var filtered = Object.keys(objectB)
+  .filter(key => allowed.includes(key))
+  .reduce((obj, key) => {
+    obj[key] = objectB[key];
+    return obj;
+  }, {});
 ```
 
 # Python

@@ -22,12 +22,14 @@ describe('parameters-to-array.js', () => {
         required: false,
         type: 'string',
         builtinType: 'string',
+        unionParams: [],
       },
       {
         name: 'sort',
         required: false,
         type: 'string',
         builtinType: 'string',
+        unionParams: [],
       },
     ];
 
@@ -55,12 +57,40 @@ describe('parameters-to-array.js', () => {
         required: false,
         type: 'Int',
         builtinType: 'Int',
+        unionParams: [],
       },
       {
         name: 'height',
         required: false,
         type: 'Float',
         builtinType: 'Float',
+        unionParams: [],
+      },
+    ];
+
+    expect(parametersToArray(parametersBefore)).toEqual(parametersAfter);
+  });
+
+  it('should properly convert union types transform number to float', () => {
+    const parametersBefore = {
+      unionParameter: {
+        required: false,
+        type: 'integer | string | number',
+        builtinType: 'Union',
+      },
+    };
+
+    const parametersAfter = [
+      {
+        name: 'unionParameter',
+        required: false,
+        type: 'Union',
+        builtinType: 'Union',
+        unionParams: [
+          { type: 'Int', builtinType: 'Int' },
+          { type: 'string', builtinType: 'string' },
+          { type: 'Float', builtinType: 'Float' },
+        ],
       },
     ];
 

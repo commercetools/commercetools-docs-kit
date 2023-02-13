@@ -33,6 +33,23 @@ const Container = styled.div`
 
 const TitleWithAnchor = Markdown.withCopyToClipboard(Title);
 
+function convertContentType(type) {
+  switch (type) {
+    case 'applicationjson':
+      return 'application/json';
+    case 'applicationxwwwformurlencoded':
+      return 'application/x-www-form-urlencoded';
+    case 'imagejpeg':
+      return 'image/jpeg';
+    case 'imagepng':
+      return 'image/png';
+    case 'imagegif':
+      return 'image/gif';
+    default:
+      return '';
+  }
+}
+
 const Method = ({
   apiKey,
   uris,
@@ -49,23 +66,36 @@ const Method = ({
   if (method.uriParameters) {
     allUriParameters = allUriParameters.concat(method.uriParameters);
   }
+
+  const contentType = [];
+  if (method.body) {
+    const findOutContentTypes = Object.keys(method.body).reduce(
+      (list, value) => {
+        return method.body[value] !== null ? [...list, value] : [...list];
+      },
+      []
+    );
+    findOutContentTypes.forEach((type) => {
+      contentType.push(convertContentType(type));
+    });
+  }
+
+  const isStructuredDataType =
+    contentType.includes('application/json') ||
+    contentType.includes('application/x-www-form-urlencoded');
+
   const methodColor = computeMethodColor(methodType.toLowerCase());
 
   const id = generateEndpointURN({
     apiKey,
-    path: new URL(`${uris.baseUri}${uris.resourcePathUri}`).pathname,
+    path: uris.resourcePathUri,
     method: methodType,
   });
 
   return (
-    <FullWidthContainer>
+    <FullWidthContainer id={id}>
       <SpacingsStack scale="s">
-        {title ? (
-          <TitleWithAnchor id={id}>{title}</TitleWithAnchor>
-        ) : (
-          // eslint-disable-next-line jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid
-          <a name={id}></a>
-        )}
+        {title && <TitleWithAnchor>{title}</TitleWithAnchor>}
 
         <Container
           css={css`
@@ -113,18 +143,26 @@ const Method = ({
                     method.body.applicationjson?.type ||
                     method.body.applicationxwwwformurlencoded?.type
                   }
+                  isStructuredDataType={isStructuredDataType}
+                  contentType={contentType}
                 />
               )}
 
-              {method.responses && (
-                <Responses apiKey={apiKey} responses={method.responses} />
+              {(!method.body || isStructuredDataType) && method.responses && (
+                <Responses
+                  apiKey={apiKey}
+                  responses={method.responses}
+                  contentType={contentType}
+                />
               )}
             </SpacingsStack>
-            <RequestResponseExamples
-              apiKey={apiKey}
-              requestCodeExamples={method.codeExamples}
-              responses={method.responses}
-            />
+            {(!method.body || isStructuredDataType) && (
+              <RequestResponseExamples
+                apiKey={apiKey}
+                requestCodeExamples={method.codeExamples}
+                responses={method.responses}
+              />
+            )}
           </SideBySide>
         </Container>
       </SpacingsStack>

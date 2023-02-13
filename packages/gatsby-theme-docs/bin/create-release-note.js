@@ -125,7 +125,7 @@ topics:
 ${response.topics.map((topic) => `  - ${topic}`).join('\n')}
 ---
 
-Please write the content here. To use "Read More", insert <!--more-->.
+Please write the content here. To use "Read More", insert {/* more */}.
 `;
 
   const filemane = response.title.replace(/\s+/g, '-').toLowerCase();

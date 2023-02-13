@@ -8,24 +8,24 @@ var overridesAreIndexed = false;
 const typeLocations = {};
 const typeLocationOverrides = {};
 
-const buildPageSlug = (page) => {
-  const [pathWithoutExt] = page.parent.relativePath.split(page.parent.ext);
-  return `/${pathWithoutExt}`;
-};
-
 const convertComponentInMdxToTypeLocations = (data) => {
   if (!locationsAreIndexed) {
-    data.allComponentInMdx.nodes.forEach((node) => {
-      const apiKey =
-        node.attributes[0].name === 'apiKey' ? node.attributes[0].value : null;
-      const name =
-        node.attributes[1].name === 'type' ? node.attributes[1].value : null;
+    data.allContentPage.nodes.forEach((node) => {
+      node.shortcodeOccurrence.forEach((occurrence) => {
+        if (occurrence.component !== 'ApiType') {
+          return;
+        }
+        const apiKey = occurrence.attributes.find(
+          (attribute) => attribute.name === 'apiKey'
+        ).value;
+        const name = occurrence.attributes.find(
+          (attribute) => attribute.name === 'type'
+        ).value;
 
-      const slug = buildPageSlug(node.page);
-      const urn = generateTypeURN({ apiKey, displayName: name });
-      const url = slug && urn ? `${slug}#${urn}` : '';
-
-      typeLocations[`${apiKey}__${name}`] = { url };
+        const urn = generateTypeURN({ apiKey, displayName: name });
+        const url = node.slug && urn ? `${node.slug}#${urn}` : '';
+        typeLocations[`${apiKey}__${name}`] = { url };
+      });
     });
   }
   locationsAreIndexed = true;
@@ -48,19 +48,18 @@ export const useTypeLocations = () => {
   const queryResult = useStaticQuery(
     graphql`
       {
-        allComponentInMdx(filter: { component: { eq: "ApiType" } }) {
+        allContentPage(
+          filter: {
+            shortcodeOccurrence: { elemMatch: { component: { eq: "ApiType" } } }
+          }
+        ) {
           nodes {
-            attributes {
-              name
-              value
-            }
-            page: mdx {
-              parent {
-                id
-                ... on File {
-                  relativePath
-                  ext
-                }
+            slug
+            shortcodeOccurrence {
+              component
+              attributes {
+                name
+                value
               }
             }
           }

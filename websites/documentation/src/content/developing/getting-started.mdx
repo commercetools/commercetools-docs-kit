@@ -31,19 +31,6 @@ $ yarn build
 
 Two websites hosted in this repository serve as the target if e2e and visual regression tests.
 
-To start them including the self-learning features which require SSO and other configuration, three environment variables need to be provided.
-Create two files named `.env.development` and `.env.production` in `websites/docs-smoke-test` with the following content:
-
-```
-GATSBY_AUTH0_DOMAIN=example.com
-GATSBY_AUTH0_CLIENTID=XXX
-GATSBY_LEARN_API_DOMAIN=https://example.com
-```
-
-`GATSBY_AUTH0_CLIENTID` requires a confidential secret to get SSO operational but the site starts with a blank, too.
-
-Remember that `.env.development` file should never be added to git (this is prevented by .gitignore rule)
-
 ## Start the [docs-smoke-test website](./websites/docs-smoke-test):
 
 ```bash
@@ -60,3 +47,6 @@ $ yarn start
 
 When building a production or test site, setting an environment variable `ANALYZE_BUNDLE=true` starts a [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) based size analysis after the build.
 Keep in mind that the analysis only covers the JS content, GatsbyJS GraphQL data live in separate JSON files in the `/public/page-data` folder and are a source of page weight, too. The `/public/page-data/sq` subfolder contains the static query results.
+
+To analyze memory issues, set an environment variable `DEBUG_GATSBY_MEM=true`. This forces a GC every second and prints process statistics.
+Run on uncached builds for more insighful results.

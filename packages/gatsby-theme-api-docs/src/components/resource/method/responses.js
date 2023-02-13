@@ -2,16 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import {
+  designSystem,
+  markdownFragmentToReact,
+} from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { tokens, dimensions, typography } from '../../../design-system';
 import { useTypeLocations } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
+import ContentType from './highlights';
 import Title from './title';
 
 const ResponseCode = styled.span`
   font-size: ${designSystem.typography.fontSizes.extraSmall};
   color: ${designSystem.colors.light.surfacePrimary};
+  margin-top: ${dimensions.spacings.xxs};
   padding: ${dimensions.spacings.xxs} ${designSystem.dimensions.spacings.s};
   border-radius: ${tokens.borderRadiusForResponseCode};
   line-height: ${typography.lineHeights.responseCode};
@@ -22,7 +28,7 @@ const LinkContainer = styled.span`
   line-height: ${typography.lineHeights.responseBodyType};
 `;
 
-const Responses = ({ apiKey, responses }) => {
+const Responses = ({ apiKey, responses, contentType }) => {
   const typeLocations = useTypeLocations();
 
   return (
@@ -31,22 +37,34 @@ const Responses = ({ apiKey, responses }) => {
       <SpacingsStack scale="s">
         {responses.map((response) => {
           return (
-            <p key={response.code}>
+            <SpacingsInline key={response.code}>
               <ResponseCode
                 css={computeStatusCodeBackgroundColor(response.code)}
               >
                 {response.code}
               </ResponseCode>
               <LinkContainer>
-                {response.body
-                  ? renderTypeAsLink(
+                {response.body ? (
+                  <SpacingsInline alignItems="center">
+                    {renderTypeAsLink(
                       apiKey,
                       response.body.applicationjson.type,
-                      typeLocations
-                    )
-                  : 'No body is returned.'}
+                      typeLocations,
+                      response.description
+                    )}
+                    {contentType.length > 0 && (
+                      <>
+                        <span>as</span>
+                        <ContentType>{contentType}</ContentType>
+                      </>
+                    )}
+                  </SpacingsInline>
+                ) : (
+                  markdownFragmentToReact(response.description) ||
+                  'No body is returned.'
+                )}
               </LinkContainer>
-            </p>
+            </SpacingsInline>
           );
         })}
       </SpacingsStack>
@@ -82,6 +100,7 @@ Responses.propTypes = {
       body: PropTypes.object,
     })
   ).isRequired,
+  contentType: PropTypes.array.isRequired,
 };
 
 export default Responses;

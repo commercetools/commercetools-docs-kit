@@ -11,6 +11,13 @@ import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
  *
  * For the main section heading, we unset the max-width in order for the underline
  * to span across the page.
+ *
+ * overflow setting is needed because of this PR: https://github.com/commercetools/commercetools-docs-kit/pull/1420/files
+ * Reason behind clip value:
+ * CSS position: sticky works only when there's no overflow restrictions applied at any level in the ancestors.
+ * see https://www.terluinwebdesign.nl/en/css/position-sticky-not-working-try-overflow-clip-not-overflow-hidden/
+ * As possible solution clip is a sort of middle ground that seems to be working solving both the issues
+ * (active section and sticky content)
  */
 const PageContentInset = styled.div`
   max-width: ${(props) =>

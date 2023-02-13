@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - main
+  merge_group:
+    branches: [main]
   pull_request:
   repository_dispatch:
     types: [manual-build-and-deploy]
@@ -43,7 +45,7 @@ jobs:
           path: |
             .cache
             public
-          key: ${{ runner.os }}-build-v3-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-v4-${{ hashFiles('**/yarn.lock') }}
 
       - name: Set custom Yarn cache path
         run: yarn config set cacheFolder .cache/yarn
@@ -67,7 +69,7 @@ jobs:
           GATSBY_AUTH0_DOMAIN: ${{ secrets.GATSBY_AUTH0_DOMAIN }}
           GATSBY_AUTH0_CLIENTID: ${{ secrets.GATSBY_AUTH0_CLIENTID }}
           GATSBY_LEARNAPI_DOMAIN: ${{ secrets.GATSBY_LEARNAPI_DOMAIN }}
-
+          
       - name: Running linters and tests
         run: |
           yarn jest --projects jest.{eslint,test}.config.js \
