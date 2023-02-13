@@ -8,6 +8,8 @@ const fs = require('fs');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { ContextReplacementPlugin } = require('webpack');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const MomentTimezoneDataPlugin = require('moment-timezone-data-webpack-plugin');
 const slugify = require('slugify');
 const generateToC = require('./utils/generate-toc');
 const defaultOptions = require('./utils/default-options');
@@ -649,6 +651,14 @@ exports.onCreateWebpackConfig = (
     .map((lang) => `prism-${lang}`)
     .join('|');
   config.plugins.push(
+    // Only keep EN locale.
+    new MomentLocalesPlugin({
+      localesToKeep: ['en'],
+    }),
+    // Only keep data for the Europe timezone.
+    new MomentTimezoneDataPlugin({
+      matchZones: /Europe\/Berlin/,
+    }),
     new ContextReplacementPlugin(
       /prismjs[\\/]components$/,
       new RegExp(`^./(${prismLanguages})$`)
