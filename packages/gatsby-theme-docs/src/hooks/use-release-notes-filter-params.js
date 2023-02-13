@@ -17,10 +17,10 @@ const useReleaseNotesFilterParams = () => {
       if (newQueryString) {
         navigate(`?${newQueryString}`);
       } else {
-        navigate(location.pathname);
+        navigate(`${location.origin}${location.pathname}`);
       }
     },
-    [location.search, location.pathname]
+    [location.search, location.pathname, location.origin]
   );
 
   const queryParams = decode(location.search.substring(1));

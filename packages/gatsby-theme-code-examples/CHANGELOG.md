@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 20.2.0
+
+### Minor Changes
+
+- [#1503](https://github.com/commercetools/commercetools-docs-kit/pull/1503) [`d78c80b1`](https://github.com/commercetools/commercetools-docs-kit/commit/d78c80b1174e47696f1630c44dcf8a0df23fb26c) Thanks [@nkuehn](https://github.com/nkuehn)! - Upgrade to React 18
+
+### Patch Changes
+
+- Updated dependencies [[`d78c80b1`](https://github.com/commercetools/commercetools-docs-kit/commit/d78c80b1174e47696f1630c44dcf8a0df23fb26c)]:
+  - @commercetools-docs/ui-kit@20.2.0
+
 ## 20.1.1
 
 ### Patch Changes

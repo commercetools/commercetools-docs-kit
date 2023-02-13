@@ -23,7 +23,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let processor;
 
-const lowMemMode = process.env.DOCS_LOW_MEM === 'true';
+const lowMemMode = process.env.LOW_MEM === 'true';
 const debugMem = () => {
   // memory debug mode, forces GC every second and prints a "top" like summary
   if (process.env.DEBUG_GATSBY_MEM === 'true') {
