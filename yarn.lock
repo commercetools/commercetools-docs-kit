@@ -2230,7 +2230,6 @@ __metadata:
     react-dom: 18.2.0
     react-intersection-observer: 9.4.0
     react-intl: ^6.2.7
-    react-router-dom: 6.8.0
     remark-emoji: 3.0.2
     remark-frontmatter: 3.0.0
     remark-gfm: 1.0.0
