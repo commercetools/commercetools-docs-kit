@@ -1,5 +1,19 @@
 # @commercetools-docs/gatsby-theme-learning
 
+## 20.2.0
+
+### Minor Changes
+
+- [#1503](https://github.com/commercetools/commercetools-docs-kit/pull/1503) [`d78c80b1`](https://github.com/commercetools/commercetools-docs-kit/commit/d78c80b1174e47696f1630c44dcf8a0df23fb26c) Thanks [@nkuehn](https://github.com/nkuehn)! - Upgrade to React 18
+
+### Patch Changes
+
+- [#1511](https://github.com/commercetools/commercetools-docs-kit/pull/1511) [`7a73bf42`](https://github.com/commercetools/commercetools-docs-kit/commit/7a73bf4267efe08fd759269aa366d621d5e98fcb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Move package gatsby-theme-learning and gatsby-theme-sso-ui-kit to docs-kit repository
+
+- Updated dependencies [[`d78c80b1`](https://github.com/commercetools/commercetools-docs-kit/commit/d78c80b1174e47696f1630c44dcf8a0df23fb26c), [`7a73bf42`](https://github.com/commercetools/commercetools-docs-kit/commit/7a73bf4267efe08fd759269aa366d621d5e98fcb)]:
+  - @commercetools-docs/gatsby-theme-sso-ui-kit@20.2.0
+  - @commercetools-docs/ui-kit@20.2.0
+
 ## 1.5.1
 
 ### Patch Changes

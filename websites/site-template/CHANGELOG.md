@@ -1,5 +1,16 @@
 # @commercetools-website/site-template
 
+## 5.1.0
+
+### Minor Changes
+
+- [#1503](https://github.com/commercetools/commercetools-docs-kit/pull/1503) [`d78c80b1`](https://github.com/commercetools/commercetools-docs-kit/commit/d78c80b1174e47696f1630c44dcf8a0df23fb26c) Thanks [@nkuehn](https://github.com/nkuehn)! - Upgrade to React 18
+
+### Patch Changes
+
+- Updated dependencies [[`d78c80b1`](https://github.com/commercetools/commercetools-docs-kit/commit/d78c80b1174e47696f1630c44dcf8a0df23fb26c), [`7f66853b`](https://github.com/commercetools/commercetools-docs-kit/commit/7f66853b6190b0d02e0080afde6e2f6c8b363796), [`0270f67d`](https://github.com/commercetools/commercetools-docs-kit/commit/0270f67da611739777cd8a34a97fbe90b94b57d4), [`f0ca2001`](https://github.com/commercetools/commercetools-docs-kit/commit/f0ca200185048eb51a089c9cf6ff6111666dd54b)]:
+  - @commercetools-docs/gatsby-theme-docs@20.2.0
+
 ## 5.0.28
 
 ### Patch Changes

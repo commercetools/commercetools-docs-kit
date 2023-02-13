@@ -1,5 +1,22 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 20.2.0
+
+### Minor Changes
+
+- [#1503](https://github.com/commercetools/commercetools-docs-kit/pull/1503) [`d78c80b1`](https://github.com/commercetools/commercetools-docs-kit/commit/d78c80b1174e47696f1630c44dcf8a0df23fb26c) Thanks [@nkuehn](https://github.com/nkuehn)! - Upgrade to React 18
+
+### Patch Changes
+
+- [#1399](https://github.com/commercetools/commercetools-docs-kit/pull/1399) [`7f66853b`](https://github.com/commercetools/commercetools-docs-kit/commit/7f66853b6190b0d02e0080afde6e2f6c8b363796) Thanks [@emmenko](https://github.com/emmenko)! - Let webpack only bundle english and the Berlin timezone to reduce bundle size
+
+- [#1522](https://github.com/commercetools/commercetools-docs-kit/pull/1522) [`0270f67d`](https://github.com/commercetools/commercetools-docs-kit/commit/0270f67da611739777cd8a34a97fbe90b94b57d4) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add LOW_MEM environment variable flag to enable un-cached development server in case of memory issue
+
+- [#1523](https://github.com/commercetools/commercetools-docs-kit/pull/1523) [`f0ca2001`](https://github.com/commercetools/commercetools-docs-kit/commit/f0ca200185048eb51a089c9cf6ff6111666dd54b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix regression with release notes reset all filters link not working
+
+- Updated dependencies [[`d78c80b1`](https://github.com/commercetools/commercetools-docs-kit/commit/d78c80b1174e47696f1630c44dcf8a0df23fb26c)]:
+  - @commercetools-docs/ui-kit@20.2.0
+
 ## 20.1.1
 
 ### Patch Changes
