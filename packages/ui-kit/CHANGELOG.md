@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 20.2.0
+
+### Minor Changes
+
+- [#1503](https://github.com/commercetools/commercetools-docs-kit/pull/1503) [`d78c80b1`](https://github.com/commercetools/commercetools-docs-kit/commit/d78c80b1174e47696f1630c44dcf8a0df23fb26c) Thanks [@nkuehn](https://github.com/nkuehn)! - Upgrade to React 18
+
 ## 20.0.0
 
 ### Major Changes
