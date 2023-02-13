@@ -23,6 +23,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let processor;
 
+const lowMemMode = process.env.LOW_MEM === 'true';
 const debugMem = () => {
   // memory debug mode, forces GC every second and prints a "top" like summary
   if (process.env.DEBUG_GATSBY_MEM === 'true') {
@@ -630,8 +631,27 @@ exports.onCreateWebpackConfig = (
   }
   // improve build performance in memory critical stage of builds by not generating source maps
   // (yes, this can make errors cryptic, we will have to revisit if it's firing back too much)
-  if (stage === 'build-html' || stage === `build-javascript`) {
+  if (stage === 'build-html' || stage === `build-javascript` || lowMemMode) {
     config.devtool = false;
+  }
+
+  // https://webpack.js.org/configuration/cache/
+  // don't mess with "type", "name","cacheLocation" ,"buildDependencies" - these are for sure controlled by gatsby
+  // the develop stage has a significant problem with webpack using Buffers ("ext" memory).
+  if (stage === `develop` || stage === `develop-html`) {
+    config.cache = {
+      ...config.cache,
+      ...{
+        // compression: 'brotli', // only impacts the filesystem representation
+        // the following combination at least leads to the dev server freeing some of the memory again once navigating the preview.
+        idleTimeout: 100, // defaults to 60000 millis
+        idleTimeoutAfterLargeChanges: 100, // defaults to 1000 millis
+        allowCollectingMemory: true, // defaults to false.
+        maxMemoryGenerations: 0, // see docs https://webpack.js.org/configuration/cache/#cachemaxmemorygenerations
+      },
+    };
+    // run uncached if we have memory issues
+    if (lowMemMode) config.cache = false;
   }
 
   config.resolve = {
