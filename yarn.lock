@@ -110,7 +110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.14.0, @babel/core@npm:^7.16.0, @babel/core@npm:^7.19.0, @babel/core@npm:^7.19.6, @babel/core@npm:^7.20.12, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.7, @babel/core@npm:^7.8.0":
+"@babel/core@npm:^7.1.0, @babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.14.0, @babel/core@npm:^7.16.0, @babel/core@npm:^7.19.0, @babel/core@npm:^7.19.6, @babel/core@npm:^7.20.12, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.7":
   version: 7.20.12
   resolution: "@babel/core@npm:7.20.12"
   dependencies:
@@ -847,7 +847,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-jsx@npm:^7.0.0, @babel/plugin-syntax-jsx@npm:^7.17.12, @babel/plugin-syntax-jsx@npm:^7.18.6":
+"@babel/plugin-syntax-jsx@npm:^7.0.0, @babel/plugin-syntax-jsx@npm:^7.17.12, @babel/plugin-syntax-jsx@npm:^7.18.6, @babel/plugin-syntax-jsx@npm:^7.7.2":
   version: 7.18.6
   resolution: "@babel/plugin-syntax-jsx@npm:7.18.6"
   dependencies:
@@ -1989,7 +1989,7 @@ __metadata:
     "@commercetools-uikit/spacings-stack": 15.3.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    gatsby: 5.7.0-next.1
+    gatsby: 5.6.0
     gatsby-source-filesystem: 5.6.0
     prop-types: 15.8.1
     react: 18.2.0
@@ -2007,7 +2007,7 @@ __metadata:
   resolution: "@commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples"
   dependencies:
     "@commercetools-docs/ui-kit": 20.0.0
-    gatsby: 5.7.0-next.1
+    gatsby: 5.6.0
     gatsby-source-filesystem: 5.6.0
     prop-types: 15.8.1
     react: 18.2.0
@@ -2025,7 +2025,7 @@ __metadata:
   resolution: "@commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants"
   dependencies:
     "@commercetools-docs/ui-kit": 20.0.0
-    gatsby: 5.7.0-next.1
+    gatsby: 5.6.0
     gatsby-source-filesystem: 5.6.0
     gatsby-transformer-yaml: 5.6.0
     prop-types: 15.8.1
@@ -2066,7 +2066,7 @@ __metadata:
     assert: 2.0.0
     cosmiconfig: ^8.0.0
     docsearch.js: 2.6.3
-    gatsby: 5.7.0-next.1
+    gatsby: 5.6.0
     gatsby-cli: 5.6.0
     gatsby-core-utils: 4.6.0
     gatsby-plugin-emotion: 8.6.0
@@ -2148,7 +2148,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@mdx-js/react": 2.3.0
-    "@types/react": 18.0.27
+    "@types/react": 18.0.28
     react: 18.2.0
     react-dom: 18.2.0
     react-intersection-observer: 9.4.2
@@ -2171,7 +2171,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     "@testing-library/jest-dom": 5.16.5
     "@testing-library/react": 13.4.0
-    "@types/react": 18.0.27
+    "@types/react": 18.0.28
     downshift: 6.1.12
     md5: 2.3.0
     prop-types: 15.8.1
@@ -2234,7 +2234,7 @@ __metadata:
     "@svgr/cli": 6.5.1
     "@types/lodash.kebabcase": 4.1.7
     "@types/mdast": ^3.0.10
-    "@types/react": 18.0.27
+    "@types/react": 18.0.28
     "@types/react-dom": 18.0.10
     "@types/react-is": 17.0.3
     "@types/unist": ^2.0.6
@@ -2248,7 +2248,7 @@ __metadata:
     react-dom: 18.2.0
     react-intl: ^6.2.8
     react-is: 18.2.0
-    rehype-react: 7.1.2
+    rehype-react: 6.2.1
     remark-frontmatter: 3.0.0
     remark-parse: 9.0.0
     remark-rehype: 8.1.0
@@ -2850,7 +2850,7 @@ __metadata:
     "@commercetools-docs/gatsby-theme-api-docs": 20.1.1
     "@commercetools-docs/gatsby-theme-docs": 20.1.1
     "@commercetools-docs/rmf-codegen": 13.25.0
-    gatsby: 5.7.0-next.1
+    gatsby: 5.6.0
     gatsby-cli: 5.6.0
     gatsby-source-filesystem: 5.6.0
     react: 18.2.0
@@ -2872,7 +2872,7 @@ __metadata:
     "@commercetools-uikit/icons": 15.3.0
     "@commercetools-uikit/radio-input": 15.3.0
     "@svgr/cli": 6.5.1
-    gatsby: 5.7.0-next.1
+    gatsby: 5.6.0
     gatsby-cli: 5.6.0
     process-top: ^1.2.0
     react: 18.2.0
@@ -2887,7 +2887,7 @@ __metadata:
     "@commercetools-docs/gatsby-theme-code-examples": 20.1.1
     "@commercetools-docs/gatsby-theme-docs": 20.1.1
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 1.4.1
-    gatsby: 5.7.0-next.1
+    gatsby: 5.6.0
     gatsby-cli: 5.6.0
     react: 18.2.0
     react-dom: 18.2.0
@@ -2899,7 +2899,7 @@ __metadata:
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
     "@commercetools-docs/gatsby-theme-docs": 20.1.1
-    gatsby: 5.7.0-next.1
+    gatsby: 5.6.0
     gatsby-cli: 5.6.0
     react: 18.2.0
     react-dom: 18.2.0
@@ -3614,15 +3614,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gatsbyjs/parcel-namer-relative-to-cwd@npm:^2.7.0-next.0":
-  version: 2.7.0-next.0
-  resolution: "@gatsbyjs/parcel-namer-relative-to-cwd@npm:2.7.0-next.0"
+"@gatsbyjs/parcel-namer-relative-to-cwd@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "@gatsbyjs/parcel-namer-relative-to-cwd@npm:2.6.0"
   dependencies:
     "@babel/runtime": ^7.20.13
     "@parcel/namer-default": 2.8.3
     "@parcel/plugin": 2.8.3
-    gatsby-core-utils: ^4.7.0-next.0
-  checksum: b044f8174192a140e8e90239cc3f06d39237785b846f5c94c0c90a4f494e3c20258e45295f1cca760f21c390fc77631f2e660cd8953db3ad9c18f9389774f704
+    gatsby-core-utils: ^4.6.0
+  checksum: fbbb4d65daba8fd2cae53a5f545646514d6f67ccad425637ba9f01722f9cfeaba70c55be94bc3e7525c11314d6aa5f15556b50f7a57efab9e0e18e595d441c43
   languageName: node
   linkType: hard
 
@@ -4040,36 +4040,36 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/core@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "@jest/core@npm:27.5.1"
+"@jest/core@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "@jest/core@npm:29.4.2"
   dependencies:
-    "@jest/console": ^27.5.1
-    "@jest/reporters": ^27.5.1
-    "@jest/test-result": ^27.5.1
-    "@jest/transform": ^27.5.1
-    "@jest/types": ^27.5.1
+    "@jest/console": ^29.4.2
+    "@jest/reporters": ^29.4.2
+    "@jest/test-result": ^29.4.2
+    "@jest/transform": ^29.4.2
+    "@jest/types": ^29.4.2
     "@types/node": "*"
     ansi-escapes: ^4.2.1
     chalk: ^4.0.0
-    emittery: ^0.8.1
+    ci-info: ^3.2.0
     exit: ^0.1.2
     graceful-fs: ^4.2.9
-    jest-changed-files: ^27.5.1
-    jest-config: ^27.5.1
-    jest-haste-map: ^27.5.1
-    jest-message-util: ^27.5.1
-    jest-regex-util: ^27.5.1
-    jest-resolve: ^27.5.1
-    jest-resolve-dependencies: ^27.5.1
-    jest-runner: ^27.5.1
-    jest-runtime: ^27.5.1
-    jest-snapshot: ^27.5.1
-    jest-util: ^27.5.1
-    jest-validate: ^27.5.1
-    jest-watcher: ^27.5.1
+    jest-changed-files: ^29.4.2
+    jest-config: ^29.4.2
+    jest-haste-map: ^29.4.2
+    jest-message-util: ^29.4.2
+    jest-regex-util: ^29.4.2
+    jest-resolve: ^29.4.2
+    jest-resolve-dependencies: ^29.4.2
+    jest-runner: ^29.4.2
+    jest-runtime: ^29.4.2
+    jest-snapshot: ^29.4.2
+    jest-util: ^29.4.2
+    jest-validate: ^29.4.2
+    jest-watcher: ^29.4.2
     micromatch: ^4.0.4
-    rimraf: ^3.0.0
+    pretty-format: ^29.4.2
     slash: ^3.0.0
     strip-ansi: ^6.0.0
   peerDependencies:
@@ -4077,7 +4077,7 @@ __metadata:
   peerDependenciesMeta:
     node-notifier:
       optional: true
-  checksum: 904a94ad8f1b43cd6b48de3b0226659bff3696150ff8cf7680fc2faffdc8a115203bb9ab6e817c1f79f9d6a81f67953053cbc64d8a4604f2e0c42a04c28cf126
+  checksum: 9ef41d55a9ab49d808179b93584921157106fe48ed5cedfeefd6b8a7a25b074175d6d5aaa50b093e891ccb60fb3719fdd44e39dcaad2f439733341a799a737c8
   languageName: node
   linkType: hard
 
@@ -4093,12 +4093,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jest/environment@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "@jest/environment@npm:29.4.2"
+  dependencies:
+    "@jest/fake-timers": ^29.4.2
+    "@jest/types": ^29.4.2
+    "@types/node": "*"
+    jest-mock: ^29.4.2
+  checksum: 007a2db50b4245b80d3dae189773773634ab8f013adfc7ad41654ae03bcd4e620d472bcd1b58629b1744653f8de07335b71dd00f83d8d0d73170f91c8c07a2d7
+  languageName: node
+  linkType: hard
+
 "@jest/expect-utils@npm:^29.4.2":
   version: 29.4.2
   resolution: "@jest/expect-utils@npm:29.4.2"
   dependencies:
     jest-get-type: ^29.4.2
   checksum: 5d23a09a4f85f0cb8da3bac3a6118efe4365dce6923702bc7f1a0edf36699c5c91d9c77e95349e71e305d36ae35d4e06086c923bf9635ccf3fffda05cc7cc2e8
+  languageName: node
+  linkType: hard
+
+"@jest/expect@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "@jest/expect@npm:29.4.2"
+  dependencies:
+    expect: ^29.4.2
+    jest-snapshot: ^29.4.2
+  checksum: b15eaa66dad33a080cfeceaed0c170163fbc1544e59b5fe42480edde333f0ef2fb789bf1f99e7e258663b5e8878af0ae0e9ad7898336230245d6f95538b5435f
   languageName: node
   linkType: hard
 
@@ -4116,6 +4138,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jest/fake-timers@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "@jest/fake-timers@npm:29.4.2"
+  dependencies:
+    "@jest/types": ^29.4.2
+    "@sinonjs/fake-timers": ^10.0.2
+    "@types/node": "*"
+    jest-message-util: ^29.4.2
+    jest-mock: ^29.4.2
+    jest-util: ^29.4.2
+  checksum: 22f322614668a910ff393f8ba0b7c865cb37a101ab1af6cfc3247e09fdce6737797e6075193fb24b94239865c35f2dce43cb43ea1ae712e23bd23c3f857e3386
+  languageName: node
+  linkType: hard
+
 "@jest/globals@npm:^27.5.1":
   version: 27.5.1
   resolution: "@jest/globals@npm:27.5.1"
@@ -4127,41 +4163,52 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/reporters@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "@jest/reporters@npm:27.5.1"
+"@jest/globals@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "@jest/globals@npm:29.4.2"
+  dependencies:
+    "@jest/environment": ^29.4.2
+    "@jest/expect": ^29.4.2
+    "@jest/types": ^29.4.2
+    jest-mock: ^29.4.2
+  checksum: 6914fbc7c3dbc92f1d73639764c872476e24ca21c629373f35a63cd7e9f8df4635ab4a10e8057e87a7e6a45febcf4ee80d09e92feafce7c938f7496bc359a1a8
+  languageName: node
+  linkType: hard
+
+"@jest/reporters@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "@jest/reporters@npm:29.4.2"
   dependencies:
     "@bcoe/v8-coverage": ^0.2.3
-    "@jest/console": ^27.5.1
-    "@jest/test-result": ^27.5.1
-    "@jest/transform": ^27.5.1
-    "@jest/types": ^27.5.1
+    "@jest/console": ^29.4.2
+    "@jest/test-result": ^29.4.2
+    "@jest/transform": ^29.4.2
+    "@jest/types": ^29.4.2
+    "@jridgewell/trace-mapping": ^0.3.15
     "@types/node": "*"
     chalk: ^4.0.0
     collect-v8-coverage: ^1.0.0
     exit: ^0.1.2
-    glob: ^7.1.2
+    glob: ^7.1.3
     graceful-fs: ^4.2.9
     istanbul-lib-coverage: ^3.0.0
     istanbul-lib-instrument: ^5.1.0
     istanbul-lib-report: ^3.0.0
     istanbul-lib-source-maps: ^4.0.0
     istanbul-reports: ^3.1.3
-    jest-haste-map: ^27.5.1
-    jest-resolve: ^27.5.1
-    jest-util: ^27.5.1
-    jest-worker: ^27.5.1
+    jest-message-util: ^29.4.2
+    jest-util: ^29.4.2
+    jest-worker: ^29.4.2
     slash: ^3.0.0
-    source-map: ^0.6.0
     string-length: ^4.0.1
-    terminal-link: ^2.0.0
-    v8-to-istanbul: ^8.1.0
+    strip-ansi: ^6.0.0
+    v8-to-istanbul: ^9.0.1
   peerDependencies:
     node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
   peerDependenciesMeta:
     node-notifier:
       optional: true
-  checksum: faba5eafb86e62b62e152cafc8812d56308f9d1e8b77f3a7dcae4a8803a20a60a0909cc43ed73363ef649bf558e4fb181c7a336d144c89f7998279d1882bb69e
+  checksum: 5f7525d9c382a06c7d4003e5c2c345ddc1d7f76ff45f66f89253f640e2d361e87a96bacda2b5dca2b7d777b06ae48adb86daaba2b5bb62d68f2db4ee74d868c9
   languageName: node
   linkType: hard
 
@@ -4182,6 +4229,17 @@ __metadata:
     graceful-fs: ^4.2.9
     source-map: ^0.6.0
   checksum: 4fb1e743b602841babf7e22bd84eca34676cb05d4eb3b604cae57fc59e406099f5ac759ac1a0d04d901237d143f0f4f234417306e823bde732a1d19982230862
+  languageName: node
+  linkType: hard
+
+"@jest/source-map@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "@jest/source-map@npm:29.4.2"
+  dependencies:
+    "@jridgewell/trace-mapping": ^0.3.15
+    callsites: ^3.0.0
+    graceful-fs: ^4.2.9
+  checksum: 362ad36a84354939e5f2dee6a081b4b3558e0f96d3d5d6afbb9dc6142c7d34490516f2906aa2950b1fd0293fde5965c9c9d6c56d0d04c8e3bd8cc20148b1251c
   languageName: node
   linkType: hard
 
@@ -4209,15 +4267,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/test-sequencer@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "@jest/test-sequencer@npm:27.5.1"
+"@jest/test-sequencer@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "@jest/test-sequencer@npm:29.4.2"
   dependencies:
-    "@jest/test-result": ^27.5.1
+    "@jest/test-result": ^29.4.2
     graceful-fs: ^4.2.9
-    jest-haste-map: ^27.5.1
-    jest-runtime: ^27.5.1
-  checksum: f21f9c8bb746847f7f89accfd29d6046eec1446f0b54e4694444feaa4df379791f76ef0f5a4360aafcbc73b50bc979f68b8a7620de404019d3de166be6720cb0
+    jest-haste-map: ^29.4.2
+    slash: ^3.0.0
+  checksum: efa99382c73930d5ad529c23f5aafb8ba68fb194f113203aa3c3aca757352bed7926020b24dc2824a3f860a65aff330da6a09215930fef694db33f1298245d43
   languageName: node
   linkType: hard
 
@@ -4241,6 +4299,29 @@ __metadata:
     source-map: ^0.6.1
     write-file-atomic: ^3.0.0
   checksum: a22079121aedea0f20a03a9c026be971f7b92adbfb4d5fd1fb67be315741deac4f056936d7c72a53b24aa5a1071bc942c003925fd453bf3f6a0ae5da6384e137
+  languageName: node
+  linkType: hard
+
+"@jest/transform@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "@jest/transform@npm:29.4.2"
+  dependencies:
+    "@babel/core": ^7.11.6
+    "@jest/types": ^29.4.2
+    "@jridgewell/trace-mapping": ^0.3.15
+    babel-plugin-istanbul: ^6.1.1
+    chalk: ^4.0.0
+    convert-source-map: ^2.0.0
+    fast-json-stable-stringify: ^2.1.0
+    graceful-fs: ^4.2.9
+    jest-haste-map: ^29.4.2
+    jest-regex-util: ^29.4.2
+    jest-util: ^29.4.2
+    micromatch: ^4.0.4
+    pirates: ^4.0.4
+    slash: ^3.0.0
+    write-file-atomic: ^4.0.2
+  checksum: 3c653dff6ccaa010e83789d22582217b02fe9919f46d50ba07157a6004c9153edec987efba51edf0c261b409f6178e4fa1e34e59ce8dd4cb5c2197d42b30960e
   languageName: node
   linkType: hard
 
@@ -4346,7 +4427,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/trace-mapping@npm:^0.3.14, @jridgewell/trace-mapping@npm:^0.3.17, @jridgewell/trace-mapping@npm:^0.3.9":
+"@jridgewell/trace-mapping@npm:^0.3.12, @jridgewell/trace-mapping@npm:^0.3.14, @jridgewell/trace-mapping@npm:^0.3.15, @jridgewell/trace-mapping@npm:^0.3.17, @jridgewell/trace-mapping@npm:^0.3.9":
   version: 0.3.17
   resolution: "@jridgewell/trace-mapping@npm:0.3.17"
   dependencies:
@@ -5739,6 +5820,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sinonjs/commons@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@sinonjs/commons@npm:2.0.0"
+  dependencies:
+    type-detect: 4.0.8
+  checksum: 5023ba17edf2b85ed58262313b8e9b59e23c6860681a9af0200f239fe939e2b79736d04a260e8270ddd57196851dde3ba754d7230be5c5234e777ae2ca8af137
+  languageName: node
+  linkType: hard
+
+"@sinonjs/fake-timers@npm:^10.0.2":
+  version: 10.0.2
+  resolution: "@sinonjs/fake-timers@npm:10.0.2"
+  dependencies:
+    "@sinonjs/commons": ^2.0.0
+  checksum: c62aa98e7cefda8dedc101ce227abc888dc46b8ff9706c5f0a8dfd9c3ada97d0a5611384738d9ba0b26b59f99c2ba24efece8e779bb08329e9e87358fa309824
+  languageName: node
+  linkType: hard
+
 "@sinonjs/fake-timers@npm:^8.0.1":
   version: 8.1.0
   resolution: "@sinonjs/fake-timers@npm:8.1.0"
@@ -6329,7 +6428,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/graceful-fs@npm:^4.1.2":
+"@types/graceful-fs@npm:^4.1.2, @types/graceful-fs@npm:^4.1.3":
   version: 4.1.6
   resolution: "@types/graceful-fs@npm:4.1.6"
   dependencies:
@@ -6414,6 +6513,17 @@ __metadata:
     expect: ^29.0.0
     pretty-format: ^29.0.0
   checksum: 23760282362a252e6690314584d83a47512d4cd61663e957ed3398ecf98195fe931c45606ee2f9def12f8ed7d8aa102d492ec42d26facdaf8b78094a31e6568e
+  languageName: node
+  linkType: hard
+
+"@types/jsdom@npm:^20.0.0":
+  version: 20.0.1
+  resolution: "@types/jsdom@npm:20.0.1"
+  dependencies:
+    "@types/node": "*"
+    "@types/tough-cookie": "*"
+    parse5: ^7.0.0
+  checksum: d55402c5256ef451f93a6e3d3881f98339fe73a5ac2030588df056d6835df8367b5a857b48d27528289057e26dcdd3f502edc00cb877c79174cb3a4c7f2198c1
   languageName: node
   linkType: hard
 
@@ -6604,7 +6714,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:16 || 17 || 18, @types/react@npm:>=16":
+"@types/react@npm:*, @types/react@npm:16 || 17 || 18, @types/react@npm:18.0.28, @types/react@npm:>=16":
   version: 18.0.28
   resolution: "@types/react@npm:18.0.28"
   dependencies:
@@ -6612,17 +6722,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: e752df961105e5127652460504785897ca6e77259e0da8f233f694f9e8f451cde7fa0709d4456ade0ff600c8ce909cfe29f9b08b9c247fa9b734e126ec53edd7
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:18.0.27":
-  version: 18.0.27
-  resolution: "@types/react@npm:18.0.27"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 600fdbc39a92ea4a77047db3e12f05f67776a710f5918248c0189a59ac2a38900c9db5a5d2e433a16df528a3ecab1aa114b322cacea573bb1ca2fc0b094c52d1
   languageName: node
   linkType: hard
 
@@ -6721,6 +6820,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/tough-cookie@npm:*":
+  version: 4.0.2
+  resolution: "@types/tough-cookie@npm:4.0.2"
+  checksum: e055556ffdaa39ad85ede0af192c93f93f986f4bd9e9426efdc2948e3e2632db3a4a584d4937dbf6d7620527419bc99e6182d3daf2b08685e710f2eda5291905
+  languageName: node
+  linkType: hard
+
 "@types/trusted-types@npm:*":
   version: 2.0.2
   resolution: "@types/trusted-types@npm:2.0.2"
@@ -6728,7 +6834,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/unist@npm:*, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.6":
+"@types/unist@npm:*, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.3, @types/unist@npm:^2.0.6":
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
   checksum: 25cb860ff10dde48b54622d58b23e66214211a61c84c0f15f88d38b61aa1b53d4d46e42b557924a93178c501c166aa37e28d7f6d994aba13d24685326272d5db
@@ -7273,7 +7379,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abab@npm:^2.0.3, abab@npm:^2.0.5":
+"abab@npm:^2.0.3, abab@npm:^2.0.5, abab@npm:^2.0.6":
   version: 2.0.6
   resolution: "abab@npm:2.0.6"
   checksum: 6ffc1af4ff315066c62600123990d87551ceb0aafa01e6539da77b0f5987ac7019466780bf480f1787576d4385e3690c81ccc37cfda12819bf510b8ab47e5a3e
@@ -7314,6 +7420,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"acorn-globals@npm:^7.0.0":
+  version: 7.0.1
+  resolution: "acorn-globals@npm:7.0.1"
+  dependencies:
+    acorn: ^8.1.0
+    acorn-walk: ^8.0.2
+  checksum: 2a2998a547af6d0db5f0cdb90acaa7c3cbca6709010e02121fb8b8617c0fbd8bab0b869579903fde358ac78454356a14fadcc1a672ecb97b04b1c2ccba955ce8
+  languageName: node
+  linkType: hard
+
 "acorn-import-assertions@npm:^1.7.6":
   version: 1.8.0
   resolution: "acorn-import-assertions@npm:1.8.0"
@@ -7348,7 +7464,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-walk@npm:^8.0.0, acorn-walk@npm:^8.1.1, acorn-walk@npm:^8.2.0":
+"acorn-walk@npm:^8.0.0, acorn-walk@npm:^8.0.2, acorn-walk@npm:^8.1.1, acorn-walk@npm:^8.2.0":
   version: 8.2.0
   resolution: "acorn-walk@npm:8.2.0"
   checksum: 1715e76c01dd7b2d4ca472f9c58968516a4899378a63ad5b6c2d668bba8da21a71976c14ec5f5b75f887b6317c4ae0b897ab141c831d741dc76024d8745f1ad1
@@ -7373,7 +7489,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.0.0, acorn@npm:^8.0.4, acorn@npm:^8.2.4, acorn@npm:^8.4.1, acorn@npm:^8.5.0, acorn@npm:^8.7.1, acorn@npm:^8.8.0, acorn@npm:^8.8.1":
+"acorn@npm:^8.0.0, acorn@npm:^8.0.4, acorn@npm:^8.1.0, acorn@npm:^8.2.4, acorn@npm:^8.4.1, acorn@npm:^8.5.0, acorn@npm:^8.7.1, acorn@npm:^8.8.0, acorn@npm:^8.8.1":
   version: 8.8.2
   resolution: "acorn@npm:8.8.2"
   bin:
@@ -8019,7 +8135,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-jest@npm:27.5.1, babel-jest@npm:^27.0.0, babel-jest@npm:^27.5.1":
+"babel-jest@npm:29.4.2, babel-jest@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "babel-jest@npm:29.4.2"
+  dependencies:
+    "@jest/transform": ^29.4.2
+    "@types/babel__core": ^7.1.14
+    babel-plugin-istanbul: ^6.1.1
+    babel-preset-jest: ^29.4.2
+    chalk: ^4.0.0
+    graceful-fs: ^4.2.9
+    slash: ^3.0.0
+  peerDependencies:
+    "@babel/core": ^7.8.0
+  checksum: 294b90e8193d72fb5d194126ce62d9d306cb1c1292f4737302c01c2a43d8975be9a476b001e43334fb63a1d25c9b5ea62e59d907cf1ff877e94d78772f3c7813
+  languageName: node
+  linkType: hard
+
+"babel-jest@npm:^27.0.0":
   version: 27.5.1
   resolution: "babel-jest@npm:27.5.1"
   dependencies:
@@ -8106,6 +8239,18 @@ __metadata:
     "@types/babel__core": ^7.0.0
     "@types/babel__traverse": ^7.0.6
   checksum: 709c17727aa8fd3be755d256fb514bf945a5c2ea6017f037d80280fc44ae5fe7dfeebf63d8412df53796455c2c216119d628d8cc90b099434fd819005943d058
+  languageName: node
+  linkType: hard
+
+"babel-plugin-jest-hoist@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "babel-plugin-jest-hoist@npm:29.4.2"
+  dependencies:
+    "@babel/template": ^7.3.3
+    "@babel/types": ^7.3.3
+    "@types/babel__core": ^7.1.14
+    "@types/babel__traverse": ^7.0.6
+  checksum: 674be77ed8cef3e55ac4a4b829aaf1cb81b5f20930f6e1018979cef0008cd67a4fa66ee7fc6b13eee4569c3daba4f172f57c21dfca35f3a1d18d7910c50cc6dd
   languageName: node
   linkType: hard
 
@@ -8203,20 +8348,6 @@ __metadata:
     "@babel/core": ^7.0.0
     gatsby: ^5.0.0-next
   checksum: a516071e954b875e1e0c41268b27ec4618ba16eb97d60645429bd44549e798200c04b1c59b33a10517a30884dddcb92d20f2a2d8998846491721234663673178
-  languageName: node
-  linkType: hard
-
-"babel-plugin-remove-graphql-queries@npm:^5.7.0-next.0":
-  version: 5.7.0-next.0
-  resolution: "babel-plugin-remove-graphql-queries@npm:5.7.0-next.0"
-  dependencies:
-    "@babel/runtime": ^7.20.13
-    "@babel/types": ^7.20.7
-    gatsby-core-utils: ^4.7.0-next.0
-  peerDependencies:
-    "@babel/core": ^7.0.0
-    gatsby: ^5.0.0-next
-  checksum: cb36e20bb9f651f80b2074ad39647c81a6afcae6d289097d2de0d145c0266f097e8947b8e6803275b928d8f157b8307cf9cf90d447055ce6d4158a35ea409a2e
   languageName: node
   linkType: hard
 
@@ -8333,9 +8464,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-gatsby@npm:^3.7.0-next.0":
-  version: 3.7.0-next.0
-  resolution: "babel-preset-gatsby@npm:3.7.0-next.0"
+"babel-preset-gatsby@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "babel-preset-gatsby@npm:3.6.0"
   dependencies:
     "@babel/plugin-proposal-class-properties": ^7.18.6
     "@babel/plugin-proposal-nullish-coalescing-operator": ^7.18.6
@@ -8350,12 +8481,12 @@ __metadata:
     babel-plugin-dynamic-import-node: ^2.3.3
     babel-plugin-macros: ^3.1.0
     babel-plugin-transform-react-remove-prop-types: ^0.4.24
-    gatsby-core-utils: ^4.7.0-next.0
-    gatsby-legacy-polyfills: ^3.7.0-next.0
+    gatsby-core-utils: ^4.6.0
+    gatsby-legacy-polyfills: ^3.6.0
   peerDependencies:
     "@babel/core": ^7.11.6
     core-js: ^3.0.0
-  checksum: 39e572398f709c11d530454b13684bfff92070a365c91fa561f69b0873058ba493df7f273f35aa732a55fdfacc7db2f0d72f66c3946306272bbccff4fb918d72
+  checksum: 8d2cb41fbcf93efb95e488ef6bc60f2970ffbfc228c5eb89e5c145719e4190205c45d2a7b5056a310ba9c14808e51fff342b7602c2e13378fd35773cbf2708dc
   languageName: node
   linkType: hard
 
@@ -8368,6 +8499,18 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0
   checksum: 251bcea11c18fd9672fec104eadb45b43f117ceeb326fa7345ced778d4c1feab29343cd7a87a1dcfae4997d6c851a8b386d7f7213792da6e23b74f4443a8976d
+  languageName: node
+  linkType: hard
+
+"babel-preset-jest@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "babel-preset-jest@npm:29.4.2"
+  dependencies:
+    babel-plugin-jest-hoist: ^29.4.2
+    babel-preset-current-node-syntax: ^1.0.0
+  peerDependencies:
+    "@babel/core": ^7.0.0
+  checksum: e4fa9855441a6eff0dcde1ccb15c25d27efcdfc6be7d4e6b53e446a8f172cd68fd17022d9bd9140dda12ee345da2b7370ad4e66a288889f7318a4713e89953c0
   languageName: node
   linkType: hard
 
@@ -9423,17 +9566,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cliui@npm:^7.0.2":
-  version: 7.0.4
-  resolution: "cliui@npm:7.0.4"
-  dependencies:
-    string-width: ^4.2.0
-    strip-ansi: ^6.0.0
-    wrap-ansi: ^7.0.0
-  checksum: ce2e8f578a4813806788ac399b9e866297740eecd4ad1823c27fd344d78b22c5f8597d548adbcc46f0573e43e21e751f39446c5a5e804a12aace402b7a315d7f
-  languageName: node
-  linkType: hard
-
 "cliui@npm:^8.0.1":
   version: 8.0.1
   resolution: "cliui@npm:8.0.1"
@@ -9584,6 +9716,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"comma-separated-tokens@npm:^1.0.0":
+  version: 1.0.8
+  resolution: "comma-separated-tokens@npm:1.0.8"
+  checksum: 0adcb07174fa4d08cf0f5c8e3aec40a36b5ff0c2c720e5e23f50fe02e6789d1d00a67036c80e0c1e1539f41d3e7f0101b074039dd833b4e4a59031b659d6ca0d
+  languageName: node
+  linkType: hard
+
 "comma-separated-tokens@npm:^2.0.0":
   version: 2.0.3
   resolution: "comma-separated-tokens@npm:2.0.3"
@@ -9654,7 +9793,7 @@ __metadata:
     "@testing-library/jest-dom": 5.16.5
     "@testing-library/react": 13.4.0
     babel-eslint: 10.1.0
-    babel-jest: 27.5.1
+    babel-jest: 29.4.2
     babel-plugin-typescript-to-proptypes: 2.0.0
     core-js: 3.27.2
     cross-env: 7.0.3
@@ -9664,7 +9803,8 @@ __metadata:
     eslint-import-resolver-webpack: 0.13.2
     eslint-plugin-import: ^2.27.5
     husky: 8.0.3
-    jest: 27.5.1
+    jest: 29.4.2
+    jest-environment-jsdom: ^29.4.2
     jest-preset-gatsby: 1.0.134
     jest-runner-eslint: 1.1.0
     jest-runner-prettier: 1.0.0
@@ -9889,6 +10029,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"convert-source-map@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "convert-source-map@npm:2.0.0"
+  checksum: 63ae9933be5a2b8d4509daca5124e20c14d023c820258e484e32dc324d34c2754e71297c94a05784064ad27615037ef677e3f0c00469fb55f409d2bb21261035
+  languageName: node
+  linkType: hard
+
 "cookie-signature@npm:1.0.6":
   version: 1.0.6
   resolution: "cookie-signature@npm:1.0.6"
@@ -10037,17 +10184,6 @@ __metadata:
   bin:
     create-gatsby: cli.js
   checksum: 29f307c70bad07a77ce271cb484311291be3986242d4228858efb753dfd955bf7592c0cbb51895be328dd925f989a799ba1479c7bf5a10bfd2788344256e006a
-  languageName: node
-  linkType: hard
-
-"create-gatsby@npm:^3.7.0-next.0":
-  version: 3.7.0-next.0
-  resolution: "create-gatsby@npm:3.7.0-next.0"
-  dependencies:
-    "@babel/runtime": ^7.20.13
-  bin:
-    create-gatsby: cli.js
-  checksum: 6464b888348d40491e6cb38bec275df5a5bc3687d4493f98c09cae1532034c267668320aa431c781488da0b4ee5833fe8674236986affef98fcd0eb836f1a12f
   languageName: node
   linkType: hard
 
@@ -10383,6 +10519,13 @@ __metadata:
   version: 0.4.4
   resolution: "cssom@npm:0.4.4"
   checksum: e3bc1076e7ee4213d4fef05e7ae03bfa83dc05f32611d8edc341f4ecc3d9647b89c8245474c7dd2cdcdb797a27c462e99da7ad00a34399694559f763478ff53f
+  languageName: node
+  linkType: hard
+
+"cssom@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "cssom@npm:0.5.0"
+  checksum: 823471aa30091c59e0a305927c30e7768939b6af70405808f8d2ce1ca778cddcb24722717392438329d1691f9a87cb0183b64b8d779b56a961546d54854fde01
   languageName: node
   linkType: hard
 
@@ -10873,6 +11016,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"data-urls@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "data-urls@npm:3.0.2"
+  dependencies:
+    abab: ^2.0.6
+    whatwg-mimetype: ^3.0.0
+    whatwg-url: ^11.0.0
+  checksum: 033fc3dd0fba6d24bc9a024ddcf9923691dd24f90a3d26f6545d6a2f71ec6956f93462f2cdf2183cc46f10dc01ed3bcb36731a8208456eb1a08147e571fe2a76
+  languageName: node
+  linkType: hard
+
 "dataloader@npm:^1.4.0":
   version: 1.4.0
   resolution: "dataloader@npm:1.4.0"
@@ -10955,7 +11109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"decimal.js@npm:^10.2.1":
+"decimal.js@npm:^10.2.1, decimal.js@npm:^10.4.2":
   version: 10.4.3
   resolution: "decimal.js@npm:10.4.3"
   checksum: 796404dcfa9d1dbfdc48870229d57f788b48c21c603c3f6554a1c17c10195fc1024de338b0cf9e1efe0c7c167eeb18f04548979bcc5fdfabebb7cc0ae3287bae
@@ -11422,6 +11576,15 @@ __metadata:
   dependencies:
     webidl-conversions: ^5.0.0
   checksum: d638e9cb05c52999f1b2eb87c374b03311ea5b1d69c2f875bc92da73e17db60c12142b45c950228642ff7f845c536b65305483350d080df59003a653da80b691
+  languageName: node
+  linkType: hard
+
+"domexception@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "domexception@npm:4.0.0"
+  dependencies:
+    webidl-conversions: ^7.0.0
+  checksum: ddbc1268edf33a8ba02ccc596735ede80375ee0cf124b30d2f05df5b464ba78ef4f49889b6391df4a04954e63d42d5631c7fcf8b1c4f12bc531252977a5f13d5
   languageName: node
   linkType: hard
 
@@ -12879,7 +13042,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect@npm:^29.0.0":
+"expect@npm:^29.0.0, expect@npm:^29.4.2":
   version: 29.4.2
   resolution: "expect@npm:29.4.2"
   dependencies:
@@ -13050,7 +13213,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-json-stable-stringify@npm:^2.0.0":
+"fast-json-stable-stringify@npm:^2.0.0, fast-json-stable-stringify@npm:^2.1.0":
   version: 2.1.0
   resolution: "fast-json-stable-stringify@npm:2.1.0"
   checksum: b191531e36c607977e5b1c47811158733c34ccb3bfde92c44798929e9b4154884378536d26ad90dfecd32e1ffc09c545d23535ad91b3161a27ddbb8ebe0cbecb
@@ -13652,7 +13815,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-cli@npm:5.6.0":
+"gatsby-cli@npm:5.6.0, gatsby-cli@npm:^5.6.0":
   version: 5.6.0
   resolution: "gatsby-cli@npm:5.6.0"
   dependencies:
@@ -13703,57 +13866,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-cli@npm:^5.7.0-next.0":
-  version: 5.7.0-next.0
-  resolution: "gatsby-cli@npm:5.7.0-next.0"
-  dependencies:
-    "@babel/code-frame": ^7.18.6
-    "@babel/core": ^7.20.12
-    "@babel/generator": ^7.20.14
-    "@babel/helper-plugin-utils": ^7.20.2
-    "@babel/preset-typescript": ^7.18.6
-    "@babel/runtime": ^7.20.13
-    "@babel/template": ^7.20.7
-    "@babel/types": ^7.20.7
-    "@jridgewell/trace-mapping": ^0.3.17
-    "@types/common-tags": ^1.8.1
-    better-opn: ^2.1.1
-    boxen: ^5.1.2
-    chalk: ^4.1.2
-    clipboardy: ^2.3.0
-    common-tags: ^1.8.2
-    convert-hrtime: ^3.0.0
-    create-gatsby: ^3.7.0-next.0
-    envinfo: ^7.8.1
-    execa: ^5.1.1
-    fs-exists-cached: ^1.0.0
-    fs-extra: ^11.1.0
-    gatsby-core-utils: ^4.7.0-next.0
-    gatsby-telemetry: ^4.7.0-next.0
-    hosted-git-info: ^3.0.8
-    is-valid-path: ^0.1.1
-    joi: ^17.7.0
-    lodash: ^4.17.21
-    node-fetch: ^2.6.8
-    opentracing: ^0.14.7
-    pretty-error: ^2.1.2
-    progress: ^2.0.3
-    prompts: ^2.4.2
-    redux: 4.2.1
-    resolve-cwd: ^3.0.0
-    semver: ^7.3.8
-    signal-exit: ^3.0.7
-    stack-trace: ^0.0.10
-    strip-ansi: ^6.0.1
-    yargs: ^15.4.1
-    yoga-layout-prebuilt: ^1.10.0
-    yurnalist: ^2.1.0
-  bin:
-    gatsby: cli.js
-  checksum: 640041398d2f9a08f5b89635f75b6c2558680e42718726115e23018b4cfe303bdb716baf33ff0c1fe501deee1553f7451da8f9dbd82aa1021ce09e5e14a0b033
-  languageName: node
-  linkType: hard
-
 "gatsby-core-utils@npm:4.6.0, gatsby-core-utils@npm:^4.6.0":
   version: 4.6.0
   resolution: "gatsby-core-utils@npm:4.6.0"
@@ -13796,34 +13908,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-core-utils@npm:^4.7.0-next.0":
-  version: 4.7.0-next.0
-  resolution: "gatsby-core-utils@npm:4.7.0-next.0"
-  dependencies:
-    "@babel/runtime": ^7.20.13
-    ci-info: 2.0.0
-    configstore: ^5.0.1
-    fastq: ^1.13.0
-    file-type: ^16.5.3
-    fs-extra: ^11.1.0
-    got: ^11.8.5
-    hash-wasm: ^4.9.0
-    import-from: ^4.0.0
-    lmdb: 2.5.3
-    lock: ^1.1.0
-    node-object-hash: ^2.3.10
-    proper-lockfile: ^4.1.2
-    resolve-from: ^5.0.0
-    tmp: ^0.2.1
-    xdg-basedir: ^4.0.0
-  checksum: c512dea34f2f7064050c34fa336c572c1d5905ee03d4817f08afe23013f17eb912a114242d8f7f9a75bc8be5b104b671df5999e27935578e86df3599295bd12a
-  languageName: node
-  linkType: hard
-
-"gatsby-graphiql-explorer@npm:^3.7.0-next.0":
-  version: 3.7.0-next.0
-  resolution: "gatsby-graphiql-explorer@npm:3.7.0-next.0"
-  checksum: e7beee89ff2ebce478389607d17e31dfb52f71c13b0f596d9b58ae89543da0ac150d752a86094cdee2abba42ef102c12eeb86218651d3d547789bd54088ba3de
+"gatsby-graphiql-explorer@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "gatsby-graphiql-explorer@npm:3.6.0"
+  checksum: 21c1b0da141688a39c59b4ae8e90ba2b9bab10b3db0cae8189d978aa3f79d47db8382de5fa969a4d44b5bad89f583751f1e146f30c7db22ededbcf38cfada594
   languageName: node
   linkType: hard
 
@@ -13837,52 +13925,52 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-legacy-polyfills@npm:^3.7.0-next.0":
-  version: 3.7.0-next.0
-  resolution: "gatsby-legacy-polyfills@npm:3.7.0-next.0"
+"gatsby-legacy-polyfills@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "gatsby-legacy-polyfills@npm:3.6.0"
   dependencies:
     "@babel/runtime": ^7.20.13
     core-js-compat: 3.9.0
-  checksum: 55ffc06b4b2af730cf49a6388092b8930f19d510d5600bfa2e27e30a638437423195915f709b0a2122352a58711e9eeab88086ead6810d4eef5cd2895a924730
+  checksum: 3c860b595129fec92ae87e0bc7bb12aaec7642c8284cf8485328ccb71037b53de22c8f1e14196bcb4be510a620aa4def55d4f37d836f8af8254003a02123088b
   languageName: node
   linkType: hard
 
-"gatsby-link@npm:^5.7.0-next.0":
-  version: 5.7.0-next.0
-  resolution: "gatsby-link@npm:5.7.0-next.0"
+"gatsby-link@npm:^5.6.0":
+  version: 5.6.0
+  resolution: "gatsby-link@npm:5.6.0"
   dependencies:
     "@types/reach__router": ^1.3.10
-    gatsby-page-utils: ^3.7.0-next.0
+    gatsby-page-utils: ^3.6.0
     prop-types: ^15.8.1
   peerDependencies:
     "@gatsbyjs/reach-router": ^2.0.0
     react: ^18.0.0 || ^0.0.0
     react-dom: ^18.0.0 || ^0.0.0
-  checksum: 61119a28a9055ec2d4c555a7889bd163ecb91be5981fcbd619e2fc0b4fb9db38c8ac02ebb8075d0125124ccea8a3792003c48ec6ba25a45c6aac018c2ae26142
+  checksum: c16560fd07f4234c8455856dbc7fe2f2c92a7ca63138e9ed8a0ec7822267236c067b4798ee990bd91078deae4d49cb0df4c59edc793b6b2125e8b803a3ffe076
   languageName: node
   linkType: hard
 
-"gatsby-page-utils@npm:^3.7.0-next.0":
-  version: 3.7.0-next.0
-  resolution: "gatsby-page-utils@npm:3.7.0-next.0"
+"gatsby-page-utils@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "gatsby-page-utils@npm:3.6.0"
   dependencies:
     "@babel/runtime": ^7.20.13
     bluebird: ^3.7.2
     chokidar: ^3.5.3
     fs-exists-cached: ^1.0.0
-    gatsby-core-utils: ^4.7.0-next.0
+    gatsby-core-utils: ^4.6.0
     glob: ^7.2.3
     lodash: ^4.17.21
     micromatch: ^4.0.5
-  checksum: c759b892a110c1cdf12b13971e0472764a185a21f3006a9bb70fe5a48229e2e353d433b642847d8fe1bbc99880ab99cc6d5eb1709f5aebcaa8ad0a50102a8cae
+  checksum: fc68181f02aa252c38c3fd925dce0ec3c9f5ffa84ad01cb7c094064242c4cf68308d73bf2c1dc1740e0c3ae30e434a705cbf07e89f671922762ae2533f3f7569
   languageName: node
   linkType: hard
 
-"gatsby-parcel-config@npm:1.7.0-next.0":
-  version: 1.7.0-next.0
-  resolution: "gatsby-parcel-config@npm:1.7.0-next.0"
+"gatsby-parcel-config@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "gatsby-parcel-config@npm:1.6.0"
   dependencies:
-    "@gatsbyjs/parcel-namer-relative-to-cwd": ^2.7.0-next.0
+    "@gatsbyjs/parcel-namer-relative-to-cwd": ^2.6.0
     "@parcel/bundler-default": 2.8.3
     "@parcel/compressor-raw": 2.8.3
     "@parcel/namer-default": 2.8.3
@@ -13896,7 +13984,7 @@ __metadata:
     "@parcel/transformer-json": 2.8.3
   peerDependencies:
     "@parcel/core": ^2.0.0
-  checksum: 73309f620066fa52d350cdc5e990be8c289b8c6d8288ba863676be76185152e2bb8d29f4347fcb0279e4482230957f4f21387e8de03e9845a4b9a40ccf0fd80e
+  checksum: 2a8eff157b5d1aa86969448f6162b17b6eff6c6b3b19132c7e80adc2b583f26c4130589e2c99afc4ddf75b821952b393ffe6e9d80134880c11f10b1e162470b1
   languageName: node
   linkType: hard
 
@@ -14042,9 +14130,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-page-creator@npm:^5.7.0-next.0":
-  version: 5.7.0-next.0
-  resolution: "gatsby-plugin-page-creator@npm:5.7.0-next.0"
+"gatsby-plugin-page-creator@npm:^5.6.0":
+  version: 5.6.0
+  resolution: "gatsby-plugin-page-creator@npm:5.6.0"
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/traverse": ^7.20.13
@@ -14052,15 +14140,15 @@ __metadata:
     chokidar: ^3.5.3
     fs-exists-cached: ^1.0.0
     fs-extra: ^11.1.0
-    gatsby-core-utils: ^4.7.0-next.0
-    gatsby-page-utils: ^3.7.0-next.0
-    gatsby-plugin-utils: ^4.7.0-next.0
-    gatsby-telemetry: ^4.7.0-next.0
+    gatsby-core-utils: ^4.6.0
+    gatsby-page-utils: ^3.6.0
+    gatsby-plugin-utils: ^4.6.0
+    gatsby-telemetry: ^4.6.0
     globby: ^11.1.0
     lodash: ^4.17.21
   peerDependencies:
     gatsby: ^5.0.0-next
-  checksum: 33cd14649f5437ed0880e5330633f97501f94c9278e50ea81f20bbc0811d834d4a274b5ddf0f32cbb81a9e9083cc3afcc99e42835d15f71899b8fecde0c71974
+  checksum: 95da49944871b6ba65679f600a736d63c1c2c951c574ad6238fa0262442ba826cfe5eee31bccbbb3de06d05a24a7bdf23501f713ae5979ab72e1c01eb990b347
   languageName: node
   linkType: hard
 
@@ -14086,9 +14174,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-typescript@npm:^5.7.0-next.0":
-  version: 5.7.0-next.0
-  resolution: "gatsby-plugin-typescript@npm:5.7.0-next.0"
+"gatsby-plugin-typescript@npm:^5.6.0":
+  version: 5.6.0
+  resolution: "gatsby-plugin-typescript@npm:5.6.0"
   dependencies:
     "@babel/core": ^7.20.12
     "@babel/plugin-proposal-nullish-coalescing-operator": ^7.18.6
@@ -14096,10 +14184,10 @@ __metadata:
     "@babel/plugin-proposal-optional-chaining": ^7.20.7
     "@babel/preset-typescript": ^7.18.6
     "@babel/runtime": ^7.20.13
-    babel-plugin-remove-graphql-queries: ^5.7.0-next.0
+    babel-plugin-remove-graphql-queries: ^5.6.0
   peerDependencies:
     gatsby: ^5.0.0-next
-  checksum: 551906b0dcff32e42c665bef32131e947f2e58fe2d16b6b5102f13d0478f5e11b51565d93e54b4383fe47fc4ed7a0768f356c0c10a485c92d23c2c0ee3f5afe8
+  checksum: 93607968b01ad88034b62a3b22a56db209f7a32198fe6238c32a717506de9a7f0e4d9765308bd4273ab582a8df237a5fd72da3dcc6e5e9525e8651a5391d2bbc
   languageName: node
   linkType: hard
 
@@ -14123,26 +14211,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-utils@npm:^4.7.0-next.0":
-  version: 4.7.0-next.0
-  resolution: "gatsby-plugin-utils@npm:4.7.0-next.0"
-  dependencies:
-    "@babel/runtime": ^7.20.13
-    fastq: ^1.13.0
-    fs-extra: ^11.1.0
-    gatsby-core-utils: ^4.7.0-next.0
-    gatsby-sharp: ^1.7.0-next.0
-    graphql-compose: ^9.0.10
-    import-from: ^4.0.0
-    joi: ^17.7.0
-    mime: ^3.0.0
-  peerDependencies:
-    gatsby: ^5.0.0-next
-    graphql: ^16.0.0
-  checksum: 0b6146c27478c3390b5b589b9044440c72dd589bd2272f6b7890fd7ec5f0f1ad51deb1fa11d48708a59ab834cf7df94a99d9403d9e98b749c9b5dc904dfd7d41
-  languageName: node
-  linkType: hard
-
 "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.30":
   version: 1.1.30
   resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.30"
@@ -14155,9 +14223,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-react-router-scroll@npm:^6.7.0-next.0":
-  version: 6.7.0-next.0
-  resolution: "gatsby-react-router-scroll@npm:6.7.0-next.0"
+"gatsby-react-router-scroll@npm:^6.6.0":
+  version: 6.6.0
+  resolution: "gatsby-react-router-scroll@npm:6.6.0"
   dependencies:
     "@babel/runtime": ^7.20.13
     prop-types: ^15.8.1
@@ -14165,7 +14233,7 @@ __metadata:
     "@gatsbyjs/reach-router": ^2.0.0
     react: ^18.0.0 || ^0.0.0
     react-dom: ^18.0.0 || ^0.0.0
-  checksum: d9ad7b24eefc6aa9544838dc110603f917e3d6c52005e3b154a157d01cda2184a71cfe632c0ffec48bb13702ce40b0651e7a62bd56b2601c6c5901e0fb5739a5
+  checksum: 0f8aab2312cc5ed9e39b3fd4479ee5de10debdce4e468748047c7ecc8b767925b5e27899a3827b8bbe19e12e3a34dd9fffaf0f5541fa5e72070d02f0bccf0901
   languageName: node
   linkType: hard
 
@@ -14221,14 +14289,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-script@npm:^2.7.0-next.0":
-  version: 2.7.0-next.0
-  resolution: "gatsby-script@npm:2.7.0-next.0"
+"gatsby-script@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "gatsby-script@npm:2.6.0"
   peerDependencies:
     "@gatsbyjs/reach-router": ^2.0.0
     react: ^18.0.0 || ^0.0.0
     react-dom: ^18.0.0 || ^0.0.0
-  checksum: 491366371e5488e4a44b8920d2239d282122e079f6de2c880beb4122b5d8a9913a253f44d1dae4f26e7ab81e13124b6c8cd1f76186abac1508c6f20a4dfbfd2e
+  checksum: 35477744c07d22d7f78bf96e1d039e50ce44c24d99b37b0d20cd5b9edf7347e596af83531d702d1711db1178d195c056314e23b7c99a797ab160729bb67acc2e
   languageName: node
   linkType: hard
 
@@ -14239,16 +14307,6 @@ __metadata:
     "@types/sharp": ^0.31.1
     sharp: ^0.31.3
   checksum: fac53ea0fa2ad9b4b697dc092ebc390209153d7f940db8d629bc054b5e328ca69b3a05f3d2569421097e8207e644075bd9b95ba6a118237ec20b5c8605783152
-  languageName: node
-  linkType: hard
-
-"gatsby-sharp@npm:^1.7.0-next.0":
-  version: 1.7.0-next.0
-  resolution: "gatsby-sharp@npm:1.7.0-next.0"
-  dependencies:
-    "@types/sharp": ^0.31.1
-    sharp: ^0.31.3
-  checksum: 0042586f1853eceb26b4a333a055b08a109e095e25d17f3dc312763cdadf4f77067c862a4c1df97b495121a5e527dcaad4b6a9570b4744033b627eac045d7f3b
   languageName: node
   linkType: hard
 
@@ -14291,26 +14349,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-telemetry@npm:^4.7.0-next.0":
-  version: 4.7.0-next.0
-  resolution: "gatsby-telemetry@npm:4.7.0-next.0"
-  dependencies:
-    "@babel/code-frame": ^7.18.6
-    "@babel/runtime": ^7.20.13
-    "@turist/fetch": ^7.2.0
-    "@turist/time": ^0.0.2
-    boxen: ^5.1.2
-    configstore: ^5.0.1
-    fs-extra: ^11.1.0
-    gatsby-core-utils: ^4.7.0-next.0
-    git-up: ^7.0.0
-    is-docker: ^2.2.1
-    lodash: ^4.17.21
-    node-fetch: ^2.6.8
-  checksum: b83807dd367f9844d5ff489dddd3069f31bc9726a52448e6bfd158b9cc559bcc913372a2d9ed26ac5fca56a61b05b4a5df7dfe0d84124b8dac82ae793a2ff8d8
-  languageName: node
-  linkType: hard
-
 "gatsby-transformer-sharp@npm:5.6.0":
   version: 5.6.0
   resolution: "gatsby-transformer-sharp@npm:5.6.0"
@@ -14343,21 +14381,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-worker@npm:^2.7.0-next.0":
-  version: 2.7.0-next.0
-  resolution: "gatsby-worker@npm:2.7.0-next.0"
+"gatsby-worker@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "gatsby-worker@npm:2.6.0"
   dependencies:
     "@babel/core": ^7.20.12
     "@babel/runtime": ^7.20.13
     fs-extra: ^11.1.0
     signal-exit: ^3.0.7
-  checksum: 690ebc071b1fb0f691c0ead3998bbb8ea99902f2e41051ba855ac6e56b92d74bd55de4b20723d24ca19d7b602d8fe49dd21f447303d761851c7e58ee11a017e5
+  checksum: e132fb59b94096f5d6a8b8ff571b4116f0e6eb32a69e23a21f91b3c9a86523e18998756bdee1027443af45ef83654b139c8e035d95d5b3e264866ec91cbfeb86
   languageName: node
   linkType: hard
 
-"gatsby@npm:5.7.0-next.1":
-  version: 5.7.0-next.1
-  resolution: "gatsby@npm:5.7.0-next.1"
+"gatsby@npm:5.6.0":
+  version: 5.6.0
+  resolution: "gatsby@npm:5.6.0"
   dependencies:
     "@babel/code-frame": ^7.18.6
     "@babel/core": ^7.20.12
@@ -14397,8 +14435,8 @@ __metadata:
     babel-plugin-add-module-exports: ^1.0.4
     babel-plugin-dynamic-import-node: ^2.3.3
     babel-plugin-lodash: ^3.3.4
-    babel-plugin-remove-graphql-queries: ^5.7.0-next.0
-    babel-preset-gatsby: ^3.7.0-next.0
+    babel-plugin-remove-graphql-queries: ^5.6.0
+    babel-preset-gatsby: ^3.6.0
     better-opn: ^2.1.1
     bluebird: ^3.7.2
     browserslist: ^4.21.4
@@ -14439,21 +14477,21 @@ __metadata:
     find-cache-dir: ^3.3.2
     fs-exists-cached: 1.0.0
     fs-extra: ^11.1.0
-    gatsby-cli: ^5.7.0-next.0
-    gatsby-core-utils: ^4.7.0-next.0
-    gatsby-graphiql-explorer: ^3.7.0-next.0
-    gatsby-legacy-polyfills: ^3.7.0-next.0
-    gatsby-link: ^5.7.0-next.0
-    gatsby-page-utils: ^3.7.0-next.0
-    gatsby-parcel-config: 1.7.0-next.0
-    gatsby-plugin-page-creator: ^5.7.0-next.0
-    gatsby-plugin-typescript: ^5.7.0-next.0
-    gatsby-plugin-utils: ^4.7.0-next.0
-    gatsby-react-router-scroll: ^6.7.0-next.0
-    gatsby-script: ^2.7.0-next.0
-    gatsby-sharp: ^1.7.0-next.0
-    gatsby-telemetry: ^4.7.0-next.0
-    gatsby-worker: ^2.7.0-next.0
+    gatsby-cli: ^5.6.0
+    gatsby-core-utils: ^4.6.0
+    gatsby-graphiql-explorer: ^3.6.0
+    gatsby-legacy-polyfills: ^3.6.0
+    gatsby-link: ^5.6.0
+    gatsby-page-utils: ^3.6.0
+    gatsby-parcel-config: ^1.6.0
+    gatsby-plugin-page-creator: ^5.6.0
+    gatsby-plugin-typescript: ^5.6.0
+    gatsby-plugin-utils: ^4.6.0
+    gatsby-react-router-scroll: ^6.6.0
+    gatsby-script: ^2.6.0
+    gatsby-sharp: ^1.6.0
+    gatsby-telemetry: ^4.6.0
+    gatsby-worker: ^2.6.0
     glob: ^7.2.3
     globby: ^11.1.0
     got: ^11.8.6
@@ -14532,7 +14570,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-  checksum: 072a6d49dcca2e9abf199fe4ea4f18b3576e76c1c10efb77446779a015062631eae896e434858a5e302403884a8d98dabcba07df4ea037531f267c0a5e65b60a
+  checksum: 243d2e591c230a67e0a28ddf985ab2f578af3dcb983c9527f4dabda171383bd003df613d0b2f18f1e008a66e96995ac46531d3dbbe7be47f3793168ad01ec51e
   languageName: node
   linkType: hard
 
@@ -15157,17 +15195,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-to-hyperscript@npm:^10.0.0":
-  version: 10.0.3
-  resolution: "hast-to-hyperscript@npm:10.0.3"
+"hast-to-hyperscript@npm:^9.0.0":
+  version: 9.0.1
+  resolution: "hast-to-hyperscript@npm:9.0.1"
   dependencies:
-    "@types/unist": ^2.0.0
-    comma-separated-tokens: ^2.0.0
-    property-information: ^6.0.0
-    space-separated-tokens: ^2.0.0
-    style-to-object: ^0.4.1
-    web-namespaces: ^2.0.0
-  checksum: a119071eb9cb8b60d8d892277a1cfc7ed736e2b3478ac7b90ebf0e6494516e7ac14d6530b726df693f3ae733065a25cd57efb32de82a69c8879ec34cb015ff29
+    "@types/unist": ^2.0.3
+    comma-separated-tokens: ^1.0.0
+    property-information: ^5.3.0
+    space-separated-tokens: ^1.0.0
+    style-to-object: ^0.3.0
+    unist-util-is: ^4.0.0
+    web-namespaces: ^1.0.0
+  checksum: de570d789853018fff2fd38fc096549b9814e366b298f60c90c159a57018230eefc44d46a246027b0e2426ed9e99f2e270050bc183d5bdfe4c9487c320b392cd
   languageName: node
   linkType: hard
 
@@ -15418,6 +15457,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-encoding-sniffer@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "html-encoding-sniffer@npm:3.0.0"
+  dependencies:
+    whatwg-encoding: ^2.0.0
+  checksum: 8d806aa00487e279e5ccb573366a951a9f68f65c90298eac9c3a2b440a7ffe46615aff2995a2f61c6746c639234e6179a97e18ca5ccbbf93d3725ef2099a4502
+  languageName: node
+  linkType: hard
+
 "html-entities@npm:^2.1.0, html-entities@npm:^2.3.3":
   version: 2.3.3
   resolution: "html-entities@npm:2.3.3"
@@ -15569,7 +15617,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"https-proxy-agent@npm:^5.0.0":
+"https-proxy-agent@npm:^5.0.0, https-proxy-agent@npm:^5.0.1":
   version: 5.0.1
   resolution: "https-proxy-agent@npm:5.0.1"
   dependencies:
@@ -15634,7 +15682,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iconv-lite@npm:0.6, iconv-lite@npm:^0.6.2":
+"iconv-lite@npm:0.6, iconv-lite@npm:0.6.3, iconv-lite@npm:^0.6.2":
   version: 0.6.3
   resolution: "iconv-lite@npm:0.6.3"
   dependencies:
@@ -16746,60 +16794,59 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-changed-files@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-changed-files@npm:27.5.1"
+"jest-changed-files@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-changed-files@npm:29.4.2"
   dependencies:
-    "@jest/types": ^27.5.1
     execa: ^5.0.0
-    throat: ^6.0.1
-  checksum: 95e9dc74c3ca688ef85cfeab270f43f8902721a6c8ade6ac2459459a77890c85977f537d6fb809056deaa6d9c3f075fa7d2699ff5f3bf7d3fda17c3760b79b15
+    p-limit: ^3.1.0
+  checksum: 44e4541479a8aabffa96e73ec42c88a155255edef797c3d5cc6a482ef10935564958f3135529c390a154dad8191a698818fa0dcdd8ea25c83d6b9e1ca270f869
   languageName: node
   linkType: hard
 
-"jest-circus@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-circus@npm:27.5.1"
+"jest-circus@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-circus@npm:29.4.2"
   dependencies:
-    "@jest/environment": ^27.5.1
-    "@jest/test-result": ^27.5.1
-    "@jest/types": ^27.5.1
+    "@jest/environment": ^29.4.2
+    "@jest/expect": ^29.4.2
+    "@jest/test-result": ^29.4.2
+    "@jest/types": ^29.4.2
     "@types/node": "*"
     chalk: ^4.0.0
     co: ^4.6.0
     dedent: ^0.7.0
-    expect: ^27.5.1
     is-generator-fn: ^2.0.0
-    jest-each: ^27.5.1
-    jest-matcher-utils: ^27.5.1
-    jest-message-util: ^27.5.1
-    jest-runtime: ^27.5.1
-    jest-snapshot: ^27.5.1
-    jest-util: ^27.5.1
-    pretty-format: ^27.5.1
+    jest-each: ^29.4.2
+    jest-matcher-utils: ^29.4.2
+    jest-message-util: ^29.4.2
+    jest-runtime: ^29.4.2
+    jest-snapshot: ^29.4.2
+    jest-util: ^29.4.2
+    p-limit: ^3.1.0
+    pretty-format: ^29.4.2
     slash: ^3.0.0
     stack-utils: ^2.0.3
-    throat: ^6.0.1
-  checksum: 6192dccbccb3a6acfa361cbb97bdbabe94864ccf3d885932cfd41f19534329d40698078cf9be1489415e8234255d6ea9f9aff5396b79ad842a6fca6e6fc08fd0
+  checksum: d16022eb3dbab097a85da2d1857b77bc4c478f8a19bf518e1554791cf462180c9d54e36765ba3c6ce98a4332c362604f662501639cdd57572852ebd64f1010ed
   languageName: node
   linkType: hard
 
-"jest-cli@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-cli@npm:27.5.1"
+"jest-cli@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-cli@npm:29.4.2"
   dependencies:
-    "@jest/core": ^27.5.1
-    "@jest/test-result": ^27.5.1
-    "@jest/types": ^27.5.1
+    "@jest/core": ^29.4.2
+    "@jest/test-result": ^29.4.2
+    "@jest/types": ^29.4.2
     chalk: ^4.0.0
     exit: ^0.1.2
     graceful-fs: ^4.2.9
     import-local: ^3.0.2
-    jest-config: ^27.5.1
-    jest-util: ^27.5.1
-    jest-validate: ^27.5.1
+    jest-config: ^29.4.2
+    jest-util: ^29.4.2
+    jest-validate: ^29.4.2
     prompts: ^2.0.1
-    yargs: ^16.2.0
+    yargs: ^17.3.1
   peerDependencies:
     node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
   peerDependenciesMeta:
@@ -16807,44 +16854,45 @@ __metadata:
       optional: true
   bin:
     jest: bin/jest.js
-  checksum: 6c0a69fb48e500241409e09ff743ed72bc6578d7769e2c994724e7ef1e5587f6c1f85dc429e93b98ae38a365222993ee70f0acc2199358992120900984f349e5
+  checksum: 7ce0d82c877e0ab57c02fbfca050b4d3742d0eced497c52d2d0d2f15af2e59481fc3c25ee0734bcc2d8b8af880312c470bd9f4bf180b65e3a82cfa978039ffe5
   languageName: node
   linkType: hard
 
-"jest-config@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-config@npm:27.5.1"
+"jest-config@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-config@npm:29.4.2"
   dependencies:
-    "@babel/core": ^7.8.0
-    "@jest/test-sequencer": ^27.5.1
-    "@jest/types": ^27.5.1
-    babel-jest: ^27.5.1
+    "@babel/core": ^7.11.6
+    "@jest/test-sequencer": ^29.4.2
+    "@jest/types": ^29.4.2
+    babel-jest: ^29.4.2
     chalk: ^4.0.0
     ci-info: ^3.2.0
     deepmerge: ^4.2.2
-    glob: ^7.1.1
+    glob: ^7.1.3
     graceful-fs: ^4.2.9
-    jest-circus: ^27.5.1
-    jest-environment-jsdom: ^27.5.1
-    jest-environment-node: ^27.5.1
-    jest-get-type: ^27.5.1
-    jest-jasmine2: ^27.5.1
-    jest-regex-util: ^27.5.1
-    jest-resolve: ^27.5.1
-    jest-runner: ^27.5.1
-    jest-util: ^27.5.1
-    jest-validate: ^27.5.1
+    jest-circus: ^29.4.2
+    jest-environment-node: ^29.4.2
+    jest-get-type: ^29.4.2
+    jest-regex-util: ^29.4.2
+    jest-resolve: ^29.4.2
+    jest-runner: ^29.4.2
+    jest-util: ^29.4.2
+    jest-validate: ^29.4.2
     micromatch: ^4.0.4
     parse-json: ^5.2.0
-    pretty-format: ^27.5.1
+    pretty-format: ^29.4.2
     slash: ^3.0.0
     strip-json-comments: ^3.1.1
   peerDependencies:
+    "@types/node": "*"
     ts-node: ">=9.0.0"
   peerDependenciesMeta:
+    "@types/node":
+      optional: true
     ts-node:
       optional: true
-  checksum: 1188fd46c0ed78cbe3175eb9ad6712ccf74a74be33d9f0d748e147c107f0889f8b701fbff1567f31836ae18597dacdc43d6a8fc30dd34ade6c9229cc6c7cb82d
+  checksum: 4d0a2ea90a9387462242a6f39ad19898703706f82c63f59cdb5687728256c3bac5809e10af2a34dccb602e5c47b44403f56373fe42cd606f1bbc4c21667cf839
   languageName: node
   linkType: hard
 
@@ -16881,16 +16929,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-each@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-each@npm:27.5.1"
+"jest-docblock@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-docblock@npm:29.4.2"
   dependencies:
-    "@jest/types": ^27.5.1
+    detect-newline: ^3.0.0
+  checksum: b79a9da3098535762e9d0e4c298b4e958cef7a0065ebf9afca36391dd82d123be3d497289d55e6829664a939e92f93108474d69c715bec28b459e571634fcb93
+  languageName: node
+  linkType: hard
+
+"jest-each@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-each@npm:29.4.2"
+  dependencies:
+    "@jest/types": ^29.4.2
     chalk: ^4.0.0
-    jest-get-type: ^27.5.1
-    jest-util: ^27.5.1
-    pretty-format: ^27.5.1
-  checksum: b5a6d8730fd938982569c9e0b42bdf3c242f97b957ed8155a6473b5f7b540970f8685524e7f53963dc1805319f4b6602abfc56605590ca19d55bd7a87e467e63
+    jest-get-type: ^29.4.2
+    jest-util: ^29.4.2
+    pretty-format: ^29.4.2
+  checksum: 51471971032fcd23f659f90f9d821e7b815fe75421cc66a0489fdd4d309f01ad64c14c87e0e819342341d411d633bf02e9eb1657f16ed402271aa5427c8b8fe1
   languageName: node
   linkType: hard
 
@@ -16909,6 +16966,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-environment-jsdom@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-environment-jsdom@npm:29.4.2"
+  dependencies:
+    "@jest/environment": ^29.4.2
+    "@jest/fake-timers": ^29.4.2
+    "@jest/types": ^29.4.2
+    "@types/jsdom": ^20.0.0
+    "@types/node": "*"
+    jest-mock: ^29.4.2
+    jest-util: ^29.4.2
+    jsdom: ^20.0.0
+  peerDependencies:
+    canvas: ^2.5.0
+  peerDependenciesMeta:
+    canvas:
+      optional: true
+  checksum: 00e5d4ddada59816494f1dc3b0b3b7a4bf5d185c9cb43c9b3b83ec75ed615410aebbbadd0a81522f6ce55960e7209e409b28191bb1bc47507d1feab0e8bcb0a3
+  languageName: node
+  linkType: hard
+
 "jest-environment-node@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-environment-node@npm:27.5.1"
@@ -16920,6 +16998,20 @@ __metadata:
     jest-mock: ^27.5.1
     jest-util: ^27.5.1
   checksum: 0f988330c4f3eec092e3fb37ea753b0c6f702e83cd8f4d770af9c2bf964a70bc45fbd34ec6fdb6d71ce98a778d9f54afd673e63f222e4667fff289e8069dba39
+  languageName: node
+  linkType: hard
+
+"jest-environment-node@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-environment-node@npm:29.4.2"
+  dependencies:
+    "@jest/environment": ^29.4.2
+    "@jest/fake-timers": ^29.4.2
+    "@jest/types": ^29.4.2
+    "@types/node": "*"
+    jest-mock: ^29.4.2
+    jest-util: ^29.4.2
+  checksum: b0ff0ebf45889aaa2e7f1b6ad93be8ba98fd11cf74a2b049d74990db197028f4f24fcf9145b25722c5c0c241f4126f617e1a79a44305a9d4bbeb9d18724887b4
   languageName: node
   linkType: hard
 
@@ -16961,28 +17053,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-jasmine2@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-jasmine2@npm:27.5.1"
+"jest-haste-map@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-haste-map@npm:29.4.2"
   dependencies:
-    "@jest/environment": ^27.5.1
-    "@jest/source-map": ^27.5.1
-    "@jest/test-result": ^27.5.1
-    "@jest/types": ^27.5.1
+    "@jest/types": ^29.4.2
+    "@types/graceful-fs": ^4.1.3
     "@types/node": "*"
-    chalk: ^4.0.0
-    co: ^4.6.0
-    expect: ^27.5.1
-    is-generator-fn: ^2.0.0
-    jest-each: ^27.5.1
-    jest-matcher-utils: ^27.5.1
-    jest-message-util: ^27.5.1
-    jest-runtime: ^27.5.1
-    jest-snapshot: ^27.5.1
-    jest-util: ^27.5.1
-    pretty-format: ^27.5.1
-    throat: ^6.0.1
-  checksum: b716adf253ceb73db661936153394ab90d7f3a8ba56d6189b7cd4df8e4e2a4153b4e63ebb5d36e29ceb0f4c211d5a6f36ab7048c6abbd881c8646567e2ab8e6d
+    anymatch: ^3.0.3
+    fb-watchman: ^2.0.0
+    fsevents: ^2.3.2
+    graceful-fs: ^4.2.9
+    jest-regex-util: ^29.4.2
+    jest-util: ^29.4.2
+    jest-worker: ^29.4.2
+    micromatch: ^4.0.4
+    walker: ^1.0.8
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  checksum: 0aa4a66702f020ea7e6a0ce58c6d2ef363c8f9f4302254f865dab4e1c6e9ac3926db088a42893a7207cc77559d563f6e8f396430f9bfb7784c3cc81862151df0
   languageName: node
   linkType: hard
 
@@ -16993,6 +17083,16 @@ __metadata:
     jest-get-type: ^27.5.1
     pretty-format: ^27.5.1
   checksum: 5c9689060960567ddaf16c570d87afa760a461885765d2c71ef4f4857bbc3af1482c34e3cce88e50beefde1bf35e33530b020480752057a7e3dbb1ca0bae359f
+  languageName: node
+  linkType: hard
+
+"jest-leak-detector@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-leak-detector@npm:29.4.2"
+  dependencies:
+    jest-get-type: ^29.4.2
+    pretty-format: ^29.4.2
+  checksum: d4df0cd2dbf0e79d25966d12907865f09c37847c14e86a1604ff50c4e824e42d9f7bbae19f8e03c06fc0fffa9cefad9bf667920db36164ae157701f41498b0bf
   languageName: node
   linkType: hard
 
@@ -17064,6 +17164,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-mock@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-mock@npm:29.4.2"
+  dependencies:
+    "@jest/types": ^29.4.2
+    "@types/node": "*"
+    jest-util: ^29.4.2
+  checksum: 8fa94bb71a0a12feeedd79ff3d7467cb249b8504a5dbad24acc060cdd9b2fbe96c67206f4c4c2b1da5d1b56bda8f9d5f1715632f82b3a9ed9d2ad97b05b519c5
+  languageName: node
+  linkType: hard
+
 "jest-pnp-resolver@npm:^1.2.2":
   version: 1.2.3
   resolution: "jest-pnp-resolver@npm:1.2.3"
@@ -17103,21 +17214,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-regex-util@npm:^29.0.0":
+"jest-regex-util@npm:^29.0.0, jest-regex-util@npm:^29.4.2":
   version: 29.4.2
   resolution: "jest-regex-util@npm:29.4.2"
   checksum: a85bb9b5c64e57dba3fba1fe1a93eb78b53b5bb98c78fa3b5876baf3b831d8fc3067c05e93c0115b3100e7e3046d1109bc01671407527f8691742604be459a66
   languageName: node
   linkType: hard
 
-"jest-resolve-dependencies@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-resolve-dependencies@npm:27.5.1"
+"jest-resolve-dependencies@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-resolve-dependencies@npm:29.4.2"
   dependencies:
-    "@jest/types": ^27.5.1
-    jest-regex-util: ^27.5.1
-    jest-snapshot: ^27.5.1
-  checksum: c67af97afad1da88f5530317c732bbd1262d1225f6cd7f4e4740a5db48f90ab0bd8564738ac70d1a43934894f9aef62205c1b8f8ee89e5c7a737e6a121ee4c25
+    jest-regex-util: ^29.4.2
+    jest-snapshot: ^29.4.2
+  checksum: f961b70c8c921b36c7dc4577c2823a78a0967604802cd2f3f294d2c8c2e7e7b03817127014b3c1affa8b786960ad410e903de995e78f889d7444be878181da8d
   languageName: node
   linkType: hard
 
@@ -17136,6 +17246,23 @@ __metadata:
     resolve.exports: ^1.1.0
     slash: ^3.0.0
   checksum: 735830e7265b20a348029738680bb2f6e37f80ecea86cda869a4c318ba3a45d39c7a3a873a22f7f746d86258c50ead6e7f501de043e201c095d7ba628a1c440f
+  languageName: node
+  linkType: hard
+
+"jest-resolve@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-resolve@npm:29.4.2"
+  dependencies:
+    chalk: ^4.0.0
+    graceful-fs: ^4.2.9
+    jest-haste-map: ^29.4.2
+    jest-pnp-resolver: ^1.2.2
+    jest-util: ^29.4.2
+    jest-validate: ^29.4.2
+    resolve: ^1.20.0
+    resolve.exports: ^2.0.0
+    slash: ^3.0.0
+  checksum: 94fac5d1438d90aefc24d4ee29f89a96c4b35ab8effdd582341310a1478b895bd3d48f4ccadbc69e56344f6bb5d03bcce8eba045b5a71609f571d91bb5c0ef73
   languageName: node
   linkType: hard
 
@@ -17199,6 +17326,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-runner@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-runner@npm:29.4.2"
+  dependencies:
+    "@jest/console": ^29.4.2
+    "@jest/environment": ^29.4.2
+    "@jest/test-result": ^29.4.2
+    "@jest/transform": ^29.4.2
+    "@jest/types": ^29.4.2
+    "@types/node": "*"
+    chalk: ^4.0.0
+    emittery: ^0.13.1
+    graceful-fs: ^4.2.9
+    jest-docblock: ^29.4.2
+    jest-environment-node: ^29.4.2
+    jest-haste-map: ^29.4.2
+    jest-leak-detector: ^29.4.2
+    jest-message-util: ^29.4.2
+    jest-resolve: ^29.4.2
+    jest-runtime: ^29.4.2
+    jest-util: ^29.4.2
+    jest-watcher: ^29.4.2
+    jest-worker: ^29.4.2
+    p-limit: ^3.1.0
+    source-map-support: 0.5.13
+  checksum: c5a7540f79083bca9f642095efdff91981ead9264b58dbe294669ba837f06b831c65eba2f3d83cee7c4ecdadaf2ac25e3524a665d3722dcf447ba07379dbc256
+  languageName: node
+  linkType: hard
+
 "jest-runtime@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-runtime@npm:27.5.1"
@@ -17226,6 +17382,37 @@ __metadata:
     slash: ^3.0.0
     strip-bom: ^4.0.0
   checksum: 929e3df0c53dab43f831f2af4e2996b22aa8cb2d6d483919d6b0426cbc100098fd5b777b998c6568b77f8c4d860b2e83127514292ff61416064f5ef926492386
+  languageName: node
+  linkType: hard
+
+"jest-runtime@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-runtime@npm:29.4.2"
+  dependencies:
+    "@jest/environment": ^29.4.2
+    "@jest/fake-timers": ^29.4.2
+    "@jest/globals": ^29.4.2
+    "@jest/source-map": ^29.4.2
+    "@jest/test-result": ^29.4.2
+    "@jest/transform": ^29.4.2
+    "@jest/types": ^29.4.2
+    "@types/node": "*"
+    chalk: ^4.0.0
+    cjs-module-lexer: ^1.0.0
+    collect-v8-coverage: ^1.0.0
+    glob: ^7.1.3
+    graceful-fs: ^4.2.9
+    jest-haste-map: ^29.4.2
+    jest-message-util: ^29.4.2
+    jest-mock: ^29.4.2
+    jest-regex-util: ^29.4.2
+    jest-resolve: ^29.4.2
+    jest-snapshot: ^29.4.2
+    jest-util: ^29.4.2
+    semver: ^7.3.5
+    slash: ^3.0.0
+    strip-bom: ^4.0.0
+  checksum: 12de2ab7e77be28d2b58fdb797f156e9a27bc8b7454786fb641ad354c5af7aa9976fd729311ffa2f508be96e774924e9bb067eccbdd49e76b928f47a9d64ac7d
   languageName: node
   linkType: hard
 
@@ -17276,6 +17463,38 @@ __metadata:
     pretty-format: ^27.5.1
     semver: ^7.3.2
   checksum: a5cfadf0d21cd76063925d1434bc076443ed6d87847d0e248f0b245f11db3d98ff13e45cc03b15404027dabecd712d925f47b6eae4f64986f688640a7d362514
+  languageName: node
+  linkType: hard
+
+"jest-snapshot@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-snapshot@npm:29.4.2"
+  dependencies:
+    "@babel/core": ^7.11.6
+    "@babel/generator": ^7.7.2
+    "@babel/plugin-syntax-jsx": ^7.7.2
+    "@babel/plugin-syntax-typescript": ^7.7.2
+    "@babel/traverse": ^7.7.2
+    "@babel/types": ^7.3.3
+    "@jest/expect-utils": ^29.4.2
+    "@jest/transform": ^29.4.2
+    "@jest/types": ^29.4.2
+    "@types/babel__traverse": ^7.0.6
+    "@types/prettier": ^2.1.5
+    babel-preset-current-node-syntax: ^1.0.0
+    chalk: ^4.0.0
+    expect: ^29.4.2
+    graceful-fs: ^4.2.9
+    jest-diff: ^29.4.2
+    jest-get-type: ^29.4.2
+    jest-haste-map: ^29.4.2
+    jest-matcher-utils: ^29.4.2
+    jest-message-util: ^29.4.2
+    jest-util: ^29.4.2
+    natural-compare: ^1.4.0
+    pretty-format: ^29.4.2
+    semver: ^7.3.5
+  checksum: 8ef4a30fa110ddc166fb8e2733403a33848cc1ca29553d51e145e5a355ede615865dc40f0c2ee3c2b982bd75eaf1c0da06dedcc27911d749084553d89437511f
   languageName: node
   linkType: hard
 
@@ -17335,6 +17554,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-validate@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-validate@npm:29.4.2"
+  dependencies:
+    "@jest/types": ^29.4.2
+    camelcase: ^6.2.0
+    chalk: ^4.0.0
+    jest-get-type: ^29.4.2
+    leven: ^3.1.0
+    pretty-format: ^29.4.2
+  checksum: ea7f724a0e5d58742594b9d72240bbac5154a4f3f5dd54a6062c408744ec931055a30a436d852ef85af43bf1f5ddb0b4b51b67bff9aabd03985c3a8063d93f29
+  languageName: node
+  linkType: hard
+
 "jest-watch-typeahead@npm:2.2.2":
   version: 2.2.2
   resolution: "jest-watch-typeahead@npm:2.2.2"
@@ -17352,22 +17585,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-watcher@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-watcher@npm:27.5.1"
-  dependencies:
-    "@jest/test-result": ^27.5.1
-    "@jest/types": ^27.5.1
-    "@types/node": "*"
-    ansi-escapes: ^4.2.1
-    chalk: ^4.0.0
-    jest-util: ^27.5.1
-    string-length: ^4.0.1
-  checksum: 191c4e9c278c0902ade1a8a80883ac244963ba3e6e78607a3d5f729ccca9c6e71fb3b316f87883658132641c5d818aa84202585c76752e03c539e6cbecb820bd
-  languageName: node
-  linkType: hard
-
-"jest-watcher@npm:^29.0.0":
+"jest-watcher@npm:^29.0.0, jest-watcher@npm:^29.4.2":
   version: 29.4.2
   resolution: "jest-watcher@npm:29.4.2"
   dependencies:
@@ -17415,13 +17633,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:27.5.1":
-  version: 27.5.1
-  resolution: "jest@npm:27.5.1"
+"jest-worker@npm:^29.4.2":
+  version: 29.4.2
+  resolution: "jest-worker@npm:29.4.2"
   dependencies:
-    "@jest/core": ^27.5.1
+    "@types/node": "*"
+    jest-util: ^29.4.2
+    merge-stream: ^2.0.0
+    supports-color: ^8.0.0
+  checksum: 6fd42900da0047e161fcb7d887f95dcc4aca824decc4a59b019011b9609621902bac71b3d4085ceb4f2d9f266263c547ddc1b29159383b45c04b0ab9944df2f5
+  languageName: node
+  linkType: hard
+
+"jest@npm:29.4.2":
+  version: 29.4.2
+  resolution: "jest@npm:29.4.2"
+  dependencies:
+    "@jest/core": ^29.4.2
+    "@jest/types": ^29.4.2
     import-local: ^3.0.2
-    jest-cli: ^27.5.1
+    jest-cli: ^29.4.2
   peerDependencies:
     node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
   peerDependenciesMeta:
@@ -17429,7 +17660,7 @@ __metadata:
       optional: true
   bin:
     jest: bin/jest.js
-  checksum: 96f1d69042b3c6dfc695f2a4e4b0db38af6fb78582ad1a02beaa57cfcd77cbd31567d7d865c1c85709b7c3e176eefa3b2035ffecd646005f15d8ef528eccf205
+  checksum: f08bf93a406ec3e76ff081d1b19e57775dfb6928e9503c4f2f630166d31e808b47faddb2cff6d2fdcfe5c2d0bb04b13a231946ef0efbcba7524b543975b2ecf4
   languageName: node
   linkType: hard
 
@@ -17534,6 +17765,45 @@ __metadata:
     canvas:
       optional: true
   checksum: 454b83371857000763ed31130a049acd1b113e3b927e6dcd75c67ddc30cdd242d7ebcac5c2294b7a1a6428155cb1398709c573b3c6d809218692ea68edd93370
+  languageName: node
+  linkType: hard
+
+"jsdom@npm:^20.0.0":
+  version: 20.0.3
+  resolution: "jsdom@npm:20.0.3"
+  dependencies:
+    abab: ^2.0.6
+    acorn: ^8.8.1
+    acorn-globals: ^7.0.0
+    cssom: ^0.5.0
+    cssstyle: ^2.3.0
+    data-urls: ^3.0.2
+    decimal.js: ^10.4.2
+    domexception: ^4.0.0
+    escodegen: ^2.0.0
+    form-data: ^4.0.0
+    html-encoding-sniffer: ^3.0.0
+    http-proxy-agent: ^5.0.0
+    https-proxy-agent: ^5.0.1
+    is-potential-custom-element-name: ^1.0.1
+    nwsapi: ^2.2.2
+    parse5: ^7.1.1
+    saxes: ^6.0.0
+    symbol-tree: ^3.2.4
+    tough-cookie: ^4.1.2
+    w3c-xmlserializer: ^4.0.0
+    webidl-conversions: ^7.0.0
+    whatwg-encoding: ^2.0.0
+    whatwg-mimetype: ^3.0.0
+    whatwg-url: ^11.0.0
+    ws: ^8.11.0
+    xml-name-validator: ^4.0.0
+  peerDependencies:
+    canvas: ^2.5.0
+  peerDependenciesMeta:
+    canvas:
+      optional: true
+  checksum: 6e2ae21db397133a061b270c26d2dbc0b9051733ea3b896a7ece78d79f475ff0974f766a413c1198a79c793159119169f2335ddb23150348fbfdcfa6f3105536
   languageName: node
   linkType: hard
 
@@ -20512,7 +20782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nwsapi@npm:^2.2.0":
+"nwsapi@npm:^2.2.0, nwsapi@npm:^2.2.2":
   version: 2.2.2
   resolution: "nwsapi@npm:2.2.2"
   checksum: 43769106292bc95f776756ca2f3513dab7b4d506a97c67baec32406447841a35f65f29c1f95ab5d42785210fd41668beed33ca16fa058780be43b101ad73e205
@@ -20830,7 +21100,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-limit@npm:3.1.0, p-limit@npm:^3.0.2":
+"p-limit@npm:3.1.0, p-limit@npm:^3.0.2, p-limit@npm:^3.1.0":
   version: 3.1.0
   resolution: "p-limit@npm:3.1.0"
   dependencies:
@@ -21087,7 +21357,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse5@npm:^7.0.0":
+"parse5@npm:^7.0.0, parse5@npm:^7.1.1":
   version: 7.1.2
   resolution: "parse5@npm:7.1.2"
   dependencies:
@@ -22067,6 +22337,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"property-information@npm:^5.3.0":
+  version: 5.6.0
+  resolution: "property-information@npm:5.6.0"
+  dependencies:
+    xtend: ^4.0.0
+  checksum: fcf87c6542e59a8bbe31ca0b3255a4a63ac1059b01b04469680288998bcfa97f341ca989566adbb63975f4d85339030b82320c324a511532d390910d1c583893
+  languageName: node
+  linkType: hard
+
 "property-information@npm:^6.0.0":
   version: 6.2.0
   resolution: "property-information@npm:6.2.0"
@@ -22898,18 +23177,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rehype-react@npm:7.1.2":
-  version: 7.1.2
-  resolution: "rehype-react@npm:7.1.2"
+"rehype-react@npm:6.2.1":
+  version: 6.2.1
+  resolution: "rehype-react@npm:6.2.1"
   dependencies:
     "@mapbox/hast-util-table-cell-style": ^0.2.0
-    "@types/hast": ^2.0.0
-    hast-to-hyperscript: ^10.0.0
-    hast-util-whitespace: ^2.0.0
-    unified: ^10.0.0
-  peerDependencies:
-    "@types/react": ">=17"
-  checksum: f3516a90e031663a7066ded72d57ba9a5d4ae87c55d0264a755c03913b5851e1087535e46a6d9f1bb2a19b5d1b2de320164e44aad1dfc45f9e3d4864f33e6e65
+    hast-to-hyperscript: ^9.0.0
+  checksum: 7f16a2cfc38d1fe0d40944f8f27309fc16440d69d3bb53f8e0ca6d6825572f7d1cac4212193a4f4de456b2342fea66ea0919648ad09c0663cfb1e4ca12bed647
   languageName: node
   linkType: hard
 
@@ -23207,6 +23481,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"resolve.exports@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "resolve.exports@npm:2.0.0"
+  checksum: d8bee3b0cc0a0ae6c8323710983505bc6a3a2574f718e96f01e048a0f0af035941434b386cc9efc7eededc5e1199726185c306ec6f6a1aa55d5fbad926fd0634
+  languageName: node
+  linkType: hard
+
 "resolve@npm:^1.1.6, resolve@npm:^1.10.0, resolve@npm:^1.12.0, resolve@npm:^1.14.2, resolve@npm:^1.17.0, resolve@npm:^1.19.0, resolve@npm:^1.20.0, resolve@npm:^1.22.1":
   version: 1.22.1
   resolution: "resolve@npm:1.22.1"
@@ -23483,6 +23764,15 @@ __metadata:
   dependencies:
     xmlchars: ^2.2.0
   checksum: 5636b55cf15f7cf0baa73f2797bf992bdcf75d1b39d82c0aa4608555c774368f6ac321cb641fd5f3d3ceb87805122cd47540da6a7b5960fe0dbdb8f8c263f000
+  languageName: node
+  linkType: hard
+
+"saxes@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "saxes@npm:6.0.0"
+  dependencies:
+    xmlchars: ^2.2.0
+  checksum: d3fa3e2aaf6c65ed52ee993aff1891fc47d5e47d515164b5449cbf5da2cbdc396137e55590472e64c5c436c14ae64a8a03c29b9e7389fc6f14035cf4e982ef3b
   languageName: node
   linkType: hard
 
@@ -24039,6 +24329,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"source-map-support@npm:0.5.13":
+  version: 0.5.13
+  resolution: "source-map-support@npm:0.5.13"
+  dependencies:
+    buffer-from: ^1.0.0
+    source-map: ^0.6.0
+  checksum: 933550047b6c1a2328599a21d8b7666507427c0f5ef5eaadd56b5da0fd9505e239053c66fe181bf1df469a3b7af9d775778eee283cbb7ae16b902ddc09e93a97
+  languageName: node
+  linkType: hard
+
 "source-map-support@npm:^0.5.16, source-map-support@npm:^0.5.6, source-map-support@npm:~0.5.20":
   version: 0.5.21
   resolution: "source-map-support@npm:0.5.21"
@@ -24074,6 +24374,13 @@ __metadata:
   version: 1.4.8
   resolution: "sourcemap-codec@npm:1.4.8"
   checksum: b57981c05611afef31605732b598ccf65124a9fcb03b833532659ac4d29ac0f7bfacbc0d6c5a28a03e84c7510e7e556d758d0bb57786e214660016fb94279316
+  languageName: node
+  linkType: hard
+
+"space-separated-tokens@npm:^1.0.0":
+  version: 1.1.5
+  resolution: "space-separated-tokens@npm:1.1.5"
+  checksum: 8ef68f1cfa8ccad316b7f8d0df0919d0f1f6d32101e8faeee34ea3a923ce8509c1ad562f57388585ee4951e92d27afa211ed0a077d3d5995b5ba9180331be708
   languageName: node
   linkType: hard
 
@@ -24624,6 +24931,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"style-to-object@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "style-to-object@npm:0.3.0"
+  dependencies:
+    inline-style-parser: 0.1.1
+  checksum: 4d7084015207f2a606dfc10c29cb5ba569f2fe8005551df7396110dd694d6ff650f2debafa95bd5d147dfb4ca50f57868e2a7f91bf5d11ef734fe7ccbd7abf59
+  languageName: node
+  linkType: hard
+
 "style-to-object@npm:^0.4.1":
   version: 0.4.1
   resolution: "style-to-object@npm:0.4.1"
@@ -24839,16 +25155,6 @@ __metadata:
   version: 2.2.1
   resolution: "term-size@npm:2.2.1"
   checksum: 1ed981335483babc1e8206f843e06bd2bf89b85f0bf5a9a9d928033a0fcacdba183c03ba7d91814643015543ba002f1339f7112402a21da8f24b6c56b062a5a9
-  languageName: node
-  linkType: hard
-
-"terminal-link@npm:^2.0.0":
-  version: 2.1.1
-  resolution: "terminal-link@npm:2.1.1"
-  dependencies:
-    ansi-escapes: ^4.2.1
-    supports-hyperlinks: ^2.0.0
-  checksum: ce3d2cd3a438c4a9453947aa664581519173ea40e77e2534d08c088ee6dda449eabdbe0a76d2a516b8b73c33262fedd10d5270ccf7576ae316e3db170ce6562f
   languageName: node
   linkType: hard
 
@@ -25075,7 +25381,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tough-cookie@npm:^4.0.0":
+"tough-cookie@npm:^4.0.0, tough-cookie@npm:^4.1.2":
   version: 4.1.2
   resolution: "tough-cookie@npm:4.1.2"
   dependencies:
@@ -25103,6 +25409,15 @@ __metadata:
   dependencies:
     punycode: ^2.1.1
   checksum: ffe6049b9dca3ae329b059aada7f515b0f0064c611b39b51ff6b53897e954650f6f63d9319c6c008d36ead477c7b55e5f64c9dc60588ddc91ff720d64eb710b3
+  languageName: node
+  linkType: hard
+
+"tr46@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "tr46@npm:3.0.0"
+  dependencies:
+    punycode: ^2.1.1
+  checksum: 44c3cc6767fb800490e6e9fd64fd49041aa4e49e1f6a012b34a75de739cc9ed3a6405296072c1df8b6389ae139c5e7c6496f659cfe13a04a4bff3a1422981270
   languageName: node
   linkType: hard
 
@@ -26105,14 +26420,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"v8-to-istanbul@npm:^8.1.0":
-  version: 8.1.1
-  resolution: "v8-to-istanbul@npm:8.1.1"
+"v8-to-istanbul@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "v8-to-istanbul@npm:9.0.1"
   dependencies:
+    "@jridgewell/trace-mapping": ^0.3.12
     "@types/istanbul-lib-coverage": ^2.0.1
     convert-source-map: ^1.6.0
-    source-map: ^0.7.3
-  checksum: 54ce92bec2727879626f623d02c8d193f0c7e919941fa373ec135189a8382265117f5316ea317a1e12a5f9c13d84d8449052a731fe3306fa4beaafbfa4cab229
+  checksum: a49c34bf0a3af0c11041a3952a2600913904a983bd1bc87148b5c033bc5c1d02d5a13620fcdbfa2c60bc582a2e2970185780f0c844b4c3a220abf405f8af6311
   languageName: node
   linkType: hard
 
@@ -26276,6 +26591,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"w3c-xmlserializer@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "w3c-xmlserializer@npm:4.0.0"
+  dependencies:
+    xml-name-validator: ^4.0.0
+  checksum: eba070e78deb408ae8defa4d36b429f084b2b47a4741c4a9be3f27a0a3d1845e277e3072b04391a138f7e43776842627d1334e448ff13ff90ad9fb1214ee7091
+  languageName: node
+  linkType: hard
+
 "wait-on@npm:6.0.1":
   version: 6.0.1
   resolution: "wait-on@npm:6.0.1"
@@ -26306,7 +26630,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"walker@npm:^1.0.7":
+"walker@npm:^1.0.7, walker@npm:^1.0.8":
   version: 1.0.8
   resolution: "walker@npm:1.0.8"
   dependencies:
@@ -26350,10 +26674,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"web-namespaces@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "web-namespaces@npm:2.0.1"
-  checksum: b6d9f02f1a43d0ef0848a812d89c83801d5bbad57d8bb61f02eb6d7eb794c3736f6cc2e1191664bb26136594c8218ac609f4069722c6f56d9fc2d808fa9271c6
+"web-namespaces@npm:^1.0.0":
+  version: 1.1.4
+  resolution: "web-namespaces@npm:1.1.4"
+  checksum: 5149842ccbfbc56fe4f8758957b3f8c8616a281874a5bb84aa1b305e4436a9bad853d21c629a7b8f174902449e1489c7a6c724fccf60965077c5636bd8aed42b
   languageName: node
   linkType: hard
 
@@ -26375,6 +26699,13 @@ __metadata:
   version: 6.1.0
   resolution: "webidl-conversions@npm:6.1.0"
   checksum: 1f526507aa491f972a0c1409d07f8444e1d28778dfa269a9971f2e157182f3d496dc33296e4ed45b157fdb3bf535bb90c90bf10c50dcf1dd6caacb2a34cc84fb
+  languageName: node
+  linkType: hard
+
+"webidl-conversions@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "webidl-conversions@npm:7.0.0"
+  checksum: f05588567a2a76428515333eff87200fae6c83c3948a7482ebb109562971e77ef6dc49749afa58abb993391227c5697b3ecca52018793e0cb4620a48f10bd21b
   languageName: node
   linkType: hard
 
@@ -26501,10 +26832,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"whatwg-encoding@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "whatwg-encoding@npm:2.0.0"
+  dependencies:
+    iconv-lite: 0.6.3
+  checksum: 7087810c410aa9b689cbd6af8773341a53cdc1f3aae2a882c163bd5522ec8ca4cdfc269aef417a5792f411807d5d77d50df4c24e3abb00bb60192858a40cc675
+  languageName: node
+  linkType: hard
+
 "whatwg-mimetype@npm:^2.3.0":
   version: 2.3.0
   resolution: "whatwg-mimetype@npm:2.3.0"
   checksum: 23eb885940bcbcca4ff841c40a78e9cbb893ec42743993a42bf7aed16085b048b44b06f3402018931687153550f9a32d259dfa524e4f03577ab898b6965e5383
+  languageName: node
+  linkType: hard
+
+"whatwg-mimetype@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "whatwg-mimetype@npm:3.0.0"
+  checksum: ce08bbb36b6aaf64f3a84da89707e3e6a31e5ab1c1a2379fd68df79ba712a4ab090904f0b50e6693b0dafc8e6343a6157e40bf18fdffd26e513cf95ee2a59824
+  languageName: node
+  linkType: hard
+
+"whatwg-url@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "whatwg-url@npm:11.0.0"
+  dependencies:
+    tr46: ^3.0.0
+    webidl-conversions: ^7.0.0
+  checksum: ed4826aaa57e66bb3488a4b25c9cd476c46ba96052747388b5801f137dd740b73fde91ad207d96baf9f17fbcc80fc1a477ad65181b5eb5fa718d27c69501d7af
   languageName: node
   linkType: hard
 
@@ -26709,6 +27066,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"write-file-atomic@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "write-file-atomic@npm:4.0.2"
+  dependencies:
+    imurmurhash: ^0.1.4
+    signal-exit: ^3.0.7
+  checksum: 5da60bd4eeeb935eec97ead3df6e28e5917a6bd317478e4a85a5285e8480b8ed96032bbcc6ecd07b236142a24f3ca871c924ec4a6575e623ec1b11bf8c1c253c
+  languageName: node
+  linkType: hard
+
 "ws@npm:^7.3.1, ws@npm:^7.4.6":
   version: 7.5.9
   resolution: "ws@npm:7.5.9"
@@ -26724,7 +27091,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.0.0":
+"ws@npm:^8.0.0, ws@npm:^8.11.0":
   version: 8.12.0
   resolution: "ws@npm:8.12.0"
   peerDependencies:
@@ -26765,6 +27132,13 @@ __metadata:
   version: 3.0.0
   resolution: "xml-name-validator@npm:3.0.0"
   checksum: b3ac459afed783c285bb98e4960bd1f3ba12754fd4f2320efa0f9181ca28928c53cc75ca660d15d205e81f92304419afe94c531c7cfb3e0649aa6d140d53ecb0
+  languageName: node
+  linkType: hard
+
+"xml-name-validator@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "xml-name-validator@npm:4.0.0"
+  checksum: af100b79c29804f05fa35aa3683e29a321db9b9685d5e5febda3fa1e40f13f85abc40f45a6b2bf7bee33f68a1dc5e8eaef4cec100a304a9db565e6061d4cb5ad
   languageName: node
   linkType: hard
 
@@ -26889,7 +27263,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs-parser@npm:^20.2.2, yargs-parser@npm:^20.2.3":
+"yargs-parser@npm:^20.2.3":
   version: 20.2.9
   resolution: "yargs-parser@npm:20.2.9"
   checksum: 8bb69015f2b0ff9e17b2c8e6bfe224ab463dd00ca211eece72a4cd8a906224d2703fb8a326d36fdd0e68701e201b2a60ed7cf81ce0fd9b3799f9fe7745977ae3
@@ -26922,22 +27296,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:^16.2.0":
-  version: 16.2.0
-  resolution: "yargs@npm:16.2.0"
-  dependencies:
-    cliui: ^7.0.2
-    escalade: ^3.1.1
-    get-caller-file: ^2.0.5
-    require-directory: ^2.1.1
-    string-width: ^4.2.0
-    y18n: ^5.0.5
-    yargs-parser: ^20.2.2
-  checksum: b14afbb51e3251a204d81937c86a7e9d4bdbf9a2bcee38226c900d00f522969ab675703bee2a6f99f8e20103f608382936034e64d921b74df82b63c07c5e8f59
-  languageName: node
-  linkType: hard
-
-"yargs@npm:^17.0.0, yargs@npm:^17.1.1":
+"yargs@npm:^17.0.0, yargs@npm:^17.1.1, yargs@npm:^17.3.1":
   version: 17.6.2
   resolution: "yargs@npm:17.6.2"
   dependencies:
