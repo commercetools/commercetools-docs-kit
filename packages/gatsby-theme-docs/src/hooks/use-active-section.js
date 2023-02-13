@@ -59,33 +59,34 @@ const useActiveSelection = () => {
     );
   }, []);
 
-  const onHashChange = (event) => {
-    if (event.oldURL !== event.newURL) {
-      // if the hash has changed
-      const sectionElements = getSectionElements();
-      const pageLocationHash = window.location.hash;
-      let elementByHash;
-      // find the page section which matches the hash
-      sectionElements.forEach((section) => {
-        if (section.id === `section-${pageLocationHash.slice(1)}`) {
-          elementByHash = section;
-        }
-      });
-      if (elementByHash && elementByHash !== activeSection) {
-        // if it's found and it's not already active, set it active
-        setActiveSection(elementByHash);
-      }
-    }
-  };
   // hash change event listener is needed to handle the case where multiple sections are
   // visible at the bottom of the page (no scrolling event gets triggered) so in order
   // to change the active section, we have to rely on the URL hash changed
   React.useEffect(() => {
+    const onHashChange = (event) => {
+      if (event.oldURL !== event.newURL) {
+        // if the hash has changed
+        const sectionElements = getSectionElements();
+        const pageLocationHash = window.location.hash;
+        let elementByHash;
+        // find the page section which matches the hash
+        sectionElements.forEach((section) => {
+          if (section.id === `section-${pageLocationHash.slice(1)}`) {
+            elementByHash = section;
+          }
+        });
+        if (elementByHash && elementByHash !== activeSection) {
+          // if it's found and it's not already active, set it active
+          setActiveSection(elementByHash);
+        }
+      }
+    };
+
     window.addEventListener('hashchange', onHashChange);
     return () => {
       window.removeEventListener('hashchange', onHashChange);
     };
-  }, []);
+  }, [activeSection]);
 
   useScrollSpy('[role="application"]', onScroll);
 

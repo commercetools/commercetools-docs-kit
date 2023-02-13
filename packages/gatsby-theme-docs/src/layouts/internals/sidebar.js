@@ -7,11 +7,14 @@ import styled from '@emotion/styled';
 import { BackIcon } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { designSystem, createStyledIcon } from '@commercetools-docs/ui-kit';
+import {
+  designSystem,
+  createStyledIcon,
+  Icons,
+} from '@commercetools-docs/ui-kit';
 import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
-import { Icons } from '@commercetools-docs/ui-kit';
 import LayoutHeaderLogo from './layout-header-logo';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);

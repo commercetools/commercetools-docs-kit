@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import * as designSystem from '../design-system';
 import { css } from '@emotion/react';

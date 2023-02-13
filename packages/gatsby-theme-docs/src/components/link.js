@@ -90,6 +90,7 @@ const PureLink = (extendedProps) => {
   const { location, noUnderline, ...props } = extendedProps;
   // For image links, return the link as-is.
   if (props.href.startsWith(withPrefix('/static'))) {
+    // eslint-disable-next-line jsx-a11y/anchor-has-content
     return <a {...props} data-link-type="image-link" />;
   }
 

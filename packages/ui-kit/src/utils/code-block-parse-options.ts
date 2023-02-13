@@ -1,4 +1,3 @@
-import React from 'react';
 import parseNumericRange from './parse-numeric-range';
 
 export type CodeBlockOptions = {

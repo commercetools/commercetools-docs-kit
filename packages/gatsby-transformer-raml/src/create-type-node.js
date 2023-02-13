@@ -1,5 +1,3 @@
-const path = require('path');
-const fs = require('fs');
 const doRecursion = require('./utils/type/do-recursion');
 const sortProperties = require('./utils/sort-properties');
 const resolveConflictingFieldTypes = require('./utils/type/resolve-conflicting-field-types');

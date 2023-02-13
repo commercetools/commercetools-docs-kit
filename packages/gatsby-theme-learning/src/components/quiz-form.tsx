@@ -13,10 +13,7 @@ import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Spacings from '@commercetools-uikit/spacings';
-import {
-  designSystem,
-  markdownFragmentToReact,
-} from '@commercetools-docs/ui-kit';
+import { markdownFragmentToReact } from '@commercetools-docs/ui-kit';
 import type {
   QuizAttempt,
   QuizOutcome,
@@ -62,9 +59,9 @@ const QuizFeedbackPlaceholder = styled.div`
   height: 20px;
 `;
 
-const QuizTitle = styled.h4`
-  font-size: ${designSystem.typography.fontSizes.h4};
-`;
+// const QuizTitle = styled.h4`
+//   font-size: ${designSystem.typography.fontSizes.h4};
+// `;
 
 /**
  * Local form state.
