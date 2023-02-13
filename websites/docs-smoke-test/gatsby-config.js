@@ -25,7 +25,7 @@ module.exports = {
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants',
-        /*         {
+        {
           resolve: '@commercetools-docs/gatsby-theme-learning',
           options: {
             auth0Domain: 'auth.id.commercetools.com',
@@ -40,7 +40,6 @@ module.exports = {
             learnApiBaseUrl: 'https://api.learn.commercetools.com',
           },
         },
- */
       ],
     }),
   ],

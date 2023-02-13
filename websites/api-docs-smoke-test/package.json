@@ -2,6 +2,7 @@
   "name": "@commercetools-website/api-docs-smoke-test",
   "version": "7.0.4",
   "private": true,
+  "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
     "start": "yarn develop",
     "develop": "yarn generate-ramldoc && yarn gatsby develop",

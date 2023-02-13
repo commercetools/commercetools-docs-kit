@@ -2,6 +2,7 @@
   "name": "@commercetools-website/site-template",
   "version": "5.0.28",
   "private": true,
+  "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
     "start": "yarn develop",
     "develop": "npx gatsby develop",
