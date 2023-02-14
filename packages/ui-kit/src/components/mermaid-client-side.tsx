@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import mermaid from 'mermaid';
 import { designTokens } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import murmurhash from 'murmurhash';
 import { colors, typography, tokens, dimensions } from '../design-system';
 import { cssVarToValue } from '../utils/css-variables';
+import useScript from '../hooks/use-script';
 
 // This is a client-side only component.
+// It loads the mermaid library externally from a CDN to prevent the big mermaid codbase
+// from causing build performance issues although effectively just being passed through
+// to client side processing anyways.
+const mermaidVersion = '9.3';
 
 // styling happens through a mix of the generic "themeVariables", diagram
 // type specific settings and direct CSS classes for diagram types
@@ -111,20 +115,25 @@ const Figure = styled.figure`
 
 const idForGraph = (graph: string) => `mermaid-${murmurhash.v3(graph)}`;
 
-mermaid.initialize(config);
-
 type MermaidProps = {
   graph: string;
 };
 
 const Mermaid = ({ graph }: MermaidProps) => {
   const [svg, setSvg] = useState('');
-
+  const mermaidLoadStatus = useScript(
+    `https://cdn.jsdelivr.net/npm/mermaid@${mermaidVersion}/dist/mermaid.min.js`
+  );
   useEffect(() => {
-    mermaid.mermaidAPI.render(idForGraph(graph), graph, (svg: string) => {
-      setSvg(svg);
-    });
-  }, [graph]);
+    if (mermaidLoadStatus === 'ready') {
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+      const mermaid = (window as any).mermaid;
+      mermaid.initialize(config);
+      mermaid.mermaidAPI.render(idForGraph(graph), graph, (svg: string) => {
+        setSvg(svg);
+      });
+    }
+  }, [graph, mermaidLoadStatus]);
 
   return (
     <Figure
