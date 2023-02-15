@@ -7,7 +7,7 @@ describe('Top menu', () => {
     // before clicking on the top menu.
     cy.visit(URL_DOCS_SMOKE_TEST).get('div[id="sidebar-chapter-1"]');
     cy.findByText('Mermaid Diagrams').click();
-    cy.get('figure[data-test-id="mermaid-diagram"]');
+    cy.get('figure[data-test-id="mermaid-diagram"] svg');
     cy.findByLabelText('Open Top Menu').click();
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {
