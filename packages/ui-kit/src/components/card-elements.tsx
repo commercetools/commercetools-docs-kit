@@ -20,7 +20,7 @@ import { css } from '@emotion/react';
  *                </BodyContainer>
  *                <ReadMoreContainer>
  *                  <ReadMore>
- *                    <Link href={props.href} noUnderline>
+ *                    <Link href={props.href} nounderline>
  *                        {props.textLink}
  *                    </Link>
  *                  </ReadMore>

@@ -60,7 +60,7 @@ const LayoutReleaseNotesDetail = (props) => {
             <LayoutPageHeader>
               <Link
                 href="/releases"
-                noUnderline={true}
+                nounderline={true}
                 css={css`
                   svg {
                     fill: ${designSystem.colors.light.link};

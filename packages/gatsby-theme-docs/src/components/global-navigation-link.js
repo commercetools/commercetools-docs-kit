@@ -22,7 +22,7 @@ const linkStyles = css`
 `;
 
 const GlobalNavigationLink = (props) => (
-  <Link {...props} css={linkStyles} noUnderline={true} />
+  <Link {...props} css={linkStyles} nounderline={true} />
 );
 
 export default GlobalNavigationLink;
