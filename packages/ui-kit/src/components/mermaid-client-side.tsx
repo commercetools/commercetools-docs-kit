@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { designTokens } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import murmurhash from 'murmurhash';
-import { colors, typography, tokens, dimensions } from '../design-system';
+import { colors, typography } from '../design-system';
 import { cssVarToValue } from '../utils/css-variables';
 import useScript from '../hooks/use-script';
+import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 
 // This is a client-side only component.
 // It loads the mermaid library externally from a CDN to prevent the big mermaid codbase
@@ -99,18 +100,10 @@ const config = {
 `,
 } as const;
 
-const Figure = styled.figure`
-  background-color: ${colors.light.surfaceSecondary1};
-  border-radius: ${tokens.borderRadiusForImageFrame};
-  margin: 0;
-  padding: ${dimensions.spacings.xs};
-  display: flex;
+const Wrapper = styled.div`
+  width: 100%;
+  display: inherit;
   justify-content: center;
-  line-height: normal;
-  a span.nodeLabel {
-    color: ${colors.light.link} !important;
-    text-decoration: underline;
-  }
 `;
 
 const idForGraph = (graph: string) => `mermaid-${murmurhash.v3(graph)}`;
@@ -136,10 +129,16 @@ const Mermaid = ({ graph }: MermaidProps) => {
   }, [graph, mermaidLoadStatus]);
 
   return (
-    <Figure
-      data-test-id="mermaid-diagram"
-      dangerouslySetInnerHTML={{ __html: svg }}
-    ></Figure>
+    <>
+      {mermaidLoadStatus == 'ready' ? (
+        <Wrapper
+          data-test-id="mermaid-diagram"
+          dangerouslySetInnerHTML={{ __html: svg }}
+        />
+      ) : (
+        <LoadingSpinner scale="l" maxDelayDuration={0} />
+      )}
+    </>
   );
 };
 Mermaid.propTypes = {
