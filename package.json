@@ -28,7 +28,7 @@
     "test:e2e:docs-smoke-test": "cross-env NODE_ENV=test cypress run --spec 'cypress/e2e/docs-smoke-test/**/*.cy.ts'",
     "test:e2e:api-docs-smoke-test": "cross-env NODE_ENV=test cypress run --spec 'cypress/e2e/api-docs-smoke-test/**/*.cy.ts'",
     "cypress-open": "cross-env NODE_ENV=test cypress open",
-    "check-links": "npx linkinator ./public",
+    "check-links": "yarn exec linkinator ./public",
     "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "changeset": "changeset",
     "changeset:version-and-format": "changeset version && prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install",
@@ -98,7 +98,7 @@
     "eslint-plugin-react": "^7.28.0"
   },
   "engines": {
-    "node": ">=18",
+    "node": ">=16.14",
     "npm": ">=5"
   },
   "packageManager": "yarn@3.2.4"
