@@ -2430,7 +2430,7 @@ __metadata:
     "@commercetools-uikit/spacings-stack": 15.3.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    gatsby: 5.6.0
+    gatsby: 5.6.1
     gatsby-source-filesystem: 5.6.0
     prop-types: 15.8.1
     react: 18.2.0
@@ -2448,7 +2448,7 @@ __metadata:
   resolution: "@commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples"
   dependencies:
     "@commercetools-docs/ui-kit": 20.2.0
-    gatsby: 5.6.0
+    gatsby: 5.6.1
     gatsby-source-filesystem: 5.6.0
     prop-types: 15.8.1
     react: 18.2.0
@@ -2466,7 +2466,7 @@ __metadata:
   resolution: "@commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants"
   dependencies:
     "@commercetools-docs/ui-kit": 20.2.0
-    gatsby: 5.6.0
+    gatsby: 5.6.1
     gatsby-source-filesystem: 5.6.0
     gatsby-transformer-yaml: 5.6.0
     prop-types: 15.8.1
@@ -2507,7 +2507,7 @@ __metadata:
     assert: 2.0.0
     cosmiconfig: ^8.0.0
     docsearch.js: 2.6.3
-    gatsby: 5.6.0
+    gatsby: 5.6.1
     gatsby-cli: 5.6.0
     gatsby-core-utils: 4.6.0
     gatsby-plugin-emotion: 8.6.0
@@ -3290,7 +3290,7 @@ __metadata:
     "@commercetools-docs/gatsby-theme-api-docs": 20.2.0
     "@commercetools-docs/gatsby-theme-docs": 20.2.0
     "@commercetools-docs/rmf-codegen": 13.25.0
-    gatsby: 5.6.0
+    gatsby: 5.6.1
     gatsby-cli: 5.6.0
     gatsby-source-filesystem: 5.6.0
     react: 18.2.0
@@ -3312,7 +3312,7 @@ __metadata:
     "@commercetools-uikit/icons": 15.3.0
     "@commercetools-uikit/radio-input": 15.3.0
     "@svgr/cli": 6.5.1
-    gatsby: 5.6.0
+    gatsby: 5.6.1
     gatsby-cli: 5.6.0
     process-top: ^1.2.0
     react: 18.2.0
@@ -3327,7 +3327,7 @@ __metadata:
     "@commercetools-docs/gatsby-theme-code-examples": 20.2.0
     "@commercetools-docs/gatsby-theme-docs": 20.2.0
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 20.2.0
-    gatsby: 5.6.0
+    gatsby: 5.6.1
     gatsby-cli: 5.6.0
     react: 18.2.0
     react-dom: 18.2.0
@@ -3339,7 +3339,7 @@ __metadata:
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
     "@commercetools-docs/gatsby-theme-docs": 20.2.0
-    gatsby: 5.6.0
+    gatsby: 5.6.1
     gatsby-cli: 5.6.0
     react: 18.2.0
     react-dom: 18.2.0
@@ -15459,7 +15459,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-parcel-config@npm:^1.6.0":
+"gatsby-parcel-config@npm:1.6.0":
   version: 1.6.0
   resolution: "gatsby-parcel-config@npm:1.6.0"
   dependencies:
@@ -15873,9 +15873,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:5.6.0":
-  version: 5.6.0
-  resolution: "gatsby@npm:5.6.0"
+"gatsby@npm:5.6.1":
+  version: 5.6.1
+  resolution: "gatsby@npm:5.6.1"
   dependencies:
     "@babel/code-frame": ^7.18.6
     "@babel/core": ^7.20.12
@@ -15963,7 +15963,7 @@ __metadata:
     gatsby-legacy-polyfills: ^3.6.0
     gatsby-link: ^5.6.0
     gatsby-page-utils: ^3.6.0
-    gatsby-parcel-config: ^1.6.0
+    gatsby-parcel-config: 1.6.0
     gatsby-plugin-page-creator: ^5.6.0
     gatsby-plugin-typescript: ^5.6.0
     gatsby-plugin-utils: ^4.6.0
@@ -16050,7 +16050,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-  checksum: 243d2e591c230a67e0a28ddf985ab2f578af3dcb983c9527f4dabda171383bd003df613d0b2f18f1e008a66e96995ac46531d3dbbe7be47f3793168ad01ec51e
+  checksum: 14fe729340b36e36e48a7406bf0290197d8102a1b4ff504d174071cb6fbee0db1a16968bd272e85a6c188468b84184a32a022e22dba5f743cbca97f6c82f10b1
   languageName: node
   linkType: hard
 
