@@ -156,14 +156,14 @@ jobs:
         run: yarn cypress install && yarn cypress cache list
 
       - name: Running End-to-End tests
-        run: yarn percy exec -- yarn test:e2e:docs-smoke-test --config baseUrl="docskit-sha-${{ github.sha }}.commercetools.vercel.app"
+        run: yarn percy exec -- yarn test:e2e:docs-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
           CYPRESS_CI: 'true'
 
       - name: Running API End-to-End tests
-        run: yarn percy exec -- yarn test:e2e:api-docs-smoke-test --config baseUrl="docskit-sha-${{ github.sha }}.commercetools.vercel.app"
+        run: yarn percy exec -- yarn test:e2e:api-docs-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_API_SMOKE_TESTS_E2E }}
