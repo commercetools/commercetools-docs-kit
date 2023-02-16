@@ -65,5 +65,6 @@
   "lockFileMaintenance": {
     "enabled": false
   },
-  "labels": ["🤖 Type: Dependencies"]
+  "labels": ["🤖 Type: Dependencies"],
+  "ignoreDeps": ["gatsby-remark-relative-images"]
 }
