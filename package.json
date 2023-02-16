@@ -98,7 +98,7 @@
     "eslint-plugin-react": "^7.28.0"
   },
   "engines": {
-    "node": ">=16.14",
+    "node": ">=18",
     "npm": ">=5"
   },
   "packageManager": "yarn@3.2.4"
