@@ -59,10 +59,6 @@ const QuizFeedbackPlaceholder = styled.div`
   height: 20px;
 `;
 
-// const QuizTitle = styled.h4`
-//   font-size: ${designSystem.typography.fontSizes.h4};
-// `;
-
 /**
  * Local form state.
  */

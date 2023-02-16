@@ -155,7 +155,7 @@ const PureLink = (extendedProps) => {
         <ExternalLinkIcon size="small" />
       </InlineLink>
     );
-    if (props['noadditionalstyling']) {
+    if (props.noadditionalstyling) {
       return (
         <ExternalSiteLink
           {...props}

@@ -24,6 +24,7 @@ import contentTemplate from './src/templates/page-content';
 import releaseNoteTemplate from './src/templates/release-notes-detail';
 // eslint-disable-next-line no-unused-vars
 const doSomethingFakeWithTheImports = [contentTemplate, releaseNoteTemplate];
+
 // end build hack to force shared components into a central place at SSR bundling time
 
 const iconDarkDigest = createContentDigest(iconDarkDigestRaw);

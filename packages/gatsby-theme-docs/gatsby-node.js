@@ -39,14 +39,6 @@ const debugMem = () => {
   }
 };
 
-/* const writeHeapDump = () => {
-  if (memoryDebugMode) {
-    const { writeHeapSnapshot } = require('v8');
-    writeHeapSnapshot();
-    console.log('Wrote heap snapshot');
-  }
-};
- */
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
@@ -637,7 +629,6 @@ exports.onCreateWebpackConfig = (
       use: loaders.null(),
     });
   }
-
   // improve build performance in memory critical stage of builds by not generating source maps
   // (yes, this can make errors cryptic, we will have to revisit if it's firing back too much)
   if (stage === 'build-html' || stage === `build-javascript` || lowMemMode) {
@@ -693,8 +684,6 @@ exports.onCreateWebpackConfig = (
       new RegExp(`^./(${prismLanguages})$`)
     )
   );
-
-  // require("fs"); fs.writeFileSync("webpack-config.json", JSON.stringify(config, null, 2));
 
   // This will completely replace the webpack config with the modified object.
   // (necessary to not only add rules but also change rules like taking over svg handling)
