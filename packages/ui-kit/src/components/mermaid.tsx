@@ -29,6 +29,7 @@ const Figure = styled.figure`
   display: flex;
   justify-content: center;
   line-height: normal;
+  min-height: 32px;
   a span.nodeLabel {
     color: ${colors.light.link} !important;
     text-decoration: underline;

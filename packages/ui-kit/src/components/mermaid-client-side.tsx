@@ -130,7 +130,7 @@ const Mermaid = ({ graph }: MermaidProps) => {
 
   return (
     <>
-      {mermaidLoadStatus == 'ready' ? (
+      {mermaidLoadStatus === 'ready' ? (
         <Wrapper
           data-test-id="mermaid-diagram"
           dangerouslySetInnerHTML={{ __html: svg }}
