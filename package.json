@@ -88,11 +88,10 @@
     "react-dom": "18.2.0",
     "serve": "14.0.1",
     "shelljs": "0.8.5",
-    "start-server-and-test": "1.14.0",
+    "start-server-and-test": "1.15.4",
     "tsc-files": "^1.1.3",
     "typescript": "4.9.5",
-    "vercel": "28.16.1",
-    "wait-on": "6.0.1"
+    "vercel": "28.16.1"
   },
   "resolutions": {
     "eslint-config-react-app": "^7.0.0",

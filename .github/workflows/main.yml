@@ -173,8 +173,7 @@ jobs:
       - name: Check local links including anchors
         if: ${{ env.DEPLOY_ENV == 'Preview' }}
         working-directory: public
-        # run: npx --quiet start-server-and-test 'npx --quiet http-server --silent -p 9000' 9000 'docker run --platform linux/amd64 --network=host -v "$(pwd)/../:/repo/" tennox/linkcheck --skip-file /repo/linkcheck-local-skip-list :9000'
-        run: npx start-server-and-test 'npx http-server -p 9000' 9000 'docker run --platform linux/amd64 --network=host -v "$(pwd)/../:/repo/" tennox/linkcheck --debug --skip-file /repo/linkcheck-local-skip-list :9000'
+        run: npx --quiet start-server-and-test 'npx --quiet http-server --silent -p 9000' http://127.0.0.1:9000 'docker run --platform linux/amd64 --network=host -v "$(pwd)/../:/repo/" tennox/linkcheck --skip-file /repo/linkcheck-local-skip-list :9000'
 
   link-check:
     name: 'Check links'
