@@ -6,7 +6,6 @@ const SvgLogo = (props: SVGProps<SVGSVGElement>) => (
     width={34}
     height={34}
     xmlns="http://www.w3.org/2000/svg"
-    role="img"
     {...props}
   >
     <path

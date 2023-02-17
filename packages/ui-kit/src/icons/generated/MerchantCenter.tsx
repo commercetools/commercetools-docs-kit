@@ -6,7 +6,6 @@ const SvgMerchantCenter = (props: SVGProps<SVGSVGElement>) => (
     height={80}
     viewBox="0 0 80 80"
     xmlns="http://www.w3.org/2000/svg"
-    role="img"
     {...props}
   >
     <g fill="none" fillRule="evenodd">
