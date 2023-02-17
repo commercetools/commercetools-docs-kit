@@ -430,7 +430,7 @@ async function createContentPages(
           }
         }
       }
-      allReleaseNotePage(sort: { date: DESC }) {
+      allReleaseNotePage(sort: { order: DESC, fields: date }) {
         totalCount
       }
     }

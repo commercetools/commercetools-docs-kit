@@ -303,14 +303,14 @@ module.exports = (themeOptions = {}) => {
               },
               query: `
               {
-                allReleaseNotePage(limit: 10, sort: {date: DESC}) {
-                    nodes {
-                      description
-                      slug
-                      title
-                      date
-                      categories: topics
-                    }
+                allReleaseNotePage(limit: 10, sort: {fields: date, order: DESC}) {
+                  nodes {
+                    description
+                    slug
+                    title
+                    date
+                    categories: topics
+                  }
                 }
               }
             `,
