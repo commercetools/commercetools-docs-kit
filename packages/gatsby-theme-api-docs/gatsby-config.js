@@ -22,6 +22,13 @@ module.exports = (themeOptions = {}) => {
         },
       },
       {
+        resolve: '@commercetools-docs/gatsby-transformer-mdx-introspection',
+        options: {
+          ...themeOptions.transformerMdx,
+          tagList: ['ApiType', 'ApiEndpoint', ...additionalTags],
+        },
+      },
+      {
         resolve: '@commercetools-docs/gatsby-transformer-raml',
         options: themeOptions.transformerRaml,
       },

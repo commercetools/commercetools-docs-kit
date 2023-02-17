@@ -11,17 +11,14 @@ const { ContextReplacementPlugin } = require('webpack');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const MomentTimezoneDataPlugin = require('moment-timezone-data-webpack-plugin');
 const slugify = require('slugify');
-const generateToC = require('./utils/generate-toc');
+const processTableOfContentFields = require('./utils/process-table-of-content-fields');
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 const colorPresets = require('./color-presets');
-const extractShortcodeOccurrence = require('./utils/extract-shortcode-occurrence');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const isProd = process.env.NODE_ENV === 'production';
-
-let processor;
 
 const lowMemMode = process.env.LOW_MEM === 'true';
 const debugMem = () => {
@@ -42,9 +39,6 @@ const debugMem = () => {
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
-  const { createProcessor } = await import('@mdx-js/mdx');
-  console.log('creating processor');
-  processor = createProcessor();
   const requiredDirectories = [
     'src/data',
     'src/images',
@@ -201,6 +195,11 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
               default: 6,
             },
           },
+          resolve: resolverPassthrough({
+            fieldName: 'tableOfContents',
+            processResult: processTableOfContentFields,
+            errorFallback: {},
+          }),
         },
         navLevels: { type: 'Int!' },
         showTimeToRead: { type: 'Boolean' },
@@ -212,25 +211,8 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             errorFallback: 0,
           }),
         },
-        shortcodeOccurrence: '[ShortcodeOccurence!]',
       },
       interfaces: ['Node'],
-    }),
-
-    schema.buildObjectType({
-      name: 'ShortcodeOccurence',
-      fields: {
-        component: 'String!',
-        attributes: '[ShortcodeOccurenceAttribute!]',
-      },
-    }),
-
-    schema.buildObjectType({
-      name: 'ShortcodeOccurenceAttribute',
-      fields: {
-        name: 'String!',
-        value: 'String!',
-      },
     }),
   ];
 
@@ -299,7 +281,7 @@ exports.onCreateNode = async (
       parent.sourceInstanceName === 'internalContent');
 
   if (isReleaseNotesPage) {
-    const excerptSplit = node.body.split('{/* more */}');
+    const excerptSplit = node.rawBody.split('<!--more-->');
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
@@ -324,7 +306,6 @@ exports.onCreateNode = async (
         contentDigest: createContentDigest(releaseNotesFieldData),
         content: JSON.stringify(releaseNotesFieldData),
         description: 'Release Note Pages',
-        contentFilePath: node.internal.contentFilePath,
       },
     });
     actions.createParentChildLink({
@@ -336,7 +317,6 @@ exports.onCreateNode = async (
 
   if (isContentPage) {
     // https://github.com/unifiedjs/unified#processorparsefile
-    const nodeBodyAst = processor.parse(node.body);
     // If not explicitly handled, always fall back to build the page as a "content" page.
     // This is useful in case the website requires additional MDX pages located in
     // other file system directories, and thus with different `sourceInstanceName` names.
@@ -359,11 +339,6 @@ exports.onCreateNode = async (
       timeToRead: node.frontmatter.timeToRead
         ? Number(node.frontmatter.timeToRead)
         : 0,
-      shortcodeOccurrence: extractShortcodeOccurrence(
-        ['ApiType', 'ApiEndpoint'],
-        nodeBodyAst
-      ),
-      tableOfContents: await generateToC(nodeBodyAst),
     };
 
     actions.createNode({
@@ -377,7 +352,6 @@ exports.onCreateNode = async (
         contentDigest: createContentDigest(contentPageFieldData),
         content: JSON.stringify(contentPageFieldData),
         description: 'Content Pages',
-        contentFilePath: node.internal.contentFilePath,
       },
     });
     actions.createParentChildLink({
@@ -390,7 +364,7 @@ exports.onCreateNode = async (
 function generateReleaseNoteSlug(node) {
   const basePath = '/releases';
 
-  if (node.internal.contentFilePath.endsWith('index.mdx')) {
+  if (node.fileAbsolutePath.endsWith('index.mdx')) {
     return basePath;
   }
 
@@ -398,9 +372,7 @@ function generateReleaseNoteSlug(node) {
     return trimTrailingSlash(`${basePath}/${node.frontmatter.slug}`);
   }
 
-  const date = node.frontmatter.date
-    ? node.frontmatter.date.toISOString().split('T')[0]
-    : '';
+  const date = node.frontmatter.date ? node.frontmatter.date.split('T')[0] : '';
   const title = node.frontmatter.title ? node.frontmatter.title : '';
 
   const slug = slugify(`${date} ${title}`, { lower: true, strict: true });
@@ -425,9 +397,6 @@ async function createContentPages(
       allContentPage {
         nodes {
           slug
-          internal {
-            contentFilePath
-          }
         }
       }
       allReleaseNotePage(sort: { order: DESC, fields: date }) {
@@ -464,7 +433,7 @@ async function createContentPages(
       (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
       []
     );
-  pages.forEach(({ slug, internal: { contentFilePath: contentPath } }) => {
+  pages.forEach(({ slug }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
@@ -482,11 +451,10 @@ async function createContentPages(
     switch (slug) {
       case '/': {
         const colorPreset = colorPresets[pluginOptions.colorPreset];
-        const homepageTemplate = require.resolve('./src/templates/homepage.js');
 
         actions.createPage({
           ...pageData,
-          component: `${homepageTemplate}?__contentFilePath=${contentPath}`,
+          component: require.resolve('./src/templates/homepage.js'),
           context: {
             ...pageData.context,
             heroBackgroundRelativePath: `${colorPreset.relativePath}/${colorPreset.value.heroBackgroundName}`,
@@ -497,25 +465,17 @@ async function createContentPages(
         break;
       }
       case '/releases':
-        const releaseNoteTemplate = require.resolve(
-          './src/templates/release-notes-list.js'
-        );
-
         actions.createPage({
           ...pageData,
-          component: `${releaseNoteTemplate}?__contentFilePath=${contentPath}`,
+          component: require.resolve('./src/templates/release-notes-list.js'),
         });
 
         break;
 
       default:
-        const pageContentTemplate = require.resolve(
-          './src/templates/page-content.js'
-        );
-
         actions.createPage({
           ...pageData,
-          component: `${pageContentTemplate}?__contentFilePath=${contentPath}`,
+          component: require.resolve('./src/templates/page-content.js'),
         });
 
         break;
@@ -534,9 +494,6 @@ async function createReleaseNotePages(
       allReleaseNotePage {
         nodes {
           slug
-          internal {
-            contentFilePath
-          }
         }
       }
     }
@@ -548,22 +505,17 @@ async function createReleaseNotePages(
       )}`
     );
   }
-  result.data.allReleaseNotePage.nodes.forEach(
-    ({ slug, internal: { contentFilePath: rnPath } }) => {
-      const releaseNoteDetailTemplate = require.resolve(
-        './src/templates/release-notes-detail.js'
-      );
-      actions.createPage({
-        path: slug,
-        // This component will wrap our MDX content
-        component: `${releaseNoteDetailTemplate}?__contentFilePath=${rnPath}`,
-        // You can use the values in this context in our page layout component
-        context: {
-          slug,
-        },
-      });
-    }
-  );
+  result.data.allReleaseNotePage.nodes.forEach(({ slug }) => {
+    actions.createPage({
+      path: slug,
+      // This component will wrap our MDX content
+      component: require.resolve('./src/templates/release-notes-detail.js'),
+      // You can use the values in this context in our page layout component
+      context: {
+        slug,
+      },
+    });
+  });
 }
 
 exports.onCreateWebpackConfig = (
