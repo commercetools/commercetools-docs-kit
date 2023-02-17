@@ -121,6 +121,7 @@ jobs:
           yarn jest --projects jest.{eslint,test}.config.js \
             --maxWorkers=3 \
             --reporters jest-silent-reporter
+          yarn percy config:validate
 
       - name: Run Writing Style check over Websites
         run: yarn lint:text
