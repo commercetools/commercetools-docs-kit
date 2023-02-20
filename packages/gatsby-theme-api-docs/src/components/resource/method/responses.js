@@ -52,7 +52,7 @@ const Responses = ({ apiKey, responses, contentType }) => {
                       typeLocations,
                       response.description
                     )}
-                    {contentType.length > 0 && (
+                    {contentType.length > 0 && !response.description && (
                       <>
                         <span>as</span>
                         <ContentType>{contentType}</ContentType>
