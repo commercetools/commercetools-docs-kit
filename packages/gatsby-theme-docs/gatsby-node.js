@@ -596,7 +596,7 @@ exports.onCreateWebpackConfig = (
     config.cache = {
       ...config.cache,
       ...{
-        // compression: 'brotli', // only impacts the filesystem representation
+        // compression: 'brotli', // only impacts the filesystem representation, no effect here
         // the following combination at least leads to the dev server freeing some of the memory again once navigating the preview.
         idleTimeout: 100, // defaults to 60000 millis
         idleTimeoutAfterLargeChanges: 100, // defaults to 1000 millis
@@ -604,8 +604,24 @@ exports.onCreateWebpackConfig = (
         maxMemoryGenerations: 0, // see docs https://webpack.js.org/configuration/cache/#cachemaxmemorygenerations
       },
     };
+
     // run uncached if we have memory issues
     if (lowMemMode) config.cache = false;
+  }
+
+  // run lazy compilation if we have memory issues (makes the dev server throw errors but startup gets very fast)
+  // https://github.com/gatsbyjs/gatsby/discussions/36852
+  // https://github.com/gatsbyjs/gatsby/pull/37040  -> will become obsolete if this feature is published
+  if (stage === 'develop' && lowMemMode) {
+    config.experiments = {
+      ...config.experiments,
+      ...{
+        lazyCompilation: {
+          imports: true,
+          entries: true,
+        },
+      },
+    };
   }
 
   config.resolve = {
