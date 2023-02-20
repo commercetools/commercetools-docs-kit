@@ -158,11 +158,11 @@ module.exports = (themeOptions = {}) => {
           // List of rehype plugins, that transform the HTML AST.
           rehypePlugins: [
             // require('rehype-slug'), // TODO: confirm if it's working
-            require('./src/plugins/rehype-mdx-section'),
             [
               require('./src/plugins/rehype-id-slug'),
               { preProcess: preProcessSlug },
             ],
+            require('./src/plugins/rehype-mdx-section'),
           ],
           gatsbyRemarkPlugins: [
             // Convert absolute image file paths to relative. Required for remark-images to work.
