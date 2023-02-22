@@ -1,5 +1,21 @@
 # @commercetools-website/docs-smoke-test
 
+## 7.0.0
+
+### Major Changes
+
+- [#1535](https://github.com/commercetools/commercetools-docs-kit/pull/1535) [`c8d5b734`](https://github.com/commercetools/commercetools-docs-kit/commit/c8d5b734603ba77bfd36c84b7f4ac3e53dab35d2) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Revert all the changes strictly related with MDX v2 because of performance issue on local development. This version includes all the refactoring and performance optimizations implemented during MDX v2 implementation.
+
+### Patch Changes
+
+- Updated dependencies [[`0624304b`](https://github.com/commercetools/commercetools-docs-kit/commit/0624304b519b50c406d254d1a1b2636124a32bbf), [`c8d5b734`](https://github.com/commercetools/commercetools-docs-kit/commit/c8d5b734603ba77bfd36c84b7f4ac3e53dab35d2), [`28f404f3`](https://github.com/commercetools/commercetools-docs-kit/commit/28f404f377b79939bf58c039ef166c1000198a92)]:
+  - @commercetools-docs/gatsby-theme-docs@21.0.0
+  - @commercetools-docs/gatsby-theme-code-examples@21.0.0
+  - @commercetools-docs/gatsby-theme-learning@21.0.0
+  - @commercetools-docs/ui-kit@21.0.0
+  - @commercetools-docs/gatsby-theme-constants@21.0.0
+  - @commercetools-docs/gatsby-theme-sso-ui-kit@21.0.0
+
 ## 6.1.0
 
 ### Minor Changes

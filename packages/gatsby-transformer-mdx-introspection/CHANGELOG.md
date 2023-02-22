@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-mdx-introspection
 
+## 16.0.0
+
+### Major Changes
+
+- [#1535](https://github.com/commercetools/commercetools-docs-kit/pull/1535) [`c8d5b734`](https://github.com/commercetools/commercetools-docs-kit/commit/c8d5b734603ba77bfd36c84b7f4ac3e53dab35d2) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Revert all the changes strictly related with MDX v2 because of performance issue on local development. This version includes all the refactoring and performance optimizations implemented during MDX v2 implementation.
+
 ## 15.0.6
 
 ### Patch Changes
