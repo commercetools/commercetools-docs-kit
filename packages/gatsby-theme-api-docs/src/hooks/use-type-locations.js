@@ -8,24 +8,24 @@ var overridesAreIndexed = false;
 const typeLocations = {};
 const typeLocationOverrides = {};
 
+const buildPageSlug = (page) => {
+  const [pathWithoutExt] = page.parent.relativePath.split(page.parent.ext);
+  return `/${pathWithoutExt}`;
+};
+
 const convertComponentInMdxToTypeLocations = (data) => {
   if (!locationsAreIndexed) {
-    data.allContentPage.nodes.forEach((node) => {
-      node.shortcodeOccurrence.forEach((occurrence) => {
-        if (occurrence.component !== 'ApiType') {
-          return;
-        }
-        const apiKey = occurrence.attributes.find(
-          (attribute) => attribute.name === 'apiKey'
-        ).value;
-        const name = occurrence.attributes.find(
-          (attribute) => attribute.name === 'type'
-        ).value;
+    data.allComponentInMdx.nodes.forEach((node) => {
+      const apiKey =
+        node.attributes[0].name === 'apiKey' ? node.attributes[0].value : null;
+      const name =
+        node.attributes[1].name === 'type' ? node.attributes[1].value : null;
 
-        const urn = generateTypeURN({ apiKey, displayName: name });
-        const url = node.slug && urn ? `${node.slug}#${urn}` : '';
-        typeLocations[`${apiKey}__${name}`] = { url };
-      });
+      const slug = buildPageSlug(node.page);
+      const urn = generateTypeURN({ apiKey, displayName: name });
+      const url = slug && urn ? `${slug}#${urn}` : '';
+
+      typeLocations[`${apiKey}__${name}`] = { url };
     });
   }
   locationsAreIndexed = true;
@@ -48,18 +48,19 @@ export const useTypeLocations = () => {
   const queryResult = useStaticQuery(
     graphql`
       {
-        allContentPage(
-          filter: {
-            shortcodeOccurrence: { elemMatch: { component: { eq: "ApiType" } } }
-          }
-        ) {
+        allComponentInMdx(filter: { component: { eq: "ApiType" } }) {
           nodes {
-            slug
-            shortcodeOccurrence {
-              component
-              attributes {
-                name
-                value
+            attributes {
+              name
+              value
+            }
+            page: mdx {
+              parent {
+                id
+                ... on File {
+                  relativePath
+                  ext
+                }
               }
             }
           }

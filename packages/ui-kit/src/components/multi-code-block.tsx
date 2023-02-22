@@ -207,8 +207,7 @@ const getCodeBlockPropsFromMdxPreNodeProps = (props: {
   const className = childProps ? childProps.className : '';
   const languageToken: string = className || 'language-text';
   const [, languageCode] = languageToken.split('language-');
-  const { children, ...rest } = props; // remove children prop as it's not needed in parseCodeBlockOptions
-  const parsedOptions = parseCodeBlockOptions(rest);
+  const parsedOptions = parseCodeBlockOptions(childProps);
   const content =
     childProps && childProps.children ? childProps.children : childProps;
 

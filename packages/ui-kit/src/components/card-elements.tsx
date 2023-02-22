@@ -17,7 +17,9 @@ import { css } from '@emotion/react';
  *            <StackContainer scale="s">
  *              <Title smallTitle={props.smallTitle}>{props.title}</Title>
  *                <BodyContainer>
+ *                  <BodyContent clickable={props.clickable}>
  *                    {props.children}
+ *                  </BodyContent>
  *                </BodyContainer>
  *                <ReadMoreContainer>
  *                  <ReadMore>

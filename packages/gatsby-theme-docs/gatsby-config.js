@@ -89,20 +89,12 @@ module.exports = (themeOptions = {}) => {
           ignore: pluginOptions.overrideDefaultConfigurationData,
         },
       },
-      // Default content pages provided by this theme package directly (.mdx)
+      // Default content pages (.mdx)
       {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'internalContent',
           path: path.join(__dirname, `./src/content`),
-        },
-      },
-      // Site provided content pages in the site content folder (.mdx)
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'content',
-          path: path.resolve(`./src/content`),
         },
       },
       // Site provided configuration data files (.yaml)
@@ -113,7 +105,7 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/data`),
         },
       },
-      // Site provided assets (e.g. images) used from the markdown pages
+      // Assets (e.g. images) used from the markdown pages
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -121,15 +113,15 @@ module.exports = (themeOptions = {}) => {
           path: path.resolve(`./src/images`),
         },
       },
-      // Site provided markdown fragments to be included in pages (.mdx)
+      // Main content pages (.mdx)
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'topics',
-          path: path.resolve(`./src/topics`),
+          name: 'content',
+          path: path.resolve(`./src/content`),
         },
       },
-      // Site provided release notes
+      // Release notes
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -156,24 +148,22 @@ module.exports = (themeOptions = {}) => {
             '.mdx',
             // ".md"
           ],
-          mdxOptions: {
-            // List of remark plugins, that transform the markdown AST.
-            remarkPlugins: [
-              wrapESMPlugin('remark-mdx-code-meta'),
-              wrapESMPlugin('remark-emoji'),
-              require('./src/plugins/remark-mdx-mermaid'),
-              require('remark-gfm'),
+          // implement commonmark for stricter compatibility, e.g. backslash transformed to newlines
+          commonmark: true,
+          // List of remark plugins, that transform the markdown AST.
+          remarkPlugins: [
+            wrapESMPlugin('remark-emoji'),
+            require('./src/plugins/remark-mdx-mermaid'),
+          ],
+          // List of rehype plugins, that transform the HTML AST.
+          rehypePlugins: [
+            // require('rehype-slug'), // TODO: confirm if it's working
+            [
+              require('./src/plugins/rehype-id-slug'),
+              { preProcess: preProcessSlug },
             ],
-            // List of rehype plugins, that transform the HTML AST.
-            rehypePlugins: [
-              [
-                require('./src/plugins/rehype-id-slug'),
-                { preProcess: preProcessSlug },
-              ],
-              require('./src/plugins/rehype-mdx-section'),
-            ],
-            development: true,
-          },
+            require('./src/plugins/rehype-mdx-section'),
+          ],
           gatsbyRemarkPlugins: [
             // Convert absolute image file paths to relative. Required for remark-images to work.
             // https://www.gatsbyjs.org/packages/gatsby-remark-relative-images/?=gatsby-remark-relative-images
@@ -208,9 +198,10 @@ module.exports = (themeOptions = {}) => {
                 destinationDir: 'files',
               },
             },
-            'gatsby-remark-images',
-            'gatsby-remark-copy-linked-files',
+            // 'gatsby-remark-rewrite-relative-links',
           ],
+          // workaround https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-510153237
+          plugins: ['gatsby-remark-images', 'gatsby-remark-copy-linked-files'],
         },
       },
 
