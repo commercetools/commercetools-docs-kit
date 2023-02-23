@@ -1689,19 +1689,19 @@ uriParameters:
         maximum: 500
         required: false
         description: |
-          Number of [results requested](/../api/general-concepts#limit).
+          Number of results requested.
       offset:
         type: number
         format: int32
         required: false
         description: |
-          Number of [elements skipped](/../api/general-concepts#offset).
+          Number of elements skipped.
       withTotal:
         type: boolean
         default: true
         required: false
         description: |
-          By default, the response does not include the `total` field. Set to `true` to get the [total](/../api/general-concepts#total) number of query results included.
+          By default, the response does not include the `total` field. Set to `true` to get the total number of query results included.
     responses:
       200:
         body:

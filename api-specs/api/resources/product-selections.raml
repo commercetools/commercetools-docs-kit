@@ -59,7 +59,7 @@ post:
   delete:
     securedBy:
       [oauth_2_0: { scopes: ['manage_product_selections:{projectKey}'] }]
-    description: Deletion will only succeed if the Product Selection is not assigned to any [Store](/../api/projects/stores#store).
+    description: Deletion will only succeed if the Product Selection is not assigned to any Store.
     responses:
       200:
         body:
@@ -108,7 +108,7 @@ post:
   delete:
     securedBy:
       [oauth_2_0: { scopes: ['manage_product_selections:{projectKey}'] }]
-    description: Deletion will only succeed if the Product Selection is not assigned to any [Store](/../api/projects/stores#store).
+    description: Deletion will only succeed if the Product Selection is not assigned to any Store.
     responses:
       200:
         body:

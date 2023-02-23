@@ -7,16 +7,16 @@ queryParameters:
     maximum: 500
     required: false
     description: |
-      Number of [results requested](/../api/general-concepts#limit).
+      Number of results requested.
   offset:
     type: number
     format: int32
     required: false
     description: |
-      Number of [elements skipped](/../api/general-concepts#offset).
+      Number of elements skipped.
   withTotal:
     type: boolean
     default: true
     required: false
     description: |
-      Controls the calculation of the [total](/../api/general-concepts#total) number of query results. Set to `false` to improve query performance when the `total` is not needed.
+      Controls the calculation of the total number of query results. Set to `false` to improve query performance when the `total` is not needed.
