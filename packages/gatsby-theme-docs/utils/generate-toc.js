@@ -19,7 +19,9 @@ function processToC(node, current, toString) {
 
   switch (node.type) {
     case `paragraph`: {
-      current.title = toString(node);
+      // remove any tag from the string (needed only for mdx v1)
+      const htmlTagsRegex = /<[^>]+>/g;
+      current.title = toString(node).replace(htmlTagsRegex, '');
       const nodeSlug = slugger.slug(preProcessSlug(current.title));
       current.url = `#${nodeSlug}`;
       return current;

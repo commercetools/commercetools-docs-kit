@@ -1,24 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import { ContentNotifications, cardElements } from '@commercetools-docs/ui-kit';
 
 const Cards = (props) => {
   try {
-    /**
-     * We clone the children because we want to apply some of the props applied to the parent to each child.
-     * In the markdown the props are defined only at parent level for simplicity.
-     * The above implies that each child will have the same clickable, narrow and smallTitle prop as the one
-     * applied to the parent.
-     */
-    const sanitizedChildren = React.Children.toArray(props.children).filter(
-      (child) => React.isValidElement(child)
-    );
     return (
       <cardElements.CardsContainer {...props} data-search-key="cards-container">
-        {sanitizedChildren.map((child) => {
-          if (child.type.displayName !== 'Card') {
+        {React.Children.map(props.children, (child) => {
+          if (!React.isValidElement(child)) {
+            throwErrorMessage(child);
+          } else if (
+            child.type.displayName === 'MDXCreateElement' &&
+            child.props.mdxType !== 'Card'
+          ) {
             // this is created in mdx but it is not a card
-            throwErrorMessage();
+            throwErrorMessage(child.props.mdxType);
           }
 
           return React.cloneElement(
@@ -43,8 +40,10 @@ const Cards = (props) => {
     throw e;
   }
 
-  function throwErrorMessage() {
-    throw new Error(`Children of <Cards> must be a <Card> component`);
+  function throwErrorMessage(type) {
+    throw new Error(
+      `Children of <Cards> must be a <Card> component and not "${type}"`
+    );
   }
 };
 

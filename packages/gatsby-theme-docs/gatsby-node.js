@@ -15,13 +15,14 @@ const generateToC = require('./utils/generate-toc');
 const defaultOptions = require('./utils/default-options');
 const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
 const colorPresets = require('./color-presets');
-const extractShortcodeOccurrence = require('./utils/extract-shortcode-occurrence');
+const unified = require('unified');
+const parse = require('remark-parse');
+const mdxpl = require('remark-mdx');
+const remarkFrontmatter = require('remark-frontmatter');
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
 const isProd = process.env.NODE_ENV === 'production';
-
-let processor;
 
 const lowMemMode = process.env.LOW_MEM === 'true';
 const debugMem = () => {
@@ -42,9 +43,6 @@ const debugMem = () => {
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
-  const { createProcessor } = await import('@mdx-js/mdx');
-  console.log('creating processor');
-  processor = createProcessor();
   const requiredDirectories = [
     'src/data',
     'src/images',
@@ -212,25 +210,8 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             errorFallback: 0,
           }),
         },
-        shortcodeOccurrence: '[ShortcodeOccurence!]',
       },
       interfaces: ['Node'],
-    }),
-
-    schema.buildObjectType({
-      name: 'ShortcodeOccurence',
-      fields: {
-        component: 'String!',
-        attributes: '[ShortcodeOccurenceAttribute!]',
-      },
-    }),
-
-    schema.buildObjectType({
-      name: 'ShortcodeOccurenceAttribute',
-      fields: {
-        name: 'String!',
-        value: 'String!',
-      },
     }),
   ];
 
@@ -299,7 +280,7 @@ exports.onCreateNode = async (
       parent.sourceInstanceName === 'internalContent');
 
   if (isReleaseNotesPage) {
-    const excerptSplit = node.body.split('{/* more */}');
+    const excerptSplit = node.rawBody.split('<!--more-->');
     const releaseNotesFieldData = {
       slug: generateReleaseNoteSlug(node),
       title: node.frontmatter.title,
@@ -324,7 +305,6 @@ exports.onCreateNode = async (
         contentDigest: createContentDigest(releaseNotesFieldData),
         content: JSON.stringify(releaseNotesFieldData),
         description: 'Release Note Pages',
-        contentFilePath: node.internal.contentFilePath,
       },
     });
     actions.createParentChildLink({
@@ -335,8 +315,9 @@ exports.onCreateNode = async (
   }
 
   if (isContentPage) {
+    const processor = unified().use(parse).use(remarkFrontmatter).use(mdxpl);
+    const nodeBodyAst = processor.parse(node.internal.content);
     // https://github.com/unifiedjs/unified#processorparsefile
-    const nodeBodyAst = processor.parse(node.body);
     // If not explicitly handled, always fall back to build the page as a "content" page.
     // This is useful in case the website requires additional MDX pages located in
     // other file system directories, and thus with different `sourceInstanceName` names.
@@ -359,10 +340,6 @@ exports.onCreateNode = async (
       timeToRead: node.frontmatter.timeToRead
         ? Number(node.frontmatter.timeToRead)
         : 0,
-      shortcodeOccurrence: extractShortcodeOccurrence(
-        ['ApiType', 'ApiEndpoint'],
-        nodeBodyAst
-      ),
       tableOfContents: await generateToC(nodeBodyAst),
     };
 
@@ -377,7 +354,6 @@ exports.onCreateNode = async (
         contentDigest: createContentDigest(contentPageFieldData),
         content: JSON.stringify(contentPageFieldData),
         description: 'Content Pages',
-        contentFilePath: node.internal.contentFilePath,
       },
     });
     actions.createParentChildLink({
@@ -390,7 +366,7 @@ exports.onCreateNode = async (
 function generateReleaseNoteSlug(node) {
   const basePath = '/releases';
 
-  if (node.internal.contentFilePath.endsWith('index.mdx')) {
+  if (node.fileAbsolutePath.endsWith('index.mdx')) {
     return basePath;
   }
 
@@ -398,9 +374,7 @@ function generateReleaseNoteSlug(node) {
     return trimTrailingSlash(`${basePath}/${node.frontmatter.slug}`);
   }
 
-  const date = node.frontmatter.date
-    ? node.frontmatter.date.toISOString().split('T')[0]
-    : '';
+  const date = node.frontmatter.date ? node.frontmatter.date.split('T')[0] : '';
   const title = node.frontmatter.title ? node.frontmatter.title : '';
 
   const slug = slugify(`${date} ${title}`, { lower: true, strict: true });
@@ -425,9 +399,6 @@ async function createContentPages(
       allContentPage {
         nodes {
           slug
-          internal {
-            contentFilePath
-          }
         }
       }
       allReleaseNotePage(sort: { order: DESC, fields: date }) {
@@ -464,7 +435,7 @@ async function createContentPages(
       (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
       []
     );
-  pages.forEach(({ slug, internal: { contentFilePath: contentPath } }) => {
+  pages.forEach(({ slug }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
@@ -482,10 +453,9 @@ async function createContentPages(
     switch (slug) {
       case '/': {
         const colorPreset = colorPresets[pluginOptions.colorPreset];
-        const homepageTemplate = require.resolve('./src/templates/homepage.js');
         actions.createPage({
           ...pageData,
-          component: `${homepageTemplate}?__contentFilePath=${contentPath}`,
+          component: require.resolve('./src/templates/homepage.js'),
           context: {
             ...pageData.context,
             heroBackgroundRelativePath: `${colorPreset.relativePath}/${colorPreset.value.heroBackgroundName}`,
@@ -497,25 +467,17 @@ async function createContentPages(
       }
       // TODO is this case necessary?  The whole function is only querying content pages.
       case '/releases':
-        const releaseNoteTemplate = require.resolve(
-          './src/templates/release-notes-list.js'
-        );
-
         actions.createPage({
           ...pageData,
-          component: `${releaseNoteTemplate}?__contentFilePath=${contentPath}`,
+          component: require.resolve('./src/templates/release-notes-list.js'),
         });
 
         break;
 
       default:
-        const pageContentTemplate = require.resolve(
-          './src/templates/page-content.js'
-        );
-
         actions.createPage({
           ...pageData,
-          component: `${pageContentTemplate}?__contentFilePath=${contentPath}`,
+          component: require.resolve('./src/templates/page-content.js'),
         });
 
         break;
@@ -534,9 +496,6 @@ async function createReleaseNotePages(
       allReleaseNotePage {
         nodes {
           slug
-          internal {
-            contentFilePath
-          }
         }
       }
     }
@@ -548,22 +507,17 @@ async function createReleaseNotePages(
       )}`
     );
   }
-  result.data.allReleaseNotePage.nodes.forEach(
-    ({ slug, internal: { contentFilePath: rnPath } }) => {
-      const releaseNoteDetailTemplate = require.resolve(
-        './src/templates/release-notes-detail.js'
-      );
-      actions.createPage({
-        path: slug,
-        // This component will wrap our MDX content
-        component: `${releaseNoteDetailTemplate}?__contentFilePath=${rnPath}`,
-        // You can use the values in this context in our page layout component
-        context: {
-          slug,
-        },
-      });
-    }
-  );
+  result.data.allReleaseNotePage.nodes.forEach(({ slug }) => {
+    actions.createPage({
+      path: slug,
+      // This component will wrap our MDX content
+      component: require.resolve('./src/templates/release-notes-detail.js'),
+      // You can use the values in this context in our page layout component
+      context: {
+        slug,
+      },
+    });
+  });
 }
 
 exports.onCreateWebpackConfig = (
@@ -642,7 +596,7 @@ exports.onCreateWebpackConfig = (
     config.cache = {
       ...config.cache,
       ...{
-        // compression: 'brotli', // only impacts the filesystem representation
+        // compression: 'brotli', // only impacts the filesystem representation, no effect here
         // the following combination at least leads to the dev server freeing some of the memory again once navigating the preview.
         idleTimeout: 100, // defaults to 60000 millis
         idleTimeoutAfterLargeChanges: 100, // defaults to 1000 millis
@@ -650,8 +604,24 @@ exports.onCreateWebpackConfig = (
         maxMemoryGenerations: 0, // see docs https://webpack.js.org/configuration/cache/#cachemaxmemorygenerations
       },
     };
+
     // run uncached if we have memory issues
     if (lowMemMode) config.cache = false;
+  }
+
+  // run lazy compilation if we have memory issues (makes the dev server throw errors but startup gets very fast)
+  // https://github.com/gatsbyjs/gatsby/discussions/36852
+  // https://github.com/gatsbyjs/gatsby/pull/37040  -> will become obsolete if this feature is published
+  if (stage === 'develop' && lowMemMode) {
+    config.experiments = {
+      ...config.experiments,
+      ...{
+        lazyCompilation: {
+          imports: true,
+          entries: true,
+        },
+      },
+    };
   }
 
   config.resolve = {

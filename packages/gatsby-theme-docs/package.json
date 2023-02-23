@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "20.2.0",
+  "version": "21.0.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -17,7 +17,7 @@
     "create-docs-release-note": "bin/create-release-note.js"
   },
   "dependencies": {
-    "@commercetools-docs/ui-kit": "20.2.0",
+    "@commercetools-docs/ui-kit": "21.0.0",
     "@commercetools-uikit/card": "15.3.0",
     "@commercetools-uikit/checkbox-input": "15.3.0",
     "@commercetools-uikit/design-system": "15.3.0",
@@ -34,7 +34,8 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "4.5.8",
     "@fontsource/roboto-mono": "4.5.10",
-    "@mdx-js/react": "2.3.0",
+    "@mdx-js/mdx": "1.6.22",
+    "@mdx-js/react": "1.6.22",
     "@sentry/browser": "7.37.1",
     "@svgr/webpack": "6.5.1",
     "@videojs/themes": "^1.0.1",
@@ -47,7 +48,7 @@
     "gatsby-plugin-hubspot": "2.0.0",
     "gatsby-plugin-image": "2.25.0",
     "gatsby-plugin-manifest": "4.25.0",
-    "gatsby-plugin-mdx": "4.4.0",
+    "gatsby-plugin-mdx": "3.20.0",
     "gatsby-plugin-sharp": "4.25.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.30",
     "gatsby-remark-copy-linked-files": "5.25.0",
@@ -64,6 +65,7 @@
     "intersection-observer": "0.12.2",
     "lodash.throttle": "4.1.1",
     "mdast-util-to-string": "^3.1.1",
+    "mdast-util-toc": "6.1.1",
     "moment-locales-webpack-plugin": "1.2.0",
     "moment-timezone": "0.5.40",
     "moment-timezone-data-webpack-plugin": "1.5.1",
@@ -80,7 +82,7 @@
     "remark-emoji": "3.1.0",
     "remark-frontmatter": "3.0.0",
     "remark-gfm": "1.0.0",
-    "remark-mdx": "2.3.0",
+    "remark-mdx": "1.6.22",
     "remark-mdx-code-meta": "2.0.0",
     "remark-parse": "9.0.0",
     "remark-rehype": "8.1.0",

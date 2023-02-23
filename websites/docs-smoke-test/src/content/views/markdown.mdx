@@ -5,8 +5,10 @@ timeToRead: 5
 ---
 
 <Subtitle>
+
 This page gives an overview of different markdown elements and how they fit together.
-Custom React components **embedded in the markdown** can also support markdown syntax.
+Custom React components **embedded in the markdown** can also support markdown syntax, as long as there are **empty lines** between the component tag and the content.
+
 </Subtitle>
 
 # A section header
@@ -75,41 +77,41 @@ Here's a nested ordered list:
 
 Here's a definition list:
 
-<Dl>
-  <Dt>
+<dl>
+  <dt>
 
 `Healthy`
 
-  </Dt>
-  <Dd>The subscription is delivering messages as expected</Dd>
-  <Dt>
+  </dt>
+  <dd>The subscription is delivering messages as expected</dd>
+  <dt>
 
 `ConfigurationError`
 
-  </Dt>
-  <Dd>
+  </dt>
+  <dd>
 
 Messages can not be delivered with the current configuration. If the configuration is fixed in this health status,
 all messages that haven’t been delivered yet will still be delivered and the status will change to `Healthy`.
 
 `ConfigurationError`s are automatically turned into `ConfigurationErrorDeliveryStopped` after some time. See the [Delivery Guarantees](#last-section) section for more details.
 
-  </Dd>
-  <Dt>
+  </dd>
+  <dt>
 
 `ConfigurationErrorDeliveryStopped`
 
-  </Dt>
-  <Dd>
+  </dt>
+  <dd>
 
 Messages can not be delivered with the current configuration and delivery of those is not attempted anymore.
 Undelivered messages are not retained and will not be delivered if the configuration is fixed in this status, but the status will change to `Healthy`
 as soon as new messages can be delivered successfully again.
 
-  </Dd>
-  <Dt>Something else</Dt>
-  <Dd>Yet something else</Dd>
-</Dl>
+  </dd>
+  <dt>Something else</dt>
+  <dd>Yet something else</dd>
+</dl>
 
 ### Subsection (second level)
 
@@ -143,11 +145,15 @@ that last line which continues item 3).
 
 ## Code blocks
 
-Note that code blocks created by indenting content by 4 spaces (4 characters
-from the left side) are **not** supported and will **not** work as expected.
+Note again how the actual text starts at 4 columns in (4 characters
+from the left side). Here's a code sample:
 
-The only supported way to create code blocks is by using delimited blocks, where you can
-specify syntax highlight:
+    # Let me re-iterate ...
+    for i in 1 .. 10 { do-something(i) }
+
+As you probably guessed, indented 4 spaces. By the way, instead of
+indenting the block, you can use delimited blocks, where you can
+specify syntax highlight (**highly recommended**):
 
 ```js
 const sum = (a, b) => a + b;
@@ -182,10 +188,6 @@ Tables look like this:
 - Number example in bold -> **<Constant type="limits" name="slugLength"/>**
 - Text example -> <Constant type="limits" name="slugPattern"/>
 - Long formatted number example -> <Constant type="limits" name="resourceLimit" />
-
-## Emoji
-
-You can add cool emoji! :dog: :+1:
 
 # Last section
 

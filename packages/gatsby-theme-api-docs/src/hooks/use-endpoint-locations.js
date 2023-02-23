@@ -8,30 +8,28 @@ var overridesAreIndexed = false;
 const endpointLocations = {};
 const endpointLocationOverrides = {};
 
+const buildPageSlug = (page) => {
+  const [pathWithoutExt] = page.parent.relativePath.split(page.parent.ext);
+  return `/${pathWithoutExt}`;
+};
+
 const convertComponentInMdxToEndpointLocations = (data) => {
   if (!locationsAreIndexed) {
-    data.allContentPage.nodes.forEach((node) => {
-      node.shortcodeOccurrence.forEach((occurrence) => {
-        if (occurrence.component !== 'ApiEndpoint') {
-          return;
-        }
-        const key = occurrence.attributes.find(
-          (attribute) => attribute.name === 'apiKey'
-        ).value;
-        const resource = occurrence.attributes.find(
-          (attribute) => attribute.name === 'resource'
-        ).value;
-        const method = occurrence.attributes.find(
-          (attribute) => attribute.name === 'method'
-        ).value;
-        const urn = generateEndpointURN({
-          apiKey: key,
-          method,
-          path: resource,
-        });
-        const url = node.slug && urn ? `${node.slug}#${urn}` : '';
-        endpointLocations[`${key}__${resource}__${method}`] = { url };
-      });
+    data.allComponentInMdx.nodes.forEach((node) => {
+      const apiKey =
+        node.attributes[0].name === 'apiKey' ? node.attributes[0].value : null;
+      const resource =
+        node.attributes[1].name === 'resource'
+          ? node.attributes[1].value
+          : null;
+      const method =
+        node.attributes[2].name === 'method' ? node.attributes[2].value : null;
+
+      const slug = buildPageSlug(node.page);
+      const urn = generateEndpointURN({ apiKey, method, path: resource });
+      const url = slug && urn ? `${slug}#${urn}` : '';
+
+      endpointLocations[`${apiKey}__${resource}__${method}`] = { url };
     });
   }
   locationsAreIndexed = true;
@@ -56,20 +54,19 @@ export const useEndpointLocations = () => {
   const queryResult = useStaticQuery(
     graphql`
       {
-        allContentPage(
-          filter: {
-            shortcodeOccurrence: {
-              elemMatch: { component: { eq: "ApiEndpoint" } }
-            }
-          }
-        ) {
+        allComponentInMdx(filter: { component: { eq: "ApiEndpoint" } }) {
           nodes {
-            slug
-            shortcodeOccurrence {
-              component
-              attributes {
-                name
-                value
+            attributes {
+              name
+              value
+            }
+            page: mdx {
+              parent {
+                id
+                ... on File {
+                  relativePath
+                  ext
+                }
               }
             }
           }
