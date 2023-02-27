@@ -10,7 +10,6 @@ import {
 } from '@commercetools-docs/ui-kit';
 import { Link as GatsbyLink } from '@commercetools-docs/gatsby-theme-docs';
 import transformURNLinksPlugin from '../../../utils/transform-urn-links-plugin';
-import RegexProperty from '../../type/properties/regex-properties';
 import capitalizeFirst from '../../../utils/capitalize-first';
 import { typography } from '../../../design-system';
 import { Info, InfoValue } from '../../info';
@@ -31,9 +30,6 @@ const DescriptionTextContainer = styled.span`
   display: inline-block;
 `;
 
-const isRegex = (string) =>
-  string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
-
 const Headers = (props) => {
   console.log(props.headers);
   return (
@@ -48,15 +44,11 @@ const Headers = (props) => {
                   <SpacingsStack scale="xs">
                     <PropertyName>
                       <SpacingsInline scale="xs">
-                        {isRegex(header.header) ? (
-                          <RegexProperty expression={header.header} />
-                        ) : (
-                          <Markdown.InlineCode>
-                            {header.displayName
-                              ? header.displayName
-                              : header.header}
-                          </Markdown.InlineCode>
-                        )}
+                        <Markdown.InlineCode>
+                          {header.displayName
+                            ? header.displayName
+                            : header.header}
+                        </Markdown.InlineCode>
                         {'\u200B' /* zero-width space for the search crawler */}
                         {header.required && <Required />}
                       </SpacingsInline>
