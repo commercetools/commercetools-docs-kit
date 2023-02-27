@@ -122,7 +122,9 @@ const Method = ({
                 <Scopes scopes={method.securedBy[0].oauth_2_0.scopes} />
               )}
 
-              {method.headers && <Headers headers={method.headers} />}
+              {method.headers && (
+                <Headers title={'Request headers'} headers={method.headers} />
+              )}
 
               {allUriParameters.length > 0 && (
                 <Parameters

@@ -120,11 +120,14 @@ const defineRamlResource = ({ schema, createTypes }) => {
       name: 'RamlResourceHeaders',
       fields: {
         header: 'String!',
+        displayName: 'String',
+        default: 'String',
         pattern: 'String',
         type: 'String',
         builtinType: 'String',
         description: 'String',
         required: 'Boolean',
+        enum: '[String!]',
       },
     }),
 

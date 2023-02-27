@@ -54,31 +54,6 @@ uses:
   soft-links: types/soft-links.raml
   unions: types/unions.raml
 
-traits:
-  right-header:
-    headers:
-      Accept:
-        displayName: Accept Header
-        type: string
-        description: Accept application/json Header
-        required: true
-        pattern: application/json
-        default: application/json
-  frontastic-locale:
-    headers:
-      Frontastic-Locale:
-        displayName: Frontastic Locale
-        type: any
-        description: Locale
-  action-errorable:
-    responses:
-      400:
-        description: Action not registered.
-        body:
-          application/json:
-            type: any
-            example: !include ./examples/action-error.json
-
 # Endpoints ("Resources" in RAML and HTTP terminology)
 # Every CT API endpoint starts at this root
 /{projectKey}:
@@ -511,10 +486,24 @@ traits:
           type: string
           description: The name of the action to invoked.
       get:
-        is:
-          - action-errorable
-          - right-header
-          - frontastic-locale
+        headers:
+          Frontastic-Locale:
+            displayName: Frontastic Locale
+            type: string
+            description: Locale
+          Frontastic-Path:
+            displayName: Frontastic Path
+            type: string
+            description: Path
+            required: true
+            pattern: ^/.*$
+          Accept:
+            displayName: Accept Header
+            type: string
+            description: Accept application/json Header
+            required: true
+            pattern: application/json
+            default: application/json
         description: Use the GET method to allow the frontend to fetch data from a backend system. For the response, we recommend to use standard HTTP codes and `application/json` encoded content. The response will be structured [as defined by the body property of the action](/../frontend-development/developing-an-action-extension#1-implement-the-action). The following response example contains information about a cart.
         responses:
           200:

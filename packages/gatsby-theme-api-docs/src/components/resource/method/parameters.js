@@ -13,7 +13,7 @@ import RegexProperty from '../../type/properties/regex-properties';
 import Table from '../../table';
 import Title from './title';
 import { DescriptionText } from '../../description';
-import Info from '../../info';
+import { Info } from '../../info';
 import { typography } from '../../../design-system';
 
 const isRegex = (string) =>

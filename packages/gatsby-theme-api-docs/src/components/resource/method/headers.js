@@ -4,49 +4,102 @@ import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import {
+  Markdown,
   designSystem,
   markdownFragmentToReact,
 } from '@commercetools-docs/ui-kit';
+import { Link as GatsbyLink } from '@commercetools-docs/gatsby-theme-docs';
+import transformURNLinksPlugin from '../../../utils/transform-urn-links-plugin';
+import RegexProperty from '../../type/properties/regex-properties';
+import capitalizeFirst from '../../../utils/capitalize-first';
+import { typography } from '../../../design-system';
+import { Info, InfoValue } from '../../info';
+import Required from '../../required';
+import Table from '../../table';
+import Title from './title';
 
-const HeaderListContainer = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.l};
+const PropertyName = styled.div`
+  white-space: nowrap;
+  line-height: ${typography.lineHeights.propertyType};
+`;
+const PropertyType = styled.div`
+  line-height: ${typography.lineHeights.propertyType};
+  color: ${designSystem.colors.light.textFaded};
 `;
 
-const HeaderListItem = styled.li`
-  padding: ${designSystem.dimensions.spacings.xs} 0px;
+const DescriptionTextContainer = styled.span`
+  display: inline-block;
 `;
 
-const highlightHeader = (header) => `\`${header}\``;
+const isRegex = (string) =>
+  string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
 
 const Headers = (props) => {
+  console.log(props.headers);
   return (
     <SpacingsStack scale="xs">
-      <div>Headers:</div>
-      <HeaderListContainer>
-        <ul>
-          {props.headers.map((header, itemImdex) => {
-            console.log(header);
+      {props.title && <Title>{props.title}:</Title>}
+      <Table>
+        <tbody>
+          {props.headers.map((header, headerIndex) => {
             return (
-              <HeaderListItem key={itemImdex}>
-                <SpacingsInline scale="xs">
-                  {markdownFragmentToReact(highlightHeader(header.header))}
-                  {header.required && <p>-</p>}
-                  {header.required && <p>Required</p>}
-                </SpacingsInline>
-              </HeaderListItem>
+              <tr key={headerIndex}>
+                <td>
+                  <SpacingsStack scale="xs">
+                    <PropertyName>
+                      <SpacingsInline scale="xs">
+                        {isRegex(header.header) ? (
+                          <RegexProperty expression={header.header} />
+                        ) : (
+                          <Markdown.InlineCode>
+                            {header.displayName
+                              ? header.displayName
+                              : header.header}
+                          </Markdown.InlineCode>
+                        )}
+                        {'\u200B' /* zero-width space for the search crawler */}
+                        {header.required && <Required />}
+                      </SpacingsInline>
+                    </PropertyName>
+                    <PropertyType>
+                      {capitalizeFirst(header.type)}
+                      {'\u200B' /* zero-width space for the search crawler */}
+                    </PropertyType>
+                  </SpacingsStack>
+                </td>
+                <td>
+                  <SpacingsStack scale="xs">
+                    <DescriptionTextContainer data-search-key="embedded-api-description">
+                      {markdownFragmentToReact(
+                        header.description,
+                        { a: GatsbyLink },
+                        transformURNLinksPlugin
+                      )}
+                    </DescriptionTextContainer>
+                    <SpacingsInline>
+                      {header.pattern && (
+                        <Info>
+                          Pattern<InfoValue>{header.pattern}</InfoValue>
+                        </Info>
+                      )}
+                    </SpacingsInline>
+                  </SpacingsStack>
+                </td>
+              </tr>
             );
           })}
-        </ul>
-      </HeaderListContainer>
+        </tbody>
+      </Table>
     </SpacingsStack>
   );
 };
 
 Headers.propTypes = {
+  title: PropTypes.string.isRequired,
   headers: PropTypes.arrayOf(
     PropTypes.shape({
       header: PropTypes.string.isRequired,
-      builtinType: PropTypes.string,
+      displayName: PropTypes.string,
       description: PropTypes.string,
       type: PropTypes.string,
       required: PropTypes.bool,

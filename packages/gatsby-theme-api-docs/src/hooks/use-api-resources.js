@@ -27,7 +27,9 @@ export const useApiResources = () => {
         }
         headers {
           header
-          builtinType
+          displayName
+          default
+          enum
           description
           type
           required
