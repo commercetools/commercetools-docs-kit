@@ -4,7 +4,6 @@
 type: BaseResource
 displayName: Store
 (updateType): StoreUpdate
-(java-extends): 'com.commercetools.api.models.DomainResource<Store>, com.commercetools.api.models.Customizable<Store>'
 properties:
   id:
     (identifier): true
@@ -49,6 +48,11 @@ properties:
     type: Locale[]
     description: |
       Languages configured for the Store.
+  countries:
+    (beta): true
+    type: StoreCountry[]
+    description: |
+      Countries defined for the Store.
   distributionChannels:
     type: ChannelReference[]
     description: |

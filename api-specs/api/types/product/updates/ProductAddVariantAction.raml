@@ -15,10 +15,10 @@ properties:
     description: |
       Value to set. Must be unique.
   prices?:
-    type: EmbeddedPriceDraft[]
+    type: PriceDraft[]
     maxItems: 100
     description: |
-      EmbeddedPrices for the Product Variant.
+      Embedded Prices for the Product Variant.
   images?:
     type: Image[]
     description: |
@@ -32,6 +32,6 @@ properties:
       If `true` the new Product Variant is only staged. If `false` the new Product Variant is both current and staged.
     default: true
   assets?:
-    type: Asset[]
+    type: AssetDraft[]
     description: |
       Media assets for the Product Variant.

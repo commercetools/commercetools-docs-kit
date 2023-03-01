@@ -5,7 +5,8 @@ displayName: StandalonePriceDraft
 type: object
 description: |-
   Standalone Prices are defined with a scope consisting of `currency` and optionally `country`, `customerGroup`, and `channel` and/or a validity period (`validFrom` and/or `validTo`). For more information see [price selection](/../api/projects/products#price-selection).
-  Creating a Standalone Price is rejected if there already exists a Standalone Price for the same SKU with exactly the same price scope, or with overlapping validity periods within the same price scope. A Price without validity period does not conflict with a Price defined for a time period.
+
+  Creating a Standalone Price for an SKU which has a Standalone Price with exactly the same price scope, or with overlapping validity periods within the same price scope returns the [DuplicateStandalonePriceScope](ctp:api:type:DuplicateStandalonePriceScopeError) and [OverlappingStandalonePriceValidity](ctp:api:type:OverlappingStandalonePriceValidityError) errors, respectively. A Price without validity period does not conflict with a Price defined for a time period.
 properties:
   key?:
     type: string
@@ -38,11 +39,11 @@ properties:
   validFrom?:
     type: datetime
     description: |
-      Sets the date from which the Price is valid. Must be at least 1 ms before `validUntil`.
+      Sets the date from which the Price is valid. Must be at least 1 ms earlier than `validUntil`.
   validUntil?:
     type: datetime
     description: |
-      Sets the date until the Price is valid. Must be at least 1 ms after `validFrom`.
+      Sets the date until the Price is valid. Must be at least 1 ms later than `validFrom`.
   tiers?:
     type: PriceTierDraft[]
     description: |
@@ -55,3 +56,10 @@ properties:
     type: CustomFieldsDraft
     description: |
       Custom Fields for the StandalonePrice.
+  active?:
+    type: boolean
+    default: true
+    (beta): true
+    description: |
+      If set to `true`, the StandalonePrice is considered during [price selection](ctp:api:type:ProductPriceSelection).
+      If set to `false`, the StandalonePrice is not considered during [price selection](ctp:api:type:ProductPriceSelection).

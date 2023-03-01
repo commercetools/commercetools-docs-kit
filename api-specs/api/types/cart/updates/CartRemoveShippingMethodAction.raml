@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Cart
+(docs-uri): https://docs.commercetools.com/api/projects/carts#remove-shipping-method
+type: CartUpdateAction
+displayName: CartRemoveShippingMethodAction
+discriminatorValue: removeShippingMethod
+example: !include ../../../examples/Cart/CartRemoveShippingMethodAction.json
+description: |
+  Removes a Shipping Method from a Cart that has the `Multiple` [ShippingMode](ctp:api:type:ShippingMode).
+properties:
+  shippingKey:
+    type: string
+    description: |
+      User-defined unique identifier of the Shipping Method to remove from the Cart.

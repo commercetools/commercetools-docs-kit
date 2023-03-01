@@ -11,9 +11,6 @@ type:
 description: |
   Products themselves are not sellable. Instead, they act as a parent structure for sellable Product Variants.
 get:
-  (java-implements):
-    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyProductsGet,
-    com.commercetools.api.models.product.ProductPagedQueryResponse>'
   (csharp-implements):
     'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyProductsGet,
     commercetools.Sdk.Api.Models.Products.IProductPagedQueryResponse>'
@@ -87,6 +84,7 @@ post:
     securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
     is:
       - priceSelecting
+    description: A failed response can return a [DuplicatePriceScope](ctp:api:type:DuplicatePriceScopeError), [DuplicateVariantValues](ctp:api:type:DuplicateVariantValuesError), [DuplicateAttributeValue](ctp:api:type:DuplicateAttributeValueError), or [DuplicateAttributeValues](ctp:api:type:DuplicateAttributeValuesError) error.
     body:
       application/json:
         example: !include ../examples/product-update.example.json
@@ -149,6 +147,8 @@ post:
       - priceSelecting
     description: |-
       If [Price selection](ctp:api:type:ProductPriceSelection) query parameters are provided, the selected Prices are added to the response.
+
+      A failed response can return a [DuplicatePriceScope](ctp:api:type:DuplicatePriceScopeError), [DuplicateVariantValues](ctp:api:type:DuplicateVariantValuesError), [DuplicateAttributeValue](ctp:api:type:DuplicateAttributeValueError), or [DuplicateAttributeValues](ctp:api:type:DuplicateAttributeValuesError) error.
     body:
       application/json:
         example: !include ../examples/product-update.example.json

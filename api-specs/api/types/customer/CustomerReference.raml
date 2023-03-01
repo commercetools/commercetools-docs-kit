@@ -1,7 +1,6 @@
 #%RAML 1.0 DataType
 (package): Customer
-(docs-uri): https://docs.commercetools.com/http-api-projects-customers.html#customer
-(java-extends): com.commercetools.api.models.Identifiable<Customer>
+(docs-uri): https://docs.commercetools.com/api/projects/customers#customerreference
 type: Reference
 displayName: CustomerReference
 discriminatorValue: customer
@@ -11,7 +10,7 @@ properties:
   obj?:
     type: Customer
     description: |
-      Contains the representation of the expanded Customer. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for Customers.
+      Contains the representation of the expanded Customer. Only present in responses to requests with [Reference Expansion](ctp:api:type:Expansion) for Customers.
   id:
     type: string
     description: |

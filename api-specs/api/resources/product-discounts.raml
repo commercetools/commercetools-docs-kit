@@ -10,9 +10,6 @@ type:
 (createable): ProductDiscountDraft
 description: Product discounts are used to change certain product prices.
 get:
-  (java-implements):
-    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyProductDiscountsGet,
-    com.commercetools.api.models.product_discount.ProductDiscountPagedQueryResponse>'
   (csharp-implements):
     'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyProductDiscountsGet,
     commercetools.Sdk.Api.Models.ProductDiscounts.IProductDiscountPagedQueryResponse>'
@@ -39,6 +36,8 @@ post:
     description: |
       This endpoint can be used to simulate which Product Discounts would be applied if a specified Product Variant had a specified Price.
       Given Product and Product Variant IDs and a Price, this endpoint will return the [ProductDiscount](ctp:api:type:ProductDiscount) that would have been applied to that Price.
+
+      If a Product Discount could not be found that could be applied to the Price of a Product Variant, a [NoMatchingProductDiscountFound](ctp:api:type:NoMatchingProductDiscountFoundError) error is returned.
     securedBy: [oauth_2_0: { scopes: ['view_products:{projectKey}'] }]
     body:
       application/json:

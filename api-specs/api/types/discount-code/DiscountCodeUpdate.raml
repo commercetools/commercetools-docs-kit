@@ -2,15 +2,13 @@
 (package): DiscountCode
 type: object
 displayName: DiscountCodeUpdate
-(java-extends): 'com.commercetools.api.models.ResourceUpdate<DiscountCodeUpdate,
-  DiscountCodeUpdateAction, DiscountCodeUpdateBuilder>'
 properties:
   version:
     type: number
     format: int64
     description: |
       Expected version of the DiscountCode on which the changes should be applied.
-      If the expected version does not match the actual version, a [409 Conflict](/../api/errors#409-conflict) will be returned.
+      If the expected version does not match the actual version, a [ConcurrentModification](ctp:api:type:ConcurrentModificationError) error is returned.
   actions:
     type: array
     items: DiscountCodeUpdateAction

@@ -7,6 +7,7 @@ description: |
 enum:
   - address
   - asset
+  - business-unit
   - cart-discount
   - category
   - channel
@@ -27,16 +28,20 @@ enum:
   - product-selection
   - quote
   - review
+  - shipping
   - shipping-method
   - shopping-list
   - shopping-list-text-line-item
+  - standalone-price
   - store
   - transaction
 (enumDescriptions):
   address: |
-    [Address](ctp:api:type:Address) on [Cart](ctp:api:type:Cart), [Order](ctp:api:type:Order), [OrderEdit](ctp:api:type:OrderEdit), [Customer](ctp:api:type:Customer), and [Channel](ctp:api:type:Channel)
+    [Address](ctp:api:type:Address) on [BusinessUnit](ctp:api:type:BusinessUnit), [Cart](ctp:api:type:Cart), [Order](ctp:api:type:Order), [OrderEdit](ctp:api:type:OrderEdit), [Customer](ctp:api:type:Customer), and [Channel](ctp:api:type:Channel)
   asset: |
     [Asset](ctp:api:type:Asset) on [Category](ctp:api:type:Category) and [ProductVariant](ctp:api:type:ProductVariant)
+  business-unit: |
+    [BusinessUnit](ctp:api:type:BusinessUnit)
   cart-discount: |
     [CartDiscount](ctp:api:type:CartDiscount)
   category: |
@@ -72,7 +77,7 @@ enum:
   payment-interface-interaction: |
     [InterfaceInteraction](ctp:api:type:PaymentAddInterfaceInteractionAction) on [Payment](ctp:api:type:Payment)
   product-price: |
-    [Price](ctp:api:type:Price) on [ProductVariant](ctp:api:type:ProductVariant)
+    [Embedded Price](/projects/products#embedded-price) on [ProductVariant](ctp:api:type:ProductVariant)
   product-selection: |
     [ProductSelection](ctp:api:type:ProductSelection)
   quote: |
@@ -81,12 +86,16 @@ enum:
     For this reason, the Types for Quotes are also valid for QuoteRequests and StagedQuotes, and hence all have the same identifier: `quote`.
   review: |
     [Review](ctp:api:type:Review)
+  shipping: |
+    [Shipping](ctp:api:type:Shipping)
   shipping-method: |
     [ShippingMethod](ctp:api:type:ShippingMethod)
   shopping-list: |
     [ShoppingList](ctp:api:type:ShoppingList)
   shopping-list-text-line-item: |
     [TextLineItem](ctp:api:type:TextLineItem) on [ShoppingList](ctp:api:type:ShoppingList)
+  standalone-price: |
+    [StandalonePrice](ctp:api:type:StandalonePrice)
   store: |
     [Store](ctp:api:type:Store)
   transaction: |

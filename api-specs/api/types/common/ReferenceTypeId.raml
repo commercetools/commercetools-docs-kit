@@ -5,6 +5,8 @@ type: string
 description: |
   Type of resource the value should reference. Supported resource type identifiers are:
 enum:
+  - attribute-group
+  - business-unit
   - cart
   - cart-discount
   - category
@@ -29,6 +31,7 @@ enum:
   - shipping-method
   - shopping-list
   - staged-quote
+  - standalone-price
   - state
   - store
   - subscription
@@ -36,6 +39,10 @@ enum:
   - type
   - zone
 (enumDescriptions):
+  attribute-group: |
+    References an [AttributeGroup](ctp:api:type:AttributeGroup).
+  business-unit: |
+    References a [BusinessUnit](ctp:api:type:BusinessUnit).
   cart: |
     References a [Cart](ctp:api:type:Cart).
   cart-discount: |
@@ -67,7 +74,7 @@ enum:
   product-discount: |
     References a [ProductDiscount](ctp:api:type:ProductDiscount).
   product-price: |
-    References an [EmbeddedPrice](ctp:api:type:EmbeddedPrice).
+    References an [Embedded Price](/projects/products#embedded-price).
   product-selection: |
     References a [ProductSelection](ctp:api:type:ProductSelection).
   product-type: |
@@ -84,6 +91,8 @@ enum:
     References a [ShoppingList](ctp:api:type:ShoppingList).
   staged-quote: |
     References a [StagedQuote](ctp:api:type:StagedQuote).
+  standalone-price: |
+    References a [StandalonePrice](ctp:api:type:StandalonePrice).
   state: |
     References a [State](ctp:api:type:State).
   store: |

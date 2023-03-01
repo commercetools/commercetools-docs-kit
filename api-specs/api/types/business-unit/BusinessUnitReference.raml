@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+(package): BusinessUnit
+(docs-uri): https://docs.commercetools.com/api/projects/business-units#businessunitreference
+type: Reference
+displayName: BusinessUnitReference
+discriminatorValue: business-unit
+description: |
+  [Reference](/../api/types#reference) to a [BusinessUnit](ctp:api:type:BusinessUnit).
+properties:
+  obj?:
+    type: BusinessUnit
+    description: |
+      Contains the representation of the expanded BusinessUnit. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for BusinessUnit.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [BusinessUnit](ctp:api:type:BusinessUnit).

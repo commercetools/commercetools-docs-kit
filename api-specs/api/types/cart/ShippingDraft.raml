@@ -1,0 +1,42 @@
+#%RAML 1.0 DataType
+(package): Cart
+(docs-uri): https://docs.commercetools.com/api/projects/carts#shippingdraft
+displayName: ShippingDraft
+type: object
+description: |
+  Wraps all shipping-related information (such as address, rate, deliveries) per Shipping Method for Carts with multiple Shipping Methods.
+properties:
+  key:
+    type: string
+    description: |
+      User-defined unique identifier for the Shipping in a Cart with `Multiple` [ShippingMode](ctp:api:type:ShippingMode).
+  shippingMethod?:
+    type: ShippingMethodReference
+    description: |
+      Shipping Methods added to the Cart with `Multiple` [ShippingMode](ctp:api:type:ShippingMode).
+  shippingAddress:
+    type: BaseAddress
+    description: |
+      Determines the shipping rate and Tax Rate of the associated Line Items.
+  shippingRateInput?:
+    type: ShippingRateInputDraft
+    description: |
+      Input used to select a [ShippingRatePriceTier](ctp:api:type:ShippingRatePriceTier).
+      The data type of this field depends on the `shippingRateInputType.type` configured in the [Project](ctp:api:type:Project):
+
+      - If `CartClassification`, it must be [ClassificationShippingRateInputDraft](ctp:api:type:ClassificationShippingRateInputDraft).
+      - If `CartScore`, it must be [ScoreShippingRateInputDraft](ctp:api:type:ScoreShippingRateInputDraft).
+      - If `CartValue`, it cannot be set.
+
+  externalTaxRate?:
+    type: ExternalTaxRateDraft
+    description: |
+      Tax Rate used for taxing a shipping expense if the Cart has the `External` [TaxMode](ctp:api:type:TaxMode).
+  deliveries?:
+    type: DeliveryDraft[]
+    description: |
+      Deliveries to be shipped with the Shipping Method.
+  custom?:
+    type: CustomFieldsDraft
+    description: |
+      Custom Fields for Shipping.
