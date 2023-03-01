@@ -13,6 +13,7 @@ import Url from './url';
 import Scopes from './scopes';
 import Responses from './responses';
 import Parameters from './parameters';
+import Headers from './headers';
 import QueryParameters from './query-parameters';
 import RequestRepresentation from './request-representation';
 import { DescriptionParagraph } from '../../description';
@@ -119,6 +120,10 @@ const Method = ({
 
               {method.securedBy && (
                 <Scopes scopes={method.securedBy[0].oauth_2_0.scopes} />
+              )}
+
+              {method.headers && (
+                <Headers title={'Request headers'} headers={method.headers} />
               )}
 
               {allUriParameters.length > 0 && (

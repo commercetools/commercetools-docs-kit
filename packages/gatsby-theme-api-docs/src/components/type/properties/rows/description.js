@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { Markdown, useISO310NumberFormatter } from '@commercetools-docs/ui-kit';
+import { Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import extractAdditionalInfo from '../../../../utils/extract-additional-info';
 import capitalizeFirst from '../../../../utils/capitalize-first';
 import { useApiTypeByApiKeyAndDisplayName } from '../../../../hooks/use-api-types';
 import { DescriptionText } from '../../../description';
-import Info from '../../../info';
+import { Info, InfoValue } from '../../../info';
 
 const customCodeStyle = css`
   border: none;
@@ -60,43 +60,6 @@ ConstantLikeEnumDescription.propTypes = {
   }),
 };
 
-const InfoValue = (props) => {
-  const value = props.children;
-  const valueType = typeof value;
-  const formatNumber = useISO310NumberFormatter();
-
-  switch (valueType) {
-    case 'boolean':
-      return value ? (
-        ''
-      ) : (
-        <>
-          : <Markdown.InlineCode css={customCodeStyle}>No</Markdown.InlineCode>
-        </>
-      );
-    case 'number':
-      return (
-        <>
-          :{' '}
-          <Markdown.InlineCode css={customCodeStyle}>
-            {formatNumber(value)}
-          </Markdown.InlineCode>
-        </>
-      );
-    default:
-      return (
-        <>
-          :{' '}
-          <Markdown.InlineCode css={customCodeStyle}>
-            {value}
-          </Markdown.InlineCode>
-        </>
-      );
-  }
-};
-InfoValue.propTypes = {
-  children: PropTypes.any.isRequired,
-};
 const AdditionalInfo = (props) => {
   const additionalInfos = extractAdditionalInfo(props.property);
   return (

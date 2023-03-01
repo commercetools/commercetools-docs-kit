@@ -475,6 +475,43 @@ uses:
                 type: object
                 example: !include examples/action-success.json
 
+    /namespace-action-with-headers:
+      uriParameters:
+        namespace:
+          displayName: Namespace
+          type: string
+          description: The namespace where the action to invoked is located.
+        action:
+          displayName: Action
+          type: string
+          description: The name of the action to invoked.
+      get:
+        headers:
+          Frontastic-Locale:
+            displayName: Frontastic Locale
+            type: string
+            description: Locale
+          Frontastic-Path:
+            displayName: Frontastic Path
+            type: string
+            description: Path
+            required: true
+            pattern: ^/.*$
+          Accept:
+            displayName: Accept Header
+            type: string
+            description: Accept application/json Header
+            required: true
+            pattern: application/json
+            default: application/json
+        description: Use the GET method to allow the frontend to fetch data from a backend system. For the response, we recommend to use standard HTTP codes and `application/json` encoded content. The response will be structured as defined by the body property of the action.
+        responses:
+          200:
+            description: The response will be structured as defined by the body property of the action.
+            body:
+              application/json:
+                type: object
+                example: !include examples/action-success.json
 
 #   /resourceWithHeaders:
 #    description: Tests use of specific headers.

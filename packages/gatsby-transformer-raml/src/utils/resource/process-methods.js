@@ -1,5 +1,6 @@
 const parametersToArray = require('../parameters-to-array');
 const responsesToArray = require('./responses-to-array');
+const headersToArray = require('./headers-to-array');
 const codeExamplesToArray = require('./code-examples-to-array');
 const examplesToArray = require('./examples-to-array').examplesToArray;
 const resolveExampleFile = require('./examples-to-array').resolveExampleFile;
@@ -31,6 +32,10 @@ function processMethods({
 
       returnedMethods[method].responses = responsesToArray(
         returnedMethods[method].responses
+      );
+
+      returnedMethods[method].headers = headersToArray(
+        returnedMethods[method].headers
       );
 
       returnedMethods[method].codeExamples = codeExamplesToArray(
