@@ -7,7 +7,8 @@ properties:
   cart:
     type: CartResourceIdentifier
     description: |
-      Cart for which a Quote is requested. Anonymous Carts as well as Carts with [Discount Codes](/../api?projects/discount-codes) are not supported.
+      Cart for which a Quote is requested.
+      Anonymous Carts, Carts with [Discount Codes](ctp:api:type:DiscountCode), or Carts with a `Multiple` [ShippingMode](ctp:api:type:ShippingMode) are not supported.
   cartVersion:
     type: number
     format: int64
@@ -33,3 +34,8 @@ properties:
     description: |
       [State](ctp:api:type:State) of this Quote Request.
       This reference can point to a State in a custom workflow.
+  purchaseOrderNumber?:
+    type: string
+    description: |
+      Identifier for a purchase order, usually in a B2B context.
+      The Purchase Order Number is typically entered by the [Buyer](/quotes-overview#buyer).

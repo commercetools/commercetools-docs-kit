@@ -10,14 +10,11 @@ type:
 (createable): CategoryDraft
 description: Categories are used to organize products in a hierarchical structure.
 get:
-  (java-implements):
-    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyCategoriesGet,
-    com.commercetools.api.models.category.CategoryPagedQueryResponse>'
   (csharp-implements):
     'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyCategoriesGet,
     commercetools.Sdk.Api.Models.Categories.ICategoryPagedQueryResponse>'
   description: |
-    Either the scope `view_products:{projectKey}` or `view_categories:{projectKey}` is required.
+    Either the [scope](/../api/scopes) `view_products:{projectKey}` or `view_categories:{projectKey}` is required.
   securedBy:
     [
       oauth_2_0:
@@ -33,7 +30,7 @@ get:
           example: !include ../examples/categories.example.json
 post:
   description: |
-    Either the scope `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
+    Either the [scope](/../api/scopes) `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
 
     Creating a Category produces the [CategoryCreated](ctp:api:type:CategoryCreatedMessage) Message.
   securedBy:
@@ -61,7 +58,7 @@ post:
       resourceUpdateType: CategoryUpdate
   get:
     description: |
-      Either the scope `view_products:{projectKey}` or `view_categories:{projectKey}` is required.
+      Either the [scope](/../api/scopes) `view_products:{projectKey}` or `view_categories:{projectKey}` is required.
     securedBy:
       [
         oauth_2_0:
@@ -77,7 +74,7 @@ post:
             example: !include ../examples/category.example.json
   post:
     description: |
-      Either the scope `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
+      Either the [scope](/../api/scopes) `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
     securedBy:
       [
         oauth_2_0:
@@ -99,7 +96,7 @@ post:
             example: !include ../examples/category.example.json
   delete:
     description: |
-      Either the scope `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
+      Either the [scope](/../api/scopes) `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
     securedBy:
       [
         oauth_2_0:
@@ -125,7 +122,7 @@ post:
       resourceUpdateType: CategoryUpdate
   get:
     description: |
-      Either the scope `view_products:{projectKey}` or `view_categories:{projectKey}` is required.
+      Either the [scope](/../api/scopes) `view_products:{projectKey}` or `view_categories:{projectKey}` is required.
     securedBy:
       [
         oauth_2_0:
@@ -141,7 +138,7 @@ post:
             example: !include ../examples/category.example.json
   post:
     description: |
-      Either the scope `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
+      Either the [scope](/../api/scopes) `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
     securedBy:
       [
         oauth_2_0:
@@ -163,7 +160,7 @@ post:
             example: !include ../examples/category.example.json
   delete:
     description: |
-      Either the scope `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
+      Either the [scope](/../api/scopes) `manage_products:{projectKey}` or `manage_categories:{projectKey}` is required.
     securedBy:
       [
         oauth_2_0:

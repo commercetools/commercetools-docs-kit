@@ -3,7 +3,6 @@
 (docs-uri): https://docs.commercetools.com/api/projects/customerGroups#customergroupdraft
 displayName: CustomerGroupDraft
 type: object
-(java-extends): 'com.commercetools.api.models.CustomizableDraft<CustomerGroupDraft>'
 properties:
   key?:
     type: string
@@ -16,7 +15,7 @@ properties:
     type: string
     description: |
       Unique value which must be different from any value used for `name` in [CustomerGroup](ctp:api:type:CustomerGroup) in the Project.
-      If not, a `DuplicateField` [error](/../api/errors#400-bad-request-1) is thrown.
+      If not, a [DuplicateField](ctp:api:type:DuplicateFieldError) error is returned.
   custom?:
     type: CustomFieldsDraft
     description: |

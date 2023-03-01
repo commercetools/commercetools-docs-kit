@@ -13,7 +13,7 @@ baseUriParameters:
       - eu-central-1.aws
       - australia-southeast1.gcp
     description: |
-      Region
+      [Region](/../api/general-concepts#hosts) in which the Project is hosted.
 version: v1
 securitySchemes:
   oauth_2_0: !include securitySchemes/oauth2.raml
@@ -29,6 +29,7 @@ traits:
   conflicting: !include traits/conflicting.raml
   versioned: !include traits/versioned.raml
   priceSelecting: !include traits/price-selecting.raml
+  projectionSelecting: !include traits/projection-selecting.raml
   localeProjecting: !include traits/locale-projecting.raml
   storeProjecting: !include traits/store-projecting.raml
   dataErasure: !include traits/data-erasure.raml
@@ -167,7 +168,7 @@ resourceTypes:
     displayName: Update project settings
     is:
       - conflicting
-    securedBy: [oauth_2_0: { scopes: ['manage_project:{projectKey}'] }]
+    securedBy: [oauth_2_0: { scopes: ['manage_project_settings:{projectKey}'] }]
     body:
       application/json:
         type: ProjectUpdate
@@ -176,6 +177,7 @@ resourceTypes:
         body:
           example: !include examples/project.example.json
           type: Project
+  /business-units: !include resources/business-units.raml
   /categories: !include resources/categories.raml
   /carts: !include resources/carts.raml
   /cart-discounts: !include resources/cart-discounts.raml
@@ -212,3 +214,5 @@ resourceTypes:
   /stores: !include resources/stores.raml
   /in-store/key={storeKey}: !include resources/in-store.raml
   /standalone-prices: !include resources/standalone-prices.raml
+  /in-business-unit/key={businessUnitKey}: !include resources/in-business-unit.raml
+  /attribute-groups: !include resources/attribute-groups.raml

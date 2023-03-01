@@ -2,12 +2,14 @@
 (package): ShoppingList
 type: object
 displayName: ShoppingListUpdate
-(java-extends): 'com.commercetools.api.models.ResourceUpdate<ShoppingListUpdate,
-  ShoppingListUpdateAction, ShoppingListUpdateBuilder>'
 properties:
   version:
     type: number
     format: int64
+    description: |
+      Expected version of the ShoppingList on which the changes should be applied. If the expected version does not match the actual version, a [409 Conflict](/../api/errors#409-conflict) will be returned.
   actions:
     type: array
     items: ShoppingListUpdateAction
+    description: |
+      List of update actions to be performed on the ShoppingList.

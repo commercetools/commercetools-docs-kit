@@ -3,7 +3,6 @@
 (docs-uri): https://docs.commercetools.com/api/projects/stores#storedraft
 displayName: StoreDraft
 type: object
-(java-extends): 'com.commercetools.api.models.CustomizableDraft<StoreDraft>'
 properties:
   key:
     type: string
@@ -21,6 +20,11 @@ properties:
     type: Locale[]
     description: |
       Languages defined in [Project](ctp:api:type:Project). Only languages defined in the Project can be used.
+  countries?:
+    (beta): true
+    type: StoreCountry[]
+    description: |
+      Countries defined for the Store.
   distributionChannels?:
     type: ChannelResourceIdentifier[]
     description: |

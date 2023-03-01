@@ -1,6 +1,6 @@
 #%RAML 1.0 DataType
 (package): Product
-(docs-uri): https://docs.commercetools.com/api/projects/products#add-embedded-price
+(docs-uri): https://docs.commercetools.com/api/projects/products#add-price
 type: ProductUpdateAction
 displayName: ProductAddPriceAction
 discriminatorValue: addPrice
@@ -19,9 +19,9 @@ properties:
     description: |
       The `sku` of the ProductVariant to update.
   price:
-    type: EmbeddedPriceDraft
+    type: PriceDraft
     description: |
-      EmbeddedPrice to add to the Product Variant.
+      Embedded Price to add to the Product Variant.
   staged?:
     type: boolean
     description: |

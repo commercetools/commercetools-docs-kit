@@ -3,7 +3,6 @@ get:
   displayName: Get my customer details
   is:
     - sortable:
-        sortExample: createdAt asc
     - paging
     - expandable
     - query:
@@ -13,10 +12,10 @@ get:
     200:
       body:
         application/json:
+          example: !include ../examples/customer.example.json
           type: Customer
 post:
   displayName: Update my customer
-  description: Update my customer
   securedBy: [oauth_2_0: { scopes: ['manage_my_profile:{projectKey}'] }]
   body:
     application/json:
@@ -30,7 +29,6 @@ post:
           type: Customer
 delete:
   displayName: Delete my Customer
-  description: Delete my Customer
   is:
     - versioned
     - conflicting
@@ -45,10 +43,13 @@ delete:
   type: base
   post:
     displayName: Verify my Customer's Email
+    description: |
+      This is the last step in the [email verification process of a Customer](/../api/projects/customers#email-verification-of-customer).
     securedBy: [oauth_2_0: { scopes: ['manage_my_profile:{projectKey}'] }]
     body:
       application/json:
-        type: CustomerEmailVerify
+        example: !include ../examples/Customer/CustomerEmailVerify.json
+        type: MyCustomerEmailVerify
     responses:
       200:
         description: The email was verified.
@@ -60,12 +61,17 @@ delete:
   type: base
   post:
     displayName: Change my customers password
+    description: |
+      Changing the password of the Customer produces the [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=false`.
+
+      If the current password does not match, an [InvalidCurrentPassword](ctp:api:type:InvalidCurrentPasswordError) error is returned.
     is:
       - conflicting
     securedBy: [oauth_2_0: { scopes: ['manage_my_profile:{projectKey}'] }]
     body:
       application/json:
         type: MyCustomerChangePassword
+        example: !include ../examples/Customer/MyCustomerChangePassword.json
     responses:
       200:
         body:
@@ -76,9 +82,14 @@ delete:
     type: base
     post:
       displayName: Reset my Customer's Password
+      description: |
+        This is the last step in the [password reset process of a Customer](/../api/projects/customers#password-reset-of-customer).
+
+        Resetting a password of the Customer produces the [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=true`.
       securedBy: [oauth_2_0: { scopes: ['manage_my_profile:{projectKey}'] }]
       body:
         application/json:
+          example: !include ../examples/Customer/CustomerResetPassword.json
           type: MyCustomerResetPassword
       responses:
         200:
@@ -90,32 +101,56 @@ delete:
   type: base
   post:
     displayName: Signup my customer
+    description: |
+      If used with an [access token for an anonymous session](ctp:api:type:AnonymousSession), all Orders and Carts that belong to the `anonymousId` are assigned to the newly created Customer.
+
+      Creating a Customer produces the [CustomerCreated](ctp:api:type:CustomerCreatedMessage) Message.
     securedBy: [oauth_2_0: { scopes: ['manage_my_profile:{projectKey}'] }]
     body:
       application/json:
+        example: !include ../examples/customer-create.example.json
         type: MyCustomerDraft
     responses:
       201:
         body:
           application/json:
+            example: !include ../examples/customer-sign-in-result.example.json
             type: CustomerSignInResult
 /login:
   type: base
   post:
     displayName: Authenticate my Customer (Sign In)
+    description: |
+      Retrieves the authenticated customer (that matches the given email/password pair).
+
+      If used with [an access token for an anonymous session](ctp:api:type:AnonymousSession), all Orders and Carts that belong to the `anonymousId` are assigned to the newly logged-in Customer.
+
+      - If the Customer does not have a Cart yet, the most recently modified anonymous cart becomes the Customer's Cart.
+      - If the Customer already has a Cart, the most recently modified anonymous cart is handled in accordance with [AnonymousCartSignInMode](ctp:api:type:AnonymousCartSignInMode).
+
+      A Cart returned as part of the [CustomerSignInResult](ctp:api:type:CustomerSignInResult) is [recalculated](ctp:api:type:MyCartRecalculateAction) with up-to-date prices, taxes, discounts, and invalid line items removed.
+
+      If an account with the given credentials is not found, an [InvalidCredentials](ctp:api:type:InvalidCredentialsError) error is returned.
     securedBy: [oauth_2_0: { scopes: ['manage_my_profile:{projectKey}'] }]
     body:
       application/json:
         type: MyCustomerSignin
+        example: !include ../examples/Customer/CustomerSignIn.json
     responses:
       200:
         body:
           application/json:
+            example: !include ../examples/customer-sign-in-result.example.json
             type: CustomerSignInResult
 /active-cart:
   type: base
   get:
     displayName: Get my active cart
+    description: |
+      Retrieves the Customer's most recently modified active Cart.
+      Carts with `Merchant` or `Quote` [CartOrigin](ctp:api:type:CartOrigin) are ignored.
+
+      If no active Cart exists, a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned.
     is:
       - expandable
     securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
@@ -124,6 +159,115 @@ delete:
         body:
           application/json:
             type: Cart
+/business-units:
+  type:
+    baseDomain:
+      resourceType: BusinessUnit
+      resourceQueryType: BusinessUnitPagedQueryResponse
+      resourceDraft: MyBusinessUnitDraft
+      whereExample: 'key = "my-company"'
+      sortExample: createdAt asc
+  (updateable): BusinessUnit
+  (deleteable): BusinessUnit
+  (createable): MyBusinessUnitDraft
+  description: MyBusinessUnit creates and provides access to Business Units scoped to a specific user.
+  get:
+    displayName: Query My Business Units
+    securedBy:
+      [oauth_2_0: { scopes: ['manage_my_business_units:{projectKey}'] }]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/my-business-units.example.json
+  post:
+    displayName: Create My Business Units
+    securedBy:
+      [oauth_2_0: { scopes: ['manage_my_business_units:{projectKey}'] }]
+    description: |
+      Automatically assigns the authenticated user to the Business Unit in the [Associate Roles](ctp:api:type:AssociateRole) of `Admin` as well as `Buyer`.
+    body:
+      application/json:
+        example: !include ../examples/my-business-unit-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/my-business-unit.example.json
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: BusinessUnit
+        resourceUpdateType: MyBusinessUnitUpdate
+    get:
+      displayName: Get My Business Units by ID
+      securedBy:
+        [oauth_2_0: { scopes: ['manage_my_business_units:{projectKey}'] }]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/my-business-unit.example.json
+    post:
+      displayName: Update My Business Units by ID
+      securedBy:
+        [oauth_2_0: { scopes: ['manage_my_business_units:{projectKey}'] }]
+      body:
+        application/json:
+          example: !include ../examples/my-business-unit-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/my-business-unit.example.json
+    delete:
+      displayName: Delete My Business Units by ID
+      securedBy:
+        [oauth_2_0: { scopes: ['manage_my_business_units:{projectKey}'] }]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/my-business-unit.example.json
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: BusinessUnit
+        resourceUpdateType: MyBusinessUnitUpdate
+    get:
+      displayName: Get My Business Units by Key
+      securedBy:
+        [oauth_2_0: { scopes: ['manage_my_business_units:{projectKey}'] }]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/my-business-unit.example.json
+    post:
+      displayName: Update My Business Units by Key
+      securedBy:
+        [oauth_2_0: { scopes: ['manage_my_business_units:{projectKey}'] }]
+      body:
+        application/json:
+          example: !include ../examples/my-business-unit-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/my-business-unit.example.json
+    delete:
+      displayName: Delete My Business Units by Key
+      securedBy:
+        [oauth_2_0: { scopes: ['manage_my_business_units:{projectKey}'] }]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/my-business-unit.example.json
 /carts:
   type:
     baseDomain:
@@ -227,6 +371,18 @@ delete:
     type: base
     post:
       displayName: Replicate my cart
+      description: |
+        Creates a new Cart by replicating an existing Cart or Order of the authenticated Customer.
+        This can be useful in cases where a customer wants to cancel a recent order to make some changes or reorder a previous order.
+
+        The replicated Cart preserves Customer information, Line Items and Custom Line Items, Custom Fields, Discount Codes, and other settings of the Cart or Order.
+        If the Line Items become invalid, for example, due to removed Products or Prices, they are removed from the new Cart.
+        If the Customer switches to another Customer Group, the new Cart is updated with the new value.
+        It has up-to-date Tax Rates, Prices, and Line Item product data and is in `Active` [CartState](ctp:api:type:CartState).
+
+        The new Cart does not contain Payments or Deliveries. The [State](ctp:api:type:ItemState) of Line Items and Custom Line Items is reset to `initial`.
+
+        In case the Cart or Order to be replicated does not belong to the authenticaed Customer, the API returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error
       body:
         application/json:
           type: ReplicaMyCartDraft
@@ -284,6 +440,20 @@ delete:
           body:
             application/json:
               example: !include ../examples/order.example.json
+  /quotes:
+    post:
+      displayName: Create My Order from Quote
+      securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
+      body:
+        application/json:
+          example: !include ../examples/my-order-from-quote.example.json
+          type: MyOrderFromQuoteDraft
+      responses:
+        201:
+          body:
+            application/json:
+              example: !include ../examples/order.example.json
+              type: Order
 /payments:
   type:
     baseDomain:
@@ -312,6 +482,8 @@ delete:
     body:
       application/json:
         example: !include ../examples/my-payment-create.example.json
+    description: |
+      Creating a Payment produces the [PaymentCreated](ctp:api:type:PaymentCreatedMessage) Message.
     responses:
       201:
         body:
@@ -338,6 +510,8 @@ delete:
       body:
         application/json:
           example: !include ../examples/my-payment-update.example.json
+      description: |
+        This endpoint can only update a Payment when it has no [Transactions](ctp:api:type:Transaction).
       responses:
         200:
           body:
@@ -346,6 +520,8 @@ delete:
     delete:
       displayName: Delete my payment by key
       securedBy: [oauth_2_0: { scopes: ['manage_my_payments:{projectKey}'] }]
+      description: |
+        This endpoint can only delete a Payment when it has no [Transactions](ctp:api:type:Transaction).
       responses:
         200:
           body:
@@ -372,6 +548,8 @@ delete:
       body:
         application/json:
           example: !include ../examples/my-payment-update.example.json
+      description: |
+        This endpoint can only update a Payment when it has no [Transactions](ctp:api:type:Transaction).
       responses:
         200:
           body:
@@ -380,6 +558,8 @@ delete:
     delete:
       displayName: Delete my payment by id
       securedBy: [oauth_2_0: { scopes: ['manage_my_payments:{projectKey}'] }]
+      description: |
+        This endpoint can only delete a Payment when it has no [Transactions](ctp:api:type:Transaction).
       responses:
         200:
           body:
@@ -397,19 +577,19 @@ delete:
   (deleteable): QuoteRequest
   (createable): MyQuoteRequestDraft
   description:
-    The My Quote Requests endpoint creates and provides access to quote requests
+    The My Quote Requests endpoint creates and provides access to Quote Requests
     scoped to a specific user.
   get:
-    displayName: Query my quote requests
+    displayName: Query My Quote Requests
     securedBy:
       [oauth_2_0: { scopes: ['manage_my_quote_requests:{projectKey}'] }]
     responses:
       200:
         body:
           application/json:
-            example: !include ../examples/my-quote-requests.example.json
+            example: !include ../examples/quote-requests.example.json
   post:
-    displayName: Create my quote requests
+    displayName: Create My Quote Requests
     securedBy:
       [oauth_2_0: { scopes: ['manage_my_quote_requests:{projectKey}'] }]
     body:
@@ -419,7 +599,7 @@ delete:
       201:
         body:
           application/json:
-            example: !include ../examples/my-quote-request.example.json
+            example: !include ../examples/quote-request.example.json
   /{ID}:
     (methodName): withId
     type:
@@ -427,17 +607,8 @@ delete:
         uriParameterName: ID
         resourceType: QuoteRequest
         resourceUpdateType: MyQuoteRequestUpdate
-    get:
-      displayName: Get my quote requests by id
-      securedBy:
-        [oauth_2_0: { scopes: ['manage_my_quote_requests:{projectKey}'] }]
-      responses:
-        200:
-          body:
-            application/json:
-              example: !include ../examples/my-quote-request.example.json
     post:
-      displayName: Update my quote requests by id
+      displayName: Update My Quote Requests by ID
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_quote_requests:{projectKey}'] }]
       body:
@@ -447,16 +618,16 @@ delete:
         200:
           body:
             application/json:
-              example: !include ../examples/my-quote-request.example.json
+              example: !include ../examples/quote-request-update-response.example.json
     delete:
-      displayName: Delete my quote requests by id
+      displayName: Delete My Quote Requests by ID
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_quote_requests:{projectKey}'] }]
       responses:
         200:
           body:
             application/json:
-              example: !include ../examples/my-quote-request.example.json
+              example: !include ../examples/quote-request.example.json
   /key={key}:
     (methodName): withKey
     type:
@@ -464,17 +635,8 @@ delete:
         uriParameterName: key
         resourceType: QuoteRequest
         resourceUpdateType: MyQuoteRequestUpdate
-    get:
-      displayName: Get my quote requests by key
-      securedBy:
-        [oauth_2_0: { scopes: ['manage_my_quote_requests:{projectKey}'] }]
-      responses:
-        200:
-          body:
-            application/json:
-              example: !include ../examples/my-quote-request.example.json
     post:
-      displayName: Update my quote requests by key
+      displayName: Update my Quote Requests by Key
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_quote_requests:{projectKey}'] }]
       body:
@@ -484,16 +646,84 @@ delete:
         200:
           body:
             application/json:
-              example: !include ../examples/my-quote-request.example.json
+              example: !include ../examples/quote-request-update-response.example.json
     delete:
-      displayName: Delete my quote requests by key
+      displayName: Delete my Quote Requests by Key
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_quote_requests:{projectKey}'] }]
       responses:
         200:
           body:
             application/json:
-              example: !include ../examples/my-quote-request.example.json
+              example: !include ../examples/quote-request.example.json
+/quotes:
+  type:
+    baseDomain:
+      resourceType: Quote
+      resourceQueryType: QuotePagedQueryResponse
+  (updateable): Quote
+  (deleteable): Quote
+  description: The My Quote endpoint provides access to Quotes scoped to a specific user.
+  get:
+    displayName: Query My Quotes
+    securedBy: [oauth_2_0: { scopes: ['manage_my_quotes:{projectKey}'] }]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/quotes.example.json
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: Quote
+        resourceUpdateType: MyQuoteUpdate
+    get:
+      displayName: Get My Quote by ID
+      securedBy: [oauth_2_0: { scopes: ['manage_my_quotes:{projectKey}'] }]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
+    post:
+      displayName: Update My Quote by ID
+      securedBy: [oauth_2_0: { scopes: ['manage_my_quotes:{projectKey}'] }]
+      body:
+        application/json:
+          example: !include ../examples/my-quote-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: Quote
+        resourceUpdateType: MyQuoteUpdate
+    get:
+      displayName: Get My Quote by Key
+      securedBy: [oauth_2_0: { scopes: ['manage_my_quotes:{projectKey}'] }]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
+    post:
+      displayName: Update My Quote by Key
+      securedBy: [oauth_2_0: { scopes: ['manage_my_quotes:{projectKey}'] }]
+      body:
+        application/json:
+          example: !include ../examples/my-quote-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
 /shopping-lists:
   type:
     baseDomain:
@@ -505,13 +735,17 @@ delete:
   (updateable): ShoppingList
   (deleteable): ShoppingList
   (createable): MyShoppingListDraft
-  description:
-    The My Shopping Lists endpoint creates and provides access to shopping lists
-    scoped to a specific user.
+  description: The My Shopping Lists endpoint creates and provides access to Shopping Lists scoped to a specific user.
   get:
     displayName: Query my shopping lists
     securedBy:
       [oauth_2_0: { scopes: ['manage_my_shopping_lists:{projectKey}'] }]
+    queryParameters:
+      expand:
+        description: |
+          When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+        type: Expansion[]
+        required: false
     responses:
       200:
         body:
@@ -521,6 +755,12 @@ delete:
     displayName: Create my shopping list
     securedBy:
       [oauth_2_0: { scopes: ['manage_my_shopping_lists:{projectKey}'] }]
+    queryParameters:
+      expand:
+        description: |
+          When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+        type: Expansion[]
+        required: false
     body:
       application/json:
         example: !include ../examples/my-shopping-list-create.example.json
@@ -540,6 +780,12 @@ delete:
       displayName: Get my shopping list by id
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_shopping_lists:{projectKey}'] }]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
       responses:
         200:
           body:
@@ -549,6 +795,12 @@ delete:
       displayName: Update my shopping list by id
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_shopping_lists:{projectKey}'] }]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
       body:
         application/json:
           example: !include ../examples/my-shopping-list-update.example.json
@@ -561,6 +813,12 @@ delete:
       displayName: Delete my shopping list by id
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_shopping_lists:{projectKey}'] }]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
       responses:
         200:
           body:
@@ -577,6 +835,12 @@ delete:
       displayName: Get my shopping list by key
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_shopping_lists:{projectKey}'] }]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
       responses:
         200:
           body:
@@ -586,6 +850,12 @@ delete:
       displayName: Update my shopping list by key
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_shopping_lists:{projectKey}'] }]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
       body:
         application/json:
           example: !include ../examples/my-shopping-list-update.example.json
@@ -598,6 +868,12 @@ delete:
       displayName: Delete my shopping list by key
       securedBy:
         [oauth_2_0: { scopes: ['manage_my_shopping_lists:{projectKey}'] }]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
       responses:
         200:
           body:

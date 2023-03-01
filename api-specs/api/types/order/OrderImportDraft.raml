@@ -3,7 +3,6 @@
 (docs-uri): https://docs.commercetools.com/http-api-projects-orders-import.html#orderimportdraft
 displayName: OrderImportDraft
 type: object
-(java-extends): 'com.commercetools.api.models.CustomizableDraft<OrderImportDraft>'
 properties:
   orderNumber?:
     type: string
@@ -82,6 +81,11 @@ properties:
   itemShippingAddresses?:
     type: BaseAddress[]
     description: Contains addresses for orders with multiple shipping addresses.
+  businessUnit?:
+    type: BusinessUnitResourceIdentifier
+    (beta): true
+    description: |
+      The Business Unit the Cart belongs to.
   store?:
     type: StoreResourceIdentifier
     description: ''

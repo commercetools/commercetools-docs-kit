@@ -2,10 +2,12 @@
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/commercetools/rmf-codegen/main/ctp-validators/src/main/resources/ruleset.xsd">
     <name>default</name>
+    <apply set="default"/>
     <rules>
         <rule>
             <name>com.commercetools.rmf.validators.ResourcePluralRule</name>
             <options>
+                <option type="exclude">in-business-unit</option>
                 <option type="exclude">in-store</option>
                 <option type="exclude">me</option>
                 <option type="exclude">inventory</option>
@@ -23,20 +25,13 @@
                 <option type="exclude">search</option>
                 <option type="exclude">suggest</option>
                 <option type="exclude">matching-cart</option>
+                <option type="exclude">matching-cart-location</option>
                 <option type="exclude">matching-orderedit</option>
                 <option type="exclude">matching-location</option>
                 <option type="exclude">signup</option>
                 <option type="exclude">active-cart</option>
+                <option type="exclude">health</option>
             </options>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.CamelCaseRule</name>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.FilenameRule</name>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.DomainTypeNameRule</name>
         </rule>
         <rule>
             <name>com.commercetools.rmf.validators.UpdateActionNameRule</name>
@@ -60,6 +55,10 @@
                 <option type="exclude">returnInfo</option>
                 <option type="exclude">value</option>
                 <option type="exclude">newState</option>
+                <option type="exclude">shipping</option>
+                <option type="exclude">customShipping</option>
+                <option type="exclude">perMethodTaxRate</option>
+                <option type="exclude">sort</option>
             </options>
         </rule>
         <rule>
@@ -80,23 +79,11 @@
           </options>
         </rule>
         <rule>
-            <name>com.commercetools.rmf.validators.PackageDefinedRule</name>
-        </rule>
-        <rule>
             <name>com.commercetools.rmf.validators.PostBodyRule</name>
             <options>
                 <option type="exclude">POST /{projectKey}/me/password</option>
                 <option type="exclude">POST /{projectKey}/me/login</option>
             </options>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.SuccessBodyRule</name>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.QueryParameterCamelCaseRule</name>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.SdkBaseUriRule</name>
         </rule>
         <rule>
             <name>com.commercetools.rmf.validators.UnionTypePropertyRule</name>
@@ -105,29 +92,14 @@
                 <option type="exclude">target</option>
             </options>
         </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.DiscriminatorParentRule</name>
+        <rule enabled="false">
+            <name>com.commercetools.rmf.validators.DatetimeRule</name>
         </rule>
         <rule>
-            <name>com.commercetools.rmf.validators.ResourceCatchAllRule</name>
+            <name>com.commercetools.rmf.validators.CamelCaseRule</name>
+            <options>
+              <option type="exclude">error_description</option>
+            </options>
         </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.UriParameterDeclaredRule</name>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.ResourceLowerCaseHyphenRule</name>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.NestedTypeRule</name>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.AsMapRule</name>
-        </rule>
-        <rule>
-            <name>com.commercetools.rmf.validators.QueryParameterPlaceholderAnnotationRule</name>
-        </rule>
-<!--        <rule>-->
-<!--            <name>com.commercetools.rmf.validators.NamedBodyTypeRule</name>-->
-<!--        </rule>-->
     </rules>
 </ruleset>

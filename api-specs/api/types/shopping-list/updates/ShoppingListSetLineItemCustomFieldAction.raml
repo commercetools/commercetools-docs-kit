@@ -1,6 +1,6 @@
 #%RAML 1.0 DataType
 (package): ShoppingList
-(docs-uri): https://docs.commercetools.com/http-api-projects-shoppingLists.html#set-lineitem-customfield
+(docs-uri): https://docs.commercetools.com/api/projects/shoppingLists#set-shoppinglistlineitem-customfield
 type: ShoppingListUpdateAction
 displayName: ShoppingListSetLineItemCustomFieldAction
 discriminatorValue: setLineItemCustomField
@@ -8,6 +8,8 @@ example: !include ../../../examples/ShoppingList/ShoppingListSetLineItemCustomFi
 properties:
   lineItemId:
     type: string
+    description: |
+      The `id` of the [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem) to update.
   name:
     type: string
     description: |
@@ -16,5 +18,5 @@ properties:
     type: CustomFieldValue
     description: |
       If `value` is absent or `null`, this field will be removed if it exists.
-      Trying to remove a field that does not exist will fail with an [InvalidOperation](/../api/errors#general-400-invalid-operation) error.
+      Removing a field that does not exist returns an [InvalidOperation](ctp:api:type:InvalidOperationError) error.
       If `value` is provided, it is set for the field defined by `name`.

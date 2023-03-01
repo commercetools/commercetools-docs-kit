@@ -4,7 +4,6 @@
 type: BaseResource
 displayName: StandalonePrice
 (updateType): StandalonePriceUpdate
-(java-extends): 'com.commercetools.api.models.DomainResource<StandalonePrice>'
 properties:
   id:
     (identifier): true
@@ -76,7 +75,7 @@ properties:
   discounted?:
     type: DiscountedPrice
     description: |
-      Set if a matching [ProductDiscount](ctp:api:type:ProductDiscount) exists. If set, the API uses the `discounted` value for the [LineItem Price selection](/../api/projects/carts#lineitem-price-selection).
+      Set if a matching [ProductDiscount](ctp:api:type:ProductDiscount) exists. If set, the API uses the `discounted` value for the [LineItem Price selection](ctp:api:type:LineItemPriceSelection).
       When a [relative discount](/../api/projects/productDiscounts#productdiscountvaluerelative) is applied and the fraction part of the `discounted` price is 0.5, the discounted price is rounded in favor of the customer with the [half down rounding](https://en.wikipedia.org/wiki/Rounding#Round_half_down).
   custom?:
     type: CustomFields
@@ -87,3 +86,10 @@ properties:
     (beta): true
     description: |
       Staged changes of the StandalonePrice. Only present if the StandalonePrice has staged changes.
+  active:
+    type: boolean
+    default: true
+    (beta): true
+    description: |
+      If set to `true`, the StandalonePrice is considered during [price selection](ctp:api:type:ProductPriceSelection).
+      If set to `false`, the StandalonePrice is not considered during [price selection](ctp:api:type:ProductPriceSelection).
