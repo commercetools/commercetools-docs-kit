@@ -4,12 +4,12 @@
 type: BaseResource
 displayName: ShoppingList
 (updateType): ShoppingListUpdate
-(java-extends): 'com.commercetools.api.models.DomainResource<ShoppingList>'
+(java-extends): 'com.commercetools.api.models.DomainResource<ShoppingList>, com.commercetools.api.models.Customizable<ShoppingList>'
 properties:
   id:
     (identifier): true
     type: string
-    description: The unique ID of the shopping list.
+    description: Unique identifier of the ShoppingList.
   version:
     type: number
     format: int64
@@ -47,7 +47,10 @@ properties:
     description: ''
   key?:
     type: string
-    description: User-specific unique identifier for the shopping list.
+    description: User-defined unique identifier of the ShoppingList.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
   lineItems?:
     type: ShoppingListLineItem[]
     description: ''

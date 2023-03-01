@@ -1,9 +1,18 @@
 #%RAML 1.0 DataType
 (package): Payment
 (docs-uri): https://docs.commercetools.com/http-api-projects-payments.html#payment
+(java-extends): com.commercetools.api.models.Identifiable<Payment>
 type: Reference
 displayName: PaymentReference
 discriminatorValue: payment
+description: |
+  [Reference](ctp:api:type:Reference) to a [Payment](ctp:api:type:Payment).
 properties:
   obj?:
     type: Payment
+    description: |
+      Contains the representation of the expanded Payment. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for Payments.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [Payment](ctp:api:type:Payment).

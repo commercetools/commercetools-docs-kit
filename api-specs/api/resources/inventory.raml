@@ -13,6 +13,9 @@ get:
   (java-implements):
     'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyInventoryGet,
     com.commercetools.api.models.inventory.InventoryPagedQueryResponse>'
+  (csharp-implements):
+    'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyInventoryGet,
+    commercetools.Sdk.Api.Models.Inventories.IInventoryPagedQueryResponse>'
   securedBy: [oauth_2_0: { scopes: ['view_products:{projectKey}'] }]
   responses:
     200:
@@ -20,6 +23,7 @@ get:
         application/json:
           example: !include ../examples/inventories.example.json
 post:
+  description: Produces the [InventoryEntryCreated](ctp:api:type:InventoryEntryCreatedMessage) Message.
   securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
   body:
     application/json:
@@ -54,6 +58,39 @@ post:
           application/json:
             example: !include ../examples/inventory.example.json
   delete:
+    description: Produces the [InventoryEntryDeleted](ctp:api:type:InventoryEntryDeletedMessage) Message.
+    securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/inventory.example.json
+/key={key}:
+  (methodName): withKey
+  type:
+    baseResource:
+      uriParameterName: key
+      resourceType: InventoryEntry
+      resourceUpdateType: InventoryEntryUpdate
+  get:
+    securedBy: [oauth_2_0: { scopes: ['view_products:{projectKey}'] }]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/inventory.example.json
+  post:
+    securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
+    body:
+      application/json:
+        example: !include ../examples/inventory-update.example.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/inventory.example.json
+  delete:
+    description: Produces the [InventoryEntryDeleted](ctp:api:type:InventoryEntryDeletedMessage) Message.
     securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
     responses:
       200:

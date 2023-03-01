@@ -3,6 +3,7 @@
 (docs-uri): https://docs.commercetools.com/http-api-projects-customers.html#customerdraft
 displayName: CustomerDraft
 type: object
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<CustomerDraft>'
 properties:
   customerNumber?:
     type: string
@@ -17,9 +18,9 @@ properties:
       The customer's email address and the main identifier of uniqueness for a customer account.
       Email addresses are either unique to the store they're specified for, _or_ for the entire project, and are case insensitive.
       For more information, see Email uniquenes.
-  password:
+  password?:
     type: string
-    description: ''
+    description: 'Only optional with `authenticationMode` set to `ExternalAuth`.'
   firstName?:
     type: string
     description: ''
@@ -62,7 +63,7 @@ properties:
     description: Sets the ID of each address to be unique in the addresses list.
   defaultShippingAddress?:
     type: number
-    format: int64
+    format: int32
     description: |-
       The index of the address in the addresses array.
       The `defaultShippingAddressId` of the customer will be set to the ID of that address.
@@ -73,7 +74,7 @@ properties:
       The `shippingAddressIds` of the Customer will be set to the IDs of that addresses.
   defaultBillingAddress?:
     type: number
-    format: int64
+    format: int32
     description: |-
       The index of the address in the addresses array.
       The `defaultBillingAddressId` of the customer will be set to the ID of that address.
@@ -103,12 +104,16 @@ properties:
   key?:
     type: string
     description: |-
-      User-specific unique identifier for a customer.
-      Must be unique across a project.
-      The field can be reset using the Set Key UpdateAction
+      User-defined unique identifier for the Customer.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
   stores?:
     type: StoreResourceIdentifier[]
     description: |-
       References to the stores the customer account is associated with.
       If no stores are specified, the customer is a global customer, and can log in using the Password Flow for global Customers.
       If one or more stores are specified, the customer can only log in using the Password Flow for Customers in a Store for those specific stores.
+  authenticationMode?:
+    type: AuthenticationMode
+    description: Defines whether a password field is a required field for the Customer.

@@ -3,10 +3,11 @@
 (docs-uri): https://docs.commercetools.com/http-api-projects-carts.html#customlineitem
 displayName: CustomLineItem
 type: object
+(java-extends): 'com.commercetools.api.models.Customizable<CustomLineItem>'
 properties:
   id:
     type: string
-    description: The unique ID of this CustomLineItem.
+    description: Unique identifier of the CustomLineItem.
   name:
     type: LocalizedString
     description: The name of this CustomLineItem.
@@ -57,3 +58,8 @@ properties:
       Container for custom line item specific address(es).
       CustomLineItem fields that can be used in query predicates: `slug`, `name`, `quantity`,
       `money`, `state`, `discountedPricePerQuantity`.
+  priceMode:
+    type: CustomLineItemPriceMode
+    description: |
+      Specifies whether Cart Discounts with a matching [CartDiscountCustomLineItemsTarget](ctp:api:type:CartDiscountCustomLineItemsTarget)
+      are applied to the Custom Line Item.

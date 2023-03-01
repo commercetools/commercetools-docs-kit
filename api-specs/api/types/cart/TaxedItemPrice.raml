@@ -9,3 +9,7 @@ properties:
   totalGross:
     type: TypedMoney
     description: TaxedItemPrice fields can not be used in query predicates.
+  totalTax?:
+    type: TypedMoney
+    description: |
+      Calculated automatically as the subtraction of `totalGross` - `totalNet`.

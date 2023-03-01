@@ -12,6 +12,10 @@ get:
   (java-implements):
     'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyMessagesGet,
     com.commercetools.api.models.message.MessagePagedQueryResponse>'
+  (csharp-implements):
+    'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyMessagesGet,
+    commercetools.Sdk.Api.Models.Messages.IMessagePagedQueryResponse>'
+  description: 'Deprecated scope: `view_orders:{projectKey}`'
   securedBy: [oauth_2_0: { scopes: ['view_messages:{projectKey}'] }]
   responses:
     200:
@@ -25,6 +29,7 @@ get:
       uriParameterName: ID
       resourceType: Message
   get:
+    description: 'Deprecated scope: `view_orders:{projectKey}`'
     securedBy: [oauth_2_0: { scopes: ['view_messages:{projectKey}'] }]
     responses:
       200:

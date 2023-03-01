@@ -5,6 +5,7 @@ type: StagedOrderUpdateAction
 displayName: StagedOrderAddLineItemAction
 discriminatorValue: addLineItem
 example: !include ../../../examples/OrderEdit/StagedOrderAddLineItemAction.json
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<StagedOrderAddLineItemAction>'
 properties:
   custom?:
     type: CustomFieldsDraft
@@ -21,6 +22,7 @@ properties:
     type: string
   quantity?:
     type: number
+    format: int64
   addedAt?:
     type: datetime
   supplyChannel?:

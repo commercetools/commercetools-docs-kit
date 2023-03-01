@@ -8,3 +8,9 @@ example: !include ../../../examples/Type/TypeChangeKeyAction.json
 properties:
   key:
     type: string
+    description: |
+      New value to set.
+      Must not be empty.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256

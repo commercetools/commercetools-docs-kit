@@ -3,6 +3,7 @@
 (docs-uri): https://docs.commercetools.com/http-api-projects-payments.html#paymentdraft
 type: object
 displayName: PaymentDraft
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<PaymentDraft>'
 properties:
   customer?:
     type: CustomerResourceIdentifier
@@ -58,5 +59,7 @@ properties:
   key?:
     type: string
     description: |-
-      User-specific unique identifier for the payment (max.
-      256 characters).
+      User-defined unique identifier for the Payment.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256

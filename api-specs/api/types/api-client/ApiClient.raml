@@ -1,35 +1,49 @@
 #%RAML 1.0 DataType
 (package): ApiClient
-(docs-uri): https://docs.commercetools.com/http-api-projects-apiClients.html#apiclient
+(docs-uri): https://docs.commercetools.com/api/projects/api-clients#apiclient
 displayName: ApiClient
 type: object
 properties:
   id:
     type: string
     description: |-
-      The unique ID of the API client.
-      This is the OAuth2 `client_id` and can be used to obtain a token.
+      The OAuth2 `client_id` that can be used to obtain an access token.
   name:
     type: string
-    description: ''
+    description: Name of the APIClient.
   scope:
     type: string
     description: |-
-      A whitespace separated list of the OAuth scopes.
-      This is the OAuth2 `scope` and can be used to obtain a token.
-  createdAt?:
-    type: datetime
-    description: ''
-  lastUsedAt?:
-    type: date-only
-    description: The last day this API Client was used to obtain a token.
-  deleteAt?:
-    type: datetime
-    description:
-      If set, the client will be deleted on (or shortly after) this point in
-      time.
+      Whitespace-separated list of OAuth scopes that can be used when obtaining an access token.
   secret?:
     type: string
     description: |-
-      The secret is only shown once in the response of creating the API Client.
-      This is the OAuth2 `client_secret` and can be used to obtain a token.
+      Only shown once in the response of creating the APIClient.
+      This is the OAuth2 `client_secret` that can be used to obtain an access token.
+  lastUsedAt?:
+    type: date-only
+    description: Date of the last day this APIClient was used to obtain an access token.
+  deleteAt?:
+    type: datetime
+    description:
+      If set, the Client will be deleted on (or shortly after) this point in
+      time.
+  createdAt?:
+    type: datetime
+    description: Date and time (UTC) the APIClient was initially created at.
+  accessTokenValiditySeconds?:
+    type: number
+    format: int32
+    minimum: 3600
+    maximum: 604800
+    default: 172800
+    description: |
+      Expiration time in seconds for each access token obtained by the APIClient. Only present when set with the [APIClientDraft](ctp:api:type:ApiClientDraft). If not present the default value applies.
+  refreshTokenValiditySeconds?:
+    type: number
+    format: int32
+    minimum: 30
+    maximum: 31536000
+    default: 17280000
+    description: |
+      Inactivity expiration time in seconds for each refresh token obtained by the APIClient. Only present when set with the [APIClientDraft](ctp:api:type:ApiClientDraft). If not present the default value applies.

@@ -3,7 +3,7 @@ type:
     resourceType: Customer
     resourceQueryType: CustomerPagedQueryResponse
     resourceDraft: CustomerDraft
-    whereExample: 'email = "foo@bar.com"'
+    whereExample: 'email = "email@example.com"'
     sortExample: createdAt asc
 (updateable): Customer
 (deleteable): Customer
@@ -14,6 +14,9 @@ get:
   (java-implements):
     'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyCustomersGet,
     com.commercetools.api.models.customer.CustomerPagedQueryResponse>'
+  (csharp-implements):
+    'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyCustomersGet,
+    commercetools.Sdk.Api.Models.Customers.ICustomerPagedQueryResponse>'
   securedBy: [oauth_2_0: { scopes: ['view_customers:{projectKey}'] }]
   responses:
     200:

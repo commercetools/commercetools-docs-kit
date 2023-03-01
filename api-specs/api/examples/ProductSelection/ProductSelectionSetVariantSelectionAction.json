@@ -1,0 +1,13 @@
+{
+  "action": "setVariantSelection",
+  "product": {
+    "typeId": "product",
+    "key": "millennium-falcon"
+  },
+  "variantSelection": {
+    "type": "inclusion",
+    "skus": [
+      "M0E20000000EH3V"
+    ]
+  }
+}

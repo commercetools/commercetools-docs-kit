@@ -5,6 +5,7 @@ type: OrderUpdateAction
 displayName: OrderAddDeliveryAction
 discriminatorValue: addDelivery
 example: !include ../../../examples/Order/OrderAddDeliveryAction.json
+(java-extends): 'com.commercetools.api.models.CustomizableDraft<OrderAddDeliveryAction>'
 properties:
   items?:
     type: DeliveryItem[]
@@ -12,3 +13,6 @@ properties:
     type: BaseAddress
   parcels?:
     type: ParcelDraft[]
+  custom?:
+    type: CustomFieldsDraft
+    description: Custom Fields for the Transaction.

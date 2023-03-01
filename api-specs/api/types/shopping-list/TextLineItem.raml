@@ -2,6 +2,7 @@
 (package): ShoppingList
 type: object
 displayName: TextLineItem
+(java-extends): 'com.commercetools.api.models.Customizable<TextLineItem>'
 properties:
   addedAt:
     type: datetime
@@ -14,7 +15,7 @@ properties:
     description: ''
   id:
     type: string
-    description: The unique ID of this TextLineItem.
+    description: Unique identifier of the TextLineItem.
   name:
     type: LocalizedString
     description: ''

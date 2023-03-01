@@ -1,7 +1,6 @@
 {
   "action": "setBillingAddress",
   "address": {
-    "id": "exampleAddress",
     "key": "exampleKey",
     "title": "My Address",
     "salutation": "Mr.",
@@ -22,7 +21,7 @@
     "pOBox": "2471",
     "phone": "+49 89 12345678",
     "mobile": "+49 171 2345678",
-    "email": "mail@mail.com",
+    "email": "email@example.com",
     "fax": "+49 89 12345679",
     "additionalAddressInfo": "no additional Info",
     "externalId": "Information not needed"

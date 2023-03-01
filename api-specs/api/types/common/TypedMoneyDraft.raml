@@ -5,9 +5,11 @@ displayName: TypedMoneyDraft
 type: Money
 discriminator: type
 properties:
-  type:
+  type?:
     type: MoneyType
+    default: centPrecision
   fractionDigits?:
     type: number
     format: int32
-    maximum: 12
+    description: |
+      Must be equal to the default number of fraction digits for the specified currency.

@@ -1,9 +1,18 @@
 #%RAML 1.0 DataType
 (package): ProductDiscount
-(docs-uri): https://docs.commercetools.com/http-api-projects-productDiscounts.html#productdiscount
+(docs-uri): https://docs.commercetools.com/api/projects/productDiscounts#productdiscountreference
+(java-extends): com.commercetools.api.models.Identifiable<ProductDiscount>
 type: Reference
 displayName: ProductDiscountReference
 discriminatorValue: product-discount
+description: |
+  [Reference](ctp:api:type:Reference) to a [ProductDiscount](ctp:api:type:ProductDiscount).
 properties:
   obj?:
     type: ProductDiscount
+    description: |
+      Contains the representation of the expanded ProductDiscount. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for ProductDiscounts.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [ProductDiscount](ctp:api:type:ProductDiscount).

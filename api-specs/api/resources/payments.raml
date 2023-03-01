@@ -15,6 +15,9 @@ get:
   (java-implements):
     'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyPaymentsGet,
     com.commercetools.api.models.payment.PaymentPagedQueryResponse>'
+  (csharp-implements):
+    'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyPaymentsGet,
+    commercetools.Sdk.Api.Models.Payments.IPaymentPagedQueryResponse>'
   securedBy: [oauth_2_0: { scopes: ['view_payments:{projectKey}'] }]
   responses:
     200:

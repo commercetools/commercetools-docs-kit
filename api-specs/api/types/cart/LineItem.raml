@@ -3,13 +3,19 @@
 (docs-uri): https://docs.commercetools.com/http-api-projects-carts.html#lineitem
 displayName: LineItem
 type: object
+(java-extends): 'com.commercetools.api.models.Customizable<LineItem>'
 properties:
   id:
     type: string
-    description: The unique ID of this LineItem.
+    description: Unique identifier of the LineItem.
   productId:
     type: string
     description: ''
+  productKey?:
+    type: string
+    description: |-
+      User-defined unique identifier of the [Product](ctp:api:type:Product).
+      Only present on Line Items in a [Cart](ctp:api:type:Cart) when the `key` is available on that specific Product at the time the Line Item is created or updated on the Cart. On [Order](/ctp:api:type:Order) resources this field is only present when the `key` is available on the specific Product at the time the Order is created from the Cart. This field is in general not present on Carts that had no updates until 3 December 2021 and on Orders created before this date.
   name:
     type: LocalizedString
     description: The product name.
@@ -31,8 +37,8 @@ properties:
   price:
     type: Price
     description: |-
-      The price of a line item is selected from the prices array of the product variant.
-      If the `variant` field hasn't been updated, the price may not correspond to a price in `variant.prices`.
+      The price of a line item is selected from the product variant according to the Product's [priceMode](ctp:api:type:Product) value.
+      If the `priceMode` is `Embedded` [ProductPriceMode](ctp:api:type:ProductPriceModeEnum) and the `variant` field hasn't been updated, the price may not correspond to a price in `variant.prices`.
   taxedPrice?:
     type: TaxedItemPrice
     description: Set once the `taxRate` is set.
@@ -85,6 +91,11 @@ properties:
   custom?:
     type: CustomFields
     description: ''
+  inventoryMode?:
+    type: InventoryMode
+    description: |-
+      Inventory mode specific to the line item only, valid for the entire `quantity` of the line item.
+      Only present if inventory mode is different from the `inventoryMode` specified on the [Cart](ctp:api:type:Cart).
   shippingDetails?:
     type: ItemShippingDetails
     description: Container for line item specific address(es).

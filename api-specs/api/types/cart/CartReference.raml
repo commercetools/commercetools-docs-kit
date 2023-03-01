@@ -4,6 +4,15 @@
 type: Reference
 displayName: CartReference
 discriminatorValue: cart
+(java-extends): com.commercetools.api.models.Identifiable<Cart>
+description: |
+  [Reference](ctp:api:type:Reference) to a [Cart](ctp:api:type:Cart).
 properties:
   obj?:
     type: Cart
+    description: |
+      Contains the representation of the expanded Cart. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for Carts.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [Cart](ctp:api:type:Cart).

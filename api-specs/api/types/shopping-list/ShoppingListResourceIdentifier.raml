@@ -1,6 +1,18 @@
 #%RAML 1.0 DataType
 (package): ShoppingList
 (docs-uri): https://docs.commercetools.com/http-api-projects-shopping-lists.html#shopping-list
+(java-extends): com.commercetools.api.models.Identifiable<ShoppingList>
 type: ResourceIdentifier
 displayName: ShoppingListResourceIdentifier
 discriminatorValue: shopping-list
+description: |
+  [ResourceIdentifier](ctp:api:type:ResourceIdentifier) to a [ShoppingList](ctp:api:type:ShoppingList).
+properties:
+  id?:
+    type: string
+    description: |
+      Unique identifier of the referenced [ShoppingList](ctp:api:type:ShoppingList). Either `id` or `key` is required.
+  key?:
+    type: string
+    description: |
+      User-defined unique identifier of the referenced [ShoppingList](ctp:api:type:ShoppingList). Either `id` or `key` is required.
