@@ -111,7 +111,7 @@ export const query = graphql`
       excludeFromSearchIndex
       body
     }
-    allReleaseNotePage(sort: { order: DESC, fields: date }) {
+    allReleaseNotePage(sort: { date: DESC }) {
       nodes {
         slug
         title
