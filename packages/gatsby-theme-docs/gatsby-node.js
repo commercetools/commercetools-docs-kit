@@ -401,7 +401,7 @@ async function createContentPages(
           slug
         }
       }
-      allReleaseNotePage(sort: { order: DESC, fields: date }) {
+      allReleaseNotePage(sort: { date: DESC }) {
         totalCount
       }
     }
@@ -465,7 +465,6 @@ async function createContentPages(
 
         break;
       }
-      // TODO is this case necessary?  The whole function is only querying content pages.
       case '/releases':
         actions.createPage({
           ...pageData,
