@@ -1,16 +1,32 @@
 #%RAML 1.0 DataType
 (package): ApiClient
-(docs-uri): https://docs.commercetools.com/http-api-projects-apiClients.html#apiclientdraft
+(docs-uri): https://docs.commercetools.com/api/projects/api-clients#apiclientdraft
 displayName: ApiClientDraft
 type: object
 properties:
   name:
     type: string
-    description: ''
+    description: Name of the APIClient.
   scope:
     type: string
-    description: ''
+    description: Whitespace-separated list of [OAuth scopes](/../api/scopes) that can be used when [obtaining an access token](/../api/authorization#requesting-an-access-token-using-the-composable-commerce-oauth-20-service).
   deleteDaysAfterCreation?:
     type: number
     format: int64
-    description: If set, the client will be deleted after the specified amount of days.
+    description: If set, the Client will be deleted after the specified amount of days.
+  accessTokenValiditySeconds?:
+    type: number
+    format: int32
+    minimum: 3600
+    maximum: 604800
+    default: 172800
+    description: |
+      Expiration time in seconds for each access token obtained by the APIClient. If not set the default value applies.
+  refreshTokenValiditySeconds?:
+    type: number
+    format: int32
+    minimum: 30
+    maximum: 31536000
+    default: 17280000
+    description: |
+      Inactivity expiration time in seconds for each refresh token obtained by the APIClient. The expiration time for refresh tokens is restarted each time the token is used. If not set the default value applies.

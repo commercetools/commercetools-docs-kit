@@ -1,9 +1,13 @@
 #%RAML 1.0 DataType
 (package): ProductType
-(docs-uri): https://docs.commercetools.com/http-api-projects-productTypes.html#localizableenumtype
+(docs-uri): https://docs.commercetools.com/api/projects/productTypes#localizableenumtype
 type: AttributeType
 displayName: AttributeLocalizedEnumType
 discriminatorValue: lenum
+description: |
+  Attribute type for localized enum values. Useful for predefined language-specific values selectable in drop-down menus if only one value can be selected. Use [AttributeSetType](ctp:api:type:AttributeSetType) of AttributeLocalizedEnumValue instead if multiple values can be selected.
 properties:
   values:
     type: AttributeLocalizedEnumValue[]
+    description: |
+      Available values that can be assigned to Products.

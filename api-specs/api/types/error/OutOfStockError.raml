@@ -3,8 +3,25 @@
 type: ErrorObject
 displayName: OutOfStockError
 discriminatorValue: OutOfStock
+description: |
+  Returned when some of the [Line Items](ctp:api:type:LineItem) are out of stock at the time of placing an [Order](ctp:api:type:Order).
+
+  The error is returned as a failed response to:
+
+  - [Create Order from Cart](ctp:api:endpoint:/{projectKey}/orders:POST), [Create Order in Store from Cart](ctp:api:endpoint:/{projectKey}/in-store/orders:POST), and [Create Order by Import](/../api/projects/me-orders) requests on Orders.
+  - [Create Order from Cart](ctp:api:endpoint:/{projectKey}/me/orders:POST) and [Create Order in Store from Cart](ctp:api:endpoint:/{projectKey}/in-store/me/orders:POST) requests on My Orders.
 properties:
+  code:
+    type: string
+  message:
+    type: string
+    description: |
+      `"Some line items are out of stock at the time of placing the order: $itemSku."`
   lineItems:
     type: string[]
+    description: |
+      Unique identifiers of the Line Items that are out of stock.
   skus:
     type: string[]
+    description: |
+      SKUs of the Line Items that are out of stock.

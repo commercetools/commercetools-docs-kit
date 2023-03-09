@@ -2,20 +2,27 @@
 
 queryParameters:
   priceCurrency:
-    type: string
+    type: CurrencyCode
     required: false
+    description: |
+      The currency used for [Price selection](/projects/products#price-selection).
   priceCountry:
-    type: string
+    type: CountryCode
     required: false
+    description: |
+      The country used for [Price selection](/projects/products#price-selection). Can only be used **in conjunction with** the `priceCurrency` parameter.
   priceCustomerGroup:
     type: string
     required: false
+    description: |
+      `id` of an existing [CustomerGroup](ctp:api:type:CustomerGroup) used for [Price selection](ctp:api:type:ProductPriceSelection). Can only be used **in conjunction with** the `priceCurrency` parameter.
   priceChannel:
     type: string
     required: false
+    description: |
+      `id` of an existing [Channel](ctp:api:type:Channel) used for [Price selection](ctp:api:type:ProductPriceSelection). Can only be used **in conjunction with** the `priceCurrency` parameter.
   localeProjection:
-    type: string
+    type: Locale[]
     required: false
-  storeProjection:
-    type: string
-    required: false
+    description: |
+      Used for [locale-based projection](ctp:api:type:ProductProjectionLocales).

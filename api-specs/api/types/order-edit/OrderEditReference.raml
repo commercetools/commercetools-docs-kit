@@ -3,6 +3,14 @@
 type: Reference
 displayName: OrderEditReference
 discriminatorValue: order-edit
+description: |
+  [Reference](ctp:api:type:Reference) to an [OrderEdit](ctp:api:type:OrderEdit).
 properties:
   obj?:
     type: OrderEdit
+    description: |
+      Contains the representation of the expanded OrderEdit. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for OrderEdits.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [OrderEdit](ctp:api:type:OrderEdit).

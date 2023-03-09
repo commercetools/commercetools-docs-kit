@@ -1,0 +1,6 @@
+{
+  "action": "setDeliveryCustomField",
+  "deliveryId": "exampleDeliveryID",
+  "name": "ExampleStringTypeField",
+  "value": "TextString"
+}

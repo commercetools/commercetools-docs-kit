@@ -205,13 +205,14 @@
               "fractionDigits": 2
             }
           },
-          "lineItemMode": "Standard"
+          "lineItemMode": "Standard",
+          "perMethodTaxRate": [],
+          "taxedPricePortions": []
         }
       ],
       "customLineItems": [],
       "transactionFee": true,
       "discountCodes": [],
-      "lastMessageSequenceNumber": 3,
       "cart": {
         "typeId": "cart",
         "id": "6c97e772-9769-4419-8adc-501c7c5b6088"
@@ -228,7 +229,7 @@
         "country": "DE",
         "building": "34",
         "pOBox": "12344",
-        "email": "user@example.org"
+        "email": "user@example.com"
       },
       "billingAddress": {
         "id": "51RkSh-E",
@@ -242,9 +243,11 @@
         "country": "DE",
         "building": "34",
         "pOBox": "12344",
-        "email": "user@example.org"
+        "email": "user@example.com"
       },
-      "itemShippingAddresses": []
+      "itemShippingAddresses": [],
+      "shipping": [],
+      "shippingMode": "Single"
     },
     "messagePayloads": [
       {

@@ -8,7 +8,14 @@ example: !include ../../../examples/Order/OrderAddDeliveryAction.json
 properties:
   items?:
     type: DeliveryItem[]
+  shippingKey?:
+    type: string
+    description: |
+      User-defined unique identifier of the Shipping Method in a Cart with `Multi` [ShippingMode](ctp:api:type:ShippingMode).
   address?:
     type: BaseAddress
   parcels?:
     type: ParcelDraft[]
+  custom?:
+    type: CustomFieldsDraft
+    description: Custom Fields for the Transaction.

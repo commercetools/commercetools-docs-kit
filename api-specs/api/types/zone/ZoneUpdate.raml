@@ -2,11 +2,14 @@
 (package): Zone
 type: object
 displayName: ZoneUpdate
-(java-extends): 'com.commercetools.api.models.ResourceUpdate<ZoneUpdate, ZoneUpdateAction>'
 properties:
   version:
     type: number
     format: int64
+    description: |
+      Expected version of the Zone on which the changes should be applied. If the expected version does not match the actual version, a [ConcurrentModification](ctp:api:type:ConcurrentModificationError) error is returned.
   actions:
     type: array
     items: ZoneUpdateAction
+    description: |
+      Update actions to be performed on the Zone.

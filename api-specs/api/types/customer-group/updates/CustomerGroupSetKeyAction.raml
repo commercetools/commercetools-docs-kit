@@ -1,6 +1,6 @@
 #%RAML 1.0 DataType
 (package): CustomerGroup
-(docs-uri): https://docs.commercetools.com/http-api-projects-customerGroups.html#set-key
+(docs-uri): https://docs.commercetools.com/api/projects/customerGroups#set-key
 type: CustomerGroupUpdateAction
 displayName: CustomerGroupSetKeyAction
 discriminatorValue: setKey
@@ -10,3 +10,6 @@ properties:
     type: string
     description: |
       If `key` is absent or `null`, the existing key, if any, will be removed.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256

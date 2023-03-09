@@ -2,23 +2,58 @@
 (package): Common
 (docs-uri): https://docs.commercetools.com/http-api-projects-products.html#pricedraft
 displayName: PriceDraft
+description: |-
+  The draft representation for prices to be embedded into [ProductVariantDrafts](ctp:api:type:ProductVariantDraft) when the [ProductPriceMode](ctp:api:type:ProductPriceModeEnum) is `Embedded`. For the `Standalone` ProductPriceMode use [StandalonePriceDraft](ctp:api:type:StandalonePriceDraft).
 type: object
 properties:
+  key?:
+    type: string
+    description: |
+      User-defined identifier for the Price. It must be unique per [ProductVariant](ctp:api:type:ProductVariant).
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
   value:
     type: Money
+    description: |
+      Money value of this Price.
   country?:
     type: CountryCode
+    description: |
+      Set this field if this Price is only valid for the specified country.
   customerGroup?:
     type: CustomerGroupResourceIdentifier
+    description: |
+      Set this field if this Price is only valid for the referenced [CustomerGroup](ctp:api:type:CustomerGroup).
   channel?:
     type: ChannelResourceIdentifier
+    description: |
+      Set this field if this Price is only valid for the referenced `ProductDistribution` [Channel](ctp:api:type:Channel).
   validFrom?:
     type: datetime
+    description: |
+      Set this field if this Price is only valid from the specified date and time. Must be at least 1 ms earlier than `validUntil`.
   validUntil?:
     type: datetime
-  custom?:
-    type: CustomFieldsDraft
+    description: |
+      Set this field if this Price is only valid until the specified date and time. Must be at least 1 ms later than `validFrom`.
+  discounted?:
+    type: DiscountedPriceDraft
+    description: |
+      Set this field to add a DiscountedPrice from an **external service**.
+
+      Otherwise, Composable Commerce sets this field automatically if at least one [ProductDiscount](ctp:api:type:ProductDiscount) applies.
+      The DiscountedPrice must reference a ProductDiscount with:
+
+      * The `isActive` flag set to `true`.
+      * A [ProductDiscountValue](ctp:api:type:ProductDiscountValueExternal) of type `external`.
+      * A `predicate` that matches the [ProductVariant](ctp:api:type:ProductVariant) the Price is referenced from.
+
   tiers?:
     type: PriceTierDraft[]
-  discounted?:
-    type: DiscountedPrice
+    description: |
+      Set this field to specify different Prices for certain [LineItem](ctp:api:type:LineItem) quantities.
+  custom?:
+    type: CustomFieldsDraft
+    description: |
+      Custom Fields for the Price.

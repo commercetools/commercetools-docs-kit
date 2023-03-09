@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+(package): Extension
+type: ExtensionDestination
+displayName: HttpDestination
+discriminatorValue: HTTP
+description: |
+  We recommend an encrypted `HTTPS` connection for production setups. However, we also accept unencrypted `HTTP` connections for development purposes. HTTP redirects will not be followed and cache headers will be ignored.
+properties:
+  url:
+    type: string
+    description: |
+      URL to the target destination.
+  authentication?:
+    type: HttpDestinationAuthentication
+    description: |
+      Authentication methods (such as `Basic` or `Bearer`).

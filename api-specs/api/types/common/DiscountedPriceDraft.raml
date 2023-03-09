@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Common
+(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#discountedprice
+displayName: DiscountedPriceDraft
+type: object
+properties:
+  value:
+    type: Money
+    description: |
+      Sets the money value for the discounted price.
+  discount:
+    type: ProductDiscountReference
+    description: |
+      Relates the referenced [ProductDiscount](ctp:api:type:ProductDiscount) to the discounted price.

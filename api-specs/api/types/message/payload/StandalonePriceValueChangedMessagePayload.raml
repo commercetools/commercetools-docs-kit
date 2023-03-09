@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+(package): Message
+(docs-uri): https://docs.commercetools.com/api/projects/messages#standalone-price-value-changed
+type: MessagePayload
+displayName: StandalonePriceValueChangedMessagePayload
+discriminatorValue: StandalonePriceValueChanged
+description: |
+  Generated after a successful [Change Value](ctp:api:type:StandalonePriceChangeValueAction) update action.
+properties:
+  value:
+    type: Money
+    description: |
+      The new value of the updated [StandalonePrice](ctp:api:type:StandalonePrice).
+  staged:
+    type: boolean
+    default: false
+    (beta): true
+    description: |
+      Whether the new value was applied to the current or the staged representation of the StandalonePrice. Staged changes are stored on the [StagedStandalonePrice](ctp:api:type:StagedStandalonePrice).
+  oldValue?:
+    type: Money
+    description: |
+      The old value of the updated [StandalonePrice](ctp:api:type:StandalonePrice).
+      Present on Messages created after 3 February 2023. Optional for backwards compatibility.

@@ -4,6 +4,14 @@
 type: Reference
 displayName: ShoppingListReference
 discriminatorValue: shopping-list
+description: |
+  [Reference](ctp:api:type:Reference) to a [ShoppingList](ctp:api:type:ShoppingList).
 properties:
   obj?:
     type: ShoppingList
+    description: |
+      Contains the representation of the expanded ShoppingList. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for ShoppingLists.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [ShoppingList](ctp:api:type:ShoppingList).

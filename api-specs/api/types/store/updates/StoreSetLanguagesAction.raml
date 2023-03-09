@@ -1,11 +1,15 @@
 #%RAML 1.0 DataType
 (package): Store
-(docs-uri): https://docs.commercetools.com/http-api-projects-stores#set-languages
+(docs-uri): https://docs.commercetools.com/api/projects/stores#set-languages
 type: StoreUpdateAction
 displayName: StoreSetLanguagesAction
 discriminatorValue: setLanguages
 example: !include ../../../examples/Store/StoreSetLanguagesAction.json
+description: |
+  This update action produces the [StoreLanguagesChanged](ctp:api:type:StoreLanguagesChangedMessage) Message.
+  Adding a language other than the ones defined in the [Project](ctp:api:type:Project) returns a [ProjectNotConfiguredForLanguages](ctp:api:type:ProjectNotConfiguredForLanguagesError) error.
 properties:
   languages?:
-    type: string[]
-    description: ''
+    type: Locale[]
+    description: |
+      Value to set.

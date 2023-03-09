@@ -1,6 +1,6 @@
 #%RAML 1.0 DataType
 (package): CustomerGroup
-(docs-uri): https://docs.commercetools.com/http-api-projects-customerGroups.html#set-customfield
+(docs-uri): https://docs.commercetools.com/api/projects/customerGroups#set-customfield
 type: CustomerGroupUpdateAction
 displayName: CustomerGroupSetCustomFieldAction
 discriminatorValue: setCustomField
@@ -8,11 +8,11 @@ example: !include ../../../examples/CustomerGroup/CustomerGroupSetCustomFieldAct
 properties:
   name:
     type: string
-    description: ''
-  value?:
-    type: any
     description: |
-      Value must be of type [Value](/../api/projects/custom-fields#value).
+      Name of the [Custom Field](/../api/projects/custom-fields).
+  value?:
+    type: CustomFieldValue
+    description: |
       If `value` is absent or `null`, this field will be removed if it exists.
-      Trying to remove a field that does not exist will fail with an [InvalidOperation](/../api/errors#400-bad-request-1) error.
-      If `value` is provided, set the `value` of the field defined by the `name`.
+      Removing a field that does not exist returns an [InvalidOperation](ctp:api:type:InvalidOperationError) error.
+      If `value` is provided, it is set for the field defined by `name`.

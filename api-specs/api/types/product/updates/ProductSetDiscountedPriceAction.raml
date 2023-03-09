@@ -1,17 +1,24 @@
 #%RAML 1.0 DataType
 (package): Product
-(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#set-discounted-price
+(docs-uri): https://docs.commercetools.com/api/projects/products#set-discounted-price
 type: ProductUpdateAction
 displayName: ProductSetDiscountedPriceAction
 discriminatorValue: setDiscountedPrice
 example: !include ../../../examples/Product/ProductSetDiscountedPriceAction.json
+description: |
+  Produces the [ProductPriceExternalDiscountSet](ctp:api:type:ProductPriceExternalDiscountSetMessage) Message.
 properties:
   priceId:
     type: string
-    description: ''
+    description: |
+      The `id` of the [Price](ctp:api:type:Price) to set the Discount.
   staged?:
     type: boolean
-    description: ''
+    description: |
+      If `true`, only the staged Embedded Price is updated. If `false`, both the current and staged Embedded Price are updated.
+    default: true
   discounted?:
-    type: DiscountedPrice
-    description: ''
+    type: DiscountedPriceDraft
+    description: |
+      Value to set. If empty, any existing value will be removed.
+      The referenced [ProductDiscount](ctp:api:type:ProductDiscount) must have the Type `external`, be active, and its predicate must match the referenced Price.

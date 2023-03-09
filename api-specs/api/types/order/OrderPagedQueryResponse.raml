@@ -2,11 +2,12 @@
 (package): Order
 displayName: OrderPagedQueryResponse
 type: object
-(java-extends): 'com.commercetools.api.models.ResourcePagedQueryResponse<Order>'
 properties:
   limit:
     type: number
     format: int64
+    description: |
+      Number of [results requested](/../api/general-concepts#limit).
   count:
     type: number
     format: int64
@@ -16,5 +17,7 @@ properties:
   offset:
     type: number
     format: int64
+    description: |
+      Number of [elements skipped](/../api/general-concepts#offset).
   results:
     type: Order[]

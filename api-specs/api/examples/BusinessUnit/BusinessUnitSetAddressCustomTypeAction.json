@@ -1,0 +1,11 @@
+{
+  "action": "setAddressCustomType",
+  "type": {
+    "id": "{{type-id}}",
+    "typeId": "type"
+  },
+  "fields": {
+    "exampleStringTypeField": "TextString"
+  },
+  "addressId": "{{address-id}}"
+}

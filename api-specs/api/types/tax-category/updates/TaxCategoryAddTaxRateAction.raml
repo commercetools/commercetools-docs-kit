@@ -1,6 +1,6 @@
 #%RAML 1.0 DataType
 (package): TaxCategory
-(docs-uri): https://docs.commercetools.com/http-api-projects-taxCategories.html#add-tax-rate
+(docs-uri): https://docs.commercetools.com/api/projects/taxCategories#add-tax-rate
 type: TaxCategoryUpdateAction
 displayName: TaxCategoryAddTaxRateAction
 discriminatorValue: addTaxRate
@@ -8,4 +8,5 @@ example: !include ../../../examples/TaxCategory/TaxCategoryAddTaxRateAction.json
 properties:
   taxRate:
     type: TaxRateDraft
-    description: ''
+    description: |
+      Value to append to the `rates` array.

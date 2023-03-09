@@ -1,15 +1,21 @@
 #%RAML 1.0 DataType
 (package): Me
-(docs-uri): https://docs.commercetools.com/http-api-projects-me-shoppingLists#set-textlineitem-custom-type
-
+(docs-uri): https://docs.commercetools.com/api/projects/me-shoppingLists#set-textlineitems-custom-type
 type: MyShoppingListUpdateAction
 displayName: MyShoppingListSetTextLineItemCustomTypeAction
 discriminatorValue: setTextLineItemCustomType
-
+example: !include ../../../examples/ShoppingList/ShoppingListSetTextLineItemCustomTypeAction.json
 properties:
   textLineItemId:
     type: string
+    description: |
+      The `id` of the [TextLineItem](ctp:api:type:TextLineItem) to update.
   type?:
     type: TypeResourceIdentifier
+    description: |
+      Defines the [Type](ctp:api:type:Type) that extends the TextLineItem with [Custom Fields](/../api/projects/custom-fields).
+      If absent, any existing Type and Custom Fields are removed from the TextLineItem.
   fields?:
     type: FieldContainer
+    description: |
+      Sets the [Custom Fields](/../api/projects/custom-fields) fields for the TextLineItem.

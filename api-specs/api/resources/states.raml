@@ -9,13 +9,13 @@ type:
 (deleteable): State
 (createable): StateDraft
 description: |
-  The commercetools platform allows you to model states of certain objects, such as orders, line items, products,
+  commercetools Composable Commerce allows you to model states of certain objects, such as orders, line items, products,
   reviews, and payments in order to define finite state machines reflecting the business logic you'd like to
   implement.
 get:
-  (java-implements):
-    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyStatesGet,
-    com.commercetools.api.models.state.StatePagedQueryResponse>'
+  (csharp-implements):
+    'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyStatesGet,
+    commercetools.Sdk.Api.Models.States.IStatePagedQueryResponse>'
   securedBy: [oauth_2_0: { scopes: ['view_states:{projectKey}'] }]
   responses:
     200:

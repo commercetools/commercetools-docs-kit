@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+(package): Payment
+(docs-uri): https://docs.commercetools.com/api/projects/payments#set-transaction-customtype
+type: PaymentUpdateAction
+displayName: PaymentSetTransactionCustomTypeAction
+discriminatorValue: setTransactionCustomType
+example: !include ../../../examples/Payment/PaymentSetTransactionCustomTypeAction.json
+properties:
+  transactionId:
+    type: string
+    description: |
+      Unique identifier of the [Transaction](ctp:api:type:Transaction). If the specified `transactionId` does not exist, the request will fail with an [InvalidOperation](ctp:api:type:InvalidOperationError) error.
+  type?:
+    type: TypeResourceIdentifier
+    description: |
+      Defines the [Type](ctp:api:type:Type) that extends the Transaction with [Custom Fields](/../api/projects/custom-fields).
+      If absent, any existing Type and Custom Fields are removed from the Transaction.
+  fields?:
+    type: FieldContainer
+    description: |
+      Sets the [Custom Fields](/../api/projects/custom-fields) fields for the Transaction.

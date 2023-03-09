@@ -1,6 +1,17 @@
 #%RAML 1.0 DataType
 (package): DiscountCode
-(docs-uri): https://docs.commercetools.com/http-api-projects-discountCodes.html#discountcode
+(docs-uri): https://docs.commercetools.com/http-api-projects-discountCodes.html#discountcoderesourceidentifier
 type: ResourceIdentifier
 displayName: DiscountCodeResourceIdentifier
 discriminatorValue: discount-code
+description: |
+  [ResourceIdentifier](ctp:api:type:ResourceIdentifier) to a [DiscountCode](ctp:api:type:DiscountCode).
+properties:
+  id?:
+    type: string
+    description: |
+      Unique identifier of the referenced [DiscountCode](ctp:api:type:DiscountCode). Either `id` or `key` is required.
+  key?:
+    type: string
+    description: |
+      User-defined unique identifier of the referenced [DiscountCode](ctp:api:type:DiscountCode). Either `id` or `key` is required.

@@ -1,15 +1,22 @@
 #%RAML 1.0 DataType
 (package): Me
-(docs-uri): https://docs.commercetools.com/http-api-projects-me-shoppingLists#set-lineitem-customfield
-
+(docs-uri): https://docs.commercetools.com/api/projects/me-shoppingLists#set-shoppinglistlineitem-customfield
 type: MyShoppingListUpdateAction
 displayName: MyShoppingListSetLineItemCustomFieldAction
 discriminatorValue: setLineItemCustomField
-
+example: !include ../../../examples/ShoppingList/ShoppingListSetLineItemCustomFieldAction.json
 properties:
   lineItemId:
     type: string
+    description: |
+      Unique identifier of an existing [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem) in the [ShoppingList](ctp:api:type:ShoppingList).
   name:
     type: string
+    description: |
+      Name of the [Custom Field](/../api/projects/custom-fields).
   value?:
-    type: any
+    type: CustomFieldValue
+    description: |
+      If `value` is absent or `null`, this field will be removed if it exists.
+      Removing a field that does not exist returns an [InvalidOperation](ctp:api:type:InvalidOperationError) error.
+      If `value` is provided, it is set for the field defined by `name`.

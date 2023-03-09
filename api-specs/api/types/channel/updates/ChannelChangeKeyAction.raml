@@ -1,6 +1,6 @@
 #%RAML 1.0 DataType
 (package): Channel
-(docs-uri): https://docs.commercetools.com/http-api-projects-channels.html#change-key
+(docs-uri): https://docs.commercetools.com/api/projects/channels#change-key
 type: ChannelUpdateAction
 displayName: ChannelChangeKeyAction
 discriminatorValue: changeKey
@@ -8,3 +8,5 @@ example: !include ../../../examples/Channel/ChannelChangeKeyAction.json
 properties:
   key:
     type: string
+    description: |
+      New value to set. Must not be empty.

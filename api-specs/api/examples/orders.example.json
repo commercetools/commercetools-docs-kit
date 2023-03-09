@@ -117,13 +117,16 @@
               "currencyCode": "EUR",
               "centAmount": 1100
             }
-          }
+          },
+          "perMethodTaxRate": [],
+          "taxedPricePortions": []
         }
       ],
       "customLineItems": [],
       "discountCodes": [],
-      "lastMessageSequenceNumber": 1,
-      "origin": "Customer"
+      "origin": "Customer",
+      "shipping": [],
+      "shippingMode": "Single"
     }
   ]
 }

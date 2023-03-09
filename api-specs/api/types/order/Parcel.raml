@@ -6,7 +6,7 @@ type: object
 properties:
   id:
     type: string
-    description: ''
+    description: Unique identifier of the Parcel.
   createdAt:
     type: datetime
     description: ''
@@ -19,3 +19,6 @@ properties:
   items?:
     type: DeliveryItem[]
     description: The delivery items contained in this parcel.
+  custom?:
+    type: CustomFields
+    description: Custom Fields of this parcel.

@@ -1,6 +1,17 @@
 #%RAML 1.0 DataType
 (package): ProductType
-(docs-uri): https://docs.commercetools.com/http-api-projects-productTypes.html#producttype
+(docs-uri): https://docs.commercetools.com/api/projects/productTypes#producttype
 type: ResourceIdentifier
 displayName: ProductTypeResourceIdentifier
 discriminatorValue: product-type
+description: |
+  [ResourceIdentifier](ctp:api:type:ResourceIdentifier) to a [ProductType](ctp:api:type:ProductType).
+properties:
+  id?:
+    type: string
+    description: |
+      Unique identifier of the referenced [ProductType](ctp:api:type:ProductType). Either `id` or `key` is required.
+  key?:
+    type: string
+    description: |
+      User-defined unique identifier of the referenced [ProductType](ctp:api:type:ProductType). Either `id` or `key` is required.

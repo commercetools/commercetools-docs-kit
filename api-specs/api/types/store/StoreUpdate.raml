@@ -2,11 +2,14 @@
 (package): Store
 type: object
 displayName: StoreUpdate
-(java-extends): 'com.commercetools.api.models.ResourceUpdate<StoreUpdate, StoreUpdateAction>'
 properties:
   version:
     type: number
     format: int64
+    description: |
+      Expected version of the Store on which the changes should be applied. If the expected version does not match the actual version, a [ConcurrentModification](ctp:api:type:ConcurrentModificationError) error is returned.
   actions:
     type: array
     items: StoreUpdateAction
+    description: |
+      Update actions to be performed on the Store.

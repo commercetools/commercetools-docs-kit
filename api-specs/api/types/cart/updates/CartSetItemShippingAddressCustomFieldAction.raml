@@ -8,7 +8,15 @@ example: !include ../../../examples/Cart/CartSetItemShippingAddressCustomFieldAc
 properties:
   addressKey:
     type: string
+    description: |
+      `key` of the [Address](ctp:api:type:Address) in `itemShippingAddress`.
   name:
     type: string
+    description: |
+      Name of the [Custom Field](/../api/projects/custom-fields).
   value?:
-    type: any
+    type: CustomFieldValue
+    description: |
+      If `value` is absent or `null`, this field will be removed if it exists.
+      Removing a field that does not exist returns an [InvalidOperation](ctp:api:type:InvalidOperationError) error.
+      If `value` is provided, it is set for the field defined by `name`.

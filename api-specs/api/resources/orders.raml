@@ -12,9 +12,9 @@ description:
   An order can be created from a order, usually after a checkout process has
   been completed.
 get:
-  (java-implements):
-    'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyOrdersGet,
-    com.commercetools.api.models.order.OrderPagedQueryResponse>'
+  (csharp-implements):
+    'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyOrdersGet,
+    commercetools.Sdk.Api.Models.Orders.IOrderPagedQueryResponse>'
   securedBy: [oauth_2_0: { scopes: ['view_orders:{projectKey}'] }]
   responses:
     200:
@@ -49,6 +49,24 @@ post:
       application/json:
         example: !include ../examples/order-import.example.json
         type: OrderImportDraft
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/order.example.json
+            type: Order
+/quotes:
+  (methodName): orderQuote
+  type: base
+  displayName: Order from Quote
+  post:
+    displayName: Create an Order from a Quote
+    description: Create an Order from a Quote
+    securedBy: [oauth_2_0: { scopes: ['manage_quotes:{projectKey}'] }]
+    body:
+      application/json:
+        example: !include ../examples/order-from-quote.example.json
+        type: OrderFromQuoteDraft
     responses:
       201:
         body:
@@ -106,9 +124,9 @@ post:
     OrderEdit are containers for financial changes after an Order has been
     placed.
   get:
-    (java-implements):
-      'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyOrdersEditsGet,
-      com.commercetools.api.models.order_edit.OrderEditPagedQueryResponse>'
+    (csharp-implements):
+      'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyOrdersEditsGet,
+      commercetools.Sdk.Api.Models.OrderEdits.IOrderEditPagedQueryResponse>'
     securedBy: [oauth_2_0: { scopes: ['view_order_edits:{projectKey}'] }]
     responses:
       200:
@@ -197,6 +215,12 @@ post:
           application/json:
             type: OrderEditApply
         securedBy: [oauth_2_0: { scopes: ['manage_order_edits:{projectKey}'] }]
+        responses:
+          200:
+            body:
+              application/json:
+                type: OrderEdit
+                example: !include ../examples/order-edits.example.json
 /{ID}:
   (methodName): withId
   type:
@@ -230,3 +254,28 @@ post:
         body:
           application/json:
             example: !include ../examples/order.example.json
+/search:
+  type: base
+  displayName: Order Search
+  description: |
+    This endpoint provides high performance search queries over Orders. The order search allows searching through all orders (currently supporting a limit of the 10.000.000 newest orders) in your project.
+  post:
+    displayName: Search Orders
+    securedBy: [oauth_2_0: { scopes: ['view_orders:{projectKey}'] }]
+    body:
+      application/json:
+        type: OrderSearchRequest
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/OrderSearch/order-search.example.json
+            type: OrderPagedSearchResponse
+  head:
+    securedBy: [oauth_2_0: { scopes: ['project_settings:{projectKey}'] }]
+    description: Checks whether a search index for the Project's Orders exists.
+    responses:
+      200:
+        description: The index exists and the Search Orders endpoint can be used.
+      404:
+        description: The index does not exist and the Search Orders endpoint returns Error 404 only.

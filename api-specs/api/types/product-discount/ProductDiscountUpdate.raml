@@ -2,13 +2,14 @@
 (package): ProductDiscount
 type: object
 displayName: ProductDiscountUpdate
-(java-extends):
-  'com.commercetools.api.models.ResourceUpdate<ProductDiscountUpdate,
-  ProductDiscountUpdateAction>'
 properties:
   version:
     type: number
     format: int64
+    description: |
+      Expected version of the ProductDiscount on which the changes should be applied. If the expected version does not match the actual version, a [ConcurrentModification](ctp:api:type:ConcurrentModificationError) error is returned.
   actions:
     type: array
     items: ProductDiscountUpdateAction
+    description: |
+      Update actions to be performed on the ProductDiscount.

@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+(package): Store
+(docs-uri): https://docs.commercetools.com/api/projects/stores#productselectionsettingdraft
+type: object
+displayName: ProductSelectionSettingDraft
+properties:
+  productSelection:
+    type: ProductSelectionResourceIdentifier
+    description: Resource Identifier of a ProductSelection.
+  active?:
+    type: boolean
+    default: false
+    description: |
+      Set to `true` if all Products assigned to the Product Selection should become part of the Store's assortment.

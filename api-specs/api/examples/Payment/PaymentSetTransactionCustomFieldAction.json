@@ -1,0 +1,6 @@
+{
+  "action": "setTransactionCustomField",
+  "name": "ExampleStringTypeField",
+  "value": "TextString",
+  "transactionId": "transactionIdTest"
+}

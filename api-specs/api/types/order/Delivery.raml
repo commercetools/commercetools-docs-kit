@@ -6,7 +6,7 @@ type: object
 properties:
   id:
     type: string
-    description: ''
+    description: Unique identifier of the Delivery.
   createdAt:
     type: datetime
     description: ''
@@ -21,3 +21,6 @@ properties:
   address?:
     type: Address
     description: ''
+  custom?:
+    type: CustomFields
+    description: Custom Fields for the Transaction.

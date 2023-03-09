@@ -1,9 +1,17 @@
 #%RAML 1.0 DataType
 (package): CartDiscount
-(docs-uri): https://docs.commercetools.com/http-api-projects-cartDiscounts.html#cartdiscount
+(docs-uri): https://docs.commercetools.com/api/projects/cartDiscounts#cartdiscountreference
 type: Reference
 displayName: CartDiscountReference
 discriminatorValue: cart-discount
+description: |
+  [Reference](ctp:api:type:Reference) to a [CartDiscount](ctp:api:type:CartDiscount).
 properties:
   obj?:
     type: CartDiscount
+    description: |
+      Contains the representation of the expanded CartDiscount. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for CartDiscounts.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [CartDiscount](ctp:api:type:CartDiscount).

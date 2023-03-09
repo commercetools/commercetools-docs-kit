@@ -6,10 +6,10 @@ properties:
   id?:
     (markDeprecated): true
     type: string
-    description: The unique id of the cart from which an order is created.
+    description: Unique identifier of the Cart from which you can create an Order.
   cart?:
     type: CartResourceIdentifier
-    description: ResourceIdentifier to the Cart from which this order is created.
+    description: ResourceIdentifier of the Cart from which this order is created.
   version:
     type: number
     format: int64
@@ -22,6 +22,11 @@ properties:
       It should be unique across a project.
       Once it's set it cannot be changed.
       For easier use on Get, Update and Delete actions we suggest assigning order numbers that match the regular expression `[a-z0-9_\-]{2,36}`.
+  purchaseOrderNumber?:
+    type: string
+    description: |-
+      Identifier for a purchase order, usually in a B2B context.
+      The Purchase Order Number is typically entered by the [Buyer](/quotes-overview#buyer) and can also be used with [Quotes](/quotes-overview).
   paymentState?:
     type: PaymentState
     description: ''
@@ -34,3 +39,9 @@ properties:
   state?:
     type: StateResourceIdentifier
     description: ''
+  custom?:
+    type: CustomFieldsDraft
+    description: |
+      [Custom Fields](/../api/projects/custom-fields) for the Order. The Custom Field type must match the type of the Custom Fields in the referenced [Cart](/../api/projects/carts#cart).
+      If specified, the Custom Fields are merged with the Custom Fields on the referenced [Cart](/../api/projects/carts#cart) and added to the Order.
+      If empty, the Custom Fields on the referenced [Cart](/../api/projects/carts#cart) are added to the Order automatically.

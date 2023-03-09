@@ -1,9 +1,17 @@
 #%RAML 1.0 DataType
 (package): CustomerGroup
-(docs-uri): https://docs.commercetools.com/http-api-projects-customerGroups.html#customergroup
+(docs-uri): https://docs.commercetools.com/api/projects/customerGroups#customergroupreference
 type: Reference
 displayName: CustomerGroupReference
 discriminatorValue: customer-group
+description: |
+  [Reference](ctp:api:type:Reference) to a [CustomerGroup](ctp:api:type:CustomerGroup).
 properties:
   obj?:
     type: CustomerGroup
+    description: |
+      Contains the representation of the expanded CustomerGroup. Only present in responses to requests with [Reference Expansion](/../api/general-concepts#reference-expansion) for CustomerGroups.
+  id:
+    type: string
+    description: |
+      Unique identifier of the referenced [CustomerGroup](ctp:api:type:CustomerGroup).

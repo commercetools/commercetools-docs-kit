@@ -1,6 +1,17 @@
 #%RAML 1.0 DataType
 (package): Customer
-(docs-uri): https://docs.commercetools.com/http-api-projects-customers.html#customer
+(docs-uri): https://docs.commercetools.com/api/projects/customers#customerresourceidentifier
 type: ResourceIdentifier
 displayName: CustomerResourceIdentifier
 discriminatorValue: customer
+description: |
+  [ResourceIdentifier](ctp:api:type:ResourceIdentifier) to a [Customer](ctp:api:type:Customer). Either `id` or `key` is required.
+properties:
+  id?:
+    type: string
+    description: |
+      Unique identifier of the referenced [Customer](ctp:api:type:Customer).
+  key?:
+    type: string
+    description: |
+      User-defined unique identifier of the referenced [Customer](ctp:api:type:Customer).

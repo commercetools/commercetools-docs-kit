@@ -2,12 +2,15 @@
 (package): Category
 type: object
 displayName: CategoryUpdate
-(java-extends): 'com.commercetools.api.models.ResourceUpdate<CategoryUpdate,
-  CategoryUpdateAction>'
 properties:
   version:
     type: number
     format: int64
+    description: |
+      Expected version of the Category on which the changes should be applied.
+      If the expected version does not match the actual version, a [ConcurrentModification](ctp:api:type:ConcurrentModificationError) error is returned.
   actions:
     type: array
     items: CategoryUpdateAction
+    description: |
+      Update actions to be performed on the Category.

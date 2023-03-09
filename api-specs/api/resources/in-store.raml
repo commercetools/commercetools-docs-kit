@@ -2,12 +2,12 @@ type: base
 uriParameters:
   storeKey:
     type: string
+    description: '`key` of the [Store](ctp:api:type:Store).'
 /carts:
   type:
     baseDomain:
       resourceType: Cart
-      # change to: resourceQueryType: CartPagedQueryResponse | Cart
-      resourceQueryType: CartPagedQueryResponse | object
+      resourceQueryType: CartPagedQueryResponse
       resourceDraft: CartDraft
       whereExample: 'customerEmail = "john.doe@example.com"'
       sortExample: createdAt asc
@@ -28,12 +28,6 @@ uriParameters:
           },
       ]
     displayName: Query carts in store
-    description:
-      Queries carts in a specific Store. The {storeKey} path parameter maps to a
-      Store's key.
-    queryParameters:
-      customerId?:
-        type: string
     responses:
       200:
         body:
@@ -53,10 +47,9 @@ uriParameters:
           },
       ]
     description: |
-      Creates a cart in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
-      When using this endpoint the cart's store field is always set to the store specified in the path parameter.
-      Creating a cart can fail with an InvalidOperation if the referenced shipping method
-      in the CartDraft has a predicate which does not match the cart.
+      The `store` field in the created [Cart](ctp:api:type:Cart) is set to the Store specified by the `storeKey` path parameter.
+
+      Specific Error Codes: [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
     body:
       application/json:
         example: !include ../examples/cart-create.example.json
@@ -74,16 +67,22 @@ uriParameters:
     get:
       displayName: Get cart by customer id in store
       securedBy:
-        [oauth_2_0: { scopes: ['view_orders:{projectKey}:{storeKey}'] }]
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_orders:{projectKey}',
+                  'view_orders:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
       description: |
-        Retrieves the active cart of the customer that has been modified most recently in a specific Store.
-        The {storeKey} path parameter maps to a Store's key.
+        Retrieves the recently modified active Cart of a Customer with [CartOrigin](ctp:api:type:CartOrigin) `Customer`. If no active Cart exists, a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned.
 
-        If the cart exists in the commercetools project but does not have the store field, or the store field
-        references a different store, this method returns a ResourceNotFound error.
+        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned.
 
-        The cart may not contain up-to-date prices, discounts etc. If you want to ensure they're up-to-date,
-        send an Update request with the Recalculate update action instead.
+        To ensure the Cart is up-to-date with current values (such as Prices and Discounts), use the [Recalculate](ctp:api:type:CartRecalculateAction) update action.
       responses:
         200:
           body:
@@ -110,11 +109,9 @@ uriParameters:
             },
         ]
       description: |
-        Returns a cart by its key from a specific Store. The {storeKey} path parameter maps to a Store's key.
-        If the cart exists in the commercetools project but does not have the store field,
-        or the store field references a different store, this method returns a ResourceNotFound error.
-        The cart may not contain up-to-date prices, discounts etc.
-        If you want to ensure they're up-to-date, send an Update request with the Recalculate update action instead.
+        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned.
+
+        To ensure the Cart is up-to-date with current values (such as Prices and Discounts), use the [Recalculate](ctp:api:type:CartRecalculateAction) update action.
       responses:
         200:
           body:
@@ -134,9 +131,7 @@ uriParameters:
             },
         ]
       description: |
-        Updates a cart in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
-        If the cart exists in the commercetools project but does not have the store field,
-        or the store field references a different store, this method returns a ResourceNotFound error.
+        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       body:
         application/json:
           example: !include ../examples/cart-update.example.json
@@ -147,6 +142,8 @@ uriParameters:
               example: !include ../examples/cart.example.json
     delete:
       displayName: Delete cart by key in store
+      description: |
+        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       is:
         - dataErasure
       securedBy:
@@ -169,6 +166,12 @@ uriParameters:
     type: base
     post:
       displayName: Replicate cart for store
+      description: |
+        Creates a new Cart by replicating an existing Cart or Order. Can be useful in cases where a customer wants to cancel a recent order to make some changes or reorder a previous order.
+
+        The replicated Cart preserves Customer information, Line Items and Custom Line Items, Custom Fields, Discount Codes, and other settings of the Cart or Order. If the Line Items become invalid, for example, due to removed Products or Prices, they are removed from the new Cart. If the Customer switches to another Customer Group, the new Cart is updated with the new value. It has up-to-date Tax Rates, Prices, and Line Item product data and is in `Active` [CartState](ctp:api:type:CartState).
+
+        The new Cart does not contain payments or deliveries. The [State](ctp:api:type:ItemState) of Line Items and Custom Line Items is reset to `initial`.
       body:
         application/json:
           type: ReplicaCartDraft
@@ -210,11 +213,9 @@ uriParameters:
             },
         ]
       description: |
-        Returns a cart by its ID from a specific Store. The {storeKey} path parameter maps to a Store's key.
-        If the cart exists in the commercetools project but does not have the store field,
-        or the store field references a different store, this method returns a ResourceNotFound error.
-        The cart may not contain up-to-date prices, discounts etc.
-        If you want to ensure they're up-to-date, send an Update request with the Recalculate update action instead.
+        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned.
+
+        To ensure the Cart is up-to-date with current values (such as Prices and Discounts), use the [Recalculate](ctp:api:type:CartRecalculateAction) update action.
       responses:
         200:
           body:
@@ -234,9 +235,8 @@ uriParameters:
             },
         ]
       description: |
-        Updates a cart in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
-        If the cart exists in the commercetools project but does not have the store field,
-        or the store field references a different store, this method returns a ResourceNotFound error.
+        Updates a [Cart](ctp:api:type:Cart) in the Store specified by `storeKey`.
+        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned.
       body:
         application/json:
           example: !include ../examples/cart-update.example.json
@@ -247,6 +247,8 @@ uriParameters:
               example: !include ../examples/cart.example.json
     delete:
       displayName: Delete cart by id in store
+      description: |
+        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       is:
         - dataErasure
       securedBy:
@@ -292,9 +294,7 @@ uriParameters:
               ],
           },
       ]
-    description:
-      Queries orders in a specific Store. The {storeKey} path parameter maps to
-      a Store's key.
+    description: Queries orders in a specific Store.
     responses:
       200:
         body:
@@ -314,7 +314,7 @@ uriParameters:
           },
       ]
     description: |
-      Creates an order from a Cart from a specific Store. The {storeKey} path parameter maps to a Store's key.
+      Creates an order from a Cart from a specific Store.
       When using this endpoint the orders's store field is always set to the store specified in the path parameter.
       The cart must have a shipping address set before creating an order. When using the Platform TaxMode,
       the shipping address is used for tax calculation.
@@ -348,9 +348,9 @@ uriParameters:
         ]
       description: |
         Returns an order by its order number from a specific Store.
-        The {storeKey} path parameter maps to a Store's key.
-        If the order exists in the commercetools project but does not have the store field,
-        or the store field references a different store, this method returns a ResourceNotFound error.
+
+        If the order exists in the project but does not have the store field,
+        or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
         In case the orderNumber does not match the regular expression [a-zA-Z0-9_\-]+,
         it should be provided in URL-encoded format.
       responses:
@@ -372,9 +372,9 @@ uriParameters:
             },
         ]
       description: |
-        Updates an order in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
-        If the order exists in the commercetools project but does not have the store field,
-        or the store field references a different store, this method returns a ResourceNotFound error.
+        Updates an order in the store specified by {storeKey}.
+        If the order exists in the project but does not have the store field,
+        or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
         In case the orderNumber does not match the regular expression [a-zA-Z0-9_\-]+,
         it should be provided in URL-encoded format.
       body:
@@ -426,9 +426,9 @@ uriParameters:
             },
         ]
       description: |
-        Returns an order by its ID from a specific Store. The {storeKey} path parameter maps to a Store's key.
-        If the order exists in the commercetools project but does not have the store field,
-        or the store field references a different store, this method returns a ResourceNotFound error.
+        Returns an order by its ID from a specific Store.
+        If the order exists in the project but does not have the store field,
+        or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       responses:
         200:
           body:
@@ -448,9 +448,9 @@ uriParameters:
             },
         ]
       description: |
-        Updates an order in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
-        If the order exists in the commercetools project but does not have the store field,
-        or the store field references a different store, this method returns a ResourceNotFound error.
+        Updates an order in the store specified by {storeKey}.
+        If the order exists in the project but does not have the store field,
+        or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       body:
         application/json:
           example: !include ../examples/order-update.example.json
@@ -523,6 +523,10 @@ uriParameters:
                 ],
             },
         ]
+      description: |
+        The `store` field in the created [Cart](ctp:api:type:Cart) is set to the Store specified by the `storeKey` path parameter.
+
+        Specific Error Codes: [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
       body:
         application/json:
           example: !include ../examples/cart-create.example.json
@@ -558,6 +562,8 @@ uriParameters:
                 example: !include ../examples/cart.example.json
       post:
         displayName: Update my cart by id in store
+        description: |
+          If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
         securedBy:
           [
             oauth_2_0:
@@ -675,6 +681,14 @@ uriParameters:
     type: base
     get:
       displayName: Get my active cart in store
+      description: |
+        Retrieves the Customer's most recently modified active Cart in the Store specified by the `storeKey` path parameter.
+
+        Carts with `Merchant` or `Quote` [CartOrigin](ctp:api:type:CartOrigin) are ignored.
+
+        If no active Cart exists, a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned.
+      is:
+        - expandable
       securedBy:
         [
           oauth_2_0:
@@ -703,9 +717,9 @@ uriParameters:
     description: |
       shopping-lists e.g. for wishlist support
     get:
-      (java-implements):
-        'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyInStoreKeyByStoreKeyMeShoppingListsGet,
-        com.commercetools.api.models.shopping_list.ShoppingListPagedQueryResponse>'
+      (csharp-implements):
+        'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyInStoreKeyByStoreKeyMeShoppingListsGet,
+        commercetools.Sdk.Api.Models.ShoppingLists.IShoppingListPagedQueryResponse>'
       displayName: Get my shopping lists in store
       securedBy:
         [
@@ -713,11 +727,17 @@ uriParameters:
             {
               scopes:
                 [
-                  'view_shopping_lists:{projectKey}',
-                  'view_shopping_lists:{projectKey}:{storeKey}',
+                  'manage_my_shopping_lists:{projectKey}',
+                  'manage_my_shopping_lists:{projectKey}:{storeKey}',
                 ],
             },
         ]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
       responses:
         200:
           body:
@@ -731,14 +751,22 @@ uriParameters:
             {
               scopes:
                 [
-                  'manage_shopping_lists:{projectKey}',
-                  'manage_shopping_lists:{projectKey}:{storeKey}',
+                  'manage_my_shopping_lists:{projectKey}',
+                  'manage_my_shopping_lists:{projectKey}:{storeKey}',
                 ],
             },
         ]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
       body:
         application/json:
           example: !include ../examples/shopping-list-create.example.json
+      description: |
+        When using this endpoint, the `store` field of a ShoppingList is always set to the Store specified in the path parameter.
       responses:
         201:
           body:
@@ -759,12 +787,19 @@ uriParameters:
               {
                 scopes:
                   [
-                    'view_shopping_lists:{projectKey}',
-                    'view_shopping_lists:{projectKey}:{storeKey}',
+                    'manage_my_shopping_lists:{projectKey}',
+                    'manage_my_shopping_lists:{projectKey}:{storeKey}',
                   ],
               },
           ]
-        description: Gets a shopping list by Key.
+        queryParameters:
+          expand:
+            description: |
+              When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+            type: Expansion[]
+            required: false
+        description: |
+          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store, the [ResourceNotFound](/errors#404-not-found-1) error is returned.
         responses:
           200:
             body:
@@ -778,15 +813,23 @@ uriParameters:
               {
                 scopes:
                   [
-                    'manage_shopping_lists:{projectKey}',
-                    'manage_shopping_lists:{projectKey}:{storeKey}',
+                    'manage_my_shopping_lists:{projectKey}',
+                    'manage_my_shopping_lists:{projectKey}:{storeKey}',
                   ],
               },
           ]
-        description: Update a shopping list found by its Key.
+        queryParameters:
+          expand:
+            description: |
+              When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+            type: Expansion[]
+            required: false
         body:
           application/json:
             example: !include ../examples/shopping-list-update.example.json
+        description: |
+          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
         responses:
           200:
             body:
@@ -802,11 +845,20 @@ uriParameters:
               {
                 scopes:
                   [
-                    'manage_shopping_lists:{projectKey}',
-                    'manage_shopping_lists:{projectKey}:{storeKey}',
+                    'manage_my_shopping_lists:{projectKey}',
+                    'manage_my_shopping_lists:{projectKey}:{storeKey}',
                   ],
               },
           ]
+        queryParameters:
+          expand:
+            description: |
+              When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+            type: Expansion[]
+            required: false
+        description: |
+          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
         responses:
           200:
             body:
@@ -827,12 +879,20 @@ uriParameters:
               {
                 scopes:
                   [
-                    'view_shopping_lists:{projectKey}',
-                    'view_shopping_lists:{projectKey}:{storeKey}',
+                    'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                    'manage_my_shopping_lists:{projectKey}',
                   ],
               },
           ]
-        description: Gets a shopping list by ID.
+        queryParameters:
+          expand:
+            description: |
+              When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+            type: Expansion[]
+            required: false
+        description: |
+          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
         responses:
           200:
             body:
@@ -846,14 +906,23 @@ uriParameters:
               {
                 scopes:
                   [
-                    'manage_shopping_lists:{projectKey}',
-                    'manage_shopping_lists:{projectKey}:{storeKey}',
+                    'manage_my_shopping_lists:{projectKey}',
+                    'manage_my_shopping_lists:{projectKey}:{storeKey}',
                   ],
               },
           ]
+        queryParameters:
+          expand:
+            description: |
+              When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+            type: Expansion[]
+            required: false
         body:
           application/json:
             example: !include ../examples/shopping-list-update.example.json
+        description: |
+          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
         responses:
           200:
             body:
@@ -869,30 +938,259 @@ uriParameters:
               {
                 scopes:
                   [
-                    'manage_shopping_lists:{projectKey}',
-                    'manage_shopping_lists:{projectKey}:{storeKey}',
+                    'manage_my_shopping_lists:{projectKey}',
+                    'manage_my_shopping_lists:{projectKey}:{storeKey}',
                   ],
               },
           ]
+        queryParameters:
+          expand:
+            description: |
+              When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+            type: Expansion[]
+            required: false
+        description: |
+          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
         responses:
           200:
             body:
               application/json:
                 example: !include ../examples/shopping-list.example.json
+  get:
+    displayName: Get my customer details in a store
+    is:
+      - sortable:
+          sortExample: createdAt asc
+      - paging
+      - expandable
+      - query:
+          whereExample: 'customerEmail = "email@example.com"'
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_my_profile:{projectKey}',
+                'manage_my_profile:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customer.example.json
+            type: Customer
+  post:
+    displayName: Update my customer in a store
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_my_profile:{projectKey}',
+                'manage_my_profile:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/customer-update.example.json
+        type: MyCustomerUpdate
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customer-update-response.example.json
+            type: Customer
+  delete:
+    displayName: Delete my Customer in a store
+    is:
+      - versioned
+      - conflicting
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_my_profile:{projectKey}',
+                'manage_my_profile:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/customer.example.json
+            type: Customer
+  /email/confirm:
+    type: base
+    post:
+      displayName: Verify my Customer's Email in a store
+      description: |
+        This is the last step in the [email verification process of a Customer](/../api/projects/customers#email-verification-of-customer-in-store).
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_profile:{projectKey}',
+                  'manage_my_profile:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/Customer/CustomerEmailVerify.json
+          type: MyCustomerEmailVerify
+      responses:
+        200:
+          description: The email was verified.
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+              type: Customer
+  /password:
+    type: base
+    post:
+      displayName: Change my customers password in a store
+      description: |
+        Changing the password of the Customer produces the [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=false`.
+      is:
+        - conflicting
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_profile:{projectKey}',
+                  'manage_my_profile:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/Customer/MyCustomerChangePassword.json
+          type: MyCustomerChangePassword
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer.example.json
+              type: Customer
+    /reset:
+      type: base
+      post:
+        displayName: Reset my Customer's Password in a store
+        description: |
+          This is the last step in the [password reset process of the authenticated Customer](/../api/projects/customers#password-reset-of-customer-in-store).
+
+          Resetting a password produces the of the Customer [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=true`.
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_my_profile:{projectKey}',
+                    'manage_my_profile:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        body:
+          application/json:
+            example: !include ../examples/Customer/CustomerResetPassword.json
+            type: MyCustomerResetPassword
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/customer.example.json
+                type: Customer
+  /signup:
+    type: base
+    post:
+      displayName: Signup my customer in a store
+      description: |
+        If omitted in the request body, the [Customer](ctp:api:type:Customer) `stores` field is set to the Store specified in the path parameter.
+
+        Creating a Customer produces the [CustomerCreated](ctp:api:type:CustomerCreatedMessage) Message.
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_profile:{projectKey}',
+                  'manage_my_profile:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/customer-create.example.json
+          type: MyCustomerDraft
+      responses:
+        201:
+          body:
+            application/json:
+              example: !include ../examples/customer-sign-in-result.example.json
+              type: CustomerSignInResult
+  /login:
+    type: base
+    post:
+      displayName: Authenticate my Customer (Sign In) in a store
+      description: |
+        Retrieves the authenticated Customer (that matches the given email/password pair) if they are part of a specific [Store](ctp:api:type:Store).
+
+        - If the Customer does not have a Cart, the most recently modified anonymous cart becomes the Customer's Cart.
+        - If the Customer already has a Cart, the most recently modified anonymous cart is handled according to [AnonymousCartSignInMode](ctp:api:type:AnonymousCartSignInMode).
+
+        If a Cart is returned as part of [CustomerSignInResult](ctp:api:type:CustomerSignInResult), it has been [recalculated](ctp:api:type:MyCartRecalculateAction) with up-to-date prices, taxes, discounts, and invalid line items removed.
+
+        If an account with the given credentials is not found, an [InvalidCredentials](ctp:api:type:InvalidCredentialsError) error is returned.
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_profile:{projectKey}',
+                  'manage_my_profile:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          type: MyCustomerSignin
+          example: !include ../examples/Customer/CustomerSignIn.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/customer-sign-in-result.example.json
+              type: CustomerSignInResult
 /customers:
   type:
     baseDomain:
       resourceType: Customer
       resourceQueryType: CustomerPagedQueryResponse
       resourceDraft: CustomerDraft
-      whereExample: 'email = "foo@bar.com"'
+      whereExample: 'email = "email@example.com"'
       sortExample: createdAt asc
   (updateable): Customer
   (deleteable): Customer
   (createable): CustomerDraft
   description: |
-    A customer is a person purchasing products. customers, Orders,
-    Comments and Reviews can be associated to a customer.
+    A Customer is a person purchasing products. Carts, Orders,
+    Comments and Reviews can be associated to a Customer.
   get:
     displayName: Query customers in store
     securedBy:
@@ -913,14 +1211,12 @@ uriParameters:
             - 'manage_customers:{projectKey}'
             - 'manage_customers:{projectKey}:{storeKey}'
     description: |
-      Creates a customer in a specific Store. The {storeKey} path parameter maps to a Store's key.
-      When using this endpoint, if omitted,
-      the customer's stores field is set to the store specified in the path parameter.
-      If an anonymous cart is passed in as when using this method,
-      then the cart is assigned to the created customer and the version number of the Cart increases.
-      If the ID of an anonymous session is given, all carts and orders will be assigned to the created customer and
-      the store specified. If you pass in a cart with a store field specified,
-      the store field must reference the same store specified in the {storeKey} path parameter.
+      When using this endpoint, if omitted, the Customer `stores` field is set to the Store specified in the path parameter.
+
+      If the `anonymousCart` field is set on the [CustomerDraft](ctp:api:type:CustomerDraft), then the newly created Customer will be assigned to that [Cart](ctp:api:type:Cart).
+      Similarly, if the `anonymousId` field is set, the Customer will be set on all [Carts](ctp:api:type:Cart), [Orders](ctp:api:type:Order), [ShoppingLists](ctp:api:type:ShoppingList) and [Payments](ctp:api:type:Payment) with the same `anonymousId`.
+      If a Cart with a `store` field specified, the `store` field must reference the same Store specified in the `{storeKey}` path parameter.
+      Creating a Customer produces the [CustomerCreated](ctp:api:type:CustomerCreatedMessage) Message.
     body:
       application/json:
         example: !include ../examples/customer-create.example.json
@@ -928,7 +1224,7 @@ uriParameters:
       201:
         body:
           application/json:
-            example: !include ../examples/customer-sign-in.example.json
+            example: !include ../examples/customer-sign-in-result.example.json
             type: CustomerSignInResult
   /password-token={passwordToken}:
     (methodName): withPasswordToken
@@ -938,6 +1234,8 @@ uriParameters:
         resourceType: Customer
     get:
       displayName: Get customer by password verification token in store
+      description: |
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
@@ -956,6 +1254,8 @@ uriParameters:
         resourceType: Customer
     get:
       displayName: Get customer by email verification token in store
+      description: |
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
@@ -969,14 +1269,10 @@ uriParameters:
   /email-token:
     type: base
     displayName: Customer's Email Verification in store
-    description: |
-      To verify a customer's email, an email token can be created. This should be embedded in a link and sent to the
-      customer via email. When the customer clicks on the link,
-      the "verify customer's email" endpoint should be called,
-      which sets customer's isVerifiedEmail field to true.
     post:
       displayName: Create a Token for verifying the Customer's Email in store
-      description: Create a Token for verifying the Customer's Email in store
+      description: |
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
@@ -984,6 +1280,7 @@ uriParameters:
               - 'manage_customers:{projectKey}:{storeKey}'
       body:
         application/json:
+          example: !include ../examples/Customer/CustomerCreateEmailToken.json
           type: CustomerCreateEmailToken
       responses:
         200:
@@ -994,7 +1291,11 @@ uriParameters:
     type: base
     post:
       displayName: Verify Customer's Email in store
-      description: Verifies customer's email using a token.
+      description: |
+        The customer verifies the email using the token value.
+        Verifying the email of the Customer produces the [CustomerEmailVerified](ctp:api:type:CustomerEmailVerifiedMessage) Message.
+
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
@@ -1002,6 +1303,7 @@ uriParameters:
               - 'manage_customers:{projectKey}:{storeKey}'
       body:
         application/json:
+          example: !include ../examples/Customer/CustomerEmailVerify.json
           type: CustomerEmailVerify
       responses:
         200:
@@ -1014,7 +1316,8 @@ uriParameters:
     type: base
     post:
       displayName: Change a customers password in store
-      description: Change a customers password
+      description: |
+        Changing the password of the Customer produces the [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=false`.
       securedBy:
         - oauth_2_0:
             scopes:
@@ -1022,6 +1325,7 @@ uriParameters:
               - 'manage_customers:{projectKey}:{storeKey}'
       body:
         application/json:
+          example: !include ../examples/Customer/CustomerChangePassword.json
           type: CustomerChangePassword
       responses:
         200:
@@ -1033,7 +1337,10 @@ uriParameters:
     type: base
     post:
       displayName: Reset Customer's Password in store
-      description: Set a new password using a token.
+      description: |
+        Resetting the password of the Customer produces the [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=true`.
+
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
@@ -1041,6 +1348,7 @@ uriParameters:
               - 'manage_customers:{projectKey}:{storeKey}'
       body:
         application/json:
+          example: !include ../examples/Customer/CustomerResetPassword.json
           type: CustomerResetPassword
       responses:
         200:
@@ -1051,17 +1359,10 @@ uriParameters:
   /password-token:
     type: base
     displayName: Create a Token for Resetting the Customer's Password in store
-    description: |
-      The following workflow can be used to reset the customer's password:
-
-      * Create a password reset token and send it embedded in a link to the customer.
-      * When the customer clicks on the link, the customer is retrieved with the token.
-      * The customer enters a new password and the "reset customer's password" endpoint is called.
     post:
       displayName: Create a Token for Resetting the Customer's Password in store
       description: |
-        The token value is used to reset the password of the customer with the given email. The token is
-        valid only for 10 minutes.
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
@@ -1070,6 +1371,7 @@ uriParameters:
       body:
         application/json:
           type: CustomerCreatePasswordResetToken
+          example: !include ../examples/Customer/CustomerCreatePasswordResetToken.json
       responses:
         200:
           body:
@@ -1084,16 +1386,13 @@ uriParameters:
         resourceUpdateType: CustomerUpdate
     get:
       displayName: Get customer by key in store
+      description: |
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
               - 'view_customers:{projectKey}'
               - 'view_customers:{projectKey}:{storeKey}'
-      description: |
-        Returns a customer by its Key from a specific Store. The {storeKey} path parameter maps to a Store's key.
-        It also considers customers that do not have the stores field.
-        If the customer exists in the commercetools project but the stores field references different stores,
-        this method returns a ResourceNotFound error.
       responses:
         200:
           body:
@@ -1101,14 +1400,13 @@ uriParameters:
               example: !include ../examples/customer.example.json
     post:
       displayName: Update customer by key in store
+      description: |
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
               - 'manage_customers:{projectKey}'
               - 'manage_customers:{projectKey}:{storeKey}'
-      description: |
-        If the customer exists in the commercetools project but the stores field references a different store,
-        this method returns a ResourceNotFound error.
       body:
         application/json:
           example: !include ../examples/customer-update.example.json
@@ -1119,6 +1417,10 @@ uriParameters:
               example: !include ../examples/customer.example.json
     delete:
       displayName: Delete customer by key in store
+      description: |
+        Deleting a Customer produces the [CustomerDeleted](ctp:api:type:CustomerDeletedMessage) Message.
+
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       is:
         - dataErasure
       securedBy:
@@ -1140,32 +1442,27 @@ uriParameters:
         resourceUpdateType: CustomerUpdate
     get:
       displayName: Get customer by id in store
+      description: |
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
               - 'view_customers:{projectKey}'
               - 'view_customers:{projectKey}:{storeKey}'
-      description: |
-        Returns a customer by its ID from a specific Store. The {storeKey} path parameter maps to a Store's key.
-        It also considers customers that do not have the stores field.
-        If the customer exists in the commercetools project but the stores field references different stores,
-        this method returns a ResourceNotFound error.
       responses:
         200:
           body:
             application/json:
               example: !include ../examples/customer.example.json
     post:
-      displayName: Post customer by id in store
+      displayName: Update customer by id in store
+      description: |
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
             scopes:
               - 'manage_customers:{projectKey}'
               - 'manage_customers:{projectKey}:{storeKey}'
-      description: |
-        Updates a customer in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
-        If the customer exists in the commercetools project but the stores field references a different store,
-        this method returns a ResourceNotFound error.
       body:
         application/json:
           example: !include ../examples/customer-update.example.json
@@ -1176,6 +1473,10 @@ uriParameters:
               example: !include ../examples/customer.example.json
     delete:
       displayName: Delete customer by id in store
+      description: |
+        Deleting a Customer produces the [CustomerDeleted](ctp:api:type:CustomerDeletedMessage) Message.
+
+        If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       is:
         - dataErasure
       securedBy:
@@ -1194,7 +1495,10 @@ uriParameters:
   description: Retrieves the authenticated customer.
   post:
     displayName: Authenticate Customer (Sign In) in store
-    description: Authenticate Customer (Sign In) in store
+    description: |
+      Authenticates a Customer associated with a Store. For more information, see [Global versus Store-specific Customers](/../api/customers-overview#global-versus-store-specific-customers).
+
+      If the Customer exists in the Project but the `stores` field references a different Store, this method returns an [InvalidCredentials](ctp:api:type:InvalidCredentialsError) error.
     securedBy:
       - oauth_2_0:
           scopes:
@@ -1203,11 +1507,12 @@ uriParameters:
     body:
       application/json:
         type: CustomerSignin
+        example: !include ../examples/Customer/CustomerSignIn.json
     responses:
-      201:
+      200:
         body:
           application/json:
-            example: !include ../examples/customer-sign-in.example.json
+            example: !include ../examples/customer-sign-in-result.example.json
             type: CustomerSignInResult
 /shipping-methods:
   /matching-cart:
@@ -1215,17 +1520,26 @@ uriParameters:
     description: Get ShippingMethods for a cart in a store
     get:
       displayName: Get ShippingMethods for a cart in a store
+      description: |
+        Retrieves all the ShippingMethods that can ship to the shipping address of the given Cart in a given Store.
+        Each ShippingMethod contains exactly one ShippingRate with the flag `isMatching` set to `true`.
+        This ShippingRate is used when the ShippingMethod is [added to the Cart](ctp:api:type:CartSetShippingMethodAction).
       is:
         - expandable
       securedBy:
         - oauth_2_0:
             scopes:
               - 'view_orders:{projectKey}'
+              - 'view_orders:{projectKey}:{storeKey}'
               - 'manage_customers:{projectKey}:{storeKey}'
               - 'view_shipping_methods:{projectKey}'
+              - 'manage_my_orders:{projectKey}'
+              - 'manage_my_orders:{projectKey}:{storeKey}'
       queryParameters:
         cartId:
           type: string
+          description: |
+            ID of the Cart with a shipping address set.
       responses:
         200:
           body:
@@ -1243,9 +1557,9 @@ uriParameters:
   description: |
     shopping-lists e.g. for wishlist support
   get:
-    (java-implements):
-      'com.commercetools.api.models.PagedQueryResourceRequest<ByProjectKeyInStoreKeyByStoreKeyShoppingListsGet,
-      com.commercetools.api.models.shopping_list.ShoppingListPagedQueryResponse>'
+    (csharp-implements):
+      'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyInStoreKeyByStoreKeyShoppingListsGet,
+      commercetools.Sdk.Api.Models.ShoppingLists.IShoppingListPagedQueryResponse>'
     displayName: Get shopping lists in store
     securedBy:
       [
@@ -1258,6 +1572,12 @@ uriParameters:
               ],
           },
       ]
+    queryParameters:
+      expand:
+        description: |
+          *Limitation: `expand=lineItems[0].variant` and `expand=lineItems[0].productSlug` are not supported.*
+        type: Expansion[]
+        required: false
     responses:
       200:
         body:
@@ -1276,9 +1596,17 @@ uriParameters:
               ],
           },
       ]
+    queryParameters:
+      expand:
+        description: |
+          *Limitation: `expand=lineItems[0].variant` and `expand=lineItems[0].productSlug` are not supported.*
+        type: Expansion[]
+        required: false
     body:
       application/json:
         example: !include ../examples/shopping-list-create.example.json
+    description: |
+      When using this endpoint, the `store` field of a ShoppingList is always set to the Store specified in the path parameter.
     responses:
       201:
         body:
@@ -1304,7 +1632,15 @@ uriParameters:
                 ],
             },
         ]
-      description: Gets a shopping list by Key.
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
+      description: |
+        If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+        the [ResourceNotFound](/errors#404-not-found-1) error is returned.
       responses:
         200:
           body:
@@ -1323,7 +1659,15 @@ uriParameters:
                 ],
             },
         ]
-      description: Update a shopping list found by its Key.
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
+      description: |
+        If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+        the [ResourceNotFound](/errors#404-not-found-1) error is returned.
       body:
         application/json:
           example: !include ../examples/shopping-list-update.example.json
@@ -1347,6 +1691,15 @@ uriParameters:
                 ],
             },
         ]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
+      description: |
+        If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+        the [ResourceNotFound](/errors#404-not-found-1) error is returned.
       responses:
         200:
           body:
@@ -1372,7 +1725,15 @@ uriParameters:
                 ],
             },
         ]
-      description: Gets a shopping list by ID.
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
+      description: |
+        If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+        the [ResourceNotFound](/errors#404-not-found-1) error is returned.
       responses:
         200:
           body:
@@ -1391,9 +1752,18 @@ uriParameters:
                 ],
             },
         ]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
       body:
         application/json:
           example: !include ../examples/shopping-list-update.example.json
+      description: |
+        If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+        the [ResourceNotFound](/errors#404-not-found-1) error is returned.
       responses:
         200:
           body:
@@ -1414,8 +1784,119 @@ uriParameters:
                 ],
             },
         ]
+      queryParameters:
+        expand:
+          description: |
+            When expanding `variant` and `productSlug` on [ShoppingListLineItem](ctp:api:type:ShoppingListLineItem), [expand the entire array](/general-concepts#reference-expansion). You cannot expand a single element (for example, `expand=lineItems[0].variant` is not supported).
+          type: Expansion[]
+          required: false
+      description: |
+        If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different Store,
+        the [ResourceNotFound](/errors#404-not-found-1) error is returned.
       responses:
         200:
           body:
             application/json:
               example: !include ../examples/shopping-list.example.json
+/product-projections:
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: ProductProjection
+    get:
+      displayName: Gets the current or staged representation of a product by its key from a specific Store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_products:{projectKey}',
+                  'view_published_products:{projectKey}',
+                ],
+            },
+        ]
+      description: |
+        Gets the current or staged representation of a [Product](ctp:api:type:Product) by its key from the specified [Store](ctp:api:type:Store).
+        If the Store has defined some languages, countries, distribution or supply Channels,
+        they are used for projections based on [locale](ctp:api:type:ProductProjectionLocales), [price](ctp:api:type:ProductProjectionPrices)
+        and [inventory](ctp:api:type:ProductProjectionInventoryEntries).
+
+        When used with an API Client that has the `view_published_products:{projectKey}` scope, this endpoint only returns published (current) Product Projections.
+      is:
+        - projectionSelecting
+        - priceSelecting
+        - localeProjecting
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: ProductProjection
+    get:
+      displayName: Gets the current or staged representation of a product by its ID from a specific Store
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_products:{projectKey}',
+                  'view_published_products:{projectKey}',
+                ],
+            },
+        ]
+      description: |
+        Gets the current or staged representation of a [Product](ctp:api:type:Product) by its ID from the specified [Store](ctp:api:type:Store).
+        If the Store has defined some languages, countries, distribution or supply Channels,
+        they are used for projections based on [locale](ctp:api:type:ProductProjectionLocales), [price](ctp:api:type:ProductProjectionPrices)
+        and [inventory](ctp:api:type:ProductProjectionInventoryEntries).
+
+        When used with an API Client that has the `view_published_products:{projectKey}` scope, this endpoint only returns published (current) Product Projections.
+      is:
+        - projectionSelecting
+        - priceSelecting
+        - localeProjecting
+/product-selection-assignments:
+  type: base
+  get:
+    displayName: Query available products in store
+    is:
+      - expandable
+    securedBy: [oauth_2_0: { scopes: ['view_product_selections:{projectKey}'] }]
+    description: |
+      Queries Product Selection assignments in a specific Store.
+
+      The response will include duplicate Products whenever more than one active Product Selection of the Store
+      includes a Product. To make clear through which Product Selection a Product is available in the Store
+      the response contains assignments including both the Product and the Product Selection.
+      Only Products of Product Selections that are activated in Store will be returned.
+
+    queryParameters:
+      limit:
+        type: number
+        format: int32
+        maximum: 500
+        required: false
+        description: |
+          Number of [results requested](/../api/general-concepts#limit).
+      offset:
+        type: number
+        format: int32
+        required: false
+        description: |
+          Number of [elements skipped](/../api/general-concepts#offset).
+      withTotal:
+        type: boolean
+        default: true
+        required: false
+        description: |
+          By default, the response does not include the `total` field. Set to `true` to get the [total](/../api/general-concepts#total) number of query results included.
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/products-in-store.example.json
+            type: ProductsInStorePagedQueryResponse

@@ -20,6 +20,7 @@ properties:
     description: ''
   quantity:
     type: number
+    format: int64
     description: ''
   state?:
     type: ItemState[]
@@ -27,7 +28,7 @@ properties:
   supplyChannel?:
     type: ChannelResourceIdentifier
     description: |-
-      Optional connection to a particular supplier.
+      Connection to a particular supplier.
       By providing supply channel information, you can uniquely identify
       inventory entries that should be reserved.
       The provided channel should have the
@@ -43,6 +44,11 @@ properties:
   custom?:
     type: CustomFieldsDraft
     description: The custom fields.
+  inventoryMode?:
+    type: InventoryMode
+    description: |-
+      Inventory mode specific to the line item only, valid for the entire `quantity` of the line item.
+      Set only if inventory mode should be different from the `inventoryMode` specified on the [OrderImportDraft](ctp:api:type:OrderImportDraft).
   shippingDetails?:
     type: ItemShippingDetailsDraft
     description: ''

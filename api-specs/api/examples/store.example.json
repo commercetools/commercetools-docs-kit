@@ -5,7 +5,11 @@
   "name": {
     "en": "big store"
   },
+  "languages": [],
+  "countries": [],
+  "distributionChannels": [],
+  "supplyChannels": [],
+  "productSelections": [],
   "createdAt": "1971-01-01T00:00:00.001Z",
-  "lastModifiedAt": "1972-01-01T00:00:00.001Z",
-  "distributionChannels": []
+  "lastModifiedAt": "1972-01-01T00:00:00.001Z"
 }

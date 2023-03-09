@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): Message
+(docs-uri): https://docs.commercetools.com/api/projects/messages#standalone-price-created
+type: Message
+displayName: StandalonePriceCreatedMessage
+discriminatorValue: StandalonePriceCreated
+description: |
+  Generated after a successful [Create StandalonePrice](/../api/projects/standalone-prices#create-standaloneprice) request.
+properties:
+  standalonePrice:
+    type: StandalonePrice
+    description: |
+      [Standalone Price](ctp:api:type:StandalonePrice) that was created.

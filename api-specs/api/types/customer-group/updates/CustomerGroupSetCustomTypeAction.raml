@@ -1,20 +1,20 @@
 #%RAML 1.0 DataType
 (package): CustomerGroup
-(docs-uri): https://docs.commercetools.com/http-api-projects-customerGroups.html#set-custom-type
+(docs-uri): https://docs.commercetools.com/api/projects/customerGroups#set-custom-type
 type: CustomerGroupUpdateAction
 displayName: CustomerGroupSetCustomTypeAction
 discriminatorValue: setCustomType
 example: !include ../../../examples/CustomerGroup/CustomerGroupSetCustomTypeAction.json
 description: |
-  This action sets or removes the custom type for an existing customer group.
-  If present, this action overwrites any existing [custom](/../api/projects/custom-fields#custom) type and fields.
+  This action sets or removes the custom type for an existing CustomerGroup.
+  If present, this action overwrites any existing [custom](/../api/projects/custom-fields) type and fields.
 properties:
   type?:
     type: TypeResourceIdentifier
     description: |
-      If absent, the [custom](/../api/projects/custom-fields#custom) type and any existing [CustomFields](/../api/projects/custom-fields) are removed.
+      Defines the [Type](ctp:api:type:Type) that extends the CustomerGroup with [Custom Fields](/../api/projects/custom-fields).
+      If absent, any existing Type and Custom Fields are removed from the CustomerGroup.
   fields?:
     type: FieldContainer
     description: |
-      Valid JSON object, based on the [FieldDefinitions](/../api/projects/types#fielddefinition) of the [Type](/../api/projects/types#type).
-      Sets the [custom](/../api/projects/custom-fields#custom) fields to this value.
+      Sets the [Custom Fields](/../api/projects/custom-fields) fields for the CustomerGroup.
