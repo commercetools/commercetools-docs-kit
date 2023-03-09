@@ -9,4 +9,4 @@
 '@commercetools-website/site-template': minor
 ---
 
-Upgrade to Gatsby v5 (5.6.1)
+Upgrade to Gatsby v5 (5.7.0)
