@@ -11,7 +11,7 @@ module.exports = {
       /(.*-smoke-test.*)\/views\/beta\/(.*)\.html/,
     ],
     exclude: ['site-template/*'],
-    overrides: [
+    options: [
       {
         include: /(.*-smoke-test.*)\/components\/rss-feeds\/index\.html/,
         waitForSelector: 'table[data-table-name="rss-feed"]',

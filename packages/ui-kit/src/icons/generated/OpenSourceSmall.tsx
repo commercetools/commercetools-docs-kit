@@ -7,7 +7,6 @@ const SvgOpenSourceSmall = (props: SVGProps<SVGSVGElement>) => (
     viewBox="0 0 25 25"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    role="img"
     {...props}
   >
     <defs>

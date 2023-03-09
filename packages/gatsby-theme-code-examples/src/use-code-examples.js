@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-export default () => {
+const UseCodeExamples = () => {
   const queryResult = useStaticQuery(graphql`
     query GetAllCodeExamplesQuery {
       allCodeExample {
@@ -15,3 +15,5 @@ export default () => {
   `);
   return queryResult.allCodeExample.nodes;
 };
+
+export default UseCodeExamples;

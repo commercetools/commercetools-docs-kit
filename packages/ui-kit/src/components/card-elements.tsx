@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import * as designSystem from '../design-system';
 import { css } from '@emotion/react';
@@ -23,7 +22,7 @@ import { css } from '@emotion/react';
  *                </BodyContainer>
  *                <ReadMoreContainer>
  *                  <ReadMore>
- *                    <Link href={props.href} noUnderline>
+ *                    <Link href={props.href} nounderline>
  *                        {props.textLink}
  *                    </Link>
  *                  </ReadMore>

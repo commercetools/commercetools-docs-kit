@@ -6,7 +6,6 @@ const SvgRss = (props: SVGProps<SVGSVGElement>) => (
     width={16}
     height={16}
     xmlns="http://www.w3.org/2000/svg"
-    role="img"
     {...props}
   >
     <path

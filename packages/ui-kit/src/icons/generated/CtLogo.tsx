@@ -6,7 +6,6 @@ const SvgCtLogo = (props: SVGProps<SVGSVGElement>) => (
     viewBox="0 0 34.3 39"
     width={16}
     height={16}
-    role="img"
     {...props}
   >
     <path

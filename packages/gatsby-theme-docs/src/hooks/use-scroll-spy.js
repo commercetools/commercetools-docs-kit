@@ -6,6 +6,7 @@ const getElement = (selector) => document.querySelector(selector);
 const throttleMs = 100;
 
 const useScrollSpy = (selector, callback) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onScroll = React.useCallback(
     throttle(() => {
       const element = getElement(selector);

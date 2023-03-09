@@ -21,8 +21,8 @@ const withoutPrefix = (value, pathPrefix) =>
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
-const getStylesFromProps = ({ noUnderline }) => css`
-  text-decoration: ${noUnderline ? 'none' : 'underline'};
+const getStylesFromProps = ({ nounderline }) => css`
+  text-decoration: ${nounderline ? 'none' : 'underline'};
 `;
 
 const AnchorLink = styled(StyledLink)``;
@@ -87,9 +87,10 @@ export const ExternalSiteLink = (props) => (
  */
 const PureLink = (extendedProps) => {
   const siteData = useSiteData();
-  const { location, noUnderline, ...props } = extendedProps;
+  const { location, nounderline, ...props } = extendedProps;
   // For image links, return the link as-is.
   if (props.href.startsWith(withPrefix('/static'))) {
+    // eslint-disable-next-line jsx-a11y/anchor-has-content
     return <a {...props} data-link-type="image-link" />;
   }
 
@@ -141,7 +142,7 @@ const PureLink = (extendedProps) => {
       React.cloneElement(props.children, {
         children: (
           <InlineLink>
-            <span css={getStylesFromProps({ noUnderline })}>
+            <span css={getStylesFromProps({ nounderline })}>
               {props.children.props.children}
             </span>
             <ExternalLinkIcon size="small" />
@@ -150,16 +151,16 @@ const PureLink = (extendedProps) => {
       })
     ) : (
       <InlineLink>
-        <span css={getStylesFromProps({ noUnderline })}>{props.children}</span>
+        <span css={getStylesFromProps({ nounderline })}>{props.children}</span>
         <ExternalLinkIcon size="small" />
       </InlineLink>
     );
-    if (props.noAdditionalStyling) {
+    if (props.noadditionalstyling) {
       return (
         <ExternalSiteLink
           {...props}
           data-link-type="external-link"
-          css={getStylesFromProps({ noUnderline })}
+          css={getStylesFromProps({ nounderline })}
         ></ExternalSiteLink>
       );
     }
@@ -167,7 +168,7 @@ const PureLink = (extendedProps) => {
       <ExternalSiteLink
         {...props}
         data-link-type="external-link"
-        css={getStylesFromProps({ noUnderline })}
+        css={getStylesFromProps({ nounderline })}
       >
         {linkWithIcon}
       </ExternalSiteLink>
@@ -184,7 +185,7 @@ const PureLink = (extendedProps) => {
         data-link-type="anchor-link"
         href={trimTrailingSlash(hrefObject.hash)}
         className={props.className}
-        css={getStylesFromProps({ noUnderline })}
+        css={getStylesFromProps({ nounderline })}
       >
         {props.children}
       </AnchorLink>
@@ -205,7 +206,7 @@ const PureLink = (extendedProps) => {
         data-link-type="gatsby-link"
         to={trimTrailingSlash(hrefObject.pathname) + hrefObject.hash}
         className={props.className}
-        css={getStylesFromProps({ noUnderline })}
+        css={getStylesFromProps({ nounderline })}
       >
         {props.children}
       </GatsbyRouterLink>
@@ -228,7 +229,7 @@ const PureLink = (extendedProps) => {
       data-link-type="internal-link"
       href={internalHref}
       className={props.className}
-      css={getStylesFromProps({ noUnderline })}
+      css={getStylesFromProps({ nounderline })}
     >
       {props.children}
     </InternalSiteLink>
@@ -238,8 +239,8 @@ PureLink.propTypes = {
   href: PropTypes.string.isRequired,
   target: PropTypes.string,
   className: PropTypes.string,
-  noUnderline: PropTypes.bool,
-  noAdditionalStyling: PropTypes.bool,
+  nounderline: PropTypes.bool,
+  noadditionalstyling: PropTypes.bool,
   children: PropTypes.node,
   // from @react/router
   location: PropTypes.object.isRequired,

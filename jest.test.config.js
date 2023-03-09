@@ -11,7 +11,6 @@ module.exports = {
     // https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v2-to-v3/#reach-router
     // To be removed once reach-router natively supports React 17 and gatsbyJS is not vendoring it any more
     '^@reach/router(.*)': '<rootDir>/node_modules/@gatsbyjs/reach-router$1',
-    '^gatsby-page-utils/(.*)$': `gatsby-page-utils/dist/$1`, // Workaround for https://github.com/facebook/jest/issues/9771
   },
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',

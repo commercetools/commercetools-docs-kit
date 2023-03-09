@@ -41,7 +41,7 @@ const betaHint =
 const BetaFlag = (props) => {
   if (props.href) {
     return (
-      <Link href={props.href} noUnderline={true} css={getStyles(props)}>
+      <Link href={props.href} nounderline={true} css={getStyles(props)}>
         {'BETA'}
       </Link>
     );

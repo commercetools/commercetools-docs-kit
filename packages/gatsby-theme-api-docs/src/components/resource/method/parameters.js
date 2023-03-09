@@ -96,7 +96,11 @@ function UnionParametersRow(props) {
     <>
       Can be{' '}
       {typesToRender.map(({ type }, idx, { length }) =>
-        length > idx + 1 ? <span>{type}, </span> : <span>or {type}</span>
+        length > idx + 1 ? (
+          <span key={idx}>{type}, </span>
+        ) : (
+          <span key={idx}>or {type}</span>
+        )
       )}
     </>
   );

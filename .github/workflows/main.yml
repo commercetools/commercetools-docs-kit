@@ -16,7 +16,6 @@ on:
 jobs:
   build_deploy_test:
     runs-on: ubuntu-latest
-
     # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L8-L11
     env:
       # prevents extra Cypress installation progress messages (github action default is true)
@@ -27,6 +26,16 @@ jobs:
       DEPLOY_ENV: Preview
 
     steps:
+      - name: Add comment with link to ongoing build
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: -build-status
+          append: true
+          message: |
+
+            ---
+            **[🏭 A new build process was started - watch live 📺](https://github.com/commercetools/commercetools-docs-kit/actions/runs/${{ github.run_id }})**
+
       - name: Detect Production Deploy
         if: github.event_name == 'push' && github.ref_name == 'main'
         run: |
@@ -40,15 +49,25 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      # cached dependencies
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
       - uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-v3-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v3-
+      # cached build (separately to increase cache efficiency)
+      - uses: actions/cache@v3
+        id: build-cache
         with:
           path: |
             .cache
             public
-          key: ${{ runner.os }}-build-v4-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Set custom Yarn cache path
-        run: yarn config set cacheFolder .cache/yarn
+          key: ${{ runner.os }}-gatsby-monolithic-v1-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
         run: yarn install --immutable
@@ -68,76 +87,55 @@ jobs:
           GATSBY_EXPERIMENTAL_QUERY_CONCURRENCY: 8 # default is 4, going too high on the 2-core github actions machines will fire back
           GATSBY_CPU_COUNT: logical_cores # use hyperthreading if available to statistically better saturate the cores
 
+      - name: GitHub Slug Action
+        uses: rlespinasse/github-slug-action@v4
+        with:
+          slug-maxlength: 52
+
+      - name: Deploy preview to commercetools-docs-kit vercel via CLI
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        id: deploy-to-vercel
+        env:
+          GITHUB_COMMITMESSAGE: ${{ toJSON(github.event.head_commit.message) }} # toJSON is de facto escaping and quoting the string
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID}}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID}}
+        run: |
+          vercel deploy --yes --token ${{ secrets.VERCEL_TOKEN }} --scope commercetools -m githubCommitSha=${{ github.sha }} -m githubCommitAuthorName=${{ github.actor }} -m githubCommitAuthorLogin=${{ github.actor }} -m githubDeployment=1 -m githubOrg=commercetools -m githubRepo=commercetools-docs-kit -m githubCommitOrg=commercetools -m githubCommitRepo=commercetools-docs-kit -m githubCommitRef=main -m githubCommitMessage="$GITHUB_COMMITMESSAGE" > deployment-url.txt
+          vercel alias set $(cat deployment-url.txt) docskit-sha-${{ github.sha }}.commercetools.vercel.app --token ${{ secrets.VERCEL_TOKEN }} --scope commercetools
+          vercel alias set $(cat deployment-url.txt) docskit-${{ env.GITHUB_REF_NAME_SLUG_URL }}.commercetools.vercel.app --token ${{ secrets.VERCEL_TOKEN }} --scope commercetools
+
+      - name: Post new build information
+        if: ${{ env.DEPLOY_ENV == 'Preview' }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: -build-status
+          message: |
+            **[🚚 Build Process Details](https://github.com/commercetools/commercetools-docs-kit/actions/runs/${{ github.run_id }})**
+
+            Preview URLs:
+             * https://docskit-${{ env.GITHUB_REF_NAME_SLUG_URL }}.commercetools.vercel.app _(permalink to the last build of this **branch**)_
+             * https://docskit-sha-${{ github.sha }}.commercetools.vercel.app _(this **commit**)_
+
       - name: Running linters and tests
         run: |
           yarn jest --projects jest.{eslint,test}.config.js \
             --maxWorkers=3 \
             --reporters jest-silent-reporter
+          yarn percy config:validate
 
       - name: Run Writing Style check over Websites
         run: yarn lint:text
 
-      - name: Deploy to Vercel (Production)
+      - name: Deploy production to commercetools-docs-kit vercel via CLI
         if: ${{ env.DEPLOY_ENV == 'Production' }}
         id: deploy-to-vercel-production
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-project-name: commercetools-docs-kit
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          vercel-args: '--prod'
-          scope: commercetools
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-
-      - name: Set DEPLOY_URL variable (Production)
-        if: ${{ env.DEPLOY_ENV == 'Production' }}
-        run: echo 'DEPLOY_URL=${{ steps.deploy-to-vercel-production.outputs.preview-url }}' >> "$GITHUB_ENV"
-
-      - name: Initialize GitHub Deployment
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
-        uses: bobheadxi/deployments@v1.1.0
-        id: start-deployment
-        with:
-          step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
-          env: ${{ env.DEPLOY_ENV }}
-          ref: ${{ github.head_ref }}
-
-      - name: Deploy to Vercel (Preview)
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
-        id: deploy-to-vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-project-name: commercetools-docs-kit
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          scope: commercetools
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-          # there are length restrictions to domains and only *.commercetools.vercel.app works
-          # reliably for generated subdomains. No branch name domain because branch names can be long.
-          alias-domains: |
-            docskit-sha-${{ github.sha }}.commercetools.vercel.app
-            docskit-pr-{{PR_NUMBER}}.commercetools.vercel.app
-
-      - name: Set DEPLOY_URL variable (Preview)
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
-        run: echo 'DEPLOY_URL=${{ steps.deploy-to-vercel.outputs.preview-url }}' >> "$GITHUB_ENV"
-
-      - name: Update GitHub Deployment Status
-        if: ${{ env.DEPLOY_ENV == 'Preview' }}
-        uses: bobheadxi/deployments@v1.1.0
-        id: finish_deployment
-        with:
-          step: finish
-          override: false
-          auto_inactive: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ job.status }}
-          env: ${{ steps.start-deployment.outputs.env }}
-          env_url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
-          deployment_id: ${{ steps.start-deployment.outputs.deployment_id }}
+        env:
+          GITHUB_COMMITMESSAGE: ${{ toJSON(github.event.head_commit.message) }} # toJSON is de facto escaping and quoting the string
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID}}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID}}
+        run: |
+          vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }} --scope commercetools -m githubCommitSha=${{ github.sha }} -m githubCommitAuthorName=${{ github.actor }} -m githubCommitAuthorLogin=${{ github.actor }} -m githubDeployment=1 -m githubOrg=commercetools -m githubRepo=commercetools-docs-kit -m githubCommitOrg=commercetools -m githubCommitRepo=commercetools-docs-kit -m githubCommitRef=main -m githubCommitMessage="$GITHUB_COMMITMESSAGE" > deployment-url.txt
+          vercel alias set $(cat deployment-url.txt) docskit-sha-${{ github.sha }}.commercetools.vercel.app --token ${{ secrets.VERCEL_TOKEN }} --scope commercetools
 
       - name: Running Visual Regression Tests
         run: yarn percy snapshot ./public
@@ -159,14 +157,14 @@ jobs:
         run: yarn cypress install && yarn cypress cache list
 
       - name: Running End-to-End tests
-        run: yarn percy exec -- yarn test:e2e:docs-smoke-test --config baseUrl="${{ env.DEPLOY_URL }}"
+        run: yarn percy exec -- yarn test:e2e:docs-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
           CYPRESS_CI: 'true'
 
       - name: Running API End-to-End tests
-        run: yarn percy exec -- yarn test:e2e:api-docs-smoke-test --config baseUrl="${{ env.DEPLOY_URL }}"
+        run: yarn percy exec -- yarn test:e2e:api-docs-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_API_SMOKE_TESTS_E2E }}
@@ -175,7 +173,7 @@ jobs:
       - name: Check local links including anchors
         if: ${{ env.DEPLOY_ENV == 'Preview' }}
         working-directory: public
-        run: npx --quiet start-server-and-test 'npx --quiet http-server --silent -p 9000' 9000 'docker run --network=host -v "$(pwd)/../:/repo/" tennox/linkcheck --skip-file /repo/linkcheck-local-skip-list :9000'
+        run: npx --quiet start-server-and-test 'npx --quiet http-server --silent -p 9000' http://127.0.0.1:9000 'docker run --platform linux/amd64 --network=host -v "$(pwd)/../:/repo/" tennox/linkcheck --skip-file /repo/linkcheck-local-skip-list :9000'
 
   link-check:
     name: 'Check links'

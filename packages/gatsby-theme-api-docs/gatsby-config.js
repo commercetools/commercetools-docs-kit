@@ -12,6 +12,7 @@ const getTagListOption = (themeOptions) => {
 module.exports = (themeOptions = {}) => {
   // Extract the `tagList` from the theme options if specified
   const additionalTags = getTagListOption(themeOptions);
+
   return {
     plugins: [
       {

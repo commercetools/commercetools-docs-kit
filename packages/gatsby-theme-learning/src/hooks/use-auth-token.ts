@@ -13,7 +13,7 @@ export const useAuthToken = () => {
     return getAccessTokenSilently({
       audience: `https://${audience}/api/v2/`,
     });
-  }, [auth0Domain, getAccessTokenSilently]);
+  }, [audience, getAccessTokenSilently]);
 
   return {
     getAuthToken,

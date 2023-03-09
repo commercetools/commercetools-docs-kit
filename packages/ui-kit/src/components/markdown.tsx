@@ -197,10 +197,11 @@ const Table = styled.table`
         })::before { content: "${discoverLeafReactElement(elem)}"; }
       `,
         ''
-      );
+      ) as string;
     }}
   }
 `;
+
 const TableRow = styled.tr`
   &:nth-of-type(odd) {
     background: ${colors.light.surfaceSecondary1};
@@ -271,7 +272,8 @@ const TypographyPage = styled.div`
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.5;
 
-  section > p > img {
+  section > p > img,
+  section > img {
     display: block;
     position: relative;
     padding: 0 ${dimensions.spacings.s};

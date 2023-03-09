@@ -40,13 +40,13 @@ const Globals = (props: TGlobalsProps) => (
       .gatsby-resp-image-wrapper {
         background-color: ${colors.light.surfaceSecondary1};
         border-radius: ${tokens.borderRadiusForImageFrame};
-        margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.xxl};
+        margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.xxl}; /* for when not wrapped into a figure with caption */
         padding: ${dimensions.spacings.s};
       }
       .gatsby-resp-image-figure {
         background-color: ${colors.light.surfaceSecondary1};
         border-radius: ${tokens.borderRadiusForImageFrame};
-        margin: 0;
+        margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.xxl}; /* margin for when wrapped into a figure with caption */
         padding: ${dimensions.spacings.s};
       }
       .gatsby-resp-image-link {
@@ -62,7 +62,7 @@ const Globals = (props: TGlobalsProps) => (
       .gatsby-resp-image-figure .gatsby-resp-image-wrapper {
         background-color: unset;
         border-radius: unset;
-        margin: unset;
+        margin: unset; /* no duplication margin */
         padding: unset;
       }
       .gatsby-resp-image-figure .gatsby-resp-image-image {

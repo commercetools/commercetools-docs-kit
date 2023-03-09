@@ -20,7 +20,7 @@ const Constant = (props) => {
 
   return (
     <>
-      {formatNumber(constantValue.number) || ''}
+      {constantValue.number ? formatNumber(constantValue.number) : ''}
       {constantValue.text && constantValue.number ? <>&nbsp;</> : ''}
       {constantValue.text || ''}
     </>

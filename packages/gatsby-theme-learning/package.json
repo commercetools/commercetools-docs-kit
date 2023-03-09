@@ -13,7 +13,7 @@
     "directory": "packages/gatsby-theme-learning"
   },
   "dependencies": {
-    "@auth0/auth0-react": "1.10.2",
+    "@auth0/auth0-react": "1.12.1",
     "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.0.0",
     "@commercetools-docs/ui-kit": "21.0.0",
     "@commercetools-uikit/avatar": "15.3.0",
@@ -26,15 +26,15 @@
     "@commercetools-uikit/radio-input": "15.3.0",
     "@commercetools-uikit/secondary-button": "15.3.0",
     "@commercetools-uikit/spacings": "15.3.0",
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@mdx-js/react": "1.6.22",
-    "react-intersection-observer": "9.4.0",
-    "react-intl": "^6.2.7",
+    "react-intersection-observer": "9.4.2",
+    "react-intl": "^6.2.8",
     "react-router-dom": "6.8.0"
   },
   "devDependencies": {
-    "@types/react": "18.0.27",
+    "@types/react": "18.0.28",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }

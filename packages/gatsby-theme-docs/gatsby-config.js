@@ -166,6 +166,7 @@ module.exports = (themeOptions = {}) => {
           ],
           gatsbyRemarkPlugins: [
             // Convert absolute image file paths to relative. Required for remark-images to work.
+            // The package is officially deprecated but at time of writing this there was no native replacement feature
             // https://www.gatsbyjs.org/packages/gatsby-remark-relative-images/?=gatsby-remark-relative-images
             // See options ^ For how to convert images from frontmatter if needed.
             'gatsby-remark-relative-images',
@@ -293,16 +294,14 @@ module.exports = (themeOptions = {}) => {
               },
               query: `
               {
-                allReleaseNotePage(
-                  limit: 10, sort: { order: DESC, fields: date },
-                ) {
-                    nodes {
-                      description
-                      slug
-                      title
-                      date
-                      categories: topics
-                    }
+                allReleaseNotePage(limit: 10, sort: {fields: date, order: DESC}) {
+                  nodes {
+                    description
+                    slug
+                    title
+                    date
+                    categories: topics
+                  }
                 }
               }
             `,

@@ -24,7 +24,7 @@ const UserResearchBanner = () => {
       <p>We want your feedback</p>
       <Link
         href="https://ok.commercetools.com/user-research-program"
-        noUnderline
+        nounderline
         css={css`
           font-size: ${designSystem.typography.fontSizes.extraSmall};
         `}

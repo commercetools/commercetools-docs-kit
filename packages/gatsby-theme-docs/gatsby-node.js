@@ -453,7 +453,6 @@ async function createContentPages(
     switch (slug) {
       case '/': {
         const colorPreset = colorPresets[pluginOptions.colorPreset];
-
         actions.createPage({
           ...pageData,
           component: require.resolve('./src/templates/homepage.js'),
@@ -466,6 +465,7 @@ async function createContentPages(
 
         break;
       }
+      // TODO is this case necessary?  The whole function is only querying content pages.
       case '/releases':
         actions.createPage({
           ...pageData,
@@ -654,6 +654,7 @@ exports.onCreateWebpackConfig = (
       new RegExp(`^./(${prismLanguages})$`)
     )
   );
+
   // This will completely replace the webpack config with the modified object.
   // (necessary to not only add rules but also change rules like taking over svg handling)
   actions.replaceWebpackConfig(config);
