@@ -1,4 +1,4 @@
-const colorPresets = require('../color-presets');
+import colorPresets from '../color-presets/index.mjs';
 
 const defaultOptions = {
   websiteKey: '',
@@ -11,4 +11,4 @@ const defaultOptions = {
   enableCanonicalUrls: true,
 };
 
-module.exports = defaultOptions;
+export default defaultOptions;

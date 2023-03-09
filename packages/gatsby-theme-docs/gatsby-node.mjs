@@ -3,22 +3,31 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import path from 'path';
+import { createFilePath } from 'gatsby-source-filesystem';
+import webpack from 'webpack';
+import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
+import MomentTimezoneDataPlugin from 'moment-timezone-data-webpack-plugin';
+import slugify from 'slugify';
+import generateToC from './utils/generate-toc.mjs';
+import defaultOptions from './utils/default-options.mjs';
+import bootstrapThemeAddOns from './utils/bootstrap-theme-addons.mjs';
+import colorPresets from './color-presets/index.mjs';
+import unified from 'unified';
+import parse from 'remark-parse';
+import mdxpl from 'remark-mdx';
+import remarkFrontmatter from 'remark-frontmatter';
+import processTop from 'process-top';
+import v8 from 'v8';
+import vm from 'vm';
+// require is needed for require.resolve() until import.meta.resolve is not experimental any more
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
-const fs = require('fs');
-const path = require('path');
-const { createFilePath } = require('gatsby-source-filesystem');
-const { ContextReplacementPlugin } = require('webpack');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const MomentTimezoneDataPlugin = require('moment-timezone-data-webpack-plugin');
-const slugify = require('slugify');
-const generateToC = require('./utils/generate-toc');
-const defaultOptions = require('./utils/default-options');
-const bootstrapThemeAddOns = require('./utils/bootstrap-theme-addons');
-const colorPresets = require('./color-presets');
-const unified = require('unified');
-const parse = require('remark-parse');
-const mdxpl = require('remark-mdx');
-const remarkFrontmatter = require('remark-frontmatter');
+const moduleDirectory = path.dirname(fileURLToPath(import.meta.url));
+const { ContextReplacementPlugin } = webpack;
 
 const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
 
@@ -28,9 +37,7 @@ const lowMemMode = process.env.LOW_MEM === 'true';
 const debugMem = () => {
   // memory debug mode, forces GC every second and prints a "top" like summary
   if (process.env.DEBUG_GATSBY_MEM === 'true') {
-    const top = require('process-top')();
-    const v8 = require(`v8`);
-    const vm = require(`vm`);
+    const top = processTop();
     v8.setFlagsFromString(`--expose_gc`);
     const gc = vm.runInNewContext(`gc`);
     setInterval(() => {
@@ -42,7 +49,7 @@ const debugMem = () => {
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
-exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
+export const onPreBootstrap = async (gatsbyApi, themeOptions) => {
   const requiredDirectories = [
     'src/data',
     'src/images',
@@ -65,7 +72,7 @@ exports.onPreBootstrap = async (gatsbyApi, themeOptions) => {
   bootstrapThemeAddOns(gatsbyApi, themeOptions);
 };
 
-exports.createResolvers = ({ createResolvers }) => {
+export const createResolvers = ({ createResolvers }) => {
   const resolvers = {
     SiteSiteMetadata: {
       // this field is needed by plugins needing an absolute production site URL, e.g. the'gatsby-plugin-feed' plugin
@@ -116,7 +123,7 @@ const resolverPassthrough =
     }
   };
 
-exports.createSchemaCustomization = ({ actions, schema }) => {
+export const createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes(`
     type NavigationYaml implements Node @dontInfer {
       id: ID!
@@ -252,7 +259,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   );
 };
 
-exports.onCreateNode = async (
+export const onCreateNode = async (
   { node, getNode, actions, createNodeId, createContentDigest },
   themeOptions
 ) => {
@@ -382,7 +389,7 @@ function generateReleaseNoteSlug(node) {
 }
 
 // https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#create-pages-from-sourced-mdx-files
-exports.createPages = async (...args) => {
+export const createPages = async (...args) => {
   debugMem();
   await createContentPages(...args);
   await createReleaseNotePages(...args);
@@ -519,7 +526,7 @@ async function createReleaseNotePages(
   });
 }
 
-exports.onCreateWebpackConfig = (
+export const onCreateWebpackConfig = (
   { actions, getConfig, stage, loaders },
   themeOptions
 ) => {
@@ -626,7 +633,7 @@ exports.onCreateWebpackConfig = (
   config.resolve = {
     ...config.resolve,
     // Add support for absolute imports
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    modules: [path.resolve(moduleDirectory, 'src'), 'node_modules'],
     fallback: {
       ...config.resolve.fallback,
       electron: false, // webpack can't understand the condition in the "got" module

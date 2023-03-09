@@ -2,4 +2,4 @@ function preProcessSlug(text) {
   return text.trim();
 }
 
-module.exports = preProcessSlug;
+export default preProcessSlug;

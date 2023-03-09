@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const defaultOptions = require('./default-options');
+import fs from 'fs';
+import path from 'path';
+import defaultOptions from './default-options.mjs';
 
 const markdownComponentsFileName = 'markdown-components.js';
 const addOnComponentsFileName = 'addon-components.js';
@@ -73,4 +73,4 @@ function bootstrapThemeAddOns({ reporter }, themeOptions) {
   }
 }
 
-module.exports = bootstrapThemeAddOns;
+export default bootstrapThemeAddOns;

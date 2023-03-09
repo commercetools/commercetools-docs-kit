@@ -1,19 +1,18 @@
-/* eslint-disable global-require */
+import { fileURLToPath } from 'url';
+import path from 'path';
+import defaultOptions from './utils/default-options.mjs';
+import preProcessSlug from './utils/slug-pre-process.mjs';
+import remarkEmoji from 'remark-emoji';
+import remarkMdxMermaid from './src/plugins/remark-mdx-mermaid.mjs';
+import rehypeIdSlug from './src/plugins/rehype-id-slug.mjs';
+import rehypeMdxSection from './src/plugins/rehype-mdx-section.mjs';
+// require is needed for require.resolve() until import.meta.resolve is not experimental any more
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
-const path = require('path');
-const defaultOptions = require('./utils/default-options');
-const preProcessSlug = require('./utils/slug-pre-process');
+const moduleDirectory = path.dirname(fileURLToPath(import.meta.url));
 
 const isProd = process.env.NODE_ENV === 'production';
-
-const wrapESMPlugin = (name) =>
-  function wrapESM(opts) {
-    return async (...args) => {
-      const mod = await import(name);
-      const plugin = mod.default(opts);
-      return plugin(...args);
-    };
-  };
 
 // Proxy env variables needed for `gatsby-browser.js` and `gatsby-ssr.js`.
 // https://www.gatsbyjs.org/docs/environment-variables/#client-side-javascript
@@ -32,7 +31,7 @@ const validateThemeOptions = (options) => {
 };
 const productionHostname = 'docs.commercetools.com';
 
-module.exports = (themeOptions = {}) => {
+const config = (themeOptions = {}) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
   // backwards compat to single value GA configuration
   if (
@@ -76,7 +75,7 @@ module.exports = (themeOptions = {}) => {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'colorPresets',
-          path: path.join(__dirname, `./color-presets`),
+          path: path.join(moduleDirectory, `./color-presets`),
           ignore: ['**/*.md', '**/*.js'],
         },
       },
@@ -85,7 +84,7 @@ module.exports = (themeOptions = {}) => {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'internalConfigurationData',
-          path: path.join(__dirname, `./src/data`),
+          path: path.join(moduleDirectory, `./src/data`),
           ignore: pluginOptions.overrideDefaultConfigurationData,
         },
       },
@@ -94,7 +93,7 @@ module.exports = (themeOptions = {}) => {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'internalContent',
-          path: path.join(__dirname, `./src/content`),
+          path: path.join(moduleDirectory, `./src/content`),
         },
       },
       // Site provided configuration data files (.yaml)
@@ -151,18 +150,11 @@ module.exports = (themeOptions = {}) => {
           // implement commonmark for stricter compatibility, e.g. backslash transformed to newlines
           commonmark: true,
           // List of remark plugins, that transform the markdown AST.
-          remarkPlugins: [
-            wrapESMPlugin('remark-emoji'),
-            require('./src/plugins/remark-mdx-mermaid'),
-          ],
+          remarkPlugins: [remarkEmoji, remarkMdxMermaid],
           // List of rehype plugins, that transform the HTML AST.
           rehypePlugins: [
-            // require('rehype-slug'), // TODO: confirm if it's working
-            [
-              require('./src/plugins/rehype-id-slug'),
-              { preProcess: preProcessSlug },
-            ],
-            require('./src/plugins/rehype-mdx-section'),
+            [rehypeIdSlug, { preProcess: preProcessSlug }],
+            rehypeMdxSection,
           ],
           gatsbyRemarkPlugins: [
             // Convert absolute image file paths to relative. Required for remark-images to work.
@@ -314,3 +306,5 @@ module.exports = (themeOptions = {}) => {
     ].filter(Boolean),
   };
 };
+
+export default config;

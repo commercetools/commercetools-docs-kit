@@ -1,4 +1,4 @@
-const visit = require('unist-util-visit');
+import visit from 'unist-util-visit';
 
 /**
  * Given the MDXAST ast, look for all fenced codeblocks that have a language of
@@ -8,7 +8,7 @@ const visit = require('unist-util-visit');
  * @param {object}  ast
  * @return {function}
  */
-module.exports = () => (ast) => {
+const remarkMdxMermaid = () => (ast) => {
   visit(ast, { type: 'code', lang: 'mermaid' }, (node) => {
     return Object.assign(node, {
       type: 'jsx',
@@ -16,3 +16,4 @@ module.exports = () => (ast) => {
     });
   });
 };
+export default remarkMdxMermaid;

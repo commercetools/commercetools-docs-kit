@@ -1,7 +1,6 @@
-// loaded via require because we use the pre-ESM version at the moment.
-// to be changed once upgraded to a latest version
-const githubSlugger = require('github-slugger');
-const preProcessSlug = require('./slug-pre-process');
+import githubSlugger from 'github-slugger';
+import preProcessSlug from './slug-pre-process.mjs';
+
 const slugger = githubSlugger();
 
 async function generateToC(ast, maxDepth = 6) {
@@ -54,4 +53,4 @@ function processToC(node, current, toString) {
   return {};
 }
 
-module.exports = generateToC;
+export default generateToC;

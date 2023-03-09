@@ -1,8 +1,8 @@
-const visit = require('unist-util-visit');
-const hasProperty = require('hast-util-has-property');
-const headingRank = require('hast-util-heading-rank');
-const toString = require('hast-util-to-string');
-const Slugger = require('github-slugger');
+import visit from 'unist-util-visit';
+import hasProperty from 'hast-util-has-property';
+import headingRank from 'hast-util-heading-rank';
+import toString from 'hast-util-to-string';
+import Slugger from 'github-slugger';
 
 const slugs = new Slugger();
 
@@ -12,7 +12,7 @@ const slugs = new Slugger();
  * This re-implementation simply ensure that the ids get preProcess by a custom `preProcess` function, the
  * rest of the implementation works exactly like the original.
  */
-module.exports =
+const rehypeIdSlug =
   (options = {}) =>
   (tree) => {
     slugs.reset();
@@ -24,3 +24,4 @@ module.exports =
       }
     });
   };
+export default rehypeIdSlug;

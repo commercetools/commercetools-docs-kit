@@ -1,4 +1,4 @@
-const isHastHeading = require('hast-util-heading');
+import isHastHeading from 'hast-util-heading';
 
 const isHeading = (node) => {
   return isHastHeading(node);
@@ -18,7 +18,7 @@ const sectionIsBlank = (sectionNode) => {
   return false;
 };
 
-module.exports =
+const rehypeMdxSection =
   ({ leadSectionClassSuffix = 'lead' } = {}) =>
   (ast) => {
     const newNodes = [];
@@ -58,3 +58,4 @@ module.exports =
     ast.children = newNodes;
     return ast;
   };
+export default rehypeMdxSection;
