@@ -1,4 +1,4 @@
-const path = require('path');
+import path  from "path";
 
 const getTagListOption = (themeOptions) => {
   if (!themeOptions.transformerMdx) return [];
@@ -9,7 +9,7 @@ const getTagListOption = (themeOptions) => {
   );
 };
 
-module.exports = (themeOptions = {}) => {
+const config = (themeOptions = {}) => {
   // Extract the `tagList` from the theme options if specified
   const additionalTags = getTagListOption(themeOptions);
 
@@ -36,3 +36,5 @@ module.exports = (themeOptions = {}) => {
     ],
   };
 };
+
+export default config;
