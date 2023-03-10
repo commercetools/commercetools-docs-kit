@@ -1,10 +1,13 @@
-const isProd = process.env.NODE_ENV === 'production';
+import colorPresets from '@commercetools-docs/gatsby-theme-docs/color-presets/index.mjs';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
-const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
 
-module.exports = {
+const isProd = process.env.NODE_ENV === 'production';
+
+const config = {
   // https://www.gatsbyjs.com/docs/reference/release-notes/v2.28/#feature-flags-in-gatsby-configjs
   // https://www.gatsbyjs.com/docs/reference/release-notes/v2.30
   flags: {
@@ -57,3 +60,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;
