@@ -1,5 +1,15 @@
 # @commercetools-docs/writing-style
 
+## 3.3.3
+
+### Patch Changes
+
+- [#1531](https://github.com/commercetools/commercetools-docs-kit/pull/1531) [`0c3d133b`](https://github.com/commercetools/commercetools-docs-kit/commit/0c3d133bdd5769f85b4521fe9faeea94ec2a021b) Thanks [@nkuehn](https://github.com/nkuehn)! - - Update to node 18
+  - refactor build scripts following other repos
+  - update minor dependency versions
+  - get lint and typecheck clean
+  - fix issues that will pop up with gatsby 5 (downwards compatible)
+
 ## 3.3.2
 
 ### Patch Changes

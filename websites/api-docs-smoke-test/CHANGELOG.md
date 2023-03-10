@@ -1,5 +1,17 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 8.1.0
+
+### Minor Changes
+
+- [#1545](https://github.com/commercetools/commercetools-docs-kit/pull/1545) [`1cf7f782`](https://github.com/commercetools/commercetools-docs-kit/commit/1cf7f782305780152ed35eae3e4ab963b7ba268a) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Upgrade to Gatsby v5 (5.7.0)
+
+### Patch Changes
+
+- Updated dependencies [[`1cf7f782`](https://github.com/commercetools/commercetools-docs-kit/commit/1cf7f782305780152ed35eae3e4ab963b7ba268a), [`0c3d133b`](https://github.com/commercetools/commercetools-docs-kit/commit/0c3d133bdd5769f85b4521fe9faeea94ec2a021b), [`0c3d133b`](https://github.com/commercetools/commercetools-docs-kit/commit/0c3d133bdd5769f85b4521fe9faeea94ec2a021b)]:
+  - @commercetools-docs/gatsby-theme-api-docs@21.1.0
+  - @commercetools-docs/gatsby-theme-docs@21.1.0
+
 ## 8.0.0
 
 ### Major Changes
