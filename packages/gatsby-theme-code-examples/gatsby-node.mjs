@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs  from "fs";
 
 // some files have no unique media type, see comments below
 const validMediaTypes = [
@@ -17,7 +17,7 @@ const validMediaTypes = [
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
-exports.onPreBootstrap = ({ reporter }) => {
+export const onPreBootstrap = ({ reporter }) => {
   const requiredDirectories = ['src/code-examples'];
   requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
@@ -27,7 +27,7 @@ exports.onPreBootstrap = ({ reporter }) => {
   });
 };
 
-exports.createSchemaCustomization = ({ actions, schema }) => {
+export const createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
 
   const typeDefs = [
@@ -49,7 +49,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   createTypes(typeDefs);
 };
 
-exports.onCreateNode = async ({
+export const onCreateNode = async ({
   node,
   actions,
   loadNodeContent,
