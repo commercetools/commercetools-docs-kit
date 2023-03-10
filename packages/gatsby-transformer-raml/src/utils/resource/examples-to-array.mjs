@@ -1,5 +1,6 @@
-const path = require('path');
-const fs = require('fs');
+import path  from "path";
+import fs  from "fs";
+
 
 function resolveExampleFile(fileNodeDir, filePath) {
   const exampleAbsolutePath = path.resolve(fileNodeDir, filePath);
@@ -17,4 +18,4 @@ function examplesToArray(examples, fileNodeDir, resolveExampleFile) {
   return undefined;
 }
 
-module.exports = { examplesToArray, resolveExampleFile };
+export default { examplesToArray, resolveExampleFile };

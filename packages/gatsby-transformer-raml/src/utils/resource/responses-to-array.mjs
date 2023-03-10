@@ -8,4 +8,4 @@ function responsesToArray(responses) {
   return undefined;
 }
 
-module.exports = responsesToArray;
+export default responsesToArray;

@@ -69,4 +69,4 @@ const defineRamlType = ({ schema, createTypes }) => {
   createTypes(typeDefs);
 };
 
-module.exports = defineRamlType;
+export default defineRamlType;

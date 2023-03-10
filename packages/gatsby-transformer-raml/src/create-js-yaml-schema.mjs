@@ -1,4 +1,4 @@
-const jsYaml = require('js-yaml');
+import jsYaml  from "js-yaml";
 
 /**
  * Without definition of custom types, js-yaml throws an error when
@@ -17,4 +17,4 @@ const IncludeYamlType = new jsYaml.Type('!include', {
 
 const jsYamlSchema = jsYaml.DEFAULT_SCHEMA.extend([IncludeYamlType]);
 
-module.exports = jsYamlSchema;
+export default jsYamlSchema;

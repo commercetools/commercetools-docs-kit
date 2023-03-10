@@ -1,6 +1,6 @@
-const path = require('path');
+import path  from "path";
 
-module.exports = {
+const config = {
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
@@ -12,3 +12,5 @@ module.exports = {
     'gatsby-transformer-yaml',
   ],
 };
+
+export default config;

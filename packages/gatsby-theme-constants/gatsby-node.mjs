@@ -1,14 +1,15 @@
+import fs  from "fs";
 /**
  * Implement Gatsby's Node APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const fs = require('fs');
+
 
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
-exports.onPreBootstrap = ({ reporter }) => {
+export const onPreBootstrap = ({ reporter }) => {
   const requiredDirectories = ['src/constants'];
   requiredDirectories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
@@ -18,7 +19,7 @@ exports.onPreBootstrap = ({ reporter }) => {
   });
 };
 
-exports.createSchemaCustomization = ({ actions, schema }) => {
+export const createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes(
     schema.buildObjectType({
       name: 'Constant',
@@ -34,7 +35,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   );
 };
 
-exports.onCreateNode = ({
+export const onCreateNode = ({
   node,
   getNode,
   actions,

@@ -1,4 +1,4 @@
-const computeType = require('../compute-type');
+import computeType  from "../compute-type.mjs";
 
 /**
  * This does a deep post processing needed on all fields on a type
@@ -34,4 +34,4 @@ function doRecursion(type) {
   return returnedType;
 }
 
-module.exports = doRecursion;
+export default doRecursion;

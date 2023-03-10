@@ -1,12 +1,20 @@
-const doRecursion = require('./utils/type/do-recursion');
-const sortProperties = require('./utils/sort-properties');
-const resolveConflictingFieldTypes = require('./utils/type/resolve-conflicting-field-types');
-const generateType = require('./utils/type/generate-type');
-const generateBuiltinType = require('./utils/type/generate-built-in-type');
-const examplesToArray =
-  require('./utils/resource/examples-to-array').examplesToArray;
-const resolveExampleFile =
-  require('./utils/resource/examples-to-array').resolveExampleFile;
+import doRecursion  from "./utils/type/do-recursion.mjs";
+import sortProperties  from "./utils/sort-properties.mjs";
+import resolveConflictingFieldTypes  from "./utils/type/resolve-conflicting-field-types.mjs";
+import generateType  from "./utils/type/generate-type.mjs";
+import generateBuiltinType  from "./utils/type/generate-built-in-type.mjs";
+import _toesmTemp2  from "./utils/resource/examples-to-array.mjs";
+import _toesmTemp1  from "./utils/resource/examples-to-array.mjs";
+
+
+
+
+
+const examplesToArray  = _toesmTemp2.examplesToArray;
+
+
+const resolveExampleFile  = _toesmTemp1.resolveExampleFile;
+
 
 function createTypeNode({
   apiKey,
@@ -120,4 +128,4 @@ function enumDescriptionsToArray(enumDescriptions) {
   return undefined;
 }
 
-module.exports = createTypeNode;
+export default createTypeNode;

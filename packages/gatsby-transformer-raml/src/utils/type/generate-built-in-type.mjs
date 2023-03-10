@@ -12,4 +12,4 @@ function generateBuiltinType(property) {
   }
 }
 
-module.exports = generateBuiltinType;
+export default generateBuiltinType;

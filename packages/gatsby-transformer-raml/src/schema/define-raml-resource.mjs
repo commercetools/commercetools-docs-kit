@@ -179,4 +179,4 @@ const defineRamlResource = ({ schema, createTypes }) => {
   createTypes(typeDefs);
 };
 
-module.exports = defineRamlResource;
+export default defineRamlResource;

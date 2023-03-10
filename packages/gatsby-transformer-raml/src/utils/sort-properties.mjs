@@ -45,4 +45,4 @@ function sortProperties({
   });
 }
 
-module.exports = sortProperties;
+export default sortProperties;

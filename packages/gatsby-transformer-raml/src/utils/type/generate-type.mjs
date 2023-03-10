@@ -27,4 +27,4 @@ function generateType(type) {
   }
 }
 
-module.exports = generateType;
+export default generateType;

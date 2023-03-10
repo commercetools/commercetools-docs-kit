@@ -1,4 +1,4 @@
-const computeType = require('../compute-type');
+import computeType  from "../compute-type.mjs";
 
 const fieldsToClean = {
   '(builtinType)': true,
@@ -22,4 +22,4 @@ function doRecursion(api) {
   return returnedApi;
 }
 
-module.exports = doRecursion;
+export default doRecursion;

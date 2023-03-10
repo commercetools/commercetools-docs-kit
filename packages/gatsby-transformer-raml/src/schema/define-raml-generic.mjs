@@ -14,4 +14,4 @@ const defineRamlGeneric = ({ schema, createTypes }) => {
   createTypes(typeDefs);
 };
 
-module.exports = defineRamlGeneric;
+export default defineRamlGeneric;

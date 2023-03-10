@@ -1,4 +1,4 @@
-exports.pluginOptionsSchema = ({ Joi }) => {
+export const pluginOptionsSchema = ({ Joi }) => {
   return Joi.object({
     auth0Domain: Joi.string().description(`Auth0 domain name`),
     auth0ClientId: Joi.string().description(`Auth0 client id`),

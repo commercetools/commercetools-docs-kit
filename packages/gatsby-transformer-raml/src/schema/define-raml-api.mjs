@@ -30,4 +30,4 @@ const defineRamlApi = ({ schema, createTypes }) => {
   createTypes(typeDefs);
 };
 
-module.exports = defineRamlApi;
+export default defineRamlApi;

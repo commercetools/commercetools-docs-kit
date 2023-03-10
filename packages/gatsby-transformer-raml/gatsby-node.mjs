@@ -1,22 +1,28 @@
-const firstline = require('firstline');
-const jsYaml = require('js-yaml');
-const createTypeNode = require('./src/create-type-node');
-const createResourceNode = require('./src/create-resource-node');
-const createApiNode = require('./src/create-api-node');
-const JSYAML_SCHEMA = require('./src/create-js-yaml-schema');
-const defineSchema = require('./src/schema/define-schema');
+import firstline  from "firstline";
+import jsYaml  from "js-yaml";
+import createTypeNode  from "./src/create-type-node.mjs";
+import createResourceNode  from "./src/create-resource-node.mjs";
+import createApiNode  from "./src/create-api-node.mjs";
+import JSYAML_SCHEMA  from "./src/create-js-yaml-schema.mjs";
+import defineSchema  from "./src/schema/define-schema.mjs";
+
+
+
+
+
+
 
 const RAML_TYPE_FILE = '#%RAML 1.0 DataType';
 const RAML_RESOURCE_FILE = '# Resource';
 const RAML_API_FILE = '#%RAML 1.0';
 
-const createSchemaCustomization = ({ actions, schema }) => {
+export const createSchemaCustomization  = ({ actions, schema }) => {
   const { createTypes } = actions;
 
   defineSchema({ schema, createTypes });
 };
 
-async function onCreateNode(
+export async function  onCreateNode (
   {
     node,
     actions,
@@ -107,5 +113,5 @@ async function onCreateNode(
   }
 }
 
-exports.createSchemaCustomization = createSchemaCustomization;
-exports.onCreateNode = onCreateNode;
+
+

@@ -1,4 +1,4 @@
-const computeType = require('../compute-type');
+import computeType  from "../compute-type.mjs";
 
 function resolveConflictingFieldTypes(property) {
   const propsToStringify = ['default', 'enumeration'];
@@ -36,4 +36,4 @@ function stringifyField(prop, type) {
   }
 }
 
-module.exports = resolveConflictingFieldTypes;
+export default resolveConflictingFieldTypes;

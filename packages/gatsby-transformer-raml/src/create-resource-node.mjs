@@ -1,6 +1,8 @@
-const doRecursion = require('./utils/resource/do-recursion');
-const parametersToArray = require('./utils/parameters-to-array');
-const processMethods = require('./utils/resource/process-methods');
+import doRecursion  from "./utils/resource/do-recursion.mjs";
+import parametersToArray  from "./utils/parameters-to-array.mjs";
+import processMethods  from "./utils/resource/process-methods.mjs";
+
+
 
 function createResourceNode({
   apiKey,
@@ -66,4 +68,4 @@ function postProcessResource({
   return postProcessedResource;
 }
 
-module.exports = createResourceNode;
+export default createResourceNode;

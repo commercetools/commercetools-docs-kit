@@ -1,9 +1,18 @@
-const parametersToArray = require('../parameters-to-array');
-const responsesToArray = require('./responses-to-array');
-const codeExamplesToArray = require('./code-examples-to-array');
-const examplesToArray = require('./examples-to-array').examplesToArray;
-const resolveExampleFile = require('./examples-to-array').resolveExampleFile;
-const sortProperties = require('../sort-properties');
+import parametersToArray  from "../parameters-to-array.mjs";
+import responsesToArray  from "./responses-to-array.mjs";
+import codeExamplesToArray  from "./code-examples-to-array.mjs";
+import _toesmTemp4  from "./examples-to-array.mjs";
+import _toesmTemp3  from "./examples-to-array.mjs";
+import sortProperties  from "../sort-properties.mjs";
+
+
+
+const examplesToArray  = _toesmTemp4.examplesToArray;
+
+
+const resolveExampleFile  = _toesmTemp3.resolveExampleFile;
+
+
 
 function processMethods({
   resource,
@@ -53,4 +62,4 @@ function processMethods({
   return returnedMethods;
 }
 
-module.exports = processMethods;
+export default processMethods;

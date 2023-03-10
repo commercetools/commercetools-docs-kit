@@ -8,4 +8,4 @@ function codeExamplesToArray(codeExamples) {
   return undefined;
 }
 
-module.exports = codeExamplesToArray;
+export default codeExamplesToArray;

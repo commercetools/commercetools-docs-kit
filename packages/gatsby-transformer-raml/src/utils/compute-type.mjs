@@ -9,4 +9,4 @@ function computeType(value) {
   return (matches[1] || 'undefined').toLowerCase();
 }
 
-module.exports = computeType;
+export default computeType;

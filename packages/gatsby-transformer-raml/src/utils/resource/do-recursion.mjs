@@ -1,4 +1,4 @@
-const computeType = require('../compute-type');
+import computeType  from "../compute-type.mjs";
 
 const fieldsToClean = {
   '(resourceName)': true,
@@ -33,4 +33,4 @@ function doRecursion(resource) {
   return returnedResource;
 }
 
-module.exports = doRecursion;
+export default doRecursion;
