@@ -3,18 +3,7 @@ import sortProperties  from "./utils/sort-properties.mjs";
 import resolveConflictingFieldTypes  from "./utils/type/resolve-conflicting-field-types.mjs";
 import generateType  from "./utils/type/generate-type.mjs";
 import generateBuiltinType  from "./utils/type/generate-built-in-type.mjs";
-import _toesmTemp2  from "./utils/resource/examples-to-array.mjs";
-import _toesmTemp1  from "./utils/resource/examples-to-array.mjs";
-
-
-
-
-
-const examplesToArray  = _toesmTemp2.examplesToArray;
-
-
-const resolveExampleFile  = _toesmTemp1.resolveExampleFile;
-
+import {examplesToArray, resolveExampleFile}  from "./utils/resource/examples-to-array.mjs";
 
 function createTypeNode({
   apiKey,

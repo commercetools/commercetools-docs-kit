@@ -1,18 +1,8 @@
 import parametersToArray  from "../parameters-to-array.mjs";
 import responsesToArray  from "./responses-to-array.mjs";
 import codeExamplesToArray  from "./code-examples-to-array.mjs";
-import _toesmTemp4  from "./examples-to-array.mjs";
-import _toesmTemp3  from "./examples-to-array.mjs";
+import {examplesToArray, resolveExampleFile}  from "./examples-to-array.mjs";
 import sortProperties  from "../sort-properties.mjs";
-
-
-
-const examplesToArray  = _toesmTemp4.examplesToArray;
-
-
-const resolveExampleFile  = _toesmTemp3.resolveExampleFile;
-
-
 
 function processMethods({
   resource,

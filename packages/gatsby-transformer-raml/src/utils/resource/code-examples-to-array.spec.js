@@ -1,4 +1,4 @@
-import codeExamplesToArray from './code-examples-to-array.mjs';
+import { codeExamplesToArray } from './code-examples-to-array.mjs';
 
 it('should transform objects of code examples to array', () => {
   const codeExamplesBefore = {
