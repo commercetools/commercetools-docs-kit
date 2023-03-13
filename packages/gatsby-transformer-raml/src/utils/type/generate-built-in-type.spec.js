@@ -1,4 +1,4 @@
-const generateBuiltinType = require('./generate-built-in-type');
+import generateBuiltinType from './generate-built-in-type.mjs';
 
 describe('transforms built in types for custom use case', () => {
   it('should return number for integer built in type', () => {

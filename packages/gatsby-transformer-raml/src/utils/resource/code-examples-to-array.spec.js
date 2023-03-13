@@ -1,4 +1,4 @@
-const codeExamplesToArray = require('./code-examples-to-array');
+import codeExamplesToArray from './code-examples-to-array.mjs';
 
 it('should transform objects of code examples to array', () => {
   const codeExamplesBefore = {

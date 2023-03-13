@@ -1,4 +1,4 @@
-const sortProperties = require('./sort-properties');
+import sortProperties from './sort-properties.mjs';
 
 describe('sort properties in an array', () => {
   const properties = [

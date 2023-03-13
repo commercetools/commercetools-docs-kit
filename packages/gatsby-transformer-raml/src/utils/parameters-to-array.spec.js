@@ -1,4 +1,4 @@
-const parametersToArray = require('./parameters-to-array');
+import parametersToArray from './parameters-to-array.mjs';
 
 describe('parameters-to-array.js', () => {
   it('should transform objects of query parameters to array', () => {

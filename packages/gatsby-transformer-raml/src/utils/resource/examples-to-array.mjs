@@ -2,12 +2,12 @@ import path  from "path";
 import fs  from "fs";
 
 
-function resolveExampleFile(fileNodeDir, filePath) {
+export function resolveExampleFile(fileNodeDir, filePath) {
   const exampleAbsolutePath = path.resolve(fileNodeDir, filePath);
   return fs.readFileSync(exampleAbsolutePath, 'utf8');
 }
 
-function examplesToArray(examples, fileNodeDir, resolveExampleFile) {
+export function examplesToArray(examples, fileNodeDir, resolveExampleFile) {
   if (examples) {
     return Object.entries(examples).map(([name, value]) => {
       const jsonString = resolveExampleFile(fileNodeDir, value.value);
@@ -17,5 +17,3 @@ function examplesToArray(examples, fileNodeDir, resolveExampleFile) {
 
   return undefined;
 }
-
-export default { examplesToArray, resolveExampleFile };
