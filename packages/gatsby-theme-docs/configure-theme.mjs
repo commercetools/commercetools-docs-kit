@@ -1,6 +1,9 @@
-const pkg = require('./package.json');
 
-function configureThemeWithAddOns(themeOptions = {}) {
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const pkg = require("./package.json");
+
+export function  configureThemeWithAddOns (themeOptions = {}) {
   const { addOns, ...coreThemeOptions } = themeOptions;
   const addOnPlugins = addOns || [];
   const coreThemeConfig = {
@@ -16,4 +19,4 @@ function configureThemeWithAddOns(themeOptions = {}) {
   return [coreThemeConfig, ...addOnPlugins];
 }
 
-exports.configureThemeWithAddOns = configureThemeWithAddOns;
+

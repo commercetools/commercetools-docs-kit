@@ -1,10 +1,9 @@
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/configure-theme.mjs';
+import dotenv from 'dotenv';
 
-const {
-  configureThemeWithAddOns,
-} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
-module.exports = {
+const config = {
   flags: {
     DEV_SSR: true,
     FAST_DEV: true,
@@ -34,3 +33,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;

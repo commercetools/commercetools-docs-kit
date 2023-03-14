@@ -1,9 +1,5 @@
 import colorPresets from '@commercetools-docs/gatsby-theme-docs/color-presets/index.mjs';
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const {
-  configureThemeWithAddOns,
-} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
+import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/configure-theme.mjs';
 
 const isProd = process.env.NODE_ENV === 'production';
 

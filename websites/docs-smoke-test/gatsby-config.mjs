@@ -1,13 +1,15 @@
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+import {
+  configureThemeWithAddOns,
+}  from "@commercetools-docs/gatsby-theme-docs/configure-theme.mjs";
+import dotenv from 'dotenv';
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
 
 const isProd = process.env.NODE_ENV === 'production';
 const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
 
-const {
-  configureThemeWithAddOns,
-} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
 
-module.exports = {
+
+const config = {
   flags: {
     DEV_SSR: true,
   },
@@ -44,3 +46,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;

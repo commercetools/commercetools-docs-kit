@@ -1,10 +1,11 @@
+import {
+  configureThemeWithAddOns,
+}  from "@commercetools-docs/gatsby-theme-docs/configure-theme.mjs";
 const isProd = process.env.NODE_ENV === 'production';
 
-const {
-  configureThemeWithAddOns,
-} = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
 
-module.exports = {
+
+const config = {
   flags: {
     FAST_DEV: true,
   },
@@ -28,3 +29,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;
