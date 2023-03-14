@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "test": "npx rmf-codegen verify ./api.raml",
-    "generate-ramldoc": "npx rmf-codegen generate ./api.raml -o ../../websites/api-docs-smoke-test/src/api-specs/test -t RAML_DOC",
+    "generate-ramldoc": "npx rmf-codegen generate ./api.raml -o ../../websites/api-docs-smoke-test/src/api-specs/test -t RAML_DOC --inline-examples",
     "generate-ramldoc:watch": "npx rmf-codegen generate ./api.raml -w -o ../../websites/api-docs-smoke-test/src/api-specs/test -t RAML_DOC"
   },
   "dependencies": {

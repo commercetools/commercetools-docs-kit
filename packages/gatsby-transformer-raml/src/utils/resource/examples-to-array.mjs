@@ -1,10 +1,12 @@
-import path  from "path";
-import fs  from "fs";
-
+import path from 'path';
+import fs from 'fs';
 
 export function resolveExampleFile(fileNodeDir, filePath) {
-  const exampleAbsolutePath = path.resolve(fileNodeDir, filePath);
-  return fs.readFileSync(exampleAbsolutePath, 'utf8');
+  if (typeof filePath === 'string') {
+    const exampleAbsolutePath = path.resolve(fileNodeDir, filePath);
+    return fs.readFileSync(exampleAbsolutePath, 'utf8');
+  }
+  return JSON.stringify(filePath, null, 2);
 }
 
 export function examplesToArray(examples, fileNodeDir, resolveExampleFile) {
