@@ -58,11 +58,13 @@ function postProcessType({
     moveTypePropertiesToTop,
     moveTypePropertiesToBottom,
   });
-  postProcessedType.examples = examplesToArray(
-    postProcessedType.examples,
-    fileNode.dir,
-    resolveExampleFile
-  );
+  if (postProcessedType.examples) {
+    postProcessedType.examples = examplesToArray(
+      postProcessedType.examples,
+      fileNode.dir,
+      resolveExampleFile
+    );
+  }
   postProcessedType.enumDescriptions = enumValuesToArray(
     postProcessedType.enumDescriptions
   );
