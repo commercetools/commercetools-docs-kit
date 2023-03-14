@@ -1,8 +1,9 @@
-import { navigate } from 'gatsby';
 import { Auth0Provider } from '@auth0/auth0-react';
 import ConfigContext from './src/components/config-context';
 
-const onRedirectCallback = (appState) => navigate(appState?.returnTo || '/');
+const onRedirectCallback = (appState) => {
+  window.location.replace(appState.returnTo);
+};
 
 export const wrapRootElement = ({ element }, pluginOptions) => {
   const isPluginEnabled =
