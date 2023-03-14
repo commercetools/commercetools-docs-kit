@@ -2746,12 +2746,15 @@ __metadata:
     "@testing-library/react": 13.4.0
     "@types/react": 18.0.28
     downshift: 7.4.0
+    gatsby: 5.7.0
     md5: 2.3.0
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
     react-intl: ^6.2.8
     react-router-dom: 6.8.0
+  peerDependencies:
+    gatsby: 5.x
   languageName: unknown
   linkType: soft
 

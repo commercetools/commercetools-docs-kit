@@ -1,9 +1,8 @@
+import { navigate } from 'gatsby';
 import { Auth0Provider } from '@auth0/auth0-react';
 import ConfigContext from './src/components/config-context';
 
-const onRedirectCallback = (appState) => {
-  window.location.replace(appState.returnTo);
-};
+const onRedirectCallback = (appState) => navigate(appState?.returnTo || '/');
 
 export const wrapRootElement = ({ element }, pluginOptions) => {
   const isPluginEnabled =
@@ -24,9 +23,11 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
       <Auth0Provider
         domain={pluginOptions.auth0Domain}
         clientId={pluginOptions.auth0ClientId}
-        redirectUri={window.location.origin}
         onRedirectCallback={onRedirectCallback}
-        audience={`https://${audience}/api/v2/`}
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+          audience: `https://${audience}/api/v2/`,
+        }}
       >
         {element}
       </Auth0Provider>
