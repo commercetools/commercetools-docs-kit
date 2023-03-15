@@ -1,5 +1,15 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 8.1.2
+
+### Patch Changes
+
+- [#1558](https://github.com/commercetools/commercetools-docs-kit/pull/1558) [`149e9ffd`](https://github.com/commercetools/commercetools-docs-kit/commit/149e9ffda65ec3bd8009cfc07070272e968d3b27) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Upgrade to ESM modules
+
+- Updated dependencies [[`149e9ffd`](https://github.com/commercetools/commercetools-docs-kit/commit/149e9ffda65ec3bd8009cfc07070272e968d3b27)]:
+  - @commercetools-docs/gatsby-theme-api-docs@21.1.2
+  - @commercetools-docs/gatsby-theme-docs@21.1.2
+
 ## 8.1.1
 
 ### Patch Changes
