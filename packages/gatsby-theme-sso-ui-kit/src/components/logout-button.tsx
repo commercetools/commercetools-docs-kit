@@ -26,7 +26,9 @@ const LogoutButton = (props: LogoutButtonProps) => {
       iconLeft={props.icon}
       onClick={() =>
         logout({
-          returnTo: getLogoutReturnUrl(learnApiBaseUrl, document.location),
+          logoutParams: {
+            returnTo: getLogoutReturnUrl(learnApiBaseUrl, document.location),
+          },
         })
       }
     >

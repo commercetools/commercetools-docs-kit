@@ -42,8 +42,10 @@ describe('logout-button', () => {
 
   it('should invoke logout with the expected url when clicked', () => {
     const expectedLogout = {
-      returnTo:
-        'http://localhost/api/logout?redirect=http%3A%2F%2Flocalhost%2F',
+      logoutParams: {
+        returnTo:
+          'http://localhost/api/logout?redirect=http%3A%2F%2Flocalhost%2F',
+      },
     };
     render(<LogoutButton />);
     const logoutButtonElement = screen.getByTestId('logout-button');
