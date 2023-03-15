@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-learning
 
+## 21.1.1
+
+### Patch Changes
+
+- [#1521](https://github.com/commercetools/commercetools-docs-kit/pull/1521) [`8681d7b9`](https://github.com/commercetools/commercetools-docs-kit/commit/8681d7b9c1c37015fe5e3c6f41569857277ec259) Thanks [@renovate](https://github.com/apps/renovate)! - Refactoring due to upgrade to auth0 sdk v2
+
+- Updated dependencies [[`8681d7b9`](https://github.com/commercetools/commercetools-docs-kit/commit/8681d7b9c1c37015fe5e3c6f41569857277ec259)]:
+  - @commercetools-docs/gatsby-theme-sso-ui-kit@21.1.1
+
 ## 21.1.0
 
 ### Minor Changes
