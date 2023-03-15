@@ -1,4 +1,4 @@
-const resolveConflictingFieldTypes = require('./resolve-conflicting-field-types');
+import resolveConflictingFieldTypes from './resolve-conflicting-field-types.mjs';
 
 describe('resolves arrays and objects to strings', () => {
   it('should resolve enum, an array of integers, to array of strings', () => {

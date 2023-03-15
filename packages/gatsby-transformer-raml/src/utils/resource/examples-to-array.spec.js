@@ -1,4 +1,4 @@
-const examplesToArray = require('./examples-to-array').examplesToArray;
+import { examplesToArray } from './examples-to-array.mjs';
 
 const mockJsonExampleContent = '{"someAttribute": "someValue"}';
 

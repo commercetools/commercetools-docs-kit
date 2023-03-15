@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   extends: ['@commercetools-frontend/eslint-config-mc-app'],
   settings: {
+    'import/extensions': 'off',
     'import/resolver': {
       webpack: {
         config: {
@@ -21,5 +22,16 @@ module.exports = {
     react: {
       version: 'detect',
     },
+  },
+  rules: {
+    'import/extensions': [
+      'error',
+      {
+        mjs: 'always',
+        json: 'always',
+        svg: 'always',
+        graphql: 'always',
+      },
+    ],
   },
 };

@@ -1,4 +1,4 @@
-const responsesToArray = require('./responses-to-array');
+import responsesToArray from './responses-to-array.mjs';
 
 it('should transform objects of responses to array', () => {
   const responsesBefore = {

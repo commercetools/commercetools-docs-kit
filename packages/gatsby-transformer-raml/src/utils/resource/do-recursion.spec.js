@@ -1,4 +1,4 @@
-const doRecursion = require('./do-recursion');
+import doRecursion from './do-recursion.mjs';
 
 describe('transforms built in types for custom use case', () => {
   it('should return number for integer built in type', () => {

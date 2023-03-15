@@ -1,4 +1,4 @@
-const generateType = require('./generate-type');
+import generateType from './generate-type.mjs';
 
 describe('transforms types for custom use case', () => {
   it('should return Int for integer type', () => {

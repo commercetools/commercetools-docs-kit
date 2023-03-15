@@ -1,4 +1,4 @@
-const computeType = require('./compute-type');
+import computeType from './compute-type.mjs';
 
 describe('returns appropriate type for an array and object', () => {
   it('should return array', () => {
