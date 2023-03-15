@@ -13,7 +13,7 @@
     "directory": "packages/gatsby-theme-learning"
   },
   "dependencies": {
-    "@auth0/auth0-react": "1.12.1",
+    "@auth0/auth0-react": "2.0.1",
     "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.1.0",
     "@commercetools-docs/ui-kit": "21.1.0",
     "@commercetools-uikit/avatar": "15.3.0",

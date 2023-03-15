@@ -24,9 +24,11 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
       <Auth0Provider
         domain={pluginOptions.auth0Domain}
         clientId={pluginOptions.auth0ClientId}
-        redirectUri={window.location.origin}
         onRedirectCallback={onRedirectCallback}
-        audience={`https://${audience}/api/v2/`}
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+          audience: `https://${audience}/api/v2/`,
+        }}
       >
         {element}
       </Auth0Provider>

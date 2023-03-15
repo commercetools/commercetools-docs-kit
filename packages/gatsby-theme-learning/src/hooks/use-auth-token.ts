@@ -11,7 +11,9 @@ export const useAuthToken = () => {
       : auth0Domain;
   const getAuthToken = useCallback(async () => {
     return getAccessTokenSilently({
-      audience: `https://${audience}/api/v2/`,
+      authorizationParams: {
+        audience: `https://${audience}/api/v2/`,
+      },
     });
   }, [audience, getAccessTokenSilently]);
 

@@ -58,30 +58,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth0/auth0-react@npm:1.12.1":
-  version: 1.12.1
-  resolution: "@auth0/auth0-react@npm:1.12.1"
+"@auth0/auth0-react@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@auth0/auth0-react@npm:2.0.1"
   dependencies:
-    "@auth0/auth0-spa-js": ^1.22.6
+    "@auth0/auth0-spa-js": ^2.0.4
   peerDependencies:
     react: ^16.11.0 || ^17 || ^18
     react-dom: ^16.11.0 || ^17 || ^18
-  checksum: 2d5de5ac7447def4e4a1f5c9f5f0ac1fb8b04a36e31a3f4e07e1656a7a13fc0f322e067bc38facb2b2c328ba090b4eb9dc45b81fa1eac11ee097960367893aad
+  checksum: b2119c5d2112141072ce99f7053a8f38723928ff4336f0cc2bf189c34b91e18ba0dd19cacd3f62c1bc89b115eece7e20323c91dc6669a3246be0e282b8c8b457
   languageName: node
   linkType: hard
 
-"@auth0/auth0-spa-js@npm:^1.22.6":
-  version: 1.22.6
-  resolution: "@auth0/auth0-spa-js@npm:1.22.6"
-  dependencies:
-    abortcontroller-polyfill: ^1.7.3
-    browser-tabs-lock: ^1.2.15
-    core-js: ^3.25.4
-    es-cookie: ~1.3.2
-    fast-text-encoding: ^1.0.6
-    promise-polyfill: ^8.2.3
-    unfetch: ^4.2.0
-  checksum: 0155025b82898bd0533db373d7c8b85938fbae097c6fdf732a315ddee67d84a32c32a3b944465aec0600adb11d6d32e53eabbfc2ea04e6b5c90f92f72607bc30
+"@auth0/auth0-spa-js@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@auth0/auth0-spa-js@npm:2.0.4"
+  checksum: 1ff91b47cca70bfc911a0bd97ee5a4d9e055784cde7961266ca68d3c4d1721b11aba1d33fee5a1919d1808f21949682041e6cd293bb014e2f1f1edfe454e8f0c
   languageName: node
   linkType: hard
 
@@ -2713,7 +2705,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-learning@workspace:packages/gatsby-theme-learning"
   dependencies:
-    "@auth0/auth0-react": 1.12.1
+    "@auth0/auth0-react": 2.0.1
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 21.1.0
     "@commercetools-docs/ui-kit": 21.1.0
     "@commercetools-uikit/avatar": 15.3.0
@@ -2742,7 +2734,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-sso-ui-kit@workspace:packages/gatsby-theme-sso-ui-kit"
   dependencies:
-    "@auth0/auth0-react": 1.12.1
+    "@auth0/auth0-react": 2.0.1
     "@commercetools-docs/ui-kit": 21.1.0
     "@commercetools-uikit/avatar": 15.3.0
     "@commercetools-uikit/icons": 15.3.0
@@ -9188,7 +9180,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abortcontroller-polyfill@npm:^1.1.9, abortcontroller-polyfill@npm:^1.7.3":
+"abortcontroller-polyfill@npm:^1.1.9":
   version: 1.7.3
   resolution: "abortcontroller-polyfill@npm:1.7.3"
   checksum: 55739d7f0c9bd6afa2aabb3148778967c4dd4dcff91f6b9259df38da34f9882d3f7730b0954e9767a19cc16a8dd9a58915da4e8a50220300d45af3817d7557b1
@@ -10821,15 +10813,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browser-tabs-lock@npm:^1.2.15":
-  version: 1.2.15
-  resolution: "browser-tabs-lock@npm:1.2.15"
-  dependencies:
-    lodash: ">=4.17.21"
-  checksum: 79194361d5dbd0bf83f1e7e56fdbc209161d1c86f8211214512388df126d69b152512f073392e9415dec8d5e3b427045f9a9a3cb089ae7e7f6ed48dd6022ae74
-  languageName: node
-  linkType: hard
-
 "browserify-zlib@npm:^0.1.4":
   version: 0.1.4
   resolution: "browserify-zlib@npm:0.1.4"
@@ -12364,13 +12347,6 @@ __metadata:
   version: 3.25.5
   resolution: "core-js@npm:3.25.5"
   checksum: 208b308c49bc022f90d4349d4c99802a73c9d55053976b3c529f10014c1e37845926defad8c519f2c7f71ea0acf18d2b323ab6aaee34dc85b4c4b3ced0623f3f
-  languageName: node
-  linkType: hard
-
-"core-js@npm:^3.25.4":
-  version: 3.28.0
-  resolution: "core-js@npm:3.28.0"
-  checksum: 3155fd0ec16d0089106b145e9595280a4ea4bde0d7ff26aa14364cd4f1c203baf6620c3025acd284f363d08b9f21104101692766ca9a36ffeee7307bdf3e1881
   languageName: node
   linkType: hard
 
@@ -14298,13 +14274,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-cookie@npm:~1.3.2":
-  version: 1.3.2
-  resolution: "es-cookie@npm:1.3.2"
-  checksum: 8509355a7d00bd2e3fcab4a76a90e0da35b40c1e76f114f8ffe805ab3fdfff51e8fc0e7cdccd9bf1536066150b6b9861e37d78ae14f80680513901902ac4f0df
-  languageName: node
-  linkType: hard
-
 "es-get-iterator@npm:^1.1.2":
   version: 1.1.3
   resolution: "es-get-iterator@npm:1.1.3"
@@ -15986,13 +15955,6 @@ __metadata:
   version: 2.0.6
   resolution: "fast-levenshtein@npm:2.0.6"
   checksum: 92cfec0a8dfafd9c7a15fba8f2cc29cd0b62b85f056d99ce448bbcd9f708e18ab2764bda4dd5158364f4145a7c72788538994f0d1787b956ef0d1062b0f7c24c
-  languageName: node
-  linkType: hard
-
-"fast-text-encoding@npm:^1.0.6":
-  version: 1.0.6
-  resolution: "fast-text-encoding@npm:1.0.6"
-  checksum: 9d58f694314b3283e785bf61954902536da228607ad246905e30256f9ab8331f780ac987e7222c9f5eafd04168d07e12b8054c85cedb76a2c05af0e82387a903
   languageName: node
   linkType: hard
 
@@ -22260,7 +22222,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:>=4.17.21, lodash@npm:^4.17.10, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4, lodash@npm:^4.7.0, lodash@npm:~4.17.0":
+"lodash@npm:4.17.21, lodash@npm:^4.17.10, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4, lodash@npm:^4.7.0, lodash@npm:~4.17.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -26516,13 +26478,6 @@ __metadata:
   version: 1.0.1
   resolution: "promise-inflight@npm:1.0.1"
   checksum: 22749483091d2c594261517f4f80e05226d4d5ecc1fc917e1886929da56e22b5718b7f2a75f3807e7a7d471bc3be2907fe92e6e8f373ddf5c64bae35b5af3981
-  languageName: node
-  linkType: hard
-
-"promise-polyfill@npm:^8.2.3":
-  version: 8.2.3
-  resolution: "promise-polyfill@npm:8.2.3"
-  checksum: f320278bab8b8ce32f0e2f377d75aabe35c90a79f92b3e001db084d635da1fb8740ba8a26b5c1c2b4cdca5a4c988f9b6b3eb30f0b151d0362d3d9c1675024a8f
   languageName: node
   linkType: hard
 
@@ -30892,13 +30847,6 @@ __metadata:
     sprintf-js: ^1.1.1
     util-deprecate: ^1.0.2
   checksum: b7719c30e5d1fdda4ee9379e8d80dca2b0668942420ba365ae3410120e08225fe36707a7981ce0f921812dee6a2290b713cdce1e75e770b98e67a45d8a378d35
-  languageName: node
-  linkType: hard
-
-"unfetch@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "unfetch@npm:4.2.0"
-  checksum: 6a4b2557e1d921eaa80c4425ce27a404945ec26491ed06e62598f333996a91a44c7908cb26dc7c2746d735762b13276cf4aa41829b4c8f438dde63add3045d7a
   languageName: node
   linkType: hard
 

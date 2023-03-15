@@ -154,10 +154,12 @@ const UserInformation = (props) => {
                 data-test-id="avatar-menu-logout"
                 onClick={() =>
                   props.logout({
-                    returnTo: getLogoutReturnUrl(
-                      learnApiBaseUrl,
-                      document.location
-                    ),
+                    logoutParams: {
+                      returnTo: getLogoutReturnUrl(
+                        learnApiBaseUrl,
+                        document.location
+                      ),
+                    },
                   })
                 }
               >
