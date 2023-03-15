@@ -2673,7 +2673,7 @@ __metadata:
     process-top: ^1.2.0
     prompts: ^2.4.2
     prop-types: 15.8.1
-    qss: 2.0.3
+    qss: 3.0.0
     raw-loader: 4.0.2
     react: 18.2.0
     react-dom: 18.2.0
@@ -26713,10 +26713,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qss@npm:2.0.3":
-  version: 2.0.3
-  resolution: "qss@npm:2.0.3"
-  checksum: 35cbdbb1c27e62aac2f8c0322bda283214d49adbf2c949904364e200938e60913fa01d57edee30e6b029a8e815614eb118a41f805e3343f71768daba57e68c01
+"qss@npm:3.0.0":
+  version: 3.0.0
+  resolution: "qss@npm:3.0.0"
+  checksum: e6b8e12cba900a4f9b277680425c1a5dfe6e47293a0d3a3b1b1de241de959003a13b674dd9a59d02e540a2af68d33318f27cd9ecbe3cd0b3766cc38e2dcbe174
   languageName: node
   linkType: hard
 
