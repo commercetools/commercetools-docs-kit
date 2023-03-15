@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-learning",
   "description": "Gatsby plugin exposing self-learning capabilities",
-  "version": "21.1.0",
+  "version": "21.1.1",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "2.0.1",
-    "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.1.0",
+    "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.1.1",
     "@commercetools-docs/ui-kit": "21.1.0",
     "@commercetools-uikit/avatar": "15.3.0",
     "@commercetools-uikit/checkbox-input": "15.3.0",

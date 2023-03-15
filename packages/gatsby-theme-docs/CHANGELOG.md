@@ -1,5 +1,13 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 21.1.1
+
+### Patch Changes
+
+- [#1546](https://github.com/commercetools/commercetools-docs-kit/pull/1546) [`36631a91`](https://github.com/commercetools/commercetools-docs-kit/commit/36631a91d6922a3f64e232353338d8d2d512048e) Thanks [@nkuehn](https://github.com/nkuehn)! - Migrate gatsby config and node to ESM format. This allowed upgrading a list of previously locked dependencies.
+
+  See https://www.gatsbyjs.com/docs/reference/release-notes/v5.3/
+
 ## 21.1.0
 
 ### Minor Changes

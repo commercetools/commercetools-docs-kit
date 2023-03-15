@@ -1,5 +1,14 @@
 # @commercetools-website/docs-smoke-test
 
+## 7.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`36631a91`](https://github.com/commercetools/commercetools-docs-kit/commit/36631a91d6922a3f64e232353338d8d2d512048e), [`8681d7b9`](https://github.com/commercetools/commercetools-docs-kit/commit/8681d7b9c1c37015fe5e3c6f41569857277ec259)]:
+  - @commercetools-docs/gatsby-theme-docs@21.1.1
+  - @commercetools-docs/gatsby-theme-sso-ui-kit@21.1.1
+  - @commercetools-docs/gatsby-theme-learning@21.1.1
+
 ## 7.1.0
 
 ### Minor Changes
