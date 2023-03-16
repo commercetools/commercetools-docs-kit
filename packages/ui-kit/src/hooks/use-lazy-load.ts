@@ -14,10 +14,16 @@ type LazyLoadConfig = {
   appendTo: 'body' | 'head';
 };
 
+/**
+ * Lazy load either a script or a css file. It takes the url to be loaded as first parameter
+ * and a second optional parameter tells if the url is a script ('script') or a css ('link').
+ * Note that if the second parameter is omitted, it defaults to script
+ */
 const useLazyLoad = (src: string, type: 'script' | 'link' = 'script') => {
-  // Keep track of script status ("idle", "loading", "ready", "error")
+  // Keep track of resource status ("idle", "loading", "ready", "error")
   const [status, setStatus] = useState(src ? 'loading' : 'idle');
   useEffect(() => {
+    // groups the different selectors/tags/attribute names by resource type (to avoid too many conditionals in the code)
     const config: LazyLoadConfigs = {
       script: {
         existing: `script[src="${src}"]`,
@@ -33,12 +39,12 @@ const useLazyLoad = (src: string, type: 'script' | 'link' = 'script') => {
       },
     };
     // Allow falsy src value if waiting on other data needed for
-    // constructing the script URL passed to this hook.
+    // constructing the resource URL passed to this hook.
     if (!src) {
       setStatus('idle');
       return;
     }
-    // Fetch existing script element by src
+    // Fetch existing script or link element by src/href
     // It may have been added by another intance of this hook
     let existingTag: HTMLScriptElement | null = document.querySelector(
       config[type].existing
@@ -46,7 +52,7 @@ const useLazyLoad = (src: string, type: 'script' | 'link' = 'script') => {
     const tag = existingTag || document.createElement(config[type].newElement);
 
     if (existingTag !== null) {
-      // Grab existing script status from attribute and set to state.
+      // Grab existing resource status from attribute and set to state.
       setStatus(existingTag.getAttribute('data-status') || '');
     } else {
       tag.setAttribute(config[type].urlAttribute, src);
@@ -56,9 +62,9 @@ const useLazyLoad = (src: string, type: 'script' | 'link' = 'script') => {
         (tag as HTMLLinkElement).rel = 'stylesheet';
       }
       tag.setAttribute('data-status', 'loading');
-      // Add script to document body
+      // Add script to document body or link tag to head section
       document[config[type].appendTo].appendChild(tag);
-      // Store status in attribute on script
+      // Store status in attribute on resource tag
       // This can be read by other instances of this hook
       const setAttributeFromEvent = (event: Event) => {
         tag.setAttribute(
@@ -71,7 +77,7 @@ const useLazyLoad = (src: string, type: 'script' | 'link' = 'script') => {
     }
 
     // Script event handler to update status in state
-    // Note: Even if the script already exists we still need to add
+    // Note: Even if the resource already exists we still need to add
     // event handlers to update the state for *this* hook instance.
     const setStateFromEvent = (event: Event) => {
       console.log('setting status', type, event.type);
