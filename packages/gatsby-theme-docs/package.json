@@ -75,7 +75,7 @@
     "process-top": "^1.2.0",
     "prompts": "^2.4.2",
     "prop-types": "15.8.1",
-    "qss": "2.0.3",
+    "qss": "3.0.0",
     "raw-loader": "4.0.2",
     "react-intersection-observer": "9.4.2",
     "react-intl": "^6.2.8",
