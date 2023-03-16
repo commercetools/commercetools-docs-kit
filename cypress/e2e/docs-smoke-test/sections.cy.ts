@@ -27,12 +27,13 @@ describe('Sections', () => {
         .within(() => {
           cy.get('div').first().trigger('mouseover');
           cy.get('div > div').first().click();
-          cy.window()
-            .its('navigator.clipboard')
-            .invoke('readText')
-            .then((clipboardText) =>
-              expect(clipboardText.endsWith('views/markdown#a-header-section'))
-            );
+          cy.window().then((win) => {
+            win.navigator.clipboard.readText().then((text) => {
+              /* eslint-disable @typescript-eslint/no-unused-expressions */
+              expect(text.endsWith('views/markdown#a-header-section')).to.be
+                .true;
+            });
+          });
         });
     });
   });
