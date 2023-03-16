@@ -33,3 +33,4 @@ export { default as markdownFragmentToReact } from './utils/markdown-fragment-to
 
 // hooks
 export { default as useISO310NumberFormatter } from './hooks/use-iso310-number-formatter';
+export { default as useLazyLoad } from './hooks/use-lazy-load';
