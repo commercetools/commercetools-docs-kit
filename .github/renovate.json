@@ -18,22 +18,6 @@
       "groupSlug": "all"
     },
     {
-      "matchPackageNames": ["remark-gfm"],
-      "allowedVersions": "<2"
-    },
-    {
-      "matchPackageNames": ["remark-parse"],
-      "allowedVersions": "<10"
-    },
-    {
-      "matchPackageNames": ["remark-rehype"],
-      "allowedVersions": "<9"
-    },
-    {
-      "matchPackageNames": ["remark-frontmatter"],
-      "allowedVersions": "<4"
-    },
-    {
       "matchPackageNames": ["node-fetch"],
       "allowedVersions": "<3"
     },
