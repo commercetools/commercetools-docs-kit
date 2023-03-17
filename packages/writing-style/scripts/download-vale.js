@@ -2,13 +2,16 @@
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
 const shelljs = require('shelljs');
 const { path7za } = require('7zip-bin');
 const { valeVersion } = require('../package.json');
 
 const platform = os.platform();
 const arch = process.arch;
+
+// see https://github.com/node-fetch/node-fetch#commonjs
+const fetch = (...args) =>
+  import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const archiveName = (() => {
   switch (platform) {
@@ -75,6 +78,7 @@ const downloadAndExtractArchive = async (url) => {
 
 console.log('[writing-styles] Verifying vale installation...');
 if (fs.existsSync(destBinaryPath)) {
+  console.log(destBinaryPath);
   console.log(
     '[writing-styles] Vale binary already installed, skipping installation...'
   );

@@ -16,50 +16,6 @@
       "updateTypes": ["minor", "patch"],
       "groupName": "all dependencies",
       "groupSlug": "all"
-    },
-    {
-      "matchPackageNames": ["hast-util-heading"],
-      "allowedVersions": "<2"
-    },
-    {
-      "matchPackageNames": ["rehype-react"],
-      "allowedVersions": "<7"
-    },
-    {
-      "matchPackageNames": ["unified"],
-      "allowedVersions": "<10"
-    },
-    {
-      "matchPackageNames": ["unist-util-filter"],
-      "allowedVersions": "<3"
-    },
-    {
-      "matchPackageNames": ["unist-util-visit"],
-      "allowedVersions": "<3"
-    },
-    {
-      "matchPackageNames": ["remark-gfm"],
-      "allowedVersions": "<2"
-    },
-    {
-      "matchPackageNames": ["remark-parse"],
-      "allowedVersions": "<10"
-    },
-    {
-      "matchPackageNames": ["remark-rehype"],
-      "allowedVersions": "<9"
-    },
-    {
-      "matchPackageNames": ["remark-frontmatter"],
-      "allowedVersions": "<4"
-    },
-    {
-      "matchPackageNames": ["node-fetch"],
-      "allowedVersions": "<3"
-    },
-    {
-      "matchPackageNames": ["github-slugger"],
-      "allowedVersions": "<2"
     }
   ],
   "lockFileMaintenance": {

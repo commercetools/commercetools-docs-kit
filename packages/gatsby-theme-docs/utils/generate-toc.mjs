@@ -1,7 +1,7 @@
-import githubSlugger from 'github-slugger';
+import GithubSlugger from 'github-slugger';
 import preProcessSlug from './slug-pre-process.mjs';
 
-const slugger = githubSlugger();
+const slugger = new GithubSlugger();
 
 async function generateToC(ast, maxDepth = 6) {
   const toc = (await import('mdast-util-toc')).toc;

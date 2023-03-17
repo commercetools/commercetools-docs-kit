@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import unified from 'unified';
-import filter from 'unist-util-filter';
+import { unified } from 'unified';
+import { filter } from 'unist-util-filter';
 import rehypeReact from 'rehype-react';
 import remarkParse from 'remark-parse';
 import remarkFrontmatter from 'remark-frontmatter';

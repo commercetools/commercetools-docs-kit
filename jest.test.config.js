@@ -1,3 +1,29 @@
+// modules to be transpiled by Jest (using babel) as they come as ESM
+const esmModules = [
+  'comma-separated-tokens',
+  'decode-named-character-reference',
+  'fault',
+  'hast-util-whitespace',
+  'mdast-util-definitions',
+  'mdast-util-from-markdown',
+  'mdast-util-frontmatter',
+  'micromark',
+  'rehype-react',
+  'remark-frontmatter',
+  'remark-parse',
+  'remark-rehype',
+  'space-separated-tokens',
+  'trim-lines',
+  'unified',
+  'unist-util-filter',
+  'unist-util-generated',
+  'unist-util-is',
+  'unist-util-position',
+  'unist-util-stringify-position',
+  'unist-util-visit',
+  'vfile-message',
+];
+
 module.exports = {
   displayName: 'test',
   preset: 'jest-preset-gatsby/typescript',
@@ -16,6 +42,10 @@ module.exports = {
     '^.+\\.[t|j]sx?$': 'babel-jest',
     '^.+\\.mjs$': 'babel-jest',
   },
+  transformIgnorePatterns: [
+    // Change MODULE_NAME_HERE to your module that isn't being compiled
+    `<rootDir>/node_modules/(?!(${esmModules.join('|')})).+\\.js$`,
+  ],
 
   /**
    * Setting '__BASE_PATH__' in the globals object fixes problem with
