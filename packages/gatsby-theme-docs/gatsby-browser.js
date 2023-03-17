@@ -9,6 +9,7 @@ import React from 'react';
 import Prism from 'prism-react-renderer/prism';
 import { CacheProvider } from '@emotion/react';
 import { docsCache } from './utils/create-emotion-cache';
+import Sentry from '@sentry/browser';
 import '@fontsource/roboto/latin-400.css';
 import '@fontsource/roboto/latin-500.css';
 import '@fontsource/roboto/latin-700.css';
@@ -52,12 +53,11 @@ export const onClientEntry = async (
   pluginOptions
 ) => {
   if (isProduction) {
-    const Sentry = await import('@sentry/browser');
     Sentry.init({
       dsn: 'https://e43538aae75e412eb16b27d8011f5a8b@o32365.ingest.sentry.io/1819068',
       release: commitSha,
       environment: pluginOptions.websiteKey,
-      allowUrls: ['docs.commercetools.com', 'now.sh', 'vercel.app'],
+      allowUrls: ['docs.commercetools.com', 'commercetools.vercel.app'],
     });
 
     if (typeof IntersectionObserver === 'undefined') {
