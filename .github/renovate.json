@@ -16,10 +16,6 @@
       "updateTypes": ["minor", "patch"],
       "groupName": "all dependencies",
       "groupSlug": "all"
-    },
-    {
-      "matchPackageNames": ["github-slugger"],
-      "allowedVersions": "<2"
     }
   ],
   "lockFileMaintenance": {

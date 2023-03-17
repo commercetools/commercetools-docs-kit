@@ -2655,7 +2655,7 @@ __metadata:
     gatsby-source-filesystem: 5.7.0
     gatsby-transformer-sharp: 5.7.0
     gatsby-transformer-yaml: 5.7.0
-    github-slugger: 1.5.0
+    github-slugger: 2.0.0
     hast-util-has-property: 1.0.4
     hast-util-heading: 2.0.1
     hast-util-heading-rank: 2.1.1
@@ -17736,17 +17736,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"github-slugger@npm:1.5.0, github-slugger@npm:^1.2.1":
-  version: 1.5.0
-  resolution: "github-slugger@npm:1.5.0"
-  checksum: c70988224578b3bdaa25df65973ffc8c24594a77a28550c3636e495e49d17aef5cdb04c04fa3f1744babef98c61eecc6a43299a13ea7f3cc33d680bf9053ffbe
-  languageName: node
-  linkType: hard
-
-"github-slugger@npm:^2.0.0":
+"github-slugger@npm:2.0.0, github-slugger@npm:^2.0.0":
   version: 2.0.0
   resolution: "github-slugger@npm:2.0.0"
   checksum: 250375cde2058f21454872c2c79f72c4637340c30c51ff158ca4ec71cbc478f33d54477d787a662f9207aeb095a2060f155bc01f15329ba8a5fb6698e0fc81f8
+  languageName: node
+  linkType: hard
+
+"github-slugger@npm:^1.2.1":
+  version: 1.5.0
+  resolution: "github-slugger@npm:1.5.0"
+  checksum: c70988224578b3bdaa25df65973ffc8c24594a77a28550c3636e495e49d17aef5cdb04c04fa3f1744babef98c61eecc6a43299a13ea7f3cc33d680bf9053ffbe
   languageName: node
   linkType: hard
 

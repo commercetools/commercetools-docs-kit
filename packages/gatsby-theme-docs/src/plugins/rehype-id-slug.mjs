@@ -2,9 +2,9 @@ import { visit } from 'unist-util-visit';
 import hasProperty from 'hast-util-has-property';
 import { headingRank } from 'hast-util-heading-rank';
 import toString from 'hast-util-to-string';
-import Slugger from 'github-slugger';
+import GithubSlugger from 'github-slugger';
 
-const slugs = new Slugger();
+const slugs = new GithubSlugger();
 
 /**
  * This plugins is a re-implementation of rehype-slug https://github.com/rehypejs/rehype-slug
