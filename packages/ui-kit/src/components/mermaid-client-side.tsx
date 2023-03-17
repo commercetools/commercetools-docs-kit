@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import murmurhash from 'murmurhash';
 import { colors, typography } from '../design-system';
 import { cssVarToValue } from '../utils/css-variables';
-import useScript from '../hooks/use-script';
+import useLazyLoad from '../hooks/use-lazy-load';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 
 // This is a client-side only component.
@@ -114,7 +114,7 @@ type MermaidProps = {
 
 const Mermaid = ({ graph }: MermaidProps) => {
   const [svg, setSvg] = useState('');
-  const mermaidLoadStatus = useScript(
+  const mermaidLoadStatus = useLazyLoad(
     `https://cdn.jsdelivr.net/npm/mermaid@${mermaidVersion}/dist/mermaid.min.js`
   );
   useEffect(() => {
