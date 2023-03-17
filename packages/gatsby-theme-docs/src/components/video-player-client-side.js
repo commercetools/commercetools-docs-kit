@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLazyLoad } from '@commercetools-docs/ui-kit';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
-import { VideoPlaceholder } from './video-player';
+import VideoPlaceholder from './video-placeholder';
 
 const videoJsVersion = '8.2.1';
 
@@ -26,11 +26,11 @@ const prepareVideoOptions = (videoUrl, poster) => {
 
 const VideoPlayer = (props) => {
   const videoJsLoadStatus = useLazyLoad(
-    `https://vjs.zencdn.net/${videoJsVersion}/video.min.js`,
+    `https://cdn.jsdelivr.net/npm/video.js@${videoJsVersion}/dist/video.min.js`,
     'script'
   );
   const videoJsCSSLoadStatus = useLazyLoad(
-    `https://vjs.zencdn.net/${videoJsVersion}/video-js.css`,
+    `https://cdn.jsdelivr.net/npm/video.js@${videoJsVersion}/dist/video-js.min.css`,
     'link'
   );
 
