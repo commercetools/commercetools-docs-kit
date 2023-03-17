@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.5",
-    "@testing-library/react": "13.4.0",
+    "@testing-library/react": "14.0.0",
     "@types/react": "18.0.28",
     "prop-types": "15.8.1",
     "react": "18.2.0",
