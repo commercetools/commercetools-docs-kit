@@ -1,7 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import videojs from 'video.js';
 import PropTypes from 'prop-types';
-import 'video.js/dist/video-js.css';
+import { useLazyLoad } from '@commercetools-docs/ui-kit';
+import LoadingSpinner from '@commercetools-uikit/loading-spinner';
+import VideoPlaceholder from './video-placeholder';
+
+const videoJsVersion = '8.2.1';
 
 /**
  * Preset value. Evaluate overtime if any of these needs to be a prop
@@ -22,36 +25,54 @@ const prepareVideoOptions = (videoUrl, poster) => {
 };
 
 const VideoPlayer = (props) => {
+  const videoJsLoadStatus = useLazyLoad(
+    `https://cdn.jsdelivr.net/npm/video.js@${videoJsVersion}/dist/video.min.js`,
+    'script'
+  );
+  const videoJsCSSLoadStatus = useLazyLoad(
+    `https://cdn.jsdelivr.net/npm/video.js@${videoJsVersion}/dist/video-js.min.css`,
+    'link'
+  );
+
   const videoRef = useRef(null);
   const playerRef = useRef(null);
 
   useEffect(() => {
-    if (!playerRef.current) {
-      const videoElement = videoRef.current;
+    if (videoJsLoadStatus === 'ready' && videoJsCSSLoadStatus === 'ready') {
+      if (!playerRef.current) {
+        const videoElement = videoRef.current;
 
-      if (!videoElement) return;
+        if (!videoElement) return;
 
-      playerRef.current = videojs(
-        videoElement,
-        prepareVideoOptions(props.url, props.poster)
-      );
-    }
-  }, [props, videoRef]);
+        const videojs = window.videojs;
 
-  useEffect(() => {
-    const player = playerRef.current;
-    return () => {
-      if (player) {
-        player.dispose();
-        playerRef.current = null;
+        playerRef.current = videojs(
+          videoElement,
+          prepareVideoOptions(props.url, props.poster)
+        );
       }
-    };
-  }, [playerRef]);
+      const player = playerRef.current;
+      return () => {
+        if (player) {
+          player.dispose();
+          playerRef.current = null;
+        }
+      };
+    }
+  }, [props, videoJsLoadStatus, videoJsCSSLoadStatus, playerRef]);
 
   return (
-    <div data-vjs-player>
-      <video ref={videoRef} className="video-js vjs-big-play-centered" />
-    </div>
+    <>
+      {videoJsCSSLoadStatus === 'ready' && videoJsLoadStatus === 'ready' ? (
+        <div data-vjs-player>
+          <video ref={videoRef} className="video-js vjs-big-play-centered" />
+        </div>
+      ) : (
+        <VideoPlaceholder>
+          <LoadingSpinner scale="l" maxDelayDuration={0} />
+        </VideoPlaceholder>
+      )}
+    </>
   );
 };
 VideoPlayer.propTypes = {
