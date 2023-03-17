@@ -1,7 +1,7 @@
-import isHastHeading from 'hast-util-heading';
+import { heading } from 'hast-util-heading';
 
 const isHeading = (node) => {
-  return isHastHeading(node);
+  return heading(node);
 };
 
 // Since we are mapping the headings shifted to one in the markdown provider

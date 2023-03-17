@@ -18,10 +18,6 @@
       "groupSlug": "all"
     },
     {
-      "matchPackageNames": ["hast-util-heading"],
-      "allowedVersions": "<2"
-    },
-    {
       "matchPackageNames": ["rehype-react"],
       "allowedVersions": "<7"
     },
