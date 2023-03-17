@@ -2820,7 +2820,7 @@ __metadata:
     react-dom: 18.2.0
     react-intl: ^6.2.8
     react-is: 18.2.0
-    rehype-react: 6.2.1
+    rehype-react: 7.1.2
     remark-frontmatter: 3.0.0
     remark-parse: 9.0.0
     remark-rehype: 8.1.0
@@ -18331,6 +18331,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hast-to-hyperscript@npm:^10.0.0":
+  version: 10.0.3
+  resolution: "hast-to-hyperscript@npm:10.0.3"
+  dependencies:
+    "@types/unist": ^2.0.0
+    comma-separated-tokens: ^2.0.0
+    property-information: ^6.0.0
+    space-separated-tokens: ^2.0.0
+    style-to-object: ^0.4.1
+    web-namespaces: ^2.0.0
+  checksum: a119071eb9cb8b60d8d892277a1cfc7ed736e2b3478ac7b90ebf0e6494516e7ac14d6530b726df693f3ae733065a25cd57efb32de82a69c8879ec34cb015ff29
+  languageName: node
+  linkType: hard
+
 "hast-to-hyperscript@npm:^9.0.0":
   version: 9.0.1
   resolution: "hast-to-hyperscript@npm:9.0.1"
@@ -27494,13 +27508,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rehype-react@npm:6.2.1":
-  version: 6.2.1
-  resolution: "rehype-react@npm:6.2.1"
+"rehype-react@npm:7.1.2":
+  version: 7.1.2
+  resolution: "rehype-react@npm:7.1.2"
   dependencies:
     "@mapbox/hast-util-table-cell-style": ^0.2.0
-    hast-to-hyperscript: ^9.0.0
-  checksum: 7f16a2cfc38d1fe0d40944f8f27309fc16440d69d3bb53f8e0ca6d6825572f7d1cac4212193a4f4de456b2342fea66ea0919648ad09c0663cfb1e4ca12bed647
+    "@types/hast": ^2.0.0
+    hast-to-hyperscript: ^10.0.0
+    hast-util-whitespace: ^2.0.0
+    unified: ^10.0.0
+  peerDependencies:
+    "@types/react": ">=17"
+  checksum: f3516a90e031663a7066ded72d57ba9a5d4ae87c55d0264a755c03913b5851e1087535e46a6d9f1bb2a19b5d1b2de320164e44aad1dfc45f9e3d4864f33e6e65
   languageName: node
   linkType: hard
 
@@ -31979,6 +31998,13 @@ __metadata:
   version: 1.1.4
   resolution: "web-namespaces@npm:1.1.4"
   checksum: 5149842ccbfbc56fe4f8758957b3f8c8616a281874a5bb84aa1b305e4436a9bad853d21c629a7b8f174902449e1489c7a6c724fccf60965077c5636bd8aed42b
+  languageName: node
+  linkType: hard
+
+"web-namespaces@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "web-namespaces@npm:2.0.1"
+  checksum: b6d9f02f1a43d0ef0848a812d89c83801d5bbad57d8bb61f02eb6d7eb794c3736f6cc2e1191664bb26136594c8218ac609f4069722c6f56d9fc2d808fa9271c6
   languageName: node
   linkType: hard
 
