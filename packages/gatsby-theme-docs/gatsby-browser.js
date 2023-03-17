@@ -9,7 +9,7 @@ import React from 'react';
 import Prism from 'prism-react-renderer/prism';
 import { CacheProvider } from '@emotion/react';
 import { docsCache } from './utils/create-emotion-cache';
-import Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/browser';
 import '@fontsource/roboto/latin-400.css';
 import '@fontsource/roboto/latin-500.css';
 import '@fontsource/roboto/latin-700.css';
