@@ -16,6 +16,10 @@ module.exports = {
     '^.+\\.[t|j]sx?$': 'babel-jest',
     '^.+\\.mjs$': 'babel-jest',
   },
+  transformIgnorePatterns: [
+    // Change MODULE_NAME_HERE to your module that isn't being compiled
+    '<rootDir>/node_modules/(?!(rehype-react|space-separated-tokens|comma-separated-tokens|hast-util-whitespace)).+\\.js$',
+  ],
 
   /**
    * Setting '__BASE_PATH__' in the globals object fixes problem with
