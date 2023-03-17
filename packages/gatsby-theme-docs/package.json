@@ -89,7 +89,7 @@
     "remark-rehype": "8.1.0",
     "slugify": "1.6.5",
     "unified": "10.1.2",
-    "unist-util-visit": "2.0.3",
+    "unist-util-visit": "4.1.2",
     "video.js": "7.21.2"
   },
   "devDependencies": {

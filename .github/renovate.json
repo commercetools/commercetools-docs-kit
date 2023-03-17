@@ -18,14 +18,6 @@
       "groupSlug": "all"
     },
     {
-      "matchPackageNames": ["unist-util-filter"],
-      "allowedVersions": "<3"
-    },
-    {
-      "matchPackageNames": ["unist-util-visit"],
-      "allowedVersions": "<3"
-    },
-    {
       "matchPackageNames": ["remark-gfm"],
       "allowedVersions": "<2"
     },

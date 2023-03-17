@@ -1,4 +1,4 @@
-import visit from 'unist-util-visit';
+import { visit } from 'unist-util-visit';
 
 /**
  * Given the MDXAST ast, look for all fenced codeblocks that have a language of

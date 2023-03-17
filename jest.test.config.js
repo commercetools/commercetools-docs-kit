@@ -1,3 +1,4 @@
+// modules to be transpiled by Jest (using babel) as they come as ESM
 const esmModules = [
   'rehype-react',
   'space-separated-tokens',
@@ -6,6 +7,8 @@ const esmModules = [
   'unified',
   'vfile-message',
   'unist-util-stringify-position',
+  'unist-util-filter',
+  'unist-util-is',
 ];
 
 module.exports = {
