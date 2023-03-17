@@ -1,3 +1,13 @@
+const esmModules = [
+  'rehype-react',
+  'space-separated-tokens',
+  'comma-separated-tokens',
+  'hast-util-whitespace',
+  'unified',
+  'vfile-message',
+  'unist-util-stringify-position',
+];
+
 module.exports = {
   displayName: 'test',
   preset: 'jest-preset-gatsby/typescript',
@@ -18,7 +28,7 @@ module.exports = {
   },
   transformIgnorePatterns: [
     // Change MODULE_NAME_HERE to your module that isn't being compiled
-    '<rootDir>/node_modules/(?!(rehype-react|space-separated-tokens|comma-separated-tokens|hast-util-whitespace)).+\\.js$',
+    `<rootDir>/node_modules/(?!(${esmModules.join('|')})).+\\.js$`,
   ],
 
   /**

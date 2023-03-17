@@ -15,7 +15,7 @@ import generateToC from './utils/generate-toc.mjs';
 import defaultOptions from './utils/default-options.mjs';
 import bootstrapThemeAddOns from './utils/bootstrap-theme-addons.mjs';
 import colorPresets from './color-presets/index.mjs';
-import unified from 'unified';
+import { unified } from 'unified';
 import parse from 'remark-parse';
 import mdxpl from 'remark-mdx';
 import remarkFrontmatter from 'remark-frontmatter';

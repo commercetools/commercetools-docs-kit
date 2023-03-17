@@ -18,10 +18,6 @@
       "groupSlug": "all"
     },
     {
-      "matchPackageNames": ["unified"],
-      "allowedVersions": "<10"
-    },
-    {
       "matchPackageNames": ["unist-util-filter"],
       "allowedVersions": "<3"
     },

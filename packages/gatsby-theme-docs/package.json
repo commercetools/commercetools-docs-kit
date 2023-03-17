@@ -88,7 +88,7 @@
     "remark-parse": "9.0.0",
     "remark-rehype": "8.1.0",
     "slugify": "1.6.5",
-    "unified": "9.2.2",
+    "unified": "10.1.2",
     "unist-util-visit": "2.0.3",
     "video.js": "7.21.2"
   },
