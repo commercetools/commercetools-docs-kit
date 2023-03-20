@@ -11,7 +11,7 @@
 
 This repository is a monorepository that contains packages to develop documentation websites for commercetools. It includes things like Gatsby themes, Gatsby plugins, UI components, etc. Please look at the individual packages in [`packages` folder](./packages) for functional documentation.
 
-See the [documentation](https://commercetools-docs-kit.vercel.app) of this kit for all further reading.
+See the [documentation](https://docs-kit.commercetools.vercel.app) of this kit for all further reading.
 
 ## Contributing
 

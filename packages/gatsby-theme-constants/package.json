@@ -12,7 +12,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/gatsby-theme-constants"
   },
-  "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/extensions#gatsby-theme-add-on-for-constants",
+  "homepage": "https://docs-kit.commercetools.vercel.app/documentation/configuration/extensions#gatsby-theme-add-on-for-constants",
   "keywords": ["gatsby", "gatsby-plugin", "gatsby-theme", "yaml", "constants"],
   "dependencies": {
     "@commercetools-docs/ui-kit": "21.1.0",

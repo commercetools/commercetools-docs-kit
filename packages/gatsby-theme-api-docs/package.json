@@ -12,7 +12,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/gatsby-theme-api-docs"
   },
-  "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/extensions#gatsby-theme-add-on-for-api-docs",
+  "homepage": "https://docs-kit.commercetools.vercel.app/documentation/configuration/extensions#gatsby-theme-add-on-for-api-docs",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
