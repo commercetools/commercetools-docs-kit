@@ -13,7 +13,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/writing-style"
   },
-  "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/packages#commercetools-writing-style-linter",
+  "homepage": "https://docs-kit.commercetools.vercel.app/documentation/configuration/packages#commercetools-writing-style-linter",
   "bin": {
     "commercetools-vale": "./bin/commercetools-vale.js",
     "commercetools-vale-bin": "./bin/commercetools-vale-bin.js"

@@ -44,7 +44,7 @@ new Crawler({
               // https://www.algolia.com/doc/guides/sending-and-managing-data/prepare-your-data/how-to/indexing-long-documents/
 
               // To test visually, paste this into the chrome inspector DOM search feature on
-              // https://commercetools-docs-kit.vercel.app/docs-smoke-test/views/markdown#tables
+              // https://docs-kit.commercetools.vercel.app/docs-smoke-test/views/markdown#tables
               // navigate through the results and check for omissions or double matches
               // test other smoke test pages, too (e.g. cards, API docs)
 

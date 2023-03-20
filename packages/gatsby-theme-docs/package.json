@@ -12,7 +12,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/gatsby-theme-docs"
   },
-  "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/theme",
+  "homepage": "https://docs-kit.commercetools.vercel.app/documentation/configuration/theme",
   "bin": {
     "create-docs-release-note": "bin/create-release-note.js"
   },

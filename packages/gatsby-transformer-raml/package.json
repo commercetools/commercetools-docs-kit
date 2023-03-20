@@ -12,7 +12,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/gatsby-transformer-raml"
   },
-  "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/plugins#gatsby-transformer-raml",
+  "homepage": "https://docs-kit.commercetools.vercel.app/documentation/configuration/plugins#gatsby-transformer-raml",
   "keywords": ["gatsby", "gatsby-plugin", "gatsby-transformer", "raml"],
   "dependencies": {
     "firstline": "^2.0.2",

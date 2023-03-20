@@ -12,7 +12,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/gatsby-transformer-mdx-introspection"
   },
-  "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/plugins#gatsby-transformer-mdx-introspection",
+  "homepage": "https://docs-kit.commercetools.vercel.app/documentation/configuration/plugins#gatsby-transformer-mdx-introspection",
   "keywords": ["gatsby", "gatsby-plugin", "mdx"],
   "dependencies": {
     "@babel/parser": "^7.20.15",
