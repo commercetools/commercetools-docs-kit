@@ -89,7 +89,6 @@ public
 # Cypress
 cypress/screenshots
 cypress/videos
-cypress/plugins
 
 # Gatsby
 .cache
