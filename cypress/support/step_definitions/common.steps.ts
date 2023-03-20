@@ -45,7 +45,6 @@ const clickStep = (clickArea) => {
   }
   if (clickArea === 'quiz submit button') {
     cy.get(`[data-test-id="${ETestId.quizFormSubmit}"]`).click();
-    cy.pause();
   }
   if (clickArea === 'try again button') {
     cy.get(`[data-test-id="${ETestId.tryAgainButton}"]`, {

@@ -9,10 +9,19 @@ import {
 } from './e2e.const';
 
 And(`The user selects {string} answers`, (result) => {
-  // get multiple choice answers
+  // get multiple choice answers.
+  // hack to unselect pre-selected checkboxes as the more standard ways to do it, don't seem to work reliably
   cy.get(`[data-test-id="${ETestId.questionCheckbox}"]`, {
     timeout: QUIZ_LOADING_TIMEOUT,
-  }).uncheck({ force: true });
+  })
+    .filter(':checked')
+    .each((_, index) => {
+      cy.get(`[data-test-id="${ETestId.questionCheckbox}"]`)
+        .eq(index)
+        .parent()
+        .click();
+    });
+
   cy.get(`[data-test-id="${ETestId.quizForm}"] p`).each(($el, index) => {
     if (
       $el
