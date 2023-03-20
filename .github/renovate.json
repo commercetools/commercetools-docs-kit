@@ -1,7 +1,14 @@
 {
-  "extends": ["config:base", ":preserveSemverRanges"],
+  "extends": [
+    ":dependencyDashboard",
+    ":semanticPrefixFixDepsChoreOthers",
+    "group:monorepos",
+    "group:recommended",
+    "replacements:all",
+    "workarounds:all"
+  ],
   "schedule": ["on the 1st and 3rd day instance on Wednesday after 3am"],
-  "includePaths": ["api-specs/test/**"],
+  "ignorePaths": ["**/node_modules/**"],
   "separateMajorMinor": true,
   "packageRules": [
     {
