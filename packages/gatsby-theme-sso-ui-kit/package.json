@@ -15,16 +15,16 @@
   "dependencies": {
     "@auth0/auth0-react": "2.0.1",
     "@commercetools-docs/ui-kit": "21.1.0",
-    "@commercetools-uikit/avatar": "15.3.0",
-    "@commercetools-uikit/icons": "15.3.0",
-    "@commercetools-uikit/secondary-button": "15.3.0",
-    "@commercetools-uikit/spacings": "15.3.0",
+    "@commercetools-uikit/avatar": "15.14.0",
+    "@commercetools-uikit/icons": "15.14.0",
+    "@commercetools-uikit/secondary-button": "15.14.0",
+    "@commercetools-uikit/spacings": "15.14.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "downshift": "7.4.0",
+    "downshift": "7.6.0",
     "md5": "2.3.0",
     "react-intl": "^6.2.8",
-    "react-router-dom": "6.8.0"
+    "react-router-dom": "6.9.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.5",
