@@ -5,7 +5,8 @@
     "group:monorepos",
     "group:recommended",
     "replacements:all",
-    "workarounds:all"
+    "workarounds:all",
+    ":pinOnlyDevDependencies"
   ],
   "schedule": ["on the 1st and 3rd day instance on Wednesday after 3am"],
   "ignorePaths": ["**/node_modules/**"],
