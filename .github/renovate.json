@@ -1,6 +1,7 @@
 {
   "extends": ["config:base", ":preserveSemverRanges"],
   "schedule": ["on the 1st and 3rd day instance on Wednesday after 3am"],
+  "includePaths": ["api-specs/test/**"],
   "separateMajorMinor": true,
   "packageRules": [
     {
