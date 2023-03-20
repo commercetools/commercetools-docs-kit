@@ -4,6 +4,7 @@ import {
   Given,
   And,
 } from '@badeball/cypress-cucumber-preprocessor';
+import { URL_DOCS_SMOKE_TEST } from '../../../support/urls';
 
 import {
   ETestId,
@@ -13,7 +14,7 @@ import {
 } from './e2e.const';
 
 When('The user visits the self-learning site', () => {
-  cy.visit('/');
+  cy.visit(URL_DOCS_SMOKE_TEST);
 });
 
 When('The user clicks navigation link with href {string}', (href) => {
@@ -21,7 +22,7 @@ When('The user clicks navigation link with href {string}', (href) => {
 });
 
 Given(`The user has navigated to a quiz page`, () => {
-  cy.visit('/');
+  cy.visit(URL_DOCS_SMOKE_TEST);
   cy.get('#navigation-scroll-container')
     .get(`a[href *= "components/quiz"]`)
     .click();
