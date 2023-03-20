@@ -1,6 +1,6 @@
 # Docs UI Components Library
 
-See [documentation](https://commercetools-docs-kit.vercel.app/documentation/configuration/packages#ui-components-library).
+See [documentation](https://docs-kit.commercetools.vercel.app/documentation/configuration/packages#ui-components-library).
 
 Source code is under the MIT License (see the [LICENSE](LICENSE) file)
 

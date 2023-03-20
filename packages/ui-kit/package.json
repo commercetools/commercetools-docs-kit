@@ -12,7 +12,7 @@
     "url": "https://github.com/commercetools/commercetools-docs-kit.git",
     "directory": "packages/ui-kit"
   },
-  "homepage": "https://commercetools-docs-kit.vercel.app/documentation/configuration/packages#ui-components-library",
+  "homepage": "https://docs-kit.commercetools.vercel.app/documentation/configuration/packages#ui-components-library",
   "main": "dist/commercetools-docs-ui-kit.cjs.js",
   "module": "dist/commercetools-docs-ui-kit.esm.js",
   "files": ["dist", "package.json", "LICENSE", "README.md"],
