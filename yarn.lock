@@ -2792,7 +2792,7 @@ __metadata:
     gatsby-transformer-sharp: 5.8.0
     gatsby-transformer-yaml: 5.8.0
     github-slugger: 2.0.0
-    hast-util-has-property: 1.0.4
+    hast-util-has-property: 2.0.1
     hast-util-heading: 2.0.1
     hast-util-heading-rank: 2.1.1
     hast-util-to-string: 2.0.0
@@ -18930,14 +18930,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-has-property@npm:1.0.4":
-  version: 1.0.4
-  resolution: "hast-util-has-property@npm:1.0.4"
-  checksum: 23025cee6692cf9aaf70a369248901deff0886c9bd2e2f0e81735c5f67ff500d1cfd991d3c236fc1d43e02b29d2db4075ee9fd2fe0aea1a7da261f19195046e8
-  languageName: node
-  linkType: hard
-
-"hast-util-has-property@npm:^2.0.0":
+"hast-util-has-property@npm:2.0.1, hast-util-has-property@npm:^2.0.0":
   version: 2.0.1
   resolution: "hast-util-has-property@npm:2.0.1"
   checksum: cc909b7e2964fbfa4c53e33bfbc6f3ed883d1936f3e41a7fa020d3cb8cc5d3c903670e62bec15b55dea5a272ed86724815e8b136ba5475e138489384b1b71fa8
