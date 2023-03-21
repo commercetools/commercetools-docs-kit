@@ -12,18 +12,18 @@
   "separateMajorMinor": true,
   "packageRules": [
     {
-      "matchSourceUrlPrefixes": ["https://github.com/commercetools/ui-kit"],
-      "groupName": "all ui-kit packages"
-    },
-    {
-      "matchSourceUrlPrefixes": ["https://github.com/gregberge/svgr"],
-      "groupName": "all svgr packages"
-    },
-    {
-      "packagePatterns": ["*"],
+      "matchPackagePatterns": ["*"],
       "updateTypes": ["minor", "patch"],
       "groupName": "all dependencies",
       "groupSlug": "all"
+    },
+    {
+      "matchPackagePatterns": ["^@commercetools-uikit"],
+      "groupName": "all ui-kit packages"
+    },
+    {
+      "matchPackagePatterns": ["^@svgr"],
+      "groupName": "all svgr packages"
     }
   ],
   "lockFileMaintenance": {
