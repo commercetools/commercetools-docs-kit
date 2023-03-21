@@ -61,7 +61,7 @@
     "hast-util-has-property": "1.0.4",
     "hast-util-heading": "2.0.1",
     "hast-util-heading-rank": "2.1.1",
-    "hast-util-to-string": "1.0.4",
+    "hast-util-to-string": "2.0.0",
     "intersection-observer": "0.12.2",
     "lodash.throttle": "4.1.1",
     "md5-file": "^5.0.0",
