@@ -12,11 +12,11 @@
   "separateMajorMinor": true,
   "packageRules": [
     {
-      "sourceUrlPrefixes": ["https://github.com/commercetools/ui-kit"],
+      "matchSourceUrlPrefixes": ["https://github.com/commercetools/ui-kit"],
       "groupName": "all ui-kit packages"
     },
     {
-      "sourceUrlPrefixes": ["https://github.com/gregberge/svgr"],
+      "matchSourceUrlPrefixes": ["https://github.com/gregberge/svgr"],
       "groupName": "all svgr packages"
     },
     {
