@@ -2817,7 +2817,7 @@ __metadata:
     hast-util-has-property: 1.0.4
     hast-util-heading: 2.0.1
     hast-util-heading-rank: 2.1.1
-    hast-util-to-string: 1.0.4
+    hast-util-to-string: 2.0.0
     intersection-observer: 0.12.2
     lodash.throttle: 4.1.1
     md5-file: ^5.0.0
@@ -19347,14 +19347,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-to-string@npm:1.0.4":
-  version: 1.0.4
-  resolution: "hast-util-to-string@npm:1.0.4"
-  checksum: 8132508d5c08d542b64979ad558e474f481011c29d5fce9b1a1fe779fc97e151b734b5c6d94f4937c4ec978b1d641977ee7f9f5ed61ea0611600764abdff7cbb
-  languageName: node
-  linkType: hard
-
-"hast-util-to-string@npm:^2.0.0":
+"hast-util-to-string@npm:2.0.0, hast-util-to-string@npm:^2.0.0":
   version: 2.0.0
   resolution: "hast-util-to-string@npm:2.0.0"
   dependencies:
