@@ -97,11 +97,6 @@
     "typescript": "5.0.2",
     "vercel": "28.17.0"
   },
-  "resolutions": {
-    "eslint-config-react-app": "^7.0.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-react": "^7.28.0"
-  },
   "engines": {
     "node": ">=18",
     "npm": ">=5"
