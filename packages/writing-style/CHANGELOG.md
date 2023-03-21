@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.3.4
+
+### Patch Changes
+
+- [#1562](https://github.com/commercetools/commercetools-docs-kit/pull/1562) [`b47c5fe8`](https://github.com/commercetools/commercetools-docs-kit/commit/b47c5fe8ef4970e5a43784ccc5643c2478e71cf3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Upgrade the dependencies previously locked by renovate rules, to their latest ESM version
+
 ## 3.3.3
 
 ### Patch Changes
