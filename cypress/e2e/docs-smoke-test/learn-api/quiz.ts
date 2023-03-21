@@ -1,4 +1,4 @@
-import { And, Then } from '@badeball/cypress-cucumber-preprocessor';
+import { Given, Then } from '@badeball/cypress-cucumber-preprocessor';
 import {
   CORRECT_ANSWER_COLOR,
   CORRECT_ANSWER_TEXT,
@@ -8,7 +8,7 @@ import {
   WRONG_ANSWER_TEXT,
 } from './e2e.const';
 
-And(`The user selects {string} answers`, (result) => {
+Given(`The user selects {string} answers`, (result) => {
   // get multiple choice answers.
   // hack to unselect pre-selected checkboxes as the more standard ways to do it, don't seem to work reliably
   cy.get(`[data-test-id="${ETestId.questionCheckbox}"]`, {
@@ -41,7 +41,7 @@ Then('The user sees a {string} ribbon on the quiz section', (feedbackColor) => {
   }).should('have.css', 'border-left-color', hexColor);
 });
 
-And(
+Given(
   'The user sees {string} feedback messages below the anwsers',
   (feedback) => {
     const expectedFeedbackText =
@@ -56,13 +56,13 @@ And(
   }
 );
 
-And('The user sees a try again button', () => {
+Given('The user sees a try again button', () => {
   cy.get(`[data-test-id="${ETestId.tryAgainButton}"]`, {
     timeout: QUIZ_LOADING_TIMEOUT,
   }).should('exist');
 });
 
-And("The user doesn't see a try again button", () => {
+Given("The user doesn't see a try again button", () => {
   cy.get(`[data-test-id="${ETestId.tryAgainButton}"]`, {
     timeout: QUIZ_LOADING_TIMEOUT,
   }).should('not.exist');
