@@ -72,7 +72,7 @@
     "cross-env": "7.0.3",
     "cypress": "12.8.1",
     "eslint": "8.36.0",
-    "eslint-formatter-pretty": "4.1.0",
+    "eslint-formatter-pretty": "5.0.0",
     "eslint-import-resolver-webpack": "0.13.2",
     "eslint-plugin-import": "^2.27.5",
     "http-server": "^14.1.1",
