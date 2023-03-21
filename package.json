@@ -94,7 +94,7 @@
     "shelljs": "0.8.5",
     "start-server-and-test": "1.15.4",
     "tsc-files": "^1.1.3",
-    "typescript": "4.9.5",
+    "typescript": "5.0.2",
     "vercel": "28.17.0"
   },
   "resolutions": {
