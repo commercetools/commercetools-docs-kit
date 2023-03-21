@@ -1,9 +1,4 @@
-import {
-  When,
-  Then,
-  Given,
-  And,
-} from '@badeball/cypress-cucumber-preprocessor';
+import { When, Then, Given } from '@badeball/cypress-cucumber-preprocessor';
 import {
   EDITOR_TEST_USER_PASSWORD,
   EDITOR_TEST_USER_USERNAME,
@@ -111,12 +106,12 @@ Given(`The {string} is logged in with new attempt`, (user: string) =>
   loginToQuizStep(user, true)
 );
 
-And(`The user logs out`, () => {
+Given(`The user logs out`, () => {
   cy.get(`[data-test-id="${ETestId.avatarContainer}"]`).click();
   cy.get(`[data-test-id="${ETestId.avatarMenuLogout}"]`).click();
 });
 
-And('The avatar menu is displayed', () => {
+Given('The avatar menu is displayed', () => {
   cy.get(`[data-test-id="${ETestId.avatarContainer}"]`).should('exist');
 });
 
