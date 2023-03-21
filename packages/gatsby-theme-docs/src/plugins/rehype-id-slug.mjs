@@ -1,7 +1,7 @@
 import { visit } from 'unist-util-visit';
 import hasProperty from 'hast-util-has-property';
 import { headingRank } from 'hast-util-heading-rank';
-import toString from 'hast-util-to-string';
+import { toString } from 'hast-util-to-string';
 import GithubSlugger from 'github-slugger';
 
 const slugs = new GithubSlugger();
