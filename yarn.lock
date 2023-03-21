@@ -8028,13 +8028,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^7.2.13, @types/eslint@npm:^7.29.0":
+"@types/eslint@npm:^7.29.0":
   version: 7.29.0
   resolution: "@types/eslint@npm:7.29.0"
   dependencies:
     "@types/estree": "*"
     "@types/json-schema": "*"
   checksum: df13991c554954353ce8f3bb03e19da6cc71916889443d68d178d4f858b561ba4cc4a4f291c6eb9eebb7f864b12b9b9313051b3a8dfea3e513dadf3188a77bdf
+  languageName: node
+  linkType: hard
+
+"@types/eslint@npm:^8.0.0":
+  version: 8.21.3
+  resolution: "@types/eslint@npm:8.21.3"
+  dependencies:
+    "@types/estree": "*"
+    "@types/json-schema": "*"
+  checksum: 80e0b5ca9ffb77bff19d01df08b93a99a6b44cad4c40e6450733ead6f1bc44b5514e7d28c3b0ad6304aeb01d690ee7ca89250729a9373551b7e587c6dbb41d7f
   languageName: node
   linkType: hard
 
@@ -12388,7 +12398,7 @@ __metadata:
     cross-env: 7.0.3
     cypress: 12.8.1
     eslint: 8.36.0
-    eslint-formatter-pretty: 4.1.0
+    eslint-formatter-pretty: 5.0.0
     eslint-import-resolver-webpack: 0.13.2
     eslint-plugin-import: ^2.27.5
     http-server: ^14.1.1
@@ -15473,19 +15483,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-formatter-pretty@npm:4.1.0":
-  version: 4.1.0
-  resolution: "eslint-formatter-pretty@npm:4.1.0"
+"eslint-formatter-pretty@npm:5.0.0":
+  version: 5.0.0
+  resolution: "eslint-formatter-pretty@npm:5.0.0"
   dependencies:
-    "@types/eslint": ^7.2.13
+    "@types/eslint": ^8.0.0
     ansi-escapes: ^4.2.1
     chalk: ^4.1.0
-    eslint-rule-docs: ^1.1.5
+    eslint-rule-docs: ^1.1.235
     log-symbols: ^4.0.0
     plur: ^4.0.0
     string-width: ^4.2.0
     supports-hyperlinks: ^2.0.0
-  checksum: e8e0cd3843513fff32a70b036dd349fdab81d73b5e522f23685181c907a1faf2b2ebcae1688dc71d0fc026184011792f7e39b833d349df18fe2baea00d017901
+  checksum: 0bb8e685fbf1f53deb3c438ad4cef7871011b55697bc74cca090787b93a671153080e2d4b65489e825912ac733a1c9aceae5ad6f60efcea3c08efb8aee013dc4
   languageName: node
   linkType: hard
 
@@ -15783,10 +15793,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-rule-docs@npm:^1.1.5":
-  version: 1.1.231
-  resolution: "eslint-rule-docs@npm:1.1.231"
-  checksum: b776c75469bf392d58747e2ffa12e96041f7fef00d6b6c7d5e1a3f3621e42fdde4811795eb7cd4c429c33ef71b9d84f5822d58bca8964e2814485f2498be77b5
+"eslint-rule-docs@npm:^1.1.235":
+  version: 1.1.235
+  resolution: "eslint-rule-docs@npm:1.1.235"
+  checksum: b163596f9a05568e287b2c78f51a280092122a2e43c45fa2c200f0bd3f61877af186c641dab97620978bec96d9e2cfb621e51728044d9efe42ddc24f5a594b26
   languageName: node
   linkType: hard
 
