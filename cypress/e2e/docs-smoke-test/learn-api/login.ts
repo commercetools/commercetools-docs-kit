@@ -1,9 +1,4 @@
-import {
-  When,
-  Then,
-  Given,
-  And,
-} from '@badeball/cypress-cucumber-preprocessor';
+import { When, Then, Given } from '@badeball/cypress-cucumber-preprocessor';
 import { URL_DOCS_SMOKE_TEST } from '../../../support/urls';
 
 import {
@@ -28,7 +23,7 @@ Given(`The user has navigated to a quiz page`, () => {
     .click();
 });
 
-And(`The user {string} logged in`, (loginState) => {
+Given(`The user {string} logged in`, (loginState) => {
   if (loginState === 'is not') {
     cy.get(`header[id="top"]`)
       .find(`div[data-test-id="${ETestId.avatarContainer}"]`)
