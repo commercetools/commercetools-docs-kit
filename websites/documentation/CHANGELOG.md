@@ -1,5 +1,14 @@
 # @commercetools-website/documentation
 
+## 7.1.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-docs/gatsby-theme-code-examples@21.1.4
+  - @commercetools-docs/gatsby-theme-docs@21.1.4
+  - @commercetools-docs/gatsby-theme-sso-ui-kit@21.1.4
+
 ## 7.1.3
 
 ### Patch Changes
