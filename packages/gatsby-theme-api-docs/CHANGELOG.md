@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 21.1.3
+
+### Patch Changes
+
+- [#1562](https://github.com/commercetools/commercetools-docs-kit/pull/1562) [`b47c5fe8`](https://github.com/commercetools/commercetools-docs-kit/commit/b47c5fe8ef4970e5a43784ccc5643c2478e71cf3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Upgrade the dependencies previously locked by renovate rules, to their latest ESM version
+
+- Updated dependencies [[`b47c5fe8`](https://github.com/commercetools/commercetools-docs-kit/commit/b47c5fe8ef4970e5a43784ccc5643c2478e71cf3), [`fea8d809`](https://github.com/commercetools/commercetools-docs-kit/commit/fea8d8093bad979c6e4a6c1208bb0951e1ec0855)]:
+  - @commercetools-docs/ui-kit@21.1.3
+
 ## 21.1.2
 
 ### Patch Changes

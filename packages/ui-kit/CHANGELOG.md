@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 21.1.3
+
+### Patch Changes
+
+- [#1562](https://github.com/commercetools/commercetools-docs-kit/pull/1562) [`b47c5fe8`](https://github.com/commercetools/commercetools-docs-kit/commit/b47c5fe8ef4970e5a43784ccc5643c2478e71cf3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Upgrade the dependencies previously locked by renovate rules, to their latest ESM version
+
+- [#1561](https://github.com/commercetools/commercetools-docs-kit/pull/1561) [`fea8d809`](https://github.com/commercetools/commercetools-docs-kit/commit/fea8d8093bad979c6e4a6c1208bb0951e1ec0855) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Lazy load videojs component from CDN (both CSS and script) in order to reduce bundle size
+
 ## 21.1.0
 
 ### Minor Changes
