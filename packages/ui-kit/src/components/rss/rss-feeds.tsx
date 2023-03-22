@@ -53,7 +53,7 @@ const fetchRssFeed = async (url: string) => {
   return parseRssFeed(rawBody);
 };
 
-const fetcher = async (...args: string[]) => {
+const fetcher = async (args: string[]) => {
   const promises = args.map(async (url) => {
     const releaseNoteUrl = url.replace(/\/feed.xml$/, '');
     const feedData = await fetchRssFeed(url);
