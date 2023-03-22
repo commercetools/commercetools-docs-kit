@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 21.1.4
+
+### Patch Changes
+
+- [#1589](https://github.com/commercetools/commercetools-docs-kit/pull/1589) [`9f735b86`](https://github.com/commercetools/commercetools-docs-kit/commit/9f735b86a1ccb13cd070fcde4d960f5d82d88216) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix RssFeed component not displaying feed
+
 ## 21.1.3
 
 ### Patch Changes
