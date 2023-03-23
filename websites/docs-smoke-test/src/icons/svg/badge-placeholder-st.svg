@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <clipPath id="clip-Badge-placeholder-St">
+      <rect width="300" height="300"/>
+    </clipPath>
+  </defs>
+  <g id="Badge-placeholder-St" clip-path="url(#clip-Badge-placeholder-St)">
+    <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(28 28)" fill="none" stroke="#5a9ee4" stroke-width="10">
+      <circle cx="122.5" cy="122.5" r="122.5" stroke="none"/>
+      <circle cx="122.5" cy="122.5" r="117.5" fill="none"/>
+    </g>
+    <text id="St" transform="translate(150 185)" fill="#3ea0ea" font-size="100" font-family="Roboto-Regular, Roboto"><tspan x="-45.996" y="0">St</tspan></text>
+  </g>
+</svg>

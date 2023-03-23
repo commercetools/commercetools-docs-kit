@@ -57,3 +57,27 @@
     - title: BetaPageWithLongNameThatOverflowsBecauseItsOneWord
       path: /empty-pages/empty-page-four
       beta: true
+- chapter-title: Organizations, Teams, and Projects
+  pages:
+    - title: Overview
+      path: /self-learning/organizations-and-projects/overview
+    - title: Project structure
+      path: /self-learning/organizations-and-projects/project-structure
+    - title: Users
+      path: /self-learning/organizations-and-projects/users
+    - title: Projects
+      path: /self-learning/organizations-and-projects/projects
+    - title: Organizations and Teams
+      path: /self-learning/organizations-and-projects/organizations-and-teams
+    - title: Learning check
+      path: /self-learning/organizations-and-projects/learning-check
+- chapter-title: Customer management
+  pages:
+    - title: Overview
+      path: /self-learning/customer-management/overview
+    - title: Customers
+      path: /self-learning/customer-management/customers
+    - title: Customer Groups
+      path: /self-learning/customer-management/customer-groups
+    - title: Learning check
+      path: /self-learning/customer-management/learning-check

@@ -1,0 +1,105 @@
+---
+title: The Composable Commerce Project structure
+courseId: 62
+showTimeToRead: true
+timeToRead: 4
+---
+
+import Logoopt from '../../../icons/svg/badge-placeholder-opt.svg';
+
+<Subtitle>
+
+Users, Teams, Projects, Organizations, and Regions are the key features of Composable Commerce you need to know to begin creating your e-commerce solution.
+
+</Subtitle>
+
+<Card smallTitle icon={<Logoopt />} >
+
+After completing this page, you should be able to:
+
+- Describe the hierarchy between Users, Teams, Projects, Organizations and Regions.
+- Explain the relationships between Users, Teams, Projects, Organizations and Regions.
+
+</Card>
+
+To build your Project structure Organizations, Projects, and Regions along with Teams and Users play an important role.
+It's important for you to think about these as steps to follow when creating your commercetools' solution:
+
+- First, you decide on a region for your e-commerce experience.
+- Second, you create Organizations.
+- Third, within each Organization you create Projects for your data.
+
+## Key features
+
+<dl>
+  <dt>User</dt>
+  <dd>Individuals who create and maintain all of the data in your Project. These individuals are represented by a User account in Composable Commerce.</dd>
+  <dt>Team</dt>
+  <dd>Teams define access rights to resources within Projects, and contain Users.</dd>
+  <dt>Project</dt>
+  <dd>The data container for all of your commerce resources, such as Customers, Products, Carts, Orders, and Discounts.</dd>
+  <dt>Organization</dt>
+  <dd>A grouping that contains your Projects and Teams. Administrator permissions are defined per Organization.</dd>
+  <dt>Region</dt>
+  <dd>Every User, Organization, and Project resides in a specific region, which is a completely independent installation of Composable Commerce at a specific hosting region of a given cloud provider (Google Cloud or AWS). User accounts are separate per Region.</dd>
+</dl>
+
+# Project structure
+
+When starting to work with Composable Commerce, you need to create your Project structure. Composable Commerce does not impose a particular Project structure on you - you can model Organizations, Teams, Projects, and Users according to your needs.
+The relationships between these features are important to understand. Certain of these features are nested within other features:
+
+- Organizations exist within Regions.
+- Teams and Projects exist within Organizations.
+- Users belong to Teams.
+
+![Overview](images/organizations-and-projects/feature-hierarchy-overview.svg)
+Let's take a closer look at the relationships between these features.
+
+# Relationships between the features
+
+Some of the most important relationships in Composable Commerce for us to understand are:
+
+A Region can contain
+
+- one or many Organizations.
+- one or many Users.
+
+A User
+
+- belongs to at least one Team.
+- can be in one or many Teams.
+
+A Team
+
+- can contain one or many Users.
+- defines access permissions for one or many Projects.
+
+An Organization can contain
+
+- one or many Teams.
+- multiple Projects.
+
+A Project
+
+- can have one or multiple Teams accessing it with different access permissions.
+
+![An image showing the relationships of Composable Commerce features](images/organizations-and-projects/features-relationships.svg)
+
+You will learn more about each of these features in more detail in the following pages, but for now it's enough for you to have a general understanding of how each of these is related to each other.
+
+## A note about Regions
+
+Before we move on, we need to talk about Regions. Regions are rarely mentioned in our discussions of Composable Commerce features. That's because a Region is not a resource within Composable Commerce. A Region is created and controlled by one of the major cloud providers - Google Cloud or Amazon Web Services, and all of the Composable Commerce resources reside there.
+
+While there are multiple Regions where Composable Commerce is currently available, no data sharing happens between those Regions. If, for example, you create a User in the Google Cloud Europe Region, it has no access to any Composable Commerce resources or data in any other Region.
+
+Composable Commerce is located within Cloud Regions around the world so you can choose one which is nearest to you to provide the lowest latency for your Composable Commerce API requests.
+
+[Here is a list of Regions](/../api/general-concepts#regions) where Composable Commerce is currently available.
+
+Before you begin creating your Projects, decide on the Region where you want to offer your services.
+
+# Test your knowledge
+
+<Quiz courseId="62" quizId="881"/>

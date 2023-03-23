@@ -1,0 +1,143 @@
+---
+title: Customers
+courseId: 65
+showTimeToRead: true
+timeToRead: 10
+---
+
+import Logocm from '../../../icons/svg/badge-placeholder-cm.svg';
+
+<Subtitle>
+
+A Customer in Composable Commerce represents a person who buys Products, that is your goods and services.
+
+</Subtitle>
+
+<Card smallTitle icon={<Logocm />} >
+
+After completing this page, you should be able to:
+
+- Define what a Customer in Composable Commerce is.
+- Describe the difference between a global Customer and a Store-specific Customer.
+- Summarize how to create and maintain Customers in Composable Commerce using the Merchant Center.
+
+</Card>
+
+# Customers
+
+A Customer represents the data you want to store about registered customers, each uniquely identified by their email address. Customers can create Carts and Orders, therefore Cart and Order can be associated with a Customer.
+
+Customer data includes:
+
+- First name
+- Last name
+- Shipping addresses
+- Billing addresses
+- Email address
+- Password
+- Other data
+
+This stored data represents the Customer profile.
+
+# Customer registration
+
+Customer registration is the process of creating a Customer resource and verifying the email address provided. Usually, customer registration takes place in a store-front application as a self-signup step. This may include verifying that the customer has access to the email address they provide.
+
+Composable Commerce provides API to support the email verification process but this is not provided out of the box. Additional development from your team is required to implement the email verification process and to integrate it with the Composable Commerce API.
+
+# Global versus Store-specific Customers
+
+In a Composable Commerce Project, Customers can either be global or Store-specific.
+
+<Info>
+
+[Stores](https://docs.commercetools.com/api/projects/stores) in Composable Commerce are used to model various commerce contexts. They can be used to model physical contexts, for example physical retail locations, brand stores, or regions. They can also be used to model virtual contexts, for example online stores which are country-specific. Stores define what subset of resources within a Project is available in the context of a store.
+
+</Info>
+
+For example, let's imagine a sports company called Ascenso Sports. The company is based in Spain and has two physical stores, one in Madrid and one in Barcelona. It also has an online store that serves the rest of Spain. \
+In Composable Commerce, the Solution Architects modeled this using a single Project. However, they created three Stores: one Store for the Madrid physical store, one for the Barcelona physical store, and one for the online store.
+
+When customers sign up for Ascenso Sports, they are Store-specific Customers. This means that a customer who first signs up at the Madrid store can later use the same email address to sign up at the Barcelona store and buy there. Similarly, when the customer signs up to the online store, they can use the same email address. This is because in Composable Commerce the email address is associated with the Store, thus is Store-specific.
+
+Store-specific Customers are unique to a specific Store in a Project and the email address of the Customer can be used in multiple Stores in the same Project. On the other hand, global Customers are unique across a Project, so the email address of the Customer must be unique in a Project.
+
+It’s recommended that you decide whether to create Store-specific or global Customers as part of the initial Project configuration. For further information on global and Store-specific Customes, see [this page](https://docs.commercetools.com/api/customers-overview#global-versus-store-specific-customers).
+
+# Email case sensitivity
+
+Composable Commerce preserves a letter case when storing the Customer's email address. However, email addresses are treated as case-insensitive during the following operations:
+
+- Signing up
+- Authenticating
+- Creating a password reset token
+
+When logging in or requesting a password reset, your customers can use enter their email address with a different casing than what they used during signup.
+For example, if a customer uses `name@example.com` when signing up, they can log in to their account using a different casing, such as `NAME@example.com`.
+
+# Customer authentication
+
+When a Customer enters their email address and password, they are authenticated by the Composable Commerce Authorization Service, which compares the email address and password to the stored credentials.
+
+If you use another service for customer authentication within your organization, you can use that instead of the Composable Commerce Authorization Service. In this case, Customers are created without a password because their password is stored on another system. For further information on creating a Customer without a password, see [AuthenticationMode](https://docs.commercetools.com/api/projects/customers#authenticationmode).
+
+# Handling personal data
+
+Customer data includes personal information with special requirements like those in the [GDPR](https://gdpr.eu/). This means that a customer can request access to the data you stored about them and they can also request you to delete all their data.
+
+The deletion of customer's data cannot be done manually from the Merchant Centre but it must be performed through a technical process. This process deletes the Customer and all resources containing the customer's personal data; for example, Carts, Orders, and Shopping Lists.
+
+For further information on GDPR compliance, see [this tutorial](https://docs.commercetools.com/tutorials/GDPR).
+
+# Creating a Customer
+
+You can create Customers from **Customers** > **Add Customer** in the Merchant Center main menu.
+
+![The Create a customer page with its Customer Details section and the related fields](images/customer-management/create-a-customer.png)
+
+To create a Customer, at least the **Email** field must be filled in as this is always mandatory, while the **Customer's password** and **Confirm password** fields are mandatory only if [the `authenticationMode` is `Password`](#customer-authentication).
+
+After creating the Customer, you can see the Customer's ID in the address bar of your browser. Every resource in a Composable Commerce Project is automatically assigned an ID when it is created. The ID uniquely identifies the resource and allows fetching it.\
+For a Customer resource, you can also set the **Customer number** as an additional unique identifier. The **Customer number** can be used to refer to a Customer in a human-readable way (in emails, invoices, and other correspondence). The **Customer number** field is not mandatory, but once the number is set, you cannot change it.
+
+# Updating a Customer
+
+Some of the information provided during the creation of the Customer can be changed afterward, and new information can also be added.
+
+## Password reset
+
+Customer passwords are encrypted and cannot be displayed in the Merchant Centre, but it is possible to set a new Customer's password if your customer forgot it.
+
+From the Customer's profile > **General** > **Account Details**, you can generate a random password and save it. Once you have set the new password, you must communicate it to your customer.
+
+Password reset via the Merchant Centre is useful during the development phase. In a production environment, Customer passwords are not reset manually, but a password reset functionality is provided through the store-front application.
+
+![The Customer's General tab and its Customer Details section with the Generate a random password checkbox highlighted](images/customer-management/password-reset-function.png)
+
+## Email verification status
+
+Customer email addresses must be verified. From the Customer's profile > **General** > **Customer Details**, you can check if a Customer's email address was verified.
+
+To verify the email address, a process must detect that a Customer was created in the Project and send a message containing a verification link to the email address. Until your customer verifies the email address via the link, no other email should be sent to that address, especially messages containing password reset information.
+
+![The Customer's General tab and its Customer Details section with the Not verified status highlighted next to the Email field](images/customer-management/email-not-verified.png)
+
+## Adding address information
+
+From the Customer's profile > **Addresses**, you can manage the shipping and billing addresses of a Customer.
+
+The country of the shipping address is used to determine the eligible shipping methods and costs for deliveries to this address and to choose the tax rate for line items. **Country** is a mandatory field in addresses since it is needed for tax calculation on the cart.
+
+A Customer can have more than one address and you can set a default shipping address and a default billing address.
+
+![The details of a Customer address with the Default billing address and Default shipping address buttons highlighted](images/customer-management/set-default-billing-shipping-address.png)
+
+## Viewing the Customer’s Orders
+
+From the Customer's profile > **Orders** you can see the Orders in the Project related to the Customer. Here, you can see both the Orders placed by the Customer and any Orders you have created for the Customer, for example when your customers place their orders via email instead of from a store-front application.
+
+![The Orders tab with the Order list](images/customer-management/customer-orders-tab.png)
+
+# Test your knowledge
+
+<Quiz courseId="65" quizId="893"/>
