@@ -217,6 +217,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
             errorFallback: 0,
           }),
         },
+        courseId: { type: 'Int!' },
       },
       interfaces: ['Node'],
     }),
@@ -348,6 +349,9 @@ export const onCreateNode = async (
         ? Number(node.frontmatter.timeToRead)
         : 0,
       tableOfContents: await generateToC(nodeBodyAst),
+      courseId: node.frontmatter.courseId
+        ? Number(node.frontmatter.courseId)
+        : 0, // TODO: understand how to make an Number field nullable
     };
 
     actions.createNode({
@@ -406,6 +410,7 @@ async function createContentPages(
       allContentPage {
         nodes {
           slug
+          courseId
         }
       }
       allReleaseNotePage(sort: { date: DESC }) {
@@ -442,7 +447,7 @@ async function createContentPages(
       (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
       []
     );
-  pages.forEach(({ slug }) => {
+  pages.forEach(({ slug, courseId }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
@@ -455,6 +460,7 @@ async function createContentPages(
           ? matchingNavigationPage.title
           : undefined,
         hasReleaseNotes: result.data.allReleaseNotePage.totalCount > 0,
+        courseId,
       },
     };
     switch (slug) {
