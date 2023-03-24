@@ -4,7 +4,7 @@ export const useCoursePages = () => {
   const coursePagesData = useStaticQuery(
     graphql`
       {
-        allContentPage(filter: { courseId: { ne: 0 } }) {
+        allContentPage(filter: { courseId: { ne: null } }) {
           nodes {
             slug
             courseId

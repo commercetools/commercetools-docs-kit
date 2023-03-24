@@ -8,7 +8,7 @@ Feature: Login
   @full @smoke
   Scenario: User navigates to a quiz page
     Given The user visits the self-learning site
-    When The user clicks navigation link with href "components/quiz"
+    When The user clicks navigation link with href "self-learning/quiz"
     Then The user sees a page with "Quiz component" title
 
   @full @smoke

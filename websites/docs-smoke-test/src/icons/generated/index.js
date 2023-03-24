@@ -1,10 +1,3 @@
-export { default as BadgePlaceholderCmSvgIcon } from './BadgePlaceholderCm';
-export { default as BadgePlaceholderExSvgIcon } from './BadgePlaceholderEx';
-export { default as BadgePlaceholderOptSvgIcon } from './BadgePlaceholderOpt';
-export { default as BadgePlaceholderPmSvgIcon } from './BadgePlaceholderPm';
-export { default as BadgePlaceholderPrSvgIcon } from './BadgePlaceholderPr';
-export { default as BadgePlaceholderSmSvgIcon } from './BadgePlaceholderSm';
-export { default as BadgePlaceholderStSvgIcon } from './BadgePlaceholderSt';
 export { default as CardBannerApiSvgIcon } from './CardBannerApi';
 export { default as CardBannerDefaultSvgIcon } from './CardBannerDefault';
 export { default as CardBannerMcSvgIcon } from './CardBannerMc';

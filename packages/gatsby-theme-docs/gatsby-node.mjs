@@ -217,7 +217,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
             errorFallback: 0,
           }),
         },
-        courseId: { type: 'Int!' },
+        courseId: { type: 'Int' },
       },
       interfaces: ['Node'],
     }),
@@ -351,7 +351,7 @@ export const onCreateNode = async (
       tableOfContents: await generateToC(nodeBodyAst),
       courseId: node.frontmatter.courseId
         ? Number(node.frontmatter.courseId)
-        : 0, // TODO: understand how to make an Number field nullable
+        : null,
     };
 
     actions.createNode({
@@ -460,7 +460,6 @@ async function createContentPages(
           ? matchingNavigationPage.title
           : undefined,
         hasReleaseNotes: result.data.allReleaseNotePage.totalCount > 0,
-        courseId,
       },
     };
     switch (slug) {
@@ -487,10 +486,14 @@ async function createContentPages(
         break;
 
       default:
-        actions.createPage({
+        let contentPageData = {
           ...pageData,
           component: require.resolve('./src/templates/page-content.js'),
-        });
+        }
+        if (courseId) {
+          contentPageData = {...contentPageData, context: {...contentPageData.context, courseId}}
+        }
+        actions.createPage(contentPageData);
 
         break;
     }
