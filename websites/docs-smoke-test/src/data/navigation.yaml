@@ -39,8 +39,6 @@
       path: /components/child-section-navigation
     - title: Mermaid Diagrams
       path: /components/mermaid-diagram
-    - title: Quiz
-      path: /components/quiz
     - title: Video Player
       path: /components/video-player
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
