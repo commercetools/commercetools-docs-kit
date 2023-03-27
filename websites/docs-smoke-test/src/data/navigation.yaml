@@ -61,3 +61,9 @@
       path: /self-learning/overview
     - title: Test your knowledge
       path: /self-learning/quiz
+- chapter-title: Self-learning to be removed
+  pages:
+    - title: Overview
+      path: /self-learning-2/overview
+    - title: Test your knowledge
+      path: /self-learning-2/quiz

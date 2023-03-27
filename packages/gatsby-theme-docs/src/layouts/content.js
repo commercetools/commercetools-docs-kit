@@ -22,6 +22,7 @@ import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 import PageReadTime from './internals/page-read-time-estimation';
+import PageCourseStatus from './internals/page-course-status';
 
 const LayoutContent = (props) => {
   const { ref, inView, entry } = useInView();
@@ -81,6 +82,9 @@ const LayoutContent = (props) => {
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />
               )}
+              {props.pageContext.courseId && (
+                <PageCourseStatus courseId={props.pageContext.courseId} />
+              )}
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
               <SpacingsStack scale="m">
@@ -116,6 +120,7 @@ LayoutContent.propTypes = {
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
     hasReleaseNotes: PropTypes.bool.isRequired,
+    courseId: PropTypes.number,
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,

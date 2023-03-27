@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import ConfigContext from '../components/config-context';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useAuthToken } from './use-auth-token';
-import type { Course } from '../external-types';
+import type { Course, CourseStatus } from '../external-types';
 
 const fetcher = async (url: string, accessToken: string) => {
   const data = await fetch(url, {
@@ -25,13 +25,17 @@ const useFetchCourses = () => {
   useEffect(() => {
     const fetchToken = async () => {
       const token = await getAuthToken();
-      setAuthToken(token);
+      if (token !== authToken) {
+        setAuthToken(token);
+      }
     };
-    fetchToken();
-  });
+    if (isAuthenticated) {
+      fetchToken();
+    }
+  }, [isAuthenticated, getAuthToken, authToken]);
 
   const { data, error, isLoading } = useSWR(
-    isAuthenticated && authToken ? apiEndpoint : null,
+    authToken ? apiEndpoint : null,
     (url) => fetcher(url, authToken || '')
   );
   return {
@@ -40,14 +44,30 @@ const useFetchCourses = () => {
     isLoading,
   };
 };
-export const useCourseStatusByCouseId = (courseId: number) => {
+
+type CourseStatusByCourseId = {
+  courseStatus: CourseStatus | 'unenrolled' | undefined; // undefined is used for non self-learning courses
+  isLoading: boolean;
+  error: string;
+};
+export const useCourseStatusByCouseId = (
+  courseId: number
+): CourseStatusByCourseId => {
+  const [courseStatus, setCourseStatus] = useState<
+    CourseStatus | 'unenrolled' | undefined
+  >();
   const { data, isLoading, error } = useFetchCourses();
-  const [courseStatus, setCourseStatus] = useState<string | undefined>();
   useEffect(() => {
+    if (!courseId) {
+      // the course id is undefined, meaning that the course is not a self-learning course
+      setCourseStatus(undefined);
+      return;
+    }
     if (!isLoading && data) {
-      const filteredCourse = data.result.enrolledCourses.find(
+      const filteredCourse = (data.result.enrolledCourses as Course[]).find(
         (course: Course) => course.id === courseId
       );
+
       if (!filteredCourse) {
         setCourseStatus('unenrolled');
       } else {
@@ -55,5 +75,5 @@ export const useCourseStatusByCouseId = (courseId: number) => {
       }
     }
   }, [data, isLoading, error, courseId]);
-  return { courseStatus };
+  return { courseStatus, isLoading, error };
 };

@@ -1,5 +1,5 @@
 //  /courses/  -> for enrolled courses
-type CourseStatus = 'inProgress' | 'completed';
+export type CourseStatus = 'inProgress' | 'completed';
 export type Course = {
   id: number;
   fullName: string;

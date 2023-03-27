@@ -18,6 +18,7 @@ import { BetaFlag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
 import { useCourseIdByPageSlug } from '../../hooks/use-course-pages';
 import { useCourseStatusByCouseId } from '@commercetools-docs/gatsby-theme-learning';
+import PageCourseStatus from './page-course-status';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -235,7 +236,6 @@ SidebarLinkWrapper.propTypes = {
 
 const SidebarChapter = (props) => {
   const courseId = useCourseIdByPageSlug(props.chapter.pages[0].path);
-  const { courseStatus } = useCourseStatusByCouseId(courseId);
   const elemId = `sidebar-chapter-${props.index}`;
   const getChapterDOMElement = React.useCallback(
     () => document.getElementById(elemId),
@@ -246,9 +246,8 @@ const SidebarChapter = (props) => {
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack scale="s">
         <LinkItem>
-          <LinkTitle>{`${props.chapter.chapterTitle} ${
-            courseId ? `(cid:${courseStatus})` : ''
-          }`}</LinkTitle>
+          <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          {courseId && <PageCourseStatus courseId={courseId} />}
         </LinkItem>
         <SpacingsStack scale="s">
           {props.chapter.pages &&
