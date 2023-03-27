@@ -1,18 +1,34 @@
-//  /courses/  -> for enrolled courses
-export type CourseStatus = 'inProgress' | 'completed';
-export type Course = {
-  id: number;
-  fullName: string;
-  status: CourseStatus;
+export type ApiCallResult<Type> = {
+  errors?: ApiCallResultError[];
+  result: Type;
 };
 
-//  /courses/[course-id]/status -> for completionStatus
-export type CourseCompletionStatus = {
-  completed: boolean;
-  aggregation: 'any' | 'all';
-  completions: ActivityCompletionStatus[];
-  courseCompetencies: Competency[];
+export type ApiCallResultError = {
+  type: string;
+  message: string;
 };
+
+//  /courses/  -> for enrolled courses
+export type EnrolledCourses = {
+  enrolledCourses: Course[];
+};
+export type Course = {
+  id: number;
+  status: CourseStatus;
+};
+//  /courses/{course-id}  -> for course content
+export type CourseWithDetails = Course &
+  CourseCompletionStatus & {
+    topics: CourseTopic[];
+  };
+
+export type CourseCompletionStatus = Course & {
+  aggregation: 'any' | 'all';
+  completionCriteria: ActivityCompletionCriteria[];
+  competencies: Competency[];
+};
+
+type CourseStatus = 'inProgress' | 'completed';
 
 export type Competency = {
   shortname: string;
@@ -20,28 +36,61 @@ export type Competency = {
   id: number;
   description: string;
 };
-type ActivityCompletionStatus = {
-  type:
-    | 'self'
-    | 'date'
-    | 'unenrol'
-    | 'activity'
-    | 'duration'
-    | 'grade'
-    | 'role'
-    | 'course'
-    | undefined;
+
+type ActivityCompletionCriteria = {
+  type: ActivityCompletionCriteriaTypes;
   title: string;
-  complete: boolean;
-  timecompleted: number;
+  completed: boolean;
+  timecompleted: number; // unix timpestamp
   criteria: string;
   requirement: string;
 };
+type ActivityCompletionCriteriaTypes =
+  | 'self'
+  | 'date'
+  | 'unenrol'
+  | 'activity'
+  | 'duration'
+  | 'grade'
+  | 'role'
+  | 'course';
+
+export type CourseTopic = {
+  name: string;
+  visible: boolean;
+  completed: boolean;
+  completionText: string; // plain text format eg. "1 out of 3"
+  activities: CourseActivities[];
+};
+
+type CourseActivities = {
+  name: string; // needed to match activities in Moodle to MDX
+  courseModuleId: number; // needed for posting manual completion
+  visible: boolean; // could be used for experiemental topics in courses
+  type: SupportedActivitiesType;
+  completionType: CourseActivitiesCompletionType;
+  completionStatus: CourseActivitiesCompletionStatus;
+};
+
+type SupportedActivitiesType = 'quiz' | 'label';
+type CourseActivitiesCompletionType =
+  | 'none' // 0
+  | 'manual' // 1
+  | 'auto'; // 2
+
+type CourseActivitiesCompletionStatus =
+  | 'none' // 0
+  | 'completed' // 1
+  | 'passed' // 2
+  | 'failed'; // 3
 
 // /badges
 /**
  * Badge type for Mapper function that Maps MoodleBadges
  */
+export type UserBadges = {
+  badges: Badge[];
+};
 export type Badge = {
   id: string;
   name: string;

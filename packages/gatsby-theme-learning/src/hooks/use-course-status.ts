@@ -1,42 +1,62 @@
 import useSWR from 'swr';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import ConfigContext from '../components/config-context';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useAuthToken } from './use-auth-token';
-import type { Course, CourseStatus } from '../external-types';
+import type {
+  ApiCallResult,
+  Course,
+  CourseStatus,
+  EnrolledCourses,
+} from '../external-types';
 
-const fetcher = async (url: string, accessToken: string) => {
-  const data = await fetch(url, {
+const fetcherWithToken = async (
+  url: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getAccessTokenSilently: any,
+  auth0Domain: string
+): Promise<ApiCallResult<EnrolledCourses>> => {
+  // first wait for a token
+  const audience =
+    auth0Domain === 'auth.id.commercetools.com'
+      ? 'commercetools.eu.auth0.com'
+      : auth0Domain;
+
+  const accessToken = await getAccessTokenSilently({
+    authorizationParams: {
+      audience: `https://${audience}/api/v2/`,
+    },
+  });
+
+  const responseHandler = (response: Response) => {
+    if (response.status !== 200) {
+      // TODO: handle error
+    }
+    return response.json();
+  };
+
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${accessToken}`,
     },
   });
-  return data.json();
+  return responseHandler(response);
 };
 
-const useFetchCourses = () => {
-  const [authToken, setAuthToken] = useState<string | undefined>();
-  const { isAuthenticated } = useAuth0();
-  const { learnApiBaseUrl } = useContext(ConfigContext);
-  const { getAuthToken } = useAuthToken();
+export const useFetchCourses = (): {
+  data: ApiCallResult<EnrolledCourses> | undefined;
+  error: string;
+  isLoading: boolean;
+} => {
+  const { learnApiBaseUrl, auth0Domain } = useContext(ConfigContext);
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
   const apiEndpoint = `${learnApiBaseUrl}/api/courses`;
-  useEffect(() => {
-    const fetchToken = async () => {
-      const token = await getAuthToken();
-      if (token !== authToken) {
-        setAuthToken(token);
-      }
-    };
-    if (isAuthenticated) {
-      fetchToken();
-    }
-  }, [isAuthenticated, getAuthToken, authToken]);
 
   const { data, error, isLoading } = useSWR(
-    authToken ? apiEndpoint : null,
-    (url) => fetcher(url, authToken || '')
+    isAuthenticated ? apiEndpoint : null,
+    (url) => fetcherWithToken(url, getAccessTokenSilently, auth0Domain)
   );
   return {
     data,
@@ -45,35 +65,19 @@ const useFetchCourses = () => {
   };
 };
 
-type CourseStatusByCourseId = {
-  courseStatus: CourseStatus | 'unenrolled' | undefined; // undefined is used for non self-learning courses
-  isLoading: boolean;
-  error: string;
-};
-export const useCourseStatusByCouseId = (
+export const getCourseStatusByCourseId = (
+  courses: Course[],
   courseId: number
-): CourseStatusByCourseId => {
-  const [courseStatus, setCourseStatus] = useState<
-    CourseStatus | 'unenrolled' | undefined
-  >();
-  const { data, isLoading, error } = useFetchCourses();
-  useEffect(() => {
-    if (!courseId) {
-      // the course id is undefined, meaning that the course is not a self-learning course
-      setCourseStatus(undefined);
-      return;
-    }
-    if (!isLoading && data) {
-      const filteredCourse = (data.result.enrolledCourses as Course[]).find(
-        (course: Course) => course.id === courseId
-      );
-
-      if (!filteredCourse) {
-        setCourseStatus('unenrolled');
-      } else {
-        setCourseStatus(filteredCourse.status);
-      }
-    }
-  }, [data, isLoading, error, courseId]);
-  return { courseStatus, isLoading, error };
+): CourseStatus | 'notEnrolled' | undefined => {
+  if (!courses || !courseId) {
+    return;
+  }
+  const filteredCourse = courses.find(
+    (course: Course) => course.id === courseId
+  );
+  if (!filteredCourse) {
+    return 'notEnrolled';
+  } else {
+    return filteredCourse.status;
+  }
 };

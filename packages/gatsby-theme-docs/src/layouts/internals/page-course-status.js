@@ -1,5 +1,8 @@
 import React from 'react';
-import { useCourseStatusByCouseId } from '@commercetools-docs/gatsby-theme-learning';
+import {
+  useFetchCourses,
+  getCourseStatusByCourseId,
+} from '@commercetools-docs/gatsby-theme-learning';
 import PropTypes from 'prop-types';
 
 const CourseStatus = (props) => {
@@ -17,10 +20,11 @@ CourseStatus.propTypes = {
 };
 
 const PageCourseStatus = (props) => {
-  const { courseStatus, isLoading, error } = useCourseStatusByCouseId(
-    props.courseId
-  );
-  console.log(courseStatus);
+  const { data, isLoading, error } = useFetchCourses();
+  const courseStatus =
+    data && !isLoading
+      ? getCourseStatusByCourseId(data.result.enrolledCourses, props.courseId)
+      : undefined;
   return (
     <>
       {props.courseId && (

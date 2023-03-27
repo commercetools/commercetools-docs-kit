@@ -1,2 +1,5 @@
 export * from './src';
-export { useCourseStatusByCouseId } from './src/hooks/use-course-status';
+export {
+  useFetchCourses,
+  getCourseStatusByCourseId,
+} from './src/hooks/use-course-status';
