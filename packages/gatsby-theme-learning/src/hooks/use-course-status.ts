@@ -8,6 +8,7 @@ import type {
   CourseStatus,
   EnrolledCourses,
 } from '../external-types';
+import { fetcherWithToken } from './hooks.utils';
 
 /**
  * Standar CourseStatus plus
@@ -16,66 +17,6 @@ import type {
  */
 type ClientCourseStatus = CourseStatus | 'notEnrolled' | 'notAvailable';
 
-class FetchDataError extends Error {
-  status: number | undefined;
-  info: object | undefined;
-
-  constructor(message: string, status?: number | undefined, info?: object) {
-    super(message);
-    this.status = status;
-    this.info = info;
-
-    Object.setPrototypeOf(this, FetchDataError.prototype);
-  }
-}
-
-const fetcherWithToken = async (
-  url: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getAccessTokenSilently: any,
-  auth0Domain: string
-): Promise<ApiCallResult<EnrolledCourses>> => {
-  const responseHandler = async (response: Response) => {
-    if (!response.ok) {
-      const info = await response.json();
-      throw new FetchDataError(
-        `HTTP Error while feching data from ${url}`,
-        response.status,
-        info
-      );
-    }
-    return response.json();
-  };
-
-  try {
-    // first wait for a token...
-    const audience =
-      auth0Domain === 'auth.id.commercetools.com'
-        ? 'commercetools.eu.auth0.com'
-        : auth0Domain;
-
-    const accessToken = await getAccessTokenSilently({
-      authorizationParams: {
-        audience: `https://${audience}/api/v2/`,
-      },
-    });
-
-    // ...then performs fetch
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    return responseHandler(response);
-  } catch (e) {
-    const errMsg = `Error while feching data from ${url}`;
-    console.error(errMsg, e);
-    throw new FetchDataError(errMsg);
-  }
-};
-
 export const useFetchCourses = (): {
   data: ApiCallResult<EnrolledCourses> | undefined;
   error: string;
@@ -83,11 +24,17 @@ export const useFetchCourses = (): {
 } => {
   const { learnApiBaseUrl, auth0Domain } = useContext(ConfigContext);
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();
-  const apiEndpoint = `${learnApiBaseUrl}/api/courses`;
+  const apiEndpoint = `/api/courses`;
 
   const { data, error, isLoading } = useSWR(
     isAuthenticated ? apiEndpoint : null,
-    (url) => fetcherWithToken(url, getAccessTokenSilently, auth0Domain)
+    (url) =>
+      fetcherWithToken(
+        url,
+        getAccessTokenSilently,
+        auth0Domain,
+        learnApiBaseUrl
+      )
   );
   return {
     data,
