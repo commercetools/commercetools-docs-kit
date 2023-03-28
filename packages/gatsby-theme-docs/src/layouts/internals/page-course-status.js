@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   useFetchCourses,
   getCourseStatusByCourseId,
@@ -20,14 +21,15 @@ CourseStatus.propTypes = {
 };
 
 const PageCourseStatus = (props) => {
+  const { isAuthenticated } = useAuth0();
   const { data, isLoading, error } = useFetchCourses();
-  const courseStatus =
-    data && !isLoading
-      ? getCourseStatusByCourseId(data.result.enrolledCourses, props.courseId)
-      : undefined;
+
+  const courseStatus = data
+    ? getCourseStatusByCourseId(data.result.enrolledCourses, props.courseId)
+    : undefined;
   return (
     <>
-      {props.courseId && (
+      {props.courseId && isAuthenticated && (
         <div>
           Course status:{' '}
           {isLoading ? (

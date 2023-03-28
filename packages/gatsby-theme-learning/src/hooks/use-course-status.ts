@@ -2,7 +2,6 @@ import useSWR from 'swr';
 import { useContext } from 'react';
 import ConfigContext from '../components/config-context';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useAuthToken } from './use-auth-token';
 import type {
   ApiCallResult,
   Course,
@@ -10,39 +9,71 @@ import type {
   EnrolledCourses,
 } from '../external-types';
 
+/**
+ * Standar CourseStatus plus
+ * - notEnrolled: when a course exists on the platform but the user is not enrolled
+ * - notAvailable: when any unexpected situation happens
+ */
+type ClientCourseStatus = CourseStatus | 'notEnrolled' | 'notAvailable';
+
+class FetchDataError extends Error {
+  status: number | undefined;
+  info: object | undefined;
+
+  constructor(message: string, status?: number | undefined, info?: object) {
+    super(message);
+    this.status = status;
+    this.info = info;
+
+    Object.setPrototypeOf(this, FetchDataError.prototype);
+  }
+}
+
 const fetcherWithToken = async (
   url: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getAccessTokenSilently: any,
   auth0Domain: string
 ): Promise<ApiCallResult<EnrolledCourses>> => {
-  // first wait for a token
-  const audience =
-    auth0Domain === 'auth.id.commercetools.com'
-      ? 'commercetools.eu.auth0.com'
-      : auth0Domain;
-
-  const accessToken = await getAccessTokenSilently({
-    authorizationParams: {
-      audience: `https://${audience}/api/v2/`,
-    },
-  });
-
-  const responseHandler = (response: Response) => {
-    if (response.status !== 200) {
-      // TODO: handle error
+  const responseHandler = async (response: Response) => {
+    if (!response.ok) {
+      const info = await response.json();
+      throw new FetchDataError(
+        `HTTP Error while feching data from ${url}`,
+        response.status,
+        info
+      );
     }
     return response.json();
   };
 
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-  return responseHandler(response);
+  try {
+    // first wait for a token...
+    const audience =
+      auth0Domain === 'auth.id.commercetools.com'
+        ? 'commercetools.eu.auth0.com'
+        : auth0Domain;
+
+    const accessToken = await getAccessTokenSilently({
+      authorizationParams: {
+        audience: `https://${audience}/api/v2/`,
+      },
+    });
+
+    // ...then performs fetch
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return responseHandler(response);
+  } catch (e) {
+    const errMsg = `Error while feching data from ${url}`;
+    console.error(errMsg, e);
+    throw new FetchDataError(errMsg);
+  }
 };
 
 export const useFetchCourses = (): {
@@ -68,9 +99,10 @@ export const useFetchCourses = (): {
 export const getCourseStatusByCourseId = (
   courses: Course[],
   courseId: number
-): CourseStatus | 'notEnrolled' | undefined => {
+): ClientCourseStatus => {
   if (!courses || !courseId) {
-    return;
+    console.warn('getCourseStatusByCourseId expects courses list and courseId');
+    return 'notAvailable';
   }
   const filteredCourse = courses.find(
     (course: Course) => course.id === courseId
