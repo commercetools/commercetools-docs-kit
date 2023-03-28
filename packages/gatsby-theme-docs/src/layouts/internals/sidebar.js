@@ -16,7 +16,7 @@ import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
-import { useCourseIdByPageSlug } from '../../hooks/use-course-pages';
+import { useCourseInfoByPageSlug } from '../../hooks/use-course-pages';
 import PageCourseStatus from './page-course-status';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
@@ -234,7 +234,7 @@ SidebarLinkWrapper.propTypes = {
 };
 
 const SidebarChapter = (props) => {
-  const courseId = useCourseIdByPageSlug(props.chapter.pages[0].path);
+  const courseInfo = useCourseInfoByPageSlug(props.chapter.pages[0].path);
   const elemId = `sidebar-chapter-${props.index}`;
   const getChapterDOMElement = React.useCallback(
     () => document.getElementById(elemId),
@@ -246,7 +246,9 @@ const SidebarChapter = (props) => {
       <SpacingsStack scale="s">
         <LinkItem>
           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-          {courseId && <PageCourseStatus courseId={courseId} />}
+          {courseInfo?.courseId && (
+            <PageCourseStatus courseId={courseInfo.courseId} />
+          )}
         </LinkItem>
         <SpacingsStack scale="s">
           {props.chapter.pages &&

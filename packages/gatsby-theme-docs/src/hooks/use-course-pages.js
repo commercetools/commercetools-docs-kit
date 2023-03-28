@@ -25,7 +25,7 @@ var isIndexed = false;
 const courseMapToPages = (coursePagesData) => {
   if (!isIndexed) {
     coursePagesData.forEach((element) => {
-      coursePageMap.set(element.slug, element.courseId);
+      coursePageMap.set(element.slug, { courseId: element.courseId });
     });
   }
   isIndexed = true;
@@ -35,7 +35,7 @@ const courseMapToPages = (coursePagesData) => {
  * Given a page slug, it returns the courseId where the page belongs
  * if exists, otherwise undefined
  */
-export const useCourseIdByPageSlug = (pageSlug) => {
+export const useCourseInfoByPageSlug = (pageSlug) => {
   courseMapToPages(useCoursePages());
   return coursePageMap.get(pageSlug);
 };
