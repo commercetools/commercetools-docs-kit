@@ -24,7 +24,7 @@ const PageCourseStatus = (props) => {
   const { isAuthenticated } = useAuth0();
   const { data, isLoading, error } = useFetchCourses();
 
-  const courseStatus = data
+  const courseStatus = data?.result?.enrolledCourses
     ? getCourseStatusByCourseId(data.result.enrolledCourses, props.courseId)
     : undefined;
   return (
