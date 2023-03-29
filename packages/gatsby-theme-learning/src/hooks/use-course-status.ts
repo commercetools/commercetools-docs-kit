@@ -16,6 +16,11 @@ import { fetcherWithToken } from './hooks.utils';
  * - notAvailable: when any unexpected situation happens
  */
 type ClientCourseStatus = CourseStatus | 'notEnrolled' | 'notAvailable';
+type UseFetchCoursesResponse = {
+  data: ApiCallResult<EnrolledCourses> | undefined;
+  error: string;
+  isLoading: boolean;
+};
 
 export const useFetchCourses = (): {
   data: ApiCallResult<EnrolledCourses> | undefined;
@@ -35,7 +40,7 @@ export const useFetchCourses = (): {
         auth0Domain,
         learnApiBaseUrl
       )
-  );
+  ) as UseFetchCoursesResponse;
   return {
     data,
     error,

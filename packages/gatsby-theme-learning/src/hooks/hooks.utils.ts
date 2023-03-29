@@ -1,4 +1,8 @@
-import type { ApiCallResult, EnrolledCourses } from '../external-types';
+import type {
+  ApiCallResult,
+  EnrolledCourses,
+  CourseWithDetails,
+} from '../external-types';
 
 class FetchDataError extends Error {
   status: number | undefined;
@@ -19,7 +23,7 @@ export const fetcherWithToken = async (
   getAccessTokenSilently: any,
   auth0Domain: string,
   learnApiBaseUrl: string
-): Promise<ApiCallResult<EnrolledCourses>> => {
+): Promise<ApiCallResult<EnrolledCourses | CourseWithDetails>> => {
   const responseHandler = async (response: Response) => {
     if (!response.ok) {
       const info = await response.json();
@@ -29,7 +33,15 @@ export const fetcherWithToken = async (
         info
       );
     }
-    return response.json();
+    const jsonResponse = (await response.json()) as ApiCallResult<
+      EnrolledCourses | CourseWithDetails
+    >;
+    if (jsonResponse.errors) {
+      const msg = `Error: "${jsonResponse.errors[0].message}" while fetching ${url}`;
+      console.error(msg);
+      throw new FetchDataError(msg);
+    }
+    return jsonResponse;
   };
 
   try {
