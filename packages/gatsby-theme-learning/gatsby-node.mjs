@@ -5,5 +5,8 @@ export const pluginOptionsSchema = ({ Joi }) => {
       .allow('')
       .default('')
       .description(`Learn API base url`),
+    features: Joi.object({
+      courseStatusIndicator: Joi.boolean().default(false),
+    })
   });
 };

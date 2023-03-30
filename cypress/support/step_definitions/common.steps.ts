@@ -18,7 +18,7 @@ const redirectionStep = (page) => {
   if (page === 'quiz page') {
     cy.url().should(
       'match',
-      /components\/quiz\/?#section-test-your-knowledge$/
+      /self-learning\/quiz\/?#section-test-your-knowledge$/
     );
   }
   if (page === 'homepage') {
@@ -62,7 +62,7 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
   cy.clearLocalStorage();
   cy.visit(URL_DOCS_SMOKE_TEST);
   cy.get('#navigation-scroll-container')
-    .get(`a[href *= "components/quiz"]`)
+    .get(`a[href *= "self-learning/quiz"]`)
     .click();
   if (isNewAttempt) {
     cy.intercept(

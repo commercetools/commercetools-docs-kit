@@ -217,6 +217,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
             errorFallback: 0,
           }),
         },
+        courseId: { type: 'Int' },
       },
       interfaces: ['Node'],
     }),
@@ -348,6 +349,9 @@ export const onCreateNode = async (
         ? Number(node.frontmatter.timeToRead)
         : 0,
       tableOfContents: await generateToC(nodeBodyAst),
+      courseId: node.frontmatter.courseId
+        ? Number(node.frontmatter.courseId)
+        : null,
     };
 
     actions.createNode({
@@ -406,6 +410,7 @@ async function createContentPages(
       allContentPage {
         nodes {
           slug
+          courseId
         }
       }
       allReleaseNotePage(sort: { date: DESC }) {
@@ -442,7 +447,7 @@ async function createContentPages(
       (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
       []
     );
-  pages.forEach(({ slug }) => {
+  pages.forEach(({ slug, courseId }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
@@ -481,10 +486,14 @@ async function createContentPages(
         break;
 
       default:
-        actions.createPage({
+        let contentPageData = {
           ...pageData,
           component: require.resolve('./src/templates/page-content.js'),
-        });
+        }
+        if (courseId) {
+          contentPageData = {...contentPageData, context: {...contentPageData.context, courseId}}
+        }
+        actions.createPage(contentPageData);
 
         break;
     }

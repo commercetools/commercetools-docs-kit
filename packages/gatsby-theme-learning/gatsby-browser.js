@@ -6,6 +6,10 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
       value={{
         learnApiBaseUrl: pluginOptions.learnApiBaseUrl,
         auth0Domain: pluginOptions.auth0Domain,
+        features: {
+          courseStatusIndicator:
+            pluginOptions?.features?.courseStatusIndicator || false,
+        },
       }}
     >
       {element}

@@ -67,7 +67,7 @@ jobs:
           path: |
             .cache
             public
-          key: ${{ runner.os }}-gatsby-monolithic-v1-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-gatsby-monolithic-v2-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
         run: yarn install --immutable

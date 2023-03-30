@@ -19,7 +19,7 @@ When('The user clicks navigation link with href {string}', (href) => {
 Given(`The user has navigated to a quiz page`, () => {
   cy.visit(URL_DOCS_SMOKE_TEST);
   cy.get('#navigation-scroll-container')
-    .get(`a[href *= "components/quiz"]`)
+    .get(`a[href *= "self-learning/quiz"]`)
     .click();
 });
 

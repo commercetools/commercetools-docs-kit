@@ -16,6 +16,8 @@ import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
+import { useCourseInfoByPageSlug } from '../../hooks/use-course-pages';
+import { PageCourseStatus } from '@commercetools-docs/gatsby-theme-learning';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -232,16 +234,21 @@ SidebarLinkWrapper.propTypes = {
 };
 
 const SidebarChapter = (props) => {
+  const courseInfo = useCourseInfoByPageSlug(props.chapter.pages[0].path);
   const elemId = `sidebar-chapter-${props.index}`;
   const getChapterDOMElement = React.useCallback(
     () => document.getElementById(elemId),
     [elemId]
   );
+
   return (
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack scale="s">
         <LinkItem>
           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          {courseInfo?.courseId && (
+            <PageCourseStatus courseId={courseInfo.courseId} />
+          )}
         </LinkItem>
         <SpacingsStack scale="s">
           {props.chapter.pages &&

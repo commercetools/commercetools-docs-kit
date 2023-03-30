@@ -1,4 +1,5 @@
 import { useState, useContext, useCallback } from 'react';
+import { useSWRConfig } from 'swr';
 import ConfigContext from '../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
@@ -12,6 +13,7 @@ type SubmitAttemptParams = {
 
 export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
   const { learnApiBaseUrl } = useContext(ConfigContext);
+  const { mutate } = useSWRConfig();
   const { courseId, quizId } = submitAttemptParams;
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>();
@@ -25,6 +27,7 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
       attemptData: SubmissionAttempt,
       finish: boolean
     ) => {
+      const invalidateCache = () => mutate('/api/courses');
       const apiEndpoint = `${learnApiBaseUrl}/api/courses/${courseId}/quizzes/${quizId}/attempts/${attemptId}?finish=${finish}`;
       const accessToken = await getAuthToken();
       const data = await fetch(apiEndpoint, {
@@ -37,9 +40,10 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
         method: 'POST',
         cache: 'no-cache',
       });
+      invalidateCache();
       return data;
     },
-    [courseId, getAuthToken, learnApiBaseUrl, quizId]
+    [courseId, getAuthToken, learnApiBaseUrl, quizId, mutate]
   );
 
   const submitAttempt = useCallback(
