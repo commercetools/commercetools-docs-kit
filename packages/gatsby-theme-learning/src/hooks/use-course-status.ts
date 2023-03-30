@@ -9,6 +9,7 @@ import type {
   EnrolledCourses,
 } from '../external-types';
 import { fetcherWithToken } from './hooks.utils';
+import { useAuthToken } from './use-auth-token';
 
 /**
  * Standar CourseStatus plus
@@ -27,19 +28,14 @@ export const useFetchCourses = (): {
   error: string;
   isLoading: boolean;
 } => {
-  const { learnApiBaseUrl, auth0Domain } = useContext(ConfigContext);
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const { learnApiBaseUrl } = useContext(ConfigContext);
+  const { isAuthenticated } = useAuth0();
+  const { getAuthToken } = useAuthToken();
   const apiEndpoint = `/api/courses`;
 
   const { data, error, isLoading } = useSWR(
     isAuthenticated ? apiEndpoint : null,
-    (url) =>
-      fetcherWithToken(
-        url,
-        getAccessTokenSilently,
-        auth0Domain,
-        learnApiBaseUrl
-      )
+    (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl)
   ) as UseFetchCoursesResponse;
   return {
     data,

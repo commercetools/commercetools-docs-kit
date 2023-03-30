@@ -19,9 +19,7 @@ class FetchDataError extends Error {
 
 export const fetcherWithToken = async (
   url: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getAccessTokenSilently: any,
-  auth0Domain: string,
+  getAuthToken: () => Promise<string>,
   learnApiBaseUrl: string
 ): Promise<ApiCallResult<EnrolledCourses | CourseWithDetails>> => {
   const responseHandler = async (response: Response) => {
@@ -45,17 +43,7 @@ export const fetcherWithToken = async (
   };
 
   try {
-    // first wait for a token...
-    const audience =
-      auth0Domain === 'auth.id.commercetools.com'
-        ? 'commercetools.eu.auth0.com'
-        : auth0Domain;
-
-    const accessToken = await getAccessTokenSilently({
-      authorizationParams: {
-        audience: `https://${audience}/api/v2/`,
-      },
-    });
+    const accessToken = await getAuthToken();
 
     // ...then performs fetch
     const response = await fetch(`${learnApiBaseUrl}${url}`, {
