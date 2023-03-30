@@ -22,7 +22,7 @@ import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 import PageReadTime from './internals/page-read-time-estimation';
-import PageCourseStatus from './internals/page-course-status';
+import { PageCourseStatus } from '@commercetools-docs/gatsby-theme-learning';
 
 const LayoutContent = (props) => {
   const { ref, inView, entry } = useInView();

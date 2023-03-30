@@ -1,28 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import {
-  useFetchCourses,
   getCourseStatusByCourseId,
-} from '@commercetools-docs/gatsby-theme-learning';
-import PropTypes from 'prop-types';
+  useFetchCourses,
+} from '../hooks/use-course-status';
+import ConfigContext from './config-context';
 
-const CourseStatus = (props) => {
+type CourseStatusProps = {
+  error?: string;
+  status?: string;
+};
+
+const CourseStatus = (props: CourseStatusProps) => {
   if (props.error) {
     return <span>unavailable</span>;
   }
   if (props.status) {
     return <span>{props.status}</span>;
   }
+  return null;
 };
 
-CourseStatus.propTypes = {
-  error: PropTypes.string,
-  status: PropTypes.string,
+type PageCourseStatusProps = {
+  courseId: number;
 };
 
-const PageCourseStatus = (props) => {
+const PageCourseStatus = (props: PageCourseStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const { data, isLoading, error } = useFetchCourses();
+  const {
+    features: { courseStatusIndicator },
+  } = useContext(ConfigContext);
+
+  // courseStatusIndicator feature flag
+  if (!courseStatusIndicator) {
+    return null;
+  }
 
   const courseStatus = data?.result?.enrolledCourses
     ? getCourseStatusByCourseId(data.result.enrolledCourses, props.courseId)
@@ -41,10 +54,6 @@ const PageCourseStatus = (props) => {
       )}
     </>
   );
-};
-
-PageCourseStatus.propTypes = {
-  courseId: PropTypes.number.isRequired,
 };
 
 export default PageCourseStatus;

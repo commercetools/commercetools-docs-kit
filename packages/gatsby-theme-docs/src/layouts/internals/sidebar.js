@@ -17,7 +17,7 @@ import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
 import { useCourseInfoByPageSlug } from '../../hooks/use-course-pages';
-import PageCourseStatus from './page-course-status';
+import { PageCourseStatus } from '@commercetools-docs/gatsby-theme-learning';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 

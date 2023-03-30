@@ -25,16 +25,22 @@ type UseFetchCoursesResponse = {
 
 export const useFetchCourses = (): {
   data: ApiCallResult<EnrolledCourses> | undefined;
-  error: string;
+  error: string | undefined;
   isLoading: boolean;
 } => {
-  const { learnApiBaseUrl } = useContext(ConfigContext);
+  const {
+    learnApiBaseUrl,
+    features: { courseStatusIndicator },
+  } = useContext(ConfigContext);
   const { isAuthenticated } = useAuth0();
   const { getAuthToken } = useAuthToken();
   const apiEndpoint = `/api/courses`;
 
+  // fetch data only if course status feature flag is true and the user is logged in
+  const shouldFetchData = courseStatusIndicator && isAuthenticated;
+
   const { data, error, isLoading } = useSWR(
-    isAuthenticated ? apiEndpoint : null,
+    shouldFetchData ? apiEndpoint : null,
     (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl)
   ) as UseFetchCoursesResponse;
   return {
