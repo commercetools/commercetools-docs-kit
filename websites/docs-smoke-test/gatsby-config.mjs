@@ -32,6 +32,9 @@ const config = {
           options: {
             auth0Domain: 'auth.id.commercetools.com',
             learnApiBaseUrl: 'https://api.learn.commercetools.com',
+            features: {
+              courseStatusIndicator: true,
+            }
           },
         },
         {

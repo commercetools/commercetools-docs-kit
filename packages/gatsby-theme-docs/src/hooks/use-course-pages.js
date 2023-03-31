@@ -8,6 +8,7 @@ export const useCoursePages = () => {
           nodes {
             slug
             courseId
+            topicName
           }
         }
       }
@@ -25,17 +26,33 @@ var isIndexed = false;
 const courseMapToPages = (coursePagesData) => {
   if (!isIndexed) {
     coursePagesData.forEach((element) => {
-      coursePageMap.set(element.slug, { courseId: element.courseId });
+      const { courseId, topicName } = element;
+      coursePageMap.set(element.slug, { courseId, topicName });
     });
   }
   isIndexed = true;
 };
 
 /**
- * Given a page slug, it returns the courseId where the page belongs
+ * Given an array of page slugs, it returns an array with course info
  * if exists, otherwise undefined
  */
-export const useCourseInfoByPageSlug = (pageSlug) => {
+export const useCourseInfoByPageSlugs = (pageSlugs) => {
   courseMapToPages(useCoursePages());
-  return coursePageMap.get(pageSlug);
+  const courseInfo = pageSlugs.reduce(
+    (prev, curr) => ({ ...prev, [curr]: coursePageMap.get(curr) }),
+    {}
+  );
+  // sanity check: all the pages should belong to the same course, therefore have the same courseId
+  const isOk = Object.values(courseInfo)?.every(
+    (info, _, theArray) => info?.courseId === theArray[0]?.courseId
+  );
+  if (!isOk) {
+    // TODO: decide if we want to make this blocker
+    console.warn(
+      'pages belonging to the same course have different courseId metadata',
+      courseInfo
+    );
+  }
+  return courseInfo;
 };

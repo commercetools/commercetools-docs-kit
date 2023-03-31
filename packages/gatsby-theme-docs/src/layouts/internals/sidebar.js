@@ -16,8 +16,11 @@ import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
-import { useCourseInfoByPageSlug } from '../../hooks/use-course-pages';
-import { PageCourseStatus } from '@commercetools-docs/gatsby-theme-learning';
+import { useCourseInfoByPageSlugs } from '../../hooks/use-course-pages';
+import {
+  PageCourseStatus,
+  PageTopicStatus,
+} from '@commercetools-docs/gatsby-theme-learning';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -234,7 +237,10 @@ SidebarLinkWrapper.propTypes = {
 };
 
 const SidebarChapter = (props) => {
-  const courseInfo = useCourseInfoByPageSlug(props.chapter.pages[0].path);
+  const courseInfo = useCourseInfoByPageSlugs(
+    props.chapter.pages.map((page) => page.path)
+  );
+  const courseId = Object.values(courseInfo)[0]?.courseId;
   const elemId = `sidebar-chapter-${props.index}`;
   const getChapterDOMElement = React.useCallback(
     () => document.getElementById(elemId),
@@ -246,24 +252,31 @@ const SidebarChapter = (props) => {
       <SpacingsStack scale="s">
         <LinkItem>
           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-          {courseInfo?.courseId && (
-            <PageCourseStatus courseId={courseInfo.courseId} />
-          )}
+          {courseId && <PageCourseStatus courseId={courseId} />}
         </LinkItem>
         <SpacingsStack scale="s">
           {props.chapter.pages &&
-            props.chapter.pages.map((pageLink, pageIndex) => (
-              <SidebarLinkWrapper
-                key={`${props.index}-${pageIndex}-${pageLink.path}`}
-                to={pageLink.path}
-                onClick={props.onLinkClick}
-                location={props.location}
-                nextScrollPosition={props.nextScrollPosition}
-                getChapterDOMElement={getChapterDOMElement}
-              >
-                <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-              </SidebarLinkWrapper>
-            ))}
+            props.chapter.pages.map((pageLink, pageIndex) => {
+              const currTopicName = courseInfo[pageLink.path]?.topicName;
+              return (
+                <SidebarLinkWrapper
+                  key={`${props.index}-${pageIndex}-${pageLink.path}`}
+                  to={pageLink.path}
+                  onClick={props.onLinkClick}
+                  location={props.location}
+                  nextScrollPosition={props.nextScrollPosition}
+                  getChapterDOMElement={getChapterDOMElement}
+                >
+                  <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+                  {courseId && currTopicName && (
+                    <PageTopicStatus
+                      courseId={courseId}
+                      pageTitle={currTopicName}
+                    />
+                  )}
+                </SidebarLinkWrapper>
+              );
+            })}
         </SpacingsStack>
       </SpacingsStack>
     </div>
