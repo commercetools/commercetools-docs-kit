@@ -94,6 +94,19 @@ const LinkItem = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  vertical-align: middle;
+`;
+const LinkItemWithIcon = styled.div`
+  padding: 0 0 0 ${designSystem.dimensions.spacings.m};
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  svg {
+    margin-right: 2px;
+  }
+  div {
+    line-height: ${designSystem.typography.lineHeights.cardSmallTitle};
+  }
 `;
 const linkStyles = css`
   border-left: ${designSystem.dimensions.spacings.xs} solid
@@ -124,10 +137,21 @@ const activeLinkStyles = css`
   color: ${designSystem.colors.light.linkNavigation} !important;
 `;
 
+const StatusIconWrapper = styled.span`
+  display: flex;
+  vertical-align: middle;
+  padding-left: 10px; // change this setting to remove the indentation
+  svg {
+    margin-right: 6px;
+  }
+`;
+
 const LinkSubtitleWithIcon = (props) => (
   <LinkSubtitle>
-    {props.icon}
-    {props.children}
+    <StatusIconWrapper>
+      {props.icon}
+      {props.children}
+    </StatusIconWrapper>
   </LinkSubtitle>
 );
 LinkSubtitleWithIcon.propTypes = {
@@ -261,10 +285,17 @@ const SidebarChapter = (props) => {
   return (
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack scale="s">
-        <LinkItem>
-          {courseId && <SidebarCourseStatus courseId={courseId} />}
-          <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-        </LinkItem>
+        {courseId ? (
+          <LinkItemWithIcon>
+            <SidebarCourseStatus courseId={courseId} />
+            <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          </LinkItemWithIcon>
+        ) : (
+          <LinkItem>
+            <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          </LinkItem>
+        )}
+
         <SpacingsStack scale="s">
           {props.chapter.pages &&
             props.chapter.pages.map((pageLink, pageIndex) => {
@@ -285,13 +316,13 @@ const SidebarChapter = (props) => {
                   nextScrollPosition={props.nextScrollPosition}
                   getChapterDOMElement={getChapterDOMElement}
                 >
-                  {/* <LinkSubtitle>
-                    <TopicIcon />
-                    {pageLink.title}
-                  </LinkSubtitle> */}
-                  <LinkSubtitleWithIcon icon={TopicIcon}>
-                    {pageLink.title}
-                  </LinkSubtitleWithIcon>
+                  {TopicIcon ? (
+                    <LinkSubtitleWithIcon icon={TopicIcon}>
+                      {pageLink.title}
+                    </LinkSubtitleWithIcon>
+                  ) : (
+                    <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+                  )}
                 </SidebarLinkWrapper>
               );
             })}

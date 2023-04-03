@@ -39,11 +39,8 @@ const SidebarTopicStatus = (props: PageTopicStatusProps) => {
     ? getTopicStatusByPageTitle(data.result.topics, props.pageTitle)
     : undefined;
   return (
-    <>
-      {props.courseId && isAuthenticated && (
-        <StatusIndicator status={topicStatus} />
-      )}
-    </>
+    props.courseId &&
+    isAuthenticated && <StatusIndicator status={topicStatus} />
   );
 };
 
