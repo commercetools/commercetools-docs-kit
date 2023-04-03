@@ -18,8 +18,8 @@ import { BetaFlag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
 import { useCourseInfoByPageSlugs } from '../../hooks/use-course-pages';
 import {
-  PageCourseStatus,
-  PageTopicStatus,
+  SidebarCourseStatus,
+  SidebarTopicStatus,
 } from '@commercetools-docs/gatsby-theme-learning';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
@@ -123,6 +123,17 @@ const activeLinkStyles = css`
     ${designSystem.colors.light.linkNavigation} !important;
   color: ${designSystem.colors.light.linkNavigation} !important;
 `;
+
+const LinkSubtitleWithIcon = (props) => (
+  <LinkSubtitle>
+    {props.icon}
+    {props.children}
+  </LinkSubtitle>
+);
+LinkSubtitleWithIcon.propTypes = {
+  icon: PropTypes.element,
+  children: PropTypes.any,
+};
 
 const SidebarLink = (props) => {
   const { locationPath, customStyles, customActiveStyles, ...forwardProps } =
@@ -251,13 +262,20 @@ const SidebarChapter = (props) => {
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack scale="s">
         <LinkItem>
+          {courseId && <SidebarCourseStatus courseId={courseId} />}
           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-          {courseId && <PageCourseStatus courseId={courseId} />}
         </LinkItem>
         <SpacingsStack scale="s">
           {props.chapter.pages &&
             props.chapter.pages.map((pageLink, pageIndex) => {
               const currTopicName = courseInfo[pageLink.path]?.topicName;
+              const TopicIcon =
+                courseId && currTopicName ? (
+                  <SidebarTopicStatus
+                    courseId={courseId}
+                    pageTitle={currTopicName}
+                  />
+                ) : null;
               return (
                 <SidebarLinkWrapper
                   key={`${props.index}-${pageIndex}-${pageLink.path}`}
@@ -267,13 +285,13 @@ const SidebarChapter = (props) => {
                   nextScrollPosition={props.nextScrollPosition}
                   getChapterDOMElement={getChapterDOMElement}
                 >
-                  <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-                  {courseId && currTopicName && (
-                    <PageTopicStatus
-                      courseId={courseId}
-                      pageTitle={currTopicName}
-                    />
-                  )}
+                  {/* <LinkSubtitle>
+                    <TopicIcon />
+                    {pageLink.title}
+                  </LinkSubtitle> */}
+                  <LinkSubtitleWithIcon icon={TopicIcon}>
+                    {pageLink.title}
+                  </LinkSubtitleWithIcon>
                 </SidebarLinkWrapper>
               );
             })}

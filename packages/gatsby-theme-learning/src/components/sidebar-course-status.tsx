@@ -1,33 +1,30 @@
 import React, { useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { CircleIcon, VerifiedIcon } from '@commercetools-uikit/icons';
 import {
   getCourseStatusByCourseId,
   useFetchCourses,
 } from '../hooks/use-course-status';
 import ConfigContext from './config-context';
 
-type CourseStatusProps = {
-  error?: string;
+type StatusIndicatorProps = {
   status?: string;
 };
 
-const CourseStatus = (props: CourseStatusProps) => {
-  if (props.error) {
-    return <span>unavailable</span>;
-  }
-  if (props.status) {
-    return <span>{props.status}</span>;
-  }
-  return null;
-};
+export const StatusIndicator = (props: StatusIndicatorProps) =>
+  props.status && props.status === 'completed' ? (
+    <VerifiedIcon color="primary" size="big" />
+  ) : (
+    <CircleIcon color="neutral60" size="big" />
+  );
 
-type PageCourseStatusProps = {
+type SidebarCourseStatusProps = {
   courseId: number;
 };
 
-const PageCourseStatus = (props: PageCourseStatusProps) => {
+const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   const { isAuthenticated } = useAuth0();
-  const { data, isLoading, error } = useFetchCourses();
+  const { data } = useFetchCourses();
   const {
     features: { courseStatusIndicator },
   } = useContext(ConfigContext);
@@ -43,17 +40,10 @@ const PageCourseStatus = (props: PageCourseStatusProps) => {
   return (
     <>
       {props.courseId && isAuthenticated && (
-        <div>
-          Course status:{' '}
-          {isLoading ? (
-            '...'
-          ) : (
-            <CourseStatus status={courseStatus} error={error} />
-          )}
-        </div>
+        <StatusIndicator status={courseStatus} />
       )}
     </>
   );
 };
 
-export default PageCourseStatus;
+export default SidebarCourseStatus;

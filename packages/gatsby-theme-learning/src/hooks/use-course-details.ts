@@ -56,5 +56,5 @@ export const getTopicStatusByPageTitle = (
   if (matchingTopic) {
     return matchingTopic.completed ? 'completed' : 'notCompleted';
   }
-  return 'unknown';
+  return 'notAvailable';
 };
