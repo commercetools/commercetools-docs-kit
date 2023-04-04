@@ -5,7 +5,10 @@ import {
   getCourseStatusByCourseId,
   useFetchCourses,
 } from '../hooks/use-course-status';
-import ConfigContext from './config-context';
+import ConfigContext, {
+  isFeatureEnabled,
+  EFeatureFlag,
+} from './config-context';
 
 type StatusIndicatorProps = {
   status?: string;
@@ -25,12 +28,10 @@ type SidebarCourseStatusProps = {
 const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const { data } = useFetchCourses();
-  const {
-    features: { courseStatusIndicator },
-  } = useContext(ConfigContext);
+  const { features } = useContext(ConfigContext);
 
-  // courseStatusIndicator feature flag
-  if (!courseStatusIndicator) {
+  // CourseStatus feature flag
+  if (!isFeatureEnabled(EFeatureFlag.CourseStatus, features)) {
     return null;
   }
 

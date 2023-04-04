@@ -5,7 +5,10 @@ import {
   useFetchCourseDetails,
   getTopicStatusByPageTitle,
 } from '../hooks/use-course-details';
-import ConfigContext from './config-context';
+import ConfigContext, {
+  isFeatureEnabled,
+  EFeatureFlag,
+} from './config-context';
 
 type StatusIndicatorProps = {
   status?: string;
@@ -26,12 +29,10 @@ type PageTopicStatusProps = {
 const SidebarTopicStatus = (props: PageTopicStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const { data } = useFetchCourseDetails(props.courseId);
-  const {
-    features: { courseStatusIndicator },
-  } = useContext(ConfigContext);
+  const { features } = useContext(ConfigContext);
 
-  // courseStatusIndicator feature flag
-  if (!courseStatusIndicator) {
+  // CourseStatus feature flag
+  if (!isFeatureEnabled(EFeatureFlag.CourseStatus, features)) {
     return null;
   }
 
