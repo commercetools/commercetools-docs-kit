@@ -142,20 +142,16 @@ const StatusIconWrapper = styled.span`
   vertical-align: middle;
   padding-left: 10px; // change this setting to remove the indentation
   svg {
-    margin-right: 6px;
+    margin-right: 5px;
   }
 `;
 
 const LinkSubtitleWithIcon = (props) => (
   <LinkSubtitle>
-    <StatusIconWrapper>
-      {props.icon}
-      {props.children}
-    </StatusIconWrapper>
+    <StatusIconWrapper>{props.children}</StatusIconWrapper>
   </LinkSubtitle>
 );
 LinkSubtitleWithIcon.propTypes = {
-  icon: PropTypes.element,
   children: PropTypes.any,
 };
 
@@ -317,7 +313,8 @@ const SidebarChapter = (props) => {
                   getChapterDOMElement={getChapterDOMElement}
                 >
                   {TopicIcon ? (
-                    <LinkSubtitleWithIcon icon={TopicIcon}>
+                    <LinkSubtitleWithIcon>
+                      {TopicIcon}
                       {pageLink.title}
                     </LinkSubtitleWithIcon>
                   ) : (
