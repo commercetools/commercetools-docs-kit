@@ -567,7 +567,6 @@ export const onCreateWebpackConfig = (
     },
     {
       test: /\.svg$/,
-      include: /icons/,
       use: [
         {
           loader: require.resolve('@svgr/webpack'),

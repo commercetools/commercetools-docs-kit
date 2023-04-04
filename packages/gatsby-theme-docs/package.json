@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@commercetools-docs/ui-kit": "21.1.4",
+    "@commercetools-frontend/application-components": "21.23.9",
     "@commercetools-uikit/card": "15.3.0",
     "@commercetools-uikit/checkbox-input": "15.3.0",
     "@commercetools-uikit/design-system": "15.3.0",
