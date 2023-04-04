@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { designSystem, MediaQuery } from '@commercetools-docs/ui-kit';
+import { PortalsContainer } from '@commercetools-frontend/application-components';
 import { Overlay, TopMenu } from '../../components';
 
 const Container = styled.main`
@@ -33,6 +34,7 @@ const LayoutMain = (props) => (
     autoFocus
     tabIndex={0}
   >
+    <PortalsContainer />
     {props.isTopMenuOpen ? (
       // GIVEN that the viewport is equal or less than laptop (sidebar not visible)
       // AND the top menu has been opened
