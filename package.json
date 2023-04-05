@@ -103,6 +103,7 @@
   },
   "packageManager": "yarn@3.5.0",
   "resolutions": {
-    "@commercetools-uikit/design-system@15.14.3": "patch:@commercetools-uikit/design-system@npm%3A15.14.3#./.yarn/patches/@commercetools-uikit-design-system-npm-15.14.3-46def3c0df.patch"
+    "@commercetools-uikit/design-system@15.14.3": "patch:@commercetools-uikit/design-system@npm%3A15.14.3#./.yarn/patches/@commercetools-uikit-design-system-npm-15.14.3-46def3c0df.patch",
+    "@commercetools-uikit/hooks@15.14.3": "patch:@commercetools-uikit/hooks@npm%3A15.14.3#./.yarn/patches/@commercetools-uikit-hooks-npm-15.14.3-6094caadc8.patch"
   }
 }

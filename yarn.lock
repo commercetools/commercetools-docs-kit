@@ -3287,6 +3287,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@commercetools-uikit/hooks@patch:@commercetools-uikit/hooks@npm%3A15.14.3#./.yarn/patches/@commercetools-uikit-hooks-npm-15.14.3-6094caadc8.patch::locator=commercetools-docs-kit%40workspace%3A.":
+  version: 15.14.3
+  resolution: "@commercetools-uikit/hooks@patch:@commercetools-uikit/hooks@npm%3A15.14.3#./.yarn/patches/@commercetools-uikit-hooks-npm-15.14.3-6094caadc8.patch::version=15.14.3&hash=86c709&locator=commercetools-docs-kit%40workspace%3A."
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/utils": 15.14.3
+    "@types/raf-schd": ^4.0.1
+    lodash: 4.17.21
+    raf-schd: ^4.0.3
+  peerDependencies:
+    react: 17.x
+  checksum: 01b3c2c18178cee96eda9e8452d0a02894405056f24c702862a9a6097e1c7e151028e231400c9de23c742121553d9aa2c5eeea88f265ccb482ffb13790ec8fa6
+  languageName: node
+  linkType: hard
+
 "@commercetools-uikit/icon-button@npm:15.14.3":
   version: 15.14.3
   resolution: "@commercetools-uikit/icon-button@npm:15.14.3"

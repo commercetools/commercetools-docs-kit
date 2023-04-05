@@ -1,0 +1,20 @@
+diff --git a/dist/commercetools-uikit-hooks.esm.js b/dist/commercetools-uikit-hooks.esm.js
+index bc353b997ad4f97662b3848c0cf757808fcb3e59..7418473d9205a323123bedb754bbbfaac52130ca 100644
+--- a/dist/commercetools-uikit-hooks.esm.js
++++ b/dist/commercetools-uikit-hooks.esm.js
+@@ -76,6 +76,15 @@ var useLatest = function useLatest(current) {
+   return storedValue;
+ };
+ 
++global.MutationObserver =
++  typeof window !== 'undefined' && 'MutationObserver' in window
++    ? window.MutationObserver
++    : class MutationObserver {
++        observe() {}
++        disconnect() {}
++        takeRecords() { return []; }
++      };
++
+ function createMutationObserver() {
+   var callbacks = new _Map();
+   var observer = new MutationObserver(rafSchd(function (mutationsList, observer) {

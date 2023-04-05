@@ -45,15 +45,6 @@ const iconLightDigest = createContentDigest(iconLightDigestRaw);
 const patchedLobotomizedOwlSelector = '> *:not(style) ~ *:not(style)';
 const lobotomizedOwlSelectorRegex = />\s*\*\s*\+\s*\*/g;
 
-// TODO: fix in @commercetools-uikit/hooks
-global.MutationObserver =
-  typeof window !== 'undefined' && 'MutationObserver' in window
-    ? window.MutationObserver
-    : class MutationObserver {
-        observe() {}
-        disconnect() {}
-      };
-
 export const replaceRenderer = ({
   bodyComponent,
   replaceBodyHTMLString,
