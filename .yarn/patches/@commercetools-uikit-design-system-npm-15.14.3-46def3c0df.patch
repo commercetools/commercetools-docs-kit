@@ -1,0 +1,13 @@
+diff --git a/dist/commercetools-uikit-design-system.esm.js b/dist/commercetools-uikit-design-system.esm.js
+index c486e07ae802e275bee60c03b9f777347f45fbd7..6583ab083665fc5ecb2c2a54bf12f6bc8dfe5854 100644
+--- a/dist/commercetools-uikit-design-system.esm.js
++++ b/dist/commercetools-uikit-design-system.esm.js
+@@ -1365,7 +1365,7 @@ var allThemesNames = _Object$keys(themes);
+ var isBrowser = typeof window !== 'undefined';
+ 
+ var defaultParentSelector = function defaultParentSelector() {
+-  return document.querySelector(':root');
++  return isBrowser ? document.querySelector(':root') : null;
+ };
+ 
+ var applyTheme = function applyTheme(_ref) {

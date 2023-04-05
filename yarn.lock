@@ -3234,6 +3234,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@commercetools-uikit/design-system@patch:@commercetools-uikit/design-system@npm%3A15.14.3#./.yarn/patches/@commercetools-uikit-design-system-npm-15.14.3-46def3c0df.patch::locator=commercetools-docs-kit%40workspace%3A.":
+  version: 15.14.3
+  resolution: "@commercetools-uikit/design-system@patch:@commercetools-uikit/design-system@npm%3A15.14.3#./.yarn/patches/@commercetools-uikit-design-system-npm-15.14.3-46def3c0df.patch::version=15.14.3&hash=6c15ec&locator=commercetools-docs-kit%40workspace%3A."
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/hooks": 15.14.3
+    "@emotion/react": ^11.10.5
+    lodash: 4.17.21
+    prop-types: 15.8.1
+    react: 17.0.2
+  checksum: b9f4c614bdbf412615a0b615856aa8bfd0d00d262c1d6139f034c22a2f0813a8f1c16f17dc1e58dde29b4caf5387ce77c951b68c340eb7aeabe65aadf04120c7
+  languageName: node
+  linkType: hard
+
 "@commercetools-uikit/flat-button@npm:15.14.3":
   version: 15.14.3
   resolution: "@commercetools-uikit/flat-button@npm:15.14.3"

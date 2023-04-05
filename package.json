@@ -101,5 +101,8 @@
     "node": ">=18",
     "npm": ">=5"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.5.0",
+  "resolutions": {
+    "@commercetools-uikit/design-system@15.14.3": "patch:@commercetools-uikit/design-system@npm%3A15.14.3#./.yarn/patches/@commercetools-uikit-design-system-npm-15.14.3-46def3c0df.patch"
+  }
 }
