@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { UserFilledIcon } from '@commercetools-uikit/icons';
+import useEnrichedAuth0 from '../hooks/use-enriched-auth0';
 
 type LoginButtonProps = {
   label: string;
@@ -15,7 +15,7 @@ const defaultProps: Pick<LoginButtonProps, 'label' | 'icon'> = {
 };
 
 const LoginButton = (props: LoginButtonProps) => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect } = useEnrichedAuth0();
 
   const getTargetUrl = () => {
     let sectionUrl = '';
@@ -30,19 +30,22 @@ const LoginButton = (props: LoginButtonProps) => {
       : window.location.pathname;
   };
 
+  const handleOnClick = () => {
+    document.dispatchEvent(new CustomEvent('beforeAuth0LoginRedirect'));
+    loginWithRedirect({
+      appState: {
+        returnTo: getTargetUrl(),
+      },
+    });
+  };
+
   return (
     <SecondaryButton
       data-testid="login-button"
       {...props}
       label={props.label}
       iconLeft={props.icon}
-      onClick={() =>
-        loginWithRedirect({
-          appState: {
-            returnTo: getTargetUrl(),
-          },
-        })
-      }
+      onClick={handleOnClick}
     />
   );
 };

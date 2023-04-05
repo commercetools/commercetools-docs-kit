@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import md5 from 'md5';
 import { useSelect } from 'downshift';
 import styled from '@emotion/styled';
-import { useAuth0 } from '@auth0/auth0-react';
 import Avatar from '@commercetools-uikit/avatar';
 import Spacings from '@commercetools-uikit/spacings';
 import { designSystem } from '@commercetools-docs/ui-kit';
@@ -15,6 +14,7 @@ import {
   getLogoutReturnUrl,
 } from '../../../components/sso.utils';
 import CommercetoolsIDIcon from '../../../icons/commercetools_ID_logo.svg';
+import useEnrichedAuth0 from '../../../hooks/use-enriched-auth0';
 
 const AUTH0_CUSTOM_CLAIM_NS = 'https://docs.commercetools.com/';
 const AUTH0_CLAIM_DISPLAYNAME = `${AUTH0_CUSTOM_CLAIM_NS}display_name`;
@@ -125,6 +125,15 @@ const UserInformation = (props) => {
     items: Object.values(props.userData),
   });
 
+  const handleLogoutClick = () => {
+    document.dispatchEvent(new CustomEvent('beforeAuth0Logout'));
+    props.logout({
+      logoutParams: {
+        returnTo: getLogoutReturnUrl(learnApiBaseUrl, document.location),
+      },
+    });
+  };
+
   return (
     <AvatarContainer data-test-id="avatar-container">
       <AvatarButton {...getToggleButtonProps()}>
@@ -152,16 +161,7 @@ const UserInformation = (props) => {
             <LogoutSection>
               <LogoutButton
                 data-test-id="avatar-menu-logout"
-                onClick={() =>
-                  props.logout({
-                    logoutParams: {
-                      returnTo: getLogoutReturnUrl(
-                        learnApiBaseUrl,
-                        document.location
-                      ),
-                    },
-                  })
-                }
+                onClick={handleLogoutClick}
               >
                 <MenuItem type="secondary">Logout</MenuItem>
               </LogoutButton>
@@ -176,8 +176,9 @@ const UserInformation = (props) => {
 UserInformation.displayName = 'UserInformation';
 
 const UserProfile = () => {
-  const { isAuthenticated, logout, getIdTokenClaims } = useAuth0();
+  const { isAuthenticated, logout, getIdTokenClaims } = useEnrichedAuth0();
   const [customClaims, setCustomClaims] = useState({});
+
   useEffect(() => {
     const fetchCustomClaims = async () => {
       try {
