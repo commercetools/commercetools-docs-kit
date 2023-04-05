@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { LogoutIcon } from '@commercetools-uikit/icons';
 import { getLogoutReturnUrl } from './sso.utils';
 import ConfigContext from './config-context';
+import useEnrichedAuth0 from '../hooks/use-enriched-auth0';
+import type { LogoutOptions } from '@auth0/auth0-react';
 
 type LogoutButtonProps = {
   label: string;
@@ -17,7 +18,12 @@ const defaultProps: Pick<LogoutButtonProps, 'label' | 'icon'> = {
 
 const LogoutButton = (props: LogoutButtonProps) => {
   const { learnApiBaseUrl } = useContext(ConfigContext);
-  const { logout } = useAuth0();
+  const { logout } = useEnrichedAuth0();
+  // clean SWR local storage cache on logout
+  const cleanCacheLogout = (options: LogoutOptions | undefined) => {
+    localStorage?.removeItem('app-cache');
+    logout(options);
+  };
 
   return (
     <SecondaryButton
@@ -25,7 +31,7 @@ const LogoutButton = (props: LogoutButtonProps) => {
       label={props.label}
       iconLeft={props.icon}
       onClick={() =>
-        logout({
+        cleanCacheLogout({
           logoutParams: {
             returnTo: getLogoutReturnUrl(learnApiBaseUrl, document.location),
           },
