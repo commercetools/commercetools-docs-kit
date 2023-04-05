@@ -43,16 +43,5 @@ export const useCourseInfoByPageSlugs = (pageSlugs) => {
     (prev, curr) => ({ ...prev, [curr]: coursePageMap.get(curr) }),
     {}
   );
-  // sanity check: all the pages should belong to the same course, therefore have the same courseId
-  const isOk = Object.values(courseInfo)?.every(
-    (info, _, theArray) => info?.courseId === theArray[0]?.courseId
-  );
-  if (!isOk) {
-    // TODO: decide if we want to make this blocker
-    console.warn(
-      'pages belonging to the same course have different courseId metadata',
-      courseInfo
-    );
-  }
   return courseInfo;
 };
