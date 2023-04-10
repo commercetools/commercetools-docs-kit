@@ -34,3 +34,12 @@ export { default as markdownFragmentToReact } from './utils/markdown-fragment-to
 // hooks
 export { default as useISO310NumberFormatter } from './hooks/use-iso310-number-formatter';
 export { default as useLazyLoad } from './hooks/use-lazy-load';
+export { default as useModalState } from './hooks/use-modal-state';
+
+// dialogs
+export { default as FormDialog } from './components/dialogs/form-dialog';
+export { default as ConfirmationDialog } from './components/dialogs/confirmation-dialog';
+export { default as InfoDialog } from './components/dialogs/info-dialog';
+
+// portals container
+export { default as PortalsContainer } from './components/portals-container';

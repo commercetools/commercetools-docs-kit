@@ -1,6 +1,7 @@
 import React from 'react';
 import ConfigContext from './src/components/config-context';
 import { PortalsContainer } from '@commercetools-docs/ui-kit';
+import { css } from '@emotion/react';
 
 export const wrapRootElement = ({ element }, pluginOptions) => {
   return (
