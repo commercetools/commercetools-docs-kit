@@ -5,15 +5,6 @@ import DialogContent from '../internals/dialog-content';
 import DialogFooter from '../internals/dialog-footer';
 import DialogHeader from '../internals/dialog-header';
 
-// NOTE: the `MessageDescriptor` type is exposed by `react-intl`.
-// However, we need to explicitly define this otherwise the prop-types babel plugin
-// does not recognize the object shape.
-type MessageDescriptor = {
-  id: string;
-  description?: string | object;
-  defaultMessage?: string;
-};
-type Label = string | MessageDescriptor;
 type Props = {
   isOpen: boolean;
   onClose?: (event: SyntheticEvent) => void;
@@ -21,15 +12,16 @@ type Props = {
   size?: 'm' | 'l' | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 'scale';
   zIndex?: number;
   children: ReactNode;
-  labelSecondary: Label;
-  labelPrimary: Label;
+  labelSecondary?: string;
+  labelPrimary: string;
   isPrimaryButtonDisabled?: boolean;
-  onSecondaryButtonClick: (event: SyntheticEvent) => void;
+  onSecondaryButtonClick?: (event: SyntheticEvent) => void;
   onPrimaryButtonClick: (event: SyntheticEvent) => void;
   dataAttributesSecondaryButton?: { [key: string]: string };
   dataAttributesPrimaryButton?: { [key: string]: string };
   getParentSelector?: () => HTMLElement;
   iconLeftSecondaryButton?: ReactElement;
+  displaySecondaryButton?: boolean;
 };
 const defaultProps: Pick<Props, 'labelSecondary' | 'labelPrimary'> = {
   labelSecondary: 'Cancel',
@@ -48,7 +40,7 @@ const FormDialog = (props: Props) => (
     <DialogHeader title={props.title} onClose={props.onClose} />
     <DialogContent>{props.children}</DialogContent>
     <DialogFooter
-      labelSecondary={props.labelSecondary}
+      labelSecondary={props.labelSecondary || ''}
       labelPrimary={props.labelPrimary}
       isPrimaryButtonDisabled={props.isPrimaryButtonDisabled}
       onCancel={props.onSecondaryButtonClick}
@@ -56,6 +48,7 @@ const FormDialog = (props: Props) => (
       dataAttributesSecondaryButton={props.dataAttributesSecondaryButton}
       dataAttributesPrimaryButton={props.dataAttributesPrimaryButton}
       iconLeftSecondaryButton={props.iconLeftSecondaryButton}
+      displaySecondaryButton={props.displaySecondaryButton}
     />
   </DialogContainer>
 );
