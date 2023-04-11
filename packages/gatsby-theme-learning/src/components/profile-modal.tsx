@@ -2,9 +2,10 @@ import { useFormik } from 'formik';
 import TextField from '@commercetools-uikit/text-field';
 import TextInput from '@commercetools-uikit/text-input';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { FormDialog } from '@commercetools-docs/ui-kit';
-import { useContext } from 'react';
-import { EProfileState, LearningContext } from './learning-context';
+import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
+import { useContext, useEffect } from 'react';
+import { LearningContext } from './learning-context';
+import type { User } from '@auth0/auth0-react';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -12,8 +13,18 @@ export type TProfileFormValues = {
   company: string;
 };
 
+const isProfileComplete = (userData: User): boolean =>
+  userData.given_name &&
+  userData.given_name !== '' &&
+  userData.family_name &&
+  userData.family_name !== '' &&
+  userData?.user_metadata?.company &&
+  userData.user_metadata.company !== '';
+
 const ProfileModal = () => {
-  const { user } = useContext(LearningContext);
+  const {
+    user: { profile },
+  } = useContext(LearningContext);
   const formik = useFormik<TProfileFormValues>({
     initialValues: {
       firstName: '',
@@ -38,6 +49,14 @@ const ProfileModal = () => {
     },
   });
 
+  const { closeModal, openModal, isModalOpen } = useModalState();
+
+  useEffect(() => {
+    if (profile) {
+      isProfileComplete(profile) ? closeModal() : openModal();
+    }
+  }, [profile]);
+
   const renderError = (errorKey: string) => {
     if (errorKey === 'missing') {
       return 'Required field.';
@@ -49,7 +68,7 @@ const ProfileModal = () => {
     <FormDialog
       title="Tell us a bit about yourself"
       labelPrimary="Save"
-      isOpen={user.profileState === EProfileState.INCOMPLETE}
+      isOpen={isModalOpen}
       isPrimaryButtonDisabled={
         !(formik.isValid && formik.dirty) || formik.isSubmitting
       }

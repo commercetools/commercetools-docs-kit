@@ -1,3 +1,4 @@
+import { User } from '@auth0/auth0-react';
 import { createContext, useReducer } from 'react';
 import type { ReactNode } from 'react';
 
@@ -9,29 +10,28 @@ export enum EProfileState {
 
 export type LearningState = {
   user: {
-    profileState: EProfileState;
+    profile: User | undefined;
   };
-  updateProfileState: (status: EProfileState) => void;
+  updateProfile: (userProfile: User) => void;
 };
 
 enum LearningActionKind {
-  UPDATE_PROFILE_STATE = 'UPDATE_PROFILE_STATE',
+  UPDATE_PROFILE = 'UPDATE_PROFILE',
 }
 
 interface LearningAction {
   type: LearningActionKind;
-  payload: string;
+  payload: User;
 }
 
 const initialState: LearningState = {
   user: {
-    profileState: EProfileState.UNKNOW,
+    profile: undefined,
   },
-  updateProfileState: (status) => null,
+  updateProfile: (profile) => null,
 };
 
 export const LearningContext = createContext(initialState);
-LearningContext.displayName = 'LearningContext';
 
 type LearningProviderProps = {
   children: ReactNode;
@@ -42,10 +42,10 @@ export const LearningStateProvider = ({ children }: LearningProviderProps) => {
 
   const value = {
     ...state,
-    updateProfileState: (status: EProfileState) => {
+    updateProfile: (profile: User) => {
       dispatch({
-        type: LearningActionKind.UPDATE_PROFILE_STATE,
-        payload: status,
+        type: LearningActionKind.UPDATE_PROFILE,
+        payload: profile,
       });
     },
   };
@@ -62,12 +62,12 @@ function learningReducer(
   action: LearningAction
 ): LearningState {
   switch (action.type) {
-    case LearningActionKind.UPDATE_PROFILE_STATE: {
+    case LearningActionKind.UPDATE_PROFILE: {
       return {
         ...state,
         user: {
           ...state.user,
-          profileState: action.payload as unknown as EProfileState,
+          profile: action.payload,
         },
       };
     }
