@@ -6,6 +6,8 @@ import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
 import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
 import type { User } from '@auth0/auth0-react';
+import { useAuthToken } from '../hooks/use-auth-token';
+import ConfigContext from './config-context';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -25,11 +27,13 @@ const ProfileModal = () => {
   const {
     user: { profile },
   } = useContext(LearningContext);
+  const { auth0Domain } = useContext(ConfigContext);
+  const { getAuthToken } = useAuthToken();
   const formik = useFormik<TProfileFormValues>({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      company: '',
+      firstName: profile?.given_name || '',
+      lastName: profile?.family_name || '',
+      company: profile?.user_metadata?.company || '',
     },
     validate: (formikValues) => {
       const missingFields: Record<string, { missing: boolean }> = {};
@@ -45,7 +49,28 @@ const ProfileModal = () => {
       return missingFields;
     },
     onSubmit: async (formikValues: TProfileFormValues) => {
-      // Do something async
+      const userPatchBody = {
+        family_name: formikValues.lastName,
+        given_name: formikValues.firstName,
+        user_metadata: {
+          company: formikValues.company,
+        },
+      };
+      // TODO: implement once the new endpoint will be available
+      // const authToken = await getAuthToken();
+      // const getUserApiEndpoint = `https://${auth0Domain}/api/v2/users/${profile?.user_id}`;
+      // const data = await fetch(getUserApiEndpoint, {
+      //   method: 'PATCH',
+      //   body: JSON.stringify(userPatchBody),
+      //   headers: {
+      //     Accept: 'application/json',
+      //     Authorization: `Bearer ${authToken}`,
+      //     'Content-Type': 'application/json',
+      //   },
+      // });
+      // const userData = (await data.json()) as User;
+      // console.log('userData', userData)
+      // updateProfile(userData);
     },
   });
 

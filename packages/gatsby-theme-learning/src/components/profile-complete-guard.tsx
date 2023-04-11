@@ -13,7 +13,7 @@ export type TProfileFormValues = {
 
 const ProfileModalGuard = () => {
   const { isAuthenticated, user } = useAuth0();
-  const { getAuthToken } = useAuthToken('user');
+  const { getAuthToken } = useAuthToken();
   const { auth0Domain } = useContext(ConfigContext);
   const { updateProfile } = useContext(LearningContext);
 
