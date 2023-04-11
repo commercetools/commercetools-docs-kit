@@ -2,7 +2,9 @@ import { useFormik } from 'formik';
 import TextField from '@commercetools-uikit/text-field';
 import TextInput from '@commercetools-uikit/text-input';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
+import { FormDialog } from '@commercetools-docs/ui-kit';
+import { useContext } from 'react';
+import { EProfileState, LearningContext } from './learning-context';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -11,7 +13,7 @@ export type TProfileFormValues = {
 };
 
 const ProfileModal = () => {
-  const formModalState = useModalState();
+  const { user } = useContext(LearningContext);
   const formik = useFormik<TProfileFormValues>({
     initialValues: {
       firstName: '',
@@ -47,7 +49,7 @@ const ProfileModal = () => {
     <FormDialog
       title="Tell us a bit about yourself"
       labelPrimary="Save"
-      isOpen={true}
+      isOpen={user.profileState === EProfileState.INCOMPLETE}
       isPrimaryButtonDisabled={
         !(formik.isValid && formik.dirty) || formik.isSubmitting
       }

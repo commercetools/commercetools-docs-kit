@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import {
+  LearningStateProvider,
+  ProfileModalGuard,
+} from '@commercetools-docs/gatsby-theme-learning';
+import ProfileModal from '@commercetools-docs/gatsby-theme-learning/src/components/profile-modal';
 
 /* NOTE: `overflow` shorthand is only supported is Chrome and FF */
 const Root = styled.div`
@@ -43,14 +48,18 @@ const Container = styled.div`
 
 const LayoutApplication = (props) => (
   <>
-    <Root
-      role="application"
-      id="application"
-      isGlobalNotificationVisible={Boolean(props.globalNotification)}
-    >
-      <Container {...props} />
-    </Root>
-    <div id="modal-portal" />
+    <LearningStateProvider>
+      <Root
+        role="application"
+        id="application"
+        isGlobalNotificationVisible={Boolean(props.globalNotification)}
+      >
+        <Container {...props} />
+      </Root>
+      <ProfileModalGuard />
+      <ProfileModal />
+      <div id="modal-portal" />
+    </LearningStateProvider>
   </>
 );
 LayoutApplication.propTypes = {

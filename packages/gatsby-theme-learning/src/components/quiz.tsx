@@ -10,7 +10,6 @@ import { useSubmitAttempt } from '../hooks/use-submit-attempt';
 import QuizForm from './quiz-form';
 import type { PassthroughData, SubmissionAttempt } from './quiz.types';
 import { canUseDOM, getQuizOutcome, isTestUserEmail } from './quiz.utils';
-import ProfileModal from './profile-modal';
 
 export const OUTCOME_CORRECT = 'correct';
 export const OUTCOME_INCORRECT = 'incorrect';
@@ -242,7 +241,6 @@ const Quiz = (props: QuizProps) => {
       outcome={getQuizOutcome(formAttemptData, isLoading)}
     >
       <QuizArea />
-      <ProfileModal />
     </QuizWrapper>
   );
 };
