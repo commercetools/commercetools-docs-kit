@@ -2941,7 +2941,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     "@mdx-js/react": 1.6.22
     "@types/react": 18.0.28
-    formik: ^2.2.9
+    formik: 2.2.9
     react: 18.2.0
     react-dom: 18.2.0
     react-intersection-observer: 9.4.3
@@ -17154,7 +17154,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formik@npm:^2.2.9":
+"formik@npm:2.2.9":
   version: 2.2.9
   resolution: "formik@npm:2.2.9"
   dependencies:
