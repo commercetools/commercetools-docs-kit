@@ -11,6 +11,7 @@ const defineRamlType = ({ schema, createTypes }) => {
         discriminatorValue: 'String',
         displayName: 'String',
         enumDescriptions: '[RamlTypeEnumDescription!]',
+        enumGroups: '[RamlTypeEnumGroup!]',
         enumeration: '[String!]',
         examples: '[RamlExample!]',
         oneOf: '[String!]',
@@ -25,6 +26,13 @@ const defineRamlType = ({ schema, createTypes }) => {
     }),
     schema.buildObjectType({
       name: 'RamlTypeEnumDescription',
+      fields: {
+        name: 'String!',
+        description: 'String!',
+      },
+    }),
+    schema.buildObjectType({
+      name: 'RamlTypeEnumGroup',
       fields: {
         name: 'String!',
         description: 'String!',

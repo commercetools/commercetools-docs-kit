@@ -23,6 +23,10 @@ export const useApiTypes = () => {
               name
               description
             }
+            enumGroups {
+              name
+              description
+            }
             enumeration
             examples {
               name
