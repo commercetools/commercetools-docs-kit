@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 21.2.0
+
+### Minor Changes
+
+- [#1612](https://github.com/commercetools/commercetools-docs-kit/pull/1612) [`81a583d4`](https://github.com/commercetools/commercetools-docs-kit/commit/81a583d400a852a8035750786a06d04262b52bbd) Thanks [@timonrey](https://github.com/timonrey)! - Enums can now be part of an enum group with descriptions.
+
+### Patch Changes
+
+- Updated dependencies [[`81a583d4`](https://github.com/commercetools/commercetools-docs-kit/commit/81a583d400a852a8035750786a06d04262b52bbd)]:
+  - @commercetools-docs/gatsby-transformer-raml@13.5.0
+
 ## 21.1.4
 
 ### Patch Changes
