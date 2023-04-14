@@ -49,16 +49,31 @@ types:
     (annotations.enumDescriptions):
       enumValue1: description 1
       enumValue2: description 2
+      enumValue3: description 3
       enumWithMarkdownDescription: |
         `inline-code` should be formatted as an inline code. [ObjectTestType](/types/general#objecttesttype) should link to the header of the definition of `ObjectTestType` on this website - `api-docs-smoke-test`. [Links](/../docs-smoke-test/views/markdown#links) should link to the header for the definition of  `Links` on `docs-smoke-test` microsite.
     enum:
       - enumValue1
       - enumValue2
+      - enumValue3
       - enumWithoutDescription
       - enumWithMarkdownDescription
-  EnumGroupExample1:
-    description: Example enumeration for the SetOfEnumTestTypes type.
+  EnumWithGroupsExample:
+    description: Enum with agreed upon description annotation.
     type: string
+    (annotations.enumDescriptions):
+      enumValue1: description 1
+      enumValue2: description 2
+      enumValue3: description 3
+      enumValue4: description 4
+      enumValue5: description 5
+      enumValue6: description 6
+      enumValue7: description 7
+      enumValue8: description 8
+      enumValue9: description 9
+      enumValue10: description 10
+      enumWithMarkdownDescription: |
+        `inline-code` should be formatted as an inline code. [ObjectTestType](/types/general#objecttesttype) should link to the header of the definition of `ObjectTestType` on this website - `api-docs-smoke-test`. [Links](/../docs-smoke-test/views/markdown#links) should link to the header for the definition of  `Links` on `docs-smoke-test` microsite.
     enum:
       - enumValue1
       - enumValue2
@@ -67,44 +82,21 @@ types:
       - enumValue5
       - enumValue6
       - enumValue7
-    (annotations.enumGroups):
-      enumValue1: |
-        description of enumValue1
-      enumValue2: |
-        description of enumValue2. `inline-code` should be formatted as an inline code.
-      enumValue3: |
-        description of enumValue3
-      enumValue4: |
-        description of enumValue4
-      enumValue5: |
-        description of enumValue5
-      enumValue6: |
-        description of enumValue6
-      enumValue7: |
-        description of enumValue7
-  EnumGroupExample2:
-    description: Example enumeration for the SetOfEnumTestTypes type.
-    type: string
-    enum:
       - enumValue8
       - enumValue9
       - enumValue10
-      - enumValue11
-      - enumValue12
-      - enumValue13
-      - enumValue14
+      - enumWithoutDescription
+      - enumWithMarkdownDescription
     (annotations.enumGroups):
-      enumValue8: |
-        description of enumValue8
-      enumValue9: |
-        description of enumValue9. `inline-code` should be formatted as an inline code.
-      enumValue10: |
-        description of enumValue10
-      enumValue11: |
-        description of enumValue11
-      enumValue12: |
-        description of enumValue12
-      enumValue13: |
-        description of enumValue13
-      enumValue14: |
-        description of enumValue14
+      enumValue1: Group 1
+      enumValue2: Group 2
+      enumValue3: Group 3
+      enumValue4: Group 3
+      enumValue5: Group 2
+      enumValue6: Group 2
+      enumValue7: Group 1
+      enumValue8: Group 3
+      enumValue9: Group 2
+      enumValue10: Group 2
+      enumWithoutDescription: Group 2
+      enumWithMarkdownDescription: Group 1

@@ -17,6 +17,72 @@ const Enum = ({
       'Must pass values props to Enum component --- <Enum values={<Array>} />.'
     );
   }
+
+  if (enumGroups) {
+    let groupList = enumGroups.reduce((list, group) => {
+      if (!Object.keys(list).includes(group.description)) {
+        return { ...list, [group.description]: [] };
+      }
+      return { ...list };
+    }, {});
+
+    enumGroups.forEach((enumValue) => {
+      groupList[enumValue.description].push(enumValue.name);
+      groupList[enumValue.description].sort();
+    });
+
+    return (
+      <div aria-label={`${displayName} definition`} id={anchor}>
+        <SpacingsStack scale="m">
+          {description && (
+            <DescriptionParagraph>{description}</DescriptionParagraph>
+          )}
+          <Markdown.Dl>
+            <SpacingsStack scale="l">
+              {Object.keys(groupList).map((groupName) => {
+                return (
+                  <div key={groupName}>
+                    <Markdown.Dl>
+                      <Markdown.H4>{groupName}</Markdown.H4>
+                      {values &&
+                        groupList[groupName].map((value) => {
+                          console.log(groupList[groupName]);
+                          const enumDescription =
+                            enumDescriptions &&
+                            enumDescriptions.find(
+                              (enumDesc) => enumDesc.name === value
+                            );
+                          return (
+                            <React.Fragment key={value}>
+                              <Markdown.Dt>
+                                <Markdown.InlineCode>
+                                  {value}
+                                </Markdown.InlineCode>
+                              </Markdown.Dt>
+                              {enumDescription &&
+                                enumDescription.description && (
+                                  <Markdown.Dd>
+                                    <DescriptionText
+                                      markdownString={
+                                        enumDescription.description
+                                      }
+                                    />
+                                  </Markdown.Dd>
+                                )}
+                            </React.Fragment>
+                          );
+                        })}
+                    </Markdown.Dl>
+                  </div>
+                );
+              })}
+            </SpacingsStack>
+          </Markdown.Dl>{' '}
+        </SpacingsStack>
+      </div>
+    );
+  }
+
   return (
     <div aria-label={`${displayName} definition`} id={anchor}>
       <SpacingsStack scale="m">
@@ -26,22 +92,20 @@ const Enum = ({
         <Markdown.Dl>
           {values &&
             values.map((value) => {
-              const enumValue =
-                (enumDescriptions &&
-                  enumDescriptions.find(
-                    (enumDesc) => enumDesc.name === value
-                  )) ||
-                (enumGroups &&
-                  enumGroups.find((enumGr) => enumGr.name === value));
+              const enumDescription =
+                enumDescriptions &&
+                enumDescriptions.find((enumDesc) => enumDesc.name === value);
 
               return (
                 <React.Fragment key={value}>
                   <Markdown.Dt>
                     <Markdown.InlineCode>{value}</Markdown.InlineCode>
                   </Markdown.Dt>
-                  {enumValue && enumValue.description && (
+                  {enumDescription && enumDescription.description && (
                     <Markdown.Dd>
-                      <DescriptionText markdownString={enumValue.description} />
+                      <DescriptionText
+                        markdownString={enumDescription.description}
+                      />
                     </Markdown.Dd>
                   )}
                 </React.Fragment>
