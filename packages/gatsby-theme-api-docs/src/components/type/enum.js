@@ -39,43 +39,45 @@ const Enum = ({
           )}
           <Markdown.Dl>
             <SpacingsStack scale="l">
-              {Object.keys(groupList).map((groupName) => {
-                return (
-                  <div key={groupName}>
-                    <Markdown.Dl>
-                      <Markdown.H4>{groupName}</Markdown.H4>
-                      {values &&
-                        groupList[groupName].map((value) => {
-                          console.log(groupList[groupName]);
-                          const enumDescription =
-                            enumDescriptions &&
-                            enumDescriptions.find(
-                              (enumDesc) => enumDesc.name === value
+              {Object.keys(groupList)
+                .sort()
+                .map((groupName) => {
+                  return (
+                    <div key={groupName}>
+                      <Markdown.Dl>
+                        <Markdown.H4>{groupName}</Markdown.H4>
+                        {values &&
+                          groupList[groupName].map((value) => {
+                            console.log(groupList[groupName]);
+                            const enumDescription =
+                              enumDescriptions &&
+                              enumDescriptions.find(
+                                (enumDesc) => enumDesc.name === value
+                              );
+                            return (
+                              <React.Fragment key={value}>
+                                <Markdown.Dt>
+                                  <Markdown.InlineCode>
+                                    {value}
+                                  </Markdown.InlineCode>
+                                </Markdown.Dt>
+                                {enumDescription &&
+                                  enumDescription.description && (
+                                    <Markdown.Dd>
+                                      <DescriptionText
+                                        markdownString={
+                                          enumDescription.description
+                                        }
+                                      />
+                                    </Markdown.Dd>
+                                  )}
+                              </React.Fragment>
                             );
-                          return (
-                            <React.Fragment key={value}>
-                              <Markdown.Dt>
-                                <Markdown.InlineCode>
-                                  {value}
-                                </Markdown.InlineCode>
-                              </Markdown.Dt>
-                              {enumDescription &&
-                                enumDescription.description && (
-                                  <Markdown.Dd>
-                                    <DescriptionText
-                                      markdownString={
-                                        enumDescription.description
-                                      }
-                                    />
-                                  </Markdown.Dd>
-                                )}
-                            </React.Fragment>
-                          );
-                        })}
-                    </Markdown.Dl>
-                  </div>
-                );
-              })}
+                          })}
+                      </Markdown.Dl>
+                    </div>
+                  );
+                })}
             </SpacingsStack>
           </Markdown.Dl>{' '}
         </SpacingsStack>
