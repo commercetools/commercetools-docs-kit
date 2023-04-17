@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import { CircleIcon, VerifiedIcon } from '@commercetools-uikit/icons';
 import {
   getCourseStatusByCourseId,
@@ -14,7 +13,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 
 const UnknownStateSpacer = styled.div`
   width: ${designSystem.dimensions.spacings.l};
-  margin-left: 2px;
+  margin-left: 5px;
 `;
 
 type StatusIndicatorProps = {
@@ -38,7 +37,6 @@ type SidebarCourseStatusProps = {
 };
 
 const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
-  const { isAuthenticated } = useAuth0();
   const { data } = useFetchCourses();
   const { features } = useContext(ConfigContext);
 
@@ -50,13 +48,7 @@ const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   const courseStatus = data?.result?.enrolledCourses
     ? getCourseStatusByCourseId(data.result.enrolledCourses, props.courseId)
     : undefined;
-  return (
-    <>
-      {props.courseId && isAuthenticated && (
-        <StatusIndicator status={courseStatus} />
-      )}
-    </>
-  );
+  return <>{props.courseId && <StatusIndicator status={courseStatus} />}</>;
 };
 
 export default SidebarCourseStatus;

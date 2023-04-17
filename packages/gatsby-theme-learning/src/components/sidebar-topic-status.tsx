@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { CheckActiveIcon, CircleIcon } from '@commercetools-uikit/icons';
-import { useAuth0 } from '@auth0/auth0-react';
 import {
   useFetchCourseDetails,
   getTopicStatusByPageTitle,
@@ -38,7 +37,6 @@ type PageTopicStatusProps = {
 };
 
 const SidebarTopicStatus = (props: PageTopicStatusProps) => {
-  const { isAuthenticated } = useAuth0();
   const { data } = useFetchCourseDetails(props.courseId);
   const { features } = useContext(ConfigContext);
 
@@ -51,10 +49,7 @@ const SidebarTopicStatus = (props: PageTopicStatusProps) => {
     ? getTopicStatusByPageTitle(data.result.topics, props.pageTitle)
     : undefined;
 
-  return (
-    props.courseId &&
-    isAuthenticated && <StatusIndicator status={topicStatus} />
-  );
+  return props.courseId && <StatusIndicator status={topicStatus} />;
 };
 
 export default SidebarTopicStatus;
