@@ -39,8 +39,9 @@ const SignUpButton = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 4px 16px;
-  gap: 8px;
+  padding: ${designSystem.dimensions.spacings.xs}
+    ${designSystem.dimensions.spacings.m};
+  gap: ${designSystem.dimensions.spacings.s};
   color: white;
   cursor: pointer;
   background: ${designSystem.colors.light.link};
