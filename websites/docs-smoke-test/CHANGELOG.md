@@ -1,5 +1,17 @@
 # @commercetools-website/docs-smoke-test
 
+## 7.2.0
+
+### Minor Changes
+
+- [#1592](https://github.com/commercetools/commercetools-docs-kit/pull/1592) [`4e914871`](https://github.com/commercetools/commercetools-docs-kit/commit/4e914871ce74bd842d404f20a0446ede6ac39727) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add course status indicator logic for sidebar and course pages
+
+### Patch Changes
+
+- Updated dependencies [[`4e914871`](https://github.com/commercetools/commercetools-docs-kit/commit/4e914871ce74bd842d404f20a0446ede6ac39727)]:
+  - @commercetools-docs/gatsby-theme-learning@21.2.0
+  - @commercetools-docs/gatsby-theme-docs@21.2.0
+
 ## 7.1.4
 
 ### Patch Changes

@@ -1,9 +1,12 @@
-import doRecursion  from "./utils/type/do-recursion.mjs";
-import sortProperties  from "./utils/sort-properties.mjs";
-import resolveConflictingFieldTypes  from "./utils/type/resolve-conflicting-field-types.mjs";
-import generateType  from "./utils/type/generate-type.mjs";
-import generateBuiltinType  from "./utils/type/generate-built-in-type.mjs";
-import {examplesToArray, resolveExampleFile}  from "./utils/resource/examples-to-array.mjs";
+import doRecursion from './utils/type/do-recursion.mjs';
+import sortProperties from './utils/sort-properties.mjs';
+import resolveConflictingFieldTypes from './utils/type/resolve-conflicting-field-types.mjs';
+import generateType from './utils/type/generate-type.mjs';
+import generateBuiltinType from './utils/type/generate-built-in-type.mjs';
+import {
+  examplesToArray,
+  resolveExampleFile,
+} from './utils/resource/examples-to-array.mjs';
 
 function createTypeNode({
   apiKey,
@@ -60,8 +63,11 @@ function postProcessType({
     fileNode.dir,
     resolveExampleFile
   );
-  postProcessedType.enumDescriptions = enumDescriptionsToArray(
+  postProcessedType.enumDescriptions = enumValuesToArray(
     postProcessedType.enumDescriptions
+  );
+  postProcessedType.enumGroups = enumValuesToArray(
+    postProcessedType.enumGroups
   );
 
   return postProcessedType;
@@ -107,9 +113,9 @@ function propertiesToArrays(properties) {
   });
 }
 
-function enumDescriptionsToArray(enumDescriptions) {
-  if (enumDescriptions) {
-    return Object.entries(enumDescriptions).map(([key, value]) => {
+function enumValuesToArray(enumValue) {
+  if (enumValue) {
+    return Object.entries(enumValue).map(([key, value]) => {
       return { name: key, description: value };
     });
   }
