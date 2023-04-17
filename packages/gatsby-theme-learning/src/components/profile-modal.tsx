@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { useFormik, useFormikContext } from 'formik';
 import TextField from '@commercetools-uikit/text-field';
 import TextInput from '@commercetools-uikit/text-input';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -32,9 +32,9 @@ const ProfileModal = () => {
   });
   const formik = useFormik<TProfileFormValues>({
     initialValues: {
-      firstName: profile?.given_name || '',
-      lastName: profile?.family_name || '',
-      company: profile?.user_metadata?.company || '',
+      firstName: '',
+      lastName: '',
+      company: '',
     },
     validate: (formikValues) => {
       const missingFields: Record<string, { missing: boolean }> = {};
@@ -64,6 +64,9 @@ const ProfileModal = () => {
   useEffect(() => {
     if (profile) {
       isProfileComplete(profile) ? closeModal() : openModal();
+      formik.setFieldValue('firstName', profile?.given_name);
+      formik.setFieldValue('lastName', profile?.family_name);
+      formik.setFieldValue('company', profile?.user_metadata?.company);
     }
   }, [profile]);
 
