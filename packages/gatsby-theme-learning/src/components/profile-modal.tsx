@@ -6,8 +6,7 @@ import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
 import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
 import type { User } from '@auth0/auth0-react';
-import { useAuthToken } from '../hooks/use-auth-token';
-import ConfigContext from './config-context';
+import { useUpdateUser } from '../hooks/use-update-user';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -26,9 +25,11 @@ const isProfileComplete = (userData: User): boolean =>
 const ProfileModal = () => {
   const {
     user: { profile },
+    updateProfile,
   } = useContext(LearningContext);
-  const { auth0Domain } = useContext(ConfigContext);
-  const { getAuthToken } = useAuthToken();
+  const { performUpdateUser, isLoading, updatedUser } = useUpdateUser({
+    userId: profile?.user_id || '',
+  });
   const formik = useFormik<TProfileFormValues>({
     initialValues: {
       firstName: profile?.given_name || '',
@@ -49,28 +50,12 @@ const ProfileModal = () => {
       return missingFields;
     },
     onSubmit: async (formikValues: TProfileFormValues) => {
-      const userPatchBody = {
+      const updatedUserBody = {
         family_name: formikValues.lastName,
         given_name: formikValues.firstName,
-        user_metadata: {
-          company: formikValues.company,
-        },
+        company: formikValues.company,
       };
-      // TODO: implement once the new endpoint will be available
-      // const authToken = await getAuthToken();
-      // const getUserApiEndpoint = `https://${auth0Domain}/api/v2/users/${profile?.user_id}`;
-      // const data = await fetch(getUserApiEndpoint, {
-      //   method: 'PATCH',
-      //   body: JSON.stringify(userPatchBody),
-      //   headers: {
-      //     Accept: 'application/json',
-      //     Authorization: `Bearer ${authToken}`,
-      //     'Content-Type': 'application/json',
-      //   },
-      // });
-      // const userData = (await data.json()) as User;
-      // console.log('userData', userData)
-      // updateProfile(userData);
+      performUpdateUser(updatedUserBody);
     },
   });
 
@@ -81,6 +66,13 @@ const ProfileModal = () => {
       isProfileComplete(profile) ? closeModal() : openModal();
     }
   }, [profile]);
+
+  useEffect(() => {
+    console.log('updateUser', updatedUser);
+    if (updatedUser) {
+      updateProfile(updatedUser);
+    }
+  }, [updatedUser]);
 
   const renderError = (errorKey: string) => {
     if (errorKey === 'missing') {
@@ -95,7 +87,7 @@ const ProfileModal = () => {
       labelPrimary="Save"
       isOpen={isModalOpen}
       isPrimaryButtonDisabled={
-        !(formik.isValid && formik.dirty) || formik.isSubmitting
+        !(formik.isValid && formik.dirty) || formik.isSubmitting || isLoading
       }
       displaySecondaryButton={false}
       onPrimaryButtonClick={

@@ -178,3 +178,6 @@ type AnswerOption = {
  * If the single question outcome is correct or incorrect
  */
 type Outcome = 'correct' | 'incorrect';
+
+// POST /users/{user-id}  -> for auth0 user updates
+export type Auth0UserProfile = User;
