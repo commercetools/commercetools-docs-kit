@@ -1,4 +1,4 @@
-import { useFormik, useFormikContext } from 'formik';
+import { useFormik } from 'formik';
 import TextField from '@commercetools-uikit/text-field';
 import TextInput from '@commercetools-uikit/text-input';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -86,6 +86,7 @@ const ProfileModal = () => {
 
   return (
     <FormDialog
+      size="m"
       title="Tell us a bit about yourself"
       labelPrimary="Save"
       isOpen={isModalOpen}
