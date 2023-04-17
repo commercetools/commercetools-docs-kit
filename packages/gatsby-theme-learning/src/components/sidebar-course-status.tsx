@@ -9,17 +9,29 @@ import ConfigContext, {
   isFeatureEnabled,
   EFeatureFlag,
 } from './config-context';
+import styled from '@emotion/styled';
+import { designSystem } from '@commercetools-docs/ui-kit';
+
+const UnknownStateSpacer = styled.div`
+  width: ${designSystem.dimensions.spacings.l};
+  margin-left: 2px;
+`;
 
 type StatusIndicatorProps = {
   status?: string;
 };
 
-export const StatusIndicator = (props: StatusIndicatorProps) =>
-  props.status && props.status === 'completed' ? (
-    <VerifiedIcon color="primary" size="big" />
-  ) : (
-    <CircleIcon color="neutral60" size="big" />
-  );
+export const StatusIndicator = (props: StatusIndicatorProps) => {
+  console.log(props.status);
+  switch (props.status) {
+    case 'completed':
+      return <VerifiedIcon color="primary" size="big" />;
+    case 'inProgress':
+      return <CircleIcon color="neutral60" size="big" />;
+    default:
+      return <UnknownStateSpacer />;
+  }
+};
 
 type SidebarCourseStatusProps = {
   courseId: number;

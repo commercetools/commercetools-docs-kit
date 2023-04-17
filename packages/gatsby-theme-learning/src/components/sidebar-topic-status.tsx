@@ -9,17 +9,28 @@ import ConfigContext, {
   isFeatureEnabled,
   EFeatureFlag,
 } from './config-context';
+import { designSystem } from '@commercetools-docs/ui-kit';
+import styled from '@emotion/styled';
+
+const UnknownStateSpacer = styled.div`
+  width: ${designSystem.dimensions.spacings.m};
+  margin-left: 5px;
+`;
 
 type StatusIndicatorProps = {
   status?: string;
 };
 
-export const StatusIndicator = (props: StatusIndicatorProps) =>
-  props.status && props.status === 'completed' ? (
-    <CheckActiveIcon color="primary" size="medium" />
-  ) : (
-    <CircleIcon color="neutral60" size="medium" />
-  );
+export const StatusIndicator = (props: StatusIndicatorProps) => {
+  switch (props.status) {
+    case 'completed':
+      return <CheckActiveIcon color="primary" size="medium" />;
+    case 'notCompleted':
+      return <CircleIcon color="neutral60" size="medium" />;
+    default:
+      return <UnknownStateSpacer />;
+  }
+};
 
 type PageTopicStatusProps = {
   courseId: number;
