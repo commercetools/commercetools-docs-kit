@@ -7,6 +7,7 @@ import { DescriptionText, DescriptionParagraph } from '../description';
 const Enum = ({
   values,
   enumDescriptions,
+  enumGroups,
   description,
   displayName,
   anchor,
@@ -16,7 +17,6 @@ const Enum = ({
       'Must pass values props to Enum component --- <Enum values={<Array>} />.'
     );
   }
-
   return (
     <div aria-label={`${displayName} definition`} id={anchor}>
       <SpacingsStack scale="m">
@@ -26,20 +26,22 @@ const Enum = ({
         <Markdown.Dl>
           {values &&
             values.map((value) => {
-              const enumDescription =
-                enumDescriptions &&
-                enumDescriptions.find((enumDesc) => enumDesc.name === value);
+              const enumValue =
+                (enumDescriptions &&
+                  enumDescriptions.find(
+                    (enumDesc) => enumDesc.name === value
+                  )) ||
+                (enumGroups &&
+                  enumGroups.find((enumGr) => enumGr.name === value));
 
               return (
                 <React.Fragment key={value}>
                   <Markdown.Dt>
                     <Markdown.InlineCode>{value}</Markdown.InlineCode>
                   </Markdown.Dt>
-                  {enumDescription && enumDescription.description && (
+                  {enumValue && enumValue.description && (
                     <Markdown.Dd>
-                      <DescriptionText
-                        markdownString={enumDescription.description}
-                      />
+                      <DescriptionText markdownString={enumValue.description} />
                     </Markdown.Dd>
                   )}
                 </React.Fragment>
@@ -57,6 +59,12 @@ Enum.propTypes = {
     PropTypes.string,
   ]),
   enumDescriptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired
+  ),
+  enumGroups: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,

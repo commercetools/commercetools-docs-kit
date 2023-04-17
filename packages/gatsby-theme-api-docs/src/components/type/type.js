@@ -43,6 +43,7 @@ const ApiType = (props) => {
       <Enum
         values={matchedApiType.enumeration}
         enumDescriptions={matchedApiType.enumDescriptions}
+        enumGroups={matchedApiType.enumGroups}
         description={matchedApiType.description}
         displayName={matchedApiType.displayName}
         anchor={urn}

@@ -56,3 +56,55 @@ types:
       - enumValue2
       - enumWithoutDescription
       - enumWithMarkdownDescription
+  EnumGroupExample1:
+    description: Example enumeration for the SetOfEnumTestTypes type.
+    type: string
+    enum:
+      - enumValue1
+      - enumValue2
+      - enumValue3
+      - enumValue4
+      - enumValue5
+      - enumValue6
+      - enumValue7
+    (annotations.enumGroups):
+      enumValue1: |
+        description of enumValue1
+      enumValue2: |
+        description of enumValue2. `inline-code` should be formatted as an inline code.
+      enumValue3: |
+        description of enumValue3
+      enumValue4: |
+        description of enumValue4
+      enumValue5: |
+        description of enumValue5
+      enumValue6: |
+        description of enumValue6
+      enumValue7: |
+        description of enumValue7
+  EnumGroupExample2:
+    description: Example enumeration for the SetOfEnumTestTypes type.
+    type: string
+    enum:
+      - enumValue8
+      - enumValue9
+      - enumValue10
+      - enumValue11
+      - enumValue12
+      - enumValue13
+      - enumValue14
+    (annotations.enumGroups):
+      enumValue8: |
+        description of enumValue8
+      enumValue9: |
+        description of enumValue9. `inline-code` should be formatted as an inline code.
+      enumValue10: |
+        description of enumValue10
+      enumValue11: |
+        description of enumValue11
+      enumValue12: |
+        description of enumValue12
+      enumValue13: |
+        description of enumValue13
+      enumValue14: |
+        description of enumValue14
