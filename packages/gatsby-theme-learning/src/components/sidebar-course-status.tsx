@@ -13,7 +13,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 
 const UnknownStateSpacer = styled.div`
   width: ${designSystem.dimensions.spacings.l};
-  margin-left: 5px;
+  margin-right: 5px;
 `;
 
 type StatusIndicatorProps = {

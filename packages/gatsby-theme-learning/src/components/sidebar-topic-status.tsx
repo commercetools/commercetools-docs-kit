@@ -13,7 +13,7 @@ import styled from '@emotion/styled';
 
 const UnknownStateSpacer = styled.div`
   width: ${designSystem.dimensions.spacings.m};
-  margin-left: 5px;
+  margin-right: 5px;
 `;
 
 type StatusIndicatorProps = {
