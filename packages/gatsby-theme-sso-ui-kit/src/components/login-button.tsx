@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { UserFilledIcon } from '@commercetools-uikit/icons';
+import Button from './button';
 
 type LoginButtonProps = {
   label: string;
@@ -30,12 +31,27 @@ const LoginButton = (props: LoginButtonProps) => {
       : window.location.pathname;
   };
 
+  if (props.quizId) {
+    return (
+      <SecondaryButton
+        data-testid="login-button"
+        {...props}
+        label={props.label}
+        iconLeft={props.icon}
+        onClick={() =>
+          loginWithRedirect({
+            appState: {
+              returnTo: getTargetUrl(),
+            },
+          })
+        }
+      />
+    );
+  }
+
   return (
-    <SecondaryButton
+    <Button
       data-testid="login-button"
-      {...props}
-      label={props.label}
-      iconLeft={props.icon}
       onClick={() =>
         loginWithRedirect({
           appState: {
@@ -43,7 +59,9 @@ const LoginButton = (props: LoginButtonProps) => {
           },
         })
       }
-    />
+    >
+      Login
+    </Button>
   );
 };
 LoginButton.defaultProps = defaultProps;
