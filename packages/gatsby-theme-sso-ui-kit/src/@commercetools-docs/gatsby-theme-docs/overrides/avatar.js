@@ -97,8 +97,8 @@ const LoggedOutState = () => {
       <SignUpButton
         onClick={() =>
           loginWithRedirect({
-            appState: {
-              returnTo: window.location.pathname,
+            authorizationParams: {
+              screen_hint: 'signup',
             },
           })
         }
