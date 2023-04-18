@@ -3181,14 +3181,21 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/card": 15.3.0
     "@commercetools-uikit/design-system": 15.3.0
     "@commercetools-uikit/icons": 15.3.0
     "@commercetools-uikit/loading-spinner": 15.3.0
+    "@commercetools-uikit/primary-button": 15.3.0
+    "@commercetools-uikit/secondary-button": 15.3.0
+    "@commercetools-uikit/secondary-icon-button": 15.3.0
+    "@commercetools-uikit/spacings": 15.3.0
     "@commercetools-uikit/spacings-inline": 15.3.0
+    "@commercetools-uikit/text": 15.3.0
     "@commercetools-uikit/tooltip": 15.3.0
     "@commercetools-uikit/utils": 15.3.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
+    "@react-hook/latest": 1.0.3
     "@react-hook/resize-observer": 1.2.6
     "@svgr/cli": 7.0.0
     "@types/lodash.kebabcase": 4.1.7
@@ -3200,6 +3207,7 @@ __metadata:
     "@types/react-modal": ^3.13.1
     "@types/unist": ^2.0.6
     lodash.kebabcase: 4.1.1
+    lodash.omitby: 4.1.1
     lodash.throttle: 4.1.1
     murmurhash: 2.0.1
     prism-react-renderer: 1.3.5
@@ -7494,7 +7502,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-hook/latest@npm:^1.0.2":
+"@react-hook/latest@npm:1.0.3, @react-hook/latest@npm:^1.0.2":
   version: 1.0.3
   resolution: "@react-hook/latest@npm:1.0.3"
   peerDependencies:
@@ -22921,6 +22929,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash._basefor@npm:^3.0.0":
+  version: 3.0.3
+  resolution: "lodash._basefor@npm:3.0.3"
+  checksum: 8028af9901a33c336eeb18945bfe304f9e2abc1a741f688a5e26e3fa1a1c975688f7a40ec90d8dc3eda3c04160ede0aa5a89c2beb04ac29daf914b5aeb8b6b5a
+  languageName: node
+  linkType: hard
+
+"lodash._baseisequal@npm:^4.0.0":
+  version: 4.1.1
+  resolution: "lodash._baseisequal@npm:4.1.1"
+  dependencies:
+    lodash._root: ^3.0.0
+    lodash._stack: ^4.0.0
+    lodash.keys: ^4.0.0
+  checksum: ea78241b564af1258d737d792dda6cf009c29d78a4fa388e593857ff49d8172f525542fe8311e57d26c4af8301e40983a41a38056bb49b4ec3cede1567a7d67f
+  languageName: node
+  linkType: hard
+
+"lodash._baseismatch@npm:^4.0.0":
+  version: 4.0.2
+  resolution: "lodash._baseismatch@npm:4.0.2"
+  dependencies:
+    lodash._baseisequal: ^4.0.0
+    lodash._stack: ^4.0.0
+  checksum: 254131ba283202ecb5eb314c594d7717b7befa57347df03dd2359b501cbdb7ca969f42688e640856a06d5ce2468593663b493b49106846d7db35b2c2ca47cbcc
+  languageName: node
+  linkType: hard
+
+"lodash._root@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "lodash._root@npm:3.0.1"
+  checksum: 3e12c6f409ae13164a8db358f44a691f1e038dad4e25463802980d0ed641ed118c147b65657501c51778c885422b913264dfbe33ec0c5d676443dd630a7e685a
+  languageName: node
+  linkType: hard
+
+"lodash._stack@npm:^4.0.0":
+  version: 4.1.3
+  resolution: "lodash._stack@npm:4.1.3"
+  checksum: 56b49f3df330853a06994f34d4335d9e6e60baaeee6f7947dc486a4c70d610f94000aa84a34efc2ef630c6237def978721cfaea3db4593fbbd3e5ab5dee40df3
+  languageName: node
+  linkType: hard
+
 "lodash.assignin@npm:^4.0.9":
   version: 4.2.0
   resolution: "lodash.assignin@npm:4.2.0"
@@ -23012,10 +23062,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.get@npm:^4.4.2":
+"lodash.get@npm:^4.0.0, lodash.get@npm:^4.4.2":
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
+  languageName: node
+  linkType: hard
+
+"lodash.hasin@npm:^4.0.0":
+  version: 4.5.2
+  resolution: "lodash.hasin@npm:4.5.2"
+  checksum: d18a0144f17ce1f98b905a5123a0702743474a400a088d14f1e95fae3b4bee68171578f9cb6b05183b76a6793778c469520a49ef6308d2322652982968d06042
   languageName: node
   linkType: hard
 
@@ -23037,6 +23094,20 @@ __metadata:
   version: 4.1.1
   resolution: "lodash.kebabcase@npm:4.1.1"
   checksum: 5a6c59161914e1bae23438a298c7433e83d935e0f59853fa862e691164696bc07f6dfa4c313d499fbf41ba8d53314e9850416502376705a357d24ee6ca33af78
+  languageName: node
+  linkType: hard
+
+"lodash.keys@npm:^4.0.0":
+  version: 4.2.0
+  resolution: "lodash.keys@npm:4.2.0"
+  checksum: 055576c8c4a0bacc0c1da9bcbb520e6e70dcf94c609495263686c62c8242a440293e9ab8387a7398dda529cb05b76e8f783c3fd3d6ba7bc6d5d6d2e08e8512ae
+  languageName: node
+  linkType: hard
+
+"lodash.keysin@npm:^4.0.0":
+  version: 4.2.0
+  resolution: "lodash.keysin@npm:4.2.0"
+  checksum: f681826ddcbe897ac058fc70b12684633909a1b51af110ac95638a64111438ce5e1c72750e76ca1238078501a555ddce43d4797e01a59ff2dc8bf714cc7467d8
   languageName: node
   linkType: hard
 
@@ -23072,6 +23143,22 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.mergewith@npm:4.6.2"
   checksum: a6db2a9339752411f21b956908c404ec1e088e783a65c8b29e30ae5b3b6384f82517662d6f425cc97c2070b546cc2c7daaa8d33f78db7b6e9be06cd834abdeb8
+  languageName: node
+  linkType: hard
+
+"lodash.omitby@npm:4.1.1":
+  version: 4.1.1
+  resolution: "lodash.omitby@npm:4.1.1"
+  dependencies:
+    lodash._basefor: ^3.0.0
+    lodash._baseisequal: ^4.0.0
+    lodash._baseismatch: ^4.0.0
+    lodash.get: ^4.0.0
+    lodash.hasin: ^4.0.0
+    lodash.keysin: ^4.0.0
+    lodash.topairs: ^4.0.0
+    lodash.tostring: ^4.0.0
+  checksum: 72bd53b6053e369a9c7e1975e43d253509aa1b2f46a0e4ce593ea51226ab5a1b3a38ba9cda1d4486962b01e4d5b81dbc68ea28be3d0f352a9897b29894737b7e
   languageName: node
   linkType: hard
 
@@ -23135,6 +23222,20 @@ __metadata:
   version: 4.1.1
   resolution: "lodash.throttle@npm:4.1.1"
   checksum: 129c0a28cee48b348aef146f638ef8a8b197944d4e9ec26c1890c19d9bf5a5690fe11b655c77a4551268819b32d27f4206343e30c78961f60b561b8608c8c805
+  languageName: node
+  linkType: hard
+
+"lodash.topairs@npm:^4.0.0":
+  version: 4.3.0
+  resolution: "lodash.topairs@npm:4.3.0"
+  checksum: 8efd69e706e5adb7f8c4521cd094be17ed4776dab30d9ae0a72e130f14e7bb696dd858cbc18c912aa20e97ccc76486f3cf2d0acb3ff30cb9af3fd525a7f9c9bd
+  languageName: node
+  linkType: hard
+
+"lodash.tostring@npm:^4.0.0":
+  version: 4.1.4
+  resolution: "lodash.tostring@npm:4.1.4"
+  checksum: 810975b2929d51141f8aa53718e27a52a1bcf2453b9e101fc8306f3a112247d3aaac878c97aa41144fd6a6f955a6a42bbf7fa1389cba146b7b19a377f989e6f5
   languageName: node
   linkType: hard
 
