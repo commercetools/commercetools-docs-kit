@@ -5,7 +5,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Spacings from '@commercetools-uikit/spacings';
 import { designTokens } from '@commercetools-uikit/design-system';
-import omitBy from 'lodash/omitBy';
+import omitBy from 'lodash.omitby';
 
 function filterDataAttributes<T extends object>(obj: T) {
   return omitBy<T>(obj, (_value, key) => !key.startsWith('data-'));
