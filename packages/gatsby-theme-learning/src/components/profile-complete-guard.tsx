@@ -3,7 +3,10 @@ import type { User } from '@auth0/auth0-react';
 import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
 import { useAuthToken } from '../hooks/use-auth-token';
-import ConfigContext from './config-context';
+import ConfigContext, {
+  EFeatureFlag,
+  isFeatureEnabled,
+} from './config-context';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -14,27 +17,39 @@ export type TProfileFormValues = {
 const ProfileModalGuard = () => {
   const { isAuthenticated, user } = useAuth0();
   const { getAuthToken } = useAuthToken();
-  const { auth0Domain } = useContext(ConfigContext);
+  const { auth0Domain, features } = useContext(ConfigContext);
   const { updateProfile } = useContext(LearningContext);
+
+  const isModalFeatureEnabeld = isFeatureEnabled(
+    EFeatureFlag.CompleteProfileModal,
+    features
+  );
 
   useEffect(() => {
     async function fetchData() {
-      const authToken = await getAuthToken();
-      const getUserApiEndpoint = `https://${auth0Domain}/api/v2/users/${user?.sub}`;
-      const data = await fetch(getUserApiEndpoint, {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
-      const userData = (await data.json()) as User;
-      updateProfile(userData);
+      try {
+        const authToken = await getAuthToken();
+        const getUserApiEndpoint = `https://${auth0Domain}/api/v2/users/${user?.sub}`;
+        const data = await fetch(getUserApiEndpoint, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+        if (data.status !== 200) {
+          throw new Error(`Error fetching user profile for user ${user?.sub}`);
+        }
+        const userData = (await data.json()) as User;
+        updateProfile(userData);
+      } catch (error) {
+        console.error(error);
+      }
     }
-    if (isAuthenticated) {
+    if (isModalFeatureEnabeld && isAuthenticated) {
       fetchData();
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, isModalFeatureEnabeld]);
 };
 
 export default ProfileModalGuard;

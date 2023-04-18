@@ -4,7 +4,10 @@ import {
   getCourseStatusByCourseId,
   useFetchCourses,
 } from '../hooks/use-course-status';
-import ConfigContext from './config-context';
+import ConfigContext, {
+  EFeatureFlag,
+  isFeatureEnabled,
+} from './config-context';
 
 type CourseStatusProps = {
   error?: string;
@@ -28,12 +31,10 @@ type PageCourseStatusProps = {
 const PageCourseStatus = (props: PageCourseStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const { data, isLoading, error } = useFetchCourses();
-  const {
-    features: { courseStatusIndicator },
-  } = useContext(ConfigContext);
+  const { features } = useContext(ConfigContext);
 
   // courseStatusIndicator feature flag
-  if (!courseStatusIndicator) {
+  if (!isFeatureEnabled(EFeatureFlag.CourseStatus, features)) {
     return null;
   }
 

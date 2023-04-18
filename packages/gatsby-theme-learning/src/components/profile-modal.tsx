@@ -7,6 +7,10 @@ import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
 import type { User } from '@auth0/auth0-react';
 import { useUpdateUser } from '../hooks/use-update-user';
+import ConfigContext, {
+  EFeatureFlag,
+  isFeatureEnabled,
+} from './config-context';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -27,16 +31,23 @@ const ProfileModal = () => {
     user: { profile },
     updateProfile,
   } = useContext(LearningContext);
+  const { features } = useContext(ConfigContext);
   const { performUpdateUser, isLoading, updatedUser } = useUpdateUser({
     userId: profile?.user_id || '',
   });
+
+  const isModalFeatureEnabeld = isFeatureEnabled(
+    EFeatureFlag.CompleteProfileModal,
+    features
+  );
+
   const formik = useFormik<TProfileFormValues>({
     initialValues: {
       firstName: '',
       lastName: '',
       company: '',
     },
-    validate: (formikValues) => {
+    validate: (formikValues: TProfileFormValues) => {
       const missingFields: Record<string, { missing: boolean }> = {};
       if (TextInput.isEmpty(formikValues.firstName)) {
         missingFields.firstName = { missing: true };
@@ -62,16 +73,15 @@ const ProfileModal = () => {
   const { closeModal, openModal, isModalOpen } = useModalState();
 
   useEffect(() => {
-    if (profile) {
+    if (isModalFeatureEnabeld && profile) {
       isProfileComplete(profile) ? closeModal() : openModal();
-      formik.setFieldValue('firstName', profile?.given_name);
-      formik.setFieldValue('lastName', profile?.family_name);
-      formik.setFieldValue('company', profile?.user_metadata?.company);
+      formik.setFieldValue('firstName', profile?.given_name || '');
+      formik.setFieldValue('lastName', profile?.family_name || '');
+      formik.setFieldValue('company', profile?.user_metadata?.company || '');
     }
-  }, [profile]);
+  }, [profile, isModalFeatureEnabeld]);
 
   useEffect(() => {
-    console.log('updateUser', updatedUser);
     if (updatedUser) {
       updateProfile(updatedUser);
     }
