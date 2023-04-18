@@ -4,15 +4,6 @@ import DialogContent from '../internals/dialog-content';
 import DialogFooter from '../internals/dialog-footer';
 import DialogHeader from '../internals/dialog-header';
 
-// NOTE: the `MessageDescriptor` type is exposed by `react-intl`.
-// However, we need to explicitly define this otherwise the prop-types babel plugin
-// does not recognize the object shape.
-type MessageDescriptor = {
-  id: string;
-  description?: string | object;
-  defaultMessage?: string;
-};
-type Label = string | MessageDescriptor;
 type Props = {
   isOpen: boolean;
   onClose?: (event: SyntheticEvent) => void;
@@ -20,8 +11,8 @@ type Props = {
   size?: 'm' | 'l' | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 'scale';
   zIndex?: number;
   children: ReactNode;
-  labelSecondary: Label;
-  labelPrimary: Label;
+  labelSecondary: string;
+  labelPrimary: string;
   isPrimaryButtonDisabled?: boolean;
   onCancel: (event: SyntheticEvent) => void;
   onConfirm: (event: SyntheticEvent) => void;
