@@ -1,6 +1,5 @@
 import React from 'react';
 import ConfigContext from './src/components/config-context';
-import { PortalsContainer } from '@commercetools-docs/ui-kit';
 
 export const wrapRootElement = ({ element }, pluginOptions) => {
   return (
@@ -13,14 +12,5 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
     >
       {element}
     </ConfigContext.Provider>
-  );
-};
-
-export const wrapPageElement = ({ element }) => {
-  return (
-    <>
-      <PortalsContainer />
-      {element}
-    </>
   );
 };
