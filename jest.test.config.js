@@ -22,6 +22,7 @@ const esmModules = [
   'unist-util-stringify-position',
   'unist-util-visit',
   'vfile-message',
+  '@react-hook',
 ];
 
 module.exports = {
