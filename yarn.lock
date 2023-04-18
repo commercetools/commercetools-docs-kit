@@ -3199,6 +3199,7 @@ __metadata:
     "@react-hook/resize-observer": 1.2.6
     "@svgr/cli": 7.0.0
     "@types/lodash.kebabcase": 4.1.7
+    "@types/lodash.omitby": 4.6.7
     "@types/mdast": ^3.0.10
     "@types/raf-schd": ^4.0.1
     "@types/react": 18.0.28
@@ -8724,6 +8725,15 @@ __metadata:
   dependencies:
     "@types/lodash": "*"
   checksum: 8c28dae574d0d15d316b8412f1edf7628398f0d1d34bec978af9d8b9f1286749492c23680817e74c6bd15e14b45b0006c79b320ebd260f9b8c0ac85668e0c409
+  languageName: node
+  linkType: hard
+
+"@types/lodash.omitby@npm:4.6.7":
+  version: 4.6.7
+  resolution: "@types/lodash.omitby@npm:4.6.7"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: 0ff20ffb94524d2c0714cb474b8b2723d88225a347d0c16f07d216122aa79dab40a826efeadd84d2b82f1ef00a6d1e311cc6844e06430e43c1d3cd587d4e6481
   languageName: node
   linkType: hard
 
