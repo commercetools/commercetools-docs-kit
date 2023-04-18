@@ -11,8 +11,8 @@ Works against the learning-api.
 
 - `auth0Domain`: the auth0 application domain url (it is defined in the auth0 management app)
 - `learnApiBaseUrl`: the learn API base url. It can be omitted if the host running the site matches the api host.
-- `features`: a list of feature flags (boolean values) to enable/disable specific functionalities
-  - `courseStatusIndicator`: feature flag to toggle the course status indicator.
+- `features`: an array of strings representing feature flags used to enable/disable specific functionalities. Expected values:
+  - `status-indicator`: feature flag to toggle the course and topics status indicator.
 
 In order to enable the plugin, at least the following configuration should be added to the `gatsby-config.js` plugin section:
 

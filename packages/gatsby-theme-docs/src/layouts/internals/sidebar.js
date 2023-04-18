@@ -16,8 +16,11 @@ import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
-import { useCourseInfoByPageSlug } from '../../hooks/use-course-pages';
-import { PageCourseStatus } from '@commercetools-docs/gatsby-theme-learning';
+import { useCourseInfoByPageSlugs } from '../../hooks/use-course-pages';
+import {
+  SidebarCourseStatus,
+  SidebarTopicStatus,
+} from '@commercetools-docs/gatsby-theme-learning';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -91,6 +94,19 @@ const LinkItem = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  vertical-align: middle;
+`;
+const LinkItemWithIcon = styled.div`
+  padding: 0 0 0 ${designSystem.dimensions.spacings.m};
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  svg {
+    margin-right: 2px;
+  }
+  div {
+    line-height: ${designSystem.typography.lineHeights.cardSmallTitle};
+  }
 `;
 const linkStyles = css`
   border-left: ${designSystem.dimensions.spacings.xs} solid
@@ -120,6 +136,24 @@ const activeLinkStyles = css`
     ${designSystem.colors.light.linkNavigation} !important;
   color: ${designSystem.colors.light.linkNavigation} !important;
 `;
+
+const StatusIconWrapper = styled.span`
+  display: flex;
+  vertical-align: middle;
+  padding-left: 10px; // change this setting to remove the indentation
+  svg {
+    margin-right: 5px;
+  }
+`;
+
+const LinkSubtitleWithIcon = (props) => (
+  <LinkSubtitle>
+    <StatusIconWrapper>{props.children}</StatusIconWrapper>
+  </LinkSubtitle>
+);
+LinkSubtitleWithIcon.propTypes = {
+  children: PropTypes.any,
+};
 
 const SidebarLink = (props) => {
   const { locationPath, customStyles, customActiveStyles, ...forwardProps } =
@@ -234,7 +268,10 @@ SidebarLinkWrapper.propTypes = {
 };
 
 const SidebarChapter = (props) => {
-  const courseInfo = useCourseInfoByPageSlug(props.chapter.pages[0].path);
+  const courseInfo = useCourseInfoByPageSlugs(
+    props.chapter.pages.map((page) => page.path)
+  );
+  const courseId = Object.values(courseInfo)[0]?.courseId;
   const elemId = `sidebar-chapter-${props.index}`;
   const getChapterDOMElement = React.useCallback(
     () => document.getElementById(elemId),
@@ -244,26 +281,48 @@ const SidebarChapter = (props) => {
   return (
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack scale="s">
-        <LinkItem>
-          <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-          {courseInfo?.courseId && (
-            <PageCourseStatus courseId={courseInfo.courseId} />
-          )}
-        </LinkItem>
+        {courseId ? (
+          <LinkItemWithIcon>
+            <SidebarCourseStatus courseId={courseId} />
+            <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          </LinkItemWithIcon>
+        ) : (
+          <LinkItem>
+            <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          </LinkItem>
+        )}
+
         <SpacingsStack scale="s">
           {props.chapter.pages &&
-            props.chapter.pages.map((pageLink, pageIndex) => (
-              <SidebarLinkWrapper
-                key={`${props.index}-${pageIndex}-${pageLink.path}`}
-                to={pageLink.path}
-                onClick={props.onLinkClick}
-                location={props.location}
-                nextScrollPosition={props.nextScrollPosition}
-                getChapterDOMElement={getChapterDOMElement}
-              >
-                <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-              </SidebarLinkWrapper>
-            ))}
+            props.chapter.pages.map((pageLink, pageIndex) => {
+              const currTopicName = courseInfo[pageLink.path]?.topicName;
+              const TopicIcon =
+                courseId && currTopicName ? (
+                  <SidebarTopicStatus
+                    courseId={courseId}
+                    pageTitle={currTopicName}
+                  />
+                ) : null;
+              return (
+                <SidebarLinkWrapper
+                  key={`${props.index}-${pageIndex}-${pageLink.path}`}
+                  to={pageLink.path}
+                  onClick={props.onLinkClick}
+                  location={props.location}
+                  nextScrollPosition={props.nextScrollPosition}
+                  getChapterDOMElement={getChapterDOMElement}
+                >
+                  {TopicIcon ? (
+                    <LinkSubtitleWithIcon>
+                      {TopicIcon}
+                      {pageLink.title}
+                    </LinkSubtitleWithIcon>
+                  ) : (
+                    <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+                  )}
+                </SidebarLinkWrapper>
+              );
+            })}
         </SpacingsStack>
       </SpacingsStack>
     </div>
