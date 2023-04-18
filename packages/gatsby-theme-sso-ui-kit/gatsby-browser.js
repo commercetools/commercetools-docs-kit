@@ -28,7 +28,7 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
         authorizationParams={{
           redirect_uri: window.location.origin,
           audience: `https://${audience}/api/v2/`,
-          scope: 'read:current_user',
+          scope: 'read:current_user profile email',
         }}
       >
         {element}
