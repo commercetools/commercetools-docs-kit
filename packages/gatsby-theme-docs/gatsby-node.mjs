@@ -47,6 +47,40 @@ const debugMem = () => {
   }
 };
 
+/**
+ * Given navigation and content nodes, checks if all the content nodes
+ * belonging to a single self-learning chapter (course) have the same courseId.
+ */
+const validateSelfLearningContentStructure = (
+  allNavigationNodes,
+  allContentNodes
+) => {
+  // get only self learning content
+  const slugToCourseMap = new Map();
+  allContentNodes
+    .filter((contentNode) => contentNode.courseId)
+    .forEach((contentNode) =>
+      slugToCourseMap.set(contentNode.slug, contentNode.courseId)
+    );
+
+  allNavigationNodes.forEach((navigationNode) => {
+    let prevCourseId = undefined;
+    const chapterTitle = navigationNode.chapterTitle;
+    navigationNode.pages.forEach((page) => {
+      if (!slugToCourseMap.has(page.path)) {
+        return; // the path is not self-learning content
+      }
+      const courseId = slugToCourseMap.get(page.path);
+      if (prevCourseId !== undefined && prevCourseId !== courseId) {
+        const msg = `Mismatch self-learning courseId property (${courseId}) found in topic with slug ${page.path}. All topics within a single course should referece the same courseId, please check the frontmatter sections within the "${chapterTitle}" course`;
+        throw new Error(msg);
+      } else {
+        prevCourseId = courseId;
+      }
+    });
+  });
+};
+
 // Ensure that certain directories exist.
 // https://www.gatsbyjs.org/tutorial/building-a-theme/#create-a-data-directory-using-the-onprebootstrap-lifecycle
 export const onPreBootstrap = async (gatsbyApi, themeOptions) => {
@@ -218,6 +252,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
           }),
         },
         courseId: { type: 'Int' },
+        topicName: { type: 'String' },
       },
       interfaces: ['Node'],
     }),
@@ -352,6 +387,9 @@ export const onCreateNode = async (
       courseId: node.frontmatter.courseId
         ? Number(node.frontmatter.courseId)
         : null,
+      topicName: node.frontmatter.topicName
+        ? String(node.frontmatter.topicName)
+        : null,
     };
 
     actions.createNode({
@@ -411,6 +449,7 @@ async function createContentPages(
         nodes {
           slug
           courseId
+          topicName
         }
       }
       allReleaseNotePage(sort: { date: DESC }) {
@@ -441,13 +480,18 @@ async function createContentPages(
   if (navigationYamlResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "allNavigationYaml" query');
   }
+  // validate self-learning content structure
+  validateSelfLearningContentStructure(
+    navigationYamlResult.data.allNavigationYaml.nodes,
+    result.data.allContentPage.nodes
+  );
   const pages = result.data.allContentPage.nodes;
   const navigationPages =
     navigationYamlResult.data.allNavigationYaml.nodes.reduce(
       (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
       []
     );
-  pages.forEach(({ slug, courseId }) => {
+  pages.forEach(({ slug, courseId, topicName }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
@@ -489,9 +533,18 @@ async function createContentPages(
         let contentPageData = {
           ...pageData,
           component: require.resolve('./src/templates/page-content.js'),
-        }
+        };
         if (courseId) {
-          contentPageData = {...contentPageData, context: {...contentPageData.context, courseId}}
+          contentPageData = {
+            ...contentPageData,
+            context: { ...contentPageData.context, courseId },
+          };
+        }
+        if (topicName) {
+          contentPageData = {
+            ...contentPageData,
+            context: { ...contentPageData.context, topicName },
+          };
         }
         actions.createPage(contentPageData);
 

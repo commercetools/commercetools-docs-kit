@@ -14,8 +14,8 @@ Works against commercetools' learning-api, which is not a part of this open sour
 
 - `auth0Domain`: the auth0 application domain url (it is defined in the auth0 management app)
 - `learnApiBaseUrl`: the learn API base url. It can be omitted if the host running the site matches the api host.
-- `features`: a list of feature flags (boolean values) to toggle specific functionalities.
-  - `courseStatusIndicator`: feature flag to toggle the course status indicator.
+- `features`: an array of strings representing feature flags used to toggle specific functionalities. Expected values:
+  - `status-indicator`: feature flag to toggle the course status indicator.
 
 In order to enable the plugin, the following configuration should be added to the `gatsby-config.js` plugin section:
 
