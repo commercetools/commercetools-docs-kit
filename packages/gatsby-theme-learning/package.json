@@ -21,6 +21,7 @@
     "@commercetools-uikit/design-system": "15.3.0",
     "@commercetools-uikit/icons": "15.3.0",
     "@commercetools-uikit/loading-spinner": "15.3.0",
+    "@commercetools-uikit/messages": "15.3.0",
     "@commercetools-uikit/notifications": "15.3.0",
     "@commercetools-uikit/primary-button": "15.3.0",
     "@commercetools-uikit/radio-input": "15.3.0",

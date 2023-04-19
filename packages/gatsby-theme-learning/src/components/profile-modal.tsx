@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import TextField from '@commercetools-uikit/text-field';
 import TextInput from '@commercetools-uikit/text-input';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { ErrorMessage } from '@commercetools-uikit/messages';
 import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
 import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
@@ -32,7 +33,7 @@ const ProfileModal = () => {
     updateProfile,
   } = useContext(LearningContext);
   const { features } = useContext(ConfigContext);
-  const { performUpdateUser, isLoading, updatedUser } = useUpdateUser({
+  const { performUpdateUser, isLoading, updatedUser, error } = useUpdateUser({
     userId: profile?.user_id || '',
   });
 
@@ -151,6 +152,11 @@ const ProfileModal = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
+        {error && (
+          <ErrorMessage>
+            An error occurred while updating your profile, please try again.
+          </ErrorMessage>
+        )}
       </SpacingsStack>
     </FormDialog>
   );

@@ -27,7 +27,7 @@ const contextProfileAdapter = (auth0User: User) => {
   };
 };
 
-const ProfileModalGuard = () => {
+const UserProfileInit = () => {
   const { user, isAuthenticated } = useAuth0();
   const {
     updateProfile,
@@ -41,4 +41,4 @@ const ProfileModalGuard = () => {
   }, [isAuthenticated, profile]);
 };
 
-export default ProfileModalGuard;
+export default UserProfileInit;

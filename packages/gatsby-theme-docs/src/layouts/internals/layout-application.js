@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import {
   LearningStateProvider,
-  ProfileModalGuard,
+  UserProfileInit,
 } from '@commercetools-docs/gatsby-theme-learning';
 import ProfileModal from '@commercetools-docs/gatsby-theme-learning/src/components/profile-modal';
 
@@ -56,7 +56,7 @@ const LayoutApplication = (props) => (
       >
         <Container {...props} />
       </Root>
-      <ProfileModalGuard />
+      <UserProfileInit />
       <ProfileModal />
       <div id="modal-portal" />
     </LearningStateProvider>
