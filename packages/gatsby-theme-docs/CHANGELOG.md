@@ -1,5 +1,15 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 21.3.1
+
+### Patch Changes
+
+- [#1623](https://github.com/commercetools/commercetools-docs-kit/pull/1623) [`65d748cb`](https://github.com/commercetools/commercetools-docs-kit/commit/65d748cb5bc09f9c076fd7f7363e5749b6448c65) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add gatsby-theme-learning as dependency of gatsby-theme-docs
+
+- Updated dependencies [[`65d748cb`](https://github.com/commercetools/commercetools-docs-kit/commit/65d748cb5bc09f9c076fd7f7363e5749b6448c65)]:
+  - @commercetools-docs/ui-kit@21.3.1
+  - @commercetools-docs/gatsby-theme-learning@21.3.1
+
 ## 21.3.0
 
 ### Minor Changes
