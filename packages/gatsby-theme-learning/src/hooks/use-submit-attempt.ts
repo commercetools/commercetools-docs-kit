@@ -27,7 +27,10 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
       attemptData: SubmissionAttempt,
       finish: boolean
     ) => {
-      const invalidateCache = () => mutate('/api/courses');
+      const invalidateCache = () => {
+        mutate('/api/courses');
+        mutate(`/api/courses/${courseId}`);
+      };
       const apiEndpoint = `${learnApiBaseUrl}/api/courses/${courseId}/quizzes/${quizId}/attempts/${attemptId}?finish=${finish}`;
       const accessToken = await getAuthToken();
       const data = await fetch(apiEndpoint, {

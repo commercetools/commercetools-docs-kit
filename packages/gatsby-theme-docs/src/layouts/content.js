@@ -22,7 +22,6 @@ import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 import PageReadTime from './internals/page-read-time-estimation';
-import { PageCourseStatus } from '@commercetools-docs/gatsby-theme-learning';
 
 const LayoutContent = (props) => {
   const { ref, inView, entry } = useInView();
@@ -81,9 +80,6 @@ const LayoutContent = (props) => {
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />
-              )}
-              {props.pageContext.courseId && (
-                <PageCourseStatus courseId={props.pageContext.courseId} />
               )}
             </LayoutPageHeader>
             <LayoutPageHeaderSide>
