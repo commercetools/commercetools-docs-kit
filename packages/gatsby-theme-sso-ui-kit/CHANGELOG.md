@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-sso-ui-kit
 
+## 21.3.1
+
+### Patch Changes
+
+- Updated dependencies [[`65d748cb`](https://github.com/commercetools/commercetools-docs-kit/commit/65d748cb5bc09f9c076fd7f7363e5749b6448c65)]:
+  - @commercetools-docs/ui-kit@21.3.1
+
 ## 21.3.0
 
 ### Patch Changes

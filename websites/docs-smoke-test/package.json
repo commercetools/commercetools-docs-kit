@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/docs-smoke-test",
-  "version": "7.3.0",
+  "version": "7.3.1",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -16,11 +16,11 @@
     "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-code-examples": "21.3.0",
-    "@commercetools-docs/gatsby-theme-constants": "21.3.0",
-    "@commercetools-docs/gatsby-theme-docs": "21.3.0",
-    "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.3.0",
-    "@commercetools-docs/ui-kit": "21.3.0",
+    "@commercetools-docs/gatsby-theme-code-examples": "21.3.1",
+    "@commercetools-docs/gatsby-theme-constants": "21.3.1",
+    "@commercetools-docs/gatsby-theme-docs": "21.3.1",
+    "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.3.1",
+    "@commercetools-docs/ui-kit": "21.3.1",
     "@commercetools-uikit/avatar": "15.3.0",
     "@commercetools-uikit/icons": "15.3.0",
     "@commercetools-uikit/radio-input": "15.3.0",
