@@ -48,18 +48,16 @@ const Container = styled.div`
 
 const LayoutApplication = (props) => (
   <>
-    <LearningStateProvider>
-      <Root
-        role="application"
-        id="application"
-        isGlobalNotificationVisible={Boolean(props.globalNotification)}
-      >
-        <Container {...props} />
-      </Root>
-      <UserProfileInit />
-      <ProfileModal />
-      <div id="modal-portal" />
-    </LearningStateProvider>
+    <Root
+      role="application"
+      id="application"
+      isGlobalNotificationVisible={Boolean(props.globalNotification)}
+    >
+      <Container {...props} />
+    </Root>
+    <UserProfileInit />
+    <ProfileModal />
+    <div id="modal-portal" />
   </>
 );
 LayoutApplication.propTypes = {
