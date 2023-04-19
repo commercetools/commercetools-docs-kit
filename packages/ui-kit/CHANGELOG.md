@@ -1,5 +1,17 @@
 # @commercetools-docs/ui-kit
 
+## 21.3.1
+
+### Patch Changes
+
+- [#1623](https://github.com/commercetools/commercetools-docs-kit/pull/1623) [`65d748cb`](https://github.com/commercetools/commercetools-docs-kit/commit/65d748cb5bc09f9c076fd7f7363e5749b6448c65) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add gatsby-theme-learning as dependency of gatsby-theme-docs
+
+## 21.3.0
+
+### Patch Changes
+
+- [#1602](https://github.com/commercetools/commercetools-docs-kit/pull/1602) [`c478edd5`](https://github.com/commercetools/commercetools-docs-kit/commit/c478edd5ab3664da92195b44aef7f6ffc9daac04) Thanks [@renovate](https://github.com/apps/renovate)! - Update svgr dependencies to v7
+
 ## 21.1.4
 
 ### Patch Changes
