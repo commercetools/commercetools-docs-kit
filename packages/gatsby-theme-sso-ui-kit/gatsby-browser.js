@@ -19,6 +19,7 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
         learnApiBaseUrl: pluginOptions.learnApiBaseUrl,
         auth0Domain: pluginOptions.auth0Domain,
         auth0ClientId: pluginOptions.auth0ClientId,
+        hideLogin: pluginOptions.hideLogin || false,
       }}
     >
       <Auth0Provider

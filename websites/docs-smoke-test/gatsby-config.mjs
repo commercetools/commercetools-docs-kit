@@ -1,13 +1,9 @@
-import {
-  configureThemeWithAddOns,
-}  from "@commercetools-docs/gatsby-theme-docs/configure-theme.mjs";
+import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/configure-theme.mjs';
 import dotenv from 'dotenv';
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const isProd = process.env.NODE_ENV === 'production';
 const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
-
-
 
 const config = {
   flags: {
@@ -32,7 +28,7 @@ const config = {
           options: {
             auth0Domain: 'auth.id.commercetools.com',
             learnApiBaseUrl: 'https://api.learn.commercetools.com',
-            features: ['status-indicator']
+            features: ['status-indicator'],
           },
         },
         {

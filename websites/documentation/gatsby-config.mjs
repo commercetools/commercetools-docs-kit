@@ -27,6 +27,7 @@ const config = {
             auth0Domain: 'auth.id.commercetools.com',
             auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
             learnApiBaseUrl: 'https://api.learn.commercetools.com',
+            hideLogin: true,
           },
         },
       ],
