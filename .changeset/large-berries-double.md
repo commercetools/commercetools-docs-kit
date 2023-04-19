@@ -4,4 +4,4 @@
 '@commercetools-docs/ui-kit': patch
 ---
 
-Add atsby-theme-learning as dependency of gatsby-theme-docs
+Add gatsby-theme-learning as dependency of gatsby-theme-docs
