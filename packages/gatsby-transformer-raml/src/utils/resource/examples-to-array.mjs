@@ -3,6 +3,7 @@ import fs from 'fs';
 
 export function resolveExampleFile(fileNodeDir, filePath) {
   if (typeof filePath === 'string') {
+    console.log('HERE!', filePath);
     const exampleAbsolutePath = path.resolve(fileNodeDir, filePath);
     return fs.readFileSync(exampleAbsolutePath, 'utf8');
   }
