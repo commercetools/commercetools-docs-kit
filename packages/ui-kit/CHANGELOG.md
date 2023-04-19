@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 21.3.0
+
+### Patch Changes
+
+- [#1602](https://github.com/commercetools/commercetools-docs-kit/pull/1602) [`c478edd5`](https://github.com/commercetools/commercetools-docs-kit/commit/c478edd5ab3664da92195b44aef7f6ffc9daac04) Thanks [@renovate](https://github.com/apps/renovate)! - Update svgr dependencies to v7
+
 ## 21.1.4
 
 ### Patch Changes

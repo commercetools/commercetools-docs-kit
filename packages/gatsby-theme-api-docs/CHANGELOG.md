@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 21.3.0
+
+### Patch Changes
+
+- [#1614](https://github.com/commercetools/commercetools-docs-kit/pull/1614) [`c8bf7936`](https://github.com/commercetools/commercetools-docs-kit/commit/c8bf7936804a1e5d65a8e23bae97834044d12ff6) Thanks [@timonrey](https://github.com/timonrey)! - Improves the new enum groups feature. You can now define the enum group directly in an enum group list in the raml spec.
+
+- Updated dependencies [[`c478edd5`](https://github.com/commercetools/commercetools-docs-kit/commit/c478edd5ab3664da92195b44aef7f6ffc9daac04)]:
+  - @commercetools-docs/ui-kit@21.3.0
+
 ## 21.2.0
 
 ### Minor Changes

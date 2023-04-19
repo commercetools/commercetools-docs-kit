@@ -1,5 +1,18 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 21.3.0
+
+### Minor Changes
+
+- [#1595](https://github.com/commercetools/commercetools-docs-kit/pull/1595) [`c7406d9b`](https://github.com/commercetools/commercetools-docs-kit/commit/c7406d9bcbf9f2443c42aab7f2f0313c370633da) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Added status indicator for course and course topics
+
+### Patch Changes
+
+- [#1602](https://github.com/commercetools/commercetools-docs-kit/pull/1602) [`c478edd5`](https://github.com/commercetools/commercetools-docs-kit/commit/c478edd5ab3664da92195b44aef7f6ffc9daac04) Thanks [@renovate](https://github.com/apps/renovate)! - Update svgr dependencies to v7
+
+- Updated dependencies [[`c478edd5`](https://github.com/commercetools/commercetools-docs-kit/commit/c478edd5ab3664da92195b44aef7f6ffc9daac04)]:
+  - @commercetools-docs/ui-kit@21.3.0
+
 ## 21.2.0
 
 ### Minor Changes
