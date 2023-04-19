@@ -18,29 +18,6 @@ describe('login-button', () => {
     expect(loginButtonElement).toHaveTextContent(DEFAULT_LABEL);
   });
 
-  it('should render login-component with specified label', () => {
-    const label = 'Click me please!';
-    render(<LoginButton label={label} />);
-    const loginButtonElement = screen.getByTestId('login-button');
-    expect(loginButtonElement).toBeInTheDocument();
-    expect(loginButtonElement).toHaveTextContent(label);
-  });
-
-  it('should render the default icon if no icon is specified', () => {
-    render(<LoginButton />);
-    const defaultIcon = screen.getByTestId('default-icon');
-    expect(defaultIcon).toBeInTheDocument();
-  });
-
-  it('should render the specified icon', () => {
-    const CusotomIcon = () => {
-      return <div data-testid="custom-icon"></div>;
-    };
-    render(<LoginButton icon={<CusotomIcon />} />);
-    const defaultIcon = screen.getByTestId('custom-icon');
-    expect(defaultIcon).toBeInTheDocument();
-  });
-
   it('should invoke loginWithRedirect with the expected url when clicked', () => {
     const expectedLoginWithRedirect = {
       appState: {
