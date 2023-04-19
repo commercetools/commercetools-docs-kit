@@ -15,13 +15,11 @@
   "dependencies": {
     "@auth0/auth0-react": "2.0.1",
     "@commercetools-docs/ui-kit": "21.3.1",
-    "@commercetools-uikit/avatar": "16.0.0",
     "@commercetools-uikit/icons": "16.0.0",
     "@commercetools-uikit/secondary-button": "16.0.0",
     "@commercetools-uikit/spacings": "16.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "downshift": "7.6.0",
     "md5": "2.3.0",
     "react-intl": "^6.2.8",
     "react-router-dom": "6.9.0"
