@@ -32,11 +32,11 @@ describe('login-button', () => {
     expect(defaultIcon).toBeInTheDocument();
   });
 
-  it('should render the specified icon', () => {
+  it('should render the specified icon for the login button inside of the quiz component', () => {
     const CusotomIcon = () => {
       return <div data-testid="custom-icon"></div>;
     };
-    render(<LoginButton icon={<CusotomIcon />} />);
+    render(<LoginButton quizId="123" icon={<CusotomIcon />} />);
     const defaultIcon = screen.getByTestId('custom-icon');
     expect(defaultIcon).toBeInTheDocument();
   });
