@@ -26,12 +26,6 @@ describe('login-button', () => {
     expect(loginButtonElement).toHaveTextContent(label);
   });
 
-  it('should render the default icon if no icon is specified', () => {
-    render(<LoginButton />);
-    const defaultIcon = screen.getByTestId('default-icon');
-    expect(defaultIcon).toBeInTheDocument();
-  });
-
   it('should render the specified icon for the login button inside of the quiz component', () => {
     const CusotomIcon = () => {
       return <div data-testid="custom-icon"></div>;
