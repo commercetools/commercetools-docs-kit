@@ -48,7 +48,6 @@ const Enum = ({
                         <Markdown.H4>{groupName}</Markdown.H4>
                         {values &&
                           groupList[groupName].map((value) => {
-                            console.log(groupList[groupName]);
                             const enumDescription =
                               enumDescriptions &&
                               enumDescriptions.find(
