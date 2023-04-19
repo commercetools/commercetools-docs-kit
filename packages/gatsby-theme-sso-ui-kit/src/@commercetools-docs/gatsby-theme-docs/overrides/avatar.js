@@ -22,10 +22,7 @@ const AvatarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    margin-right: ${designSystem.dimensions.spacings.xxl};
-  }
+  padding-right: ${designSystem.dimensions.spacings.s};
 `;
 
 const Avatar = styled.div`
