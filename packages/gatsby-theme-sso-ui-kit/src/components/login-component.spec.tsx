@@ -17,7 +17,6 @@ describe('login-button', () => {
     expect(loginButtonElement).toBeInTheDocument();
     expect(loginButtonElement).toHaveTextContent(DEFAULT_LABEL);
   });
-
   it('should invoke loginWithRedirect with the expected url when clicked', () => {
     const expectedLoginWithRedirect = {
       appState: {

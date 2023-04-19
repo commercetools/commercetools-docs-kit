@@ -1,20 +1,14 @@
 // A React component to be rendered in the top bar next to the top menu toggle button
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import md5 from 'md5';
-import { useSelect } from 'downshift';
 import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
-import Avatar from '@commercetools-uikit/avatar';
 import Spacings from '@commercetools-uikit/spacings';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
-import ConfigContext from '../../../components/config-context';
-import {
-  getAvatarInitials,
-  getLogoutReturnUrl,
-} from '../../../components/sso.utils';
-import CommercetoolsIDIcon from '../../../icons/commercetools_ID_logo.svg';
+import { GraduationCapIcon } from '@commercetools-uikit/icons';
+import LoginButton from '../../../../src/components/login-button';
+import LogoutButton from '../../../../src/components/logout-button';
+import { getAvatarInitials } from '../../../components/sso.utils';
 
 const AUTH0_CUSTOM_CLAIM_NS = 'https://docs.commercetools.com/';
 const AUTH0_CLAIM_DISPLAYNAME = `${AUTH0_CUSTOM_CLAIM_NS}display_name`;
@@ -22,158 +16,95 @@ const AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME = `${AUTH0_CUSTOM_CLAIM_NS}global_account_
 
 const AvatarContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
+  padding-right: ${designSystem.dimensions.spacings.s};
 `;
 
-const AvatarButton = styled.button`
-  cursor: pointer;
-  border: none;
-  padding: 0;
+const Avatar = styled.div`
+  width: ${designSystem.typography.lineHeights.cardSmallTitle};
+  height: ${designSystem.typography.lineHeights.cardSmallTitle};
+  color: white;
+  background-color: ${designSystem.colors.light.link};
+  border-radius: 50%;
   display: flex;
-  background: transparent;
+  justify-content: center;
+  align-items: center;
 `;
 
-const DropdownContainer = styled.div`
-  color: #666666;
-  min-width: 200px;
-  padding: ${designSystem.dimensions.spacings.s};
-  border: 1px solid ${designSystem.colors.light.borderInput};
-  position: absolute;
-  margin-top: 30px;
-  background-color: ${designSystem.colors.light.surfacePrimary};
-  border-radius: ${designSystem.tokens.borderRadiusForCard};
+const SignUpButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: ${designSystem.dimensions.spacings.xs}
+    ${designSystem.dimensions.spacings.m};
+  gap: ${designSystem.dimensions.spacings.s};
+  color: white;
+  cursor: pointer;
+  background: ${designSystem.colors.light.link};
   box-shadow: ${designSystem.tokens.shadowForBetaFlag};
-`;
+  border-radius: 6px;
 
-const CommercetoolsIDLogo = styled.div`
-  height: 42px;
-  width: 70px;
-  margin: 0 auto;
-`;
-
-const LogoutSection = styled.div`
-  border-top: 1px solid ${designSystem.colors.light.borderInput};
-  :hover {
-    background-color: ${designSystem.colors.light.surfaceSecondary1};
+  p {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
   }
 `;
 
-const LogoutButton = styled.button`
-  color: #666666;
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  padding: 6px 0 0 0;
-  cursor: pointer;
-  border: none;
-  width: 100%;
-  background: transparent;
-`;
-
-const MenuItem = styled.div`
-  padding: 0;
-  font-family: ${designSystem.typography.fontFamilies.primary};
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  text-align: ${(props) => props.align || 'left'};
-  font-weight: ${(props) =>
-    props.type === 'primary'
-      ? designSystem.typography.fontWeights.bold
-      : designSystem.typography.fontWeights.regular};
-`;
-
 const UserAvatar = (props) => {
-  const [isMouseOver, setIsMouseOver] = useState(false);
   const email = props.userData.find(
     (item) => Object.keys(item)[0] === 'email'
   )?.email;
   const name = props.userData.find(
     (item) => Object.keys(item)[0] === 'name'
   )?.name;
-  const avatarInitials = getAvatarInitials(name || email);
+  const avatarInitials = getAvatarInitials(name || email).map((initial) =>
+    initial.toUpperCase()
+  );
   return (
-    <div
-      onMouseOver={() => setIsMouseOver(true)}
-      onMouseOut={() => setIsMouseOver(false)}
-    >
-      <Spacings.Inline alignItems="center">
-        <Avatar
-          size="s"
-          gravatarHash={md5(email || '')}
-          firstName={avatarInitials[0]}
-          lastName={avatarInitials[1]}
-          isHighlighted={isMouseOver}
-        />
-        {props.isOpen ? (
-          <AngleUpIcon
-            size="medium"
-            color={isMouseOver ? 'neutral60' : 'solid'}
-          />
-        ) : (
-          <AngleDownIcon
-            size="medium"
-            color={isMouseOver ? 'neutral60' : 'solid'}
-          />
-        )}
-      </Spacings.Inline>
-    </div>
+    <Spacings.Inline alignItems="center">
+      <Avatar>{avatarInitials}</Avatar>
+    </Spacings.Inline>
   );
 };
 UserAvatar.displayName = 'UserAvatar';
 
-const UserInformation = (props) => {
-  const { learnApiBaseUrl } = useContext(ConfigContext);
-  const { isOpen, getToggleButtonProps, getMenuProps } = useSelect({
-    items: Object.values(props.userData),
-  });
-
+const LoggedInState = (props) => {
   return (
-    <AvatarContainer data-test-id="avatar-container">
-      <AvatarButton {...getToggleButtonProps()}>
-        <UserAvatar userData={props.userData} isOpen={isOpen} />
-      </AvatarButton>
-      {isOpen && (
-        <DropdownContainer {...getMenuProps()}>
-          <Spacings.Stack scale="xs">
-            <CommercetoolsIDLogo>
-              <CommercetoolsIDIcon />
-            </CommercetoolsIDLogo>
-            {props.userData.map((obj, index) => {
-              const [key, data] = Object.entries(obj)[0];
-              return (
-                <MenuItem
-                  key={key}
-                  align="center"
-                  type={index === 0 ? 'primary' : 'secondary'}
-                >
-                  {data}
-                </MenuItem>
-              );
-            })}
-
-            <LogoutSection>
-              <LogoutButton
-                data-test-id="avatar-menu-logout"
-                onClick={() =>
-                  props.logout({
-                    logoutParams: {
-                      returnTo: getLogoutReturnUrl(
-                        learnApiBaseUrl,
-                        document.location
-                      ),
-                    },
-                  })
-                }
-              >
-                <MenuItem type="secondary">Logout</MenuItem>
-              </LogoutButton>
-            </LogoutSection>
-          </Spacings.Stack>
-        </DropdownContainer>
-      )}
+    <AvatarContainer>
+      <LogoutButton />
+      <UserAvatar userData={props.userData} />
     </AvatarContainer>
   );
 };
 
-UserInformation.displayName = 'UserInformation';
+LoggedInState.displayName = 'LoggedInState';
+
+const LoggedOutState = () => {
+  const { loginWithRedirect } = useAuth0();
+
+  return (
+    <AvatarContainer>
+      <LoginButton data-test-id="login-button" label="Login" />
+      <SignUpButton
+        onClick={() =>
+          loginWithRedirect({
+            authorizationParams: {
+              screen_hint: 'signup',
+            },
+          })
+        }
+      >
+        <GraduationCapIcon color="surface" />
+        <p>Sign up</p>
+      </SignUpButton>
+    </AvatarContainer>
+  );
+};
+
+LoggedOutState.displayName = 'LoggedOutState';
 
 const UserProfile = () => {
   const { isAuthenticated, logout, getIdTokenClaims } = useAuth0();
@@ -208,21 +139,19 @@ const UserProfile = () => {
       });
     }
 
-    return <UserInformation userData={userData} logout={logout} />;
+    return <LoggedInState userData={userData} logout={logout} />;
   }
-  return null;
+  return <LoggedOutState />;
 };
 
 UserProfile.displayName = 'UserProfile';
 
 UserAvatar.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
   userData: PropTypes.array.isRequired,
 };
 
-UserInformation.propTypes = {
+LoggedInState.propTypes = {
   userData: PropTypes.array.isRequired,
-  logout: PropTypes.func.isRequired,
 };
 
 export default UserProfile;
