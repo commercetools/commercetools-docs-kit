@@ -1,5 +1,21 @@
 # @commercetools-website/docs-smoke-test
 
+## 7.3.0
+
+### Minor Changes
+
+- [#1595](https://github.com/commercetools/commercetools-docs-kit/pull/1595) [`c7406d9b`](https://github.com/commercetools/commercetools-docs-kit/commit/c7406d9bcbf9f2443c42aab7f2f0313c370633da) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Added status indicator for course and course topics
+
+### Patch Changes
+
+- Updated dependencies [[`c7406d9b`](https://github.com/commercetools/commercetools-docs-kit/commit/c7406d9bcbf9f2443c42aab7f2f0313c370633da), [`c478edd5`](https://github.com/commercetools/commercetools-docs-kit/commit/c478edd5ab3664da92195b44aef7f6ffc9daac04)]:
+  - @commercetools-docs/gatsby-theme-learning@21.3.0
+  - @commercetools-docs/gatsby-theme-docs@21.3.0
+  - @commercetools-docs/ui-kit@21.3.0
+  - @commercetools-docs/gatsby-theme-code-examples@21.3.0
+  - @commercetools-docs/gatsby-theme-constants@21.3.0
+  - @commercetools-docs/gatsby-theme-sso-ui-kit@21.3.0
+
 ## 7.2.0
 
 ### Minor Changes
