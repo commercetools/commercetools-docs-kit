@@ -15,10 +15,10 @@ import {
   getLogoutReturnUrl,
 } from '../../../components/sso.utils';
 import CommercetoolsIDIcon from '../../../icons/commercetools_ID_logo.svg';
-
-const AUTH0_CUSTOM_CLAIM_NS = 'https://docs.commercetools.com/';
-const AUTH0_CLAIM_DISPLAYNAME = `${AUTH0_CUSTOM_CLAIM_NS}display_name`;
-const AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME = `${AUTH0_CUSTOM_CLAIM_NS}global_account_name`;
+import {
+  AUTH0_CLAIM_DISPLAYNAME,
+  AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME,
+} from '../../../sso.const';
 
 const AvatarContainer = styled.div`
   display: flex;

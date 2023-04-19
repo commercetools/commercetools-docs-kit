@@ -2,12 +2,6 @@ import { User } from '@auth0/auth0-react';
 import { createContext, useReducer } from 'react';
 import type { ReactNode } from 'react';
 
-export enum EProfileState {
-  UNKNOW = 'UNKNOW',
-  COMPLETE = 'COMPLETE',
-  INCOMPLETE = 'INCOMPLETE',
-}
-
 export type LearningState = {
   user: {
     profile: User | undefined;

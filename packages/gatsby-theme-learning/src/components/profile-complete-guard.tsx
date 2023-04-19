@@ -1,12 +1,7 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import type { User } from '@auth0/auth0-react';
+import { User, useAuth0 } from '@auth0/auth0-react';
 import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
-import { useAuthToken } from '../hooks/use-auth-token';
-import ConfigContext, {
-  EFeatureFlag,
-  isFeatureEnabled,
-} from './config-context';
+import { AUTH0_CLAIM_COMPANY } from '@commercetools-docs/gatsby-theme-sso-ui-kit';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -14,42 +9,36 @@ export type TProfileFormValues = {
   company: string;
 };
 
-const ProfileModalGuard = () => {
-  const { isAuthenticated, user } = useAuth0();
-  const { getAuthToken } = useAuthToken();
-  const { auth0Domain, features } = useContext(ConfigContext);
-  const { updateProfile } = useContext(LearningContext);
+const contextProfileAdapter = (auth0User: User) => {
+  const {
+    [AUTH0_CLAIM_COMPANY]: company,
+    user_metadata,
+    sub,
+    ...rest
+  } = auth0User;
 
-  const isModalFeatureEnabeld = isFeatureEnabled(
-    EFeatureFlag.CompleteProfileModal,
-    features
-  );
+  return {
+    ...rest,
+    user_id: sub,
+    user_metadata: {
+      ...user_metadata,
+      company,
+    },
+  };
+};
+
+const ProfileModalGuard = () => {
+  const { user, isAuthenticated } = useAuth0();
+  const {
+    updateProfile,
+    user: { profile },
+  } = useContext(LearningContext);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const authToken = await getAuthToken();
-        const getUserApiEndpoint = `https://${auth0Domain}/api/v2/users/${user?.sub}`;
-        const data = await fetch(getUserApiEndpoint, {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
-        if (data.status !== 200) {
-          throw new Error(`Error fetching user profile for user ${user?.sub}`);
-        }
-        const userData = (await data.json()) as User;
-        updateProfile(userData);
-      } catch (error) {
-        console.error(error);
-      }
+    if (isAuthenticated && !profile && user) {
+      updateProfile(contextProfileAdapter(user));
     }
-    if (isModalFeatureEnabeld && isAuthenticated) {
-      fetchData();
-    }
-  }, [isAuthenticated, isModalFeatureEnabeld]);
+  }, [isAuthenticated, profile]);
 };
 
 export default ProfileModalGuard;
