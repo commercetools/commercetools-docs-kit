@@ -1,5 +1,5 @@
 // A React component to be rendered in the top bar next to the top menu toggle button
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -9,14 +9,8 @@ import { GraduationCapIcon } from '@commercetools-uikit/icons';
 import LoginButton from '../../../../src/components/login-button';
 import LogoutButton from '../../../../src/components/logout-button';
 import ConfigContext from '../../../components/config-context';
-import {
-  getAvatarInitials,
-  getLogoutReturnUrl,
-} from '../../../components/sso.utils';
-import {
-  AUTH0_CLAIM_DISPLAYNAME,
-  AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME,
-} from '../../../sso.const';
+import { getAvatarInitials } from '../../../components/sso.utils';
+import { AUTH0_CLAIM_DISPLAYNAME } from '../../../sso.const';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -76,6 +70,9 @@ const UserAvatar = (props) => {
 UserAvatar.displayName = 'UserAvatar';
 
 const LoggedInState = (props) => {
+  const { hideLogin } = useContext(ConfigContext);
+
+  if (hideLogin) return null;
   return (
     <AvatarContainer>
       <LogoutButton />
@@ -88,7 +85,9 @@ LoggedInState.displayName = 'LoggedInState';
 
 const LoggedOutState = () => {
   const { loginWithRedirect } = useAuth0();
+  const { hideLogin } = useContext(ConfigContext);
 
+  if (hideLogin) return null;
   return (
     <AvatarContainer>
       <LoginButton data-test-id="login-button" label="Login" />
@@ -136,12 +135,6 @@ const UserProfile = () => {
     }
 
     userData.push({ email: customClaims.email });
-
-    if (customClaims[AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME]) {
-      userData.push({
-        association: customClaims[AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME],
-      });
-    }
 
     return <LoggedInState userData={userData} logout={logout} />;
   }
