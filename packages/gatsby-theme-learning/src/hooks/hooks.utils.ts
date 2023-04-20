@@ -4,6 +4,9 @@ import type {
   CourseWithDetails,
 } from '../external-types';
 
+export const getCredentialsByEnv = (env: 'production' | 'testing') =>
+  env === 'production' ? 'same-origin' : 'include';
+
 class FetchDataError extends Error {
   status: number | undefined;
   info: object | undefined;
@@ -20,7 +23,8 @@ class FetchDataError extends Error {
 export const fetcherWithToken = async (
   url: string,
   getAuthToken: () => Promise<string>,
-  learnApiBaseUrl: string
+  learnApiBaseUrl: string,
+  env: 'production' | 'testing'
 ): Promise<ApiCallResult<EnrolledCourses | CourseWithDetails>> => {
   const responseHandler = async (response: Response) => {
     if (!response.ok) {
@@ -52,6 +56,7 @@ export const fetcherWithToken = async (
         Accept: 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
+      credentials: getCredentialsByEnv(env),
     });
     return responseHandler(response);
   } catch (e) {

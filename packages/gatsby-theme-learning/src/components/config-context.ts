@@ -9,12 +9,14 @@ export type Config = {
   learnApiBaseUrl: string;
   auth0Domain: string;
   features: Array<EFeatureFlag>;
+  env: 'production' | 'testing';
 };
 
 const ConfigContext = createContext<Config>({
   learnApiBaseUrl: '',
   auth0Domain: '',
   features: [],
+  env: 'testing',
 });
 
 export const isFeatureEnabled = (

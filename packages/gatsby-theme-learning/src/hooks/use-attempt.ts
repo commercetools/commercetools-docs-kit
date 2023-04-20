@@ -2,6 +2,7 @@ import { useState, useContext, useCallback } from 'react';
 import ConfigContext from '../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
+import { getCredentialsByEnv } from './hooks.utils';
 
 type FetchAttemptParams = {
   courseId: string;
@@ -23,7 +24,7 @@ export class ServiceDownError extends Error {
 }
 
 export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
-  const { learnApiBaseUrl } = useContext(ConfigContext);
+  const { learnApiBaseUrl, env } = useContext(ConfigContext);
   const { courseId, quizId } = fetchAttemptParams;
   const { getAuthToken } = useAuthToken();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -41,6 +42,7 @@ export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
           Accept: 'application/json',
           Authorization: `Bearer ${accessToken}`,
         },
+        credentials: getCredentialsByEnv(env),
       });
       return data;
     },
