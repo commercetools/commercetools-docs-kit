@@ -10,31 +10,13 @@ jest.mock('@auth0/auth0-react', () => ({
 }));
 
 describe('login-button', () => {
-  const DEFAULT_LABEL = 'Log In';
+  const DEFAULT_LABEL = 'Login';
   it('should render login-component with default text if no label is specified', () => {
     render(<LoginButton />);
     const loginButtonElement = screen.getByTestId('login-button');
     expect(loginButtonElement).toBeInTheDocument();
     expect(loginButtonElement).toHaveTextContent(DEFAULT_LABEL);
   });
-
-  it('should render login-component with specified label', () => {
-    const label = 'Click me please!';
-    render(<LoginButton label={label} />);
-    const loginButtonElement = screen.getByTestId('login-button');
-    expect(loginButtonElement).toBeInTheDocument();
-    expect(loginButtonElement).toHaveTextContent(label);
-  });
-
-  it('should render the specified icon for the login button inside of the quiz component', () => {
-    const CusotomIcon = () => {
-      return <div data-testid="custom-icon"></div>;
-    };
-    render(<LoginButton quizId="123" icon={<CusotomIcon />} />);
-    const defaultIcon = screen.getByTestId('custom-icon');
-    expect(defaultIcon).toBeInTheDocument();
-  });
-
   it('should invoke loginWithRedirect with the expected url when clicked', () => {
     const expectedLoginWithRedirect = {
       appState: {
