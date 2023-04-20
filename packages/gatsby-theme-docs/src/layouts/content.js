@@ -22,8 +22,10 @@ import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 import PageReadTime from './internals/page-read-time-estimation';
-import { useCourseInfoByPageSlugs } from '../hooks/use-course-pages';
-import { CourseCompleteModal } from '@commercetools-docs/gatsby-theme-learning';
+import {
+  CourseCompleteModal,
+  useCourseInfoByPageSlugs,
+} from '@commercetools-docs/gatsby-theme-learning';
 
 const LayoutContent = (props) => {
   const courseInfo = useCourseInfoByPageSlugs([props.pageContext.slug]);

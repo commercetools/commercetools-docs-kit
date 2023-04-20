@@ -1,11 +1,44 @@
-import { useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
+import { navigate } from 'gatsby';
 import { useFetchCourseDetails } from '../hooks/use-course-details';
 import { ConfirmationDialog, useModalState } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import useIsClientSide from '../hooks/use-is-client-side';
+import {
+  OrderedCoursesInfo,
+  useOrderedCoursesInfo,
+} from '../hooks/use-course-pages';
 
 type CourseCompleteModalProps = {
   courseId: number;
+};
+
+/**
+ * Returns
+ * - the next (relative to the current) unfinished course path or
+ * - the first unfinished course path starting from the first in the learning path or
+ * - landing page url (/) in case all the courses are in completed state
+ */
+export const getNextUnfinishedCoursePath = (
+  coursesInfo: OrderedCoursesInfo[],
+  currentCourseId: number
+): string => {
+  const currentCourseIndex = coursesInfo.findIndex(
+    (course) => course.courseId === currentCourseId
+  );
+  const nextUnfinished = coursesInfo
+    .slice(currentCourseIndex)
+    .find((courseInfo) => courseInfo.status !== 'completed');
+  if (nextUnfinished) {
+    return nextUnfinished.pages[0]?.path;
+  }
+  const prevUnfinished = coursesInfo.find(
+    (courseInfo) => courseInfo.status !== 'completed'
+  );
+  if (prevUnfinished) {
+    return prevUnfinished.pages[0]?.path;
+  }
+  return '/';
 };
 
 const CourseCompleteModal = (props: CourseCompleteModalProps) => {
@@ -13,9 +46,20 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
     'inProgress' | 'completed' | undefined
   >();
   const [modalSize, setModalSize] = useState<'l' | 'm'>('l');
+  const [text, setText] = useState<string>(
+    "You've now completed this course and unlocked a new skill!"
+  );
   const { isModalOpen, openModal, closeModal } = useModalState();
   const { data } = useFetchCourseDetails(props.courseId);
   const { isClientSide } = useIsClientSide();
+  const courseInfo = useOrderedCoursesInfo();
+  const goToUrl = getNextUnfinishedCoursePath(courseInfo, props.courseId);
+
+  useEffect(() => {
+    if (goToUrl === '/') {
+      setText("You've now completed this learning path");
+    }
+  }, [goToUrl]);
 
   useEffect(() => {
     const newCourseStatus = data?.result?.status;
@@ -32,10 +76,18 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
   }, [data]);
 
   useEffect(() => {
+    // adaptive modal. If viewport is less than 530, use medium modal size
     if (isClientSide && window.innerWidth < 530) {
       setModalSize('m');
     }
   }, [isClientSide]);
+
+  const onConfirmHandler = (e: SyntheticEvent<Element, Event>) => {
+    e.preventDefault();
+    const goToUrl = getNextUnfinishedCoursePath(courseInfo, props.courseId);
+    closeModal();
+    navigate(goToUrl);
+  };
 
   return (
     <ConfirmationDialog
@@ -45,10 +97,10 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
       labelPrimary="Continue"
       onClose={closeModal}
       onCancel={closeModal}
-      onConfirm={closeModal}
+      onConfirm={onConfirmHandler}
     >
       <SpacingsStack scale="m">
-        <p>You&apos;ve now completed this course and unlocked a new skill!</p>
+        <p>{text}</p>
       </SpacingsStack>
     </ConfirmationDialog>
   );
