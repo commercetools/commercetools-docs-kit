@@ -66,7 +66,7 @@ const validateSelfLearningContentStructure = (
   allNavigationNodes.forEach((navigationNode) => {
     let prevCourseId = undefined;
     const chapterTitle = navigationNode.chapterTitle;
-    navigationNode.pages.forEach((page) => {
+    navigationNode?.pages?.forEach((page) => {
       if (!slugToCourseMap.has(page.path)) {
         return; // the path is not self-learning content
       }
