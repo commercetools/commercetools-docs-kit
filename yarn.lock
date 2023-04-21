@@ -2989,7 +2989,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@21.3.1, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@21.3.2, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
@@ -3944,7 +3944,7 @@ __metadata:
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
     "@commercetools-docs/gatsby-theme-api-docs": 21.3.1
-    "@commercetools-docs/gatsby-theme-docs": 21.3.1
+    "@commercetools-docs/gatsby-theme-docs": 21.3.2
     "@commercetools-docs/rmf-codegen": 13.25.0
     gatsby: 5.8.0
     gatsby-cli: 5.8.0
@@ -3960,7 +3960,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 21.3.1
     "@commercetools-docs/gatsby-theme-constants": 21.3.1
-    "@commercetools-docs/gatsby-theme-docs": 21.3.1
+    "@commercetools-docs/gatsby-theme-docs": 21.3.2
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 21.3.1
     "@commercetools-docs/ui-kit": 21.3.1
     "@commercetools-uikit/avatar": 15.3.0
@@ -3980,7 +3980,7 @@ __metadata:
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 21.3.1
-    "@commercetools-docs/gatsby-theme-docs": 21.3.1
+    "@commercetools-docs/gatsby-theme-docs": 21.3.2
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 21.3.1
     gatsby: 5.8.0
     gatsby-cli: 5.8.0
@@ -3993,7 +3993,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 21.3.1
+    "@commercetools-docs/gatsby-theme-docs": 21.3.2
     gatsby: 5.8.0
     gatsby-cli: 5.8.0
     react: 18.2.0

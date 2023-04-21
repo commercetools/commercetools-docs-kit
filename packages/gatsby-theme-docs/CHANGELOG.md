@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 21.3.2
+
+### Patch Changes
+
+- [#1626](https://github.com/commercetools/commercetools-docs-kit/pull/1626) [`1a3641e9`](https://github.com/commercetools/commercetools-docs-kit/commit/1a3641e9665d4d5631cfa9b9fb945d46e6faea29) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - handle navigation items with no pages
+
 ## 21.3.1
 
 ### Patch Changes

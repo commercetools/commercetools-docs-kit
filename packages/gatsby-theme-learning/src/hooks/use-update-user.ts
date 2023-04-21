@@ -4,13 +4,14 @@ import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
 import { User } from '@auth0/auth0-react';
 import { MaintenanceModeError, ServiceDownError } from './use-attempt';
+import { getCredentialsByEnv } from './hooks.utils';
 
 type UpdateUserParams = {
   userId: string;
 };
 
 export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
-  const { learnApiBaseUrl } = useContext(ConfigContext);
+  const { learnApiBaseUrl, env } = useContext(ConfigContext);
   const { userId } = updateUserParams;
   const { getAuthToken } = useAuthToken();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -30,6 +31,7 @@ export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
+        credentials: getCredentialsByEnv(env),
       });
       return data;
     },
