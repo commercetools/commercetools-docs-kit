@@ -1,65 +1,48 @@
 import { useState, useContext, useCallback } from 'react';
-import { useSWRConfig } from 'swr';
 import ConfigContext from '../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
-import type { SubmissionAttempt } from '../components/quiz.types';
+import { User } from '@auth0/auth0-react';
 import { MaintenanceModeError, ServiceDownError } from './use-attempt';
 import { getCredentialsByEnv } from './hooks.utils';
 
-type SubmitAttemptParams = {
-  courseId: string;
-  quizId: string;
+type UpdateUserParams = {
+  userId: string;
 };
 
-export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
+export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
   const { learnApiBaseUrl, env } = useContext(ConfigContext);
-  const { mutate } = useSWRConfig();
-  const { courseId, quizId } = submitAttemptParams;
+  const { userId } = updateUserParams;
+  const { getAuthToken } = useAuthToken();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>();
   const [data, setData] = useState<QuizAttempt | undefined>();
   const [correlationId, setCorrelationId] = useState<string | undefined>();
-  const { getAuthToken } = useAuthToken();
 
-  const submitNewAttempt = useCallback(
-    async (
-      attemptId: number,
-      attemptData: SubmissionAttempt,
-      finish: boolean
-    ) => {
-      const invalidateCache = () => {
-        mutate('/api/courses');
-        mutate(`/api/courses/${courseId}`);
-      };
-      const apiEndpoint = `${learnApiBaseUrl}/api/courses/${courseId}/quizzes/${quizId}/attempts/${attemptId}?finish=${finish}`;
+  const updateUser = useCallback(
+    async (newUser: User): Promise<Response> => {
+      const apiEndpoint = `${learnApiBaseUrl}/api/users/${userId}`;
       const accessToken = await getAuthToken();
       const data = await fetch(apiEndpoint, {
+        method: 'POST',
+        body: JSON.stringify(newUser),
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(attemptData),
-        method: 'POST',
-        cache: 'no-cache',
         credentials: getCredentialsByEnv(env),
       });
-      invalidateCache();
       return data;
     },
-    [courseId, getAuthToken, learnApiBaseUrl, quizId, mutate]
+    [userId, getAuthToken, learnApiBaseUrl]
   );
 
-  const submitAttempt = useCallback(
-    async (
-      attemptId: number,
-      attemptData: SubmissionAttempt,
-      finish: boolean
-    ) => {
+  const performUpdateUser = useCallback(
+    async (newuser: User) => {
       try {
         setIsLoading(true);
-        const data = await submitNewAttempt(attemptId, attemptData, finish);
+        const data = await updateUser(newuser);
         const correlationId = data.headers.get('X-Correlation-ID');
         if (correlationId) {
           setCorrelationId(correlationId);
@@ -78,7 +61,10 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
           throw new Error();
         } else {
           const json = await data.json();
-          setData(json);
+          if (json?.errors?.length > 0) {
+            throw new Error(json?.errors[0].message);
+          }
+          setData(json.result);
         }
       } catch (error) {
         if (
@@ -88,20 +74,20 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
           console.error(error.message);
           setError(error.message);
         } else {
-          const message = `Error while submitting answers courseId: ${courseId}, quizId: ${quizId}, attemptId: ${attemptId}, finish: ${finish}`;
+          const message = `Error while updating user: ${userId}`;
           console.error(message);
-          setError('Error submitting answers');
+          setError('Unable to update user');
         }
       } finally {
         setIsLoading(false);
       }
     },
-    [courseId, quizId, submitNewAttempt]
+    [updateUser, userId]
   );
 
   return {
-    submitAttempt,
-    attempt: data,
+    performUpdateUser,
+    updatedUser: data,
     isLoading,
     error,
     correlationId,

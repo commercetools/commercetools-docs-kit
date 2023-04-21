@@ -6,6 +6,7 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { withPrefix } from 'gatsby';
+import { PortalsContainer } from '@commercetools-docs/ui-kit';
 // NOTE: prefer importing specific module (https://github.com/gatsbyjs/gatsby/pull/35985)
 // This might be related to the error `Reading from "bun:ffi" is not handled by plugins (Unhandled scheme)`.
 import { createContentDigest } from 'gatsby-core-utils/dist/create-content-digest';
@@ -89,4 +90,13 @@ export const replaceRenderer = ({
       }}
     />,
   ]);
+};
+
+export const wrapPageElement = ({ element }) => {
+  return (
+    <>
+      <PortalsContainer />
+      {element}
+    </>
+  );
 };

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useContext } from 'react';
 import styled from '@emotion/styled';
 import { customProperties } from '@commercetools-uikit/design-system';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
@@ -10,6 +10,7 @@ import { useSubmitAttempt } from '../hooks/use-submit-attempt';
 import QuizForm from './quiz-form';
 import type { PassthroughData, SubmissionAttempt } from './quiz.types';
 import { canUseDOM, getQuizOutcome, isTestUserEmail } from './quiz.utils';
+import { LearningContext } from './learning-context';
 
 export const OUTCOME_CORRECT = 'correct';
 export const OUTCOME_INCORRECT = 'incorrect';
@@ -114,10 +115,9 @@ const formattedError = (error: string, correlationId: string | undefined) =>
 
 const Quiz = (props: QuizProps) => {
   const {
-    isAuthenticated: isLoggedIn,
-    isLoading: isAuthLoading,
-    user,
-  } = useAuth0();
+    user: { profile },
+  } = useContext(LearningContext);
+  const { isAuthenticated: isLoggedIn, isLoading: isAuthLoading } = useAuth0();
 
   const [formAttemptData, setFormAttemptData] = useState<
     QuizAttempt | undefined
@@ -207,7 +207,7 @@ const Quiz = (props: QuizProps) => {
             ? formattedError(submitError, submitCorrelationId)
             : undefined
         }
-        isTestMode={isTestUserEmail(user?.email || '')}
+        isTestMode={isTestUserEmail(profile?.email || '')}
         onQuizSubmit={onQuizSubmit}
         onQuizRetry={onQuizRetry}
       />

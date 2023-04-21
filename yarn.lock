@@ -3094,15 +3094,20 @@ __metadata:
     "@commercetools-uikit/design-system": 15.3.0
     "@commercetools-uikit/icons": 15.3.0
     "@commercetools-uikit/loading-spinner": 15.3.0
+    "@commercetools-uikit/messages": 15.3.0
     "@commercetools-uikit/notifications": 15.3.0
     "@commercetools-uikit/primary-button": 15.3.0
     "@commercetools-uikit/radio-input": 15.3.0
     "@commercetools-uikit/secondary-button": 15.3.0
     "@commercetools-uikit/spacings": 15.3.0
+    "@commercetools-uikit/spacings-stack": 15.3.0
+    "@commercetools-uikit/text-field": 15.3.0
+    "@commercetools-uikit/text-input": 15.3.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@mdx-js/react": 1.6.22
     "@types/react": 18.0.28
+    formik: 2.2.9
     react: 18.2.0
     react-dom: 18.2.0
     react-intersection-observer: 9.4.3
@@ -3178,30 +3183,44 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/card": 15.3.0
     "@commercetools-uikit/design-system": 15.3.0
     "@commercetools-uikit/icons": 15.3.0
     "@commercetools-uikit/loading-spinner": 15.3.0
+    "@commercetools-uikit/primary-button": 15.3.0
+    "@commercetools-uikit/secondary-button": 15.3.0
+    "@commercetools-uikit/secondary-icon-button": 15.3.0
+    "@commercetools-uikit/spacings": 15.3.0
     "@commercetools-uikit/spacings-inline": 15.3.0
+    "@commercetools-uikit/text": 15.3.0
     "@commercetools-uikit/tooltip": 15.3.0
     "@commercetools-uikit/utils": 15.3.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
+    "@react-hook/latest": 1.0.3
+    "@react-hook/resize-observer": 1.2.6
     "@svgr/cli": 7.0.0
     "@types/lodash.kebabcase": 4.1.7
+    "@types/lodash.omitby": 4.6.7
     "@types/mdast": ^3.0.10
+    "@types/raf-schd": ^4.0.1
     "@types/react": 18.0.28
     "@types/react-dom": 18.0.11
     "@types/react-is": 17.0.3
+    "@types/react-modal": ^3.13.1
     "@types/unist": ^2.0.6
     lodash.kebabcase: 4.1.1
+    lodash.omitby: 4.1.1
     lodash.throttle: 4.1.1
     murmurhash: 2.0.1
     prism-react-renderer: 1.3.5
     prop-types: 15.8.1
+    raf-schd: ^4.0.3
     react: 18.2.0
     react-dom: 18.2.0
     react-intl: ^6.2.8
     react-is: 18.2.0
+    react-modal: 3.16.1
     rehype-react: 7.1.2
     remark-frontmatter: 4.0.1
     remark-parse: 10.0.1
@@ -3398,6 +3417,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@commercetools-uikit/field-errors@npm:15.3.0":
+  version: 15.3.0
+  resolution: "@commercetools-uikit/field-errors@npm:15.3.0"
+  dependencies:
+    "@babel/runtime": ^7.19.0
+    "@babel/runtime-corejs3": ^7.19.1
+    "@commercetools-uikit/messages": 15.3.0
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    prop-types: 15.8.1
+  peerDependencies:
+    react: 17.x
+    react-intl: 5.x
+  checksum: cb0e38691529e43aa59238b68da29c7236346f8455a790d04f65806b4de5975d0b91e13b1aa68c5e6192b93b487cdf4b054d30fd272e0f89dd41d41ce6737da4
+  languageName: node
+  linkType: hard
+
+"@commercetools-uikit/field-label@npm:15.3.0":
+  version: 15.3.0
+  resolution: "@commercetools-uikit/field-label@npm:15.3.0"
+  dependencies:
+    "@babel/runtime": ^7.19.0
+    "@babel/runtime-corejs3": ^7.19.1
+    "@commercetools-uikit/constraints": 15.3.0
+    "@commercetools-uikit/icon-button": 15.3.0
+    "@commercetools-uikit/icons": 15.3.0
+    "@commercetools-uikit/label": 15.3.0
+    "@commercetools-uikit/spacings-inline": 15.3.0
+    "@commercetools-uikit/spacings-stack": 15.3.0
+    "@commercetools-uikit/text": 15.3.0
+    "@commercetools-uikit/utils": 15.3.0
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    prop-types: 15.8.1
+    react-intl: ^5.25.1
+  peerDependencies:
+    react: 17.x
+  checksum: 090d24b7c3ca3c3cc5a056dac64ca45240f0fc40c57fffad678c27e2e0c698425d6ac1a0c4093bbf2f5b8d45ccde1819aeeb4e5750fdc0fbebfd786ce2544733
+  languageName: node
+  linkType: hard
+
 "@commercetools-uikit/flat-button@npm:15.3.0":
   version: 15.3.0
   resolution: "@commercetools-uikit/flat-button@npm:15.3.0"
@@ -3496,6 +3556,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@commercetools-uikit/label@npm:15.3.0":
+  version: 15.3.0
+  resolution: "@commercetools-uikit/label@npm:15.3.0"
+  dependencies:
+    "@babel/runtime": ^7.19.0
+    "@babel/runtime-corejs3": ^7.19.1
+    "@commercetools-uikit/design-system": 15.3.0
+    "@commercetools-uikit/text": 15.3.0
+    "@commercetools-uikit/utils": 15.3.0
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    prop-types: 15.8.1
+  peerDependencies:
+    react: 17.x
+    react-intl: 5.x
+  checksum: f68274be5edf5cf55705a4da59cf289bc8cc2ef09221f2f3171009ebcd901321d0a239f0adaff153168e2d34df463dd6ae10991318e3a39578dd7e54c2166c51
+  languageName: node
+  linkType: hard
+
 "@commercetools-uikit/loading-spinner@npm:15.3.0":
   version: 15.3.0
   resolution: "@commercetools-uikit/loading-spinner@npm:15.3.0"
@@ -3512,6 +3591,24 @@ __metadata:
   peerDependencies:
     react: 17.x
   checksum: f47064b7f89d0813e407447429b80c2eb402472d34e63d52def866c5a9640fcd6c590427baf521b4e84c0cc3ac053a3f979a0e42c287741d60231943ac5e2ad5
+  languageName: node
+  linkType: hard
+
+"@commercetools-uikit/messages@npm:15.3.0":
+  version: 15.3.0
+  resolution: "@commercetools-uikit/messages@npm:15.3.0"
+  dependencies:
+    "@babel/runtime": ^7.19.0
+    "@babel/runtime-corejs3": ^7.19.1
+    "@commercetools-uikit/text": 15.3.0
+    "@commercetools-uikit/utils": 15.3.0
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    prop-types: 15.8.1
+    react-intl: ^5.25.1
+  peerDependencies:
+    react: 17.x
+  checksum: 8d9e915e5b95ee52de990162844b9098eec55d6e4348fc7e39655c3231d4275f95c2477713f159b841737b302623e50a13b00d1a06902bd7b488d8f43f3f16e3
   languageName: node
   linkType: hard
 
@@ -3740,6 +3837,48 @@ __metadata:
   peerDependencies:
     react: 17.x
   checksum: 781d375f9ef559d66aee4c75e08b2318339a4f538c04e470b6db8b0cf7762eb51e7d55a940da664fa1c77805ba549a16bbc81ef653c6b0fbf4d6ea1b0392d748
+  languageName: node
+  linkType: hard
+
+"@commercetools-uikit/text-field@npm:15.3.0":
+  version: 15.3.0
+  resolution: "@commercetools-uikit/text-field@npm:15.3.0"
+  dependencies:
+    "@babel/runtime": ^7.19.0
+    "@babel/runtime-corejs3": ^7.19.1
+    "@commercetools-uikit/constraints": 15.3.0
+    "@commercetools-uikit/design-system": 15.3.0
+    "@commercetools-uikit/field-errors": 15.3.0
+    "@commercetools-uikit/field-label": 15.3.0
+    "@commercetools-uikit/spacings-stack": 15.3.0
+    "@commercetools-uikit/text-input": 15.3.0
+    "@commercetools-uikit/utils": 15.3.0
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    prop-types: 15.8.1
+    react-intl: ^5.25.1
+  peerDependencies:
+    react: 17.x
+  checksum: 0cc5dd307b39441052fd4d55a63b54a8b527f5efc7243db95c63124954926f176ae4f74825de273c38f0f60abdaa2e7f6b26b273122f014011e1d2c96d8e338c
+  languageName: node
+  linkType: hard
+
+"@commercetools-uikit/text-input@npm:15.3.0":
+  version: 15.3.0
+  resolution: "@commercetools-uikit/text-input@npm:15.3.0"
+  dependencies:
+    "@babel/runtime": ^7.19.0
+    "@babel/runtime-corejs3": ^7.19.1
+    "@commercetools-uikit/constraints": 15.3.0
+    "@commercetools-uikit/design-system": 15.3.0
+    "@commercetools-uikit/input-utils": 15.3.0
+    "@commercetools-uikit/utils": 15.3.0
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    prop-types: 15.8.1
+  peerDependencies:
+    react: 17.x
+  checksum: 0a89403a28fce1026c726187cd309216a88b7e15e9d3d29dcb5f7e5b65d8ce1df75519de23fda62d263def1d66784180fc9efb97c225adc1f6d9952daaa9efb1
   languageName: node
   linkType: hard
 
@@ -6201,6 +6340,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@juggle/resize-observer@npm:^3.3.1":
+  version: 3.4.0
+  resolution: "@juggle/resize-observer@npm:3.4.0"
+  checksum: 2505028c05cc2e17639fcad06218b1c4b60f932a4ebb4b41ab546ef8c157031ae377e3f560903801f6d01706dbefd4943b6c4704bf19ed86dfa1c62f1473a570
+  languageName: node
+  linkType: hard
+
 "@lezer/common@npm:^0.15.0, @lezer/common@npm:^0.15.7":
   version: 0.15.12
   resolution: "@lezer/common@npm:0.15.12"
@@ -7355,6 +7501,37 @@ __metadata:
     pirates: ^4.0.1
     source-map-support: ^0.5.16
   checksum: 5043b0d8a09d370f955b713d350fa01d3f4d9a6f2c8a88019ba239d584981e6610e6eda75fb235aab00839afd23ded6bfcfdc0a492d73e697bd58b3cf2bc534e
+  languageName: node
+  linkType: hard
+
+"@react-hook/latest@npm:1.0.3, @react-hook/latest@npm:^1.0.2":
+  version: 1.0.3
+  resolution: "@react-hook/latest@npm:1.0.3"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 2408c9cd35c5cfa7697b6da3bc5eebef254a932ade70955074c474f23be7dd3e2f81bbba12edcc9208bd0f89c6ed366d6b11d4f6d7b1052877a0bac8f74afad4
+  languageName: node
+  linkType: hard
+
+"@react-hook/passive-layout-effect@npm:^1.2.0":
+  version: 1.2.1
+  resolution: "@react-hook/passive-layout-effect@npm:1.2.1"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 217cb8aa90fb8e677672319a9a466d7752890cf4357c76df000b207696e9cc717cf2ee88080671cc9dae238a82f92093ab4f61ab2f6032d2a8db958fc7d99b5d
+  languageName: node
+  linkType: hard
+
+"@react-hook/resize-observer@npm:1.2.6":
+  version: 1.2.6
+  resolution: "@react-hook/resize-observer@npm:1.2.6"
+  dependencies:
+    "@juggle/resize-observer": ^3.3.1
+    "@react-hook/latest": ^1.0.2
+    "@react-hook/passive-layout-effect": ^1.2.0
+  peerDependencies:
+    react: ">=16.8"
+  checksum: d2ff6c50e847514acad774f2a4010fb1e6782a231ae00c9507c1a98028b3a26399e35f094170918f11b1eeafc581d60da7641bc178d496abf00c56eee8a6b36b
   languageName: node
   linkType: hard
 
@@ -8552,6 +8729,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash.omitby@npm:4.6.7":
+  version: 4.6.7
+  resolution: "@types/lodash.omitby@npm:4.6.7"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: 0ff20ffb94524d2c0714cb474b8b2723d88225a347d0c16f07d216122aa79dab40a826efeadd84d2b82f1ef00a6d1e311cc6844e06430e43c1d3cd587d4e6481
+  languageName: node
+  linkType: hard
+
 "@types/lodash@npm:*":
   version: 4.14.186
   resolution: "@types/lodash@npm:4.14.186"
@@ -8701,6 +8887,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/raf-schd@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@types/raf-schd@npm:4.0.1"
+  checksum: 0babaa85541aadc6e5f8aa64ec79cd68bf67ea56abb7610c8daf3ca5f4b1a75d12e4e147a0b5434938a4031650ebddc733021ec4e7db4f11f7955390ec32c917
+  languageName: node
+  linkType: hard
+
 "@types/reach__router@npm:^1.3.10":
   version: 1.3.10
   resolution: "@types/reach__router@npm:1.3.10"
@@ -8734,6 +8927,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: 6abb7c47d54f012272650df8a962a28bd82f219291e5ef8b4dfa7fe0bb98ae243b060bf9fbe8ceff6213141794855a006db194b490b00ffd15842ae19d0ce1f0
+  languageName: node
+  linkType: hard
+
+"@types/react-modal@npm:^3.13.1":
+  version: 3.13.1
+  resolution: "@types/react-modal@npm:3.13.1"
+  dependencies:
+    "@types/react": "*"
+  checksum: b0ad403e0051a2882e9086c6006cc342901b1c90caf760893b31717a5cbc04f86cc1ea7b5ce12a2c8350c9c09e9b344de3783404e70b7c7ea6a037d0ffd70e99
   languageName: node
   linkType: hard
 
@@ -13754,6 +13956,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"deepmerge@npm:^2.1.1":
+  version: 2.2.1
+  resolution: "deepmerge@npm:2.2.1"
+  checksum: 284b71065079e66096229f735a9a0222463c9ca9ee9dda7d5e9a0545bf254906dbc7377e3499ca3b2212073672b1a430d80587993b43b87d8de17edc6af649a8
+  languageName: node
+  linkType: hard
+
 "deepmerge@npm:^4.2.2":
   version: 4.2.2
   resolution: "deepmerge@npm:4.2.2"
@@ -16448,6 +16657,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"exenv@npm:^1.2.0":
+  version: 1.2.2
+  resolution: "exenv@npm:1.2.2"
+  checksum: a894f3b60ab8419e0b6eec99c690a009c8276b4c90655ccaf7d28faba2de3a6b93b3d92210f9dc5efd36058d44f04098f6bbccef99859151104bfd49939904dc
+  languageName: node
+  linkType: hard
+
 "exit-hook@npm:2.2.1":
   version: 2.2.1
   resolution: "exit-hook@npm:2.2.1"
@@ -17144,6 +17360,23 @@ __metadata:
   dependencies:
     fetch-blob: ^3.1.2
   checksum: 82a34df292afadd82b43d4a740ce387bc08541e0a534358425193017bf9fb3567875dc5f69564984b1da979979b70703aa73dee715a17b6c229752ae736dd9db
+  languageName: node
+  linkType: hard
+
+"formik@npm:2.2.9":
+  version: 2.2.9
+  resolution: "formik@npm:2.2.9"
+  dependencies:
+    deepmerge: ^2.1.1
+    hoist-non-react-statics: ^3.3.0
+    lodash: ^4.17.21
+    lodash-es: ^4.17.21
+    react-fast-compare: ^2.0.1
+    tiny-warning: ^1.0.2
+    tslib: ^1.10.0
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: f07f80eee8423b4c5560546c48c4093c47530dae7d931a4e0d947d68ae1aab94291b1bf2e99ecaa5854ee50593b415fb5724c624c787338f0577f066009e8812
   languageName: node
   linkType: hard
 
@@ -22700,6 +22933,55 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash-es@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash-es@npm:4.17.21"
+  checksum: 05cbffad6e2adbb331a4e16fbd826e7faee403a1a04873b82b42c0f22090f280839f85b95393f487c1303c8a3d2a010048bf06151a6cbe03eee4d388fb0a12d2
+  languageName: node
+  linkType: hard
+
+"lodash._basefor@npm:^3.0.0":
+  version: 3.0.3
+  resolution: "lodash._basefor@npm:3.0.3"
+  checksum: 8028af9901a33c336eeb18945bfe304f9e2abc1a741f688a5e26e3fa1a1c975688f7a40ec90d8dc3eda3c04160ede0aa5a89c2beb04ac29daf914b5aeb8b6b5a
+  languageName: node
+  linkType: hard
+
+"lodash._baseisequal@npm:^4.0.0":
+  version: 4.1.1
+  resolution: "lodash._baseisequal@npm:4.1.1"
+  dependencies:
+    lodash._root: ^3.0.0
+    lodash._stack: ^4.0.0
+    lodash.keys: ^4.0.0
+  checksum: ea78241b564af1258d737d792dda6cf009c29d78a4fa388e593857ff49d8172f525542fe8311e57d26c4af8301e40983a41a38056bb49b4ec3cede1567a7d67f
+  languageName: node
+  linkType: hard
+
+"lodash._baseismatch@npm:^4.0.0":
+  version: 4.0.2
+  resolution: "lodash._baseismatch@npm:4.0.2"
+  dependencies:
+    lodash._baseisequal: ^4.0.0
+    lodash._stack: ^4.0.0
+  checksum: 254131ba283202ecb5eb314c594d7717b7befa57347df03dd2359b501cbdb7ca969f42688e640856a06d5ce2468593663b493b49106846d7db35b2c2ca47cbcc
+  languageName: node
+  linkType: hard
+
+"lodash._root@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "lodash._root@npm:3.0.1"
+  checksum: 3e12c6f409ae13164a8db358f44a691f1e038dad4e25463802980d0ed641ed118c147b65657501c51778c885422b913264dfbe33ec0c5d676443dd630a7e685a
+  languageName: node
+  linkType: hard
+
+"lodash._stack@npm:^4.0.0":
+  version: 4.1.3
+  resolution: "lodash._stack@npm:4.1.3"
+  checksum: 56b49f3df330853a06994f34d4335d9e6e60baaeee6f7947dc486a4c70d610f94000aa84a34efc2ef630c6237def978721cfaea3db4593fbbd3e5ab5dee40df3
+  languageName: node
+  linkType: hard
+
 "lodash.assignin@npm:^4.0.9":
   version: 4.2.0
   resolution: "lodash.assignin@npm:4.2.0"
@@ -22791,10 +23073,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.get@npm:^4.4.2":
+"lodash.get@npm:^4.0.0, lodash.get@npm:^4.4.2":
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
+  languageName: node
+  linkType: hard
+
+"lodash.hasin@npm:^4.0.0":
+  version: 4.5.2
+  resolution: "lodash.hasin@npm:4.5.2"
+  checksum: d18a0144f17ce1f98b905a5123a0702743474a400a088d14f1e95fae3b4bee68171578f9cb6b05183b76a6793778c469520a49ef6308d2322652982968d06042
   languageName: node
   linkType: hard
 
@@ -22816,6 +23105,20 @@ __metadata:
   version: 4.1.1
   resolution: "lodash.kebabcase@npm:4.1.1"
   checksum: 5a6c59161914e1bae23438a298c7433e83d935e0f59853fa862e691164696bc07f6dfa4c313d499fbf41ba8d53314e9850416502376705a357d24ee6ca33af78
+  languageName: node
+  linkType: hard
+
+"lodash.keys@npm:^4.0.0":
+  version: 4.2.0
+  resolution: "lodash.keys@npm:4.2.0"
+  checksum: 055576c8c4a0bacc0c1da9bcbb520e6e70dcf94c609495263686c62c8242a440293e9ab8387a7398dda529cb05b76e8f783c3fd3d6ba7bc6d5d6d2e08e8512ae
+  languageName: node
+  linkType: hard
+
+"lodash.keysin@npm:^4.0.0":
+  version: 4.2.0
+  resolution: "lodash.keysin@npm:4.2.0"
+  checksum: f681826ddcbe897ac058fc70b12684633909a1b51af110ac95638a64111438ce5e1c72750e76ca1238078501a555ddce43d4797e01a59ff2dc8bf714cc7467d8
   languageName: node
   linkType: hard
 
@@ -22851,6 +23154,22 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.mergewith@npm:4.6.2"
   checksum: a6db2a9339752411f21b956908c404ec1e088e783a65c8b29e30ae5b3b6384f82517662d6f425cc97c2070b546cc2c7daaa8d33f78db7b6e9be06cd834abdeb8
+  languageName: node
+  linkType: hard
+
+"lodash.omitby@npm:4.1.1":
+  version: 4.1.1
+  resolution: "lodash.omitby@npm:4.1.1"
+  dependencies:
+    lodash._basefor: ^3.0.0
+    lodash._baseisequal: ^4.0.0
+    lodash._baseismatch: ^4.0.0
+    lodash.get: ^4.0.0
+    lodash.hasin: ^4.0.0
+    lodash.keysin: ^4.0.0
+    lodash.topairs: ^4.0.0
+    lodash.tostring: ^4.0.0
+  checksum: 72bd53b6053e369a9c7e1975e43d253509aa1b2f46a0e4ce593ea51226ab5a1b3a38ba9cda1d4486962b01e4d5b81dbc68ea28be3d0f352a9897b29894737b7e
   languageName: node
   linkType: hard
 
@@ -22914,6 +23233,20 @@ __metadata:
   version: 4.1.1
   resolution: "lodash.throttle@npm:4.1.1"
   checksum: 129c0a28cee48b348aef146f638ef8a8b197944d4e9ec26c1890c19d9bf5a5690fe11b655c77a4551268819b32d27f4206343e30c78961f60b561b8608c8c805
+  languageName: node
+  linkType: hard
+
+"lodash.topairs@npm:^4.0.0":
+  version: 4.3.0
+  resolution: "lodash.topairs@npm:4.3.0"
+  checksum: 8efd69e706e5adb7f8c4521cd094be17ed4776dab30d9ae0a72e130f14e7bb696dd858cbc18c912aa20e97ccc76486f3cf2d0acb3ff30cb9af3fd525a7f9c9bd
+  languageName: node
+  linkType: hard
+
+"lodash.tostring@npm:^4.0.0":
+  version: 4.1.4
+  resolution: "lodash.tostring@npm:4.1.4"
+  checksum: 810975b2929d51141f8aa53718e27a52a1bcf2453b9e101fc8306f3a112247d3aaac878c97aa41144fd6a6f955a6a42bbf7fa1389cba146b7b19a377f989e6f5
   languageName: node
   linkType: hard
 
@@ -27649,6 +27982,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"raf-schd@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "raf-schd@npm:4.0.3"
+  checksum: 45514041c5ad31fa96aef3bb3c572a843b92da2f2cd1cb4a47c9ad58e48761d3a4126e18daa32b2bfa0bc2551a42d8f324a0e40e536cb656969929602b4e8b58
+  languageName: node
+  linkType: hard
+
 "randombytes@npm:^2.1.0":
   version: 2.1.0
   resolution: "randombytes@npm:2.1.0"
@@ -27761,6 +28101,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-fast-compare@npm:^2.0.1":
+  version: 2.0.4
+  resolution: "react-fast-compare@npm:2.0.4"
+  checksum: 06046595f90a4e3e3a56f40a8078c00aa71bdb064ddb98343f577f546aa22e888831fd45f009c93b34707cc842b4c637737e956fd13d6f80607ee92fb9cf9a1c
+  languageName: node
+  linkType: hard
+
 "react-from-dom@npm:0.6.2":
   version: 0.6.2
   resolution: "react-from-dom@npm:0.6.2"
@@ -27845,6 +28192,28 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
+  languageName: node
+  linkType: hard
+
+"react-lifecycles-compat@npm:^3.0.0":
+  version: 3.0.4
+  resolution: "react-lifecycles-compat@npm:3.0.4"
+  checksum: a904b0fc0a8eeb15a148c9feb7bc17cec7ef96e71188280061fc340043fd6d8ee3ff233381f0e8f95c1cf926210b2c4a31f38182c8f35ac55057e453d6df204f
+  languageName: node
+  linkType: hard
+
+"react-modal@npm:3.16.1":
+  version: 3.16.1
+  resolution: "react-modal@npm:3.16.1"
+  dependencies:
+    exenv: ^1.2.0
+    prop-types: ^15.7.2
+    react-lifecycles-compat: ^3.0.0
+    warning: ^4.0.3
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
+    react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
+  checksum: 978936e9320fad839c039b9ee4de55d40888156cb40e093615d6fbc2ff07139d5db06f14782cb7767f780bd5fb57956778669426c535ebc0068a7a03882c7e75
   languageName: node
   linkType: hard
 
@@ -31043,6 +31412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tiny-warning@npm:^1.0.2":
+  version: 1.0.3
+  resolution: "tiny-warning@npm:1.0.3"
+  checksum: da62c4acac565902f0624b123eed6dd3509bc9a8d30c06e017104bedcf5d35810da8ff72864400ad19c5c7806fc0a8323c68baf3e326af7cb7d969f846100d71
+  languageName: node
+  linkType: hard
+
 "title-case@npm:^2.1.0":
   version: 2.1.1
   resolution: "title-case@npm:2.1.1"
@@ -32726,7 +33102,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"warning@npm:4.0.3":
+"warning@npm:4.0.3, warning@npm:^4.0.3":
   version: 4.0.3
   resolution: "warning@npm:4.0.3"
   dependencies:

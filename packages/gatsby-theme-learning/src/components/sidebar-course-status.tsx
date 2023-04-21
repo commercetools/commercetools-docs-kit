@@ -21,7 +21,6 @@ type StatusIndicatorProps = {
 };
 
 export const StatusIndicator = (props: StatusIndicatorProps) => {
-  console.log(props.status);
   switch (props.status) {
     case 'completed':
       return <VerifiedIcon color="primary" size="big" />;

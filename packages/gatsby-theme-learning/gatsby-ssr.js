@@ -1,4 +1,6 @@
+import React from 'react';
 import ConfigContext from './src/components/config-context';
+import { LearningStateProvider } from './src/components/learning-context';
 
 export const wrapRootElement = ({ element }, pluginOptions) => {
   return (
@@ -9,7 +11,7 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
         features: pluginOptions?.features || [],
       }}
     >
-      {element}
+      <LearningStateProvider>{element}</LearningStateProvider>
     </ConfigContext.Provider>
   );
 };
