@@ -34,7 +34,7 @@ const clickStep = (clickArea) => {
     cy.get(`[data-test-id="${ETestId.avatarMenuLogout}"]`).click();
   }
   if (clickArea === 'login button') {
-    cy.get(`button[data-test-id="${ETestId.loginButton}"]`).click({
+    cy.get(`div[data-test-id="${ETestId.loginButton}"]`).click({
       force: true,
     });
   }
@@ -75,7 +75,7 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
     ).as('fetchAttempt');
   }
   cy.get(`div[data-test-id="${ETestId.quizWrapper}"]`).scrollIntoView();
-  cy.get(`button[data-test-id="${ETestId.loginButton}"]`).click({
+  cy.get(`div[data-test-id="${ETestId.loginButton}"]`).click({
     force: true,
   });
   cy.origin(
