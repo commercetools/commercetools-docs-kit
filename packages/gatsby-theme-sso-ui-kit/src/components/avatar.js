@@ -50,7 +50,7 @@ UserAvatar.displayName = 'UserAvatar';
 
 const LoggedInState = (props) => {
   return (
-    <AvatarContainer>
+    <AvatarContainer data-test-id="avatar-container">
       <LogoutButton />
       <UserAvatar userData={props.userData} />
     </AvatarContainer>
