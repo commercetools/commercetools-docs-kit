@@ -12,7 +12,7 @@ import {
   Icons,
 } from '@commercetools-docs/ui-kit';
 import { SearchDialog, SearchInput, Overlay } from '../../components';
-import PlaceholderAvatarArea from '../../overrides/avatar';
+import PlaceholderLoginInfoArea from '../../overrides/topbar-login-info';
 import { useSiteData } from '../../hooks/use-site-data';
 import useTopMenuItems from '../../hooks/use-top-menu-items';
 import getSiteContextTitleByPath from '../../utils/get-site-context-title';
@@ -304,7 +304,7 @@ const LayoutHeader = forwardRef((props, ref) => {
           </DocumentationSwitcherButton>
         </Inline>
         <Inline>
-          <PlaceholderAvatarArea />
+          <PlaceholderLoginInfoArea />
         </Inline>
       </TopMenuContainer>
       <SearchBoxContainer ref={ref}>

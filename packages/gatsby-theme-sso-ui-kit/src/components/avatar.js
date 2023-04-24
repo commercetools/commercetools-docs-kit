@@ -1,17 +1,16 @@
 // A React component to be rendered in the top bar next to the top menu toggle button
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
 import Spacings from '@commercetools-uikit/spacings';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { GraduationCapIcon } from '@commercetools-uikit/icons';
-import LoginButton from '../../../../src/components/login-button';
-import LogoutButton from '../../../../src/components/logout-button';
-import PrimaryButton from '../../../components/primary-button';
-import ConfigContext from '../../../components/config-context';
-import { getAvatarInitials } from '../../../components/sso.utils';
-import { AUTH0_CLAIM_DISPLAYNAME } from '../../../sso.const';
+import LoginButton from './login-button';
+import LogoutButton from './logout-button';
+import PrimaryButton from './primary-button';
+import { getAvatarInitials } from './sso.utils';
+import { AUTH0_CLAIM_DISPLAYNAME } from '../sso.const';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -50,9 +49,6 @@ const UserAvatar = (props) => {
 UserAvatar.displayName = 'UserAvatar';
 
 const LoggedInState = (props) => {
-  const { hideLogin } = useContext(ConfigContext);
-
-  if (hideLogin) return null;
   return (
     <AvatarContainer>
       <LogoutButton />
@@ -65,9 +61,7 @@ LoggedInState.displayName = 'LoggedInState';
 
 const LoggedOutState = () => {
   const { loginWithRedirect } = useAuth0();
-  const { hideLogin } = useContext(ConfigContext);
 
-  if (hideLogin) return null;
   return (
     <AvatarContainer>
       <LoginButton data-test-id="login-button" label="Login" />
