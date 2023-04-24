@@ -44,7 +44,7 @@ const LoginButton = (props: LoginButtonProps) => {
 
   return (
     <SecondaryButton
-      data-test-id="login-button"
+      data-testid="login-button"
       onClick={() =>
         loginWithRedirect({
           appState: {
