@@ -1,6 +1,7 @@
 ---
 title: Explore how to build a documentation website for commercetools
 ---
+import { IsUserLoggedIn, IsUserLoggedOut } from '@commercetools-docs/gatsby-theme-learning'
 
 # Other smoke tests and docs websites
 
@@ -29,3 +30,13 @@ title: Explore how to build a documentation website for commercetools
   <Card>Avengers: Age of Ultron</Card>
   <Card>Avengers: Infinity War</Card>
 </Cards>
+
+# Logged in or logged out content
+
+<IsUserLoggedIn>
+ ## Welcome back!
+</IsUserLoggedIn>
+
+<IsUserLoggedOut>
+ ## Please log in
+</IsUserLoggedOut>
