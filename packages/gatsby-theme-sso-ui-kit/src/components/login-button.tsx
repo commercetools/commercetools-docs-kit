@@ -27,7 +27,7 @@ const LoginButton = (props: LoginButtonProps) => {
   if (props.quizId) {
     return (
       <PrimaryButton
-        data-testid="login-button"
+        data-test-id="login-quiz-button"
         onClick={() =>
           loginWithRedirect({
             appState: {
@@ -44,7 +44,7 @@ const LoginButton = (props: LoginButtonProps) => {
 
   return (
     <SecondaryButton
-      data-testid="login-button"
+      data-test-id="login-button"
       onClick={() =>
         loginWithRedirect({
           appState: {
