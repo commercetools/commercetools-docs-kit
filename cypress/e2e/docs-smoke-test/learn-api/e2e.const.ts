@@ -2,7 +2,7 @@
 export enum ETestId {
   avatarContainer = 'avatar-container',
   quizWrapper = 'quiz-wrapper',
-  loginButton = 'login-button',
+  loginButton = 'login-quiz-button',
   quizLoading = 'quiz-loading',
   quizForm = 'quiz-form',
   quizFormSubmit = 'quiz-form-submit',
