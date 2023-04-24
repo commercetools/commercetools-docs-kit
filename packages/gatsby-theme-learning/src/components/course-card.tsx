@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import {
   Markdown,
@@ -8,8 +8,19 @@ import {
 } from '@commercetools-docs/ui-kit';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { ClockIcon, CheckActiveIcon } from '@commercetools-uikit/icons';
+import {
+  ClockIcon,
+  CheckActiveIcon,
+  RocketIcon,
+  CircleIcon,
+} from '@commercetools-uikit/icons';
 import Stamp from '@commercetools-uikit/stamp';
+import { useAuth0 } from '@auth0/auth0-react';
+import {
+  ClientCourseStatus,
+  getCourseStatusByCourseId,
+  useFetchCourses,
+} from '../hooks/use-course-status';
 
 const { CardContainer, StackContainer, InlineContainer, BodyContainer } =
   cardElements;
@@ -52,6 +63,14 @@ export const IconWithTextContainer = styled.div`
   }
 `;
 
+const CardBottomContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  color: ${designSystem.colors.light.textPrimary};
+  min-height: 27px;
+`;
+
 type BodyContentProps = {
   children: ReactNode;
 };
@@ -73,41 +92,89 @@ const BodyContent = (props: BodyContentProps) => {
   );
 };
 
+type CourseStatusStampProps = {
+  status: ClientCourseStatus;
+};
+
+const CourseStatusStamp = (props: CourseStatusStampProps) => {
+  switch (props.status) {
+    case 'completed':
+      return (
+        <Stamp
+          tone="primary"
+          isCondensed
+          icon={<CheckActiveIcon />}
+          label="Completed"
+        />
+      );
+    case 'inProgress':
+      return (
+        <Stamp
+          tone="information"
+          isCondensed
+          icon={<RocketIcon />}
+          label="In progress"
+        />
+      );
+    default:
+      return (
+        <Stamp
+          tone="secondary"
+          isCondensed
+          icon={<CircleIcon />}
+          label="Not started"
+        />
+      );
+  }
+};
+
 type CourseCardProps = {
   title: string;
   href: string;
-  courseId: number;
+  courseId: string;
   children: ReactNode;
   duration: string;
 };
 
-const CourseCard = (props: CourseCardProps) => (
-  <CardContainer {...props}>
-    <GatsbyRouterLink to={props.href}>
-      <StackContainer>
-        <InlineContainer>
-          <StackContainer scale="s">
-            <Title>{props.title}</Title>
-            <BodyContainer>
-              <BodyContent>{props.children}</BodyContent>
-            </BodyContainer>
-            <IconWithTextContainer>
-              <ClockIcon />
-              <p>{props.duration}</p>
-            </IconWithTextContainer>
-            <div>
-              <Stamp
-                tone="primary"
-                isCondensed
-                icon={<CheckActiveIcon />}
-                label="Completed"
-              />
-            </div>
-          </StackContainer>
-        </InlineContainer>
-      </StackContainer>
-    </GatsbyRouterLink>
-  </CardContainer>
-);
+const CourseCard = (props: CourseCardProps) => {
+  const [courseStatus, setCourseStatus] = useState<ClientCourseStatus>();
+  const { isAuthenticated } = useAuth0();
+  const { data } = useFetchCourses();
+
+  useEffect(() => {
+    if (isAuthenticated && data?.result?.enrolledCourses) {
+      const numberCourseId = parseInt(props.courseId, 10);
+      setCourseStatus(
+        getCourseStatusByCourseId(data.result.enrolledCourses, numberCourseId)
+      );
+    }
+  }, [data, isAuthenticated, props.courseId]);
+
+  return (
+    <CardContainer {...props}>
+      <GatsbyRouterLink to={props.href}>
+        <StackContainer>
+          <InlineContainer>
+            <StackContainer scale="s">
+              <Title>{props.title}</Title>
+              <BodyContainer>
+                <BodyContent>{props.children}</BodyContent>
+              </BodyContainer>
+              <CardBottomContainer>
+                <IconWithTextContainer>
+                  <ClockIcon />
+                  <p>{props.duration}</p>
+                </IconWithTextContainer>
+                {props.courseId && isAuthenticated && courseStatus && (
+                  <CourseStatusStamp status={courseStatus}></CourseStatusStamp>
+                )}
+              </CardBottomContainer>
+            </StackContainer>
+          </InlineContainer>
+        </StackContainer>
+      </GatsbyRouterLink>
+    </CardContainer>
+  );
+};
 
 export default CourseCard;

@@ -43,9 +43,23 @@ The component expects 2 mandatory props:
 
 Example
 
+```md title="you write:" secondaryTheme
+<Quiz courseId="5565" quizId="85065"/>
+```
+
+### CourseCard
+
+Quiz card is a card component displaying information about a specific course. It supports logged in and logged out state. When the user is logged in, the course status is displayed.
+
+The component has the following mandatory props:
+
+- `title`: The course title.
+- `href`: Relative path to the first course page
+- `courseId`: The courseId
+- `duration`: A string giving information about course duration
+
+Example
 
 ```md title="you write:" secondaryTheme
-
-<Quiz courseId="5565" quizId="85065"/>
-
+<CourseCard duration="30 min" title="Course name" href="self-learning/overview" courseId="66">Course description. Introduction to extensibility possibilities available in Composable Commerce.</CourseCard>
 ```
