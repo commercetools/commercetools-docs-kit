@@ -8,6 +8,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import { GraduationCapIcon } from '@commercetools-uikit/icons';
 import LoginButton from '../../../../src/components/login-button';
 import LogoutButton from '../../../../src/components/logout-button';
+import PrimaryButton from '../../../components/primary-button';
 import ConfigContext from '../../../components/config-context';
 import { getAvatarInitials } from '../../../components/sso.utils';
 import { AUTH0_CLAIM_DISPLAYNAME } from '../../../sso.const';
@@ -28,27 +29,6 @@ const Avatar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const SignUpButton = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: ${designSystem.dimensions.spacings.xs}
-    ${designSystem.dimensions.spacings.m};
-  gap: ${designSystem.dimensions.spacings.s};
-  color: white;
-  cursor: pointer;
-  background: ${designSystem.colors.light.link};
-  box-shadow: ${designSystem.tokens.shadowForBetaFlag};
-  border-radius: 6px;
-
-  p {
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 18px;
-  }
 `;
 
 const UserAvatar = (props) => {
@@ -91,7 +71,7 @@ const LoggedOutState = () => {
   return (
     <AvatarContainer>
       <LoginButton data-test-id="login-button" label="Login" />
-      <SignUpButton
+      <PrimaryButton
         onClick={() =>
           loginWithRedirect({
             authorizationParams: {
@@ -102,7 +82,7 @@ const LoggedOutState = () => {
       >
         <GraduationCapIcon color="surface" />
         <p>Sign up</p>
-      </SignUpButton>
+      </PrimaryButton>
     </AvatarContainer>
   );
 };

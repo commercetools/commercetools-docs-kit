@@ -2,14 +2,14 @@ import { useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { getLogoutReturnUrl } from './sso.utils';
 import ConfigContext from './config-context';
-import Button from './button';
+import SecondaryButton from './secondary-button';
 
 const LogoutButton = () => {
   const { learnApiBaseUrl } = useContext(ConfigContext);
   const { logout } = useAuth0();
 
   return (
-    <Button
+    <SecondaryButton
       data-testid="logout-button"
       onClick={() =>
         logout({
@@ -20,7 +20,7 @@ const LogoutButton = () => {
       }
     >
       Log out
-    </Button>
+    </SecondaryButton>
   );
 };
 
