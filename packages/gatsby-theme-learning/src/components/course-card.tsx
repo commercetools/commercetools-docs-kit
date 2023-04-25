@@ -42,13 +42,16 @@ const GatsbyRouterLink = StyledLink.withComponent(Link);
 
 const Title = styled.h6`
   color: ${designSystem.colors.light.link};
-  font-size: 14px;
+  font-size: ${designSystem.typography.fontSizes.small};
   font-weight: ${designSystem.typography.fontWeights.medium};
   letter-spacing: 0;
 `;
 
-export const IconWithTextContainer = styled.div`
-  width: 50%;
+type IconWithTextContainerProps = {
+  textSize?: string;
+};
+
+export const IconWithTextContainer = styled.div<IconWithTextContainerProps>`
   min-width: 18px;
   height: 18px;
 
@@ -57,18 +60,25 @@ export const IconWithTextContainer = styled.div`
   }
   p {
     margin-left: ${designSystem.dimensions.spacings.xs};
-    font-size: 12px;
+    font-size: ${(props) => (props.textSize === 'large' ? '14px' : '12px')};
     color: ${designSystem.colors.light.textPrimary};
     display: inline-block;
   }
 `;
 
-const CardBottomContainer = styled.div`
+type CardBottomContainerProps = {
+  separator?: boolean;
+};
+
+export const CardBottomContainer = styled.div<CardBottomContainerProps>`
+  border-top: ${(props) => (props.separator ? '1px' : '0')} solid
+    ${designSystem.colors.light.borderHighlight};
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   color: ${designSystem.colors.light.textPrimary};
   min-height: 27px;
+  padding: ${(props) => (props.separator ? '8px' : '0')} 0 0 0;
 `;
 
 type BodyContentProps = {

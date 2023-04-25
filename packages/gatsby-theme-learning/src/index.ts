@@ -6,3 +6,5 @@ export { default as UserProfileInit } from './components/user-profile-init';
 export { default as SidebarCourseStatus } from './components/sidebar-course-status';
 export { default as SidebarTopicStatus } from './components/sidebar-topic-status';
 export { default as CourseCard } from './components/course-card';
+export { default as LearningPathCard } from './components/learning-path-card';
+export { default as ImageCard } from './components/image-card';

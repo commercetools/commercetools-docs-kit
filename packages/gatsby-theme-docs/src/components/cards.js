@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ContentNotifications, cardElements } from '@commercetools-docs/ui-kit';
 
-const allowedCardsElementsTypes = ['Card', 'CourseCard'];
+const allowedCardsElementsTypes = [
+  'Card',
+  'CourseCard',
+  'LearningPathCard',
+  'ImageCard',
+];
 
 const Cards = (props) => {
   try {
