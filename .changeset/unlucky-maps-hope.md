@@ -8,4 +8,4 @@
 '@commercetools-docs/ui-kit': minor
 ---
 
-Implement Course card to display information and status about a specific course. Note: update all @commercetools-uikit/ dependencies to 15.15.1
+Implement Course card to display information and status about a specific course. Add also the Learning Path card component. Note: update all @commercetools-uikit/ dependencies to 15.15.1
