@@ -8,3 +8,5 @@ export { default as SidebarTopicStatus } from './components/sidebar-topic-status
 export { default as CourseCard } from './components/course-card';
 export { default as LearningPathCard } from './components/learning-path-card';
 export { default as ImageCard } from './components/image-card';
+export { default as CourseCompleteModal } from './components/course-complete-modal';
+export * from './hooks/use-course-pages';
