@@ -46,6 +46,7 @@ export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
       });
       return data;
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [courseId, getAuthToken, learnApiBaseUrl, quizId]
   );
 

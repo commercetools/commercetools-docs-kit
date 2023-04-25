@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import { ContentNotifications, cardElements } from '@commercetools-docs/ui-kit';
 
 const Cards = (props) => {
