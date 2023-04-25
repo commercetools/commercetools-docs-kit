@@ -16,10 +16,10 @@ import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { BetaFlag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
-import { useCourseInfoByPageSlugs } from '../../hooks/use-course-pages';
 import {
   SidebarCourseStatus,
   SidebarTopicStatus,
+  useCourseInfoByPageSlugs,
 } from '@commercetools-docs/gatsby-theme-learning';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
