@@ -3101,6 +3101,7 @@ __metadata:
     "@commercetools-uikit/secondary-button": 16.0.0
     "@commercetools-uikit/spacings": 16.0.0
     "@commercetools-uikit/spacings-stack": 16.0.0
+    "@commercetools-uikit/stamp": 16.0.0
     "@commercetools-uikit/text-field": 16.0.0
     "@commercetools-uikit/text-input": 16.0.0
     "@emotion/react": ^11.10.5
