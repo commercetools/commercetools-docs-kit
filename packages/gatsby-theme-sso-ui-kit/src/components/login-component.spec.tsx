@@ -51,6 +51,8 @@ describe('login-button', () => {
     const loginButtonElement = screen.getByTestId('login-button');
     expect(loginButtonElement).toBeInTheDocument();
     fireEvent.click(loginButtonElement);
-    expect(mockLoginWithRedirect).toBeCalledWith(expectedLoginWithRedirect);
+    expect(mockLoginWithRedirect).toHaveBeenCalledWith(
+      expectedLoginWithRedirect
+    );
   });
 });

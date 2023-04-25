@@ -27,6 +27,7 @@ const ReleaseNoteBody = (props) => (
       <div
         style={designSystem.tokensToCssVars({
           fontSizeDefault: designSystem.typography.fontSizes.extraSmall,
+          fontSizeForStamp: designSystem.typography.fontSizes.extraSmall,
           // Override the `critical` style which is used for the "fix" type
           colorError95: designSystem.colors.light.surfaceForReleaseNoteTypeFix,
           colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
