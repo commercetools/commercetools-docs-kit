@@ -51,6 +51,6 @@ describe('logout-button', () => {
     const logoutButtonElement = screen.getByTestId('logout-button');
     expect(logoutButtonElement).toBeInTheDocument();
     fireEvent.click(logoutButtonElement);
-    expect(mockLogout).toBeCalledWith(expectedLogout);
+    expect(mockLogout).toHaveBeenCalledWith(expectedLogout);
   });
 });
