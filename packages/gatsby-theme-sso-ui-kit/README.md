@@ -5,11 +5,13 @@ The plugin interacts with auth0 authentication provider and therefore needs to b
 
 ## Configuration
 
-`gatsby-theme-sso-ui-kit` plugin expects 2 parameters:
+`gatsby-theme-sso-ui-kit` plugin expects 3 parameters:
 
 - `auth0Domain`: the auth0 application domain url (it is defined in the auth0 management app)
 - `auth0ClientId`: the auth0 application client id (it is defined in the auth0 management app)
 - `learnApiBaseUrl`: the learn API base url. It can be omitted if the host running the site matches the api host.
+
+You can also add the optional `hideLogin` parameter if you don't want the login information to be visible in the top bar.
 
 In order to enable the plugin, the following configuration should be added to the `gatsby-config.js` plugin section:
 
@@ -20,6 +22,7 @@ In order to enable the plugin, the following configuration should be added to th
         auth0Domain: 'auth0domain.dummy.tld',
         auth0ClientId: 'cliendItString',
         learnApiBaseUrl: 'https://api.host.tld',
+        hideLogin: false,
     },
 },
 ```

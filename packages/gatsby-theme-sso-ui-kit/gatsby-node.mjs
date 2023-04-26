@@ -6,5 +6,8 @@ export const pluginOptionsSchema = ({ Joi }) => {
       .allow('')
       .default('')
       .description(`Learn API base url`),
+    hideLogin: Joi.bool().description(
+      `Flag that determines if the login information are visible in the top bar`
+    ),
   });
 };
