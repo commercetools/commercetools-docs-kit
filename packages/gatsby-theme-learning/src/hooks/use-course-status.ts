@@ -31,7 +31,7 @@ export const useFetchCourses = (): {
   error: string | undefined;
   isLoading: boolean;
 } => {
-  const { learnApiBaseUrl, features, env } = useContext(ConfigContext);
+  const { learnApiBaseUrl, features } = useContext(ConfigContext);
   const { isAuthenticated } = useAuth0();
   const { getAuthToken } = useAuthToken();
   const apiEndpoint = `/api/courses`;
@@ -42,7 +42,7 @@ export const useFetchCourses = (): {
 
   const { data, error, isLoading } = useSWR(
     shouldFetchData ? apiEndpoint : null,
-    (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl, env)
+    (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl, 'GET')
   ) as UseFetchCoursesResponse;
   return {
     data,
