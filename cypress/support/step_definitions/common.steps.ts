@@ -28,13 +28,13 @@ const redirectionStep = (page) => {
 
 const clickStep = (clickArea) => {
   if (clickArea === 'avatar icon') {
-    cy.get(`[data-test-id="${ETestId.avatarContainer}"]`).click();
+    cy.get(`div[data-test-id="${ETestId.avatarContainer}"]`).click();
   }
-  if (clickArea === 'avatar menu logout button') {
-    cy.get(`[data-test-id="${ETestId.avatarMenuLogout}"]`).click();
+  if (clickArea === 'logout button') {
+    cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
   }
   if (clickArea === 'login button') {
-    cy.get(`button[data-test-id="${ETestId.loginButton}"]`).click({
+    cy.get(`div[data-test-id="${ETestId.loginButton}"]`).click({
       force: true,
     });
   }
@@ -75,7 +75,7 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
     ).as('fetchAttempt');
   }
   cy.get(`div[data-test-id="${ETestId.quizWrapper}"]`).scrollIntoView();
-  cy.get(`button[data-test-id="${ETestId.loginButton}"]`).click({
+  cy.get(`div[data-test-id="${ETestId.loginButton}"]`).click({
     force: true,
   });
   cy.origin(
@@ -107,8 +107,7 @@ Given(`The {string} is logged in with new attempt`, (user: string) =>
 );
 
 Given(`The user logs out`, () => {
-  cy.get(`[data-test-id="${ETestId.avatarContainer}"]`).click();
-  cy.get(`[data-test-id="${ETestId.avatarMenuLogout}"]`).click();
+  cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
 });
 
 Given('The avatar menu is displayed', () => {

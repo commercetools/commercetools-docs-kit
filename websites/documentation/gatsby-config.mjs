@@ -2,7 +2,6 @@ import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/
 import dotenv from 'dotenv';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-
 const config = {
   flags: {
     DEV_SSR: true,
@@ -26,7 +25,8 @@ const config = {
           options: {
             auth0Domain: 'auth.id.commercetools.com',
             auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-            learnApiBaseUrl: 'https://api.learn.commercetools.com',
+            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
+            hideLogin: true,
           },
         },
       ],
