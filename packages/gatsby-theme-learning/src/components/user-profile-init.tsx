@@ -38,8 +38,7 @@ const UserProfileInit = () => {
     if (isAuthenticated && !profile && user) {
       updateProfile(contextProfileAdapter(user));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated, profile, user]);
+  }, [isAuthenticated, profile, user, updateProfile]);
 };
 
 export default UserProfileInit;

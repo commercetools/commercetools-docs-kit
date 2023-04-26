@@ -80,15 +80,13 @@ const ProfileModal = () => {
       formik.setFieldValue('lastName', profile?.family_name || '');
       formik.setFieldValue('company', profile?.user_metadata?.company || '');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile, isModalFeatureEnabeld]);
+  }, [profile, isModalFeatureEnabeld, closeModal, openModal, formik]);
 
   useEffect(() => {
     if (updatedUser) {
       updateProfile(updatedUser);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updatedUser]);
+  }, [updatedUser, updateProfile]);
 
   const renderError = (errorKey: string) => {
     if (errorKey === 'missing') {

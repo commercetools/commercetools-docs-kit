@@ -73,8 +73,7 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
       openModal();
     }
     setCourseStatus(newCourseStatus);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, courseStatus]);
+  }, [data, courseStatus, openModal]);
 
   useEffect(() => {
     // adaptive modal. If viewport is less than 530, use medium modal size
