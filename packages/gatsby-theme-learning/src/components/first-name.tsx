@@ -3,10 +3,7 @@ import { LearningContext } from './learning-context';
 
 const FirstName = () => {
   const { user } = useContext(LearningContext);
-  if (user.profile) {
-    return user.profile.given_name || '';
-  }
-  return '';
+  return user?.profile?.given_name || '';
 };
 
 export default FirstName;
