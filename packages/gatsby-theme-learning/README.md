@@ -37,3 +37,13 @@ The component expects 2 mandatory props:
 
 - `courseId`: Id of the course defined in Moodle LMS
 - `quizId`: Id of the quiz defined in Moodle LMS
+
+### FirstName
+
+A component that returns a user's first name to any `mdx` page. For example, it can be used within a personalized welcome sentence.
+
+Example:
+
+```
+Welcome <FirstName/>! This is our course overview.
+```
