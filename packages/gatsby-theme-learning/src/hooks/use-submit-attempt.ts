@@ -5,7 +5,6 @@ import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
 import type { SubmissionAttempt } from '../components/quiz.types';
 import { MaintenanceModeError, ServiceDownError } from './use-attempt';
-import { getCredentialsByEnv } from './hooks.utils';
 
 type SubmitAttemptParams = {
   courseId: string;
@@ -13,7 +12,7 @@ type SubmitAttemptParams = {
 };
 
 export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
-  const { learnApiBaseUrl, env } = useContext(ConfigContext);
+  const { learnApiBaseUrl } = useContext(ConfigContext);
   const { mutate } = useSWRConfig();
   const { courseId, quizId } = submitAttemptParams;
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -43,7 +42,7 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
         body: JSON.stringify(attemptData),
         method: 'POST',
         cache: 'no-cache',
-        credentials: getCredentialsByEnv(env),
+        credentials: 'include',
       });
       invalidateCache();
       return data;
