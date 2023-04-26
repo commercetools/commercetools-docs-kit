@@ -175,9 +175,19 @@ const CourseCard = (props: CourseCardProps) => {
                   <ClockIcon />
                   <p>{props.duration}</p>
                 </IconWithTextContainer>
-                {props.courseId && isAuthenticated && courseStatus && (
-                  <CourseStatusStamp status={courseStatus}></CourseStatusStamp>
-                )}
+                <div
+                  css={css({ 'padding-top': '2px' })}
+                  style={designSystem.tokensToCssVars({
+                    fontSizeForTextAsDetail:
+                      designSystem.typography.fontSizes.extraSmall,
+                  })}
+                >
+                  {props.courseId && isAuthenticated && courseStatus && (
+                    <CourseStatusStamp
+                      status={courseStatus}
+                    ></CourseStatusStamp>
+                  )}
+                </div>
               </CardBottomContainer>
             </StackContainer>
           </InlineContainer>
