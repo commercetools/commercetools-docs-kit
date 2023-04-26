@@ -1,13 +1,9 @@
-import {
-  configureThemeWithAddOns,
-}  from "@commercetools-docs/gatsby-theme-docs/configure-theme.mjs";
+import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/configure-theme.mjs';
 import dotenv from 'dotenv';
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const isProd = process.env.NODE_ENV === 'production';
 const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
-
-
 
 const config = {
   flags: {
@@ -31,7 +27,7 @@ const config = {
           resolve: '@commercetools-docs/gatsby-theme-learning',
           options: {
             auth0Domain: 'auth.id.commercetools.com',
-            learnApiBaseUrl: 'https://api.learn.commercetools.com',
+            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
             features: ['status-indicator', 'complete-profile-modal'],
           },
         },
@@ -40,7 +36,7 @@ const config = {
           options: {
             auth0Domain: 'auth.id.commercetools.com',
             auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-            learnApiBaseUrl: 'https://api.learn.commercetools.com',
+            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
           },
         },
       ],

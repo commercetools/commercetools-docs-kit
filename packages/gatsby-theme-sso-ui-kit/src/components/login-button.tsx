@@ -1,17 +1,11 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { UserFilledIcon } from '@commercetools-uikit/icons';
+import PrimaryButton from './primary-button';
+import SecondaryButton from './secondary-button';
 
 type LoginButtonProps = {
-  label: string;
-  icon: JSX.Element;
   quizId?: string;
-};
-
-const defaultProps: Pick<LoginButtonProps, 'label' | 'icon'> = {
-  label: 'Log In',
-  icon: <UserFilledIcon data-testid="default-icon" />,
 };
 
 const LoginButton = (props: LoginButtonProps) => {
@@ -30,12 +24,27 @@ const LoginButton = (props: LoginButtonProps) => {
       : window.location.pathname;
   };
 
+  if (props.quizId) {
+    return (
+      <PrimaryButton
+        data-test-id="login-quiz-button"
+        onClick={() =>
+          loginWithRedirect({
+            appState: {
+              returnTo: getTargetUrl(),
+            },
+          })
+        }
+      >
+        <UserFilledIcon color="surface" />
+        <p>Login to start the quiz</p>
+      </PrimaryButton>
+    );
+  }
+
   return (
     <SecondaryButton
       data-testid="login-button"
-      {...props}
-      label={props.label}
-      iconLeft={props.icon}
       onClick={() =>
         loginWithRedirect({
           appState: {
@@ -43,9 +52,10 @@ const LoginButton = (props: LoginButtonProps) => {
           },
         })
       }
-    />
+    >
+      Login
+    </SecondaryButton>
   );
 };
-LoginButton.defaultProps = defaultProps;
 
 export default LoginButton;

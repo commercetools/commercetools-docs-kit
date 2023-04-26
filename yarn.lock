@@ -2350,7 +2350,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.19.4
   resolution: "@babel/runtime@npm:7.19.4"
   dependencies:
@@ -3089,7 +3089,6 @@ __metadata:
     "@auth0/auth0-react": 2.0.1
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 21.3.1
     "@commercetools-docs/ui-kit": 21.3.1
-    "@commercetools-uikit/avatar": 16.0.0
     "@commercetools-uikit/checkbox-input": 16.0.0
     "@commercetools-uikit/design-system": 16.0.0
     "@commercetools-uikit/icons": 16.0.0
@@ -3127,7 +3126,6 @@ __metadata:
   dependencies:
     "@auth0/auth0-react": 2.0.1
     "@commercetools-docs/ui-kit": 21.3.1
-    "@commercetools-uikit/avatar": 16.0.0
     "@commercetools-uikit/icons": 16.0.0
     "@commercetools-uikit/secondary-button": 16.0.0
     "@commercetools-uikit/spacings": 16.0.0
@@ -3136,7 +3134,6 @@ __metadata:
     "@testing-library/jest-dom": 5.16.5
     "@testing-library/react": 14.0.0
     "@types/react": 18.0.28
-    downshift: 7.6.0
     md5: 2.3.0
     prop-types: 15.8.1
     react: 18.2.0
@@ -3331,23 +3328,6 @@ __metadata:
   peerDependencies:
     react: 17.x
   checksum: 91f4671b25acf59464fa60732d0c01fee348004a9236ab9a9088c0c24813be58b788315751f88dba965ac9fa402fd2db26e7f05ccb4d1b8f8490f1ccffb6938d
-  languageName: node
-  linkType: hard
-
-"@commercetools-uikit/avatar@npm:16.0.0":
-  version: 16.0.0
-  resolution: "@commercetools-uikit/avatar@npm:16.0.0"
-  dependencies:
-    "@babel/runtime": ^7.20.13
-    "@babel/runtime-corejs3": ^7.20.13
-    "@commercetools-uikit/design-system": 16.0.0
-    "@commercetools-uikit/utils": 16.0.0
-    "@emotion/react": ^11.10.5
-    "@emotion/styled": ^11.10.5
-    prop-types: 15.8.1
-  peerDependencies:
-    react: 17.x
-  checksum: 756049971df2dba34acb05103c742f97fcec3a9bd67329fa7213f8a7810ba2d51e21de9ae38b10546ff243b4604f1585b9f01bd502f9287ce1aa2dfbe050bb91
   languageName: node
   linkType: hard
 
@@ -3969,9 +3949,9 @@ __metadata:
     "@commercetools-docs/gatsby-theme-code-examples": 21.3.1
     "@commercetools-docs/gatsby-theme-constants": 21.3.1
     "@commercetools-docs/gatsby-theme-docs": 21.3.2
+    "@commercetools-docs/gatsby-theme-learning": 21.3.1
     "@commercetools-docs/gatsby-theme-sso-ui-kit": 21.3.1
     "@commercetools-docs/ui-kit": 21.3.1
-    "@commercetools-uikit/avatar": 16.0.0
     "@commercetools-uikit/icons": 16.0.0
     "@commercetools-uikit/radio-input": 16.0.0
     "@svgr/cli": 7.0.0
@@ -12775,13 +12755,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"compute-scroll-into-view@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "compute-scroll-into-view@npm:2.0.4"
-  checksum: f3d1db9276c16af42155b572750514939cd0ab0a0f46498906f6811c5b654c5ff2b3f9bfd65958e57439e000a5e1ae092eb96b9e153d194a73e52ffd2380550c
-  languageName: node
-  linkType: hard
-
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -14508,21 +14481,6 @@ __metadata:
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
   checksum: 38e902c80b0666ab59e9310a3d24ed237029a7ce34d976796349765ac96b8d769f6df19090f1f471b77a25ca391971efde8a1ea63bb83111bd8bec8e5cc9b2cd
-  languageName: node
-  linkType: hard
-
-"downshift@npm:7.6.0":
-  version: 7.6.0
-  resolution: "downshift@npm:7.6.0"
-  dependencies:
-    "@babel/runtime": ^7.14.8
-    compute-scroll-into-view: ^2.0.4
-    prop-types: ^15.7.2
-    react-is: ^17.0.2
-    tslib: ^2.3.0
-  peerDependencies:
-    react: ">=16.12.0"
-  checksum: f738e0b50bcacedbf14c8de3baceb8e7be88ec4a2ab6becdc58ae253883d47de1085240db189cc485eb5995d0f35ac017836266116a95e0ac8c19b4600d38598
   languageName: node
   linkType: hard
 
@@ -27677,7 +27635,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:15.8.1, prop-types@npm:^15.8.1":
+"prop-types@npm:15.8.1, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -27688,7 +27646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
+"prop-types@npm:^15.6.0, prop-types@npm:^15.6.2":
   version: 15.7.2
   resolution: "prop-types@npm:15.7.2"
   dependencies:
@@ -28156,7 +28114,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:17.0.2, react-is@npm:^17.0.1, react-is@npm:^17.0.2":
+"react-is@npm:17.0.2, react-is@npm:^17.0.1":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
@@ -31741,7 +31699,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.2.0, tslib@npm:^2.3.0":
+"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.2.0":
   version: 2.3.1
   resolution: "tslib@npm:2.3.1"
   checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9

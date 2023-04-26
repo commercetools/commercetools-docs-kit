@@ -16,7 +16,6 @@
     "@auth0/auth0-react": "2.0.1",
     "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.3.1",
     "@commercetools-docs/ui-kit": "21.3.1",
-    "@commercetools-uikit/avatar": "16.0.0",
     "@commercetools-uikit/checkbox-input": "16.0.0",
     "@commercetools-uikit/design-system": "16.0.0",
     "@commercetools-uikit/icons": "16.0.0",

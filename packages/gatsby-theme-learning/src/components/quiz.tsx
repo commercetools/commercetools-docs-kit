@@ -224,11 +224,7 @@ const Quiz = (props: QuizProps) => {
           Logging you in...
         </LoadingSpinner>
       ) : (
-        <LoginButton
-          data-test-id="login-button"
-          label="Login to assess your knowledge"
-          quizId={`quiz-${props.quizId}`}
-        />
+        <LoginButton quizId={`quiz-${props.quizId}`} />
       )
     ) : (
       <QuizContent />

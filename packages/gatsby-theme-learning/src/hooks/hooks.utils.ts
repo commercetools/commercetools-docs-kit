@@ -4,9 +4,6 @@ import type {
   CourseWithDetails,
 } from '../external-types';
 
-export const getCredentialsByEnv = (env: 'production' | 'testing') =>
-  env === 'production' ? 'same-origin' : 'include';
-
 class FetchDataError extends Error {
   status: number | undefined;
   info: object | undefined;
@@ -56,7 +53,11 @@ export const fetcherWithToken = async (
         Accept: 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      credentials: getCredentialsByEnv(env),
+      // Allowing to include authorization and cookie headers because the API is hosted on a different
+      // subdomain even in production and as opposed to cookie domains, CORS same-origin
+      // policy does not consider a subdomain of the document domain same-origin.
+      // ("learning-api.docs.commercetools.com" is not same-origin with "docs.commercetools.com")
+      credentials: 'include',
     });
     return responseHandler(response);
   } catch (e) {

@@ -40,7 +40,7 @@ When(`The user scrolls to the quiz area`, () => {
 });
 
 Then('The user sees a login button', () => {
-  cy.get(`button[data-test-id="${ETestId.loginButton}"]`).should('exist');
+  cy.get(`div[data-test-id="${ETestId.loginButton}"]`).should('exist');
 });
 
 When('The user submits valid auth0 credentials', () => {

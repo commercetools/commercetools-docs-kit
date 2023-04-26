@@ -9,4 +9,5 @@ export { default as CourseCard } from './components/course-card';
 export { default as LearningPathCard } from './components/learning-path-card';
 export { default as ImageCard } from './components/image-card';
 export { default as CourseCompleteModal } from './components/course-complete-modal';
+export { default as FirstName } from './components/first-name';
 export * from './hooks/use-course-pages';
