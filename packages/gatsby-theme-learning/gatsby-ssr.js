@@ -1,4 +1,3 @@
-import React from 'react';
 import ConfigContext from './src/components/config-context';
 import { LearningStateProvider } from './src/components/learning-context';
 

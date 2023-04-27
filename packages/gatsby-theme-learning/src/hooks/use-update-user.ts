@@ -34,6 +34,7 @@ export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
       });
       return data;
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [userId, getAuthToken, learnApiBaseUrl]
   );
 
