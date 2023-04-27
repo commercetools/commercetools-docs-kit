@@ -3,4 +3,4 @@
 '@commercetools-website/docs-smoke-test': minor
 ---
 
-Add IsUserLoggedIn and IsUserLoggedOut components
+Add IfUserLoggedIn and IfUserLoggedOut components

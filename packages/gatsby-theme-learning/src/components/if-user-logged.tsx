@@ -13,7 +13,7 @@ type IsLoggedInProps = {
   children: ReactNode;
 };
 
-export const IsUserLoggedIn = (props: IsLoggedInProps) => {
+export const IfUserLoggedIn = (props: IsLoggedInProps) => {
   const { isAuthenticated } = useAuth0();
 
   return isAuthenticated ? content(props.children) : null;
@@ -23,7 +23,7 @@ type IsLoggedOutProps = {
   children: ReactNode;
 };
 
-export const IsUserLoggedOut = (props: IsLoggedOutProps) => {
+export const IfUserLoggedOut = (props: IsLoggedOutProps) => {
   const { isAuthenticated } = useAuth0();
   return !isAuthenticated ? content(props.children) : null;
 };

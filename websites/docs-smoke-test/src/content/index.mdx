@@ -1,7 +1,6 @@
 ---
 title: Explore how to build a documentation website for commercetools
 ---
-import { IsUserLoggedIn, IsUserLoggedOut } from '@commercetools-docs/gatsby-theme-learning'
 
 # Other smoke tests and docs websites
 
@@ -33,10 +32,10 @@ import { IsUserLoggedIn, IsUserLoggedOut } from '@commercetools-docs/gatsby-them
 
 # Logged in or logged out content
 
-<IsUserLoggedIn>
+<IfUserLoggedIn>
  ## Welcome back!
-</IsUserLoggedIn>
+</IfUserLoggedIn>
 
-<IsUserLoggedOut>
+<IfUserLoggedOut>
  ## Please log in
-</IsUserLoggedOut>
+</IfUserLoggedOut>

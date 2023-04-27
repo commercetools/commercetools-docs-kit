@@ -2,7 +2,7 @@ export { default as Quiz } from './components/quiz';
 export * from './components/quiz';
 export * from './components/quiz.types';
 export * from './components/learning-context';
-export * from './components/is-user-logged';
+export * from './components/if-user-logged';
 export * from './hooks/use-course-pages';
 export { default as UserProfileInit } from './components/user-profile-init';
 export { default as SidebarCourseStatus } from './components/sidebar-course-status';
