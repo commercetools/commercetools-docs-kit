@@ -54,11 +54,15 @@ Example
 
 These component are used to wrap content that should only be displayed if the user is logged in or logged out respectively.
 
+The components have 1 optional prop.
+
+- `assumeTrue`: boolean, if set to `true` while auth0 is still loading the logged in/logged out user state, the component will render the content regardless.
+
 Examples
 
 ```md title="you write:" secondaryTheme
 
-<IfUserLoggedIn>
+<IfUserLoggedIn assumeTrue>
  ## Welcome back!
 </IfUserLoggedIn>
 

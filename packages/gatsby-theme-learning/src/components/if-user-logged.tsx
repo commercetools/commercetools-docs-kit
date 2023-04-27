@@ -9,21 +9,30 @@ const content = (children: ReactNode | string) => {
   return children;
 };
 
-type IsLoggedInProps = {
+type IfLoggedInProps = {
   children: ReactNode;
+  assumeTrue: boolean;
 };
 
-export const IfUserLoggedIn = (props: IsLoggedInProps) => {
-  const { isAuthenticated } = useAuth0();
-
-  return isAuthenticated ? content(props.children) : null;
+export const IfUserLoggedIn = (props: IfLoggedInProps) => {
+  const { isAuthenticated, isLoading } = useAuth0();
+  if (isLoading && props.assumeTrue) {
+    return content(props.children);
+  } else {
+    return isAuthenticated ? content(props.children) : null;
+  }
 };
 
 type IsLoggedOutProps = {
   children: ReactNode;
+  assumeTrue: boolean;
 };
 
 export const IfUserLoggedOut = (props: IsLoggedOutProps) => {
-  const { isAuthenticated } = useAuth0();
-  return !isAuthenticated ? content(props.children) : null;
+  const { isAuthenticated, isLoading } = useAuth0();
+  if (isLoading && props.assumeTrue) {
+    return content(props.children);
+  } else {
+    return !isAuthenticated ? content(props.children) : null;
+  }
 };
