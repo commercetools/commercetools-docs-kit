@@ -24,7 +24,6 @@ const ImageContainer = styled.div`
 `;
 
 const ImageCard = (props: ImageCardProps) => {
-  console.log(props.children);
   return (
     <CardContainer>
       <ImageContainer>{props.children}</ImageContainer>
