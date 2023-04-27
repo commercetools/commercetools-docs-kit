@@ -28,7 +28,7 @@ export type CourseCompletionStatus = Course & {
   competencies: Competency[];
 };
 
-type CourseStatus = 'inProgress' | 'completed';
+export type CourseStatus = 'inProgress' | 'completed';
 
 export type Competency = {
   shortname: string;

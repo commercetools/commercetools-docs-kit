@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ContentNotifications, cardElements } from '@commercetools-docs/ui-kit';
 
+const allowedCardsElementsTypes = [
+  'Card',
+  'CourseCard',
+  'LearningPathCard',
+  'ImageCard',
+];
+
 const Cards = (props) => {
   try {
     return (
@@ -11,7 +18,7 @@ const Cards = (props) => {
             throwErrorMessage(child);
           } else if (
             child.type.displayName === 'MDXCreateElement' &&
-            child.props.mdxType !== 'Card'
+            !allowedCardsElementsTypes.includes(child.props.mdxType)
           ) {
             // this is created in mdx but it is not a card
             throwErrorMessage(child.props.mdxType);
