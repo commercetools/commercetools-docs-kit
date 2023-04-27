@@ -80,13 +80,13 @@ const ProfileModal = () => {
       formik.setFieldValue('lastName', profile?.family_name || '');
       formik.setFieldValue('company', profile?.user_metadata?.company || '');
     }
-  }, [profile, isModalFeatureEnabeld]);
+  }, [profile, isModalFeatureEnabeld, closeModal, openModal, formik]);
 
   useEffect(() => {
     if (updatedUser) {
       updateProfile(updatedUser);
     }
-  }, [updatedUser]);
+  }, [updatedUser, updateProfile]);
 
   const renderError = (errorKey: string) => {
     if (errorKey === 'missing') {

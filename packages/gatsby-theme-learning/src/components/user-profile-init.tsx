@@ -38,7 +38,7 @@ const UserProfileInit = () => {
     if (isAuthenticated && !profile && user) {
       updateProfile(contextProfileAdapter(user));
     }
-  }, [isAuthenticated, profile]);
+  }, [isAuthenticated, profile, user, updateProfile]);
 };
 
 export default UserProfileInit;

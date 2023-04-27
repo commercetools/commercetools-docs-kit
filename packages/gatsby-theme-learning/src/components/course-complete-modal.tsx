@@ -73,7 +73,7 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
       openModal();
     }
     setCourseStatus(newCourseStatus);
-  }, [data]);
+  }, [data, courseStatus, openModal]);
 
   useEffect(() => {
     // adaptive modal. If viewport is less than 530, use medium modal size
