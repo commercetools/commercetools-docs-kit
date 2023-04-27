@@ -21,7 +21,7 @@ export const fetcherWithToken = async (
   url: string,
   getAuthToken: () => Promise<string>,
   learnApiBaseUrl: string,
-  env: 'production' | 'testing'
+  method: 'GET' | 'POST'
 ): Promise<ApiCallResult<EnrolledCourses | CourseWithDetails>> => {
   const responseHandler = async (response: Response) => {
     if (!response.ok) {
@@ -48,7 +48,7 @@ export const fetcherWithToken = async (
 
     // ...then performs fetch
     const response = await fetch(`${learnApiBaseUrl}${url}`, {
-      method: 'POST',
+      method,
       headers: {
         Accept: 'application/json',
         Authorization: `Bearer ${accessToken}`,
