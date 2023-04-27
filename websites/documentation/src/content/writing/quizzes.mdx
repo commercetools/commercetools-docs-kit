@@ -82,3 +82,29 @@ Example
     This learning path is great for Composable Commerce administrators who create/maintain e-commerce data points, primarily work with a user interface, and have some familiarity with APIs.
 </LearningPathCard>
 ```
+
+### IfUserLoggedIn / IfUserLoggedOut
+
+These component are used to wrap content that should only be displayed if the user is logged in or logged out respectively.
+
+The components have 1 optional prop.
+
+- `assumeTrue`: boolean, if set to `true` while auth0 is still loading the logged in/logged out user state, the component will render the content regardless.
+
+Examples
+
+```md title="you write:" secondaryTheme
+
+<IfUserLoggedIn assumeTrue>
+ ## Welcome back!
+</IfUserLoggedIn>
+
+```
+
+```md title="you write:" secondaryTheme
+
+<IfUserLoggedOut>
+ ## Please log in
+</IfUserLoggedOut>
+
+```
