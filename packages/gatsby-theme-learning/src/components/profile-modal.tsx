@@ -80,7 +80,8 @@ const ProfileModal = () => {
       formik.setFieldValue('lastName', profile?.family_name || '');
       formik.setFieldValue('company', profile?.user_metadata?.company || '');
     }
-  }, [profile, isModalFeatureEnabeld, closeModal, openModal, formik]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile, isModalFeatureEnabeld]);
 
   useEffect(() => {
     if (updatedUser) {
