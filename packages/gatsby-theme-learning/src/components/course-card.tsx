@@ -53,7 +53,6 @@ type IconWithTextContainerProps = {
 
 export const IconWithTextContainer = styled.div<IconWithTextContainerProps>`
   min-width: 18px;
-  height: 18px;
 
   svg {
     display: inline-block;
@@ -77,27 +76,27 @@ export const CardBottomContainer = styled.div<CardBottomContainerProps>`
   flex-flow: row nowrap;
   justify-content: space-between;
   color: ${designSystem.colors.light.textPrimary};
-  min-height: 27px;
   padding: ${(props) => (props.separator ? '8px' : '0')} 0 0 0;
 `;
 
 type BodyContentProps = {
-  children: ReactNode;
+  children: string | ReactNode;
 };
 
 const BodyContent = (props: BodyContentProps) => {
-  if (typeof props.children === 'string') {
-    markdownFragmentToReact(props.children, { a: styled.span`` });
-  }
   return (
     <div
       css={css`
         font-size: 12px;
       `}
     >
-      <Markdown.TypographyContainer>
-        {props.children}
-      </Markdown.TypographyContainer>
+      {typeof props.children === 'string' ? (
+        <Markdown.TypographyContainer>
+          {markdownFragmentToReact(props.children)}
+        </Markdown.TypographyContainer>
+      ) : (
+        props.children
+      )}
     </div>
   );
 };
@@ -176,7 +175,7 @@ const CourseCard = (props: CourseCardProps) => {
                   <p>{props.duration}</p>
                 </IconWithTextContainer>
                 <div
-                  css={css({ 'padding-top': '2px' })}
+                  css={css({ paddingTop: '2px' })}
                   style={designSystem.tokensToCssVars({
                     fontSizeForTextAsDetail:
                       designSystem.typography.fontSizes.extraSmall,

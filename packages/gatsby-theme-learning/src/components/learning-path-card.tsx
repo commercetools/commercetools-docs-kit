@@ -37,18 +37,19 @@ type BodyContentProps = {
 };
 
 const BodyContent = (props: BodyContentProps) => {
-  if (typeof props.children === 'string') {
-    markdownFragmentToReact(props.children, { a: styled.span`` });
-  }
   return (
     <div
       css={css`
         font-size: ${designSystem.typography.fontSizes.small};
       `}
     >
-      <Markdown.TypographyContainer>
-        {props.children}
-      </Markdown.TypographyContainer>
+      {typeof props.children === 'string' ? (
+        <Markdown.TypographyContainer>
+          {markdownFragmentToReact(props.children)}
+        </Markdown.TypographyContainer>
+      ) : (
+        props.children
+      )}
     </div>
   );
 };
