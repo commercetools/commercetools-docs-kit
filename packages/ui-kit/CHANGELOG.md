@@ -1,5 +1,15 @@
 # @commercetools-docs/ui-kit
 
+## 21.4.0
+
+### Minor Changes
+
+- [#1611](https://github.com/commercetools/commercetools-docs-kit/pull/1611) [`5296a330`](https://github.com/commercetools/commercetools-docs-kit/commit/5296a3307562616f21500fe09775a8e37cfef3d8) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add complete profile modal feature
+
+- [#1632](https://github.com/commercetools/commercetools-docs-kit/pull/1632) [`01afa1cd`](https://github.com/commercetools/commercetools-docs-kit/commit/01afa1cdf7bd0ab2ef7c2e7d236efbc1bcee5151) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Implement Course card to display information and status about a specific course. Add also the Learning Path card component. Note: update all @commercetools-uikit/ dependencies to 15.15.1
+
+- [#1639](https://github.com/commercetools/commercetools-docs-kit/pull/1639) [`9b26e121`](https://github.com/commercetools/commercetools-docs-kit/commit/9b26e1212d6ac2515ac01562557794f12cab734d) Thanks [@emmenko](https://github.com/emmenko)! - Update UI Kit to `v16`
+
 ## 21.3.1
 
 ### Patch Changes

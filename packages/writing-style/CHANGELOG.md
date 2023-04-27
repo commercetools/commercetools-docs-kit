@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.3.5
+
+### Patch Changes
+
+- [#1638](https://github.com/commercetools/commercetools-docs-kit/pull/1638) [`6e72dca4`](https://github.com/commercetools/commercetools-docs-kit/commit/6e72dca4728d41b62be09f8899a0bece66aa02cc) Thanks [@emmenko](https://github.com/emmenko)! - Update words list
+
 ## 3.3.4
 
 ### Patch Changes

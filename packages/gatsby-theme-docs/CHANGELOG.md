@@ -1,5 +1,25 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 21.4.0
+
+### Minor Changes
+
+- [#1611](https://github.com/commercetools/commercetools-docs-kit/pull/1611) [`5296a330`](https://github.com/commercetools/commercetools-docs-kit/commit/5296a3307562616f21500fe09775a8e37cfef3d8) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add complete profile modal feature
+
+- [#1625](https://github.com/commercetools/commercetools-docs-kit/pull/1625) [`aac2c905`](https://github.com/commercetools/commercetools-docs-kit/commit/aac2c905618442d60619e611b2f1372043178883) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add modal confirmation upon course completion
+
+- [#1632](https://github.com/commercetools/commercetools-docs-kit/pull/1632) [`01afa1cd`](https://github.com/commercetools/commercetools-docs-kit/commit/01afa1cdf7bd0ab2ef7c2e7d236efbc1bcee5151) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Implement Course card to display information and status about a specific course. Add also the Learning Path card component. Note: update all @commercetools-uikit/ dependencies to 15.15.1
+
+- [#1639](https://github.com/commercetools/commercetools-docs-kit/pull/1639) [`9b26e121`](https://github.com/commercetools/commercetools-docs-kit/commit/9b26e1212d6ac2515ac01562557794f12cab734d) Thanks [@emmenko](https://github.com/emmenko)! - Update UI Kit to `v16`
+
+### Patch Changes
+
+- [#1637](https://github.com/commercetools/commercetools-docs-kit/pull/1637) [`559ef9d0`](https://github.com/commercetools/commercetools-docs-kit/commit/559ef9d0816b1b9d7c0ae6f304d6be9615f50637) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix lint warnings about missing dependencies in hooks
+
+- Updated dependencies [[`f1eac857`](https://github.com/commercetools/commercetools-docs-kit/commit/f1eac85760df0c963c47d992092d07aeb5d22a8f), [`6ab95c11`](https://github.com/commercetools/commercetools-docs-kit/commit/6ab95c11f29728bcfc05f557484c408ddd235619), [`f8cf4402`](https://github.com/commercetools/commercetools-docs-kit/commit/f8cf44024c0cdfbe140a150874dcbe7c9b17d68a), [`5296a330`](https://github.com/commercetools/commercetools-docs-kit/commit/5296a3307562616f21500fe09775a8e37cfef3d8), [`0fc019cc`](https://github.com/commercetools/commercetools-docs-kit/commit/0fc019ccdaedb2a58d358e7a137c747f4694a590), [`559ef9d0`](https://github.com/commercetools/commercetools-docs-kit/commit/559ef9d0816b1b9d7c0ae6f304d6be9615f50637), [`aac2c905`](https://github.com/commercetools/commercetools-docs-kit/commit/aac2c905618442d60619e611b2f1372043178883), [`01afa1cd`](https://github.com/commercetools/commercetools-docs-kit/commit/01afa1cdf7bd0ab2ef7c2e7d236efbc1bcee5151), [`9b26e121`](https://github.com/commercetools/commercetools-docs-kit/commit/9b26e1212d6ac2515ac01562557794f12cab734d)]:
+  - @commercetools-docs/gatsby-theme-learning@21.4.0
+  - @commercetools-docs/ui-kit@21.4.0
+
 ## 21.3.2
 
 ### Patch Changes
