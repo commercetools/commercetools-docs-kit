@@ -3029,7 +3029,7 @@ __metadata:
     gatsby-plugin-image: 3.8.0
     gatsby-plugin-manifest: 5.8.0
     gatsby-plugin-mdx: "patch:gatsby-plugin-mdx@3.20.0#./patches/gatsby-plugin-mdx.patch"
-    gatsby-plugin-sharp: 5.8.0
+    gatsby-plugin-sharp: 5.8.1
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.30
     gatsby-remark-copy-linked-files: 6.8.0
     gatsby-remark-images: 7.8.0
@@ -17945,9 +17945,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-sharp@npm:5.8.0":
-  version: 5.8.0
-  resolution: "gatsby-plugin-sharp@npm:5.8.0"
+"gatsby-plugin-sharp@npm:5.8.1":
+  version: 5.8.1
+  resolution: "gatsby-plugin-sharp@npm:5.8.1"
   dependencies:
     "@babel/runtime": ^7.20.13
     async: ^3.2.4
@@ -17963,7 +17963,7 @@ __metadata:
     sharp: ^0.31.3
   peerDependencies:
     gatsby: ^5.0.0-next
-  checksum: a230276681b4b15e9ab17e8ac190de530f47b09ae72d2309c94462fb86b1147f2aaae5a41f35bf6d1566842e77d2f6e53599b72fe82a311605c181fe6dff8f01
+  checksum: c7de794a5e8d90db2bc3d2983ba30398506d1aa70ee8853db4f078d64ee62c7d3e8839eb2374d84a90b2ed83cb0d916cd154ea08b4b5425cf683c1f1f884ab4b
   languageName: node
   linkType: hard
 
