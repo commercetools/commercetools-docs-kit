@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-code-examples",
   "description": "Gatsby theme for commercetools documentation providing the functionalities to render Code Examples in MDX",
-  "version": "21.3.1",
+  "version": "21.4.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -15,7 +15,7 @@
   "homepage": "https://docs-kit.commercetools.vercel.app/documentation/configuration/extensions#gatsby-theme-add-on-for-code-examples",
   "keywords": ["gatsby", "gatsby-plugin", "gatsby-theme", "code", "examples"],
   "dependencies": {
-    "@commercetools-docs/ui-kit": "21.3.1",
+    "@commercetools-docs/ui-kit": "21.4.0",
     "prop-types": "15.8.1"
   },
   "devDependencies": {
