@@ -108,3 +108,30 @@ Examples
 </IfUserLoggedOut>
 
 ```
+
+### FirstName
+
+This component simply render the first name of the logged in user, if the user is logged out, nothing is rendered.
+
+Example
+
+```md title="you write:" secondaryTheme
+
+Hello <FirstName />, welcome back
+
+```
+
+### Learing path card with image on the side
+
+In order to add an image on the side of a learning path card use the following pattern (the image must have been previously added to the /content/files directory)
+
+```md title="you write:" secondaryTheme
+<Cards>
+  <LearningPathCard title="Overview" duration="1 hour 25 minutes | 7 courses" productName="Composable Commerce"> Description here</LearningPathCard>
+  <ImageCard>
+
+  ![learning path](/content/files/file-name.svg)
+
+  </ImageCard>
+</Cards>
+```
