@@ -50,7 +50,7 @@
     "gatsby-plugin-image": "3.8.0",
     "gatsby-plugin-manifest": "5.8.0",
     "gatsby-plugin-mdx": "patch:gatsby-plugin-mdx@3.20.0#./patches/gatsby-plugin-mdx.patch",
-    "gatsby-plugin-sharp": "5.8.0",
+    "gatsby-plugin-sharp": "5.8.1",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.30",
     "gatsby-remark-copy-linked-files": "6.8.0",
     "gatsby-remark-images": "7.8.0",
