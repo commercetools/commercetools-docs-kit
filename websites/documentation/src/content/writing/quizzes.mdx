@@ -85,7 +85,7 @@ Example
 
 ### IfUserLoggedIn / IfUserLoggedOut
 
-These component are used to wrap content that should only be displayed if the user is logged in or logged out respectively.
+These components are used to wrap content that should only be displayed if the user is logged in or logged out respectively.
 
 The components have 1 optional prop.
 
@@ -135,3 +135,27 @@ In order to add an image on the side of a learning path card use the following p
   </ImageCard>
 </Cards>
 ```
+
+### IfLearningPathComplete / IfLearningPathNotComplete
+
+These components are used to wrap content that should only be/not be displayed if the user completed the learning path
+
+
+Examples
+
+```md title="you write:" secondaryTheme
+
+<IfLearningPathComplete>
+ Congratulations, you completed learning path
+</IfLearningPathComplete>
+
+```
+
+```md title="you write:" secondaryTheme
+
+<IfLearningPathNotComplete>
+  Keep learning!
+</IfLearningPathNotComplete>
+
+```
+

@@ -2,7 +2,7 @@
 title: Explore how to build a documentation website for commercetools
 ---
 
-import { CourseCard, LearningPathCard, ImageCard } from '@commercetools-docs/gatsby-theme-learning'
+import { CourseCard, LearningPathCard, ImageCard, IfLearningPathComplete, IfLearningPathNotComplete } from '@commercetools-docs/gatsby-theme-learning'
 import { CheckThinIcon } from '@commercetools-uikit/icons'
 import  PrimaryButton  from '@commercetools-uikit/primary-button'
 
@@ -35,16 +35,44 @@ import  PrimaryButton  from '@commercetools-uikit/primary-button'
 </Cards>
 
 <IfUserLoggedIn>
+<IfLearningPathComplete>
+<h2>Learn how to manage projects, products, pricing, customers, shipping methods and more with commercetools Composable Commerce.</h2>
+<br />
+<Cards>
+<Card title="You know how to:">
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Implement organizations, teams, projects and related functions to enable your e-commerce solution.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Set up, create and publish prices.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Identify use cases for customizing the data model and behavior of the APIs.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Manage discounts in the Merchant Center.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Design the product information structure and store your product content data.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Set up shipping methods for diverse contexts.</p>
+</Card>
+  <ImageCard>
 
+  ![learning path](/content/files/logged-in-learning-path-complete.svg)
+
+  </ImageCard>
+</Cards>
+
+<h1>Further learning</h1>
+
+Ready to take your learning further? Take our [Functional Architect Exam Preparation Course](/) to solidify your commercetools knowledge and practical skills! This course will help you prepare for our world-wide recognised exam.
+
+<h1>Completed courses</h1>
+
+Congratulations on completing all the courses in this learning path! Remember, your learning journey never ends. You can always refer back to the material to keep building your knowledge. Keep up the good work!
+</IfLearningPathComplete>
+<IfLearningPathNotComplete>
 <h2>Hey <FirstName />! Hope you had a nice break and are excited to get back into the Composable Commerce Administrator learning path!</h2>
+<br/>
 <Cards>
 <Card title="Learning objectives">
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Objective 1</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Objective 2</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Objective 3</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Objective 4</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Objective 5</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Objective 6</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Implement organizations, teams, projects and related functions to enable your e-commerce solution.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Set up, create and publish prices.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Identify use cases for customizing the data model and behavior of the APIs.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Manage discounts in the Merchant Center.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Design the product information structure and store your product content data.</p>
+<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Set up shipping methods for diverse contexts.</p>
 </Card>
   <ImageCard>
 
@@ -56,12 +84,13 @@ import  PrimaryButton  from '@commercetools-uikit/primary-button'
 <h1>Continue where you left off</h1>
 
 You can jump right back into the course you worked on last time or explore new topics.
+</IfLearningPathNotComplete>
 </IfUserLoggedIn>
 
 <IfUserLoggedOut>
 
 <h2>Learn how to manage projects, products, pricing, customers, shipping methods and more with commercetools Composable Commerce.</h2>
-
+<br />
 <Cards>
   <LearningPathCard title="Overview" duration="1 hour 25 minutes | 7 courses" productName="Composable Commerce">
 
@@ -99,5 +128,3 @@ This is a second **paragraph**
 <CourseCard duration="30 min" title="Course name" href="/">Course description. Introduction to extensibility possibilities available in Composable Commerce. </CourseCard>
 <CourseCard duration="30 min" title="Course name" href="/">Course description. Introduction to extensibility possibilities available in Composable Commerce. </CourseCard>
 </Cards>
-
-
