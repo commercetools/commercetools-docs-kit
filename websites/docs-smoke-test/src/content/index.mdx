@@ -4,7 +4,7 @@ title: Explore how to build a documentation website for commercetools
 
 import { CourseCard, LearningPathCard, ImageCard, IfLearningPathComplete, IfLearningPathNotComplete } from '@commercetools-docs/gatsby-theme-learning'
 import { CheckThinIcon } from '@commercetools-uikit/icons'
-import  PrimaryButton  from '@commercetools-uikit/primary-button'
+import { PrimaryButton } from '@commercetools-docs/gatsby-theme-sso-ui-kit'
 
 # Other smoke tests and docs websites
 
@@ -107,8 +107,14 @@ This is a second **paragraph**
 </Cards>
 
 
-<PrimaryButton label="Signup to track your progress" onClick={() => window.location.href = 'https://commercetools.eu.auth0.com/authorize?response_type=code&client_id=xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z&redirect_uri=https://docs.commercetools.com&scope=openid%20profile'}/> <a href="/self-learning/overview">Continue as guest</a>
-
+<div style="display:flex;">
+  <PrimaryButton onClick={() => window.location.href = 'https://commercetools.eu.auth0.com/authorize?response_type=code&client_id=xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z&redirect_uri=https://docs.commercetools.com&scope=openid%20profile'}>
+    <p>Signup to track your progress</p>
+  </PrimaryButton>
+  <div style="font-size: 13px; display: flex; align-items: center; margin-left: 20px;">
+    <a href="/self-learning/overview">Continue as guest</a>
+  </div>
+</div>
 
 
 <h1>Interested in a specific topic? Take a short course!</h1>
