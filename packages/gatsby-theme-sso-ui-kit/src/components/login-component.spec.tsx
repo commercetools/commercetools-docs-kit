@@ -16,7 +16,7 @@ describe('login-button', () => {
         returnTo: '/',
       },
     };
-    render(<LoginButton theme="primary" label="Login" />);
+    render(<LoginButton theme="secondary" label="Login" />);
     const loginButtonElement = screen.getByTestId('login-button');
     expect(loginButtonElement).toBeInTheDocument();
     fireEvent.click(loginButtonElement);
