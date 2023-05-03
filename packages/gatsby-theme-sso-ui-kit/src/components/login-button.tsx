@@ -1,11 +1,14 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { UserFilledIcon } from '@commercetools-uikit/icons';
+// import { UserFilledIcon } from '@commercetools-uikit/icons';
 import PrimaryButton from './primary-button';
 import SecondaryButton from './secondary-button';
 
 type LoginButtonProps = {
   quizId?: string;
+  icon?: JSX.Element;
+  label: string;
+  theme: 'primary' | 'secondary';
 };
 
 const LoginButton = (props: LoginButtonProps) => {
@@ -24,7 +27,7 @@ const LoginButton = (props: LoginButtonProps) => {
       : window.location.pathname;
   };
 
-  if (props.quizId) {
+  if (props.theme === 'primary') {
     return (
       <PrimaryButton
         data-test-id="login-quiz-button"
@@ -36,8 +39,8 @@ const LoginButton = (props: LoginButtonProps) => {
           })
         }
       >
-        <UserFilledIcon color="surface" />
-        <p>Login to start the quiz</p>
+        {props.icon}
+        <p>{props.label}</p>
       </PrimaryButton>
     );
   }
@@ -53,7 +56,7 @@ const LoginButton = (props: LoginButtonProps) => {
         })
       }
     >
-      Login
+      {props.label}
     </SecondaryButton>
   );
 };
