@@ -42,6 +42,8 @@ export const useFetchCourseDetails = (
     (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl, 'GET'),
     {
       revalidateOnReconnect: false,
+      revalidateIfStale: false,
+      revalidateOnMount: false,
     }
   ) as UseFetchCoursesIdResponse;
   return {
