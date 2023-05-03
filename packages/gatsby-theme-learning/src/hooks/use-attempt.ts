@@ -2,6 +2,7 @@ import { useState, useContext, useCallback } from 'react';
 import ConfigContext from '../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
+import { useSWRConfig } from 'swr';
 
 type FetchAttemptParams = {
   courseId: string;
@@ -30,6 +31,7 @@ export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
   const [error, setError] = useState<string | undefined>();
   const [data, setData] = useState<QuizAttempt | undefined>();
   const [correlationId, setCorrelationId] = useState<string | undefined>();
+  const { mutate } = useSWRConfig();
 
   const getNewAttempt = useCallback(
     async (forceNew: boolean): Promise<Response> => {
@@ -51,6 +53,10 @@ export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
 
   const fetchAttempt = useCallback(
     async (forceNew: boolean) => {
+      const invalidateCache = () => {
+        mutate('/api/courses');
+        mutate(`/api/courses/${courseId}`);
+      };
       try {
         setIsLoading(true);
         const data = await getNewAttempt(forceNew);
@@ -71,6 +77,10 @@ export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
           }
           throw new Error();
         } else {
+          // we invalidate course status cache as the user might be just being
+          // enrolled into the course so we want fresh course status data to be fetched
+          // see https://github.com/commercetools/commercetools-docs-kit/issues/1644
+          invalidateCache();
           const json = await data.json();
           setData(json);
         }
