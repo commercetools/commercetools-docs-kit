@@ -475,6 +475,20 @@ uses:
                 type: object
                 example: !include examples/action-success.json
 
+    /json-serializable-primitive-type:
+      post:
+        description: Use the POST method to allow the frontend to fetch data asynchronously. The example fetches a cart.
+        body:
+          application/json:
+            type: string
+        responses:
+          200:
+            description: We recommend to use standard HTTP response codes and `application/json` encoded content. The response will look like the response you have declared in your action. As an example we will fetch the cart.
+            body:
+              application/json:
+                type: string
+                example: !include examples/action-success.json
+
 
 #   /resourceWithHeaders:
 #    description: Tests use of specific headers.

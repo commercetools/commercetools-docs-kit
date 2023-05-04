@@ -56,6 +56,7 @@ const RequestRepresentation = (props) => {
         <SpacingsStack>
           <ContentType>{props.contentType}</ContentType>
           <ApiTypeByKey
+            contentType={props.contentType}
             apiKey={props.apiKey}
             type={props.apiType}
             doNotRenderExamples

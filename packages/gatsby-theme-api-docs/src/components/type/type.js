@@ -12,12 +12,43 @@ import Enum from './enum';
 import Properties from './properties/properties';
 import Examples from './examples';
 
+const contentTypeToPrimitiveMap = {
+  'application/json': {
+    number: '_Any JSON "number"',
+    any: '_Any valid JSON_',
+    object: '_Any JSON "object"_',
+    boolean: '_Any JSON "boolean"_',
+    string: '_Any JSON "string"_',
+    array: '_Any JSON "array"_',
+  },
+};
+
+const getPrimitiveTypeByName = (contentType, type) =>
+  contentTypeToPrimitiveMap[contentType] &&
+  contentTypeToPrimitiveMap[contentType][type];
+
 const ApiType = (props) => {
-  const matchedApiType = props.apiTypes.find((apiType) => {
+  console.log(props);
+  let matchedApiType = props.apiTypes.find((apiType) => {
     return (
       apiType.apiKey === props.apiKey && apiType.displayName === props.type
     );
   });
+
+  if (!matchedApiType) {
+    if (props.contentType && props.contentType.includes('application/json')) {
+      const primitiveTypeDescription = getPrimitiveTypeByName(
+        'application/json',
+        props.type
+      );
+      if (primitiveTypeDescription) {
+        matchedApiType = {
+          displayName: props.type,
+          description: primitiveTypeDescription,
+        };
+      }
+    }
+  }
 
   if (!matchedApiType) {
     return reportError(
@@ -92,6 +123,7 @@ ApiType.propTypes = {
   ]),
   doNotRenderExamples: PropTypes.bool,
   hideInheritedProperties: PropTypes.bool,
+  contentType: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default ApiType;
