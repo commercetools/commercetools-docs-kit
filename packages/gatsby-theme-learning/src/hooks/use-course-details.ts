@@ -39,7 +39,14 @@ export const useFetchCourseDetails = (
 
   const { data, error, isLoading } = useSWR(
     shouldFetchData ? apiEndpoint : null,
-    (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl, 'GET')
+    (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl, 'GET'),
+    {
+      revalidateOnReconnect: false,
+      revalidateIfStale: false,
+      revalidateOnMount: true,
+      dedupingInterval: 3 * 60 * 1000, // allow revalidation each 3 minutes
+      revalidateOnFocus: true,
+    }
   ) as UseFetchCoursesIdResponse;
   return {
     data,

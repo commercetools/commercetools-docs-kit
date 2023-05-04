@@ -87,7 +87,8 @@ const ProfileModal = () => {
     if (updatedUser) {
       updateProfile(updatedUser);
     }
-  }, [updatedUser, updateProfile]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updatedUser]);
 
   const renderError = (errorKey: string) => {
     if (errorKey === 'missing') {
