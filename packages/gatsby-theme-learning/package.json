@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-learning",
   "description": "Gatsby plugin exposing self-learning capabilities",
-  "version": "21.4.0",
+  "version": "21.4.1",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

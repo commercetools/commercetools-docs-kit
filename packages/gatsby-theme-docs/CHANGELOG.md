@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 21.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`43c03cbc`](https://github.com/commercetools/commercetools-docs-kit/commit/43c03cbc2273191d4961e1e747e62613e39060d6), [`74e83c53`](https://github.com/commercetools/commercetools-docs-kit/commit/74e83c531c761c9724a933639e3b22a1086070d3)]:
+  - @commercetools-docs/gatsby-theme-learning@21.4.1
+
 ## 21.4.0
 
 ### Minor Changes

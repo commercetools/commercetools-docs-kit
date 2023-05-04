@@ -1,5 +1,15 @@
 # @commercetools-website/docs-smoke-test
 
+## 7.4.1
+
+### Patch Changes
+
+- [#1645](https://github.com/commercetools/commercetools-docs-kit/pull/1645) [`74e83c53`](https://github.com/commercetools/commercetools-docs-kit/commit/74e83c531c761c9724a933639e3b22a1086070d3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Implement mock version of self-learning microsite
+
+- Updated dependencies [[`43c03cbc`](https://github.com/commercetools/commercetools-docs-kit/commit/43c03cbc2273191d4961e1e747e62613e39060d6), [`74e83c53`](https://github.com/commercetools/commercetools-docs-kit/commit/74e83c531c761c9724a933639e3b22a1086070d3)]:
+  - @commercetools-docs/gatsby-theme-learning@21.4.1
+  - @commercetools-docs/gatsby-theme-docs@21.4.1
+
 ## 7.4.0
 
 ### Minor Changes

@@ -1,5 +1,14 @@
 # @commercetools-website/documentation
 
+## 7.3.1
+
+### Patch Changes
+
+- [#1645](https://github.com/commercetools/commercetools-docs-kit/pull/1645) [`74e83c53`](https://github.com/commercetools/commercetools-docs-kit/commit/74e83c531c761c9724a933639e3b22a1086070d3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Implement mock version of self-learning microsite
+
+- Updated dependencies []:
+  - @commercetools-docs/gatsby-theme-docs@21.4.1
+
 ## 7.3.0
 
 ### Minor Changes
