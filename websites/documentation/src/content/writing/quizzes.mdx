@@ -85,7 +85,7 @@ Example
 
 ### IfUserLoggedIn / IfUserLoggedOut
 
-These component are used to wrap content that should only be displayed if the user is logged in or logged out respectively.
+These components are used to wrap content that should only be displayed if the user is logged in or logged out respectively.
 
 The components have 1 optional prop.
 
@@ -108,3 +108,80 @@ Examples
 </IfUserLoggedOut>
 
 ```
+
+### FirstName
+
+This component simply render the first name of the logged in user, if the user is logged out, nothing is rendered.
+
+Example
+
+```md title="you write:" secondaryTheme
+
+Hello <FirstName />, welcome back
+
+```
+
+### Learing path card with image on the side
+
+In order to add an image on the side of a learning path card use the following pattern (the image must have been previously added to the /content/files directory)
+
+```md title="you write:" secondaryTheme
+<Cards>
+  <LearningPathCard title="Overview" duration="1 hour 25 minutes | 7 courses" productName="Composable Commerce"> Description here</LearningPathCard>
+  <ImageCard>
+
+  ![learning path](/content/files/file-name.svg)
+
+  </ImageCard>
+</Cards>
+```
+
+### IfLearningPathComplete / IfLearningPathNotComplete
+
+These components are used to wrap content that should only be/not be displayed if the user completed the learning path
+
+
+Examples
+
+```md title="you write:" secondaryTheme
+
+<IfLearningPathComplete>
+ Congratulations, you completed learning path
+</IfLearningPathComplete>
+
+```
+
+```md title="you write:" secondaryTheme
+
+<IfLearningPathNotComplete>
+  Keep learning!
+</IfLearningPathNotComplete>
+
+```
+
+
+### LoginButton
+
+The component renders a button that implements the login functionality through auth0.
+
+The component has the following mandatory props:
+
+- `theme`: (`primary` or `secondary`)
+- `label`: The text rendered on the button
+- `icon`: (Optional) Icon component to be rendered in front of the label text
+- `quizId`: (Optional)Refers to the id of a quiz secton on the page causing auto-scroll to that section after login
+
+Examples
+
+```md title="you write:" secondaryTheme
+import { LoginButton } from '@commercetools-docs/gatsby-theme-sso-ui-kit';
+
+<LoginButton
+  theme="primary"
+  icon={<UserFilledIcon color="surface"/>}
+  label="Login to start the quiz"
+  quizId={`quiz-${props.quizId}`}
+/>
+
+```
+

@@ -11,6 +11,7 @@ import QuizForm from './quiz-form';
 import type { PassthroughData, SubmissionAttempt } from './quiz.types';
 import { canUseDOM, getQuizOutcome, isTestUserEmail } from './quiz.utils';
 import { LearningContext } from './learning-context';
+import { UserFilledIcon } from '@commercetools-uikit/icons';
 
 export const OUTCOME_CORRECT = 'correct';
 export const OUTCOME_INCORRECT = 'incorrect';
@@ -224,7 +225,12 @@ const Quiz = (props: QuizProps) => {
           Logging you in...
         </LoadingSpinner>
       ) : (
-        <LoginButton quizId={`quiz-${props.quizId}`} />
+        <LoginButton
+          theme="primary"
+          icon={<UserFilledIcon color="surface" />}
+          label="Login to start the quiz"
+          quizId={`quiz-${props.quizId}`}
+        />
       )
     ) : (
       <QuizContent />

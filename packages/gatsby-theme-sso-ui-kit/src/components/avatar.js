@@ -64,7 +64,11 @@ const LoggedOutState = () => {
 
   return (
     <AvatarContainer>
-      <LoginButton data-test-id="login-button" label="Login" />
+      <LoginButton
+        theme="secondary"
+        label="Login"
+        data-test-id="login-button"
+      />
       <PrimaryButton
         onClick={() =>
           loginWithRedirect({
