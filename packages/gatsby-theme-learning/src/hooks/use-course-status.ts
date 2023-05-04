@@ -46,7 +46,9 @@ export const useFetchCourses = (): {
     {
       revalidateOnReconnect: false,
       revalidateIfStale: false,
-      revalidateOnMount: false,
+      revalidateOnMount: true,
+      dedupingInterval: 10000000,
+      revalidateOnFocus: false,
     }
   ) as UseFetchCoursesResponse;
   return {
