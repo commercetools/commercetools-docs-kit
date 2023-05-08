@@ -59,7 +59,7 @@
   pages:
     - title: Overview
       path: /self-learning/overview
-    - title: Test your knowledge
+    - title: Test your knowledge with long title
       path: /self-learning/quiz
     - title: Test your knowledge 2
       path: /self-learning/2-quiz
