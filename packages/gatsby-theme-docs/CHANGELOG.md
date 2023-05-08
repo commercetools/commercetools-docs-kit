@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 21.4.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-docs/gatsby-theme-learning@21.4.2
+
 ## 21.4.1
 
 ### Patch Changes
