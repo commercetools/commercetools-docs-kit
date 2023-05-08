@@ -484,6 +484,7 @@ uses:
             example: !include examples/action-payload-1.json
         responses:
           200:
+            description: We recommend to use standard HTTP response codes and `application/json` encoded content. The response will look like the response you have declared in your action. As an example we will fetch the cart.
             body:
               application/json:
                 type: object

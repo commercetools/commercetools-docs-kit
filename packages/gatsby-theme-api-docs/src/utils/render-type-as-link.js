@@ -13,7 +13,7 @@ function renderTypeAsLink(
 ) {
   const typeLocation = locationForType(apiKey, type, typeLocations);
 
-  const originalTypeLocation = typeLocation ? typeLocation.url : '';
+  const originalTypeLocation = typeLocation ? typeLocation.url : undefined;
 
   let primitiveJsonType;
   if (
@@ -26,10 +26,10 @@ function renderTypeAsLink(
 
   if (originalTypeLocation) {
     return <Link href={originalTypeLocation}>{type}</Link>;
-  } else if (description) {
-    return markdownFragmentToReact(description);
   } else if (primitiveJsonType) {
     return markdownFragmentToReact(primitiveJsonType);
+  } else if (description) {
+    return markdownFragmentToReact(description);
   }
   return type;
 }
