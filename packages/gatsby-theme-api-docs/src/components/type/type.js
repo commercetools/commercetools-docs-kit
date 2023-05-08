@@ -23,7 +23,7 @@ const contentTypeToPrimitiveMap = {
   },
 };
 
-const getPrimitiveTypeByName = (contentType, type) =>
+export const getPrimitiveTypeByName = (contentType, type) =>
   contentTypeToPrimitiveMap[contentType] &&
   contentTypeToPrimitiveMap[contentType][type];
 
