@@ -1,11 +1,3 @@
-- chapter-title: Self-learning course
-  pages:
-    - title: Overview
-      path: /self-learning/overview
-    - title: Test your knowledge with long title
-      path: /self-learning/quiz
-    - title: Test your knowledge 2
-      path: /self-learning/2-quiz
 - chapter-title: Views
   pages:
     - title: Markdown
@@ -63,3 +55,11 @@
     - title: BetaPageWithLongNameThatOverflowsBecauseItsOneWord
       path: /empty-pages/empty-page-four
       beta: true
+- chapter-title: Self-learning course
+  pages:
+    - title: Overview
+      path: /self-learning/overview
+    - title: Test your knowledge with long title
+      path: /self-learning/quiz
+    - title: Test your knowledge 2
+      path: /self-learning/2-quiz
