@@ -13,7 +13,7 @@ import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const UnknownStateSpacer = styled.div`
-  width: ${designSystem.dimensions.spacings.m};
+  min-width: ${designSystem.dimensions.spacings.m};
   margin-right: 5px;
 `;
 
