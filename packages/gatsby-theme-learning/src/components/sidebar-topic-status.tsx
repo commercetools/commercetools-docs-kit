@@ -12,7 +12,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import styled from '@emotion/styled';
 
 const UnknownStateSpacer = styled.div`
-  width: ${designSystem.dimensions.spacings.m};
+  min-width: ${designSystem.dimensions.spacings.m};
   margin-right: 5px;
 `;
 
