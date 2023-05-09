@@ -126,7 +126,8 @@ const SearchInput = React.forwardRef((props, ref) => {
           <SecondaryIconButton
             label="Close search dialog"
             onClick={props.onClose}
-            icon={<CloseIcon size="medium" />}
+            size="medium"
+            icon={<CloseIcon />}
           />
         </SearchInputIcon>
       )}
