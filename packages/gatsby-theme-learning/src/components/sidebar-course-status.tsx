@@ -25,6 +25,7 @@ export const StatusIndicator = (props: StatusIndicatorProps) => {
     case 'completed':
       return <VerifiedIcon color="primary" size="big" />;
     case 'inProgress':
+    case 'notEnrolled':
       return <CircleIcon color="neutral60" size="big" />;
     default:
       return <UnknownStateSpacer />;

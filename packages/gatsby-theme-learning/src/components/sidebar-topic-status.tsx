@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CheckActiveIcon, CircleIcon } from '@commercetools-uikit/icons';
 import {
   useFetchCourseDetails,
@@ -10,6 +10,7 @@ import ConfigContext, {
 } from './config-context';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import styled from '@emotion/styled';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const UnknownStateSpacer = styled.div`
   width: ${designSystem.dimensions.spacings.m};
@@ -25,6 +26,7 @@ export const StatusIndicator = (props: StatusIndicatorProps) => {
     case 'completed':
       return <CheckActiveIcon color="primary" size="medium" />;
     case 'notCompleted':
+    case 'notAvailable':
       return <CircleIcon color="neutral60" size="medium" />;
     default:
       return <UnknownStateSpacer />;
@@ -37,17 +39,26 @@ type PageTopicStatusProps = {
 };
 
 const SidebarTopicStatus = (props: PageTopicStatusProps) => {
+  const { isAuthenticated } = useAuth0();
+  const [topicStatus, setTopicStatus] = useState<string | undefined>();
   const { data } = useFetchCourseDetails(props.courseId);
   const { features } = useContext(ConfigContext);
 
-  // CourseStatus feature flag
-  if (!isFeatureEnabled(EFeatureFlag.CourseStatus, features)) {
-    return null;
-  }
+  useEffect(() => {
+    if (
+      // CourseStatus feature flag
+      isFeatureEnabled(EFeatureFlag.CourseStatus, features) &&
+      isAuthenticated
+    ) {
+      setTopicStatus(
+        data?.result?.topics
+          ? getTopicStatusByPageTitle(data.result.topics, props.pageTitle)
+          : 'notAvailable'
+      );
+    }
 
-  const topicStatus = data?.result?.topics
-    ? getTopicStatusByPageTitle(data.result.topics, props.pageTitle)
-    : undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [features, data, isAuthenticated]);
 
   return props.courseId && <StatusIndicator status={topicStatus} />;
 };
