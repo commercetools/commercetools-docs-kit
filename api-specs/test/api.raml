@@ -480,15 +480,15 @@ uses:
         description: Use the PUT method to write data to a backend system. Any JSON serializable payload is accepted. The following request example adds a product to a cart. For the response, we recommend to use standard HTTP codes and `application/json` encoded content. The response will be structured [as defined by the `body` property of the action](/). The following response example contains the updated cart information, which includes the added product.
         body:
           application/json:
-            type: string
-            example: !include examples/action-payload-1.json
+            type: object
+            example: !include examples/json-serializable-primitive-object.json
         responses:
           200:
             description: We recommend to use standard HTTP response codes and `application/json` encoded content. The response will look like the response you have declared in your action. As an example we will fetch the cart.
             body:
               application/json:
-                type: object
-                example: !include examples/action-success-1.json
+                type: any
+                example: !include examples/json-serializable-primitive-raw.json
 
 
 #   /resourceWithHeaders:

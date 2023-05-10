@@ -14,16 +14,16 @@ import Examples from './examples';
 
 const contentTypeToPrimitiveMap = {
   'application/json': {
-    number: '_Any JSON "number"',
-    any: '_Any valid JSON_',
-    object: '_Any JSON "object"_',
-    boolean: '_Any JSON "boolean"_',
-    string: '_Any JSON "string"_',
-    array: '_Any JSON "array"_',
+    number: 'Any JSON "number"',
+    any: 'Any valid JSON',
+    object: 'Any JSON "object"',
+    boolean: 'Any JSON "boolean"',
+    string: 'Any JSON "string"',
+    array: 'Any JSON "array"',
   },
 };
 
-export const getPrimitiveTypeByName = (contentType, type) =>
+export const getDescriptionIfPrimitiveType = (contentType, type) =>
   contentTypeToPrimitiveMap[contentType] &&
   contentTypeToPrimitiveMap[contentType][type];
 
@@ -37,7 +37,7 @@ const ApiType = (props) => {
 
   if (!matchedApiType) {
     if (props.contentType && props.contentType.includes('application/json')) {
-      const primitiveTypeDescription = getPrimitiveTypeByName(
+      const primitiveTypeDescription = getDescriptionIfPrimitiveType(
         'application/json',
         props.type
       );

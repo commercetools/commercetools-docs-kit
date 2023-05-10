@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from '@commercetools-docs/gatsby-theme-docs';
-import { markdownFragmentToReact } from '@commercetools-docs/ui-kit';
+import { markdownFragmentToReact, Markdown } from '@commercetools-docs/ui-kit';
 import { locationForType } from '../hooks/use-type-locations';
-import { getPrimitiveTypeByName } from '../components/type/type';
+import { getDescriptionIfPrimitiveType } from '../components/type/type';
 
 function renderTypeAsLink(
   apiKey,
@@ -21,13 +21,13 @@ function renderTypeAsLink(
     Array.isArray(contentType) &&
     contentType.includes('application/json')
   ) {
-    primitiveJsonType = getPrimitiveTypeByName('application/json', type);
+    primitiveJsonType = getDescriptionIfPrimitiveType('application/json', type);
   }
 
   if (originalTypeLocation) {
     return <Link href={originalTypeLocation}>{type}</Link>;
   } else if (primitiveJsonType) {
-    return markdownFragmentToReact(primitiveJsonType);
+    return <Markdown.Em>{primitiveJsonType}</Markdown.Em>;
   } else if (description) {
     return markdownFragmentToReact(description);
   }

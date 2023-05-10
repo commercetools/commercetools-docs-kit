@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import {
-  designSystem,
-  markdownFragmentToReact,
-} from '@commercetools-docs/ui-kit';
+import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import {
   useTypeLocations,
   locationForType,
@@ -15,7 +12,7 @@ import renderTypeAsLink from '../../../utils/render-type-as-link';
 import ApiTypeByKey from '../../type/type-by-api-key';
 import Title from './title';
 import ContentType from './highlights';
-import { getPrimitiveTypeByName } from '../../type/type';
+import { getDescriptionIfPrimitiveType } from '../../type/type';
 
 const RequestRepresentation = (props) => {
   const typeLocations = useTypeLocations();
@@ -32,7 +29,7 @@ const RequestRepresentation = (props) => {
     props.contentType &&
     props.contentType.includes('application/json')
   ) {
-    primitiveJSONType = getPrimitiveTypeByName(
+    primitiveJSONType = getDescriptionIfPrimitiveType(
       'application/json',
       props.apiType
     );
@@ -65,9 +62,11 @@ const RequestRepresentation = (props) => {
         </SpacingsInline>
       ) : requestRepresentationLocation || primitiveJSONType ? (
         <SpacingsInline alignItems="center">
-          {primitiveJSONType
-            ? markdownFragmentToReact(primitiveJSONType)
-            : renderTypeAsLink(props.apiKey, props.apiType, typeLocations)}
+          {primitiveJSONType ? (
+            <Markdown.Em>{primitiveJSONType}</Markdown.Em>
+          ) : (
+            renderTypeAsLink(props.apiKey, props.apiType, typeLocations)
+          )}
           <span>as</span>
           <ContentType>{props.contentType}</ContentType>
         </SpacingsInline>
