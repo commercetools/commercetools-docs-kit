@@ -50,7 +50,8 @@ const Responses = ({ apiKey, responses, contentType }) => {
                       apiKey,
                       response.body.applicationjson.type,
                       typeLocations,
-                      response.description
+                      response.description,
+                      contentType
                     )}
                     {contentType.length > 0 && (
                       <>

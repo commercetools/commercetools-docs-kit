@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import {
   useTypeLocations,
   locationForType,
@@ -12,6 +12,7 @@ import renderTypeAsLink from '../../../utils/render-type-as-link';
 import ApiTypeByKey from '../../type/type-by-api-key';
 import Title from './title';
 import ContentType from './highlights';
+import { getDescriptionIfPrimitiveType } from '../../type/type';
 
 const RequestRepresentation = (props) => {
   const typeLocations = useTypeLocations();
@@ -20,6 +21,19 @@ const RequestRepresentation = (props) => {
     props.apiType,
     typeLocations
   );
+
+  let primitiveJSONType;
+
+  if (
+    !requestRepresentationLocation &&
+    props.contentType &&
+    props.contentType.includes('application/json')
+  ) {
+    primitiveJSONType = getDescriptionIfPrimitiveType(
+      'application/json',
+      props.apiType
+    );
+  }
 
   const ContentTypeRow = styled.div`
     display: flex;
@@ -46,9 +60,13 @@ const RequestRepresentation = (props) => {
           })}
           <span>The file to upload</span>
         </SpacingsInline>
-      ) : requestRepresentationLocation ? (
+      ) : requestRepresentationLocation || primitiveJSONType ? (
         <SpacingsInline alignItems="center">
-          {renderTypeAsLink(props.apiKey, props.apiType, typeLocations)}
+          {primitiveJSONType ? (
+            <Markdown.Em>{primitiveJSONType}</Markdown.Em>
+          ) : (
+            renderTypeAsLink(props.apiKey, props.apiType, typeLocations)
+          )}
           <span>as</span>
           <ContentType>{props.contentType}</ContentType>
         </SpacingsInline>
@@ -56,6 +74,7 @@ const RequestRepresentation = (props) => {
         <SpacingsStack>
           <ContentType>{props.contentType}</ContentType>
           <ApiTypeByKey
+            contentType={props.contentType}
             apiKey={props.apiKey}
             type={props.apiType}
             doNotRenderExamples
