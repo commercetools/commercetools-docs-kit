@@ -2,6 +2,8 @@ import { SyntheticEvent, useEffect, useState } from 'react';
 import { navigate } from 'gatsby';
 import { useFetchCourseDetails } from '../hooks/use-course-details';
 import { ConfirmationDialog, useModalState } from '@commercetools-docs/ui-kit';
+import Text from '@commercetools-uikit/text';
+import Link from '@commercetools-uikit/link';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import useIsClientSide from '../hooks/use-is-client-side';
 import {
@@ -12,6 +14,9 @@ import {
 type CourseCompleteModalProps = {
   courseId: number;
 };
+
+const SUPPORT_DEEPLINK =
+  'https://commercetools.atlassian.net/servicedesk/customer/portal/22/group/47/create/122?summary=Self%20Learning:[Add%20Title%20Here]';
 
 /**
  * Returns
@@ -100,7 +105,14 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
       onConfirm={onConfirmHandler}
     >
       <SpacingsStack scale="m">
-        <p>{text}</p>
+        <Text.Body>{text}</Text.Body>
+        <Text.Body isItalic>
+          We value your feedback and would love to hear about your experience
+          with the course.
+          <Link isExternal={true} to={SUPPORT_DEEPLINK}>
+            Click here to provide feedback via our support portal.
+          </Link>
+        </Text.Body>
       </SpacingsStack>
     </ConfirmationDialog>
   );

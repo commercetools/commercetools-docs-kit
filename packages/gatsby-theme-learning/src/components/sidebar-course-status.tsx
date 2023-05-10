@@ -9,10 +9,9 @@ import ConfigContext, {
   EFeatureFlag,
 } from './config-context';
 import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
 
 const UnknownStateSpacer = styled.div`
-  width: ${designSystem.dimensions.spacings.l};
+  min-width: 21px;
   margin-right: 5px;
 `;
 

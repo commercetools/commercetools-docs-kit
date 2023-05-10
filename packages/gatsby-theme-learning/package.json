@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-learning",
   "description": "Gatsby plugin exposing self-learning capabilities",
-  "version": "21.4.1",
+  "version": "21.4.2",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -14,11 +14,12 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "2.0.1",
-    "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.4.0",
+    "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.4.2",
     "@commercetools-docs/ui-kit": "21.4.0",
     "@commercetools-uikit/checkbox-input": "16.0.0",
     "@commercetools-uikit/design-system": "16.0.0",
     "@commercetools-uikit/icons": "16.0.0",
+    "@commercetools-uikit/link": "16.0.0",
     "@commercetools-uikit/loading-spinner": "16.0.0",
     "@commercetools-uikit/messages": "16.0.0",
     "@commercetools-uikit/notifications": "16.0.0",
@@ -28,6 +29,7 @@
     "@commercetools-uikit/spacings": "16.0.0",
     "@commercetools-uikit/spacings-stack": "16.0.0",
     "@commercetools-uikit/stamp": "16.0.0",
+    "@commercetools-uikit/text": "16.0.0",
     "@commercetools-uikit/text-field": "16.0.0",
     "@commercetools-uikit/text-input": "16.0.0",
     "@emotion/react": "^11.10.5",

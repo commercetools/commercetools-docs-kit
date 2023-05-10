@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-sso-ui-kit
 
+## 21.4.2
+
+### Patch Changes
+
+- [#1662](https://github.com/commercetools/commercetools-docs-kit/pull/1662) [`87bb049c`](https://github.com/commercetools/commercetools-docs-kit/commit/87bb049cf74a6cab004f1d9a3dc8907e2c4f5ebf) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - LoginButton refactor and support for IfLearningPathComplete / IfLearningPathNotComplete components
+
 ## 21.4.0
 
 ### Minor Changes
