@@ -21,6 +21,7 @@ type TopicStatus =
   | 'completed' // course completed, we display a green tick icon
   | 'inProgress' // user enrolled but course not completed/passed, we display an empty circle icon
   | 'notAvailable' // error during fetching operation, we display an empty circle icon
+  | 'isLoading' // API fetch in progress, we display an empty circle icon
   | undefined; // user is not logged in, we display an empty placeholder
 
 type StatusIndicatorProps = {
@@ -33,6 +34,7 @@ export const StatusIndicator = (props: StatusIndicatorProps) => {
       return <CheckActiveIcon color="primary" size="medium" />;
     case 'inProgress':
     case 'notAvailable':
+    case 'isLoading':
       return <CircleIcon color="neutral60" size="medium" />;
     default:
       return <UnknownStateSpacer />;
@@ -47,7 +49,7 @@ type PageTopicStatusProps = {
 const SidebarTopicStatus = (props: PageTopicStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const [topicStatus, setTopicStatus] = useState<TopicStatus>();
-  const { data } = useFetchCourseDetails(props.courseId);
+  const { data, isLoading } = useFetchCourseDetails(props.courseId);
   const { features } = useContext(ConfigContext);
 
   // If status-indicator feature flag is disable OR the user is logged out
@@ -58,6 +60,9 @@ const SidebarTopicStatus = (props: PageTopicStatusProps) => {
       !isAuthenticated
     ) {
       setTopicStatus(undefined);
+    } else if (isLoading) {
+      // ...if data is loading, set the `isLoading` status
+      setTopicStatus('isLoading');
     } else {
       setTopicStatus(
         getTopicStatusByPageTitle(data?.result?.topics, props.pageTitle)

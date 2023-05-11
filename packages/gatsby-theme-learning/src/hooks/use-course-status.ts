@@ -19,7 +19,11 @@ import { useAuthToken } from './use-auth-token';
  * - notEnrolled: when a course exists on the platform but the user is not enrolled
  * - notAvailable: when any unexpected situation happens
  */
-export type ClientCourseStatus = CourseStatus | 'notEnrolled' | 'notAvailable';
+export type ClientCourseStatus =
+  | CourseStatus
+  | 'notEnrolled'
+  | 'notAvailable'
+  | 'isLoading';
 type UseFetchCoursesResponse = {
   data: ApiCallResult<EnrolledCourses> | undefined;
   error: string;

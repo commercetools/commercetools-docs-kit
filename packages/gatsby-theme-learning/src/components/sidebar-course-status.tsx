@@ -17,13 +17,16 @@ const UnknownStateSpacer = styled.div`
   margin-right: 5px;
 `;
 
+/**
+ *  'completed' // course completed, we display a green tick icon
+ *  'inProgress' // user enrolled but course not completed/passed, we display an empty circle icon
+ *  'notEnrolled' // user not enrolled into course completed/passed, we display an empty circle icon
+ *  'notAvailable' // error during fetching operation, we display an empty circle icon
+ *  'isLoading' // API request in progress, we display an empty circle icon
+ *  undefined; // user is not logged in, we display an empty placeholder
+ */
 type StatusIndicatorProps = {
-  status?:
-    | 'completed' // course completed, we display a green tick icon
-    | 'inProgress' // user enrolled but course not completed/passed, we display an empty circle icon
-    | 'notEnrolled' // user not enrolled into course completed/passed, we display an empty circle icon
-    | 'notAvailable' // error during fetching operation, we display an empty circle icon
-    | undefined; // user is not logged in, we display an empty placeholder
+  status?: ClientCourseStatus;
 };
 
 export const StatusIndicator = (props: StatusIndicatorProps) => {
@@ -32,6 +35,7 @@ export const StatusIndicator = (props: StatusIndicatorProps) => {
       return <VerifiedIcon color="primary" size="big" />;
     case 'inProgress':
     case 'notEnrolled':
+    case 'isLoading':
       return <CircleIcon color="neutral60" size="big" />;
     default:
       return <UnknownStateSpacer />;
@@ -44,7 +48,7 @@ type SidebarCourseStatusProps = {
 
 const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   const { isAuthenticated } = useAuth0();
-  const { data } = useFetchCourses();
+  const { data, isLoading } = useFetchCourses();
   const { features } = useContext(ConfigContext);
   const [courseStatus, setCourseStatus] = useState<
     ClientCourseStatus | undefined
@@ -58,6 +62,9 @@ const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
       !isAuthenticated
     ) {
       setCourseStatus(undefined);
+    } else if (isLoading) {
+      // ...if data is loading, set the `isLoading` status
+      setCourseStatus('isLoading');
     } else {
       //... otherwise getCourseStatusByCourseId helper will return the proper status prop to the StatusIndicator component
       setCourseStatus(
@@ -66,7 +73,7 @@ const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, props.courseId, isAuthenticated]);
+  }, [data, props.courseId, isAuthenticated, isLoading]);
 
   return <>{props.courseId && <StatusIndicator status={courseStatus} />}</>;
 };
