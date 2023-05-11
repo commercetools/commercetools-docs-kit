@@ -17,15 +17,21 @@ const UnknownStateSpacer = styled.div`
   margin-right: 5px;
 `;
 
+type TopicStatus =
+  | 'completed' // course completed, we display a green tick icon
+  | 'inProgress' // user enrolled but course not completed/passed, we display an empty circle icon
+  | 'notAvailable' // error during fetching operation, we display an empty circle icon
+  | undefined; // user is not logged in, we display an empty placeholder
+
 type StatusIndicatorProps = {
-  status?: string;
+  status?: TopicStatus;
 };
 
 export const StatusIndicator = (props: StatusIndicatorProps) => {
   switch (props.status) {
     case 'completed':
       return <CheckActiveIcon color="primary" size="medium" />;
-    case 'notCompleted':
+    case 'inProgress':
     case 'notAvailable':
       return <CircleIcon color="neutral60" size="medium" />;
     default:
@@ -40,20 +46,21 @@ type PageTopicStatusProps = {
 
 const SidebarTopicStatus = (props: PageTopicStatusProps) => {
   const { isAuthenticated } = useAuth0();
-  const [topicStatus, setTopicStatus] = useState<string | undefined>();
+  const [topicStatus, setTopicStatus] = useState<TopicStatus>();
   const { data } = useFetchCourseDetails(props.courseId);
   const { features } = useContext(ConfigContext);
 
+  // If status-indicator feature flag is disable OR the user is logged out
+  // it will pass undefined to StatusIndicator which in turn will render an empty spacer...
   useEffect(() => {
     if (
-      // CourseStatus feature flag
-      isFeatureEnabled(EFeatureFlag.CourseStatus, features) &&
-      isAuthenticated
+      !isFeatureEnabled(EFeatureFlag.CourseStatus, features) ||
+      !isAuthenticated
     ) {
+      setTopicStatus(undefined);
+    } else {
       setTopicStatus(
-        data?.result?.topics
-          ? getTopicStatusByPageTitle(data.result.topics, props.pageTitle)
-          : 'notAvailable'
+        getTopicStatusByPageTitle(data?.result?.topics, props.pageTitle)
       );
     }
 

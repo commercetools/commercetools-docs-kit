@@ -59,11 +59,11 @@ export const useFetchCourses = (): {
 };
 
 export const getCourseStatusByCourseId = (
-  courses: Course[],
+  courses: Course[] | undefined,
   courseId: number
 ): ClientCourseStatus => {
-  if (!courseId) {
-    console.warn('getCourseStatusByCourseId expects courseId');
+  if (!courseId || !courses) {
+    console.warn('getCourseStatusByCourseId expects courses && courseId');
     return 'notAvailable';
   }
   const filteredCourse = courses.find(
