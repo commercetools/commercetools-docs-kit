@@ -3,6 +3,13 @@
 (docs-uri):
 type: object
 displayName: ProductSelectionAssignment
+description: |-
+
+  Given the mode of Product Selection, this assignment refers to, it may contain:
+
+  - `variantSelection` field for a Product Selection with `Individual` [ProductSelectionMode](ctp:api:type:ProductSelectionMode).
+  - `variantExclusion` field for a Product Selection with `IndividualExclusion` [ProductSelectionMode](ctp:api:type:ProductSelectionMode) ([BETA](/../offering/api-contract#public-beta)).
+
 properties:
   product:
     type: ProductReference
@@ -13,5 +20,15 @@ properties:
   variantSelection?:
     type: ProductVariantSelection
     description: |
-      Selects which Variants of the newly added Product will be included, or excluded, from the Product Selection.
+      Define which Variants of the added Product will be included in the Product Selection.
+
+      This field is only available for assignments to a Product Selection with `Individual` [ProductSelectionMode](ctp:api:type:ProductSelectionMode).
+      The list of SKUs will be updated automatically on any change of those performed on the respective Product itself.
+  variantExclusion?:
+    type: ProductVariantExclusion
+    (beta): true
+    description: |
+      Defines which Variants of the Product will be excluded from the Product Selection.
+
+      This field is only available for assignments to a Product Selection with `IndividualExclusion` [ProductSelectionMode](ctp:api:type:ProductSelectionMode).
       The list of SKUs will be updated automatically on any change of those performed on the respective Product itself.

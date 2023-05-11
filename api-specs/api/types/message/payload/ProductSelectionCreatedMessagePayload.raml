@@ -2,13 +2,12 @@
 (package): Message
 (docs-uri): https://docs.commercetools.com/http-api-projects-messages.html#product-selection-created
 type: MessagePayload
-(beta): true
 displayName: ProductSelectionCreatedMessagePayload
 discriminatorValue: ProductSelectionCreated
 description: |
   Generated after a successful [Create Product Selection](/../api/projects/product-selections#create-product-selection) request.
 properties:
   productSelection:
-    type: IndividualProductSelectionType
+    type: ProductSelection
     description: |
-      The `type` and `name` of the individual Product Selection.
+      [Product Selection](ctp:api:type:ProductSelection) that was created.
