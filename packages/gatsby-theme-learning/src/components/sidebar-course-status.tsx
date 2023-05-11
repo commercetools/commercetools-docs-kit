@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CircleIcon, VerifiedIcon } from '@commercetools-uikit/icons';
 import {
   getCourseStatusByCourseId,
   useFetchCourses,
+  ClientCourseStatus,
 } from '../hooks/use-course-status';
 import ConfigContext, {
   isFeatureEnabled,
@@ -38,15 +39,27 @@ type SidebarCourseStatusProps = {
 const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   const { data } = useFetchCourses();
   const { features } = useContext(ConfigContext);
+  const [courseStatus, setCourseStatus] = useState<
+    ClientCourseStatus | undefined
+  >();
 
-  // CourseStatus feature flag
-  if (!isFeatureEnabled(EFeatureFlag.CourseStatus, features)) {
-    return null;
-  }
+  useEffect(() => {
+    // CourseStatus feature flag
+    if (!isFeatureEnabled(EFeatureFlag.CourseStatus, features)) {
+      setCourseStatus(undefined);
+    } else {
+      setCourseStatus(
+        data?.result?.enrolledCourses
+          ? getCourseStatusByCourseId(
+              data.result.enrolledCourses,
+              props.courseId
+            )
+          : undefined
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, props.courseId]);
 
-  const courseStatus = data?.result?.enrolledCourses
-    ? getCourseStatusByCourseId(data.result.enrolledCourses, props.courseId)
-    : undefined;
   return <>{props.courseId && <StatusIndicator status={courseStatus} />}</>;
 };
 

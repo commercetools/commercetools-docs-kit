@@ -2,7 +2,10 @@ import type {
   ApiCallResult,
   EnrolledCourses,
   CourseWithDetails,
+  ApiCallResultError,
 } from '../external-types';
+
+const ERR_TYPE_NOT_ENROLLED = 'errorcoursecontextnotvalid';
 
 class FetchDataError extends Error {
   status: number | undefined;
@@ -16,6 +19,13 @@ class FetchDataError extends Error {
     Object.setPrototypeOf(this, FetchDataError.prototype);
   }
 }
+
+/**
+ * Checks if the errors array contains a specific code indicating that the
+ * user is not yet enrolled into the course
+ */
+const isUserNotUnenrolledError = (errors: ApiCallResultError[]) =>
+  !!errors.find((error) => error.type === ERR_TYPE_NOT_ENROLLED);
 
 export const fetcherWithToken = async (
   url: string,
@@ -36,9 +46,12 @@ export const fetcherWithToken = async (
       EnrolledCourses | CourseWithDetails
     >;
     if (jsonResponse.errors) {
-      const msg = `Error: "${jsonResponse.errors[0].message}" while fetching ${url}`;
-      console.error(msg);
-      throw new FetchDataError(msg);
+      // any errors different than 'unenrolled' throws an exception
+      if (!isUserNotUnenrolledError(jsonResponse.errors)) {
+        const msg = `Error: "${jsonResponse.errors[0].message}" while fetching ${url}`;
+        console.error(msg);
+        throw new FetchDataError(msg);
+      }
     }
     return jsonResponse;
   };

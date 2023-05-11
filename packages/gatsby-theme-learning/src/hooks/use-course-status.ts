@@ -62,8 +62,8 @@ export const getCourseStatusByCourseId = (
   courses: Course[],
   courseId: number
 ): ClientCourseStatus => {
-  if (!courses || !courseId) {
-    console.warn('getCourseStatusByCourseId expects courses list and courseId');
+  if (!courseId) {
+    console.warn('getCourseStatusByCourseId expects courseId');
     return 'notAvailable';
   }
   const filteredCourse = courses.find(
