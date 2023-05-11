@@ -4,6 +4,22 @@ UpdateAction: !include UpdateAction.raml
 ApiClient: !include api-client/ApiClient.raml
 ApiClientDraft: !include api-client/ApiClientDraft.raml
 ApiClientPagedQueryResponse: !include api-client/ApiClientPagedQueryResponse.raml
+AssociateRole: !include associate-role/AssociateRole.raml
+AssociateRoleDraft: !include associate-role/AssociateRoleDraft.raml
+AssociateRoleKeyReference: !include associate-role/AssociateRoleKeyReference.raml
+AssociateRolePagedQueryResponse: !include associate-role/AssociateRolePagedQueryResponse.raml
+AssociateRoleReference: !include associate-role/AssociateRoleReference.raml
+AssociateRoleResourceIdentifier: !include associate-role/AssociateRoleResourceIdentifier.raml
+AssociateRoleUpdate: !include associate-role/AssociateRoleUpdate.raml
+AssociateRoleUpdateAction: !include associate-role/AssociateRoleUpdateAction.raml
+Permission: !include associate-role/Permission.raml
+AssociateRoleAddPermissionAction: !include associate-role/updates/AssociateRoleAddPermissionAction.raml
+AssociateRoleChangeBuyerAssignableAction: !include associate-role/updates/AssociateRoleChangeBuyerAssignableAction.raml
+AssociateRoleRemovePermissionAction: !include associate-role/updates/AssociateRoleRemovePermissionAction.raml
+AssociateRoleSetCustomFieldAction: !include associate-role/updates/AssociateRoleSetCustomFieldAction.raml
+AssociateRoleSetCustomTypeAction: !include associate-role/updates/AssociateRoleSetCustomTypeAction.raml
+AssociateRoleSetNameAction: !include associate-role/updates/AssociateRoleSetNameAction.raml
+AssociateRoleSetPermissionsAction: !include associate-role/updates/AssociateRoleSetPermissionsAction.raml
 AttributeGroup: !include attribute-group/AttributeGroup.raml
 AttributeGroupDraft: !include attribute-group/AttributeGroupDraft.raml
 AttributeGroupPagedQueryResponse: !include attribute-group/AttributeGroupPagedQueryResponse.raml
@@ -20,8 +36,12 @@ AttributeGroupSetDescriptionAction: !include attribute-group/updates/AttributeGr
 AttributeGroupSetKeyAction: !include attribute-group/updates/AttributeGroupSetKeyAction.raml
 Associate: !include business-unit/Associate.raml
 AssociateDraft: !include business-unit/AssociateDraft.raml
-AssociateRole: !include business-unit/AssociateRole.raml
+AssociateRoleAssignment: !include business-unit/AssociateRoleAssignment.raml
+AssociateRoleAssignmentDraft: !include business-unit/AssociateRoleAssignmentDraft.raml
+AssociateRoleDeprecated: !include business-unit/AssociateRoleDeprecated.raml
+AssociateRoleInheritanceMode: !include business-unit/AssociateRoleInheritanceMode.raml
 BusinessUnit: !include business-unit/BusinessUnit.raml
+BusinessUnitAssociateMode: !include business-unit/BusinessUnitAssociateMode.raml
 BusinessUnitDraft: !include business-unit/BusinessUnitDraft.raml
 BusinessUnitKeyReference: !include business-unit/BusinessUnitKeyReference.raml
 BusinessUnitPagedQueryResponse: !include business-unit/BusinessUnitPagedQueryResponse.raml
@@ -36,6 +56,8 @@ Company: !include business-unit/Company.raml
 CompanyDraft: !include business-unit/CompanyDraft.raml
 Division: !include business-unit/Division.raml
 DivisionDraft: !include business-unit/DivisionDraft.raml
+InheritedAssociate: !include business-unit/InheritedAssociate.raml
+InheritedAssociateRoleAssignment: !include business-unit/InheritedAssociateRoleAssignment.raml
 BusinessUnitAddAddressAction: !include business-unit/updates/BusinessUnitAddAddressAction.raml
 BusinessUnitAddAssociateAction: !include business-unit/updates/BusinessUnitAddAssociateAction.raml
 BusinessUnitAddBillingAddressIdAction: !include business-unit/updates/BusinessUnitAddBillingAddressIdAction.raml
@@ -43,6 +65,7 @@ BusinessUnitAddShippingAddressIdAction: !include business-unit/updates/BusinessU
 BusinessUnitAddStoreAction: !include business-unit/updates/BusinessUnitAddStoreAction.raml
 BusinessUnitChangeAddressAction: !include business-unit/updates/BusinessUnitChangeAddressAction.raml
 BusinessUnitChangeAssociateAction: !include business-unit/updates/BusinessUnitChangeAssociateAction.raml
+BusinessUnitChangeAssociateModeAction: !include business-unit/updates/BusinessUnitChangeAssociateModeAction.raml
 BusinessUnitChangeNameAction: !include business-unit/updates/BusinessUnitChangeNameAction.raml
 BusinessUnitChangeParentUnitAction: !include business-unit/updates/BusinessUnitChangeParentUnitAction.raml
 BusinessUnitChangeStatusAction: !include business-unit/updates/BusinessUnitChangeStatusAction.raml
@@ -121,6 +144,7 @@ CustomLineItemPriceMode: !include cart/CustomLineItemPriceMode.raml
 CustomShippingDraft: !include cart/CustomShippingDraft.raml
 DirectDiscount: !include cart/DirectDiscount.raml
 DirectDiscountDraft: !include cart/DirectDiscountDraft.raml
+DirectDiscountReference: !include cart/DirectDiscountReference.raml
 DiscountCodeInfo: !include cart/DiscountCodeInfo.raml
 DiscountCodeState: !include cart/DiscountCodeState.raml
 DiscountedLineItemPortion: !include cart/DiscountedLineItemPortion.raml
@@ -410,6 +434,7 @@ DiscountCodeSetValidFromAction: !include discount-code/updates/DiscountCodeSetVa
 DiscountCodeSetValidFromAndUntilAction: !include discount-code/updates/DiscountCodeSetValidFromAndUntilAction.raml
 DiscountCodeSetValidUntilAction: !include discount-code/updates/DiscountCodeSetValidUntilAction.raml
 AnonymousIdAlreadyInUseError: !include error/AnonymousIdAlreadyInUseError.raml
+AssociateMissingPermissionError: !include error/AssociateMissingPermissionError.raml
 AttributeDefinitionAlreadyExistsError: !include error/AttributeDefinitionAlreadyExistsError.raml
 AttributeDefinitionTypeConflictError: !include error/AttributeDefinitionTypeConflictError.raml
 AttributeNameDoesNotExistError: !include error/AttributeNameDoesNotExistError.raml
@@ -485,6 +510,82 @@ SemanticErrorError: !include error/SemanticErrorError.raml
 ShippingMethodDoesNotMatchCartError: !include error/ShippingMethodDoesNotMatchCartError.raml
 SyntaxErrorError: !include error/SyntaxErrorError.raml
 VariantValues: !include error/VariantValues.raml
+GraphQLAnonymousIdAlreadyInUseError: !include error/graphql/GraphQLAnonymousIdAlreadyInUseError.raml
+GraphQLAssociateMissingPermissionError: !include error/graphql/GraphQLAssociateMissingPermissionError.raml
+GraphQLAttributeDefinitionAlreadyExistsError: !include error/graphql/GraphQLAttributeDefinitionAlreadyExistsError.raml
+GraphQLAttributeDefinitionTypeConflictError: !include error/graphql/GraphQLAttributeDefinitionTypeConflictError.raml
+GraphQLAttributeNameDoesNotExistError: !include error/graphql/GraphQLAttributeNameDoesNotExistError.raml
+GraphQLBadGatewayError: !include error/graphql/GraphQLBadGatewayError.raml
+GraphQLConcurrentModificationError: !include error/graphql/GraphQLConcurrentModificationError.raml
+GraphQLCountryNotConfiguredInStoreError: !include error/graphql/GraphQLCountryNotConfiguredInStoreError.raml
+GraphQLDiscountCodeNonApplicableError: !include error/graphql/GraphQLDiscountCodeNonApplicableError.raml
+GraphQLDuplicateAttributeValueError: !include error/graphql/GraphQLDuplicateAttributeValueError.raml
+GraphQLDuplicateAttributeValuesError: !include error/graphql/GraphQLDuplicateAttributeValuesError.raml
+GraphQLDuplicateEnumValuesError: !include error/graphql/GraphQLDuplicateEnumValuesError.raml
+GraphQLDuplicateFieldError: !include error/graphql/GraphQLDuplicateFieldError.raml
+# yamllint disable-line rule:line-length
+GraphQLDuplicateFieldWithConflictingResourceError: !include error/graphql/GraphQLDuplicateFieldWithConflictingResourceError.raml
+GraphQLDuplicatePriceKeyError: !include error/graphql/GraphQLDuplicatePriceKeyError.raml
+GraphQLDuplicatePriceScopeError: !include error/graphql/GraphQLDuplicatePriceScopeError.raml
+GraphQLDuplicateStandalonePriceScopeError: !include error/graphql/GraphQLDuplicateStandalonePriceScopeError.raml
+GraphQLDuplicateVariantValuesError: !include error/graphql/GraphQLDuplicateVariantValuesError.raml
+GraphQLEditPreviewFailedError: !include error/graphql/GraphQLEditPreviewFailedError.raml
+GraphQLEnumKeyAlreadyExistsError: !include error/graphql/GraphQLEnumKeyAlreadyExistsError.raml
+GraphQLEnumKeyDoesNotExistError: !include error/graphql/GraphQLEnumKeyDoesNotExistError.raml
+GraphQLEnumValueIsUsedError: !include error/graphql/GraphQLEnumValueIsUsedError.raml
+GraphQLEnumValuesMustMatchError: !include error/graphql/GraphQLEnumValuesMustMatchError.raml
+GraphQLErrorObject: !include error/graphql/GraphQLErrorObject.raml
+GraphQLExtensionBadResponseError: !include error/graphql/GraphQLExtensionBadResponseError.raml
+GraphQLExtensionNoResponseError: !include error/graphql/GraphQLExtensionNoResponseError.raml
+# yamllint disable-line rule:line-length
+GraphQLExtensionPredicateEvaluationFailedError: !include error/graphql/GraphQLExtensionPredicateEvaluationFailedError.raml
+GraphQLExtensionUpdateActionsFailedError: !include error/graphql/GraphQLExtensionUpdateActionsFailedError.raml
+GraphQLExternalOAuthFailedError: !include error/graphql/GraphQLExternalOAuthFailedError.raml
+GraphQLFeatureRemovedError: !include error/graphql/GraphQLFeatureRemovedError.raml
+GraphQLGeneralError: !include error/graphql/GraphQLGeneralError.raml
+GraphQLInsufficientScopeError: !include error/graphql/GraphQLInsufficientScopeError.raml
+GraphQLInternalConstraintViolatedError: !include error/graphql/GraphQLInternalConstraintViolatedError.raml
+GraphQLInvalidCredentialsError: !include error/graphql/GraphQLInvalidCredentialsError.raml
+GraphQLInvalidCurrentPasswordError: !include error/graphql/GraphQLInvalidCurrentPasswordError.raml
+GraphQLInvalidFieldError: !include error/graphql/GraphQLInvalidFieldError.raml
+GraphQLInvalidInputError: !include error/graphql/GraphQLInvalidInputError.raml
+GraphQLInvalidItemShippingDetailsError: !include error/graphql/GraphQLInvalidItemShippingDetailsError.raml
+GraphQLInvalidJsonInputError: !include error/graphql/GraphQLInvalidJsonInputError.raml
+GraphQLInvalidOperationError: !include error/graphql/GraphQLInvalidOperationError.raml
+GraphQLInvalidSubjectError: !include error/graphql/GraphQLInvalidSubjectError.raml
+GraphQLInvalidTokenError: !include error/graphql/GraphQLInvalidTokenError.raml
+GraphQLLanguageUsedInStoresError: !include error/graphql/GraphQLLanguageUsedInStoresError.raml
+GraphQLMatchingPriceNotFoundError: !include error/graphql/GraphQLMatchingPriceNotFoundError.raml
+GraphQLMaxResourceLimitExceededError: !include error/graphql/GraphQLMaxResourceLimitExceededError.raml
+GraphQLMissingRoleOnChannelError: !include error/graphql/GraphQLMissingRoleOnChannelError.raml
+GraphQLMissingTaxRateForCountryError: !include error/graphql/GraphQLMissingTaxRateForCountryError.raml
+GraphQLNoMatchingProductDiscountFoundError: !include error/graphql/GraphQLNoMatchingProductDiscountFoundError.raml
+GraphQLNotEnabledError: !include error/graphql/GraphQLNotEnabledError.raml
+GraphQLObjectNotFoundError: !include error/graphql/GraphQLObjectNotFoundError.raml
+GraphQLOutOfStockError: !include error/graphql/GraphQLOutOfStockError.raml
+GraphQLOverCapacityError: !include error/graphql/GraphQLOverCapacityError.raml
+# yamllint disable-line rule:line-length
+GraphQLOverlappingStandalonePriceValidityError: !include error/graphql/GraphQLOverlappingStandalonePriceValidityError.raml
+GraphQLPendingOperationError: !include error/graphql/GraphQLPendingOperationError.raml
+GraphQLPriceChangedError: !include error/graphql/GraphQLPriceChangedError.raml
+GraphQLProductAssignmentMissingError: !include error/graphql/GraphQLProductAssignmentMissingError.raml
+# yamllint disable-line rule:line-length
+GraphQLProductPresentWithDifferentVariantSelectionError: !include error/graphql/GraphQLProductPresentWithDifferentVariantSelectionError.raml
+GraphQLProjectNotConfiguredForLanguagesError: !include error/graphql/GraphQLProjectNotConfiguredForLanguagesError.raml
+GraphQLQueryComplexityLimitExceededError: !include error/graphql/GraphQLQueryComplexityLimitExceededError.raml
+GraphQLQueryTimedOutError: !include error/graphql/GraphQLQueryTimedOutError.raml
+GraphQLReferenceExistsError: !include error/graphql/GraphQLReferenceExistsError.raml
+GraphQLReferencedResourceNotFoundError: !include error/graphql/GraphQLReferencedResourceNotFoundError.raml
+GraphQLRequiredFieldError: !include error/graphql/GraphQLRequiredFieldError.raml
+GraphQLResourceNotFoundError: !include error/graphql/GraphQLResourceNotFoundError.raml
+GraphQLResourceSizeLimitExceededError: !include error/graphql/GraphQLResourceSizeLimitExceededError.raml
+GraphQLSearchDeactivatedError: !include error/graphql/GraphQLSearchDeactivatedError.raml
+GraphQLSearchExecutionFailureError: !include error/graphql/GraphQLSearchExecutionFailureError.raml
+GraphQLSearchFacetPathNotFoundError: !include error/graphql/GraphQLSearchFacetPathNotFoundError.raml
+GraphQLSearchIndexingInProgressError: !include error/graphql/GraphQLSearchIndexingInProgressError.raml
+GraphQLSemanticErrorError: !include error/graphql/GraphQLSemanticErrorError.raml
+GraphQLShippingMethodDoesNotMatchCartError: !include error/graphql/GraphQLShippingMethodDoesNotMatchCartError.raml
+GraphQLSyntaxErrorError: !include error/graphql/GraphQLSyntaxErrorError.raml
 AWSLambdaDestination: !include extension/AWSLambdaDestination.raml
 AuthorizationHeaderAuthentication: !include extension/AuthorizationHeaderAuthentication.raml
 AzureFunctionsAuthentication: !include extension/AzureFunctionsAuthentication.raml
@@ -654,11 +755,19 @@ MyShoppingListSetLineItemCustomTypeAction: !include me/updates/MyShoppingListSet
 MyShoppingListSetTextLineItemCustomFieldAction: !include me/updates/MyShoppingListSetTextLineItemCustomFieldAction.raml
 MyShoppingListSetTextLineItemCustomTypeAction: !include me/updates/MyShoppingListSetTextLineItemCustomTypeAction.raml
 MyShoppingListSetTextLineItemDescriptionAction: !include me/updates/MyShoppingListSetTextLineItemDescriptionAction.raml
+AssociateRoleBuyerAssignableChangedMessage: !include message/AssociateRoleBuyerAssignableChangedMessage.raml
+AssociateRoleCreatedMessage: !include message/AssociateRoleCreatedMessage.raml
+AssociateRoleDeletedMessage: !include message/AssociateRoleDeletedMessage.raml
+AssociateRoleNameChangedMessage: !include message/AssociateRoleNameChangedMessage.raml
+AssociateRolePermissionAddedMessage: !include message/AssociateRolePermissionAddedMessage.raml
+AssociateRolePermissionRemovedMessage: !include message/AssociateRolePermissionRemovedMessage.raml
+AssociateRolePermissionsSetMessage: !include message/AssociateRolePermissionsSetMessage.raml
 BusinessUnitAddressAddedMessage: !include message/BusinessUnitAddressAddedMessage.raml
 BusinessUnitAddressChangedMessage: !include message/BusinessUnitAddressChangedMessage.raml
 BusinessUnitAddressRemovedMessage: !include message/BusinessUnitAddressRemovedMessage.raml
 BusinessUnitAssociateAddedMessage: !include message/BusinessUnitAssociateAddedMessage.raml
 BusinessUnitAssociateChangedMessage: !include message/BusinessUnitAssociateChangedMessage.raml
+BusinessUnitAssociateModeChangedMessage: !include message/BusinessUnitAssociateModeChangedMessage.raml
 BusinessUnitAssociateRemovedMessage: !include message/BusinessUnitAssociateRemovedMessage.raml
 BusinessUnitAssociatesSetMessage: !include message/BusinessUnitAssociatesSetMessage.raml
 BusinessUnitBillingAddressAddedMessage: !include message/BusinessUnitBillingAddressAddedMessage.raml
@@ -768,7 +877,9 @@ ProductRevertedStagedChangesMessage: !include message/ProductRevertedStagedChang
 ProductSelectionCreatedMessage: !include message/ProductSelectionCreatedMessage.raml
 ProductSelectionDeletedMessage: !include message/ProductSelectionDeletedMessage.raml
 ProductSelectionProductAddedMessage: !include message/ProductSelectionProductAddedMessage.raml
+ProductSelectionProductExcludedMessage: !include message/ProductSelectionProductExcludedMessage.raml
 ProductSelectionProductRemovedMessage: !include message/ProductSelectionProductRemovedMessage.raml
+ProductSelectionVariantExclusionChangedMessage: !include message/ProductSelectionVariantExclusionChangedMessage.raml
 ProductSelectionVariantSelectionChangedMessage: !include message/ProductSelectionVariantSelectionChangedMessage.raml
 ProductSlugChangedMessage: !include message/ProductSlugChangedMessage.raml
 ProductStateTransitionMessage: !include message/ProductStateTransitionMessage.raml
@@ -811,11 +922,21 @@ StoreNameSetMessage: !include message/StoreNameSetMessage.raml
 StoreProductSelectionsChangedMessage: !include message/StoreProductSelectionsChangedMessage.raml
 StoreSupplyChannelsChangedMessage: !include message/StoreSupplyChannelsChangedMessage.raml
 UserProvidedIdentifiers: !include message/UserProvidedIdentifiers.raml
+# yamllint disable-line rule:line-length
+AssociateRoleBuyerAssignableChangedMessagePayload: !include message/payload/AssociateRoleBuyerAssignableChangedMessagePayload.raml
+AssociateRoleCreatedMessagePayload: !include message/payload/AssociateRoleCreatedMessagePayload.raml
+AssociateRoleDeletedMessagePayload: !include message/payload/AssociateRoleDeletedMessagePayload.raml
+AssociateRoleNameChangedMessagePayload: !include message/payload/AssociateRoleNameChangedMessagePayload.raml
+AssociateRolePermissionAddedMessagePayload: !include message/payload/AssociateRolePermissionAddedMessagePayload.raml
+AssociateRolePermissionRemovedMessagePayload: !include message/payload/AssociateRolePermissionRemovedMessagePayload.raml
+AssociateRolePermissionsSetMessagePayload: !include message/payload/AssociateRolePermissionsSetMessagePayload.raml
 BusinessUnitAddressAddedMessagePayload: !include message/payload/BusinessUnitAddressAddedMessagePayload.raml
 BusinessUnitAddressChangedMessagePayload: !include message/payload/BusinessUnitAddressChangedMessagePayload.raml
 BusinessUnitAddressRemovedMessagePayload: !include message/payload/BusinessUnitAddressRemovedMessagePayload.raml
 BusinessUnitAssociateAddedMessagePayload: !include message/payload/BusinessUnitAssociateAddedMessagePayload.raml
 BusinessUnitAssociateChangedMessagePayload: !include message/payload/BusinessUnitAssociateChangedMessagePayload.raml
+# yamllint disable-line rule:line-length
+BusinessUnitAssociateModeChangedMessagePayload: !include message/payload/BusinessUnitAssociateModeChangedMessagePayload.raml
 BusinessUnitAssociateRemovedMessagePayload: !include message/payload/BusinessUnitAssociateRemovedMessagePayload.raml
 BusinessUnitAssociatesSetMessagePayload: !include message/payload/BusinessUnitAssociatesSetMessagePayload.raml
 # yamllint disable-line rule:line-length
@@ -930,7 +1051,11 @@ ProductRevertedStagedChangesMessagePayload: !include message/payload/ProductReve
 ProductSelectionCreatedMessagePayload: !include message/payload/ProductSelectionCreatedMessagePayload.raml
 ProductSelectionDeletedMessagePayload: !include message/payload/ProductSelectionDeletedMessagePayload.raml
 ProductSelectionProductAddedMessagePayload: !include message/payload/ProductSelectionProductAddedMessagePayload.raml
+# yamllint disable-line rule:line-length
+ProductSelectionProductExcludedMessagePayload: !include message/payload/ProductSelectionProductExcludedMessagePayload.raml
 ProductSelectionProductRemovedMessagePayload: !include message/payload/ProductSelectionProductRemovedMessagePayload.raml
+# yamllint disable-line rule:line-length
+ProductSelectionVariantExclusionChangedMessagePayload: !include message/payload/ProductSelectionVariantExclusionChangedMessagePayload.raml
 # yamllint disable-line rule:line-length
 ProductSelectionVariantSelectionChangedMessagePayload: !include message/payload/ProductSelectionVariantSelectionChangedMessagePayload.raml
 ProductSlugChangedMessagePayload: !include message/payload/ProductSlugChangedMessagePayload.raml
@@ -1106,6 +1231,30 @@ StagedOrderUpdateItemShippingAddressAction: !include order-edit/updates/StagedOr
 StagedOrderUpdateSyncInfoAction: !include order-edit/updates/StagedOrderUpdateSyncInfoAction.raml
 Hit: !include order-search/Hit.raml
 OrderPagedSearchResponse: !include order-search/OrderPagedSearchResponse.raml
+OrderSearchAndExpression: !include order-search/OrderSearchAndExpression.raml
+OrderSearchAnyValue: !include order-search/OrderSearchAnyValue.raml
+OrderSearchCompoundExpression: !include order-search/OrderSearchCompoundExpression.raml
+OrderSearchDateRangeExpression: !include order-search/OrderSearchDateRangeExpression.raml
+OrderSearchDateRangeValue: !include order-search/OrderSearchDateRangeValue.raml
+OrderSearchExactExpression: !include order-search/OrderSearchExactExpression.raml
+OrderSearchExistsExpression: !include order-search/OrderSearchExistsExpression.raml
+OrderSearchFilterExpression: !include order-search/OrderSearchFilterExpression.raml
+OrderSearchFullTextExpression: !include order-search/OrderSearchFullTextExpression.raml
+OrderSearchFullTextValue: !include order-search/OrderSearchFullTextValue.raml
+OrderSearchLongRangeExpression: !include order-search/OrderSearchLongRangeExpression.raml
+OrderSearchLongRangeValue: !include order-search/OrderSearchLongRangeValue.raml
+OrderSearchMatchType: !include order-search/OrderSearchMatchType.raml
+OrderSearchNotExpression: !include order-search/OrderSearchNotExpression.raml
+OrderSearchNumberRangeExpression: !include order-search/OrderSearchNumberRangeExpression.raml
+OrderSearchNumberRangeValue: !include order-search/OrderSearchNumberRangeValue.raml
+OrderSearchOrExpression: !include order-search/OrderSearchOrExpression.raml
+OrderSearchPrefixExpression: !include order-search/OrderSearchPrefixExpression.raml
+OrderSearchQueryExpression: !include order-search/OrderSearchQueryExpression.raml
+OrderSearchQueryExpressionValue: !include order-search/OrderSearchQueryExpressionValue.raml
+OrderSearchSortMode: !include order-search/OrderSearchSortMode.raml
+OrderSearchSortOrder: !include order-search/OrderSearchSortOrder.raml
+OrderSearchStringValue: !include order-search/OrderSearchStringValue.raml
+OrderSearchWildCardExpression: !include order-search/OrderSearchWildCardExpression.raml
 CustomLineItemImportDraft: !include order/CustomLineItemImportDraft.raml
 CustomLineItemReturnItem: !include order/CustomLineItemReturnItem.raml
 Delivery: !include order/Delivery.raml
@@ -1270,10 +1419,12 @@ ProductDiscountSetValidUntilAction: !include product-discount/updates/ProductDis
 AssignedProductReference: !include product-selection/AssignedProductReference.raml
 AssignedProductSelection: !include product-selection/AssignedProductSelection.raml
 AssignedProductSelectionPagedQueryResponse: !include product-selection/AssignedProductSelectionPagedQueryResponse.raml
+IndividualExclusionProductSelectionType: !include product-selection/IndividualExclusionProductSelectionType.raml
 IndividualProductSelectionType: !include product-selection/IndividualProductSelectionType.raml
 ProductSelection: !include product-selection/ProductSelection.raml
 ProductSelectionAssignment: !include product-selection/ProductSelectionAssignment.raml
 ProductSelectionDraft: !include product-selection/ProductSelectionDraft.raml
+ProductSelectionMode: !include product-selection/ProductSelectionMode.raml
 ProductSelectionPagedQueryResponse: !include product-selection/ProductSelectionPagedQueryResponse.raml
 ProductSelectionProductPagedQueryResponse: !include product-selection/ProductSelectionProductPagedQueryResponse.raml
 ProductSelectionReference: !include product-selection/ProductSelectionReference.raml
@@ -1282,6 +1433,7 @@ ProductSelectionType: !include product-selection/ProductSelectionType.raml
 ProductSelectionTypeEnum: !include product-selection/ProductSelectionTypeEnum.raml
 ProductSelectionUpdate: !include product-selection/ProductSelectionUpdate.raml
 ProductSelectionUpdateAction: !include product-selection/ProductSelectionUpdateAction.raml
+ProductVariantExclusion: !include product-selection/ProductVariantExclusion.raml
 ProductVariantSelection: !include product-selection/ProductVariantSelection.raml
 ProductVariantSelectionExclusion: !include product-selection/ProductVariantSelectionExclusion.raml
 ProductVariantSelectionIncludeAllExcept: !include product-selection/ProductVariantSelectionIncludeAllExcept.raml
@@ -1291,10 +1443,13 @@ ProductVariantSelectionTypeEnum: !include product-selection/ProductVariantSelect
 ProductsInStorePagedQueryResponse: !include product-selection/ProductsInStorePagedQueryResponse.raml
 ProductSelectionAddProductAction: !include product-selection/updates/ProductSelectionAddProductAction.raml
 ProductSelectionChangeNameAction: !include product-selection/updates/ProductSelectionChangeNameAction.raml
+ProductSelectionExcludeProductAction: !include product-selection/updates/ProductSelectionExcludeProductAction.raml
 ProductSelectionRemoveProductAction: !include product-selection/updates/ProductSelectionRemoveProductAction.raml
 ProductSelectionSetCustomFieldAction: !include product-selection/updates/ProductSelectionSetCustomFieldAction.raml
 ProductSelectionSetCustomTypeAction: !include product-selection/updates/ProductSelectionSetCustomTypeAction.raml
 ProductSelectionSetKeyAction: !include product-selection/updates/ProductSelectionSetKeyAction.raml
+# yamllint disable-line rule:line-length
+ProductSelectionSetVariantExclusionAction: !include product-selection/updates/ProductSelectionSetVariantExclusionAction.raml
 # yamllint disable-line rule:line-length
 ProductSelectionSetVariantSelectionAction: !include product-selection/updates/ProductSelectionSetVariantSelectionAction.raml
 AttributeBooleanType: !include product-type/AttributeBooleanType.raml
@@ -1472,6 +1627,8 @@ ProjectChangeOrderSearchStatusAction: !include project/updates/ProjectChangeOrde
 ProjectChangeProductSearchIndexingEnabledAction: !include project/updates/ProjectChangeProductSearchIndexingEnabledAction.raml
 # yamllint disable-line rule:line-length
 ProjectChangeShoppingListsConfigurationAction: !include project/updates/ProjectChangeShoppingListsConfigurationAction.raml
+# yamllint disable-line rule:line-length
+ProjectSetBusinessUnitAssociateRoleOnCreationAction: !include project/updates/ProjectSetBusinessUnitAssociateRoleOnCreationAction.raml
 ProjectSetExternalOAuthAction: !include project/updates/ProjectSetExternalOAuthAction.raml
 ProjectSetShippingRateInputTypeAction: !include project/updates/ProjectSetShippingRateInputTypeAction.raml
 QuoteRequest: !include quote-request/QuoteRequest.raml
