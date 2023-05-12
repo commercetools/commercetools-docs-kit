@@ -3,6 +3,7 @@ import {
   useFetchCourses,
   getCourseStatusByCourseId,
 } from './use-course-status';
+import { useEffect, useState } from 'react';
 
 type CoursePageNode = {
   slug: string;
@@ -101,12 +102,15 @@ export type OrderedCoursesInfo = {
 
 /**
  * Returns an array of objects matching the course order defined in the navigation.
- * Each object has 2 properties: courseId and pages (the list of topics pages with the same order as
- * defined in navigation.yaml)
+ * Each object has 3 properties: courseId, pages (the list of topics pages with the same order as
+ * defined in navigation.yaml) and status
  */
-export const useOrderedCoursesInfo = (): OrderedCoursesInfo[] => {
+export const useOrderedCoursesInfo = (): OrderedCoursesInfo[] | undefined => {
   const coursePageData = useCoursePages();
-  const { data } = useFetchCourses();
+  const { data, isLoading } = useFetchCourses();
+  const [orderedCoursesInfo, setOrderedCourseInfo] = useState<
+    OrderedCoursesInfo[] | undefined
+  >();
   courseMapToPages(coursePageData);
   const navigationData = coursePageData.allNavigationYaml;
   const coursesOnlyNavData = navigationData.nodes.filter((navElement) => {
@@ -114,16 +118,24 @@ export const useOrderedCoursesInfo = (): OrderedCoursesInfo[] => {
       coursePageMap.has(navElementPage.path)
     );
   });
-  const orderedCorusesInfo = coursesOnlyNavData.map((navData) => {
-    const firstPageSlug = navData.pages[0].path;
-    const courseId = coursePageMap.get(firstPageSlug)?.courseId || 0;
-    return {
-      courseId,
-      pages: navData.pages,
-      status: data?.result.enrolledCourses
-        ? getCourseStatusByCourseId(data.result.enrolledCourses, courseId)
-        : '',
-    };
-  });
-  return orderedCorusesInfo;
+  useEffect(() => {
+    if (!isLoading && data) {
+      setOrderedCourseInfo(
+        coursesOnlyNavData.map((navData) => {
+          const firstPageSlug = navData.pages[0].path;
+          const courseId = coursePageMap.get(firstPageSlug)?.courseId || 0;
+          return {
+            courseId,
+            pages: navData.pages,
+            status: getCourseStatusByCourseId(
+              data.result.enrolledCourses,
+              courseId
+            ),
+          };
+        })
+      );
+    }
+  }, [data, isLoading, coursesOnlyNavData]);
+
+  return orderedCoursesInfo;
 };

@@ -32,6 +32,8 @@ export const IfUserLoggedOut = (props: IsLoggedOutProps) => {
   const { isAuthenticated, isLoading } = useAuth0();
   if (isLoading && props.assumeTrue) {
     return content(props.children);
+  } else if (isLoading) {
+    return null;
   } else {
     return !isAuthenticated ? content(props.children) : null;
   }
