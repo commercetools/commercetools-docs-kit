@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-sso-ui-kit
 
+## 21.4.3
+
+### Patch Changes
+
+- [#1671](https://github.com/commercetools/commercetools-docs-kit/pull/1671) [`36a4557b`](https://github.com/commercetools/commercetools-docs-kit/commit/36a4557b6ac36ddb8e496f03e59d4441260d3be0) Thanks [@timonrey](https://github.com/timonrey)! - [SL] Don't show login buttons in loading state
+
 ## 21.4.2
 
 ### Patch Changes

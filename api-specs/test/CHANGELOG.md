@@ -1,5 +1,11 @@
 # @commercetools-api-specs/test
 
+## 0.2.1
+
+### Patch Changes
+
+- [#1661](https://github.com/commercetools/commercetools-docs-kit/pull/1661) [`8759c1ea`](https://github.com/commercetools/commercetools-docs-kit/commit/8759c1ea7fdf07c3c25abc041bd1dfb941bce409) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for primitive and generic JSON types in API request and response
+
 ## 0.2.0
 
 ### Minor Changes
