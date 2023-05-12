@@ -42,9 +42,18 @@ properties:
     format: int32
     description: |-
       Number of Products that are currently assigned to this ProductSelection.
-  type:
+  type?:
+    (markDeprecated): true
     type: ProductSelectionTypeEnum
-    description: Specifies in which way the Products are assigned to the ProductSelection. Currently, the only way of doing this is to specify each Product individually. Hence, the type is fixed to `individual` for now, but we have plans to add other types in the future.
+    description: |-
+      Specifies in which way the Products are assigned to the ProductSelection.
+      Currently, the only way of doing this is to specify each Product individually, either by [including or excluding](ctp:api:type:ProductSelectionMode) them explicitly.
+  mode:
+    type: ProductSelectionMode
+    default: Individual
+    description: |-
+      Specifies in which way the Products are assigned to the ProductSelection.
+      Currently, the only way of doing this is to specify each Product individually, either by [including or excluding](ctp:api:type:ProductSelectionMode) them explicitly.
   custom?:
     type: CustomFields
-    description: Custom Fields of this ProductSelection.
+    description: Custom Fields of the ProductSelection.
