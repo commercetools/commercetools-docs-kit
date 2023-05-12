@@ -60,9 +60,9 @@ const LoggedInState = (props) => {
 LoggedInState.displayName = 'LoggedInState';
 
 const LoggedOutState = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, isLoading } = useAuth0();
 
-  return (
+  return isLoading ? null : (
     <AvatarContainer>
       <LoginButton
         theme="secondary"
