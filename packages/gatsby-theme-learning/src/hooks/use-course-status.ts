@@ -19,7 +19,11 @@ import { useAuthToken } from './use-auth-token';
  * - notEnrolled: when a course exists on the platform but the user is not enrolled
  * - notAvailable: when any unexpected situation happens
  */
-export type ClientCourseStatus = CourseStatus | 'notEnrolled' | 'notAvailable';
+export type ClientCourseStatus =
+  | CourseStatus
+  | 'notEnrolled'
+  | 'notAvailable'
+  | 'isLoading';
 type UseFetchCoursesResponse = {
   data: ApiCallResult<EnrolledCourses> | undefined;
   error: string;
@@ -59,11 +63,11 @@ export const useFetchCourses = (): {
 };
 
 export const getCourseStatusByCourseId = (
-  courses: Course[],
+  courses: Course[] | undefined,
   courseId: number
 ): ClientCourseStatus => {
-  if (!courses || !courseId) {
-    console.warn('getCourseStatusByCourseId expects courses list and courseId');
+  if (!courseId || !courses) {
+    console.warn('getCourseStatusByCourseId expects courses && courseId');
     return 'notAvailable';
   }
   const filteredCourse = courses.find(

@@ -52,7 +52,7 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
   >();
   const [modalSize, setModalSize] = useState<'l' | 'm'>('l');
   const [text, setText] = useState<string>(
-    "You've now completed this course and unlocked a new skill!"
+    "You've now completed this module and unlocked a new skill!"
   );
   const { isModalOpen, openModal, closeModal } = useModalState();
   const { data } = useFetchCourseDetails(props.courseId);

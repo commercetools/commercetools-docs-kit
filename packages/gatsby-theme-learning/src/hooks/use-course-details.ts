@@ -56,15 +56,18 @@ export const useFetchCourseDetails = (
 };
 
 export const getTopicStatusByPageTitle = (
-  topics: CourseTopic[],
+  topics: CourseTopic[] | undefined,
   pageTitle: string
 ) => {
+  if (!topics || !pageTitle) {
+    return 'notAvailable';
+  }
   const matchingTopic = topics.find(
     (topic) =>
       topic.name.trim().toLowerCase() === pageTitle.trim().toLowerCase()
   );
   if (matchingTopic) {
-    return matchingTopic.completed ? 'completed' : 'notCompleted';
+    return matchingTopic.completed ? 'completed' : 'inProgress';
   }
   return 'notAvailable';
 };

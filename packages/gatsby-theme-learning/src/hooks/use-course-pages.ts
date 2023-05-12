@@ -121,7 +121,7 @@ export const useOrderedCoursesInfo = (): OrderedCoursesInfo[] => {
       courseId,
       pages: navData.pages,
       status: data?.result.enrolledCourses
-        ? getCourseStatusByCourseId(data?.result.enrolledCourses, courseId)
+        ? getCourseStatusByCourseId(data.result.enrolledCourses, courseId)
         : '',
     };
   });
