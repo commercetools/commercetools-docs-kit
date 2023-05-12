@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback, useContext } from 'react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import {
+  customProperties,
+  designTokens,
+} from '@commercetools-uikit/design-system';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { ContentNotification } from '@commercetools-uikit/notifications';
 import { LoginButton } from '@commercetools-docs/gatsby-theme-sso-ui-kit';
@@ -30,9 +33,9 @@ const QuizWrapper = styled.div<QuizOutcome>`
   border-left-color: ${({ outcome }) => {
     switch (outcome) {
       case OUTCOME_CORRECT:
-        return '#00ccb4';
+        return designTokens.colorPrimary25;
       case OUTCOME_INCORRECT:
-        return '#e60050';
+        return designTokens.colorError;
       default:
         return customProperties.colorInfo;
     }

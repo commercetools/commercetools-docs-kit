@@ -24,6 +24,7 @@ import type {
 } from './quiz';
 import { OUTCOME_INCORRECT } from './quiz';
 import type { SubmissionAttempt } from './quiz.types';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 const RENDER_TYPE_SINGLE: QuestionRenderType = 'singleOption';
 
@@ -40,7 +41,10 @@ const SelectionContainer = styled.div`
 `;
 
 const QuestionFeedbackMessage = styled.div<QuizOutcome>`
-  color: ${(props) => (props.outcome === 'correct' ? '#00ccb4' : '#e60050')};
+  color: ${(props) =>
+    props.outcome === 'correct'
+      ? designTokens.colorPrimary25
+      : designTokens.colorError};
 `;
 
 const QuestionFeedbackPlaceholder = styled.div`
@@ -51,7 +55,10 @@ const QuizFeedbackMessageArea = styled.div<QuizOutcome>`
   margin: 16px 8px 16px 8px;
   p {
     font-weight: bold;
-    color: ${(props) => (props.outcome === 'correct' ? '#00ccb4' : '#e60050')};
+    color: ${(props) =>
+      props.outcome === 'correct'
+        ? designTokens.colorPrimary25
+        : designTokens.colorError};
   }
 `;
 
