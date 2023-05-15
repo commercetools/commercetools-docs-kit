@@ -1,5 +1,22 @@
 # @commercetools-docs/gatsby-theme-learning
 
+## 21.4.3
+
+### Patch Changes
+
+- [#1664](https://github.com/commercetools/commercetools-docs-kit/pull/1664) [`1340d039`](https://github.com/commercetools/commercetools-docs-kit/commit/1340d0398bf318868162ceabcb517aaa0360d1de) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix misalignment in self-learning navigation sidebar when topic title is longer than a line
+
+- [#1669](https://github.com/commercetools/commercetools-docs-kit/pull/1669) [`6ee9510e`](https://github.com/commercetools/commercetools-docs-kit/commit/6ee9510e0780bf20f5f0303aed31a44b5ecf8069) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - If the user is not enrolled into a self-learning course, the sidebar will indicate an empty circle as status indicator
+
+- [#1672](https://github.com/commercetools/commercetools-docs-kit/pull/1672) [`2fcd3c4b`](https://github.com/commercetools/commercetools-docs-kit/commit/2fcd3c4b6a3d691257235494c354708c52ea3661) Thanks [@FFawzy](https://github.com/FFawzy)! - change finshed module modal text
+
+- [#1666](https://github.com/commercetools/commercetools-docs-kit/pull/1666) [`8fa2dbc3`](https://github.com/commercetools/commercetools-docs-kit/commit/8fa2dbc3cfcd59707a3662833147427510e3d4e5) Thanks [@FFawzy](https://github.com/FFawzy)! - adjusting text in the course complete modal
+
+- [#1673](https://github.com/commercetools/commercetools-docs-kit/pull/1673) [`27758e8b`](https://github.com/commercetools/commercetools-docs-kit/commit/27758e8baad6eddd28fa2d8e374fdea31c54bfc0) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Change the green color of "passed" course status to match accessibility requirements
+
+- Updated dependencies [[`36a4557b`](https://github.com/commercetools/commercetools-docs-kit/commit/36a4557b6ac36ddb8e496f03e59d4441260d3be0)]:
+  - @commercetools-docs/gatsby-theme-sso-ui-kit@21.4.3
+
 ## 21.4.2
 
 ### Patch Changes

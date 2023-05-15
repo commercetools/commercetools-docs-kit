@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 21.4.3
+
+### Patch Changes
+
+- [#1667](https://github.com/commercetools/commercetools-docs-kit/pull/1667) [`0e81c93d`](https://github.com/commercetools/commercetools-docs-kit/commit/0e81c93d07a0649fef07afcabf56b537e341a4da) Thanks [@timonrey](https://github.com/timonrey)! - The closing icon inside of the docs search input was improved to have the correct size and spacing.
+
+- Updated dependencies [[`1340d039`](https://github.com/commercetools/commercetools-docs-kit/commit/1340d0398bf318868162ceabcb517aaa0360d1de), [`6ee9510e`](https://github.com/commercetools/commercetools-docs-kit/commit/6ee9510e0780bf20f5f0303aed31a44b5ecf8069), [`2fcd3c4b`](https://github.com/commercetools/commercetools-docs-kit/commit/2fcd3c4b6a3d691257235494c354708c52ea3661), [`8fa2dbc3`](https://github.com/commercetools/commercetools-docs-kit/commit/8fa2dbc3cfcd59707a3662833147427510e3d4e5), [`27758e8b`](https://github.com/commercetools/commercetools-docs-kit/commit/27758e8baad6eddd28fa2d8e374fdea31c54bfc0)]:
+  - @commercetools-docs/gatsby-theme-learning@21.4.3
+
 ## 21.4.2
 
 ### Patch Changes
