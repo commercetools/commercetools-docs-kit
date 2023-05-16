@@ -113,15 +113,13 @@ const Center = styled.div`
 `;
 const Columns = styled.div`
   display: grid;
-  grid-gap: ${designSystem.dimensions.spacings.xl};
+  grid-gap: ${designSystem.dimensions.spacings.m};
   grid-auto-columns: 1fr;
-  grid-template-columns: repeat(
-    ${(props) => React.Children.count(props.children)},
-    1fr
-  );
+  grid-template-columns:
+    repeat(${(props) => React.Children.count(props.children) - 1}, 1fr)
+    25%;
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    grid-gap: ${designSystem.dimensions.spacings.m};
     grid-template-columns: 1fr;
 
     > * + * {
@@ -149,9 +147,15 @@ const ColumnTitle = styled.div`
   color: ${designSystem.colors.light.textFaded};
   border-bottom: 1px solid ${designSystem.colors.light.borderSecondary};
   padding: 0 0 ${designSystem.dimensions.spacings.s} 0;
+  min-height: 38px;
+  display: flex;
+  align-items: flex-end;
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     border-bottom: unset;
+    min-height: auto;
+    display: block;
+    align-items: normal;
   }
 `;
 

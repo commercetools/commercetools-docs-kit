@@ -1,4 +1,4 @@
-- menu-title: Documentation
+- menu-title: Documentation docs-kit
   items:
     - label: Docs Kit Docs
       href: /../documentation
@@ -9,3 +9,17 @@
       href: /../docs-smoke-test
     - label: API Docs Smoke Test
       href: /../api-docs-smoke-test
+
+- menu-title: Connect
+  items:
+    - label: Getting started
+      href: /
+    - label: API Docs
+      href: /
+
+- menu-title: Checkout
+  items:
+    - label: Getting started
+      href: /
+    - label: API
+      href: /
