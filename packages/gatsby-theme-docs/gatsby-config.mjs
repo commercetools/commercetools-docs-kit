@@ -292,6 +292,7 @@ const config = (themeOptions = {}) => {
                     slug
                     title
                     date
+                    orderHint
                     categories: topics
                   }
                 }

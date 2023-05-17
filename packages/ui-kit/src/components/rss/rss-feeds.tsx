@@ -13,6 +13,7 @@ type RssEntry = {
   description: string;
   link: string;
   pubDate: string;
+  orderHint: string | undefined;
 };
 interface FlatRssEntry extends RssEntry {
   feedName: string;
@@ -21,6 +22,7 @@ interface FlatRssEntry extends RssEntry {
 
 const firstDataForQuery = (node: ParentNode, query: string) => {
   const firstChild = node.querySelector(query);
+  console.log('firstChild: ', firstChild);
   return firstChild?.textContent?.trim();
 };
 
@@ -37,11 +39,13 @@ const parseRssFeed = (rssString: string): RssFeed => {
       const description = firstDataForQuery(el, 'description') || '';
       const link = firstDataForQuery(el, 'link') || '';
       const pubDate = firstDataForQuery(el, 'pubDate') || '';
+      const orderHint = firstDataForQuery(el, 'orderHint');
       return {
         title,
         description,
         link,
         pubDate,
+        orderHint,
       };
     }
   );
@@ -111,7 +115,9 @@ const transformData = (data: FlatRssEntry[][]) => {
         new Date(dateTwo.pubDate).getTime() -
         new Date(dateOne.pubDate).getTime()
       );
-    });
+    })
+    .sort(({ orderHint: a }, { orderHint: b }) => Number(b) - Number(a));
+  console.log(tableData);
   return tableData;
 };
 
