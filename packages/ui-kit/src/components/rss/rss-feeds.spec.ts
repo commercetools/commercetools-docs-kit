@@ -104,6 +104,7 @@ function createTestData(): FlatRssEntry[][] {
         feedName: 'HTTP API',
         title: 'description',
         pubDate: 'Mon, 02 Nov 2020 00:00:00 GMT',
+        orderHint: '',
         releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
         description: '',
         link: 'https://example.com/1',
@@ -112,6 +113,7 @@ function createTestData(): FlatRssEntry[][] {
         feedName: 'HTTP API',
         title: 'description',
         pubDate: 'Sun, 01 Nov 2020 00:00:00 GMT',
+        orderHint: '',
         releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
         description: '',
         link: 'https://example.com/2',
@@ -120,6 +122,7 @@ function createTestData(): FlatRssEntry[][] {
         feedName: 'HTTP API',
         title: 'description',
         pubDate: 'Mon, 19 Oct 2020 00:00:00 GMT',
+        orderHint: '',
         releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
         description: '',
         link: 'https://example.com/3',
@@ -130,6 +133,7 @@ function createTestData(): FlatRssEntry[][] {
         feedName: 'Merchant Center',
         title: 'description',
         pubDate: 'Fri, 23 Oct 2020 00:00:00 GMT',
+        orderHint: '',
         releaseNoteUrl:
           'https://docs.commercetools.com/merchant-center/releases',
         description: '',
@@ -139,6 +143,7 @@ function createTestData(): FlatRssEntry[][] {
         feedName: 'Merchant Center',
         title: 'description',
         pubDate: 'Tue, 06 Oct 2020 00:00:00 GMT',
+        orderHint: '',
         releaseNoteUrl:
           'https://docs.commercetools.com/merchant-center/releases',
         description: '',
@@ -149,6 +154,7 @@ function createTestData(): FlatRssEntry[][] {
         feedName: 'Merchant Center',
         title: 'description',
         pubDate: 'Tue, 08 Sep 2020 00:00:00 GMT',
+        orderHint: '',
         releaseNoteUrl:
           'https://docs.commercetools.com/merchant-center/releases',
         description: '',
@@ -160,6 +166,7 @@ function createTestData(): FlatRssEntry[][] {
         feedName: 'Custom Applications',
         title: 'description',
         pubDate: 'Tue, 29 Oct 2020 00:00:00 GMT',
+        orderHint: '',
         releaseNoteUrl:
           'https://docs.commercetools.com/custom-applications/releases',
         description: '',
@@ -169,6 +176,7 @@ function createTestData(): FlatRssEntry[][] {
         feedName: 'Custom Applications',
         title: 'description',
         pubDate: 'Fri, 25 Sep 2020 00:00:00 GMT',
+        orderHint: '',
         releaseNoteUrl:
           'https://docs.commercetools.com/custom-applications/releases',
         description: '',
@@ -180,6 +188,7 @@ function createTestData(): FlatRssEntry[][] {
         feedName: 'Import API',
         title: 'description',
         pubDate: 'Mon, 07 Sep 2020 00:00:00 GMT',
+        orderHint: '',
         releaseNoteUrl: 'https://docs.commercetools.com/import-api/releases',
         description: '',
         link: 'https://example.com/9',
