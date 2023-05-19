@@ -1,0 +1,33 @@
+{
+  "name": "@commercetools-website/self-learning-smoke-test",
+  "version": "7.4.3",
+  "private": true,
+  "browserslist": [">0.25%", "not dead and supports es6-module"],
+  "scripts": {
+    "start": "yarn develop",
+    "develop": "yarn gatsby develop",
+    "serve": "yarn gatsby serve --prefix-paths -o",
+    "clean": "yarn gatsby clean",
+    "clean:develop": "yarn clean && yarn develop",
+    "build": "./scripts/build.sh",
+    "build:serve": "yarn gatsby build --prefix-paths && yarn gatsby serve --prefix-paths -o",
+    "build:analyze": "ANALYZE_BUNDLE=true yarn build",
+    "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
+  },
+  "dependencies": {
+    "@commercetools-docs/gatsby-theme-docs": "21.4.3",
+    "@commercetools-docs/gatsby-theme-learning": "21.4.3",
+    "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.4.3",
+    "@commercetools-docs/ui-kit": "21.4.0",
+    "@commercetools-uikit/icons": "16.0.0",
+    "@commercetools-uikit/radio-input": "16.0.0",
+    "gatsby": "5.8.0",
+    "gatsby-cli": "5.8.0",
+    "process-top": "^1.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@svgr/cli": "7.0.0"
+  }
+}

@@ -4012,6 +4012,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@commercetools-website/self-learning-smoke-test@workspace:websites/self-learning-smoke-test":
+  version: 0.0.0-use.local
+  resolution: "@commercetools-website/self-learning-smoke-test@workspace:websites/self-learning-smoke-test"
+  dependencies:
+    "@commercetools-docs/gatsby-theme-docs": 21.4.3
+    "@commercetools-docs/gatsby-theme-learning": 21.4.3
+    "@commercetools-docs/gatsby-theme-sso-ui-kit": 21.4.3
+    "@commercetools-docs/ui-kit": 21.4.0
+    "@commercetools-uikit/icons": 16.0.0
+    "@commercetools-uikit/radio-input": 16.0.0
+    "@svgr/cli": 7.0.0
+    gatsby: 5.8.0
+    gatsby-cli: 5.8.0
+    process-top: ^1.2.0
+    react: 18.2.0
+    react-dom: 18.2.0
+  languageName: unknown
+  linkType: soft
+
 "@commercetools-website/site-template@workspace:websites/site-template":
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
