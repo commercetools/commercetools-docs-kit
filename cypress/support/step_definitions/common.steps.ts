@@ -7,7 +7,7 @@ import {
   TEST_USER_PASSWORD,
   TEST_USER_USERNAME,
 } from '../../e2e/self-learning-smoke-test/e2e.const';
-import { URL_DOCS_SMOKE_TEST } from '../urls';
+import { URL_SELF_LEARNING_SMOKE_TEST } from '../urls';
 
 const redirectionStep = (page) => {
   if (page === 'auth0 login page') {
@@ -57,7 +57,7 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
 
   cy.clearCookies();
   cy.clearLocalStorage();
-  cy.visit(URL_DOCS_SMOKE_TEST);
+  cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
   cy.get('#navigation-scroll-container')
     .get(`a[href *= "course-1/quiz"]`)
     .click();
