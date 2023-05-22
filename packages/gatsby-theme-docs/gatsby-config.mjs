@@ -277,7 +277,9 @@ const config = (themeOptions = {}) => {
             {
               serialize: ({ query: { site, allReleaseNotePage } }) => {
                 return allReleaseNotePage.nodes.map((node) => {
-                  const transformedDate = node.orderHint
+                  // We add the orderHint frontmatter as minutes to the release date to have
+                  // better control over the release note order.
+                  const dateWithTime = node.orderHint
                     ? new Date(
                         new Date(node.date).getTime() +
                           node.orderHint * 60 * 1000
@@ -287,7 +289,7 @@ const config = (themeOptions = {}) => {
                     ...node,
                     url: `${site.siteMetadata.siteUrl}${node.slug}`,
                     guid: `${site.siteMetadata.siteUrl}${node.slug}`,
-                    date: transformedDate,
+                    date: dateWithTime,
                   };
                 });
               },
