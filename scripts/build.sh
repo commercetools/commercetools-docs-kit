@@ -14,6 +14,7 @@ yarn workspace @commercetools-website/api-docs-smoke-test build
 yarn workspace @commercetools-website/docs-smoke-test build
 yarn workspace @commercetools-website/documentation build
 yarn workspace @commercetools-website/site-template build
+yarn workspace @commercetools-website/self-learning-smoke-test build
 
 yarn node ./scripts/gatsby-cache.mjs post
 
