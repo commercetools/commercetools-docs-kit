@@ -277,16 +277,23 @@ const config = (themeOptions = {}) => {
             {
               serialize: ({ query: { site, allReleaseNotePage } }) => {
                 return allReleaseNotePage.nodes.map((node) => {
+                  const transformedDate = node.orderHint
+                    ? new Date(node.date).setMilliseconds(node.orderHint)
+                    : new Date(node.date);
                   return {
                     ...node,
                     url: `${site.siteMetadata.siteUrl}${node.slug}`,
                     guid: `${site.siteMetadata.siteUrl}${node.slug}`,
+                    date: transformedDate,
                   };
                 });
               },
               query: `
               {
-                allReleaseNotePage(limit: 10, sort: {date: DESC}) {
+                allReleaseNotePage(limit: 10, sort: [
+                  {date: DESC},
+                  {orderHint: ASC}
+                ]) {
                   nodes {
                     description
                     slug
