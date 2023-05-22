@@ -9,3 +9,17 @@
       href: /../docs-smoke-test
     - label: API Docs Smoke Test
       href: /../api-docs-smoke-test
+
+- menu-title: Product with long title
+  items:
+    - label: Getting started
+      href: /
+    - label: APIs
+      href: /
+
+- menu-title: Last product
+  items:
+    - label: Getting started
+      href: /
+    - label: APIs
+      href: /
