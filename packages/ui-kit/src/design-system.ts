@@ -223,6 +223,7 @@ export const dimensions = {
     pageSearchboxSpace: '58px',
     globalNotificationContent: '36px',
     globalNotificationWithSmallSpacing: 'calc(36px + 8px)',
+    megaMenuItemTitle: '38px',
   },
   widths: {
     pageContent: pageWidth,
