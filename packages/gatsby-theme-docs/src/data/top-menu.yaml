@@ -10,7 +10,7 @@
     - label: API Docs Smoke Test
       href: /../api-docs-smoke-test
 
-- menu-title: Another product with long title
+- menu-title: Product with long title
   items:
     - label: Getting started
       href: /

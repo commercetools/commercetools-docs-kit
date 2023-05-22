@@ -147,7 +147,7 @@ const ColumnTitle = styled.div`
   color: ${designSystem.colors.light.textFaded};
   border-bottom: 1px solid ${designSystem.colors.light.borderSecondary};
   padding: 0 0 ${designSystem.dimensions.spacings.s} 0;
-  min-height: 38px;
+  min-height: ${designSystem.dimensions.heights.megaMenuItemTitle};
   display: flex;
   align-items: flex-end;
 
