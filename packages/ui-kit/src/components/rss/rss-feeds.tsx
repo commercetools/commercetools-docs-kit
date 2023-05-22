@@ -89,7 +89,7 @@ const transformData = (data: FlatRssEntry[][]) => {
         if (!entry || index === 0) {
           return entry;
         }
-        return new Date(entry.pubDate) >= new Date(currentOldestEntry.pubDate)
+        return new Date(entry.pubDate) > new Date(currentOldestEntry.pubDate)
           ? entry
           : currentOldestEntry;
       },
@@ -101,7 +101,7 @@ const transformData = (data: FlatRssEntry[][]) => {
   const tableData: FlatRssEntry[] = data
     .flat()
     .reduce<FlatRssEntry[]>((list, entry) => {
-      return new Date(entry.pubDate) > new Date(lastEntryOfList.pubDate)
+      return new Date(entry.pubDate) >= new Date(lastEntryOfList.pubDate)
         ? [...list, entry]
         : [...list];
     }, [])
