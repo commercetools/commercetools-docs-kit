@@ -5,4 +5,6 @@
 
 import addonComponents from './addon-components';
 
-export default { ...addonComponents };
+const components = { ...addonComponents };
+
+export default components;
