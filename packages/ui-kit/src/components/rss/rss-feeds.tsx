@@ -89,7 +89,7 @@ const transformData = (data: FlatRssEntry[][]) => {
         if (!entry || index === 0) {
           return entry;
         }
-        return new Date(entry.pubDate) > new Date(currentOldestEntry.pubDate)
+        return new Date(entry.pubDate) >= new Date(currentOldestEntry.pubDate)
           ? entry
           : currentOldestEntry;
       },
