@@ -278,7 +278,10 @@ const config = (themeOptions = {}) => {
               serialize: ({ query: { site, allReleaseNotePage } }) => {
                 return allReleaseNotePage.nodes.map((node) => {
                   const transformedDate = node.orderHint
-                    ? new Date(node.date).setMilliseconds(node.orderHint)
+                    ? new Date(
+                        new Date(node.date).getTime() +
+                          node.orderHint * 60 * 1000
+                      )
                     : new Date(node.date);
                   return {
                     ...node,
