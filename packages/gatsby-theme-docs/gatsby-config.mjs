@@ -277,12 +277,11 @@ const config = (themeOptions = {}) => {
             {
               serialize: ({ query: { site, allReleaseNotePage } }) => {
                 return allReleaseNotePage.nodes.map((node) => {
-                  // We add the orderHint frontmatter as minutes to the release date to have
+                  // We add the orderHint frontmatter as hours to the release date to have
                   // better control over the release note order.
                   const dateWithTime = node.orderHint
                     ? new Date(
-                        new Date(node.date).getTime() +
-                          node.orderHint * 60 * 1000
+                        new Date(node.date).setHours(23 - node.orderHint)
                       )
                     : new Date(node.date);
                   return {
