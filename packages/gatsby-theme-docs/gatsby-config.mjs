@@ -281,7 +281,7 @@ const config = (themeOptions = {}) => {
                   // better control over the release note order.
                   const dateWithTime = node.orderHint
                     ? new Date(
-                        new Date(node.date).setHours(23 - node.orderHint)
+                        new Date(node.date).setHours(20 - node.orderHint)
                       )
                     : new Date(node.date);
                   return {
