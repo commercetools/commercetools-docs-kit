@@ -180,6 +180,20 @@ jobs:
     needs: build_deploy_test
     runs-on: ubuntu-latest
     steps:
+      # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L23-L30
+      # https://github.com/marketplace/actions/cypress-io#custom-install
+      - name: Restoring Cypress cache
+        # restore / cache the binary ourselves on Linux
+        # see https://github.com/actions/cache
+        id: cache-cypress
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package.json') }}
+
+      - name: Installing Cypress binary
+        run: yarn cypress install && yarn cypress cache list
+
       - name: Running Self Learning End-to-End tests
         run: yarn percy exec -- yarn test:e2e:self-learning-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
         env:
