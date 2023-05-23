@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "2.0.1",
-    "@commercetools-docs/gatsby-theme-docs": "21.4.3",
     "@commercetools-docs/ui-kit": "21.4.0",
     "@commercetools-uikit/icons": "16.0.0",
     "@commercetools-uikit/secondary-button": "16.0.0",
