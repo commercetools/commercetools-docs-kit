@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "2.0.1",
+    "@commercetools-docs/gatsby-theme-docs": "21.4.3",
     "@commercetools-docs/ui-kit": "21.4.0",
     "@commercetools-uikit/icons": "16.0.0",
     "@commercetools-uikit/secondary-button": "16.0.0",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "14.0.0",
+    "@types/gtag.js": "^0.0.12",
     "@types/react": "18.0.28",
     "prop-types": "15.8.1",
     "react": "18.2.0",

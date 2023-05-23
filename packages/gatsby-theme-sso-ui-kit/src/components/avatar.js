@@ -11,6 +11,7 @@ import LogoutButton from './logout-button';
 import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
 import { AUTH0_CLAIM_DISPLAYNAME } from '../sso.const';
+import { gtagEvent } from '../utils/analytics.utils';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -70,7 +71,8 @@ const LoggedOutState = () => {
         data-test-id="login-button"
       />
       <PrimaryButton
-        onClick={() =>
+        onClick={() => {
+          gtagEvent('sign_up');
           loginWithRedirect({
             appState: {
               returnTo: window.location.pathname,
@@ -78,8 +80,8 @@ const LoggedOutState = () => {
             authorizationParams: {
               screen_hint: 'signup',
             },
-          })
-        }
+          });
+        }}
       >
         <GraduationCapIcon color="surface" />
         <p>Sign up</p>
