@@ -180,6 +180,9 @@ jobs:
     needs: build_deploy_test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L23-L30
       # https://github.com/marketplace/actions/cypress-io#custom-install
       - name: Restoring Cypress cache
