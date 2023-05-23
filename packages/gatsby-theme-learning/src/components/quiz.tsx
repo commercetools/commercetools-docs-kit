@@ -231,7 +231,7 @@ const Quiz = (props: QuizProps) => {
         <LoginButton
           theme="primary"
           icon={<UserFilledIcon color="surface" />}
-          label="Login to start the quiz"
+          label="Log in to start the quiz"
           quizId={`quiz-${props.quizId}`}
         />
       )

@@ -66,7 +66,7 @@ const LoggedOutState = () => {
     <AvatarContainer>
       <LoginButton
         theme="secondary"
-        label="Login"
+        label="Log in"
         data-test-id="login-button"
       />
       <PrimaryButton
