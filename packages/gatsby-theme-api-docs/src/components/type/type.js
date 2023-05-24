@@ -28,7 +28,6 @@ export const getDescriptionIfPrimitiveType = (contentType, type) =>
   contentTypeToPrimitiveMap[contentType][type];
 
 const ApiType = (props) => {
-  console.log(props);
   let matchedApiType = props.apiTypes.find((apiType) => {
     return (
       apiType.apiKey === props.apiKey && apiType.displayName === props.type

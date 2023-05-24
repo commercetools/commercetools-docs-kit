@@ -111,12 +111,13 @@ export const query = graphql`
       excludeFromSearchIndex
       body
     }
-    allReleaseNotePage(sort: { date: DESC }) {
+    allReleaseNotePage(sort: [{ date: DESC }, { orderHint: ASC }]) {
       nodes {
         slug
         title
         date(formatString: "D MMMM YYYY")
         isoDate: date
+        orderHint
         description
         type
         topics
