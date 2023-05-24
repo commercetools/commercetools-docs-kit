@@ -22,23 +22,7 @@ const config = {
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
-        '@commercetools-docs/gatsby-theme-constants',
-        {
-          resolve: '@commercetools-docs/gatsby-theme-learning',
-          options: {
-            auth0Domain: 'auth.id.commercetools.com',
-            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
-            features: ['status-indicator', 'complete-profile-modal'],
-          },
-        },
-        {
-          resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
-          options: {
-            auth0Domain: 'auth.id.commercetools.com',
-            auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
-          },
-        },
+        '@commercetools-docs/gatsby-theme-constants'
       ],
     }),
   ],

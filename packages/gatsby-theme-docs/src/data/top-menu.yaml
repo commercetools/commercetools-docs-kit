@@ -9,6 +9,8 @@
       href: /../docs-smoke-test
     - label: API Docs Smoke Test
       href: /../api-docs-smoke-test
+    - label: Self-learning Smoke Test
+      href: /../self-learning-smoke-test
 
 - menu-title: Product with long title
   items:
