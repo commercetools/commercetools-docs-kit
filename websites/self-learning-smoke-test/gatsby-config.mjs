@@ -20,17 +20,17 @@ const config = {
         {
           resolve: '@commercetools-docs/gatsby-theme-learning',
           options: {
-            auth0Domain: 'auth.id.commercetools.com',
-            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
+            auth0Domain: 'commercetools-professionals.eu.auth0.com',
+            learnApiBaseUrl: 'https://learning-api-git-ga-delete-test-user-commercetools.vercel.app',
             features: ['status-indicator', 'complete-profile-modal'],
           },
         },
         {
           resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
           options: {
-            auth0Domain: 'auth.id.commercetools.com',
-            auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
+            auth0Domain: 'commercetools-professionals.eu.auth0.com',
+            auth0ClientId: 'nZwQWPaoTq8IIk67VV8o0Ska9lGp4hnW',
+            learnApiBaseUrl: 'https://learning-api-git-ga-delete-test-user-commercetools.vercel.app',
           },
         },
       ],
