@@ -24,6 +24,7 @@
     "labels:sync": "github-labels sync",
     "test": "jest --config jest.test.config.js",
     "test:watch": "yarn test --watch",
+    "test:e2e": "yarn test:e2e:docs-smoke-test && yarn test:e2e:api-docs-smoke-test && yarn test:e2e:self-learning-smoke-test",
     "test:e2e:docs-smoke-test": "cross-env NODE_ENV=test cypress run --spec 'cypress/e2e/docs-smoke-test/**/*.cy.ts'",
     "test:e2e:api-docs-smoke-test": "cross-env NODE_ENV=test cypress run --spec 'cypress/e2e/api-docs-smoke-test/**/*.cy.ts'",
     "test:e2e:self-learning-smoke-test": "cross-env NODE_ENV=test cypress run --config-file 'cypress.config.cucumber.ts' --spec 'cypress/e2e/self-learning-smoke-test/*.feature'",
