@@ -99,6 +99,7 @@ const ProfileModal = () => {
 
   return (
     <FormDialog
+      testid="profile-modal"
       size="m"
       title="Tell us a bit about yourself"
       labelPrimary="Save"

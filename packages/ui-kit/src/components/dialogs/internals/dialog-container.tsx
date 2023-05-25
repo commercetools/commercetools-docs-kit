@@ -34,6 +34,7 @@ type Props = {
   title: string;
   children: ReactNode;
   getParentSelector: typeof getDefaultParentSelector;
+  testId?: string;
 };
 const defaultProps: Pick<Props, 'size' | 'getParentSelector'> = {
   // TODO: t-shirt sizes are deprecated but we need to keep using them for
@@ -64,6 +65,7 @@ const DialogContainer = (props: Props) => (
   <ClassNames>
     {({ css: makeClassName }) => (
       <ModalSafe
+        testId={props.testId}
         isOpen={props.isOpen}
         onRequestClose={props.onClose}
         shouldCloseOnOverlayClick={Boolean(props.onClose)}

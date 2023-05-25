@@ -9,6 +9,11 @@ import {
 } from '../../e2e/self-learning-smoke-test/e2e.const';
 import { URL_SELF_LEARNING_SMOKE_TEST } from '../urls';
 
+const LEARN_API_FALLBACK = 'https://learning-api.docs.commercetools.com';
+const resetAPIEndpoint = `${
+  Cypress.env('LEARN_API') || LEARN_API_FALLBACK
+}/api/users/delete-e2e`;
+
 const redirectionStep = (page) => {
   if (page === 'auth0 login page') {
     cy.origin('https://auth.id.commercetools.com', () => {
@@ -43,6 +48,16 @@ const clickStep = (clickArea) => {
       timeout: QUIZ_LOADING_TIMEOUT,
     }).click();
   }
+};
+
+export const resetUser = () => {
+  cy.request({
+    method: 'DELETE',
+    url: resetAPIEndpoint,
+    failOnStatusCode: false,
+  }).then((response) => {
+    expect(response.status).to.be.oneOf([200, 404]); // we allow 404 as it means the user has been already deleted
+  });
 };
 
 const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
@@ -102,6 +117,10 @@ Given('The {string} is logged in', (user: string) =>
 Given(`The {string} is logged in with new attempt`, (user: string) =>
   loginToQuizStep(user, true)
 );
+Given('The user is logged in for the first time', () => {
+  resetUser();
+  loginToQuizStep('user', false);
+});
 
 Given(`The user logs out`, () => {
   cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();

@@ -8,20 +8,19 @@ import {
   WRONG_ANSWER_TEXT,
 } from './e2e.const';
 
-Given(`The user selects {string} answers`, (result) => {
-  // get multiple choice answers.
-  // hack to unselect pre-selected checkboxes as the more standard ways to do it, don't seem to work reliably
-  cy.get(`[data-test-id="${ETestId.questionCheckbox}"]`, {
-    timeout: QUIZ_LOADING_TIMEOUT,
-  })
-    .filter(':checked')
-    .each((_, index) => {
-      cy.get(`[data-test-id="${ETestId.questionCheckbox}"]`)
-        .eq(index)
-        .parent()
-        .click();
-    });
+Given(`The user deselect {string} answers`, (result) => {
+  cy.get(`[data-test-id="${ETestId.quizForm}"] p`).each(($el, index) => {
+    if (
+      $el
+        .text()
+        .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
+    ) {
+      cy.get(`[data-test-id="${ETestId.quizForm}"] p`).eq(index).click();
+    }
+  });
+});
 
+Given(`The user selects {string} answers`, (result) => {
   cy.get(`[data-test-id="${ETestId.quizForm}"] p`).each(($el, index) => {
     if (
       $el
