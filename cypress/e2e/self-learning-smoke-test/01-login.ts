@@ -1,4 +1,9 @@
-import { When, Then, Given } from '@badeball/cypress-cucumber-preprocessor';
+import {
+  When,
+  Then,
+  Given,
+  Before,
+} from '@badeball/cypress-cucumber-preprocessor';
 import { URL_SELF_LEARNING_SMOKE_TEST } from '../../support/urls';
 
 import {
