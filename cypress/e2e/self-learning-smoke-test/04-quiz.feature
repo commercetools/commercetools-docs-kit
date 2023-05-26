@@ -23,3 +23,13 @@ Feature: Quiz
     And A snapshot is taken
     And The user doesn't see a try again button
     And The user logs out
+
+  Scenario: User completes all courses in learning path
+    Given Attempt to reset e2e user
+    Given The "user" logs in using the top login button
+    And The user fills in "all" the profile details
+    And The user submits the profile form
+    And The user completes "course-1" successfully
+    Then The user sees a "course" completed modal
+    And The user completes "course-2" successfully
+    Then The user sees a "learning path" completed modal

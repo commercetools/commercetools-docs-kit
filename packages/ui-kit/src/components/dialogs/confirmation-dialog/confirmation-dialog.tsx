@@ -19,6 +19,7 @@ type Props = {
   dataAttributesSecondaryButton?: { [key: string]: string };
   dataAttributesPrimaryButton?: { [key: string]: string };
   getParentSelector?: () => HTMLElement;
+  testid?: string;
 };
 const defaultProps: Pick<Props, 'labelSecondary' | 'labelPrimary'> = {
   labelSecondary: 'Cancel',
@@ -27,6 +28,7 @@ const defaultProps: Pick<Props, 'labelSecondary' | 'labelPrimary'> = {
 
 const ConfirmationDialog = (props: Props) => (
   <DialogContainer
+    testId={props.testid}
     isOpen={props.isOpen}
     onClose={props.onClose}
     size={props.size}

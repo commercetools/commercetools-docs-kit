@@ -28,7 +28,7 @@ const redirectionStep = (page) => {
   }
 };
 
-const clickStep = (clickArea) => {
+export const clickStep = (clickArea) => {
   if (clickArea === 'avatar icon') {
     cy.get(`div[data-test-id="${ETestId.avatarContainer}"]`).click();
   }
@@ -58,6 +58,33 @@ export const resetUser = () => {
   }).then((response) => {
     expect(response.status).to.be.oneOf([200, 404]); // we allow 404 as it means the user has been already deleted
   });
+};
+
+const loginTopButtonStep = (user: string) => {
+  const username: string =
+    user === 'editor test user'
+      ? EDITOR_TEST_USER_USERNAME
+      : TEST_USER_USERNAME;
+  const password: string =
+    user === 'editor test user'
+      ? EDITOR_TEST_USER_PASSWORD
+      : TEST_USER_PASSWORD;
+
+  cy.clearCookies();
+  cy.clearLocalStorage();
+  cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
+  cy.get('button[data-testid="login-button"]').click();
+  cy.origin(
+    'https://auth.id.commercetools.com',
+    { args: { username, password } },
+    ({ username, password }) => {
+      cy.get('input[id="username"]').type(username);
+      cy.get('input[id="password"]').type(password);
+      cy.get('button[type="submit"]').click();
+    }
+  );
+
+  cy.get(`[data-testid="${ETestId.logoutButton}"]`).should('exist');
 };
 
 const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
@@ -135,4 +162,46 @@ Then('The user is redirected to {string}', redirectionStep);
 
 Then('A snapshot is taken', () => {
   cy.percySnapshot();
+});
+
+Then('Attempt to reset e2e user', () => {
+  resetUser();
+});
+
+When('The user fills in {string} the profile details', (which: string) => {
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="firstName"]`
+  )
+    .should('have.length', 1)
+    .each(($input) => {
+      cy.wrap($input).type('FirstName');
+    });
+
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="lastName"]`
+  )
+    .should('have.length', 1)
+    .each(($input) => {
+      cy.wrap($input).type('LastName');
+    });
+
+  if (which === 'all') {
+    cy.get(
+      `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="company"]`
+    )
+      .should('have.length', 1)
+      .each(($input) => {
+        cy.wrap($input).type('Test corp.');
+      });
+  }
+});
+
+When('The user submits the profile form', () => {
+  cy.get(`[data-testid="${ETestId.profileModal}"] > div[name="main"] button`)
+    .should('be.enabled')
+    .click();
+});
+
+When('The {string} logs in using the top login button', (user: string) => {
+  loginTopButtonStep(user);
 });

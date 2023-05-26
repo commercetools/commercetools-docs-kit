@@ -96,6 +96,7 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
 
   return (
     <ConfirmationDialog
+      testid="module-complete-modal"
       title="Congratulations! &#127881;"
       isOpen={isModalOpen}
       size={modalSize}
