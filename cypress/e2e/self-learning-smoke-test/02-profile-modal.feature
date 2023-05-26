@@ -3,6 +3,7 @@ Feature: Profile Modal
   Scenario: User sees profile modal if profile is not complete
     Given The user is logged in for the first time
     Then The user sees a complete profile modal with empty fields
+    And A snapshot is taken
 
   Scenario: User cannot submit incomplete profile form
     Given The "user" is logged in

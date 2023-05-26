@@ -132,3 +132,7 @@ Given('The avatar menu is displayed', () => {
 
 When('The user clicks the {string}', clickStep);
 Then('The user is redirected to {string}', redirectionStep);
+
+Then('A snapshot is taken', () => {
+  cy.percySnapshot();
+});

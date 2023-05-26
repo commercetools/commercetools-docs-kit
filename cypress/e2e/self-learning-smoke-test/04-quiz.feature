@@ -6,6 +6,7 @@ Feature: Quiz
     When The user clicks the "quiz submit button"
     Then The user sees a "red" ribbon on the quiz section
     And The user sees "error" feedback messages below the anwsers
+    And A snapshot is taken
     And The user sees a try again button
     And The user logs out
     And The user sees a page with "Quiz component" title
@@ -19,5 +20,6 @@ Feature: Quiz
     When The user clicks the "quiz submit button"
     Then The user sees a "green" ribbon on the quiz section
     And The user sees "success" feedback messages below the anwsers
+    And A snapshot is taken
     And The user doesn't see a try again button
     And The user logs out
