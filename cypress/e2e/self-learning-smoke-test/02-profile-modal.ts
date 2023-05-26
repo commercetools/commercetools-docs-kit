@@ -15,6 +15,7 @@ Given('The user sees a complete profile modal with empty fields', () => {
   cy.get(
     `[data-testid="${ETestId.profileModal}"] > div[name="main"] button`
   ).should('be.disabled');
+  cy.percySnapshot();
 });
 
 When('The user fills in {string} the profile details', (which: string) => {
