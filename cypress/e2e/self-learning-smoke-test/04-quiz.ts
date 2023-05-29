@@ -78,6 +78,6 @@ Then('The user sees a {string} completed modal', (type: string) => {
 
 Then('The user gets redirected to {string}', (course: string) => {
   const expectedUrl =
-    course === 'site root' ? URL_SELF_LEARNING_SMOKE_TEST : course;
+    course === 'site root' ? URL_SELF_LEARNING_SMOKE_TEST.slice(0, -1) : course;
   cy.url().should('match', new RegExp(`${expectedUrl}$`));
 });
