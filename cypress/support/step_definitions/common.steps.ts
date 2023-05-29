@@ -14,6 +14,18 @@ const resetAPIEndpoint = `${
   Cypress.env('LEARN_API') || LEARN_API_FALLBACK
 }/api/users/delete-e2e`;
 
+export const performLogin = (username: string, password: string) => {
+  cy.origin(
+    'https://auth.id.commercetools.com',
+    { args: { username, password } },
+    ({ username, password }) => {
+      cy.get('input[id="username"]').type(username);
+      cy.get('input[id="password"]').type(password);
+      cy.get('button:visible[type="submit"]').click();
+    }
+  );
+};
+
 const redirectionStep = (page) => {
   if (page === 'auth0 login page') {
     cy.origin('https://auth.id.commercetools.com', () => {
@@ -74,16 +86,7 @@ const loginTopButtonStep = (user: string) => {
   cy.clearLocalStorage();
   cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
   cy.get('button[data-testid="login-button"]').click();
-  cy.origin(
-    'https://auth.id.commercetools.com',
-    { args: { username, password } },
-    ({ username, password }) => {
-      cy.get('input[id="username"]').type(username);
-      cy.get('input[id="password"]').type(password);
-      cy.get('button[type="submit"]').click();
-    }
-  );
-
+  performLogin(username, password);
   cy.get(`[data-testid="${ETestId.logoutButton}"]`).should('exist');
 };
 
@@ -117,15 +120,7 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
   cy.get(`div[data-test-id="${ETestId.loginButton}"]`).click({
     force: true,
   });
-  cy.origin(
-    'https://auth.id.commercetools.com',
-    { args: { username, password } },
-    ({ username, password }) => {
-      cy.get('input[id="username"]').type(username);
-      cy.get('input[id="password"]').type(password);
-      cy.get('button[type="submit"]').click();
-    }
-  );
+  performLogin(username, password);
 
   cy.get(`[data-test-id="${ETestId.quizWrapper}"]`)
     .find(`[data-test-id="${ETestId.quizForm}"]`, {
