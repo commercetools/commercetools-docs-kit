@@ -16,6 +16,8 @@ export enum ETestId {
   questionCheckbox = 'question-checkbox',
   profileModal = 'profile-modal',
   moduleCompleteModal = 'module-complete-modal',
+  courseStatusIndicator = 'sidebar-course-status',
+  courseTopics = 'sidebar-chapter-item',
 }
 
 export const QUIZ_LOADING_TIMEOUT = 12 * 1000; //12 seconds

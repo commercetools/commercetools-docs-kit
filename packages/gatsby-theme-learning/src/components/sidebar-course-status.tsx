@@ -32,11 +32,13 @@ type StatusIndicatorProps = {
 export const StatusIndicator = (props: StatusIndicatorProps) => {
   switch (props.status) {
     case 'completed':
-      return <VerifiedIcon color="primary" size="big" />;
+      return (
+        <VerifiedIcon data-test-id="verified" color="primary" size="big" />
+      );
     case 'inProgress':
     case 'notEnrolled':
     case 'isLoading':
-      return <CircleIcon color="neutral60" size="big" />;
+      return <CircleIcon data-test-id="circle" color="neutral60" size="big" />;
     default:
       return <UnknownStateSpacer />;
   }
@@ -75,7 +77,11 @@ const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, props.courseId, isAuthenticated, isLoading]);
 
-  return <>{props.courseId && <StatusIndicator status={courseStatus} />}</>;
+  return (
+    <span data-test-id={`sidebar-course-status-${props.courseId}`}>
+      {props.courseId && <StatusIndicator status={courseStatus} />}
+    </span>
+  );
 };
 
 export default SidebarCourseStatus;

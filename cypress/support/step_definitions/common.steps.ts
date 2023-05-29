@@ -134,6 +134,45 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
     .should('exist');
 };
 
+export const selectQuizAnswers = (result: string) => {
+  cy.get(`[data-test-id="${ETestId.quizForm}"] p`, {
+    timeout: QUIZ_LOADING_TIMEOUT,
+  }).each(($el, index) => {
+    if (
+      $el
+        .text()
+        .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
+    ) {
+      cy.get(`[data-test-id="${ETestId.quizForm}"] p`, {
+        timeout: QUIZ_LOADING_TIMEOUT,
+      })
+        .eq(index)
+        .click();
+    }
+  });
+};
+
+const completeCourse = (courseFirsPage: string) => {
+  // navigate to overview page
+  cy.get('#navigation-scroll-container')
+    .find(`a[href *= "${courseFirsPage}"]`)
+    .click();
+
+  // navigate to first quiz page
+  cy.get('div[data-test-id="pagination-next"]').click();
+
+  // passes first quiz
+  selectQuizAnswers('correct');
+  clickStep('quiz submit button');
+
+  // navigate to second quiz page
+  cy.get('div[data-test-id="pagination-next"]').click();
+
+  // passes second quiz
+  selectQuizAnswers('correct');
+  clickStep('quiz submit button');
+};
+
 Then(`The user sees a page with {string} title`, (title) => {
   cy.get('h1').should('contain', title);
 });
@@ -204,4 +243,17 @@ When('The user submits the profile form', () => {
 
 When('The {string} logs in using the top login button', (user: string) => {
   loginTopButtonStep(user);
+});
+
+Given('The user completes {string} successfully', (course: string) => {
+  switch (course) {
+    case 'course-1':
+      completeCourse('course-1/overview');
+      break;
+    case 'course-2':
+      completeCourse('course-2/overview');
+      break;
+    default:
+      break;
+  }
 });

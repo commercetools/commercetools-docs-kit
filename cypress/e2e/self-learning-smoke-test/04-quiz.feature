@@ -31,5 +31,7 @@ Feature: Quiz
     And The user submits the profile form
     And The user completes "course-1" successfully
     Then The user sees a "course" completed modal
+    And A snapshot is taken
     And The user completes "course-2" successfully
     Then The user sees a "learning path" completed modal
+    And A snapshot is taken
