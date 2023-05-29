@@ -8,6 +8,7 @@ import {
   WRONG_ANSWER_TEXT,
 } from './e2e.const';
 import { selectQuizAnswers } from '../../support/step_definitions/common.steps';
+import { URL_SELF_LEARNING_SMOKE_TEST } from '../../support/urls';
 
 Given(`The user deselect {string} answers`, (result) => {
   cy.get(`[data-test-id="${ETestId.quizForm}"] p`).each(($el, index) => {
@@ -73,4 +74,10 @@ Then('The user sees a {string} completed modal', (type: string) => {
   cy.get(
     `[data-testid="${ETestId.moduleCompleteModal}"] > div[name="main"] button[label="Continue"]`
   ).click();
+});
+
+Then('The user gets redirected to {string}', (course: string) => {
+  const expectedUrl =
+    course === 'site root' ? URL_SELF_LEARNING_SMOKE_TEST : course;
+  cy.url().should('match', new RegExp(`${expectedUrl}$`));
 });

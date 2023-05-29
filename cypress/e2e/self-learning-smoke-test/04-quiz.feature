@@ -30,8 +30,11 @@ Feature: Quiz
     And The user fills in "all" the profile details
     And The user submits the profile form
     And The user completes "course-1" successfully
+    And A snapshot is taken
     Then The user sees a "course" completed modal
-    And A snapshot is taken
+    And The user gets redirected to "course-2/overview"
     And The user completes "course-2" successfully
-    Then The user sees a "learning path" completed modal
     And A snapshot is taken
+    Then The user sees a "learning path" completed modal
+    And The user gets redirected to "site root"
+
