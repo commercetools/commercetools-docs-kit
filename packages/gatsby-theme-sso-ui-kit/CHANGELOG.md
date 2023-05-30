@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-sso-ui-kit
 
+## 21.5.0
+
+### Patch Changes
+
+- [#1685](https://github.com/commercetools/commercetools-docs-kit/pull/1685) [`9e957f03`](https://github.com/commercetools/commercetools-docs-kit/commit/9e957f03fb0355332bb83b1d6c73fbbd856bc8c1) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Change Login button text to "Log in"
+
+- [#1685](https://github.com/commercetools/commercetools-docs-kit/pull/1685) [`9e957f03`](https://github.com/commercetools/commercetools-docs-kit/commit/9e957f03fb0355332bb83b1d6c73fbbd856bc8c1) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Change Login button text to "Log in"
+
+- Updated dependencies [[`b40eedf9`](https://github.com/commercetools/commercetools-docs-kit/commit/b40eedf9a446cce6862393575e88f4065b2ec808)]:
+  - @commercetools-docs/ui-kit@21.5.0
+
 ## 21.4.3
 
 ### Patch Changes

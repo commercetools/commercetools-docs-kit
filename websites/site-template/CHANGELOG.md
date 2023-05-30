@@ -1,5 +1,14 @@
 # @commercetools-website/site-template
 
+## 5.2.13
+
+### Patch Changes
+
+- [#1683](https://github.com/commercetools/commercetools-docs-kit/pull/1683) [`55be27b7`](https://github.com/commercetools/commercetools-docs-kit/commit/55be27b7c8df48e16f299a9f3a05ff961ca33492) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Created a dedicated smoke test site for self-learning
+
+- Updated dependencies [[`b40eedf9`](https://github.com/commercetools/commercetools-docs-kit/commit/b40eedf9a446cce6862393575e88f4065b2ec808), [`55be27b7`](https://github.com/commercetools/commercetools-docs-kit/commit/55be27b7c8df48e16f299a9f3a05ff961ca33492), [`a0627ad9`](https://github.com/commercetools/commercetools-docs-kit/commit/a0627ad9d6b04b8ec80c5c3dc83a46517bfa66bc)]:
+  - @commercetools-docs/gatsby-theme-docs@21.5.0
+
 ## 5.2.12
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/self-learning-smoke-test",
-  "version": "7.4.3",
+  "version": "7.4.4",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -15,10 +15,10 @@
     "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "21.4.3",
-    "@commercetools-docs/gatsby-theme-learning": "21.4.3",
-    "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.4.3",
-    "@commercetools-docs/ui-kit": "21.4.0",
+    "@commercetools-docs/gatsby-theme-docs": "21.5.0",
+    "@commercetools-docs/gatsby-theme-learning": "21.5.0",
+    "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.5.0",
+    "@commercetools-docs/ui-kit": "21.5.0",
     "@commercetools-uikit/icons": "16.0.0",
     "@commercetools-uikit/radio-input": "16.0.0",
     "gatsby": "5.8.0",
