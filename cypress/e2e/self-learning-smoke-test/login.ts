@@ -50,7 +50,7 @@ When('The user submits valid auth0 credentials', () => {
     ({ TEST_USER_USERNAME, TEST_USER_PASSWORD }) => {
       cy.get('input[id="username"]').type(TEST_USER_USERNAME);
       cy.get('input[id="password"]').type(TEST_USER_PASSWORD);
-      cy.get('button[type="submit"]').click();
+      cy.get('button:visible[type="submit"]').click();
     }
   );
 });
