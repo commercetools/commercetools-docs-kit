@@ -1,7 +1,8 @@
 Feature: Profile Modal
 
   Scenario: User sees profile modal if profile is not complete
-    Given The user is logged in for the first time
+    Given Attempt to reset e2e user
+    And The "user" logs in using the top login button
     Then The user sees a complete profile modal with empty fields
     And A snapshot is taken
 
