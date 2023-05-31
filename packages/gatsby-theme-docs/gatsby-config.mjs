@@ -223,6 +223,7 @@ const config = (themeOptions = {}) => {
           gtagConfig: {
             anonymize_ip: true,
             cookie_expires: 0,
+            content_group: pluginOptions.websiteKey,
           },
           pluginConfig: {
             head: false,

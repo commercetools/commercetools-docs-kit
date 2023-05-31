@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 21.5.0
+
+### Patch Changes
+
+- [#1683](https://github.com/commercetools/commercetools-docs-kit/pull/1683) [`55be27b7`](https://github.com/commercetools/commercetools-docs-kit/commit/55be27b7c8df48e16f299a9f3a05ff961ca33492) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Created a dedicated smoke test site for self-learning
+
+- Updated dependencies [[`b40eedf9`](https://github.com/commercetools/commercetools-docs-kit/commit/b40eedf9a446cce6862393575e88f4065b2ec808)]:
+  - @commercetools-docs/ui-kit@21.5.0
+
 ## 21.4.3
 
 ### Patch Changes

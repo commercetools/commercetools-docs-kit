@@ -222,7 +222,7 @@ jobs:
         run: yarn cypress install && yarn cypress cache list
 
       - name: Running Self Learning End-to-End tests
-        run: yarn percy exec -- yarn test:e2e:self-learning-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
+        run: yarn test:e2e:self-learning-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}

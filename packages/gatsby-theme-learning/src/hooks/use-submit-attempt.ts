@@ -5,6 +5,7 @@ import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
 import type { SubmissionAttempt } from '../components/quiz.types';
 import { MaintenanceModeError, ServiceDownError } from './use-attempt';
+import { gtagEvent } from '@commercetools-docs/gatsby-theme-sso-ui-kit';
 
 type SubmitAttemptParams = {
   courseId: string;
@@ -45,6 +46,10 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
         credentials: 'include',
       });
       invalidateCache();
+      gtagEvent('submit_quiz', {
+        course_id: courseId.toString(),
+        quiz_id: quizId.toString(),
+      });
       return data;
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
