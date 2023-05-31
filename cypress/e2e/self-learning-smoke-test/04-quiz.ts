@@ -7,21 +7,10 @@ import {
   WRONG_ANSWER_COLOR,
   WRONG_ANSWER_TEXT,
 } from './e2e.const';
+import { selectQuizAnswers } from '../../support/step_definitions/common.steps';
+import { URL_SELF_LEARNING_SMOKE_TEST } from '../../support/urls';
 
-Given(`The user selects {string} answers`, (result) => {
-  // get multiple choice answers.
-  // hack to unselect pre-selected checkboxes as the more standard ways to do it, don't seem to work reliably
-  cy.get(`[data-test-id="${ETestId.questionCheckbox}"]`, {
-    timeout: QUIZ_LOADING_TIMEOUT,
-  })
-    .filter(':checked')
-    .each((_, index) => {
-      cy.get(`[data-test-id="${ETestId.questionCheckbox}"]`)
-        .eq(index)
-        .parent()
-        .click();
-    });
-
+Given(`The user deselect {string} answers`, (result) => {
   cy.get(`[data-test-id="${ETestId.quizForm}"] p`).each(($el, index) => {
     if (
       $el
@@ -31,6 +20,10 @@ Given(`The user selects {string} answers`, (result) => {
       cy.get(`[data-test-id="${ETestId.quizForm}"] p`).eq(index).click();
     }
   });
+});
+
+Given(`The user selects {string} answers`, (result: string) => {
+  selectQuizAnswers(result);
 });
 
 Then('The user sees a {string} ribbon on the quiz section', (feedbackColor) => {
@@ -66,4 +59,25 @@ Given("The user doesn't see a try again button", () => {
   cy.get(`[data-test-id="${ETestId.tryAgainButton}"]`, {
     timeout: QUIZ_LOADING_TIMEOUT,
   }).should('not.exist');
+});
+
+Then('The user sees a {string} completed modal', (type: string) => {
+  const expectedText =
+    type === 'course'
+      ? 'completed this module'
+      : 'completed this learning path';
+  cy.get(`[data-testid="${ETestId.moduleCompleteModal}"] > div[name="main"]`, {
+    timeout: QUIZ_LOADING_TIMEOUT,
+  })
+    .contains(expectedText)
+    .should('be.visible');
+  cy.get(
+    `[data-testid="${ETestId.moduleCompleteModal}"] > div[name="main"] button[label="Continue"]`
+  ).click();
+});
+
+Then('The user gets redirected to {string}', (course: string) => {
+  const expectedUrl =
+    course === 'site root' ? URL_SELF_LEARNING_SMOKE_TEST.slice(0, -1) : course;
+  cy.url().should('match', new RegExp(`${expectedUrl}$`));
 });

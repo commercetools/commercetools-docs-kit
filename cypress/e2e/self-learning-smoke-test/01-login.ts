@@ -7,6 +7,7 @@ import {
   TEST_USER_PASSWORD,
   TEST_USER_USERNAME,
 } from './e2e.const';
+import { performLogin } from '../../support/step_definitions/common.steps';
 
 When('The user visits the self-learning site', () => {
   cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
@@ -44,15 +45,7 @@ Then('The user sees a login button', () => {
 });
 
 When('The user submits valid auth0 credentials', () => {
-  cy.origin(
-    'https://auth.id.commercetools.com',
-    { args: { TEST_USER_USERNAME, TEST_USER_PASSWORD } },
-    ({ TEST_USER_USERNAME, TEST_USER_PASSWORD }) => {
-      cy.get('input[id="username"]').type(TEST_USER_USERNAME);
-      cy.get('input[id="password"]').type(TEST_USER_PASSWORD);
-      cy.get('button:visible[type="submit"]').click();
-    }
-  );
+  performLogin(TEST_USER_USERNAME, TEST_USER_PASSWORD);
 });
 
 Then('The quiz loading icon is displayed', () => {

@@ -31,11 +31,19 @@ type StatusIndicatorProps = {
 export const StatusIndicator = (props: StatusIndicatorProps) => {
   switch (props.status) {
     case 'completed':
-      return <CheckActiveIcon color="primary" size="medium" />;
+      return (
+        <CheckActiveIcon
+          data-test-id="checkActive"
+          color="primary"
+          size="medium"
+        />
+      );
     case 'inProgress':
     case 'notAvailable':
     case 'isLoading':
-      return <CircleIcon color="neutral60" size="medium" />;
+      return (
+        <CircleIcon data-test-id="circle" color="neutral60" size="medium" />
+      );
     default:
       return <UnknownStateSpacer />;
   }

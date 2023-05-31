@@ -280,7 +280,7 @@ const SidebarChapter = (props) => {
 
   return (
     <div role="sidebar-chapter" id={elemId}>
-      <SpacingsStack scale="s">
+      <SpacingsStack data-test-id={`sidebar-chapter-${courseId}`} scale="s">
         {courseId ? (
           <LinkItemWithIcon>
             <SidebarCourseStatus courseId={courseId} />
@@ -305,6 +305,7 @@ const SidebarChapter = (props) => {
                 ) : null;
               return (
                 <SidebarLinkWrapper
+                  data-test-id={`sidebar-chapter-item-${courseId}`}
                   key={`${props.index}-${pageIndex}-${pageLink.path}`}
                   to={pageLink.path}
                   onClick={props.onLinkClick}

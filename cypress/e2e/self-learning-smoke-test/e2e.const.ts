@@ -14,12 +14,16 @@ export enum ETestId {
   multipleChoiceContainer = 'multiple-choice-container',
   singleChoiceContainer = 'multiple-choice-container',
   questionCheckbox = 'question-checkbox',
+  profileModal = 'profile-modal',
+  moduleCompleteModal = 'module-complete-modal',
+  courseStatusIndicator = 'sidebar-course-status',
+  courseTopics = 'sidebar-chapter-item',
 }
 
-export const QUIZ_LOADING_TIMEOUT = 12 * 1000; //12 seconds
+export const QUIZ_LOADING_TIMEOUT = 20 * 1000; // 20 seconds
 
 // TEST USER (standard)
-export const TEST_USER_USERNAME = 'test.user+auth0@testdomain.tld';
+export const TEST_USER_USERNAME = 'test.user+e2e@commercetools.com';
 export const TEST_USER_PASSWORD = 'Qwerty123!';
 
 // TEST USER (editor)

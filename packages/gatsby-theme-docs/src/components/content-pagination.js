@@ -66,7 +66,12 @@ const PaginationLink = (props) => (
     to={trimTrailingSlash(props.linkTo)}
     align={props.direction === 'left' ? 'right' : 'left'}
   >
-    <PaginationButton insetScale="s">
+    <PaginationButton
+      data-test-id={
+        props.direction === 'left' ? 'pagination-prev' : 'pagination-next'
+      }
+      insetScale="s"
+    >
       <SpacingsInline
         scale="m"
         alignItems="center"

@@ -22,6 +22,7 @@ type Props = {
   getParentSelector?: () => HTMLElement;
   iconLeftSecondaryButton?: ReactElement;
   displaySecondaryButton?: boolean;
+  testid?: string;
 };
 const defaultProps: Pick<Props, 'labelSecondary' | 'labelPrimary'> = {
   labelSecondary: 'Cancel',
@@ -30,6 +31,7 @@ const defaultProps: Pick<Props, 'labelSecondary' | 'labelPrimary'> = {
 
 const FormDialog = (props: Props) => (
   <DialogContainer
+    testId={props.testid}
     isOpen={props.isOpen}
     onClose={props.onClose}
     size={props.size}

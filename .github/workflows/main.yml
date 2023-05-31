@@ -179,6 +179,7 @@ jobs:
     name: 'Self-learning e2e tests'
     needs: build_deploy_test
     runs-on: ubuntu-latest
+    concurrency: self-learning-concurrency-group
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -222,7 +223,7 @@ jobs:
         run: yarn cypress install && yarn cypress cache list
 
       - name: Running Self Learning End-to-End tests
-        run: yarn test:e2e:self-learning-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
+        run: yarn percy exec -- yarn test:e2e:self-learning-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}

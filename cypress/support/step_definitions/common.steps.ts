@@ -9,6 +9,23 @@ import {
 } from '../../e2e/self-learning-smoke-test/e2e.const';
 import { URL_SELF_LEARNING_SMOKE_TEST } from '../urls';
 
+const LEARN_API_FALLBACK = 'https://learning-api.docs.commercetools.com';
+const resetAPIEndpoint = `${
+  Cypress.env('LEARN_API') || LEARN_API_FALLBACK
+}/api/users/delete-e2e`;
+
+export const performLogin = (username: string, password: string) => {
+  cy.origin(
+    'https://auth.id.commercetools.com',
+    { args: { username, password } },
+    ({ username, password }) => {
+      cy.get('input[id="username"]').type(username);
+      cy.get('input[id="password"]').type(password);
+      cy.get('button:visible[type="submit"]').click();
+    }
+  );
+};
+
 const redirectionStep = (page) => {
   if (page === 'auth0 login page') {
     cy.origin('https://auth.id.commercetools.com', () => {
@@ -23,7 +40,7 @@ const redirectionStep = (page) => {
   }
 };
 
-const clickStep = (clickArea) => {
+export const clickStep = (clickArea) => {
   if (clickArea === 'avatar icon') {
     cy.get(`div[data-test-id="${ETestId.avatarContainer}"]`).click();
   }
@@ -43,6 +60,34 @@ const clickStep = (clickArea) => {
       timeout: QUIZ_LOADING_TIMEOUT,
     }).click();
   }
+};
+
+export const resetUser = () => {
+  cy.request({
+    method: 'DELETE',
+    url: resetAPIEndpoint,
+    failOnStatusCode: false,
+  }).then((response) => {
+    expect(response.status).to.be.oneOf([200, 404]); // we allow 404 as it means the user has been already deleted
+  });
+};
+
+const loginTopButtonStep = (user: string) => {
+  const username: string =
+    user === 'editor test user'
+      ? EDITOR_TEST_USER_USERNAME
+      : TEST_USER_USERNAME;
+  const password: string =
+    user === 'editor test user'
+      ? EDITOR_TEST_USER_PASSWORD
+      : TEST_USER_PASSWORD;
+
+  cy.clearCookies();
+  cy.clearLocalStorage();
+  cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
+  cy.get('button[data-testid="login-button"]').click();
+  performLogin(username, password);
+  cy.get(`[data-testid="${ETestId.logoutButton}"]`).should('exist');
 };
 
 const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
@@ -75,21 +120,52 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
   cy.get(`div[data-test-id="${ETestId.loginButton}"]`).click({
     force: true,
   });
-  cy.origin(
-    'https://auth.id.commercetools.com',
-    { args: { username, password } },
-    ({ username, password }) => {
-      cy.get('input[id="username"]').type(username);
-      cy.get('input[id="password"]').type(password);
-      cy.get('button:visible[type="submit"]').click();
-    }
-  );
+  performLogin(username, password);
 
   cy.get(`[data-test-id="${ETestId.quizWrapper}"]`)
     .find(`[data-test-id="${ETestId.quizForm}"]`, {
       timeout: QUIZ_LOADING_TIMEOUT,
     })
     .should('exist');
+};
+
+export const selectQuizAnswers = (result: string) => {
+  cy.get(`[data-test-id="${ETestId.quizForm}"] p`, {
+    timeout: QUIZ_LOADING_TIMEOUT,
+  }).each(($el, index) => {
+    if (
+      $el
+        .text()
+        .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
+    ) {
+      cy.get(`[data-test-id="${ETestId.quizForm}"] p`, {
+        timeout: QUIZ_LOADING_TIMEOUT,
+      })
+        .eq(index)
+        .click();
+    }
+  });
+};
+
+const completeCourse = (courseFirsPage: string) => {
+  // navigate to overview page
+  cy.get('#navigation-scroll-container')
+    .find(`a[href *= "${courseFirsPage}"]`)
+    .click();
+
+  // navigate to first quiz page
+  cy.get('div[data-test-id="pagination-next"]').click();
+
+  // passes first quiz
+  selectQuizAnswers('correct');
+  clickStep('quiz submit button');
+
+  // navigate to second quiz page
+  cy.get('div[data-test-id="pagination-next"]').click();
+
+  // passes second quiz
+  selectQuizAnswers('correct');
+  clickStep('quiz submit button');
 };
 
 Then(`The user sees a page with {string} title`, (title) => {
@@ -102,6 +178,10 @@ Given('The {string} is logged in', (user: string) =>
 Given(`The {string} is logged in with new attempt`, (user: string) =>
   loginToQuizStep(user, true)
 );
+Given('The user is logged in for the first time', () => {
+  resetUser();
+  loginToQuizStep('user', false);
+});
 
 Given(`The user logs out`, () => {
   cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
@@ -113,3 +193,62 @@ Given('The avatar menu is displayed', () => {
 
 When('The user clicks the {string}', clickStep);
 Then('The user is redirected to {string}', redirectionStep);
+
+Then('A snapshot is taken', () => {
+  cy.percySnapshot();
+});
+
+Then('Attempt to reset e2e user', () => {
+  resetUser();
+});
+
+When('The user fills in {string} the profile details', (which: string) => {
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="firstName"]`
+  )
+    .should('have.length', 1)
+    .each(($input) => {
+      cy.wrap($input).type('FirstName');
+    });
+
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="lastName"]`
+  )
+    .should('have.length', 1)
+    .each(($input) => {
+      cy.wrap($input).type('LastName');
+    });
+
+  if (which === 'all') {
+    cy.get(
+      `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="company"]`
+    )
+      .should('have.length', 1)
+      .each(($input) => {
+        cy.wrap($input).type('Test corp.');
+      });
+  }
+});
+
+When('The user submits the profile form', () => {
+  cy.get(`[data-testid="${ETestId.profileModal}"] > div[name="main"] button`)
+    .should('be.enabled')
+    .click();
+});
+
+When('The {string} logs in using the top login button', (user: string) => {
+  loginTopButtonStep(user);
+});
+
+Given('The user completes {string} successfully', (course: string) => {
+  switch (course) {
+    case 'course-1':
+      completeCourse('course-1/overview');
+      break;
+    case 'course-2':
+      completeCourse('course-2/overview');
+      break;
+    default:
+      break;
+  }
+});
