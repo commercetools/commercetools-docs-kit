@@ -1,4 +1,5 @@
 import { useState, useContext, useCallback } from 'react';
+import { gtagEvent } from '@commercetools-docs/gatsby-theme-sso-ui-kit';
 import ConfigContext from '../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
@@ -32,6 +33,7 @@ export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
         },
         credentials: 'include',
       });
+      gtagEvent('update_userinfo');
       return data;
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
