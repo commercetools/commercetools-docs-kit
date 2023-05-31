@@ -4,7 +4,7 @@
 // Recommended events reference: https://developers.google.com/tag-platform/gtagjs/reference/events
 
 export const gtagEvent = (
-  eventName: EventNames | (string & {}),
+  eventName: EventNames | CustomEventNames,
   eventParams?: ControlParams | EventParams | CustomParams
 ) => {
   if (typeof window !== 'undefined' && typeof window.gtag === 'function')
@@ -24,6 +24,10 @@ interface CustomParams {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
+
+// "our" events. Please add as needed
+type CustomEventNames = 'submit_quiz' | 'update_userinfo' | 'logout';
+
 type EventNames =
   // | 'add_payment_info'
   // | 'add_shipping_info'
