@@ -1,5 +1,5 @@
 import { When, Then, Given } from '@badeball/cypress-cucumber-preprocessor';
-import { URL_DOCS_SMOKE_TEST } from '../../../support/urls';
+import { URL_SELF_LEARNING_SMOKE_TEST } from '../../support/urls';
 
 import {
   ETestId,
@@ -9,7 +9,7 @@ import {
 } from './e2e.const';
 
 When('The user visits the self-learning site', () => {
-  cy.visit(URL_DOCS_SMOKE_TEST);
+  cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
 });
 
 When('The user clicks navigation link with href {string}', (href) => {
@@ -17,9 +17,9 @@ When('The user clicks navigation link with href {string}', (href) => {
 });
 
 Given(`The user has navigated to a quiz page`, () => {
-  cy.visit(URL_DOCS_SMOKE_TEST);
+  cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
   cy.get('#navigation-scroll-container')
-    .get(`a[href *= "self-learning/quiz"]`)
+    .get(`a[href *= "course-1/quiz"]`)
     .click();
 });
 
@@ -50,7 +50,7 @@ When('The user submits valid auth0 credentials', () => {
     ({ TEST_USER_USERNAME, TEST_USER_PASSWORD }) => {
       cy.get('input[id="username"]').type(TEST_USER_USERNAME);
       cy.get('input[id="password"]').type(TEST_USER_PASSWORD);
-      cy.get('button[type="submit"]').click();
+      cy.get('button:visible[type="submit"]').click();
     }
   );
 });

@@ -157,16 +157,10 @@ jobs:
         run: yarn cypress install && yarn cypress cache list
 
       - name: Running End-to-End tests
-        run: yarn percy exec -- yarn test:e2e:cypress:docs-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
+        run: yarn percy exec -- yarn test:e2e:docs-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
         env:
           NODE_ENV: test
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
-          CYPRESS_CI: 'true'
-
-      - name: Running Self Learning End-to-End tests
-        run: yarn test:e2e:cucumber:docs-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
-        env:
-          NODE_ENV: test
           CYPRESS_CI: 'true'
 
       - name: Running API End-to-End tests
@@ -180,6 +174,59 @@ jobs:
         if: ${{ env.DEPLOY_ENV == 'Preview' }}
         working-directory: public
         run: npx --quiet start-server-and-test 'npx --quiet http-server --silent -p 9000' http://127.0.0.1:9000 'docker run --platform linux/amd64 --network=host -v "$(pwd)/../:/repo/" tennox/linkcheck --skip-file /repo/linkcheck-local-skip-list :9000'
+
+  self_learning_test:
+    name: 'Self-learning e2e tests'
+    needs: build_deploy_test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node (uses version in .nvmrc)
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      # cached dependencies
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-v3-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v3-
+
+      - name: Install dependencies
+        run: yarn install --immutable
+        env:
+          # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L14-L18
+          # https://github.com/marketplace/actions/cypress-io#custom-install
+          CYPRESS_INSTALL_BINARY: 0
+
+      # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L23-L30
+      # https://github.com/marketplace/actions/cypress-io#custom-install
+      - name: Restoring Cypress cache
+        # restore / cache the binary ourselves on Linux
+        # see https://github.com/actions/cache
+        id: cache-cypress
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package.json') }}
+
+      - name: Installing Cypress binary
+        run: yarn cypress install && yarn cypress cache list
+
+      - name: Running Self Learning End-to-End tests
+        run: yarn test:e2e:self-learning-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
+        env:
+          NODE_ENV: test
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
+          CYPRESS_CI: 'true'
 
   link-check:
     name: 'Check links'

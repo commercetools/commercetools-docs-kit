@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 21.5.0
+
+### Minor Changes
+
+- [#1679](https://github.com/commercetools/commercetools-docs-kit/pull/1679) [`b40eedf9`](https://github.com/commercetools/commercetools-docs-kit/commit/b40eedf9a446cce6862393575e88f4065b2ec808) Thanks [@timonrey](https://github.com/timonrey)! - Introduces a new frontmatter called `orderHint` that allows release note writers to control the order of release notes with the same release date in the RSS feed.
+
 ## 21.4.0
 
 ### Minor Changes

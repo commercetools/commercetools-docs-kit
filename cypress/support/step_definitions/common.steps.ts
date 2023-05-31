@@ -6,8 +6,8 @@ import {
   QUIZ_LOADING_TIMEOUT,
   TEST_USER_PASSWORD,
   TEST_USER_USERNAME,
-} from '../../e2e/docs-smoke-test/learn-api/e2e.const';
-import { URL_DOCS_SMOKE_TEST } from '../urls';
+} from '../../e2e/self-learning-smoke-test/e2e.const';
+import { URL_SELF_LEARNING_SMOKE_TEST } from '../urls';
 
 const redirectionStep = (page) => {
   if (page === 'auth0 login page') {
@@ -16,10 +16,7 @@ const redirectionStep = (page) => {
     });
   }
   if (page === 'quiz page') {
-    cy.url().should(
-      'match',
-      /self-learning\/quiz\/?#section-test-your-knowledge$/
-    );
+    cy.url().should('match', /course-1\/quiz\/?#section-test-your-knowledge$/);
   }
   if (page === 'homepage') {
     cy.url().should('eq', Cypress.config().baseUrl);
@@ -60,9 +57,9 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
 
   cy.clearCookies();
   cy.clearLocalStorage();
-  cy.visit(URL_DOCS_SMOKE_TEST);
+  cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
   cy.get('#navigation-scroll-container')
-    .get(`a[href *= "self-learning/quiz"]`)
+    .get(`a[href *= "course-1/quiz"]`)
     .click();
   if (isNewAttempt) {
     cy.intercept(
@@ -84,7 +81,7 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
     ({ username, password }) => {
       cy.get('input[id="username"]').type(username);
       cy.get('input[id="password"]').type(password);
-      cy.get('button[type="submit"]').click();
+      cy.get('button:visible[type="submit"]').click();
     }
   );
 
