@@ -7,7 +7,7 @@ import {
 import ConfigContext, {
   isFeatureEnabled,
   EFeatureFlag,
-} from './config-context';
+} from '../../components/config-context';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -58,13 +58,13 @@ const SidebarTopicStatus = (props: PageTopicStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const [topicStatus, setTopicStatus] = useState<TopicStatus>();
   const { data, isLoading } = useFetchCourseDetails(props.courseId);
-  const { features } = useContext(ConfigContext);
+  const { selfLearingFeatures } = useContext(ConfigContext);
 
   // If status-indicator feature flag is disable OR the user is logged out
   // it will pass undefined to StatusIndicator which in turn will render an empty spacer...
   useEffect(() => {
     if (
-      !isFeatureEnabled(EFeatureFlag.CourseStatus, features) ||
+      !isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearingFeatures) ||
       !isAuthenticated
     ) {
       setTopicStatus(undefined);

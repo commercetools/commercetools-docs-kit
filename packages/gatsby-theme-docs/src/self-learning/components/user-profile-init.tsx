@@ -1,7 +1,7 @@
 import { User, useAuth0 } from '@auth0/auth0-react';
 import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
-import { AUTH0_CLAIM_COMPANY } from '@commercetools-docs/gatsby-theme-sso-ui-kit';
+import { AUTH0_CLAIM_COMPANY } from '../../sso';
 
 export type TProfileFormValues = {
   firstName: string;

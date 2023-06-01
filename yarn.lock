@@ -3011,7 +3011,6 @@ __metadata:
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
     "@auth0/auth0-react": 2.0.1
-    "@commercetools-docs/gatsby-theme-sso-ui-kit": 21.5.0
     "@commercetools-docs/ui-kit": 21.5.0
     "@commercetools-uikit/card": 16.0.0
     "@commercetools-uikit/checkbox-input": 16.0.0
@@ -3043,6 +3042,9 @@ __metadata:
     "@mdx-js/react": 1.6.22
     "@sentry/browser": 7.44.2
     "@svgr/webpack": 7.0.0
+    "@testing-library/jest-dom": 5.16.5
+    "@testing-library/react": 14.0.0
+    "@types/gtag.js": ^0.0.12
     "@types/react": 18.0.28
     "@videojs/themes": ^1.0.1
     assert: 2.0.0
@@ -3074,6 +3076,7 @@ __metadata:
     hast-util-to-string: 2.0.0
     intersection-observer: 0.12.2
     lodash.throttle: 4.1.1
+    md5: 2.3.0
     md5-file: ^5.0.0
     mdast-util-to-string: ^3.1.1
     mdast-util-toc: 6.1.1
@@ -3111,30 +3114,6 @@ __metadata:
     react-dom: 18.x
   bin:
     create-docs-release-note: bin/create-release-note.js
-  languageName: unknown
-  linkType: soft
-
-"@commercetools-docs/gatsby-theme-sso-ui-kit@21.5.0, @commercetools-docs/gatsby-theme-sso-ui-kit@workspace:packages/gatsby-theme-sso-ui-kit":
-  version: 0.0.0-use.local
-  resolution: "@commercetools-docs/gatsby-theme-sso-ui-kit@workspace:packages/gatsby-theme-sso-ui-kit"
-  dependencies:
-    "@auth0/auth0-react": 2.0.1
-    "@commercetools-docs/ui-kit": 21.5.0
-    "@commercetools-uikit/icons": 16.0.0
-    "@commercetools-uikit/secondary-button": 16.0.0
-    "@commercetools-uikit/spacings": 16.0.0
-    "@emotion/react": ^11.10.5
-    "@emotion/styled": ^11.10.5
-    "@testing-library/jest-dom": 5.16.5
-    "@testing-library/react": 14.0.0
-    "@types/gtag.js": ^0.0.12
-    "@types/react": 18.0.28
-    md5: 2.3.0
-    prop-types: 15.8.1
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-intl: ^6.2.8
-    react-router-dom: 6.9.0
   languageName: unknown
   linkType: soft
 
@@ -3986,7 +3965,6 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 21.5.0
     "@commercetools-docs/gatsby-theme-docs": 21.5.0
-    "@commercetools-docs/gatsby-theme-sso-ui-kit": 21.5.0
     gatsby: 5.8.0
     gatsby-cli: 5.8.0
     react: 18.2.0
@@ -3999,7 +3977,6 @@ __metadata:
   resolution: "@commercetools-website/self-learning-smoke-test@workspace:websites/self-learning-smoke-test"
   dependencies:
     "@commercetools-docs/gatsby-theme-docs": 21.5.0
-    "@commercetools-docs/gatsby-theme-sso-ui-kit": 21.5.0
     "@commercetools-docs/ui-kit": 21.5.0
     "@commercetools-uikit/icons": 16.0.0
     "@commercetools-uikit/radio-input": 16.0.0

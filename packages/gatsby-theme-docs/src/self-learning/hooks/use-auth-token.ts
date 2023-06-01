@@ -1,6 +1,6 @@
 import { useContext, useCallback } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import ConfigContext from '../components/config-context';
+import ConfigContext from '../../components/config-context';
 
 export const useAuthToken = () => {
   const { auth0Domain } = useContext(ConfigContext);

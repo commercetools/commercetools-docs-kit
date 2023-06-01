@@ -1,3 +1,10 @@
-// A React component to be rendered in the top bar next to the top menu toggle button
-const LoginInfo = () => null;
+import { useContext } from 'react';
+import ConfigContext from '../components/config-context';
+import UserProfile from '../sso/components/avatar';
+
+const LoginInfo = () => {
+  const { hideLogin } = useContext(ConfigContext);
+  return hideLogin ? null : <UserProfile />;
+};
+
 export default LoginInfo;

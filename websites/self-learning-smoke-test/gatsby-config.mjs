@@ -17,18 +17,10 @@ const config = {
     ...configureThemeWithAddOns({
       websiteKey: 'self-learning-smoke-test',
       auth0Domain: 'auth.id.commercetools.com',
+      auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
       learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
-      features: ['status-indicator', 'complete-profile-modal'],
-      addOns: [
-        {
-          resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
-          options: {
-            auth0Domain: 'auth.id.commercetools.com',
-            auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
-          },
-        },
-      ],
+      selfLearningfeatures: ['status-indicator', 'complete-profile-modal'],
+      hideLogin: false,
     }),
   ],
 };

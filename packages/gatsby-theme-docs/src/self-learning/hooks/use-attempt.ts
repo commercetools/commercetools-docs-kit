@@ -1,5 +1,5 @@
 import { useState, useContext, useCallback } from 'react';
-import ConfigContext from '../components/config-context';
+import ConfigContext from '../../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
 import { useSWRConfig } from 'swr';

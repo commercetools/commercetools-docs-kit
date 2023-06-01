@@ -11,7 +11,7 @@ import { useUpdateUser } from '../hooks/use-update-user';
 import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
-} from './config-context';
+} from '../../components/config-context';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -32,14 +32,14 @@ const ProfileModal = () => {
     user: { profile },
     updateProfile,
   } = useContext(LearningContext);
-  const { features } = useContext(ConfigContext);
+  const { selfLearingFeatures } = useContext(ConfigContext);
   const { performUpdateUser, isLoading, updatedUser, error } = useUpdateUser({
     userId: profile?.user_id || '',
   });
 
   const isModalFeatureEnabeld = isFeatureEnabled(
     EFeatureFlag.CompleteProfileModal,
-    features
+    selfLearingFeatures
   );
 
   const formik = useFormik<TProfileFormValues>({

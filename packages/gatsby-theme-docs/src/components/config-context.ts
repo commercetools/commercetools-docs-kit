@@ -8,13 +8,17 @@ export enum EFeatureFlag {
 export type Config = {
   learnApiBaseUrl: string;
   auth0Domain: string;
-  features: Array<EFeatureFlag>;
+  auth0ClientId: string;
+  hideLogin: boolean;
+  selfLearingFeatures: Array<EFeatureFlag>;
 };
 
 const ConfigContext = createContext<Config>({
   learnApiBaseUrl: '',
   auth0Domain: '',
-  features: [],
+  auth0ClientId: '',
+  hideLogin: false,
+  selfLearingFeatures: [],
 });
 
 export const isFeatureEnabled = (

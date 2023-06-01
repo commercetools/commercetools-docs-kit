@@ -8,7 +8,7 @@ import {
 import ConfigContext, {
   isFeatureEnabled,
   EFeatureFlag,
-} from './config-context';
+} from '../../components/config-context';
 import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -51,7 +51,7 @@ type SidebarCourseStatusProps = {
 const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const { data, isLoading } = useFetchCourses();
-  const { features } = useContext(ConfigContext);
+  const { selfLearingFeatures } = useContext(ConfigContext);
   const [courseStatus, setCourseStatus] = useState<
     ClientCourseStatus | undefined
   >();
@@ -60,7 +60,7 @@ const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   // it will pass undefined to StatusIndicator which in turn will render an empty spacer...
   useEffect(() => {
     if (
-      !isFeatureEnabled(EFeatureFlag.CourseStatus, features) ||
+      !isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearingFeatures) ||
       !isAuthenticated
     ) {
       setCourseStatus(undefined);

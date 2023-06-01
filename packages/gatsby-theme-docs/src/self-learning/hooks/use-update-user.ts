@@ -1,6 +1,6 @@
 import { useState, useContext, useCallback } from 'react';
-import { gtagEvent } from '@commercetools-docs/gatsby-theme-sso-ui-kit';
-import ConfigContext from '../components/config-context';
+import { gtagEvent } from '../../sso';
+import ConfigContext from '../../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
 import { User } from '@auth0/auth0-react';

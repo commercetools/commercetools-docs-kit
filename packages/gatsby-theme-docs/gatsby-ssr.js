@@ -23,7 +23,7 @@ import iconLightDigestRaw from '!!raw-loader!./static/favicon-light-32x32.png';
 // included because they are one-off pages. Markdown overrides are included via the content page template.
 import contentTemplate from './src/templates/page-content';
 import releaseNoteTemplate from './src/templates/release-notes-detail';
-import ConfigContext from './src/self-learning/components/config-context';
+import ConfigContext from './src/components/config-context';
 import { LearningStateProvider } from './src/self-learning/components/learning-context';
 
 // eslint-disable-next-line no-unused-vars
@@ -110,7 +110,9 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
       value={{
         learnApiBaseUrl: pluginOptions.learnApiBaseUrl,
         auth0Domain: pluginOptions.auth0Domain,
-        features: pluginOptions?.features || [],
+        selfLearingFeatures: pluginOptions?.selfLearingFeatures || [],
+        auth0ClientId: pluginOptions?.auth0ClientId,
+        hideLogin: pluginOptions?.hideLogin || false,
       }}
     >
       <LearningStateProvider>{element}</LearningStateProvider>

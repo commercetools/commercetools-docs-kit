@@ -6,7 +6,7 @@ import {
 } from '@commercetools-uikit/design-system';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { ContentNotification } from '@commercetools-uikit/notifications';
-import { LoginButton } from '@commercetools-docs/gatsby-theme-sso-ui-kit';
+import { LoginButton } from '../../sso';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useAttempt } from '../hooks/use-attempt';
 import { useSubmitAttempt } from '../hooks/use-submit-attempt';

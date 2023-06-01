@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
-} from '../components/config-context';
+} from '../../components/config-context';
 import { useAuth0 } from '@auth0/auth0-react';
 import type {
   ApiCallResult,
@@ -26,7 +26,7 @@ export const useFetchCourseDetails = (
   error: string | undefined;
   isLoading: boolean;
 } => {
-  const { learnApiBaseUrl, features } = useContext(ConfigContext);
+  const { learnApiBaseUrl, selfLearingFeatures } = useContext(ConfigContext);
   const { isAuthenticated } = useAuth0();
   const { getAuthToken } = useAuthToken();
   const apiEndpoint = `/api/courses/${courseId}`;
@@ -34,7 +34,7 @@ export const useFetchCourseDetails = (
   // fetch data only if course status feature flag is true and the user is logged in
   const shouldFetchData =
     courseId &&
-    isFeatureEnabled(EFeatureFlag.CourseStatus, features) &&
+    isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearingFeatures) &&
     isAuthenticated;
 
   const { data, error, isLoading } = useSWR(

@@ -1,11 +1,11 @@
 import { useState, useContext, useCallback } from 'react';
 import { useSWRConfig } from 'swr';
-import ConfigContext from '../components/config-context';
+import ConfigContext from '../../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
 import type { SubmissionAttempt } from '../components/quiz.types';
 import { MaintenanceModeError, ServiceDownError } from './use-attempt';
-import { gtagEvent } from '@commercetools-docs/gatsby-theme-sso-ui-kit';
+import { gtagEvent } from '../../sso';
 
 type SubmitAttemptParams = {
   courseId: string;
