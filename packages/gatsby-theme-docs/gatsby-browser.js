@@ -112,7 +112,7 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
           learnApiBaseUrl: pluginOptions.learnApiBaseUrl,
           auth0Domain: pluginOptions.auth0Domain,
           auth0ClientId: pluginOptions.auth0ClientId,
-          selfLearingFeatures: pluginOptions?.selfLearingFeatures || [],
+          selfLearningFeatures: pluginOptions?.selfLearningFeatures || [],
           hideLogin: pluginOptions?.hideLogin || false,
         }}
       >

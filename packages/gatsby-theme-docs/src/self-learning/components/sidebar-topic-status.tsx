@@ -58,13 +58,13 @@ const SidebarTopicStatus = (props: PageTopicStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const [topicStatus, setTopicStatus] = useState<TopicStatus>();
   const { data, isLoading } = useFetchCourseDetails(props.courseId);
-  const { selfLearingFeatures } = useContext(ConfigContext);
+  const { selfLearningFeatures } = useContext(ConfigContext);
 
   // If status-indicator feature flag is disable OR the user is logged out
   // it will pass undefined to StatusIndicator which in turn will render an empty spacer...
   useEffect(() => {
     if (
-      !isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearingFeatures) ||
+      !isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearningFeatures) ||
       !isAuthenticated
     ) {
       setTopicStatus(undefined);
@@ -78,7 +78,7 @@ const SidebarTopicStatus = (props: PageTopicStatusProps) => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [features, data, isAuthenticated]);
+  }, [selfLearningFeatures, data, isAuthenticated]);
 
   return props.courseId && <StatusIndicator status={topicStatus} />;
 };

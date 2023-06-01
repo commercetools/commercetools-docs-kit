@@ -51,7 +51,7 @@ type SidebarCourseStatusProps = {
 const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const { data, isLoading } = useFetchCourses();
-  const { selfLearingFeatures } = useContext(ConfigContext);
+  const { selfLearningFeatures } = useContext(ConfigContext);
   const [courseStatus, setCourseStatus] = useState<
     ClientCourseStatus | undefined
   >();
@@ -60,7 +60,7 @@ const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   // it will pass undefined to StatusIndicator which in turn will render an empty spacer...
   useEffect(() => {
     if (
-      !isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearingFeatures) ||
+      !isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearningFeatures) ||
       !isAuthenticated
     ) {
       setCourseStatus(undefined);

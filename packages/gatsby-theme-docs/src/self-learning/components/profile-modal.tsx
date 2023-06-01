@@ -32,14 +32,14 @@ const ProfileModal = () => {
     user: { profile },
     updateProfile,
   } = useContext(LearningContext);
-  const { selfLearingFeatures } = useContext(ConfigContext);
+  const { selfLearningFeatures } = useContext(ConfigContext);
   const { performUpdateUser, isLoading, updatedUser, error } = useUpdateUser({
     userId: profile?.user_id || '',
   });
 
   const isModalFeatureEnabeld = isFeatureEnabled(
     EFeatureFlag.CompleteProfileModal,
-    selfLearingFeatures
+    selfLearningFeatures
   );
 
   const formik = useFormik<TProfileFormValues>({

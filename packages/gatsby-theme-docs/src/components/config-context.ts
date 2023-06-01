@@ -10,7 +10,7 @@ export type Config = {
   auth0Domain: string;
   auth0ClientId: string;
   hideLogin: boolean;
-  selfLearingFeatures: Array<EFeatureFlag>;
+  selfLearningFeatures: Array<EFeatureFlag>;
 };
 
 const ConfigContext = createContext<Config>({
@@ -18,7 +18,7 @@ const ConfigContext = createContext<Config>({
   auth0Domain: '',
   auth0ClientId: '',
   hideLogin: false,
-  selfLearingFeatures: [],
+  selfLearningFeatures: [],
 });
 
 export const isFeatureEnabled = (

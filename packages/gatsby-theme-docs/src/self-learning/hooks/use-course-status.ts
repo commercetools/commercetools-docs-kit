@@ -35,14 +35,14 @@ export const useFetchCourses = (): {
   error: string | undefined;
   isLoading: boolean;
 } => {
-  const { learnApiBaseUrl, selfLearingFeatures } = useContext(ConfigContext);
+  const { learnApiBaseUrl, selfLearningFeatures } = useContext(ConfigContext);
   const { isAuthenticated } = useAuth0();
   const { getAuthToken } = useAuthToken();
   const apiEndpoint = `/api/courses`;
 
   // fetch data only if course status feature flag is true and the user is logged in
   const shouldFetchData =
-    isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearingFeatures) &&
+    isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearningFeatures) &&
     isAuthenticated;
 
   const { data, error, isLoading } = useSWR(

@@ -22,6 +22,7 @@ const config = {
       learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
       hideLogin: true,
       additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
+      addOns: ['@commercetools-docs/gatsby-theme-code-examples'],
     }),
   ],
 };
