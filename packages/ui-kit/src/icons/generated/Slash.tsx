@@ -2,14 +2,14 @@ import * as React from 'react';
 import { SVGProps } from 'react';
 const SvgSlash = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    viewBox="0 0 16 16"
+    xmlns="http://www.w3.org/2000/svg"
     width={16}
     height={16}
-    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
     {...props}
   >
     <g fill="none" fillRule="evenodd">
-      <rect stroke="#CCC" x={0.5} y={0.5} width={15} height={15} rx={2} />
+      <rect width={15} height={15} x={0.5} y={0.5} stroke="#CCC" rx={2} />
       <path
         fill="#999"
         fillRule="nonzero"

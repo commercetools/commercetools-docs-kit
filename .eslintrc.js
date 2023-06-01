@@ -33,5 +33,7 @@ module.exports = {
         graphql: 'always',
       },
     ],
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off',
   },
 };

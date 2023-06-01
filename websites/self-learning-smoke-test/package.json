@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-docs": "21.5.0",
-    "@commercetools-docs/gatsby-theme-learning": "21.5.0",
     "@commercetools-docs/gatsby-theme-sso-ui-kit": "21.5.0",
     "@commercetools-docs/ui-kit": "21.5.0",
     "@commercetools-uikit/icons": "16.0.0",

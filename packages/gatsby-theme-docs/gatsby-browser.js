@@ -8,6 +8,7 @@
 import React from 'react';
 import Prism from 'prism-react-renderer/prism';
 import { CacheProvider } from '@emotion/react';
+import { SWRConfig } from 'swr';
 import { docsCache } from './utils/create-emotion-cache';
 import { PortalsContainer } from '@commercetools-docs/ui-kit';
 import * as Sentry from '@sentry/browser';
@@ -18,6 +19,8 @@ import '@fontsource/roboto-mono/latin-400.css';
 import '@fontsource/roboto-mono/latin-500.css';
 import '@fontsource/roboto-mono/latin-700.css';
 import './globals.css';
+import ConfigContext from './src/self-learning/components/config-context';
+import { LearningStateProvider } from './src/self-learning/components/learning-context';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_VERCEL_GITHUB_COMMIT_SHA;
@@ -91,8 +94,20 @@ export const onClientEntry = async (
   focusMainContent();
 };
 
-export const wrapRootElement = ({ element }) => (
-  <CacheProvider value={docsCache}>{element}</CacheProvider>
+export const wrapRootElement = ({ element }, pluginOptions) => (
+  <CacheProvider value={docsCache}>
+    <ConfigContext.Provider
+      value={{
+        learnApiBaseUrl: pluginOptions.learnApiBaseUrl,
+        auth0Domain: pluginOptions.auth0Domain,
+        features: pluginOptions?.features || [],
+      }}
+    >
+      <LearningStateProvider>
+        <SWRConfig>{element}</SWRConfig>
+      </LearningStateProvider>
+    </ConfigContext.Provider>
+  </CacheProvider>
 );
 
 export const wrapPageElement = ({ element }) => {

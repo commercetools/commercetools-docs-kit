@@ -16,15 +16,10 @@ const config = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'self-learning-smoke-test',
+      auth0Domain: 'auth.id.commercetools.com',
+      learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
+      features: ['status-indicator', 'complete-profile-modal'],
       addOns: [
-        {
-          resolve: '@commercetools-docs/gatsby-theme-learning',
-          options: {
-            auth0Domain: 'auth.id.commercetools.com',
-            learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
-            features: ['status-indicator', 'complete-profile-modal'],
-          },
-        },
         {
           resolve: '@commercetools-docs/gatsby-theme-sso-ui-kit',
           options: {

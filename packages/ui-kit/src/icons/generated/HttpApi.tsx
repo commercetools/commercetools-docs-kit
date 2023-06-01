@@ -2,10 +2,10 @@ import * as React from 'react';
 import { SVGProps } from 'react';
 const SvgHttpApi = (props: SVGProps<SVGSVGElement>) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={80}
     height={80}
     viewBox="0 0 80 80"
-    xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
     <g fill="#003037" fillRule="nonzero">
