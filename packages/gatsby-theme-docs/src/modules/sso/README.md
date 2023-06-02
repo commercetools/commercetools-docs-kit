@@ -11,9 +11,8 @@ The module depends on some configuration properties passed to the `gatsby-theme-
 
 - `auth0Domain`: the auth0 application domain url (it is defined in the auth0 management app)
 - `auth0ClientId`: the auth0 client id (it is defined in the auth0 management app)
-- `selfLearningFeatures`: an array of strings representing feature flags used to enable/disable specific functionalities. Expected values:
-  - `status-indicator`: feature flag to toggle the course and topics status indicator.
-  - `complete-profile-modal`: feature flag to toggle the complete profile modal window functionality
+- `learnApiBaseUrl`: the learn API base url. It can be omitted if the host running the site matches the api host.
+- `hideLogin` (optional defaulting to false): Hides the login information in the top right area of the site
 
 ## Components
 
