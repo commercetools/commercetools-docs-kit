@@ -58,8 +58,14 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
   const { isModalOpen, openModal, closeModal } = useModalState();
   const { data } = useFetchCourseDetails(props.courseId);
   const { isClientSide } = useIsClientSide();
+  const [goToUrl, setGoToUrl] = useState<string>('/');
   const courseInfo = useOrderedCoursesInfo();
-  const goToUrl = getNextUnfinishedCoursePath(courseInfo, props.courseId);
+
+  useEffect(() => {
+    if (courseInfo) {
+      setGoToUrl(getNextUnfinishedCoursePath(courseInfo, props.courseId));
+    }
+  }, [courseInfo, props.courseId]);
 
   useEffect(() => {
     if (goToUrl === '/') {
@@ -93,7 +99,6 @@ const CourseCompleteModal = (props: CourseCompleteModalProps) => {
 
   const onConfirmHandler = (e: SyntheticEvent<Element, Event>) => {
     e.preventDefault();
-    const goToUrl = getNextUnfinishedCoursePath(courseInfo, props.courseId);
     closeModal();
     navigate(goToUrl);
   };

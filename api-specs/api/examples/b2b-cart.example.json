@@ -105,6 +105,6 @@
   "origin": "Customer",
   "shipping": [],
   "shippingMode": "Single",
-  "itemShippingAddresses" : [],
+  "itemShippingAddresses": [],
   "directDiscounts": []
 }

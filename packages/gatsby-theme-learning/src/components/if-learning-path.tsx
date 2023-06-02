@@ -15,33 +15,33 @@ type IfLearningPathCompleteProps = {
 };
 
 export const IfLearningPathComplete = (props: IfLearningPathCompleteProps) => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const courseInfo = useOrderedCoursesInfo();
   useEffect(() => {
-    if (isAuthenticated && courseInfo) {
+    if (!isLoading && isAuthenticated && courseInfo) {
       const incompleteCourse = courseInfo.find(
         (course) => course.status !== 'completed'
       );
       !incompleteCourse ? setIsVisible(true) : setIsVisible(false);
     }
-  }, [isAuthenticated, courseInfo]);
+  }, [isAuthenticated, courseInfo, isLoading]);
   return isAuthenticated && isVisible ? content(props.children) : null;
 };
 
 export const IfLearningPathNotComplete = (
   props: IfLearningPathCompleteProps
 ) => {
-  const { isAuthenticated } = useAuth0();
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const { isAuthenticated, isLoading } = useAuth0();
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const courseInfo = useOrderedCoursesInfo();
   useEffect(() => {
-    if (isAuthenticated && courseInfo) {
+    if (!isLoading && isAuthenticated && courseInfo) {
       const incompleteCourse = courseInfo.find(
         (course) => course.status !== 'completed'
       );
       !incompleteCourse ? setIsVisible(false) : setIsVisible(true);
     }
-  }, [isAuthenticated, courseInfo]);
+  }, [isAuthenticated, courseInfo, isLoading]);
   return isAuthenticated && isVisible ? content(props.children) : null;
 };
