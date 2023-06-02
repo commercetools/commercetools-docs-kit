@@ -20,7 +20,7 @@ import {
   SidebarCourseStatus,
   SidebarTopicStatus,
   useCourseInfoByPageSlugs,
-} from '../../self-learning';
+} from '../../modules/self-learning';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 

@@ -1,33 +1,19 @@
----
-title: Learning Plugin
----
+# self-learning module
 
-# commercetools learning gatsby plugin
+This module is providing UI components and helper utilities to integrate self-learning functionality
+into other React User interfaces.
 
-A gatsby theme plugins providing UI components and helper utilities to integrate self-learning functionality.
-
-Works against commercetools' learning-api, which is not a part of this open source project.
+Works against the learning-api.
 
 ## Configuration
 
-`gatsby-theme-learning` plugin expects the following parameters and also needs the [`gatsby-theme-sso-ui-kit`](../configuration/sso)
+The module depends on some configuration properties passed to the `gatsby-theme-docs` gatsby plugin, in details:
 
 - `auth0Domain`: the auth0 application domain url (it is defined in the auth0 management app)
 - `learnApiBaseUrl`: the learn API base url. It can be omitted if the host running the site matches the api host.
-- `features`: an array of strings representing feature flags used to toggle specific functionalities. Expected values:
-  - `status-indicator`: feature flag to toggle the course status indicator.
-
-In order to enable the plugin, the following configuration should be added to the `gatsby-config.js` plugin section:
-
-```
-{
-    resolve: '@commercetools-docs/gatsby-theme-learning',
-    options: {
-        auth0Domain: 'auth0domain.dummy.tld',
-        learnApiBaseUrl: 'https://api.host.tld',
-    },
-}
-```
+- `selfLearningFeatures`: an array of strings representing feature flags used to enable/disable specific functionalities. Expected values:
+  - `status-indicator`: feature flag to toggle the course and topics status indicator.
+  - `complete-profile-modal`: feature flag to toggle the complete profile modal window functionality
 
 ## Components
 
@@ -74,7 +60,6 @@ The component has the following mandatory props:
 - `duration`: A string giving information about learning path duration
 - `productName`: A string representing the product the learning path is referring to
 
-
 Example
 
 ```md title="you write:" secondaryTheme
@@ -94,19 +79,15 @@ The components have 1 optional prop.
 Examples
 
 ```md title="you write:" secondaryTheme
-
 <IfUserLoggedIn assumeTrue>
  ## Welcome back!
 </IfUserLoggedIn>
-
 ```
 
 ```md title="you write:" secondaryTheme
-
 <IfUserLoggedOut>
  ## Please log in
 </IfUserLoggedOut>
-
 ```
 
 ### FirstName
@@ -116,9 +97,7 @@ This component simply render the first name of the logged in user, if the user i
 Example
 
 ```md title="you write:" secondaryTheme
-
 Hello <FirstName />, welcome back
-
 ```
 
 ### Learing path card with image on the side
@@ -130,7 +109,7 @@ In order to add an image on the side of a learning path card use the following p
   <LearningPathCard title="Overview" duration="1 hour 25 minutes | 7 courses" productName="Composable Commerce"> Description here</LearningPathCard>
   <ImageCard>
 
-  ![learning path](/content/files/file-name.svg)
+![learning path](/content/files/file-name.svg)
 
   </ImageCard>
 </Cards>
@@ -140,21 +119,40 @@ In order to add an image on the side of a learning path card use the following p
 
 These components are used to wrap content that should only be/not be displayed if the user completed the learning path
 
+Examples
+
+```md title="you write:" secondaryTheme
+<IfLearningPathComplete>
+ Congratulations, you completed learning path
+</IfLearningPathComplete>
+```
+
+```md title="you write:" secondaryTheme
+<IfLearningPathNotComplete>
+  Keep learning!
+</IfLearningPathNotComplete>
+```
+
+### LoginButton
+
+The component renders a button that implements the login functionality through auth0.
+
+The component has the following mandatory props:
+
+- `theme`: (`primary` or `secondary`)
+- `label`: The text rendered on the button
+- `icon`: (Optional) Icon component to be rendered in front of the label text
+- `quizId`: (Optional)Refers to the id of a quiz secton on the page causing auto-scroll to that section after login
 
 Examples
 
 ```md title="you write:" secondaryTheme
+import { LoginButton } from '@commercetools-docs/gatsby-theme-docs';
 
-<IfLearningPathComplete>
- Congratulations, you completed learning path
-</IfLearningPathComplete>
-
-```
-
-```md title="you write:" secondaryTheme
-
-<IfLearningPathNotComplete>
-  Keep learning!
-</IfLearningPathNotComplete>
-
+<LoginButton
+theme="primary"
+icon={<UserFilledIcon color="surface"/>}
+label="Log in to start the quiz"
+quizId={`quiz-${props.quizId}`}
+/>
 ```

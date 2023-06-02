@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
-} from '../../components/config-context';
+} from '../../../components/config-context';
 import { useAuth0 } from '@auth0/auth0-react';
 import type {
   ApiCallResult,

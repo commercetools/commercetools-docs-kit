@@ -11,7 +11,7 @@ import { useUpdateUser } from '../hooks/use-update-user';
 import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
-} from '../../components/config-context';
+} from '../../../components/config-context';
 
 export type TProfileFormValues = {
   firstName: string;

@@ -1,50 +1,65 @@
 import { useState, useContext, useCallback } from 'react';
-import { gtagEvent } from '../../sso';
-import ConfigContext from '../../components/config-context';
+import ConfigContext from '../../../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
-import { User } from '@auth0/auth0-react';
-import { MaintenanceModeError, ServiceDownError } from './use-attempt';
+import { useSWRConfig } from 'swr';
 
-type UpdateUserParams = {
-  userId: string;
+type FetchAttemptParams = {
+  courseId: string;
+  quizId: string;
 };
 
-export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
+export class MaintenanceModeError extends Error {
+  constructor(message: string) {
+    super(message);
+    Object.setPrototypeOf(this, MaintenanceModeError.prototype);
+  }
+}
+
+export class ServiceDownError extends Error {
+  constructor(message: string) {
+    super(message);
+    Object.setPrototypeOf(this, MaintenanceModeError.prototype);
+  }
+}
+
+export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
   const { learnApiBaseUrl } = useContext(ConfigContext);
-  const { userId } = updateUserParams;
+  const { courseId, quizId } = fetchAttemptParams;
   const { getAuthToken } = useAuthToken();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>();
   const [data, setData] = useState<QuizAttempt | undefined>();
   const [correlationId, setCorrelationId] = useState<string | undefined>();
+  const { mutate } = useSWRConfig();
 
-  const updateUser = useCallback(
-    async (newUser: User): Promise<Response> => {
-      const apiEndpoint = `${learnApiBaseUrl}/api/users/${userId}`;
+  const getNewAttempt = useCallback(
+    async (forceNew: boolean): Promise<Response> => {
+      const apiEndpoint = `${learnApiBaseUrl}/api/courses/${courseId}/quizzes/${quizId}/attempts?forceNew=${forceNew}`;
       const accessToken = await getAuthToken();
       const data = await fetch(apiEndpoint, {
         method: 'POST',
-        body: JSON.stringify(newUser),
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
         },
         credentials: 'include',
       });
-      gtagEvent('update_userinfo');
       return data;
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [userId, getAuthToken, learnApiBaseUrl]
+    [courseId, getAuthToken, learnApiBaseUrl, quizId]
   );
 
-  const performUpdateUser = useCallback(
-    async (newuser: User) => {
+  const fetchAttempt = useCallback(
+    async (forceNew: boolean) => {
+      const invalidateCache = () => {
+        mutate('/api/courses');
+        mutate(`/api/courses/${courseId}`);
+      };
       try {
         setIsLoading(true);
-        const data = await updateUser(newuser);
+        const data = await getNewAttempt(forceNew);
         const correlationId = data.headers.get('X-Correlation-ID');
         if (correlationId) {
           setCorrelationId(correlationId);
@@ -62,11 +77,12 @@ export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
           }
           throw new Error();
         } else {
+          // we invalidate course status cache as the user might be just being
+          // enrolled into the course so we want fresh course status data to be fetched
+          // see https://github.com/commercetools/commercetools-docs-kit/issues/1644
+          invalidateCache();
           const json = await data.json();
-          if (json?.errors?.length > 0) {
-            throw new Error(json?.errors[0].message);
-          }
-          setData(json.result);
+          setData(json);
         }
       } catch (error) {
         if (
@@ -76,20 +92,20 @@ export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
           console.error(error.message);
           setError(error.message);
         } else {
-          const message = `Error while updating user: ${userId}`;
+          const message = `Error while fetching answers courseId: ${courseId}, quizId: ${quizId}, forceNew: ${forceNew}`;
           console.error(message);
-          setError('Unable to update user');
+          setError('Unable to load quiz');
         }
       } finally {
         setIsLoading(false);
       }
     },
-    [updateUser, userId]
+    [courseId, getNewAttempt, quizId]
   );
 
   return {
-    performUpdateUser,
-    updatedUser: data,
+    fetchAttempt,
+    attempt: data,
     isLoading,
     error,
     correlationId,

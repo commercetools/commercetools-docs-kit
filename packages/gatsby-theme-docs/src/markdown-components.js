@@ -22,7 +22,7 @@ import {
   IfUserLoggedOut,
   Quiz,
   FirstName,
-} from './self-learning';
+} from './modules/self-learning';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components

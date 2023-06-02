@@ -7,7 +7,7 @@ import {
 import ConfigContext, {
   isFeatureEnabled,
   EFeatureFlag,
-} from '../../components/config-context';
+} from '../../../components/config-context';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
