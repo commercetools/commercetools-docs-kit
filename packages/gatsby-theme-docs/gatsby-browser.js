@@ -7,7 +7,9 @@
 
 import React from 'react';
 import Prism from 'prism-react-renderer/prism';
+import { Auth0Provider } from '@auth0/auth0-react';
 import { CacheProvider } from '@emotion/react';
+import { SWRConfig } from 'swr';
 import { docsCache } from './utils/create-emotion-cache';
 import { PortalsContainer } from '@commercetools-docs/ui-kit';
 import * as Sentry from '@sentry/browser';
@@ -18,6 +20,8 @@ import '@fontsource/roboto-mono/latin-400.css';
 import '@fontsource/roboto-mono/latin-500.css';
 import '@fontsource/roboto-mono/latin-700.css';
 import './globals.css';
+import ConfigContext from './src/components/config-context';
+import { LearningStateProvider } from './src/modules/self-learning/components/learning-context';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_VERCEL_GITHUB_COMMIT_SHA;
@@ -91,9 +95,51 @@ export const onClientEntry = async (
   focusMainContent();
 };
 
-export const wrapRootElement = ({ element }) => (
-  <CacheProvider value={docsCache}>{element}</CacheProvider>
-);
+const onRedirectCallback = (appState) => {
+  window.location.replace(appState.returnTo);
+};
+
+export const wrapRootElement = ({ element }, pluginOptions) => {
+  const isSSOEnabled = pluginOptions.auth0Domain && pluginOptions.auth0ClientId;
+  const audience =
+    isSSOEnabled && pluginOptions.auth0Domain === 'auth.id.commercetools.com'
+      ? 'commercetools.eu.auth0.com'
+      : pluginOptions.auth0Domain;
+  return (
+    <CacheProvider value={docsCache}>
+      <ConfigContext.Provider
+        value={{
+          learnApiBaseUrl: pluginOptions.learnApiBaseUrl,
+          auth0Domain: pluginOptions.auth0Domain,
+          auth0ClientId: pluginOptions.auth0ClientId,
+          selfLearningFeatures: pluginOptions?.selfLearningFeatures || [],
+          hideLogin: pluginOptions?.hideLogin || false,
+        }}
+      >
+        {isSSOEnabled ? (
+          <Auth0Provider
+            domain={pluginOptions.auth0Domain}
+            clientId={pluginOptions.auth0ClientId}
+            onRedirectCallback={onRedirectCallback}
+            authorizationParams={{
+              redirect_uri: window.location.origin,
+              audience: `https://${audience}/api/v2/`,
+              scope: 'profile email',
+            }}
+          >
+            <LearningStateProvider>
+              <SWRConfig>{element}</SWRConfig>
+            </LearningStateProvider>
+          </Auth0Provider>
+        ) : (
+          <LearningStateProvider>
+            <SWRConfig>{element}</SWRConfig>
+          </LearningStateProvider>
+        )}
+      </ConfigContext.Provider>
+    </CacheProvider>
+  );
+};
 
 export const wrapPageElement = ({ element }) => {
   return (

@@ -25,7 +25,7 @@ import PageReadTime from './internals/page-read-time-estimation';
 import {
   CourseCompleteModal,
   useCourseInfoByPageSlugs,
-} from '@commercetools-docs/gatsby-theme-learning';
+} from '../modules/self-learning';
 
 const LayoutContent = (props) => {
   const courseInfo = useCourseInfoByPageSlugs([props.pageContext.slug]);

@@ -1,42 +1,42 @@
 import * as React from 'react';
 const SvgCardBannerOss = (props) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
     width={324}
     height={80}
     viewBox="0 0 324 80"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
     {...props}
   >
     <defs>
       <linearGradient
-        x1="0%"
-        y1="50.692%"
-        x2="100%"
-        y2="49.459%"
         id="card-banner-oss_svg__e"
+        x1="0%"
+        x2="100%"
+        y1="50.692%"
+        y2="49.459%"
       >
-        <stop stopColor="#0087EB" offset="0%" />
-        <stop stopColor="#6BBFFF" offset="100%" />
+        <stop offset="0%" stopColor="#0087EB" />
+        <stop offset="100%" stopColor="#6BBFFF" />
       </linearGradient>
       <filter
-        x="-.7%"
-        y="-6%"
+        id="card-banner-oss_svg__b"
         width="101.4%"
         height="112%"
+        x="-.7%"
+        y="-6%"
         filterUnits="objectBoundingBox"
-        id="card-banner-oss_svg__b"
       >
         <feOffset dy={2} in="SourceAlpha" result="shadowOffsetOuter1" />
         <feGaussianBlur
-          stdDeviation={2}
           in="shadowOffsetOuter1"
           result="shadowBlurOuter1"
+          stdDeviation={2}
         />
         <feColorMatrix
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"
           in="shadowBlurOuter1"
           result="shadowMatrixOuter1"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"
         />
         <feMerge>
           <feMergeNode in="shadowMatrixOuter1" />
@@ -45,10 +45,10 @@ const SvgCardBannerOss = (props) => (
       </filter>
       <rect
         id="card-banner-oss_svg__a"
-        x={0}
-        y={0}
         width={324}
         height={80}
+        x={0}
+        y={0}
         rx={6}
       />
       <path id="card-banner-oss_svg__d" d="M0 0h1700v200H0z" />
@@ -57,7 +57,7 @@ const SvgCardBannerOss = (props) => (
       <mask id="card-banner-oss_svg__c" fill="#fff">
         <use xlinkHref="#card-banner-oss_svg__a" />
       </mask>
-      <use fill="#078CDF" xlinkHref="#card-banner-oss_svg__a" />
+      <use xlinkHref="#card-banner-oss_svg__a" fill="#078CDF" />
       <g
         filter="url(#card-banner-oss_svg__b)"
         mask="url(#card-banner-oss_svg__c)"
@@ -67,8 +67,8 @@ const SvgCardBannerOss = (props) => (
             <use xlinkHref="#card-banner-oss_svg__d" />
           </mask>
           <use
-            fill="url(#card-banner-oss_svg__e)"
             xlinkHref="#card-banner-oss_svg__d"
+            fill="url(#card-banner-oss_svg__e)"
           />
           <g fill="#FFF" mask="url(#card-banner-oss_svg__f)">
             <path d="m1032.527 164.585-41.365-20.555-.162.333L1032.527 165l.081-.04L1074 144.334l-.162-.334zM1033.1 219h.8v-54h-.8zM973.447 162.04 932 182.314v54.37l.102.05L973.527 257l18.663-9.128v-27.1l22.81-11.158v-27.328l-.102-.05L973.528 162l-.081.04Zm-41.08 74.418v-53.916l41.16-20.136 41.106 20.107v26.874l-22.81 11.158v27.1l-18.296 8.95-41.16-20.137Z" />

@@ -23,6 +23,9 @@ import iconLightDigestRaw from '!!raw-loader!./static/favicon-light-32x32.png';
 // included because they are one-off pages. Markdown overrides are included via the content page template.
 import contentTemplate from './src/templates/page-content';
 import releaseNoteTemplate from './src/templates/release-notes-detail';
+import ConfigContext from './src/components/config-context';
+import { LearningStateProvider } from './src/modules/self-learning/components/learning-context';
+
 // eslint-disable-next-line no-unused-vars
 const doSomethingFakeWithTheImports = [contentTemplate, releaseNoteTemplate];
 
@@ -98,5 +101,21 @@ export const wrapPageElement = ({ element }) => {
       <PortalsContainer />
       {element}
     </>
+  );
+};
+
+export const wrapRootElement = ({ element }, pluginOptions) => {
+  return (
+    <ConfigContext.Provider
+      value={{
+        learnApiBaseUrl: pluginOptions.learnApiBaseUrl,
+        auth0Domain: pluginOptions.auth0Domain,
+        selfLearningFeatures: pluginOptions?.selfLearningFeatures || [],
+        auth0ClientId: pluginOptions?.auth0ClientId,
+        hideLogin: pluginOptions?.hideLogin || false,
+      }}
+    >
+      <LearningStateProvider>{element}</LearningStateProvider>
+    </ConfigContext.Provider>
   );
 };

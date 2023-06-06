@@ -15,6 +15,14 @@ import {
   Glossary,
   VideoPlayer,
 } from './components';
+import {
+  IfLearningPathComplete,
+  IfLearningPathNotComplete,
+  IfUserLoggedIn,
+  IfUserLoggedOut,
+  Quiz,
+  FirstName,
+} from './modules/self-learning';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components
@@ -72,6 +80,12 @@ const components = {
   MultiCodeBlock: MultiCodeBlockMarkdownWrapper,
   Glossary,
   Video: VideoPlayer,
+  IfLearningPathComplete,
+  IfLearningPathNotComplete,
+  IfUserLoggedIn,
+  IfUserLoggedOut,
+  Quiz,
+  FirstName,
   // Custom React components that can be injected from each website
   // See ../overrides/README.md
   ...placeholderMarkdownComponents,

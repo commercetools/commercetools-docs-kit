@@ -31,6 +31,18 @@ The Docs-Kit theme also receives its plugin configuration through this standard 
 
 - `enableCanonicalUrls` (_optional_): indicates that the website should use canonical URLs, pointing to the `docs.commercetools.com` domain. **Default: `true`**
 
+- `auth0Domain` (_optional_): Needed if `sso` or `self-learning` modules are used. Indicates the **auth0 application domain url** (it is defined in the auth0 management app)
+
+- `auth0ClientId` (_optional_): Needed if `sso` or `self-learning` modules are used. Indicates the **auth0 client id** (it is defined in the auth0 management app)
+
+- `hideLogin` (_optional_): It's used only when the `sso` module is used. If defined and set to `true` it will hide the login information area in the top right corner of the site. **Default: `false`**
+
+- `learnApiBaseUrl` (_optional_): Needed if `self-learning` module is used. Indicates the the **learn API** base url. It can be omitted if the host running the site matches the api host.
+
+- `selfLearningFeatures` (_optional_, Array): Needed if `self-learning` module is used. An array of strings indicating feature flags to toggle specific functionalities. Expected values:
+  - `status-indicator`: feature flag to toggle the course and topics status indicator.
+  - `complete-profile-modal`: feature flag to toggle the complete profile modal window functionality
+
 ## Available Options for the Site Metadata
 
 - `title` (**required**, string): Defines the title of the website.

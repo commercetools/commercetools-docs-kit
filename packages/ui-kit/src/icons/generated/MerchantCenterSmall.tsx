@@ -2,10 +2,10 @@ import * as React from 'react';
 import { SVGProps } from 'react';
 const SvgMerchantCenterSmall = (props: SVGProps<SVGSVGElement>) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={25}
     height={25}
     viewBox="0 0 25 25"
-    xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
     <g fill="none" fillRule="evenodd">
