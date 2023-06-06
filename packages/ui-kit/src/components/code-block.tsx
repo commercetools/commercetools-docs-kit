@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import Highlight, { type Language, defaultProps } from 'prism-react-renderer';
+import { Highlight, Prism } from 'prism-react-renderer';
 import {
   colors,
   dimensions,
@@ -16,6 +16,7 @@ import {
 import themePrimary from '../prism-themes/commercetools';
 import themeSecondary from '../prism-themes/commercetoolsLight';
 import copyToClipboard from '../utils/copy-to-clipboard';
+import useIsClientSide from '@commercetools-docs/gatsby-theme-docs/src/hooks/use-is-client-side';
 
 type CodeBlockProps = {
   isMulti?: boolean;
@@ -197,7 +198,7 @@ const getLineStyles = (options: {
  * yarn start
  * ```
  */
-const languageAliases: { [key: string]: Language } = {
+const languageAliases: { [key: string]: string } = {
   sh: 'bash',
   zsh: 'bash',
   console: 'bash',
@@ -210,7 +211,9 @@ const languageAliases: { [key: string]: Language } = {
 const CodeBlock = (props: CodeBlockProps) => {
   const languageCode = props.language || 'text';
   const language = languageAliases[languageCode] || languageCode;
+  console.log('language', language);
   const isCommandLine = ['terminal', 'console'].includes(languageCode);
+  const { isClientSide } = useIsClientSide();
 
   // Copy to clipboard logic
   const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
@@ -225,7 +228,7 @@ const CodeBlock = (props: CodeBlockProps) => {
 
   return (
     <Highlight
-      {...defaultProps}
+      prism={isClientSide ? window.Prism : Prism}
       code={props.content}
       language={language}
       theme={props.secondaryTheme ? themeSecondary : themePrimary}

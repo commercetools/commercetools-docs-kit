@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import Prism from 'prism-react-renderer/prism';
+import { Prism } from 'prism-react-renderer';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { CacheProvider } from '@emotion/react';
 import { SWRConfig } from 'swr';
@@ -86,6 +86,7 @@ export const onClientEntry = async (
   window.Prism = Prism;
   const additionalPrismLanguages = pluginOptions.additionalPrismLanguages || [];
   // Use a for-loop to run dynamic imports sequentially.
+  await import(`prismjs/components/prism-markup-templating`);
   for (let index = 0; index < additionalPrismLanguages.length; index++) {
     const lang = additionalPrismLanguages[index];
     await import(`prismjs/components/prism-${lang}`);

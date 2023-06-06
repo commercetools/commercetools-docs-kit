@@ -1,6 +1,6 @@
-import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight';
+import { themes } from 'prism-react-renderer';
 
-const commercetoolsLightTheme = { ...nightOwlLight };
+const commercetoolsLightTheme = { ...themes.nightOwlLight };
 
 // Goal: Optimize JSON, leave others alone.
 // variations:
