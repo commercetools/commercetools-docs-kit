@@ -1,5 +1,4 @@
 ---
-'@commercetools-docs/gatsby-theme-learning': minor
 '@commercetools-docs/ui-kit': minor
 ---
 
