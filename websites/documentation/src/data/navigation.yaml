@@ -49,8 +49,6 @@
       path: /configuration/extensions
     - title: Plugins
       path: /configuration/plugins
-    - title: commercetools ID SSO Plugin
-      path: /configuration/sso
     - title: Packages
       path: /configuration/packages
     - title: Custom Components
