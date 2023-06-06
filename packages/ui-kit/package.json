@@ -62,7 +62,7 @@
     "unist-util-filter": "4.0.1"
   },
   "devDependencies": {
-    "@svgr/cli": "7.0.0",
+    "@svgr/cli": "8.0.1",
     "@types/lodash.omitby": "4.6.7",
     "@types/raf-schd": "^4.0.1",
     "@types/react": "18.0.28",
