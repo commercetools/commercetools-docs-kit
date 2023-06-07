@@ -7,6 +7,7 @@ const esmModules = [
   'mdast-util-definitions',
   'mdast-util-from-markdown',
   'mdast-util-frontmatter',
+  'mdast-util-to-string',
   'micromark',
   'rehype-react',
   'remark-frontmatter',
