@@ -3037,7 +3037,7 @@ __metadata:
     "@emotion/server": ^11.10.0
     "@emotion/styled": ^11.10.5
     "@fontsource/roboto": 5.0.2
-    "@fontsource/roboto-mono": 4.5.10
+    "@fontsource/roboto-mono": 5.0.2
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
     "@sentry/browser": 7.44.2
@@ -5363,10 +5363,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/roboto-mono@npm:4.5.10":
-  version: 4.5.10
-  resolution: "@fontsource/roboto-mono@npm:4.5.10"
-  checksum: 5f47ea4a6b9eff6743f1e45a44ac1bc8542bd8224d4ff2d866a7c04a2bcddba1e3dcb6a0feddf63c5f799c65589f485cbbb1a6acbafa91a9579b759441369ba7
+"@fontsource/roboto-mono@npm:5.0.2":
+  version: 5.0.2
+  resolution: "@fontsource/roboto-mono@npm:5.0.2"
+  checksum: 3a1b0b648b7e67399d4fb898d3a7815b513cb348e854570f3f363ede2dbf613bff96b67bd45399a223ffa0fd90cce9ee11c34f25d673b67dbcade6a201bdd3b6
   languageName: node
   linkType: hard
 
