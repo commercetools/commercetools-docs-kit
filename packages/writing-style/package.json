@@ -29,6 +29,6 @@
     "shelljs": "0.8.5"
   },
   "devDependencies": {
-    "prettier": "2.8.6"
+    "prettier": "2.8.8"
   }
 }
