@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.3.6
+
+### Patch Changes
+
+- [#1708](https://github.com/commercetools/commercetools-docs-kit/pull/1708) [`c2b2e829`](https://github.com/commercetools/commercetools-docs-kit/commit/c2b2e829bfaf17b0bcbf972e9ced772a444b0330) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Update all dependencies
+
 ## 3.3.5
 
 ### Patch Changes
