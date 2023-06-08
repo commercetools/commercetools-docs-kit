@@ -83,10 +83,9 @@ export const onClientEntry = async (
 
   // Require additional Prism languages.
   // Inspired by https://github.com/facebook/docusaurus/pull/2250.
-  window.Prism = Prism;
   const additionalPrismLanguages = pluginOptions.additionalPrismLanguages || [];
+  (typeof global !== 'undefined' ? global : window).Prism = Prism;
   // Use a for-loop to run dynamic imports sequentially.
-  await import(`prismjs/components/prism-markup-templating`);
   for (let index = 0; index < additionalPrismLanguages.length; index++) {
     const lang = additionalPrismLanguages[index];
     await import(`prismjs/components/prism-${lang}`);

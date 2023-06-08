@@ -19,7 +19,7 @@ const config = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'docs-smoke-test',
-      additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
+      additionalPrismLanguages: ['markup-templating', 'json', 'java', 'scala', 'csharp', 'swift', 'php'],
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
         '@commercetools-docs/gatsby-theme-constants'
