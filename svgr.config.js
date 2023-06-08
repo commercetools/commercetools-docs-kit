@@ -1,9 +1,9 @@
 /* eslint-disable global-require */
-const path = require('path');
+const nodePath = require('path');
 
-const indexTemplate = (filePaths) => {
-  const exportEntries = filePaths.map((filePath) => {
-    const basename = path.basename(filePath, path.extname(filePath));
+const indexTemplate = (fileInfo) => {
+  const exportEntries = fileInfo.map(({ path }) => {
+    const basename = nodePath.basename(path, nodePath.extname(path));
     const exportName = `${basename}SvgIcon`;
     return `export { default as ${exportName} } from './${basename}'`;
   });

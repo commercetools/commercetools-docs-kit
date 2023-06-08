@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/docs-smoke-test",
-  "version": "7.4.4",
+  "version": "8.0.0",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -16,19 +16,19 @@
     "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-code-examples": "21.5.0",
-    "@commercetools-docs/gatsby-theme-constants": "21.5.0",
-    "@commercetools-docs/gatsby-theme-docs": "21.5.0",
-    "@commercetools-docs/ui-kit": "21.5.0",
+    "@commercetools-docs/gatsby-theme-code-examples": "22.0.0",
+    "@commercetools-docs/gatsby-theme-constants": "22.0.0",
+    "@commercetools-docs/gatsby-theme-docs": "22.0.0",
+    "@commercetools-docs/ui-kit": "22.0.0",
     "@commercetools-uikit/icons": "16.2.0",
     "@commercetools-uikit/radio-input": "16.2.0",
-    "gatsby": "5.8.0",
-    "gatsby-cli": "5.8.0",
+    "gatsby": "5.10.0",
+    "gatsby-cli": "5.10.0",
     "process-top": "^1.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@svgr/cli": "7.0.0"
+    "@svgr/cli": "8.0.1"
   }
 }

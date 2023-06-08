@@ -299,6 +299,7 @@ const CodeBlock = (props: CodeBlockProps) => {
                 placement="left"
                 title={isCopiedToClipboard ? 'Copied' : 'Copy to clipboard'}
                 components={{
+                  // @ts-ignore
                   TooltipWrapperComponent,
                   BodyComponent: TooltipBodyComponent,
                 }}

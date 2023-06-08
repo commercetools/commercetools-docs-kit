@@ -1,5 +1,25 @@
 # @commercetools-docs/ui-kit
 
+## 22.0.0
+
+### Major Changes
+
+- [#1696](https://github.com/commercetools/commercetools-docs-kit/pull/1696) [`25bf7b9a`](https://github.com/commercetools/commercetools-docs-kit/commit/25bf7b9abc450ed103eb2695c448e2e44b6346e8) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Merge gatsby-theme-learning and gatby-theme-sso-ui-kit into gatsby-theme-docs package
+
+  A config change to any sites using gatsby-theme-learning or gatby-theme-sso-ui-kit packages is needed. The configuration parameters for these 2 packages are moved to the gatsby-theme-docs packages.
+
+### Minor Changes
+
+- [#1691](https://github.com/commercetools/commercetools-docs-kit/pull/1691) [`44f72987`](https://github.com/commercetools/commercetools-docs-kit/commit/44f72987710098ebddfb59a60d98e125b804bb22) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - e2e refactor and cleanup task added
+
+### Patch Changes
+
+- [#1691](https://github.com/commercetools/commercetools-docs-kit/pull/1691) [`44f72987`](https://github.com/commercetools/commercetools-docs-kit/commit/44f72987710098ebddfb59a60d98e125b804bb22) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Implemented e2e coverage for self-learning scenarios
+
+- [#1708](https://github.com/commercetools/commercetools-docs-kit/pull/1708) [`c2b2e829`](https://github.com/commercetools/commercetools-docs-kit/commit/c2b2e829bfaf17b0bcbf972e9ced772a444b0330) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Update all dependencies
+
+- [#1701](https://github.com/commercetools/commercetools-docs-kit/pull/1701) [`a7f75b0f`](https://github.com/commercetools/commercetools-docs-kit/commit/a7f75b0f6de720d0df9bf0395f711e0aeabfd7d4) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - svgr dependencies update
+
 ## 21.5.0
 
 ### Minor Changes
