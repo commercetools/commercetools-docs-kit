@@ -21,7 +21,7 @@ const config = {
       auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
       learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
       hideLogin: true,
-      additionalPrismLanguages: ['markup-templating', 'json', 'java', 'scala', 'csharp', 'swift', 'php'],
+      additionalPrismLanguages: ['markup-templating', 'json', 'bash', 'java', 'scala', 'csharp', 'swift', 'php'],
       addOns: ['@commercetools-docs/gatsby-theme-code-examples'],
     }),
   ],
