@@ -31,7 +31,7 @@ const LoginButton = (props: LoginButtonProps) => {
   if (props.theme === 'primary') {
     return (
       <PrimaryButton
-        data-test-id="login-quiz-button"
+        data-testid="login-quiz-button"
         onClick={() => {
           gtagEvent('login');
           loginWithRedirect({

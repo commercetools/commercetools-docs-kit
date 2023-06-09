@@ -33,7 +33,8 @@ export const StatusIndicator = (props: StatusIndicatorProps) => {
     case 'completed':
       return (
         <CheckActiveIcon
-          data-test-id="checkActive"
+          data-testid="topic-status-checkActive"
+          data-test-topic-loaded={true}
           color="primary"
           size="medium"
         />
@@ -42,10 +43,20 @@ export const StatusIndicator = (props: StatusIndicatorProps) => {
     case 'notAvailable':
     case 'isLoading':
       return (
-        <CircleIcon data-test-id="circle" color="neutral60" size="medium" />
+        <CircleIcon
+          data-testid="topic-status-circle"
+          data-test-topic-loaded={props.status !== 'isLoading'}
+          color="neutral60"
+          size="medium"
+        />
       );
     default:
-      return <UnknownStateSpacer />;
+      return (
+        <UnknownStateSpacer
+          data-testid="topic-status-default"
+          data-test-topic-loaded={props.status && props.status !== 'isLoading'}
+        />
+      );
   }
 };
 

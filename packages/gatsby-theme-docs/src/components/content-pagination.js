@@ -67,7 +67,7 @@ const PaginationLink = (props) => (
     align={props.direction === 'left' ? 'right' : 'left'}
   >
     <PaginationButton
-      data-test-id={
+      data-testid={
         props.direction === 'left' ? 'pagination-prev' : 'pagination-next'
       }
       insetScale="s"

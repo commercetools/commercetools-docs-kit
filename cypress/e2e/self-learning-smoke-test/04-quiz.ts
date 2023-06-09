@@ -11,13 +11,13 @@ import { selectQuizAnswers } from '../../support/step_definitions/common.steps';
 import { URL_SELF_LEARNING_SMOKE_TEST } from '../../support/urls';
 
 Given(`The user deselect {string} answers`, (result) => {
-  cy.get(`[data-test-id="${ETestId.quizForm}"] p`).each(($el, index) => {
+  cy.get(`[data-testid="${ETestId.quizForm}"] p`).each(($el, index) => {
     if (
       $el
         .text()
         .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
     ) {
-      cy.get(`[data-test-id="${ETestId.quizForm}"] p`).eq(index).click();
+      cy.get(`[data-testid="${ETestId.quizForm}"] p`).eq(index).click();
     }
   });
 });
@@ -29,7 +29,7 @@ Given(`The user selects {string} answers`, (result: string) => {
 Then('The user sees a {string} ribbon on the quiz section', (feedbackColor) => {
   const hexColor =
     feedbackColor === 'red' ? WRONG_ANSWER_COLOR : CORRECT_ANSWER_COLOR;
-  cy.get(`[data-test-id="${ETestId.quizWrapper}"]`, {
+  cy.get(`[data-testid="${ETestId.quizWrapper}"]`, {
     timeout: QUIZ_LOADING_TIMEOUT,
   }).should('have.css', 'border-left-color', hexColor);
 });
@@ -39,7 +39,7 @@ Given(
   (feedback) => {
     const expectedFeedbackText =
       feedback === 'error' ? WRONG_ANSWER_TEXT : CORRECT_ANSWER_TEXT;
-    cy.get(`[data-test-id="${ETestId.quizQuestionFeedback}"]`).should(
+    cy.get(`[data-testid="${ETestId.quizQuestionFeedback}"]`).should(
       ($items) => {
         expect($items).to.have.length(2);
         expect($items.eq(0)).to.contain(expectedFeedbackText);
@@ -50,13 +50,13 @@ Given(
 );
 
 Given('The user sees a try again button', () => {
-  cy.get(`[data-test-id="${ETestId.tryAgainButton}"]`, {
+  cy.get(`[data-testid="${ETestId.tryAgainButton}"]`, {
     timeout: QUIZ_LOADING_TIMEOUT,
   }).should('exist');
 });
 
 Given("The user doesn't see a try again button", () => {
-  cy.get(`[data-test-id="${ETestId.tryAgainButton}"]`, {
+  cy.get(`[data-testid="${ETestId.tryAgainButton}"]`, {
     timeout: QUIZ_LOADING_TIMEOUT,
   }).should('not.exist');
 });
