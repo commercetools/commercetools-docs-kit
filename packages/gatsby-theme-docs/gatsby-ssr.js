@@ -4,6 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 import React from 'react';
+import { Prism } from 'prism-react-renderer';
 import { renderToString } from 'react-dom/server';
 import { withPrefix } from 'gatsby';
 import { PortalsContainer } from '@commercetools-docs/ui-kit';
@@ -49,12 +50,15 @@ const iconLightDigest = createContentDigest(iconLightDigestRaw);
 const patchedLobotomizedOwlSelector = '> *:not(style) ~ *:not(style)';
 const lobotomizedOwlSelectorRegex = />\s*\*\s*\+\s*\*/g;
 
-export const replaceRenderer = ({
-  bodyComponent,
-  replaceBodyHTMLString,
-  setHeadComponents,
-  setHtmlAttributes,
-}) => {
+export const replaceRenderer = async (
+  {
+    bodyComponent,
+    replaceBodyHTMLString,
+    setHeadComponents,
+    setHtmlAttributes,
+  },
+  pluginOptions
+) => {
   // https://emotion.sh/docs/ssr#on-server
   // https://emotion.sh/docs/ssr#gatsby
   const cache = createDocsCache();
@@ -93,6 +97,17 @@ export const replaceRenderer = ({
       }}
     />,
   ]);
+
+  // Require additional Prism languages.
+  // Inspired by https://github.com/facebook/docusaurus/pull/2250.
+  const additionalPrismLanguages = pluginOptions.additionalPrismLanguages || [];
+  global.Prism = Prism;
+  // Use a for-loop to run dynamic imports sequentially.
+  for (let index = 0; index < additionalPrismLanguages.length; index++) {
+    const lang = additionalPrismLanguages[index];
+    await import(`prismjs/components/prism-${lang}`);
+  }
+  delete global.Prism;
 };
 
 export const wrapPageElement = ({ element }) => {
