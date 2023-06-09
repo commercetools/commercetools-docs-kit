@@ -26,6 +26,7 @@ const config = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'api-docs-smoke-test',
+      additionalPrismLanguages: ['json'],
       colorPreset: colorPresets.apiDeveloperDocs.key,
       addOns: [
         {
