@@ -32,13 +32,11 @@ type StatusIndicatorProps = {
 export const StatusIndicator = (props: StatusIndicatorProps) => {
   switch (props.status) {
     case 'completed':
-      return (
-        <VerifiedIcon data-test-id="verified" color="primary" size="big" />
-      );
+      return <VerifiedIcon data-testid="verified" color="primary" size="big" />;
     case 'inProgress':
     case 'notEnrolled':
     case 'isLoading':
-      return <CircleIcon data-test-id="circle" color="neutral60" size="big" />;
+      return <CircleIcon data-testid="circle" color="neutral60" size="big" />;
     default:
       return <UnknownStateSpacer />;
   }
@@ -47,7 +45,6 @@ export const StatusIndicator = (props: StatusIndicatorProps) => {
 type SidebarCourseStatusProps = {
   courseId: number;
 };
-
 const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   const { isAuthenticated } = useAuth0();
   const { data, isLoading } = useFetchCourses();
@@ -78,7 +75,12 @@ const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   }, [data, props.courseId, isAuthenticated, isLoading]);
 
   return (
-    <span data-test-id={`sidebar-course-status-${props.courseId}`}>
+    <span
+      data-testid={`sidebar-course-status-${props.courseId}`}
+      data-test-course-loaded={
+        courseStatus !== undefined && courseStatus !== 'isLoading'
+      }
+    >
       {props.courseId && <StatusIndicator status={courseStatus} />}
     </span>
   );

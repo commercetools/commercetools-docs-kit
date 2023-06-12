@@ -221,7 +221,7 @@ const Quiz = (props: QuizProps) => {
     !isLoggedIn ? (
       isAuthLoading ? (
         <LoadingSpinner
-          data-test-id="test-loading"
+          data-testid="test-loading"
           scale="l"
           maxDelayDuration={200}
         >
@@ -242,7 +242,7 @@ const Quiz = (props: QuizProps) => {
   return (
     <QuizWrapper
       id={`quiz-${props.quizId}`}
-      data-test-id="quiz-wrapper"
+      data-testid="quiz-wrapper"
       outcome={getQuizOutcome(formAttemptData, isLoading)}
     >
       <QuizArea />

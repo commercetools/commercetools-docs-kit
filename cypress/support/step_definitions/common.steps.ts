@@ -42,21 +42,21 @@ const redirectionStep = (page) => {
 
 export const clickStep = (clickArea) => {
   if (clickArea === 'avatar icon') {
-    cy.get(`div[data-test-id="${ETestId.avatarContainer}"]`).click();
+    cy.get(`div[data-testid="${ETestId.avatarContainer}"]`).click();
   }
   if (clickArea === 'logout button') {
     cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
   }
   if (clickArea === 'login button') {
-    cy.get(`div[data-test-id="${ETestId.loginButton}"]`).click({
+    cy.get(`div[data-testid="${ETestId.loginButton}"]`).click({
       force: true,
     });
   }
   if (clickArea === 'quiz submit button') {
-    cy.get(`[data-test-id="${ETestId.quizFormSubmit}"]`).click();
+    cy.get(`[data-testid="${ETestId.quizFormSubmit}"]`).click();
   }
   if (clickArea === 'try again button') {
-    cy.get(`[data-test-id="${ETestId.tryAgainButton}"]`, {
+    cy.get(`[data-testid="${ETestId.tryAgainButton}"]`, {
       timeout: QUIZ_LOADING_TIMEOUT,
     }).click();
   }
@@ -116,21 +116,21 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
       }
     ).as('fetchAttempt');
   }
-  cy.get(`div[data-test-id="${ETestId.quizWrapper}"]`).scrollIntoView();
-  cy.get(`div[data-test-id="${ETestId.loginButton}"]`).click({
+  cy.get(`div[data-testid="${ETestId.quizWrapper}"]`).scrollIntoView();
+  cy.get(`div[data-testid="${ETestId.loginButton}"]`).click({
     force: true,
   });
   performLogin(username, password);
 
-  cy.get(`[data-test-id="${ETestId.quizWrapper}"]`)
-    .find(`[data-test-id="${ETestId.quizForm}"]`, {
+  cy.get(`[data-testid="${ETestId.quizWrapper}"]`)
+    .find(`[data-testid="${ETestId.quizForm}"]`, {
       timeout: QUIZ_LOADING_TIMEOUT,
     })
     .should('exist');
 };
 
 export const selectQuizAnswers = (result: string) => {
-  cy.get(`[data-test-id="${ETestId.quizForm}"] p`, {
+  cy.get(`[data-testid="${ETestId.quizForm}"] p`, {
     timeout: QUIZ_LOADING_TIMEOUT,
   }).each(($el, index) => {
     if (
@@ -138,7 +138,7 @@ export const selectQuizAnswers = (result: string) => {
         .text()
         .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
     ) {
-      cy.get(`[data-test-id="${ETestId.quizForm}"] p`, {
+      cy.get(`[data-testid="${ETestId.quizForm}"] p`, {
         timeout: QUIZ_LOADING_TIMEOUT,
       })
         .eq(index)
@@ -154,14 +154,14 @@ const completeCourse = (courseFirsPage: string) => {
     .click();
 
   // navigate to first quiz page
-  cy.get('div[data-test-id="pagination-next"]').click();
+  cy.get('div[data-testid="pagination-next"]').click();
 
   // passes first quiz
   selectQuizAnswers('correct');
   clickStep('quiz submit button');
 
   // navigate to second quiz page
-  cy.get('div[data-test-id="pagination-next"]').click();
+  cy.get('div[data-testid="pagination-next"]').click();
 
   // passes second quiz
   selectQuizAnswers('correct');
@@ -188,7 +188,7 @@ Given(`The user logs out`, () => {
 });
 
 Given('The avatar menu is displayed', () => {
-  cy.get(`[data-test-id="${ETestId.avatarContainer}"]`).should('exist');
+  cy.get(`[data-testid="${ETestId.avatarContainer}"]`).should('exist');
 });
 
 When('The user clicks the {string}', clickStep);
@@ -251,4 +251,14 @@ Given('The user completes {string} successfully', (course: string) => {
     default:
       break;
   }
+});
+
+Given('The course status has fully loaded', () => {
+  cy.get('[data-testid^="sidebar-course-status-"]').each(($element) => {
+    cy.wrap($element).should('have.attr', 'data-test-course-loaded', 'true');
+  });
+
+  cy.get('[data-testid^="topic-status-"]').each(($element) => {
+    cy.wrap($element).should('have.attr', 'data-test-topic-loaded', 'true');
+  });
 });
