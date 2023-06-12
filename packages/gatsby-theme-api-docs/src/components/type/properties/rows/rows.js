@@ -18,11 +18,7 @@ const Rows = (props) => {
           <NameType apiKey={props.apiType.apiKey} property={property} />
         </td>
         <td>
-          <Description
-            apiKey={props.apiKey}
-            property={property}
-            discriminatorValue={props.apiType.discriminatorValue}
-          />
+          <Description apiKey={props.apiKey} property={property} />
         </td>
       </tr>
     );

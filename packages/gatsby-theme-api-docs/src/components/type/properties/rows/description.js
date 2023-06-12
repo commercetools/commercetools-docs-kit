@@ -132,7 +132,7 @@ const Description = (props) => {
     );
   }
 
-  const renderEnums = props.property.enumeration && !props.discriminatorValue;
+  const renderEnums = props.property.enumeration;
   return (
     <SpacingsStack scale="s">
       <DescriptionText markdownString={props.property.description} />
@@ -174,7 +174,6 @@ const Description = (props) => {
 Description.propTypes = {
   apiKey: PropTypes.string.isRequired,
   property: PropTypes.object.isRequired,
-  discriminatorValue: PropTypes.string,
 };
 
 function generateAppropriatePrimitiveText(type, value) {
