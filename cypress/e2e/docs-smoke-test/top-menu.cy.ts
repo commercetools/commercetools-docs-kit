@@ -7,7 +7,7 @@ describe('Top menu', () => {
     // before clicking on the top menu.
     cy.visit(URL_DOCS_SMOKE_TEST).get('div[id="sidebar-chapter-1"]');
     cy.findByText('Mermaid Diagrams').click();
-    cy.get('div[data-test-id="mermaid-diagram"]');
+    cy.get('div[data-testid="mermaid-diagram"]');
     cy.findByLabelText('Open Top Menu').click();
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {
@@ -19,7 +19,7 @@ describe('Top menu', () => {
   it('should load mermaid diagram and then toggle top menu after clicking on the search input', () => {
     cy.visit(URL_DOCS_SMOKE_TEST).get('div[id="sidebar-chapter-1"]');
     cy.findByText('Mermaid Diagrams').click();
-    cy.get('div[data-test-id="mermaid-diagram"]');
+    cy.get('div[data-testid="mermaid-diagram"]');
     cy.findByLabelText('Open Top Menu').click();
     cy.findByRole('top-menu').should('be.visible');
     cy.findByRole('top-menu').within(() => {

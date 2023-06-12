@@ -144,7 +144,7 @@ const QuizForm = (props: QuizFormProps) => {
     questionId: string
   ) => {
     return questionType === RENDER_TYPE_SINGLE ? (
-      <SelectionContainer data-test-id="single-choice-container">
+      <SelectionContainer data-testid="single-choice-container">
         <Spacings.Stack scale="m">
           <RadioInput.Group
             hasError={isIncorrectAnswer(
@@ -173,7 +173,7 @@ const QuizForm = (props: QuizFormProps) => {
           </RadioInput.Group>
           {feedback ? (
             <QuestionFeedbackMessage
-              data-test-id="quiz-question-feedback"
+              data-testid="quiz-question-feedback"
               outcome={feedback.outcome}
             >
               {
@@ -188,7 +188,7 @@ const QuizForm = (props: QuizFormProps) => {
       </SelectionContainer>
     ) : (
       <div>
-        <SelectionContainer data-test-id="multiple-choice-container">
+        <SelectionContainer data-testid="multiple-choice-container">
           <Spacings.Stack scale="m">
             <Spacings.Stack scale="m">
               {answers.map((answer) => {
@@ -214,7 +214,7 @@ const QuizForm = (props: QuizFormProps) => {
                       answer.name,
                       formState[questionId] as string[]
                     )}
-                    data-test-id="question-checkbox"
+                    data-testid="question-checkbox"
                   >
                     {
                       // @ts-ignore
@@ -226,7 +226,7 @@ const QuizForm = (props: QuizFormProps) => {
             </Spacings.Stack>
             {feedback ? (
               <QuestionFeedbackMessage
-                data-test-id="quiz-question-feedback"
+                data-testid="quiz-question-feedback"
                 outcome={feedback.outcome}
               >
                 {
@@ -271,7 +271,7 @@ const QuizForm = (props: QuizFormProps) => {
       return (
         <ButtonWrapper>
           <PrimaryButton
-            data-test-id="quiz-form-submit"
+            data-testid="quiz-form-submit"
             label="Submit answers"
             type="submit"
             isDisabled={!hasAnsweredQuestions()}
@@ -286,7 +286,7 @@ const QuizForm = (props: QuizFormProps) => {
       return (
         <ButtonWrapper>
           <SecondaryButton
-            data-test-id="try-again-button"
+            data-testid="try-again-button"
             label="Try again"
             onClick={onRetry}
           />
@@ -303,7 +303,7 @@ const QuizForm = (props: QuizFormProps) => {
       </ContentNotification>
     ) : (
       <form
-        data-test-id="quiz-form"
+        data-testid="quiz-form"
         id={`quiz-form-${props.quizId}`}
         style={{ width: '100%' }}
         onSubmit={onSubmit}
@@ -317,7 +317,7 @@ const QuizForm = (props: QuizFormProps) => {
         >
           {props.quizData?.isSubmitted && props.quizData.feedback?.outcome ? (
             <QuizFeedbackMessageArea
-              data-test-id="quiz-feedback"
+              data-testid="quiz-feedback"
               outcome={props.quizData.feedback.outcome}
             >
               {props.quizData.feedback?.text && (

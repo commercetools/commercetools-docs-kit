@@ -27,21 +27,21 @@ Given(`The user has navigated to a quiz page`, () => {
 Given(`The user {string} logged in`, (loginState) => {
   if (loginState === 'is not') {
     cy.get(`header[id="top"]`)
-      .find(`div[data-test-id="${ETestId.avatarContainer}"]`)
+      .find(`div[data-testid="${ETestId.avatarContainer}"]`)
       .should('not.exist');
   } else if (loginState === 'is') {
     cy.get(`header[id="top"]`)
-      .find(`div[data-test-id="${ETestId.avatarContainer}"]`)
+      .find(`div[data-testid="${ETestId.avatarContainer}"]`)
       .should('exist');
   }
 });
 
 When(`The user scrolls to the quiz area`, () => {
-  cy.get(`div[data-test-id="${ETestId.quizWrapper}"]`).scrollIntoView();
+  cy.get(`div[data-testid="${ETestId.quizWrapper}"]`).scrollIntoView();
 });
 
 Then('The user sees a login button', () => {
-  cy.get(`div[data-test-id="${ETestId.loginButton}"]`).should('exist');
+  cy.get(`div[data-testid="${ETestId.loginButton}"]`).should('exist');
 });
 
 When('The user submits valid auth0 credentials', () => {
@@ -49,12 +49,12 @@ When('The user submits valid auth0 credentials', () => {
 });
 
 Then('The quiz loading icon is displayed', () => {
-  cy.get(`div[data-test-id="${ETestId.quizLoading}"`).should('exist');
+  cy.get(`div[data-testid="${ETestId.quizLoading}"`).should('exist');
 });
 
 Then('The user sees quiz content', () => {
-  cy.get(`[data-test-id="${ETestId.quizWrapper}"]`)
-    .find(`[data-test-id="${ETestId.quizForm}"]`, {
+  cy.get(`[data-testid="${ETestId.quizWrapper}"]`)
+    .find(`[data-testid="${ETestId.quizForm}"]`, {
       timeout: QUIZ_LOADING_TIMEOUT,
     })
     .should('exist');
