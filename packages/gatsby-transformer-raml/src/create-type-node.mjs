@@ -3,10 +3,7 @@ import sortProperties from './utils/sort-properties.mjs';
 import resolveConflictingFieldTypes from './utils/type/resolve-conflicting-field-types.mjs';
 import generateType from './utils/type/generate-type.mjs';
 import generateBuiltinType from './utils/type/generate-built-in-type.mjs';
-import {
-  examplesToArray,
-  resolveExampleFile,
-} from './utils/resource/examples-to-array.mjs';
+import { examplesToArray } from './utils/resource/examples-to-array.mjs';
 
 function createTypeNode({
   apiKey,
@@ -58,11 +55,7 @@ function postProcessType({
     moveTypePropertiesToTop,
     moveTypePropertiesToBottom,
   });
-  postProcessedType.examples = examplesToArray(
-    postProcessedType.examples,
-    fileNode.dir,
-    resolveExampleFile
-  );
+  postProcessedType.examples = examplesToArray(postProcessedType.examples);
   postProcessedType.enumDescriptions = enumValuesToArray(
     postProcessedType.enumDescriptions
   );

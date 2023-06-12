@@ -1,8 +1,8 @@
-import parametersToArray  from "../parameters-to-array.mjs";
-import responsesToArray  from "./responses-to-array.mjs";
-import codeExamplesToArray  from "./code-examples-to-array.mjs";
-import {examplesToArray, resolveExampleFile}  from "./examples-to-array.mjs";
-import sortProperties  from "../sort-properties.mjs";
+import parametersToArray from '../parameters-to-array.mjs';
+import responsesToArray from './responses-to-array.mjs';
+import codeExamplesToArray from './code-examples-to-array.mjs';
+import { examplesToArray } from './examples-to-array.mjs';
+import sortProperties from '../sort-properties.mjs';
 
 function processMethods({
   resource,
@@ -39,9 +39,7 @@ function processMethods({
         returnedMethods[method].responses.forEach((response) => {
           if (response?.body?.applicationjson.examples) {
             response.body.applicationjson.examples = examplesToArray(
-              response.body.applicationjson.examples,
-              fileNode.dir,
-              resolveExampleFile
+              response.body.applicationjson.examples
             );
           }
         });
