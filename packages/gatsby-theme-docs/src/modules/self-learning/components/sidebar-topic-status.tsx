@@ -54,7 +54,9 @@ export const StatusIndicator = (props: StatusIndicatorProps) => {
       return (
         <UnknownStateSpacer
           data-testid="topic-status-default"
-          data-test-topic-loaded={props.status && props.status !== 'isLoading'}
+          data-test-topic-loaded={
+            props.status !== undefined && props.status !== 'isLoading'
+          }
         />
       );
   }

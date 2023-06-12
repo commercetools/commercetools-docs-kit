@@ -77,7 +77,9 @@ const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
   return (
     <span
       data-testid={`sidebar-course-status-${props.courseId}`}
-      data-test-course-loaded={courseStatus && courseStatus !== 'isLoading'}
+      data-test-course-loaded={
+        courseStatus !== undefined && courseStatus !== 'isLoading'
+      }
     >
       {props.courseId && <StatusIndicator status={courseStatus} />}
     </span>
