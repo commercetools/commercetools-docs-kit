@@ -17,8 +17,8 @@
   "dependencies": {
     "@commercetools-docs/gatsby-theme-docs": "22.0.0",
     "@commercetools-docs/ui-kit": "22.0.0",
-    "@commercetools-uikit/icons": "16.2.0",
-    "@commercetools-uikit/radio-input": "16.2.0",
+    "@commercetools-uikit/icons": "16.2.1",
+    "@commercetools-uikit/radio-input": "16.2.1",
     "gatsby": "5.10.0",
     "gatsby-cli": "5.10.0",
     "process-top": "^1.2.0",
