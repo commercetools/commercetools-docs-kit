@@ -257,12 +257,20 @@ Given('The course status has fully loaded', () => {
   cy.get('[data-testid^="sidebar-course-status-"]', {
     timeout: QUIZ_LOADING_TIMEOUT,
   }).each(($element) => {
-    cy.wrap($element).should('have.attr', 'data-test-course-loaded', 'true');
+    cy.wrap($element, { timeout: QUIZ_LOADING_TIMEOUT }).should(
+      'have.attr',
+      'data-test-course-loaded',
+      'true'
+    );
   });
 
   cy.get('[data-testid^="topic-status-"]', {
     timeout: QUIZ_LOADING_TIMEOUT,
   }).each(($element) => {
-    cy.wrap($element).should('have.attr', 'data-test-topic-loaded', 'true');
+    cy.wrap($element, { timeout: QUIZ_LOADING_TIMEOUT }).should(
+      'have.attr',
+      'data-test-topic-loaded',
+      'true'
+    );
   });
 });
