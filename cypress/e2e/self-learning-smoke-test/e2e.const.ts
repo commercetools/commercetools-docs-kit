@@ -20,8 +20,6 @@ export enum ETestId {
   courseTopics = 'sidebar-chapter-item',
 }
 
-export const QUIZ_LOADING_TIMEOUT = 20 * 1000; // 20 seconds
-
 // TEST USER (standard)
 export const TEST_USER_USERNAME = 'test.user+e2e@commercetools.com';
 export const TEST_USER_PASSWORD = 'Qwerty123!';

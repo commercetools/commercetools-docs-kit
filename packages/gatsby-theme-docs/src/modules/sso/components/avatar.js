@@ -51,7 +51,7 @@ UserAvatar.displayName = 'UserAvatar';
 
 const LoggedInState = (props) => {
   return (
-    <AvatarContainer data-test-id="avatar-container">
+    <AvatarContainer data-testid="avatar-container">
       <LogoutButton />
       <UserAvatar userData={props.userData} />
     </AvatarContainer>
@@ -68,7 +68,7 @@ const LoggedOutState = () => {
       <LoginButton
         theme="secondary"
         label="Log in"
-        data-test-id="login-button"
+        data-testid="login-button"
       />
       <PrimaryButton
         onClick={() => {
