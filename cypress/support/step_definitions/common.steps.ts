@@ -3,7 +3,6 @@ import {
   EDITOR_TEST_USER_PASSWORD,
   EDITOR_TEST_USER_USERNAME,
   ETestId,
-  QUIZ_LOADING_TIMEOUT,
   TEST_USER_PASSWORD,
   TEST_USER_USERNAME,
 } from '../../e2e/self-learning-smoke-test/e2e.const';
@@ -56,9 +55,7 @@ export const clickStep = (clickArea) => {
     cy.get(`[data-testid="${ETestId.quizFormSubmit}"]`).click();
   }
   if (clickArea === 'try again button') {
-    cy.get(`[data-testid="${ETestId.tryAgainButton}"]`, {
-      timeout: QUIZ_LOADING_TIMEOUT,
-    }).click();
+    cy.get(`[data-testid="${ETestId.tryAgainButton}"]`).click();
   }
 };
 
@@ -123,26 +120,18 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
   performLogin(username, password);
 
   cy.get(`[data-testid="${ETestId.quizWrapper}"]`)
-    .find(`[data-testid="${ETestId.quizForm}"]`, {
-      timeout: QUIZ_LOADING_TIMEOUT,
-    })
+    .find(`[data-testid="${ETestId.quizForm}"]`)
     .should('exist');
 };
 
 export const selectQuizAnswers = (result: string) => {
-  cy.get(`[data-testid="${ETestId.quizForm}"] p`, {
-    timeout: QUIZ_LOADING_TIMEOUT,
-  }).each(($el, index) => {
+  cy.get(`[data-testid="${ETestId.quizForm}"] p`).each(($el, index) => {
     if (
       $el
         .text()
         .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
     ) {
-      cy.get(`[data-testid="${ETestId.quizForm}"] p`, {
-        timeout: QUIZ_LOADING_TIMEOUT,
-      })
-        .eq(index)
-        .click();
+      cy.get(`[data-testid="${ETestId.quizForm}"] p`).eq(index).click();
     }
   });
 };
@@ -254,15 +243,11 @@ Given('The user completes {string} successfully', (course: string) => {
 });
 
 Given('The course status has fully loaded', () => {
-  cy.get('[data-testid^="sidebar-course-status-"]', {
-    timeout: QUIZ_LOADING_TIMEOUT,
-  }).each(($element) => {
+  cy.get('[data-testid^="sidebar-course-status-"]').each(($element) => {
     cy.wrap($element).should('have.attr', 'data-test-course-loaded', 'true');
   });
 
-  cy.get('[data-testid^="topic-status-"]', {
-    timeout: QUIZ_LOADING_TIMEOUT,
-  }).each(($element) => {
+  cy.get('[data-testid^="topic-status-"]').each(($element) => {
     cy.wrap($element).should('have.attr', 'data-test-topic-loaded', 'true');
   });
 });
