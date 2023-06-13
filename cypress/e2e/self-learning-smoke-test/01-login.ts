@@ -1,12 +1,7 @@
 import { When, Then, Given } from '@badeball/cypress-cucumber-preprocessor';
 import { URL_SELF_LEARNING_SMOKE_TEST } from '../../support/urls';
 
-import {
-  ETestId,
-  QUIZ_LOADING_TIMEOUT,
-  TEST_USER_PASSWORD,
-  TEST_USER_USERNAME,
-} from './e2e.const';
+import { ETestId, TEST_USER_PASSWORD, TEST_USER_USERNAME } from './e2e.const';
 import { performLogin } from '../../support/step_definitions/common.steps';
 
 When('The user visits the self-learning site', () => {
@@ -54,8 +49,6 @@ Then('The quiz loading icon is displayed', () => {
 
 Then('The user sees quiz content', () => {
   cy.get(`[data-testid="${ETestId.quizWrapper}"]`)
-    .find(`[data-testid="${ETestId.quizForm}"]`, {
-      timeout: QUIZ_LOADING_TIMEOUT,
-    })
+    .find(`[data-testid="${ETestId.quizForm}"]`)
     .should('exist');
 });

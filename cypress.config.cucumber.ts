@@ -4,6 +4,7 @@ import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-prepro
 import createEsbuildPlugin from '@badeball/cypress-cucumber-preprocessor/esbuild';
 
 export default defineConfig({
+  defaultCommandTimeout: 20 * 1000,
   retries: 1,
   viewportWidth: 1600,
   viewportHeight: 1024,

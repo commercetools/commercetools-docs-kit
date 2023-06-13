@@ -3,7 +3,6 @@ import {
   CORRECT_ANSWER_COLOR,
   CORRECT_ANSWER_TEXT,
   ETestId,
-  QUIZ_LOADING_TIMEOUT,
   WRONG_ANSWER_COLOR,
   WRONG_ANSWER_TEXT,
 } from './e2e.const';
@@ -29,9 +28,11 @@ Given(`The user selects {string} answers`, (result: string) => {
 Then('The user sees a {string} ribbon on the quiz section', (feedbackColor) => {
   const hexColor =
     feedbackColor === 'red' ? WRONG_ANSWER_COLOR : CORRECT_ANSWER_COLOR;
-  cy.get(`[data-testid="${ETestId.quizWrapper}"]`, {
-    timeout: QUIZ_LOADING_TIMEOUT,
-  }).should('have.css', 'border-left-color', hexColor);
+  cy.get(`[data-testid="${ETestId.quizWrapper}"]`).should(
+    'have.css',
+    'border-left-color',
+    hexColor
+  );
 });
 
 Given(
@@ -50,15 +51,11 @@ Given(
 );
 
 Given('The user sees a try again button', () => {
-  cy.get(`[data-testid="${ETestId.tryAgainButton}"]`, {
-    timeout: QUIZ_LOADING_TIMEOUT,
-  }).should('exist');
+  cy.get(`[data-testid="${ETestId.tryAgainButton}"]`).should('exist');
 });
 
 Given("The user doesn't see a try again button", () => {
-  cy.get(`[data-testid="${ETestId.tryAgainButton}"]`, {
-    timeout: QUIZ_LOADING_TIMEOUT,
-  }).should('not.exist');
+  cy.get(`[data-testid="${ETestId.tryAgainButton}"]`).should('not.exist');
 });
 
 Then('The user sees a {string} completed modal', (type: string) => {
@@ -66,9 +63,7 @@ Then('The user sees a {string} completed modal', (type: string) => {
     type === 'course'
       ? 'completed this module'
       : 'completed this learning path';
-  cy.get(`[data-testid="${ETestId.moduleCompleteModal}"] > div[name="main"]`, {
-    timeout: QUIZ_LOADING_TIMEOUT,
-  })
+  cy.get(`[data-testid="${ETestId.moduleCompleteModal}"] > div[name="main"]`)
     .contains(expectedText)
     .should('be.visible');
   cy.get(
