@@ -27,7 +27,7 @@
     "test:e2e": "yarn test:e2e:docs-smoke-test && yarn test:e2e:api-docs-smoke-test && yarn test:e2e:self-learning-smoke-test",
     "test:e2e:docs-smoke-test": "cross-env NODE_ENV=test cypress run --spec 'cypress/e2e/docs-smoke-test/**/*.cy.ts'",
     "test:e2e:api-docs-smoke-test": "cross-env NODE_ENV=test cypress run --spec 'cypress/e2e/api-docs-smoke-test/**/*.cy.ts'",
-    "test:e2e:self-learning-smoke-test": "cross-env NODE_ENV=test cypress run --headed --config-file 'cypress.config.cucumber.ts' --spec 'cypress/e2e/self-learning-smoke-test/02-profile-modal.feature'",
+    "test:e2e:self-learning-smoke-test": "cross-env NODE_ENV=test cypress run --config-file 'cypress.config.cucumber.ts' --spec 'cypress/e2e/self-learning-smoke-test/*.feature'",
     "cypress-open": "cross-env NODE_ENV=test cypress open",
     "check-links": "yarn exec linkinator ./public",
     "check-npm-login": "npm_config_registry=https://registry.npmjs.org npm whoami",
