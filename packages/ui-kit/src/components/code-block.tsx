@@ -226,7 +226,7 @@ const CodeBlock = (props: CodeBlockProps) => {
   return (
     <Highlight
       {...defaultProps}
-      code={props.content}
+      code={props.content.length ? props.content : ''}
       language={language}
       theme={props.secondaryTheme ? themeSecondary : themePrimary}
     >
