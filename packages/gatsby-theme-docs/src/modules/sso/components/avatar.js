@@ -10,7 +10,6 @@ import LoginButton from './login-button';
 import LogoutButton from './logout-button';
 import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
-import { AUTH0_CLAIM_DISPLAYNAME } from '../sso.const';
 import { gtagEvent } from '../utils/analytics.utils';
 import { LearningContext } from '../../self-learning';
 
@@ -117,11 +116,8 @@ const UserProfile = () => {
   useEffect(() => {
     if (isAuthenticated) {
       const localUserData = [];
-      if (
-        profile?.[AUTH0_CLAIM_DISPLAYNAME] &&
-        profile[AUTH0_CLAIM_DISPLAYNAME] !== profile.email
-      ) {
-        localUserData.push({ name: profile[AUTH0_CLAIM_DISPLAYNAME] });
+      if (profile?.name && profile.name !== profile.email) {
+        localUserData.push({ name: profile.name });
       }
       localUserData.push({ email: profile?.email || '' });
       setUserData(localUserData);
