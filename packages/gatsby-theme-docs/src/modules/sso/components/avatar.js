@@ -30,21 +30,36 @@ const Avatar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const UserAvatar = (props) => {
-  const email = props.userData.find(
-    (item) => Object.keys(item)[0] === 'email'
-  )?.email;
-  const name = props.userData.find(
-    (item) => Object.keys(item)[0] === 'name'
-  )?.name;
-  const avatarInitials = getAvatarInitials(name || email).map((initial) =>
-    initial.toUpperCase()
-  );
+  const { openProfileModal } = useContext(LearningContext);
+  const [avatarInitials, setAvatarInitials] = useState('');
+  useEffect(() => {
+    const email = props.userData.find(
+      (item) => Object.keys(item)[0] === 'email'
+    )?.email;
+    const name = props.userData.find(
+      (item) => Object.keys(item)[0] === 'name'
+    )?.name;
+    setAvatarInitials(
+      getAvatarInitials(name || email).map((initial) => initial.toUpperCase())
+    );
+  }, [props.userData]);
+
   return (
     <Spacings.Inline alignItems="center">
-      <Avatar>{avatarInitials}</Avatar>
+      <Avatar
+        onClick={() =>
+          openProfileModal({
+            title: 'Update your profile.',
+            isDismissable: true,
+          })
+        }
+      >
+        {avatarInitials}
+      </Avatar>
     </Spacings.Inline>
   );
 };

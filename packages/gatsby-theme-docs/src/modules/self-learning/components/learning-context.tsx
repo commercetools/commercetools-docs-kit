@@ -2,15 +2,20 @@ import { User } from '@auth0/auth0-react';
 import { createContext, useReducer } from 'react';
 import type { ReactNode } from 'react';
 
+type ProfileModalConfig = {
+  title: string;
+  isDismissable: boolean;
+};
+
 export type LearningState = {
   user: {
     profile: User | undefined;
   };
   ui: {
-    isProfileModalOpen: boolean;
+    profileModal: ProfileModalConfig | undefined;
   };
   updateProfile: (userProfile: User) => void;
-  openProfileModal: () => void;
+  openProfileModal: (cfg: ProfileModalConfig) => void;
   closeProfileModal: () => void;
 };
 
@@ -22,7 +27,7 @@ enum LearningActionKind {
 
 interface LearningAction {
   type: LearningActionKind;
-  payload?: User;
+  payload?: User | ProfileModalConfig;
 }
 
 const initialState: LearningState = {
@@ -30,7 +35,7 @@ const initialState: LearningState = {
     profile: undefined,
   },
   ui: {
-    isProfileModalOpen: false,
+    profileModal: undefined,
   },
   updateProfile: () => null,
   openProfileModal: () => null,
@@ -53,9 +58,10 @@ export const LearningStateProvider = ({ children }: LearningProviderProps) => {
         payload: profile,
       });
     },
-    openProfileModal: () => {
+    openProfileModal: (config: ProfileModalConfig) => {
       dispatch({
         type: LearningActionKind.OPEN_PROFILE_MODAL,
+        payload: config,
       });
     },
     closeProfileModal: () => {
@@ -90,7 +96,10 @@ function learningReducer(
       return {
         ...state,
         ui: {
-          isProfileModalOpen: true,
+          profileModal: (action.payload as ProfileModalConfig) || {
+            title: '',
+            isDismissable: false,
+          },
         },
       };
     }
@@ -98,7 +107,7 @@ function learningReducer(
       return {
         ...state,
         ui: {
-          isProfileModalOpen: false,
+          profileModal: undefined,
         },
       };
     }

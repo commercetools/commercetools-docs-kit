@@ -47,7 +47,10 @@ const UserProfileInit = () => {
   // modal to be open in case it's incomplete
   useEffect(() => {
     if (profile && !isProfileComplete(profile)) {
-      openProfileModal();
+      openProfileModal({
+        title: 'Tell us a bit about yourself.',
+        isDismissable: false,
+      });
     }
     if (profile && isProfileComplete(profile)) {
       closeProfileModal();

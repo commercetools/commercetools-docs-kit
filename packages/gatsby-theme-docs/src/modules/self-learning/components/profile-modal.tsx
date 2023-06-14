@@ -22,10 +22,11 @@ const ProfileModal = () => {
   const {
     user: { profile },
     updateProfile,
+    closeProfileModal,
   } = useContext(LearningContext);
   const { selfLearningFeatures } = useContext(ConfigContext);
   const {
-    ui: { isProfileModalOpen },
+    ui: { profileModal },
   } = useContext(LearningContext);
   const { performUpdateUser, isLoading, updatedUser, error } = useUpdateUser({
     userId: profile?.user_id || '',
@@ -72,9 +73,13 @@ const ProfileModal = () => {
     if (!isModalFeatureEnabeld) {
       return;
     }
-    isProfileModalOpen ? openModal() : closeModal();
+    if (profileModal) {
+      openModal();
+    } else {
+      closeModal();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isProfileModalOpen]);
+  }, [profileModal]);
 
   useEffect(() => {
     if (profile && isModalOpen) {
@@ -83,7 +88,7 @@ const ProfileModal = () => {
       formik.setFieldValue('company', profile?.user_metadata?.company || '');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile]);
+  }, [profile, isModalOpen]);
 
   useEffect(() => {
     if (updatedUser) {
@@ -103,9 +108,12 @@ const ProfileModal = () => {
     <FormDialog
       testid="profile-modal"
       size="m"
-      title="Tell us a bit about yourself"
+      title={profileModal?.title || 'Update your profile.'}
       labelPrimary="Save"
       isOpen={isModalOpen}
+      onClose={
+        profileModal?.isDismissable ? () => closeProfileModal() : undefined
+      }
       isPrimaryButtonDisabled={
         !(formik.isValid && formik.dirty) || formik.isSubmitting || isLoading
       }
