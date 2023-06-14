@@ -2,6 +2,7 @@ import { User, useAuth0 } from '@auth0/auth0-react';
 import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
 import { AUTH0_CLAIM_COMPANY } from '../../sso';
+import { isProfileComplete } from './profile.utils';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -32,6 +33,8 @@ const UserProfileInit = () => {
   const {
     updateProfile,
     user: { profile },
+    openProfileModal,
+    closeProfileModal,
   } = useContext(LearningContext);
 
   useEffect(() => {
@@ -39,6 +42,18 @@ const UserProfileInit = () => {
       updateProfile(contextProfileAdapter(user));
     }
   }, [isAuthenticated, profile, user, updateProfile]);
+
+  // checks if the profile is complete and forces the update profile
+  // modal to be open in case it's incomplete
+  useEffect(() => {
+    if (profile && !isProfileComplete(profile)) {
+      openProfileModal();
+    }
+    if (profile && isProfileComplete(profile)) {
+      closeProfileModal();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile]);
 };
 
 export default UserProfileInit;

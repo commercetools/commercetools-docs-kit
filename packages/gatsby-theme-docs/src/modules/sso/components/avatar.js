@@ -1,5 +1,5 @@
 // A React component to be rendered in the top bar next to the top menu toggle button
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -12,6 +12,7 @@ import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
 import { AUTH0_CLAIM_DISPLAYNAME } from '../sso.const';
 import { gtagEvent } from '../utils/analytics.utils';
+import { LearningContext } from '../../self-learning';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -93,32 +94,28 @@ const LoggedOutState = () => {
 LoggedOutState.displayName = 'LoggedOutState';
 
 const UserProfile = () => {
-  const { isAuthenticated, logout, getIdTokenClaims } = useAuth0();
-  const [customClaims, setCustomClaims] = useState({});
+  const { isAuthenticated, logout } = useAuth0();
+  const {
+    user: { profile },
+  } = useContext(LearningContext);
+  const [userData, setUserData] = useState([]);
   useEffect(() => {
-    const fetchCustomClaims = async () => {
-      try {
-        const results = await getIdTokenClaims();
-        setCustomClaims(results);
-      } catch (error) {
-        console.error('error fetching custom claims');
-      }
-    };
     if (isAuthenticated) {
-      fetchCustomClaims();
+      const localUserData = [];
+      if (
+        profile?.[AUTH0_CLAIM_DISPLAYNAME] &&
+        profile[AUTH0_CLAIM_DISPLAYNAME] !== profile.email
+      ) {
+        localUserData.push({ name: profile[AUTH0_CLAIM_DISPLAYNAME] });
+      }
+      localUserData.push({ email: profile?.email || '' });
+      setUserData(localUserData);
+    } else {
+      setUserData([]);
     }
-  }, [isAuthenticated, getIdTokenClaims]);
+  }, [isAuthenticated, profile]);
 
   if (isAuthenticated) {
-    const userData = [];
-
-    if (customClaims[AUTH0_CLAIM_DISPLAYNAME] !== customClaims.email) {
-      // we do have a real full name
-      userData.push({ name: customClaims[AUTH0_CLAIM_DISPLAYNAME] });
-    }
-
-    userData.push({ email: customClaims.email });
-
     return <LoggedInState userData={userData} logout={logout} />;
   }
   return <LoggedOutState />;
