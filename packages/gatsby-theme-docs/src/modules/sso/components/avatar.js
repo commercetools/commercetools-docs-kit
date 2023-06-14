@@ -12,6 +12,7 @@ import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
 import { gtagEvent } from '../utils/analytics.utils';
 import { LearningContext } from '../../self-learning';
+import { AUTH0_CLAIM_DISPLAYNAME } from '../sso.const';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -118,7 +119,15 @@ const UserProfile = () => {
       const localUserData = [];
       if (profile?.name && profile.name !== profile.email) {
         localUserData.push({ name: profile.name });
+      } else if (
+        // only if profile.name doesn't exist (as it happens upon new user registration)
+        // we fallback to the displayname custom claim
+        profile?.[AUTH0_CLAIM_DISPLAYNAME] &&
+        profile[AUTH0_CLAIM_DISPLAYNAME] !== profile.email
+      ) {
+        localUserData.push({ name: profile[AUTH0_CLAIM_DISPLAYNAME] });
       }
+
       localUserData.push({ email: profile?.email || '' });
       setUserData(localUserData);
     } else {
