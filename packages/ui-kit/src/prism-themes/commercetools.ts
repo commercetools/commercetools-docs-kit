@@ -1,6 +1,6 @@
-import nightOwl from 'prism-react-renderer/themes/nightOwl';
+import { themes } from 'prism-react-renderer';
 
-const commercetoolsTheme = { ...nightOwl };
+const commercetoolsTheme = { ...themes.nightOwl };
 
 // for the defaults see
 // https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/themes/nightOwl.js
@@ -35,6 +35,6 @@ const additionalStyles = [
   },
 ];
 
-commercetoolsTheme.styles = [...nightOwl.styles, ...additionalStyles];
+commercetoolsTheme.styles = [...themes.nightOwl.styles, ...additionalStyles];
 
 export default commercetoolsTheme;
