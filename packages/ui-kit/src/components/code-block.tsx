@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import Highlight, { type Language, defaultProps } from 'prism-react-renderer';
+import { Highlight } from 'prism-react-renderer';
 import {
   colors,
   dimensions,
@@ -197,7 +197,7 @@ const getLineStyles = (options: {
  * yarn start
  * ```
  */
-const languageAliases: { [key: string]: Language } = {
+const languageAliases: { [key: string]: string } = {
   sh: 'bash',
   zsh: 'bash',
   console: 'bash',
@@ -225,7 +225,6 @@ const CodeBlock = (props: CodeBlockProps) => {
 
   return (
     <Highlight
-      {...defaultProps}
       code={props.content.length ? props.content : ''}
       language={language}
       theme={props.secondaryTheme ? themeSecondary : themePrimary}
