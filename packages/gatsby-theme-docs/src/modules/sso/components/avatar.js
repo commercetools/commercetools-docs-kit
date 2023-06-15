@@ -1,6 +1,5 @@
 // A React component to be rendered in the top bar next to the top menu toggle button
 import { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
 import Spacings from '@commercetools-uikit/spacings';
@@ -12,7 +11,6 @@ import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
 import { gtagEvent } from '../utils/analytics.utils';
 import { LearningContext } from '../../self-learning';
-import { AUTH0_CLAIM_DISPLAYNAME } from '../sso.const';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -33,24 +31,22 @@ const Avatar = styled.div`
   cursor: pointer;
 `;
 
-const UserAvatar = (props) => {
-  const { openProfileModal } = useContext(LearningContext);
+const UserAvatar = () => {
+  const {
+    openProfileModal,
+    user: { profile },
+  } = useContext(LearningContext);
   const [avatarInitials, setAvatarInitials] = useState('');
   useEffect(() => {
-    const email = props.userData.find(
-      (item) => Object.keys(item)[0] === 'email'
-    )?.email;
-    const name = props.userData.find(
-      (item) => Object.keys(item)[0] === 'name'
-    )?.name;
     setAvatarInitials(
-      getAvatarInitials(name || email).map((initial) => initial.toUpperCase())
+      getAvatarInitials(profile).map((initial) => initial.toUpperCase())
     );
-  }, [props.userData]);
+  }, [profile]);
 
   return (
     <Spacings.Inline alignItems="center">
       <Avatar
+        data-testid="avatar-icon"
         onClick={() =>
           openProfileModal({
             title: 'Update your profile.',
@@ -65,14 +61,12 @@ const UserAvatar = (props) => {
 };
 UserAvatar.displayName = 'UserAvatar';
 
-const LoggedInState = (props) => {
-  return (
-    <AvatarContainer data-testid="avatar-container">
-      <LogoutButton />
-      <UserAvatar userData={props.userData} />
-    </AvatarContainer>
-  );
-};
+const LoggedInState = () => (
+  <AvatarContainer data-testid="avatar-container">
+    <LogoutButton />
+    <UserAvatar />
+  </AvatarContainer>
+);
 
 LoggedInState.displayName = 'LoggedInState';
 
@@ -109,46 +103,11 @@ const LoggedOutState = () => {
 LoggedOutState.displayName = 'LoggedOutState';
 
 const UserProfile = () => {
-  const { isAuthenticated, logout } = useAuth0();
-  const {
-    user: { profile },
-  } = useContext(LearningContext);
-  const [userData, setUserData] = useState([]);
-  useEffect(() => {
-    if (isAuthenticated) {
-      const localUserData = [];
-      if (profile?.name && profile.name !== profile.email) {
-        localUserData.push({ name: profile.name });
-      } else if (
-        // only if profile.name doesn't exist (as it happens upon new user registration)
-        // we fallback to the displayname custom claim
-        profile?.[AUTH0_CLAIM_DISPLAYNAME] &&
-        profile[AUTH0_CLAIM_DISPLAYNAME] !== profile.email
-      ) {
-        localUserData.push({ name: profile[AUTH0_CLAIM_DISPLAYNAME] });
-      }
+  const { isAuthenticated } = useAuth0();
 
-      localUserData.push({ email: profile?.email || '' });
-      setUserData(localUserData);
-    } else {
-      setUserData([]);
-    }
-  }, [isAuthenticated, profile]);
-
-  if (isAuthenticated) {
-    return <LoggedInState userData={userData} logout={logout} />;
-  }
-  return <LoggedOutState />;
+  return isAuthenticated ? <LoggedInState /> : <LoggedOutState />;
 };
 
 UserProfile.displayName = 'UserProfile';
-
-UserAvatar.propTypes = {
-  userData: PropTypes.array.isRequired,
-};
-
-LoggedInState.propTypes = {
-  userData: PropTypes.array.isRequired,
-};
 
 export default UserProfile;

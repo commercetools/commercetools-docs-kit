@@ -3,7 +3,7 @@ Feature: Status indicator
 Scenario: User sees all incomplete status indicators before taking the course
   Given Attempt to reset e2e user
   Given The "user" logs in using the top login button
-  And The user fills in "all" the profile details
+  And The user fills in "all" the profile details "FirstName", "LastName", "Test Corp."
   And The user submits the profile form
   Then The course "66" status icon is "circle"
   And The course "66" topics indicators are "topic-status-circle"
