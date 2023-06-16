@@ -9,7 +9,7 @@ export const useAsyncComplete = (url) => {
     updateAsyncRequest,
     ui: { asyncRequest },
   } = useContext(LearningContext);
-  const isCI = Cypress.env('CI') === true;
+  const isCI = false;
 
   useEffect(() => {
     if (isCI && isClientSide && url && url !== '') {
