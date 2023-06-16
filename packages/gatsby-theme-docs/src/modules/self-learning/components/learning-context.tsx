@@ -7,27 +7,37 @@ type ProfileModalConfig = {
   isDismissable: boolean;
 };
 
+type UpdateAsyncRequestPayload = {
+  url: string;
+  isLoading: boolean;
+};
+
+type AsyncRequest = Record<string, boolean>;
+
 export type LearningState = {
   user: {
     profile: User | undefined;
   };
   ui: {
     profileModal: ProfileModalConfig | undefined;
+    asyncRequest: AsyncRequest;
   };
   updateProfile: (userProfile: User) => void;
   openProfileModal: (cfg: ProfileModalConfig) => void;
   closeProfileModal: () => void;
+  updateAsyncRequest: (payload: UpdateAsyncRequestPayload) => void;
 };
 
 enum LearningActionKind {
   UPDATE_PROFILE = 'UPDATE_PROFILE',
   OPEN_PROFILE_MODAL = 'OPEN_PROFILE_MODAL',
   CLOSE_PROFILE_MODAL = 'CLOSE_PROFILE_MODAL',
+  UPDATE_ASYNC_REQUEST = 'UPDATE_ASYNC_REQUEST',
 }
 
 interface LearningAction {
   type: LearningActionKind;
-  payload?: User | ProfileModalConfig;
+  payload?: User | ProfileModalConfig | UpdateAsyncRequestPayload;
 }
 
 const initialState: LearningState = {
@@ -36,10 +46,12 @@ const initialState: LearningState = {
   },
   ui: {
     profileModal: undefined,
+    asyncRequest: {},
   },
   updateProfile: () => null,
   openProfileModal: () => null,
   closeProfileModal: () => null,
+  updateAsyncRequest: () => null,
 };
 
 export const LearningContext = createContext(initialState);
@@ -52,21 +64,27 @@ export const LearningStateProvider = ({ children }: LearningProviderProps) => {
   const [state, dispatch] = useReducer(learningReducer, initialState);
 
   const actions = {
-    updateProfile: (profile: User) => {
+    updateProfile: (payload: User) => {
       dispatch({
         type: LearningActionKind.UPDATE_PROFILE,
-        payload: profile,
+        payload,
       });
     },
-    openProfileModal: (config: ProfileModalConfig) => {
+    openProfileModal: (payload: ProfileModalConfig) => {
       dispatch({
         type: LearningActionKind.OPEN_PROFILE_MODAL,
-        payload: config,
+        payload,
       });
     },
     closeProfileModal: () => {
       dispatch({
         type: LearningActionKind.CLOSE_PROFILE_MODAL,
+      });
+    },
+    updateAsyncRequest: (payload: UpdateAsyncRequestPayload) => {
+      dispatch({
+        type: LearningActionKind.UPDATE_ASYNC_REQUEST,
+        payload,
       });
     },
   };
@@ -82,13 +100,14 @@ function learningReducer(
   state: LearningState,
   action: LearningAction
 ): LearningState {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case LearningActionKind.UPDATE_PROFILE: {
       return {
         ...state,
         user: {
           ...state.user,
-          profile: action.payload,
+          profile: payload,
         },
       };
     }
@@ -96,7 +115,8 @@ function learningReducer(
       return {
         ...state,
         ui: {
-          profileModal: (action.payload as ProfileModalConfig) || {
+          ...state.ui,
+          profileModal: (payload as ProfileModalConfig) || {
             title: '',
             isDismissable: false,
           },
@@ -107,7 +127,18 @@ function learningReducer(
       return {
         ...state,
         ui: {
+          ...state.ui,
           profileModal: undefined,
+        },
+      };
+    }
+    case LearningActionKind.UPDATE_ASYNC_REQUEST: {
+      const { url, isLoading } = payload as UpdateAsyncRequestPayload;
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          asyncRequest: { ...state.ui.asyncRequest, [url]: isLoading },
         },
       };
     }

@@ -6,6 +6,7 @@ import { useAuthToken } from './use-auth-token';
 import type { SubmissionAttempt } from '../components/quiz.types';
 import { MaintenanceModeError, ServiceDownError } from './use-attempt';
 import { gtagEvent } from '../../sso';
+import { useAsyncComplete } from '../../../hooks/use-async-complete';
 
 type SubmitAttemptParams = {
   courseId: string;
@@ -21,6 +22,9 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
   const [data, setData] = useState<QuizAttempt | undefined>();
   const [correlationId, setCorrelationId] = useState<string | undefined>();
   const { getAuthToken } = useAuthToken();
+  const { setAsyncLoading } = useAsyncComplete(
+    `/api/courses/${courseId}/quizzes/${quizId}/attempts`
+  );
 
   const submitNewAttempt = useCallback(
     async (
@@ -64,6 +68,7 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
     ) => {
       try {
         setIsLoading(true);
+        setAsyncLoading(true);
         const data = await submitNewAttempt(attemptId, attemptData, finish);
         const correlationId = data.headers.get('X-Correlation-ID');
         if (correlationId) {
@@ -98,9 +103,11 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
           setError('Error submitting answers');
         }
       } finally {
+        setAsyncLoading(false);
         setIsLoading(false);
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [courseId, quizId, submitNewAttempt]
   );
 

@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
@@ -12,6 +12,7 @@ import type {
 } from '../external-types';
 import { fetcherWithToken } from './hooks.utils';
 import { useAuthToken } from './use-auth-token';
+import { useAsyncComplete } from '../../../hooks/use-async-complete';
 
 type UseFetchCoursesIdResponse = {
   data: ApiCallResult<CourseWithDetails> | undefined;
@@ -30,6 +31,7 @@ export const useFetchCourseDetails = (
   const { isAuthenticated } = useAuth0();
   const { getAuthToken } = useAuthToken();
   const apiEndpoint = `/api/courses/${courseId}`;
+  const { setAsyncLoading } = useAsyncComplete(apiEndpoint);
 
   // fetch data only if course status feature flag is true and the user is logged in
   const shouldFetchData =
@@ -48,6 +50,12 @@ export const useFetchCourseDetails = (
       revalidateOnFocus: true,
     }
   ) as UseFetchCoursesIdResponse;
+
+  useEffect(() => {
+    setAsyncLoading(isLoading);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+
   return {
     data,
     error,
