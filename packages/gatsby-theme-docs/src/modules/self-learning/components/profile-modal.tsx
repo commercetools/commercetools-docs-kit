@@ -6,7 +6,6 @@ import { ErrorMessage } from '@commercetools-uikit/messages';
 import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
 import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
-import type { User } from '@auth0/auth0-react';
 import { useUpdateUser } from '../hooks/use-update-user';
 import ConfigContext, {
   EFeatureFlag,
@@ -19,20 +18,16 @@ export type TProfileFormValues = {
   company: string;
 };
 
-const isProfileComplete = (userData: User): boolean =>
-  userData.given_name &&
-  userData.given_name !== '' &&
-  userData.family_name &&
-  userData.family_name !== '' &&
-  userData?.user_metadata?.company &&
-  userData.user_metadata.company !== '';
-
 const ProfileModal = () => {
   const {
     user: { profile },
     updateProfile,
+    closeProfileModal,
   } = useContext(LearningContext);
   const { selfLearningFeatures } = useContext(ConfigContext);
+  const {
+    ui: { profileModal },
+  } = useContext(LearningContext);
   const { performUpdateUser, isLoading, updatedUser, error } = useUpdateUser({
     userId: profile?.user_id || '',
   });
@@ -73,15 +68,27 @@ const ProfileModal = () => {
 
   const { closeModal, openModal, isModalOpen } = useModalState();
 
+  // binds the modal state to the context isProfileModalOpen property
   useEffect(() => {
-    if (isModalFeatureEnabeld && profile) {
-      isProfileComplete(profile) ? closeModal() : openModal();
+    if (!isModalFeatureEnabeld) {
+      return;
+    }
+    if (profileModal) {
+      openModal();
+    } else {
+      closeModal();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profileModal]);
+
+  useEffect(() => {
+    if (profile && isModalOpen) {
       formik.setFieldValue('firstName', profile?.given_name || '');
       formik.setFieldValue('lastName', profile?.family_name || '');
       formik.setFieldValue('company', profile?.user_metadata?.company || '');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile, isModalFeatureEnabeld]);
+  }, [profile, isModalOpen]);
 
   useEffect(() => {
     if (updatedUser) {
@@ -101,9 +108,12 @@ const ProfileModal = () => {
     <FormDialog
       testid="profile-modal"
       size="m"
-      title="Tell us a bit about yourself"
+      title={profileModal?.title || 'Update your profile.'}
       labelPrimary="Save"
       isOpen={isModalOpen}
+      onClose={
+        profileModal?.isDismissable ? () => closeProfileModal() : undefined
+      }
       isPrimaryButtonDisabled={
         !(formik.isValid && formik.dirty) || formik.isSubmitting || isLoading
       }

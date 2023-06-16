@@ -1,6 +1,5 @@
 // A React component to be rendered in the top bar next to the top menu toggle button
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { useAuth0 } from '@auth0/auth0-react';
 import Spacings from '@commercetools-uikit/spacings';
@@ -10,8 +9,8 @@ import LoginButton from './login-button';
 import LogoutButton from './logout-button';
 import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
-import { AUTH0_CLAIM_DISPLAYNAME } from '../sso.const';
 import { gtagEvent } from '../utils/analytics.utils';
+import { LearningContext } from '../../self-learning';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -29,34 +28,45 @@ const Avatar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
-const UserAvatar = (props) => {
-  const email = props.userData.find(
-    (item) => Object.keys(item)[0] === 'email'
-  )?.email;
-  const name = props.userData.find(
-    (item) => Object.keys(item)[0] === 'name'
-  )?.name;
-  const avatarInitials = getAvatarInitials(name || email).map((initial) =>
-    initial.toUpperCase()
-  );
+const UserAvatar = () => {
+  const {
+    openProfileModal,
+    user: { profile },
+  } = useContext(LearningContext);
+  const [avatarInitials, setAvatarInitials] = useState('');
+  useEffect(() => {
+    setAvatarInitials(
+      getAvatarInitials(profile).map((initial) => initial.toUpperCase())
+    );
+  }, [profile]);
+
   return (
     <Spacings.Inline alignItems="center">
-      <Avatar>{avatarInitials}</Avatar>
+      <Avatar
+        data-testid="avatar-icon"
+        onClick={() =>
+          openProfileModal({
+            title: 'Update your profile.',
+            isDismissable: true,
+          })
+        }
+      >
+        {avatarInitials}
+      </Avatar>
     </Spacings.Inline>
   );
 };
 UserAvatar.displayName = 'UserAvatar';
 
-const LoggedInState = (props) => {
-  return (
-    <AvatarContainer data-testid="avatar-container">
-      <LogoutButton />
-      <UserAvatar userData={props.userData} />
-    </AvatarContainer>
-  );
-};
+const LoggedInState = () => (
+  <AvatarContainer data-testid="avatar-container">
+    <LogoutButton />
+    <UserAvatar />
+  </AvatarContainer>
+);
 
 LoggedInState.displayName = 'LoggedInState';
 
@@ -93,45 +103,11 @@ const LoggedOutState = () => {
 LoggedOutState.displayName = 'LoggedOutState';
 
 const UserProfile = () => {
-  const { isAuthenticated, logout, getIdTokenClaims } = useAuth0();
-  const [customClaims, setCustomClaims] = useState({});
-  useEffect(() => {
-    const fetchCustomClaims = async () => {
-      try {
-        const results = await getIdTokenClaims();
-        setCustomClaims(results);
-      } catch (error) {
-        console.error('error fetching custom claims');
-      }
-    };
-    if (isAuthenticated) {
-      fetchCustomClaims();
-    }
-  }, [isAuthenticated, getIdTokenClaims]);
+  const { isAuthenticated } = useAuth0();
 
-  if (isAuthenticated) {
-    const userData = [];
-
-    if (customClaims[AUTH0_CLAIM_DISPLAYNAME] !== customClaims.email) {
-      // we do have a real full name
-      userData.push({ name: customClaims[AUTH0_CLAIM_DISPLAYNAME] });
-    }
-
-    userData.push({ email: customClaims.email });
-
-    return <LoggedInState userData={userData} logout={logout} />;
-  }
-  return <LoggedOutState />;
+  return isAuthenticated ? <LoggedInState /> : <LoggedOutState />;
 };
 
 UserProfile.displayName = 'UserProfile';
-
-UserAvatar.propTypes = {
-  userData: PropTypes.array.isRequired,
-};
-
-LoggedInState.propTypes = {
-  userData: PropTypes.array.isRequired,
-};
 
 export default UserProfile;
