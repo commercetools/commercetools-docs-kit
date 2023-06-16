@@ -142,6 +142,25 @@ function learningReducer(
         },
       };
     }
+    case LearningActionKind.OPEN_PROFILE_MODAL: {
+      return {
+        ...state,
+        ui: {
+          profileModal: (action.payload as ProfileModalConfig) || {
+            title: '',
+            isDismissable: false,
+          },
+        },
+      };
+    }
+    case LearningActionKind.CLOSE_PROFILE_MODAL: {
+      return {
+        ...state,
+        ui: {
+          profileModal: undefined,
+        },
+      };
+    }
     default: {
       return state;
     }
