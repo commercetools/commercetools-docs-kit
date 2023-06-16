@@ -1,17 +1,14 @@
-import path  from "path";
-import fs  from "fs";
+import prettier from 'prettier';
 
-
-export function resolveExampleFile(fileNodeDir, filePath) {
-  const exampleAbsolutePath = path.resolve(fileNodeDir, filePath);
-  return fs.readFileSync(exampleAbsolutePath, 'utf8');
-}
-
-export function examplesToArray(examples, fileNodeDir, resolveExampleFile) {
+export function examplesToArray(examples) {
   if (examples) {
     return Object.entries(examples).map(([name, value]) => {
-      const jsonString = resolveExampleFile(fileNodeDir, value.value);
-      return { name, ...value, value: jsonString };
+      const jsonString = JSON.stringify(value.value, null, 2);
+      const formattedJSONString = prettier.format(jsonString, {
+        semi: false,
+        parser: 'json',
+      });
+      return { name, ...value, value: formattedJSONString };
     });
   }
 
