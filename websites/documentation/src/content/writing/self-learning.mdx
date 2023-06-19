@@ -334,6 +334,9 @@ It exposes the following properties:
 - `error`: In case of error, this property will contain error information. The format of error might depend on its type.
 - `data`: If the fetch operation completes successfully, this property will contain the value of the submited attempt with `CourseWithDetails` type.
 
+The hook can be used in conjunction with the `getTopicStatusByPageTitle` helper to retrieve a specific topic status
+
+
 Example:
 ```javascript
 const { data, isLoading, error } = useFetchCourseDetails('516');
@@ -372,3 +375,115 @@ useEffect(() => {
 ```
 
 **Note:** This hook uses [SWR](https://swr.vercel.app/) library to interact with the underlying API. This means it gets all the automatic features that comes with SWR.
+
+
+### SidebarCourseStatus
+
+This component purpose is displaying an icon next to the course title in the navigation bar. The icon displayed depends on the course status and will only be displayed if the user is logged in.
+
+The component expects the following props:
+- `courseId`: a number representing the id of the Moodle course
+
+Example:
+```javascript
+
+<LinkItemWithIcon>
+  <SidebarCourseStatus courseId={516} />
+  <LinkTitle>The course title</LinkTitle>
+</LinkItemWithIcon>
+```
+
+### SidebarTopicStatus
+
+This component purpose is displaying an icon next to the course's topics titles in the navigation bar. The icon displayed depends on the topic status and will only be displayed if the user is logged in.
+
+The component expects the following props:
+- `courseId`: a number representing the id of the Moodle course
+- `pageTitle`: the title of the topic (used to find the topic status within the CourseDetails object)
+
+Example:
+```javascript
+
+<SidebarTopicStatus
+  courseId={courseId}
+  pageTitle={currTopicName}
+/>
+```
+
+### UserProfileInit
+
+This is a component that doesn't render any html, in a standard SPA it would be a hook.
+Its purpose is to monitor the user profile, either coming from Auth0 at the initial login, or stored in `LearningContext`, and check if at any point the profile becomes "incomplete",
+meaning that some defined fields are missing. When this situation happens, the complete profile modal is triggered.
+Another function of this component is to keep in sync the user profile with the version of user profile stored into the LearningContext.
+
+The component doesn't recieves any props and it's just injected at the root of the application.
+
+### ProfileModal
+
+When triggered, this component renders a modal with a form containing some user profile fields. The user is able to modify their values and
+submit the form once the changes are completed.
+The profile modal visibility is bound to a value in the LearningContext and the correct way to open it or close it is by useCourseInfoByPageSlugs
+the `openProfileModal` and `closeProfileModal` methods exposes from the `LearningContext`.
+Once loaded, the form field values are automatically pre-filled with the values coming from the user profile.
+`<ProfileModal />` component is injected in the root of the application, its default state is **closed**.
+
+
+Example:
+```javascript
+
+// it opens a non dismissable profile modal with the specified title
+openProfileModal({
+    title: 'Tell us a bit about yourself.',
+    isDismissable: false,
+  });
+
+// it closes the modal if it's open
+closeProfileModal();
+```
+
+### CourseCompleteModal
+
+It's a modal notification modal that displays a different message depending on if the user
+completes a course or a learning path. The modal contains a "Continue" button that closes the modal itself
+and redirects the user to the next page (depending on a defined logic)
+
+The component expets the following props:
+- `courseId`: the Moodle id of the course completed.
+
+
+## Contexts
+
+### LearningContext
+
+It holds some state used in various self learning components. It's the single source of truth for user profile and
+other aspects and can be manipulated using a reducer.
+It's available to all the site components and has the following structure:
+
+```javascript
+user: {
+  profile: User | undefined; // the user profile object
+};
+ui: {
+  profileModal: ProfileModalConfig | undefined; // if a modal is displayed, this property contains the modal configuration
+};
+updateProfile: (userProfile: User) => void; // function invoked update the user profile
+openProfileModal: (cfg: ProfileModalConfig) => void; // opens a profile modal with the specified configuration
+closeProfileModal: () => void; // closes any open profile modal
+```
+
+### ConfigContext
+
+It holds the self-learning configuration properties and makes them available to all the application.
+
+The structure:
+```javascript
+
+{
+  learnApiBaseUrl: string; // learn API base url
+  auth0Domain: string; // auth0 domain
+  auth0ClientId: string; // auth0 clientId
+  hideLogin: boolean; // per-site setting to display or hide the login area
+  selfLearningFeatures: Array<EFeatureFlag>; // self-learning feature flags
+};
+```
