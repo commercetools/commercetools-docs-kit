@@ -179,7 +179,7 @@ It exposes the following:
 
 - `performUpdateUser`: It's the main function to be invoked when we want to update user profile. It recieves a mandatory Auth0 `User` parameter that represent the new user profile for the user.
 Only the properties specified in the user object will be updated, the others will remain untouched.
-- `isLoading`: It's a boolean value indicating if the update operation is still in progress (it `true`)
+- `isLoading`: It's a boolean value indicating if the update operation is still in progress (if `true`)
 - `error`: In case of error, this property will contain error information. The format of error might depend on its type.
 - `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
 - `updatedUser`: If the update operation completes successfully, this property will contain the full updated `User` object.
@@ -198,4 +198,47 @@ Example:
       };
       performUpdateUser(updatedUserBody);
     },
+```
+
+### useAttempt (hook)
+
+This hook interacts with Moodle LMS through the learning API. In particular the purpose of this hook is to be able to retrieve an existing in progress quiz attempt for the currently logged in user with the specified course and quiz
+or create a new one in case no in progress attempts exist.
+The hook must be initialized with an object with the following structure:
+
+```javascript
+
+{
+  courseId: '516' // the Moodle course ID
+  quizId: '13' // the Moodle quiz ID
+}
+
+```
+
+It exposes the following:
+
+- `fetchAttempt`: It's the main function, it takes an optional boolean `forceNew` parameter. If that is passed `true`, the function will try to create and fetch a new attempt regardless of the fact that an existing in progress attempt might exist.
+- `isLoading`: It's a boolean value indicating if the fetch operation is still in progress (if `true`)
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
+- `attempt`: If the update operation completes successfully, this property will contain the value of the requested attempt with `QuizAttempt` type.
+
+Example:
+
+```javascript
+
+const {
+    fetchAttempt,
+    attempt: quizData,
+    isLoading,
+    error,
+    correlationId,
+} = useAttempt({courseId: '561', quizId: '15'});
+
+fetchAttempt(false); // do not force new attempt
+
+useEffect(() => {
+    handleAttempt(attempt); // perform operation as soon as attempt data is available
+}, [attempt]);
+
 ```
