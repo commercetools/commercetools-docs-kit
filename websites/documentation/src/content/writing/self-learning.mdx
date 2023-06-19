@@ -347,3 +347,28 @@ useEffect(() => {
 ```
 
 **Note:** This hook uses [SWR](https://swr.vercel.app/) library to interact with the underlying API. This means it gets all the automatic features that comes with SWR.
+
+### useFetchCourses
+
+This hook fetches the list of the courses in which the user is enrolled. The Course objects returned contain the course id and the course status.
+
+It exposes the following properties:
+- `isLoading`: It's a boolean value indicating if the fetch operation is still in progress (if `true`)
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `data`: If the fetch operation completes successfully, this property will contain an array of all the courses in which the user is erolled in with the status
+
+The hook can be used in conjunction with the `getCourseStatusByCourseId` helper to retrieve a specific course status
+
+Example:
+
+```javascript
+const { data, isLoading } = useFetchCourses();
+
+useEffect(() => {
+   if (!isLoading && data) {
+     getCourseStatusByCourseId(data?.result?.enrolledCourses, props.courseId)
+   }
+  }, [data, isLoading, error]);
+```
+
+**Note:** This hook uses [SWR](https://swr.vercel.app/) library to interact with the underlying API. This means it gets all the automatic features that comes with SWR.
