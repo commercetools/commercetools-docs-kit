@@ -288,3 +288,40 @@ const onQuizSubmit = useCallback(
 );
 ```
 
+### useCourseInfoByPageSlugs (hook)
+
+This hook takes an array of string (page slugs) as parameter and returns,
+for each of the page slugs passed as input, it will return an obect containing course info.
+The course info object has the following structure:
+
+```javascript
+{
+  courseId: number;
+  pages: NavigationPageNode[];
+  status: string;
+}
+```
+
+Example:
+
+```javascript
+const courseInfo = useCourseInfoByPageSlugs(['course/course-1', 'course/course-2']);
+
+courseInfo.map((course) => {
+  const {courseId, pages, status} = course;
+  // do something
+})
+```
+
+### useOrderedCoursesInfo (hook)
+
+Returns an array of objects matching the course order defined in the navigation.
+Each object has 2 properties: courseId and pages (the list of topics pages with the same order as
+defined in navigation.yaml)
+
+**Note:** this hook has been implemented mainly as a hack for the lack of a server side endpoint specifing
+if a given learning path is completed or not. Therefore this specific hook is mainly used internally to
+determine if a learning path is completed or not. Once the backend will expose a dedicated learning path status
+endpoint, this hook will probably disappear.
+
+
