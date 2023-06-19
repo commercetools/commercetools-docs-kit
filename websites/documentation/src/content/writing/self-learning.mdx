@@ -324,4 +324,26 @@ if a given learning path is completed or not. Therefore this specific hook is ma
 determine if a learning path is completed or not. Once the backend will expose a dedicated learning path status
 endpoint, this hook will probably disappear.
 
+### useFetchCourseDetails (hook)
 
+This hook, initialized with a Moodle courseId, fetches the course information and returns them in form of a `CourseWithDetails` type object.
+In details, the object contains, course id, course status and for each topic name, visibility, completion status.
+
+It exposes the following properties:
+- `isLoading`: It's a boolean value indicating if the fetch operation is still in progress (if `true`)
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `data`: If the fetch operation completes successfully, this property will contain the value of the submited attempt with `CourseWithDetails` type.
+
+Example:
+```javascript
+const { data, isLoading, error } = useFetchCourseDetails('516');
+
+useEffect(() => {
+   if (!isLoading && data) {
+    // do something with the data
+   }
+  }, [data, isLoading, error]);
+
+```
+
+**Note:** This hook uses [SWR](https://swr.vercel.app/) library to interact with the underlying API. This means it gets all the automatic features that comes with SWR.
