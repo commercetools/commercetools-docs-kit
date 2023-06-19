@@ -175,7 +175,7 @@ A typical use of this hook is to get a valid authorization token just before per
 This hook can be used to update user profile data such as first name, family name or company.
 It needs to be initialized with an object containing Auth0 userId of the user we want to update.
 
-It exposes the following:
+It exposes the following properties:
 
 - `performUpdateUser`: It's the main function to be invoked when we want to update user profile. It recieves a mandatory Auth0 `User` parameter that represent the new user profile for the user.
 Only the properties specified in the user object will be updated, the others will remain untouched.
@@ -215,7 +215,7 @@ The hook must be initialized with an object with the following structure:
 
 ```
 
-It exposes the following:
+It exposes the following properties:
 
 - `fetchAttempt`: It's the main function, it takes an optional boolean `forceNew` parameter. If that is passed `true`, the function will try to create and fetch a new attempt regardless of the fact that an existing in progress attempt might exist.
 - `isLoading`: It's a boolean value indicating if the fetch operation is still in progress (if `true`)
@@ -233,7 +233,7 @@ const {
     isLoading,
     error,
     correlationId,
-} = useAttempt({courseId: '561', quizId: '15'});
+} = useAttempt({courseId: '516', quizId: '13'});
 
 fetchAttempt(false); // do not force new attempt
 
@@ -242,3 +242,49 @@ useEffect(() => {
 }, [attempt]);
 
 ```
+
+### useSubmitAttempt (hook)
+
+This hook interacts with Moodle LMS through the learning API. This hook is used to submit a quiz attempt for the current logged in user and the specified courseId and quizId.
+The hook must be initialized with an object with the following structure:
+
+```javascript
+
+{
+  courseId: '516' // the Moodle course ID
+  quizId: '13' // the Moodle quiz ID
+}
+
+```
+
+It exposes the following properties:
+
+- `submitAttempt`: It's the main function, it takes three parameters:
+  - `attemptId`: The integer representing the id of the Moodle attempt.
+  - `attemptData`: An object of type `SubmissionAttempt` containing the information about the attempt itself.
+  - `finish`: boolean which dictate if the attempt should be considered finished after subission
+- `isLoading`: It's a boolean value indicating if the submit operation is still in progress (if `true`)
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
+- `attempt`: If the update operation completes successfully, this property will contain the value of the submited attempt with `QuizAttempt` type.
+
+Example:
+
+```javascript
+
+const {
+  submitAttempt,
+  attempt: submitQuizData,
+  isLoading: isSubmitting,
+  error: submitError,
+  correlationId: submitCorrelationId,
+} = useSubmitAttempt({courseId: '516', quizId: '13'});
+
+const onQuizSubmit = useCallback(
+  (attemptData: SubmissionAttempt) => {
+    submitAttempt(1, attemptData, true);
+  },
+  [quizData, submitAttempt]
+);
+```
+
