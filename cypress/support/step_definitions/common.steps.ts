@@ -39,23 +39,30 @@ const redirectionStep = (page) => {
   }
 };
 
-export const clickStep = (clickArea) => {
-  if (clickArea === 'avatar icon') {
-    cy.get(`div[data-testid="${ETestId.avatarContainer}"]`).click();
-  }
-  if (clickArea === 'logout button') {
-    cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
-  }
-  if (clickArea === 'login button') {
-    cy.get(`div[data-testid="${ETestId.loginButton}"]`).click({
-      force: true,
-    });
-  }
-  if (clickArea === 'quiz submit button') {
-    cy.get(`[data-testid="${ETestId.quizFormSubmit}"]`).click();
-  }
-  if (clickArea === 'try again button') {
-    cy.get(`[data-testid="${ETestId.tryAgainButton}"]`).click();
+export const clickStep = (clickArea: string) => {
+  switch (clickArea) {
+    case 'avatar container':
+      cy.get(`div[data-testid="${ETestId.avatarContainer}"]`).click();
+      break;
+    case 'avatar icon':
+      cy.get(`div[data-testid="${ETestId.avatarIcon}"]`).click();
+      break;
+    case 'logout button':
+      cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
+      break;
+    case 'login button':
+      cy.get(`div[data-testid="${ETestId.loginButton}"]`).click({
+        force: true,
+      });
+      break;
+    case 'quiz submit button':
+      cy.get(`[data-testid="${ETestId.quizFormSubmit}"]`).click();
+      break;
+    case 'try again button':
+      cy.get(`[data-testid="${ETestId.tryAgainButton}"]`).click();
+      break;
+    default:
+      break;
   }
 };
 
@@ -191,36 +198,41 @@ Then('Attempt to reset e2e user', () => {
   resetUser();
 });
 
-When('The user fills in {string} the profile details', (which: string) => {
-  cy.get(
-    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="firstName"]`
-  )
-    .should('have.length', 1)
-    .each(($input) => {
-      cy.wrap($input).type('FirstName');
-    });
-
-  cy.get(
-    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="lastName"]`
-  )
-    .should('have.length', 1)
-    .each(($input) => {
-      cy.wrap($input).type('LastName');
-    });
-
-  if (which === 'all') {
+When(
+  'The user fills in {string} the profile details {string}, {string}, {string}',
+  (which: string, firstName: string, lastName: string, company: string) => {
     cy.get(
-      `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="company"]`
+      `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="firstName"]`
     )
       .should('have.length', 1)
       .each(($input) => {
-        cy.wrap($input).type('Test corp.');
+        cy.wrap($input).clear().type(firstName);
       });
+
+    cy.get(
+      `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="lastName"]`
+    )
+      .should('have.length', 1)
+      .each(($input) => {
+        cy.wrap($input).clear().type(lastName);
+      });
+
+    if (which === 'all') {
+      cy.get(
+        `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="company"]`
+      )
+        .should('have.length', 1)
+        .each(($input) => {
+          cy.wrap($input).clear().type(company);
+        });
+    }
   }
-});
+);
 
 When('The user submits the profile form', () => {
-  cy.get(`[data-testid="${ETestId.profileModal}"] > div[name="main"] button`)
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] button[label="Save"]`
+  )
     .should('be.enabled')
     .click();
 });
@@ -250,4 +262,8 @@ Given('The course status has fully loaded', () => {
   cy.get('[data-testid^="topic-status-"]').each(($element) => {
     cy.wrap($element).should('have.attr', 'data-test-topic-loaded', 'true');
   });
+});
+
+Then('The avatar icon shows {string}', (initials: string) => {
+  cy.get(`[data-testid="${ETestId.avatarIcon}"]`).should('have.text', initials);
 });

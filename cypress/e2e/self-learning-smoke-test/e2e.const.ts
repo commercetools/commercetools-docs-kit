@@ -1,6 +1,7 @@
 // IDs
 export enum ETestId {
   avatarContainer = 'avatar-container',
+  avatarIcon = 'avatar-icon',
   quizWrapper = 'quiz-wrapper',
   loginButton = 'login-quiz-button',
   logoutButton = 'logout-button',

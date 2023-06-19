@@ -28,3 +28,35 @@ Then("The user doesn't see a complete profile modal", () => {
     'not.exist'
   );
 });
+
+When(
+  'The user sees an update profile modal with the values {string}, {string}, {string}',
+  (firstName: string, lastName: string, company: string) => {
+    // let's make sure it's a proper "update profile" modal
+    cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
+      'be.visible'
+    );
+
+    cy.get(`[data-testid="${ETestId.profileModal}"]`)
+      .find('h4')
+      .contains('Update your profile');
+    cy.get(`[data-testid="${ETestId.profileModal}"] button`)
+      .find('svg')
+      .within(() => {
+        cy.get('title').should('contain', 'Close icon');
+      });
+
+    // then let's ensure the expected values are displayed
+    cy.get(
+      `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="firstName"]`
+    ).should('have.value', firstName);
+
+    cy.get(
+      `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="lastName"]`
+    ).should('have.value', lastName);
+
+    cy.get(
+      `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="company"]`
+    ).should('have.value', company);
+  }
+);
