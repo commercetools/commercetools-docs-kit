@@ -8,7 +8,9 @@ A module providing UI components and helper utilities to integrate self-learning
 
 Works against commercetools' learning-api, which is not a part of this open source project.
 
-## Components
+## Public Components
+
+The following components are the ones available for editor use directly in mdx files.
 
 ### Quiz
 
@@ -136,4 +138,64 @@ Examples
   Keep learning!
 </IfLearningPathNotComplete>
 
+```
+
+## Internal Components
+
+The following components are internal, used by docs-kit developers to provide the functionalities needed in the public components described above.
+The purpose of this section is to create an internal reference for new developers involved in the self-learning project.
+
+### useAuthToken (hook)
+
+This hook is a wrapper aroung Auth0 sdk and it's used to get a valid Auth0 authentication token for the current logged in user.
+It exposes `getAuthToken` function which can be used in the way described in the following example.
+
+```javascript
+const { getAuthToken } = useAuthToken();
+
+// obtain the accessToken
+const accessToken = await getAuthToken();
+
+// ...then performs fetch passing the token as Authorization header
+const response = await fetch(`http://exampleapi.com/user`, {
+  'POST',
+  headers: {
+    Accept: 'application/json',
+    Authorization: `Bearer ${accessToken}`,
+  },
+}
+```
+
+A typical use of this hook is to get a valid authorization token just before performing an API call against the learning api. The token value is usually passed as
+`Authorizaton` header to the API.
+
+
+### useUpdateUser (hook)
+
+This hook can be used to update user profile data such as first name, family name or company.
+It needs to be initialized with an object containing Auth0 userId of the user we want to update.
+
+It exposes the following:
+
+- `performUpdateUser`: It's the main function to be invoked when we want to update user profile. It recieves a mandatory Auth0 `User` parameter that represent the new user profile for the user.
+Only the properties specified in the user object will be updated, the others will remain untouched.
+- `isLoading`: It's a boolean value indicating if the update operation is still in progress (it `true`)
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
+- `updatedUser`: If the update operation completes successfully, this property will contain the full updated `User` object.
+
+Example:
+```javascript
+  const { performUpdateUser, isLoading, updatedUser, error } = useUpdateUser({
+    userId: profile?.user_id || '',
+  });
+
+  onSubmit: async (formikValues: TProfileFormValues) => {
+      const updatedUserBody = {
+        family_name: 'Updated name',
+        given_name: 'Updated family name',
+        company: 'Updated company',
+      };
+      performUpdateUser(updatedUserBody);
+    },
 ```
