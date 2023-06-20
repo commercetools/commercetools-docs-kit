@@ -218,7 +218,7 @@ The hook must be initialized with an object with the following structure:
 It exposes the following properties:
 
 - `fetchAttempt`: The main function, it takes an optional boolean `forceNew` parameter. If that is passed `true`, the function will try to create and fetch a new attempt regardless of the fact that an existing in progress attempt might exist.
-- `isLoading`: It's a boolean value indicating if the fetch operation is still in progress (if `true`)
+- `isLoading`: A boolean value indicating if the fetch operation is still in progress (if `true`).
 - `error`: In case of error, this property will contain error information. The format of error might depend on its type.
 - `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
 - `attempt`: If the update operation completes successfully, this property will contain the value of the requested attempt with `QuizAttempt` type.
