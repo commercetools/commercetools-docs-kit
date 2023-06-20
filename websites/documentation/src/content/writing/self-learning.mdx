@@ -263,7 +263,7 @@ It exposes the following properties:
   - `attemptId`: The integer representing the id of the Moodle attempt.
   - `attemptData`: An object of type `SubmissionAttempt` containing the information about the attempt itself.
   - `finish`: A boolean which dictates if the attempt should be considered finished after submission.
-- `isLoading`: It's a boolean value indicating if the submit operation is still in progress (if `true`)
+- `isLoading`: A boolean value indicating if the submit operation is still in progress (if `true`).
 - `error`: In case of error, this property will contain error information. The format of error might depend on its type.
 - `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
 - `attempt`: If the update operation completes successfully, this property will contain the value of the submited attempt with `QuizAttempt` type.
