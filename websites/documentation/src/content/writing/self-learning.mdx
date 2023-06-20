@@ -179,7 +179,7 @@ It exposes the following properties:
 
 - `performUpdateUser`: The main function to be invoked when we want to update user profile. It recieves a mandatory Auth0 `User` parameter that represents the new user profile for the user.
 Only the properties specified in the user object will be updated, the others will remain untouched.
-- `isLoading`: It's a boolean value indicating if the update operation is still in progress (if `true`)
+- `isLoading`: A boolean value indicating if the update operation is still in progress (if `true`).
 - `error`: In case of error, this property will contain error information. The format of error might depend on its type.
 - `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
 - `updatedUser`: If the update operation completes successfully, this property will contain the full updated `User` object.
