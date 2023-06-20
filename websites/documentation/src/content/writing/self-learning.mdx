@@ -177,7 +177,7 @@ It needs to be initialized with an object containing Auth0 userId of the user we
 
 It exposes the following properties:
 
-- `performUpdateUser`: It's the main function to be invoked when we want to update user profile. It recieves a mandatory Auth0 `User` parameter that represent the new user profile for the user.
+- `performUpdateUser`: The main function to be invoked when we want to update user profile. It recieves a mandatory Auth0 `User` parameter that represents the new user profile for the user.
 Only the properties specified in the user object will be updated, the others will remain untouched.
 - `isLoading`: It's a boolean value indicating if the update operation is still in progress (if `true`)
 - `error`: In case of error, this property will contain error information. The format of error might depend on its type.
