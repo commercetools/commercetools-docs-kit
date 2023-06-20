@@ -413,7 +413,7 @@ Example:
 ### UserProfileInit
 
 This is a component that doesn't render any html, in a standard SPA it would be a hook.
-Its purpose is to monitor the user profile, either coming from Auth0 at the initial login, or stored in `LearningContext`, and check if at any point the profile becomes "incomplete",
+Its purpose is to monitor the user profile, either coming from Auth0 at the initial login, or stored in `LearningContext`, and check if at any point the profile becomes incomplete,
 meaning that some defined fields are missing. When this situation happens, the complete profile modal is triggered.
 Another function of this component is to keep in sync the user profile with the version of user profile stored into the LearningContext.
 
