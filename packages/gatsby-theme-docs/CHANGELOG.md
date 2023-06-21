@@ -1,5 +1,24 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.1.0
+
+### Minor Changes
+
+- [#1719](https://github.com/commercetools/commercetools-docs-kit/pull/1719) [`46cdf8f1`](https://github.com/commercetools/commercetools-docs-kit/commit/46cdf8f10aefd2b75bdc71975fead20e8fc1b929) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Update profile MVP functionality added using the existing profile modal. Refactored the learning context to be used by self-learning and sso modules
+
+### Patch Changes
+
+- [#1712](https://github.com/commercetools/commercetools-docs-kit/pull/1712) [`94642375`](https://github.com/commercetools/commercetools-docs-kit/commit/94642375f0b57ab05e8f4a4f322559e71c080c13) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Ensure no false positive VRT errors are triggered on branch build ensuring the whole page structure has fully loaded
+
+- [#1725](https://github.com/commercetools/commercetools-docs-kit/pull/1725) [`b8d1240a`](https://github.com/commercetools/commercetools-docs-kit/commit/b8d1240a57a4ed55ce56ddff41c992ac95a35388) Thanks [@renovate](https://github.com/apps/renovate)! - Update all ui-kit dependencies.
+
+- [#1710](https://github.com/commercetools/commercetools-docs-kit/pull/1710) [`cd15b5c9`](https://github.com/commercetools/commercetools-docs-kit/commit/cd15b5c93fc94bf6fc19a5c718e8930435ca88d9) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Upgrade to prism-react-renderer v2. Ensure to update the additionalPrismLanguages param when upgrading production
+
+- [#1724](https://github.com/commercetools/commercetools-docs-kit/pull/1724) [`2e1bcaf7`](https://github.com/commercetools/commercetools-docs-kit/commit/2e1bcaf706187d12a2a489ae752183891f6031b3) Thanks [@timonrey](https://github.com/timonrey)! - Update gatsby dependencies.
+
+- Updated dependencies [[`94642375`](https://github.com/commercetools/commercetools-docs-kit/commit/94642375f0b57ab05e8f4a4f322559e71c080c13), [`b8d1240a`](https://github.com/commercetools/commercetools-docs-kit/commit/b8d1240a57a4ed55ce56ddff41c992ac95a35388), [`cd15b5c9`](https://github.com/commercetools/commercetools-docs-kit/commit/cd15b5c93fc94bf6fc19a5c718e8930435ca88d9), [`2470171d`](https://github.com/commercetools/commercetools-docs-kit/commit/2470171d6dcfb8e48b306f8f49faeb1ff0c40892)]:
+  - @commercetools-docs/ui-kit@22.1.0
+
 ## 22.0.0
 
 ### Major Changes

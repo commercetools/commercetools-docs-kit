@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.5.1
+
+### Patch Changes
+
+- [#1711](https://github.com/commercetools/commercetools-docs-kit/pull/1711) [`789a84f7`](https://github.com/commercetools/commercetools-docs-kit/commit/789a84f733d17c0b5c771ca5199a953c7ae82121) Thanks [@timonrey](https://github.com/timonrey)! - Inline examples into the generated RAML file, which fixes a caching issue after modifying examples.
+
 ## 13.5.0
 
 ### Minor Changes

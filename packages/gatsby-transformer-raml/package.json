@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-transformer-raml",
   "description": "Exposes RAML 1.0 APIs on the gatsbyJS GraphQL",
-  "version": "13.5.0",
+  "version": "13.5.1",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

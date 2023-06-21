@@ -1,5 +1,15 @@
 # @commercetools-website/documentation
 
+## 8.0.1
+
+### Patch Changes
+
+- [#1710](https://github.com/commercetools/commercetools-docs-kit/pull/1710) [`cd15b5c9`](https://github.com/commercetools/commercetools-docs-kit/commit/cd15b5c93fc94bf6fc19a5c718e8930435ca88d9) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Upgrade to prism-react-renderer v2. Ensure to update the additionalPrismLanguages param when upgrading production
+
+- Updated dependencies [[`94642375`](https://github.com/commercetools/commercetools-docs-kit/commit/94642375f0b57ab05e8f4a4f322559e71c080c13), [`b8d1240a`](https://github.com/commercetools/commercetools-docs-kit/commit/b8d1240a57a4ed55ce56ddff41c992ac95a35388), [`cd15b5c9`](https://github.com/commercetools/commercetools-docs-kit/commit/cd15b5c93fc94bf6fc19a5c718e8930435ca88d9), [`2e1bcaf7`](https://github.com/commercetools/commercetools-docs-kit/commit/2e1bcaf706187d12a2a489ae752183891f6031b3), [`46cdf8f1`](https://github.com/commercetools/commercetools-docs-kit/commit/46cdf8f10aefd2b75bdc71975fead20e8fc1b929)]:
+  - @commercetools-docs/gatsby-theme-docs@22.1.0
+  - @commercetools-docs/gatsby-theme-code-examples@22.1.0
+
 ## 8.0.0
 
 ### Major Changes
