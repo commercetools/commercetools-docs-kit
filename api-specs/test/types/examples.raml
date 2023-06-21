@@ -38,9 +38,23 @@ types:
         strict: true
 
   SingleExampleTestType:
+    properties:
+        foo:
+          type: string
+        baz:
+          type: integer
+        boo:
+          type: boolean
     example: !include ../examples/example.json
 
   SingleFullExampleTestType:
+    properties:
+        foo:
+          type: string
+        baz:
+          type: integer
+        boo:
+          type: boolean
     example:
       displayName: Full Example
       description: |
