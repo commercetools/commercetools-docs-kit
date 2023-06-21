@@ -8,7 +8,9 @@ A module providing UI components and helper utilities to integrate self-learning
 
 Works against commercetools' learning-api, which is not a part of this open source project.
 
-## Components
+## Public Components
+
+The following components are the ones available for editor use directly in mdx files.
 
 ### Quiz
 
@@ -136,4 +138,352 @@ Examples
   Keep learning!
 </IfLearningPathNotComplete>
 
+```
+
+## Internal Components
+
+The following components are internal, used by docs-kit developers to provide the functionalities needed in the public components described above.
+The purpose of this section is to create an internal reference for new developers involved in the self-learning project.
+
+### useAuthToken (hook)
+
+This hook is a wrapper aroung Auth0 sdk and it's used to get a valid Auth0 authentication token for the current logged in user.
+It exposes `getAuthToken` function which can be used in the way described in the following example.
+
+```javascript
+const { getAuthToken } = useAuthToken();
+
+// obtain the accessToken
+const accessToken = await getAuthToken();
+
+// ...then performs fetch passing the token as Authorization header
+const response = await fetch(`http://exampleapi.com/user`, {
+  'POST',
+  headers: {
+    Accept: 'application/json',
+    Authorization: `Bearer ${accessToken}`,
+  },
+}
+```
+
+A typical use of this hook is to get a valid authorization token just before performing an API call against the learning api. The token value is usually passed as
+`Authorizaton` header to the API.
+
+
+### useUpdateUser (hook)
+
+This hook can be used to update user profile data such as first name, family name or company.
+It needs to be initialized with an object containing Auth0 userId of the user we want to update.
+
+It exposes the following properties:
+
+- `performUpdateUser`: The main function to be invoked when we want to update user profile. It recieves a mandatory Auth0 `User` parameter that represents the new user profile for the user.
+Only the properties specified in the user object will be updated, the others will remain untouched.
+- `isLoading`: A boolean value indicating if the update operation is still in progress (if `true`).
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
+- `updatedUser`: If the update operation completes successfully, this property will contain the full updated `User` object.
+
+Example:
+```javascript
+  const { performUpdateUser, isLoading, updatedUser, error } = useUpdateUser({
+    userId: profile?.user_id || '',
+  });
+
+  onSubmit: async (formikValues: TProfileFormValues) => {
+      const updatedUserBody = {
+        family_name: 'Updated name',
+        given_name: 'Updated family name',
+        company: 'Updated company',
+      };
+      performUpdateUser(updatedUserBody);
+    },
+```
+
+### useAttempt (hook)
+
+This hook interacts with Moodle LMS through the learning API. In particular the purpose of this hook is to be able to retrieve an existing in progress quiz attempt for the currently logged in user with the specified course and quiz
+or create a new one in case no in progress attempts exist.
+The hook must be initialized with an object with the following structure:
+
+```javascript
+
+{
+  courseId: '516' // the Moodle course ID
+  quizId: '13' // the Moodle quiz ID
+}
+
+```
+
+It exposes the following properties:
+
+- `fetchAttempt`: The main function, it takes an optional boolean `forceNew` parameter. If that is passed `true`, the function will try to create and fetch a new attempt regardless of the fact that an existing in progress attempt might exist.
+- `isLoading`: A boolean value indicating if the fetch operation is still in progress (if `true`).
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
+- `attempt`: If the update operation completes successfully, this property will contain the value of the requested attempt with `QuizAttempt` type.
+
+Example:
+
+```javascript
+
+const {
+    fetchAttempt,
+    attempt: quizData,
+    isLoading,
+    error,
+    correlationId,
+} = useAttempt({courseId: '516', quizId: '13'});
+
+fetchAttempt(false); // do not force new attempt
+
+useEffect(() => {
+    handleAttempt(attempt); // perform operation as soon as attempt data is available
+}, [attempt]);
+
+```
+
+### useSubmitAttempt (hook)
+
+This hook interacts with Moodle LMS through the learning API. This hook is used to submit a quiz attempt for the current logged in user and the specified courseId and quizId.
+The hook must be initialized with an object with the following structure:
+
+```javascript
+
+{
+  courseId: '516' // the Moodle course ID
+  quizId: '13' // the Moodle quiz ID
+}
+
+```
+
+It exposes the following properties:
+
+- `submitAttempt`: The main function, it takes three parameters:
+  - `attemptId`: The integer representing the id of the Moodle attempt.
+  - `attemptData`: An object of type `SubmissionAttempt` containing the information about the attempt itself.
+  - `finish`: A boolean which dictates if the attempt should be considered finished after submission.
+- `isLoading`: A boolean value indicating if the submit operation is still in progress (if `true`).
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `correlationId`: If the API returns a response including a `X-Correlation-ID` value, this property gets its value.
+- `attempt`: If the update operation completes successfully, this property will contain the value of the submited attempt with `QuizAttempt` type.
+
+Example:
+
+```javascript
+
+const {
+  submitAttempt,
+  attempt: submitQuizData,
+  isLoading: isSubmitting,
+  error: submitError,
+  correlationId: submitCorrelationId,
+} = useSubmitAttempt({courseId: '516', quizId: '13'});
+
+const onQuizSubmit = useCallback(
+  (attemptData: SubmissionAttempt) => {
+    submitAttempt(1, attemptData, true);
+  },
+  [quizData, submitAttempt]
+);
+```
+
+### useCourseInfoByPageSlugs (hook)
+
+This hook takes an array of string (page slugs) as parameter and returns,
+for each of the page slugs passed as input, it will return an obect containing course info.
+The course info object has the following structure:
+
+```javascript
+{
+  courseId: number;
+  pages: NavigationPageNode[];
+  status: string;
+}
+```
+
+Example:
+
+```javascript
+const courseInfo = useCourseInfoByPageSlugs(['course/course-1', 'course/course-2']);
+
+courseInfo.map((course) => {
+  const {courseId, pages, status} = course;
+  // do something
+})
+```
+
+### useOrderedCoursesInfo (hook)
+
+Returns an array of objects matching the course order defined in the navigation.
+Each object has 2 properties: courseId and pages (the list of topics pages with the same order as
+defined in navigation.yaml).
+
+**Note:** This hook has been implemented mainly as a hack for the lack of a server side endpoint specifying
+if a given learning path is completed or not. Therefore this specific hook is mainly used internally to
+determine if a learning path is completed or not. Once the backend will expose a dedicated learning path status
+endpoint, this hook will probably disappear.
+
+### useFetchCourseDetails (hook)
+
+This hook, initialized with a Moodle courseId, fetches the course information and returns them in form of a `CourseWithDetails` type object.
+In details, the object contains, course id, course status and for each topic name, visibility, completion status.
+
+It exposes the following properties:
+- `isLoading`: A boolean value indicating if the fetch operation is still in progress (if `true`).
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `data`: If the fetch operation completes successfully, this property will contain the value of the submited attempt with `CourseWithDetails` type.
+
+The hook can be used in conjunction with the `getTopicStatusByPageTitle` helper to retrieve a specific topic status.
+
+
+Example:
+```javascript
+const { data, isLoading, error } = useFetchCourseDetails('516');
+
+useEffect(() => {
+   if (!isLoading && data) {
+    // do something with the data
+   }
+  }, [data, isLoading, error]);
+
+```
+
+**Note:** This hook uses [SWR](https://swr.vercel.app/) library to interact with the underlying API. This means it gets all the automatic features that comes with SWR.
+
+### useFetchCourses
+
+This hook fetches the list of the courses in which the user is enrolled. The Course objects returned contain the course id and the course status.
+
+It exposes the following properties:
+- `isLoading`: A boolean value indicating if the fetch operation is still in progress (if `true`).
+- `error`: In case of error, this property will contain error information. The format of error might depend on its type.
+- `data`: If the fetch operation completes successfully, this property will contain an array of all the courses in which the user is erolled in with the status.
+
+The hook can be used in conjunction with the `getCourseStatusByCourseId` helper to retrieve a specific course status.
+
+Example:
+
+```javascript
+const { data, isLoading } = useFetchCourses();
+
+useEffect(() => {
+   if (!isLoading && data) {
+     getCourseStatusByCourseId(data?.result?.enrolledCourses, props.courseId)
+   }
+  }, [data, isLoading, error]);
+```
+
+**Note:** This hook uses [SWR](https://swr.vercel.app/) library to interact with the underlying API. This means it gets all the automatic features that comes with SWR.
+
+
+### SidebarCourseStatus
+
+This component purpose is displaying an icon next to the course title in the navigation bar. The icon displayed depends on the course status and will only be displayed if the user is logged in.
+
+The component expects the following props:
+- `courseId`: A number representing the id of the Moodle course.
+
+Example:
+```javascript
+
+<LinkItemWithIcon>
+  <SidebarCourseStatus courseId={516} />
+  <LinkTitle>The course title</LinkTitle>
+</LinkItemWithIcon>
+```
+
+### SidebarTopicStatus
+
+This component purpose is displaying an icon next to the course's topics titles in the navigation bar. The icon displayed depends on the topic status and will only be displayed if the user is logged in.
+
+The component expects the following props:
+- `courseId`: A number representing the id of the Moodle course.
+- `pageTitle`: The title of the topic (used to find the topic status within the CourseDetails object).
+
+Example:
+```javascript
+
+<SidebarTopicStatus
+  courseId={courseId}
+  pageTitle={currTopicName}
+/>
+```
+
+### UserProfileInit
+
+This is a component that doesn't render any html, in a standard SPA it would be a hook.
+Its purpose is to monitor the user profile, either coming from Auth0 at the initial login, or stored in `LearningContext`, and check if at any point the profile becomes incomplete,
+meaning that some defined fields are missing. When this situation happens, the complete profile modal is triggered.
+Another function of this component is to keep in sync the user profile with the version of user profile stored into the LearningContext.
+
+The component doesn't recieve any props and it's just injected at the root of the application.
+
+### ProfileModal
+
+When triggered, this component renders a modal with a form containing some user profile fields. The user is able to modify their values and
+submit the form once the changes are completed.
+The profile modal visibility is bound to a value in the LearningContext and the correct way to open it or close it is by
+the `openProfileModal` and `closeProfileModal` methods exposes from the `LearningContext`.
+Once loaded, the form field values are automatically pre-filled with the values coming from the user profile.
+The `<ProfileModal />` component is injected in the root of the application, its default state is **closed**.
+
+
+Example:
+```javascript
+
+// it opens a non dismissable profile modal with the specified title
+openProfileModal({
+    title: 'Tell us a bit about yourself.',
+    isDismissable: false,
+  });
+
+// it closes the modal if it's open
+closeProfileModal();
+```
+
+### CourseCompleteModal
+
+It's a modal notification modal that displays a different message depending on if the user
+completes a course or a learning path. The modal contains a "Continue" button that closes the modal itself
+and redirects the user to the next page (depending on a defined logic).
+
+The component expects the following props:
+- `courseId`: the Moodle id of the course completed.
+
+
+## Contexts
+
+### LearningContext
+
+It holds some state used in various self learning components. It's the single source of truth for user profile and
+other aspects and can be manipulated using a reducer.
+It's available to all the site components and has the following structure:
+
+```javascript
+user: {
+  profile: User | undefined; // the user profile object
+};
+ui: {
+  profileModal: ProfileModalConfig | undefined; // if a modal is displayed, this property contains the modal configuration
+};
+updateProfile: (userProfile: User) => void; // function invoked update the user profile
+openProfileModal: (cfg: ProfileModalConfig) => void; // opens a profile modal with the specified configuration
+closeProfileModal: () => void; // closes any open profile modal
+```
+
+### ConfigContext
+
+It holds the self-learning configuration properties and makes them available to all the application.
+
+The structure:
+```javascript
+
+{
+  learnApiBaseUrl: string; // learn API base url
+  auth0Domain: string; // auth0 domain
+  auth0ClientId: string; // auth0 clientId
+  hideLogin: boolean; // per-site setting to display or hide the login area
+  selfLearningFeatures: Array<EFeatureFlag>; // self-learning feature flags
+};
 ```
