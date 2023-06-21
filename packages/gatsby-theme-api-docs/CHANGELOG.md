@@ -1,5 +1,23 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 22.1.0
+
+### Minor Changes
+
+- [#1715](https://github.com/commercetools/commercetools-docs-kit/pull/1715) [`e0856f9c`](https://github.com/commercetools/commercetools-docs-kit/commit/e0856f9ce2cf1d8876182d26be82622304d43a57) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Enums are rendered regardless of the discriminatorValue attribute value
+
+### Patch Changes
+
+- [#1725](https://github.com/commercetools/commercetools-docs-kit/pull/1725) [`b8d1240a`](https://github.com/commercetools/commercetools-docs-kit/commit/b8d1240a57a4ed55ce56ddff41c992ac95a35388) Thanks [@renovate](https://github.com/apps/renovate)! - Update all ui-kit dependencies.
+
+- [#1724](https://github.com/commercetools/commercetools-docs-kit/pull/1724) [`2e1bcaf7`](https://github.com/commercetools/commercetools-docs-kit/commit/2e1bcaf706187d12a2a489ae752183891f6031b3) Thanks [@timonrey](https://github.com/timonrey)! - Update gatsby dependencies.
+
+- [#1728](https://github.com/commercetools/commercetools-docs-kit/pull/1728) [`6cd781c3`](https://github.com/commercetools/commercetools-docs-kit/commit/6cd781c39021c0fd3e2791734967f138359928ba) Thanks [@timonrey](https://github.com/timonrey)! - Update dependency rmf-codegen.
+
+- Updated dependencies [[`94642375`](https://github.com/commercetools/commercetools-docs-kit/commit/94642375f0b57ab05e8f4a4f322559e71c080c13), [`b8d1240a`](https://github.com/commercetools/commercetools-docs-kit/commit/b8d1240a57a4ed55ce56ddff41c992ac95a35388), [`789a84f7`](https://github.com/commercetools/commercetools-docs-kit/commit/789a84f733d17c0b5c771ca5199a953c7ae82121), [`cd15b5c9`](https://github.com/commercetools/commercetools-docs-kit/commit/cd15b5c93fc94bf6fc19a5c718e8930435ca88d9), [`2470171d`](https://github.com/commercetools/commercetools-docs-kit/commit/2470171d6dcfb8e48b306f8f49faeb1ff0c40892)]:
+  - @commercetools-docs/ui-kit@22.1.0
+  - @commercetools-docs/gatsby-transformer-raml@13.5.1
+
 ## 22.0.0
 
 ### Patch Changes
