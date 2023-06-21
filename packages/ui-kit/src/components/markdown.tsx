@@ -251,11 +251,11 @@ const TableHeader = styled.th`
 `;
 
 const InlineCode = styled.code`
-  background-color: ${colors.light.surfaceInlineCode};
-  border: 1px solid ${colors.light.borderSecondary};
+  background-color: #595959;
+  border: 1px solid #595959;
   border-radius: ${dimensions.spacings.xs};
-  color: ${colors.light.textCode};
-  font-family: ${typography.fontFamilies.code};
+  color: white;
+  font-family: ${typography.fontFamilies.primary};
   font-size: ${typography.fontSizes.small};
   padding: 0 ${dimensions.spacings.xs};
 `;

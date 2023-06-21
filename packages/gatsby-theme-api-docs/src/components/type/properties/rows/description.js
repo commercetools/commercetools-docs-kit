@@ -12,6 +12,7 @@ import Info from '../../../info';
 
 const customCodeStyle = css`
   border: none;
+  color: hsl(339.1304347826087, 100%, 40%);
   background-color: unset;
   padding: 0;
 `;
