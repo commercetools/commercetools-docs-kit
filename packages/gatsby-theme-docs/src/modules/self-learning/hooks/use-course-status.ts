@@ -29,6 +29,7 @@ type UseFetchCoursesResponse = {
   data: ApiCallResult<EnrolledCourses> | undefined;
   error: string;
   isLoading: boolean;
+  isValidating: boolean;
 };
 
 export const useFetchCourses = (): {
@@ -47,7 +48,7 @@ export const useFetchCourses = (): {
     isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearningFeatures) &&
     isAuthenticated;
 
-  const { data, error, isLoading } = useSWR(
+  const { data, error, isLoading, isValidating } = useSWR(
     shouldFetchData ? apiEndpoint : null,
     (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl, 'GET'),
     {
@@ -60,9 +61,9 @@ export const useFetchCourses = (): {
   ) as UseFetchCoursesResponse;
 
   useEffect(() => {
-    setAsyncLoading(isLoading);
+    setAsyncLoading(isLoading || isValidating);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, [isLoading, isValidating]);
 
   return {
     data,
