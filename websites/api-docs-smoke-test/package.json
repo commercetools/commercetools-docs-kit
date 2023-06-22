@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/api-docs-smoke-test",
-  "version": "8.1.14",
+  "version": "8.1.15",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -18,12 +18,12 @@
     "generate-ramldoc:test": "cd ../../api-specs/test && yarn generate-ramldoc"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-api-docs": "22.0.0",
-    "@commercetools-docs/gatsby-theme-docs": "22.0.0",
-    "@commercetools-docs/rmf-codegen": "13.25.0",
-    "gatsby": "5.10.0",
-    "gatsby-cli": "5.10.0",
-    "gatsby-source-filesystem": "5.10.0",
+    "@commercetools-docs/gatsby-theme-api-docs": "22.1.0",
+    "@commercetools-docs/gatsby-theme-docs": "22.1.0",
+    "@commercetools-docs/rmf-codegen": "13.27.0",
+    "gatsby": "5.11.0",
+    "gatsby-cli": "5.11.0",
+    "gatsby-source-filesystem": "5.11.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }
