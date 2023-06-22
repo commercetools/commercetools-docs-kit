@@ -2,7 +2,6 @@ import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/
 import dotenv from 'dotenv';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-const isProd = process.env.VERCEL_ENV === 'production';
 
 const config = {
   flags: {
@@ -21,7 +20,7 @@ const config = {
       auth0Domain: 'auth.id.commercetools.com',
       auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
       learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
-      selfLearningFeatures: ['status-indicator', 'complete-profile-modal', (!isProd) ? 'page-ready' : undefined],
+      selfLearningFeatures: ['status-indicator', 'complete-profile-modal', 'page-ready'],
       hideLogin: false,
       addOns: [],
     }),
