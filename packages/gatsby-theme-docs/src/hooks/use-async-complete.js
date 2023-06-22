@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { LearningContext } from '../modules/self-learning';
-import useIsClientSide from './use-is-client-side';
 import ConfigContext, { EFeatureFlag } from '../components/config-context';
 
 const DATA_TEST_READY_ATT_NAME = 'data-test-page-ready';
@@ -8,14 +7,12 @@ const DATA_TEST_READY_ATT_NAME = 'data-test-page-ready';
 export const useAsyncComplete = (url) => {
   const { selfLearningFeatures } = useContext(ConfigContext);
   const [isAsyncLoading, setAsyncLoading] = useState(false);
-  const { isClientSide } = useIsClientSide();
   const {
     updateAsyncRequest,
     ui: { asyncRequest },
   } = useContext(LearningContext);
 
-  const isHookEnabled =
-    selfLearningFeatures.includes(EFeatureFlag.PageReady) && isClientSide;
+  const isHookEnabled = selfLearningFeatures.includes(EFeatureFlag.PageReady);
 
   useEffect(() => {
     if (isHookEnabled && url && url !== '') {
