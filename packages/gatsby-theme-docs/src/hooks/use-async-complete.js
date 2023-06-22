@@ -3,6 +3,8 @@ import { LearningContext } from '../modules/self-learning';
 import useIsClientSide from './use-is-client-side';
 import ConfigContext, { EFeatureFlag } from '../components/config-context';
 
+const DATA_TEST_READY_ATT_NAME = 'data-test-page-ready';
+
 export const useAsyncComplete = (url) => {
   const { selfLearningFeatures } = useContext(ConfigContext);
   const [isAsyncLoading, setAsyncLoading] = useState(false);
@@ -27,9 +29,9 @@ export const useAsyncComplete = (url) => {
       return;
     }
     if (!Object.values(asyncRequest).find((value) => value === true)) {
-      document.body.setAttribute('data-test-ready', 'true');
+      document.body.setAttribute(DATA_TEST_READY_ATT_NAME, 'true');
     } else {
-      document.body.setAttribute('data-test-ready', 'false');
+      document.body.setAttribute(DATA_TEST_READY_ATT_NAME, 'false');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asyncRequest]);

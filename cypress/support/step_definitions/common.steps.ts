@@ -1,5 +1,6 @@
 import { When, Then, Given } from '@badeball/cypress-cucumber-preprocessor';
 import {
+  CORRECT_ANSWER_COLOR,
   EDITOR_TEST_USER_PASSWORD,
   EDITOR_TEST_USER_USERNAME,
   ETestId,
@@ -155,6 +156,11 @@ const completeCourse = (courseFirsPage: string) => {
   // passes first quiz
   selectQuizAnswers('correct');
   clickStep('quiz submit button');
+  cy.get(`[data-testid="${ETestId.quizWrapper}"]`).should(
+    'have.css',
+    'border-left-color',
+    CORRECT_ANSWER_COLOR
+  );
 
   // navigate to second quiz page
   cy.get('div[data-testid="pagination-next"]').click();
@@ -162,6 +168,11 @@ const completeCourse = (courseFirsPage: string) => {
   // passes second quiz
   selectQuizAnswers('correct');
   clickStep('quiz submit button');
+  cy.get(`[data-testid="${ETestId.quizWrapper}"]`).should(
+    'have.css',
+    'border-left-color',
+    CORRECT_ANSWER_COLOR
+  );
 };
 
 Then(`The user sees a page with {string} title`, (title) => {
@@ -254,13 +265,9 @@ Given('The user completes {string} successfully', (course: string) => {
   }
 });
 
-Given('The course status has fully loaded', () => {
-  cy.get('[data-testid^="sidebar-course-status-"]').each(($element) => {
-    cy.wrap($element).should('have.attr', 'data-test-course-loaded', 'true');
-  });
-
-  cy.get('[data-testid^="topic-status-"]').each(($element) => {
-    cy.wrap($element).should('have.attr', 'data-test-topic-loaded', 'true');
+Given('The page has fully loaded', () => {
+  cy.document().then((doc) => {
+    cy.wrap(doc.body).should('have.attr', 'data-test-page-ready', 'true');
   });
 });
 

@@ -23,7 +23,7 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
   const [correlationId, setCorrelationId] = useState<string | undefined>();
   const { getAuthToken } = useAuthToken();
   const { setAsyncLoading } = useAsyncComplete(
-    `/api/courses/${courseId}/quizzes/${quizId}/attempts`
+    `/api/courses/${courseId}/quizzes/${quizId}/attempts/submit`
   );
 
   const submitNewAttempt = useCallback(
@@ -103,8 +103,8 @@ export const useSubmitAttempt = (submitAttemptParams: SubmitAttemptParams) => {
           setError('Error submitting answers');
         }
       } finally {
-        setAsyncLoading(false);
         setIsLoading(false);
+        setAsyncLoading(false);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
