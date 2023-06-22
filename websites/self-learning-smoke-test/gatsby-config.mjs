@@ -2,7 +2,7 @@ import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/
 import dotenv from 'dotenv';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.VERCEL_ENV === 'production';
 
 const config = {
   flags: {
