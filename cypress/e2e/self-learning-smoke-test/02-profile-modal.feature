@@ -3,8 +3,8 @@ Feature: Profile Modal
   Scenario: User sees profile modal if profile is not complete
     Given Attempt to reset e2e user
     And The "user" logs in using the top login button
-    And The page has fully loaded
     Then The user sees a complete profile modal with empty fields
+    And The page has fully loaded
     And A snapshot is taken
 
   Scenario: User cannot submit incomplete profile form
