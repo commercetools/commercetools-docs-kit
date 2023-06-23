@@ -7,37 +7,27 @@ type ProfileModalConfig = {
   isDismissable: boolean;
 };
 
-type UpdateAsyncRequestPayload = {
-  url: string;
-  isLoading: boolean;
-};
-
-type AsyncRequest = Record<string, boolean>;
-
 export type LearningState = {
   user: {
     profile: User | undefined;
   };
   ui: {
     profileModal: ProfileModalConfig | undefined;
-    asyncRequest: AsyncRequest;
   };
   updateProfile: (userProfile: User) => void;
   openProfileModal: (cfg: ProfileModalConfig) => void;
   closeProfileModal: () => void;
-  updateAsyncRequest: (payload: UpdateAsyncRequestPayload) => void;
 };
 
 enum LearningActionKind {
   UPDATE_PROFILE = 'UPDATE_PROFILE',
   OPEN_PROFILE_MODAL = 'OPEN_PROFILE_MODAL',
   CLOSE_PROFILE_MODAL = 'CLOSE_PROFILE_MODAL',
-  UPDATE_ASYNC_REQUEST = 'UPDATE_ASYNC_REQUEST',
 }
 
 interface LearningAction {
   type: LearningActionKind;
-  payload?: User | ProfileModalConfig | UpdateAsyncRequestPayload;
+  payload?: User | ProfileModalConfig;
 }
 
 const initialState: LearningState = {
@@ -46,12 +36,10 @@ const initialState: LearningState = {
   },
   ui: {
     profileModal: undefined,
-    asyncRequest: {},
   },
   updateProfile: () => null,
   openProfileModal: () => null,
   closeProfileModal: () => null,
-  updateAsyncRequest: () => null,
 };
 
 export const LearningContext = createContext(initialState);
@@ -79,12 +67,6 @@ export const LearningStateProvider = ({ children }: LearningProviderProps) => {
     closeProfileModal: () => {
       dispatch({
         type: LearningActionKind.CLOSE_PROFILE_MODAL,
-      });
-    },
-    updateAsyncRequest: (payload: UpdateAsyncRequestPayload) => {
-      dispatch({
-        type: LearningActionKind.UPDATE_ASYNC_REQUEST,
-        payload,
       });
     },
   };
@@ -129,16 +111,6 @@ function learningReducer(
         ui: {
           ...state.ui,
           profileModal: undefined,
-        },
-      };
-    }
-    case LearningActionKind.UPDATE_ASYNC_REQUEST: {
-      const { url, isLoading } = payload as UpdateAsyncRequestPayload;
-      return {
-        ...state,
-        ui: {
-          ...state.ui,
-          asyncRequest: { ...state.ui.asyncRequest, [url]: isLoading },
         },
       };
     }
