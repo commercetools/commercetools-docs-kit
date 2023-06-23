@@ -191,7 +191,7 @@ const QuizForm = (props: QuizFormProps) => {
         <SelectionContainer data-testid="multiple-choice-container">
           <Spacings.Stack scale="m">
             <Spacings.Stack scale="m">
-              {answers.map((answer) => {
+              {answers.map((answer, index) => {
                 return (
                   <CheckboxInput
                     key={answer.name}
@@ -215,6 +215,7 @@ const QuizForm = (props: QuizFormProps) => {
                       formState[questionId] as string[]
                     )}
                     data-testid="question-checkbox"
+                    id={`question-checkbox-${questionId}-${index}`}
                   >
                     {
                       // @ts-ignore

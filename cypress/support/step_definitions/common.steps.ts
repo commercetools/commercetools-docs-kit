@@ -133,13 +133,32 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
 };
 
 export const selectQuizAnswers = (result: string) => {
-  cy.get(`[data-testid="${ETestId.quizForm}"] p`).each(($el, index) => {
-    if (
-      $el
-        .text()
-        .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
-    ) {
-      cy.get(`[data-testid="${ETestId.quizForm}"] p`).eq(index).click();
+  cy.get(`[data-testid="${ETestId.quizForm}"] div`).each(($el, idx) => {
+    if ($el.attr('data-testid') === 'single-choice-container') {
+      cy.get(
+        `[data-testid="${ETestId.quizForm}"] div:eq(${idx}) label[role="radio"]`
+      ).each(($lableEl) => {
+        if (
+          $lableEl
+            .text()
+            .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
+        ) {
+          cy.wrap($lableEl).click();
+        }
+      });
+    } else if ($el.attr('data-testid') === 'multiple-choice-container') {
+      cy.wrap($el)
+        .get('div[data-testid="multiple-choice-container"] label')
+        .each(($lableEl, index) => {
+          if (
+            $lableEl
+              .text()
+              .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
+          ) {
+            const labelFor = $lableEl.attr('for');
+            cy.get(`#${labelFor}`).click({ force: true });
+          }
+        });
     }
   });
 };
