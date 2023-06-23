@@ -285,8 +285,9 @@ Given('The user completes {string} successfully', (course: string) => {
 });
 
 Given('The page has fully loaded', () => {
-  cy.document().then((doc) => {
-    cy.wrap(doc.body).should('have.attr', 'data-test-page-ready', 'true');
+  cy.get('div[data-test-page-ready]').should(($div) => {
+    const value = $div.attr('data-test-page-ready');
+    expect(value).to.equal('true');
   });
 });
 
