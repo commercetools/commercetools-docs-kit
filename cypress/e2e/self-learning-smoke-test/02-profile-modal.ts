@@ -23,12 +23,6 @@ Then("The user can't submit the form", () => {
   ).should('not.be.enabled');
 });
 
-Then("The user doesn't see a complete profile modal", () => {
-  cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
-    'not.exist'
-  );
-});
-
 When(
   'The user sees an update profile modal with the values {string}, {string}, {string}',
   (firstName: string, lastName: string, company: string) => {

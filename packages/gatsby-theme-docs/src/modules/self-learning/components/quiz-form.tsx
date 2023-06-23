@@ -144,7 +144,10 @@ const QuizForm = (props: QuizFormProps) => {
     questionId: string
   ) => {
     return questionType === RENDER_TYPE_SINGLE ? (
-      <SelectionContainer data-testid="single-choice-container">
+      <SelectionContainer
+        data-testid="answer-container"
+        data-test-type="single-choice-container"
+      >
         <Spacings.Stack scale="m">
           <RadioInput.Group
             hasError={isIncorrectAnswer(
@@ -188,7 +191,10 @@ const QuizForm = (props: QuizFormProps) => {
       </SelectionContainer>
     ) : (
       <div>
-        <SelectionContainer data-testid="multiple-choice-container">
+        <SelectionContainer
+          data-testid="answer-container"
+          data-test-type="multiple-choice-container"
+        >
           <Spacings.Stack scale="m">
             <Spacings.Stack scale="m">
               {answers.map((answer, index) => {

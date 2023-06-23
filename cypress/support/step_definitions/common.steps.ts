@@ -133,10 +133,12 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
 };
 
 export const selectQuizAnswers = (result: string) => {
-  cy.get(`[data-testid="${ETestId.quizForm}"] div`).each(($el, idx) => {
-    if ($el.attr('data-testid') === 'single-choice-container') {
+  cy.get(
+    `[data-testid="${ETestId.quizForm}"]  div[data-testid="${ETestId.answerContainer}"]`
+  ).each(($el, idx) => {
+    if ($el.attr('data-test-type') === 'single-choice-container') {
       cy.get(
-        `[data-testid="${ETestId.quizForm}"] div:eq(${idx}) label[role="radio"]`
+        `[data-testid="${ETestId.quizForm}"] > div:eq(${idx}) label[role="radio"]`
       ).each(($lableEl) => {
         if (
           $lableEl
@@ -146,9 +148,9 @@ export const selectQuizAnswers = (result: string) => {
           cy.wrap($lableEl).click();
         }
       });
-    } else if ($el.attr('data-testid') === 'multiple-choice-container') {
+    } else if ($el.attr('data-test-type') === 'multiple-choice-container') {
       cy.wrap($el)
-        .get('div[data-testid="multiple-choice-container"] label')
+        .get('div[data-test-type="multiple-choice-container"] label')
         .each(($lableEl, index) => {
           if (
             $lableEl
@@ -293,4 +295,10 @@ Given('The page has fully loaded', () => {
 
 Then('The avatar icon shows {string}', (initials: string) => {
   cy.get(`[data-testid="${ETestId.avatarIcon}"]`).should('have.text', initials);
+});
+
+Then("The user doesn't see a complete profile modal", () => {
+  cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
+    'not.exist'
+  );
 });

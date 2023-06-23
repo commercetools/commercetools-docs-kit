@@ -12,6 +12,7 @@ export enum ETestId {
   quizFeedback = 'quiz-feedback',
   quizQuestionFeedback = 'quiz-question-feedback',
   tryAgainButton = 'try-again-button',
+  answerContainer = 'answer-container',
   multipleChoiceContainer = 'multiple-choice-container',
   singleChoiceContainer = 'multiple-choice-container',
   questionCheckbox = 'question-checkbox',
