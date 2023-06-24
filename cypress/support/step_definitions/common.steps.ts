@@ -173,6 +173,7 @@ const completeCourse = (courseFirsPage: string) => {
 
   // navigate to first quiz page
   cy.get('div[data-testid="pagination-next"]').click();
+  cy.url().should('include', '/quiz');
 
   // passes first quiz
   selectQuizAnswers('correct');
@@ -185,6 +186,11 @@ const completeCourse = (courseFirsPage: string) => {
 
   // navigate to second quiz page
   cy.get('div[data-testid="pagination-next"]').click();
+  cy.url().should('include', '/2-quiz');
+  cy.get('h4:first').should(
+    'have.text',
+    'Which of the following is NOT a product status in commercetools?'
+  );
 
   // passes second quiz
   selectQuizAnswers('correct');
