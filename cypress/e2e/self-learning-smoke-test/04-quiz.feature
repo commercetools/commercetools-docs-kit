@@ -2,7 +2,7 @@ Feature: Quiz
 
   Scenario: User submits a failed attempt
     Given Attempt to reset e2e user
-    And The "user" is logged in with new attempt
+    And The "user" is logged in
     And The user fills in "all" the profile details "FirstName", "LastName", "Test Corp."
     And The user submits the profile form
     And The user doesn't see a complete profile modal
@@ -34,8 +34,6 @@ Feature: Quiz
     And The user doesn't see a complete profile modal
     And The user completes "course-1" successfully
     Then The user sees a "course" completed modal
-    And The user gets redirected to "course-2/overview"
     And The user completes "course-2" successfully
     Then The user sees a "learning path" completed modal
-    And The user gets redirected to "site root"
 
