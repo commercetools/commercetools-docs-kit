@@ -5,7 +5,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
 import { useContext, useEffect } from 'react';
-import { LearningContext } from './learning-context';
+import { LearningContextApi, LearningContextState } from './learning-context';
 import { useUpdateUser } from '../hooks/use-update-user';
 import ConfigContext, {
   EFeatureFlag,
@@ -19,15 +19,12 @@ export type TProfileFormValues = {
 };
 
 const ProfileModal = () => {
+  const { selfLearningFeatures } = useContext(ConfigContext);
+  const { updateProfile, closeProfileModal } = useContext(LearningContextApi);
   const {
     user: { profile },
-    updateProfile,
-    closeProfileModal,
-  } = useContext(LearningContext);
-  const { selfLearningFeatures } = useContext(ConfigContext);
-  const {
     ui: { profileModal },
-  } = useContext(LearningContext);
+  } = useContext(LearningContextState);
   const { performUpdateUser, isLoading, updatedUser, error } = useUpdateUser({
     userId: profile?.user_id || '',
   });

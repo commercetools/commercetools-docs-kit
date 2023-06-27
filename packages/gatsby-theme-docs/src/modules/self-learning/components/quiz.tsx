@@ -13,7 +13,7 @@ import { useSubmitAttempt } from '../hooks/use-submit-attempt';
 import QuizForm from './quiz-form';
 import type { PassthroughData, SubmissionAttempt } from './quiz.types';
 import { canUseDOM, getQuizOutcome, isTestUserEmail } from './quiz.utils';
-import { LearningContext } from './learning-context';
+import { LearningContextState } from './learning-context';
 import { UserFilledIcon } from '@commercetools-uikit/icons';
 
 export const OUTCOME_CORRECT = 'correct';
@@ -120,7 +120,7 @@ const formattedError = (error: string, correlationId: string | undefined) =>
 const Quiz = (props: QuizProps) => {
   const {
     user: { profile },
-  } = useContext(LearningContext);
+  } = useContext(LearningContextState);
   const { isAuthenticated: isLoggedIn, isLoading: isAuthLoading } = useAuth0();
 
   const [formAttemptData, setFormAttemptData] = useState<

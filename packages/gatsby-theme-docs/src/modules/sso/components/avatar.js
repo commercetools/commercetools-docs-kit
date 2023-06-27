@@ -10,7 +10,7 @@ import LogoutButton from './logout-button';
 import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
 import { gtagEvent } from '../utils/analytics.utils';
-import { LearningContext } from '../../self-learning';
+import { LearningContextApi, LearningContextState } from '../../self-learning';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -32,10 +32,10 @@ const Avatar = styled.div`
 `;
 
 const UserAvatar = () => {
+  const { openProfileModal } = useContext(LearningContextApi);
   const {
-    openProfileModal,
     user: { profile },
-  } = useContext(LearningContext);
+  } = useContext(LearningContextState);
   const [avatarInitials, setAvatarInitials] = useState('');
   useEffect(() => {
     setAvatarInitials(

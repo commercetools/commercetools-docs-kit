@@ -1,5 +1,5 @@
 import { User } from '@auth0/auth0-react';
-import { createContext, useReducer } from 'react';
+import { createContext, useMemo, useReducer } from 'react';
 import type { ReactNode } from 'react';
 
 type ProfileModalConfig = {
@@ -7,81 +7,29 @@ type ProfileModalConfig = {
   isDismissable: boolean;
 };
 
-export type LearningState = {
-  user: {
-    profile: User | undefined;
-  };
-  ui: {
-    profileModal: ProfileModalConfig | undefined;
-  };
-  updateProfile: (userProfile: User) => void;
-  openProfileModal: (cfg: ProfileModalConfig) => void;
-  closeProfileModal: () => void;
-};
-
 enum LearningActionKind {
   UPDATE_PROFILE = 'UPDATE_PROFILE',
   OPEN_PROFILE_MODAL = 'OPEN_PROFILE_MODAL',
   CLOSE_PROFILE_MODAL = 'CLOSE_PROFILE_MODAL',
 }
-
 interface LearningAction {
   type: LearningActionKind;
   payload?: User | ProfileModalConfig;
 }
 
-const initialState: LearningState = {
+const initialState: LearningContextStateType = {
   user: {
     profile: undefined,
   },
   ui: {
     profileModal: undefined,
   },
-  updateProfile: () => null,
-  openProfileModal: () => null,
-  closeProfileModal: () => null,
-};
-
-export const LearningContext = createContext(initialState);
-
-type LearningProviderProps = {
-  children: ReactNode;
-};
-
-export const LearningStateProvider = ({ children }: LearningProviderProps) => {
-  const [state, dispatch] = useReducer(learningReducer, initialState);
-
-  const actions = {
-    updateProfile: (profile: User) => {
-      dispatch({
-        type: LearningActionKind.UPDATE_PROFILE,
-        payload: profile,
-      });
-    },
-    openProfileModal: (config: ProfileModalConfig) => {
-      dispatch({
-        type: LearningActionKind.OPEN_PROFILE_MODAL,
-        payload: config,
-      });
-    },
-    closeProfileModal: () => {
-      dispatch({
-        type: LearningActionKind.CLOSE_PROFILE_MODAL,
-      });
-    },
-  };
-
-  return (
-    <LearningContext.Provider value={{ ...state, ...actions }}>
-      {children}
-    </LearningContext.Provider>
-  );
 };
 
 function learningReducer(
-  state: LearningState,
+  state: LearningContextStateType,
   action: LearningAction
-): LearningState {
+): LearningContextStateType {
   switch (action.type) {
     case LearningActionKind.UPDATE_PROFILE: {
       return {
@@ -116,3 +64,81 @@ function learningReducer(
     }
   }
 }
+
+type LearningContextProviderProps = {
+  children: ReactNode;
+};
+
+/** CONTEXT STATE DEFINITION */
+type LearningContextStateType = {
+  user: {
+    profile: User | undefined;
+  };
+  ui: {
+    profileModal: ProfileModalConfig | undefined;
+  };
+};
+
+// Create a new state context
+const LearningContextState = createContext<LearningContextStateType>({
+  user: {
+    profile: undefined,
+  },
+  ui: {
+    profileModal: undefined,
+  },
+});
+
+/** CONTEXT API DEFINITION */
+type LearningContextApiType = {
+  updateProfile: (userProfile: User) => void;
+  openProfileModal: (cfg: ProfileModalConfig) => void;
+  closeProfileModal: () => void;
+};
+
+// Create a new API context
+const LearningContextApi = createContext<LearningContextApiType>({
+  updateProfile: () => null,
+  openProfileModal: () => null,
+  closeProfileModal: () => null,
+});
+
+const LearningContextProvider = ({
+  children,
+}: LearningContextProviderProps) => {
+  const [state, dispatch] = useReducer(learningReducer, initialState);
+
+  const api = useMemo(() => {
+    const updateProfile = (profile: User) => {
+      dispatch({
+        type: LearningActionKind.UPDATE_PROFILE,
+        payload: profile,
+      });
+    };
+
+    const openProfileModal = (config: ProfileModalConfig) => {
+      dispatch({
+        type: LearningActionKind.OPEN_PROFILE_MODAL,
+        payload: config,
+      });
+    };
+
+    const closeProfileModal = () => {
+      dispatch({
+        type: LearningActionKind.CLOSE_PROFILE_MODAL,
+      });
+    };
+
+    return { updateProfile, openProfileModal, closeProfileModal };
+  }, []);
+
+  return (
+    <LearningContextApi.Provider value={api}>
+      <LearningContextState.Provider value={state}>
+        {children}
+      </LearningContextState.Provider>
+    </LearningContextApi.Provider>
+  );
+};
+
+export { LearningContextProvider, LearningContextState, LearningContextApi };
