@@ -4,7 +4,6 @@ import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
 } from '../../../components/config-context';
-import { useAuth0 } from '@auth0/auth0-react';
 import type {
   ApiCallResult,
   Course,
@@ -13,6 +12,7 @@ import type {
 } from '../external-types';
 import { fetcherWithToken } from './hooks.utils';
 import { useAuthToken } from './use-auth-token';
+import useAuthentication from '../../sso/hooks/use-authentication';
 
 /**
  * Standar CourseStatus plus
@@ -36,7 +36,7 @@ export const useFetchCourses = (): {
   isLoading: boolean;
 } => {
   const { learnApiBaseUrl, selfLearningFeatures } = useContext(ConfigContext);
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuthentication();
   const { getAuthToken } = useAuthToken();
   const apiEndpoint = `/api/courses`;
 

@@ -1,8 +1,9 @@
-import { User, useAuth0 } from '@auth0/auth0-react';
+import { User } from '@auth0/auth0-react';
 import { useContext, useEffect } from 'react';
 import { LearningContext } from './learning-context';
 import { AUTH0_CLAIM_COMPANY } from '../../sso';
 import { isProfileComplete } from './profile.utils';
+import useAuthentication from '../../sso/hooks/use-authentication';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -29,7 +30,7 @@ const contextProfileAdapter = (auth0User: User) => {
 };
 
 const UserProfileInit = () => {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuthentication();
   const {
     updateProfile,
     user: { profile },

@@ -11,6 +11,7 @@ import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
 import { gtagEvent } from '../utils/analytics.utils';
 import { LearningContext } from '../../self-learning';
+import useAuthentication from '../hooks/use-authentication';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -103,7 +104,7 @@ const LoggedOutState = () => {
 LoggedOutState.displayName = 'LoggedOutState';
 
 const UserProfile = () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuthentication();
 
   return isAuthenticated ? <LoggedInState /> : <LoggedOutState />;
 };
