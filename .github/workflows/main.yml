@@ -229,6 +229,13 @@ jobs:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
           CYPRESS_CI: 'true'
 
+      - name: Upload e2e artifacts
+        uses: actions/upload-artifact@v3
+        if: ${{ failure() }}
+        with:
+          name: self-learning-e2e-failure-snapshots
+          path: cypress/screenshots/
+
   link-check:
     name: 'Check links'
 
