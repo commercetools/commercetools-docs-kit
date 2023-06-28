@@ -1,6 +1,6 @@
 import { User, useAuth0 } from '@auth0/auth0-react';
 import { useContext, useEffect } from 'react';
-import { LearningContext } from './learning-context';
+import { LearningContextApi, LearningContextState } from './learning-context';
 import { AUTH0_CLAIM_COMPANY } from '../../sso';
 import { isProfileComplete } from './profile.utils';
 
@@ -30,12 +30,11 @@ const contextProfileAdapter = (auth0User: User) => {
 
 const UserProfileInit = () => {
   const { user, isAuthenticated } = useAuth0();
+  const { updateProfile, openProfileModal, closeProfileModal } =
+    useContext(LearningContextApi);
   const {
-    updateProfile,
     user: { profile },
-    openProfileModal,
-    closeProfileModal,
-  } = useContext(LearningContext);
+  } = useContext(LearningContextState);
 
   useEffect(() => {
     if (isAuthenticated && !profile && user) {

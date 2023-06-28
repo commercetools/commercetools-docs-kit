@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { LearningContext } from './learning-context';
+import { LearningContextState } from './learning-context';
 
 const FirstName = () => {
-  const { user } = useContext(LearningContext);
+  const { user } = useContext(LearningContextState);
   return user?.profile?.given_name || '';
 };
 

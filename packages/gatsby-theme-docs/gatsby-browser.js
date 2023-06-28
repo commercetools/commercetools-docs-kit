@@ -21,7 +21,7 @@ import '@fontsource/roboto-mono/latin-500.css';
 import '@fontsource/roboto-mono/latin-700.css';
 import './globals.css';
 import ConfigContext from './src/components/config-context';
-import { LearningStateProvider } from './src/modules/self-learning/components/learning-context';
+import { LearningContextProvider } from './src/modules/self-learning/components/learning-context';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_VERCEL_GITHUB_COMMIT_SHA;
@@ -127,14 +127,14 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
               scope: 'profile email',
             }}
           >
-            <LearningStateProvider>
+            <LearningContextProvider>
               <SWRConfig>{element}</SWRConfig>
-            </LearningStateProvider>
+            </LearningContextProvider>
           </Auth0Provider>
         ) : (
-          <LearningStateProvider>
+          <LearningContextProvider>
             <SWRConfig>{element}</SWRConfig>
-          </LearningStateProvider>
+          </LearningContextProvider>
         )}
       </ConfigContext.Provider>
     </CacheProvider>
