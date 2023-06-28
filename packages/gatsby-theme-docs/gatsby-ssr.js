@@ -25,7 +25,7 @@ import iconLightDigestRaw from '!!raw-loader!./static/favicon-light-32x32.png';
 import contentTemplate from './src/templates/page-content';
 import releaseNoteTemplate from './src/templates/release-notes-detail';
 import ConfigContext from './src/components/config-context';
-import { LearningStateProvider } from './src/modules/self-learning/components/learning-context';
+import { LearningContextProvider } from './src/modules/self-learning/components/learning-context';
 
 // eslint-disable-next-line no-unused-vars
 const doSomethingFakeWithTheImports = [contentTemplate, releaseNoteTemplate];
@@ -130,7 +130,7 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
         hideLogin: pluginOptions?.hideLogin || false,
       }}
     >
-      <LearningStateProvider>{element}</LearningStateProvider>
+      <LearningContextProvider>{element}</LearningContextProvider>
     </ConfigContext.Provider>
   );
 };
