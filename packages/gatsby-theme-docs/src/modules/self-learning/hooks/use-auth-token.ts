@@ -4,7 +4,7 @@ import ConfigContext from '../../../components/config-context';
 
 export const useAuthToken = () => {
   const { auth0Domain } = useContext(ConfigContext);
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0(); // must not use the auth0 wrapper (useAuthentication) as it would creare a circular dependency
   const audience =
     auth0Domain === 'auth.id.commercetools.com'
       ? 'commercetools.eu.auth0.com'

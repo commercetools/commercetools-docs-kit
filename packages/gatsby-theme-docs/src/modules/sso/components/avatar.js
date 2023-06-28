@@ -1,7 +1,6 @@
 // A React component to be rendered in the top bar next to the top menu toggle button
 import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { useAuth0 } from '@auth0/auth0-react';
 import Spacings from '@commercetools-uikit/spacings';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { GraduationCapIcon } from '@commercetools-uikit/icons';
@@ -72,7 +71,7 @@ const LoggedInState = () => (
 LoggedInState.displayName = 'LoggedInState';
 
 const LoggedOutState = () => {
-  const { loginWithRedirect, isLoading } = useAuth0();
+  const { loginWithRedirect, isLoading } = useAuthentication();
 
   return isLoading ? null : (
     <AvatarContainer>
