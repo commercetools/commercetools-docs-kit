@@ -88,7 +88,6 @@ export const ExternalSiteLink = (props) => (
 const PureLink = (extendedProps) => {
   const siteData = useSiteData();
   const { location, nounderline, ...props } = extendedProps;
-  console.log('location', location);
   // For image links, return the link as-is.
   if (props.href.startsWith(withPrefix('/static'))) {
     // eslint-disable-next-line jsx-a11y/anchor-has-content
