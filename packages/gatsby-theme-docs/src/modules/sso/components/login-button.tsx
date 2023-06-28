@@ -30,7 +30,7 @@ const LoginButton = (props: LoginButtonProps) => {
   if (props.theme === 'primary') {
     return (
       <PrimaryButton
-        data-testid="login-quiz-button"
+        data-testid="quiz-login-button"
         onClick={() => {
           gtagEvent('login');
           loginWithRedirect({
@@ -48,7 +48,7 @@ const LoginButton = (props: LoginButtonProps) => {
 
   return (
     <SecondaryButton
-      data-testid="login-button"
+      data-testid="avatar-login-button"
       onClick={() => {
         gtagEvent('login');
         loginWithRedirect({

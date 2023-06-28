@@ -78,7 +78,7 @@ const LoggedOutState = () => {
       <LoginButton
         theme="secondary"
         label="Log in"
-        data-testid="login-button"
+        data-testid="avatar-login-button"
       />
       <PrimaryButton
         onClick={() => {

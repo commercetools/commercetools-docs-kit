@@ -1,5 +1,6 @@
 import { When, Then, Given } from '@badeball/cypress-cucumber-preprocessor';
 import {
+  CORRECT_ANSWER_COLOR,
   EDITOR_TEST_USER_PASSWORD,
   EDITOR_TEST_USER_USERNAME,
   ETestId,
@@ -50,10 +51,13 @@ export const clickStep = (clickArea: string) => {
     case 'logout button':
       cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
       break;
-    case 'login button':
-      cy.get(`div[data-testid="${ETestId.loginButton}"]`).click({
+    case 'quiz login button':
+      cy.get(`div[data-testid="${ETestId.quizLoginButton}"]`).click({
         force: true,
       });
+      break;
+    case 'avatar login button':
+      cy.get(`div[data-testid="${ETestId.avatarLoginButton}"]`).click();
       break;
     case 'quiz submit button':
       cy.get(`[data-testid="${ETestId.quizFormSubmit}"]`).click();
@@ -86,15 +90,16 @@ const loginTopButtonStep = (user: string) => {
       ? EDITOR_TEST_USER_PASSWORD
       : TEST_USER_PASSWORD;
 
-  cy.clearCookies();
-  cy.clearLocalStorage();
+  cy.clearAllCookies();
+  cy.clearAllLocalStorage();
+  cy.clearAllSessionStorage();
   cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
-  cy.get('button[data-testid="login-button"]').click();
+  cy.get(`button[data-testid="${ETestId.avatarLoginButton}"]`).click();
   performLogin(username, password);
   cy.get(`[data-testid="${ETestId.logoutButton}"]`).should('exist');
 };
 
-const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
+const loginToQuizStep = (user: string) => {
   const username: string =
     user === 'editor test user'
       ? EDITOR_TEST_USER_USERNAME
@@ -104,41 +109,51 @@ const loginToQuizStep = (user: string, isNewAttempt: boolean) => {
       ? EDITOR_TEST_USER_PASSWORD
       : TEST_USER_PASSWORD;
 
-  cy.clearCookies();
-  cy.clearLocalStorage();
+  cy.clearAllCookies();
+  cy.clearAllLocalStorage();
+  cy.clearAllSessionStorage();
   cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
   cy.get('#navigation-scroll-container')
     .get(`a[href *= "course-1/quiz"]`)
     .click();
-  if (isNewAttempt) {
-    cy.intercept(
-      {
-        url: '**/api/courses/*/quizzes/*/attempts?forceNew=false',
-      },
-      (req) => {
-        req.url = req.url.replace('forceNew=false', 'forceNew=true');
-      }
-    ).as('fetchAttempt');
-  }
   cy.get(`div[data-testid="${ETestId.quizWrapper}"]`).scrollIntoView();
-  cy.get(`div[data-testid="${ETestId.loginButton}"]`).click({
+  cy.get(`div[data-testid="${ETestId.quizLoginButton}"]`).click({
     force: true,
   });
   performLogin(username, password);
 
-  cy.get(`[data-testid="${ETestId.quizWrapper}"]`)
-    .find(`[data-testid="${ETestId.quizForm}"]`)
-    .should('exist');
+  cy.get(`[data-testid="${ETestId.logoutButton}"]`).should('exist');
 };
 
 export const selectQuizAnswers = (result: string) => {
-  cy.get(`[data-testid="${ETestId.quizForm}"] p`).each(($el, index) => {
-    if (
-      $el
-        .text()
-        .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
-    ) {
-      cy.get(`[data-testid="${ETestId.quizForm}"] p`).eq(index).click();
+  cy.get(
+    `[data-testid="${ETestId.quizForm}"]  div[data-testid="${ETestId.answerContainer}"]`
+  ).each(($el, idx) => {
+    if ($el.attr('data-test-type') === 'single-choice-container') {
+      cy.get(
+        `[data-testid="${ETestId.quizForm}"] > div:eq(${idx}) label[role="radio"]`
+      ).each(($lableEl) => {
+        if (
+          $lableEl
+            .text()
+            .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
+        ) {
+          cy.wrap($lableEl).click();
+        }
+      });
+    } else if ($el.attr('data-test-type') === 'multiple-choice-container') {
+      cy.wrap($el)
+        .get('div[data-test-type="multiple-choice-container"] label')
+        .each(($lableEl, index) => {
+          if (
+            $lableEl
+              .text()
+              .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
+          ) {
+            const labelFor = $lableEl.attr('for');
+            cy.get(`#${labelFor}`).click({ force: true });
+          }
+        });
     }
   });
 };
@@ -151,36 +166,48 @@ const completeCourse = (courseFirsPage: string) => {
 
   // navigate to first quiz page
   cy.get('div[data-testid="pagination-next"]').click();
+  cy.url().should('include', '/quiz');
+  cy.get('h4:first').should(
+    'include.text',
+    'Which of the following statements is correct about the commercetools product data model'
+  );
 
   // passes first quiz
   selectQuizAnswers('correct');
   clickStep('quiz submit button');
+  cy.get(`[data-testid="${ETestId.quizWrapper}"]`).should(
+    'have.css',
+    'border-left-color',
+    CORRECT_ANSWER_COLOR
+  );
 
   // navigate to second quiz page
   cy.get('div[data-testid="pagination-next"]').click();
+  cy.url().should('include', '/2-quiz');
+  cy.get('h4:first').should(
+    'include.text',
+    'Which of the following is NOT a product status in commercetools?'
+  );
 
   // passes second quiz
   selectQuizAnswers('correct');
   clickStep('quiz submit button');
+  cy.get(`[data-testid="${ETestId.quizWrapper}"]`).should(
+    'have.css',
+    'border-left-color',
+    CORRECT_ANSWER_COLOR
+  );
 };
 
 Then(`The user sees a page with {string} title`, (title) => {
   cy.get('h1').should('contain', title);
 });
 
-Given('The {string} is logged in', (user: string) =>
-  loginToQuizStep(user, false)
-);
-Given(`The {string} is logged in with new attempt`, (user: string) =>
-  loginToQuizStep(user, true)
-);
-Given('The user is logged in for the first time', () => {
-  resetUser();
-  loginToQuizStep('user', false);
-});
+Given('The {string} is logged in', (user: string) => loginToQuizStep(user));
 
 Given(`The user logs out`, () => {
   cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
+  cy.get(`[data-testid="${ETestId.avatarLoginButton}"]`).should('be.visible');
 });
 
 Given('The avatar menu is displayed', () => {
@@ -266,4 +293,39 @@ Given('The course status has fully loaded', () => {
 
 Then('The avatar icon shows {string}', (initials: string) => {
   cy.get(`[data-testid="${ETestId.avatarIcon}"]`).should('have.text', initials);
+});
+
+Given('The user sees a complete profile modal with empty fields', () => {
+  cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
+    'be.visible'
+  );
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[type="text"]`
+  )
+    .should('have.length', 3)
+    .each(($input) => {
+      cy.wrap($input).should('have.value', '');
+    });
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] button`
+  ).should('be.disabled');
+});
+
+Then("The user doesn't see a complete profile modal", () => {
+  cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
+    'not.exist'
+  );
+});
+
+Then('The user sees a {string} completed modal', (type: string) => {
+  const expectedText =
+    type === 'course'
+      ? 'completed this module'
+      : 'completed this learning path';
+  cy.get(`[data-testid="${ETestId.moduleCompleteModal}"] > div[name="main"]`)
+    .contains(expectedText)
+    .should('be.visible');
+  cy.get(
+    `[data-testid="${ETestId.moduleCompleteModal}"] > div[name="main"] button[label="Continue"]`
+  ).click();
 });
