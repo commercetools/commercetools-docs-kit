@@ -233,7 +233,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: ${{ failure() }}
         with:
-          name: self-learning-e2e-failure-snapshots
+          name: self-learning-e2e-failure-snapshots-${{ github.run_attempt }}
           path: cypress/screenshots/
 
   link-check:
