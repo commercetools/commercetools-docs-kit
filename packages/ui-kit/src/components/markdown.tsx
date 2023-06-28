@@ -251,10 +251,10 @@ const TableHeader = styled.th`
 `;
 
 const InlineCode = styled.code`
-  background-color: #595959;
-  border: 1px solid #595959;
+  background-color: ${colors.light.surfaceInlineCode};
+  border: 1px solid ${colors.light.borderSecondary};
+  color: ${colors.light.textPrimary};
   border-radius: ${dimensions.spacings.xs};
-  color: white;
   font-family: ${typography.fontFamilies.primary};
   font-size: ${typography.fontSizes.small};
   padding: 0 ${dimensions.spacings.xs};
