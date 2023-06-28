@@ -256,6 +256,8 @@ const InlineCode = styled.code`
   color: ${colors.light.textPrimary};
   border-radius: ${dimensions.spacings.xs};
   font-family: ${typography.fontFamilies.primary};
+  font-feature-settings: "salt" /* stylistic alternatives to signal a little more "differentness" */ , "tnum" /* tabular numbers, this is monospace but only for numbers */ , "ss02" /* disambiguation, this makes sure letters cannot be confused with each other */;
+  letter-spacing: 0; /* prevents automatic compression between letters.  Could be set to 1% too if  little wider is considered better for string literals where it's important that they are perceived "letter-by-letter" and less per their meaning */
   font-size: ${typography.fontSizes.small};
   padding: 0 ${dimensions.spacings.xs};
 `;
