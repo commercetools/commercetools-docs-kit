@@ -1,7 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import useSWR from 'swr';
-import { fetcherWithToken } from '../../self-learning/hooks/hooks.utils';
+import {
+  DEFAULT_SWR_FLAGS,
+  fetcherWithToken,
+} from '../../self-learning/hooks/hooks.utils';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
 import ConfigContext, {
   EFeatureFlag,
@@ -23,13 +26,7 @@ const useAuthentication = () => {
   const { data, error, isLoading } = useSWR(
     shouldFetchData ? apiEndpoint : null,
     (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl, 'GET'),
-    {
-      revalidateOnReconnect: false,
-      revalidateIfStale: false,
-      revalidateOnMount: true,
-      dedupingInterval: 3 * 60 * 1000, // allow revalidation each 3 minutes
-      revalidateOnFocus: true,
-    }
+    DEFAULT_SWR_FLAGS
   );
 
   useEffect(() => {
