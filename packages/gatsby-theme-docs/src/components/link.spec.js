@@ -95,6 +95,15 @@ describe('rendering', () => {
       },
     },
     {
+      title: 'gatsby link to a page with name partially matching pathPrefix',
+      props: { href: '/prefixpage-1#ctp:someitem:otheritem' },
+      location: { pathname: '/page-1' },
+      expected: {
+        'data-link-type': 'gatsby-link',
+        href: '/prefixpage-1#ctp:someitem:otheritem',
+      },
+    },
+    {
       title: 'gatsby link to a sub-page using a trailing slash',
       props: { href: 'page-1/getting-started/' },
       location: { pathname: '/page-1' },

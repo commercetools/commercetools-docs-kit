@@ -135,9 +135,11 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
             </PageReadyProvider>
           </Auth0Provider>
         ) : (
-          <LearningStateProvider>
-            <SWRConfig>{element}</SWRConfig>
-          </LearningStateProvider>
+          <PageReadyProvider>
+            <LearningStateProvider>
+              <SWRConfig>{element}</SWRConfig>
+            </LearningStateProvider>
+          </PageReadyProvider>
         )}
       </ConfigContext.Provider>
     </CacheProvider>
