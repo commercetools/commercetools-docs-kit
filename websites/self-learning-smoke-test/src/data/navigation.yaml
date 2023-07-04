@@ -20,5 +20,7 @@
   pages:
     - title: Overview
       path: /course-3/overview
+    - title: Video
+      path: /course-3/video
     - title: Quiz
       path: /course-3/quiz

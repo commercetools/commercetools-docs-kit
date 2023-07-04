@@ -4,7 +4,7 @@ import { useLazyLoad } from '@commercetools-docs/ui-kit';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import VideoPlaceholder from './video-placeholder';
 
-const videoJsVersion = '8.2.1';
+const videoJsVersion = '8.3.0';
 
 /**
  * Preset value. Evaluate overtime if any of these needs to be a prop
@@ -52,6 +52,26 @@ const VideoPlayer = (props) => {
         );
       }
       const player = playerRef.current;
+      let eventTriggered = false; // Flag to track event triggering
+
+      player.on('timeupdate', () => {
+        const completeThreshold = props.completeAtPercent
+          ? parseInt(props.completeAtPercent) / 100
+          : 0.8; // defaults to 80% (0.8)
+        console.log('completeAtPercent', completeThreshold);
+        const currentTime = player.currentTime();
+        const duration = player.duration();
+        const progress = currentTime / duration;
+        if (!eventTriggered && progress >= completeThreshold) {
+          // Trigger custom event
+          const customEvent = new CustomEvent('videoProgressReached', {
+            detail: { progress },
+          });
+          const el = document.getElementById('application');
+          el.dispatchEvent(customEvent);
+          eventTriggered = true; // Set the flag to prevent further triggering
+        }
+      });
       return () => {
         if (player) {
           player.dispose();
@@ -78,6 +98,7 @@ const VideoPlayer = (props) => {
 VideoPlayer.propTypes = {
   url: PropTypes.string.isRequired,
   poster: PropTypes.string,
+  completeAtPercent: PropTypes.string,
 };
 
 export default VideoPlayer;
