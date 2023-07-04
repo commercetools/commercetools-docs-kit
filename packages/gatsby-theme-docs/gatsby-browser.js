@@ -21,7 +21,7 @@ import '@fontsource/roboto-mono/latin-500.css';
 import '@fontsource/roboto-mono/latin-700.css';
 import './globals.css';
 import ConfigContext from './src/components/config-context';
-import { LearningStateProvider } from './src/modules/self-learning/components/learning-context';
+import { LearningContextProvider } from './src/modules/self-learning/components/learning-context';
 import { PageReadyProvider } from './src/modules/self-learning/components/page-ready-context';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
@@ -129,16 +129,16 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
             }}
           >
             <PageReadyProvider>
-              <LearningStateProvider>
+              <LearningContextProvider>
                 <SWRConfig>{element}</SWRConfig>
-              </LearningStateProvider>
+              </LearningContextProvider>
             </PageReadyProvider>
           </Auth0Provider>
         ) : (
           <PageReadyProvider>
-            <LearningStateProvider>
+            <LearningContextProvider>
               <SWRConfig>{element}</SWRConfig>
-            </LearningStateProvider>
+            </LearningContextProvider>
           </PageReadyProvider>
         )}
       </ConfigContext.Provider>
