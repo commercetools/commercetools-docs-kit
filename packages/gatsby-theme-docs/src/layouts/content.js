@@ -26,10 +26,25 @@ import {
   CourseCompleteModal,
   useCourseInfoByPageSlugs,
 } from '../modules/self-learning';
+import {
+  useFetchCourseDetails,
+  getMatchingTopic,
+} from '../modules/self-learning/hooks/use-course-details';
+import SelfLearningPage from '../modules/self-learning/components/self-learning-page';
 
 const LayoutContent = (props) => {
   const courseInfo = useCourseInfoByPageSlugs([props.pageContext.slug]);
   const courseId = courseInfo[props.pageContext.slug]?.courseId;
+  const { data } = useFetchCourseDetails(courseId);
+  const isSelfLearningPage = !!courseId;
+  let selfLearningTopic;
+  if (isSelfLearningPage) {
+    selfLearningTopic = getMatchingTopic(
+      data?.result?.topics,
+      courseInfo[props.pageContext.slug]?.topicName
+    );
+  }
+
   const { ref, inView, entry } = useInView();
   const isSearchBoxInView = !Boolean(entry) || inView;
   const layoutState = useLayoutState();
@@ -97,6 +112,10 @@ const LayoutContent = (props) => {
             </LayoutPageHeaderSide>
             <LayoutPageContent>
               <PageContentInset id="body-content" showRightBorder>
+                {isSelfLearningPage && (
+                  <SelfLearningPage topic={selfLearningTopic} />
+                )}
+                {courseId}
                 {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
               </PageContentInset>

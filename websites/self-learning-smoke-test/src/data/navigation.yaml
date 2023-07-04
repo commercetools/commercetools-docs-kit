@@ -15,3 +15,10 @@
       path: /course-2/quiz
     - title: Test your knowledge 2
       path: /course-2/2-quiz
+
+- chapter-title: Self-learning course 3
+  pages:
+    - title: Overview
+      path: /course-3/overview
+    - title: Quiz
+      path: /course-3/quiz
