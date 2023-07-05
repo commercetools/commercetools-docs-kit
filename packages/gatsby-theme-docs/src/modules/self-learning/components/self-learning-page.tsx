@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { CourseTopic } from '../external-types';
+import React from 'react';
 
 type SelfLearningPageProps = {
+  children: ReactNode;
   topic: CourseTopic;
+  isContentVisible: boolean;
 };
 
 export interface VideoProgressReachedEvent extends Event {
@@ -12,35 +15,44 @@ export interface VideoProgressReachedEvent extends Event {
 }
 
 const SelfLearningPage = (props: SelfLearningPageProps) => {
+  console.log('isContentVisible', props.isContentVisible);
   const [actType, setActType] = useState<string | undefined>();
   const pageviewRegexp = /^pageview/;
   const videoRegexp = /^video/;
 
   useEffect(() => {
-    const handleVideoProgressReached = (event: VideoProgressReachedEvent) => {
-      const videoProgressEvent = event as VideoProgressReachedEvent;
-      const progress = videoProgressEvent.detail.progress;
-      // TODO: track video activity as completed
-      console.log(`User reached ${progress} of the video`);
-    };
+    if (actType === 'pageview') {
+      if (props.isContentVisible) {
+        // TODO: track text activity as completed
+        console.log(`User viewed text activity`);
+      }
+    }
+    if (actType === 'video') {
+      const handleVideoProgressReached = (event: VideoProgressReachedEvent) => {
+        const videoProgressEvent = event as VideoProgressReachedEvent;
+        const progress = videoProgressEvent.detail.progress;
+        // TODO: track video activity as completed
+        console.log(`User reached ${progress} of the video`);
+      };
 
-    const ancestorElement = document.getElementById(
-      'application'
-    ) as HTMLElement;
-    if (actType === 'video' && ancestorElement) {
-      ancestorElement.addEventListener(
-        'videoProgressReached',
-        handleVideoProgressReached
-      );
-
-      return () => {
-        ancestorElement.removeEventListener(
+      const ancestorElement = document.getElementById(
+        'application'
+      ) as HTMLElement;
+      if (ancestorElement) {
+        ancestorElement.addEventListener(
           'videoProgressReached',
           handleVideoProgressReached
         );
-      };
+
+        return () => {
+          ancestorElement.removeEventListener(
+            'videoProgressReached',
+            handleVideoProgressReached
+          );
+        };
+      }
     }
-  }, [actType]);
+  }, [actType, props.isContentVisible]);
 
   useEffect(() => {
     if (props.topic?.activities[0]?.type === 'label') {
@@ -56,7 +68,7 @@ const SelfLearningPage = (props: SelfLearningPageProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.topic]);
 
-  return <p>{actType}</p>;
+  return <>{props.children}</>;
 };
 
 export default SelfLearningPage;

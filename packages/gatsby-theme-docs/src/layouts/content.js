@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -31,6 +31,7 @@ import {
   getMatchingTopic,
 } from '../modules/self-learning/hooks/use-course-details';
 import SelfLearningPage from '../modules/self-learning/components/self-learning-page';
+import usePageVisibility from '../hooks/use-page-visibility';
 
 const LayoutContent = (props) => {
   const courseInfo = useCourseInfoByPageSlugs([props.pageContext.slug]);
@@ -46,6 +47,8 @@ const LayoutContent = (props) => {
   }
 
   const { ref, inView, entry } = useInView();
+  const contentRef = useRef();
+  const isContentVisible = usePageVisibility(isSelfLearningPage); // enabled only on self-learning pages
   const isSearchBoxInView = !Boolean(entry) || inView;
   const layoutState = useLayoutState();
   const siteData = useSiteData();
@@ -110,13 +113,18 @@ const LayoutContent = (props) => {
                 <PlaceholderPageHeaderSideBannerArea />
               </SpacingsStack>
             </LayoutPageHeaderSide>
-            <LayoutPageContent>
+            <LayoutPageContent ref={courseId ? contentRef : null}>
               <PageContentInset id="body-content" showRightBorder>
-                {isSelfLearningPage && (
-                  <SelfLearningPage topic={selfLearningTopic} />
+                {isSelfLearningPage ? (
+                  <SelfLearningPage
+                    topic={selfLearningTopic}
+                    isContentVisible={isContentVisible}
+                  >
+                    {props.children}
+                  </SelfLearningPage>
+                ) : (
+                  <>{props.children}</>
                 )}
-                {courseId}
-                {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
               </PageContentInset>
             </LayoutPageContent>
