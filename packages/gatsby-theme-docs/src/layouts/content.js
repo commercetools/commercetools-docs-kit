@@ -30,8 +30,9 @@ import {
   useFetchCourseDetails,
   getMatchingTopic,
 } from '../modules/self-learning/hooks/use-course-details';
-import SelfLearningPage from '../modules/self-learning/components/self-learning-page';
+import SelfLearningPage from '../modules/self-learning/hooks/use-learning-tracking';
 import usePageVisibility from '../hooks/use-page-visibility';
+import useLearningTopicTracking from '../modules/self-learning/hooks/use-learning-tracking';
 
 const LayoutContent = (props) => {
   const courseInfo = useCourseInfoByPageSlugs([props.pageContext.slug]);
@@ -45,10 +46,11 @@ const LayoutContent = (props) => {
       courseInfo[props.pageContext.slug]?.topicName
     );
   }
+  useLearningTopicTracking(selfLearningTopic);
+  const isContentVisible = usePageVisibility(isSelfLearningPage); // enabled only on self-learning pages
 
   const { ref, inView, entry } = useInView();
   const contentRef = useRef();
-  const isContentVisible = usePageVisibility(isSelfLearningPage); // enabled only on self-learning pages
   const isSearchBoxInView = !Boolean(entry) || inView;
   const layoutState = useLayoutState();
   const siteData = useSiteData();
@@ -115,16 +117,7 @@ const LayoutContent = (props) => {
             </LayoutPageHeaderSide>
             <LayoutPageContent ref={courseId ? contentRef : null}>
               <PageContentInset id="body-content" showRightBorder>
-                {isSelfLearningPage ? (
-                  <SelfLearningPage
-                    topic={selfLearningTopic}
-                    isContentVisible={isContentVisible}
-                  >
-                    {props.children}
-                  </SelfLearningPage>
-                ) : (
-                  <>{props.children}</>
-                )}
+                {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
               </PageContentInset>
             </LayoutPageContent>

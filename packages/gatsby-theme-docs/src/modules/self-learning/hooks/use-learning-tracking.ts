@@ -1,12 +1,5 @@
-import { ReactNode, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CourseTopic } from '../external-types';
-import React from 'react';
-
-type SelfLearningPageProps = {
-  children: ReactNode;
-  topic: CourseTopic;
-  isContentVisible: boolean;
-};
 
 export interface VideoProgressReachedEvent extends Event {
   detail: {
@@ -14,17 +7,44 @@ export interface VideoProgressReachedEvent extends Event {
   };
 }
 
-const SelfLearningPage = (props: SelfLearningPageProps) => {
-  console.log('isContentVisible', props.isContentVisible);
+export interface ContentPageViewedEvent extends Event {
+  detail: {
+    viewed: boolean;
+  };
+}
+
+const useLearningTopicTracking = (topic: CourseTopic | undefined) => {
   const [actType, setActType] = useState<string | undefined>();
   const pageviewRegexp = /^pageview/;
   const videoRegexp = /^video/;
 
   useEffect(() => {
+    if (!topic) {
+      return;
+    }
     if (actType === 'pageview') {
-      if (props.isContentVisible) {
-        // TODO: track text activity as completed
-        console.log(`User viewed text activity`);
+      const handleContentPageViewed = (event: ContentPageViewedEvent) => {
+        const videoProgressEvent = event as ContentPageViewedEvent;
+        const viewed = videoProgressEvent.detail.viewed;
+        // TODO: track content page viewed
+        console.log(`User viewed content? ${viewed}`);
+      };
+
+      const ancestorElement = document.getElementById(
+        'application'
+      ) as HTMLElement;
+      if (ancestorElement) {
+        ancestorElement.addEventListener(
+          'selflearning:pageContentViewed',
+          handleContentPageViewed
+        );
+
+        return () => {
+          ancestorElement.removeEventListener(
+            'selflearning:pageContentViewed',
+            handleContentPageViewed
+          );
+        };
       }
     }
     if (actType === 'video') {
@@ -40,23 +60,23 @@ const SelfLearningPage = (props: SelfLearningPageProps) => {
       ) as HTMLElement;
       if (ancestorElement) {
         ancestorElement.addEventListener(
-          'videoProgressReached',
+          'selflearning:videoProgressReached',
           handleVideoProgressReached
         );
 
         return () => {
           ancestorElement.removeEventListener(
-            'videoProgressReached',
+            'selflearning:videoProgressReached',
             handleVideoProgressReached
           );
         };
       }
     }
-  }, [actType, props.isContentVisible]);
+  }, [actType, topic]);
 
   useEffect(() => {
-    if (props.topic?.activities[0]?.type === 'label') {
-      const activityName = props.topic?.activities[0]?.name;
+    if (topic?.activities[0].type === 'label') {
+      const activityName = topic.activities[0].name;
       if (pageviewRegexp.test(activityName)) {
         // text page activity
         setActType('pageview');
@@ -66,9 +86,7 @@ const SelfLearningPage = (props: SelfLearningPageProps) => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.topic]);
-
-  return <>{props.children}</>;
+  }, [topic]);
 };
 
-export default SelfLearningPage;
+export default useLearningTopicTracking;

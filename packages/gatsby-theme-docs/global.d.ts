@@ -1,7 +1,11 @@
-import { VideoProgressReachedEvent } from './src/modules/self-learning/components/self-learning-page';
+import {
+  VideoProgressReachedEvent,
+  ContentPageViewedEvent,
+} from './src/modules/self-learning/hooks/use-learning-tracking';
 
 declare global {
   interface GlobalEventHandlersEventMap {
-    videoProgressReached: VideoProgressReachedEvent;
+    'selflearning:videoProgressReached': VideoProgressReachedEvent;
+    'selflearning:pageContentViewed': ContentPageViewedEvent;
   }
 }
