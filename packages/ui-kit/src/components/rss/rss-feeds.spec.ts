@@ -98,6 +98,8 @@ describe('parseRssString', () => {
 });
 
 function createTestData(): FlatRssEntry[][] {
+  // Adding 10 entries to the HTTP API feed to determine the oldest feed date.
+  // With less than 10 entries in each feed, all entries are being displayed in the table.
   return [
     [
       {
@@ -119,10 +121,66 @@ function createTestData(): FlatRssEntry[][] {
       {
         feedName: 'HTTP API',
         title: 'description',
-        pubDate: 'Mon, 19 Oct 2020 00:00:00 GMT',
+        pubDate: 'Sat, 31 Oct 2020 00:00:00 GMT',
         releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
         description: '',
         link: 'https://example.com/3',
+      },
+      {
+        feedName: 'HTTP API',
+        title: 'description',
+        pubDate: 'Fri, 30 Oct 2020 00:00:00 GMT',
+        releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/4',
+      },
+      {
+        feedName: 'HTTP API',
+        title: 'description',
+        pubDate: 'Thu, 29 Oct 2020 00:00:00 GMT',
+        releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/5',
+      },
+      {
+        feedName: 'HTTP API',
+        title: 'description',
+        pubDate: 'Wed, 28 Oct 2020 00:00:00 GMT',
+        releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/6',
+      },
+      {
+        feedName: 'HTTP API',
+        title: 'description',
+        pubDate: 'Tue, 27 Oct 2020 00:00:00 GMT',
+        releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/7',
+      },
+      {
+        feedName: 'HTTP API',
+        title: 'description',
+        pubDate: 'Mon, 26 Oct 2020 00:00:00 GMT',
+        releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/8',
+      },
+      {
+        feedName: 'HTTP API',
+        title: 'description',
+        pubDate: 'Fri, 23 Oct 2020 00:00:00 GMT',
+        releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/9',
+      },
+      {
+        feedName: 'HTTP API',
+        title: 'description',
+        pubDate: 'Mon, 19 Oct 2020 00:00:00 GMT',
+        releaseNoteUrl: 'https://docs.commercetools.com/api/releases',
+        description: '',
+        link: 'https://example.com/10',
       },
     ],
     [
