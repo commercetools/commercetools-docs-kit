@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import { markdownFragmentToReact } from '@commercetools-docs/ui-kit';
+import useAuthentication from '../../sso/hooks/use-authentication';
 
 const content = (children: ReactNode | string) => {
   if (typeof children === 'string') {
@@ -15,7 +15,7 @@ type IfLoggedInProps = {
 };
 
 export const IfUserLoggedIn = (props: IfLoggedInProps) => {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuthentication();
   if (isLoading && props.assumeTrue) {
     return content(props.children);
   } else {
@@ -29,7 +29,7 @@ type IsLoggedOutProps = {
 };
 
 export const IfUserLoggedOut = (props: IsLoggedOutProps) => {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuthentication();
   if (isLoading && props.assumeTrue) {
     return content(props.children);
   } else {

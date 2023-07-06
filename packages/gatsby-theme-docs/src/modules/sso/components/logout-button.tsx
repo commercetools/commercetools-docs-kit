@@ -1,13 +1,13 @@
 import { useContext } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import { getLogoutReturnUrl } from './sso.utils';
 import ConfigContext from '../../../components/config-context';
 import SecondaryButton from './secondary-button';
 import { gtagEvent } from '../utils/analytics.utils';
+import useAuthentication from '../hooks/use-authentication';
 
 const LogoutButton = () => {
   const { learnApiBaseUrl } = useContext(ConfigContext);
-  const { logout } = useAuth0();
+  const { logout } = useAuthentication();
 
   return (
     <SecondaryButton
