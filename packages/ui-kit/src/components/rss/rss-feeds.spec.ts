@@ -13,9 +13,9 @@ describe('transformData', () => {
   it('should show only items with a newer date sorted', () => {
     expect(transformedData[0].pubDate).toBe('Mon, 02 Nov 2020 00:00:00 GMT');
     expect(transformedData[1].pubDate).toBe('Sun, 01 Nov 2020 00:00:00 GMT');
-    expect(transformedData[2].pubDate).toBe('Tue, 29 Oct 2020 00:00:00 GMT');
-    expect(transformedData[3].pubDate).toBe('Fri, 23 Oct 2020 00:00:00 GMT');
-    expect(transformedData[4].pubDate).toBe('Mon, 19 Oct 2020 00:00:00 GMT');
+    expect(transformedData[2].pubDate).toBe('Sat, 31 Oct 2020 00:00:00 GMT');
+    expect(transformedData[3].pubDate).toBe('Fri, 30 Oct 2020 00:00:00 GMT');
+    expect(transformedData[4].pubDate).toBe('Thu, 29 Oct 2020 00:00:00 GMT');
   });
 });
 
