@@ -76,6 +76,8 @@ const transformData = (data: FlatRssEntry[][]) => {
   // which is always the last entry of the list.
   const lastEntryOfList = data
     .reduce((list, feed) => {
+      // The amount of entries are defined in the release note query limit in gatsby-theme-docs/gatsby-config.mjs.
+      // PLEASE KEEP THE NUMBER BELOW ALWAYS IN SYNC WITH THE QUERY LIMIT.
       if (feed.length >= 10) return [...list, feed[feed.length - 1]];
       return [...list];
     }, [])
