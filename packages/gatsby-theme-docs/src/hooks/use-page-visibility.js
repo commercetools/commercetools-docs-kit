@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import useIsClientSide from './use-is-client-side';
 
 const usePageVisibility = (isEnabled) => {
-  const [isVisible, setIsVisible] = useState(!document.hidden);
+  const { isClientSide } = useIsClientSide();
+  const [isVisible, setIsVisible] = useState(isClientSide && !document.hidden);
 
   useEffect(() => {
     function handleVisibilityChange() {
