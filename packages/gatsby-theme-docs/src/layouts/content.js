@@ -48,7 +48,7 @@ const LayoutContent = (props) => {
     );
   }
   useLearningTrackingHandler(selfLearningTopic);
-  useContentPageTrackingDispatcher(isSelfLearningPage);
+  useContentPageTrackingDispatcher(selfLearningTopic);
 
   const { ref, inView, entry } = useInView();
   const contentRef = useRef();

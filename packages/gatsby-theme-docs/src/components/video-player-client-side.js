@@ -59,7 +59,6 @@ const VideoPlayer = (props) => {
         const completeThreshold = props.completeAtPercent
           ? parseInt(props.completeAtPercent) / 100
           : 0.8; // defaults to 80% (0.8)
-        console.log('completeAtPercent', completeThreshold);
         const currentTime = player.currentTime();
         const duration = player.duration();
         const progress = currentTime / duration;

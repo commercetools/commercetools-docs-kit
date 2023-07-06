@@ -6,6 +6,23 @@ import useIsClientSide from './use-is-client-side';
 export const EVENT_VIDEO_PROGRESS = 'selflearning:video:progressReached';
 export const EVENT_PAGECONTENT_VIEWED = 'selflearning:pageContent:viewed';
 
+const pageviewRegexp = /^pageview/;
+const videoRegexp = /^video/;
+
+const getLabelActivityName = (topic?: CourseTopic) => {
+  if (topic?.activities[0]?.type === 'label') {
+    return topic.activities[0].name;
+  }
+};
+const isPageviewActivity = (topic?: CourseTopic) => {
+  const actName = getLabelActivityName(topic);
+  return actName && pageviewRegexp.test(actName);
+};
+const isVideoActivity = (topic?: CourseTopic) => {
+  const actName = getLabelActivityName(topic);
+  return actName && videoRegexp.test(actName);
+};
+
 export interface VideoProgressReachedEvent extends Event {
   detail: {
     progress: number;
@@ -20,24 +37,27 @@ export interface ContentPageViewedEvent extends Event {
 
 export const useLearningTrackingHandler = (topic: CourseTopic | undefined) => {
   const [actType, setActType] = useState<string | undefined>();
-  const pageviewRegexp = /^pageview/;
-  const videoRegexp = /^video/;
 
   useEffect(() => {
     if (!topic) {
       return;
     }
+    const ancestorElement = document.getElementById(
+      'application'
+    ) as HTMLElement;
+
     if (actType === 'pageview') {
       const handleContentPageViewed = (event: ContentPageViewedEvent) => {
         const videoProgressEvent = event as ContentPageViewedEvent;
         const viewed = videoProgressEvent.detail.viewed;
-        // TODO: track content page viewed
+        // TODO: track content page viewed and
         console.log(`User viewed content? ${viewed}`);
+        ancestorElement.removeEventListener(
+          EVENT_PAGECONTENT_VIEWED,
+          handleContentPageViewed
+        );
       };
 
-      const ancestorElement = document.getElementById(
-        'application'
-      ) as HTMLElement;
       if (ancestorElement) {
         ancestorElement.addEventListener(
           EVENT_PAGECONTENT_VIEWED,
@@ -80,33 +100,30 @@ export const useLearningTrackingHandler = (topic: CourseTopic | undefined) => {
   }, [actType, topic]);
 
   useEffect(() => {
-    if (topic?.activities[0].type === 'label') {
-      const activityName = topic.activities[0].name;
-      if (pageviewRegexp.test(activityName)) {
-        // text page activity
-        setActType('pageview');
-      } else if (videoRegexp.test(activityName)) {
-        // video activity
-        setActType('video');
-      }
+    if (isPageviewActivity(topic)) {
+      setActType('pageview');
+    }
+    if (isVideoActivity(topic)) {
+      setActType('video');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topic]);
 };
 
-export const useContentPageTrackingDispatcher = (isEnabled: boolean) => {
-  const isContentVisible = usePageVisibility(isEnabled); // enabled only on self-learning pages
-  const [eventTriggered, setEventTriggered] = useState(false);
+export const useContentPageTrackingDispatcher = (
+  topic: CourseTopic | undefined
+) => {
+  const isContentVisible = usePageVisibility(topic); // enabled only on self-learning pages
   const { isClientSide } = useIsClientSide();
 
   useEffect(() => {
-    if (isClientSide && isEnabled && !eventTriggered && isContentVisible) {
+    if (isClientSide && isPageviewActivity(topic) && isContentVisible) {
       const customEvent = new CustomEvent(EVENT_PAGECONTENT_VIEWED, {
         detail: { viewed: isContentVisible },
       });
       const el = document.getElementById('application');
+      console.log('dispatch', EVENT_PAGECONTENT_VIEWED);
       el?.dispatchEvent(customEvent);
-      setEventTriggered(true);
     }
-  }, [isContentVisible, eventTriggered, isEnabled, isClientSide]);
+  }, [topic, isContentVisible, isClientSide]);
 };
