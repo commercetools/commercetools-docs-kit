@@ -5,7 +5,7 @@ import {
 
 declare global {
   interface GlobalEventHandlersEventMap {
-    'selflearning:videoProgressReached': VideoProgressReachedEvent;
-    'selflearning:pageContentViewed': ContentPageViewedEvent;
+    'selflearning:video:progressReached': VideoProgressReachedEvent;
+    'selflearning:pageContent:viewed': ContentPageViewedEvent;
   }
 }

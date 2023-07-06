@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useLazyLoad } from '@commercetools-docs/ui-kit';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import VideoPlaceholder from './video-placeholder';
+import { EVENT_VIDEO_PROGRESS } from '../modules/self-learning/hooks/use-learning-tracking';
 
 const videoJsVersion = '8.3.0';
 
@@ -64,7 +65,7 @@ const VideoPlayer = (props) => {
         const progress = currentTime / duration;
         if (!eventTriggered && progress >= completeThreshold) {
           // Trigger custom event
-          const customEvent = new CustomEvent('videoProgressReached', {
+          const customEvent = new CustomEvent(EVENT_VIDEO_PROGRESS, {
             detail: { progress },
           });
           const el = document.getElementById('application');

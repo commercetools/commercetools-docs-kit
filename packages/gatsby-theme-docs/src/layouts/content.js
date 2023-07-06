@@ -30,9 +30,10 @@ import {
   useFetchCourseDetails,
   getMatchingTopic,
 } from '../modules/self-learning/hooks/use-course-details';
-import SelfLearningPage from '../modules/self-learning/hooks/use-learning-tracking';
-import usePageVisibility from '../hooks/use-page-visibility';
-import useLearningTopicTracking from '../modules/self-learning/hooks/use-learning-tracking';
+import {
+  useLearningTrackingHandler,
+  useContentPageTrackingDispatcher,
+} from '../modules/self-learning/hooks/use-learning-tracking';
 
 const LayoutContent = (props) => {
   const courseInfo = useCourseInfoByPageSlugs([props.pageContext.slug]);
@@ -46,8 +47,8 @@ const LayoutContent = (props) => {
       courseInfo[props.pageContext.slug]?.topicName
     );
   }
-  useLearningTopicTracking(selfLearningTopic);
-  const isContentVisible = usePageVisibility(isSelfLearningPage); // enabled only on self-learning pages
+  useLearningTrackingHandler(selfLearningTopic);
+  useContentPageTrackingDispatcher(isSelfLearningPage);
 
   const { ref, inView, entry } = useInView();
   const contentRef = useRef();

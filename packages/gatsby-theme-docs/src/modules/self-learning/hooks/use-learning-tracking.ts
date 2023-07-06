@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CourseTopic } from '../external-types';
+import usePageVisibility from '../../../hooks/use-page-visibility';
+import useIsClientSide from './use-is-client-side';
+
+export const EVENT_VIDEO_PROGRESS = 'selflearning:video:progressReached';
+export const EVENT_PAGECONTENT_VIEWED = 'selflearning:pageContent:viewed';
 
 export interface VideoProgressReachedEvent extends Event {
   detail: {
@@ -13,7 +18,7 @@ export interface ContentPageViewedEvent extends Event {
   };
 }
 
-const useLearningTopicTracking = (topic: CourseTopic | undefined) => {
+export const useLearningTrackingHandler = (topic: CourseTopic | undefined) => {
   const [actType, setActType] = useState<string | undefined>();
   const pageviewRegexp = /^pageview/;
   const videoRegexp = /^video/;
@@ -35,13 +40,13 @@ const useLearningTopicTracking = (topic: CourseTopic | undefined) => {
       ) as HTMLElement;
       if (ancestorElement) {
         ancestorElement.addEventListener(
-          'selflearning:pageContentViewed',
+          EVENT_PAGECONTENT_VIEWED,
           handleContentPageViewed
         );
 
         return () => {
           ancestorElement.removeEventListener(
-            'selflearning:pageContentViewed',
+            EVENT_PAGECONTENT_VIEWED,
             handleContentPageViewed
           );
         };
@@ -60,13 +65,13 @@ const useLearningTopicTracking = (topic: CourseTopic | undefined) => {
       ) as HTMLElement;
       if (ancestorElement) {
         ancestorElement.addEventListener(
-          'selflearning:videoProgressReached',
+          EVENT_VIDEO_PROGRESS,
           handleVideoProgressReached
         );
 
         return () => {
           ancestorElement.removeEventListener(
-            'selflearning:videoProgressReached',
+            EVENT_VIDEO_PROGRESS,
             handleVideoProgressReached
           );
         };
@@ -89,4 +94,19 @@ const useLearningTopicTracking = (topic: CourseTopic | undefined) => {
   }, [topic]);
 };
 
-export default useLearningTopicTracking;
+export const useContentPageTrackingDispatcher = (isEnabled: boolean) => {
+  const isContentVisible = usePageVisibility(isEnabled); // enabled only on self-learning pages
+  const [eventTriggered, setEventTriggered] = useState(false);
+  const { isClientSide } = useIsClientSide();
+
+  useEffect(() => {
+    if (isClientSide && isEnabled && !eventTriggered && isContentVisible) {
+      const customEvent = new CustomEvent(EVENT_PAGECONTENT_VIEWED, {
+        detail: { viewed: isContentVisible },
+      });
+      const el = document.getElementById('application');
+      el?.dispatchEvent(customEvent);
+      setEventTriggered(true);
+    }
+  }, [isContentVisible, eventTriggered, isEnabled, isClientSide]);
+};
