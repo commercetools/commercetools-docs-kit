@@ -15,12 +15,12 @@ import {
   CircleIcon,
 } from '@commercetools-uikit/icons';
 import Stamp from '@commercetools-uikit/stamp';
-import { useAuth0 } from '@auth0/auth0-react';
 import {
   ClientCourseStatus,
   getCourseStatusByCourseId,
   useFetchCourses,
 } from '../hooks/use-course-status';
+import useAuthentication from '../../sso/hooks/use-authentication';
 
 const { CardContainer, StackContainer, InlineContainer, BodyContainer } =
   cardElements;
@@ -147,7 +147,7 @@ type CourseCardProps = {
 
 const CourseCard = (props: CourseCardProps) => {
   const [courseStatus, setCourseStatus] = useState<ClientCourseStatus>();
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuthentication();
   const { data } = useFetchCourses();
 
   useEffect(() => {

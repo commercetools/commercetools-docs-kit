@@ -17,7 +17,7 @@ describe('login-button', () => {
       },
     };
     render(<LoginButton theme="secondary" label="Log in" />);
-    const loginButtonElement = screen.getByTestId('login-button');
+    const loginButtonElement = screen.getByTestId('avatar-login-button');
     expect(loginButtonElement).toBeInTheDocument();
     fireEvent.click(loginButtonElement);
     expect(mockLoginWithRedirect).toHaveBeenCalledWith(

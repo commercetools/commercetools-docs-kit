@@ -58,19 +58,6 @@ Given("The user doesn't see a try again button", () => {
   cy.get(`[data-testid="${ETestId.tryAgainButton}"]`).should('not.exist');
 });
 
-Then('The user sees a {string} completed modal', (type: string) => {
-  const expectedText =
-    type === 'course'
-      ? 'completed this module'
-      : 'completed this learning path';
-  cy.get(`[data-testid="${ETestId.moduleCompleteModal}"] > div[name="main"]`)
-    .contains(expectedText)
-    .should('be.visible');
-  cy.get(
-    `[data-testid="${ETestId.moduleCompleteModal}"] > div[name="main"] button[label="Continue"]`
-  ).click();
-});
-
 Then('The user gets redirected to {string}', (course: string) => {
   const expectedUrl =
     course === 'site root' ? URL_SELF_LEARNING_SMOKE_TEST.slice(0, -1) : course;
