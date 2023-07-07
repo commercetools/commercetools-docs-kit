@@ -1,5 +1,15 @@
 # @commercetools-website/documentation
 
+## 8.0.2
+
+### Patch Changes
+
+- [#1732](https://github.com/commercetools/commercetools-docs-kit/pull/1732) [`ac081c55`](https://github.com/commercetools/commercetools-docs-kit/commit/ac081c55612c30278c20159e110ea7443a5ed4c2) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Refactor LearningContext separating state from API and memoizing API
+
+- Updated dependencies [[`ac081c55`](https://github.com/commercetools/commercetools-docs-kit/commit/ac081c55612c30278c20159e110ea7443a5ed4c2), [`fbd03f07`](https://github.com/commercetools/commercetools-docs-kit/commit/fbd03f07415b49d8db9000d4d971077378b9d613), [`af58977c`](https://github.com/commercetools/commercetools-docs-kit/commit/af58977c2a50de09663b7417f6ff9a43be169889)]:
+  - @commercetools-docs/gatsby-theme-docs@22.2.0
+  - @commercetools-docs/gatsby-theme-code-examples@22.2.0
+
 ## 8.0.1
 
 ### Patch Changes

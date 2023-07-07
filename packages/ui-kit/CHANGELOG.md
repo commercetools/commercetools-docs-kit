@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 22.2.0
+
+### Patch Changes
+
+- [#1737](https://github.com/commercetools/commercetools-docs-kit/pull/1737) [`3f1b7106`](https://github.com/commercetools/commercetools-docs-kit/commit/3f1b710655f9c562b97f9d0c2aa81c08f4dfd7ae) Thanks [@timonrey](https://github.com/timonrey)! - Fix a bug in the RSS-feed when adding new feeds with only one release note. The RSS-feed component will now look for feeds with at least 10 entries to determine the length of the list.
+
 ## 22.1.0
 
 ### Patch Changes
