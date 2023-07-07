@@ -83,21 +83,24 @@ const LinkTitle = styled.div`
   overflow-x: hidden;
   width: 100%;
 `;
+const LinkChapterTitle = styled.div`
+  font-size: ${designSystem.typography.fontSizes.body};
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  width: 100%;
+  color: ${designSystem.colors.light.textPrimary};
+  :hover {
+    color: ${designSystem.colors.light.linkNavigation};
+  }
+`;
 const LinkSubtitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
   text-overflow: ellipsis;
   overflow-x: hidden;
   width: 100%;
 `;
-const LinkItem = styled.div`
-  padding: 0 0 0 ${designSystem.dimensions.spacings.m};
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  vertical-align: middle;
-`;
+
 const LinkItemWithIcon = styled.div`
-  padding: 0 0 0 ${designSystem.dimensions.spacings.m};
   display: flex;
   flex-direction: row;
   vertical-align: middle;
@@ -277,19 +280,39 @@ const SidebarChapter = (props) => {
     () => document.getElementById(elemId),
     [elemId]
   );
+  console.log(props.chapter);
 
   return (
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack data-testid={`sidebar-chapter-${courseId}`} scale="s">
-        {courseId ? (
+        {props.chapter.path ? (
+          <SidebarLinkWrapper
+            data-testid={`sidebar-chapter-title-item-${courseId}`}
+            key={`${props.index}-${props.chapter.path}`}
+            to={props.chapter.path}
+            onClick={props.onLinkClick}
+            location={props.location}
+            nextScrollPosition={props.nextScrollPosition}
+            getChapterDOMElement={getChapterDOMElement}
+          >
+            {courseId ? (
+              <LinkItemWithIcon>
+                <SidebarCourseStatus courseId={courseId} />
+                <LinkChapterTitle>
+                  {props.chapter.chapterTitle}
+                </LinkChapterTitle>
+              </LinkItemWithIcon>
+            ) : (
+              <LinkChapterTitle>{props.chapter.chapterTitle}</LinkChapterTitle>
+            )}
+          </SidebarLinkWrapper>
+        ) : courseId ? (
           <LinkItemWithIcon>
             <SidebarCourseStatus courseId={courseId} />
             <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
           </LinkItemWithIcon>
         ) : (
-          <LinkItem>
-            <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-          </LinkItem>
+          <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
         )}
 
         <SpacingsStack scale="s">
@@ -333,6 +356,7 @@ SidebarChapter.propTypes = {
   index: PropTypes.number.isRequired,
   chapter: PropTypes.shape({
     chapterTitle: PropTypes.string.isRequired,
+    path: PropTypes.string,
     beta: PropTypes.bool,
     pages: PropTypes.arrayOf(
       PropTypes.shape({
@@ -358,6 +382,7 @@ const SidebarNavigationLinks = (props) => {
       allNavigationYaml {
         nodes {
           chapterTitle
+          path
           pages {
             title
             path

@@ -1,16 +1,14 @@
 - chapter-title: Self-learning course 1
+  path: /course-1/overview
   pages:
-    - title: Overview
-      path: /course-1/overview
     - title: Test your knowledge with long title
       path: /course-1/quiz
     - title: Test your knowledge 2
       path: /course-1/2-quiz
 
 - chapter-title: Self-learning course 2
+  path: /course-2/overview
   pages:
-    - title: Overview
-      path: /course-2/overview
     - title: Test your knowledge with long title
       path: /course-2/quiz
     - title: Test your knowledge 2
