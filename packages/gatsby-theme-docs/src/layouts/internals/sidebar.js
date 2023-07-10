@@ -100,7 +100,22 @@ const LinkSubtitle = styled.div`
   width: 100%;
 `;
 
+const LinkItem = styled.div`
+  padding: 0 0 0 ${designSystem.dimensions.spacings.m};
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  vertical-align: middle;
+`;
+
+// TODO: prop is only for backwards compatibility. Once migrated the whole docs site
+// using clickable chapter titles, the prop can be dropped
 const LinkItemWithIcon = styled.div`
+  ${(props) =>
+    !props.clickable &&
+    `
+    padding: 0 0 0 ${designSystem.dimensions.spacings.m};
+  `}
   display: flex;
   flex-direction: row;
   vertical-align: middle;
@@ -304,7 +319,7 @@ const SidebarChapter = (props) => {
             `}
           >
             {courseId ? (
-              <LinkItemWithIcon>
+              <LinkItemWithIcon clickable={true}>
                 <SidebarCourseStatus courseId={courseId} />
                 <LinkChapterTitle>
                   {props.chapter.chapterTitle}
@@ -320,7 +335,9 @@ const SidebarChapter = (props) => {
             <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
           </LinkItemWithIcon>
         ) : (
-          <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          <LinkItem>
+            <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          </LinkItem>
         )}
 
         <SpacingsStack scale="s">
