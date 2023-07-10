@@ -294,6 +294,14 @@ const SidebarChapter = (props) => {
             location={props.location}
             nextScrollPosition={props.nextScrollPosition}
             getChapterDOMElement={getChapterDOMElement}
+            customActiveStyles={css`
+              div:first-child {
+                color: ${designSystem.colors.light.linkNavigation} !important;
+              }
+              div:first-child > div {
+                color: ${designSystem.colors.light.linkNavigation} !important;
+              }
+            `}
           >
             {courseId ? (
               <LinkItemWithIcon>
