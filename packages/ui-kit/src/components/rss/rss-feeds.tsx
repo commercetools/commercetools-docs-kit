@@ -72,11 +72,14 @@ const fetcher = async (args: string[]) => {
 };
 
 const transformData = (data: FlatRssEntry[][]) => {
-  // First, we need to get the oldest release note from each feed,
+  // First, we need to get the oldest release note from feeds with at least 10 entries,
   // which is always the last entry of the list.
   const lastEntryOfList = data
     .reduce((list, feed) => {
-      return [...list, feed[feed.length - 1]];
+      // The amount of entries are defined in the release note query limit in gatsby-theme-docs/gatsby-config.mjs.
+      // PLEASE KEEP THE NUMBER BELOW ALWAYS IN SYNC WITH THE QUERY LIMIT.
+      if (feed.length >= 10) return [...list, feed[feed.length - 1]];
+      return [...list];
     }, [])
     // After that, we need to compare the oldest release dates from each feed
     // to get the newest of them. This will be our last entry in the list.
@@ -101,6 +104,7 @@ const transformData = (data: FlatRssEntry[][]) => {
   const tableData: FlatRssEntry[] = data
     .flat()
     .reduce<FlatRssEntry[]>((list, entry) => {
+      if (!lastEntryOfList.pubDate) return [...list, entry];
       return new Date(entry.pubDate) >= new Date(lastEntryOfList.pubDate)
         ? [...list, entry]
         : [...list];

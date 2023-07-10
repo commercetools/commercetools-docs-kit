@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import { markdownFragmentToReact } from '@commercetools-docs/ui-kit';
 import { useOrderedCoursesInfo } from '../hooks/use-course-pages';
+import useAuthentication from '../../sso/hooks/use-authentication';
 
 const content = (children: ReactNode | string) => {
   if (typeof children === 'string') {
@@ -15,7 +15,7 @@ type IfLearningPathCompleteProps = {
 };
 
 export const IfLearningPathComplete = (props: IfLearningPathCompleteProps) => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuthentication();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const courseInfo = useOrderedCoursesInfo();
   useEffect(() => {
@@ -32,7 +32,7 @@ export const IfLearningPathComplete = (props: IfLearningPathCompleteProps) => {
 export const IfLearningPathNotComplete = (
   props: IfLearningPathCompleteProps
 ) => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuthentication();
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const courseInfo = useOrderedCoursesInfo();
   useEffect(() => {

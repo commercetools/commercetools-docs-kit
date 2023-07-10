@@ -22,14 +22,14 @@ Feature: Login
   Scenario: User should be redirected to auth0 login page
     Given The user has navigated to a quiz page
     And The user "is not" logged in
-    When The user clicks the "login button"
+    When The user clicks the "quiz login button"
     Then The user is redirected to "auth0 login page"
 
   @full @smoke
   Scenario: User should see the quiz content after login
     Given The user has navigated to a quiz page
     And The user "is not" logged in
-    And The user clicks the "login button"
+    And The user clicks the "quiz login button"
     When The user submits valid auth0 credentials
     Then The user is redirected to "quiz page"
     And The user sees a page with "Quiz component" title

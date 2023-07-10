@@ -1,9 +1,8 @@
 import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-// import { UserFilledIcon } from '@commercetools-uikit/icons';
 import PrimaryButton from './primary-button';
 import SecondaryButton from './secondary-button';
 import { gtagEvent } from '../utils/analytics.utils';
+import useAuthentication from '../hooks/use-authentication';
 
 type LoginButtonProps = {
   quizId?: string;
@@ -13,7 +12,7 @@ type LoginButtonProps = {
 };
 
 const LoginButton = (props: LoginButtonProps) => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect } = useAuthentication();
 
   const getTargetUrl = () => {
     let sectionUrl = '';
@@ -31,7 +30,7 @@ const LoginButton = (props: LoginButtonProps) => {
   if (props.theme === 'primary') {
     return (
       <PrimaryButton
-        data-testid="login-quiz-button"
+        data-testid="quiz-login-button"
         onClick={() => {
           gtagEvent('login');
           loginWithRedirect({
@@ -49,7 +48,7 @@ const LoginButton = (props: LoginButtonProps) => {
 
   return (
     <SecondaryButton
-      data-testid="login-button"
+      data-testid="avatar-login-button"
       onClick={() => {
         gtagEvent('login');
         loginWithRedirect({
