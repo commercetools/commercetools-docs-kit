@@ -3,7 +3,7 @@ import reactIs from 'react-is';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Tooltip from '@commercetools-uikit/tooltip';
-import { RibbonSvgIcon } from '../icons';
+import { ClipboardIcon } from '@commercetools-uikit/icons';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import { CodeBlockMarkdownWrapper as CodeBlock } from './multi-code-block';
 import copyToClipboard from '../utils/copy-to-clipboard';
@@ -386,7 +386,7 @@ const withCopyToClipboard =
           onClose={handleTooltipClose}
         >
           <CopyArea onClick={handleCopyToClipboardClick}>
-            <RibbonSvgIcon />
+            <ClipboardIcon size="big" color="neutral60" />
           </CopyArea>
         </Tooltip>
       </Component>
