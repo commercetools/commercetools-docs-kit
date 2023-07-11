@@ -295,7 +295,6 @@ const SidebarChapter = (props) => {
     () => document.getElementById(elemId),
     [elemId]
   );
-  console.log(props.chapter);
 
   return (
     <div role="sidebar-chapter" id={elemId}>
