@@ -316,12 +316,6 @@ Given('The user sees a complete profile modal with empty fields', () => {
   ).should('be.disabled');
 });
 
-Then("The user doesn't see a complete profile modal", () => {
-  cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
-    'not.exist'
-  );
-});
-
 Then('The user sees a {string} completed modal', (type: string) => {
   const expectedText =
     type === 'course'
