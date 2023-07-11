@@ -126,6 +126,8 @@ const loginToQuizStep = (user: string) => {
 };
 
 export const selectQuizAnswers = (result: string) => {
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
+  cy.wait(500);
   cy.get(
     `[data-testid="${ETestId.quizForm}"]  div[data-testid="${ETestId.answerContainer}"]`
   ).each(($el, idx) => {
@@ -151,7 +153,7 @@ export const selectQuizAnswers = (result: string) => {
               .includes(`${result === 'correct' ? 'correct' : 'wrong'} answer`)
           ) {
             const labelFor = $lableEl.attr('for');
-            cy.get(`#${labelFor}`).click({ force: true });
+            cy.get(`label[for="${labelFor}"`).click({ force: true });
           }
         });
     }
@@ -312,6 +314,12 @@ Given('The user sees a complete profile modal with empty fields', () => {
   cy.get(
     `[data-testid="${ETestId.profileModal}"] > div[name="main"] button`
   ).should('be.disabled');
+});
+
+Then("The user doesn't see a complete profile modal", () => {
+  cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
+    'not.exist'
+  );
 });
 
 Then('The user sees a {string} completed modal', (type: string) => {

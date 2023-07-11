@@ -36,4 +36,3 @@ Feature: Quiz
     Then The user sees a "course" completed modal
     And The user completes "course-2" successfully
     Then The user sees a "learning path" completed modal
-

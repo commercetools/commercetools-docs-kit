@@ -4,15 +4,15 @@ import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
 } from '../../../components/config-context';
-import { useAuth0 } from '@auth0/auth0-react';
 import type {
   ApiCallResult,
   CourseWithDetails,
   CourseTopic,
 } from '../external-types';
-import { fetcherWithToken } from './hooks.utils';
+import { DEFAULT_SWR_FLAGS, fetcherWithToken } from './hooks.utils';
 import { useAuthToken } from './use-auth-token';
 import { useAsyncComplete } from '../../../hooks/use-async-complete';
+import useAuthentication from '../../sso/hooks/use-authentication';
 
 type UseFetchCoursesIdResponse = {
   data: ApiCallResult<CourseWithDetails> | undefined;
@@ -29,7 +29,7 @@ export const useFetchCourseDetails = (
   isLoading: boolean;
 } => {
   const { learnApiBaseUrl, selfLearningFeatures } = useContext(ConfigContext);
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuthentication();
   const { getAuthToken } = useAuthToken();
   const apiEndpoint = `/api/courses/${courseId}`;
   const { setAsyncLoading } = useAsyncComplete(apiEndpoint);
@@ -43,13 +43,7 @@ export const useFetchCourseDetails = (
   const { data, error, isLoading, isValidating } = useSWR(
     shouldFetchData ? apiEndpoint : null,
     (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl, 'GET'),
-    {
-      revalidateOnReconnect: false,
-      revalidateIfStale: false,
-      revalidateOnMount: true,
-      dedupingInterval: 3 * 60 * 1000, // allow revalidation each 3 minutes
-      revalidateOnFocus: true,
-    }
+    DEFAULT_SWR_FLAGS
   ) as UseFetchCoursesIdResponse;
 
   useEffect(() => {

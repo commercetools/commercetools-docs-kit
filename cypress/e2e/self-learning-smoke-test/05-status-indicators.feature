@@ -24,7 +24,6 @@ Scenario: User sees completed status indicators for the first course after takin
   And The user sees a "course" completed modal
   And The user logs out
 
-
 Scenario: User sees completed status indicators for the first and second courses after taking them
   Given The "user" logs in using the top login button
   And The user completes "course-2" successfully

@@ -79,3 +79,16 @@ export const fetcherWithToken = async (
     throw new FetchDataError(errMsg);
   }
 };
+
+export const DEFAULT_SWR_FLAGS = {
+  //disabled as it's unlikely we experiment network reconnections (mainly happens on mobile devices)
+  revalidateOnReconnect: false,
+  // must be set disabled due to a Gatsby limitation. All the components tree is un-mounted and remounted causing cache to be revalidated by re-fetching from API
+  revalidateIfStale: false,
+  // it must stay true to perform the initial call and populate swr cache
+  revalidateOnMount: true,
+  // arbitrarly set to 3 minutes. It act as fallback mechanism in case manual cache invalidation fails.
+  dedupingInterval: 3 * 60 * 1000,
+  // we want to revalidate the cache in case the tab loses focus and lately retuns in focus
+  revalidateOnFocus: true,
+};

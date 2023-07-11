@@ -293,6 +293,8 @@ const config = (themeOptions = {}) => {
                   };
                 });
               },
+              // The query limit number is being used for the "lastEntry" logic in the rss-feeds component in the ui-kit.
+              // PLEASE KEEP THE QUERY LIMIT NUMBER ALWAYS IN SYNC WITH THE rss-feeds COMPONENT.
               query: `
               {
                 allReleaseNotePage(limit: 10, sort: [

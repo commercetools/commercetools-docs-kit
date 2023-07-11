@@ -1,5 +1,20 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.2.0
+
+### Minor Changes
+
+- [#1733](https://github.com/commercetools/commercetools-docs-kit/pull/1733) [`fbd03f07`](https://github.com/commercetools/commercetools-docs-kit/commit/fbd03f07415b49d8db9000d4d971077378b9d613) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Added a wrapper to auth0 to intercept authentication state and perform a session initialisation before the rest of the API calls are fired
+
+### Patch Changes
+
+- [#1732](https://github.com/commercetools/commercetools-docs-kit/pull/1732) [`ac081c55`](https://github.com/commercetools/commercetools-docs-kit/commit/ac081c55612c30278c20159e110ea7443a5ed4c2) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Refactor LearningContext separating state from API and memoizing API
+
+- [#1735](https://github.com/commercetools/commercetools-docs-kit/pull/1735) [`af58977c`](https://github.com/commercetools/commercetools-docs-kit/commit/af58977c2a50de09663b7417f6ff9a43be169889) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Link component will strip pathPrefix from the href ONLY if it's an exact match. Partial matches are not considered
+
+- Updated dependencies [[`3f1b7106`](https://github.com/commercetools/commercetools-docs-kit/commit/3f1b710655f9c562b97f9d0c2aa81c08f4dfd7ae)]:
+  - @commercetools-docs/ui-kit@22.2.0
+
 ## 22.1.0
 
 ### Minor Changes
