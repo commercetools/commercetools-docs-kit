@@ -254,7 +254,8 @@ const InlineCode = styled.code`
   background-color: ${colors.light.surfaceInlineCode};
   border: 1px solid ${colors.light.borderSecondary};
   border-radius: ${dimensions.spacings.xs};
-  font-family: ${typography.fontFamilies.code};
+  color: ${colors.light.textCode};
+  font-family: ${typography.fontFamilies.nonMonospace};
   font-size: ${typography.fontSizes.small};
   padding: 0 ${dimensions.spacings.xs};
 `;

@@ -288,8 +288,9 @@ export const dimensions = {
 
 export const typography = {
   fontFamilies: {
-    primary: "'Roboto', sans-serif",
+    primary: "'Inter', sans-serif",
     code: "'Roboto Mono', monospace",
+    nonMonospace: "'Inter'",
   },
 
   rootFontSize: `${rootFontSizeNumber}px`,
