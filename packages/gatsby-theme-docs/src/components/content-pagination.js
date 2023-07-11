@@ -104,6 +104,9 @@ PaginationLink.propTypes = {
   direction: PropTypes.oneOf(['left', 'right']).isRequired,
 };
 
+// TODO: cleanup. After docs websites migrate to clickable chapter, this function
+// can be simplified/removed or refactored since is currently supporting both clickable
+// and non-clickable configs
 const isChapterPathOrPageMatchingSlug = (node, slug) => {
   if (node.path && isMatching(slug, node.path)) {
     return true;
@@ -111,6 +114,9 @@ const isChapterPathOrPageMatchingSlug = (node, slug) => {
   return node.pages.some((page) => isMatching(slug, page.path));
 };
 
+// TODO: cleanup. After docs websites migrate to clickable chapter, this function
+// can be simplified/removed or refactored since is currently supporting both clickable
+// and non-clickable configs
 const findActivePageIndex = (node, slug) => {
   let indexOffset = 0;
   if (node.path) {
@@ -128,6 +134,9 @@ const findActivePageIndex = (node, slug) => {
   return index;
 };
 
+// TODO: cleanup. After docs websites migrate to clickable chapter, this function
+// can be simplified/removed or refactored since is currently supporting both clickable
+// and non-clickable configs
 const getPreviousPageLink = (node, currentIndex) => {
   if (node.path) {
     if (currentIndex === 1) {
@@ -140,6 +149,9 @@ const getPreviousPageLink = (node, currentIndex) => {
   return node.pages[currentIndex - 1];
 };
 
+// TODO: cleanup. After docs websites migrate to clickable chapter, this function
+// can be simplified/removed or refactored since is currently supporting both clickable
+// and non-clickable configs
 const getNextPageLink = (node, currentIndex) => {
   const indexOffset = node.path ? 1 : 0;
   return node.pages[currentIndex - indexOffset + 1];
@@ -149,7 +161,6 @@ export const PurePagination = (props) => {
   const activeChapter = props.data.allNavigationYaml.nodes.find((node) => {
     const isPaginationEnabledForChapter =
       typeof node.pagination === 'boolean' ? node.pagination : true;
-
     if (!isPaginationEnabledForChapter) return false;
     if (!node.pages) return false;
     return isChapterPathOrPageMatchingSlug(node, props.slug);

@@ -99,7 +99,6 @@ const LinkSubtitle = styled.div`
   overflow-x: hidden;
   width: 100%;
 `;
-
 const LinkItem = styled.div`
   padding: 0 0 0 ${designSystem.dimensions.spacings.m};
   display: flex;
@@ -108,8 +107,9 @@ const LinkItem = styled.div`
   vertical-align: middle;
 `;
 
-// TODO: prop is only for backwards compatibility. Once migrated the whole docs site
-// using clickable chapter titles, the prop can be dropped
+// TODO: cleanup. After docs websites migrate to clickable chapter, this component
+// can be simplified/removed or refactored since is currently supporting both clickable
+// and non-clickable configs
 const LinkItemWithIcon = styled.div`
   ${(props) =>
     !props.clickable &&
@@ -296,6 +296,9 @@ const SidebarChapter = (props) => {
     [elemId]
   );
 
+  // TODO: cleanup. After docs websites migrate to clickable chapter, this component
+  // can be simplified/removed or refactored since is currently supporting both clickable
+  // and non-clickable configs
   return (
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack data-testid={`sidebar-chapter-${courseId}`} scale="s">
