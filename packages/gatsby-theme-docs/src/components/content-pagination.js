@@ -104,25 +104,65 @@ PaginationLink.propTypes = {
   direction: PropTypes.oneOf(['left', 'right']).isRequired,
 };
 
+const isChapterPathOrPageMatchingSlug = (node, slug) => {
+  if (node.path && isMatching(slug, node.path)) {
+    return true;
+  }
+  return node.pages.some((page) => isMatching(slug, page.path));
+};
+
+const findActivePageIndex = (node, slug) => {
+  let indexOffset = 0;
+  if (node.path) {
+    indexOffset = 1;
+  }
+  if (node.path && isMatching(slug, node.path)) {
+    return 0;
+  }
+  const index = node.pages.findIndex(
+    (page) => page.path && isMatching(slug, page.path)
+  );
+  if (index >= 0) {
+    return index + indexOffset;
+  }
+  return index;
+};
+
+const getPreviousPageLink = (node, currentIndex) => {
+  if (node.path) {
+    if (currentIndex === 1) {
+      // return the chapter
+      return { path: node.path, title: node.chapterTitle };
+    } else {
+      return node.pages[currentIndex - 2];
+    }
+  }
+  return node.pages[currentIndex - 1];
+};
+
+const getNextPageLink = (node, currentIndex) => {
+  const indexOffset = node.path ? 1 : 0;
+  return node.pages[currentIndex - indexOffset + 1];
+};
+
 export const PurePagination = (props) => {
   const activeChapter = props.data.allNavigationYaml.nodes.find((node) => {
     const isPaginationEnabledForChapter =
       typeof node.pagination === 'boolean' ? node.pagination : true;
+
     if (!isPaginationEnabledForChapter) return false;
     if (!node.pages) return false;
-    return node.pages.some((page) => isMatching(props.slug, page.path));
+    return isChapterPathOrPageMatchingSlug(node, props.slug);
   });
 
   if (!activeChapter) {
     return <Container />;
   }
 
-  const currentPageLinkIndex = activeChapter.pages.findIndex((page) =>
-    isMatching(props.slug, page.path)
-  );
+  const currentPageLinkIndex = findActivePageIndex(activeChapter, props.slug);
   const hasPagination = currentPageLinkIndex > -1;
-  const previousPage = activeChapter.pages[currentPageLinkIndex - 1];
-  const nextPage = activeChapter.pages[currentPageLinkIndex + 1];
+  const previousPage = getPreviousPageLink(activeChapter, currentPageLinkIndex);
+  const nextPage = getNextPageLink(activeChapter, currentPageLinkIndex);
 
   return (
     <Container aria-label="Next / Previous in Chapter Navigation">
@@ -176,6 +216,7 @@ const Pagination = (props) => {
       allNavigationYaml {
         nodes {
           chapterTitle
+          path
           pagination
           pages {
             title
