@@ -334,6 +334,10 @@ const CopyArea = styled.div`
   cursor: pointer;
 `;
 
+const IconColorWrapper = styled.div`
+  fill: ${colors.light.iconSecondary};
+`;
+
 const TooltipBodyComponent = styled.div`
   background-color: ${colors.light.surfaceCodeCopy};
   color: ${colors.light.textInverted};
@@ -386,7 +390,9 @@ const withCopyToClipboard =
           onClose={handleTooltipClose}
         >
           <CopyArea onClick={handleCopyToClipboardClick}>
-            <ClipboardIcon size="big" color="neutral60" />
+            <IconColorWrapper>
+              <ClipboardIcon />
+            </IconColorWrapper>
           </CopyArea>
         </Tooltip>
       </Component>
