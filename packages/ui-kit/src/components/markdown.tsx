@@ -156,6 +156,7 @@ const Table = styled.table`
   border-top: 2px solid ${colors.light.borderPrimary};
   border-collapse: collapse;
   font-size: ${typography.fontSizes.body};
+  font-feature-settings: 'tnum';
   margin: 0;
   tbody {
     border-top: 2px solid ${colors.light.borderPrimary};
@@ -256,6 +257,7 @@ const InlineCode = styled.code`
   border-radius: ${dimensions.spacings.xs};
   color: ${colors.light.textCode};
   font-family: ${typography.fontFamilies.nonMonospace};
+  font-feature-settings: 'salt';
   font-size: ${typography.fontSizes.small};
   padding: 0 ${dimensions.spacings.xs};
 `;
@@ -271,6 +273,10 @@ const TypographyPage = styled.div`
   font-size: ${typography.fontSizes.body};
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.5;
+
+  table {
+    font-feature-settings: 'tnum';
+  }
 
   section > p > img,
   section > img {

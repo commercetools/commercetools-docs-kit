@@ -2,5 +2,7 @@
 
 :root {
   --font-family-default: 'Inter', sans-serif;
+  --font-feature-settings: 'ss02';
+  --letter-spacing: 0;
   --font-family-body: 'Roboto Mono', monospace;
 }
