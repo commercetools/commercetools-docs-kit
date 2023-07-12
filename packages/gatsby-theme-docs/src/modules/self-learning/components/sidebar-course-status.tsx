@@ -10,7 +10,7 @@ import ConfigContext, {
   EFeatureFlag,
 } from '../../../components/config-context';
 import styled from '@emotion/styled';
-import { useAuth0 } from '@auth0/auth0-react';
+import useAuthentication from '../../sso/hooks/use-authentication';
 
 const UnknownStateSpacer = styled.div`
   min-width: 21px;
@@ -46,7 +46,7 @@ type SidebarCourseStatusProps = {
   courseId: number;
 };
 const SidebarCourseStatus = (props: SidebarCourseStatusProps) => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuthentication();
   const { data, isLoading } = useFetchCourses();
   const { selfLearningFeatures } = useContext(ConfigContext);
   const [courseStatus, setCourseStatus] = useState<

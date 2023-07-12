@@ -10,7 +10,7 @@ import ConfigContext, {
 } from '../../../components/config-context';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import styled from '@emotion/styled';
-import { useAuth0 } from '@auth0/auth0-react';
+import useAuthentication from '../../sso/hooks/use-authentication';
 
 const UnknownStateSpacer = styled.div`
   min-width: ${designSystem.dimensions.spacings.m};
@@ -68,7 +68,7 @@ type PageTopicStatusProps = {
 };
 
 const SidebarTopicStatus = (props: PageTopicStatusProps) => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuthentication();
   const [topicStatus, setTopicStatus] = useState<TopicStatus>();
   const { data, isLoading } = useFetchCourseDetails(props.courseId);
   const { selfLearningFeatures } = useContext(ConfigContext);

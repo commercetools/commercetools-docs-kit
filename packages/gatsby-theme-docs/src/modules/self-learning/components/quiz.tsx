@@ -7,7 +7,6 @@ import {
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { ContentNotification } from '@commercetools-uikit/notifications';
 import { LoginButton } from '../../sso';
-import { useAuth0 } from '@auth0/auth0-react';
 import { useAttempt } from '../hooks/use-attempt';
 import { useSubmitAttempt } from '../hooks/use-submit-attempt';
 import QuizForm from './quiz-form';
@@ -15,6 +14,7 @@ import type { PassthroughData, SubmissionAttempt } from './quiz.types';
 import { canUseDOM, getQuizOutcome, isTestUserEmail } from './quiz.utils';
 import { LearningContextState } from './learning-context';
 import { UserFilledIcon } from '@commercetools-uikit/icons';
+import useAuthentication from '../../sso/hooks/use-authentication';
 
 export const OUTCOME_CORRECT = 'correct';
 export const OUTCOME_INCORRECT = 'incorrect';
@@ -121,7 +121,8 @@ const Quiz = (props: QuizProps) => {
   const {
     user: { profile },
   } = useContext(LearningContextState);
-  const { isAuthenticated: isLoggedIn, isLoading: isAuthLoading } = useAuth0();
+  const { isAuthenticated: isLoggedIn, isLoading: isAuthLoading } =
+    useAuthentication();
 
   const [formAttemptData, setFormAttemptData] = useState<
     QuizAttempt | undefined
