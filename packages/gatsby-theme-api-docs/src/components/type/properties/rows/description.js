@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { Markdown, useISO310NumberFormatter } from '@commercetools-docs/ui-kit';
+import {
+  Markdown,
+  designSystem,
+  useISO310NumberFormatter,
+} from '@commercetools-docs/ui-kit';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import extractAdditionalInfo from '../../../../utils/extract-additional-info';
@@ -12,6 +16,7 @@ import Info from '../../../info';
 
 const customCodeStyle = css`
   border: none;
+  color: ${designSystem.colors.light.textHighlight};
   background-color: unset;
   padding: 0;
 `;
