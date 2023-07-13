@@ -99,7 +99,7 @@ const Dl = styled.dl`
   }
 `;
 const Dt = styled.dt`
-  color: ${colors.light.textSecondary};
+  color: ${colors.light.textPrimary};
 `;
 
 /*
