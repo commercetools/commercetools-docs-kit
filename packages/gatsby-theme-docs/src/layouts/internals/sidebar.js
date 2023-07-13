@@ -83,6 +83,16 @@ const LinkTitle = styled.div`
   overflow-x: hidden;
   width: 100%;
 `;
+const LinkChapterTitle = styled.div`
+  font-size: ${designSystem.typography.fontSizes.body};
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  width: 100%;
+  color: ${designSystem.colors.light.textPrimary};
+  :hover {
+    color: ${designSystem.colors.light.linkNavigation};
+  }
+`;
 const LinkSubtitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
   text-overflow: ellipsis;
@@ -96,8 +106,16 @@ const LinkItem = styled.div`
   align-items: flex-end;
   vertical-align: middle;
 `;
+
+// TODO: cleanup. After docs websites migrate to clickable chapter, this component
+// can be simplified/removed or refactored since is currently supporting both clickable
+// and non-clickable configs
 const LinkItemWithIcon = styled.div`
-  padding: 0 0 0 ${designSystem.dimensions.spacings.m};
+  ${(props) =>
+    !props.clickable &&
+    `
+    padding: 0 0 0 ${designSystem.dimensions.spacings.m};
+  `}
   display: flex;
   flex-direction: row;
   vertical-align: middle;
@@ -278,10 +296,42 @@ const SidebarChapter = (props) => {
     [elemId]
   );
 
+  // TODO: cleanup. After docs websites migrate to clickable chapter, this component
+  // can be simplified/removed or refactored since is currently supporting both clickable
+  // and non-clickable configs
   return (
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack data-testid={`sidebar-chapter-${courseId}`} scale="s">
-        {courseId ? (
+        {props.chapter.path ? (
+          <SidebarLinkWrapper
+            data-testid={`sidebar-chapter-title-item-${courseId}`}
+            key={`${props.index}-${props.chapter.path}`}
+            to={props.chapter.path}
+            onClick={props.onLinkClick}
+            location={props.location}
+            nextScrollPosition={props.nextScrollPosition}
+            getChapterDOMElement={getChapterDOMElement}
+            customActiveStyles={css`
+              div:first-child {
+                color: ${designSystem.colors.light.linkNavigation} !important;
+              }
+              div:first-child > div {
+                color: ${designSystem.colors.light.linkNavigation} !important;
+              }
+            `}
+          >
+            {courseId ? (
+              <LinkItemWithIcon clickable={true}>
+                <SidebarCourseStatus courseId={courseId} />
+                <LinkChapterTitle>
+                  {props.chapter.chapterTitle}
+                </LinkChapterTitle>
+              </LinkItemWithIcon>
+            ) : (
+              <LinkChapterTitle>{props.chapter.chapterTitle}</LinkChapterTitle>
+            )}
+          </SidebarLinkWrapper>
+        ) : courseId ? (
           <LinkItemWithIcon>
             <SidebarCourseStatus courseId={courseId} />
             <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
@@ -333,6 +383,7 @@ SidebarChapter.propTypes = {
   index: PropTypes.number.isRequired,
   chapter: PropTypes.shape({
     chapterTitle: PropTypes.string.isRequired,
+    path: PropTypes.string,
     beta: PropTypes.bool,
     pages: PropTypes.arrayOf(
       PropTypes.shape({
@@ -358,6 +409,7 @@ const SidebarNavigationLinks = (props) => {
       allNavigationYaml {
         nodes {
           chapterTitle
+          path
           pages {
             title
             path
