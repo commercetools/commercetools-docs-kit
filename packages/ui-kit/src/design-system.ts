@@ -58,6 +58,8 @@ export type ThemeColorTokens = {
   linkNavigation: string;
   // Headlines
   headlinePrimary: string;
+  // Icons
+  iconSecondary: string;
 };
 
 export type ThemeCodeBlocksColorTokens = {
@@ -126,6 +128,8 @@ export const colors: ThemeColors = {
     linkNavigation: designTokens.colorInfo,
     // Headlines
     headlinePrimary: '#003037',
+    // Icons
+    iconSecondary: '#949494',
     // Code blocks
     // We support 2 theme versions: a primary one and a secondary one.
     // This is not to be confused with a (potential) website theme, hence

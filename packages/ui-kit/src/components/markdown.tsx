@@ -3,7 +3,7 @@ import reactIs from 'react-is';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Tooltip from '@commercetools-uikit/tooltip';
-import { RibbonSvgIcon } from '../icons';
+import { ClipboardIcon } from '@commercetools-uikit/icons';
 import { colors, dimensions, typography, tokens } from '../design-system';
 import { CodeBlockMarkdownWrapper as CodeBlock } from './multi-code-block';
 import copyToClipboard from '../utils/copy-to-clipboard';
@@ -334,6 +334,10 @@ const CopyArea = styled.div`
   cursor: pointer;
 `;
 
+const IconColorWrapper = styled.div`
+  fill: ${colors.light.iconSecondary};
+`;
+
 const TooltipBodyComponent = styled.div`
   background-color: ${colors.light.surfaceCodeCopy};
   color: ${colors.light.textInverted};
@@ -386,7 +390,9 @@ const withCopyToClipboard =
           onClose={handleTooltipClose}
         >
           <CopyArea onClick={handleCopyToClipboardClick}>
-            <RibbonSvgIcon />
+            <IconColorWrapper>
+              <ClipboardIcon />
+            </IconColorWrapper>
           </CopyArea>
         </Tooltip>
       </Component>
