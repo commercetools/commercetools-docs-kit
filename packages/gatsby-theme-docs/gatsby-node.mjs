@@ -162,6 +162,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
     type NavigationYaml implements Node @dontInfer {
       id: ID!
       chapterTitle: String! @proxy(from: "chapter-title")
+      path: String
       beta: Boolean
       pagination: Boolean
       pages: [NavigationPage!]
@@ -471,6 +472,7 @@ async function createContentPages(
       allNavigationYaml {
         nodes {
           chapterTitle
+          path
           pages {
             title
             path
