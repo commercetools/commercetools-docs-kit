@@ -304,22 +304,22 @@ const TypographyPage = styled.div`
   }
 
   section > ${H2} {
-    margin: ${dimensions.spacings.huge} 0 ${dimensions.spacings.m};
+    margin: ${dimensions.spacings.large} 0 ${dimensions.spacings.m};
   }
   section > ${H3} {
-    margin: ${dimensions.spacings.big} 0 0;
+    margin: ${dimensions.spacings.s} 0 0;
   }
   section > ${H4} {
-    margin: ${dimensions.spacings.xl} 0 0;
+    margin: ${dimensions.spacings.s} 0 0;
   }
   section > ${H5} {
-    margin: ${dimensions.spacings.xl} 0 0;
+    margin: ${dimensions.spacings.s} 0 0;
   }
   section > ${H6} {
-    margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.s};
+    margin: ${dimensions.spacings.s} 0 ${dimensions.spacings.s};
   }
   section > ${Blockquote} {
-    margin: ${dimensions.spacings.l} ${dimensions.spacings.xxl};
+    margin: ${dimensions.spacings.s} ${dimensions.spacings.xxl};
   }
   section > ${Ul}, section > ${Ol}, section > ${Dl} {
     margin-top: ${dimensions.spacings.s};
