@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { CourseTopic } from '../external-types';
 import usePageVisibility from '../../../hooks/use-page-visibility';
 import useIsClientSide from './use-is-client-side';
+import { useTrackActivity } from './use-track-activity';
 
 export const EVENT_VIDEO_PROGRESS = 'selflearning:video:progressReached';
 export const EVENT_PAGECONTENT_VIEWED = 'selflearning:pageContent:viewed';
@@ -35,11 +36,20 @@ export interface ContentPageViewedEvent extends Event {
   };
 }
 
-export const useLearningTrackingHandler = (topic: CourseTopic | undefined) => {
+export const useLearningTrackingHandler = (
+  courseId: number | undefined,
+  topic: CourseTopic | undefined
+) => {
   const [actType, setActType] = useState<string | undefined>();
+  const { trackActivity } = useTrackActivity(
+    courseId,
+    topic?.activities[0].courseModuleId
+  );
 
   useEffect(() => {
-    if (!topic) {
+    if (!topic || topic.completed === true) {
+      // if the topic is already completed, there's no need to listen for any UI
+      // interaction that might trigger activity tracking
       return;
     }
     const ancestorElement = document.getElementById(
@@ -50,8 +60,9 @@ export const useLearningTrackingHandler = (topic: CourseTopic | undefined) => {
       const handleContentPageViewed = (event: ContentPageViewedEvent) => {
         const videoProgressEvent = event as ContentPageViewedEvent;
         const viewed = videoProgressEvent.detail.viewed;
-        // TODO: track content page viewed and
-        console.log(`User viewed content? ${viewed}`);
+        if (viewed) {
+          trackActivity(true);
+        }
         ancestorElement.removeEventListener(
           EVENT_PAGECONTENT_VIEWED,
           handleContentPageViewed
@@ -74,10 +85,7 @@ export const useLearningTrackingHandler = (topic: CourseTopic | undefined) => {
     }
     if (actType === 'video') {
       const handleVideoProgressReached = (event: VideoProgressReachedEvent) => {
-        const videoProgressEvent = event as VideoProgressReachedEvent;
-        const progress = videoProgressEvent.detail.progress;
-        // TODO: track video activity as completed
-        console.log(`User reached ${progress} of the video`);
+        trackActivity(true);
       };
 
       const ancestorElement = document.getElementById(
@@ -117,12 +125,16 @@ export const useContentPageTrackingDispatcher = (
   const { isClientSide } = useIsClientSide();
 
   useEffect(() => {
+    if (!topic || topic.completed === true) {
+      // if the topic is already completed, there's no need to trigger any events,
+      // just disable the hook
+      return;
+    }
     if (isClientSide && isPageviewActivity(topic) && isContentVisible) {
       const customEvent = new CustomEvent(EVENT_PAGECONTENT_VIEWED, {
         detail: { viewed: isContentVisible },
       });
       const el = document.getElementById('application');
-      console.log('dispatch', EVENT_PAGECONTENT_VIEWED);
       el?.dispatchEvent(customEvent);
     }
   }, [topic, isContentVisible, isClientSide]);

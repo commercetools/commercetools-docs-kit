@@ -55,6 +55,8 @@ const VideoPlayer = (props) => {
       const player = playerRef.current;
       let eventTriggered = false; // Flag to track event triggering
 
+      // for tracking purposes, the video player emits a selflearning:video:progressReached
+      // event when the play time reached a certain threshold (defaults to 80%)
       player.on('timeupdate', () => {
         const completeThreshold = props.completeAtPercent
           ? parseInt(props.completeAtPercent) / 100
