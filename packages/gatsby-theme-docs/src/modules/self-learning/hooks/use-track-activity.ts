@@ -5,13 +5,13 @@ import { fetcherWithToken } from './hooks.utils';
 import { useAuthToken } from './use-auth-token';
 import useAuthentication from '../../sso/hooks/use-authentication';
 
-export const useTrackActivity = (courseId?: number, activityId?: number) => {
+export const useTrackActivity = (courseId?: number) => {
   const { learnApiBaseUrl } = useContext(ConfigContext);
   const { getAuthToken } = useAuthToken();
   const { isAuthenticated } = useAuthentication();
-  const [doTrack, setDoTrack] = useState<boolean>(false);
   const [canTrack, setCanTrack] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
+  const [activityId, setActivityId] = useState<number | undefined>();
   const { mutate } = useSWRConfig();
 
   const apiEndpoint = `/api/courses/${courseId}/activities/${activityId}`;
@@ -23,7 +23,7 @@ export const useTrackActivity = (courseId?: number, activityId?: number) => {
   }, [courseId, activityId, isAuthenticated]);
 
   const { data, error, isLoading } = useSWR(
-    canTrack && doTrack ? apiEndpoint : null,
+    canTrack ? apiEndpoint : null,
     (url) =>
       fetcherWithToken(url, getAuthToken, learnApiBaseUrl, 'POST', {
         completed,
@@ -45,9 +45,9 @@ export const useTrackActivity = (courseId?: number, activityId?: number) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, isLoading, error, courseId]);
 
-  const trackActivity = (completed: boolean) => {
+  const trackActivity = (activityId: number, completed: boolean) => {
+    setActivityId(activityId);
     setCompleted(completed);
-    setDoTrack(true);
   };
 
   return {

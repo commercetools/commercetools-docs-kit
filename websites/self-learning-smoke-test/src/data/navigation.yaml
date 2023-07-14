@@ -22,3 +22,5 @@
       path: /course-3/video
     - title: Quiz
       path: /course-3/quiz
+    - title: Multi content page
+      path: /course-3/multi-content

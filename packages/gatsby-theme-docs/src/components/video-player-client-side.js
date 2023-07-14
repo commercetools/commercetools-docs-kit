@@ -67,7 +67,7 @@ const VideoPlayer = (props) => {
         if (!eventTriggered && progress >= completeThreshold) {
           // Trigger custom event
           const customEvent = new CustomEvent(EVENT_VIDEO_PROGRESS, {
-            detail: { progress },
+            detail: { progress, url: props.url },
           });
           const el = document.getElementById('application');
           el.dispatchEvent(customEvent);

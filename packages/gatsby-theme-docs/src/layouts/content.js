@@ -47,7 +47,11 @@ const LayoutContent = (props) => {
       courseInfo[props.pageContext.slug]?.topicName
     );
   }
-  useLearningTrackingHandler(courseId, selfLearningTopic);
+  useLearningTrackingHandler(
+    courseId,
+    selfLearningTopic,
+    props.pageContext.slug
+  );
   useContentPageTrackingDispatcher(selfLearningTopic);
 
   const { ref, inView, entry } = useInView();
