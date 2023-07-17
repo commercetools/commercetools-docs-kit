@@ -6,7 +6,7 @@ import ConfigContext from '../../../components/config-context';
 import { fetcherWithToken } from '../../self-learning/hooks/hooks.utils';
 import { getCookieValue } from '../utils/common.utils';
 
-const LOCAL_STORAGE_SESSION = 'user_session';
+export const LOCAL_STORAGE_SESSION = 'user_session';
 
 // 1. in case a session item doesn't exist and userId is defined. We create a new session item
 // 2. in case a session item exist but it doesn't match the userId. We replace the session item with the
@@ -17,12 +17,19 @@ const saveLocalStorageSession = (userId?: string) => {
     (!savedSession && userId) ||
     (savedSession && userId && savedSession !== userId)
   ) {
+    console.log('[DBG] local storage created with', userId);
     localStorage.setItem(LOCAL_STORAGE_SESSION, userId);
   }
 };
 
+// Deletes the local storage session ONLY if it exists, this will reduce the number
+// of storage events
 const deleteLocalStorageSession = () => {
-  localStorage.removeItem(LOCAL_STORAGE_SESSION);
+  const savedSession = localStorage.getItem(LOCAL_STORAGE_SESSION);
+  if (savedSession) {
+    console.log('[DBG] local storage deleted');
+    localStorage.removeItem(LOCAL_STORAGE_SESSION);
+  }
 };
 
 const doesSessionExist = (cookieContent?: string): boolean => {
@@ -84,12 +91,16 @@ const useAuthentication = () => {
 
   // handles the creation/deletion of the user_session flag in local storage
   useEffect(() => {
-    if (isAuthenticated) {
-      saveLocalStorageSession(rest.user?.sub);
-    } else {
-      deleteLocalStorageSession();
+    if (!rest.isLoading) {
+      // don't consider transition states
+      if (isAuth0Authenticated) {
+        saveLocalStorageSession(rest.user?.sub);
+      } else {
+        deleteLocalStorageSession();
+      }
     }
-  }, [isAuthenticated, rest.user?.sub]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuth0Authenticated, rest.isLoading]);
 
   // returns exacly the same properties as userAuth0
   return { ...rest, isAuthenticated };
