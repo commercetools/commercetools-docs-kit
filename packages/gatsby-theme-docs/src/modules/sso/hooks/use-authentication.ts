@@ -6,6 +6,25 @@ import ConfigContext from '../../../components/config-context';
 import { fetcherWithToken } from '../../self-learning/hooks/hooks.utils';
 import { getCookieValue } from '../utils/common.utils';
 
+const LOCAL_STORAGE_SESSION = 'user_session';
+
+// 1. in case a session item doesn't exist and userId is defined. We create a new session item
+// 2. in case a session item exist but it doesn't match the userId. We replace the session item with the
+// new userId
+const saveLocalStorageSession = (userId?: string) => {
+  const savedSession = localStorage.getItem(LOCAL_STORAGE_SESSION);
+  if (
+    (!savedSession && userId) ||
+    (savedSession && userId && savedSession !== userId)
+  ) {
+    localStorage.setItem(LOCAL_STORAGE_SESSION, userId);
+  }
+};
+
+const deleteLocalStorageSession = () => {
+  localStorage.removeItem(LOCAL_STORAGE_SESSION);
+};
+
 const doesSessionExist = (cookieContent?: string): boolean => {
   if (!cookieContent) {
     return false;
@@ -62,6 +81,15 @@ const useAuthentication = () => {
       setIsAuthenticated(true);
     }
   }, [isLoading, data, error]);
+
+  // handles the creation/deletion of the user_session flag in local storage
+  useEffect(() => {
+    if (isAuthenticated) {
+      saveLocalStorageSession(rest.user?.sub);
+    } else {
+      deleteLocalStorageSession();
+    }
+  }, [isAuthenticated, rest.user?.sub]);
 
   // returns exacly the same properties as userAuth0
   return { ...rest, isAuthenticated };
