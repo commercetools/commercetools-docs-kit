@@ -11,7 +11,6 @@ const useLocalStorageSession = () => {
 
   const handleStorageChange = async (event: StorageEvent) => {
     if (event.key === LOCAL_STORAGE_SESSION && event.newValue === null) {
-      console.log('[DBG] event deleted', event.newValue);
       logout({
         logoutParams: {
           returnTo: getLogoutReturnUrl(learnApiBaseUrl, document.location),
@@ -19,8 +18,8 @@ const useLocalStorageSession = () => {
       });
     }
     if (event.key === LOCAL_STORAGE_SESSION && event.newValue !== null) {
-      const accToken = await getAuthToken();
-      console.log('[DBG] event created', accToken);
+      // automatically logs in the user if a tab is open
+      await getAuthToken();
     }
   };
 

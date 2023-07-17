@@ -17,7 +17,6 @@ const saveLocalStorageSession = (userId?: string) => {
     (!savedSession && userId) ||
     (savedSession && userId && savedSession !== userId)
   ) {
-    console.log('[DBG] local storage created with', userId);
     localStorage.setItem(LOCAL_STORAGE_SESSION, userId);
   }
 };
@@ -27,7 +26,6 @@ const saveLocalStorageSession = (userId?: string) => {
 const deleteLocalStorageSession = () => {
   const savedSession = localStorage.getItem(LOCAL_STORAGE_SESSION);
   if (savedSession) {
-    console.log('[DBG] local storage deleted');
     localStorage.removeItem(LOCAL_STORAGE_SESSION);
   }
 };
