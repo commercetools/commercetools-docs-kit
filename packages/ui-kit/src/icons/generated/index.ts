@@ -10,6 +10,7 @@ export { default as MerchantCenterSvgIcon } from './MerchantCenter';
 export { default as OpenSourceSmallSvgIcon } from './OpenSourceSmall';
 export { default as OpenSourceSvgIcon } from './OpenSource';
 export { default as ReleaseNotesSvgIcon } from './ReleaseNotes';
+export { default as RibbonSvgIcon } from './Ribbon';
 export { default as RssSvgIcon } from './Rss';
 export { default as SearchSvgIcon } from './Search';
 export { default as SlashSvgIcon } from './Slash';

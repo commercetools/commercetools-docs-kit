@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "2.1.0",
+    "@commercetools-docs/gatsby-transformer-mdx-introspection": "16.0.0",
     "@commercetools-docs/ui-kit": "22.2.0",
     "@commercetools-uikit/card": "16.3.0",
     "@commercetools-uikit/checkbox-input": "16.3.0",

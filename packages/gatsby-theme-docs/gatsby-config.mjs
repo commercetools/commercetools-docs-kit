@@ -31,8 +31,12 @@ const validateThemeOptions = (options) => {
 };
 const productionHostname = 'docs.commercetools.com';
 
+const getTagListOption = (themeOptions) =>
+  !themeOptions.transformerMdx ? [] : themeOptions.transformerMdx.tagList;
+
 const config = (themeOptions = {}) => {
   const pluginOptions = { ...defaultOptions, ...themeOptions };
+  const additionalTags = getTagListOption(themeOptions);
   // backwards compat to single value GA configuration
   if (
     pluginOptions.gaTrackingId &&
@@ -316,6 +320,13 @@ const config = (themeOptions = {}) => {
               title: 'commercetools Release Notes',
             },
           ],
+        },
+      },
+      {
+        resolve: '@commercetools-docs/gatsby-transformer-mdx-introspection',
+        options: {
+          ...themeOptions.transformerMdx,
+          tagList: [...additionalTags],
         },
       },
     ].filter(Boolean),

@@ -22,6 +22,9 @@ const config = {
       selfLearningFeatures: ['status-indicator', 'complete-profile-modal'],
       hideLogin: false,
       addOns: [],
+      transformerMdx: {
+        tagList: ['Quiz', 'Video'],
+      },
     }),
   ],
 };

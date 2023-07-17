@@ -70,17 +70,20 @@ The component accepts the following properties:
 
 - `url` (mandatory): The source URL to a video source to embed.
 - `poster`: an optional parameter specifying a URL to an image that displays before the video begins playing. This is often a frame of the video or a custom title screen. As soon as the user hits "play" the image will go away. If not specified, the initial frame of the video will be displayed instead.
+- `completeAtPercent`: an optional parameter specifying the percentage of video the user need to watch to consider the learning activity complete. It must be a number between 0 and 100, it defaults to 80;
 
 <SideBySide>
   <Video
       url="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/e1aa2e24614b242afdd4afb36a0c2f75/manifest/video.m3u8"
       poster="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/e1aa2e24614b242afdd4afb36a0c2f75/thumbnails/thumbnail.jpg?time=6s"
+      completeAtPercent="50"
     ></Video>
 
   ```md title="you write:" secondaryTheme
   <Video
     url="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/e1aa2e24614b242afdd4afb36a0c2f75/manifest/video.m3u8"
     poster="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/e1aa2e24614b242afdd4afb36a0c2f75/thumbnails/thumbnail.jpg?time=6s"
+    completeAtPercent="50"
   />
   ```
 </SideBySide>

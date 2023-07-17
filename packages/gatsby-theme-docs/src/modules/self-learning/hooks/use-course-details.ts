@@ -49,17 +49,24 @@ export const useFetchCourseDetails = (
   };
 };
 
-export const getTopicStatusByPageTitle = (
+export const getMatchingTopic = (
   topics: CourseTopic[] | undefined,
   pageTitle: string
 ) => {
   if (!topics || !pageTitle) {
-    return 'notAvailable';
+    return;
   }
-  const matchingTopic = topics.find(
+  return topics.find(
     (topic) =>
       topic.name.trim().toLowerCase() === pageTitle.trim().toLowerCase()
   );
+};
+
+export const getTopicStatusByPageTitle = (
+  topics: CourseTopic[] | undefined,
+  pageTitle: string
+) => {
+  const matchingTopic = getMatchingTopic(topics, pageTitle);
   if (matchingTopic) {
     return matchingTopic.completed ? 'completed' : 'inProgress';
   }

@@ -31,7 +31,8 @@ export const fetcherWithToken = async (
   url: string,
   getAuthToken: () => Promise<string>,
   learnApiBaseUrl: string,
-  method: 'GET' | 'POST'
+  method: 'GET' | 'POST',
+  body?: object
 ): Promise<ApiCallResult<EnrolledCourses | CourseWithDetails>> => {
   const responseHandler = async (response: Response) => {
     if (!response.ok) {
@@ -60,17 +61,23 @@ export const fetcherWithToken = async (
     const accessToken = await getAuthToken();
 
     // ...then performs fetch
+    let bodyHeaders = {};
+    if (body) {
+      bodyHeaders = { 'Content-Type': 'application/json' };
+    }
     const response = await fetch(`${learnApiBaseUrl}${url}`, {
       method,
       headers: {
         Accept: 'application/json',
         Authorization: `Bearer ${accessToken}`,
+        ...bodyHeaders,
       },
       // Allowing to include authorization and cookie headers because the API is hosted on a different
       // subdomain even in production and as opposed to cookie domains, CORS same-origin
       // policy does not consider a subdomain of the document domain same-origin.
       // ("learning-api.docs.commercetools.com" is not same-origin with "docs.commercetools.com")
       credentials: 'include',
+      body: body ? JSON.stringify(body) : undefined,
     });
     return responseHandler(response);
   } catch (e) {

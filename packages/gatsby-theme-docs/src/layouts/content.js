@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -26,11 +26,36 @@ import {
   CourseCompleteModal,
   useCourseInfoByPageSlugs,
 } from '../modules/self-learning';
+import {
+  useFetchCourseDetails,
+  getMatchingTopic,
+} from '../modules/self-learning/hooks/use-course-details';
+import {
+  useLearningTrackingHandler,
+  useContentPageTrackingDispatcher,
+} from '../modules/self-learning/hooks/use-learning-tracking';
 
 const LayoutContent = (props) => {
   const courseInfo = useCourseInfoByPageSlugs([props.pageContext.slug]);
   const courseId = courseInfo[props.pageContext.slug]?.courseId;
+  const { data } = useFetchCourseDetails(courseId);
+  const isSelfLearningPage = !!courseId;
+  let selfLearningTopic;
+  if (isSelfLearningPage) {
+    selfLearningTopic = getMatchingTopic(
+      data?.result?.topics,
+      courseInfo[props.pageContext.slug]?.topicName
+    );
+  }
+  useLearningTrackingHandler(
+    courseId,
+    selfLearningTopic,
+    props.pageContext.slug
+  );
+  useContentPageTrackingDispatcher(selfLearningTopic);
+
   const { ref, inView, entry } = useInView();
+  const contentRef = useRef();
   const isSearchBoxInView = !Boolean(entry) || inView;
   const layoutState = useLayoutState();
   const siteData = useSiteData();
@@ -95,7 +120,7 @@ const LayoutContent = (props) => {
                 <PlaceholderPageHeaderSideBannerArea />
               </SpacingsStack>
             </LayoutPageHeaderSide>
-            <LayoutPageContent>
+            <LayoutPageContent ref={courseId ? contentRef : null}>
               <PageContentInset id="body-content" showRightBorder>
                 {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
