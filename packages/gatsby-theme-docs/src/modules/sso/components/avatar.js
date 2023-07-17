@@ -103,9 +103,9 @@ const LoggedOutState = () => {
 LoggedOutState.displayName = 'LoggedOutState';
 
 const UserProfile = () => {
-  const { isAuthenticated } = useAuthentication();
+  const { isAuth0Authenticated } = useAuthentication();
 
-  return isAuthenticated ? <LoggedInState /> : <LoggedOutState />;
+  return isAuth0Authenticated ? <LoggedInState /> : <LoggedOutState />;
 };
 
 UserProfile.displayName = 'UserProfile';

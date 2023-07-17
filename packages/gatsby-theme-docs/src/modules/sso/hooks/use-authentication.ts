@@ -103,7 +103,10 @@ const useAuthentication = () => {
   }, [isAuth0Authenticated, rest.isLoading]);
 
   // returns exacly the same properties as userAuth0
-  return { ...rest, isAuthenticated };
+  // in addition we return isAuth0Authenticated as reference to the original
+  // authenticated state which can be safely used in components that don't
+  // interact with the learning API.
+  return { ...rest, isAuthenticated, isAuth0Authenticated };
 };
 
 export default useAuthentication;
