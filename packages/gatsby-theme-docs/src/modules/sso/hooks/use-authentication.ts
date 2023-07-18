@@ -2,7 +2,10 @@ import { useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
-import ConfigContext from '../../../components/config-context';
+import ConfigContext, {
+  EFeatureFlag,
+  isFeatureEnabled,
+} from '../../../components/config-context';
 import { fetcherWithToken } from '../../self-learning/hooks/hooks.utils';
 import { getCookieValue } from '../utils/common.utils';
 
@@ -48,7 +51,7 @@ const useAuthentication = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [shouldInitSession, setShouldInitSession] = useState(false);
 
-  const { learnApiBaseUrl } = useContext(ConfigContext);
+  const { learnApiBaseUrl, selfLearningFeatures } = useContext(ConfigContext);
   const { getAuthToken } = useAuthToken();
 
   const apiEndpoint = `/api/init-session`;
@@ -89,6 +92,9 @@ const useAuthentication = () => {
 
   // handles the creation/deletion of the user_session flag in local storage
   useEffect(() => {
+    if (!isFeatureEnabled(EFeatureFlag.TabsSessionSync, selfLearningFeatures)) {
+      return;
+    }
     if (!rest.isLoading) {
       // don't consider transition states
       if (isAuth0Authenticated) {

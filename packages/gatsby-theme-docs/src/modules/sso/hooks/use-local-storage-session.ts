@@ -2,12 +2,15 @@ import { useContext, useEffect } from 'react';
 import useAuthentication, { LOCAL_STORAGE_SESSION } from './use-authentication';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
 import { getLogoutReturnUrl } from '../components/sso.utils';
-import ConfigContext from '../../../components/config-context';
+import ConfigContext, {
+  EFeatureFlag,
+  isFeatureEnabled,
+} from '../../../components/config-context';
 
 const useLocalStorageSession = () => {
   const { getAuthToken } = useAuthToken();
   const { logout } = useAuthentication();
-  const { learnApiBaseUrl } = useContext(ConfigContext);
+  const { learnApiBaseUrl, selfLearningFeatures } = useContext(ConfigContext);
 
   const handleStorageChange = async (event: StorageEvent) => {
     if (event.key === LOCAL_STORAGE_SESSION && event.newValue === null) {
@@ -24,6 +27,9 @@ const useLocalStorageSession = () => {
   };
 
   useEffect(() => {
+    if (!isFeatureEnabled(EFeatureFlag.TabsSessionSync, selfLearningFeatures)) {
+      return;
+    }
     // Add the event listener when the component mounts
     window.addEventListener('storage', handleStorageChange);
 
