@@ -42,6 +42,7 @@ export type ThemeColorTokens = {
   textCode: string;
   textInfo: string;
   textError: string;
+  textHighlight: string;
   textWarning: string;
   textInverted: string;
   textSearchHeading: string;
@@ -112,6 +113,7 @@ export const colors: ThemeColors = {
     textCode: designTokens.colorError,
     textInfo: designTokens.colorInfo,
     textError: designTokens.colorError,
+    textHighlight: designTokens.colorError40,
     textWarning: designTokens.colorWarning,
     textInverted: designTokens.colorSurface,
     textSearchHeading: designTokens.colorPrimary25,
