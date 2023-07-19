@@ -9,7 +9,7 @@ import ConfigContext, {
 import { fetcherWithToken } from '../../self-learning/hooks/hooks.utils';
 import { getCookieValue } from '../utils/common.utils';
 
-export const LOCAL_STORAGE_SESSION = 'user_session';
+export const LOCAL_STORAGE_SESSION = 'user_auth0_session';
 
 // 1. in case a session item doesn't exist and userId is defined. We create a new session item
 // 2. in case a session item exist but it doesn't match the userId. We replace the session item with the
