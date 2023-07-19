@@ -4,6 +4,7 @@ import { LearningContextApi, LearningContextState } from './learning-context';
 import { AUTH0_CLAIM_COMPANY } from '../../sso';
 import { isProfileComplete } from './profile.utils';
 import useAuthentication from '../../sso/hooks/use-authentication';
+import useLocalStorageSession from '../../sso/hooks/use-local-storage-session';
 
 export type TProfileFormValues = {
   firstName: string;
@@ -30,6 +31,7 @@ const contextProfileAdapter = (auth0User: User) => {
 };
 
 const UserProfileInit = () => {
+  useLocalStorageSession();
   const { user, isAuthenticated } = useAuthentication();
   const { updateProfile, openProfileModal, closeProfileModal } =
     useContext(LearningContextApi);
