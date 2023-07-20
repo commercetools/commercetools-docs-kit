@@ -22,6 +22,7 @@ Feature: Profile Modal
 
   Scenario: User updates his profile data
     Given The "user" logs in using the top login button
+    And The course status has fully loaded
     And The user clicks the "avatar icon"
     And The user sees an update profile modal with the values "FirstName", "LastName", "Test Corp."
     When The user fills in "all" the profile details "Updated name", "Updated surname", "Updated company"
