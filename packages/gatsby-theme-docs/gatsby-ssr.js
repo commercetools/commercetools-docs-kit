@@ -21,6 +21,7 @@ import iconLightDigestRaw from '!!raw-loader!./static/favicon-light-32x32.png';
 
 import ConfigContext from './src/components/config-context';
 import { LearningContextProvider } from './src/modules/self-learning/components/learning-context';
+import { PageReadyProvider } from './src/modules/self-learning/components/page-ready-context';
 
 // end build hack to force shared components into a central place at SSR bundling time
 
@@ -122,7 +123,9 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
         hideLogin: pluginOptions?.hideLogin || false,
       }}
     >
-      <LearningContextProvider>{element}</LearningContextProvider>
+      <PageReadyProvider>
+        <LearningContextProvider>{element}</LearningContextProvider>
+      </PageReadyProvider>
     </ConfigContext.Provider>
   );
 };

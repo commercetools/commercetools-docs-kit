@@ -3,6 +3,7 @@ import { createContext } from 'react';
 export enum EFeatureFlag {
   CourseStatus = 'status-indicator',
   CompleteProfileModal = 'complete-profile-modal',
+  PageReady = 'page-ready',
   TabsSessionSync = 'tabs-session-sync',
 }
 
