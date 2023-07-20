@@ -257,6 +257,8 @@ const InlineCode = styled.code`
   border-radius: ${dimensions.spacings.xs};
   color: ${colors.light.textCode};
   font-family: ${typography.fontFamilies.nonMonospace};
+  font-feature-settings: 'ss02';
+  letter-spacing: 0;
   font-feature-settings: 'salt';
   font-size: ${typography.fontSizes.small};
   padding: 0 ${dimensions.spacings.xs};
