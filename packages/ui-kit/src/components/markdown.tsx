@@ -303,16 +303,16 @@ const TypographyPage = styled.div`
   }
 
   section > ${H2} {
-    margin: ${dimensions.spacings.huge} 0 ${dimensions.spacings.m};
+    margin: ${dimensions.spacings.large} 0 ${dimensions.spacings.m};
   }
   section > ${H3} {
-    margin: ${dimensions.spacings.big} 0 0;
+    margin: ${dimensions.spacings.l} 0 0;
   }
   section > ${H4} {
-    margin: ${dimensions.spacings.xl} 0 0;
+    margin: ${dimensions.spacings.m} 0 0;
   }
   section > ${H5} {
-    margin: ${dimensions.spacings.xl} 0 0;
+    margin: ${dimensions.spacings.m} 0 0;
   }
   section > ${H6} {
     margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.s};
