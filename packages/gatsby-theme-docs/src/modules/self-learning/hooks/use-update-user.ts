@@ -5,6 +5,7 @@ import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
 import { User } from '@auth0/auth0-react';
 import { MaintenanceModeError, ServiceDownError } from './use-attempt';
+import { useAsyncComplete } from '../../../hooks/use-async-complete';
 
 type UpdateUserParams = {
   userId: string;
@@ -18,6 +19,7 @@ export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
   const [error, setError] = useState<string | undefined>();
   const [data, setData] = useState<QuizAttempt | undefined>();
   const [correlationId, setCorrelationId] = useState<string | undefined>();
+  const { setAsyncLoading } = useAsyncComplete(`/api/users/${userId}`);
 
   const updateUser = useCallback(
     async (newUser: User): Promise<Response> => {
@@ -44,6 +46,7 @@ export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
     async (newuser: User) => {
       try {
         setIsLoading(true);
+        setAsyncLoading(true);
         const data = await updateUser(newuser);
         const correlationId = data.headers.get('X-Correlation-ID');
         if (correlationId) {
@@ -81,9 +84,11 @@ export const useUpdateUser = (updateUserParams: UpdateUserParams) => {
           setError('Unable to update user');
         }
       } finally {
+        setAsyncLoading(false);
         setIsLoading(false);
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [updateUser, userId]
   );
 

@@ -283,18 +283,21 @@ Given('The user completes {string} successfully', (course: string) => {
   }
 });
 
-Given('The course status has fully loaded', () => {
-  cy.get('[data-testid^="sidebar-course-status-"]').each(($element) => {
-    cy.wrap($element).should('have.attr', 'data-test-course-loaded', 'true');
-  });
-
-  cy.get('[data-testid^="topic-status-"]').each(($element) => {
-    cy.wrap($element).should('have.attr', 'data-test-topic-loaded', 'true');
+Given('The page has fully loaded', () => {
+  cy.get('div[data-test-page-ready]').should(($div) => {
+    const value = $div.attr('data-test-page-ready');
+    expect(value).to.equal('true');
   });
 });
 
 Then('The avatar icon shows {string}', (initials: string) => {
   cy.get(`[data-testid="${ETestId.avatarIcon}"]`).should('have.text', initials);
+});
+
+Then("The user doesn't see a complete profile modal", () => {
+  cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
+    'not.exist'
+  );
 });
 
 Given('The user sees a complete profile modal with empty fields', () => {
@@ -311,12 +314,6 @@ Given('The user sees a complete profile modal with empty fields', () => {
   cy.get(
     `[data-testid="${ETestId.profileModal}"] > div[name="main"] button`
   ).should('be.disabled');
-});
-
-Then("The user doesn't see a complete profile modal", () => {
-  cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
-    'not.exist'
-  );
 });
 
 Then('The user sees a {string} completed modal', (type: string) => {

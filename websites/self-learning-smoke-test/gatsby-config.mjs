@@ -2,6 +2,7 @@ import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/
 import dotenv from 'dotenv';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+
 const config = {
   flags: {
     DEV_SSR: true,
@@ -23,6 +24,7 @@ const config = {
         'status-indicator',
         'complete-profile-modal',
         'tabs-session-sync',
+        'page-ready',
       ],
       hideLogin: false,
       addOns: [],

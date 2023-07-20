@@ -14,6 +14,7 @@ The module depends on some configuration properties passed to the `gatsby-theme-
 - `selfLearningFeatures`: an array of strings representing feature flags used to enable/disable specific functionalities. Expected values:
   - `status-indicator`: feature flag to toggle the course and topics status indicator.
   - `complete-profile-modal`: feature flag to toggle the complete profile modal window functionality
+  - `page-ready`: feature flag to toggle the detection of full page load (used for VRT snapshotting). It should be disabled in production mode
   - `tabs-session-sync`: feature flag to toggle the syncronization of the user session between tabs. If a user has multiple tabs/windows opened with the same user session, when one of them performs a log out, all the others are logged out automatically. Same applies for login.
 
 ## Components

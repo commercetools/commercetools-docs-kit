@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
@@ -12,6 +12,7 @@ import type {
 } from '../external-types';
 import { DEFAULT_SWR_FLAGS, fetcherWithToken } from './hooks.utils';
 import { useAuthToken } from './use-auth-token';
+import { useAsyncComplete } from '../../../hooks/use-async-complete';
 import useAuthentication from '../../sso/hooks/use-authentication';
 
 /**
@@ -28,6 +29,7 @@ type UseFetchCoursesResponse = {
   data: ApiCallResult<EnrolledCourses> | undefined;
   error: string;
   isLoading: boolean;
+  isValidating: boolean;
 };
 
 export const useFetchCourses = (): {
@@ -39,17 +41,24 @@ export const useFetchCourses = (): {
   const { isAuthenticated } = useAuthentication();
   const { getAuthToken } = useAuthToken();
   const apiEndpoint = `/api/courses`;
+  const { setAsyncLoading } = useAsyncComplete(apiEndpoint);
 
   // fetch data only if course status feature flag is true and the user is logged in
   const shouldFetchData =
     isFeatureEnabled(EFeatureFlag.CourseStatus, selfLearningFeatures) &&
     isAuthenticated;
 
-  const { data, error, isLoading } = useSWR(
+  const { data, error, isLoading, isValidating } = useSWR(
     shouldFetchData ? apiEndpoint : null,
     (url) => fetcherWithToken(url, getAuthToken, learnApiBaseUrl, 'GET'),
     DEFAULT_SWR_FLAGS
   ) as UseFetchCoursesResponse;
+
+  useEffect(() => {
+    setAsyncLoading(isLoading || isValidating);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading, isValidating]);
+
   return {
     data,
     error,

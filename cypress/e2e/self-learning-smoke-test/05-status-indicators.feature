@@ -19,7 +19,7 @@ Scenario: User sees completed status indicators for the first course after takin
   And The course "66" topics indicators are "topic-status-checkActive"
   And The course "69" status icon is "circle"
   And The course "69" topics indicators are "topic-status-circle"
-  And The course status has fully loaded
+  And The page has fully loaded
   And A snapshot is taken
   And The user sees a "course" completed modal
   And The user logs out
@@ -31,7 +31,7 @@ Scenario: User sees completed status indicators for the first and second courses
   And The course "66" topics indicators are "topic-status-checkActive"
   And The course "69" status icon is "verified"
   And The course "69" topics indicators are "topic-status-checkActive"
-  And The course status has fully loaded
+  And The page has fully loaded
   And A snapshot is taken
   And The user sees a "learning path" completed modal
   And The user logs out

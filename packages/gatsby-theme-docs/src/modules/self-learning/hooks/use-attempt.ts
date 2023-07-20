@@ -3,6 +3,7 @@ import ConfigContext from '../../../components/config-context';
 import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
 import { useSWRConfig } from 'swr';
+import { useAsyncComplete } from '../../../hooks/use-async-complete';
 
 type FetchAttemptParams = {
   courseId: string;
@@ -32,6 +33,9 @@ export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
   const [data, setData] = useState<QuizAttempt | undefined>();
   const [correlationId, setCorrelationId] = useState<string | undefined>();
   const { mutate } = useSWRConfig();
+  const { setAsyncLoading } = useAsyncComplete(
+    `/api/courses/${courseId}/quizzes/${quizId}/attempts`
+  );
 
   const getNewAttempt = useCallback(
     async (forceNew: boolean): Promise<Response> => {
@@ -58,6 +62,7 @@ export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
         mutate(`/api/courses/${courseId}`);
       };
       try {
+        setAsyncLoading(true);
         setIsLoading(true);
         const data = await getNewAttempt(forceNew);
         const correlationId = data.headers.get('X-Correlation-ID');
@@ -97,6 +102,7 @@ export const useAttempt = (fetchAttemptParams: FetchAttemptParams) => {
           setError('Unable to load quiz');
         }
       } finally {
+        setAsyncLoading(false);
         setIsLoading(false);
       }
     },

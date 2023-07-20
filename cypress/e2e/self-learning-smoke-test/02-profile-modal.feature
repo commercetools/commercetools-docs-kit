@@ -3,8 +3,8 @@ Feature: Profile Modal
   Scenario: User sees profile modal if profile is not complete
     Given Attempt to reset e2e user
     And The "user" logs in using the top login button
-    And The course status has fully loaded
     Then The user sees a complete profile modal with empty fields
+    And The page has fully loaded
     And A snapshot is taken
 
   Scenario: User cannot submit incomplete profile form
@@ -22,7 +22,7 @@ Feature: Profile Modal
 
   Scenario: User updates his profile data
     Given The "user" logs in using the top login button
-    And The course status has fully loaded
+    And The avatar icon shows "FL"
     And The user clicks the "avatar icon"
     And The user sees an update profile modal with the values "FirstName", "LastName", "Test Corp."
     When The user fills in "all" the profile details "Updated name", "Updated surname", "Updated company"
