@@ -18,11 +18,9 @@ When(
     cy.get(`[data-testid="${ETestId.profileModal}"]`)
       .find('h4')
       .contains('Update your profile');
-    cy.get(`[data-testid="${ETestId.profileModal}"] button`)
-      .find('svg')
-      .within(() => {
-        cy.get('title').should('contain', 'Close icon');
-      });
+    cy.get(
+      `[data-testid="${ETestId.profileModal}"] button[label="Close dialog"]`
+    ).should('exist');
 
     // then let's ensure the expected values are displayed
     cy.get(
