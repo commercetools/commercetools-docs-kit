@@ -498,3 +498,29 @@ The structure:
   selfLearningFeatures: Array<EFeatureFlag>; // self-learning feature flags
 };
 ```
+
+## Clickable chapters
+
+Side navigation chapters can become clickable and link to any page, typically this functionality is used to link to overview pages directly from the chapter title.
+To enable this feature it's enough to edit `navigation.yaml` file and add a `path` attribute just below the `chapter-title` like in the following example:
+
+```yaml
+
+- chapter-title: Self-learning course 1
+  path: /course-1/overview
+  pages:
+    - title: Test your knowledge with long title
+      path: /course-1/quiz
+    - title: Test your knowledge 2
+      path: /course-1/2-quiz
+
+- chapter-title: Self-learning course 2
+  path: /course-2/overview
+  pages:
+    - title: Test your knowledge with long title
+      path: /course-2/quiz
+    - title: Test your knowledge 2
+      path: /course-2/2-quiz
+```
+
+Self-learning course 1 will link to `/course-1/overview` and Self-learning course 2 will link to `/course-2/overview` page.
