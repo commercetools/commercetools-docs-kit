@@ -3716,7 +3716,7 @@ __metadata:
     "@types/react-dom": 18.2.4
     "@types/react-is": 18.2.0
     "@types/react-modal": ^3.13.1
-    "@types/unist": ^2.0.6
+    "@types/unist": ^3.0.0
     lodash.kebabcase: 4.1.1
     lodash.omitby: 4.6.0
     lodash.throttle: 4.1.1
@@ -9657,7 +9657,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/unist@npm:*, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.3, @types/unist@npm:^2.0.6":
+"@types/unist@npm:*, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.3":
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
   checksum: 25cb860ff10dde48b54622d58b23e66214211a61c84c0f15f88d38b61aa1b53d4d46e42b557924a93178c501c166aa37e28d7f6d994aba13d24685326272d5db
