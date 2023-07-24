@@ -1,6 +1,6 @@
 @import '@commercetools-uikit/design-system/materials/custom-properties.css';
 
 :root {
-  --font-family-default: 'Inter', sans-serif;
+  --font-family-default: 'Inter Variable', sans-serif;
   --font-family-body: 'Roboto Mono', monospace;
 }
