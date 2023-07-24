@@ -13,7 +13,6 @@ import { SWRConfig } from 'swr';
 import { docsCache } from './utils/create-emotion-cache';
 import { PortalsContainer } from '@commercetools-docs/ui-kit';
 import * as Sentry from '@sentry/browser';
-import '@fontsource-variable/inter';
 import '@fontsource/roboto-mono/latin-400.css';
 import '@fontsource/roboto-mono/latin-500.css';
 import '@fontsource/roboto-mono/latin-700.css';

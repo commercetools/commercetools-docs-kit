@@ -1,6 +1,7 @@
 @import '@commercetools-uikit/design-system/materials/custom-properties.css';
+@import url('./src/fonts/Inter/inter.css');
 
 :root {
-  --font-family-default: 'Inter Variable', sans-serif;
+  --font-family-default: 'Inter var', sans-serif;
   --font-family-body: 'Roboto Mono', monospace;
 }

@@ -3569,7 +3569,6 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/server": ^11.10.0
     "@emotion/styled": ^11.10.5
-    "@fontsource-variable/inter": 5.0.5
     "@fontsource/roboto-mono": 5.0.5
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
@@ -5755,13 +5754,6 @@ __metadata:
   dependencies:
     "@floating-ui/core": ^1.2.6
   checksum: 2226c6c244b96ae75ab14cc35bb119c8d7b83a85e2ff04e9d9800cffdb17faf4a7cf82db741dd045242ced56e31c8a08e33c8c512c972309a934d83b1f410441
-  languageName: node
-  linkType: hard
-
-"@fontsource-variable/inter@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@fontsource-variable/inter@npm:5.0.5"
-  checksum: 00651cf521616e57851eb7b7b744a606d8d2f9ad1ce3c6428bdb3e457deb01440ad9003e98955c788f8da3e9ea4b851590709bbfe2e7dd9a4f9f470db958132b
   languageName: node
   linkType: hard
 
