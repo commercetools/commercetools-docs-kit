@@ -5,7 +5,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { BetaFlag, ContentPagination, GlobalNotification } from '../components';
+import { BetaTag, ContentPagination, GlobalNotification } from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../overrides/page-header-banner-area';
 import LayoutApplication from './internals/layout-application';
@@ -83,7 +83,9 @@ const LayoutContent = (props) => {
               )}
             </LayoutGlobalNotification>
             <LayoutPageHeader>
-              {isBeta && <BetaFlag href={siteData.siteMetadata.betaLink} />}
+              {isBeta && (
+                <BetaTag size="large" href={siteData.siteMetadata.betaLink} />
+              )}
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />

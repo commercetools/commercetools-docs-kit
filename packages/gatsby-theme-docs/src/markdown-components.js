@@ -9,7 +9,7 @@ import {
   Card,
   Cards,
   Link,
-  BetaFlag as Beta,
+  BetaTag as Beta,
   Anchor,
   SideBySide,
   Glossary,

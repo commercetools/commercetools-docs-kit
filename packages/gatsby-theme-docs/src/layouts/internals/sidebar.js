@@ -14,7 +14,7 @@ import {
 } from '@commercetools-docs/ui-kit';
 import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
-import { BetaFlag } from '../../components';
+import { BetaTag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
 import {
   SidebarCourseStatus,
@@ -472,7 +472,7 @@ const Sidebar = (props) => {
         <LayoutHeaderLogo />
         <WebsiteTitle>
           <SpacingsStack scale="xs">
-            <div>{props.isGlobalBeta && <BetaFlag />}</div>
+            <div>{props.isGlobalBeta && <BetaTag />}</div>
             <WebsiteTitleLink as={Link} to="/">
               <SpacingsInline scale="s">
                 <SiteIcon />

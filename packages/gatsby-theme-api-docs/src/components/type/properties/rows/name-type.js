@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import { BetaFlag } from '@commercetools-docs/gatsby-theme-docs';
+import { BetaTag } from '@commercetools-docs/gatsby-theme-docs';
 import { typography } from '../../../../design-system';
 import RegexProperty from '../../properties/regex-properties';
 import useTypesToRender from '../../../../hooks/use-type-to-render';
@@ -47,7 +47,7 @@ const NameType = (props) => {
           {props.property.required && <Required />}
           {props.property.beta && (
             <BetaWrapper>
-              <BetaFlag />
+              <BetaTag />
             </BetaWrapper>
           )}
         </SpacingsInline>

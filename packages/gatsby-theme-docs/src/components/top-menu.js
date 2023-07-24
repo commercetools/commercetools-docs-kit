@@ -8,7 +8,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 import GlobalNavigationLink from './global-navigation-link';
-import BetaFlag from './beta-flag';
+import BetaTag from './beta-flag';
 
 const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
@@ -209,7 +209,7 @@ const TopMenu = (props) => {
                         <GlobalNavigationLink href={item.href}>
                           {item.label}
                         </GlobalNavigationLink>
-                        {item.beta === true ? <BetaFlag /> : null}
+                        {item.beta === true ? <BetaTag /> : null}
                       </SpacingsInline>
                     ))}
                   </SpacingsStack>

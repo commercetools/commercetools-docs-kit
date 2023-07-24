@@ -15,7 +15,7 @@ import {
 import { useInView } from 'react-intersection-observer';
 import PlaceholderPageHeaderSide from '../../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../../overrides/page-header-banner-area';
-import { Overlay, BetaFlag, SearchInput } from '../../components';
+import { Overlay, BetaTag, SearchInput } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
@@ -203,7 +203,7 @@ const LayoutPageNavigation = (props) => {
               </div>
               {props.beta && (
                 <BetaWrapper>
-                  <BetaFlag />
+                  <BetaTag />
                 </BetaWrapper>
               )}
             </SpacingsStack>
