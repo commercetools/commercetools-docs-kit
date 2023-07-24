@@ -1,5 +1,5 @@
 export { default as Anchor } from './anchor';
-export { default as BetaTag } from './beta-flag';
+export { default as BetaTag } from './beta-tag';
 export { default as BurgerIcon } from './burger-icon';
 export { default as Card } from './card';
 export { default as Cards } from './cards';

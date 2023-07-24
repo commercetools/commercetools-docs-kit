@@ -8,7 +8,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 import GlobalNavigationLink from './global-navigation-link';
-import BetaTag from './beta-flag';
+import BetaTag from './beta-tag';
 
 const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
