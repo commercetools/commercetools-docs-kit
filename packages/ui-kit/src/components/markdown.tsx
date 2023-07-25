@@ -255,13 +255,20 @@ const InlineCode = styled.code`
   background-color: ${colors.light.surfaceInlineCode};
   border: 1px solid ${colors.light.borderSecondary};
   border-radius: ${dimensions.spacings.xs};
-  color: ${colors.light.textCode};
   font-family: ${typography.fontFamilies.stringLiteral};
   font-feature-settings: 'salt', 'ss02';
   letter-spacing: 0.03em;
   font-size: ${typography.fontSizes.small};
   padding: 0 ${dimensions.spacings.xs};
 `;
+const InlineCodeWithoutBox = styled.code`
+  color: ${colors.light.textHighlight};
+  font-family: ${typography.fontFamilies.stringLiteral};
+  font-feature-settings: 'salt', 'ss02';
+  letter-spacing: 0.03em;
+  font-size: ${typography.fontSizes.body};
+`;
+
 const Em = styled.em``;
 const Strong = styled.strong``;
 const Delete = styled.span`
@@ -430,6 +437,7 @@ export {
   TableCell,
   TableHeader,
   InlineCode,
+  InlineCodeWithoutBox,
   CodeBlock,
   Em,
   Strong,
