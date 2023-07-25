@@ -333,7 +333,9 @@ const CopyArea = styled.div`
   cursor: pointer;
 `;
 
-const IconColorWrapper = styled.div`
+const ClipboardIconWrapper = styled.div`
+  position: relative;
+  bottom: 2.5px;
   fill: ${colors.light.iconSecondary};
 `;
 
@@ -389,9 +391,9 @@ const withCopyToClipboard =
           onClose={handleTooltipClose}
         >
           <CopyArea onClick={handleCopyToClipboardClick}>
-            <IconColorWrapper>
+            <ClipboardIconWrapper>
               <ClipboardIcon />
-            </IconColorWrapper>
+            </ClipboardIconWrapper>
           </CopyArea>
         </Tooltip>
       </Component>
