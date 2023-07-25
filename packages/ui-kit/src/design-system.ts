@@ -290,7 +290,7 @@ export const typography = {
   fontFamilies: {
     primary: "'Inter var', sans-serif",
     code: "'Roboto Mono', monospace",
-    nonMonospace: "'Inter var'",
+    stringLiteral: "'Inter var'",
   },
 
   rootFontSize: `${rootFontSizeNumber}px`,

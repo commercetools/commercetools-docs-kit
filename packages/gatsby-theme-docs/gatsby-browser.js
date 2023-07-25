@@ -16,6 +16,7 @@ import * as Sentry from '@sentry/browser';
 import '@fontsource/roboto-mono/latin-400.css';
 import '@fontsource/roboto-mono/latin-500.css';
 import '@fontsource/roboto-mono/latin-700.css';
+import './src/fonts/Inter/inter.css';
 import './globals.css';
 import ConfigContext from './src/components/config-context';
 import { LearningContextProvider } from './src/modules/self-learning/components/learning-context';

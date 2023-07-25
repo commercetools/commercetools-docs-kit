@@ -256,7 +256,7 @@ const InlineCode = styled.code`
   border: 1px solid ${colors.light.borderSecondary};
   border-radius: ${dimensions.spacings.xs};
   color: ${colors.light.textCode};
-  font-family: ${typography.fontFamilies.nonMonospace};
+  font-family: ${typography.fontFamilies.stringLiteral};
   font-feature-settings: 'salt', 'ss02';
   letter-spacing: 0.03em;
   font-size: ${typography.fontSizes.small};
@@ -270,7 +270,6 @@ const Delete = styled.span`
 const Hr = styled(ThematicBreak)``;
 
 const TypographyPage = styled.div`
-  font-family: ${typography.fontFamilies.primary};
   font-size: ${typography.fontSizes.body};
   font-weight: ${typography.fontWeights.regular};
   line-height: 1.5;

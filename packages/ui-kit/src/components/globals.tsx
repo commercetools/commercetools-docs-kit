@@ -81,7 +81,7 @@ const Globals = (props: TGlobalsProps) => (
       kbd,
       samp,
       pre {
-        font-family: ${typography.fontFamilies.nonMonospace}, 'Menlo', 'Monaco',
+        font-family: ${typography.fontFamilies.stringLiteral}, 'Menlo', 'Monaco',
           'Consolas', 'Liberation Mono', 'Courier New', monospace;
         font-feature-settings: 'salt', 'ss02';
         font-size: ${typography.fontSizes.small};
