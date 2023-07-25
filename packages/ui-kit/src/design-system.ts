@@ -35,6 +35,7 @@ export type ThemeColorTokens = {
   surfaceSearchHighlight: string;
   surfaceForSearchInputWhenDisabled: string;
   surfaceForReleaseNoteTypeFix: string;
+  surfaceTagGreen: string;
   // Different tones of text
   textPrimary: string;
   textSecondary: string;
@@ -46,6 +47,7 @@ export type ThemeColorTokens = {
   textWarning: string;
   textInverted: string;
   textSearchHeading: string;
+  textTagGreen: string;
   // Different tones of border colors
   borderPrimary: string;
   borderSecondary: string;
@@ -106,6 +108,7 @@ export const colors: ThemeColors = {
     surfaceSearchHighlight: designTokens.colorAccent95,
     surfaceForSearchInputWhenDisabled: designTokens.colorNeutral90,
     surfaceForReleaseNoteTypeFix: '#e4c5ff',
+    surfaceTagGreen: designTokens.colorPrimary95,
     // Different tones of text
     textPrimary: designTokens.colorSolid,
     textSecondary: '#666666',
@@ -117,6 +120,7 @@ export const colors: ThemeColors = {
     textWarning: designTokens.colorWarning,
     textInverted: designTokens.colorSurface,
     textSearchHeading: designTokens.colorPrimary25,
+    textTagGreen: designTokens.colorPrimary25,
     // Different tones of border colors
     borderPrimary: designTokens.colorNeutral90,
     borderSecondary: designTokens.colorNeutral,
@@ -311,6 +315,7 @@ export const typography = {
 
   relativeFontSizes: {
     ultraSmall: pxToRem('10px', 'em'),
+    superSmall: pxToRem('8px', 'em'),
   },
 
   fontWeights: {
