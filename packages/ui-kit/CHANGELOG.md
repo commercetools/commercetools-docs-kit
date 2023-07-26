@@ -1,5 +1,21 @@
 # @commercetools-docs/ui-kit
 
+## 22.3.0
+
+### Minor Changes
+
+- [#1752](https://github.com/commercetools/commercetools-docs-kit/pull/1752) [`6d53cc20`](https://github.com/commercetools/commercetools-docs-kit/commit/6d53cc208acb3af2c6ff449e76c10e015f2e33c2) Thanks [@timonrey](https://github.com/timonrey)! - Introduce new "Inter" font with font feature settings for tables and string literals.
+
+### Patch Changes
+
+- [#1754](https://github.com/commercetools/commercetools-docs-kit/pull/1754) [`d310230b`](https://github.com/commercetools/commercetools-docs-kit/commit/d310230b811e369943a637da471716caa32bae05) Thanks [@timonrey](https://github.com/timonrey)! - Update colors of inline code to follow the Web Content Accessibility Guidelines.
+
+- [#1776](https://github.com/commercetools/commercetools-docs-kit/pull/1776) [`2aceaeef`](https://github.com/commercetools/commercetools-docs-kit/commit/2aceaeefe9f5922f627be775979b40151d3b170a) Thanks [@timonrey](https://github.com/timonrey)! - Adjust positioning of the ClipboardIcon next to the section headings.
+
+- [#1755](https://github.com/commercetools/commercetools-docs-kit/pull/1755) [`08ec78a2`](https://github.com/commercetools/commercetools-docs-kit/commit/08ec78a2d9c009c4e0bc1dee283053ae0c78ba09) Thanks [@timonrey](https://github.com/timonrey)! - Adjust spacing between sections in the page content.
+
+- [#1751](https://github.com/commercetools/commercetools-docs-kit/pull/1751) [`81f0bc67`](https://github.com/commercetools/commercetools-docs-kit/commit/81f0bc670022a5a74ea881e44724dd52895eb09b) Thanks [@timonrey](https://github.com/timonrey)! - Replace the "Ribbon" icon with the "Clipboard" icon. The icon is being displayed next to section headers.
+
 ## 22.2.0
 
 ### Patch Changes

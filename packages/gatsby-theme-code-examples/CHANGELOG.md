@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 22.3.0
+
+### Patch Changes
+
+- [#1767](https://github.com/commercetools/commercetools-docs-kit/pull/1767) [`6b4d4eed`](https://github.com/commercetools/commercetools-docs-kit/commit/6b4d4eedcba4d39d794f1e30d0ad23c430fcd83d) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Revert SSR bundling hack introduced when upgraded to Gatsby 5
+
+- Updated dependencies [[`d310230b`](https://github.com/commercetools/commercetools-docs-kit/commit/d310230b811e369943a637da471716caa32bae05), [`2aceaeef`](https://github.com/commercetools/commercetools-docs-kit/commit/2aceaeefe9f5922f627be775979b40151d3b170a), [`08ec78a2`](https://github.com/commercetools/commercetools-docs-kit/commit/08ec78a2d9c009c4e0bc1dee283053ae0c78ba09), [`6d53cc20`](https://github.com/commercetools/commercetools-docs-kit/commit/6d53cc208acb3af2c6ff449e76c10e015f2e33c2), [`81f0bc67`](https://github.com/commercetools/commercetools-docs-kit/commit/81f0bc670022a5a74ea881e44724dd52895eb09b)]:
+  - @commercetools-docs/ui-kit@22.3.0
+
 ## 22.2.0
 
 ### Patch Changes

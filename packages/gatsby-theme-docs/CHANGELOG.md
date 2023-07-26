@@ -1,5 +1,24 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.3.0
+
+### Minor Changes
+
+- [#1756](https://github.com/commercetools/commercetools-docs-kit/pull/1756) [`62bbdf4f`](https://github.com/commercetools/commercetools-docs-kit/commit/62bbdf4f8e1c89fb33a878a42155ceb13cbf653c) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Syncronize session between tabs. If a user logs out from a tab, all the other opened tabs performs a logout
+
+- [#1722](https://github.com/commercetools/commercetools-docs-kit/pull/1722) [`e33b5a40`](https://github.com/commercetools/commercetools-docs-kit/commit/e33b5a40752764eb9d41e57cba4bdf60a4f039d4) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Make VRT snapshots more reliable waiting for all the async operations to finish
+
+- [#1744](https://github.com/commercetools/commercetools-docs-kit/pull/1744) [`561a1595`](https://github.com/commercetools/commercetools-docs-kit/commit/561a15954192e787665030220a2082de15d549da) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Enable support for clickable chapter titles in websites. This is NOT a breaking change as we keep supporting non clickable chapters.
+
+- [#1752](https://github.com/commercetools/commercetools-docs-kit/pull/1752) [`6d53cc20`](https://github.com/commercetools/commercetools-docs-kit/commit/6d53cc208acb3af2c6ff449e76c10e015f2e33c2) Thanks [@timonrey](https://github.com/timonrey)! - Introduce new "Inter" font with font feature settings for tables and string literals.
+
+### Patch Changes
+
+- [#1767](https://github.com/commercetools/commercetools-docs-kit/pull/1767) [`6b4d4eed`](https://github.com/commercetools/commercetools-docs-kit/commit/6b4d4eedcba4d39d794f1e30d0ad23c430fcd83d) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Revert SSR bundling hack introduced when upgraded to Gatsby 5
+
+- Updated dependencies [[`d310230b`](https://github.com/commercetools/commercetools-docs-kit/commit/d310230b811e369943a637da471716caa32bae05), [`2aceaeef`](https://github.com/commercetools/commercetools-docs-kit/commit/2aceaeefe9f5922f627be775979b40151d3b170a), [`08ec78a2`](https://github.com/commercetools/commercetools-docs-kit/commit/08ec78a2d9c009c4e0bc1dee283053ae0c78ba09), [`6d53cc20`](https://github.com/commercetools/commercetools-docs-kit/commit/6d53cc208acb3af2c6ff449e76c10e015f2e33c2), [`81f0bc67`](https://github.com/commercetools/commercetools-docs-kit/commit/81f0bc670022a5a74ea881e44724dd52895eb09b)]:
+  - @commercetools-docs/ui-kit@22.3.0
+
 ## 22.2.0
 
 ### Minor Changes

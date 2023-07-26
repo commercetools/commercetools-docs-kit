@@ -5,13 +5,13 @@ import { css } from '@emotion/react';
 import {
   designSystem,
   markdownFragmentToReact,
+  Markdown,
 } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { tokens, dimensions, typography } from '../../../design-system';
 import { useTypeLocations } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
-import ContentType from './highlights';
 import Title from './title';
 
 const ResponseCode = styled.span`
@@ -56,7 +56,9 @@ const Responses = ({ apiKey, responses, contentType }) => {
                     {contentType.length > 0 && (
                       <>
                         <span>as</span>
-                        <ContentType>{contentType}</ContentType>
+                        <Markdown.InlineCodeWithoutBox>
+                          {contentType}
+                        </Markdown.InlineCodeWithoutBox>
                       </>
                     )}
                   </SpacingsInline>

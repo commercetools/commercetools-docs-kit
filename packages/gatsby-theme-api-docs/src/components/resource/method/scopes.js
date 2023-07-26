@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import Scope from './highlights';
+import { Markdown } from '@commercetools-docs/ui-kit';
 import Title from './title';
 
 const Scopes = (props) => {
@@ -11,10 +11,10 @@ const Scopes = (props) => {
 
       <div>
         {props.scopes.map((scope, index) => (
-          <Scope key={scope}>
+          <Markdown.InlineCodeWithoutBox key={scope}>
             {scope}
-            {index < props.scopes.length - 1 && ', '}
-          </Scope>
+            {index < props.scopes.length - 1 && ' , '}
+          </Markdown.InlineCodeWithoutBox>
         ))}
       </div>
     </SpacingsStack>

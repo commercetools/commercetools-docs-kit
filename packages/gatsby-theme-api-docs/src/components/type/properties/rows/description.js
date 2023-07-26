@@ -15,10 +15,7 @@ import { DescriptionText } from '../../../description';
 import Info from '../../../info';
 
 const customCodeStyle = css`
-  border: none;
-  color: ${designSystem.colors.light.textHighlight};
-  background-color: unset;
-  padding: 0;
+  font-size: ${designSystem.typography.fontSizes.small};
 `;
 
 const ConstantLikeEnumDescription = (props) => {
@@ -76,25 +73,28 @@ const InfoValue = (props) => {
         ''
       ) : (
         <>
-          : <Markdown.InlineCode css={customCodeStyle}>No</Markdown.InlineCode>
+          :{' '}
+          <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
+            No
+          </Markdown.InlineCodeWithoutBox>
         </>
       );
     case 'number':
       return (
         <>
           :{' '}
-          <Markdown.InlineCode css={customCodeStyle}>
+          <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
             {formatNumber(value)}
-          </Markdown.InlineCode>
+          </Markdown.InlineCodeWithoutBox>
         </>
       );
     default:
       return (
         <>
           :{' '}
-          <Markdown.InlineCode css={customCodeStyle}>
+          <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
             {value}
-          </Markdown.InlineCode>
+          </Markdown.InlineCodeWithoutBox>
         </>
       );
   }
@@ -149,21 +149,21 @@ const Description = (props) => {
               return index === props.property.enumeration.length - 1 ? (
                 <React.Fragment key={currentEnum}>
                   or{' '}
-                  <Markdown.InlineCode css={customCodeStyle}>
+                  <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
                     {generateAppropriatePrimitiveText(
                       props.property.type,
                       currentEnum
                     )}
-                  </Markdown.InlineCode>
+                  </Markdown.InlineCodeWithoutBox>
                 </React.Fragment>
               ) : (
                 <React.Fragment key={currentEnum}>
-                  <Markdown.InlineCode css={customCodeStyle}>
+                  <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
                     {generateAppropriatePrimitiveText(
                       props.property.type,
                       currentEnum
                     )}
-                  </Markdown.InlineCode>
+                  </Markdown.InlineCodeWithoutBox>
                   ,{' '}
                 </React.Fragment>
               );

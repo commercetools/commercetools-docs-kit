@@ -1,5 +1,21 @@
 # @commercetools-website/documentation
 
+## 8.1.0
+
+### Minor Changes
+
+- [#1722](https://github.com/commercetools/commercetools-docs-kit/pull/1722) [`e33b5a40`](https://github.com/commercetools/commercetools-docs-kit/commit/e33b5a40752764eb9d41e57cba4bdf60a4f039d4) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Make VRT snapshots more reliable waiting for all the async operations to finish
+
+- [#1744](https://github.com/commercetools/commercetools-docs-kit/pull/1744) [`561a1595`](https://github.com/commercetools/commercetools-docs-kit/commit/561a15954192e787665030220a2082de15d549da) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Enable support for clickable chapter titles in websites. This is NOT a breaking change as we keep supporting non clickable chapters.
+
+### Patch Changes
+
+- [#1768](https://github.com/commercetools/commercetools-docs-kit/pull/1768) [`587b9b73`](https://github.com/commercetools/commercetools-docs-kit/commit/587b9b73907941ab199680e0a27b6153f22641f0) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Added docs for clickable chapters
+
+- Updated dependencies [[`62bbdf4f`](https://github.com/commercetools/commercetools-docs-kit/commit/62bbdf4f8e1c89fb33a878a42155ceb13cbf653c), [`6b4d4eed`](https://github.com/commercetools/commercetools-docs-kit/commit/6b4d4eedcba4d39d794f1e30d0ad23c430fcd83d), [`e33b5a40`](https://github.com/commercetools/commercetools-docs-kit/commit/e33b5a40752764eb9d41e57cba4bdf60a4f039d4), [`561a1595`](https://github.com/commercetools/commercetools-docs-kit/commit/561a15954192e787665030220a2082de15d549da), [`6d53cc20`](https://github.com/commercetools/commercetools-docs-kit/commit/6d53cc208acb3af2c6ff449e76c10e015f2e33c2)]:
+  - @commercetools-docs/gatsby-theme-docs@22.3.0
+  - @commercetools-docs/gatsby-theme-code-examples@22.3.0
+
 ## 8.0.2
 
 ### Patch Changes

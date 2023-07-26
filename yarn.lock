@@ -3477,14 +3477,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-api-docs@22.2.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
+"@commercetools-docs/gatsby-theme-api-docs@22.3.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs"
   dependencies:
     "@commercetools-docs/gatsby-transformer-mdx-introspection": 16.0.0
     "@commercetools-docs/gatsby-transformer-raml": 13.5.1
     "@commercetools-docs/rmf-codegen": 13.27.0
-    "@commercetools-docs/ui-kit": 22.2.0
+    "@commercetools-docs/ui-kit": 22.3.0
     "@commercetools-uikit/design-system": 16.5.0
     "@commercetools-uikit/spacings-inline": 16.5.0
     "@commercetools-uikit/spacings-stack": 16.5.0
@@ -3503,11 +3503,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-code-examples@22.2.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
+"@commercetools-docs/gatsby-theme-code-examples@22.3.0, @commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-code-examples@workspace:packages/gatsby-theme-code-examples"
   dependencies:
-    "@commercetools-docs/ui-kit": 22.2.0
+    "@commercetools-docs/ui-kit": 22.3.0
     gatsby: 5.11.0
     gatsby-source-filesystem: 5.11.0
     prop-types: 15.8.1
@@ -3521,11 +3521,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-constants@22.2.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
+"@commercetools-docs/gatsby-theme-constants@22.3.0, @commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-constants@workspace:packages/gatsby-theme-constants"
   dependencies:
-    "@commercetools-docs/ui-kit": 22.2.0
+    "@commercetools-docs/ui-kit": 22.3.0
     gatsby: 5.11.0
     gatsby-source-filesystem: 5.11.0
     gatsby-transformer-yaml: 5.11.0
@@ -3539,12 +3539,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@22.2.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@22.3.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
     "@auth0/auth0-react": 2.1.0
-    "@commercetools-docs/ui-kit": 22.2.0
+    "@commercetools-docs/ui-kit": 22.3.0
     "@commercetools-uikit/card": 16.5.0
     "@commercetools-uikit/checkbox-input": 16.5.0
     "@commercetools-uikit/design-system": 16.5.0
@@ -3569,8 +3569,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/server": ^11.10.0
     "@emotion/styled": ^11.10.5
-    "@fontsource/roboto": 5.0.2
-    "@fontsource/roboto-mono": 5.0.2
+    "@fontsource/roboto-mono": 5.0.5
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
     "@sentry/browser": 7.54.0
@@ -3685,7 +3684,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-docs/ui-kit@22.2.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
+"@commercetools-docs/ui-kit@22.3.0, @commercetools-docs/ui-kit@workspace:packages/ui-kit":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/ui-kit@workspace:packages/ui-kit"
   dependencies:
@@ -3716,7 +3715,7 @@ __metadata:
     "@types/react-dom": 18.2.4
     "@types/react-is": 18.2.0
     "@types/react-modal": ^3.13.1
-    "@types/unist": ^2.0.6
+    "@types/unist": ^3.0.0
     lodash.kebabcase: 4.1.1
     lodash.omitby: 4.6.0
     lodash.throttle: 4.1.1
@@ -4465,8 +4464,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-api-docs": 22.2.0
-    "@commercetools-docs/gatsby-theme-docs": 22.2.0
+    "@commercetools-docs/gatsby-theme-api-docs": 22.3.0
+    "@commercetools-docs/gatsby-theme-docs": 22.3.0
     "@commercetools-docs/rmf-codegen": 13.27.0
     gatsby: 5.11.0
     gatsby-cli: 5.11.0
@@ -4480,10 +4479,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/docs-smoke-test@workspace:websites/docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 22.2.0
-    "@commercetools-docs/gatsby-theme-constants": 22.2.0
-    "@commercetools-docs/gatsby-theme-docs": 22.2.0
-    "@commercetools-docs/ui-kit": 22.2.0
+    "@commercetools-docs/gatsby-theme-code-examples": 22.3.0
+    "@commercetools-docs/gatsby-theme-constants": 22.3.0
+    "@commercetools-docs/gatsby-theme-docs": 22.3.0
+    "@commercetools-docs/ui-kit": 22.3.0
     "@commercetools-uikit/icons": 16.5.0
     "@commercetools-uikit/radio-input": 16.5.0
     "@svgr/cli": 8.0.1
@@ -4499,8 +4498,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
-    "@commercetools-docs/gatsby-theme-code-examples": 22.2.0
-    "@commercetools-docs/gatsby-theme-docs": 22.2.0
+    "@commercetools-docs/gatsby-theme-code-examples": 22.3.0
+    "@commercetools-docs/gatsby-theme-docs": 22.3.0
     gatsby: 5.11.0
     gatsby-cli: 5.11.0
     react: 18.2.0
@@ -4512,8 +4511,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/self-learning-smoke-test@workspace:websites/self-learning-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 22.2.0
-    "@commercetools-docs/ui-kit": 22.2.0
+    "@commercetools-docs/gatsby-theme-docs": 22.3.0
+    "@commercetools-docs/ui-kit": 22.3.0
     "@commercetools-uikit/icons": 16.5.0
     "@commercetools-uikit/radio-input": 16.5.0
     "@svgr/cli": 8.0.1
@@ -4529,7 +4528,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 22.2.0
+    "@commercetools-docs/gatsby-theme-docs": 22.3.0
     gatsby: 5.11.0
     gatsby-cli: 5.11.0
     react: 18.2.0
@@ -5758,17 +5757,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/roboto-mono@npm:5.0.2":
-  version: 5.0.2
-  resolution: "@fontsource/roboto-mono@npm:5.0.2"
-  checksum: 3a1b0b648b7e67399d4fb898d3a7815b513cb348e854570f3f363ede2dbf613bff96b67bd45399a223ffa0fd90cce9ee11c34f25d673b67dbcade6a201bdd3b6
-  languageName: node
-  linkType: hard
-
-"@fontsource/roboto@npm:5.0.2":
-  version: 5.0.2
-  resolution: "@fontsource/roboto@npm:5.0.2"
-  checksum: f458eac4e1a317bbc2b948853555c4f15f360e2b148cab2d0b59da3369ba61fb88eab01c2a19e1ea610308663cc84edabc9c0e1016cea7d2f73a5ff2aeeda64e
+"@fontsource/roboto-mono@npm:5.0.5":
+  version: 5.0.5
+  resolution: "@fontsource/roboto-mono@npm:5.0.5"
+  checksum: e43032a0a0b8fb58587fc48cd401736d5614dfab5752f2bbc079f53ea8f0efc341db01e4e230bbe957c534cfe9ff07e86f626fab93ab534d69a96fc5f7013103
   languageName: node
   linkType: hard
 
@@ -9657,7 +9649,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/unist@npm:*, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.3, @types/unist@npm:^2.0.6":
+"@types/unist@npm:*, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.3":
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
   checksum: 25cb860ff10dde48b54622d58b23e66214211a61c84c0f15f88d38b61aa1b53d4d46e42b557924a93178c501c166aa37e28d7f6d994aba13d24685326272d5db
