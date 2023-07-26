@@ -1,5 +1,16 @@
 # @commercetools-website/site-template
 
+## 5.3.0
+
+### Minor Changes
+
+- [#1744](https://github.com/commercetools/commercetools-docs-kit/pull/1744) [`561a1595`](https://github.com/commercetools/commercetools-docs-kit/commit/561a15954192e787665030220a2082de15d549da) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Enable support for clickable chapter titles in websites. This is NOT a breaking change as we keep supporting non clickable chapters.
+
+### Patch Changes
+
+- Updated dependencies [[`62bbdf4f`](https://github.com/commercetools/commercetools-docs-kit/commit/62bbdf4f8e1c89fb33a878a42155ceb13cbf653c), [`6b4d4eed`](https://github.com/commercetools/commercetools-docs-kit/commit/6b4d4eedcba4d39d794f1e30d0ad23c430fcd83d), [`e33b5a40`](https://github.com/commercetools/commercetools-docs-kit/commit/e33b5a40752764eb9d41e57cba4bdf60a4f039d4), [`561a1595`](https://github.com/commercetools/commercetools-docs-kit/commit/561a15954192e787665030220a2082de15d549da), [`6d53cc20`](https://github.com/commercetools/commercetools-docs-kit/commit/6d53cc208acb3af2c6ff449e76c10e015f2e33c2)]:
+  - @commercetools-docs/gatsby-theme-docs@22.3.0
+
 ## 5.2.16
 
 ### Patch Changes
