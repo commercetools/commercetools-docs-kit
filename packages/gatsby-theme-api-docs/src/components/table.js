@@ -6,6 +6,7 @@ const Table = styled.table`
   width: 100%;
   max-width: 100%;
   border: ${dimensions.widths.tableBorder} solid ${colors.light.border};
+  font-feature-settings: 'tnum';
   border-radius: ${tokens.borderRadiusForTable};
   background-color: ${uiKitDesignSystem.colors.light.textInverted};
   box-shadow: ${tokens.shadowForTable};

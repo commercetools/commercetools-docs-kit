@@ -11,7 +11,6 @@ import {
 import renderTypeAsLink from '../../../utils/render-type-as-link';
 import ApiTypeByKey from '../../type/type-by-api-key';
 import Title from './title';
-import ContentType from './highlights';
 import { getDescriptionIfPrimitiveType } from '../../type/type';
 
 const RequestRepresentation = (props) => {
@@ -53,7 +52,9 @@ const RequestRepresentation = (props) => {
             return (
               <ContentTypeRow key={index}>
                 {index !== 0 && <span>or</span>}
-                <ContentType>{type}</ContentType>
+                <Markdown.InlineCodeWithoutBox>
+                  {type}
+                </Markdown.InlineCodeWithoutBox>
                 {index === props.contentType.length - 1 && <p>.</p>}
               </ContentTypeRow>
             );
@@ -68,11 +69,15 @@ const RequestRepresentation = (props) => {
             renderTypeAsLink(props.apiKey, props.apiType, typeLocations)
           )}
           <span>as</span>
-          <ContentType>{props.contentType}</ContentType>
+          <Markdown.InlineCodeWithoutBox>
+            {props.contentType}
+          </Markdown.InlineCodeWithoutBox>
         </SpacingsInline>
       ) : (
         <SpacingsStack>
-          <ContentType>{props.contentType}</ContentType>
+          <Markdown.InlineCodeWithoutBox>
+            {props.contentType}
+          </Markdown.InlineCodeWithoutBox>
           <ApiTypeByKey
             contentType={props.contentType}
             apiKey={props.apiKey}

@@ -10,6 +10,7 @@ import { type FlatRssEntry } from './rss-feeds';
 const Table = styled.table`
   width: 100%;
   border-radius: ${tokens.borderRadiusForRssFeedTable};
+  font-feature-settings: 'tnum';
   box-shadow: ${tokens.shadowForRssFeedTable};
 
   tbody {

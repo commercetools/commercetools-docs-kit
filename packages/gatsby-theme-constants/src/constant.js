@@ -1,10 +1,17 @@
 import React from 'react';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import {
   ContentNotifications,
   useISO310NumberFormatter,
+  Markdown,
+  designSystem,
 } from '@commercetools-docs/ui-kit';
 import useConstant from './use-constant';
+
+const customCodeStyle = css`
+  color: ${designSystem.colors.light.textPrimary};
+`;
 
 const Constant = (props) => {
   const formatNumber = useISO310NumberFormatter();
@@ -19,11 +26,11 @@ const Constant = (props) => {
   }
 
   return (
-    <>
+    <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
       {constantValue.number ? formatNumber(constantValue.number) : ''}
       {constantValue.text && constantValue.number ? <>&nbsp;</> : ''}
       {constantValue.text || ''}
-    </>
+    </Markdown.InlineCodeWithoutBox>
   );
 };
 
