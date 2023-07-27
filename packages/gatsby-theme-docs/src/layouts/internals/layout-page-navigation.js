@@ -91,9 +91,11 @@ const PageTitleLink = styled.a`
   text-decoration: none;
   :hover {
     color: ${designSystem.colors.light.linkNavigation};
-    svg {
-      * {
-        fill: ${designSystem.colors.light.linkNavigation};
+    div.arrowup {
+      svg {
+        * {
+          fill: ${designSystem.colors.light.linkNavigation};
+        }
       }
     }
   }
@@ -189,7 +191,7 @@ const LayoutPageNavigation = (props) => {
       <SpacingsStack scale="m">
         <PageTitleLink href="#top">
           <SpacingsInline scale="s">
-            <div>
+            <div className="arrowup">
               <ArrowUpIcon size="medium" color="neutral60" />
             </div>
             <SpacingsStack scale="xs">
