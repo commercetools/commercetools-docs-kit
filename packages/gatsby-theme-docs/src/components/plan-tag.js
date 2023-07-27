@@ -76,6 +76,15 @@ const TagInnerContainer = styled.div`
 `;
 
 const TagWrapper = styled.div`
+  h1 &,
+  h2 &,
+  h3 &,
+  h4 &,
+  h5 &,
+  h6 & {
+    margin-left: 0.3em;
+    vertical-align: middle;
+  }
   display: inline-block;
 `;
 

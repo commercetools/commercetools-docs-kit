@@ -384,7 +384,7 @@ const withCopyToClipboard =
           display: flex;
           align-items: baseline;
           :hover {
-            div {
+            div.clipboard {
               svg {
                 * {
                   fill: ${colors.light.linkNavigation};
@@ -405,7 +405,7 @@ const withCopyToClipboard =
           onClose={handleTooltipClose}
         >
           <CopyArea onClick={handleCopyToClipboardClick}>
-            <ClipboardIconWrapper>
+            <ClipboardIconWrapper className="clipboard">
               <ClipboardIcon />
             </ClipboardIconWrapper>
           </CopyArea>
