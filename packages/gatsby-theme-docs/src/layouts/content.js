@@ -92,7 +92,7 @@ const LayoutContent = (props) => {
               {isBeta && (
                 <BetaTag inverted href={siteData.siteMetadata.betaLink} />
               )}
-              {isB2B && <B2bTag inverted href={'#'} />}
+              {isB2B && <B2bTag inverted href={'/b2b'} />}
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />
