@@ -2,7 +2,6 @@
   items:
     - label: Docs Kit Docs
       href: /../documentation
-      beta: true
 
 - menu-title: Test Sites
   items:
