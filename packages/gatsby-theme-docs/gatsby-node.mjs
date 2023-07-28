@@ -226,6 +226,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         excludeFromSearchIndex: { type: 'Boolean!' },
         allowWideContentLayout: { type: 'Boolean!' },
         beta: { type: 'Boolean!' },
+        b2b: { type: 'Boolean!' },
         body: {
           type: 'String!',
           resolve: resolverPassthrough({
@@ -377,6 +378,7 @@ export const onCreateNode = async (
         Boolean(node.frontmatter.excludeFromSearchIndex),
       allowWideContentLayout: Boolean(node.frontmatter.wideLayout),
       beta: Boolean(node.frontmatter.beta),
+      b2b: Boolean(node.frontmatter.b2b),
       navLevels: node.frontmatter.navLevels
         ? Number(node.frontmatter.navLevels)
         : 3,

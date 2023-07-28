@@ -7,6 +7,8 @@
       path: /views/empty
     - title: Beta with long page title to see how the index nav behaves
       path: /views/beta
+    - title: B2B page
+      path: /views/b2b
     - title: Nested headings
       path: /views/nested-headings
     - title: Two-level nav
