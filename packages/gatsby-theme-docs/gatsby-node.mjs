@@ -378,7 +378,7 @@ export const onCreateNode = async (
         Boolean(node.frontmatter.excludeFromSearchIndex),
       allowWideContentLayout: Boolean(node.frontmatter.wideLayout),
       beta: Boolean(node.frontmatter.beta),
-      b2b: Boolean(node.frontmatter.b2b),
+      b2b: node.frontmatter.b2b ? Boolean(node.frontmatter.b2b) : false,
       navLevels: node.frontmatter.navLevels
         ? Number(node.frontmatter.navLevels)
         : 3,
