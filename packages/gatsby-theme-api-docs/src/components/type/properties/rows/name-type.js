@@ -22,6 +22,8 @@ const PropertyType = styled.div`
 `;
 const BetaWrapper = styled.span`
   font-size: ${typography.fontSizes.body};
+  line-height: 0.8rem;
+  padding-top: 0.2rem;
 `;
 
 const NameType = (props) => {
