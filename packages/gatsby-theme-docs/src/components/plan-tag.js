@@ -24,22 +24,24 @@ const getStyles = (props) => {
 
 const sharedContainerStyles = (props) =>
   css`
+    display: inline-block;
+    vertical-align: middle;
     border-radius: ${designSystem.tokens.borderRadiusForBetaFlag};
     color: ${props.styles.tagFgColor};
     font-size: ${designSystem.typography.relativeFontSizes.ultraSmall};
     font-weight: normal;
   `;
 
-const TagContainer = styled.div`
+const TagContainer = styled.span`
   ${sharedContainerStyles};
-  padding: 2px ${designSystem.dimensions.spacings.xs};
+  padding: 1px ${designSystem.dimensions.spacings.xs};
   background-color: ${(props) => props.styles.tagBgColor};
-  div > svg {
+  span > svg {
     color: currentColor;
   }
 `;
 
-const TagContainerInverted = styled.div`
+const TagContainerInverted = styled.span`
   ${sharedContainerStyles};
   padding: 1px ${designSystem.dimensions.spacings.xs} 2px
     ${designSystem.dimensions.spacings.xs};
@@ -56,14 +58,14 @@ const TagContainerInverted = styled.div`
     background-color: ${props.styles.tagFgColor};
     box-shadow: none;
     color: ${designSystem.colors.light.textInverted} !important;
-    & > div > svg {
+    & > span > svg {
       fill: ${designSystem.colors.light.textInverted} !important;
     }
   }
   `}
 `;
 
-const TagInnerContainer = styled.div`
+const TagInnerContainer = styled.span`
   display: inline-block;
   svg {
     height: 1.2em;
@@ -75,7 +77,7 @@ const TagInnerContainer = styled.div`
   }
 `;
 
-const TagWrapper = styled.div`
+const TagWrapper = styled.span`
   h1 &,
   h2 &,
   h3 &,
@@ -83,7 +85,7 @@ const TagWrapper = styled.div`
   h5 &,
   h6 & {
     margin-left: 0.3em;
-    vertical-align: middle;
+    vertical-align: text-bottom;
   }
   display: inline-block;
 `;
