@@ -5,6 +5,6 @@ export const getStaticSvgComponent = (iconName: string) => {
     case 'suitcase':
       return Suitcase;
     default:
-      break;
+      return Suitcase;
   }
 };

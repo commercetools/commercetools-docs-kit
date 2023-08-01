@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import Lottie, { LottieRefCurrentProps } from 'lottie-react';
+import React, { useEffect, useState } from 'react';
 import { getStaticSvgComponent } from '../utils/lord-icon';
+
+const LordIconLazy = React.lazy(() => import('./lord-icon-client-side'));
 
 type LordIconProps = {
   iconName: string;
@@ -9,55 +10,24 @@ type LordIconProps = {
   style: object;
 };
 
-const defaultProps = {
-  loop: false,
-  autoplay: false,
-};
-
 const LordIcon = (props: LordIconProps) => {
   const [isClient, setClient] = useState(false);
-  const [animationData, setAnimationData] = useState();
-  const lottieRef = useRef<LottieRefCurrentProps>(null);
-  const { iconName, ...rest } = props;
-
   useEffect(() => {
     setClient(true);
+  }, []);
 
-    const loadAnimationData = async () => {
-      try {
-        const data = await import(
-          `@commercetools-docs/ui-kit/dist/icons/lord-icon/${iconName}.json`
-        );
-        setAnimationData(data.default);
-      } catch (error) {
-        console.error(`Error loading icon animation: ${error}`);
-      }
-    };
-    loadAnimationData();
-  }, [iconName]);
-
-  if (!isClient || !animationData) {
-    const StaticSvgComponent = getStaticSvgComponent(props.iconName);
-    return StaticSvgComponent ? <StaticSvgComponent /> : null;
-  }
-
-  const handleMouseEnter = () => {
-    lottieRef.current?.play();
-  };
-
-  const handleMouseLeave = () => {
-    lottieRef.current?.stop();
-  };
+  const StaticSvgComponent = getStaticSvgComponent(props.iconName);
 
   return (
-    <Lottie
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      lottieRef={lottieRef}
-      animationData={animationData}
-      {...defaultProps}
-      {...rest}
-    />
+    <>
+      {isClient ? (
+        <React.Suspense fallback={<StaticSvgComponent />}>
+          <LordIconLazy {...props} />
+        </React.Suspense>
+      ) : (
+        <StaticSvgComponent />
+      )}
+    </>
   );
 };
 
