@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 22.3.1
+
+### Patch Changes
+
+- [#1778](https://github.com/commercetools/commercetools-docs-kit/pull/1778) [`184d4f82`](https://github.com/commercetools/commercetools-docs-kit/commit/184d4f823ab245b2075ef8a582bde84ee5408384) Thanks [@timonrey](https://github.com/timonrey)! - Adjust spacing for H4 header and the font weight for bold text.
+
 ## 22.3.0
 
 ### Minor Changes
