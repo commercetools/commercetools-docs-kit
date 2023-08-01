@@ -1,5 +1,13 @@
 # @commercetools-website/documentation
 
+## 8.1.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-docs/gatsby-theme-code-examples@22.3.1
+  - @commercetools-docs/gatsby-theme-docs@22.3.1
+
 ## 8.1.0
 
 ### Minor Changes

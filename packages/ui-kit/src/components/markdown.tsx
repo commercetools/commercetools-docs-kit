@@ -270,7 +270,9 @@ const InlineCodeWithoutBox = styled.code`
 `;
 
 const Em = styled.em``;
-const Strong = styled.strong``;
+const Strong = styled.strong`
+  font-weight: 600;
+`;
 const Delete = styled.span`
   text-decoration: line-through;
 `;
@@ -320,16 +322,16 @@ const TypographyPage = styled.div`
     margin: ${dimensions.spacings.large} 0 ${dimensions.spacings.m};
   }
   section > ${H3} {
-    margin: ${dimensions.spacings.l} 0 0;
+    margin: ${dimensions.spacings.xl} 0 0;
   }
   section > ${H4} {
-    margin: ${dimensions.spacings.m} 0 0;
+    margin: ${dimensions.spacings.xl} 0 0;
   }
   section > ${H5} {
-    margin: ${dimensions.spacings.m} 0 0;
+    margin: ${dimensions.spacings.l} 0 0;
   }
   section > ${H6} {
-    margin: ${dimensions.spacings.m} 0 ${dimensions.spacings.s};
+    margin: ${dimensions.spacings.l} 0 ${dimensions.spacings.s};
   }
   section > ${Blockquote} {
     margin: ${dimensions.spacings.l} ${dimensions.spacings.xxl};
