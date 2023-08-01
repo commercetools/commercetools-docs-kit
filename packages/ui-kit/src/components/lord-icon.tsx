@@ -1,23 +1,29 @@
-import { useEffect, useState } from 'react';
-import Lottie from 'lottie-react';
+import { useEffect, useRef, useState } from 'react';
+import Lottie, { LottieRefCurrentProps } from 'lottie-react';
+import { getStaticSvgComponent } from '../utils/lord-icon';
 
 type LordIconProps = {
   iconName: string;
   loop: boolean;
   autoplay: boolean;
-  stype: object;
+  style: object;
+};
+
+const defaultProps = {
+  loop: false,
+  autoplay: false,
 };
 
 const LordIcon = (props: LordIconProps) => {
   const [isClient, setClient] = useState(false);
-  const [animationData, setAnimationData] = useState(null);
+  const [animationData, setAnimationData] = useState();
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
   const { iconName, ...rest } = props;
 
   useEffect(() => {
     setClient(true);
 
     const loadAnimationData = async () => {
-      console.log('loading');
       try {
         const data = await import(
           `@commercetools-docs/ui-kit/dist/icons/lord-icon/${iconName}.json`
@@ -30,16 +36,29 @@ const LordIcon = (props: LordIconProps) => {
     loadAnimationData();
   }, [iconName]);
 
-  if (!isClient) {
-    // If SSR, return the static SVG
-    return <p>SSR</p>;
+  if (!isClient || !animationData) {
+    const StaticSvgComponent = getStaticSvgComponent(props.iconName);
+    return StaticSvgComponent ? <StaticSvgComponent /> : null;
   }
-  // if (!animationData) {
-  //   // If the animation data is not loaded yet, you can display a loading state or a fallback.
-  //   return <div>Loading...</div>;
-  // }
 
-  return <Lottie animationData={animationData} {...rest} />;
+  const handleMouseEnter = () => {
+    lottieRef.current?.play();
+  };
+
+  const handleMouseLeave = () => {
+    lottieRef.current?.stop();
+  };
+
+  return (
+    <Lottie
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      lottieRef={lottieRef}
+      animationData={animationData}
+      {...defaultProps}
+      {...rest}
+    />
+  );
 };
 
 export default LordIcon;

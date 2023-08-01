@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { LordIcon, Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
@@ -96,6 +96,10 @@ const LayoutContent = (props) => {
               </SpacingsStack>
             </LayoutPageHeaderSide>
             <LayoutPageContent>
+              <div style={{ height: '20px' }}>
+                <LordIcon iconName="suitcase" style={{ height: '20px' }} />
+                <span>Ciccia polacca</span>
+              </div>
               <PageContentInset id="body-content" showRightBorder>
                 {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
