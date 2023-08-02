@@ -3,7 +3,6 @@
 (docs-uri): https://docs.commercetools.com/api/projects/carts#directdiscount
 displayName: DirectDiscount
 type: object
-(beta): true
 description: |
   Represents a [CartDiscount](ctp:api:type:CartDiscount) that is only associated with a single Cart or Order.
 properties:
@@ -19,6 +18,6 @@ properties:
   target?:
     type: CartDiscountTarget
     description: |
-      Part of the Cart that is discounted.
+      Segment of the Cart that is discounted.
 
       Empty when the `value` is set to `giftLineItem`.

@@ -5,12 +5,16 @@ type: OrderMessagePayload
 displayName: OrderCustomLineItemRemovedMessagePayload
 discriminatorValue: OrderCustomLineItemRemoved
 description: |
-  Generated after a successful [Remove Custom Line Item](ctp:api:type:StagedOrderRemoveCustomLineItemAction) update action.
+  Generated after a successful [Remove CustomLineItem](ctp:api:type:StagedOrderRemoveCustomLineItemAction) update action.
 properties:
   customLineItemId:
     type: string
     description: |
       Unique identifier of the [Custom Line Item](ctp:api:type:CustomLineItem).
+  customLineItemKey?:
+    type: string
+    description: |
+      User-defined unique identifier of the [Custom Line Item](ctp:api:type:CustomLineItem).
   customLineItem:
     type: CustomLineItem
     description: |
