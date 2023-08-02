@@ -18,7 +18,7 @@ const SvgSuitcase = (props: SVGProps<SVGSVGElement>) => (
     <defs>
       <clipPath id="suitcase_svg__c">
         <path d="M0 0h500v500H0z" />
-      </clipPath>{' '}
+      </clipPath>
       <clipPath id="suitcase_svg__b">
         <path d="M0 0h500v500H0z" />
       </clipPath>
