@@ -22,8 +22,7 @@ properties:
   value:
     type: CartDiscountValueDraft
     description: |
-      Effect of the CartDiscount.
-      For a [target](ctp:api:type:CartDiscountTarget), relative or absolute Discount values or a fixed item Price value can be specified. If no target is specified, a [Gift Line Item](/../api/projects/cartDiscounts#gift-line-item) can be added to the Cart.
+      Effect of the CartDiscount on the `target`.
   cartPredicate:
     type: string
     description: |
@@ -31,17 +30,31 @@ properties:
   target?:
     type: CartDiscountTarget
     description: |
-      Must not be set when the `value` has type `giftLineItem`, otherwise a [CartDiscountTarget](ctp:api:type:CartDiscountTarget) must be set.
+      Segment of the Cart that will be discounted.
+
+      Must not be set if the `value` is `giftLineItem`.
   sortOrder:
     type: string
     description: |
       Value between `0` and `1`.
       A Discount with a higher sortOrder is prioritized.
       The sort order must be unambiguous among all CartDiscounts.
+  stores?:
+    type: StoreResourceIdentifier[]
+    (beta): true
+    maxItems: 500
+    description: |
+      - If defined, the Cart Discount applies on [Carts](ctp:api:type:Cart) having a [Store](ctp:api:type:Store) matching any Store defined for this field.
+      - If not defined, the Cart Discount applies on all Carts, irrespective of a Store.
+
+      If the referenced Stores exceed the [limit](/../api/limits#cart-discounts-stores), a [MaxStoreReferencesReached](ctp:api:type:MaxStoreReferencesReachedError) error is returned.
+
+      If the referenced Stores exceed the [limit](/../api/limits#cart-discounts) for Cart Discounts that do not require a Discount Code, a [StoreCartDiscountsLimitReached](ctp:api:type:StoreCartDiscountsLimitReachedError) error is returned.
   isActive?:
     type: boolean
     description: |
       Only active Discounts can be applied to the Cart.
+      If the [limit](/../api/limits#cart-discounts) for active Cart Discounts is reached, a [MaxCartDiscountsReached](ctp:api:type:MaxCartDiscountsReachedError) error is returned.
     default: true
   validFrom?:
     type: datetime

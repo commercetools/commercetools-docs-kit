@@ -1,12 +1,21 @@
 #%RAML 1.0 DataType
 (package): Order
-(docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#set-customlineitemshippingdetails
+(docs-uri): https://docs.commercetools.com/api/projects/orders#set-customlineitem-shippingdetails
+example: !include ../../../examples/Order/OrderSetCustomLineItemShippingDetailsAction.json
 type: OrderUpdateAction
 displayName: OrderSetCustomLineItemShippingDetailsAction
 discriminatorValue: setCustomLineItemShippingDetails
-example: !include ../../../examples/Order/OrderSetCustomLineItemShippingDetailsAction.json
 properties:
-  customLineItemId:
+  customLineItemId?:
     type: string
+    description: |
+      `id` of the [CustomLineItem](ctp:api:type:CustomLineItem) to update. Either `customLineItemId` or `customLineItemKey` is required.
+  customLineItemKey?:
+    type: string
+    description: |
+      `key` of the [CustomLineItem](ctp:api:type:CustomLineItem) to update. Either `customLineItemId` or `customLineItemKey` is required.
   shippingDetails?:
     type: ItemShippingDetailsDraft
+    description: |
+      Value to set.
+      If empty, any existing value is removed.
