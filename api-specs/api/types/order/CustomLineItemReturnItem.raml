@@ -1,9 +1,22 @@
 #%RAML 1.0 DataType
 (package): Order
-(docs-uri): https://docs.commercetools.com/http-api-projects-orders.html#returnitem
+(docs-uri): https://docs.commercetools.com/api/projects/orders#customlineitemreturnitem
 displayName: CustomLineItemReturnItem
 type: ReturnItem
 discriminatorValue: CustomLineItemReturnItem
 properties:
+  key?:
+    type: string
+    description: User-defined unique identifier of the CustomLineItemReturnItem.
+    pattern: ^[a-zA-Z0-9_-]
+    minLength: 2
+    maxLength: 256
   customLineItemId:
     type: string
+    description: |
+      `id` of the returned [CustomLineItem](ctp:api:type:CustomLineItem).
+  quantity:
+    type: number
+    format: int64
+    description: |
+      Number of Custom Line Items returned.

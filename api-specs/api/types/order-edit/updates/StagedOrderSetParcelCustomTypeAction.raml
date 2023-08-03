@@ -1,13 +1,23 @@
 #%RAML 1.0 DataType
 (package): OrderEdit
 (docs-uri): https://docs.commercetools.com/api/projects/order-edits#set-parcel-custom-type
+example: !include ../../../examples/OrderEdit/StagedOrderSetParcelCustomTypeAction.json
 type: StagedOrderUpdateAction
 displayName: StagedOrderSetParcelCustomTypeAction
 discriminatorValue: setParcelCustomType
-example: !include ../../../examples/OrderEdit/StagedOrderSetParcelCustomTypeAction.json
 properties:
-  parcelId:
+  parcelId?:
     type: string
+    description: |
+      `id` of an existing [Parcel](ctp:api:type:Parcel).
+
+      Either `parcelId` or `parcelKey` must be provided.
+  parcelKey?:
+    type: string
+    description: |
+      `key` of an existing [Parcel](ctp:api:type:Parcel).
+
+      Either `parcelId` or `parcelKey` must be provided.
   type?:
     type: TypeResourceIdentifier
     description: |
