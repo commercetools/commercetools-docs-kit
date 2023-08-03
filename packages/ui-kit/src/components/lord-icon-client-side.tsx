@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Lottie, { LottieRefCurrentProps } from 'lottie-react';
+import { getLottieJsonConfig } from '../utils/lord-icon';
 
 type LordIconProps = {
   iconName: string;
@@ -14,19 +15,25 @@ const defaultProps = {
 };
 
 const LordIcon = (props: LordIconProps) => {
-  const [animationData, setAnimationData] = useState();
+  const [animationData, setAnimationData] = useState<object>();
   const lottieRef = useRef<LottieRefCurrentProps>(null);
   const { iconName, ...rest } = props;
 
   useEffect(() => {
     const loadAnimationData = async () => {
-      try {
-        const data = await import(
-          `@commercetools-docs/ui-kit/dist/icons/lord-icon/${iconName}.json`
-        );
-        setAnimationData(data.default);
-      } catch (error) {
-        console.error(`Error loading icon animation: ${error}`);
+      const data = getLottieJsonConfig(iconName);
+      if (data) {
+        // icon config availabe in the build
+        setAnimationData(data);
+      } else {
+        try {
+          const data = await import(
+            `@commercetools-docs/ui-kit/dist/icons/lord-icon/${iconName}.json`
+          );
+          setAnimationData(data.default);
+        } catch (error) {
+          console.error(`Error loading icon animation: ${error}`);
+        }
       }
     };
     loadAnimationData();

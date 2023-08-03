@@ -9,7 +9,8 @@
     "moduleResolution": "Node",
     "strict": true,
     "skipLibCheck": true,
-    "target": "ES2022"
+    "target": "ES2022",
+    "resolveJsonModule": true
   },
   "include": ["packages", "websites"]
 }
