@@ -338,6 +338,14 @@ uses:
         body:
           application/x-www-form-urlencoded:
             type: scalars.StringTestType
+        responses:
+          200:
+            body:
+              application/json:
+                type: scalars.StringTestType
+          201:
+            body:
+              type: date-test-type.DateTestType
 
     /searchApiPattern:
       get:

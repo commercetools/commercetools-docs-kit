@@ -35,7 +35,7 @@ const Responses = ({ apiKey, responses, contentType }) => {
     <SpacingsStack scale="xs">
       <Title>Response:</Title>
       <SpacingsStack scale="s">
-        {responses.map((response) => {
+        {responses.map((response, index) => {
           return (
             <SpacingsInline key={response.code}>
               <ResponseCode
@@ -51,13 +51,13 @@ const Responses = ({ apiKey, responses, contentType }) => {
                       response.body.applicationjson.type,
                       typeLocations,
                       response.description,
-                      contentType
+                      contentType[index]
                     )}
                     {contentType.length > 0 && (
                       <>
                         <span>as</span>
                         <Markdown.InlineCodeWithoutBox>
-                          {contentType}
+                          {contentType[index]}
                         </Markdown.InlineCodeWithoutBox>
                       </>
                     )}
