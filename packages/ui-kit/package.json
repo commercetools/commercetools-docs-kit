@@ -18,7 +18,7 @@
   "files": ["dist", "package.json", "LICENSE", "README.md"],
   "scripts": {
     "generate-icons": "svgr --out-dir src/icons/generated --typescript --icon \"src/icons/svg/*.svg\" \"src/icons/lord-icon/*.svg\" && yarn copy-lord-icons-json",
-    "copy-lord-icons-json": "cpy --cwd=src 'icons/lord-icon/*.json' ../dist/icons/lord-icon"
+    "copy-lord-icons-json": "mkdir -p dist/icons/lord-icon && cp src/icons/lord-icon/*.json  dist/icons/lord-icon/"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
@@ -70,7 +70,6 @@
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",
     "@types/react-is": "18.2.0",
-    "cpy-cli": "^5.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
