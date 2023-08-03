@@ -5,12 +5,16 @@ type: OrderMessagePayload
 displayName: CustomLineItemStateTransitionMessagePayload
 discriminatorValue: CustomLineItemStateTransition
 description: |
-  Generated after a successful [Transition Custom Line Item State](ctp:api:type:OrderTransitionCustomLineItemStateAction) update action.
+  Generated after a successful [Transition CustomLineItem State](ctp:api:type:OrderTransitionCustomLineItemStateAction) update action.
 properties:
   customLineItemId:
     type: string
     description: |
       Unique identifier of the [Custom Line Item](ctp:api:type:CustomLineItem).
+  customLineItemKey?:
+    type: string
+    description: |
+      User-defined unique identifier of the [Custom Line Item](ctp:api:type:CustomLineItem).
   transitionDate:
     type: datetime
     description: |

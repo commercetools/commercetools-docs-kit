@@ -5,12 +5,16 @@ type: OrderMessage
 displayName: LineItemStateTransitionMessage
 discriminatorValue: LineItemStateTransition
 description: |
-  Generated after a successful [Transition Line Item State](ctp:api:type:OrderTransitionLineItemStateAction) update action.
+  Generated after a successful [Transition LineItem State](ctp:api:type:OrderTransitionLineItemStateAction) update action.
 properties:
   lineItemId:
     type: string
     description: |
       Unique identifier of the [Line Item](ctp:api:type:LineItem).
+  lineItemKey?:
+    type: string
+    description: |
+      User-defined unique identifier of the LineItem.
   transitionDate:
     type: datetime
     description: |

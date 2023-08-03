@@ -6,12 +6,16 @@ displayName: MyCartApplyDeltaToLineItemShippingDetailsTargetsAction
 discriminatorValue: applyDeltaToLineItemShippingDetailsTargets
 example: !include ../../../examples/Cart/CartApplyDeltaToLineItemShippingDetailsTargetsAction.json
 description: |
-  To override the shipping details, see [Set LineItemShippingDetails](ctp:api:type:MyCartSetLineItemShippingDetailsAction).
+  To override the shipping details, see [Set LineItem ShippingDetails](ctp:api:type:MyCartSetLineItemShippingDetailsAction).
 properties:
-  lineItemId:
+  lineItemId?:
     type: string
     description: |
-      `id` of the [LineItem](ctp:api:type:LineItem) to update.
+      `id` of the [LineItem](ctp:api:type:LineItem) to update. Either `lineItemId` or `lineItemKey` is required.
+  lineItemKey?:
+    type: string
+    description: |
+      `key` of the [LineItem](ctp:api:type:LineItem) to update. Either `lineItemId` or `lineItemKey` is required.
   targetsDelta:
     type: ItemShippingTarget[]
     description: |

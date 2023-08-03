@@ -12,9 +12,6 @@ description:
   An order can be created from a order, usually after a checkout process has
   been completed.
 get:
-  (csharp-implements):
-    'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyOrdersGet,
-    commercetools.Sdk.Api.Models.Orders.IOrderPagedQueryResponse>'
   securedBy: [oauth_2_0: { scopes: ['view_orders:{projectKey}'] }]
   responses:
     200:
@@ -26,9 +23,20 @@ post:
   is:
     - conflicting
   description: |
-    Creates an order from a Cart.
-    The cart must have a shipping address set before creating an order.
-    When using the Platform TaxMode, the shipping address is used for tax calculation.
+    Before you create an Order, the Cart must have a [shipping address set](ctp:api:type:CartSetShippingAddressAction).
+    The shipping address is used for tax calculation for a Cart with `Platform` [TaxMode](ctp:api:type:TaxMode).
+
+    Creating an Order produces the [OrderCreated](ctp:api:type:OrderCreatedMessage) Message.
+
+    Specific Error Codes:
+
+    - [OutOfStock](ctp:api:type:OutOfStockError)
+    - [PriceChanged](ctp:api:type:PriceChangedError)
+    - [DiscountCodeNonApplicable](ctp:api:type:DiscountCodeNonApplicableError)
+    - [ShippingMethodDoesNotMatchCart](ctp:api:type:ShippingMethodDoesNotMatchCartError)
+    - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
+    - [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError)
+    - [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError)
   body:
     application/json:
       example: !include ../examples/order-create.example.json
@@ -43,7 +51,13 @@ post:
   displayName: import orders
   post:
     displayName: Create an Order by Import
-    description: Create an Order by Import
+    description: |
+      Importing an Order produces the [Order Imported](ctp:api:type:OrderImportedMessage) Message.
+
+      Specific Error Codes:
+
+      - [OutOfStock](ctp:api:type:OutOfStockError)
+      - [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
     securedBy: [oauth_2_0: { scopes: ['manage_orders:{projectKey}'] }]
     body:
       application/json:
@@ -61,7 +75,16 @@ post:
   displayName: Order from Quote
   post:
     displayName: Create an Order from a Quote
-    description: Create an Order from a Quote
+    description: |
+      Creating an Order produces the [OrderCreated](ctp:api:type:OrderCreatedMessage) Message.
+
+      Specific Error Codes:
+
+      - [OutOfStock](ctp:api:type:OutOfStockError)
+      - [PriceChanged](ctp:api:type:PriceChangedError)
+      - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
+      - [InvalidOperation](ctp:api:type:InvalidOperationError)
+      - [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
     securedBy: [oauth_2_0: { scopes: ['manage_quotes:{projectKey}'] }]
     body:
       application/json:
@@ -75,6 +98,10 @@ post:
             type: Order
 /order-number={orderNumber}:
   (methodName): withOrderNumber
+  uriParameters:
+    orderNumber:
+      type: string
+      description: '`orderNumber` of the [Order](ctp:api:type:Order). Should be provided in URL-encoded format.'
   type:
     baseResource:
       uriParameterName: orderNumber
@@ -82,9 +109,6 @@ post:
       resourceUpdateType: OrderUpdate
   get:
     securedBy: [oauth_2_0: { scopes: ['view_orders:{projectKey}'] }]
-    description: |
-      In case the orderNumber does not match the regular expression [a-zA-Z0-9_\-]+,
-      it should be provided in URL-encoded format.
     responses:
       200:
         body:
@@ -101,6 +125,8 @@ post:
           application/json:
             example: !include ../examples/order.example.json
   delete:
+    description: |
+      Deleting an Order produces the [OrderDeleted](ctp:api:type:OrderDeletedMessage) Message.
     is:
       - dataErasure
     securedBy: [oauth_2_0: { scopes: ['manage_orders:{projectKey}'] }]
@@ -124,9 +150,6 @@ post:
     OrderEdit are containers for financial changes after an Order has been
     placed.
   get:
-    (csharp-implements):
-      'commercetools.Sdk.Api.Models.IPagedQueryResourceRequest<ByProjectKeyOrdersEditsGet,
-      commercetools.Sdk.Api.Models.OrderEdits.IOrderEditPagedQueryResponse>'
     securedBy: [oauth_2_0: { scopes: ['view_order_edits:{projectKey}'] }]
     responses:
       200:
@@ -134,6 +157,8 @@ post:
           application/json:
             example: !include ../examples/order-edits-query.example.json
   post:
+    description: |
+      You can either create multiple Order Edits for an Order and apply them sequentially to an Order, or create multiple Order Edits parallelly (as alternatives to each other) and apply one of them to the Order.
     securedBy: [oauth_2_0: { scopes: ['manage_order_edits:{projectKey}'] }]
     body:
       application/json:
@@ -211,6 +236,8 @@ post:
       type: base
       post:
         displayName: Apply order edit
+        description: |
+          Applying an OrderEdit produces the [OrderEditApplied](ctp:api:type:OrderEditAppliedMessage) Message.
         body:
           application/json:
             type: OrderEditApply
@@ -246,6 +273,8 @@ post:
           application/json:
             example: !include ../examples/order.example.json
   delete:
+    description: |
+      Deleting an Order produces the [OrderDeleted](ctp:api:type:OrderDeletedMessage) Message.
     is:
       - dataErasure
     securedBy: [oauth_2_0: { scopes: ['manage_orders:{projectKey}'] }]
