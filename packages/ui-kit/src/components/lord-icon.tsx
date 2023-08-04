@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getStaticSvgComponent } from '../utils/lord-icon';
+import styled from '@emotion/styled';
 
 const LordIconLazy = React.lazy(() => import('./lord-icon-client-side'));
 
@@ -22,6 +23,21 @@ type LordIconProps = {
   trigger?: LordIconTrigger;
 };
 
+type LordIconWrapperProps = {
+  height?: string;
+  width?: string;
+};
+
+const LordIconWrapper = styled.div<LordIconWrapperProps>`
+  display: inline-block;
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
+  & :first-child {
+    height: ${(props) => props.height} !important;
+    width: ${(props) => props.width} !important;
+  }
+`;
+
 const LordIcon = (props: LordIconProps) => {
   const [isClient, setClient] = useState(false);
   useEffect(() => {
@@ -31,7 +47,7 @@ const LordIcon = (props: LordIconProps) => {
   const StaticSvgComponent = getStaticSvgComponent(props.iconName);
 
   return (
-    <>
+    <LordIconWrapper height={props.height} width={props.width}>
       {isClient ? (
         <React.Suspense
           fallback={StaticSvgComponent ? <StaticSvgComponent /> : null}
@@ -39,9 +55,9 @@ const LordIcon = (props: LordIconProps) => {
           <LordIconLazy {...props} />
         </React.Suspense>
       ) : StaticSvgComponent ? (
-        <StaticSvgComponent height={props.height} width={props.width} />
+        <StaticSvgComponent />
       ) : null}
-    </>
+    </LordIconWrapper>
   );
 };
 

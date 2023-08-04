@@ -96,15 +96,75 @@ const LayoutContent = (props) => {
               </SpacingsStack>
             </LayoutPageHeaderSide>
             <LayoutPageContent>
-              <div
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  display: 'inline-block',
-                }}
-              >
+              <div>
+                <LordIcon
+                  iconName="suitcase"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
                 <LordIcon
                   iconName="command"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="unlocked"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="package"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="login"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="heartbeat"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="headset"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="handshake"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="graduation"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="flag"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="document"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
+                <LordIcon
+                  iconName="api"
                   trigger="hover"
                   height="40px"
                   width="40px"
