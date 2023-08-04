@@ -42,7 +42,7 @@ const SvgLogin = (props: SVGProps<SVGSVGElement>) => (
         </g>
       </mask>
       <mask id="login_svg__g" mask-type="alpha">
-        <use xmlns:ns2="http://www.w3.org/1999/xlink" ns2:href="#c" />
+        <use href="#login_svg__c" />
       </mask>
       <g
         id="login_svg__c"

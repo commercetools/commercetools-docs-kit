@@ -28,7 +28,7 @@ const SvgHeartbeat = (props: SVGProps<SVGSVGElement>) => (
         <use href="#heartbeat_svg__a" />
       </mask>
       <mask id="heartbeat_svg__g" mask-type="alpha">
-        <use xmlns:ns2="http://www.w3.org/1999/xlink" ns2:href="#b" />
+        <use href="#heartbeat_svg__b" />
       </mask>
       <filter
         id="heartbeat_svg__h"

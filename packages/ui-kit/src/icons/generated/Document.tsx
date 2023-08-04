@@ -32,11 +32,11 @@ const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
       </mask>
       <mask id="document_svg__f" mask-type="alpha">
         <g filter="url(#document_svg__b)">
-          <use xmlns:ns2="http://www.w3.org/1999/xlink" ns2:href="#c" />
+          <use href="#document_svg__c" />
         </g>
       </mask>
       <mask id="document_svg__k" mask-type="alpha">
-        <use xmlns:ns3="http://www.w3.org/1999/xlink" ns3:href="#d" />
+        <use href="#document_svg__d" />
       </mask>
       <g
         id="document_svg__d"
