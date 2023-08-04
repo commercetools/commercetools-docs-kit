@@ -3,11 +3,23 @@ import { getStaticSvgComponent } from '../utils/lord-icon';
 
 const LordIconLazy = React.lazy(() => import('./lord-icon-client-side'));
 
+export type LordIconTrigger =
+  | 'hover'
+  | 'click'
+  | 'loop'
+  | 'loop-on-hover'
+  | 'morph'
+  | 'boomerang'
+  | 'sequence';
+
 type LordIconProps = {
   iconName: string;
-  loop: boolean;
-  autoplay: boolean;
-  style: object;
+  delay?: number;
+  height?: string;
+  width?: string;
+  stroke?: number;
+  target?: string;
+  trigger?: LordIconTrigger;
 };
 
 const LordIcon = (props: LordIconProps) => {
@@ -21,12 +33,14 @@ const LordIcon = (props: LordIconProps) => {
   return (
     <>
       {isClient ? (
-        <React.Suspense fallback={<StaticSvgComponent />}>
+        <React.Suspense
+          fallback={StaticSvgComponent ? <StaticSvgComponent /> : null}
+        >
           <LordIconLazy {...props} />
         </React.Suspense>
-      ) : (
-        <StaticSvgComponent />
-      )}
+      ) : StaticSvgComponent ? (
+        <StaticSvgComponent height={props.height} width={props.width} />
+      ) : null}
     </>
   );
 };

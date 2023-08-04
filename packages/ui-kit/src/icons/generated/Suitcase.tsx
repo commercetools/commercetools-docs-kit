@@ -1,11 +1,10 @@
-/* eslint-disable react/no-unknown-property */
 import * as React from 'react';
 import type { SVGProps } from 'react';
 const SvgSuitcase = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="src/icons/svg/*.svg"
-    height="src/icons/svg/*.svg"
+    width={500}
+    height={500}
     style={{
       width: '100%',
       height: '100%',

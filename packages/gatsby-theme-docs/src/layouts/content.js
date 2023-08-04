@@ -96,8 +96,19 @@ const LayoutContent = (props) => {
               </SpacingsStack>
             </LayoutPageHeaderSide>
             <LayoutPageContent>
-              <div style={{ height: '30px' }}>
-                <LordIcon iconName="suitcase" style={{ height: '30px' }} />
+              <div
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  display: 'inline-block',
+                }}
+              >
+                <LordIcon
+                  iconName="command"
+                  trigger="hover"
+                  height="40px"
+                  width="40px"
+                />
               </div>
               <PageContentInset id="body-content" showRightBorder>
                 {props.children}

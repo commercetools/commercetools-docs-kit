@@ -17,4 +17,3 @@ export { default as SlashSvgIcon } from './Slash';
 export { default as StackedLinesIndentedIconSvgIcon } from './StackedLinesIndentedIcon';
 export { default as TutorialsSmallSvgIcon } from './TutorialsSmall';
 export { default as TutorialsSvgIcon } from './Tutorials';
-export { default as Suitcase } from './Suitcase';

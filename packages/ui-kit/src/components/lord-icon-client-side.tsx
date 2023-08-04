@@ -1,61 +1,53 @@
-import { useEffect, useRef, useState } from 'react';
-import Lottie, { LottieRefCurrentProps } from 'lottie-react';
-import { getLottieJsonConfig } from '../utils/lord-icon';
+import React from 'react';
+import lottie from 'lottie-web';
+import { getStaticSvgComponent, iconLoader } from '../utils/lord-icon';
+import { defineElement } from 'lord-icon-element';
+import { Element } from 'lord-icon-element/element';
+import { LordIconTrigger } from './lord-icon';
+import styled from '@emotion/styled';
+
+Element.setIconLoader(iconLoader);
+
+defineElement(lottie.loadAnimation);
 
 type LordIconProps = {
   iconName: string;
-  loop: boolean;
-  autoplay: boolean;
-  style: object;
+  delay?: number;
+  height?: string;
+  width?: string;
+  stroke?: number;
+  target?: string;
+  trigger?: LordIconTrigger;
 };
 
-const defaultProps = {
-  loop: false,
-  autoplay: false,
-};
+const LordIconWrapper = styled.div`
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  & :first-child {
+    height: 40px !important;
+    width: 40px !important;
+  }
+`;
 
 const LordIcon = (props: LordIconProps) => {
-  const [animationData, setAnimationData] = useState<object>();
-  const lottieRef = useRef<LottieRefCurrentProps>(null);
-  const { iconName, ...rest } = props;
-
-  useEffect(() => {
-    const loadAnimationData = async () => {
-      const data = getLottieJsonConfig(iconName);
-      if (data) {
-        // icon config availabe in the build
-        setAnimationData(data);
-      } else {
-        try {
-          const data = await import(
-            `@commercetools-docs/ui-kit/dist/icons/lord-icon/${iconName}.json`
-          );
-          setAnimationData(data.default);
-        } catch (error) {
-          console.error(`Error loading icon animation: ${error}`);
-        }
-      }
-    };
-    loadAnimationData();
-  }, [iconName]);
-
-  const handleMouseEnter = () => {
-    lottieRef.current?.play();
-  };
-
-  const handleMouseLeave = () => {
-    lottieRef.current?.stop();
-  };
+  const { iconName, trigger, delay, target, stroke, height, width, ...rest } =
+    props;
+  const StaticSvgComponent = getStaticSvgComponent(iconName);
 
   return (
-    <Lottie
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      lottieRef={lottieRef}
-      animationData={animationData}
-      {...defaultProps}
-      {...rest}
-    />
+    <LordIconWrapper>
+      <lord-icon
+        icon={iconName}
+        trigger={trigger}
+        delay={delay}
+        target={target}
+        stroke={stroke}
+        {...rest}
+      >
+        {StaticSvgComponent && <StaticSvgComponent />}
+      </lord-icon>
+    </LordIconWrapper>
   );
 };
 
