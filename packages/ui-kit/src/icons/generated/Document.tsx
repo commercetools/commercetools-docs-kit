@@ -3,8 +3,6 @@ import type { SVGProps } from 'react';
 const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={500}
-    height={500}
     style={{
       width: '100%',
       height: '100%',
@@ -15,38 +13,39 @@ const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <defs>
-      <clipPath id="document_svg__j">
+      <clipPath id="j">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <clipPath id="document_svg__e">
+      <clipPath id="e">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <clipPath id="document_svg__h">
+      <clipPath id="h">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <clipPath id="document_svg__g">
+      <clipPath id="g">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <mask id="document_svg__i" mask-type="alpha">
-        <use href="#document_svg__a" />
+      <mask id="i" mask-type="alpha">
+        <use href="#a" />
       </mask>
-      <mask id="document_svg__f" mask-type="alpha">
-        <g filter="url(#document_svg__b)">
-          <use href="#document_svg__c" />
+      <mask id="f" mask-type="alpha">
+        <g filter="url(#b)">
+          <path fill="#fff" d="M0 0h500v500H0z" opacity={0} />
+          <use href="#c" />
         </g>
       </mask>
-      <mask id="document_svg__k" mask-type="alpha">
-        <use href="#document_svg__d" />
+      <mask id="k" mask-type="alpha">
+        <use href="#d" />
       </mask>
       <g
-        id="document_svg__d"
-        clipPath="url(#document_svg__e)"
+        id="d"
+        clipPath="url(#e)"
         style={{
           display: 'block',
         }}
       >
         <g
-          mask="url(#document_svg__f)"
+          mask="url(#f)"
           style={{
             display: 'block',
           }}
@@ -57,7 +56,7 @@ const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={3.5}
-            clipPath="url(#document_svg__g)"
+            clipPath="url(#g)"
             transform="translate(-.751 .001)"
           >
             <path
@@ -90,6 +89,37 @@ const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
             />
           </g>
         </g>
+        <g
+          fillOpacity={0}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          clipPath="url(#h)"
+          mask="url(#i)"
+          style={{
+            display: 'none',
+          }}
+        >
+          <path
+            style={{
+              display: 'none',
+            }}
+          />
+          <path
+            style={{
+              display: 'none',
+            }}
+          />
+          <path
+            style={{
+              display: 'none',
+            }}
+          />
+          <path
+            style={{
+              display: 'none',
+            }}
+          />
+        </g>
         <path
           fillOpacity={0}
           stroke="#08A88A"
@@ -114,6 +144,18 @@ const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
           }}
           transform="matrix(3.7 0 0 3.7 403.549 -12.7)"
         />
+        <path
+          fillOpacity={0}
+          stroke="#08A88A"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={3.5}
+          d="M0 0"
+          style={{
+            display: 'block',
+          }}
+          transform="matrix(3.7 0 0 3.7 558.949 -277.25)"
+        />
         <g
           style={{
             display: 'block',
@@ -129,7 +171,7 @@ const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
         </g>
       </g>
       <g
-        id="document_svg__a"
+        id="a"
         style={{
           display: 'block',
         }}
@@ -148,7 +190,7 @@ const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
         />
       </g>
       <g
-        id="document_svg__c"
+        id="c"
         style={{
           display: 'block',
         }}
@@ -167,7 +209,7 @@ const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
         />
       </g>
       <filter
-        id="document_svg__b"
+        id="b"
         width="100%"
         height="100%"
         x="0%"
@@ -178,38 +220,35 @@ const SvgDocument = (props: SVGProps<SVGSVGElement>) => (
           <feFuncA tableValues="1.0 0.0" type="table" />
         </feComponentTransfer>
       </filter>
-      <filter
-        id="document_svg__l"
-        width="300%"
-        height="300%"
-        x="-100%"
-        y="-100%"
-      >
+      <filter id="l" width="300%" height="300%" x="-100%" y="-100%">
         <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
       </filter>
     </defs>
-    <g
-      clipPath="url(#document_svg__j)"
-      mask="url(#document_svg__k)"
-      style={{
-        display: 'block',
-      }}
-    >
+    <g clipPath="url(#j)">
       <g
-        filter="url(#document_svg__l)"
-        transform="rotate(-94 262.075 8.435) scale(2.4)"
+        mask="url(#k)"
+        style={{
+          display: 'block',
+        }}
       >
-        <path
-          fill="#4AE0EB"
-          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-          className="document_svg__design"
-        />
-        <path
-          fill="#CA5EED"
-          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-          className="document_svg__design"
-        />
+        <g filter="url(#l)" transform="rotate(-94 262.075 8.435) scale(2.4)">
+          <path
+            fill="#4AE0EB"
+            d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
+            className="design"
+          />
+          <path
+            fill="#CA5EED"
+            d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
+            className="design"
+          />
+        </g>
       </g>
+      <path
+        style={{
+          display: 'none',
+        }}
+      />
     </g>
   </svg>
 );

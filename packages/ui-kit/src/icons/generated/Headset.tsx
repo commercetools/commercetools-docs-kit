@@ -3,8 +3,6 @@ import type { SVGProps } from 'react';
 const SvgHeadset = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={500}
-    height={500}
     style={{
       width: '100%',
       height: '100%',
@@ -15,27 +13,21 @@ const SvgHeadset = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <defs>
-      <clipPath id="headset_svg__c">
+      <clipPath id="c">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <clipPath id="headset_svg__b">
+      <clipPath id="b">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <filter
-        id="headset_svg__e"
-        width="300%"
-        height="300%"
-        x="-100%"
-        y="-100%"
-      >
+      <filter id="e" width="300%" height="300%" x="-100%" y="-100%">
         <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
       </filter>
-      <mask id="headset_svg__d" mask-type="alpha">
-        <use href="#headset_svg__a" />
+      <mask id="d" mask-type="alpha">
+        <use href="#a" />
       </mask>
       <g
-        id="headset_svg__a"
-        clipPath="url(#headset_svg__b)"
+        id="a"
+        clipPath="url(#b)"
         style={{
           display: 'block',
         }}
@@ -78,28 +70,31 @@ const SvgHeadset = (props: SVGProps<SVGSVGElement>) => (
         </g>
       </g>
     </defs>
-    <g
-      clipPath="url(#headset_svg__c)"
-      mask="url(#headset_svg__d)"
-      style={{
-        display: 'block',
-      }}
-    >
+    <g clipPath="url(#c)">
       <g
-        filter="url(#headset_svg__e)"
-        transform="rotate(-94 262.075 8.435) scale(2.4)"
+        mask="url(#d)"
+        style={{
+          display: 'block',
+        }}
       >
-        <path
-          fill="#4AE0EB"
-          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-          className="headset_svg__design"
-        />
-        <path
-          fill="#CA5EED"
-          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-          className="headset_svg__design"
-        />
+        <g filter="url(#e)" transform="rotate(-94 262.075 8.435) scale(2.4)">
+          <path
+            fill="#4AE0EB"
+            d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
+            className="design"
+          />
+          <path
+            fill="#CA5EED"
+            d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
+            className="design"
+          />
+        </g>
       </g>
+      <path
+        style={{
+          display: 'none',
+        }}
+      />
     </g>
   </svg>
 );
