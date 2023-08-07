@@ -23,9 +23,9 @@ import ApiJson from '../icons/lord-icon/api.json';
 import SuitcaseJson from '../icons/lord-icon/suitcase.json';
 import CommandJson from '../icons/lord-icon/command.json';
 import { IconData } from 'lord-icon-element/interfaces';
-import { SVGProps } from '@commercetools-uikit/icons';
 
-const iconNameToSvgMap: Record<string, (props: SVGProps) => JSX.Element> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const iconNameToSvgMap: Record<string, any> = {
   suitcase: Suitcase,
   command: Command,
   unlocked: Unlocked,
