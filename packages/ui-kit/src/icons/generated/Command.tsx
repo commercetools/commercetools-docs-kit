@@ -13,17 +13,23 @@ const SvgCommand = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <defs>
-      <clipPath id="b">
+      <clipPath id="command_svg__b">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <filter id="d" width="300%" height="300%" x="-100%" y="-100%">
+      <filter
+        id="command_svg__d"
+        width="300%"
+        height="300%"
+        x="-100%"
+        y="-100%"
+      >
         <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
       </filter>
-      <mask id="c" mask-type="alpha">
-        <use href="#a" />
+      <mask id="command_svg__c" mask-type="alpha">
+        <use href="#command_svg__a" />
       </mask>
       <g
-        id="a"
+        id="command_svg__a"
         fillOpacity={0}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -48,31 +54,28 @@ const SvgCommand = (props: SVGProps<SVGSVGElement>) => (
         />
       </g>
     </defs>
-    <g clipPath="url(#b)">
+    <g
+      clipPath="url(#command_svg__b)"
+      mask="url(#command_svg__c)"
+      style={{
+        display: 'block',
+      }}
+    >
       <g
-        mask="url(#c)"
-        style={{
-          display: 'block',
-        }}
+        filter="url(#command_svg__d)"
+        transform="rotate(-94 262.075 8.435) scale(2.4)"
       >
-        <g filter="url(#d)" transform="rotate(-94 262.075 8.435) scale(2.4)">
-          <path
-            fill="#4AE0EB"
-            d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-            className="design"
-          />
-          <path
-            fill="#CA5EED"
-            d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-            className="design"
-          />
-        </g>
+        <path
+          fill="#4AE0EB"
+          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
+          className="command_svg__design"
+        />
+        <path
+          fill="#CA5EED"
+          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
+          className="command_svg__design"
+        />
       </g>
-      <path
-        style={{
-          display: 'none',
-        }}
-      />
     </g>
   </svg>
 );

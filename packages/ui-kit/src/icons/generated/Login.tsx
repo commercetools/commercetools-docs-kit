@@ -13,14 +13,14 @@ const SvgLogin = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <defs>
-      <clipPath id="f">
+      <clipPath id="login_svg__f">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <clipPath id="d">
+      <clipPath id="login_svg__d">
         <path d="M0 0h500v500H0z" />
       </clipPath>
       <filter
-        id="a"
+        id="login_svg__a"
         width="100%"
         height="100%"
         x="0%"
@@ -31,27 +31,26 @@ const SvgLogin = (props: SVGProps<SVGSVGElement>) => (
           <feFuncA tableValues="1.0 0.0" type="table" />
         </feComponentTransfer>
       </filter>
-      <filter id="h" width="300%" height="300%" x="-100%" y="-100%">
+      <filter id="login_svg__h" width="300%" height="300%" x="-100%" y="-100%">
         <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
       </filter>
-      <mask id="e" mask-type="alpha">
-        <g filter="url(#a)">
-          <path fill="#fff" d="M0 0h500v500H0z" opacity={0} />
-          <use href="#b" />
+      <mask id="login_svg__e" mask-type="alpha">
+        <g filter="url(#login_svg__a)">
+          <use href="#login_svg__b" />
         </g>
       </mask>
-      <mask id="g" mask-type="alpha">
-        <use href="#c" />
+      <mask id="login_svg__g" mask-type="alpha">
+        <use href="#login_svg__c" />
       </mask>
       <g
-        id="c"
-        clipPath="url(#d)"
+        id="login_svg__c"
+        clipPath="url(#login_svg__d)"
         style={{
           display: 'block',
         }}
       >
         <g
-          mask="url(#e)"
+          mask="url(#login_svg__e)"
           style={{
             display: 'block',
           }}
@@ -67,14 +66,6 @@ const SvgLogin = (props: SVGProps<SVGSVGElement>) => (
         </g>
         <path
           fillOpacity={0}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{
-            display: 'none',
-          }}
-        />
-        <path
-          fillOpacity={0}
           stroke="#CA5EED"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -87,39 +78,42 @@ const SvgLogin = (props: SVGProps<SVGSVGElement>) => (
         />
       </g>
       <g
-        id="b"
+        id="login_svg__b"
         style={{
           display: 'block',
         }}
       >
+        <path
+          fillOpacity={0}
+          stroke="#CA5EED"
+          strokeWidth={0}
+          d="M90 46v409h-357V46H90z"
+        />
         <path fill="red" d="M90 46v409h-357V46H90z" />
       </g>
     </defs>
-    <g clipPath="url(#f)">
+    <g
+      clipPath="url(#login_svg__f)"
+      mask="url(#login_svg__g)"
+      style={{
+        display: 'block',
+      }}
+    >
       <g
-        mask="url(#g)"
-        style={{
-          display: 'block',
-        }}
+        filter="url(#login_svg__h)"
+        transform="rotate(-94 262.075 8.435) scale(2.4)"
       >
-        <g filter="url(#h)" transform="rotate(-94 262.075 8.435) scale(2.4)">
-          <path
-            fill="#4AE0EB"
-            d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-            className="design"
-          />
-          <path
-            fill="#CA5EED"
-            d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-            className="design"
-          />
-        </g>
+        <path
+          fill="#4AE0EB"
+          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
+          className="login_svg__design"
+        />
+        <path
+          fill="#CA5EED"
+          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
+          className="login_svg__design"
+        />
       </g>
-      <path
-        style={{
-          display: 'none',
-        }}
-      />
     </g>
   </svg>
 );

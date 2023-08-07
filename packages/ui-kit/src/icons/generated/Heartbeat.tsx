@@ -13,26 +13,32 @@ const SvgHeartbeat = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <defs>
-      <clipPath id="f">
+      <clipPath id="heartbeat_svg__f">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <clipPath id="c">
+      <clipPath id="heartbeat_svg__c">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <clipPath id="d">
+      <clipPath id="heartbeat_svg__d">
         <path d="M0 0h500v500H0z" />
       </clipPath>
-      <mask id="e" mask-type="alpha">
-        <use href="#a" />
+      <mask id="heartbeat_svg__e" mask-type="alpha">
+        <use href="#heartbeat_svg__a" />
       </mask>
-      <mask id="g" mask-type="alpha">
-        <use href="#b" />
+      <mask id="heartbeat_svg__g" mask-type="alpha">
+        <use href="#heartbeat_svg__b" />
       </mask>
-      <filter id="h" width="300%" height="300%" x="-100%" y="-100%">
+      <filter
+        id="heartbeat_svg__h"
+        width="300%"
+        height="300%"
+        x="-100%"
+        y="-100%"
+      >
         <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
       </filter>
       <path
-        id="a"
+        id="heartbeat_svg__a"
         fill="red"
         d="M250 161.6c19.2-34.81 58.04-55.78 96.64-39.33 0 0 52.18 17.66 48.26 79.43-3.91 61.78-82.8 148.33-144.9 181.73m0-221.83c-19.2-34.81-58.04-55.78-96.64-39.33 0 0-52.18 17.66-48.26 79.43 3.91 61.78 82.8 148.33 144.9 181.73"
         style={{
@@ -40,18 +46,18 @@ const SvgHeartbeat = (props: SVGProps<SVGSVGElement>) => (
         }}
       />
       <g
-        id="b"
+        id="heartbeat_svg__b"
         fillOpacity={0}
         strokeLinecap="round"
         strokeLinejoin="round"
-        clipPath="url(#c)"
+        clipPath="url(#heartbeat_svg__c)"
         style={{
           display: 'block',
         }}
       >
         <g
-          clipPath="url(#d)"
-          mask="url(#e)"
+          clipPath="url(#heartbeat_svg__d)"
+          mask="url(#heartbeat_svg__e)"
           style={{
             display: 'block',
           }}
@@ -65,11 +71,6 @@ const SvgHeartbeat = (props: SVGProps<SVGSVGElement>) => (
             }}
             transform="translate(250 243.318)"
           />
-          <path
-            style={{
-              display: 'none',
-            }}
-          />
         </g>
         <path
           stroke="#121331"
@@ -82,31 +83,28 @@ const SvgHeartbeat = (props: SVGProps<SVGSVGElement>) => (
         />
       </g>
     </defs>
-    <g clipPath="url(#f)">
+    <g
+      clipPath="url(#heartbeat_svg__f)"
+      mask="url(#heartbeat_svg__g)"
+      style={{
+        display: 'block',
+      }}
+    >
       <g
-        mask="url(#g)"
-        style={{
-          display: 'block',
-        }}
+        filter="url(#heartbeat_svg__h)"
+        transform="rotate(-94 262.075 8.435) scale(2.4)"
       >
-        <g filter="url(#h)" transform="rotate(-94 262.075 8.435) scale(2.4)">
-          <path
-            fill="#4AE0EB"
-            d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-            className="design"
-          />
-          <path
-            fill="#CA5EED"
-            d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-            className="design"
-          />
-        </g>
+        <path
+          fill="#4AE0EB"
+          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
+          className="heartbeat_svg__design"
+        />
+        <path
+          fill="#CA5EED"
+          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
+          className="heartbeat_svg__design"
+        />
       </g>
-      <path
-        style={{
-          display: 'none',
-        }}
-      />
     </g>
   </svg>
 );
