@@ -208,7 +208,7 @@ const LayoutPageNavigation = (props) => {
                   <BetaTag />
                 </TagWrapper>
               )}
-              {props.b2b && (
+              {props.planTags && (
                 <TagWrapper>
                   <B2bTag />
                 </TagWrapper>
@@ -286,7 +286,7 @@ LayoutPageNavigation.propTypes = {
   }),
   navLevels: PropTypes.number.isRequired,
   beta: PropTypes.bool.isRequired,
-  b2b: PropTypes.bool.isRequired,
+  planTags: PropTypes.arrayOf.string.isRequired,
 };
 
 export default LayoutPageNavigation;

@@ -43,7 +43,7 @@ const LayoutContent = (props) => {
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
   const isBeta = props.pageData.beta || siteData.siteMetadata.beta;
-  const isB2B = props.pageData.b2b;
+  const isB2B = props.pageData.planTags;
 
   return (
     <LayoutApplication
@@ -139,7 +139,7 @@ LayoutContent.propTypes = {
     title: PropTypes.string.isRequired,
     websitePrimaryColor: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
-    b2b: PropTypes.bool.isRequired,
+    planTags: PropTypes.arrayOf.string.isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
     allowWideContentLayout: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,
