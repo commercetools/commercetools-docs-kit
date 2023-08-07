@@ -17,8 +17,7 @@
   "module": "dist/commercetools-docs-ui-kit.esm.js",
   "files": ["dist", "package.json", "LICENSE", "README.md"],
   "scripts": {
-    "generate-icons": "svgr --out-dir src/icons/generated --typescript -- src/icons/svg && yarn generate-lord-icons",
-    "generate-lord-icons": "svgr --out-dir src/icons/generated --no-index --no-dimensions --typescript -- src/icons/lord-icon && yarn copy-lord-icons-json",
+    "generate-icons": "svgr --out-dir src/icons/generated --typescript -- src/icons/svg && yarn copy-lord-icons-json",
     "copy-lord-icons-json": "mkdir -p dist/icons/lord-icon && cp src/icons/lord-icon/*.json  dist/icons/lord-icon/"
   },
   "dependencies": {
