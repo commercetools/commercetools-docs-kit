@@ -33,6 +33,8 @@
       path: /writing/self-learning
     - title: SSO
       path: /writing/sso
+    - title: Lord Icons
+      path: /writing/lord-icons
 - chapter-title: Creating API Documentation
   path: /api-docs/overview
   pages:

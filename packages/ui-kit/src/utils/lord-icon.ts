@@ -23,67 +23,44 @@ import ApiJson from '../icons/lord-icon/api.json';
 import SuitcaseJson from '../icons/lord-icon/suitcase.json';
 import CommandJson from '../icons/lord-icon/command.json';
 import { IconData } from 'lord-icon-element/interfaces';
+import { SVGProps } from '@commercetools-uikit/icons';
+
+const iconNameToSvgMap: Record<string, (props: SVGProps) => JSX.Element> = {
+  suitcase: Suitcase,
+  command: Command,
+  unlocked: Unlocked,
+  package: Package,
+  login: Login,
+  heartbeat: Heartbeat,
+  headset: Headset,
+  handshake: Handshake,
+  graduation: Graduation,
+  flag: Flag,
+  document: Document,
+  api: Api,
+};
+
+const iconNameToLottieJSON: Record<string, object> = {
+  suitcase: SuitcaseJson,
+  command: CommandJson,
+  unlocked: UnlockedJson,
+  package: PackageJson,
+  login: LoginJson,
+  heartbeat: HeartbeatJson,
+  headset: HeadsetJson,
+  handshake: HandshakeJson,
+  graduation: GraduationJson,
+  flag: FlagJson,
+  document: DocumentJson,
+  api: ApiJson,
+};
 
 export const getStaticSvgComponent = (iconName: string) => {
-  switch (iconName) {
-    case 'suitcase':
-      return Suitcase;
-    case 'command':
-      return Command;
-    case 'unlocked':
-      return Unlocked;
-    case 'package':
-      return Package;
-    case 'login':
-      return Login;
-    case 'heartbeat':
-      return Heartbeat;
-    case 'headset':
-      return Headset;
-    case 'handshake':
-      return Handshake;
-    case 'graduation':
-      return Graduation;
-    case 'flag':
-      return Flag;
-    case 'document':
-      return Document;
-    case 'api':
-      return Api;
-    default:
-      return undefined;
-  }
+  return iconNameToSvgMap[iconName];
 };
 
 export const getLottieJsonConfig = (iconName: string) => {
-  switch (iconName) {
-    case 'suitcase':
-      return SuitcaseJson;
-    case 'command':
-      return CommandJson;
-    case 'unlocked':
-      return UnlockedJson;
-    case 'package':
-      return PackageJson;
-    case 'login':
-      return LoginJson;
-    case 'heartbeat':
-      return HeartbeatJson;
-    case 'headset':
-      return HeadsetJson;
-    case 'handshake':
-      return HandshakeJson;
-    case 'graduation':
-      return GraduationJson;
-    case 'flag':
-      return FlagJson;
-    case 'document':
-      return DocumentJson;
-    case 'api':
-      return ApiJson;
-    default:
-      return undefined;
-  }
+  return iconNameToLottieJSON[iconName];
 };
 
 export const iconLoader = async (iconName: string): Promise<IconData> => {
