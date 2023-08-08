@@ -209,19 +209,21 @@ const LayoutPageNavigation = (props) => {
               >
                 {props.pageTitle}
               </div>
-              <PlansWrapper>
-                {props.beta && (
-                  <TagWrapper>
-                    <BetaTag />
-                  </TagWrapper>
-                )}
-                {props.planTags &&
-                  props.planTags.map((planKey) => (
-                    <TagWrapper key={planKey}>
-                      <PlanTag key={planKey} plan={planKey} />
+              {(props.beta || props.planTags) && (
+                <PlansWrapper>
+                  {props.beta && (
+                    <TagWrapper>
+                      <BetaTag />
                     </TagWrapper>
-                  ))}
-              </PlansWrapper>
+                  )}
+                  {props.planTags &&
+                    props.planTags.map((planKey) => (
+                      <TagWrapper key={planKey}>
+                        <PlanTag key={planKey} plan={planKey} />
+                      </TagWrapper>
+                    ))}
+                </PlansWrapper>
+              )}
             </SpacingsStack>
           </SpacingsInline>
         </PageTitleLink>
