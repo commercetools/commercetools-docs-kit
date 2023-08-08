@@ -9,7 +9,7 @@ module.exports = {
       /(.*-smoke-test.*)\/types\/(.*)\.html/,
       /(.*-smoke-test.*)\/views\/markdown\/(.*)\.html/,
       /(.*-smoke-test.*)\/views\/beta\/(.*)\.html/,
-      /(.*-smoke-test.*)\/views\/b2b\/(.*)\.html/,
+      /(.*-smoke-test.*)\/views\/plan-tag\/(.*)\.html/,
     ],
     exclude: ['site-template/*'],
     options: [

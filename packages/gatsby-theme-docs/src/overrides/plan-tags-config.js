@@ -2,18 +2,18 @@ import { Icons } from '@commercetools-docs/ui-kit';
 
 const planTagsConfig = {
   plan1: {
-    text: 'TAG1',
+    text: 'PLAN1',
     icon: Icons.B2BTagSvgIcon,
     color: 'green',
     overHint: 'This is hover text for tag1',
-    href: '/views/markdown',
+    href: '/plan',
   },
   plan2: {
-    text: 'TAG2',
+    text: 'PLAN2',
     icon: Icons.B2BTagSvgIcon,
     color: 'blue',
     overHint: 'This is hover text for tag2',
-    href: '/views/empty',
+    href: '/plan',
   },
   beta: {
     text: 'BETA',

@@ -81,3 +81,24 @@ You can also add the flag for headings or fields. However, the syntax is differe
 
 - `localeProjection` - String - Optional <PlanTag plan="plan2" />\
   This is an example of a plan field.
+
+## Plans configuration
+
+The actual configuration of each plan (color, text, href...) can be defined by editing the override file located in `packages/gatsby-theme-docs-base/src/@commercetools-docs/gatsby-theme-docs/overrides/plan-tags-config.js` in the `docs` repo.
+
+The format of the configuration is similar to this:
+
+```js
+const planTagsConfig = {
+  plan1: {
+    text: 'PLAN1',
+    icon: Icons.B2BTagSvgIcon,
+    color: 'green',
+    overHint: 'This is hover text for tag1',
+    href: '/plan',
+  },
+  ...
+}
+```
+
+The keys of the configuration object (`plan1` in the example), are used as unique identifiers for plan and can be used in the `planTags` frontmatter property or as `plan` property of the `<PlanTag plan={'plan1'}>` tag.

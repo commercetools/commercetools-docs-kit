@@ -54,11 +54,22 @@ We support the following key-value pairs in the frontmatter section:
 
   </Warning>
 
-- `b2b` (boolean): use to indicate if <B2B /> should be displayed for an entire page.
+- `planTags` (array of string): use to indicate what plans are associated to the page.
+
+  Example:
+
+```mdx
+---
+title: The title of this page
+planTags: [plan1, plan2]
+---
+
+This is the actual page content.
+```
 
   <Info>
 
-  You can use <B2B /> in other places of a file apart from the frontmatter section. For more information, see [B2B section](/writing/sample#b2b-section).
+  You can use `<PlanTag />` in other places of a file apart from the frontmatter section. For more information, see [Plan section](/writing/sample#plan-section).
 
   </Info>
 
