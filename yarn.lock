@@ -3604,7 +3604,7 @@ __metadata:
     github-slugger: 2.0.0
     hast-util-has-property: 3.0.0
     hast-util-heading: 2.0.1
-    hast-util-heading-rank: 2.1.1
+    hast-util-heading-rank: 3.0.0
     hast-util-to-string: 2.0.0
     intersection-observer: 0.12.2
     lodash.throttle: 4.1.1
@@ -20202,7 +20202,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-heading-rank@npm:2.1.1, hast-util-heading-rank@npm:^2.0.0":
+"hast-util-heading-rank@npm:3.0.0":
+  version: 3.0.0
+  resolution: "hast-util-heading-rank@npm:3.0.0"
+  dependencies:
+    "@types/hast": ^3.0.0
+  checksum: e5ce4ec9e8017b24ab72702fa0dd401ec6eaf32574120d71c2aa4e8e0f43829dba2e291f49d305a47e8d65b82a9c5adad7985385dc5bc8370f8cec7c8f9313d3
+  languageName: node
+  linkType: hard
+
+"hast-util-heading-rank@npm:^2.0.0":
   version: 2.1.1
   resolution: "hast-util-heading-rank@npm:2.1.1"
   dependencies:
