@@ -3602,7 +3602,7 @@ __metadata:
     gatsby-transformer-sharp: 5.11.0
     gatsby-transformer-yaml: 5.11.0
     github-slugger: 2.0.0
-    hast-util-has-property: 2.0.1
+    hast-util-has-property: 3.0.0
     hast-util-heading: 2.0.1
     hast-util-heading-rank: 2.1.1
     hast-util-to-string: 2.0.0
@@ -9104,6 +9104,15 @@ __metadata:
   dependencies:
     "@types/unist": "*"
   checksum: fff47998f4c11e21a7454b58673f70478740ecdafd95aaf50b70a3daa7da9cdc57315545bf9c039613732c40b7b0e9e49d11d03fe9a4304721cdc3b29a88141e
+  languageName: node
+  linkType: hard
+
+"@types/hast@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/hast@npm:3.0.0"
+  dependencies:
+    "@types/unist": "*"
+  checksum: ac4c74bdc910101ece1b3cbce98ad559dc333f8d537756c2f1f136a03396e9d25e506fcd5db85663780a9a2683f5401bf42fa0935dc092171e622bfba1497172
   languageName: node
   linkType: hard
 
@@ -20177,7 +20186,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-has-property@npm:2.0.1, hast-util-has-property@npm:^2.0.0":
+"hast-util-has-property@npm:3.0.0":
+  version: 3.0.0
+  resolution: "hast-util-has-property@npm:3.0.0"
+  dependencies:
+    "@types/hast": ^3.0.0
+  checksum: 3e515e95432c6251eefeb5aade4b9626f033d3ac0020e2f64aa38afbb345c7bb0c5d541fba6c53367245d7f5b555dc3c86543cd8231879d272cb0912808dfc19
+  languageName: node
+  linkType: hard
+
+"hast-util-has-property@npm:^2.0.0":
   version: 2.0.1
   resolution: "hast-util-has-property@npm:2.0.1"
   checksum: cc909b7e2964fbfa4c53e33bfbc6f3ed883d1936f3e41a7fa020d3cb8cc5d3c903670e62bec15b55dea5a272ed86724815e8b136ba5475e138489384b1b71fa8
