@@ -100,9 +100,10 @@ const LayoutContent = (props) => {
                 {isBeta && (
                   <BetaTag inverted href={siteData.siteMetadata.betaLink} />
                 )}
-                {planTags.map((planKey) => (
-                  <PlanTag key={planKey} plan={planKey} inverted />
-                ))}
+                {planTags &&
+                  planTags.map((planKey) => (
+                    <PlanTag key={planKey} plan={planKey} inverted />
+                  ))}
               </PlansWrapper>
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (

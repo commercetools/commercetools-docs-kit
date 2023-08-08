@@ -215,11 +215,12 @@ const LayoutPageNavigation = (props) => {
                     <BetaTag />
                   </TagWrapper>
                 )}
-                {props.planTags.map((planKey) => (
-                  <TagWrapper key={planKey}>
-                    <PlanTag key={planKey} plan={planKey} />
-                  </TagWrapper>
-                ))}
+                {props.planTags &&
+                  props.planTags.map((planKey) => (
+                    <TagWrapper key={planKey}>
+                      <PlanTag key={planKey} plan={planKey} />
+                    </TagWrapper>
+                  ))}
               </PlansWrapper>
             </SpacingsStack>
           </SpacingsInline>
