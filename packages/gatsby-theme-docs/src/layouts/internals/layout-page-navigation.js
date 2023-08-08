@@ -48,6 +48,8 @@ const GridContainer = styled.div`
 `;
 const TagWrapper = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
+  flex: 0 0 auto;
+  margin-right: 5px;
 `;
 
 const stickyContainerCss = css({
@@ -142,6 +144,10 @@ const SearchInputBox = styled.div`
   }
 `;
 
+const PlansWrapper = styled.div`
+  display: flex;
+`;
+
 const Blank = styled.div`
   height: ${designSystem.dimensions.heights.pageSearchboxSpace};
 `;
@@ -203,16 +209,18 @@ const LayoutPageNavigation = (props) => {
               >
                 {props.pageTitle}
               </div>
-              {props.beta && (
-                <TagWrapper>
-                  <BetaTag />
-                </TagWrapper>
-              )}
-              {props.planTags.map((planKey) => (
-                <TagWrapper key={planKey}>
-                  <PlanTag key={planKey} plan={planKey} />
-                </TagWrapper>
-              ))}
+              <PlansWrapper>
+                {props.beta && (
+                  <TagWrapper>
+                    <BetaTag />
+                  </TagWrapper>
+                )}
+                {props.planTags.map((planKey) => (
+                  <TagWrapper key={planKey}>
+                    <PlanTag key={planKey} plan={planKey} />
+                  </TagWrapper>
+                ))}
+              </PlansWrapper>
             </SpacingsStack>
           </SpacingsInline>
         </PageTitleLink>

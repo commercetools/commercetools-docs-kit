@@ -31,6 +31,13 @@ import {
   CourseCompleteModal,
   useCourseInfoByPageSlugs,
 } from '../modules/self-learning';
+import styled from '@emotion/styled';
+
+const PlansWrapper = styled.div`
+  & > span {
+    margin-right: 10px;
+  }
+`;
 
 const LayoutContent = (props) => {
   const courseInfo = useCourseInfoByPageSlugs([props.pageContext.slug]);
@@ -89,12 +96,14 @@ const LayoutContent = (props) => {
               )}
             </LayoutGlobalNotification>
             <LayoutPageHeader>
-              {isBeta && (
-                <BetaTag inverted href={siteData.siteMetadata.betaLink} />
-              )}
-              {planTags.map((planKey) => (
-                <PlanTag key={planKey} plan={planKey} inverted />
-              ))}
+              <PlansWrapper>
+                {isBeta && (
+                  <BetaTag inverted href={siteData.siteMetadata.betaLink} />
+                )}
+                {planTags.map((planKey) => (
+                  <PlanTag key={planKey} plan={planKey} inverted />
+                ))}
+              </PlansWrapper>
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />
