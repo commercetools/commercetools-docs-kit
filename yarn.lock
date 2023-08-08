@@ -3603,7 +3603,7 @@ __metadata:
     gatsby-transformer-yaml: 5.11.0
     github-slugger: 2.0.0
     hast-util-has-property: 3.0.0
-    hast-util-heading: 2.0.1
+    hast-util-heading: 3.0.0
     hast-util-heading-rank: 3.0.0
     hast-util-to-string: 2.0.0
     intersection-observer: 0.12.2
@@ -20220,23 +20220,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-heading@npm:2.0.1":
-  version: 2.0.1
-  resolution: "hast-util-heading@npm:2.0.1"
+"hast-util-heading@npm:3.0.0":
+  version: 3.0.0
+  resolution: "hast-util-heading@npm:3.0.0"
   dependencies:
-    "@types/hast": ^2.0.0
-    hast-util-is-element: ^2.0.0
-  checksum: 6c187a862966a16099d12026c7d7d89b7d81c286aacf5938a29618446b41db18b2b9f444606720143163f0bdfe95abda96399b071991aba209e8716dce3201f7
+    "@types/hast": ^3.0.0
+    hast-util-is-element: ^3.0.0
+  checksum: 50ba278a5b06c5c5b97e499745561929fc507f979ea06ad1c4d2102cc5f85c81e19a10f5a381378825698ca615e6f3d0cc99e196dc5914d80cb7e3065a6cad22
   languageName: node
   linkType: hard
 
-"hast-util-is-element@npm:^2.0.0":
-  version: 2.1.3
-  resolution: "hast-util-is-element@npm:2.1.3"
+"hast-util-is-element@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "hast-util-is-element@npm:3.0.0"
   dependencies:
-    "@types/hast": ^2.0.0
-    "@types/unist": ^2.0.0
-  checksum: 9d988f6839a50566a895a3dd19222e6ab1591243f6a3c36bba835b7e9339a2845f1ff1c583425afd602de1a57a76c5bae8a6dc0ab1d6e5d1e252b422cdeadbb7
+    "@types/hast": ^3.0.0
+  checksum: 82569a420eda5877c52fdbbdbe26675f012c02d70813dfd19acffdee328e42e4bd0b7ae34454cfcbcb932b2bedbd7ddc119f943a0cfb234120f9456d6c0c4331
   languageName: node
   linkType: hard
 

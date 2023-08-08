@@ -70,7 +70,7 @@
     "gatsby-transformer-yaml": "5.11.0",
     "github-slugger": "2.0.0",
     "hast-util-has-property": "3.0.0",
-    "hast-util-heading": "2.0.1",
+    "hast-util-heading": "3.0.0",
     "hast-util-heading-rank": "3.0.0",
     "hast-util-to-string": "2.0.0",
     "intersection-observer": "0.12.2",
