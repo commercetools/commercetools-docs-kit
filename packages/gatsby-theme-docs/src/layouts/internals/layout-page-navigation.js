@@ -15,7 +15,7 @@ import {
 import { useInView } from 'react-intersection-observer';
 import PlaceholderPageHeaderSide from '../../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../../overrides/page-header-banner-area';
-import { Overlay, BetaTag, B2bTag, SearchInput } from '../../components';
+import { Overlay, BetaTag, SearchInput, PlanTag } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
@@ -208,11 +208,11 @@ const LayoutPageNavigation = (props) => {
                   <BetaTag />
                 </TagWrapper>
               )}
-              {props.planTags && (
-                <TagWrapper>
-                  <B2bTag />
+              {props.planTags.map((planKey) => (
+                <TagWrapper key={planKey}>
+                  <PlanTag key={planKey} plan={planKey} />
                 </TagWrapper>
-              )}
+              ))}
             </SpacingsStack>
           </SpacingsInline>
         </PageTitleLink>
@@ -286,7 +286,7 @@ LayoutPageNavigation.propTypes = {
   }),
   navLevels: PropTypes.number.isRequired,
   beta: PropTypes.bool.isRequired,
-  planTags: PropTypes.arrayOf.string.isRequired,
+  planTags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default LayoutPageNavigation;

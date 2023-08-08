@@ -10,11 +10,11 @@ import {
   Cards,
   Link,
   BetaTag as Beta,
-  B2bTag as B2B,
   Anchor,
   SideBySide,
   Glossary,
   VideoPlayer,
+  PlanTag,
 } from './components';
 import {
   IfLearningPathComplete,
@@ -73,7 +73,7 @@ const components = {
   Warning: ContentNotifications.Warning,
   Error: ContentNotifications.Error,
   Beta,
-  B2B,
+  PlanTag,
   Anchor,
   Card,
   Cards,

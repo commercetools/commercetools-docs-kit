@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
 import {
-  B2bTag,
+  PlanTag,
   BetaTag,
   ContentPagination,
   GlobalNotification,
@@ -43,7 +43,7 @@ const LayoutContent = (props) => {
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
   const isBeta = props.pageData.beta || siteData.siteMetadata.beta;
-  const isB2B = props.pageData.planTags;
+  const planTags = props.pageData.planTags;
 
   return (
     <LayoutApplication
@@ -92,7 +92,9 @@ const LayoutContent = (props) => {
               {isBeta && (
                 <BetaTag inverted href={siteData.siteMetadata.betaLink} />
               )}
-              {isB2B && <B2bTag inverted href={'/b2b'} />}
+              {planTags.map((planKey) => (
+                <PlanTag key={planKey} plan={planKey} inverted />
+              ))}
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />
@@ -118,7 +120,7 @@ const LayoutContent = (props) => {
               tableOfContents={props.pageData.tableOfContents}
               navLevels={props.pageData.navLevels}
               beta={isBeta}
-              b2b={isB2B}
+              planTags={planTags}
             />
           </LayoutPage>
         </LayoutPageWrapper>
@@ -139,7 +141,7 @@ LayoutContent.propTypes = {
     title: PropTypes.string.isRequired,
     websitePrimaryColor: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
-    planTags: PropTypes.arrayOf.string.isRequired,
+    planTags: PropTypes.arrayOf(PropTypes.string).isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
     allowWideContentLayout: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,

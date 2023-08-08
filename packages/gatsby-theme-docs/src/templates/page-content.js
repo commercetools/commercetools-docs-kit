@@ -57,7 +57,7 @@ PageContentTemplate.propTypes = {
       title: PropTypes.string.isRequired,
       websitePrimaryColor: PropTypes.string.isRequired,
       beta: PropTypes.bool.isRequired,
-      planTags: PropTypes.array.string.isRequired,
+      planTags: PropTypes.arrayOf(PropTypes.string).isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       allowWideContentLayout: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,

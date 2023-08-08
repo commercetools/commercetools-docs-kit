@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { PlanTag } from './plan-tag';
+import PlanTagInternal from './plan-tag-internal';
 
 /**
  * This component stays as shorthand of the <PlanTag /> component. The configuration
@@ -11,7 +11,12 @@ export const BETA_HOVER_TEXT =
 
 const BetaTag = (props) => {
   return (
-    <PlanTag text="BETA" color="blue" overHint={BETA_HOVER_TEXT} {...props} />
+    <PlanTagInternal
+      text="BETA"
+      color="blue"
+      overHint={BETA_HOVER_TEXT}
+      {...props}
+    />
   );
 };
 
