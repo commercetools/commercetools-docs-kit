@@ -39,7 +39,7 @@
     "@react-hook/latest": "1.0.3",
     "@react-hook/resize-observer": "1.2.6",
     "@types/lodash.kebabcase": "4.1.7",
-    "@types/mdast": "^3.0.10",
+    "@types/mdast": "^4.0.0",
     "@types/react-modal": "^3.13.1",
     "@types/unist": "^3.0.0",
     "lodash.kebabcase": "4.1.1",
