@@ -3611,7 +3611,7 @@ __metadata:
     md5: 2.3.0
     md5-file: ^5.0.0
     mdast-util-to-string: ^4.0.0
-    mdast-util-toc: 6.1.1
+    mdast-util-toc: 7.0.0
     moment-locales-webpack-plugin: 1.2.0
     moment-timezone: 0.5.43
     moment-timezone-data-webpack-plugin: 1.5.1
@@ -9039,13 +9039,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/extend@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "@types/extend@npm:3.0.1"
-  checksum: 1ef199a1386be8744d4642eb5f599588829d9e82c55d399f1437d3543b9343203e6724231235793cb434410afb2d10bfbf18ea28f943d10c2246542c9e5c6203
-  languageName: node
-  linkType: hard
-
 "@types/get-port@npm:^3.2.0":
   version: 3.2.0
   resolution: "@types/get-port@npm:3.2.0"
@@ -9658,6 +9651,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/ungap__structured-clone@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@types/ungap__structured-clone@npm:0.3.0"
+  checksum: 1502276e64645c2157e7a6d0dc6b572787b99f5a4e64d11711fcc05edb9c5be5d0a7827939d269746a29f24ae96c9581b16f12d00604dacfbfdc6b62ba6025c5
+  languageName: node
+  linkType: hard
+
 "@types/unist@npm:*, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.3":
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
@@ -10057,6 +10057,13 @@ __metadata:
     "@typescript-eslint/types": 5.60.0
     eslint-visitor-keys: ^3.3.0
   checksum: d39b2485d030f9755820d0f6f3748a8ec44e1ca23cb36ddcba67a9eb1f258c8ec83c61fc015c50e8f4a00d05df62d719dbda445625e3e71a64a659f1d248157e
+  languageName: node
+  linkType: hard
+
+"@ungap/structured-clone@npm:^1.0.0":
+  version: 1.2.0
+  resolution: "@ungap/structured-clone@npm:1.2.0"
+  checksum: 4f656b7b4672f2ce6e272f2427d8b0824ed11546a601d8d5412b9d7704e83db38a8d9f402ecdf2b9063fc164af842ad0ec4a55819f621ed7e7ea4d1efcc74524
   languageName: node
   linkType: hard
 
@@ -24806,18 +24813,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdast-util-toc@npm:6.1.1":
-  version: 6.1.1
-  resolution: "mdast-util-toc@npm:6.1.1"
+"mdast-util-toc@npm:7.0.0":
+  version: 7.0.0
+  resolution: "mdast-util-toc@npm:7.0.0"
   dependencies:
-    "@types/extend": ^3.0.0
-    "@types/mdast": ^3.0.0
-    extend: ^3.0.0
+    "@types/mdast": ^4.0.0
+    "@types/ungap__structured-clone": ^0.3.0
+    "@ungap/structured-clone": ^1.0.0
     github-slugger: ^2.0.0
-    mdast-util-to-string: ^3.1.0
-    unist-util-is: ^5.0.0
-    unist-util-visit: ^4.0.0
-  checksum: 4a50455729c139b1ac648be8edfdaed581c9ed51697bccfbd1f1a70f16dbb4b7014da703135bc49551d116f82517483fd032ed1c5f27741f5c05d78925fe68e6
+    mdast-util-to-string: ^4.0.0
+    unist-util-is: ^6.0.0
+    unist-util-visit: ^5.0.0
+  checksum: 3f85eefcff5fdd718385bd43a7966db9818aa807ebf9cd29972a1d71e62e1d44335dcf24bf4786e534fdb36801949117e1ec69708ee4fcc78e6e539d54761bf0
   languageName: node
   linkType: hard
 
@@ -33586,6 +33593,17 @@ __metadata:
   dependencies:
     unist-util-visit-parents: ^2.0.0
   checksum: e9395205b6908c8d0fe71bc44e65d89d4781d1bb2d453a33cb67ed4124bad0b89d6b1d526ebaecb82a7c48e211bdf6f24351449b8cc115327b345f4617c18728
+  languageName: node
+  linkType: hard
+
+"unist-util-visit@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "unist-util-visit@npm:5.0.0"
+  dependencies:
+    "@types/unist": ^3.0.0
+    unist-util-is: ^6.0.0
+    unist-util-visit-parents: ^6.0.0
+  checksum: 9ec42e618e7e5d0202f3c191cd30791b51641285732767ee2e6bcd035931032e3c1b29093f4d7fd0c79175bbc1f26f24f26ee49770d32be76f8730a652a857e6
   languageName: node
   linkType: hard
 
