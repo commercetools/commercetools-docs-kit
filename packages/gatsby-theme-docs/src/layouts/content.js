@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { LordIcon, Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';

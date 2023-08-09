@@ -18,6 +18,7 @@ export { default as Reset } from './components/reset';
 export { default as Subtitle } from './components/subtitle';
 export { default as TextSmall } from './components/text-small';
 export { default as Mermaid } from './components/mermaid';
+export { default as LordIcon } from './components/lord-icon';
 
 // style blocks for components to be composed to components with functionality
 export * as cardElements from './components/card-elements';

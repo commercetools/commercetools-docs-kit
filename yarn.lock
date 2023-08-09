@@ -3221,6 +3221,8 @@ __metadata:
     lodash.kebabcase: 4.1.1
     lodash.omitby: 4.6.0
     lodash.throttle: 4.1.1
+    lord-icon-element: ^4.1.1
+    lottie-web: ^5.12.2
     murmurhash: 2.0.1
     prism-react-renderer: 2.0.6
     prop-types: 15.8.1
@@ -22870,6 +22872,20 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
+  languageName: node
+  linkType: hard
+
+"lord-icon-element@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "lord-icon-element@npm:4.1.1"
+  checksum: 60cb24a4249eea8ce58514c02b22c08a8fdd1937c57e08c909307867c0ff5588ca9b5c5adaca7b052b8d69d76308c5cf0301f191086a6dc26b1fcf37b473a4b7
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.12.2":
+  version: 5.12.2
+  resolution: "lottie-web@npm:5.12.2"
+  checksum: af5bc3bc405fd760de8b17a36158d5a8c3e8c586c711d0c63681ddf056b65bc6b54ea36b1fcad782fb02dbe12e696a40e0ba72daf41b8f10ab5b5d1113793636
   languageName: node
   linkType: hard
 

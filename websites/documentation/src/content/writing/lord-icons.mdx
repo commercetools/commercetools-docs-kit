@@ -1,0 +1,49 @@
+---
+title: Lordicons wrapper
+---
+
+
+# Lordicons
+
+[Lordicon](https://lordicon.com/) is an animated icon library. The animation can be exported in several formats including [Lottie](https://lottiefiles.com/animation/json) JSON, enabling the user to customise several aspects of the animation including speed and interaction behaviour.
+
+## LordIcon component
+
+In ui-kit package we exposes a wrapper component that enables developers to include lordicon icons with the minumum effort and supporting all the builtin functionalities of lordicons. The component supports SSR by displaying a static frame of the animation (it needs to be provided in svg format) until the client side animation loads.
+
+The component accepts the following props:
+
+- `iconName` (string): It's the name of the icon/animation to be displayed. It must either be defined in the dynamic map existing in `packages/ui-kit/src/utils/lord-icon.ts` file, or the component will try to dynamically load the .json file from `@commercetools-docs/ui-kit/dist/icons/lord-icon/` package.
+- `delay` (number): Defines the time in ms to wait before the animation starts
+- `height` (string): Defines the height of the lordicon element
+- `width` (string): Defines the width of the lordicon element
+- `stroke` (number): Defines the stroke value for the icon animation (0-100)
+- `target` (string): Assign query selector for closest element target used for listening events.
+- `trigger` (string): Define trigger for animation (`hover`, `click`, `loop`, `loop-on-hover`, `morph`, `boomerang`, `sequence`)
+
+Internally the wrapper uses [Lord Icon Element library](https://element.lordicon.com/), most of the props as just passed throught the library component. For further information you can check the documentation pages linked above.
+
+Example:
+
+```
+import { LordIcon } from '@commercetools-docs/ui-kit';
+
+
+<LordIcon
+  iconName="document"
+  trigger="hover"
+  height="40px"
+  width="40px"
+/>
+```
+
+## LordIcon and SSR
+
+As mentioned above, the provided wrapper component supports SSR. When rendered on the server the component tries to load a static version of the animation. The static SVG component mapping is defined in `packages/ui-kit/src/utils/lord-icon.ts`.
+
+## How to add new icons
+The developer must provide both the static SVG and the Lottie JSON files. They must be placed respectively in the `packages/ui-kit/src/icons/svg` and `packages/ui-kit/src/icons/lord-icon` directories. A mapping must be added both in `getStaticSvgComponent` and `getLottieJsonConfig` functions of `packages/ui-kit/src/utils/lord-icon.ts` file.
+
+
+
+
