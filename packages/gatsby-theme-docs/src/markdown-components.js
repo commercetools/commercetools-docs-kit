@@ -15,6 +15,7 @@ import {
   Glossary,
   VideoPlayer,
   PlanTag,
+  ChatButton,
 } from './components';
 import {
   IfLearningPathComplete,
@@ -88,6 +89,7 @@ const components = {
   IfUserLoggedOut,
   Quiz,
   FirstName,
+  ChatButton,
   // Custom React components that can be injected from each website
   // See ../overrides/README.md
   ...placeholderMarkdownComponents,
