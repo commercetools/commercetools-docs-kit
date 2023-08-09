@@ -57,6 +57,7 @@ PageContentTemplate.propTypes = {
       title: PropTypes.string.isRequired,
       websitePrimaryColor: PropTypes.string.isRequired,
       beta: PropTypes.bool.isRequired,
+      planTags: PropTypes.arrayOf(PropTypes.string).isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       allowWideContentLayout: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
@@ -91,6 +92,7 @@ export const query = graphql`
       title
       websitePrimaryColor
       beta
+      planTags
       excludeFromSearchIndex
       allowWideContentLayout
       body
