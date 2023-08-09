@@ -15,7 +15,7 @@ import {
 import { useInView } from 'react-intersection-observer';
 import PlaceholderPageHeaderSide from '../../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../../overrides/page-header-banner-area';
-import { Overlay, BetaFlag, SearchInput } from '../../components';
+import { Overlay, BetaTag, SearchInput, PlanTag } from '../../components';
 import PageNavigation from './page-navigation';
 
 const StackedLinesIndentedIcon = createStyledIcon(
@@ -46,8 +46,10 @@ const GridContainer = styled.div`
     grid-area: page-navigation;
   }
 `;
-const BetaWrapper = styled.div`
+const TagWrapper = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
+  flex: 0 0 auto;
+  margin-right: 5px;
 `;
 
 const stickyContainerCss = css({
@@ -91,9 +93,11 @@ const PageTitleLink = styled.a`
   text-decoration: none;
   :hover {
     color: ${designSystem.colors.light.linkNavigation};
-    svg {
-      * {
-        fill: ${designSystem.colors.light.linkNavigation};
+    div.arrowup {
+      svg {
+        * {
+          fill: ${designSystem.colors.light.linkNavigation};
+        }
       }
     }
   }
@@ -138,6 +142,10 @@ const SearchInputBox = styled.div`
         ${designSystem.dimensions.spacings.m} * 2
     );
   }
+`;
+
+const PlansWrapper = styled.div`
+  display: flex;
 `;
 
 const Blank = styled.div`
@@ -189,7 +197,7 @@ const LayoutPageNavigation = (props) => {
       <SpacingsStack scale="m">
         <PageTitleLink href="#top">
           <SpacingsInline scale="s">
-            <div>
+            <div className="arrowup">
               <ArrowUpIcon size="medium" color="neutral60" />
             </div>
             <SpacingsStack scale="xs">
@@ -201,10 +209,20 @@ const LayoutPageNavigation = (props) => {
               >
                 {props.pageTitle}
               </div>
-              {props.beta && (
-                <BetaWrapper>
-                  <BetaFlag />
-                </BetaWrapper>
+              {(props.beta || props.planTags.length > 0) && (
+                <PlansWrapper>
+                  {props.beta && (
+                    <TagWrapper>
+                      <BetaTag />
+                    </TagWrapper>
+                  )}
+                  {props.planTags &&
+                    props.planTags.map((planKey) => (
+                      <TagWrapper key={planKey}>
+                        <PlanTag key={planKey} plan={planKey} />
+                      </TagWrapper>
+                    ))}
+                </PlansWrapper>
               )}
             </SpacingsStack>
           </SpacingsInline>
@@ -279,6 +297,7 @@ LayoutPageNavigation.propTypes = {
   }),
   navLevels: PropTypes.number.isRequired,
   beta: PropTypes.bool.isRequired,
+  planTags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default LayoutPageNavigation;

@@ -54,6 +54,25 @@ We support the following key-value pairs in the frontmatter section:
 
   </Warning>
 
+- `planTags` (array of string): use to indicate what plans are associated to the page.
+
+  Example:
+
+```mdx
+---
+title: The title of this page
+planTags: [plan1, plan2]
+---
+
+This is the actual page content.
+```
+
+  <Info>
+
+  You can use `<PlanTag />` in other places of a file apart from the frontmatter section. For more information, see [Plan section](/writing/sample#plan-section).
+
+  </Info>
+
 # JSX components
 
 As mentioned earlier, it is possible to render JSX components within MDX files.

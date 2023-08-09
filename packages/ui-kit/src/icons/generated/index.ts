@@ -1,5 +1,6 @@
 export { default as HttpApiSmallSvgIcon } from './HttpApiSmall';
 export { default as HttpApiSvgIcon } from './HttpApi';
+export { default as B2BTagSvgIcon } from './B2BTag';
 export { default as CtLogoSvgIcon } from './CtLogo';
 export { default as CustomApplicationSmallSvgIcon } from './CustomApplicationSmall';
 export { default as CustomApplicationSvgIcon } from './CustomApplication';
@@ -10,6 +11,7 @@ export { default as MerchantCenterSvgIcon } from './MerchantCenter';
 export { default as OpenSourceSmallSvgIcon } from './OpenSourceSmall';
 export { default as OpenSourceSvgIcon } from './OpenSource';
 export { default as ReleaseNotesSvgIcon } from './ReleaseNotes';
+export { default as RibbonSvgIcon } from './Ribbon';
 export { default as RssSvgIcon } from './Rss';
 export { default as SearchSvgIcon } from './Search';
 export { default as SlashSvgIcon } from './Slash';

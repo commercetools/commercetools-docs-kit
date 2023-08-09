@@ -5,7 +5,12 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { BetaFlag, ContentPagination, GlobalNotification } from '../components';
+import {
+  PlanTag,
+  BetaTag,
+  ContentPagination,
+  GlobalNotification,
+} from '../components';
 import PlaceholderPageHeaderSide from '../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../overrides/page-header-banner-area';
 import LayoutApplication from './internals/layout-application';
@@ -26,6 +31,13 @@ import {
   CourseCompleteModal,
   useCourseInfoByPageSlugs,
 } from '../modules/self-learning';
+import styled from '@emotion/styled';
+
+const PlansWrapper = styled.div`
+  & > span {
+    margin-right: 10px;
+  }
+`;
 
 const LayoutContent = (props) => {
   const courseInfo = useCourseInfoByPageSlugs([props.pageContext.slug]);
@@ -38,6 +50,9 @@ const LayoutContent = (props) => {
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
   const isBeta = props.pageData.beta || siteData.siteMetadata.beta;
+  const planTags = Array.isArray(props.pageData.planTags)
+    ? props.pageData.planTags
+    : [];
 
   return (
     <LayoutApplication
@@ -83,7 +98,17 @@ const LayoutContent = (props) => {
               )}
             </LayoutGlobalNotification>
             <LayoutPageHeader>
-              {isBeta && <BetaFlag href={siteData.siteMetadata.betaLink} />}
+              {(isBeta || planTags.length > 0) && (
+                <PlansWrapper>
+                  {isBeta && (
+                    <BetaTag inverted href={siteData.siteMetadata.betaLink} />
+                  )}
+                  {planTags &&
+                    planTags.map((planKey) => (
+                      <PlanTag key={planKey} plan={planKey} inverted />
+                    ))}
+                </PlansWrapper>
+              )}
               <Markdown.H1>{props.pageData.title}</Markdown.H1>
               {props.pageData.showTimeToRead && (
                 <PageReadTime data={props.pageData} />
@@ -109,6 +134,7 @@ const LayoutContent = (props) => {
               tableOfContents={props.pageData.tableOfContents}
               navLevels={props.pageData.navLevels}
               beta={isBeta}
+              planTags={planTags}
             />
           </LayoutPage>
         </LayoutPageWrapper>
@@ -129,6 +155,7 @@ LayoutContent.propTypes = {
     title: PropTypes.string.isRequired,
     websitePrimaryColor: PropTypes.string.isRequired,
     beta: PropTypes.bool.isRequired,
+    planTags: PropTypes.arrayOf(PropTypes.string).isRequired,
     excludeFromSearchIndex: PropTypes.bool.isRequired,
     allowWideContentLayout: PropTypes.bool.isRequired,
     tableOfContents: PropTypes.object.isRequired,

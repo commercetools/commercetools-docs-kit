@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { designSystem, MediaQuery, Icons } from '@commercetools-docs/ui-kit';
-import { GlobalNavigationLink, BetaFlag } from '../../components';
+import { GlobalNavigationLink, BetaTag } from '../../components';
 
 const Center = styled.div`
   grid-area: footer-main;
@@ -176,7 +176,7 @@ const LayoutFooter = () => {
                   <GlobalNavigationLink href={item.href}>
                     {item.label}
                   </GlobalNavigationLink>
-                  {item.beta === true ? <BetaFlag /> : null}
+                  {item.beta === true ? <BetaTag /> : null}
                 </SpacingsInline>
               ))}
             </SpacingsStack>
