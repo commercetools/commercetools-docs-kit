@@ -31,7 +31,7 @@
     "@emotion/styled": "^11.10.5",
     "gatsby-source-filesystem": "5.11.0",
     "prop-types": "15.8.1",
-    "unist-util-visit": "4.1.2"
+    "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
     "@commercetools-docs/rmf-codegen": "13.27.0",
