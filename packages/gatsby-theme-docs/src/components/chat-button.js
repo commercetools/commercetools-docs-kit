@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import useAuthentication from '../modules/sso/hooks/use-authentication';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { LearningContextApi } from '../modules/self-learning';
 
 const chatInit = async (config) => {
   // TODO: call init endpoint
@@ -12,6 +13,7 @@ const ChatButton = (props) => {
   // TODO: isAuthenticated is enough?
   const { isAuthenticated } = useAuthentication();
   const [chatLoading, setChatLoading] = useState(false);
+  const { openChatModal } = useContext(LearningContextApi);
 
   const handleClick = async () => {
     if (isAuthenticated) {
@@ -22,7 +24,13 @@ const ChatButton = (props) => {
         mode: props.mode,
         messageHistory: props.messageHistory,
       });
-      console.log(modes);
+      openChatModal({
+        title: 'AI Chat assistant',
+        isDismissable: true,
+        chatSelectedMode: props.mode,
+        chatAvailableModes: modes,
+        messageHistory: props.messageHistory,
+      });
       setChatLoading(false);
     }
   };

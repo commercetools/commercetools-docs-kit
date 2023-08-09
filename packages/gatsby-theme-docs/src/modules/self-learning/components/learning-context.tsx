@@ -7,14 +7,24 @@ type ProfileModalConfig = {
   isDismissable: boolean;
 };
 
+type ChatModalConfig = {
+  title: string;
+  isDismissable: boolean;
+  chatSelectedMode: string | undefined;
+  chatAvailableModes: string[];
+  messageHistory: string[] | undefined;
+};
+
 enum LearningActionKind {
   UPDATE_PROFILE = 'UPDATE_PROFILE',
   OPEN_PROFILE_MODAL = 'OPEN_PROFILE_MODAL',
   CLOSE_PROFILE_MODAL = 'CLOSE_PROFILE_MODAL',
+  OPEN_CHAT_MODAL = 'OPEN_CHAT_MODAL',
+  CLOSE_CHAT_MODAL = 'CLOSE_CHAT_MODAL',
 }
 interface LearningAction {
   type: LearningActionKind;
-  payload?: User | ProfileModalConfig;
+  payload?: User | ProfileModalConfig | ChatModalConfig;
 }
 
 const initialState: LearningContextStateType = {
@@ -23,6 +33,7 @@ const initialState: LearningContextStateType = {
   },
   ui: {
     profileModal: undefined,
+    chatModal: undefined,
   },
 };
 
@@ -44,6 +55,7 @@ function learningReducer(
       return {
         ...state,
         ui: {
+          ...state.ui,
           profileModal: (action.payload as ProfileModalConfig) || {
             title: '',
             isDismissable: false,
@@ -55,7 +67,33 @@ function learningReducer(
       return {
         ...state,
         ui: {
+          ...state.ui,
           profileModal: undefined,
+        },
+      };
+    }
+    case LearningActionKind.OPEN_CHAT_MODAL: {
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          chatModal: (action.payload as ChatModalConfig) || {
+            title: '',
+            isDismissable: true,
+            chatSelectedMode: undefined,
+            messageHistory: undefined,
+            chatAvailableModes: [],
+          },
+        },
+      };
+    }
+
+    case LearningActionKind.CLOSE_CHAT_MODAL: {
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          chatModal: undefined,
         },
       };
     }
@@ -76,6 +114,7 @@ type LearningContextStateType = {
   };
   ui: {
     profileModal: ProfileModalConfig | undefined;
+    chatModal: ChatModalConfig | undefined;
   };
 };
 
@@ -86,6 +125,7 @@ const LearningContextState = createContext<LearningContextStateType>({
   },
   ui: {
     profileModal: undefined,
+    chatModal: undefined,
   },
 });
 
@@ -94,6 +134,8 @@ type LearningContextApiType = {
   updateProfile: (userProfile: User) => void;
   openProfileModal: (cfg: ProfileModalConfig) => void;
   closeProfileModal: () => void;
+  openChatModal: (cfg: ChatModalConfig) => void;
+  closeChatModal: () => void;
 };
 
 // Create a new API context
@@ -101,6 +143,8 @@ const LearningContextApi = createContext<LearningContextApiType>({
   updateProfile: () => null,
   openProfileModal: () => null,
   closeProfileModal: () => null,
+  openChatModal: () => null,
+  closeChatModal: () => null,
 });
 
 const LearningContextProvider = ({
@@ -129,7 +173,26 @@ const LearningContextProvider = ({
       });
     };
 
-    return { updateProfile, openProfileModal, closeProfileModal };
+    const openChatModal = (config: ChatModalConfig) => {
+      dispatch({
+        type: LearningActionKind.OPEN_CHAT_MODAL,
+        payload: config,
+      });
+    };
+
+    const closeChatModal = () => {
+      dispatch({
+        type: LearningActionKind.CLOSE_CHAT_MODAL,
+      });
+    };
+
+    return {
+      updateProfile,
+      openProfileModal,
+      closeProfileModal,
+      openChatModal,
+      closeChatModal,
+    };
   }, []);
 
   return (

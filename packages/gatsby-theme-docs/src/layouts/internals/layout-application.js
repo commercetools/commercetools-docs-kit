@@ -5,6 +5,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import { UserProfileInit } from '../../modules/self-learning';
 import ProfileModal from '../../modules/self-learning/components/profile-modal';
 import PageReady from '../../modules/self-learning/components/page-ready';
+import ChatModal from '../../modules/self-learning/components/chat-modal';
 
 /* NOTE: `overflow` shorthand is only supported is Chrome and FF */
 const Root = styled.div`
@@ -55,6 +56,7 @@ const LayoutApplication = (props) => (
     </Root>
     <UserProfileInit />
     <ProfileModal />
+    <ChatModal />
     <PageReady />
     <div id="modal-portal" />
   </>
