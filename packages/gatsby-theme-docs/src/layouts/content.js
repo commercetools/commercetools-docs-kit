@@ -50,7 +50,9 @@ const LayoutContent = (props) => {
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
   const isBeta = props.pageData.beta || siteData.siteMetadata.beta;
-  const planTags = props.pageData.planTags;
+  const planTags = Array.isArray(props.pageData.planTags)
+    ? props.pageData.planTags
+    : [];
 
   return (
     <LayoutApplication
@@ -96,7 +98,7 @@ const LayoutContent = (props) => {
               )}
             </LayoutGlobalNotification>
             <LayoutPageHeader>
-              {(isBeta || planTags) && (
+              {(isBeta || planTags.length > 0) && (
                 <PlansWrapper>
                   {isBeta && (
                     <BetaTag inverted href={siteData.siteMetadata.betaLink} />

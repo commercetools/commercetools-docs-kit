@@ -209,7 +209,7 @@ const LayoutPageNavigation = (props) => {
               >
                 {props.pageTitle}
               </div>
-              {(props.beta || props.planTags) && (
+              {(props.beta || props.planTags.length > 0) && (
                 <PlansWrapper>
                   {props.beta && (
                     <TagWrapper>
