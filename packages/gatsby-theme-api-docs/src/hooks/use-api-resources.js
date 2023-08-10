@@ -29,14 +29,7 @@ export const useApiResources = () => {
           code
           description
           body {
-            applicationjson {
-              type
-              builtinType
-              examples {
-                name
-                value
-              }
-            }
+            ...methodBodies
           }
         }
         codeExamples {

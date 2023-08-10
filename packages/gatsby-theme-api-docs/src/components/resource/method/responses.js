@@ -12,6 +12,7 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { tokens, dimensions, typography } from '../../../design-system';
 import { useTypeLocations } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
+import { convertContentType } from './method';
 import Title from './title';
 
 const ResponseCode = styled.span`
@@ -36,6 +37,7 @@ const Responses = ({ apiKey, responses, contentType }) => {
       <Title>Response:</Title>
       <SpacingsStack scale="s">
         {responses.map((response, index) => {
+          const convertedContentType = convertContentType(contentType[index]);
           return (
             <SpacingsInline key={response.code}>
               <ResponseCode
@@ -48,16 +50,16 @@ const Responses = ({ apiKey, responses, contentType }) => {
                   <SpacingsInline alignItems="center">
                     {renderTypeAsLink(
                       apiKey,
-                      response.body.applicationjson.type,
+                      response.body[contentType[index]].type,
                       typeLocations,
                       response.description,
-                      contentType[index]
+                      convertedContentType
                     )}
                     {contentType.length > 0 && (
                       <>
                         <span>as</span>
                         <Markdown.InlineCodeWithoutBox>
-                          {contentType[index]}
+                          {convertedContentType}
                         </Markdown.InlineCodeWithoutBox>
                       </>
                     )}

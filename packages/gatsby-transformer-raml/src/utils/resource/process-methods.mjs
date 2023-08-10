@@ -37,10 +37,14 @@ function processMethods({
       );
       if (returnedMethods[method].responses) {
         returnedMethods[method].responses.forEach((response) => {
-          if (response?.body?.applicationjson.examples) {
-            response.body.applicationjson.examples = examplesToArray(
-              response.body.applicationjson.examples
-            );
+          if (response?.body) {
+            Object.keys(response.body).forEach((key) => {
+              if (response.body[key].examples) {
+                response.body[key].examples = examplesToArray(
+                  response.body[key].examples
+                );
+              }
+            });
           }
         });
       }

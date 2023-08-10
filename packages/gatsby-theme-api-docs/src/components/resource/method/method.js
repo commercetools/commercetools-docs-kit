@@ -33,7 +33,7 @@ const Container = styled.div`
 
 const TitleWithAnchor = Markdown.withCopyToClipboard(Title);
 
-function convertContentType(type) {
+export function convertContentType(type) {
   switch (type) {
     case 'applicationjson':
       return 'application/json';
@@ -87,14 +87,14 @@ const Method = ({
     method.responses.forEach((response) => {
       response.body &&
         Object.keys(response.body).forEach((key) => {
-          if (convertContentType(key) !== '') {
+          if (convertContentType(key) !== '' && response.body[key]) {
             findOutContentTypes.push(key);
           }
         });
     });
 
     findOutContentTypes.forEach((type) => {
-      responseContentType.push(convertContentType(type));
+      responseContentType.push(type);
     });
   }
 
@@ -179,6 +179,7 @@ const Method = ({
                 apiKey={apiKey}
                 requestCodeExamples={method.codeExamples}
                 responses={method.responses}
+                contentType={responseContentType}
               />
             )}
           </SideBySide>

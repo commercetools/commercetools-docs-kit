@@ -9,9 +9,9 @@ const RequestResponseExamples = (props) => {
   const apiTypes = useApiTypes();
   const responsesCodeExamples = [];
   if (props.responses) {
-    props.responses.forEach((response) => {
+    props.responses.forEach((response, index) => {
       const typeDisplayName =
-        response.body && response.body.applicationjson.type;
+        response.body && response.body[props.contentType[index]].type;
       const { code } = response;
       if (typeDisplayName) {
         const apiType = apiTypes.find((type) => {
@@ -20,7 +20,8 @@ const RequestResponseExamples = (props) => {
           );
         });
 
-        const examplesNode = response.body?.applicationjson?.examples;
+        const examplesNode =
+          response.body?.[props.contentType[index]]?.examples;
 
         if (examplesNode && Array.isArray(examplesNode)) {
           examplesNode.forEach((example) => {
@@ -33,7 +34,7 @@ const RequestResponseExamples = (props) => {
               value: example.value,
             });
           });
-        } else if (apiType.examples && apiType.examples.length > 0) {
+        } else if (apiType?.examples && apiType?.examples.length > 0) {
           responsesCodeExamples.push({
             code,
             typeDisplayName,
@@ -84,17 +85,10 @@ RequestResponseExamples.propTypes = {
   responses: PropTypes.arrayOf(
     PropTypes.shape({
       code: PropTypes.number.isRequired,
-      body: PropTypes.oneOfType([
-        PropTypes.node,
-        PropTypes.shape({
-          applicationjson: PropTypes.shape({
-            builtinType: PropTypes.string.isRequired,
-            type: PropTypes.string.isRequired,
-          }),
-        }),
-      ]),
+      body: PropTypes.object,
     }).isRequired
   ),
+  contentType: PropTypes.array.isRequired,
 };
 
 export default RequestResponseExamples;
