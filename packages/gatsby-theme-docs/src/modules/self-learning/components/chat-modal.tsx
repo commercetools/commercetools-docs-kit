@@ -16,7 +16,7 @@ export type TProfileFormValues = {
 };
 
 const ChatMessagesWrapper = styled.div`
-  background-color: red;
+  border: 1px solid black;
   overflow-y: scroll;
   height: 50vh;
 `;

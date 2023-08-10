@@ -28,8 +28,6 @@ const MessageContainer = styled.div<MessageContainerProps>`
 
 const MessageText = styled.div`
   margin-left: 10px;
-  padding: 8px;
-  border-radius: 8px;
 `;
 
 const ChatMessageHistory = (props: ChatMessageHistoryProps) => {
