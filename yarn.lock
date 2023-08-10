@@ -2376,7 +2376,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.1, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.21.5, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.1, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.21.5, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.22.10
   resolution: "@babel/runtime@npm:7.22.10"
   dependencies:
@@ -3055,11 +3055,15 @@ __metadata:
     "@commercetools-uikit/link": 16.5.0
     "@commercetools-uikit/loading-spinner": 16.5.0
     "@commercetools-uikit/messages": 16.5.0
+    "@commercetools-uikit/multiline-text-field": 16.5.0
+    "@commercetools-uikit/multiline-text-input": 16.5.0
     "@commercetools-uikit/notifications": 16.5.0
     "@commercetools-uikit/primary-button": 16.5.0
     "@commercetools-uikit/radio-input": 16.5.0
     "@commercetools-uikit/secondary-button": 16.5.0
     "@commercetools-uikit/secondary-icon-button": 16.5.0
+    "@commercetools-uikit/select-field": 16.5.0
+    "@commercetools-uikit/select-input": 16.5.0
     "@commercetools-uikit/spacings": 16.5.0
     "@commercetools-uikit/spacings-inline": 16.5.0
     "@commercetools-uikit/spacings-stack": 16.5.0
@@ -3636,6 +3640,57 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@commercetools-uikit/multiline-text-field@npm:16.5.0":
+  version: 16.5.0
+  resolution: "@commercetools-uikit/multiline-text-field@npm:16.5.0"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/constraints": 16.5.0
+    "@commercetools-uikit/design-system": 16.5.0
+    "@commercetools-uikit/field-errors": 16.5.0
+    "@commercetools-uikit/field-label": 16.5.0
+    "@commercetools-uikit/multiline-text-input": 16.5.0
+    "@commercetools-uikit/spacings": 16.5.0
+    "@commercetools-uikit/utils": 16.5.0
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    prop-types: 15.8.1
+    react-intl: ^6.3.2
+  peerDependencies:
+    react: 17.x
+  checksum: 63764b4a8f15253adfd66b7a9c57d6b8fcc70f88b1683fa74f85e837e3dd2e2faa47f14f48d2ac52c235f63b02b305b19bbbb7cb8ec311bd3052b49793dc95cd
+  languageName: node
+  linkType: hard
+
+"@commercetools-uikit/multiline-text-input@npm:16.5.0":
+  version: 16.5.0
+  resolution: "@commercetools-uikit/multiline-text-input@npm:16.5.0"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/constraints": 16.5.0
+    "@commercetools-uikit/design-system": 16.5.0
+    "@commercetools-uikit/flat-button": 16.5.0
+    "@commercetools-uikit/hooks": 16.5.0
+    "@commercetools-uikit/icons": 16.5.0
+    "@commercetools-uikit/input-utils": 16.5.0
+    "@commercetools-uikit/spacings-inline": 16.5.0
+    "@commercetools-uikit/spacings-stack": 16.5.0
+    "@commercetools-uikit/tooltip": 16.5.0
+    "@commercetools-uikit/utils": 16.5.0
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    downshift: 6.1.12
+    prop-types: 15.8.1
+    react-textarea-autosize: 8.4.0
+  peerDependencies:
+    react: 17.x
+    react-intl: 6.x
+  checksum: a7afd8b01d5d43bf4e5143fad9bf20db4f733e563e08f30e999e3f77bfe41a73f7472cc24e7325b0c4f6ec1ae1b21b9efae8d283d0fec759e32b034393fac939
+  languageName: node
+  linkType: hard
+
 "@commercetools-uikit/notifications@npm:16.5.0":
   version: 16.5.0
   resolution: "@commercetools-uikit/notifications@npm:16.5.0"
@@ -3743,6 +3798,53 @@ __metadata:
   peerDependencies:
     react: 17.x
   checksum: 9ad94eee6f859e034f0d324c373f603f0cd7ed0b833eca577d57017a25471d557d0d16dc16514352fd8238539ac760d0a5ad0dd44cebb39134065bfa3ce4b3e6
+  languageName: node
+  linkType: hard
+
+"@commercetools-uikit/select-field@npm:16.5.0":
+  version: 16.5.0
+  resolution: "@commercetools-uikit/select-field@npm:16.5.0"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/constraints": 16.5.0
+    "@commercetools-uikit/design-system": 16.5.0
+    "@commercetools-uikit/field-errors": 16.5.0
+    "@commercetools-uikit/field-label": 16.5.0
+    "@commercetools-uikit/select-input": 16.5.0
+    "@commercetools-uikit/spacings": 16.5.0
+    "@commercetools-uikit/utils": 16.5.0
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    prop-types: 15.8.1
+    react-intl: ^6.3.2
+  peerDependencies:
+    react: 17.x
+  checksum: 242595f5c194b622b82dbefbe46484b69ab5bfa6430de0b3ce87bd8125dce1da9d5e0ca8eb2c8dbe87864fd84a4dab8a45ecc09287a432da47b12b871f6f735f
+  languageName: node
+  linkType: hard
+
+"@commercetools-uikit/select-input@npm:16.5.0":
+  version: 16.5.0
+  resolution: "@commercetools-uikit/select-input@npm:16.5.0"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/constraints": 16.5.0
+    "@commercetools-uikit/design-system": 16.5.0
+    "@commercetools-uikit/icons": 16.5.0
+    "@commercetools-uikit/select-utils": 16.5.0
+    "@commercetools-uikit/utils": 16.5.0
+    "@emotion/is-prop-valid": 1.2.1
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    lodash: 4.17.21
+    prop-types: 15.8.1
+    react-select: 5.7.3
+  peerDependencies:
+    react: 17.x
+    react-intl: 6.x
+  checksum: 8ae61302005b039e8d553b31d89b44df08e58d4c49b24c4df34d292060eef437591064d420a237fe41d4cfd2a724b2044d31195d9f0c1281cb04073bf01ebc9d
   languageName: node
   linkType: hard
 
@@ -12669,6 +12771,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"compute-scroll-into-view@npm:^1.0.17":
+  version: 1.0.20
+  resolution: "compute-scroll-into-view@npm:1.0.20"
+  checksum: f15fab29221953620735393ac1866541aab0d27d28078bedbba071a291ee9c8cc1a72bee302cf0bc06ed83c5e55afb74ebcbd634a63671ba33cf1fb1c51d3308
+  languageName: node
+  linkType: hard
+
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -14431,6 +14540,21 @@ __metadata:
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
   checksum: 38e902c80b0666ab59e9310a3d24ed237029a7ce34d976796349765ac96b8d769f6df19090f1f471b77a25ca391971efde8a1ea63bb83111bd8bec8e5cc9b2cd
+  languageName: node
+  linkType: hard
+
+"downshift@npm:6.1.12":
+  version: 6.1.12
+  resolution: "downshift@npm:6.1.12"
+  dependencies:
+    "@babel/runtime": ^7.14.8
+    compute-scroll-into-view: ^1.0.17
+    prop-types: ^15.7.2
+    react-is: ^17.0.2
+    tslib: ^2.3.0
+  peerDependencies:
+    react: ">=16.12.0"
+  checksum: c623dc436f332fefddc332b42ca4a267b3f5b47aaf1372a61212678d7ecbe22698fdb63f61373bcbd3773fa526eb4f210cf7f044cd5642b689dbd37ba27e9aaf
   languageName: node
   linkType: hard
 
@@ -27469,7 +27593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:17.0.2, react-is@npm:^17.0.1":
+"react-is@npm:17.0.2, react-is@npm:^17.0.1, react-is@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
@@ -31046,7 +31170,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.4.1 || ^1.9.3":
+"tslib@npm:^2.0.0, tslib@npm:^2.3.0, tslib@npm:^2.4.1 || ^1.9.3":
   version: 2.6.1
   resolution: "tslib@npm:2.6.1"
   checksum: b0d176d176487905b66ae4d5856647df50e37beea7571c53b8d10ba9222c074b81f1410fb91da13debaf2cbc970663609068bdebafa844ea9d69b146527c38fe
