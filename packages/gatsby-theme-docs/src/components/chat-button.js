@@ -25,7 +25,7 @@ const ChatButton = (props) => {
         messageHistory: props.messageHistory,
       });
       openChatModal({
-        title: 'AI Chat assistant',
+        title: 'Chat assistant',
         isDismissable: true,
         chatSelectedMode: props.mode,
         chatAvailableModes: modes,
