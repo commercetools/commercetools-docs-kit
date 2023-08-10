@@ -3047,6 +3047,7 @@ __metadata:
   dependencies:
     "@auth0/auth0-react": 2.2.0
     "@commercetools-docs/ui-kit": 22.3.1
+    "@commercetools-uikit/avatar": 16.5.0
     "@commercetools-uikit/card": 16.5.0
     "@commercetools-uikit/checkbox-input": 16.5.0
     "@commercetools-uikit/design-system": 16.5.0
@@ -3344,6 +3345,23 @@ __metadata:
   peerDependencies:
     react: 17.x
   checksum: 9d15cfa90d0d52df32129d05028ac7fd63f575b9d0944443a3b260baa150de4488d118dd58b7c7b1eed0d086697e9567486c1a114e7b7f9f4d49fd73cdc2f104
+  languageName: node
+  linkType: hard
+
+"@commercetools-uikit/avatar@npm:16.5.0":
+  version: 16.5.0
+  resolution: "@commercetools-uikit/avatar@npm:16.5.0"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/design-system": 16.5.0
+    "@commercetools-uikit/utils": 16.5.0
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    prop-types: 15.8.1
+  peerDependencies:
+    react: 17.x
+  checksum: 64a5334ca47bd63a64d08737ebf325c91b025dbee2f4eb24d7a821c5f501f99cd6c111548813e7d2b88497fba25758f6c7131929aeb5d0829ae86712566a7f16
   languageName: node
   linkType: hard
 

@@ -7,11 +7,45 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { LearningContextApi, LearningContextState } from './learning-context';
 import { useFormik } from 'formik';
 import FirstName from './first-name';
+import ChatMessageHistory from './chat-message-history';
+import styled from '@emotion/styled';
 
 export type TProfileFormValues = {
   chatInput: string;
   chatMode: string;
 };
+
+const ChatMessagesWrapper = styled.div`
+  background-color: red;
+  overflow-y: scroll;
+  height: 50vh;
+`;
+
+const randomMessages = [
+  {
+    text: "Hey, how's it going? Hey, how's it going? Hey, how's it going? Hey, how's it going? Hey, how's it going? ",
+    from: 'Alice',
+  },
+  { text: 'I just finished that project!', from: 'Bob' },
+  { text: 'Did you watch the game last night?', from: 'Charlie' },
+  { text: 'Remember to bring your umbrella today.', from: 'David' },
+  { text: 'Can we meet at the café tomorrow?', from: 'Eve' },
+  { text: 'I love the new design!', from: 'Fiona' },
+  { text: "Don't forget to buy some groceries.", from: 'George' },
+  { text: 'Just landed safely. Vacation time!', from: 'Hannah' },
+  { text: 'Coding is so much fun!', from: 'Isaac' },
+  { text: "Let's catch up over lunch.", from: 'Jack' },
+  { text: 'The concert was amazing!', from: 'Karen' },
+  { text: 'Check out this cool article I found.', from: 'Liam' },
+  { text: 'Can you believe the traffic today?', from: 'Mia' },
+  { text: 'Working late again, see you tomorrow.', from: 'Nora' },
+  { text: 'Just adopted a cute puppy!', from: 'Oliver' },
+  { text: 'Have a great day at work!', from: 'Paul' },
+  { text: 'Movie night at my place this Friday.', from: 'Quinn' },
+  { text: "Let's plan a hiking trip soon.", from: 'Rachel' },
+  { text: 'The party was a blast, thanks!', from: 'Sam' },
+  { text: 'New recipe: Chocolate chip cookies!', from: 'Tina' },
+];
 
 const submitChatMessage = (message: string, chatMode: string) => {
   console.log('submitting message', message);
@@ -93,6 +127,10 @@ const ChatModal = () => {
           onChange={handleChatModeChange}
         />
         <p>I am Clippy, your assistat, how can I help you today?</p>
+        <ChatMessagesWrapper>
+          <ChatMessageHistory messages={randomMessages} />
+        </ChatMessagesWrapper>
+
         <MultilineTextField
           key="chatInput"
           name="chatInput"
