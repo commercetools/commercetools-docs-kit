@@ -480,9 +480,9 @@ uses:
           200:
             description: We recommend to use standard HTTP response codes and `application/json` encoded content. The response will look like the response you have declared in your action. As an example we will fetch the cart.
             body:
-            application/json:
-              type: object
-              example: !include examples/action-success.json
+              application/json:
+                type: object
+                example: !include examples/action-success.json
 
     /json-serializable-primitive-type:
       put:
@@ -495,9 +495,9 @@ uses:
           200:
             description: We recommend to use standard HTTP response codes and `application/json` encoded content. The response will look like the response you have declared in your action. As an example we will fetch the cart.
             body:
-            application/json:
-              type: any
-              example: !include examples/json-serializable-primitive-raw.json
+              application/json:
+                type: any
+                example: !include examples/json-serializable-primitive-raw.json
 
 
 #   /resourceWithHeaders:
