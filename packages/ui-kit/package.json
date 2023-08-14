@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/ui-kit",
   "description": "UI component library for building commercetools documentation websites",
-  "version": "22.3.1",
+  "version": "22.4.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

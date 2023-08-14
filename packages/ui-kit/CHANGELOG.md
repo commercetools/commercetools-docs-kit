@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 22.4.0
+
+### Minor Changes
+
+- [#1780](https://github.com/commercetools/commercetools-docs-kit/pull/1780) [`8a2f7ee9`](https://github.com/commercetools/commercetools-docs-kit/commit/8a2f7ee902bcdb325599f01ed3267440e2717b4b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Created a wrapper component for using lord-icon icons
+
+- [#1777](https://github.com/commercetools/commercetools-docs-kit/pull/1777) [`4db255da`](https://github.com/commercetools/commercetools-docs-kit/commit/4db255da51b64f107ed64cf9337f29cd05e47ebf) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add B2B component for tagging b2b contents.
+
 ## 22.3.1
 
 ### Patch Changes
