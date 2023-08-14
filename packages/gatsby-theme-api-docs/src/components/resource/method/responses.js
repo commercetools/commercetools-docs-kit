@@ -55,7 +55,7 @@ const Responses = ({ apiKey, responses, contentType }) => {
                       response.description,
                       convertedContentType
                     )}
-                    {contentType.length > 0 && (
+                    {contentType.length > 0 && !response.description && (
                       <>
                         <span>as</span>
                         <Markdown.InlineCodeWithoutBox>
