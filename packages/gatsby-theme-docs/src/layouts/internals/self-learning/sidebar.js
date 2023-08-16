@@ -12,10 +12,15 @@ import {
   createStyledIcon,
   Icons,
 } from '@commercetools-docs/ui-kit';
-import SiteIcon from '../../overrides/site-icon';
-import useScrollPosition from '../../hooks/use-scroll-position';
-import { BetaTag } from '../../components';
-import LayoutHeaderLogo from './layout-header-logo';
+import SiteIcon from '../../../overrides/site-icon';
+import useScrollPosition from '../../../hooks/use-scroll-position';
+import { BetaTag } from '../../../components';
+import LayoutHeaderLogo from '../layout-header-logo';
+import {
+  SidebarCourseStatus,
+  SidebarTopicStatus,
+  useCourseInfoByPageSlugs,
+} from '../../../modules/self-learning';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -78,6 +83,16 @@ const LinkTitle = styled.div`
   overflow-x: hidden;
   width: 100%;
 `;
+const LinkChapterTitle = styled.div`
+  font-size: ${designSystem.typography.fontSizes.body};
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  width: 100%;
+  color: ${designSystem.colors.light.textPrimary};
+  :hover {
+    color: ${designSystem.colors.light.linkNavigation};
+  }
+`;
 const LinkSubtitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
   text-overflow: ellipsis;
@@ -92,6 +107,25 @@ const LinkItem = styled.div`
   vertical-align: middle;
 `;
 
+// TODO: cleanup. After docs websites migrate to clickable chapter, this component
+// can be simplified/removed or refactored since is currently supporting both clickable
+// and non-clickable configs
+const LinkItemWithIcon = styled.div`
+  ${(props) =>
+    !props.clickable &&
+    `
+    padding: 0 0 0 ${designSystem.dimensions.spacings.m};
+  `}
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  svg {
+    margin-right: 2px;
+  }
+  div {
+    line-height: ${designSystem.typography.lineHeights.cardSmallTitle};
+  }
+`;
 const linkStyles = css`
   border-left: ${designSystem.dimensions.spacings.xs} solid
     ${designSystem.colors.light.surfaceSecondary1};
@@ -120,6 +154,24 @@ const activeLinkStyles = css`
     ${designSystem.colors.light.linkNavigation} !important;
   color: ${designSystem.colors.light.linkNavigation} !important;
 `;
+
+const StatusIconWrapper = styled.span`
+  display: flex;
+  vertical-align: middle;
+  padding-left: 10px; // change this setting to remove the indentation
+  svg {
+    margin-right: 5px;
+  }
+`;
+
+const LinkSubtitleWithIcon = (props) => (
+  <LinkSubtitle>
+    <StatusIconWrapper>{props.children}</StatusIconWrapper>
+  </LinkSubtitle>
+);
+LinkSubtitleWithIcon.propTypes = {
+  children: PropTypes.any,
+};
 
 const SidebarLink = (props) => {
   const { locationPath, customStyles, customActiveStyles, ...forwardProps } =
@@ -234,25 +286,77 @@ SidebarLinkWrapper.propTypes = {
 };
 
 const SidebarChapter = (props) => {
+  const courseInfo = useCourseInfoByPageSlugs(
+    props.chapter.pages.map((page) => page.path)
+  );
+  const courseId = Object.values(courseInfo)[0]?.courseId;
   const elemId = `sidebar-chapter-${props.index}`;
   const getChapterDOMElement = React.useCallback(
     () => document.getElementById(elemId),
     [elemId]
   );
 
+  // TODO: cleanup. After docs websites migrate to clickable chapter, this component
+  // can be simplified/removed or refactored since is currently supporting both clickable
+  // and non-clickable configs
   return (
     <div role="sidebar-chapter" id={elemId}>
-      <SpacingsStack data-testid={`sidebar-chapter`} scale="s">
-        <LinkItem>
-          <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-        </LinkItem>
+      <SpacingsStack data-testid={`sidebar-chapter-${courseId}`} scale="s">
+        {props.chapter.path ? (
+          <SidebarLinkWrapper
+            data-testid={`sidebar-chapter-title-item-${courseId}`}
+            key={`${props.index}-${props.chapter.path}`}
+            to={props.chapter.path}
+            onClick={props.onLinkClick}
+            location={props.location}
+            nextScrollPosition={props.nextScrollPosition}
+            getChapterDOMElement={getChapterDOMElement}
+            customActiveStyles={css`
+              div:first-child {
+                color: ${designSystem.colors.light.linkNavigation} !important;
+              }
+              div:first-child > div {
+                color: ${designSystem.colors.light.linkNavigation} !important;
+              }
+            `}
+          >
+            {courseId ? (
+              <LinkItemWithIcon clickable={true}>
+                <SidebarCourseStatus courseId={courseId} />
+                <LinkChapterTitle>
+                  {props.chapter.chapterTitle}
+                </LinkChapterTitle>
+              </LinkItemWithIcon>
+            ) : (
+              <LinkChapterTitle>{props.chapter.chapterTitle}</LinkChapterTitle>
+            )}
+          </SidebarLinkWrapper>
+        ) : courseId ? (
+          <LinkItemWithIcon>
+            <SidebarCourseStatus courseId={courseId} />
+            <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          </LinkItemWithIcon>
+        ) : (
+          <LinkItem>
+            <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+          </LinkItem>
+        )}
 
         <SpacingsStack scale="s">
           {props.chapter.pages &&
             props.chapter.pages.map((pageLink, pageIndex) => {
+              const currTopicName = courseInfo[pageLink.path]?.topicName;
+              console.log('currTopicName', currTopicName);
+              const TopicIcon =
+                courseId && currTopicName ? (
+                  <SidebarTopicStatus
+                    courseId={courseId}
+                    pageTitle={currTopicName}
+                  />
+                ) : null;
               return (
                 <SidebarLinkWrapper
-                  data-testid={`sidebar-chapter-item-${pageIndex}`}
+                  data-testid={`sidebar-chapter-item-${courseId}`}
                   key={`${props.index}-${pageIndex}-${pageLink.path}`}
                   to={pageLink.path}
                   onClick={props.onLinkClick}
@@ -260,7 +364,14 @@ const SidebarChapter = (props) => {
                   nextScrollPosition={props.nextScrollPosition}
                   getChapterDOMElement={getChapterDOMElement}
                 >
-                  <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+                  {TopicIcon ? (
+                    <LinkSubtitleWithIcon>
+                      {TopicIcon}
+                      {pageLink.title}
+                    </LinkSubtitleWithIcon>
+                  ) : (
+                    <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+                  )}
                 </SidebarLinkWrapper>
               );
             })}
@@ -273,6 +384,7 @@ SidebarChapter.propTypes = {
   index: PropTypes.number.isRequired,
   chapter: PropTypes.shape({
     chapterTitle: PropTypes.string.isRequired,
+    path: PropTypes.string,
     beta: PropTypes.bool,
     pages: PropTypes.arrayOf(
       PropTypes.shape({

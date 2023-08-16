@@ -13,6 +13,7 @@ const config = {
     description: 'Self-learning website for smoke tests',
     betaLink: '/beta',
     excludeFromSearchIndex: true,
+    isSelfLearning: true,
   },
   plugins: [
     ...configureThemeWithAddOns({

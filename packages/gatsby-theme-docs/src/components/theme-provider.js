@@ -18,6 +18,7 @@ const ThemeProvider = (props) => {
           author
           productionHostname
           betaLink
+          isSelfLearning
           excludeFromSearchIndex
           globalNotification {
             active
