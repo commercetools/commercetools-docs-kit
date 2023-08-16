@@ -2,11 +2,16 @@ import { useFormik } from 'formik';
 import TextField from '@commercetools-uikit/text-field';
 import TextInput from '@commercetools-uikit/text-input';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
 import { useContext, useEffect } from 'react';
 import { LearningContextApi, LearningContextState } from './learning-context';
 import { useUpdateUser } from '../hooks/use-update-user';
+import { VerifiedIcon, CheckInactiveIcon } from '@commercetools-uikit/icons';
+import SendVerificationEmailButton from './verify-email-button';
+import Stamp from '@commercetools-uikit/stamp';
+
 import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
@@ -16,6 +21,8 @@ export type TProfileFormValues = {
   firstName: string;
   lastName: string;
   company: string;
+  email: string;
+  global_account_name: string;
 };
 
 const ProfileModal = () => {
@@ -33,12 +40,13 @@ const ProfileModal = () => {
     EFeatureFlag.CompleteProfileModal,
     selfLearningFeatures
   );
-
   const formik = useFormik<TProfileFormValues>({
     initialValues: {
       firstName: '',
       lastName: '',
       company: '',
+      email: '',
+      global_account_name: '',
     },
     validate: (formikValues: TProfileFormValues) => {
       const missingFields: Record<string, { missing: boolean }> = {};
@@ -83,6 +91,11 @@ const ProfileModal = () => {
       formik.setFieldValue('firstName', profile?.given_name || '');
       formik.setFieldValue('lastName', profile?.family_name || '');
       formik.setFieldValue('company', profile?.user_metadata?.company || '');
+      formik.setFieldValue('email', profile?.email || '');
+      formik.setFieldValue(
+        'global_account_name',
+        profile?.global_account_name || ''
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, isModalOpen]);
@@ -104,7 +117,7 @@ const ProfileModal = () => {
   return (
     <FormDialog
       testid="profile-modal"
-      size="m"
+      size="l"
       title={profileModal?.title || 'Update your profile.'}
       labelPrimary="Save"
       isOpen={isModalOpen}
@@ -161,6 +174,74 @@ const ProfileModal = () => {
           renderError={renderError}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+        />
+        <TextField
+          key="email"
+          name="email"
+          title="Email"
+          description="Please contact us at training@commercetools.com to change your email"
+          value={formik.values.email}
+          touched={formik.touched.email}
+          errors={
+            TextField.toFieldErrors<TProfileFormValues>(formik.errors).email
+          }
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          renderError={renderError}
+          isReadOnly
+          badge={
+            profile?.email_verified ? (
+              <Stamp
+                tone="primary"
+                label="Verified"
+                icon={<VerifiedIcon size="big" color="info" />}
+              />
+            ) : (
+              <SpacingsInline>
+                <SendVerificationEmailButton />
+                <Stamp
+                  tone="secondary"
+                  label="Not Verified"
+                  icon={<CheckInactiveIcon size="big" color="info" />}
+                />
+              </SpacingsInline>
+            )
+          }
+        />
+        <TextField
+          key="global_account_name"
+          name="global_account_name"
+          title="Verified Company Association"
+          description={
+            profile?.global_account_name
+              ? 'Please contact us at training@commercetools.com to verify a different company association.'
+              : 'Your company association is not automatically verified. Please contact us at training@commercetools.com to verify it.'
+          }
+          value={formik.values.global_account_name}
+          touched={formik.touched.global_account_name}
+          errors={
+            TextField.toFieldErrors<TProfileFormValues>(formik.errors)
+              .global_account_name
+          }
+          renderError={renderError}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          isReadOnly
+          badge={
+            profile?.global_account_name ? (
+              <Stamp
+                tone="primary"
+                label="Verified"
+                icon={<VerifiedIcon size="big" color="info" />}
+              />
+            ) : (
+              <Stamp
+                tone="secondary"
+                label="Not Verified"
+                icon={<CheckInactiveIcon size="big" color="info" />}
+              />
+            )
+          }
         />
         {error && (
           <ErrorMessage>

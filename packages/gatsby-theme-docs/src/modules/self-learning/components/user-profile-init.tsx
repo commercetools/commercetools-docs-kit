@@ -1,7 +1,10 @@
 import { User } from '@auth0/auth0-react';
 import { useContext, useEffect } from 'react';
 import { LearningContextApi, LearningContextState } from './learning-context';
-import { AUTH0_CLAIM_COMPANY } from '../../sso';
+import {
+  AUTH0_CLAIM_COMPANY,
+  AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME,
+} from '../../sso';
 import { isProfileComplete } from './profile.utils';
 import useAuthentication from '../../sso/hooks/use-authentication';
 import useLocalStorageSession from '../../sso/hooks/use-local-storage-session';
@@ -15,6 +18,7 @@ export type TProfileFormValues = {
 const contextProfileAdapter = (auth0User: User) => {
   const {
     [AUTH0_CLAIM_COMPANY]: company,
+    [AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME]: global_account_name,
     user_metadata,
     sub,
     ...rest
@@ -27,6 +31,7 @@ const contextProfileAdapter = (auth0User: User) => {
       ...user_metadata,
       company,
     },
+    global_account_name,
   };
 };
 
