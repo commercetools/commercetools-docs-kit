@@ -38,6 +38,19 @@ const Responses = ({ apiKey, responses, contentType }) => {
       <SpacingsStack scale="s">
         {responses.map((response, index) => {
           const convertedContentType = convertContentType(contentType[index]);
+          const responseDetails =
+            response.body &&
+            renderTypeAsLink(
+              apiKey,
+              response.body[contentType[index]].type,
+              typeLocations,
+              convertedContentType
+            );
+          // If renderTypeAsLink returns the type again and a description is defined, we display the description.
+          // In this case, the content type should not be displayed at the moment.
+          const isDescription =
+            responseDetails === response.body?.[contentType[index]].type &&
+            response.description;
           return (
             <SpacingsInline key={response.code}>
               <ResponseCode
@@ -46,16 +59,12 @@ const Responses = ({ apiKey, responses, contentType }) => {
                 {response.code}
               </ResponseCode>
               <LinkContainer>
-                {response.body ? (
+                {responseDetails ? (
                   <SpacingsInline alignItems="center">
-                    {renderTypeAsLink(
-                      apiKey,
-                      response.body[contentType[index]]?.type,
-                      typeLocations,
-                      response.description,
-                      convertedContentType
-                    )}
-                    {contentType.length > 0 && !response.description && (
+                    {isDescription
+                      ? markdownFragmentToReact(response.description)
+                      : responseDetails}
+                    {contentType.length > 0 && !isDescription && (
                       <>
                         <span>as</span>
                         <Markdown.InlineCodeWithoutBox>
