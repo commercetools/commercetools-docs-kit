@@ -10,8 +10,7 @@ const RequestResponseExamples = (props) => {
   const responsesCodeExamples = [];
   if (props.responses) {
     props.responses.forEach((response, index) => {
-      const typeDisplayName =
-        response.body && response.body[props.contentType[index]].type;
+      const typeDisplayName = response?.body?.[props.contentType[index]]?.type;
       const { code } = response;
       if (typeDisplayName) {
         const apiType = apiTypes.find((type) => {
@@ -34,7 +33,7 @@ const RequestResponseExamples = (props) => {
               value: example.value,
             });
           });
-        } else if (apiType?.examples && apiType?.examples.length > 0) {
+        } else if (apiType?.examples?.length > 0) {
           responsesCodeExamples.push({
             code,
             typeDisplayName,

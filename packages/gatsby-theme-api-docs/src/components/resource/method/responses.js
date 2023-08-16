@@ -50,7 +50,7 @@ const Responses = ({ apiKey, responses, contentType }) => {
                   <SpacingsInline alignItems="center">
                     {renderTypeAsLink(
                       apiKey,
-                      response.body[contentType[index]].type,
+                      response.body[contentType[index]]?.type,
                       typeLocations,
                       response.description,
                       convertedContentType
