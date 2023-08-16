@@ -48,7 +48,7 @@ const Responses = ({ apiKey, responses, contentType }) => {
             );
           // If renderTypeAsLink returns the type again and a description is defined, we display the description.
           // In this case, the content type should not be displayed at the moment.
-          const isDescription =
+          const showDescription =
             responseDetails === response.body?.[contentType[index]].type &&
             response.description;
           return (
@@ -61,10 +61,10 @@ const Responses = ({ apiKey, responses, contentType }) => {
               <LinkContainer>
                 {responseDetails ? (
                   <SpacingsInline alignItems="center">
-                    {isDescription
+                    {showDescription
                       ? markdownFragmentToReact(response.description)
                       : responseDetails}
-                    {contentType.length > 0 && !isDescription && (
+                    {contentType.length > 0 && !showDescription && (
                       <>
                         <span>as</span>
                         <Markdown.InlineCodeWithoutBox>
