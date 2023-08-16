@@ -51,6 +51,7 @@ The Docs-Kit theme also receives its plugin configuration through this standard 
 - `beta` (_optional_, boolean): indicates that the website should be marked as **beta**. Each page gets a beta flag, no matter if the page frontmatter has it defined or not. Furthermore, in the main navigation, the beta flag is shown near the website title and not next to each link. **Default: `false`**
 - `betaLink` (_optional_, string): Configures the link for _beta button_.
 - `excludeFromSearchIndex` (_optional_, boolean): indicates that the website should not be indexed by crawlers. This option sets the `robots="noindex"` meta attribute on all pages of the site. If true, the search box in the top navigation is not displayed. **Default: `true`** Note that the on-site Algolia Docsearch is not respecting the instruction, it is purely based on click-trough reachability from the home page.
+- `isSelfLearning` (_optional_, boolean): Identifies a self-learning website.
 - `globalNotification` (_optional_, object): Activates a global banner at the top of every page within the website. It contains three configuration options:
 
   - `active` (Boolean): flag to activate the global notification banner.

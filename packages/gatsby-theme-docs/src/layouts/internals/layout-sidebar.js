@@ -5,7 +5,9 @@ import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designSystem, MediaQuery } from '@commercetools-docs/ui-kit';
 import { BurgerIcon, Overlay, TopMenu } from '../../components';
+import SelfLearningSidebar from './self-learning/sidebar';
 import Sidebar from './sidebar';
+import { useSiteData } from '../../hooks/use-site-data';
 
 const slideInAnimation = keyframes`
   from { margin-left: -100%; }
@@ -72,6 +74,10 @@ const LayoutSidebar = (props) => {
     setMenuButtonNode(document.getElementById('sidebar-menu-toggle'));
     setModalPortalNode(document.getElementById('modal-portal'));
   }, []);
+  const siteData = useSiteData();
+  const SidebarComponent = siteData.siteMetadata.isSelfLearning
+    ? SelfLearningSidebar
+    : Sidebar;
 
   const menuButton = (
     <MenuButton
@@ -96,7 +102,7 @@ const LayoutSidebar = (props) => {
                   event.stopPropagation();
                 }}
               >
-                <Sidebar
+                <SidebarComponent
                   onLinkClick={props.closeSidebarMenu}
                   siteTitle={props.siteTitle}
                   isGlobalBeta={props.isGlobalBeta}
@@ -118,7 +124,7 @@ const LayoutSidebar = (props) => {
         aria-label="Main Navigation"
         isSidebarMenuOpen={false}
       >
-        <Sidebar
+        <SidebarComponent
           siteTitle={props.siteTitle}
           isGlobalBeta={props.isGlobalBeta}
           hasReleaseNotes={props.hasReleaseNotes}
