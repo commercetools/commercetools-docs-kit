@@ -4,9 +4,14 @@ import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
 import { css, ClassNames } from '@emotion/react';
 import styled from '@emotion/styled';
-import { BackIcon } from '@commercetools-uikit/icons';
+import {
+  BackIcon,
+  PlusBoldIcon,
+  MinimizeIcon,
+} from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+
 import {
   designSystem,
   createStyledIcon,
@@ -93,12 +98,6 @@ const LinkItem = styled.div`
 `;
 
 const linkStyles = css`
-  border-left: ${designSystem.dimensions.spacings.xs} solid
-    ${designSystem.colors.light.surfaceSecondary1};
-  padding-left: calc(
-    ${designSystem.dimensions.spacings.m} -
-      ${designSystem.dimensions.spacings.xs}
-  );
   text-decoration: none;
   color: ${designSystem.colors.light.textSecondary};
   display: flex;
@@ -233,54 +232,95 @@ SidebarLinkWrapper.propTypes = {
   getChapterDOMElement: PropTypes.func.isRequired,
 };
 
-const SidebarChapter = (props) => {
-  const elemId = `sidebar-chapter-${props.index}`;
+/** new implementation start */
+
+const ChapterTitleWrapper = styled.div`
+  display: flex;
+  font-weight: ${designSystem.typography.fontWeights['light-bold']};
+  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+`;
+
+const Title = styled.span`
+  margin: 0;
+`;
+
+const ChapterTitle = (props) => (
+  <ChapterTitleWrapper>
+    <Title>{props.text}</Title>
+
+    {props.isExpanded ? <MinimizeIcon /> : <PlusBoldIcon />}
+  </ChapterTitleWrapper>
+);
+ChapterTitle.propTypes = {
+  text: PropTypes.string.isRequired,
+  isExpanded: PropTypes.bool,
+};
+
+const ChapterLevelWrapper = styled.div`
+  padding-left: ${(props) => (props.level === 0 ? '16px' : 0)};
+`;
+
+const ChapterPagesWrapper = styled.div`
+  padding-left: 8px;
+`;
+
+const Chapter = (props) => {
+  const elemId = `sidebar-chapter-${props.level}-${props.index}`;
+  const chapterTitle =
+    props.level === 0 ? props.chapter.chapterTitle : props.chapter.title;
+
   const getChapterDOMElement = React.useCallback(
     () => document.getElementById(elemId),
     [elemId]
   );
-
   return (
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack data-testid={`sidebar-chapter`} scale="s">
-        <LinkItem>
-          <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-        </LinkItem>
-
-        <SpacingsStack scale="s">
-          {props.chapter.pages &&
-            props.chapter.pages.map((pageLink, pageIndex) => {
-              return (
-                <SidebarLinkWrapper
-                  data-testid={`sidebar-chapter-item-${pageIndex}`}
-                  key={`${props.index}-${pageIndex}-${pageLink.path}`}
-                  to={pageLink.path}
-                  onClick={props.onLinkClick}
-                  location={props.location}
-                  nextScrollPosition={props.nextScrollPosition}
-                  getChapterDOMElement={getChapterDOMElement}
-                >
-                  <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-                </SidebarLinkWrapper>
-              );
+        <ChapterLevelWrapper level={props.level}>
+          <ChapterTitle text={chapterTitle} isExpanded={false} />
+          <ChapterPagesWrapper level={props.level}>
+            {props.chapter.pages.map((page, pageIndex) => {
+              if (page.pages) {
+                return (
+                  <Chapter
+                    index={pageIndex}
+                    level={1}
+                    chapter={page}
+                    location={props.location}
+                    key={pageIndex}
+                    onLinkClick={props.onLinkClick}
+                    nextScrollPosition={props.nextScrollPosition}
+                  />
+                );
+              } else {
+                return (
+                  <SidebarLinkWrapper
+                    data-testid={`sidebar-chapter-item-${pageIndex}`}
+                    key={`${props.index}-${pageIndex}-${page.path}`}
+                    to={page.path}
+                    onClick={props.onLinkClick}
+                    location={props.location}
+                    nextScrollPosition={props.nextScrollPosition}
+                    getChapterDOMElement={getChapterDOMElement}
+                  >
+                    <LinkSubtitle>{page.title}</LinkSubtitle>
+                  </SidebarLinkWrapper>
+                );
+              }
             })}
-        </SpacingsStack>
+          </ChapterPagesWrapper>
+        </ChapterLevelWrapper>
       </SpacingsStack>
     </div>
   );
 };
-SidebarChapter.propTypes = {
+Chapter.propTypes = {
   index: PropTypes.number.isRequired,
-  chapter: PropTypes.shape({
-    chapterTitle: PropTypes.string.isRequired,
-    beta: PropTypes.bool,
-    pages: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        path: PropTypes.string.isRequired,
-      })
-    ),
-  }).isRequired,
+  level: PropTypes.number.isRequired,
+  chapter: PropTypes.object.isRequired,
   onLinkClick: PropTypes.func,
   nextScrollPosition: PropTypes.number.isRequired,
   // from @react/router
@@ -291,6 +331,66 @@ SidebarChapter.propTypes = {
     pathname: PropTypes.string.isRequired,
   }).isRequired,
 };
+/** new implementation end */
+
+// const SidebarChapter = (props) => {
+//   const elemId = `sidebar-chapter-${props.index}`;
+//   const getChapterDOMElement = React.useCallback(
+//     () => document.getElementById(elemId),
+//     [elemId]
+//   );
+
+//   return (
+//     <div role="sidebar-chapter" id={elemId}>
+//       <SpacingsStack data-testid={`sidebar-chapter`} scale="s">
+//         <LinkItem>
+//           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
+//         </LinkItem>
+
+//         <SpacingsStack scale="s">
+//           {props.chapter.pages &&
+//             props.chapter.pages.map((pageLink, pageIndex) => {
+//               return (
+//                 <SidebarLinkWrapper
+//                   data-testid={`sidebar-chapter-item-${pageIndex}`}
+//                   key={`${props.index}-${pageIndex}-${pageLink.path}`}
+//                   to={pageLink.path}
+//                   onClick={props.onLinkClick}
+//                   location={props.location}
+//                   nextScrollPosition={props.nextScrollPosition}
+//                   getChapterDOMElement={getChapterDOMElement}
+//                 >
+//                   <LinkSubtitle>{pageLink.title}</LinkSubtitle>
+//                 </SidebarLinkWrapper>
+//               );
+//             })}
+//         </SpacingsStack>
+//       </SpacingsStack>
+//     </div>
+//   );
+// };
+// SidebarChapter.propTypes = {
+//   index: PropTypes.number.isRequired,
+//   chapter: PropTypes.shape({
+//     chapterTitle: PropTypes.string.isRequired,
+//     beta: PropTypes.bool,
+//     pages: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         title: PropTypes.string.isRequired,
+//         path: PropTypes.string.isRequired,
+//       })
+//     ),
+//   }).isRequired,
+//   onLinkClick: PropTypes.func,
+//   nextScrollPosition: PropTypes.number.isRequired,
+//   // from @react/router
+//   location: PropTypes.shape({
+//     state: PropTypes.shape({
+//       sidebarScrollPosition: PropTypes.number,
+//     }),
+//     pathname: PropTypes.string.isRequired,
+//   }).isRequired,
+// };
 
 const SidebarNavigationLinks = (props) => {
   const data = useStaticQuery(graphql`
@@ -316,14 +416,15 @@ const SidebarNavigationLinks = (props) => {
   return (
     <>
       {data.allNavigationYaml.nodes.map((node, index) => (
-        <SidebarChapter
-          key={index}
+        <Chapter
           index={index}
+          level={0}
           chapter={node}
-          isGlobalBeta={props.isGlobalBeta}
-          onLinkClick={props.onLinkClick}
-          nextScrollPosition={props.nextScrollPosition}
           location={props.location}
+          onLinkClick={props.onLinkClick}
+          isGlobalBeta={props.isGlobalBeta}
+          nextScrollPosition={props.nextScrollPosition}
+          key={index}
         />
       ))}
     </>
