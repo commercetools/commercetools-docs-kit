@@ -303,6 +303,11 @@ const SidebarNavigationLinks = (props) => {
             title
             path
             beta
+            pages {
+              title
+              path
+              beta
+            }
           }
         }
       }

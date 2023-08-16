@@ -7,6 +7,11 @@
       path: /views/empty
     - title: Beta with long page title to see how the index nav behaves
       path: /views/beta
+      pages:
+        - title: third Level
+          path: /organizations-and-projects/project-structure
+        - title: third page 2
+          path: /organizations-and-projects/project-structure
     - title: PlanTag page
       path: /views/plan-tag
     - title: Nested headings

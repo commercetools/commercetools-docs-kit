@@ -171,6 +171,13 @@ export const createSchemaCustomization = ({ actions, schema }) => {
       title: String!
       path: String!
       beta: Boolean
+      pages: [NavigationPageLv2!]
+    }
+
+    type NavigationPageLv2 {
+      title: String!
+      path: String!
+      beta: Boolean
     }
 
     type TopMenuYaml implements Node @dontInfer {
