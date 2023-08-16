@@ -29,19 +29,43 @@ export const useApiResources = () => {
           code
           description
           body {
-            applicationjson {
-              type
-              builtinType
-              examples {
-                name
-                value
-              }
-            }
+            ...methodBodiesForResponses
           }
         }
         codeExamples {
           language
           value
+        }
+      }
+
+      fragment methodBodiesForResponses on RamlResourceMethodBody {
+        applicationjson {
+          type
+          builtinType
+          examples {
+            name
+            value
+          }
+        }
+        applicationxwwwformurlencoded {
+          type
+          builtinType
+          examples {
+            name
+            value
+          }
+        }
+        imagejpeg {
+          type
+          builtinType
+        }
+        imagepng {
+          type
+          builtinType
+        }
+        imagegif {
+          type
+          builtinType
         }
       }
 

@@ -33,7 +33,7 @@ const Container = styled.div`
 
 const TitleWithAnchor = Markdown.withCopyToClipboard(Title);
 
-function convertContentType(type) {
+export function convertContentType(type) {
   switch (type) {
     case 'applicationjson':
       return 'application/json';
@@ -67,7 +67,9 @@ const Method = ({
     allUriParameters = allUriParameters.concat(method.uriParameters);
   }
 
-  const contentType = [];
+  const requestContentType = [];
+  const responseContentType = [];
+
   if (method.body) {
     const findOutContentTypes = Object.keys(method.body).reduce(
       (list, value) => {
@@ -76,13 +78,29 @@ const Method = ({
       []
     );
     findOutContentTypes.forEach((type) => {
-      contentType.push(convertContentType(type));
+      requestContentType.push(convertContentType(type));
+    });
+  }
+
+  if (method.responses) {
+    const findOutContentTypes = [];
+    method.responses.forEach((response) => {
+      response.body &&
+        Object.keys(response.body).forEach((key) => {
+          if (convertContentType(key) !== '' && response.body[key]) {
+            findOutContentTypes.push(key);
+          }
+        });
+    });
+
+    findOutContentTypes.forEach((type) => {
+      responseContentType.push(type);
     });
   }
 
   const isStructuredDataType =
-    contentType.includes('application/json') ||
-    contentType.includes('application/x-www-form-urlencoded');
+    requestContentType.includes('application/json') ||
+    requestContentType.includes('application/x-www-form-urlencoded');
 
   const methodColor = computeMethodColor(methodType.toLowerCase());
 
@@ -144,7 +162,7 @@ const Method = ({
                     method.body.applicationxwwwformurlencoded?.type
                   }
                   isStructuredDataType={isStructuredDataType}
-                  contentType={contentType}
+                  contentType={requestContentType}
                 />
               )}
 
@@ -152,7 +170,7 @@ const Method = ({
                 <Responses
                   apiKey={apiKey}
                   responses={method.responses}
-                  contentType={contentType}
+                  contentType={responseContentType}
                 />
               )}
             </SpacingsStack>
@@ -161,6 +179,7 @@ const Method = ({
                 apiKey={apiKey}
                 requestCodeExamples={method.codeExamples}
                 responses={method.responses}
+                contentType={responseContentType}
               />
             )}
           </SideBySide>
