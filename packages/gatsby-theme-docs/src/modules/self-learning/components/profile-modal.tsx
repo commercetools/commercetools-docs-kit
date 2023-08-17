@@ -8,7 +8,7 @@ import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
 import { useContext, useEffect } from 'react';
 import { LearningContextApi, LearningContextState } from './learning-context';
 import { useUpdateUser } from '../hooks/use-update-user';
-import { VerifiedIcon, CheckInactiveIcon } from '@commercetools-uikit/icons';
+import { VerifiedIcon } from '@commercetools-uikit/icons';
 import SendVerificationEmailButton from './verify-email-button';
 import Stamp from '@commercetools-uikit/stamp';
 import FieldLabel from '@commercetools-uikit/field-label';
@@ -244,7 +244,8 @@ const ProfileModal = () => {
           </SpacingsStack>
         ) : (
           <Label>
-            Your company association is not verified.{' '}
+            Your company association is not verified.
+            <br />
             <Link
               isExternal
               to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}

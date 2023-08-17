@@ -1,5 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
-import { LearningContextState } from './learning-context';
+import { useState, useEffect } from 'react';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import { useSendVerificationEmail } from '../hooks/use-send-verification-email';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
@@ -8,16 +7,11 @@ import { MailIcon } from '@commercetools-uikit/icons';
 
 const SendVerificationEmailButton = () => {
   const {
-    user: { profile },
-  } = useContext(LearningContextState);
-  const {
     performSendVerificationEmail,
     isLoading,
     sendVerificationEmail,
     error,
-  } = useSendVerificationEmail({
-    userId: profile?.user_id || '',
-  });
+  } = useSendVerificationEmail();
   const [buttonLabel, setButtonLabel] = useState('Send Verification Email');
 
   const handleSendEmail = async () => {
