@@ -11,6 +11,9 @@ import { useUpdateUser } from '../hooks/use-update-user';
 import { VerifiedIcon, CheckInactiveIcon } from '@commercetools-uikit/icons';
 import SendVerificationEmailButton from './verify-email-button';
 import Stamp from '@commercetools-uikit/stamp';
+import FieldLabel from '@commercetools-uikit/field-label';
+import Label from '@commercetools-uikit/label';
+import Link from '@commercetools-uikit/link';
 
 import ConfigContext, {
   EFeatureFlag,
@@ -24,7 +27,17 @@ export type TProfileFormValues = {
   email: string;
   global_account_name: string;
 };
-
+const mailToData = {
+  email: 'training@commercetools.com',
+  email_change_request: {
+    subject: 'commercetools ID: Data Change Request',
+    body: "Hi,%0A%0A I'm writing to change my email.%0A%0A Thanks%0A",
+  },
+  company_association_verify_request: {
+    subject: 'commercetools ID: Data Change Request',
+    body: "Hi,%0A%0A I'm writing to verify my company association.%0A%0A Thanks%0A",
+  },
+};
 const ProfileModal = () => {
   const { selfLearningFeatures } = useContext(ConfigContext);
   const { updateProfile, closeProfileModal } = useContext(LearningContextApi);
@@ -161,6 +174,44 @@ const ProfileModal = () => {
           onBlur={formik.handleBlur}
           renderError={renderError}
         />
+        <SpacingsStack>
+          <TextField
+            key="email"
+            name="email"
+            title="Email"
+            value={formik.values.email}
+            touched={formik.touched.email}
+            errors={
+              TextField.toFieldErrors<TProfileFormValues>(formik.errors).email
+            }
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            renderError={renderError}
+            isReadOnly
+            badge={
+              profile?.email_verified ? (
+                <Stamp
+                  tone="primary"
+                  label="Verified"
+                  icon={<VerifiedIcon size="big" color="info" />}
+                />
+              ) : (
+                <SpacingsInline>
+                  <SendVerificationEmailButton />
+                  <Stamp tone="secondary" label="Not Verified" />
+                </SpacingsInline>
+              )
+            }
+          />
+          <Label>
+            <Link
+              isExternal
+              to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
+            >
+              Please contact us to change your email address.
+            </Link>
+          </Label>
+        </SpacingsStack>
         <TextField
           key="company"
           name="company"
@@ -175,74 +226,34 @@ const ProfileModal = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-        <TextField
-          key="email"
-          name="email"
-          title="Email"
-          description="Please contact us at training@commercetools.com to change your email"
-          value={formik.values.email}
-          touched={formik.touched.email}
-          errors={
-            TextField.toFieldErrors<TProfileFormValues>(formik.errors).email
-          }
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          renderError={renderError}
-          isReadOnly
-          badge={
-            profile?.email_verified ? (
-              <Stamp
-                tone="primary"
-                label="Verified"
-                icon={<VerifiedIcon size="big" color="info" />}
-              />
-            ) : (
-              <SpacingsInline>
-                <SendVerificationEmailButton />
-                <Stamp
-                  tone="secondary"
-                  label="Not Verified"
-                  icon={<CheckInactiveIcon size="big" color="info" />}
-                />
-              </SpacingsInline>
-            )
-          }
-        />
-        <TextField
-          key="global_account_name"
-          name="global_account_name"
-          title="Verified Company Association"
-          description={
-            profile?.global_account_name
-              ? 'Please contact us at training@commercetools.com to verify a different company association.'
-              : 'Your company association is not automatically verified. Please contact us at training@commercetools.com to verify it.'
-          }
-          value={formik.values.global_account_name}
-          touched={formik.touched.global_account_name}
-          errors={
-            TextField.toFieldErrors<TProfileFormValues>(formik.errors)
-              .global_account_name
-          }
-          renderError={renderError}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          isReadOnly
-          badge={
-            profile?.global_account_name ? (
-              <Stamp
-                tone="primary"
-                label="Verified"
-                icon={<VerifiedIcon size="big" color="info" />}
-              />
-            ) : (
-              <Stamp
-                tone="secondary"
-                label="Not Verified"
-                icon={<CheckInactiveIcon size="big" color="info" />}
-              />
-            )
-          }
-        />
+        {profile?.global_account_name ? (
+          <SpacingsStack>
+            <FieldLabel title="Verified Company Association" />
+            <Label>
+              Your company association is <b>{profile.global_account_name}</b>{' '}
+              with id <b>{profile.global_account_id}</b>{' '}
+            </Label>
+            <Label>
+              <Link
+                isExternal
+                to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
+              >
+                Please contact us to change it.
+              </Link>
+            </Label>
+          </SpacingsStack>
+        ) : (
+          <Label>
+            Your company association is not verified.{' '}
+            <Link
+              isExternal
+              to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
+            >
+              Please contact us to verify it.
+            </Link>
+          </Label>
+        )}
+
         {error && (
           <ErrorMessage>
             An error occurred while updating your profile, please try again.

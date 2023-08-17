@@ -4,6 +4,7 @@ import { LearningContextApi, LearningContextState } from './learning-context';
 import {
   AUTH0_CLAIM_COMPANY,
   AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME,
+  AUTH0_CLAIM_GLOBAL_ACCOUNT_ID,
 } from '../../sso';
 import { isProfileComplete } from './profile.utils';
 import useAuthentication from '../../sso/hooks/use-authentication';
@@ -19,11 +20,11 @@ const contextProfileAdapter = (auth0User: User) => {
   const {
     [AUTH0_CLAIM_COMPANY]: company,
     [AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME]: global_account_name,
+    [AUTH0_CLAIM_GLOBAL_ACCOUNT_ID]: global_account_id,
     user_metadata,
     sub,
     ...rest
   } = auth0User;
-
   return {
     ...rest,
     user_id: sub,
@@ -32,6 +33,7 @@ const contextProfileAdapter = (auth0User: User) => {
       company,
     },
     global_account_name,
+    global_account_id,
   };
 };
 

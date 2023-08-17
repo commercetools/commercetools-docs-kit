@@ -5,27 +5,18 @@ import { useAuthToken } from './use-auth-token';
 import { MaintenanceModeError, ServiceDownError } from './use-attempt';
 import { useAsyncComplete } from '../../../hooks/use-async-complete';
 
-type VerificationEmailParams = {
-  userId: string;
-};
-
-export const useSendVerificationEmail = (
-  verificationEmailParams: VerificationEmailParams
-) => {
+export const useSendVerificationEmail = () => {
   const { learnApiBaseUrl } = useContext(ConfigContext);
-  const { userId } = verificationEmailParams;
   const { getAuthToken } = useAuthToken();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>();
   const [data, setData] = useState<QuizAttempt | undefined>();
   const [correlationId, setCorrelationId] = useState<string | undefined>();
-  const { setAsyncLoading } = useAsyncComplete(
-    `/api/users/${userId}/send-verify-email`
-  );
+  const { setAsyncLoading } = useAsyncComplete(`/api/users/send-verify-email`);
 
   const sendVerificationEmail = useCallback(
     async (): Promise<Response> => {
-      const apiEndpoint = `${learnApiBaseUrl}/api/users/${userId}/send-verify-email`;
+      const apiEndpoint = `${learnApiBaseUrl}/api/users/send-verify-email`;
       const accessToken = await getAuthToken();
       const data = await fetch(apiEndpoint, {
         method: 'POST',
@@ -39,7 +30,7 @@ export const useSendVerificationEmail = (
       return data;
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [userId, getAuthToken, learnApiBaseUrl]
+    [getAuthToken, learnApiBaseUrl]
   );
 
   const performSendVerificationEmail = useCallback(
@@ -79,7 +70,7 @@ export const useSendVerificationEmail = (
           console.error(error.message);
           setError(error.message);
         } else {
-          const message = `Error while sending verification email: ${userId}`;
+          const message = `Error while sending verification email`;
           console.error(message);
           setError('Unable to send verification email');
         }
@@ -89,7 +80,7 @@ export const useSendVerificationEmail = (
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [sendVerificationEmail, userId]
+    [sendVerificationEmail]
   );
 
   return {
