@@ -237,6 +237,10 @@ SidebarLinkWrapper.propTypes = {
 const ChapterTitleWrapper = styled.div`
   display: flex;
   font-weight: ${designSystem.typography.fontWeights['light-bold']};
+  font-size: ${(props) =>
+    props.level < 1
+      ? designSystem.typography.fontSizes.body
+      : designSystem.typography.fontSizes.small};
   align-items: center;
   justify-content: space-between;
   align-items: flex-start;
@@ -245,10 +249,11 @@ const ChapterTitleWrapper = styled.div`
 
 const Title = styled.span`
   margin: 0;
+  padding-right: 16px;
 `;
 
 const ChapterTitle = (props) => (
-  <ChapterTitleWrapper onClick={() => props.toggleExpand()}>
+  <ChapterTitleWrapper level={props.level} onClick={() => props.toggleExpand()}>
     <Title>{props.text}</Title>
     {props.isExpanded ? <MinimizeIcon /> : <PlusBoldIcon />}
   </ChapterTitleWrapper>
@@ -256,7 +261,8 @@ const ChapterTitle = (props) => (
 ChapterTitle.propTypes = {
   text: PropTypes.string.isRequired,
   isExpanded: PropTypes.bool,
-  toggleExpand: PropTypes.func,
+  toggleExpand: PropTypes.func.isRequired,
+  level: PropTypes.number.isRequired,
 };
 
 const ChapterLevelWrapper = styled.div`
@@ -280,6 +286,10 @@ const ChapterPagesWrapper = styled.div`
     `}
 `;
 
+const ChapterItem = styled.div`
+  margin: 8px 0;
+`;
+
 const Chapter = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const elemId = `sidebar-chapter-${props.level}-${props.index}`;
@@ -295,26 +305,24 @@ const Chapter = (props) => {
       <SpacingsStack data-testid={`sidebar-chapter`} scale="s">
         <ChapterLevelWrapper level={props.level}>
           <ChapterTitle
+            level={props.level}
             text={chapterTitle}
             isExpanded={isExpanded}
             toggleExpand={() => setIsExpanded(!isExpanded)}
           />
           <ChapterPagesWrapper level={props.level} isExpanded={isExpanded}>
-            {props.chapter.pages.map((page, pageIndex) => {
-              if (page.pages) {
-                return (
+            {props.chapter.pages.map((page, pageIndex) => (
+              <ChapterItem key={pageIndex}>
+                {page.pages ? (
                   <Chapter
                     index={pageIndex}
                     level={1}
                     chapter={page}
                     location={props.location}
-                    key={pageIndex}
                     onLinkClick={props.onLinkClick}
                     nextScrollPosition={props.nextScrollPosition}
                   />
-                );
-              } else {
-                return (
+                ) : (
                   <SidebarLinkWrapper
                     data-testid={`sidebar-chapter-item-${pageIndex}`}
                     key={`${props.index}-${pageIndex}-${page.path}`}
@@ -326,9 +334,9 @@ const Chapter = (props) => {
                   >
                     <LinkSubtitle>{page.title}</LinkSubtitle>
                   </SidebarLinkWrapper>
-                );
-              }
-            })}
+                )}
+              </ChapterItem>
+            ))}
           </ChapterPagesWrapper>
         </ChapterLevelWrapper>
       </SpacingsStack>
