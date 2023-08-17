@@ -206,7 +206,7 @@ const ProfileModal = () => {
           <Label>
             <Link
               isExternal
-              to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
+              to={`mailto:${mailToData.email}?subject=${mailToData.email_change_request.subject}&body=${mailToData.email_change_request.body}`}
             >
               Please contact us to change your email address.
             </Link>
