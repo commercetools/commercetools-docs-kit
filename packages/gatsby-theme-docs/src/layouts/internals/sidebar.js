@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
-import { css, ClassNames } from '@emotion/react';
+import { css, ClassNames, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
   BackIcon,
@@ -248,26 +248,40 @@ const Title = styled.span`
 `;
 
 const ChapterTitle = (props) => (
-  <ChapterTitleWrapper>
+  <ChapterTitleWrapper onClick={() => props.toggleExpand()}>
     <Title>{props.text}</Title>
-
     {props.isExpanded ? <MinimizeIcon /> : <PlusBoldIcon />}
   </ChapterTitleWrapper>
 );
 ChapterTitle.propTypes = {
   text: PropTypes.string.isRequired,
   isExpanded: PropTypes.bool,
+  toggleExpand: PropTypes.func,
 };
 
 const ChapterLevelWrapper = styled.div`
   padding-left: ${(props) => (props.level === 0 ? '16px' : 0)};
 `;
 
+const chapterContentAnimation = css`
+  transition: max-height 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+`;
+
 const ChapterPagesWrapper = styled.div`
+  ${chapterContentAnimation}
   padding-left: 8px;
+  transform-origin: top center;
+  ${({ isExpanded }) =>
+    isExpanded &&
+    css`
+      max-height: 1000px;
+    `}
 `;
 
 const Chapter = (props) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const elemId = `sidebar-chapter-${props.level}-${props.index}`;
   const chapterTitle =
     props.level === 0 ? props.chapter.chapterTitle : props.chapter.title;
@@ -280,8 +294,12 @@ const Chapter = (props) => {
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack data-testid={`sidebar-chapter`} scale="s">
         <ChapterLevelWrapper level={props.level}>
-          <ChapterTitle text={chapterTitle} isExpanded={false} />
-          <ChapterPagesWrapper level={props.level}>
+          <ChapterTitle
+            text={chapterTitle}
+            isExpanded={isExpanded}
+            toggleExpand={() => setIsExpanded(!isExpanded)}
+          />
+          <ChapterPagesWrapper level={props.level} isExpanded={isExpanded}>
             {props.chapter.pages.map((page, pageIndex) => {
               if (page.pages) {
                 return (
