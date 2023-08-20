@@ -12,7 +12,7 @@ const SendVerificationEmailButton = () => {
     sendVerificationEmail,
     error,
   } = useSendVerificationEmail();
-  const [buttonLabel, setButtonLabel] = useState('Send Verification Email');
+  const [buttonLabel, setButtonLabel] = useState('Verify Email');
 
   const handleSendEmail = async () => {
     performSendVerificationEmail();
@@ -30,7 +30,7 @@ const SendVerificationEmailButton = () => {
     <PrimaryButton
       label={buttonLabel}
       onClick={handleSendEmail}
-      size="medium"
+      size="small"
       iconLeft={
         isLoading ? <LoadingSpinner scale="s" /> : <MailIcon size="medium" />
       }

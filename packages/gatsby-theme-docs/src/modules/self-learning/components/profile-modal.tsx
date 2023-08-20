@@ -175,65 +175,62 @@ const ProfileModal = () => {
           renderError={renderError}
         />
         <SpacingsStack>
-          <TextField
-            key="email"
-            name="email"
-            title="Email"
-            value={formik.values.email}
-            touched={formik.touched.email}
-            errors={
-              TextField.toFieldErrors<TProfileFormValues>(formik.errors).email
-            }
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            renderError={renderError}
-            isReadOnly
-            badge={
-              profile?.email_verified ? (
-                <Stamp
-                  tone="primary"
-                  label="Verified"
-                  icon={<VerifiedIcon size="big" color="info" />}
-                />
-              ) : (
-                <SpacingsInline>
-                  <SendVerificationEmailButton />
-                  <Stamp tone="secondary" label="Not Verified" />
-                </SpacingsInline>
-              )
-            }
-          />
+          <SpacingsInline alignItems="center">
+            <Label>Email</Label>
+            {profile?.email_verified ? (
+              <Stamp
+                tone="primary"
+                label="Verified"
+                isCondensed
+                icon={<VerifiedIcon size="big" color="info" />}
+              />
+            ) : (
+              <Stamp isCondensed tone="secondary" label="Not Verified" />
+            )}
+          </SpacingsInline>
           <Label>
             <Link
               isExternal
               to={`mailto:${mailToData.email}?subject=${mailToData.email_change_request.subject}&body=${mailToData.email_change_request.body}`}
             >
-              Please contact us to change your email address.
+              Please contact us to change it.
             </Link>
           </Label>
+          <TextInput
+            key="email"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            isReadOnly
+          />
+          {!profile?.email_verified ? (
+            <SpacingsInline alignItems="flex-end" justifyContent="flex-end">
+              <SendVerificationEmailButton />
+            </SpacingsInline>
+          ) : (
+            ''
+          )}
         </SpacingsStack>
-        <TextField
-          key="company"
-          name="company"
-          title="Company"
-          isRequired
-          value={formik.values.company}
-          touched={formik.touched.company}
-          errors={
-            TextField.toFieldErrors<TProfileFormValues>(formik.errors).company
-          }
-          renderError={renderError}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        {profile?.global_account_name ? (
-          <SpacingsStack>
-            <FieldLabel title="Verified Company Association" />
+        <SpacingsStack>
+          <TextField
+            key="company"
+            name="company"
+            title="Company"
+            isRequired
+            value={formik.values.company}
+            touched={formik.touched.company}
+            errors={
+              TextField.toFieldErrors<TProfileFormValues>(formik.errors).company
+            }
+            renderError={renderError}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {profile?.global_account_name ? (
             <Label>
               Your company association is <b>{profile.global_account_name}</b>{' '}
-              with id <b>{profile.global_account_id}</b>{' '}
-            </Label>
-            <Label>
+              with id <b>{profile.global_account_id}</b> <br />
               <Link
                 isExternal
                 to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
@@ -241,19 +238,19 @@ const ProfileModal = () => {
                 Please contact us to change it.
               </Link>
             </Label>
-          </SpacingsStack>
-        ) : (
-          <Label>
-            Your company association is not verified.
-            <br />
-            <Link
-              isExternal
-              to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
-            >
-              Please contact us to verify it.
-            </Link>
-          </Label>
-        )}
+          ) : (
+            <Label>
+              Your company association is not verified.
+              <br />
+              <Link
+                isExternal
+                to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
+              >
+                Please contact us to verify it.
+              </Link>
+            </Label>
+          )}
+        </SpacingsStack>
 
         {error && (
           <ErrorMessage>
