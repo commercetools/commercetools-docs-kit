@@ -3,7 +3,7 @@ import { ETestId } from './e2e.const';
 
 Then("The user can't submit the form", () => {
   cy.get(
-    `[data-testid="${ETestId.profileModal}"] > div[name="main"] button`
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] button[label="Save"]`
   ).should('not.be.enabled');
 });
 

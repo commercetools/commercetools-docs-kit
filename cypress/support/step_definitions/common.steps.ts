@@ -307,7 +307,7 @@ Given('The user sees a complete profile modal with empty fields', () => {
   cy.get(
     `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[type="text"]`
   )
-    .should('have.length', 3)
+    .should('have.length', 4)
     .each(($input) => {
       cy.wrap($input).should('have.value', '');
     });
