@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
-import { css, ClassNames, keyframes } from '@emotion/react';
+import { css, ClassNames } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
   BackIcon,
@@ -291,7 +291,14 @@ const ChapterItem = styled.div`
 `;
 
 const Chapter = (props) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const isRightChapter = (chapter) => {
+    return chapter.pages.find((page) =>
+      page.pages ? isRightChapter(page) : page.path === props.location.pathname
+    );
+  };
+  const initialState = isRightChapter(props.chapter) !== undefined;
+
+  const [isExpanded, setIsExpanded] = useState(initialState);
   const elemId = `sidebar-chapter-${props.level}-${props.index}`;
   const chapterTitle =
     props.level === 0 ? props.chapter.chapterTitle : props.chapter.title;
@@ -300,6 +307,7 @@ const Chapter = (props) => {
     () => document.getElementById(elemId),
     [elemId]
   );
+
   return (
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack data-testid={`sidebar-chapter`} scale="s">

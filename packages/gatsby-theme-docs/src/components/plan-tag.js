@@ -4,7 +4,6 @@ import PlanTagInternal from './plan-tag-internal';
 
 const PlanTag = (props) => {
   const planConfig = planTagsConfig[props.plan];
-  console.log('planConfig', props.plan);
   if (planConfig) {
     const IconComponent = planConfig.icon ? <planConfig.icon /> : undefined;
     const text = planConfig.text || '';
