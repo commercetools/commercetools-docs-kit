@@ -229,7 +229,7 @@ const ProfileModal = () => {
           />
           {profile?.global_account_name ? (
             <Label>
-              Your company association is <b>{profile.global_account_name}</b>{' '}
+              Your verified company association is <b>{profile.global_account_name}</b>{' '}
               with id <b>{profile.global_account_id}</b> <br />
               <Link
                 isExternal
