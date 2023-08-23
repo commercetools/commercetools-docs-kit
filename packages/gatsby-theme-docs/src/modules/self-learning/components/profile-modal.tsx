@@ -229,8 +229,9 @@ const ProfileModal = () => {
           />
           {profile?.global_account_name ? (
             <Label>
-              Your verified company association is <b>{profile.global_account_name}</b>{' '}
-              with id <b>{profile.global_account_id}</b> <br />
+              Your verified company association is{' '}
+              <b>{profile.global_account_name}</b> with id{' '}
+              <b>{profile.global_account_id}</b> <br />
               <Link
                 isExternal
                 to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
