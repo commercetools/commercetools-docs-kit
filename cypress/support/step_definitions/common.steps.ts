@@ -304,15 +304,23 @@ Given('The user sees a complete profile modal with empty fields', () => {
   cy.get(`[data-testid="${ETestId.profileModal}"] div[name="main"]`).should(
     'be.visible'
   );
+  // then let's ensure the expected values are displayed
   cy.get(
-    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[type="text"]`
-  )
-    .should('have.length', 4)
-    .each(($input) => {
-      cy.wrap($input).should('have.value', '');
-    });
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="firstName"]`
+  ).should('have.value', '');
+
   cy.get(
-    `[data-testid="${ETestId.profileModal}"] > div[name="main"] button`
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="lastName"]`
+  ).should('have.value', '');
+
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="company"]`
+  ).should('have.value', '');
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="email"]`
+  ).should('have.value', TEST_USER_USERNAME);
+  cy.get(
+    `[data-testid="${ETestId.profileModal}"] > div[name="main"] button[label="Save"]`
   ).should('be.disabled');
 });
 

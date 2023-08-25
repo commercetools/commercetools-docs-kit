@@ -1,5 +1,5 @@
 import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { ETestId } from './e2e.const';
+import { ETestId, TEST_USER_USERNAME } from './e2e.const';
 
 Then("The user can't submit the form", () => {
   cy.get(
@@ -34,5 +34,8 @@ When(
     cy.get(
       `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="company"]`
     ).should('have.value', company);
+    cy.get(
+      `[data-testid="${ETestId.profileModal}"] > div[name="main"] input[name="email"]`
+    ).should('have.value', TEST_USER_USERNAME);
   }
 );
