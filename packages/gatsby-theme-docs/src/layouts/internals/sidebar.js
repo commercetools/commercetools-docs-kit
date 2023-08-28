@@ -70,6 +70,7 @@ const WebsiteTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.h4};
 `;
 const WebsiteTitleLink = styled.a`
+  padding-left: ${designSystem.dimensions.spacings.m};
   text-decoration: none;
   color: ${designSystem.tokens.websitePrimaryColor};
   :hover {
@@ -84,6 +85,8 @@ const LinkTitle = styled.div`
   width: 100%;
 `;
 const LinkSubtitle = styled.div`
+  padding-left: ${(props) =>
+    props.level === 1 ? designSystem.dimensions.spacings.s : '0px'};
   font-size: ${designSystem.typography.fontSizes.small};
   text-overflow: ellipsis;
   overflow-x: hidden;
@@ -98,6 +101,7 @@ const LinkItem = styled.div`
 `;
 
 const linkStyles = css`
+  padding-left: ${designSystem.dimensions.spacings.l};
   text-decoration: none;
   color: ${designSystem.colors.light.textSecondary};
   display: flex;
@@ -115,6 +119,10 @@ const linkStyles = css`
   }
 `;
 const activeLinkStyles = css`
+  padding-left: calc(
+    ${designSystem.dimensions.spacings.l} -
+      ${designSystem.dimensions.spacings.xs}
+  );
   border-left: ${designSystem.dimensions.spacings.xs} solid
     ${designSystem.colors.light.linkNavigation} !important;
   color: ${designSystem.colors.light.linkNavigation} !important;
@@ -236,6 +244,10 @@ SidebarLinkWrapper.propTypes = {
 
 const ChapterTitleWrapper = styled.div`
   display: flex;
+  padding-left: ${(props) =>
+    props.level < 1
+      ? designSystem.dimensions.spacings.m
+      : designSystem.dimensions.spacings.l};
   font-weight: ${designSystem.typography.fontWeights['light-bold']};
   font-size: ${(props) =>
     props.level < 1
@@ -250,12 +262,17 @@ const ChapterTitleWrapper = styled.div`
 const Title = styled.span`
   margin: 0;
   padding-right: 16px;
+  font-weight: ${designSystem.typography.fontWeights.medium};
 `;
 
 const ChapterTitle = (props) => (
   <ChapterTitleWrapper level={props.level} onClick={() => props.toggleExpand()}>
     <Title>{props.text}</Title>
-    {props.isExpanded ? <MinimizeIcon /> : <PlusBoldIcon />}
+    {props.isExpanded ? (
+      <MinimizeIcon size="medium" />
+    ) : (
+      <PlusBoldIcon size="medium" />
+    )}
   </ChapterTitleWrapper>
 );
 ChapterTitle.propTypes = {
@@ -265,10 +282,6 @@ ChapterTitle.propTypes = {
   level: PropTypes.number.isRequired,
 };
 
-const ChapterLevelWrapper = styled.div`
-  padding-left: ${(props) => (props.level === 0 ? '16px' : 0)};
-`;
-
 const chapterContentAnimation = css`
   transition: max-height 0.3s ease;
   max-height: 0;
@@ -277,7 +290,6 @@ const chapterContentAnimation = css`
 
 const ChapterPagesWrapper = styled.div`
   ${chapterContentAnimation}
-  padding-left: 8px;
   transform-origin: top center;
   ${({ isExpanded }) =>
     isExpanded &&
@@ -311,42 +323,40 @@ const Chapter = (props) => {
   return (
     <div role="sidebar-chapter" id={elemId}>
       <SpacingsStack data-testid={`sidebar-chapter`} scale="s">
-        <ChapterLevelWrapper level={props.level}>
-          <ChapterTitle
-            level={props.level}
-            text={chapterTitle}
-            isExpanded={isExpanded}
-            toggleExpand={() => setIsExpanded(!isExpanded)}
-          />
-          <ChapterPagesWrapper level={props.level} isExpanded={isExpanded}>
-            {props.chapter.pages.map((page, pageIndex) => (
-              <ChapterItem key={pageIndex}>
-                {page.pages ? (
-                  <Chapter
-                    index={pageIndex}
-                    level={1}
-                    chapter={page}
-                    location={props.location}
-                    onLinkClick={props.onLinkClick}
-                    nextScrollPosition={props.nextScrollPosition}
-                  />
-                ) : (
-                  <SidebarLinkWrapper
-                    data-testid={`sidebar-chapter-item-${pageIndex}`}
-                    key={`${props.index}-${pageIndex}-${page.path}`}
-                    to={page.path}
-                    onClick={props.onLinkClick}
-                    location={props.location}
-                    nextScrollPosition={props.nextScrollPosition}
-                    getChapterDOMElement={getChapterDOMElement}
-                  >
-                    <LinkSubtitle>{page.title}</LinkSubtitle>
-                  </SidebarLinkWrapper>
-                )}
-              </ChapterItem>
-            ))}
-          </ChapterPagesWrapper>
-        </ChapterLevelWrapper>
+        <ChapterTitle
+          level={props.level}
+          text={chapterTitle}
+          isExpanded={isExpanded}
+          toggleExpand={() => setIsExpanded(!isExpanded)}
+        />
+        <ChapterPagesWrapper isExpanded={isExpanded}>
+          {props.chapter.pages.map((page, pageIndex) => (
+            <ChapterItem key={pageIndex}>
+              {page.pages ? (
+                <Chapter
+                  index={pageIndex}
+                  level={1}
+                  chapter={page}
+                  location={props.location}
+                  onLinkClick={props.onLinkClick}
+                  nextScrollPosition={props.nextScrollPosition}
+                />
+              ) : (
+                <SidebarLinkWrapper
+                  data-testid={`sidebar-chapter-item-${pageIndex}`}
+                  key={`${props.index}-${pageIndex}-${page.path}`}
+                  to={page.path}
+                  onClick={props.onLinkClick}
+                  location={props.location}
+                  nextScrollPosition={props.nextScrollPosition}
+                  getChapterDOMElement={getChapterDOMElement}
+                >
+                  <LinkSubtitle level={props.level}>{page.title}</LinkSubtitle>
+                </SidebarLinkWrapper>
+              )}
+            </ChapterItem>
+          ))}
+        </ChapterPagesWrapper>
       </SpacingsStack>
     </div>
   );
