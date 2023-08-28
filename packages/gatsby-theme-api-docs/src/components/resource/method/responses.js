@@ -12,6 +12,7 @@ import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { tokens, dimensions, typography } from '../../../design-system';
 import { useTypeLocations } from '../../../hooks/use-type-locations';
 import renderTypeAsLink from '../../../utils/render-type-as-link';
+import { convertContentType } from './method';
 import Title from './title';
 
 const ResponseCode = styled.span`
@@ -35,7 +36,21 @@ const Responses = ({ apiKey, responses, contentType }) => {
     <SpacingsStack scale="xs">
       <Title>Response:</Title>
       <SpacingsStack scale="s">
-        {responses.map((response) => {
+        {responses.map((response, index) => {
+          const convertedContentType = convertContentType(contentType[index]);
+          const responseDetails =
+            response.body &&
+            renderTypeAsLink(
+              apiKey,
+              response.body[contentType[index]].type,
+              typeLocations,
+              convertedContentType
+            );
+          // If renderTypeAsLink returns the type again and a description is defined, we display the description.
+          // In this case, the content type should not be displayed at the moment.
+          const showDescription =
+            responseDetails === response.body?.[contentType[index]].type &&
+            response.description;
           return (
             <SpacingsInline key={response.code}>
               <ResponseCode
@@ -44,20 +59,16 @@ const Responses = ({ apiKey, responses, contentType }) => {
                 {response.code}
               </ResponseCode>
               <LinkContainer>
-                {response.body ? (
+                {responseDetails ? (
                   <SpacingsInline alignItems="center">
-                    {renderTypeAsLink(
-                      apiKey,
-                      response.body.applicationjson.type,
-                      typeLocations,
-                      response.description,
-                      contentType
-                    )}
-                    {contentType.length > 0 && (
+                    {showDescription
+                      ? markdownFragmentToReact(response.description)
+                      : responseDetails}
+                    {contentType.length > 0 && !showDescription && (
                       <>
                         <span>as</span>
                         <Markdown.InlineCodeWithoutBox>
-                          {contentType}
+                          {convertedContentType}
                         </Markdown.InlineCodeWithoutBox>
                       </>
                     )}
