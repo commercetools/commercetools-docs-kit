@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
-import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
+import { Link, withPrefix } from 'gatsby';
 import { css, ClassNames } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
@@ -19,6 +19,7 @@ import {
 } from '@commercetools-docs/ui-kit';
 import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
+import SidebarNavigationItems from '../../hooks/use-sidebar-navigation-items';
 import { BetaTag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
 
@@ -437,26 +438,7 @@ Chapter.propTypes = {
 // };
 
 const SidebarNavigationLinks = (props) => {
-  const data = useStaticQuery(graphql`
-    query SidebarQuery {
-      allNavigationYaml {
-        nodes {
-          chapterTitle
-          path
-          pages {
-            title
-            path
-            beta
-            pages {
-              title
-              path
-              beta
-            }
-          }
-        }
-      }
-    }
-  `);
+  const data = SidebarNavigationItems();
   return (
     <>
       {data.allNavigationYaml.nodes.map((node, index) => (

@@ -171,7 +171,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
       title: String!
       path: String!
       beta: Boolean
-      pages: [NavigationPageLv2!]
+      pages: [NavigationPageLv2]
     }
 
     type NavigationPageLv2 {
