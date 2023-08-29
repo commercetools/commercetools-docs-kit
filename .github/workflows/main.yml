@@ -84,7 +84,6 @@ jobs:
         env:
           ENABLE_SEARCH: 'true'
           NODE_OPTIONS: '--max-old-space-size=6144'
-          GATSBY_EXPERIMENTAL_QUERY_CONCURRENCY: 6 # default is 4, going too high on the 2-core github actions machines will fire back
           GATSBY_CPU_COUNT: logical_cores # use hyperthreading if available to statistically better saturate the cores
 
       - name: GitHub Slug Action
