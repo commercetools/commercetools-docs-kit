@@ -11,6 +11,7 @@ export { default as LogoButton } from './components/logo-button';
 export { default as MediaQuery } from './components/media-query';
 export {
   default as MultiCodeBlock,
+  CodeBlockMarkdownWrapper,
   MultiCodeBlockMarkdownWrapper,
 } from './components/multi-code-block';
 export { default as CodeBlock } from './components/code-block';
