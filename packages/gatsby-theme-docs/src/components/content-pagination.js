@@ -10,8 +10,10 @@ import {
   AngleThinRightIcon,
 } from '@commercetools-uikit/icons';
 import { designSystem, TextSmall } from '@commercetools-docs/ui-kit';
+import { useSiteData } from '../hooks/use-site-data';
 
-const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
+const trimTrailingSlash = (url) =>
+  url ? url.replace(/(\/?)$/, '') : undefined;
 
 const isMatching = (a, b) => trimTrailingSlash(a) === trimTrailingSlash(b);
 
@@ -158,6 +160,7 @@ const getNextPageLink = (node, currentIndex) => {
 };
 
 export const PurePagination = (props) => {
+  const siteData = useSiteData();
   const activeChapter = props.data.allNavigationYaml.nodes.find((node) => {
     const isPaginationEnabledForChapter =
       typeof node.pagination === 'boolean' ? node.pagination : true;
@@ -170,14 +173,19 @@ export const PurePagination = (props) => {
     return <Container />;
   }
 
+  const isSelfLearning = siteData.siteMetadata.isSelfLearning;
   const currentPageLinkIndex = findActivePageIndex(activeChapter, props.slug);
   const hasPagination = currentPageLinkIndex > -1;
-  const previousPage = getPreviousPageLink(activeChapter, currentPageLinkIndex);
-  const nextPage = getNextPageLink(activeChapter, currentPageLinkIndex);
+  const previousPage = isSelfLearning
+    ? getPreviousPageLink(activeChapter, currentPageLinkIndex)
+    : activeChapter.pages[currentPageLinkIndex - 1];
+  const nextPage = isSelfLearning
+    ? getNextPageLink(activeChapter, currentPageLinkIndex)
+    : activeChapter.pages[currentPageLinkIndex + 1];
 
   return (
     <Container aria-label="Next / Previous in Chapter Navigation">
-      {hasPagination && previousPage ? (
+      {hasPagination && previousPage?.path ? (
         <PaginationLink
           linkTo={previousPage.path}
           label={previousPage.title}
@@ -186,7 +194,7 @@ export const PurePagination = (props) => {
       ) : (
         <span />
       )}
-      {hasPagination && nextPage ? (
+      {hasPagination && nextPage?.path ? (
         <PaginationLink
           linkTo={nextPage.path}
           label={nextPage.title}
@@ -210,7 +218,7 @@ PurePagination.propTypes = {
           pages: PropTypes.arrayOf(
             PropTypes.shape({
               title: PropTypes.string.isRequired,
-              path: PropTypes.string.isRequired,
+              path: PropTypes.string,
               beta: PropTypes.bool,
             })
           ),

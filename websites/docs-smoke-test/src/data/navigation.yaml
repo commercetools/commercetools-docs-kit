@@ -1,5 +1,4 @@
 - chapter-title: Views
-  path: /views/overview
   pages:
     - title: Markdown
       path: /views/markdown
@@ -7,11 +6,6 @@
       path: /views/empty
     - title: Beta with long page title to see how the index nav behaves
       path: /views/beta
-      pages:
-        - title: third level page 1
-          path: /empty-pages/empty-page-five
-        - title: third level page 2
-          path: /empty-pages/empty-page-six
     - title: PlanTag page
       path: /views/plan-tag
     - title: Nested headings
@@ -29,7 +23,6 @@
     - title: Wide Layout
       path: /views/wide
 - chapter-title: Components
-  path: /components/overview
   beta: true
   pages:
     - title: Code blocks
@@ -50,8 +43,31 @@
       path: /components/mermaid-diagram
     - title: Video Player
       path: /components/video-player
+- chapter-title: Subchapters 1
+  pages:
+    - title: Subchapter One
+      pages:
+        - title: third level page 1
+          path: /empty-pages/empty-page-five
+        - title: third level page 2
+          path: /empty-pages/empty-page-six
+        - title: third level page 3
+          path: /empty-pages/empty-page-seven
+    - title: Normal Chapter 1
+      path: /empty-pages/empty-page-twelve
+    - title: Normal Chapter 2
+      path: /empty-pages/empty-page-thirteen
+    - title: Normal Chapter 3
+      path: /empty-pages/empty-page-fourteen
+    - title: Subchapter Two
+      pages:
+        - title: third level page 1
+          path: /empty-pages/empty-page-nine
+        - title: third level page 2
+          path: /empty-pages/empty-page-ten
+        - title: third level page 3
+          path: /empty-pages/empty-page-eleven
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
-  path: /empty-pages/overview
   pages:
     - title: Page with some very long title too much for our innocent API to handle
       path: /empty-pages/empty-page-one
@@ -59,7 +75,6 @@
       path: /empty-pages/empty-page-two
       beta: true
 - chapter-title: ChapterWithLongNameThatOverflowsBecauseItsOneWord
-  path: /empty-pages/overview-1
   pages:
     - title: PageWithLongNameThatOverflowsBecauseItsOneWord
       path: /empty-pages/empty-page-three

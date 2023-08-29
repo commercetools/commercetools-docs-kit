@@ -308,7 +308,6 @@ const ChapterItem = styled.div`
 
 const Chapter = (props) => {
   const isRightChapter = (chapter) => {
-    console.log(props.location, chapter.pages);
     return chapter.pages.find((page) =>
       page.pages
         ? isRightChapter(page)
