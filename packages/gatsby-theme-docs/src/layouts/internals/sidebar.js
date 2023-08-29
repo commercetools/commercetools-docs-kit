@@ -44,8 +44,9 @@ const ScrollContainer = styled.div`
   flex: 1;
 
   > div {
-    margin-right: ${designSystem.dimensions.spacings.m};
-    padding: ${designSystem.dimensions.spacings.l} 0;
+    padding: ${designSystem.dimensions.spacings.l}
+      ${designSystem.dimensions.spacings.m}
+      ${designSystem.dimensions.spacings.m} 0;
   }
   > * + * {
     border-top: 1px solid ${designSystem.colors.light.borderPrimary};
@@ -88,6 +89,8 @@ const LinkTitle = styled.div`
 const LinkSubtitle = styled.div`
   padding-left: ${(props) =>
     props.level === 1 ? designSystem.dimensions.spacings.s : '0px'};
+  height: ${(props) =>
+    props.isReleaseNoteLink ? designSystem.dimensions.spacings.l : 'auto'};
   font-size: ${designSystem.typography.fontSizes.small};
   text-overflow: ellipsis;
   overflow-x: hidden;
@@ -305,9 +308,11 @@ const ChapterItem = styled.div`
 
 const Chapter = (props) => {
   const isRightChapter = (chapter) => {
-    console.log(props.location.pathname, chapter.pages);
+    console.log(props.location, chapter.pages);
     return chapter.pages.find((page) =>
-      page.pages ? isRightChapter(page) : page.path === props.location.pathname
+      page.pages
+        ? isRightChapter(page)
+        : props.location.pathname.includes(page.path)
     );
   };
   const initialState = isRightChapter(props.chapter) !== undefined;
@@ -552,7 +557,7 @@ const Sidebar = (props) => {
               `}
             >
               <SpacingsInline alignItems="center">
-                <LinkSubtitle>{'Release notes'}</LinkSubtitle>
+                <LinkSubtitle isReleaseNoteLink>{'Release notes'}</LinkSubtitle>
                 <ReleaseNotesIcon
                   size="medium"
                   color={isReleasePage ? 'linkNavigation' : 'link'}
