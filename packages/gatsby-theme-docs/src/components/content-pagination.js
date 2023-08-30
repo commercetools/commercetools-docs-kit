@@ -172,7 +172,7 @@ export const PurePagination = (props) => {
     return <Container />;
   }
 
-  const isSelfLearning = siteData.siteMetadata.isSelfLearning;
+  const isSelfLearning = siteData.siteMetadata?.isSelfLearning;
   const currentPageLinkIndex = findActivePageIndex(activeChapter, props.slug);
   const hasPagination = currentPageLinkIndex > -1;
   const previousPage = isSelfLearning

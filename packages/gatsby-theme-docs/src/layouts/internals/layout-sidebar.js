@@ -75,7 +75,7 @@ const LayoutSidebar = (props) => {
     setModalPortalNode(document.getElementById('modal-portal'));
   }, []);
   const siteData = useSiteData();
-  const SidebarComponent = siteData.siteMetadata.isSelfLearning
+  const SidebarComponent = siteData.siteMetadata?.isSelfLearning
     ? SelfLearningSidebar
     : Sidebar;
 

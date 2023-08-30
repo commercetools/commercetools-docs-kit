@@ -266,12 +266,19 @@ const ChapterTitleWrapper = styled.div`
 const Title = styled.span`
   margin: 0;
   padding-right: 16px;
-  font-weight: ${designSystem.typography.fontWeights.medium};
+  color: ${(props) =>
+    props.isExpanded
+      ? designSystem.colors.light.websitePrimaryColor
+      : designSystem.colors.light.textSecondary};
+  font-weight: ${(props) =>
+    props.isExpanded
+      ? designSystem.typography.fontWeights.medium
+      : designSystem.typography.fontWeights.regular};
 `;
 
 const ChapterTitle = (props) => (
   <ChapterTitleWrapper level={props.level} onClick={() => props.toggleExpand()}>
-    <Title>{props.text}</Title>
+    <Title isExpanded={props.isExpanded}>{props.text}</Title>
     {props.isExpanded ? (
       <MinimizeIcon size="medium" />
     ) : (
@@ -303,7 +310,10 @@ const ChapterPagesWrapper = styled.div`
 `;
 
 const ChapterItem = styled.div`
-  margin: 8px 0;
+  padding: ${(props) =>
+    props.isChapter
+      ? `${designSystem.dimensions.spacings.xs} 0 0 0`
+      : `${designSystem.dimensions.spacings.xs} 0`};
 `;
 
 const Chapter = (props) => {
@@ -328,7 +338,7 @@ const Chapter = (props) => {
 
   return (
     <div role="sidebar-chapter" id={elemId}>
-      <SpacingsStack data-testid={`sidebar-chapter`} scale="s">
+      <SpacingsStack data-testid={`sidebar-chapter`} scale="xs">
         <ChapterTitle
           level={props.level}
           text={chapterTitle}
@@ -337,7 +347,7 @@ const Chapter = (props) => {
         />
         <ChapterPagesWrapper isExpanded={isExpanded}>
           {props.chapter.pages.map((page, pageIndex) => (
-            <ChapterItem key={pageIndex}>
+            <ChapterItem isChapter={page.pages && true} key={pageIndex}>
               {page.pages ? (
                 <Chapter
                   index={pageIndex}

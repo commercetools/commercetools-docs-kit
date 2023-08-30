@@ -43,7 +43,7 @@
       path: /components/mermaid-diagram
     - title: Video Player
       path: /components/video-player
-- chapter-title: Subchapters 1
+- chapter-title: Subchapters
   pages:
     - title: Subchapter One
       pages:
