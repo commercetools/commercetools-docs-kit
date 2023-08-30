@@ -165,7 +165,6 @@ export const PurePagination = (props) => {
     const isPaginationEnabledForChapter =
       typeof node.pagination === 'boolean' ? node.pagination : true;
     if (!isPaginationEnabledForChapter) return false;
-    if (!node.pages) return false;
     return isChapterPathOrPageMatchingSlug(node, props.slug);
   });
 
@@ -220,6 +219,11 @@ PurePagination.propTypes = {
               title: PropTypes.string.isRequired,
               path: PropTypes.string,
               beta: PropTypes.bool,
+              pages: PropTypes.shape({
+                title: PropTypes.string.isRequired,
+                path: PropTypes.string.isRequired,
+                beta: PropTypes.bool,
+              }),
             })
           ),
         })
@@ -241,6 +245,11 @@ const Pagination = (props) => {
             title
             path
             beta
+            pages {
+              title
+              path
+              beta
+            }
           }
         }
       }
