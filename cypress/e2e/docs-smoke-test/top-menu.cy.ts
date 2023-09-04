@@ -5,7 +5,8 @@ describe('Top menu', () => {
     // Wait for Gastby to be fully loaded otherwise the click event won't be
     // handled correctly. We can go to the mermaid diagrams page and wait for the diagrams to be loaded
     // before clicking on the top menu.
-    cy.visit(URL_DOCS_SMOKE_TEST).get('div[id="sidebar-chapter-0-1"]');
+    cy.visit(URL_DOCS_SMOKE_TEST);
+    cy.get('div[id="sidebar-chapter-0-1"]').click();
     cy.findByText('Mermaid Diagrams').click();
     cy.get('div[data-testid="mermaid-diagram"]');
     cy.findByLabelText('Open Top Menu').click();
@@ -17,7 +18,8 @@ describe('Top menu', () => {
     cy.findByLabelText('Close Top Menu').should('exist');
   });
   it('should load mermaid diagram and then toggle top menu after clicking on the search input', () => {
-    cy.visit(URL_DOCS_SMOKE_TEST).get('div[id="sidebar-chapter-0-1"]');
+    cy.visit(URL_DOCS_SMOKE_TEST);
+    cy.get('div[id="sidebar-chapter-0-1"]').click();
     cy.findByText('Mermaid Diagrams').click();
     cy.get('div[data-testid="mermaid-diagram"]');
     cy.findByLabelText('Open Top Menu').click();
