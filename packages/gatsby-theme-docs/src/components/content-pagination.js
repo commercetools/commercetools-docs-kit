@@ -113,7 +113,7 @@ const isChapterPathOrPageMatchingSlug = (node, slug) => {
   if (node.path && isMatching(slug, node.path)) {
     return true;
   }
-  return node.pages.some((page) => isMatching(slug, page.path));
+  return node?.pages?.some((page) => isMatching(slug, page.path));
 };
 
 // TODO: cleanup. After docs websites migrate to clickable chapter, this function
