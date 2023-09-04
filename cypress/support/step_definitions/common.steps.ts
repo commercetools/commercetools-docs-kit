@@ -235,7 +235,8 @@ When(
     )
       .should('have.length', 1)
       .each(($input) => {
-        cy.wrap($input).clear().type(firstName);
+        cy.wrap($input).clear();
+        cy.wrap($input).type(firstName);
       });
 
     cy.get(
@@ -243,7 +244,8 @@ When(
     )
       .should('have.length', 1)
       .each(($input) => {
-        cy.wrap($input).clear().type(lastName);
+        cy.wrap($input).clear();
+        cy.wrap($input).type(lastName);
       });
 
     if (which === 'all') {
@@ -252,7 +254,8 @@ When(
       )
         .should('have.length', 1)
         .each(($input) => {
-          cy.wrap($input).clear().type(company);
+          cy.wrap($input).clear();
+          cy.wrap($input).type(company);
         });
     }
   }
