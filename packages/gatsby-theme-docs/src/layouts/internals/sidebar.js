@@ -19,13 +19,14 @@ import {
 } from '@commercetools-docs/ui-kit';
 import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
-import SidebarNavigationItems from '../../hooks/use-sidebar-navigation-items';
+import useSidebarNavigationItems from '../../hooks/use-sidebar-navigation-items';
 import { BetaTag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
 import {
   SidebarContextApi,
   SidebarContextState,
 } from '../../components/sidebar-context';
+import { getItemDescendants } from './sidebar.utils';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -330,14 +331,22 @@ const Chapter = (props) => {
     );
   };
   const initialState = isRightChapter(props.chapter) !== undefined;
+  const { ancestorsMap } = useSidebarNavigationItems();
 
   const chapterId = `${props.level}-${props.index}`;
   const { setExpandedChapters } = useContext(SidebarContextApi);
   const { expandedChapters } = useContext(SidebarContextState);
+
   const toggleExpand = () => {
     if (expandedChapters?.includes(chapterId)) {
+      // close the chapter (and all its descendants, if any)
+      const descendants = getItemDescendants(
+        props.level,
+        props.index,
+        ancestorsMap
+      );
       setExpandedChapters(
-        expandedChapters?.filter((item) => item !== chapterId)
+        expandedChapters?.filter((item) => !descendants.includes(item))
       );
     } else {
       expandedChapters?.push(chapterId);
@@ -412,7 +421,7 @@ Chapter.propTypes = {
 /** new implementation end */
 
 const SidebarNavigationLinks = (props) => {
-  const data = SidebarNavigationItems();
+  const { data } = useSidebarNavigationItems();
   return (
     <>
       {data.allNavigationYaml.nodes.map((node, index) => (
