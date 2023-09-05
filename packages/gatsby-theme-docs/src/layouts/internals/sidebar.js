@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { Link, withPrefix } from 'gatsby';
@@ -22,6 +22,10 @@ import useScrollPosition from '../../hooks/use-scroll-position';
 import SidebarNavigationItems from '../../hooks/use-sidebar-navigation-items';
 import { BetaTag } from '../../components';
 import LayoutHeaderLogo from './layout-header-logo';
+import {
+  SidebarContextApi,
+  SidebarContextState,
+} from '../../components/sidebar-context';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -317,6 +321,7 @@ const ChapterItem = styled.div`
 `;
 
 const Chapter = (props) => {
+  // TODO: move this logic to context initialization
   const isRightChapter = (chapter) => {
     return chapter.pages.find((page) =>
       page.pages
@@ -326,7 +331,20 @@ const Chapter = (props) => {
   };
   const initialState = isRightChapter(props.chapter) !== undefined;
 
-  const [isExpanded, setIsExpanded] = useState(initialState);
+  const chapterId = `${props.level}-${props.index}`;
+  const { setExpandedChapters } = useContext(SidebarContextApi);
+  const { expandedChapters } = useContext(SidebarContextState);
+  const toggleExpand = () => {
+    if (expandedChapters?.includes(chapterId)) {
+      setExpandedChapters(
+        expandedChapters?.filter((item) => item !== chapterId)
+      );
+    } else {
+      expandedChapters?.push(chapterId);
+      setExpandedChapters(expandedChapters);
+    }
+  };
+  const isExpanded = expandedChapters?.includes(chapterId);
   const elemId = `sidebar-chapter-${props.level}-${props.index}`;
   const chapterTitle =
     props.level === 0 ? props.chapter.chapterTitle : props.chapter.title;
@@ -343,7 +361,7 @@ const Chapter = (props) => {
           level={props.level}
           text={chapterTitle}
           isExpanded={isExpanded}
-          toggleExpand={() => setIsExpanded(!isExpanded)}
+          toggleExpand={toggleExpand}
         />
         <ChapterPagesWrapper isExpanded={isExpanded}>
           {props.chapter.pages.map((page, pageIndex) => (
