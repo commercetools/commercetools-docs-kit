@@ -10,7 +10,7 @@ export { default as Link } from './components/link';
 export { default as LogoButton } from './components/logo-button';
 export { default as MediaQuery } from './components/media-query';
 export {
-  default as MultiCodeBlock,
+  MultiCodeBlock,
   CodeBlockMarkdownWrapper,
   MultiCodeBlockMarkdownWrapper,
 } from './components/multi-code-block';
