@@ -44,9 +44,9 @@ const ScrollContainer = styled.div`
   flex: 1;
 
   > div {
-    padding: ${designSystem.dimensions.spacings.l}
+    padding: ${designSystem.dimensions.spacings.m}
       ${designSystem.dimensions.spacings.m}
-      ${designSystem.dimensions.spacings.m} 0;
+      ${designSystem.dimensions.spacings.s} 0;
   }
   > * + * {
     border-top: 1px solid ${designSystem.colors.light.borderPrimary};
@@ -392,65 +392,6 @@ Chapter.propTypes = {
   }).isRequired,
 };
 /** new implementation end */
-
-// const SidebarChapter = (props) => {
-//   const elemId = `sidebar-chapter-${props.index}`;
-//   const getChapterDOMElement = React.useCallback(
-//     () => document.getElementById(elemId),
-//     [elemId]
-//   );
-
-//   return (
-//     <div role="sidebar-chapter" id={elemId}>
-//       <SpacingsStack data-testid={`sidebar-chapter`} scale="s">
-//         <LinkItem>
-//           <LinkTitle>{props.chapter.chapterTitle}</LinkTitle>
-//         </LinkItem>
-
-//         <SpacingsStack scale="s">
-//           {props.chapter.pages &&
-//             props.chapter.pages.map((pageLink, pageIndex) => {
-//               return (
-//                 <SidebarLinkWrapper
-//                   data-testid={`sidebar-chapter-item-${pageIndex}`}
-//                   key={`${props.index}-${pageIndex}-${pageLink.path}`}
-//                   to={pageLink.path}
-//                   onClick={props.onLinkClick}
-//                   location={props.location}
-//                   nextScrollPosition={props.nextScrollPosition}
-//                   getChapterDOMElement={getChapterDOMElement}
-//                 >
-//                   <LinkSubtitle>{pageLink.title}</LinkSubtitle>
-//                 </SidebarLinkWrapper>
-//               );
-//             })}
-//         </SpacingsStack>
-//       </SpacingsStack>
-//     </div>
-//   );
-// };
-// SidebarChapter.propTypes = {
-//   index: PropTypes.number.isRequired,
-//   chapter: PropTypes.shape({
-//     chapterTitle: PropTypes.string.isRequired,
-//     beta: PropTypes.bool,
-//     pages: PropTypes.arrayOf(
-//       PropTypes.shape({
-//         title: PropTypes.string.isRequired,
-//         path: PropTypes.string.isRequired,
-//       })
-//     ),
-//   }).isRequired,
-//   onLinkClick: PropTypes.func,
-//   nextScrollPosition: PropTypes.number.isRequired,
-//   // from @react/router
-//   location: PropTypes.shape({
-//     state: PropTypes.shape({
-//       sidebarScrollPosition: PropTypes.number,
-//     }),
-//     pathname: PropTypes.string.isRequired,
-//   }).isRequired,
-// };
 
 const SidebarNavigationLinks = (props) => {
   const data = SidebarNavigationItems();
