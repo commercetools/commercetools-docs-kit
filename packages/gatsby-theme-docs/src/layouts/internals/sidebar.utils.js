@@ -9,3 +9,11 @@ export const getItemDescendants = (level, index, ancestorsMap) => {
     return [].concat(...ancestorsArray);
   }
 };
+
+export const getItemAncestors = (level, index, ancestorsMap) => {
+  const chapterId = `${level}-${index}`;
+  const ancestorsArray = ancestorsMap.filter((element) =>
+    element.includes(chapterId)
+  );
+  return [].concat(...ancestorsArray);
+};

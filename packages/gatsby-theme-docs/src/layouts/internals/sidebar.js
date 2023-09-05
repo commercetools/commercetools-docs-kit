@@ -26,7 +26,7 @@ import {
   SidebarContextApi,
   SidebarContextState,
 } from '../../components/sidebar-context';
-import { getItemDescendants } from './sidebar.utils';
+import { getItemDescendants, getItemAncestors } from './sidebar.utils';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -84,13 +84,7 @@ const WebsiteTitleLink = styled.a`
     text-decoration: underline;
   }
 `;
-const ReleaseNotesTitle = styled.div``;
-const LinkTitle = styled.div`
-  font-size: ${designSystem.typography.fontSizes.body};
-  text-overflow: ellipsis;
-  overflow-x: hidden;
-  width: 100%;
-`;
+
 const LinkSubtitle = styled.div`
   padding-left: ${(props) =>
     props.level === 1 ? designSystem.dimensions.spacings.s : '0px'};
@@ -100,13 +94,6 @@ const LinkSubtitle = styled.div`
   text-overflow: ellipsis;
   overflow-x: hidden;
   width: 100%;
-`;
-const LinkItem = styled.div`
-  padding: 0 0 0 ${designSystem.dimensions.spacings.m};
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  vertical-align: middle;
 `;
 
 const linkStyles = css`
@@ -330,12 +317,22 @@ const Chapter = (props) => {
         : props.location.pathname.includes(page.path)
     );
   };
-  const initialState = isRightChapter(props.chapter) !== undefined;
+  const ssrExpanded = isRightChapter(props.chapter);
   const { ancestorsMap } = useSidebarNavigationItems();
-
   const chapterId = `${props.level}-${props.index}`;
   const { setExpandedChapters } = useContext(SidebarContextApi);
   const { expandedChapters } = useContext(SidebarContextState);
+
+  if (ssrExpanded && (!expandedChapters || expandedChapters.length === 0)) {
+    const initialState = getItemAncestors(
+      props.level,
+      props.index,
+      ancestorsMap
+    );
+    if (initialState !== expandedChapters) {
+      setExpandedChapters(initialState);
+    }
+  }
 
   const toggleExpand = () => {
     if (expandedChapters?.includes(chapterId)) {
@@ -353,7 +350,10 @@ const Chapter = (props) => {
       setExpandedChapters(expandedChapters);
     }
   };
-  const isExpanded = expandedChapters?.includes(chapterId);
+  const isExpanded =
+    expandedChapters && expandedChapters.length > 0
+      ? expandedChapters?.includes(chapterId)
+      : ssrExpanded;
   const elemId = `sidebar-chapter-${props.level}-${props.index}`;
   const chapterTitle =
     props.level === 0 ? props.chapter.chapterTitle : props.chapter.title;
@@ -504,7 +504,7 @@ const Sidebar = (props) => {
       </SidebarHeader>
       <ScrollContainer id={scrollContainerId}>
         {shouldRenderLinkToReleaseNotes && (
-          <ReleaseNotesTitle>
+          <div>
             <SidebarLink
               to="/releases"
               onClick={props.onLinkClick}
@@ -541,7 +541,7 @@ const Sidebar = (props) => {
                 />
               </SpacingsInline>
             </SidebarLink>
-          </ReleaseNotesTitle>
+          </div>
         )}
         {shouldRenderBackToDocsLink && (
           <div>
