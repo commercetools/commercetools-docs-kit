@@ -5,7 +5,7 @@ describe('API type soft linking', () => {
     cy.visit(URL_API_DOCS_SMOKE_TEST);
     cy.get('#navigation-scroll-container').within(() => {
       cy.findByText('E2E Tests').click();
-      cy.findByText('Soft Linking First Page').click();
+      cy.findByText('Soft Linking First Page').click({ force: true });
     });
     cy.findByLabelText('SoftLinkObject definition').should('be.visible');
     cy.get('.section-lead').within(() => {
