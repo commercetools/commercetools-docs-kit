@@ -257,6 +257,8 @@ const ChapterTitleWrapper = styled.div`
 
 const Title = styled.span`
   margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
   padding-right: 16px;
   color: ${(props) =>
     props.isExpanded
