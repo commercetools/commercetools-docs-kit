@@ -323,7 +323,7 @@ const Chapter = (props) => {
   const { setExpandedChapters } = useContext(SidebarContextApi);
   const { expandedChapters } = useContext(SidebarContextState);
 
-  if (ssrExpanded && (!expandedChapters || expandedChapters.length === 0)) {
+  if (ssrExpanded && !expandedChapters) {
     const initialState = getItemAncestors(
       props.level,
       props.index,
@@ -346,14 +346,14 @@ const Chapter = (props) => {
         expandedChapters?.filter((item) => !descendants.includes(item))
       );
     } else {
-      expandedChapters?.push(chapterId);
-      setExpandedChapters(expandedChapters);
+      const updatedState = expandedChapters ? [...expandedChapters] : []; // create a clone in order to aviod mutating state
+      updatedState.push(chapterId);
+      setExpandedChapters(updatedState);
     }
   };
-  const isExpanded =
-    expandedChapters && expandedChapters.length > 0
-      ? expandedChapters?.includes(chapterId)
-      : ssrExpanded;
+  const isExpanded = expandedChapters
+    ? expandedChapters.includes(chapterId)
+    : ssrExpanded;
   const elemId = `sidebar-chapter-${props.level}-${props.index}`;
   const chapterTitle =
     props.level === 0 ? props.chapter.chapterTitle : props.chapter.title;

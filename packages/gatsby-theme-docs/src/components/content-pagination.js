@@ -219,11 +219,13 @@ PurePagination.propTypes = {
               title: PropTypes.string.isRequired,
               path: PropTypes.string,
               beta: PropTypes.bool,
-              pages: PropTypes.shape({
-                title: PropTypes.string.isRequired,
-                path: PropTypes.string.isRequired,
-                beta: PropTypes.bool,
-              }),
+              pages: PropTypes.arrayOf(
+                PropTypes.shape({
+                  title: PropTypes.string.isRequired,
+                  path: PropTypes.string.isRequired,
+                  beta: PropTypes.bool,
+                })
+              ),
             })
           ),
         })

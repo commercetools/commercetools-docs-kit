@@ -24,6 +24,8 @@ const useSidebarNavigationItems = () => {
     }
   `);
 
+  // an array of array containing the map of ancestors/descentants
+  // in the sidebar menu structure
   const ancestorsMap = !ancestorsTree
     ? createAncestorsTree(data?.allNavigationYaml?.nodes || [])
     : ancestorsTree;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const SET_EXPANDED_CHAPTERS = 'SET_EXPANDED_CHAPTERS';
 
 const SidebarContextState = createContext({
-  expandedChapters: [],
+  expandedChapters: undefined,
 });
 
 const SidebarContextApi = createContext({
@@ -12,7 +12,7 @@ const SidebarContextApi = createContext({
 });
 
 const initialState = {
-  expandedChapters: [],
+  expandedChapters: undefined,
 };
 
 function sidebarReducer(state, action) {

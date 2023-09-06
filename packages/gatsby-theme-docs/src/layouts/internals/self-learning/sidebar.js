@@ -347,7 +347,6 @@ const SidebarChapter = (props) => {
           {props.chapter.pages &&
             props.chapter.pages.map((pageLink, pageIndex) => {
               const currTopicName = courseInfo[pageLink.path]?.topicName;
-              console.log('currTopicName', currTopicName);
               const TopicIcon =
                 courseId && currTopicName ? (
                   <SidebarTopicStatus
