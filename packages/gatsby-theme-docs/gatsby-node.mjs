@@ -29,8 +29,7 @@ const require = createRequire(import.meta.url);
 const moduleDirectory = path.dirname(fileURLToPath(import.meta.url));
 const { ContextReplacementPlugin } = webpack;
 
-const trimTrailingSlash = (url) =>
-  url ? url.replace(/(\/?)$/, '') : undefined;
+const trimTrailingSlash = (url) => url?.replace(/(\/?)$/, '');
 
 const isProd = process.env.NODE_ENV === 'production';
 

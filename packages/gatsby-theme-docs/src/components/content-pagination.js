@@ -12,8 +12,7 @@ import {
 import { designSystem, TextSmall } from '@commercetools-docs/ui-kit';
 import { useSiteData } from '../hooks/use-site-data';
 
-const trimTrailingSlash = (url) =>
-  url ? url.replace(/(\/?)$/, '') : undefined;
+const trimTrailingSlash = (url) => url?.replace(/(\/?)$/, '');
 
 const isMatching = (a, b) => trimTrailingSlash(a) === trimTrailingSlash(b);
 
