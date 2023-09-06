@@ -198,8 +198,9 @@ export const MultiCodeBlock = (props: MultiCodeBlockProps) => {
 const getCodeBlockPropsFromMdxPreNodeProps = (props: {
   children?: React.ReactNode;
 }) => {
-  const childElement =
-    props.children && reactIs.isElement(props.children) ? props.children : null;
+  const childElement = reactIs.isElement(props?.children)
+    ? props.children
+    : null;
   const childProps = childElement?.props;
   const className = childProps ? childProps.className : '';
   const languageToken: string = className || 'language-text';
