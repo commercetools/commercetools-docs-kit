@@ -14,7 +14,6 @@ import {
 } from '@commercetools-docs/ui-kit';
 import SiteIcon from '../../../overrides/site-icon';
 import useScrollPosition from '../../../hooks/use-scroll-position';
-import SidebarNavigationItems from '../../../hooks/use-sidebar-navigation-items';
 import { BetaTag } from '../../../components';
 import LayoutHeaderLogo from '../layout-header-logo';
 import {
@@ -22,6 +21,7 @@ import {
   SidebarTopicStatus,
   useCourseInfoByPageSlugs,
 } from '../../../modules/self-learning';
+import useSidebarNavigationItems from '../../../hooks/use-sidebar-navigation-items';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -406,7 +406,7 @@ SidebarChapter.propTypes = {
 };
 
 const SidebarNavigationLinks = (props) => {
-  const data = SidebarNavigationItems();
+  const { data } = useSidebarNavigationItems();
   return (
     <>
       {data.allNavigationYaml.nodes.map((node, index) => (

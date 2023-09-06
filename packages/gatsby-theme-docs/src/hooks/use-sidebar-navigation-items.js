@@ -25,7 +25,7 @@ const useSidebarNavigationItems = () => {
   `);
 
   const ancestorsMap = !ancestorsTree
-    ? createAncestorsTree(data.allNavigationYaml.nodes)
+    ? createAncestorsTree(data?.allNavigationYaml?.nodes || [])
     : ancestorsTree;
 
   return { data, ancestorsMap };
