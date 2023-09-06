@@ -125,7 +125,7 @@ function extractLanguages(children: OneOrManyChildren): string[] {
   return [children.props.language];
 }
 
-function MultiCodeBlock(props: MultiCodeBlockProps) {
+export const MultiCodeBlock = (props: MultiCodeBlockProps) => {
   const langs = extractLanguages(props.children);
 
   const [selected, setSelected] = React.useState(langs[0]);
@@ -193,14 +193,12 @@ function MultiCodeBlock(props: MultiCodeBlockProps) {
         })}
     </Container>
   );
-}
-
-export default MultiCodeBlock;
+};
 
 const getCodeBlockPropsFromMdxPreNodeProps = (props: {
   children?: React.ReactNode;
 }) => {
-  const childElement = reactIs.isElement(props.children)
+  const childElement = reactIs.isElement(props?.children)
     ? props.children
     : null;
   const childProps = childElement?.props;
@@ -208,8 +206,10 @@ const getCodeBlockPropsFromMdxPreNodeProps = (props: {
   const languageToken: string = className || 'language-text';
   const [, languageCode] = languageToken.split('language-');
   const parsedOptions = parseCodeBlockOptions(childProps);
-  const content =
-    childProps && childProps.children ? childProps.children : childProps;
+
+  const content = Array.isArray(childProps?.children)
+    ? childProps.children[0]
+    : childProps?.children || childProps;
 
   return {
     ...parsedOptions,
@@ -240,7 +240,9 @@ export const MultiCodeBlockMarkdownWrapper = (props: {
   const codeBlocks = children.map((child) => {
     // TODO b) the interface of the functions is likely unfortunate -> refactor something
     const options = getCodeBlockPropsFromMdxPreNodeProps({
-      children: (child as ReactElement).props.children,
+      children: Array.isArray((child as ReactElement).props.children)
+        ? (child as ReactElement)
+        : (child as ReactElement).props.children,
     });
     return <CodeBlock {...options} key={options.language} />;
   });
