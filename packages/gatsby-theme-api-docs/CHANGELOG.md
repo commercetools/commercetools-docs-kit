@@ -1,5 +1,17 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 22.5.0
+
+### Minor Changes
+
+- [#1790](https://github.com/commercetools/commercetools-docs-kit/pull/1790) [`f9185c6a`](https://github.com/commercetools/commercetools-docs-kit/commit/f9185c6a3c927d4c1edbeb0a5cc865adc19a48dc) Thanks [@timonrey](https://github.com/timonrey)! - Display the response content type correctly. It also enables support for other content types that are already supported in request bodies.
+
+### Patch Changes
+
+- Updated dependencies [[`6bfcfc99`](https://github.com/commercetools/commercetools-docs-kit/commit/6bfcfc993b8ee4024ad0fde0d3d15608fdfd2701), [`f9185c6a`](https://github.com/commercetools/commercetools-docs-kit/commit/f9185c6a3c927d4c1edbeb0a5cc865adc19a48dc)]:
+  - @commercetools-docs/ui-kit@22.5.0
+  - @commercetools-docs/gatsby-transformer-raml@13.6.0
+
 ## 22.4.0
 
 ### Minor Changes

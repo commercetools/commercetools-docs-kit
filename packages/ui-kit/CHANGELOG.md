@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 22.5.0
+
+### Minor Changes
+
+- [#1811](https://github.com/commercetools/commercetools-docs-kit/pull/1811) [`6bfcfc99`](https://github.com/commercetools/commercetools-docs-kit/commit/6bfcfc993b8ee4024ad0fde0d3d15608fdfd2701) Thanks [@timonrey](https://github.com/timonrey)! - Provides a wrapper component that maps props coming from MDX to the underlying CodeBlock component.
+
 ## 22.4.0
 
 ### Minor Changes
