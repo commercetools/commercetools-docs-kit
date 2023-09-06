@@ -206,12 +206,9 @@ const getCodeBlockPropsFromMdxPreNodeProps = (props: {
   const [, languageCode] = languageToken.split('language-');
   const parsedOptions = parseCodeBlockOptions(childProps);
 
-  const content =
-    childProps && childProps.children
-      ? Array.isArray(childProps.children)
-        ? childProps.children[0]
-        : childProps.children
-      : childProps;
+  const content = Array.isArray(childProps?.children)
+    ? childProps.children[0]
+    : childProps?.children || childProps;
 
   return {
     ...parsedOptions,
