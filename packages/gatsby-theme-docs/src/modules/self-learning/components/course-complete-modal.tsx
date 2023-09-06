@@ -17,7 +17,7 @@ type CourseCompleteModalProps = {
 };
 
 const SUPPORT_DEEPLINK =
-  'https://commercetools.atlassian.net/servicedesk/customer/portal/22/group/47/create/122?summary=Self%20Learning:[Add%20Title%20Here]';
+  'https://commercetools.atlassian.net/servicedesk/customer/portal/22/group/47/create/247?summary=Self%20Learning:[Add%20Title%20Here]';
 
 /**
  * Returns
