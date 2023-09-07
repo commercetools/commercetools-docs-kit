@@ -164,6 +164,7 @@ LineItem: !include cart/LineItem.raml
 LineItemDraft: !include cart/LineItemDraft.raml
 LineItemMode: !include cart/LineItemMode.raml
 LineItemPriceMode: !include cart/LineItemPriceMode.raml
+MethodExternalTaxRateDraft: !include cart/MethodExternalTaxRateDraft.raml
 MethodTaxRate: !include cart/MethodTaxRate.raml
 MethodTaxedPrice: !include cart/MethodTaxedPrice.raml
 ReplicaCartDraft: !include cart/ReplicaCartDraft.raml
@@ -804,9 +805,19 @@ ContainerAndKey: !include message/ContainerAndKey.raml
 CustomLineItemStateTransitionMessage: !include message/CustomLineItemStateTransitionMessage.raml
 CustomerAddressAddedMessage: !include message/CustomerAddressAddedMessage.raml
 CustomerAddressChangedMessage: !include message/CustomerAddressChangedMessage.raml
+CustomerAddressCustomFieldAddedMessage: !include message/CustomerAddressCustomFieldAddedMessage.raml
+CustomerAddressCustomFieldChangedMessage: !include message/CustomerAddressCustomFieldChangedMessage.raml
+CustomerAddressCustomFieldRemovedMessage: !include message/CustomerAddressCustomFieldRemovedMessage.raml
+CustomerAddressCustomTypeRemovedMessage: !include message/CustomerAddressCustomTypeRemovedMessage.raml
+CustomerAddressCustomTypeSetMessage: !include message/CustomerAddressCustomTypeSetMessage.raml
 CustomerAddressRemovedMessage: !include message/CustomerAddressRemovedMessage.raml
 CustomerCompanyNameSetMessage: !include message/CustomerCompanyNameSetMessage.raml
 CustomerCreatedMessage: !include message/CustomerCreatedMessage.raml
+CustomerCustomFieldAddedMessage: !include message/CustomerCustomFieldAddedMessage.raml
+CustomerCustomFieldChangedMessage: !include message/CustomerCustomFieldChangedMessage.raml
+CustomerCustomFieldRemovedMessage: !include message/CustomerCustomFieldRemovedMessage.raml
+CustomerCustomTypeRemovedMessage: !include message/CustomerCustomTypeRemovedMessage.raml
+CustomerCustomTypeSetMessage: !include message/CustomerCustomTypeSetMessage.raml
 CustomerDateOfBirthSetMessage: !include message/CustomerDateOfBirthSetMessage.raml
 CustomerDeletedMessage: !include message/CustomerDeletedMessage.raml
 CustomerEmailChangedMessage: !include message/CustomerEmailChangedMessage.raml
@@ -906,6 +917,7 @@ ProductVariantDeletedMessage: !include message/ProductVariantDeletedMessage.raml
 QuoteCreatedMessage: !include message/QuoteCreatedMessage.raml
 QuoteCustomerChangedMessage: !include message/QuoteCustomerChangedMessage.raml
 QuoteDeletedMessage: !include message/QuoteDeletedMessage.raml
+QuoteRenegotiationRequestedMessage: !include message/QuoteRenegotiationRequestedMessage.raml
 QuoteRequestCreatedMessage: !include message/QuoteRequestCreatedMessage.raml
 QuoteRequestCustomerChangedMessage: !include message/QuoteRequestCustomerChangedMessage.raml
 QuoteRequestDeletedMessage: !include message/QuoteRequestDeletedMessage.raml
@@ -931,6 +943,7 @@ StandalonePriceDiscountSetMessage: !include message/StandalonePriceDiscountSetMe
 StandalonePriceExternalDiscountSetMessage: !include message/StandalonePriceExternalDiscountSetMessage.raml
 StandalonePriceKeySetMessage: !include message/StandalonePriceKeySetMessage.raml
 StandalonePriceStagedChangesAppliedMessage: !include message/StandalonePriceStagedChangesAppliedMessage.raml
+StandalonePriceStagedChangesRemovedMessage: !include message/StandalonePriceStagedChangesRemovedMessage.raml
 StandalonePriceTierAddedMessage: !include message/StandalonePriceTierAddedMessage.raml
 StandalonePriceTierRemovedMessage: !include message/StandalonePriceTierRemovedMessage.raml
 StandalonePriceTiersSetMessage: !include message/StandalonePriceTiersSetMessage.raml
@@ -991,9 +1004,23 @@ CategorySlugChangedMessagePayload: !include message/payload/CategorySlugChangedM
 CustomLineItemStateTransitionMessagePayload: !include message/payload/CustomLineItemStateTransitionMessagePayload.raml
 CustomerAddressAddedMessagePayload: !include message/payload/CustomerAddressAddedMessagePayload.raml
 CustomerAddressChangedMessagePayload: !include message/payload/CustomerAddressChangedMessagePayload.raml
+# yamllint disable-line rule:line-length
+CustomerAddressCustomFieldAddedMessagePayload: !include message/payload/CustomerAddressCustomFieldAddedMessagePayload.raml
+# yamllint disable-line rule:line-length
+CustomerAddressCustomFieldChangedMessagePayload: !include message/payload/CustomerAddressCustomFieldChangedMessagePayload.raml
+# yamllint disable-line rule:line-length
+CustomerAddressCustomFieldRemovedMessagePayload: !include message/payload/CustomerAddressCustomFieldRemovedMessagePayload.raml
+# yamllint disable-line rule:line-length
+CustomerAddressCustomTypeRemovedMessagePayload: !include message/payload/CustomerAddressCustomTypeRemovedMessagePayload.raml
+CustomerAddressCustomTypeSetMessagePayload: !include message/payload/CustomerAddressCustomTypeSetMessagePayload.raml
 CustomerAddressRemovedMessagePayload: !include message/payload/CustomerAddressRemovedMessagePayload.raml
 CustomerCompanyNameSetMessagePayload: !include message/payload/CustomerCompanyNameSetMessagePayload.raml
 CustomerCreatedMessagePayload: !include message/payload/CustomerCreatedMessagePayload.raml
+CustomerCustomFieldAddedMessagePayload: !include message/payload/CustomerCustomFieldAddedMessagePayload.raml
+CustomerCustomFieldChangedMessagePayload: !include message/payload/CustomerCustomFieldChangedMessagePayload.raml
+CustomerCustomFieldRemovedMessagePayload: !include message/payload/CustomerCustomFieldRemovedMessagePayload.raml
+CustomerCustomTypeRemovedMessagePayload: !include message/payload/CustomerCustomTypeRemovedMessagePayload.raml
+CustomerCustomTypeSetMessagePayload: !include message/payload/CustomerCustomTypeSetMessagePayload.raml
 CustomerDateOfBirthSetMessagePayload: !include message/payload/CustomerDateOfBirthSetMessagePayload.raml
 CustomerDeletedMessagePayload: !include message/payload/CustomerDeletedMessagePayload.raml
 CustomerEmailChangedMessagePayload: !include message/payload/CustomerEmailChangedMessagePayload.raml
@@ -1096,6 +1123,7 @@ ProductVariantDeletedMessagePayload: !include message/payload/ProductVariantDele
 QuoteCreatedMessagePayload: !include message/payload/QuoteCreatedMessagePayload.raml
 QuoteCustomerChangedMessagePayload: !include message/payload/QuoteCustomerChangedMessagePayload.raml
 QuoteDeletedMessagePayload: !include message/payload/QuoteDeletedMessagePayload.raml
+QuoteRenegotiationRequestedMessagePayload: !include message/payload/QuoteRenegotiationRequestedMessagePayload.raml
 QuoteRequestCreatedMessagePayload: !include message/payload/QuoteRequestCreatedMessagePayload.raml
 QuoteRequestCustomerChangedMessagePayload: !include message/payload/QuoteRequestCustomerChangedMessagePayload.raml
 QuoteRequestDeletedMessagePayload: !include message/payload/QuoteRequestDeletedMessagePayload.raml
@@ -1124,6 +1152,8 @@ StandalonePriceExternalDiscountSetMessagePayload: !include message/payload/Stand
 StandalonePriceKeySetMessagePayload: !include message/payload/StandalonePriceKeySetMessagePayload.raml
 # yamllint disable-line rule:line-length
 StandalonePriceStagedChangesAppliedMessagePayload: !include message/payload/StandalonePriceStagedChangesAppliedMessagePayload.raml
+# yamllint disable-line rule:line-length
+StandalonePriceStagedChangesRemovedMessagePayload: !include message/payload/StandalonePriceStagedChangesRemovedMessagePayload.raml
 StandalonePriceTierAddedMessagePayload: !include message/payload/StandalonePriceTierAddedMessagePayload.raml
 StandalonePriceTierRemovedMessagePayload: !include message/payload/StandalonePriceTierRemovedMessagePayload.raml
 StandalonePriceTiersSetMessagePayload: !include message/payload/StandalonePriceTiersSetMessagePayload.raml
@@ -1804,6 +1834,7 @@ StagedQuoteSetCustomTypeAction: !include staged-quote/updates/StagedQuoteSetCust
 StagedQuoteSetSellerCommentAction: !include staged-quote/updates/StagedQuoteSetSellerCommentAction.raml
 StagedQuoteSetValidToAction: !include staged-quote/updates/StagedQuoteSetValidToAction.raml
 StagedQuoteTransitionStateAction: !include staged-quote/updates/StagedQuoteTransitionStateAction.raml
+StagedPriceDraft: !include standalone-price/StagedPriceDraft.raml
 StagedStandalonePrice: !include standalone-price/StagedStandalonePrice.raml
 StandalonePrice: !include standalone-price/StandalonePrice.raml
 StandalonePriceDraft: !include standalone-price/StandalonePriceDraft.raml
@@ -1817,6 +1848,8 @@ StandalonePriceApplyStagedChangesAction: !include standalone-price/updates/Stand
 StandalonePriceChangeActiveAction: !include standalone-price/updates/StandalonePriceChangeActiveAction.raml
 StandalonePriceChangeValueAction: !include standalone-price/updates/StandalonePriceChangeValueAction.raml
 StandalonePriceRemovePriceTierAction: !include standalone-price/updates/StandalonePriceRemovePriceTierAction.raml
+# yamllint disable-line rule:line-length
+StandalonePriceRemoveStagedChangesAction: !include standalone-price/updates/StandalonePriceRemoveStagedChangesAction.raml
 StandalonePriceSetCustomFieldAction: !include standalone-price/updates/StandalonePriceSetCustomFieldAction.raml
 StandalonePriceSetCustomTypeAction: !include standalone-price/updates/StandalonePriceSetCustomTypeAction.raml
 StandalonePriceSetDiscountedPriceAction: !include standalone-price/updates/StandalonePriceSetDiscountedPriceAction.raml
