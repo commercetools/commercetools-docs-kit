@@ -47,7 +47,7 @@
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
     "@sentry/browser": "7.61.1",
-    "@svgr/webpack": "8.0.1",
+    "@svgr/webpack": "8.1.0",
     "@videojs/themes": "^1.0.1",
     "assert": "2.0.0",
     "docsearch.js": "2.6.3",
