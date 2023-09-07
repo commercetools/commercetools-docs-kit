@@ -263,7 +263,9 @@ const Title = styled.span`
   color: ${(props) =>
     props.isExpanded
       ? designSystem.colors.light.websitePrimaryColor
-      : designSystem.colors.light.textSecondary};
+      : props.level > 0
+      ? designSystem.colors.light.textSecondary
+      : designSystem.colors.light.textPrimary};
   font-weight: ${(props) =>
     props.isExpanded
       ? designSystem.typography.fontWeights.medium
@@ -272,7 +274,9 @@ const Title = styled.span`
 
 const ChapterTitle = (props) => (
   <ChapterTitleWrapper level={props.level} onClick={() => props.toggleExpand()}>
-    <Title isExpanded={props.isExpanded}>{props.text}</Title>
+    <Title isExpanded={props.isExpanded} level={props.level}>
+      {props.text}
+    </Title>
     {props.isExpanded ? (
       <MinimizeIcon size="medium" />
     ) : (
