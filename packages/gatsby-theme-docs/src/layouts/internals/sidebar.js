@@ -99,7 +99,7 @@ const LinkSubtitle = styled.div`
 const linkStyles = css`
   padding-left: ${designSystem.dimensions.spacings.l};
   text-decoration: none;
-  color: ${designSystem.colors.light.textSecondary};
+  color: ${designSystem.colors.light.textPrimary};
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -263,8 +263,6 @@ const Title = styled.span`
   color: ${(props) =>
     props.isExpanded
       ? designSystem.colors.light.websitePrimaryColor
-      : props.level > 0
-      ? designSystem.colors.light.textSecondary
       : designSystem.colors.light.textPrimary};
   font-weight: ${(props) =>
     props.isExpanded
