@@ -236,7 +236,7 @@ const CaretContainer = styled.div`
 // eslint-disable-next-line react/display-name
 const LayoutHeader = forwardRef((props, ref) => {
   const siteData = useSiteData();
-  const siteContextMap = useTopMenuItems();
+  const { siteContextMap } = useTopMenuItems();
 
   const handleTopMenuButtonKeyPress = (event) => {
     const enterOrSpace =

@@ -13,7 +13,7 @@ import getSiteContextTitleByPath from '../utils/get-site-context-title';
 
 const SEO = (props) => {
   const siteData = useSiteData();
-  const siteContextMap = useTopMenuItems();
+  const { siteContextMap } = useTopMenuItems();
   const siteContextTitle = getSiteContextTitleByPath(
     siteContextMap,
     siteData.pathPrefix

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
@@ -9,6 +9,8 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 import GlobalNavigationLink from './global-navigation-link';
 import BetaTag from './beta-tag';
+import useTopMenuItems from '../hooks/use-top-menu-items';
+import { MenuColumn, flattenLabels } from './top-menu-new';
 
 const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
@@ -95,10 +97,12 @@ const contentGridStyle = css`
   }
 `;
 const LeftBlank = styled.div`
+  background-color: blue;
   grid-area: menu-left-blank;
 `;
 const Center = styled.div`
   grid-area: menu-main;
+  display: flex;
   width: calc(100% - ${designSystem.dimensions.spacings.m});
   margin-left: ${designSystem.dimensions.spacings.m};
 
@@ -128,11 +132,14 @@ const Columns = styled.div`
   }
 `;
 const Column = styled.div`
-  padding: ${designSystem.dimensions.spacings.xl} 0;
-
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    padding: ${designSystem.dimensions.spacings.m};
-  }
+  display: flex;
+  width: calc(100% / 3);
+  max-width: calc(100% / 3);
+  flex-direction: column;
+  background-color: aqua;
+  border: 1px solid black;
+  transition: transform 0.3s ease; /* Add a transition for smooth animation */
+  transform: translateX(0); /* Initially, the columns are not translated */
 `;
 const SideColumn = styled(Column)`
   border-left: 1px solid ${designSystem.colors.light.borderSecondary};
@@ -160,28 +167,52 @@ const ColumnTitle = styled.div`
 `;
 
 const TopMenu = (props) => {
-  const data = useStaticQuery(graphql`
-    query GetTopMenuLinks {
-      allTopMenuYaml {
-        nodes {
-          id
-          menuTitle
-          items {
-            label
-            href
-            beta
-          }
-        }
-      }
-      allTopSideMenuYaml {
-        nodes {
-          id
-          label
-          href
-        }
+  const { topMenuItems } = useTopMenuItems();
+  const [level2Items, setLevel2Items] = useState();
+  const [level3Items, setLevel3Items] = useState();
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const onMenuItemSelected = (level, idx) => {
+    if (selectedItems.length === 0) {
+      // selected items is empty, nothing to worry
+      setSelectedItems([`${level}-${idx}`]);
+    } else {
+      if (level === 1) {
+        // we're changing the root selection, let's just reset selected items
+        setSelectedItems([`${level}-${idx}`]);
+      } else {
+        // changing a 2nd level item, keeps the first level selection
+        const localCopy =
+          selectedItems.length > 1
+            ? selectedItems.slice(0, -1)
+            : [...selectedItems];
+
+        localCopy.push(`${level}-${idx}`);
+        setSelectedItems(localCopy);
       }
     }
-  `);
+  };
+
+  useEffect(() => {
+    let indexLevel1;
+    let indexLevel2;
+    if (selectedItems[0]) {
+      indexLevel1 = selectedItems[0].split('-')[1];
+      const selectedLevel1 = topMenuItems[indexLevel1];
+      if (selectedLevel1?.items?.length > 0) {
+        setLevel2Items(selectedLevel1.items);
+      }
+    }
+    if (selectedItems[1]) {
+      indexLevel2 = selectedItems[1].split('-')[1];
+      const baseItems = flattenLabels(topMenuItems[indexLevel1].items);
+      console.log('indexLevel2', indexLevel2);
+      const selectedLevel2 = baseItems[indexLevel2];
+      if (selectedLevel2?.items?.length > 0) {
+        setLevel3Items(selectedLevel2.items);
+      }
+    }
+  }, [selectedItems, topMenuItems]);
 
   return (
     <Container>
@@ -196,7 +227,25 @@ const TopMenu = (props) => {
         <div css={props.centered ? centeredContainerStyle : contentGridStyle}>
           <LeftBlank />
           <Center>
-            <Columns>
+            <MenuColumn
+              isExpanded={true}
+              items={topMenuItems}
+              level={1}
+              onSelected={onMenuItemSelected}
+            />
+            <MenuColumn
+              isExpanded={selectedItems?.length >= 1}
+              items={level2Items}
+              onSelected={onMenuItemSelected}
+              level={2}
+            />
+            <MenuColumn
+              isExpanded={selectedItems?.length >= 2}
+              items={level3Items}
+              level={3}
+              onSelected={onMenuItemSelected}
+            />
+            {/* <Columns>
               {data.allTopMenuYaml.nodes.map((node) => (
                 <Column key={node.id}>
                   <SpacingsStack scale="s">
@@ -215,19 +264,7 @@ const TopMenu = (props) => {
                   </SpacingsStack>
                 </Column>
               ))}
-              <SideColumn>
-                <SpacingsStack scale="l">
-                  <SpacingsStack scale="s">
-                    {data.allTopSideMenuYaml.nodes.map((node) => (
-                      <GlobalNavigationLink href={node.href} key={node.id}>
-                        {node.label}
-                      </GlobalNavigationLink>
-                    ))}
-                  </SpacingsStack>
-                  <TopMenuBannerArea />
-                </SpacingsStack>
-              </SideColumn>
-            </Columns>
+            </Columns> */}
           </Center>
         </div>
       </Content>
