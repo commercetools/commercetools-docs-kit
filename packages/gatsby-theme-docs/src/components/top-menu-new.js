@@ -1,20 +1,31 @@
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+const rightSlideOpenAnimation = keyframes`
+  from {
+    transform: width(0);
+  }
+  to {
+    transform: width(33%);
+  }
+`;
 
 const Container = styled.div`
   display: flex;
-  width: calc(100% / 3);
+  ${(props) => (props.isExpanded ? `width: calc(100% / 3);` : 'width: 0;')};
   max-width: calc(100% / 3);
   flex-direction: column;
   background-color: aqua;
   border: 1px solid black;
-  transition: transform 0.3s ease; /* Add a transition for smooth animation */
-  transform: translateX(0); /* Initially, the columns are not translated */
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.15s ease-in-out;
 `;
 
 const getMenuItemStyle = (props) => css`
+  background-color: ${props.isSelected ? 'lightgreen' : 'transparent'};
   border: 1px solid black;
 `;
 
@@ -54,17 +65,23 @@ MenuItem.propTypes = {
   text: PropTypes.string,
   onSelected: PropTypes.func,
   href: PropTypes.string,
+  // eslint-disable-next-line react/no-unused-prop-types
+  isSelected: PropTypes.bool,
+  // eslint-disable-next-line react/no-unused-prop-types
+  isLabel: PropTypes.bool,
 };
 
 export const MenuColumn = (props) => {
   const [localItems, setLocalItems] = useState([]);
   useEffect(() => {
-    setLocalItems(preProcessItems(props.items));
+    setLocalItems(flattenLabels(props.items));
   }, [props.items]);
 
-  const menuItem = (item, index) => {
+  const renderMenuItem = (item, index) => {
     let isLabel = false;
     let text = item.title;
+    const isSelected = props.selectedIndex === index;
+
     if (item.label) {
       isLabel = true;
       text = item.label;
@@ -80,20 +97,24 @@ export const MenuColumn = (props) => {
         icon={item.icon}
         text={text}
         href={item.href}
+        isSelected={isSelected}
         onSelected={() => !isLabel && props.onSelected(props.level, index)}
       />
     );
   };
 
-  return props.isExpanded ? (
-    <Container>{localItems?.map(menuItem)}</Container>
-  ) : null;
+  return (
+    <Container isExpanded={props.isExpanded}>
+      {localItems?.map(renderMenuItem)}
+    </Container>
+  );
 };
 
 MenuColumn.propTypes = {
   level: PropTypes.number.isRequired,
   onSelected: PropTypes.func,
   isExpanded: PropTypes.bool.isRequired,
+  selectedIndex: PropTypes.number,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       menuTitle: PropTypes.string,
@@ -106,7 +127,7 @@ MenuColumn.propTypes = {
   ),
 };
 
-export const preProcessItems = (items) => {
+export const flattenLabels = (items) => {
   const processedItems = [];
   if (!items) {
     return processedItems;

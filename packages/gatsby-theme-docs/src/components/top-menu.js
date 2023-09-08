@@ -193,6 +193,12 @@ const TopMenu = (props) => {
     }
   };
 
+  const getSelectedIndex = (level) => {
+    if (selectedItems?.[level]) {
+      return parseInt(selectedItems[level].split('-')[1], 10);
+    }
+  };
+
   useEffect(() => {
     let indexLevel1;
     let indexLevel2;
@@ -231,12 +237,14 @@ const TopMenu = (props) => {
               isExpanded={true}
               items={topMenuItems}
               level={1}
+              selectedIndex={getSelectedIndex(0)}
               onSelected={onMenuItemSelected}
             />
             <MenuColumn
               isExpanded={selectedItems?.length >= 1}
               items={level2Items}
               onSelected={onMenuItemSelected}
+              selectedIndex={getSelectedIndex(1)}
               level={2}
             />
             <MenuColumn
