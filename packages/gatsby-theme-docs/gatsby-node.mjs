@@ -29,7 +29,7 @@ const require = createRequire(import.meta.url);
 const moduleDirectory = path.dirname(fileURLToPath(import.meta.url));
 const { ContextReplacementPlugin } = webpack;
 
-const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
+const trimTrailingSlash = (url) => url?.replace(/(\/?)$/, '');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -168,6 +168,13 @@ export const createSchemaCustomization = ({ actions, schema }) => {
       pages: [NavigationPage!]
     }
     type NavigationPage {
+      title: String!
+      path: String
+      beta: Boolean
+      pages: [NavigationPageLv2]
+    }
+
+    type NavigationPageLv2 {
       title: String!
       path: String!
       beta: Boolean

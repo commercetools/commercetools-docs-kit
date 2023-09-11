@@ -10,8 +10,9 @@ import {
   AngleThinRightIcon,
 } from '@commercetools-uikit/icons';
 import { designSystem, TextSmall } from '@commercetools-docs/ui-kit';
+import { useSiteData } from '../hooks/use-site-data';
 
-const trimTrailingSlash = (url) => url.replace(/(\/?)$/, '');
+const trimTrailingSlash = (url) => url?.replace(/(\/?)$/, '');
 
 const isMatching = (a, b) => trimTrailingSlash(a) === trimTrailingSlash(b);
 
@@ -111,7 +112,23 @@ const isChapterPathOrPageMatchingSlug = (node, slug) => {
   if (node.path && isMatching(slug, node.path)) {
     return true;
   }
-  return node.pages.some((page) => isMatching(slug, page.path));
+  return isMatchingPage(node, slug);
+};
+
+const isMatchingPage = (node, slug) => {
+  let found = false;
+  node?.pages?.forEach((page) => {
+    if (isMatching(slug, page.path)) {
+      found = true;
+    } else {
+      if (page?.pages?.length > 0 && !found) {
+        found = isMatchingPage(page, slug);
+      } else {
+        return;
+      }
+    }
+  });
+  return found;
 };
 
 // TODO: cleanup. After docs websites migrate to clickable chapter, this function
@@ -131,6 +148,25 @@ const findActivePageIndex = (node, slug) => {
   if (index >= 0) {
     return index + indexOffset;
   }
+  // no index found...
+  if (index === -1) {
+    // try with subchapters
+    let localIndex = -1;
+    node.pages.forEach((page, pageIndex) => {
+      if (page.pages) {
+        const theIndex = page.pages.findIndex(
+          (subPage) => subPage.path && isMatching(slug, subPage.path)
+        );
+        if (theIndex > -1) {
+          localIndex = `${pageIndex}-${theIndex}`;
+          return;
+        }
+      }
+    });
+    if (localIndex !== -1) {
+      return localIndex;
+    }
+  }
   return index;
 };
 
@@ -149,6 +185,34 @@ const getPreviousPageLink = (node, currentIndex) => {
   return node.pages[currentIndex - 1];
 };
 
+const getPreviousPageLinkSub = (node, currentIndex) => {
+  if (typeof currentIndex === 'string') {
+    const indexes = currentIndex.split('-');
+    const rootIndex = parseInt(indexes?.[0]);
+    const subIndex = parseInt(indexes?.[1]);
+    if (rootIndex !== undefined && subIndex !== undefined) {
+      return node.pages[rootIndex].pages[subIndex - 1];
+    }
+    return;
+  } else {
+    return node.pages[currentIndex - 1];
+  }
+};
+
+const getNextPageLinkSub = (node, currentIndex) => {
+  if (typeof currentIndex === 'string') {
+    const indexes = currentIndex.split('-');
+    const rootIndex = parseInt(indexes?.[0]);
+    const subIndex = parseInt(indexes?.[1]);
+    if (rootIndex !== undefined && subIndex !== undefined) {
+      return node.pages[rootIndex].pages[subIndex + 1];
+    }
+    return;
+  } else {
+    return node.pages[currentIndex + 1];
+  }
+};
+
 // TODO: cleanup. After docs websites migrate to clickable chapter, this function
 // can be simplified/removed or refactored since is currently supporting both clickable
 // and non-clickable configs
@@ -158,11 +222,11 @@ const getNextPageLink = (node, currentIndex) => {
 };
 
 export const PurePagination = (props) => {
+  const siteData = useSiteData();
   const activeChapter = props.data.allNavigationYaml.nodes.find((node) => {
     const isPaginationEnabledForChapter =
       typeof node.pagination === 'boolean' ? node.pagination : true;
     if (!isPaginationEnabledForChapter) return false;
-    if (!node.pages) return false;
     return isChapterPathOrPageMatchingSlug(node, props.slug);
   });
 
@@ -170,14 +234,23 @@ export const PurePagination = (props) => {
     return <Container />;
   }
 
+  const isSelfLearning = siteData.siteMetadata?.isSelfLearning;
   const currentPageLinkIndex = findActivePageIndex(activeChapter, props.slug);
-  const hasPagination = currentPageLinkIndex > -1;
-  const previousPage = getPreviousPageLink(activeChapter, currentPageLinkIndex);
-  const nextPage = getNextPageLink(activeChapter, currentPageLinkIndex);
+  const hasPagination =
+    currentPageLinkIndex > -1 || typeof currentPageLinkIndex === 'string';
+  const previousPage = isSelfLearning
+    ? getPreviousPageLink(activeChapter, currentPageLinkIndex)
+    : getPreviousPageLinkSub(activeChapter, currentPageLinkIndex);
+  const nextPage = isSelfLearning
+    ? getNextPageLink(activeChapter, currentPageLinkIndex)
+    : getNextPageLinkSub(activeChapter, currentPageLinkIndex);
+
+  console.log('previousPage', previousPage, hasPagination);
+  console.log('nextPage', nextPage);
 
   return (
     <Container aria-label="Next / Previous in Chapter Navigation">
-      {hasPagination && previousPage ? (
+      {hasPagination && previousPage?.path ? (
         <PaginationLink
           linkTo={previousPage.path}
           label={previousPage.title}
@@ -186,7 +259,7 @@ export const PurePagination = (props) => {
       ) : (
         <span />
       )}
-      {hasPagination && nextPage ? (
+      {hasPagination && nextPage?.path ? (
         <PaginationLink
           linkTo={nextPage.path}
           label={nextPage.title}
@@ -210,8 +283,15 @@ PurePagination.propTypes = {
           pages: PropTypes.arrayOf(
             PropTypes.shape({
               title: PropTypes.string.isRequired,
-              path: PropTypes.string.isRequired,
+              path: PropTypes.string,
               beta: PropTypes.bool,
+              pages: PropTypes.arrayOf(
+                PropTypes.shape({
+                  title: PropTypes.string.isRequired,
+                  path: PropTypes.string.isRequired,
+                  beta: PropTypes.bool,
+                })
+              ),
             })
           ),
         })
@@ -233,6 +313,11 @@ const Pagination = (props) => {
             title
             path
             beta
+            pages {
+              title
+              path
+              beta
+            }
           }
         }
       }

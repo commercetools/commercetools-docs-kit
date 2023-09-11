@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/ui-kit",
   "description": "UI component library for building commercetools documentation websites",
-  "version": "22.4.0",
+  "version": "22.5.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -65,7 +65,7 @@
     "unist-util-filter": "5.0.0"
   },
   "devDependencies": {
-    "@svgr/cli": "8.0.1",
+    "@svgr/cli": "8.1.0",
     "@types/lodash.omitby": "4.6.7",
     "@types/raf-schd": "^4.0.1",
     "@types/react": "18.2.19",

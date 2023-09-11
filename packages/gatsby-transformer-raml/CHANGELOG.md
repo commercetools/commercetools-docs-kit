@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.6.0
+
+### Minor Changes
+
+- [#1790](https://github.com/commercetools/commercetools-docs-kit/pull/1790) [`f9185c6a`](https://github.com/commercetools/commercetools-docs-kit/commit/f9185c6a3c927d4c1edbeb0a5cc865adc19a48dc) Thanks [@timonrey](https://github.com/timonrey)! - Display the response content type correctly. It also enables support for other content types that are already supported in request bodies.
+
 ## 13.5.1
 
 ### Patch Changes

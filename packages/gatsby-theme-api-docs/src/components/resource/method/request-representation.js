@@ -43,6 +43,12 @@ const RequestRepresentation = (props) => {
     }
   `;
 
+  const requestDetails = renderTypeAsLink(
+    props.apiKey,
+    props.apiType,
+    typeLocations
+  );
+
   return (
     <SpacingsStack scale="xs">
       <Title>Request Body:</Title>
@@ -65,8 +71,10 @@ const RequestRepresentation = (props) => {
         <SpacingsInline alignItems="center">
           {primitiveJSONType ? (
             <Markdown.Em>{primitiveJSONType}</Markdown.Em>
+          ) : requestDetails === props.apiType ? (
+            <p>{requestDetails}</p>
           ) : (
-            renderTypeAsLink(props.apiKey, props.apiType, typeLocations)
+            requestDetails
           )}
           <span>as</span>
           <Markdown.InlineCodeWithoutBox>

@@ -21,6 +21,7 @@ import './globals.css';
 import ConfigContext from './src/components/config-context';
 import { LearningContextProvider } from './src/modules/self-learning/components/learning-context';
 import { PageReadyProvider } from './src/modules/self-learning/components/page-ready-context';
+import { SidebarContextProvider } from './src/components/sidebar-context';
 
 const isProduction = process.env.GATSBY_NODE_ENV === 'production';
 const commitSha = process.env.GATSBY_VERCEL_GITHUB_COMMIT_SHA;
@@ -128,14 +129,18 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
           >
             <PageReadyProvider>
               <LearningContextProvider>
-                <SWRConfig>{element}</SWRConfig>
+                <SidebarContextProvider>
+                  <SWRConfig>{element}</SWRConfig>
+                </SidebarContextProvider>
               </LearningContextProvider>
             </PageReadyProvider>
           </Auth0Provider>
         ) : (
           <PageReadyProvider>
             <LearningContextProvider>
-              <SWRConfig>{element}</SWRConfig>
+              <SidebarContextProvider>
+                <SWRConfig>{element}</SWRConfig>
+              </SidebarContextProvider>
             </LearningContextProvider>
           </PageReadyProvider>
         )}
