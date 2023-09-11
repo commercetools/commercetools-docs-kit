@@ -322,6 +322,7 @@ export const typography = {
   fontWeights: {
     regular: '400',
     medium: '500',
+    'light-bold': '600',
     bold: '700',
   },
 

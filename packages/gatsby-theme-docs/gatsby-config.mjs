@@ -49,6 +49,7 @@ const config = (themeOptions = {}) => {
       betaLink: '.',
       excludeFromSearchIndex: false,
       beta: false,
+      isSelfLearning: false,
       globalNotification: {
         active: false,
         notificationType: 'info',
