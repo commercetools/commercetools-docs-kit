@@ -1,16 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { css, keyframes } from '@emotion/react';
-
-const rightSlideOpenAnimation = keyframes`
-  from {
-    transform: width(0);
-  }
-  to {
-    transform: width(33%);
-  }
-`;
+import { css } from '@emotion/react';
+import { LordIcon } from '@commercetools-docs/ui-kit';
 
 const Container = styled.div`
   display: flex;
@@ -18,15 +10,14 @@ const Container = styled.div`
   max-width: calc(100% / 3);
   flex-direction: column;
   background-color: aqua;
-  border: 1px solid black;
   overflow: hidden;
   white-space: nowrap;
   transition: width 0.15s ease-in-out;
+  padding: 2px;
 `;
 
 const getMenuItemStyle = (props) => css`
   background-color: ${props.isSelected ? 'lightgreen' : 'transparent'};
-  border: 1px solid black;
 `;
 
 const getMenuItemStyleConditionalStyles = (props) => {
@@ -42,6 +33,13 @@ const getMenuItemStyleConditionalStyles = (props) => {
       `;
 };
 
+const MenuIconWrapper = styled.div``;
+
+const MenuItemWrapper = styled.div`
+  display: flex;
+  border-bottom: 1px solid black;
+`;
+
 const MenuItem = (props) => {
   const onClickHandler = () => {
     if (props.href) {
@@ -51,12 +49,27 @@ const MenuItem = (props) => {
     }
   };
   return (
-    <div
-      onClick={onClickHandler}
-      css={[getMenuItemStyle(props), getMenuItemStyleConditionalStyles(props)]}
-    >
-      {props.icon} - {props.text}
-    </div>
+    <MenuItemWrapper>
+      <MenuIconWrapper>
+        {props.icon && (
+          <LordIcon
+            trigger="hover"
+            iconName={props.icon}
+            height="24"
+            width="24"
+          />
+        )}
+      </MenuIconWrapper>
+      <div
+        onClick={onClickHandler}
+        css={[
+          getMenuItemStyle(props),
+          getMenuItemStyleConditionalStyles(props),
+        ]}
+      >
+        {props.text}
+      </div>
+    </MenuItemWrapper>
   );
 };
 

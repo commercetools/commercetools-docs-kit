@@ -97,12 +97,12 @@ const contentGridStyle = css`
   }
 `;
 const LeftBlank = styled.div`
-  background-color: blue;
   grid-area: menu-left-blank;
 `;
 const Center = styled.div`
   grid-area: menu-main;
   display: flex;
+  flex-direction: column;
   width: calc(100% - ${designSystem.dimensions.spacings.m});
   margin-left: ${designSystem.dimensions.spacings.m};
 
@@ -233,46 +233,29 @@ const TopMenu = (props) => {
         <div css={props.centered ? centeredContainerStyle : contentGridStyle}>
           <LeftBlank />
           <Center>
-            <MenuColumn
-              isExpanded={true}
-              items={topMenuItems}
-              level={1}
-              selectedIndex={getSelectedIndex(0)}
-              onSelected={onMenuItemSelected}
-            />
-            <MenuColumn
-              isExpanded={selectedItems?.length >= 1}
-              items={level2Items}
-              onSelected={onMenuItemSelected}
-              selectedIndex={getSelectedIndex(1)}
-              level={2}
-            />
-            <MenuColumn
-              isExpanded={selectedItems?.length >= 2}
-              items={level3Items}
-              level={3}
-              onSelected={onMenuItemSelected}
-            />
-            {/* <Columns>
-              {data.allTopMenuYaml.nodes.map((node) => (
-                <Column key={node.id}>
-                  <SpacingsStack scale="s">
-                    <ColumnTitle>{node.menuTitle}</ColumnTitle>
-                    {node.items.map((item, index) => (
-                      <SpacingsInline
-                        alignItems="center"
-                        key={`${node.id}-${index}`}
-                      >
-                        <GlobalNavigationLink href={item.href}>
-                          {item.label}
-                        </GlobalNavigationLink>
-                        {item.beta === true ? <BetaTag /> : null}
-                      </SpacingsInline>
-                    ))}
-                  </SpacingsStack>
-                </Column>
-              ))}
-            </Columns> */}
+            <MenuTop>
+              <MenuColumn
+                isExpanded={true}
+                items={topMenuItems}
+                level={1}
+                selectedIndex={getSelectedIndex(0)}
+                onSelected={onMenuItemSelected}
+              />
+              <MenuColumn
+                isExpanded={selectedItems?.length >= 1}
+                items={level2Items}
+                onSelected={onMenuItemSelected}
+                selectedIndex={getSelectedIndex(1)}
+                level={2}
+              />
+              <MenuColumn
+                isExpanded={selectedItems?.length >= 2}
+                items={level3Items}
+                level={3}
+                onSelected={onMenuItemSelected}
+              />
+            </MenuTop>
+            <MenuBottom>Bottom</MenuBottom>
           </Center>
         </div>
       </Content>
@@ -284,4 +267,11 @@ TopMenu.propTypes = {
   centered: PropTypes.bool,
 };
 
+const MenuTop = styled.div`
+  display: flex;
+`;
+
+const MenuBottom = styled.div`
+  background-color: pink;
+`;
 export default TopMenu;
