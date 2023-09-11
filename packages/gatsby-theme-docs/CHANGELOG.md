@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.6.0
+
+### Minor Changes
+
+- [#1812](https://github.com/commercetools/commercetools-docs-kit/pull/1812) [`dab7d476`](https://github.com/commercetools/commercetools-docs-kit/commit/dab7d4764c434c61fe2dbe78b255305a70f06af9) Thanks [@timonrey](https://github.com/timonrey)! - Introduces expandable chapters for the left-hand navigation. Please look at the navigation.yaml file in the docs-smoke-test to see the new data structure for navigations.
+
+### Patch Changes
+
+- Updated dependencies [[`dab7d476`](https://github.com/commercetools/commercetools-docs-kit/commit/dab7d4764c434c61fe2dbe78b255305a70f06af9)]:
+  - @commercetools-docs/ui-kit@22.6.0
+
 ## 22.5.0
 
 ### Patch Changes
