@@ -117,7 +117,7 @@ const isChapterPathOrPageMatchingSlug = (node, slug) => {
 
 const isMatchingPage = (node, slug) => {
   let found = false;
-  node?.pages.forEach((page) => {
+  node?.pages?.forEach((page) => {
     if (isMatching(slug, page.path)) {
       found = true;
     } else {
