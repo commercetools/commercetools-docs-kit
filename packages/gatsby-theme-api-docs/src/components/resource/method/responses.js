@@ -61,9 +61,14 @@ const Responses = ({ apiKey, responses, contentType }) => {
               <LinkContainer>
                 {responseDetails ? (
                   <SpacingsInline alignItems="center">
-                    {showDescription
-                      ? markdownFragmentToReact(response.description)
-                      : responseDetails}
+                    {showDescription ? (
+                      markdownFragmentToReact(response.description)
+                    ) : responseDetails ===
+                      response.body[contentType[index]].type ? (
+                      <p>{responseDetails}</p>
+                    ) : (
+                      responseDetails
+                    )}
                     {contentType.length > 0 && !showDescription && (
                       <>
                         <span>as</span>
