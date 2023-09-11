@@ -1,12 +1,10 @@
 - chapter-title: Getting Started
-  path: /getting-started/overview
   pages:
     - title: Install a site # prerequisites, checking out a repo, VSCode workspace, yarn install
       path: /getting-started/setup
     - title: Troubleshooting
       path: /getting-started/troubleshooting
 - chapter-title: Writing Content
-  path: /writing/overview
   pages:
     - title: Pages # filesystem convention, frontmatter, wide layouts
       path: /writing/pages
@@ -36,7 +34,6 @@
     - title: Lord Icons
       path: /writing/lord-icons
 - chapter-title: Creating API Documentation
-  path: /api-docs/overview
   pages:
     - title: Add RAML Specs # rmf-codegen/RAMLDOC, filesystem convention, links to specs and resourcess
       path: /api-docs/raml
@@ -47,7 +44,6 @@
     - title: Examples # examples in JSON files, example validation, multiple named examples
       path: /api-docs/examples
 - chapter-title: Configuration
-  path: /configuration/overview
   pages:
     - title: Theme Configuration
       path: /configuration/theme
@@ -70,7 +66,6 @@
     - title: Troubleshooting
       path: /configuration/troubleshooting
 - chapter-title: Developing
-  path: /developing/overview
   pages:
     - title: Get Started Developing
       path: /developing/getting-started

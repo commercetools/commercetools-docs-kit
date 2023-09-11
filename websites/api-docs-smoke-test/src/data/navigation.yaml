@@ -1,5 +1,4 @@
 - chapter-title: Layouts
-  path: /layouts/overview
   pages:
     - title: API Type Large Desktop
       path: /layouts/type-large-desktop
@@ -10,7 +9,6 @@
     - title: API Endpoint Regular Desktop
       path: /layouts/endpoint-regular-desktop
 - chapter-title: Types
-  path: /types/overview
   pages:
     - title: General
       path: /types/general
@@ -21,21 +19,18 @@
     - title: Enums, Constants & Unions
       path: /types/enums-constants-unions
 - chapter-title: Endpoints
-  path: /endpoints/overview
   pages:
     - title: Methods
       path: /endpoints/methods
     - title: All Endpoints of Resource
       path: /endpoints/endpoints-for-resource
 - chapter-title: E2E Tests
-  path: /e2e-tests/overview
   pages:
     - title: Soft Linking First Page
       path: /e2e-tests/soft-linking-first-page
     - title: Soft Linking Second Page
       path: /e2e-tests/soft-linking-second-page
 - chapter-title: Docs Replications
-  path: /docs-replications/overview
   pages:
     - title: Long Page with Many Types
       path: /docs-replications/long-page

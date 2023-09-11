@@ -112,7 +112,23 @@ const isChapterPathOrPageMatchingSlug = (node, slug) => {
   if (node.path && isMatching(slug, node.path)) {
     return true;
   }
-  return node?.pages?.some((page) => isMatching(slug, page.path));
+  return isMatchingPage(node, slug);
+};
+
+const isMatchingPage = (node, slug) => {
+  let found = false;
+  node?.pages.forEach((page) => {
+    if (isMatching(slug, page.path)) {
+      found = true;
+    } else {
+      if (page?.pages?.length > 0 && !found) {
+        found = isMatchingPage(page, slug);
+      } else {
+        return;
+      }
+    }
+  });
+  return found;
 };
 
 // TODO: cleanup. After docs websites migrate to clickable chapter, this function
@@ -132,6 +148,25 @@ const findActivePageIndex = (node, slug) => {
   if (index >= 0) {
     return index + indexOffset;
   }
+  // no index found...
+  if (index === -1) {
+    // try with subchapters
+    let localIndex = -1;
+    node.pages.forEach((page, pageIndex) => {
+      if (page.pages) {
+        const theIndex = page.pages.findIndex(
+          (subPage) => subPage.path && isMatching(slug, subPage.path)
+        );
+        if (theIndex > -1) {
+          localIndex = `${pageIndex}-${theIndex}`;
+          return;
+        }
+      }
+    });
+    if (localIndex !== -1) {
+      return localIndex;
+    }
+  }
   return index;
 };
 
@@ -148,6 +183,34 @@ const getPreviousPageLink = (node, currentIndex) => {
     }
   }
   return node.pages[currentIndex - 1];
+};
+
+const getPreviousPageLinkSub = (node, currentIndex) => {
+  if (typeof currentIndex === 'string') {
+    const indexes = currentIndex.split('-');
+    const rootIndex = parseInt(indexes?.[0]);
+    const subIndex = parseInt(indexes?.[1]);
+    if (rootIndex !== undefined && subIndex !== undefined) {
+      return node.pages[rootIndex].pages[subIndex - 1];
+    }
+    return;
+  } else {
+    return node.pages[currentIndex - 1];
+  }
+};
+
+const getNextPageLinkSub = (node, currentIndex) => {
+  if (typeof currentIndex === 'string') {
+    const indexes = currentIndex.split('-');
+    const rootIndex = parseInt(indexes?.[0]);
+    const subIndex = parseInt(indexes?.[1]);
+    if (rootIndex !== undefined && subIndex !== undefined) {
+      return node.pages[rootIndex].pages[subIndex + 1];
+    }
+    return;
+  } else {
+    return node.pages[currentIndex + 1];
+  }
 };
 
 // TODO: cleanup. After docs websites migrate to clickable chapter, this function
@@ -173,13 +236,17 @@ export const PurePagination = (props) => {
 
   const isSelfLearning = siteData.siteMetadata?.isSelfLearning;
   const currentPageLinkIndex = findActivePageIndex(activeChapter, props.slug);
-  const hasPagination = currentPageLinkIndex > -1;
+  const hasPagination =
+    currentPageLinkIndex > -1 || typeof currentPageLinkIndex === 'string';
   const previousPage = isSelfLearning
     ? getPreviousPageLink(activeChapter, currentPageLinkIndex)
-    : activeChapter.pages[currentPageLinkIndex - 1];
+    : getPreviousPageLinkSub(activeChapter, currentPageLinkIndex);
   const nextPage = isSelfLearning
     ? getNextPageLink(activeChapter, currentPageLinkIndex)
-    : activeChapter.pages[currentPageLinkIndex + 1];
+    : getNextPageLinkSub(activeChapter, currentPageLinkIndex);
+
+  console.log('previousPage', previousPage, hasPagination);
+  console.log('nextPage', nextPage);
 
   return (
     <Container aria-label="Next / Previous in Chapter Navigation">
