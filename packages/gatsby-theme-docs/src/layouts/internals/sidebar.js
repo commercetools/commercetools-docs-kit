@@ -521,7 +521,7 @@ const Sidebar = (props) => {
               }
               customStyles={css`
                 color: ${designSystem.colors.light.link} !important;
-                padding-left: ${designSystem.dimensions.spacings.m} !important;
+                padding-left: ${designSystem.dimensions.spacings.m};
                 text-decoration: underline;
                 :hover {
                   color: ${designSystem.colors.light.linkHover} !important;
