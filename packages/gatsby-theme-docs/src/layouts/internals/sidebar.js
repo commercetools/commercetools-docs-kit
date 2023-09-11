@@ -85,11 +85,13 @@ const WebsiteTitleLink = styled.a`
   }
 `;
 
+const ReleaseNoteLinkContainer = styled.div`
+  margin-bottom: ${designSystem.dimensions.spacings.s};
+`;
+
 const LinkSubtitle = styled.div`
   padding-left: ${(props) =>
     props.level === 1 ? designSystem.dimensions.spacings.s : '0px'};
-  height: ${(props) =>
-    props.isReleaseNoteLink ? designSystem.dimensions.spacings.l : 'auto'};
   font-size: ${designSystem.typography.fontSizes.small};
   text-overflow: ellipsis;
   overflow-x: hidden;
@@ -508,7 +510,7 @@ const Sidebar = (props) => {
       </SidebarHeader>
       <ScrollContainer id={scrollContainerId}>
         {shouldRenderLinkToReleaseNotes && (
-          <div>
+          <ReleaseNoteLinkContainer>
             <SidebarLink
               to="/releases"
               onClick={props.onLinkClick}
@@ -519,6 +521,7 @@ const Sidebar = (props) => {
               }
               customStyles={css`
                 color: ${designSystem.colors.light.link} !important;
+                padding-left: ${designSystem.dimensions.spacings.m} !important;
                 text-decoration: underline;
                 :hover {
                   color: ${designSystem.colors.light.linkHover} !important;
@@ -531,6 +534,10 @@ const Sidebar = (props) => {
               `}
               customActiveStyles={css`
                 color: ${designSystem.colors.light.linkNavigation} !important;
+                padding-left: calc(
+                  ${designSystem.dimensions.spacings.m} -
+                    ${designSystem.dimensions.spacings.xs}
+                ) !important;
                 text-decoration: none;
                 :hover {
                   color: ${designSystem.colors.light.linkNavigation} !important;
@@ -545,11 +552,17 @@ const Sidebar = (props) => {
                 />
               </SpacingsInline>
             </SidebarLink>
-          </div>
+          </ReleaseNoteLinkContainer>
         )}
         {shouldRenderBackToDocsLink && (
           <div>
-            <SidebarLink to="/" onClick={props.onLinkClick}>
+            <SidebarLink
+              to="/"
+              onClick={props.onLinkClick}
+              customStyles={css`
+                padding-left: ${designSystem.dimensions.spacings.m} !important;
+              `}
+            >
               <SpacingsInline alignItems="center">
                 <BackIcon size="medium" />
                 <LinkSubtitle>{'Back to documentation'}</LinkSubtitle>
