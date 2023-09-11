@@ -10,7 +10,7 @@ import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 import GlobalNavigationLink from './global-navigation-link';
 import BetaTag from './beta-tag';
 import useTopMenuItems from '../hooks/use-top-menu-items';
-import { MenuColumn, flattenLabels } from './top-menu-new';
+import { BottomItems, MenuColumn, flattenLabels } from './top-menu-new';
 
 const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
@@ -255,7 +255,14 @@ const TopMenu = (props) => {
                 onSelected={onMenuItemSelected}
               />
             </MenuTop>
-            <MenuBottom>Bottom</MenuBottom>
+            <MenuBottom>
+              <ItemsWrapper>
+                <BottomItems
+                  items={topMenuItems.filter((item) => item.footerTitle)}
+                />
+              </ItemsWrapper>
+              <FeedbackWrapper>Feedback</FeedbackWrapper>
+            </MenuBottom>
           </Center>
         </div>
       </Content>
@@ -272,6 +279,15 @@ const MenuTop = styled.div`
 `;
 
 const MenuBottom = styled.div`
-  background-color: pink;
+  display: flex;
+  background-color: lightgray;
+`;
+
+const ItemsWrapper = styled.div`
+  flex: 2;
+`;
+const FeedbackWrapper = styled.div`
+  flex: 1;
+  background-color: bisque;
 `;
 export default TopMenu;

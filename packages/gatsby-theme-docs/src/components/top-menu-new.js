@@ -33,7 +33,16 @@ const getMenuItemStyleConditionalStyles = (props) => {
       `;
 };
 
-const MenuIconWrapper = styled.div``;
+const MenuIconWrapper = styled.div`
+  height: 24px;
+  width: 24px;
+  padding: 5px;
+
+  & svg {
+    height: 24px;
+    width: 24px;
+  }
+`;
 
 const MenuItemWrapper = styled.div`
   display: flex;
@@ -135,6 +144,30 @@ MenuColumn.propTypes = {
       icon: PropTypes.string,
       title: PropTypes.string,
       label: PropTypes.string,
+      beta: PropTypes.bool,
+    }).isRequired
+  ),
+};
+
+export const BottomItems = (props) => {
+  return props.items.map((item, index) => (
+    <MenuItem
+      key={index}
+      icon={item.icon}
+      text={item.footerTitle}
+      href={item.href}
+      onSelected={() => console.log('navigate')}
+    />
+  ));
+};
+
+BottomItems.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      footerTitle: PropTypes.string,
+      href: PropTypes.string,
+      icon: PropTypes.string,
+      title: PropTypes.string,
       beta: PropTypes.bool,
     }).isRequired
   ),
