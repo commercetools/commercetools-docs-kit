@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 22.6.0
+
+### Patch Changes
+
+- [#1817](https://github.com/commercetools/commercetools-docs-kit/pull/1817) [`d6ab0a04`](https://github.com/commercetools/commercetools-docs-kit/commit/d6ab0a0451b137e5268ae19b09c9183b4d7bdd77) Thanks [@timonrey](https://github.com/timonrey)! - Improve spacing of the request and response content type details.
+
+- Updated dependencies [[`dab7d476`](https://github.com/commercetools/commercetools-docs-kit/commit/dab7d4764c434c61fe2dbe78b255305a70f06af9)]:
+  - @commercetools-docs/ui-kit@22.6.0
+
 ## 22.5.0
 
 ### Minor Changes
