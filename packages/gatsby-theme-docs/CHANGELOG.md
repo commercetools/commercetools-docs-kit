@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.6.1
+
+### Patch Changes
+
+- [#1821](https://github.com/commercetools/commercetools-docs-kit/pull/1821) [`d15243ce`](https://github.com/commercetools/commercetools-docs-kit/commit/d15243ce18ffba7b2d53ddae6f3926a3c8a5679a) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix issue with sidebar navigation not scrolling to the actual expanded item when navigating through pages
+
 ## 22.6.0
 
 ### Minor Changes
