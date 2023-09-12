@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { Link, withPrefix } from 'gatsby';
@@ -26,7 +26,12 @@ import {
   SidebarContextApi,
   SidebarContextState,
 } from '../../components/sidebar-context';
-import { getItemDescendants, getItemAncestors } from './sidebar.utils';
+import {
+  getItemDescendants,
+  getItemAncestors,
+  isRightChapter,
+  isRightChapterRecursive,
+} from './sidebar.utils';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -315,30 +320,37 @@ const ChapterItem = styled.div`
 `;
 
 const Chapter = (props) => {
-  // TODO: move this logic to context initialization
-  const isRightChapter = (chapter) => {
-    return chapter.pages.find((page) =>
-      page.pages
-        ? isRightChapter(page)
-        : props.location.pathname.includes(page.path)
-    );
-  };
-  const ssrExpanded = isRightChapter(props.chapter);
+  const isSelectedChapter = isRightChapter(props.chapter, props.location);
+  const isSSRSelectedChapter = isRightChapterRecursive(
+    props.chapter,
+    props.location
+  );
   const { ancestorsMap } = useSidebarNavigationItems();
   const chapterId = `${props.level}-${props.index}`;
   const { setExpandedChapters } = useContext(SidebarContextApi);
   const { expandedChapters } = useContext(SidebarContextState);
 
-  if (ssrExpanded && !expandedChapters) {
-    const initialState = getItemAncestors(
-      props.level,
-      props.index,
-      ancestorsMap
-    );
-    if (initialState !== expandedChapters) {
-      setExpandedChapters(initialState);
+  useEffect(() => {
+    if (isSelectedChapter) {
+      const initialState = getItemAncestors(
+        props.level,
+        props.index,
+        ancestorsMap
+      );
+      const expandedItemsList =
+        initialState.length > 0 ? initialState : [chapterId];
+
+      if (expandedChapters) {
+        // this case happens in all the subsequent interactions with the UI (client side)
+        setExpandedChapters([...expandedChapters, ...expandedItemsList]);
+      } else {
+        // this case happens only on first page load (SSR)
+        setExpandedChapters(expandedItemsList);
+      }
     }
-  }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.location]); // we want to re-calculate the menu state only when the URL changes
 
   const toggleExpand = () => {
     if (expandedChapters?.includes(chapterId)) {
@@ -357,9 +369,13 @@ const Chapter = (props) => {
       setExpandedChapters(updatedState);
     }
   };
+
+  // the state of each chapter is based on the (expandedChapters) which is stored in the context.
+  // The initial SSR state (when context is not available) is handled by isSelecteChapter
   const isExpanded = expandedChapters
     ? expandedChapters.includes(chapterId)
-    : ssrExpanded;
+    : isSSRSelectedChapter;
+
   const elemId = `sidebar-chapter-${props.level}-${props.index}`;
   const chapterTitle =
     props.level === 0 ? props.chapter.chapterTitle : props.chapter.title;
