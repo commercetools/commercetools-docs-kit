@@ -331,20 +331,7 @@ const Chapter = (props) => {
   const { expandedChapters } = useContext(SidebarContextState);
 
   useEffect(() => {
-    if (isSelectedChapter && expandedChapters) {
-      // this case happens in all the subsequent interactions with the UI (client side)
-      if (!expandedChapters.includes(chapterId)) {
-        const expandedItemsList = getItemAncestors(
-          props.level,
-          props.index,
-          ancestorsMap
-        );
-
-        setExpandedChapters([...expandedChapters, ...expandedItemsList]);
-      }
-    }
-    if (isSelectedChapter && !expandedChapters) {
-      // this case happens only on first page load (SSR)
+    if (isSelectedChapter) {
       const initialState = getItemAncestors(
         props.level,
         props.index,
@@ -353,7 +340,13 @@ const Chapter = (props) => {
       const expandedItemsList =
         initialState.length > 0 ? initialState : [chapterId];
 
-      setExpandedChapters(expandedItemsList);
+      if (expandedChapters) {
+        // this case happens in all the subsequent interactions with the UI (client side)
+        setExpandedChapters([...expandedChapters, ...expandedItemsList]);
+      } else {
+        // this case happens only on first page load (SSR)
+        setExpandedChapters(expandedItemsList);
+      }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
