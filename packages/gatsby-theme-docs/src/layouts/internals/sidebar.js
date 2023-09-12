@@ -29,7 +29,8 @@ import {
 import {
   getItemDescendants,
   getItemAncestors,
-  areArraysEquals,
+  isRightChapter,
+  isRightChapterRecursive,
 } from './sidebar.utils';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
@@ -319,16 +320,11 @@ const ChapterItem = styled.div`
 `;
 
 const Chapter = (props) => {
-  const isRightChapter = (chapter) => {
-    return (
-      chapter.pages.find((page) =>
-        page.pages
-          ? isRightChapter(page)
-          : props.location.pathname.includes(page.path)
-      ) !== undefined
-    );
-  };
-  const isSelectedChapter = isRightChapter(props.chapter);
+  const isSelectedChapter = isRightChapter(props.chapter, props.location);
+  const isSSRSelectedChapter = isRightChapterRecursive(
+    props.chapter,
+    props.location
+  );
   const { ancestorsMap } = useSidebarNavigationItems();
   const chapterId = `${props.level}-${props.index}`;
   const { setExpandedChapters } = useContext(SidebarContextApi);
@@ -354,13 +350,10 @@ const Chapter = (props) => {
         props.index,
         ancestorsMap
       );
+      const expandedItemsList =
+        initialState.length > 0 ? initialState : [chapterId];
 
-      if (
-        initialState.length > 0 &&
-        !areArraysEquals(initialState, expandedChapters)
-      ) {
-        setExpandedChapters(initialState);
-      }
+      setExpandedChapters(expandedItemsList);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -388,7 +381,7 @@ const Chapter = (props) => {
   // The initial SSR state (when context is not available) is handled by isSelecteChapter
   const isExpanded = expandedChapters
     ? expandedChapters.includes(chapterId)
-    : isSelectedChapter;
+    : isSSRSelectedChapter;
 
   const elemId = `sidebar-chapter-${props.level}-${props.index}`;
   const chapterTitle =

@@ -18,30 +18,21 @@ export const getItemAncestors = (level, index, ancestorsMap) => {
   return [].concat(...ancestorsArray);
 };
 
-export const areArraysEquals = (arr1, arr2) => {
-  if (!arr1 || !arr2) {
+export const isRightChapter = (chapter, loc) => {
+  return (
+    chapter.pages.find((page) => loc.pathname.includes(page.path)) !== undefined
+  );
+};
+
+export const isRightChapterRecursive = (chapter, loc) => {
+  if (!loc) {
     return false;
   }
-  // Remove duplicates from both arrays using Set
-  const uniqueArr1 = [...new Set(arr1)];
-  const uniqueArr2 = [...new Set(arr2)];
-
-  // Check if the unique arrays have the same length
-  if (uniqueArr1.length !== uniqueArr2.length) {
-    return false;
-  }
-
-  // Sort both unique arrays
-  const sortedArr1 = uniqueArr1.slice().sort();
-  const sortedArr2 = uniqueArr2.slice().sort();
-
-  // Compare each element
-  for (let i = 0; i < sortedArr1.length; i++) {
-    if (sortedArr1[i] !== sortedArr2[i]) {
-      return false;
-    }
-  }
-
-  // If all elements match, the arrays have the same elements
-  return true;
+  return (
+    chapter.pages.find((page) =>
+      page.pages
+        ? isRightChapterRecursive(page, loc)
+        : loc.pathname.includes(page.path)
+    ) !== undefined
+  );
 };
