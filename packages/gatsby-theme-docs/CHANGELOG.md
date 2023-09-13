@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.6.2
+
+### Patch Changes
+
+- [#1823](https://github.com/commercetools/commercetools-docs-kit/pull/1823) [`4011442a`](https://github.com/commercetools/commercetools-docs-kit/commit/4011442a736b61949ed025f21f6c2d4f1d14ff3b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix an issue with chapters and menu items not being clickable when they appear under the shadow area at the top of the scrollbar
+
 ## 22.6.1
 
 ### Patch Changes
