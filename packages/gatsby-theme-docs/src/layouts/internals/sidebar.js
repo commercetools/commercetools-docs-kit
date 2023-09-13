@@ -521,6 +521,7 @@ const Sidebar = (props) => {
               nextScrollPosition > scrollFaderHeight / 2
                 ? 0 - scrollFaderHeight - 1
                 : 0 - nextScrollPosition / scrollFaderHeight,
+            'pointer-events': 'none',
           }}
         />
       </SidebarHeader>
