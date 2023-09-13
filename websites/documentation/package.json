@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/documentation",
-  "version": "8.2.1",
+  "version": "8.2.4",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -14,8 +14,8 @@
     "postbuild": "rm -rf ../../public/documentation && mkdir -p ../../public && mv public ../../public/documentation"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-code-examples": "22.5.0",
-    "@commercetools-docs/gatsby-theme-docs": "22.5.0",
+    "@commercetools-docs/gatsby-theme-code-examples": "22.6.0",
+    "@commercetools-docs/gatsby-theme-docs": "22.6.2",
     "gatsby": "5.11.0",
     "gatsby-cli": "5.11.0",
     "react": "18.2.0",

@@ -1,5 +1,28 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.6.2
+
+### Patch Changes
+
+- [#1823](https://github.com/commercetools/commercetools-docs-kit/pull/1823) [`4011442a`](https://github.com/commercetools/commercetools-docs-kit/commit/4011442a736b61949ed025f21f6c2d4f1d14ff3b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix an issue with chapters and menu items not being clickable when they appear under the shadow area at the top of the scrollbar
+
+## 22.6.1
+
+### Patch Changes
+
+- [#1821](https://github.com/commercetools/commercetools-docs-kit/pull/1821) [`d15243ce`](https://github.com/commercetools/commercetools-docs-kit/commit/d15243ce18ffba7b2d53ddae6f3926a3c8a5679a) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix issue with sidebar navigation not scrolling to the actual expanded item when navigating through pages
+
+## 22.6.0
+
+### Minor Changes
+
+- [#1812](https://github.com/commercetools/commercetools-docs-kit/pull/1812) [`dab7d476`](https://github.com/commercetools/commercetools-docs-kit/commit/dab7d4764c434c61fe2dbe78b255305a70f06af9) Thanks [@timonrey](https://github.com/timonrey)! - Introduces expandable chapters for the left-hand navigation. Please look at the navigation.yaml file in the docs-smoke-test to see the new data structure for navigations.
+
+### Patch Changes
+
+- Updated dependencies [[`dab7d476`](https://github.com/commercetools/commercetools-docs-kit/commit/dab7d4764c434c61fe2dbe78b255305a70f06af9)]:
+  - @commercetools-docs/ui-kit@22.6.0
+
 ## 22.5.0
 
 ### Patch Changes
