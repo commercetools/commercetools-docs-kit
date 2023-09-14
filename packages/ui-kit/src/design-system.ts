@@ -23,6 +23,7 @@ export type ThemeColorTokens = {
   surfaceSecondary1: string;
   surfaceSecondary2: string;
   surfaceSecondary3: string;
+  surfaceSecondaryTopMenu: string;
   surfaceInlineCode: string;
   surfaceCode: string;
   surfaceCodeCopy: string;
@@ -96,6 +97,7 @@ export const colors: ThemeColors = {
     surfaceSecondary1: designTokens.colorNeutral95,
     surfaceSecondary2: designTokens.colorNeutral90,
     surfaceSecondary3: designTokens.colorNeutral60,
+    surfaceSecondaryTopMenu: designTokens.colorNeutral98,
     surfaceInlineCode: designTokens.colorNeutral95,
     surfaceCode: designTokens.colorAccent,
     surfaceCodeCopy: designTokens.colorAccent30,

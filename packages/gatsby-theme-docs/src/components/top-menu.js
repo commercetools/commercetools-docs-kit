@@ -99,7 +99,6 @@ const LeftBlank = styled.div`
 `;
 const Center = styled.div`
   grid-area: menu-main;
-  background-color: red;
   /* width: calc(100% - ${designSystem.dimensions.spacings.m}); */
 
   /* @media screen and (${designSystem.dimensions.viewports.mobile}) {
@@ -271,12 +270,13 @@ TopMenu.propTypes = {
 
 const MenuTop = styled.div`
   display: flex;
-  flex-basis: auto;
 `;
 
 const MenuBottom = styled.div`
-  background-color: lightgray;
+  background-color: ${designSystem.colors.light.surfaceSecondaryTopMenu};
   display: flex;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 `;
 
 const ItemsWrapper = styled.div``;
@@ -285,6 +285,10 @@ const FeedbackWrapper = styled.div`
 `;
 
 const MenuContainer = styled.div`
-  background-color: transparent;
+  background-color: ${designSystem.colors.light.surfacePrimary};
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 `;
 export default TopMenu;

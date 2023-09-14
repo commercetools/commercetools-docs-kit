@@ -2,14 +2,13 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
-import { LordIcon } from '@commercetools-docs/ui-kit';
+import { LordIcon, designSystem } from '@commercetools-docs/ui-kit';
 
 const MenuColumnContainer = styled.div`
   display: flex;
   ${(props) =>
     props.isExpanded ? `flex: 0 0 calc(100% / 3);` : 'flex: 0 0 0'};
   flex-direction: column;
-  background-color: aqua;
   overflow: hidden;
   white-space: nowrap;
   transition: flex 0.5s ease-in-out;
@@ -33,19 +32,22 @@ const getMenuItemStyleConditionalStyles = (props) => {
 };
 
 const MenuIconWrapper = styled.div`
-  height: 24px;
-  width: 24px;
-  padding: 5px;
+  height: 32px;
+  width: 32px;
+  border: 1px solid ${designSystem.colors.light.surfaceSecondary2};
+  border-radius: 4px;
+  box-shadow: 0px 1px 2px 0px hsla(0, 0%, 41%, 0.15);
+  margin-right: 16px;
 
   & svg {
-    height: 24px;
-    width: 24px;
+    height: 32px;
+    width: 32px;
   }
 `;
 
 const MenuItemWrapper = styled.div`
   display: flex;
-  border-bottom: 1px solid black;
+  padding: 12px;
 `;
 
 const MenuItem = (props) => {
@@ -63,8 +65,8 @@ const MenuItem = (props) => {
           <LordIcon
             trigger="hover"
             iconName={props.icon}
-            height="24"
-            width="24"
+            height="32"
+            width="32"
           />
         </MenuIconWrapper>
       )}
@@ -91,6 +93,10 @@ MenuItem.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   isLabel: PropTypes.bool,
 };
+
+const MenuColumWrapper = styled.div`
+  padding: 24px 16px;
+`;
 
 export const MenuColumn = (props) => {
   const [localItems, setLocalItems] = useState([]);
@@ -126,7 +132,7 @@ export const MenuColumn = (props) => {
 
   return (
     <MenuColumnContainer {...props}>
-      {localItems?.map(renderMenuItem)}
+      <MenuColumWrapper>{localItems?.map(renderMenuItem)}</MenuColumWrapper>
     </MenuColumnContainer>
   );
 };
