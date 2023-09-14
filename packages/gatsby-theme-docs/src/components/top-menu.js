@@ -29,8 +29,6 @@ const Content = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  background-color: ${designSystem.colors.light.surfacePrimary};
-  box-shadow: ${designSystem.tokens.shadowForSearchDialog};
   margin: 0;
   padding: 0;
 
@@ -58,7 +56,7 @@ const contentGridStyle = css`
     [row1-start] 'menu-main' 1fr [row1-end]
     / 1fr;
 
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+  /* @media screen and (${designSystem.dimensions.viewports.tablet}) {
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / ${designSystem.dimensions.spacings.xl}
@@ -87,7 +85,7 @@ const contentGridStyle = css`
         ${designSystem.dimensions.widths.pageContentWithMargins}
       )
       minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
-  }
+  } */
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
@@ -101,19 +99,17 @@ const LeftBlank = styled.div`
 `;
 const Center = styled.div`
   grid-area: menu-main;
-  display: flex;
-  flex-direction: column;
-  width: calc(100% - ${designSystem.dimensions.spacings.m});
-  margin-left: ${designSystem.dimensions.spacings.m};
+  background-color: red;
+  /* width: calc(100% - ${designSystem.dimensions.spacings.m}); */
 
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+  /* @media screen and (${designSystem.dimensions.viewports.mobile}) {
     width: 100%;
     margin: 0;
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     width: calc(100% - ${designSystem.dimensions.spacings.xl});
-    margin: 0 0 0 ${designSystem.dimensions.spacings.xl};
-  }
+    margin: 0;
+  } */
 `;
 const Columns = styled.div`
   display: grid;
@@ -133,13 +129,8 @@ const Columns = styled.div`
 `;
 const Column = styled.div`
   display: flex;
-  width: calc(100% / 3);
-  max-width: calc(100% / 3);
   flex-direction: column;
-  background-color: aqua;
   border: 1px solid black;
-  transition: transform 0.3s ease; /* Add a transition for smooth animation */
-  transform: translateX(0); /* Initially, the columns are not translated */
 `;
 const SideColumn = styled(Column)`
   border-left: 1px solid ${designSystem.colors.light.borderSecondary};
@@ -170,7 +161,8 @@ const TopMenu = (props) => {
   const { topMenuItems } = useTopMenuItems();
   const [level2Items, setLevel2Items] = useState();
   const [level3Items, setLevel3Items] = useState();
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [columnCount, setColumnCount] = useState(2);
+  const [selectedItems, setSelectedItems] = useState(['0-0']);
 
   const onMenuItemSelected = (level, idx) => {
     if (selectedItems.length === 0) {
@@ -207,15 +199,16 @@ const TopMenu = (props) => {
       const selectedLevel1 = topMenuItems[indexLevel1];
       if (selectedLevel1?.items?.length > 0) {
         setLevel2Items(selectedLevel1.items);
+        setColumnCount(2);
       }
     }
     if (selectedItems[1]) {
       indexLevel2 = selectedItems[1].split('-')[1];
       const baseItems = flattenLabels(topMenuItems[indexLevel1].items);
-      console.log('indexLevel2', indexLevel2);
       const selectedLevel2 = baseItems[indexLevel2];
       if (selectedLevel2?.items?.length > 0) {
         setLevel3Items(selectedLevel2.items);
+        setColumnCount(3);
       }
     }
   }, [selectedItems, topMenuItems]);
@@ -233,36 +226,38 @@ const TopMenu = (props) => {
         <div css={props.centered ? centeredContainerStyle : contentGridStyle}>
           <LeftBlank />
           <Center>
-            <MenuTop>
-              <MenuColumn
-                isExpanded={true}
-                items={topMenuItems}
-                level={1}
-                selectedIndex={getSelectedIndex(0)}
-                onSelected={onMenuItemSelected}
-              />
-              <MenuColumn
-                isExpanded={selectedItems?.length >= 1}
-                items={level2Items}
-                onSelected={onMenuItemSelected}
-                selectedIndex={getSelectedIndex(1)}
-                level={2}
-              />
-              <MenuColumn
-                isExpanded={selectedItems?.length >= 2}
-                items={level3Items}
-                level={3}
-                onSelected={onMenuItemSelected}
-              />
-            </MenuTop>
-            <MenuBottom>
-              <ItemsWrapper>
-                <BottomItems
-                  items={topMenuItems.filter((item) => item.footerTitle)}
+            <MenuContainer columnCount={columnCount}>
+              <MenuTop>
+                <MenuColumn
+                  isExpanded={true}
+                  items={topMenuItems}
+                  level={1}
+                  selectedIndex={getSelectedIndex(0)}
+                  onSelected={onMenuItemSelected}
                 />
-              </ItemsWrapper>
-              <FeedbackWrapper>Feedback</FeedbackWrapper>
-            </MenuBottom>
+                <MenuColumn
+                  isExpanded={true}
+                  items={level2Items}
+                  onSelected={onMenuItemSelected}
+                  selectedIndex={getSelectedIndex(1)}
+                  level={2}
+                />
+                <MenuColumn
+                  isExpanded={selectedItems?.length >= 2}
+                  items={level3Items}
+                  level={3}
+                  onSelected={onMenuItemSelected}
+                />
+              </MenuTop>
+              <MenuBottom>
+                <ItemsWrapper>
+                  <BottomItems
+                    items={topMenuItems.filter((item) => item.footerTitle)}
+                  />
+                </ItemsWrapper>
+                <FeedbackWrapper>Feedback</FeedbackWrapper>
+              </MenuBottom>
+            </MenuContainer>
           </Center>
         </div>
       </Content>
@@ -276,18 +271,20 @@ TopMenu.propTypes = {
 
 const MenuTop = styled.div`
   display: flex;
+  flex-basis: auto;
 `;
 
 const MenuBottom = styled.div`
-  display: flex;
   background-color: lightgray;
+  display: flex;
 `;
 
-const ItemsWrapper = styled.div`
-  flex: 2;
-`;
+const ItemsWrapper = styled.div``;
 const FeedbackWrapper = styled.div`
-  flex: 1;
   background-color: bisque;
+`;
+
+const MenuContainer = styled.div`
+  background-color: transparent;
 `;
 export default TopMenu;

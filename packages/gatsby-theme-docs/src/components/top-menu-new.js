@@ -4,16 +4,15 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { LordIcon } from '@commercetools-docs/ui-kit';
 
-const Container = styled.div`
+const MenuColumnContainer = styled.div`
   display: flex;
-  ${(props) => (props.isExpanded ? `width: calc(100% / 3);` : 'width: 0;')};
-  max-width: calc(100% / 3);
+  ${(props) =>
+    props.isExpanded ? `flex: 0 0 calc(100% / 3);` : 'flex: 0 0 0'};
   flex-direction: column;
   background-color: aqua;
   overflow: hidden;
   white-space: nowrap;
-  transition: width 0.15s ease-in-out;
-  padding: 2px;
+  transition: flex 0.5s ease-in-out;
 `;
 
 const getMenuItemStyle = (props) => css`
@@ -59,16 +58,16 @@ const MenuItem = (props) => {
   };
   return (
     <MenuItemWrapper>
-      <MenuIconWrapper>
-        {props.icon && (
+      {props.icon && (
+        <MenuIconWrapper>
           <LordIcon
             trigger="hover"
             iconName={props.icon}
             height="24"
             width="24"
           />
-        )}
-      </MenuIconWrapper>
+        </MenuIconWrapper>
+      )}
       <div
         onClick={onClickHandler}
         css={[
@@ -126,9 +125,9 @@ export const MenuColumn = (props) => {
   };
 
   return (
-    <Container isExpanded={props.isExpanded}>
+    <MenuColumnContainer {...props}>
       {localItems?.map(renderMenuItem)}
-    </Container>
+    </MenuColumnContainer>
   );
 };
 
