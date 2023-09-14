@@ -14,7 +14,6 @@ const Center = styled.div`
   > * + * {
     margin: ${designSystem.dimensions.spacings.l} 0 0;
     padding: ${designSystem.dimensions.spacings.l} 0 0;
-    border-top: 1px solid ${designSystem.colors.light.borderSecondary};
   }
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
@@ -26,7 +25,7 @@ const Center = styled.div`
   }
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     width: calc(100% - ${designSystem.dimensions.spacings.m} * 2);
-    margin: ${designSystem.dimensions.spacings.l}
+    margin: ${designSystem.dimensions.spacings.xl}
       ${designSystem.dimensions.spacings.m};
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
@@ -68,8 +67,8 @@ const SideColumn = styled(Column)`
 `;
 const ColumnTitle = styled.div`
   color: ${designSystem.colors.light.textPrimary};
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  font-weight: ${designSystem.typography.fontWeights.bold};
+  font-size: ${designSystem.typography.fontSizes.small};
+  font-weight: ${designSystem.typography.fontWeights['light-bold']};
   padding: 0 0 ${designSystem.dimensions.spacings.s} 0;
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
@@ -77,30 +76,28 @@ const ColumnTitle = styled.div`
   }
 `;
 const Row = styled.div`
-  display: grid;
-  grid:
-    [row1-start] 'footer-copy footer-links' auto [row1-end]
-    / 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    grid:
-      [row1-start] 'footer-links' auto [row1-end]
-      [row2-start] 'footer-copy' auto [row2-end]
-      / 1fr;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 const RowItem = styled.div`
-  grid-area: ${(props) => props.gridArea};
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    padding: ${designSystem.dimensions.spacings.m};
+    width: -webkit-fill-available;
+    padding: ${(props) =>
+      props.isLastSection
+        ? `0 ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.m}`
+        : designSystem.dimensions.spacings.m};
   }
 `;
 const CopyText = styled.div`
   font-size: ${designSystem.typography.fontSizes.extraSmall};
 `;
 const AlignedRight = styled.div`
-  text-align: right;
-
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     text-align: unset;
     > * + * {
@@ -111,24 +108,31 @@ const AlignedRight = styled.div`
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     > * + * {
       ::before {
-        content: '|';
         margin: 0 ${designSystem.dimensions.spacings.s};
       }
     }
+  }
+
+  svg {
+    padding-right: ${designSystem.dimensions.spacings.m};
   }
 `;
 
 const LayoutFooter = () => {
   const data = useStaticQuery(graphql`
     query GetFooterLinks {
-      allTopSideMenuYaml {
+      allFooterYaml {
         nodes {
           id
-          label
-          href
+          menuTitle
+          items {
+            label
+            href
+            beta
+          }
         }
       }
-      allFooterYaml {
+      allFooterLinksYaml {
         nodes {
           id
           label
@@ -153,10 +157,10 @@ const LayoutFooter = () => {
       <Columns>
         <Column>
           <MediaQuery forViewport="tablet">
-            <Icons.LogoHorizontalSvgIcon />
+            <Icons.CtLogoForFooter />
           </MediaQuery>
         </Column>
-        {/* {data.allTopMenuYaml.nodes.map((node) => (
+        {data.allFooterYaml.nodes.map((node) => (
           <Column key={node.id}>
             <SpacingsStack scale="s">
               <ColumnTitle>{node.menuTitle}</ColumnTitle>
@@ -170,42 +174,30 @@ const LayoutFooter = () => {
               ))}
             </SpacingsStack>
           </Column>
-        ))} */}
-        <SideColumn>
-          <SpacingsStack scale="s">
-            {data.allTopSideMenuYaml.nodes.map((node) => (
-              <GlobalNavigationLink href={node.href} key={node.id}>
-                {node.label}
-              </GlobalNavigationLink>
-            ))}
-            <GlobalNavigationLink href="https://ok.commercetools.com/user-research-program">
-              User Research Program
-            </GlobalNavigationLink>
-          </SpacingsStack>
-        </SideColumn>
+        ))}
       </Columns>
       <Row>
-        <RowItem gridArea="footer-copy">
-          <SpacingsStack>
-            <MediaQuery forViewport="mobile">
-              <Icons.LogoHorizontalSvgIcon height={64} />
-            </MediaQuery>
-            <SpacingsInline scale="m" alignItems="center">
-              <CopyText>
-                {'Copyright '}&copy;
-                {` ${new Date().getFullYear()} commercetools`}
-              </CopyText>
-            </SpacingsInline>
-          </SpacingsStack>
-        </RowItem>
-        <RowItem gridArea="footer-links">
+        <RowItem>
           <AlignedRight>
-            {data.allFooterYaml.nodes.map((node) => (
+            {data.allFooterLinksYaml.nodes.map((node) => (
               <GlobalNavigationLink href={node.href} key={node.id}>
                 {node.label}
               </GlobalNavigationLink>
             ))}
           </AlignedRight>
+        </RowItem>
+        <RowItem isLastSection>
+          <SpacingsInline alignItems="center" justifyContent="space-between">
+            <MediaQuery forViewport="mobile">
+              <Icons.CtLogoForFooter height={64} />
+            </MediaQuery>
+            <SpacingsInline scale="m" alignItems="center">
+              <CopyText>
+                &copy;
+                {` ${new Date().getFullYear()} commercetools`}
+              </CopyText>
+            </SpacingsInline>
+          </SpacingsInline>
         </RowItem>
       </Row>
     </Center>

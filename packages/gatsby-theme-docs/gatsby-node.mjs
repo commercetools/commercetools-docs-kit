@@ -202,6 +202,16 @@ export const createSchemaCustomization = ({ actions, schema }) => {
     }
     type FooterYaml implements Node @dontInfer {
       id: ID!
+      menuTitle: String! @proxy(from: "menu-title")
+      items: [FooterItem!]
+    }
+    type FooterItem {
+      label: String!
+      href: String!
+      beta: Boolean
+    }
+    type FooterLinksYaml implements Node @dontInfer {
+      id: ID!
       label: String!
       href: String!
     }
