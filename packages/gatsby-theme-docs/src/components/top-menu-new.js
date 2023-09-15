@@ -15,7 +15,8 @@ const MenuColumnContainer = styled.div`
 `;
 
 const getMenuItemStyle = (props) => css`
-  background-color: ${props.isSelected ? 'lightgreen' : 'transparent'};
+  display: flex;
+  align-items: center;
 `;
 
 const getMenuItemStyleConditionalStyles = (props) => {
@@ -23,7 +24,7 @@ const getMenuItemStyleConditionalStyles = (props) => {
     ? css`
         cursor: pointer;
         &:hover {
-          background-color: lightcoral;
+          background-color: transparent;
         }
       `
     : css`
@@ -32,22 +33,32 @@ const getMenuItemStyleConditionalStyles = (props) => {
 };
 
 const MenuIconWrapper = styled.div`
-  height: 32px;
-  width: 32px;
+  height: 30px;
+  width: 30px;
   border: 1px solid ${designSystem.colors.light.surfaceSecondary2};
   border-radius: 4px;
   box-shadow: 0px 1px 2px 0px hsla(0, 0%, 41%, 0.15);
   margin-right: 16px;
+  background-color: ${designSystem.colors.light.surfacePrimary};
 
   & svg {
-    height: 32px;
-    width: 32px;
+    height: 30px;
+    width: 30px;
   }
 `;
 
 const MenuItemWrapper = styled.div`
   display: flex;
   padding: 12px;
+  ${(props) =>
+    props.isSelected &&
+    `
+    border: 1px solid ${designSystem.colors.light.selectedItem};
+    border-radius: 4px;
+    background-color: ${designSystem.colors.light.selectedItemBackground};
+    color: ${designSystem.colors.light.selectedItemText};
+    font-weight: ${designSystem.typography.fontWeights['light-bold']}
+  `}
 `;
 
 const MenuItem = (props) => {
@@ -59,14 +70,14 @@ const MenuItem = (props) => {
     }
   };
   return (
-    <MenuItemWrapper>
+    <MenuItemWrapper isSelected={props.isSelected}>
       {props.icon && (
         <MenuIconWrapper>
           <LordIcon
             trigger="hover"
             iconName={props.icon}
-            height="32"
-            width="32"
+            height="30"
+            width="30"
           />
         </MenuIconWrapper>
       )}
@@ -77,7 +88,7 @@ const MenuItem = (props) => {
           getMenuItemStyleConditionalStyles(props),
         ]}
       >
-        {props.text}
+        <p>{props.text}</p>
       </div>
     </MenuItemWrapper>
   );

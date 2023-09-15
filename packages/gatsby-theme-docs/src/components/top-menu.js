@@ -90,7 +90,7 @@ const contentGridStyle = css`
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / ${designSystem.dimensions.widths.pageNavigation}
-      ${designSystem.dimensions.widths.pageContentWithMargins}
+      ${designSystem.dimensions.widths.topMenuTreeColums}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
 `;

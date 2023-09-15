@@ -30,11 +30,10 @@ type LordIconWrapperProps = {
 
 const LordIconWrapper = styled.div<LordIconWrapperProps>`
   display: inline-block;
-  height: ${(props) => props.height};
-  width: ${(props) => props.width};
+
   & :first-child {
-    height: ${(props) => props.height} !important;
-    width: ${(props) => props.width} !important;
+    height: ${(props) => props.height}px !important;
+    width: ${(props) => props.width}px !important;
   }
 `;
 
