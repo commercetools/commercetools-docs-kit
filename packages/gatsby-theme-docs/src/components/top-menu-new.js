@@ -70,12 +70,17 @@ const MenuItem = (props) => {
     }
   };
   return (
-    <MenuItemWrapper onClick={onClickHandler} isSelected={props.isSelected}>
+    <MenuItemWrapper
+      id={props.id}
+      onClick={onClickHandler}
+      isSelected={props.isSelected}
+    >
       {props.icon && (
         <MenuIconWrapper>
           <LordIcon
             trigger="hover"
             iconName={props.icon}
+            target={`#${[props.id]}`}
             height="30"
             width="30"
           />
@@ -94,6 +99,7 @@ const MenuItem = (props) => {
 };
 
 MenuItem.propTypes = {
+  id: PropTypes.string,
   icon: PropTypes.string,
   text: PropTypes.string,
   onSelected: PropTypes.func,
@@ -153,6 +159,7 @@ export const MenuColumn = (props) => {
       </MenuLabelItem>
     ) : (
       <MenuItem
+        id={`item-${props.level}-${index}`}
         key={index}
         icon={item.icon}
         text={text}
