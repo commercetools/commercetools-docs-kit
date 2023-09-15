@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { designSystem } from '@commercetools-docs/ui-kit';
-import TopMenuBannerArea from '../overrides/top-menu-banner-area';
-import GlobalNavigationLink from './global-navigation-link';
-import BetaTag from './beta-tag';
+import { Icons, designSystem } from '@commercetools-docs/ui-kit';
 import useTopMenuItems from '../hooks/use-top-menu-items';
 import { BottomItems, MenuColumn, flattenLabels } from './top-menu-new';
+import Link from './link';
 
 const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
@@ -110,51 +105,6 @@ const Center = styled.div`
     margin: 0;
   } */
 `;
-const Columns = styled.div`
-  display: grid;
-  grid-gap: ${designSystem.dimensions.spacings.m};
-  grid-auto-columns: 1fr;
-  grid-template-columns:
-    repeat(${(props) => React.Children.count(props.children) - 1}, 1fr)
-    25%;
-
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    grid-template-columns: 1fr;
-
-    > * + * {
-      border-top: 1px solid ${designSystem.colors.light.borderSecondary};
-    }
-  }
-`;
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-`;
-const SideColumn = styled(Column)`
-  border-left: 1px solid ${designSystem.colors.light.borderSecondary};
-  padding-left: ${designSystem.dimensions.spacings.xl};
-
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    border-left: unset;
-    padding-left: ${designSystem.dimensions.spacings.m};
-  }
-`;
-const ColumnTitle = styled.div`
-  color: ${designSystem.colors.light.textFaded};
-  border-bottom: 1px solid ${designSystem.colors.light.borderSecondary};
-  padding: 0 0 ${designSystem.dimensions.spacings.s} 0;
-  min-height: ${designSystem.dimensions.heights.megaMenuItemTitle};
-  display: flex;
-  align-items: flex-end;
-
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    border-bottom: unset;
-    min-height: auto;
-    display: block;
-    align-items: normal;
-  }
-`;
 
 const TopMenu = (props) => {
   const { topMenuItems } = useTopMenuItems();
@@ -249,12 +199,33 @@ const TopMenu = (props) => {
                 />
               </MenuTop>
               <MenuBottom>
-                <ItemsWrapper>
+                <ItemsArea>
                   <BottomItems
                     items={topMenuItems.filter((item) => item.footerTitle)}
                   />
-                </ItemsWrapper>
-                <FeedbackWrapper>Feedback</FeedbackWrapper>
+                </ItemsArea>
+                <FeedbackArea>
+                  <FeedbackContainer>
+                    <FeedBackContent>
+                      <Icons.CtLogoSvgIcon height={24} width={24} />
+                      <div
+                        css={{ display: 'flex', 'flex-direction': 'column' }}
+                      >
+                        <p>We want your feedback</p>
+                        <Link
+                          href="#"
+                          nounderline
+                          css={css`
+                            font-size: ${designSystem.typography.fontSizes
+                              .extraSmall};
+                          `}
+                        >
+                          Join our user research program
+                        </Link>
+                      </div>
+                    </FeedBackContent>
+                  </FeedbackContainer>
+                </FeedbackArea>
               </MenuBottom>
             </MenuContainer>
           </Center>
@@ -277,11 +248,35 @@ const MenuBottom = styled.div`
   display: flex;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  justify-content: space-between;
 `;
 
-const ItemsWrapper = styled.div``;
-const FeedbackWrapper = styled.div`
-  background-color: bisque;
+const ItemsArea = styled.div`
+  max-width: 400px;
+`;
+const FeedbackArea = styled.div`
+  padding-right: 40px;
+  display: flex;
+  align-items: center;
+`;
+
+const FeedbackContainer = styled.div`
+  border: 1px solid ${designSystem.colors.light.surfaceSecondary2};
+  background-color: ${designSystem.colors.light.surfacePrimary};
+  padding: 22px;
+`;
+
+const FeedBackContent = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: ${designSystem.typography.fontSizes.small} !important;
+  font-weight: ${designSystem.typography.fontWeights.regular};
+  & svg {
+    margin-right: 10px;
+  }
+  & a {
+    font-size: 14px;
+  }
 `;
 
 const MenuContainer = styled.div`

@@ -86,11 +86,13 @@ const MenuItem = (props) => {
           />
         </MenuIconWrapper>
       )}
-      <div css={[getMenuItemStyle(props)]}>
-        <p>{props.text}</p>
-      </div>
-      {props.isExpandible && (
-        <ExpandItemIcon isVisible={props.isSelected}>
+      {!props.isMini && (
+        <div css={[getMenuItemStyle(props)]}>
+          <p>{props.text}</p>
+        </div>
+      )}
+      {(props.isExpandible || props.isMini) && (
+        <ExpandItemIcon isVisible={props.isMini || props.isSelected}>
           <AngleRightIcon size="medium" />
         </ExpandItemIcon>
       )}
@@ -106,6 +108,7 @@ MenuItem.propTypes = {
   href: PropTypes.string,
   isSelected: PropTypes.bool,
   isExpandible: PropTypes.bool,
+  isMini: PropTypes.bool,
 };
 
 const MenuLabelItem = styled.div`
@@ -196,15 +199,20 @@ MenuColumn.propTypes = {
 };
 
 export const BottomItems = (props) => {
-  return props.items.map((item, index) => (
-    <MenuItem
-      key={index}
-      icon={item.icon}
-      text={item.footerTitle}
-      href={item.href}
-      onSelected={() => console.log('navigate')}
-    />
-  ));
+  return (
+    <MenuColumWrapper>
+      {props.items.map((item, index) => (
+        <MenuItem
+          id={`boottom-item-${index}`}
+          key={index}
+          icon={item.icon}
+          text={item.footerTitle}
+          href={item.href}
+          onSelected={() => console.log('navigate')}
+        />
+      ))}
+    </MenuColumWrapper>
+  );
 };
 
 BottomItems.propTypes = {
