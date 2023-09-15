@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { LordIcon, designSystem } from '@commercetools-docs/ui-kit';
+import { AngleRightIcon } from '@commercetools-uikit/icons';
 
 const MenuColumnContainer = styled.div`
   display: flex;
@@ -18,19 +19,6 @@ const getMenuItemStyle = (props) => css`
   display: flex;
   align-items: center;
 `;
-
-const getMenuItemStyleConditionalStyles = (props) => {
-  return !props.isLabel
-    ? css`
-        cursor: pointer;
-        &:hover {
-          background-color: transparent;
-        }
-      `
-    : css`
-        font-weight: bold;
-      `;
-};
 
 const MenuIconWrapper = styled.div`
   height: 30px;
@@ -50,6 +38,18 @@ const MenuIconWrapper = styled.div`
 const MenuItemWrapper = styled.div`
   display: flex;
   padding: 12px;
+  height: 32px;
+
+  &:hover {
+    background-color: ${designSystem.colors.light.selectedItemBackground};
+    border-radius: 4px;
+    cursor: pointer;
+    color: ${designSystem.colors.light.selectedItemText};
+    & :last-child {
+      visibility: visible;
+    }
+  }
+
   ${(props) =>
     props.isSelected &&
     `
@@ -70,7 +70,7 @@ const MenuItem = (props) => {
     }
   };
   return (
-    <MenuItemWrapper isSelected={props.isSelected}>
+    <MenuItemWrapper onClick={onClickHandler} isSelected={props.isSelected}>
       {props.icon && (
         <MenuIconWrapper>
           <LordIcon
@@ -81,15 +81,14 @@ const MenuItem = (props) => {
           />
         </MenuIconWrapper>
       )}
-      <div
-        onClick={onClickHandler}
-        css={[
-          getMenuItemStyle(props),
-          getMenuItemStyleConditionalStyles(props),
-        ]}
-      >
+      <div css={[getMenuItemStyle(props)]}>
         <p>{props.text}</p>
       </div>
+      {props.isExpandible && (
+        <ExpandItemIcon isVisible={props.isSelected}>
+          <AngleRightIcon size="medium" />
+        </ExpandItemIcon>
+      )}
     </MenuItemWrapper>
   );
 };
@@ -99,11 +98,29 @@ MenuItem.propTypes = {
   text: PropTypes.string,
   onSelected: PropTypes.func,
   href: PropTypes.string,
-  // eslint-disable-next-line react/no-unused-prop-types
   isSelected: PropTypes.bool,
-  // eslint-disable-next-line react/no-unused-prop-types
-  isLabel: PropTypes.bool,
+  isExpandible: PropTypes.bool,
 };
+
+const MenuLabelItem = styled.div`
+  font-weight: ${designSystem.typography.fontWeights['light-bold']};
+  padding: 0 12px;
+  margin-top: ${({ isFirstItem }) => (!isFirstItem ? '20px' : '0')};
+`;
+
+MenuLabelItem.propTypes = {
+  isFirstItem: PropTypes.bool,
+};
+
+const ExpandItemIcon = styled.div`
+  display: flex;
+  visibility: ${({ isVisible }) => (isVisible ? 'display' : 'hidden')};
+  align-items: center;
+  margin-left: auto;
+  & svg {
+    fill: ${designSystem.colors.light.selectedItemText};
+  }
+`;
 
 const MenuColumWrapper = styled.div`
   padding: 24px 16px;
@@ -128,14 +145,20 @@ export const MenuColumn = (props) => {
       text = item.menuTitle;
     }
 
-    return (
+    console.log(text, item.items ? 'expandible' : '');
+
+    return isLabel ? (
+      <MenuLabelItem key={index} isFirstItem={index === 0}>
+        {text}
+      </MenuLabelItem>
+    ) : (
       <MenuItem
-        isLabel={isLabel}
         key={index}
         icon={item.icon}
         text={text}
         href={item.href}
         isSelected={isSelected}
+        isExpandible={!isLabel && !!item.items}
         onSelected={() => !isLabel && props.onSelected(props.level, index)}
       />
     );
