@@ -1,8 +1,9 @@
 export { default as HttpApiSmallSvgIcon } from './HttpApiSmall';
 export { default as HttpApiSvgIcon } from './HttpApi';
 export { default as B2BTagSvgIcon } from './B2BTag';
+export { default as CtBannerForFooterSvgIcon } from './CtBannerForFooter';
+export { default as CtCubeForFooterSvgIcon } from './CtCubeForFooter';
 export { default as CtLogoSvgIcon } from './CtLogo';
-export { default as CtLogoForFooter } from './CtLogoForFooter';
 export { default as CustomApplicationSmallSvgIcon } from './CustomApplicationSmall';
 export { default as CustomApplicationSvgIcon } from './CustomApplication';
 export { default as LogoHorizontalSvgIcon } from './LogoHorizontal';

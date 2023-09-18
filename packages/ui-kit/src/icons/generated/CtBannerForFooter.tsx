@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
-const SvgCtLogoForFooter = (props: SVGProps<SVGSVGElement>) => (
+const SvgCtBannerForFooter = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={146}
@@ -31,4 +31,4 @@ const SvgCtLogoForFooter = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default SvgCtLogoForFooter;
+export default SvgCtBannerForFooter;

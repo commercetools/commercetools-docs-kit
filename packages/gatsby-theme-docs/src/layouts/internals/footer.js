@@ -37,14 +37,27 @@ const Center = styled.div`
     margin-left: ${designSystem.dimensions.spacings.xl};
   }
 `;
+
+const normalGridColumnTemplate = (children) => `repeat(
+  ${children},
+  1fr
+)`;
+
+const extendedGridColumnTemplate = (
+  children
+) => `${designSystem.dimensions.spacings.xl} repeat(
+  ${children},
+  1fr
+)`;
+
 const Columns = styled.div`
   display: grid;
-  grid-gap: ${designSystem.dimensions.spacings.xl};
+  grid-gap: ${designSystem.dimensions.spacings.big};
   grid-auto-columns: 1fr;
-  grid-template-columns: repeat(
-    ${(props) => React.Children.count(props.children)},
-    1fr
-  );
+  grid-template-columns: ${(props) =>
+    props.hasMoreThanThreeColumns
+      ? extendedGridColumnTemplate(React.Children.count(props.children) - 1)
+      : normalGridColumnTemplate(React.Children.count(props.children))};
 
   @media screen and (${designSystem.dimensions.viewports.mobile}) {
     display: block;
@@ -56,15 +69,6 @@ const Columns = styled.div`
   }
 `;
 const Column = styled.div``;
-const SideColumn = styled(Column)`
-  border-left: 1px solid ${designSystem.colors.light.borderSecondary};
-  padding-left: ${designSystem.dimensions.spacings.xl};
-
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    border-left: unset;
-    padding: ${designSystem.dimensions.spacings.m};
-  }
-`;
 const ColumnTitle = styled.div`
   color: ${designSystem.colors.light.textPrimary};
   font-size: ${designSystem.typography.fontSizes.small};
@@ -75,6 +79,7 @@ const ColumnTitle = styled.div`
     border-bottom: unset;
   }
 `;
+
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
@@ -152,12 +157,18 @@ const LayoutFooter = () => {
    * - render some elements using css grid with area names, so we can place
    *   the elements in the grid layout as we like
    */
+
+  const hasMoreThanThreeColumns = data.allFooterYaml.nodes.length > 3;
   return (
     <Center>
-      <Columns>
+      <Columns hasMoreThanThreeColumns={hasMoreThanThreeColumns}>
         <Column>
           <MediaQuery forViewport="tablet">
-            <Icons.CtLogoForFooter />
+            {hasMoreThanThreeColumns ? (
+              <Icons.CtCubeForFooterSvgIcon />
+            ) : (
+              <Icons.CtBannerForFooterSvgIcon />
+            )}
           </MediaQuery>
         </Column>
         {data.allFooterYaml.nodes.map((node) => (
@@ -189,7 +200,7 @@ const LayoutFooter = () => {
         <RowItem isLastSection>
           <SpacingsInline alignItems="center" justifyContent="space-between">
             <MediaQuery forViewport="mobile">
-              <Icons.CtLogoForFooter height={64} />
+              <Icons.CtBannerForFooterSvgIcon />
             </MediaQuery>
             <SpacingsInline scale="m" alignItems="center">
               <CopyText>
