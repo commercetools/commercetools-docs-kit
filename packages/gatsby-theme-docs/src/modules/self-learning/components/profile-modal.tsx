@@ -241,14 +241,15 @@ const ProfileModal = () => {
             </Label>
           ) : (
             <Label>
-              Your company association is not verified.
-              <br />
-              <Link
-                isExternal
-                to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
-              >
-                Please contact us to verify it.
-              </Link>
+              <SpacingsStack>
+                Your company association is not verified.
+                <Link
+                  isExternal
+                  to={`mailto:${mailToData.email}?subject=${mailToData.company_association_verify_request.subject}&body=${mailToData.company_association_verify_request.body}`}
+                >
+                  Please contact us to verify it.
+                </Link>
+              </SpacingsStack>
             </Label>
           )}
         </SpacingsStack>
