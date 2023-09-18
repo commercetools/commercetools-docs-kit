@@ -2,18 +2,31 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { navigate } from 'gatsby';
 import { useEffect, useState } from 'react';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import { LordIcon, designSystem } from '@commercetools-docs/ui-kit';
 import { AngleRightIcon } from '@commercetools-uikit/icons';
 
+const expandColumnAnimation = keyframes`
+  from { left:-376px }
+  to { left: 0 }
+`;
+
 const MenuColumnContainer = styled.div`
+  background-color: white;
   display: flex;
-  ${(props) =>
-    props.isExpanded ? `flex: 0 0 calc(100% / 3);` : 'flex: 0 0 0'};
+  z-index: ${(props) => (props.level < 3 ? '1' : '0')};
+  position: relative;
   flex-direction: column;
   overflow: hidden;
-  white-space: nowrap;
-  transition: flex 0.5s ease-in-out;
+  left: ${(props) => (props.level === 3 ? '-376px' : '0')};
+
+  ${(props) =>
+    props.isExpanded &&
+    props.level === 3 &&
+    css`
+      animation: ${expandColumnAnimation} 0.3s ease-out;
+      animation-fill-mode: forwards;
+    `}
 `;
 
 const getMenuItemStyle = (props) => css`

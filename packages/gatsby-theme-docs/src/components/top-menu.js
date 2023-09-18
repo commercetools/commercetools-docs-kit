@@ -270,12 +270,12 @@ TopMenu.propTypes = {
 };
 
 const MenuTop = styled.div`
-  display: flex;
+  display: inline-flex;
 `;
 
 const MenuBottom = styled.div`
   background-color: ${designSystem.colors.light.surfaceSecondaryTopMenu};
-  display: flex;
+  display: inline-flex;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   justify-content: space-between;
@@ -311,7 +311,7 @@ const FeedBackContent = styled.div`
 
 const MenuContainer = styled.div`
   background-color: ${designSystem.colors.light.surfacePrimary};
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
