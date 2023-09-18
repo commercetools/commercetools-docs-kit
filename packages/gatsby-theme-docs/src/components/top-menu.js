@@ -81,7 +81,35 @@ const contentGridStyle = css`
       )
       minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
   } */
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    grid:
+      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
+      / 57px
+      ${designSystem.dimensions.widths.topMenuTwoColums}
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+  }
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    grid:
+      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
+      / 57px
+      ${designSystem.dimensions.widths.topMenuTwoColums}
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+  }
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    grid:
+      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
+      / 57px
+      ${designSystem.dimensions.widths.topMenuTwoColums}
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+  }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    grid:
+      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
+      / ${designSystem.dimensions.widths.pageNavigation}
+      ${designSystem.dimensions.widths.topMenuTreeColums}
+      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+  }
+  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / ${designSystem.dimensions.widths.pageNavigation}
@@ -204,28 +232,30 @@ const TopMenu = (props) => {
                     items={topMenuItems.filter((item) => item.footerTitle)}
                   />
                 </ItemsArea>
-                <FeedbackArea>
-                  <FeedbackContainer>
-                    <FeedBackContent>
-                      <Icons.CtLogoSvgIcon height={24} width={24} />
-                      <div
-                        css={{ display: 'flex', 'flex-direction': 'column' }}
-                      >
-                        <p>We want your feedback</p>
-                        <Link
-                          href="#"
-                          nounderline
-                          css={css`
-                            font-size: ${designSystem.typography.fontSizes
-                              .extraSmall};
-                          `}
+                {selectedItems?.length >= 2 && (
+                  <FeedbackArea>
+                    <FeedbackContainer>
+                      <FeedBackContent>
+                        <Icons.CtLogoSvgIcon height={24} width={24} />
+                        <div
+                          css={{ display: 'flex', 'flex-direction': 'column' }}
                         >
-                          Join our user research program
-                        </Link>
-                      </div>
-                    </FeedBackContent>
-                  </FeedbackContainer>
-                </FeedbackArea>
+                          <p>We want your feedback</p>
+                          <Link
+                            href="#"
+                            nounderline
+                            css={css`
+                              font-size: ${designSystem.typography.fontSizes
+                                .extraSmall};
+                            `}
+                          >
+                            Join our user research program
+                          </Link>
+                        </div>
+                      </FeedBackContent>
+                    </FeedbackContainer>
+                  </FeedbackArea>
+                )}
               </MenuBottom>
             </MenuContainer>
           </Center>

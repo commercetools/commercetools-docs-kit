@@ -38,7 +38,7 @@ const MenuIconWrapper = styled.div`
 
 const MenuItemWrapper = styled.div`
   display: flex;
-  padding: 12px;
+  padding: 8px 12px 8px 8px;
   height: 32px;
 
   &:hover {

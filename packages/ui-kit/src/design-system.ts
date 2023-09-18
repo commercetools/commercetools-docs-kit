@@ -273,6 +273,7 @@ export const dimensions = {
     cardRegularMinWidthInContentColumn: '288px',
     topMenuSingleCoumn: topMenuSingleCoumn,
     topMenuTreeColums: `calc(${topMenuSingleCoumn} * 3)`,
+    topMenuTwoColums: `calc(${topMenuSingleCoumn} * 2)`,
   },
   viewports: {
     mobile: `max-width: calc(768px - 0.02px)`,
