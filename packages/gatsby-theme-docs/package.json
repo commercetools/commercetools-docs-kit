@@ -93,7 +93,7 @@
     "react-intl": "^6.2.8",
     "react-router-dom": "6.16.0",
     "rehype-slug": "5.1.0",
-    "remark-emoji": "3.1.2",
+    "remark-emoji": "4.0.0",
     "remark-frontmatter": "4.0.1",
     "remark-gfm": "3.0.1",
     "remark-mdx": "1.6.22",
