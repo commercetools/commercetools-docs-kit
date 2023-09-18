@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { navigate } from 'gatsby';
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { LordIcon, designSystem } from '@commercetools-docs/ui-kit';
@@ -64,8 +65,8 @@ const MenuItemWrapper = styled.div`
 const MenuItem = (props) => {
   const onClickHandler = () => {
     if (props.href) {
-      console.log('perform navigation to', props.href);
-    } else {
+      navigate(props.href);
+    } else if (props.onSelected) {
       props.onSelected();
     }
   };
@@ -154,8 +155,6 @@ export const MenuColumn = (props) => {
       text = item.menuTitle;
     }
 
-    console.log(text, item.items ? 'expandible' : '');
-
     return isLabel ? (
       <MenuLabelItem key={index} isFirstItem={index === 0}>
         {text}
@@ -208,7 +207,6 @@ export const BottomItems = (props) => {
           icon={item.icon}
           text={item.footerTitle}
           href={item.href}
-          onSelected={() => console.log('navigate')}
         />
       ))}
     </MenuColumWrapper>

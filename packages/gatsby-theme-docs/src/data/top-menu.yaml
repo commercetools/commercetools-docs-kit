@@ -6,7 +6,7 @@
         - label: APIs
           items:
             - title: HTTP APIs
-              href: /../path-to-page
+              href: /components/code-blocks
             - title: GraphQL APIs
               href: /../path-to-page
             - title: Import & Export APIs
