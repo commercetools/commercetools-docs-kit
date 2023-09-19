@@ -6,9 +6,14 @@ import { css, keyframes } from '@emotion/react';
 import { LordIcon, designSystem } from '@commercetools-docs/ui-kit';
 import { AngleRightIcon } from '@commercetools-uikit/icons';
 
-const expandColumnAnimation = keyframes`
-  from { left:-376px }
+const openColumnAnimation = keyframes`
+  from { left:-400px }
   to { left: 0 }
+`;
+
+const closeColumnAnimation = keyframes`
+  from { left:0 }
+  to { left: -400px }
 `;
 
 const MenuColumnContainer = styled.div`
@@ -21,11 +26,19 @@ const MenuColumnContainer = styled.div`
   left: ${(props) => (props.level === 3 ? '-376px' : '0')};
 
   ${(props) =>
-    props.isExpanded &&
     props.level === 3 &&
+    props.isExpanded &&
     css`
-      animation: ${expandColumnAnimation} 0.3s ease-out;
+      animation: ${openColumnAnimation} 0.3s ease-out;
       animation-fill-mode: forwards;
+    `}
+
+  ${(props) =>
+    props.level === 3 &&
+    !props.isExpanded &&
+    css`
+      animation: ${closeColumnAnimation} 0.3s ease-out;
+      animation-fill-mode: backwards;
     `}
 `;
 
@@ -153,7 +166,13 @@ export const MenuColumn = (props) => {
   const [localItems, setLocalItems] = useState([]);
   useEffect(() => {
     setLocalItems(flattenLabels(props.items));
-  }, [props.items]);
+  }, [props.items, props.isExpanded]);
+
+  const handleAnimationEnded = () => {
+    if (props.level === 3 && !props.isExpanded) {
+      setLocalItems([]);
+    }
+  };
 
   const renderMenuItem = (item, index) => {
     let isLabel = false;
@@ -187,10 +206,8 @@ export const MenuColumn = (props) => {
   };
 
   return (
-    <MenuColumnContainer {...props}>
-      <MenuColumWrapper>
-        {props.isExpanded && localItems?.map(renderMenuItem)}
-      </MenuColumWrapper>
+    <MenuColumnContainer onAnimationEnd={handleAnimationEnded} {...props}>
+      <MenuColumWrapper>{localItems?.map(renderMenuItem)}</MenuColumWrapper>
     </MenuColumnContainer>
   );
 };
