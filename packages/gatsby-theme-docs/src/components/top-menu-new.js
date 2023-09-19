@@ -188,7 +188,9 @@ export const MenuColumn = (props) => {
 
   return (
     <MenuColumnContainer {...props}>
-      <MenuColumWrapper>{localItems?.map(renderMenuItem)}</MenuColumWrapper>
+      <MenuColumWrapper>
+        {props.isExpanded && localItems?.map(renderMenuItem)}
+      </MenuColumWrapper>
     </MenuColumnContainer>
   );
 };
