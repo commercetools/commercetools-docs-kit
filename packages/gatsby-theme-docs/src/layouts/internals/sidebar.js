@@ -6,8 +6,8 @@ import { css, ClassNames } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
   BackIcon,
-  PlusBoldIcon,
-  MinimizeIcon,
+  AngleRightIcon,
+  AngleDownIcon,
 } from '@commercetools-uikit/icons';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -283,9 +283,9 @@ const ChapterTitle = (props) => (
       {props.text}
     </Title>
     {props.isExpanded ? (
-      <MinimizeIcon size="medium" />
+      <AngleDownIcon size="medium" />
     ) : (
-      <PlusBoldIcon size="medium" />
+      <AngleRightIcon size="medium" />
     )}
   </ChapterTitleWrapper>
 );
