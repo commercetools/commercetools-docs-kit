@@ -7,13 +7,27 @@ import { LordIcon, designSystem } from '@commercetools-docs/ui-kit';
 import { AngleRightIcon } from '@commercetools-uikit/icons';
 
 const openColumnAnimation = keyframes`
-  from { left:-400px }
-  to { left: 0 }
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+    width: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    width: 365px;
+  }
 `;
 
 const closeColumnAnimation = keyframes`
-  from { left:0 }
-  to { left: -400px }
+  from {
+    transform: translate3d(0, 0, 0);
+    width: 365px
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+    width: 0;
+  }
 `;
 
 const MenuColumnContainer = styled.div`
@@ -23,7 +37,7 @@ const MenuColumnContainer = styled.div`
   position: relative;
   flex-direction: column;
   overflow: hidden;
-  left: ${(props) => (props.level === 3 ? '-376px' : '0')};
+  width: ${(props) => (props.level === 3 ? '0' : '365px')};
 
   ${(props) =>
     props.level === 3 &&
@@ -36,9 +50,11 @@ const MenuColumnContainer = styled.div`
   ${(props) =>
     props.level === 3 &&
     !props.isExpanded &&
+    props.localItems?.length > 0 &&
     css`
       animation: ${closeColumnAnimation} 0.3s ease-out;
       animation-fill-mode: backwards;
+      animation-delay: 0.25s;
     `}
 `;
 
@@ -140,7 +156,7 @@ MenuItem.propTypes = {
 
 const MenuLabelItem = styled.div`
   font-weight: ${designSystem.typography.fontWeights['light-bold']};
-  padding: 0 12px;
+  padding: 0 8px;
   margin-top: ${({ isFirstItem }) => (!isFirstItem ? '20px' : '0')};
 `;
 
@@ -158,8 +174,41 @@ const ExpandItemIcon = styled.div`
   }
 `;
 
+const showContentAnimation = keyframes`
+  from {opacity: 0;}
+  to {opacity: 1;}
+`;
+
+const hideContentAnimation = keyframes`
+  from {opacity: 1;}
+  to {opacity: 0;}
+`;
+
 const MenuColumWrapper = styled.div`
   padding: 24px 16px;
+
+  ${(props) =>
+    props.level === 3 &&
+    css`
+      opacity: 0;
+    `}
+
+  ${(props) =>
+    props.level === 3 &&
+    props.isExpanded &&
+    css`
+      animation: ${showContentAnimation} 0.25s ease-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+    `}
+
+  ${(props) =>
+    props.level === 3 &&
+    !props.isExpanded &&
+    css`
+      animation: ${hideContentAnimation} 0.25s ease-out;
+      animation-fill-mode: backwards;
+    `}
 `;
 
 export const MenuColumn = (props) => {
@@ -168,9 +217,10 @@ export const MenuColumn = (props) => {
     setLocalItems(flattenLabels(props.items));
   }, [props.items, props.isExpanded]);
 
-  const handleAnimationEnded = () => {
+  const handleAnimationEnded = (a) => {
+    console.log(a.animationName);
     if (props.level === 3 && !props.isExpanded) {
-      setLocalItems([]);
+      // setLocalItems([]);
     }
   };
 
@@ -206,8 +256,16 @@ export const MenuColumn = (props) => {
   };
 
   return (
-    <MenuColumnContainer onAnimationEnd={handleAnimationEnded} {...props}>
-      <MenuColumWrapper>{localItems?.map(renderMenuItem)}</MenuColumWrapper>
+    <MenuColumnContainer
+      onAnimationEnd={handleAnimationEnded}
+      {...props}
+      localItems={localItems}
+    >
+      {localItems?.length > 0 && (
+        <MenuColumWrapper {...props}>
+          {localItems?.map(renderMenuItem)}
+        </MenuColumWrapper>
+      )}
     </MenuColumnContainer>
   );
 };

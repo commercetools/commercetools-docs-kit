@@ -232,30 +232,29 @@ const TopMenu = (props) => {
                     items={topMenuItems.filter((item) => item.footerTitle)}
                   />
                 </ItemsArea>
-                {selectedItems?.length >= 2 && (
-                  <FeedbackArea>
-                    <FeedbackContainer>
-                      <FeedBackContent>
-                        <Icons.CtLogoSvgIcon height={24} width={24} />
-                        <div
-                          css={{ display: 'flex', 'flex-direction': 'column' }}
+
+                <FeedbackArea isVisible={selectedItems?.length >= 2}>
+                  <FeedbackContainer>
+                    <FeedBackContent>
+                      <Icons.CtLogoSvgIcon height={24} width={24} />
+                      <div
+                        css={{ display: 'flex', 'flex-direction': 'column' }}
+                      >
+                        <p>We want your feedback</p>
+                        <Link
+                          href="#"
+                          nounderline
+                          css={css`
+                            font-size: ${designSystem.typography.fontSizes
+                              .extraSmall};
+                          `}
                         >
-                          <p>We want your feedback</p>
-                          <Link
-                            href="#"
-                            nounderline
-                            css={css`
-                              font-size: ${designSystem.typography.fontSizes
-                                .extraSmall};
-                            `}
-                          >
-                            Join our user research program
-                          </Link>
-                        </div>
-                      </FeedBackContent>
-                    </FeedbackContainer>
-                  </FeedbackArea>
-                )}
+                          Join our user research program
+                        </Link>
+                      </div>
+                    </FeedBackContent>
+                  </FeedbackContainer>
+                </FeedbackArea>
               </MenuBottom>
             </MenuContainer>
           </Center>
@@ -288,6 +287,8 @@ const FeedbackArea = styled.div`
   padding-right: 40px;
   display: flex;
   align-items: center;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  transition: opacity 0.3s ease-in-out;
 `;
 
 const FeedbackContainer = styled.div`
