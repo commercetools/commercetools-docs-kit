@@ -217,10 +217,10 @@ export const MenuColumn = (props) => {
     setLocalItems(flattenLabels(props.items));
   }, [props.items, props.isExpanded]);
 
-  const handleAnimationEnded = (a) => {
-    console.log(a.animationName);
+  const handleAnimationEnded = () => {
     if (props.level === 3 && !props.isExpanded) {
-      // setLocalItems([]);
+      // wait until the animation completely finished
+      setTimeout(() => setLocalItems([]), 400);
     }
   };
 
@@ -256,13 +256,9 @@ export const MenuColumn = (props) => {
   };
 
   return (
-    <MenuColumnContainer
-      onAnimationEnd={handleAnimationEnded}
-      {...props}
-      localItems={localItems}
-    >
+    <MenuColumnContainer {...props} localItems={localItems}>
       {localItems?.length > 0 && (
-        <MenuColumWrapper {...props}>
+        <MenuColumWrapper onAnimationEnd={handleAnimationEnded} {...props}>
           {localItems?.map(renderMenuItem)}
         </MenuColumWrapper>
       )}
