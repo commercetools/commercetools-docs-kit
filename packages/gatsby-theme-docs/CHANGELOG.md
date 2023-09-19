@@ -1,5 +1,20 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.7.0
+
+### Patch Changes
+
+- [#1801](https://github.com/commercetools/commercetools-docs-kit/pull/1801) [`158bcef6`](https://github.com/commercetools/commercetools-docs-kit/commit/158bcef62ce9cdff351b96b1b4d0dda04514109c) Thanks [@renovate](https://github.com/apps/renovate)! - Update all ui-kit packages.
+
+- [#1806](https://github.com/commercetools/commercetools-docs-kit/pull/1806) [`5ed7d980`](https://github.com/commercetools/commercetools-docs-kit/commit/5ed7d980a5e10fc2f2a3d6632ebb45613da1b0f3) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependency remark-emoji to v4.
+
+- [`1a745510`](https://github.com/commercetools/commercetools-docs-kit/commit/1a7455106220b76d5cf33cc35a7649bba53ee9e3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Use chevrons icons for expandable menu
+
+- [#1798](https://github.com/commercetools/commercetools-docs-kit/pull/1798) [`4a9f0eba`](https://github.com/commercetools/commercetools-docs-kit/commit/4a9f0eba856dac39663ff62e8339e4ac6b46aef9) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
+- Updated dependencies [[`158bcef6`](https://github.com/commercetools/commercetools-docs-kit/commit/158bcef62ce9cdff351b96b1b4d0dda04514109c), [`d7f40a95`](https://github.com/commercetools/commercetools-docs-kit/commit/d7f40a950c45b817d9dcd72eef3c3830b5b99730), [`4a9f0eba`](https://github.com/commercetools/commercetools-docs-kit/commit/4a9f0eba856dac39663ff62e8339e4ac6b46aef9)]:
+  - @commercetools-docs/ui-kit@22.7.0
+
 ## 22.6.2
 
 ### Patch Changes
