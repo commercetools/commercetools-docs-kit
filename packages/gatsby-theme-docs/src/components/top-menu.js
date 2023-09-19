@@ -43,7 +43,7 @@ const centeredContainerStyle = css`
   max-width: ${designSystem.dimensions.widths.pageContent};
   margin: 0 auto;
 `;
-const contentGridStyle = css`
+const contentGridStyle = (areAllColumsExpanded) => css`
   width: 100%;
   position: relative;
   display: grid;
@@ -84,23 +84,29 @@ const contentGridStyle = css`
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
-      / 57px
+      / ${areAllColumsExpanded ? '0' : '57px'}
       ${designSystem.dimensions.widths.topMenuTwoColums}
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+      ${areAllColumsExpanded
+        ? '0'
+        : `minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr)`};
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
-      / 57px
+      / ${areAllColumsExpanded ? '0' : '57px'}
       ${designSystem.dimensions.widths.topMenuTwoColums}
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+      ${areAllColumsExpanded
+        ? '0'
+        : `minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr)`};
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
-      / 57px
+      / ${areAllColumsExpanded ? '0' : '57px'}
       ${designSystem.dimensions.widths.topMenuTwoColums}
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+      ${areAllColumsExpanded
+        ? '0'
+        : `minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr)`};
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
@@ -140,6 +146,7 @@ const TopMenu = (props) => {
   const [level3Items, setLevel3Items] = useState();
   const [columnCount, setColumnCount] = useState(2);
   const [selectedItems, setSelectedItems] = useState(['0-0']);
+  const [areAllColumsExpanded, setAreAllColumnsExpanded] = useState(false);
 
   const onMenuItemSelected = (level, idx) => {
     if (selectedItems.length === 0) {
@@ -188,6 +195,8 @@ const TopMenu = (props) => {
         setColumnCount(3);
       }
     }
+
+    setAreAllColumnsExpanded(selectedItems?.length >= 2);
   }, [selectedItems, topMenuItems]);
 
   return (
@@ -200,13 +209,20 @@ const TopMenu = (props) => {
           event.stopPropagation();
         }}
       >
-        <div css={props.centered ? centeredContainerStyle : contentGridStyle}>
+        <div
+          css={
+            props.centered
+              ? centeredContainerStyle
+              : contentGridStyle(areAllColumsExpanded)
+          }
+        >
           <LeftBlank />
           <Center>
             <MenuContainer columnCount={columnCount}>
               <MenuTop>
                 <MenuColumn
                   isExpanded={true}
+                  areAllColumsExpanded={areAllColumsExpanded}
                   items={topMenuItems}
                   level={1}
                   selectedIndex={getSelectedIndex(0)}
@@ -214,6 +230,7 @@ const TopMenu = (props) => {
                 />
                 <MenuColumn
                   isExpanded={true}
+                  areAllColumsExpanded={areAllColumsExpanded}
                   items={level2Items}
                   onSelected={onMenuItemSelected}
                   selectedIndex={getSelectedIndex(1)}
@@ -221,6 +238,7 @@ const TopMenu = (props) => {
                 />
                 <MenuColumn
                   isExpanded={selectedItems?.length >= 2}
+                  areAllColumsExpanded={areAllColumsExpanded}
                   items={level3Items}
                   level={3}
                   onSelected={onMenuItemSelected}

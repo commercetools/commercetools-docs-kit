@@ -30,6 +30,16 @@ const closeColumnAnimation = keyframes`
   }
 `;
 
+const firstColumnExpandAnimation = keyframes`
+  from { width: 125px; }
+  to { width: 365px; }
+`;
+
+const firstColumnShrinkAnimation = keyframes`
+  from { width: 365px; }
+  to { width: 125px; }
+`;
+
 const MenuColumnContainer = styled.div`
   background-color: white;
   display: flex;
@@ -39,6 +49,37 @@ const MenuColumnContainer = styled.div`
   overflow: hidden;
   width: ${(props) => (props.level === 3 ? '0' : '365px')};
 
+  // 1st column shrink animation (shrink)
+  ${(props) =>
+    props.level === 1 &&
+    props.areAllColumsExpanded &&
+    css`
+      @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+        animation: ${firstColumnShrinkAnimation} 0.5s ease-out;
+        animation-fill-mode: forwards;
+      }
+      @media screen and (${designSystem.dimensions.viewports.laptop}) {
+        animation: none;
+        animation-fill-mode: none;
+      }
+    `}
+
+  // 1st column shrink animation (expand)
+  ${(props) =>
+    props.level === 1 &&
+    !props.areAllColumsExpanded &&
+    css`
+      @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+        animation: ${firstColumnExpandAnimation} 0.5s ease-out;
+        animation-fill-mode: forwards;
+      }
+      @media screen and (${designSystem.dimensions.viewports.laptop}) {
+        animation: none;
+        animation-fill-mode: none;
+      }
+    `}
+
+  // 3rd column slide animation (open)
   ${(props) =>
     props.level === 3 &&
     props.isExpanded &&
@@ -47,6 +88,7 @@ const MenuColumnContainer = styled.div`
       animation-fill-mode: forwards;
     `}
 
+  // 3rd column slide animation (close)
   ${(props) =>
     props.level === 3 &&
     !props.isExpanded &&
@@ -61,6 +103,14 @@ const MenuColumnContainer = styled.div`
 const getMenuItemStyle = (props) => css`
   display: flex;
   align-items: center;
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    display: ${props.level === 1 && props.areAllColumsExpanded
+      ? 'none'
+      : 'flex'};
+  }
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    display: flex;
+  }
 `;
 
 const MenuIconWrapper = styled.div`
@@ -129,13 +179,13 @@ const MenuItem = (props) => {
           />
         </MenuIconWrapper>
       )}
-      {!props.isMini && (
-        <div css={[getMenuItemStyle(props)]}>
-          <p>{props.text}</p>
-        </div>
-      )}
-      {(props.isExpandible || props.isMini) && (
-        <ExpandItemIcon isVisible={props.isMini || props.isSelected}>
+
+      <div css={[getMenuItemStyle(props)]}>
+        <p>{props.text}</p>
+      </div>
+
+      {props.isExpandible && (
+        <ExpandItemIcon isSelected={props.isSelected}>
           <AngleRightIcon size="medium" />
         </ExpandItemIcon>
       )}
@@ -151,7 +201,8 @@ MenuItem.propTypes = {
   href: PropTypes.string,
   isSelected: PropTypes.bool,
   isExpandible: PropTypes.bool,
-  isMini: PropTypes.bool,
+  // eslint-disable-next-line react/no-unused-prop-types
+  level: PropTypes.number,
 };
 
 const MenuLabelItem = styled.div`
@@ -166,11 +217,13 @@ MenuLabelItem.propTypes = {
 
 const ExpandItemIcon = styled.div`
   display: flex;
-  visibility: ${({ isVisible }) => (isVisible ? 'display' : 'hidden')};
   align-items: center;
   margin-left: auto;
   & svg {
-    fill: ${designSystem.colors.light.selectedItemText};
+    fill: ${({ isSelected }) =>
+      isSelected
+        ? designSystem.colors.light.selectedItemText
+        : designSystem.colors.light.colorSolid};
   }
 `;
 
@@ -244,12 +297,14 @@ export const MenuColumn = (props) => {
     ) : (
       <MenuItem
         id={`item-${props.level}-${index}`}
+        level={props.level}
         key={index}
         icon={item.icon}
         text={text}
         href={item.href}
         isSelected={isSelected}
         isExpandible={!isLabel && !!item.items}
+        areAllColumsExpanded={props.areAllColumsExpanded}
         onSelected={() => !isLabel && props.onSelected(props.level, index)}
       />
     );
@@ -270,6 +325,7 @@ MenuColumn.propTypes = {
   level: PropTypes.number.isRequired,
   onSelected: PropTypes.func,
   isExpanded: PropTypes.bool.isRequired,
+  areAllColumsExpanded: PropTypes.bool.isRequired,
   selectedIndex: PropTypes.number,
   items: PropTypes.arrayOf(
     PropTypes.shape({
