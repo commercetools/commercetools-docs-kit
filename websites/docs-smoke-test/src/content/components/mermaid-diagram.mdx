@@ -4,6 +4,28 @@ title: Mermaid Diagrams
 
 # A Sequence Diagram
 
+## With automatic numbering
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CFP
+  participant HCP API
+  participant Extension Server
+  Note over HCP API: Formerly known as CTP
+  CFP->>+HCP API: Add this to the Cart
+  HCP API->>+HCP API: Do but don't persist yet
+  HCP API->>+Extension Server: New cart would be this. Okay?
+  Extension Server-->>-HCP API: OK, but change this before returning!
+  HCP API-->>-CFP: Cool, here's your new Cart
+  alt For comparison without extension
+  CFP->>+HCP API: A change that has not extension configured
+  HCP API-->>-CFP: I #9829; you, here's your new resource
+  end
+```
+
+## Without automatic numbering
+
 ```mermaid
 sequenceDiagram
   participant CFP

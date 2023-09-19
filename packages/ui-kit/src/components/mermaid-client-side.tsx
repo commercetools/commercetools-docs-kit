@@ -70,7 +70,7 @@ const config = {
     mirrorActors: false,
     useMaxWidth: true,
     rightAngles: false,
-    showSequenceNumbers: true,
+    showSequenceNumbers: false,
     diagramMarginX: 5, // prevent border clipping
     diagramMarginY: 5, // prevent border clippings
     bottomMarginAdj: 2,

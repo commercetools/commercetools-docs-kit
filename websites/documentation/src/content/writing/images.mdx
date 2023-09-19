@@ -62,6 +62,36 @@ sequenceDiagram
     end
 ```
 
+If you want to show the sequence number attached to each arrow in a sequence diagram, you need to add the `autonumber` variable.
+
+````md title="you write:" secondaryTheme
+```mermaid
+sequenceDiagram
+    autonumber
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+```
+````
+
+```mermaid
+sequenceDiagram
+    autonumber
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+```
+
 # Videos
 
 It's possible to embed a video in a page by using `Video` component.
@@ -77,10 +107,11 @@ The component accepts the following properties:
       poster="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/e1aa2e24614b242afdd4afb36a0c2f75/thumbnails/thumbnail.jpg?time=6s"
     ></Video>
 
-  ```md title="you write:" secondaryTheme
-  <Video
-    url="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/e1aa2e24614b242afdd4afb36a0c2f75/manifest/video.m3u8"
-    poster="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/e1aa2e24614b242afdd4afb36a0c2f75/thumbnails/thumbnail.jpg?time=6s"
-  />
-  ```
+```md title="you write:" secondaryTheme
+<Video
+  url="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/e1aa2e24614b242afdd4afb36a0c2f75/manifest/video.m3u8"
+  poster="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/e1aa2e24614b242afdd4afb36a0c2f75/thumbnails/thumbnail.jpg?time=6s"
+/>
+```
+
 </SideBySide>
