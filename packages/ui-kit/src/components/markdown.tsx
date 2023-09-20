@@ -108,6 +108,9 @@ visual box like a blockquote, notification box, card, or Subtitle.
 Heading margins are not set here because headings can and should not be used inside such containers.
 */
 const containerStyles = () => css`
+  > * + * {
+    margin-top: ${dimensions.spacings.m};
+  }
   > * + ${Ul}, > * + ${Ol}, > * + ${Dl} {
     margin-top: ${dimensions.spacings.s};
   }
@@ -123,7 +126,6 @@ const Dd = styled.dd`
 `;
 
 const Li = styled.li`
-  ${containerStyles};
   line-height: 1.46;
 
   > ul,
@@ -132,6 +134,9 @@ const Li = styled.li`
   }
   > ul {
     list-style-type: circle;
+  }
+  > * + ${Ul}, > * + ${Ol}, > * + ${Dl} {
+    margin-top: ${dimensions.spacings.s};
   }
 `;
 
@@ -383,7 +388,7 @@ const withCopyToClipboard =
           display: flex;
           align-items: baseline;
           :hover {
-            div.clipboard {
+            div {
               svg {
                 * {
                   fill: ${colors.light.linkNavigation};
@@ -404,7 +409,7 @@ const withCopyToClipboard =
           onClose={handleTooltipClose}
         >
           <CopyArea onClick={handleCopyToClipboardClick}>
-            <ClipboardIconWrapper className="clipboard">
+            <ClipboardIconWrapper>
               <ClipboardIcon />
             </ClipboardIconWrapper>
           </CopyArea>
