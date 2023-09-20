@@ -108,9 +108,6 @@ visual box like a blockquote, notification box, card, or Subtitle.
 Heading margins are not set here because headings can and should not be used inside such containers.
 */
 const containerStyles = () => css`
-  > * + * {
-    margin-top: ${dimensions.spacings.m};
-  }
   > * + ${Ul}, > * + ${Ol}, > * + ${Dl} {
     margin-top: ${dimensions.spacings.s};
   }
