@@ -14,14 +14,14 @@ const openColumnAnimation = keyframes`
   }
   to {
     transform: translate3d(0, 0, 0);
-    width: 365px;
+    width: ${designSystem.dimensions.widths.topMenuSingleCoumn};
   }
 `;
 
 const closeColumnAnimation = keyframes`
   from {
     transform: translate3d(0, 0, 0);
-    width: 365px
+    width: ${designSystem.dimensions.widths.topMenuSingleCoumn}
   }
   to {
     visibility: hidden;
@@ -31,13 +31,22 @@ const closeColumnAnimation = keyframes`
 `;
 
 const firstColumnExpandAnimation = keyframes`
-  from { width: 125px; }
-  to { width: 365px; }
+  from { width: ${designSystem.dimensions.widths.topMenuSingleCoumnShrink} }
+  to { width: ${designSystem.dimensions.widths.topMenuSingleCoumn} }
 `;
 
 const firstColumnShrinkAnimation = keyframes`
-  from { width: 365px; }
-  to { width: 125px; }
+  from { width: ${designSystem.dimensions.widths.topMenuSingleCoumn} }
+  to { width: ${designSystem.dimensions.widths.topMenuSingleCoumnShrink} }
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 `;
 
 const MenuColumnContainer = styled.div`
@@ -47,15 +56,18 @@ const MenuColumnContainer = styled.div`
   position: relative;
   flex-direction: column;
   overflow: hidden;
-  width: ${(props) => (props.level === 3 ? '0' : '365px')};
+  width: ${(props) =>
+    props.level === 3
+      ? '0'
+      : designSystem.dimensions.widths.topMenuSingleCoumn};
 
-  // 1st column shrink animation (shrink)
+  // 1st column shrink animation
   ${(props) =>
     props.level === 1 &&
     props.areAllColumsExpanded &&
     css`
       @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-        animation: ${firstColumnShrinkAnimation} 0.5s ease-out;
+        animation: ${firstColumnShrinkAnimation} 0.3s ease-out;
         animation-fill-mode: forwards;
       }
       @media screen and (${designSystem.dimensions.viewports.laptop}) {
@@ -64,13 +76,14 @@ const MenuColumnContainer = styled.div`
       }
     `}
 
-  // 1st column shrink animation (expand)
+  // 1st column expand animation
   ${(props) =>
     props.level === 1 &&
+    props.columnTouched &&
     !props.areAllColumsExpanded &&
     css`
       @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-        animation: ${firstColumnExpandAnimation} 0.5s ease-out;
+        animation: ${firstColumnExpandAnimation} 0.3s ease-out;
         animation-fill-mode: forwards;
       }
       @media screen and (${designSystem.dimensions.viewports.laptop}) {
@@ -103,13 +116,32 @@ const MenuColumnContainer = styled.div`
 const getMenuItemStyle = (props) => css`
   display: flex;
   align-items: center;
+
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    display: ${props.level === 1 && props.areAllColumsExpanded
-      ? 'none'
-      : 'flex'};
+    ${props.level === 1 &&
+    props.areAllColumsExpanded &&
+    css`
+      display: none;
+    `}
+
+    ${props.level === 1 &&
+    !props.areAllColumsExpanded &&
+    props.columnTouched &&
+    css`
+      display: flex;
+      & p {
+        opacity: 0;
+        animation: ${fadeIn} 0.3s ease-in-out 0.15s forwards;
+      }
+    `}
   }
+
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     display: flex;
+    & p {
+      opacity: 1;
+      animation: none;
+    }
   }
 `;
 
@@ -203,6 +235,8 @@ MenuItem.propTypes = {
   isExpandible: PropTypes.bool,
   // eslint-disable-next-line react/no-unused-prop-types
   level: PropTypes.number,
+  // eslint-disable-next-line react/no-unused-prop-types
+  columnTouched: PropTypes.bool,
 };
 
 const MenuLabelItem = styled.div`
@@ -266,6 +300,7 @@ const MenuColumWrapper = styled.div`
 
 export const MenuColumn = (props) => {
   const [localItems, setLocalItems] = useState([]);
+  const [touched, setTouched] = useState(false);
   useEffect(() => {
     setLocalItems(flattenLabels(props.items));
   }, [props.items, props.isExpanded]);
@@ -305,13 +340,23 @@ export const MenuColumn = (props) => {
         isSelected={isSelected}
         isExpandible={!isLabel && !!item.items}
         areAllColumsExpanded={props.areAllColumsExpanded}
-        onSelected={() => !isLabel && props.onSelected(props.level, index)}
+        columnTouched={touched}
+        onSelected={() => {
+          if (!isLabel) {
+            props.onSelected(props.level, index);
+            setTouched(true);
+          }
+        }}
       />
     );
   };
 
   return (
-    <MenuColumnContainer {...props} localItems={localItems}>
+    <MenuColumnContainer
+      {...props}
+      localItems={localItems}
+      columnTouched={touched}
+    >
       {localItems?.length > 0 && (
         <MenuColumWrapper onAnimationEnd={handleAnimationEnded} {...props}>
           {localItems?.map(renderMenuItem)}

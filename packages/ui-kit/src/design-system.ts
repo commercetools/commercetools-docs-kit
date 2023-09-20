@@ -11,6 +11,7 @@ const asideColumnWidth = pageWidthSmall;
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
 const topMenuSingleCoumn = '365px';
+const topMenuSingleCoumnShrink = '125px';
 
 export const pxToRem = (px: string, suffix = 'rem') => {
   const pxNumber = px.replace(/([0-9]+)px$/, '$1');
@@ -274,6 +275,7 @@ export const dimensions = {
     topMenuSingleCoumn: topMenuSingleCoumn,
     topMenuTreeColums: `calc(${topMenuSingleCoumn} * 3)`,
     topMenuTwoColums: `calc(${topMenuSingleCoumn} * 2)`,
+    topMenuSingleCoumnShrink: topMenuSingleCoumnShrink,
   },
   viewports: {
     mobile: `max-width: calc(768px - 0.02px)`,

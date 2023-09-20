@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
@@ -50,72 +50,21 @@ const contentGridStyle = (areAllColumsExpanded) => css`
   grid:
     [row1-start] 'menu-main' 1fr [row1-end]
     / 1fr;
-
-  /* @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    grid:
-      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
-      / ${designSystem.dimensions.spacings.xl}
-      minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${designSystem.dimensions.widths.pageContentWithMargins}
-      )
-      1fr;
-  }
-  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    grid:
-      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
-      / ${designSystem.dimensions.spacings.xl}
-      minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${designSystem.dimensions.widths.pageContentWithMargins}
-      )
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
-  }
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    grid:
-      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
-      / ${designSystem.dimensions.widths.pageNavigationSmall}
-      minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${designSystem.dimensions.widths.pageContentWithMargins}
-      )
-      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
-  } */
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    grid:
-      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
-      / ${areAllColumsExpanded ? '0' : '57px'}
-      ${designSystem.dimensions.widths.topMenuTwoColums}
-      ${areAllColumsExpanded
-        ? '0'
-        : `minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr)`};
-  }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / ${areAllColumsExpanded ? '0' : '57px'}
       ${designSystem.dimensions.widths.topMenuTwoColums}
-      ${areAllColumsExpanded
-        ? '0'
-        : `minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr)`};
+      0;
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
-      / ${areAllColumsExpanded ? '0' : '57px'}
-      ${designSystem.dimensions.widths.topMenuTwoColums}
-      ${areAllColumsExpanded
-        ? '0'
-        : `minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr)`};
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    grid:
-      [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
-      / ${designSystem.dimensions.widths.pageNavigation}
+      / 57px
       ${designSystem.dimensions.widths.topMenuTreeColums}
       minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
   }
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / ${designSystem.dimensions.widths.pageNavigation}
@@ -255,9 +204,7 @@ const TopMenu = (props) => {
                   <FeedbackContainer>
                     <FeedBackContent>
                       <Icons.CtLogoSvgIcon height={24} width={24} />
-                      <div
-                        css={{ display: 'flex', 'flex-direction': 'column' }}
-                      >
+                      <div css={{ display: 'flex', flexDirection: 'column' }}>
                         <p>We want your feedback</p>
                         <Link
                           href="#"
@@ -303,10 +250,14 @@ const ItemsArea = styled.div`
 `;
 const FeedbackArea = styled.div`
   padding-right: 40px;
-  display: flex;
+  display: none;
   align-items: center;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
+
+  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+    display: flex;
+  }
 `;
 
 const FeedbackContainer = styled.div`
