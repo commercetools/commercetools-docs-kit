@@ -135,7 +135,7 @@ const Li = styled.li`
   > ul {
     list-style-type: circle;
   }
-  > * + :not(span) {
+  > * + :not(span.planTag) {
     margin-top: ${dimensions.spacings.m};
   }
   > * + ${Ul}, > * + ${Ol}, > * + ${Dl} {
