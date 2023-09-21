@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { navigate } from 'gatsby';
 import { useEffect, useState } from 'react';
 import { css, keyframes } from '@emotion/react';
-import { LordIcon, designSystem } from '@commercetools-docs/ui-kit';
-import { AngleRightIcon } from '@commercetools-uikit/icons';
+import { designSystem } from '@commercetools-docs/ui-kit';
+import { TopMenuLabelItem, TopMenuItem } from './top-menu-item';
 
+/** Columns animations */
 const openColumnAnimation = keyframes`
   from {
     transform: translate3d(-100%, 0, 0);
@@ -38,15 +38,6 @@ const firstColumnExpandAnimation = keyframes`
 const firstColumnShrinkAnimation = keyframes`
   from { width: ${designSystem.dimensions.widths.topMenuSingleCoumn} }
   to { width: ${designSystem.dimensions.widths.topMenuSingleCoumnShrink} }
-`;
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 `;
 
 const MenuColumnContainer = styled.div`
@@ -113,154 +104,7 @@ const MenuColumnContainer = styled.div`
     `}
 `;
 
-const getMenuItemStyle = (props) => css`
-  display: flex;
-  align-items: center;
-
-  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    ${props.level === 1 &&
-    props.areAllColumsExpanded &&
-    css`
-      display: none;
-    `}
-
-    ${props.level === 1 &&
-    !props.areAllColumsExpanded &&
-    props.columnTouched &&
-    css`
-      display: flex;
-      & p {
-        opacity: 0;
-        animation: ${fadeIn} 0.3s ease-in-out 0.15s forwards;
-      }
-    `}
-  }
-
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    display: flex;
-    & p {
-      opacity: 1;
-      animation: none;
-    }
-  }
-`;
-
-const MenuIconWrapper = styled.div`
-  height: 30px;
-  width: 30px;
-  border: 1px solid ${designSystem.colors.light.surfaceSecondary2};
-  border-radius: 4px;
-  box-shadow: 0px 1px 2px 0px hsla(0, 0%, 41%, 0.15);
-  margin-right: 16px;
-  background-color: ${designSystem.colors.light.surfacePrimary};
-
-  & svg {
-    height: 30px;
-    width: 30px;
-  }
-`;
-
-const MenuItemWrapper = styled.div`
-  display: flex;
-  padding: 8px 12px 8px 8px;
-  height: 32px;
-
-  &:hover {
-    background-color: ${designSystem.colors.light.selectedItemBackground};
-    border-radius: 4px;
-    cursor: pointer;
-    color: ${designSystem.colors.light.selectedItemText};
-    & :last-child {
-      visibility: visible;
-    }
-  }
-
-  ${(props) =>
-    props.isSelected &&
-    `
-    border: 1px solid ${designSystem.colors.light.selectedItem};
-    border-radius: 4px;
-    background-color: ${designSystem.colors.light.selectedItemBackground};
-    color: ${designSystem.colors.light.selectedItemText};
-    font-weight: ${designSystem.typography.fontWeights['light-bold']}
-  `}
-`;
-
-export const MenuItem = (props) => {
-  const onClickHandler = () => {
-    if (props.href) {
-      navigate(props.href);
-    } else if (props.onSelected) {
-      props.onSelected();
-    }
-  };
-  return (
-    <MenuItemWrapper
-      id={props.id}
-      onClick={onClickHandler}
-      isSelected={props.isSelected}
-    >
-      {props.icon && (
-        <MenuIconWrapper>
-          <LordIcon
-            trigger="hover"
-            iconName={props.icon}
-            target={`#${[props.id]}`}
-            height="30"
-            width="30"
-          />
-        </MenuIconWrapper>
-      )}
-
-      <div css={[getMenuItemStyle(props)]}>
-        <p>{props.text}</p>
-      </div>
-
-      {props.isExpandible && (
-        <ExpandItemIcon isSelected={props.isSelected}>
-          <AngleRightIcon size="medium" />
-        </ExpandItemIcon>
-      )}
-    </MenuItemWrapper>
-  );
-};
-
-MenuItem.propTypes = {
-  id: PropTypes.string,
-  icon: PropTypes.string,
-  text: PropTypes.string,
-  onSelected: PropTypes.func,
-  href: PropTypes.string,
-  isSelected: PropTypes.bool,
-  isExpandible: PropTypes.bool,
-  // eslint-disable-next-line react/no-unused-prop-types
-  level: PropTypes.number,
-  // eslint-disable-next-line react/no-unused-prop-types
-  columnTouched: PropTypes.bool,
-};
-
-export const MenuLabelItem = styled.div`
-  font-weight: ${designSystem.typography.fontWeights['light-bold']};
-  padding: 0 8px;
-  margin-top: ${({ isFirstItem }) => (!isFirstItem ? '20px' : '0')};
-`;
-
-MenuLabelItem.propTypes = {
-  isFirstItem: PropTypes.bool,
-};
-
-const ExpandItemIcon = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  & svg {
-    fill: ${({ isSelected }) =>
-      isSelected
-        ? designSystem.colors.light.selectedItemText
-        : designSystem.colors.light.colorSolid};
-  }
-`;
-
+/** content hide/show animations */
 const showContentAnimation = keyframes`
   from {opacity: 0;}
   to {opacity: 1;}
@@ -326,11 +170,11 @@ export const MenuColumn = (props) => {
     }
 
     return isLabel ? (
-      <MenuLabelItem key={index} isFirstItem={index === 0}>
+      <TopMenuLabelItem key={index} isFirstItem={index === 0}>
         {text}
-      </MenuLabelItem>
+      </TopMenuLabelItem>
     ) : (
-      <MenuItem
+      <TopMenuItem
         id={`item-${props.level}-${index}`}
         level={props.level}
         key={index}
@@ -388,7 +232,7 @@ export const BottomItems = (props) => {
   return (
     <MenuColumWrapper>
       {props.items.map((item, index) => (
-        <MenuItem
+        <TopMenuItem
           id={`boottom-item-${index}`}
           key={index}
           icon={item.icon}

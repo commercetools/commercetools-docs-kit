@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 import { Icons, MediaQuery, designSystem } from '@commercetools-docs/ui-kit';
 import useTopMenuItems from '../hooks/use-top-menu-items';
-import { BottomItems, MenuColumn, flattenLabels } from './top-menu-new';
+import { BottomItems, MenuColumn, flattenLabels } from './top-menu-components';
 import Link from './link';
 import TopMenuMobile from './top-menu-mobile';
 

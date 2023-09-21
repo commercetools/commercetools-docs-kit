@@ -4,7 +4,8 @@ import useTopMenuItems from '../hooks/use-top-menu-items';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { AngleLeftIcon, CloseBoldIcon } from '@commercetools-uikit/icons';
 import { useEffect, useState } from 'react';
-import { MenuItem, MenuLabelItem, flattenLabels } from './top-menu-new';
+import { flattenLabels } from './top-menu-components';
+import { TopMenuItem, TopMenuLabelItem } from './top-menu-item';
 
 const Container = styled.div`
   background-color: ${designSystem.colors.light.surfacePrimary};
@@ -145,9 +146,9 @@ const ColumnPanel = (props) => {
     }
 
     return isLabel ? (
-      <MenuLabelItem key={index}>{text}</MenuLabelItem>
+      <TopMenuLabelItem key={index}>{text}</TopMenuLabelItem>
     ) : (
-      <MenuItem
+      <TopMenuItem
         id={`item-${props.level}-${index}`}
         level={props.level}
         key={index}
