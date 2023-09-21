@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -47,7 +46,7 @@ const LayoutMain = (props) => (
           top={designSystem.dimensions.heights.header}
           onClick={props.closeTopMenu}
         >
-          <TopMenu />
+          <TopMenu closeTopMenu={props.closeTopMenu} />
         </Overlay>
       </MediaQuery>
     ) : null}

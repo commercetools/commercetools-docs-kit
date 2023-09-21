@@ -70,7 +70,7 @@ const MenuColumnContainer = styled.div`
         animation: ${firstColumnShrinkAnimation} 0.3s ease-out;
         animation-fill-mode: forwards;
       }
-      @media screen and (${designSystem.dimensions.viewports.laptop}) {
+      @media screen and (${designSystem.dimensions.viewports.desktop}) {
         animation: none;
         animation-fill-mode: none;
       }
@@ -86,7 +86,7 @@ const MenuColumnContainer = styled.div`
         animation: ${firstColumnExpandAnimation} 0.3s ease-out;
         animation-fill-mode: forwards;
       }
-      @media screen and (${designSystem.dimensions.viewports.laptop}) {
+      @media screen and (${designSystem.dimensions.viewports.desktop}) {
         animation: none;
         animation-fill-mode: none;
       }
@@ -136,7 +136,7 @@ const getMenuItemStyle = (props) => css`
     `}
   }
 
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
     display: flex;
     & p {
       opacity: 1;
@@ -186,7 +186,7 @@ const MenuItemWrapper = styled.div`
   `}
 `;
 
-const MenuItem = (props) => {
+export const MenuItem = (props) => {
   const onClickHandler = () => {
     if (props.href) {
       navigate(props.href);
@@ -239,7 +239,7 @@ MenuItem.propTypes = {
   columnTouched: PropTypes.bool,
 };
 
-const MenuLabelItem = styled.div`
+export const MenuLabelItem = styled.div`
   font-weight: ${designSystem.typography.fontWeights['light-bold']};
   padding: 0 8px;
   margin-top: ${({ isFirstItem }) => (!isFirstItem ? '20px' : '0')};

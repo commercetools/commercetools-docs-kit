@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
-import { Icons, designSystem } from '@commercetools-docs/ui-kit';
+import { Icons, MediaQuery, designSystem } from '@commercetools-docs/ui-kit';
 import useTopMenuItems from '../hooks/use-top-menu-items';
 import { BottomItems, MenuColumn, flattenLabels } from './top-menu-new';
 import Link from './link';
+import TopMenuMobile from './top-menu-mobile';
 
 const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
@@ -62,7 +63,7 @@ const contentGridStyle = (areAllColumsExpanded) => css`
       [row1-start] 'menu-left-blank menu-main menu-right-blank' 1fr [row1-end]
       / 57px
       ${designSystem.dimensions.widths.topMenuTreeColums}
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
+      0;
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
@@ -77,16 +78,6 @@ const LeftBlank = styled.div`
 `;
 const Center = styled.div`
   grid-area: menu-main;
-  /* width: calc(100% - ${designSystem.dimensions.spacings.m}); */
-
-  /* @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    width: 100%;
-    margin: 0;
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    width: calc(100% - ${designSystem.dimensions.spacings.xl});
-    margin: 0;
-  } */
 `;
 
 const TopMenu = (props) => {
@@ -167,61 +158,69 @@ const TopMenu = (props) => {
         >
           <LeftBlank />
           <Center>
-            <MenuContainer columnCount={columnCount}>
-              <MenuTop>
-                <MenuColumn
-                  isExpanded={true}
-                  areAllColumsExpanded={areAllColumsExpanded}
-                  items={topMenuItems}
-                  level={1}
-                  selectedIndex={getSelectedIndex(0)}
-                  onSelected={onMenuItemSelected}
-                />
-                <MenuColumn
-                  isExpanded={true}
-                  areAllColumsExpanded={areAllColumsExpanded}
-                  items={level2Items}
-                  onSelected={onMenuItemSelected}
-                  selectedIndex={getSelectedIndex(1)}
-                  level={2}
-                />
-                <MenuColumn
-                  isExpanded={selectedItems?.length >= 2}
-                  areAllColumsExpanded={areAllColumsExpanded}
-                  items={level3Items}
-                  level={3}
-                  onSelected={onMenuItemSelected}
-                />
-              </MenuTop>
-              <MenuBottom>
-                <ItemsArea>
-                  <BottomItems
-                    items={topMenuItems.filter((item) => item.footerTitle)}
+            <MediaQuery forViewport="largeTablet" hideIfMatch>
+              <TopMenuMobile
+                onMenuItemSelected={onMenuItemSelected}
+                closeTopMenu={props.closeTopMenu}
+              />
+            </MediaQuery>
+            <MediaQuery forViewport="largeTablet">
+              <MenuContainer columnCount={columnCount}>
+                <MenuTop>
+                  <MenuColumn
+                    isExpanded={true}
+                    areAllColumsExpanded={areAllColumsExpanded}
+                    items={topMenuItems}
+                    level={1}
+                    selectedIndex={getSelectedIndex(0)}
+                    onSelected={onMenuItemSelected}
                   />
-                </ItemsArea>
+                  <MenuColumn
+                    isExpanded={true}
+                    areAllColumsExpanded={areAllColumsExpanded}
+                    items={level2Items}
+                    onSelected={onMenuItemSelected}
+                    selectedIndex={getSelectedIndex(1)}
+                    level={2}
+                  />
+                  <MenuColumn
+                    isExpanded={selectedItems?.length >= 2}
+                    areAllColumsExpanded={areAllColumsExpanded}
+                    items={level3Items}
+                    level={3}
+                    onSelected={onMenuItemSelected}
+                  />
+                </MenuTop>
+                <MenuBottom>
+                  <ItemsArea>
+                    <BottomItems
+                      items={topMenuItems.filter((item) => item.footerTitle)}
+                    />
+                  </ItemsArea>
 
-                <FeedbackArea isVisible={selectedItems?.length >= 2}>
-                  <FeedbackContainer>
-                    <FeedBackContent>
-                      <Icons.CtLogoSvgIcon height={24} width={24} />
-                      <div css={{ display: 'flex', flexDirection: 'column' }}>
-                        <p>We want your feedback</p>
-                        <Link
-                          href="#"
-                          nounderline
-                          css={css`
-                            font-size: ${designSystem.typography.fontSizes
-                              .extraSmall};
-                          `}
-                        >
-                          Join our user research program
-                        </Link>
-                      </div>
-                    </FeedBackContent>
-                  </FeedbackContainer>
-                </FeedbackArea>
-              </MenuBottom>
-            </MenuContainer>
+                  <FeedbackArea isVisible={selectedItems?.length >= 2}>
+                    <FeedbackContainer>
+                      <FeedBackContent>
+                        <Icons.CtLogoSvgIcon height={24} width={24} />
+                        <div css={{ display: 'flex', flexDirection: 'column' }}>
+                          <p>We want your feedback</p>
+                          <Link
+                            href="#"
+                            nounderline
+                            css={css`
+                              font-size: ${designSystem.typography.fontSizes
+                                .extraSmall};
+                            `}
+                          >
+                            Join our user research program
+                          </Link>
+                        </div>
+                      </FeedBackContent>
+                    </FeedbackContainer>
+                  </FeedbackArea>
+                </MenuBottom>
+              </MenuContainer>
+            </MediaQuery>
           </Center>
         </div>
       </Content>
@@ -231,6 +230,7 @@ const TopMenu = (props) => {
 
 TopMenu.propTypes = {
   centered: PropTypes.bool,
+  closeTopMenu: PropTypes.func,
 };
 
 const MenuTop = styled.div`
