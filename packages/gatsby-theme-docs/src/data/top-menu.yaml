@@ -6,138 +6,138 @@
         - label: APIs
           items:
             - title: HTTP APIs
-              href: /components/code-blocks
+              href: /views/empty
             - title: GraphQL APIs
-              href: /../path-to-page
+              href: /views/empty
             - title: Import & Export APIs
-              href: /../path-to-page
+              href: /views/empty
         - label: BUSINESS TOOLING
           items:
             - title: Merchant Center Quickstart
-              href: /../path-to-page
+              href: /views/empty
             - title: Merchant Center Documentation
-              href: /../path-to-pages
+              href: /views/empty
         - label: DEVELOPING
           items:
             - title: Custom Applications
-              href: /../path-to-page
+              href: /views/empty
             - title: Developer Quickstart
-              href: /../path-to-pages
+              href: /views/empty
             - title: SDKs & Client Libraries
-              href: /../path-to-pages
+              href: /views/empty
         - label: LEARNING
           items:
             - title: Guides & Tutorials
-              href: /../path-to-page
+              href: /views/empty
             - title: Administrator Learning Path
-              href: /../path-to-pages
+              href: /views/empty
     - title: Composable Commerce B2B
       items:
         - label: COMPOSABLE COMMERCE B2B
           items:
             - title: B2B Overview
-              href: /../path-to-page
+              href: /views/empty
             - title: B2B APIs
-              href: /../path-to-page
+              href: /views/empty
             - title: B2B Tutorials
-              href: /../path-to-page
+              href: /views/empty
     - title: Frontend
       items:
         - label: NO-CODE TOOLING
           items:
             - title: Studio Quickstart
-              href: /../path-to-page
+              href: /views/empty
             - title: Studio Site Builder
-              href: /../path-to-page
+              href: /views/empty
             - title: Studio Page Templates
-              href: /../path-to-page
+              href: /views/empty
         - label: DEVELOPING
           items:
             - title: Developing Quickstart
-              href: /../path-to-page
+              href: /views/empty
             - title: Developing Components
-              href: /../path-to-page
+              href: /views/empty
             - title: Developing Extensions
-              href: /../path-to-page
+              href: /views/empty
             - title: Frontend SDK
-              href: /../path-to-page
+              href: /views/empty
             - title: Integrations
-              href: /../path-to-page
+              href: /views/empty
             - title: The Good Store
-              href: /../path-to-page
+              href: /views/empty
         - label: APIs
           items:
             - title: Frontend APIs
-              href: /../path-to-page
+              href: /views/empty
     - title: Connect
       items:
         - label: CONNECT
           items:
             - title: Developing Quickstart
-              href: /../path-to-page
+              href: /views/empty
             - title: Connect SDK
-              href: /../path-to-page
+              href: /views/empty
     - title: Checkout
       items:
         - label: CHECKOUT
           items:
             - title: Developing Quickstart
-              href: /../path-to-page
+              href: /views/empty
             - title: Checkout SDK
-              href: /../path-to-page
+              href: /views/empty
     - title: Product portfolio overview
-      href: /../path-to-page
+      href: /views/empty
 - menu-title: APIs
   icon: api
   items:
     - label: COMPOSABLE COMMERCE APIs
       items:
         - title: HTTP APIs
-          href: /../path-to-page
+          href: /views/empty
         - title: GraphQL APIs
-          href: /../path-to-pages
+          href: /views/empty
         - title: Import & Export APIs
-          href: /../path-to-pages
+          href: /views/empty
     - label: FRONTEND APIs
       items:
         - title: Frontend APIs
-          href: /../path-to-page
+          href: /views/empty
 - menu-title: Getting started
   icon: flag
   items:
     - label: COMPOSABLE COMMERCE
       items:
         - title: Merchant Center Quickstart
-          href: /../path-to-page
+          href: /views/empty
         - title: Developing Quickstart
-          href: /../path-to-pages
+          href: /views/empty
     - label: FRONTEND
       items:
         - title: Studio Quickstart
-          href: /../path-to-page
+          href: /views/empty
         - title: Developing Quickstart
-          href: /../path-to-page
+          href: /views/empty
     - label: CONNECT
       items:
         - title: Connect Quickstart
-          href: /../path-to-page
+          href: /views/empty
     - label: CHECKOUT
       items:
         - title: Checkout Quickstart
-          href: /../path-to-page
+          href: /views/empty
 - menu-title: No-code & business tooling
   icon: suitcase
   items:
     - label: COMPOSABLE COMMERCE
       items:
         - title: Merchant Center Documentation
-          href: /../path-to-page
+          href: /views/empty
         - title: Guides & Tutorials
-          href: /../path-to-page
+          href: /views/empty
     - label: FRONTEND
       items:
         - title: Studio Documentation
-          href: /../path-to-page
+          href: /views/empty
 - menu-title: Developer tooling & librabries
   icon: command
   items:
@@ -146,97 +146,97 @@
         - label: COMPOSABLE COMMERCE
           items:
             - title: Postman Collection
-              href: /../path-to-page
+              href: /views/empty
             - title: GraphQL explorer
-              href: /../path-to-page
+              href: /views/empty
             - title: cURL
-              href: /../path-to-page
+              href: /views/empty
     - title: SDKs
       items:
         - label: COMPOSABLE COMMERCE
           items:
             - title: Java SDK
-              href: /../path-to-page
+              href: /views/empty
             - title: Javascript SDK
-              href: /../path-to-page
+              href: /views/empty
             - title: DotNET Core SDK
-              href: /../path-to-page
+              href: /views/empty
             - title: PHP SDK
-              href: /../path-to-page
+              href: /views/empty
             - title: iOS Swift SDK
-              href: /../path-to-page
+              href: /views/empty
         - label: CONNECT
           items:
             - title: Connect SDK
-              href: /../path-to-page
+              href: /views/empty
         - label: CHECKOUT
           items:
             - title: Checkout SDK
-              href: /../path-to-page
+              href: /views/empty
     - title: UI KIT
-      href: /../path-to-page
+      href: /views/empty
     - label: COMPOSABLE COMMERCE
       items:
         - title: Developer Guides & Tutorials
-          href: /../path-to-page
+          href: /views/empty
         - title: Custom Applications
-          href: /../path-to-page
+          href: /views/empty
     - label: FRONTEND
       items:
         - title: Developing Components
-          href: /../path-to-page
+          href: /views/empty
         - title: Developing Extensions
-          href: /../path-to-page
+          href: /views/empty
         - title: Integrations
-          href: /../path-to-page
+          href: /views/empty
         - title: The Good Store
-          href: /../path-to-page
+          href: /views/empty
 - menu-title: Learning
   icon: graduation
   items:
     - label: COMPOSABLE COMMERCE
       items:
         - title: Administrator learning path
-          href: /../path-to-page
+          href: /views/empty
         - title: Business users guides & tutorials
-          href: /../path-to-page
+          href: /views/empty
         - title: Developer guides & tutorials
-          href: /../path-to-page
+          href: /views/empty
 - menu-title: Offering
   icon: handshake
   items:
     - title: Composable Commerce
-      href: /../path-to-page
+      href: /views/empty
     - title: Composable Commerce for China
-      href: /../path-to-page
+      href: /views/empty
     - title: Composable Commerce B2B
-      href: /../path-to-page
+      href: /views/empty
     - title: Audit Log Premium
-      href: /../path-to-page
+      href: /views/empty
     - title: Frontend
-      href: /../path-to-page
+      href: /views/empty
     - title: Checkout
-      href: /../path-to-page
+      href: /views/empty
     - title: Connect
-      href: /../path-to-page
+      href: /views/empty
     - title: Product portfolio overview
-      href: /../path-to-page
+      href: /views/empty
     - title: Support
-      href: /../path-to-page
+      href: /views/empty
     - title: Training
-      href: /../path-to-page
+      href: /views/empty
 - menu-title: Release Notes
   icon: document
-  href: /../path-to-page
+  href: /views/empty
 - menu-title: Support
   icon: headset
-  href: /../path-to-page
+  href: /views/empty
 - menu-title: System status
   icon: heartbeat
-  href: /../path-to-page
+  href: /views/empty
 - footer-title: Free trial
   icon: unlocked
-  href: /../path-to-page
+  href: /views/empty
 - footer-title: Log in to Merchant Center
   icon: login
-  href: /../path-to-page
+  href: /views/empty
