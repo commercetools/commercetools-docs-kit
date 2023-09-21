@@ -126,7 +126,6 @@ const Dd = styled.dd`
 `;
 
 const Li = styled.li`
-  ${containerStyles};
   line-height: 1.46;
 
   > ul,
@@ -135,6 +134,12 @@ const Li = styled.li`
   }
   > ul {
     list-style-type: circle;
+  }
+  > * + :not(span.planTag) {
+    margin-top: ${dimensions.spacings.m};
+  }
+  > * + ${Ul}, > * + ${Ol}, > * + ${Dl} {
+    margin-top: ${dimensions.spacings.s};
   }
 `;
 
