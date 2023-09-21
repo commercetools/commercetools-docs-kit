@@ -139,6 +139,8 @@ const MenuColumWrapper = styled.div`
     css`
       animation: ${hideContentAnimation} 0.25s ease-out;
       animation-fill-mode: backwards;
+      white-space: nowrap;
+      overflow: hidden;
     `}
 `;
 

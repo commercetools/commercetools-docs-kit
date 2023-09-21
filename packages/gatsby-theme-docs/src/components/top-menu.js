@@ -20,6 +20,7 @@ const slideOpenAnimationMobile = keyframes`
 const Container = styled.div`
   width: 100%;
   max-width: 100vw;
+  font-size: ${designSystem.typography.fontSizes.small};
 `;
 const Content = styled.div`
   display: flex;

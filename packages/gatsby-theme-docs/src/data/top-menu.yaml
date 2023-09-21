@@ -125,7 +125,7 @@
       items:
         - title: Checkout Quickstart
           href: /views/empty
-- menu-title: No-code & business tooling
+- menu-title: No-code & business tooling No-code & business tooling
   icon: suitcase
   items:
     - label: COMPOSABLE COMMERCE
