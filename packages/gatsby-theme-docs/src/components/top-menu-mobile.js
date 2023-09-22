@@ -15,10 +15,12 @@ const Container = styled.div`
 const MenuNavigationArea = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 2px;
+  padding: 0 8px 16px 2px;
 `;
 
-const CloseButton = styled.div``;
+const CloseButton = styled.div`
+  cursor: pointer;
+`;
 
 const GoBackButton = styled.div`
   display: flex;

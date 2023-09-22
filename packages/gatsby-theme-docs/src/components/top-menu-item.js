@@ -162,7 +162,7 @@ TopMenuItem.propTypes = {
 
 export const TopMenuLabelItem = styled.div`
   font-weight: ${designSystem.typography.fontWeights['light-bold']};
-  padding: 0 8px;
+  padding: 0 8px 4px 8px;
   margin-top: ${({ isFirstItem }) => (!isFirstItem ? '20px' : '0')};
 `;
 
