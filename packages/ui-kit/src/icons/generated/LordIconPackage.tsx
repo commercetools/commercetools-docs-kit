@@ -44,11 +44,11 @@ const SvgLordIconPackage = (props: SVGProps<SVGSVGElement>) => (
       </filter>
       <mask id="lord-icon-package_svg__e" mask-type="alpha">
         <g filter="url(#lord-icon-package_svg__a)">
-          <use href="#b" />
+          <use href="#lord-icon-package_svg__b" />
         </g>
       </mask>
       <mask id="lord-icon-package_svg__g" mask-type="alpha">
-        <use href="#c" />
+        <use href="#lord-icon-package_svg__c" />
       </mask>
       <g
         id="lord-icon-package_svg__c"

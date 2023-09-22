@@ -31,7 +31,7 @@ const SvgLordIconHeadset = (props: SVGProps<SVGSVGElement>) => (
         <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
       </filter>
       <mask id="lord-icon-headset_svg__d" mask-type="alpha">
-        <use href="#a" />
+        <use href="#lord-icon-headset_svg__a" />
       </mask>
       <g
         id="lord-icon-headset_svg__a"

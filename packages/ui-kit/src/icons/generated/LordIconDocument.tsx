@@ -28,15 +28,15 @@ const SvgLordIconDocument = (props: SVGProps<SVGSVGElement>) => (
         <path d="M0 0h500v500H0z" />
       </clipPath>
       <mask id="lord-icon-document_svg__i" mask-type="alpha">
-        <use href="#a" />
+        <use href="#lord-icon-document_svg__a" />
       </mask>
       <mask id="lord-icon-document_svg__f" mask-type="alpha">
         <g filter="url(#lord-icon-document_svg__b)">
-          <use href="#c" />
+          <use href="#lord-icon-document_svg__c" />
         </g>
       </mask>
       <mask id="lord-icon-document_svg__k" mask-type="alpha">
-        <use href="#d" />
+        <use href="#lord-icon-document_svg__d" />
       </mask>
       <g
         id="lord-icon-document_svg__d"

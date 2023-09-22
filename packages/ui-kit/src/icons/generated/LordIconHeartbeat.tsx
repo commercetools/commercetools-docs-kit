@@ -25,10 +25,10 @@ const SvgLordIconHeartbeat = (props: SVGProps<SVGSVGElement>) => (
         <path d="M0 0h500v500H0z" />
       </clipPath>
       <mask id="lord-icon-heartbeat_svg__e" mask-type="alpha">
-        <use href="#a" />
+        <use href="#lord-icon-heartbeat_svg__a" />
       </mask>
       <mask id="lord-icon-heartbeat_svg__g" mask-type="alpha">
-        <use href="#b" />
+        <use href="#lord-icon-heartbeat_svg__b" />
       </mask>
       <filter
         id="lord-icon-heartbeat_svg__h"
