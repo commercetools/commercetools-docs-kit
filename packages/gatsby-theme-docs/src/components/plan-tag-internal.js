@@ -96,7 +96,7 @@ const PlanTagInternal = (props) => {
     ? TagContainerInverted
     : TagContainer;
   return (
-    <TagWrapper>
+    <TagWrapper className="planTag">
       {props.inverted && props.href ? (
         <Link href={props.href} nounderline={true}>
           <ContainerComponent
