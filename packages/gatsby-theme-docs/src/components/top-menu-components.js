@@ -116,7 +116,7 @@ const hideContentAnimation = keyframes`
 `;
 
 const MenuColumWrapper = styled.div`
-  padding: 24px 16px;
+  padding: 16px;
 
   ${(props) =>
     props.level === 3 &&
