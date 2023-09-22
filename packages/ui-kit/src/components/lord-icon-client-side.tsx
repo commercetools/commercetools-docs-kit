@@ -4,8 +4,10 @@ import { getStaticSvgComponent, iconLoader } from '../utils/lord-icon';
 import { defineElement } from 'lord-icon-element';
 import { Element } from 'lord-icon-element/element';
 import { LordIconTrigger } from './lord-icon';
+import { HoverOutStop } from './lord-icon-custom-triggers';
 
 Element.setIconLoader(iconLoader);
+Element.defineTrigger('hover-out-stop', HoverOutStop);
 
 defineElement(lottie.loadAnimation);
 

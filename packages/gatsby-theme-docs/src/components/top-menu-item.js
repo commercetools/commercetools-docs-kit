@@ -124,7 +124,7 @@ export const TopMenuItem = (props) => {
       {props.icon && (
         <MenuIconWrapper>
           <LordIcon
-            trigger="hover"
+            trigger="hover-out-stop"
             iconName={props.icon}
             target={`#${[props.id]}`}
             height="30"

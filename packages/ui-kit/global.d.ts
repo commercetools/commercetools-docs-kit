@@ -4,6 +4,7 @@ type LoadingType = 'lazy' | 'interaction';
 
 type LordIconTrigger =
   | 'hover'
+  | 'hover-out-stop'
   | 'click'
   | 'loop'
   | 'loop-on-hover'
