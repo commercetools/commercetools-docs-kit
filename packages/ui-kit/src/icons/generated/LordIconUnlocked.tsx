@@ -31,7 +31,7 @@ const SvgLordIconUnlocked = (props: SVGProps<SVGSVGElement>) => (
         <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
       </filter>
       <mask id="lord-icon-unlocked_svg__d" mask-type="alpha">
-        <use href="#lord-unlocked-flag_svg__a" />
+        <use href="#lord-icon-unlocked_svg__a" />
       </mask>
       <g
         id="lord-icon-unlocked_svg__a"
