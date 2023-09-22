@@ -25,6 +25,7 @@ const GoBackButton = styled.div`
   align-items: center;
   color: ${designSystem.colors.light.selectedItemText};
   fill: ${designSystem.colors.light.selectedItemText};
+  cursor: pointer;
 `;
 
 const PanelsContainer = styled.div``;

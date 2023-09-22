@@ -7,6 +7,7 @@ import useTopMenuItems from '../hooks/use-top-menu-items';
 import { BottomItems, MenuColumn, flattenLabels } from './top-menu-components';
 import Link from './link';
 import TopMenuMobile from './top-menu-mobile';
+import { usePrevious } from '../hooks/use-previous';
 
 const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
@@ -86,7 +87,9 @@ const TopMenu = (props) => {
   const [level2Items, setLevel2Items] = useState();
   const [level3Items, setLevel3Items] = useState();
   const [columnCount, setColumnCount] = useState(2);
-  const [selectedItems, setSelectedItems] = useState(['0-0']);
+  const [selectedItems, setSelectedItems] = useState(['1-0']);
+  const [isBackToRoot, setIsBackToRoot] = useState(false);
+  const previousSelectedItems = usePrevious(selectedItems);
   const [areAllColumsExpanded, setAreAllColumnsExpanded] = useState(false);
 
   const onMenuItemSelected = (level, idx) => {
@@ -140,6 +143,16 @@ const TopMenu = (props) => {
     setAreAllColumnsExpanded(selectedItems?.length >= 2);
   }, [selectedItems, topMenuItems]);
 
+  useEffect(() => {
+    if (
+      selectedItems?.length === 1 &&
+      selectedItems?.length < previousSelectedItems?.length
+    ) {
+      // keeps track of the first time user navigates back to the root column for css animation purpose
+      setIsBackToRoot(true);
+    }
+  }, [previousSelectedItems, selectedItems]);
+
   return (
     <Container>
       <Content
@@ -175,6 +188,7 @@ const TopMenu = (props) => {
                     level={1}
                     selectedIndex={getSelectedIndex(0)}
                     onSelected={onMenuItemSelected}
+                    shouldShrink={isBackToRoot}
                   />
                   <MenuColumn
                     isExpanded={true}

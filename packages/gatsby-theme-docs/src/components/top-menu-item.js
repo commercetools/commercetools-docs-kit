@@ -88,7 +88,7 @@ const getMenuItemStyle = (props) => css`
 
     ${props.level === 1 &&
     !props.areAllColumsExpanded &&
-    props.columnTouched &&
+    props.shouldShrink &&
     css`
       display: flex;
       & p {
@@ -157,7 +157,7 @@ TopMenuItem.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   level: PropTypes.number,
   // eslint-disable-next-line react/no-unused-prop-types
-  columnTouched: PropTypes.bool,
+  shouldShrink: PropTypes.bool,
 };
 
 export const TopMenuLabelItem = styled.div`

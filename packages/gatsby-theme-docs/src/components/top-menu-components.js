@@ -70,7 +70,7 @@ const MenuColumnContainer = styled.div`
   // 1st column expand animation
   ${(props) =>
     props.level === 1 &&
-    props.columnTouched &&
+    props.shouldShrink &&
     !props.areAllColumsExpanded &&
     css`
       @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
@@ -146,7 +146,6 @@ const MenuColumWrapper = styled.div`
 
 export const MenuColumn = (props) => {
   const [localItems, setLocalItems] = useState([]);
-  const [touched, setTouched] = useState(false);
   useEffect(() => {
     setLocalItems(flattenLabels(props.items));
   }, [props.items, props.isExpanded]);
@@ -186,23 +185,17 @@ export const MenuColumn = (props) => {
         isSelected={isSelected}
         isExpandible={!isLabel && !!item.items}
         areAllColumsExpanded={props.areAllColumsExpanded}
-        columnTouched={touched}
+        shouldShrink={props.shouldShrink}
         onSelected={() => {
           if (!isLabel) {
             props.onSelected(props.level, index);
-            setTouched(true);
           }
         }}
       />
     );
   };
-
   return (
-    <MenuColumnContainer
-      {...props}
-      localItems={localItems}
-      columnTouched={touched}
-    >
+    <MenuColumnContainer {...props} localItems={localItems}>
       {localItems?.length > 0 && (
         <MenuColumWrapper onAnimationEnd={handleAnimationEnded} {...props}>
           {localItems?.map(renderMenuItem)}
@@ -218,6 +211,7 @@ MenuColumn.propTypes = {
   isExpanded: PropTypes.bool.isRequired,
   areAllColumsExpanded: PropTypes.bool.isRequired,
   selectedIndex: PropTypes.number,
+  shouldShrink: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       menuTitle: PropTypes.string,
