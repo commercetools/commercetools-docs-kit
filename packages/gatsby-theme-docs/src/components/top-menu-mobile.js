@@ -101,21 +101,21 @@ const TopMenuMobile = (props) => {
       <PanelsContainer>
         {currentPanel === 1 && (
           <ColumnPanel
-            level={0}
+            level={currentPanel}
             onSelected={onMenuItemSelected}
             items={topMenuItems}
           />
         )}
         {currentPanel === 2 && (
           <ColumnPanel
-            level={1}
+            level={currentPanel}
             onSelected={onMenuItemSelected}
             items={level2Items}
           />
         )}
         {currentPanel === 3 && (
           <ColumnPanel
-            level={2}
+            level={currentPanel}
             onSelected={onMenuItemSelected}
             items={level3Items}
           />

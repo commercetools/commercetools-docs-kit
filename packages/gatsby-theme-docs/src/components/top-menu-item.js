@@ -79,6 +79,12 @@ const fadeIn = keyframes`
 const getMenuItemStyle = (props) => css`
   display: flex;
   align-items: center;
+  font-size: ${props.level === 1
+    ? designSystem.typography.rootFontSize
+    : designSystem.typography.fontSizes.small};
+  font-weight: ${props.level === 1
+    ? designSystem.typography.fontWeights.medium
+    : designSystem.typography.fontWeights.regular};
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     ${props.level === 1 &&
