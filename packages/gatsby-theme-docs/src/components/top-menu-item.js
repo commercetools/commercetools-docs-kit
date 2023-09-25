@@ -80,7 +80,7 @@ const getMenuItemStyle = (props) => css`
   display: flex;
   align-items: center;
   font-size: ${props.level === 1
-    ? designSystem.typography.rootFontSize
+    ? '15px'
     : designSystem.typography.fontSizes.small};
   font-weight: ${props.level === 1
     ? designSystem.typography.fontWeights.medium
