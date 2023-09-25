@@ -23,6 +23,7 @@ const MenuItemWrapper = styled.div`
   ${(props) =>
     props.isSelected &&
     `
+    padding: 7px 11px 7px 7px;
     border: 1px solid ${designSystem.colors.light.selectedItem};
     border-radius: 4px;
     background-color: ${designSystem.colors.light.selectedItemBackground};
@@ -124,7 +125,7 @@ export const TopMenuItem = (props) => {
       {props.icon && (
         <MenuIconWrapper>
           <LordIcon
-            trigger="hover-out-stop"
+            trigger="morph"
             iconName={props.icon}
             target={`#${[props.id]}`}
             height="30"

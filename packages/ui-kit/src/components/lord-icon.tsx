@@ -6,7 +6,6 @@ const LordIconLazy = React.lazy(() => import('./lord-icon-client-side'));
 
 export type LordIconTrigger =
   | 'hover'
-  | 'hover-out-stop'
   | 'click'
   | 'loop'
   | 'loop-on-hover'
