@@ -10,6 +10,42 @@ The top navigation entries can be modified in `packages/gatsby-theme-docs/src/da
 
 The left-hand navigation allows you to navigate different pages in the microsite, while the right-hand navigation allows you to navigate within a page. You can organize the pages shown in the left-hand navigation in `/src/data/navigation.yaml`.
 
+Left-hand navigation supports up to three levels of nesting, meaning that you can define Chapters containing either pages or Subchapters. This is an example of how a 3 levels navigation is structured in the `navigation.yaml` file:
+
+```yaml
+
+- chapter-title: Subchapters
+  pages:
+    - title: Subchapter One
+      pages:
+        - title: third level page 1
+          path: /empty-pages/empty-page-five
+        - title: third level page 2
+          path: /empty-pages/empty-page-six
+        - title: third level page 3
+          path: /empty-pages/empty-page-seven
+    - title: Normal Chapter 1
+      path: /empty-pages/empty-page-twelve
+    - title: Normal Chapter 2
+      path: /empty-pages/empty-page-thirteen
+    - title: Normal Chapter 3
+      path: /empty-pages/empty-page-fourteen
+    - title: Subchapter Two
+      pages:
+        - title: third level page 1
+          path: /empty-pages/empty-page-nine
+        - title: third level page 2
+          path: /empty-pages/empty-page-ten
+        - title: third level page 3
+          path: /empty-pages/empty-page-eleven
+
+```
+
+The above configuration will generate the following menu layout:
+
+![subchapters menu](/images/subchapters.png)
+
+
 # Child section navigation
 
 As the name suggests, it is a navigator within a section that is used to shorten the right-hand navigation. It condenses headings (from level 3 to 6) and displays them within this section, rather than the right-hand navigation. Hierarchy can be represented by adding additional `#`. It supports one level of hierarchy inside the child section navigator. Deeper nesting is not recommended and rendered as the second level.
