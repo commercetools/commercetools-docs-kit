@@ -184,6 +184,7 @@ export const MenuColumn = (props) => {
         href={item.href}
         isSelected={isSelected}
         isExpandible={!isLabel && !!item.items}
+        isSubLabel={item.isSubLabel}
         areAllColumsExpanded={props.areAllColumsExpanded}
         shouldShrink={props.shouldShrink}
         onSelected={() => {
@@ -252,6 +253,12 @@ BottomItems.propTypes = {
   ),
 };
 
+/**
+ * Items grouped under a label, must be flattened to
+ * simplify rendering (they're rendered as normal items under the label)
+ * but we still want to be able to identify them as sublabel items for styling
+ * purpose... I know, it's crazy
+ */
 export const flattenLabels = (items) => {
   const processedItems = [];
   if (!items) {
@@ -263,7 +270,9 @@ export const flattenLabels = (items) => {
     }
     if (element.label) {
       processedItems.push(element);
-      element.items.forEach((subElement) => processedItems.push(subElement));
+      element.items.forEach((subElement) =>
+        processedItems.push({ ...subElement, isSubLabel: true })
+      );
     } else {
       processedItems.push(element);
     }

@@ -7,7 +7,8 @@ import { AngleRightIcon } from '@commercetools-uikit/icons';
 
 const MenuItemWrapper = styled.div`
   display: flex;
-  padding: 8px 12px 8px 8px;
+  padding: ${({ isSubLabel }) =>
+    isSubLabel ? '4px 12px 4px 8px' : '8px 12px 8px 8px'};
   height: 32px;
 
   &:hover {
@@ -20,16 +21,20 @@ const MenuItemWrapper = styled.div`
     }
   }
 
-  ${(props) =>
-    props.isSelected &&
-    `
-    padding: 7px 11px 7px 7px;
+  ${(props) => {
+    const paddingTopBottom = props.isSubLabel ? '3px' : '7px';
+    return (
+      props.isSelected &&
+      `
+    padding: ${paddingTopBottom} 11px ${paddingTopBottom} 7px;
     border: 1px solid ${designSystem.colors.light.selectedItem};
     border-radius: 4px;
     background-color: ${designSystem.colors.light.selectedItemBackground};
     color: ${designSystem.colors.light.selectedItemText};
     font-weight: ${designSystem.typography.fontWeights['light-bold']}
-  `}
+  `
+    );
+  }}
 `;
 
 MenuItemWrapper.propTypes = {
@@ -127,6 +132,7 @@ export const TopMenuItem = (props) => {
       id={props.id}
       onClick={onClickHandler}
       isSelected={props.isSelected}
+      isSubLabel={props.isSubLabel}
     >
       {props.icon && (
         <MenuIconWrapper>
@@ -161,6 +167,7 @@ TopMenuItem.propTypes = {
   href: PropTypes.string,
   isSelected: PropTypes.bool,
   isExpandible: PropTypes.bool,
+  isSubLabel: PropTypes.bool,
   // eslint-disable-next-line react/no-unused-prop-types
   level: PropTypes.number,
   // eslint-disable-next-line react/no-unused-prop-types
@@ -170,7 +177,7 @@ TopMenuItem.propTypes = {
 export const TopMenuLabelItem = styled.div`
   font-weight: ${designSystem.typography.fontWeights['light-bold']};
   padding: 0 8px 4px 8px;
-  margin-top: ${({ isFirstItem }) => (!isFirstItem ? '20px' : '0')};
+  margin-top: 20px;
 `;
 
 TopMenuLabelItem.propTypes = {

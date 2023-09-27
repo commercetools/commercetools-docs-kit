@@ -159,6 +159,7 @@ const ColumnPanel = (props) => {
         href={item.href}
         isSelected={isSelected}
         isExpandible={!isLabel && !!item.items}
+        isSubLabel={item.isSubLabel}
         onSelected={() => {
           if (!isLabel) {
             props.onSelected(props.level, index);
