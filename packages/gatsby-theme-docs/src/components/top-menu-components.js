@@ -255,8 +255,6 @@ BottomItems.propTypes = {
 /**
  * Items grouped under a label, must be flattened to
  * simplify rendering (they're rendered as normal items under the label)
- * but we still want to be able to identify them as sublabel items for styling
- * purpose... I know, it's crazy
  */
 export const flattenLabels = (items) => {
   const processedItems = [];
