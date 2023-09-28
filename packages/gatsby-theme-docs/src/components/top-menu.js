@@ -4,7 +4,11 @@ import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 import { Icons, MediaQuery, designSystem } from '@commercetools-docs/ui-kit';
 import useTopMenuItems from '../hooks/use-top-menu-items';
-import { BottomItems, MenuColumn, flattenLabels } from './top-menu-components';
+import {
+  BottomItems,
+  MenuColumn,
+  preProcessColumnItems,
+} from './top-menu-components';
 import Link from './link';
 import TopMenuMobile from './top-menu-mobile';
 import { usePrevious } from '../hooks/use-previous';
@@ -132,7 +136,7 @@ const TopMenu = (props) => {
     }
     if (selectedItems[1]) {
       indexLevel2 = selectedItems[1].split('-')[1];
-      const baseItems = flattenLabels(topMenuItems[indexLevel1].items);
+      const baseItems = preProcessColumnItems(topMenuItems[indexLevel1].items);
       const selectedLevel2 = baseItems[indexLevel2];
       if (selectedLevel2?.items?.length > 0) {
         setLevel3Items(selectedLevel2.items);

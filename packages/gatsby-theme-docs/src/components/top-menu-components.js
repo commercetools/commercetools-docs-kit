@@ -147,7 +147,7 @@ const MenuColumWrapper = styled.div`
 export const MenuColumn = (props) => {
   const [localItems, setLocalItems] = useState([]);
   useEffect(() => {
-    setLocalItems(flattenLabels(props.items));
+    setLocalItems(preProcessColumnItems(props.items));
   }, [props.items, props.isExpanded]);
 
   const handleAnimationEnded = () => {
@@ -256,7 +256,7 @@ BottomItems.propTypes = {
  * Items grouped under a label, must be flattened to
  * simplify rendering (they're rendered as normal items under the label)
  */
-export const flattenLabels = (items) => {
+const flattenLabels = (items) => {
   const processedItems = [];
   if (!items) {
     return processedItems;
@@ -273,4 +273,30 @@ export const flattenLabels = (items) => {
     }
   });
   return processedItems;
+};
+
+/**
+ * This sorting function has the sole purpose of enforce that,
+ * for each item list (column), the expandable items (items with children) are
+ * displayed first, and lastly all the direct link items. This is mainly to ensure
+ * the layout of the menu is consistent since the direct link items have smaller height than
+ * the expandable ones
+ */
+export const sortItems = (items) => {
+  const groupedItems = items.reduce(
+    (prev, curr) => {
+      prev[curr.href || curr.label ? 'linkItems' : 'expandableItems'].push(
+        curr
+      );
+      return prev;
+    },
+    { expandableItems: [], linkItems: [] }
+  );
+
+  return [...groupedItems.expandableItems, ...groupedItems.linkItems];
+};
+
+export const preProcessColumnItems = (items) => {
+  const flattenedItems = flattenLabels(items);
+  return sortItems(flattenedItems);
 };

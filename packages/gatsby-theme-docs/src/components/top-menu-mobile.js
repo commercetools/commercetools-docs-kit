@@ -4,7 +4,7 @@ import useTopMenuItems from '../hooks/use-top-menu-items';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { AngleLeftIcon, CloseBoldIcon } from '@commercetools-uikit/icons';
 import { useEffect, useState } from 'react';
-import { flattenLabels } from './top-menu-components';
+import { preProcessColumnItems } from './top-menu-components';
 import { TopMenuItem, TopMenuLabelItem } from './top-menu-item';
 
 const Container = styled.div`
@@ -71,7 +71,7 @@ const TopMenuMobile = (props) => {
     }
     if (selectedItems[1]) {
       indexLevel2 = selectedItems[1].split('-')[1];
-      const baseItems = flattenLabels(topMenuItems[indexLevel1].items);
+      const baseItems = preProcessColumnItems(topMenuItems[indexLevel1].items);
       const selectedLevel2 = baseItems[indexLevel2];
       if (selectedLevel2?.items?.length > 0) {
         setLevel3Items(selectedLevel2.items);
@@ -132,7 +132,7 @@ TopMenuMobile.propTypes = {
 const ColumnPanel = (props) => {
   const [localItems, setLocalItems] = useState([]);
   useEffect(() => {
-    setLocalItems(flattenLabels(props.items));
+    setLocalItems(preProcessColumnItems(props.items));
   }, [props.items]);
 
   const renderMenuItem = (item, index) => {
