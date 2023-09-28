@@ -7,8 +7,8 @@ import { AngleRightIcon } from '@commercetools-uikit/icons';
 
 const MenuItemWrapper = styled.div`
   display: flex;
-  padding: ${({ isSubLabel }) =>
-    isSubLabel ? '4px 12px 4px 8px' : '8px 12px 8px 8px'};
+  padding: ${({ isSmall }) =>
+    isSmall ? '4px 12px 4px 8px' : '8px 12px 8px 8px'};
   height: 32px;
 
   &:hover {
@@ -22,7 +22,7 @@ const MenuItemWrapper = styled.div`
   }
 
   ${(props) => {
-    const paddingTopBottom = props.isSubLabel ? '3px' : '7px';
+    const paddingTopBottom = props.isSmall ? '3px' : '7px';
     return (
       props.isSelected &&
       `
@@ -39,6 +39,7 @@ const MenuItemWrapper = styled.div`
 
 MenuItemWrapper.propTypes = {
   isSelected: PropTypes.bool,
+  isSmall: PropTypes.bool,
 };
 
 const MenuIconWrapper = styled.div`
@@ -132,7 +133,7 @@ export const TopMenuItem = (props) => {
       id={props.id}
       onClick={onClickHandler}
       isSelected={props.isSelected}
-      isSubLabel={props.isSubLabel}
+      isSmall={props.level > 1 && !props.isExpandible}
     >
       {props.icon && (
         <MenuIconWrapper>
@@ -167,7 +168,6 @@ TopMenuItem.propTypes = {
   href: PropTypes.string,
   isSelected: PropTypes.bool,
   isExpandible: PropTypes.bool,
-  isSubLabel: PropTypes.bool,
   // eslint-disable-next-line react/no-unused-prop-types
   level: PropTypes.number,
   // eslint-disable-next-line react/no-unused-prop-types

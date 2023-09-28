@@ -184,7 +184,6 @@ export const MenuColumn = (props) => {
         href={item.href}
         isSelected={isSelected}
         isExpandible={!isLabel && !!item.items}
-        isSubLabel={item.isSubLabel}
         areAllColumsExpanded={props.areAllColumsExpanded}
         shouldShrink={props.shouldShrink}
         onSelected={() => {
@@ -270,9 +269,7 @@ export const flattenLabels = (items) => {
     }
     if (element.label) {
       processedItems.push(element);
-      element.items.forEach((subElement) =>
-        processedItems.push({ ...subElement, isSubLabel: true })
-      );
+      element.items.forEach((subElement) => processedItems.push(subElement));
     } else {
       processedItems.push(element);
     }
