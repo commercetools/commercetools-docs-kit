@@ -42,6 +42,12 @@ Top menu supports a nesting of up to 3 levels.
 - `items`: if the menu item contains sub-items, this property should contain the list of sub items
 - `label`: If defined with a child `items` property. It will display a list of items under a bold text label
 
+**Note**
+
+In each column, expandable items are automatically displayed as first items followed by the non expandable ones (direct link), regardless of how they are defined in the `top-menu.yaml` file.
+
+Children items of a `label` must be all direct links, we don't support expandable items as label children.
+
 Top menu also supports items to appear in the bottom area of the menu. Bottom items **don't** support any nesting.
 
 **Bottom area** items can have the following attrinutes

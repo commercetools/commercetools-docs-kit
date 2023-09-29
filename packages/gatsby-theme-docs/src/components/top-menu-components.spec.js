@@ -54,29 +54,12 @@ const items5 = [];
 
 const expectedItems5 = [];
 
-const items6 = [
-  { label: 'APIs', items: [] },
-  { href: '/views/empty', title: 'HTTP APIs' },
-  { title: 'Expandable Under Label', items: [{}, {}] },
-  { href: '/views/empty', title: 'HTTP APIs' },
-  { title: 'Expandable 1', items: [{}, {}] },
-];
-
-const expectedItems6 = [
-  { title: 'Expandable 1', items: [{}, {}] },
-  { label: 'APIs', items: [] },
-  { href: '/views/empty', title: 'HTTP APIs' },
-  { title: 'Expandable Under Label', items: [{}, {}] },
-  { href: '/views/empty', title: 'HTTP APIs' },
-];
-
 const cases = [
   [items1, expectedItems1],
   [items2, expectedItems2],
   [items3, expectedItems3],
   [items4, expectedItems4],
   [items5, expectedItems5],
-  [items6, expectedItems6],
 ];
 
 describe('sortItems', () => {
