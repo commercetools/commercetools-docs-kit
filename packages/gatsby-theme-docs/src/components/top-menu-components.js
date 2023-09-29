@@ -183,7 +183,7 @@ export const MenuColumn = (props) => {
         text={text}
         href={item.href}
         isSelected={isSelected}
-        isExpandible={!isLabel && !!item.items}
+        isExpandable={!isLabel && !!item.items}
         areAllColumsExpanded={props.areAllColumsExpanded}
         shouldShrink={props.shouldShrink}
         onSelected={() => {

@@ -133,7 +133,7 @@ export const TopMenuItem = (props) => {
       id={props.id}
       onClick={onClickHandler}
       isSelected={props.isSelected}
-      isSmall={props.level > 1 && !props.isExpandible}
+      isSmall={props.level > 1 && !props.isExpandable}
     >
       {props.icon && (
         <MenuIconWrapper>
@@ -151,7 +151,7 @@ export const TopMenuItem = (props) => {
         <p>{props.text}</p>
       </div>
 
-      {props.isExpandible && (
+      {props.isExpandable && (
         <ExpandItemIcon isSelected={props.isSelected}>
           <AngleRightIcon size="medium" />
         </ExpandItemIcon>
@@ -167,7 +167,7 @@ TopMenuItem.propTypes = {
   onSelected: PropTypes.func,
   href: PropTypes.string,
   isSelected: PropTypes.bool,
-  isExpandible: PropTypes.bool,
+  isExpandable: PropTypes.bool,
   // eslint-disable-next-line react/no-unused-prop-types
   level: PropTypes.number,
   // eslint-disable-next-line react/no-unused-prop-types
