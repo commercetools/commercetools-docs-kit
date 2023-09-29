@@ -22,16 +22,19 @@ type Props = {
   children?: never;
   iconLeftSecondaryButton?: ReactElement;
   displaySecondaryButton?: boolean;
+  displayPrimaryButton?: boolean;
 };
 const defaultProps: Pick<
   Props,
   | 'isPrimaryButtonDisabled'
   | 'dataAttributesPrimaryButton'
   | 'dataAttributesSecondaryButton'
+  | 'displayPrimaryButton'
 > = {
   isPrimaryButtonDisabled: false,
   dataAttributesPrimaryButton: {},
   dataAttributesSecondaryButton: {},
+  displayPrimaryButton: true,
 };
 
 const DialogFooter = (props: Props) => {
@@ -50,12 +53,14 @@ const DialogFooter = (props: Props) => {
             {...filterDataAttributes(props.dataAttributesSecondaryButton)}
           />
         )}
-        <PrimaryButton
-          label={props.labelPrimary}
-          onClick={props.onConfirm}
-          isDisabled={props.isPrimaryButtonDisabled}
-          {...filterDataAttributes(props.dataAttributesPrimaryButton)}
-        />
+        {props.displayPrimaryButton && (
+          <PrimaryButton
+            label={props.labelPrimary}
+            onClick={props.onConfirm}
+            isDisabled={props.isPrimaryButtonDisabled}
+            {...filterDataAttributes(props.dataAttributesPrimaryButton)}
+          />
+        )}
       </Spacings.Inline>
     </div>
   );

@@ -15,6 +15,7 @@ type Props = {
   labelSecondary?: string;
   labelPrimary: string;
   isPrimaryButtonDisabled?: boolean;
+  displayPrimaryButton?: boolean;
   onSecondaryButtonClick?: (event: SyntheticEvent) => void;
   onPrimaryButtonClick: (event: SyntheticEvent) => void;
   dataAttributesSecondaryButton?: { [key: string]: string };
@@ -24,9 +25,13 @@ type Props = {
   displaySecondaryButton?: boolean;
   testid?: string;
 };
-const defaultProps: Pick<Props, 'labelSecondary' | 'labelPrimary'> = {
+const defaultProps: Pick<
+  Props,
+  'labelSecondary' | 'labelPrimary' | 'displayPrimaryButton'
+> = {
   labelSecondary: 'Cancel',
   labelPrimary: 'Save',
+  displayPrimaryButton: true,
 };
 
 const FormDialog = (props: Props) => (
@@ -51,6 +56,7 @@ const FormDialog = (props: Props) => (
       dataAttributesPrimaryButton={props.dataAttributesPrimaryButton}
       iconLeftSecondaryButton={props.iconLeftSecondaryButton}
       displaySecondaryButton={props.displaySecondaryButton}
+      displayPrimaryButton={props.displayPrimaryButton}
     />
   </DialogContainer>
 );
