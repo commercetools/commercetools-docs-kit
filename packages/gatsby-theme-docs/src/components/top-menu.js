@@ -265,7 +265,7 @@ const MenuBottom = styled.div`
 `;
 
 const ItemsArea = styled.div`
-  max-width: 400px;
+  width: ${designSystem.dimensions.widths.topMenuSingleCoumn};
 `;
 const FeedbackArea = styled.div`
   padding-right: 40px;
