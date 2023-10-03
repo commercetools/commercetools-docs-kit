@@ -37,6 +37,9 @@ describe('Top menu', () => {
   });
   it('should expand and contract level 3 when selecting a three levels menu item', () => {
     cy.visit(URL_DOCS_SMOKE_TEST);
+    cy.findByText('Components').click();
+    cy.findByText('Mermaid Diagrams').click({ force: true });
+    cy.get('div[data-testid="mermaid-diagram"]');
     cy.findByLabelText('Open Top Menu').click();
     cy.get('div[data-testid="desktop-top-menu"]').should('be.visible');
     cy.get('div[data-testid="desktop-top-menu"]')
