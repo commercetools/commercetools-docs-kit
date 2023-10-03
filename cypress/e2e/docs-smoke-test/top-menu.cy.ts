@@ -10,11 +10,13 @@ describe('Top menu', () => {
     cy.findByText('Mermaid Diagrams').click({ force: true });
     cy.get('div[data-testid="mermaid-diagram"]');
     cy.findByLabelText('Open Top Menu').click();
-    cy.findByRole('top-menu').should('be.visible');
-    cy.findByRole('top-menu').within(() => {
-      cy.findByText('Documentation').should('be.visible');
-      cy.percySnapshot();
-    });
+    cy.get('div[data-testid="desktop-top-menu"]').should('be.visible');
+    cy.get('div[data-testid="desktop-top-menu"]')
+      .filter(':visible')
+      .within(() => {
+        cy.findByText('Documentation').filter(':visible').should('be.visible');
+        cy.percySnapshot();
+      });
     cy.findByLabelText('Close Top Menu').should('exist');
   });
   it('should load mermaid diagram and then toggle top menu after clicking on the search input', () => {
@@ -23,11 +25,33 @@ describe('Top menu', () => {
     cy.findByText('Mermaid Diagrams').click({ force: true });
     cy.get('div[data-testid="mermaid-diagram"]');
     cy.findByLabelText('Open Top Menu').click();
-    cy.findByRole('top-menu').should('be.visible');
-    cy.findByRole('top-menu').within(() => {
-      cy.findByText('Documentation').should('be.visible');
-    });
+    cy.get('div[data-testid="desktop-top-menu"]').should('be.visible');
+    cy.get('div[data-testid="desktop-top-menu"]')
+      .filter(':visible')
+      .within(() => {
+        cy.findByText('Documentation').filter(':visible').should('be.visible');
+        cy.percySnapshot();
+      });
     cy.findByLabelText('Search').click();
     cy.findByLabelText('Open Top Menu').should('exist');
+  });
+  it('should expand and contract level 3 when selecting a three levels menu item', () => {
+    cy.visit(URL_DOCS_SMOKE_TEST);
+    cy.findByLabelText('Open Top Menu').click();
+    cy.get('div[data-testid="desktop-top-menu"]').should('be.visible');
+    cy.get('div[data-testid="desktop-top-menu"]')
+      .filter(':visible')
+      .within(() => {
+        cy.findByText('Product with long title which spans on multiple lines')
+          .filter(':visible')
+          .click();
+        cy.findByText('Getting started resources').filter(':visible').click();
+        cy.findByText('GETTING STARTED PAGES').should('be.visible');
+
+        cy.findByText('Product with long title which spans on multiple lines')
+          .filter(':visible')
+          .click();
+        cy.findByText('GETTING STARTED PAGES').should('not.be.visible');
+      });
   });
 });

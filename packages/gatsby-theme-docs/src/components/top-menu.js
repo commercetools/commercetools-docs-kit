@@ -183,7 +183,10 @@ const TopMenu = (props) => {
               />
             </MediaQuery>
             <MediaQuery forViewport="largeTablet">
-              <MenuContainer columnCount={columnCount}>
+              <MenuContainer
+                data-testid="desktop-top-menu"
+                columnCount={columnCount}
+              >
                 <MenuTop>
                   <MenuColumn
                     isExpanded={true}
