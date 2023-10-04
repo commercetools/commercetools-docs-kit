@@ -13,16 +13,27 @@ const config = {
   siteMetadata: {
     title: 'Docs Smoke Test',
     description: 'Documentation website for smoke tests',
+    products: [],
+    contentType: null,
     betaLink: '/beta',
     excludeFromSearchIndex: isProd && !shouldEnableSearch,
   },
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'docs-smoke-test',
-      additionalPrismLanguages: ['markup-templating', 'json', 'bash', 'java', 'scala', 'csharp', 'swift', 'php'],
+      additionalPrismLanguages: [
+        'markup-templating',
+        'json',
+        'bash',
+        'java',
+        'scala',
+        'csharp',
+        'swift',
+        'php',
+      ],
       addOns: [
         '@commercetools-docs/gatsby-theme-code-examples',
-        '@commercetools-docs/gatsby-theme-constants'
+        '@commercetools-docs/gatsby-theme-constants',
       ],
     }),
   ],

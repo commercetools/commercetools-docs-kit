@@ -14,6 +14,8 @@ const config = {
   siteMetadata: {
     title: 'API Docs Smoke Test',
     description: 'Documentation website for API smoke tests',
+    products: [],
+    contentType: null,
     betaLink: '',
     excludeFromSearchIndex: isProd,
     globalNotification: {
