@@ -7,6 +7,7 @@ ApiClientPagedQueryResponse: !include api-client/ApiClientPagedQueryResponse.ram
 ApprovalFlow: !include approval-flow/ApprovalFlow.raml
 ApprovalFlowApproval: !include approval-flow/ApprovalFlowApproval.raml
 ApprovalFlowApproveAction: !include approval-flow/ApprovalFlowApproveAction.raml
+ApprovalFlowPagedQueryResponse: !include approval-flow/ApprovalFlowPagedQueryResponse.raml
 ApprovalFlowRejectAction: !include approval-flow/ApprovalFlowRejectAction.raml
 ApprovalFlowRejection: !include approval-flow/ApprovalFlowRejection.raml
 ApprovalFlowStatus: !include approval-flow/ApprovalFlowStatus.raml
@@ -14,6 +15,7 @@ ApprovalFlowUpdate: !include approval-flow/ApprovalFlowUpdate.raml
 ApprovalFlowUpdateAction: !include approval-flow/ApprovalFlowUpdateAction.raml
 ApprovalRule: !include approval-rule/ApprovalRule.raml
 ApprovalRuleDraft: !include approval-rule/ApprovalRuleDraft.raml
+ApprovalRulePagedQueryResponse: !include approval-rule/ApprovalRulePagedQueryResponse.raml
 ApprovalRuleSetApproversAction: !include approval-rule/ApprovalRuleSetApproversAction.raml
 ApprovalRuleSetDescriptionAction: !include approval-rule/ApprovalRuleSetDescriptionAction.raml
 ApprovalRuleSetKeyAction: !include approval-rule/ApprovalRuleSetKeyAction.raml
@@ -125,6 +127,7 @@ CartDiscountReference: !include cart-discount/CartDiscountReference.raml
 CartDiscountResourceIdentifier: !include cart-discount/CartDiscountResourceIdentifier.raml
 CartDiscountShippingCostTarget: !include cart-discount/CartDiscountShippingCostTarget.raml
 CartDiscountTarget: !include cart-discount/CartDiscountTarget.raml
+CartDiscountTotalPriceTarget: !include cart-discount/CartDiscountTotalPriceTarget.raml
 CartDiscountUpdate: !include cart-discount/CartDiscountUpdate.raml
 CartDiscountUpdateAction: !include cart-discount/CartDiscountUpdateAction.raml
 CartDiscountValue: !include cart-discount/CartDiscountValue.raml
@@ -180,9 +183,11 @@ DirectDiscountDraft: !include cart/DirectDiscountDraft.raml
 DirectDiscountReference: !include cart/DirectDiscountReference.raml
 DiscountCodeInfo: !include cart/DiscountCodeInfo.raml
 DiscountCodeState: !include cart/DiscountCodeState.raml
+DiscountOnTotalPrice: !include cart/DiscountOnTotalPrice.raml
 DiscountedLineItemPortion: !include cart/DiscountedLineItemPortion.raml
 DiscountedLineItemPrice: !include cart/DiscountedLineItemPrice.raml
 DiscountedLineItemPriceForQuantity: !include cart/DiscountedLineItemPriceForQuantity.raml
+DiscountedTotalPricePortion: !include cart/DiscountedTotalPricePortion.raml
 ExternalLineItemTotalPrice: !include cart/ExternalLineItemTotalPrice.raml
 ExternalTaxAmountDraft: !include cart/ExternalTaxAmountDraft.raml
 ExternalTaxRateDraft: !include cart/ExternalTaxRateDraft.raml

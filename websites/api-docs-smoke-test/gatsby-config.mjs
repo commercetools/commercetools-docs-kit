@@ -15,6 +15,8 @@ const config = {
     title: 'API Docs Smoke Test',
     description: 'Documentation website for API smoke tests',
     breadcrumbs: 'Test Sites',
+    products: [],
+    contentType: null,
     betaLink: '',
     excludeFromSearchIndex: isProd,
     globalNotification: {
