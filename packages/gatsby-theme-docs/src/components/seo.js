@@ -8,16 +8,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSiteData } from '../hooks/use-site-data';
-import useTopMenuItems from '../hooks/use-top-menu-items';
-import getSiteContextTitleByPath from '../utils/get-site-context-title';
 
 const SEO = (props) => {
   const siteData = useSiteData();
-  const { siteContextMap } = useTopMenuItems();
-  const siteContextTitle = getSiteContextTitleByPath(
-    siteContextMap,
-    siteData.pathPrefix
-  );
+  const siteContextTitle = siteData?.siteMetadata?.breadcrumbs;
   const excludeFromSearchIndex =
     props.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;

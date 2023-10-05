@@ -48,6 +48,7 @@ The Docs-Kit theme also receives its plugin configuration through this standard 
 
 - `title` (**required**, string): Defines the title of the website.
 - `description` (**required**, string): Defines the description of the website.
+- `breadcrumbs` (**required**, string): Defines the text displayed as root breadcrumb in the site header.
 - `beta` (_optional_, boolean): indicates that the website should be marked as **beta**. Each page gets a beta flag, no matter if the page frontmatter has it defined or not. Furthermore, in the main navigation, the beta flag is shown near the website title and not next to each link. **Default: `false`**
 - `betaLink` (_optional_, string): Configures the link for _beta button_.
 - `excludeFromSearchIndex` (_optional_, boolean): indicates that the website should not be indexed by crawlers. This option sets the `robots="noindex"` meta attribute on all pages of the site. If true, the search box in the top navigation is not displayed. **Default: `true`** Note that the on-site Algolia Docsearch is not respecting the instruction, it is purely based on click-trough reachability from the home page.

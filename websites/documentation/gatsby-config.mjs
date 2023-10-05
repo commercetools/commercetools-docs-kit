@@ -11,6 +11,7 @@ const config = {
   siteMetadata: {
     title: 'Docs Kit Docs',
     description: '',
+    breadcrumbs: 'Documentation',
     betaLink: '/beta',
     excludeFromSearchIndex: true,
   },

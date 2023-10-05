@@ -11,6 +11,7 @@ const config = {
   siteMetadata: {
     title: 'Self-learning Smoke Test',
     description: 'Self-learning website for smoke tests',
+    breadcrumbs: 'Test Sites',
     betaLink: '/beta',
     excludeFromSearchIndex: true,
     isSelfLearning: true,

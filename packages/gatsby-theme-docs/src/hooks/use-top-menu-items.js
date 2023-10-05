@@ -68,19 +68,7 @@ const useTopMenuItems = () => {
     ? removeNullUndefined(data?.allTopMenuYaml.nodes)
     : topMenuItems;
 
-  const siteContextMap = new Map();
-  data.allTopMenuYaml.nodes.forEach((node) => {
-    node?.items?.forEach((item) => {
-      if (item?.href?.startsWith('/../')) {
-        const minisiteSegment = item.href.split('/')[2];
-        if (minisiteSegment) {
-          siteContextMap.set(minisiteSegment, node.menuTitle);
-        }
-      }
-    });
-  });
-
-  return { topMenuItems, siteContextMap };
+  return { topMenuItems };
 };
 
 export default useTopMenuItems;

@@ -13,6 +13,7 @@ const config = {
   siteMetadata: {
     title: 'CHANGE-ME',
     description: 'CHANGE-ME',
+    breadcrumbs: 'CHANGE-ME',
     betaLink: '',
     excludeFromSearchIndex: isProd,
     allowWideContentLayout: true,
