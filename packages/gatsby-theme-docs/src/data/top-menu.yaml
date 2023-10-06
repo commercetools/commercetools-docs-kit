@@ -16,7 +16,7 @@
         - title: Self-learning Smoke Test
           href: /../self-learning-smoke-test
 
-- menu-title: Product with long title which spans on multiple lines
+- menu-title: Product with a long title that spans multiple lines
   icon: flag
   items:
     - label: GETTING STARTED

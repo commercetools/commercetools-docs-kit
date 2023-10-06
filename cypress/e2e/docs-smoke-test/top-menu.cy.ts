@@ -45,13 +45,13 @@ describe('Top menu', () => {
     cy.get('div[data-testid="desktop-top-menu"]')
       .filter(':visible')
       .within(() => {
-        cy.findByText('Product with long title which spans on multiple lines')
+        cy.findByText('Product with a long title that spans multiple lines')
           .filter(':visible')
           .click();
         cy.findByText('Getting started resources').filter(':visible').click();
         cy.findByText('GETTING STARTED PAGES').should('be.visible');
 
-        cy.findByText('Product with long title which spans on multiple lines')
+        cy.findByText('Product with a long title that spans multiple lines')
           .filter(':visible')
           .click();
         cy.findByText('GETTING STARTED PAGES').should('not.be.visible');
