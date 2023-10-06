@@ -15,6 +15,7 @@ const config = {
     description: 'Documentation website for smoke tests',
     products: [],
     contentType: null,
+    breadcrumbs: 'Test Sites',
     betaLink: '/beta',
     excludeFromSearchIndex: isProd && !shouldEnableSearch,
   },

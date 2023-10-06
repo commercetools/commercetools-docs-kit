@@ -1,27 +1,42 @@
 - menu-title: Documentation
+  icon: package
   items:
-    - label: Docs Kit Docs
-      href: /../documentation
+    - title: Docs Kit Docs
+    - href: /../documentation
 
 - menu-title: Test Sites
+  icon: api
   items:
-    - label: Docs Smoke Test
-      href: /../docs-smoke-test
-    - label: API Docs Smoke Test
-      href: /../api-docs-smoke-test
-    - label: Self-learning Smoke Test
-      href: /../self-learning-smoke-test
+    - label: SMOKE TEST SITES
+      items:
+        - title: Docs Smoke Test
+          href: /../docs-smoke-test
+        - title: API Docs Smoke Test
+          href: /../api-docs-smoke-test
+        - title: Self-learning Smoke Test
+          href: /../self-learning-smoke-test
 
-- menu-title: Product with long title
+- menu-title: Product with a long title that spans multiple lines
+  icon: flag
   items:
-    - label: Getting started
-      href: /
-    - label: APIs
-      href: /
+    - label: GETTING STARTED
+      items:
+        - title: Getting started item with long text which spans on multiple lines
+          href: /
+        - title: Getting started item 2
+          href: /
+    - title: Getting started resources
+      items:
+        - label: GETTING STARTED PAGES
+          items:
+            - title: Getting started item with long text which spans on multiple lines
+              href: /
+            - title: Getting started item 2
+              href: /
 
-- menu-title: Last product
-  items:
-    - label: Getting started
-      href: /
-    - label: APIs
-      href: /
+- footer-title: Free trial
+  icon: unlocked
+  href: /
+- footer-title: Log in to Merchant Center
+  icon: login
+  href: /

@@ -16,7 +16,7 @@ export { default as LordIconHeadsetSvgIcon } from './LordIconHeadset';
 export { default as LordIconHeartbeatSvgIcon } from './LordIconHeartbeat';
 export { default as LordIconLoginSvgIcon } from './LordIconLogin';
 export { default as LordIconPackageSvgIcon } from './LordIconPackage';
-export { default as LordIconSuitcaseSvgIcon } from './LordIconSuitcase';
+export { default as LordIconSpreadsheetSvgIcon } from './LordIconSpreadsheet';
 export { default as LordIconUnlockedSvgIcon } from './LordIconUnlocked';
 export { default as MerchantCenterSmallSvgIcon } from './MerchantCenterSmall';
 export { default as MerchantCenterSvgIcon } from './MerchantCenter';

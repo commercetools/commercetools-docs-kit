@@ -10,6 +10,8 @@ const pageWidthSmall = '592px';
 const asideColumnWidth = pageWidthSmall;
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
+const topMenuSingleCoumn = '365px';
+const topMenuSingleCoumnShrink = '125px';
 
 export const pxToRem = (px: string, suffix = 'rem') => {
   const pxNumber = px.replace(/([0-9]+)px$/, '$1');
@@ -23,6 +25,7 @@ export type ThemeColorTokens = {
   surfaceSecondary1: string;
   surfaceSecondary2: string;
   surfaceSecondary3: string;
+  surfaceSecondaryTopMenu: string;
   surfaceInlineCode: string;
   surfaceCode: string;
   surfaceCodeCopy: string;
@@ -63,6 +66,9 @@ export type ThemeColorTokens = {
   headlinePrimary: string;
   // Icons
   iconSecondary: string;
+  selectedItem: string;
+  selectedItemBackground: string;
+  selectedItemText: string;
 };
 
 export type ThemeCodeBlocksColorTokens = {
@@ -96,6 +102,7 @@ export const colors: ThemeColors = {
     surfaceSecondary1: designTokens.colorNeutral95,
     surfaceSecondary2: designTokens.colorNeutral90,
     surfaceSecondary3: designTokens.colorNeutral60,
+    surfaceSecondaryTopMenu: designTokens.colorNeutral98,
     surfaceInlineCode: designTokens.colorNeutral95,
     surfaceCode: designTokens.colorAccent,
     surfaceCodeCopy: designTokens.colorAccent30,
@@ -136,6 +143,11 @@ export const colors: ThemeColors = {
     headlinePrimary: '#003037',
     // Icons
     iconSecondary: '#949494',
+    // Main menu
+    selectedItem: designTokens.colorPrimary40,
+    selectedItemBackground: `hsla(172.9608938547486, 100%, 40%, 0.1)`,
+    selectedItemText: designTokens.colorPrimary25,
+
     // Code blocks
     // We support 2 theme versions: a primary one and a secondary one.
     // This is not to be confused with a (potential) website theme, hence
@@ -260,6 +272,10 @@ export const dimensions = {
     cardRegularMinWidth: '328px',
     // the "inContentColumn" variation prevents only one card being in one row in regular content (except mobile)
     cardRegularMinWidthInContentColumn: '288px',
+    topMenuSingleCoumn: topMenuSingleCoumn,
+    topMenuTreeColums: `calc(${topMenuSingleCoumn} * 3)`,
+    topMenuTwoColums: `calc(${topMenuSingleCoumn} * 2)`,
+    topMenuSingleCoumnShrink: topMenuSingleCoumnShrink,
   },
   viewports: {
     mobile: `max-width: calc(768px - 0.02px)`,

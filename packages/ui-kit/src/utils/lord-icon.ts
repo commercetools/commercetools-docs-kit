@@ -1,15 +1,15 @@
-import Suitcase from '../icons/generated/Suitcase';
-import Command from '../icons/generated/Command';
-import Unlocked from '../icons/generated/Unlocked';
-import Package from '../icons/generated/Package';
-import Login from '../icons/generated/Login';
-import Heartbeat from '../icons/generated/Heartbeat';
-import Headset from '../icons/generated/Headset';
-import Handshake from '../icons/generated/Handshake';
-import Graduation from '../icons/generated/Graduation';
-import Flag from '../icons/generated/Flag';
-import Document from '../icons/generated/Document';
-import Api from '../icons/generated/Api';
+import Spreadsheet from '../icons/generated/LordIconSpreadsheet';
+import Command from '../icons/generated/LordIconCommand';
+import Unlocked from '../icons/generated/LordIconUnlocked';
+import Package from '../icons/generated/LordIconPackage';
+import Login from '../icons/generated/LordIconLogin';
+import Heartbeat from '../icons/generated/LordIconHeartbeat';
+import Headset from '../icons/generated/LordIconHeadset';
+import Handshake from '../icons/generated/LordIconHandshake';
+import Graduation from '../icons/generated/LordIconGraduation';
+import Flag from '../icons/generated/LordIconFlag';
+import Document from '../icons/generated/LordIconDocument';
+import Api from '../icons/generated/LordIconApi';
 import UnlockedJson from '../icons/lord-icon/unlocked.json';
 import PackageJson from '../icons/lord-icon/package.json';
 import LoginJson from '../icons/lord-icon/login.json';
@@ -20,13 +20,13 @@ import GraduationJson from '../icons/lord-icon/graduation.json';
 import FlagJson from '../icons/lord-icon/flag.json';
 import DocumentJson from '../icons/lord-icon/document.json';
 import ApiJson from '../icons/lord-icon/api.json';
-import SuitcaseJson from '../icons/lord-icon/suitcase.json';
+import SpreadsheetJson from '../icons/lord-icon/spreadsheet.json';
 import CommandJson from '../icons/lord-icon/command.json';
 import { IconData } from 'lord-icon-element/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const iconNameToSvgMap: Record<string, any> = {
-  suitcase: Suitcase,
+  spreadsheet: Spreadsheet,
   command: Command,
   unlocked: Unlocked,
   package: Package,
@@ -41,7 +41,7 @@ const iconNameToSvgMap: Record<string, any> = {
 };
 
 const iconNameToLottieJSON: Record<string, object> = {
-  suitcase: SuitcaseJson,
+  spreadsheet: SpreadsheetJson,
   command: CommandJson,
   unlocked: UnlockedJson,
   package: PackageJson,

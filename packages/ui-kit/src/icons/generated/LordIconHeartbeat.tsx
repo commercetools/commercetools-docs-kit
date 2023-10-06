@@ -97,12 +97,12 @@ const SvgLordIconHeartbeat = (props: SVGProps<SVGSVGElement>) => (
         transform="rotate(-94 262.075 8.435) scale(2.4)"
       >
         <path
-          fill="#4AE0EB"
+          fill="#00B39E"
           d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
           className="lord-icon-heartbeat_svg__design"
         />
         <path
-          fill="#CA5EED"
+          fill="#068BDF"
           d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
           className="lord-icon-heartbeat_svg__design"
         />

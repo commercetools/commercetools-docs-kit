@@ -47,6 +47,7 @@ const config = (themeOptions = {}) => {
       author: 'commercetools',
       productionHostname,
       betaLink: '.',
+      breadcrumbs: '',
       excludeFromSearchIndex: false,
       beta: false,
       isSelfLearning: false,

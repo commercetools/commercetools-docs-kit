@@ -14,8 +14,6 @@ import {
 import { SearchDialog, SearchInput, Overlay } from '../../components';
 import PlaceholderLoginInfoArea from '../../overrides/topbar-login-info';
 import { useSiteData } from '../../hooks/use-site-data';
-import useTopMenuItems from '../../hooks/use-top-menu-items';
-import getSiteContextTitleByPath from '../../utils/get-site-context-title';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 
@@ -236,7 +234,6 @@ const CaretContainer = styled.div`
 // eslint-disable-next-line react/display-name
 const LayoutHeader = forwardRef((props, ref) => {
   const siteData = useSiteData();
-  const siteContextMap = useTopMenuItems();
 
   const handleTopMenuButtonKeyPress = (event) => {
     const enterOrSpace =
@@ -250,10 +247,8 @@ const LayoutHeader = forwardRef((props, ref) => {
       props.toggleTopMenu(event);
     }
   };
-  const siteContextTitle = getSiteContextTitleByPath(
-    siteContextMap,
-    siteData.pathPrefix
-  );
+
+  const siteContextTitle = siteData?.siteMetadata?.breadcrumbs;
 
   return (
     <Container id="top" allowWideContentLayout={props.allowWideContentLayout}>

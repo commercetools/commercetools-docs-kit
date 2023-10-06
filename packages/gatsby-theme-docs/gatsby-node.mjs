@@ -182,13 +182,18 @@ export const createSchemaCustomization = ({ actions, schema }) => {
 
     type TopMenuYaml implements Node @dontInfer {
       id: ID!
-      menuTitle: String! @proxy(from: "menu-title")
-      items: [TopMenuItem!]
+      menuTitle: String @proxy(from: "menu-title")
+      icon: String!
+      footerTitle: String @proxy(from: "footer-title")
+      href: String
+      items: [TopMenuSubItem]
     }
-    type TopMenuItem {
-      label: String!
-      href: String!
+    type TopMenuSubItem {
+      title: String
+      label: String
+      href: String
       beta: Boolean
+      items: [TopMenuSubItem]
     }
     type TopSideMenuYaml implements Node @dontInfer {
       id: ID!

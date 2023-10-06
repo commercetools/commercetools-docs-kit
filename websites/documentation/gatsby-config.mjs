@@ -13,6 +13,7 @@ const config = {
     description: '',
     products: [],
     contentType: null,
+    breadcrumbs: 'Documentation',
     betaLink: '/beta',
     excludeFromSearchIndex: true,
   },

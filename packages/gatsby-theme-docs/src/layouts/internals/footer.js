@@ -121,17 +121,6 @@ const AlignedRight = styled.div`
 const LayoutFooter = () => {
   const data = useStaticQuery(graphql`
     query GetFooterLinks {
-      allTopMenuYaml {
-        nodes {
-          id
-          menuTitle
-          items {
-            label
-            href
-            beta
-          }
-        }
-      }
       allTopSideMenuYaml {
         nodes {
           id
@@ -167,7 +156,7 @@ const LayoutFooter = () => {
             <Icons.LogoHorizontalSvgIcon />
           </MediaQuery>
         </Column>
-        {data.allTopMenuYaml.nodes.map((node) => (
+        {/* {data.allTopMenuYaml.nodes.map((node) => (
           <Column key={node.id}>
             <SpacingsStack scale="s">
               <ColumnTitle>{node.menuTitle}</ColumnTitle>
@@ -181,7 +170,7 @@ const LayoutFooter = () => {
               ))}
             </SpacingsStack>
           </Column>
-        ))}
+        ))} */}
         <SideColumn>
           <SpacingsStack scale="s">
             {data.allTopSideMenuYaml.nodes.map((node) => (
