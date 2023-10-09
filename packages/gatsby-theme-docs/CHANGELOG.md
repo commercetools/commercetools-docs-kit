@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.8.1
+
+### Patch Changes
+
+- [#1848](https://github.com/commercetools/commercetools-docs-kit/pull/1848) [`2a68246f`](https://github.com/commercetools/commercetools-docs-kit/commit/2a68246f4e25c7d7996dbcec88858164dfe43b76) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix issue with the top menu not closing when clicking on the dark overlay around it
+
 ## 22.8.0
 
 ### Minor Changes
