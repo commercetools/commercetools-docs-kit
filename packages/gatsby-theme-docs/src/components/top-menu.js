@@ -159,14 +159,7 @@ const TopMenu = (props) => {
 
   return (
     <Container>
-      <Content
-        role="top-menu"
-        aria-labelledby="top-menu-switcher"
-        onClick={(event) => {
-          // Prevent overlay to close when clicking on the content area.
-          event.stopPropagation();
-        }}
-      >
+      <Content role="top-menu" aria-labelledby="top-menu-switcher">
         <div
           css={
             props.centered
@@ -174,8 +167,8 @@ const TopMenu = (props) => {
               : contentGridStyle(areAllColumsExpanded)
           }
         >
-          <LeftBlank />
-          <Center>
+          <LeftBlank onClick={props.closeTopMenu} />
+          <Center onClick={props.closeTopMenu}>
             <MediaQuery forViewport="largeTablet" hideIfMatch>
               <TopMenuMobile
                 onMenuItemSelected={onMenuItemSelected}
@@ -186,6 +179,7 @@ const TopMenu = (props) => {
               <MenuContainer
                 data-testid="desktop-top-menu"
                 columnCount={columnCount}
+                onClick={(e) => e.stopPropagation()}
               >
                 <MenuTop>
                   <MenuColumn

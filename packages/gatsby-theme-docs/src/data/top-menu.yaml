@@ -2,7 +2,7 @@
   icon: package
   items:
     - title: Docs Kit Docs
-    - href: /../documentation
+      href: /../documentation
 
 - menu-title: Test Sites
   icon: api
