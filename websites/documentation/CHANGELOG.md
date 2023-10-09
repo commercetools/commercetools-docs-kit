@@ -1,5 +1,13 @@
 # @commercetools-website/documentation
 
+## 8.2.6
+
+### Patch Changes
+
+- Updated dependencies [[`ef038073`](https://github.com/commercetools/commercetools-docs-kit/commit/ef03807337f788e73fed2b15525ffeb2c113316e), [`2886e982`](https://github.com/commercetools/commercetools-docs-kit/commit/2886e982b7fc875cd849548f79e1ac85f8086987)]:
+  - @commercetools-docs/gatsby-theme-docs@22.8.0
+  - @commercetools-docs/gatsby-theme-code-examples@22.8.0
+
 ## 8.2.5
 
 ### Patch Changes
