@@ -3,10 +3,6 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import Footer from './footer';
-
-const Container = styled.footer`
-  background-color: ${designSystem.colors.light.surfaceSecondary2};
-`;
 const ContentGrid = styled.div`
   width: 100%;
   position: relative;
@@ -64,12 +60,12 @@ const LayoutFooter = () => (
       grid-area: footer;
     `}
   >
-    <Container>
+    <footer>
       <ContentGrid>
         <Footer />
         <RightBlank />
       </ContentGrid>
-    </Container>
+    </footer>
   </div>
 );
 

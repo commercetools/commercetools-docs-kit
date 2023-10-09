@@ -1,4 +1,20 @@
-- label: Privacy Policy
-  href: https://commercetools.com/privacy
-- label: Imprint
-  href: https://commercetools.com/imprint
+- menu-title: Documentation
+  items:
+    - label: Docs Kit Docs
+      href: /../documentation
+
+- menu-title: Test Sites
+  items:
+    - label: Docs Smoke Test
+      href: /../docs-smoke-test
+    - label: API Docs Smoke Test
+      href: /../api-docs-smoke-test
+    - label: Self-learning Smoke Test
+      href: /../self-learning-smoke-test
+
+- menu-title: Product with long title
+  items:
+    - label: Getting started
+      href: /
+    - label: APIs
+      href: /

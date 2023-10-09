@@ -63,7 +63,6 @@ The left-hand navigation allows you to navigate different pages in the microsite
 Left-hand navigation supports up to three levels of nesting, meaning that you can define Chapters containing either pages or Subchapters. This is an example of how a 3 levels navigation is structured in the `navigation.yaml` file:
 
 ```yaml
-
 - chapter-title: Subchapters
   pages:
     - title: Subchapter One
@@ -88,13 +87,53 @@ Left-hand navigation supports up to three levels of nesting, meaning that you ca
           path: /empty-pages/empty-page-ten
         - title: third level page 3
           path: /empty-pages/empty-page-eleven
-
 ```
 
 The above configuration will generate the following menu layout:
 
 ![subchapters menu](/images/subchapters.png)
 
+# Footer navigation
+
+The footer navigation entries can be modified in `packages/gatsby-theme-docs/src/data/footer.yaml`.
+
+Here is an example of the footer structure:
+
+```yaml
+- menu-title: Documentation
+  items:
+    - label: Docs Kit Docs
+      href: /../documentation
+
+- menu-title: Test Sites
+  items:
+    - label: Docs Smoke Test
+      href: /../docs-smoke-test
+    - label: API Docs Smoke Test
+      href: /../api-docs-smoke-test
+    - label: Self-learning Smoke Test
+      href: /../self-learning-smoke-test
+
+- menu-title: Product with long title
+  items:
+    - label: Getting started
+      href: /
+    - label: APIs
+      href: /
+```
+
+You can also adjust the links below the footer in `packages/gatsby-theme-docs/src/data/footer-links.yaml`.
+
+Example:
+
+```yaml
+- label: Privacy Policy
+  href: https://commercetools.com/privacy
+- label: Cookies
+  href: https://commercetools.com/privacy#1.2
+- label: Imprint
+  href: https://commercetools.com/imprint
+```
 
 # Child section navigation
 
