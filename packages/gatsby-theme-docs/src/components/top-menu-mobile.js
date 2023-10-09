@@ -84,7 +84,7 @@ const TopMenuMobile = (props) => {
   }, [selectedItems]);
 
   return (
-    <Container>
+    <Container onClick={(e) => e.stopPropagation()}>
       <MenuNavigationArea>
         {currentPanel > 1 ? (
           <GoBackButton onClick={handleGoBackClick}>
