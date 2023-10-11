@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { navigate } from 'gatsby';
 import { LordIcon, designSystem } from '@commercetools-docs/ui-kit';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 import { AngleRightIcon } from '@commercetools-uikit/icons';
+import Link from './link';
 
 const MenuItemWrapper = styled.div`
   display: flex;
@@ -11,11 +11,22 @@ const MenuItemWrapper = styled.div`
     isSmall ? '4px 12px 4px 8px' : '8px 12px 8px 8px'};
   height: 32px;
 
+  a {
+    color: ${designSystem.colors.light.textPrimary};
+    width: 100%;
+    &:hover {
+      color: ${designSystem.colors.light.selectedItemText};
+    }
+  }
+
   &:hover {
     background-color: ${designSystem.colors.light.selectedItemBackground};
     border-radius: 4px;
     cursor: pointer;
     color: ${designSystem.colors.light.selectedItemText};
+    a {
+      color: ${designSystem.colors.light.selectedItemText};
+    }
     & :last-child {
       visibility: visible;
     }
@@ -122,9 +133,7 @@ const getMenuItemStyle = (props) => css`
 
 export const TopMenuItem = (props) => {
   const onClickHandler = () => {
-    if (props.href) {
-      navigate(props.href);
-    } else if (props.onSelected) {
+    if (!props.href && props.onSelected) {
       props.onSelected();
     }
   };
@@ -147,9 +156,15 @@ export const TopMenuItem = (props) => {
         </MenuIconWrapper>
       )}
 
-      <div css={[getMenuItemStyle(props)]}>
-        <p>{props.text}</p>
-      </div>
+      {props.href ? (
+        <Link nounderline href={props.href} css={[getMenuItemStyle(props)]}>
+          <p>{props.text}</p>
+        </Link>
+      ) : (
+        <div css={[getMenuItemStyle(props)]}>
+          <p>{props.text}</p>
+        </div>
+      )}
 
       {props.isExpandable && (
         <ExpandItemIcon isSelected={props.isSelected}>
