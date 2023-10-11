@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.8.2
+
+### Patch Changes
+
+- [#1851](https://github.com/commercetools/commercetools-docs-kit/pull/1851) [`bd997972`](https://github.com/commercetools/commercetools-docs-kit/commit/bd997972332bb9bea8625921e4893d5c5bd367c3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Use Link component to render direct links in megamenu
+
 ## 22.8.1
 
 ### Patch Changes

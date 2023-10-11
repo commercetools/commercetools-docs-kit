@@ -2422,7 +2422,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@22.8.1, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@22.8.2, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
@@ -3350,7 +3350,7 @@ __metadata:
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
     "@commercetools-docs/gatsby-theme-api-docs": 22.8.0
-    "@commercetools-docs/gatsby-theme-docs": 22.8.1
+    "@commercetools-docs/gatsby-theme-docs": 22.8.2
     "@commercetools-docs/rmf-codegen": 13.28.0
     gatsby: 5.12.4
     gatsby-cli: 5.12.1
@@ -3366,7 +3366,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 22.8.0
     "@commercetools-docs/gatsby-theme-constants": 22.8.0
-    "@commercetools-docs/gatsby-theme-docs": 22.8.1
+    "@commercetools-docs/gatsby-theme-docs": 22.8.2
     "@commercetools-docs/ui-kit": 22.8.0
     "@commercetools-uikit/icons": 16.7.3
     "@commercetools-uikit/radio-input": 16.7.3
@@ -3384,7 +3384,7 @@ __metadata:
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 22.8.0
-    "@commercetools-docs/gatsby-theme-docs": 22.8.1
+    "@commercetools-docs/gatsby-theme-docs": 22.8.2
     gatsby: 5.12.4
     gatsby-cli: 5.12.1
     react: 18.2.0
@@ -3396,7 +3396,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/self-learning-smoke-test@workspace:websites/self-learning-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 22.8.1
+    "@commercetools-docs/gatsby-theme-docs": 22.8.2
     "@commercetools-docs/ui-kit": 22.8.0
     "@commercetools-uikit/icons": 16.7.3
     "@commercetools-uikit/radio-input": 16.7.3
@@ -3413,7 +3413,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 22.8.1
+    "@commercetools-docs/gatsby-theme-docs": 22.8.2
     gatsby: 5.12.4
     gatsby-cli: 5.12.1
     react: 18.2.0
