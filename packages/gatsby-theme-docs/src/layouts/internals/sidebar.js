@@ -308,7 +308,7 @@ const ChapterPagesWrapper = styled.div`
   ${({ isExpanded }) =>
     isExpanded &&
     css`
-      max-height: 1000px;
+      max-height: 10000px;
     `}
 `;
 
