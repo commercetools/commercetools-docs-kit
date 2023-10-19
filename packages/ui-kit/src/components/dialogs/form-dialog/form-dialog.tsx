@@ -24,6 +24,7 @@ type Props = {
   iconLeftSecondaryButton?: ReactElement;
   displaySecondaryButton?: boolean;
   testid?: string;
+  background?: string;
 };
 const defaultProps: Pick<
   Props,
@@ -43,9 +44,12 @@ const FormDialog = (props: Props) => (
     zIndex={props.zIndex}
     title={props.title}
     getParentSelector={props.getParentSelector}
+    background={props.background}
   >
     <DialogHeader title={props.title} onClose={props.onClose} />
-    <DialogContent>{props.children}</DialogContent>
+    <DialogContent hideTopBorder={props.title === ''}>
+      {props.children}
+    </DialogContent>
     <DialogFooter
       labelSecondary={props.labelSecondary || ''}
       labelPrimary={props.labelPrimary}
