@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import Tooltip from '@commercetools-uikit/tooltip';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ClipboardIcon } from '@commercetools-uikit/icons';
-import { Highlight } from 'prism-react-renderer';
+import { Highlight, Token } from 'prism-react-renderer';
 import {
   colors,
   dimensions,
@@ -102,6 +102,19 @@ const getLineStyles = (options: {
     `;
   }
   return [promptLineStyles, highlightLineStyles];
+};
+
+const getTokenStyles = (options: {
+  token: Token;
+  shouldHighlightLine: boolean;
+}) => {
+  if (options.token.types.includes('comment') && options.shouldHighlightLine) {
+    return {
+      color: colors.light.textInverted,
+    };
+  }
+
+  return {};
 };
 
 /**
@@ -285,7 +298,17 @@ const CodeBlock = (props: CodeBlockProps) => {
                       })}
                     >
                       {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({ token, key })} />
+                        <span
+                          key={key}
+                          {...getTokenProps({
+                            token,
+                            key,
+                            style: getTokenStyles({
+                              token,
+                              shouldHighlightLine,
+                            }),
+                          })}
+                        />
                       ))}
                     </div>
                   );
