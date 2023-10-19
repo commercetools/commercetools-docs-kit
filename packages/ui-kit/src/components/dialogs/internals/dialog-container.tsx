@@ -35,6 +35,7 @@ type Props = {
   children: ReactNode;
   getParentSelector: typeof getDefaultParentSelector;
   testId?: string;
+  background?: string;
 };
 const defaultProps: Pick<Props, 'size' | 'getParentSelector'> = {
   // TODO: t-shirt sizes are deprecated but we need to keep using them for
@@ -56,6 +57,15 @@ const sizeStyles = (props: Pick<Props, 'size'>) => {
   if (props.size === 'scale')
     return css`
       height: 100%;
+    `;
+
+  return css``;
+};
+
+const backgroundStyles = (props: Pick<Props, 'background'>) => {
+  if (props.background)
+    return css`
+      background: ${props.background};
     `;
 
   return css``;
@@ -100,6 +110,7 @@ const DialogContainer = (props: Props) => (
               min-height: 0;
               ${sizeStyles(props)}
               padding: 0;
+              ${backgroundStyles(props)}
 
               > div {
                 display: flex;
