@@ -18,6 +18,7 @@ const getBorderCss = (props: DialogContentProps) => {
 // The overflow should be "auto", to make the container scrollable
 const DialogContent = styled.div`
   ${(props: DialogContentProps) => getBorderCss(props)}
+  padding-top: ${designTokens.spacingS};
   flex: 1;
   overflow: auto;
 `;
