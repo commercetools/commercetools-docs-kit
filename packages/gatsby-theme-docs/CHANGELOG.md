@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.8.5
+
+### Patch Changes
+
+- [#1865](https://github.com/commercetools/commercetools-docs-kit/pull/1865) [`2ff5d6c4`](https://github.com/commercetools/commercetools-docs-kit/commit/2ff5d6c499706fddfc10b15fe632918a852deb0e) Thanks [@FFawzy](https://github.com/FFawzy)! - feat: always showing the avatar when logged in
+
 ## 22.8.4
 
 ### Patch Changes
