@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-docs",
   "description": "Gatsby theme for commercetools documentation",
-  "version": "22.8.3",
+  "version": "22.8.4",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "2.2.1",
-    "@commercetools-docs/ui-kit": "22.8.3",
+    "@commercetools-docs/ui-kit": "22.8.4",
     "@commercetools-uikit/card": "16.7.3",
     "@commercetools-uikit/checkbox-input": "16.7.3",
     "@commercetools-uikit/design-system": "16.7.3",

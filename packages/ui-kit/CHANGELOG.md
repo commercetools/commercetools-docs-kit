@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 22.8.4
+
+### Patch Changes
+
+- [#1857](https://github.com/commercetools/commercetools-docs-kit/pull/1857) [`e8e57ed5`](https://github.com/commercetools/commercetools-docs-kit/commit/e8e57ed5ec5bc09bb273ca5603a91e62a3a8311b) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix color issue with comments in code examples when they are highlighted.
+
+- [#1864](https://github.com/commercetools/commercetools-docs-kit/pull/1864) [`8ae0e6a0`](https://github.com/commercetools/commercetools-docs-kit/commit/8ae0e6a0b4b0ed2c08f291a59902b66f1979cffc) Thanks [@timonrey](https://github.com/timonrey)! - Adjust the FormDialog component for the chat assistant
+
 ## 22.8.3
 
 ### Patch Changes
