@@ -7,10 +7,8 @@ const LoginInfo = () => {
   const {
     user: { profile },
   } = useContext(LearningContextState);
-  if (hideLogin && profile) return <UserProfile />;
-  if (hideLogin && !profile) return null;
 
-  return <UserProfile />;
+  return hideLogin && !profile ? null : <UserProfile />;
 };
 
 export default LoginInfo;

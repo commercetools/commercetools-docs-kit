@@ -2,6 +2,18 @@
 title: Explore how to build a documentation website for commercetools
 ---
 
+import { LoginButton, IfUserLoggedOut } from '@commercetools-docs/gatsby-theme-docs'
+
+<IfUserLoggedOut>
+
+<div style="display:flex;">
+
+  <LoginButton theme="primary" label="Log in"/>
+
+</div>
+
+</IfUserLoggedOut>
+
 # Other smoke tests and docs websites
 
 <Cards narrow>
