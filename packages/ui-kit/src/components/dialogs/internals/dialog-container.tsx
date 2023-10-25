@@ -117,6 +117,7 @@ const DialogContainer = (props: Props) => (
                 flex-direction: column;
                 pointer-events: auto;
                 min-height: 0;
+                ${sizeStyles(props)}
               }
             `}
           >
