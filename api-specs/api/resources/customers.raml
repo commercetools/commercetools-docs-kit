@@ -17,6 +17,12 @@ get:
       body:
         application/json:
           example: !include ../examples/customers.example.json
+head:
+  securedBy: [oauth_2_0: { scopes: ['view_customers:{projectKey}'] }]
+  description: Checks if a Customer exists for a given Query Predicate. Returns a `200 OK` status if any Customers match the Query Predicate, or a `404 Not Found` otherwise.
+  queryParameters:
+    where?:
+      type: QueryPredicate[]
 post:
   securedBy: [oauth_2_0: { scopes: ['manage_customers:{projectKey}'] }]
   description: |
@@ -64,6 +70,7 @@ post:
   type: base
   post:
     displayName: Create a Token for verifying the Customer's Email
+    description: Produces the [CustomerEmailTokenCreated](ctp:api:type:CustomerEmailTokenCreatedMessage) Message.
     securedBy: [oauth_2_0: { scopes: ['manage_customers:{projectKey}'] }]
     body:
       application/json:
@@ -131,6 +138,7 @@ post:
 /password-token:
   type: base
   displayName: Create a Token for Resetting the Customer's Password
+  description: Produces the [CustomerPasswordTokenCreated](ctp:api:type:CustomerPasswordTokenCreatedMessage) Message.
   post:
     displayName: Create a Token for Resetting the Customer's Password
     securedBy: [oauth_2_0: { scopes: ['manage_customers:{projectKey}'] }]
@@ -157,6 +165,9 @@ post:
         body:
           application/json:
             example: !include ../examples/customer.example.json
+  head:
+    securedBy: [oauth_2_0: { scopes: ['view_customers:{projectKey}'] }]
+    description: Checks if a Customer exists for a given `key`. Returns a `200 OK` status if the Customer exists or a `404 Not Found` otherwise.
   post:
     securedBy: [oauth_2_0: { scopes: ['manage_customers:{projectKey}'] }]
     body:
@@ -192,6 +203,9 @@ post:
         body:
           application/json:
             example: !include ../examples/customer.example.json
+  head:
+    securedBy: [oauth_2_0: { scopes: ['view_customers:{projectKey}'] }]
+    description: Checks if a Customer exists for a given `id`. Returns a `200 OK` status if the Customer exists or a `404 Not Found` otherwise.
   post:
     securedBy: [oauth_2_0: { scopes: ['manage_customers:{projectKey}'] }]
     body:
