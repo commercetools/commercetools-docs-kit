@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/self-learning-smoke-test",
-  "version": "8.1.13",
+  "version": "8.1.14",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -15,7 +15,7 @@
     "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "22.8.5",
+    "@commercetools-docs/gatsby-theme-docs": "22.8.6",
     "@commercetools-docs/ui-kit": "22.8.4",
     "@commercetools-uikit/icons": "16.7.3",
     "@commercetools-uikit/radio-input": "16.7.3",

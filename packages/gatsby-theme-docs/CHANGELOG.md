@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.8.6
+
+### Patch Changes
+
+- [#1868](https://github.com/commercetools/commercetools-docs-kit/pull/1868) [`0849ee9a`](https://github.com/commercetools/commercetools-docs-kit/commit/0849ee9a8b983514282c7b5aeecd8cebdd4b8570) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Enable override for top menu research banner
+
 ## 22.8.5
 
 ### Patch Changes
