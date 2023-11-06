@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
-import { Icons, MediaQuery, designSystem } from '@commercetools-docs/ui-kit';
+import { MediaQuery, designSystem } from '@commercetools-docs/ui-kit';
 import useTopMenuItems from '../hooks/use-top-menu-items';
 import {
   BottomItems,
   MenuColumn,
   preProcessColumnItems,
 } from './top-menu-components';
-import Link from './link';
 import TopMenuMobile from './top-menu-mobile';
 import { usePrevious } from '../hooks/use-previous';
+import TopMenuBannerArea from '../overrides/top-menu-banner-area';
 
 const slideOpenAnimation = keyframes`
   from { margin-top: -50%; }
@@ -215,24 +215,7 @@ const TopMenu = (props) => {
                   </ItemsArea>
 
                   <FeedbackArea isVisible={selectedItems?.length >= 2}>
-                    <FeedbackContainer>
-                      <FeedBackContent>
-                        <Icons.CtLogoSvgIcon height={24} width={24} />
-                        <div css={{ display: 'flex', flexDirection: 'column' }}>
-                          <p>We want your feedback</p>
-                          <Link
-                            href="#"
-                            nounderline
-                            css={css`
-                              font-size: ${designSystem.typography.fontSizes
-                                .extraSmall};
-                            `}
-                          >
-                            Join our user research program
-                          </Link>
-                        </div>
-                      </FeedBackContent>
-                    </FeedbackContainer>
+                    <TopMenuBannerArea />
                   </FeedbackArea>
                 </MenuBottom>
               </MenuContainer>
@@ -273,25 +256,6 @@ const FeedbackArea = styled.div`
 
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     display: flex;
-  }
-`;
-
-const FeedbackContainer = styled.div`
-  border: 1px solid ${designSystem.colors.light.surfaceSecondary2};
-  background-color: ${designSystem.colors.light.surfacePrimary};
-  padding: 22px;
-`;
-
-const FeedBackContent = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: ${designSystem.typography.fontSizes.small} !important;
-  font-weight: ${designSystem.typography.fontWeights.regular};
-  & svg {
-    margin-right: 10px;
-  }
-  & a {
-    font-size: 14px;
   }
 `;
 
