@@ -42,7 +42,7 @@ jobs:
           echo "DEPLOY_ENV=Production" >> $GITHUB_ENV
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node (uses version in .nvmrc)
         uses: actions/setup-node@v3
@@ -182,7 +182,7 @@ jobs:
     concurrency: self-learning-concurrency-group
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node (uses version in .nvmrc)
         uses: actions/setup-node@v3
@@ -247,7 +247,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Check links
         uses: JustinBeckwith/linkinator-action@v1.10.4
