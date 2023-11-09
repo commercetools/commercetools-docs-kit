@@ -1,13 +1,19 @@
 import { URL_DOCS_SMOKE_TEST } from '../../support/urls';
 
 describe('Pagination', () => {
-  const baseUrl = `${URL_DOCS_SMOKE_TEST}components`;
+  const baseUrl = `${URL_DOCS_SMOKE_TEST}views`;
   const links = [
+    `${baseUrl}/markdown`,
+    `${baseUrl}/empty`,
+    `${baseUrl}/beta`,
+    `${baseUrl}/plan-tag`,
+    `${baseUrl}/nested-headings`,
+    `${baseUrl}/two-level-index-nav`,
+    `${baseUrl}/links`,
     `${baseUrl}/code-blocks`,
     `${baseUrl}/code-examples`,
-    `${baseUrl}/content-notifications`,
-    `${baseUrl}/images`,
-    `${baseUrl}/cards`,
+    `${baseUrl}/custom-anchor`,
+    `${baseUrl}/wide`,
   ];
   links.forEach((url, index) => {
     const nextUrl = links[index + 1];
