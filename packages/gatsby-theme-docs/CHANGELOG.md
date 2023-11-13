@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.8.7
+
+### Patch Changes
+
+- [#1872](https://github.com/commercetools/commercetools-docs-kit/pull/1872) [`d9217525`](https://github.com/commercetools/commercetools-docs-kit/commit/d9217525dbfa7302385974737b0530aa9cff2927) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Added a component PageRedirection to perform page redirections when included in the page
+
 ## 22.8.6
 
 ### Patch Changes
