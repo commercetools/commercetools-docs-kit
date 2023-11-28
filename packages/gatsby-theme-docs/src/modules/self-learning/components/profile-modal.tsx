@@ -4,14 +4,18 @@ import TextInput from '@commercetools-uikit/text-input';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { ErrorMessage } from '@commercetools-uikit/messages';
-import { FormDialog, useModalState } from '@commercetools-docs/ui-kit';
+import {
+  FormDialog,
+  useModalState,
+  designSystem,
+} from '@commercetools-docs/ui-kit';
 import { useContext, useEffect } from 'react';
+import styled from '@emotion/styled';
 import { LearningContextApi, LearningContextState } from './learning-context';
 import { useUpdateUser } from '../hooks/use-update-user';
 import { VerifiedIcon } from '@commercetools-uikit/icons';
 import SendVerificationEmailButton from './verify-email-button';
 import Stamp from '@commercetools-uikit/stamp';
-import FieldLabel from '@commercetools-uikit/field-label';
 import Label from '@commercetools-uikit/label';
 import Link from '@commercetools-uikit/link';
 
@@ -19,6 +23,13 @@ import ConfigContext, {
   EFeatureFlag,
   isFeatureEnabled,
 } from '../../../components/config-context';
+
+const CompanyVerifiedInfo = styled.div`
+  display: inline-block;
+  font-weight: ${designSystem.typography.fontWeights.medium};
+  font-size: ${designSystem.typography.fontSizes.small};
+  line-height: ${designSystem.typography.lineHeights.body};
+`;
 
 export type TProfileFormValues = {
   firstName: string;
@@ -229,11 +240,11 @@ const ProfileModal = () => {
           />
           {profile?.global_account_name ? (
             <SpacingsStack>
-              <Label>
-                Your verified company association is
-                <b>{profile.global_account_name}</b>
-                with id <b>{profile.global_account_id}</b>
-              </Label>
+              <CompanyVerifiedInfo>
+                Your verified company association is{' '}
+                <b>{profile.global_account_name}</b> with id{' '}
+                <b>{profile.global_account_id}</b>
+              </CompanyVerifiedInfo>
               <Label>
                 <Link
                   isExternal
