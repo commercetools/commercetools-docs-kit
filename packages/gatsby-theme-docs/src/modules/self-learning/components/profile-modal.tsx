@@ -242,7 +242,7 @@ const ProfileModal = () => {
             <SpacingsStack>
               <CompanyVerifiedInfo>
                 Your verified company association is{' '}
-                <b>{profile.global_account_name}</b> with id{' '}
+                <b>{profile.global_account_name}</b> with ID{' '}
                 <b>{profile.global_account_id}</b>
               </CompanyVerifiedInfo>
               <Label>
