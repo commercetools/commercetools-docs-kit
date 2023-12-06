@@ -8,7 +8,6 @@ import React, {
 import { useFormik } from 'formik';
 import { monotonicFactory } from 'ulid';
 import {
-  useModalState,
   FormDialog,
   designSystem,
 } from '@commercetools-docs/ui-kit';
