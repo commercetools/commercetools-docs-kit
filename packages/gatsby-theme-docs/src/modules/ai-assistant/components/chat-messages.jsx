@@ -146,8 +146,8 @@ const ChatMessages = (props) => {
         </IntroMessageText>
       </MessageContainer>
       {props.messages.map((message, index) => (
-        <>
-          <MessageContainer key={index}>
+        <div key={index}>
+          <MessageContainer >
             {message.role === 'assistant' ? (
               <AvatarWrapper isAssistant>
                 <AssistantAvatarIcon />
@@ -218,7 +218,7 @@ const ChatMessages = (props) => {
               </ThumbsDownButton>
             </FeedbackWrapper>
           ) : null}
-        </>
+        </div>
       ))}
       {props.chatLocked && (
         <MessageContainer>

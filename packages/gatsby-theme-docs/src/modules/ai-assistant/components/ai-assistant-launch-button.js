@@ -6,7 +6,7 @@ import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { CHAT_API_BASE_URL } from './chat.const';
 import { isAllowedUser, isNotValidatedUser } from './chat.utils';
 
-const ChatButton = (props) => {
+const AiAssistantLaunchButton = (props) => {
   const { isAuthenticated, user } = useAuthentication();
   const [chatLoading, setChatLoading] = useState(false);
   const { getAuthToken } = useAuthToken();
@@ -75,7 +75,7 @@ const ChatButton = (props) => {
           email and click on the link attached.
         </p>
         <h4>Link expired? Follow the steps below:</h4>
-        <ol css={{ 'padding-left': '20px' }}>
+        <ol css={{ paddingLeft: '20px' }}>
           <li>
             Click on the avatar with your initials located on top of this page.
           </li>
@@ -92,7 +92,7 @@ const ChatButton = (props) => {
   }
 };
 
-ChatButton.propTypes = {
+AiAssistantLaunchButton.propTypes = {
   label: PropTypes.string.isRequired,
   messageHistory: PropTypes.arrayOf(
     PropTypes.shape({
@@ -104,4 +104,4 @@ ChatButton.propTypes = {
   mode: PropTypes.string,
 };
 
-export default ChatButton;
+export default AiAssistantLaunchButton;

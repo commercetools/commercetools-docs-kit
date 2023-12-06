@@ -99,7 +99,6 @@ ReferenceSubList.propTypes = {
 };
 
 const ReferencesList = (props) => {
-  console.log(props.references);
   const referencesToDisplay = props.references.filter(
     (reference) => reference.usedInSystemPrompt && reference.url
   );

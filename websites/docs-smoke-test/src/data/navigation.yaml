@@ -43,6 +43,8 @@
       path: /components/mermaid-diagram
     - title: Video Player
       path: /components/video-player
+    - title: Ai Assistant
+      path: /components/ai-assistant
 - chapter-title: Subchapters
   pages:
     - title: Subchapter One

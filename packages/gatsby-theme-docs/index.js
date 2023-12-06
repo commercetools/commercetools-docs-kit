@@ -20,3 +20,4 @@ export * from './src/hooks/use-site-data';
 export * from './src/hooks/use-page-data';
 export * from './src/modules/self-learning';
 export * from './src/modules/sso';
+export * from './src/modules/ai-assistant';
