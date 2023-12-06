@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  useContext,
+} from 'react';
 import { useFormik } from 'formik';
 import { monotonicFactory } from 'ulid';
 import {
@@ -27,6 +33,7 @@ import submitPng from '../icons/paper-plane.png';
 import CTCube from '../icons/black-white-ct-cube.svg';
 import { Link } from 'gatsby';
 import CodeGeneratorSidebar from './code-generator-sidebar';
+import { LearningContextApi, LearningContextState } from '../../self-learning';
 
 export const DEV_TOOLING_MODE = 'dev-tooling-ts-code-generator';
 
@@ -211,6 +218,11 @@ const ChatModal = () => {
   const createNewConversationId = () => {
     return ulid();
   };
+  const { openAiAssistantModal, closeAiAssistantModal } =
+    useContext(LearningContextApi);
+  const {
+    ui: { aiAssistantModal },
+  } = useContext(LearningContextState);
   const [chatConfig, setChatConfig] = useState();
   const [messageHistoryInit, setMessageHistoryInit] = useState(false);
   const [isMessageInputFocused, setMessageInputFocused] = useState(false);
@@ -224,7 +236,6 @@ const ChatModal = () => {
   const [replayMessage, setReplayMessage] = useState();
   const [chatLocked, setChatLocked] = useState(false);
   const [inputMessageLengthState, setInputMessageLengthState] = useState();
-  const { closeModal, openModal, isModalOpen } = useModalState();
   const { user } = useAuthentication();
   const { getAuthToken } = useAuthToken();
 
@@ -325,19 +336,19 @@ const ChatModal = () => {
     if (
       currentChatMode &&
       chatConfig?.messageHistory &&
-      isModalOpen === true &&
+      aiAssistantModal &&
       messageHistoryInit === false
     ) {
       submitChatMessages(chatConfig.messageHistory);
       setMessageHistoryInit(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isModalOpen, messageHistoryInit, chatConfig, currentChatMode]);
+  }, [aiAssistantModal, messageHistoryInit, chatConfig, currentChatMode]);
 
   useEffect(() => {
     const handleCustomEvent = (event) => {
       setChatConfig(event.detail);
-      openModal();
+      openAiAssistantModal({title: '', isDismissable: true});
     };
 
     window.addEventListener('openChatModal', handleCustomEvent);
@@ -523,9 +534,9 @@ const ChatModal = () => {
       size="scale"
       title=""
       labelPrimary="Send"
-      isOpen={isModalOpen}
+      isOpen={!!aiAssistantModal}
       onClose={() => {
-        closeModal();
+        closeAiAssistantModal();
         setConversationId(createNewConversationId());
         resetChatState();
         setReplayMessage();

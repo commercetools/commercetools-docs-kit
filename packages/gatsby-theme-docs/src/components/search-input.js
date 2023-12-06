@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
@@ -8,6 +8,7 @@ import {
   createStyledIcon,
   Icons,
 } from '@commercetools-docs/ui-kit';
+import { LearningContextState } from '../modules/self-learning';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 const iconHeight = '16px';
@@ -71,6 +72,20 @@ const SearchInput = React.forwardRef((props, ref) => {
   const { onFocus } = props;
   const [isActive, setIsActive] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [ignoreHotKey, setIgnoreHotKey] = React.useState(false); // is set to true disable the `/` search hotkey
+  const {
+    ui: { aiAssistantModal, profileModal },
+  } = useContext(LearningContextState);
+
+  useEffect(() => {
+    // in case any modal is open, the search hotkey should be disabled
+    // otherwise it will interfere with normal modal inteactions (like typing text in the ai chat)
+    if (aiAssistantModal || profileModal) {
+      setIgnoreHotKey(true);
+    } else {
+      setIgnoreHotKey(false);
+    }
+  }, [aiAssistantModal, profileModal]);
 
   const handleFocus = (event) => {
     if (props.isDisabled) {
@@ -104,15 +119,15 @@ const SearchInput = React.forwardRef((props, ref) => {
         }
       }
     };
-    if (!props.isDisabled) {
+    if (!props.isDisabled && !ignoreHotKey) {
       window.addEventListener('keyup', onKeyPress);
     }
     return () => {
-      if (!props.isDisabled) {
+      if (!props.isDisabled && !ignoreHotKey) {
         window.removeEventListener('keyup', onKeyPress);
       }
     };
-  }, [onFocus, isLoading, props.isDisabled]);
+  }, [onFocus, isLoading, props.isDisabled, ignoreHotKey]);
   return (
     <Container>
       <SearchInputIcon position="left">

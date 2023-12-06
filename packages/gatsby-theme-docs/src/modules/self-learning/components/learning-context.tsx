@@ -7,14 +7,18 @@ type ProfileModalConfig = {
   isDismissable: boolean;
 };
 
+type AiModalConfig = ProfileModalConfig;
+
 enum LearningActionKind {
   UPDATE_PROFILE = 'UPDATE_PROFILE',
   OPEN_PROFILE_MODAL = 'OPEN_PROFILE_MODAL',
   CLOSE_PROFILE_MODAL = 'CLOSE_PROFILE_MODAL',
+  OPEN_AI_ASSISTANT_MODAL = 'OPEN_AI_ASSISTANT_MODAL',
+  CLOSE_AI_ASSISTANT_MODAL = 'CLOSE_AI_ASSISTANT_MODAL',
 }
 interface LearningAction {
   type: LearningActionKind;
-  payload?: User | ProfileModalConfig;
+  payload?: User | ProfileModalConfig | AiModalConfig;
 }
 
 const initialState: LearningContextStateType = {
@@ -23,6 +27,7 @@ const initialState: LearningContextStateType = {
   },
   ui: {
     profileModal: undefined,
+    aiAssistantModal: undefined,
   },
 };
 
@@ -44,6 +49,7 @@ function learningReducer(
       return {
         ...state,
         ui: {
+          ...state.ui,
           profileModal: (action.payload as ProfileModalConfig) || {
             title: '',
             isDismissable: false,
@@ -55,7 +61,29 @@ function learningReducer(
       return {
         ...state,
         ui: {
+          ...state.ui,
           profileModal: undefined,
+        },
+      };
+    }
+    case LearningActionKind.OPEN_AI_ASSISTANT_MODAL: {
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          aiAssistantModal: (action.payload as AiModalConfig) || {
+            title: '',
+            isDismissable: true,
+          },
+        },
+      };
+    }
+    case LearningActionKind.CLOSE_AI_ASSISTANT_MODAL: {
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          aiAssistantModal: undefined,
         },
       };
     }
@@ -76,6 +104,7 @@ type LearningContextStateType = {
   };
   ui: {
     profileModal: ProfileModalConfig | undefined;
+    aiAssistantModal: AiModalConfig | undefined;
   };
 };
 
@@ -86,6 +115,7 @@ const LearningContextState = createContext<LearningContextStateType>({
   },
   ui: {
     profileModal: undefined,
+    aiAssistantModal: undefined,
   },
 });
 
@@ -94,6 +124,8 @@ type LearningContextApiType = {
   updateProfile: (userProfile: User) => void;
   openProfileModal: (cfg: ProfileModalConfig) => void;
   closeProfileModal: () => void;
+  openAiAssistantModal: (cfg: AiModalConfig) => void;
+  closeAiAssistantModal: () => void;
 };
 
 // Create a new API context
@@ -101,6 +133,8 @@ const LearningContextApi = createContext<LearningContextApiType>({
   updateProfile: () => null,
   openProfileModal: () => null,
   closeProfileModal: () => null,
+  openAiAssistantModal: () => null,
+  closeAiAssistantModal: () => null,
 });
 
 const LearningContextProvider = ({
@@ -129,7 +163,26 @@ const LearningContextProvider = ({
       });
     };
 
-    return { updateProfile, openProfileModal, closeProfileModal };
+    const openAiAssistantModal = (config: AiModalConfig) => {
+      dispatch({
+        type: LearningActionKind.OPEN_AI_ASSISTANT_MODAL,
+        payload: config,
+      });
+    };
+
+    const closeAiAssistantModal = () => {
+      dispatch({
+        type: LearningActionKind.CLOSE_AI_ASSISTANT_MODAL,
+      });
+    };
+
+    return {
+      updateProfile,
+      openProfileModal,
+      closeProfileModal,
+      openAiAssistantModal,
+      closeAiAssistantModal,
+    };
   }, []);
 
   return (
