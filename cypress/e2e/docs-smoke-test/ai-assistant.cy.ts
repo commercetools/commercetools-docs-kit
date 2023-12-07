@@ -10,10 +10,14 @@ describe('Ai Assistant', () => {
   });
 
   it('should render chat launch button when user is logged in and launch chat', () => {
-    cy.visit(`${URL_DOCS_SMOKE_TEST}components/ai-assistant`);
-    cy.get('[data-testid="quiz-login-button"]', {
-      timeout: LONG_TIMEOUT,
-    }).click();
+    cy.visit(URL_DOCS_SMOKE_TEST);
+    // just ensuring javascript is loaded
+    cy.findByText('Components').click();
+    cy.findByText('Mermaid Diagrams').click({ force: true });
+    cy.get('div[data-testid="mermaid-diagram"]'); // just ensuring javascript is loaded
+    cy.findByText('Components').click();
+    cy.findByText('Ai Assistant').click({ force: true });
+    cy.get('div[data-testid="quiz-login-button"]').click();
     cy.origin('https://auth.id.commercetools.com', () => {
       cy.get('input[id="username"]').type('test.user.chat@commercetools.com');
       cy.get('input[id="password"]').type('Qwerty123!');
