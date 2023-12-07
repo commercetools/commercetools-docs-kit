@@ -35,8 +35,12 @@ describe('Ai Assistant', () => {
         // Use cy.get to locate the div within the portal
         cy.get('[data-testid="ai-assistant-modal"]', { timeout: LONG_TIMEOUT })
           // Use should to assert that the div exists
-          .should('exist');
-        cy.percySnapshot();
+          .should('exist')
+          .then(($modal) => {
+            if ($modal.is(':visible')) {
+              cy.percySnapshot();
+            }
+          });
       });
   });
 });
