@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import {
   useModalState,
@@ -10,8 +10,8 @@ import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import { FEEDBACK_DOWN } from './chat-messages';
-import { CHAT_API_BASE_URL } from './chat.const';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
+import ConfigContext from '../../../components/config-context';
 
 const FEEDBACK_CHECKBOXES = [
   { key: 'innacurate', value: 'The information provided was inaccurate.' },
@@ -27,10 +27,12 @@ const ChatFeedbackModal = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasError, setHasError] = useState(false);
   const { getAuthToken } = useAuthToken();
+  const {aiAssistantApiBaseUrl} = useContext(ConfigContext);
+
 
   const submitFeedback = useCallback(
     async (values, actions) => {
-      const apiEndpoint = `${CHAT_API_BASE_URL}/assist/feedback`;
+      const apiEndpoint = `${aiAssistantApiBaseUrl}/api/assist/feedback`;
       const accessToken = await getAuthToken();
       try {
         setIsSubmitting(true);
@@ -57,7 +59,7 @@ const ChatFeedbackModal = () => {
         setIsSubmitting(false);
       }
     },
-    [getAuthToken, feedbackContext]
+    [getAuthToken, feedbackContext, aiAssistantApiBaseUrl]
   );
 
   const formik = useFormik({

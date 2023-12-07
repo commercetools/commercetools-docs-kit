@@ -121,6 +121,7 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
         selfLearningFeatures: pluginOptions?.selfLearningFeatures || [],
         auth0ClientId: pluginOptions?.auth0ClientId,
         hideLogin: pluginOptions?.hideLogin || false,
+        aiAssistantApiBaseUrl: pluginOptions.aiAssistantApiBaseUrl,
       }}
     >
       <PageReadyProvider>

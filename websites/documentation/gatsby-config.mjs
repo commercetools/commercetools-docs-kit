@@ -23,6 +23,7 @@ const config = {
       auth0Domain: 'auth.id.commercetools.com',
       auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
       learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
+      aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
       hideLogin: true,
       additionalPrismLanguages: [
         'markup-templating',

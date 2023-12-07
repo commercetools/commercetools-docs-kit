@@ -21,7 +21,6 @@ import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
 import {
   CHAT_ROLE_ASSISTANT,
   CHAT_ROLE_USER,
-  CHAT_API_BASE_URL,
 } from './chat.const';
 import ChatMessages from './chat-messages';
 import styled from '@emotion/styled';
@@ -33,6 +32,7 @@ import CTCube from '../icons/black-white-ct-cube.svg';
 import { Link } from 'gatsby';
 import CodeGeneratorSidebar from './code-generator-sidebar';
 import { AuthenticatedContextApi, AuthenticatedContextState } from '../../../components/authenticated-context';
+import ConfigContext from '../../../components/config-context';
 
 export const DEV_TOOLING_MODE = 'dev-tooling-ts-code-generator';
 
@@ -237,6 +237,7 @@ const ChatModal = () => {
   const [inputMessageLengthState, setInputMessageLengthState] = useState();
   const { user } = useAuthentication();
   const { getAuthToken } = useAuthToken();
+  const {aiAssistantApiBaseUrl} = useContext(ConfigContext);
 
   const resetChatState = () => {
     setChatMessages([]);
@@ -274,7 +275,7 @@ const ChatModal = () => {
 
   const submitMessages = useCallback(
     async (newMessages, isDebug = false) => {
-      const apiEndpoint = `${CHAT_API_BASE_URL}/assist/chat?mode=${currentChatMode.key}&stream=true&debug=${isDebug}`;
+      const apiEndpoint = `${aiAssistantApiBaseUrl}/api/assist/chat?mode=${currentChatMode.key}&stream=true&debug=${isDebug}`;
       const accessToken = await getAuthToken();
       try {
         const response = await fetch(apiEndpoint, {
@@ -328,7 +329,7 @@ const ChatModal = () => {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [getAuthToken, currentChatMode, chatMessages]
+    [getAuthToken, currentChatMode, chatMessages, aiAssistantApiBaseUrl]
   );
 
   useEffect(() => {

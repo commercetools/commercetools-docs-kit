@@ -13,6 +13,7 @@ export type Config = {
   auth0ClientId: string;
   hideLogin: boolean;
   selfLearningFeatures: Array<EFeatureFlag>;
+  aiAssistantApiBaseUrl: string;
 };
 
 const ConfigContext = createContext<Config>({
@@ -21,6 +22,7 @@ const ConfigContext = createContext<Config>({
   auth0ClientId: '',
   hideLogin: false,
   selfLearningFeatures: [],
+  aiAssistantApiBaseUrl: '',
 });
 
 export const isFeatureEnabled = (

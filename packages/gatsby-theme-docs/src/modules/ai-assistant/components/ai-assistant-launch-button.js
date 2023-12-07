@@ -1,19 +1,20 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
 import useAuthentication from '../../sso/hooks/use-authentication';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
-import { CHAT_API_BASE_URL } from './chat.const';
 import { isAllowedUser, isNotValidatedUser } from './chat.utils';
+import ConfigContext from '../../../components/config-context';
 
 const AiAssistantLaunchButton = (props) => {
   const { isAuthenticated, user } = useAuthentication();
   const [chatLoading, setChatLoading] = useState(false);
+  const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
   const { getAuthToken } = useAuthToken();
 
   const chatInit = useCallback(
     async (config) => {
-      const apiEndpoint = `${CHAT_API_BASE_URL}/assist/init`;
+      const apiEndpoint = `${aiAssistantApiBaseUrl}/api/assist/init`;
       const accessToken = await getAuthToken();
       try {
         const data = await fetch(apiEndpoint, {
@@ -30,7 +31,7 @@ const AiAssistantLaunchButton = (props) => {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [getAuthToken]
+    [getAuthToken, aiAssistantApiBaseUrl]
   );
 
   const handleClick = async () => {

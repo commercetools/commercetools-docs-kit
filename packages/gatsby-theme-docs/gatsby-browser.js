@@ -114,6 +114,7 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
           auth0ClientId: pluginOptions.auth0ClientId,
           selfLearningFeatures: pluginOptions?.selfLearningFeatures || [],
           hideLogin: pluginOptions?.hideLogin || false,
+          aiAssistantApiBaseUrl: pluginOptions.aiAssistantApiBaseUrl,
         }}
       >
         {isSSOEnabled ? (
