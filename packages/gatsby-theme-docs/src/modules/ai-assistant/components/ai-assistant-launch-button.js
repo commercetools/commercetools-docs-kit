@@ -65,6 +65,7 @@ const AiAssistantLaunchButton = (props) => {
         label={props.label}
         onClick={handleClick}
         isDisabled={chatLoading}
+        data-testid="ai-assistant-launch-button"
       />
     );
   } else if (isAuthenticated && isNotValidatedUser(user)) {

@@ -549,7 +549,7 @@ const ChatModal = () => {
       onPrimaryButtonClick={() => !chatConfig?.readOnly && formik.submitForm()}
       background={designSystem.colors.light.surfaceSecondaryTopMenu}
     >
-      <ChatContainer>
+      <ChatContainer data-testid="ai-assistant-modal">
         <LeftBlank />
         <ChatSideArea>
           {isCtUser(user) && (
