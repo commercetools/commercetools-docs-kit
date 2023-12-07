@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { LearningContextState } from './learning-context';
+import { AuthenticatedContextState } from '../../../components/authenticated-context';
 
 const FirstName = () => {
-  const { user } = useContext(LearningContextState);
+  const { user } = useContext(AuthenticatedContextState);
   return user?.profile?.given_name || '';
 };
 

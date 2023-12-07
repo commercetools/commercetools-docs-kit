@@ -8,7 +8,7 @@ import {
   createStyledIcon,
   Icons,
 } from '@commercetools-docs/ui-kit';
-import { LearningContextState } from '../modules/self-learning';
+import { AuthenticatedContextState } from './authenticated-context';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 const iconHeight = '16px';
@@ -75,7 +75,7 @@ const SearchInput = React.forwardRef((props, ref) => {
   const [ignoreHotKey, setIgnoreHotKey] = React.useState(false); // is set to true disable the `/` search hotkey
   const {
     ui: { aiAssistantModal, profileModal },
-  } = useContext(LearningContextState);
+  } = useContext(AuthenticatedContextState);
 
   useEffect(() => {
     // in case any modal is open, the search hotkey should be disabled

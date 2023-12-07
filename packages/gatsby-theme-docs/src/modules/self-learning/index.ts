@@ -1,7 +1,6 @@
 export { default as Quiz } from './components/quiz';
 export * from './components/quiz';
 export * from './components/quiz.types';
-export * from './components/learning-context';
 export * from './components/if-user-logged';
 export * from './hooks/use-course-pages';
 export * from './components/if-learning-path';

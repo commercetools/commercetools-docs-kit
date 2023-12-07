@@ -9,19 +9,19 @@ type ProfileModalConfig = {
 
 type AiModalConfig = ProfileModalConfig;
 
-enum LearningActionKind {
+enum AuthenticatedActionKind {
   UPDATE_PROFILE = 'UPDATE_PROFILE',
   OPEN_PROFILE_MODAL = 'OPEN_PROFILE_MODAL',
   CLOSE_PROFILE_MODAL = 'CLOSE_PROFILE_MODAL',
   OPEN_AI_ASSISTANT_MODAL = 'OPEN_AI_ASSISTANT_MODAL',
   CLOSE_AI_ASSISTANT_MODAL = 'CLOSE_AI_ASSISTANT_MODAL',
 }
-interface LearningAction {
-  type: LearningActionKind;
+interface AuthenticatedAction {
+  type: AuthenticatedActionKind;
   payload?: User | ProfileModalConfig | AiModalConfig;
 }
 
-const initialState: LearningContextStateType = {
+const initialState: AuthenticatedContextStateType = {
   user: {
     profile: undefined,
   },
@@ -31,12 +31,12 @@ const initialState: LearningContextStateType = {
   },
 };
 
-function learningReducer(
-  state: LearningContextStateType,
-  action: LearningAction
-): LearningContextStateType {
+function authenticatedReducer(
+  state: AuthenticatedContextStateType,
+  action: AuthenticatedAction
+): AuthenticatedContextStateType {
   switch (action.type) {
-    case LearningActionKind.UPDATE_PROFILE: {
+    case AuthenticatedActionKind.UPDATE_PROFILE: {
       return {
         ...state,
         user: {
@@ -45,7 +45,7 @@ function learningReducer(
         },
       };
     }
-    case LearningActionKind.OPEN_PROFILE_MODAL: {
+    case AuthenticatedActionKind.OPEN_PROFILE_MODAL: {
       return {
         ...state,
         ui: {
@@ -57,7 +57,7 @@ function learningReducer(
         },
       };
     }
-    case LearningActionKind.CLOSE_PROFILE_MODAL: {
+    case AuthenticatedActionKind.CLOSE_PROFILE_MODAL: {
       return {
         ...state,
         ui: {
@@ -66,7 +66,7 @@ function learningReducer(
         },
       };
     }
-    case LearningActionKind.OPEN_AI_ASSISTANT_MODAL: {
+    case AuthenticatedActionKind.OPEN_AI_ASSISTANT_MODAL: {
       return {
         ...state,
         ui: {
@@ -78,7 +78,7 @@ function learningReducer(
         },
       };
     }
-    case LearningActionKind.CLOSE_AI_ASSISTANT_MODAL: {
+    case AuthenticatedActionKind.CLOSE_AI_ASSISTANT_MODAL: {
       return {
         ...state,
         ui: {
@@ -93,12 +93,12 @@ function learningReducer(
   }
 }
 
-type LearningContextProviderProps = {
+type AuthenticatedContextProviderProps = {
   children: ReactNode;
 };
 
 /** CONTEXT STATE DEFINITION */
-type LearningContextStateType = {
+type AuthenticatedContextStateType = {
   user: {
     profile: User | undefined;
   };
@@ -109,7 +109,7 @@ type LearningContextStateType = {
 };
 
 // Create a new state context
-const LearningContextState = createContext<LearningContextStateType>({
+const AuthenticatedContextState = createContext<AuthenticatedContextStateType>({
   user: {
     profile: undefined,
   },
@@ -120,7 +120,7 @@ const LearningContextState = createContext<LearningContextStateType>({
 });
 
 /** CONTEXT API DEFINITION */
-type LearningContextApiType = {
+type AuthenticatedContextApiType = {
   updateProfile: (userProfile: User) => void;
   openProfileModal: (cfg: ProfileModalConfig) => void;
   closeProfileModal: () => void;
@@ -129,7 +129,7 @@ type LearningContextApiType = {
 };
 
 // Create a new API context
-const LearningContextApi = createContext<LearningContextApiType>({
+const AuthenticatedContextApi = createContext<AuthenticatedContextApiType>({
   updateProfile: () => null,
   openProfileModal: () => null,
   closeProfileModal: () => null,
@@ -137,42 +137,42 @@ const LearningContextApi = createContext<LearningContextApiType>({
   closeAiAssistantModal: () => null,
 });
 
-const LearningContextProvider = ({
+const AuthenticatedContextProvider = ({
   children,
-}: LearningContextProviderProps) => {
-  const [state, dispatch] = useReducer(learningReducer, initialState);
+}: AuthenticatedContextProviderProps) => {
+  const [state, dispatch] = useReducer(authenticatedReducer, initialState);
 
   const api = useMemo(() => {
     const updateProfile = (profile: User) => {
       dispatch({
-        type: LearningActionKind.UPDATE_PROFILE,
+        type: AuthenticatedActionKind.UPDATE_PROFILE,
         payload: profile,
       });
     };
 
     const openProfileModal = (config: ProfileModalConfig) => {
       dispatch({
-        type: LearningActionKind.OPEN_PROFILE_MODAL,
+        type: AuthenticatedActionKind.OPEN_PROFILE_MODAL,
         payload: config,
       });
     };
 
     const closeProfileModal = () => {
       dispatch({
-        type: LearningActionKind.CLOSE_PROFILE_MODAL,
+        type: AuthenticatedActionKind.CLOSE_PROFILE_MODAL,
       });
     };
 
     const openAiAssistantModal = (config: AiModalConfig) => {
       dispatch({
-        type: LearningActionKind.OPEN_AI_ASSISTANT_MODAL,
+        type: AuthenticatedActionKind.OPEN_AI_ASSISTANT_MODAL,
         payload: config,
       });
     };
 
     const closeAiAssistantModal = () => {
       dispatch({
-        type: LearningActionKind.CLOSE_AI_ASSISTANT_MODAL,
+        type: AuthenticatedActionKind.CLOSE_AI_ASSISTANT_MODAL,
       });
     };
 
@@ -186,12 +186,16 @@ const LearningContextProvider = ({
   }, []);
 
   return (
-    <LearningContextApi.Provider value={api}>
-      <LearningContextState.Provider value={state}>
+    <AuthenticatedContextApi.Provider value={api}>
+      <AuthenticatedContextState.Provider value={state}>
         {children}
-      </LearningContextState.Provider>
-    </LearningContextApi.Provider>
+      </AuthenticatedContextState.Provider>
+    </AuthenticatedContextApi.Provider>
   );
 };
 
-export { LearningContextProvider, LearningContextState, LearningContextApi };
+export {
+  AuthenticatedContextProvider,
+  AuthenticatedContextState,
+  AuthenticatedContextApi,
+};

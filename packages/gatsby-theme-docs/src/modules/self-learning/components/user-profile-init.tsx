@@ -1,6 +1,9 @@
 import { User } from '@auth0/auth0-react';
 import { useContext, useEffect } from 'react';
-import { LearningContextApi, LearningContextState } from './learning-context';
+import {
+  AuthenticatedContextApi,
+  AuthenticatedContextState,
+} from '../../../components/authenticated-context';
 import {
   AUTH0_CLAIM_COMPANY,
   AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME,
@@ -40,11 +43,12 @@ const contextProfileAdapter = (auth0User: User) => {
 const UserProfileInit = () => {
   useLocalStorageSession();
   const { user, isAuthenticated } = useAuthentication();
-  const { updateProfile, openProfileModal, closeProfileModal } =
-    useContext(LearningContextApi);
+  const { updateProfile, openProfileModal, closeProfileModal } = useContext(
+    AuthenticatedContextApi
+  );
   const {
     user: { profile },
-  } = useContext(LearningContextState);
+  } = useContext(AuthenticatedContextState);
 
   useEffect(() => {
     if (isAuthenticated && !profile && user) {

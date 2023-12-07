@@ -32,7 +32,7 @@ import submitPng from '../icons/paper-plane.png';
 import CTCube from '../icons/black-white-ct-cube.svg';
 import { Link } from 'gatsby';
 import CodeGeneratorSidebar from './code-generator-sidebar';
-import { LearningContextApi, LearningContextState } from '../../self-learning';
+import { AuthenticatedContextApi, AuthenticatedContextState } from '../../../components/authenticated-context';
 
 export const DEV_TOOLING_MODE = 'dev-tooling-ts-code-generator';
 
@@ -218,10 +218,10 @@ const ChatModal = () => {
     return ulid();
   };
   const { openAiAssistantModal, closeAiAssistantModal } =
-    useContext(LearningContextApi);
+    useContext(AuthenticatedContextApi);
   const {
     ui: { aiAssistantModal },
-  } = useContext(LearningContextState);
+  } = useContext(AuthenticatedContextState);
   const [chatConfig, setChatConfig] = useState();
   const [messageHistoryInit, setMessageHistoryInit] = useState(false);
   const [isMessageInputFocused, setMessageInputFocused] = useState(false);

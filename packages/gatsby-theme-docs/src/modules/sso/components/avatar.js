@@ -10,7 +10,10 @@ import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
 import { gtagEvent } from '../utils/analytics.utils';
 import useAuthentication from '../hooks/use-authentication';
-import { LearningContextApi, LearningContextState } from '../../self-learning';
+import {
+  AuthenticatedContextState,
+  AuthenticatedContextApi,
+} from '../../../components/authenticated-context';
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -32,10 +35,10 @@ const Avatar = styled.div`
 `;
 
 const UserAvatar = () => {
-  const { openProfileModal } = useContext(LearningContextApi);
+  const { openProfileModal } = useContext(AuthenticatedContextApi);
   const {
     user: { profile },
-  } = useContext(LearningContextState);
+  } = useContext(AuthenticatedContextState);
   const [avatarInitials, setAvatarInitials] = useState('');
   useEffect(() => {
     setAvatarInitials(

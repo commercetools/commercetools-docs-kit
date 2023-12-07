@@ -19,7 +19,7 @@ import '@fontsource/roboto-mono/latin-700.css';
 import './src/fonts/Inter/inter.css';
 import './globals.css';
 import ConfigContext from './src/components/config-context';
-import { LearningContextProvider } from './src/modules/self-learning/components/learning-context';
+import { AuthenticatedContextProvider } from './src/components/authenticated-context';
 import { PageReadyProvider } from './src/modules/self-learning/components/page-ready-context';
 import { SidebarContextProvider } from './src/components/sidebar-context';
 
@@ -128,20 +128,20 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
             }}
           >
             <PageReadyProvider>
-              <LearningContextProvider>
+              <AuthenticatedContextProvider>
                 <SidebarContextProvider>
                   <SWRConfig>{element}</SWRConfig>
                 </SidebarContextProvider>
-              </LearningContextProvider>
+              </AuthenticatedContextProvider>
             </PageReadyProvider>
           </Auth0Provider>
         ) : (
           <PageReadyProvider>
-            <LearningContextProvider>
+            <AuthenticatedContextProvider>
               <SidebarContextProvider>
                 <SWRConfig>{element}</SWRConfig>
               </SidebarContextProvider>
-            </LearningContextProvider>
+            </AuthenticatedContextProvider>
           </PageReadyProvider>
         )}
       </ConfigContext.Provider>
