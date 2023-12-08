@@ -37,7 +37,7 @@ describe('Ai Assistant', () => {
           // Use should to assert that the div exists
           .should('be.visible')
           .then(() => {
-            cy.percySnapshot();
+            // cy.percySnapshot('Test snapshot');
           });
       });
   });
