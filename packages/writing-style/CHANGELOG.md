@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.3.7
+
+### Patch Changes
+
+- [#1880](https://github.com/commercetools/commercetools-docs-kit/pull/1880) [`8114c1d`](https://github.com/commercetools/commercetools-docs-kit/commit/8114c1dc21165e0ab2a4e0134012ba33dfcf98f6) Thanks [@melindafekete](https://github.com/melindafekete)! - Add TBC, and TO-DO for 'Incomplete' writing style checks
+
 ## 3.3.6
 
 ### Patch Changes

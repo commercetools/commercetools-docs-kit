@@ -1,5 +1,17 @@
 # @commercetools-website/documentation
 
+## 8.3.0
+
+### Minor Changes
+
+- [#1883](https://github.com/commercetools/commercetools-docs-kit/pull/1883) [`0c04b27`](https://github.com/commercetools/commercetools-docs-kit/commit/0c04b27f62bde3c866f85c87bf96f6b879d22f1b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add AI assistant functionality to docs-kit
+
+### Patch Changes
+
+- Updated dependencies [[`0c04b27`](https://github.com/commercetools/commercetools-docs-kit/commit/0c04b27f62bde3c866f85c87bf96f6b879d22f1b), [`ee4efb1`](https://github.com/commercetools/commercetools-docs-kit/commit/ee4efb1abbba7a9c998214b931671939a4a89bd6), [`3cd4552`](https://github.com/commercetools/commercetools-docs-kit/commit/3cd4552b097723f962135b675f3c54aa3013c708)]:
+  - @commercetools-docs/gatsby-theme-docs@22.9.0
+  - @commercetools-docs/gatsby-theme-code-examples@22.9.0
+
 ## 8.2.13
 
 ### Patch Changes
