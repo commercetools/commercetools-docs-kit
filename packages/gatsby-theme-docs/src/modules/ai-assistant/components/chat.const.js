@@ -1,0 +1,3 @@
+export const CHAT_ROLE_USER = 'user';
+export const CHAT_ROLE_ASSISTANT = ['assistant', 'system', '1'];
+export const ALLOWED_EMAIL_DOMAINS = ['commercetools.com']; // add here allowed email domains

@@ -31,6 +31,7 @@ const config = {
       websiteKey: 'api-docs-smoke-test',
       additionalPrismLanguages: ['json', 'bash'],
       colorPreset: colorPresets.apiDeveloperDocs.key,
+      aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
       addOns: [
         {
           resolve: '@commercetools-docs/gatsby-theme-api-docs',

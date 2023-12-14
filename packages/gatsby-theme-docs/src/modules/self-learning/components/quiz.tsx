@@ -12,7 +12,7 @@ import { useSubmitAttempt } from '../hooks/use-submit-attempt';
 import QuizForm from './quiz-form';
 import type { PassthroughData, SubmissionAttempt } from './quiz.types';
 import { canUseDOM, getQuizOutcome, isTestUserEmail } from './quiz.utils';
-import { LearningContextState } from './learning-context';
+import { AuthenticatedContextState } from '../../../components/authenticated-context';
 import { UserFilledIcon } from '@commercetools-uikit/icons';
 import useAuthentication from '../../sso/hooks/use-authentication';
 
@@ -120,7 +120,7 @@ const formattedError = (error: string, correlationId: string | undefined) =>
 const Quiz = (props: QuizProps) => {
   const {
     user: { profile },
-  } = useContext(LearningContextState);
+  } = useContext(AuthenticatedContextState);
   const { isAuthenticated: isLoggedIn, isLoading: isAuthLoading } =
     useAuthentication();
 

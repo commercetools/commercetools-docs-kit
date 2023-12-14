@@ -1,0 +1,26 @@
+---
+title: Ai Assistant
+---
+
+import { AiAssistantButton, LoginButton, IfUserLoggedIn, IfUserLoggedOut } from '@commercetools-docs/gatsby-theme-docs'
+
+
+# AI Assistant
+
+<IfUserLoggedOut>
+
+<div style="display:flex;">
+
+  <LoginButton theme="primary" label="Log in or sign up to use the chat assistant"/>
+
+</div>
+
+</IfUserLoggedOut>
+
+<IfUserLoggedIn>
+
+<AiAssistantButton label="Start Assistant" mode="ama-gpt4-turbo-grounded" />
+
+</IfUserLoggedIn>
+
+

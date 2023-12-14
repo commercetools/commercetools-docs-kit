@@ -36,7 +36,7 @@ const DialogHeader = (props: Props) => (
       alignItems="center"
       justifyContent="space-between"
     >
-      <Title title={props.title} />
+      {props?.title !== '' && <Title title={props.title} />}
       {props.onClose && (
         <SecondaryIconButton
           label="Close dialog"

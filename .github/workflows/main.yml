@@ -226,7 +226,7 @@ jobs:
         run: yarn percy exec -- yarn test:e2e:self-learning-smoke-test --config baseUrl="https://docskit-sha-${{ github.sha }}.commercetools.vercel.app"
         env:
           NODE_ENV: test
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_E2E }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_SMOKE_TESTS_SELF_LEARNING_E2E }}
           CYPRESS_CI: 'true'
 
       - name: Upload e2e artifacts

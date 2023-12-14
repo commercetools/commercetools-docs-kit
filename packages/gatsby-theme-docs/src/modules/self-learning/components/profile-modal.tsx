@@ -11,7 +11,10 @@ import {
 } from '@commercetools-docs/ui-kit';
 import { useContext, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { LearningContextApi, LearningContextState } from './learning-context';
+import {
+  AuthenticatedContextApi,
+  AuthenticatedContextState,
+} from '../../../components/authenticated-context';
 import { useUpdateUser } from '../hooks/use-update-user';
 import { VerifiedIcon } from '@commercetools-uikit/icons';
 import SendVerificationEmailButton from './verify-email-button';
@@ -51,11 +54,13 @@ const mailToData = {
 };
 const ProfileModal = () => {
   const { selfLearningFeatures } = useContext(ConfigContext);
-  const { updateProfile, closeProfileModal } = useContext(LearningContextApi);
+  const { updateProfile, closeProfileModal } = useContext(
+    AuthenticatedContextApi
+  );
   const {
     user: { profile },
     ui: { profileModal },
-  } = useContext(LearningContextState);
+  } = useContext(AuthenticatedContextState);
   const { performUpdateUser, isLoading, updatedUser, error } = useUpdateUser({
     userId: profile?.user_id || '',
   });
