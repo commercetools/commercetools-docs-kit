@@ -1,5 +1,20 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.9.0
+
+### Minor Changes
+
+- [#1883](https://github.com/commercetools/commercetools-docs-kit/pull/1883) [`0c04b27`](https://github.com/commercetools/commercetools-docs-kit/commit/0c04b27f62bde3c866f85c87bf96f6b879d22f1b) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add AI assistant functionality to docs-kit
+
+### Patch Changes
+
+- [#1881](https://github.com/commercetools/commercetools-docs-kit/pull/1881) [`ee4efb1`](https://github.com/commercetools/commercetools-docs-kit/commit/ee4efb1abbba7a9c998214b931671939a4a89bd6) Thanks [@timonrey](https://github.com/timonrey)! - Fix the text overflow in the account association modal when updating your profile.
+
+- [#1874](https://github.com/commercetools/commercetools-docs-kit/pull/1874) [`3cd4552`](https://github.com/commercetools/commercetools-docs-kit/commit/3cd4552b097723f962135b675f3c54aa3013c708) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
+- Updated dependencies [[`0c04b27`](https://github.com/commercetools/commercetools-docs-kit/commit/0c04b27f62bde3c866f85c87bf96f6b879d22f1b), [`3cd4552`](https://github.com/commercetools/commercetools-docs-kit/commit/3cd4552b097723f962135b675f3c54aa3013c708)]:
+  - @commercetools-docs/ui-kit@22.9.0
+
 ## 22.8.7
 
 ### Patch Changes
