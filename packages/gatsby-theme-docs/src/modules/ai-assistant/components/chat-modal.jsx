@@ -23,6 +23,7 @@ import {
   isWaitingChunk,
   loadLocalChatState,
   setLocalStorageChatLocked,
+  setLocalStorageChatMode,
   setLocalStorageMessages,
   setLocalStorageReferences,
 } from './chat.utils';
@@ -235,7 +236,7 @@ const ChatModal = () => {
   );
   const [chatMessages, setAppChatMessages] = useState([]);
   const [chatReferences, setAppChatReferences] = useState([]);
-  const [currentChatMode, setCurrentChatMode] = useState();
+  const [currentChatMode, setAppCurrentChatMode] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [replayMessage, setReplayMessage] = useState();
   const [chatLocked, setAppChatLocked] = useState(false);
@@ -244,6 +245,7 @@ const ChatModal = () => {
   const { getAuthToken } = useAuthToken();
   const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
 
+  /* App state and localstorage setter for messages */
   const setChatMessages = (messages, keepLocalStorage = false) => {
     setAppChatMessages(messages);
     if (!keepLocalStorage) {
@@ -251,6 +253,7 @@ const ChatModal = () => {
     }
   };
 
+    /* App state and localstorage setter for references */
   const setChatReferences = (references, keepLocalStorage = false) => {
     setAppChatReferences(references);
     if (!keepLocalStorage) {
@@ -258,6 +261,7 @@ const ChatModal = () => {
     }
   };
 
+  /* App state and localstorage setter for locked */
   const setChatLocked = (isLocked, keepLocalStorage = false) => {
     setAppChatLocked(isLocked);
     if (!keepLocalStorage) {
@@ -265,13 +269,21 @@ const ChatModal = () => {
     }
   };
 
+  /* App state and localstorage setter for chat mode */
+  const setCurrentChatMode = (currentMode, keepLocalStorage =  false) => {
+    setAppCurrentChatMode(currentMode);
+    if (!keepLocalStorage) {
+      setLocalStorageChatMode(currentMode);
+    }
+  }
+
   const resetChatState = (keepLocalState) => {
     setChatMessages([], keepLocalState);
     setChatReferences([], keepLocalState);
     setChatLocked(false, keepLocalState);
   };
 
-  const setLoadedChatState = ({messages, references, isLocked}) => {
+  const setLoadedChatState = ({messages, references, isLocked, mode}) => {
     if (messages && messages.length > 0) {
       setAppChatMessages(messages);
     }
@@ -280,6 +292,9 @@ const ChatModal = () => {
     }
     if (isLocked) {
       setAppChatLocked(isLocked);
+    }
+    if (mode) {
+      setAppCurrentChatMode(mode);
     }
   }
 
@@ -384,7 +399,7 @@ const ChatModal = () => {
 
   useEffect(() => {
     const handleCustomEvent = (event) => {
-      const loadedState = loadLocalChatState();
+      const loadedState = loadLocalChatState(event.detail.chatSelectedMode);
       if (loadedState) {
         setLoadedChatState(loadedState)
       }
@@ -522,7 +537,6 @@ const ChatModal = () => {
       (mode) => mode.key === chatModeKey
     );
     if (chatModeConfig) {
-      setCurrentChatMode(chatModeConfig);
       // when changing chat mode, we want to re-submit to the new chat
       // the latest message submitted by the user. So we store that message (if exists)
       const lastUserMessage = chatMessages
@@ -532,6 +546,7 @@ const ChatModal = () => {
         setReplayMessage(lastUserMessage);
       }
       resetChatState();
+      setCurrentChatMode(chatModeConfig);
     }
   };
 

@@ -62,7 +62,8 @@ export const loadLocalChatState = (mode) => {
   const chatState = localStorage.getItem(LOCAL_AI_ASSISTANT_STATE_KEY);
   if (chatState) {
     const chatStateObject = JSON.parse(chatState);
-    if (chatState?.chatSelectedMode !== mode) {
+    if (chatStateObject?.mode?.key !== mode) {
+      // chat mode has been changed
       // reset localstorage and returns undefined
       localStorage.removeItem(LOCAL_AI_ASSISTANT_STATE_KEY);
       return;
@@ -75,14 +76,19 @@ export const loadLocalChatState = (mode) => {
 
 const setLocalStorageProperty = (propertyName, propertyValue) => {
   const chatState = localStorage.getItem(LOCAL_AI_ASSISTANT_STATE_KEY);
-  let newLocalState = { messages: [], references: [], isLocked: false };
-  if (chatState) {
-    const chatStateObject = JSON.parse(chatState);
-    newLocalState = {
-      ...chatStateObject,
-      [propertyName]: propertyValue,
-    };
-  }
+  const chatStateObject = chatState
+    ? JSON.parse(chatState)
+    : {
+        messages: [],
+        references: [],
+        isLocked: false,
+        mode: {},
+      };
+
+  const newLocalState = {
+    ...chatStateObject,
+    [propertyName]: propertyValue,
+  };
   localStorage.setItem(
     LOCAL_AI_ASSISTANT_STATE_KEY,
     JSON.stringify(newLocalState)
@@ -99,4 +105,12 @@ export const setLocalStorageReferences = (references) => {
 
 export const setLocalStorageChatLocked = (isLocked) => {
   setLocalStorageProperty('isLocked', isLocked);
+};
+
+export const setLocalStorageChatMode = (mode) => {
+  setLocalStorageProperty('mode', mode);
+};
+
+export const cleanupAIAssistantData = () => {
+  localStorage.removeItem(LOCAL_AI_ASSISTANT_STATE_KEY);
 };
