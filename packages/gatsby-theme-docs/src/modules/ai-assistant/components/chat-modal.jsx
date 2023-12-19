@@ -7,10 +7,7 @@ import React, {
 } from 'react';
 import { useFormik } from 'formik';
 import { monotonicFactory } from 'ulid';
-import {
-  FormDialog,
-  designSystem,
-} from '@commercetools-docs/ui-kit';
+import { FormDialog, designSystem } from '@commercetools-docs/ui-kit';
 import FlatButton from '@commercetools-uikit/flat-button';
 import SelectField from '@commercetools-uikit/select-field';
 import MultilineTextField from '@commercetools-uikit/multiline-text-field';
@@ -18,20 +15,27 @@ import MultilineTextInput from '@commercetools-uikit/multiline-text-input';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import useAuthentication from '../../sso/hooks/use-authentication';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
-import {
-  CHAT_ROLE_ASSISTANT,
-  CHAT_ROLE_USER,
-} from './chat.const';
+import { CHAT_ROLE_ASSISTANT, CHAT_ROLE_USER } from './chat.const';
 import ChatMessages from './chat-messages';
 import styled from '@emotion/styled';
-import { isCtUser, isWaitingChunk } from './chat.utils';
+import {
+  isCtUser,
+  isWaitingChunk,
+  loadLocalChatState,
+  setLocalStorageChatLocked,
+  setLocalStorageMessages,
+  setLocalStorageReferences,
+} from './chat.utils';
 import ReferencesList from './chat-references-list';
 import robotPng from '../icons/robot.png';
 import submitPng from '../icons/paper-plane.png';
 import CTCube from '../icons/black-white-ct-cube.svg';
 import { Link } from 'gatsby';
 import CodeGeneratorSidebar from './code-generator-sidebar';
-import { AuthenticatedContextApi, AuthenticatedContextState } from '../../../components/authenticated-context';
+import {
+  AuthenticatedContextApi,
+  AuthenticatedContextState,
+} from '../../../components/authenticated-context';
 import ConfigContext from '../../../components/config-context';
 
 export const DEV_TOOLING_MODE = 'dev-tooling-ts-code-generator';
@@ -217,8 +221,9 @@ const ChatModal = () => {
   const createNewConversationId = () => {
     return ulid();
   };
-  const { openAiAssistantModal, closeAiAssistantModal } =
-    useContext(AuthenticatedContextApi);
+  const { openAiAssistantModal, closeAiAssistantModal } = useContext(
+    AuthenticatedContextApi
+  );
   const {
     ui: { aiAssistantModal },
   } = useContext(AuthenticatedContextState);
@@ -228,22 +233,55 @@ const ChatModal = () => {
   const [conversationId, setConversationId] = useState(
     createNewConversationId()
   );
-  const [chatMessages, setChatMessages] = useState([]);
-  const [chatReferences, setChatReferences] = useState([]);
+  const [chatMessages, setAppChatMessages] = useState([]);
+  const [chatReferences, setAppChatReferences] = useState([]);
   const [currentChatMode, setCurrentChatMode] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [replayMessage, setReplayMessage] = useState();
-  const [chatLocked, setChatLocked] = useState(false);
+  const [chatLocked, setAppChatLocked] = useState(false);
   const [inputMessageLengthState, setInputMessageLengthState] = useState();
   const { user } = useAuthentication();
   const { getAuthToken } = useAuthToken();
-  const {aiAssistantApiBaseUrl} = useContext(ConfigContext);
+  const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
 
-  const resetChatState = () => {
-    setChatMessages([]);
-    setChatReferences([]);
-    setChatLocked(false);
+  const setChatMessages = (messages, keepLocalStorage = false) => {
+    setAppChatMessages(messages);
+    if (!keepLocalStorage) {
+      setLocalStorageMessages(messages);
+    }
   };
+
+  const setChatReferences = (references, keepLocalStorage = false) => {
+    setAppChatReferences(references);
+    if (!keepLocalStorage) {
+      setLocalStorageReferences(references);
+    }
+  };
+
+  const setChatLocked = (isLocked, keepLocalStorage = false) => {
+    setAppChatLocked(isLocked);
+    if (!keepLocalStorage) {
+      setLocalStorageChatLocked(isLocked);
+    }
+  };
+
+  const resetChatState = (keepLocalState) => {
+    setChatMessages([], keepLocalState);
+    setChatReferences([], keepLocalState);
+    setChatLocked(false, keepLocalState);
+  };
+
+  const setLoadedChatState = ({messages, references, isLocked}) => {
+    if (messages && messages.length > 0) {
+      setAppChatMessages(messages);
+    }
+    if (references && references.length > 0) {
+      setAppChatReferences(references);
+    }
+    if (isLocked) {
+      setAppChatLocked(isLocked);
+    }
+  }
 
   const applyNames = (message) =>
     CHAT_ROLE_ASSISTANT.includes(message.role)
@@ -313,7 +351,6 @@ const ChatModal = () => {
             // console.dir(fullOutput);
             // TBD catch if it's not parseable and return a useful error?
             const parsedOutput = JSON.parse(fullOutput);
-            console.dir(parsedOutput);
             return parsedOutput;
           }
 
@@ -347,8 +384,12 @@ const ChatModal = () => {
 
   useEffect(() => {
     const handleCustomEvent = (event) => {
+      const loadedState = loadLocalChatState();
+      if (loadedState) {
+        setLoadedChatState(loadedState)
+      }
       setChatConfig(event.detail);
-      openAiAssistantModal({title: '', isDismissable: true});
+      openAiAssistantModal({ title: '', isDismissable: true });
     };
 
     window.addEventListener('openChatModal', handleCustomEvent);
@@ -538,7 +579,7 @@ const ChatModal = () => {
       onClose={() => {
         closeAiAssistantModal();
         setConversationId(createNewConversationId());
-        resetChatState();
+        resetChatState(true);
         setReplayMessage();
       }}
       displayPrimaryButton={!!chatConfig?.readOnly}

@@ -1,4 +1,7 @@
-import { ALLOWED_EMAIL_DOMAINS } from './chat.const';
+import {
+  ALLOWED_EMAIL_DOMAINS,
+  LOCAL_AI_ASSISTANT_STATE_KEY,
+} from './chat.const';
 import DefaultAvatarIcon from '../icons/assistant-avatar.svg';
 import ChefAvatarIcon from '../icons/assistant-chef.svg';
 import { DEV_TOOLING_MODE } from './chat-modal';
@@ -49,4 +52,51 @@ export const getAssistantAvatarIcon = (mode) => {
     default:
       return DefaultAvatarIcon;
   }
+};
+
+/**
+ * If a chat state exists in the local storage, and it's valid (same selected mode), it will be returned,
+ * otherwise undefined will be returned
+ */
+export const loadLocalChatState = (mode) => {
+  const chatState = localStorage.getItem(LOCAL_AI_ASSISTANT_STATE_KEY);
+  if (chatState) {
+    const chatStateObject = JSON.parse(chatState);
+    if (chatState?.chatSelectedMode !== mode) {
+      // reset localstorage and returns undefined
+      localStorage.removeItem(LOCAL_AI_ASSISTANT_STATE_KEY);
+      return;
+    } else {
+      return chatStateObject;
+    }
+  }
+  return;
+};
+
+const setLocalStorageProperty = (propertyName, propertyValue) => {
+  const chatState = localStorage.getItem(LOCAL_AI_ASSISTANT_STATE_KEY);
+  let newLocalState = { messages: [], references: [], isLocked: false };
+  if (chatState) {
+    const chatStateObject = JSON.parse(chatState);
+    newLocalState = {
+      ...chatStateObject,
+      [propertyName]: propertyValue,
+    };
+  }
+  localStorage.setItem(
+    LOCAL_AI_ASSISTANT_STATE_KEY,
+    JSON.stringify(newLocalState)
+  );
+};
+
+export const setLocalStorageMessages = (messages) => {
+  setLocalStorageProperty('messages', messages);
+};
+
+export const setLocalStorageReferences = (references) => {
+  setLocalStorageProperty('references', references);
+};
+
+export const setLocalStorageChatLocked = (isLocked) => {
+  setLocalStorageProperty('isLocked', isLocked);
 };
