@@ -3,10 +3,10 @@ import PrimaryButton from './primary-button';
 import SecondaryButton from './secondary-button';
 import { gtagEvent } from '../utils/analytics.utils';
 import useAuthentication from '../hooks/use-authentication';
+import CtCubeWhiteIcon from '../icons/CtCubeWhite';
 
 type LoginButtonProps = {
   quizId?: string;
-  icon?: JSX.Element;
   label: string;
   theme: 'primary' | 'secondary';
 };
@@ -40,8 +40,10 @@ const LoginButton = (props: LoginButtonProps) => {
           });
         }}
       >
-        {props.icon}
-        <p>{props.label}</p>
+        <CtCubeWhiteIcon />
+        <p>
+          <b>ID</b> | {props.label}
+        </p>
       </PrimaryButton>
     );
   }

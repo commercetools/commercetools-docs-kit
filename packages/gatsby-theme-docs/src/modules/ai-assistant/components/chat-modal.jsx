@@ -10,28 +10,31 @@ import { monotonicFactory } from 'ulid';
 import {
   FormDialog,
   designSystem,
+  ContentNotifications,
 } from '@commercetools-docs/ui-kit';
 import FlatButton from '@commercetools-uikit/flat-button';
 import SelectField from '@commercetools-uikit/select-field';
+import Spacings from '@commercetools-uikit/spacings';
 import MultilineTextField from '@commercetools-uikit/multiline-text-field';
 import MultilineTextInput from '@commercetools-uikit/multiline-text-input';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import useAuthentication from '../../sso/hooks/use-authentication';
+import { LoginButton, VerifyButton } from '../../sso';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
-import {
-  CHAT_ROLE_ASSISTANT,
-  CHAT_ROLE_USER,
-} from './chat.const';
+import { CHAT_ROLE_ASSISTANT, CHAT_ROLE_USER } from './chat.const';
 import ChatMessages from './chat-messages';
 import styled from '@emotion/styled';
-import { isCtUser, isWaitingChunk } from './chat.utils';
+import { isCtUser, isWaitingChunk, isNotValidatedUser } from './chat.utils';
 import ReferencesList from './chat-references-list';
 import robotPng from '../icons/robot.png';
 import submitPng from '../icons/paper-plane.png';
 import CTCube from '../icons/black-white-ct-cube.svg';
 import { Link } from 'gatsby';
 import CodeGeneratorSidebar from './code-generator-sidebar';
-import { AuthenticatedContextApi, AuthenticatedContextState } from '../../../components/authenticated-context';
+import {
+  AuthenticatedContextApi,
+  AuthenticatedContextState,
+} from '../../../components/authenticated-context';
 import ConfigContext from '../../../components/config-context';
 
 export const DEV_TOOLING_MODE = 'dev-tooling-ts-code-generator';
@@ -73,6 +76,14 @@ const ChatMainArea = styled.div`
   }
 `;
 
+const ChatMainAreaWhenLoggedOut = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const ChatMessagesWrapper = styled.div`
   flex-basis: 0;
   flex-grow: 1;
@@ -94,18 +105,24 @@ const ChatInputBox = styled.div`
 const ResetButtonBox = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 16px;
+  padding-bottom: ${designSystem.dimensions.spacings.m};
+`;
+
+const RestartButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: ${designSystem.dimensions.spacings.m};
 `;
 
 const LockedChatFooterContainer = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.m};
+  padding: ${designSystem.dimensions.spacings.m};
 `;
 
 const CubeContainer = styled.div`
   display: flex;
   justify-content: center;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #e1e2ea;
+  padding-top: 8px;
+  border-top: 2px solid #e1e2ea;
 `;
 
 const ChatSideArea = styled.div`
@@ -211,14 +228,66 @@ const DisclaimerTextMobile = styled.p`
   }
 `;
 
+const NotificationTextSmall = styled.p`
+  font-size: ${designSystem.typography.fontSizes.small};
+
+  b {
+    font-weight: ${designSystem.typography.fontWeights['light-bold']};
+  }
+`;
+
+const NotificationTextBig = styled.p`
+  font-size: ${designSystem.typography.fontSizes.body};
+`;
+
+const NotificationListText = styled.p`
+  font-size: ${designSystem.typography.fontSizes.small};
+  padding-left: 8px;
+`;
+
+const ChatNotificationIfNotVerified = () => {
+  return (
+    <ContentNotifications.Info>
+      <Spacings.Stack scale="l">
+        <NotificationTextBig>
+          Verify your email to use the commercetools Assistant.
+        </NotificationTextBig>
+        <NotificationTextSmall>
+          Your commercetools ID account is not verified.{' '}
+          <b>
+            Check your inbox for the verification email and click on the link
+            attached.
+          </b>
+        </NotificationTextSmall>
+        <Spacings.Stack scale="s">
+          <NotificationTextBig>
+            Link expired? Follow the steps below:
+          </NotificationTextBig>
+          <NotificationListText>
+            1. Click on the button below to open a modal.
+          </NotificationListText>
+          <NotificationListText>
+            2. Once open, click the “Verify Email” button.
+          </NotificationListText>
+          <NotificationListText>
+            3. Check your inbox for the verification email and click on the link
+            attached.
+          </NotificationListText>
+        </Spacings.Stack>
+      </Spacings.Stack>
+    </ContentNotifications.Info>
+  );
+};
+
 const ChatModal = () => {
   const divRef = useRef(null);
   const ulid = monotonicFactory();
   const createNewConversationId = () => {
     return ulid();
   };
-  const { openAiAssistantModal, closeAiAssistantModal } =
-    useContext(AuthenticatedContextApi);
+  const { openAiAssistantModal, closeAiAssistantModal } = useContext(
+    AuthenticatedContextApi
+  );
   const {
     ui: { aiAssistantModal },
   } = useContext(AuthenticatedContextState);
@@ -235,9 +304,9 @@ const ChatModal = () => {
   const [replayMessage, setReplayMessage] = useState();
   const [chatLocked, setChatLocked] = useState(false);
   const [inputMessageLengthState, setInputMessageLengthState] = useState();
-  const { user } = useAuthentication();
+  const { isAuthenticated, user } = useAuthentication();
   const { getAuthToken } = useAuthToken();
-  const {aiAssistantApiBaseUrl} = useContext(ConfigContext);
+  const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
 
   const resetChatState = () => {
     setChatMessages([]);
@@ -348,7 +417,7 @@ const ChatModal = () => {
   useEffect(() => {
     const handleCustomEvent = (event) => {
       setChatConfig(event.detail);
-      openAiAssistantModal({title: '', isDismissable: true});
+      openAiAssistantModal({ title: '', isDismissable: true });
     };
 
     window.addEventListener('openChatModal', handleCustomEvent);
@@ -529,6 +598,105 @@ const ChatModal = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentChatMode]);
 
+  if (!isAuthenticated) {
+    return (
+      <FormDialog
+        size="scale"
+        title=""
+        labelPrimary="Send"
+        isOpen={!!aiAssistantModal}
+        onClose={() => {
+          closeAiAssistantModal();
+          setConversationId(createNewConversationId());
+        }}
+        displayPrimaryButton={!!chatConfig?.readOnly}
+        isPrimaryButtonDisabled={
+          !(formik.isValid && formik.dirty) || formik.isSubmitting
+        }
+        displaySecondaryButton={false}
+        onPrimaryButtonClick={() =>
+          !chatConfig?.readOnly && formik.submitForm()
+        }
+        background={designSystem.colors.light.surfaceSecondaryTopMenu}
+      >
+        <ChatContainer data-testid="ai-assistant-modal">
+          <LeftBlank />
+          <ChatSideArea>
+            <SideTopContainer>
+              <BackgroundWrapper>
+                <img src={robotPng} width={400} alt="robot icon" />
+              </BackgroundWrapper>
+            </SideTopContainer>
+            <ChatBottomContainer>
+              <DisclaimerText>{LEGAL_DISCLAIMER}</DisclaimerText>
+            </ChatBottomContainer>
+          </ChatSideArea>
+          <ChatMainArea>
+            <ChatMainAreaWhenLoggedOut>
+              <LoginButton
+                theme="primary"
+                label="Log in to start the Assistant"
+              />
+            </ChatMainAreaWhenLoggedOut>
+          </ChatMainArea>
+          <RightBlank />
+        </ChatContainer>
+      </FormDialog>
+    );
+  }
+
+  if (isNotValidatedUser(user)) {
+    return (
+      <FormDialog
+        size="scale"
+        title=""
+        labelPrimary="Send"
+        isOpen={!!aiAssistantModal}
+        onClose={() => {
+          closeAiAssistantModal();
+          setConversationId(createNewConversationId());
+        }}
+        displayPrimaryButton={!!chatConfig?.readOnly}
+        isPrimaryButtonDisabled={
+          !(formik.isValid && formik.dirty) || formik.isSubmitting
+        }
+        displaySecondaryButton={false}
+        onPrimaryButtonClick={() =>
+          !chatConfig?.readOnly && formik.submitForm()
+        }
+        background={designSystem.colors.light.surfaceSecondaryTopMenu}
+      >
+        <ChatContainer data-testid="ai-assistant-modal">
+          <LeftBlank />
+          <ChatSideArea>
+            <SideTopContainer>
+              <BackgroundWrapper>
+                <img src={robotPng} width={400} alt="robot icon" />
+              </BackgroundWrapper>
+            </SideTopContainer>
+            <ChatBottomContainer>
+              <DisclaimerText>{LEGAL_DISCLAIMER}</DisclaimerText>
+            </ChatBottomContainer>
+          </ChatSideArea>
+          <ChatMainArea>
+            <ChatMessagesWrapper ref={divRef}>
+              <ChatNotificationIfNotVerified />
+            </ChatMessagesWrapper>
+            <LockedChatFooterContainer>
+              <ResetButtonBox>
+                <VerifyButton label="Verify your email" />
+              </ResetButtonBox>
+              <CubeContainer>
+                <CTCube />
+              </CubeContainer>
+            </LockedChatFooterContainer>
+          </ChatMainArea>
+          <RightBlank />
+        </ChatContainer>
+      </FormDialog>
+    );
+  }
+
   return (
     <FormDialog
       size="scale"
@@ -640,7 +808,7 @@ const ChatModal = () => {
                   />
                 </SubmitButtonBox>
               </InputTextWrapper>
-              <ResetButtonBox>
+              <RestartButtonBox>
                 <FlatButton
                   label="Tip: Restart the conversation when changing the topic"
                   isDisabled={chatMessages.length === 0}
@@ -650,14 +818,11 @@ const ChatModal = () => {
                     setReplayMessage();
                   }} // reset chat messages when clicking on the restart button
                 />
-              </ResetButtonBox>
+              </RestartButtonBox>
             </ChatInputBox>
           )}
           {chatLocked && (
             <LockedChatFooterContainer>
-              <CubeContainer>
-                <CTCube />
-              </CubeContainer>
               <ResetButtonBox>
                 <FlatButton
                   label="Start a new conversation"
@@ -668,6 +833,9 @@ const ChatModal = () => {
                   }} // reset chat messages when clicking on the restart button
                 />
               </ResetButtonBox>
+              <CubeContainer>
+                <CTCube />
+              </CubeContainer>
             </LockedChatFooterContainer>
           )}
           <DisclaimerTextMobile>{LEGAL_DISCLAIMER}</DisclaimerTextMobile>
