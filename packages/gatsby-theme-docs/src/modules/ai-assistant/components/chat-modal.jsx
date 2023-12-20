@@ -399,7 +399,7 @@ const ChatModal = () => {
 
   useEffect(() => {
     const handleCustomEvent = (event) => {
-      const loadedState = loadLocalChatState(event.detail.chatSelectedMode);
+      const loadedState = loadLocalChatState(event.detail);
       if (loadedState) {
         setLoadedChatState(loadedState)
       }
@@ -595,6 +595,7 @@ const ChatModal = () => {
         closeAiAssistantModal();
         setConversationId(createNewConversationId());
         resetChatState(true);
+        setMessageHistoryInit(false);
         setReplayMessage();
       }}
       displayPrimaryButton={!!chatConfig?.readOnly}

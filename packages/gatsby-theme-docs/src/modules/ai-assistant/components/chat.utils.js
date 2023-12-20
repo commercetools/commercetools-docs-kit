@@ -56,13 +56,17 @@ export const getAssistantAvatarIcon = (mode) => {
 
 /**
  * If a chat state exists in the local storage, and it's valid (same selected mode), it will be returned,
- * otherwise undefined will be returned
+ * otherwise undefined will be returned. If a messageHistory is passed as parameter when chat launches, the
+ * localstorage is also reset
  */
-export const loadLocalChatState = (mode) => {
+export const loadLocalChatState = ({ chatSelectedMode, messageHistory }) => {
   const chatState = localStorage.getItem(LOCAL_AI_ASSISTANT_STATE_KEY);
   if (chatState) {
     const chatStateObject = JSON.parse(chatState);
-    if (chatStateObject?.mode?.key !== mode) {
+    if (
+      chatStateObject?.mode?.key !== chatSelectedMode ||
+      (messageHistory && messageHistory.length > 0)
+    ) {
       // chat mode has been changed
       // reset localstorage and returns undefined
       localStorage.removeItem(LOCAL_AI_ASSISTANT_STATE_KEY);
