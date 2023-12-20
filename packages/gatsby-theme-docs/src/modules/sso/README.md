@@ -24,7 +24,6 @@ The component has the following mandatory props:
 
 - `theme`: (`primary` or `secondary`)
 - `label`: The text rendered on the button
-- `icon`: (Optional) Icon component to be rendered in front of the label text
 - `quizId`: (Optional)Refers to the id of a quiz secton on the page causing auto-scroll to that section after login
 
 Examples
@@ -34,7 +33,6 @@ import { LoginButton } from '@commercetools-docs/gatsby-theme-docs';
 
 <LoginButton
 theme="primary"
-icon={<UserFilledIcon color="surface"/>}
 label="Log in to start the quiz"
 quizId={`quiz-${props.quizId}`}
 />
