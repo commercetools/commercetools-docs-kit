@@ -2,9 +2,9 @@ import React, { useState, useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
 import useAuthentication from '../../sso/hooks/use-authentication';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
-import SecondaryButton from '@commercetools-uikit/secondary-button';
 import ConfigContext from '../../../components/config-context';
 import { isNotValidatedUser } from './chat.utils';
+import SecondaryButton from '../../sso/components/secondary-button';
 
 const AiAssistantLaunchButton = (props) => {
   const { isAuthenticated, user } = useAuthentication();
@@ -62,11 +62,12 @@ const AiAssistantLaunchButton = (props) => {
 
   return (
     <SecondaryButton
-      label={props.label}
       onClick={handleClick}
-      isDisabled={chatLoading}
+      disabled={chatLoading}
       data-testid="ai-assistant-launch-button"
-    />
+    >
+      {props.label}
+    </SecondaryButton>
   );
 };
 
