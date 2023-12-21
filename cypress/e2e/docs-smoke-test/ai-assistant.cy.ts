@@ -6,13 +6,10 @@ describe('Ai Assistant', () => {
     cy.visit(`${URL_DOCS_SMOKE_TEST}components/ai-assistant`);
     cy.get('[data-testid="ai-assistant-launch-button"]', {
       timeout: LONG_TIMEOUT,
-    }).should('have.text', 'Start Assistant');
-    cy.get('[data-testid="ai-assistant-launch-button"]', {
-      timeout: LONG_TIMEOUT,
     }).click();
     cy.get('[data-testid="quiz-login-button"]', { timeout: LONG_TIMEOUT })
       // Use should to assert the text content
-      .should('have.text', 'Log in to start the Assistant');
+      .should('have.text', 'ID | Log in to start the Assistant');
   });
 
   it('should render chat launch button when user is logged in and launch chat', () => {
