@@ -1,5 +1,5 @@
 extends: substitution
-message: "Use '%s' instead of '%s'. Visit https://wiki.commercetools.com/display/DOCS/Brand+guidelines+in+documentation for additional suggestions."
+message: "Use '%s' instead of '%s'."
 level: warning
 ignorecase: true
 action:
