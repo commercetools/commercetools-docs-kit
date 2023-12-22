@@ -92,6 +92,7 @@ const ChatModal = () => {
     setChatMessages([]);
     setChatReferences([]);
     setChatLocked(false);
+    setMessageHistoryInit(false);
   };
 
   const applyNames = (message) =>
@@ -393,8 +394,6 @@ const ChatModal = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentChatMode]);
-
-  console.log('chatConfig', chatConfig);
 
   return (
     <FormDialog
