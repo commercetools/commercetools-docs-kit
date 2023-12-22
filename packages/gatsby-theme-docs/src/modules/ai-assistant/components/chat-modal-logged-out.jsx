@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { LoginButton } from '../../sso';
 import robotPng from '../icons/robot.png';
 import LegalDisclaimer from './chat-modal-legal-disclaimer';
@@ -15,7 +15,7 @@ import {
   SideTopContainer,
 } from './chat-modal-css-components';
 
-const ChatModalLoggedOut = () => {
+const ChatModalLoggedOut = (props) => {
   return (
     <ChatContainer data-testid="ai-assistant-modal">
       <LeftBlank />
@@ -33,7 +33,11 @@ const ChatModalLoggedOut = () => {
       </ChatSideArea>
       <ChatMainArea>
         <ChatMainAreaWhenLoggedOut>
-          <LoginButton theme="primary" label="Log in to start the Assistant" />
+          <LoginButton
+            theme="primary"
+            label="Log in to start the Assistant"
+            aiAssistantCfg={props.aiAssistantCfg}
+          />
         </ChatMainAreaWhenLoggedOut>
       </ChatMainArea>
       <RightBlank />
@@ -42,3 +46,15 @@ const ChatModalLoggedOut = () => {
 };
 
 export default ChatModalLoggedOut;
+
+ChatModalLoggedOut.propTypes = {
+  aiAssistantCfg: PropTypes.shape({
+    chatSelectedMode: PropTypes.string,
+    isDismissable: PropTypes.bool,
+    messageHistory: PropTypes.arrayOf(
+      PropTypes.shape({ role: PropTypes.string, value: PropTypes.string })
+    ),
+    title: PropTypes.string,
+    readOnly: PropTypes.bool,
+  }).isRequired,
+};

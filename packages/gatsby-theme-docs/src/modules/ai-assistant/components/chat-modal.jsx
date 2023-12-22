@@ -53,6 +53,7 @@ import {
   SideTopContainer,
   SubmitButtonBox,
 } from './chat-modal-css-components';
+import useChatInit from '../hooks/use-chat-init';
 
 export const DEV_TOOLING_MODE = 'dev-tooling-ts-code-generator';
 
@@ -74,6 +75,7 @@ const ChatModal = () => {
   const [conversationId, setConversationId] = useState(
     createNewConversationId()
   );
+  const [chatAvailableModes, setChatAvailableModes] = useState([]);
   const [chatMessages, setChatMessages] = useState([]);
   const [chatReferences, setChatReferences] = useState([]);
   const [currentChatMode, setCurrentChatMode] = useState();
@@ -84,6 +86,7 @@ const ChatModal = () => {
   const { isAuthenticated, user } = useAuthentication();
   const { getAuthToken } = useAuthToken();
   const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
+  const { chatInit } = useChatInit();
 
   const resetChatState = () => {
     setChatMessages([]);
@@ -106,18 +109,33 @@ const ChatModal = () => {
   };
 
   useEffect(() => {
+    const fetchChatInit = async () => {
+      try {
+        const {modes} = await chatInit();
+        setChatAvailableModes(modes);
+      } catch (error) {
+        console.error('error initializing ai assistant', error);
+        setChatAvailableModes([]);
+      }
+    };
+    if (chatConfig && isAuthenticated && !isNotValidatedUser(user)) {
+      fetchChatInit();
+    }
+  }, [user, isAuthenticated, chatInit, chatConfig]);
+
+  useEffect(() => {
     // initial config from chat button
     if (chatConfig?.chatSelectedMode) {
       formik.setFieldValue('chatMode', chatConfig.chatSelectedMode);
-      const chatModeConfig = chatConfig?.chatAvailableModes.find(
+      const chatModeConfig = chatAvailableModes.find(
         (mode) => mode.key === chatConfig?.chatSelectedMode
       );
       if (chatModeConfig) {
         setCurrentChatMode(chatModeConfig);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chatConfig]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chatAvailableModes, chatConfig]);
 
   const submitMessages = useCallback(
     async (newMessages, isDebug = false) => {
@@ -193,8 +211,8 @@ const ChatModal = () => {
 
   useEffect(() => {
     const handleCustomEvent = (event) => {
-      setChatConfig(event.detail);
       openAiAssistantModal({ title: '', isDismissable: true });
+      setChatConfig(event.detail);
     };
 
     window.addEventListener('openChatModal', handleCustomEvent);
@@ -202,6 +220,7 @@ const ChatModal = () => {
     return () => {
       window.removeEventListener('openChatModal', handleCustomEvent);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Handle submit message when hitting Enter.
@@ -323,7 +342,7 @@ const ChatModal = () => {
     setConversationId(createNewConversationId());
     const chatModeKey = event?.target?.value || '';
     formik.setFieldValue('chatMode', chatModeKey);
-    const chatModeConfig = chatConfig?.chatAvailableModes.find(
+    const chatModeConfig = chatAvailableModes.find(
       (mode) => mode.key === chatModeKey
     );
     if (chatModeConfig) {
@@ -375,6 +394,8 @@ const ChatModal = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentChatMode]);
 
+  console.log('chatConfig', chatConfig);
+
   return (
     <FormDialog
       size="scale"
@@ -396,7 +417,7 @@ const ChatModal = () => {
       background={designSystem.colors.light.surfaceSecondaryTopMenu}
     >
       {!isAuthenticated ? (
-        <ChatModalLoggedOut />
+        <ChatModalLoggedOut aiAssistantCfg={chatConfig} />
       ) : isNotValidatedUser(user) ? (
         <ChatModalNotVerified />
       ) : (
@@ -415,7 +436,7 @@ const ChatModal = () => {
                 <SelectField
                   title=""
                   value={formik.values.chatMode}
-                  options={chatConfig?.chatAvailableModes.map((mode) => ({
+                  options={chatAvailableModes.map((mode) => ({
                     value: mode.key,
                     label: mode.label,
                   }))}

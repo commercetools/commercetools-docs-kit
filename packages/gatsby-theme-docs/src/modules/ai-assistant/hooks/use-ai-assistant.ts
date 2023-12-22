@@ -17,6 +17,15 @@ const useAiAssistant = () => {
           try {
             // tries to parse the ai assistant config
             aiAssistantCfg = JSON.parse(serializedCfg);
+            const customEvent = new CustomEvent('openChatModal', {
+              detail: {
+                ...aiAssistantCfg,
+                isDismissable: true,
+              },
+              bubbles: true,
+              cancelable: true,
+            });
+            window.dispatchEvent(customEvent);
           } catch (e) {
             // logs an error if de-serialization of ai assistant config fails
             console.error(
@@ -30,7 +39,6 @@ const useAiAssistant = () => {
             );
           }
         }
-        console.log('aiAssistantCfg', aiAssistantCfg);
       }
     };
 
