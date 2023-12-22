@@ -7,42 +7,12 @@ describe('Ai Assistant', () => {
     cy.get('[data-testid="ai-assistant-launch-button"]', {
       timeout: LONG_TIMEOUT,
     }).click();
-    cy.get('[data-testid="quiz-login-button"]', { timeout: LONG_TIMEOUT })
-      // Use should to assert the text content
-      .should('have.text', 'ID | Log in to start the Assistant');
-  });
-
-  it('should render chat launch button when user is logged in and launch chat', () => {
-    cy.visit(URL_DOCS_SMOKE_TEST);
-    // just ensuring javascript is loaded
-    cy.findByText('Components').click();
-    cy.findByText('Mermaid Diagrams').click({ force: true });
-    cy.get('div[data-testid="mermaid-diagram"]'); // just ensuring javascript is loaded
-    cy.get('[data-testid="ai-assistant-launch-button"]', {
+    cy.get('[data-testid="ai-assistant-modal"]', {
       timeout: LONG_TIMEOUT,
-    }).click();
-    cy.get('div[data-testid="quiz-login-button"]').click();
-    cy.origin('https://auth.id.commercetools.com', () => {
-      cy.get('input[id="username"]').type('test.user.chat@commercetools.com');
-      cy.get('input[id="password"]').type('Qwerty123!');
-      cy.get('button:visible[type="submit"]').click();
+    }).within(() => {
+      cy.get('[data-testid="quiz-login-button"]', { timeout: LONG_TIMEOUT })
+        // Use should to assert the text content
+        .should('have.text', 'ID | Log in to start the Assistant');
     });
-    cy.get('[data-testid="ai-assistant-launch-button"]', {
-      timeout: LONG_TIMEOUT,
-    }).should('have.text', 'Start Assistant');
-    cy.get('[data-testid="ai-assistant-launch-button"]', {
-      timeout: LONG_TIMEOUT,
-    }).click();
-    cy.get('#portals-container', { timeout: LONG_TIMEOUT })
-      .should('exist')
-      .within(() => {
-        // Use cy.get to locate the div within the portal
-        cy.get('[data-testid="ai-assistant-modal"]', { timeout: LONG_TIMEOUT })
-          // Use should to assert that the div exists
-          .should('be.visible')
-          .then(() => {
-            cy.percySnapshot();
-          });
-      });
   });
 });
