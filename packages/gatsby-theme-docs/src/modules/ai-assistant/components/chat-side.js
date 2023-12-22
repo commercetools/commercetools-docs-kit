@@ -29,6 +29,7 @@ const ChatSide = (props) => {
             Debug mode
           </CheckboxInput>
           <SelectField
+            data-testid="chat-mode-select"
             title=""
             value={props.chatMode}
             options={props.chatAvailableModes.map((mode) => ({
