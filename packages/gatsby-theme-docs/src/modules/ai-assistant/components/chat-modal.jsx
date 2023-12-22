@@ -44,8 +44,14 @@ import {
 } from './chat-modal-css-components';
 import useChatInit from '../hooks/use-chat-init';
 import ChatSide from './chat-side';
+import ChatModalLoading from './chat-modal-loading';
 
 export const DEV_TOOLING_MODE = 'dev-tooling-ts-code-generator';
+
+const ASSISTANT_STATE_OPEN = 'open';
+const ASSISTANT_STATE_LOGGED_OUT = 'loggedout';
+const ASSISTANT_STATE_NOT_VERIFIED = 'unverified';
+const ASSISTANT_STATE_INITIALIZING = 'initializing';
 
 const ChatModal = () => {
   const divRef = useRef(null);
@@ -72,11 +78,15 @@ const ChatModal = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [replayMessage, setReplayMessage] = useState();
   const [chatLocked, setChatLocked] = useState(false);
+  const [initLoading, setInitLoading] = useState(false);
   const [inputMessageLengthState, setInputMessageLengthState] = useState();
   const { isAuthenticated, user } = useAuthentication();
   const { getAuthToken } = useAuthToken();
   const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
   const { chatInit } = useChatInit();
+  const [assistantState, setAssistantState] = useState(
+    ASSISTANT_STATE_INITIALIZING
+  );
 
   const resetChatState = () => {
     setChatMessages([]);
@@ -101,12 +111,15 @@ const ChatModal = () => {
 
   useEffect(() => {
     const fetchChatInit = async () => {
+      setInitLoading(true);
       try {
         const { modes } = await chatInit();
         setChatAvailableModes(modes);
       } catch (error) {
         console.error('error initializing ai assistant', error);
         setChatAvailableModes([]);
+      } finally {
+        setInitLoading(false);
       }
     };
     if (chatConfig && isAuthenticated && !isNotValidatedUser(user)) {
@@ -201,6 +214,7 @@ const ChatModal = () => {
   }, [aiAssistantModal, messageHistoryInit, chatConfig, currentChatMode]);
 
   useEffect(() => {
+    // entry point of the ai assistant chat
     const handleCustomEvent = (event) => {
       openAiAssistantModal({ title: '', isDismissable: true });
       setChatConfig(event.detail);
@@ -385,6 +399,22 @@ const ChatModal = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentChatMode]);
 
+  useEffect(() => {
+    if (initLoading) {
+      setAssistantState(ASSISTANT_STATE_INITIALIZING);
+    } else {
+      if (!isAuthenticated) {
+        setAssistantState(ASSISTANT_STATE_LOGGED_OUT);
+      }
+      if (isAuthenticated && isNotValidatedUser(user)) {
+        setAssistantState(ASSISTANT_STATE_NOT_VERIFIED);
+      }
+      if (isAuthenticated && !isNotValidatedUser(user)) {
+        setAssistantState(ASSISTANT_STATE_OPEN);
+      }
+    }
+  }, [isAuthenticated, user, initLoading]);
+
   return (
     <FormDialog
       size="scale"
@@ -405,11 +435,20 @@ const ChatModal = () => {
       onPrimaryButtonClick={() => !chatConfig?.readOnly && formik.submitForm()}
       background={designSystem.colors.light.surfaceSecondaryTopMenu}
     >
-      {!isAuthenticated ? (
+      {/* loading state */}
+      {assistantState === ASSISTANT_STATE_INITIALIZING && (
+        <ChatModalLoading />
+      )}
+      {/* logged out state */}
+      {assistantState === ASSISTANT_STATE_LOGGED_OUT && (
         <ChatModalLoggedOut aiAssistantCfg={chatConfig} />
-      ) : isNotValidatedUser(user) ? (
+      )}
+      {/* not verified  state */}
+      {assistantState === ASSISTANT_STATE_NOT_VERIFIED && (
         <ChatModalNotVerified />
-      ) : (
+      )}
+      {/* standard state */}
+      {assistantState === ASSISTANT_STATE_OPEN && (
         <ChatContainer data-testid="ai-assistant-modal">
           <LeftBlank />
           <ChatSide
