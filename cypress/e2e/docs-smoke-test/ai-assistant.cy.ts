@@ -38,7 +38,7 @@ describe('Ai Assistant', () => {
     cy.origin('https://auth.id.commercetools.com', () => {
       cy.get('input[id="username"]').type('test.user.chat@commercetools.com');
       cy.get('input[id="password"]').type('Qwerty123!');
-      cy.get('button:visible[type="submit"]').click({ timeout: LONG_TIMEOUT });
+      cy.get('button:visible[type="submit"]').click();
     });
     cy.get('#portals-container', { timeout: LONG_TIMEOUT }).within(() => {
       // Use cy.get to locate the div within the portal
