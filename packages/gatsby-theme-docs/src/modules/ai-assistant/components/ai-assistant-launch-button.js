@@ -36,7 +36,6 @@ const AiAssistantLaunchButton = (props) => {
 
   const handleClick = async () => {
     setChatLoading(true);
-    // TODO: call the /init endpoint
     const modes =
       isAuthenticated && !isNotValidatedUser(user)
         ? await chatInit({
