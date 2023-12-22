@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { createReferenceGroup } from './chat.utils';
 
 const ReferenceContainer = styled.div`
   height: fit-content;
@@ -48,7 +49,7 @@ const ReferenceSubList = (props) => {
         return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
       });
 
-    const group = `${reference.micrositeBreadcrumb} > ${formattedMicrositeName}`;
+    const group = createReferenceGroup(reference.micrositeBreadcrumb, formattedMicrositeName);
     if (sortedReferences[group]) {
       sortedReferences[group].push(reference);
     } else {

@@ -50,3 +50,15 @@ export const getAssistantAvatarIcon = (mode) => {
       return DefaultAvatarIcon;
   }
 };
+
+/**
+ * Ensures that the reference's breadcrumbs are displaying root group
+ * only if available, otherwise display the microsite only
+ */
+export const createReferenceGroup = (
+  micrositeBreadcrumb,
+  formattedMicrositeName
+) =>
+  micrositeBreadcrumb && micrositeBreadcrumb !== ''
+    ? `${micrositeBreadcrumb} > ${formattedMicrositeName}`
+    : `${formattedMicrositeName}`;
