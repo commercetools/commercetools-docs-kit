@@ -7,9 +7,7 @@ describe('Ai Assistant', () => {
     cy.get('[data-testid="ai-assistant-launch-button"]', {
       timeout: LONG_TIMEOUT,
     }).click();
-    cy.get('[data-testid="ai-assistant-modal"]', {
-      timeout: LONG_TIMEOUT,
-    }).within(() => {
+    cy.get('#portals-container', { timeout: LONG_TIMEOUT }).within(() => {
       cy.get('[data-testid="quiz-login-button"]', { timeout: LONG_TIMEOUT })
         // Use should to assert the text content
         .should('have.text', 'ID | Log in to start the Assistant');
