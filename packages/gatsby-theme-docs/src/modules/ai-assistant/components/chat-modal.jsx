@@ -9,20 +9,15 @@ import { useFormik } from 'formik';
 import { monotonicFactory } from 'ulid';
 import { FormDialog, designSystem } from '@commercetools-docs/ui-kit';
 import FlatButton from '@commercetools-uikit/flat-button';
-import SelectField from '@commercetools-uikit/select-field';
 import MultilineTextField from '@commercetools-uikit/multiline-text-field';
 import MultilineTextInput from '@commercetools-uikit/multiline-text-input';
-import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import useAuthentication from '../../sso/hooks/use-authentication';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
 import { CHAT_ROLE_ASSISTANT, CHAT_ROLE_USER } from './chat.const';
 import ChatMessages from './chat-messages';
-import { isCtUser, isWaitingChunk, isNotValidatedUser } from './chat.utils';
-import ReferencesList from './chat-references-list';
-import robotPng from '../icons/robot.png';
+import { isWaitingChunk, isNotValidatedUser } from './chat.utils';
 import submitPng from '../icons/paper-plane.png';
 import CTCube from '../icons/black-white-ct-cube.svg';
-import CodeGeneratorSidebar from './code-generator-sidebar';
 import {
   AuthenticatedContextApi,
   AuthenticatedContextState,
@@ -32,16 +27,12 @@ import ChatModalLoggedOut from './chat-modal-logged-out';
 import ChatModalNotVerified from './chat-modal-not-verified';
 import LegalDisclaimer from './chat-modal-legal-disclaimer';
 import {
-  BackgroundWrapper,
   CharCount,
-  ChatBottomContainer,
   ChatContainer,
   ChatInputBox,
   ChatMainArea,
   ChatMessagesWrapper,
-  ChatSideArea,
   CubeContainer,
-  DisclaimerText,
   DisclaimerTextMobile,
   InputTextWrapper,
   LeftBlank,
@@ -49,11 +40,10 @@ import {
   ResetButtonBox,
   RestartButtonBox,
   RightBlank,
-  SideDebugContainer,
-  SideTopContainer,
   SubmitButtonBox,
 } from './chat-modal-css-components';
 import useChatInit from '../hooks/use-chat-init';
+import ChatSide from './chat-side';
 
 export const DEV_TOOLING_MODE = 'dev-tooling-ts-code-generator';
 
@@ -112,7 +102,7 @@ const ChatModal = () => {
   useEffect(() => {
     const fetchChatInit = async () => {
       try {
-        const {modes} = await chatInit();
+        const { modes } = await chatInit();
         setChatAvailableModes(modes);
       } catch (error) {
         console.error('error initializing ai assistant', error);
@@ -135,7 +125,7 @@ const ChatModal = () => {
         setCurrentChatMode(chatModeConfig);
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chatAvailableModes, chatConfig]);
 
   const submitMessages = useCallback(
@@ -221,7 +211,7 @@ const ChatModal = () => {
     return () => {
       window.removeEventListener('openChatModal', handleCustomEvent);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Handle submit message when hitting Enter.
@@ -422,46 +412,17 @@ const ChatModal = () => {
       ) : (
         <ChatContainer data-testid="ai-assistant-modal">
           <LeftBlank />
-          <ChatSideArea>
-            {isCtUser(user) && (
-              <SideDebugContainer>
-                <CheckboxInput
-                  isChecked={formik.values.debugMode === true}
-                  name="debugMode"
-                  onChange={handleChatDebugModeChange}
-                >
-                  Debug mode
-                </CheckboxInput>
-                <SelectField
-                  title=""
-                  value={formik.values.chatMode}
-                  options={chatAvailableModes.map((mode) => ({
-                    value: mode.key,
-                    label: mode.label,
-                  }))}
-                  onChange={handleChatModeChange}
-                />
-              </SideDebugContainer>
-            )}
-            <SideTopContainer>
-              {currentChatMode?.key === DEV_TOOLING_MODE ? (
-                <CodeGeneratorSidebar
-                  onQuestionClick={handleQuestionButtonClicked}
-                />
-              ) : chatReferences.length > 0 ? (
-                <ReferencesList references={chatReferences}></ReferencesList>
-              ) : (
-                <BackgroundWrapper>
-                  <img src={robotPng} width={400} alt="robot icon" />
-                </BackgroundWrapper>
-              )}
-            </SideTopContainer>
-            <ChatBottomContainer>
-              <DisclaimerText>
-                <LegalDisclaimer />
-              </DisclaimerText>
-            </ChatBottomContainer>
-          </ChatSideArea>
+          <ChatSide
+            user={user}
+            chatMode={formik.values.chatMode}
+            debugMode={formik.values.debugMode}
+            chatAvailableModes={chatAvailableModes}
+            chatReferences={chatReferences}
+            currentChatMode={currentChatMode}
+            handleChatDebugModeChange={handleChatDebugModeChange}
+            handleChatModeChange={handleChatModeChange}
+            handleQuestionButtonClicked={handleQuestionButtonClicked}
+          />
           <ChatMainArea>
             <ChatMessagesWrapper ref={divRef}>
               <ChatMessages
@@ -474,7 +435,6 @@ const ChatModal = () => {
                 conversationId={conversationId}
               />
             </ChatMessagesWrapper>
-            {/* TODO: handle chatLocked === true mode */}
 
             {!chatConfig?.readOnly && !chatLocked && (
               <ChatInputBox>
