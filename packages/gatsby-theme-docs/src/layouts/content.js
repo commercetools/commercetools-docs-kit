@@ -32,6 +32,7 @@ import {
   useCourseInfoByPageSlugs,
 } from '../modules/self-learning';
 import styled from '@emotion/styled';
+import useAiAssistant from '../modules/ai-assistant/hooks/use-ai-assistant';
 
 const PlansWrapper = styled.div`
   & > span {
@@ -53,6 +54,7 @@ const LayoutContent = (props) => {
   const planTags = Array.isArray(props.pageData.planTags)
     ? props.pageData.planTags
     : [];
+  useAiAssistant();
 
   return (
     <LayoutApplication

@@ -20,10 +20,6 @@ const isAllowedEmailDomain = (email, domainList) => {
   return allowedEmailDomainRegExp.test(email);
 };
 
-export const isAllowedUser = (user) => {
-  return user && user.email_verified && isAllowedEmailDomain(user.email);
-};
-
 export const isNotValidatedUser = (user) => {
   return user && !user.email_verified && isAllowedEmailDomain(user.email);
 };

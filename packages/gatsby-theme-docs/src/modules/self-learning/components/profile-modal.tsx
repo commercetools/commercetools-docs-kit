@@ -149,6 +149,7 @@ const ProfileModal = () => {
       size="l"
       title={profileModal?.title || 'Update your profile.'}
       labelPrimary="Save"
+      zIndex={1003} // needs to be higher than the AI assistant modal
       isOpen={isModalOpen}
       onClose={
         profileModal?.isDismissable ? () => closeProfileModal() : undefined
