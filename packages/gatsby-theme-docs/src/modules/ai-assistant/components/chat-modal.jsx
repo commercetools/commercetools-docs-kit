@@ -9,212 +9,57 @@ import { useFormik } from 'formik';
 import { monotonicFactory } from 'ulid';
 import { FormDialog, designSystem } from '@commercetools-docs/ui-kit';
 import FlatButton from '@commercetools-uikit/flat-button';
-import SelectField from '@commercetools-uikit/select-field';
 import MultilineTextField from '@commercetools-uikit/multiline-text-field';
 import MultilineTextInput from '@commercetools-uikit/multiline-text-input';
-import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import useAuthentication from '../../sso/hooks/use-authentication';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
 import { CHAT_ROLE_ASSISTANT, CHAT_ROLE_USER } from './chat.const';
 import ChatMessages from './chat-messages';
-import styled from '@emotion/styled';
 import {
-  isCtUser,
   isWaitingChunk,
+  isNotValidatedUser,
   loadLocalChatState,
   setLocalStorageChatLocked,
   setLocalStorageChatMode,
   setLocalStorageMessages,
   setLocalStorageReferences,
 } from './chat.utils';
-import ReferencesList from './chat-references-list';
-import robotPng from '../icons/robot.png';
 import submitPng from '../icons/paper-plane.png';
 import CTCube from '../icons/black-white-ct-cube.svg';
-import { Link } from 'gatsby';
-import CodeGeneratorSidebar from './code-generator-sidebar';
 import {
   AuthenticatedContextApi,
   AuthenticatedContextState,
 } from '../../../components/authenticated-context';
 import ConfigContext from '../../../components/config-context';
+import ChatModalLoggedOut from './chat-modal-logged-out';
+import ChatModalNotVerified from './chat-modal-not-verified';
+import LegalDisclaimer from './chat-modal-legal-disclaimer';
+import {
+  CharCount,
+  ChatContainer,
+  ChatInputBox,
+  ChatMainArea,
+  ChatMessagesWrapper,
+  CubeContainer,
+  DisclaimerTextMobile,
+  InputTextWrapper,
+  LeftBlank,
+  LockedChatFooterContainer,
+  ResetButtonBox,
+  RestartButtonBox,
+  RightBlank,
+  SubmitButtonBox,
+} from './chat-modal-css-components';
+import useChatInit from '../hooks/use-chat-init';
+import ChatSide from './chat-side';
+import ChatModalLoading from './chat-modal-loading';
 
 export const DEV_TOOLING_MODE = 'dev-tooling-ts-code-generator';
 
-const LEGAL_DISCLAIMER = (
-  <>
-    Results are generated using generative AI and should be verified prior to
-    use. By interacting with the feature, you agree to our “
-    <a href="/../offering/ai-disclaimer" target="_blank">
-      AI Content Disclaimer
-    </a>
-    ”.
-  </>
-);
-
-const ChatContainer = styled.div`
-  height: 100%;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-areas: 'chat';
-
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    grid-template-columns: auto 25%;
-    grid-template-areas: 'chat references';
-  }
-
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    grid-template-columns: 15% auto 25% 15%;
-    grid-template-areas: 'left-blank chat references right-blank';
-  }
-`;
-
-const ChatMainArea = styled.div`
-  grid-area: chat;
-  display: flex;
-  flex-direction: column;
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    border-right: 2px solid #e1e2ea;
-  }
-`;
-
-const ChatMessagesWrapper = styled.div`
-  flex-basis: 0;
-  flex-grow: 1;
-  padding: 0px ${designSystem.dimensions.spacings.m};
-  overflow-y: scroll;
-  mask-image: linear-gradient(
-    to bottom,
-    black calc(100% - 18px),
-    transparent 100%
-  );
-`;
-
-const ChatInputBox = styled.div`
-  padding: ${designSystem.dimensions.spacings.m}
-    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.l}
-    ${designSystem.dimensions.spacings.m};
-`;
-
-const ResetButtonBox = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-top: 16px;
-`;
-
-const LockedChatFooterContainer = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.m};
-`;
-
-const CubeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #e1e2ea;
-`;
-
-const ChatSideArea = styled.div`
-  padding: 0px ${designSystem.dimensions.spacings.s};
-  grid-area: references;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    display: none;
-  }
-`;
-
-const InputTextWrapper = styled.div`
-  display: flex;
-`;
-
-const SubmitButtonBox = styled.div`
-  display: flex;
-  height: 30px;
-  width: 30px;
-  margin-top: 38px;
-  background-color: #fff;
-  margin-left: 8px;
-  padding: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-`;
-
-const ChatBottomContainer = styled.div`
-  margin-top: auto;
-  padding: ${designSystem.dimensions.spacings.m}
-    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.l}
-    ${designSystem.dimensions.spacings.m};
-`;
-
-const SideTopContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 0px ${designSystem.dimensions.spacings.m};
-`;
-
-const BackgroundWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const SideDebugContainer = styled.div`
-  padding: 0px ${designSystem.dimensions.spacings.m};
-  margin-bottom: ${designSystem.dimensions.spacings.m};
-`;
-
-const LeftBlank = styled.div`
-  grid-area: left-blank;
-  display: none;
-
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    display: block;
-  }
-`;
-
-const RightBlank = styled.div`
-  grid-area: right-blank;
-  display: none;
-
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    display: block;
-  }
-`;
-
-const CharCount = styled.div`
-  padding-right: 5px;
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  color: ${(props) =>
-    props.status
-      ? `${designSystem.colors.light.textError}`
-      : `${designSystem.colors.light.textFaded}`};
-`;
-
-const DisclaimerText = styled.p`
-  text-align: center;
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  line-height: 22px;
-  a {
-    color: ${designSystem.colors.light.textPrimary};
-  }
-`;
-
-const DisclaimerTextMobile = styled.p`
-  margin-top: ${designSystem.dimensions.spacings.m};
-  font-size: ${designSystem.typography.fontSizes.extraSmall};
-  line-height: 22px;
-  display: none;
-  a {
-    color: ${designSystem.colors.light.textPrimary};
-  }
-  @media screen and (${designSystem.dimensions.viewports.mobile}) {
-    display: inline;
-  }
-`;
+const ASSISTANT_STATE_OPEN = 'open';
+const ASSISTANT_STATE_LOGGED_OUT = 'loggedout';
+const ASSISTANT_STATE_NOT_VERIFIED = 'unverified';
+const ASSISTANT_STATE_INITIALIZING = 'initializing';
 
 const ChatModal = () => {
   const divRef = useRef(null);
@@ -240,8 +85,11 @@ const ChatModal = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [replayMessage, setReplayMessage] = useState();
   const [chatLocked, setAppChatLocked] = useState(false);
+  const [chatAvailableModes, setChatAvailableModes] = useState([]);
+  const [initLoading, setInitLoading] = useState(false);
+
   const [inputMessageLengthState, setInputMessageLengthState] = useState();
-  const { user } = useAuthentication();
+  const { isAuthenticated, user } = useAuthentication();
   const { getAuthToken } = useAuthToken();
   const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
 
@@ -251,7 +99,11 @@ const ChatModal = () => {
     if (!keepLocalStorage) {
       setLocalStorageMessages(messages);
     }
-  };
+  }
+  const { chatInit } = useChatInit();
+  const [assistantState, setAssistantState] = useState(
+    ASSISTANT_STATE_INITIALIZING
+  );
 
     /* App state and localstorage setter for references */
   const setChatReferences = (references, keepLocalStorage = false) => {
@@ -281,6 +133,7 @@ const ChatModal = () => {
     setChatMessages([], keepLocalState);
     setChatReferences([], keepLocalState);
     setChatLocked(false, keepLocalState);
+    setMessageHistoryInit(false, keepLocalState);
   };
 
   const setLoadedChatState = ({messages, references, isLocked, mode}) => {
@@ -313,10 +166,28 @@ const ChatModal = () => {
   };
 
   useEffect(() => {
+    const fetchChatInit = async () => {
+      setInitLoading(true);
+      try {
+        const { modes } = await chatInit();
+        setChatAvailableModes(modes);
+      } catch (error) {
+        console.error('error initializing ai assistant', error);
+        setChatAvailableModes([]);
+      } finally {
+        setInitLoading(false);
+      }
+    };
+    if (chatConfig && isAuthenticated && !isNotValidatedUser(user)) {
+      fetchChatInit();
+    }
+  }, [user, isAuthenticated, chatInit, chatConfig]);
+
+  useEffect(() => {
     // initial config from chat button
     if (chatConfig?.chatSelectedMode) {
       formik.setFieldValue('chatMode', chatConfig.chatSelectedMode);
-      const chatModeConfig = chatConfig?.chatAvailableModes.find(
+      const chatModeConfig = chatAvailableModes.find(
         (mode) => mode.key === chatConfig?.chatSelectedMode
       );
       if (chatModeConfig) {
@@ -324,7 +195,7 @@ const ChatModal = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chatConfig]);
+  }, [chatAvailableModes, chatConfig]);
 
   const submitMessages = useCallback(
     async (newMessages, isDebug = false) => {
@@ -398,6 +269,7 @@ const ChatModal = () => {
   }, [aiAssistantModal, messageHistoryInit, chatConfig, currentChatMode]);
 
   useEffect(() => {
+    // entry point of the ai assistant chat
     const handleCustomEvent = (event) => {
       const loadedState = loadLocalChatState(event.detail);
       if (loadedState) {
@@ -412,6 +284,7 @@ const ChatModal = () => {
     return () => {
       window.removeEventListener('openChatModal', handleCustomEvent);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Handle submit message when hitting Enter.
@@ -533,7 +406,7 @@ const ChatModal = () => {
     setConversationId(createNewConversationId());
     const chatModeKey = event?.target?.value || '';
     formik.setFieldValue('chatMode', chatModeKey);
-    const chatModeConfig = chatConfig?.chatAvailableModes.find(
+    const chatModeConfig = chatAvailableModes.find(
       (mode) => mode.key === chatModeKey
     );
     if (chatModeConfig) {
@@ -585,6 +458,22 @@ const ChatModal = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentChatMode]);
 
+  useEffect(() => {
+    if (initLoading) {
+      setAssistantState(ASSISTANT_STATE_INITIALIZING);
+    } else {
+      if (!isAuthenticated) {
+        setAssistantState(ASSISTANT_STATE_LOGGED_OUT);
+      }
+      if (isAuthenticated && isNotValidatedUser(user)) {
+        setAssistantState(ASSISTANT_STATE_NOT_VERIFIED);
+      }
+      if (isAuthenticated && !isNotValidatedUser(user)) {
+        setAssistantState(ASSISTANT_STATE_OPEN);
+      }
+    }
+  }, [isAuthenticated, user, initLoading]);
+
   return (
     <FormDialog
       size="scale"
@@ -606,131 +495,122 @@ const ChatModal = () => {
       onPrimaryButtonClick={() => !chatConfig?.readOnly && formik.submitForm()}
       background={designSystem.colors.light.surfaceSecondaryTopMenu}
     >
-      <ChatContainer data-testid="ai-assistant-modal">
-        <LeftBlank />
-        <ChatSideArea>
-          {isCtUser(user) && (
-            <SideDebugContainer>
-              <CheckboxInput
-                isChecked={formik.values.debugMode === true}
-                name="debugMode"
-                onChange={handleChatDebugModeChange}
-              >
-                Debug mode
-              </CheckboxInput>
-              <SelectField
-                title=""
-                value={formik.values.chatMode}
-                options={chatConfig?.chatAvailableModes.map((mode) => ({
-                  value: mode.key,
-                  label: mode.label,
-                }))}
-                onChange={handleChatModeChange}
+      {/* loading state */}
+      {assistantState === ASSISTANT_STATE_INITIALIZING && (
+        <ChatModalLoading />
+      )}
+      {/* logged out state */}
+      {assistantState === ASSISTANT_STATE_LOGGED_OUT && (
+        <ChatModalLoggedOut aiAssistantCfg={chatConfig} />
+      )}
+      {/* not verified  state */}
+      {assistantState === ASSISTANT_STATE_NOT_VERIFIED && (
+        <ChatModalNotVerified />
+      )}
+      {/* standard state */}
+      {assistantState === ASSISTANT_STATE_OPEN && (
+        <ChatContainer data-testid="ai-assistant-modal">
+          <LeftBlank />
+          <ChatSide
+            user={user}
+            chatMode={formik.values.chatMode}
+            debugMode={formik.values.debugMode}
+            chatAvailableModes={chatAvailableModes}
+            chatReferences={chatReferences}
+            currentChatMode={currentChatMode}
+            handleChatDebugModeChange={handleChatDebugModeChange}
+            handleChatModeChange={handleChatModeChange}
+            handleQuestionButtonClicked={handleQuestionButtonClicked}
+          />
+          <ChatMainArea>
+            <ChatMessagesWrapper ref={divRef}>
+              <ChatMessages
+                messages={chatMessages.map(applyNames)}
+                references={chatReferences}
+                chatMode={currentChatMode}
+                chatLocked={chatLocked}
+                isLoading={isSubmitting}
+                isDebug={formik?.values?.debugMode}
+                conversationId={conversationId}
               />
-            </SideDebugContainer>
-          )}
-          <SideTopContainer>
-            {currentChatMode?.key === DEV_TOOLING_MODE ? (
-              <CodeGeneratorSidebar
-                onQuestionClick={handleQuestionButtonClicked}
-              />
-            ) : chatReferences.length > 0 ? (
-              <ReferencesList references={chatReferences}></ReferencesList>
-            ) : (
-              <BackgroundWrapper>
-                <img src={robotPng} width={400} alt="robot icon" />
-              </BackgroundWrapper>
-            )}
-          </SideTopContainer>
-          <ChatBottomContainer>
-            <DisclaimerText>{LEGAL_DISCLAIMER}</DisclaimerText>
-          </ChatBottomContainer>
-        </ChatSideArea>
-        <ChatMainArea>
-          <ChatMessagesWrapper ref={divRef}>
-            <ChatMessages
-              messages={chatMessages.map(applyNames)}
-              references={chatReferences}
-              chatMode={currentChatMode}
-              chatLocked={chatLocked}
-              isLoading={isSubmitting}
-              isDebug={formik?.values?.debugMode}
-              conversationId={conversationId}
-            />
-          </ChatMessagesWrapper>
-          {/* TODO: handle chatLocked === true mode */}
+            </ChatMessagesWrapper>
 
-          {!chatConfig?.readOnly && !chatLocked && (
-            <ChatInputBox>
-              <InputTextWrapper>
-                <MultilineTextField
-                  key="chatInput"
-                  name="chatInput"
-                  title=""
-                  placeholder={
-                    currentChatMode?.key === DEV_TOOLING_MODE
-                      ? 'Specify your use case to generate the code.'
-                      : 'Use complete sentences for the best help.'
-                  }
-                  value={formik.values.chatInput}
-                  touched={formik.touched.chatInput}
-                  defaultExpandMultilineText
-                  onChange={formik.handleChange}
-                  onBlur={handleInputBlur}
-                  onFocus={handleInputFocus}
-                  errors={
-                    MultilineTextField.toFieldErrors(formik.errors).chatInput
-                  }
-                  renderError={renderError}
-                  badge={
-                    <CharCount status={inputMessageLengthState}>
-                      {formik.values.chatInput.length}/
-                      {currentChatMode?.inputMessageLimit}
-                    </CharCount>
-                  }
-                />
-                <SubmitButtonBox>
-                  <img
-                    alt="submit button"
-                    src={submitPng}
-                    onClick={() => !chatConfig?.readOnly && formik.submitForm()}
+            {!chatConfig?.readOnly && !chatLocked && (
+              <ChatInputBox>
+                <InputTextWrapper>
+                  <MultilineTextField
+                    key="chatInput"
+                    name="chatInput"
+                    title=""
+                    placeholder={
+                      currentChatMode?.key === DEV_TOOLING_MODE
+                        ? 'Specify your use case to generate the code.'
+                        : 'Use complete sentences for the best help.'
+                    }
+                    value={formik.values.chatInput}
+                    touched={formik.touched.chatInput}
+                    defaultExpandMultilineText
+                    onChange={formik.handleChange}
+                    onBlur={handleInputBlur}
+                    onFocus={handleInputFocus}
+                    errors={
+                      MultilineTextField.toFieldErrors(formik.errors).chatInput
+                    }
+                    renderError={renderError}
+                    badge={
+                      <CharCount status={inputMessageLengthState}>
+                        {formik.values.chatInput.length}/
+                        {currentChatMode?.inputMessageLimit}
+                      </CharCount>
+                    }
                   />
-                </SubmitButtonBox>
-              </InputTextWrapper>
-              <ResetButtonBox>
-                <FlatButton
-                  label="Tip: Restart the conversation when changing the topic"
-                  isDisabled={chatMessages.length === 0}
-                  onClick={() => {
-                    setConversationId(createNewConversationId());
-                    resetChatState();
-                    setReplayMessage();
-                  }} // reset chat messages when clicking on the restart button
-                />
-              </ResetButtonBox>
-            </ChatInputBox>
-          )}
-          {chatLocked && (
-            <LockedChatFooterContainer>
-              <CubeContainer>
-                <CTCube />
-              </CubeContainer>
-              <ResetButtonBox>
-                <FlatButton
-                  label="Start a new conversation"
-                  onClick={() => {
-                    setConversationId(createNewConversationId());
-                    resetChatState();
-                    setReplayMessage();
-                  }} // reset chat messages when clicking on the restart button
-                />
-              </ResetButtonBox>
-            </LockedChatFooterContainer>
-          )}
-          <DisclaimerTextMobile>{LEGAL_DISCLAIMER}</DisclaimerTextMobile>
-        </ChatMainArea>
-        <RightBlank />
-      </ChatContainer>
+                  <SubmitButtonBox>
+                    <img
+                      alt="submit button"
+                      src={submitPng}
+                      onClick={() =>
+                        !chatConfig?.readOnly && formik.submitForm()
+                      }
+                    />
+                  </SubmitButtonBox>
+                </InputTextWrapper>
+                <RestartButtonBox>
+                  <FlatButton
+                    label="Tip: Restart the conversation when changing the topic"
+                    isDisabled={chatMessages.length === 0}
+                    onClick={() => {
+                      setConversationId(createNewConversationId());
+                      resetChatState();
+                      setReplayMessage();
+                    }} // reset chat messages when clicking on the restart button
+                  />
+                </RestartButtonBox>
+              </ChatInputBox>
+            )}
+            {chatLocked && (
+              <LockedChatFooterContainer>
+                <ResetButtonBox>
+                  <FlatButton
+                    label="Start a new conversation"
+                    onClick={() => {
+                      setConversationId(createNewConversationId());
+                      resetChatState();
+                      setReplayMessage();
+                    }} // reset chat messages when clicking on the restart button
+                  />
+                </ResetButtonBox>
+                <CubeContainer>
+                  <CTCube />
+                </CubeContainer>
+              </LockedChatFooterContainer>
+            )}
+            <DisclaimerTextMobile>
+              <LegalDisclaimer />
+            </DisclaimerTextMobile>
+          </ChatMainArea>
+          <RightBlank />
+        </ChatContainer>
+      )}
     </FormDialog>
   );
 };

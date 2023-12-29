@@ -1,5 +1,6 @@
 import React from 'react';
 import useScrollSpy from './use-scroll-spy';
+import { AI_ASSISTANT_POST_LOGIN_HASH } from '../modules/ai-assistant/hooks/use-ai-assistant';
 
 const getSectionElements = () =>
   document.querySelectorAll('section[class^="section-h"]');
@@ -69,6 +70,10 @@ const useActiveSelection = () => {
         const sectionElements = getSectionElements();
         const pageLocationHash = window.location.hash;
         let elementByHash;
+        // and if it's not a ai assistant config hash
+        if (pageLocationHash === `#${AI_ASSISTANT_POST_LOGIN_HASH}`) {
+          return;
+        }
         // find the page section which matches the hash
         sectionElements.forEach((section) => {
           if (section.id === `section-${pageLocationHash.slice(1)}`) {

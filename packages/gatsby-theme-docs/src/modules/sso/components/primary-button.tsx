@@ -7,18 +7,18 @@ const PrimaryButton = styled.div`
   align-items: center;
   padding: ${designSystem.dimensions.spacings.xs}
     ${designSystem.dimensions.spacings.m};
-  gap: ${designSystem.dimensions.spacings.s};
+  gap: ${designSystem.dimensions.spacings.xs};
   color: white;
   cursor: pointer;
-  background: ${designSystem.colors.light.link};
+  background: #227770;
   box-shadow: ${designSystem.tokens.shadowForBetaFlag};
-  border-radius: 6px;
+  border-radius: 4px;
 
   p {
-    font-size: 13px;
+    font-size: ${designSystem.typography.fontSizes.small};
     font-style: normal;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 26px;
   }
 `;
 

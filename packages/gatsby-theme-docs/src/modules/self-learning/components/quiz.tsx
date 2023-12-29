@@ -13,7 +13,6 @@ import QuizForm from './quiz-form';
 import type { PassthroughData, SubmissionAttempt } from './quiz.types';
 import { canUseDOM, getQuizOutcome, isTestUserEmail } from './quiz.utils';
 import { AuthenticatedContextState } from '../../../components/authenticated-context';
-import { UserFilledIcon } from '@commercetools-uikit/icons';
 import useAuthentication from '../../sso/hooks/use-authentication';
 
 export const OUTCOME_CORRECT = 'correct';
@@ -231,7 +230,6 @@ const Quiz = (props: QuizProps) => {
       ) : (
         <LoginButton
           theme="primary"
-          icon={<UserFilledIcon color="surface" />}
           label="Log in to start the quiz"
           quizId={`quiz-${props.quizId}`}
         />
