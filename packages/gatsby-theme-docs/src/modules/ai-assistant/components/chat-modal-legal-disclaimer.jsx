@@ -6,9 +6,9 @@ const LegalDisclaimer = () => {
     <>
       Results are generated using generative AI and should be verified prior to
       use. By interacting with the feature, you agree to our “
-      <Link href="/../offering/ai-disclaimer" target="_blank">
+      <a href="/../offering/ai-disclaimer" target="_blank">
         AI Content Disclaimer
-      </Link>
+      </a>
       ”.
     </>
   );
