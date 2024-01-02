@@ -1,5 +1,16 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 8.4.0
+
+### Minor Changes
+
+- [#1896](https://github.com/commercetools/commercetools-docs-kit/pull/1896) [`d8aecf3`](https://github.com/commercetools/commercetools-docs-kit/commit/d8aecf34e0fd49d33977403e08b59f2419b2d9fa) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - add feature flag for topbar ai assistant launch button
+
+### Patch Changes
+
+- Updated dependencies [[`830dcca`](https://github.com/commercetools/commercetools-docs-kit/commit/830dccac2201858eb493afe24d132b4bc035984f), [`d8aecf3`](https://github.com/commercetools/commercetools-docs-kit/commit/d8aecf34e0fd49d33977403e08b59f2419b2d9fa), [`d8aecf3`](https://github.com/commercetools/commercetools-docs-kit/commit/d8aecf34e0fd49d33977403e08b59f2419b2d9fa), [`82b2eb4`](https://github.com/commercetools/commercetools-docs-kit/commit/82b2eb447c12671e7627cf6433b9abdc83384ba8)]:
+  - @commercetools-docs/gatsby-theme-docs@22.10.0
+
 ## 8.3.0
 
 ### Minor Changes
