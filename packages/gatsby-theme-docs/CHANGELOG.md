@@ -1,5 +1,19 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.10.0
+
+### Minor Changes
+
+- [#1896](https://github.com/commercetools/commercetools-docs-kit/pull/1896) [`d8aecf3`](https://github.com/commercetools/commercetools-docs-kit/commit/d8aecf34e0fd49d33977403e08b59f2419b2d9fa) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - add feature flag for topbar ai assistant launch button
+
+- [#1892](https://github.com/commercetools/commercetools-docs-kit/pull/1892) [`82b2eb4`](https://github.com/commercetools/commercetools-docs-kit/commit/82b2eb447c12671e7627cf6433b9abdc83384ba8) Thanks [@timonrey](https://github.com/timonrey)! - Move authentication steps into the AI assistent chat modal. The top bar now has a button to open the chat dialog. Login buttons have a new design as well.
+
+### Patch Changes
+
+- [#1893](https://github.com/commercetools/commercetools-docs-kit/pull/1893) [`830dcca`](https://github.com/commercetools/commercetools-docs-kit/commit/830dccac2201858eb493afe24d132b4bc035984f) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix issue with ai assistant references displaying null when root group is not available
+
+- [#1896](https://github.com/commercetools/commercetools-docs-kit/pull/1896) [`d8aecf3`](https://github.com/commercetools/commercetools-docs-kit/commit/d8aecf34e0fd49d33977403e08b59f2419b2d9fa) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - chore: fix SSR issue
+
 ## 22.9.0
 
 ### Minor Changes
