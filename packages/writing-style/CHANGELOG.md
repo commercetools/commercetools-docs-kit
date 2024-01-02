@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.3.8
+
+### Patch Changes
+
+- [#1890](https://github.com/commercetools/commercetools-docs-kit/pull/1890) [`c8f02a0`](https://github.com/commercetools/commercetools-docs-kit/commit/c8f02a00ad85be1d480352ca50b3c406675c2578) Thanks [@basebander](https://github.com/basebander)! - Remove link from PortfolioNaming
+
 ## 3.3.7
 
 ### Patch Changes
