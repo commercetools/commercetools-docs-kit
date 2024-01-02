@@ -23,6 +23,7 @@ const config = {
       auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
       learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
       aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
+      aiAssistantTopbarButton: true,
       selfLearningFeatures: [
         'status-indicator',
         'complete-profile-modal',
