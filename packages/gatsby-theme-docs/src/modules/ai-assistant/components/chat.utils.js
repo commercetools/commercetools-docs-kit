@@ -5,6 +5,7 @@ import {
 import DefaultAvatarIcon from '../icons/assistant-avatar.svg';
 import ChefAvatarIcon from '../icons/assistant-chef.svg';
 import { DEV_TOOLING_MODE } from './chat-modal';
+import { AI_ASSISTANT_LOCALSTORAGE_POST_LOGIN_KEY } from '../hooks/use-ai-assistant';
 
 export const isWaitingChunk = (chunk) => chunk === ' ';
 export const cleanupResponse = (chunk) => chunk.trim();
@@ -113,6 +114,7 @@ export const setLocalStorageChatMode = (mode) => {
 
 export const cleanupAIAssistantData = () => {
   localStorage.removeItem(LOCAL_AI_ASSISTANT_STATE_KEY);
+  localStorage.removeItem(AI_ASSISTANT_LOCALSTORAGE_POST_LOGIN_KEY);
 };
 
 /**

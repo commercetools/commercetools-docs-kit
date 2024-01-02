@@ -33,11 +33,11 @@ const ChatModalLoggedOut = (props) => {
       </ChatSideArea>
       <ChatMainArea>
         <ChatMainAreaWhenLoggedOut>
-          <LoginButton
+          {props.aiAssistantCfg && <LoginButton
             theme="primary"
             label="Log in to start the Assistant"
             aiAssistantCfg={props.aiAssistantCfg}
-          />
+          />}
         </ChatMainAreaWhenLoggedOut>
       </ChatMainArea>
       <RightBlank />
@@ -56,5 +56,5 @@ ChatModalLoggedOut.propTypes = {
     ),
     title: PropTypes.string,
     readOnly: PropTypes.bool,
-  }).isRequired,
+  }),
 };

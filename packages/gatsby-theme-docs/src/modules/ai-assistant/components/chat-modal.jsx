@@ -89,7 +89,7 @@ const ChatModal = () => {
   const [initLoading, setInitLoading] = useState(false);
 
   const [inputMessageLengthState, setInputMessageLengthState] = useState();
-  const { isAuthenticated, user } = useAuthentication();
+  const { isAuthenticated, user, isLoading: isAuthLoading } = useAuthentication();
   const { getAuthToken } = useAuthToken();
   const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
 
@@ -459,7 +459,7 @@ const ChatModal = () => {
   }, [currentChatMode]);
 
   useEffect(() => {
-    if (initLoading) {
+    if (initLoading || isAuthLoading) {
       setAssistantState(ASSISTANT_STATE_INITIALIZING);
     } else {
       if (!isAuthenticated) {
@@ -472,7 +472,7 @@ const ChatModal = () => {
         setAssistantState(ASSISTANT_STATE_OPEN);
       }
     }
-  }, [isAuthenticated, user, initLoading]);
+  }, [isAuthenticated, user, initLoading, isAuthLoading]);
 
   return (
     <FormDialog
