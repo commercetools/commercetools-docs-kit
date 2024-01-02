@@ -121,6 +121,7 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
         auth0ClientId: pluginOptions?.auth0ClientId,
         hideLogin: pluginOptions?.hideLogin || false,
         aiAssistantApiBaseUrl: pluginOptions.aiAssistantApiBaseUrl,
+        aiAssistantTopbarButton: pluginOptions.aiAssistantTopbarButton || false,
       }}
     >
       <PageReadyProvider>{element}</PageReadyProvider>

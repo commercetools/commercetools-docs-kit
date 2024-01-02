@@ -5,7 +5,7 @@ import UserProfile from '../modules/sso/components/avatar';
 import { AuthenticatedContextState } from '../components/authenticated-context';
 import AiAssistantButton from '../modules/ai-assistant/components/ai-assistant-launch-button';
 const LoginInfo = () => {
-  const { hideLogin } = useContext(ConfigContext);
+  const { hideLogin, aiAssistantTopbarButton } = useContext(ConfigContext);
   const {
     user: { profile },
   } = useContext(AuthenticatedContextState);
@@ -13,10 +13,12 @@ const LoginInfo = () => {
   // return hideLogin && !profile ? null : <UserProfile />;
   return (
     <Spacings.Inline scale="s" alignItems="center">
-      {/* <AiAssistantButton
-        label="Start Assistant"
-        mode="ama-gpt4-turbo-grounded"
-      /> */}
+      {aiAssistantTopbarButton && (
+        <AiAssistantButton
+          label="Start Assistant"
+          mode="ama-gpt4-turbo-grounded"
+        />
+      )}
       {hideLogin && !profile ? null : <UserProfile />}
     </Spacings.Inline>
   );
