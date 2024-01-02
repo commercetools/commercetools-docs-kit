@@ -32,6 +32,7 @@ const config = {
       additionalPrismLanguages: ['json', 'bash'],
       colorPreset: colorPresets.apiDeveloperDocs.key,
       aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
+      aiAssistantTopbarButton: true,
       addOns: [
         {
           resolve: '@commercetools-docs/gatsby-theme-api-docs',

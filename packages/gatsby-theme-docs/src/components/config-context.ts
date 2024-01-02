@@ -14,6 +14,7 @@ export type Config = {
   hideLogin: boolean;
   selfLearningFeatures: Array<EFeatureFlag>;
   aiAssistantApiBaseUrl: string;
+  aiAssistantTopbarButton: boolean;
 };
 
 const ConfigContext = createContext<Config>({
@@ -23,6 +24,7 @@ const ConfigContext = createContext<Config>({
   hideLogin: false,
   selfLearningFeatures: [],
   aiAssistantApiBaseUrl: '',
+  aiAssistantTopbarButton: false,
 });
 
 export const isFeatureEnabled = (
