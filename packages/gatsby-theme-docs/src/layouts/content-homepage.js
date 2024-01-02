@@ -13,6 +13,7 @@ import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPageWithHero from './internals/layout-page-with-hero';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
+import useAiAssistant from '../modules/ai-assistant/hooks/use-ai-assistant';
 
 const LayoutContentHomepage = (props) => {
   const { ref } = useInView();
@@ -21,6 +22,7 @@ const LayoutContentHomepage = (props) => {
   const excludeFromSearchIndex =
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
+  useAiAssistant();
 
   return (
     <LayoutApplication

@@ -15,7 +15,15 @@ import useAuthentication from '../../sso/hooks/use-authentication';
 import { useAuthToken } from '../../self-learning/hooks/use-auth-token';
 import { CHAT_ROLE_ASSISTANT, CHAT_ROLE_USER } from './chat.const';
 import ChatMessages from './chat-messages';
-import { isWaitingChunk, isNotValidatedUser } from './chat.utils';
+import {
+  isWaitingChunk,
+  isNotValidatedUser,
+  loadLocalChatState,
+  setLocalStorageChatLocked,
+  setLocalStorageChatMode,
+  setLocalStorageMessages,
+  setLocalStorageReferences,
+} from './chat.utils';
 import submitPng from '../icons/paper-plane.png';
 import CTCube from '../icons/black-white-ct-cube.svg';
 import {
@@ -71,29 +79,77 @@ const ChatModal = () => {
   const [conversationId, setConversationId] = useState(
     createNewConversationId()
   );
-  const [chatAvailableModes, setChatAvailableModes] = useState([]);
-  const [chatMessages, setChatMessages] = useState([]);
-  const [chatReferences, setChatReferences] = useState([]);
-  const [currentChatMode, setCurrentChatMode] = useState();
+  const [chatMessages, setAppChatMessages] = useState([]);
+  const [chatReferences, setAppChatReferences] = useState([]);
+  const [currentChatMode, setAppCurrentChatMode] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [replayMessage, setReplayMessage] = useState();
-  const [chatLocked, setChatLocked] = useState(false);
+  const [chatLocked, setAppChatLocked] = useState(false);
+  const [chatAvailableModes, setChatAvailableModes] = useState([]);
   const [initLoading, setInitLoading] = useState(false);
+
   const [inputMessageLengthState, setInputMessageLengthState] = useState();
-  const { isAuthenticated, user } = useAuthentication();
+  const { isAuthenticated, user, isLoading: isAuthLoading } = useAuthentication();
   const { getAuthToken } = useAuthToken();
   const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
+
+  /* App state and localstorage setter for messages */
+  const setChatMessages = (messages, keepLocalStorage = false) => {
+    setAppChatMessages(messages);
+    if (!keepLocalStorage) {
+      setLocalStorageMessages(messages);
+    }
+  }
   const { chatInit } = useChatInit();
   const [assistantState, setAssistantState] = useState(
     ASSISTANT_STATE_INITIALIZING
   );
 
-  const resetChatState = () => {
-    setChatMessages([]);
-    setChatReferences([]);
-    setChatLocked(false);
-    setMessageHistoryInit(false);
+    /* App state and localstorage setter for references */
+  const setChatReferences = (references, keepLocalStorage = false) => {
+    setAppChatReferences(references);
+    if (!keepLocalStorage) {
+      setLocalStorageReferences(references);
+    }
   };
+
+  /* App state and localstorage setter for locked */
+  const setChatLocked = (isLocked, keepLocalStorage = false) => {
+    setAppChatLocked(isLocked);
+    if (!keepLocalStorage) {
+      setLocalStorageChatLocked(isLocked);
+    }
+  };
+
+  /* App state and localstorage setter for chat mode */
+  const setCurrentChatMode = (currentMode, keepLocalStorage =  false) => {
+    setAppCurrentChatMode(currentMode);
+    if (!keepLocalStorage) {
+      setLocalStorageChatMode(currentMode);
+    }
+  }
+
+  const resetChatState = (keepLocalState) => {
+    setChatMessages([], keepLocalState);
+    setChatReferences([], keepLocalState);
+    setChatLocked(false, keepLocalState);
+    setMessageHistoryInit(false, keepLocalState);
+  };
+
+  const setLoadedChatState = ({messages, references, isLocked, mode}) => {
+    if (messages && messages.length > 0) {
+      setAppChatMessages(messages);
+    }
+    if (references && references.length > 0) {
+      setAppChatReferences(references);
+    }
+    if (isLocked) {
+      setAppChatLocked(isLocked);
+    }
+    if (mode) {
+      setAppCurrentChatMode(mode);
+    }
+  }
 
   const applyNames = (message) =>
     CHAT_ROLE_ASSISTANT.includes(message.role)
@@ -181,7 +237,6 @@ const ChatModal = () => {
             // console.dir(fullOutput);
             // TBD catch if it's not parseable and return a useful error?
             const parsedOutput = JSON.parse(fullOutput);
-            console.dir(parsedOutput);
             return parsedOutput;
           }
 
@@ -216,8 +271,12 @@ const ChatModal = () => {
   useEffect(() => {
     // entry point of the ai assistant chat
     const handleCustomEvent = (event) => {
-      openAiAssistantModal({ title: '', isDismissable: true });
+      const loadedState = loadLocalChatState(event.detail);
+      if (loadedState) {
+        setLoadedChatState(loadedState)
+      }
       setChatConfig(event.detail);
+      openAiAssistantModal({ title: '', isDismissable: true });
     };
 
     window.addEventListener('openChatModal', handleCustomEvent);
@@ -351,7 +410,6 @@ const ChatModal = () => {
       (mode) => mode.key === chatModeKey
     );
     if (chatModeConfig) {
-      setCurrentChatMode(chatModeConfig);
       // when changing chat mode, we want to re-submit to the new chat
       // the latest message submitted by the user. So we store that message (if exists)
       const lastUserMessage = chatMessages
@@ -361,6 +419,7 @@ const ChatModal = () => {
         setReplayMessage(lastUserMessage);
       }
       resetChatState();
+      setCurrentChatMode(chatModeConfig);
     }
   };
 
@@ -400,7 +459,7 @@ const ChatModal = () => {
   }, [currentChatMode]);
 
   useEffect(() => {
-    if (initLoading) {
+    if (initLoading || isAuthLoading) {
       setAssistantState(ASSISTANT_STATE_INITIALIZING);
     } else {
       if (!isAuthenticated) {
@@ -413,7 +472,7 @@ const ChatModal = () => {
         setAssistantState(ASSISTANT_STATE_OPEN);
       }
     }
-  }, [isAuthenticated, user, initLoading]);
+  }, [isAuthenticated, user, initLoading, isAuthLoading]);
 
   return (
     <FormDialog
@@ -424,7 +483,8 @@ const ChatModal = () => {
       onClose={() => {
         closeAiAssistantModal();
         setConversationId(createNewConversationId());
-        resetChatState();
+        resetChatState(true);
+        setMessageHistoryInit(false);
         setReplayMessage();
       }}
       displayPrimaryButton={!!chatConfig?.readOnly}

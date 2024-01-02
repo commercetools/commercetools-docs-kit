@@ -1,7 +1,11 @@
-import { ALLOWED_EMAIL_DOMAINS } from './chat.const';
+import {
+  ALLOWED_EMAIL_DOMAINS,
+  LOCAL_AI_ASSISTANT_STATE_KEY,
+} from './chat.const';
 import DefaultAvatarIcon from '../icons/assistant-avatar.svg';
 import ChefAvatarIcon from '../icons/assistant-chef.svg';
 import { DEV_TOOLING_MODE } from './chat-modal';
+import { AI_ASSISTANT_LOCALSTORAGE_POST_LOGIN_KEY } from '../hooks/use-ai-assistant';
 
 export const isWaitingChunk = (chunk) => chunk === ' ';
 export const cleanupResponse = (chunk) => chunk.trim();
@@ -45,6 +49,72 @@ export const getAssistantAvatarIcon = (mode) => {
     default:
       return DefaultAvatarIcon;
   }
+};
+
+/**
+ * If a chat state exists in the local storage, and it's valid (same selected mode), it will be returned,
+ * otherwise undefined will be returned. If a messageHistory is passed as parameter when chat launches, the
+ * localstorage is also reset
+ */
+export const loadLocalChatState = ({ chatSelectedMode, messageHistory }) => {
+  const chatState = localStorage.getItem(LOCAL_AI_ASSISTANT_STATE_KEY);
+  if (chatState) {
+    const chatStateObject = JSON.parse(chatState);
+    if (
+      chatStateObject?.mode?.key !== chatSelectedMode ||
+      (messageHistory && messageHistory.length > 0)
+    ) {
+      // chat mode has been changed
+      // reset localstorage and returns undefined
+      localStorage.removeItem(LOCAL_AI_ASSISTANT_STATE_KEY);
+      return;
+    } else {
+      return chatStateObject;
+    }
+  }
+  return;
+};
+
+const setLocalStorageProperty = (propertyName, propertyValue) => {
+  const chatState = localStorage.getItem(LOCAL_AI_ASSISTANT_STATE_KEY);
+  const chatStateObject = chatState
+    ? JSON.parse(chatState)
+    : {
+        messages: [],
+        references: [],
+        isLocked: false,
+        mode: {},
+      };
+
+  const newLocalState = {
+    ...chatStateObject,
+    [propertyName]: propertyValue,
+  };
+  localStorage.setItem(
+    LOCAL_AI_ASSISTANT_STATE_KEY,
+    JSON.stringify(newLocalState)
+  );
+};
+
+export const setLocalStorageMessages = (messages) => {
+  setLocalStorageProperty('messages', messages);
+};
+
+export const setLocalStorageReferences = (references) => {
+  setLocalStorageProperty('references', references);
+};
+
+export const setLocalStorageChatLocked = (isLocked) => {
+  setLocalStorageProperty('isLocked', isLocked);
+};
+
+export const setLocalStorageChatMode = (mode) => {
+  setLocalStorageProperty('mode', mode);
+};
+
+export const cleanupAIAssistantData = () => {
+  localStorage.removeItem(LOCAL_AI_ASSISTANT_STATE_KEY);
+  localStorage.removeItem(AI_ASSISTANT_LOCALSTORAGE_POST_LOGIN_KEY);
 };
 
 /**
