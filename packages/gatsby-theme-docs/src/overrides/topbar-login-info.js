@@ -13,10 +13,10 @@ const LoginInfo = () => {
   // return hideLogin && !profile ? null : <UserProfile />;
   return (
     <Spacings.Inline scale="s" alignItems="center">
-      <AiAssistantButton
+      {/* <AiAssistantButton
         label="Start Assistant"
         mode="ama-gpt4-turbo-grounded"
-      />
+      /> */}
       {hideLogin && !profile ? null : <UserProfile />}
     </Spacings.Inline>
   );
