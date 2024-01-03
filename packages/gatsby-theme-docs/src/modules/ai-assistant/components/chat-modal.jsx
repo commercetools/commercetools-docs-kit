@@ -539,6 +539,7 @@ const ChatModal = () => {
               <ChatInputBox>
                 <InputTextWrapper>
                   <MultilineTextField
+                    data-testid="chat-input-field"
                     key="chatInput"
                     name="chatInput"
                     title=""
