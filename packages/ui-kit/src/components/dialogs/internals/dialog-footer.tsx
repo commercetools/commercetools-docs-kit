@@ -42,6 +42,7 @@ const DialogFooter = (props: Props) => {
     <div
       css={css`
         margin-top: ${designTokens.spacingM};
+        margin-bottom: ${designTokens.spacingL};
       `}
     >
       <Spacings.Inline scale="m" alignItems="center" justifyContent="flex-end">
