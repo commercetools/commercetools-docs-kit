@@ -46,7 +46,7 @@ describe('Ai Assistant', () => {
         // Use should to assert that the div exists
         .should('be.visible');
 
-      cy.get('[data-testid="chat-mode-select"]', { timeout: LONG_TIMEOUT })
+      cy.get('[data-testid="chat-input-field"]', { timeout: LONG_TIMEOUT })
         .should('be.visible')
         .then(() => {
           cy.percySnapshot();

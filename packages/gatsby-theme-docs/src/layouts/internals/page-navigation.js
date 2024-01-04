@@ -160,11 +160,10 @@ const LevelGroup = (props) => {
         // Render the list without the link, but show an error message
         return (
           <ListItem key={subItemIndex}>
-            {process.env.NODE_ENV !== 'development' && (
-              <Indented level={props.level}>
-                <ContentNotifications.Error>{`Missing heading for level ${props.level}`}</ContentNotifications.Error>
-              </Indented>
-            )}
+            <Indented level={props.level}>
+              <ContentNotifications.Error>{`Missing heading for level ${props.level}`}</ContentNotifications.Error>
+            </Indented>
+
             {props.children &&
               React.cloneElement(props.children, {
                 items: item.items,
