@@ -33,6 +33,6 @@ export const EDITOR_TEST_USER_PASSWORD = 'Qwerty123!';
 
 // FEEDBACK
 export const WRONG_ANSWER_COLOR = 'rgb(230, 0, 80)';
-export const CORRECT_ANSWER_COLOR = 'rgb(0, 128, 113)';
+export const CORRECT_ANSWER_COLOR = 'rgb(29, 99, 93)';
 export const WRONG_ANSWER_TEXT = 'Your answer is incorrect.';
 export const CORRECT_ANSWER_TEXT = 'Your answer is correct.';
