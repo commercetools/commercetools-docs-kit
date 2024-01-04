@@ -5,7 +5,6 @@ import Spacings from '@commercetools-uikit/spacings';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { GraduationCapIcon } from '@commercetools-uikit/icons';
 import LoginButton from './login-button';
-import LogoutButton from './logout-button';
 import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
 import { gtagEvent } from '../utils/analytics.utils';
@@ -66,7 +65,6 @@ UserAvatar.displayName = 'UserAvatar';
 
 const LoggedInState = () => (
   <AvatarContainer data-testid="avatar-container">
-    <LogoutButton />
     <UserAvatar />
   </AvatarContainer>
 );

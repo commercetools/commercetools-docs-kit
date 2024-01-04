@@ -16,11 +16,15 @@ import {
   AuthenticatedContextState,
 } from '../../../components/authenticated-context';
 import { useUpdateUser } from '../hooks/use-update-user';
-import { VerifiedIcon } from '@commercetools-uikit/icons';
+import { VerifiedIcon, LogoutIcon } from '@commercetools-uikit/icons';
 import SendVerificationEmailButton from './verify-email-button';
 import Stamp from '@commercetools-uikit/stamp';
 import Label from '@commercetools-uikit/label';
 import Link from '@commercetools-uikit/link';
+import useAuthentication from '../../sso/hooks/use-authentication';
+import { onLogout } from '../../sso/utils/common.utils';
+import { gtagEvent } from '../../sso/utils/analytics.utils';
+import { getLogoutReturnUrl } from '../../sso/components/sso.utils';
 
 import ConfigContext, {
   EFeatureFlag,
@@ -53,7 +57,8 @@ const mailToData = {
   },
 };
 const ProfileModal = () => {
-  const { selfLearningFeatures } = useContext(ConfigContext);
+  const { logout } = useAuthentication();
+  const { selfLearningFeatures, learnApiBaseUrl } = useContext(ConfigContext);
   const { updateProfile, closeProfileModal } = useContext(
     AuthenticatedContextApi
   );
@@ -149,6 +154,20 @@ const ProfileModal = () => {
       size="l"
       title={profileModal?.title || 'Update your profile.'}
       labelPrimary="Save"
+      labelFlatButton="Logout"
+      displayFlatButton
+      iconLeftFlatButton={<LogoutIcon />}
+      onFlatButtonClick={() => {
+        gtagEvent('logout'); // custom, matching "login"
+        onLogout();
+        logout({
+          logoutParams: {
+            returnTo: getLogoutReturnUrl(learnApiBaseUrl, document.location),
+          },
+        });
+        closeProfileModal();
+      }}
+      displaySecondaryButton={false}
       zIndex={1003} // needs to be higher than the AI assistant modal
       isOpen={isModalOpen}
       onClose={
@@ -157,7 +176,6 @@ const ProfileModal = () => {
       isPrimaryButtonDisabled={
         !(formik.isValid && formik.dirty) || formik.isSubmitting || isLoading
       }
-      displaySecondaryButton={false}
       onPrimaryButtonClick={
         formik.handleSubmit as unknown as (e: React.SyntheticEvent) => void
       }
