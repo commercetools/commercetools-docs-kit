@@ -22,6 +22,7 @@ type Props = {
   isPrimaryButtonDisabled: boolean;
   dataAttributesPrimaryButton: { [key: string]: string };
   dataAttributesSecondaryButton: { [key: string]: string };
+  dataAttributesFlatButton: { [key: string]: string };
   children?: never;
   iconLeftFlatButton?: ReactElement;
   iconLeftSecondaryButton?: ReactElement;
@@ -34,11 +35,13 @@ const defaultProps: Pick<
   | 'isPrimaryButtonDisabled'
   | 'dataAttributesPrimaryButton'
   | 'dataAttributesSecondaryButton'
+  | 'dataAttributesFlatButton'
   | 'displayPrimaryButton'
 > = {
   isPrimaryButtonDisabled: false,
   dataAttributesPrimaryButton: {},
   dataAttributesSecondaryButton: {},
+  dataAttributesFlatButton: {},
   displayPrimaryButton: true,
 };
 
@@ -56,7 +59,7 @@ const DialogFooter = (props: Props) => {
             label={props.labelFlatButton}
             onClick={props.onClick}
             icon={props.iconLeftFlatButton}
-            {...filterDataAttributes(props.dataAttributesSecondaryButton)}
+            {...filterDataAttributes(props.dataAttributesFlatButton)}
           />
         )}
         {props.displaySecondaryButton && (

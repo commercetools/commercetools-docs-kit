@@ -11,13 +11,16 @@ type Props = {
   size?: 'm' | 'l' | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 'scale';
   zIndex?: number;
   children: ReactNode;
+  labelFlatButton: string;
   labelSecondary: string;
   labelPrimary: string;
   isPrimaryButtonDisabled?: boolean;
+  onClick: (event: SyntheticEvent) => void;
   onCancel: (event: SyntheticEvent) => void;
   onConfirm: (event: SyntheticEvent) => void;
   dataAttributesSecondaryButton?: { [key: string]: string };
   dataAttributesPrimaryButton?: { [key: string]: string };
+  dataAttributesFlatButton?: { [key: string]: string };
   getParentSelector?: () => HTMLElement;
   testid?: string;
 };
@@ -39,13 +42,16 @@ const ConfirmationDialog = (props: Props) => (
     <DialogHeader title={props.title} onClose={props.onClose} />
     <DialogContent>{props.children}</DialogContent>
     <DialogFooter
+      labelFlatButton={props.labelFlatButton}
       labelSecondary={props.labelSecondary}
       labelPrimary={props.labelPrimary}
       isPrimaryButtonDisabled={props.isPrimaryButtonDisabled}
+      onClick={props.onClick}
       onCancel={props.onCancel}
       onConfirm={props.onConfirm}
       dataAttributesSecondaryButton={props.dataAttributesSecondaryButton}
       dataAttributesPrimaryButton={props.dataAttributesPrimaryButton}
+      dataAttributesFlatButton={props.dataAttributesFlatButton}
     />
   </DialogContainer>
 );

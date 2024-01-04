@@ -89,7 +89,11 @@ const ChatModal = () => {
   const [initLoading, setInitLoading] = useState(false);
 
   const [inputMessageLengthState, setInputMessageLengthState] = useState();
-  const { isAuthenticated, user, isLoading: isAuthLoading } = useAuthentication();
+  const {
+    isAuthenticated,
+    user,
+    isLoading: isAuthLoading,
+  } = useAuthentication();
   const { getAuthToken } = useAuthToken();
   const { aiAssistantApiBaseUrl } = useContext(ConfigContext);
 
@@ -99,13 +103,13 @@ const ChatModal = () => {
     if (!keepLocalStorage) {
       setLocalStorageMessages(messages);
     }
-  }
+  };
   const { chatInit } = useChatInit();
   const [assistantState, setAssistantState] = useState(
     ASSISTANT_STATE_INITIALIZING
   );
 
-    /* App state and localstorage setter for references */
+  /* App state and localstorage setter for references */
   const setChatReferences = (references, keepLocalStorage = false) => {
     setAppChatReferences(references);
     if (!keepLocalStorage) {
@@ -122,12 +126,12 @@ const ChatModal = () => {
   };
 
   /* App state and localstorage setter for chat mode */
-  const setCurrentChatMode = (currentMode, keepLocalStorage =  false) => {
+  const setCurrentChatMode = (currentMode, keepLocalStorage = false) => {
     setAppCurrentChatMode(currentMode);
     if (!keepLocalStorage) {
       setLocalStorageChatMode(currentMode);
     }
-  }
+  };
 
   const resetChatState = (keepLocalState) => {
     setChatMessages([], keepLocalState);
@@ -136,7 +140,7 @@ const ChatModal = () => {
     setMessageHistoryInit(false, keepLocalState);
   };
 
-  const setLoadedChatState = ({messages, references, isLocked, mode}) => {
+  const setLoadedChatState = ({ messages, references, isLocked, mode }) => {
     if (messages && messages.length > 0) {
       setAppChatMessages(messages);
     }
@@ -149,7 +153,7 @@ const ChatModal = () => {
     if (mode) {
       setAppCurrentChatMode(mode);
     }
-  }
+  };
 
   const applyNames = (message) =>
     CHAT_ROLE_ASSISTANT.includes(message.role)
@@ -273,7 +277,7 @@ const ChatModal = () => {
     const handleCustomEvent = (event) => {
       const loadedState = loadLocalChatState(event.detail);
       if (loadedState) {
-        setLoadedChatState(loadedState)
+        setLoadedChatState(loadedState);
       }
       setChatConfig(event.detail);
       openAiAssistantModal({ title: '', isDismissable: true });
@@ -496,9 +500,7 @@ const ChatModal = () => {
       background={designSystem.colors.light.surfaceSecondaryTopMenu}
     >
       {/* loading state */}
-      {assistantState === ASSISTANT_STATE_INITIALIZING && (
-        <ChatModalLoading />
-      )}
+      {assistantState === ASSISTANT_STATE_INITIALIZING && <ChatModalLoading />}
       {/* logged out state */}
       {assistantState === ASSISTANT_STATE_LOGGED_OUT && (
         <ChatModalLoggedOut aiAssistantCfg={chatConfig} />
