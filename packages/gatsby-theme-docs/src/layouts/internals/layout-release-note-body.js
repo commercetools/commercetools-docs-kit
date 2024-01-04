@@ -34,9 +34,11 @@ const ReleaseNoteBody = (props) => (
         })}
       >
         <SpacingsInline>
-          <Stamp isCondensed tone={mapTypeToTone(props)}>
-            {mapTypeToLabel(props)}
-          </Stamp>
+          <Stamp
+            isCondensed
+            tone={mapTypeToTone(props)}
+            label={mapTypeToLabel(props)}
+          />
         </SpacingsInline>
       </div>
       {props.topics.length > 0 && (
