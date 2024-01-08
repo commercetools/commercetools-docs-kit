@@ -13,6 +13,7 @@ const ReferenceContainer = styled.div`
   border-radius: 4px;
   padding: ${designSystem.dimensions.spacings.m};
   font-size: ${designSystem.typography.fontSizes.small};
+  overflow: hidden;
 
   h4 {
     font-weight: ${designSystem.typography.fontWeights['light-bold']};
