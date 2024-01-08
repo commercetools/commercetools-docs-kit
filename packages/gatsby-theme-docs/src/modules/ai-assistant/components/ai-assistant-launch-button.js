@@ -34,6 +34,7 @@ const AiAssistantLaunchButton = (props) => {
         size="big"
         label="Open AI assistant"
         onClick={handleClick}
+        data-testid="ai-assistant-launch-button"
       />
     </AssistantLaunchContainer>
   );
