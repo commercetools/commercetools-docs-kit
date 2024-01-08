@@ -3,21 +3,16 @@ import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Spacings from '@commercetools-uikit/spacings';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { GraduationCapIcon } from '@commercetools-uikit/icons';
 import LoginButton from './login-button';
-import PrimaryButton from './primary-button';
 import { getAvatarInitials } from './sso.utils';
-import { gtagEvent } from '../utils/analytics.utils';
 import useAuthentication from '../hooks/use-authentication';
+import { useSiteData } from '../../../hooks/use-site-data';
 import {
   AuthenticatedContextState,
   AuthenticatedContextApi,
 } from '../../../components/authenticated-context';
 
 const AvatarContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding-right: ${designSystem.dimensions.spacings.s};
 `;
 
@@ -72,32 +67,16 @@ const LoggedInState = () => (
 LoggedInState.displayName = 'LoggedInState';
 
 const LoggedOutState = () => {
-  const { loginWithRedirect, isLoading } = useAuthentication();
+  const { isLoading } = useAuthentication();
+  const siteData = useSiteData();
+  const isSelfLearning = siteData.siteMetadata?.isSelfLearning;
 
-  return isLoading ? null : (
-    <AvatarContainer>
-      <LoginButton
-        theme="secondary"
-        label="Log in"
-        data-testid="avatar-login-button"
-      />
-      <PrimaryButton
-        onClick={() => {
-          gtagEvent('sign_up');
-          loginWithRedirect({
-            appState: {
-              returnTo: window.location.pathname,
-            },
-            authorizationParams: {
-              screen_hint: 'signup',
-            },
-          });
-        }}
-      >
-        <GraduationCapIcon color="surface" />
-        <p>Sign up</p>
-      </PrimaryButton>
-    </AvatarContainer>
+  return isLoading || !isSelfLearning ? null : (
+    <LoginButton
+      theme="secondary"
+      label="Log in"
+      data-testid="avatar-login-button"
+    />
   );
 };
 

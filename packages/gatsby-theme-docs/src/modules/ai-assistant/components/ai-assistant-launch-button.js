@@ -1,5 +1,15 @@
 import PropTypes from 'prop-types';
-import SecondaryButton from '../../sso/components/secondary-button';
+import styled from '@emotion/styled';
+import IconButton from '@commercetools-uikit/icon-button';
+import AssistantIcon from '../icons/assistant-icon.svg';
+
+const AssistantLaunchContainer = styled.div`
+  button {
+    :focus {
+      outline: none;
+    }
+  }
+`;
 
 const AiAssistantLaunchButton = (props) => {
   const handleClick = () => {
@@ -18,17 +28,18 @@ const AiAssistantLaunchButton = (props) => {
   };
 
   return (
-    <SecondaryButton
-      onClick={handleClick}
-      data-testid="ai-assistant-launch-button"
-    >
-      {props.label}
-    </SecondaryButton>
+    <AssistantLaunchContainer>
+      <IconButton
+        icon={<AssistantIcon />}
+        size="big"
+        label="Open AI assistant"
+        onClick={handleClick}
+      />
+    </AssistantLaunchContainer>
   );
 };
 
 AiAssistantLaunchButton.propTypes = {
-  label: PropTypes.string.isRequired,
   messageHistory: PropTypes.arrayOf(
     PropTypes.shape({
       role: PropTypes.string.isRequired,
