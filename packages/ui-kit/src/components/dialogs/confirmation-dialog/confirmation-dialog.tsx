@@ -15,7 +15,7 @@ type Props = {
   labelSecondary: string;
   labelPrimary: string;
   isPrimaryButtonDisabled?: boolean;
-  onClick: (event: SyntheticEvent) => void;
+  onClick?: (event: SyntheticEvent) => void;
   onCancel: (event: SyntheticEvent) => void;
   onConfirm: (event: SyntheticEvent) => void;
   dataAttributesSecondaryButton?: { [key: string]: string };
@@ -24,9 +24,13 @@ type Props = {
   getParentSelector?: () => HTMLElement;
   testid?: string;
 };
-const defaultProps: Pick<Props, 'labelSecondary' | 'labelPrimary'> = {
+const defaultProps: Pick<
+  Props,
+  'labelSecondary' | 'labelPrimary' | 'labelFlatButton'
+> = {
   labelSecondary: 'Cancel',
   labelPrimary: 'Confirm',
+  labelFlatButton: '',
 };
 
 const ConfirmationDialog = (props: Props) => (
