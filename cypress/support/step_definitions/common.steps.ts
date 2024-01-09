@@ -49,6 +49,7 @@ export const clickStep = (clickArea: string) => {
       cy.get(`div[data-testid="${ETestId.avatarIcon}"]`).click();
       break;
     case 'logout button':
+      cy.get(`div[data-testid="${ETestId.avatarContainer}"]`).click();
       cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
       break;
     case 'quiz login button':

@@ -56,6 +56,7 @@ const DialogFooter = (props: Props) => {
       <Spacings.Inline scale="l" alignItems="center" justifyContent="flex-end">
         {props.displayFlatButton && (
           <FlatButton
+            data-testid="logout-button"
             label={props.labelFlatButton}
             onClick={props.onClick}
             icon={props.iconLeftFlatButton}

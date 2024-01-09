@@ -148,6 +148,17 @@ const ProfileModal = () => {
     return null;
   };
 
+  const executeLogout = () => {
+    gtagEvent('logout'); // custom, matching "login"
+    onLogout();
+    logout({
+      logoutParams: {
+        returnTo: getLogoutReturnUrl(learnApiBaseUrl, document.location),
+      },
+    });
+    closeProfileModal();
+  };
+
   return (
     <FormDialog
       testid="profile-modal"
@@ -157,16 +168,7 @@ const ProfileModal = () => {
       labelFlatButton="Logout"
       displayFlatButton
       iconLeftFlatButton={<LogoutIcon />}
-      onFlatButtonClick={() => {
-        gtagEvent('logout'); // custom, matching "login"
-        onLogout();
-        logout({
-          logoutParams: {
-            returnTo: getLogoutReturnUrl(learnApiBaseUrl, document.location),
-          },
-        });
-        closeProfileModal();
-      }}
+      onFlatButtonClick={executeLogout}
       displaySecondaryButton={false}
       zIndex={1003} // needs to be higher than the AI assistant modal
       isOpen={isModalOpen}
