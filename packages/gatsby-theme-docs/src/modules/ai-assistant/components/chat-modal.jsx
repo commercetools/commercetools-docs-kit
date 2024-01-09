@@ -170,6 +170,12 @@ const ChatModal = () => {
   };
 
   useEffect(() => {
+    if (divRef.current) {
+      divRef.current.scrollTop = divRef.current.scrollHeight;
+    }
+  }, [chatMessages, assistantState]);
+
+  useEffect(() => {
     const fetchChatInit = async () => {
       setInitLoading(true);
       try {
@@ -448,12 +454,6 @@ const ChatModal = () => {
   };
 
   useEffect(() => {
-    if (divRef.current) {
-      divRef.current.scrollTop = divRef.current.scrollHeight;
-    }
-  }, [chatMessages]);
-
-  useEffect(() => {
     if (replayMessage) {
       // if the chat mode changes and there is at least one message sent from
       // the user, we switch mode and re-submit this latest message
@@ -490,6 +490,7 @@ const ChatModal = () => {
         resetChatState(true);
         setMessageHistoryInit(false);
         setReplayMessage();
+        formik.resetForm();
       }}
       displayPrimaryButton={!!chatConfig?.readOnly}
       isPrimaryButtonDisabled={
