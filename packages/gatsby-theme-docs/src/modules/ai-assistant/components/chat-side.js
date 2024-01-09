@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { isCtUser } from './chat.utils';
+import { isCtDebugUser } from './chat.utils';
 import robotPng from '../icons/robot.png';
 import { DEV_TOOLING_MODE } from './chat-modal';
 import {
@@ -19,7 +19,7 @@ import LegalDisclaimer from './chat-modal-legal-disclaimer';
 const ChatSide = (props) => {
   return (
     <ChatSideArea>
-      {isCtUser(props.user) && (
+      {isCtDebugUser(props.user) && (
         <SideDebugContainer>
           <CheckboxInput
             isChecked={props.debugMode === true}
