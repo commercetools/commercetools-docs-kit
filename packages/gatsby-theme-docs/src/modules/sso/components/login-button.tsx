@@ -1,9 +1,13 @@
 import React from 'react';
+import styled from '@emotion/styled';
+import { MediaQuery } from '@commercetools-docs/ui-kit';
+import IconButton from '@commercetools-uikit/icon-button';
 import PrimaryButton from './primary-button';
 import SecondaryButton from './secondary-button';
 import { gtagEvent } from '../utils/analytics.utils';
 import useAuthentication from '../hooks/use-authentication';
 import CtCubeWhiteIcon from '../icons/CtCubeWhite';
+import LoginIcon from '../icons/LoginIcon';
 import {
   AI_ASSISTANT_LOCALSTORAGE_POST_LOGIN_KEY,
   AI_ASSISTANT_POST_LOGIN_HASH,
@@ -12,9 +16,19 @@ import {
 type LoginButtonProps = {
   quizId?: string;
   aiAssistantCfg?: object;
+  showSmallScreenAlternative?: boolean;
   label: string;
   theme: 'primary' | 'secondary';
 };
+
+const LoginButtonContainer = styled.div`
+  button {
+    border: none;
+    :focus {
+      outline: none;
+    }
+  }
+`;
 
 const LoginButton = (props: LoginButtonProps) => {
   const { loginWithRedirect } = useAuthentication();
@@ -43,24 +57,46 @@ const LoginButton = (props: LoginButtonProps) => {
     return window.location.pathname;
   };
 
-  if (props.theme === 'primary') {
+  const executeLogin = () => {
+    gtagEvent('login');
+    loginWithRedirect({
+      appState: {
+        returnTo: getTargetUrl(),
+      },
+    });
+  };
+
+  const PrimaryLoginButton = () => {
     return (
-      <PrimaryButton
-        data-testid="quiz-login-button"
-        onClick={() => {
-          gtagEvent('login');
-          loginWithRedirect({
-            appState: {
-              returnTo: getTargetUrl(),
-            },
-          });
-        }}
-      >
+      <PrimaryButton data-testid="quiz-login-button" onClick={executeLogin}>
         <CtCubeWhiteIcon />
         <p>
           <b>ID</b> | {props.label}
         </p>
       </PrimaryButton>
+    );
+  };
+
+  if (props.theme === 'primary') {
+    return props.showSmallScreenAlternative ? (
+      <>
+        <MediaQuery forViewport="largeTablet" hideIfMatch>
+          <LoginButtonContainer>
+            <IconButton
+              icon={<LoginIcon />}
+              size="big"
+              label="Open search dialog"
+              onClick={executeLogin}
+              data-testid="quiz-login-button"
+            />
+          </LoginButtonContainer>
+        </MediaQuery>
+        <MediaQuery forViewport="largeTablet">
+          <PrimaryLoginButton />
+        </MediaQuery>
+      </>
+    ) : (
+      <PrimaryLoginButton />
     );
   }
 

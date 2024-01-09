@@ -5,6 +5,7 @@ import AssistantIcon from '../icons/assistant-icon.svg';
 
 const AssistantLaunchContainer = styled.div`
   button {
+    border: none;
     :focus {
       outline: none;
     }

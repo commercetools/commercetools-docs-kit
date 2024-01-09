@@ -73,9 +73,10 @@ const LoggedOutState = () => {
 
   return isLoading || !isSelfLearning ? null : (
     <LoginButton
-      theme="secondary"
+      theme="primary"
       label="Log in"
       data-testid="avatar-login-button"
+      showSmallScreenAlternative
     />
   );
 };
