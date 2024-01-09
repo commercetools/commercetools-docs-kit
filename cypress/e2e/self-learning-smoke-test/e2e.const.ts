@@ -24,7 +24,7 @@ export enum ETestId {
 }
 
 // TEST USER (standard)
-export const TEST_USER_USERNAME = 'test.user.e2e+test@commercetools.com';
+export const TEST_USER_USERNAME = 'test.user+e2e@commercetools.com';
 export const TEST_USER_PASSWORD = 'Qwerty123!';
 
 // TEST USER (editor)

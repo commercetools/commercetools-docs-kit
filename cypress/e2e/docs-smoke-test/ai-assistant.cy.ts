@@ -36,7 +36,9 @@ describe('Ai Assistant', () => {
         .click();
     });
     cy.origin('https://auth.id.commercetools.com', () => {
-      cy.get('input[id="username"]').type('test.user.chat@commercetools.com');
+      cy.get('input[id="username"]').type(
+        'test.user.chat+test@commercetools.com'
+      );
       cy.get('input[id="password"]').type('Qwerty123!');
       cy.get('button:visible[type="submit"]').click();
     });
