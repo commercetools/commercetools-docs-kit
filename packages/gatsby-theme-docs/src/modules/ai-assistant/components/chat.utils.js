@@ -29,14 +29,14 @@ export const isNotValidatedUser = (user) => {
 };
 
 /**
- * Check if the user belongs strictly to commercetools.com (regardless of the ALLOWED_EMAIL_DOMAINS config ).
- * This is used to enable features visible only to commercetools.com users
+ * Check if the user belongs to the +test@commercetools.com email aliases. These users will have access
+ * to special debug features such as ai assistant mode switcher and debug output
  */
-export const isCtUser = (user) => {
+export const isCtDebugUser = (user) => {
   return (
     user &&
     user.email_verified &&
-    isAllowedEmailDomain(user.email, ['commercetools.com'])
+    user.email.endsWith('+test@commercetools.com')
   );
 };
 
