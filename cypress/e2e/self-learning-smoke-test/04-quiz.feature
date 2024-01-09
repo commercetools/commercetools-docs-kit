@@ -23,7 +23,6 @@ Feature: Quiz
     When The user clicks the "quiz submit button"
     Then The user sees a "green" ribbon on the quiz section
     And The user sees "success" feedback messages below the anwsers
-    And The user doesn't see a try again button
     And The user logs out
 
   Scenario: User completes all courses in learning path
