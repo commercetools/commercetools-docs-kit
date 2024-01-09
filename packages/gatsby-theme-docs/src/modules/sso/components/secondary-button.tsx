@@ -8,6 +8,7 @@ const SecondaryButton = styled.button`
   cursor: pointer;
   border: none;
   background: transparent;
+  white-space: nowrap;
 
   :hover {
     color: ${designSystem.colors.light.linkHover};
