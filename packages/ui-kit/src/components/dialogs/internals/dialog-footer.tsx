@@ -16,7 +16,7 @@ type Props = {
   labelFlatButton: string;
   labelSecondary: string;
   labelPrimary: string;
-  onClick?: (event: SyntheticEvent) => void;
+  onFlatButtonClick?: (event: SyntheticEvent) => void;
   onCancel?: (event: SyntheticEvent) => void;
   onConfirm: (event: SyntheticEvent) => void;
   isPrimaryButtonDisabled: boolean;
@@ -58,7 +58,7 @@ const DialogFooter = (props: Props) => {
           <FlatButton
             data-testid="logout-button"
             label={props.labelFlatButton}
-            onClick={props.onClick}
+            onClick={props.onFlatButtonClick}
             icon={props.iconLeftFlatButton}
             {...filterDataAttributes(props.dataAttributesFlatButton)}
           />

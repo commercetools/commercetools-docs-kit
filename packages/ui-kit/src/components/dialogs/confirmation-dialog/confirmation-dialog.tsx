@@ -15,7 +15,7 @@ type Props = {
   labelSecondary: string;
   labelPrimary: string;
   isPrimaryButtonDisabled?: boolean;
-  onClick?: (event: SyntheticEvent) => void;
+  onFlatButtonClick?: (event: SyntheticEvent) => void;
   onCancel: (event: SyntheticEvent) => void;
   onConfirm: (event: SyntheticEvent) => void;
   dataAttributesSecondaryButton?: { [key: string]: string };
@@ -50,7 +50,7 @@ const ConfirmationDialog = (props: Props) => (
       labelSecondary={props.labelSecondary}
       labelPrimary={props.labelPrimary}
       isPrimaryButtonDisabled={props.isPrimaryButtonDisabled}
-      onClick={props.onClick}
+      onFlatButtonClick={props.onFlatButtonClick}
       onCancel={props.onCancel}
       onConfirm={props.onConfirm}
       dataAttributesSecondaryButton={props.dataAttributesSecondaryButton}

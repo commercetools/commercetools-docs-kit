@@ -59,7 +59,7 @@ const FormDialog = (props: Props) => (
       labelSecondary={props.labelSecondary || ''}
       labelPrimary={props.labelPrimary}
       isPrimaryButtonDisabled={props.isPrimaryButtonDisabled}
-      onClick={props.onFlatButtonClick}
+      onFlatButtonClick={props.onFlatButtonClick}
       onCancel={props.onSecondaryButtonClick}
       onConfirm={props.onPrimaryButtonClick}
       dataAttributesSecondaryButton={props.dataAttributesSecondaryButton}
