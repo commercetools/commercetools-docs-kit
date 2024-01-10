@@ -19,7 +19,7 @@ type LoginButtonProps = {
   showSmallScreenAlternative?: boolean;
   label: string;
   theme: 'primary' | 'secondary';
-  'data-testid': string;
+  'data-testid'?: string;
 };
 
 const LoginButtonContainer = styled.div`
