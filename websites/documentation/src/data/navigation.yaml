@@ -33,6 +33,8 @@
       path: /writing/sso
     - title: Lord Icons
       path: /writing/lord-icons
+    - title: AI Assistant
+      path: /writing/ai-assistant
 - chapter-title: Creating API Documentation
   pages:
     - title: Add RAML Specs # rmf-codegen/RAMLDOC, filesystem convention, links to specs and resourcess
