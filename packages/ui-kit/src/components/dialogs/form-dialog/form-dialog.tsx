@@ -12,10 +12,12 @@ type Props = {
   size?: 'm' | 'l' | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 'scale';
   zIndex?: number;
   children: ReactNode;
+  labelFlatButton?: string;
   labelSecondary?: string;
   labelPrimary: string;
   isPrimaryButtonDisabled?: boolean;
   displayPrimaryButton?: boolean;
+  onFlatButtonClick?: (event: SyntheticEvent) => void;
   onSecondaryButtonClick?: (event: SyntheticEvent) => void;
   onPrimaryButtonClick: (event: SyntheticEvent) => void;
   dataAttributesSecondaryButton?: { [key: string]: string };
@@ -23,6 +25,8 @@ type Props = {
   getParentSelector?: () => HTMLElement;
   iconLeftSecondaryButton?: ReactElement;
   displaySecondaryButton?: boolean;
+  displayFlatButton?: boolean;
+  iconLeftFlatButton?: ReactElement;
   testid?: string;
   background?: string;
 };
@@ -51,14 +55,18 @@ const FormDialog = (props: Props) => (
       {props.children}
     </DialogContent>
     <DialogFooter
+      labelFlatButton={props.labelFlatButton || ''}
       labelSecondary={props.labelSecondary || ''}
       labelPrimary={props.labelPrimary}
       isPrimaryButtonDisabled={props.isPrimaryButtonDisabled}
+      onFlatButtonClick={props.onFlatButtonClick}
       onCancel={props.onSecondaryButtonClick}
       onConfirm={props.onPrimaryButtonClick}
       dataAttributesSecondaryButton={props.dataAttributesSecondaryButton}
       dataAttributesPrimaryButton={props.dataAttributesPrimaryButton}
       iconLeftSecondaryButton={props.iconLeftSecondaryButton}
+      displayFlatButton={props.displayFlatButton}
+      iconLeftFlatButton={props.iconLeftFlatButton}
       displaySecondaryButton={props.displaySecondaryButton}
       displayPrimaryButton={props.displayPrimaryButton}
     />

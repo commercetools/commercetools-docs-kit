@@ -3571,6 +3571,7 @@ __metadata:
     "@babel/runtime-corejs3": ^7.20.13
     "@commercetools-uikit/card": 16.12.1
     "@commercetools-uikit/design-system": 16.12.1
+    "@commercetools-uikit/flat-button": 16.12.1
     "@commercetools-uikit/icons": 16.12.1
     "@commercetools-uikit/loading-spinner": 16.12.1
     "@commercetools-uikit/primary-button": 16.12.1

@@ -1,5 +1,17 @@
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+import IconButton from '@commercetools-uikit/icon-button';
+import AssistantIcon from '../icons/assistant-icon.svg';
 import SecondaryButton from '../../sso/components/secondary-button';
+
+const AssistantLaunchContainer = styled.div`
+  button {
+    border: none;
+    :focus {
+      outline: none;
+    }
+  }
+`;
 
 const AiAssistantLaunchButton = (props) => {
   const handleClick = () => {
@@ -17,18 +29,27 @@ const AiAssistantLaunchButton = (props) => {
     window.dispatchEvent(customEvent);
   };
 
-  return (
+  return props.label ? (
     <SecondaryButton
       onClick={handleClick}
       data-testid="ai-assistant-launch-button"
     >
       {props.label}
     </SecondaryButton>
+  ) : (
+    <AssistantLaunchContainer>
+      <IconButton
+        icon={<AssistantIcon />}
+        size="big"
+        label="Open AI assistant"
+        onClick={handleClick}
+        data-testid="ai-assistant-launch-button"
+      />
+    </AssistantLaunchContainer>
   );
 };
 
 AiAssistantLaunchButton.propTypes = {
-  label: PropTypes.string.isRequired,
   messageHistory: PropTypes.arrayOf(
     PropTypes.shape({
       role: PropTypes.string.isRequired,
@@ -37,6 +58,7 @@ AiAssistantLaunchButton.propTypes = {
   ),
   readOnly: PropTypes.bool,
   mode: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default AiAssistantLaunchButton;

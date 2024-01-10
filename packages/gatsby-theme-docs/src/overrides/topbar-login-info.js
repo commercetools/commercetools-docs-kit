@@ -10,16 +10,12 @@ const LoginInfo = () => {
     user: { profile },
   } = useContext(AuthenticatedContextState);
 
-  // return hideLogin && !profile ? null : <UserProfile />;
   return (
     <Spacings.Inline scale="s" alignItems="center">
-      {aiAssistantTopbarButton && (
-        <AiAssistantButton
-          label="Start Assistant"
-          mode="ama-gpt4-turbo-grounded"
-        />
-      )}
       {hideLogin && !profile ? null : <UserProfile />}
+      {aiAssistantTopbarButton && (
+        <AiAssistantButton mode="ama-gpt4-turbo-grounded" />
+      )}
     </Spacings.Inline>
   );
 };

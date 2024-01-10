@@ -2,6 +2,7 @@ import React from 'react';
 import type { ReactElement, SyntheticEvent } from 'react';
 import { css } from '@emotion/react';
 import PrimaryButton from '@commercetools-uikit/primary-button';
+import FlatButton from '@commercetools-uikit/flat-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Spacings from '@commercetools-uikit/spacings';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -12,15 +13,20 @@ function filterDataAttributes<T extends object>(obj: T) {
 }
 
 type Props = {
+  labelFlatButton: string;
   labelSecondary: string;
   labelPrimary: string;
+  onFlatButtonClick?: (event: SyntheticEvent) => void;
   onCancel?: (event: SyntheticEvent) => void;
   onConfirm: (event: SyntheticEvent) => void;
   isPrimaryButtonDisabled: boolean;
   dataAttributesPrimaryButton: { [key: string]: string };
   dataAttributesSecondaryButton: { [key: string]: string };
+  dataAttributesFlatButton: { [key: string]: string };
   children?: never;
+  iconLeftFlatButton?: ReactElement;
   iconLeftSecondaryButton?: ReactElement;
+  displayFlatButton?: boolean;
   displaySecondaryButton?: boolean;
   displayPrimaryButton?: boolean;
 };
@@ -29,11 +35,13 @@ const defaultProps: Pick<
   | 'isPrimaryButtonDisabled'
   | 'dataAttributesPrimaryButton'
   | 'dataAttributesSecondaryButton'
+  | 'dataAttributesFlatButton'
   | 'displayPrimaryButton'
 > = {
   isPrimaryButtonDisabled: false,
   dataAttributesPrimaryButton: {},
   dataAttributesSecondaryButton: {},
+  dataAttributesFlatButton: {},
   displayPrimaryButton: true,
 };
 
@@ -45,7 +53,16 @@ const DialogFooter = (props: Props) => {
         margin-bottom: ${designTokens.spacingL};
       `}
     >
-      <Spacings.Inline scale="m" alignItems="center" justifyContent="flex-end">
+      <Spacings.Inline scale="l" alignItems="center" justifyContent="flex-end">
+        {props.displayFlatButton && (
+          <FlatButton
+            data-testid="logout-button"
+            label={props.labelFlatButton}
+            onClick={props.onFlatButtonClick}
+            icon={props.iconLeftFlatButton}
+            {...filterDataAttributes(props.dataAttributesFlatButton)}
+          />
+        )}
         {props.displaySecondaryButton && (
           <SecondaryButton
             label={props.labelSecondary}

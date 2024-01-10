@@ -13,7 +13,7 @@ describe('Ai Assistant', () => {
       timeout: LONG_TIMEOUT,
     }).click();
     cy.get('#portals-container', { timeout: LONG_TIMEOUT }).within(() => {
-      cy.get('[data-testid="quiz-login-button"]', { timeout: LONG_TIMEOUT })
+      cy.get('[data-testid="ai-chat-login-button"]', { timeout: LONG_TIMEOUT })
         // Use should to assert the text content
         .should('have.text', 'ID | Log in to start the Assistant');
     });
@@ -30,7 +30,7 @@ describe('Ai Assistant', () => {
       timeout: LONG_TIMEOUT,
     }).click();
     cy.get('#portals-container', { timeout: LONG_TIMEOUT }).within(() => {
-      cy.get('[data-testid="quiz-login-button"]', { timeout: LONG_TIMEOUT })
+      cy.get('[data-testid="ai-chat-login-button"]', { timeout: LONG_TIMEOUT })
         // Use should to assert the text content
         .should('have.text', 'ID | Log in to start the Assistant')
         .click();

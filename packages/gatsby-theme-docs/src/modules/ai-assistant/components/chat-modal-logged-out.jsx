@@ -37,6 +37,7 @@ const ChatModalLoggedOut = (props) => {
             theme="primary"
             label="Log in to start the Assistant"
             aiAssistantCfg={props.aiAssistantCfg}
+            data-testid='ai-chat-login-button'
           />}
         </ChatMainAreaWhenLoggedOut>
       </ChatMainArea>

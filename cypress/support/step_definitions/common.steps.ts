@@ -49,6 +49,7 @@ export const clickStep = (clickArea: string) => {
       cy.get(`div[data-testid="${ETestId.avatarIcon}"]`).click();
       break;
     case 'logout button':
+      cy.get(`div[data-testid="${ETestId.avatarContainer}"]`).click();
       cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
       break;
     case 'quiz login button':
@@ -94,9 +95,9 @@ const loginTopButtonStep = (user: string) => {
   cy.clearAllLocalStorage();
   cy.clearAllSessionStorage();
   cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
-  cy.get(`button[data-testid="${ETestId.avatarLoginButton}"]`).click();
+  cy.get(`[data-testid="${ETestId.avatarLoginButton}"]`).click();
   performLogin(username, password);
-  cy.get(`[data-testid="${ETestId.logoutButton}"]`).should('exist');
+  cy.get(`div[data-testid="${ETestId.avatarContainer}"]`).should('exist');
 };
 
 const loginToQuizStep = (user: string) => {
@@ -122,7 +123,7 @@ const loginToQuizStep = (user: string) => {
   });
   performLogin(username, password);
 
-  cy.get(`[data-testid="${ETestId.logoutButton}"]`).should('exist');
+  cy.get(`div[data-testid="${ETestId.avatarContainer}"]`).should('exist');
 };
 
 export const selectQuizAnswers = (result: string) => {
@@ -208,6 +209,7 @@ Then(`The user sees a page with {string} title`, (title) => {
 Given('The {string} is logged in', (user: string) => loginToQuizStep(user));
 
 Given(`The user logs out`, () => {
+  cy.get(`div[data-testid="${ETestId.avatarContainer}"]`).click();
   cy.get(`[data-testid="${ETestId.logoutButton}"]`).click();
   cy.get(`[data-testid="${ETestId.avatarLoginButton}"]`).should('be.visible');
 });
