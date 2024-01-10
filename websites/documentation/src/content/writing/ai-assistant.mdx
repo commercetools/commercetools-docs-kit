@@ -1,0 +1,41 @@
+---
+title: AI Assistant Module
+---
+
+#  self-learning module
+
+A module providing UI components and helper utilities to integrate ai chat functionality across the docs websites.
+
+Works against commercetools' assistant-api, which is not a part of this open source project.
+
+## Public Components
+
+The following components are the ones available for editor use directly in mdx files.
+
+### AiAssistantButton
+
+This button can be used in any `mdx` page. It's responsible for launching and initializing the ai assistant.
+
+The component expects 1 mandatory prop:
+
+- `mode`: The identifier of the ai chat mode in which the chat will be launched (it needs to match the modes provided by the API)
+
+And some optional props:
+- `messageHistory`: An array of ai chat messages to feed into the chat, used to initialise some specific chat context. The format will look like this:
+- `label`: Defines the text to be displayed in the button. If this prop is not specified, then an icon will be displayed instead.
+- `readOnly`: initialise the chat as read only, meaning that the user will not be presented with the message input field. This is used in some specific chat implementations, such as code generator
+
+`messageHistory` format example:
+
+```js
+[
+  {role: 'assistant', content: 'Hello, how can I help you?'},
+  {role: 'user', content: 'Hi, I want you to tell me about products discounts'}
+]
+```
+
+Example
+
+```md title="you write:" secondaryTheme
+ <AiAssistantButton mode="ama-gpt4-turbo-grounded" label="Launch Assistant"/>
+```

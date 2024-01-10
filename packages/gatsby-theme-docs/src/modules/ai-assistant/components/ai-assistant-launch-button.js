@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import IconButton from '@commercetools-uikit/icon-button';
 import AssistantIcon from '../icons/assistant-icon.svg';
+import SecondaryButton from '../../sso/components/secondary-button';
 
 const AssistantLaunchContainer = styled.div`
   button {
@@ -28,7 +29,14 @@ const AiAssistantLaunchButton = (props) => {
     window.dispatchEvent(customEvent);
   };
 
-  return (
+  return props.label ? (
+    <SecondaryButton
+      onClick={handleClick}
+      data-testid="ai-assistant-launch-button"
+    >
+      {props.label}
+    </SecondaryButton>
+  ) : (
     <AssistantLaunchContainer>
       <IconButton
         icon={<AssistantIcon />}
@@ -50,6 +58,7 @@ AiAssistantLaunchButton.propTypes = {
   ),
   readOnly: PropTypes.bool,
   mode: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default AiAssistantLaunchButton;
