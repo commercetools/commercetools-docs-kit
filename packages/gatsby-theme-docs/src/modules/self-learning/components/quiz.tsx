@@ -232,6 +232,7 @@ const Quiz = (props: QuizProps) => {
           theme="primary"
           label="Log in to start the quiz"
           quizId={`quiz-${props.quizId}`}
+          data-testid="quiz-login-button"
         />
       )
     ) : (

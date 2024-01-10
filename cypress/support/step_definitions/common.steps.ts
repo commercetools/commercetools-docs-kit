@@ -95,7 +95,7 @@ const loginTopButtonStep = (user: string) => {
   cy.clearAllLocalStorage();
   cy.clearAllSessionStorage();
   cy.visit(URL_SELF_LEARNING_SMOKE_TEST);
-  cy.get(`button[data-testid="${ETestId.avatarLoginButton}"]`).click();
+  cy.get(`[data-testid="${ETestId.avatarLoginButton}"]`).click();
   performLogin(username, password);
   cy.get(`div[data-testid="${ETestId.avatarContainer}"]`).should('exist');
 };

@@ -19,6 +19,7 @@ type LoginButtonProps = {
   showSmallScreenAlternative?: boolean;
   label: string;
   theme: 'primary' | 'secondary';
+  'data-testid': string;
 };
 
 const LoginButtonContainer = styled.div`
@@ -68,7 +69,7 @@ const LoginButton = (props: LoginButtonProps) => {
 
   const PrimaryLoginButton = () => {
     return (
-      <PrimaryButton data-testid="quiz-login-button" onClick={executeLogin}>
+      <PrimaryButton data-testid={props['data-testid']} onClick={executeLogin}>
         <CtCubeWhiteIcon />
         <p>
           <b>ID</b> | {props.label}
@@ -85,9 +86,8 @@ const LoginButton = (props: LoginButtonProps) => {
             <IconButton
               icon={<LoginIcon />}
               size="big"
-              label="Open search dialog"
+              label="Log in"
               onClick={executeLogin}
-              data-testid="quiz-login-button"
             />
           </LoginButtonContainer>
         </MediaQuery>
