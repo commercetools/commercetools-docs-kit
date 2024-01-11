@@ -26,7 +26,11 @@ interface CustomParams {
 }
 
 // "our" events. Please add as needed
-type CustomEventNames = 'submit_quiz' | 'update_userinfo' | 'logout';
+type CustomEventNames =
+  | 'submit_quiz'
+  | 'update_userinfo'
+  | 'logout'
+  | 'ai_assistant_launch';
 
 type EventNames =
   // | 'add_payment_info'
