@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 22.11.0
+
+### Minor Changes
+
+- [#1900](https://github.com/commercetools/commercetools-docs-kit/pull/1900) [`f786020`](https://github.com/commercetools/commercetools-docs-kit/commit/f786020aafe0888d0568a1176bacc782f82824a3) Thanks [@timonrey](https://github.com/timonrey)! - Adds the AI assistant launch button to the top bar. It also moves the logout button into the profile modal and removes the signup button completely from self-learning microsites.
+
+- [#1901](https://github.com/commercetools/commercetools-docs-kit/pull/1901) [`a7dfdc9`](https://github.com/commercetools/commercetools-docs-kit/commit/a7dfdc91b577a1343ee6102120ec1baa4eb871cb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Upgrade to latest ui-kit
+
 ## 22.9.0
 
 ### Minor Changes

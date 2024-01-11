@@ -1,5 +1,30 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.11.0
+
+### Minor Changes
+
+- [#1900](https://github.com/commercetools/commercetools-docs-kit/pull/1900) [`f786020`](https://github.com/commercetools/commercetools-docs-kit/commit/f786020aafe0888d0568a1176bacc782f82824a3) Thanks [@timonrey](https://github.com/timonrey)! - Adds the AI assistant launch button to the top bar. It also moves the logout button into the profile modal and removes the signup button completely from self-learning microsites.
+
+- [#1888](https://github.com/commercetools/commercetools-docs-kit/pull/1888) [`bf38b4c`](https://github.com/commercetools/commercetools-docs-kit/commit/bf38b4c87c57fa9c079a3a0e47f24648fd2aee82) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Save the state of the AI assistant chat in localstorage to be able to restore the original chat state if reopened
+
+- [#1901](https://github.com/commercetools/commercetools-docs-kit/pull/1901) [`a7dfdc9`](https://github.com/commercetools/commercetools-docs-kit/commit/a7dfdc91b577a1343ee6102120ec1baa4eb871cb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Upgrade to latest ui-kit
+
+### Patch Changes
+
+- [#1899](https://github.com/commercetools/commercetools-docs-kit/pull/1899) [`fef81df`](https://github.com/commercetools/commercetools-docs-kit/commit/fef81dfdfc16153f42532870c88f9f631ac37c8f) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - get rid of deprecated use of children prop for Stamp component
+
+- [#1898](https://github.com/commercetools/commercetools-docs-kit/pull/1898) [`f1e873b`](https://github.com/commercetools/commercetools-docs-kit/commit/f1e873bb431710b275d5baa8658474b7d1d530ff) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Display error notification in the page when Headings are not in the correct order
+
+- [#1904](https://github.com/commercetools/commercetools-docs-kit/pull/1904) [`9d0efa2`](https://github.com/commercetools/commercetools-docs-kit/commit/9d0efa27a22695704b91230f038bb8cb431b3b3d) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Ai Assistant debug funcionalities (switcher and debug mode) will be available only for user with +test@commercetools.com email alias
+
+- [#1902](https://github.com/commercetools/commercetools-docs-kit/pull/1902) [`463178a`](https://github.com/commercetools/commercetools-docs-kit/commit/463178a8e327305d7a630479c730e7220f60beb4) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix scrolling when reference names are too long and reset form when closing the modal
+
+- [#1906](https://github.com/commercetools/commercetools-docs-kit/pull/1906) [`1e2caaa`](https://github.com/commercetools/commercetools-docs-kit/commit/1e2caaa871138d761b08620f85e1e5721fd525a6) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Send ai_assistant_launch event to google tag manager with the appropriate params
+
+- Updated dependencies [[`f786020`](https://github.com/commercetools/commercetools-docs-kit/commit/f786020aafe0888d0568a1176bacc782f82824a3), [`a7dfdc9`](https://github.com/commercetools/commercetools-docs-kit/commit/a7dfdc91b577a1343ee6102120ec1baa4eb871cb)]:
+  - @commercetools-docs/ui-kit@22.11.0
+
 ## 22.10.0
 
 ### Minor Changes
