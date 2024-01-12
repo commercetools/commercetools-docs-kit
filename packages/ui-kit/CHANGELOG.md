@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 22.11.1
+
+### Patch Changes
+
+- [#1909](https://github.com/commercetools/commercetools-docs-kit/pull/1909) [`4d0637c`](https://github.com/commercetools/commercetools-docs-kit/commit/4d0637c1dd72b882585c4382df3f15cf9b18b457) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add building animated lord-icon for foundry minisite launch
+
 ## 22.11.0
 
 ### Minor Changes
