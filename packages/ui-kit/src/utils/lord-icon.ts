@@ -10,6 +10,7 @@ import Graduation from '../icons/generated/LordIconGraduation';
 import Flag from '../icons/generated/LordIconFlag';
 import Document from '../icons/generated/LordIconDocument';
 import Api from '../icons/generated/LordIconApi';
+import Building from '../icons/generated/LordIconBuilding';
 import UnlockedJson from '../icons/lord-icon/unlocked.json';
 import PackageJson from '../icons/lord-icon/package.json';
 import LoginJson from '../icons/lord-icon/login.json';
@@ -22,6 +23,7 @@ import DocumentJson from '../icons/lord-icon/document.json';
 import ApiJson from '../icons/lord-icon/api.json';
 import SpreadsheetJson from '../icons/lord-icon/spreadsheet.json';
 import CommandJson from '../icons/lord-icon/command.json';
+import BuildingJson from '../icons/lord-icon/building.json';
 import { IconData } from 'lord-icon-element/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -38,6 +40,7 @@ const iconNameToSvgMap: Record<string, any> = {
   flag: Flag,
   document: Document,
   api: Api,
+  building: Building,
 };
 
 const iconNameToLottieJSON: Record<string, object> = {
@@ -53,6 +56,7 @@ const iconNameToLottieJSON: Record<string, object> = {
   flag: FlagJson,
   document: DocumentJson,
   api: ApiJson,
+  building: BuildingJson,
 };
 
 export const getStaticSvgComponent = (iconName: string) => {

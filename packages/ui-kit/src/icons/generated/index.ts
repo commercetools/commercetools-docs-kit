@@ -9,6 +9,7 @@ export { default as CustomApplicationSvgIcon } from './CustomApplication';
 export { default as LogoHorizontalSvgIcon } from './LogoHorizontal';
 export { default as LogoSvgIcon } from './Logo';
 export { default as LordIconApiSvgIcon } from './LordIconApi';
+export { default as LordIconBuildingSvgIcon } from './LordIconBuilding';
 export { default as LordIconCommandSvgIcon } from './LordIconCommand';
 export { default as LordIconDocumentSvgIcon } from './LordIconDocument';
 export { default as LordIconFlagSvgIcon } from './LordIconFlag';
