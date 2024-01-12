@@ -134,7 +134,7 @@ const ChatMessages = (props) => {
     <>
       <MessageContainer>
         <ContentNotifications.Info>
-          {props.chatMode.disclaimer}
+          {markdownFragmentToReact(props.chatMode.disclaimer)}
         </ContentNotifications.Info>
       </MessageContainer>
       <MessageContainer>
