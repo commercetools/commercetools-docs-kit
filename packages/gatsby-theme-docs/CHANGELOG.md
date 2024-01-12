@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.11.2
+
+### Patch Changes
+
+- [#1911](https://github.com/commercetools/commercetools-docs-kit/pull/1911) [`d9c66a9`](https://github.com/commercetools/commercetools-docs-kit/commit/d9c66a99390989a4e32207d99db4000a43afd1c6) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Allow markdown syntax in ai assistant disclaimer text
+
 ## 22.11.1
 
 ### Patch Changes
