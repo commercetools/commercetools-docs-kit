@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import IconButton from '@commercetools-uikit/icon-button';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
 import AssistantIcon from '../icons/assistant-icon.svg';
-import SecondaryButton from '../../sso/components/secondary-button';
 import { gtagEvent } from '../../sso';
 
 const AssistantLaunchContainer = styled.div`
@@ -43,9 +43,8 @@ const AiAssistantLaunchButton = (props) => {
         })
       }
       data-testid="ai-assistant-launch-button"
-    >
-      {props.label}
-    </SecondaryButton>
+      label={props.label}
+    />
   ) : (
     <AssistantLaunchContainer>
       <IconButton
