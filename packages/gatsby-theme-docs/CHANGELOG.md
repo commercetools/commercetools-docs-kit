@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.11.3
+
+### Patch Changes
+
+- [#1913](https://github.com/commercetools/commercetools-docs-kit/pull/1913) [`cdc8157`](https://github.com/commercetools/commercetools-docs-kit/commit/cdc8157fb1d0f5ad9128d6cd5ef818b793951d33) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Use standard SecondaryButton for launch AI assistant CTA
+
 ## 22.11.2
 
 ### Patch Changes
