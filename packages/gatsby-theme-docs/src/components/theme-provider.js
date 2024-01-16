@@ -21,6 +21,8 @@ const ThemeProvider = (props) => {
           betaLink
           isSelfLearning
           excludeFromSearchIndex
+          products
+          contentType
           globalNotification {
             active
             notificationType

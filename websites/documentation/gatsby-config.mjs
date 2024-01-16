@@ -11,8 +11,8 @@ const config = {
   siteMetadata: {
     title: 'Docs Kit Docs',
     description: '',
-    products: [],
-    contentType: null,
+    products: ['docsKit'],
+    contentType: 'userDocs',
     breadcrumbs: 'Documentation',
     betaLink: '/beta',
     excludeFromSearchIndex: true,
