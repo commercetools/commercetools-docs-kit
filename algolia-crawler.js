@@ -57,10 +57,6 @@ new Crawler({
             lvl2: 'article h2',
             lvl3: ['article h3', 'article h4'], // an array is a list of fallbacks. Authors sometimes omit h3 to skip the side nav.
             lvl4: ['article h4', 'article h5'],
-            products: {
-              selectors: $('meta[name=commercetools:products]').attr('content'),
-              defaultValue: '',
-            },
             _tags: tags,
             content:
               // The following end up as individual "records", which is the best practice for long documents
