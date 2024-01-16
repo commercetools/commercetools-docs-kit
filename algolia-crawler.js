@@ -25,6 +25,24 @@ new Crawler({
       indexName: 'commercetools',
       pathsToMatch: ['https://docs.commercetools.com**/**'],
       recordExtractor: ({ $, helpers }) => {
+        const tags = [];
+
+        // Extract tag values from meta tags with key 'commercetools:product'
+        $('meta[name="commercetools:product"]').each((_, element) => {
+          const content = $(element).attr('content');
+          if (content) {
+            tags.push(content);
+          }
+        });
+
+        // Extract tag values from meta tags with key 'commercetools:contentType'
+        $('meta[name="commercetools:contentType"]').each((_, element) => {
+          const content = $(element).attr('content');
+          if (content) {
+            tags.push(content);
+          }
+        });
+
         return helpers.docsearch({
           // FYI selector documentation: https://github.com/cheeriojs/cheerio#selectors
           recordProps: {
@@ -43,12 +61,7 @@ new Crawler({
               selectors: $('meta[name=commercetools:products]').attr('content'),
               defaultValue: '',
             },
-            contentType: {
-              selectors: $('meta[name=commercetools:contentType]').attr(
-                'content'
-              ),
-              defaultValue: '',
-            },
+            _tags: tags,
             content:
               // The following end up as individual "records", which is the best practice for long documents
               // https://www.algolia.com/doc/guides/sending-and-managing-data/prepare-your-data/how-to/indexing-long-documents/
