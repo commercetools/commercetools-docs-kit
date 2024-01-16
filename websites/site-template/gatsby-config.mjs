@@ -17,6 +17,8 @@ const config = {
     betaLink: '',
     excludeFromSearchIndex: isProd,
     allowWideContentLayout: true,
+    products: ['CHANGE-ME'],
+    contentType: 'CHANGE-ME',
   },
   plugins: [
     ...configureThemeWithAddOns({

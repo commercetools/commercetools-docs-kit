@@ -14,6 +14,8 @@ const config = {
     breadcrumbs: 'Test Sites',
     betaLink: '/beta',
     isSelfLearning: true,
+    products: ['smokeTest'],
+    contentType: 'test',
   },
   plugins: [
     ...configureThemeWithAddOns({

@@ -13,8 +13,8 @@ const config = {
   siteMetadata: {
     title: 'Docs Smoke Test',
     description: 'Documentation website for smoke tests',
-    products: [],
-    contentType: null,
+    products: ['smokeTest'],
+    contentType: 'test',
     breadcrumbs: 'Test Sites',
     betaLink: '/beta',
     excludeFromSearchIndex: isProd && !shouldEnableSearch,
