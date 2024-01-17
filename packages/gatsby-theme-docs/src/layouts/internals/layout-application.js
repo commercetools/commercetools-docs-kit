@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { UserProfileInit } from '../../modules/self-learning';
+import UserProfileInit from '../../modules/self-learning/components/user-profile-init';
 import ProfileModal from '../../modules/self-learning/components/profile-modal';
 import PageReady from '../../modules/self-learning/components/page-ready';
 import ChatFeedbackModal from '../../modules/ai-assistant/components/chat-feedback-modal';

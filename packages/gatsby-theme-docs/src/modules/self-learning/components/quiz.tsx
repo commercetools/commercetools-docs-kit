@@ -6,7 +6,7 @@ import {
 } from '@commercetools-uikit/design-system';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { ContentNotification } from '@commercetools-uikit/notifications';
-import { LoginButton } from '../../sso';
+import LoginButton from '../../sso/components/login-button';
 import { useAttempt } from '../hooks/use-attempt';
 import { useSubmitAttempt } from '../hooks/use-submit-attempt';
 import QuizForm from './quiz-form';

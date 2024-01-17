@@ -16,11 +16,9 @@ import SiteIcon from '../../../overrides/site-icon';
 import useScrollPosition from '../../../hooks/use-scroll-position';
 import { BetaTag } from '../../../components';
 import LayoutHeaderLogo from '../layout-header-logo';
-import {
-  SidebarCourseStatus,
-  SidebarTopicStatus,
-  useCourseInfoByPageSlugs,
-} from '../../../modules/self-learning';
+import SidebarCourseStatus from '../../../modules/self-learning/components/sidebar-course-status';
+import SidebarTopicStatus from '../../../modules/self-learning/components/sidebar-topic-status';
+import { useCourseInfoByPageSlugs } from '../../../modules/self-learning/hooks/use-course-pages';
 import useSidebarNavigationItems from '../../../hooks/use-sidebar-navigation-items';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);

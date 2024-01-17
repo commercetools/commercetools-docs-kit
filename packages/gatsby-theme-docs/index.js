@@ -1,3 +1,5 @@
+import CourseCard from './src/modules/self-learning/components/course-card';
+
 export { default as LayoutApplication } from './src/layouts/internals/layout-application';
 export { default as LayoutSidebar } from './src/layouts/internals/layout-sidebar';
 export { default as LayoutHeader } from './src/layouts/internals/layout-header';
@@ -18,6 +20,17 @@ export {
 } from './src/components';
 export * from './src/hooks/use-site-data';
 export * from './src/hooks/use-page-data';
-export * from './src/modules/self-learning';
-export * from './src/modules/sso';
+export { default as CourseCard } from './src/modules/self-learning/components/course-card';
+export { default as LearningPathCard } from './src/modules/self-learning/components/learning-path-card';
+export { default as ImageCard } from './src/modules/self-learning/components/image-card';
+export { default as FirstName } from './src/modules/self-learning/components/first-name';
+export {
+  IfLearningPathComplete,
+  IfLearningPathNotComplete,
+} from './src/modules/self-learning/components/if-learning-path';
+export {
+  IfUserLoggedIn,
+  IfUserLoggedOut,
+} from './src/modules/self-learning/components/if-user-logged';
+export { default as LoginButton } from './src/modules/sso/components/login-button';
 export * from './src/modules/ai-assistant';

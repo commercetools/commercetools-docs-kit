@@ -8,7 +8,7 @@ import {
   AUTH0_CLAIM_COMPANY,
   AUTH0_CLAIM_GLOBAL_ACCOUNT_NAME,
   AUTH0_CLAIM_GLOBAL_ACCOUNT_ID,
-} from '../../sso';
+} from '../../sso/sso.const';
 import { isProfileComplete } from './profile.utils';
 import useAuthentication from '../../sso/hooks/use-authentication';
 import useLocalStorageSession from '../../sso/hooks/use-local-storage-session';

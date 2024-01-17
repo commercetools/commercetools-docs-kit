@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import IconButton from '@commercetools-uikit/icon-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import AssistantIcon from '../icons/assistant-icon.svg';
-import { gtagEvent } from '../../sso';
+import { gtagEvent } from '../../sso/utils/analytics.utils';
 
 const AssistantLaunchContainer = styled.div`
   button {

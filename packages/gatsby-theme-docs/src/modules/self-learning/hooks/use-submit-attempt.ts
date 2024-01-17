@@ -5,7 +5,7 @@ import type { QuizAttempt } from '../components/quiz';
 import { useAuthToken } from './use-auth-token';
 import type { SubmissionAttempt } from '../components/quiz.types';
 import { MaintenanceModeError, ServiceDownError } from './use-attempt';
-import { gtagEvent } from '../../sso';
+import { gtagEvent } from '../../sso/utils/analytics.utils';
 import { useAsyncComplete } from '../../../hooks/use-async-complete';
 
 type SubmitAttemptParams = {
