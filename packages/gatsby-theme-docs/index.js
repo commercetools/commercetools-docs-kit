@@ -25,6 +25,10 @@ export { default as LearningPathCard } from './src/modules/self-learning/compone
 export { default as ImageCard } from './src/modules/self-learning/components/image-card';
 export { default as FirstName } from './src/modules/self-learning/components/first-name';
 export {
+  IfLearningPathComplete,
+  IfLearningPathNotComplete,
+} from './src/modules/self-learning/components/if-learning-path';
+export {
   IfUserLoggedIn,
   IfUserLoggedOut,
 } from './src/modules/self-learning/components/if-user-logged';
