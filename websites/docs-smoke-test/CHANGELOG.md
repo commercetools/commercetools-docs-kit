@@ -1,5 +1,14 @@
 # @commercetools-website/docs-smoke-test
 
+## 8.5.5
+
+### Patch Changes
+
+- [#1919](https://github.com/commercetools/commercetools-docs-kit/pull/1919) [`afd452c`](https://github.com/commercetools/commercetools-docs-kit/commit/afd452c9bc0117ea24a1628621ed7cdc3563a13c) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix issue with local development due to recursive exported components
+
+- Updated dependencies [[`afd452c`](https://github.com/commercetools/commercetools-docs-kit/commit/afd452c9bc0117ea24a1628621ed7cdc3563a13c)]:
+  - @commercetools-docs/gatsby-theme-docs@22.11.5
+
 ## 8.5.4
 
 ### Patch Changes
