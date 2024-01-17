@@ -1,7 +1,7 @@
 import React from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import { ContentNotifications } from '@commercetools-docs/ui-kit';
-import { VerifyButton } from '../../sso';
+import VerifyButton from '../../sso/components/verify-button';
 import robotPng from '../icons/robot.png';
 import CTCube from '../icons/black-white-ct-cube.svg';
 import LegalDisclaimer from './chat-modal-legal-disclaimer';

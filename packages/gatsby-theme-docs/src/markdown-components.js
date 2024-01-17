@@ -19,12 +19,13 @@ import {
 import {
   IfLearningPathComplete,
   IfLearningPathNotComplete,
+} from './modules/self-learning/components/if-learning-path';
+import {
   IfUserLoggedIn,
   IfUserLoggedOut,
-  Quiz,
-  FirstName,
-} from './modules/self-learning';
-
+} from './modules/self-learning/components/if-user-logged';
+import Quiz from './modules/self-learning/components/quiz';
+import FirstName from './modules/self-learning/components/first-name';
 import placeholderMarkdownComponents from './overrides/markdown-components';
 
 // See https://mdxjs.com/getting-started#table-of-components

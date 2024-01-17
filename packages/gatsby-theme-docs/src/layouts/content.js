@@ -27,10 +27,8 @@ import LayoutPageNavigation from './internals/layout-page-navigation';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 import PageReadTime from './internals/page-read-time-estimation';
-import {
-  CourseCompleteModal,
-  useCourseInfoByPageSlugs,
-} from '../modules/self-learning';
+import CourseCompleteModal from '../modules/self-learning/components/course-complete-modal';
+import { useCourseInfoByPageSlugs } from '../modules/self-learning/hooks/use-course-pages';
 import styled from '@emotion/styled';
 import useAiAssistant from '../modules/ai-assistant/hooks/use-ai-assistant';
 

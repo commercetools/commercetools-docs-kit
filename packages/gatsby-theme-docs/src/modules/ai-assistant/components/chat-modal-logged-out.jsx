@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { LoginButton } from '../../sso';
+import LoginButton from '../../sso/components/login-button';
 import robotPng from '../icons/robot.png';
 import LegalDisclaimer from './chat-modal-legal-disclaimer';
 import {
@@ -33,12 +33,14 @@ const ChatModalLoggedOut = (props) => {
       </ChatSideArea>
       <ChatMainArea>
         <ChatMainAreaWhenLoggedOut>
-          {props.aiAssistantCfg && <LoginButton
-            theme="primary"
-            label="Log in to start the Assistant"
-            aiAssistantCfg={props.aiAssistantCfg}
-            data-testid='ai-chat-login-button'
-          />}
+          {props.aiAssistantCfg && (
+            <LoginButton
+              theme="primary"
+              label="Log in to start the Assistant"
+              aiAssistantCfg={props.aiAssistantCfg}
+              data-testid="ai-chat-login-button"
+            />
+          )}
         </ChatMainAreaWhenLoggedOut>
       </ChatMainArea>
       <RightBlank />

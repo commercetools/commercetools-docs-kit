@@ -5,7 +5,7 @@ import { ConfirmationDialog, useModalState } from '@commercetools-docs/ui-kit';
 import Text from '@commercetools-uikit/text';
 import Link from '@commercetools-uikit/link';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { gtagEvent } from '../../sso';
+import { gtagEvent } from '../../sso/utils/analytics.utils';
 import useIsClientSide from '../hooks/use-is-client-side';
 import {
   OrderedCoursesInfo,
