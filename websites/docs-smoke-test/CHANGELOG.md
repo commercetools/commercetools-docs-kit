@@ -1,5 +1,14 @@
 # @commercetools-website/docs-smoke-test
 
+## 8.5.4
+
+### Patch Changes
+
+- [#1916](https://github.com/commercetools/commercetools-docs-kit/pull/1916) [`379078c`](https://github.com/commercetools/commercetools-docs-kit/commit/379078c57a67a39cd3f0dbfb870b5fdb7894ec19) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add products and contentType meta tags to the html for algolia crawler
+
+- Updated dependencies [[`379078c`](https://github.com/commercetools/commercetools-docs-kit/commit/379078c57a67a39cd3f0dbfb870b5fdb7894ec19)]:
+  - @commercetools-docs/gatsby-theme-docs@22.11.4
+
 ## 8.5.3
 
 ### Patch Changes

@@ -60,12 +60,26 @@ const SEO = (props) => {
         ? `${siteContextTitle} > ${siteData.siteMetadata.title}`
         : siteData.siteMetadata.title,
     },
+    siteData.siteMetadata.contentType && {
+      name: 'commercetools:contentType',
+      content: siteData.siteMetadata.contentType,
+    },
     excludeFromSearchIndex && {
       name: 'robots',
       content: 'noindex',
     },
     ...props.meta,
-  ].filter(Boolean);
+  ]
+    .concat(
+      siteData.siteMetadata.products &&
+        siteData.siteMetadata.products.map((item) => {
+          return {
+            name: 'commercetools:product',
+            content: item,
+          };
+        })
+    )
+    .filter(Boolean);
 
   const titleTemplate = `${props.title} | ${siteData.siteMetadata.title} | ${
     siteContextTitle ? `commercetools ${siteContextTitle}` : `commercetools`
