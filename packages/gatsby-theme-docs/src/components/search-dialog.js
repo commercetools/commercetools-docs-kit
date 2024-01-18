@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
@@ -124,6 +124,15 @@ const SearchDialog = (props) => {
   const ref = React.useRef();
   const { onClose } = props;
   const { isClientSide } = useIsClientSide();
+  const [tagFilters, setTagFilters] = useState([]);
+
+  const toggleFilter = (filter) => () => {
+    if (tagFilters.includes(filter)) {
+      setTagFilters(tagFilters.filter((item) => item !== filter));
+    } else {
+      setTagFilters([...tagFilters, filter]);
+    }
+  };
 
   React.useEffect(() => {
     const onKeyPress = (event) => {
@@ -149,9 +158,22 @@ const SearchDialog = (props) => {
               event.stopPropagation();
             }}
           >
+            <div>
+              <button onClick={toggleFilter('Composable Commerce')}>
+                Composable Commerce
+              </button>
+              <button onClick={toggleFilter('Frontend')}>Frontend</button>
+              <button onClick={toggleFilter('Checkout')}>Checkout</button>
+              <button onClick={toggleFilter('Connect')}>Connect</button>
+              <div>Filters: {tagFilters.join(', ')}</div>
+            </div>
             {isClientSide && (
               <React.Suspense fallback={<InputPlaceholder />}>
-                <AlgoliaSearch searchInputId={searchInputId} ref={ref}>
+                <AlgoliaSearch
+                  searchInputId={searchInputId}
+                  tagFilters={tagFilters}
+                  ref={ref}
+                >
                   <SearchInput
                     ref={ref}
                     id={searchInputId}

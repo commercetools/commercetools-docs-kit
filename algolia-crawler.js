@@ -25,6 +25,11 @@ new Crawler({
       indexName: 'commercetools',
       pathsToMatch: ['https://docs.commercetools.com**/**'],
       recordExtractor: ({ $, helpers }) => {
+        // add a space after every element to prevent concatenation of Content
+        // that is separated by layout but not content
+        /**
+         * @type {string[]}
+         */
         const tags = [];
 
         // Extract tag values from meta tags with key 'commercetools:product'
@@ -43,27 +48,27 @@ new Crawler({
           }
         });
 
+        $('#body-content *').after(' ');
         return helpers.docsearch({
           // FYI selector documentation: https://github.com/cheeriojs/cheerio#selectors
           recordProps: {
             lvl0: {
-              selectors:
-                $('meta[name=commercetools:title-for-onsite-search]').attr(
-                  'content'
-                ) || '#site-title',
+              selectors: '#site-title',
               defaultValue: 'General Topics',
             },
             lvl1: 'article h1',
             lvl2: 'article h2',
             lvl3: ['article h3', 'article h4'], // an array is a list of fallbacks. Authors sometimes omit h3 to skip the side nav.
             lvl4: ['article h4', 'article h5'],
-            _tags: tags,
+            _tags: {
+              defaultValue: tags,
+            },
             content:
               // The following end up as individual "records", which is the best practice for long documents
               // https://www.algolia.com/doc/guides/sending-and-managing-data/prepare-your-data/how-to/indexing-long-documents/
 
               // To test visually, paste this into the chrome inspector DOM search feature on
-              // https://docs-kit.commercetools.vercel.app/docs-smoke-test/views/markdown#tables
+              // https://commercetools-docs-kit.vercel.app/docs-smoke-test/views/markdown#tables
               // navigate through the results and check for omissions or double matches
               // test other smoke test pages, too (e.g. cards, API docs)
 
@@ -72,14 +77,14 @@ new Crawler({
               //               gets too near to the limit of 500 records per page.
               // Records:
               // - a paragraph / heading / lead paragraph
-              // - a full list including sub-lists (ol, ul, dl)
+              // - a list as a whole including sub-lists (ol, ul, dl)
               // - a full table (markdown or API type) - rows turned out to be too many
               // - a full blockquote
               // - an image caption
               // - cards are not structural, their h6 heading and paragraph indexed as content
               // Not Records (not indexed at all):
               // - code examples
-              // - API docs: oauth scopes of endpoints, URL of endpoints, UI boilerplate
+              // - API docs: oauth scopes of endpoints, URL of endpoints
               '#body-content :not([data-search-key="embedded-api-description"]):not(li):not(dd):not(dt):not(td):not(blockquote) > p, #body-content h6, #body-content :not(li) > ul:not([data-search-key="cards-container"]), #body-content :not(li) > ol, #body-content :not(li) > blockquote, #body-content dl, #body-content figure, #body-content .lead, #body-content table',
           },
           indexHeadings: true,
