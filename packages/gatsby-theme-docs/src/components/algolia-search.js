@@ -240,7 +240,7 @@ const AlgoliaSearch = React.forwardRef((props, ref) => {
             appId: '6NZ83LOI5M',
             inputSelector: `#${props.searchInputId}`,
             bindKeyboardShortcuts: false,
-            debug: process.env.NODE_ENV !== 'production',
+            debug: true,
             algoliaOptions: {
               hitsPerPage: 20,
               tagFilters:
