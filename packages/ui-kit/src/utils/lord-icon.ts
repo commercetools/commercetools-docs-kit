@@ -24,6 +24,7 @@ import ApiJson from '../icons/lord-icon/api.json';
 import SpreadsheetJson from '../icons/lord-icon/spreadsheet.json';
 import CommandJson from '../icons/lord-icon/command.json';
 import BuildingJson from '../icons/lord-icon/building.json';
+import FunnelJson from '../icons/lord-icon/funnel.json';
 import { IconData } from 'lord-icon-element/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,6 +58,7 @@ const iconNameToLottieJSON: Record<string, object> = {
   document: DocumentJson,
   api: ApiJson,
   building: BuildingJson,
+  funnnel: FunnelJson,
 };
 
 export const getStaticSvgComponent = (iconName: string) => {

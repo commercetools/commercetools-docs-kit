@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import { designSystem, LordIconButton } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SearchInput from './search-input';
 import useIsClientSide from '../hooks/use-is-client-side';
+import Inline from '@commercetools-uikit/spacings-inline';
 
 const AlgoliaSearch = React.lazy(() => import('./algolia-search'));
 
@@ -66,9 +68,6 @@ const containerStyle = css`
   }
 `;
 const Content = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   animation: ${openDialogAnimation} 0.15s ease-out alternate;
   background-color: ${designSystem.colors.light.surfacePrimary};
   border-radius: 0 0 ${designSystem.tokens.borderRadiusForSearchDialog}
@@ -79,10 +78,7 @@ const Content = styled.div`
   height: -moz-fit-content;
   height: fit-content;
 
-  min-height: calc(
-    ${designSystem.dimensions.heights.inputSearchPrimary} +
-      ${designSystem.dimensions.spacings.l}
-  );
+  min-height: 200px;
 
   margin: 0 ${designSystem.dimensions.spacings.m};
   padding: ${designSystem.dimensions.spacings.s}
@@ -120,11 +116,24 @@ const InputPlaceholder = () => (
   />
 );
 
+const TagFiltersCount = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+    margin-left: ${designSystem.dimensions.spacings.xs};
+    font-size: ${designSystem.typography.fontSizes.small};
+    color: ${designSystem.colors.light.textFaded};
+  }
+`;
+
 const SearchDialog = (props) => {
   const ref = React.useRef();
   const { onClose } = props;
   const { isClientSide } = useIsClientSide();
   const [tagFilters, setTagFilters] = useState([]);
+  const [isSearchFilterOpen, setIsSearchFilterOpen] = useState(false);
 
   const toggleFilter = (filter) => () => {
     if (tagFilters.includes(filter)) {
@@ -158,29 +167,35 @@ const SearchDialog = (props) => {
               event.stopPropagation();
             }}
           >
-            <div>
-              <button onClick={toggleFilter('Composable Commerce')}>
-                Composable Commerce
-              </button>
-              <button onClick={toggleFilter('Frontend')}>Frontend</button>
-              <button onClick={toggleFilter('Checkout')}>Checkout</button>
-              <button onClick={toggleFilter('Connect')}>Connect</button>
-              <div>Filters: {tagFilters.join(', ')}</div>
-            </div>
             {isClientSide && (
               <React.Suspense fallback={<InputPlaceholder />}>
-                <AlgoliaSearch
-                  searchInputId={searchInputId}
-                  tagFilters={tagFilters}
-                  ref={ref}
-                >
-                  <SearchInput
+                <SpacingsStack scale="s" id="sss">
+                  <Inline>
+                    <LordIconButton
+                      onClick={() => setIsSearchFilterOpen(!isSearchFilterOpen)}
+                      isToggleButton
+                      isToggled={isSearchFilterOpen}
+                      label="Filter by product"
+                      lordIconKey="funnel"
+                      id="open-search-filter"
+                    />
+                    <TagFiltersCount>
+                      <p>{tagFilters.length} filters applied</p>
+                    </TagFiltersCount>
+                  </Inline>
+                  <AlgoliaSearch
+                    searchInputId={searchInputId}
+                    tagFilters={tagFilters}
                     ref={ref}
-                    id={searchInputId}
-                    size="scale"
-                    onClose={props.onClose}
-                  />
-                </AlgoliaSearch>
+                  >
+                    <SearchInput
+                      ref={ref}
+                      id={searchInputId}
+                      size="scale"
+                      onClose={props.onClose}
+                    />
+                  </AlgoliaSearch>
+                </SpacingsStack>
               </React.Suspense>
             )}
           </Content>

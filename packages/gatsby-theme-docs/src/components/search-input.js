@@ -29,8 +29,8 @@ const Input = styled.input`
   flex: 1;
   font-family: inherit;
   font-size: ${designSystem.typography.fontSizes.small};
-  height: ${designSystem.dimensions.heights.inputSearchSecondary};
-  min-height: ${designSystem.dimensions.heights.inputSearchSecondary};
+  height: ${designSystem.dimensions.heights.inputSearchPrimary};
+  min-height: ${designSystem.dimensions.heights.inputSearchPrimary};
   outline: none;
   overflow: hidden;
   padding: 1px
@@ -57,8 +57,7 @@ const SearchInputIcon = styled.span`
   position: absolute;
   z-index: ${designSystem.dimensions.stacks.base};
   top: calc(
-    (${designSystem.dimensions.heights.inputSearchSecondary} - ${iconHeight}) /
-      2
+    (${designSystem.dimensions.heights.inputSearchPrimary} - ${iconHeight}) / 2
   );
   width: ${designSystem.dimensions.spacings.l};
   display: flex;
