@@ -265,12 +265,16 @@ const AlgoliaSearch = React.forwardRef((props, ref) => {
   }, [ref, props.searchInputId, setIsSearchEnabled, setHasErrorLoadingAlgolia]);
 
   useEffect(() => {
-    if (docSearchClient && props.tagFilters && props.tagFilters.length > 0) {
+    if (docSearchClient && props.tagFilters) {
       // I can't find a way to re-trigger search when tagFilters change. The library is not designed to do so,
       // and the only way to do it is to change the input value, this is why I implemented this hack to add or remove an empty space
       // at the end of the input value each time the tagFilters change.
-      docSearchClient.algoliaOptions.tagFilters = props.tagFilters;
+      docSearchClient.algoliaOptions.tagFilters =
+        props.tagFilters.length > 0 ? props.tagFilters : undefined;
       const previousText = docSearchClient.input.autocomplete.getVal();
+      if (previousText === '') {
+        return;
+      }
       const newText = previousText.endsWith(' ')
         ? previousText.slice(0, -1)
         : `${previousText} `;
