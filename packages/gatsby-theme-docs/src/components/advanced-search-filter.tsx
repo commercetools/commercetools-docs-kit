@@ -10,7 +10,7 @@ import Inline from '@commercetools-uikit/spacings-inline';
 
 type AdvancedSearchFilterProps = {
   setFilters: (filter: string[]) => void;
-  isFilterOpen: boolean;
+  filters: string[];
 };
 
 const tagsFilterConfig = [
@@ -56,7 +56,7 @@ const BottonsWrapper = styled.div`
 const AdvancedSearchFilter: React.FC<AdvancedSearchFilterProps> = (
   props: AdvancedSearchFilterProps
 ) => {
-  const [tagsFilter, setTagsFilter] = useState<string[]>([]);
+  const [tagsFilter, setTagsFilter] = useState<string[]>(props.filters || []);
 
   const onApplyFilterClick = () => {
     props.setFilters(tagsFilter);
@@ -76,7 +76,7 @@ const AdvancedSearchFilter: React.FC<AdvancedSearchFilterProps> = (
     }
   };
 
-  return props.isFilterOpen ? (
+  return (
     <FilterContainer>
       <Card>
         <ContentWrapper>
@@ -109,7 +109,7 @@ const AdvancedSearchFilter: React.FC<AdvancedSearchFilterProps> = (
         </ContentWrapper>
       </Card>
     </FilterContainer>
-  ) : null;
+  );
 };
 
 export default AdvancedSearchFilter;

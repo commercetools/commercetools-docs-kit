@@ -184,10 +184,12 @@ const SearchDialog = (props) => {
                       <p>{tagFilters.length} filters applied</p>
                     </TagFiltersCount>
                   </Inline>
-                  <AdvancedSearchFilter
-                    isFilterOpen={isSearchFilterOpen}
-                    setFilters={handleSetFilters}
-                  />
+                  {isSearchFilterOpen && (
+                    <AdvancedSearchFilter
+                      filters={tagFilters}
+                      setFilters={handleSetFilters}
+                    />
+                  )}
                   <AlgoliaSearch
                     searchInputId={searchInputId}
                     tagFilters={tagFilters}
