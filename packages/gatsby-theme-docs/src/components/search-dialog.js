@@ -79,6 +79,11 @@ const Content = styled.div`
   height: -moz-fit-content;
   height: fit-content;
 
+  min-height: calc(
+    ${designSystem.dimensions.heights.inputSearchPrimary} +
+      ${designSystem.dimensions.spacings.l}
+  );
+
   margin: 0 ${designSystem.dimensions.spacings.m};
   padding: ${designSystem.dimensions.spacings.s}
     ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
@@ -116,7 +121,7 @@ const InputPlaceholder = () => (
 );
 
 const TagFiltersCount = styled.div`
-  height: 40px;
+  height: ${designSystem.dimensions.heights.buttonHeightPrimary};
   display: flex;
   align-items: center;
   p {

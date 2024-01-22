@@ -246,6 +246,7 @@ export const dimensions = {
     globalNotificationContent: '36px',
     globalNotificationWithSmallSpacing: 'calc(36px + 8px)',
     megaMenuItemTitle: '38px',
+    buttonHeightPrimary: '40px',
   },
   widths: {
     pageContent: pageWidth,
