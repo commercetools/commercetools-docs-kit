@@ -306,7 +306,10 @@ const LayoutHeader = forwardRef((props, ref) => {
         <SearchContainer excludeFromSearchIndex={props.excludeFromSearchIndex}>
           {props.isSearchDialogOpen ? (
             <Overlay position="absolute" onClick={props.closeSearchDialog}>
-              <SearchDialog centered={props.centeredSearchDialog} />
+              <SearchDialog
+                centered={props.centeredSearchDialog}
+                onClose={props.closeSearchDialog}
+              />
             </Overlay>
           ) : (
             <>

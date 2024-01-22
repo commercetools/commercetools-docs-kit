@@ -132,9 +132,11 @@ const SearchInput = React.forwardRef((props, ref) => {
       <SearchInputIcon position="left">
         <SearchIcon size="medium" />
       </SearchInputIcon>
-      <SearchInputIcon position="right" hidden={isActive}>
-        <Icons.SlashSvgIcon height={16} />
-      </SearchInputIcon>
+      {!props.hideSlash && (
+        <SearchInputIcon position="right" hidden={isActive}>
+          <Icons.SlashSvgIcon height={16} />
+        </SearchInputIcon>
+      )}
       {props.onClose && (
         <SearchInputIcon position="right">
           <SecondaryIconButton
@@ -167,6 +169,7 @@ SearchInput.propTypes = {
   onFocus: PropTypes.func,
   onClose: PropTypes.func,
   isDisabled: PropTypes.bool.isRequired,
+  hideSlash: PropTypes.bool,
 };
 SearchInput.defaultProps = {
   isDisabled: false,

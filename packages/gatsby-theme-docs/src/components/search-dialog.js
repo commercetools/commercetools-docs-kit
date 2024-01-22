@@ -7,6 +7,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SearchInput from './search-input';
 import useIsClientSide from '../hooks/use-is-client-side';
 import Inline from '@commercetools-uikit/spacings-inline';
+import AdvancedSearchFilter from './advanced-search-filter';
 
 const AlgoliaSearch = React.lazy(() => import('./algolia-search'));
 
@@ -78,8 +79,6 @@ const Content = styled.div`
   height: -moz-fit-content;
   height: fit-content;
 
-  min-height: 200px;
-
   margin: 0 ${designSystem.dimensions.spacings.m};
   padding: ${designSystem.dimensions.spacings.s}
     ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
@@ -132,15 +131,12 @@ const SearchDialog = (props) => {
   const ref = React.useRef();
   const { onClose } = props;
   const { isClientSide } = useIsClientSide();
-  const [tagFilters, setTagFilters] = useState([]);
   const [isSearchFilterOpen, setIsSearchFilterOpen] = useState(false);
+  const [tagFilters, setTagFilters] = useState([]);
 
-  const toggleFilter = (filter) => () => {
-    if (tagFilters.includes(filter)) {
-      setTagFilters(tagFilters.filter((item) => item !== filter));
-    } else {
-      setTagFilters([...tagFilters, filter]);
-    }
+  const handleSetFilters = (filters) => {
+    setTagFilters(filters);
+    setIsSearchFilterOpen(false);
   };
 
   React.useEffect(() => {
@@ -183,6 +179,10 @@ const SearchDialog = (props) => {
                       <p>{tagFilters.length} filters applied</p>
                     </TagFiltersCount>
                   </Inline>
+                  <AdvancedSearchFilter
+                    isFilterOpen={isSearchFilterOpen}
+                    setFilters={handleSetFilters}
+                  />
                   <AlgoliaSearch
                     searchInputId={searchInputId}
                     tagFilters={tagFilters}
@@ -192,7 +192,7 @@ const SearchDialog = (props) => {
                       ref={ref}
                       id={searchInputId}
                       size="scale"
-                      onClose={props.onClose}
+                      hideSlash
                     />
                   </AlgoliaSearch>
                 </SpacingsStack>
