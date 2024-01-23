@@ -68,7 +68,6 @@ const AdvancedSearchFilter: React.FC<AdvancedSearchFilterProps> = (
   };
 
   const toggleTagFilter = (tag: string) => {
-    console.log(tag);
     if (tagsFilter.includes(tag)) {
       setTagsFilter(tagsFilter.filter((item) => item !== tag));
     } else {
