@@ -85,12 +85,12 @@ const Content = styled.div`
   );
 
   margin: 0 ${designSystem.dimensions.spacings.m};
-  padding: ${designSystem.dimensions.spacings.s}
-    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
+  padding: ${designSystem.dimensions.spacings.m}
+    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.m};
 
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     margin: 0 ${designSystem.dimensions.spacings.xl};
-    padding: ${designSystem.dimensions.spacings.s}
+    padding: ${designSystem.dimensions.spacings.m}
       ${designSystem.dimensions.spacings.xl}
       ${designSystem.dimensions.spacings.xl};
   }
@@ -170,37 +170,17 @@ const SearchDialog = (props) => {
           >
             {isClientSide && (
               <React.Suspense fallback={<InputPlaceholder />}>
-                <SpacingsStack scale="s" id="sss">
-                  <Inline>
-                    <LordIconButton
-                      onClick={() => setIsSearchFilterOpen(!isSearchFilterOpen)}
-                      isToggleButton
-                      isToggled={isSearchFilterOpen}
-                      label="Filter by product"
-                      lordIconKey="funnel"
-                      id="open-search-filter"
-                    />
-                    <TagFiltersCount>
-                      <p>{tagFilters.length} filters applied</p>
-                    </TagFiltersCount>
-                  </Inline>
-                  {isSearchFilterOpen && (
-                    <AdvancedSearchFilter
-                      filters={tagFilters}
-                      setFilters={handleSetFilters}
-                    />
-                  )}
+                <SpacingsStack scale="s">
+                  <AdvancedSearchFilter
+                    filters={tagFilters}
+                    setFilters={handleSetFilters}
+                  />
                   <AlgoliaSearch
                     searchInputId={searchInputId}
                     tagFilters={tagFilters}
                     ref={ref}
                   >
-                    <SearchInput
-                      ref={ref}
-                      id={searchInputId}
-                      size="large"
-                      hideSlash
-                    />
+                    <SearchInput ref={ref} id={searchInputId} hideSlash />
                   </AlgoliaSearch>
                 </SpacingsStack>
               </React.Suspense>
