@@ -240,6 +240,7 @@ export const dimensions = {
   heights: {
     header: '48px',
     inputSearchPrimary: '32px',
+    inputSearchPrimaryLarge: '40px',
     inputSearchSecondary: '26px',
     childSectionNavLink: '28px',
     pageSearchboxSpace: '58px',

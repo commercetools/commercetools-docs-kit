@@ -28,9 +28,18 @@ const Input = styled.input`
   display: flex;
   flex: 1;
   font-family: inherit;
-  font-size: ${designSystem.typography.fontSizes.small};
-  height: ${designSystem.dimensions.heights.inputSearchPrimary};
-  min-height: ${designSystem.dimensions.heights.inputSearchPrimary};
+  font-size: ${(props) =>
+    props.size === 'large'
+      ? designSystem.typography.fontSizes.body
+      : designSystem.typography.fontSizes.small};
+  height: ${(props) =>
+    props.size === 'large'
+      ? designSystem.dimensions.heights.inputSearchPrimaryLarge
+      : designSystem.dimensions.heights.inputSearchPrimary};
+  min-height: ${(props) =>
+    props.size === 'large'
+      ? designSystem.dimensions.heights.inputSearchPrimaryLarge
+      : designSystem.dimensions.heights.inputSearchPrimary};
   outline: none;
   overflow: hidden;
   padding: 1px
@@ -130,7 +139,7 @@ const SearchInput = React.forwardRef((props, ref) => {
   return (
     <Container>
       <SearchInputIcon position="left">
-        <SearchIcon size="medium" />
+        <SearchIcon size={props.size === 'large' ? 'big' : 'medium'} />
       </SearchInputIcon>
       {!props.hideSlash && (
         <SearchInputIcon position="right" hidden={isActive}>
@@ -157,6 +166,7 @@ const SearchInput = React.forwardRef((props, ref) => {
         onFocus={handleFocus}
         onBlur={handleBlur}
         disabled={props.isDisabled || isLoading}
+        size={props.size}
       />
     </Container>
   );
@@ -164,8 +174,7 @@ const SearchInput = React.forwardRef((props, ref) => {
 SearchInput.displayName = 'SearchInput';
 SearchInput.propTypes = {
   id: PropTypes.string,
-  // eslint-disable-next-line react/no-unused-prop-types
-  size: PropTypes.oneOf(['small', 'scale']).isRequired,
+  size: PropTypes.oneOf(['small', 'large']).isRequired,
   onFocus: PropTypes.func,
   onClose: PropTypes.func,
   isDisabled: PropTypes.bool.isRequired,

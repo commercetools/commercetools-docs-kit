@@ -198,7 +198,7 @@ const SearchDialog = (props) => {
                     <SearchInput
                       ref={ref}
                       id={searchInputId}
-                      size="scale"
+                      size="large"
                       hideSlash
                     />
                   </AlgoliaSearch>
