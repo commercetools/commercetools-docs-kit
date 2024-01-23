@@ -6,6 +6,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { CheckThinIcon } from '@commercetools-uikit/icons';
+import { gtagEvent } from '../modules/sso/utils/analytics.utils';
 
 type AdvancedSearchFilterProps = {
   setFilters: (filter: string[]) => void;
@@ -56,6 +57,9 @@ const AdvancedSearchFilter: React.FC<AdvancedSearchFilterProps> = (
   };
 
   const toggleTagFilter = (tag: string) => {
+    gtagEvent('search_tag_click', {
+      tag,
+    });
     if (props.filters.includes(tag)) {
       props.setFilters(props.filters.filter((item) => item !== tag));
     } else {
