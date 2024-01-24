@@ -30,7 +30,8 @@ type CustomEventNames =
   | 'submit_quiz'
   | 'update_userinfo'
   | 'logout'
-  | 'ai_assistant_launch';
+  | 'ai_assistant_launch'
+  | 'search_tag_click';
 
 type EventNames =
   // | 'add_payment_info'
