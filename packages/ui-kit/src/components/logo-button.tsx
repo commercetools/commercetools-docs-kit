@@ -28,13 +28,17 @@ const Title = styled.span`
   @media screen and (${dimensions.viewports.laptop}) {
     display: block;
   }
+
+  @media screen and (${dimensions.viewports.desktop}) {
+    font-size: ${typography.fontSizes.h3};
+  }
 `;
 
 const LogoButton = () => (
   <Link href="/">
     <LinkContainer>
       <SpacingsInline scale="m" alignItems="center">
-        <LogoSvgIcon height={32} />
+        <LogoSvgIcon height={40} />
         <Title>{'Documentation'}</Title>
       </SpacingsInline>
     </LinkContainer>
