@@ -13,7 +13,6 @@ export { default as LordIconBuildingSvgIcon } from './LordIconBuilding';
 export { default as LordIconCommandSvgIcon } from './LordIconCommand';
 export { default as LordIconDocumentSvgIcon } from './LordIconDocument';
 export { default as LordIconFlagSvgIcon } from './LordIconFlag';
-export { default as LordIconFunnelSvgIcon } from './LordIconFunnel';
 export { default as LordIconGraduationSvgIcon } from './LordIconGraduation';
 export { default as LordIconHandshakeSvgIcon } from './LordIconHandshake';
 export { default as LordIconHeadsetSvgIcon } from './LordIconHeadset';

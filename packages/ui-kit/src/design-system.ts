@@ -240,14 +240,12 @@ export const dimensions = {
   heights: {
     header: '48px',
     inputSearchPrimary: '32px',
-    inputSearchPrimaryLarge: '40px',
     inputSearchSecondary: '26px',
     childSectionNavLink: '28px',
     pageSearchboxSpace: '58px',
     globalNotificationContent: '36px',
     globalNotificationWithSmallSpacing: 'calc(36px + 8px)',
     megaMenuItemTitle: '38px',
-    buttonHeightPrimary: '40px',
   },
   widths: {
     pageContent: pageWidth,
