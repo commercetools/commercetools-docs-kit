@@ -311,6 +311,7 @@ export const typography = {
     primary: "'Inter var', sans-serif",
     code: "'Roboto Mono', monospace",
     stringLiteral: "'Inter var', monospace",
+    brand: "'Archivo Narrow', sans-serif",
   },
 
   rootFontSize: `${rootFontSizeNumber}px`,

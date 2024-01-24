@@ -23,6 +23,7 @@ const Link = styled.a`
 const Title = styled.span`
   display: none;
   font-size: ${typography.fontSizes.body};
+  font-family: ${typography.fontFamilies.brand};
 
   @media screen and (${dimensions.viewports.laptop}) {
     display: block;
