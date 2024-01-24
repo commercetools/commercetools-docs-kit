@@ -47,6 +47,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/archivo-narrow": "5.0.18",
     "@fontsource/roboto-mono": "5.0.16",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",

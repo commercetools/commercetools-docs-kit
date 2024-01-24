@@ -19,7 +19,7 @@ const UserResearchBanner = () => {
           padding: ${designSystem.dimensions.spacings.xs} 0;
         `}
       >
-        <Icons.CtLogoSvgIcon />
+        <Icons.CtLogoSvgIcon width={20} />
       </div>
       <p>We want your feedback</p>
       <Link

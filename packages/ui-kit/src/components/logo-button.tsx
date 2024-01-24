@@ -13,7 +13,6 @@ const LinkContainer = styled.span`
 `;
 // This is a normal HTML link as we need to force a redirect to the root domain
 const Link = styled.a`
-  color: ${colors.light.textPrimary};
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
@@ -21,14 +20,17 @@ const Link = styled.a`
   width: 100%;
 `;
 const Title = styled.span`
+  color: ${colors.light.brandLogoColor};
   display: none;
-  font-size: ${typography.fontSizes.body};
+  font-size: ${typography.fontSizes.h4};
+  font-family: ${typography.fontFamilies.brand};
 
   @media screen and (${dimensions.viewports.laptop}) {
     display: block;
   }
+
   @media screen and (${dimensions.viewports.desktop}) {
-    font-size: ${typography.fontSizes.h4};
+    font-size: ${typography.fontSizes.h3};
   }
 `;
 
@@ -36,7 +38,7 @@ const LogoButton = () => (
   <Link href="/">
     <LinkContainer>
       <SpacingsInline scale="m" alignItems="center">
-        <LogoSvgIcon height={32} />
+        <LogoSvgIcon height={40} />
         <Title>{'Documentation'}</Title>
       </SpacingsInline>
     </LinkContainer>

@@ -69,6 +69,7 @@ export type ThemeColorTokens = {
   selectedItem: string;
   selectedItemBackground: string;
   selectedItemText: string;
+  brandLogoColor: string;
 };
 
 export type ThemeCodeBlocksColorTokens = {
@@ -147,6 +148,7 @@ export const colors: ThemeColors = {
     selectedItem: designTokens.colorPrimary40,
     selectedItemBackground: `hsla(172.9608938547486, 100%, 40%, 0.1)`,
     selectedItemText: designTokens.colorPrimary25,
+    brandLogoColor: 'hsl(243, 48%, 17%)',
 
     // Code blocks
     // We support 2 theme versions: a primary one and a secondary one.
@@ -311,6 +313,7 @@ export const typography = {
     primary: "'Inter var', sans-serif",
     code: "'Roboto Mono', monospace",
     stringLiteral: "'Inter var', monospace",
+    brand: "'Archivo Narrow', sans-serif",
   },
 
   rootFontSize: `${rootFontSizeNumber}px`,
