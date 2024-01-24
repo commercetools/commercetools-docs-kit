@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css, Global } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
@@ -224,6 +224,7 @@ const algoliaStyles = css`
 
 const AlgoliaSearch = React.forwardRef((props, ref) => {
   const [isSearchEnabled, setIsSearchEnabled] = React.useState(true);
+  const [docSearchClient, setDocSearchClient] = React.useState(null);
   const [hasErrorLoadingAlgolia, setHasErrorLoadingAlgolia] =
     React.useState(false);
 
@@ -233,17 +234,22 @@ const AlgoliaSearch = React.forwardRef((props, ref) => {
     if (isClient) {
       import('docsearch.js')
         .then(({ default: docsearch }) => {
-          docsearch({
+          const docSearchClientInstance = docsearch({
             apiKey: '058c5342ed03a928f2dde0142bee8db0',
             indexName: 'commercetools',
             appId: '6NZ83LOI5M',
             inputSelector: `#${props.searchInputId}`,
             bindKeyboardShortcuts: false,
-            debug: process.env.NODE_ENV !== 'production',
+            debug: true,
             algoliaOptions: {
               hitsPerPage: 20,
+              tagFilters:
+                props.tagFilters && props.tagFilters.length > 0
+                  ? [props.tagFilters]
+                  : undefined,
             },
           });
+          setDocSearchClient(docSearchClientInstance);
 
           // Focus the input field so that the user can start typing directly
           ref.current.focus();
@@ -255,7 +261,26 @@ const AlgoliaSearch = React.forwardRef((props, ref) => {
     } else {
       setIsSearchEnabled(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, props.searchInputId, setIsSearchEnabled, setHasErrorLoadingAlgolia]);
+
+  useEffect(() => {
+    if (docSearchClient && props.tagFilters) {
+      // I can't find a way to re-trigger search when tagFilters change. The library is not designed to do so,
+      // and the only way to do it is to change the input value, this is why I implemented this hack to add or remove an empty space
+      // at the end of the input value each time the tagFilters change.
+      docSearchClient.algoliaOptions.tagFilters =
+        props.tagFilters.length > 0 ? props.tagFilters : undefined;
+      const previousText = docSearchClient.input.autocomplete.getVal();
+      if (previousText === '') {
+        return;
+      }
+      const newText = previousText.endsWith(' ')
+        ? previousText.slice(0, -1)
+        : `${previousText} `;
+      docSearchClient.input.autocomplete.setVal(newText);
+    }
+  }, [props.tagFilters, docSearchClient]);
 
   return (
     <>
@@ -282,6 +307,7 @@ AlgoliaSearch.displayName = 'AlgoliaSearch';
 AlgoliaSearch.propTypes = {
   searchInputId: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  tagFilters: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default AlgoliaSearch;

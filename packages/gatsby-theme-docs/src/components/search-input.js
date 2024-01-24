@@ -29,8 +29,14 @@ const Input = styled.input`
   flex: 1;
   font-family: inherit;
   font-size: ${designSystem.typography.fontSizes.small};
-  height: ${designSystem.dimensions.heights.inputSearchSecondary};
-  min-height: ${designSystem.dimensions.heights.inputSearchSecondary};
+  height: ${(props) =>
+    props.size === 'large'
+      ? designSystem.dimensions.heights.inputSearchPrimary
+      : designSystem.dimensions.heights.inputSearchSecondary};
+  min-height: ${(props) =>
+    props.size === 'large'
+      ? designSystem.dimensions.heights.inputSearchPrimary
+      : designSystem.dimensions.heights.inputSearchSecondary};
   outline: none;
   overflow: hidden;
   padding: 1px
@@ -56,10 +62,19 @@ const Input = styled.input`
 const SearchInputIcon = styled.span`
   position: absolute;
   z-index: ${designSystem.dimensions.stacks.base};
-  top: calc(
-    (${designSystem.dimensions.heights.inputSearchSecondary} - ${iconHeight}) /
-      2
-  );
+  ${({ size }) =>
+    size === 'large' &&
+    `
+    top: calc((${designSystem.dimensions.heights.inputSearchPrimary} - ${iconHeight}) / 2);
+  `}
+  ${({ size }) =>
+    size !== 'large' &&
+    `
+        top: calc((${designSystem.dimensions.heights.inputSearchSecondary} - ${iconHeight}) / 2);
+  `}
+
+
+
   width: ${designSystem.dimensions.spacings.l};
   display: flex;
   flex-direction: column;
@@ -131,11 +146,13 @@ const SearchInput = React.forwardRef((props, ref) => {
   return (
     <Container>
       <SearchInputIcon position="left">
-        <SearchIcon size="medium" />
+        <SearchIcon size={props.size === 'large' ? 'big' : 'medium'} />
       </SearchInputIcon>
-      <SearchInputIcon position="right" hidden={isActive}>
-        <Icons.SlashSvgIcon height={16} />
-      </SearchInputIcon>
+      {!props.hideSlash && (
+        <SearchInputIcon position="right" hidden={isActive}>
+          <Icons.SlashSvgIcon height={16} />
+        </SearchInputIcon>
+      )}
       {props.onClose && (
         <SearchInputIcon position="right">
           <SecondaryIconButton
@@ -156,6 +173,7 @@ const SearchInput = React.forwardRef((props, ref) => {
         onFocus={handleFocus}
         onBlur={handleBlur}
         disabled={props.isDisabled || isLoading}
+        size={props.size}
       />
     </Container>
   );
@@ -163,11 +181,11 @@ const SearchInput = React.forwardRef((props, ref) => {
 SearchInput.displayName = 'SearchInput';
 SearchInput.propTypes = {
   id: PropTypes.string,
-  // eslint-disable-next-line react/no-unused-prop-types
-  size: PropTypes.oneOf(['small', 'scale']).isRequired,
+  size: PropTypes.oneOf(['small', 'large']).isRequired,
   onFocus: PropTypes.func,
   onClose: PropTypes.func,
   isDisabled: PropTypes.bool.isRequired,
+  hideSlash: PropTypes.bool,
 };
 SearchInput.defaultProps = {
   isDisabled: false,

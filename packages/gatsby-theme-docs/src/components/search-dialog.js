@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SearchInput from './search-input';
 import useIsClientSide from '../hooks/use-is-client-side';
+import AdvancedSearchFilter from './advanced-search-filter';
 
 const AlgoliaSearch = React.lazy(() => import('./algolia-search'));
 
@@ -66,9 +68,6 @@ const containerStyle = css`
   }
 `;
 const Content = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   animation: ${openDialogAnimation} 0.15s ease-out alternate;
   background-color: ${designSystem.colors.light.surfacePrimary};
   border-radius: 0 0 ${designSystem.tokens.borderRadiusForSearchDialog}
@@ -85,12 +84,12 @@ const Content = styled.div`
   );
 
   margin: 0 ${designSystem.dimensions.spacings.m};
-  padding: ${designSystem.dimensions.spacings.s}
-    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.xl};
+  padding: ${designSystem.dimensions.spacings.m}
+    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.m};
 
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     margin: 0 ${designSystem.dimensions.spacings.xl};
-    padding: ${designSystem.dimensions.spacings.s}
+    padding: ${designSystem.dimensions.spacings.m}
       ${designSystem.dimensions.spacings.xl}
       ${designSystem.dimensions.spacings.xl};
   }
@@ -124,6 +123,7 @@ const SearchDialog = (props) => {
   const ref = React.useRef();
   const { onClose } = props;
   const { isClientSide } = useIsClientSide();
+  const [tagFilters, setTagFilters] = useState([]);
 
   React.useEffect(() => {
     const onKeyPress = (event) => {
@@ -151,14 +151,24 @@ const SearchDialog = (props) => {
           >
             {isClientSide && (
               <React.Suspense fallback={<InputPlaceholder />}>
-                <AlgoliaSearch searchInputId={searchInputId} ref={ref}>
-                  <SearchInput
-                    ref={ref}
-                    id={searchInputId}
-                    size="scale"
-                    onClose={props.onClose}
+                <SpacingsStack scale="s">
+                  <AdvancedSearchFilter
+                    filters={tagFilters}
+                    setFilters={setTagFilters}
                   />
-                </AlgoliaSearch>
+                  <AlgoliaSearch
+                    searchInputId={searchInputId}
+                    tagFilters={tagFilters}
+                    ref={ref}
+                  >
+                    <SearchInput
+                      ref={ref}
+                      id={searchInputId}
+                      hideSlash
+                      size="large"
+                    />
+                  </AlgoliaSearch>
+                </SpacingsStack>
               </React.Suspense>
             )}
           </Content>
