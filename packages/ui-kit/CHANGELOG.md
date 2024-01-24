@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 22.11.6
+
+### Patch Changes
+
+- [#1925](https://github.com/commercetools/commercetools-docs-kit/pull/1925) [`a741b14`](https://github.com/commercetools/commercetools-docs-kit/commit/a741b1455ca3d6efd7d5eee1e1468fd37c7562a4) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Initial rebranding, change icons and logo fonts
+
+- [#1922](https://github.com/commercetools/commercetools-docs-kit/pull/1922) [`aa6a8e5`](https://github.com/commercetools/commercetools-docs-kit/commit/aa6a8e5777e31ad43a6a8e0ebeaa3e9a4c82a6f1) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add search filter by tag functionality
+
 ## 22.11.1
 
 ### Patch Changes
