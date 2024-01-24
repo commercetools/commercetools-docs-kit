@@ -36,10 +36,10 @@ const tagsFilterConfig = [
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 
   button {
     flex: 0 0 auto;
+    margin-right: 8px;
     margin-bottom: 5px;
   }
 `;
@@ -73,7 +73,7 @@ const AdvancedSearchFilter: React.FC<AdvancedSearchFilterProps> = (
       <Stack scale="s">
         <Title>Filter by:</Title>
 
-        <SpacingsInline scale="s" alignItems="center">
+        <TagsContainer>
           {tagsFilterConfig.map((tag) =>
             !props.filters.includes(tag.value) ? (
               <SecondaryButton
@@ -97,7 +97,7 @@ const AdvancedSearchFilter: React.FC<AdvancedSearchFilterProps> = (
             )
           )}
           <FlatButton onClick={onClearFilterClick} label="Clear all filters" />
-        </SpacingsInline>
+        </TagsContainer>
       </Stack>
     </FilterContainer>
   );
