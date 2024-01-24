@@ -7,6 +7,7 @@ import SecondaryButton from '@commercetools-uikit/secondary-button';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { CheckThinIcon } from '@commercetools-uikit/icons';
 import { gtagEvent } from '../modules/sso/utils/analytics.utils';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 
 type AdvancedSearchFilterProps = {
   setFilters: (filter: string[]) => void;
@@ -71,7 +72,8 @@ const AdvancedSearchFilter: React.FC<AdvancedSearchFilterProps> = (
     <FilterContainer>
       <Stack scale="s">
         <Title>Filter by:</Title>
-        <TagsContainer>
+
+        <SpacingsInline scale="s" alignItems="center">
           {tagsFilterConfig.map((tag) =>
             !props.filters.includes(tag.value) ? (
               <SecondaryButton
@@ -95,7 +97,7 @@ const AdvancedSearchFilter: React.FC<AdvancedSearchFilterProps> = (
             )
           )}
           <FlatButton onClick={onClearFilterClick} label="Clear all filters" />
-        </TagsContainer>
+        </SpacingsInline>
       </Stack>
     </FilterContainer>
   );
