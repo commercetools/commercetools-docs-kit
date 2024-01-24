@@ -24,14 +24,12 @@ const esmModules = [
   'unist-util-visit',
   'vfile-message',
   '@react-hook',
-  'lord-icon-element',
-  'lottie-web',
 ];
 
 module.exports = {
   displayName: 'test',
   preset: 'jest-preset-gatsby/typescript',
-  setupFilesAfterEnv: ['./setup-test-framework.js', 'jest-canvas-mock'],
+  setupFilesAfterEnv: ['./setup-test-framework.js'],
   modulePathIgnorePatterns: [
     '.cache', // gatsby's temporary generated output
   ],

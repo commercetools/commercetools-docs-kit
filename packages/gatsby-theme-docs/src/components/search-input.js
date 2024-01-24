@@ -28,18 +28,15 @@ const Input = styled.input`
   display: flex;
   flex: 1;
   font-family: inherit;
-  font-size: ${(props) =>
-    props.size === 'large'
-      ? designSystem.typography.fontSizes.body
-      : designSystem.typography.fontSizes.small};
+  font-size: ${designSystem.typography.fontSizes.small};
   height: ${(props) =>
     props.size === 'large'
-      ? designSystem.dimensions.heights.inputSearchPrimaryLarge
-      : designSystem.dimensions.heights.inputSearchPrimary};
+      ? designSystem.dimensions.heights.inputSearchPrimary
+      : designSystem.dimensions.heights.inputSearchSecondary};
   min-height: ${(props) =>
     props.size === 'large'
-      ? designSystem.dimensions.heights.inputSearchPrimaryLarge
-      : designSystem.dimensions.heights.inputSearchPrimary};
+      ? designSystem.dimensions.heights.inputSearchPrimary
+      : designSystem.dimensions.heights.inputSearchSecondary};
   outline: none;
   overflow: hidden;
   padding: 1px
@@ -65,9 +62,19 @@ const Input = styled.input`
 const SearchInputIcon = styled.span`
   position: absolute;
   z-index: ${designSystem.dimensions.stacks.base};
-  top: calc(
-    (${designSystem.dimensions.heights.inputSearchPrimary} - ${iconHeight}) / 2
-  );
+  ${({ size }) =>
+    size === 'large' &&
+    `
+    top: calc((${designSystem.dimensions.heights.inputSearchPrimary} - ${iconHeight}) / 2);
+  `}
+  ${({ size }) =>
+    size !== 'large' &&
+    `
+        top: calc((${designSystem.dimensions.heights.inputSearchSecondary} - ${iconHeight}) / 2);
+  `}
+
+
+
   width: ${designSystem.dimensions.spacings.l};
   display: flex;
   flex-direction: column;
