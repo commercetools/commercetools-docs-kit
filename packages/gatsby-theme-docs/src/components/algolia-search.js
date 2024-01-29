@@ -270,7 +270,7 @@ const AlgoliaSearch = React.forwardRef((props, ref) => {
       // and the only way to do it is to change the input value, this is why I implemented this hack to add or remove an empty space
       // at the end of the input value each time the tagFilters change.
       docSearchClient.algoliaOptions.tagFilters =
-        props.tagFilters.length > 0 ? props.tagFilters : undefined;
+        props.tagFilters.length > 0 ? [props.tagFilters] : undefined;
       const previousText = docSearchClient.input.autocomplete.getVal();
       if (previousText === '') {
         return;
