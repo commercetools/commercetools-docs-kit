@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 22.11.7
+
+### Patch Changes
+
+- [#1926](https://github.com/commercetools/commercetools-docs-kit/pull/1926) [`ac7c665`](https://github.com/commercetools/commercetools-docs-kit/commit/ac7c665807695636930dff60eb9606f8646946e8) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Revert to original logo title font
+
 ## 22.11.6
 
 ### Patch Changes

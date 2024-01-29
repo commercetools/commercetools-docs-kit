@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 22.11.7
+
+### Patch Changes
+
+- [#1929](https://github.com/commercetools/commercetools-docs-kit/pull/1929) [`10a79b8`](https://github.com/commercetools/commercetools-docs-kit/commit/10a79b8285858d98f9bf42e55d3c9416b3fd0290) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Algolia tags search conditions are used in OR
+
+- [#1926](https://github.com/commercetools/commercetools-docs-kit/pull/1926) [`ac7c665`](https://github.com/commercetools/commercetools-docs-kit/commit/ac7c665807695636930dff60eb9606f8646946e8) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Revert to original logo title font
+
+- Updated dependencies [[`ac7c665`](https://github.com/commercetools/commercetools-docs-kit/commit/ac7c665807695636930dff60eb9606f8646946e8)]:
+  - @commercetools-docs/ui-kit@22.11.7
+
 ## 22.11.6
 
 ### Patch Changes
