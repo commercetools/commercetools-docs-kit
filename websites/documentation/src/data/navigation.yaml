@@ -67,6 +67,8 @@
       path: /configuration/deploy
     - title: Troubleshooting
       path: /configuration/troubleshooting
+    - title: Algolia search
+      path: /configuration/algolia-search
 - chapter-title: Developing
   pages:
     - title: Get Started Developing
