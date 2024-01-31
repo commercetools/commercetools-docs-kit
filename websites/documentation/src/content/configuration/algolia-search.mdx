@@ -1,0 +1,44 @@
+---
+title: Algolia search
+beta: false
+---
+
+[Algolia docsearch](https://docsearch.algolia.com/) is the third party service we use to index and search our documentation. It is a hosted search API that allows you to integrate typo-tolerant search into websites.
+
+## Crawler configuration
+
+The crawler is the tool that indexes the documentation. It can be configured by changing the crawler script on the Algolia dashboard. A copy of The crawler script configuration is kept in the [docs-kit repo](https://github.com/commercetools/commercetools-docs-kit/blob/main/algolia-crawler.js). Enablement-team can change this script according to the requirements.
+
+## Search tags definition
+
+Algolia allows to filter the results by tags. The tags are defined in [this file](https://github.com/commercetools/commercetools-docs-kit/blob/main/packages/gatsby-theme-docs/src/components/advanced-search-filter.tsx#L17) in the docs-kit repo. They are currently hard coded meaning that adding/removing or editing a tag requires a new docs-kit release.
+
+## Per site tags configuration
+
+Each doc site can be associated to one or more tag. This is configured in the [metadata section of the site](/./configuration/theme#available-options-for-the-site-metadata). The `products` configuration is an array of strings that must match the tags definitions. If a site has a specific tag added in the `products` configuration, it means that any search perfomed with that specific tag selected, will include results from the site that matches the search string.
+
+If no tags are configured, the site will be still included in the search results but only if no tag filtering is selected in the search interface.
+
+Keep in mind that when selecting more tags in the search interface, will add them as OR conditions meaning that selecting more tags will not narrow down the search.
+
+**Note**: In order to not assign any tag to a site, the `products` configuration must be configured line this `products: ['']`.
+
+### Configuration examples:
+
+Single tag:
+
+```js
+products: ['Frontend'],
+```
+
+Multiple tags:
+
+```js
+products: ['Frontend', 'Checkout'],
+```
+
+No tags:
+
+```js
+products: [''],
+```
