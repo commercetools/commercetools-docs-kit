@@ -47,11 +47,19 @@ new Crawler({
             tags.push(content);
           }
         });
+        // in doubt, penalize microsites that are not product documentation in the
+        // strict sense. It's also possible to set 1 for certain content to boost it.
+        const pageRank =
+          $('#site-title').text() === 'Foundry' ||
+          $('#site-title').text() === 'Offering'
+            ? -1
+            : 0;
 
         $('#body-content *').after(' ');
         return helpers.docsearch({
           // FYI selector documentation: https://github.com/cheeriojs/cheerio#selectors
           recordProps: {
+            pageRank,
             lvl0: {
               selectors: '#site-title',
               defaultValue: 'General Topics',
@@ -146,10 +154,11 @@ new Crawler({
         'exact',
         'custom',
       ],
+      exactOnSingleWordQuery: 'word',
       highlightPreTag: '<span class="algolia-docsearch-suggestion--highlight">',
       highlightPostTag: '</span>',
-      minWordSizefor1Typo: 3,
-      minWordSizefor2Typos: 7,
+      minWordSizefor1Typo: 4,
+      minWordSizefor2Typos: 8,
       allowTyposOnNumericTokens: false,
       minProximity: 1,
       ignorePlurals: true,
