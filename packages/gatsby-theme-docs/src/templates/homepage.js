@@ -9,6 +9,7 @@ import { PageDataContext } from '../hooks/use-page-data';
 import LayoutContentHomepage from '../layouts/content-homepage';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
+import UserGuiding from '../components/user-guiding';
 
 const HomepageTemplate = (props) => (
   <IntlProvider locale="en">
@@ -69,6 +70,7 @@ export function Head({ data, pageContext }) {
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
       />
+      <UserGuiding ugId={'U4I78799B6RID'} />
     </ThemeProvider>
   );
 }
