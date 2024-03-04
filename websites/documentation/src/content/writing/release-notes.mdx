@@ -61,7 +61,7 @@ If there is no more, remove the marker above, too.
 ## Available frontmatters:
 
 - `date` (date, required): A `YYYY-MM-DD` date format (not a text, it's parsed as an ISO date)
-- `orderHint` (number, optional): A number that indicates the order of release notes with the same release date in the RSS feed. Use numbers in ascending order for all the release notes you want to order.
+- `orderHint` (number, optional): Sorts release notes that share a release date within the same microsite. Uses an ascending order with 1 being the most recent release note.
 - `title` (string, required): The title for the website
 - `description` (string, required): Max 256 characters plain text containing the change and its advantage ("tweet-able" and for RSS).
   256 = 280 twitter minus 23 for a link. Do not imply the title, this text is used stand-alone in Merchant Center and other feed recipients. It must convey the value proposition and key change topic.
