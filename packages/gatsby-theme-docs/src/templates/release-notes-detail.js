@@ -9,6 +9,7 @@ import LayoutReleaseNotesDetail from '../layouts/release-notes-detail';
 import LayoutReleaseNoteBody from '../layouts/internals/layout-release-note-body';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
+import UserGuiding from '../components/user-guiding';
 
 const releaseNoteMarkdownComponents = {
   ...markdownComponents,
@@ -68,6 +69,7 @@ export function Head({ data }) {
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.releaseNotePage.excludeFromSearchIndex}
       />
+      <UserGuiding ugId={'U4I78799B6RID'} />
     </ThemeProvider>
   );
 }

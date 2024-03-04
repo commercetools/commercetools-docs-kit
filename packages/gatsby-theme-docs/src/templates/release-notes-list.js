@@ -12,6 +12,7 @@ import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 import useFilteredReleaseNotes from '../hooks/use-filtered-release-notes';
 import GatsbyLink from '../components/link';
+import UserGuiding from '../components/user-guiding';
 
 const ReleaseNotesListTemplate = (props) => {
   const filteredReleaseNotes = useFilteredReleaseNotes(
@@ -98,6 +99,7 @@ export function Head({ data }) {
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
       />
+      <UserGuiding ugId={'U4I78799B6RID'} />
     </ThemeProvider>
   );
 }
