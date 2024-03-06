@@ -4,10 +4,11 @@ import {
   getCourseStatusByCourseId,
 } from './use-course-status';
 
-type CoursePageNode = {
+export type CoursePageNode = {
   slug: string;
   courseId: number;
   topicName: string;
+  learningPathId?: number;
 };
 
 type NavigationPageNode = {

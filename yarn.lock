@@ -3779,6 +3779,50 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@commercetools-uikit/collapsible-motion@npm:16.12.1":
+  version: 16.12.1
+  resolution: "@commercetools-uikit/collapsible-motion@npm:16.12.1"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/hooks": 16.12.1
+    "@commercetools-uikit/utils": 16.12.1
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    lodash: 4.17.21
+    prop-types: 15.8.1
+  peerDependencies:
+    react: 17.x
+  checksum: 11e88839f881c0f617903f715969c5b8c0f571bf5f461d256eb718a143e391d28f2da08da7a88eb15cbfe795995b51427c2f08fea0b30a55e4c69af60220e8df
+  languageName: node
+  linkType: hard
+
+"@commercetools-uikit/collapsible-panel@npm:16.12.1":
+  version: 16.12.1
+  resolution: "@commercetools-uikit/collapsible-panel@npm:16.12.1"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/accessible-button": 16.12.1
+    "@commercetools-uikit/collapsible-motion": 16.12.1
+    "@commercetools-uikit/constraints": 16.12.1
+    "@commercetools-uikit/design-system": 16.12.1
+    "@commercetools-uikit/hooks": 16.12.1
+    "@commercetools-uikit/icons": 16.12.1
+    "@commercetools-uikit/spacings": 16.12.1
+    "@commercetools-uikit/text": 16.12.1
+    "@commercetools-uikit/utils": 16.12.1
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    lodash: 4.17.21
+    prop-types: 15.8.1
+    react-intl: ^6.3.2
+  peerDependencies:
+    react: 17.x
+  checksum: 1197a90d1a8181eeb6996c5cbb2f6e286f30bb031fe7c48dcadbe9f1ad392331e5a78ad4b216e32b9205f2fe47c03fedc60ee30ef7e308289c6257d643ad35f6
+  languageName: node
+  linkType: hard
+
 "@commercetools-uikit/constraints@npm:16.12.1":
   version: 16.12.1
   resolution: "@commercetools-uikit/constraints@npm:16.12.1"
@@ -4515,6 +4559,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-docs": 22.11.7
     "@commercetools-docs/ui-kit": 22.11.7
+    "@commercetools-uikit/collapsible-panel": 16.12.1
     "@commercetools-uikit/icons": 16.12.1
     "@commercetools-uikit/radio-input": 16.12.1
     "@svgr/cli": 8.1.0

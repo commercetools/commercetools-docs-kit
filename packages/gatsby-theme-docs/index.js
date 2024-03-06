@@ -24,6 +24,10 @@ export { default as CourseCard } from './src/modules/self-learning/components/co
 export { default as LearningPathCard } from './src/modules/self-learning/components/learning-path-card';
 export { default as ImageCard } from './src/modules/self-learning/components/image-card';
 export { default as FirstName } from './src/modules/self-learning/components/first-name';
+export * from './src/modules/self-learning/hooks/use-learning-path-info';
+export * from './src/modules/self-learning/hooks/use-course-status';
+
+export { default as useAuthentication } from './src/modules/sso/hooks/use-authentication';
 export {
   IfLearningPathComplete,
   IfLearningPathNotComplete,
