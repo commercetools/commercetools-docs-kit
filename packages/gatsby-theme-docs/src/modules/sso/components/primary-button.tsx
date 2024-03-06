@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-const PrimaryButton = styled.div`
+type PrimaryButtonProps = {
+  size?: string;
+};
+
+const PrimaryButton = styled.div<PrimaryButtonProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,6 +14,7 @@ const PrimaryButton = styled.div`
   gap: ${designSystem.dimensions.spacings.xs};
   color: white;
   cursor: pointer;
+  height: ${(props) => (props.size === 'large' ? '40px' : '32px')};
   background: #227770;
   box-shadow: ${designSystem.tokens.shadowForBetaFlag};
   border-radius: 4px;

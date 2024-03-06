@@ -5,6 +5,9 @@ const useLearningPathPages = (): {
   allContentPage: {
     nodes: CoursePageNode[];
   };
+  allNavigationYaml: {
+    nodes: { chapterTitle: string; path: string }[];
+  };
 } => {
   const data = useStaticQuery(
     graphql`
@@ -20,10 +23,7 @@ const useLearningPathPages = (): {
         allNavigationYaml {
           nodes {
             chapterTitle
-            pages {
-              title
-              path
-            }
+            path
           }
         }
       }
@@ -36,6 +36,7 @@ export const useLearningPathsInfo = (
   learningPathTitles: Record<number, { title: string }>
 ) => {
   const { allContentPage } = useLearningPathPages();
+
   const learningPaths = allContentPage.nodes.reduce((acc, node) => {
     if (!node.learningPathId) {
       return acc;

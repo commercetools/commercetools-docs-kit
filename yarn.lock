@@ -4561,7 +4561,9 @@ __metadata:
     "@commercetools-docs/ui-kit": 22.11.7
     "@commercetools-uikit/collapsible-panel": 16.12.1
     "@commercetools-uikit/icons": 16.12.1
+    "@commercetools-uikit/primary-button": 16.12.1
     "@commercetools-uikit/radio-input": 16.12.1
+    "@commercetools-uikit/secondary-button": 16.12.1
     "@svgr/cli": 8.1.0
     gatsby: 5.12.12
     gatsby-cli: 5.12.4
