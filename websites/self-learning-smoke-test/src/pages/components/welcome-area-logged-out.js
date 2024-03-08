@@ -6,13 +6,20 @@ import { LoginButton } from '@commercetools-docs/gatsby-theme-docs';
 
 const WelcomeAreaLoggedOut = () => {
   const TextSalutation = styled.h3`
-    font-size: ${designSystem.typography.fontSizes.h1};
+    font-size: ${designSystem.typography.fontSizes.h2};
     color: ${designSystem.colors.light.textPrimary};
+
+    @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+      font-size: ${designSystem.typography.fontSizes.h1};
+    }
   `;
 
   const AdditonalText = styled.p`
-    font-size: ${designSystem.typography.fontSizes.h2};
+    font-size: ${designSystem.typography.fontSizes.h4};
     color: ${designSystem.colors.light.textPrimary};
+    @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+      font-size: ${designSystem.typography.fontSizes.h2};
+    }
   `;
 
   const Container = styled.div`

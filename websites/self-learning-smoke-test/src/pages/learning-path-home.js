@@ -10,6 +10,10 @@ import FullWidthContainer from './components/full-width-container';
 import styled from '@emotion/styled';
 import WelcomeAreaLoggedIn from './components/welcome-area-logged-in';
 import WelcomeAreaLoggedOut from './components/welcome-area-logged-out';
+import CertificationsSection from './components/certifications-section';
+import RefresherSection from './components/refresher-section';
+import { designSystem } from '@commercetools-docs/ui-kit';
+import AchieveGoalsSection from './components/achieve-goals-section';
 
 const LEARNING_PATHS_TITLES = {
   86: { title: 'Administrator learning path' },
@@ -38,7 +42,13 @@ const Container = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  width: 80%;
+  width: 100%;
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    width: 80%;
+  }
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    width: 95%;
+  }
   max-width: 1140px;
   margin: 0 auto;
 `;
@@ -57,8 +67,9 @@ const PageLearningPathHomeContent = () => {
             coursesInfo={COURSES_INFO}
           ></EnrolledLearningPaths>
         )}
+        {!isAuthenticated && <AchieveGoalsSection />}
       </ContentWrapper>
-      <FullWidthContainer>
+      {/* <FullWidthContainer>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat
         nibh et elit mollis, nec tristique dui pharetra. Sed tempus quam eu quam
         tempus, a vulputate leo posuere. Vestibulum lacinia dapibus leo eu
@@ -66,70 +77,13 @@ const PageLearningPathHomeContent = () => {
         quam, mattis ac sodales quis, venenatis in nulla. Donec nec pulvinar
         mauris, nec sagittis ante. Ut id elit sodales, accumsan eros ut,
         pulvinar mi. Pellentesque in neque nulla. Donec ultrices urna mollis,
-        convallis tellus vel, tempus orci. Vivamus tortor neque, gravida at erat
-        eu, consequat elementum lacus. Quisque sed nulla sed velit cursus mauris
-        quis diam rutrum varius. Pellentesque habitant morbi tristique senectus
-        et netus et malesuada fames ac turpis egestas. Phasellus at ligula ut
-        libero mattis cursus. Nunc vulputate arcu in ante imperdiet accumsan.
-        Nullam pulvinar commodo magna, sit amet vehicula mauris consequat in.
-        Curabitur auctor ipsum id diam mattis, a pretium odio finibus. Ut nunc
-        libero, suscipit eget facilisis et, posuere vel est. Suspendisse non
-        nisi felis. Nullam nec augue purus. Cras lacinia commodo fringilla. Cras
-        eget est nec nibh rutrum feugiat vel eget nibh. Nulla non massa
-        porttitor, hendrerit neque vitae, efficitur dui. Curabitur tempus
-        vestibulum enim, a ullamcorper diam eleifend eu. Maecenas eleifend
-        libero et posuere interdum. Etiam eget tincidunt augue. Integer Lorem
-        ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nibh et
-        elit mollis, nec tristique dui pharetra. Sed tempus quam eu quam tempus,
-        a vulputate leo posuere. Vestibulum lacinia dapibus leo eu convallis.
-        Vestibulum gravida nisi ac pretium viverra. Quisque erat quam, mattis ac
-        sodales quis, venenatis in nulla. Donec nec pulvinar mauris, nec
-        sagittis ante. Ut id elit sodales, accumsan eros ut, pulvinar mi.
-        Pellentesque in neque nulla. Donec ultrices urna mollis, convallis
-        tellus vel, tempus orci. Vivamus tortor neque, gravida at erat eu,
-        consequat elementum lacus. Quisque sed nulla sed velit cursus gravida at
-        sit amet ante. Ut dictum est id mi efficitur luctus. Cras auctor, orci
-        ut congue aliquet, eros sem eleifend purus, sit amet hendrerit massa
-        nunc vel leo. Vestibulum vitae nisi eu erat efficitur finibus.
-        Vestibulum efficitur, tellus eu maximus scelerisque, urna nunc
-        sollicitudin orci, et egestas leo velit eget enim. Vestibulum eget
-        mauris quis diam rutrum varius. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas. Phasellus at
-        ligula ut libero mattis cursus. Nunc vulputate arcu in ante imperdiet
-        accumsan. Nullam pulvinar commodo magna, sit amet vehicula mauris
-        consequat in. Curabitur auctor ipsum id diam mattis, a pretium odio
-        finibus. Ut nunc libero, suscipit eget facilisis et, posuere vel est.
-        Suspendisse non nisi felis. Nullam nec augue purus. Cras lacinia commodo
-        fringilla. Cras eget est nec nibh rutrum feugiat vel eget nibh. Nulla
-        non massa porttitor, hendrerit neque vitae, efficitur dui. Curabitur
-        tempus vestibulum enim, a ullamcorper diam eleifend eu. Maecenas
-        eleifend libero et posuere interdum. Etiam eget tincidunt augue. Integer
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat
-        nibh et elit mollis, nec tristique dui pharetra. Sed tempus quam eu quam
-        tempus, a vulputate leo posuere. Vestibulum lacinia dapibus leo eu
-        convallis. Vestibulum gravida nisi ac pretium viverra. Quisque erat
-        quam, mattis ac sodales quis, venenatis in nulla. Donec nec pulvinar
-        mauris, nec sagittis ante. Ut id elit sodales, accumsan eros ut,
-        pulvinar mi. Pellentesque in neque nulla. Donec ultrices urna mollis,
-        convallis tellus vel, tempus orci. Vivamus tortor neque, gravida at erat
-        eu, consequat elementum lacus. Quisque sed nulla sed velit cursus
-        gravida at sit amet ante. Ut dictum est id mi efficitur luctus. Cras
-        auctor, orci ut congue aliquet, eros sem eleifend purus, sit amet
-        hendrerit massa nunc vel leo. Vestibulum vitae nisi eu erat efficitur
-        finibus. Vestibulum efficitur, tellus eu maximus scelerisque, urna nunc
-        sollicitudin orci, et egestas leo velit eget enim. Vestibulum eget
-        mauris quis diam rutrum varius. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas. Phasellus at
-        ligula ut libero mattis cursus. Nunc vulputate arcu in ante imperdiet
-        accumsan. Nullam pulvinar commodo magna, sit amet vehicula mauris
-        consequat in. Curabitur auctor ipsum id diam mattis, a pretium odio
-        finibus. Ut nunc libero, suscipit eget facilisis et, posuere vel est.
-        Suspendisse non nisi felis. Nullam nec augue purus. Cras lacinia commodo
-        fringilla. Cras eget est nec nibh rutrum feugiat vel eget nibh. Nulla
-        non massa porttitor, hendrerit neque vitae, efficitur dui. Curabitur
-        tempus vestibulum enim, a ullamcorper diam eleifend eu. Maecenas
-        eleifend libero et posuere interdum. Etiam eget tincidunt augue. Integer
-      </FullWidthContainer>
+      </FullWidthContainer> */}
+      <ContentWrapper>
+        <CertificationsSection />
+      </ContentWrapper>
+      <ContentWrapper>
+        <RefresherSection />
+      </ContentWrapper>
     </Container>
   );
 };

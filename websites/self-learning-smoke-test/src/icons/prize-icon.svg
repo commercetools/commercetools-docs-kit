@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="430"
+    style="width:100%;height:100%;transform:translate3d(0,0,0);content-visibility:visible" viewBox="0 0 430 430">
+    <defs>
+        <clipPath id="a">
+            <path d="M0 0h430v430H0z" />
+        </clipPath>
+        <clipPath id="e">
+            <path d="M0 0h430v430H0z" />
+        </clipPath>
+        <clipPath id="d">
+            <path d="M0 0h430v430H0z" />
+        </clipPath>
+        <clipPath id="c">
+            <path d="M0 0h430v430H0z" />
+        </clipPath>
+        <clipPath id="b">
+            <path d="M0 0h430v430H0z" />
+        </clipPath>
+    </defs>
+    <g clip-path="url(#a)">
+        <g clip-path="url(#b)" style="display:none">
+            <g style="display:none">
+                <path class="primary" />
+                <path class="primary" style="mix-blend-mode:multiply" />
+            </g>
+            <path class="primary" style="display:none" />
+            <g style="display:none">
+                <path class="primary" />
+                <path class="primary" style="mix-blend-mode:multiply" />
+            </g>
+            <path class="primary" style="display:none" />
+            <path class="tertiary" style="display:none" />
+            <g style="display:none">
+                <path class="secondary" />
+                <path class="secondary" />
+                <path class="secondary" style="mix-blend-mode:multiply" />
+            </g>
+            <path class="secondary" style="mix-blend-mode:multiply;display:none" />
+        </g>
+        <g clip-path="url(#c)" style="display:none">
+            <g style="display:none">
+                <path class="primary" />
+                <path class="primary" style="mix-blend-mode:multiply" />
+            </g>
+            <path class="primary" style="display:none" />
+            <g style="display:none">
+                <path class="primary" />
+                <path class="primary" style="mix-blend-mode:multiply" />
+            </g>
+            <path class="primary" style="display:none" />
+            <path class="tertiary" style="display:none" />
+            <g style="display:none">
+                <path class="secondary" />
+                <path class="secondary" />
+                <path class="secondary" style="mix-blend-mode:multiply" />
+            </g>
+            <path class="secondary" style="mix-blend-mode:multiply;display:none" />
+        </g>
+        <g clip-path="url(#d)" style="display:none">
+            <g style="display:none">
+                <path class="primary" />
+                <path class="primary" style="mix-blend-mode:multiply" />
+            </g>
+            <path class="primary" style="display:none" />
+            <g style="display:none">
+                <path class="primary" />
+                <path class="primary" style="mix-blend-mode:multiply" />
+            </g>
+            <path class="primary" style="display:none" />
+            <path class="tertiary" style="display:none" />
+            <g style="display:none">
+                <path class="secondary" />
+                <path class="secondary" />
+                <path class="secondary" style="mix-blend-mode:multiply" />
+            </g>
+            <path class="secondary" style="mix-blend-mode:multiply;display:none" />
+        </g>
+        <g clip-path="url(#e)" style="display:block">
+            <g fill="#09938F" style="display:block">
+                <path d="M205 268.898 266.131 400l25.042-55.208 58.381 16.3L288.423 230" class="primary" />
+                <path fill-opacity=".5" d="M-72.277-46.102-11.146 85l25.042-55.208 58.381 16.3L11.146-85"
+                    class="primary" style="mix-blend-mode:multiply" transform="translate(277.277 315)" />
+            </g>
+            <path fill="#09938F" d="m244.631 254 46.542 90.792 58.381 16.3L288.423 230" class="primary"
+                style="display:block" />
+            <g fill="#09938F" style="display:block">
+                <path d="M224.554 268.908 163.423 400l-25.042-55.208L80 361.102 141.131 230" class="primary" />
+                <path fill-opacity=".5" d="M72.277-46.092 11.146 85l-25.042-55.208-58.381 16.31L-11.146-85"
+                    class="primary" style="mix-blend-mode:multiply" transform="translate(152.277 315)" />
+            </g>
+            <path fill="#09938F" d="M224.554 268.908 163.423 400l-25.042-55.208L192.131 230" class="primary"
+                style="display:block" />
+            <path fill="#242466"
+                d="M357.913 195.612c9.439-8.263 9.439-22.949 0-31.212l-14.626-12.805a10.37 10.37 0 0 1-2.985-11.15l6.264-18.369c4.054-11.888-3.304-24.623-15.628-27.047l-19.046-3.747a10.37 10.37 0 0 1-8.173-8.173l-3.747-19.046c-2.424-12.324-15.159-19.682-27.047-15.628l-18.368 6.264a10.37 10.37 0 0 1-11.151-2.986l-12.803-14.628c-8.264-9.442-22.952-9.442-31.216 0l-12.803 14.628a10.37 10.37 0 0 1-11.151 2.986l-18.368-6.264c-11.888-4.054-24.623 3.304-27.047 15.628l-3.747 19.046a10.37 10.37 0 0 1-8.173 8.173l-19.046 3.747c-12.324 2.424-19.682 15.159-15.628 27.047l6.264 18.369a10.37 10.37 0 0 1-2.985 11.15L72.077 164.4c-9.439 8.263-9.439 22.949 0 31.212l14.626 12.805a10.37 10.37 0 0 1 2.985 11.15l-6.264 18.369c-4.054 11.888 3.304 24.623 15.628 27.047l19.046 3.747a10.371 10.371 0 0 1 8.174 8.173l3.746 19.041c2.425 12.321 15.156 19.678 27.042 15.628l18.375-6.261a10.37 10.37 0 0 1 11.148 2.985l12.806 14.628c8.263 9.439 22.949 9.439 31.212 0l12.805-14.626a10.37 10.37 0 0 1 11.15-2.985l18.369 6.264c11.888 4.054 24.623-3.304 27.047-15.628l3.747-19.046a10.37 10.37 0 0 1 8.173-8.173l19.046-3.747c12.324-2.424 19.682-15.159 15.628-27.047l-6.264-18.369a10.37 10.37 0 0 1 2.985-11.15l14.626-12.805z"
+                class="tertiary" style="display:block" />
+            <g fill="#FFD03A" style="display:block">
+                <path d="M215 280c55.228 0 100-44.772 100-100S270.228 80 215 80s-100 44.772-100 100 44.772 100 100 100z"
+                    class="secondary" />
+                <path
+                    d="M199.55 160.83 215 129.69l15.45 31.14 34.55 5-25.01 24.25 5.92 34.23L215 208.15l-30.91 16.16 5.92-34.23L165 165.83l34.55-5z"
+                    class="secondary" />
+                <path
+                    d="M-15.45-19.17 0-50.31l15.45 31.14 34.55 5-25.01 24.25 5.92 34.23L0 28.15l-30.91 16.16 5.92-34.23L-50-14.17l34.55-5z"
+                    class="secondary" style="mix-blend-mode:multiply" transform="translate(215 180)" />
+            </g>
+            <g opacity=".5" style="mix-blend-mode:multiply;display:block">
+                <path fill="#FFD03A"
+                    d="M292.814 243.314C275.646 257.19 253.794 265.5 230 265.5c-55.228 0-100-44.772-100-100 0-23.794 8.31-45.646 22.186-62.814C129.504 121.018 115 149.065 115 180.5c0 55.228 44.772 100 100 100 31.435 0 59.482-14.505 77.814-37.186z"
+                    class="secondary" opacity="1" />
+            </g>
+        </g>
+    </g>
+</svg>

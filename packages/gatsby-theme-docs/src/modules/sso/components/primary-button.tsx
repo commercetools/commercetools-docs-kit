@@ -15,9 +15,12 @@ const PrimaryButton = styled.div<PrimaryButtonProps>`
   color: white;
   cursor: pointer;
   height: ${(props) => (props.size === 'large' ? '40px' : '32px')};
-  background: #227770;
+  background: ${designSystem.colors.light.selfLearningLoginButton};
   box-shadow: ${designSystem.tokens.shadowForBetaFlag};
   border-radius: 4px;
+  :hover {
+    background: ${designSystem.colors.light.selfLearningLoginButtonHover};
+  }
 
   p {
     font-size: ${designSystem.typography.fontSizes.small};

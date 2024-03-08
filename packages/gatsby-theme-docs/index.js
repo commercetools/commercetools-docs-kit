@@ -22,6 +22,7 @@ export * from './src/hooks/use-site-data';
 export * from './src/hooks/use-page-data';
 export { default as CourseCard } from './src/modules/self-learning/components/course-card';
 export { default as LearningPathCard } from './src/modules/self-learning/components/learning-path-card';
+export { default as RefresherCard } from './src/modules/self-learning/components/refresher-card';
 export { default as ImageCard } from './src/modules/self-learning/components/image-card';
 export { default as FirstName } from './src/modules/self-learning/components/first-name';
 export * from './src/modules/self-learning/hooks/use-learning-path-info';
