@@ -86,7 +86,7 @@ const AchieveGoalsSection = () => {
           <Column>
             <ColumnContent>
               <LordIcon
-                iconName="programming-book"
+                iconName="book"
                 height="80"
                 width="80"
                 trigger="hover"

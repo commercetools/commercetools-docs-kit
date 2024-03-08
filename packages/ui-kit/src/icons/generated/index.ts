@@ -10,6 +10,7 @@ export { default as LogoHorizontalSvgIcon } from './LogoHorizontal';
 export { default as LogoSvgIcon } from './Logo';
 export { default as LordIconApiSvgIcon } from './LordIconApi';
 export { default as LordIconBookShelfSvgIcon } from './LordIconBookShelf';
+export { default as LordIconBookSvgIcon } from './LordIconBook';
 export { default as LordIconBuildingSvgIcon } from './LordIconBuilding';
 export { default as LordIconCommandSvgIcon } from './LordIconCommand';
 export { default as LordIconDocumentSvgIcon } from './LordIconDocument';
