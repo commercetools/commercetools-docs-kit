@@ -2,12 +2,13 @@ export const config = {
   learningPaths: [
     {
       id: 86,
-      title: 'Developer Learning Path',
+      title: 'Administrator',
       description:
-        'This learning path is great for users who administer and configure Composable Commerce, primarily work with a user interface, and have some familiarity with APIs.',
-      duration: '20 hours (including practice time) | 8 modules',
+        'Tailored for administrators who create/maintain commerce data points, primarily work with a user interface, and have some familiarity with APIs.',
+      duration: '20 hours  | 8 modules',
       product: 'Composable Commerce',
       href: 'learning-composable-commerce-administrator/organizations-and-projects/overview',
+      icon: 'spreadsheet2',
       courses: [
         {
           id: 66,
@@ -29,7 +30,13 @@ export const config = {
     },
     {
       id: 85,
-      title: 'Developer learning path',
+      title: 'Developer',
+      description:
+        'Tailored for developers with sound programming skills who create and maintain resources in their Composable Commerce Projects using one of the SDKs.',
+      duration: '25 hours | 8 courses',
+      product: 'Composable Commerce',
+      href: 'learning-composable-commerce-administrator/organizations-and-projects/overview',
+      icon: 'cli',
       courses: [
         {
           id: 55,

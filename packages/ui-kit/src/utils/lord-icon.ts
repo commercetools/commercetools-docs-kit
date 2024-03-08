@@ -15,6 +15,8 @@ import Bookshelf from '../icons/generated/LordIconBookShelf';
 import Book from '../icons/generated/LordIconBook';
 import ProgrammingBook from '../icons/generated/LordIconProgrammingBook';
 import Questionnaire from '../icons/generated/LordIconQuestionnaire';
+import Cli from '../icons/generated/LordIconCli';
+import Spreadsheet2 from '../icons/generated/LordIconSpreadsheet2';
 import UnlockedJson from '../icons/lord-icon/unlocked.json';
 import PackageJson from '../icons/lord-icon/package.json';
 import LoginJson from '../icons/lord-icon/login.json';
@@ -32,6 +34,8 @@ import BookshelfJson from '../icons/lord-icon/book-shelf.json';
 import ProgrammingBookJson from '../icons/lord-icon/programming-book.json';
 import QuestionnaireJson from '../icons/lord-icon/questionnaire.json';
 import BookJson from '../icons/lord-icon/book.json';
+import CliJson from '../icons/lord-icon/cli.json';
+import Spreadsheet2Json from '../icons/lord-icon/spreadsheet2.json';
 import { IconData } from 'lord-icon-element/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -53,6 +57,8 @@ const iconNameToSvgMap: Record<string, any> = {
   programmingBook: ProgrammingBook,
   questionnaire: Questionnaire,
   book: Book,
+  cli: Cli,
+  spreadsheet2: Spreadsheet2,
 };
 
 const iconNameToLottieJSON: Record<string, object> = {
@@ -73,6 +79,8 @@ const iconNameToLottieJSON: Record<string, object> = {
   programmingBook: ProgrammingBookJson,
   questionnaire: QuestionnaireJson,
   book: BookJson,
+  cli: CliJson,
+  spreadsheet2: Spreadsheet2Json,
 };
 
 export const getStaticSvgComponent = (iconName: string) => {

@@ -10,39 +10,52 @@ const Container = styled.div`
 `;
 
 const BackgroundLayer = styled.div`
+  z-index: 0;
   position: relative;
   width: 100%;
   height: 100%;
 `;
 
 const LeftGrassIconContainer = styled.div`
+  z-index: -1;
   display: none;
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    display: block;
-  }
   position: absolute;
   left: -72px;
+
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    display: block;
+    top: 128px;
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    display: block;
+    top: 0;
+  }
   svg {
     rotate: 60deg;
   }
 `;
 
 const RightGrassIconContainer = styled.div`
+  z-index: -1;
+
   display: none;
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
     display: block;
   }
   position: absolute;
-  right: 0;
+  right: 7px;
   bottom: 35px;
   svg {
     rotate: 245deg;
   }
 `;
 const ContentWrapper = styled.div`
-  width: 80%;
-  max-width: 1140px;
-  margin: 0 auto;
+  margin: 0 5%;
+
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    margin: 0 auto;
+    max-width: 886px;
+  }
 `;
 
 const FullWidthContainer = ({ children }) => {

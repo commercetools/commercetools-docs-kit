@@ -14,6 +14,7 @@ import CertificationsSection from './components/certifications-section';
 import RefresherSection from './components/refresher-section';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import AchieveGoalsSection from './components/achieve-goals-section';
+import LearningPathsSection from './components/learning-paths-section';
 
 const LEARNING_PATHS_TITLES = {
   86: { title: 'Administrator learning path' },
@@ -69,15 +70,9 @@ const PageLearningPathHomeContent = () => {
         )}
         {!isAuthenticated && <AchieveGoalsSection />}
       </ContentWrapper>
-      {/* <FullWidthContainer>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat
-        nibh et elit mollis, nec tristique dui pharetra. Sed tempus quam eu quam
-        tempus, a vulputate leo posuere. Vestibulum lacinia dapibus leo eu
-        convallis. Vestibulum gravida nisi ac pretium viverra. Quisque erat
-        quam, mattis ac sodales quis, venenatis in nulla. Donec nec pulvinar
-        mauris, nec sagittis ante. Ut id elit sodales, accumsan eros ut,
-        pulvinar mi. Pellentesque in neque nulla. Donec ultrices urna mollis,
-      </FullWidthContainer> */}
+      <FullWidthContainer>
+        <LearningPathsSection />
+      </FullWidthContainer>
       <ContentWrapper>
         <CertificationsSection />
       </ContentWrapper>
