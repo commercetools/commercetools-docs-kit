@@ -3,6 +3,7 @@ import {
   ThemeProvider,
   useLearningPathsInfo,
   useAuthentication,
+  useFetchBadges,
 } from '@commercetools-docs/gatsby-theme-docs';
 import LayoutLearningHome from '../layouts/learning-home';
 import EnrolledLearningPaths from './components/enrolled-learning-paths';
@@ -58,6 +59,7 @@ const ContentWrapper = styled.div`
 const PageLearningPathHomeContent = () => {
   const { isAuthenticated } = useAuthentication();
   const learningPathsInfo = useLearningPathsInfo(LEARNING_PATHS_TITLES);
+  const { data: badgesData } = useFetchBadges();
 
   return (
     <Container>
@@ -69,7 +71,9 @@ const PageLearningPathHomeContent = () => {
             coursesInfo={COURSES_INFO}
           ></EnrolledLearningPaths>
         )}
-        {isAuthenticated && <AchievementsSection />}
+        {isAuthenticated && badgesData?.result?.badges && (
+          <AchievementsSection badges={badgesData.result.badges} />
+        )}
         {!isAuthenticated && <AchieveGoalsSection />}
       </ContentWrapper>
       <FullWidthContainer>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { CopyIcon, InfoIcon } from '@commercetools-uikit/icons';
+import PropTypes from 'prop-types';
 import Card from '@commercetools-uikit/card';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -9,6 +10,7 @@ import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import Tooltip from '@commercetools-uikit/tooltip';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import Stamp from '@commercetools-uikit/stamp';
+import BadgeImage from './badge-image';
 
 const SectionTitle = styled.h3`
   font-size: ${designSystem.typography.fontSizes.h3};
@@ -111,7 +113,47 @@ const MiniLink = styled.div`
   }
 `;
 
-const AchievementsSection = () => {
+const getToneByStatus = (status) => {
+  switch (status) {
+    case 'up to date':
+      return 'primary';
+    case 'up for renewal':
+      return 'warning';
+    case 'outdated':
+      return 'secondary';
+    default:
+      return 'secondary';
+  }
+};
+
+const getDescByStatus = (status) => {
+  const currYear = new Date().getFullYear();
+  switch (status) {
+    case 'up to date':
+      return (
+        <p>
+          Your certification is up to date. Next renewal period will open in
+          March {currYear + 1}.
+        </p>
+      );
+    case 'up for renewal':
+      return (
+        <p>
+          To keep your certification up to date, you need to pass the
+          certification renewal exam by the end of October {currYear}.
+        </p>
+      );
+    default:
+      return (
+        <p>
+          Your certification is outdated. <a href=".">Learn how</a> to get
+          certified again.
+        </p>
+      );
+  }
+};
+
+const AchievementsSection = (props) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const toggleFunction = () => {
     setIsExpanded((prevIsExpanded) => !prevIsExpanded);
@@ -132,88 +174,60 @@ const AchievementsSection = () => {
           onToggle={() => toggleFunction()}
         >
           <SpacingsStack scale="m">
-            <Card type="raised">
-              <AchivementContainer>
-                <BadgeContainer>
-                  <img
-                    alt="Badge"
-                    src={`https://learn.commercetools.com/pluginfile.php/1/badges/badgeimage/26/f3`}
-                  />
-                </BadgeContainer>
-                <InfoContainer>
-                  <SpacingsStack scale="l">
-                    <TextWrapper>
-                      Composable Commerce Functional Architect{' '}
-                      <Stamp label="2021" tone="warning" isCondensed />
-                    </TextWrapper>
-                    <Spacings.Inline scale="s">
-                      <p>
-                        To keep your certification up to date, you need to pass
-                        the certification renewal exam by the end of October
-                        2024.
-                      </p>
-                      <InfoButtonWrapper>
-                        <Tooltip
-                          placement="top"
-                          title="Certification renewal exams are instrumental in ensuring that your skills, knowledge, and certifications remain up to date."
-                        >
-                          <InfoIcon color="primary" />
-                        </Tooltip>
-                      </InfoButtonWrapper>
-                    </Spacings.Inline>
+            {props.badges.map((badge) => (
+              <Card key={badge.category} type="raised">
+                <AchivementContainer>
+                  <BadgeContainer>
+                    <img
+                      src={`https://learning-api.commercetools.vercel.app/api/badges/image/${badge.imageId}`}
+                      alt={`Badge ${badge.name}`}
+                    />
+                    <BadgeImage imageId={badge.imageId} />
+                  </BadgeContainer>
+                  <InfoContainer>
+                    <SpacingsStack scale="l">
+                      <TextWrapper>
+                        {badge.name}{' '}
+                        <Stamp
+                          label={badge.yearTag}
+                          tone={getToneByStatus(badge.status)}
+                          isCondensed
+                        />
+                      </TextWrapper>
+                      <Spacings.Inline scale="s">
+                        {getDescByStatus(badge.status, badge.yearTag)}
+                        <InfoButtonWrapper>
+                          {badge.status === 'up for renewal' && (
+                            <Tooltip
+                              placement="top"
+                              title="Certification renewal exams are instrumental in ensuring that your skills, knowledge, and certifications remain up to date."
+                            >
+                              <InfoIcon color="primary" />
+                            </Tooltip>
+                          )}
+                        </InfoButtonWrapper>
+                      </Spacings.Inline>
 
-                    <MiniLink>
-                      Copy shareable link{' '}
-                      <CopyIcon size="medium" color="primary"></CopyIcon>
-                    </MiniLink>
-                  </SpacingsStack>
-                </InfoContainer>
-                <ActionContainer>
-                  <PrimaryButton label="Renew your certification" />
-                </ActionContainer>
-              </AchivementContainer>
-            </Card>
-            <Card type="raised">
-              <AchivementContainer>
-                <BadgeContainer>
-                  <img
-                    alt="Badge"
-                    src={`https://learn.commercetools.com/pluginfile.php/1/badges/badgeimage/26/f3`}
-                  />
-                </BadgeContainer>
-                <InfoContainer>
-                  <SpacingsStack scale="m">
-                    <TextWrapper>
-                      Composable Commerce Functional Architect{' '}
-                      <Stamp label="2021" tone="warning" isCondensed />
-                    </TextWrapper>
-                    <Spacings.Inline scale="s">
-                      <p>
-                        To keep your certification up to date, you need to pass
-                        the certification renewal exam by the end of October
-                        2024.
-                      </p>
-                      <InfoButtonWrapper>
-                        <Tooltip
-                          placement="top"
-                          title="Certification renewal exams are instrumental in ensuring that your skills, knowledge, and certifications remain up to date."
+                      {badge.status === 'outdated' && (
+                        <MiniLink
+                          onClick={() =>
+                            navigator.clipboard.writeText(badge.shareableLink)
+                          }
                         >
-                          <InfoIcon color="primary" />
-                        </Tooltip>
-                      </InfoButtonWrapper>
-                    </Spacings.Inline>
-
-                    <MiniLink>
-                      Copy shareable link{' '}
-                      <CopyIcon size="medium" color="primary"></CopyIcon>
-                    </MiniLink>
-                  </SpacingsStack>
-                </InfoContainer>
-                <ActionContainer>
-                  <PrimaryButton label="Renew your certification" />
-                </ActionContainer>
-              </AchivementContainer>
-            </Card>
+                          Copy shareable link{' '}
+                          <CopyIcon size="medium" color="primary"></CopyIcon>
+                        </MiniLink>
+                      )}
+                    </SpacingsStack>
+                  </InfoContainer>
+                  <ActionContainer>
+                    {badge.status === 'up for renewal' && (
+                      <PrimaryButton label="Renew your certification" />
+                    )}
+                  </ActionContainer>
+                </AchivementContainer>
+              </Card>
+            ))}
           </SpacingsStack>
         </CollapsiblePanel>
       </SpacingsStack>
@@ -222,3 +236,15 @@ const AchievementsSection = () => {
 };
 
 export default AchievementsSection;
+AchievementsSection.propTypes = {
+  badges: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      status: PropTypes.string,
+      yearTag: PropTypes.string,
+      shareableLink: PropTypes.string,
+      category: PropTypes.string,
+      imageId: PropTypes.string,
+    })
+  ),
+};

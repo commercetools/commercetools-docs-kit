@@ -28,6 +28,7 @@ export { default as ImageCard } from './src/modules/self-learning/components/ima
 export { default as FirstName } from './src/modules/self-learning/components/first-name';
 export * from './src/modules/self-learning/hooks/use-learning-path-info';
 export * from './src/modules/self-learning/hooks/use-course-status';
+export * from './src/modules/self-learning/hooks/use-badges';
 
 export { default as useAuthentication } from './src/modules/sso/hooks/use-authentication';
 export {
