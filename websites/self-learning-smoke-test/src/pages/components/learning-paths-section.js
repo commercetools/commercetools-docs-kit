@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { LearningPathCard } from '@commercetools-docs/gatsby-theme-docs';
 import LearningPathCardHome from '@commercetools-docs/gatsby-theme-docs/src/modules/self-learning/components/learning-path-card-home';
-import { config } from './learning-path-home-config';
+import config from './learning-path-home-config';
 
 const Subtitle = styled.h4`
   color: ${designSystem.colors.light.textInverted};

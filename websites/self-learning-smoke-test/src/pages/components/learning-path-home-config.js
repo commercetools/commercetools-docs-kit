@@ -1,4 +1,4 @@
-export const config = {
+const config = {
   learningPaths: [
     {
       id: 86,
@@ -58,3 +58,5 @@ export const config = {
     },
   ],
 };
+
+export default config;
