@@ -24,29 +24,61 @@ const SectionWrapper = styled.div`
   a:hover {
     color: ${designSystem.colors.light.linkHover};
   }
-  display: none;
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    display: block;
-  }
 `;
 
 const AchivementContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    flex-wrap: nowrap;
+  }
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
 `;
 const BadgeContainer = styled.div`
+  order: 1;
   width: 100px;
   display: flex;
   align-items: center;
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    order: 2;
+    padding-bottom: ${designSystem.dimensions.spacings.l};
+    padding-top: ${designSystem.dimensions.spacings.l};
+  }
 `;
 
 const InfoContainer = styled.div`
+  order: 2;
   margin-left: ${designSystem.dimensions.spacings.xl};
   flex: 1;
   display: flex;
+  min-width: 320px;
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    order: 1;
+
+    min-width: 0;
+    margin-left: 0;
+  }
 `;
 
 const ActionContainer = styled.div`
-  width: 300px;
+  order: 3;
+  width: fit-content;
+  padding-top: 0;
+
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
+    padding-top: ${designSystem.dimensions.spacings.l};
+  }
+  @media screen and (${designSystem.dimensions.viewports.desktop}) {
+    width: 300px;
+    padding-top: 0;
+  }
+  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
+    flex-wrap: nowrap;
+    padding-top: 0;
+  }
   text-align: right;
 `;
 
