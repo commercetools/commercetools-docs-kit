@@ -10,7 +10,6 @@ import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import Tooltip from '@commercetools-uikit/tooltip';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import Stamp from '@commercetools-uikit/stamp';
-import BadgeImage from './badge-image';
 
 const SectionTitle = styled.h3`
   font-size: ${designSystem.typography.fontSizes.h3};
@@ -48,6 +47,10 @@ const BadgeContainer = styled.div`
     order: 2;
     padding-bottom: ${designSystem.dimensions.spacings.l};
     padding-top: ${designSystem.dimensions.spacings.l};
+  }
+
+  img {
+    opacity: ${(props) => (props.status === 'outdated' ? '0.2' : '1')};
   }
 `;
 
@@ -177,12 +180,11 @@ const AchievementsSection = (props) => {
             {props.badges?.map((badge) => (
               <Card key={badge.category} type="raised">
                 <AchivementContainer>
-                  <BadgeContainer>
+                  <BadgeContainer status={badge.status}>
                     <img
                       src={`https://learning-api.commercetools.vercel.app/api/badges/image/${badge.imageId}`}
                       alt={`Badge ${badge.name}`}
                     />
-                    <BadgeImage imageId={badge.imageId} />
                   </BadgeContainer>
                   <InfoContainer>
                     <SpacingsStack scale="l">
@@ -208,7 +210,7 @@ const AchievementsSection = (props) => {
                         </InfoButtonWrapper>
                       </Spacings.Inline>
 
-                      {badge.status === 'outdated' && (
+                      {badge.status !== 'outdated' && (
                         <MiniLink
                           onClick={() =>
                             navigator.clipboard.writeText(badge.shareableLink)
