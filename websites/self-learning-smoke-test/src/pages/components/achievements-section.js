@@ -174,7 +174,7 @@ const AchievementsSection = (props) => {
           onToggle={() => toggleFunction()}
         >
           <SpacingsStack scale="m">
-            {props.badges.map((badge) => (
+            {props.badges?.map((badge) => (
               <Card key={badge.category} type="raised">
                 <AchivementContainer>
                   <BadgeContainer>

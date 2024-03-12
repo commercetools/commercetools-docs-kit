@@ -56,7 +56,7 @@ const LearningPathsSection = (props) => {
           grow.
         </Subtitle>
         <TwoColumnsWrapper>
-          {props.cfg.learningPaths.map((path) => (
+          {props.cfg?.learningPaths?.map((path) => (
             <Column key={path.id}>
               <LearningPathCardHome
                 duration={path.duration}

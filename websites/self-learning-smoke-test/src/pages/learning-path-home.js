@@ -138,7 +138,7 @@ const PageLearningPathHomeContent = () => {
         {!isAuthenticated && <AchieveGoalsSection />}
       </ContentWrapper>
       <FullWidthContainer>
-        <LearningPathsSection cfg={config} />
+        {config && <LearningPathsSection cfg={config} />}
       </FullWidthContainer>
       <ContentWrapper>
         <CertificationsSection />
