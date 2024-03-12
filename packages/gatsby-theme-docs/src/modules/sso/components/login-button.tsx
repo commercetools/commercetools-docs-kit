@@ -6,7 +6,7 @@ import PrimaryButton from './primary-button';
 import SecondaryButton from './secondary-button';
 import { gtagEvent } from '../utils/analytics.utils';
 import useAuthentication from '../hooks/use-authentication';
-import CtCubeLogoWhite from '../icons/commercetools_id_logo_white.svg';
+import CtCubeLogoWhite from '../icons/CtCubeWhiteNew';
 import LoginIcon from '../icons/LoginIcon';
 import {
   AI_ASSISTANT_LOCALSTORAGE_POST_LOGIN_KEY,
