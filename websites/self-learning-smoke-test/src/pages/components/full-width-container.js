@@ -58,17 +58,39 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const FullWidthContainer = ({ children }) => {
+const Triangle = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 34px solid transparent;
+  border-right: 34px solid transparent;
+  border-top: 48px solid #fff;
+`;
+
+const TriangleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const FullWidthContainer = ({ children, nograss }) => {
   return (
     <Container>
+      <TriangleWrapper>
+        <Triangle></Triangle>
+      </TriangleWrapper>
       <BackgroundLayer>
-        <LeftGrassIconContainer>
-          <LeftGrassIcon />
-        </LeftGrassIconContainer>
+        {!nograss && (
+          <LeftGrassIconContainer>
+            <LeftGrassIcon />
+          </LeftGrassIconContainer>
+        )}
         <ContentWrapper>{children}</ContentWrapper>
-        <RightGrassIconContainer>
-          <RightGrassIcon />
-        </RightGrassIconContainer>
+        {!nograss && (
+          <RightGrassIconContainer>
+            <RightGrassIcon />
+          </RightGrassIconContainer>
+        )}
       </BackgroundLayer>
     </Container>
   );
@@ -78,4 +100,5 @@ export default FullWidthContainer;
 
 FullWidthContainer.propTypes = {
   children: PropTypes.node,
+  nograss: PropTypes.bool,
 };

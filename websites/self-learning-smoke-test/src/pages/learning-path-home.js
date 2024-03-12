@@ -17,6 +17,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import AchieveGoalsSection from './components/achieve-goals-section';
 import LearningPathsSection from './components/learning-paths-section';
 import AchievementsSection from './components/achievements-section';
+import ResourcesSection from './components/resources-section';
 
 const LEARNING_PATHS_TITLES = {
   86: { title: 'Administrator learning path' },
@@ -146,6 +147,9 @@ const PageLearningPathHomeContent = () => {
       <ContentWrapper>
         <RefresherSection />
       </ContentWrapper>
+      <FullWidthContainer nograss={true}>
+        <ResourcesSection />
+      </FullWidthContainer>
     </Container>
   );
 };
