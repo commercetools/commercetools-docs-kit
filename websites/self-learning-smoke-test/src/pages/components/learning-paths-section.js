@@ -1,10 +1,9 @@
 import { designSystem } from '@commercetools-docs/ui-kit';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { LearningPathCard } from '@commercetools-docs/gatsby-theme-docs';
 import LearningPathCardHome from '@commercetools-docs/gatsby-theme-docs/src/modules/self-learning/components/learning-path-card-home';
-import config from './learning-path-home-config';
-
 const Subtitle = styled.h4`
   color: ${designSystem.colors.light.textInverted};
   font-size: ${designSystem.typography.fontSizes.h5};
@@ -39,7 +38,7 @@ const Column = styled.div`
   box-sizing: border-box;
 `;
 
-const LearningPathsSection = () => {
+const LearningPathsSection = (props) => {
   const SectionTitle = styled.h3`
     font-size: ${designSystem.typography.fontSizes.h3};
     text-align: center;
@@ -57,7 +56,7 @@ const LearningPathsSection = () => {
           grow.
         </Subtitle>
         <TwoColumnsWrapper>
-          {config.learningPaths.map((path) => (
+          {props.cfg.learningPaths.map((path) => (
             <Column key={path.id}>
               <LearningPathCardHome
                 duration={path.duration}
@@ -77,3 +76,7 @@ const LearningPathsSection = () => {
 };
 
 export default LearningPathsSection;
+
+LearningPathsSection.propTypes = {
+  cfg: PropTypes.object,
+};
