@@ -26,7 +26,6 @@ export { default as LearningPathCardHome } from './src/modules/self-learning/com
 export { default as RefresherCard } from './src/modules/self-learning/components/refresher-card';
 export { default as ImageCard } from './src/modules/self-learning/components/image-card';
 export { default as FirstName } from './src/modules/self-learning/components/first-name';
-export * from './src/modules/self-learning/hooks/use-learning-path-info';
 export * from './src/modules/self-learning/hooks/use-course-status';
 export * from './src/modules/self-learning/hooks/use-badges';
 

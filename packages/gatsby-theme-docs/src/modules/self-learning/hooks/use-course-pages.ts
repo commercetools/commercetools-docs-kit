@@ -8,7 +8,6 @@ export type CoursePageNode = {
   slug: string;
   courseId: number;
   topicName: string;
-  learningPathId?: number;
 };
 
 type NavigationPageNode = {

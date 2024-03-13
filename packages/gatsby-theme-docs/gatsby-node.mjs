@@ -276,7 +276,6 @@ export const createSchemaCustomization = ({ actions, schema }) => {
           }),
         },
         courseId: { type: 'Int' },
-        learningPathId: { type: 'Int' },
         topicName: { type: 'String' },
       },
       interfaces: ['Node'],
@@ -417,9 +416,6 @@ export const onCreateNode = async (
       courseId: node.frontmatter.courseId
         ? Number(node.frontmatter.courseId)
         : null,
-      learningPathId: node.frontmatter.learningPathId
-        ? Number(node.frontmatter.learningPathId)
-        : null,
       topicName: node.frontmatter.topicName
         ? String(node.frontmatter.topicName)
         : null,
@@ -482,7 +478,6 @@ async function createContentPages(
         nodes {
           slug
           courseId
-          learningPathId
           topicName
         }
       }
@@ -526,7 +521,7 @@ async function createContentPages(
       (pageLinks, node) => [...pageLinks, ...(node.pages || [])],
       []
     );
-  pages.forEach(({ slug, courseId, topicName, learningPathId }) => {
+  pages.forEach(({ slug, courseId, topicName }) => {
     const matchingNavigationPage = navigationPages.find(
       (page) => trimTrailingSlash(page.path) === trimTrailingSlash(slug)
     );
@@ -579,12 +574,6 @@ async function createContentPages(
           contentPageData = {
             ...contentPageData,
             context: { ...contentPageData.context, topicName },
-          };
-        }
-        if (learningPathId) {
-          contentPageData = {
-            ...contentPageData,
-            context: { ...contentPageData.context, learningPathId },
           };
         }
         actions.createPage(contentPageData);

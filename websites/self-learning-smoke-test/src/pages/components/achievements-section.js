@@ -12,8 +12,8 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import Stamp from '@commercetools-uikit/stamp';
 
 const SectionTitle = styled.h3`
-  font-size: ${designSystem.typography.fontSizes.h3};
-  font-weight: 500;
+  font-size: ${designSystem.typography.fontSizes.h4};
+  font-weight: 700;
 `;
 
 const SectionWrapper = styled.div`

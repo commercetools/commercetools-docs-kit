@@ -1,7 +1,6 @@
 import {
   SEO,
   ThemeProvider,
-  useLearningPathsInfo,
   useAuthentication,
   useFetchBadges,
 } from '@commercetools-docs/gatsby-theme-docs';
@@ -18,28 +17,6 @@ import AchieveGoalsSection from './components/achieve-goals-section';
 import LearningPathsSection from './components/learning-paths-section';
 import AchievementsSection from './components/achievements-section';
 import ResourcesSection from './components/resources-section';
-
-const LEARNING_PATHS_TITLES = {
-  86: { title: 'Administrator learning path' },
-  87: { title: 'Developer learning path' },
-};
-
-const COURSES_INFO = {
-  66: {
-    title: 'Self-learning course 1',
-    description:
-      'Course description. Introduction to extensibility possibilities available in Composable Commerce.',
-    duration: '30 min',
-    href: 'course-1/overview',
-  },
-  69: {
-    title: 'Self-learning course 2',
-    description:
-      '**This is a course with markdown description** _some italics text here_',
-    duration: '30 min',
-    href: 'course-2/overview',
-  },
-};
 
 const config = {
   learningPaths: [
@@ -120,19 +97,13 @@ const ContentWrapper = styled.div`
 
 const PageLearningPathHomeContent = () => {
   const { isAuthenticated } = useAuthentication();
-  const learningPathsInfo = useLearningPathsInfo(LEARNING_PATHS_TITLES);
   const { data: badgesData } = useFetchBadges();
 
   return (
     <Container>
       <ContentWrapper>
         {isAuthenticated ? <WelcomeAreaLoggedIn /> : <WelcomeAreaLoggedOut />}
-        {isAuthenticated && learningPathsInfo && (
-          <EnrolledLearningPaths
-            learningPathsInfo={learningPathsInfo}
-            coursesInfo={COURSES_INFO}
-          ></EnrolledLearningPaths>
-        )}
+        {isAuthenticated && <EnrolledLearningPaths />}
         {isAuthenticated && badgesData?.result?.badges && (
           <AchievementsSection badges={badgesData.result.badges} />
         )}

@@ -1,117 +1,109 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
 
 import {
   CourseCard,
-  getCourseStatusByCourseId,
   useAuthentication,
   useFetchCourses,
 } from '@commercetools-docs/gatsby-theme-docs';
 import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
-const inProgressFirst = (a, b) => {
-  if (a.status === 'inProgress' && b.status !== 'inProgress') {
-    return -1; // a comes before b
-  } else if (a.status !== 'inProgress' && b.status === 'inProgress') {
-    return 1; // b comes before a
-  } else {
-    return 0; // no change in order
-  }
-};
+const SectionWrapper = styled.div`
+  padding-top: ${designSystem.dimensions.spacings.enormous};
+  padding-bottom: ${designSystem.dimensions.spacings.l};
+`;
 
-const EnrolledLearningPaths = (props) => {
-  const { data } = useFetchCourses();
-  const { isAuthenticated } = useAuthentication();
-  const [expandedLP, setExpandedLP] = useState([]);
-  // lpInfo format
-  //   [
-  //     {
-  //         "lpId": 86,
-  //         "status": "inProgress",
-  //         "title": "Administrator learning path",
-  //         "courses": [
-  //             {
-  //                 "courseId": 69
-  //             },
-  //             {
-  //                 "courseId": 66
-  //             }
-  //         ]
-  //     }
-  // ]
-  const [lpInfo, setLpInfo] = useState([]);
+const SectionTitle = styled.h3`
+  font-size: ${designSystem.typography.fontSizes.h3};
+  font-weight: 500;
+`;
 
-  const toggleFunction = (lpId) => {
-    setExpandedLP((prevExpandedLP) => {
-      if (prevExpandedLP.includes(lpId)) {
-        return prevExpandedLP.filter((id) => id !== lpId);
-      } else {
-        return [...prevExpandedLP, lpId];
-      }
-    });
-  };
+const SectionSubTitle = styled.h4`
+  font-size: ${designSystem.typography.fontSizes.h4};
+  font-weight: 700;
+`;
 
-  useEffect(() => {
-    if (isAuthenticated && data?.result?.enrolledCourses) {
-      const lpInfoUnsorted = Object.entries(props.learningPathsInfo).map(
-        ([lpId, lpInfo]) => {
-          lpId = parseInt(lpId, 10);
-          const lpStatus = getCourseStatusByCourseId(
-            data.result.enrolledCourses,
-            lpId
-          );
-          return { lpId, status: lpStatus, ...lpInfo };
-        }
-      );
-      // set the initial state of expanded learning paths (we want the ones in progress to be expanded)
-      setExpandedLP(
-        lpInfoUnsorted
-          .filter((lp) => lp.status === 'inProgress')
-          .map((item) => item.lpId)
-      );
-      // set component state (lpInfo) with the ones in progress first
-      setLpInfo(lpInfoUnsorted.sort(inProgressFirst));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, isAuthenticated, props.courseId, props.learningPathsInfo]);
-
-  return lpInfo
-    .filter((item) => item.status !== 'notEnrolled')
-    .map((item) => (
-      <CollapsiblePanel
-        key={item.lpId}
-        isClosed={!expandedLP?.includes(item.lpId)}
-        header={item.title}
-        secondaryHeader={<StatusHeader status={item.status}></StatusHeader>}
-        onToggle={() => toggleFunction(item.lpId)} // Add this line
-      >
-        {item.courses.map((course) => (
+const EnrolledLearningPaths = () => {
+  return (
+    <SectionWrapper>
+      <SpacingsStack scale="l">
+        <SectionTitle>Your learning</SectionTitle>
+        <SectionSubTitle>Your self-learning progress</SectionSubTitle>
+        <p>
+          Take a look at your badges and check the status of your
+          certifications. Remember, you need to refresh your knowledge every
+          year.
+        </p>
+        <LearningPathPanel
+          title="Administrator Learning Path"
+          learningPathCourseId="85"
+        >
           <CourseCard
-            title={props.coursesInfo[course.courseId].title}
-            courseId={course.courseId}
-            duration={props.coursesInfo[course.courseId].duration}
-            href={props.coursesInfo[course.courseId].href}
-            key={course.courseId}
+            title="Self-learning course 1"
+            courseId="55"
+            duration="30 min"
+            href="course-1/overview"
           >
-            {props.coursesInfo[course.courseId].description}
+            Course description. Introduction to extensibility possibilities
+            available in Composable Commerce.
           </CourseCard>
-        ))}
-      </CollapsiblePanel>
-    ));
-};
-
-EnrolledLearningPaths.propTypes = {
-  learningPathsInfo: PropTypes.objectOf(
-    PropTypes.shape({ title: PropTypes.string, courseId: PropTypes.number })
-  ),
-  coursesInfo: PropTypes.objectOf({
-    title: PropTypes.string,
-    description: PropTypes.string,
-    duration: PropTypes.string,
-    href: PropTypes.string,
-  }),
+          <CourseCard
+            title="Self-learning course 2"
+            courseId="55"
+            duration="30 min"
+            href="course-2/overview"
+          >
+            **This is a course with markdown description** _some italics text
+            here_
+          </CourseCard>
+          <CourseCard
+            title="Self-learning course 1"
+            courseId="70"
+            duration="30 min"
+            href="course-1/overview"
+          >
+            Course description. Introduction to extensibility possibilities
+            available in Composable Commerce.
+          </CourseCard>
+          <CourseCard
+            title="Self-learning course 2"
+            courseId="70"
+            duration="30 min"
+            href="course-2/overview"
+          >
+            **This is a course with markdown description** _some italics text
+            here_
+          </CourseCard>
+        </LearningPathPanel>
+        <LearningPathPanel
+          title="Developer Learning Path"
+          learningPathCourseId="86"
+        >
+          <CourseCard
+            title="Self-learning course 1"
+            courseId="66"
+            duration="30 min"
+            href="course-1/overview"
+          >
+            Course description. Introduction to extensibility possibilities
+            available in Composable Commerce.
+          </CourseCard>
+          <CourseCard
+            title="Self-learning course 2"
+            courseId="69"
+            duration="30 min"
+            href="course-2/overview"
+          >
+            **This is a course with markdown description** _some italics text
+            here_
+          </CourseCard>
+        </LearningPathPanel>
+      </SpacingsStack>
+    </SectionWrapper>
+  );
 };
 
 const StatusText = styled.span`
@@ -131,6 +123,61 @@ const StatusHeader = ({ status }) => {
 
 StatusHeader.propTypes = {
   status: PropTypes.string,
+};
+
+const CoursesWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: ${designSystem.dimensions.spacings.m};
+  div {
+    max-width: 300px;
+  }
+`;
+
+const LearningPathPanel = (props) => {
+  const { data } = useFetchCourses();
+  const { isAuthenticated } = useAuthentication();
+  const [isPanelExpanded, setIsPanelExpanded] = useState(false);
+  const [lpStatus, setLpStatus] = useState('notEnrolled');
+  console.log(data);
+
+  const toggleFunction = () => {
+    setIsPanelExpanded(!isPanelExpanded);
+  };
+
+  useEffect(() => {
+    if (isAuthenticated && data?.result?.enrolledCourses) {
+      // let's figure out if the user is enrolled into the learning path
+      const enrolledCourse = data.result.enrolledCourses.find(
+        (course) => course.id === parseInt(props.learningPathCourseId, 10)
+      );
+      console.log('enrolledCourse', enrolledCourse);
+      if (enrolledCourse) {
+        // if it is enrolled, let's set the status
+        setLpStatus(enrolledCourse.status);
+        // if the status is in progress, let's expand the panel
+        setIsPanelExpanded(enrolledCourse.status === 'inProgress');
+      }
+    }
+  }, [data, isAuthenticated, props.learningPathCourseId]);
+
+  return isAuthenticated && lpStatus !== 'notEnrolled' ? ( // Add this line
+    <CollapsiblePanel
+      isClosed={!isPanelExpanded}
+      header={props.title}
+      secondaryHeader={<StatusHeader status={lpStatus}></StatusHeader>}
+      onToggle={() => toggleFunction()}
+    >
+      <CoursesWrapper>{props.children}</CoursesWrapper>
+    </CollapsiblePanel>
+  ) : null;
+};
+
+LearningPathPanel.propTypes = {
+  title: PropTypes.string.isRequired,
+  learningPathCourseId: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };
 
 export default EnrolledLearningPaths;
