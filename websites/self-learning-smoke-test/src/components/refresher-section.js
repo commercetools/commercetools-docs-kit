@@ -5,7 +5,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Link } from 'gatsby';
 import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import { useState } from 'react';
-import PrizeIcon from '../../icons/prize-icon.svg';
+import PrizeIcon from '../icons/prize-icon.svg';
 import { Cards } from '@commercetools-docs/gatsby-theme-docs/src/components';
 import { RefresherCard } from '@commercetools-docs/gatsby-theme-docs';
 

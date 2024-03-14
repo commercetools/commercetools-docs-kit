@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import BoxBooksIcon from '../../icons/box-books.svg';
-import BoxCertifiedIcon from '../../icons/box-certified.svg';
-import BoxGraduationIcon from '../../icons/box-graduation.svg';
+import BoxBooksIcon from '../icons/box-books.svg';
+import BoxCertifiedIcon from '../icons/box-certified.svg';
+import BoxGraduationIcon from '../icons/box-graduation.svg';
 import styled from '@emotion/styled';
 import { designSystem } from '@commercetools-docs/ui-kit';
 

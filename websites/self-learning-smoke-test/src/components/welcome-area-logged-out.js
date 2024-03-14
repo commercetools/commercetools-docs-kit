@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import GraduationIcon from '../../icons/graduation.svg';
+import GraduationIcon from '../icons/graduation.svg';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { LoginButton } from '@commercetools-docs/gatsby-theme-docs';
 

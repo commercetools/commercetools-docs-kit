@@ -5,7 +5,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Link } from 'gatsby';
 import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import { useState } from 'react';
-import PrizeIcon from '../../icons/prize-icon.svg';
+import PrizeIcon from '../icons/prize-icon.svg';
 
 const SectionTitle = styled.h3`
   font-size: ${designSystem.typography.fontSizes.h3};

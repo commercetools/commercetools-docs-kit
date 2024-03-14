@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import LeftGrassIcon from '../../icons/left-grass.svg';
-import RightGrassIcon from '../../icons/right-grass.svg';
+import LeftGrassIcon from '../icons/left-grass.svg';
+import RightGrassIcon from '../icons/right-grass.svg';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
 const Container = styled.div`

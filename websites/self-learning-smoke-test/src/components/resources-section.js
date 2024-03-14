@@ -2,7 +2,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { CheckActiveIcon } from '@commercetools-uikit/icons';
-import SignpostIcon from '../../icons/signpost.svg';
+import SignpostIcon from '../icons/signpost.svg';
 
 const SectionWrapper = styled.div`
   padding-top: ${designSystem.dimensions.spacings.l};

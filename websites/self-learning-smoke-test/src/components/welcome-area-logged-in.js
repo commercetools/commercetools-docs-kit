@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import GrowingPlantIcon from '../../icons/growing-plant.svg';
-import SunIcon from '../../icons/sun.svg';
+import GrowingPlantIcon from '../icons/growing-plant.svg';
+import SunIcon from '../icons/sun.svg';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { FirstName } from '@commercetools-docs/gatsby-theme-docs';
 

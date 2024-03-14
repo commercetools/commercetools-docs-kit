@@ -5,18 +5,18 @@ import {
   useFetchBadges,
 } from '@commercetools-docs/gatsby-theme-docs';
 import LayoutLearningHome from '../layouts/learning-home';
-import EnrolledLearningPaths from './components/enrolled-learning-paths';
-import FullWidthContainer from './components/full-width-container';
+import EnrolledLearningPaths from '../components/enrolled-learning-paths';
+import FullWidthContainer from '../components/full-width-container';
 import styled from '@emotion/styled';
-import WelcomeAreaLoggedIn from './components/welcome-area-logged-in';
-import WelcomeAreaLoggedOut from './components/welcome-area-logged-out';
-import CertificationsSection from './components/certifications-section';
-import RefresherSection from './components/refresher-section';
+import WelcomeAreaLoggedIn from '../components/welcome-area-logged-in';
+import WelcomeAreaLoggedOut from '../components/welcome-area-logged-out';
+import CertificationsSection from '../components/certifications-section';
+import RefresherSection from '../components/refresher-section';
 import { designSystem } from '@commercetools-docs/ui-kit';
-import AchieveGoalsSection from './components/achieve-goals-section';
-import LearningPathsSection from './components/learning-paths-section';
-import AchievementsSection from './components/achievements-section';
-import ResourcesSection from './components/resources-section';
+import AchieveGoalsSection from '../components/achieve-goals-section';
+import LearningPathsSection from '../components/learning-paths-section';
+import AchievementsSection from '../components/achievements-section';
+import ResourcesSection from '../components/resources-section';
 
 const config = {
   learningPaths: [
