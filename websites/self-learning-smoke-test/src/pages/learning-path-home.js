@@ -95,6 +95,21 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
 `;
 
+const Triangle = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 34px solid transparent;
+  border-right: 34px solid transparent;
+  border-top: 48px solid #4242b2;
+`;
+
+const TriangleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const PageLearningPathHomeContent = () => {
   const { isAuthenticated } = useAuthentication();
   const { data: badgesData } = useFetchBadges();
@@ -113,6 +128,9 @@ const PageLearningPathHomeContent = () => {
         {config && <LearningPathsSection cfg={config} />}
       </FullWidthContainer>
       <ContentWrapper>
+        <TriangleWrapper>
+          <Triangle />
+        </TriangleWrapper>
         <CertificationsSection />
       </ContentWrapper>
       <ContentWrapper>

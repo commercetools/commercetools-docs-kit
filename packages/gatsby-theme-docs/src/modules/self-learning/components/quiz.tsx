@@ -32,7 +32,7 @@ const QuizWrapper = styled.div<QuizOutcome>`
   border-left-color: ${({ outcome }) => {
     switch (outcome) {
       case OUTCOME_CORRECT:
-        return designTokens.colorPrimary25;
+        return designTokens.colorSuccess25;
       case OUTCOME_INCORRECT:
         return designTokens.colorError;
       default:
