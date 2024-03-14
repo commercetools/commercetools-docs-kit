@@ -5,8 +5,8 @@ import { CheckActiveIcon } from '@commercetools-uikit/icons';
 import SignpostIcon from '../icons/signpost.svg';
 
 const SectionWrapper = styled.div`
-  padding-top: ${designSystem.dimensions.spacings.l};
-  padding-bottom: ${designSystem.dimensions.spacings.enormous};
+  padding-top: ${designSystem.dimensions.spacings.xxl};
+  padding-bottom: ${designSystem.dimensions.spacings.xxl};
   a {
     color: ${designSystem.colors.light.link};
   }

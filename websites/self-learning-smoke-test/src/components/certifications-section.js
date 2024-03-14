@@ -19,8 +19,8 @@ const Subtitle = styled.h4`
 `;
 
 const SectionWrapper = styled.div`
-  padding-top: ${designSystem.dimensions.spacings.enormous};
-  padding-bottom: ${designSystem.dimensions.spacings.l};
+  padding-top: ${designSystem.dimensions.spacings.xxl};
+  padding-bottom: ${designSystem.dimensions.spacings.xxl};
   a {
     color: ${designSystem.colors.light.link};
   }
