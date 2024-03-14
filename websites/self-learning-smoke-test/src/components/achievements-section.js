@@ -166,72 +166,81 @@ const AchievementsSection = (props) => {
     <SectionWrapper>
       <SpacingsStack scale="l">
         <SectionTitle>Your achievements</SectionTitle>
-        <p>
-          Take a look at your badges and check the status of your
-          certifications. Remember, you need to refresh your knowledge every
-          year.
-        </p>
-        <CollapsiblePanel
-          isClosed={!isExpanded}
-          header="Your certifications"
-          onToggle={() => toggleFunction()}
-        >
-          <SpacingsStack scale="m">
-            {props.badges?.map((badge) => (
-              <Card key={badge.category} type="raised">
-                <AchivementContainer>
-                  <BadgeContainer status={badge.status}>
-                    <img
-                      src={`https://learning-api.commercetools.vercel.app/api/badges/image/${badge.imageId}`}
-                      alt={`Badge ${badge.name}`}
-                    />
-                  </BadgeContainer>
-                  <InfoContainer>
-                    <SpacingsStack scale="l">
-                      <TextWrapper>
-                        {badge.name}{' '}
-                        <Stamp
-                          label={badge.yearTag}
-                          tone={getToneByStatus(badge.status)}
-                          isCondensed
-                        />
-                      </TextWrapper>
-                      <Spacings.Inline scale="s">
-                        {getDescByStatus(badge.status, badge.yearTag)}
-                        <InfoButtonWrapper>
-                          {badge.status === 'up for renewal' && (
-                            <Tooltip
-                              placement="top"
-                              title="Certification renewal exams are instrumental in ensuring that your skills, knowledge, and certifications remain up to date."
-                            >
-                              <InfoIcon color="primary" />
-                            </Tooltip>
-                          )}
-                        </InfoButtonWrapper>
-                      </Spacings.Inline>
+        {!props.badges || props.badges.length === 0 ? (
+          <p>
+            You have not received any certifications yet. To learn how to become
+            a commercetools certified professional, please click here.
+          </p>
+        ) : (
+          <p>
+            Take a look at your badges and check the status of your
+            certifications. Remember, you need to refresh your knowledge every
+            year.
+          </p>
+        )}
+        {props.badges && props.badges.length > 0 && (
+          <CollapsiblePanel
+            isClosed={!isExpanded}
+            header="Your certifications"
+            onToggle={() => toggleFunction()}
+          >
+            <SpacingsStack scale="m">
+              {props.badges?.map((badge) => (
+                <Card key={badge.category} type="raised">
+                  <AchivementContainer>
+                    <BadgeContainer status={badge.status}>
+                      <img
+                        src={`https://learning-api.commercetools.vercel.app/api/badges/image/${badge.imageId}`}
+                        alt={`Badge ${badge.name}`}
+                      />
+                    </BadgeContainer>
+                    <InfoContainer>
+                      <SpacingsStack scale="l">
+                        <TextWrapper>
+                          {badge.name}{' '}
+                          <Stamp
+                            label={badge.yearTag}
+                            tone={getToneByStatus(badge.status)}
+                            isCondensed
+                          />
+                        </TextWrapper>
+                        <Spacings.Inline scale="s">
+                          {getDescByStatus(badge.status, badge.yearTag)}
+                          <InfoButtonWrapper>
+                            {badge.status === 'up for renewal' && (
+                              <Tooltip
+                                placement="top"
+                                title="Certification renewal exams are instrumental in ensuring that your skills, knowledge, and certifications remain up to date."
+                              >
+                                <InfoIcon color="primary" />
+                              </Tooltip>
+                            )}
+                          </InfoButtonWrapper>
+                        </Spacings.Inline>
 
-                      {badge.status !== 'outdated' && (
-                        <MiniLink
-                          onClick={() =>
-                            navigator.clipboard.writeText(badge.shareableLink)
-                          }
-                        >
-                          Copy shareable link{' '}
-                          <CopyIcon size="medium" color="primary"></CopyIcon>
-                        </MiniLink>
+                        {badge.status !== 'outdated' && (
+                          <MiniLink
+                            onClick={() =>
+                              navigator.clipboard.writeText(badge.shareableLink)
+                            }
+                          >
+                            Copy shareable link{' '}
+                            <CopyIcon size="medium" color="primary"></CopyIcon>
+                          </MiniLink>
+                        )}
+                      </SpacingsStack>
+                    </InfoContainer>
+                    <ActionContainer>
+                      {badge.status === 'up for renewal' && (
+                        <PrimaryButton label="Renew your certification" />
                       )}
-                    </SpacingsStack>
-                  </InfoContainer>
-                  <ActionContainer>
-                    {badge.status === 'up for renewal' && (
-                      <PrimaryButton label="Renew your certification" />
-                    )}
-                  </ActionContainer>
-                </AchivementContainer>
-              </Card>
-            ))}
-          </SpacingsStack>
-        </CollapsiblePanel>
+                    </ActionContainer>
+                  </AchivementContainer>
+                </Card>
+              ))}
+            </SpacingsStack>
+          </CollapsiblePanel>
+        )}
       </SpacingsStack>
     </SectionWrapper>
   );

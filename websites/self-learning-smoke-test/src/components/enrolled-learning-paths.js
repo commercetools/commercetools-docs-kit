@@ -27,16 +27,28 @@ const SectionSubTitle = styled.h4`
 `;
 
 const EnrolledLearningPaths = () => {
+  const { data, isLoading } = useFetchCourses();
+
   return (
     <SectionWrapper>
       <SpacingsStack scale="l">
         <SectionTitle>Your learning</SectionTitle>
         <SectionSubTitle>Your self-learning progress</SectionSubTitle>
-        <p>
-          Take a look at your badges and check the status of your
-          certifications. Remember, you need to refresh your knowledge every
-          year.
-        </p>
+        {!isLoading &&
+        data?.result?.enrolledCourses &&
+        data.result.enrolledCourses.length > 0 ? (
+          <p>
+            Take a look at your badges and check the status of your
+            certifications. Remember, you need to refresh your knowledge every
+            year.
+          </p>
+        ) : (
+          <p>
+            You have not made any progress so far. Please scroll down to explore
+            our carefully crafted learning paths to delve into interesting
+            topics.
+          </p>
+        )}
         <LearningPathPanel
           title="Administrator Learning Path"
           learningPathCourseId="85"
@@ -140,7 +152,6 @@ const LearningPathPanel = (props) => {
   const { isAuthenticated } = useAuthentication();
   const [isPanelExpanded, setIsPanelExpanded] = useState(false);
   const [lpStatus, setLpStatus] = useState('notEnrolled');
-  console.log(data);
 
   const toggleFunction = () => {
     setIsPanelExpanded(!isPanelExpanded);
