@@ -17,8 +17,7 @@ export const getItemDescendants = (
   }
 };
 
-export const getItemAncestors = (level, index, ancestorsMap) => {
-  const chapterId = `${level}-${index}`;
+export const getItemAncestors = (chapterId, ancestorsMap) => {
   const ancestorsArray = ancestorsMap.filter(
     (element) => element.includes(chapterId) && element.indexOf(chapterId) > 0
   );

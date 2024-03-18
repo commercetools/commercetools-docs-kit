@@ -340,11 +340,7 @@ const Chapter = (props) => {
 
   useEffect(() => {
     if (isSelectedChapter) {
-      const initialState = getItemAncestors(
-        props.level,
-        props.index,
-        ancestorsMap
-      );
+      const initialState = getItemAncestors(chapterId, ancestorsMap);
       const expandedItemsList =
         initialState.length > 0 ? initialState : [chapterId];
 
