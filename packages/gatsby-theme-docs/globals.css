@@ -1,9 +1,12 @@
-@import '@commercetools-uikit/design-system/materials/custom-properties.css';
+@import '@commercetools-uikit/design-system/materials/custom-properties_recolouring.css';
 
 /* set the variables used by the MC UI-Kit to make sure they use the same fonts
    the docs-kit relevant font default is set in Globals.tsx
-*/
+   */
+
+
 :root {
   --font-family-default: 'Inter var', sans-serif;
   --font-family-body: 'Roboto Mono', monospace;
 }
+

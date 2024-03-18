@@ -8,7 +8,7 @@ const VideoPlaceholder = styled.div`
   width: 100%;
   aspect-ratio: 16 / 9;
   padding-bottom: 3em;
-  background-color: ${customProperties.backgroundColorForTag};
+  background-color: ${customProperties.colorNeutral90};
 `;
 
 export default VideoPlaceholder;
