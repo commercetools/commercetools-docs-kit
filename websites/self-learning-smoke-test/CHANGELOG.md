@@ -1,5 +1,17 @@
 # @commercetools-website/self-learning-smoke-test
 
+## 9.0.0
+
+### Major Changes
+
+- [#1941](https://github.com/commercetools/commercetools-docs-kit/pull/1941) [`d123efa`](https://github.com/commercetools/commercetools-docs-kit/commit/d123efa33e4703447c0192461352d244a7fe94f6) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add self-learning home page and rebranding
+
+### Patch Changes
+
+- Updated dependencies [[`599a11e`](https://github.com/commercetools/commercetools-docs-kit/commit/599a11e7d10526ecae1849374ca9e8b02af9d3db), [`d123efa`](https://github.com/commercetools/commercetools-docs-kit/commit/d123efa33e4703447c0192461352d244a7fe94f6)]:
+  - @commercetools-docs/gatsby-theme-docs@23.0.0
+  - @commercetools-docs/ui-kit@23.0.0
+
 ## 8.4.7
 
 ### Patch Changes

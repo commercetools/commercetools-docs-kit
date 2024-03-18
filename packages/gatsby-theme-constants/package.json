@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-docs/gatsby-theme-constants",
   "description": "Gatsby theme for commercetools documentation providing the functionalities to render constants values in MDX defined in configuration files",
-  "version": "22.11.7",
+  "version": "23.0.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -15,7 +15,7 @@
   "homepage": "https://docs-kit.commercetools.vercel.app/documentation/configuration/extensions#gatsby-theme-add-on-for-constants",
   "keywords": ["gatsby", "gatsby-plugin", "gatsby-theme", "yaml", "constants"],
   "dependencies": {
-    "@commercetools-docs/ui-kit": "22.11.7",
+    "@commercetools-docs/ui-kit": "23.0.0",
     "gatsby-source-filesystem": "5.12.1",
     "gatsby-transformer-yaml": "5.12.0",
     "prop-types": "15.8.1"
