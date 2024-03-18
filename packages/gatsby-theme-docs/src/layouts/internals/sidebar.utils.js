@@ -1,12 +1,19 @@
-export const getItemDescendants = (level, index, ancestorsMap) => {
+export const getItemDescendants = (
+  subChapterId,
+  level,
+  index,
+  ancestorsMap
+) => {
   const chapterId = `${level}-${index}`;
   if (level === 1) {
-    return [chapterId];
+    return [subChapterId];
   } else {
     const descendantsArray = ancestorsMap.filter((element) =>
       element.includes(chapterId)
     );
-    return [].concat(...descendantsArray);
+    return (chapterId.includes('#') ? [subChapterId] : []).concat(
+      ...descendantsArray
+    );
   }
 };
 
