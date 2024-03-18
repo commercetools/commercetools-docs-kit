@@ -69,6 +69,30 @@
           path: /empty-pages/empty-page-ten
         - title: third level page 3
           path: /empty-pages/empty-page-eleven
+- chapter-title: Further Subchapters
+  pages:
+    - title: Subchapter One
+      pages:
+        - title: third level page 1
+          path: /empty-pages-2/empty-page-five
+        - title: third level page 2
+          path: /empty-pages-2/empty-page-six
+        - title: third level page 3
+          path: /empty-pages-2/empty-page-seven
+    - title: Normal Chapter 1
+      path: /empty-pages-2/empty-page-twelve
+    - title: Normal Chapter 2
+      path: /empty-pages-2/empty-page-thirteen
+    - title: Normal Chapter 3
+      path: /empty-pages-2/empty-page-fourteen
+    - title: Subchapter Two
+      pages:
+        - title: third level page 1
+          path: /empty-pages-2/empty-page-nine
+        - title: third level page 2
+          path: /empty-pages-2/empty-page-ten
+        - title: third level page 3
+          path: /empty-pages-2/empty-page-eleven
 - chapter-title: Chapter 9999 With a Longer Multi-Word Name that Wraps
   pages:
     - title: Page with some very long title too much for our innocent API to handle

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/self-learning-smoke-test",
-  "version": "8.4.7",
+  "version": "9.0.0",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -15,8 +15,8 @@
     "generate-icons": "svgr -d src/icons/generated -- src/icons/svg"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "22.11.7",
-    "@commercetools-docs/ui-kit": "22.11.7",
+    "@commercetools-docs/gatsby-theme-docs": "23.0.0",
+    "@commercetools-docs/ui-kit": "23.0.0",
     "@commercetools-uikit/card": "18.4.0",
     "@commercetools-uikit/collapsible-panel": "18.4.0",
     "@commercetools-uikit/icons": "18.4.0",

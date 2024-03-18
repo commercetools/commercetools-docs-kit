@@ -277,18 +277,23 @@ const Title = styled.span`
       : designSystem.typography.fontWeights.regular};
 `;
 
-const ChapterTitle = (props) => (
-  <ChapterTitleWrapper level={props.level} onClick={() => props.toggleExpand()}>
-    <Title isExpanded={props.isExpanded} level={props.level}>
-      {props.text}
-    </Title>
-    {props.isExpanded ? (
-      <AngleDownIcon size="medium" />
-    ) : (
-      <AngleRightIcon size="medium" />
-    )}
-  </ChapterTitleWrapper>
-);
+const ChapterTitle = (props) => {
+  return (
+    <ChapterTitleWrapper
+      level={props.level}
+      onClick={() => props.toggleExpand()}
+    >
+      <Title isExpanded={props.isExpanded} level={props.level}>
+        {props.text}
+      </Title>
+      {props.isExpanded ? (
+        <AngleDownIcon size="medium" />
+      ) : (
+        <AngleRightIcon size="medium" />
+      )}
+    </ChapterTitleWrapper>
+  );
+};
 ChapterTitle.propTypes = {
   text: PropTypes.string.isRequired,
   isExpanded: PropTypes.bool,
@@ -326,17 +331,16 @@ const Chapter = (props) => {
     props.location
   );
   const { ancestorsMap } = useSidebarNavigationItems();
-  const chapterId = `${props.level}-${props.index}`;
+  const chapterId =
+    props.level === 1 && props.parentChapterId
+      ? `${props.parentChapterId}#${props.level}-${props.index}`
+      : `${props.level}-${props.index}`;
   const { setExpandedChapters } = useContext(SidebarContextApi);
   const { expandedChapters } = useContext(SidebarContextState);
 
   useEffect(() => {
     if (isSelectedChapter) {
-      const initialState = getItemAncestors(
-        props.level,
-        props.index,
-        ancestorsMap
-      );
+      const initialState = getItemAncestors(chapterId, ancestorsMap);
       const expandedItemsList =
         initialState.length > 0 ? initialState : [chapterId];
 
@@ -356,6 +360,7 @@ const Chapter = (props) => {
     if (expandedChapters?.includes(chapterId)) {
       // close the chapter (and all its descendants, if any)
       const descendants = getItemDescendants(
+        chapterId,
         props.level,
         props.index,
         ancestorsMap
@@ -402,6 +407,7 @@ const Chapter = (props) => {
                   index={pageIndex}
                   level={1}
                   chapter={page}
+                  parentChapterId={chapterId}
                   location={props.location}
                   onLinkClick={props.onLinkClick}
                   nextScrollPosition={props.nextScrollPosition}
@@ -429,6 +435,7 @@ const Chapter = (props) => {
 Chapter.propTypes = {
   index: PropTypes.number.isRequired,
   level: PropTypes.number.isRequired,
+  parentChapterId: PropTypes.string,
   chapter: PropTypes.object.isRequired,
   onLinkClick: PropTypes.func,
   nextScrollPosition: PropTypes.number.isRequired,
