@@ -26,13 +26,13 @@ const QuizWrapper = styled.div<QuizOutcome>`
   place-items: center;
   min-height: 300px;
   border-radius: ${customProperties.borderRadius6};
-  background: ${customProperties.backgroundColorForTag};
+  background: ${customProperties.colorNeutral90};
   border-left-width: 0.5rem;
   border-left-style: solid;
   border-left-color: ${({ outcome }) => {
     switch (outcome) {
       case OUTCOME_CORRECT:
-        return designTokens.colorPrimary25;
+        return designTokens.colorSuccess25;
       case OUTCOME_INCORRECT:
         return designTokens.colorError;
       default:

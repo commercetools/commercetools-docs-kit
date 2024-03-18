@@ -1,3 +1,4 @@
+import type { User } from 'auth0';
 export type ApiCallResult<Type> = {
   errors?: ApiCallResultError[];
   result: Type;
@@ -28,7 +29,7 @@ export type CourseCompletionStatus = Course & {
   competencies: Competency[];
 };
 
-export type CourseStatus = 'inProgress' | 'completed';
+type CourseStatus = 'inProgress' | 'completed';
 
 export type Competency = {
   shortname: string;
@@ -64,12 +65,12 @@ export type CourseTopic = {
 };
 
 type CourseActivities = {
-  name: string; // needed to match activities in Moodle to MDX
-  courseModuleId: number; // needed for posting manual completion
-  visible: boolean; // could be used for experiemental topics in courses
-  type: SupportedActivitiesType;
-  completionType: CourseActivitiesCompletionType;
   completionStatus: CourseActivitiesCompletionStatus;
+  courseModuleId: number; // needed for posting manual completion
+  name?: string; // needed to match activities in Moodle to MDX
+  visible?: boolean; // could be used for experiemental topics in courses
+  type?: SupportedActivitiesType;
+  completionType?: CourseActivitiesCompletionType;
 };
 
 type SupportedActivitiesType = 'quiz' | 'label';
@@ -91,22 +92,12 @@ type CourseActivitiesCompletionStatus =
 export type UserBadges = {
   badges: Badge[];
 };
+
 export type Badge = {
-  id: string;
   name: string;
-  description: string;
-  status:
-    | 'inactive'
-    | 'active'
-    | 'inactiveLocked'
-    | 'activeLocked'
-    | 'archived'
-    | undefined;
-  dateIssued: string;
-  dateExpire: string;
-  email: string;
-  version: string;
-  language: string;
+  status: 'up to date' | 'up for renewal' | 'outdated' | 'unknown';
+  yearTag: string;
+  shareableLink: string;
   category: string;
   imageId: string;
 };

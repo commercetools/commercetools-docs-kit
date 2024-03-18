@@ -43,7 +43,7 @@ const SelectionContainer = styled.div`
 const QuestionFeedbackMessage = styled.div<QuizOutcome>`
   color: ${(props) =>
     props.outcome === 'correct'
-      ? designTokens.colorPrimary25
+      ? designTokens.colorSuccess25
       : designTokens.colorError};
 `;
 
@@ -57,7 +57,7 @@ const QuizFeedbackMessageArea = styled.div<QuizOutcome>`
     font-weight: bold;
     color: ${(props) =>
       props.outcome === 'correct'
-        ? designTokens.colorPrimary25
+        ? designTokens.colorSuccess25
         : designTokens.colorError};
   }
 `;

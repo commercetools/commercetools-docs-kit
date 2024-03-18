@@ -32,7 +32,7 @@ export const EDITOR_TEST_USER_USERNAME = 'test.user+test@commercetools.com';
 export const EDITOR_TEST_USER_PASSWORD = 'Qwerty123!';
 
 // FEEDBACK
-export const WRONG_ANSWER_COLOR = 'rgb(230, 0, 80)';
-export const CORRECT_ANSWER_COLOR = 'rgb(29, 99, 93)';
+export const WRONG_ANSWER_COLOR = 'rgb(218, 85, 78)';
+export const CORRECT_ANSWER_COLOR = 'rgb(8, 94, 58)';
 export const WRONG_ANSWER_TEXT = 'Your answer is incorrect.';
 export const CORRECT_ANSWER_TEXT = 'Your answer is correct.';

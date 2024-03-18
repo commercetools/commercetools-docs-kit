@@ -6,7 +6,7 @@ import PrimaryButton from './primary-button';
 import SecondaryButton from './secondary-button';
 import { gtagEvent } from '../utils/analytics.utils';
 import useAuthentication from '../hooks/use-authentication';
-import CtCubeWhiteIcon from '../icons/CtCubeWhite';
+import CtCubeLogoWhite from '../icons/CtCubeWhiteNew';
 import LoginIcon from '../icons/LoginIcon';
 import {
   AI_ASSISTANT_LOCALSTORAGE_POST_LOGIN_KEY,
@@ -18,6 +18,7 @@ type LoginButtonProps = {
   aiAssistantCfg?: object;
   showSmallScreenAlternative?: boolean;
   label: string;
+  size?: string;
   theme: 'primary' | 'secondary';
   'data-testid'?: string;
 };
@@ -29,6 +30,11 @@ const LoginButtonContainer = styled.div`
       outline: none;
     }
   }
+`;
+
+const SvgContainer = styled.span`
+  height: 30px;
+  width: 27px;
 `;
 
 const LoginButton = (props: LoginButtonProps) => {
@@ -69,8 +75,14 @@ const LoginButton = (props: LoginButtonProps) => {
 
   const PrimaryLoginButton = () => {
     return (
-      <PrimaryButton data-testid={props['data-testid']} onClick={executeLogin}>
-        <CtCubeWhiteIcon />
+      <PrimaryButton
+        size={props.size}
+        data-testid={props['data-testid']}
+        onClick={executeLogin}
+      >
+        <SvgContainer>
+          <CtCubeLogoWhite />
+        </SvgContainer>
         <p>
           <b>ID</b> | {props.label}
         </p>
