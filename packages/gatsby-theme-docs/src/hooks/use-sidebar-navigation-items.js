@@ -39,7 +39,12 @@ function createAncestorsTree(data) {
   function traverse(chapters, parentPath = [], level = 0) {
     chapters.forEach((chapter, index) => {
       if (chapter.pages) {
-        const currentPath = [...parentPath, `${level}-${index}`];
+        let newPath = `${parentPath.join('#')}#${level}-${index}`;
+        if (newPath.startsWith('#')) {
+          newPath = newPath.substring(1);
+        }
+        const currentPath = [...parentPath, newPath];
+
         ancestorsArray.push(currentPath);
 
         if (chapter.pages.length > 0) {
