@@ -1,5 +1,15 @@
 # @commercetools-website/documentation
 
+## 8.5.8
+
+### Patch Changes
+
+- [#1930](https://github.com/commercetools/commercetools-docs-kit/pull/1930) [`57f362b`](https://github.com/commercetools/commercetools-docs-kit/commit/57f362b45a94d82baf743c04dc92f6ed41ee0219) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Added Algolia search documentation
+
+- Updated dependencies [[`599a11e`](https://github.com/commercetools/commercetools-docs-kit/commit/599a11e7d10526ecae1849374ca9e8b02af9d3db), [`d123efa`](https://github.com/commercetools/commercetools-docs-kit/commit/d123efa33e4703447c0192461352d244a7fe94f6)]:
+  - @commercetools-docs/gatsby-theme-docs@23.0.0
+  - @commercetools-docs/gatsby-theme-code-examples@23.0.0
+
 ## 8.5.7
 
 ### Patch Changes

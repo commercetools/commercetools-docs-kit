@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 23.0.0
+
+### Major Changes
+
+- [#1941](https://github.com/commercetools/commercetools-docs-kit/pull/1941) [`d123efa`](https://github.com/commercetools/commercetools-docs-kit/commit/d123efa33e4703447c0192461352d244a7fe94f6) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add self-learning home page and rebranding
+
+### Patch Changes
+
+- Updated dependencies [[`d123efa`](https://github.com/commercetools/commercetools-docs-kit/commit/d123efa33e4703447c0192461352d244a7fe94f6)]:
+  - @commercetools-docs/ui-kit@23.0.0
+
 ## 22.11.7
 
 ### Patch Changes
