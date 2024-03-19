@@ -38,6 +38,7 @@ export type ThemeColorTokens = {
   surfaceWarning: string;
   surfaceError: string;
   surfaceSearchHighlight: string;
+  surfaceForAvatarIcon: string;
   surfaceForSearchInputWhenDisabled: string;
   surfaceForReleaseNoteTypeFix: string;
   surfaceTagGreen: string;
@@ -119,6 +120,7 @@ export const colors: ThemeColors = {
     surfaceWarning: designTokens.colorWarning95,
     surfaceError: designTokens.colorError95,
     surfaceSearchHighlight: designTokens.colorAccent95,
+    surfaceForAvatarIcon: '#ddd8f2',
     surfaceForSearchInputWhenDisabled: designTokens.colorNeutral90,
     surfaceForReleaseNoteTypeFix: '#e4c5ff',
     surfaceTagGreen: designTokens.colorPrimary95,
@@ -210,7 +212,7 @@ export const tokens = {
   borderRadiusForContentNotification: designTokens.borderRadius6,
   borderRadiusForImageFrame: designTokens.borderRadius6,
   borderRadiusForBlockquote: designTokens.borderRadius6,
-  borderRadiusForCard: designTokens.borderRadius6,
+  borderRadiusForCard: designTokens.borderRadius8,
   borderRadiusForChildSectionNav: designTokens.borderRadius6,
   borderRadiusForRssFeedTable: designTokens.borderRadius6,
   shadowForBetaFlag: designTokens.shadow7,
