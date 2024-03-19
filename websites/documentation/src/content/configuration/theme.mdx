@@ -9,8 +9,6 @@ The Docs-Kit theme also receives its plugin configuration through this standard 
 
 - `websiteKey` (**required**): the identifier of the website, used for error reporting and similar concerns. Usually this value would be the same as the `pathPrefix` without the leading slash and without whitespaces.
 
-- `colorPreset` (_optional_): pick the "look and feel" of the website by choosing one of the available [Color Presets](./extensions#using-theme-color-presets). **Default: `base`**
-
 - `gaTrackingIds` (_optional_, Array): List of tracking IDs to be passed to `gtag.js`.
   For all sites hosted on the `docs.commercetools.com` domain the IDs must be `["G-XGR7PSLVB2", "UA-38285631-3"]` to fill both UA and GA4 concurrently for the time being.
 
@@ -101,7 +99,6 @@ See examples below.
 const {
   configureThemeWithAddOns,
 } = require('@commercetools-docs/gatsby-theme-docs/configure-theme');
-const colorPresets = require('@commercetools-docs/gatsby-theme-docs/color-presets');
 
 module.exports = {
   pathPrefix: '/change-path-prefix',
@@ -116,7 +113,6 @@ module.exports = {
     ...configureThemeWithAddOns({
       // See available plugin options below
       websiteKey: 'change-website-key', // required
-      colorPreset: colorPresets.base.key,
       additionalPrismLanguages: [
         'markup-templating',
         'json',

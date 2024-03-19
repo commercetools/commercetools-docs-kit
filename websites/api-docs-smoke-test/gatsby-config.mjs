@@ -1,4 +1,3 @@
-import colorPresets from '@commercetools-docs/gatsby-theme-docs/color-presets/index.mjs';
 import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/configure-theme.mjs';
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -30,7 +29,6 @@ const config = {
     ...configureThemeWithAddOns({
       websiteKey: 'api-docs-smoke-test',
       additionalPrismLanguages: ['json', 'bash'],
-      colorPreset: colorPresets.apiDeveloperDocs.key,
       aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
       aiAssistantTopbarButton: true,
       addOns: [

@@ -16,7 +16,6 @@ const Hero = styled.div`
   min-height: ${bannerHeight};
   max-height: ${bannerHeight};
   background-color: ${(props) => props.heroBackgroundColor};
-  background-repeat: no-repeat;
   background-size: auto;
   background-position: left;
 
@@ -81,10 +80,7 @@ const LayoutPageWithHero = (props) => (
         </GlobalNotification>
       )}
     </LayoutGlobalNotification>
-    <Hero
-      heroBackgroundURL={props.heroBackgroundURL}
-      heroBackgroundColor={props.heroBackgroundColor}
-    >
+    <Hero heroBackgroundURL={props.heroBackgroundURL}>
       <Title
         style={designSystem.tokensToCssVars({
           websitePrimaryColor: designSystem.colors.light.headlinePrimary,
@@ -99,7 +95,6 @@ const LayoutPageWithHero = (props) => (
 LayoutPageWithHero.propTypes = {
   title: PropTypes.string.isRequired,
   heroBackgroundURL: PropTypes.string.isRequired,
-  heroBackgroundColor: PropTypes.string.isRequired,
   globalNotification: PropTypes.shape({
     active: PropTypes.bool.isRequired,
     notificationType: PropTypes.oneOf(['info', 'warning']).isRequired,
