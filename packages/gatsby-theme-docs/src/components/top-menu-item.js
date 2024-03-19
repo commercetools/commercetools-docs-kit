@@ -20,7 +20,8 @@ const MenuItemWrapper = styled.div`
   }
 
   &:hover {
-    background-color: ${designSystem.colors.light.selectedItemBackground};
+    background-color: ${designSystem.colors.light
+      .surfaceForTopMenuSelectedItem};
     border-radius: 4px;
     cursor: pointer;
     color: ${designSystem.colors.light.selectedItemText};
@@ -40,7 +41,7 @@ const MenuItemWrapper = styled.div`
     padding: ${paddingTopBottom} 11px ${paddingTopBottom} 7px;
     border: 1px solid ${designSystem.colors.light.selectedItem};
     border-radius: 4px;
-    background-color: ${designSystem.colors.light.selectedItemBackground};
+    background-color: ${designSystem.colors.light.surfaceForTopMenuSelectedItem};
     color: ${designSystem.colors.light.selectedItemText};
     font-weight: ${designSystem.typography.fontWeights['light-bold']}
   `

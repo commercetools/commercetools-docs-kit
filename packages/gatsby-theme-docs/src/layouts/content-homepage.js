@@ -55,7 +55,6 @@ const LayoutContentHomepage = (props) => {
           <LayoutPageWithHero
             title={props.pageData.title}
             heroBackgroundURL={props.heroBackground.publicURL}
-            heroBackgroundColor={props.pageContext.heroBackgroundColor}
             globalNotification={siteData.siteMetadata.globalNotification}
           >
             <LayoutPageContent>
@@ -77,7 +76,6 @@ LayoutContentHomepage.propTypes = {
     slug: PropTypes.string.isRequired,
     shortTitle: PropTypes.string,
     hasReleaseNotes: PropTypes.bool.isRequired,
-    heroBackgroundColor: PropTypes.string.isRequired,
   }).isRequired,
   pageData: PropTypes.shape({
     title: PropTypes.string.isRequired,

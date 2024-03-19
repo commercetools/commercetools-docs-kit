@@ -39,6 +39,8 @@ export type ThemeColorTokens = {
   surfaceError: string;
   surfaceSearchHighlight: string;
   surfaceForAvatarIcon: string;
+  surfaceForTopMenuSelectedItem: string;
+  surfaceForTopMenuBottom: string;
   surfaceForSearchInputWhenDisabled: string;
   surfaceForReleaseNoteTypeFix: string;
   surfaceTagGreen: string;
@@ -121,6 +123,8 @@ export const colors: ThemeColors = {
     surfaceError: designTokens.colorError95,
     surfaceSearchHighlight: designTokens.colorAccent95,
     surfaceForAvatarIcon: '#ddd8f2',
+    surfaceForTopMenuSelectedItem: '#efedff',
+    surfaceForTopMenuBottom: '#b1acff',
     surfaceForSearchInputWhenDisabled: designTokens.colorNeutral90,
     surfaceForReleaseNoteTypeFix: '#e4c5ff',
     surfaceTagGreen: designTokens.colorPrimary95,
