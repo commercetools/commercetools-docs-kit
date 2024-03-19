@@ -17,7 +17,6 @@ import {
   createStyledIcon,
   Icons,
 } from '@commercetools-docs/ui-kit';
-import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import useSidebarNavigationItems from '../../hooks/use-sidebar-navigation-items';
 import { BetaTag } from '../../components';
@@ -83,7 +82,7 @@ const WebsiteTitle = styled.div`
 `;
 const WebsiteTitleLink = styled.a`
   text-decoration: none;
-  color: ${designSystem.colors.light.linkNavigationNew};
+  color: ${designSystem.tokens.websitePrimaryColor};
   :hover {
     text-decoration: underline;
   }
@@ -506,10 +505,7 @@ const Sidebar = (props) => {
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaTag />}</div>
             <WebsiteTitleLink as={Link} to="/">
-              <SpacingsInline scale="s">
-                <SiteIcon />
-                <span id="site-title">{props.siteTitle}</span>
-              </SpacingsInline>
+              <span id="site-title">{props.siteTitle}</span>
             </WebsiteTitleLink>
           </SpacingsStack>
         </WebsiteTitle>

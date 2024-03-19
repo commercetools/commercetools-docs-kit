@@ -12,7 +12,6 @@ import {
   createStyledIcon,
   Icons,
 } from '@commercetools-docs/ui-kit';
-import SiteIcon from '../../../overrides/site-icon';
 import useScrollPosition from '../../../hooks/use-scroll-position';
 import { BetaTag } from '../../../components';
 import LayoutHeaderLogo from '../layout-header-logo';
@@ -461,10 +460,7 @@ const Sidebar = (props) => {
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaTag />}</div>
             <WebsiteTitleLink as={Link} to="/">
-              <SpacingsInline scale="s">
-                <SiteIcon />
-                <span id="site-title">{props.siteTitle}</span>
-              </SpacingsInline>
+              <span id="site-title">{props.siteTitle}</span>
             </WebsiteTitleLink>
           </SpacingsStack>
         </WebsiteTitle>
