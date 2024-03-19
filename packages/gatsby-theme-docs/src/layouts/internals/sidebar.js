@@ -82,9 +82,8 @@ const WebsiteTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.h4};
 `;
 const WebsiteTitleLink = styled.a`
-  padding-left: ${designSystem.dimensions.spacings.m};
   text-decoration: none;
-  color: ${designSystem.tokens.websitePrimaryColor};
+  color: ${designSystem.colors.light.linkNavigationNew};
   :hover {
     text-decoration: underline;
   }
@@ -112,11 +111,11 @@ const linkStyles = css`
   align-items: flex-end;
 
   :hover {
-    color: ${designSystem.colors.light.linkNavigation} !important;
+    color: ${designSystem.colors.light.linkNavigationNew} !important;
 
     svg {
       * {
-        fill: ${designSystem.colors.light.linkNavigation};
+        fill: ${designSystem.colors.light.linkNavigationNew};
       }
     }
   }
@@ -127,8 +126,8 @@ const activeLinkStyles = css`
       ${designSystem.dimensions.spacings.xs}
   );
   border-left: ${designSystem.dimensions.spacings.xs} solid
-    ${designSystem.colors.light.linkNavigation} !important;
-  color: ${designSystem.colors.light.linkNavigation} !important;
+    ${designSystem.colors.light.linkNavigationNew} !important;
+  color: ${designSystem.colors.light.linkNavigationNew} !important;
 `;
 
 const SidebarLink = (props) => {
