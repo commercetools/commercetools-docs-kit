@@ -1,5 +1,17 @@
 # @commercetools-docs/ui-kit
 
+## 24.0.0
+
+### Patch Changes
+
+- [#1944](https://github.com/commercetools/commercetools-docs-kit/pull/1944) [`1abdf08`](https://github.com/commercetools/commercetools-docs-kit/commit/1abdf08200c65a392938f0a82573b375c7e9d52e) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Adapt colors for static svg lord icons
+
+- [#1947](https://github.com/commercetools/commercetools-docs-kit/pull/1947) [`9328546`](https://github.com/commercetools/commercetools-docs-kit/commit/932854681aadb6ac1900eee25d07cf932ff7fada) Thanks [@timonrey](https://github.com/timonrey)! - Applies design changes accourding to the new ct branding. It also removes support for color presets since we will only use one color preset from now on.
+
+  Migration steps:
+
+  - Go to the gatsby-config.mjs file of every microsite and remove the `colorPreset` config from the local theme configuration.
+
 ## 23.0.0
 
 ### Major Changes
