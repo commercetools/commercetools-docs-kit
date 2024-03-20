@@ -141,7 +141,7 @@
                   "ty": "fl",
                   "c": {
                     "a": 0,
-                    "k": [0.306, 0.306, 0.847, 1],
+                    "k": [0.027, 0.549, 0.875, 1],
                     "ix": 4,
                     "x": "var $bm_rt;\n$bm_rt = comp('wired-gradient-731-real-estate-building-project').layer('control').effect('secondary')('Color');"
                   },
@@ -190,7 +190,7 @@
                   "ty": "fl",
                   "c": {
                     "a": 0,
-                    "k": [0.306, 0.306, 0.847, 1],
+                    "k": [0, 0.702, 0.62, 1],
                     "ix": 4,
                     "x": "var $bm_rt;\n$bm_rt = comp('wired-gradient-731-real-estate-building-project').layer('control').effect('primary')('Color');"
                   },
@@ -2030,7 +2030,7 @@
               "nm": "Color",
               "mn": "ADBE Color Control-0001",
               "ix": 1,
-              "v": { "a": 0, "k": [0.306, 0.306, 0.847], "ix": 1 }
+              "v": { "a": 0, "k": [0, 0.702, 0.62], "ix": 1 }
             }
           ]
         },
@@ -2047,7 +2047,7 @@
               "nm": "Color",
               "mn": "ADBE Color Control-0001",
               "ix": 1,
-              "v": { "a": 0, "k": [0.306, 0.306, 0.847], "ix": 1 }
+              "v": { "a": 0, "k": [0.027, 0.549, 0.875], "ix": 1 }
             }
           ]
         }
