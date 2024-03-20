@@ -25,9 +25,7 @@ export const getItemAncestors = (chapterId, ancestorsMap) => {
 };
 
 export const isRightChapter = (chapter, loc) => {
-  return (
-    chapter.pages.find((page) => loc.pathname.includes(page.path)) !== undefined
-  );
+  return chapter.pages.find((page) => loc.pathname === page.path) !== undefined;
 };
 
 export const isRightChapterRecursive = (chapter, loc) => {
@@ -38,7 +36,7 @@ export const isRightChapterRecursive = (chapter, loc) => {
     chapter.pages.find((page) =>
       page.pages
         ? isRightChapterRecursive(page, loc)
-        : loc.pathname.includes(page.path)
+        : loc.pathname === page.path
     ) !== undefined
   );
 };
