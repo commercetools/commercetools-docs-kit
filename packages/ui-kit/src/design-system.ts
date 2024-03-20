@@ -38,6 +38,9 @@ export type ThemeColorTokens = {
   surfaceWarning: string;
   surfaceError: string;
   surfaceSearchHighlight: string;
+  surfaceForAvatarIcon: string;
+  surfaceForTopMenuSelectedItem: string;
+  surfaceForTopMenuBottom: string;
   surfaceForSearchInputWhenDisabled: string;
   surfaceForReleaseNoteTypeFix: string;
   surfaceTagGreen: string;
@@ -64,6 +67,7 @@ export type ThemeColorTokens = {
   link: string;
   linkHover: string;
   linkNavigation: string;
+  linkNavigationNew: string;
   // Headlines
   headlinePrimary: string;
   // Icons
@@ -118,6 +122,9 @@ export const colors: ThemeColors = {
     surfaceWarning: designTokens.colorWarning95,
     surfaceError: designTokens.colorError95,
     surfaceSearchHighlight: designTokens.colorAccent95,
+    surfaceForAvatarIcon: '#ddd8f2',
+    surfaceForTopMenuSelectedItem: '#efedff',
+    surfaceForTopMenuBottom: '#b1acff',
     surfaceForSearchInputWhenDisabled: designTokens.colorNeutral90,
     surfaceForReleaseNoteTypeFix: '#e4c5ff',
     surfaceTagGreen: designTokens.colorPrimary95,
@@ -144,6 +151,7 @@ export const colors: ThemeColors = {
     link: designTokens.colorPrimary25,
     linkHover: designTokens.colorPrimary,
     linkNavigation: designTokens.colorInfo,
+    linkNavigationNew: '#4E4ED8',
     // Headlines
     headlinePrimary: '#003037',
     // Icons
@@ -208,7 +216,7 @@ export const tokens = {
   borderRadiusForContentNotification: designTokens.borderRadius6,
   borderRadiusForImageFrame: designTokens.borderRadius6,
   borderRadiusForBlockquote: designTokens.borderRadius6,
-  borderRadiusForCard: designTokens.borderRadius6,
+  borderRadiusForCard: designTokens.borderRadius8,
   borderRadiusForChildSectionNav: designTokens.borderRadius6,
   borderRadiusForRssFeedTable: designTokens.borderRadius6,
   shadowForBetaFlag: designTokens.shadow7,

@@ -394,7 +394,7 @@ const withCopyToClipboard =
             div.clipboard {
               svg {
                 * {
-                  fill: ${colors.light.linkNavigation};
+                  fill: ${colors.light.linkNavigationNew};
                 }
               }
             }

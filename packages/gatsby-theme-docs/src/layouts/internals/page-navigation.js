@@ -62,7 +62,7 @@ const Link = styled.a`
   }};
   color: ${(props) => {
     if (props.isActive) {
-      return designSystem.colors.light.linkNavigation;
+      return designSystem.colors.light.linkNavigationNew;
     }
     switch (props.level) {
       case 1:
@@ -74,12 +74,12 @@ const Link = styled.a`
   text-decoration: none;
   border-left: ${(props) => {
     if (props.isActive) {
-      return `1px solid ${designSystem.colors.light.linkNavigation}`;
+      return `1px solid ${designSystem.colors.light.linkNavigationNew}`;
     }
     return '1px solid transparent';
   }};
   :hover {
-    color: ${designSystem.colors.light.linkNavigation};
+    color: ${designSystem.colors.light.linkNavigationNew};
   }
   :hover,
   :active {

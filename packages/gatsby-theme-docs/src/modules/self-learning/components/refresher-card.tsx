@@ -11,6 +11,7 @@ import {
 import { IconWithTextContainer, CardBottomContainer } from './course-card';
 import { StackIcon } from '@commercetools-uikit/icons';
 import PrimaryButton from '@commercetools-uikit/primary-button';
+import { navigate } from 'gatsby';
 
 const { CardContainer, StackContainer, InlineContainer, BodyContainer } =
   cardElements;
@@ -67,7 +68,10 @@ const RefresherCard = (props: RefresherCardProps) => {
                 <p>{props.productName}</p>
               </IconWithTextContainer>
               <IconWithTextContainer textSize="large">
-                <PrimaryButton label="Start" onClick={() => null} />
+                <PrimaryButton
+                  label="Start"
+                  onClick={() => navigate(props.href)}
+                />
               </IconWithTextContainer>
             </CardBottomContainer>
           </StackContainer>

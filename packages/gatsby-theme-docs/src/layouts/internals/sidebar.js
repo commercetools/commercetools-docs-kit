@@ -17,7 +17,6 @@ import {
   createStyledIcon,
   Icons,
 } from '@commercetools-docs/ui-kit';
-import SiteIcon from '../../overrides/site-icon';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import useSidebarNavigationItems from '../../hooks/use-sidebar-navigation-items';
 import { BetaTag } from '../../components';
@@ -82,7 +81,6 @@ const WebsiteTitle = styled.div`
   font-size: ${designSystem.typography.fontSizes.h4};
 `;
 const WebsiteTitleLink = styled.a`
-  padding-left: ${designSystem.dimensions.spacings.m};
   text-decoration: none;
   color: ${designSystem.tokens.websitePrimaryColor};
   :hover {
@@ -112,11 +110,11 @@ const linkStyles = css`
   align-items: flex-end;
 
   :hover {
-    color: ${designSystem.colors.light.linkNavigation} !important;
+    color: ${designSystem.colors.light.linkNavigationNew} !important;
 
     svg {
       * {
-        fill: ${designSystem.colors.light.linkNavigation};
+        fill: ${designSystem.colors.light.linkNavigationNew};
       }
     }
   }
@@ -127,8 +125,8 @@ const activeLinkStyles = css`
       ${designSystem.dimensions.spacings.xs}
   );
   border-left: ${designSystem.dimensions.spacings.xs} solid
-    ${designSystem.colors.light.linkNavigation} !important;
-  color: ${designSystem.colors.light.linkNavigation} !important;
+    ${designSystem.colors.light.linkNavigationNew} !important;
+  color: ${designSystem.colors.light.linkNavigationNew} !important;
 `;
 
 const SidebarLink = (props) => {
@@ -507,10 +505,7 @@ const Sidebar = (props) => {
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaTag />}</div>
             <WebsiteTitleLink as={Link} to="/">
-              <SpacingsInline scale="s">
-                <SiteIcon />
-                <span id="site-title">{props.siteTitle}</span>
-              </SpacingsInline>
+              <span id="site-title">{props.siteTitle}</span>
             </WebsiteTitleLink>
           </SpacingsStack>
         </WebsiteTitle>
