@@ -3,15 +3,10 @@ import type { SVGProps } from 'react';
 const SvgLordIconBuilding = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={500}
-    height={500}
-    style={{
-      width: '100%',
-      height: '100%',
-      transform: 'translate3d(0,0,0)',
-      contentVisibility: 'visible',
-    }}
-    viewBox="0 0 500 500"
+    width={430}
+    height={431}
+    fill="none"
+    viewBox="0 0 430 431"
     {...props}
   >
     <path
@@ -27,8 +22,8 @@ const SvgLordIconBuilding = (props: SVGProps<SVGSVGElement>) => (
         y2={371.196}
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="#00B39E" />
-        <stop offset={1} stopColor="#068BDF" />
+        <stop stopColor="#4E4ED7" />
+        <stop offset={1} stopColor="#4E4ED7" />
       </linearGradient>
     </defs>
   </svg>
