@@ -3,99 +3,31 @@ import type { SVGProps } from 'react';
 const SvgLordIconFlag = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={500}
-    height={500}
-    style={{
-      width: '100%',
-      height: '100%',
-      transform: 'translate3d(0,0,0)',
-      contentVisibility: 'visible',
-    }}
-    viewBox="0 0 500 500"
+    width={430}
+    height={430}
+    fill="none"
+    viewBox="0 0 430 430"
     {...props}
   >
+    <path
+      fill="url(#lord-icon-flag_svg__a)"
+      fillRule="evenodd"
+      d="M94 56.5a6 6 0 0 1 3.284-5.35c45.04-22.867 90.392-22.867 135.432 0 41.626 21.133 82.942 21.133 124.568 0a6 6 0 0 1 8.026 8.145l-48.34 91.844 48.022 72.033a6 6 0 0 1-2.276 8.678c-45.04 22.867-90.392 22.867-135.432 0-40.532-20.578-80.768-21.119-121.284-1.624V400a6 6 0 1 1-12 0V56.5Zm12 3.726c40.516-19.495 80.752-18.953 121.284 1.624 39.678 20.144 79.598 22.543 119.333 7.195l-41.927 79.661a6 6 0 0 0 .318 6.122l46.178 69.268c-39.565 18.137-78.877 17.155-118.47-2.946-42.136-21.392-84.545-22.772-126.716-4.138V60.226Z"
+      clipRule="evenodd"
+    />
     <defs>
-      <clipPath id="lord-icon-flag_svg__d">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <clipPath id="lord-icon-flag_svg__b">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <clipPath id="lord-icon-flag_svg__c">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <filter
-        id="lord-icon-flag_svg__f"
-        width="300%"
-        height="300%"
-        x="-100%"
-        y="-100%"
-      >
-        <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
-      </filter>
-      <mask id="lord-icon-flag_svg__e" mask-type="alpha">
-        <use href="#lord-icon-flag_svg__a" />
-      </mask>
-      <g
+      <linearGradient
         id="lord-icon-flag_svg__a"
-        fillOpacity={0}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        clipPath="url(#lord-icon-flag_svg__b)"
-        style={{
-          display: 'block',
-        }}
+        x1={94.1}
+        x2={397.685}
+        y1={16.502}
+        y2={134.375}
+        gradientUnits="userSpaceOnUse"
       >
-        <path
-          stroke="#121331"
-          strokeWidth={12}
-          d="m-115.914-13.182-.207 180.636"
-          style={{
-            display: 'block',
-          }}
-          transform="translate(250.151 248.818)"
-        />
-        <g
-          clipPath="url(#lord-icon-flag_svg__c)"
-          style={{
-            display: 'block',
-          }}
-        >
-          <path
-            stroke="#08A88A"
-            strokeWidth={12}
-            d="M-116.185-3.241v-162.577c53.284-9.75 89.039 11.576 139.537 11.576 38.247 0 100.257-16.267 100.257-16.267L71.856-79.221l51.253 71.789s-66.004 19.847-98.757 19.77c-46.84-.11-113.52-32.156-140.537-15.579z"
-            style={{
-              display: 'block',
-            }}
-            transform="translate(250.151 240.818)"
-          />
-        </g>
-      </g>
+        <stop stopColor="#4E4ED7" />
+        <stop offset={1} stopColor="#4E4ED7" />
+      </linearGradient>
     </defs>
-    <g
-      clipPath="url(#lord-icon-flag_svg__d)"
-      mask="url(#lord-icon-flag_svg__e)"
-      style={{
-        display: 'block',
-      }}
-    >
-      <g
-        filter="url(#lord-icon-flag_svg__f)"
-        transform="rotate(-94 262.075 8.435) scale(2.4)"
-      >
-        <path
-          fill="#00B39E"
-          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-          className="lord-icon-flag_svg__design"
-        />
-        <path
-          fill="#068BDF"
-          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-          className="lord-icon-flag_svg__design"
-        />
-      </g>
-    </g>
   </svg>
 );
 export default SvgLordIconFlag;
