@@ -3,96 +3,29 @@ import type { SVGProps } from 'react';
 const SvgLordIconGraduation = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={500}
-    height={500}
-    style={{
-      width: '100%',
-      height: '100%',
-      transform: 'translate3d(0,0,0)',
-      contentVisibility: 'visible',
-    }}
-    viewBox="0 0 500 500"
+    width={430}
+    height={430}
+    fill="none"
+    viewBox="0 0 430 430"
     {...props}
   >
+    <path
+      fill="url(#lord-icon-graduation_svg__a)"
+      d="M399.7 142.7c-.4-.4-.9-.8-1.5-1.1-.3-.2-.6-.3-1-.4L216.9 77.4c-1.4-.5-2.9-.5-4.2 0L33.2 141.1c-2.5.9-4.2 3.3-4.2 6 0 .5 0 .9.1 1.4l-.1 27.6c0 2.7 1.7 5.1 4.2 6l67.2 23.8c0 2.4.1 2.6 0 3.9l-.4 86.3c0 1.1.3 2.2.8 3.1.3.6 7.9 13.8 25.9 26.9 16.4 11.9 45 26.2 88.4 26.3h.6c42.5 0 70.5-14.2 86.5-26.2 17.7-13.2 25.1-26.6 25.5-27.1.5-.9.8-2 .8-3l.4-86.3c0-1.3.1-1.5.1-3.8l68.3-24.2c2.5-.9 4.2-3.3 4.2-5.9v-28.7c.1-1.7-.6-3.3-1.8-4.5ZM214.8 90l161.5 57.1-77.2 27.3v-.3c0-2.6-1.7-5-4.1-5.9l-77-28c-3.3-1.2-6.9.5-8.1 3.8-1.2 3.3.5 6.9 3.8 8.1l72.8 26.5v.4l-71.7 25.3-160.7-57.2L214.8 90ZM41.7 156l171 60.8c1.4.5 2.9.5 4.2 0l69.6-24.6v15.5l-71.7 25.4-173.2-61.5.1-15.6Zm174.1 183.8h-.6c-39.6-.1-65.6-12.9-80.4-23.5-12.9-9.3-19.9-18.7-22.1-22l.4-83.9 99.6 35.4c.7.2 1.4.4 2.1.4.7 0 1.4-.1 2.1-.4l69.6-24.7v52.1c-2.5 1.9-4.2 5-4.2 8.4v23.8c0 5.8 4.7 10.5 10.5 10.5 1 0 1.9-.1 2.9-.4-.5.3-.9.7-1.4 1-21 15.5-47.4 23.3-78.5 23.3ZM316 294.3c-1.7 2.6-6.1 8.8-13.8 15.8.7-1.4 1.1-3 1.1-4.7v-23.8c0-3.4-1.6-6.5-4.2-8.4v-56.6l17.3-6.1-.4 83.8Zm73-122.9-89.9 31.9v-15.5L389 156v15.4Z"
+    />
     <defs>
-      <clipPath id="lord-icon-graduation_svg__c">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <clipPath id="lord-icon-graduation_svg__b">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <filter
-        id="lord-icon-graduation_svg__e"
-        width="300%"
-        height="300%"
-        x="-100%"
-        y="-100%"
-      >
-        <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
-      </filter>
-      <mask id="lord-icon-graduation_svg__d" mask-type="alpha">
-        <use href="#lord-icon-graduation_svg__a" />
-      </mask>
-      <g
+      <linearGradient
         id="lord-icon-graduation_svg__a"
-        fillOpacity={0}
-        stroke="#08A88A"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        clipPath="url(#lord-icon-graduation_svg__b)"
-        style={{
-          display: 'block',
-        }}
+        x1={100.676}
+        x2={329.075}
+        y1={72.79}
+        y2={301.189}
+        gradientUnits="userSpaceOnUse"
       >
-        <path
-          strokeWidth={12}
-          d="m98.395-30.292-.401 86.297S70.507 106.292-9.055 106.034c-80.665-.262-108.846-50.029-108.846-50.029l.401-86.297"
-          style={{
-            display: 'block',
-          }}
-          transform="translate(259 271.999)"
-        />
-        <path
-          strokeWidth={12}
-          d="M180.44-92.969.021-156.781-179.469-93 .021-29.219l180.419-63.75zm-357.657-.061-2.098-.001-.154 29.031L.021-.219 180.47-64.25s0 0 0 0l.03-28.687-5.922-.002"
-          style={{
-            display: 'block',
-          }}
-          transform="translate(249.5 271.999)"
-        />
-        <g
-          style={{
-            display: 'block',
-          }}
-        >
-          <path strokeWidth={12} d="m250.5 177.999 77 28v105m0 2.5v10.73" />
-          <path strokeWidth={22} d="M327.5 313.499v10.73" />
-        </g>
-      </g>
+        <stop stopColor="#4E4ED7" />
+        <stop offset={1} stopColor="#4E4ED7" />
+      </linearGradient>
     </defs>
-    <g
-      clipPath="url(#lord-icon-graduation_svg__c)"
-      mask="url(#lord-icon-graduation_svg__d)"
-      style={{
-        display: 'block',
-      }}
-    >
-      <g
-        filter="url(#lord-icon-graduation_svg__e)"
-        transform="rotate(-94 262.075 8.435) scale(2.4)"
-      >
-        <path
-          fill="#00B39E"
-          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-          className="lord-icon-graduation_svg__design"
-        />
-        <path
-          fill="#068BDF"
-          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-          className="lord-icon-graduation_svg__design"
-        />
-      </g>
-    </g>
   </svg>
 );
 export default SvgLordIconGraduation;
