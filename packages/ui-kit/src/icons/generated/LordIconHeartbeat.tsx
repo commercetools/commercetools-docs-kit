@@ -3,111 +3,31 @@ import type { SVGProps } from 'react';
 const SvgLordIconHeartbeat = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={500}
-    height={500}
-    style={{
-      width: '100%',
-      height: '100%',
-      transform: 'translate3d(0,0,0)',
-      contentVisibility: 'visible',
-    }}
-    viewBox="0 0 500 500"
+    width={430}
+    height={430}
+    fill="none"
+    viewBox="0 0 430 430"
     {...props}
   >
+    <path
+      fill="url(#lord-icon-heartbeat_svg__a)"
+      fillRule="evenodd"
+      d="M365.083 233.027a6.017 6.017 0 0 1-.937 1.214l-144.902 145a6.002 6.002 0 0 1-8.487.001L69.446 237.933c-21.869-19.825-35.618-48.477-35.618-80.333 0-59.868 48.533-108.4 108.4-108.4 27.874 0 53.299 10.527 72.5 27.811 19.202-17.284 44.627-27.811 72.5-27.811 59.868 0 108.4 48.532 108.4 108.4 0 29.314-11.643 55.92-30.545 75.427ZM142.228 61.2c-53.24 0-96.4 43.159-96.4 96.4 0 9.154 1.276 18.01 3.659 26.4h65.418c2.54 0 4.805 1.6 5.655 3.994l14.993 42.267 28.918-101.899a6 6 0 0 1 11.427-.368L195.765 184h43.708a6 6 0 0 1 5.655 3.994l14.994 42.267 28.917-101.899a6 6 0 0 1 11.427-.368L320.333 184h59.637a96.488 96.488 0 0 0 3.658-26.4c0-53.241-43.159-96.4-96.4-96.4-26.666 0-50.793 10.819-68.252 28.322a5.999 5.999 0 0 1-8.496 0C193.022 72.019 168.894 61.2 142.228 61.2ZM375.678 196a96.55 96.55 0 0 1-20.23 29.71 6.003 6.003 0 0 0-.908 1.168L214.998 366.513 77.826 229.342a6.636 6.636 0 0 0-.22-.208A96.646 96.646 0 0 1 53.779 196h56.889l19.867 56.006a6 6 0 0 0 11.427-.368l28.917-101.9 14.994 42.268a6 6 0 0 0 5.655 3.994h43.708l19.867 56.006a6 6 0 0 0 11.427-.368l28.918-101.9 14.993 42.268a6.002 6.002 0 0 0 5.655 3.994h59.583Z"
+      clipRule="evenodd"
+    />
     <defs>
-      <clipPath id="lord-icon-heartbeat_svg__f">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <clipPath id="lord-icon-heartbeat_svg__c">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <clipPath id="lord-icon-heartbeat_svg__d">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <mask id="lord-icon-heartbeat_svg__e" mask-type="alpha">
-        <use href="#lord-icon-heartbeat_svg__a" />
-      </mask>
-      <mask id="lord-icon-heartbeat_svg__g" mask-type="alpha">
-        <use href="#lord-icon-heartbeat_svg__b" />
-      </mask>
-      <filter
-        id="lord-icon-heartbeat_svg__h"
-        width="300%"
-        height="300%"
-        x="-100%"
-        y="-100%"
-      >
-        <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
-      </filter>
-      <path
+      <linearGradient
         id="lord-icon-heartbeat_svg__a"
-        fill="red"
-        d="M250 161.6c19.2-34.81 58.04-55.78 96.64-39.33 0 0 52.18 17.66 48.26 79.43-3.91 61.78-82.8 148.33-144.9 181.73m0-221.83c-19.2-34.81-58.04-55.78-96.64-39.33 0 0-52.18 17.66-48.26 79.43 3.91 61.78 82.8 148.33 144.9 181.73"
-        style={{
-          display: 'block',
-        }}
-      />
-      <g
-        id="lord-icon-heartbeat_svg__b"
-        fillOpacity={0}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        clipPath="url(#lord-icon-heartbeat_svg__c)"
-        style={{
-          display: 'block',
-        }}
+        x1={88.229}
+        x2={331.116}
+        y1={121.691}
+        y2={374.325}
+        gradientUnits="userSpaceOnUse"
       >
-        <g
-          clipPath="url(#lord-icon-heartbeat_svg__d)"
-          mask="url(#lord-icon-heartbeat_svg__e)"
-          style={{
-            display: 'block',
-          }}
-        >
-          <path
-            stroke="#08A284"
-            strokeWidth={12}
-            d="m-146.3.186 60.09-.191 14.42 28.83 28.82-57.65 14.42 28.82h57.41l14.42 28.83 28.82-57.65L86.52-.005l58.78-.061"
-            style={{
-              display: 'block',
-            }}
-            transform="translate(250 243.318)"
-          />
-        </g>
-        <path
-          stroke="#121331"
-          strokeWidth={12}
-          d="M72.558-88.4c19.201-34.813 58.038-55.777 96.644-39.328 0 0 52.18 17.653 48.261 79.428-3.919 61.775-82.802 148.332-144.905 181.733m0-221.833c-19.201-34.813-58.038-55.777-96.644-39.328 0 0-52.18 17.653-48.261 79.428 3.919 61.775 82.802 148.332 144.905 181.733"
-          style={{
-            display: 'block',
-          }}
-          transform="translate(177.442 250)"
-        />
-      </g>
+        <stop stopColor="#4E4ED7" />
+        <stop offset={1} stopColor="#4E4ED7" />
+      </linearGradient>
     </defs>
-    <g
-      clipPath="url(#lord-icon-heartbeat_svg__f)"
-      mask="url(#lord-icon-heartbeat_svg__g)"
-      style={{
-        display: 'block',
-      }}
-    >
-      <g
-        filter="url(#lord-icon-heartbeat_svg__h)"
-        transform="rotate(-94 262.075 8.435) scale(2.4)"
-      >
-        <path
-          fill="#00B39E"
-          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-          className="lord-icon-heartbeat_svg__design"
-        />
-        <path
-          fill="#068BDF"
-          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-          className="lord-icon-heartbeat_svg__design"
-        />
-      </g>
-    </g>
   </svg>
 );
 export default SvgLordIconHeartbeat;
