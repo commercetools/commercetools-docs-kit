@@ -1,5 +1,12 @@
 # @commercetools-website/site-template
 
+## 5.3.28
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-docs/gatsby-theme-docs@24.0.1
+
 ## 5.3.27
 
 ### Patch Changes
