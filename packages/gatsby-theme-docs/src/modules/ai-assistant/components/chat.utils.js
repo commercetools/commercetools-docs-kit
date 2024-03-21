@@ -2,7 +2,7 @@ import {
   ALLOWED_EMAIL_DOMAINS,
   LOCAL_AI_ASSISTANT_STATE_KEY,
 } from './chat.const';
-import DefaultAvatarIcon from '../icons/assistant-avatar.svg';
+import DefaultAvatarIcon from '../icons/assistant-icon.svg';
 import ChefAvatarIcon from '../icons/assistant-chef.svg';
 import { DEV_TOOLING_MODE } from './chat-modal';
 import { AI_ASSISTANT_LOCALSTORAGE_POST_LOGIN_KEY } from '../hooks/use-ai-assistant';

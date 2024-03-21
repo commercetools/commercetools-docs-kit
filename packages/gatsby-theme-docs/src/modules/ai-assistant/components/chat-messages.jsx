@@ -13,10 +13,10 @@ import { FirstName } from '@commercetools-docs/gatsby-theme-docs';
 import { CHAT_ROLE_ASSISTANT, CHAT_ROLE_USER } from './chat.const';
 import { getAssistantAvatarIcon } from './chat.utils';
 import thumbsUpIcon from '../icons/assistant-thumbs-up.png';
-import thumbsDownIcon from '../icons/assistant-thumbs-down.png'
-import thumbsUpIconFilled from '../icons/assistant-thumbs-up-filled.png'
-import thumbsDownIconFilled from '../icons/assistant-thumbs-down-filled.png'
-import codeIcon from '../icons/assistant-code.png'
+import thumbsDownIcon from '../icons/assistant-thumbs-down.png';
+import thumbsUpIconFilled from '../icons/assistant-thumbs-up-filled.png';
+import thumbsDownIconFilled from '../icons/assistant-thumbs-down-filled.png';
+import codeIcon from '../icons/assistant-code.png';
 import { DEV_TOOLING_MODE } from './chat-modal';
 
 export const FEEDBACK_UP = 1;
@@ -147,14 +147,19 @@ const ChatMessages = (props) => {
       </MessageContainer>
       {props.messages.map((message, index) => (
         <div key={index}>
-          <MessageContainer >
+          <MessageContainer>
             {message.role === 'assistant' ? (
               <AvatarWrapper isAssistant>
                 <AssistantAvatarIcon />
               </AvatarWrapper>
             ) : (
               <AvatarWrapper>
-                <Avatar size="m" firstName={message.name} gravatarHash="" />
+                <Avatar
+                  size="m"
+                  firstName={message.name}
+                  gravatarHash=""
+                  color="purple"
+                />
               </AvatarWrapper>
             )}
             <MessageText>
@@ -189,7 +194,7 @@ const ChatMessages = (props) => {
                 }
               >
                 <img
-                  alt='positive feedback'
+                  alt="positive feedback"
                   src={
                     feedbackResults[message.id] === FEEDBACK_UP
                       ? thumbsUpIconFilled
@@ -207,7 +212,7 @@ const ChatMessages = (props) => {
                 }
               >
                 <img
-                  alt='negative feedback'
+                  alt="negative feedback"
                   src={
                     feedbackResults[message.id] === FEEDBACK_DOWN
                       ? thumbsDownIconFilled
@@ -237,7 +242,7 @@ const ChatMessages = (props) => {
       {props.messages.length === 0 &&
         props.chatMode.key === DEV_TOOLING_MODE && (
           <CodeContainer>
-            <img src={codeIcon} width={300} alt="code assistant icon"/>
+            <img src={codeIcon} width={300} alt="code assistant icon" />
           </CodeContainer>
         )}
     </>
