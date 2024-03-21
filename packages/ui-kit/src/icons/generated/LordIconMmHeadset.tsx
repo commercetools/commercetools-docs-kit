@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
-const SvgLordIconHeadset = (props: SVGProps<SVGSVGElement>) => (
+const SvgLordIconMmHeadset = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={430}
@@ -10,12 +10,12 @@ const SvgLordIconHeadset = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="url(#lord-icon-headset_svg__a)"
+      fill="url(#lord-icon-mm-headset_svg__a)"
       d="M71 226.5c-13.8 0-25 11.2-25 25s11.2 25 25 25c2.3 0 4.2-1.9 4.2-4.2v-41.6c0-2.3-1.9-4.2-4.2-4.2Zm288.9 0c-2.3 0-4.2 1.9-4.2 4.2v31.5c-.1.2-.2.4-.2.6l-9.8 28.8v-80.9c0-1.1-.1-2.3-.3-3.4.2-.5.2-1.1.2-1.7l-.2-32.5c0-72-58.5-130.6-130.3-130.6-72 0-130.6 58.6-130.6 130.6v119.5c0 12.2 9.9 22.1 22.1 22.1h6.8c12.2 0 22.1-9.9 22.1-22.1v-82c0-12.2-9.9-22.1-22.1-22.1h-6.8c-3.4 0-6.7.8-9.5 2.2v-17.6c0-65 52.9-118 118-118 64.9 0 117.7 52.9 117.7 118l.1 17.5c-2.9-1.3-6-2.1-9.4-2.1h-6.8c-12.2 0-22.1 9.9-22.1 22.1v82c0 12.2 9.9 22.1 22.1 22.1h6.8c6.8 0 12.9-3.1 17-7.9l-9.5 27.9c-6 17.6-18.7 29.8-26.3 29.8h-15c-1.8-6.7-8-11.7-15.3-11.7h-23.2c-8.8 0-15.9 7.1-15.9 15.9v4.1c0 8.8 7.1 15.9 15.9 15.9h23.2c7.3 0 13.5-5 15.3-11.7h15c14.4 0 30.8-16.5 38.3-38.4l21.3-62.7c11.7-2.1 20.6-12.3 20.6-24.6 0-13.6-11.2-24.8-25-24.8Zm-253.2-25.4h6.8c5.3 0 9.5 4.3 9.5 9.5v82c0 5.3-4.3 9.5-9.5 9.5h-6.8c-5.3 0-9.5-4.3-9.5-9.5v-82c0-5.2 4.3-9.5 9.5-9.5Zm226.4 91.5c0 5.3-4.3 9.5-9.5 9.5h-6.8c-5.3 0-9.5-4.3-9.5-9.5v-82c0-5.3 4.3-9.5 9.5-9.5h6.8c5.3 0 9.5 4.3 9.5 9.5v82Z"
     />
     <defs>
       <linearGradient
-        id="lord-icon-headset_svg__a"
+        id="lord-icon-mm-headset_svg__a"
         x1={104.081}
         x2={348.506}
         y1={99.519}
@@ -28,4 +28,4 @@ const SvgLordIconHeadset = (props: SVGProps<SVGSVGElement>) => (
     </defs>
   </svg>
 );
-export default SvgLordIconHeadset;
+export default SvgLordIconMmHeadset;

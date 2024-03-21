@@ -1,13 +1,237 @@
 {
   "v": "5.12.1",
   "fr": 60,
-  "ip": 0,
-  "op": 102.1,
+  "ip": 127,
+  "op": 229.1,
   "w": 430,
   "h": 430,
   "nm": "wired-gradient-406-study-graduation",
   "ddd": 0,
   "assets": [
+    {
+      "id": "comp_0",
+      "nm": "in-reveal",
+      "fr": 60,
+      "layers": [
+        {
+          "ddd": 0,
+          "ind": 1,
+          "ty": 0,
+          "nm": "mask-in",
+          "td": 1,
+          "refId": "comp_1",
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [215, 215, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [215, 215, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "w": 430,
+          "h": 430,
+          "ip": 1,
+          "op": 151,
+          "st": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 2,
+          "ty": 4,
+          "nm": "gradient",
+          "tt": 1,
+          "tp": 1,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": {
+              "a": 1,
+              "k": [
+                {
+                  "i": { "x": [0.4], "y": [1] },
+                  "o": { "x": [0.333], "y": [0] },
+                  "t": 0,
+                  "s": [-94]
+                },
+                { "t": 120, "s": [266] }
+              ],
+              "ix": 10
+            },
+            "p": { "a": 0, "k": [271.941, 230.46, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [240, 240, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 29,
+              "nm": "Gaussian Blur",
+              "np": 5,
+              "mn": "ADBE Gaussian Blur 2",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Blurriness",
+                  "mn": "ADBE Gaussian Blur 2-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 175, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Blur Dimensions",
+                  "mn": "ADBE Gaussian Blur 2-0002",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 1, "ix": 2 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Repeat Edge Pixels",
+                  "mn": "ADBE Gaussian Blur 2-0003",
+                  "ix": 3,
+                  "v": { "a": 0, "k": 1, "ix": 3 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [-97.478, 0],
+                        [0, -97.478],
+                        [97.478, 0],
+                        [30.894, 26.574],
+                        [0, 53.531]
+                      ],
+                      "o": [
+                        [97.478, 0],
+                        [0, 97.478],
+                        [-43.948, 0],
+                        [-37.631, -32.369],
+                        [0, -97.478]
+                      ],
+                      "v": [
+                        [0, -176.5],
+                        [176.5, 0],
+                        [0, 176.5],
+                        [-105.29, 115.869],
+                        [-176.5, 0]
+                      ],
+                      "c": true
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": {
+                    "a": 0,
+                    "k": [0.306, 0.306, 0.847, 1],
+                    "ix": 4,
+                    "x": "var $bm_rt;\n$bm_rt = comp('wired-gradient-406-study-graduation').layer('control').effect('secondary')('Color');"
+                  },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": ".secondary",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": false,
+                  "cl": "secondary"
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [113.242, -118.884], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "primary.design",
+              "np": 2,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false,
+              "cl": "design"
+            },
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "d": 1,
+                  "ty": "el",
+                  "s": { "a": 0, "k": [500, 500], "ix": 2 },
+                  "p": { "a": 0, "k": [0, 0], "ix": 3 },
+                  "nm": "Ellipse Path 1",
+                  "mn": "ADBE Vector Shape - Ellipse",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": {
+                    "a": 0,
+                    "k": [0.306, 0.306, 0.847, 1],
+                    "ix": 4,
+                    "x": "var $bm_rt;\n$bm_rt = comp('wired-gradient-406-study-graduation').layer('control').effect('primary')('Color');"
+                  },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": ".primary",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": false,
+                  "cl": "primary"
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "secondary.design",
+              "np": 2,
+              "cix": 2,
+              "bm": 0,
+              "ix": 2,
+              "mn": "ADBE Vector Group",
+              "hd": false,
+              "cl": "design"
+            }
+          ],
+          "ip": 1,
+          "op": 300,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        }
+      ]
+    },
     {
       "id": "comp_1",
       "nm": "mask-in",
@@ -2390,6 +2614,28 @@
     },
     {
       "ddd": 0,
+      "ind": 2,
+      "ty": 0,
+      "nm": "in-reveal",
+      "refId": "comp_0",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [215, 215, 0], "ix": 2, "l": 2 },
+        "a": { "a": 0, "k": [215, 215, 0], "ix": 1, "l": 2 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+      },
+      "ao": 0,
+      "w": 430,
+      "h": 430,
+      "ip": 0,
+      "op": 127,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
       "ind": 3,
       "ty": 0,
       "nm": "hover-pinch",
@@ -2405,12 +2651,15 @@
       "ao": 0,
       "w": 430,
       "h": 430,
-      "ip": 0,
-      "op": 112.1015625,
-      "st": 0,
+      "ip": 127,
+      "op": 239.1015625,
+      "st": 127,
       "bm": 0
     }
   ],
-  "markers": [{ "tm": 0, "cm": "default:hover-pinch", "dr": 102.1 }],
+  "markers": [
+    { "tm": 0, "cm": "in-reveal", "dr": 117 },
+    { "tm": 127, "cm": "default:hover-pinch", "dr": 102.1 }
+  ],
   "props": {}
 }
