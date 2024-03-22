@@ -454,9 +454,11 @@ const ChatModal = () => {
   };
 
   useEffect(() => {
-    if (replayMessage) {
+    if (replayMessage && currentChatMode !== 'dev-tooling-ts-code-generator') {
       // if the chat mode changes and there is at least one message sent from
-      // the user, we switch mode and re-submit this latest message
+      // the user, we switch mode and re-submit this latest message.
+      // We don't want to replay the last message if the user is entering dev-tooling mode
+      // as free text input is going to be blocked.
       submitChatMessages([replayMessage], formik.values);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -492,7 +494,7 @@ const ChatModal = () => {
         setReplayMessage();
         formik.resetForm();
       }}
-      displayPrimaryButton={!!chatConfig?.readOnly}
+      displayPrimaryButton={!(!!chatConfig?.readOnly)}
       isPrimaryButtonDisabled={
         !(formik.isValid && formik.dirty) || formik.isSubmitting
       }
@@ -538,9 +540,10 @@ const ChatModal = () => {
               />
             </ChatMessagesWrapper>
 
-            {!chatConfig?.readOnly && !chatLocked && (
+            {!chatLocked && (
               <ChatInputBox>
-                <InputTextWrapper>
+
+                {!chatConfig?.readOnly && <InputTextWrapper>
                   <MultilineTextField
                     data-testid="chat-input-field"
                     key="chatInput"
@@ -577,7 +580,7 @@ const ChatModal = () => {
                       }
                     />
                   </SubmitButtonBox>
-                </InputTextWrapper>
+                </InputTextWrapper>}
                 <RestartButtonBox>
                   <FlatButton
                     label="Tip: Restart the conversation when changing the topic"
