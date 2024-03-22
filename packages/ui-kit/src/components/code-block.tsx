@@ -37,6 +37,7 @@ const HighlightedContainer = styled.div`
 const Preformatted = styled.pre`
   font-family: ${typography.fontFamilies.code};
   font-size: ${typography.fontSizes.small};
+  font-weight: ${typography.fontWeights.lighter};
   background-color: ${tokens.surfaceForCodeBlock} !important;
   margin: 0;
   padding: 0;

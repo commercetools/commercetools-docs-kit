@@ -323,7 +323,7 @@ export const dimensions = {
 export const typography = {
   fontFamilies: {
     primary: "'Inter var', sans-serif",
-    code: "'Roboto Mono', monospace",
+    code: "'Roboto Mono Variable', monospace",
     stringLiteral: "'Inter var', monospace",
   },
 
@@ -350,6 +350,7 @@ export const typography = {
   },
 
   fontWeights: {
+    lighter: '330', // variable fonts used
     regular: '400',
     medium: '500',
     'light-bold': '600',
@@ -358,7 +359,7 @@ export const typography = {
 
   lineHeights: {
     small: pxToRem('16px'),
-    body: pxToRem('23px'),
+    body: 'calc(3px + 2.2ex + 3px);', // dynamic line height, following actual font height (x height) with a fixed actual distance of 6px. This adjusts to font sizes continuously in a well readable manner.
     releaseNoteHeader: pxToRem('28px'),
     cardNormalTitle: pxToRem('32px'),
     cardSmallTitle: pxToRem('26px'),

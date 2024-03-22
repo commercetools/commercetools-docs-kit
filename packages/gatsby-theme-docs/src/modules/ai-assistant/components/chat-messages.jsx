@@ -24,10 +24,14 @@ export const FEEDBACK_DOWN = -1;
 
 const MessageContainer = styled.div`
   font-size: ${designSystem.typography.fontSizes.small};
-  line-height: 22px;
+  line-height: ${designSystem.typography.lineHeights.body};
   display: flex;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: ${designSystem.dimensions.spacings.m};
+  ul,ol {
+    padding-top: ${designSystem.dimensions.spacings.s};
+    padding-bottom: ${designSystem.dimensions.spacings.s};
+  }
 `;
 
 const LoadingContainer = styled.div`
@@ -61,9 +65,8 @@ const AvatarWrapper = styled.div`
 
 const MessageText = styled.div`
   margin-left: 10px;
-  padding-top: 2px;
-  line-height: 22px;
-  font-size: 14px;
+  padding-top: ${designSystem.dimensions.spacings.xs};
+  font-size: ${designSystem.typography.fontSizes.small};
   p {
     display: inline;
   }
