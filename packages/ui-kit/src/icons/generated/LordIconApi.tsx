@@ -3,88 +3,82 @@ import type { SVGProps } from 'react';
 const SvgLordIconApi = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={500}
-    height={500}
-    style={{
-      width: '100%',
-      height: '100%',
-      transform: 'translate3d(0,0,0)',
-      contentVisibility: 'visible',
-    }}
-    viewBox="0 0 500 500"
+    width={430}
+    height={431}
+    fill="none"
+    viewBox="0 0 430 431"
     {...props}
   >
+    <path
+      fill="url(#lord-icon-api_svg__a)"
+      fillRule="evenodd"
+      d="M24 110.5c0-19.882 16.118-36 36-36h310c19.882 0 36 16.118 36 36v210c0 19.882-16.118 36-36 36H60c-19.882 0-36-16.118-36-36v-210Zm36-24c-13.255 0-24 10.745-24 24v210c0 13.255 10.745 24 24 24h310c13.255 0 24-10.745 24-24v-210c0-13.255-10.745-24-24-24H60Z"
+      clipRule="evenodd"
+    />
+    <path
+      fill="url(#lord-icon-api_svg__b)"
+      fillRule="evenodd"
+      d="M104.275 163.593a6 6 0 0 1 5.688-4.093h14.908a6 6 0 0 1 5.688 4.091l23.952 71.39 10.008 28.533a6 6 0 1 1-11.324 3.972l-8.613-24.557H90.269l-8.607 24.556a6 6 0 0 1-11.324-3.97l10-28.533 23.937-71.389Zm-9.92 67.336h46.139L120.555 171.5h-6.275l-19.925 59.429Z"
+      clipRule="evenodd"
+    />
+    <path
+      fill="url(#lord-icon-api_svg__c)"
+      fillRule="evenodd"
+      d="M269 165.5a6 6 0 0 1 6-6h70a6 6 0 1 1 0 12h-29v88h29a6 6 0 1 1 0 12h-70a6 6 0 1 1 0-12h29v-88h-29a6 6 0 0 1-6-6Z"
+      clipRule="evenodd"
+    />
+    <path
+      fill="url(#lord-icon-api_svg__d)"
+      fillRule="evenodd"
+      d="M181 165.5a6 6 0 0 1 6-6h38.889c18.655 0 33.778 15.123 33.778 33.778V203c0 18.655-15.123 33.778-33.778 33.778H193V265.5a6 6 0 1 1-12 0v-100Zm12 59.278h32.889c12.027 0 21.778-9.75 21.778-21.778v-9.722c0-12.028-9.751-21.778-21.778-21.778H193v53.278Z"
+      clipRule="evenodd"
+    />
     <defs>
-      <clipPath id="lord-icon-api_svg__c">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <clipPath id="lord-icon-api_svg__b">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <filter
-        id="lord-icon-api_svg__e"
-        width="300%"
-        height="300%"
-        x="-100%"
-        y="-100%"
-      >
-        <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
-      </filter>
-      <mask id="lord-icon-api_svg__d" mask-type="alpha">
-        <use href="#lord-icon-api_svg__a" />
-      </mask>
-      <g
+      <linearGradient
         id="lord-icon-api_svg__a"
-        fillOpacity={0}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={12}
-        clipPath="url(#lord-icon-api_svg__b)"
-        style={{
-          display: 'block',
-        }}
+        x1={69}
+        x2={423.663}
+        y1={35.5}
+        y2={180.417}
+        gradientUnits="userSpaceOnUse"
       >
-        <path
-          stroke="#08A88A"
-          d="M-68.004-31.131h21.12c10.13 0 18.43 7.51 18.43 16.69 0 4.58-2.08 8.75-5.42 11.78-3.34 3.02-7.95 4.9-13.01 4.9h-21.12m-.003-33.369v62.261m-25.765 0-26.043-62.702-27.831 62.702m47.466-15.428h-40.618M0 31.131v-62.262"
-          style={{
-            display: 'block',
-          }}
-          transform="translate(317.822 249.865)"
-        />
-        <path
-          stroke="#121331"
-          d="M107.598 113.063h-215.196c-28.222 0-51.1-22.878-51.1-51.1V-61.963c0-28.222 22.878-51.1 51.1-51.1h215.196c28.222 0 51.1 22.878 51.1 51.1V61.963c0 28.222-22.878 51.1-51.1 51.1z"
-          style={{
-            display: 'block',
-          }}
-          transform="translate(250 250)"
-        />
-      </g>
+        <stop stopColor="#4E4ED7" />
+        <stop offset={1} stopColor="#4E4ED7" />
+      </linearGradient>
+      <linearGradient
+        id="lord-icon-api_svg__b"
+        x1={69}
+        x2={423.663}
+        y1={35.5}
+        y2={180.417}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#4E4ED7" />
+        <stop offset={1} stopColor="#4E4ED7" />
+      </linearGradient>
+      <linearGradient
+        id="lord-icon-api_svg__c"
+        x1={69}
+        x2={423.663}
+        y1={35.5}
+        y2={180.417}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#4E4ED7" />
+        <stop offset={1} stopColor="#4E4ED7" />
+      </linearGradient>
+      <linearGradient
+        id="lord-icon-api_svg__d"
+        x1={69}
+        x2={423.663}
+        y1={35.5}
+        y2={180.417}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#4E4ED7" />
+        <stop offset={1} stopColor="#4E4ED7" />
+      </linearGradient>
     </defs>
-    <g
-      clipPath="url(#lord-icon-api_svg__c)"
-      mask="url(#lord-icon-api_svg__d)"
-      style={{
-        display: 'block',
-      }}
-    >
-      <g
-        filter="url(#lord-icon-api_svg__e)"
-        transform="rotate(-94 262.075 8.435) scale(2.4)"
-      >
-        <path
-          fill="#00B39E"
-          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-          className="lord-icon-api_svg__design"
-        />
-        <path
-          fill="#068BDF"
-          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-          className="lord-icon-api_svg__design"
-        />
-      </g>
-    </g>
   </svg>
 );
 export default SvgLordIconApi;

@@ -1,35 +1,37 @@
-import Spreadsheet from '../icons/generated/LordIconSpreadsheet';
-import Command from '../icons/generated/LordIconCommand';
-import Unlocked from '../icons/generated/LordIconUnlocked';
-import Package from '../icons/generated/LordIconPackage';
-import Login from '../icons/generated/LordIconLogin';
-import Heartbeat from '../icons/generated/LordIconHeartbeat';
-import Headset from '../icons/generated/LordIconHeadset';
-import Handshake from '../icons/generated/LordIconHandshake';
-import Graduation from '../icons/generated/LordIconGraduation';
-import Flag from '../icons/generated/LordIconFlag';
-import Document from '../icons/generated/LordIconDocument';
-import Api from '../icons/generated/LordIconApi';
-import Building from '../icons/generated/LordIconBuilding';
+import Spreadsheet from '../icons/generated/LordIconMmSpreadsheet';
+import Command from '../icons/generated/LordIconMmCommand';
+import Unlocked from '../icons/generated/LordIconMmUnlocked';
+import Package from '../icons/generated/LordIconMmPackage';
+import Login from '../icons/generated/LordIconMmLogin';
+import Heartbeat from '../icons/generated/LordIconMmHeartbeat';
+import Headset from '../icons/generated/LordIconMmHeadset';
+import Handshake from '../icons/generated/LordIconMmHandshake';
+import Graduation from '../icons/generated/LordIconMmGraduation';
+import Flag from '../icons/generated/LordIconMmFlag';
+import Document from '../icons/generated/LordIconMmDocument';
+import Api from '../icons/generated/LordIconMmApi';
+import Building from '../icons/generated/LordIconMmBuilding';
+import Free from '../icons/generated/LordIconMmFree';
 import Bookshelf from '../icons/generated/LordIconBookShelf';
 import Book from '../icons/generated/LordIconBook';
 import ProgrammingBook from '../icons/generated/LordIconProgrammingBook';
 import Questionnaire from '../icons/generated/LordIconQuestionnaire';
 import Cli from '../icons/generated/LordIconCli';
 import Spreadsheet2 from '../icons/generated/LordIconSpreadsheet2';
-import UnlockedJson from '../icons/lord-icon/unlocked.json';
-import PackageJson from '../icons/lord-icon/package.json';
-import LoginJson from '../icons/lord-icon/login.json';
-import HeartbeatJson from '../icons/lord-icon/heartbeat.json';
-import HeadsetJson from '../icons/lord-icon/headset.json';
-import HandshakeJson from '../icons/lord-icon/handshake.json';
-import GraduationJson from '../icons/lord-icon/graduation.json';
-import FlagJson from '../icons/lord-icon/flag.json';
-import DocumentJson from '../icons/lord-icon/document.json';
-import ApiJson from '../icons/lord-icon/api.json';
-import SpreadsheetJson from '../icons/lord-icon/spreadsheet.json';
-import CommandJson from '../icons/lord-icon/command.json';
-import BuildingJson from '../icons/lord-icon/building.json';
+import UnlockedJson from '../icons/lord-icon/mm-unlocked.json';
+import PackageJson from '../icons/lord-icon/mm-package.json';
+import LoginJson from '../icons/lord-icon/mm-login.json';
+import HeartbeatJson from '../icons/lord-icon/mm-heartbeat.json';
+import HeadsetJson from '../icons/lord-icon/mm-headset.json';
+import HandshakeJson from '../icons/lord-icon/mm-handshake.json';
+import GraduationJson from '../icons/lord-icon/mm-graduation.json';
+import FlagJson from '../icons/lord-icon/mm-flag.json';
+import DocumentJson from '../icons/lord-icon/mm-document.json';
+import ApiJson from '../icons/lord-icon/mm-api.json';
+import SpreadsheetJson from '../icons/lord-icon/mm-spreadsheet.json';
+import CommandJson from '../icons/lord-icon/mm-command.json';
+import BuildingJson from '../icons/lord-icon/mm-building.json';
+import FreeJson from '../icons/lord-icon/mm-free.json';
 import BookshelfJson from '../icons/lord-icon/book-shelf.json';
 import ProgrammingBookJson from '../icons/lord-icon/programming-book.json';
 import QuestionnaireJson from '../icons/lord-icon/questionnaire.json';
@@ -59,6 +61,7 @@ const iconNameToSvgMap: Record<string, any> = {
   book: Book,
   cli: Cli,
   spreadsheet2: Spreadsheet2,
+  free: Free,
 };
 
 const iconNameToLottieJSON: Record<string, object> = {
@@ -81,6 +84,7 @@ const iconNameToLottieJSON: Record<string, object> = {
   book: BookJson,
   cli: CliJson,
   spreadsheet2: Spreadsheet2Json,
+  free: FreeJson,
 };
 
 export const getStaticSvgComponent = (iconName: string) => {

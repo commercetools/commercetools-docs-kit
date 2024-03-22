@@ -1,5 +1,18 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.0.2
+
+### Patch Changes
+
+- [#1952](https://github.com/commercetools/commercetools-docs-kit/pull/1952) [`f59f18a`](https://github.com/commercetools/commercetools-docs-kit/commit/f59f18a26225c3a018e438f8eaa10a5e300e5054) Thanks [@timonrey](https://github.com/timonrey)! - Apply new branding colors to icons in the AI assistant chat.
+
+## 24.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`9098e9a`](https://github.com/commercetools/commercetools-docs-kit/commit/9098e9a4c48bb309380e2a2a59d87b6fd425a0e7)]:
+  - @commercetools-docs/ui-kit@24.0.1
+
 ## 24.0.0
 
 ### Major Changes

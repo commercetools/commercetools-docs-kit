@@ -3,214 +3,29 @@ import type { SVGProps } from 'react';
 const SvgLordIconDocument = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={500}
-    height={500}
-    style={{
-      width: '100%',
-      height: '100%',
-      transform: 'translate3d(0,0,0)',
-      contentVisibility: 'visible',
-    }}
-    viewBox="0 0 500 500"
+    width={430}
+    height={431}
+    fill="none"
+    viewBox="0 0 430 431"
     {...props}
   >
+    <path
+      fill="url(#lord-icon-document_svg__a)"
+      d="M295.06 343.43H134.94c-3.32 0-6 2.69-6 6s2.68 6 6 6h160.12c3.31 0 6-2.68 6-6s-2.69-6-6-6Zm0-53.37H134.94c-3.32 0-6 2.69-6 6s2.68 6 6 6h160.12c3.31 0 6-2.69 6-6s-2.69-6-6-6Zm0-53.37H134.94c-3.32 0-6 2.68-6 6s2.68 6 6 6h160.12c3.31 0 6-2.69 6-6s-2.69-6-6-6Zm-160.12 12h160.12c3.31 0 6-2.69 6-6s-2.69-6-6-6H134.94c-3.32 0-6 2.68-6 6s2.68 6 6 6Zm160.12 41.37H134.94c-3.32 0-6 2.69-6 6s2.68 6 6 6h160.12c3.31 0 6-2.69 6-6s-2.69-6-6-6Zm0 53.37H134.94c-3.32 0-6 2.69-6 6s2.68 6 6 6h160.12c3.31 0 6-2.68 6-6s-2.69-6-6-6Zm-160.12-94.74h160.12c3.31 0 6-2.69 6-6s-2.69-6-6-6H134.94c-3.32 0-6 2.68-6 6s2.68 6 6 6Zm160.12 41.37H134.94c-3.32 0-6 2.69-6 6s2.68 6 6 6h160.12c3.31 0 6-2.69 6-6s-2.69-6-6-6Zm0 53.37H134.94c-3.32 0-6 2.69-6 6s2.68 6 6 6h160.12c3.31 0 6-2.68 6-6s-2.69-6-6-6Zm59.36-207.65c0-.1-.01-.19-.01-.29-.02-.2-.04-.4-.08-.6-.01-.05-.01-.1-.02-.15-.05-.24-.12-.48-.2-.72-.02-.07-.05-.14-.08-.21-.07-.2-.16-.39-.25-.58-.03-.04-.04-.09-.07-.13-.12-.22-.25-.43-.39-.63-.05-.06-.09-.12-.14-.18-.15-.2-.3-.38-.47-.55-.01-.01-.02-.03-.04-.04L246.01 25.03a5.83 5.83 0 0 0-.75-.65s-.02-.02-.03-.02c-.46-.35-.98-.62-1.53-.82-.52-.19-1.08-.3-1.66-.33-.03 0-.06-.01-.08-.01-.09 0-.17-.01-.26-.01H81.57c-3.32 0-6 2.69-6 6v373.14c0 3.31 2.68 6 6 6h266.86c3.31 0 6-2.69 6-6V135.78h-.01Zm-11.99 260.55H87.57V35.19h148.11v100.75c0 3.31 2.69 6 6 6h100.75v254.39Z"
+    />
     <defs>
-      <clipPath id="lord-icon-document_svg__j">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <clipPath id="lord-icon-document_svg__e">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <clipPath id="lord-icon-document_svg__h">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <clipPath id="lord-icon-document_svg__g">
-        <path d="M0 0h500v500H0z" />
-      </clipPath>
-      <mask id="lord-icon-document_svg__i" mask-type="alpha">
-        <use href="#lord-icon-document_svg__a" />
-      </mask>
-      <mask id="lord-icon-document_svg__f" mask-type="alpha">
-        <g filter="url(#lord-icon-document_svg__b)">
-          <use href="#lord-icon-document_svg__c" />
-        </g>
-      </mask>
-      <mask id="lord-icon-document_svg__k" mask-type="alpha">
-        <use href="#lord-icon-document_svg__d" />
-      </mask>
-      <g
-        id="lord-icon-document_svg__d"
-        clipPath="url(#lord-icon-document_svg__e)"
-        style={{
-          display: 'block',
-        }}
-      >
-        <g
-          mask="url(#lord-icon-document_svg__f)"
-          style={{
-            display: 'block',
-          }}
-        >
-          <g
-            fillOpacity={0}
-            stroke="#08A88A"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={3.5}
-            clipPath="url(#lord-icon-document_svg__g)"
-            transform="translate(-.751 .001)"
-          >
-            <path
-              d="M-16.959-19.849H20.2"
-              style={{
-                display: 'block',
-              }}
-              transform="matrix(3.7 0 0 3.7 245.375 425.288)"
-            />
-            <path
-              d="M-16.959-19.849H20.2"
-              style={{
-                display: 'block',
-              }}
-              transform="matrix(3.7 0 0 3.7 245.375 373.488)"
-            />
-            <path
-              d="M-16.959-19.849H20.2"
-              style={{
-                display: 'block',
-              }}
-              transform="matrix(3.7 0 0 3.7 245.375 321.688)"
-            />
-            <path
-              d="M-16.959-19.849H20.2"
-              style={{
-                display: 'block',
-              }}
-              transform="matrix(3.7 0 0 3.7 245.375 269.888)"
-            />
-          </g>
-        </g>
-        <path
-          fillOpacity={0}
-          stroke="#08A88A"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={3.5}
-          d="M28.966 43.958h-57.932v-86.963h41.893l8.02 8.02 8.019 8.019v70.924z"
-          style={{
-            display: 'block',
-          }}
-          transform="matrix(3.7 0 0 3.7 248.149 251.85)"
-        />
-        <path
-          fillOpacity={0}
-          stroke="#08A88A"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={3.5}
-          d="M-15.898 43.958h-13.068V28.989"
-          style={{
-            display: 'block',
-          }}
-          transform="matrix(3.7 0 0 3.7 403.549 -12.7)"
-        />
-        <g
-          style={{
-            display: 'block',
-          }}
-        >
-          <path d="M299.915 96.3h-3.5l-.25 53h53.5l-.125-3.375L299.915 96.3z" />
-          <path
-            fillOpacity={0}
-            stroke="red"
-            strokeWidth={0}
-            d="M299.915 96.3h-3.5l-.25 53h53.5l-.125-3.375L299.915 96.3z"
-          />
-        </g>
-      </g>
-      <g
+      <linearGradient
         id="lord-icon-document_svg__a"
-        style={{
-          display: 'block',
-        }}
+        x1={24.07}
+        x2={352.56}
+        y1={78.2}
+        y2={406.69}
+        gradientUnits="userSpaceOnUse"
       >
-        <path
-          fill="red"
-          d="M510.723 149.946H296.374v-321.764H451.38l29.674 29.674 29.67 29.67v262.42z"
-        />
-        <path
-          fillOpacity={0}
-          stroke="#131432"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={12.95}
-          d="M510.723 149.946H296.374v-321.764H451.38l29.674 29.674 29.67 29.67v262.42z"
-        />
-      </g>
-      <g
-        id="lord-icon-document_svg__c"
-        style={{
-          display: 'block',
-        }}
-      >
-        <path
-          fill="red"
-          d="M510.723 149.946H296.374v-321.764H451.38l29.674 29.674 29.67 29.67v262.42z"
-        />
-        <path
-          fillOpacity={0}
-          stroke="#131432"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={12.95}
-          d="M510.723 149.946H296.374v-321.764H451.38l29.674 29.674 29.67 29.67v262.42z"
-        />
-      </g>
-      <filter
-        id="lord-icon-document_svg__b"
-        width="100%"
-        height="100%"
-        x="0%"
-        y="0%"
-        filterUnits="objectBoundingBox"
-      >
-        <feComponentTransfer in="SourceGraphic">
-          <feFuncA tableValues="1.0 0.0" type="table" />
-        </feComponentTransfer>
-      </filter>
-      <filter
-        id="lord-icon-document_svg__l"
-        width="300%"
-        height="300%"
-        x="-100%"
-        y="-100%"
-      >
-        <feGaussianBlur result="filter_result_0" stdDeviation="52.5 52.5" />
-      </filter>
+        <stop stopColor="#4E4ED7" />
+        <stop offset={1} stopColor="#4E4ED7" />
+      </linearGradient>
     </defs>
-    <g
-      clipPath="url(#lord-icon-document_svg__j)"
-      mask="url(#lord-icon-document_svg__k)"
-      style={{
-        display: 'block',
-      }}
-    >
-      <g
-        filter="url(#lord-icon-document_svg__l)"
-        transform="rotate(-94 262.075 8.435) scale(2.4)"
-      >
-        <path
-          fill="#00B39E"
-          d="M0-250c137.975 0 250 112.025 250 250S137.975 250 0 250-250 137.975-250 0-137.975-250 0-250z"
-          className="lord-icon-document_svg__design"
-        />
-        <path
-          fill="#068BDF"
-          d="M113.242-295.384c97.478 0 176.5 79.022 176.5 176.5s-79.022 176.5-176.5 176.5c-43.948 0-74.396-34.057-105.29-60.631-37.631-32.369-71.21-62.338-71.21-115.869 0-97.478 79.022-176.5 176.5-176.5z"
-          className="lord-icon-document_svg__design"
-        />
-      </g>
-    </g>
   </svg>
 );
 export default SvgLordIconDocument;
