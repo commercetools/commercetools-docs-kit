@@ -31,6 +31,7 @@ import {
   isRightChapter,
   isRightChapterRecursive,
 } from './sidebar.utils';
+import { useSiteData } from '../../hooks/use-site-data';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -323,10 +324,12 @@ const ChapterItem = styled.div`
 `;
 
 const Chapter = (props) => {
-  const isSelectedChapter = isRightChapter(props.chapter, props.location);
+  const { pathPrefix } = useSiteData();
+  const pathnameNoPrefix = props.location.pathname.replace(pathPrefix, '');
+  const isSelectedChapter = isRightChapter(props.chapter, pathnameNoPrefix);
   const isSSRSelectedChapter = isRightChapterRecursive(
     props.chapter,
-    props.location
+    pathnameNoPrefix
   );
   const { ancestorsMap } = useSidebarNavigationItems();
   const chapterId =

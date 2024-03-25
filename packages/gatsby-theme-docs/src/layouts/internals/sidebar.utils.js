@@ -24,21 +24,19 @@ export const getItemAncestors = (chapterId, ancestorsMap) => {
   return [].concat(...ancestorsArray);
 };
 
-export const isRightChapter = (chapter, loc) => {
-  return (
-    chapter.pages.find((page) => loc.pathname.includes(page.path)) !== undefined
-  );
+export const isRightChapter = (chapter, pathname) => {
+  return chapter.pages.find((page) => pathname === page.path) !== undefined;
 };
 
-export const isRightChapterRecursive = (chapter, loc) => {
-  if (!loc) {
+export const isRightChapterRecursive = (chapter, pathname) => {
+  if (!pathname) {
     return false;
   }
   return (
     chapter.pages.find((page) =>
       page.pages
-        ? isRightChapterRecursive(page, loc)
-        : loc.pathname.includes(page.path)
+        ? isRightChapterRecursive(page, pathname)
+        : pathname === page.path
     ) !== undefined
   );
 };
