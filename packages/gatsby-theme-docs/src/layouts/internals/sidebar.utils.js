@@ -25,6 +25,9 @@ export const getItemAncestors = (chapterId, ancestorsMap) => {
 };
 
 export const isRightChapter = (chapter, loc) => {
+  chapter.pages.forEach((element) => {
+    console.log('loc', loc.pathname, element.path);
+  });
   return chapter.pages.find((page) => loc.pathname === page.path) !== undefined;
 };
 
