@@ -454,7 +454,7 @@ const ChatModal = () => {
   };
 
   useEffect(() => {
-    if (replayMessage && currentChatMode !== 'dev-tooling-ts-code-generator') {
+    if (replayMessage && currentChatMode !== DEV_TOOLING_MODE) {
       // if the chat mode changes and there is at least one message sent from
       // the user, we switch mode and re-submit this latest message.
       // We don't want to replay the last message if the user is entering dev-tooling mode
@@ -494,7 +494,7 @@ const ChatModal = () => {
         setReplayMessage();
         formik.resetForm();
       }}
-      displayPrimaryButton={!(!!chatConfig?.readOnly)}
+      displayPrimaryButton={false}
       isPrimaryButtonDisabled={
         !(formik.isValid && formik.dirty) || formik.isSubmitting
       }
