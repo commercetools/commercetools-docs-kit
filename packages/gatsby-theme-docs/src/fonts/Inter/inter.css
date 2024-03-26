@@ -5,19 +5,20 @@ general browser support would not support such old user agents anyways.
 To update the font version, get the latest Woff and Woff2 files from the zip download
 at https://github.com/rsms/inter/releases
 */
+
 @font-face {
   font-family: 'Inter var';
+  font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  font-style: normal;
   font-named-instance: 'Regular';
-  src: url("Inter-roman.var.woff2") format("woff2");
+  src: url("InterVariable.woff2") format("woff2");
 }
 @font-face {
   font-family: 'Inter var';
+  font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  font-style: italic;
   font-named-instance: 'Italic';
-  src: url("Inter-italic.var.woff2") format("woff2");
+  src: url("InterVariable-Italic.woff2") format("woff2");
 }

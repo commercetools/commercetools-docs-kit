@@ -22,23 +22,24 @@ const discoverLeafReactElement = (
   return leafElem;
 };
 
-const headerStyles = () => css`
-  line-height: 1.3;
-`;
+const headerStyles = () => css``;
 
 const Paragraph = styled.p`
   margin: 0;
 `;
+
+/* H1 is typically the page title, so it has more specific typography */
 const H1 = styled.h1`
   ${headerStyles};
   font-size: ${typography.fontSizes.h1};
   font-weight: ${typography.fontWeights.regular};
-  line-height: 1.15;
   color: ${tokens.websitePrimaryColor};
+  text-wrap: balance;
 
   /* H1 is the page title and used outside the Typography wrappers so it directly has a margin */
   margin: 0 0 ${dimensions.spacings.s};
 `;
+/* H2+ are actual section headers in the body content */
 const H2 = styled.h2`
   ${headerStyles};
   font-size: ${typography.fontSizes.h2};
@@ -65,7 +66,6 @@ const H6 = styled.h6`
   ${headerStyles};
   font-size: ${typography.fontSizes.h6};
   font-weight: ${typography.fontWeights.regular};
-  line-height: 1.4;
 `;
 
 const ThematicBreak = styled.hr`
@@ -126,8 +126,6 @@ const Dd = styled.dd`
 `;
 
 const Li = styled.li`
-  line-height: 1.46;
-
   > ul,
   > ol {
     margin: ${dimensions.spacings.s} 0 ${dimensions.spacings.m};
@@ -286,7 +284,10 @@ const Hr = styled(ThematicBreak)``;
 const TypographyPage = styled.div`
   font-size: ${typography.fontSizes.body};
   font-weight: ${typography.fontWeights.regular};
-  line-height: 1.5;
+
+  * {
+    line-height: ${typography.lineHeights.body};
+  }
 
   table {
     font-feature-settings: 'tnum';
