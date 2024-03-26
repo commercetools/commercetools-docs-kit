@@ -1,12 +1,12 @@
 #%RAML 1.0 DataType
 (package): Order
-(docs-uri): https://docs.commercetools.com/api/projects/orders#remove-itemshippingaddress
 example: !include ../../../examples/Order/OrderRemoveItemShippingAddressAction.json
 type: OrderUpdateAction
 displayName: OrderRemoveItemShippingAddressAction
 discriminatorValue: removeItemShippingAddress
 description: |
   An address can only be removed if it is not referenced in any [ItemShippingTarget](ctp:api:type:ItemShippingTarget) of the Cart.
+  In such case, change the Line Item shipping address to a different `addressKey` first using the [Set LineItemShippingDetails](ctp:api:type:OrderSetLineItemShippingDetailsAction) update action, before you remove the obsolete address.
 properties:
   addressKey:
     type: string

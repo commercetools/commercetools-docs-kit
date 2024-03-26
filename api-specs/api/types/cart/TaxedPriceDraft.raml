@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Cart
-(docs-uri): https://docs.commercetools.com/api/projects/orders-import#taxedpricedraft
 displayName: TaxedPriceDraft
 type: object
 properties:
@@ -18,3 +17,7 @@ properties:
       Taxable portions added to the `totalGross`.
 
       Calculated from the [TaxRates](ctp:api:type:TaxRate).
+  totalTax?:
+    type: TypedMoneyDraft
+    description: |
+      Total tax applicable for the Cart or Order.
