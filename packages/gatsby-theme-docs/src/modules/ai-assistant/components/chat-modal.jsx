@@ -552,7 +552,7 @@ const ChatModal = () => {
                     placeholder={
                       currentChatMode?.key === DEV_TOOLING_MODE
                         ? 'Specify your use case to generate the code.'
-                        : 'Use complete sentences for the best help.'
+                        : 'Use complete sentences best results'
                     }
                     value={formik.values.chatInput}
                     touched={formik.touched.chatInput}
