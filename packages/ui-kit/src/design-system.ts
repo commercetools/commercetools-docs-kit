@@ -358,8 +358,13 @@ export const typography = {
   },
 
   lineHeights: {
+    // dynamic line heights, prefer these as defaults
+    // they are following actual font height (x height) with a fixed actual distance of 6px.
+    // This adjusts to font sizes continuously in a well readable manner.
+    tight: 'calc(2px + 2ex + 2px);',
+    body: 'calc(3px + 2.2ex + 3px);',
+    // fixed line heights
     small: pxToRem('16px'),
-    body: 'calc(3px + 2.2ex + 3px);', // dynamic line height, following actual font height (x height) with a fixed actual distance of 6px. This adjusts to font sizes continuously in a well readable manner.
     releaseNoteHeader: pxToRem('28px'),
     cardNormalTitle: pxToRem('32px'),
     cardSmallTitle: pxToRem('26px'),

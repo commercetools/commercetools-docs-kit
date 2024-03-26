@@ -28,10 +28,6 @@ const MessageContainer = styled.div`
   display: flex;
   align-items: flex-start;
   margin-bottom: ${designSystem.dimensions.spacings.m};
-  ul,ol {
-    padding-top: ${designSystem.dimensions.spacings.s};
-    padding-bottom: ${designSystem.dimensions.spacings.s};
-  }
 `;
 
 const LoadingContainer = styled.div`
@@ -70,6 +66,11 @@ const MessageText = styled.div`
   p {
     display: inline;
   }
+  ul, ol {
+    padding-top: ${designSystem.dimensions.spacings.xs};
+    padding-bottom: ${designSystem.dimensions.spacings.xs};
+  }
+
 `;
 
 const IntroMessageText = styled(MessageText)`
