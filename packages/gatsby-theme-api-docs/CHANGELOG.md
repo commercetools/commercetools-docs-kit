@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 24.0.3
+
+### Patch Changes
+
+- [#1959](https://github.com/commercetools/commercetools-docs-kit/pull/1959) [`0c5a24c`](https://github.com/commercetools/commercetools-docs-kit/commit/0c5a24c28650f891dadcc441d8918a097b93773e) Thanks [@timonrey](https://github.com/timonrey)! - Display regex types that are declared as an array type correctly.
+
+- [#1960](https://github.com/commercetools/commercetools-docs-kit/pull/1960) [`ad4437b`](https://github.com/commercetools/commercetools-docs-kit/commit/ad4437b9c9112524c4b74df8d98423393c8d6688) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - apply ui changes for learning go live
+
+- Updated dependencies [[`ad4437b`](https://github.com/commercetools/commercetools-docs-kit/commit/ad4437b9c9112524c4b74df8d98423393c8d6688)]:
+  - @commercetools-docs/ui-kit@24.0.3
+
 ## 24.0.1
 
 ### Patch Changes
