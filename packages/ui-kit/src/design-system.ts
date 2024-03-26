@@ -67,7 +67,6 @@ export type ThemeColorTokens = {
   link: string;
   linkHover: string;
   linkNavigation: string;
-  linkNavigationNew: string;
   // Headlines
   headlinePrimary: string;
   // Icons
@@ -148,10 +147,9 @@ export const colors: ThemeColors = {
     borderInfo: designTokens.colorInfo,
     borderForReleaseNoteTypeFix: '#b866ff',
     // Links
-    link: designTokens.colorPrimary25,
+    link: designTokens.colorPrimary20,
     linkHover: designTokens.colorPrimary,
     linkNavigation: designTokens.colorInfo,
-    linkNavigationNew: '#4E4ED8',
     // Headlines
     headlinePrimary: '#003037',
     // Icons

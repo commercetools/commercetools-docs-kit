@@ -111,11 +111,11 @@ const linkStyles = css`
   align-items: flex-end;
 
   :hover {
-    color: ${designSystem.colors.light.linkNavigationNew} !important;
+    color: ${designSystem.colors.light.linkHover} !important;
 
     svg {
       * {
-        fill: ${designSystem.colors.light.linkNavigationNew};
+        fill: ${designSystem.colors.light.linkHover};
       }
     }
   }
@@ -126,8 +126,8 @@ const activeLinkStyles = css`
       ${designSystem.dimensions.spacings.xs}
   );
   border-left: ${designSystem.dimensions.spacings.xs} solid
-    ${designSystem.colors.light.linkNavigationNew} !important;
-  color: ${designSystem.colors.light.linkNavigationNew} !important;
+    ${designSystem.colors.light.linkHover} !important;
+  color: ${designSystem.colors.light.linkHover} !important;
 `;
 
 const SidebarLink = (props) => {

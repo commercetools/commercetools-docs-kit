@@ -88,7 +88,7 @@ const LinkChapterTitle = styled.div`
   width: 100%;
   color: ${designSystem.colors.light.textPrimary};
   :hover {
-    color: ${designSystem.colors.light.linkNavigationNew};
+    color: ${designSystem.colors.light.linkHover};
   }
 `;
 const LinkSubtitle = styled.div`
@@ -138,19 +138,19 @@ const linkStyles = css`
   align-items: flex-end;
 
   :hover {
-    color: ${designSystem.colors.light.linkNavigationNew} !important;
+    color: ${designSystem.colors.light.linkHover} !important;
 
     svg {
       * {
-        fill: ${designSystem.colors.light.linkNavigationNew};
+        fill: ${designSystem.colors.light.linkHover};
       }
     }
   }
 `;
 const activeLinkStyles = css`
   border-left: ${designSystem.dimensions.spacings.xs} solid
-    ${designSystem.colors.light.linkNavigationNew} !important;
-  color: ${designSystem.colors.light.linkNavigationNew} !important;
+    ${designSystem.colors.light.linkHover} !important;
+  color: ${designSystem.colors.light.linkHover} !important;
 `;
 
 const StatusIconWrapper = styled.span`
@@ -311,12 +311,10 @@ const SidebarChapter = (props) => {
             getChapterDOMElement={getChapterDOMElement}
             customActiveStyles={css`
               div:first-child {
-                color: ${designSystem.colors.light
-                  .linkNavigationNew} !important;
+                color: ${designSystem.colors.light.linkHover} !important;
               }
               div:first-child > div {
-                color: ${designSystem.colors.light
-                  .linkNavigationNew} !important;
+                color: ${designSystem.colors.light.linkHover} !important;
               }
             `}
           >

@@ -133,7 +133,7 @@ const LogoContainer = styled.div`
 const DocumentationSwitcherButton = styled.div`
   color: ${(props) =>
     props.isActive
-      ? designSystem.colors.light.linkNavigationNew
+      ? designSystem.colors.light.linkHover
       : designSystem.colors.light.textPrimary};
   font-size: ${designSystem.typography.fontSizes.body};
   cursor: pointer;
@@ -146,16 +146,14 @@ const DocumentationSwitcherButton = styled.div`
   height: calc(100% - 2px);
   border-bottom: 2px solid
     ${(props) =>
-      props.isActive
-        ? designSystem.colors.light.linkNavigationNew
-        : 'transparent'};
+      props.isActive ? designSystem.colors.light.linkHover : 'transparent'};
 
   :hover,
   :focus {
-    border-bottom: 2px solid ${designSystem.colors.light.linkNavigationNew};
-    color: ${designSystem.colors.light.linkNavigationNew};
+    border-bottom: 2px solid ${designSystem.colors.light.linkHover};
+    color: ${designSystem.colors.light.linkHover};
     svg {
-      fill: ${designSystem.colors.light.linkNavigationNew};
+      fill: ${designSystem.colors.light.linkHover};
     }
   }
 
