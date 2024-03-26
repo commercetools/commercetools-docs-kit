@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Common
-(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#price
 displayName: QueryPrice
 type: object
 properties:
@@ -44,3 +43,5 @@ properties:
     type: PriceTierDraft[]
     description: |
       Price tier applied when the minimum quantity for the [LineItem](ctp:api:type:LineItem) of a ProductVariant with the related Price is reached in a Cart.
+
+      If `discounted` is specified, the tiered Price is ignored for a Product Variant.

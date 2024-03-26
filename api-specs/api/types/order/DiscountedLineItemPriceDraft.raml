@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Order
-(docs-uri): https://docs.commercetools.com/projects/orders-import#discountedlineitempricedraft
 displayName: DiscountedLineItemPriceDraft
 type: object
 properties:
@@ -9,6 +8,6 @@ properties:
     description: |
       Discounted money value.
   includedDiscounts:
-    type: DiscountedLineItemPortion[]
+    type: DiscountedLineItemPortionDraft[]
     description: |
       Discounts to be applied.

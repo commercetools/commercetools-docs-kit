@@ -30,6 +30,7 @@ enum:
   - product-discount
   - product-price
   - product-selection
+  - product-tailoring
   - product-type
   - quote
   - quote-request
@@ -65,10 +66,12 @@ enum:
     References a [Channel](ctp:api:type:Channel).
   customer: |
     References a [Customer](ctp:api:type:Customer).
-  customer-email-token: References a [CustomerToken](ctp:api:type:CustomerToken) for [email verification](/../api/projects/customers#email-verification-of-customer).
+  customer-email-token: |
+    References a [CustomerToken](ctp:api:type:CustomerToken) for [email verification](/../api/projects/customers#email-verification-of-customer).
   customer-group: |
     References a [CustomerGroup](ctp:api:type:CustomerGroup).
-  customer-password-token: References a [CustomerToken](ctp:api:type:CustomerToken) for [password reset](/../api/projects/customers#password-reset-of-customer).
+  customer-password-token: |
+    References a [CustomerToken](ctp:api:type:CustomerToken) for [password reset](/../api/projects/customers#password-reset-of-customer).
   direct-discount: |
     References a [DirectDiscount](ctp:api:type:DirectDiscount).
   discount-code: |
@@ -93,6 +96,8 @@ enum:
     References an [Embedded Price](/projects/products#embedded-price).
   product-selection: |
     References a [ProductSelection](ctp:api:type:ProductSelection).
+  product-tailoring: |
+    References a [ProductTailoring](ctp:api:type:ProductTailoring).
   product-type: |
     References a [ProductType](ctp:api:type:ProductType).
   quote: |

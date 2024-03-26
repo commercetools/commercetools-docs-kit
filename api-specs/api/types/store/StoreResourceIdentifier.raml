@@ -1,11 +1,10 @@
 #%RAML 1.0 DataType
 (package): Store
-(docs-uri): https://docs.commercetools.com/api/projects/stores#storeresourceidentifier
 type: ResourceIdentifier
 displayName: StoreResourceIdentifier
 discriminatorValue: store
 description: |
-  [ResourceIdentifier](/../api/types#resourceidentifier) to a [Store](ctp:api:type:Store). Either `id` or `key` is required. If both are set, an [InvalidJsonInput](/../api/errors#invalidjsoninput) error is returned.
+  [ResourceIdentifier](ctp:api:type:ResourceIdentifier) to a [Store](ctp:api:type:Store). Either `id` or `key` is required. If both are set, an [InvalidJsonInput](/../api/errors#invalidjsoninput) error is returned.
 properties:
   id?:
     type: string
