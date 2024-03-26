@@ -148,7 +148,7 @@ export const colors: ThemeColors = {
     borderInfo: designTokens.colorInfo,
     borderForReleaseNoteTypeFix: '#b866ff',
     // Links
-    link: designTokens.colorPrimary25,
+    link: designTokens.colorPrimary20,
     linkHover: designTokens.colorPrimary,
     linkNavigation: designTokens.colorInfo,
     linkNavigationNew: '#4E4ED8',
