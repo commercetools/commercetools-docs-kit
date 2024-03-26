@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 24.0.3
+
+### Patch Changes
+
+- [#1960](https://github.com/commercetools/commercetools-docs-kit/pull/1960) [`ad4437b`](https://github.com/commercetools/commercetools-docs-kit/commit/ad4437b9c9112524c4b74df8d98423393c8d6688) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - apply ui changes for learning go live
+
 ## 24.0.1
 
 ### Patch Changes

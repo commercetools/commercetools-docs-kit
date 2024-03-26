@@ -1,5 +1,15 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 8.4.13
+
+### Patch Changes
+
+- [#1960](https://github.com/commercetools/commercetools-docs-kit/pull/1960) [`ad4437b`](https://github.com/commercetools/commercetools-docs-kit/commit/ad4437b9c9112524c4b74df8d98423393c8d6688) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - apply ui changes for learning go live
+
+- Updated dependencies [[`bb025af`](https://github.com/commercetools/commercetools-docs-kit/commit/bb025af412c74c3f95c9ad00ee68d95a492e2584), [`6fad386`](https://github.com/commercetools/commercetools-docs-kit/commit/6fad386040500bedc928088a5e8c4092af2ac843), [`b661c74`](https://github.com/commercetools/commercetools-docs-kit/commit/b661c74b838388a96662c89105177c16d34ee6cc), [`0c5a24c`](https://github.com/commercetools/commercetools-docs-kit/commit/0c5a24c28650f891dadcc441d8918a097b93773e), [`ad4437b`](https://github.com/commercetools/commercetools-docs-kit/commit/ad4437b9c9112524c4b74df8d98423393c8d6688)]:
+  - @commercetools-docs/gatsby-theme-docs@24.0.3
+  - @commercetools-docs/gatsby-theme-api-docs@24.0.3
+
 ## 8.4.12
 
 ### Patch Changes
