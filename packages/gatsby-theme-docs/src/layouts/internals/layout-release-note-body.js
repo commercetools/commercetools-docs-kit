@@ -71,7 +71,7 @@ function mapTypeToTone(props) {
     case 'enhancement':
       return 'information';
     case 'fix':
-      return 'critical';
+      return 'positive';
     case 'announcement':
       return 'primary';
     default:
