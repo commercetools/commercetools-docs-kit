@@ -57,7 +57,7 @@ const NameType = (props) => {
       <PropertyType>
         {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
-        {isRegex(props.property.name)
+        {isRegex(props.property.name) && !typeToRender.displayPrefix
           ? `Any ${typeof typeToRender.type} property matching this regular expression`
           : typeof typeToRender.type === 'string'
           ? typeToRender.type
