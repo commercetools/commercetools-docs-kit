@@ -18,13 +18,13 @@ const stripSlash = (str) => {
   return str;
 };
 
-const getCanonicalUrl = (sitePrefix, clientLocation, serverLocation) => {
+const getCanonicalUrl = (clientLocation, serverLocation) => {
   const prodUrl = 'https://docs.commercetools.com';
   if (clientLocation && clientLocation.pathname) {
-    return stripSlash(`${prodUrl}${sitePrefix}${clientLocation.pathname}`);
+    return stripSlash(`${prodUrl}${clientLocation.pathname}`);
   }
   if (serverLocation && serverLocation.pathname) {
-    return stripSlash(`${prodUrl}${sitePrefix}${serverLocation.pathname}`);
+    return stripSlash(`${prodUrl}${serverLocation.pathname}`);
   }
   return prodUrl;
 };
@@ -114,7 +114,7 @@ const SEO = (props) => {
       {enableCanonicalUrls !== false && (
         <link
           rel="canonical"
-          href={getCanonicalUrl(siteData.pathPrefix, location, props.location)}
+          href={getCanonicalUrl(location, props.location)}
         />
       )}
       {metaTags.map((tag) => (
