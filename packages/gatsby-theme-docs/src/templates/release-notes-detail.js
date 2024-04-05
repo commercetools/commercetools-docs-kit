@@ -56,7 +56,7 @@ ReleaseNotesDetailTemplate.propTypes = {
 export default ReleaseNotesDetailTemplate;
 
 // eslint-disable-next-line react/prop-types
-export function Head({ data }) {
+export function Head({ data, location }) {
   return (
     <ThemeProvider
       // eslint-disable-next-line react/prop-types
@@ -67,6 +67,7 @@ export function Head({ data }) {
         title={data.releaseNotePage.title}
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.releaseNotePage.excludeFromSearchIndex}
+        location={location}
       />
     </ThemeProvider>
   );

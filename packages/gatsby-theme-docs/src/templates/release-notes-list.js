@@ -88,7 +88,7 @@ ReleaseNotesListTemplate.propTypes = {
 export default ReleaseNotesListTemplate;
 
 // eslint-disable-next-line react/prop-types
-export function Head({ data }) {
+export function Head({ data, location }) {
   return (
     // eslint-disable-next-line react/prop-types
     <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
@@ -97,6 +97,7 @@ export function Head({ data }) {
         title={data.contentPage.title}
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+        location={location}
       />
     </ThemeProvider>
   );
