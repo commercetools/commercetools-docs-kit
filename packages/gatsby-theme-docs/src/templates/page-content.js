@@ -72,7 +72,7 @@ PageContentTemplate.propTypes = {
 export default PageContentTemplate;
 
 // eslint-disable-next-line react/prop-types
-export function Head({ data, pageContext }) {
+export function Head({ data, pageContext, location }) {
   return (
     // eslint-disable-next-line react/prop-types
     <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
@@ -81,6 +81,8 @@ export function Head({ data, pageContext }) {
         title={pageContext.shortTitle || data.contentPage.title}
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+        // eslint-disable-next-line react/prop-types
+        location={location}
       />
     </ThemeProvider>
   );

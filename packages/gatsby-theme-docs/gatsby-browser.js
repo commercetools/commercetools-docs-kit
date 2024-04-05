@@ -117,6 +117,8 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
           aiAssistantApiBaseUrl: pluginOptions.aiAssistantApiBaseUrl,
           aiAssistantTopbarButton:
             pluginOptions.aiAssistantTopbarButton || false,
+          enableCanonicalUrls:
+            pluginOptions.enableCanonicalUrls !== false ? true : false,
         }}
       >
         {isSSOEnabled ? (

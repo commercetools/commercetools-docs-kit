@@ -15,6 +15,7 @@ export type Config = {
   selfLearningFeatures: Array<EFeatureFlag>;
   aiAssistantApiBaseUrl: string;
   aiAssistantTopbarButton: boolean;
+  enableCanonicalUrls: boolean;
 };
 
 const ConfigContext = createContext<Config>({
@@ -25,6 +26,7 @@ const ConfigContext = createContext<Config>({
   selfLearningFeatures: [],
   aiAssistantApiBaseUrl: '',
   aiAssistantTopbarButton: false,
+  enableCanonicalUrls: false,
 });
 
 export const isFeatureEnabled = (
