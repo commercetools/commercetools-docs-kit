@@ -56,12 +56,15 @@ We support the following key-value pairs in the frontmatter section:
 
 - `planTags` (array of string): use to indicate what plans are associated to the page.
 
+- `products` (array of string): if defined in a page, it overrides the site wide `products` setting which affects the [algolia search indexer](/configuration/algolia-search#per-site-tags-configuration). This setting is useful for helping indexing correctly specific pages that are part of a site but their focus is on different products.
+
   Example:
 
 ```mdx
 ---
 title: The title of this page
 planTags: [plan1, plan2]
+products: [aiAssistant, additionalProduct]
 ---
 
 This is the actual page content.

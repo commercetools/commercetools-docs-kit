@@ -29,6 +29,28 @@ const getCanonicalUrl = (clientLocation, serverLocation) => {
   return prodUrl;
 };
 
+const productsToMeta = (products) => {
+  return products.map((item) => {
+    return {
+      name: 'commercetools:product',
+      content: item,
+    };
+  });
+};
+
+const getProductsMeta = (siteProducts, pageProducts) => {
+  // if products are defined a page level, they should override the site level
+  if (pageProducts && pageProducts.length > 0) {
+    return productsToMeta(pageProducts);
+  }
+  // otherwise, use the site level products, if exist
+  if (siteProducts && siteProducts.length > 0) {
+    return productsToMeta(siteProducts);
+  }
+  // if no products are defined, return an empty array
+  return [];
+};
+
 const SEO = (props) => {
   const { enableCanonicalUrls } = useContext(ConfigContext);
   const location = useLocation();
@@ -92,15 +114,7 @@ const SEO = (props) => {
     },
     ...props.meta,
   ]
-    .concat(
-      siteData.siteMetadata.products &&
-        siteData.siteMetadata.products.map((item) => {
-          return {
-            name: 'commercetools:product',
-            content: item,
-          };
-        })
-    )
+    .concat(getProductsMeta(siteData.siteMetadata.products, props.products))
     .filter(Boolean);
 
   const titleTemplate = `${props.title} | ${siteData.siteMetadata.title} | ${
@@ -129,6 +143,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: '',
+  products: [],
 };
 SEO.propTypes = {
   description: PropTypes.string,
@@ -138,6 +153,7 @@ SEO.propTypes = {
   title: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
   location: PropTypes.shape({ pathname: PropTypes.string }),
+  products: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default SEO;
