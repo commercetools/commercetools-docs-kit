@@ -68,6 +68,8 @@ export function Head({ data, pageContext }) {
         title={pageContext.shortTitle || data.contentPage.title}
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+        // eslint-disable-next-line react/prop-types
+        products={data.contentPage.products}
       />
     </ThemeProvider>
   );
@@ -77,6 +79,7 @@ export const query = graphql`
   query ($slug: String!, $heroBackgroundRelativePath: String!) {
     contentPage(slug: { eq: $slug }) {
       title
+      products
       websitePrimaryColor
       beta
       excludeFromSearchIndex

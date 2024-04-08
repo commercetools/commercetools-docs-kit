@@ -277,6 +277,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         },
         courseId: { type: 'Int' },
         topicName: { type: 'String' },
+        products: { type: '[String]' },
       },
       interfaces: ['Node'],
     }),
@@ -419,6 +420,9 @@ export const onCreateNode = async (
       topicName: node.frontmatter.topicName
         ? String(node.frontmatter.topicName)
         : null,
+      products: Array.isArray(node.frontmatter.products)
+        ? node.frontmatter.products
+        : [],
     };
 
     actions.createNode({
