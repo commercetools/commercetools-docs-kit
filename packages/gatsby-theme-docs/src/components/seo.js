@@ -5,9 +5,29 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useSiteData } from '../hooks/use-site-data';
+import ConfigContext from './config-context';
+import { useLocation } from '@reach/router';
+
+const stripSlash = (str) => {
+  if (str.endsWith('/')) {
+    return str.slice(0, -1);
+  }
+  return str;
+};
+
+const getCanonicalUrl = (clientLocation, serverLocation) => {
+  const prodUrl = 'https://docs.commercetools.com';
+  if (clientLocation && clientLocation.pathname) {
+    return stripSlash(`${prodUrl}${clientLocation.pathname}`);
+  }
+  if (serverLocation && serverLocation.pathname) {
+    return stripSlash(`${prodUrl}${serverLocation.pathname}`);
+  }
+  return prodUrl;
+};
 
 const productsToMeta = (products) => {
   return products.map((item) => {
@@ -32,6 +52,8 @@ const getProductsMeta = (siteProducts, pageProducts) => {
 };
 
 const SEO = (props) => {
+  const { enableCanonicalUrls } = useContext(ConfigContext);
+  const location = useLocation();
   const siteData = useSiteData();
   const siteContextTitle = siteData?.siteMetadata?.breadcrumbs;
   const excludeFromSearchIndex =
@@ -103,6 +125,12 @@ const SEO = (props) => {
     <>
       <meta charSet="utf-8" />
       <title>{titleTemplate}</title>
+      {enableCanonicalUrls !== false && (
+        <link
+          rel="canonical"
+          href={getCanonicalUrl(location, props.location)}
+        />
+      )}
       {metaTags.map((tag) => (
         <meta key={tag.name || tag.property} {...tag} />
       ))}
@@ -124,6 +152,7 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
+  location: PropTypes.shape({ pathname: PropTypes.string }),
   products: PropTypes.arrayOf(PropTypes.string),
 };
 
