@@ -80,6 +80,10 @@ const ColumnTitle = styled.div`
   }
 `;
 
+const CtBannerContainer = styled.a`
+  cursor: pointer;
+`;
+
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
@@ -158,6 +162,8 @@ const LayoutFooter = () => {
    *   the elements in the grid layout as we like
    */
 
+  const CtBannerLink = 'https://commercetools.com';
+
   const hasMoreThanThreeColumns = data.allFooterYaml.nodes.length > 3;
   return (
     <Center>
@@ -165,9 +171,13 @@ const LayoutFooter = () => {
         <Column>
           <MediaQuery forViewport="tablet">
             {hasMoreThanThreeColumns ? (
-              <Icons.CtCubeForFooterSvgIcon />
+              <CtBannerContainer href={CtBannerLink}>
+                <Icons.CtCubeForFooterSvgIcon />
+              </CtBannerContainer>
             ) : (
-              <Icons.CtBannerForFooterSvgIcon />
+              <CtBannerContainer href={CtBannerLink}>
+                <Icons.CtBannerForFooterSvgIcon />
+              </CtBannerContainer>
             )}
           </MediaQuery>
         </Column>
@@ -200,7 +210,9 @@ const LayoutFooter = () => {
         <RowItem isLastSection>
           <SpacingsInline alignItems="center" justifyContent="space-between">
             <MediaQuery forViewport="mobile">
-              <Icons.CtBannerForFooterSvgIcon />
+              <CtBannerContainer href={CtBannerLink}>
+                <Icons.CtBannerForFooterSvgIcon />
+              </CtBannerContainer>
             </MediaQuery>
             <SpacingsInline scale="m" alignItems="center">
               <CopyText>
