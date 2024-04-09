@@ -5,11 +5,55 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useSiteData } from '../hooks/use-site-data';
+import ConfigContext from './config-context';
+import { useLocation } from '@reach/router';
+
+const stripSlash = (str) => {
+  if (str.endsWith('/')) {
+    return str.slice(0, -1);
+  }
+  return str;
+};
+
+const getCanonicalUrl = (clientLocation, serverLocation) => {
+  const prodUrl = 'https://docs.commercetools.com';
+  if (clientLocation && clientLocation.pathname) {
+    return stripSlash(`${prodUrl}${clientLocation.pathname}`);
+  }
+  if (serverLocation && serverLocation.pathname) {
+    return stripSlash(`${prodUrl}${serverLocation.pathname}`);
+  }
+  return prodUrl;
+};
+
+const productsToMeta = (products) => {
+  return products.map((item) => {
+    return {
+      name: 'commercetools:product',
+      content: item,
+    };
+  });
+};
+
+const getProductsMeta = (siteProducts, pageProducts) => {
+  // if products are defined a page level, they should override the site level
+  if (pageProducts && pageProducts.length > 0) {
+    return productsToMeta(pageProducts);
+  }
+  // otherwise, use the site level products, if exist
+  if (siteProducts && siteProducts.length > 0) {
+    return productsToMeta(siteProducts);
+  }
+  // if no products are defined, return an empty array
+  return [];
+};
 
 const SEO = (props) => {
+  const { enableCanonicalUrls } = useContext(ConfigContext);
+  const location = useLocation();
   const siteData = useSiteData();
   const siteContextTitle = siteData?.siteMetadata?.breadcrumbs;
   const excludeFromSearchIndex =
@@ -70,15 +114,7 @@ const SEO = (props) => {
     },
     ...props.meta,
   ]
-    .concat(
-      siteData.siteMetadata.products &&
-        siteData.siteMetadata.products.map((item) => {
-          return {
-            name: 'commercetools:product',
-            content: item,
-          };
-        })
-    )
+    .concat(getProductsMeta(siteData.siteMetadata.products, props.products))
     .filter(Boolean);
 
   const titleTemplate = `${props.title} | ${siteData.siteMetadata.title} | ${
@@ -89,6 +125,12 @@ const SEO = (props) => {
     <>
       <meta charSet="utf-8" />
       <title>{titleTemplate}</title>
+      {enableCanonicalUrls !== false && (
+        <link
+          rel="canonical"
+          href={getCanonicalUrl(location, props.location)}
+        />
+      )}
       {metaTags.map((tag) => (
         <meta key={tag.name || tag.property} {...tag} />
       ))}
@@ -101,6 +143,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: '',
+  products: [],
 };
 SEO.propTypes = {
   description: PropTypes.string,
@@ -109,6 +152,8 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
+  location: PropTypes.shape({ pathname: PropTypes.string }),
+  products: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default SEO;

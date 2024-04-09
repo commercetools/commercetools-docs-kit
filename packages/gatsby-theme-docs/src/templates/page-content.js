@@ -66,13 +66,14 @@ PageContentTemplate.propTypes = {
       showTimeToRead: PropTypes.bool.isRequired,
       timeToRead: PropTypes.number.isRequired,
       estimatedTimeToRead: PropTypes.number.isRequired,
+      products: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
   }).isRequired,
 };
 export default PageContentTemplate;
 
 // eslint-disable-next-line react/prop-types
-export function Head({ data, pageContext }) {
+export function Head({ data, pageContext, location }) {
   return (
     // eslint-disable-next-line react/prop-types
     <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
@@ -81,6 +82,10 @@ export function Head({ data, pageContext }) {
         title={pageContext.shortTitle || data.contentPage.title}
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+        // eslint-disable-next-line react/prop-types
+        location={location}
+        // eslint-disable-next-line react/prop-types
+        products={data.contentPage.products}
       />
     </ThemeProvider>
   );
@@ -90,6 +95,7 @@ export const query = graphql`
   query ($slug: String!) {
     contentPage(slug: { eq: $slug }) {
       title
+      products
       websitePrimaryColor
       beta
       planTags

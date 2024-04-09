@@ -88,7 +88,7 @@ ReleaseNotesListTemplate.propTypes = {
 export default ReleaseNotesListTemplate;
 
 // eslint-disable-next-line react/prop-types
-export function Head({ data }) {
+export function Head({ data, location }) {
   return (
     // eslint-disable-next-line react/prop-types
     <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
@@ -97,6 +97,9 @@ export function Head({ data }) {
         title={data.contentPage.title}
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+        location={location}
+        // eslint-disable-next-line react/prop-types
+        products={data.contentPage.products}
       />
     </ThemeProvider>
   );
@@ -106,6 +109,7 @@ export const query = graphql`
   query ($slug: String!) {
     contentPage(slug: { eq: $slug }) {
       title
+      products
       websitePrimaryColor
       beta
       excludeFromSearchIndex
