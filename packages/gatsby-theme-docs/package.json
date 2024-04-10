@@ -111,7 +111,7 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.1.2",
     "@types/gtag.js": "^0.0.18",
     "@types/react": "18.2.45",
