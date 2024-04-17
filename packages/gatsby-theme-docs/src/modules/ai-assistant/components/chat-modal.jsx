@@ -17,7 +17,7 @@ import { CHAT_ROLE_ASSISTANT, CHAT_ROLE_USER } from './chat.const';
 import ChatMessages from './chat-messages';
 import {
   isWaitingChunk,
-  isNotValidatedUser,
+  isUserEmailVerified,
   loadLocalChatState,
   setLocalStorageChatLocked,
   setLocalStorageChatMode,
@@ -188,7 +188,7 @@ const ChatModal = () => {
         setInitLoading(false);
       }
     };
-    if (chatConfig && isAuthenticated && !isNotValidatedUser(user)) {
+    if (chatConfig && isAuthenticated && isUserEmailVerified(user)) {
       fetchChatInit();
     }
   }, [user, isAuthenticated, chatInit, chatConfig]);
@@ -471,10 +471,10 @@ const ChatModal = () => {
       if (!isAuthenticated) {
         setAssistantState(ASSISTANT_STATE_LOGGED_OUT);
       }
-      if (isAuthenticated && isNotValidatedUser(user)) {
+      if (isAuthenticated && !isUserEmailVerified(user)) {
         setAssistantState(ASSISTANT_STATE_NOT_VERIFIED);
       }
-      if (isAuthenticated && !isNotValidatedUser(user)) {
+      if (isAuthenticated && isUserEmailVerified(user)) {
         setAssistantState(ASSISTANT_STATE_OPEN);
       }
     }
