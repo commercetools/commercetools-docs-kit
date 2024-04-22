@@ -8,6 +8,6 @@
     "generate-ramldoc:watch": "npx rmf-codegen generate ./api.raml -w -o ../../websites/api-docs-smoke-test/src/api-specs/test -t RAML_DOC --inline-examples"
   },
   "dependencies": {
-    "@commercetools-docs/rmf-codegen": "13.30.0"
+    "@commercetools-docs/rmf-codegen": "13.34.0"
   }
 }

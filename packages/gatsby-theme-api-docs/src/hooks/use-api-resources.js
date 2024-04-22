@@ -25,6 +25,16 @@ export const useApiResources = () => {
             type
           }
         }
+        headers {
+          header
+          displayName
+          default
+          enum
+          description
+          type
+          required
+          pattern
+        }
         responses {
           code
           description

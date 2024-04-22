@@ -3339,7 +3339,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-api-specs/api@workspace:api-specs/api"
   dependencies:
-    "@commercetools-docs/rmf-codegen": 13.30.0
+    "@commercetools-docs/rmf-codegen": 13.34.0
   languageName: unknown
   linkType: soft
 
@@ -3347,7 +3347,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-api-specs/test@workspace:api-specs/test"
   dependencies:
-    "@commercetools-docs/rmf-codegen": 13.30.0
+    "@commercetools-docs/rmf-codegen": 13.34.0
   languageName: unknown
   linkType: soft
 
@@ -3357,7 +3357,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-transformer-mdx-introspection": 16.0.0
     "@commercetools-docs/gatsby-transformer-raml": 13.6.0
-    "@commercetools-docs/rmf-codegen": 13.30.0
+    "@commercetools-docs/rmf-codegen": 13.34.0
     "@commercetools-docs/ui-kit": 24.0.3
     "@commercetools-uikit/design-system": 18.4.0
     "@commercetools-uikit/spacings-inline": 18.4.0
@@ -3548,9 +3548,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/rmf-codegen@npm:13.30.0":
-  version: 13.30.0
-  resolution: "@commercetools-docs/rmf-codegen@npm:13.30.0"
+"@commercetools-docs/rmf-codegen@npm:13.34.0":
+  version: 13.34.0
+  resolution: "@commercetools-docs/rmf-codegen@npm:13.34.0"
   dependencies:
     globby: ^13.1.1
     js-yaml: ^4.0.0
@@ -3559,7 +3559,7 @@ __metadata:
   bin:
     raml-markdownlint: bin/raml-markdownlint.mjs
     rmf-codegen: bin/rmf-codegen.js
-  checksum: cc34291fead78283ff9b37e16ea1f60bbb5390162884a47d412f4174813b295cf4579e4cdf5871eed6dac11e5e50ecedbea6f92ec8fd9427d67200a8e21626ac
+  checksum: 15f17d1577b1364c64855088e49c6c3911834a9bc972703f8f981787804ea134bb4a2d0857e884306c66fa22e559748ad4f4808a0f40d01707211d486896fc09
   languageName: node
   linkType: hard
 
@@ -4534,7 +4534,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-api-docs": 24.0.3
     "@commercetools-docs/gatsby-theme-docs": 24.1.0
-    "@commercetools-docs/rmf-codegen": 13.30.0
+    "@commercetools-docs/rmf-codegen": 13.34.0
     gatsby: 5.12.12
     gatsby-cli: 5.12.4
     gatsby-source-filesystem: 5.12.1
