@@ -1,5 +1,6 @@
 import parametersToArray from '../parameters-to-array.mjs';
 import responsesToArray from './responses-to-array.mjs';
+import headersToArray from './headers-to-array.mjs';
 import codeExamplesToArray from './code-examples-to-array.mjs';
 import { examplesToArray } from './examples-to-array.mjs';
 import sortProperties from '../sort-properties.mjs';
@@ -27,6 +28,10 @@ function processMethods({
             moveToBottom: moveEndpointQueryParametersToBottom,
           })
         : returnedMethods[method].queryParameters;
+
+      returnedMethods[method].headers = headersToArray(
+        returnedMethods[method].headers
+      );
 
       returnedMethods[method].responses = responsesToArray(
         returnedMethods[method].responses
