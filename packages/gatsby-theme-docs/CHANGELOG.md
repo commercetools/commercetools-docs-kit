@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.1.1
+
+### Patch Changes
+
+- [#1973](https://github.com/commercetools/commercetools-docs-kit/pull/1973) [`394a5da`](https://github.com/commercetools/commercetools-docs-kit/commit/394a5da592409e49fe2a8f732ef34a1e458108ca) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix unverified users to access AI assistant
+
 ## 24.1.0
 
 ### Minor Changes
