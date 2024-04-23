@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 24.1.1
+
+### Patch Changes
+
+- [#1978](https://github.com/commercetools/commercetools-docs-kit/pull/1978) [`f38864b`](https://github.com/commercetools/commercetools-docs-kit/commit/f38864be3d141a3abf3efbf73543902764c07e0f) Thanks [@timonrey](https://github.com/timonrey)! - Request headers are now being displayed in the endpoints.
+
+- Updated dependencies [[`f38864b`](https://github.com/commercetools/commercetools-docs-kit/commit/f38864be3d141a3abf3efbf73543902764c07e0f)]:
+  - @commercetools-docs/gatsby-transformer-raml@13.6.1
+
 ## 24.0.3
 
 ### Patch Changes
