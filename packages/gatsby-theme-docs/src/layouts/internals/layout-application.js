@@ -11,7 +11,7 @@ import ChatModal from '../../modules/ai-assistant/components/chat-modal';
 /* NOTE: `overflow` shorthand is only supported is Chrome and FF */
 const Root = styled.div`
   position: relative;
-  width: 100vw;
+  /*width: 100vw;*/
   height: auto;
   overflow-x: hidden;
   overflow-y: auto;
@@ -23,7 +23,7 @@ const Root = styled.div`
       : designSystem.dimensions.spacings.s};
 
   @media only screen and (${designSystem.dimensions.viewports.tablet}) {
-    height: 100vh;
+    height: auto;
   }
 `;
 const Container = styled.div`
