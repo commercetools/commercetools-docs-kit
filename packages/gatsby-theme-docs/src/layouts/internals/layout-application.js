@@ -23,7 +23,7 @@ const Root = styled.div`
       : designSystem.dimensions.spacings.s};
 
   @media only screen and (${designSystem.dimensions.viewports.tablet}) {
-    height: auto;
+    height: 100%;
   }
 `;
 const Container = styled.div`
