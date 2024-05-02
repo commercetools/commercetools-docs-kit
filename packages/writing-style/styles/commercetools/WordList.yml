@@ -11,6 +11,7 @@ swap:
   '(?:file ?path|path ?name)': path
   '(?:kill|terminate|abort)': stop|exit|cancel|end|deactivate|turn off
   'un(?:check|select)': clear
+  '(?:ecommerce|e-commerce)': commerce
   # above: preceding|over|this # note NK: I tried to change a few places and it did rather get cumbersome. I don't think it's worth the efforts.
   account name: username
   approx\.: approximately
