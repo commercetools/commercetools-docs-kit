@@ -20,43 +20,47 @@ const Topics = styled.div`
   }
 `;
 
-const ReleaseNoteBody = (props) => (
-  <SpacingsStack scale="m">
-    <SpacingsStack scale="s">
-      <DateElement>{props.date}</DateElement>
-      <div
-        style={designSystem.tokensToCssVars({
-          fontSizeDefault: designSystem.typography.fontSizes.extraSmall,
-          fontSizeForStamp: designSystem.typography.fontSizes.extraSmall,
-          // Override the `critical` style which is used for the "fix" type
-          colorError95: designSystem.colors.light.surfaceForReleaseNoteTypeFix,
-          colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
-        })}
-      >
-        <SpacingsInline>
-          {props.type.map((type) => {
-            return (
-              <Stamp
-                key={type}
-                isCondensed
-                tone={mapTypeToTone(type)}
-                label={mapTypeToLabel(type)}
-              />
-            );
+const ReleaseNoteBody = (props) => {
+  console.log(props.type);
+  return (
+    <SpacingsStack scale="m">
+      <SpacingsStack scale="s">
+        <DateElement>{props.date}</DateElement>
+        <div
+          style={designSystem.tokensToCssVars({
+            fontSizeDefault: designSystem.typography.fontSizes.extraSmall,
+            fontSizeForStamp: designSystem.typography.fontSizes.extraSmall,
+            // Override the `critical` style which is used for the "fix" type
+            colorError95:
+              designSystem.colors.light.surfaceForReleaseNoteTypeFix,
+            colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
           })}
-        </SpacingsInline>
-      </div>
-      {props.topics.length > 0 && (
-        <Topics>
-          {props.topics.map((topic) => (
-            <span key={topic}>{topic}</span>
-          ))}
-        </Topics>
-      )}
+        >
+          <SpacingsInline>
+            {props.type.map((type) => {
+              return (
+                <Stamp
+                  key={type}
+                  isCondensed
+                  tone={mapTypeToTone(type)}
+                  label={mapTypeToLabel(type)}
+                />
+              );
+            })}
+          </SpacingsInline>
+        </div>
+        {props.topics.length > 0 && (
+          <Topics>
+            {props.topics.map((topic) => (
+              <span key={topic}>{topic}</span>
+            ))}
+          </Topics>
+        )}
+      </SpacingsStack>
+      <div>{props.children}</div>
     </SpacingsStack>
-    <div>{props.children}</div>
-  </SpacingsStack>
-);
+  );
+};
 
 ReleaseNoteBody.propTypes = {
   date: PropTypes.string.isRequired,
