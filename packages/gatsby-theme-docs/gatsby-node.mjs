@@ -118,18 +118,19 @@ export const createResolvers = ({ createResolvers }) => {
         },
       },
     },
-    ReleaseNotePage:{
-      type:{
+    ReleaseNotePage: {
+      type: {
         resolve: (source) => {
+          console.log(source.type, typeof source.type);
           if (Array.isArray(source.type)) {
-            return source.type
+            return source.type;
           } else if (typeof source.type === 'string') {
-            return [source.type]
+            return [source.type];
           }
-          return []
-        }
-      }
-    }
+          return [];
+        },
+      },
+    },
   };
   createResolvers(resolvers);
 };
@@ -312,8 +313,8 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         orderHint: { type: 'Int' },
         description: { type: 'String!' },
         type: { type: '[ReleaseNoteType!]!' },
-        product: { type: '[String]' },
-        productArea: { type: '[String]' },
+        product: { type: 'String' },
+        productArea: { type: 'String' },
         topics: { type: '[String!]!' },
         published: { type: 'Boolean!' },
         body: {
