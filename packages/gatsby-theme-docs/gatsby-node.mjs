@@ -118,7 +118,7 @@ export const createResolvers = ({ createResolvers }) => {
         },
       },
     },
-    ReleaseNoteType:{
+    ReleaseNotePage:{
       type:{
         resolve: (source) => {
           if (Array.isArray(source.type)) {
