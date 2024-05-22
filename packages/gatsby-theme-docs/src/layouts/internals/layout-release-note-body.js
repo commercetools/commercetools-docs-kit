@@ -21,7 +21,7 @@ const Topics = styled.div`
 `;
 
 const ReleaseNoteBody = (props) => {
-  console.log(props.type);
+  console.log('Name: ' + props.type, 'Type: ' + typeof props.type);
   return (
     <SpacingsStack scale="m">
       <SpacingsStack scale="s">
