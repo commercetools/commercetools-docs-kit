@@ -300,6 +300,8 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         orderHint: { type: 'Int' },
         description: { type: 'String!' },
         type: { type: 'ReleaseNoteType!' },
+        product: { type: '[String]' },
+        productArea: { type: '[String]' },
         topics: { type: '[String!]!' },
         published: { type: 'Boolean!' },
         body: {
@@ -359,6 +361,8 @@ export const onCreateNode = async (
       orderHint: node.frontmatter.orderHint,
       description: node.frontmatter.description,
       type: node.frontmatter.type,
+      product: node.frontmatter.product,
+      productArea: node.frontmatter.productArea,
       topics: node.frontmatter.topics || [],
       published: Boolean(node.frontmatter.published),
       rawExcerpt: excerptSplit[0],

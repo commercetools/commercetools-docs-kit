@@ -124,6 +124,8 @@ export const query = graphql`
         orderHint
         description
         type
+        product
+        productArea
         topics
         body: rawExcerpt
         hasMore
