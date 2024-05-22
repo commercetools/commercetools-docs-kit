@@ -4,6 +4,15 @@ import { Markdown } from '@commercetools-docs/ui-kit';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { DescriptionText, DescriptionParagraph } from '../description';
 
+// @see https://github.com/commercetools/commercetools-docs-kit/blob/d55b7e3a263e918599bd2ac4a18830bd2f1c7d9b/packages/gatsby-transformer-raml/src/utils/type/do-recursion.mjs#L15
+// `enum` is converted to `enumeration` as it is a js reserved keyword. This must be taken into account when searching for the enum description.
+const enumDescriptionFinder = (enumDesc, value) => {
+  if (value === 'enum') {
+    return enumDesc.name === 'enumeration';
+  }
+  return enumDesc.name === value;
+};
+
 const Enum = ({
   values,
   enumDescriptions,
@@ -50,8 +59,8 @@ const Enum = ({
                           groupList[groupName].map((value) => {
                             const enumDescription =
                               enumDescriptions &&
-                              enumDescriptions.find(
-                                (enumDesc) => enumDesc.name === value
+                              enumDescriptions.find((enumDesc) =>
+                                enumDescriptionFinder(enumDesc, value)
                               );
                             return (
                               <React.Fragment key={value}>
@@ -95,7 +104,9 @@ const Enum = ({
             values.map((value) => {
               const enumDescription =
                 enumDescriptions &&
-                enumDescriptions.find((enumDesc) => enumDesc.name === value);
+                enumDescriptions.find((enumDesc) =>
+                  enumDescriptionFinder(enumDesc, value)
+                );
 
               return (
                 <React.Fragment key={value}>
