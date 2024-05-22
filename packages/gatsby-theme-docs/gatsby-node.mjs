@@ -121,7 +121,6 @@ export const createResolvers = ({ createResolvers }) => {
     ReleaseNotePage: {
       type: {
         resolve: (source) => {
-          console.log(source.type, typeof source.type);
           if (Array.isArray(source.type)) {
             return source.type;
           } else if (typeof source.type === 'string') {

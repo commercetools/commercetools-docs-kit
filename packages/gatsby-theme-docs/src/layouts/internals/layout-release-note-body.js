@@ -21,7 +21,7 @@ const Topics = styled.div`
 `;
 
 const ReleaseNoteBody = (props) => {
-  console.log('Name: ' + props.type, 'Type: ' + typeof props.type);
+  const releaseNoteType = Array.isArray(props.type) ? props.type : [props.type];
   return (
     <SpacingsStack scale="m">
       <SpacingsStack scale="s">
@@ -37,7 +37,7 @@ const ReleaseNoteBody = (props) => {
           })}
         >
           <SpacingsInline>
-            {props.type.map((type) => {
+            {releaseNoteType.map((type) => {
               return (
                 <Stamp
                   key={type}
