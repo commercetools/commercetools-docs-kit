@@ -118,6 +118,18 @@ export const createResolvers = ({ createResolvers }) => {
         },
       },
     },
+    ReleaseNoteType:{
+      type:{
+        resolve: (source) => {
+          if (Array.isArray(source.type)) {
+            return source.type
+          } else if (typeof source.type === 'string') {
+            return [source.type]
+          }
+          return []
+        }
+      }
+    }
   };
   createResolvers(resolvers);
 };
@@ -299,7 +311,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         date: { type: 'Date!', extensions: { dateformat: {} } },
         orderHint: { type: 'Int' },
         description: { type: 'String!' },
-        type: { type: 'ReleaseNoteType!' },
+        type: { type: '[ReleaseNoteType!]!' },
         product: { type: '[String]' },
         productArea: { type: '[String]' },
         topics: { type: '[String!]!' },
