@@ -34,11 +34,16 @@ const ReleaseNoteBody = (props) => (
         })}
       >
         <SpacingsInline>
-          <Stamp
-            isCondensed
-            tone={mapTypeToTone(props)}
-            label={mapTypeToLabel(props)}
-          />
+          {props.type.map((type) => {
+            return (
+              <Stamp
+                key={type}
+                isCondensed
+                tone={mapTypeToTone(type)}
+                label={mapTypeToLabel(type)}
+              />
+            );
+          })}
         </SpacingsInline>
       </div>
       {props.topics.length > 0 && (
@@ -56,16 +61,15 @@ const ReleaseNoteBody = (props) => (
 ReleaseNoteBody.propTypes = {
   date: PropTypes.string.isRequired,
   // eslint-disable-next-line react/no-unused-prop-types
-  type: PropTypes.oneOf(['feature', 'enhancement', 'fix', 'announcement'])
-    .isRequired,
+  type: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   children: PropTypes.node.isRequired,
 };
 
 export default ReleaseNoteBody;
 
-function mapTypeToTone(props) {
-  switch (props.type) {
+function mapTypeToTone(type) {
+  switch (type) {
     case 'feature':
       return 'positive';
     case 'enhancement':
@@ -75,12 +79,12 @@ function mapTypeToTone(props) {
     case 'announcement':
       return 'primary';
     default:
-      return props.type;
+      return type;
   }
 }
 
-function mapTypeToLabel(props) {
-  switch (props.type) {
+function mapTypeToLabel(type) {
+  switch (type) {
     case 'feature':
       return 'Feature';
     case 'enhancement':
@@ -90,6 +94,6 @@ function mapTypeToLabel(props) {
     case 'announcement':
       return 'Announcement';
     default:
-      return props.type;
+      return type;
   }
 }

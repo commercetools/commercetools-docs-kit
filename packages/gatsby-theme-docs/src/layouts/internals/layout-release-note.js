@@ -34,8 +34,7 @@ LayoutReleaseNote.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['feature', 'enhancement', 'fix', 'announcement'])
-    .isRequired,
+  type: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   hasMore: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
