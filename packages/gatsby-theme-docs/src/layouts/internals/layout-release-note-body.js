@@ -75,13 +75,15 @@ export default ReleaseNoteBody;
 function mapTypeToTone(type) {
   switch (type) {
     case 'feature':
-      return 'positive';
+      return 'primary';
     case 'enhancement':
-      return 'information';
+      return 'positive';
     case 'fix':
       return 'positive';
     case 'announcement':
-      return 'primary';
+      return 'information';
+    case 'deprecation':
+      return 'secondary';
     default:
       return type;
   }
@@ -90,13 +92,15 @@ function mapTypeToTone(type) {
 function mapTypeToLabel(type) {
   switch (type) {
     case 'feature':
-      return 'Feature';
+      return 'New feature';
     case 'enhancement':
       return 'Enhancement';
     case 'fix':
-      return 'Resolved Issue';
+      return 'Resolved issue';
     case 'announcement':
       return 'Announcement';
+    case 'deprecation':
+      return 'Deprecation';
     default:
       return type;
   }

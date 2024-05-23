@@ -233,6 +233,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
       fix
       enhancement
       announcement
+      deprecation
     }
   `);
 
