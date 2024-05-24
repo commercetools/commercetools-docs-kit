@@ -187,6 +187,7 @@ DiscountCodeInfo: !include cart/DiscountCodeInfo.raml
 DiscountCodeState: !include cart/DiscountCodeState.raml
 DiscountOnTotalPrice: !include cart/DiscountOnTotalPrice.raml
 DiscountedLineItemPortion: !include cart/DiscountedLineItemPortion.raml
+DiscountedLineItemPortionDraft: !include cart/DiscountedLineItemPortionDraft.raml
 DiscountedLineItemPrice: !include cart/DiscountedLineItemPrice.raml
 DiscountedLineItemPriceForQuantity: !include cart/DiscountedLineItemPriceForQuantity.raml
 DiscountedTotalPricePortion: !include cart/DiscountedTotalPricePortion.raml
@@ -349,6 +350,8 @@ Asset: !include common/Asset.raml
 AssetDimensions: !include common/AssetDimensions.raml
 AssetDraft: !include common/AssetDraft.raml
 AssetSource: !include common/AssetSource.raml
+Attribution: !include common/Attribution.raml
+AttributionSource: !include common/AttributionSource.raml
 BaseAddress: !include common/BaseAddress.raml
 BaseResource: !include common/BaseResource.raml
 CentPrecisionMoney: !include common/CentPrecisionMoney.raml
@@ -468,6 +471,7 @@ DiscountCodeSetCartPredicateAction: !include discount-code/updates/DiscountCodeS
 DiscountCodeSetCustomFieldAction: !include discount-code/updates/DiscountCodeSetCustomFieldAction.raml
 DiscountCodeSetCustomTypeAction: !include discount-code/updates/DiscountCodeSetCustomTypeAction.raml
 DiscountCodeSetDescriptionAction: !include discount-code/updates/DiscountCodeSetDescriptionAction.raml
+DiscountCodeSetKeyAction: !include discount-code/updates/DiscountCodeSetKeyAction.raml
 DiscountCodeSetMaxApplicationsAction: !include discount-code/updates/DiscountCodeSetMaxApplicationsAction.raml
 # yamllint disable-line rule:line-length
 DiscountCodeSetMaxApplicationsPerCustomerAction: !include discount-code/updates/DiscountCodeSetMaxApplicationsPerCustomerAction.raml
@@ -523,6 +527,7 @@ InvalidOperationError: !include error/InvalidOperationError.raml
 InvalidSubjectError: !include error/InvalidSubjectError.raml
 InvalidTokenError: !include error/InvalidTokenError.raml
 LanguageUsedInStoresError: !include error/LanguageUsedInStoresError.raml
+LockedFieldError: !include error/LockedFieldError.raml
 MatchingPriceNotFoundError: !include error/MatchingPriceNotFoundError.raml
 MaxCartDiscountsReachedError: !include error/MaxCartDiscountsReachedError.raml
 MaxResourceLimitExceededError: !include error/MaxResourceLimitExceededError.raml
@@ -602,6 +607,7 @@ GraphQLInvalidOperationError: !include error/graphql/GraphQLInvalidOperationErro
 GraphQLInvalidSubjectError: !include error/graphql/GraphQLInvalidSubjectError.raml
 GraphQLInvalidTokenError: !include error/graphql/GraphQLInvalidTokenError.raml
 GraphQLLanguageUsedInStoresError: !include error/graphql/GraphQLLanguageUsedInStoresError.raml
+GraphQLLockedFieldError: !include error/graphql/GraphQLLockedFieldError.raml
 GraphQLMatchingPriceNotFoundError: !include error/graphql/GraphQLMatchingPriceNotFoundError.raml
 GraphQLMaxCartDiscountsReachedError: !include error/graphql/GraphQLMaxCartDiscountsReachedError.raml
 GraphQLMaxResourceLimitExceededError: !include error/graphql/GraphQLMaxResourceLimitExceededError.raml
@@ -902,6 +908,9 @@ DeliveryAddedMessage: !include message/DeliveryAddedMessage.raml
 DeliveryAddressSetMessage: !include message/DeliveryAddressSetMessage.raml
 DeliveryItemsUpdatedMessage: !include message/DeliveryItemsUpdatedMessage.raml
 DeliveryRemovedMessage: !include message/DeliveryRemovedMessage.raml
+DiscountCodeCreatedMessage: !include message/DiscountCodeCreatedMessage.raml
+DiscountCodeDeletedMessage: !include message/DiscountCodeDeletedMessage.raml
+DiscountCodeKeySetMessage: !include message/DiscountCodeKeySetMessage.raml
 InventoryEntryCreatedMessage: !include message/InventoryEntryCreatedMessage.raml
 InventoryEntryDeletedMessage: !include message/InventoryEntryDeletedMessage.raml
 InventoryEntryQuantitySetMessage: !include message/InventoryEntryQuantitySetMessage.raml
@@ -982,6 +991,13 @@ ProductSelectionVariantExclusionChangedMessage: !include message/ProductSelectio
 ProductSelectionVariantSelectionChangedMessage: !include message/ProductSelectionVariantSelectionChangedMessage.raml
 ProductSlugChangedMessage: !include message/ProductSlugChangedMessage.raml
 ProductStateTransitionMessage: !include message/ProductStateTransitionMessage.raml
+ProductTailoringCreatedMessage: !include message/ProductTailoringCreatedMessage.raml
+ProductTailoringDeletedMessage: !include message/ProductTailoringDeletedMessage.raml
+ProductTailoringDescriptionSetMessage: !include message/ProductTailoringDescriptionSetMessage.raml
+ProductTailoringNameSetMessage: !include message/ProductTailoringNameSetMessage.raml
+ProductTailoringPublishedMessage: !include message/ProductTailoringPublishedMessage.raml
+ProductTailoringSlugSetMessage: !include message/ProductTailoringSlugSetMessage.raml
+ProductTailoringUnpublishedMessage: !include message/ProductTailoringUnpublishedMessage.raml
 ProductUnpublishedMessage: !include message/ProductUnpublishedMessage.raml
 ProductVariantAddedMessage: !include message/ProductVariantAddedMessage.raml
 ProductVariantDeletedMessage: !include message/ProductVariantDeletedMessage.raml
@@ -1146,6 +1162,9 @@ DeliveryAddedMessagePayload: !include message/payload/DeliveryAddedMessagePayloa
 DeliveryAddressSetMessagePayload: !include message/payload/DeliveryAddressSetMessagePayload.raml
 DeliveryItemsUpdatedMessagePayload: !include message/payload/DeliveryItemsUpdatedMessagePayload.raml
 DeliveryRemovedMessagePayload: !include message/payload/DeliveryRemovedMessagePayload.raml
+DiscountCodeCreatedMessagePayload: !include message/payload/DiscountCodeCreatedMessagePayload.raml
+DiscountCodeDeletedMessagePayload: !include message/payload/DiscountCodeDeletedMessagePayload.raml
+DiscountCodeKeySetMessagePayload: !include message/payload/DiscountCodeKeySetMessagePayload.raml
 InventoryEntryCreatedMessagePayload: !include message/payload/InventoryEntryCreatedMessagePayload.raml
 InventoryEntryDeletedMessagePayload: !include message/payload/InventoryEntryDeletedMessagePayload.raml
 InventoryEntryQuantitySetMessagePayload: !include message/payload/InventoryEntryQuantitySetMessagePayload.raml
@@ -1229,6 +1248,13 @@ ProductSelectionVariantExclusionChangedMessagePayload: !include message/payload/
 ProductSelectionVariantSelectionChangedMessagePayload: !include message/payload/ProductSelectionVariantSelectionChangedMessagePayload.raml
 ProductSlugChangedMessagePayload: !include message/payload/ProductSlugChangedMessagePayload.raml
 ProductStateTransitionMessagePayload: !include message/payload/ProductStateTransitionMessagePayload.raml
+ProductTailoringCreatedMessagePayload: !include message/payload/ProductTailoringCreatedMessagePayload.raml
+ProductTailoringDeletedMessagePayload: !include message/payload/ProductTailoringDeletedMessagePayload.raml
+ProductTailoringDescriptionSetMessagePayload: !include message/payload/ProductTailoringDescriptionSetMessagePayload.raml
+ProductTailoringNameSetMessagePayload: !include message/payload/ProductTailoringNameSetMessagePayload.raml
+ProductTailoringPublishedMessagePayload: !include message/payload/ProductTailoringPublishedMessagePayload.raml
+ProductTailoringSlugSetMessagePayload: !include message/payload/ProductTailoringSlugSetMessagePayload.raml
+ProductTailoringUnpublishedMessagePayload: !include message/payload/ProductTailoringUnpublishedMessagePayload.raml
 ProductUnpublishedMessagePayload: !include message/payload/ProductUnpublishedMessagePayload.raml
 ProductVariantAddedMessagePayload: !include message/payload/ProductVariantAddedMessagePayload.raml
 ProductVariantDeletedMessagePayload: !include message/payload/ProductVariantDeletedMessagePayload.raml
@@ -1400,6 +1426,8 @@ StagedOrderSetShippingAddressAndShippingMethodAction: !include order-edit/update
 StagedOrderSetShippingAddressCustomFieldAction: !include order-edit/updates/StagedOrderSetShippingAddressCustomFieldAction.raml
 # yamllint disable-line rule:line-length
 StagedOrderSetShippingAddressCustomTypeAction: !include order-edit/updates/StagedOrderSetShippingAddressCustomTypeAction.raml
+StagedOrderSetShippingCustomFieldAction: !include order-edit/updates/StagedOrderSetShippingCustomFieldAction.raml
+StagedOrderSetShippingCustomTypeAction: !include order-edit/updates/StagedOrderSetShippingCustomTypeAction.raml
 StagedOrderSetShippingMethodAction: !include order-edit/updates/StagedOrderSetShippingMethodAction.raml
 # yamllint disable-line rule:line-length
 StagedOrderSetShippingMethodTaxAmountAction: !include order-edit/updates/StagedOrderSetShippingMethodTaxAmountAction.raml
@@ -1527,6 +1555,8 @@ OrderSetReturnShipmentStateAction: !include order/updates/OrderSetReturnShipment
 OrderSetShippingAddressAction: !include order/updates/OrderSetShippingAddressAction.raml
 OrderSetShippingAddressCustomFieldAction: !include order/updates/OrderSetShippingAddressCustomFieldAction.raml
 OrderSetShippingAddressCustomTypeAction: !include order/updates/OrderSetShippingAddressCustomTypeAction.raml
+OrderSetShippingCustomFieldAction: !include order/updates/OrderSetShippingCustomFieldAction.raml
+OrderSetShippingCustomTypeAction: !include order/updates/OrderSetShippingCustomTypeAction.raml
 OrderSetStoreAction: !include order/updates/OrderSetStoreAction.raml
 OrderTransitionCustomLineItemStateAction: !include order/updates/OrderTransitionCustomLineItemStateAction.raml
 OrderTransitionLineItemStateAction: !include order/updates/OrderTransitionLineItemStateAction.raml
@@ -1598,6 +1628,31 @@ ProductDiscountSetValidFromAction: !include product-discount/updates/ProductDisc
 # yamllint disable-line rule:line-length
 ProductDiscountSetValidFromAndUntilAction: !include product-discount/updates/ProductDiscountSetValidFromAndUntilAction.raml
 ProductDiscountSetValidUntilAction: !include product-discount/updates/ProductDiscountSetValidUntilAction.raml
+ProductPagedSearchResponse: !include product-search/ProductPagedSearchResponse.raml
+ProductSearchErrorResponse: !include product-search/ProductSearchErrorResponse.raml
+ProductSearchMatchingVariantEntry: !include product-search/ProductSearchMatchingVariantEntry.raml
+ProductSearchMatchingVariants: !include product-search/ProductSearchMatchingVariants.raml
+ProductSearchProjectionParams: !include product-search/ProductSearchProjectionParams.raml
+ProductSearchRequest: !include product-search/ProductSearchRequest.raml
+ProductSearchResult: !include product-search/ProductSearchResult.raml
+ProductSearchFacetCountExpression: !include product-search/facets/ProductSearchFacetCountExpression.raml
+ProductSearchFacetCountLevelEnum: !include product-search/facets/ProductSearchFacetCountLevelEnum.raml
+ProductSearchFacetCountValue: !include product-search/facets/ProductSearchFacetCountValue.raml
+ProductSearchFacetDistinctBucketSortBy: !include product-search/facets/ProductSearchFacetDistinctBucketSortBy.raml
+# yamllint disable-line rule:line-length
+ProductSearchFacetDistinctBucketSortExpression: !include product-search/facets/ProductSearchFacetDistinctBucketSortExpression.raml
+ProductSearchFacetDistinctExpression: !include product-search/facets/ProductSearchFacetDistinctExpression.raml
+ProductSearchFacetDistinctValue: !include product-search/facets/ProductSearchFacetDistinctValue.raml
+ProductSearchFacetExpression: !include product-search/facets/ProductSearchFacetExpression.raml
+ProductSearchFacetRangesExpression: !include product-search/facets/ProductSearchFacetRangesExpression.raml
+ProductSearchFacetRangesFacetRange: !include product-search/facets/ProductSearchFacetRangesFacetRange.raml
+ProductSearchFacetRangesValue: !include product-search/facets/ProductSearchFacetRangesValue.raml
+ProductSearchFacetResult: !include product-search/facets/ProductSearchFacetResult.raml
+ProductSearchFacetResultBucket: !include product-search/facets/ProductSearchFacetResultBucket.raml
+ProductSearchFacetResultBucketEntry: !include product-search/facets/ProductSearchFacetResultBucketEntry.raml
+ProductSearchFacetResultCount: !include product-search/facets/ProductSearchFacetResultCount.raml
+ProductSearchFacetScope: !include product-search/facets/ProductSearchFacetScope.raml
+ProductSearchFacetScopeEnum: !include product-search/facets/ProductSearchFacetScopeEnum.raml
 AssignedProductReference: !include product-selection/AssignedProductReference.raml
 AssignedProductSelection: !include product-selection/AssignedProductSelection.raml
 AssignedProductSelectionPagedQueryResponse: !include product-selection/AssignedProductSelectionPagedQueryResponse.raml
@@ -1634,6 +1689,25 @@ ProductSelectionSetKeyAction: !include product-selection/updates/ProductSelectio
 ProductSelectionSetVariantExclusionAction: !include product-selection/updates/ProductSelectionSetVariantExclusionAction.raml
 # yamllint disable-line rule:line-length
 ProductSelectionSetVariantSelectionAction: !include product-selection/updates/ProductSelectionSetVariantSelectionAction.raml
+ProductTailoring: !include product-tailoring/ProductTailoring.raml
+ProductTailoringData: !include product-tailoring/ProductTailoringData.raml
+ProductTailoringDraft: !include product-tailoring/ProductTailoringDraft.raml
+ProductTailoringInStoreDraft: !include product-tailoring/ProductTailoringInStoreDraft.raml
+ProductTailoringPagedQueryResponse: !include product-tailoring/ProductTailoringPagedQueryResponse.raml
+ProductTailoringReference: !include product-tailoring/ProductTailoringReference.raml
+ProductTailoringResourceIdentifier: !include product-tailoring/ProductTailoringResourceIdentifier.raml
+ProductTailoringUpdate: !include product-tailoring/ProductTailoringUpdate.raml
+ProductTailoringUpdateAction: !include product-tailoring/ProductTailoringUpdateAction.raml
+ProductTailoringPublishAction: !include product-tailoring/updates/ProductTailoringPublishAction.raml
+ProductTailoringSetDescriptionAction: !include product-tailoring/updates/ProductTailoringSetDescriptionAction.raml
+ProductTailoringSetMetaAttributesAction: !include product-tailoring/updates/ProductTailoringSetMetaAttributesAction.raml
+# yamllint disable-line rule:line-length
+ProductTailoringSetMetaDescriptionAction: !include product-tailoring/updates/ProductTailoringSetMetaDescriptionAction.raml
+ProductTailoringSetMetaKeywordsAction: !include product-tailoring/updates/ProductTailoringSetMetaKeywordsAction.raml
+ProductTailoringSetMetaTitleAction: !include product-tailoring/updates/ProductTailoringSetMetaTitleAction.raml
+ProductTailoringSetNameAction: !include product-tailoring/updates/ProductTailoringSetNameAction.raml
+ProductTailoringSetSlugAction: !include product-tailoring/updates/ProductTailoringSetSlugAction.raml
+ProductTailoringUnpublishAction: !include product-tailoring/updates/ProductTailoringUnpublishAction.raml
 AttributeBooleanType: !include product-type/AttributeBooleanType.raml
 AttributeConstraintEnum: !include product-type/AttributeConstraintEnum.raml
 AttributeConstraintEnumDraft: !include product-type/AttributeConstraintEnumDraft.raml
@@ -1785,6 +1859,8 @@ CartValueType: !include project/CartValueType.raml
 CartsConfiguration: !include project/CartsConfiguration.raml
 ExternalOAuth: !include project/ExternalOAuth.raml
 OrderSearchStatus: !include project/OrderSearchStatus.raml
+ProductSearchIndexingMode: !include project/ProductSearchIndexingMode.raml
+ProductSearchStatus: !include project/ProductSearchStatus.raml
 Project: !include project/Project.raml
 ProjectUpdate: !include project/ProjectUpdate.raml
 ProjectUpdateAction: !include project/ProjectUpdateAction.raml
@@ -1859,6 +1935,40 @@ ReviewSetTargetAction: !include review/updates/ReviewSetTargetAction.raml
 ReviewSetTextAction: !include review/updates/ReviewSetTextAction.raml
 ReviewSetTitleAction: !include review/updates/ReviewSetTitleAction.raml
 ReviewTransitionStateAction: !include review/updates/ReviewTransitionStateAction.raml
+SearchAndExpression: !include search/SearchAndExpression.raml
+SearchAnyValue: !include search/SearchAnyValue.raml
+SearchCompoundExpression: !include search/SearchCompoundExpression.raml
+SearchDateRangeExpression: !include search/SearchDateRangeExpression.raml
+SearchDateRangeValue: !include search/SearchDateRangeValue.raml
+SearchDateTimeRangeExpression: !include search/SearchDateTimeRangeExpression.raml
+SearchDateTimeRangeValue: !include search/SearchDateTimeRangeValue.raml
+SearchExactExpression: !include search/SearchExactExpression.raml
+SearchExistsExpression: !include search/SearchExistsExpression.raml
+SearchExistsValue: !include search/SearchExistsValue.raml
+SearchFieldType: !include search/SearchFieldType.raml
+SearchFilterExpression: !include search/SearchFilterExpression.raml
+SearchFullTextExpression: !include search/SearchFullTextExpression.raml
+SearchFullTextPrefixExpression: !include search/SearchFullTextPrefixExpression.raml
+SearchFullTextPrefixValue: !include search/SearchFullTextPrefixValue.raml
+SearchFullTextValue: !include search/SearchFullTextValue.raml
+SearchLongRangeExpression: !include search/SearchLongRangeExpression.raml
+SearchLongRangeValue: !include search/SearchLongRangeValue.raml
+SearchMatchType: !include search/SearchMatchType.raml
+SearchMatchingVariant: !include search/SearchMatchingVariant.raml
+SearchNotExpression: !include search/SearchNotExpression.raml
+SearchNumberRangeExpression: !include search/SearchNumberRangeExpression.raml
+SearchNumberRangeValue: !include search/SearchNumberRangeValue.raml
+SearchOrExpression: !include search/SearchOrExpression.raml
+SearchPrefixExpression: !include search/SearchPrefixExpression.raml
+SearchQuery: !include search/SearchQuery.raml
+SearchQueryExpression: !include search/SearchQueryExpression.raml
+SearchQueryExpressionValue: !include search/SearchQueryExpressionValue.raml
+SearchSortMode: !include search/SearchSortMode.raml
+SearchSortOrder: !include search/SearchSortOrder.raml
+SearchSorting: !include search/SearchSorting.raml
+SearchTimeRangeExpression: !include search/SearchTimeRangeExpression.raml
+SearchTimeRangeValue: !include search/SearchTimeRangeValue.raml
+SearchWildCardExpression: !include search/SearchWildCardExpression.raml
 CartClassificationTier: !include shipping-method/CartClassificationTier.raml
 CartScoreTier: !include shipping-method/CartScoreTier.raml
 CartValueTier: !include shipping-method/CartValueTier.raml

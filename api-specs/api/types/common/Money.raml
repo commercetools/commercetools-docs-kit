@@ -1,11 +1,11 @@
 #%RAML 1.0 DataType
 (package): Common
-(docs-uri): https://docs.commercetools.com/http-api-types.html#basemoney
 displayName: Money
 type: object
 description: |
   Draft type that stores amounts only in cent precision for the specified currency.
 example: !include ../../examples/Common/Money.json
+(ignoreValidators): [PolymorphicSubtypesRule]
 properties:
   centAmount:
     type: number

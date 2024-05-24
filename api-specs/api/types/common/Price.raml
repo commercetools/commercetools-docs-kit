@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Common
-(docs-uri): https://docs.commercetools.com/http-api-projects-products.html#price
 displayName: Price
 description: |-
   The representation for prices embedded in [LineItems](ctp:api:type:LineItem) and in [ProductVariants](ctp:api:type:ProductVariant) when the [ProductPriceMode](ctp:api:type:ProductPriceModeEnum) is `Embedded`.
@@ -52,6 +51,8 @@ properties:
     type: PriceTier[]
     description: |
       Present if different Prices for certain [LineItem](ctp:api:type:LineItem) quantities have been specified.
+
+      If `discounted` is present, the tiered Price is ignored for a Product Variant.
   custom?:
     type: CustomFields
     description: |

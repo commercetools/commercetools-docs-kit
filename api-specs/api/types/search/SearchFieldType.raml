@@ -1,0 +1,74 @@
+#%RAML 1.0 DataType
+(package): Search
+displayName: SearchFieldType
+description: Possible values for the `fieldType` property on [query expressions](/../api/search-query-language#query-expressions) indicating the data type of the `field`.
+type: string
+(beta): true
+enum:
+  - boolean
+  - text
+  - ltext
+  - enum
+  - lenum
+  - number
+  - money
+  - date
+  - datetime
+  - time
+  - reference
+  - set_boolean
+  - set_text
+  - set_ltext
+  - set_enum
+  - set_lenum
+  - set_number
+  - set_money
+  - set_date
+  - set_datetime
+  - set_time
+  - set_reference
+(enumDescriptions):
+  boolean: |
+    For Boolean fields and [AttributeBooleanType](ctp:api:type:AttributeBooleanType) Attributes.
+  text: |
+    For string fields and [AttributeTextType](ctp:api:type:AttributeTextType) Attributes.
+  ltext: |
+    For [LocalizedString](types#localizedstring) fields and [AttributeLocalizableTextType](ctp:api:type:AttributeLocalizableTextType) Attributes.
+  enum: |
+    For enum fields and [AttributeEnumType](ctp:api:type:AttributeEnumType) Attributes.
+  lenum: |
+    For localized enum fields and [AttributeLocalizedEnumType](ctp:api:type:AttributeLocalizedEnumType) Attributes.
+  number: |
+    For number fields and [AttributeNumberType](ctp:api:type:AttributeNumberType) Attributes.
+  money: |
+    For [Money](types#money) fields and [AttributeMoneyType](ctp:api:type:AttributeMoneyType) Attributes.
+  date: |
+    For [Date](types#date) fields and [AttributeDateType](ctp:api:type:AttributeDateType) Attributes.
+  datetime: |
+    For [DateTime](types#datetime) fields and [AttributeDateTimeType](ctp:api:type:AttributeDateTimeType) Attributes.
+  time: |
+    For [Time](types#time) fields and [AttributeTimeType](ctp:api:type:AttributeTimeType) Attributes.
+  reference: |
+    For [Reference](types#reference) fields and [AttributeReferenceType](ctp:api:type:AttributeReferenceType) Attributes.
+  set_boolean: |
+    For Set of Boolean fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `boolean` Attributes.
+  set_text: |
+    For Set of string fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `text` Attributes.
+  set_ltext: |
+    For Set of [LocalizedString](types#localizedstring) fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `ltext` Attributes.
+  set_enum: |
+    For Set of enum fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `enum` Attributes.
+  set_lenum: |
+    For Set of localized enum fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `lenum` Attributes.
+  set_number: |
+    For Set of number fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `number` Attributes.
+  set_money: |
+    For Set of [Money](types#money) fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `money` Attributes.
+  set_date: |
+    For Set of [Date](types#date) fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `date` Attributes.
+  set_datetime: |
+    For Set of [DateTime](types#datetime) fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `datetime` Attributes.
+  set_time: |
+    For Set of [Time](types#time) fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `time` Attributes.
+  set_reference: |
+    For Set of [Reference](types#reference) fields and [AttributeSetType](ctp:api:type:AttributeSetType) of `reference` Attributes.
