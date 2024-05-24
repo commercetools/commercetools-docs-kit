@@ -5,6 +5,7 @@ export { default as LayoutSidebar } from './src/layouts/internals/layout-sidebar
 export { default as LayoutHeader } from './src/layouts/internals/layout-header';
 export { default as LayoutPage } from './src/layouts/internals/layout-page';
 export { default as Footer } from './src/layouts/internals/footer';
+export { default as LayoutReleaseNotesSearch } from './src/layouts/release-notes-search';
 export {
   BetaTag,
   ErrorBoundary,
