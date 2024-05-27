@@ -20,76 +20,88 @@ const Topics = styled.div`
   }
 `;
 
-const ReleaseNoteBody = (props) => (
-  <SpacingsStack scale="m">
-    <SpacingsStack scale="s">
-      <DateElement>{props.date}</DateElement>
-      <div
-        style={designSystem.tokensToCssVars({
-          fontSizeDefault: designSystem.typography.fontSizes.extraSmall,
-          fontSizeForStamp: designSystem.typography.fontSizes.extraSmall,
-          // Override the `critical` style which is used for the "fix" type
-          colorError95: designSystem.colors.light.surfaceForReleaseNoteTypeFix,
-          colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
-        })}
-      >
-        <SpacingsInline>
-          <Stamp
-            isCondensed
-            tone={mapTypeToTone(props)}
-            label={mapTypeToLabel(props)}
-          />
-        </SpacingsInline>
-      </div>
-      {props.topics.length > 0 && (
-        <Topics>
-          {props.topics.map((topic) => (
-            <span key={topic}>{topic}</span>
-          ))}
-        </Topics>
-      )}
+const ReleaseNoteBody = (props) => {
+  const releaseNoteType = Array.isArray(props.type) ? props.type : [props.type];
+  return (
+    <SpacingsStack scale="m">
+      <SpacingsStack scale="s">
+        <DateElement>{props.date}</DateElement>
+        <div
+          style={designSystem.tokensToCssVars({
+            fontSizeDefault: designSystem.typography.fontSizes.extraSmall,
+            fontSizeForStamp: designSystem.typography.fontSizes.extraSmall,
+            // Override the `critical` style which is used for the "fix" type
+            colorError95:
+              designSystem.colors.light.surfaceForReleaseNoteTypeFix,
+            colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
+          })}
+        >
+          <SpacingsInline>
+            {releaseNoteType.map((type) => {
+              return (
+                <Stamp
+                  key={type}
+                  isCondensed
+                  tone={mapTypeToTone(type)}
+                  label={mapTypeToLabel(type)}
+                />
+              );
+            })}
+          </SpacingsInline>
+        </div>
+        {props.topics.length > 0 && (
+          <Topics>
+            {props.topics.map((topic) => (
+              <span key={topic}>{topic}</span>
+            ))}
+          </Topics>
+        )}
+      </SpacingsStack>
+      <div>{props.children}</div>
     </SpacingsStack>
-    <div>{props.children}</div>
-  </SpacingsStack>
-);
+  );
+};
 
 ReleaseNoteBody.propTypes = {
   date: PropTypes.string.isRequired,
   // eslint-disable-next-line react/no-unused-prop-types
-  type: PropTypes.oneOf(['feature', 'enhancement', 'fix', 'announcement'])
-    .isRequired,
+  type: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   children: PropTypes.node.isRequired,
 };
 
 export default ReleaseNoteBody;
 
-function mapTypeToTone(props) {
-  switch (props.type) {
+function mapTypeToTone(type) {
+  switch (type) {
     case 'feature':
-      return 'positive';
+      return 'primary';
     case 'enhancement':
-      return 'information';
+      return 'positive';
     case 'fix':
       return 'positive';
     case 'announcement':
-      return 'primary';
+      return 'information';
+    case 'deprecation':
+      return 'secondary';
     default:
-      return props.type;
+      return type;
   }
 }
 
-function mapTypeToLabel(props) {
-  switch (props.type) {
+function mapTypeToLabel(type) {
+  switch (type) {
     case 'feature':
-      return 'Feature';
+      return 'New feature';
     case 'enhancement':
       return 'Enhancement';
     case 'fix':
-      return 'Resolved Issue';
+      return 'Resolved issue';
     case 'announcement':
       return 'Announcement';
+    case 'deprecation':
+      return 'Deprecation';
     default:
-      return props.type;
+      return type;
   }
 }

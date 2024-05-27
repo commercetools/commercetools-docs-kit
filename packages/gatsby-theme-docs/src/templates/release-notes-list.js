@@ -75,7 +75,7 @@ ReleaseNotesListTemplate.propTypes = {
           title: PropTypes.string.isRequired,
           date: PropTypes.string.isRequired,
           description: PropTypes.string.isRequired,
-          type: PropTypes.string.isRequired,
+          type: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
           topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
           body: PropTypes.string.isRequired,
           hasMore: PropTypes.bool.isRequired,
@@ -124,6 +124,8 @@ export const query = graphql`
         orderHint
         description
         type
+        product
+        productArea
         topics
         body: rawExcerpt
         hasMore
