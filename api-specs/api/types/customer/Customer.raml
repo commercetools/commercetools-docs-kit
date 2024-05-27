@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Customer
-(docs-uri): https://docs.commercetools.com/api/projects/customers#customer
 displayName: Customer
 (updateType): CustomerUpdate
 type: BaseResource
@@ -33,7 +32,7 @@ properties:
   externalId?:
     type: string
     description: |
-      Optional identifier for use in external systems like Customer Relationship Management (CRM) or Enterprise Resource Planning (ERP).
+      Optional identifier for use in external systems like customer relationship management (CRM) or enterprise resource planning (ERP).
   createdAt:
     type: datetime
     description: |
@@ -46,12 +45,12 @@ properties:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that last modified the Customer.
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that created the Customer.
   email:
     type: string
     description: |
@@ -129,12 +128,12 @@ properties:
     type: string
     description: |
       Salutation of the Customer, for example, 'Mr.' or 'Mrs.'.
-  stores?:
+  stores:
     type: StoreKeyReference[]
     description: |
       [Stores](ctp:api:type:Store) to which the Customer is assigned to.
 
-      - If no Stores are specified, the Customer is a global customer, and can log in using the [Password Flow for global Customers](/../api/authorization#password-flow-for-global-customers).
+      - If `stores` is empty, the Customer is a global customer, and can log in using the [Password Flow for global Customers](/../api/authorization#password-flow-for-global-customers).
       - If any Stores are specified, the Customer can only log in using the [Password Flow for Customers in a Store](/../api/authorization#password-flow-for-customers-in-a-store) for those specific Stores.
   authenticationMode:
     type: AuthenticationMode

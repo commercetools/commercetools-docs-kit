@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): DiscountCode
-(docs-uri): https://docs.commercetools.com/api/projects/discountCodes#discountcode
 type: BaseResource
 displayName: DiscountCode
 (updateType): DiscountCodeUpdate
@@ -10,6 +9,13 @@ properties:
     type: string
     description: |
       Unique identifier of the DiscountCode.
+  key?:
+    type: string
+    description: |-
+      User-defined unique identifier of the DiscountCode.
+    pattern: ^[A-Za-z0-9_-]+$
+    minLength: 2
+    maxLength: 256
   version:
     type: number
     format: int64
@@ -27,12 +33,12 @@ properties:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that last modified the DiscountCode.
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that created the DiscountCode.
   name?:
     type: LocalizedString
     description: |

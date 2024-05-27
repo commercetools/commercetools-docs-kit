@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): CartDiscount
-(docs-uri): https://docs.commercetools.com/api/projects/cartDiscounts#cartdiscount
 displayName: CartDiscount
 (updateType): CartDiscountUpdate
 type: BaseResource
@@ -17,21 +16,21 @@ properties:
   createdAt:
     type: datetime
     description: |
-      Date and time (UTC) for the CartDiscount was initially created.
+      Date and time (UTC) the CartDiscount was initially created.
   lastModifiedAt:
     type: datetime
     description: |
-      Date and time (UTC) for the CartDiscount was last updated.
+      Date and time (UTC) the CartDiscount was last updated.
   lastModifiedBy?:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources updated after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that last modified the CartDiscount.
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that created the CartDiscount.
   name:
     type: LocalizedString
     description: |

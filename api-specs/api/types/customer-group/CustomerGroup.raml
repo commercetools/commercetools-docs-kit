@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): CustomerGroup
-(docs-uri): https://docs.commercetools.com/api/projects/customerGroups#customergroup
 displayName: CustomerGroup
 (updateType): CustomerGroupUpdate
 type: BaseResource
@@ -28,12 +27,12 @@ properties:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources updated after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that last modified the CustomerGroup.
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that created the CustomerGroup.
   key?:
     type: string
     description: |

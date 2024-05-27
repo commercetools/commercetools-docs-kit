@@ -1,12 +1,11 @@
 #%RAML 1.0 DataType
 (package): OrderEdit
-(docs-uri): https://docs.commercetools.com/api/projects/order-edits#addstagedaction
 example: !include ../../../examples/OrderEdit/OrderEditAddStagedActionAction.json
 type: OrderEditUpdateAction
 displayName: OrderEditAddStagedActionAction
 discriminatorValue: addStagedAction
 description: |
-  If the [edit was applied](ctp:api:endpoint:/{projectKey}/orders/edits/{id}/apply:POST), this cannot be updated.
+  The `stagedActions` field cannot be updated if the Order Edit `result` is [OrderEdit Applied](/projects/order-edits#orderedit-applied).
 properties:
   stagedAction:
     type: StagedOrderUpdateAction
