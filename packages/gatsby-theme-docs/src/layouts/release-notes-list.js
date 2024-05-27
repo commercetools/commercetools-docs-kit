@@ -14,13 +14,11 @@ import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutReleaseNotePageHeaderSide from './layout-release-note-page-header-side';
-import LayoutPageReleaseNotesFilters from './internals/layout-page-release-notes-filters';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 
 const LayoutReleaseNotesList = (props) => {
-  const { ref, inView, entry } = useInView();
-  const isSearchBoxInView = !Boolean(entry) || inView;
+  const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
   const excludeFromSearchIndex =
@@ -64,11 +62,6 @@ const LayoutReleaseNotesList = (props) => {
                 {props.children}
               </PageContentInset>
             </LayoutPageContent>
-            <LayoutPageReleaseNotesFilters
-              {...layoutState.searchDialog}
-              isSearchBoxInView={isSearchBoxInView}
-              excludeFromSearchIndex={excludeFromSearchIndex}
-            />
           </LayoutPage>
         </LayoutPageWrapper>
         <LayoutFooter />
