@@ -1,10 +1,10 @@
 #%RAML 1.0 DataType
 (package): Common
-(docs-uri): https://docs.commercetools.com/http-api-types#client-logging
 displayName: ClientLogging
 type: object
 description: |
   These objects represent information about which [API Client](/../api/projects/api-clients) created or modified a resource. For more information, see [Client Logging](/../api/general-concepts#client-logging).
+(ignoreValidators): [PolymorphicSubtypesRule]
 properties:
   clientId?:
     type: string

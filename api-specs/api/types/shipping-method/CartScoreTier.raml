@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): ShippingMethod
-(docs-uri): https://docs.commercetools.com/api/projects/shippingMethods#cartscore-with-fixed-price
 displayName: CartScoreTier
 type: ShippingRatePriceTier
 description: |
@@ -15,7 +14,7 @@ properties:
     type: number
     format: int32
     description: |
-      Abstract value for categorizing a Cart. The range starts at `0`. The default price covers `0`, tiers start at `1`. See [Using Tiered Shipping Rates](/../tutorials/shipping-rate) for details and examples.
+      Abstract value for categorizing a Cart. The range starts at `0`. The default price covers `0`, tiers start at `1`. See [Tiered shipping rates](/../api/shipping-delivery-overview#tiered-shipping-rates) for details and examples.
   price?:
     type: Money
     description: |

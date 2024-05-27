@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): BusinessUnit
-(docs-uri): https://docs.commercetools.com/api/projects/business-units#businessunit
 displayName: BusinessUnit
 (updateType): BusinessUnitUpdate
 type: BaseResource
@@ -30,16 +29,16 @@ properties:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources updated after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that last modified the BusinessUnit.
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that created the BusinessUnit.
   key:
     type: string
     description: |
-      User-defined unique identifier of the Business Unit.
+      User-defined unique and immutable identifier of the Business Unit.
     pattern: ^[A-Za-z0-9_-]+$
     minLength: 2
     maxLength: 256

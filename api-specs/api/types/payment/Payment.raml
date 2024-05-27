@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Payment
-(docs-uri): https://docs.commercetools.com/api/projects/payments#payment
 type: BaseResource
 displayName: Payment
 (updateType): PaymentUpdate
@@ -23,12 +22,12 @@ properties:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that last modified the Payment.
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that created the Payment.
   customer?:
     type: CustomerReference
     description: |
@@ -40,7 +39,7 @@ properties:
   externalId?:
     (deprecated): true
     type: string
-    description: Additional identifier for external systems like Customer Relationship Management (CRM) or Enterprise Resource Planning (ERP).
+    description: Additional identifier for external systems like customer relationship management (CRM) or enterprise resource planning (ERP).
   interfaceId?:
     type: string
     description: |-

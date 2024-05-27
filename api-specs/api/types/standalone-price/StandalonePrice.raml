@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): StandalonePrice
-(docs-uri): https://docs.commercetools.com/http-api-projects-standalone-prices#standaloneprices
 type: BaseResource
 displayName: StandalonePrice
 (updateType): StandalonePriceUpdate
@@ -27,12 +26,12 @@ properties:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that last modified the StandalonePrice.
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that created the StandalonePrice.
   key?:
     type: string
     description: |-
@@ -72,6 +71,8 @@ properties:
     type: PriceTier[]
     description: |
       Price tiers if any are defined.
+
+      If `discounted` is present, the tiered Price is ignored for a Product Variant.
   discounted?:
     type: DiscountedPrice
     description: |
