@@ -21,7 +21,7 @@ const Topics = styled.div`
   }
 `;
 
-const Product = styled.div`
+const CustomStamp = styled.div`
   color: ${designSystem.colors.light.selfLearningLoginButton};
   padding: 2px 4px;
   font-size: ${designSystem.typography.fontSizes.extraSmall};
@@ -61,14 +61,14 @@ const ReleaseNoteBody = (props) => {
         >
           <SpacingsInline alignItems="center">
             {product && (
-              <Product>
+              <CustomStamp>
                 <span>{product}</span>
-              </Product>
+              </CustomStamp>
             )}
             {productArea && (
-              <Product>
+              <CustomStamp>
                 <span>{productArea}</span>
-              </Product>
+              </CustomStamp>
             )}
             <SeparatorLine />
             {releaseNoteType.map((type) => {
