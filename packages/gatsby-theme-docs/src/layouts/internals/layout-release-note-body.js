@@ -39,7 +39,7 @@ const ReleaseNoteBody = (props) => {
   const siteData = useSiteData();
   const product =
     props.product ||
-    (siteData.siteMetadata.products[0] !== ''
+    ((siteData.siteMetadata.products?.[0] || '') !== ''
       ? siteData.siteMetadata.products[0]
       : null);
   const productArea = props.productArea || siteData.siteMetadata.title;
