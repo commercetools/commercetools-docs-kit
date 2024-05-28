@@ -5,12 +5,13 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import Stamp from '@commercetools-uikit/stamp';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import { useSiteData } from '../../hooks/use-site-data';
 
 const DateElement = styled.div`
   line-height: ${designSystem.typography.lineHeights.small};
 `;
 const Topics = styled.div`
-  color: ${designSystem.colors.light.textInfo};
+  color: ${designSystem.colors.light.textSearchHeading};
   font-size: ${designSystem.typography.fontSizes.small};
 
   > * + * {
@@ -20,8 +21,30 @@ const Topics = styled.div`
   }
 `;
 
+const CustomStamp = styled.div`
+  color: ${designSystem.colors.light.selfLearningLoginButton};
+  padding: 2px 4px;
+  font-size: ${designSystem.typography.fontSizes.extraSmall};
+  border: 1px solid ${designSystem.colors.light.selfLearningLoginButton};
+  border-radius: ${designSystem.tokens.borderRadiusForBetaFlag};
+`;
+
+const SeparatorLine = styled.div`
+  height: ${designSystem.dimensions.heights.separatorLine};
+  border-left: 1px solid ${designSystem.colors.light.surfaceSecondary3};
+`;
+
 const ReleaseNoteBody = (props) => {
+  // Using the siteMetadata to determine the product and productArea if the frontmatter is not defined.
+  const siteData = useSiteData();
+  const product =
+    props.product ||
+    ((siteData.siteMetadata.products?.[0] || '') !== ''
+      ? siteData.siteMetadata.products[0]
+      : null);
+  const productArea = props.productArea || siteData.siteMetadata.title;
   const releaseNoteType = Array.isArray(props.type) ? props.type : [props.type];
+
   return (
     <SpacingsStack scale="m">
       <SpacingsStack scale="s">
@@ -36,7 +59,18 @@ const ReleaseNoteBody = (props) => {
             colorError: designSystem.colors.light.borderForReleaseNoteTypeFix,
           })}
         >
-          <SpacingsInline>
+          <SpacingsInline alignItems="center">
+            {product && (
+              <CustomStamp>
+                <span>{product}</span>
+              </CustomStamp>
+            )}
+            {productArea && (
+              <CustomStamp>
+                <span>{productArea}</span>
+              </CustomStamp>
+            )}
+            <SeparatorLine />
             {releaseNoteType.map((type) => {
               return (
                 <Stamp
@@ -67,6 +101,8 @@ ReleaseNoteBody.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   type: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  product: PropTypes.string,
+  productArea: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
