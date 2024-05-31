@@ -14,7 +14,7 @@ const LoginInfo = () => {
     <Spacings.Inline scale="s" alignItems="center">
       {hideLogin && !profile ? null : <UserProfile />}
       {aiAssistantTopbarButton && (
-        <AiAssistantButton mode="ama-gpt4-turbo-grounded" />
+        <AiAssistantButton mode="ama-gemini-grounded" />
       )}
     </Spacings.Inline>
   );
