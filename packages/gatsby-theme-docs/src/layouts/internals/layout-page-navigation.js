@@ -292,6 +292,7 @@ const LayoutPageNavigation = (props) => {
 LayoutPageNavigation.displayName = 'LayoutPageNavigation';
 LayoutPageNavigation.propTypes = {
   isSearchBoxInView: PropTypes.bool.isRequired,
+  // isReleaseNotesPage changes the index navbar to a wider layout. Configured for the release notes page in the docs repo.
   isReleaseNotesPage: PropTypes.bool,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
   openSearchDialog: PropTypes.func.isRequired,
