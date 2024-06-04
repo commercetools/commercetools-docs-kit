@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 24.2.0
+
+### Patch Changes
+
+- [#1983](https://github.com/commercetools/commercetools-docs-kit/pull/1983) [`2f83a52`](https://github.com/commercetools/commercetools-docs-kit/commit/2f83a526443b2545e7cdc4aa820fc8dbe965e3a2) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Correctly handle type field when the name is reserved word 'enum'
+
+- Updated dependencies [[`cf10210`](https://github.com/commercetools/commercetools-docs-kit/commit/cf102103dab4b4b07b30aeaee463c006a163b729), [`1b0999c`](https://github.com/commercetools/commercetools-docs-kit/commit/1b0999c0409ebfc3672943c66f5d3d893e541217)]:
+  - @commercetools-docs/ui-kit@24.2.0
+
 ## 24.1.1
 
 ### Patch Changes
