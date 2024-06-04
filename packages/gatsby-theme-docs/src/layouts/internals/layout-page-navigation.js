@@ -32,7 +32,10 @@ const fadeInAnimation = keyframes`
 `;
 
 const SlidingContainer = styled.div`
-  width: ${designSystem.dimensions.widths.pageNavigation};
+  width: ${(props) =>
+    props.isReleaseNotesPage
+      ? designSystem.dimensions.widths.releaseNoteFilters
+      : designSystem.dimensions.widths.pageNavigation};
   background-color: ${designSystem.colors.light.surfacePrimary};
   animation: ${slideInAnimation} 0.15s ease-out alternate;
   height: 100%;
@@ -245,7 +248,7 @@ const LayoutPageNavigation = (props) => {
               setMenuOpen(false);
             }}
           >
-            <SlidingContainer>
+            <SlidingContainer isReleaseNotesPage={props.isReleaseNotesPage}>
               <div
                 css={css`
                   padding-left: ${designSystem.dimensions.spacings.m};
@@ -289,6 +292,7 @@ const LayoutPageNavigation = (props) => {
 LayoutPageNavigation.displayName = 'LayoutPageNavigation';
 LayoutPageNavigation.propTypes = {
   isSearchBoxInView: PropTypes.bool.isRequired,
+  isReleaseNotesPage: PropTypes.bool,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
   openSearchDialog: PropTypes.func.isRequired,
   pageTitle: PropTypes.string.isRequired,

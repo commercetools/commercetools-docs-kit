@@ -84,6 +84,7 @@ const LayoutContent = (props) => {
         />
         <LayoutPageWrapper>
           <LayoutPage
+            isReleaseNotesPage
             allowWideContentLayout={props.pageData.allowWideContentLayout}
           >
             <LayoutGlobalNotification>
@@ -128,6 +129,7 @@ const LayoutContent = (props) => {
             </LayoutPageContent>
             <LayoutPageNavigation
               {...layoutState.searchDialog}
+              isReleaseNotesPage
               isSearchBoxInView={isSearchBoxInView}
               excludeFromSearchIndex={excludeFromSearchIndex}
               pageTitle={props.pageContext.shortTitle || props.pageData.title}

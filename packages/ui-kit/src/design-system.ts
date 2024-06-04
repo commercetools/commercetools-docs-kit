@@ -7,9 +7,12 @@ const rootFontSizeNumber = 16;
 // must float / stretch into the available width
 const pageWidth = '770px';
 const pageWidthSmall = '592px';
+const pageWidthSmallReleaseNotes = '474px';
+const pageWidthReleaseNotes = '670px';
 const asideColumnWidth = pageWidthSmall;
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
+const navbarWidthReleaseNotes = '324px';
 const topMenuSingleCoumn = '365px';
 const topMenuSingleCoumnShrink = '125px';
 
@@ -266,11 +269,14 @@ export const dimensions = {
     pageContentWide: `calc(${pageWidth} + ${asideColumnWidth} + 32px)`,
     pageContentWithMargins: `calc(${pageWidth} + 32px * 2)`,
     pageContentSmallWithMargins: `calc(${pageWidthSmall} + 16px * 2)`,
+    pageContentSmallReleaseNotesWithMargins: `calc(${pageWidthSmallReleaseNotes} + 16px * 2)`,
+    pageContentReleaseNotesWithMargins: `calc(${pageWidthReleaseNotes} + 32px * 2)`,
     pageContentWideWithMargins: `calc(${pageWidthSmall} + ${asideColumnWidth} + 32px * 3)`,
     pageContentWideWithMarginsMax: `calc(${pageWidth} + ${asideColumnWidth} + 32px * 3)`,
     pageContentWithMarginsAndPageNavigation: `calc(${pageWidth} + 32px * 2 + ${navbarWidth})`,
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
+    releaseNoteFilters: navbarWidthReleaseNotes,
     marketingContent: '1168px',
     searchBar: '300px',
     searchBarSmall: '160px',
