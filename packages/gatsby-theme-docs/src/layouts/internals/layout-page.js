@@ -34,7 +34,7 @@ const LayoutPage = styled.div`
       ${(props) =>
         props.isReleaseNotesPage
           ? designSystem.dimensions.widths.releaseNoteFilters
-          : designSystem.dimensions.widths.pageNavigationSmall};
+          : designSystem.dimensions.widths.pageNavigation};
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
@@ -55,7 +55,7 @@ const LayoutPage = styled.div`
       ${(props) =>
         props.isReleaseNotesPage
           ? designSystem.dimensions.widths.releaseNoteFilters
-          : designSystem.dimensions.widths.pageNavigationSmall};
+          : designSystem.dimensions.widths.pageNavigation};
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
