@@ -32,7 +32,10 @@ const fadeInAnimation = keyframes`
 `;
 
 const SlidingContainer = styled.div`
-  width: ${designSystem.dimensions.widths.pageNavigation};
+  width: ${(props) =>
+    props.isReleaseNotesPage
+      ? designSystem.dimensions.widths.releaseNoteFilters
+      : designSystem.dimensions.widths.pageNavigation};
   background-color: ${designSystem.colors.light.surfacePrimary};
   animation: ${slideInAnimation} 0.15s ease-out alternate;
   height: 100%;
@@ -152,6 +155,17 @@ const Blank = styled.div`
   height: ${designSystem.dimensions.heights.pageSearchboxSpace};
 `;
 
+const OverlayBackground = styled.div`
+  z-index: calc(${designSystem.dimensions.stacks.aboveOverlay} - 1);
+  width: calc(
+    100% -
+      ${(props) =>
+        props.isReleaseNotesPage
+          ? designSystem.dimensions.widths.releaseNoteFilters
+          : designSystem.dimensions.widths.pageNavigation}
+  );
+`;
+
 const LayoutPageNavigation = (props) => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const [modalPortalNode, setModalPortalNode] = React.useState();
@@ -241,11 +255,19 @@ const LayoutPageNavigation = (props) => {
           <Overlay
             zIndex={designSystem.dimensions.stacks.aboveOverlay}
             justifyContent="flex-end"
-            onClick={() => {
-              setMenuOpen(false);
-            }}
           >
-            <SlidingContainer>
+            <OverlayBackground
+              isReleaseNotesPage={props.isReleaseNotesPage}
+              onClick={() => {
+                setMenuOpen(false);
+              }}
+            />
+            <SlidingContainer
+              isReleaseNotesPage={props.isReleaseNotesPage}
+              onClick={() => {
+                setMenuOpen(props.isReleaseNotesPage);
+              }}
+            >
               <div
                 css={css`
                   padding-left: ${designSystem.dimensions.spacings.m};
@@ -289,6 +311,8 @@ const LayoutPageNavigation = (props) => {
 LayoutPageNavigation.displayName = 'LayoutPageNavigation';
 LayoutPageNavigation.propTypes = {
   isSearchBoxInView: PropTypes.bool.isRequired,
+  // isReleaseNotesPage changes the index navbar to a wider layout. Configured for the release notes page in the docs repo.
+  isReleaseNotesPage: PropTypes.bool,
   excludeFromSearchIndex: PropTypes.bool.isRequired,
   openSearchDialog: PropTypes.func.isRequired,
   pageTitle: PropTypes.string.isRequired,
