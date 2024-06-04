@@ -1,5 +1,14 @@
 # @commercetools-docs/ui-kit
 
+## 24.2.0
+
+### Patch Changes
+
+- [#1989](https://github.com/commercetools/commercetools-docs-kit/pull/1989) [`cf10210`](https://github.com/commercetools/commercetools-docs-kit/commit/cf102103dab4b4b07b30aeaee463c006a163b729) Thanks [@timonrey](https://github.com/timonrey)! - Display 'product' and 'productArea' of the release note next to the type.
+
+- [#1993](https://github.com/commercetools/commercetools-docs-kit/pull/1993) [`1b0999c`](https://github.com/commercetools/commercetools-docs-kit/commit/1b0999c0409ebfc3672943c66f5d3d893e541217) Thanks [@timonrey](https://github.com/timonrey)! - Create alternative index nav size for the release notes page in the docs.
+  The index nav on mobile version stays open when clicking on it for the release notes page.
+
 ## 24.0.3
 
 ### Patch Changes

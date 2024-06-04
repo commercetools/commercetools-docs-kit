@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.4.0
+
+### Minor Changes
+
+- [#1980](https://github.com/commercetools/commercetools-docs-kit/pull/1980) [`d55b7e3`](https://github.com/commercetools/commercetools-docs-kit/commit/d55b7e3a263e918599bd2ac4a18830bd2f1c7d9b) Thanks [@clare-louise-wilkinson](https://github.com/clare-louise-wilkinson)! - Adds commerce to word list
+
 ## 3.3.9
 
 ### Patch Changes
