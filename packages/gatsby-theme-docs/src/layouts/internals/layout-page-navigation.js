@@ -155,6 +155,17 @@ const Blank = styled.div`
   height: ${designSystem.dimensions.heights.pageSearchboxSpace};
 `;
 
+const OverlayBackground = styled.div`
+  z-index: calc(${designSystem.dimensions.stacks.aboveOverlay} - 1);
+  width: calc(
+    100% -
+      ${(props) =>
+        props.isReleaseNotesPage
+          ? designSystem.dimensions.widths.releaseNoteFilters
+          : designSystem.dimensions.widths.pageNavigation}
+  );
+`;
+
 const LayoutPageNavigation = (props) => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const [modalPortalNode, setModalPortalNode] = React.useState();
@@ -244,11 +255,19 @@ const LayoutPageNavigation = (props) => {
           <Overlay
             zIndex={designSystem.dimensions.stacks.aboveOverlay}
             justifyContent="flex-end"
-            onClick={() => {
-              setMenuOpen(false);
-            }}
           >
-            <SlidingContainer isReleaseNotesPage={props.isReleaseNotesPage}>
+            <OverlayBackground
+              isReleaseNotesPage={props.isReleaseNotesPage}
+              onClick={() => {
+                setMenuOpen(false);
+              }}
+            />
+            <SlidingContainer
+              isReleaseNotesPage={props.isReleaseNotesPage}
+              onClick={() => {
+                setMenuOpen(props.isReleaseNotesPage);
+              }}
+            >
               <div
                 css={css`
                   padding-left: ${designSystem.dimensions.spacings.m};
