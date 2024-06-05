@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/api-docs-smoke-test",
-  "version": "8.4.16",
+  "version": "8.4.17",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-api-docs": "24.2.0",
-    "@commercetools-docs/gatsby-theme-docs": "24.2.0",
+    "@commercetools-docs/gatsby-theme-docs": "24.2.1",
     "@commercetools-docs/rmf-codegen": "13.34.0",
     "gatsby": "5.12.12",
     "gatsby-cli": "5.12.4",
