@@ -112,10 +112,9 @@ const linkStyles = css`
 
   :hover {
     color: ${designSystem.colors.light.linkHover} !important;
-
     svg {
       * {
-        fill: ${designSystem.colors.light.linkHover};
+        fill: ${designSystem.colors.light.linkHover} !important;
       }
     }
   }
@@ -488,9 +487,6 @@ const Sidebar = (props) => {
   const isReleasePage = props.location.pathname.startsWith(
     withPrefix('/releases')
   );
-  const releaseNotesIconHoverStyle = isReleasePage
-    ? designSystem.colors.light.linkNavigation
-    : designSystem.colors.light.linkHover;
   const shouldRenderLinkToReleaseNotes = props.hasReleaseNotes;
   const shouldRenderBackToDocsLink = props.hasReleaseNotes && isReleasePage;
   // Restore scroll position
@@ -549,7 +545,7 @@ const Sidebar = (props) => {
                   color: ${designSystem.colors.light.linkHover} !important;
                   svg {
                     * {
-                      fill: ${releaseNotesIconHoverStyle};
+                      fill: ${designSystem.colors.light.linkHover};
                     }
                   }
                 }
