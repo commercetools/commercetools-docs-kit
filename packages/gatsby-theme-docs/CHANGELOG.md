@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.2.1
+
+### Patch Changes
+
+- [#1995](https://github.com/commercetools/commercetools-docs-kit/pull/1995) [`ee6fb60`](https://github.com/commercetools/commercetools-docs-kit/commit/ee6fb60cf7979c04ee20d8abff1ec6db3040028d) Thanks [@timonrey](https://github.com/timonrey)! - Don't show product and productArea labels on release notes when the value is the Same. Adjusts the hover colors on release notes
+
 ## 24.2.0
 
 ### Minor Changes
