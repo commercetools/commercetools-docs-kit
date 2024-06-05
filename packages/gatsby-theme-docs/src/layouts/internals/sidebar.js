@@ -114,7 +114,7 @@ const linkStyles = css`
     color: ${designSystem.colors.light.linkHover} !important;
     svg {
       * {
-        fill: ${designSystem.colors.light.linkHover} !important;
+        fill: ${designSystem.colors.light.linkHover};
       }
     }
   }
