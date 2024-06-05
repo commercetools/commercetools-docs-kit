@@ -112,6 +112,7 @@ const linkStyles = css`
 
   :hover {
     color: ${designSystem.colors.light.linkHover} !important;
+
     svg {
       * {
         fill: ${designSystem.colors.light.linkHover};
