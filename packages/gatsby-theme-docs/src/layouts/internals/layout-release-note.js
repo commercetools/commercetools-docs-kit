@@ -12,7 +12,7 @@ const linkStyles = css`
   color: ${designSystem.colors.light.textPrimary} !important;
 
   :hover {
-    color: ${designSystem.colors.light.linkNavigation} !important;
+    color: ${designSystem.colors.light.linkHover} !important;
   }
 `;
 
