@@ -65,7 +65,7 @@ const ReleaseNoteBody = (props) => {
                 <span>{product}</span>
               </CustomStamp>
             )}
-            {/* If product and productArea has the same value, we only want to show it once. */}
+            {/* If product and productArea have the same value, we only want to show it once. */}
             {productArea && productArea !== product && (
               <CustomStamp>
                 <span>{productArea}</span>
