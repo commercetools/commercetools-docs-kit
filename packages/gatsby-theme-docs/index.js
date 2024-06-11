@@ -40,3 +40,4 @@ export {
 } from './src/modules/self-learning/components/if-user-logged';
 export { default as LoginButton } from './src/modules/sso/components/login-button';
 export * from './src/modules/ai-assistant';
+export * from './src/utils/release-notes';
