@@ -1,6 +1,19 @@
 export const MIN_DATERANGE = 0;
 export const MAX_DATERANGE = 2537011284;
 
+export const isDocsKitSite = (siteTitle) =>
+  [
+    'Docs Kit Docs',
+    'Docs Smoke Test',
+    'API Docs Smoke Test',
+    'Self-learning Smoke Test',
+  ].includes(siteTitle);
+
+export const getReleaseNotesBasePath = (siteTitle) =>
+  isDocsKitSite(siteTitle)
+    ? 'docs-smoke-test/release-notes'
+    : 'docs/release-notes';
+
 // TODO: this could be used to generate sitemap.xml urls query strings
 const mapSiteTitleToFacetFilter = new Map([
   ['Merchant Center', { group: 'product', productArea: 'Merchant Center' }],
@@ -17,6 +30,7 @@ const mapSiteTitleToFacetFilter = new Map([
     'Merchant Center Customizations',
     { productArea: 'Merchant Center Customizations' },
   ],
+  ['Docs Smoke Test', { productArea: 'Merchant Center Customizations' }],
 ]);
 
 export const buildReleaseNotesQueryString = (group, product, productArea) => {

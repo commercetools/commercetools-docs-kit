@@ -20,7 +20,10 @@ import LayoutReleaseNotePageHeaderSide from './layout-release-note-page-header-s
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 import { ReleaseNotePageTitle } from '../components/release-note-heading';
-import { getReleaseNotesQueryStringBySiteTitle } from '../utils/release-notes';
+import {
+  getReleaseNotesBasePath,
+  getReleaseNotesQueryStringBySiteTitle,
+} from '../utils/release-notes';
 
 const LayoutReleaseNotesDetail = (props) => {
   const { ref } = useInView();
@@ -60,7 +63,9 @@ const LayoutReleaseNotesDetail = (props) => {
           <LayoutPage>
             <LayoutPageHeader>
               <Link
-                href={`/docs/release-notes${getReleaseNotesQueryStringBySiteTitle(
+                href={`/../${getReleaseNotesBasePath(
+                  siteData.siteMetadata.title
+                )}${getReleaseNotesQueryStringBySiteTitle(
                   siteData.siteMetadata.title
                 )}`}
                 nounderline={true}

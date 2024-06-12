@@ -32,7 +32,10 @@ import {
   isRightChapterRecursive,
 } from './sidebar.utils';
 import { useSiteData } from '../../hooks/use-site-data';
-import { getReleaseNotesQueryStringBySiteTitle } from '../../utils/release-notes';
+import {
+  getReleaseNotesBasePath,
+  getReleaseNotesQueryStringBySiteTitle,
+} from '../../utils/release-notes';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -535,9 +538,9 @@ const Sidebar = (props) => {
         {shouldRenderLinkToReleaseNotes && (
           <ReleaseNoteLinkContainer>
             <SidebarLink
-              to={`/docs/release-notes${getReleaseNotesQueryStringBySiteTitle(
+              to={`/../${getReleaseNotesBasePath(
                 props.siteTitle
-              )}`}
+              )}${getReleaseNotesQueryStringBySiteTitle(props.siteTitle)}`}
               onClick={props.onLinkClick}
               locationPath={
                 isReleasePage
@@ -571,10 +574,7 @@ const Sidebar = (props) => {
             >
               <SpacingsInline alignItems="center">
                 <LinkSubtitle isReleaseNoteLink>{'Release notes'}</LinkSubtitle>
-                <ReleaseNotesIcon
-                  size="medium"
-                  color={isReleasePage ? 'linkNavigation' : 'link'}
-                />
+                <ReleaseNotesIcon size="medium" color={'link'} />
               </SpacingsInline>
             </SidebarLink>
           </ReleaseNoteLinkContainer>
