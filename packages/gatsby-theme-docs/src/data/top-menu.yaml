@@ -15,6 +15,8 @@
           href: /../api-docs-smoke-test
         - title: Self-learning Smoke Test
           href: /../self-learning-smoke-test
+        - title: Release Notes
+          href: /../docs-smoke-test/release-notes?searchState=%7B%22range%22%3A%7B%22dateTimestamp%22%3A%220%3A2537011284%22%7D%2C%22refinementList%22%3A%7B%22productArea%22%3A%5B%22Merchant%20Center%20Customizations%22%5D%7D%7D
 
 - menu-title: Product with a long title that spans multiple lines
   icon: flag
