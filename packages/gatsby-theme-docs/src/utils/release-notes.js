@@ -3,25 +3,34 @@ export const MAX_DATERANGE = 2537011284;
 
 // TODO: this could be used to generate sitemap.xml urls query strings
 const mapSiteTitleToFacetFilter = new Map([
-  ['Merchant Center', { productArea: 'Merchant Center' }],
-  ['HTTP API', { productArea: 'HTTP API' }],
-  ['Checkout', { product: 'Checkout' }],
-  ['Connect', { product: 'Connect' }],
-  ['Frontend Development', { productArea: 'Frontend Development' }],
-  ['Frontend Studio', { productArea: 'Frontend Studio' }],
-  ['Import API', { productArea: 'Import API' }],
+  ['Merchant Center', { group: 'product', productArea: 'Merchant Center' }],
+  ['HTTP API', { group: 'product', productArea: 'HTTP API' }],
+  ['Checkout', { group: 'product', product: 'Checkout' }],
+  ['Connect', { group: 'product', product: 'Connect' }],
+  [
+    'Frontend Development',
+    { group: 'product', productArea: 'Frontend Development' },
+  ],
+  ['Frontend Studio', { group: 'product', productArea: 'Frontend Studio' }],
+  ['Import API', { group: 'product', productArea: 'Import API' }],
   [
     'Merchant Center Customizations',
     { productArea: 'Merchant Center Customizations' },
   ],
 ]);
 
-export const buildReleaseNotesQueryString = (product, productArea) => {
+export const buildReleaseNotesQueryString = (group, product, productArea) => {
   let searchState = {
     range: {
       dateTimestamp: `${MIN_DATERANGE}:${MAX_DATERANGE}`,
     },
   };
+  if (group) {
+    searchState.configure = {
+      ...searchState.configure,
+      facetFilters: `group:${group}`,
+    };
+  }
   if (product) {
     searchState.refinementList = {
       ...searchState.refinementList,
@@ -31,7 +40,7 @@ export const buildReleaseNotesQueryString = (product, productArea) => {
   if (productArea) {
     searchState.refinementList = {
       ...searchState.refinementList,
-      product: [productArea],
+      productArea: [productArea],
     };
   }
   return searchState.refinementList
@@ -40,11 +49,12 @@ export const buildReleaseNotesQueryString = (product, productArea) => {
 };
 
 export const getReleaseNotesQueryStringBySiteTitle = (siteTitle) => {
-  const productArea = mapSiteTitleToFacetFilter.get(siteTitle);
-  if (productArea) {
+  const facetConfig = mapSiteTitleToFacetFilter.get(siteTitle);
+  if (facetConfig) {
     return buildReleaseNotesQueryString(
-      productArea.product,
-      productArea.productArea
+      facetConfig.group,
+      facetConfig.product,
+      facetConfig.productArea
     );
   }
   return '';
