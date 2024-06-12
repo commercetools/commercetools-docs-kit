@@ -28,9 +28,16 @@ const mapSiteTitleToFacetFilter = new Map([
   ['Import API', { group: 'product', productArea: 'Import API' }],
   [
     'Merchant Center Customizations',
-    { productArea: 'Merchant Center Customizations' },
+    { group: 'product', productArea: 'Merchant Center Customizations' },
   ],
-  ['Docs Smoke Test', { productArea: 'Merchant Center Customizations' }],
+  [
+    'Docs Smoke Test',
+    { group: 'product', productArea: 'Merchant Center Customizations' },
+  ],
+  [
+    'API Docs Smoke Test',
+    { group: 'product', productArea: 'Merchant Center Customizations' },
+  ],
 ]);
 
 export const buildReleaseNotesQueryString = (group, product, productArea) => {
