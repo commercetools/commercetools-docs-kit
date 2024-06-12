@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-constants
 
+## 24.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`cf10210`](https://github.com/commercetools/commercetools-docs-kit/commit/cf102103dab4b4b07b30aeaee463c006a163b729), [`1b0999c`](https://github.com/commercetools/commercetools-docs-kit/commit/1b0999c0409ebfc3672943c66f5d3d893e541217)]:
+  - @commercetools-docs/ui-kit@24.2.0
+
 ## 24.0.3
 
 ### Patch Changes

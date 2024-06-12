@@ -1,5 +1,30 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.2.1
+
+### Patch Changes
+
+- [#1995](https://github.com/commercetools/commercetools-docs-kit/pull/1995) [`ee6fb60`](https://github.com/commercetools/commercetools-docs-kit/commit/ee6fb60cf7979c04ee20d8abff1ec6db3040028d) Thanks [@timonrey](https://github.com/timonrey)! - Don't show product and productArea labels on release notes when the value is the Same. Adjusts the hover colors on release notes
+
+## 24.2.0
+
+### Minor Changes
+
+- [#1985](https://github.com/commercetools/commercetools-docs-kit/pull/1985) [`dc1bdf3`](https://github.com/commercetools/commercetools-docs-kit/commit/dc1bdf3bf00164c13f2706eed70ef22da7324b4c) Thanks [@timonrey](https://github.com/timonrey)! - Introduce two new frontmatter for release notes called "product" and "productArea".
+  It also introduces a new release note type called "deprecation".
+
+### Patch Changes
+
+- [#1989](https://github.com/commercetools/commercetools-docs-kit/pull/1989) [`cf10210`](https://github.com/commercetools/commercetools-docs-kit/commit/cf102103dab4b4b07b30aeaee463c006a163b729) Thanks [@timonrey](https://github.com/timonrey)! - Display 'product' and 'productArea' of the release note next to the type.
+
+- [#1993](https://github.com/commercetools/commercetools-docs-kit/pull/1993) [`1b0999c`](https://github.com/commercetools/commercetools-docs-kit/commit/1b0999c0409ebfc3672943c66f5d3d893e541217) Thanks [@timonrey](https://github.com/timonrey)! - Create alternative index nav size for the release notes page in the docs.
+  The index nav on mobile version stays open when clicking on it for the release notes page.
+
+- [#1992](https://github.com/commercetools/commercetools-docs-kit/pull/1992) [`841d569`](https://github.com/commercetools/commercetools-docs-kit/commit/841d5691d8af2d2ba3a32feead5ea88719761ca0) Thanks [@FFawzy](https://github.com/FFawzy)! - feat: changing the default mode for ai assistant to Gemini
+
+- Updated dependencies [[`cf10210`](https://github.com/commercetools/commercetools-docs-kit/commit/cf102103dab4b4b07b30aeaee463c006a163b729), [`1b0999c`](https://github.com/commercetools/commercetools-docs-kit/commit/1b0999c0409ebfc3672943c66f5d3d893e541217)]:
+  - @commercetools-docs/ui-kit@24.2.0
+
 ## 24.1.1
 
 ### Patch Changes

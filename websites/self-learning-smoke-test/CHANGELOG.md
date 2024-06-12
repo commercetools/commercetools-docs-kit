@@ -1,5 +1,20 @@
 # @commercetools-website/self-learning-smoke-test
 
+## 9.0.8
+
+### Patch Changes
+
+- Updated dependencies [[`ee6fb60`](https://github.com/commercetools/commercetools-docs-kit/commit/ee6fb60cf7979c04ee20d8abff1ec6db3040028d)]:
+  - @commercetools-docs/gatsby-theme-docs@24.2.1
+
+## 9.0.7
+
+### Patch Changes
+
+- Updated dependencies [[`cf10210`](https://github.com/commercetools/commercetools-docs-kit/commit/cf102103dab4b4b07b30aeaee463c006a163b729), [`dc1bdf3`](https://github.com/commercetools/commercetools-docs-kit/commit/dc1bdf3bf00164c13f2706eed70ef22da7324b4c), [`1b0999c`](https://github.com/commercetools/commercetools-docs-kit/commit/1b0999c0409ebfc3672943c66f5d3d893e541217), [`841d569`](https://github.com/commercetools/commercetools-docs-kit/commit/841d5691d8af2d2ba3a32feead5ea88719761ca0)]:
+  - @commercetools-docs/gatsby-theme-docs@24.2.0
+  - @commercetools-docs/ui-kit@24.2.0
+
 ## 9.0.6
 
 ### Patch Changes

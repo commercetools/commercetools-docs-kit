@@ -1,5 +1,11 @@
 # @commercetools-api-specs/test
 
+## 0.2.3
+
+### Patch Changes
+
+- [#1983](https://github.com/commercetools/commercetools-docs-kit/pull/1983) [`2f83a52`](https://github.com/commercetools/commercetools-docs-kit/commit/2f83a526443b2545e7cdc4aa820fc8dbe965e3a2) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Correctly handle type field when the name is reserved word 'enum'
+
 ## 0.2.2
 
 ### Patch Changes
