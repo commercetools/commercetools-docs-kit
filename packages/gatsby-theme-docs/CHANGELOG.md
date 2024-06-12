@@ -1,5 +1,15 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.3.0
+
+### Minor Changes
+
+- [#1987](https://github.com/commercetools/commercetools-docs-kit/pull/1987) [`4dabf86`](https://github.com/commercetools/commercetools-docs-kit/commit/4dabf86261ce37d27f03eb2133270c3712bff2bb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Remove the ability of filtering the release notes in the legacy release notes list page
+
+### Patch Changes
+
+- [#1998](https://github.com/commercetools/commercetools-docs-kit/pull/1998) [`3ddd920`](https://github.com/commercetools/commercetools-docs-kit/commit/3ddd92000fa30d33d0e54dbdb56ed8e53b2fab77) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add util function to calculate the url for release notes page with pre initialized fields
+
 ## 24.2.1
 
 ### Patch Changes
