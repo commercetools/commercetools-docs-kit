@@ -1,5 +1,14 @@
 # @commercetools-website/docs-smoke-test
 
+## 9.1.5
+
+### Patch Changes
+
+- [#2000](https://github.com/commercetools/commercetools-docs-kit/pull/2000) [`2da2bac`](https://github.com/commercetools/commercetools-docs-kit/commit/2da2baccc7e48c5a09072549eebe74e5ecfc8155) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix internal links to release notes
+
+- Updated dependencies [[`2da2bac`](https://github.com/commercetools/commercetools-docs-kit/commit/2da2baccc7e48c5a09072549eebe74e5ecfc8155)]:
+  - @commercetools-docs/gatsby-theme-docs@24.3.1
+
 ## 9.1.4
 
 ### Patch Changes
