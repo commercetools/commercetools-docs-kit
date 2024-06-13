@@ -24,13 +24,16 @@ const useReleaseNotesConfig = () => {
       return '';
     }
     const baseUrl = `${result.searchPagePath || ''}`;
-    const { group, product, productArea } = result.microsites.find(
+    const config = result.microsites.find(
       (config) => config.micrositeTitle === siteTitle
     );
+    if (!config) {
+      return baseUrl;
+    }
     const queryString = buildReleaseNotesQueryString(
-      group,
-      product,
-      productArea
+      config.group,
+      config.product,
+      config.productArea
     );
     return `${baseUrl}${queryString}`;
   };
