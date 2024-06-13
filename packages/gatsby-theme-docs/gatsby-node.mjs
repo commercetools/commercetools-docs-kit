@@ -227,6 +227,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
       label: String!
       href: String!
     }
+
     enum ReleaseNoteType {
       feature
       fix
