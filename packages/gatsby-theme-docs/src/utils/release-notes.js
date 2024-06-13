@@ -30,14 +30,6 @@ const mapSiteTitleToFacetFilter = new Map([
     'Merchant Center Customizations',
     { group: 'product', productArea: 'Merchant Center Customizations' },
   ],
-  [
-    'Docs Smoke Test',
-    { group: 'product', productArea: 'Merchant Center Customizations' },
-  ],
-  [
-    'API Docs Smoke Test',
-    { group: 'product', productArea: 'Merchant Center Customizations' },
-  ],
 ]);
 
 export const buildReleaseNotesQueryString = (group, product, productArea) => {
