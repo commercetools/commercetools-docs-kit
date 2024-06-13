@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { Link, withPrefix } from 'gatsby';
+import KitLink from '../../components/link';
 import { css, ClassNames } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
@@ -38,6 +39,21 @@ import {
 } from '../../utils/release-notes';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
+
+const ReleaseNotesLink = styled(KitLink)`
+  display: flex;
+  color: ${designSystem.colors.light.link} !important;
+  padding-left: ${designSystem.dimensions.spacings.m};
+  text-decoration: underline;
+  :hover {
+    color: ${designSystem.colors.light.linkHover} !important;
+    svg {
+      * {
+        fill: ${designSystem.colors.light.linkHover};
+      }
+    }
+  }
+`;
 
 // React currently throws a warning when using useLayoutEffect on the server.
 // To get around it, we can conditionally useEffect on the server (no-op) and
@@ -537,46 +553,17 @@ const Sidebar = (props) => {
       <ScrollContainer id={scrollContainerId}>
         {shouldRenderLinkToReleaseNotes && (
           <ReleaseNoteLinkContainer>
-            <SidebarLink
-              to={`/../${getReleaseNotesBasePath(
+            <ReleaseNotesLink
+              href={`/../${getReleaseNotesBasePath(
                 props.siteTitle
               )}${getReleaseNotesQueryStringBySiteTitle(props.siteTitle)}`}
               onClick={props.onLinkClick}
-              locationPath={
-                isReleasePage
-                  ? withPrefix('/releases')
-                  : props.location.pathname
-              }
-              customStyles={css`
-                color: ${designSystem.colors.light.link} !important;
-                padding-left: ${designSystem.dimensions.spacings.m};
-                text-decoration: underline;
-                :hover {
-                  color: ${designSystem.colors.light.linkHover} !important;
-                  svg {
-                    * {
-                      fill: ${releaseNotesIconHoverStyle};
-                    }
-                  }
-                }
-              `}
-              customActiveStyles={css`
-                color: ${designSystem.colors.light.linkNavigation} !important;
-                padding-left: calc(
-                  ${designSystem.dimensions.spacings.m} -
-                    ${designSystem.dimensions.spacings.xs}
-                ) !important;
-                text-decoration: none;
-                :hover {
-                  color: ${designSystem.colors.light.linkNavigation} !important;
-                }
-              `}
             >
               <SpacingsInline alignItems="center">
                 <LinkSubtitle isReleaseNoteLink>{'Release notes'}</LinkSubtitle>
                 <ReleaseNotesIcon size="medium" color={'link'} />
               </SpacingsInline>
-            </SidebarLink>
+            </ReleaseNotesLink>
           </ReleaseNoteLinkContainer>
         )}
         {shouldRenderBackToDocsLink && (
