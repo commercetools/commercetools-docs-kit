@@ -1,0 +1,9 @@
+- searchPagePath: /docs-smoke-test/release-notes
+  microsites:
+    - micrositeTitle: Docs Smoke Test
+      group: product # just dummy data
+      productArea: Merchant Center Customizations # just dummy data
+    - micrositeTitle: API Docs Smoke Test
+      group: product
+      product: Checkout # just dummy data
+      productArea: Merchant Center Customizations # just dummy data

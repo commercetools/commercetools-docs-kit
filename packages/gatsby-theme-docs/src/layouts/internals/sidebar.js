@@ -33,10 +33,7 @@ import {
   isRightChapterRecursive,
 } from './sidebar.utils';
 import { useSiteData } from '../../hooks/use-site-data';
-import {
-  getReleaseNotesBasePath,
-  getReleaseNotesQueryStringBySiteTitle,
-} from '../../utils/release-notes';
+import useReleaseNotesConfig from '../../hooks/use-release-notes-config';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
 
@@ -503,14 +500,13 @@ SidebarNavigationLinks.propTypes = {
 };
 
 const Sidebar = (props) => {
+  const { getReleaseNotesUrlBySiteTitle } = useReleaseNotesConfig();
+  console.log(getReleaseNotesUrlBySiteTitle(props.siteTitle));
   // If this is a release page, we need to render the "back" link instead of
   // the normal navigation links.
   const isReleasePage = props.location.pathname.startsWith(
     withPrefix('/releases')
   );
-  const releaseNotesIconHoverStyle = isReleasePage
-    ? designSystem.colors.light.linkNavigation
-    : designSystem.colors.light.linkHover;
   const shouldRenderLinkToReleaseNotes = props.hasReleaseNotes;
   const shouldRenderBackToDocsLink = props.hasReleaseNotes && isReleasePage;
   // Restore scroll position
@@ -554,9 +550,7 @@ const Sidebar = (props) => {
         {shouldRenderLinkToReleaseNotes && (
           <ReleaseNoteLinkContainer>
             <ReleaseNotesLink
-              href={`/../${getReleaseNotesBasePath(
-                props.siteTitle
-              )}${getReleaseNotesQueryStringBySiteTitle(props.siteTitle)}`}
+              href={`/..${getReleaseNotesUrlBySiteTitle(props.siteTitle)}`}
               onClick={props.onLinkClick}
             >
               <SpacingsInline alignItems="center">
