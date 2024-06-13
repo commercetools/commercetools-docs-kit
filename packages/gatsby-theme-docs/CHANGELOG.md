@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.3.2
+
+### Patch Changes
+
+- [#2002](https://github.com/commercetools/commercetools-docs-kit/pull/2002) [`a18b0a1`](https://github.com/commercetools/commercetools-docs-kit/commit/a18b0a11ab87f4fa1bdd17ffe9d75755f84d2dda) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix product and productArea values
+
 ## 24.3.1
 
 ### Patch Changes
