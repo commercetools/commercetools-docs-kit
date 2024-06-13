@@ -14,8 +14,8 @@ const useReleaseNotesConfig = () => {
 
     const queryString = buildReleaseNotesQueryString(
       OTHER_GROUP_SITE_PREFIXES.includes(pathPrefix) ? 'other' : 'product',
-      title,
-      product
+      product,
+      title
     );
     return `/docs/release-notes${queryString}`; // only prod url
   };
