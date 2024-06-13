@@ -26,7 +26,7 @@ const LayoutReleaseNotesDetail = (props) => {
   const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
-  const { getReleaseNotesUrlBySiteTitle } = useReleaseNotesConfig();
+  const { getReleaseNotesUrl } = useReleaseNotesConfig();
   const excludeFromSearchIndex =
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
@@ -61,9 +61,7 @@ const LayoutReleaseNotesDetail = (props) => {
           <LayoutPage>
             <LayoutPageHeader>
               <Link
-                href={`/..${getReleaseNotesUrlBySiteTitle(
-                  siteData.siteMetadata.title
-                )}`}
+                href={`/..${getReleaseNotesUrl()}`}
                 nounderline={true}
                 css={css`
                   svg {

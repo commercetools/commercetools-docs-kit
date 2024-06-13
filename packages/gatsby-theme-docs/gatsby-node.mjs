@@ -227,17 +227,6 @@ export const createSchemaCustomization = ({ actions, schema }) => {
       label: String!
       href: String!
     }
-    type ReleaseNotesYaml implements Node @dontInfer {
-      id: ID!
-      searchPagePath: String!
-      microsites: [ReleaseNotesMicrositeItem!]
-    }
-    type ReleaseNotesMicrositeItem {
-      micrositeTitle: String!
-      group: String
-      product: String
-      productArea: String
-    }
     enum ReleaseNoteType {
       feature
       fix

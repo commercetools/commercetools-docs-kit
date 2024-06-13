@@ -75,29 +75,3 @@ If there is no more, remove the marker above, too.
 ## Release note's search indexing
 
 Each time a feature branch containing changes to any file existing in the website's `releases` directory is merged into main, it will trigger a full reindex of all the release notes.
-
-
-# Release note's search
-
-The release notes search is available in the /docs/release-notes page. TODO: add information about release note search.
-
-A configuration file for release notes search is placed in `src/data/release-notes.yaml`.
-
-The content of the file looks like this:
-
-```yaml
-
-- searchPagePath: /docs/release-notes
-  microsites:
-    - micrositeTitle: Docs Smoke Test
-      group: product # just dummy data
-      productArea: Merchant Center Customizations # just dummy data
-    - micrositeTitle: API Docs Smoke Test
-      group: product
-      product: Checkout # just dummy data
-      productArea: Merchant Center Customizations # just dummy data
-
-```
-
-The file configure the path of the release notes search page `searchPagePath` (which doesn't depend on the microsite).
-For each microsite it defines the values that `group`, `product`, `productArea` facet filters must have pre-selected when accessing the search page.

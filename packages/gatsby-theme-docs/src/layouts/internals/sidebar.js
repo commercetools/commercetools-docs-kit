@@ -500,8 +500,7 @@ SidebarNavigationLinks.propTypes = {
 };
 
 const Sidebar = (props) => {
-  const { getReleaseNotesUrlBySiteTitle } = useReleaseNotesConfig();
-  console.log(getReleaseNotesUrlBySiteTitle(props.siteTitle));
+  const { getReleaseNotesUrl } = useReleaseNotesConfig();
   // If this is a release page, we need to render the "back" link instead of
   // the normal navigation links.
   const isReleasePage = props.location.pathname.startsWith(
@@ -550,7 +549,7 @@ const Sidebar = (props) => {
         {shouldRenderLinkToReleaseNotes && (
           <ReleaseNoteLinkContainer>
             <ReleaseNotesLink
-              href={`/..${getReleaseNotesUrlBySiteTitle(props.siteTitle)}`}
+              href={`/..${getReleaseNotesUrl()}`}
               onClick={props.onLinkClick}
             >
               <SpacingsInline alignItems="center">
