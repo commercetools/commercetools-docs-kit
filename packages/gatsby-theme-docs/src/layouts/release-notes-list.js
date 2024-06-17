@@ -16,11 +16,16 @@ import LayoutPageHeader from './internals/layout-page-header';
 import LayoutReleaseNotePageHeaderSide from './layout-release-note-page-header-side';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
+import { ContentNotification } from '@commercetools-uikit/notifications';
+import useReleaseNotesConfig from '../hooks/use-release-notes-config';
+import Text from '@commercetools-uikit/text';
+import { Link } from 'gatsby';
 
 const LayoutReleaseNotesList = (props) => {
   const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
+  const { getReleaseNotesUrl } = useReleaseNotesConfig();
   const excludeFromSearchIndex =
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
@@ -59,6 +64,19 @@ const LayoutReleaseNotesList = (props) => {
             </LayoutReleaseNotePageHeaderSide>
             <LayoutPageContent>
               <PageContentInset id="body-content" showRightBorder>
+                <ContentNotification type="info">
+                  <Text.Body>
+                    Discover our{' '}
+                    <Link to={`/..${getReleaseNotesUrl()}`}>
+                      combined Release Notes page
+                    </Link>{' '}
+                    and stay updated with the latest features and improvements!
+                    Get comprehensive details on all updates, quickly find
+                    specific updates and enhancements with our new search and
+                    filter options, and easily browse through different versions
+                    and sections.
+                  </Text.Body>
+                </ContentNotification>
                 {props.children}
               </PageContentInset>
             </LayoutPageContent>
