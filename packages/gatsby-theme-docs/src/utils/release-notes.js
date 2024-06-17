@@ -1,31 +1,20 @@
-export const MIN_DATERANGE = 0;
-export const MAX_DATERANGE = 2537011284;
-
 export const buildReleaseNotesQueryString = (group, product, productArea) => {
-  let searchState = {
-    range: {
-      dateTimestamp: `${MIN_DATERANGE}:${MAX_DATERANGE}`,
-    },
-  };
+  const queryStringParams = new URLSearchParams();
+
+  // tab param
   if (group) {
-    searchState.configure = {
-      ...searchState.configure,
-      facetFilters: `group:${group}`,
-    };
+    queryStringParams.set('tab', group);
   }
+
+  // product param
   if (product) {
-    searchState.refinementList = {
-      ...searchState.refinementList,
-      product: [product],
-    };
+    queryStringParams.set('product', product);
   }
+
+  // productArea param
   if (productArea) {
-    searchState.refinementList = {
-      ...searchState.refinementList,
-      productArea: [productArea],
-    };
+    queryStringParams.set('productArea', productArea);
   }
-  return searchState.refinementList
-    ? `?searchState=${encodeURIComponent(JSON.stringify(searchState))}`
-    : '';
+
+  return `${queryStringParams.toString()}`;
 };

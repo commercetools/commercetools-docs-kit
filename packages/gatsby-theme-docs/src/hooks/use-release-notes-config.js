@@ -17,7 +17,7 @@ const useReleaseNotesConfig = () => {
       product,
       title
     );
-    return `/docs/release-notes${queryString}`; // only prod url
+    return `/docs/release-notes?${queryString}`; // only prod url
   };
 
   return { getReleaseNotesUrl };
