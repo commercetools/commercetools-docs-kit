@@ -1,8 +1,4 @@
-import {
-  MAX_DATERANGE,
-  MIN_DATERANGE,
-  buildReleaseNotesQueryString,
-} from './release-notes';
+import { buildReleaseNotesQueryString } from './release-notes';
 
 describe('buildReleaseNotesQueryString', () => {
   it('should return a query string with product and productArea', () => {
@@ -16,23 +12,11 @@ describe('buildReleaseNotesQueryString', () => {
       productArea
     );
 
-    const expectedValue = {
-      range: {
-        dateTimestamp: `${MIN_DATERANGE}:${MAX_DATERANGE}`,
-      },
-      configure: {
-        facetFilters: `group:${group}`,
-      },
-      refinementList: {
-        product: [product],
-        productArea: [productArea],
-      },
-    };
-    const expectedStringValue = encodeURIComponent(
-      JSON.stringify(expectedValue)
-    );
-
-    expect(queryString).toBe(`?searchState=${expectedStringValue}`);
+    const expectedValue = `tab=${group}&product=${product.replace(
+      ' ',
+      '+'
+    )}&productArea=${productArea.replace(' ', '+')}`;
+    expect(queryString).toBe(expectedValue);
   });
 
   it('should return a query string with only product', () => {
@@ -41,22 +25,9 @@ describe('buildReleaseNotesQueryString', () => {
 
     const queryString = buildReleaseNotesQueryString(group, product);
 
-    const expectedValue = {
-      range: {
-        dateTimestamp: `${MIN_DATERANGE}:${MAX_DATERANGE}`,
-      },
-      configure: {
-        facetFilters: `group:${group}`,
-      },
-      refinementList: {
-        product: [product],
-      },
-    };
-    const expectedStringValue = encodeURIComponent(
-      JSON.stringify(expectedValue)
-    );
+    const expectedValue = `tab=${group}&product=${product}`;
 
-    expect(queryString).toBe(`?searchState=${expectedStringValue}`);
+    expect(queryString).toBe(expectedValue);
   });
 
   it('should return an empty query string if no arguments are provided', () => {
