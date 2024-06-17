@@ -1,5 +1,13 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.3.3
+
+### Patch Changes
+
+- [#2005](https://github.com/commercetools/commercetools-docs-kit/pull/2005) [`cf28c03`](https://github.com/commercetools/commercetools-docs-kit/commit/cf28c03e53bfe86584bf2fbea5278cdd2bc0380d) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Adapt the release notes pages back links to the new parameters format
+
+- [#2007](https://github.com/commercetools/commercetools-docs-kit/pull/2007) [`c2080b5`](https://github.com/commercetools/commercetools-docs-kit/commit/c2080b59fb4fabfa4d4b03d5566c0b9dda5a32ee) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Added infobox to legacy release notes pages
+
 ## 24.3.2
 
 ### Patch Changes
