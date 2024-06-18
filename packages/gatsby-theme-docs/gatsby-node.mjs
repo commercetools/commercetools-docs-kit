@@ -315,6 +315,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         type: { type: '[ReleaseNoteType!]!' },
         product: { type: 'String' },
         productArea: { type: 'String' },
+        hideProductLabels: { type: 'Boolean' },
         topics: { type: '[String!]!' },
         published: { type: 'Boolean!' },
         body: {
@@ -376,6 +377,7 @@ export const onCreateNode = async (
       type: node.frontmatter.type,
       product: node.frontmatter.product,
       productArea: node.frontmatter.productArea,
+      hideProductLabels: node.frontmatter.hideProductLabels,
       topics: node.frontmatter.topics || [],
       published: Boolean(node.frontmatter.published),
       rawExcerpt: excerptSplit[0],

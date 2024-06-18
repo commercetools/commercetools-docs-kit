@@ -44,6 +44,7 @@ const ReleaseNoteBody = (props) => {
       : null);
   const productArea = props.productArea || siteData.siteMetadata.title;
   const releaseNoteType = Array.isArray(props.type) ? props.type : [props.type];
+  const hideProductLabels = props.hideProductLabels || false;
 
   return (
     <SpacingsStack scale="m">
@@ -60,18 +61,22 @@ const ReleaseNoteBody = (props) => {
           })}
         >
           <SpacingsInline alignItems="center">
-            {product && (
-              <CustomStamp>
-                <span>{product}</span>
-              </CustomStamp>
+            {!hideProductLabels && (
+              <>
+                {product && (
+                  <CustomStamp>
+                    <span>{product}</span>
+                  </CustomStamp>
+                )}
+                {/* If product and productArea have the same value, we only want to show it once. */}
+                {productArea && productArea !== product && (
+                  <CustomStamp>
+                    <span>{productArea}</span>
+                  </CustomStamp>
+                )}
+                <SeparatorLine />
+              </>
             )}
-            {/* If product and productArea have the same value, we only want to show it once. */}
-            {productArea && productArea !== product && (
-              <CustomStamp>
-                <span>{productArea}</span>
-              </CustomStamp>
-            )}
-            <SeparatorLine />
             {releaseNoteType.map((type) => {
               return (
                 <Stamp
@@ -104,6 +109,7 @@ ReleaseNoteBody.propTypes = {
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   product: PropTypes.string,
   productArea: PropTypes.string,
+  hideProductLabels: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 
