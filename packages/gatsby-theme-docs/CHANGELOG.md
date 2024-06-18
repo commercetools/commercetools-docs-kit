@@ -1,5 +1,15 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.4.0
+
+### Minor Changes
+
+- [#2011](https://github.com/commercetools/commercetools-docs-kit/pull/2011) [`daaaf95`](https://github.com/commercetools/commercetools-docs-kit/commit/daaaf95395a1d9b08245f6f3249e056f68528d5e) Thanks [@timonrey](https://github.com/timonrey)! - Introduces a new frontmatter for release notes calles "hideProductLabels". Every release note with this frontmatter set to true will not display the product and productArea labels.
+
+### Patch Changes
+
+- [#2010](https://github.com/commercetools/commercetools-docs-kit/pull/2010) [`b7fd297`](https://github.com/commercetools/commercetools-docs-kit/commit/b7fd2978e0c51b472f4f68f607623f4b93916679) Thanks [@FFawzy](https://github.com/FFawzy)! - fix: use correct link component to go back to release note page
+
 ## 24.3.3
 
 ### Patch Changes
