@@ -126,6 +126,7 @@ export const query = graphql`
         type
         product
         productArea
+        hideProductLabels
         topics
         body: rawExcerpt
         hasMore
