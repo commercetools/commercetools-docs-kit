@@ -49,6 +49,9 @@ ReleaseNotesDetailTemplate.propTypes = {
       websitePrimaryColor: PropTypes.string.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
+      product: PropTypes.string,
+      productArea: PropTypes.string,
+      hideProductLabels: PropTypes.bool,
     }).isRequired,
   }).isRequired,
 };
@@ -84,6 +87,9 @@ export const query = graphql`
       type
       topics
       body
+      product
+      productArea
+      hideProductLabels
     }
   }
 `;
