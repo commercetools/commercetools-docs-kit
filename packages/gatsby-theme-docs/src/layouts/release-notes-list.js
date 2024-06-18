@@ -19,7 +19,7 @@ import PageContentInset from './internals/page-content-inset';
 import { ContentNotification } from '@commercetools-uikit/notifications';
 import useReleaseNotesConfig from '../hooks/use-release-notes-config';
 import Text from '@commercetools-uikit/text';
-import { Link } from 'gatsby';
+import KitLink from '../components/link';
 
 const LayoutReleaseNotesList = (props) => {
   const { ref } = useInView();
@@ -67,9 +67,9 @@ const LayoutReleaseNotesList = (props) => {
                 <ContentNotification type="info">
                   <Text.Body>
                     Discover our{' '}
-                    <Link to={`/..${getReleaseNotesUrl()}`}>
+                    <KitLink href={`/..${getReleaseNotesUrl()}`}>
                       combined Release Notes page
-                    </Link>{' '}
+                    </KitLink>{' '}
                     and stay updated with the latest features and improvements!
                     Get comprehensive details on all updates, quickly find
                     specific updates and enhancements with our new search and
