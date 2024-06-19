@@ -1,7 +1,8 @@
 import { buildReleaseNotesQueryString } from '../utils/release-notes';
 import { useSiteData } from './use-site-data';
 
-const OTHER_GROUP_SITE_PREFIXES = ['/docs']; // let's yse pathPrefix to identify websites (works only on prod)
+const OTHER_GROUP_SITE_PREFIXES = ['/docs']; // let's use pathPrefix to identify websites (works only on prod)
+const RELEASE_NOTES_BASE_URL = '/docs/release-notes'; // only prod url
 
 const useReleaseNotesConfig = () => {
   const {
@@ -17,10 +18,10 @@ const useReleaseNotesConfig = () => {
       product,
       title
     );
-    return `/docs/release-notes?${queryString}`; // only prod url
+    return `${RELEASE_NOTES_BASE_URL}?${queryString}`;
   };
 
-  return { getReleaseNotesUrl };
+  return { getReleaseNotesUrl, RELEASE_NOTES_BASE_URL };
 };
 
 export default useReleaseNotesConfig;
