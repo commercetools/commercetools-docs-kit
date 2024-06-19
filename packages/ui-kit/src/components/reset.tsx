@@ -149,6 +149,8 @@ const Reset = () => (
           We do NOT apply '-moz-osx-font-smoothing: grayscale' and '-webkit-font-smoothing: antialiased'.
           They worsen the experience on non-retina screens. */
           text-rendering: optimizelegibility;
+          /* Allow chrome to use nicer text wrapping, e.g. avoiding orphans (as of writing only supported in chrome) */
+          text-wrap: pretty;
 
           /* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS. */
           -webkit-text-size-adjust: 100%;

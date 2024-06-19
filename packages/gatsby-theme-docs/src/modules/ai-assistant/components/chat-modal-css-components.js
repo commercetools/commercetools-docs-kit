@@ -160,16 +160,17 @@ export const CharCount = styled.div`
 export const DisclaimerText = styled.p`
   text-align: center;
   font-size: ${designSystem.typography.fontSizes.extraSmall};
-  line-height: 22px;
+  line-height: ${designSystem.typography.lineHeights.tight};
   a {
     color: ${designSystem.colors.light.textPrimary};
   }
 `;
 
 export const DisclaimerTextMobile = styled.p`
+  text-align: center;
   margin-top: ${designSystem.dimensions.spacings.m};
   font-size: ${designSystem.typography.fontSizes.extraSmall};
-  line-height: 22px;
+  line-height: ${designSystem.typography.lineHeights.tight};
   display: none;
   a {
     color: ${designSystem.colors.light.textPrimary};
