@@ -1,5 +1,13 @@
 # @commercetools-docs/ui-kit
 
+## 24.4.1
+
+### Patch Changes
+
+- [#2015](https://github.com/commercetools/commercetools-docs-kit/pull/2015) [`104808c`](https://github.com/commercetools/commercetools-docs-kit/commit/104808c73462cf52d48d76409f42002803d7c709) Thanks [@timonrey](https://github.com/timonrey)! - Adjust the confirmation dialog to make it more configurable. You can now control all available buttons and display them with icons.
+
+- [#2017](https://github.com/commercetools/commercetools-docs-kit/pull/2017) [`afe5e41`](https://github.com/commercetools/commercetools-docs-kit/commit/afe5e41e662adbe4c56aa82be15b315ba0547b38) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - change release notes tag shape and color
+
 ## 24.2.0
 
 ### Patch Changes
