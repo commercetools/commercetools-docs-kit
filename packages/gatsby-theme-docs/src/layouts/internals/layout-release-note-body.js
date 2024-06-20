@@ -22,11 +22,16 @@ const Topics = styled.div`
 `;
 
 const CustomStamp = styled.div`
+  height: 24px;
   color: ${designSystem.colors.light.selfLearningLoginButton};
-  padding: 2px 4px;
+  padding: 0 12px;
   font-size: ${designSystem.typography.fontSizes.extraSmall};
-  border: 1px solid ${designSystem.colors.light.selfLearningLoginButton};
-  border-radius: ${designSystem.tokens.borderRadiusForBetaFlag};
+  border: 1px solid ${designSystem.colors.light.borderForReleaseNotesTag};
+  border-radius: 20px;
+  span {
+    line-height: 24px;
+    color: ${designSystem.colors.light.textPrimary};
+  }
 `;
 
 const SeparatorLine = styled.div`

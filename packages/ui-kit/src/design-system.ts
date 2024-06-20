@@ -66,6 +66,7 @@ export type ThemeColorTokens = {
   borderHighlight: string;
   borderInfo: string;
   borderForReleaseNoteTypeFix: string;
+  borderForReleaseNotesTag: string;
   // Links
   link: string;
   linkHover: string;
@@ -130,6 +131,7 @@ export const colors: ThemeColors = {
     surfaceForSearchInputWhenDisabled: designTokens.colorNeutral90,
     surfaceForReleaseNoteTypeFix: '#e4c5ff',
     surfaceTagGreen: designTokens.colorPrimary95,
+    borderForReleaseNotesTag: designTokens.colorPrimary90,
     // Different tones of text
     textPrimary: designTokens.colorSolid,
     textSecondary: '#666666',
