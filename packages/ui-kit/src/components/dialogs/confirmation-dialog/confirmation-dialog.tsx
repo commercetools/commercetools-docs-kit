@@ -1,4 +1,4 @@
-import React, { ReactNode, SyntheticEvent } from 'react';
+import React, { ReactNode, SyntheticEvent, ReactElement } from 'react';
 import DialogContainer from '../internals/dialog-container';
 import DialogContent from '../internals/dialog-content';
 import DialogFooter from '../internals/dialog-footer';
@@ -15,6 +15,8 @@ type Props = {
   labelSecondary: string;
   labelPrimary: string;
   isPrimaryButtonDisabled?: boolean;
+  displayPrimaryButton?: boolean;
+  iconLeftPrimaryButton?: ReactElement;
   onFlatButtonClick?: (event: SyntheticEvent) => void;
   onCancel: (event: SyntheticEvent) => void;
   onConfirm: (event: SyntheticEvent) => void;
@@ -22,15 +24,20 @@ type Props = {
   dataAttributesPrimaryButton?: { [key: string]: string };
   dataAttributesFlatButton?: { [key: string]: string };
   getParentSelector?: () => HTMLElement;
+  iconLeftSecondaryButton?: ReactElement;
+  displaySecondaryButton?: boolean;
+  displayFlatButton?: boolean;
+  iconLeftFlatButton?: ReactElement;
   testid?: string;
 };
 const defaultProps: Pick<
   Props,
-  'labelSecondary' | 'labelPrimary' | 'labelFlatButton'
+  'labelSecondary' | 'labelPrimary' | 'labelFlatButton' | 'displayPrimaryButton'
 > = {
   labelSecondary: 'Cancel',
   labelPrimary: 'Confirm',
   labelFlatButton: '',
+  displayPrimaryButton: true,
 };
 
 const ConfirmationDialog = (props: Props) => (
@@ -56,6 +63,12 @@ const ConfirmationDialog = (props: Props) => (
       dataAttributesSecondaryButton={props.dataAttributesSecondaryButton}
       dataAttributesPrimaryButton={props.dataAttributesPrimaryButton}
       dataAttributesFlatButton={props.dataAttributesFlatButton}
+      displaySecondaryButton={props.displaySecondaryButton}
+      iconLeftSecondaryButton={props.iconLeftSecondaryButton}
+      displayFlatButton={props.displayFlatButton}
+      iconLeftFlatButton={props.iconLeftFlatButton}
+      displayPrimaryButton={props.displayPrimaryButton}
+      iconLeftPrimaryButton={props.iconLeftPrimaryButton}
     />
   </DialogContainer>
 );
