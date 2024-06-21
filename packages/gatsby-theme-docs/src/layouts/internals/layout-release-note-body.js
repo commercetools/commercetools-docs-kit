@@ -22,7 +22,7 @@ const Topics = styled.div`
 `;
 
 const CustomStamp = styled.div`
-  height: 24px;
+  min-height: 24px;
   color: ${designSystem.colors.light.selfLearningLoginButton};
   padding: 0 12px;
   font-size: ${designSystem.typography.fontSizes.extraSmall};
