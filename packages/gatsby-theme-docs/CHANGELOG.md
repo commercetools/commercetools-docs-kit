@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.4.2
+
+### Patch Changes
+
+- [#2019](https://github.com/commercetools/commercetools-docs-kit/pull/2019) [`2f2ed2b`](https://github.com/commercetools/commercetools-docs-kit/commit/2f2ed2bda66a69222545e3a7d3d310714703daba) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Make release notes tags responsive
+
 ## 24.4.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/site-template",
-  "version": "5.3.40",
+  "version": "5.3.41",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -12,7 +12,7 @@
     "build": "./scripts/build.sh"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "24.4.1",
+    "@commercetools-docs/gatsby-theme-docs": "24.4.2",
     "gatsby": "5.12.12",
     "gatsby-cli": "5.12.4",
     "react": "18.2.0",
