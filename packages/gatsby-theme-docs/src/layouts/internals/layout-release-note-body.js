@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import Stamp from '@commercetools-uikit/stamp';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { useSiteData } from '../../hooks/use-site-data';
