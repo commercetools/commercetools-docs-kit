@@ -1,5 +1,12 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 24.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`104808c`](https://github.com/commercetools/commercetools-docs-kit/commit/104808c73462cf52d48d76409f42002803d7c709), [`afe5e41`](https://github.com/commercetools/commercetools-docs-kit/commit/afe5e41e662adbe4c56aa82be15b315ba0547b38)]:
+  - @commercetools-docs/ui-kit@24.4.1
+
 ## 24.2.0
 
 ### Patch Changes

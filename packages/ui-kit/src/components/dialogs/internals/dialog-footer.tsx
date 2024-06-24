@@ -26,6 +26,7 @@ type Props = {
   children?: never;
   iconLeftFlatButton?: ReactElement;
   iconLeftSecondaryButton?: ReactElement;
+  iconLeftPrimaryButton?: ReactElement;
   displayFlatButton?: boolean;
   displaySecondaryButton?: boolean;
   displayPrimaryButton?: boolean;
@@ -75,6 +76,7 @@ const DialogFooter = (props: Props) => {
           <PrimaryButton
             label={props.labelPrimary}
             onClick={props.onConfirm}
+            iconLeft={props.iconLeftPrimaryButton}
             isDisabled={props.isPrimaryButtonDisabled}
             {...filterDataAttributes(props.dataAttributesPrimaryButton)}
           />

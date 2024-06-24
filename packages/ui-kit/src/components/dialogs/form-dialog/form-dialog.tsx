@@ -17,6 +17,7 @@ type Props = {
   labelPrimary: string;
   isPrimaryButtonDisabled?: boolean;
   displayPrimaryButton?: boolean;
+  iconLeftPrimaryButton?: ReactElement;
   onFlatButtonClick?: (event: SyntheticEvent) => void;
   onSecondaryButtonClick?: (event: SyntheticEvent) => void;
   onPrimaryButtonClick: (event: SyntheticEvent) => void;
@@ -68,6 +69,7 @@ const FormDialog = (props: Props) => (
       displayFlatButton={props.displayFlatButton}
       iconLeftFlatButton={props.iconLeftFlatButton}
       displaySecondaryButton={props.displaySecondaryButton}
+      iconLeftPrimaryButton={props.iconLeftPrimaryButton}
       displayPrimaryButton={props.displayPrimaryButton}
     />
   </DialogContainer>
