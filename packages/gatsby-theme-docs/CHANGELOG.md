@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.4.3
+
+### Patch Changes
+
+- [#2013](https://github.com/commercetools/commercetools-docs-kit/pull/2013) [`1e83b4a`](https://github.com/commercetools/commercetools-docs-kit/commit/1e83b4a4786980ac55a29f0aa69bf21d8682a7ea) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - All release notes link will send users to unfiltered release notes page
+
 ## 24.4.2
 
 ### Patch Changes
