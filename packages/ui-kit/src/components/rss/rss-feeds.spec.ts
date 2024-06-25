@@ -28,8 +28,8 @@ const rawExampleFeed = `<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:c
 <![CDATA[ description 1. cdata directly in the tag ]]>
 </description>
 <link>https://docs.commercetools.com/api/releases/2022-01-27-example-1</link>
-<product>Composable Commerce</product>
-<productArea>Merchant Center</productArea>
+<docs:product>Composable Commerce</docs:product>
+<docs:productArea>Merchant Center</docs:productArea>
 <guid isPermaLink="false">https://docs.commercetools.com/api/releases/2022-01-27-example-1</guid>
 <pubDate>Thu, 27 Jan 2022 00:00:00 GMT</pubDate>
 </item>
