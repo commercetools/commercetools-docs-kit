@@ -3,7 +3,31 @@ import useSWR from 'swr';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './../content-notifications';
 import RssFeedTable from './rss-feed-table';
-import { buildReleaseNotesQueryString } from '@commercetools-docs/gatsby-theme-docs';
+
+const buildReleaseNotesQueryString = (
+  group?: string,
+  product?: string,
+  productArea?: string
+) => {
+  const queryStringParams = new URLSearchParams();
+
+  // tab param
+  if (group) {
+    queryStringParams.set('tab', group);
+  }
+
+  // product param
+  if (product) {
+    queryStringParams.set('product', product);
+  }
+
+  // productArea param
+  if (productArea) {
+    queryStringParams.set('productArea', productArea);
+  }
+
+  return `${queryStringParams.toString()}`;
+};
 
 type RssFeed = {
   feedTitle: string;
@@ -62,7 +86,6 @@ const fetchRssFeed = async (url: string) => {
 
 const fetcher = async (url: string) => {
   const feedData = await fetchRssFeed(url);
-  buildReleaseNotesQueryString();
 
   const refactoredData: FlatRssEntry[] = feedData.items.map((item) => ({
     ...item,
