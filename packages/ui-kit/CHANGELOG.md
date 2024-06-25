@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 24.5.0
+
+### Minor Changes
+
+- [#2023](https://github.com/commercetools/commercetools-docs-kit/pull/2023) [`6483c78`](https://github.com/commercetools/commercetools-docs-kit/commit/6483c786cf03066dd35c4cdd4f3ef154af1df14e) Thanks [@FFawzy](https://github.com/FFawzy)! - RSSFeed component to point to the new release notes search page
+
 ## 24.4.1
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @commercetools-website/docs-smoke-test
 
+## 9.2.0
+
+### Minor Changes
+
+- [#2023](https://github.com/commercetools/commercetools-docs-kit/pull/2023) [`6483c78`](https://github.com/commercetools/commercetools-docs-kit/commit/6483c786cf03066dd35c4cdd4f3ef154af1df14e) Thanks [@FFawzy](https://github.com/FFawzy)! - RSSFeed component to point to the new release notes search page
+
+### Patch Changes
+
+- Updated dependencies [[`6483c78`](https://github.com/commercetools/commercetools-docs-kit/commit/6483c786cf03066dd35c4cdd4f3ef154af1df14e)]:
+  - @commercetools-docs/ui-kit@24.5.0
+  - @commercetools-docs/gatsby-theme-code-examples@24.5.0
+  - @commercetools-docs/gatsby-theme-constants@24.5.0
+  - @commercetools-docs/gatsby-theme-docs@24.5.0
+
 ## 9.1.11
 
 ### Patch Changes
