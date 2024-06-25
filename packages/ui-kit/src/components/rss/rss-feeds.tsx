@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './../content-notifications';
 import RssFeedTable from './rss-feed-table';
+import { buildReleaseNotesQueryString } from '@commercetools-docs/gatsby-theme-docs';
 
 type RssFeed = {
   feedTitle: string;
@@ -61,14 +62,16 @@ const fetchRssFeed = async (url: string) => {
 
 const fetcher = async (url: string) => {
   const feedData = await fetchRssFeed(url);
+  buildReleaseNotesQueryString();
 
   const refactoredData: FlatRssEntry[] = feedData.items.map((item) => ({
     ...item,
     feedName: item.productArea !== 'null' ? item.productArea : item.product,
-    releaseNoteUrl:
-      item.productArea !== 'null'
-        ? `https://docs.commercetools.com/docs/release-notes?productArea=${item.productArea}`
-        : `https://docs.commercetools.com/docs/release-notes?product=${item.product}`,
+    releaseNoteUrl: `/../docs/release-notes?${buildReleaseNotesQueryString(
+      'product',
+      item.product !== 'null' ? item.product : undefined,
+      item.productArea !== 'null' ? item.productArea : undefined
+    )}`,
   }));
   return refactoredData;
 };
