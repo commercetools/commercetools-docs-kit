@@ -37,8 +37,8 @@ const parseRssFeed = (rssString: string): RssFeed => {
     (el) => {
       const title = firstDataForQuery(el, 'title') || '';
       const description = firstDataForQuery(el, 'description') || '';
-      const productArea = firstDataForQuery(el, 'productArea') || '';
-      const product = firstDataForQuery(el, 'product') || '';
+      const productArea = firstDataForQuery(el, 'docs:productArea') || '';
+      const product = firstDataForQuery(el, 'docs:product') || '';
       const link = firstDataForQuery(el, 'link') || '';
       const pubDate = firstDataForQuery(el, 'pubDate') || '';
       return {
