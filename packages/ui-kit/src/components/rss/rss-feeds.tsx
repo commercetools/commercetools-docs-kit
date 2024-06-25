@@ -13,6 +13,8 @@ type RssEntry = {
   description: string;
   link: string;
   pubDate: string;
+  productArea: string;
+  product: string;
 };
 interface FlatRssEntry extends RssEntry {
   feedName: string;
@@ -35,6 +37,8 @@ const parseRssFeed = (rssString: string): RssFeed => {
     (el) => {
       const title = firstDataForQuery(el, 'title') || '';
       const description = firstDataForQuery(el, 'description') || '';
+      const productArea = firstDataForQuery(el, 'productArea') || '';
+      const product = firstDataForQuery(el, 'product') || '';
       const link = firstDataForQuery(el, 'link') || '';
       const pubDate = firstDataForQuery(el, 'pubDate') || '';
       return {
@@ -42,6 +46,8 @@ const parseRssFeed = (rssString: string): RssFeed => {
         description,
         link,
         pubDate,
+        productArea,
+        product,
       };
     }
   );
@@ -53,70 +59,18 @@ const fetchRssFeed = async (url: string) => {
   return parseRssFeed(rawBody);
 };
 
-const fetcher = async (args: string[]) => {
-  const promises = args.map(async (url) => {
-    const releaseNoteUrl = url.replace(/\/feed.xml$/, '');
-    const feedData = await fetchRssFeed(url);
-    const feedName = feedData.feedTitle.replace(
-      /^commercetools (.*) Release Notes$/,
-      '$1'
-    );
-    const refactoredData: FlatRssEntry[] = feedData.items.map((item) => ({
-      ...item,
-      feedName,
-      releaseNoteUrl,
-    }));
-    return refactoredData;
-  });
-  return Promise.all(promises);
-};
+const fetcher = async (url: string) => {
+  const feedData = await fetchRssFeed(url);
 
-const transformData = (data: FlatRssEntry[][]) => {
-  // First, we need to get the oldest release note from feeds with at least 10 entries,
-  // which is always the last entry of the list.
-  const lastEntryOfList = data
-    .reduce((list, feed) => {
-      // The amount of entries are defined in the release note query limit in gatsby-theme-docs/gatsby-config.mjs.
-      // PLEASE KEEP THE NUMBER BELOW ALWAYS IN SYNC WITH THE QUERY LIMIT.
-      if (feed.length >= 10) return [...list, feed[feed.length - 1]];
-      return [...list];
-    }, [])
-    // After that, we need to compare the oldest release dates from each feed
-    // to get the newest of them. This will be our last entry in the list.
-    .reduce<FlatRssEntry>(
-      (
-        currentOldestEntry: FlatRssEntry,
-        entry: FlatRssEntry,
-        index: number
-      ) => {
-        if (!entry || index === 0) {
-          return entry;
-        }
-        return new Date(entry.pubDate) > new Date(currentOldestEntry.pubDate)
-          ? entry
-          : currentOldestEntry;
-      },
-      {} as FlatRssEntry
-    );
-
-  // After finding out the last entry in the list, we reduce the list
-  // to all entries that have a newer date than our last entry.
-  const tableData: FlatRssEntry[] = data
-    .flat()
-    .reduce<FlatRssEntry[]>((list, entry) => {
-      if (!lastEntryOfList.pubDate) return [...list, entry];
-      return new Date(entry.pubDate) >= new Date(lastEntryOfList.pubDate)
-        ? [...list, entry]
-        : [...list];
-    }, [])
-    // Now we sort the release notes by their release date.
-    .sort((dateOne, dateTwo) => {
-      return (
-        new Date(dateTwo.pubDate).getTime() -
-        new Date(dateOne.pubDate).getTime()
-      );
-    });
-  return tableData;
+  const refactoredData: FlatRssEntry[] = feedData.items.map((item) => ({
+    ...item,
+    feedName: item.productArea != 'null' ? item.productArea : item.product,
+    releaseNoteUrl:
+      item.productArea != 'null'
+        ? `https://docs.commercetools.com/docs/release-notes?productArea=${item.productArea}`
+        : `https://docs.commercetools.com/docs/release-notes?product=${item.product}`,
+  }));
+  return refactoredData;
 };
 
 const RssFeeds = (props: RssFeedsProps) => {
@@ -140,21 +94,15 @@ const RssFeeds = (props: RssFeedsProps) => {
     );
     return message;
   }
-
   if (data) {
-    return (
-      <RssFeedTable
-        hasMultipleSources={props.dataSources.length > 1}
-        data={transformData(data)}
-      />
-    );
+    return <RssFeedTable data={data} />;
   }
   return <LoadingSpinner scale="s">{'Loading feeds'}</LoadingSpinner>;
 };
 
 type RssFeedsProps = {
-  dataSources: string[];
+  dataSources: string;
 };
 
 export default RssFeeds;
-export { transformData, parseRssFeed, fetchRssFeed, FlatRssEntry };
+export { parseRssFeed, fetchRssFeed, FlatRssEntry };
