@@ -13,7 +13,12 @@ import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Spacings from '@commercetools-uikit/spacings';
-import { markdownFragmentToReact } from '@commercetools-docs/ui-kit';
+import {
+  CodeBlock,
+  CodeBlockMarkdownWrapper,
+  MultiCodeBlockMarkdownWrapper,
+  markdownFragmentToReact,
+} from '@commercetools-docs/ui-kit';
 import type {
   QuizAttempt,
   QuizOutcome,
@@ -161,17 +166,24 @@ const QuizForm = (props: QuizFormProps) => {
             value={(formState[questionId] as string) || ''}
           >
             {answers.map((answer, idx) => {
-              return (
-                <RadioInput.Option
-                  key={`${answer.name}${idx}`}
-                  value={answer.value}
-                >
-                  {
-                    //@ts-ignore
-                    markdownFragmentToReact(answer?.text || '') as ReactElement
-                  }
-                </RadioInput.Option>
-              );
+              if (idx === 3) {
+                console.log(answer.text);
+                return (
+                  <RadioInput.Option
+                    key={`${answer.name}${idx}`}
+                    value={answer.value}
+                  >
+                    {
+                      //@ts-ignore
+                      markdownFragmentToReact(answer?.text || '', {
+                        pre: CodeBlockMarkdownWrapper,
+                      }) as ReactElement
+                    }
+                  </RadioInput.Option>
+                );
+              } else {
+                return null;
+              }
             })}
           </RadioInput.Group>
           {feedback ? (
@@ -198,6 +210,7 @@ const QuizForm = (props: QuizFormProps) => {
           <Spacings.Stack scale="m">
             <Spacings.Stack scale="m">
               {answers.map((answer, index) => {
+                console.log(answer.text);
                 return (
                   <CheckboxInput
                     key={answer.name}

@@ -22,7 +22,7 @@ const config = {
       websiteKey: 'self-learning-smoke-test',
       auth0Domain: 'auth.id.commercetools.com',
       auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-      learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
+      learnApiBaseUrl: 'http://localhost:3000',
       aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
       aiAssistantTopbarButton: true,
       selfLearningFeatures: [
