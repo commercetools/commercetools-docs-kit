@@ -64,9 +64,9 @@ const fetcher = async (url: string) => {
 
   const refactoredData: FlatRssEntry[] = feedData.items.map((item) => ({
     ...item,
-    feedName: item.productArea != 'null' ? item.productArea : item.product,
+    feedName: item.productArea !== 'null' ? item.productArea : item.product,
     releaseNoteUrl:
-      item.productArea != 'null'
+      item.productArea !== 'null'
         ? `https://docs.commercetools.com/docs/release-notes?productArea=${item.productArea}`
         : `https://docs.commercetools.com/docs/release-notes?product=${item.product}`,
   }));
