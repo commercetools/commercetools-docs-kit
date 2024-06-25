@@ -74,8 +74,8 @@ const fetcher = async (url: string) => {
 };
 
 const RssFeeds = (props: RssFeedsProps) => {
-  if (!props.dataSources) {
-    const message = `Missing prop "dataSources" for the "<RssFeeds>" component.`;
+  if (!props.dataSource) {
+    const message = `Missing prop "dataSource" for the "<RssFeeds>" component.`;
     if (process.env.NODE_ENV !== 'production') {
       return <ContentNotifications.Error>{message}</ContentNotifications.Error>;
     }
@@ -83,13 +83,13 @@ const RssFeeds = (props: RssFeedsProps) => {
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { data, error } = useSWR(props.dataSources, fetcher);
+  const { data, error } = useSWR(props.dataSource, fetcher);
 
   if (error) {
     console.log(error);
     const message = (
       <ContentNotifications.Error>
-        Error Loading Data from {props.dataSources}
+        Error Loading Data from {props.dataSource}
       </ContentNotifications.Error>
     );
     return message;
@@ -101,7 +101,7 @@ const RssFeeds = (props: RssFeedsProps) => {
 };
 
 type RssFeedsProps = {
-  dataSources: string;
+  dataSource: string;
 };
 
 export default RssFeeds;
