@@ -4,6 +4,31 @@ import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import ContentNotifications from './../content-notifications';
 import RssFeedTable from './rss-feed-table';
 
+const buildReleaseNotesQueryString = (
+  group?: string,
+  product?: string,
+  productArea?: string
+) => {
+  const queryStringParams = new URLSearchParams();
+
+  // tab param
+  if (group) {
+    queryStringParams.set('tab', group);
+  }
+
+  // product param
+  if (product) {
+    queryStringParams.set('product', product);
+  }
+
+  // productArea param
+  if (productArea) {
+    queryStringParams.set('productArea', productArea);
+  }
+
+  return `${queryStringParams.toString()}`;
+};
+
 type RssFeed = {
   feedTitle: string;
   items: RssEntry[];
@@ -37,8 +62,8 @@ const parseRssFeed = (rssString: string): RssFeed => {
     (el) => {
       const title = firstDataForQuery(el, 'title') || '';
       const description = firstDataForQuery(el, 'description') || '';
-      const productArea = firstDataForQuery(el, 'productArea') || '';
-      const product = firstDataForQuery(el, 'product') || '';
+      const productArea = firstDataForQuery(el, '*|productArea') || ''; // see https://oreillymedia.github.io/Using_SVG/extras/ch03-namespaces.html
+      const product = firstDataForQuery(el, '*|product') || ''; // see https://oreillymedia.github.io/Using_SVG/extras/ch03-namespaces.html
       const link = firstDataForQuery(el, 'link') || '';
       const pubDate = firstDataForQuery(el, 'pubDate') || '';
       return {
@@ -65,10 +90,11 @@ const fetcher = async (url: string) => {
   const refactoredData: FlatRssEntry[] = feedData.items.map((item) => ({
     ...item,
     feedName: item.productArea !== 'null' ? item.productArea : item.product,
-    releaseNoteUrl:
-      item.productArea !== 'null'
-        ? `https://docs.commercetools.com/docs/release-notes?productArea=${item.productArea}`
-        : `https://docs.commercetools.com/docs/release-notes?product=${item.product}`,
+    releaseNoteUrl: `/../docs/release-notes?${buildReleaseNotesQueryString(
+      'product',
+      item.product !== 'null' ? item.product : undefined,
+      item.productArea !== 'null' ? item.productArea : undefined
+    )}`,
   }));
   return refactoredData;
 };
