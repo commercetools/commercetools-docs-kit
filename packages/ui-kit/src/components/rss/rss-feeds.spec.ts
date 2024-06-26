@@ -44,8 +44,8 @@ const parsedExampleFeed = {
       title: 'title 1 cdata in own line',
       description: 'description 1. cdata directly in the tag',
       link: 'https://docs.commercetools.com/api/releases/2022-01-27-example-1',
-      product: '', // test falis here but the frontend code is behaving correctly, therefore it's not a reliable test
-      productArea: '', // test falis here but the frontend code is behaving correctly, therefore it's not a reliable test
+      product: '', // test fails here but the frontend code is behaving correctly, therefore it's not a reliable test
+      productArea: '', // test fails here but the frontend code is behaving correctly, therefore it's not a reliable test
       pubDate: 'Thu, 27 Jan 2022 00:00:00 GMT',
     },
   ],
