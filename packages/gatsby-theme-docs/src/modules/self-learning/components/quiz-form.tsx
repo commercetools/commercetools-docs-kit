@@ -1,4 +1,10 @@
-import React, { useEffect, useState, SyntheticEvent, ChangeEvent } from 'react';
+import React, {
+  useEffect,
+  useState,
+  SyntheticEvent,
+  ChangeEvent,
+  ReactElement,
+} from 'react';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { ContentNotification } from '@commercetools-uikit/notifications';
 import styled from '@emotion/styled';
@@ -166,24 +172,19 @@ const QuizForm = (props: QuizFormProps) => {
             value={(formState[questionId] as string) || ''}
           >
             {answers.map((answer, idx) => {
-              if (idx === 3) {
-                console.log(answer.text);
-                return (
-                  <RadioInput.Option
-                    key={`${answer.name}${idx}`}
-                    value={answer.value}
-                  >
-                    {
-                      //@ts-ignore
-                      markdownFragmentToReact(answer?.text || '', {
-                        pre: CodeBlockMarkdownWrapper,
-                      }) as ReactElement
-                    }
-                  </RadioInput.Option>
-                );
-              } else {
-                return null;
-              }
+              return (
+                <RadioInput.Option
+                  key={`${answer.name}${idx}`}
+                  value={answer.value}
+                >
+                  {
+                    //@ts-ignore
+                    markdownFragmentToReact(answer?.text || '', {
+                      pre: CodeBlockMarkdownWrapper,
+                    }) as ReactElement
+                  }
+                </RadioInput.Option>
+              );
             })}
           </RadioInput.Group>
           {feedback ? (

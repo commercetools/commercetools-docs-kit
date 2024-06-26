@@ -198,9 +198,12 @@ export const MultiCodeBlock = (props: MultiCodeBlockProps) => {
 const getCodeBlockPropsFromMdxPreNodeProps = (props: {
   children?: React.ReactNode;
 }) => {
-  const childElement = reactIs.isElement(props?.children)
-    ? props.children
-    : null;
+  let childElement = null;
+  if (Array.isArray(props.children) && reactIs.isElement(props.children[0])) {
+    childElement = props.children[0];
+  } else if (reactIs.isElement(props.children)) {
+    childElement = props.children;
+  }
   const childProps = childElement?.props;
   const className = childProps ? childProps.className : '';
   const languageToken: string = className || 'language-text';
@@ -223,6 +226,7 @@ const getCodeBlockPropsFromMdxPreNodeProps = (props: {
 export const CodeBlockMarkdownWrapper = (props: {
   children?: React.ReactNode;
 }) => {
+  console.log('props', props);
   const options = getCodeBlockPropsFromMdxPreNodeProps(props);
   return (
     <MultiCodeBlock {...options}>
