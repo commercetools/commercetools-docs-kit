@@ -247,7 +247,9 @@ const QuizForm = (props: QuizFormProps) => {
                   >
                     {
                       // @ts-ignore
-                      markdownFragmentToReact(answer.text || '')
+                      markdownFragmentToReact(answer?.text || '', {
+                        pre: CodeBlockMarkdownWrapper,
+                      }) as ReactElement
                     }
                   </CheckboxInput>
                 );
