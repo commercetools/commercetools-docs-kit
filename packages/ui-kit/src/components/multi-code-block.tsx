@@ -226,7 +226,6 @@ const getCodeBlockPropsFromMdxPreNodeProps = (props: {
 export const CodeBlockMarkdownWrapper = (props: {
   children?: React.ReactNode;
 }) => {
-  console.log('props', props);
   const options = getCodeBlockPropsFromMdxPreNodeProps(props);
   return (
     <MultiCodeBlock {...options}>

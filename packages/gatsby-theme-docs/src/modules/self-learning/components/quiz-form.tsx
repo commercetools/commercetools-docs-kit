@@ -20,9 +20,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Spacings from '@commercetools-uikit/spacings';
 import {
-  CodeBlock,
   CodeBlockMarkdownWrapper,
-  MultiCodeBlockMarkdownWrapper,
   markdownFragmentToReact,
 } from '@commercetools-docs/ui-kit';
 import type {
@@ -148,6 +146,12 @@ const QuizForm = (props: QuizFormProps) => {
     setFormState({ ...formState, [questionId]: currentValues });
   };
 
+  const OptionWrapper = styled.div`
+    div:first-of-type {
+      align-items: center;
+    }
+  `;
+
   const renderAnswers = (
     answers: AnswerOption[],
     questionType: QuestionRenderType,
@@ -176,6 +180,11 @@ const QuizForm = (props: QuizFormProps) => {
                 <RadioInput.Option
                   key={`${answer.name}${idx}`}
                   value={answer.value}
+                  components={{
+                    wrapper: (children) => (
+                      <OptionWrapper>{children}</OptionWrapper>
+                    ),
+                  }}
                 >
                   {
                     //@ts-ignore
@@ -211,7 +220,6 @@ const QuizForm = (props: QuizFormProps) => {
           <Spacings.Stack scale="m">
             <Spacings.Stack scale="m">
               {answers.map((answer, index) => {
-                console.log(answer.text);
                 return (
                   <CheckboxInput
                     key={answer.name}
