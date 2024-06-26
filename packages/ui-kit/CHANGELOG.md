@@ -1,5 +1,17 @@
 # @commercetools-docs/ui-kit
 
+## 24.5.1
+
+### Patch Changes
+
+- [#2025](https://github.com/commercetools/commercetools-docs-kit/pull/2025) [`8077406`](https://github.com/commercetools/commercetools-docs-kit/commit/807740639a6830f0fa774f058e4212691ae07d26) Thanks [@FFawzy](https://github.com/FFawzy)! - Use namespace for custom tags
+
+## 24.5.0
+
+### Minor Changes
+
+- [#2023](https://github.com/commercetools/commercetools-docs-kit/pull/2023) [`6483c78`](https://github.com/commercetools/commercetools-docs-kit/commit/6483c786cf03066dd35c4cdd4f3ef154af1df14e) Thanks [@FFawzy](https://github.com/FFawzy)! - RSSFeed component to point to the new release notes search page
+
 ## 24.4.1
 
 ### Patch Changes

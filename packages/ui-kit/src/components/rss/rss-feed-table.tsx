@@ -66,23 +66,23 @@ const RssFeedTable = (props: RssFeedTableProps) => {
                   </Link>
                 </DateWrapper>
               </td>
-              {props.hasMultipleSources ? (
-                <td
+
+              <td
+                css={css`
+                  white-space: nowrap;
+                  padding-left: ${dimensions.spacings.l} !important;
+                `}
+              >
+                <Link
+                  href={item.releaseNoteUrl}
                   css={css`
-                    white-space: nowrap;
-                    padding-left: ${dimensions.spacings.l} !important;
+                    text-decoration: none;
                   `}
                 >
-                  <Link
-                    href={item.releaseNoteUrl}
-                    css={css`
-                      text-decoration: none;
-                    `}
-                  >
-                    {item.feedName}
-                  </Link>
-                </td>
-              ) : null}
+                  {item.feedName}
+                </Link>
+              </td>
+
               <td>{item.title}</td>
             </tr>
           ))}
@@ -94,7 +94,6 @@ const RssFeedTable = (props: RssFeedTableProps) => {
 
 type RssFeedTableProps = {
   data: FlatRssEntry[];
-  hasMultipleSources: boolean;
 };
 
 export default RssFeedTable;
