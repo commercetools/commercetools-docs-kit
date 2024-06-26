@@ -15,6 +15,7 @@ import Title from './title';
 import { DescriptionText } from '../../description';
 import Info from '../../info';
 import { typography } from '../../../design-system';
+import InfoValue from '../../info-value';
 
 const isRegex = (string) =>
   string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
@@ -76,6 +77,7 @@ Parameters.propTypes = {
       name: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       required: PropTypes.bool,
+      default: PropTypes.string,
       description: PropTypes.string,
       items: PropTypes.shape({
         type: PropTypes.string,
@@ -160,6 +162,17 @@ function ParameterRow(props) {
               <Info>{props.parameter.additionalDescription}</Info>
             </div>
           )}
+          {props.parameter.default && (
+            <div>
+              <Info>
+                Default
+                <InfoValue isQueryParameter type={props.parameter.type || null}>
+                  {props.parameter.default}
+                </InfoValue>
+                {'\u200B' /* zero-width space for the search crawler */}
+              </Info>
+            </div>
+          )}
         </SpacingsStack>
       </td>
     </tr>
@@ -171,6 +184,7 @@ ParameterRow.propTypes = {
     name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     required: PropTypes.bool,
+    default: PropTypes.string,
     description: PropTypes.string,
     additionalDescription: PropTypes.string,
     items: PropTypes.shape({
