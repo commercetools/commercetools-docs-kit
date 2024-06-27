@@ -35,3 +35,9 @@ Feature: Quiz
     Then The user sees a "course" completed modal
     And The user completes "course-2" successfully
     Then The user sees a "learning path" completed modal
+
+  Scenario: User navigates to a page with code quiz component
+    Given The "user" is logged in
+    And The user has navigated to a quiz page with code
+    And The page has fully loaded
+    Then A snapshot is taken

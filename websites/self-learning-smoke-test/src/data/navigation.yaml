@@ -13,9 +13,3 @@
       path: /course-2/quiz
     - title: Test your knowledge 2
       path: /course-2/2-quiz
-
-- chapter-title: Course with code snippets
-  path: /course-with-code/overview
-  pages:
-    - title: Test your knowledge with long title
-      path: /course-with-code/quiz
