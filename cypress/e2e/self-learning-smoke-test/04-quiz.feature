@@ -39,5 +39,5 @@ Feature: Quiz
   Scenario: User navigates to a page with code quiz component
     Given The "user" is logged in
     And The user has navigated to a quiz page with code
-    And The page has fully loaded
+    And The quiz has fully loaded
     Then A snapshot is taken

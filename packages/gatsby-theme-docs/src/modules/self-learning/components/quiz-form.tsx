@@ -284,7 +284,8 @@ const QuizForm = (props: QuizFormProps) => {
             markdownFragmentToReact(text)
           }
         </h4>
-        {renderAnswers(answers, renderType, feedback, id)}
+        {answers?.length > 0 &&
+          renderAnswers(answers, renderType, feedback, id)}
       </QuestionWrapper>
     );
   };

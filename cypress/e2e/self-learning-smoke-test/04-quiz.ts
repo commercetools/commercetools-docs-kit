@@ -67,3 +67,7 @@ Then('The user gets redirected to {string}', (course: string) => {
 Given(`The user has navigated to a quiz page with code`, () => {
   cy.visit(`${URL_SELF_LEARNING_SMOKE_TEST}course-with-code/quiz`);
 });
+
+Given(`The quiz has fully loaded`, () => {
+  cy.get('[data-testid="answer-container"]').should('exist');
+});
