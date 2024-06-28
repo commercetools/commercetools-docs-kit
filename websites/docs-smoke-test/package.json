@@ -22,11 +22,11 @@
     "@commercetools-docs/ui-kit": "24.5.1",
     "@commercetools-uikit/icons": "18.4.0",
     "@commercetools-uikit/radio-input": "18.4.0",
-    "gatsby": "5.12.12",
-    "gatsby-cli": "5.12.4",
+    "gatsby": "5.13.6",
+    "gatsby-cli": "5.13.3",
     "process-top": "^1.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@svgr/cli": "8.1.0"
