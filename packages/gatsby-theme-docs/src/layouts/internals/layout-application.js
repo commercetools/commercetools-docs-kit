@@ -22,9 +22,9 @@ const Root = styled.div`
       ? `calc(${designSystem.dimensions.heights.globalNotificationContent} + ${designSystem.dimensions.spacings.s} * 3)`
       : designSystem.dimensions.spacings.s};
 
-  @media only screen and (${designSystem.dimensions.viewports.tablet}) {
+  /* @media only screen and (${designSystem.dimensions.viewports.tablet}) {
     height: 100vh;
-  }
+  } */
 `;
 const Container = styled.div`
   position: relative;
