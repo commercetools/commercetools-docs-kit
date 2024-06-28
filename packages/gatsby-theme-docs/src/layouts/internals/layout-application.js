@@ -13,18 +13,15 @@ const Root = styled.div`
   position: relative;
   width: 100vw;
   height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; /* enables "momentum" style scrolling */
 
   scroll-padding-top: ${(props) =>
     props.isGlobalNotificationVisible
       ? `calc(${designSystem.dimensions.heights.globalNotificationContent} + ${designSystem.dimensions.spacings.s} * 3)`
       : designSystem.dimensions.spacings.s};
 
-  /* @media only screen and (${designSystem.dimensions.viewports.tablet}) {
+  @media only screen and (${designSystem.dimensions.viewports.tablet}) {
     height: 100vh;
-  } */
+  }
 `;
 const Container = styled.div`
   position: relative;
