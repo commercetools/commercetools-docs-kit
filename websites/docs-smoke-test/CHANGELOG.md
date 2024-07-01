@@ -1,5 +1,15 @@
 # @commercetools-website/docs-smoke-test
 
+## 9.2.2
+
+### Patch Changes
+
+- Updated dependencies [[`21bb6e7`](https://github.com/commercetools/commercetools-docs-kit/commit/21bb6e76e7518b8fc441c4bb26d4d10581513df7)]:
+  - @commercetools-docs/gatsby-theme-docs@24.6.0
+  - @commercetools-docs/ui-kit@24.6.0
+  - @commercetools-docs/gatsby-theme-code-examples@24.6.0
+  - @commercetools-docs/gatsby-theme-constants@24.6.0
+
 ## 9.2.1
 
 ### Patch Changes
