@@ -29,15 +29,15 @@
     "@commercetools-uikit/spacings-stack": "18.4.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "gatsby-source-filesystem": "5.12.1",
+    "gatsby-source-filesystem": "5.13.1",
     "prop-types": "15.8.1",
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
     "@commercetools-docs/rmf-codegen": "13.34.0",
-    "gatsby": "5.12.12",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "gatsby": "5.13.6",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "peerDependencies": {
     "gatsby": "5.x",
