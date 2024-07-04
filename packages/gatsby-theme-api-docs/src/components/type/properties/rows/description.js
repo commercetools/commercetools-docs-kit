@@ -68,6 +68,7 @@ const AdditionalInfo = (props) => {
           !(typeof value === 'boolean' && !info.value) && (
             <Info key={index}>
               {capitalizeFirst(info.name)}
+              {typeof info.value === 'boolean' ? '' : ': '}
               <InfoValue>{info.value}</InfoValue>
               {'\u200B' /* zero-width space for the search crawler */}
             </Info>

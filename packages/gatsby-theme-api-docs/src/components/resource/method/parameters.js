@@ -165,7 +165,7 @@ function ParameterRow(props) {
           {props.parameter.default && (
             <div>
               <Info>
-                Default
+                Default:{' '}
                 <InfoValue isQueryParameter type={props.parameter.type || null}>
                   {props.parameter.default}
                 </InfoValue>

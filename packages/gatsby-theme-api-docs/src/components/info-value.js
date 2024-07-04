@@ -20,39 +20,27 @@ const InfoValue = (props) => {
     case 'boolean':
       // We want to show the actual boolean value for the query parameter defaults.
       return props.isQueryParameter ? (
-        <>
-          :{' '}
-          <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
-            {value}
-          </Markdown.InlineCodeWithoutBox>
-        </>
+        <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
+          {value}
+        </Markdown.InlineCodeWithoutBox>
       ) : value ? (
         ''
       ) : (
-        <>
-          :{' '}
-          <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
-            No
-          </Markdown.InlineCodeWithoutBox>
-        </>
+        <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
+          No
+        </Markdown.InlineCodeWithoutBox>
       );
     case 'number':
       return (
-        <>
-          :{' '}
-          <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
-            {formatNumber(value)}
-          </Markdown.InlineCodeWithoutBox>
-        </>
+        <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
+          {formatNumber(value)}
+        </Markdown.InlineCodeWithoutBox>
       );
     default:
       return (
-        <>
-          :{' '}
-          <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
-            {value}
-          </Markdown.InlineCodeWithoutBox>
-        </>
+        <Markdown.InlineCodeWithoutBox css={customCodeStyle}>
+          {value}
+        </Markdown.InlineCodeWithoutBox>
       );
   }
 };
