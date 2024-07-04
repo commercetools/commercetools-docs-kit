@@ -1,4 +1,10 @@
-import React, { useEffect, useState, SyntheticEvent, ChangeEvent } from 'react';
+import React, {
+  useEffect,
+  useState,
+  SyntheticEvent,
+  ChangeEvent,
+  ReactElement,
+} from 'react';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { ContentNotification } from '@commercetools-uikit/notifications';
 import styled from '@emotion/styled';
@@ -13,7 +19,10 @@ import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Spacings from '@commercetools-uikit/spacings';
-import { markdownFragmentToReact } from '@commercetools-docs/ui-kit';
+import {
+  CodeBlockMarkdownWrapper,
+  markdownFragmentToReact,
+} from '@commercetools-docs/ui-kit';
 import type {
   QuizAttempt,
   QuizOutcome,
@@ -137,6 +146,12 @@ const QuizForm = (props: QuizFormProps) => {
     setFormState({ ...formState, [questionId]: currentValues });
   };
 
+  const OptionWrapper = styled.div`
+    div:first-of-type {
+      align-items: center;
+    }
+  `;
+
   const renderAnswers = (
     answers: AnswerOption[],
     questionType: QuestionRenderType,
@@ -165,10 +180,17 @@ const QuizForm = (props: QuizFormProps) => {
                 <RadioInput.Option
                   key={`${answer.name}${idx}`}
                   value={answer.value}
+                  components={{
+                    wrapper: (children) => (
+                      <OptionWrapper>{children}</OptionWrapper>
+                    ),
+                  }}
                 >
                   {
                     //@ts-ignore
-                    markdownFragmentToReact(answer?.text || '') as ReactElement
+                    markdownFragmentToReact(answer?.text || '', {
+                      pre: CodeBlockMarkdownWrapper,
+                    }) as ReactElement
                   }
                 </RadioInput.Option>
               );
@@ -225,7 +247,9 @@ const QuizForm = (props: QuizFormProps) => {
                   >
                     {
                       // @ts-ignore
-                      markdownFragmentToReact(answer.text || '')
+                      markdownFragmentToReact(answer?.text || '', {
+                        pre: CodeBlockMarkdownWrapper,
+                      }) as ReactElement
                     }
                   </CheckboxInput>
                 );
@@ -260,7 +284,8 @@ const QuizForm = (props: QuizFormProps) => {
             markdownFragmentToReact(text)
           }
         </h4>
-        {renderAnswers(answers, renderType, feedback, id)}
+        {answers?.length > 0 &&
+          renderAnswers(answers, renderType, feedback, id)}
       </QuestionWrapper>
     );
   };

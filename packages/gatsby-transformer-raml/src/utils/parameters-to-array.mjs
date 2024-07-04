@@ -1,4 +1,4 @@
-import generateType  from "./type/generate-type.mjs";
+import generateType from './type/generate-type.mjs';
 
 function getTypes(typeUnion) {
   const typesList = typeUnion.split('|').map((item) => item.trim());

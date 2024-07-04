@@ -1,5 +1,53 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.6.0
+
+### Minor Changes
+
+- [#2029](https://github.com/commercetools/commercetools-docs-kit/pull/2029) [`21bb6e7`](https://github.com/commercetools/commercetools-docs-kit/commit/21bb6e76e7518b8fc441c4bb26d4d10581513df7) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for code snippets in self-learning
+
+### Patch Changes
+
+- Updated dependencies [[`21bb6e7`](https://github.com/commercetools/commercetools-docs-kit/commit/21bb6e76e7518b8fc441c4bb26d4d10581513df7)]:
+  - @commercetools-docs/ui-kit@24.6.0
+
+## 24.5.1
+
+### Patch Changes
+
+- [#2025](https://github.com/commercetools/commercetools-docs-kit/pull/2025) [`8077406`](https://github.com/commercetools/commercetools-docs-kit/commit/807740639a6830f0fa774f058e4212691ae07d26) Thanks [@FFawzy](https://github.com/FFawzy)! - Use namespace for custom tags
+
+- Updated dependencies [[`8077406`](https://github.com/commercetools/commercetools-docs-kit/commit/807740639a6830f0fa774f058e4212691ae07d26)]:
+  - @commercetools-docs/ui-kit@24.5.1
+
+## 24.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`6483c78`](https://github.com/commercetools/commercetools-docs-kit/commit/6483c786cf03066dd35c4cdd4f3ef154af1df14e)]:
+  - @commercetools-docs/ui-kit@24.5.0
+
+## 24.4.3
+
+### Patch Changes
+
+- [#2013](https://github.com/commercetools/commercetools-docs-kit/pull/2013) [`1e83b4a`](https://github.com/commercetools/commercetools-docs-kit/commit/1e83b4a4786980ac55a29f0aa69bf21d8682a7ea) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - All release notes link will send users to unfiltered release notes page
+
+## 24.4.2
+
+### Patch Changes
+
+- [#2019](https://github.com/commercetools/commercetools-docs-kit/pull/2019) [`2f2ed2b`](https://github.com/commercetools/commercetools-docs-kit/commit/2f2ed2bda66a69222545e3a7d3d310714703daba) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Make release notes tags responsive
+
+## 24.4.1
+
+### Patch Changes
+
+- [#2017](https://github.com/commercetools/commercetools-docs-kit/pull/2017) [`afe5e41`](https://github.com/commercetools/commercetools-docs-kit/commit/afe5e41e662adbe4c56aa82be15b315ba0547b38) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - change release notes tag shape and color
+
+- Updated dependencies [[`104808c`](https://github.com/commercetools/commercetools-docs-kit/commit/104808c73462cf52d48d76409f42002803d7c709), [`afe5e41`](https://github.com/commercetools/commercetools-docs-kit/commit/afe5e41e662adbe4c56aa82be15b315ba0547b38)]:
+  - @commercetools-docs/ui-kit@24.4.1
+
 ## 24.4.0
 
 ### Minor Changes

@@ -1,5 +1,63 @@
 # @commercetools-website/docs-smoke-test
 
+## 9.2.2
+
+### Patch Changes
+
+- Updated dependencies [[`21bb6e7`](https://github.com/commercetools/commercetools-docs-kit/commit/21bb6e76e7518b8fc441c4bb26d4d10581513df7)]:
+  - @commercetools-docs/gatsby-theme-docs@24.6.0
+  - @commercetools-docs/ui-kit@24.6.0
+  - @commercetools-docs/gatsby-theme-code-examples@24.6.0
+  - @commercetools-docs/gatsby-theme-constants@24.6.0
+
+## 9.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`8077406`](https://github.com/commercetools/commercetools-docs-kit/commit/807740639a6830f0fa774f058e4212691ae07d26)]:
+  - @commercetools-docs/gatsby-theme-code-examples@24.5.1
+  - @commercetools-docs/gatsby-theme-constants@24.5.1
+  - @commercetools-docs/gatsby-theme-docs@24.5.1
+  - @commercetools-docs/ui-kit@24.5.1
+
+## 9.2.0
+
+### Minor Changes
+
+- [#2023](https://github.com/commercetools/commercetools-docs-kit/pull/2023) [`6483c78`](https://github.com/commercetools/commercetools-docs-kit/commit/6483c786cf03066dd35c4cdd4f3ef154af1df14e) Thanks [@FFawzy](https://github.com/FFawzy)! - RSSFeed component to point to the new release notes search page
+
+### Patch Changes
+
+- Updated dependencies [[`6483c78`](https://github.com/commercetools/commercetools-docs-kit/commit/6483c786cf03066dd35c4cdd4f3ef154af1df14e)]:
+  - @commercetools-docs/ui-kit@24.5.0
+  - @commercetools-docs/gatsby-theme-code-examples@24.5.0
+  - @commercetools-docs/gatsby-theme-constants@24.5.0
+  - @commercetools-docs/gatsby-theme-docs@24.5.0
+
+## 9.1.11
+
+### Patch Changes
+
+- Updated dependencies [[`1e83b4a`](https://github.com/commercetools/commercetools-docs-kit/commit/1e83b4a4786980ac55a29f0aa69bf21d8682a7ea)]:
+  - @commercetools-docs/gatsby-theme-docs@24.4.3
+
+## 9.1.10
+
+### Patch Changes
+
+- Updated dependencies [[`2f2ed2b`](https://github.com/commercetools/commercetools-docs-kit/commit/2f2ed2bda66a69222545e3a7d3d310714703daba)]:
+  - @commercetools-docs/gatsby-theme-docs@24.4.2
+
+## 9.1.9
+
+### Patch Changes
+
+- Updated dependencies [[`104808c`](https://github.com/commercetools/commercetools-docs-kit/commit/104808c73462cf52d48d76409f42002803d7c709), [`afe5e41`](https://github.com/commercetools/commercetools-docs-kit/commit/afe5e41e662adbe4c56aa82be15b315ba0547b38)]:
+  - @commercetools-docs/ui-kit@24.4.1
+  - @commercetools-docs/gatsby-theme-docs@24.4.1
+  - @commercetools-docs/gatsby-theme-code-examples@24.4.1
+  - @commercetools-docs/gatsby-theme-constants@24.4.1
+
 ## 9.1.8
 
 ### Patch Changes

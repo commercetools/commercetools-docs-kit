@@ -31,6 +31,7 @@ QueryParameters.propTypes = {
       name: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       required: PropTypes.bool,
+      default: PropTypes.string,
       description: PropTypes.string,
       items: PropTypes.shape({
         type: PropTypes.string,

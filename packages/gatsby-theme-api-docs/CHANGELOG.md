@@ -1,5 +1,35 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 24.6.0
+
+### Patch Changes
+
+- Updated dependencies [[`21bb6e7`](https://github.com/commercetools/commercetools-docs-kit/commit/21bb6e76e7518b8fc441c4bb26d4d10581513df7)]:
+  - @commercetools-docs/ui-kit@24.6.0
+
+## 24.5.1
+
+### Patch Changes
+
+- [#2025](https://github.com/commercetools/commercetools-docs-kit/pull/2025) [`8077406`](https://github.com/commercetools/commercetools-docs-kit/commit/807740639a6830f0fa774f058e4212691ae07d26) Thanks [@FFawzy](https://github.com/FFawzy)! - Use namespace for custom tags
+
+- Updated dependencies [[`8077406`](https://github.com/commercetools/commercetools-docs-kit/commit/807740639a6830f0fa774f058e4212691ae07d26)]:
+  - @commercetools-docs/ui-kit@24.5.1
+
+## 24.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`6483c78`](https://github.com/commercetools/commercetools-docs-kit/commit/6483c786cf03066dd35c4cdd4f3ef154af1df14e)]:
+  - @commercetools-docs/ui-kit@24.5.0
+
+## 24.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`104808c`](https://github.com/commercetools/commercetools-docs-kit/commit/104808c73462cf52d48d76409f42002803d7c709), [`afe5e41`](https://github.com/commercetools/commercetools-docs-kit/commit/afe5e41e662adbe4c56aa82be15b315ba0547b38)]:
+  - @commercetools-docs/ui-kit@24.4.1
+
 ## 24.2.0
 
 ### Patch Changes
