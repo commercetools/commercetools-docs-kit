@@ -16,10 +16,9 @@ const InfoValue = (props) => {
     font-size: ${designSystem.typography.fontSizes.small};
   `;
 
-  console.log(valueType, value);
-
   switch (valueType) {
     case 'boolean':
+      // We want to show the actual boolean value for the query parameter defaults.
       return props.isQueryParameter ? (
         <>
           :{' '}
