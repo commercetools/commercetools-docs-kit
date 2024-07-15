@@ -1,5 +1,16 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.6.0
+
+### Minor Changes
+
+- [#2029](https://github.com/commercetools/commercetools-docs-kit/pull/2029) [`21bb6e7`](https://github.com/commercetools/commercetools-docs-kit/commit/21bb6e76e7518b8fc441c4bb26d4d10581513df7) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for code snippets in self-learning
+
+### Patch Changes
+
+- Updated dependencies [[`21bb6e7`](https://github.com/commercetools/commercetools-docs-kit/commit/21bb6e76e7518b8fc441c4bb26d4d10581513df7)]:
+  - @commercetools-docs/ui-kit@24.6.0
+
 ## 24.5.1
 
 ### Patch Changes

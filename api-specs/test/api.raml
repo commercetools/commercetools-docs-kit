@@ -85,19 +85,27 @@ uses:
         stringParameter:
           type: string
           required: false
+          default: test
           example: 6 in arrayOfIntExample
+        booleanParameter:
+          type: boolean
+          required: false
+          default: false
         floatParameter:
           type: number
           required: false
+          default: 10
           example: 50
         integerParameter:
           type: integer
           required: false
+          default: 5
           example: 50
         withMarkdownDescription:
           type: number
           description: This `markdown` should be parsed correctly.
           required: false
+          default: 1500
           example: 50
         objectParameter:
           type: objects.ObjectTestType
