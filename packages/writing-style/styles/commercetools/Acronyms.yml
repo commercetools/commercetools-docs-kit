@@ -1,7 +1,7 @@
 extends: conditional
 message: "Spell out '%s',it was not previously defined in the form 'my special term (MST)'."
 level: warning
-ignorecase: false
+ignorecase: true
 # Ensures that the existence of 'first' implies the existence of 'second'.
 first: '\b([A-Z]{3,5})\b'
 second: '(?:\b[A-Z][a-z]+ )+\(([A-Z]{3,5})\)'

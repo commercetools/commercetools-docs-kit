@@ -19,7 +19,7 @@ const AvatarContainer = styled.div`
 const Avatar = styled.div`
   width: ${designSystem.typography.lineHeights.cardSmallTitle};
   height: ${designSystem.typography.lineHeights.cardSmallTitle};
-  color: ${designSystem.colors.light.linkNavigationNew};
+  color: ${designSystem.colors.light.linkHover};
   background-color: ${designSystem.colors.light.surfaceForAvatarIcon};
   border-radius: 50%;
   display: flex;

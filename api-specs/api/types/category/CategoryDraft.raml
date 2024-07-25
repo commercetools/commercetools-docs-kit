@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Category
-(docs-uri): https://docs.commercetools.com/api/projects/categories#categorydraft
 displayName: CategoryDraft
 type: object
 properties:
@@ -26,12 +25,12 @@ properties:
   orderHint?:
     type: string
     description: |
-      Decimal value between 0 and 1 used to order Categories that are on the same level in the Category tree.
+      Decimal value between 0 and 1. Frontend applications can use this value for ordering Categories within the same level in the category tree.
       If not set, a random value will be assigned.
   externalId?:
     type: string
     description: |
-      Additional identifier for external systems like Customer Relationship Management (CRM) or Enterprise Resource Planning (ERP).
+      Additional identifier for external systems like customer relationship management (CRM) or enterprise resource planning (ERP).
   metaTitle?:
     type: LocalizedString
     description: |

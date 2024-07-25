@@ -50,6 +50,7 @@ uses:
   references: types/references.raml
   regex-properties-type-string: types/regex-properties-type-string.raml
   regex-properties-type-object: types/regex-properties-type-object.raml
+  regex-properties-type-array: types/regex-properties-type-array.raml
   scalars: types/scalars.raml
   soft-links: types/soft-links.raml
   unions: types/unions.raml
@@ -84,19 +85,27 @@ uses:
         stringParameter:
           type: string
           required: false
+          default: test
           example: 6 in arrayOfIntExample
+        booleanParameter:
+          type: boolean
+          required: false
+          default: false
         floatParameter:
           type: number
           required: false
+          default: 10
           example: 50
         integerParameter:
           type: integer
           required: false
+          default: 5
           example: 50
         withMarkdownDescription:
           type: number
           description: This `markdown` should be parsed correctly.
           required: false
+          default: 1500
           example: 50
         objectParameter:
           type: objects.ObjectTestType
@@ -479,6 +488,43 @@ uses:
         responses:
           200:
             description: We recommend to use standard HTTP response codes and `application/json` encoded content. The response will look like the response you have declared in your action. As an example we will fetch the cart.
+            body:
+              application/json:
+                type: object
+                example: !include examples/action-success.json
+
+    /namespace-action-with-headers:
+      uriParameters:
+        namespace:
+          displayName: Namespace
+          type: string
+          description: The namespace where the action to invoked is located.
+        action:
+          displayName: Action
+          type: string
+          description: The name of the action to invoked.
+      get:
+        headers:
+          Accept:
+            displayName: Accept Header
+            type: string
+            description: Accept application/json Header.
+            required: true
+            pattern: application/json
+            default: application/json
+          Test-Header:
+            displayName: Header with special type.
+            type: objects.ObjectTestType
+            description: A header with a special type.
+          Path-Header:
+            displayName: Path Header
+            type: string
+            required: true
+            pattern: ^/.*$
+        description: Use the GET method to allow the frontend to fetch data from a backend system. For the response, we recommend to use standard HTTP codes and `application/json` encoded content. The response will be structured as defined by the body property of the action.
+        responses:
+          200:
+            description: The response will be structured as defined by the body property of the action.
             body:
               application/json:
                 type: object

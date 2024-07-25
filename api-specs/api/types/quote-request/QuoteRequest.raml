@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): QuoteRequest
-(docs-uri): https://docs.commercetools.com/api/projects/quote-requests#quoterequest
 type: BaseResource
 displayName: QuoteRequest
 (updateType): QuoteRequestUpdate
@@ -34,12 +33,12 @@ properties:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that last modified the QuoteRequest.
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that created the QuoteRequest.
   quoteRequestState:
     type: QuoteRequestState
     description: |

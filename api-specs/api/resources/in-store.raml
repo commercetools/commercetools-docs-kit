@@ -1458,7 +1458,8 @@ uriParameters:
       If the `anonymousCart` field is set on the [CustomerDraft](ctp:api:type:CustomerDraft), then the newly created Customer will be assigned to that [Cart](ctp:api:type:Cart).
       Similarly, if the `anonymousId` field is set, the Customer will be set on all [Carts](ctp:api:type:Cart), [Orders](ctp:api:type:Order), [ShoppingLists](ctp:api:type:ShoppingList) and [Payments](ctp:api:type:Payment) with the same `anonymousId`.
       If a Cart with a `store` field specified, the `store` field must reference the same [Store](ctp:api:type:Store) specified in the `{storeKey}` path parameter.
-      Creating a Customer produces the [CustomerCreated](ctp:api:type:CustomerCreatedMessage) Message.
+
+      Creating a Customer produces the [CustomerCreated](ctp:api:type:CustomerCreatedMessage) Message. Simultaneously creating two Customers with the same email address can return a [LockedField](ctp:api:type:LockedFieldError) error.
     body:
       application/json:
         example: !include ../examples/customer-create.example.json
@@ -1651,6 +1652,8 @@ uriParameters:
       displayName: Update customer by key in store
       description: |
         If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+
+        Simultaneously updating two Customers with the same email address can return a [LockedField](ctp:api:type:LockedFieldError) error.
       securedBy:
         - oauth_2_0:
             scopes:
@@ -1714,6 +1717,8 @@ uriParameters:
       displayName: Update customer by id in store
       description: |
         If the Customer exists in the Project but the `stores` field references a different [Store](ctp:api:type:Store), this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+
+        Simultaneously updating two Customers with the same email address can return a [LockedField](ctp:api:type:LockedFieldError) error.
       securedBy:
         - oauth_2_0:
             scopes:
@@ -1753,6 +1758,8 @@ uriParameters:
     displayName: Authenticate Customer (Sign In) in store
     description: |
       Authenticates a Customer associated with a [Store](ctp:api:type:Store). For more information, see [Global versus Store-specific Customers](/../api/customers-overview#global-versus-store-specific-customers).
+
+      Triggers [Cart merge during sign-in](/../api/customers-overview#cart-merge-during-sign-in).
 
       If the Customer exists in the Project but the `stores` field references a different [Store](ctp:api:type:Store), this method returns an [InvalidCredentials](ctp:api:type:InvalidCredentialsError) error.
     securedBy:
@@ -2130,9 +2137,9 @@ uriParameters:
             },
         ]
       description: |
-        Gets the current or staged representation of a [Product](ctp:api:type:Product) by its key from the specified [Store](ctp:api:type:Store).
+        Gets the current or staged representation of a [Product](ctp:api:type:Product) by its key in the specified [Store](ctp:api:type:Store).
         If the Store has defined some languages, countries, distribution, supply Channels, and/or Product Selection,
-        they are used for projections based on [locale](ctp:api:type:ProductProjectionLocales), [price](ctp:api:type:ProductProjectionPrices)
+        they are used for projections based on [locale](ctp:api:type:ProductProjectionLocales), [price](ctp:api:type:ProductProjectionPrices),
         and [inventory](ctp:api:type:ProductProjectionInventoryEntries).
 
         If [ProductSelection](ctp:api:type:ProductSelection) is used, it affects the [availability of the Product](/projects/stores#products-available-in-store) in the specified Store.
@@ -2175,9 +2182,9 @@ uriParameters:
             },
         ]
       description: |
-        Gets the current or staged representation of a [Product](ctp:api:type:Product) by its ID from the specified [Store](ctp:api:type:Store).
+        Gets the current or staged representation of a [Product](ctp:api:type:Product) by its ID in the specified [Store](ctp:api:type:Store).
         If the Store has defined some languages, countries, distribution, supply Channels, and/or Product Selection,
-        they are used for projections based on [locale](ctp:api:type:ProductProjectionLocales), [price](ctp:api:type:ProductProjectionPrices)
+        they are used for projections based on [locale](ctp:api:type:ProductProjectionLocales), [price](ctp:api:type:ProductProjectionPrices),
         and [inventory](ctp:api:type:ProductProjectionInventoryEntries).
 
         If [ProductSelection](ctp:api:type:ProductSelection) is used, it affects the [availability of the Product](/projects/stores#products-available-in-store) in the specified Store.
@@ -2497,3 +2504,234 @@ uriParameters:
             application/json:
               type: CartDiscount
               example: !include ../examples/cart-discount.example.json
+/product-tailoring:
+  type:
+    baseDomain:
+      resourceType: ProductTailoring
+      resourceQueryType: ProductTailoringPagedQueryResponse
+      resourceDraft: ProductTailoringInStoreDraft
+      resourceUpdateType: ProductTailoringUpdate
+      sortExample: createdAt asc
+  (updateable): ProductTailoring
+  (createable): ProductTailoringInStoreDraft
+  description: A Product Tailoring holds tailored data of Product in the Store.
+  get:
+    displayName: Query available product tailoring in store
+    is:
+      - expandable
+      - query:
+          whereExample: 'product(id in ("c89f4753-050d-44af-9411-0a941e745c6e"))'
+    securedBy: [oauth_2_0: { scopes: ['view_products:{projectKey}'] }]
+    description: |
+      Queries Product Tailoring in a specific [Store](ctp:api:type:Store).
+
+    queryParameters:
+      limit:
+        type: number
+        format: int32
+        maximum: 500
+        required: false
+        description: |
+          Number of [results requested](/../api/general-concepts#limit).
+      offset:
+        type: number
+        format: int32
+        required: false
+        description: |
+          Number of [elements skipped](/../api/general-concepts#offset).
+      withTotal:
+        type: boolean
+        default: true
+        required: false
+        description: |
+          By default, the response does not include the `total` field. Set to `true` to get the [total](/../api/general-concepts#total) number of query results included.
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/product-tailoring-list.example.json
+            type: ProductTailoringPagedQueryResponse
+  post:
+    displayName: Create Product Tailoring in store
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_products:{projectKey}',
+                'manage_products:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    description: |
+      Creates a [ProductTailoring](ctp:api:type:ProductTailoring) in the [Store](ctp:api:type:Store) specified by `storeKey`.
+      When using this endpoint the ProductTailoring's `store` field is always set to the [Store](ctp:api:type:Store) specified in the path parameter.
+
+      Generates the [ProductTailoringCreated](ctp:api:type:ProductTailoringCreatedMessage) Message.
+    body:
+      application/json:
+        example: !include ../examples/product-tailoring-in-store-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/product-tailoring.example.json
+
+/products:
+  /{productID}:
+    (methodName): withProductId
+    uriParameters:
+      productID:
+        type: string
+        description: |
+          `id` of the [Product](ctp:api:type:Product).
+    /product-tailoring:
+      type:
+        baseSubResource:
+          resourceType: ProductTailoring
+          resourceUpdateType: ProductTailoringUpdate
+      get:
+        displayName: Gets the current or staged representation of a Product Tailoring by its Product ID from a specific Store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'view_products:{projectKey}',
+                    'view_products:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        description: |
+          Gets the current or staged representation of a [Product Tailoring](ctp:api:type:ProductTailoring) by its Product ID in the specified [Store](ctp:api:type:Store).
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/product-tailoring.example.json
+                type: ProductTailoring
+      post:
+        displayName: Update a Product Tailoring by its Product ID from a specific Store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_products:{projectKey}',
+                    'manage_products:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        description: |
+          Updates the current or staged representation of a [Product Tailoring](ctp:api:type:ProductTailoring) by its Product ID in the specified [Store](ctp:api:type:Store).
+        body:
+          application/json:
+            example: !include ../examples/product-tailoring-update.example.json
+        responses:
+          200:
+            body:
+              application/json:
+                type: ProductTailoring
+                example: !include ../examples/product-tailoring-updated.example.json
+      delete:
+        displayName: Delete a Product Tailoring by its Product ID from a specific Store
+        description: |
+          Generates the [ProductTailoringDeleted](ctp:api:type:ProductTailoringDeletedMessage) Message.
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_products:{projectKey}',
+                    'manage_products:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        responses:
+          200:
+            body:
+              application/json:
+                type: ProductTailoring
+                example: !include ../examples/product-tailoring.example.json
+  /key={productKey}:
+    (methodName): withProductKey
+    uriParameters:
+      productKey:
+        type: string
+        description: |
+          `key` of the [Product](ctp:api:type:Product).
+    /product-tailoring:
+      type:
+        baseSubResource:
+          resourceType: ProductTailoring
+          resourceUpdateType: ProductTailoringUpdate
+      get:
+        displayName: Gets the current or staged representation of a Product Tailoring by its Product key from a specific Store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'view_products:{projectKey}',
+                    'view_products:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        description: |
+          Gets the current or staged representation of a [Product Tailoring](ctp:api:type:ProductTailoring) by its Product key in the specified [Store](ctp:api:type:Store).
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ../examples/product-tailoring.example.json
+                type: ProductTailoring
+      post:
+        displayName: Update a Product Tailoring by its Product key from a specific Store
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_products:{projectKey}',
+                    'manage_products:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        description: |
+          Updates the current or staged representation of a [Product Tailoring](ctp:api:type:ProductTailoring) by its Product key in the specified [Store](ctp:api:type:Store).
+        body:
+          application/json:
+            example: !include ../examples/product-tailoring-update.example.json
+        responses:
+          200:
+            body:
+              application/json:
+                type: ProductTailoring
+                example: !include ../examples/product-tailoring-updated.example.json
+      delete:
+        displayName: Delete a Product Tailoring by its Product key from a specific Store
+        description: |
+          Generates the [ProductTailoringDeleted](ctp:api:type:ProductTailoringDeletedMessage) Message.
+        securedBy:
+          [
+            oauth_2_0:
+              {
+                scopes:
+                  [
+                    'manage_products:{projectKey}',
+                    'manage_products:{projectKey}:{storeKey}',
+                  ],
+              },
+          ]
+        responses:
+          200:
+            body:
+              application/json:
+                type: ProductTailoring
+                example: !include ../examples/product-tailoring.example.json

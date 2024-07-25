@@ -63,3 +63,11 @@ Then('The user gets redirected to {string}', (course: string) => {
     course === 'site root' ? URL_SELF_LEARNING_SMOKE_TEST.slice(0, -1) : course;
   cy.url().should('match', new RegExp(`${expectedUrl}$`));
 });
+
+Given(`The user has navigated to a quiz page with code`, () => {
+  cy.visit(`${URL_SELF_LEARNING_SMOKE_TEST}course-with-code/quiz`);
+});
+
+Given(`The quiz has fully loaded`, () => {
+  cy.get('[data-testid="answer-container"]').should('exist');
+});

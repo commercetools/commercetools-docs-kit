@@ -1,13 +1,12 @@
 #%RAML 1.0 DataType
 (package): AssociateRole
-(docs-uri): https://docs.commercetools.com/api/projects/associate-roles#associateroledraft
 displayName: AssociateRoleDraft
 description: |
 properties:
   key:
     type: string
     description: |
-      User-defined unique identifier for the AssociateRole.
+      User-defined unique and immutable identifier for the AssociateRole.
     pattern: ^[A-Za-z0-9_-]+$
     minLength: 2
     maxLength: 256

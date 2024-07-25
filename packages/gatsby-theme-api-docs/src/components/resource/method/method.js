@@ -11,6 +11,7 @@ import { generateEndpointURN } from '../../../utils/ctp-urn';
 import { tokens, dimensions, colors, typography } from '../../../design-system';
 import Url from './url';
 import Scopes from './scopes';
+import Headers from './headers';
 import Responses from './responses';
 import Parameters from './parameters';
 import QueryParameters from './query-parameters';
@@ -151,6 +152,14 @@ const Method = ({
                   apiKey={apiKey}
                   title={'Query parameters'}
                   queryParameters={method.queryParameters}
+                />
+              )}
+
+              {method.headers && (
+                <Headers
+                  apiKey={apiKey}
+                  title={'Request headers'}
+                  headers={method.headers}
                 />
               )}
 

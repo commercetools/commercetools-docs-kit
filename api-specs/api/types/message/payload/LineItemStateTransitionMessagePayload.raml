@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Message
-(docs-uri): https://docs.commercetools.com/http-api-projects-messages.html#line-item-state-transition
 type: OrderMessagePayload
 displayName: LineItemStateTransitionMessagePayload
 discriminatorValue: LineItemStateTransition
@@ -18,7 +17,7 @@ properties:
   transitionDate:
     type: datetime
     description: |
-      Date and time (UTC) when the transition of the [Line Item](ctp:api:type:LineItem) [State](ctp:api:type:State) was performed.
+      Date and time (UTC) the transition of the [Line Item](ctp:api:type:LineItem) [State](ctp:api:type:State) was performed.
   quantity:
     type: number
     format: int64

@@ -204,7 +204,11 @@ const PureLink = (extendedProps) => {
     return (
       <GatsbyRouterLink
         data-link-type="gatsby-link"
-        to={trimTrailingSlash(hrefObject.pathname) + hrefObject.hash}
+        to={
+          trimTrailingSlash(hrefObject.pathname) +
+          hrefObject.hash +
+          hrefObject.search
+        }
         className={props.className}
         css={getStylesFromProps({ nounderline })}
       >
@@ -222,8 +226,11 @@ const PureLink = (extendedProps) => {
     !isUsingUndocumentedNotationToLinkToAnotherDocsSite
       ? hrefObject.origin +
         trimTrailingSlash(hrefObject.pathname) +
-        hrefObject.hash
-      : trimTrailingSlash(hrefObject.pathname) + hrefObject.hash;
+        hrefObject.hash +
+        hrefObject.search
+      : trimTrailingSlash(hrefObject.pathname) +
+        hrefObject.hash +
+        hrefObject.search;
   return (
     <InternalSiteLink
       data-link-type="internal-link"

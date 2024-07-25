@@ -93,7 +93,7 @@ new Crawler({
               // Not Records (not indexed at all):
               // - code examples
               // - API docs: oauth scopes of endpoints, URL of endpoints
-              '#body-content :not([data-search-key="embedded-api-description"]):not(li):not(dd):not(dt):not(td):not(blockquote) > p, #body-content h6, #body-content :not(li) > ul:not([data-search-key="cards-container"]), #body-content :not(li) > ol, #body-content :not(li) > blockquote, #body-content dl, #body-content figure, #body-content .lead, #body-content table',
+              '#body-content :not([data-search-key="embedded-api-description"]):not(li):not(dd):not(dt):not(td):not(blockquote) > p, #body-content h6, #body-content :not(li) > ul:not([data-search-key="cards-container"]), #body-content :not(li) > ol, #body-content :not(li) > blockquote, #body-content dl, #body-content figure, #body-content .section-lead, #body-content table',
           },
           indexHeadings: true,
         });

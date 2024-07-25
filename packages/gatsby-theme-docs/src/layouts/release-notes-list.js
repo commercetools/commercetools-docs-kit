@@ -14,15 +14,18 @@ import LayoutPageWrapper from './internals/layout-page-wrapper';
 import LayoutPage from './internals/layout-page';
 import LayoutPageHeader from './internals/layout-page-header';
 import LayoutReleaseNotePageHeaderSide from './layout-release-note-page-header-side';
-import LayoutPageReleaseNotesFilters from './internals/layout-page-release-notes-filters';
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
+import { ContentNotification } from '@commercetools-uikit/notifications';
+import useReleaseNotesConfig from '../hooks/use-release-notes-config';
+import Text from '@commercetools-uikit/text';
+import KitLink from '../components/link';
 
 const LayoutReleaseNotesList = (props) => {
-  const { ref, inView, entry } = useInView();
-  const isSearchBoxInView = !Boolean(entry) || inView;
+  const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
+  const { getReleaseNotesUrl } = useReleaseNotesConfig();
   const excludeFromSearchIndex =
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
@@ -61,14 +64,22 @@ const LayoutReleaseNotesList = (props) => {
             </LayoutReleaseNotePageHeaderSide>
             <LayoutPageContent>
               <PageContentInset id="body-content" showRightBorder>
+                <ContentNotification type="info">
+                  <Text.Body>
+                    Discover our{' '}
+                    <KitLink href={`/..${getReleaseNotesUrl()}`}>
+                      combined Release Notes page
+                    </KitLink>{' '}
+                    and stay updated with the latest features and improvements!
+                    Get comprehensive details on all updates, quickly find
+                    specific updates and enhancements with our new search and
+                    filter options, and easily browse through different versions
+                    and sections.
+                  </Text.Body>
+                </ContentNotification>
                 {props.children}
               </PageContentInset>
             </LayoutPageContent>
-            <LayoutPageReleaseNotesFilters
-              {...layoutState.searchDialog}
-              isSearchBoxInView={isSearchBoxInView}
-              excludeFromSearchIndex={excludeFromSearchIndex}
-            />
           </LayoutPage>
         </LayoutPageWrapper>
         <LayoutFooter />

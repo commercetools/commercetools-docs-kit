@@ -21,10 +21,20 @@ const LayoutPage = styled.div`
       [row2-start] 'page-header page-header-side' auto [row2-end]
       [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${designSystem.dimensions.widths.pageContentWithMargins}
+        ${(props) =>
+          props.isReleaseNotesPage
+            ? designSystem.dimensions.widths
+                .pageContentSmallReleaseNotesWithMargins
+            : designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${(props) =>
+          props.isReleaseNotesPage
+            ? designSystem.dimensions.widths.pageContentReleaseNotesWithMargins
+            : designSystem.dimensions.widths.pageContentWithMargins}
       )
-      ${designSystem.dimensions.widths.pageNavigationSmall};
+      ${(props) =>
+        props.isReleaseNotesPage
+          ? designSystem.dimensions.widths.releaseNoteFilters
+          : designSystem.dimensions.widths.pageNavigation};
   }
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
     grid:
@@ -32,20 +42,36 @@ const LayoutPage = styled.div`
       [row2-start] 'page-header page-header-side' auto [row2-end]
       [row3-start] 'page-content page-navigation' 1fr [row3-end]
       / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${designSystem.dimensions.widths.pageContentWithMargins}
+        ${(props) =>
+          props.isReleaseNotesPage
+            ? designSystem.dimensions.widths
+                .pageContentSmallReleaseNotesWithMargins
+            : designSystem.dimensions.widths.pageContentSmallWithMargins},
+        ${(props) =>
+          props.isReleaseNotesPage
+            ? designSystem.dimensions.widths.pageContentReleaseNotesWithMargins
+            : designSystem.dimensions.widths.pageContentWithMargins}
       )
-      ${designSystem.dimensions.widths.pageNavigationSmall};
+      ${(props) =>
+        props.isReleaseNotesPage
+          ? designSystem.dimensions.widths.releaseNoteFilters
+          : designSystem.dimensions.widths.pageNavigation};
   }
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     grid:
       [row1-start] 'global-notification empty' auto [row1-end]
       [row2-start] 'page-header page-header-side' auto [row2-end]
       [row3-start] 'page-content page-navigation' 1fr [row3-end] /
-      ${designSystem.dimensions.widths.pageContentWithMargins}
+      ${(props) =>
+        props.isReleaseNotesPage
+          ? designSystem.dimensions.widths.pageContentReleaseNotesWithMargins
+          : designSystem.dimensions.widths.pageContentWithMargins}
       minmax(
         ${designSystem.dimensions.widths.pageNavigationSmall},
-        ${designSystem.dimensions.widths.pageNavigation}
+        ${(props) =>
+          props.isReleaseNotesPage
+            ? designSystem.dimensions.widths.releaseNoteFilters
+            : designSystem.dimensions.widths.pageNavigationSmall};
       );
   }
   ${(props) =>

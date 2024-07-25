@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
 import { Link, withPrefix } from 'gatsby';
+import KitLink from '../../components/link';
 import { css, ClassNames } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
@@ -32,8 +33,24 @@ import {
   isRightChapterRecursive,
 } from './sidebar.utils';
 import { useSiteData } from '../../hooks/use-site-data';
+import useReleaseNotesConfig from '../../hooks/use-release-notes-config';
 
 const ReleaseNotesIcon = createStyledIcon(Icons.ReleaseNotesSvgIcon);
+
+const ReleaseNotesLink = styled(KitLink)`
+  display: flex;
+  color: ${designSystem.colors.light.link} !important;
+  padding-left: ${designSystem.dimensions.spacings.m};
+  text-decoration: underline;
+  :hover {
+    color: ${designSystem.colors.light.linkHover} !important;
+    svg {
+      * {
+        fill: ${designSystem.colors.light.linkHover};
+      }
+    }
+  }
+`;
 
 // React currently throws a warning when using useLayoutEffect on the server.
 // To get around it, we can conditionally useEffect on the server (no-op) and
@@ -111,11 +128,11 @@ const linkStyles = css`
   align-items: flex-end;
 
   :hover {
-    color: ${designSystem.colors.light.linkNavigationNew} !important;
+    color: ${designSystem.colors.light.linkHover} !important;
 
     svg {
       * {
-        fill: ${designSystem.colors.light.linkNavigationNew};
+        fill: ${designSystem.colors.light.linkHover};
       }
     }
   }
@@ -126,8 +143,8 @@ const activeLinkStyles = css`
       ${designSystem.dimensions.spacings.xs}
   );
   border-left: ${designSystem.dimensions.spacings.xs} solid
-    ${designSystem.colors.light.linkNavigationNew} !important;
-  color: ${designSystem.colors.light.linkNavigationNew} !important;
+    ${designSystem.colors.light.linkHover} !important;
+  color: ${designSystem.colors.light.linkHover} !important;
 `;
 
 const SidebarLink = (props) => {
@@ -483,14 +500,12 @@ SidebarNavigationLinks.propTypes = {
 };
 
 const Sidebar = (props) => {
+  const { getReleaseNotesUrl } = useReleaseNotesConfig();
   // If this is a release page, we need to render the "back" link instead of
   // the normal navigation links.
   const isReleasePage = props.location.pathname.startsWith(
     withPrefix('/releases')
   );
-  const releaseNotesIconHoverStyle = isReleasePage
-    ? designSystem.colors.light.linkNavigation
-    : designSystem.colors.light.linkHover;
   const shouldRenderLinkToReleaseNotes = props.hasReleaseNotes;
   const shouldRenderBackToDocsLink = props.hasReleaseNotes && isReleasePage;
   // Restore scroll position
@@ -533,47 +548,15 @@ const Sidebar = (props) => {
       <ScrollContainer id={scrollContainerId}>
         {shouldRenderLinkToReleaseNotes && (
           <ReleaseNoteLinkContainer>
-            <SidebarLink
-              to="/releases"
+            <ReleaseNotesLink
+              href={`/..${getReleaseNotesUrl()}`}
               onClick={props.onLinkClick}
-              locationPath={
-                isReleasePage
-                  ? withPrefix('/releases')
-                  : props.location.pathname
-              }
-              customStyles={css`
-                color: ${designSystem.colors.light.link} !important;
-                padding-left: ${designSystem.dimensions.spacings.m};
-                text-decoration: underline;
-                :hover {
-                  color: ${designSystem.colors.light.linkHover} !important;
-                  svg {
-                    * {
-                      fill: ${releaseNotesIconHoverStyle};
-                    }
-                  }
-                }
-              `}
-              customActiveStyles={css`
-                color: ${designSystem.colors.light.linkNavigation} !important;
-                padding-left: calc(
-                  ${designSystem.dimensions.spacings.m} -
-                    ${designSystem.dimensions.spacings.xs}
-                ) !important;
-                text-decoration: none;
-                :hover {
-                  color: ${designSystem.colors.light.linkNavigation} !important;
-                }
-              `}
             >
               <SpacingsInline alignItems="center">
                 <LinkSubtitle isReleaseNoteLink>{'Release notes'}</LinkSubtitle>
-                <ReleaseNotesIcon
-                  size="medium"
-                  color={isReleasePage ? 'linkNavigation' : 'link'}
-                />
+                <ReleaseNotesIcon size="medium" color={'link'} />
               </SpacingsInline>
-            </SidebarLink>
+            </ReleaseNotesLink>
           </ReleaseNoteLinkContainer>
         )}
         {shouldRenderBackToDocsLink && (

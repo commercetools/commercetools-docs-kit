@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): BusinessUnit
-(docs-uri): https://docs.commercetools.com/api/projects/business-units#businessunitdraft
 displayName: BusinessUnitDraft
 discriminator: unitType
 description: |
@@ -9,7 +8,7 @@ properties:
   key:
     type: string
     description: |
-      User-defined unique identifier for the Business Unit.
+      User-defined unique and immutable identifier for the Business Unit.
     pattern: ^[A-Za-z0-9_-]+$
     minLength: 2
     maxLength: 256

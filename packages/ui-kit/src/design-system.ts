@@ -7,9 +7,12 @@ const rootFontSizeNumber = 16;
 // must float / stretch into the available width
 const pageWidth = '770px';
 const pageWidthSmall = '592px';
+const pageWidthSmallReleaseNotes = '474px';
+const pageWidthReleaseNotes = '670px';
 const asideColumnWidth = pageWidthSmall;
 const navbarWidth = '224px';
 const navbarWidthSmall = '200px';
+const navbarWidthReleaseNotes = '324px';
 const topMenuSingleCoumn = '365px';
 const topMenuSingleCoumnShrink = '125px';
 
@@ -63,11 +66,11 @@ export type ThemeColorTokens = {
   borderHighlight: string;
   borderInfo: string;
   borderForReleaseNoteTypeFix: string;
+  borderForReleaseNotesTag: string;
   // Links
   link: string;
   linkHover: string;
   linkNavigation: string;
-  linkNavigationNew: string;
   // Headlines
   headlinePrimary: string;
   // Icons
@@ -128,6 +131,7 @@ export const colors: ThemeColors = {
     surfaceForSearchInputWhenDisabled: designTokens.colorNeutral90,
     surfaceForReleaseNoteTypeFix: '#e4c5ff',
     surfaceTagGreen: designTokens.colorPrimary95,
+    borderForReleaseNotesTag: designTokens.colorPrimary90,
     // Different tones of text
     textPrimary: designTokens.colorSolid,
     textSecondary: '#666666',
@@ -148,10 +152,9 @@ export const colors: ThemeColors = {
     borderInfo: designTokens.colorInfo,
     borderForReleaseNoteTypeFix: '#b866ff',
     // Links
-    link: designTokens.colorPrimary25,
+    link: designTokens.colorPrimary20,
     linkHover: designTokens.colorPrimary,
     linkNavigation: designTokens.colorInfo,
-    linkNavigationNew: '#4E4ED8',
     // Headlines
     headlinePrimary: '#003037',
     // Icons
@@ -260,6 +263,7 @@ export const dimensions = {
     globalNotificationContent: '36px',
     globalNotificationWithSmallSpacing: 'calc(36px + 8px)',
     megaMenuItemTitle: '38px',
+    separatorLine: '22px',
   },
   widths: {
     pageContent: pageWidth,
@@ -267,11 +271,14 @@ export const dimensions = {
     pageContentWide: `calc(${pageWidth} + ${asideColumnWidth} + 32px)`,
     pageContentWithMargins: `calc(${pageWidth} + 32px * 2)`,
     pageContentSmallWithMargins: `calc(${pageWidthSmall} + 16px * 2)`,
+    pageContentSmallReleaseNotesWithMargins: `calc(${pageWidthSmallReleaseNotes} + 16px * 2)`,
+    pageContentReleaseNotesWithMargins: `calc(${pageWidthReleaseNotes} + 32px * 2)`,
     pageContentWideWithMargins: `calc(${pageWidthSmall} + ${asideColumnWidth} + 32px * 3)`,
     pageContentWideWithMarginsMax: `calc(${pageWidth} + ${asideColumnWidth} + 32px * 3)`,
     pageContentWithMarginsAndPageNavigation: `calc(${pageWidth} + 32px * 2 + ${navbarWidth})`,
     pageNavigation: navbarWidth,
     pageNavigationSmall: navbarWidthSmall,
+    releaseNoteFilters: navbarWidthReleaseNotes,
     marketingContent: '1168px',
     searchBar: '300px',
     searchBarSmall: '160px',

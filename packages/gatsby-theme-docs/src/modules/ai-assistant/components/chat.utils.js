@@ -24,8 +24,10 @@ const isAllowedEmailDomain = (email, domainList) => {
   return allowedEmailDomainRegExp.test(email);
 };
 
-export const isNotValidatedUser = (user) => {
-  return user && !user.email_verified && isAllowedEmailDomain(user.email);
+// we consider verified users only if they have an actually verified email
+// or if they belong to the allowed email domains
+export const isUserEmailVerified = (user) => {
+  return isAllowedEmailDomain(user.email) || (user && user.email_verified);
 };
 
 /**

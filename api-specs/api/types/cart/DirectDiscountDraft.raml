@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Cart
-(docs-uri): https://docs.commercetools.com/api/projects/carts#directdiscountdraft
 displayName: DirectDiscountDraft
 type: object
 example: !include ../../examples/Cart/CartDirectDiscountDraft.json
@@ -14,7 +13,7 @@ description: |
   Additionally, a Cart or Order supports either Discount Codes or Direct Discounts at the same time.
 properties:
   value:
-    type: CartDiscountValue
+    type: CartDiscountValueDraft
     description: |
       Defines the effect the Discount will have.
   target?:

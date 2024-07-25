@@ -49,6 +49,9 @@ ReleaseNotesDetailTemplate.propTypes = {
       websitePrimaryColor: PropTypes.string.isRequired,
       excludeFromSearchIndex: PropTypes.bool.isRequired,
       body: PropTypes.string.isRequired,
+      product: PropTypes.string,
+      productArea: PropTypes.string,
+      hideProductLabels: PropTypes.bool,
     }).isRequired,
   }).isRequired,
 };
@@ -56,7 +59,7 @@ ReleaseNotesDetailTemplate.propTypes = {
 export default ReleaseNotesDetailTemplate;
 
 // eslint-disable-next-line react/prop-types
-export function Head({ data }) {
+export function Head({ data, location }) {
   return (
     <ThemeProvider
       // eslint-disable-next-line react/prop-types
@@ -67,6 +70,7 @@ export function Head({ data }) {
         title={data.releaseNotePage.title}
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.releaseNotePage.excludeFromSearchIndex}
+        location={location}
       />
     </ThemeProvider>
   );
@@ -83,6 +87,9 @@ export const query = graphql`
       type
       topics
       body
+      product
+      productArea
+      hideProductLabels
     }
   }
 `;

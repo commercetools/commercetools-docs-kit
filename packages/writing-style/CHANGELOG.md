@@ -1,5 +1,17 @@
 # @commercetools-docs/writing-style
 
+## 3.4.0
+
+### Minor Changes
+
+- [#1980](https://github.com/commercetools/commercetools-docs-kit/pull/1980) [`d55b7e3`](https://github.com/commercetools/commercetools-docs-kit/commit/d55b7e3a263e918599bd2ac4a18830bd2f1c7d9b) Thanks [@clare-louise-wilkinson](https://github.com/clare-louise-wilkinson)! - Adds commerce to word list
+
+## 3.3.9
+
+### Patch Changes
+
+- [#1969](https://github.com/commercetools/commercetools-docs-kit/pull/1969) [`dc685d8`](https://github.com/commercetools/commercetools-docs-kit/commit/dc685d87554b238ebfa43205c057778567e59ca3) Thanks [@timonrey](https://github.com/timonrey)! - Ajust acronym check to accept compound nouns spelled out with lowercased initials.
+
 ## 3.3.8
 
 ### Patch Changes

@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): AssociateRole
-(docs-uri): https://docs.commercetools.com/api/projects/associate-roles#associaterole
 displayName: AssociateRole
 (updateType): AssociateRoleUpdate
 type: BaseResource
@@ -27,16 +26,16 @@ properties:
     type: LastModifiedBy
     (beta): true
     description: |
-      Present on resources updated after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that last modified the AssociateRole.
   createdBy?:
     type: CreatedBy
     (beta): true
     description: |
-      Present on resources created after 1 February 2019 except for [events not tracked](/../api/general-concepts#events-tracked).
+      IDs and references that created the AssociateRole.
   key:
     type: string
     description: |
-      User-defined unique identifier of the AssociateRole.
+      User-defined unique and immutable identifier of the AssociateRole.
     pattern: ^[A-Za-z0-9_-]+$
     minLength: 2
     maxLength: 256

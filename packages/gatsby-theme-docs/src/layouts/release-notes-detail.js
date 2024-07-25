@@ -20,11 +20,13 @@ import LayoutReleaseNotePageHeaderSide from './layout-release-note-page-header-s
 import LayoutPageContent from './internals/layout-page-content';
 import PageContentInset from './internals/page-content-inset';
 import { ReleaseNotePageTitle } from '../components/release-note-heading';
+import useReleaseNotesConfig from '../hooks/use-release-notes-config';
 
 const LayoutReleaseNotesDetail = (props) => {
   const { ref } = useInView();
   const layoutState = useLayoutState();
   const siteData = useSiteData();
+  const { RELEASE_NOTES_BASE_URL } = useReleaseNotesConfig();
   const excludeFromSearchIndex =
     props.pageData.excludeFromSearchIndex ||
     siteData.siteMetadata.excludeFromSearchIndex;
@@ -59,7 +61,7 @@ const LayoutReleaseNotesDetail = (props) => {
           <LayoutPage>
             <LayoutPageHeader>
               <Link
-                href="/releases"
+                href={`/..${RELEASE_NOTES_BASE_URL}`}
                 nounderline={true}
                 css={css`
                   svg {

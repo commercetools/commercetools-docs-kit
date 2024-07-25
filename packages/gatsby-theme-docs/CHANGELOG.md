@@ -1,5 +1,151 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.6.0
+
+### Minor Changes
+
+- [#2029](https://github.com/commercetools/commercetools-docs-kit/pull/2029) [`21bb6e7`](https://github.com/commercetools/commercetools-docs-kit/commit/21bb6e76e7518b8fc441c4bb26d4d10581513df7) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for code snippets in self-learning
+
+### Patch Changes
+
+- Updated dependencies [[`21bb6e7`](https://github.com/commercetools/commercetools-docs-kit/commit/21bb6e76e7518b8fc441c4bb26d4d10581513df7)]:
+  - @commercetools-docs/ui-kit@24.6.0
+
+## 24.5.1
+
+### Patch Changes
+
+- [#2025](https://github.com/commercetools/commercetools-docs-kit/pull/2025) [`8077406`](https://github.com/commercetools/commercetools-docs-kit/commit/807740639a6830f0fa774f058e4212691ae07d26) Thanks [@FFawzy](https://github.com/FFawzy)! - Use namespace for custom tags
+
+- Updated dependencies [[`8077406`](https://github.com/commercetools/commercetools-docs-kit/commit/807740639a6830f0fa774f058e4212691ae07d26)]:
+  - @commercetools-docs/ui-kit@24.5.1
+
+## 24.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`6483c78`](https://github.com/commercetools/commercetools-docs-kit/commit/6483c786cf03066dd35c4cdd4f3ef154af1df14e)]:
+  - @commercetools-docs/ui-kit@24.5.0
+
+## 24.4.3
+
+### Patch Changes
+
+- [#2013](https://github.com/commercetools/commercetools-docs-kit/pull/2013) [`1e83b4a`](https://github.com/commercetools/commercetools-docs-kit/commit/1e83b4a4786980ac55a29f0aa69bf21d8682a7ea) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - All release notes link will send users to unfiltered release notes page
+
+## 24.4.2
+
+### Patch Changes
+
+- [#2019](https://github.com/commercetools/commercetools-docs-kit/pull/2019) [`2f2ed2b`](https://github.com/commercetools/commercetools-docs-kit/commit/2f2ed2bda66a69222545e3a7d3d310714703daba) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Make release notes tags responsive
+
+## 24.4.1
+
+### Patch Changes
+
+- [#2017](https://github.com/commercetools/commercetools-docs-kit/pull/2017) [`afe5e41`](https://github.com/commercetools/commercetools-docs-kit/commit/afe5e41e662adbe4c56aa82be15b315ba0547b38) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - change release notes tag shape and color
+
+- Updated dependencies [[`104808c`](https://github.com/commercetools/commercetools-docs-kit/commit/104808c73462cf52d48d76409f42002803d7c709), [`afe5e41`](https://github.com/commercetools/commercetools-docs-kit/commit/afe5e41e662adbe4c56aa82be15b315ba0547b38)]:
+  - @commercetools-docs/ui-kit@24.4.1
+
+## 24.4.0
+
+### Minor Changes
+
+- [#2011](https://github.com/commercetools/commercetools-docs-kit/pull/2011) [`daaaf95`](https://github.com/commercetools/commercetools-docs-kit/commit/daaaf95395a1d9b08245f6f3249e056f68528d5e) Thanks [@timonrey](https://github.com/timonrey)! - Introduces a new frontmatter for release notes calles "hideProductLabels". Every release note with this frontmatter set to true will not display the product and productArea labels.
+
+### Patch Changes
+
+- [#2010](https://github.com/commercetools/commercetools-docs-kit/pull/2010) [`b7fd297`](https://github.com/commercetools/commercetools-docs-kit/commit/b7fd2978e0c51b472f4f68f607623f4b93916679) Thanks [@FFawzy](https://github.com/FFawzy)! - fix: use correct link component to go back to release note page
+
+## 24.3.3
+
+### Patch Changes
+
+- [#2005](https://github.com/commercetools/commercetools-docs-kit/pull/2005) [`cf28c03`](https://github.com/commercetools/commercetools-docs-kit/commit/cf28c03e53bfe86584bf2fbea5278cdd2bc0380d) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Adapt the release notes pages back links to the new parameters format
+
+- [#2007](https://github.com/commercetools/commercetools-docs-kit/pull/2007) [`c2080b5`](https://github.com/commercetools/commercetools-docs-kit/commit/c2080b59fb4fabfa4d4b03d5566c0b9dda5a32ee) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Added infobox to legacy release notes pages
+
+## 24.3.2
+
+### Patch Changes
+
+- [#2002](https://github.com/commercetools/commercetools-docs-kit/pull/2002) [`a18b0a1`](https://github.com/commercetools/commercetools-docs-kit/commit/a18b0a11ab87f4fa1bdd17ffe9d75755f84d2dda) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix product and productArea values
+
+## 24.3.1
+
+### Patch Changes
+
+- [#2000](https://github.com/commercetools/commercetools-docs-kit/pull/2000) [`2da2bac`](https://github.com/commercetools/commercetools-docs-kit/commit/2da2baccc7e48c5a09072549eebe74e5ecfc8155) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix internal links to release notes
+
+## 24.3.0
+
+### Minor Changes
+
+- [#1987](https://github.com/commercetools/commercetools-docs-kit/pull/1987) [`4dabf86`](https://github.com/commercetools/commercetools-docs-kit/commit/4dabf86261ce37d27f03eb2133270c3712bff2bb) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Remove the ability of filtering the release notes in the legacy release notes list page
+
+### Patch Changes
+
+- [#1998](https://github.com/commercetools/commercetools-docs-kit/pull/1998) [`3ddd920`](https://github.com/commercetools/commercetools-docs-kit/commit/3ddd92000fa30d33d0e54dbdb56ed8e53b2fab77) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add util function to calculate the url for release notes page with pre initialized fields
+
+## 24.2.1
+
+### Patch Changes
+
+- [#1995](https://github.com/commercetools/commercetools-docs-kit/pull/1995) [`ee6fb60`](https://github.com/commercetools/commercetools-docs-kit/commit/ee6fb60cf7979c04ee20d8abff1ec6db3040028d) Thanks [@timonrey](https://github.com/timonrey)! - Don't show product and productArea labels on release notes when the value is the Same. Adjusts the hover colors on release notes
+
+## 24.2.0
+
+### Minor Changes
+
+- [#1985](https://github.com/commercetools/commercetools-docs-kit/pull/1985) [`dc1bdf3`](https://github.com/commercetools/commercetools-docs-kit/commit/dc1bdf3bf00164c13f2706eed70ef22da7324b4c) Thanks [@timonrey](https://github.com/timonrey)! - Introduce two new frontmatter for release notes called "product" and "productArea".
+  It also introduces a new release note type called "deprecation".
+
+### Patch Changes
+
+- [#1989](https://github.com/commercetools/commercetools-docs-kit/pull/1989) [`cf10210`](https://github.com/commercetools/commercetools-docs-kit/commit/cf102103dab4b4b07b30aeaee463c006a163b729) Thanks [@timonrey](https://github.com/timonrey)! - Display 'product' and 'productArea' of the release note next to the type.
+
+- [#1993](https://github.com/commercetools/commercetools-docs-kit/pull/1993) [`1b0999c`](https://github.com/commercetools/commercetools-docs-kit/commit/1b0999c0409ebfc3672943c66f5d3d893e541217) Thanks [@timonrey](https://github.com/timonrey)! - Create alternative index nav size for the release notes page in the docs.
+  The index nav on mobile version stays open when clicking on it for the release notes page.
+
+- [#1992](https://github.com/commercetools/commercetools-docs-kit/pull/1992) [`841d569`](https://github.com/commercetools/commercetools-docs-kit/commit/841d5691d8af2d2ba3a32feead5ea88719761ca0) Thanks [@FFawzy](https://github.com/FFawzy)! - feat: changing the default mode for ai assistant to Gemini
+
+- Updated dependencies [[`cf10210`](https://github.com/commercetools/commercetools-docs-kit/commit/cf102103dab4b4b07b30aeaee463c006a163b729), [`1b0999c`](https://github.com/commercetools/commercetools-docs-kit/commit/1b0999c0409ebfc3672943c66f5d3d893e541217)]:
+  - @commercetools-docs/ui-kit@24.2.0
+
+## 24.1.1
+
+### Patch Changes
+
+- [#1973](https://github.com/commercetools/commercetools-docs-kit/pull/1973) [`394a5da`](https://github.com/commercetools/commercetools-docs-kit/commit/394a5da592409e49fe2a8f732ef34a1e458108ca) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix unverified users to access AI assistant
+
+## 24.1.0
+
+### Minor Changes
+
+- [#1964](https://github.com/commercetools/commercetools-docs-kit/pull/1964) [`3867571`](https://github.com/commercetools/commercetools-docs-kit/commit/38675714fe00f5982d42ba28fb2dbf8108dde9fc) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add to each page a canonical tag pointing to the production site
+
+- [#1963](https://github.com/commercetools/commercetools-docs-kit/pull/1963) [`9d76bf0`](https://github.com/commercetools/commercetools-docs-kit/commit/9d76bf0e1b4d3b048725ab631d8da04862890339) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add support for a new frontmatter tag called products which can override sitewide products tags uses in algolia search
+
+### Patch Changes
+
+- [#1968](https://github.com/commercetools/commercetools-docs-kit/pull/1968) [`ed89951`](https://github.com/commercetools/commercetools-docs-kit/commit/ed89951406dc78c678d5aef789affa87de498748) Thanks [@timonrey](https://github.com/timonrey)! - Adjust footer commercetools banner to make it clickable. It points to the commercetools.com website.
+
+## 24.0.3
+
+### Patch Changes
+
+- [#1949](https://github.com/commercetools/commercetools-docs-kit/pull/1949) [`bb025af`](https://github.com/commercetools/commercetools-docs-kit/commit/bb025af412c74c3f95c9ad00ee68d95a492e2584) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Expandible chapters state needs to be changed based on the exact matching of the location, instead of a loose "includes"
+
+- [#1961](https://github.com/commercetools/commercetools-docs-kit/pull/1961) [`6fad386`](https://github.com/commercetools/commercetools-docs-kit/commit/6fad386040500bedc928088a5e8c4092af2ac843) Thanks [@timonrey](https://github.com/timonrey)! - Change color of the release note label "Resolved Issue".
+
+- [#1954](https://github.com/commercetools/commercetools-docs-kit/pull/1954) [`b661c74`](https://github.com/commercetools/commercetools-docs-kit/commit/b661c74b838388a96662c89105177c16d34ee6cc) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Adjust readonly mode for AI assistant. It will hide the send button and enable the restart conversation button
+
+- [#1960](https://github.com/commercetools/commercetools-docs-kit/pull/1960) [`ad4437b`](https://github.com/commercetools/commercetools-docs-kit/commit/ad4437b9c9112524c4b74df8d98423393c8d6688) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - apply ui changes for learning go live
+
+- Updated dependencies [[`ad4437b`](https://github.com/commercetools/commercetools-docs-kit/commit/ad4437b9c9112524c4b74df8d98423393c8d6688)]:
+  - @commercetools-docs/ui-kit@24.0.3
+
 ## 24.0.2
 
 ### Patch Changes

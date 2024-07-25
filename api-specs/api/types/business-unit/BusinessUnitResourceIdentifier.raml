@@ -1,11 +1,10 @@
 #%RAML 1.0 DataType
 (package): BusinessUnit
-(docs-uri): https://docs.commercetools.com/api/projects/business-units#businessunitresourceidentifier
 type: ResourceIdentifier
 displayName: BusinessUnitResourceIdentifier
 discriminatorValue: business-unit
 description: |
-  [ResourceIdentifier](/../api/types#resourceidentifier) to a [BusinessUnit](ctp:api:type:BusinessUnit). Either `id` or `key` is required. If both are set, an [InvalidJsonInput](/../api/errors#invalidjsoninput) error is returned.
+  [ResourceIdentifier](ctp:api:type:ResourceIdentifier) to a [BusinessUnit](ctp:api:type:BusinessUnit). Either `id` or `key` is required. If both are set, an [InvalidJsonInput](/../api/errors#invalidjsoninput) error is returned.
 properties:
   id?:
     type: string

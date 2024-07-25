@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-website/site-template",
-  "version": "5.3.29",
+  "version": "5.3.45",
   "private": true,
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
@@ -12,10 +12,10 @@
     "build": "./scripts/build.sh"
   },
   "dependencies": {
-    "@commercetools-docs/gatsby-theme-docs": "24.0.2",
-    "gatsby": "5.12.12",
-    "gatsby-cli": "5.12.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "@commercetools-docs/gatsby-theme-docs": "24.6.0",
+    "gatsby": "5.13.6",
+    "gatsby-cli": "5.13.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }

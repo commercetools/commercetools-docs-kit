@@ -32,6 +32,7 @@
                 <option type="exclude">signup</option>
                 <option type="exclude">active-cart</option>
                 <option type="exclude">health</option>
+                <option type="exclude">product-tailoring</option>
             </options>
         </rule>
         <rule>
@@ -53,6 +54,7 @@
                 <option type="exclude">lineItemOrder</option>
                 <option type="exclude">textLineItemOrder</option>
                 <option type="exclude">syncInfo</option>
+                <option type="exclude">localeProjection</option>
                 <option type="exclude">returnInfo</option>
                 <option type="exclude">value</option>
                 <option type="exclude">newState</option>
@@ -65,6 +67,7 @@
                 <option type="exclude">filter</option>
                 <option type="exclude">not</option>
                 <option type="exclude">or</option>
+                <option type="exclude">expand</option>
             </options>
         </rule>
         <rule>
@@ -104,6 +107,9 @@
         <rule enabled="false">
             <name>com.commercetools.rmf.validators.DatetimeRule</name>
         </rule>
+      <rule enabled="true">
+        <name>com.commercetools.rmf.validators.PolymorphicSubtypesRule</name>
+      </rule>
         <rule>
             <name>com.commercetools.rmf.validators.CamelCaseRule</name>
             <options>

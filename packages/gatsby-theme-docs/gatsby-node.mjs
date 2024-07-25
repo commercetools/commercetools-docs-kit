@@ -118,6 +118,18 @@ export const createResolvers = ({ createResolvers }) => {
         },
       },
     },
+    ReleaseNotePage: {
+      type: {
+        resolve: (source) => {
+          if (Array.isArray(source.type)) {
+            return source.type;
+          } else if (typeof source.type === 'string') {
+            return [source.type];
+          }
+          return [];
+        },
+      },
+    },
   };
   createResolvers(resolvers);
 };
@@ -221,6 +233,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
       fix
       enhancement
       announcement
+      deprecation
     }
   `);
 
@@ -277,6 +290,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         },
         courseId: { type: 'Int' },
         topicName: { type: 'String' },
+        products: { type: '[String]' },
       },
       interfaces: ['Node'],
     }),
@@ -298,7 +312,10 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         date: { type: 'Date!', extensions: { dateformat: {} } },
         orderHint: { type: 'Int' },
         description: { type: 'String!' },
-        type: { type: 'ReleaseNoteType!' },
+        type: { type: '[ReleaseNoteType!]!' },
+        product: { type: 'String' },
+        productArea: { type: 'String' },
+        hideProductLabels: { type: 'Boolean' },
         topics: { type: '[String!]!' },
         published: { type: 'Boolean!' },
         body: {
@@ -358,6 +375,9 @@ export const onCreateNode = async (
       orderHint: node.frontmatter.orderHint,
       description: node.frontmatter.description,
       type: node.frontmatter.type,
+      product: node.frontmatter.product,
+      productArea: node.frontmatter.productArea,
+      hideProductLabels: node.frontmatter.hideProductLabels,
       topics: node.frontmatter.topics || [],
       published: Boolean(node.frontmatter.published),
       rawExcerpt: excerptSplit[0],
@@ -419,6 +439,9 @@ export const onCreateNode = async (
       topicName: node.frontmatter.topicName
         ? String(node.frontmatter.topicName)
         : null,
+      products: Array.isArray(node.frontmatter.products)
+        ? node.frontmatter.products
+        : [],
     };
 
     actions.createNode({

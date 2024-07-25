@@ -1,6 +1,5 @@
 #%RAML 1.0 DataType
 (package): Cart
-(docs-uri): https://docs.commercetools.com/api/projects/carts#add-lineitem
 type: CartUpdateAction
 displayName: CartAddLineItemAction
 discriminatorValue: addLineItem
@@ -77,7 +76,11 @@ properties:
   externalTaxRate?:
     type: ExternalTaxRateDraft
     description: |
-      External Tax Rate for the Line Item, if the Cart has the `External` [TaxMode](ctp:api:type:TaxMode).
+      External Tax Rate for the Line Item, if the Cart has the `External` [TaxMode](ctp:api:type:TaxMode) and `Single` [ShippingMode](ctp:api:type:ShippingMode).
+  perMethodExternalTaxRate?:
+    type: MethodExternalTaxRateDraft[]
+    description: |
+      Sets the external Tax Rates for individual Shipping Methods, if the Cart has the `External` [TaxMode](ctp:api:type:TaxMode) and `Multiple` [ShippingMode](ctp:api:type:ShippingMode).
   inventoryMode?:
     type: InventoryMode
     description: |

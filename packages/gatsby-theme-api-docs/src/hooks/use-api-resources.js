@@ -14,6 +14,7 @@ export const useApiResources = () => {
         queryParameters {
           name
           required
+          default
           type
           builtinType
           description
@@ -24,6 +25,16 @@ export const useApiResources = () => {
             builtinType
             type
           }
+        }
+        headers {
+          header
+          displayName
+          default
+          enum
+          description
+          type
+          required
+          pattern
         }
         responses {
           code

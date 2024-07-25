@@ -75,7 +75,7 @@ ReleaseNotesListTemplate.propTypes = {
           title: PropTypes.string.isRequired,
           date: PropTypes.string.isRequired,
           description: PropTypes.string.isRequired,
-          type: PropTypes.string.isRequired,
+          type: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
           topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
           body: PropTypes.string.isRequired,
           hasMore: PropTypes.bool.isRequired,
@@ -88,7 +88,7 @@ ReleaseNotesListTemplate.propTypes = {
 export default ReleaseNotesListTemplate;
 
 // eslint-disable-next-line react/prop-types
-export function Head({ data }) {
+export function Head({ data, location }) {
   return (
     // eslint-disable-next-line react/prop-types
     <ThemeProvider websitePrimaryColor={data.contentPage.websitePrimaryColor}>
@@ -97,6 +97,9 @@ export function Head({ data }) {
         title={data.contentPage.title}
         // eslint-disable-next-line react/prop-types
         excludeFromSearchIndex={data.contentPage.excludeFromSearchIndex}
+        location={location}
+        // eslint-disable-next-line react/prop-types
+        products={data.contentPage.products}
       />
     </ThemeProvider>
   );
@@ -106,6 +109,7 @@ export const query = graphql`
   query ($slug: String!) {
     contentPage(slug: { eq: $slug }) {
       title
+      products
       websitePrimaryColor
       beta
       excludeFromSearchIndex
@@ -120,6 +124,9 @@ export const query = graphql`
         orderHint
         description
         type
+        product
+        productArea
+        hideProductLabels
         topics
         body: rawExcerpt
         hasMore
