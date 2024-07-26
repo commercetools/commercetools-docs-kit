@@ -75,6 +75,7 @@ AssociateRoleAssignmentDraft: !include business-unit/AssociateRoleAssignmentDraf
 AssociateRoleDeprecated: !include business-unit/AssociateRoleDeprecated.raml
 AssociateRoleInheritanceMode: !include business-unit/AssociateRoleInheritanceMode.raml
 BusinessUnit: !include business-unit/BusinessUnit.raml
+BusinessUnitApprovalRuleMode: !include business-unit/BusinessUnitApprovalRuleMode.raml
 BusinessUnitAssociateMode: !include business-unit/BusinessUnitAssociateMode.raml
 BusinessUnitDraft: !include business-unit/BusinessUnitDraft.raml
 BusinessUnitKeyReference: !include business-unit/BusinessUnitKeyReference.raml
@@ -98,6 +99,7 @@ BusinessUnitAddBillingAddressIdAction: !include business-unit/updates/BusinessUn
 BusinessUnitAddShippingAddressIdAction: !include business-unit/updates/BusinessUnitAddShippingAddressIdAction.raml
 BusinessUnitAddStoreAction: !include business-unit/updates/BusinessUnitAddStoreAction.raml
 BusinessUnitChangeAddressAction: !include business-unit/updates/BusinessUnitChangeAddressAction.raml
+BusinessUnitChangeApprovalRuleModeAction: !include business-unit/updates/BusinessUnitChangeApprovalRuleModeAction.raml
 BusinessUnitChangeAssociateAction: !include business-unit/updates/BusinessUnitChangeAssociateAction.raml
 BusinessUnitChangeAssociateModeAction: !include business-unit/updates/BusinessUnitChangeAssociateModeAction.raml
 BusinessUnitChangeNameAction: !include business-unit/updates/BusinessUnitChangeNameAction.raml
@@ -239,6 +241,7 @@ CartChangeCustomLineItemMoneyAction: !include cart/updates/CartChangeCustomLineI
 CartChangeCustomLineItemPriceModeAction: !include cart/updates/CartChangeCustomLineItemPriceModeAction.raml
 CartChangeCustomLineItemQuantityAction: !include cart/updates/CartChangeCustomLineItemQuantityAction.raml
 CartChangeLineItemQuantityAction: !include cart/updates/CartChangeLineItemQuantityAction.raml
+CartChangeLineItemsOrderAction: !include cart/updates/CartChangeLineItemsOrderAction.raml
 CartChangeTaxCalculationModeAction: !include cart/updates/CartChangeTaxCalculationModeAction.raml
 CartChangeTaxModeAction: !include cart/updates/CartChangeTaxModeAction.raml
 CartChangeTaxRoundingModeAction: !include cart/updates/CartChangeTaxRoundingModeAction.raml
@@ -403,6 +406,12 @@ CustomerGroupChangeNameAction: !include customer-group/updates/CustomerGroupChan
 CustomerGroupSetCustomFieldAction: !include customer-group/updates/CustomerGroupSetCustomFieldAction.raml
 CustomerGroupSetCustomTypeAction: !include customer-group/updates/CustomerGroupSetCustomTypeAction.raml
 CustomerGroupSetKeyAction: !include customer-group/updates/CustomerGroupSetKeyAction.raml
+CustomerIndexingProgress: !include customer-search/CustomerIndexingProgress.raml
+CustomerIndexingStatus: !include customer-search/CustomerIndexingStatus.raml
+CustomerPagedSearchResponse: !include customer-search/CustomerPagedSearchResponse.raml
+CustomerSearchIndexingStatusResponse: !include customer-search/CustomerSearchIndexingStatusResponse.raml
+CustomerSearchRequest: !include customer-search/CustomerSearchRequest.raml
+CustomerSearchResult: !include customer-search/CustomerSearchResult.raml
 AnonymousCartSignInMode: !include customer/AnonymousCartSignInMode.raml
 AuthenticationMode: !include customer/AuthenticationMode.raml
 Customer: !include customer/Customer.raml
@@ -739,6 +748,7 @@ MyCartAddPaymentAction: !include me/updates/MyCartAddPaymentAction.raml
 # yamllint disable-line rule:line-length
 MyCartApplyDeltaToLineItemShippingDetailsTargetsAction: !include me/updates/MyCartApplyDeltaToLineItemShippingDetailsTargetsAction.raml
 MyCartChangeLineItemQuantityAction: !include me/updates/MyCartChangeLineItemQuantityAction.raml
+MyCartChangeLineItemsOrderAction: !include me/updates/MyCartChangeLineItemsOrderAction.raml
 MyCartChangeTaxModeAction: !include me/updates/MyCartChangeTaxModeAction.raml
 MyCartRecalculateAction: !include me/updates/MyCartRecalculateAction.raml
 MyCartRemoveDiscountCodeAction: !include me/updates/MyCartRemoveDiscountCodeAction.raml
@@ -838,6 +848,7 @@ BusinessUnitAddressCustomFieldRemovedMessage: !include message/BusinessUnitAddre
 BusinessUnitAddressCustomTypeRemovedMessage: !include message/BusinessUnitAddressCustomTypeRemovedMessage.raml
 BusinessUnitAddressCustomTypeSetMessage: !include message/BusinessUnitAddressCustomTypeSetMessage.raml
 BusinessUnitAddressRemovedMessage: !include message/BusinessUnitAddressRemovedMessage.raml
+BusinessUnitApprovalRuleModeChangedMessage: !include message/BusinessUnitApprovalRuleModeChangedMessage.raml
 BusinessUnitAssociateAddedMessage: !include message/BusinessUnitAssociateAddedMessage.raml
 BusinessUnitAssociateChangedMessage: !include message/BusinessUnitAssociateChangedMessage.raml
 BusinessUnitAssociateModeChangedMessage: !include message/BusinessUnitAssociateModeChangedMessage.raml
@@ -972,6 +983,11 @@ ProductDeletedMessage: !include message/ProductDeletedMessage.raml
 ProductImageAddedMessage: !include message/ProductImageAddedMessage.raml
 ProductPriceAddedMessage: !include message/ProductPriceAddedMessage.raml
 ProductPriceChangedMessage: !include message/ProductPriceChangedMessage.raml
+ProductPriceCustomFieldAddedMessage: !include message/ProductPriceCustomFieldAddedMessage.raml
+ProductPriceCustomFieldChangedMessage: !include message/ProductPriceCustomFieldChangedMessage.raml
+ProductPriceCustomFieldRemovedMessage: !include message/ProductPriceCustomFieldRemovedMessage.raml
+ProductPriceCustomFieldsRemovedMessage: !include message/ProductPriceCustomFieldsRemovedMessage.raml
+ProductPriceCustomFieldsSetMessage: !include message/ProductPriceCustomFieldsSetMessage.raml
 ProductPriceDiscountsSetMessage: !include message/ProductPriceDiscountsSetMessage.raml
 ProductPriceDiscountsSetUpdatedPrice: !include message/ProductPriceDiscountsSetUpdatedPrice.raml
 ProductPriceExternalDiscountSetMessage: !include message/ProductPriceExternalDiscountSetMessage.raml
@@ -994,6 +1010,8 @@ ProductStateTransitionMessage: !include message/ProductStateTransitionMessage.ra
 ProductTailoringCreatedMessage: !include message/ProductTailoringCreatedMessage.raml
 ProductTailoringDeletedMessage: !include message/ProductTailoringDeletedMessage.raml
 ProductTailoringDescriptionSetMessage: !include message/ProductTailoringDescriptionSetMessage.raml
+ProductTailoringImageAddedMessage: !include message/ProductTailoringImageAddedMessage.raml
+ProductTailoringImagesSetMessage: !include message/ProductTailoringImagesSetMessage.raml
 ProductTailoringNameSetMessage: !include message/ProductTailoringNameSetMessage.raml
 ProductTailoringPublishedMessage: !include message/ProductTailoringPublishedMessage.raml
 ProductTailoringSlugSetMessage: !include message/ProductTailoringSlugSetMessage.raml
@@ -1001,6 +1019,8 @@ ProductTailoringUnpublishedMessage: !include message/ProductTailoringUnpublished
 ProductUnpublishedMessage: !include message/ProductUnpublishedMessage.raml
 ProductVariantAddedMessage: !include message/ProductVariantAddedMessage.raml
 ProductVariantDeletedMessage: !include message/ProductVariantDeletedMessage.raml
+ProductVariantTailoringAddedMessage: !include message/ProductVariantTailoringAddedMessage.raml
+ProductVariantTailoringRemovedMessage: !include message/ProductVariantTailoringRemovedMessage.raml
 QuoteCreatedMessage: !include message/QuoteCreatedMessage.raml
 QuoteCustomerChangedMessage: !include message/QuoteCustomerChangedMessage.raml
 QuoteDeletedMessage: !include message/QuoteDeletedMessage.raml
@@ -1080,6 +1100,8 @@ BusinessUnitAddressCustomTypeRemovedMessagePayload: !include message/payload/Bus
 # yamllint disable-line rule:line-length
 BusinessUnitAddressCustomTypeSetMessagePayload: !include message/payload/BusinessUnitAddressCustomTypeSetMessagePayload.raml
 BusinessUnitAddressRemovedMessagePayload: !include message/payload/BusinessUnitAddressRemovedMessagePayload.raml
+# yamllint disable-line rule:line-length
+BusinessUnitApprovalRuleModeChangedMessagePayload: !include message/payload/BusinessUnitApprovalRuleModeChangedMessagePayload.raml
 BusinessUnitAssociateAddedMessagePayload: !include message/payload/BusinessUnitAssociateAddedMessagePayload.raml
 BusinessUnitAssociateChangedMessagePayload: !include message/payload/BusinessUnitAssociateChangedMessagePayload.raml
 # yamllint disable-line rule:line-length
@@ -1226,6 +1248,12 @@ ProductDeletedMessagePayload: !include message/payload/ProductDeletedMessagePayl
 ProductImageAddedMessagePayload: !include message/payload/ProductImageAddedMessagePayload.raml
 ProductPriceAddedMessagePayload: !include message/payload/ProductPriceAddedMessagePayload.raml
 ProductPriceChangedMessagePayload: !include message/payload/ProductPriceChangedMessagePayload.raml
+ProductPriceCustomFieldAddedMessagePayload: !include message/payload/ProductPriceCustomFieldAddedMessagePayload.raml
+ProductPriceCustomFieldChangedMessagePayload: !include message/payload/ProductPriceCustomFieldChangedMessagePayload.raml
+ProductPriceCustomFieldRemovedMessagePayload: !include message/payload/ProductPriceCustomFieldRemovedMessagePayload.raml
+# yamllint disable-line rule:line-length
+ProductPriceCustomFieldsRemovedMessagePayload: !include message/payload/ProductPriceCustomFieldsRemovedMessagePayload.raml
+ProductPriceCustomFieldsSetMessagePayload: !include message/payload/ProductPriceCustomFieldsSetMessagePayload.raml
 ProductPriceDiscountsSetMessagePayload: !include message/payload/ProductPriceDiscountsSetMessagePayload.raml
 # yamllint disable-line rule:line-length
 ProductPriceExternalDiscountSetMessagePayload: !include message/payload/ProductPriceExternalDiscountSetMessagePayload.raml
@@ -1251,6 +1279,8 @@ ProductStateTransitionMessagePayload: !include message/payload/ProductStateTrans
 ProductTailoringCreatedMessagePayload: !include message/payload/ProductTailoringCreatedMessagePayload.raml
 ProductTailoringDeletedMessagePayload: !include message/payload/ProductTailoringDeletedMessagePayload.raml
 ProductTailoringDescriptionSetMessagePayload: !include message/payload/ProductTailoringDescriptionSetMessagePayload.raml
+ProductTailoringImageAddedMessagePayload: !include message/payload/ProductTailoringImageAddedMessagePayload.raml
+ProductTailoringImagesSetMessagePayload: !include message/payload/ProductTailoringImagesSetMessagePayload.raml
 ProductTailoringNameSetMessagePayload: !include message/payload/ProductTailoringNameSetMessagePayload.raml
 ProductTailoringPublishedMessagePayload: !include message/payload/ProductTailoringPublishedMessagePayload.raml
 ProductTailoringSlugSetMessagePayload: !include message/payload/ProductTailoringSlugSetMessagePayload.raml
@@ -1258,6 +1288,8 @@ ProductTailoringUnpublishedMessagePayload: !include message/payload/ProductTailo
 ProductUnpublishedMessagePayload: !include message/payload/ProductUnpublishedMessagePayload.raml
 ProductVariantAddedMessagePayload: !include message/payload/ProductVariantAddedMessagePayload.raml
 ProductVariantDeletedMessagePayload: !include message/payload/ProductVariantDeletedMessagePayload.raml
+ProductVariantTailoringAddedMessagePayload: !include message/payload/ProductVariantTailoringAddedMessagePayload.raml
+ProductVariantTailoringRemovedMessagePayload: !include message/payload/ProductVariantTailoringRemovedMessagePayload.raml
 QuoteCreatedMessagePayload: !include message/payload/QuoteCreatedMessagePayload.raml
 QuoteCustomerChangedMessagePayload: !include message/payload/QuoteCustomerChangedMessagePayload.raml
 QuoteDeletedMessagePayload: !include message/payload/QuoteDeletedMessagePayload.raml
@@ -1445,6 +1477,7 @@ OrderPagedSearchResponse: !include order-search/OrderPagedSearchResponse.raml
 OrderSearchAndExpression: !include order-search/OrderSearchAndExpression.raml
 OrderSearchAnyValue: !include order-search/OrderSearchAnyValue.raml
 OrderSearchCompoundExpression: !include order-search/OrderSearchCompoundExpression.raml
+OrderSearchCustomType: !include order-search/OrderSearchCustomType.raml
 OrderSearchDateRangeExpression: !include order-search/OrderSearchDateRangeExpression.raml
 OrderSearchDateRangeValue: !include order-search/OrderSearchDateRangeValue.raml
 OrderSearchExactExpression: !include order-search/OrderSearchExactExpression.raml
@@ -1698,8 +1731,31 @@ ProductTailoringReference: !include product-tailoring/ProductTailoringReference.
 ProductTailoringResourceIdentifier: !include product-tailoring/ProductTailoringResourceIdentifier.raml
 ProductTailoringUpdate: !include product-tailoring/ProductTailoringUpdate.raml
 ProductTailoringUpdateAction: !include product-tailoring/ProductTailoringUpdateAction.raml
+ProductVariantTailoring: !include product-tailoring/ProductVariantTailoring.raml
+ProductVariantTailoringDraft: !include product-tailoring/ProductVariantTailoringDraft.raml
+ProductTailoringAddAssetAction: !include product-tailoring/updates/ProductTailoringAddAssetAction.raml
+ProductTailoringAddExternalImageAction: !include product-tailoring/updates/ProductTailoringAddExternalImageAction.raml
+ProductTailoringAddVariantAction: !include product-tailoring/updates/ProductTailoringAddVariantAction.raml
+ProductTailoringChangeAssetNameAction: !include product-tailoring/updates/ProductTailoringChangeAssetNameAction.raml
+ProductTailoringChangeAssetOrderAction: !include product-tailoring/updates/ProductTailoringChangeAssetOrderAction.raml
+# yamllint disable-line rule:line-length
+ProductTailoringMoveImageToPositionAction: !include product-tailoring/updates/ProductTailoringMoveImageToPositionAction.raml
 ProductTailoringPublishAction: !include product-tailoring/updates/ProductTailoringPublishAction.raml
+ProductTailoringRemoveAssetAction: !include product-tailoring/updates/ProductTailoringRemoveAssetAction.raml
+ProductTailoringRemoveImageAction: !include product-tailoring/updates/ProductTailoringRemoveImageAction.raml
+ProductTailoringRemoveVariantAction: !include product-tailoring/updates/ProductTailoringRemoveVariantAction.raml
+# yamllint disable-line rule:line-length
+ProductTailoringSetAssetCustomFieldAction: !include product-tailoring/updates/ProductTailoringSetAssetCustomFieldAction.raml
+# yamllint disable-line rule:line-length
+ProductTailoringSetAssetCustomTypeAction: !include product-tailoring/updates/ProductTailoringSetAssetCustomTypeAction.raml
+# yamllint disable-line rule:line-length
+ProductTailoringSetAssetDescriptionAction: !include product-tailoring/updates/ProductTailoringSetAssetDescriptionAction.raml
+ProductTailoringSetAssetKeyAction: !include product-tailoring/updates/ProductTailoringSetAssetKeyAction.raml
+ProductTailoringSetAssetSourcesAction: !include product-tailoring/updates/ProductTailoringSetAssetSourcesAction.raml
+ProductTailoringSetAssetTagsAction: !include product-tailoring/updates/ProductTailoringSetAssetTagsAction.raml
 ProductTailoringSetDescriptionAction: !include product-tailoring/updates/ProductTailoringSetDescriptionAction.raml
+ProductTailoringSetExternalImagesAction: !include product-tailoring/updates/ProductTailoringSetExternalImagesAction.raml
+ProductTailoringSetImageLabelAction: !include product-tailoring/updates/ProductTailoringSetImageLabelAction.raml
 ProductTailoringSetMetaAttributesAction: !include product-tailoring/updates/ProductTailoringSetMetaAttributesAction.raml
 # yamllint disable-line rule:line-length
 ProductTailoringSetMetaDescriptionAction: !include product-tailoring/updates/ProductTailoringSetMetaDescriptionAction.raml
@@ -1857,6 +1913,7 @@ CartClassificationType: !include project/CartClassificationType.raml
 CartScoreType: !include project/CartScoreType.raml
 CartValueType: !include project/CartValueType.raml
 CartsConfiguration: !include project/CartsConfiguration.raml
+CustomerSearchStatus: !include project/CustomerSearchStatus.raml
 ExternalOAuth: !include project/ExternalOAuth.raml
 OrderSearchStatus: !include project/OrderSearchStatus.raml
 ProductSearchIndexingMode: !include project/ProductSearchIndexingMode.raml
@@ -1876,6 +1933,7 @@ ProjectChangeCountriesAction: !include project/updates/ProjectChangeCountriesAct
 # yamllint disable-line rule:line-length
 ProjectChangeCountryTaxRateFallbackEnabledAction: !include project/updates/ProjectChangeCountryTaxRateFallbackEnabledAction.raml
 ProjectChangeCurrenciesAction: !include project/updates/ProjectChangeCurrenciesAction.raml
+ProjectChangeCustomerSearchStatusAction: !include project/updates/ProjectChangeCustomerSearchStatusAction.raml
 ProjectChangeLanguagesAction: !include project/updates/ProjectChangeLanguagesAction.raml
 ProjectChangeMessagesConfigurationAction: !include project/updates/ProjectChangeMessagesConfigurationAction.raml
 ProjectChangeMessagesEnabledAction: !include project/updates/ProjectChangeMessagesEnabledAction.raml
@@ -1988,6 +2046,7 @@ ZoneRate: !include shipping-method/ZoneRate.raml
 ZoneRateDraft: !include shipping-method/ZoneRateDraft.raml
 ShippingMethodAddShippingRateAction: !include shipping-method/updates/ShippingMethodAddShippingRateAction.raml
 ShippingMethodAddZoneAction: !include shipping-method/updates/ShippingMethodAddZoneAction.raml
+ShippingMethodChangeActiveAction: !include shipping-method/updates/ShippingMethodChangeActiveAction.raml
 ShippingMethodChangeIsDefaultAction: !include shipping-method/updates/ShippingMethodChangeIsDefaultAction.raml
 ShippingMethodChangeNameAction: !include shipping-method/updates/ShippingMethodChangeNameAction.raml
 ShippingMethodChangeTaxCategoryAction: !include shipping-method/updates/ShippingMethodChangeTaxCategoryAction.raml
