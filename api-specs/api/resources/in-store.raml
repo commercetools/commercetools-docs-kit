@@ -27,8 +27,8 @@ uriParameters:
               ],
           },
       ]
-    displayName: Query carts in store
-    description: Queries carts in a specific [Store](ctp:api:type:Store).
+    displayName: Query Carts in Store
+    description: Queries Carts in a specific [Store](ctp:api:type:Store).
     responses:
       200:
         body:
@@ -51,7 +51,7 @@ uriParameters:
       where?:
         type: QueryPredicate[]
   post:
-    displayName: Create cart in store
+    displayName: Create Cart in Store
     securedBy:
       [
         oauth_2_0:
@@ -65,8 +65,17 @@ uriParameters:
       ]
     description: |
       Creates a [Cart](ctp:api:type:Cart) in the [Store](ctp:api:type:Store) specified by `storeKey`.
-      When using this endpoint the Cart's `store` field is always set to the [Store](ctp:api:type:Store) specified in the path parameter.
-      If the referenced [ShippingMethod](ctp:api:type:ShippingMethod) in the [CartDraft](ctp:api:type:CartDraft) has a predicate that does not match, an [InvalidOperation](ctp:api:type:InvalidOperationError) error is returned.
+
+      If the referenced [ShippingMethod](ctp:api:type:ShippingMethod) in the [CartDraft](ctp:api:type:CartDraft) has a predicate that does not match, or if the Shipping Method is not active, an [InvalidOperation](ctp:api:type:InvalidOperationError) error is returned.
+
+      Specific Error Codes:
+
+      - [DiscountCodeNonApplicable](ctp:api:type:DiscountCodeNonApplicableError)
+      - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
+      - [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError)
+      - [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError)
+      - [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
+
     body:
       application/json:
         example: !include ../examples/cart-create.example.json
@@ -82,7 +91,7 @@ uriParameters:
         uriParameterName: customerId
         resourceType: Cart
     get:
-      displayName: Get cart by customer id in store
+      displayName: Get Cart in Store by Customer ID
       securedBy:
         [
           oauth_2_0:
@@ -95,7 +104,7 @@ uriParameters:
             },
         ]
       description: |
-        Retrieves the recently modified active Cart of a Customer with [CartOrigin](ctp:api:type:CartOrigin) `Customer`. If no active Cart exists, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        Retrieves the most recently modified active Cart of a Customer with [CartOrigin](ctp:api:type:CartOrigin) `Customer`. If no active Cart exists, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
         If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
@@ -126,7 +135,7 @@ uriParameters:
         resourceType: Cart
         resourceUpdateType: CartUpdate
     get:
-      displayName: Get cart by key in store
+      displayName: Get Cart in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -161,7 +170,7 @@ uriParameters:
         ]
       description: Checks if a Cart exists for a given `key`. Returns a `200 OK` status if the Cart exists or a `404 Not Found` otherwise.
     post:
-      displayName: Update cart by key in store
+      displayName: Update Cart in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -184,7 +193,7 @@ uriParameters:
             application/json:
               example: !include ../examples/cart.example.json
     delete:
-      displayName: Delete cart by key in store
+      displayName: Delete Cart in Store by Key
       description: |
         If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       is:
@@ -208,13 +217,18 @@ uriParameters:
   /replicate:
     type: base
     post:
-      displayName: Replicate cart for store
+      displayName: Replicate Cart in Store
       description: |
         Creates a new Cart by replicating an existing Cart or Order. Can be useful in cases where a customer wants to cancel a recent order to make some changes or reorder a previous order.
 
         The replicated Cart preserves Customer information, Line Items and Custom Line Items, Custom Fields, Discount Codes, and other settings of the Cart or Order. If the Line Items become invalid, for example, due to removed Products or Prices, they are removed from the new Cart. If the Customer switches to another Customer Group, the new Cart is updated with the new value. It has up-to-date Tax Rates, Prices, and Line Item product data and is in `Active` [CartState](ctp:api:type:CartState).
 
         The new Cart does not contain payments or deliveries. The [State](ctp:api:type:ItemState) of Line Items and Custom Line Items is reset to `initial`.
+
+        Specific Error Codes:
+
+        - [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError)
+        - [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError)
       body:
         application/json:
           example: !include ../examples/cart-replicate.example.json
@@ -244,7 +258,7 @@ uriParameters:
         resourceType: Cart
         resourceUpdateType: CartUpdate
     get:
-      displayName: Get cart by id in store
+      displayName: Get Cart in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -279,7 +293,7 @@ uriParameters:
         ]
       description: Checks if a Cart exists for a given `id`. Returns a `200 OK` status if the Cart exists or a `404 Not Found` otherwise.
     post:
-      displayName: Update cart by id in store
+      displayName: Update Cart in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -303,7 +317,7 @@ uriParameters:
             application/json:
               example: !include ../examples/cart.example.json
     delete:
-      displayName: Delete cart by id in store
+      displayName: Delete Cart in Store by ID
       description: |
         If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       is:
@@ -339,7 +353,7 @@ uriParameters:
     An order can be created from a cart, usually after a checkout process has
     been completed.
   get:
-    displayName: Query orders in store
+    displayName: Query Orders in Store
     securedBy:
       [
         oauth_2_0:
@@ -373,7 +387,7 @@ uriParameters:
       where?:
         type: QueryPredicate[]
   post:
-    displayName: Create order in store
+    displayName: Create Order in Store
     securedBy:
       [
         oauth_2_0:
@@ -390,6 +404,8 @@ uriParameters:
       The shipping address is used for tax calculation for a Cart with `Platform` [TaxMode](ctp:api:type:TaxMode).
 
       Creating an Order produces the [OrderCreated](ctp:api:type:OrderCreatedMessage) Message.
+      If a server-side problem occurs, indicated by a 500 Internal Server Error HTTP response, the Order creation may still successfully complete after the error is returned.
+      If you receive this error, you should verify the status of the Order by querying a unique identifier supplied during the creation request, such as the Order number.
 
       Specific Error Codes:
 
@@ -398,6 +414,7 @@ uriParameters:
       - [DiscountCodeNonApplicable](ctp:api:type:DiscountCodeNonApplicableError)
       - [ShippingMethodDoesNotMatchCart](ctp:api:type:ShippingMethodDoesNotMatchCartError)
       - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
+      - [InvalidOperation](ctp:api:type:InvalidOperationError)
       - [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError)
       - [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError)
       - [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
@@ -409,6 +426,43 @@ uriParameters:
         body:
           application/json:
             example: !include ../examples/order.example.json
+  /quotes:
+    (methodName): orderQuote
+    type: base
+    displayName: Order from Quote
+    post:
+      displayName: Create an Order from a Quote
+      description: |
+        Creating an Order produces the [OrderCreated](ctp:api:type:OrderCreatedMessage) Message.
+
+        Specific Error Codes:
+
+        - [OutOfStock](ctp:api:type:OutOfStockError)
+        - [PriceChanged](ctp:api:type:PriceChangedError)
+        - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
+        - [InvalidOperation](ctp:api:type:InvalidOperationError)
+        - [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_quotes:{projectKey}',
+                  'manage_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/order-from-quote.example.json
+          type: OrderFromQuoteDraft
+      responses:
+        201:
+          body:
+            application/json:
+              example: !include ../examples/order.example.json
+              type: Order
   /order-number={orderNumber}:
     (methodName): withOrderNumber
     uriParameters:
@@ -421,7 +475,7 @@ uriParameters:
         resourceType: Order
         resourceUpdateType: OrderUpdate
     get:
-      displayName: Get order by order number in store
+      displayName: Get Order in Store by OrderNumber
       securedBy:
         [
           oauth_2_0:
@@ -454,7 +508,7 @@ uriParameters:
         ]
       description: Checks if an Order exists for a given `orderNumber`. Returns a `200 OK` status if the Order exists or a `404 Not Found` otherwise.
     post:
-      displayName: Update order by order number in store
+      displayName: Update Order in Store by OrderNumber
       securedBy:
         [
           oauth_2_0:
@@ -477,7 +531,7 @@ uriParameters:
             application/json:
               example: !include ../examples/order.example.json
     delete:
-      displayName: Delete order by order number in store
+      displayName: Delete Order in Store by OrderNumber
       description: |
         If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
@@ -508,7 +562,7 @@ uriParameters:
         resourceType: Order
         resourceUpdateType: OrderUpdate
     get:
-      displayName: Get order by id in store
+      displayName: Get Order in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -541,7 +595,7 @@ uriParameters:
         ]
       description: Checks if an Order exists for a given `id`. Returns a `200 OK` status if the Order exists or a `404 Not Found` otherwise.
     post:
-      displayName: Update order by id in store
+      displayName: Update Order in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -564,7 +618,7 @@ uriParameters:
             application/json:
               example: !include ../examples/order.example.json
     delete:
-      displayName: Delete order by id in store
+      displayName: Delete Order in Store by ID
       description: |
         If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
@@ -601,7 +655,7 @@ uriParameters:
     (createable): MyCartDraft
     description: A shopping cart holds product variants and can be ordered.
     get:
-      displayName: Query my carts in store
+      displayName: Query My Carts in Store
       securedBy:
         [
           oauth_2_0:
@@ -610,9 +664,13 @@ uriParameters:
                 [
                   'manage_my_orders:{projectKey}',
                   'manage_my_orders:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
+      description: |
+        Returns all Carts that match a given Query Predicate and contain either a matching `customerId` or `anonymousId` in a Store.
       responses:
         200:
           body:
@@ -627,15 +685,18 @@ uriParameters:
                 [
                   'manage_my_orders:{projectKey}',
                   'manage_my_orders:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
-      description: Checks if a Cart exists for a given Query Predicate. Returns a `200 OK` status if any Carts match the Query Predicate or a `404 Not Found` otherwise.
+      description: |
+        Checks if a Cart exists for a Store that matches the given Query Predicate, and contains a matching `customerId` or `anonymousId`. Returns a `200 OK` status if any Carts match these conditions, or a `404 Not Found` otherwise.
       queryParameters:
         where?:
           type: QueryPredicate[]
     post:
-      displayName: Create my cart in store
+      displayName: Create My Cart in Store
       securedBy:
         [
           oauth_2_0:
@@ -644,13 +705,24 @@ uriParameters:
                 [
                   'manage_my_orders:{projectKey}',
                   'manage_my_orders:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
       description: |
+        Creates a Cart in the specified Store for a given `customerId` or `anonymousId`.
+
         The `store` field in the created [Cart](ctp:api:type:Cart) is set to the Store specified by the `storeKey` path parameter.
 
-        Specific Error Codes: [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
+        Specific Error Codes:
+
+        - [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
+        - [DiscountCodeNonApplicable](ctp:api:type:DiscountCodeNonApplicableError)
+        - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
+        - [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError)
+        - [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError)
+
       body:
         application/json:
           example: !include ../examples/cart-create.example.json
@@ -667,7 +739,7 @@ uriParameters:
           resourceType: Cart
           resourceUpdateType: MyCartUpdate
       get:
-        displayName: Get my cart by id in store
+        displayName: Get My Cart in Store by ID
         securedBy:
           [
             oauth_2_0:
@@ -676,9 +748,17 @@ uriParameters:
                   [
                     'manage_my_orders:{projectKey}',
                     'manage_my_orders:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
+        description: |
+          Returns a Cart for a given `id` in a Store. Returns a `200 OK` status if the Cart exists, or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
+
+          If the Cart exists in the Project but does not belong to a Store, or the Cart's `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+
+          If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError)  error.
         responses:
           200:
             body:
@@ -693,14 +773,13 @@ uriParameters:
                   [
                     'manage_my_orders:{projectKey}',
                     'manage_my_orders:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
-        description: Checks ifa My Cart exists for a given `id`. Returns a `200 OK` status if the My Cart exists or a `404 Not Found` otherwise.
       post:
-        displayName: Update my cart by id in store
-        description: |
-          If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        displayName: Update My Cart in Store by ID
         securedBy:
           [
             oauth_2_0:
@@ -709,9 +788,17 @@ uriParameters:
                   [
                     'manage_my_orders:{projectKey}',
                     'manage_my_orders:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
+        description: |
+          Updates the Cart for a given `id` in a Store. Returns a `200 OK` status if the Cart exists, or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
+
+          If the Cart exists in the Project but does not belong to a Store, or the Cart's `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+
+          If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError)  error.
         body:
           application/json:
             example: !include ../examples/cart-update.example.json
@@ -721,7 +808,7 @@ uriParameters:
               application/json:
                 example: !include ../examples/cart.example.json
       delete:
-        displayName: Delete my cart by id in store
+        displayName: Delete My Cart in Store by ID
         securedBy:
           [
             oauth_2_0:
@@ -730,9 +817,17 @@ uriParameters:
                   [
                     'manage_my_orders:{projectKey}',
                     'manage_my_orders:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
+        description: |
+          Deletes the Cart for a given `id` in a Store. Returns a `200 OK` status if the Cart exists, or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
+
+          If the Cart exists in the Project but does not belong to a Store, or the Cart's `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+
+          If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError)  error.
         responses:
           200:
             body:
@@ -750,7 +845,7 @@ uriParameters:
       An order can be created from a order, usually after a checkout process has
       been completed.
     get:
-      displayName: Query my orders in store
+      displayName: Query My Orders in Store
       securedBy:
         [
           oauth_2_0:
@@ -786,7 +881,7 @@ uriParameters:
     post:
       is:
         - conflicting
-      displayName: Create my order in store
+      displayName: Create My Order in Store
       description: |
         The Cart must have a [shipping address set](ctp:api:type:CartSetShippingAddressAction) for taxes to be calculated. When creating [B2B Orders](/associates-overview#b2b-resources), the Customer must have the `CreateMyOrdersFromMyCarts` [Permission](ctp:api:type:Permission).
 
@@ -794,11 +889,15 @@ uriParameters:
 
         Specific Error Codes:
 
+        - [AssociateMissingPermission](ctp:api:type:AssociateMissingPermissionError)
+        - [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
+        - [DiscountCodeNonApplicable](ctp:api:type:DiscountCodeNonApplicableError)
+        - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
+        - [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError)
+        - [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError)
         - [OutOfStock](ctp:api:type:OutOfStockError)
         - [PriceChanged](ctp:api:type:PriceChangedError)
-        - [DiscountCodeNonApplicable](ctp:api:type:DiscountCodeNonApplicableError)
-        - [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
-        - [AssociateMissingPermission](ctp:api:type:AssociateMissingPermissionError)
+        - [ShippingMethodDoesNotMatchCart](ctp:api:type:ShippingMethodDoesNotMatchCartError)
       securedBy:
         [
           oauth_2_0:
@@ -825,7 +924,7 @@ uriParameters:
           uriParameterName: ID
           resourceType: Order
       get:
-        displayName: Get my order by id in store
+        displayName: Get My Order in Store by ID
         description: |
           If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
         securedBy:
@@ -860,7 +959,7 @@ uriParameters:
   /active-cart:
     type: base
     get:
-      displayName: Get my active cart in store
+      displayName: Get My Active Cart in Store
       description: |
         Retrieves the Customer's most recently modified active Cart in the Store specified by the `storeKey` path parameter.
 
@@ -1353,6 +1452,8 @@ uriParameters:
       description: |
         If omitted in the request body, the [Customer](ctp:api:type:Customer) `stores` field is set to the [Store](ctp:api:type:Store) specified in the path parameter.
 
+        A Cart returned in the [CustomerSignInResult](ctp:api:type:CustomerSignInResult) has any invalid Line Items removed and is [updated](/api/carts-orders-overview#cart-updates) with the latest prices, taxes, and discounts. During these updates, the following errors can be returned: [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError) and [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError).
+
         Creating a Customer produces the [CustomerCreated](ctp:api:type:CustomerCreatedMessage) Message.
       securedBy:
         [
@@ -1385,9 +1486,10 @@ uriParameters:
         - If the Customer does not have a Cart, the most recently modified anonymous cart becomes the Customer's Cart.
         - If the Customer already has a Cart, the most recently modified anonymous cart is handled according to [AnonymousCartSignInMode](ctp:api:type:AnonymousCartSignInMode).
 
-        If a Cart is returned as part of [CustomerSignInResult](ctp:api:type:CustomerSignInResult), it has been [recalculated](ctp:api:type:MyCartRecalculateAction) with up-to-date prices, taxes, discounts, and invalid line items removed.
+        A Cart returned in the [CustomerSignInResult](ctp:api:type:CustomerSignInResult) has any invalid Line Items removed and is [updated](/api/carts-orders-overview#cart-updates) with the latest prices, taxes, and discounts. During these updates, the following errors can be returned: [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError) and [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError).
 
         If an account with the given credentials is not found, an [InvalidCredentials](ctp:api:type:InvalidCredentialsError) error is returned.
+
       securedBy:
         [
           oauth_2_0:
@@ -1719,6 +1821,7 @@ uriParameters:
         If the Customer exists in the Project but the `stores` field references a different [Store](ctp:api:type:Store), this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
         Simultaneously updating two Customers with the same email address can return a [LockedField](ctp:api:type:LockedFieldError) error.
+
       securedBy:
         - oauth_2_0:
             scopes:
@@ -1759,9 +1862,12 @@ uriParameters:
     description: |
       Authenticates a Customer associated with a [Store](ctp:api:type:Store). For more information, see [Global versus Store-specific Customers](/../api/customers-overview#global-versus-store-specific-customers).
 
+      A Cart returned in the [CustomerSignInResult](ctp:api:type:CustomerSignInResult) has any invalid Line Items removed and is [updated](/api/carts-orders-overview#cart-updates) with the latest prices, taxes, and discounts. During these updates, the following errors can be returned: [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError) and [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError).
+
       Triggers [Cart merge during sign-in](/../api/customers-overview#cart-merge-during-sign-in).
 
       If the Customer exists in the Project but the `stores` field references a different [Store](ctp:api:type:Store), this method returns an [InvalidCredentials](ctp:api:type:InvalidCredentialsError) error.
+
     securedBy:
       - oauth_2_0:
           scopes:
@@ -1784,7 +1890,7 @@ uriParameters:
     get:
       displayName: Get ShippingMethods for a cart in a store
       description: |
-        Retrieves all the ShippingMethods that can ship to the shipping address of the given Cart in a given [Store](ctp:api:type:Store).
+        Retrieves all the active ShippingMethods that can ship to the shipping address of the given Cart in a given [Store](ctp:api:type:Store).
         Each ShippingMethod contains exactly one ShippingRate with the flag `isMatching` set to `true`.
         This ShippingRate is used when the ShippingMethod is [added to the Cart](ctp:api:type:CartSetShippingMethodAction).
       is:
@@ -1824,7 +1930,7 @@ uriParameters:
           type: string
           description: |
             ID of the Cart with a shipping address set.
-      description: Checks if a ShippingMethod that can ship to the shipping address of the given Cart exists in the given [Store](ctp:api:type:Store). Returns a `200 OK` status if the ShippingMethod exists or a `404 Not Found` otherwise.
+      description: Checks if an active ShippingMethod that can ship to the shipping address of the given Cart exists in the given [Store](ctp:api:type:Store). Returns a `200 OK` status if the ShippingMethod exists or a `404 Not Found` otherwise.
 /shopping-lists:
   type:
     baseDomain:
@@ -2657,6 +2763,37 @@ uriParameters:
               application/json:
                 type: ProductTailoring
                 example: !include ../examples/product-tailoring.example.json
+      /images:
+        post:
+          displayName: Upload a Product Tailoring image
+          queryParameters:
+            filename?:
+              type: string
+              description: Base filename of the image when stored in the Content Delivery Network. The filename will be modified when uploaded to prevent filename conflicts. If not included a random filename will be allocated.
+            variant?:
+              type: number
+              format: int64
+              description: The `id` of the [ProductTailoringVariant](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to. It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
+            sku?:
+              type: string
+              description: The `sku` of the [ProductTailoringVariant](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to. It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
+            staged?:
+              type: boolean
+              description: If `true`, only the staged ProductTailoringVariant is updated. If `false`, both the current and staged ProductTailoringVariant are updated.
+          description: |
+            Upload a JPEG, PNG and GIF file to a [ProductTailoringVariant](ctp:api:type:ProductTailoringVariant). The maximum file size of the image is 10MB. `variant` or `sku` is required to update a specific ProductVariant. Produces the [ProductTailoringImageAdded](/projects/messages#product-tailoring-image-added) Message when the `Small` version of the image has been uploaded to the CDN.
+          securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
+          body:
+            type: file
+            fileTypes: ['image/jpeg', 'image/png', 'image/gif']
+          headers:
+            Content-Type:
+              enum: ['image/jpeg', 'image/png', 'image/gif']
+          responses:
+            200:
+              body:
+                type: ProductTailoring
+                example: !include ../examples/product-tailoring.example.json
   /key={productKey}:
     (methodName): withProductKey
     uriParameters:
@@ -2735,3 +2872,685 @@ uriParameters:
               application/json:
                 type: ProductTailoring
                 example: !include ../examples/product-tailoring.example.json
+      /images:
+        post:
+          displayName: Upload a Product Tailoring image
+          queryParameters:
+            filename?:
+              type: string
+              description: Base filename of the image when stored in the Content Delivery Network. The filename will be modified when uploaded to prevent filename conflicts. If not included a random filename will be allocated.
+            variant?:
+              type: number
+              format: int64
+              description: The `id` of the [ProductTailoringVariant](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to. It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
+            sku?:
+              type: string
+              description: The `sku` of the [ProductTailoringVariant](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to. It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
+            staged?:
+              type: boolean
+              description: If `true`, only the staged ProductTailoringVariant is updated. If `false`, both the current and staged ProductTailoringVariant are updated.
+          description: |
+            Upload a JPEG, PNG and GIF file to a [ProductTailoringVariant](ctp:api:type:ProductTailoringVariant). The maximum file size of the image is 10MB. `variant` or `sku` is required to update a specific ProductVariant. Produces the [ProductTailoringImageAdded](/projects/messages#product-tailoring-image-added) Message when the `Small` version of the image has been uploaded to the CDN.
+          securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
+          body:
+            type: file
+            fileTypes: ['image/jpeg', 'image/png', 'image/gif']
+          headers:
+            Content-Type:
+              enum: ['image/jpeg', 'image/png', 'image/gif']
+          responses:
+            200:
+              body:
+                type: ProductTailoring
+                example: !include ../examples/product-tailoring.example.json
+/quote-requests:
+  type:
+    baseDomain:
+      resourceType: QuoteRequest
+      resourceQueryType: QuoteRequestPagedQueryResponse
+      resourceDraft: QuoteRequestDraft
+      whereExample: 'quoteRequestState = "Submitted"'
+      sortExample: createdAt asc
+  (updateable): QuoteRequest
+  (deleteable): QuoteRequest
+  (createable): QuoteRequestDraft
+  description: A request for a Quote holds product variants and can be ordered.
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'view_quote_requests:{projectKey}',
+                'view_quote_requests:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/quote-requests.example.json
+  head:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'view_quote_requests:{projectKey}',
+                'view_quote_requests:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    description: Checks if a QuoteRequest exists for a given Query Predicate. Returns a `200 OK` status if any QuoteRequests match the Query Predicate or a `404 Not Found` otherwise.
+    queryParameters:
+      where?:
+        type: QueryPredicate[]
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_quote_requests:{projectKey}',
+                'manage_quote_requests:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/quote-request-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/quote-request.example.json
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: QuoteRequest
+        resourceUpdateType: QuoteRequestUpdate
+    get:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_quote_requests:{projectKey}',
+                  'view_quote_requests:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote-request.example.json
+    head:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_quote_requests:{projectKey}',
+                  'view_quote_requests:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Checks if a QuoteRequest exists for a given `key`. Returns a `200 OK` status if the QuoteRequest exists or a `404 Not Found` otherwise.
+    post:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_quote_requests:{projectKey}',
+                  'manage_quote_requests:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/quote-request-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote-request-update-response.example.json
+    delete:
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_quote_requests:{projectKey}',
+                  'manage_quote_requests:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote-request.example.json
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: QuoteRequest
+        resourceUpdateType: QuoteRequestUpdate
+    get:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_quote_requests:{projectKey}',
+                  'view_quote_requests:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote-request.example.json
+    head:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_quote_requests:{projectKey}',
+                  'view_quote_requests:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Checks if a QuoteRequest exists for a given `id`. Returns a `200 OK` status if the QuoteRequest exists or a `404 Not Found` otherwise.
+    post:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_quote_requests:{projectKey}',
+                  'manage_quote_requests:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/quote-request-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote-request-update-response.example.json
+    delete:
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_quote_requests:{projectKey}',
+                  'manage_quote_requests:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote-request.example.json
+/staged-quotes:
+  type:
+    baseDomain:
+      resourceType: StagedQuote
+      resourceQueryType: StagedQuotePagedQueryResponse
+      resourceDraft: StagedQuoteDraft
+      whereExample: 'stagedQuoteState = "InProgress"'
+      sortExample: createdAt asc
+  (updateable): StagedQuote
+  (deleteable): StagedQuote
+  (createable): StagedQuoteDraft
+  description: A staged quote holds the negotiation between the [Buyer](/../api/quotes-overview#buyer) and the [Seller](/../api/quotes-overview#seller).
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'view_staged_quotes:{projectKey}',
+                'view_staged_quotes:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/staged-quotes.example.json
+  head:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'view_staged_quotes:{projectKey}',
+                'view_staged_quotes:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    description: Checks if a StagedQuote exists for a given Query Predicate. Returns a `200 OK` status if any StagedQuotes match the Query Predicate or a `404 Not Found` otherwise.
+    queryParameters:
+      where?:
+        type: QueryPredicate[]
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_staged_quotes:{projectKey}',
+                'manage_staged_quotes:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/staged-quote-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/staged-quote.example.json
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: StagedQuote
+        resourceUpdateType: StagedQuoteUpdate
+    get:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_staged_quotes:{projectKey}',
+                  'view_staged_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/staged-quote.example.json
+    head:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_staged_quotes:{projectKey}',
+                  'view_staged_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Checks if a StagedQuote exists for a given `key`. Returns a `200 OK` status if the StagedQuote exists or a `404 Not Found` otherwise.
+    post:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_staged_quotes:{projectKey}',
+                  'manage_staged_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/staged-quote-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/staged-quote.example.json
+    delete:
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_staged_quotes:{projectKey}',
+                  'manage_staged_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/staged-quote.example.json
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: StagedQuote
+        resourceUpdateType: StagedQuoteUpdate
+    get:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_staged_quotes:{projectKey}',
+                  'view_staged_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/staged-quote.example.json
+    head:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_staged_quotes:{projectKey}',
+                  'view_staged_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Checks if a StagedQuote exists for a given `id`. Returns a `200 OK` status if the StagedQuote exists or a `404 Not Found` otherwise.
+    post:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_staged_quotes:{projectKey}',
+                  'manage_staged_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/staged-quote-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/staged-quote.example.json
+    delete:
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_staged_quotes:{projectKey}',
+                  'manage_staged_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/staged-quote.example.json
+/quotes:
+  type:
+    baseDomain:
+      resourceType: Quote
+      resourceQueryType: QuotePagedQueryResponse
+      resourceDraft: QuoteDraft
+      whereExample: 'quoteState = "Accepted"'
+      sortExample: createdAt asc
+  (updateable): Quote
+  (deleteable): Quote
+  (createable): QuoteDraft
+  description: A quote holds the negotiated offer.
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'view_quotes:{projectKey}',
+                'view_quotes:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/quotes.example.json
+  head:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'view_quotes:{projectKey}',
+                'view_quotes:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    description: Checks if a Quote exists for a given Query Predicate. Returns a `200 OK` status if any Quotes match the Query Predicate or a `404 Not Found` otherwise.
+    queryParameters:
+      where?:
+        type: QueryPredicate[]
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_quotes:{projectKey}',
+                'manage_quotes:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/quote-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/quote.example.json
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: Quote
+        resourceUpdateType: QuoteUpdate
+    get:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_quotes:{projectKey}',
+                  'view_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
+    head:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_quotes:{projectKey}',
+                  'view_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Checks if a Quote exists for a given `key`. Returns a `200 OK` status if the Quote exists or a `404 Not Found` otherwise.
+    post:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_quotes:{projectKey}',
+                  'manage_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/quote-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
+    delete:
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_quotes:{projectKey}',
+                  'manage_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: Quote
+        resourceUpdateType: QuoteUpdate
+    get:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_quotes:{projectKey}',
+                  'view_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
+    head:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_quotes:{projectKey}',
+                  'view_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Checks if a Quote exists for a given `id`. Returns a `200 OK` status if the Quote exists or a `404 Not Found` otherwise.
+    post:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_quotes:{projectKey}',
+                  'manage_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/quote-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
+    delete:
+      is:
+        - dataErasure
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_quotes:{projectKey}',
+                  'manage_quotes:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/quote.example.json
