@@ -287,7 +287,7 @@ const LayoutHeader = forwardRef((props, ref) => {
                 </SiteTitle>
                 <CaretContainer>
                   {props.isTopMenuOpen ? (
-                    <AngleUpIcon size="medium" color="info" />
+                    <AngleUpIcon size="medium" color="primary" />
                   ) : (
                     <AngleDownIcon size="medium" />
                   )}
