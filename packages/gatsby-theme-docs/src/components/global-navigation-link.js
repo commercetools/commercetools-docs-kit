@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from '@emotion/react';
 import { designSystem } from '@commercetools-docs/ui-kit';
 import Link from './link';
@@ -13,10 +12,10 @@ const linkStyles = css`
   }
 
   :hover {
-    color: ${designSystem.colors.light.linkNavigation} !important;
+    color: ${designSystem.colors.light.linkHover} !important;
 
     svg {
-      fill: ${designSystem.colors.light.linkNavigation} !important;
+      fill: ${designSystem.colors.light.linkHover} !important;
     }
   }
 `;
