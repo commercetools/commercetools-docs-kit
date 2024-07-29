@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback, useContext } from 'react';
 import styled from '@emotion/styled';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
+import { designSystem } from '@commercetools-docs/ui-kit';
+
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { ContentNotification } from '@commercetools-uikit/notifications';
 import LoginButton from '../../sso/components/login-button';
@@ -32,11 +31,11 @@ const QuizWrapper = styled.div<QuizOutcome>`
   border-left-color: ${({ outcome }) => {
     switch (outcome) {
       case OUTCOME_CORRECT:
-        return designTokens.colorSuccess25;
+        return designSystem.colors.light.selfLearningQuizSuccess;
       case OUTCOME_INCORRECT:
-        return designTokens.colorError;
+        return designSystem.colors.light.selfLearningQuizError;
       default:
-        return customProperties.colorInfo;
+        return designSystem.colors.light.selfLearningQuizDefault;
     }
   }};
 `;
