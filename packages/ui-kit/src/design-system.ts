@@ -26,6 +26,9 @@ export type ThemeColorTokens = {
   // Surfaces are used for backgrounds
   selfLearningLoginButton: string;
   selfLearningLoginButtonHover: string;
+  selfLearningQuizSuccess: string;
+  selfLearningQuizError: string;
+  selfLearningQuizDefault: string;
   surfacePrimary: string;
   surfaceSecondary1: string;
   surfaceSecondary2: string;
@@ -110,6 +113,9 @@ export const colors: ThemeColors = {
     // Surfaces are used for backgrounds
     selfLearningLoginButton: designTokens.colorPrimary,
     selfLearningLoginButtonHover: designTokens.colorPrimary40,
+    selfLearningQuizDefault: designTokens.colorPrimary,
+    selfLearningQuizError: designTokens.colorError,
+    selfLearningQuizSuccess: designTokens.colorSuccess,
     surfacePrimary: designTokens.colorSurface,
     surfaceSecondary1: designTokens.colorNeutral95,
     surfaceSecondary2: designTokens.colorNeutral90,
