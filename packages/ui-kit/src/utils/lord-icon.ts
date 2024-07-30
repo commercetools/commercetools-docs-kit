@@ -12,6 +12,7 @@ import Document from '../icons/generated/LordIconMmDocument';
 import Api from '../icons/generated/LordIconMmApi';
 import Building from '../icons/generated/LordIconMmBuilding';
 import Free from '../icons/generated/LordIconMmFree';
+import Glossary from '../icons/generated/LordIconMmGlossary';
 import Bookshelf from '../icons/generated/LordIconBookShelf';
 import Book from '../icons/generated/LordIconBook';
 import ProgrammingBook from '../icons/generated/LordIconProgrammingBook';
@@ -32,6 +33,7 @@ import SpreadsheetJson from '../icons/lord-icon/mm-spreadsheet.json';
 import CommandJson from '../icons/lord-icon/mm-command.json';
 import BuildingJson from '../icons/lord-icon/mm-building.json';
 import FreeJson from '../icons/lord-icon/mm-free.json';
+import GlossaryJson from '../icons/lord-icon/mm-glossary.json';
 import BookshelfJson from '../icons/lord-icon/book-shelf.json';
 import ProgrammingBookJson from '../icons/lord-icon/programming-book.json';
 import QuestionnaireJson from '../icons/lord-icon/questionnaire.json';
@@ -62,6 +64,7 @@ const iconNameToSvgMap: Record<string, any> = {
   cli: Cli,
   spreadsheet2: Spreadsheet2,
   free: Free,
+  glossary: Glossary,
 };
 
 const iconNameToLottieJSON: Record<string, object> = {
@@ -85,6 +88,7 @@ const iconNameToLottieJSON: Record<string, object> = {
   cli: CliJson,
   spreadsheet2: Spreadsheet2Json,
   free: FreeJson,
+  glossary: GlossaryJson,
 };
 
 export const getStaticSvgComponent = (iconName: string) => {
