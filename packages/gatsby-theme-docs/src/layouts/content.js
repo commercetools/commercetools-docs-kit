@@ -52,6 +52,11 @@ const LayoutContent = (props) => {
   const planTags = Array.isArray(props.pageData.planTags)
     ? props.pageData.planTags
     : [];
+
+  const siteTitle =
+    props.pageData.title === 'Glossary'
+      ? 'Glossary'
+      : siteData.siteMetadata.title;
   useAiAssistant();
 
   return (
@@ -63,7 +68,7 @@ const LayoutContent = (props) => {
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
         {...layoutState.topMenu}
-        siteTitle={siteData.siteMetadata.title}
+        siteTitle={siteTitle}
         isGlobalBeta={siteData.siteMetadata.beta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
@@ -78,7 +83,7 @@ const LayoutContent = (props) => {
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
           ref={ref}
-          siteTitle={siteData.siteMetadata.title}
+          siteTitle={siteTitle}
           excludeFromSearchIndex={excludeFromSearchIndex}
           allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
