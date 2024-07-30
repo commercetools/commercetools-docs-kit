@@ -14,11 +14,6 @@ export const ChatContainer = styled.div`
     grid-template-columns: auto 30%;
     grid-template-areas: 'chat references';
   }
-
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    grid-template-columns: 15% auto 30% 15%;
-    grid-template-areas: 'left-blank chat references right-blank';
-  }
 `;
 
 export const ChatMainArea = styled.div`
