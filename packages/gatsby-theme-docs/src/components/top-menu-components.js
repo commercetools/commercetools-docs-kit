@@ -144,6 +144,39 @@ const MenuColumWrapper = styled.div`
     `}
 `;
 
+const BottomMenuColumnWrapper = styled.div`
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 96px;
+
+  ${(props) =>
+    props.level === 3 &&
+    css`
+      opacity: 0;
+    `}
+
+  ${(props) =>
+    props.level === 3 &&
+    props.isExpanded &&
+    css`
+      animation: ${showContentAnimation} 0.25s ease-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+    `}
+
+  ${(props) =>
+    props.level === 3 &&
+    !props.isExpanded &&
+    css`
+      animation: ${hideContentAnimation} 0.25s ease-out;
+      animation-fill-mode: backwards;
+      white-space: nowrap;
+      overflow: hidden;
+    `}
+`;
+
 export const MenuColumn = (props) => {
   const [localItems, setLocalItems] = useState([]);
   useEffect(() => {
@@ -226,7 +259,7 @@ MenuColumn.propTypes = {
 
 export const BottomItems = (props) => {
   return (
-    <MenuColumWrapper>
+    <BottomMenuColumnWrapper>
       {props.items.map((item, index) => (
         <TopMenuItem
           id={`boottom-item-${index}`}
@@ -236,7 +269,7 @@ export const BottomItems = (props) => {
           href={item.href}
         />
       ))}
-    </MenuColumWrapper>
+    </BottomMenuColumnWrapper>
   );
 };
 
