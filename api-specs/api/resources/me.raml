@@ -128,9 +128,10 @@ delete:
       - If the Customer does not have a Cart yet, the most recently modified anonymous cart becomes the Customer's Cart.
       - If the Customer already has a Cart, the most recently modified anonymous cart is handled in accordance with [AnonymousCartSignInMode](ctp:api:type:AnonymousCartSignInMode).
 
-      A Cart returned as part of the [CustomerSignInResult](ctp:api:type:CustomerSignInResult) is [recalculated](ctp:api:type:MyCartRecalculateAction) with up-to-date prices, taxes, discounts, and invalid line items removed.
+      A Cart returned in the [CustomerSignInResult](ctp:api:type:CustomerSignInResult) has any invalid Line Items removed and is [updated](/api/carts-orders-overview#cart-updates) with the latest prices, taxes, and discounts. During these updates, the following errors can be returned: [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError) and [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError).
 
       If an account with the given credentials is not found, an [InvalidCredentials](ctp:api:type:InvalidCredentialsError) error is returned.
+
     securedBy: [oauth_2_0: { scopes: ['manage_my_profile:{projectKey}'] }]
     body:
       application/json:
@@ -299,22 +300,68 @@ delete:
   (createable): MyCartDraft
   description: A shopping cart holds product variants and can be ordered.
   get:
-    displayName: Query my carts
-    securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
+    displayName: Query My Carts
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_my_orders:{projectKey}',
+                'customer_id:{id}',
+                'anonymous_id:{id}',
+              ],
+          },
+      ]
+    description: |
+      Returns all Carts that match a given Query Predicate and contain either a matching `customerId` or `anonymousId`.
     responses:
       200:
         body:
           application/json:
             example: !include ../examples/carts.example.json
   head:
-    securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
-    description: Checks if a Cart exists for a given Query Predicate. Returns a `200 OK` status if any Carts match the Query Predicate or a `404 Not Found` otherwise.
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_my_orders:{projectKey}',
+                'customer_id:{id}',
+                'anonymous_id:{id}',
+              ],
+          },
+      ]
+    description: |
+      Checks if a Cart exists that matches a given Query Predicate and contains either a matching `customerId` or `anonymousId`. Returns a `200 OK` status if the Cart exists, or a `404 Not Found` otherwise.
     queryParameters:
       where?:
         type: QueryPredicate[]
   post:
-    displayName: Create my cart
-    securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
+    displayName: Create My Cart
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_my_orders:{projectKey}',
+                'customer_id:{id}',
+                'anonymous_id:{id}',
+              ],
+          },
+      ]
+    description: |
+      Creates a Cart for a given `customerId` or `anonymousId`.
+
+      Specific Error Codes:
+
+      - [DiscountCodeNonApplicable](ctp:api:type:DiscountCodeNonApplicableError)
+      - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
+      - [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError)
+      - [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError)
+
     body:
       application/json:
         example: !include ../examples/cart-create.example.json
@@ -331,7 +378,7 @@ delete:
         resourceType: Cart
         resourceUpdateType: MyCartUpdate
     get:
-      displayName: Get my cart by key
+      displayName: Get My Cart by Key
       securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
       responses:
         200:
@@ -368,19 +415,63 @@ delete:
         resourceType: Cart
         resourceUpdateType: MyCartUpdate
     get:
-      displayName: Get my cart by id
-      securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
+      displayName: Get My Cart by ID
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
+                ],
+            },
+        ]
+      description: |
+        Returns a Cart for a given `id`. Returns a `200 OK` status if the Cart exists, or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
+
+        If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       responses:
         200:
           body:
             application/json:
               example: !include ../examples/cart.example.json
     head:
-      securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
-      description: Checks if a Cart exists for a given `id`. Returns a `200 OK` status if the Cart exists or a `404 Not Found` otherwise.
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
+                ],
+            },
+        ]
+      description: |
+        Checks if a Cart exists for a given `id`. Returns a `200 OK` status if the Cart exists, or a `404 Not Found` otherwise.
+
+        If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
     post:
-      displayName: Update my cart by id
-      securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
+      displayName: Update My Cart by ID
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
+                ],
+            },
+        ]
+      description: |
+        Updates the Cart for a given `id`. Returns a `200 OK` status if the Cart exists, or a `404 Not Found` otherwise.
+
+        If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       body:
         application/json:
           example: !include ../examples/cart-update.example.json
@@ -390,8 +481,23 @@ delete:
             application/json:
               example: !include ../examples/cart.example.json
     delete:
-      displayName: Delete my cart by id
-      securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
+      displayName: Delete My Cart by ID
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
+                ],
+            },
+        ]
+      description: |
+        Deletes the Cart for a given `id`. Returns a `200 OK` status if the Cart exists, or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
+
+        If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       responses:
         200:
           body:
@@ -400,7 +506,7 @@ delete:
   /replicate:
     type: base
     post:
-      displayName: Replicate my cart
+      displayName: Replicate My Cart
       description: |
         Creates a new Cart by replicating an existing Cart or Order of the authenticated Customer.
         This can be useful in cases where a customer wants to cancel a recent order to make some changes or reorder a previous order.
@@ -412,7 +518,13 @@ delete:
 
         The new Cart does not contain Payments or Deliveries. The [State](ctp:api:type:ItemState) of Line Items and Custom Line Items is reset to `initial`.
 
-        In case the Cart or Order to be replicated does not belong to the authenticaed Customer, the API returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error
+        If the Cart or Order to be replicated does not belong to the authenticated Customer, the API returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error
+
+        Specific Error Codes:
+
+        - [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError)
+        - [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError)
+
       body:
         application/json:
           type: ReplicaMyCartDraft
@@ -422,7 +534,18 @@ delete:
             application/json:
               example: !include ../examples/cart.example.json
               type: Cart
-      securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_my_orders:{projectKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
+                ],
+            },
+        ]
 /orders:
   type:
     baseDomain:
@@ -435,7 +558,7 @@ delete:
     An order can be created from a cart, usually after a checkout process has
     been completed.
   get:
-    displayName: Query my orders
+    displayName: Query My Orders
     securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
     responses:
       200:
@@ -451,18 +574,25 @@ delete:
   post:
     is:
       - conflicting
-    displayName: Create my order
+    displayName: Create My Order
     description: |
       The Cart must have a [shipping address set](ctp:api:type:CartSetShippingAddressAction) for taxes to be calculated. When creating [B2B Orders](/associates-overview#b2b-resources), the Customer must have the `CreateMyOrdersFromMyCarts` [Permission](ctp:api:type:Permission).
 
       Creating an Order produces the [OrderCreated](ctp:api:type:OrderCreatedMessage) Message.
 
+      If a server-side problem occurs, indicated by a 500 Internal Server Error HTTP response, the Order creation may still successfully complete after the error is returned.
+      If you receive this error, you should verify the status of the Order by querying a unique identifier supplied during the creation request, such as the Order number.
+
       Specific Error Codes:
 
+      - [AssociateMissingPermission](ctp:api:type:AssociateMissingPermissionError)
+      - [DiscountCodeNonApplicable](ctp:api:type:DiscountCodeNonApplicableError)
+      - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
       - [OutOfStock](ctp:api:type:OutOfStockError)
       - [PriceChanged](ctp:api:type:PriceChangedError)
-      - [DiscountCodeNonApplicable](ctp:api:type:DiscountCodeNonApplicableError)
-      - [AssociateMissingPermission](ctp:api:type:AssociateMissingPermissionError)
+      - [ShippingMethodDoesNotMatchCart](ctp:api:type:ShippingMethodDoesNotMatchCartError)
+      - [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError)
+      - [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError)
     securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
     body:
       application/json:
@@ -480,7 +610,7 @@ delete:
         resourceType: Order
         resourceUpdateType: MyOrderUpdate
     get:
-      displayName: Get my order by id
+      displayName: Get My Order by ID
       securedBy: [oauth_2_0: { scopes: ['manage_my_orders:{projectKey}'] }]
       responses:
         200:
@@ -495,7 +625,7 @@ delete:
     type: base
     displayName: Order from Quote
     post:
-      displayName: Create my Order from a Quote
+      displayName: Create My Order from Quote
       description: |
         When creating [B2B Orders](/associates-overview#b2b-resources), the Customer must have the `CreateMyOrdersFromMyQuotes` [Permission](ctp:api:type:Permission).
 

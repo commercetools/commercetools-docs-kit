@@ -2,6 +2,7 @@
 (package): Cart
 displayName: LineItem
 type: object
+(expandable): true
 description: |
   The representation of a [Line Item](/../api/carts-orders-overview#line-items) in a [Cart](ctp:api:type:Cart) or in an [Order](ctp:api:type:Order).
 properties:
@@ -97,7 +98,7 @@ properties:
   distributionChannel?:
     type: ChannelReference
     description: |
-      Used to [select](ctp:api:type:LineItemPriceSelection) a Product Price. The referenced Channel has the `ProductDistribution` [ChannelRoleEnum](ctp:api:type:ChannelRoleEnum).
+      Used to [select](/../api/pricing-and-discounts-overview#line-item-price-selection) a Product Price. The referenced Channel has the `ProductDistribution` [ChannelRoleEnum](ctp:api:type:ChannelRoleEnum).
   priceMode:
     type: LineItemPriceMode
     description: |
