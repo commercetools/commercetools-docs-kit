@@ -129,24 +129,6 @@ export const SideDebugContainer = styled.div`
   margin-bottom: ${designSystem.dimensions.spacings.m};
 `;
 
-export const LeftBlank = styled.div`
-  grid-area: left-blank;
-  display: none;
-
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    display: block;
-  }
-`;
-
-export const RightBlank = styled.div`
-  grid-area: right-blank;
-  display: none;
-
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    display: block;
-  }
-`;
-
 export const CharCount = styled.div`
   padding-right: 5px;
   font-size: ${designSystem.typography.fontSizes.extraSmall};

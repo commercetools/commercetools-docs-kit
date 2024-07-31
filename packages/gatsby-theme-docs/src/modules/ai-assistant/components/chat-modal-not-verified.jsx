@@ -14,13 +14,11 @@ import {
   ChatSideArea,
   CubeContainer,
   DisclaimerText,
-  LeftBlank,
   LockedChatFooterContainer,
   NotificationListText,
   NotificationTextBig,
   NotificationTextSmall,
   ResetButtonBox,
-  RightBlank,
   SideTopContainer,
 } from './chat-modal-css-components';
 
@@ -59,7 +57,6 @@ const NOT_VERIFIED_INFO = (
 const ChatModalNotVerified = () => {
   return (
     <ChatContainer data-testid="ai-assistant-modal">
-      <LeftBlank />
       <ChatSideArea>
         <SideTopContainer>
           <BackgroundWrapper>
@@ -83,7 +80,6 @@ const ChatModalNotVerified = () => {
           </CubeContainer>
         </LockedChatFooterContainer>
       </ChatMainArea>
-      <RightBlank />
     </ChatContainer>
   );
 };
