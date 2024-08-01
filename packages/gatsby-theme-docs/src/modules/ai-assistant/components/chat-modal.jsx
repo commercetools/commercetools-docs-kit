@@ -43,11 +43,9 @@ import {
   CubeContainer,
   DisclaimerTextMobile,
   InputTextWrapper,
-  LeftBlank,
   LockedChatFooterContainer,
   ResetButtonBox,
   RestartButtonBox,
-  RightBlank,
   SubmitButtonBox,
 } from './chat-modal-css-components';
 import useChatInit from '../hooks/use-chat-init';
@@ -515,7 +513,6 @@ const ChatModal = () => {
       {/* standard state */}
       {assistantState === ASSISTANT_STATE_OPEN && (
         <ChatContainer data-testid="ai-assistant-modal">
-          <LeftBlank />
           <ChatSide
             user={user}
             chatMode={formik.values.chatMode}
@@ -552,7 +549,7 @@ const ChatModal = () => {
                     placeholder={
                       currentChatMode?.key === DEV_TOOLING_MODE
                         ? 'Specify your use case to generate the code.'
-                        : 'Use complete sentences for the best help.'
+                        : 'Use complete sentences for best results.'
                     }
                     value={formik.values.chatInput}
                     touched={formik.touched.chatInput}
@@ -615,7 +612,6 @@ const ChatModal = () => {
               <LegalDisclaimer />
             </DisclaimerTextMobile>
           </ChatMainArea>
-          <RightBlank />
         </ChatContainer>
       )}
     </FormDialog>
