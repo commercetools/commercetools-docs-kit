@@ -3,18 +3,16 @@ import { designSystem } from '@commercetools-docs/ui-kit';
 
 export const ChatContainer = styled.div`
   height: 100%;
+  max-width: ${designSystem.dimensions.widths.pageContentWithMarginsAndPageNavigation};
+  margin: auto;
+  margin-top -8px; /* hack: take back the full content area, the basic dialog has two spacings configured at the top */
   display: grid;
   grid-template-columns: auto;
   grid-template-areas: 'chat';
 
   @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    grid-template-columns: auto 25%;
+    grid-template-columns: auto 30%;
     grid-template-areas: 'chat references';
-  }
-
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    grid-template-columns: 15% auto 25% 15%;
-    grid-template-areas: 'left-blank chat references right-blank';
   }
 `;
 
@@ -49,7 +47,7 @@ export const ChatMessagesWrapper = styled.div`
 
 export const ChatInputBox = styled.div`
   padding: ${designSystem.dimensions.spacings.m}
-    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.l}
+    ${designSystem.dimensions.spacings.m} 0
     ${designSystem.dimensions.spacings.m};
 `;
 
@@ -62,7 +60,7 @@ export const ResetButtonBox = styled.div`
 export const RestartButtonBox = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: ${designSystem.dimensions.spacings.m};
+  padding-top: ${designSystem.dimensions.spacings.s};
 `;
 
 export const LockedChatFooterContainer = styled.div`
@@ -77,7 +75,7 @@ export const CubeContainer = styled.div`
 `;
 
 export const ChatSideArea = styled.div`
-  padding: 0px ${designSystem.dimensions.spacings.s};
+  padding: 0px ${designSystem.dimensions.spacings.m};
   grid-area: references;
   display: flex;
   flex-direction: column;
@@ -106,9 +104,7 @@ export const SubmitButtonBox = styled.div`
 
 export const ChatBottomContainer = styled.div`
   margin-top: auto;
-  padding: ${designSystem.dimensions.spacings.m}
-    ${designSystem.dimensions.spacings.m} ${designSystem.dimensions.spacings.l}
-    ${designSystem.dimensions.spacings.m};
+  padding-top: ${designSystem.dimensions.spacings.m};
 `;
 
 export const SideTopContainer = styled.div`
@@ -117,6 +113,9 @@ export const SideTopContainer = styled.div`
   flex-grow: 1;
   overflow-y: auto;
   padding: 0px ${designSystem.dimensions.spacings.m};
+  border: 1px solid ${designSystem.colors.light.borderPrimary};
+  background-color: ${designSystem.colors.light.surfacePrimary};
+  border-radius: 4px;
 `;
 
 export const BackgroundWrapper = styled.div`
@@ -128,24 +127,6 @@ export const BackgroundWrapper = styled.div`
 export const SideDebugContainer = styled.div`
   padding: 0px ${designSystem.dimensions.spacings.m};
   margin-bottom: ${designSystem.dimensions.spacings.m};
-`;
-
-export const LeftBlank = styled.div`
-  grid-area: left-blank;
-  display: none;
-
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    display: block;
-  }
-`;
-
-export const RightBlank = styled.div`
-  grid-area: right-blank;
-  display: none;
-
-  @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    display: block;
-  }
 `;
 
 export const CharCount = styled.div`
