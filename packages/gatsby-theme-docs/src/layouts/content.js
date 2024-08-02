@@ -54,9 +54,7 @@ const LayoutContent = (props) => {
     : [];
 
   const siteTitle =
-    props.pageData.title === 'Glossary'
-      ? 'Glossary'
-      : siteData.siteMetadata.title;
+    props.pageData?.overrides?.siteTitle || siteData.siteMetadata.title;
   useAiAssistant();
 
   return (
@@ -84,6 +82,7 @@ const LayoutContent = (props) => {
           {...layoutState.topMenu}
           ref={ref}
           siteTitle={siteTitle}
+          siteBreadcrumbsOverride={props.pageData?.overrides?.siteBreadcrumbs}
           excludeFromSearchIndex={excludeFromSearchIndex}
           allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
@@ -168,6 +167,10 @@ LayoutContent.propTypes = {
     showTimeToRead: PropTypes.bool.isRequired,
     timeToRead: PropTypes.number.isRequired,
     estimatedTimeToRead: PropTypes.number.isRequired,
+    overrides: PropTypes.shape({
+      siteTitle: PropTypes.string,
+      siteBreadcrumbs: PropTypes.string,
+    }),
   }).isRequired,
   children: PropTypes.node.isRequired,
 };

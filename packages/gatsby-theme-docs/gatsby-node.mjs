@@ -291,6 +291,15 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         courseId: { type: 'Int' },
         topicName: { type: 'String' },
         products: { type: '[String]' },
+        overrides: {
+          type: 'JSON',
+          siteTitle: {
+            type: `String!`,
+          },
+          siteBreadcrumbs: {
+            type: `String!`,
+          },
+        },
       },
       interfaces: ['Node'],
     }),
@@ -442,6 +451,14 @@ export const onCreateNode = async (
       products: Array.isArray(node.frontmatter.products)
         ? node.frontmatter.products
         : [],
+      overrides: {
+        ...(node.frontmatter.siteTitle
+          ? { siteTitle: node.frontmatter.siteTitle }
+          : {}),
+        ...(node.frontmatter.siteBreadcrumbs
+          ? { siteBreadcrumbs: node.frontmatter.siteBreadcrumbs }
+          : {}),
+      },
     };
 
     actions.createNode({

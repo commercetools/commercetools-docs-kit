@@ -22,6 +22,8 @@
       path: /views/custom-anchor
     - title: Wide Layout
       path: /views/wide
+    - title: Site overrides
+      path: /views/overrides
 - chapter-title: Components
   beta: true
   pages:
