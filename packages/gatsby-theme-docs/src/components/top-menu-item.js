@@ -10,6 +10,7 @@ const MenuItemWrapper = styled.div`
   padding: ${({ isSmall }) =>
     isSmall ? '4px 12px 4px 8px' : '8px 12px 8px 8px'};
   height: 32px;
+  min-width: ${({ isBottomItem }) => (isBottomItem ? '160px' : '0')};
 
   a {
     color: ${designSystem.colors.light.textPrimary};
@@ -144,6 +145,7 @@ export const TopMenuItem = (props) => {
       onClick={onClickHandler}
       isSelected={props.isSelected}
       isSmall={props.level > 1 && !props.isExpandable}
+      isBottomItem={props.isBottomItem}
     >
       {props.icon && (
         <MenuIconWrapper>
@@ -188,6 +190,7 @@ TopMenuItem.propTypes = {
   level: PropTypes.number,
   // eslint-disable-next-line react/no-unused-prop-types
   shouldShrink: PropTypes.bool,
+  isBottomItem: PropTypes.bool,
 };
 
 export const TopMenuLabelItem = styled.div`

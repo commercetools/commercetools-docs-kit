@@ -25,6 +25,7 @@ export { default as LordIconMmLoginSvgIcon } from './LordIconMmLogin';
 export { default as LordIconMmPackageSvgIcon } from './LordIconMmPackage';
 export { default as LordIconMmSpreadsheetSvgIcon } from './LordIconMmSpreadsheet';
 export { default as LordIconMmUnlockedSvgIcon } from './LordIconMmUnlocked';
+export { default as LordIconMmPadlockSvgIcon } from './LordIconMmPadlock';
 export { default as LordIconProgrammingBookSvgIcon } from './LordIconProgrammingBook';
 export { default as LordIconQuestionnaireSvgIcon } from './LordIconQuestionnaire';
 export { default as LordIconSpreadsheet2SvgIcon } from './LordIconSpreadsheet2';

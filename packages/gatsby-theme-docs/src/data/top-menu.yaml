@@ -41,7 +41,7 @@
   icon: heartbeat
   href: /
 - footer-title: Free trial
-  icon: free
+  icon: padlock
   href: /
 - footer-title: Log in to Merchant Center
   icon: login

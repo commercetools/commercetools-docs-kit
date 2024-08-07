@@ -1,6 +1,7 @@
 import Spreadsheet from '../icons/generated/LordIconMmSpreadsheet';
 import Command from '../icons/generated/LordIconMmCommand';
 import Unlocked from '../icons/generated/LordIconMmUnlocked';
+import Padlock from '../icons/generated/LordIconMmPadlock';
 import Package from '../icons/generated/LordIconMmPackage';
 import Login from '../icons/generated/LordIconMmLogin';
 import Heartbeat from '../icons/generated/LordIconMmHeartbeat';
@@ -20,6 +21,7 @@ import Questionnaire from '../icons/generated/LordIconQuestionnaire';
 import Cli from '../icons/generated/LordIconCli';
 import Spreadsheet2 from '../icons/generated/LordIconSpreadsheet2';
 import UnlockedJson from '../icons/lord-icon/mm-unlocked.json';
+import PadlockJson from '../icons/lord-icon/mm-padlock.json';
 import PackageJson from '../icons/lord-icon/mm-package.json';
 import LoginJson from '../icons/lord-icon/mm-login.json';
 import HeartbeatJson from '../icons/lord-icon/mm-heartbeat.json';
@@ -47,6 +49,7 @@ const iconNameToSvgMap: Record<string, any> = {
   spreadsheet: Spreadsheet,
   command: Command,
   unlocked: Unlocked,
+  padlock: Padlock,
   package: Package,
   login: Login,
   heartbeat: Heartbeat,
@@ -71,6 +74,7 @@ const iconNameToLottieJSON: Record<string, object> = {
   spreadsheet: SpreadsheetJson,
   command: CommandJson,
   unlocked: UnlockedJson,
+  padlock: PadlockJson,
   package: PackageJson,
   login: LoginJson,
   heartbeat: HeartbeatJson,

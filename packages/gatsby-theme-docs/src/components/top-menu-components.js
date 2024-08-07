@@ -267,6 +267,7 @@ export const BottomItems = (props) => {
           icon={item.icon}
           text={item.footerTitle}
           href={item.href}
+          isBottomItem
         />
       ))}
     </BottomMenuColumnWrapper>
