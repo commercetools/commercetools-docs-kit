@@ -1,5 +1,15 @@
 # @commercetools-docs/ui-kit
 
+## 24.7.0
+
+### Minor Changes
+
+- [#2048](https://github.com/commercetools/commercetools-docs-kit/pull/2048) [`74e592b`](https://github.com/commercetools/commercetools-docs-kit/commit/74e592be56690f21701f750c4e9d5638e6107b1d) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Update all the uikit dependencies to uikit 19.9.0
+
+### Patch Changes
+
+- [#2044](https://github.com/commercetools/commercetools-docs-kit/pull/2044) [`711806e`](https://github.com/commercetools/commercetools-docs-kit/commit/711806e9f575d720ad1c1c1015a868597142a3e3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Use correct colors for self learning quiz fail and default state
+
 ## 24.6.0
 
 ### Minor Changes

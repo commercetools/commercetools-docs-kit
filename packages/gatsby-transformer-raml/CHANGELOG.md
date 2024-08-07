@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.7.0
+
+### Minor Changes
+
+- [#2026](https://github.com/commercetools/commercetools-docs-kit/pull/2026) [`8e5aad3`](https://github.com/commercetools/commercetools-docs-kit/commit/8e5aad370aae67c37c6e2577cf2e493b82acfbae) Thanks [@timonrey](https://github.com/timonrey)! - Support default values for query parameters. The default values will now be displayed the same way as for the data types default values.
+
 ## 13.6.1
 
 ### Patch Changes

@@ -8,10 +8,7 @@ import { createReferenceGroup } from './chat.utils';
 const ReferenceContainer = styled.div`
   height: fit-content;
   width: 100%;
-  background-color: ${designSystem.colors.light.surfacePrimary};
-  border: 1px solid ${designSystem.colors.light.borderPrimary};
-  border-radius: 4px;
-  padding: ${designSystem.dimensions.spacings.m};
+  padding: ${designSystem.dimensions.spacings.m} 0;
   font-size: ${designSystem.typography.fontSizes.small};
   overflow: hidden;
 

@@ -9,15 +9,12 @@ import {
   ChatMainAreaWhenLoggedOut,
   ChatSideArea,
   DisclaimerText,
-  LeftBlank,
-  RightBlank,
   SideTopContainer,
 } from './chat-modal-css-components';
 
 const ChatModalLoading = (props) => {
   return (
     <ChatContainer data-testid="ai-assistant-modal">
-      <LeftBlank />
       <ChatSideArea>
         <SideTopContainer>
           <BackgroundWrapper />
@@ -33,7 +30,6 @@ const ChatModalLoading = (props) => {
           <LoadingSpinner scale="l" />
         </ChatMainAreaWhenLoggedOut>
       </ChatMainArea>
-      <RightBlank />
     </ChatContainer>
   );
 };
