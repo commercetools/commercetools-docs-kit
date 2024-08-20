@@ -52,6 +52,9 @@ const LayoutContent = (props) => {
   const planTags = Array.isArray(props.pageData.planTags)
     ? props.pageData.planTags
     : [];
+
+  const siteTitle =
+    props.pageData?.overrides?.siteTitle || siteData.siteMetadata.title;
   useAiAssistant();
 
   return (
@@ -63,7 +66,7 @@ const LayoutContent = (props) => {
         {...layoutState.sidebar}
         {...layoutState.searchDialog}
         {...layoutState.topMenu}
-        siteTitle={siteData.siteMetadata.title}
+        siteTitle={siteTitle}
         isGlobalBeta={siteData.siteMetadata.beta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
       />
@@ -78,7 +81,8 @@ const LayoutContent = (props) => {
           {...layoutState.searchDialog}
           {...layoutState.topMenu}
           ref={ref}
-          siteTitle={siteData.siteMetadata.title}
+          siteTitle={siteTitle}
+          siteBreadcrumbsOverride={props.pageData?.overrides?.siteBreadcrumbs}
           excludeFromSearchIndex={excludeFromSearchIndex}
           allowWideContentLayout={props.pageData.allowWideContentLayout}
         />
@@ -163,6 +167,10 @@ LayoutContent.propTypes = {
     showTimeToRead: PropTypes.bool.isRequired,
     timeToRead: PropTypes.number.isRequired,
     estimatedTimeToRead: PropTypes.number.isRequired,
+    overrides: PropTypes.shape({
+      siteTitle: PropTypes.string,
+      siteBreadcrumbs: PropTypes.string,
+    }),
   }).isRequired,
   children: PropTypes.node.isRequired,
 };

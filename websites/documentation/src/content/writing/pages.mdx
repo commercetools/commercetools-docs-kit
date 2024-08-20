@@ -58,6 +58,12 @@ We support the following key-value pairs in the frontmatter section:
 
 - `products` (array of string): if defined in a page, it overrides the site wide `products` setting which affects the [algolia search indexer](/configuration/algolia-search#per-site-tags-configuration). This setting is useful for helping indexing correctly specific pages that are part of a site but their focus is on different products.
 
+- `overrides` (an object) with the following properties:
+
+  - `siteTitle` (string): use to override the site title for a specific page. (for example in Glossary page)
+
+  - `siteBreadcrumbs` (string): use to override the site root breadcrumb shown in the header for a specific page.
+
   Example:
 
 ```mdx

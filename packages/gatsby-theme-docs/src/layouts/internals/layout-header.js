@@ -246,7 +246,8 @@ const LayoutHeader = forwardRef((props, ref) => {
     }
   };
 
-  const siteContextTitle = siteData?.siteMetadata?.breadcrumbs;
+  const siteContextTitle =
+    props.siteBreadcrumbsOverride || siteData?.siteMetadata?.breadcrumbs;
 
   return (
     <Container id="top" allowWideContentLayout={props.allowWideContentLayout}>
@@ -347,6 +348,7 @@ LayoutHeader.propTypes = {
   isTopMenuOpen: PropTypes.bool.isRequired,
   toggleTopMenu: PropTypes.func.isRequired,
   centeredSearchDialog: PropTypes.bool,
+  siteBreadcrumbsOverride: PropTypes.string,
 };
 
 export default LayoutHeader;
