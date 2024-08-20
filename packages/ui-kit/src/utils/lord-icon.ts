@@ -1,6 +1,7 @@
 import Spreadsheet from '../icons/generated/LordIconMmSpreadsheet';
 import Command from '../icons/generated/LordIconMmCommand';
 import Unlocked from '../icons/generated/LordIconMmUnlocked';
+import Padlock from '../icons/generated/LordIconMmPadlock';
 import Package from '../icons/generated/LordIconMmPackage';
 import Login from '../icons/generated/LordIconMmLogin';
 import Heartbeat from '../icons/generated/LordIconMmHeartbeat';
@@ -12,6 +13,7 @@ import Document from '../icons/generated/LordIconMmDocument';
 import Api from '../icons/generated/LordIconMmApi';
 import Building from '../icons/generated/LordIconMmBuilding';
 import Free from '../icons/generated/LordIconMmFree';
+import Glossary from '../icons/generated/LordIconMmGlossary';
 import Bookshelf from '../icons/generated/LordIconBookShelf';
 import Book from '../icons/generated/LordIconBook';
 import ProgrammingBook from '../icons/generated/LordIconProgrammingBook';
@@ -19,6 +21,7 @@ import Questionnaire from '../icons/generated/LordIconQuestionnaire';
 import Cli from '../icons/generated/LordIconCli';
 import Spreadsheet2 from '../icons/generated/LordIconSpreadsheet2';
 import UnlockedJson from '../icons/lord-icon/mm-unlocked.json';
+import PadlockJson from '../icons/lord-icon/mm-padlock.json';
 import PackageJson from '../icons/lord-icon/mm-package.json';
 import LoginJson from '../icons/lord-icon/mm-login.json';
 import HeartbeatJson from '../icons/lord-icon/mm-heartbeat.json';
@@ -32,6 +35,7 @@ import SpreadsheetJson from '../icons/lord-icon/mm-spreadsheet.json';
 import CommandJson from '../icons/lord-icon/mm-command.json';
 import BuildingJson from '../icons/lord-icon/mm-building.json';
 import FreeJson from '../icons/lord-icon/mm-free.json';
+import GlossaryJson from '../icons/lord-icon/mm-glossary.json';
 import BookshelfJson from '../icons/lord-icon/book-shelf.json';
 import ProgrammingBookJson from '../icons/lord-icon/programming-book.json';
 import QuestionnaireJson from '../icons/lord-icon/questionnaire.json';
@@ -45,6 +49,7 @@ const iconNameToSvgMap: Record<string, any> = {
   spreadsheet: Spreadsheet,
   command: Command,
   unlocked: Unlocked,
+  padlock: Padlock,
   package: Package,
   login: Login,
   heartbeat: Heartbeat,
@@ -62,12 +67,14 @@ const iconNameToSvgMap: Record<string, any> = {
   cli: Cli,
   spreadsheet2: Spreadsheet2,
   free: Free,
+  glossary: Glossary,
 };
 
 const iconNameToLottieJSON: Record<string, object> = {
   spreadsheet: SpreadsheetJson,
   command: CommandJson,
   unlocked: UnlockedJson,
+  padlock: PadlockJson,
   package: PackageJson,
   login: LoginJson,
   heartbeat: HeartbeatJson,
@@ -85,6 +92,7 @@ const iconNameToLottieJSON: Record<string, object> = {
   cli: CliJson,
   spreadsheet2: Spreadsheet2Json,
   free: FreeJson,
+  glossary: GlossaryJson,
 };
 
 export const getStaticSvgComponent = (iconName: string) => {

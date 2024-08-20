@@ -34,8 +34,14 @@
             - title: Getting started item 2
               href: /
 
+- footer-title: Support
+  icon: headset
+  href: /
+- footer-title: System status
+  icon: heartbeat
+  href: /
 - footer-title: Free trial
-  icon: free
+  icon: padlock
   href: /
 - footer-title: Log in to Merchant Center
   icon: login

@@ -104,13 +104,13 @@ const getSizeStyles = (size: TLordIconButtonProps['size']) => {
     case 'medium':
       return css`
         height: ${designTokens.heightForButtonAsMedium};
-        border-radius: ${designTokens.borderRadiusForButtonAsMedium};
+        border-radius: ${designTokens.borderRadius4};
       `;
 
     case 'big':
       return css`
         height: ${designTokens.heightForButtonAsBig};
-        border-radius: ${designTokens.borderRadiusForButtonAsBig};
+        border-radius: ${designTokens.borderRadius4};
       `;
 
     default:

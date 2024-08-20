@@ -42,6 +42,11 @@ const HeaderText = styled.span`
   color: ${tokens.textHeaderForCodeBlock};
 `;
 
+const HeaderLanguage = styled.span`
+  white-space: nowrap;
+  color: ${tokens.textHeaderForCodeBlock};
+`;
+
 const createStyledCaretSvgUrl = (fillColor: string) =>
   `url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Icons' stroke='none' stroke-width='1' fill-rule='evenodd'%3E%3Cg id='MC-icon-set' transform='translate(-168.000000, -936.000000)' fill='%23${fillColor}'%3E%3Cg id='Directions' transform='translate(24.000000, 888.000000)'%3E%3Cg id='Caret-Down' transform='translate(144.000000, 48.000000)'%3E%3Cpath d='M20.6658731,7.4053255 C20.4433682,7.16948908 20.1796129,7.05166867 19.8748538,7.05166867 L4.12508466,7.05166867 C3.82020235,7.05166867 3.55663185,7.16948908 3.33394217,7.4053255 C3.11125249,7.64142273 3,7.92055342 3,8.24323919 C3,8.56585976 3.11125249,8.84499045 3.33394217,9.08089208 L11.2088575,17.4207121 C11.4317935,17.6565485 11.695364,17.7746297 12,17.7746297 C12.304636,17.7746297 12.5684528,17.6565485 12.7909578,17.4207121 L20.6658731,9.08082687 C20.8883165,8.84499045 21,8.56585976 21,8.24317399 C21,7.92055342 20.8883165,7.64142273 20.6658731,7.4053255 L20.6658731,7.4053255 Z' id='shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
 const caretSvgUrlThemePrimary = createStyledCaretSvgUrl(
@@ -156,11 +161,7 @@ export const MultiCodeBlock = (props: MultiCodeBlockProps) => {
         <Header>
           <HeaderInner>
             <HeaderText>{props.title}</HeaderText>
-            <SpacingsInline
-              scale="m"
-              alignItems="center"
-              justifyContent="flex-end"
-            >
+            <SpacingsInline scale="m" justifyContent="flex-end">
               {(() => {
                 if (langs.length > 1) {
                   return (
@@ -176,9 +177,9 @@ export const MultiCodeBlock = (props: MultiCodeBlockProps) => {
                   );
                 }
                 return langs[0] === 'text' ? null : (
-                  <HeaderText>
+                  <HeaderLanguage>
                     {languageDisplayNames[langs[0]] || langs[0]}
-                  </HeaderText>
+                  </HeaderLanguage>
                 );
               })()}
             </SpacingsInline>

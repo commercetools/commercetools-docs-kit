@@ -245,7 +245,7 @@ const MenuBottom = styled.div`
 `;
 
 const ItemsArea = styled.div`
-  width: ${designSystem.dimensions.widths.topMenuSingleCoumn};
+  width: ${designSystem.dimensions.widths.topMenuTwoColums};
 `;
 const FeedbackArea = styled.div`
   padding-right: 40px;
@@ -255,7 +255,7 @@ const FeedbackArea = styled.div`
   transition: opacity 0.3s ease-in-out;
 
   @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    display: flex;
+    display: ${(props) => (props.isVisible ? 'flex' : 'none')};
   }
 `;
 

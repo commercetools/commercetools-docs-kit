@@ -1,5 +1,19 @@
 # @commercetools-website/site-template
 
+## 5.3.47
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-docs/gatsby-theme-docs@24.7.1
+
+## 5.3.46
+
+### Patch Changes
+
+- Updated dependencies [[`d1cdc2f`](https://github.com/commercetools/commercetools-docs-kit/commit/d1cdc2f9ce3268058e638ab064e8b2362a88baed), [`fa24f10`](https://github.com/commercetools/commercetools-docs-kit/commit/fa24f10b7cc7e130306898b6973b879904db0f11), [`66f1b6f`](https://github.com/commercetools/commercetools-docs-kit/commit/66f1b6fb9699e70bb93cc8f827f146cf7e5a44d6), [`711806e`](https://github.com/commercetools/commercetools-docs-kit/commit/711806e9f575d720ad1c1c1015a868597142a3e3), [`6bf2792`](https://github.com/commercetools/commercetools-docs-kit/commit/6bf2792c812e31bd4ebe44dfb1bd3bb80177ef7e), [`74e592b`](https://github.com/commercetools/commercetools-docs-kit/commit/74e592be56690f21701f750c4e9d5638e6107b1d), [`81e2fea`](https://github.com/commercetools/commercetools-docs-kit/commit/81e2fea9d231ac0c71adc5eaff8c8cec0b8ce4bd)]:
+  - @commercetools-docs/gatsby-theme-docs@24.7.0
+
 ## 5.3.45
 
 ### Patch Changes

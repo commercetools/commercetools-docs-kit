@@ -1,5 +1,35 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.7.1
+
+### Patch Changes
+
+- Updated dependencies [[`8b6c180`](https://github.com/commercetools/commercetools-docs-kit/commit/8b6c1808563d18b5950c2ec149e9e6b1a48fefed)]:
+  - @commercetools-docs/ui-kit@24.7.1
+
+## 24.7.0
+
+### Minor Changes
+
+- [#2048](https://github.com/commercetools/commercetools-docs-kit/pull/2048) [`74e592b`](https://github.com/commercetools/commercetools-docs-kit/commit/74e592be56690f21701f750c4e9d5638e6107b1d) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Update all the uikit dependencies to uikit 19.9.0
+
+### Patch Changes
+
+- [#2039](https://github.com/commercetools/commercetools-docs-kit/pull/2039) [`d1cdc2f`](https://github.com/commercetools/commercetools-docs-kit/commit/d1cdc2f9ce3268058e638ab064e8b2362a88baed) Thanks [@timonrey](https://github.com/timonrey)! - Ensure that the orderHint release note frontmatter can only be set to 20 or lower.
+
+- [#2042](https://github.com/commercetools/commercetools-docs-kit/pull/2042) [`fa24f10`](https://github.com/commercetools/commercetools-docs-kit/commit/fa24f10b7cc7e130306898b6973b879904db0f11) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - change footer links hover color to match other links' color
+
+- [#1958](https://github.com/commercetools/commercetools-docs-kit/pull/1958) [`66f1b6f`](https://github.com/commercetools/commercetools-docs-kit/commit/66f1b6fb9699e70bb93cc8f827f146cf7e5a44d6) Thanks [@nkuehn](https://github.com/nkuehn)! - Improve chat dialog spacing and layout
+
+- [#2044](https://github.com/commercetools/commercetools-docs-kit/pull/2044) [`711806e`](https://github.com/commercetools/commercetools-docs-kit/commit/711806e9f575d720ad1c1c1015a868597142a3e3) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Use correct colors for self learning quiz fail and default state
+
+- [#2031](https://github.com/commercetools/commercetools-docs-kit/pull/2031) [`6bf2792`](https://github.com/commercetools/commercetools-docs-kit/commit/6bf2792c812e31bd4ebe44dfb1bd3bb80177ef7e) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Show right side scrollbar to display search results ticks
+
+- [#2040](https://github.com/commercetools/commercetools-docs-kit/pull/2040) [`81e2fea`](https://github.com/commercetools/commercetools-docs-kit/commit/81e2fea9d231ac0c71adc5eaff8c8cec0b8ce4bd) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix incorrect color of the caret icon when the mega menu is expanded
+
+- Updated dependencies [[`711806e`](https://github.com/commercetools/commercetools-docs-kit/commit/711806e9f575d720ad1c1c1015a868597142a3e3), [`74e592b`](https://github.com/commercetools/commercetools-docs-kit/commit/74e592be56690f21701f750c4e9d5638e6107b1d)]:
+  - @commercetools-docs/ui-kit@24.7.0
+
 ## 24.6.0
 
 ### Minor Changes

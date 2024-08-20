@@ -100,7 +100,7 @@ export const LordIconButton = <
       display: inline-flex;
       background-color: ${designTokens.colorSurface};
       border: 1px solid ${designTokens.colorNeutral};
-      border-radius: ${designTokens.borderRadiusForButtonAsBig};
+      border-radius: ${designTokens.borderRadius4};
       box-shadow: ${designTokens.shadow0};
       color: ${designTokens.colorSolid};
       transition: background-color ${designTokens.transitionLinear80Ms},
