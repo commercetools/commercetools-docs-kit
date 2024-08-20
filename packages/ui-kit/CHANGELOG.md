@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 24.8.0
+
+### Minor Changes
+
+- [#2047](https://github.com/commercetools/commercetools-docs-kit/pull/2047) [`522ec0f`](https://github.com/commercetools/commercetools-docs-kit/commit/522ec0f99028a0747b52cb81e461631f2e51d769) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Mega menu changes for Glossary implementation
+
 ## 24.7.1
 
 ### Patch Changes

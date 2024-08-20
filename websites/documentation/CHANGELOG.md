@@ -1,5 +1,17 @@
 # @commercetools-website/documentation
 
+## 8.7.0
+
+### Minor Changes
+
+- [#2046](https://github.com/commercetools/commercetools-docs-kit/pull/2046) [`448914a`](https://github.com/commercetools/commercetools-docs-kit/commit/448914a73a4a29bff6fc9f58dcccd7099a073105) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add frontmatter fields to override site title and site breadcrumb per page
+
+### Patch Changes
+
+- Updated dependencies [[`522ec0f`](https://github.com/commercetools/commercetools-docs-kit/commit/522ec0f99028a0747b52cb81e461631f2e51d769), [`448914a`](https://github.com/commercetools/commercetools-docs-kit/commit/448914a73a4a29bff6fc9f58dcccd7099a073105)]:
+  - @commercetools-docs/gatsby-theme-docs@24.8.0
+  - @commercetools-docs/gatsby-theme-code-examples@24.8.0
+
 ## 8.6.16
 
 ### Patch Changes
