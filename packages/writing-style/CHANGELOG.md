@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.4.1
+
+### Patch Changes
+
+- [#2052](https://github.com/commercetools/commercetools-docs-kit/pull/2052) [`9dd713b`](https://github.com/commercetools/commercetools-docs-kit/commit/9dd713b08e1f8bd2155d4e94988096e449d745e2) Thanks [@naveenchkrvrthy](https://github.com/naveenchkrvrthy)! - Adds 'early access' to Vale wordlist
+
 ## 3.4.0
 
 ### Minor Changes
