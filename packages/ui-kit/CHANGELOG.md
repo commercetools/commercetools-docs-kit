@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 24.7.1
+
+### Patch Changes
+
+- [#2053](https://github.com/commercetools/commercetools-docs-kit/pull/2053) [`8b6c180`](https://github.com/commercetools/commercetools-docs-kit/commit/8b6c1808563d18b5950c2ec149e9e6b1a48fefed) Thanks [@timonrey](https://github.com/timonrey)! - Fix a wrapping issue within code blocks with long titles and a longer lanugage name.
+
 ## 24.7.0
 
 ### Minor Changes

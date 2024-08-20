@@ -1,5 +1,13 @@
 # @commercetools-website/api-docs-smoke-test
 
+## 8.4.30
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-docs/gatsby-theme-api-docs@24.7.1
+  - @commercetools-docs/gatsby-theme-docs@24.7.1
+
 ## 8.4.29
 
 ### Patch Changes
