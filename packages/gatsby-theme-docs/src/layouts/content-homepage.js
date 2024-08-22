@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 import useLayoutState from '../hooks/use-layout-state';
 import { useSiteData } from '../hooks/use-site-data';
-import { ContentPagination } from '../components';
+import { ContentPagination, TabPage } from '../components';
 import LayoutApplication from './internals/layout-application';
 import LayoutHeader from './internals/layout-header';
 import LayoutSidebar from './internals/layout-sidebar';
@@ -62,6 +62,7 @@ const LayoutContentHomepage = (props) => {
                 {props.children}
                 <ContentPagination slug={props.pageContext.slug} />
               </PageContentInset>
+              <TabPage />
             </LayoutPageContent>
           </LayoutPageWithHero>
         </LayoutPageWrapper>
