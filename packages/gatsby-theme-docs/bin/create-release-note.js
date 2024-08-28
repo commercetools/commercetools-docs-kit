@@ -118,6 +118,7 @@ const selectQuestions = (customizedQuestions) => {
   const template = `---
 date: ${response.date}
 title: ${response.title}
+orderHint: 20
 description: |
   ${response.description}
 type: ${response.type}
