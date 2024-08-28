@@ -62,6 +62,7 @@ export type ThemeColorTokens = {
   textInverted: string;
   textSearchHeading: string;
   textTagGreen: string;
+  textTabSelected: string;
   // Different tones of border colors
   borderPrimary: string;
   borderSecondary: string;
@@ -150,6 +151,7 @@ export const colors: ThemeColors = {
     textInverted: designTokens.colorSurface,
     textSearchHeading: designTokens.colorPrimary25,
     textTagGreen: designTokens.colorPrimary25,
+    textTabSelected: designTokens.colorPrimary,
     // Different tones of border colors
     borderPrimary: designTokens.colorNeutral90,
     borderSecondary: designTokens.colorNeutral,
@@ -217,6 +219,7 @@ export const colors: ThemeColors = {
 };
 
 export const tokens = {
+  boderRadiousForTabBorder: designTokens.borderRadius2,
   borderRadiusForBetaFlag: designTokens.borderRadius4,
   borderRadiusForSearchDialog: designTokens.borderRadius6,
   borderRadiusForSearchInput: designTokens.borderRadius6,
