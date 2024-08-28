@@ -1,18 +1,35 @@
 import styled from '@emotion/styled';
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { PathBlockProps } from './path-block';
 
 type OneOrManyChildren = React.ReactElement | React.ReactElement[];
 type MultiPathBlockProps = {
-  title?: string;
   children: OneOrManyChildren;
 };
 
-function extractLanguages(children: OneOrManyChildren): string[] {
+type LabelSyncPair = {
+  label: string;
+  syncWith: string | undefined;
+};
+
+function extractLabelSyncPair(children: OneOrManyChildren): LabelSyncPair[] {
   if (Array.isArray(children)) {
-    return children.map((child) => child.props.language);
+    return children
+      .filter((child) => React.isValidElement(child))
+      .map((child) => {
+        return {
+          label: (child as ReactElement<PathBlockProps>).props.label,
+          syncWith: (child as ReactElement<PathBlockProps>).props.syncWith,
+        };
+      });
   }
 
-  return [children.props.language];
+  return [
+    {
+      label: (children as ReactElement<PathBlockProps>).props.label,
+      syncWith: (children as ReactElement<PathBlockProps>).props.syncWith,
+    },
+  ];
 }
 
 const SelectorsContainer = styled.div`
@@ -35,8 +52,10 @@ const ActivePathContainer = styled.div`
 `;
 
 const MultiPathBlock = (props: MultiPathBlockProps) => {
-  const langs = extractLanguages(props.children);
-  const [selected, setSelected] = React.useState<string | undefined>(langs[0]);
+  const labelSyncItems = extractLabelSyncPair(props.children);
+  const [selected, setSelected] = React.useState<LabelSyncPair>(
+    labelSyncItems[0]
+  );
   const [activePath, setActivePath] = useState<
     React.ReactElement | undefined
   >();
@@ -44,22 +63,21 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
   useEffect(() => {
     setActivePath(
       Array.isArray(props.children)
-        ? props.children.find((child) => child.props.language === selected)
+        ? props.children.find((child) => child.props.label === selected.label)
         : props.children
     );
   }, [props.children, selected]);
 
   return (
     <div>
-      <h3>{props.title}</h3>
       <SelectorsContainer>
-        {langs.map((lang) => (
+        {labelSyncItems.map((labelSyncItem) => (
           <SelectorItem
-            key={lang}
-            isSelected={lang === selected}
-            onClick={() => setSelected(lang)}
+            key={labelSyncItem.label}
+            isSelected={labelSyncItem.label === selected.label}
+            onClick={() => setSelected(labelSyncItem)}
           >
-            {lang}
+            {labelSyncItem.label}
           </SelectorItem>
         ))}
       </SelectorsContainer>

@@ -5,23 +5,19 @@ title: Multi Path Block
 import { LoginButton, IfUserLoggedOut, FirstName } from '@commercetools-docs/gatsby-theme-docs'
 
 
-<MultiPathBlock title="Test multi path blocks">
-
-<PathBlock language="javascript">
+<MultiPathBlock>
+<PathBlock label="Javascript path" syncWith="javascript">
 
 **Markdown content**
-
 <br/>
 
 **Bold text**
 *Italic text*
 ***Bold and Italic text***
 ~~Strikethrough text~~
-
 <br/>
 
 > This is a blockquote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-
 <br/>
 
 1. First ordered list item
@@ -60,8 +56,7 @@ Table | Column B | Column C
 <br/>
 
 </PathBlock>
-
-  <PathBlock language="php">
+<PathBlock label="PHP path" syncWith="php">
 
 **Custom components**
 
@@ -132,9 +127,8 @@ Some custom plan tags: <PlanTag plan="plan1" />, <PlanTag plan="plan2" />.
   <Card>next row unless three aside (narrow) prop passed?</Card>
   <Card>next row in any case</Card>
 </Cards>
-  </PathBlock>
-
-  <PathBlock language="java">
+</PathBlock>
+<PathBlock label="others">
 
 ** More custom components **
 
@@ -172,14 +166,10 @@ Some custom plan tags: <PlanTag plan="plan1" />, <PlanTag plan="plan2" />.
 Logged in, <FirstName />
 
 </IfUserLoggedIn>
-
-
 <IfUserLoggedOut>
 
 Please log in
 
 </IfUserLoggedOut>
-
-  </PathBlock>
-
+</PathBlock>
 </MultiPathBlock>

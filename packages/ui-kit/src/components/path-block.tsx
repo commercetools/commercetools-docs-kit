@@ -2,7 +2,9 @@
 // if we just want to render a div, it could be superfluous.
 import { ReactNode } from 'react';
 
-interface PathBlockProps {
+export interface PathBlockProps {
+  syncWith?: string;
+  label: string;
   children: ReactNode;
 }
 
