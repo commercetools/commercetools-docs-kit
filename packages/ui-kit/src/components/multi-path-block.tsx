@@ -63,6 +63,7 @@ export const getLinkStyles = (isActive: boolean): Interpolation<Theme> => [
     display: inline-block;
     color: inherit;
     text-decoration: inherit;
+    cursor: default;
 
     &:first-of-type {
       padding-left: ${designSystem.dimensions.spacings.m};
@@ -85,6 +86,7 @@ export const getLinkStyles = (isActive: boolean): Interpolation<Theme> => [
         & h3 {
           color: ${designSystem.colors.light.textPrimary} !important;
         }
+        cursor: pointer;
       }
     `,
 ];
@@ -97,18 +99,17 @@ type TTabHeaderProps = {
 
 const TabHeader = (props: TTabHeaderProps) => {
   return (
-    <a
+    <span
       role="tab"
       aria-selected={props.isActive}
       key={props.label}
       onClick={props.onClick}
       css={getLinkStyles(props.isActive)}
-      href="."
     >
       <Text.Headline as="h3" truncate={true}>
         {props.label}
       </Text.Headline>
-    </a>
+    </span>
   );
 };
 
@@ -124,16 +125,16 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
   const [selected, setSelected] = React.useState<LabelSyncPair>(
     labelSyncItems[0]
   );
-  const [activePath, setActivePath] = useState<
-    React.ReactElement | undefined
-  >();
+  const [activePath, setActivePath] = useState<React.ReactElement | undefined>(
+    Array.isArray(props.children) ? props.children[0] : props.children
+  );
 
   const { selectedLanguage, updateSelectedLanguage } = useSelectedLanguage();
 
   useEffect(() => {
     if (selectedLanguage) {
       const matchedSyncItem = labelSyncItems.find(
-        (item) => item.syncWith === selectedLanguage
+        (item) => item.syncWith?.toLowerCase() === selectedLanguage // case insensitive match
       );
       if (matchedSyncItem) {
         setSelected(matchedSyncItem);
@@ -154,12 +155,13 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
     (e: React.MouseEvent<HTMLElement>) => (labelSyncItem: LabelSyncPair) => {
       e.preventDefault();
       e.stopPropagation();
+      if (labelSyncItem.label === selected.label) {
+        return;
+      }
       setSelected(labelSyncItem);
       if (labelSyncItem.syncWith) {
         updateSelectedLanguage(labelSyncItem.syncWith);
-      } else {
-        updateSelectedLanguage('');
-      }
+      } // if no syncWith, do nothing
     };
 
   return (

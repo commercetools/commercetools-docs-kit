@@ -1,0 +1,213 @@
+---
+title: Multiple paths
+---
+
+Using `MultiPathBlock` component you can create a block of content with multiple paths. Each path is selectable by clicking on the corresponding tab at the top of the block.
+
+This component is useful when, for example, we want to display different information and code example depending on a specific language or application. Opposed to the `MultiCodeBlock` which can only display code, `MultiPathBlock` can display any type of content (with certain caveats).
+
+Furthermore, the `MultiPathBlock` component can "sync" the selected tab automatically with any other `MultiPathBlock` or `MultiCodeBlock` components. This means that when you click on a tab in one block, the corresponding tab in the other block will be selected as well and that choice is rememberer when navigating between pages.
+
+## Syntax
+
+The `MultiPathBlock` tag must contain **two** or **more** `<PathBlock>` tags. Each `<PathBlock>` tag represents a tab in the block.
+
+The `label` prop is used to define the text of the tab and it's mandatory.
+
+The `syncWith` prop is used to define a string (typically a programming language or a application name) that will be used to keep the tabs in sync with other `MultiPathBlock` or `MultiCodeBlock` components. If the `syncWith` prop is not defined, the tab will not trigger any sync with other components.
+
+
+### Caveats
+
+The content of the `<PathBlock>` tag can be any type of content, including markdown, code examples, custom components. An extensive example can be found [here](/../docs-smoke-test/views/multi-path-block). However, there are few caveats:
+
+- **Do not use any headings** as it will break the side page navigation that is constructed based on the headings.
+
+- **Do not use SiteBySide** component as it will not render correctly.
+
+- Breaking lines can **only** be done using the html `<br/>` tag. The markdown syntax for breaking lines will not work.
+
+- The sync mechanism between blocks is based on the exact match of the language string (case insensitive). Meaning that `js` and `javascript` are considered different languages. Keep it in mind when defining the `syncWith` prop.
+
+### Reccomendations
+
+One of the most common doubts is when to use `MultiPathBlock` and when to use `MultiCodeBlock`. The rule of thumb is to use `MultiPathBlock` when you want to display content that is not **only** code, for example some markdown content that explains in details the code and it's different for each tab.
+
+````jsx
+
+<MultiPathBlock>
+<PathBlock label="Javascript" syncWith="javascript">
+
+Below you can see and example of how to write **debug messages** in `JavaScript`.
+</br>
+
+```javascript
+console.log('this is it in javascript');
+```
+<br/>
+
+You can use `console.log` functions whenever you want to print something to the console.
+
+</PathBlock>
+<PathBlock label="PHP" syncWith="php">
+
+Below you can see and example of how to write debug messages using `PHP`.
+<br/>
+
+```php
+print('this is it in php');
+```
+<br/>
+
+You can use `print` function whenever you want to print something to the standard output.
+
+</PathBlock>
+</MultiPathBlock>
+
+````
+
+Below you can find some examples:
+
+## Example with code and markdown
+
+
+<MultiPathBlock>
+<PathBlock label="Javascript" syncWith="javascript">
+
+Below you can see and example of how to write **debug messages** in `JavaScript`.
+<br/>
+
+```javascript
+console.log('this is it in javascript');
+```
+<br/>
+
+You can use `console.log` functions whenever you want to print something to the console.
+
+</PathBlock>
+
+<PathBlock label="PHP" syncWith="php">
+
+Below you can see and example of how to write debug messages using `PHP`.
+<br/>
+
+```php
+print('this is it in php');
+```
+<br/>
+
+You can use `print` function whenever you want to print something to the standard output.
+
+</PathBlock>
+<PathBlock label="TypeScript" syncWith="typescript">
+
+Below you can see and example of how to write **debug messages** in `TypeScript`.
+<br/>
+
+```javascript
+const message: string = 'this is it in TypeScript';
+console.log(message);
+```
+<br/>
+
+You can use `console.log` functions whenever you want to print something to the console.
+
+</PathBlock>
+</MultiPathBlock>
+
+## Example with markdown and custom components
+
+<MultiPathBlock>
+<PathBlock label="Javascript" syncWith="javascript">
+
+Please click on the card below to access the `Javascript` content.
+<br/>
+
+<Cards narrow>
+  <Card>
+
+  [Javascript introduction](/../documentation)
+
+  </Card>
+  <Card>
+
+  [Javascript in depth](/../documentation)
+
+  </Card>
+</Cards>
+
+</PathBlock>
+
+<PathBlock label="PHP" syncWith="php">
+
+Please click on the card below to access the `PHP` content.
+<br/>
+
+<Cards narrow>
+  <Card>
+
+  [PHP introduction](/../documentation)
+
+  </Card>
+  <Card>
+
+  [PHP in depth](/../documentation)
+
+  </Card>
+</Cards>
+
+</PathBlock>
+<PathBlock label="Other languages">
+
+When **this tab** is selected, it should not trigger any sync with other `MultiPathBlock` components.
+<br/>
+
+The reason is that the `<PathBlock>` component does not have the `syncWith` prop defined. This could be useful when you want to display content that is not related specifically to any other contents displayed in `MultiPathBlock` components.
+
+</PathBlock>
+</MultiPathBlock>
+
+
+## Example of MultiCodeBlock syncing with MultiPathBlock
+
+Below you find a `MultiCodeBlock` that syncs with the above defined `MultiPathBlock` components and vice versa.
+
+<MultiCodeBlock>
+
+```javascript
+  let name = "John";
+  let greeting = "Hello, " + name + "!";
+  console.log(greeting);
+```
+
+```php
+<?php
+$name = "John";
+$greeting = "Hello, " . $name . "!";
+echo $greeting;
+?>
+```
+
+```java
+String selectedLanguage = "en";
+selectedLanguage = "fr";
+System.out.println(selectedLanguage);
+selectedLanguage = selectedLanguage.toUpperCase();
+```
+
+```TypeScript
+let message: string = "Hello, TypeScript!";
+function greet(name: string): void {
+    console.log(`${message} Welcome, ${name}.`);
+}
+greet("Alice");
+```
+
+</MultiCodeBlock>
+<br/>
+
+Note that the `Java` code is not synced with the `MultiPathBlock` components. This is because the `Java` code is not part of the `MultiPathBlock` component.
+
+
+
+
