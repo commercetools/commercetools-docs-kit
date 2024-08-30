@@ -5,7 +5,7 @@ import { designSystem } from '..';
 import Text from '@commercetools-uikit/text';
 import Spacings from '@commercetools-uikit/spacings';
 import { Theme, Interpolation, css, SerializedStyles } from '@emotion/react';
-import useSelectedLanguage from '../hooks/use-selected-language';
+import useSelectedPath from '../hooks/use-selected-path';
 
 type OneOrManyChildren = React.ReactElement | React.ReactElement[];
 type MultiPathBlockProps = {
@@ -135,19 +135,19 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
   );
   const [activePathIndex, setActivePathIndex] = useState<number>(0);
 
-  const { selectedLanguage, updateSelectedLanguage } = useSelectedLanguage();
+  const { selectedPath, updateSelectedPath } = useSelectedPath();
 
   useEffect(() => {
-    if (selectedLanguage) {
+    if (selectedPath) {
       const matchedSyncItem = labelSyncItems.find(
-        (item) => item.syncWith?.toLowerCase() === selectedLanguage // case insensitive match
+        (item) => item.syncWith?.toLowerCase() === selectedPath // case insensitive match
       );
       if (matchedSyncItem) {
         setSelected(matchedSyncItem);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLanguage]);
+  }, [selectedPath]);
 
   useEffect(() => {
     let activeIndex = Array.isArray(props.children)
@@ -167,7 +167,7 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
       }
       setSelected(labelSyncItem);
       if (labelSyncItem.syncWith) {
-        updateSelectedLanguage(labelSyncItem.syncWith);
+        updateSelectedPath(labelSyncItem.syncWith);
       } // if no syncWith, do nothing
     };
 

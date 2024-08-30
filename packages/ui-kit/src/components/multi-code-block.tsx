@@ -12,7 +12,7 @@ import {
 import parseCodeBlockOptions from '../utils/code-block-parse-options';
 import { cssVarToValue } from '../utils/css-variables';
 import CodeBlock from './code-block';
-import useSelectedLanguage from '../hooks/use-selected-language';
+import useSelectedPath from '../hooks/use-selected-path';
 
 type OneOrManyChildren = React.ReactElement | React.ReactElement[];
 type MultiCodeBlockProps = {
@@ -133,26 +133,26 @@ function extractLanguages(children: OneOrManyChildren): string[] {
 
 export const MultiCodeBlock = (props: MultiCodeBlockProps) => {
   const langs = extractLanguages(props.children);
-  const { selectedLanguage, updateSelectedLanguage } = useSelectedLanguage();
+  const { selectedPath, updateSelectedPath } = useSelectedPath();
   const [selected, setSelected] = React.useState(langs[0]);
 
   useEffect(() => {
-    if (selectedLanguage && Array.isArray(props.children)) {
+    if (selectedPath && Array.isArray(props.children)) {
       const hasMatchingLang = !!props.children.find(
-        (child) => child.props.language?.toLowerCase() === selectedLanguage
+        (child) => child.props.language?.toLowerCase() === selectedPath
       );
 
       if (hasMatchingLang) {
-        setSelected(selectedLanguage);
+        setSelected(selectedPath);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLanguage]);
+  }, [selectedPath]);
 
   const handleOnLanguageChange = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement> | undefined) => {
       setSelected(event?.target?.value || '');
-      updateSelectedLanguage(event?.target?.value || '');
+      updateSelectedPath(event?.target?.value || '');
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
