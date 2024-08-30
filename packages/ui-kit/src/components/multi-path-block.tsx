@@ -124,7 +124,7 @@ const ComponentWrapper = styled.div`
   border-radius: ${designSystem.tokens.borderRadiusForMultiPath};
 `;
 
-const ActivePathContainer = styled.div`
+const PathsContainer = styled.div`
   padding: 10px;
 `;
 
@@ -133,9 +133,7 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
   const [selected, setSelected] = React.useState<LabelSyncPair>(
     labelSyncItems[0]
   );
-  const [activePath, setActivePath] = useState<React.ReactElement | undefined>(
-    Array.isArray(props.children) ? props.children[0] : props.children
-  );
+  const [activePathIndex, setActivePathIndex] = useState<number>(0);
 
   const { selectedLanguage, updateSelectedLanguage } = useSelectedLanguage();
 
@@ -152,11 +150,12 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
   }, [selectedLanguage]);
 
   useEffect(() => {
-    setActivePath(
-      Array.isArray(props.children)
-        ? props.children.find((child) => child.props.label === selected.label)
-        : props.children
-    );
+    let activeIndex = Array.isArray(props.children)
+      ? props.children.findIndex(
+          (child) => child.props.label === selected.label
+        )
+      : -1;
+    setActivePathIndex(activeIndex !== -1 ? activeIndex : 0);
   }, [props.children, selected]);
 
   const onTabHeaderClick =
@@ -186,7 +185,26 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
           ))}
         </Spacings.Inline>
       </SelectorsContainer>
-      <ActivePathContainer>{activePath}</ActivePathContainer>
+      <PathsContainer>
+        {Array.isArray(props.children) ? (
+          // for indexing purpose, we add all the tabs content in the DOM, and hide what is not selected
+          props.children.map((child, index) => {
+            return (
+              <div
+                key={child.props.label}
+                data-tab={child.props.syncWith}
+                style={{
+                  display: index === activePathIndex ? 'block' : 'none',
+                }}
+              >
+                {child}
+              </div>
+            );
+          })
+        ) : (
+          <div>{props.children}</div>
+        )}
+      </PathsContainer>
     </ComponentWrapper>
   );
 };
