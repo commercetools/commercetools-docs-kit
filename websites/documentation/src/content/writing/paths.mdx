@@ -8,6 +8,8 @@ This component is useful when, for example, we want to display different informa
 
 Furthermore, the `MultiPathBlock` component can "sync" the selected tab automatically with any other `MultiPathBlock` or `MultiCodeBlock` components. This means that when you click on a tab in one block, the corresponding tab in the other block will be selected as well and that choice is rememberer when navigating between pages.
 
+It's also possible to deep link to a specific tab by adding the `?activePath={path}` to the URL. For example, if you want to deeplink to the `PHP` tab in the example below, you can use the following URL: `https://docs.commercetools.com/url/to/page?activePath=php`.
+
 ## Syntax
 
 The `MultiPathBlock` tag must contain **two** or **more** `<PathBlock>` tags. Each `<PathBlock>` tag represents a tab in the block.
