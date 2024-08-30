@@ -54,7 +54,7 @@ const getBottomBorderStyles = (background: string): SerializedStyles => css`
 export const getLinkStyles = (isActive: boolean): Interpolation<Theme> => [
   css`
     font-size: ${designSystem.typography.fontSizes.h3};
-    padding-top: ${designSystem.dimensions.spacings.s};
+    padding-top: ${designSystem.dimensions.spacings.m};
     padding-bottom: ${designSystem.dimensions.spacings.s};
     padding-left: ${designSystem.dimensions.spacings.m};
     padding-right: ${designSystem.dimensions.spacings.m};
@@ -113,10 +113,18 @@ const TabHeader = (props: TTabHeaderProps) => {
   );
 };
 
-const SelectorsContainer = styled.div``;
+const SelectorsContainer = styled.div`
+  border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
+  padding-top: 8px;
+  padding-left: 16px;
+`;
+
+const ComponentWrapper = styled.div`
+  border: 2px solid ${designSystem.colors.light.borderPrimary};
+  border-radius: ${designSystem.tokens.borderRadiusForMultiPath};
+`;
 
 const ActivePathContainer = styled.div`
-  border: 1px solid ${designSystem.colors.light.borderPrimary};
   padding: 10px;
 `;
 
@@ -165,7 +173,7 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
     };
 
   return (
-    <div>
+    <ComponentWrapper>
       <SelectorsContainer role="tablist">
         <Spacings.Inline alignItems="flex-end">
           {labelSyncItems.map((labelSyncItem) => (
@@ -179,7 +187,7 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
         </Spacings.Inline>
       </SelectorsContainer>
       <ActivePathContainer>{activePath}</ActivePathContainer>
-    </div>
+    </ComponentWrapper>
   );
 };
 

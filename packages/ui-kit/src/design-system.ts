@@ -231,6 +231,7 @@ export const tokens = {
   borderRadiusForCard: designTokens.borderRadius8,
   borderRadiusForChildSectionNav: designTokens.borderRadius6,
   borderRadiusForRssFeedTable: designTokens.borderRadius6,
+  borderRadiusForMultiPath: designTokens.borderRadius4,
   shadowForBetaFlag: designTokens.shadow7,
   shadowForSearchDialog: designTokens.shadow2,
   shadowForPageContent: designTokens.shadow11,
