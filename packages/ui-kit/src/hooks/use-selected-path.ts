@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 
 const PATH_LOCAL_STORAGE_KEY = 'selected_path';
 const PATH_CHANGE_EVENT = 'selectedPathChange';
+const ACTIVE_PATH_PARAM_NAME = 'activePath';
 
 const useSelectedPath = () => {
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
@@ -19,7 +20,7 @@ const useSelectedPath = () => {
   useEffect(() => {
     // Read the initial value from local storage
     const urlParams = new URLSearchParams(window.location.search);
-    const activePath = urlParams.get('activePath');
+    const activePath = urlParams.get(ACTIVE_PATH_PARAM_NAME);
     // if a query string activePath parameter is present, then override the local storage value
     if (activePath) {
       localStorage.setItem(PATH_LOCAL_STORAGE_KEY, activePath);
@@ -62,7 +63,7 @@ const useSelectedPath = () => {
 
     // Update the activePath query string parameter
     const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set('activePath', value);
+    urlParams.set(ACTIVE_PATH_PARAM_NAME, value);
     const newLocation =
       (!window.location.search && !value) || value === ''
         ? window.location.pathname
