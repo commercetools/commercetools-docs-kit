@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import React, { ReactElement, useEffect, useState } from 'react';
-import { PathBlockProps } from './path-block';
+import React, { ReactElement, ReactNode, useEffect, useState } from 'react';
 import { designSystem } from '..';
 import Text from '@commercetools-uikit/text';
 import Spacings from '@commercetools-uikit/spacings';
@@ -12,9 +11,9 @@ type MultiPathBlockProps = {
   children: OneOrManyChildren;
 };
 
-type LabelSyncPair = {
+export type LabelSyncPair = {
   label: string;
-  syncWith: string | undefined;
+  syncWith?: string;
 };
 
 function extractLabelSyncPair(children: OneOrManyChildren): LabelSyncPair[] {
@@ -51,7 +50,7 @@ const getBottomBorderStyles = (background: string): SerializedStyles => css`
   }
 `;
 
-export const getLinkStyles = (isActive: boolean): Interpolation<Theme> => [
+const getLinkStyles = (isActive: boolean): Interpolation<Theme> => [
   css`
     font-size: ${designSystem.typography.fontSizes.h3};
     padding-top: ${designSystem.dimensions.spacings.m};
@@ -207,6 +206,14 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
       </PathsContainer>
     </ComponentWrapper>
   );
+};
+
+type PathBlockProps = LabelSyncPair & {
+  children: ReactNode;
+};
+
+export const PathBlock = (props: PathBlockProps) => {
+  return <div>{props.children}</div>;
 };
 
 export default MultiPathBlock;

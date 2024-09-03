@@ -15,7 +15,7 @@ export {
   MultiCodeBlockMarkdownWrapper,
 } from './components/multi-code-block';
 export { default as MultiPathBlock } from './components/multi-path-block';
-export { default as PathBlock } from './components/path-block';
+export { PathBlock } from './components/multi-path-block';
 export { default as CodeBlock } from './components/code-block';
 export { default as Reset } from './components/reset';
 export { default as Subtitle } from './components/subtitle';
