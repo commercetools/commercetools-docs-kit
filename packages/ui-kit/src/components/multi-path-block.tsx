@@ -149,12 +149,17 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
   }, [selectedPath]);
 
   useEffect(() => {
-    let activeIndex = Array.isArray(props.children)
-      ? props.children.findIndex(
-          (child) => child.props.label === selected.label
-        )
-      : -1;
-    setActivePathIndex(activeIndex !== -1 ? activeIndex : 0);
+    let activeIndex = 0;
+
+    if (Array.isArray(props.children)) {
+      const matchedIndex = props.children.findIndex(
+        (child) => child.props.label === selected.label
+      );
+      activeIndex = matchedIndex !== -1 ? matchedIndex : activeIndex;
+    }
+
+    // set matched path index, otherwise just select the first one
+    setActivePathIndex(activeIndex);
   }, [props.children, selected]);
 
   const onTabHeaderClick =
