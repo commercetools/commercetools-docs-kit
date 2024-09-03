@@ -90,6 +90,34 @@ const getLinkStyles = (isActive: boolean): Interpolation<Theme> => [
     `,
 ];
 
+type TabContentChildeProps = {
+  children: OneOrManyChildren;
+  activePathIndex: number;
+};
+
+const TabContentChildren = (props: TabContentChildeProps) => (
+  <>
+    {Array.isArray(props.children) ? (
+      // for indexing purpose, we add all the tabs content in the DOM, and hide what is not selected
+      props.children.map((child, index) => {
+        return (
+          <div
+            key={child.props.label}
+            data-tab={child.props.syncWith}
+            style={{
+              display: index === props.activePathIndex ? 'block' : 'none',
+            }}
+          >
+            {child}
+          </div>
+        );
+      })
+    ) : (
+      <div>{props.children}</div>
+    )}
+  </>
+);
+
 type TTabHeaderProps = {
   label: string;
   isActive: boolean;
@@ -190,24 +218,9 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
         </Spacings.Inline>
       </SelectorsContainer>
       <PathsContainer>
-        {Array.isArray(props.children) ? (
-          // for indexing purpose, we add all the tabs content in the DOM, and hide what is not selected
-          props.children.map((child, index) => {
-            return (
-              <div
-                key={child.props.label}
-                data-tab={child.props.syncWith}
-                style={{
-                  display: index === activePathIndex ? 'block' : 'none',
-                }}
-              >
-                {child}
-              </div>
-            );
-          })
-        ) : (
-          <div>{props.children}</div>
-        )}
+        <TabContentChildren activePathIndex={activePathIndex}>
+          {props.children}
+        </TabContentChildren>
       </PathsContainer>
     </ComponentWrapper>
   );
