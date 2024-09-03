@@ -64,10 +64,12 @@ const useSelectedPath = () => {
     // Update the activePath query string parameter
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set(ACTIVE_PATH_PARAM_NAME, value);
-    const newLocation =
-      (!window.location.search && !value) || value === ''
-        ? window.location.pathname
-        : `${window.location.pathname}?${urlParams.toString()}`;
+    const hasQueryParams = window.location.search.length > 0;
+    const hasInputValue = value.length > 0;
+    const hasNoInputAndQueryValue = !hasQueryParams && !hasInputValue;
+    const newLocation = hasNoInputAndQueryValue
+      ? window.location.pathname
+      : `${window.location.pathname}?${urlParams.toString()}`;
     window.history.replaceState({}, '', newLocation);
 
     // Dispatch a custom event to notify other components on the same page
