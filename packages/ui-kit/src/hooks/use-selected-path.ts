@@ -63,11 +63,11 @@ const useSelectedPath = () => {
 
     // Update the activePath query string parameter
     const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set(ACTIVE_PATH_PARAM_NAME, value);
-    const hasQueryParams = window.location.search.length > 0;
-    const hasInputValue = value.length > 0;
-    const hasNoInputAndQueryValue = !hasQueryParams && !hasInputValue;
-    const newLocation = hasNoInputAndQueryValue
+    if (value.length > 0) {
+      urlParams.set(ACTIVE_PATH_PARAM_NAME, value);
+    }
+    const hasQueryParams = urlParams.size > 0;
+    const newLocation = !hasQueryParams
       ? window.location.pathname
       : `${window.location.pathname}?${urlParams.toString()}`;
     window.history.replaceState({}, '', newLocation);
