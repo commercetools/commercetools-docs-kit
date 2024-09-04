@@ -102,6 +102,8 @@ const TabContentChildren = (props: TabContentChildeProps) => (
       props.children.map((child, index) => {
         return (
           <div
+            role="tabpanel"
+            aria-labelledby={`tab-${index}`}
             key={child.props.label}
             data-tab={child.props.syncWith}
             style={{
@@ -119,6 +121,7 @@ const TabContentChildren = (props: TabContentChildeProps) => (
 );
 
 type TTabHeaderProps = {
+  index: number;
   label: string;
   isActive: boolean;
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
@@ -128,6 +131,7 @@ const TabHeader = (props: TTabHeaderProps) => {
   return (
     <span
       role="tab"
+      id={`tab-${props.index}`}
       aria-selected={props.isActive}
       key={props.label}
       onClick={props.onClick}
@@ -207,8 +211,9 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
     <ComponentWrapper>
       <SelectorsContainer role="tablist">
         <Spacings.Inline alignItems="flex-end">
-          {labelSyncItems.map((labelSyncItem) => (
+          {labelSyncItems.map((labelSyncItem, index) => (
             <TabHeader
+              index={index}
               key={labelSyncItem.label}
               label={labelSyncItem.label}
               isActive={labelSyncItem.label === selected.label}
