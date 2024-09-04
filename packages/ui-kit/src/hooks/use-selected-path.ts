@@ -70,7 +70,9 @@ const useSelectedPath = () => {
     const newLocation = !hasQueryParams
       ? window.location.pathname
       : `${window.location.pathname}?${urlParams.toString()}`;
-    window.history.replaceState({}, '', newLocation);
+    const data = {};
+    const unused = '';
+    window.history.replaceState(data, unused, newLocation);
 
     // Dispatch a custom event to notify other components on the same page
     const customEvent = new CustomEvent<string>(PATH_CHANGE_EVENT, {
