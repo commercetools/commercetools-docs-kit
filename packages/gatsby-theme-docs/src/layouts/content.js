@@ -55,6 +55,7 @@ const LayoutContent = (props) => {
 
   const siteTitle =
     props.pageData?.overrides?.siteTitle || siteData.siteMetadata.title;
+  const siteTitleHref = props.pageData?.overrides?.siteTitleHref;
   useAiAssistant();
 
   return (
@@ -69,6 +70,7 @@ const LayoutContent = (props) => {
         siteTitle={siteTitle}
         isGlobalBeta={siteData.siteMetadata.beta}
         hasReleaseNotes={props.pageContext.hasReleaseNotes}
+        siteTitleHref={siteTitleHref}
       />
       <LayoutMain
         {...layoutState.topMenu}
@@ -170,6 +172,7 @@ LayoutContent.propTypes = {
     overrides: PropTypes.shape({
       siteTitle: PropTypes.string,
       siteBreadcrumbs: PropTypes.string,
+      siteTitleHref: PropTypes.string,
     }),
   }).isRequired,
   children: PropTypes.node.isRequired,
