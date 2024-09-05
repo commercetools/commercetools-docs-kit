@@ -35,6 +35,8 @@
       path: /writing/lord-icons
     - title: AI Assistant
       path: /writing/ai-assistant
+    - title: Multiple paths
+      path: /writing/paths
 - chapter-title: Creating API Documentation
   pages:
     - title: Add RAML Specs # rmf-codegen/RAMLDOC, filesystem convention, links to specs and resourcess

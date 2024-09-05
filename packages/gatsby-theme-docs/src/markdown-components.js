@@ -4,6 +4,8 @@ import {
   Subtitle,
   Mermaid,
   MultiCodeBlockMarkdownWrapper,
+  MultiPathBlock,
+  PathBlock,
 } from '@commercetools-docs/ui-kit';
 import {
   Card,
@@ -82,6 +84,8 @@ const components = {
   SideBySide,
   Mermaid,
   MultiCodeBlock: MultiCodeBlockMarkdownWrapper,
+  MultiPathBlock,
+  PathBlock,
   Glossary,
   Video: VideoPlayer,
   IfLearningPathComplete,
