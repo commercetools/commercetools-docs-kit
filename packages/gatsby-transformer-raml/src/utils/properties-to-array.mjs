@@ -9,9 +9,9 @@ function getTypes(typeUnion) {
   return results;
 }
 
-function parametersToArray(parameters) {
-  if (parameters) {
-    return Object.entries(parameters).map(([key, parameter]) => {
+function propertiesToArray(properties) {
+  if (properties) {
+    return Object.entries(properties).map(([key, parameter]) => {
       const paramType = generateType(parameter);
       const isUnionType = paramType === 'Union';
       return {
@@ -27,4 +27,4 @@ function parametersToArray(parameters) {
   return undefined;
 }
 
-export default parametersToArray;
+export default propertiesToArray;

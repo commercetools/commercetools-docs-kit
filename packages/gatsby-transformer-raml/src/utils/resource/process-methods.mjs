@@ -1,4 +1,4 @@
-import parametersToArray from '../parameters-to-array.mjs';
+import propertiesToArray from '../properties-to-array.mjs';
 import responsesToArray from './responses-to-array.mjs';
 import headersToArray from './headers-to-array.mjs';
 import codeExamplesToArray from './code-examples-to-array.mjs';
@@ -16,7 +16,7 @@ function processMethods({
 
   methods.forEach((method) => {
     if (returnedMethods[method]) {
-      returnedMethods[method].queryParameters = parametersToArray(
+      returnedMethods[method].queryParameters = propertiesToArray(
         returnedMethods[method].queryParameters
       );
 
