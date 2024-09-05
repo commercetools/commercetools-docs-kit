@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import IconButton from '@commercetools-uikit/icon-button';
+import Tooltip from '@commercetools-uikit/tooltip';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import AssistantIcon from '../icons/assistant-icon.svg';
 import { gtagEvent } from '../../sso/utils/analytics.utils';
@@ -47,13 +48,15 @@ const AiAssistantLaunchButton = (props) => {
     />
   ) : (
     <AssistantLaunchContainer>
-      <IconButton
-        icon={<AssistantIcon />}
-        size="big"
-        label="Open AI assistant"
-        onClick={() => handleClick({ launch_location: 'topbar' })}
-        data-testid="ai-assistant-launch-button"
-      />
+      <Tooltip title="AI Assistant">
+        <IconButton
+          icon={<AssistantIcon />}
+          size="big"
+          label="Open AI assistant"
+          onClick={() => handleClick({ launch_location: 'topbar' })}
+          data-testid="ai-assistant-launch-button"
+        />
+      </Tooltip>
     </AssistantLaunchContainer>
   );
 };
