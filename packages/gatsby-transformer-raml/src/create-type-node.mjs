@@ -100,9 +100,27 @@ function processProperties({
   return undefined;
 }
 
+function getTypes(typeUnion) {
+  const typesList = typeUnion.split('|').map((item) => item.trim());
+  const results = typesList.map((typeItem) => ({
+    type: generateType({ type: typeItem }),
+    builtinType: generateType({ type: typeItem }),
+  }));
+  return results;
+}
+
 function propertiesToArrays(properties) {
   return Object.entries(properties).map(([key, value]) => {
-    return { ...value, name: key };
+    const propType = generateType(value);
+    const isUnionType = propType === 'Union';
+    const unionParams = isUnionType ? getTypes(value.type) : [];
+    return {
+      ...value,
+      name: key,
+      type: propType,
+      unionParams,
+      builtinType: propType,
+    };
   });
 }
 

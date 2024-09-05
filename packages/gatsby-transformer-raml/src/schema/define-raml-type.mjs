@@ -70,7 +70,15 @@ const defineRamlType = ({ schema, createTypes }) => {
         pattern: 'String',
         required: 'Boolean!',
         type: 'String!',
+        unionParams: '[RamlTypePropertyUnionParameter!]',
         uniqueItems: 'Boolean',
+      },
+    }),
+    schema.buildObjectType({
+      name: 'RamlTypePropertyUnionParameter',
+      fields: {
+        type: 'String!',
+        builtinType: 'String!',
       },
     }),
   ];

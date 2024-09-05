@@ -97,13 +97,13 @@ function UnionParametersRow(props) {
   return (
     <>
       Can be{' '}
-      {typesToRender.map(({ type }, idx, { length }) =>
-        length > idx + 1 ? (
+      {typesToRender.map(({ type }, idx, { length }) => {
+        return length > idx + 1 ? (
           <span key={idx}>{type}, </span>
         ) : (
           <span key={idx}>or {type}</span>
-        )
-      )}
+        );
+      })}
     </>
   );
 }

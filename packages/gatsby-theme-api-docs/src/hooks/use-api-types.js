@@ -48,6 +48,10 @@ export const useApiTypes = () => {
               items {
                 type
               }
+              unionParams {
+                builtinType
+                type
+              }
               maxItems
               maxLength
               maximum
