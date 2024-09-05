@@ -12,7 +12,7 @@ describe('Site overrides', () => {
       cy.get('span#site-title')
         .closest('a')
         .should('have.attr', 'href')
-        .and('include', '/../views/custom-anchor');
+        .and('include', '/views/custom-anchor');
     });
     it('should render "Custom Site Title" as site title breadcrumb section', () => {
       cy.get('div[id="top-menu-switcher"] > div > span').contains(
