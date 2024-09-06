@@ -51,7 +51,7 @@ const AiAssistantLaunchButton = (props) => {
       <Tooltip title="AI Assistant">
         <IconButton
           icon={<AssistantIcon />}
-          size="big"
+          size="40"
           label="Open AI assistant"
           onClick={() => handleClick({ launch_location: 'topbar' })}
           data-testid="ai-assistant-launch-button"
