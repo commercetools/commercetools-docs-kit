@@ -296,6 +296,9 @@ export const createSchemaCustomization = ({ actions, schema }) => {
           siteTitle: {
             type: `String!`,
           },
+          siteTitleHref: {
+            type: `String!`,
+          },
           siteBreadcrumbs: {
             type: `String!`,
           },
@@ -457,6 +460,9 @@ export const onCreateNode = async (
           : {}),
         ...(node.frontmatter.siteBreadcrumbs
           ? { siteBreadcrumbs: node.frontmatter.siteBreadcrumbs }
+          : {}),
+        ...(node.frontmatter.siteTitleHref
+          ? { siteTitleHref: node.frontmatter.siteTitleHref }
           : {}),
       },
     };

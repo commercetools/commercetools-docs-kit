@@ -105,6 +105,7 @@ const LayoutSidebar = (props) => {
                 <SidebarComponent
                   onLinkClick={props.closeSidebarMenu}
                   siteTitle={props.siteTitle}
+                  siteTitleHref={props.siteTitleHref}
                   isGlobalBeta={props.isGlobalBeta}
                   hasReleaseNotes={props.hasReleaseNotes}
                 />
@@ -126,6 +127,7 @@ const LayoutSidebar = (props) => {
       >
         <SidebarComponent
           siteTitle={props.siteTitle}
+          siteTitleHref={props.siteTitleHref}
           isGlobalBeta={props.isGlobalBeta}
           hasReleaseNotes={props.hasReleaseNotes}
         />
@@ -175,6 +177,7 @@ LayoutSidebar.propTypes = {
   isGlobalBeta: PropTypes.bool.isRequired,
   hasReleaseNotes: PropTypes.bool.isRequired,
   isSearchDialogOpen: PropTypes.bool.isRequired,
+  siteTitleHref: PropTypes.string,
 };
 
 export default LayoutSidebar;
