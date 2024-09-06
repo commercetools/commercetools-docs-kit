@@ -34,8 +34,8 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
-    "@commercetools-docs/rmf-codegen": "13.34.0",
-    "gatsby": "5.13.6",
+    "@commercetools-docs/rmf-codegen": "13.35.0",
+    "gatsby": "5.13.7",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
