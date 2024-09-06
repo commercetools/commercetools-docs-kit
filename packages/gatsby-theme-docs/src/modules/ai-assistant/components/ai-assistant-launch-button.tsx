@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import IconButton from '@commercetools-uikit/icon-button';
 import Tooltip from '@commercetools-uikit/tooltip';
@@ -14,9 +13,20 @@ const AssistantLaunchContainer = styled.div`
     }
   }
 `;
+interface MessageHistory {
+  role: string;
+  content: string;
+}
 
-const AiAssistantLaunchButton = (props) => {
-  const handleClick = (details) => {
+interface AiAssistantLaunchButtonProps {
+  messageHistory: MessageHistory[];
+  readOnly?: boolean;
+  mode?: string;
+  label?: string;
+}
+
+const AiAssistantLaunchButton = (props: AiAssistantLaunchButtonProps) => {
+  const handleClick = (details: Record<string, unknown>) => {
     gtagEvent('ai_assistant_launch', {
       mode: props.mode,
       ...details,
@@ -59,18 +69,6 @@ const AiAssistantLaunchButton = (props) => {
       </Tooltip>
     </AssistantLaunchContainer>
   );
-};
-
-AiAssistantLaunchButton.propTypes = {
-  messageHistory: PropTypes.arrayOf(
-    PropTypes.shape({
-      role: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
-    })
-  ),
-  readOnly: PropTypes.bool,
-  mode: PropTypes.string,
-  label: PropTypes.string,
 };
 
 export default AiAssistantLaunchButton;
