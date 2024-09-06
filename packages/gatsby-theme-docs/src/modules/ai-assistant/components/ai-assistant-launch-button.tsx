@@ -13,17 +13,16 @@ const AssistantLaunchContainer = styled.div`
     }
   }
 `;
-interface MessageHistory {
+type MessageHistory = {
   role: string;
   content: string;
-}
-
-interface AiAssistantLaunchButtonProps {
+};
+type AiAssistantLaunchButtonProps = {
   messageHistory: MessageHistory[];
   readOnly?: boolean;
   mode?: string;
   label?: string;
-}
+};
 
 const AiAssistantLaunchButton = (props: AiAssistantLaunchButtonProps) => {
   const handleClick = (details: Record<string, unknown>) => {
