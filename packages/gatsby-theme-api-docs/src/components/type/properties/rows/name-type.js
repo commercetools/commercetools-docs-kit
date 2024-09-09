@@ -6,7 +6,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { BetaTag } from '@commercetools-docs/gatsby-theme-docs';
 import { typography } from '../../../../design-system';
-import RegexProperty from '../../properties/regex-properties';
+import RegexProperty from '../regex-properties';
 import useTypesToRender from '../../../../hooks/use-type-to-render';
 import Required from '../../../required';
 
@@ -27,7 +27,7 @@ const BetaWrapper = styled.span`
   padding-top: 0.2rem;
 `;
 
-function UnionParametersRow(props) {
+function UnionPropertiesRow(props) {
   const typesToRender = useTypesToRender({
     property: props.types,
     apiKey: props.apiKey,
@@ -37,18 +37,18 @@ function UnionParametersRow(props) {
   return (
     <>
       Can be{' '}
-      {typesToRender.map(({ type }, idx, { length }) => {
-        return length > idx + 1 ? (
+      {typesToRender.map(({ type }, idx, { length }) =>
+        length > idx + 1 ? (
           <span key={idx}>{type}, </span>
         ) : (
           <span key={idx}>or {type}</span>
-        );
-      })}
+        )
+      )}
     </>
   );
 }
 
-UnionParametersRow.propTypes = {
+UnionPropertiesRow.propTypes = {
   apiKey: PropTypes.string.isRequired,
   types: PropTypes.arrayOf({
     name: PropTypes.string.isRequired,
@@ -61,7 +61,7 @@ UnionParametersRow.propTypes = {
     }),
   }).isRequired,
 };
-UnionParametersRow.displayName = 'UnionParametersRow';
+UnionPropertiesRow.displayName = 'UnionParametersRow';
 
 const NameType = (props) => {
   const typesToRender = useTypesToRender({
@@ -74,15 +74,15 @@ const NameType = (props) => {
     string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
 
   const isTypeUnion = (strType) => {
-    return typeof strType === 'string' && strType === 'Union';
+    return strType === 'Union';
   };
 
-  const getParameterType = ({ name, unionParams }, type, apiKey) => {
+  const getPropertiesType = ({ name, unionParams }, type, apiKey) => {
     if (isRegex(name) && !typeToRender.displayPrefix) {
       return `Any ${typeof type} parameter matching this regular expression`;
     }
     if (isTypeUnion(type)) {
-      return <UnionParametersRow types={unionParams} apiKey={apiKey} />;
+      return <UnionPropertiesRow types={unionParams} apiKey={apiKey} />;
     }
     return type;
   };
@@ -108,13 +108,7 @@ const NameType = (props) => {
       <PropertyType>
         {typeToRender.displayPrefix && typeToRender.displayPrefix}
 
-        {getParameterType(props.property, typeToRender.type, props.apiKey)}
-
-        {/* {isRegex(props.property.name) && !typeToRender.displayPrefix
-          ? `Any ${typeof typeToRender.type} property matching this regular expression`
-          : typeof typeToRender.type === 'string'
-          ? typeToRender.type
-          : typeToRender.type} */}
+        {getPropertiesType(props.property, typeToRender.type, props.apiKey)}
         {'\u200B' /* zero-width space for the search crawler */}
       </PropertyType>
     </SpacingsStack>
