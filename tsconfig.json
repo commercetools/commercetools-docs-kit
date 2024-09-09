@@ -12,5 +12,5 @@
     "target": "ES2022",
     "resolveJsonModule": true
   },
-  "include": ["packages", "websites"]
+  "include": ["packages", "websites", "type-definition/*"]
 }
