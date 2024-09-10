@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import Title from './title';
@@ -10,9 +9,13 @@ const scopesGridStyle = css`
   grid-gap: 0.5rem;
 `;
 
-const Scopes = (props) => {
+type ScopesProps = {
+  scopes: string[];
+};
+
+const Scopes = (props: ScopesProps) => {
   const hasMultiColumnScope = props.scopes.length >= 10;
-  const canAppendComma = (index) =>
+  const canAppendComma = (index: number) =>
     !hasMultiColumnScope && index < props.scopes.length - 1;
 
   return (
@@ -34,10 +37,6 @@ const Scopes = (props) => {
       </div>
     </SpacingsStack>
   );
-};
-
-Scopes.propTypes = {
-  scopes: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
 
 export default Scopes;
