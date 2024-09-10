@@ -13,6 +13,9 @@ const Root = styled.div`
   position: relative;
   width: 100vw;
   height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* enables "momentum" style scrolling */
 
   scroll-padding-top: ${(props) =>
     props.isGlobalNotificationVisible
