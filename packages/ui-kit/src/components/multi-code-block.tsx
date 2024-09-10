@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import reactIs from 'react-is';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -12,6 +12,7 @@ import {
 import parseCodeBlockOptions from '../utils/code-block-parse-options';
 import { cssVarToValue } from '../utils/css-variables';
 import CodeBlock from './code-block';
+import useSelectedPath from '../hooks/use-selected-path';
 
 type OneOrManyChildren = React.ReactElement | React.ReactElement[];
 type MultiCodeBlockProps = {
@@ -132,20 +133,37 @@ function extractLanguages(children: OneOrManyChildren): string[] {
 
 export const MultiCodeBlock = (props: MultiCodeBlockProps) => {
   const langs = extractLanguages(props.children);
-
+  const { selectedPath, updateSelectedPath } = useSelectedPath();
   const [selected, setSelected] = React.useState(langs[0]);
+
+  useEffect(() => {
+    if (selectedPath && Array.isArray(props.children)) {
+      const hasMatchingLang = !!props.children.find(
+        (child) => child.props.language?.toLowerCase() === selectedPath
+      );
+
+      if (hasMatchingLang) {
+        setSelected(selectedPath);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedPath]);
+
   const handleOnLanguageChange = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement> | undefined) => {
       setSelected(event?.target?.value || '');
+      updateSelectedPath(event?.target?.value || '');
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
   let selectedElement: React.ReactElement | undefined;
   if (Array.isArray(props.children)) {
     selectedElement =
-      props.children.find((child) => child.props.language === selected) ||
-      undefined;
+      props.children.find(
+        (child) => child.props.language?.toLowerCase() === selected
+      ) || undefined;
   } else {
     selectedElement = props.children;
   }
@@ -168,7 +186,11 @@ export const MultiCodeBlock = (props: MultiCodeBlockProps) => {
                     <LanguagesDropDownWrapper>
                       <LanguagesDropDown onChange={handleOnLanguageChange}>
                         {langs.map((lang) => (
-                          <option key={lang} value={lang}>
+                          <option
+                            selected={lang?.toLowerCase() === selected}
+                            key={lang}
+                            value={lang}
+                          >
                             {languageDisplayNames[lang] || lang}
                           </option>
                         ))}

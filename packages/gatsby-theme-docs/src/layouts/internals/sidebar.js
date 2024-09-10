@@ -514,6 +514,7 @@ const Sidebar = (props) => {
   // - initialize the new scroll position
   // - scroll to the previous position in case it was defined
   const nextScrollPosition = useScrollPosition(scrollContainerId);
+  const siteTitleHref = props.siteTitleHref || '/';
 
   return (
     <>
@@ -522,7 +523,7 @@ const Sidebar = (props) => {
         <WebsiteTitle>
           <SpacingsStack scale="xs">
             <div>{props.isGlobalBeta && <BetaTag />}</div>
-            <WebsiteTitleLink as={Link} to="/">
+            <WebsiteTitleLink as={Link} to={siteTitleHref}>
               <span id="site-title">{props.siteTitle}</span>
             </WebsiteTitleLink>
           </SpacingsStack>
@@ -589,6 +590,7 @@ Sidebar.displayName = 'Sidebar';
 Sidebar.propTypes = {
   onLinkClick: PropTypes.func,
   siteTitle: PropTypes.string.isRequired,
+  siteTitleHref: PropTypes.string,
   isGlobalBeta: PropTypes.bool.isRequired,
   hasReleaseNotes: PropTypes.bool.isRequired,
   // from @react/router

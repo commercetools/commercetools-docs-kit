@@ -16,6 +16,8 @@
       path: /views/links
     - title: Code blocks
       path: /views/code-blocks
+    - title: Multi path blocks
+      path: /views/multi-path-block
     - title: Code examples
       path: /views/code-examples
     - title: Custom Anchor
