@@ -166,12 +166,12 @@ curl -sH "Authorization: Bearer ACCESS_TOKEN" https://api.sphere.io/PROJECT_KEY/
 
 ## Multi language code blocks in markdown
 
-It's possible to nest multiple markdown code blocks into one `<MultiCodeBlock>` element to have them display as a multi language code example without having to delegate the content into file using the `<CodeExample>` and `<MultiCodeExample>` features from the `gatsby-theme-code-examples` add-on.
+It's possible to nest multiple markdown code blocks into one `<MultiCodeBlock>` element to have them display as a multi language code example without having to delegate the content into file using the `<CodeExample>` and `<MultiCodeExample>` features from the `gatsby-theme-code-examples` add-on. The component also accepts a `title` prop that sets the title for the code block. Multiple titles for the same code block are not supported.
 
 <SideBySide>
 
 ````md title="you write:" secondaryTheme
-<MultiCodeBlock>
+<MultiCodeBlock title="Title of the Multi Language Code Block">
 
 ```js
 console.log('this is it in javascript');
@@ -184,7 +184,7 @@ echo "this is it in PHP"
 </MultiCodeBlock>
 ````
 
-<MultiCodeBlock>
+<MultiCodeBlock title="Title of the Multi Language Code Block">
 
 ```js
 console.log('this is it in javascript');
