@@ -4,6 +4,7 @@ import resolveConflictingFieldTypes from './utils/type/resolve-conflicting-field
 import generateType from './utils/type/generate-type.mjs';
 import generateBuiltinType from './utils/type/generate-built-in-type.mjs';
 import { examplesToArray } from './utils/resource/examples-to-array.mjs';
+import propertiesToArray from './utils/properties-to-array.mjs';
 
 function createTypeNode({
   apiKey,
@@ -74,7 +75,7 @@ function processProperties({
   let propertiesArray;
 
   if (properties) {
-    propertiesArray = propertiesToArrays(properties);
+    propertiesArray = propertiesToArray(properties);
     propertiesArray = propertiesArray.filter(
       (property) => !property.deprecated && !property.markDeprecated
     );
@@ -98,12 +99,6 @@ function processProperties({
   }
 
   return undefined;
-}
-
-function propertiesToArrays(properties) {
-  return Object.entries(properties).map(([key, value]) => {
-    return { ...value, name: key };
-  });
 }
 
 function enumValuesToArray(enumValue) {

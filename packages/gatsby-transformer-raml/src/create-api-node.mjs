@@ -1,6 +1,5 @@
-import doRecursion  from "./utils/api/do-recursion.mjs";
-import parametersToArray  from "./utils/parameters-to-array.mjs";
-
+import doRecursion from './utils/api/do-recursion.mjs';
+import propertiesToArray from './utils/properties-to-array.mjs';
 
 function createApiNode({
   apiKey,
@@ -34,7 +33,7 @@ function postProcessApi({ apiKey, api }) {
 
   postProcessedApi.apiKey = apiKey;
 
-  postProcessedApi.baseUriParameters = parametersToArray(
+  postProcessedApi.baseUriParameters = propertiesToArray(
     postProcessedApi.baseUriParameters
   );
 

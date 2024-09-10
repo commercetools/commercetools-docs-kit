@@ -21,7 +21,7 @@ const isRegex = (string) =>
   string.charAt(0) === '/' && string.charAt(string.length - 1) === '/';
 
 const isTypeUnion = (strType) => {
-  return typeof strType === 'string' && strType === 'Union';
+  return strType === 'Union';
 };
 
 const getParameterType = ({ name, unionParams }, type, apiKey) => {

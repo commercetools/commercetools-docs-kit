@@ -1,8 +1,8 @@
-import parametersToArray from './parameters-to-array.mjs';
+import propertiesToArray from './properties-to-array.mjs';
 
-describe('parameters-to-array.js', () => {
+describe('properties-to-array.js', () => {
   it('should transform objects of query parameters to array', () => {
-    const parametersBefore = {
+    const propertiesBefore = {
       where: {
         required: false,
         type: 'string',
@@ -16,7 +16,7 @@ describe('parameters-to-array.js', () => {
       },
     };
 
-    const parametersAfter = [
+    const propertiesAfter = [
       {
         name: 'where',
         required: false,
@@ -33,11 +33,11 @@ describe('parameters-to-array.js', () => {
       },
     ];
 
-    expect(parametersToArray(parametersBefore)).toEqual(parametersAfter);
+    expect(propertiesToArray(propertiesBefore)).toEqual(propertiesAfter);
   });
 
   it('should transform number to float', () => {
-    const parametersBefore = {
+    const propertiesBefore = {
       limit: {
         required: false,
         type: 'integer',
@@ -51,7 +51,7 @@ describe('parameters-to-array.js', () => {
       },
     };
 
-    const parametersAfter = [
+    const propertiesAfter = [
       {
         name: 'limit',
         required: false,
@@ -68,11 +68,11 @@ describe('parameters-to-array.js', () => {
       },
     ];
 
-    expect(parametersToArray(parametersBefore)).toEqual(parametersAfter);
+    expect(propertiesToArray(propertiesBefore)).toEqual(propertiesAfter);
   });
 
   it('should properly convert union types transform number to float', () => {
-    const parametersBefore = {
+    const propertiesBefore = {
       unionParameter: {
         required: false,
         type: 'integer | string | number',
@@ -80,7 +80,7 @@ describe('parameters-to-array.js', () => {
       },
     };
 
-    const parametersAfter = [
+    const propertiesAfter = [
       {
         name: 'unionParameter',
         required: false,
@@ -94,6 +94,6 @@ describe('parameters-to-array.js', () => {
       },
     ];
 
-    expect(parametersToArray(parametersBefore)).toEqual(parametersAfter);
+    expect(propertiesToArray(propertiesBefore)).toEqual(propertiesAfter);
   });
 });
