@@ -2,13 +2,14 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import { Markdown } from '@commercetools-docs/ui-kit';
 import Title from './title';
 import styled from '@emotion/styled';
+import { dimensions } from '@commercetools-docs/ui-kit/src/design-system';
 
 type ScopesProps = {
   scopes: string[];
 };
 
 const Container = styled.div`
-  @media (min-width: 768px) {
+  @media screen and (${dimensions.viewports.tablet}) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0.5rem;
@@ -19,10 +20,12 @@ const Container = styled.div`
 `;
 
 const Text = styled(Markdown.InlineCodeWithoutBox)`
-  :not(:last-child)&::after {
-    content: ', ';
+  @media screen and (${dimensions.viewports.mobile}) {
+    :not(:last-child)&::after {
+      content: ', ';
+    }
   }
-  @media only screen and (min-width: 768px) {
+  @media screen and (${dimensions.viewports.tablet}) {
     &::after {
       content: ' ';
     }
