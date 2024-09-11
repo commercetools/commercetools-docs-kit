@@ -9,13 +9,14 @@ type ScopesProps = {
 };
 
 const Container = styled.div`
+  display: grid;
+  grid-gap: 0.5rem;
+
+  @media screen and (${dimensions.viewports.mobile}) {
+    grid-template-columns: 1fr;
+  }
   @media screen and (${dimensions.viewports.tablet}) {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.5rem;
-    > code {
-      word-break: break-all;
-    }
   }
 `;
 
