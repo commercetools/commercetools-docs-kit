@@ -1,8 +1,8 @@
-** Description of changes **
+**Description of changes**
 
-** Link original ticket **
+**Link original ticket**
 
-** Screenshot of changes (if applicable) **
+**Screenshot of changes (if applicable)**
 
 [DoD guidelines](https://commercetools.atlassian.net/wiki/spaces/ET/pages/738820530/Definition+of+Done)
 
