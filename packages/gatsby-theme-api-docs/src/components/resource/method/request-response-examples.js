@@ -58,7 +58,7 @@ const RequestResponseExamples = (props) => {
         </MultiCodeBlock>
       )}
 
-      {responsesCodeExamples.length &&
+      {Boolean(responsesCodeExamples.length) &&
         responsesCodeExamples.map((codeExample) => {
           return (
             <MultiCodeBlock
