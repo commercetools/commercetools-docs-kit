@@ -188,14 +188,14 @@ const Method = ({
                   />
                 )}
             </SpacingsStack>
-            {(!method.body || responseHasStructuredDataType) && (
+            {
               <RequestResponseExamples
                 apiKey={apiKey}
                 requestCodeExamples={method.codeExamples}
                 responses={method.responses}
                 contentType={responseContentType}
               />
-            )}
+            }
           </SideBySide>
         </Container>
       </SpacingsStack>
