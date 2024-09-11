@@ -1,6 +1,6 @@
 **Description of changes**
 
-**Link original ticket**
+**Link to original ticket**
 
 **Screenshot of changes (if applicable)**
 
