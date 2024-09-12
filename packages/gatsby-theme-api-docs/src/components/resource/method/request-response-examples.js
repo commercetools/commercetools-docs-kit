@@ -58,18 +58,17 @@ const RequestResponseExamples = (props) => {
         </MultiCodeBlock>
       )}
 
-      {Boolean(responsesCodeExamples.length) &&
-        responsesCodeExamples.map((codeExample) => {
-          return (
-            <MultiCodeBlock
-              key={`${codeExample.code}-${codeExample.typeDisplayName}`}
-              secondaryTheme={true}
-              title={`${codeExample.code} Response Example: ${codeExample.typeDisplayName}`}
-            >
-              <CodeBlock language="json" content={codeExample.value} />
-            </MultiCodeBlock>
-          );
-        })}
+      {responsesCodeExamples.map((codeExample) => {
+        return (
+          <MultiCodeBlock
+            key={`${codeExample.code}-${codeExample.typeDisplayName}`}
+            secondaryTheme={true}
+            title={`${codeExample.code} Response Example: ${codeExample.typeDisplayName}`}
+          >
+            <CodeBlock language="json" content={codeExample.value} />
+          </MultiCodeBlock>
+        );
+      })}
     </SpacingsStack>
   );
 };
