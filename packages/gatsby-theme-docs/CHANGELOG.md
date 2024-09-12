@@ -1,5 +1,22 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.9.0
+
+### Minor Changes
+
+- [#2074](https://github.com/commercetools/commercetools-docs-kit/pull/2074) [`9fca219`](https://github.com/commercetools/commercetools-docs-kit/commit/9fca2192c6de74f425727385cf3c8112ff88e3eb) Thanks [@ColinRosati](https://github.com/ColinRosati)! - Add Tooltip to AI Assitant icon
+
+- [#2064](https://github.com/commercetools/commercetools-docs-kit/pull/2064) [`7469822`](https://github.com/commercetools/commercetools-docs-kit/commit/7469822c35e842bf1cda925a85f510740bf8cd17) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Implementation of MultiPathBlock component to support multiple reading path in a single page
+
+- [#2072](https://github.com/commercetools/commercetools-docs-kit/pull/2072) [`b036d47`](https://github.com/commercetools/commercetools-docs-kit/commit/b036d47c480d3889a788755e82ccf87ad6eeae51) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add the ability of override sidebar site title href via frontmatter property called `siteTitleHref`
+
+### Patch Changes
+
+- [#2077](https://github.com/commercetools/commercetools-docs-kit/pull/2077) [`aa25be9`](https://github.com/commercetools/commercetools-docs-kit/commit/aa25be943ce3dd4db1b964895fd0615fe3c4e252) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix anchor navigation between pages
+
+- Updated dependencies [[`7469822`](https://github.com/commercetools/commercetools-docs-kit/commit/7469822c35e842bf1cda925a85f510740bf8cd17)]:
+  - @commercetools-docs/ui-kit@24.9.0
+
 ## 24.8.0
 
 ### Minor Changes
