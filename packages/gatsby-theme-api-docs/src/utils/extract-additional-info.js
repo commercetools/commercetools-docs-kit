@@ -16,6 +16,7 @@ const extractAdditionalInfo = (properties) => {
     'originalType',
     'required',
     'type',
+    'unionParams',
   ];
 
   mainInfo.forEach((field) => {

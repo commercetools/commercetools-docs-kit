@@ -1,8 +1,6 @@
-import doRecursion  from "./utils/resource/do-recursion.mjs";
-import parametersToArray  from "./utils/parameters-to-array.mjs";
-import processMethods  from "./utils/resource/process-methods.mjs";
-
-
+import doRecursion from './utils/resource/do-recursion.mjs';
+import propertiesToArray from './utils/properties-to-array.mjs';
+import processMethods from './utils/resource/process-methods.mjs';
 
 function createResourceNode({
   apiKey,
@@ -50,11 +48,11 @@ function postProcessResource({
 
   postProcessedResource.apiKey = apiKey;
 
-  postProcessedResource.uriParameters = parametersToArray(
+  postProcessedResource.uriParameters = propertiesToArray(
     postProcessedResource.uriParameters
   );
 
-  postProcessedResource.baseUriParameters = parametersToArray(
+  postProcessedResource.baseUriParameters = propertiesToArray(
     postProcessedResource.baseUriParameters
   );
 

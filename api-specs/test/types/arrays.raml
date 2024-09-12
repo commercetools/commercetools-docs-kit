@@ -81,3 +81,15 @@ types:
         type: scalars.IntegerTestType[]
         uniqueItems: false
     example: !include ../examples/array-test-type.json
+  UnionReferenceTestType:
+    description: A test type with a reference with multiple type options.
+    type: object
+    properties:
+      reference:
+        type: ArrayTestType | WideLayoutArrayTestType
+        description: |
+          Reference description.
+      key?:
+        type: string
+        description: |
+          Key type description.
