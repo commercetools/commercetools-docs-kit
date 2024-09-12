@@ -1,93 +1,31 @@
 import styled from '@emotion/styled';
-import { designSystem } from '@commercetools-docs/ui-kit';
+import {
+  GRID_ID_EMPTY,
+  GRID_ID_GLOBAL_NOTIFICATION,
+  GRID_ID_PAGE_CONTENT,
+  GRID_ID_PAGE_NAVIGATION,
+  GRID_ID_ROW_ONE,
+  GRID_ID_ROW_TWO,
+  GRID_ID_ROW_THREE,
+  GRID_ID_PAGE_HEADER,
+  GRID_ID_PAGE_HEADER_SIDE,
+} from './layout-design-config';
+import { getPageLayoutGridStyles } from './layout-design-utils';
+
+// definition of rows used in LayoutPage Component
+const gridRows = `
+  [${GRID_ID_ROW_ONE.start}] '${GRID_ID_GLOBAL_NOTIFICATION} ${GRID_ID_EMPTY}' auto [${GRID_ID_ROW_ONE.end}]
+  [${GRID_ID_ROW_TWO.start}] '${GRID_ID_PAGE_HEADER} ${GRID_ID_PAGE_HEADER_SIDE}' auto [${GRID_ID_ROW_TWO.end}]
+  [${GRID_ID_ROW_THREE.start}] '${GRID_ID_PAGE_CONTENT} ${GRID_ID_PAGE_NAVIGATION}' 1fr [${GRID_ID_ROW_THREE.end}]
+`;
 
 const LayoutPage = styled.div`
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    max-width: unset;
-    display: grid;
-    grid:
-      [row1-start] 'global-notification empty' auto [row1-end]
-      [row2-start] 'page-header page-header-side' auto [row2-end]
-      [row3-start] 'page-content page-navigation' 1fr [row3-end]
-      / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${designSystem.dimensions.widths.pageContentWithMargins}
-      )
-      0;
-  }
-  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    grid:
-      [row1-start] 'global-notification empty' auto [row1-end]
-      [row2-start] 'page-header page-header-side' auto [row2-end]
-      [row3-start] 'page-content page-navigation' 1fr [row3-end]
-      / minmax(
-        ${(props) =>
-          props.isReleaseNotesPage
-            ? designSystem.dimensions.widths
-                .pageContentSmallReleaseNotesWithMargins
-            : designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${(props) =>
-          props.isReleaseNotesPage
-            ? designSystem.dimensions.widths.pageContentReleaseNotesWithMargins
-            : designSystem.dimensions.widths.pageContentWithMargins}
-      )
-      ${(props) =>
-        props.isReleaseNotesPage
-          ? designSystem.dimensions.widths.releaseNoteFilters
-          : designSystem.dimensions.widths.pageNavigation};
-  }
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    grid:
-      [row1-start] 'global-notification empty' auto [row1-end]
-      [row2-start] 'page-header page-header-side' auto [row2-end]
-      [row3-start] 'page-content page-navigation' 1fr [row3-end]
-      / minmax(
-        ${(props) =>
-          props.isReleaseNotesPage
-            ? designSystem.dimensions.widths
-                .pageContentSmallReleaseNotesWithMargins
-            : designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${(props) =>
-          props.isReleaseNotesPage
-            ? designSystem.dimensions.widths.pageContentReleaseNotesWithMargins
-            : designSystem.dimensions.widths.pageContentWithMargins}
-      )
-      ${(props) =>
-        props.isReleaseNotesPage
-          ? designSystem.dimensions.widths.releaseNoteFilters
-          : designSystem.dimensions.widths.pageNavigation};
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    grid:
-      [row1-start] 'global-notification empty' auto [row1-end]
-      [row2-start] 'page-header page-header-side' auto [row2-end]
-      [row3-start] 'page-content page-navigation' 1fr [row3-end] /
-      ${(props) =>
-        props.isReleaseNotesPage
-          ? designSystem.dimensions.widths.pageContentReleaseNotesWithMargins
-          : designSystem.dimensions.widths.pageContentWithMargins}
-      minmax(
-        ${designSystem.dimensions.widths.pageNavigationSmall},
-        ${(props) =>
-          props.isReleaseNotesPage
-            ? designSystem.dimensions.widths.releaseNoteFilters
-            : designSystem.dimensions.widths.pageNavigationSmall};
-      );
-  }
   ${(props) =>
-    props.allowWideContentLayout
-      ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    grid:
-      [row1-start] 'global-notification empty' auto [row1-end]
-      [row2-start] 'page-header page-header-side' auto [row2-end]
-      [row3-start] 'page-content page-navigation' 1fr [row3-end]
-      / minmax(
-        ${designSystem.dimensions.widths.pageContentWideWithMargins},
-        ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
-      )
-      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, ${designSystem.dimensions.widths.pageNavigation});
-  }`
-      : ''}
+    getPageLayoutGridStyles(
+      gridRows,
+      props.isReleaseNotesPage,
+      props.allowWideContentLayout
+    )}
 `;
 
 export default LayoutPage;
