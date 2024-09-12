@@ -458,8 +458,12 @@ uses:
         responses:
           200:
             body:
-              example: !include examples/product-example.json
-              type: any
+              application/json:
+                type: objects.ObjectTestType
+          202:
+            body:
+              application/json:
+                type: scalars.StringTestType
 
     /namespace-action:
       uriParameters:

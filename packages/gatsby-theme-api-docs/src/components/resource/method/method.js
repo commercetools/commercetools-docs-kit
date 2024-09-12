@@ -99,9 +99,13 @@ const Method = ({
     });
   }
 
-  const isStructuredDataType =
+  const requestHasStructuredDataType =
     requestContentType.includes('application/json') ||
     requestContentType.includes('application/x-www-form-urlencoded');
+
+  const responseHasStructuredDataType =
+    responseContentType.includes('applicationjson') ||
+    responseContentType.includes('applicationxwwwformurlencoded');
 
   const methodColor = computeMethodColor(methodType.toLowerCase());
 
@@ -170,27 +174,28 @@ const Method = ({
                     method.body.applicationjson?.type ||
                     method.body.applicationxwwwformurlencoded?.type
                   }
-                  isStructuredDataType={isStructuredDataType}
+                  isStructuredDataType={requestHasStructuredDataType}
                   contentType={requestContentType}
                 />
               )}
 
-              {(!method.body || isStructuredDataType) && method.responses && (
-                <Responses
-                  apiKey={apiKey}
-                  responses={method.responses}
-                  contentType={responseContentType}
-                />
-              )}
+              {(!method.body || responseHasStructuredDataType) &&
+                method.responses && (
+                  <Responses
+                    apiKey={apiKey}
+                    responses={method.responses}
+                    contentType={responseContentType}
+                  />
+                )}
             </SpacingsStack>
-            {(!method.body || isStructuredDataType) && (
+            {
               <RequestResponseExamples
                 apiKey={apiKey}
                 requestCodeExamples={method.codeExamples}
                 responses={method.responses}
                 contentType={responseContentType}
               />
-            )}
+            }
           </SideBySide>
         </Container>
       </SpacingsStack>
