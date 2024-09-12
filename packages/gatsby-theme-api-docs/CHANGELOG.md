@@ -1,5 +1,21 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 24.9.0
+
+### Minor Changes
+
+- [#2076](https://github.com/commercetools/commercetools-docs-kit/pull/2076) [`dbe4950`](https://github.com/commercetools/commercetools-docs-kit/commit/dbe49500fa962cc3d6d4a51e79f8eade8b46271d) Thanks [@timonrey](https://github.com/timonrey)! - Add API OAuth scopes columns layout
+
+### Patch Changes
+
+- [#2070](https://github.com/commercetools/commercetools-docs-kit/pull/2070) [`5f7ed85`](https://github.com/commercetools/commercetools-docs-kit/commit/5f7ed85cbfb9a7f2b21d4f1d7a2451f9d3987bd2) Thanks [@timonrey](https://github.com/timonrey)! - Display union references for api-types correctly.
+
+- [#2078](https://github.com/commercetools/commercetools-docs-kit/pull/2078) [`4534a6f`](https://github.com/commercetools/commercetools-docs-kit/commit/4534a6f7013f1962a82a2a7a81878e9503c92fd7) Thanks [@timonrey](https://github.com/timonrey)! - Show response details for all request data types
+
+- Updated dependencies [[`5f7ed85`](https://github.com/commercetools/commercetools-docs-kit/commit/5f7ed85cbfb9a7f2b21d4f1d7a2451f9d3987bd2), [`7469822`](https://github.com/commercetools/commercetools-docs-kit/commit/7469822c35e842bf1cda925a85f510740bf8cd17)]:
+  - @commercetools-docs/gatsby-transformer-raml@13.7.1
+  - @commercetools-docs/ui-kit@24.9.0
+
 ## 24.8.0
 
 ### Patch Changes

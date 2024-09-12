@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 24.9.0
+
+### Minor Changes
+
+- [#2064](https://github.com/commercetools/commercetools-docs-kit/pull/2064) [`7469822`](https://github.com/commercetools/commercetools-docs-kit/commit/7469822c35e842bf1cda925a85f510740bf8cd17) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Implementation of MultiPathBlock component to support multiple reading path in a single page
+
 ## 24.8.0
 
 ### Minor Changes

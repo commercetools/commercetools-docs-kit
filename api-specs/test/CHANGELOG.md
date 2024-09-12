@@ -1,5 +1,11 @@
 # @commercetools-api-specs/test
 
+## 0.3.0
+
+### Minor Changes
+
+- [#2076](https://github.com/commercetools/commercetools-docs-kit/pull/2076) [`dbe4950`](https://github.com/commercetools/commercetools-docs-kit/commit/dbe49500fa962cc3d6d4a51e79f8eade8b46271d) Thanks [@timonrey](https://github.com/timonrey)! - Add API OAuth scopes columns layout
+
 ## 0.2.3
 
 ### Patch Changes

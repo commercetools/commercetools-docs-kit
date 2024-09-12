@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-transformer-raml
 
+## 13.7.1
+
+### Patch Changes
+
+- [#2070](https://github.com/commercetools/commercetools-docs-kit/pull/2070) [`5f7ed85`](https://github.com/commercetools/commercetools-docs-kit/commit/5f7ed85cbfb9a7f2b21d4f1d7a2451f9d3987bd2) Thanks [@timonrey](https://github.com/timonrey)! - Display union references for api-types correctly.
+
 ## 13.7.0
 
 ### Minor Changes
