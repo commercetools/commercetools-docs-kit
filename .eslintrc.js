@@ -35,5 +35,19 @@ module.exports = {
     ],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            name: 'src',
+            message: 'Importing from "src" is not allowed.',
+          },
+        ],
+        patterns: [
+          '@commercetools-docs/ui-kit/src/*', // Restrict all imports from "src" directory since not available in production build
+        ],
+      },
+    ],
   },
 };
