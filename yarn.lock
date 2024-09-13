@@ -3504,7 +3504,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-api-docs@24.9.0, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
+"@commercetools-docs/gatsby-theme-api-docs@24.9.1, @commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-api-docs@workspace:packages/gatsby-theme-api-docs"
   dependencies:
@@ -4687,7 +4687,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-api-docs": 24.9.0
+    "@commercetools-docs/gatsby-theme-api-docs": 24.9.1
     "@commercetools-docs/gatsby-theme-docs": 24.9.0
     "@commercetools-docs/rmf-codegen": 13.35.0
     gatsby: 5.13.7

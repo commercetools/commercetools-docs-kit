@@ -1,5 +1,11 @@
 # @commercetools-docs/gatsby-theme-api-docs
 
+## 24.9.1
+
+### Patch Changes
+
+- [#2080](https://github.com/commercetools/commercetools-docs-kit/pull/2080) [`eda2586`](https://github.com/commercetools/commercetools-docs-kit/commit/eda25860a17c25983d2d6d57e5274ae5945db120) Thanks [@ColinRosati](https://github.com/ColinRosati)! - Update import path
+
 ## 24.9.0
 
 ### Minor Changes
