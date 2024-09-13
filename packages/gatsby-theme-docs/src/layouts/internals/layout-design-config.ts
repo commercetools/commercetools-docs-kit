@@ -1,20 +1,27 @@
 import { designSystem } from '@commercetools-docs/ui-kit';
 
 /**
- * Layout for Page content
- * excludes left navigation
- * Typically there is 2 vertical columns with veried rows depending on usage
- * All Layout components share same layout
- * |----TOP--------------|--1--|
- * |----TITLE------------|--2--|
- * |----CONTENT----------|--3--|
+ * Layout definition for Page content
+ * This layout is contained within contentLayoutConfig. This layout excludes
+ * left navigation.
+ *
+ * Layouts can we one or 2 columns with various rows.
+ * |----A----------------|--1--|
+ * |----B----------------|--2--|
+ * |----C----------------|--3--|
  *
  * |---COLUMN_ONE--------|--COLUMN_TWO--|
  * |---COLUMN_ONE--------|--COLUMN_TWO--|
  *
- * Note: Release notes page has a different layout to accound for search filters
+ * |---COLUMN_ONE--------|--COLUMN_TWO--|
+ * |---COLUMN_ONE-----------------------|
+ *
+ * |---COLUMN_ONE-----------------------|
+ * |---COLUMN_ONE-----------------------|
+ *
+ * Note: Release notes page has a different varient on column two's width to account for search filters
  */
-export const contentLayoutConfigV2 = {
+export const contentLayoutConfig = {
   default: {
     column1: `minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},

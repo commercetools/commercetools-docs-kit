@@ -1,5 +1,5 @@
 import { designSystem } from '@commercetools-docs/ui-kit';
-import { contentLayoutConfigV2 } from './layout-design-config';
+import { contentLayoutConfig } from './layout-design-config';
 
 /**
  * getPageLayoutGridStyles utility is a helper function
@@ -21,8 +21,8 @@ export const getPageLayoutGridStyles = (
             grid:
             ${gridRows}
             / 
-            ${contentLayoutConfigV2.default.column1Max}
-            ${contentLayoutConfigV2.default.column2Max}
+            ${contentLayoutConfig.default.column1Max}
+            ${contentLayoutConfig.default.column2Max}
         }
     `;
 
@@ -38,34 +38,33 @@ export const getPageLayoutGridStyles = (
         grid:
             ${gridRows}
             /
-            ${contentLayoutConfigV2.default.column1}
-            ${contentLayoutConfigV2.default.column2Hidden};
+            ${contentLayoutConfig.default.column1}
+            ${contentLayoutConfig.default.column2Hidden};
     }
     @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
         grid:
             ${gridRows}
             / 
-            ${contentLayoutConfigV2[configPage].column1}
-            ${contentLayoutConfigV2[configPage].column2Fixed}
+            ${contentLayoutConfig[configPage].column1}
+            ${contentLayoutConfig[configPage].column2Fixed}
     }
     @media screen and (${designSystem.dimensions.viewports.laptop}) {
         grid:
             ${gridRows}
             /
-            ${contentLayoutConfigV2[configPage].column1}
+            ${contentLayoutConfig[configPage].column1}
             ${
               isReleaseNotesPage
-                ? contentLayoutConfigV2.releaseNote
-                    .column2FixedReleaseNoteFilters
-                : contentLayoutConfigV2.default.column2Fixed
+                ? contentLayoutConfig.releaseNote.column2FixedReleaseNoteFilters
+                : contentLayoutConfig.default.column2Fixed
             }
     }
     @media screen and (${designSystem.dimensions.viewports.desktop}) {
         grid:
             ${gridRows}
             /
-            ${contentLayoutConfigV2[configPage].column1}
-            ${contentLayoutConfigV2[configPage].column2}
+            ${contentLayoutConfig[configPage].column1}
+            ${contentLayoutConfig[configPage].column2}
     }
     ${allowWideContentLayout && largestMediaQuery}
 `;
