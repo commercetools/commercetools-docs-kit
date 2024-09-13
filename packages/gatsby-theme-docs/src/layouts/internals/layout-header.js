@@ -24,7 +24,7 @@ import { getPageLayoutGridStyles } from './layout-design-utils';
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
 
 const gridRows = `
-  [${GRID_ID_ROW_ONE.start}] '${GRID_ID_HEADER_TOP_MENU} ${GRID_ID_HEADER_SEARCHBOX}' [${GRID_ID_ROW_ONE.end}]
+  [${GRID_ID_ROW_ONE.start}] '${GRID_ID_HEADER_TOP_MENU} ${GRID_ID_HEADER_SEARCHBOX}' 48px [${GRID_ID_ROW_ONE.end}]
 `;
 
 const Container = styled.header`
