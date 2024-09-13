@@ -1,8 +1,7 @@
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { Markdown } from '@commercetools-docs/ui-kit';
+import { Markdown, designSystem } from '@commercetools-docs/ui-kit';
 import Title from './title';
 import styled from '@emotion/styled';
-import { dimensions } from '@commercetools-docs/ui-kit/src/design-system';
 
 type ScopesProps = {
   scopes: string[];
@@ -12,21 +11,21 @@ const Container = styled.div`
   display: grid;
   grid-gap: 0.5rem;
 
-  @media screen and (${dimensions.viewports.mobile}) {
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
     grid-template-columns: 1fr;
   }
-  @media screen and (${dimensions.viewports.tablet}) {
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
 
 const Text = styled(Markdown.InlineCodeWithoutBox)`
-  @media screen and (${dimensions.viewports.mobile}) {
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
     :not(:last-child)&::after {
       content: ', ';
     }
   }
-  @media screen and (${dimensions.viewports.tablet}) {
+  @media screen and (${designSystem.dimensions.viewports.tablet}) {
     &::after {
       content: ' ';
     }
