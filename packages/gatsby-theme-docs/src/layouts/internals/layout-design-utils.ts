@@ -22,7 +22,7 @@ export const getPageLayoutGridStyles = (
             ${gridRows}
             / 
             ${contentLayoutConfigV2.default.column1Max}
-            ${contentLayoutConfigV2.default.column1Max}
+            ${contentLayoutConfigV2.default.column2Max}
         }
     `;
 
