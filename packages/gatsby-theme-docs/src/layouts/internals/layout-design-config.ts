@@ -5,7 +5,7 @@ import { designSystem } from '@commercetools-docs/ui-kit';
  * This layout is contained within contentLayoutConfig. This layout excludes
  * left navigation.
  *
- * Layouts can we one or 2 columns with various rows.
+ * Layouts can be one or two columns with various rows.
  * |----A----------------|--1--|
  * |----B----------------|--2--|
  * |----C----------------|--3--|
