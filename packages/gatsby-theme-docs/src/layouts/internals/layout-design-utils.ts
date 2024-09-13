@@ -46,7 +46,7 @@ export const getPageLayoutGridStyles = (
             ${gridRows}
             / 
             ${contentLayoutConfig[configPage].column1}
-            ${contentLayoutConfig[configPage].column2Fixed}
+            ${contentLayoutConfig[configPage].column2}
     }
     @media screen and (${designSystem.dimensions.viewports.laptop}) {
         grid:

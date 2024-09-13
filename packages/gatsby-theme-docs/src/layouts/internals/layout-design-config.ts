@@ -36,7 +36,7 @@ export const contentLayoutConfig = {
     column2Hidden: `0`,
     column2: `minmax(
         ${designSystem.dimensions.widths.pageNavigationSmall},
-        ${designSystem.dimensions.widths.pageNavigationSmall} // TODO why min max of same value?
+        1fr
       )`,
     column2Max: `minmax(${designSystem.dimensions.widths.pageNavigationSmall}, ${designSystem.dimensions.widths.pageNavigation})`,
   },
