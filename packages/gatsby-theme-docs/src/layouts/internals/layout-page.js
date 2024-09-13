@@ -21,11 +21,11 @@ const gridRows = `
 
 const LayoutPage = styled.div`
   ${(props) =>
-    getPageLayoutGridStyles(
+    getPageLayoutGridStyles({
       gridRows,
-      props.isReleaseNotesPage,
-      props.allowWideContentLayout
-    )}
+      isReleaseNotesPage: props.isReleaseNotesPage,
+      allowWideContentLayout: props.allowWideContentLayout,
+    })}
 `;
 
 export default LayoutPage;

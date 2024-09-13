@@ -10,11 +10,17 @@ import { contentLayoutConfig } from './layout-design-config';
  * @param allowWideContentLayout boolean to determine if the page should allow wide content layout
  * @returns
  */
-export const getPageLayoutGridStyles = (
-  gridRows: string,
-  isReleaseNotesPage: boolean,
-  allowWideContentLayout: boolean
-) => {
+export const getPageLayoutGridStyles = ({
+  gridRows,
+  isReleaseNotesPage,
+  allowWideContentLayout,
+  isHeader = false,
+}: {
+  gridRows: string;
+  isReleaseNotesPage: boolean;
+  allowWideContentLayout: boolean;
+  isHeader: boolean;
+}) => {
   const configPage = isReleaseNotesPage ? 'releaseNote' : 'default';
   const largestMediaQuery = `
         @media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
@@ -64,7 +70,11 @@ export const getPageLayoutGridStyles = (
             ${gridRows}
             /
             ${contentLayoutConfig[configPage].column1}
-            ${contentLayoutConfig[configPage].column2}
+            ${
+              isHeader
+                ? contentLayoutConfig[configPage].column2
+                : contentLayoutConfig[configPage].column2Fixed
+            }
     }
     ${allowWideContentLayout && largestMediaQuery}
 `;

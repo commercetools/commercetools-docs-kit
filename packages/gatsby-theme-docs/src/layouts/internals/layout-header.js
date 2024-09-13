@@ -37,11 +37,12 @@ const Container = styled.header`
   width: 100%;
   display: grid;
   ${(props) =>
-    getPageLayoutGridStyles(
+    getPageLayoutGridStyles({
       gridRows,
-      props.isReleaseNotesPage,
-      props.allowWideContentLayout
-    )}
+      isReleaseNotesPage: props.isReleaseNotesPage,
+      allowWideContentLayout: props.allowWideContentLayout,
+      isHeader: true,
+    })}
 `;
 
 const TopMenuContainer = styled.div`
