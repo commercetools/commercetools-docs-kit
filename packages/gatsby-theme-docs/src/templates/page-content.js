@@ -10,6 +10,7 @@ import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
 import { PageDataContext } from '../hooks/use-page-data';
 import ChildSectionsNav from '../components/child-sections-nav';
+import UserGuiding from '../components/user-guiding';
 
 const ContentCards = (props) => (
   <markdownComponents.Cards fitContentColumn={true} {...props} />
@@ -87,6 +88,7 @@ export function Head({ data, pageContext, location }) {
         // eslint-disable-next-line react/prop-types
         products={data.contentPage.products}
       />
+      <UserGuiding ugId={'U4I78799B6RID'} />
     </ThemeProvider>
   );
 }

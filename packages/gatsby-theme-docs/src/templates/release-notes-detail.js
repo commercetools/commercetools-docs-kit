@@ -9,6 +9,7 @@ import LayoutReleaseNotesDetail from '../layouts/release-notes-detail';
 import LayoutReleaseNoteBody from '../layouts/internals/layout-release-note-body';
 import { SEO, ThemeProvider } from '../components';
 import markdownComponents from '../markdown-components';
+import UserGuiding from '../components/user-guiding';
 
 const releaseNoteMarkdownComponents = {
   ...markdownComponents,
@@ -72,6 +73,7 @@ export function Head({ data, location }) {
         excludeFromSearchIndex={data.releaseNotePage.excludeFromSearchIndex}
         location={location}
       />
+      <UserGuiding ugId={'U4I78799B6RID'} />
     </ThemeProvider>
   );
 }
