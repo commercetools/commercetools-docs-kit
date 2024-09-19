@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 const config = {
   flags: {
-    DEV_SSR: true,
     FAST_DEV: true,
   },
   pathPrefix: '/documentation',

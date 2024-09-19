@@ -1,9 +1,7 @@
-import {
-  configureThemeWithAddOns,
-}  from "@commercetools-docs/gatsby-theme-docs/configure-theme.mjs";
+import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/configure-theme.mjs';
+
 const isProd = process.env.NODE_ENV === 'production';
-
-
+const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
 
 const config = {
   flags: {
@@ -13,21 +11,34 @@ const config = {
   siteMetadata: {
     title: 'CHANGE-ME',
     description: 'CHANGE-ME',
+    products: ['smokeTest'],
+    contentType: 'test',
     breadcrumbs: 'CHANGE-ME',
-    betaLink: '',
-    excludeFromSearchIndex: isProd,
-    allowWideContentLayout: true,
-    products: ['CHANGE-ME'],
-    contentType: 'CHANGE-ME',
+    betaLink: '/beta',
+    excludeFromSearchIndex: isProd && !shouldEnableSearch,
   },
   plugins: [
     ...configureThemeWithAddOns({
-      websiteKey: 'CHANGE-ME',
-      // additionalPrismLanguages: ['java', 'scala', 'csharp', 'swift', 'php'],
-      addOns: [
-        // '@commercetools-docs/gatsby-theme-code-examples',
-        // '@commercetools-docs/gatsby-theme-api-docs'
-        // '@commercetools-docs/gatsby-theme-constants',
+      websiteKey: 'site-template',
+      auth0Domain: 'auth.id.commercetools.com',
+      auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
+      selfLearningFeatures: ['complete-profile-modal'],
+      hideLogin: true,
+      aiAssistantTopbarButton: true,
+      aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
+      learnApiBaseUrl:
+        isProd === 'true'
+          ? 'https://learning-api.docs.commercetools.com'
+          : 'https://learning-api.commercetools.vercel.app',
+      additionalPrismLanguages: [
+        'markup-templating',
+        'json',
+        'bash',
+        'java',
+        'scala',
+        'csharp',
+        'swift',
+        'php',
       ],
     }),
   ],
