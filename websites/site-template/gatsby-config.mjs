@@ -3,6 +3,9 @@ import { configureThemeWithAddOns } from '@commercetools-docs/gatsby-theme-docs/
 const isProd = process.env.NODE_ENV === 'production';
 const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
 
+// Please update the config template in the create-new-microsite.js script when changing the config here.
+// They should always be in sync.
+
 const config = {
   flags: {
     FAST_DEV: true,
