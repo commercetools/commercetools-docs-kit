@@ -14,7 +14,7 @@ const useReleaseNotesConfig = () => {
     const product = products?.[0];
 
     const queryString = buildReleaseNotesQueryString(
-      OTHER_GROUP_SITE_PREFIXES.includes(pathPrefix) ? 'other' : 'product',
+      'product', // docs-team asked to point all the others tab to product tab too
       product,
       title
     );
