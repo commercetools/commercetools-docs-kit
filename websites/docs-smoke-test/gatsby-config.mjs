@@ -7,7 +7,7 @@ const shouldEnableSearch = process.env.ENABLE_SEARCH === 'true';
 
 const config = {
   flags: {
-    DEV_SSR: true,
+    FAST_DEV: true,
   },
   pathPrefix: '/docs-smoke-test',
   siteMetadata: {
@@ -28,7 +28,7 @@ const config = {
       aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
       aiAssistantTopbarButton: true,
       hideLogin: true,
-      selfLearningFeatures:['complete-profile-modal'],
+      selfLearningFeatures: ['complete-profile-modal'],
       additionalPrismLanguages: [
         'markup-templating',
         'json',
