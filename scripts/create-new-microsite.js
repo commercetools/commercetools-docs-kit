@@ -95,4 +95,10 @@ export default config;
     `${websitesFolderPath}/${formattedMicrositeName}/package.json`,
     JSON.stringify(packageJson)
   );
+
+  // Creating a fresh CHANGELOG
+  fs.writeFileSync(
+    `${websitesFolderPath}/${formattedMicrositeName}/CHANGELOG.md`,
+    ''
+  );
 })();

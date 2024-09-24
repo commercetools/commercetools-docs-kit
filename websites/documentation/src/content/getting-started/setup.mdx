@@ -6,33 +6,55 @@ title: Set up a new docs site
 
 A Docs-Kit website is a [Gatsby](https://gatsbyjs.com) project with at least the `@commercetools-docs/gatsby-theme-docs` Gatsby theme installed. The theme is providing not only the visual design but also all core functionality.
 
-To create a new documentation website, create an empty folder and run the following commands to initialize a minimal setup (Node.js is assumed to be installed).
+To create a new documentation website, run the following command to initialize the basic folder for the new website. (Node.js is assumed to be installed).
 
 ```console
-npx install-peerdeps --dev @commercetools-docs/gatsby-theme-docs
-mkdir src
+yarn create-new-microsite
 ```
 
-This can take some time, creates a bare `package.json` file and downloads the dependencies.
+Follow the instructions in the console.
 
-Then create a file `gatsby-config.js` with the following content and modify the strings starting "change-" to your project name. The docs kit is preconfigured to host sites under a path prefix because one Gatsby website represents only one part (or "microsite") of the overall documentation.
+Once the new folder is created, look into the `gatsby-config.js` file inside the new website folder. Check if you want to change the site metadata or if you want to configure additional plugins. See the [theme configuration](/configuration/theme) documentation to see all the options.
 
 ```js
-module.exports = {
-  pathPrefix: '/change-path-prefix',
+const config = {
+  flags: {
+    FAST_DEV: true,
+  },
+  pathPrefix: '/site-template',
   siteMetadata: {
-    title: 'CHANGE TITLE',
-    description: 'CHANGE DESCRIPTION',
-    products: ['CHOOSE PRODUCTS'],
-    contentType: 'CHOOSE CONTENT TYPE',
+    title: 'Site template',
+    description: 'CHANGE-ME',
+    products: ['smokeTest'],
+    contentType: 'test',
+    breadcrumbs: 'CHANGE-ME',
+    betaLink: '/beta',
+    excludeFromSearchIndex: isProd && !shouldEnableSearch,
   },
   plugins: [
-    {
-      resolve: '@commercetools-docs/gatsby-theme-docs',
-      options: {
-        websiteKey: 'change-website-key',
-      },
-    },
+    ...configureThemeWithAddOns({
+      websiteKey: 'site-template',
+      auth0Domain: 'auth.id.commercetools.com',
+      auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
+      selfLearningFeatures: ['complete-profile-modal'],
+      hideLogin: true,
+      aiAssistantTopbarButton: true,
+      aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
+      learnApiBaseUrl:
+        isProd === 'true'
+          ? 'https://learning-api.docs.commercetools.com'
+          : 'https://learning-api.commercetools.vercel.app',
+      additionalPrismLanguages: [
+        'markup-templating',
+        'json',
+        'bash',
+        'java',
+        'scala',
+        'csharp',
+        'swift',
+        'php',
+      ],
+    }),
   ],
 };
 ```
@@ -42,11 +64,11 @@ module.exports = {
 Now start the development server:
 
 ```console
-npm exec gatsby develop
+yarn clean:develop
 ```
 
-You will see the "404 Not Found" page of the development server because there is no page created yet.
-The Docs-Kit has automatically created the conventional folder structure for you:
+Once the dev server is up and running, you can see already a landing page and a first chapter in the navigation.
+Here you can see tha basic folder structure:
 
 ```
 ├── src
@@ -60,8 +82,7 @@ The Docs-Kit has automatically created the conventional folder structure for you
 
 # Start writing pages
 
-Now create a file `index.mdx` in the `src/content` folder and add some markdown content.
-This is your home page and the only file named `index`.
+The `index.mdx` in the `src/content` folder is your homepage. You can start to add some markdown content here.
 
 All pages are served on a URL path that matches the filename inside `src/content` without the file extension. For example, `src/content/example-topic/example-page.mdx` in a page with path prefix `my-site` would be served as `/my-site/example-topic/example-page` in production.
 
@@ -76,7 +97,3 @@ Head on to the following documentation to complete your setup and writing skills
 - [Define the navigation menu](/writing/navigation)
 - [Site and theme configuration](/configuration/theme)
 - [File and folder structure](/writing/files-folders)
-
-Of course, you also want to give your project the proper tooling and configuration that you give any Javascript project. As a minimum you should complete the `package.json` data, add a `.gitignore`, a `LICENSE` file, a `README.md`. Take a closer look at the root folder of the repository of the Docs-Kit, it has a lot more than needed in an average documentation site but you should find examples for most needs.
-
-Finally, don't forget to [deploy](/configuration/deploy).
