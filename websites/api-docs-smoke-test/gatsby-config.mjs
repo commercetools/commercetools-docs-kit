@@ -7,7 +7,6 @@ const config = {
   // https://www.gatsbyjs.com/docs/reference/release-notes/v2.30
   flags: {
     FAST_DEV: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: true,
   },
   pathPrefix: '/api-docs-smoke-test',
   siteMetadata: {

@@ -5,11 +5,14 @@
   "browserslist": [">0.25%", "not dead and supports es6-module"],
   "scripts": {
     "start": "yarn develop",
-    "develop": "npx gatsby develop",
+    "create-release-note": "yarn create-docs-release-note",
+    "develop": "npx gatsby develop -o",
     "serve": "npx gatsby serve --prefix-paths -o",
     "clean": "npx gatsby clean",
     "clean:develop": "yarn clean && yarn develop",
-    "build": "./scripts/build.sh"
+    "build": "./scripts/build.sh",
+    "build:serve": "yarn gatsby build --prefix-paths && yarn gatsby serve --prefix-paths -o",
+    "build:analyze": "ANALYZE_BUNDLE=true yarn build"
   },
   "dependencies": {
     "@commercetools-docs/gatsby-theme-docs": "24.9.0",
