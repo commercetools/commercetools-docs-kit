@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import thumbsUpIcon from '../modules/ai-assistant/icons/assistant-thumbs-up.png';
-import thumbsDownIcon from '../modules/ai-assistant/icons/assistant-thumbs-down.png';
-import thumbsUpIconFilled from '../modules/ai-assistant/icons/assistant-thumbs-up-filled.png';
-import thumbsDownIconFilled from '../modules/ai-assistant/icons/assistant-thumbs-down-filled.png';
+import thumbsUpIcon from '../icons/assistant-thumbs-up.png';
+import thumbsDownIcon from '../icons/assistant-thumbs-down.png';
+import thumbsUpIconFilled from '../icons/assistant-thumbs-up-filled.png';
+import thumbsDownIconFilled from '../icons/assistant-thumbs-down-filled.png';
 import { designSystem } from '@commercetools-docs/ui-kit';
 
 type ThumbsButtonProps = {
