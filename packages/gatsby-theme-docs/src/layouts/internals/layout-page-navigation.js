@@ -168,7 +168,8 @@ const OverlayBackground = styled.div`
 `;
 
 const PageFeedbackContainer = styled.div`
-  padding: 0 ${designSystem.dimensions.spacings.m};
+  padding: ${designSystem.dimensions.spacings.s}
+    ${designSystem.dimensions.spacings.m} 0;
 `;
 
 const LayoutPageNavigation = (props) => {

@@ -44,7 +44,9 @@ const PageFeedback = () => {
         const interval = setInterval(() => {
           if (isScriptLoaded()) {
             clearInterval(interval); // Stop polling
-            resolve();
+            setTimeout(() => {
+              resolve();
+            }, 100); // Wait for another 100ms before resolving
             return;
           }
         }, 100);
