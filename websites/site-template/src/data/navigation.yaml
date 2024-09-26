@@ -1,5 +1,4 @@
-- chapter-title: CHANGE-ME
-  path: /
+- chapter-title: Chapter title (to be changed)
   pages:
-    - title: CHANGE-ME
-      path: /
+    - title: First page (to be changed)
+      path: /first-page

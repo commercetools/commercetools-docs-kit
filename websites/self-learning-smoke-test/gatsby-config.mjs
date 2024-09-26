@@ -5,7 +5,7 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const config = {
   flags: {
-    DEV_SSR: true,
+    FAST_DEV: true,
   },
   pathPrefix: '/self-learning-smoke-test',
   siteMetadata: {
