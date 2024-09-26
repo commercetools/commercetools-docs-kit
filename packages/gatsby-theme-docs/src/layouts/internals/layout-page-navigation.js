@@ -168,6 +168,9 @@ const OverlayBackground = styled.div`
 `;
 
 const PageFeedbackContainer = styled.div`
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    display: none;
+  }
   padding: ${designSystem.dimensions.spacings.s}
     ${designSystem.dimensions.spacings.m} 0;
 `;
