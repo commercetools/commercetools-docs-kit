@@ -6,6 +6,7 @@ import PageFeedbackButtons, {
   FEEDBACK_UP,
 } from './page-feedback-buttons';
 import { designSystem } from '@commercetools-docs/ui-kit';
+import { gtagEvent } from '../modules/sso/utils/analytics.utils';
 
 const POSITIVE_SURVEY_ID = 3628;
 const NEGATIVE_SURVEY_ID = 3627;
@@ -23,8 +24,12 @@ const PageFeedbackWrapper = styled.div`
 const PageFeedback = () => {
   const [currentFeedback, setCurrentFeedback] = useState(0);
   const isScriptLoaded = (): boolean => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return typeof (window as any).userGuiding?.launchSurvey === 'function';
+    const isUserGuidingSessionReady =
+      localStorage.getItem('__UGS__uid') !== null;
+    const isUserGuidingScriptLoaded =
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      typeof (window as any).userGuiding?.launchSurvey === 'function';
+    return isUserGuidingScriptLoaded && isUserGuidingSessionReady;
   };
 
   const injectUserGuidingScript = (): Promise<void> => {
@@ -44,9 +49,7 @@ const PageFeedback = () => {
         const interval = setInterval(() => {
           if (isScriptLoaded()) {
             clearInterval(interval); // Stop polling
-            setTimeout(() => {
-              resolve();
-            }, 100); // Wait for another 100ms before resolving
+            resolve();
             return;
           }
         }, 100);
@@ -62,6 +65,12 @@ const PageFeedback = () => {
 
   const handleClick = async (feedback: number) => {
     setCurrentFeedback(feedback);
+
+    // track the event on google analytics
+    gtagEvent('page_feedback', {
+      feedback_page: window.location.pathname,
+      feedback_value: feedback.toString(),
+    });
 
     await injectUserGuidingScript();
     if (isScriptLoaded()) {
