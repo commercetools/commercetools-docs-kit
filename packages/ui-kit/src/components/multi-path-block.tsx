@@ -137,9 +137,9 @@ const TabHeader = (props: TTabHeaderProps) => {
       onClick={props.onClick}
       css={getLinkStyles(props.isActive)}
     >
-      <Text.Headline as="h3" truncate={true}>
+      <Text.Body tone={props.isActive ? 'primary' : 'inherit'} truncate={true}>
         {props.label}
-      </Text.Headline>
+      </Text.Body>
     </span>
   );
 };
@@ -148,6 +148,7 @@ const SelectorsContainer = styled.div`
   border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
   padding-top: 8px;
   padding-left: 16px;
+  overflow-x: auto;
 `;
 
 const ComponentWrapper = styled.div`

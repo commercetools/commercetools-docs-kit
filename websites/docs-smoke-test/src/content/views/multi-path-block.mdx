@@ -4,7 +4,6 @@ title: Multi Path Block
 
 import { LoginButton, IfUserLoggedOut, FirstName } from '@commercetools-docs/gatsby-theme-docs'
 
-
 <MultiPathBlock>
 <PathBlock label="Javascript path" syncWith="javascript">
 
@@ -12,13 +11,13 @@ import { LoginButton, IfUserLoggedOut, FirstName } from '@commercetools-docs/gat
 <br/>
 
 **Bold text**
-*Italic text*
-***Bold and Italic text***
+_Italic text_
+**_Bold and Italic text_**
 ~~Strikethrough text~~
 <br/>
 
 > This is a blockquote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-<br/>
+> <br/>
 
 1. First ordered list item
 2. Second item
@@ -42,11 +41,11 @@ def hello_world():
     print("Hello, World!")
 ```
 
-Table | Column B | Column C
----------|----------|---------
- A1 | B1 | C1
- A2 | B2 | C2
- A3 | B3 | C3
+| Table | Column B | Column C |
+| ----- | -------- | -------- |
+| A1    | B1       | C1       |
+| A2    | B2       | C2       |
+| A3    | B3       | C3       |
 
 <br/>
 
@@ -76,7 +75,6 @@ Table | Column B | Column C
 
 (Warning) Please note that the health of our delivery infrastructure is independent of the `SubscriptionHealthStatus` and can be checked on our [status page](https://www.google.com) (it is part of the `Background Services`).
 
-
 </Warning>
 
 <br/>
@@ -102,17 +100,17 @@ Some custom plan tags: <PlanTag plan="plan1" />, <PlanTag plan="plan2" />.
 <Cards narrow>
   <Card>
 
-  [Documentation](/../documentation)
+[Documentation](/../documentation)
 
   </Card>
   <Card>
 
-  [Docs kit smoke test](/../docs-smoke-test)
+[Docs kit smoke test](/../docs-smoke-test)
 
   </Card>
   <Card>
 
-  [Site Template](/../site-template)
+[Site Template](/../site-template)
 
   </Card>
 </Cards>
@@ -129,6 +127,50 @@ Some custom plan tags: <PlanTag plan="plan1" />, <PlanTag plan="plan2" />.
 </Cards>
 </PathBlock>
 <PathBlock label="others">
+
+** More custom components **
+
+<br/>
+
+**Mermaid Diagram**
+
+```mermaid
+  flowchart LR
+  subgraph a subgraph
+  b2-->A
+  end
+  A[Start] --> GitHub{GitHub}
+  GitHub -->|Yes| C[OK]
+  C --> D[Rethink]
+  D --> GitHub
+  GitHub ---->|No| E[End]
+  click GitHub "http://www.github.com" "B is a link to Github"
+```
+
+<br/>
+
+**Video Player**
+<Video
+  url="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/33709d50562534d2a6f9f2b1766d8ff6/manifest/video.m3u8"
+  poster="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/33709d50562534d2a6f9f2b1766d8ff6/thumbnails/thumbnail.jpg?time=10s"
+/>
+
+<br />
+
+**Self learning conditionals**
+
+<IfUserLoggedIn>
+
+Logged in, <FirstName />
+
+</IfUserLoggedIn>
+<IfUserLoggedOut>
+
+Please log in
+
+</IfUserLoggedOut>
+</PathBlock>
+<PathBlock label="Multi path with more than three tabs">
 
 ** More custom components **
 
