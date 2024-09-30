@@ -153,6 +153,7 @@ const SelectorsContainer = styled.div`
 const ComponentWrapper = styled.div`
   border: 2px solid ${designSystem.colors.light.borderPrimary};
   border-radius: ${designSystem.tokens.borderRadiusForMultiPath};
+  max-width: 100% !important;
 `;
 
 const PathsContainer = styled.div`
