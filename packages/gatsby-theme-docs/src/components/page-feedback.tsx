@@ -8,8 +8,11 @@ import PageFeedbackButtons, {
 import { designSystem } from '@commercetools-docs/ui-kit';
 import { gtagEvent } from '../modules/sso/utils/analytics.utils';
 
-const POSITIVE_SURVEY_ID = 3628;
-const NEGATIVE_SURVEY_ID = 3627;
+const POSITIVE_SURVEY_ID = 3628; // id for the userguiding survey triggered by thumbs up click
+const NEGATIVE_SURVEY_ID = 3627; // id for the userguiding survey triggered by thumbs down click
+const USERGUIDING_SESSION_KEY = '__UGS__uid'; // local storage key for userguiding session
+const USER_GUIDING_ID = 'U4I78799B6RID'; // userguiding user id for the embedded script
+const MAX_SCRIPT_LOAD_TIME = 30 * 1000; // 30 seconds
 
 const FeedbackQuestion = styled.div`
   padding-bottom: ${designSystem.dimensions.spacings.s};
@@ -23,9 +26,10 @@ const PageFeedbackWrapper = styled.div`
 
 const PageFeedback = () => {
   const [currentFeedback, setCurrentFeedback] = useState(0);
+
   const isScriptLoaded = (): boolean => {
     const isUserGuidingSessionReady =
-      localStorage.getItem('__UGS__uid') !== null;
+      localStorage.getItem(USERGUIDING_SESSION_KEY) !== null;
     const isUserGuidingScriptLoaded =
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       typeof (window as any).userGuiding?.launchSurvey === 'function';
@@ -33,7 +37,6 @@ const PageFeedback = () => {
   };
 
   const injectUserGuidingScript = (): Promise<void> => {
-    const USER_GUIDING_ID = 'U4I78799B6RID';
     return new Promise((resolve, reject) => {
       if (isScriptLoaded()) {
         resolve(); // Script is already loaded, resolve immediately
@@ -46,17 +49,23 @@ const PageFeedback = () => {
 
       script.onload = () => {
         // Poll for userGuiding object in the global scope
+        let loadTime = 0;
         const interval = setInterval(() => {
           if (isScriptLoaded()) {
             clearInterval(interval); // Stop polling
             resolve();
             return;
           }
+          if (loadTime >= MAX_SCRIPT_LOAD_TIME) {
+            clearInterval(interval); // Stop polling
+            reject(new Error('Userguiding script loading timeout.'));
+          }
+          loadTime += 100;
         }, 100);
       };
 
       script.onerror = () => {
-        reject(new Error('Script loading failed.'));
+        reject(new Error('Userguiding script loading failed.'));
       };
 
       document.head.appendChild(script);
@@ -72,14 +81,18 @@ const PageFeedback = () => {
       feedback_value: feedback.toString(),
     });
 
-    await injectUserGuidingScript();
-    if (isScriptLoaded()) {
+    try {
+      await injectUserGuidingScript();
       const surveyId =
         feedback === FEEDBACK_UP ? POSITIVE_SURVEY_ID : NEGATIVE_SURVEY_ID;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).userGuiding?.launchSurvey(surveyId);
+    } catch (error) {
+      console.error(error);
     }
   };
+
+  const isClickable = currentFeedback === 0;
 
   return (
     <PageFeedbackWrapper>
@@ -88,8 +101,8 @@ const PageFeedback = () => {
         onPositiveClick={() => handleClick(FEEDBACK_UP)}
         onNegativeClick={() => handleClick(FEEDBACK_DOWN)}
         currentFeedback={currentFeedback}
-        isPositiveClickable={currentFeedback === 0}
-        isNegativeClickable={currentFeedback === 0}
+        isPositiveClickable={isClickable}
+        isNegativeClickable={isClickable}
         iconSize={30}
         positiveText="Yes"
         negativeText="No"

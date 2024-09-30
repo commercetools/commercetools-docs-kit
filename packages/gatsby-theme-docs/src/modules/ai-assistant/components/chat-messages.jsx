@@ -114,7 +114,9 @@ const ChatMessages = (props) => {
           Hello <FirstName />, {markdownFragmentToReact(props.chatMode.intro)}
         </IntroMessageText>
       </MessageContainer>
-      {props.messages.map((message, index) => (
+      {props.messages.map((message, index) => {
+        const messageFeedback = feedbackResults[message.id];
+        return (
         <div key={index}>
           <MessageContainer>
             {message.role === 'assistant' ? (
@@ -156,24 +158,24 @@ const ChatMessages = (props) => {
             <FeedbackWrapper>
               <PageFeedbackButtons
                 onPositiveClick={
-                  !feedbackResults[message.id]
+                  !messageFeedback
                     ? (e) => handleThumbsClick(e, message.id, FEEDBACK_UP)
                     : null
                 }
                 onNegativeClick={
-                  !feedbackResults[message.id]
+                  !messageFeedback
                     ? (e) => handleThumbsClick(e, message.id, FEEDBACK_DOWN)
                     : null
                 }
-                currentFeedback={feedbackResults[message.id]}
-                isPositiveClickable={!feedbackResults[message.id]}
-                isNegativeClickable={!feedbackResults[message.id]}
+                currentFeedback={messageFeedback}
+                isPositiveClickable={!messageFeedback}
+                isNegativeClickable={!messageFeedback}
                 iconSize={24}
               />
             </FeedbackWrapper>
           ) : null}
         </div>
-      ))}
+      )})}
       {props.chatLocked && (
         <MessageContainer>
           <ContentNotifications.Info>
