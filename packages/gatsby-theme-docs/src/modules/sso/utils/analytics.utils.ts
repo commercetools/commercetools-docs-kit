@@ -31,7 +31,8 @@ type CustomEventNames =
   | 'update_userinfo'
   | 'logout'
   | 'ai_assistant_launch'
-  | 'search_tag_click';
+  | 'search_tag_click'
+  | 'page_feedback';
 
 type EventNames =
   // | 'add_payment_info'
@@ -93,4 +94,6 @@ interface EventParams {
   value?: number | undefined;
   event_label?: string | undefined;
   event_category?: string | undefined;
+  feedback_page?: string | undefined;
+  feedback_value?: string | undefined; // 1 = thumbs up, -1 = thumbs down
 }
