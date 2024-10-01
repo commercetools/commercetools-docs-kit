@@ -73,6 +73,10 @@ const getLinkStyles = (isActive: boolean): Interpolation<Theme> => [
       padding-left: ${designSystem.dimensions.spacings.m};
     }
 
+    > p {
+      font-size: ${designSystem.typography.fontSizes.small};
+    }
+
     ${getBottomBorderStyles('transparent')}
   `,
   isActive &&
