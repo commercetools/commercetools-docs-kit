@@ -11,6 +11,10 @@ import {
 } from '@commercetools-docs/gatsby-theme-docs/';
 
 import UserProfileInit from '@commercetools-docs/gatsby-theme-docs/src/modules/self-learning/components/user-profile-init';
+import {
+  GRID_ID_HEADER_TOP_MENU,
+  GRID_ID_HEADER_SEARCHBOX,
+} from '@commercetools-docs/gatsby-theme-docs/src/layouts/internals/layout-design-config';
 import { designSystem, LogoButton } from '@commercetools-docs/ui-kit';
 import useAiAssistant from '@commercetools-docs/gatsby-theme-docs/src/modules/ai-assistant/hooks/use-ai-assistant';
 import ChatModal from '@commercetools-docs/gatsby-theme-docs/src/modules/ai-assistant/components/chat-modal';
@@ -60,8 +64,8 @@ const HeaderContainer = styled.div`
   /* Override some styles of the original <LayoutHeader> */
   header {
     grid:
-      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
-        .heights.header} [row1-end]
+      [row1-start] '${GRID_ID_HEADER_TOP_MENU} ${GRID_ID_HEADER_SEARCHBOX}' ${designSystem
+        .dimensions.heights.header} [row1-end]
       / 1fr;
   }
 `;

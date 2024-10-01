@@ -18,6 +18,7 @@ import PlaceholderPageHeaderSideBannerArea from '../../overrides/page-header-ban
 import { Overlay, BetaTag, SearchInput, PlanTag } from '../../components';
 import PageNavigation from './page-navigation';
 import PageFeedback from '../../components/page-feedback';
+import { GRID_ID_PAGE_NAVIGATION } from './layout-design-config';
 
 const StackedLinesIndentedIcon = createStyledIcon(
   Icons.StackedLinesIndentedIconSvgIcon
@@ -47,7 +48,7 @@ const GridContainer = styled.div`
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
-    grid-area: page-navigation;
+    grid-area: ${GRID_ID_PAGE_NAVIGATION};
   }
 `;
 const TagWrapper = styled.div`
