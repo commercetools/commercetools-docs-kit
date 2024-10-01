@@ -14,8 +14,18 @@ import {
 import { SearchDialog, SearchInput, Overlay } from '../../components';
 import PlaceholderLoginInfoArea from '../../overrides/topbar-login-info';
 import { useSiteData } from '../../hooks/use-site-data';
+import {
+  GRID_ID_HEADER_SEARCHBOX,
+  GRID_ID_HEADER_TOP_MENU,
+  GRID_ID_ROW_ONE,
+} from './layout-design-config';
+import { getPageLayoutGridStyles } from './layout-design-utils';
 
 const SearchIcon = createStyledIcon(Icons.SearchSvgIcon);
+
+const gridRows = `
+  [${GRID_ID_ROW_ONE.start}] '${GRID_ID_HEADER_TOP_MENU} ${GRID_ID_HEADER_SEARCHBOX}' 48px [${GRID_ID_ROW_ONE.end}]
+`;
 
 const Container = styled.header`
   grid-area: header;
@@ -26,65 +36,17 @@ const Container = styled.header`
   max-width: 100vw;
   width: 100%;
   display: grid;
-  grid:
-    [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
-      .heights.header} [row1-end]
-    / 1fr;
-
-  @media screen and (${designSystem.dimensions.viewports.tablet}) {
-    display: grid;
-    grid:
-      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
-        .heights.header} [row1-end]
-      / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${designSystem.dimensions.widths.pageContentWithMargins}
-      )
-      1fr;
-  }
-  @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
-    grid:
-      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
-        .heights.header} [row1-end]
-      / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${designSystem.dimensions.widths.pageContentWithMargins}
-      )
-      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
-  }
-  @media screen and (${designSystem.dimensions.viewports.laptop}) {
-    grid:
-      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
-        .heights.header} [row1-end]
-      / minmax(
-        ${designSystem.dimensions.widths.pageContentSmallWithMargins},
-        ${designSystem.dimensions.widths.pageContentWithMargins}
-      )
-      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, 1fr);
-  }
-  @media screen and (${designSystem.dimensions.viewports.desktop}) {
-    grid:
-      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions
-        .heights.header} [row1-end]
-      / ${designSystem.dimensions.widths.pageContentWithMargins}
-      minmax(${designSystem.dimensions.widths.pageNavigation}, 1fr);
-  }
-
   ${(props) =>
-    props.allowWideContentLayout
-      ? `@media screen and (${designSystem.dimensions.viewports.largeDesktop}) {
-    grid:
-      [row1-start] 'header-top-menu header-searchbox' ${designSystem.dimensions.heights.header} [row1-end]
-      / minmax(
-        ${designSystem.dimensions.widths.pageContentWideWithMargins},
-        ${designSystem.dimensions.widths.pageContentWideWithMarginsMax}
-      )
-      minmax(${designSystem.dimensions.widths.pageNavigationSmall}, ${designSystem.dimensions.widths.pageNavigation});
-  }`
-      : ''}
+    getPageLayoutGridStyles({
+      gridRows,
+      isReleaseNotesPage: props.isReleaseNotesPage,
+      allowWideContentLayout: props.allowWideContentLayout,
+      isHeader: true,
+    })}
 `;
+
 const TopMenuContainer = styled.div`
-  grid-area: header-top-menu;
+  grid-area: ${GRID_ID_HEADER_TOP_MENU};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,7 +55,7 @@ const TopMenuContainer = styled.div`
   height: 100%;
 `;
 const SearchBoxContainer = styled.div`
-  grid-area: header-searchbox;
+  grid-area: ${GRID_ID_HEADER_SEARCHBOX};
   display: flex;
   align-items: center;
 

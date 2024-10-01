@@ -12,12 +12,9 @@ import {
 import { FirstName } from '@commercetools-docs/gatsby-theme-docs';
 import { CHAT_ROLE_ASSISTANT, CHAT_ROLE_USER } from './chat.const';
 import { getAssistantAvatarIcon } from './chat.utils';
-import thumbsUpIcon from '../icons/assistant-thumbs-up.png';
-import thumbsDownIcon from '../icons/assistant-thumbs-down.png';
-import thumbsUpIconFilled from '../icons/assistant-thumbs-up-filled.png';
-import thumbsDownIconFilled from '../icons/assistant-thumbs-down-filled.png';
 import codeIcon from '../icons/assistant-code.png';
 import { DEV_TOOLING_MODE } from './chat-modal';
+import PageFeedbackButtons from '../../../components/page-feedback-buttons';
 
 export const FEEDBACK_UP = 1;
 export const FEEDBACK_DOWN = -1;
@@ -82,34 +79,6 @@ const FeedbackWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-const ThumbsDownButton = styled.button`
-  cursor: ${(props) => (props.isClickable ? 'pointer' : 'default')};
-  background: transparent;
-  height: 28px;
-  width: 28px;
-  border: 0;
-  padding: 3px;
-  margin-right: 8px;
-  img {
-    transform: scaleX(-1);
-  }
-  :focus {
-    outline: none;
-  }
-`;
-
-const ThumbsUpButton = styled.button`
-  cursor: ${(props) => (props.isClickable ? 'pointer' : 'default')};
-  background: transparent;
-  height: 28px;
-  width: 28px;
-  border: 0;
-  padding: 3px;
-  :focus {
-    outline: none;
-  }
-`;
-
 const ChatMessages = (props) => {
   const [feedbackResults, setFeedbackResults] = useState({});
   const AssistantAvatarIcon =
@@ -145,7 +114,9 @@ const ChatMessages = (props) => {
           Hello <FirstName />, {markdownFragmentToReact(props.chatMode.intro)}
         </IntroMessageText>
       </MessageContainer>
-      {props.messages.map((message, index) => (
+      {props.messages.map((message, index) => {
+        const messageFeedback = feedbackResults[message.id];
+        return (
         <div key={index}>
           <MessageContainer>
             {message.role === 'assistant' ? (
@@ -185,46 +156,26 @@ const ChatMessages = (props) => {
 
           {message.role === 'assistant' ? (
             <FeedbackWrapper>
-              <ThumbsUpButton
-                isClickable={!feedbackResults[message.id]}
-                onClick={
-                  !feedbackResults[message.id]
+              <PageFeedbackButtons
+                onPositiveClick={
+                  !messageFeedback
                     ? (e) => handleThumbsClick(e, message.id, FEEDBACK_UP)
                     : null
                 }
-              >
-                <img
-                  alt="positive feedback"
-                  src={
-                    feedbackResults[message.id] === FEEDBACK_UP
-                      ? thumbsUpIconFilled
-                      : thumbsUpIcon
-                  }
-                  width={18}
-                />
-              </ThumbsUpButton>
-              <ThumbsDownButton
-                isClickable={!feedbackResults[message.id]}
-                onClick={
-                  !feedbackResults[message.id]
+                onNegativeClick={
+                  !messageFeedback
                     ? (e) => handleThumbsClick(e, message.id, FEEDBACK_DOWN)
                     : null
                 }
-              >
-                <img
-                  alt="negative feedback"
-                  src={
-                    feedbackResults[message.id] === FEEDBACK_DOWN
-                      ? thumbsDownIconFilled
-                      : thumbsDownIcon
-                  }
-                  width={18}
-                />
-              </ThumbsDownButton>
+                currentFeedback={messageFeedback}
+                isPositiveClickable={!messageFeedback}
+                isNegativeClickable={!messageFeedback}
+                iconSize={24}
+              />
             </FeedbackWrapper>
           ) : null}
         </div>
-      ))}
+      )})}
       {props.chatLocked && (
         <MessageContainer>
           <ContentNotifications.Info>

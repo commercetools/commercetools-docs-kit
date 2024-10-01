@@ -141,6 +141,7 @@ const LayoutContent = (props) => {
               navLevels={props.pageData.navLevels}
               beta={isBeta}
               planTags={planTags}
+              isSelfLearning={siteData.siteMetadata?.isSelfLearning}
             />
           </LayoutPage>
         </LayoutPageWrapper>
