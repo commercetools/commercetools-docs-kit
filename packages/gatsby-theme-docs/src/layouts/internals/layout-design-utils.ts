@@ -14,12 +14,10 @@ export const getPageLayoutGridStyles = ({
   gridRows,
   isReleaseNotesPage,
   allowWideContentLayout,
-  isHeader = false,
 }: {
   gridRows: string;
   isReleaseNotesPage: boolean;
   allowWideContentLayout: boolean;
-  isHeader: boolean;
 }) => {
   const configPage = isReleaseNotesPage ? 'releaseNote' : 'default';
   const largestMediaQuery = `
@@ -71,9 +69,9 @@ export const getPageLayoutGridStyles = ({
             /
             ${contentLayoutConfig[configPage].column1}
             ${
-              isHeader
-                ? contentLayoutConfig[configPage].column2
-                : contentLayoutConfig[configPage].column2Fixed
+              isReleaseNotesPage
+                ? contentLayoutConfig.releaseNote.column2FixedReleaseNoteFilters
+                : contentLayoutConfig.default.column2Fixed
             }
     }
     ${allowWideContentLayout && largestMediaQuery}
