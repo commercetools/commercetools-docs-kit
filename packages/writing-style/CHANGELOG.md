@@ -1,5 +1,11 @@
 # @commercetools-docs/writing-style
 
+## 3.4.2
+
+### Patch Changes
+
+- [#2086](https://github.com/commercetools/commercetools-docs-kit/pull/2086) [`575820a`](https://github.com/commercetools/commercetools-docs-kit/commit/575820abee85ad80005f53dd5c8ad0dc01f1fa6c) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Remove un-necessary LICENSE files
+
 ## 3.4.1
 
 ### Patch Changes

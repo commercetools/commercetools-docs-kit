@@ -1,5 +1,24 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.10.0
+
+### Minor Changes
+
+- [#2093](https://github.com/commercetools/commercetools-docs-kit/pull/2093) [`baa10e8`](https://github.com/commercetools/commercetools-docs-kit/commit/baa10e8229472f9fadc66d0e4b9ab8e803d5991d) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add feedback functionality to self-learning pages
+
+- [#2085](https://github.com/commercetools/commercetools-docs-kit/pull/2085) [`c6b6732`](https://github.com/commercetools/commercetools-docs-kit/commit/c6b673227f087e196746dda7dbcd6857a1f93892) Thanks [@ColinRosati](https://github.com/ColinRosati)! - Fix layout header and content for release notes
+
+### Patch Changes
+
+- [#2095](https://github.com/commercetools/commercetools-docs-kit/pull/2095) [`f305beb`](https://github.com/commercetools/commercetools-docs-kit/commit/f305bebdc62295351f4ee7306b168e9aaccffe9a) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - chore: adjust release notes script to use current date in ISO format
+
+- [#2092](https://github.com/commercetools/commercetools-docs-kit/pull/2092) [`7d68263`](https://github.com/commercetools/commercetools-docs-kit/commit/7d682633cfad98064a902957f9a3844c669c6cae) Thanks [@FFawzy](https://github.com/FFawzy)! - feat: adjust the release note query string builder to always point to product tab
+
+- [#2086](https://github.com/commercetools/commercetools-docs-kit/pull/2086) [`575820a`](https://github.com/commercetools/commercetools-docs-kit/commit/575820abee85ad80005f53dd5c8ad0dc01f1fa6c) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Remove un-necessary LICENSE files
+
+- Updated dependencies [[`575820a`](https://github.com/commercetools/commercetools-docs-kit/commit/575820abee85ad80005f53dd5c8ad0dc01f1fa6c)]:
+  - @commercetools-docs/ui-kit@24.10.0
+
 ## 24.9.0
 
 ### Minor Changes
