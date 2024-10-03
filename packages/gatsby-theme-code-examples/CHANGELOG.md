@@ -1,5 +1,14 @@
 # @commercetools-docs/gatsby-theme-code-examples
 
+## 24.10.0
+
+### Patch Changes
+
+- [#2086](https://github.com/commercetools/commercetools-docs-kit/pull/2086) [`575820a`](https://github.com/commercetools/commercetools-docs-kit/commit/575820abee85ad80005f53dd5c8ad0dc01f1fa6c) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Remove un-necessary LICENSE files
+
+- Updated dependencies [[`575820a`](https://github.com/commercetools/commercetools-docs-kit/commit/575820abee85ad80005f53dd5c8ad0dc01f1fa6c)]:
+  - @commercetools-docs/ui-kit@24.10.0
+
 ## 24.9.0
 
 ### Patch Changes
