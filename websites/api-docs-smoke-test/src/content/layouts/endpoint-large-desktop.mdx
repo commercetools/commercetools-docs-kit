@@ -85,3 +85,26 @@ Blick two - don't forget the blank lines!
   resource="/{projectKey}/resource/searchApiPattern"
   method="GET"
 />
+
+## An Endpoint grouped in MultiPathBlock
+
+<MultiPathBlock>
+<PathBlock label="by ID">
+
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/searchApiPattern"
+  method="GET"
+/>
+</PathBlock>
+
+<PathBlock label="by Key">
+
+<ApiEndpoint
+  apiKey="test"
+  resource="/{projectKey}/resource/key={key}"
+  method="GET"
+/>
+</PathBlock>
+
+</MultiPathBlock>

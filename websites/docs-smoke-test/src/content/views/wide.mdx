@@ -5,6 +5,8 @@ wideLayout: true
 showTimeToRead: true
 ---
 
+<!-- vale commercetools.Units = NO -->
+
 # Manual Side By Side Content
 
 <SideBySide>
@@ -26,3 +28,58 @@ Blick two - don't forget the blank lines!
 
 </SideBySide>
 
+
+# Multi Path Block example
+
+<MultiPathBlock>
+<PathBlock label="Side by side test" >
+
+<SideBySide>
+
+```mermaid
+  flowchart LR
+  subgraph a subgraph
+  b2-->A
+  end
+  A[Start] --> GitHub{GitHub}
+  GitHub -->|Yes| C[OK]
+  C --> D[Rethink]
+  D --> GitHub
+  GitHub ---->|No| E[End]
+  click GitHub "http://www.github.com" "B is a link to Github"
+```
+
+<Video
+  url="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/33709d50562534d2a6f9f2b1766d8ff6/manifest/video.m3u8"
+  poster="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/33709d50562534d2a6f9f2b1766d8ff6/thumbnails/thumbnail.jpg?time=10s"
+/>
+
+</SideBySide>
+
+</PathBlock>
+
+<PathBlock label="Wide layout standard content" >
+
+```mermaid
+  flowchart LR
+  subgraph a subgraph
+  b2-->A
+  end
+  A[Start] --> GitHub{GitHub}
+  GitHub -->|Yes| C[OK]
+  C --> D[Rethink]
+  D --> GitHub
+  GitHub ---->|No| E[End]
+  click GitHub "http://www.github.com" "B is a link to Github"
+```
+
+<br />
+
+<Video
+  url="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/33709d50562534d2a6f9f2b1766d8ff6/manifest/video.m3u8"
+  poster="https://customer-ytbpo1yna9xohg5m.cloudflarestream.com/33709d50562534d2a6f9f2b1766d8ff6/thumbnails/thumbnail.jpg?time=10s"
+/>
+
+</PathBlock>
+
+</MultiPathBlock>
