@@ -41,7 +41,6 @@ const Container = styled.header`
       gridRows,
       isReleaseNotesPage: props.isReleaseNotesPage,
       allowWideContentLayout: props.allowWideContentLayout,
-      isHeader: true,
     })}
 `;
 
@@ -212,7 +211,11 @@ const LayoutHeader = forwardRef((props, ref) => {
     props.siteBreadcrumbsOverride || siteData?.siteMetadata?.breadcrumbs;
 
   return (
-    <Container id="top" allowWideContentLayout={props.allowWideContentLayout}>
+    <Container
+      id="top"
+      allowWideContentLayout={props.allowWideContentLayout}
+      isReleaseNotesPage={props.isReleaseNotesPage}
+    >
       <TopMenuContainer>
         <Inline alignItems="center">
           <LogoContainer>
@@ -311,6 +314,7 @@ LayoutHeader.propTypes = {
   toggleTopMenu: PropTypes.func.isRequired,
   centeredSearchDialog: PropTypes.bool,
   siteBreadcrumbsOverride: PropTypes.string,
+  isReleaseNotesPage: PropTypes.bool,
 };
 
 export default LayoutHeader;
