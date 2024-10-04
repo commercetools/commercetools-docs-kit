@@ -1,5 +1,13 @@
 # @commercetools-docs/gatsby-theme-docs
 
+## 24.10.1
+
+### Patch Changes
+
+- [#2099](https://github.com/commercetools/commercetools-docs-kit/pull/2099) [`32f5fc9`](https://github.com/commercetools/commercetools-docs-kit/commit/32f5fc9dd44029d46e09329a634cbf4bbba7bb0d) Thanks [@ColinRosati](https://github.com/ColinRosati)! - Fix Release note layout
+
+- [#2101](https://github.com/commercetools/commercetools-docs-kit/pull/2101) [`57d82f7`](https://github.com/commercetools/commercetools-docs-kit/commit/57d82f7ea46d52430900dd76ee6ba0b141db9421) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add the ability to disable per microsite the productArea release notes filter.
+
 ## 24.10.0
 
 ### Minor Changes
