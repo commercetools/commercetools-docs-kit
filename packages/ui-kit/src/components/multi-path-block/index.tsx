@@ -204,7 +204,7 @@ const OverFlowScroll = forwardRef<HTMLDivElement, OverFlowScrollProps>(
     );
   }
 );
-
+// forwardRef needs some displayname on the component instance. Otherwise throws some error
 OverFlowScroll.displayName = 'OverFlowScroll';
 
 const SelectorsContainer = styled.div`
@@ -244,6 +244,18 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
 
   const { displayStartScroll, displayEndScroll, tabsRef, tabListRef } =
     useArrowNavigation(labelSyncItems);
+
+  useEffect(() => {
+    if (selectedPath) {
+      const matchedSyncItem = labelSyncItems.find(
+        (item) => item.syncWith?.toLowerCase() === selectedPath // case insensitive match
+      );
+      if (matchedSyncItem) {
+        setSelected(matchedSyncItem);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedPath]);
 
   useEffect(() => {
     let activeIndex = 0;

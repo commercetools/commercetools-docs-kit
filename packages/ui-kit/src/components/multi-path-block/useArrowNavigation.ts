@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { LabelSyncPair } from '.';
 
+/**
+ * Dedicated hook for arrow navigation
+ * This sets up intersection observers, threshold, display states for navigation
+ */
 export const useArrowNavigation = (labelSyncItems: LabelSyncPair[]) => {
   const [displayStartScroll, setDisplayStartScroll] = React.useState(false);
   const [displayEndScroll, setDisplayEndScroll] = React.useState(false);
