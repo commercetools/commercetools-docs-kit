@@ -6,14 +6,6 @@ const slugify = require('slugify');
 const prompts = require('prompts');
 const { cosmiconfigSync } = require('cosmiconfig');
 
-const parseIsoDate = (dateString) => {
-  const UTCDateString = dateString + 'T00:00:00.000Z';
-  const date = new Date(UTCDateString);
-  return !isNaN(date.valueOf()) && /^\d{4}-\d{2}-\d{2}$/.test(dateString)
-    ? date
-    : false;
-};
-
 const moduleName = 'docs-release-notes-config';
 const explorerSync = cosmiconfigSync(moduleName, {
   searchPlaces: [`${moduleName}.yml`, `${moduleName}.yaml`],
@@ -49,16 +41,6 @@ const selectQuestions = (customizedQuestions) => {
             'for release notes with no product change nor immediate product change',
         },
       ],
-    },
-    {
-      type: 'text',
-      name: 'date',
-      message: 'Insert the release date with the following format: YYYY-MM-DD',
-      validate: (date) => {
-        return parseIsoDate(date) !== false
-          ? true
-          : 'Please use a valid ISO Date format!';
-      },
     },
     {
       type: 'text',
@@ -116,7 +98,7 @@ const selectQuestions = (customizedQuestions) => {
   const response = await prompts(getQuestions());
 
   const template = `---
-date: ${response.date}
+date: '${new Date().toISOString()}'
 title: ${response.title}
 description: |
   ${response.description}

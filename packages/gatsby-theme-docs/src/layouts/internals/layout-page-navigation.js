@@ -17,6 +17,8 @@ import PlaceholderPageHeaderSide from '../../overrides/page-header-side';
 import PlaceholderPageHeaderSideBannerArea from '../../overrides/page-header-banner-area';
 import { Overlay, BetaTag, SearchInput, PlanTag } from '../../components';
 import PageNavigation from './page-navigation';
+import PageFeedback from '../../components/page-feedback';
+import { GRID_ID_PAGE_NAVIGATION } from './layout-design-config';
 
 const StackedLinesIndentedIcon = createStyledIcon(
   Icons.StackedLinesIndentedIconSvgIcon
@@ -46,7 +48,7 @@ const GridContainer = styled.div`
 
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     display: block;
-    grid-area: page-navigation;
+    grid-area: ${GRID_ID_PAGE_NAVIGATION};
   }
 `;
 const TagWrapper = styled.div`
@@ -166,6 +168,14 @@ const OverlayBackground = styled.div`
   );
 `;
 
+const PageFeedbackContainer = styled.div`
+  @media screen and (${designSystem.dimensions.viewports.mobile}) {
+    display: none;
+  }
+  padding: ${designSystem.dimensions.spacings.s}
+    ${designSystem.dimensions.spacings.m} 0;
+`;
+
 const LayoutPageNavigation = (props) => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const [modalPortalNode, setModalPortalNode] = React.useState();
@@ -245,6 +255,11 @@ const LayoutPageNavigation = (props) => {
           tableOfContents={props.tableOfContents}
           navLevels={props.navLevels}
         />
+        {props.isSelfLearning && (
+          <PageFeedbackContainer>
+            <PageFeedback />
+          </PageFeedbackContainer>
+        )}
       </SpacingsStack>
     </nav>
   );
@@ -322,6 +337,7 @@ LayoutPageNavigation.propTypes = {
   navLevels: PropTypes.number.isRequired,
   beta: PropTypes.bool.isRequired,
   planTags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isSelfLearning: PropTypes.bool,
 };
 
 export default LayoutPageNavigation;

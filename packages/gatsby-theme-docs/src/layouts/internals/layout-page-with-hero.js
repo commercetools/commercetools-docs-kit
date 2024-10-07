@@ -4,11 +4,15 @@ import styled from '@emotion/styled';
 import { designSystem, Markdown } from '@commercetools-docs/ui-kit';
 import { GlobalNotification } from '../../components';
 import LayoutGlobalNotification from './layout-global-notification';
+import {
+  GRID_ID_PAGE_HEADER,
+  GRID_ID_PAGE_CONTENT,
+} from './layout-design-config';
 
 const bannerHeight = '200px';
 
 const Container = styled.div`
-  grid-area: page-header;
+  grid-area: ${GRID_ID_PAGE_HEADER};
   position: relative;
 `;
 // The hero is used to render a background image with for the full page width.
@@ -42,7 +46,7 @@ const ContentWrapper = styled.div`
     max-width: unset;
     display: grid;
     grid:
-      [row1-start] 'page-content' 1fr [row1-end]
+      [row1-start] '${GRID_ID_PAGE_CONTENT}' 1fr [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths.pageContentWithMargins}
@@ -50,7 +54,7 @@ const ContentWrapper = styled.div`
   }
   @media screen and (${designSystem.dimensions.viewports.largeTablet}) {
     grid:
-      [row1-start] 'page-content' 1fr [row1-end]
+      [row1-start] '${GRID_ID_PAGE_CONTENT}' 1fr [row1-end]
       / minmax(
         ${designSystem.dimensions.widths.pageContentSmallWithMargins},
         ${designSystem.dimensions.widths
@@ -60,7 +64,7 @@ const ContentWrapper = styled.div`
   @media screen and (${designSystem.dimensions.viewports.desktop}) {
     padding: 0;
     grid:
-      [row1-start] 'page-content' 1fr [row1-end]
+      [row1-start] '${GRID_ID_PAGE_CONTENT}' 1fr [row1-end]
       / ${designSystem
         .dimensions.widths.pageContentWithMarginsAndPageNavigation};
   }
