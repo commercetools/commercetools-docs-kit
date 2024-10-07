@@ -11,6 +11,7 @@ import Text from '@commercetools-uikit/text';
 import { Theme, Interpolation, css, SerializedStyles } from '@emotion/react';
 import useSelectedPath from '../../hooks/use-selected-path';
 import { useArrowNavigation } from './useArrowNavigation';
+import { AngleRightIcon, AngleLeftIcon } from '@commercetools-uikit/icons';
 
 type OneOrManyChildren = React.ReactElement | React.ReactElement[];
 type MultiPathBlockProps = {
@@ -180,10 +181,7 @@ const ScrollChevronWrapper = styled.span`
   align-items: center;
   justify-content: center;
   width: ${designSystem.dimensions.spacings.big};
-`;
-
-const Chevron = styled.div`
-  height: 1rem;
+  padding-top: 0.5rem;
 `;
 
 type OverFlowScrollProps = {
@@ -193,9 +191,15 @@ type OverFlowScrollProps = {
 
 const OverFlowScroll = forwardRef<HTMLDivElement, OverFlowScrollProps>(
   ({ rightToLeft, isVisible }, ref) => {
+    const Chevron = rightToLeft ? (
+      <AngleRightIcon color="primary" size="small" />
+    ) : (
+      <AngleLeftIcon size="small" color="primary" />
+    );
+
     return (
       <ScrollChevronWrapper onClick={() => scrollFocusedTab(ref, rightToLeft)}>
-        {isVisible && <Chevron>{rightToLeft ? '>' : '<'}</Chevron>}
+        {isVisible && Chevron}
       </ScrollChevronWrapper>
     );
   }
