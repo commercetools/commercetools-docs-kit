@@ -6,10 +6,11 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { designSystem } from '..';
+import { designSystem } from '../..';
 import Text from '@commercetools-uikit/text';
 import { Theme, Interpolation, css, SerializedStyles } from '@emotion/react';
-import useSelectedPath from '../hooks/use-selected-path';
+import useSelectedPath from '../../hooks/use-selected-path';
+import { useArrowNavigation } from './useArrowNavigation';
 
 type OneOrManyChildren = React.ReactElement | React.ReactElement[];
 type MultiPathBlockProps = {
@@ -234,69 +235,11 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
     labelSyncItems[0]
   );
   const [activePathIndex, setActivePathIndex] = useState<number>(0);
-  const [displayStartScroll, setDisplayStartScroll] = React.useState(false);
-  const [displayEndScroll, setDisplayEndScroll] = React.useState(false);
 
   const { selectedPath, updateSelectedPath } = useSelectedPath();
 
-  const tabsRef = React.useRef<HTMLDivElement>(null);
-  const tabListRef = React.useRef<HTMLDivElement>(null);
-
-  const handleScrollButtonStart = (entries: IntersectionObserverEntry[]) => {
-    setDisplayStartScroll(!entries[0].isIntersecting);
-  };
-  const handleScrollButtonEnd = (entries: IntersectionObserverEntry[]) => {
-    setDisplayEndScroll(!entries[entries.length - 1].isIntersecting);
-  };
-
-  useEffect(() => {
-    if (!tabListRef.current?.children) {
-      return;
-    }
-
-    const tabListChildren = Array.from(tabListRef.current?.children);
-
-    if (
-      typeof IntersectionObserver !== 'undefined' &&
-      labelSyncItems.length > 0
-    ) {
-      const firstTab = tabListChildren[0];
-      const lastTab = tabListChildren[tabListChildren.length - 1];
-      const observerOptions = {
-        root: tabsRef.current,
-        threshold: 0.99,
-      };
-
-      const firstObserver = new IntersectionObserver(
-        handleScrollButtonStart,
-        observerOptions
-      );
-      firstObserver.observe(firstTab);
-
-      const lastObserver = new IntersectionObserver(
-        handleScrollButtonEnd,
-        observerOptions
-      );
-      lastObserver.observe(lastTab);
-
-      return () => {
-        firstObserver.disconnect();
-        lastObserver.disconnect();
-      };
-    }
-  }, [labelSyncItems.length]);
-
-  useEffect(() => {
-    if (selectedPath) {
-      const matchedSyncItem = labelSyncItems.find(
-        (item) => item.syncWith?.toLowerCase() === selectedPath // case insensitive match
-      );
-      if (matchedSyncItem) {
-        setSelected(matchedSyncItem);
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedPath]);
+  const { displayStartScroll, displayEndScroll, tabsRef, tabListRef } =
+    useArrowNavigation(labelSyncItems);
 
   useEffect(() => {
     let activeIndex = 0;
