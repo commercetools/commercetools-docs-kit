@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { LabelSyncPair } from '.';
 
 /**
@@ -6,10 +6,10 @@ import { LabelSyncPair } from '.';
  * This sets up intersection observers, threshold, display states for navigation
  */
 export const useArrowNavigation = (labelSyncItems: LabelSyncPair[]) => {
-  const [displayStartScroll, setDisplayStartScroll] = React.useState(false);
-  const [displayEndScroll, setDisplayEndScroll] = React.useState(false);
-  const tabsRef = React.useRef<HTMLDivElement>(null);
-  const tabListRef = React.useRef<HTMLDivElement>(null);
+  const [displayStartScroll, setDisplayStartScroll] = useState(false);
+  const [displayEndScroll, setDisplayEndScroll] = useState(false);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const tabListRef = useRef<HTMLDivElement>(null);
 
   const handleScrollButtonStart = (entries: IntersectionObserverEntry[]) => {
     setDisplayStartScroll(!entries[0].isIntersecting);
@@ -25,10 +25,7 @@ export const useArrowNavigation = (labelSyncItems: LabelSyncPair[]) => {
 
     const tabListChildren = Array.from(tabListRef.current?.children);
 
-    if (
-      typeof IntersectionObserver !== 'undefined' &&
-      labelSyncItems.length > 0
-    ) {
+    if (labelSyncItems.length > 0) {
       const firstTab = tabListChildren[0];
       const lastTab = tabListChildren[tabListChildren.length - 1];
       const observerOptions = {
