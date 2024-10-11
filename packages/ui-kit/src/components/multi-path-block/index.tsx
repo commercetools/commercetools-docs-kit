@@ -1,10 +1,17 @@
 import styled from '@emotion/styled';
-import React, { ReactElement, ReactNode, useEffect, useState } from 'react';
-import { designSystem } from '..';
+import React, {
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
+import { designSystem } from '../..';
 import Text from '@commercetools-uikit/text';
-import Spacings from '@commercetools-uikit/spacings';
 import { Theme, Interpolation, css, SerializedStyles } from '@emotion/react';
-import useSelectedPath from '../hooks/use-selected-path';
+import useSelectedPath from '../../hooks/use-selected-path';
+import { useArrowNavigation } from './useArrowNavigation';
+import { AngleRightIcon, AngleLeftIcon } from '@commercetools-uikit/icons';
 
 type OneOrManyChildren = React.ReactElement | React.ReactElement[];
 type MultiPathBlockProps = {
@@ -66,6 +73,10 @@ const getLinkStyles = (isActive: boolean): Interpolation<Theme> => [
 
     &:first-of-type {
       padding-left: ${designSystem.dimensions.spacings.m};
+    }
+
+    > p {
+      font-size: ${designSystem.typography.fontSizes.small};
     }
 
     ${getBottomBorderStyles('transparent')}
@@ -137,17 +148,69 @@ const TabHeader = (props: TTabHeaderProps) => {
       onClick={props.onClick}
       css={getLinkStyles(props.isActive)}
     >
-      <Text.Headline as="h3" truncate={true}>
+      <Text.Body tone={props.isActive ? 'primary' : 'inherit'} truncate={true}>
         {props.label}
-      </Text.Headline>
+      </Text.Body>
     </span>
   );
 };
 
+const scrollFocusedTab = (
+  elem: React.ForwardedRef<HTMLDivElement>,
+  rightToLeft: boolean
+) => {
+  if (!elem || !('current' in elem)) {
+    return;
+  }
+
+  if (rightToLeft) {
+    elem.current?.scrollTo({
+      left: elem.current.offsetLeft + elem.current.offsetWidth,
+      behavior: 'smooth',
+    });
+  } else {
+    elem.current?.scrollTo({
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
+};
+
+const ScrollChevronWrapper = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: ${designSystem.dimensions.spacings.big};
+  padding-top: 0.5rem;
+`;
+
+type OverFlowScrollProps = {
+  rightToLeft: boolean;
+  isVisible: boolean;
+};
+
+const OverFlowScroll = forwardRef<HTMLDivElement, OverFlowScrollProps>(
+  ({ rightToLeft, isVisible }, ref) => {
+    const Chevron = rightToLeft ? (
+      <AngleRightIcon color="primary" size="small" />
+    ) : (
+      <AngleLeftIcon size="small" color="primary" />
+    );
+
+    return (
+      <ScrollChevronWrapper onClick={() => scrollFocusedTab(ref, rightToLeft)}>
+        {isVisible && Chevron}
+      </ScrollChevronWrapper>
+    );
+  }
+);
+// forwardRef needs some displayname on the component instance. Otherwise throws some error
+OverFlowScroll.displayName = 'OverFlowScroll';
+
 const SelectorsContainer = styled.div`
+  display: flex;
   border-bottom: 1px solid ${designSystem.colors.light.borderPrimary};
-  padding-top: 8px;
-  padding-left: 16px;
+  overflow-x: hidden;
 `;
 
 const ComponentWrapper = styled.div`
@@ -160,6 +223,17 @@ const PathsContainer = styled.div`
   padding: 10px;
 `;
 
+const ScrollWrapper = styled.span`
+  display: inline-flex;
+  align-items: flex-end;
+  overflow-x: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+`;
+
 const MultiPathBlock = (props: MultiPathBlockProps) => {
   const labelSyncItems = extractLabelSyncPair(props.children);
   const [selected, setSelected] = React.useState<LabelSyncPair>(
@@ -168,6 +242,9 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
   const [activePathIndex, setActivePathIndex] = useState<number>(0);
 
   const { selectedPath, updateSelectedPath } = useSelectedPath();
+
+  const { displayStartScroll, displayEndScroll, tabsRef, tabListRef } =
+    useArrowNavigation(labelSyncItems);
 
   useEffect(() => {
     if (selectedPath) {
@@ -210,8 +287,13 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
 
   return (
     <ComponentWrapper>
-      <SelectorsContainer role="tablist">
-        <Spacings.Inline alignItems="flex-end">
+      <SelectorsContainer role="tablist" ref={tabsRef}>
+        <OverFlowScroll
+          rightToLeft={false}
+          isVisible={displayStartScroll}
+          ref={tabListRef}
+        />
+        <ScrollWrapper ref={tabListRef}>
           {labelSyncItems.map((labelSyncItem, index) => (
             <TabHeader
               index={index}
@@ -221,7 +303,12 @@ const MultiPathBlock = (props: MultiPathBlockProps) => {
               onClick={(e) => onTabHeaderClick(e)(labelSyncItem)}
             />
           ))}
-        </Spacings.Inline>
+        </ScrollWrapper>
+        <OverFlowScroll
+          rightToLeft={true}
+          isVisible={displayEndScroll}
+          ref={tabListRef}
+        />
       </SelectorsContainer>
       <PathsContainer>
         <TabContentChildren activePathIndex={activePathIndex}>
