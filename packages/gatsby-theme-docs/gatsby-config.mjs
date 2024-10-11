@@ -64,7 +64,7 @@ const config = (themeOptions = {}) => {
 
       /*
         gatsby-source-filesystem notes:
-        https://www.gatsbyjs.org/packages/gatsby-source-filesystem/?=file#how-to-query
+        https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/
         Most of these files get queried through other transformers,
         but the `name` property here allows filtering allFile queries:
         allFile(filter: { sourceInstanceName: { eq: "blog" } }) {
