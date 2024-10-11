@@ -1,5 +1,17 @@
 # @commercetools-website/docs-smoke-test
 
+## 9.5.3
+
+### Patch Changes
+
+- [#2096](https://github.com/commercetools/commercetools-docs-kit/pull/2096) [`dc29d10`](https://github.com/commercetools/commercetools-docs-kit/commit/dc29d101d024943430b3d245924dc31765212d6f) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix MultiPathBlock component to be able to display content side by side on wide viewports
+
+- Updated dependencies [[`dc29d10`](https://github.com/commercetools/commercetools-docs-kit/commit/dc29d101d024943430b3d245924dc31765212d6f)]:
+  - @commercetools-docs/gatsby-theme-docs@24.10.2
+  - @commercetools-docs/ui-kit@24.10.2
+  - @commercetools-docs/gatsby-theme-code-examples@24.10.2
+  - @commercetools-docs/gatsby-theme-constants@24.10.2
+
 ## 9.5.2
 
 ### Patch Changes

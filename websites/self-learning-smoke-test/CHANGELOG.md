@@ -1,5 +1,13 @@
 # @commercetools-website/self-learning-smoke-test
 
+## 9.2.2
+
+### Patch Changes
+
+- Updated dependencies [[`dc29d10`](https://github.com/commercetools/commercetools-docs-kit/commit/dc29d101d024943430b3d245924dc31765212d6f)]:
+  - @commercetools-docs/gatsby-theme-docs@24.10.2
+  - @commercetools-docs/ui-kit@24.10.2
+
 ## 9.2.1
 
 ### Patch Changes
