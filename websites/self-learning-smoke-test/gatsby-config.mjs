@@ -20,9 +20,9 @@ const config = {
   plugins: [
     ...configureThemeWithAddOns({
       websiteKey: 'self-learning-smoke-test',
-      auth0Domain: 'auth.id.commercetools.com',
-      auth0ClientId: 'xLk8EDUCc8PKqCbrSJCnuahvn86nEn4z',
-      learnApiBaseUrl: 'https://learning-api.commercetools.vercel.app',
+      auth0Domain: 'commercetools-professionals.eu.auth0.com',
+      auth0ClientId: 'nZwQWPaoTq8IIk67VV8o0Ska9lGp4hnW',
+      learnApiBaseUrl: 'http://localhost:3000',
       aiAssistantApiBaseUrl: 'https://assistant-api.commercetools.vercel.app',
       aiAssistantTopbarButton: true,
       selfLearningFeatures: [

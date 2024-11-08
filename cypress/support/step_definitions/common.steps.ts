@@ -10,13 +10,11 @@ import {
 import { URL_SELF_LEARNING_SMOKE_TEST } from '../urls';
 
 const LEARN_API_FALLBACK = 'https://learning-api.docs.commercetools.com';
-const resetAPIEndpoint = `${
-  Cypress.env('LEARN_API') || LEARN_API_FALLBACK
-}/api/users/delete-e2e`;
+const resetAPIEndpoint = `localhost:3000/api/users/delete-e2e`;
 
 export const performLogin = (username: string, password: string) => {
   cy.origin(
-    'https://auth.id.commercetools.com',
+    'https://commercetools-professionals.eu.auth0.com',
     { args: { username, password } },
     ({ username, password }) => {
       cy.get('input[id="username"]').type(username);
@@ -28,8 +26,11 @@ export const performLogin = (username: string, password: string) => {
 
 const redirectionStep = (page) => {
   if (page === 'auth0 login page') {
-    cy.origin('https://auth.id.commercetools.com', () => {
-      cy.url().should('contain', 'auth.id.commercetools.com/u/login');
+    cy.origin('https://commercetools-professionals.eu.auth0.com', () => {
+      cy.url().should(
+        'contain',
+        'commercetools-professionals.eu.auth0.com/u/login'
+      );
     });
   }
   if (page === 'quiz page') {
