@@ -296,21 +296,7 @@ const CodeBlock = (props: CodeBlockProps) => {
                         shouldShowPrompt,
                         shouldHighlightLine,
                       })}
-                    >
-                      {line.map((token, key) => (
-                        <span
-                          key={key}
-                          {...getTokenProps({
-                            token,
-                            key,
-                            style: getTokenStyles({
-                              token,
-                              shouldHighlightLine,
-                            }),
-                          })}
-                        />
-                      ))}
-                    </div>
+                    ></div>
                   );
                 })}
               </Preformatted>
