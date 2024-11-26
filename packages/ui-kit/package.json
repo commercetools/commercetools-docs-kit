@@ -63,7 +63,7 @@
     "remark-rehype": "10.1.0",
     "swr": "2.2.5",
     "tiny-invariant": "1.3.3",
-    "unified": "10.1.2",
+    "unified": "11.0.5",
     "unist-util-filter": "5.0.1"
   },
   "devDependencies": {
