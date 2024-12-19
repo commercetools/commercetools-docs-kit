@@ -1,0 +1,24 @@
+{
+  "id": "bf79c5d2-2813-4229-9a88-e7c76be50986",
+  "version": 2,
+  "destination": {
+    "type": "SQS",
+    "queueUrl": "https://sqs.my-region.amazonaws.com/my-aws-account-number/my-queue",
+    "authenticationMode": "IAM",
+    "region": "my-region"
+  },
+  "messages": [
+    {
+      "resourceTypeId": "product",
+      "types": []
+    }
+  ],
+  "changes": [],
+  "createdAt": "2017-01-25T14:14:22.417Z",
+  "key": "new-key",
+  "format": {
+    "type": "Platform"
+  },
+  "lastModifiedAt": "2024-08-06T13:49:48.511Z",
+  "status": "Healthy"
+}

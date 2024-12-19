@@ -1,7 +1,6 @@
 #%RAML 1.0 DataType
 (package): ProductTailoring
 type: ProductTailoringUpdateAction
-(beta): true
 displayName: ProductTailoringChangeAssetOrderAction
 discriminatorValue: changeAssetOrder
 description: |
@@ -25,4 +24,4 @@ properties:
   assetOrder:
     type: string[]
     description: |
-      All existing Asset `id`s of the ProductTailoringVariant in the desired new order.
+      All existing Asset `id`s of the ProductVariantTailoring in the desired new order.
