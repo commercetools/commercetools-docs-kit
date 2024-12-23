@@ -15,8 +15,6 @@ baseUriParameters:
       - europe-west1.gcp
       - eu-central-1.aws
       - australia-southeast1.gcp
-      - api.cn-northwest-1.aws.commercetools.cn
-      - eastus.azure
     description: |
       [Region](/../api/general-concepts#hosts) in which the Project is hosted.
 version: v1
@@ -222,10 +220,11 @@ resourceTypes:
     body:
       application/json:
         type: ProjectUpdate
+        example: !include /examples/project-update.example.json
     responses:
       200:
         body:
-          example: !include examples/project.example.json
+          example: !include examples/project-update-response.example.json
           type: Project
   /as-associate: !include resources/as-associate.raml
   /associate-roles: !include resources/associate-roles.raml
