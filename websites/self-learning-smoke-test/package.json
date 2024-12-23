@@ -25,8 +25,8 @@
     "@commercetools-uikit/secondary-button": "19.9.0",
     "@commercetools-uikit/stamp": "19.9.0",
     "@commercetools-uikit/tooltip": "19.9.0",
-    "gatsby": "5.13.7",
-    "gatsby-cli": "5.13.3",
+    "gatsby": "5.14.1",
+    "gatsby-cli": "5.14.0",
     "process-top": "^1.2.0",
     "react": "18.3.1",
     "react-dom": "18.3.1"
