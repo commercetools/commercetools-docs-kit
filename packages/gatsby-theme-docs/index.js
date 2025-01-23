@@ -41,3 +41,6 @@ export {
 export { default as LoginButton } from './src/modules/sso/components/login-button';
 export * from './src/modules/ai-assistant';
 export * from './src/utils/release-notes';
+
+export { default as LearningObjectivesCard } from './src/components/LearningObjectivesCard/LearningObjectivesCard';
+export { default as SelfLearningContentNotification } from './src/components/SelfLearningContentNotification/SelfLearningContentNotification';
