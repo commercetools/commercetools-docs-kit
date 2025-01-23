@@ -233,7 +233,7 @@ jobs:
           CYPRESS_CI: 'true'
 
       - name: Upload e2e artifacts
-        uses: actions/upload-artifact@v3-node20
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: self-learning-e2e-failure-snapshots-${{ github.run_attempt }}
