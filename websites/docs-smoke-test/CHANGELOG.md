@@ -1,5 +1,21 @@
 # @commercetools-website/docs-smoke-test
 
+## 9.6.0
+
+### Minor Changes
+
+- [#2107](https://github.com/commercetools/commercetools-docs-kit/pull/2107) [`319ebed`](https://github.com/commercetools/commercetools-docs-kit/commit/319ebed62887df0c14467572ded8026daa1e6d56) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Introduced SelfLearningContentNotification and LearningObjectivesCard to remove custom html from mdx
+
+### Patch Changes
+
+- [#2096](https://github.com/commercetools/commercetools-docs-kit/pull/2096) [`dc29d10`](https://github.com/commercetools/commercetools-docs-kit/commit/dc29d101d024943430b3d245924dc31765212d6f) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix MultiPathBlock component to be able to display content side by side on wide viewports
+
+- Updated dependencies [[`319ebed`](https://github.com/commercetools/commercetools-docs-kit/commit/319ebed62887df0c14467572ded8026daa1e6d56), [`dc29d10`](https://github.com/commercetools/commercetools-docs-kit/commit/dc29d101d024943430b3d245924dc31765212d6f)]:
+  - @commercetools-docs/gatsby-theme-docs@24.11.0
+  - @commercetools-docs/ui-kit@24.11.0
+  - @commercetools-docs/gatsby-theme-code-examples@24.11.0
+  - @commercetools-docs/gatsby-theme-constants@24.11.0
+
 ## 9.5.2
 
 ### Patch Changes

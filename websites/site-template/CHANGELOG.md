@@ -1,5 +1,12 @@
 # @commercetools-website/site-template
 
+## 5.3.52
+
+### Patch Changes
+
+- Updated dependencies [[`319ebed`](https://github.com/commercetools/commercetools-docs-kit/commit/319ebed62887df0c14467572ded8026daa1e6d56), [`dc29d10`](https://github.com/commercetools/commercetools-docs-kit/commit/dc29d101d024943430b3d245924dc31765212d6f)]:
+  - @commercetools-docs/gatsby-theme-docs@24.11.0
+
 ## 5.3.51
 
 ### Patch Changes

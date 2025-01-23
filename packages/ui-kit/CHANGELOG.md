@@ -1,5 +1,11 @@
 # @commercetools-docs/ui-kit
 
+## 24.11.0
+
+### Patch Changes
+
+- [#2096](https://github.com/commercetools/commercetools-docs-kit/pull/2096) [`dc29d10`](https://github.com/commercetools/commercetools-docs-kit/commit/dc29d101d024943430b3d245924dc31765212d6f) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Fix MultiPathBlock component to be able to display content side by side on wide viewports
+
 ## 24.10.0
 
 ### Patch Changes
