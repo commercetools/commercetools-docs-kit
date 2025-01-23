@@ -7,6 +7,7 @@ const allowedCardsElementsTypes = [
   'CourseCard',
   'LearningPathCard',
   'ImageCard',
+  'LearningObjectivesCard',
 ];
 
 const Cards = (props) => {

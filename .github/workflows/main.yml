@@ -49,6 +49,9 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Install Vercel
+        run: npm install -g vercel
+
       # cached dependencies
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -230,7 +233,7 @@ jobs:
           CYPRESS_CI: 'true'
 
       - name: Upload e2e artifacts
-        uses: actions/upload-artifact@v3-node20
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: self-learning-e2e-failure-snapshots-${{ github.run_attempt }}

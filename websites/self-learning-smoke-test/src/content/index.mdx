@@ -2,22 +2,21 @@
 title: Explore how to build a documentation website for commercetools
 ---
 
-import { CourseCard, LearningPathCard, ImageCard, IfLearningPathComplete, IfLearningPathNotComplete, LoginButton } from '@commercetools-docs/gatsby-theme-docs'
-import { CheckThinIcon } from '@commercetools-uikit/icons'
+import { CourseCard, LearningPathCard, ImageCard, IfLearningPathComplete, IfLearningPathNotComplete, LoginButton, LearningObjectivesCard } from '@commercetools-docs/gatsby-theme-docs'
 
 <IfUserLoggedIn>
 <IfLearningPathComplete>
 <h2>Learn how to manage projects, products, pricing, customers, shipping methods and more with commercetools Composable Commerce.</h2>
 <br />
 <Cards>
-<Card title="You know how to:">
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Implement organizations, teams, projects and related functions to enable your e-commerce solution.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Set up, create and publish prices.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Identify use cases for customizing the data model and behavior of the APIs.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Manage discounts in the Merchant Center.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Design the product information structure and store your product content data.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Set up shipping methods for diverse contexts.</p>
-</Card>
+<LearningObjectivesCard title="You know how to:">
+{['Implement organizations, teams, projects and related functions to enable your e-commerce solution.',
+'Set up, create and publish prices.',
+'Identify use cases for customizing the data model and behavior of the APIs.',
+'Manage discounts in the Merchant Center.',
+'Design the product information structure and store your product content data.',
+'Set up shipping methods for diverse contexts.']}
+</LearningObjectivesCard>
   <ImageCard>
 
 ![learning path](/content/files/logged-in-learning-path-complete.svg)
@@ -38,14 +37,14 @@ Congratulations on completing all the courses in this learning path! Remember, y
 <h2>Hey <FirstName />! Hope you had a nice break and are excited to get back into the Composable Commerce Administrator learning path!</h2>
 <br/>
 <Cards>
-<Card title="Learning objectives">
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Implement organizations, teams, projects and related functions to enable your e-commerce solution.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Set up, create and publish prices.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Identify use cases for customizing the data model and behavior of the APIs.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Manage discounts in the Merchant Center.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Design the product information structure and store your product content data.</p>
-<p style="margin-top: 0.3rem; font-size:12px;"><CheckThinIcon color="primary" size="medium"/> Set up shipping methods for diverse contexts.</p>
-</Card>
+<LearningObjectivesCard title="Learning objectives">
+{['Implement organizations, teams, projects and related functions to enable your e-commerce solution.',
+'Set up, create and publish prices.',
+'Identify use cases for customizing the data model and behavior of the APIs.',
+'Manage discounts in the Merchant Center.',
+'Design the product information structure and store your product content data.',
+'Set up shipping methods for diverse contexts.']}
+</LearningObjectivesCard>
   <ImageCard>
 
 ![learning path](/content/files/logged-in-learning-path.svg)
