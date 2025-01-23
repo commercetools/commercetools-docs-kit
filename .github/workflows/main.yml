@@ -49,6 +49,9 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Install Vercel
+        run: npm install -g vercel
+
       # cached dependencies
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
