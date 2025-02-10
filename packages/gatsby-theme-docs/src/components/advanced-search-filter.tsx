@@ -31,6 +31,10 @@ const tagsFilterConfig = [
     label: 'Frontend',
     value: 'Frontend',
   },
+  {
+    label: 'InStore',
+    value: 'InStore',
+  },
 ];
 
 const TagsContainer = styled.div`
