@@ -34,6 +34,7 @@ export {
   IfLearningPathComplete,
   IfLearningPathNotComplete,
 } from './src/modules/self-learning/components/if-learning-path';
+export { default as LoginOrGuest } from './src/modules/self-learning/components/login-or-guest';
 export {
   IfUserLoggedIn,
   IfUserLoggedOut,
