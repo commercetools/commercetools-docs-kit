@@ -50,7 +50,7 @@
     "@fontsource/roboto-mono": "5.0.19",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
-    "@sentry/browser": "7.119.0",
+    "@sentry/browser": "7.119.1",
     "@svgr/webpack": "8.1.0",
     "@videojs/themes": "^1.0.1",
     "assert": "2.1.0",
