@@ -3566,7 +3566,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-docs/gatsby-theme-docs@24.11.0, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
+"@commercetools-docs/gatsby-theme-docs@24.11.1, @commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs":
   version: 0.0.0-use.local
   resolution: "@commercetools-docs/gatsby-theme-docs@workspace:packages/gatsby-theme-docs"
   dependencies:
@@ -4688,7 +4688,7 @@ __metadata:
   resolution: "@commercetools-website/api-docs-smoke-test@workspace:websites/api-docs-smoke-test"
   dependencies:
     "@commercetools-docs/gatsby-theme-api-docs": 24.11.0
-    "@commercetools-docs/gatsby-theme-docs": 24.11.0
+    "@commercetools-docs/gatsby-theme-docs": 24.11.1
     "@commercetools-docs/rmf-codegen": 13.37.0
     gatsby: 5.13.7
     gatsby-cli: 5.13.3
@@ -4704,7 +4704,7 @@ __metadata:
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 24.11.0
     "@commercetools-docs/gatsby-theme-constants": 24.11.0
-    "@commercetools-docs/gatsby-theme-docs": 24.11.0
+    "@commercetools-docs/gatsby-theme-docs": 24.11.1
     "@commercetools-docs/ui-kit": 24.11.0
     "@commercetools-uikit/icons": 19.9.0
     "@commercetools-uikit/radio-input": 19.9.0
@@ -4722,7 +4722,7 @@ __metadata:
   resolution: "@commercetools-website/documentation@workspace:websites/documentation"
   dependencies:
     "@commercetools-docs/gatsby-theme-code-examples": 24.11.0
-    "@commercetools-docs/gatsby-theme-docs": 24.11.0
+    "@commercetools-docs/gatsby-theme-docs": 24.11.1
     gatsby: 5.13.7
     gatsby-cli: 5.13.3
     react: 18.3.1
@@ -4734,7 +4734,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/self-learning-smoke-test@workspace:websites/self-learning-smoke-test"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 24.11.0
+    "@commercetools-docs/gatsby-theme-docs": 24.11.1
     "@commercetools-docs/ui-kit": 24.11.0
     "@commercetools-uikit/card": 19.9.0
     "@commercetools-uikit/collapsible-panel": 19.9.0
@@ -4757,7 +4757,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-website/site-template@workspace:websites/site-template"
   dependencies:
-    "@commercetools-docs/gatsby-theme-docs": 24.11.0
+    "@commercetools-docs/gatsby-theme-docs": 24.11.1
     gatsby: 5.13.7
     gatsby-cli: 5.13.3
     react: 18.3.1

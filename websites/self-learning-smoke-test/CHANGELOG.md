@@ -1,5 +1,14 @@
 # @commercetools-website/self-learning-smoke-test
 
+## 9.3.1
+
+### Patch Changes
+
+- [#2108](https://github.com/commercetools/commercetools-docs-kit/pull/2108) [`74bd8da`](https://github.com/commercetools/commercetools-docs-kit/commit/74bd8dad5508a830cc2c37124ca9da6967e7cd04) Thanks [@gabriele-ct](https://github.com/gabriele-ct)! - Add LoginOrGuest component for reducing the html in self-learining pages. Added InStore search filter
+
+- Updated dependencies [[`74bd8da`](https://github.com/commercetools/commercetools-docs-kit/commit/74bd8dad5508a830cc2c37124ca9da6967e7cd04)]:
+  - @commercetools-docs/gatsby-theme-docs@24.11.1
+
 ## 9.3.0
 
 ### Minor Changes
