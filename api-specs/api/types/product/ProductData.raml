@@ -31,11 +31,11 @@ properties:
   metaTitle?:
     type: LocalizedString
     description: |
-      Title of the Product displayed in search results.
+      Title of the Product as used by search engines.
   metaDescription?:
     type: LocalizedString
     description: |
-      Description of the Product displayed in search results below the meta title.
+      Description of the Product as used by search engines.
   metaKeywords?:
     type: LocalizedString
     description: |
@@ -48,6 +48,7 @@ properties:
     type: ProductVariant[]
     description: |
       Additional Product Variants.
+    maxItems: 100
   searchKeywords:
     type: SearchKeywords
     description: |

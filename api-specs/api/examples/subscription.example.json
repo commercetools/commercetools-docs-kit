@@ -1,11 +1,11 @@
 {
-  "id": "8062243c-46fc-40b5-88a4-75e2216aef75",
+  "id": "bf79c5d2-2813-4229-9a88-e7c76be50986",
   "version": 1,
   "destination": {
     "type": "SQS",
-    "queueUrl": "<url-to-my-queue>",
+    "queueUrl": "https://sqs.my-region.amazonaws.com/my-aws-account-number/my-queue",
     "authenticationMode": "IAM",
-    "region": "<my-region>"
+    "region": "my-region"
   },
   "messages": [
     {
