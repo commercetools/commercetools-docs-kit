@@ -3,11 +3,12 @@
 displayName: ResourceTypeId
 type: string
 description: |
-  IDs indicating the [customizable resources and data types](/../api/projects/types#list-of-customizable-data-types).
+  With Types, you can model your own Custom Fields on the following resources and data types.
 enum:
   - address
   - asset
   - approval-flow
+  - approval-rule
   - associate-role
   - business-unit
   - cart-discount
@@ -28,6 +29,7 @@ enum:
   - payment-interface-interaction
   - product-price
   - product-selection
+  - product-tailoring
   - quote
   - review
   - shipping
@@ -44,6 +46,8 @@ enum:
     [Asset](ctp:api:type:Asset) on [Category](ctp:api:type:Category) and [ProductVariant](ctp:api:type:ProductVariant)
   approval-flow: |
     [ApprovalFlow](ctp:api:type:ApprovalFlow)
+  approval-rule: |
+    [ApprovalRule](ctp:api:type:ApprovalRule)
   associate-role: |
     [AssociateRole](ctp:api:type:AssociateRole)
   business-unit: |
@@ -86,6 +90,8 @@ enum:
     [Embedded Price](ctp:api:type:Price) on [ProductVariant](ctp:api:type:ProductVariant)
   product-selection: |
     [ProductSelection](ctp:api:type:ProductSelection)
+  product-tailoring: |
+    [ProductTailoring](ctp:api:type:ProductTailoring)
   quote: |
     [Quote](ctp:api:type:Quote), [QuoteRequest](ctp:api:type:QuoteRequest) and [StagedQuote](ctp:api:type:StagedQuote).
     When a [StagedQuote](ctp:api:type:StagedQuote) is created, the [CustomFields](ctp:api:type:CustomFields) will be copied from the [QuoteRequest](ctp:api:type:QuoteRequest) and when a [Quote](ctp:api:type:Quote) is created, the [CustomFields](ctp:api:type:CustomFields) will be copied from the [StagedQuote](ctp:api:type:StagedQuote).

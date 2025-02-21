@@ -1,7 +1,6 @@
 #%RAML 1.0 DataType
 (package): ProductTailoring
 type: ProductTailoringUpdateAction
-(beta): true
 displayName: ProductTailoringAddVariantAction
 discriminatorValue: addVariant
 example: !include ../../../examples/ProductTailoring/ProductTailoringAddVariantAction.json
@@ -26,6 +25,10 @@ properties:
     type: AssetDraft[]
     description: |
       Media assets for the Product Variant Tailoring.
+  attributes?:
+    type: ProductTailoringAttribute[]
+    description: |
+      Attributes for the Product Variant Tailoring.
   staged?:
     type: boolean
     description: |

@@ -35,6 +35,7 @@ uriParameters:
           application/json:
             example: !include ../examples/carts.example.json
   head:
+    displayName: Check if Cart exists in Store by Query Predicate
     securedBy:
       [
         oauth_2_0:
@@ -46,7 +47,7 @@ uriParameters:
               ],
           },
       ]
-    description: Checks if a Cart exists for a given Query Predicate. Returns a `200 OK` status if any Carts match the Query Predicate or a `404 Not Found` otherwise.
+    description: Checks if a Cart exists for a given Query Predicate. Returns a `200 OK` status if any Carts match the Query Predicate or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     queryParameters:
       where?:
         type: QueryPredicate[]
@@ -104,9 +105,9 @@ uriParameters:
             },
         ]
       description: |
-        Retrieves the most recently modified active Cart of a Customer with [CartOrigin](ctp:api:type:CartOrigin) `Customer`. If no active Cart exists, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        Retrieves the most recently modified [active Cart](ctp:api:type:CartState) of a Customer with [CartOrigin](ctp:api:type:CartOrigin) `Customer`. If no active Cart exists, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
-        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Cart exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
         To ensure the Cart is up-to-date with current values (such as Prices and Discounts), use the [Recalculate](ctp:api:type:CartRecalculateAction) update action.
       responses:
@@ -115,6 +116,7 @@ uriParameters:
             application/json:
               example: !include ../examples/cart.example.json
     head:
+      displayName: Check if Cart exists in Store by Customer ID
       securedBy:
         [
           oauth_2_0:
@@ -126,7 +128,7 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a Cart of a Customer exists. Returns a `200 OK` status if the Cart exists or a `404 Not Found` otherwise.
+      description: Checks if a Cart of a Customer exists. Returns a `200 OK` status if the Cart exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
   /key={key}:
     (methodName): withKey
     type:
@@ -148,7 +150,7 @@ uriParameters:
             },
         ]
       description: |
-        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Cart exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
         To ensure the Cart is up-to-date with current values (such as Prices and Discounts), use the [Recalculate](ctp:api:type:CartRecalculateAction) update action.
       responses:
@@ -157,6 +159,7 @@ uriParameters:
             application/json:
               example: !include ../examples/cart.example.json
     head:
+      displayName: Check if Cart exists in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -168,7 +171,7 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a Cart exists for a given `key`. Returns a `200 OK` status if the Cart exists or a `404 Not Found` otherwise.
+      description: Checks if a Cart exists for a given `key`. Returns a `200 OK` status if the Cart exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
       displayName: Update Cart in Store by Key
       securedBy:
@@ -183,7 +186,7 @@ uriParameters:
             },
         ]
       description: |
-        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Cart exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       body:
         application/json:
           example: !include ../examples/cart-update.example.json
@@ -195,7 +198,7 @@ uriParameters:
     delete:
       displayName: Delete Cart in Store by Key
       description: |
-        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Cart exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       is:
         - dataErasure
       securedBy:
@@ -271,7 +274,7 @@ uriParameters:
             },
         ]
       description: |
-        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Cart exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
         To ensure the Cart is up-to-date with current values (such as Prices and Discounts), use the [Recalculate](ctp:api:type:CartRecalculateAction) update action.
       responses:
@@ -280,6 +283,7 @@ uriParameters:
             application/json:
               example: !include ../examples/cart.example.json
     head:
+      displayName: Check if Cart exists in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -291,7 +295,7 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a Cart exists for a given `id`. Returns a `200 OK` status if the Cart exists or a `404 Not Found` otherwise.
+      description: Checks if a Cart exists for a given `id`. Returns a `200 OK` status if the Cart exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
       displayName: Update Cart in Store by ID
       securedBy:
@@ -307,7 +311,7 @@ uriParameters:
         ]
       description: |
         Updates a [Cart](ctp:api:type:Cart) in the [Store](ctp:api:type:Store) specified by `storeKey`.
-        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Cart exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       body:
         application/json:
           example: !include ../examples/cart-update.example.json
@@ -319,7 +323,7 @@ uriParameters:
     delete:
       displayName: Delete Cart in Store by ID
       description: |
-        If the Cart exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Cart exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       is:
         - dataErasure
       securedBy:
@@ -371,6 +375,7 @@ uriParameters:
           application/json:
             example: !include ../examples/orders.example.json
   head:
+    displayName: Check if Order exists in Store by Query Predicate
     securedBy:
       [
         oauth_2_0:
@@ -382,7 +387,7 @@ uriParameters:
               ],
           },
       ]
-    description: Checks if an Order exists for a given Query Predicate. Returns a `200 OK` status if any Orders match the Query Predicate or a `404 Not Found` otherwise.
+    description: Checks if an Order exists for a given Query Predicate. Returns a `200 OK` status if any Orders match the Query Predicate or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     queryParameters:
       where?:
         type: QueryPredicate[]
@@ -431,14 +436,16 @@ uriParameters:
     type: base
     displayName: Order from Quote
     post:
-      displayName: Create an Order from a Quote
+      displayName: Create Order in Store from Quote
       description: |
-        Creating an Order produces the [OrderCreated](ctp:api:type:OrderCreatedMessage) Message.
+
+        Creates an Order from a [Quote](ctp:api:type:Quote) in a [Store](ctp:api:type:Store). The referenced Quote must have the `Pending` [state](ctp:api:type:QuoteState) and must be valid (not past the `validTo` date); otherwise, an [InvalidOperation](ctp:api:type:InvalidOperationError) error is returned.
+
+        Produces the [OrderCreated](ctp:api:type:OrderCreatedMessage) Message.
 
         Specific Error Codes:
 
         - [OutOfStock](ctp:api:type:OutOfStockError)
-        - [PriceChanged](ctp:api:type:PriceChangedError)
         - [InvalidItemShippingDetails](ctp:api:type:InvalidItemShippingDetailsError)
         - [InvalidOperation](ctp:api:type:InvalidOperationError)
         - [CountryNotConfiguredInStore](ctp:api:type:CountryNotConfiguredInStoreError)
@@ -488,13 +495,14 @@ uriParameters:
             },
         ]
       description: |
-        If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Order exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       responses:
         200:
           body:
             application/json:
               example: !include ../examples/order.example.json
     head:
+      displayName: Check if Order exists in Store by OrderNumber
       securedBy:
         [
           oauth_2_0:
@@ -506,7 +514,7 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if an Order exists for a given `orderNumber`. Returns a `200 OK` status if the Order exists or a `404 Not Found` otherwise.
+      description: Checks if an Order exists for a given `orderNumber`. Returns a `200 OK` status if the Order exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
       displayName: Update Order in Store by OrderNumber
       securedBy:
@@ -521,7 +529,7 @@ uriParameters:
             },
         ]
       description: |
-        If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Order exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       body:
         application/json:
           example: !include ../examples/order-update.example.json
@@ -533,7 +541,7 @@ uriParameters:
     delete:
       displayName: Delete Order in Store by OrderNumber
       description: |
-        If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Order exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
         Deleting an Order produces the [OrderDeleted](ctp:api:type:OrderDeletedMessage) Message.
       is:
@@ -575,13 +583,14 @@ uriParameters:
             },
         ]
       description: |
-        If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Order exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       responses:
         200:
           body:
             application/json:
               example: !include ../examples/order.example.json
     head:
+      displayName: Check if My Order exists in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -593,7 +602,7 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if an Order exists for a given `id`. Returns a `200 OK` status if the Order exists or a `404 Not Found` otherwise.
+      description: Checks if an Order exists for a given `id`. Returns a `200 OK` status if the Order exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
       displayName: Update Order in Store by ID
       securedBy:
@@ -608,7 +617,7 @@ uriParameters:
             },
         ]
       description: |
-        If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Order exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       body:
         application/json:
           example: !include ../examples/order-update.example.json
@@ -620,7 +629,7 @@ uriParameters:
     delete:
       displayName: Delete Order in Store by ID
       description: |
-        If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Order exists in the Project but does not have a `store` specified, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
 
         Deleting an Order produces the [OrderDeleted](ctp:api:type:OrderDeletedMessage) Message.
       is:
@@ -677,6 +686,7 @@ uriParameters:
             application/json:
               example: !include ../examples/carts.example.json
     head:
+      displayName: Check if My Cart exists in Store by Query Predicate
       securedBy:
         [
           oauth_2_0:
@@ -691,7 +701,7 @@ uriParameters:
             },
         ]
       description: |
-        Checks if a Cart exists for a Store that matches the given Query Predicate, and contains a matching `customerId` or `anonymousId`. Returns a `200 OK` status if any Carts match these conditions, or a `404 Not Found` otherwise.
+        Checks if a Cart exists for a Store that matches the given Query Predicate, and contains a matching `customerId` or `anonymousId`. Returns a `200 OK` status if any Carts match these conditions, or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
       queryParameters:
         where?:
           type: QueryPredicate[]
@@ -711,7 +721,8 @@ uriParameters:
             },
         ]
       description: |
-        Creates a Cart in the specified Store for a given `customerId` or `anonymousId`.
+
+        Creates a Cart in a Store for the Customer or anonymous user. The `customerId` or `anonymousId` field on the Cart is automatically set based on the [customer:{id}](/scopes#composable-commerce-oauth) or [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
 
         The `store` field in the created [Cart](ctp:api:type:Cart) is set to the Store specified by the `storeKey` path parameter.
 
@@ -754,17 +765,21 @@ uriParameters:
               },
           ]
         description: |
-          Returns a Cart for a given `id` in a Store. Returns a `200 OK` status if the Cart exists, or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
+          Returns a Cart for a given `id` in a Store. Returns a `200 OK` status if the Cart exists.
 
-          If the Cart exists in the Project but does not belong to a Store, or the Cart's `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
 
-          If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError)  error.
+          - If no Cart exists in the Store for the given `id`.
+          - If the Cart exists but does not belong to a Store, or the Cart's `store` field references a different Store.
+          - If the Cart exists but does not have either a `customerId` that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope, or an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
         responses:
           200:
             body:
               application/json:
                 example: !include ../examples/cart.example.json
       head:
+        displayName: Check if My Cart exists in Store by ID
         securedBy:
           [
             oauth_2_0:
@@ -794,11 +809,14 @@ uriParameters:
               },
           ]
         description: |
-          Updates the Cart for a given `id` in a Store. Returns a `200 OK` status if the Cart exists, or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
+          Updates the Cart for a given `id` in a Store. Returns a `200 OK` status if successful.
 
-          If the Cart exists in the Project but does not belong to a Store, or the Cart's `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
 
-          If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError)  error.
+          - If no Cart exists in the Store for the given `id`.
+          - If the Cart exists but does not belong to a Store, or the Cart's `store` field references a different Store.
+          - If the Cart exists but does not have either a `customerId` that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope, or an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
         body:
           application/json:
             example: !include ../examples/cart-update.example.json
@@ -823,11 +841,14 @@ uriParameters:
               },
           ]
         description: |
-          Deletes the Cart for a given `id` in a Store. Returns a `200 OK` status if the Cart exists, or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
+          Deletes the Cart for a given `id` in a Store. Returns a `200 OK` status if successful.
 
-          If the Cart exists in the Project but does not belong to a Store, or the Cart's `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
 
-          If the Cart exists in the Project but does not have a matching `customerId` or `anonymousId`, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError)  error.
+          - If no Cart exists in the Store for the given `id`.
+          - If the Cart exists in the Project but does not belong to a Store, or the Cart's `store` field references a different Store.
+          - If the Cart exists in the Project but does not have either a `customerId` that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope, or an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
         responses:
           200:
             body:
@@ -854,15 +875,20 @@ uriParameters:
                 [
                   'manage_my_orders:{projectKey}',
                   'manage_my_orders:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
+      description: |
+        Returns all Orders in a Store that match a given Query Predicate and contain either a `customerId` that matches the [customer_id:{id}](/scopes#composable-commerce-oauth) scope, or an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
       responses:
         200:
           body:
             application/json:
               example: !include ../examples/orders.example.json
     head:
+      displayName: Check if My Order exists in Store by Query Predicate
       securedBy:
         [
           oauth_2_0:
@@ -871,19 +897,34 @@ uriParameters:
                 [
                   'manage_my_orders:{projectKey}',
                   'manage_my_orders:{projectKey}:{storeKey}',
+                  'customer:{customerId}',
+                  'anonymous_id:{anonymousId}',
                 ],
             },
         ]
-      description: Checks if an Order exists for a given Query Predicate. Returns a `200 OK` status if any Orders match the Query Predicate or a `404 Not Found` otherwise.
+      description: |
+        Checks if an Order exists for a given Query Predicate in a Store. Returns a `200 OK` status if successful.
+
+        A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+        - If no Orders exist in the Store that match the Query Predicate.
+        - If an Order matches the Query Predicate, but no `store` is specified, or the `store` field references a different Store.
+        - If an Order matches the Query Predicate, but does not have a `customerId` that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope, or an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
       queryParameters:
         where?:
           type: QueryPredicate[]
     post:
       is:
         - conflicting
-      displayName: Create My Order in Store
+      displayName: Create My Order in Store from Cart
       description: |
+
+        Creates an Order in a Store from a Cart for the Customer or anonymous user. The `customerId` or `anonymousId` field on the Order is automatically set based on the [customer:{id}](/scopes#composable-commerce-oauth) or [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
         The Cart must have a [shipping address set](ctp:api:type:CartSetShippingAddressAction) for taxes to be calculated. When creating [B2B Orders](/associates-overview#b2b-resources), the Customer must have the `CreateMyOrdersFromMyCarts` [Permission](ctp:api:type:Permission).
+
+        If the Cart's `customerId` does not match the [customer:{id}](/scopes#composable-commerce-oauth) scope, or the `anonymousId` does not match the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned.
 
         Creating an Order produces the [OrderCreated](ctp:api:type:OrderCreatedMessage) Message.
 
@@ -906,6 +947,8 @@ uriParameters:
                 [
                   'manage_my_orders:{projectKey}',
                   'manage_my_orders:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
@@ -926,7 +969,14 @@ uriParameters:
       get:
         displayName: Get My Order in Store by ID
         description: |
-          If the Order exists in the Project but does not have the `store` field, or the `store` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+          Returns an Order for a given `id` in a Store. Returns a `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no Order exists in the Store for the given `id`.
+          - If the Order exists but does not have a `store` specified, or the `store` field references a different Store.
+          - If the Order exists but does not have a `customerId` that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope, or `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
         securedBy:
           [
             oauth_2_0:
@@ -935,6 +985,8 @@ uriParameters:
                   [
                     'manage_my_orders:{projectKey}',
                     'manage_my_orders:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
@@ -944,6 +996,7 @@ uriParameters:
               application/json:
                 example: !include ../examples/order.example.json
       head:
+        displayName: Check if My Order exists in Store by ID
         securedBy:
           [
             oauth_2_0:
@@ -952,20 +1005,35 @@ uriParameters:
                   [
                     'manage_my_orders:{projectKey}',
                     'manage_my_orders:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
-        description: Checks if an Order exists for a given `id`. Returns a `200 OK` status if the My Order exists or a `404 Not Found` otherwise.
+        description: |
+          Checks if an Order exists for a given `id` in a Store. Returns a `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no Order exists in the Store for the given `id`.
+          - If the Order exists but does not have a `store` specified, or the `store` field references a different Store.
+          - If the Order exists but does not have a `customerId` that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope, or `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
   /active-cart:
     type: base
     get:
-      displayName: Get My Active Cart in Store
+      displayName: Get My active Cart in Store
       description: |
-        Retrieves the Customer's most recently modified active Cart in the Store specified by the `storeKey` path parameter.
+        Retrieves the Customer's most recently modified [active Cart](ctp:api:type:CartState) in a Store. Returns a `200 OK` status if successful.
 
         Carts with `Merchant` or `Quote` [CartOrigin](ctp:api:type:CartOrigin) are ignored.
 
-        If no active Cart exists, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+        - If no active Cart exists.
+        - If an active Cart exists but does not have a `store` specified, or the `store` field references a different Store.
+        - If an active Cart exists but does not have a `customerId` that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope, or `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
       is:
         - expandable
       securedBy:
@@ -976,6 +1044,8 @@ uriParameters:
                 [
                   'manage_my_orders:{projectKey}',
                   'manage_my_orders:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
@@ -986,6 +1056,7 @@ uriParameters:
               type: Cart
               example: !include ../examples/cart.example.json
     head:
+      displayName: Check if active Cart exists in Store
       securedBy:
         [
           oauth_2_0:
@@ -994,10 +1065,20 @@ uriParameters:
                 [
                   'manage_my_orders:{projectKey}',
                   'manage_my_orders:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
-      description: Checks if an active Cart exists. Returns a `200 OK` status if an active Cart exists or a `404 Not Found` otherwise.
+      description: |
+        Checks if an active Cart exists in a Store. Returns `200 OK` status if successful.
+
+        A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+        - If no active Cart exists in a Store.
+        - If an active Cart exists but does not have a `store` specified, or the `store` field references a different Store.
+        - If an active Cart exists but does not contain a `customerId` that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope, or `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
   /shopping-lists:
     type:
       baseDomain:
@@ -1009,7 +1090,16 @@ uriParameters:
     description: |
       shopping-lists e.g. for wishlist support
     get:
-      displayName: Get my shopping lists in store
+      displayName: Query My ShoppingLists in Store
+      description: |
+        Returns ShoppingLists that match the given Query Predicate in a Store. Returns `200 OK` status if successful.
+
+        A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+        - If no ShoppingLists exist in a Store.
+        - If a ShoppingList exists but does not have a `store` specified, or the `store` field references a different Store.
+        - If a ShoppingList exists in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
       securedBy:
         [
           oauth_2_0:
@@ -1018,6 +1108,8 @@ uriParameters:
                 [
                   'manage_my_shopping_lists:{projectKey}',
                   'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
@@ -1033,6 +1125,7 @@ uriParameters:
             application/json:
               example: !include ../examples/shopping-lists.example.json
     head:
+      displayName: Check if My ShoppingList exists in Store by Query Predicate
       securedBy:
         [
           oauth_2_0:
@@ -1041,15 +1134,25 @@ uriParameters:
                 [
                   'manage_my_shopping_lists:{projectKey}',
                   'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
-      description: Checks if a ShoppingList exists for a given Query Predicate. Returns a `200 OK` status if any ShoppingLists match the Query Predicate or a `404 Not Found` otherwise.
+      description: |
+        Checks if a ShoppingList exists for the given Query Predicate in a Store. Returns `200 OK` status if successful.
+
+        A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+        - If no ShoppingLists exist for a given Query Predicate in a Store.
+        - If a ShoppingList matches the Query Predicate but does not have a `store` specified, or the `store` field references a different Store.
+        - If a ShoppingList exists in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
       queryParameters:
         where?:
           type: QueryPredicate[]
     post:
-      displayName: Create my shopping lists in store
+      displayName: Create My ShoppingList in Store
       securedBy:
         [
           oauth_2_0:
@@ -1058,6 +1161,8 @@ uriParameters:
                 [
                   'manage_my_shopping_lists:{projectKey}',
                   'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
@@ -1071,6 +1176,9 @@ uriParameters:
         application/json:
           example: !include ../examples/shopping-list-create.example.json
       description: |
+
+        Creates a ShoppingList in a Store for a Customer or anonymous user. The `customer` or `anonymousId` field on the ShoppingList is automatically set based on the given [customer:{id}](/scopes#composable-commerce-oauth) or [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope.
+
         When using this endpoint, the `store` field of a ShoppingList is always set to the [Store](ctp:api:type:Store) specified in the path parameter.
       responses:
         201:
@@ -1085,7 +1193,7 @@ uriParameters:
           resourceType: ShoppingList
           resourceUpdateType: MyShoppingListUpdate
       get:
-        displayName: Get my shopping list by key in store
+        displayName: Get My ShoppingList in Store by Key
         securedBy:
           [
             oauth_2_0:
@@ -1094,6 +1202,8 @@ uriParameters:
                   [
                     'manage_my_shopping_lists:{projectKey}',
                     'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
@@ -1104,13 +1214,22 @@ uriParameters:
             type: Expansion[]
             required: false
         description: |
-          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different [Store](ctp:api:type:Store), the [ResourceNotFound](/errors#404-not-found-1) error is returned.
+          Returns a ShoppingList for a given `key` in a Store. Returns `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no ShoppingList matches the given `key` in a Store.
+          - If a ShoppingList matches the given `key` but does not have a `store` specified, or the `store` field references a different Store.
+          - If a ShoppingList matches the given `key` in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope,
+             or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
         responses:
           200:
             body:
               application/json:
                 example: !include ../examples/shopping-list.example.json
       head:
+        displayName: Check if My ShoppingList exists in Store by Key
         securedBy:
           [
             oauth_2_0:
@@ -1119,12 +1238,22 @@ uriParameters:
                   [
                     'manage_my_shopping_lists:{projectKey}',
                     'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
-        description: Checks if a ShoppingList exists for a given `key`. Returns a `200 OK` status if the ShoppingList exists or a `404 Not Found` otherwise.
+        description: |
+          Checks if a ShoppingList exists for a given `key` in a Store. Returns a `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no ShoppingList exists that matches the given `key` in a Store.
+          - If a ShoppingList matches the given `key` but does not have a `store` specified, or the `store` field references a different Store.
+          - If a ShoppingList matches the given `key` in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
       post:
-        displayName: Update my shopping list by key in store
+        displayName: Update My ShoppingList in Store by Key
         securedBy:
           [
             oauth_2_0:
@@ -1133,6 +1262,8 @@ uriParameters:
                   [
                     'manage_my_shopping_lists:{projectKey}',
                     'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
@@ -1146,15 +1277,21 @@ uriParameters:
           application/json:
             example: !include ../examples/shopping-list-update.example.json
         description: |
-          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different [Store](ctp:api:type:Store),
-          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
+          Updates a ShoppingList for a given `key` in a Store. Returns a `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no ShoppingList matches the given `key` in a Store.
+          - If a ShoppingList matches the given `key` but does not have a `store` specified, or the `store` field references a different Store.
+          - If a ShoppingList matches the given `key` in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
         responses:
           200:
             body:
               application/json:
                 example: !include ../examples/shopping-list.example.json
       delete:
-        displayName: Delete my shopping list by key in store
+        displayName: Delete My ShoppingList in Store by Key
         is:
           - dataErasure
         securedBy:
@@ -1165,6 +1302,8 @@ uriParameters:
                   [
                     'manage_my_shopping_lists:{projectKey}',
                     'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
@@ -1175,8 +1314,14 @@ uriParameters:
             type: Expansion[]
             required: false
         description: |
-          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different [Store](ctp:api:type:Store),
-          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
+          Deletes the ShoppingList for a given `key` in a Store. Returns a `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no ShoppingList matches the given `key` in a Store.
+          - If a ShoppingList matches the given `key` but does not have a `store` specified, or the `store` field references a different Store.
+          - If a ShoppingList matches the given `key` in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
         responses:
           200:
             body:
@@ -1190,7 +1335,7 @@ uriParameters:
           resourceType: ShoppingList
           resourceUpdateType: MyShoppingListUpdate
       get:
-        displayName: Get my shopping list by id in store
+        displayName: Get My ShoppingList in Store by ID
         securedBy:
           [
             oauth_2_0:
@@ -1199,6 +1344,8 @@ uriParameters:
                   [
                     'manage_my_shopping_lists:{projectKey}:{storeKey}',
                     'manage_my_shopping_lists:{projectKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
@@ -1209,14 +1356,21 @@ uriParameters:
             type: Expansion[]
             required: false
         description: |
-          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different [Store](ctp:api:type:Store),
-          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
+          Returns a ShoppingList for a given `id` in a Store. Returns `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no ShoppingList matches the given `id` in a Store.
+          - If a ShoppingList matches the given `id` but does not have a `store` specified, or the `store` field references a different Store.
+          - If a ShoppingList matches the given `id` in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
         responses:
           200:
             body:
               application/json:
                 example: !include ../examples/shopping-list.example.json
       head:
+        displayName: Check if My ShoppingList exists in Store by ID
         securedBy:
           [
             oauth_2_0:
@@ -1225,12 +1379,22 @@ uriParameters:
                   [
                     'manage_my_shopping_lists:{projectKey}:{storeKey}',
                     'manage_my_shopping_lists:{projectKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
-        description: Checks if a ShoppingList exists for a given `id`. Returns a `200 OK` status if the ShoppingList exists or a `404 Not Found` otherwise.
+        description: |
+          Checks if a ShoppingList exists for a given `id` in a Store. Returns a `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no ShoppingList matches the given `id` in a Store.
+          - If a ShoppingList matches the given `id` but does not have a `store` specified, or the `store` field references a different Store.
+          - If a ShoppingList matches the given `id` in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
       post:
-        displayName: Update my shopping list by id in store
+        displayName: Update My ShoppingList in Store by ID
         securedBy:
           [
             oauth_2_0:
@@ -1239,6 +1403,8 @@ uriParameters:
                   [
                     'manage_my_shopping_lists:{projectKey}',
                     'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
@@ -1252,15 +1418,21 @@ uriParameters:
           application/json:
             example: !include ../examples/shopping-list-update.example.json
         description: |
-          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different [Store](ctp:api:type:Store),
-          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
+          Updates a ShoppingList for a given `id` in a Store. Returns a `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no ShoppingList matches the given `id` in a Store.
+          - If a ShoppingList matches the given `id` but does not have a `store` specified, or the `store` field references a different Store.
+          - If a ShoppingList matches the given `id` in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
         responses:
           200:
             body:
               application/json:
                 example: !include ../examples/shopping-list.example.json
       delete:
-        displayName: Delete my shopping list by id in store
+        displayName: Delete My ShoppingList in Store by ID
         is:
           - dataErasure
         securedBy:
@@ -1271,6 +1443,8 @@ uriParameters:
                   [
                     'manage_my_shopping_lists:{projectKey}',
                     'manage_my_shopping_lists:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
+                    'anonymous_id:{id}',
                   ],
               },
           ]
@@ -1281,15 +1455,21 @@ uriParameters:
             type: Expansion[]
             required: false
         description: |
-          If a ShoppingList exists in a Project but does _not_ have the `store` field, or the `store` field references a different [Store](ctp:api:type:Store),
-          the [ResourceNotFound](/errors#404-not-found-1) error is returned.
+          Deletes the ShoppingList for a given `id` in a Store. Returns a `200 OK` status if successful.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no ShoppingList matches the given `id` in a Store.
+          - If a ShoppingList matches the given `id` but does not have a `store` specified, or the `store` field references a different Store.
+          - If a ShoppingList matches the given `id` in a Store but does not contain either an `anonymousId` that matches the [anonymous_id:{id}](/scopes#composable-commerce-oauth) scope, or a `customer` with `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+
         responses:
           200:
             body:
               application/json:
                 example: !include ../examples/shopping-list.example.json
   get:
-    displayName: Get my customer details in a store
+    displayName: Get My Customer in Store
     is:
       - sortable:
           sortExample: createdAt asc
@@ -1305,9 +1485,19 @@ uriParameters:
               [
                 'manage_my_profile:{projectKey}',
                 'manage_my_profile:{projectKey}:{storeKey}',
+                'customer_id:{id}',
               ],
           },
       ]
+    description: |
+      Returns a Customer for a given Query Predicate in a [Store](ctp:api:type:Store). Returns a `200 OK` status if successful.
+
+      A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+      - If no Customer exists in the Store for the given Query Predicate.
+      - If a Customer exists in the Store for the given Query Predicate, but does not have an `id` value that matches the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+      - If a Customer exists for the given Query Predicate but is associated with a different Store than what is specified in the `manage_my_profile:{projectKey}:{storeKey}` scope.
+
     responses:
       200:
         body:
@@ -1315,7 +1505,7 @@ uriParameters:
             example: !include ../examples/customer.example.json
             type: Customer
   post:
-    displayName: Update my customer in a store
+    displayName: Update My Customer in Store
     securedBy:
       [
         oauth_2_0:
@@ -1324,9 +1514,18 @@ uriParameters:
               [
                 'manage_my_profile:{projectKey}',
                 'manage_my_profile:{projectKey}:{storeKey}',
+                'customer_id:{id}',
               ],
           },
       ]
+    description: |
+      Updates the Customer in a [Store](ctp:api:type:Store). Returns a `200 OK` status if successful.
+
+      A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+      - If no Customer exists with the `id` specified in the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+      - If the Customer exists but is associated with a different Store than what is specified in the `manage_my_profile:{projectKey}:{storeKey}` scope.
+
     body:
       application/json:
         example: !include ../examples/customer-update.example.json
@@ -1338,7 +1537,7 @@ uriParameters:
             example: !include ../examples/customer-update-response.example.json
             type: Customer
   delete:
-    displayName: Delete my Customer in a store
+    displayName: Delete My Customer in Store
     is:
       - versioned
       - conflicting
@@ -1350,9 +1549,18 @@ uriParameters:
               [
                 'manage_my_profile:{projectKey}',
                 'manage_my_profile:{projectKey}:{storeKey}',
+                'customer_id:{id}',
               ],
           },
       ]
+    description: |
+      Deletes the Customer in a [Store](ctp:api:type:Store). Returns a `200 OK` status if successful.
+
+      A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+      - If no Customer exists with the `id` specified in the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+      - If the Customer exists but is associated with a different Store than what is specified in the `manage_my_profile:{projectKey}:{storeKey}` scope.
+
     responses:
       200:
         body:
@@ -1362,9 +1570,15 @@ uriParameters:
   /email/confirm:
     type: base
     post:
-      displayName: Verify my Customer's Email in a store
+      displayName: Verify email of My Customer in Store
       description: |
-        This is the last step in the [email verification process of a Customer](/../api/projects/customers#email-verification-of-customer-in-store).
+        This is the last step in the [email verification process of a Customer](/../api/projects/customers#email-verification-of-customer-in-store). Returns a `200 OK` status if successful.
+
+        A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+        - If no Customer exists with the `id` specified in the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+        - If the Customer exists but is associated with a different Store than what is specified in the `manage_my_profile:{projectKey}:{storeKey}` scope.
+
       securedBy:
         [
           oauth_2_0:
@@ -1373,6 +1587,7 @@ uriParameters:
                 [
                   'manage_my_profile:{projectKey}',
                   'manage_my_profile:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
                 ],
             },
         ]
@@ -1390,9 +1605,15 @@ uriParameters:
   /password:
     type: base
     post:
-      displayName: Change my customers password in a store
+      displayName: Change password of My Customer in Store
       description: |
-        Changing the password of the Customer produces the [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=false`.
+        Changing the password of the Customer produces the [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=false`.  Returns a `200 OK` status if successful.
+
+        A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+        - If no Customer exists with the `id` specified in the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+        - If the Customer exists but is associated with a different Store than what is specified in the `manage_my_profile:{projectKey}:{storeKey}` scope.
+
       is:
         - conflicting
       securedBy:
@@ -1403,6 +1624,7 @@ uriParameters:
                 [
                   'manage_my_profile:{projectKey}',
                   'manage_my_profile:{projectKey}:{storeKey}',
+                  'customer_id:{id}',
                 ],
             },
         ]
@@ -1419,11 +1641,17 @@ uriParameters:
     /reset:
       type: base
       post:
-        displayName: Reset my Customer's Password in a store
+        displayName: Reset password of My Customer in Store
         description: |
           This is the last step in the [password reset process of the authenticated Customer](/../api/projects/customers#password-reset-of-customer-in-store).
 
-          Resetting a password produces the of the Customer [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=true`.
+          Resetting a password produces the Customer [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=true`.
+
+          A [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error is returned in the following scenarios:
+
+          - If no Customer exists with the `id` specified in the [customer:{id}](/scopes#composable-commerce-oauth) scope.
+          - If the Customer exists but is associated with a different Store than what is specified in the `manage_my_profile:{projectKey}:{storeKey}` scope.
+
         securedBy:
           [
             oauth_2_0:
@@ -1432,6 +1660,7 @@ uriParameters:
                   [
                     'manage_my_profile:{projectKey}',
                     'manage_my_profile:{projectKey}:{storeKey}',
+                    'customer_id:{id}',
                   ],
               },
           ]
@@ -1448,8 +1677,11 @@ uriParameters:
   /signup:
     type: base
     post:
-      displayName: Signup my customer in a store
+      displayName: Create (sign up) My Customer in Store
       description: |
+
+        If used with an optional [access token for an anonymous session](ctp:api:type:AnonymousSession), all Orders and Carts that belong to the `anonymousId` are assigned to the newly created Customer.
+
         If omitted in the request body, the [Customer](ctp:api:type:Customer) `stores` field is set to the [Store](ctp:api:type:Store) specified in the path parameter.
 
         A Cart returned in the [CustomerSignInResult](ctp:api:type:CustomerSignInResult) has any invalid Line Items removed and is [updated](/api/carts-orders-overview#cart-updates) with the latest prices, taxes, and discounts. During these updates, the following errors can be returned: [MatchingPriceNotFound](ctp:api:type:MatchingPriceNotFoundError) and [MissingTaxRateForCountry](ctp:api:type:MissingTaxRateForCountryError).
@@ -1463,6 +1695,7 @@ uriParameters:
                 [
                   'manage_my_profile:{projectKey}',
                   'manage_my_profile:{projectKey}:{storeKey}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
@@ -1479,9 +1712,12 @@ uriParameters:
   /login:
     type: base
     post:
-      displayName: Authenticate my Customer (Sign In) in a store
+      displayName: Authenticate (sign in) My Customer in Store
       description: |
+
         Retrieves the authenticated Customer (that matches the given email/password pair) if they are part of a specific [Store](ctp:api:type:Store).
+
+        If used with an optional [access token for an anonymous session](ctp:api:type:AnonymousSession), all Orders and Carts that belong to the `anonymousId` are assigned to the newly logged-in Customer.
 
         - If the Customer does not have a Cart, the most recently modified anonymous cart becomes the Customer's Cart.
         - If the Customer already has a Cart, the most recently modified anonymous cart is handled according to [AnonymousCartSignInMode](ctp:api:type:AnonymousCartSignInMode).
@@ -1498,13 +1734,14 @@ uriParameters:
                 [
                   'manage_my_profile:{projectKey}',
                   'manage_my_profile:{projectKey}:{storeKey}',
+                  'anonymous_id:{id}',
                 ],
             },
         ]
       body:
         application/json:
           type: MyCustomerSignin
-          example: !include ../examples/Customer/CustomerSignIn.json
+          example: !include ../examples/Customer/MyCustomerSignIn.json
       responses:
         200:
           body:
@@ -1543,12 +1780,12 @@ uriParameters:
           scopes:
             - 'view_customers:{projectKey}'
             - 'view_customers:{projectKey}:{storeKey}'
-    description: Checks if a Customer exists for a given Query Predicate. Returns a `200 OK` status if any Customers match the Query Predicate or a `404 Not Found` otherwise.
+    description: Checks if a Customer exists for a given Query Predicate. Returns a `200 OK` status if any Customers match the Query Predicate or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     queryParameters:
       where?:
         type: QueryPredicate[]
   post:
-    displayName: Create customer in store
+    displayName: Create Customer in Store
     securedBy:
       - oauth_2_0:
           scopes:
@@ -1580,6 +1817,8 @@ uriParameters:
     get:
       displayName: Get customer by password verification token in store
       description: |
+        Use this method to retrieve a Store-specific Customer's details by using the password reset token during their [password reset process](/../api/customers-overview#customer-password-reset).
+
         If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
@@ -1600,6 +1839,8 @@ uriParameters:
     get:
       displayName: Get customer by email verification token in store
       description: |
+        Use this method to retrieve a Store-specific Customer's details by using the email token during their [email verification process](/../api/customers-overview#customer-email-verification).
+
         If the Customer exists in the Project but the `stores` field references a different [Store](ctp:api:type:Store), this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
@@ -1617,6 +1858,8 @@ uriParameters:
     post:
       displayName: Create a Token for verifying the Customer's Email in store
       description: |
+        Use this method to create an email token for a Store-specific Customer during their [email verification process](/../api/customers-overview#customer-email-verification).
+
         If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
@@ -1637,7 +1880,8 @@ uriParameters:
     post:
       displayName: Verify Customer's Email in store
       description: |
-        The customer verifies the email using the token value.
+        Use this method to verify a Store-specific Customer's email during their [email verification process](/../api/customers-overview#customer-email-verification).
+
         Verifying the email of the Customer produces the [CustomerEmailVerified](ctp:api:type:CustomerEmailVerifiedMessage) Message.
 
         If the Customer exists in the Project but the `stores` field references a different [Store](ctp:api:type:Store), this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
@@ -1683,9 +1927,14 @@ uriParameters:
     post:
       displayName: Reset Customer's Password in store
       description: |
+        Use this method to reset a Store-specific Customer's password during their [password reset process](/../api/customers-overview#customer-password-reset).
+
+        After the password is reset, any previously issued access and/or refresh tokens created through the [password flow](/authorization#password-flow) or [refresh token flow](/authorization#refresh-token-flow) are invalidated.
+
         Resetting the password of the Customer produces the [CustomerPasswordUpdated](ctp:api:type:CustomerPasswordUpdatedMessage) Message with `reset=true`.
 
-        If the Customer exists in the Project but the `stores` field references a different [Store](ctp:api:type:Store), this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+        If the Customer exists in the Project but the `stores` field references a different [Store](ctp:api:type:Store), then this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
+
       securedBy:
         - oauth_2_0:
             scopes:
@@ -1707,6 +1956,10 @@ uriParameters:
     post:
       displayName: Create a Token for Resetting the Customer's Password in store
       description: |
+        Use this method to create a password reset token for a Store-specific Customer during their [password reset process](/../api/customers-overview#customer-password-reset).
+        
+        Creating a password reset token does not invalidate existing tokens.
+        
         If the Customer exists in the Project but the `stores` field references a different Store, this method returns a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error.
       securedBy:
         - oauth_2_0:
@@ -1942,7 +2195,7 @@ uriParameters:
   description: |
     shopping-lists e.g. for wishlist support
   get:
-    displayName: Get shopping lists in store
+    displayName: Query ShoppingLists in Store
     securedBy:
       [
         oauth_2_0:
@@ -1966,6 +2219,7 @@ uriParameters:
           application/json:
             example: !include ../examples/shopping-lists.example.json
   head:
+    displayName: Check if ShoppingList exists in Store by Query Predicate
     securedBy:
       [
         oauth_2_0:
@@ -1977,12 +2231,12 @@ uriParameters:
               ],
           },
       ]
-    description: Checks if a ShoppingList exists for a given Query Predicate. Returns a `200 OK` status if any ShoppingLists match the Query Predicate or a `404 Not Found` otherwise.
+    description: Checks if a ShoppingList exists for a given Query Predicate. Returns a `200 OK` status if any ShoppingLists match the Query Predicate or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     queryParameters:
       where?:
         type: QueryPredicate[]
   post:
-    displayName: Create shopping lists in store
+    displayName: Create ShoppingList in Store
     securedBy:
       [
         oauth_2_0:
@@ -2018,7 +2272,7 @@ uriParameters:
         resourceType: ShoppingList
         resourceUpdateType: ShoppingListUpdate
     get:
-      displayName: Get shopping list by key in store
+      displayName: Get ShoppingList in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -2045,6 +2299,7 @@ uriParameters:
             application/json:
               example: !include ../examples/shopping-list.example.json
     head:
+      displayName: Check if ShoppingList exists in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -2056,9 +2311,9 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a ShoppingList exists for a given `key`. Returns a `200 OK` status if the ShoppingList exists or a `404 Not Found` otherwise.
+      description: Checks if a ShoppingList exists for a given `key`. Returns a `200 OK` status if the ShoppingList exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
-      displayName: Update shopping list by key in store
+      displayName: Update ShoppingList in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -2088,7 +2343,7 @@ uriParameters:
             application/json:
               example: !include ../examples/shopping-list.example.json
     delete:
-      displayName: Delete shopping list by key in store
+      displayName: Delete ShoppingList in Store by Key
       is:
         - dataErasure
       securedBy:
@@ -2124,7 +2379,7 @@ uriParameters:
         resourceType: ShoppingList
         resourceUpdateType: ShoppingListUpdate
     get:
-      displayName: Get shopping list by id in store
+      displayName: Get ShoppingList in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -2151,6 +2406,7 @@ uriParameters:
             application/json:
               example: !include ../examples/shopping-list.example.json
     head:
+      displayName: Check if ShoppingList exists in Store by Query Predicate
       securedBy:
         [
           oauth_2_0:
@@ -2162,9 +2418,9 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a ShoppingList exists for a given `id`. Returns a `200 OK` status if the ShoppingList exists or a `404 Not Found` otherwise.
+      description: Checks if a ShoppingList exists for a given `id`. Returns a `200 OK` status if the ShoppingList exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
-      displayName: Update shopping list by id in store
+      displayName: Update ShoppingList in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -2194,7 +2450,7 @@ uriParameters:
             application/json:
               example: !include ../examples/shopping-list.example.json
     delete:
-      displayName: Delete shopping list by id in store
+      displayName: Delete ShoppingList in Store by ID
       is:
         - dataErasure
       securedBy:
@@ -2334,16 +2590,20 @@ uriParameters:
       limit:
         type: number
         format: int32
-        maximum: 500
         required: false
         description: |
           Number of [results requested](/../api/general-concepts#limit).
+        default: 20
+        minimum: 0
+        maximum: 500
       offset:
         type: number
         format: int32
         required: false
         description: |
           Number of [elements skipped](/../api/general-concepts#offset).
+        default: 0
+        maximum: 10000
       withTotal:
         type: boolean
         default: true
@@ -2635,16 +2895,20 @@ uriParameters:
       limit:
         type: number
         format: int32
-        maximum: 500
         required: false
         description: |
           Number of [results requested](/../api/general-concepts#limit).
+        default: 20
+        minimum: 0
+        maximum: 500
       offset:
         type: number
         format: int32
         required: false
         description: |
           Number of [elements skipped](/../api/general-concepts#offset).
+        default: 0
+        maximum: 10000
       withTotal:
         type: boolean
         default: true
@@ -2766,34 +3030,66 @@ uriParameters:
       /images:
         post:
           displayName: Upload a Product Tailoring image
+          description: |
+            Uploads a JPEG, PNG and GIF file to a [ProductVariantTailoring](ctp:api:type:ProductVariantTailoring).
+            The maximum file size of the image is **10MB**.
+            Either `variant` or `sku` is required to update a specific ProductVariant.
+            If neither is provided, the image is uploaded to the Master Variant of the Product.
+
+            The response status code depends on the size of the original image.
+            If the image is small, the API responds with `200 OK`, and if the image is larger, it responds with `202 Accepted`.
+            The Product returned with a `202 Accepted` status code contains a `warnings` field with an [ImageProcessingOngoing](ctp:api:type:ImageProcessingOngoingWarning) Warning.
+
+            Produces the [ProductTailoringImageAdded](/projects/messages/product-catalog-messages#product-tailoring-image-added) Message.
           queryParameters:
             filename?:
               type: string
-              description: Base filename of the image when stored in the Content Delivery Network. The filename will be modified when uploaded to prevent filename conflicts. If not included a random filename will be allocated.
+              default: 'img'
+              description: |
+                URL-encoded filename of the image when stored in the Content Delivery Network (CDN).
+                The filename is modified when uploaded to prevent filename conflicts.
+                If not provided, a random filename is generated.
             variant?:
               type: number
               format: int64
-              description: The `id` of the [ProductTailoringVariant](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to. It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
+              description: |
+                The `id` of the [ProductVariantTailoring](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to.
+                It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
             sku?:
               type: string
-              description: The `sku` of the [ProductTailoringVariant](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to. It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
+              description: |
+                The `sku` of the [ProductVariantTailoring](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to.
+                It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
             staged?:
               type: boolean
-              description: If `true`, only the staged ProductTailoringVariant is updated. If `false`, both the current and staged ProductTailoringVariant are updated.
-          description: |
-            Upload a JPEG, PNG and GIF file to a [ProductTailoringVariant](ctp:api:type:ProductTailoringVariant). The maximum file size of the image is 10MB. `variant` or `sku` is required to update a specific ProductVariant. Produces the [ProductTailoringImageAdded](/projects/messages#product-tailoring-image-added) Message when the `Small` version of the image has been uploaded to the CDN.
+              default: true
+              description: |
+                If `true`, only the staged ProductVariantTailoring is updated.
+                If `false`, both the current and staged ProductVariantTailoring are updated.
           securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
           body:
-            type: file
-            fileTypes: ['image/jpeg', 'image/png', 'image/gif']
+            image/jpeg:
+              type: file
+            image/png:
+              type: file
+            image/gif:
+              type: file
           headers:
             Content-Type:
-              enum: ['image/jpeg', 'image/png', 'image/gif']
+              type: string
+              description: |
+                One of `image/jpeg`, `image/png`, or `image/gif`.
           responses:
             200:
               body:
-                type: ProductTailoring
-                example: !include ../examples/product-tailoring.example.json
+                application/json:
+                  type: ProductTailoring
+                  example: !include ../examples/product-tailoring.example.json
+            202:
+              body:
+                application/json:
+                  type: ProductTailoring
+                  example: !include ../examples/product-tailoring-with-image-processing-warning.example.json
   /key={productKey}:
     (methodName): withProductKey
     uriParameters:
@@ -2875,34 +3171,66 @@ uriParameters:
       /images:
         post:
           displayName: Upload a Product Tailoring image
+          description: |
+            Uploads a JPEG, PNG and GIF file to a [ProductVariantTailoring](ctp:api:type:ProductVariantTailoring).
+            The maximum file size of the image is **10MB**.
+            Either `variant` or `sku` is required to update a specific ProductVariant.
+            If neither is provided, the image is uploaded to the Master Variant of the Product.
+
+            The response status code depends on the size of the original image.
+            If the image is small, the API responds with `200 OK`, and if the image is larger, it responds with `202 Accepted`.
+            The Product returned with a `202 Accepted` status code contains a `warnings` field with an [ImageProcessingOngoing](ctp:api:type:ImageProcessingOngoingWarning) Warning.
+
+            Produces the [ProductTailoringImageAdded](/projects/messages/product-catalog-messages#product-tailoring-image-added) Message.
           queryParameters:
             filename?:
               type: string
-              description: Base filename of the image when stored in the Content Delivery Network. The filename will be modified when uploaded to prevent filename conflicts. If not included a random filename will be allocated.
+              default: 'img'
+              description: |
+                URL-encoded filename of the image when stored in the Content Delivery Network (CDN).
+                The filename is modified when uploaded to prevent filename conflicts.
+                If not provided, a random filename is generated.
             variant?:
               type: number
               format: int64
-              description: The `id` of the [ProductTailoringVariant](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to. It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
+              description: |
+                The `id` of the [ProductVariantTailoring](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to.
+                It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
             sku?:
               type: string
-              description: The `sku` of the [ProductTailoringVariant](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to. It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
+              description: |
+                The `sku` of the [ProductVariantTailoring](/projects/product-tailoring#productvarianttailoring) the image should be uploaded to.
+                It must correspond to an existing [ProductVariant](/projects/products#productvariant) in the Product.
             staged?:
               type: boolean
-              description: If `true`, only the staged ProductTailoringVariant is updated. If `false`, both the current and staged ProductTailoringVariant are updated.
-          description: |
-            Upload a JPEG, PNG and GIF file to a [ProductTailoringVariant](ctp:api:type:ProductTailoringVariant). The maximum file size of the image is 10MB. `variant` or `sku` is required to update a specific ProductVariant. Produces the [ProductTailoringImageAdded](/projects/messages#product-tailoring-image-added) Message when the `Small` version of the image has been uploaded to the CDN.
+              default: true
+              description: |
+                If `true`, only the staged ProductVariantTailoring is updated.
+                If `false`, both the current and staged ProductVariantTailoring are updated.
           securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
           body:
-            type: file
-            fileTypes: ['image/jpeg', 'image/png', 'image/gif']
+            image/jpeg:
+              type: file
+            image/png:
+              type: file
+            image/gif:
+              type: file
           headers:
             Content-Type:
-              enum: ['image/jpeg', 'image/png', 'image/gif']
+              type: string
+              description: |
+                One of `image/jpeg`, `image/png`, or `image/gif`.
           responses:
             200:
               body:
-                type: ProductTailoring
-                example: !include ../examples/product-tailoring.example.json
+                application/json:
+                  type: ProductTailoring
+                  example: !include ../examples/product-tailoring.example.json
+            202:
+              body:
+                application/json:
+                  type: ProductTailoring
+                  example: !include ../examples/product-tailoring-with-image-processing-warning.example.json
 /quote-requests:
   type:
     baseDomain:
@@ -2916,6 +3244,7 @@ uriParameters:
   (createable): QuoteRequestDraft
   description: A request for a Quote holds product variants and can be ordered.
   get:
+    displayName: Query QuoteRequests in Store
     securedBy:
       [
         oauth_2_0:
@@ -2933,6 +3262,7 @@ uriParameters:
           application/json:
             example: !include ../examples/quote-requests.example.json
   head:
+    displayName: Check if QuoteRequest exists in Store by Query Predicate
     securedBy:
       [
         oauth_2_0:
@@ -2944,11 +3274,13 @@ uriParameters:
               ],
           },
       ]
-    description: Checks if a QuoteRequest exists for a given Query Predicate. Returns a `200 OK` status if any QuoteRequests match the Query Predicate or a `404 Not Found` otherwise.
+    description: Checks if a QuoteRequest exists for a given Query Predicate. Returns a `200 OK` status if any QuoteRequests match the Query Predicate or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     queryParameters:
       where?:
         type: QueryPredicate[]
   post:
+    displayName: Create QuoteRequest in Store
+    description: |
     securedBy:
       [
         oauth_2_0:
@@ -2976,6 +3308,7 @@ uriParameters:
         resourceType: QuoteRequest
         resourceUpdateType: QuoteRequestUpdate
     get:
+      displayName: Get QuoteRequest in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -2993,6 +3326,7 @@ uriParameters:
             application/json:
               example: !include ../examples/quote-request.example.json
     head:
+      displayName: Check if QuoteRequest exists in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -3004,8 +3338,9 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a QuoteRequest exists for a given `key`. Returns a `200 OK` status if the QuoteRequest exists or a `404 Not Found` otherwise.
+      description: Checks if a QuoteRequest exists for a given `key`. Returns a `200 OK` status if the QuoteRequest exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
+      displayName: Update QuoteRequest in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -3026,6 +3361,7 @@ uriParameters:
             application/json:
               example: !include ../examples/quote-request-update-response.example.json
     delete:
+      displayName: Delete QuoteRequest in Store by Key
       is:
         - dataErasure
       securedBy:
@@ -3052,6 +3388,7 @@ uriParameters:
         resourceType: QuoteRequest
         resourceUpdateType: QuoteRequestUpdate
     get:
+      displayName: Get QuoteRequest in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -3069,6 +3406,7 @@ uriParameters:
             application/json:
               example: !include ../examples/quote-request.example.json
     head:
+      displayName: Check if QuoteRequest exists in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -3080,8 +3418,9 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a QuoteRequest exists for a given `id`. Returns a `200 OK` status if the QuoteRequest exists or a `404 Not Found` otherwise.
+      description: Checks if a QuoteRequest exists for a given `id`. Returns a `200 OK` status if the QuoteRequest exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
+      displayName: Update QuoteRequest in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -3102,6 +3441,7 @@ uriParameters:
             application/json:
               example: !include ../examples/quote-request-update-response.example.json
     delete:
+      displayName: Delete QuoteRequest in Store by ID
       is:
         - dataErasure
       securedBy:
@@ -3133,6 +3473,7 @@ uriParameters:
   (createable): StagedQuoteDraft
   description: A staged quote holds the negotiation between the [Buyer](/../api/quotes-overview#buyer) and the [Seller](/../api/quotes-overview#seller).
   get:
+    displayName: Query StagedQuotes in Store
     securedBy:
       [
         oauth_2_0:
@@ -3150,6 +3491,7 @@ uriParameters:
           application/json:
             example: !include ../examples/staged-quotes.example.json
   head:
+    displayName: Check if StagedQuote exists in Store by Query Predicate
     securedBy:
       [
         oauth_2_0:
@@ -3161,11 +3503,12 @@ uriParameters:
               ],
           },
       ]
-    description: Checks if a StagedQuote exists for a given Query Predicate. Returns a `200 OK` status if any StagedQuotes match the Query Predicate or a `404 Not Found` otherwise.
+    description: Checks if a StagedQuote exists for a given Query Predicate. Returns a `200 OK` status if any StagedQuotes match the Query Predicate or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     queryParameters:
       where?:
         type: QueryPredicate[]
   post:
+    displayName: Create StagedQuote in Store
     securedBy:
       [
         oauth_2_0:
@@ -3193,6 +3536,7 @@ uriParameters:
         resourceType: StagedQuote
         resourceUpdateType: StagedQuoteUpdate
     get:
+      displayName: Get StagedQuote in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -3210,6 +3554,7 @@ uriParameters:
             application/json:
               example: !include ../examples/staged-quote.example.json
     head:
+      displayName: Check if StagedQuote exists in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -3221,8 +3566,9 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a StagedQuote exists for a given `key`. Returns a `200 OK` status if the StagedQuote exists or a `404 Not Found` otherwise.
+      description: Checks if a StagedQuote exists for a given `key`. Returns a `200 OK` status if the StagedQuote exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
+      displayName: Update StagedQuote in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -3243,6 +3589,7 @@ uriParameters:
             application/json:
               example: !include ../examples/staged-quote.example.json
     delete:
+      displayName: Delete StagedQuote in Store by Key
       is:
         - dataErasure
       securedBy:
@@ -3269,6 +3616,7 @@ uriParameters:
         resourceType: StagedQuote
         resourceUpdateType: StagedQuoteUpdate
     get:
+      displayName: Get StagedQuote in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -3286,6 +3634,7 @@ uriParameters:
             application/json:
               example: !include ../examples/staged-quote.example.json
     head:
+      displayName: Check if StagedQuote exists in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -3297,8 +3646,9 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a StagedQuote exists for a given `id`. Returns a `200 OK` status if the StagedQuote exists or a `404 Not Found` otherwise.
+      description: Checks if a StagedQuote exists for a given `id`. Returns a `200 OK` status if the StagedQuote exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
+      displayName: Update StagedQuote in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -3319,6 +3669,7 @@ uriParameters:
             application/json:
               example: !include ../examples/staged-quote.example.json
     delete:
+      displayName: Delete StagedQuote in Store by ID
       is:
         - dataErasure
       securedBy:
@@ -3350,6 +3701,7 @@ uriParameters:
   (createable): QuoteDraft
   description: A quote holds the negotiated offer.
   get:
+    displayName: Query Quotes in Store
     securedBy:
       [
         oauth_2_0:
@@ -3367,6 +3719,7 @@ uriParameters:
           application/json:
             example: !include ../examples/quotes.example.json
   head:
+    displayName: Check if Quote exists in Store by Query Predicate
     securedBy:
       [
         oauth_2_0:
@@ -3378,11 +3731,12 @@ uriParameters:
               ],
           },
       ]
-    description: Checks if a Quote exists for a given Query Predicate. Returns a `200 OK` status if any Quotes match the Query Predicate or a `404 Not Found` otherwise.
+    description: Checks if a Quote exists for a given Query Predicate. Returns a `200 OK` status if any Quotes match the Query Predicate or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     queryParameters:
       where?:
         type: QueryPredicate[]
   post:
+    displayName: Create Quote in Store
     securedBy:
       [
         oauth_2_0:
@@ -3410,6 +3764,7 @@ uriParameters:
         resourceType: Quote
         resourceUpdateType: QuoteUpdate
     get:
+      displayName: Get Quote in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -3427,6 +3782,7 @@ uriParameters:
             application/json:
               example: !include ../examples/quote.example.json
     head:
+      displayName: Check if Quote exists in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -3438,8 +3794,9 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a Quote exists for a given `key`. Returns a `200 OK` status if the Quote exists or a `404 Not Found` otherwise.
+      description: Checks if a Quote exists for a given `key`. Returns a `200 OK` status if the Quote exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
+      displayName: Update Quote in Store by Key
       securedBy:
         [
           oauth_2_0:
@@ -3460,6 +3817,7 @@ uriParameters:
             application/json:
               example: !include ../examples/quote.example.json
     delete:
+      displayName: Delete Quote in Store by Key
       is:
         - dataErasure
       securedBy:
@@ -3486,6 +3844,7 @@ uriParameters:
         resourceType: Quote
         resourceUpdateType: QuoteUpdate
     get:
+      displayName: Get Quote in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -3503,6 +3862,7 @@ uriParameters:
             application/json:
               example: !include ../examples/quote.example.json
     head:
+      displayName: Check if Quote exists in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -3514,8 +3874,9 @@ uriParameters:
                 ],
             },
         ]
-      description: Checks if a Quote exists for a given `id`. Returns a `200 OK` status if the Quote exists or a `404 Not Found` otherwise.
+      description: Checks if a Quote exists for a given `id`. Returns a `200 OK` status if the Quote exists or a [ResourceNotFound](ctp:api:type:ResourceNotFoundError) error otherwise.
     post:
+      displayName: Update Quote in Store by ID
       securedBy:
         [
           oauth_2_0:
@@ -3536,6 +3897,7 @@ uriParameters:
             application/json:
               example: !include ../examples/quote.example.json
     delete:
+      displayName: Delete Quote in Store by ID
       is:
         - dataErasure
       securedBy:
@@ -3554,3 +3916,216 @@ uriParameters:
           body:
             application/json:
               example: !include ../examples/quote.example.json
+/business-units:
+  type:
+    baseDomain:
+      resourceType: BusinessUnit
+      resourceQueryType: BusinessUnitPagedQueryResponse
+      resourceDraft: BusinessUnitDraft
+      whereExample: 'name = "Some company"'
+      sortExample: createdAt asc
+  (updateable): BusinessUnit
+  (deleteable): BusinessUnit
+  (createable): BusinessUnitDraft
+  description: A Business Unit can represent a Company or a Division.
+  get:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'view_business_units:{projectKey}',
+                'view_business_units:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ../examples/business-units.example.json
+  head:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'view_business_units:{projectKey}',
+                'view_business_units:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    description: Checks if a BusinessUnit exists for a given Query Predicate. Returns a `200 OK` status if any BusinessUnits match the Query Predicate or a `404 Not Found` otherwise.
+    queryParameters:
+      where?:
+        type: QueryPredicate[]
+  post:
+    securedBy:
+      [
+        oauth_2_0:
+          {
+            scopes:
+              [
+                'manage_business_units:{projectKey}',
+                'manage_business_units:{projectKey}:{storeKey}',
+              ],
+          },
+      ]
+    body:
+      application/json:
+        example: !include ../examples/business-unit-create.example.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include ../examples/business-unit.example.json
+  /key={key}:
+    (methodName): withKey
+    type:
+      baseResource:
+        uriParameterName: key
+        resourceType: BusinessUnit
+        resourceUpdateType: BusinessUnitUpdate
+    get:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_business_units:{projectKey}',
+                  'view_business_units:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/business-unit.example.json
+    head:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_business_units:{projectKey}',
+                  'view_business_units:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Checks if a BusinessUnit exists for a given `key`. Returns a `200 OK` status if the BusinessUnit exists or a `404 Not Found` otherwise.
+    post:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_business_units:{projectKey}',
+                  'manage_business_units:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/business-unit-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/business-unit.example.json
+    delete:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_business_units:{projectKey}',
+                  'manage_business_units:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/business-unit.example.json
+  /{ID}:
+    (methodName): withId
+    type:
+      baseResource:
+        uriParameterName: ID
+        resourceType: BusinessUnit
+        resourceUpdateType: BusinessUnitUpdate
+    get:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_business_units:{projectKey}',
+                  'view_business_units:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/business-unit.example.json
+    head:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'view_business_units:{projectKey}',
+                  'view_business_units:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      description: Checks if a BusinessUnit exists for a given `id`. Returns a `200 OK` status if the BusinessUnit exists or a `404 Not Found` otherwise.
+    post:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_business_units:{projectKey}',
+                  'manage_business_units:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      body:
+        application/json:
+          example: !include ../examples/business-unit-update.example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/business-unit.example.json
+    delete:
+      securedBy:
+        [
+          oauth_2_0:
+            {
+              scopes:
+                [
+                  'manage_business_units:{projectKey}',
+                  'manage_business_units:{projectKey}:{storeKey}',
+                ],
+            },
+        ]
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ../examples/business-unit.example.json

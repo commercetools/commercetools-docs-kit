@@ -10,9 +10,15 @@ properties:
     description: Configuration for the [Product Projection Search](/../api/projects/products-search) and [Product Suggestions](/../api/projects/products-suggestions) endpoints.
   productsSearch?:
     type: SearchIndexingConfigurationValues
-    (beta): true
     description: Configuration for the [Product Search](/../api/projects/product-search) feature.
   orders?:
     type: SearchIndexingConfigurationValues
     (beta): true
     description: Configuration for the [Order Search](/../api/projects/order-search) feature.
+  customers?:
+    type: SearchIndexingConfigurationValues
+    description: Configuration for the [Customer Search](/../api/projects/customer-search) feature.
+  businessUnits?:
+    type: SearchIndexingConfigurationValues
+    (beta): true
+    description: Configuration for the [Business Unit Search](/../api/projects/business-unit-search) feature.

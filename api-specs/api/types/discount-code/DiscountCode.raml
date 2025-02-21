@@ -3,6 +3,7 @@
 type: BaseResource
 displayName: DiscountCode
 (updateType): DiscountCodeUpdate
+example: !include ../../examples/discount-code.example.json
 properties:
   id:
     (identifier): true
@@ -55,6 +56,7 @@ properties:
     type: CartDiscountReference[]
     description: |
       Reference to CartDiscounts that can be applied to the Cart once the DiscountCode is applied.
+    maxItems: 10
   cartPredicate?:
     type: string
     description: |
