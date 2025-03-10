@@ -87,7 +87,7 @@
     "moment-timezone": "0.5.45",
     "moment-timezone-data-webpack-plugin": "1.5.1",
     "prism-react-renderer": "2.4.0",
-    "prismjs": "1.29.0",
+    "prismjs": "1.30.0",
     "process-top": "^1.2.0",
     "prompts": "^2.4.2",
     "prop-types": "15.8.1",
