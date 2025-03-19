@@ -155,6 +155,7 @@ properties:
     type: DiscountCodeInfo[]
     description: |
       Discount Codes applied to the Cart. A Cart that has `directDiscounts` cannot have `discountCodes`.
+    maxItems: 10
   directDiscounts:
     type: DirectDiscount[]
     description: |
@@ -184,6 +185,10 @@ properties:
     type: CustomFields
     description: |
       Custom Fields of the Cart.
+  discountTypeCombination?:
+    type: DiscountTypeCombination
+    description: |
+      Indicates if a combination of discount types can apply on a Cart.
   deleteDaysAfterLastModification?:
     type: integer
     description: |

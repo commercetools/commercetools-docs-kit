@@ -1,12 +1,11 @@
 #%RAML 1.0 Trait
-
 queryParameters:
   storeProjection:
     type: string
     required: false
     description: |
       `key` of an existing [Store](ctp:api:type:Store).
-      If the Store has defined some languages, countries, distribution or supply Channels,
+      If the Store has defined `languages`, `countries`, `distributionChannels`, or `supplyChannels`,
       they are used for projections based on [locale](ctp:api:type:ProductProjectionLocales), [price](ctp:api:type:ProductProjectionPrices),
       and [inventory](ctp:api:type:ProductProjectionInventoryEntries).
-      If the Store has defined [Product Selections](ctp:api:type:ProductSelection), they have no effect on the results of this query.
+      For Projects with active [Product Selections](/../api/projects/product-selections), the API does not take the [availability of the Product in the specified Store](/../api/projects/stores#products-available-in-store) into account.

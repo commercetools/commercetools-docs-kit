@@ -2,6 +2,7 @@
 (package): StandalonePrice
 displayName: StandalonePriceDraft
 type: object
+example: !include ../../examples/standalone-price-create.example.json
 properties:
   key?:
     type: string
@@ -19,6 +20,8 @@ properties:
     type: Money
     description: |
       Sets the money value of this Price.
+
+      To set the money value in high precision, use [HighPrecisionMoneyDraft](ctp:api:type:HighPrecisionMoneyDraft).
   country?:
     type: CountryCode
     description: |
