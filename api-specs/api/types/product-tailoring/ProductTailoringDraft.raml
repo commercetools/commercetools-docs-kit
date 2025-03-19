@@ -3,7 +3,7 @@
 displayName: ProductTailoringDraft
 type: object
 description: |
-  Contains all the tailored data of a Product.
+  Contains the information to be tailored for a Product.
 properties:
   key?:
     type: string
@@ -28,15 +28,15 @@ properties:
   metaTitle?:
     type: LocalizedString
     description: |
-      Tailored title of the Product used by external search engines for improved search engine performance.
+      Tailored title of the Product that is used by search engines.
   metaDescription?:
     type: LocalizedString
     description: |
-      Tailored description of the Product used by external search engines for improved search engine performance.
+      Tailored description of the Product that is used by search engines.
   metaKeywords?:
     type: LocalizedString
     description: |
-      Tailored keywords related to the Product used by external search engines for improved search engine performance.
+      Tailored keywords related to the Product that are used by search engines.
   slug?:
     type: LocalizedString
     description: |
@@ -45,10 +45,10 @@ properties:
   publish?:
     type: boolean
     description: |
-      If `true`, the ProductTailoring is published immediately.
+      Set to `true` to [publish](/../api/projects/product-tailoring#stage-and-publish-tailored-product-information) the ProductTailoring immediately.
+      Otherwise, the tailored product information is just staged.
     default: false
   variants?:
     type: ProductVariantTailoringDraft[]
-    (beta): true
     description: |
       Tailored Variants of the Product.
