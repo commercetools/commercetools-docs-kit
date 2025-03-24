@@ -253,7 +253,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check links
-        uses: JustinBeckwith/linkinator-action@v1.10.4
+        uses: JustinBeckwith/linkinator-action@v1.11.0
         with:
           paths: https://docskit-sha-${{ github.sha }}.commercetools.vercel.app
           config: linkinator.remote.config.json
